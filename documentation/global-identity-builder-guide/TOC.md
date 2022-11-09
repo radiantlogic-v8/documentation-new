@@ -1,6 +1,53 @@
----
-title: Global Identity Builder Guide TOC
-description: Global Identity Builder Guide TOC Description
----
+# Global Identity Builder Guide {global-identity-builder-guide}
 
-- [Global Identity Builder Guide](global-identity-builder-guide.md)
+- [Introduction](introduction.md)
+- Concepts {#concepts}
+  - [Applicable Concepts](concepts/applicable-concepts.md)
+  - [Project](concepts/project.md)
+  - [Identity Correlation](concepts/identity-correlation.md)
+  - [Identity Source](concepts/identity-source.md)
+  - [Identity Source Browser](concepts/identity-source-browser.md)
+  - [Global Profile](concepts/global-profile.md)
+  - [Global Profile Browser](concepts/global-profile-browser.md)
+  - [Unresolved Identity](concepts/unresolved-identity.md)
+  - [Persistent Cache](concepts/persistent-cache.md)
+  - [Correlation Rule](concepts/correlation-rule.md)
+  - [Attribute Mapping](concepts/attribute-mapping.md)
+  - [Bind Order](concepts/bind-order.md)
+  - [Attribute Priority](concepts/attribute-priority.md)
+  - [VUID](concepts/vuid.md)
+  - [Global Identity Viewer](concepts/global-identity-viewer.md)
+- Create Projects {#create-projects}
+  - [Project Creation](create-projects/project-creation.md)
+  - [Project Properties](create-projects/project-properties.md)
+  - [Identity Sources](create-projects/identity-sources.md)
+  - [Define Attribute Priority](create-projects/define-attribute-priority.md)
+  - [Upload](create-projects/upload.md)
+  - [Define Bind Order](create-projects/define-bind-order.md)
+- Manual Identity Administration {#manual-identity-administration}
+  - [Manual Tasks](manual-identity-administration/manual-tasks.md)
+  - [Remove Identities from the Global Profile](manual-identity-administration/remove-identities-from-the-global-profile.md)
+  - [View Unresolved Identities](manual-identity-administration/view-unresolved-identities.md)
+  - [Add Unresolved Identities into the Global Profile](manual-identity-administration/add-unresolved-identities-into-the-global-profile.md)
+  - [Login Conflict Analysis](manual-identity-administration/login-conflict-analysis.md)
+- Persistent Cache with Real-Time Refresh {#persistent-cache-with-real-time-refresh}
+  - [Real-Time Persistent Cache Refresh](persistent-cache-with-real-time-refresh/real-time-persistent-cache-refresh.md)
+  - [Configure Real-time Persistent Cache Refresh](persistent-cache-with-real-time-refresh/configure-real-time-persistent-cache-refresh.md)
+  - [Re-configure Project Properties](persistent-cache-with-real-time-refresh/re-configure-project-properties.md)
+  - [Real-time Persistent Cache Refresh Impact on Global Profile Identities](persistent-cache-with-real-time-refresh/real-time-persistent-cache-refresh-impact-on-global-profile-identities.md)
+- Link Existing Groups to Global Profile Identities {#link-existing-groups-to-global-profile-identities}
+  - [Authorization and Personalization](link-existing-groups-to-global-profile-identities/authorization-and-personalization.md)
+  - [Create a Root Naming Context for Global Profile Identities and Groups](link-existing-groups-to-global-profile-identities/create-a-root-naming-context-for-global-profile-identities-and-groups.md)
+  - [Define Computed Group Membership](link-existing-groups-to-global-profile-identities/define-computed-group-membership.md)
+  - [Test the Result](link-existing-groups-to-global-profile-identities/test-the-result.md)
+- Integrate and Configure a Custom Data Source {#integrate-and-configure-a-custom-data-source}
+  - [Registration](integrate-and-configure-a-custom-data-source/registration.md)
+  - [Customize Data Source](integrate-and-configure-a-custom-data-source/customize-data-source.md)
+  - [Create Virtual View](integrate-and-configure-a-custom-data-source/create-virtual-view.md)
+  - [Configure Persistent Cache](integrate-and-configure-a-custom-data-source/configure-persistent-cache.md)
+  - [Add RadiantOne Cache as an Identity Source in the Project](integrate-and-configure-a-custom-data-source/add-radiantone-cache-as-an-identity-source-in-the-project.md)
+- [Address Group Membership Challenges] {#address-group-membership-challenges}
+  - [LDAP Dynamic Groups](address-group-membership-challenges/ldap-dynamic-groups.md)
+  - [Nested Groups](address-group-membership-challenges/nested-groups.md)
+  - [Users and Groups Distributed in Multiple Containers](address-group-membership-challenges/users-and-groups-distributed-in-multiple-containers.md)
+- [Extend the Global Profile View](extend-the-global-profile-view.md)
