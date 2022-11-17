@@ -221,12 +221,10 @@ Response Time Intervals
 Per operation type, you can specify the time intervals to be used as a basis for reporting
 how long operations are taking to finish.
 
-These values are in milliseconds (ms) and each interval is separated with a comma. There
-are five default intervals defined:
+These values are in milliseconds (ms) and each interval is separated with a comma. There are five default intervals defined:
 [0, 10], [11, 100], [101, 1000], [1001, 10000] and [10000, infinity].
 
-For each interval, the report indicates how many operations (with the associated
-percentage) lasted between 0ms and 10ms, how many operations lasted between 11ms
+For each interval, the report indicates how many operations (with the associated percentage) lasted between 0ms and 10ms, how many operations lasted between 11ms
 and 100ms, how many operations lasted between 101ms and 1000ms, etc.
 
 This is a good way to get an overall idea about the performance of the RadiantOne service
@@ -303,12 +301,12 @@ To generate the access log report:
 4. You can specify a location for the reports to be stored in the Output Location field. The default location for generated reports is <RLI_HOME>/reporting-birt/reports. Alternatively, you can specify a network share path.
 5. Indicate a time period the report should include (start and end dates and times).
 6. To generate a report that aggregates statistics from all nodes in your RadiantOne clusterinto a single report, check the Global Report box.
-7. To generate a report for a single node, indicate the server name in the Server Name
-    field.
-IMPORTANT NOTE **–** if RadiantOne is deployed in a cluster, the default behavior of the
-Access Report generator is to create a report for each node. Values entered in the
-Server Name field override checking the Global Report Box.
+7. To generate a report for a single node, indicate the server name in the Server Name field.
+><span style="color:red">**IMPORTANT NOTE – if RadiantOne is deployed in a cluster, the default behavior of the
+Access Report generator is to create a report for each node. Values entered in the Server Name field override checking the Global Report Box.**
 8. You can specify a session ID if needed.
+
+![An image showing ](Media/Image2.2.jpg)
 
 Figure 2. 2 : Generating an Access Log Report for a Single Node
 
@@ -317,36 +315,27 @@ Figure 2. 2 : Generating an Access Log Report for a Single Node
 The access report consists of two main sections; a summary section followed by a detailed
 section. The contents of each section are described below.
 
-Summary Section
+**Summary Section**
 
-The summary appears first and starts off with two tables. The first table indicates the types of
-operations received by RadiantOne and the total number per operation. The second table
-indicates the various result codes that appear throughout the report, their meaning and the
-number of times they appear. These tables are followed by sections dedicated for each type of
-operation (bind, base searches, one level searches, sub tree searches, add, modify, delete, and
-compare). These sections include a chart (line, bar or pie...depending on the configuration), in
-addition to two tables summarizing the results. One table details the duration intervals, the
-number of corresponding operations that occurred during the interval and the percentage of
-
-
+The summary appears first and starts off with two tables. The first table indicates the types of operations received by RadiantOne and the total number per operation. The second table indicates the various result codes that appear throughout the report, their meaning and the
+number of times they appear. These tables are followed by sections dedicated for each type of operation (bind, base searches, one level searches, sub tree searches, add, modify, delete, and compare). These sections include a chart (line, bar or pie...depending on the configuration), in addition to two tables summarizing the results. One table details the duration intervals, the number of corresponding operations that occurred during the interval and the percentage of
 these operations overall. The second table displays the result codes encountered for the
-specific type of operation, their meaning and the number of times they appeared during the
-report.
+specific type of operation, their meaning and the number of times they appeared during the report.
 
 Below is an example of the Bind Operations section from an Access Report.
+
+![An image showing ](Media/Image2.3.jpg)
 
 Figure 2. 3 : Example of Bind Operations Summary in an Access Report using Pie Chart
 
 If there are no operations of a certain type during a reporting period, the section allocated for the
 operation has the word None in it.
 
-Detailed Section
+**Detailed Section**
 
-The detailed section of the report is based on what has been configured for the response time
-thresholds and error codes of interest. These parameters are configurable for each type of
-operation (bind, add, delete...etc.).
+The detailed section of the report is based on what has been configured for the response time thresholds and error codes of interest. These parameters are configurable for each type of operation (bind, add, delete...etc.).
 
-Response Time Threshold
+**Response Time Threshold**
 
 If there is a response time threshold set for a specific operation, all events that exceed the
 threshold appear in the detailed section of the report. The details for bind operations include
@@ -354,15 +343,13 @@ how long the operation took (in milliseconds), the date, session ID, connection 
 and the Bind DN (user the operation was issued by). Below is an example of report details on
 bind operations that exceed the configured threshold.
 
+![An image showing ](Media/Image2.4.jpg)
 
-Figure 2. 4 : Example of Report Details for Bind Operations Exceeding a Threshold
+Figure 2.4 : Example of Report Details for Bind Operations Exceeding a Threshold
 
-The details for base search operations include how long the operation took (in milliseconds),
-date, session ID, connection ID, operation ID, the Base DN (entry that was searched for) and
-the filter.
+The details for base search operations include how long the operation took (in milliseconds), date, session ID, connection ID, operation ID, the Base DN (entry that was searched for) and the filter.
 
-The details for one level search operations include how long the operation took (in
-milliseconds), date, session ID, connection ID, operation ID, the Base DN (entry where the one
+The details for one level search operations include how long the operation took (in milliseconds), date, session ID, connection ID, operation ID, the Base DN (entry where the one
 level search started from) and the filter.
 
 The details for sub tree search operations include how long the operation took (in milliseconds),
@@ -382,54 +369,40 @@ session ID, connection ID, operation ID, the Entry (DN) to be deleted.
 The details for compare operations include how long the operation took (in milliseconds), date,
 session ID, connection ID, operation ID, and information about the compare operation.
 
+**Error Codes of Interest**
 
-Error Codes of Interest
+If specific error codes (or all error codes) associated with an operation type (bind, add, delete...etc.) have been configured for the report, they appear in the detailed section following the items that have exceeded the response time threshold. The details for bind operations
+include the result code, date, session ID, connection ID, operation ID, and the Bind DN (user the operation was issued by). Below is an example of a report details for bind operations that return an error code of interest.
 
-If specific error codes (or all error codes) associated with an operation type (bind, add,
-delete...etc.) have been configured for the report, they appear in the detailed section following
-the items that have exceeded the response time threshold. The details for bind operations
-include the result code, date, session ID, connection ID, operation ID, and the Bind DN (user the
-operation was issued by). Below is an example of a report details for bind operations that return
-an error code of interest.
+![An image showing ](Media/Image2.5.jpg)
 
 Figure 2. 5 : Example of Bind Operations Details in an Access Report
 
-```
-Note – If both the Response Time Exceeding and the Error Codes to Report
-options are unchecked for ALL operations (Bind, Base search, One Level
-search, Sub Tree search, Add, Modify, Delete and Compare), the detailed part
-of the report is not generated. If both Response Time Exceeding and the Error
-Codes to Report options are unchecked just for a specific kind of operation,
-the corresponding part of the report designated for the operation is empty.
-However, if one of these options is enabled for a specific operation and no
-operations of the type are found, the part is empty, but it is still included in the
-detailed report.
-```
+
+>**Note – If both the Response Time Exceeding and the Error Codes to Report options are unchecked for ALL operations (Bind, Base search, One Levelsearch, Sub Tree search, Add, Modify, Delete and Compare), the detailed part
+of the report is not generated. If both Response Time Exceeding and the ErrorCodes to Report options are unchecked just for a specific kind of operation,
+the corresponding part of the report designated for the operation is empty. However, if one of these options is enabled for a specific operation and no
+operations of the type are found, the part is empty, but it is still included in the detailed report.**
+
 ### Audit Report
 
 To generate the audit report:
 
-1. Go to the Main Control Panel -> Settings Tab -> Reporting section -> Audit Report sub-
-    section.
+1. Go to the Main Control Panel > Settings Tab > Reporting section > Audit Report sub-section.
 2. If needed, customize the parameters and click Save.
 3. Click on the Generate Report button. The Generate Audit Report window opens.
-4. You can specify a location for the reports to be stored in the Output Location field. The
-    default location for generated reports is <RLI_HOME>\reporting-birt\reports.
-    Alternatively, you can specify a network share path.
-
-
+4. You can specify a location for the reports to be stored in the Output Location field. The default location for generated reports is <RLI_HOME>\reporting-birt\reports. Alternatively, you can specify a network share path.
 5. Indicate a time period the report should include (start and end dates and times)
 6. To generate a report that aggregate statistics from all nodes in your RadiantOne cluster
     into a single report, check the Global Report box.
-7. To generate a report for a single node, indicate the server name in the Server Name
-    field.
+7. To generate a report for a single node, indicate the server name in the Server Name field.
 
-```
-IMPORTANT NOTE – if RadiantOne is deployed in a cluster, the default behavior of the
-Audit Report generator is to create a report for each node. The values entered in the
-Server Name field override checking the Global Report box.
-```
+><span style="color:red">**IMPORTANT NOTE – if RadiantOne is deployed in a cluster, the default behavior of the
+Audit Report generator is to create a report for each node. The values entered in the Server Name field override checking the Global Report box.**
+
 8. You can specify a session ID if needed.
+
+![An image showing ](Media/Image2.6.jpg)
 
 Figure 2. 6 : Generating an Audit Report for a Single Node
 
@@ -442,6 +415,7 @@ The session information is listed at the top of a section followed by the user D
 the operations. Next to the user DN is a table consisting of all types of operations performed by
 the user in addition to the total number of times that type of operation was performed.
 
+![An image showing ](Media/Image2.7.jpg)
 
 Figure 2. 7 : Example Contents of an Audit Report
 
@@ -452,25 +426,19 @@ report categorizes user activity based on groups.
 
 To generate the Group Audit report:
 
-1. Go to the Main Control Panel - > Settings Tab -> Reporting section -> Group Audit
-    Report sub-section.
+1. Go to the Main Control Panel > Settings Tab > Reporting section > Group Audit Report sub-section.
 2. On the right side, click on the Generate Report button.
 3. Specify a location for the reports to be stored.
 4. Enter the groups location (use a semi-colon to separate the list of group location DNs).
 5. Enter the attribute(s) containing the group members.
-6. Indicate whether or not to show members without any activity in the report. If you want a
-    report of a list of groups and the members of each group, you might not care if they have
-    performed any requests to RadiantOne. For example, in the Group Audit Report shown
-    below, all members of a group named Dynamic are shown in the report. Each member
-    has N/A for their stats as they have not performed any activity during the reporting
-    period defined.
+6. Indicate whether or not to show members without any activity in the report. If you want a report of a list of groups and the members of each group, you might not care if they have performed any requests to RadiantOne. For example, in the Group Audit Report shown below, all members of a group named Dynamic are shown in the report. Each member has N/A for their stats as they have not performed any activity during the reporting period defined.
 
+![An image showing ](Media/Image2.8.jpg)
 
-Figure 2. 8 : Example Group Audit Report Containing Members with No Activity
+Figure 2.8: Example Group Audit Report Containing Members with No Activity
 
 7. Enter a time period the report should include (start and end dates).
-8. Additional parameters like server name and session ID can also be included in the report
-    if needed.
+8. Additional parameters like server name and session ID can also be included in the report if needed.
 9. Click Generate.
 
 The group audit report is comprised of a summary of all types of operations performed, grouped
@@ -480,5 +448,6 @@ The session information is listed at the top of a section followed by the user D
 the operations. Next to the user DN is a table consisting of all types of operations performed by
 the user in addition to the total number of times that type of operation was performed.
 
+![An image showing ](Media/Image2.9.jpg)
 
 Figure 2. 9 : Example Contents of a Group Audit Report
