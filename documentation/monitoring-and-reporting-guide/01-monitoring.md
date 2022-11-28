@@ -1,3 +1,8 @@
+---
+title: Monitoring and Reporting Guide
+description: Monitoring and Reporting Guide
+---
+
 # RadiantOne Monitoring and Reporting Guide
 
 - [Chapter 1: Monitoring](01-monitoring.md)
