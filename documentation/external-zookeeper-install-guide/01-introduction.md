@@ -1,3 +1,8 @@
+---
+title: ZooKeeper Install Guide
+description: ZooKeeper Install Guide
+---
+
 # RadiantOne ZooKeeper Install Guide
 
 ## Chapter 1: Introduction
