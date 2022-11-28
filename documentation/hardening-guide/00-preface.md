@@ -1,3 +1,8 @@
+---
+title: Hardening Guide
+description: Hardening Guide
+---
+
 # RadiantOne Hardening Guide
 
 - [Preface](00-preface.md)
