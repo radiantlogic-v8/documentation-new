@@ -1,3 +1,8 @@
+---
+title: Architect Guide
+description: Architect Guide
+---
+
 # RadiantOne Architect Guide
 
 ## Preface
