@@ -1,3 +1,8 @@
+---
+title: Quick Start Guide
+description: Quick Start Guide
+---
+
 # RadiantOne Quick Start Guide
 
 ## Chapter 1: Getting Started with RadiantOne
