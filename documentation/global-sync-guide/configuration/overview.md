@@ -1,3 +1,8 @@
+---
+title: RadiantOne Global Synchronization Guide
+description: RadiantOne Global Synchronization Guide
+---
+
 # Overview
 
 The high-level steps to configure synchronization are the following:

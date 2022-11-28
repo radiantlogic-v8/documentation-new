@@ -1,3 +1,8 @@
+---
+title: RadiantOne Global Synchronization Guide
+description: RadiantOne Global Synchronization Guide
+---
+
 # Identity Linkage
 
 Identity linkage is used to match the target identity to the source identity. The attribute that is used in the identity linkage must uniquely identify the account in both the source and target. To configure the identity linkage:

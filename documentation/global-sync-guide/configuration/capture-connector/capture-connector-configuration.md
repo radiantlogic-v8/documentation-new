@@ -1,3 +1,8 @@
+---
+title: RadiantOne Global Synchronization Guide
+description: RadiantOne Global Synchronization Guide
+---
+
 # Capture Connector Configuration
 
 The capture connector configuration dictates the process for detecting changes on the source objects. The type of data source determines which capture methods are available.

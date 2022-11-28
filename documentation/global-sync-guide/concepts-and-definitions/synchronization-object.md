@@ -1,3 +1,8 @@
+---
+title: RadiantOne Global Synchronization Guide
+description: RadiantOne Global Synchronization Guide
+---
+
 # Synchronization Object
 
 Any objects listed in a catalog of a data source, can act as a synchronization object. The connector tracks all events on the object (for publishing to destination objects). The connector can also modify the states of the objects (attributes, identities) for updates, inserts, and deletes.

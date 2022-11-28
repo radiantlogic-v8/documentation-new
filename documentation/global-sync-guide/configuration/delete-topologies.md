@@ -1,3 +1,8 @@
+---
+title: RadiantOne Global Synchronization Guide
+description: RadiantOne Global Synchronization Guide
+---
+
 # Delete Topologies
 
 Topologies can be deleted from the Main Control Panel > Global Sync Tab by selecting the **trash can icon** next to the topology.

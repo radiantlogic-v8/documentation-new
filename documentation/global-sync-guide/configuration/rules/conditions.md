@@ -1,3 +1,8 @@
+---
+title: RadiantOne Global Synchronization Guide
+description: RadiantOne Global Synchronization Guide
+---
+
 # Conditions
 
 Conditions dictate the circumstances that invoke the actions associated with the rule. When conditions are met, the actions are processed.

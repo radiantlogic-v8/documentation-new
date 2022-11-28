@@ -1,3 +1,8 @@
+---
+title: RadiantOne Global Synchronization Guide
+description: RadiantOne Global Synchronization Guide
+---
+
 # Global Synchronization Guide {global-synchronization-guide}
 
 - [Introduction](introduction.md)

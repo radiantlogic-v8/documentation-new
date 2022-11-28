@@ -1,3 +1,8 @@
+---
+title: RadiantOne Global Synchronization Guide
+description: RadiantOne Global Synchronization Guide
+---
+
 # Variable Configuration
 
 Rule variables are configured in the RULE VARIABLES section of the Rule Set.

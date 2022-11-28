@@ -1,3 +1,8 @@
+---
+title: RadiantOne Global Synchronization Guide
+description: RadiantOne Global Synchronization Guide
+---
+
 # Database Connectors
 
 For database backends (JDBC-accessible), the change detection options are:

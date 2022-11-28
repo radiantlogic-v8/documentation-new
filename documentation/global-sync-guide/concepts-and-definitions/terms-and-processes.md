@@ -1,3 +1,8 @@
+---
+title: RadiantOne Global Synchronization Guide
+description: RadiantOne Global Synchronization Guide
+---
+
 # Terms and Processes
 
 This section describes important basic terms and processes used by Global Sync.
