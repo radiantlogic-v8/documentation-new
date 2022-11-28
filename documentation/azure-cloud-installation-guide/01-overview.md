@@ -1,3 +1,8 @@
+---
+title: Azure Cloud Installation Guide
+description: Azure Cloud Installation Guide
+---
+
 #RadiantOne Azure Cloud Installation Guide
 
 ## Chapter 1: Overview
