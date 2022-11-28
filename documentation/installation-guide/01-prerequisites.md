@@ -1,3 +1,8 @@
+---
+title: Installation Guide
+description: Installation Guide
+---
+
 # RadiantOne Installation Guide
 
 ## Chapter 1: Prerequisites
