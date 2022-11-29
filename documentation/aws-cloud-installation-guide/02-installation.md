@@ -1,3 +1,8 @@
+---
+title: AWS Cloud Installation Guide
+description: AWS Cloud Installation Guide
+---
+
 # Chapter 2: Installation
 
 Radiant Logic offers AWS Cloud Formation templates for the following types of RadiantOne architectures:
