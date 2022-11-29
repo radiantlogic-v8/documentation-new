@@ -1,3 +1,8 @@
+---
+title: Command Line Configuration Guide
+description: Command Line Configuration Guide
+---
+
 - [Introduction](01-introduction.md)
 - [General Commands](02-general-commands.md)
 - [Global Configuration Commands](03-global-configuration-commands.md)

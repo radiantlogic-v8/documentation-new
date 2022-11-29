@@ -1,3 +1,8 @@
+---
+title: Command Line Configuration Guide
+description: Command Line Configuration Guide
+---
+
 # Chapter 3: Global Configuration Commands
 
 Many properties can be modified manually from the Main Control Panel > Zookeeper tab (edit mode).

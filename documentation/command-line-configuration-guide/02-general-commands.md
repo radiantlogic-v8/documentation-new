@@ -1,3 +1,8 @@
+---
+title: Command Line Configuration Guide
+description: Command Line Configuration Guide
+---
+
 # Chapter 2: General Commands
 
 This chapter introduces the help and execfile commands.
