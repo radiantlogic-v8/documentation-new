@@ -1,3 +1,8 @@
+---
+title: Operations Guide
+description: Operations Guide
+---
+
 # Chapter 5: Inter Cluster Management
 
 ## Migrating Configuration Changes Across Existing Environments
@@ -91,15 +96,17 @@ o=companydirectory [NAMING] OK
 After importing the configuration onto the production server, the following items should be
 reviewed to see if they are applicable to the configuration, as they must be addressed manually.
 
-- [Update Global Settings](#update-global-settings)
-
-- [Configure and Initialize Persistent Cache](#configure-and-initialize-persistent-cache)
-
-- [Managing Server Certificates](#managing-server-certificate)
-
-- [Installing Services](#installing-servers-to-run-as-services)
-
-- [Managing Interception Scripts and Custom Object Scripts](#managing-interception-scripts-and-custom-object-scripts)
+- [Chapter 5: Inter Cluster Management](#chapter-5-inter-cluster-management)
+  - [Migrating Configuration Changes Across Existing Environments](#migrating-configuration-changes-across-existing-environments)
+    - [Items Requiring Manual Migration](#items-requiring-manual-migration)
+    - [Update Global Settings](#update-global-settings)
+      - [Configure and Initialize Persistent Cache](#configure-and-initialize-persistent-cache)
+      - [Managing Server Certificate](#managing-server-certificate)
+      - [Installing Servers to Run as Services](#installing-servers-to-run-as-services)
+      - [Managing Interception Scripts and Custom Object Scripts](#managing-interception-scripts-and-custom-object-scripts)
+  - [Detecting Differences Across Replicated RadiantOne Universal Directory (HDAP) Stores](#detecting-differences-across-replicated-radiantone-universal-directory-hdap-stores)
+    - [Usage](#usage)
+    - [Command Arguments](#command-arguments)
  
 ### Update Global Settings
 

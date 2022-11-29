@@ -1,3 +1,8 @@
+---
+title: Operations Guide
+description: Operations Guide
+---
+
 # Chapter 2: Cluster Management
 
 ## Expert Mode

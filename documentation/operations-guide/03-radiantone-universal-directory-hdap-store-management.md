@@ -1,3 +1,8 @@
+---
+title: Operations Guide
+description: Operations Guide
+---
+
 # Chapter 3: RadiantOne Universal Directory (HDAP) Store Management
 
 ## Re-Indexing
