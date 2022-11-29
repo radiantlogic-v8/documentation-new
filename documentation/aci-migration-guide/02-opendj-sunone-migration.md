@@ -1,3 +1,8 @@
+---
+title: ACI Migration Guide
+description: ACI Migration Guide
+---
+
 #  Chapter 2: OpenDJ, SunOne/Oracle ODSEE, Novell eDirectory, and RadiantOne v6 ACI Migration
 
 This chapter describes the process of migrating OpenDJ, SunOne/Oracle ODSEE and RadiantOne v6 ACI to a format that is compatible with RadiantOne v7. The migration tool that performs these functions, aciUtils.bat (.sh on Unix systems), is located at <RLI_HOME>\bin\advanced. Parameters are written in a command line.

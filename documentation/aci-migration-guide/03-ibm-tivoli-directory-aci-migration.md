@@ -1,3 +1,8 @@
+---
+title: ACI Migration Guide
+description: ACI Migration Guide
+---
+
 # Chapter 3: IBM Tivoli Directory ACI Migration
 
 This chapter describes how to migrate IBM Tivoli Directory ACI to RadiantOne v7. Starting in RadiantOne v7.2, the migration tool, ibmAciMigration.bat (.sh on Unix systems), migrates IBM Tivoli Directory ACI to RadiantOne v7 ACI. This tool is located at <RLI_HOME>\bin\advanced.
