@@ -1,3 +1,8 @@
+---
+title: Quick Start Guide
+description: Quick Start Guide
+---
+
 # Chapter 2: Understanding Default Configuration and Samples
 
 ## Default Naming Contexts
