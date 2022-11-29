@@ -1,3 +1,8 @@
+---
+title: Architect Guide
+description: Architect Guide
+---
+
 # Chapter 4 - Common Use Cases
 
 RadiantOne is the platform for all identity-driven projects. Powering identity-driven projects with the right identity information introduces several critical integration hurdles that must be overcome prior to deployment. These hurdles have been discussed throughout this guide and are summarized below.

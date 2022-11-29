@@ -1,3 +1,8 @@
+---
+title: Architect Guide
+description: Architect Guide
+---
+
 # Chapter 1 - RadiantOne Federated Identity Engine
 
 ## Overview

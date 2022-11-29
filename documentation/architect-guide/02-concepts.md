@@ -1,3 +1,7 @@
+---
+title: Architect Guide
+description: Architect Guide
+---
 
 # Chapter 2 – Concepts
 

@@ -1,3 +1,8 @@
+---
+title: Architect Guide
+description: Architect Guide
+---
+
 # Chapter 3 – Virtual View Design
 
 ## Staging Backend Data

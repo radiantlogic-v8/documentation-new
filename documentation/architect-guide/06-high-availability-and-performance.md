@@ -1,3 +1,8 @@
+---
+title: Architect Guide
+description: Architect Guide
+---
+
 # Chapter 6 - High Availability and Performance
 
 ## High Availability and Fault Tolerance
