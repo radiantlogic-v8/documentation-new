@@ -1,3 +1,8 @@
+---
+title: Hardening Guide
+description: Hardening Guide
+---
+
 - [Preface](00-preface.md)
 - [Securing RadiantOne Configuration and Administration](01-securing-radiantone-configuration-and-administration.md)
 

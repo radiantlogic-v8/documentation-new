@@ -1,3 +1,8 @@
+---
+title: Hardening Guide
+description: Hardening Guide
+---
+
 # Chapter 4: Recommendations for Securing Data in Transit - SSL/TLS Settings
 
 RadiantOne supports SSL/TLS and StartTLS to encrypt communication with clients and for communication to backend services.

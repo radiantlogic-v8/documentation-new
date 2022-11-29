@@ -1,3 +1,8 @@
+---
+title: Hardening Guide
+description: Hardening Guide
+---
+
 # Chapter 2: Client Access Limits and Regulation
 
 ## Access Limits

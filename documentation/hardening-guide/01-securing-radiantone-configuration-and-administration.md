@@ -1,3 +1,8 @@
+---
+title: Hardening Guide
+description: Hardening Guide
+---
+
 # Chapter 1: Securing RadiantOne Configuration and Administration
 
 There are several options available for securing the RadiantOne configuration and administration. Firewalls can be configured to allow only permitted traffic to pass through. Intrusion Prevention Systems (IPS) can detect and identify anomalous behaviors. Using secure channels and strong authentication, Virtual Private Networks (VPNs) help secure the network perimeter. Logical Unit Number masking and zoning is an authorization process that makes the unique identifier of a storage device that executes input/output commands available to some hosts and unavailable to others.

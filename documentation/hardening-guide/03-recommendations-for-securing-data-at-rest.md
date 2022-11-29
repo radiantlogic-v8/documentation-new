@@ -1,3 +1,8 @@
+---
+title: Hardening Guide
+description: Hardening Guide
+---
+
 # Chapter 3: Recommendations for Securing Data at Rest
 
 ## Delete Global Read Access and Assign Finer-Grained Access Controls
