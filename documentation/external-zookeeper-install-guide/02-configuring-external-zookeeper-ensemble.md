@@ -1,3 +1,8 @@
+---
+title: ZooKeeper Install Guide
+description: ZooKeeper Install Guide
+---
+
 # Chapter 2: Configuring External ZooKeeper Ensemble
 
 For HA a minimum of three Zookeeper nodes is required.

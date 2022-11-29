@@ -1,3 +1,8 @@
+---
+title: ZooKeeper Install Guide
+description: ZooKeeper Install Guide
+---
+
 # Chapter 4: Testing a ZooKeeper Cluster
 
 Once the Zookeeper ensemble and RadiantOne FID nodes are installed, you can test access to the ZooKeeper cluster.

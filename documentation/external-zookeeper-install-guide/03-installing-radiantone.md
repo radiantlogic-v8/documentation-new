@@ -1,3 +1,8 @@
+---
+title: ZooKeeper Install Guide
+description: ZooKeeper Install Guide
+---
+
 # Chapter 3: Installing RadiantOne
 
 Once all Zookeeper nodes have been configured and started, install RadiantOne. Details about the RadiantOne installation process can be found in the RadiantOne Installation Guide.
