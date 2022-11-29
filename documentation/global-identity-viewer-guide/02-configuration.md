@@ -1,3 +1,8 @@
+---
+title: Global Identity Viewer
+description: Global Identity Viewer
+---
+
 # Chapter 2: Configuration
 
 Before accessing the Global Identity Viewer, several preliminary tasks must be completed.

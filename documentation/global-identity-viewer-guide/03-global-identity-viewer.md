@@ -1,3 +1,8 @@
+---
+title: Global Identity Viewer
+description: Global Identity Viewer
+---
+
 # Chapter 3: Global Identity Viewer
 
 After the configuration outlined in Chapter 2 is completed, the Global Identity Viewer is accessible from the RadiantOne Insights, Reports and Administration Console. Any user that is a member of RadiantOne Directory Administrator, Global ID Viewer Design, Global ID Viewer Write or Read Only roles can log into the Insights, Reports and Administration Console and access the Global Identity Viewer. For details on the RadiantOne delegated admin roles, see the RadiantOne System Administration Guide.
