@@ -1,3 +1,8 @@
+---
+title: Installation Guide
+description: Installation Guide
+---
+
 # Chapter 2: Installation
 
 Apache ZooKeeper is a centralized service for maintaining configuration information across a RadiantOne cluster. Although RadiantOne comes bundled with ZooKeeper to simplify installation in Dev/QA environments, it is discouraged to use this architecture in production. Shutting down a redundant RadiantOne node (e.g. for upgrading) also shuts down ZooKeeper on this server. Because a ZooKeeper ensemble must have a quorum of more than half its servers running at any given time, this can be a problem for cluster integrity and stability. The solution is to deploy ZooKeeper in a separate, external ensemble. Other advantages of deploying an external ZooKeeper ensemble are outlined in the RadiantOne External ZooKeeper Install guide.

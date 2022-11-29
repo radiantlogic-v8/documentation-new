@@ -1,3 +1,8 @@
+---
+title: Installation Guide
+description: Installation Guide
+---
+
 # Chapter 3: Post Installation
 
 This chapter describes applying your license key, verifying the installation of RadiantOne, and troubleshooting.
