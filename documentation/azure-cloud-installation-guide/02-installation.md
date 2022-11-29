@@ -1,3 +1,8 @@
+---
+title: Azure Cloud Installation Guide
+description: Azure Cloud Installation Guide
+---
+
 # Chapter 2: Installation
 
 Radiant Logic offers templates for the following types of RadiantOne architectures:

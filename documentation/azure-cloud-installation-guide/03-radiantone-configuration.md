@@ -1,3 +1,8 @@
+---
+title: Azure Cloud Installation Guide
+description: Azure Cloud Installation Guide
+---
+
 # Chapter 3: RadiantOne Configuration
 
 ## RadiantOne Nodes Running on Linux
