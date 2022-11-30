@@ -3,329 +3,336 @@ title: Command Line Configuration Guide
 description: Command Line Configuration Guide
 ---
 
-## Chapter 18: ORX and DVX Commands
+# Chapter 18: ORX and DVX Commands
 
-Schema files containing metadata and mappings associated with backend data sources are
-ORX files (names have a .orx extension). Virtual directory view files describing hierarchies
-based on schema metadata associated with backend data sources are DVX files (names have a
-.dvx extension). The list of .orx and .dvx files on a server can be viewed from the Main Control
-Panel -> Context Builder tab -> Schema Manager -> Open menu and View Designer -> Open
-menu. Viewing the connection information, testing the connection and changing the associated
-data source can be accomplished from Context Builder.
+Schema files containing metadata and mappings associated with backend data sources are ORX files (names have a .orx extension). Virtual directory view files describing hierarchies based on schema metadata associated with backend data sources are DVX files (names have a .dvx extension). The list of .orx and .dvx files on a server can be viewed from the Main Control Panel > Context Builder tab > Schema Manager > Open menu and View Designer > Open menu. Viewing the connection information, testing the connection and changing the associated data source can be accomplished from Context Builder.
 
-As an alternative, you can list the files, print the connection information associated with the files,
-test the connection to the data source associated with the files and change the data source
-name and/or base DN of an existing file using <RLI_HOME>/bin/vdsconfig and the following
-commands.
+![An image showing ](Media/Image18.1.jpg)
 
-### list-orx
+As an alternative, you can list the files, print the connection information associated with the files, test the connection to the data source associated with the files and change the data source name and/or base DN of an existing file using <RLI_HOME>/bin/vdsconfig and the following commands.
+
+## list-orx
 
 This command displays a list of all existing orx files.
 
-Usage:
-list-orx
+**Usage:**
+<br>list-orx
 
-Command Arguments:
-No command arguments are required. The command lists all existing orx files for all types of
-backends (database, custom, ldap).
+**Command Arguments:**
 
-REST (ADAP) Example
+No command arguments are required. The command lists all existing orx files for all types of backends (database, custom, ldap).
+
+**REST (ADAP) Example**
+
 In the following example, a request is made to list all existing .orx files.
 
 ```
 https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=list-orx
 ```
 
-### list-dvx
+## list-dvx
 
 This command displays a list of all existing dvx files.
 
-Usage:
-list-dvx
+**Usage:**
+<br>list-dvx
 
-Command Arguments:
-No command arguments are required. The command lists all existing dvx files for all types of
-backends (database, custom, ldap).
+**Command Arguments:**
 
-REST (ADAP) Example
+No command arguments are required. The command lists all existing dvx files for all types of backends (database, custom, ldap).
+
+**REST (ADAP) Example**
+
 In the following example, a request is made to display a list of all .dvx files.
 
 ```
 https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=list-dvx
 ```
-### print-connection
 
-Prints the connection information (to the command line interface) associated with a given orx or
-dvx file.
+## print-connection
 
-Usage:
-print-connection -name <name of dvx or orx> [-dvx] [-instance <instance>] [-orx]
+Prints the connection information (to the command line interface) associated with a given orx or dvx file.
 
-Command Arguments:
+**Usage:**
+<br>`print-connection -name <name of dvx or orx> [-dvx] [-instance <instance>] [-orx]`
 
-- name <name of dvx or orx>
-[required] The name of the dvx or orx file that you want to print the connection for.
-- dvx
-Indicates that the command should work with a dvx file.
-- instance <instance>
-The name of the RadiantOne instance. If not specified, the default instance named vds_server
-is used.
-- orx
-Indicates that the command should work with an orx file.
+**Command Arguments:**
 
-REST (ADAP) Example
-In the following example, a request is made to display connection information about address
-book.dvx.
+**`- name <name of dvx or orx>`**
+<br>[required] The name of the dvx or orx file that you want to print the connection for.
+
+**`- dvx`**
+<br>Indicates that the command should work with a dvx file.
+
+**`- instance <instance>`**
+<br>The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
+
+**`- orx`**
+<br>Indicates that the command should work with an orx file.
+
+**REST (ADAP) Example**
+
+In the following example, a request is made to display connection information about address book.dvx.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=print-
-connection&name=address book&dvx
+https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=print-connection&name=address book&dvx
 ```
 
-### test-connection
+## test-connection
 
 Tests the connection to the data source associated with a given orx or dvx file.
 
-Usage:
-test-connection -name <name of dvx or orx> [-dvx] [-instance <instance>] [-orx]
+**Usage:**
+<br>`test-connection -name <name of dvx or orx> [-dvx] [-instance <instance>] [-orx]`
 
-Command Arguments:
+**Command Arguments:**
 
-- name <name of dvx or orx>
-[required] The name of the dvx or orx file that you want to test the connection for.
-- dvx
-Indicates that the command should work with a dvx file.
-- instance <instance>
-The name of the RadiantOne instance. If not specified, the default instance named vds_server
-is used.
-- orx
-Indicates that the command should work with an orx file.
+**`- name <name of dvx or orx>`**
+<br>[required] The name of the dvx or orx file that you want to test the connection for.
 
-REST (ADAP) Example
-In the following example, a request is made to test the connection to the data source associated
-with dc_db.orx
+**`- dvx`**
+<br>Indicates that the command should work with a dvx file.
+
+**`- instance <instance>`**
+<br>The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
+
+**`- orx`**
+<br>Indicates that the command should work with an orx file.
+
+**REST (ADAP) Example**
+
+In the following example, a request is made to test the connection to the data source associated with dc_db.orx
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=test-
-connection&name=dc_db&orx
+https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=test-connection&name=dc_db&orx
 ```
-### set-connection
 
-Allows you to change the data source name associated with an orx or dvx file. For files
-associated with LDAP backends, you can also change the base DN associated with the data
-source.
+## set-connection
 
-Usage:
-set-connection -name <name of dvx or orx> [-basedn <basedn>] [-datasourcename
-<datasourcename>] [-dvx] [-instance <instance>] [-orx]
+Allows you to change the data source name associated with an orx or dvx file. For files associated with LDAP backends, you can also change the base DN associated with the data source.
 
-Command Arguments:
+**Usage:**
+<br>`set-connection -name <name of dvx or orx> [-basedn <basedn>] [-datasourcename <datasourcename>] [-dvx] [-instance <instance>] [-orx]`
 
-- name <name of dvx or orx>
-[required] The name of the dvx or orx file that you want to modify the data source and/or base
+**Command Arguments:**
+
+**`- name <name of dvx or orx>`**
+<br>[required] The name of the dvx or orx file that you want to modify the data source and/or base
 DN for.
 
+**`- basedn <basedn>`**
+<br> The new base DN to set for the orx or dvx file. This option only applies to schemas and views associated with LDAP backends.
+**`- datasourcename <datasourcename>`**
+<br>The new data source name to set for the orx/dvx file.
 
-- basedn <basedn>
-The new base DN to set for the orx or dvx file. This option only applies to schemas and views
-associated with LDAP backends.
-- datasourcename <datasourcename>
-The new data source name to set for the orx/dvx file.
-- dvx
-Indicates that the command should work with a dvx file.
-- instance <instance>
-The name of the RadiantOne instance. If not specified, the default instance named vds_server
-is used.
-- orx
-Indicates that the command should work with an orx file.
+**`- dvx`**
+<br>Indicates that the command should work with a dvx file.
 
-REST (ADAP) Example
-In the following example, a request is made to set the name of the data source for
-mydirectory.dvx to vdsha.
+**`- instance <instance>`**
+<br>The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
+
+**`- orx`**
+<br>Indicates that the command should work with an orx file.
+
+**REST (ADAP) Example**
+
+In the following example, a request is made to set the name of the data source for mydirectory.dvx to vdsha.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=set-
-connection&name=mydirectory&dvx=&datasourcename=vdsha
+https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=set-connection&name=mydirectory&dvx=&datasourcename=vdsha
 ```
-### extract-orx
+
+## extract-orx
 
 This command extracts an LDAP/database schema to a new .orx file.
 
-Usage:
-extract-orx -datasourcename <datasourcename> -name <name> -objects <objects>
+**Usage:**
+<br>`extract-orx -datasourcename <datasourcename> -name <name> -objects <objects> - type <type> [-basedn <basedn>] [-dbschema <dbschema>] [-instance <instance>] [-overwrite]`
 
-- type <type> [-basedn <basedn>] [-dbschema <dbschema>] [-instance <instance>] [-overwrite]
+**Command Arguments:**
 
-Command Arguments:
+**`- datasourcename <datasourcename>`**
+<br>[required] The name of the data source to use for schema extraction.
 
-- datasourcename <datasourcename>
-[required] The name of the data source to use for schema extraction.
-- name <name>
-[required] The name of the new .orx file.
-- objects <objects>
-[required] The list of objects to extract. The value ALL indicates all schema objects.
-- type <type>
-[required] The type of schema (orx). Accepted values are: ldap, database.
+**`- name <name>`**
+<br>[required] The name of the new .orx file.
 
+**`- objects <objects>`**
+<br>[required] The list of objects to extract. The value ALL indicates all schema objects.
 
-- basedn <basedn>
-When extracting a LDAP schema, use this option if you want to overwrite the base DN.
-- dbschema <dbschema>
-When extracting a database schema, use this option to specify a database schema name.
-- instance <instance>
-The name of the RadiantOne instance. If not specified, the default instance named vds_server
-is used.
-- overwrite
-Indicates that the command is allowed to overwrite existing files.
+**`- type <type>`**
+<br>[required] The type of schema (orx). Accepted values are: ldap, database.
 
-REST (ADAP) Example
+**`- basedn <basedn>`**
+<br>When extracting a LDAP schema, use this option if you want to overwrite the base DN.
+
+**`- dbschema <dbschema>`**
+<br>When extracting a database schema, use this option to specify a database schema name.
+
+**`- instance <instance>`**
+<br>The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
+
+**`- overwrite`**
+<br>Indicates that the command is allowed to overwrite existing files.
+
+**REST (ADAP) Example**
 In the following example, a request is made to extract an LDAP schema to a new .orx file.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=extract-
-orx&datasourcename=vdsha&name=neworx&objects=all&type=ldap&overwrite
+https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=extract-orx&datasourcename=vdsha&name=neworx&objects=all&type=ldap&overwrite
 ```
-### list-orx-object
+
+## list-orx-object
 
 This command prints out the list of objects in a schema(.orx) file.
 
-Usage:
-list-orx-object -name <name> -type <type> [-instance <instance>] [-objects] [-relations] [-views]
+**Usage:**
+<br>`list-orx-object -name <name> -type <type> [-instance <instance>] [-objects] [-relations] [-views]`
 
-Command Arguments:
+**Command Arguments:**
 
-- name <name>
-[required] The name of the file (.dvx or .orx) used with the command.
-- type <type>
-[required] The type of schema (orx). Accepted values are: ldap, database.
-- instance <instance>
-The name of the RadiantOne instance. If not specified, the default instance named vds_server
-is used.
-- objects
-Indicates that the command should print out all the objects in the schema of type 'OBJECT' or
-'TABLE'.
-- relations
-Indicates that the command should print out all the objects in the schema of type
+**`- name <name>`**
+<br>[required] The name of the file (.dvx or .orx) used with the command.
+
+**`- type <type>`**
+<br>[required] The type of schema (orx). Accepted values are: ldap, database.
+
+**`- instance <instance>`**
+<br>The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
+
+**`- objects`**
+<br>Indicates that the command should print out all the objects in the schema of type 'OBJECT' or 'TABLE'.
+
+**`- relations`**
+<br>Indicates that the command should print out all the objects in the schema of type
 'RELATIONSHIP'.
 
+**`- views`**
+<br>Indicates that the command should print out all the objects in the schema of type 'VIEW'.
 
-- views
-Indicates that the command should print out all the objects in the schema of type 'VIEW'.
+**REST (ADAP) Example**
 
-REST (ADAP) Example
 In the following example, a request is made to print a list of objects in a schema file.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=list-orx-
-object&name=neworx&type=ldap&objects
+https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=list-orx-object&name=neworx&type=ldap&objects
 ```
-### get-orx-object-prop
+
+## get-orx-object-prop
 
 This command prints out the properties for an object in a schema(.orx) file.
 
-Usage:
-get-orx-object-prop -name <name> -object <object> -type <type> [-basetable]
-[-instance <instance>] [-objectclass] [-pkey] [-rdnattr] [-rdnname]
+**Usage:**
+<br>`get-orx-object-prop -name <name> -object <object> -type <type> [-basetable] [-instance <instance>] [-objectclass] [-pkey] [-rdnattr] [-rdnname]`
 
-Command Arguments:
+**Command Arguments:**
 
-- name <name>
-[required] The name of the file (.dvx or .orx) used with the command.
-- object <object>
-[required] The name of the object in the ORX.
-- type <type>
-[required] The type of schema (orx). Accepted values are: ldap, database.
-- basetable
-The base table property for the object.
-- instance <instance>
-The name of the RadiantOne instance. If not specified, the default instance named vds_server
-is used.
-- objectclass
-The LDAP Object Class for the object.
-- pkey
-The list of primary key attribute(s) for the object.
-- rdnattr
-The attribute(s) that will be used for the RDN value for the object
+**`- name <name>`**
+<br>[required] The name of the file (.dvx or .orx) used with the command.
 
+**`- object <object>`**
+<br>[required] The name of the object in the ORX.
+
+**`- type <type>`**
+<br>[required] The type of schema (orx). Accepted values are: ldap, database.
+
+**`- basetable`**
+<br>The base table property for the object.
+
+**`- instance <instance>`**
+<br>The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
+
+**`- objectclass`**
+<br>The LDAP Object Class for the object.
+
+**`- pkey`**
+<br>The list of primary key attribute(s) for the object.
+
+**`- rdnattr`**
+<br>The attribute(s) that will be used for the RDN value for the object
 
 - rdnname
-The name of the RDN for the object.
+<br>The name of the RDN for the object.
 
-REST (ADAP) Example
-In the following example, a request is made to print the properties for an object in a
-schema(.orx) file
+**REST (ADAP) Example**
+
+In the following example, a request is made to print the properties for an object in a schema(.orx) file.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=get-orx-object-
-prop&name=neworx&object=ldapserver&type=ldap
+https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=get-orx-object-prop&name=neworx&object=ldapserver&type=ldap
 ```
-### set-orx-object-prop
+## set-orx-object-prop
 
 This command sets properties for an object in a schema(.orx) file.
 
-Usage:
-set-orx-object-prop -name <name> - object <object> -type <type> [-basetable <basetable>]
-[-instance <instance>] [-objectclass <objectclass>] [-pkey <pkey>] [-rdnattr <rdnattr>]
-[-rdnname <rdnname>]
+**Usage:**
+<br>`set-orx-object-prop -name <name> - object <object> -type <type> [-basetable <basetable>] [-instance <instance>] [-objectclass <objectclass>] [-pkey <pkey>] [-rdnattr <rdnattr>] [-rdnname <rdnname>]`
 
-Command Arguments:
+**Command Arguments:**
 
-- name <name>
-[required] The name of the file (.dvx or .orx) used with the command.
-- object <object>
-[required] The name of the object in the ORX.
-- type <type>
-[required] The type of schema (orx). Accepted values are: ldap, database.
-- basetable <basetable>
-The base table property for the object.
-- instance <instance>
-The name of the RadiantOne instance. If not specified, the default instance named vds_server
-is used.
-- objectclass <objectclass>
-The LDAP Object Class for the object.
-- pkey <pkey>
-The list of primary key attribute(s) for the object.
-- rdnattr <rdnattr>
-The attribute(s) that will be used for the RDN value for the object
+**`- name <name>`**
+<br>[required] The name of the file (.dvx or .orx) used with the command.
 
+**`- object <object>`**
+<br>[required] The name of the object in the ORX.
 
-- rdnname <rdnname>
-The name of the RDN for the object.
+**`- type <type>`**
+<br>[required] The type of schema (orx). Accepted values are: ldap, database.
 
-REST (ADAP) Example
+**`- basetable <basetable>`**
+<br>The base table property for the object.
+
+**`- instance <instance>`**
+<br>The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
+
+**`- objectclass <objectclass>`**
+<br>The LDAP Object Class for the object.
+
+**`- pkey <pkey>`**
+<br>The list of primary key attribute(s) for the object.
+
+**`- rdnattr <rdnattr>`**
+<br>The attribute(s) that will be used for the RDN value for the object
+
+**`- rdnname <rdnname>`**
+<br>The name of the RDN for the object.
+
+**REST (ADAP) Example**
+
 In the following example, a request is made to set properties for an object in a schema file.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=set-orx-object-
-prop&name=neworx&object=ldapserver&type=ldap&pkey=cn
+https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=set-orx-object-prop&name=neworx&object=ldapserver&type=ldap&pkey=cn
 ```
-### list-orx-attr
+
+## list-orx-attr
 
 This command prints out the list of attributes for an object in a schema(.orx) file.
 
-Usage:
-list-orx-attr -name <name> -object <object> -type <type> [-instance <instance>] [-properties]
+**Usage:**
+<br>`list-orx-attr -name <name> -object <object> -type <type> [-instance <instance>] [-properties]`
 
-Command Arguments:
+**Command Arguments:**
 
-- name <name>
-[required] The name of the file (.dvx or .orx) used with the command.
-- object <object>
-[required] The name of the object in the ORX.
-- type <type>
-[required] The type of schema (orx). Accepted values are: ldap, database.
-- instance <instance>
-The name of the RadiantOne instance. If not specified, the default instance named vds_server
-is used.
-- properties
-Indicates that the command should print out the properties of the attributes in addition to the
-attribute names.
+**`- name <name>`**
+<br>[required] The name of the file (.dvx or .orx) used with the command.
 
-REST (ADAP) Example
-In the following example, a request is made to print a list of attributes for an object in a schema
-file.
+**`- object <object>`**
+<br>[required] The name of the object in the ORX.
+
+**`- type <type>`**
+<br>[required] The type of schema (orx). Accepted values are: ldap, database.
+
+**`- instance <instance>`**
+<br>The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
+
+**`- properties
+<br>Indicates that the command should print out the properties of the attributes in addition to the attribute names.
+
+**REST (ADAP) Example**
+
+In the following example, a request is made to print a list of attributes for an object in a schema file.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=list-orx-
-attr&name=neworx&object=ldapserver&type=ldap&properties
+https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=list-orx-attr&name=neworx&object=ldapserver&type=ldap&properties
 ```
