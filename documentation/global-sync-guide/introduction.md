@@ -1,6 +1,6 @@
 ---
-title: RadiantOne Global Synchronization Guide
-description: RadiantOne Global Synchronization Guide
+title: Introduction
+description: Introduction
 ---
 
 # Introduction
@@ -25,7 +25,7 @@ See the figure below for a high-level architecture of the synchronization proces
 <a name="global-synchronization-architecture-figure"></a>
 ![A flow chart depicting the high-level architecture of the synchronization process](./media/image2.png)
 
-## How this Manual is Organized
+## How this manual is organized
 
 This guide is broken down into the following chapters:
 
@@ -45,11 +45,11 @@ This chapter describes the upload process for scenarios where source entries mus
 
 This chapter describes a typical deployment architecture and how high availability is achieved. Details about managing synchronization, including where to find synchronization logs, how to suspend synchronization pipelines, and monitor synchronization activities can also be found in this chapter.
 
-## Technical Support
+## Technical support
 
-Refer to the [Technical Support Guide](common-info/technical-support.md) for more information.
+Refer to the [Technical support guide](common-info/technical-support.md) for more information.
 
-## Expert Mode
+## Expert mode
 
 Some settings in the Main Control Panel are accessible only in Expert Mode. To switch to Expert Mode, select the **Logged in as**, (username) drop-down menu and select **Expert Mode**.
 

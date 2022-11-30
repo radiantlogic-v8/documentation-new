@@ -1,45 +1,45 @@
 ---
-title: RadiantOne Global Synchronization Guide
-description: RadiantOne Global Synchronization Guide
+title: RadiantOne Global Synchronization guide
+description: RadiantOne Global Synchronization guide
 ---
 
-# Global Synchronization Guide {global-synchronization-guide}
+# RadiantOne Global Synchronization guide {radiantone-global-synchronization-guide}
 
 - [Introduction](introduction.md)
-- Concepts and Definitions {#concepts-and-definitions}
-  - [Terms and Processes](concepts-and-definitions/terms-and-processes.md)
-  - [Data Source](concepts-and-definitions/data-source.md)
-  - [Synchronization Object](concepts-and-definitions/synchronization-object.md)
+- Concepts and definitions {#concepts-and-definitions}
+  - [Terms and processes](concepts-and-definitions/terms-and-processes.md)
+  - [Data source](concepts-and-definitions/data-source.md)
+  - [Synchronization object](concepts-and-definitions/synchronization-object.md)
   - [Topology](concepts-and-definitions/topology.md)
-  - [Sync Engine and Transformation](concepts-and-definitions/sync-engine-and-transformation.md)
-  - [Agents and Connectors](concepts-and-definitions/agents-and-connectors.md)
+  - [Sync Engine and transformation](concepts-and-definitions/sync-engine-and-transformation.md)
+  - [Agents and connectors](concepts-and-definitions/agents-and-connectors.md)
   - [Queues](concepts-and-definitions/queues.md)
-  - [Password Synchronization](concepts-and-definitions/password-synchronization.md)
+  - [Password synchronization](concepts-and-definitions/password-synchronization.md)
 - Configuration {#configuration}
   - [Overview](configuration/overview.md)
-  - [Data Sources](configuration/data-sources.md)
-  - [Synchronization Topologies](configuration/synchronization-topologies.md)
+  - [Data sources](configuration/data-sources.md)
+  - [Synchronization topologies](configuration/synchronization-topologies.md)
   - Capture Connector {#capture-connector}
-    - [Capture Connector Configuration](configuration/capture-connector/capture-connector-configuration.md)
-    - [Database Connectors](configuration/capture-connector/database-connectors.md)
-    - [Directory Connectors](configuration/capture-connector/directory-connectors.md)
-    - [Custom Data Sources](configuration/capture-connector/custom-data-sources.md)
+    - [Capture connector configuration](configuration/capture-connector/capture-connector-configuration.md)
+    - [Database connectors](configuration/capture-connector/database-connectors.md)
+    - [Directory connectors](configuration/capture-connector/directory-connectors.md)
+    - [Custom data sources](configuration/capture-connector/custom-data-sources.md)
   - Transformation {#transformation}
-    - [Transformation Configuration](configuration/transformation/transformation-configuration.md)
-    - [Attribute Mappings](configuration/transformation/attribute-mappings.md)
+    - [Transformation configuration](configuration/transformation/transformation-configuration.md)
+    - [Attribute mappings](configuration/transformation/attribute-mappings.md)
   - [Script](configuration/script.md)
-  - [Apply Connector](configuration/apply-connector.md)
+  - [Apply connector](configuration/apply-connector.md)
   - Rules {#rules}
     - [Overview](configuration/rules/overview.md)
-    - [Rule Configuration](configuration/rules/rule-configuration.md)
-    - [Variable Configuration](configuration/rules/variable-configuration.md)
-    - [Identity Linkage](configuration/rules/identity-linkage.md)
-    - [Target DN Variable](configuration/rules/target-dn-variable.md)
-    - [Target Event Type](configuration/rules/target-event-type.md)
+    - [Rule configuration](configuration/rules/rule-configuration.md)
+    - [Variable configuration](configuration/rules/variable-configuration.md)
+    - [Identity linkage](configuration/rules/identity-linkage.md)
+    - [Target DN variable](configuration/rules/target-dn-variable.md)
+    - [Target event type](configuration/rules/target-event-type.md)
     - [Conditions](configuration/rules/conditions.md)
     - [Actions](configuration/rules/actions.md)
-    - [Test Rules](configuration/rules/test-rules.md)
-  - [Advanced Options](configuration/advanced-options.md)
-  - [Delete Topologies](configuration/delete-topologies.md)
+    - [Test rules](configuration/rules/test-rules.md)
+  - [Advanced options](configuration/advanced-options.md)
+  - [Delete topologies](configuration/delete-topologies.md)
 - [Uploads](uploads.md)
 - [Deployment](deployment.md)

@@ -1,13 +1,13 @@
 ---
-title: RadiantOne Global Synchronization Guide
-description: RadiantOne Global Synchronization Guide
+title: Uploads
+description: Uploads
 ---
 
 # Uploads
 
 If the target/destination needs populated with entries before starting synchronization, perform an initial upload. Uploads can be performed from the Main Control Panel or from a command line utility.
 
-## Upload from the Main Control Panel
+## Upload from the main control panel
 
 1. Go to the Main Control Panel > Global Sync Tab.
 1. Select the desired topology from the list of topologies on the left.
@@ -17,7 +17,7 @@ If the target/destination needs populated with entries before starting synchroni
 
 ![Start an Upload](./media/image89.png)
 
-## Upload from the Command Line Utility
+## Upload from the command line utility
 
 To run an upload from command line, you can use `{RLI_HOME}/bin/vdsconfig.bat init-sync-pipeline -pipelineid {PIPELINE_ID}`
 

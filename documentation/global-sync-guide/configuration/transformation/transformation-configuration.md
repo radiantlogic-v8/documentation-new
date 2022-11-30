@@ -1,9 +1,9 @@
 ---
-title: RadiantOne Global Synchronization Guide
-description: RadiantOne Global Synchronization Guide
+title: Transformation configuration
+description: Transformation configuration
 ---
 
-# Transformation Configuration
+# Transformation configuration
 
 The transformation configuration contains the logic to translate a change in a source to an operation in the destination. The transformation can consist of attribute mappings and/or script logic. When deciding if the transformation configuration should use attribute mappings and/or scripting, keep the following in mind.
 

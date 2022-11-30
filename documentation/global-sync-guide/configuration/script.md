@@ -1,6 +1,6 @@
 ---
-title: RadiantOne Global Synchronization Guide
-description: RadiantOne Global Synchronization Guide
+title: Script
+description: Script
 ---
 
 # Script
@@ -17,7 +17,7 @@ Using a script for transformation allows for complex logic to be applied before 
 1. You can edit and test the script in the window provided. Basic validation is checked when using the script window. For more advanced script editing, you can [use a Java IDE to customize scripts](#use-a-java-ide-to-customize-scripts).
 1. After the script compiles successfully, select **Save**. Scripts are saved at: `{RLI_HOME}\vds_server\custom\src\com\rli\scripts\fidsync\{PIPELINE_NAME}`
 
-## Use a Java IDE to Customize Scripts
+## Use a Java IDE to customize scripts
 
 You can use our own Java IDE to customize scripts instead of using the Main Control Panel. Import the RadiantOne Custom project into your Java IDE. An example is described below using Eclipse IDE.
 
@@ -38,7 +38,7 @@ You can use our own Java IDE to customize scripts instead of using the Main Cont
 `C:\radiantone\vds\vds_server\custom\>c:\radiantone\vds\ant\bin\ant.bat buildjars`
 1. Restart the RadiantOne service. If deployed in a cluster, restart it on all nodes.
 
-## Leverage Existing Java Classes
+## Leverage existing Java classes
 
 To leverage existing classes in your transformation scripts, perform the following:
 
@@ -48,7 +48,7 @@ To leverage existing classes in your transformation scripts, perform the followi
   Example of importing the class in your transformation script:  
   `import com.rli.connectors.changeevent.ChangeOperation;`
 
-## Custom Logging in the Transformation Script
+## Custom logging in the transformation script
 
 The add your own log statements into the script, use the following:
 
@@ -57,7 +57,7 @@ The add your own log statements into the script, use the following:
 >[!note]
 >The message is logged into `{RLI_HOME}/vds_server/logs/sync_engine/sync_engine.log`
 
-## Test the Script
+## Test the script
 
 When your script has been modified, you can test it by emulating changes from the source.
 

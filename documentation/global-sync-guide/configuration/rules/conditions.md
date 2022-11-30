@@ -1,6 +1,6 @@
 ---
-title: RadiantOne Global Synchronization Guide
-description: RadiantOne Global Synchronization Guide
+title: Conditions
+description: Conditions
 ---
 
 # Conditions
@@ -11,10 +11,10 @@ To create conditions:
 
 1. Edit the rule and select the **CONDITIONS** section.
 1. Select **Start Condition**.
-1. If you only need a single condition, select **Condition Node** and choose the condition type: [Source Attribute Condition](#configure-source-attribute-condition), [Source Event Condition](#configure-source-event-condition), [Attribute Event Condition](#configure-attribute-event-condition), or [Rule Variable Condition](#configure-rule-variable-condition-based-on-an-existing-rule-variable). If you need multiple conditions, select either `AND` Condition or `OR` Condition and then select ![Plus symbol](../../media/image80.png) to add a condition node or another (nested) `AND` Condition or (nested) `OR` Condition. Once you add a new condition node, you configure the expression.
+1. If you only need a single condition, select **Condition Node** and choose the condition type: [Source Attribute condition](#configure-source-attribute-condition), [Source Event condition](#configure-source-event-condition), [Attribute Event condition](#configure-attribute-event-condition), or [Rule Variable condition](#configure-rule-variable-condition-based-on-an-existing-rule-variable). If you need multiple conditions, select either `AND` Condition or `OR` Condition and then select ![Plus symbol](../../media/image80.png) to add a condition node or another (nested) `AND` Condition or (nested) `OR` Condition. Once you add a new condition node, you configure the expression.
 1. Select **OK**.
 
-## Configure Source Attribute Condition
+## Configure Source Attribute condition
 
 The Source Attribute condition type allows you to define a condition based on the value of a source attribute.
 
@@ -26,7 +26,7 @@ The Source Attribute condition type allows you to define a condition based on th
 1. Select **OK**.
 1. After all conditions are added, select the **ACTIONS** section in the Rule Builder.
 
-## Configure Source Event Condition
+## Configure Source Event condition
 
 The Source Event condition type allows you to define a condition based on the when a specific type of event has occurred on the source entry.
 
@@ -36,7 +36,7 @@ The Source Event condition type allows you to define a condition based on the wh
 1. Select **OK**.
 1. After all conditions are added, select the **ACTIONS** section in the Rule Builder.
 
-## Configure Attribute Event Condition
+## Configure Attribute Event condition
 
 The Attribute Event condition type allows you to configure a condition for when a specific type of event has occurred on the source attribute.
 
@@ -46,7 +46,7 @@ The Attribute Event condition type allows you to configure a condition for when 
 1. Select **OK**.
 1. After all conditions are added, select the **ACTIONS** section in the Rule Builder.
 
-## Configure Rule Variable Condition Based on an Existing Rule Variable
+## Configure Rule Variable condition based on an existing rule variable
 
 The Rule Variable condition type allows you to populate the rule variable when an existing rule variable contains a specific value based on a comparison operation and criteria.
 

@@ -1,9 +1,9 @@
 ---
-title: RadiantOne Global Synchronization Guide
-description: RadiantOne Global Synchronization Guide
+title: Variable configuration
+description: Variable configuration
 ---
 
-# Variable Configuration
+# Variable configuration
 
 Rule variables are configured in the RULE VARIABLES section of the Rule Set.
 
@@ -22,23 +22,23 @@ A variable can be defined to store a temporary value and used in a rule conditio
 1. (Optional) To [configure conditions](#configure-rule-variable-conditions) that dictate how and when the rule variable is populated, select **Start Condition**.
 1. Variables can be used when defining rule conditions by selecting the **Rule Variable Condition** from the **Condition Type** drop-down list. After all variables are defined, select the [RULES](rule-configuration.md) section.
 
-## Configure Rule Variable Conditions
+## Configure rule variable conditions
 
 You can configure one or more conditions that dictate the context in which the variable is populated with the configured value(s).
 
 1. On the Rule Variables tab, select a variable and select **Edit**.
 1. Select **Start Condition**.
 1. If you want multiple conditions, select `AND` Condition, or `OR` Condition. If you only need one condition, select `Condition Node`.
-1. If you selected `Condition Node` in the previous step, choose the **Condition Type** from the drop-down list. For a description of condition types, see [Variables](../../concepts-and-definitions/sync-engine-and-transformation.md#variables). Based on the condition type selected, different settings are configurable. Your conditions can be a combination of different condition types. See [Configure Source Attribute Condition](#configure-source-attribute-condition), [Configure Source Event Condition](#configure-source-event-condition), [Configure Attribute Event Condition](#configure-attribute-event-condition), and [Configure Rule Variable Condition](#configure-rule-variable-condition-based-on-an-existing-rule-variable) for details.
+1. If you selected `Condition Node` in the previous step, choose the **Condition Type** from the drop-down list. For a description of condition types, see [Variables](../../concepts-and-definitions/sync-engine-and-transformation.md#variables). Based on the condition type selected, different settings are configurable. Your conditions can be a combination of different condition types. See [Configure Source Attribute condition](#configure-source-attribute-condition), [Configure Source Event condition](#configure-source-event-condition), [Configure Attribute Event condition](#configure-attribute-event-condition), and [Configure Rule Variable condition](#configure-rule-variable-condition-based-on-an-existing-rule-variable) for details.
 
 >[!note]
 >If you need another condition after selecting `Condition Node` (for one condition), select **Add Parent Condition** and choose either `AND` Condition or `OR` Condition. Then select ![Plus symbol](../../media/image75.png) to add the new condition node (`AND` Condition or `OR` condition can be selected if you need nesting).
 
-5. If you selected `AND` Condition or `OR` Condition in step three, select ![Plus symbol](../../media/image76.png) and choose **Condition Node** (`AND` Condition or `OR` Condition can also be selected if you want nested conditions) and choose the **Condition Type** from the drop-down list. For a description of condition types, see [Variables (../../concepts-and-definitions/sync-engine-and-transformation.md#variables). Based on the condition type selected, different settings are configurable. Your conditions can be a combination of different condition types. See [Configure Source Attribute Condition](#configure-source-attribute-condition), [Configure Source Event Condition](#configure-source-event-condition), [Configure Attribute Event Condition](#configure-attribute-event-condition), and [Configure Rule Variable Condition](#configure-rule-variable-condition-based-on-an-existing-rule-variable) for details.
+5. If you selected `AND` Condition or `OR` Condition in step three, select ![Plus symbol](../../media/image76.png) and choose **Condition Node** (`AND` Condition or `OR` Condition can also be selected if you want nested conditions) and choose the **Condition Type** from the drop-down list. For a description of condition types, see [Variables (../../concepts-and-definitions/sync-engine-and-transformation.md#variables). Based on the condition type selected, different settings are configurable. Your conditions can be a combination of different condition types. See [Configure Source Attribute condition](#configure-source-attribute-condition), [Configure Source Event condition](#configure-source-event-condition), [Configure Attribute Event condition](#configure-attribute-event-condition), and [Configure Rule Variable condition](#configure-rule-variable-condition-based-on-an-existing-rule-variable) for details.
 6. Select **OK** to close the Edit Rule Variable window.
 7. After all variables are defined, select the [RULES](rule-configuration.md) section.
 
-### Configure Source Attribute Condition
+### Configure Source Attribute condition
 
 The Source Attribute condition type allows you to populate the rule variable when a source attribute contains a specific value based on a comparison operation and criteria.
 
@@ -50,7 +50,7 @@ The Source Attribute condition type allows you to populate the rule variable whe
 1. Select **OK**.
 1. Select **OK** to close the Edit Rule Variable window.
 
-### Configure Source Event Condition
+### Configure Source Event condition
 
 The Source Event condition type allows you to populate the rule variable when a specific type of event has occurred on the source entry.
 
@@ -60,7 +60,7 @@ The Source Event condition type allows you to populate the rule variable when a 
 1. Select **OK**.
 1. Select **OK** to close the Edit Rule Variable window.
 
-### Configure Attribute Event Condition
+### Configure Attribute Event condition
 
 The Attribute Event condition type allows you to populate the rule variable when a specific type of event has occurred on the source attribute.
 
@@ -70,7 +70,7 @@ The Attribute Event condition type allows you to populate the rule variable when
 1. Select **OK**.
 1. Select **OK** to close the Edit Rule Variable window.
 
-### Configure Rule Variable Condition Based on an Existing Rule Variable
+### Configure Rule Variable condition based on an existing rule variable
 
 The Rule Variable condition type allows you to populate the rule variable when an existing rule variable contains a specific value based on a comparison operation and criteria.
 
@@ -82,7 +82,7 @@ The Rule Variable condition type allows you to populate the rule variable when a
 1. Select **OK**.
 1. Select **OK** to close the Edit Rule Variable window.
 
-## Edit Rule Variables
+## Edit rule variables
 
 1. On the Rule Variables tab, select a variable and select **Edit**. Change the variable and select **OK**.
 1. If you want to delete a local variable, select the variable and select **Delete**.

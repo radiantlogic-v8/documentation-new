@@ -1,9 +1,9 @@
 ---
-title: RadiantOne Global Synchronization Guide
-description: RadiantOne Global Synchronization Guide
+title: Agents and connectors
+description: Agents and connectors
 ---
 
-# Agents and Connectors
+# Agents and connectors
 
 Agents manage connectors which includes deploying, stopping/suspending and starting them as needed.
 

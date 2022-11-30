@@ -1,17 +1,17 @@
 ---
-title: RadiantOne Global Synchronization Guide
-description: RadiantOne Global Synchronization Guide
+title: Actions
+description: Actions
 ---
 
 # Actions
 
 Actions are processed when conditions are met. There are three types of actions that can be used: **Abort**, **Apply Target Attribute Mapping**, and **Custom Code/Function**. Select one of these options from the **Action Type** drop-down list, configure any required settings and select **Insert**.
 
-## Abort Transformation
+## Abort transformation
 
 If the Abort Action is chosen, the transformation is aborted and no action is taken on the target.
 
-## Configure Target Attribute Mappings
+## Configure target attribute mappings
 
 If **Target Attribute Mappings Action** is chosen, you can use an existing mapping file, or create a new set of mappings. When you select **Target Attribute Mappings Action**, the window where you configure the mappings shows at the bottom of the RULES section after you select **OK**.
 
@@ -31,7 +31,7 @@ To map attributes:
 6. Select **Insert** to close the Rule Builder.
 7. Select **Save**.
 
-## Configure Input Conditions for Target Attributes
+## Configure input conditions for target attributes
 
 The default is "None" meaning that no special checking of the input value(s) is performed prior to setting it for the target attribute. Depending on the type of target system you are synchronizing to, you may need to treat null or empty values differently. You may also want to set a default value if the input value(s) is null or empty. The options are described in the following table.
 
@@ -42,8 +42,8 @@ The default is "None" meaning that no special checking of the input value(s) is 
 | Set value(s) only if not empty, else use alternate value(s) | If the input value(s) is empty, set the target attribute to the Alternate Value (if defined). If no Alternate value is defined, nothing is set.<br>If the input value(s) is not empty, set the target attribute to the value from the input value(s). |
 | Delete attribute if value(s) are empty or null | If the input value(s) is empty or null, delete the attribute in the target. This sets a NULL value (for a database target) or an empty value (for a directory target). |
 | Delete attribute if value(s) are empty. | If the input value(s) is empty, delete the attribute in the target. This option allows you to differentiate between empty and null. |
-| Set value(s) if custom condition matches, else use alternate value(s) | If the input value(s) matches a custom condition, set the target attribute to the input value(s).<br>If the input value(s) does not match the custom condition, set the target attribute to the Alternate Value(s). If no Alternate Value is defined, nothing is set.<br>To define the custom conditions, select **START CONDITION** and select **Condition Node** if you only need one condition, or `AND` Condition or `OR` Condition if you need multiple conditions which can be nested. The condition types that can be used are described in the [Variable Configuration](variable-configuration.md).<br>![Edit Conditional Values example](../../media/image85.png) |
+| Set value(s) if custom condition matches, else use alternate value(s) | If the input value(s) matches a custom condition, set the target attribute to the input value(s).<br>If the input value(s) does not match the custom condition, set the target attribute to the Alternate Value(s). If no Alternate Value is defined, nothing is set.<br>To define the custom conditions, select **START CONDITION** and select **Condition Node** if you only need one condition, or `AND` Condition or `OR` Condition if you need multiple conditions which can be nested. The condition types that can be used are described in the [Variable configuration](variable-configuration.md).<br>![Edit Conditional Values example](../../media/image85.png) |
 
-## Configure Custom Code/Function
+## Configure custom code/function
 
 If the **Custom Function Action** is chosen, you can create a new function for your transformation script, or call an existing custom function. If you have existing custom functions, the names appear in the drop-down list for you to choose from. After you select **OK**, select **OK** again and then select **Save**. Then select ![Less than and greater than symbols](../../media/image86.png) on the **Rule Set** page to edit the transformation script. Locate your custom function to edit the code in the web editor. You can use an [IDE like Eclipse](../script.md#use-a-java-ide-to-customize-scripts) instead of the web editor if you prefer.

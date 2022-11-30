@@ -1,9 +1,9 @@
 ---
-title: RadiantOne Global Synchronization Guide
-description: RadiantOne Global Synchronization Guide
+title: Test rules
+description: Test rules
 ---
 
-# Test Rules
+# Test rules
 
 You can test your rules by emulating changes from the source.
 

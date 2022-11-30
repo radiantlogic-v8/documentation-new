@@ -1,6 +1,6 @@
 ---
-title: RadiantOne Global Synchronization Guide
-description: RadiantOne Global Synchronization Guide
+title: Queues
+description: Queues
 ---
 
 # Queues
@@ -9,7 +9,7 @@ RadiantOne Global Sync relies on queues for guaranteed delivery of messages. Que
 
 ![The Directory Browser tab in the Main Control Panel with search results for "(objectclass=*)"](../media/image18.png)
 
-## Message Time-to-live
+## Message time-to-live
 
 Messages remain in the queue until they are either picked up by the sync engine, or the message time-to-live has been reached (default of 3 days). Message time-to-live is configured in the "Changelog and Replicationjournal Max Age" property from the Main Control Panel > Settings > Logs > Changelog.
 

@@ -1,13 +1,13 @@
 ---
-title: RadiantOne Global Synchronization Guide
-description: RadiantOne Global Synchronization Guide
+title: Database connectors
+description: Database connectors
 ---
 
-# Database Connectors
+# Database connectors
 
 For database backends (JDBC-accessible), the change detection options are:
 
-- [Changelog](#db-changelog) – This connector type relies on a database table that contains all changes that have occurred on the base tables (that the RadiantOne virtual view is built from). This typically involves having triggers on the base tables that write into the log/changelog table. However, an external process may be used instead of triggers. The connector picks up changes from the changelog table. If you need assistance with configuring triggers on the base tables and defining the changelog table, see [Script to Generate Triggers](#create-scripts-to-generate-triggers-and-changelog-table).
+- [Changelog](#db-changelog) – This connector type relies on a database table that contains all changes that have occurred on the base tables (that the RadiantOne virtual view is built from). This typically involves having triggers on the base tables that write into the log/changelog table. However, an external process may be used instead of triggers. The connector picks up changes from the changelog table. If you need assistance with configuring triggers on the base tables and defining the changelog table, see [Create scripts to generate triggers and changelog table](#create-scripts-to-generate-triggers-and-changelog-table).
 
 - [Timestamp](#db-timestamp) – This connector type has been validated against Oracle, SQL Server, MySQL, MariaDB, PostgreSQL, and Apache Derby. The database table must have a primary key defined for it and an indexed column that contains a timestamp/date value. This value must be maintained and modified accordingly for each record that is update1. 
     
@@ -25,7 +25,7 @@ For database backends (JDBC-accessible), the change detection options are:
 
 - [Counter](#db-counter) - This connector type is supported for any database table that has an indexed column that contains a sequence-based value that is automatically maintained and modified for each record that is added/updated. This column must be one of the following types: `BIGINT`, `DECIMAL`, `INTEGER`, or `NUMERIC`. If `DECIMAL` or `NUMERIC` are used, they should be declared without numbers after dot: `DECIMAL(6,0)` not as `DECIMAL(6,2)`. The DB Counter connector leverages this column to determine which records have changed since the last polling interval. This connector type can detect delete operations as long as the table has a dedicated "Change Type" column that indicates one of the following values: insert, update, delete. If the value is empty or something other than insert, update, or delete, an update operation is assumed.
 
-## DB Changelog
+## DB changelog
 
 RadiantOne can generate the SQL scripts which create the configuration needed to support the DB Changelog Connector. The scripts can be generated in the Main Control Panel or from command line. Both options store the scripts under `{RLI_HOME}/work/sql`. The following scripts are generated.
 
@@ -39,11 +39,11 @@ RadiantOne can generate the SQL scripts which create the configuration needed to
 - drop_user.sql - Drops the log table user and schem1. 
   Note: for some databases the file is empty.
 
-### Connector Configuration
+### Connector configuration
 
 This section describes generating and executing the scripts in the Main Control Panel > Global Sync tab. The following steps assume the database backend has a changelog table that contains changed records that need to be propagated to destinations. The changelog table must have two key columns named `RLICHANGETYPE` and `RLICHANGEID`. `RLICHANGETYPE` must indicate insert, update or delete, dictating what type of change was made to the record. `RLICHANGEID` must be a sequence-based, auto-incremented `INTEGER` that contains a unique value for each record. The DB Changelog connector uses `RLICHANGEID` to maintain a cursor to keep track of processed changes.
 
-If you need assistance with configuring triggers on the base tables and defining the changelog table, see [Script to Generate Triggers and Changelog Table](#create-scripts-to-generate-triggers-and-changelog-table).
+If you need assistance with configuring triggers on the base tables and defining the changelog table, see [Create scripts to generate triggers and changelog table](#create-scripts-to-generate-triggers-and-changelog-table).
 
 To configure DB Changelog connector:
 
@@ -72,7 +72,7 @@ To configure DB Changelog connector:
 
 10. After the capture connector is configured, configure the transformation in the pipeline.
 
-### Log Table Name Syntax
+### Log table name syntax
 
 Proper syntax for the Log Table Name must include both the schema name and the table name separated with a period. Values for this property may contain quote marks as required by the database. In most cases, the double quote mark (") is used, but some databases use a single quote (') or back quote (`). The following examples explain the property's syntax and usage.
 
@@ -111,7 +111,7 @@ If schema and/or table name contain mixed-case characters, they must be quoted. 
 
 `"Rli_con"."Test_log"`
 
-### Create Scripts to Generate Triggers and Changelog Table
+### Create scripts to generate triggers and changelog table
 
 If the database backend doesn't have a changelog table, you can use RadiantOne to create one. RadiantOne can generate SQL scripts that a DBA can run on the database backend. These scripts create the needed configuration to support the DB Changelog connector. Use `{RLI_HOME}/bin/advanced/create_db_triggers.bat` to generate the scripts. The command uses seven arguments (which are described below) and generates four SQL scripts needed to configure the database to support the DB Changelog connector.
 
@@ -141,9 +141,9 @@ The table below outlines the available arguments.
  `-l` | Specify the log table name instead of using default computation based on full base table nam1. 
  `-s` | Specify the log table schema nam1. 
 
-## DB Timestamp
+## DB timestamp
 
-The following steps assume your backend database table has a primary key defined and contains a timestamp column. The timestamp column name is required for configuring the connector. The timestamp column database types supported are described in the [Database Connectors](#database-connectors) section.
+The following steps assume your backend database table has a primary key defined and contains a timestamp column. The timestamp column name is required for configuring the connector. The timestamp column database types supported are described in the [Database connectors](#database-connectors) section.
 
 >[!important]
 >This connector type does not detect delete operations. If you have a need to detect delete operations from the database, you should choose a different connector type.
@@ -161,9 +161,9 @@ The following steps assume your backend database table has a primary key defined
 >[!important]
 >If you need to make changes to the timestamp column name, you must manually restart the connector and reset the cursor. The pipeline can be stopped on the Global Sync tab when the topology is selected on the left. Then select **Configure** next to the pipeline. In the configuration screen, select the Capture section. Change the timestamp column name and select **Save**. In the bottom left of the Capture configuration screen, select **Reset Cursor**. Go back to the Global Sync topologies page and select **Start** to start the pipeline components.
 
-## DB Counter
+## DB counter
 
-The following steps assume your database backend table contains an indexed column that contains a sequence-based value that is automatically maintained and modified for each record that is added, updated or deleted. The DB Counter connector uses this column to maintain a cursor to keep track of processed changes. The counter column database types supported are described in the [Database Connectors](#database-connectors) section.
+The following steps assume your database backend table contains an indexed column that contains a sequence-based value that is automatically maintained and modified for each record that is added, updated or deleted. The DB Counter connector uses this column to maintain a cursor to keep track of processed changes. The counter column database types supported are described in the [Database connectors](#database-connectors) section.
 
 1. From the Main Control Panel > Global Sync Tab, select the topology on the left.
 1. On the right, select the sync pipeline to configure.
@@ -180,7 +180,7 @@ The following steps assume your database backend table contains an indexed colum
 >[!important]
 >If you need to make changes to the Counter Column name, you must manually restart the connector and reset the cursor. The pipeline can be stopped on the Global Sync tab when the topology is selected on the left. Then select **Configure** next to the pipeline. In the configuration screen, select the Capture section. Change the counter column name and select **Save**. In the bottom left of the Capture configuration screen, select **Reset Cursor**. Go back to the Global Sync topologies page and select **Start** to start the pipeline components.
 
-## Database Connector Failover
+## Database connector failover
 
 This section describes the failover mechanism for the database connectors.
 

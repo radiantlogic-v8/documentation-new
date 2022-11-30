@@ -1,9 +1,9 @@
 ---
-title: RadiantOne Global Synchronization Guide
-description: RadiantOne Global Synchronization Guide
+title: Attribute mappings
+description: Attribute mappings
 ---
 
-# Attribute Mappings
+# Attribute mappings
 
 Attribute mappings are the easiest approach to configure transformations without the need for writing scripts. A specific set of mappings can be defined for each type of object you are synchronizing (e.g. users, groups, devices).
 
@@ -55,7 +55,7 @@ DN expressions support a mix of constant (string) characters and attribute subst
 | Function Substitution<br>The result of a function call on the attributes of a source event can be used with the function substitution notation:<br>`${functionName(attributeName1,attributeName2, …}` | Source Event:   `{ eventID: uid=jsmith,ou=Sales,o=SuperCompany, firstName: John, lastName: Smith }`<br>DN Expression: `cn=${uppercase(firstName)},ou=People,o=MyOrg`<br>Result: `cn=JOHN,ou=People,o=MyOrg` |
 | RDN Substitution<br>Insert portions (one or more RDN components) of the source event DN using the following formats are supported:<br>`${rdn[index]}`<br>`${rdn[startIndex:endIndex]}`<br>`${rdn[startIndex:]}`<br>`${rdn[:endIndex}]`<br>`${rdn_value[index]}`<br>`${rdn_value[startIndex:endIndex]}`<br>`${rdn_value[startIndex:]}`<br>`${rdn_value[:endIndex]}` | Source Event:   `{ eventID: uid=jsmith,ou=Sales,o=SuperCompany, firstName: John, lastName: Doe }`<br>DN Expression: `${rdn[1]},ou=People,o=MyOrg<br>Result: uid=jsmith,ou=People,o=MyOrg`<br><br>Source Event:   `{ eventID: uid=jsmith,ou=Sales,o=SuperCompany, firstName: John, lastName: Doe }`<br>DN Expression: `${rdn[-1]},ou=People,o=MyOrg`<br>Result: `o=SuperCompany,ou=People,o=MyOrg`<br><br>Source Event:   `{ eventID: uid=jsmith,ou=Sales,c=USA,o=SuperCompany, firstName: John, lastName: Doe }`<br>DN Expression: `${rdn[2:3]},ou=People,o=MyOrg<br>Result: ou=Sales,c=USA,ou=People,o=MyOrg`<br><br>Source Event:   `{ eventID: uid=jsmith,ou=Sales,c=USA,o=SuperCompany, firstName: John, lastName: Doe }`<br>DN Expression: `${rdn[2:]},ou=People,o=MyOrg<br>Result: ou=Sales,c=USA,o=SuperCompany,ou=People,o=MyOrg`<br><br>Source Event:   `{ eventID: uid=jsmith,ou=Sales,c=USA,o=SuperCompany, firstName: John, lastName: Doe }`<br>DN Expression: `${rdn[:2]},ou=People,o=MyOrg<br>Result: uid=jsmith,ou=Sales,ou=People,o=MyOrg`<br><br>Source Event:   `{ eventID: uid=jsmith,ou=Sales,o=SuperCompany, firstName: John, lastName: Doe }`<br>DN Expression: `displayName=${rdn_value[1]},ou=People,o=MyOr` |
 
-## Source Event Filter
+## Source event filter
 
 The source event filter is applied on each change event to determine if the attribute mappings are processed. If an entry passes the filter, the attribute mappings are evaluated.
 
@@ -81,7 +81,7 @@ To accept the filter, select ![OK](../../media/image48.png)
 
 You can also use the Add Condition button to add a nested condition.
 
-## Conditional Filter
+## Conditional filter
 
 The conditional filter is applied on each source attribute of the change event to determine if the target attribute mapping gets applied. A conditional filter can be comprised of one or more conditions each of which is comprised of one or more expressions.
 
@@ -116,7 +116,7 @@ The **Auto Map** option is a quick way to auto-generate attribute mappings betwe
 
 ![Removing an Attribute Mapping](../../media/image55.png)
 
-## Edit Attribute Mapping
+## Edit attribute mapping
 
 To edit an attribute mapping:
 
@@ -128,7 +128,7 @@ To edit an attribute mapping:
 1. Select the attribute mapping in the list and select **Edit**.
 1. When edits are finished, select **Save**.
 
-## Test Attribute Mapping
+## Test attribute mapping
 
 Test the attribute mappings by entering values for the source attributes.
 
@@ -146,7 +146,7 @@ Test the attribute mappings by entering values for the source attributes.
 1. The results of the Attribute Mappings are shown in the Output section.
 1. When you are finished testing the mappings, select **CLOSE** to go back to the "Configure Pipeline" screen.
 
-## Standard Functions Available 
+## Standard functions available 
 
 The default functions available for use are described in the table below.
 
@@ -186,7 +186,7 @@ The default functions available for use are described in the table below.
 
 Available Functions
 
-## User Defined Functions
+## User defined functions
 
 User-defined functions can be created and configured from the Add Mapping Function window.
 

@@ -1,6 +1,6 @@
 ---
-title: RadiantOne Global Synchronization Guide
-description: RadiantOne Global Synchronization Guide
+title: Topology
+description: Topology
 ---
 
 # Topology

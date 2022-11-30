@@ -1,11 +1,11 @@
 ---
-title: RadiantOne Global Synchronization Guide
-description: RadiantOne Global Synchronization Guide
+title: Deployment
+description: Deployment
 ---
 
 # Deployment
 
-## Fault Tolerance and Recovery
+## Fault tolerance and recovery
 
 The components required for synchronization are: Agents, Queues, and Sync Engine/processor. These components ensure guaranteed message delivery and recoverability in case some part of the process is temporarily down/offline. The components and their functionality are introduced in [Architecture](introduction.md#architecture). When RadiantOne is deployed in a cluster, the fault tolerance and recoverability of these components is built into the architecture. This topic is described below.
 
@@ -31,7 +31,7 @@ A high-level diagram depicting the Global Sync recovery in case a node fails is 
 
 ![Failure of a RadiantOne Node](media/image93.png)
 
-## Secure Access to the Queues
+## Secure access to the queues
 
 The Agent and Sync Engine process read and/or write into the queues using the credentials configured in the RadiantOne data source named: vdsha
 
@@ -42,9 +42,9 @@ For security reasons, the user account (Bind DN) you have configured in the vdsh
 Configure access controls for these root naming contexts from Main Control Panel > Settings  
 -> Security > Access Control. Access should only be allowed for the account configured in the vdsha data source. For details on configuring access controls, see the RadiantOne System Administration Guide.
 
-## Manage Synchronization
+## Manage synchronization
 
-### View Logs
+### View logs
 
 Transformation and apply components log to `{RLI_HOME}\vds_server\logs\sync_engine\sync_engine.log` on the RadiantOne node where the sync engine processor that is assigned for the pipeline is running. If RadiantOne is deployed in a cluster, a sync engine processor can be running on one or more nodes and the pipeline processing is distributed across them. Check for the `{RLI_HOME}\vds_server\logs\sync_engine\sync_engine.log` on each cluster node to find the correct log file. Or you can use the Global Sync tab to download the corresponding sync_engine.log file by selecting the topology and selecting **Configure** next to the pipeline. Select the **Apply** component and in the Log Viewer section, select the **Download** button.
 
@@ -61,11 +61,11 @@ VDS – Sync Engine log file level is set to **DEBUG**. You can check the log le
 
 ![Sync Engine Log Settings](media/image95.png)
 
-### Suspend Synchronization Components
+### Suspend synchronization components
 
 Once a pipeline is configured, all synchronization components start automatically. For complete details on starting the synchronization components, please see the RadiantOne Deployment and Tuning Guide.
 
-### Monitor the Synchronization Process
+### Monitor the synchronization process
 
 The number of entries processed and the number of entries queued by the Transformation component can be viewed from the Main Control Panel > Global Sync tab. Select the topology on the left. The pipelines displayed on the right indicate the number of entries processed by the transformation and apply connectors.
 
@@ -85,23 +85,23 @@ Default alerts can be enabled on the Global Sync tab > selected topology. Select
 
 ![Pipeline Alerts Example](media/image96.png)
 
-#### Capture Connector
+#### Capture connector
 
 When this alert is enabled, every time the capture connector state changes (e.g. a connector state changes from RUNNING to STOPPED or vice versa), a file alert is triggered in: `{RLI_HOME}/logs/alerts`.log
 
-#### Pipeline State
+#### Pipeline state
 
 When this alert is enabled, every time the pipeline state changes (e.g. a pipeline state changes to/from RUNNING, SUSPENDED, UPLOADING, ERROR, DEPLOYING, WAITING_FOR_AGENT), a file alert is triggered in: `{RLI_HOME}/logs/alerts.log`
 
-#### Processor Queue
+#### Processor queue
 
 When this alert is enabled, indicate a queue size threshold. The threshold size is the maximum number of entries in the queue awaiting processing. Once this number is reached, a file alert is triggered in `{RLI_HOME}/logs/alerts.log`. This indicates that messages are accumulating in the queue, and an administrator should check the apply process to see if there are issues causing the changes to not get processed and applied fast enough.
 
-### Replay Failed Messages
+### Replay failed messages
 
 Messages that fail to get successfully applied to a destination, are categorized due to either a connection error to the destination, or any other non-communication related error (e.g. object class violation).
 
-### Failure due to Communication Error
+### Failure due to communication error
 
 When a change cannot be applied to a destination, and the error is due to a communication failure, the message is put back in the pipeline queue and replayed indefinitely.
 
@@ -110,7 +110,7 @@ When a change cannot be applied to a destination, and the error is due to a comm
 >[!important]
 >Pay attention to the [time-to-live](concepts-and-definitions/queues.md#message-time-to-live) associated with messages in the pipeline queues. If messages cannot be applied to the target and continue to remain in the queue until the time-to-live period passes, the messages are deleted from the queue and cannot be recovered.
 
-### Failure due to Non-communication Error
+### Failure due to non-communication error
 
 When a change cannot be applied to a destination, and the error is not due to a communication failure, the message is replayed for a configurable number of attempts. This is 5 attempts by default and is configurable in ZooKeeper at: `/radiantone/{VERSION}/cluster1/config/vds_server.conf`, the `refreshEngineEventErrorRetriesMax` property.
 
@@ -118,7 +118,7 @@ After the number of retries is exhausted, the message is written into the queue 
 
 ![Global Sync Flow for Failed Messages not related to a Communications Error](media/image98.png)
 
-#### Replay Messages in the Dead Letter Queue
+#### Replay messages in the dead letter queue
 
 To replay failed messages from the dead letter queue, you can use the vdsconfig command line utility with the following command.
 
