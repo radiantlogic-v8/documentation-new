@@ -43,7 +43,6 @@ You can use our own Java IDE to customize scripts instead of using the Main Cont
 To leverage existing classes in your transformation scripts, perform the following:
 
 - The jar file must be copied in `{RLI_HOME}/vds_server/custom/lib`.
-
 - The class must be imported in the transformation script. 
   Example of importing the class in your transformation script:  
   `import com.rli.connectors.changeevent.ChangeOperation;`

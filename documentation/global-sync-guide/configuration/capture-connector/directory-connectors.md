@@ -91,9 +91,7 @@ For the Active Directory USNChanged connector, the failover logic leverages the 
 The `ReplUpToDateVector` type is a tuple with the following fields:
 
 - `uuidDsa`: The invocation ID of the DC that assigned `usnHighPropUpdate`.
-
 - `usnHighPropUpdate`: A USN at which an update was applied on the DC identified by uuidDsa.
-
 - `timeLastSyncSuccess`: The time at which the last successful replication occurred from the DC identified by uuidDsa; for replication latency reporting only.
 
 `[replUpToDateVector]` example:

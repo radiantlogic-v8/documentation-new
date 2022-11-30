@@ -8,7 +8,6 @@ description: Database connectors
 For database backends (JDBC-accessible), the change detection options are:
 
 - [Changelog](#db-changelog) – This connector type relies on a database table that contains all changes that have occurred on the base tables (that the RadiantOne virtual view is built from). This typically involves having triggers on the base tables that write into the log/changelog table. However, an external process may be used instead of triggers. The connector picks up changes from the changelog table. If you need assistance with configuring triggers on the base tables and defining the changelog table, see [Create scripts to generate triggers and changelog table](#create-scripts-to-generate-triggers-and-changelog-table).
-
 - [Timestamp](#db-timestamp) – This connector type has been validated against Oracle, SQL Server, MySQL, MariaDB, PostgreSQL, and Apache Derby. The database table must have a primary key defined for it and an indexed column that contains a timestamp/date value. This value must be maintained and modified accordingly for each record that is update1. 
     
   For Oracle databases, the timestamp column type must be one of the following: `TIMESTAMP`, `DATE`, `TIMESTAMP WITH TIME ZONE`, `TIMESTAMP WITH LOCAL TIME ZONE1. 
@@ -22,7 +21,6 @@ For database backends (JDBC-accessible), the change detection options are:
   For Derby databases, the timestamp column type must be: `TIMESTAMP`  
     
   The DB Timestamp connector leverages the timestamp column to determine which records have changed since the last polling interval. This connector type does not detect delete operations. If you have a need to detect and propagate delete operations from the database, you should choose a different connector type like DB Changelog or DB Counter.
-
 - [Counter](#db-counter) - This connector type is supported for any database table that has an indexed column that contains a sequence-based value that is automatically maintained and modified for each record that is added/updated. This column must be one of the following types: `BIGINT`, `DECIMAL`, `INTEGER`, or `NUMERIC`. If `DECIMAL` or `NUMERIC` are used, they should be declared without numbers after dot: `DECIMAL(6,0)` not as `DECIMAL(6,2)`. The DB Counter connector leverages this column to determine which records have changed since the last polling interval. This connector type can detect delete operations as long as the table has a dedicated "Change Type" column that indicates one of the following values: insert, update, delete. If the value is empty or something other than insert, update, or delete, an update operation is assumed.
 
 ## DB changelog
@@ -30,12 +28,9 @@ For database backends (JDBC-accessible), the change detection options are:
 RadiantOne can generate the SQL scripts which create the configuration needed to support the DB Changelog Connector. The scripts can be generated in the Main Control Panel or from command line. Both options store the scripts under `{RLI_HOME}/work/sql`. The following scripts are generated.
 
 - create_user.sql - Creates the log table user and the log table schema.
-
 - create_capture.sql - Creates the log table and the triggers on the base table.
-
 - drop_capture.sql - Drops the triggers and the log tabl1. 
   Note: for some databases the file is empty.
-
 - drop_user.sql - Drops the log table user and schem1. 
   Note: for some databases the file is empty.
 
