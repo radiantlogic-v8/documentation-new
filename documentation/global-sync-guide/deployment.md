@@ -22,9 +22,7 @@ A sync engine/processor starts automatically on all RadiantOne cluster nodes onc
 If a RadiantOne node fails, the following activities occur:
 
 - The agent is automatically started on another cluster node and this agent starts the capture connectors. The configurations of the capture connectors (e.g. cursor value and properties) are stored locally in a RadiantOne Universal Directory store which is automatically replicated across all cluster nodes. This allows connectors to restart capturing changes from where they left off.
-
 - The queues that store messages waiting to be processed by the sync engine are also automatically replicated across all cluster nodes. All unprocessed messages in the queues will get processed by the new sync engine that is assigned for the pipeline.
-
 - RadiantOne distributes the pipeline processing that was handled by the failed node to a new sync engine running on another node.
 
 A high-level diagram depicting the Global Sync recovery in case a node fails is shown below.
