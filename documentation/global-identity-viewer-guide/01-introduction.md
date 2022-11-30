@@ -1,6 +1,6 @@
 ---
-title: Global Identity Viewer
-description: Global Identity Viewer
+title: RadiantOne Global Identity Viewer
+description: RadiantOne Global Identity Viewer
 ---
 
 # RadiantOne Global Identity Viewer
@@ -23,7 +23,7 @@ The Global Identity Viewer facilitates searching for identities and/or groups ac
 
 ![An image showing ](Media/Image1.2.jpg)
 
-The names of the other tabs indicate the identity source “friendly name” as configured in the Global Identity Builder project. When a tab is selected, the identity attributes and groups membership associated with the user’s account in that particular identity source are displayed. In the diagram shown in Figure 1.1 above, a user identified as Brian Carmen has an account in the RadiantOne global profile store, and accounts in identity sources named adpartnerdomain, ldap, and azuread. The example shows the adpartnerdomain tab selected and Brian’s attributes from that particular data source returned. The display on each tab is based on a default [template](03-global-identity-viewer.md#auto-generate-templates) and can be customized. For more details on using the Global Identity Viewer, see [Chapter 3](03-global-identity-viewer.md).
+The names of the other tabs indicate the identity source "friendly name" as configured in the Global Identity Builder project. When a tab is selected, the identity attributes and groups membership associated with the user's account in that particular identity source are displayed. In the diagram shown in Figure 1.1 above, a user identified as Brian Carmen has an account in the RadiantOne global profile store, and accounts in identity sources named adpartnerdomain, ldap, and azuread. The example shows the adpartnerdomain tab selected and Brian's attributes from that particular data source returned. The display on each tab is based on a default [template](03-global-identity-viewer.md#auto-generate-templates) and can be customized. For more details on using the Global Identity Viewer, see [Chapter 3](03-global-identity-viewer.md).
 
 This guide is broken into three sections.
 

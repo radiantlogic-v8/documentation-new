@@ -1,6 +1,6 @@
 ---
-title: Global Identity Viewer
-description: Global Identity Viewer
+title: Chapter 2: Configuration
+description: Chapter 2: Configuration
 ---
 
 # Chapter 2: Configuration
@@ -112,8 +112,8 @@ Figure 2. 3 : Defining Access Controls
 
 14. Select the groups that require the ability to perform searches on users and groups from the Global Identity Viewer and click Allow Selected. This should be the group that contains the user you added in step 3 earlier in this section.
 
-       ><span style="color:red">**IMPORTANT NOTE – Any groups that should be able to update attributes in the identity sources (that are associated with [Modify Templates](03-global-identity-viewer.md#modify-templates)) should also have “write” permissions.**
-15. Select the default “anyone” and click Delete.
+       ><span style="color:red">**IMPORTANT NOTE – Any groups that should be able to update attributes in the identity sources (that are associated with [Modify Templates](03-global-identity-viewer.md#modify-templates)) should also have "write" permissions.**
+15. Select the default "anyone" and click Delete.
 16. Click Save.
 17. Repeat steps 6-16 for dv=globalprofiles target (naming the aci something like identitysourcesaci).
      
@@ -144,5 +144,5 @@ Figure 2.4: Sample ACI for the Global Identity Viewer
 26. Enter cn=config for the Base DN.
 27. Select the groups option and click Search.
 28. Select the group (e.g. Global ID Viewer Design or Global ID Viewer Write) that [contains the user(s)](#define-access-permissions) and click Allow Selected.
-29. Select the default “anyone” and click **Delete**.
+29. Select the default "anyone" and click **Delete**.
 30. Click the Save button.
