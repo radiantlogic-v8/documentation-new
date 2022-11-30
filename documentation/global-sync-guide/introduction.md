@@ -1,3 +1,8 @@
+---
+title: Introduction
+description: Introduction
+---
+
 # Introduction
 
 The RadiantOne Global Sync module is an advanced set of tools for synchronization and identity management. This module allows you to synchronize objects distributed across disparate data sources (directories, databases or applications): a change in an object in one source, at the attribute level, or for the whole object can be reflected into many other connected objects. Using a publisher/subscriber approach, any object can publish events (creation, deletion or modification for the whole object, or any attributes of this object) and propagate them to subscriber objects. User-defined attribute mappings and transformations can be applied during synchronization.
@@ -20,7 +25,7 @@ See the figure below for a high-level architecture of the synchronization proces
 <a name="global-synchronization-architecture-figure"></a>
 ![A flow chart depicting the high-level architecture of the synchronization process](./media/image2.png)
 
-## How this Manual is Organized
+## How this manual is organized
 
 This guide is broken down into the following chapters:
 
@@ -40,11 +45,11 @@ This chapter describes the upload process for scenarios where source entries mus
 
 This chapter describes a typical deployment architecture and how high availability is achieved. Details about managing synchronization, including where to find synchronization logs, how to suspend synchronization pipelines, and monitor synchronization activities can also be found in this chapter.
 
-## Technical Support
+## Technical support
 
-Refer to the [Technical Support Guide](common-info/technical-support.md) for more information.
+Refer to the [Technical support guide](common-info/technical-support.md) for more information.
 
-## Expert Mode
+## Expert mode
 
 Some settings in the Main Control Panel are accessible only in Expert Mode. To switch to Expert Mode, select the **Logged in as**, (username) drop-down menu and select **Expert Mode**.
 

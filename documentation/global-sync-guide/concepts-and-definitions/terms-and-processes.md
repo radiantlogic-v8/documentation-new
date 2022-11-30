@@ -1,10 +1,15 @@
-# Terms and Processes
+---
+title: Terms and processes
+description: Terms and processes
+---
+
+# Terms and processes
 
 This section describes important basic terms and processes used by Global Sync.
 
-- [Data Source](data-source.md)
+- [Data source](data-source.md)
 
-- [Synchronization Object](synchronization-object.md)
+- [Synchronization object](synchronization-object.md)
 
 - [Topology](topology.md)
 
@@ -14,4 +19,4 @@ This section describes important basic terms and processes used by Global Sync.
 
 - [Queues](queues.md)
 
-- [Password Synchronization](password-synchronization.md)
+- [Password synchronization](password-synchronization.md)

@@ -1,10 +1,15 @@
-# Directory Connectors
+---
+title: Directory connectors
+description: Directory connectors
+---
+
+# Directory connectors
 
 For directory backends (LDAP-accessible including RadiantOne Universal Directory and Active Directory), the default connectors are configured and started automatically. Go to Main Control Panel > Global Sync tab to select the topology and configure the pipeline. Select the Capture component to modify the connector type and advanced properties.
 
 ![Example Active Directory Connector Types](../../media/image34.png)
 
-## LDAP Directories
+## LDAP directories
 
 For LDAP backends that support both Changelog and Persistent Search, you can configure the connector from the Main Control Panel > Global Sync tab. Select the topology and configure the pipeline. Select the Capture component to modify the connector type and advanced properties.
 
@@ -16,7 +21,7 @@ Choose either the **LDAP** option (for Changelog) or **Persistent Search** and *
 
 The connector leverages a changelog that has been enabled on the backend directory. The connector picks up changes from the cn=changelog naming context based on a polling interval. The changenumber attribute in the changelog entries is used to keep track of the processed changes. The changelog must be enabled in the backend directory. Please check with your directory vendor for instructions on how to enable the changelog.
 
-### Persistent Search
+### Persistent search
 
 Any LDAP directory that offers a persistent search mechanism can use the Persistent Search connector type. Novell eDirectory is an example of an LDAP source that supports persistent search. Others include Red Hat Directory, IBM TDS, CA Directory and RadiantOne Universal Directory. The connector issues a persistent search and gets notified by the directory server when information changes. If the connector is shut down (either deliberately or due to failure), the delete operations that occurred in the directory are lost. Once the connector is back online there is no way to detect the delete operations that occurred while it was down. The only exception to this is for IBM TDS directories. It stores deleted entries and the capture connector is able to read them, and based on timestamp, determine if the change occurred while the connector was offline.
 
@@ -58,7 +63,7 @@ If you are using the RadiantOne Universal Directory (HDAP store), a persistent c
 
 ![HDAP Trigger Connector Type](../../media/image37.png)
 
-## Directory Connector Failover
+## Directory connector failover
 
 This section describes the failover mechanism for the LDAP, Persistent Search and Active Directory connectors.
 

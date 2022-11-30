@@ -1,4 +1,9 @@
-# Password Synchronization
+---
+title: Password synchronization
+description: Password synchronization
+---
+
+# Password synchronization
 
 Synchronizing passwords can be challenging because of the many different encryption schemes used by data sources. If the data source and target support the same password encryption scheme, a simple attribute mapping from the source user password attribute to the target user password attribute should suffice. However, if the data source uses an encryption scheme that is not understood by the target data source, the only way to synchronize passwords would be to capture the password in clear text (or a reversible format) before the data source encrypts it. RadiantOne offers a password filter component that captures a password in clear text when it is created or reset, and publishes the password to other data sources that need this information. The password filter component is available for Active Directory only. If this is of interest, please contact <support@radiantlogic.com> for the password filter installer.
 

@@ -1,4 +1,9 @@
-# Test Rules
+---
+title: Test rules
+description: Test rules
+---
+
+# Test rules
 
 You can test your rules by emulating changes from the source.
 

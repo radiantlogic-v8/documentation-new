@@ -1,4 +1,9 @@
-# Transformation Configuration
+---
+title: Transformation configuration
+description: Transformation configuration
+---
+
+# Transformation configuration
 
 The transformation configuration contains the logic to translate a change in a source to an operation in the destination. The transformation can consist of attribute mappings and/or script logic. When deciding if the transformation configuration should use attribute mappings and/or scripting, keep the following in mind.
 

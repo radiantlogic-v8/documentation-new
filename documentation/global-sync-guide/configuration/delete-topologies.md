@@ -1,4 +1,9 @@
-# Delete Topologies
+---
+title: Delete topologies
+description: Delete topologies
+---
+
+# Delete topologies
 
 Topologies can be deleted from the Main Control Panel > Global Sync Tab by selecting the **trash can icon** next to the topology.
 
