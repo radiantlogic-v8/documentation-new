@@ -1,6 +1,6 @@
 ---
-title: Global Identity Viewer
-description: Global Identity Viewer
+title: Chapter 3: Global Identity Viewer
+description: Chapter 3: Global Identity Viewer
 ---
 
 # Chapter 3: Global Identity Viewer
@@ -59,7 +59,7 @@ By default, the first 100 entries from the global profile are returned. Click on
 
 Figure 3. 4 : Example Global Profile Identity
 
-Select a tab to view the identity’s attributes and group membership contained in that particular source. In the example below, the user Brian Carmen’s account in the Active Directory Partner Domain (identified as identity source adpartnerdomain) is displayed. Specific attributes are displayed based on the template associated with the data source. This particular template returns the names of the groups Brian is a member of as the Roles attribute (e.g. Support and Managers).
+Select a tab to view the identity's attributes and group membership contained in that particular source. In the example below, the user Brian Carmen's account in the Active Directory Partner Domain (identified as identity source adpartnerdomain) is displayed. Specific attributes are displayed based on the template associated with the data source. This particular template returns the names of the groups Brian is a member of as the Roles attribute (e.g. Support and Managers).
 
 ![An image showing ](Media/Image3.5.jpg)
 
@@ -107,7 +107,7 @@ These templates, available in a dropdown menu on the Editor View page, are descr
 
 ![An image showing ](Media/Image3.7.jpg)
 
-Figure 3. 7 : The Editor View Page’s Template Drop - down Menu
+Figure 3. 7 : The Editor View Page's Template Drop - down Menu
 
 ### Display Templates
 
@@ -117,7 +117,7 @@ For information on how to edit a display template, see the [Editing Display Temp
 
 ### Modify Templates
 
-Like display templates, modify templates allow you to control the appearance and arrangement of the content in the Profile Info section of the Global Identity Viewer. However, modify templates also allow users to update profile attribute values in the Global Identity Viewer. These changes are propagated to the backend data source. Modify Templates are available on data source tabs only; attribute values cannot be edited from the Global Profile tab. In order to update attribute values, the logged in user must belong to the Global ID Viewer Write group, or any group in FID that has vdPrivilege=globalidviewer-write and have write permissions assigned in [RadiantOne ACL’s on the identity source virtual view](02-configuration.md#define-access-permissions).
+Like display templates, modify templates allow you to control the appearance and arrangement of the content in the Profile Info section of the Global Identity Viewer. However, modify templates also allow users to update profile attribute values in the Global Identity Viewer. These changes are propagated to the backend data source. Modify Templates are available on data source tabs only; attribute values cannot be edited from the Global Profile tab. In order to update attribute values, the logged in user must belong to the Global ID Viewer Write group, or any group in FID that has vdPrivilege=globalidviewer-write and have write permissions assigned in [RadiantOne ACL's on the identity source virtual view](02-configuration.md#define-access-permissions).
 
 >**Note – If a source attribute is mapped to the global profile, and the persistent cache refresh is running, a modification to a source attribute in the Global Identity Viewer, should also be reflected on the Global Profile tab for the entry.**
 
@@ -228,11 +228,11 @@ Figure 3. 10 : Label Settings
 
 >**Note – The Editable checkbox is available only for Modify Templates. For more information on Modify Templates, see the Modify Templates section.**
 
-7. (Optional) Under Icon, check the “use an icon” box to display an icon next to the attribute label on the template.
-8. Click the box below the “use an icon” checkbox.
+7. (Optional) Under Icon, check the "use an icon" box to display an icon next to the attribute label on the template.
+8. Click the box below the "use an icon" checkbox.
 9. Click an icon or, to search for an icon, enter text in the Choose an Icon field.
 
->**Note – to select another icon, click the box below the “use an icon” box and delete the
+>**Note – to select another icon, click the box below the "use an icon" box and delete the
 descriptive text above the selected icon.**
 
 10. In the Add custom CSS class(es) (optional) field, specify the custom class(es) you want
@@ -267,9 +267,9 @@ To edit the image settings:
 Figure 3. 11 : Image Settings
 
 4. (Optional) To specify custom dimensions for the image, uncheck the Use Default Size box
-    and enter the image dimensions (in pixels) in the Height and Width fields. If “Use Default
-    Size” is checked, the Global Identity Viewer resizes the image automatically. If “Use Default
-    Size” is unchecked, larger images may be truncated. In either case, browser window size
+    and enter the image dimensions (in pixels) in the Height and Width fields. If "Use Default
+    Size" is checked, the Global Identity Viewer resizes the image automatically. If "Use Default
+    Size" is unchecked, larger images may be truncated. In either case, browser window size
     and screen resolution factor into how images display.
 
 ![An image showing ](Media/Image3.12.jpg)
@@ -329,7 +329,7 @@ To remove all components and settings from a template, click Clear.
 
 To delete a template, click **Delete** . This option deletes both the display template and modify template for the selected source and object class. For more information on templates, see the [Templates](#templates) section.
 
-If an entry isn’t associated with a custom template, a default template is used.
+If an entry isn't associated with a custom template, a default template is used.
 
 ### Auto Generate Templates
 
@@ -375,7 +375,7 @@ search.
 To define a new basic query:
 
 1. Click the **Star** button. The window displays a list of saved queries and allows for creating new queries and editing existing queries.
-2. Click the New button next to “basic queries”.
+2. Click the New button next to "basic queries".
 
 ![An image showing ](Media/Image3.17.jpg)
 
@@ -409,7 +409,7 @@ The selected entry contains the value Novato in the Address attribute.
 
 Figure 3. 19 : Example Search Results of a Full-text Search
 
-If two words are entered (e.g. Seattle Accounting) a search across all entries finds those that have attributes containing the words (at least one attribute that contains the word Seattle and one that contains the word Accounting). If you want to search for an entry that has a single attribute that contains both words, you must enter the value surrounded by double quotes (e.g. “Seattle Accounting”). This search would return entries that contain a single attribute that has the exact value of Seattle Accounting.
+If two words are entered (e.g. Seattle Accounting) a search across all entries finds those that have attributes containing the words (at least one attribute that contains the word Seattle and one that contains the word Accounting). If you want to search for an entry that has a single attribute that contains both words, you must enter the value surrounded by double quotes (e.g. "Seattle Accounting"). This search would return entries that contain a single attribute that has the exact value of Seattle Accounting.
 
 ><span style="color:red">**IMPORTANT NOTE – Searches span across all user attributes from the underlying data source. This can be confusing because the template to display the results might not contain all attributes used in the search.**
 
@@ -423,11 +423,11 @@ Seattle accounting
 
 Figure 3.20: Example Search Results of a Full-text Search
 
-The entries returned, like Charlene Tiu shown above, have attributes that contain “seattle” and attributes that have “accounting”. However, because the display template does not show the ou attribute (which contained a value of accounting in this example), it is impossible to know what underlying attribute matched the search.
+The entries returned, like Charlene Tiu shown above, have attributes that contain "seattle" and attributes that have "accounting". However, because the display template does not show the ou attribute (which contained a value of accounting in this example), it is impossible to know what underlying attribute matched the search.
 
 #### LDAP Filter
 
-LDAP Filter searches allow the user to type the search request (using LDAP filter syntax) in the search field, and the application executes the LDAP search against the selected data source. LDAP filter search request is entered in the “Enter a full-text search or LDAP filter” field on the search page. Saved LDAP filter searches are located under basic queries in the saved queries drop-down menu accessible by clicking the **Star** button. For instructions on defining an LDAP filter-based search, see [Defining a Basic Query](#advanced-queries).
+LDAP Filter searches allow the user to type the search request (using LDAP filter syntax) in the search field, and the application executes the LDAP search against the selected data source. LDAP filter search request is entered in the "Enter a full-text search or LDAP filter" field on the search page. Saved LDAP filter searches are located under basic queries in the saved queries drop-down menu accessible by clicking the **Star** button. For instructions on defining an LDAP filter-based search, see [Defining a Basic Query](#advanced-queries).
 
 In the following example, the Global Identity Viewer search option receives a request containing an LDAP filter as follows:
 
@@ -450,7 +450,7 @@ This option allows the user to build an LDAP query with parameters or static val
 To define an advanced query:
 
 1. Click.
-2. Click the New button next to “advanced queries”.
+2. Click the New button next to "advanced queries".
 
 ![An image showing ](Media/Image3.22.jpg)
 
@@ -508,7 +508,7 @@ Figure 3. 27 : Editing a Saved Query
 
 ### Voice to Text Queries
 
-To speak a query, click the **Microphone** button on the search page. Voice commands must begin with by speaking the word “find”. When you begin a voice command with “find”, the search parameter field populates with what is spoken after the word “find”.
+To speak a query, click the **Microphone** button on the search page. Voice commands must begin with by speaking the word "find". When you begin a voice command with "find", the search parameter field populates with what is spoken after the word "find".
 
 >**NOTES – Verify that your microphone is enabled for use in your internet browser.**
 
@@ -517,7 +517,7 @@ To speak a query, click the **Microphone** button on the search page. Voice comm
 For example, the following spoken-word search performed.
 
 ```
-“find 728”
+"find 728"
 ```
 
 The search returns entries that contain the value 728 as shown in the following image (e.g.
@@ -527,7 +527,7 @@ phone attribute).
 
 Figure 3. 28 : Example Result of Voice Search Query
 
-To stop voice command detection in the Global Identity Viewer, say, “stop”.
+To stop voice command detection in the Global Identity Viewer, say, "stop".
 
 ### Saving Query Results
 
@@ -541,7 +541,7 @@ To generate a report containing Global Identity Viewer search results:
 
 1. (optional) Click the Export Settings button (![An image showing ](Media/Gear.jpg)). The Export Settings window displays.
 2. (optional) To limit the number of entries in the search results and the exported report, enter a value in the Size Limit field. A change to the size limit requires clicking Search, in order to take effect.
-3. (optional) To specify which attributes you want returned in your search, type an attribute name. Press enter after each attribute name. When the attribute name is surrounded by gray shading, this indicates that the attribute has been selected as an attribute to be returned in the report. In the following example, the attributes ou, employeetype, and have been selected to be returned in search results. When you’re finished entering return attributes, click Save.
+3. (optional) To specify which attributes you want returned in your search, type an attribute name. Press enter after each attribute name. When the attribute name is surrounded by gray shading, this indicates that the attribute has been selected as an attribute to be returned in the report. In the following example, the attributes ou, employeetype, and have been selected to be returned in search results. When you're finished entering return attributes, click Save.
 
 ![An image showing ](Media/Image3.29.jpg)
 
@@ -585,10 +585,10 @@ Global Identity Viewer search results can be exported to a JSON formatted file u
 <parametername>:<parametervalue><space><parametername>:<parametervalue>
 ```
 
-If your advanced query has a “parameter display name” defined, use this for the <parametername> instead of the attribute name.
+If your advanced query has a "parameter display name" defined, use this for the <parametername> instead of the attribute name.
 
 ```
-“Enter City”:”San Francisco” “Enter Title”:Sales
+"Enter City":"San Francisco" "Enter Title":Sales
 ```
 
 >**NOTE – this argument is for advanced queries where the Parameter option is enabled. Refer to the Advanced Queries section for more information.**
@@ -597,7 +597,7 @@ If your advanced query has a “parameter display name” defined, use this for 
 
     [required] The output file name. The format of the output data is JSON.
 
->**NOTE – In addition to the file name, the file’s location can also be specified. If the location is not specified, the output file is saved in <RLI_HOME>\bin\advanced.**
+>**NOTE – In addition to the file name, the file's location can also be specified. If the location is not specified, the output file is saved in <RLI_HOME>\bin\advanced.**
 
 ## Example
 
@@ -611,7 +611,7 @@ global_id_viewer.bat -g myprofile -q Usersbylocation -p l:laredo -f c:/radianton
 >**NOTE – If your query name contains spaces, surround the -q value with double-quotes. If your query has more than one parameterized attribute/expression, separate each param with a `<space>` in the -p property. If any parameter value contains `<spaces>`, surround the value with double-quotes. An example is shown below.
 
 ```
-global_id_viewer.bat -g globalprofile -q "Managers per location" - p title:”sales manager" l:London -f c:/radiantone/salesInLondon.json
+global_id_viewer.bat -g globalprofile -q "Managers per location" - p title:"sales manager" l:London -f c:/radiantone/salesInLondon.json
 ```
 
 ## Configure Reports
@@ -681,7 +681,7 @@ Editing Existing Reports
 To edit an existing report:
 
 1. From the Reports page, click the ![An image showing ](Media/yellow-icon.jpg) button. Step 1 of the Reports Wizard displays.
-2. Make changes to the report as needed. Because all required parameters are already configured, you can advance or backtrack to any step in the Report Wizard by clicking the “Step...” buttons.
+2. Make changes to the report as needed. Because all required parameters are already configured, you can advance or backtrack to any step in the Report Wizard by clicking the "Step..." buttons.
 3. When you have finished configuring the report, click Finish.
 
 **Report Scheduling**
@@ -692,7 +692,7 @@ To schedule a report that has finished, click the ![An image showing ](Media/yel
 
 **Deleting Reports**
 
-To delete an existing report, click the report’s ![An image showing ](Media/delete-report.jpg) button. Click Yes to confirm the deletion.
+To delete an existing report, click the report's ![An image showing ](Media/delete-report.jpg) button. Click Yes to confirm the deletion.
 
 Searching for a Report
 
