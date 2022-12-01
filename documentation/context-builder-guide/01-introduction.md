@@ -25,7 +25,7 @@ Figure 1.1: Schema Manager
 
 ### View Designer 
 
-The View Designer is used for building custom views from schemas that have been extracted with the Schema Manager. See Chapter 4 for details on View Designer.
+The View Designer is used for building custom views from schemas that have been extracted with the Schema Manager. See [Chapter 4](04-view-designer.md) for details on View Designer.
  
 ![An image showing ](Media/Image1.2.jpg)
 
@@ -43,4 +43,4 @@ Select the Control Panel – Context Builder Audit option from the “Log Settin
 
  ![An image showing ](Media/Image1.3.jpg)
 
-Figure 1. 3: Context Builder Log Settings
+Figure 1.3: Context Builder Log Settings
