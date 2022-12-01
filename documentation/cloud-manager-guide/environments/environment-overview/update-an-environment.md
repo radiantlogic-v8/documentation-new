@@ -5,9 +5,9 @@ description: Steps to update an existing environment
 ---
 # Update an Environment
 
-When updates are applied to your Cloud Manager instance, your environments are not automatically updated. This guide outlines the steps required to update your environments. (**This still needs to be confirmed/there may be other update conditions**)
+When version updates are applied to your Cloud Manager instance, your environments are not automatically updated (**This still needs to be confirmed/there may be other update conditions**). You can update your environments from the *Environments* home screen or you can update a specific environment from it's [*Overview*](../environment-details/environment-details-ui.md) screen. This guide outlines the steps required to update your environments from the *Environments* home screen. 
 
-> **Important notes before getting started.**
+> **Note:** Before getting started make sure you know your current version of of Cloud Manager and the required number of FID nodes to display for each environment that requires updating.
 
 Quick linking to other docs.
 
@@ -19,7 +19,7 @@ When an environment requires updating, an **Update Now** message appears next to
 
 ### Begin updating
 
-There are two options to begin the process to update an environment, either from the options menu (**...**) or by selecting the **Update Now** message.
+There are two ways to begin the environment update workflow from the home screen, either from the options menu (**...**) or by selecting the **Update Now** message.
 
 To update using the options menu, locate the environment you would like to update and select the corresponding ellipsis to display the environment's options menu. From the menu select **Update** to open the Update Environment dialog box.
 
@@ -43,13 +43,32 @@ To set the number of FID nodes to display for the environment, use the provided 
 
 Once you have set the correct version number and number of FID nodes, select **Update** to begin updating the environment.
 
-![image description]()
+![image description](environments/environment-overview/images/update-env-button.png)
 
 To quit the update and return to the main Environments screen, select **Cancel**.
 
-**Screenshot: cancel button circled**
-
 ### Environment update confirmation
 
+After selecting **Update** you will return to the main Environment's screen. The status of the environment being updated will display as **Updating**.
+
+![image description](environments/environment-overview/images/update-updating-status.png)
+
+If the environment updates successfully, you will receive a success notification and the environment's status will change to **Operational**.
+
+![image description](environments/environment-overview/images/update-successful.png)
+
+If the environment update is unsuccessful, you will receive an error notification and the environment's status will change to **Update Failed**.
+
+![image description](environments/environment-overview/images/update-failed.png)
+
 ## Next steps
+
+After reading this guide you should have an understanding of the steps required to update an environment, including updating the version number and number of FID nodes to display. To learn how to import a configuration file to an existing environment, review the guide on [importing a configuration file](import-configuration-file.md).
+
+### Related documentation
+
+- [Import a configuration file](import-configuration-file.md)
+- [Delete an environment](delete-an-environment.md)
+- [View environment details](../environment-details/environment-details-ui.md)
+- View environment logs
 
