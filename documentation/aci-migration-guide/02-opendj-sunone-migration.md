@@ -39,6 +39,7 @@ In OpenDJ there are two types of ACI: classic and unique global ACI. This option
 
 - openDJClassic.ldif – for classic ACI that are added as an attribute of the entry they
 target.
+
 - openDJGlobal.ldif – for global ACI which can target any entry on the server.
 
     >**NOTE – The RadiantOne service is NOT required to be running when this command is run.**
@@ -55,6 +56,7 @@ This parameter indicates the URL of the targeted LDAP server. Examples:
 ldap://localhost:
 ldap://10.11.9.15:
 ```
+
 #### Bind DN
 
 This parameter indicates the bind DN used for authentication to the LDAP server.
@@ -70,6 +72,7 @@ This parameter specifies a base DN under which to look for ACI. Example:
 ```
 dc=myCompany,dc=com
 ```
+
 Only one Base DN value is allowed per command. If you want to specify multiple base DNs, the
 aciUtil.bat command must be run multiple times.
 
@@ -88,6 +91,7 @@ This parameter indicates the CN used when adding the global ACI under ou=aggrega
 ```
 cn=globalOpenDJ
 ```
+
 Global Aci CN can be set to null if “Look for global Aci” was set to “n”, which means that no global ACI is retrieved from OpenDJ. Only one CN value is allowed per command. If you want to specify multiple base CNs, the aciUtil.bat command must be run multiple times. If you are not otherwise specifying a value for this parameter, a value of null must be used when passing the command.
 
 #### Re-Mapping
@@ -101,6 +105,7 @@ In the following example, two re-mappings are performed. References to “myComp
 ```
 myCompany-->RadiantLogic#allow-->deny
 ```
+
 #### LDIF File Path
 
 This parameter indicates the path to the folder where to write LDIF files. The value entered must be on the local machine. Example:
@@ -108,6 +113,7 @@ This parameter indicates the path to the folder where to write LDIF files. The v
 ```
 C://genldif
 ```
+
 If running the expod command multiple times, the value entered for this parameter must vary for each execution of the command to avoid over-writing LDIF files previously created.
 
 ### Examples
@@ -124,15 +130,13 @@ aciUtils.bat expod ldap://localhost:389 "cn=directory manager" password null n n
 
 #### Example 2
 
-In the following example, a local OpenDJ server is accessed, the “Specific base DN” is ou=
-myCompany,dc=example,dc=com, the utility retrieves the global ACI with “Global ACI CN”
-equal to “global”. A mapping is used where all instances of “myCompany” are replaced by
-“RadiantLogic”. It generates the files “openDJClassic.ldif” and “openDJGlobal.ldif” in the folder
-“C://genldif”.
+In the following example, a local OpenDJ server is accessed, the “Specific base DN” is ou=myCompany,dc=example,dc=com, the utility retrieves the global ACI with “Global ACI CN”
+equal to “global”. A mapping is used where all instances of “myCompany” are replaced by “RadiantLogic”. It generates the files “openDJClassic.ldif” and “openDJGlobal.ldif” in the folder “C://genldif”.
 
 ```
 aciUtils.bat expod ldap://localhost:389 "cn=directory manager" password "ou=myCompany,dc=example,dc=com" y global myCompany-->RadiantLogic C://genldif
 ```
+
 #### Example 3
 
 In the following example, a remote OpenDJ server is accessed, the “Specific base DN” is myCompany,dc=example,dc=com, the utility retrieves the global ACI with “Global ACI CN” equal to “global”. Finally two mappings are specified; one replaces all instances of “myCompany” with “RadiantLogic”. The other mapping replaces all instances of “allow” with “deny”. It generates the files “openDJClassic.ldif” and “openDJGlobal.ldif” in the folder “C://genldif”.
@@ -140,6 +144,7 @@ In the following example, a remote OpenDJ server is accessed, the “Specific ba
 ```
 aciUtils.bat expod ldap://10.1.2.3:389 "cn=directory manager" password "ou=myCompany,dc=example,dc=com" y global myCompany-->RadiantLogic#allow-->deny C://genldif
 ```
+
 ## Novell eDirectory ACI Migration
 
 With the expedir option, the utility searches a Novell eDirectory server for ACI, converts them to RadiantOne format and stores them into an LDIF file. The LDIF file should be reviewed for accuracy to ensure the automatic translation is as expected. Finally, the LDIF file can be imported into RadiantOne.
@@ -163,6 +168,7 @@ Only one Base DN value is allowed per command. If you want to specify multiple b
 ldap://localhost:
 ldap://10.11.9.15:
 ```
+
 **- w**
 <br> This parameter indicates the admin password used for authentication to LDAP Server.
 
@@ -177,6 +183,7 @@ In the following example, a Novell eDirectory server (10.11.13.64) listening on 
 ```
 aciUtils.bat expedir -b "o=radiant" -d "cn=admin,ou=users,o=radiant" -u "ldap://10.11.13.64:2389"
 ```
+
 - w "secret"
 
-After review, this file can be imported into RadiantOne. LDIF files can be imported from the Main Control Panel > Directory Browser tab using the ![An image showing ](Media/Image2.1.jpg)option.
+After review, this file can be imported into RadiantOne. LDIF files can be imported from the Main Control Panel > Directory Browser tab using the ![An image showing ](Media/Image2.1.jpg) option.
