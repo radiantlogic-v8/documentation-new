@@ -6,6 +6,7 @@ description: Hardening Guide
 # RadiantOne Hardening Guide
 
 - [Preface](00-preface.md)
+
 - [Chapter 1 - Securing RadiantOne Configuration and Administration](01-securing-radiantone-configuration-and-administration.md)
 
 - [Chapter 2 - Client Access Limits and Regulations](02-client-access-limits-and-regulations.md)
@@ -62,7 +63,7 @@ Technical support can be reached using any of the following options:
 
 - Website: support.radiantlogic.com
 - E-mail: support@radiantlogic.com
-- Fax: 415-798-5765
+- Fax: 415-798-5697
 - Toll-Free Phone: 1-877-727-6442
 
 ### Expert Mode
