@@ -1,3 +1,8 @@
+---
+title: test-the-result
+description: test-the-result
+---
+         
 # Test the Result
 
 From the Main Control Panel > Directory Browser, you can get a runtime view of the result.

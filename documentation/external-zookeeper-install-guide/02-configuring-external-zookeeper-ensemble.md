@@ -1,3 +1,8 @@
+---
+title: 02-configuring-external-zookeeper-ensemble
+description: 02-configuring-external-zookeeper-ensemble
+---
+         
 # Chapter 2: Configuring External ZooKeeper Ensemble
 
 For HA a minimum of three Zookeeper nodes is required.

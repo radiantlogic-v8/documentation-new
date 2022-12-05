@@ -1,3 +1,8 @@
+---
+title: 03-radiantone-universal-directory-hdap-store-management
+description: 03-radiantone-universal-directory-hdap-store-management
+---
+         
 # Chapter 3: RadiantOne Universal Directory (HDAP) Store Management
 
 ## Re-Indexing

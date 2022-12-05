@@ -1,3 +1,8 @@
+---
+title: 05-getting-started-with-radiantone
+description: 05-getting-started-with-radiantone
+---
+         
 # Chapter 5 – Getting Started with RadiantOne
 
 As discussed throughout this document, at the heart of most identity integration problems is the need for an identity service that can be accessed to search/retrieve a unique user profile that is used for authentication and authorization. RadiantOne comes equipped with not only an arsenal of advanced configuration tools to solve the most complex of cases, but also a set of wizards to help you get started in solving some of the most common problems that our customers

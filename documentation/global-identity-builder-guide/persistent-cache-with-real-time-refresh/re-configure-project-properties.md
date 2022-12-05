@@ -1,3 +1,8 @@
+---
+title: re-configure-project-properties
+description: re-configure-project-properties
+---
+         
 # Re-configure Project Properties
 
 [Project properties](#project-properties) sometimes require changes after creating a project. For example, you may acquire a new source of identity that requires modifying the schema definition. However, with real-time persistent cache refreshes running, configuration changes cannot be made. This section describes how to make these changes.

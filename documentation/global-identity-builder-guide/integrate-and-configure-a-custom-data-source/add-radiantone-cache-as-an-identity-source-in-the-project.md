@@ -1,3 +1,8 @@
+---
+title: add-radiantone-cache-as-an-identity-source-in-the-project
+description: add-radiantone-cache-as-an-identity-source-in-the-project
+---
+         
 # Add RadiantOne Cache as an Identity Source in the Project
 
 1. Select **Add Identity Source** to add an identity source to a project.

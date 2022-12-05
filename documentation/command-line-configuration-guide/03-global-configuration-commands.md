@@ -1,3 +1,8 @@
+---
+title: 03-global-configuration-commands
+description: 03-global-configuration-commands
+---
+         
 # Chapter 3: Global Configuration Commands
 
 Many properties can be modified manually from the Main Control Panel > Zookeeper tab (edit mode).

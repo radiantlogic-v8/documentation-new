@@ -1,3 +1,8 @@
+---
+title: 04-persistent-cache-management
+description: 04-persistent-cache-management
+---
+         
 # Chapter 4: Persistent Cache Management
 
 ## Backing up Persistent Cache

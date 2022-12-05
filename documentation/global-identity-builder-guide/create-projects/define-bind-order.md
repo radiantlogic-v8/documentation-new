@@ -1,3 +1,8 @@
+---
+title: define-bind-order
+description: define-bind-order
+---
+         
 # Define Bind Order
 
 After [uploading](#upload) into the global profile, you can define a bind order. For an example of the need for bind order, see [Bind Order](#bind-order) in the Concepts section.

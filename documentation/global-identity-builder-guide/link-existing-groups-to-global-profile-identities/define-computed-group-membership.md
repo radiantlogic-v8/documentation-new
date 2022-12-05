@@ -1,3 +1,8 @@
+---
+title: define-computed-group-membership
+description: define-computed-group-membership
+---
+         
 # Define Computed Group Membership
 
 The virtual view of group entries needs a computed attribute defined for the membership attribute. Steps to define a computed attribute are described in this section.

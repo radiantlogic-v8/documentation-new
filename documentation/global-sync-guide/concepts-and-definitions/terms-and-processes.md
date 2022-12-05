@@ -1,3 +1,8 @@
+---
+title: terms-and-processes
+description: terms-and-processes
+---
+         
 # Terms and Processes
 
 This section describes important basic terms and processes used by Global Sync.

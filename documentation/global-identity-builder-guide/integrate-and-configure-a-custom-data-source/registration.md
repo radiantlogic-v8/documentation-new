@@ -1,3 +1,8 @@
+---
+title: registration
+description: registration
+---
+         
 # Registration
 
 The custom data source example described in this section is Azure AD. RadiantOne includes a default custom data source to virtualize Azure AD. Edit this data source to point to your Azure AD. You must have an application registered in your Azure AD and have the APPLICATION ID and PASSWORD KEY before proceeding with the following steps.

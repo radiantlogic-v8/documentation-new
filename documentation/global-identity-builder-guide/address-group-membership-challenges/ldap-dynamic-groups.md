@@ -1,3 +1,8 @@
+---
+title: ldap-dynamic-groups
+description: ldap-dynamic-groups
+---
+         
 # LDAP Dynamic Groups
 
 If a source used in the Global Identity Builder contains identities that are associated with LDAP dynamic groups, and you plan on using the Global Identity Viewer to search for identities and groups, use RadiantOne to create a virtual view of the source that automatically evaluates the dynamic groups, and then add this view as an identity source into the project. This section provides guidance on how to achieve this.

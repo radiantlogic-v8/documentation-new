@@ -1,3 +1,8 @@
+---
+title: unresolved-identity
+description: unresolved-identity
+---
+         
 # Unresolved Identity
 
 An unresolved identity is one that either did not match a global profile identity, or matched more than one identity in the global profile based on the correlation rules defined for the identity source.

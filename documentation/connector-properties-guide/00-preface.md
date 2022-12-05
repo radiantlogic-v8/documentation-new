@@ -1,3 +1,8 @@
+---
+title: 00-preface
+description: 00-preface
+---
+         
 # RadiantOne Connector Properties Guide
 
 - [Preface](00-preface.md)

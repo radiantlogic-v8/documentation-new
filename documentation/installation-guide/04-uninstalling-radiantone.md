@@ -1,3 +1,8 @@
+---
+title: 04-uninstalling-radiantone
+description: 04-uninstalling-radiantone
+---
+         
 # Chapter 4: Uninstalling RadiantOne
 
 To remove RadiantOne, please follow the instructions below.

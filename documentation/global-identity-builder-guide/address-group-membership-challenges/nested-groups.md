@@ -1,3 +1,8 @@
+---
+title: nested-groups
+description: nested-groups
+---
+         
 # Nested Groups
 
 If a source used in the Global Identity Builder project contains identities that are associated with nested groups, and you plan on using the Global Identity Viewer to search for identities and groups, use RadiantOne to create a virtual view of the source that un-nests the groups and then add this view as an identity source into the project. This section provides guidance on how to achieve this.

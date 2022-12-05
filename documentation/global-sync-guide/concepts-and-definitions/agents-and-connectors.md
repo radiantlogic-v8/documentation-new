@@ -1,3 +1,8 @@
+---
+title: agents-and-connectors
+description: agents-and-connectors
+---
+         
 # Agents and Connectors
 
 Agents manage connectors which includes deploying, stopping/suspending and starting them as needed.

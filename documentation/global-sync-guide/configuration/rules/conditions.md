@@ -1,3 +1,8 @@
+---
+title: conditions
+description: conditions
+---
+         
 # Conditions
 
 Conditions dictate the circumstances that invoke the actions associated with the rule. When conditions are met, the actions are processed.

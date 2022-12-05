@@ -1,3 +1,8 @@
+---
+title: global-profile
+description: global-profile
+---
+         
 # Global Profile
 
 The global profile is a general term to define the final view of correlated identity sources. The global profile view is comprised of a unique list (a union) of identities along with attributes sourced from identity sources or computed in the attribute mappings configured in the Global Identity Builder project.

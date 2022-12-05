@@ -1,3 +1,8 @@
+---
+title: users-and-groups-distributed-in-multiple-containers
+description: users-and-groups-distributed-in-multiple-containers
+---
+         
 # Users and Groups Distributed in Multiple Containers
 
 The Global Identity Builder allows for one location for identities and one location for groups per source. If identities or groups are spread across multiple containers, like shown in the green-colored portion of the example below, and you can't use a shared root (e.g. `o=LDAP`) because it includes identities that you don't want in the global reference list (e.g. identities in the `ou=WA` container), create a virtual view in RadiantOne that eliminates the unwanted entries and then add this view as an identity source into the project. This section provides guidance on how to achieve this.

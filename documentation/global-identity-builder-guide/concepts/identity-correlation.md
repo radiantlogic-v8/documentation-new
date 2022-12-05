@@ -1,3 +1,8 @@
+---
+title: identity-correlation
+description: identity-correlation
+---
+         
 # Identity Correlation
 
 Identity Correlation is the process of linking overlapping users based on correlation rules. Once linked, the entries are joined into a global profile and a union is created by RadiantOne.

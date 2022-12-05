@@ -1,3 +1,8 @@
+---
+title: TOC
+description: TOC
+---
+         
 # Global Synchronization Guide {global-synchronization-guide}
 
 - [Introduction](introduction.md)

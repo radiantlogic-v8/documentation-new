@@ -1,3 +1,8 @@
+---
+title: remove-identities-from-the-global-profile
+description: remove-identities-from-the-global-profile
+---
+         
 # Remove Identities from the Global Profile
 
 During the design and configuration of the global profile view (when [real-time persistent cache refresh](#persistent-cache-with-real-time-refresh) is not running), you may need to remove the entire contents of the global profile or just identities from a specific source. From the configured project, select **Upload/Sync**. In the Bulk Upload section, select **Reset All** to delete all identities from the global profile view. To only remove identities uploaded from a specific data source, select **Reset** next to the identity source in the Single Upload section.

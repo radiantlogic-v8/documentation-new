@@ -1,3 +1,8 @@
+---
+title: project-properties
+description: project-properties
+---
+         
 # Project Properties
 
 Each project is associated with a set of properties. The properties are described in this section and an example is shown in the following screen.

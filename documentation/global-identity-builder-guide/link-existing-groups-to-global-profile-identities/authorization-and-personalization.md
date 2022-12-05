@@ -1,3 +1,8 @@
+---
+title: authorization-and-personalization
+description: authorization-and-personalization
+---
+         
 # Authorization and Personalization
 
 Many client applications that leverage LDAP directories for authentication and a policy information point, rely on group memberships for enforcing authorization and personalization.

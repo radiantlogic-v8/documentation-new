@@ -1,3 +1,8 @@
+---
+title: create-a-root-naming-context-for-global-profile-identities-and-groups
+description: create-a-root-naming-context-for-global-profile-identities-and-groups
+---
+         
 # Create a Root Naming Context for Global Profile Identities and Groups
 
 The following steps assume you have used the Global Identity Builder tool to create a global profile of identities and that `o=globaldirectoryview` is the RadiantOne root naming context where the final global identity view/cache is mounted. This example involves two Active Directory data sources containing identities that contribute to the global profile and contain groups. There are many different namespace designs that can be used. The following steps describe a basic example of creating a virtual view consisting of a container for all groups and one for the global profile list of identities.

@@ -1,3 +1,8 @@
+---
+title: TOC
+description: TOC
+---
+         
 - [Preface](00-preface.md)
 - [Securing RadiantOne Configuration and Administration](01-securing-radiantone-configuration-and-administration.md)
 

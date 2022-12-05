@@ -1,3 +1,8 @@
+---
+title: 03-radiantone-configuration
+description: 03-radiantone-configuration
+---
+         
 # Chapter 3: RadiantOne Configuration
 
 ## RadiantOne Nodes Running on Linux

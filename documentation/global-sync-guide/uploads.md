@@ -1,3 +1,8 @@
+---
+title: uploads
+description: uploads
+---
+         
 # Uploads
 
 If the target/destination needs populated with entries before starting synchronization, perform an initial upload. Uploads can be performed from the Main Control Panel or from a command line utility.

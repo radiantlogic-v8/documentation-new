@@ -1,3 +1,8 @@
+---
+title: 02-client-access-limits-and-regulations
+description: 02-client-access-limits-and-regulations
+---
+         
 # Chapter 2: Client Access Limits and Regulation
 
 ## Access Limits

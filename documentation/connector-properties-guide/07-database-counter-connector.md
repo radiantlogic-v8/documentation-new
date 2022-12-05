@@ -1,3 +1,8 @@
+---
+title: 07-database-counter-connector
+description: 07-database-counter-connector
+---
+         
 # Chapter 7: Database Counter Connector
 
 To support the Database Counter Connector, the database table must have an indexed column that contains a sequence-based value that is automatically maintained and modified for each record that is added, updated or deleted. The DB Counter connector uses this column to maintain a cursor to keep track of processed changes.

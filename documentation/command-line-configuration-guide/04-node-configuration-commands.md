@@ -1,3 +1,8 @@
+---
+title: 04-node-configuration-commands
+description: 04-node-configuration-commands
+---
+         
 # Chapter 4: Node Configuration Commands
 
 This chapter describes how to display the contents of the Cluster Node Configuration. It also explains how to get and set a node property. These commands can be issued using

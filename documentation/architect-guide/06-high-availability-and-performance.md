@@ -1,3 +1,8 @@
+---
+title: 06-high-availability-and-performance
+description: 06-high-availability-and-performance
+---
+         
 # Chapter 6 - High Availability and Performance
 
 ## High Availability and Fault Tolerance

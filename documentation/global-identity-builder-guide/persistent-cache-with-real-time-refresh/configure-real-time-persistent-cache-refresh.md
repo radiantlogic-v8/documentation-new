@@ -1,3 +1,8 @@
+---
+title: configure-real-time-persistent-cache-refresh
+description: configure-real-time-persistent-cache-refresh
+---
+         
 # Configure Real-time Persistent Cache Refresh
 
 To configure a real-time persistent cache refresh:

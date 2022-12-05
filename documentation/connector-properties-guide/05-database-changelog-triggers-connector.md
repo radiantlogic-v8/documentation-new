@@ -1,3 +1,8 @@
+---
+title: 05-database-changelog-triggers-connector
+description: 05-database-changelog-triggers-connector
+---
+         
 # Chapter 5: Database Changelog (Triggers) Connector 
 
 When a database object is configured as a publisher, triggers are installed on the object and document all changes to a log table. This object name has the syntax `\<table name\>\_LOG`. In the log table, two predefined column names are required: `RLICHANGEID` and `RLICHANGETYPE`. `RLICHANGEID` uniquely identifies one row in the change log table, and `RLICHANGETYPE` identifies the operation (insert, update, delete, abort). The database connector queries the log table to check for changes based on the polling interval.

@@ -1,3 +1,8 @@
+---
+title: 02-understanding-default-configuration-and-samples
+description: 02-understanding-default-configuration-and-samples
+---
+         
 # Chapter 2: Understanding Default Configuration and Samples
 
 ## Default Naming Contexts

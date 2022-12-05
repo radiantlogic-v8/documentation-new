@@ -1,3 +1,8 @@
+---
+title: data-source
+description: data-source
+---
+         
 # Data Source
 
 A data source represents the connection to a backend which plays the role of either a source or target endpoint for synchronization. LDAP data sources that have been defined are contained in `{RLI_HOME}/{INSTANCE_NAME}/datasources/ldap.xml`. Database data sources are contained in `{RLI_HOME}/{INSTANCE_NAME}/datasources/database.xml`. Connections to custom backends are contained in `{RLI_HOME}/{INSTANCE_NAME}/datasources/custom.xml`.

@@ -1,3 +1,8 @@
+---
+title: capture-connector-configuration
+description: capture-connector-configuration
+---
+         
 # Capture Connector Configuration
 
 The capture connector configuration dictates the process for detecting changes on the source objects. The type of data source determines which capture methods are available.

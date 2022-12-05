@@ -1,3 +1,8 @@
+---
+title: login-conflict-analysis
+description: login-conflict-analysis
+---
+         
 # Login Conflict Analysis
 
 A login attribute is one that an application uses to uniquely identify a user that needs to be authenticated. Therefore, the attributes configured as login attributes for the project should be populated and unique across all identities in the global profile view. If a login attribute does not have a value and/or the value is duplicated across multiple global profile identities, those identities are flagged as Login Conflict.

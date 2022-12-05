@@ -1,3 +1,8 @@
+---
+title: 02-general-commands
+description: 02-general-commands
+---
+         
 # Chapter 2: General Commands
 
 This chapter introduces the help and execfile commands.

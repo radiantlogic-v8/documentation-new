@@ -1,3 +1,8 @@
+---
+title: 06-patching-production-environment
+description: 06-patching-production-environment
+---
+         
 # Chapter 6: Patching Production Environment
 
 Typically, before implementing code updates (patches) in production, they should be tested in a development/QA environment. Product updates are applied by running an updater. A document describing how to apply the patch update accompanies each updater.

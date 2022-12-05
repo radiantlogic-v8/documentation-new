@@ -1,3 +1,8 @@
+---
+title: configure-persistent-cache
+description: configure-persistent-cache
+---
+         
 # Configure Persistent Cache
 
 Prior to using FID as an identity source in your Global Identity, configure and initialize a persistent cache for your virtual view(s).

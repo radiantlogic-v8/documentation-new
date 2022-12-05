@@ -1,3 +1,8 @@
+---
+title: 06-database-timestamp-connector
+description: 06-database-timestamp-connector
+---
+         
 # Chapter 6: Database Timestamp Connector
 
 For Oracle, SQL Server, MySQL, MariaDB, and Salesforce backends (using the RadiantOne JDBC driver), a timestamp-based change detection mechanism is available. To leverage this mechanism, your database table must have a column that contains a timestamp/date value associated with updates. For Salesforce, this column is LastModifiedDate. The column used in the timestamp connector must be indexed for performance.

@@ -1,3 +1,8 @@
+---
+title: create-virtual-view
+description: create-virtual-view
+---
+         
 # Create Virtual View
 
 RadiantOne includes a default virtual view for Azure AD. Edit this virtual view to point to your [Azure AD custom data source](#customize-data-source) configured in the previous section.

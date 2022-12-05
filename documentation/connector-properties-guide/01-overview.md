@@ -1,3 +1,8 @@
+---
+title: 01-overview
+description: 01-overview
+---
+         
 # Chapter 1: Overview
 
 Connectors are used for synchronization in the RadiantOne Global Sync module and have three main functions: 1) Query data sources and collect changed entries, 2) Filter unneeded events, and 3) publish changed entries with the required information (requested attributes).

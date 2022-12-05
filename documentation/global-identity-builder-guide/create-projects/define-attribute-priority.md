@@ -1,3 +1,8 @@
+---
+title: define-attribute-priority
+description: define-attribute-priority
+---
+         
 # Define Attribute Priority
 
 For an example of the need for attribute priority, see [Attribute Priority](#_VUID) in the Concepts section.

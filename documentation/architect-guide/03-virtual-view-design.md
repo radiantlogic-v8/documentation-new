@@ -1,3 +1,8 @@
+---
+title: 03-virtual-view-design
+description: 03-virtual-view-design
+---
+         
 # Chapter 3 – Virtual View Design
 
 ## Staging Backend Data

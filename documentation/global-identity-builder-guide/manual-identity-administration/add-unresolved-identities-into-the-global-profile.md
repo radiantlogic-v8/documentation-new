@@ -1,3 +1,8 @@
+---
+title: add-unresolved-identities-into-the-global-profile
+description: add-unresolved-identities-into-the-global-profile
+---
+         
 # Add Unresolved Identities into the Global Profile
 
 Any [unresolved](#unresolved-identity) identity can be manually added to the global profile as a new entry, or linked to an existing global profile entry from the source identity browser. You can view unresolved identities per identity source. From the main project page, select ![magnifying glass icon](./media/image60.png) next to the identity source.

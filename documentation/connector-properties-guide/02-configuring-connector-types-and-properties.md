@@ -1,3 +1,8 @@
+---
+title: 02-configuring-connector-types-and-properties
+description: 02-configuring-connector-types-and-properties
+---
+         
 # Chapter 2 - Configuring Capture Connector Types and Properties
 
 The process of configuring connector properties and the property definitions described throughout the rest of this section are applicable to all connector types.

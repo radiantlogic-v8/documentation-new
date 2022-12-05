@@ -1,3 +1,8 @@
+---
+title: variable-configuration
+description: variable-configuration
+---
+         
 # Variable Configuration
 
 Rule variables are configured in the RULE VARIABLES section of the Rule Set.

@@ -1,3 +1,8 @@
+---
+title: directory-connectors
+description: directory-connectors
+---
+         
 # Directory Connectors
 
 For directory backends (LDAP-accessible including RadiantOne Universal Directory and Active Directory), the default connectors are configured and started automatically. Go to Main Control Panel > Global Sync tab to select the topology and configure the pipeline. Select the Capture component to modify the connector type and advanced properties.

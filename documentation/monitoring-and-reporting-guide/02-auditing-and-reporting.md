@@ -1,3 +1,8 @@
+---
+title: 02-auditing-and-reporting
+description: 02-auditing-and-reporting
+---
+         
 # Chapter 2: Auditing and Reporting
 
 Reports are a key tool for monitoring the health of the RadiantOne service and should be

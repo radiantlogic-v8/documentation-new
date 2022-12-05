@@ -1,3 +1,8 @@
+---
+title: project-creation
+description: project-creation
+---
+         
 # Project Creation
 
 Each Global Identity Builder project builds a unique reference list of identities from disparate data sources. Overlapping identities are linked based on correlation rules and the entries are joined into a global profile. If there are no overlapping users, the global profile is a complete, aggregated list of unique identities. Clients of the RadiantOne service can leverage the global profile view to identify and authenticate users and retrieve profile attributes to enforce authorization and personalization.

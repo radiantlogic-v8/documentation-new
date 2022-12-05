@@ -1,3 +1,8 @@
+---
+title: 03-recommendations-for-securing-data-at-rest
+description: 03-recommendations-for-securing-data-at-rest
+---
+         
 # Chapter 3: Recommendations for Securing Data at Rest
 
 ## Delete Global Read Access and Assign Finer-Grained Access Controls

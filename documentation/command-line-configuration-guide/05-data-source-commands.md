@@ -1,3 +1,8 @@
+---
+title: 05-data-source-commands
+description: 05-data-source-commands
+---
+         
 # Chapter 5: Data Source Commands
 
 Data sources can be managed from the Main Control Panel > Settings tab > Server Backend section. This interface is shown below.

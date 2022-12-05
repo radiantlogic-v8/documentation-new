@@ -1,3 +1,8 @@
+---
+title: real-time-persistent-cache-refresh
+description: real-time-persistent-cache-refresh
+---
+         
 # Real-Time Persistent Cache Refresh
 
 The definition of Persistent Cache can be found in the chapter [Concepts](#persistent-cache).

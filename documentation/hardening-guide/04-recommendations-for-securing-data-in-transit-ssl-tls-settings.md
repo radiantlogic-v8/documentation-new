@@ -1,3 +1,8 @@
+---
+title: 04-recommendations-for-securing-data-in-transit-ssl-tls-settings
+description: 04-recommendations-for-securing-data-in-transit-ssl-tls-settings
+---
+         
 # Chapter 4: Recommendations for Securing Data in Transit - SSL/TLS Settings
 
 RadiantOne supports SSL/TLS and StartTLS to encrypt communication with clients and for communication to backend services.
