@@ -1,3 +1,8 @@
+---
+title: 03-ldap-connectors
+description: 03-ldap-connectors
+---
+         
 # Chapter 3: LDAP Connectors
 
 There are two types of LDAP connectors: Changelog and Persistent Search. These connector types are described in this chapter.

@@ -1,3 +1,8 @@
+---
+title: 05-inter-cluster-management
+description: 05-inter-cluster-management
+---
+         
 # Chapter 5: Inter Cluster Management
 
 ## Migrating Configuration Changes Across Existing Environments

@@ -1,3 +1,8 @@
+---
+title: hardware-sizing-guide
+description: hardware-sizing-guide
+---
+         
 # RadiantOne Hardware Sizing Guide
 
 ## Introduction Contents

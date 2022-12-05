@@ -11,9 +11,9 @@ file_name=$(basename $filepath)
 md='.md'
 title=${file_name%$md}
 
-STRING="\---"
+STRING="^---"
 
-if grep -q "$STRING" "$filepath" ; then
+if grep -q "$STRING" "$filepath"; then
          echo "[ ] Frontmatter already exists for file $filepath" ;
 else
          # Prepend front-matter to files

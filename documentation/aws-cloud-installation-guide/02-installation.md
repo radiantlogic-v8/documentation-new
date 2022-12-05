@@ -1,3 +1,8 @@
+---
+title: 02-installation
+description: 02-installation
+---
+         
 # Chapter 2: Installation
 
 Radiant Logic offers AWS Cloud Formation templates for the following types of RadiantOne architectures:

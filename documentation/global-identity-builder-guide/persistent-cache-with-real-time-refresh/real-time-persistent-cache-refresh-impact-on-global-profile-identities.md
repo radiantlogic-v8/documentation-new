@@ -1,3 +1,8 @@
+---
+title: real-time-persistent-cache-refresh-impact-on-global-profile-identities
+description: real-time-persistent-cache-refresh-impact-on-global-profile-identities
+---
+         
 # Real-time Persistent Cache Refresh Impact on Global Profile Identities
 
 The following table describes the expected outcome for global profile identities based on events detected on the source.

@@ -1,3 +1,8 @@
+---
+title: topology
+description: topology
+---
+         
 # Topology
 
 The naming and graphical representation of a set of objects participating in a synchronization process is known as a topology. The synchronization flow(s) in a topology are grouped and depicted as pipelines. A topology can consist of one or more synchronization pipelines. Pipelines are auto-generated when the topology is created. You cannot manually create your own pipelines.

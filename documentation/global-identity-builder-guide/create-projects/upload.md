@@ -1,3 +1,8 @@
+---
+title: upload
+description: upload
+---
+         
 # Upload
 
 Don't run uploads when the [real-time persistent cache refresh](#persistent-cache-with-real-time-refresh) process is running.

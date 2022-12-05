@@ -1,3 +1,8 @@
+---
+title: 04-active-directory-connectors
+description: 04-active-directory-connectors
+---
+         
 # Chapter 4: Active Directory Connectors
 
 There are three types of Active Directory connectors: USNChanged,

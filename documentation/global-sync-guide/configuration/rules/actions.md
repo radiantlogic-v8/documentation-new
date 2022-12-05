@@ -1,3 +1,8 @@
+---
+title: actions
+description: actions
+---
+         
 # Actions
 
 Actions are processed when conditions are met. There are three types of actions that can be used: **Abort**, **Apply Target Attribute Mapping**, and **Custom Code/Function**. Select one of these options from the **Action Type** drop-down list, configure any required settings and select **Insert**.

@@ -1,3 +1,8 @@
+---
+title: 03-post-installation
+description: 03-post-installation
+---
+         
 # Chapter 3: Post Installation
 
 This chapter describes applying your license key, verifying the installation of RadiantOne, and troubleshooting.

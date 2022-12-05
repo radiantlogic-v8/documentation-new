@@ -1,3 +1,8 @@
+---
+title: 02-configuration
+description: 02-configuration
+---
+         
 # Chapter 2: Configuration
 
 Before accessing the Global Identity Viewer, several preliminary tasks must be completed.
