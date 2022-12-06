@@ -6,7 +6,7 @@ description: TOC
 # Global Synchronization Guide {global-synchronization-guide}
 
 - [Introduction](introduction.md)
-- Concepts and Definitions {#concepts-and-definitions}
+- [Concepts and Definitions](#concepts-and-definitions)
   - [Terms and Processes](concepts-and-definitions/terms-and-processes.md)
   - [Data Source](concepts-and-definitions/data-source.md)
   - [Synchronization Object](concepts-and-definitions/synchronization-object.md)
@@ -15,21 +15,21 @@ description: TOC
   - [Agents and Connectors](concepts-and-definitions/agents-and-connectors.md)
   - [Queues](concepts-and-definitions/queues.md)
   - [Password Synchronization](concepts-and-definitions/password-synchronization.md)
-- Configuration {#configuration}
+- [Configuration](#configuration)
   - [Overview](configuration/overview.md)
   - [Data Sources](configuration/data-sources.md)
   - [Synchronization Topologies](configuration/synchronization-topologies.md)
-  - Capture Connector {#capture-connector}
+  - [Capture Connector](#capture-connector)
     - [Capture Connector Configuration](configuration/capture-connector/capture-connector-configuration.md)
     - [Database Connectors](configuration/capture-connector/database-connectors.md)
     - [Directory Connectors](configuration/capture-connector/directory-connectors.md)
     - [Custom Data Sources](configuration/capture-connector/custom-data-sources.md)
-  - Transformation {#transformation}
+  - [Transformation](#transformation)
     - [Transformation Configuration](configuration/transformation/transformation-configuration.md)
     - [Attribute Mappings](configuration/transformation/attribute-mappings.md)
   - [Script](configuration/script.md)
   - [Apply Connector](configuration/apply-connector.md)
-  - Rules {#rules}
+  - [Rules](#rules)
     - [Overview](configuration/rules/overview.md)
     - [Rule Configuration](configuration/rules/rule-configuration.md)
     - [Variable Configuration](configuration/rules/variable-configuration.md)
