@@ -5,9 +5,9 @@ description: Steps to update an existing environment
 ---
 # Update an Environment
 
-When version updates are applied to your Cloud Manager instance, your environments are not automatically updated (**This still needs to be confirmed/there may be other update conditions**). You can update your environments from the *Environments* home screen or you can update a specific environment from it's [*Overview*](../environment-details/environment-details-ui.md) screen. This guide outlines the steps required to update your environments from the *Environments* home screen. 
+When version updates are applied to your Cloud Manager instance, your environments are not automatically updated (**This still needs to be confirmed/there may be other update conditions and requirements**). You can update your environments from the *Environments* home screen or you can update a specific environment from it's [*Overview*](../environment-details/environment-details-ui.md) screen. This guide outlines the steps required to update your environments from the *Environments* home screen. 
 
-> **Note:** Before getting started make sure you know your current version of of Cloud Manager and the required number of FID nodes to display for each environment that requires updating.
+> **Note:** Before getting started, make sure you have your current version of of Cloud Manager and the required number of FID nodes to display for each environment that requires updating.
 
 Quick linking to other docs.
 
@@ -17,7 +17,7 @@ When an environment requires updating, an **Update Now** message appears next to
 
 ![image description](environments/environment-overview/images/update-now-notification.png)
 
-### Begin updating
+### Begin update
 
 There are two ways to begin the environment update workflow from the home screen, either from the options menu (**...**) or by selecting the **Update Now** message.
 
