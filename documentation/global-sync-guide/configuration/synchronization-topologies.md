@@ -11,7 +11,7 @@ There are two prerequisite steps for configuring synchronization topologies: mou
 
 All synchronization source and target endpoints must be represented in the RadiantOne namespace, meaning that virtual views containing all source and target objects should be mounted below a root naming context. The virtual views can be created using the Main Control Panel > Directory Namespace tab, or the Context Builder Tab. For details on creating virtual views from the Directory Namespace tab, see the RadiantOne Namespace Configuration Guide. For details on creating virtual views using the Context Builder tab, see the RadiantOne Context Builder Guide.
 
->[!important]
+>[!warning]
 >Make sure primary keys/unique identifiers are defined for all objects that will play a role in synchronization. You can manage the attributes defined for objects using Main Control Panel > Context Builder tab > Schema Manager sub-tab.
 
 ## Extend RadiantOne LDAP schema 

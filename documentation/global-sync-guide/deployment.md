@@ -105,7 +105,7 @@ When a change cannot be applied to a destination, and the error is due to a comm
 
 ![Global Sync Flow for Failed Messages Related to a Communication Error](media/image97.png)
 
->[!important]
+>[!warning]
 >Pay attention to the [time-to-live](concepts-and-definitions/queues.md#message-time-to-live) associated with messages in the pipeline queues. If messages cannot be applied to the target and continue to remain in the queue until the time-to-live period passes, the messages are deleted from the queue and cannot be recovered.
 
 ### Failure due to non-communication error
