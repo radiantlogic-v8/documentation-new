@@ -15,7 +15,7 @@ The Global Synchronization architecture is comprised of Agents, Queues, Sync Eng
 
 Agents manage Connectors which are components used to interface with the data sources. Changes flow to and from the Connectors asynchronously in the form of messages. This process leverages queues to temporarily store messages as they flow through the synchronization pipeline. The attribute mappings and/or transformation scripts are processed by the Sync Engine prior to the events being sent to the target endpoints.
 
->[!important]
+>[!warning]
 >All sources must have views mounted in the RadiantOne namespace to complete the synchronization configuration. To simplify management of the synchronization flows, it is recommended to have a dedicated section of the namespace for all source identity views. Once a view has been configured as a source for synchronization, no further changes should be made to the view (e.g. no object/attribute mapping changes, no adding/removing persistent cache, etc.). The Main Control Panel > Directory Namespace tab displays a warning for all source views that are configured for synchronization to avoid accidental configuration changes.
 
 ![A warning that "Global Sync topology exists on this naming context. The topology will need to be recreated if this configuration is modified."](./media/image1.png)
@@ -47,7 +47,7 @@ This chapter describes a typical deployment architecture and how high availabili
 
 ## Technical support
 
-Refer to the [Technical support guide](common-info/technical-support.md) for more information.
+Refer to the [Technical support guide](../common-info/technical-support.md) for more information.
 
 ## Expert mode
 
