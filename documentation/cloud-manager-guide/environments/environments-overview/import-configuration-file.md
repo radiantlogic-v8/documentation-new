@@ -88,7 +88,7 @@ After selecting **Yes, Import Configuration** from the [confirmation dialog](#up
 
 Select **Dismiss** to close the confirmation message while the file upload processes.
 
-**Insert image of uploading toast**
+![image description](environments/environment-overview/images/import-envdetails-uploading.png)
 
 If the file import is successful, the top level row displays the environment's details for the most recent configuration action. In the case of a file import this includes:
 
@@ -98,13 +98,13 @@ If the file import is successful, the top level row displays the environment's d
 - User: the user who imported the configuration file.
 - Status: displays as "Successful".
 
-**Insert image of successful status**
+![image description](environments/environment-overview/images/import-envdeatails-success.png)
 
 If the file import is unsuccessful, you will receive an error notification and the first row's *Status* will change to "Failed".
 
 Select **Dismiss** to close the error message.
 
-**Insert image of error tosst**
+![image description](environments/environment-overview/images/import-envdetails-error.png)
 
 ## Next steps
 
