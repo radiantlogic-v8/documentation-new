@@ -7,7 +7,7 @@ description: Homepage 1 Description
 
 This site provides resources for DevOps professionals to deploy the RadiantOne platform. Docker images and Kubernetes for orchestration allows for easily deploying the RadiantOne platform in the cloud.
 
-# Web Services
+## Web Services
 
 Web services API's A rich set of HTTP-based API's have been developed on top of LDAP, to provide broader access to the Universal directory, using modern protocols, such as SCIM, SPML and other web services API's, are described in this section
 
@@ -18,11 +18,13 @@ Web services API's A rich set of HTTP-based API's have been developed on top of 
   
   > [HTTP/REST](/web_services/HTTP)  
   > The REST interface supports all LDAP operations and the ability to navigate the directory tree. Wrapping these operations and the progressive disclosure capabilities that exist in LDAP directories into a REST interface opens it up to the web.
+
   > [SPML](/web_services/SPML)  
   > SPML is an XML-based provisioning request-and-response protocol. RadiantOne supports SPML v2 and plays the role of a Provisioning Service Provider (PSP).
    
 </section>
-# FID Architectural Blueprints for HA and failover.
+
+## FID Architectural Blueprints for HA and failover.
 
 Best recommendations for deploying FID across site(s), based on the cluster architecture, for providing high availability and failover.
 
@@ -35,7 +37,8 @@ Best recommendations for deploying FID across site(s), based on the cluster arch
   > Vita sum mortale fecistis, quos umbra auditos Pandione aegro Astypaleia adii aut pactus nare, Phrygiisque, tibi. Quod adspexit? Saltus non vixque utque aperit quae gentibus aptos.
   
 </section>
-# Cloud Deployments
+
+## Cloud Deployments
 
 <section>
   
@@ -44,14 +47,16 @@ Best recommendations for deploying FID across site(s), based on the cluster arch
   
   > [Kubernetes](/getting_started/kubernetes)  
   > You can use Kubernetes to orchestrate the configuration and deployment of RadiantOne. Radiant Logic provides DevOps images for deployments on cloud platforms such as Amazon Web Services (AWS) using Amazon Elastic Kubernetes Service (EKS) and Microsoft Azure Kubernetes Service (AKS).
+
   > [Helm](/getting_started/helm)  
   > Helm charts for FID and Zookeeper deployment
   
-   > [Terraform](/getting_started/terraform)  
+  > [Terraform](/getting_started/terraform)  
   > Terraform is an open-source infrastructure as code software tool that provides a consistent CLI workflow to manage hundreds of cloud services. Terraform codifies cloud APIs into declarative configuration files.
   
 </section>
-# LDAP Reference
+
+## LDAP Reference
 
 <section>
   
