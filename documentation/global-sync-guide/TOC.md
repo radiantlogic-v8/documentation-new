@@ -1,6 +1,6 @@
 ---
-title: TOC
-description: TOC
+title: Global Synchronization Guide TOC
+description: Global Synchronization Guide TOC Description
 ---
          
 # Global Synchronization Guide {global-synchronization-guide}
