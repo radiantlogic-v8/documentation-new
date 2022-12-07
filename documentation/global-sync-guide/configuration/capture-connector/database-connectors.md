@@ -52,7 +52,7 @@ To configure DB Changelog connector:
 1. Indicate the user name and password for the connector's dedicated credentials for connecting to the log table. If you do not have the user name and password, contact your DBA for the credentials.
 1. Enter the log table name using the proper syntax for your database (e.g. `{USER}.{TABLE}_LOG`). If you used [RadiantOne to generate the SQL scripts](#create-scripts-to-generate-triggers-and-changelog-table) for configuring the changelog components in the database, you can view the scripts to see the exact table name. Otherwise, contact your DBA for the log table name.
 
->[!important]
+>[!warning]
 >Change the value for this property only if you are creating the log table manually and the capture connector does not calculate the log table name correctly. Be sure to use the [correct syntax](#log-table-name-syntax) if you change the value.
 
 ![DB Changelog Connector Configuration](../../media/image24.png)
@@ -140,7 +140,7 @@ The table below outlines the available arguments.
 
 The following steps assume your backend database table has a primary key defined and contains a timestamp column. The timestamp column name is required for configuring the connector. The timestamp column database types supported are described in the [Database connectors](#database-connectors) section.
 
->[!important]
+>[!warning]
 >This connector type does not detect delete operations. If you have a need to detect delete operations from the database, you should choose a different connector type.
 
 1. From the Main Control Panel > Global Sync Tab, select the topology on the left.
@@ -153,7 +153,7 @@ The following steps assume your backend database table has a primary key defined
 1. You can configure connector properties in the Advanced Properties section.
 1. After the capture connector is configured, configure the transformation.
 
->[!important]
+>[!warning]
 >If you need to make changes to the timestamp column name, you must manually restart the connector and reset the cursor. The pipeline can be stopped on the Global Sync tab when the topology is selected on the left. Then select **Configure** next to the pipeline. In the configuration screen, select the Capture section. Change the timestamp column name and select **Save**. In the bottom left of the Capture configuration screen, select **Reset Cursor**. Go back to the Global Sync topologies page and select **Start** to start the pipeline components.
 
 ## DB counter
@@ -172,14 +172,14 @@ The following steps assume your database backend table contains an indexed colum
 
 ![DB Counter Connector Configuration](../../media/image32.png)
 
->[!important]
+>[!warning]
 >If you need to make changes to the Counter Column name, you must manually restart the connector and reset the cursor. The pipeline can be stopped on the Global Sync tab when the topology is selected on the left. Then select **Configure** next to the pipeline. In the configuration screen, select the Capture section. Change the counter column name and select **Save**. In the bottom left of the Capture configuration screen, select **Reset Cursor**. Go back to the Global Sync topologies page and select **Start** to start the pipeline components.
 
 ## Database connector failover
 
 This section describes the failover mechanism for the database connectors.
 
->[!important]
+>[!warning]
 >The backend servers must be configured for multi-master replication. Please check the vendor documentation for assistance with configuring replication for your backends.
 
 The database connectors leverage the failover server that has been configured for the data source. When you configure a data source for your backend database, select a failover database server from the drop-down list. The failover server must be configured as a RadiantOne data source. See the screen shot below for how to indicate a failover server for the Data Sources from the Main Control Panel.

@@ -3,10 +3,10 @@ title: RadiantOne Global Synchronization guide
 description: RadiantOne Global Synchronization guide
 ---
 
-# RadiantOne Global Synchronization guide {radiantone-global-synchronization-guide}
+# RadiantOne Global Synchronization guide
 
 - [Introduction](introduction.md)
-- Concepts and definitions {#concepts-and-definitions}
+- [Concepts and definitions](concepts-and-definitions.md)
   - [Terms and processes](concepts-and-definitions/terms-and-processes.md)
   - [Data source](concepts-and-definitions/data-source.md)
   - [Synchronization object](concepts-and-definitions/synchronization-object.md)
@@ -15,21 +15,21 @@ description: RadiantOne Global Synchronization guide
   - [Agents and connectors](concepts-and-definitions/agents-and-connectors.md)
   - [Queues](concepts-and-definitions/queues.md)
   - [Password synchronization](concepts-and-definitions/password-synchronization.md)
-- Configuration {#configuration}
+- [Configuration](configuration.md)
   - [Overview](configuration/overview.md)
   - [Data sources](configuration/data-sources.md)
   - [Synchronization topologies](configuration/synchronization-topologies.md)
-  - Capture Connector {#capture-connector}
+  - [Capture Connector](capture-connector.md)
     - [Capture connector configuration](configuration/capture-connector/capture-connector-configuration.md)
     - [Database connectors](configuration/capture-connector/database-connectors.md)
     - [Directory connectors](configuration/capture-connector/directory-connectors.md)
     - [Custom data sources](configuration/capture-connector/custom-data-sources.md)
-  - Transformation {#transformation}
+  - [Transformation](transformation.md)
     - [Transformation configuration](configuration/transformation/transformation-configuration.md)
     - [Attribute mappings](configuration/transformation/attribute-mappings.md)
   - [Script](configuration/script.md)
   - [Apply connector](configuration/apply-connector.md)
-  - Rules {#rules}
+  - [Rules](rules.md)
     - [Overview](configuration/rules/overview.md)
     - [Rule configuration](configuration/rules/rule-configuration.md)
     - [Variable configuration](configuration/rules/variable-configuration.md)

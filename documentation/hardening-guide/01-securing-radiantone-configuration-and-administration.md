@@ -20,6 +20,7 @@ Each RadiantOne node must be able to communicate to the other nodes on the follo
 The default TCP ports defined during install are described here. You might have changed these defaults.
 
 - Standard LDAP: 2389 and 636 or 1636 (SSL)
+  
 - Control Panel HTTP Ports: 7070 and 7171 (SSL)
 - RadiantOne Web Service HTTP Ports: 8089 and 8090 (SSL)
 - RadiantOne Admin Service HTTP Ports: 9100 and 9101 (SSL)
@@ -28,6 +29,7 @@ The default TCP ports defined during install are described here. You might have 
 ><span style="color:red">**IMPORTANT NOTE – if you are using third party tools, that are monitoring the above components, then all ports listed above might be required for their service. Also, if you want to allow administration/configuration of RadiantOne remotely, the Control Panel HTTP port must be made available.**
 
 - SMTP emails for alerts and other notifications use outbound ports 25 and 465 (SSL).
+  
 - Task scheduler ports 1099 and another random port between 49,000-65,000 do not need inbound or outbound connectivity. However, they must be accessible by localhost. This is used for running tasks on a RadiantOne node. Tasks are associated with initializing or exporting stores/persistent cache, re-indexing, etc.
 
 ## Protect and Monitor Access to the Directory Manager Account
@@ -170,13 +172,21 @@ Figure 1.1 : Changing Passwords
 RadiantOne offers advanced password policy settings that can be a combination of the following:
 
 - Allowing users to change their own passwords (require existing password to change).
+  
 - Password strength (minimum length, required uppercase characters, required special characters, required digits and required lowercase characters, required to pass a dictionary check).
+  
 - Password history (prevent password re-use).
+  
 - Forcing passwords changes after reset.
+  
 - Maximum password age.
+  
 - Allowing grace logins after password expires.
+  
 - Multiple password storage schemes are supported (e.g. Salted SHA-1, Salted SHA-256, Salted SHA-384, Salted SHA-512, BCrypt, SCrypt, and PBKDF2)
+  
 - Account lockout – if a user has not authentication successfully for longer than a specified period of time or if a user has reached the failed login threshold.
+  
 - Account expiration.
 
 For details on password policy properties, see the RadiantOne System Administration Guide.
