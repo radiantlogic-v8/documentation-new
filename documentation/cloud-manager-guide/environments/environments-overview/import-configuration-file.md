@@ -9,8 +9,6 @@ This guide outlines the steps required to import a configuration file into an ex
 
 > **Note:** Before getting started, ensure you have the correct configuration ZIP file saved and ready to upload.
 
-Quick Links to other docs
-
 ## Begin file upload
 
 You can begin the configuration file import from the [*Environments* home screen](#environments-home-screen) or from a [specific environment's *Details* screen](#environment-details-screen). After initiating the file import workflow, the steps to [import a configuration file](#upload-configuration-file) are the same.

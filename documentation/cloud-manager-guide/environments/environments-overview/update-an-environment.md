@@ -9,8 +9,6 @@ When version updates are applied to your Cloud Manager instance, your environmen
 
 > **Note:** Before getting started, make sure you have your current version of of Cloud Manager and the required number of FID nodes to display for each environment that requires updating.
 
-Quick linking to other docs.
-
 ## Managing environment updates
 
 When an environment requires updating, an **Update Now** message appears next to the environment's version number.

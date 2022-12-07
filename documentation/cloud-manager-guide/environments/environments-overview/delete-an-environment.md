@@ -5,9 +5,7 @@ description: Delete an environment
 ---
 # Delete an environment
 
-This guide outlines the steps to delete an environment in Cloud Manager.
-
-Any required notes before getting started.
+This guide outlines the required steps to delete an environment in Cloud Manager.
 
 ## Select the environment
 
