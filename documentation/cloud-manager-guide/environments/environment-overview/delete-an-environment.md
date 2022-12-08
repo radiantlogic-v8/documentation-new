@@ -11,7 +11,7 @@ This guide outlines the required steps to delete an environment in Cloud Manager
 
 From the *Environments* home screen, locate the environment you would like to delete from the list of environments. Select the ellipsis (**...**) located within the environment's row to expand the *Options* dropdown menu. From the *Options* menu, select **Delete** to open the [delete environment confirmation dialog](#delete-environment).
 
-![image description](environments/environments-overview/images/delete-options.png)
+![image description](environments/environment-overview/images/delete-options.png)
 
 ## Delete environment
 
@@ -19,21 +19,21 @@ To delete the selected environment, enter the environment's name in the space pr
 
 > **Note:** Deleting an environment is a permanent action and cannot be undone once submitted.
 
-![image description](environments/environments-overview/images/delete-enter-name.png)
+![image description](environments/environment-overview/images/delete-enter-name.png)
 
 If you would like to keep the environment and exit out of the confirmation dialog, select **Keep the Environment** to return to the *Environments* home screen.
 
-![image description](environments/environments-overview/images/delete-keep-env.png)
+![image description](environments/environment-overview/images/delete-keep-env.png)
 
 ## Confirmation
 
 After selecting [**Delete**](#delete-environment) in the confirmation dialog you will return to the *Environment's* home screen and receive a confirmation message if the environment was successfully deleted.
 
-![image description](environments/environments-overview/images/delete-success.png)
+![image description](environments/environment-overview/images/delete-success.png)
 
 If the environment could not be delete, you will receive and error notification indicating that the attempt to delete the environment failed. The e
 
-![image description](environments/environments-overview/images/delete-error.png)
+![image description](environments/environment-overview/images/delete-error.png)
 
 ## Next Steps
 
