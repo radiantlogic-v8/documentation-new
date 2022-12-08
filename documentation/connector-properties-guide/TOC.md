@@ -1,15 +1,14 @@
 ---
-title: Connector Properties Guide TOC
-description: Connector Properties Guide TOC Description
+title: RadiantOne connector properties guide
+description: RadiantOne connector properties guide
 ---
 
-# Connector Properties Guide {Connector Properties Guide}
+# RadiantOne connector properties guide
 
-- [Preface](00-preface.md)
-- [Overview](01-overview.md)
-- [Configuring Connector Types and Properties](02-configuring-connector-types-and-properties.md)
-- [LDAP Connectors](03-ldap-connectors.md)
-- [Active Directory Connectors](04-active-directory-connectors.md)
-- [Database Changelog (Triggers) Connector](05-database-changelog-triggers-connector.md)
-- [Database Timestamp Connector](06-database-timestamp-connector.md)
-- [Database Counter Connector](07-database-counter-connector.md)
+- [Overview](overview.md)
+- [Configure capture connector types and properties](configure-connector-types-and-properties.md)
+- [LDAP connectors](ldap-connectors.md)
+- [Active Directory connectors](active-directory-connectors.md)
+- [Database Changelog (triggers) connector](database-changelog-triggers-connector.md)
+- [Database timestamp connector](database-timestamp-connector.md)
+- [Database Counter connector](database-counter-connector.md)
