@@ -7,13 +7,15 @@ description: Guide to create a new environment
 
 This guide provides an overview of the steps required to create a new environment in Cloud Manager. 
 
-Before getting started:
+## Getting Started
 
-- Have your license key at hand.
-- Know your Cloud Manager version number.
+You will need to have the following before setting up your new environment:
+
+- Your license key.
+- Your Cloud Manager version number.
 - If you are importing a configuration file, ensure you have the correct file type saved and ready to go.
 
-The new environment setup requires you to define the environment [type](#define-environment-type), [details](#define-environment-details), and provides an optional step to [upload a configuration file](#advanced-setup) from another environment.
+The new environment setup requires you to define the environment type, details, and provides an optional step to upload a configuration file from another environment.
 
 ## New environment set up
 
