@@ -75,14 +75,14 @@ Select a password by either entering your chosen password in the space provided,
 
 > **Note:** Passwords must be a minimum of 12 characters, contain at least 1 special character, contain lower and upper case letters, and contain at least 1 number.
 
-![image description](environments/environment-overview/images/strong-password.png)
-
 Depending on the strength of your password, you will receive a notification that your password is **(requires definitions from Prashanth)**:
 
 - Weak:
 - Fair:
 - Good:
 - Strong:
+
+![image description](environments/environment-overview/images/strong-password.png)
 
 Adjust your password accordingly to ensure you have entered a strong password before proceeding to the confirmation step.
 
@@ -102,7 +102,7 @@ Your license key is the same unique license key that was originally provided to 
 
 Completing the steps outlined in the **Environment Type** and **Environment Details** sections are all that is required to set up your new environment. Once both sections are complete, select **Save** to create the new environment.
 
-> **Note:** Optionally, you can proceed to the **Advanced Setup** section if you would like to also upload a configuration file from an external environment.
+> **Note:** If you would like to upload a configuration file from an external environment, proceed to the Advanced Setup section.
 
 ![image description](environments/environment-overview/images/env-form-savebutton.png)
 
@@ -174,20 +174,12 @@ If there is an error and the environment cannot be created, the environment stat
 
 Select the ellipsis (**...**) in line with the environment to display a list of options. Options include:
 
-- Submit Again: resubmit the same form.
-- View Logs: troubleshoot where the error may have occurred.
-- Delete: delete the failed instance.
+- **Submit Again**: resubmit the same form without editing any of the fields.
+- **View Logs**: troubleshoot where the error may have occurred while the form data was processing.
+- **Delete**: if the environment hasn't been successfully created, delete the failed instance.
 
 ![image description](environments/environment-overview/images/env-name.png)
 
 ## Next Steps
 
 After reading this guide you should have an understanding of the steps required to create a new environment and optionally how to upload a configuration file during new environment creation. To learn how to update an existing environment, review the guide on [updating an environment](update-an-environment.md).
-
-### Related documentation
-
-- [Update an environment](update-an-environment.md)
-- [Import a configuration file](import-configuration-file.md)
-- [Delete an environment](delete-an-environment.md)
-- [View environment details](environments/environment-details/environment-details-ui.md)
-
