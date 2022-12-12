@@ -5,7 +5,7 @@ description: Overview of the Environments home screen user interface
 ---
 # Environments overview
 
-This guide provides an overview of the *Environments* home screen and its features. To navigate to the *Environments* home screen, select **Environments** in the left navigation bar.
+This guide provides an overview of the *Environments* home screen and its features. To navigate to the *Environments* home screen, select **Environments** in the left navigation.
 
 ![image description](environments/environment-overview/images/env-left-nav.png)
 
@@ -13,17 +13,17 @@ The *Environments* home screen provides an overview of all your organization's a
 
 ![image description](environments/environment-overview/images/environment-row.png)
 
-A quick start button labeled **New Environment** is available to begin creating a new environment from the home screen. Each environment has it's own **Options** menu (**...**) that allowing you to perform various operations on the selected environment.
+A quick start button labeled **New Environment** is available to begin creating a new environment from the home screen. Each environment has its own **Options** menu (**...**) that allows you to perform various operations on the selected environment.
 
 ![image description](environments/environment-overview/images/newenv-options.png)
 
 ## Environment details
 
-To access further details about an environment, select the environment's name. 
+To access further details about an environment, select the environment you wish to view. 
 
 ![image description](environments/environment-overview/images/env-name.png)
 
-This brings you to the environment *Overview* screen, where you can view further information about a given environment, such as node status or connections, and perform monitoring and updating actions.
+This brings you to the environment's *Overview* screen, where you can view further information about a given environment, such as node status or connections, and perform monitoring and updating actions.
 
 > **Note:** To learn more about the environment *Overview* features, review the [Environment Details](environments/environment-details/environment-details-ui.md) guide.
 
@@ -31,15 +31,15 @@ This brings you to the environment *Overview* screen, where you can view further
   
 ## Environment type
 
-**Type** indicates whether the environment is configured as a "Production or "Non-production" environment. "Production" environments are for production purposes, and "Non-production" environments are for development and testing.
+The environment **Type** indicates whether the environment is configured as a "Production or "Non-production" environment. "Production" environments are for production purposes, and "Non-production" environments are for development and testing.
 
-> **Note:** Each organization can only have one production environment per region.
+> **Note:** Only one production environment can be created per Cloud Manager instance, per region.
 
 ![image description](environments/environment-overview/images/env-type.png)
 
 ## Environment status
 
-**Status** indicates the current state of the environment and will automatically change to reflect an environment's state as operations are performed on an environment or if any operational errors have occurred. Statuses include (**these still need to be defined by Prashanth**):
+The environment **Status** indicates the current state of the environment. Statuses automatically change as operations are performed on an environment or if any errors have occurred. Statuses include (**these still need to be defined by Prashanth**):
 
 - Operational:
 - Warning:
@@ -64,11 +64,11 @@ To learn more about updating an environment, review the [update an environment](
 
 To view a list of operations that can be performed on a given environment, select the ellipsis in the environment row (**...**) to expand the **Options** menu. Options include:
 
-- View details:
-- Update: [update the environment](update-an-environment.md)
-- Import configuration: [import a configuration file](import-configuration-file.md)
-- View logs:
-- Delete: [delete an environment](delete-an-environment.md)
+- **View details**: takes you to an environment's *Overview* screen where you can view further details about the environment. To learn more about the environment *Overview*, review the [environment overview guide](../environment-details/environment-details-ui.md).
+- **Update**: opens the dialog to begin the update an environment workflow. For more information on updating an environment, review the [update an environment](update-an-environment.md) guide.
+- **Import configuration**: opens the dialog to being the workflow to import a configuration file to the environment. To learn more about importing configuration files, review the [import a configuration file](import-configuration-file.md) guide.
+- **View logs**: takes you to an environment's *Logs* screen where you can view log files for a given date range. To learn how to review logs, visit the environment details [logs](../environment-details/environment-logs.md) guide.
+- **Delete**: opens the dialog to being the workflow to delete an environment. For information on deleting an environment, review the [delete and environment](delete-an-environment.md) guide.
 
 ![image description](environments/environment-overview/images/options-expanded.png)
 
@@ -81,11 +81,3 @@ The **New Environment** button allows you to quickly start creating a new enviro
 ## Next Steps
 
 After reading this guide you should have an understanding of how to navigate the *Environments* home screen and its main features. To begin setting up a new environment, review the documentation on [creating a new environment](create-an-environment.md).
-
-### Related documentation
-
-- [Import a configuration file](import-configuration-file.md)
-- [Update an environment](update-an-environment.md)
-- [Delete an environment](delete-an-environment)
-- Review environment details
-
