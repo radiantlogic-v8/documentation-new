@@ -5,7 +5,9 @@ description: Guide to create a new environment
 ---
 # Create an environment
 
-This guide provides an overview of the steps required to create a new environment in Cloud Manager. 
+This guide provides an overview of the steps required to create a new environment in Cloud Manager.
+
+An environment is where a Radiant One product lives. Each environment is completely isolated and contains endpoints to access different applications.
 
 ## Getting Started
 
