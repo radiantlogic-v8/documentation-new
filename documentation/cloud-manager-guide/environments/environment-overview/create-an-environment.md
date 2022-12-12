@@ -19,11 +19,11 @@ The new environment setup requires you to define the environment type, details, 
 
 ## New environment set up
 
-To create a new environment, select the **New Environment** button on the Environments home screen.
+To create a new environment, select the **New Environment** button on the *Environments* home screen.
 
 ![image description](environments/environment-overview/images/new-env-button.png)
 
-This takes you to the New Environment form that contains all the input fields for the information required to create a new environment. The following sections outline how to complete these required fields.
+This takes you to the *New Environment* form that contains all the input fields for the information required to create a new environment. The following sections outline how to complete these required fields.
 
 ![image description](environments/environment-overview/images/new-env-form.png)
 
@@ -33,13 +33,13 @@ Start by selecting the required **Environment Type** and **Environment Tier**.
 
 #### Environment type
 
-To set the Environment Type, use the radio buttons to select either **Non-production**, for development and testing, or **Production**, for production purposes. 
+To set the **Environment Type**, use the radio buttons to select either **Non-production**, for development and testing, or **Production**, for production purposes.
 
-![image description](environments/environment-overview/images/env-type-selected.png)
+> **Note:** Only one production environment can be created per Cloud Manager instance, per region.
 
-> **Note:** Only one production environment can be created per Cloud Manager instance, per region. 
+![image description](environments/environment-overview/images/env-type-selected.png) 
 
-If your organization already has a production environment configured, the production option will be greyed out and impossible to select. Hovering over **Production** will display a confirmation message that your organization already has one production environment in use.
+If your organization already has a production environment configured, the production option will be greyed out and not able to be selected. Hovering over **Production** will display a confirmation message that your organization already has one production environment in use.
 
 ![image description](environments/environment-overview/images/production-disabled.png)
 
@@ -49,35 +49,35 @@ To set the **Environment Tier**, select either the Tier 1 or Tier 2 card.
 
 ![image description](environments/environment-overview/images/env-tier-selected.png)
 
-To view further details of a tier, select **View More** to expand the tier card. Select **View Less** to collapse the card.
+To view further details of a tier, select **View More** to expand the tier card. Select **View Less** to collapse the card **(Tier outlines require definitions from Prashanth)**.
 
 ![image description](environments/environment-overview/images/expand-tier-card.png)
 
 ### Define environment details
 
-Under the Environment Details section, set the environment name, version, password, and license key.
+Under the **Environment Details** section, set the environment name, version, password, and license key.
 
 #### Environment name
 
-To set the Environment Name, enter the chosen name in the space provided. Names must follow the naming convention **(which still needs to be defined)** and can contain 100 characters or less.
+To set the **Environment Name**, enter the required name in the space provided. Names must follow the naming convention **(which still needs to be defined)** and can contain 100 characters or less.
 
 ![image description](environments/environment-overview/images/successful-env-name.png)
 
 #### Version
 
-To set the Environment Version, select the version drop down to display all available versions. Select the value that corresponds with your organization's version of Cloud Manager.
+To set the Environment **Version**, select the version drop down to display all available versions. Select the value that corresponds with your organization's version of Cloud Manager.
 
 ![image description](environments/environment-overview/images/select-env-version.png)
 
 #### Password
 
-Select a password by either entering your chosen password in the space provided, or by selecting the Generate button to have a password automatically generated for you. 
+Select a password by either entering your chosen password in the space provided, or by selecting the **Generate** button to have a password automatically generated for you. 
 
 > **Note:** Passwords must be a minimum of 12 characters, contain at least 1 special character, contain lower and upper case letters, and contain at least 1 number.
 
 ![image description](environments/environment-overview/images/strong-password.png)
 
-Depending on the strength of your password, you will receive a notification that your password is:
+Depending on the strength of your password, you will receive a notification that your password is **(requires definitions from Prashanth)**:
 
 - Weak:
 - Fair:
@@ -100,25 +100,25 @@ Your license key is the same unique license key that was originally provided to 
 
 #### Save the new environment
 
-Completing the steps outlined in the Environment Type and Environment Details sections are all that is required to set up your new environment. Once both sections are complete, select **Save** to create the new environment.
+Completing the steps outlined in the **Environment Type** and **Environment Details** sections are all that is required to set up your new environment. Once both sections are complete, select **Save** to create the new environment.
 
-> **Note:** Optionally, you can proceed to the Advanced Setup section if you would like to also upload a configuration file from an external environment.
+> **Note:** Optionally, you can proceed to the **Advanced Setup** section if you would like to also upload a configuration file from an external environment.
 
 ![image description](environments/environment-overview/images/env-form-savebutton.png)
 
 ### Advanced Setup
 
-An optional advanced setup is available if you would like to upload a configuration ZIP file from another environment. Enable advanced setup by selecting the On position of the Advanced Setup toggle.
+An optional advanced setup is available if you would like to upload a configuration ZIP file from another environment. Enable advanced setup by toggling on **Advanced Setup**.
 
 ![image description](environments/environment-overview/images/advanced-setup-enabled.png)
 
 #### Upload type
 
-Next, choose the type of configuration you would like to upload by selecting either Upload Configuration Artifact or Install Samples.
+Next, choose the type of configuration you would like to upload by selecting either **Upload Configuration Artifact** or **Install Samples**.
 
 - The **Upload Configuration Artifact** option allows you to upload a configuration ZIP file from an external environment.
 
-- The **Install Samples** option allows you to... **this still needs to be defined**
+- The **Install Samples** option allows you to... **(this still needs to be defined)**
 
 ![image description](environments/environment-overview/images/advanced-upload-type.png)
 
@@ -128,11 +128,11 @@ Next, select the configuration ZIP file to upload. You can locate the file on yo
 
 ![image description](environments/environment-overview/images/env-drag-drop.png)
 
-Alternatively, you can select "choose file" within the upload box to open your system's file manager and locate the file to upload.
+Alternatively, you can select **choose file** within the upload box to open your system's file manager and locate the file to upload.
 
 ![image description](environments/environment-overview/images/env-choose-file.png)
 
-While your file is uploading, an Uploading message will appear in the file upload box, along with a progress bar.
+While your file is uploading, an "Uploading" message will appear in the file upload box, along with a progress bar.
 
 ![image description](environments/environment-overview/images/uploading-progress.png)
 
@@ -154,17 +154,17 @@ If the file upload is not successful, the configuration upload box displays with
 
 ## New environment confirmation 
 
-After saving the New Environment details form, you return to the Environments home screen. A confirmation message appears noting that your environment is being created and that the process can take up to 1 hour. The status of your new environment shows as **Creating**. Select **Dismiss** to close the confirmation message.
+After saving the New Environment details form, you return to the *Environments* home screen. A confirmation message appears noting that your environment is being created and that the process can take up to 1 hour. The status of your new environment shows as "Creating". Select **Dismiss** to close the confirmation message.
 
 ![image description](environments/environment-overview/images/env-creating-msg.png)
 
-Once the environment has been successfully created, the environment's status will switch from **Creating** to **Operational**.
+Once the environment has been successfully created, the environment's status will switch from "Creating" to "Operational".
 
 ![image description](environments/environment-overview/images/operational-status.png)
 
 ### Form submission failure
 
-If there is an issue with the form submission, you will receive an error message that the new environment creation failed and the new environment will no longer be visible in the environment list on the Environments home screen. Select **Dismiss** to close the error message and proceed to complete a new environment form again.
+If there is an issue with the form submission, you will receive an error message that the new environment creation failed and the new environment will no longer be visible in the environment list on the *Environments* home screen. Select **Dismiss** to close the error message and proceed to restart the workflow to create a new environment.
 
 ![image description](environments/environment-overview/images/form-submission-failed.png)
 
@@ -172,7 +172,7 @@ If there is an issue with the form submission, you will receive an error message
 
 If there is an error and the environment cannot be created, the environment status will switch from "Creating" to "Creation Failed".
 
-Select the ellipsis in line with the environment to display a list of options. Options include:
+Select the ellipsis (**...**) in line with the environment to display a list of options. Options include:
 
 - Submit Again: resubmit the same form.
 - View Logs: troubleshoot where the error may have occurred.

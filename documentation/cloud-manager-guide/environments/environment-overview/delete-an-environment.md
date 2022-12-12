@@ -9,13 +9,13 @@ This guide outlines the required steps to delete an environment in Cloud Manager
 
 ## Select the environment
 
-From the *Environments* home screen, locate the environment you would like to delete from the list of environments. Select the ellipsis (**...**) located within the environment's row to expand the *Options* dropdown menu. From the *Options* menu, select **Delete** to open the delete environment confirmation dialog.
+From the *Environments* home screen, locate the environment you would like to delete from the list of environments. Select the ellipsis (**...**) located within the environment's row to expand the **Options** dropdown menu. From the **Options** menu, select **Delete** to open the delete environment confirmation dialog.
 
 ![image description](environments/environment-overview/images/delete-options.png)
 
 ## Delete environment
 
-To delete the selected environment, enter the environment's name in the space provided in the confirmation dialog and select the **Delete** button. The environment name entered must match the actual environment name exactly, otherwise you will receive and error message and cannot submit the delete request.
+To delete the selected environment, enter the environment's name in the space provided in the confirmation dialog and select the **Delete** button. The environment name entered must match the actual environment name exactly, otherwise you will receive an error message and will not be able to submit the delete request.
 
 > **Note:** Deleting an environment is a permanent action and cannot be undone once submitted.
 
@@ -27,7 +27,7 @@ If you would like to keep the environment and exit out of the confirmation dialo
 
 ## Confirmation
 
-After selecting **Delete** in the confirmation dialog you will return to the *Environment's* home screen and receive a confirmation message if the environment was successfully deleted.
+After selecting **Delete** in the confirmation dialog you will return to the *Environment's* home screen. Here, you'll receive a confirmation message if the environment was successfully deleted and the environment will be removed from the environments list.
 
 ![image description](environments/environment-overview/images/delete-success.png)
 

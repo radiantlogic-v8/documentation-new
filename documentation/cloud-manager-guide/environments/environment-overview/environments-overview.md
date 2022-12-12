@@ -13,7 +13,7 @@ The *Environments* home screen provides an overview of all your organization's a
 
 ![image description](environments/environment-overview/images/environment-row.png)
 
-A quick start button is available to begin creating a new environment from the home screen. Each environment has it's own options menu (**...**) that allowing you to perform various operations on the selected environment.
+A quick start button labeled **New Environment** is available to begin creating a new environment from the home screen. Each environment has it's own **Options** menu (**...**) that allowing you to perform various operations on the selected environment.
 
 ![image description](environments/environment-overview/images/newenv-options.png)
 
@@ -23,13 +23,15 @@ To access further details about an environment, select the environment's name.
 
 ![image description](environments/environment-overview/images/env-name.png)
 
-This brings you to the [environment overview](../environment-details/environment-details-ui) screen, where you can view further information about a given environment, such as node status or connections, and perform monitoring and updating actions.
+This brings you to the environment *Overview* screen, where you can view further information about a given environment, such as node status or connections, and perform monitoring and updating actions.
+
+> **Note:** To learn more about the environment *Overview* features, review the [Environment Details](environments/environment-details/environment-details-ui.md) guide.
 
 ![image description](environments/environment-overview/images/env-details-home.png)
   
 ## Environment type
 
-Type indicates whether the environment is configured as a production or non-production environment. Production environments are for production purposes, and non-production environments are for development and testing.
+**Type** indicates whether the environment is configured as a "Production or "Non-production" environment. "Production" environments are for production purposes, and "Non-production" environments are for development and testing.
 
 > **Note:** Each organization can only have one production environment per region.
 
@@ -37,7 +39,7 @@ Type indicates whether the environment is configured as a production or non-prod
 
 ## Environment status
 
-Status indicates the current state of the environment and will automatically change to reflect an environment's state as operations are performed on an environment or if any operational errors have occurred. Statuses include (**these still need to be defined by Prashanth**):
+**Status** indicates the current state of the environment and will automatically change to reflect an environment's state as operations are performed on an environment or if any operational errors have occurred. Statuses include (**these still need to be defined by Prashanth**):
 
 - Operational:
 - Warning:
@@ -52,13 +54,15 @@ Status indicates the current state of the environment and will automatically cha
 
 ## Environment version
 
-Version indicates the current version of the environment. The version number is set by the administrator during [environment setup](create-an-environment.md). If the version number no longer matches the current version of Cloud Manager, an "Update Now" notification is displayed next to the version number prompting you to [update the environment](update-an-environment.md).
+**Version** indicates the current version of the environment. The version number is set by the environment administrator during environment setup. If the version number no longer matches the current version of Cloud Manager **(confirming this behavior with Prashanth)**, an "Update Now" notification is displayed next to the version number prompting you to update the environment. 
+
+To learn more about updating an environment, review the [update an environment](update-an-environment.md) guide.
 
 ![image description](environments/environment-overview/images/env-version.png)
 
 ## Options Menu
 
-To view a list of operations that can be performed on a given environment, select the ellipsis in the environment row (**...**) to expand the *Options* menu. Options include:
+To view a list of operations that can be performed on a given environment, select the ellipsis in the environment row (**...**) to expand the **Options** menu. Options include:
 
 - View details:
 - Update: [update the environment](update-an-environment.md)
@@ -76,7 +80,7 @@ The **New Environment** button allows you to quickly start creating a new enviro
 
 ## Next Steps
 
-After reading this guide you should have an understanding of how to navigate the Environments home screen and its main features. To begin setting up a new environment, review the documentation on [creating a new environment](create-an-environment.md).
+After reading this guide you should have an understanding of how to navigate the *Environments* home screen and its main features. To begin setting up a new environment, review the documentation on [creating a new environment](create-an-environment.md).
 
 ### Related documentation
 
