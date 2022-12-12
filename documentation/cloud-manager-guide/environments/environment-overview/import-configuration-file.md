@@ -7,11 +7,11 @@ description: Steps to import a configuration file to an existing environment
 
 This guide outlines the steps required to import a configuration file into an existing environment in Cloud Manager. 
 
-> **Note:** Before getting started, ensure you have the correct configuration ZIP file saved and ready to upload.
-
-## Begin file upload
+## Getting started
 
 You can begin the configuration file import from the *Environments* home screen or from a specific environment's *Overview* screen. After initiating the file import workflow, the steps to import a configuration file are the same.
+
+> **Note:** Before getting started, ensure you have the correct configuration ZIP file saved and ready to upload.
 
 ### Environments home screen
 
@@ -109,10 +109,3 @@ Select **Dismiss** to close the error message.
 ## Next steps
 
 After reading this guide you should have an understanding of the steps required to import a configuration file to an existing environment, either from the *Environment's* home screen or from a specific environment's detailed view. To learn how to export a configuration file, review the guide on **exporting a configuration file**.
-
-### Related documentation
-
-- Review configuration history
-- Export a configuration file
-- Delete an environment
-- View environment details
