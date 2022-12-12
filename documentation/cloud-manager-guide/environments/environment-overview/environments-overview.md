@@ -9,11 +9,11 @@ This guide provides an overview of the *Environments* home screen and its featur
 
 ![image description](environments/environment-overview/images/env-left-nav.png)
 
-The *Environments* home screen provides an overview of all your organization's available environments. Each environment is listed by row, including its [name](#environment-details), [type](#environment-type), [status](#environment-status), and [version](#environment-version).
+The *Environments* home screen provides an overview of all your organization's available environments. Each environment is listed by row, including its name, type, status, and version.
 
 ![image description](environments/environment-overview/images/environment-row.png)
 
-A quick start button is available to begin creating a [new environment](#new-environment) from the home screen. Each environment has it's own [options menu](#options-menu) (**...**) that allowing you to perform various operations on the selected environment.
+A quick start button is available to begin creating a new environment from the home screen. Each environment has it's own options menu (**...**) that allowing you to perform various operations on the selected environment.
 
 ![image description](environments/environment-overview/images/newenv-options.png)
 

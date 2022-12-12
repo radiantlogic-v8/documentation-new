@@ -9,7 +9,7 @@ This guide outlines the required steps to delete an environment in Cloud Manager
 
 ## Select the environment
 
-From the *Environments* home screen, locate the environment you would like to delete from the list of environments. Select the ellipsis (**...**) located within the environment's row to expand the *Options* dropdown menu. From the *Options* menu, select **Delete** to open the [delete environment confirmation dialog](#delete-environment).
+From the *Environments* home screen, locate the environment you would like to delete from the list of environments. Select the ellipsis (**...**) located within the environment's row to expand the *Options* dropdown menu. From the *Options* menu, select **Delete** to open the delete environment confirmation dialog.
 
 ![image description](environments/environment-overview/images/delete-options.png)
 
@@ -27,11 +27,13 @@ If you would like to keep the environment and exit out of the confirmation dialo
 
 ## Confirmation
 
-After selecting [**Delete**](#delete-environment) in the confirmation dialog you will return to the *Environment's* home screen and receive a confirmation message if the environment was successfully deleted.
+After selecting **Delete** in the confirmation dialog you will return to the *Environment's* home screen and receive a confirmation message if the environment was successfully deleted.
 
 ![image description](environments/environment-overview/images/delete-success.png)
 
-If the environment could not be delete, you will receive and error notification indicating that the attempt to delete the environment failed. The e
+If the environment could not be deleted, you will receive an error notification indicating that the attempt to delete the environment failed. The environment will still be listed on the *Environments* home screen.
+
+Select **Dismiss** to close the error notification.
 
 ![image description](environments/environment-overview/images/delete-error.png)
 

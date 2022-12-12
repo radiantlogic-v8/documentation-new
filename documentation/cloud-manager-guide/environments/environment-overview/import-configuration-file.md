@@ -11,11 +11,11 @@ This guide outlines the steps required to import a configuration file into an ex
 
 ## Begin file upload
 
-You can begin the configuration file import from the [*Environments* home screen](#environments-home-screen) or from a [specific environment's *Details* screen](#environment-details-screen). After initiating the file import workflow, the steps to [import a configuration file](#upload-configuration-file) are the same.
+You can begin the configuration file import from the *Environments* home screen or from a specific environment's *Details* screen. After initiating the file import workflow, the steps to import a configuration file are the same.
 
 ### Environments home screen
 
-To begin the file import from the *Environments* home screen, locate the environment where you would like to import a configuration file. Select the ellipsis to the far right to open the *Options* dropdown menu. From the dropdown menu, select **Import Configuration** to open the import configuration dialog box and begin the [file import workflow](#upload-configuration-file).
+To begin the file import from the *Environments* home screen, locate the environment where you would like to import a configuration file. Select the ellipsis to the far right to open the *Options* dropdown menu. From the dropdown menu, select **Import Configuration** to open the import configuration dialog box and begin the file import workflow.
 
 ![image description](environments/environment-overview/images/import-configuration.png)
 
@@ -25,7 +25,7 @@ To being the file import from a specific environment's *Details* screen, select 
 
 ![image description](environments/environment-overview/images/import-env-details-screen.png)
 
-From the *Configuration* screen, select the **Import Configuration** button to open the import configuration dialog box and begin the [file import workflow](#upload-configuration-file).
+From the *Configuration* screen, select the **Import Configuration** button to open the import configuration dialog box and begin the file import workflow.
 
 ![image description](environments/environment-overview/images/import-config-button.png)
 
@@ -44,7 +44,7 @@ While your file is uploading, the upload box will display an "Uploading" message
 
 Once the file upload is complete, your file name appears next to a blue circle and check mark indicating a successful upload.
 
-To begin importing the configuration file, select **Import**. This will take you to the [confirmation screen](#upload-confirmation).
+To begin importing the configuration file, select **Import**. This will take you to the confirmation screen.
 
 ![image description](environments/environment-overview/images/import-successful-upload.png)
 
@@ -60,11 +60,11 @@ After selecting **Import**, a confirmation message will appear notifying that im
 
 ![image description](environments/environment-overview/images/import-confirm.png)
 
-If you started the configuration file import from the *Environments* home screen, you will be directed back to the [home screen](#environments-home-screen-confirmation) while the file uploads. Alternatively, if you started the configuration file import from a specific environment's *Details* screen, you will be directed back to the [*Configuration* screen](#configuration-screen-confirmation) while the file uploads.
+If you started the configuration file import from the *Environments* home screen, you will be directed back to the home screen while the file uploads. Alternatively, if you started the configuration file import from a specific environment's *Details* screen, you will be directed back to the *Configuration* screen while the file uploads.
 
 ### Environments home screen confirmation
 
-After selecting **Yes, Import Configuration** from the [confirmation dialog](#upload-confirmation), you will return to the *Environment's* home screen. Here, you will receive a confirmation message that your environment is being updated and that the process can take up to 1 hour. The environment's *Status* will display as "Updating...".
+After selecting **Yes, Import Configuration** from the confirmation dialog, you will return to the *Environment's* home screen. Here, you will receive a confirmation message that your environment is being updated and that the process can take up to 1 hour. The environment's *Status* will display as "Updating...".
 
 To hide the confirmation message, select **Dismiss**.
 
@@ -82,7 +82,7 @@ To hide the error message, select **Dismiss**.
 
 ### Configuration screen confirmation
 
-After selecting **Yes, Import Configuration** from the [confirmation dialog](#upload-confirmation), you will return to the *Configuration* screen. Here, you will receive a confirmation message that your environment is being updated and that the process can take up to 1 hour.
+After selecting **Yes, Import Configuration** from the confirmation dialog, you will return to the *Configuration* screen. Here, you will receive a confirmation message that your environment is being updated and that the process can take up to 1 hour.
 
 Select **Dismiss** to close the confirmation message while the file upload processes.
 

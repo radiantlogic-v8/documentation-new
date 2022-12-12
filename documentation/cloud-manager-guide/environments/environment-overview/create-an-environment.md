@@ -29,7 +29,7 @@ This takes you to the New Environment form that contains all the input fields fo
 
 ### Define Environment Type
 
-Start by selecting the required [**Environment Type**](#environment-type) and [**Environment Tier**](#environment-tier).
+Start by selecting the required **Environment Type** and **Environment Tier**.
 
 #### Environment type
 
@@ -55,7 +55,7 @@ To view further details of a tier, select **View More** to expand the tier card.
 
 ### Define environment details
 
-Under the Environment Details section, set the environment [name](#environment-name), [version](#version), [password](#password), and [license key](#license-key).
+Under the Environment Details section, set the environment name, version, password, and license key.
 
 #### Environment name
 
@@ -102,7 +102,7 @@ Your license key is the same unique license key that was originally provided to 
 
 Completing the steps outlined in the Environment Type and Environment Details sections are all that is required to set up your new environment. Once both sections are complete, select **Save** to create the new environment.
 
-> **Note:** Optionally, you can proceed to the [Advanced Setup](#advanced-setup) section if you would like to also upload a configuration file from an external environment.
+> **Note:** Optionally, you can proceed to the Advanced Setup section if you would like to also upload a configuration file from an external environment.
 
 ![image description](environments/environment-overview/images/env-form-savebutton.png)
 
@@ -164,7 +164,7 @@ Once the environment has been successfully created, the environment's status wil
 
 ### Form submission failure
 
-If there is an issue with the form submission, you will receive an error message that the new environment creation failed and the new environment will no longer be visible in the environment list on the Environments home screen. Select **Dismiss** to close the error message and proceed to complete a [new environment form](#new-environment-set-up) again.
+If there is an issue with the form submission, you will receive an error message that the new environment creation failed and the new environment will no longer be visible in the environment list on the Environments home screen. Select **Dismiss** to close the error message and proceed to complete a new environment form again.
 
 ![image description](environments/environment-overview/images/form-submission-failed.png)
 
