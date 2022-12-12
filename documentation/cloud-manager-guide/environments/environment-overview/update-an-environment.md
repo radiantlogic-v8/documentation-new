@@ -62,11 +62,3 @@ If the environment update is unsuccessful, you will receive an error notificatio
 ## Next steps
 
 After reading this guide you should have an understanding of the steps required to update an environment, including updating the version number and number of FID nodes to display. To learn how to import a configuration file to an existing environment, review the guide on [importing a configuration file](import-configuration-file.md).
-
-### Related documentation
-
-- [Import a configuration file](import-configuration-file.md)
-- [Delete an environment](delete-an-environment.md)
-- [View environment details](../environment-details/environment-details-ui.md)
-- View environment logs
-
