@@ -1,9 +1,9 @@
 ---
-title: Introduction
-description: Introduction
+title: Global Sync module introduction
+description: Global Sync module introduction
 ---
 
-# Introduction
+# Global Sync module introduction
 
 The RadiantOne Global Sync module is an advanced set of tools for synchronization and identity management. This module allows you to synchronize objects distributed across disparate data sources (directories, databases or applications): a change in an object in one source, at the attribute level, or for the whole object can be reflected into many other connected objects. Using a publisher/subscriber approach, any object can publish events (creation, deletion or modification for the whole object, or any attributes of this object) and propagate them to subscriber objects. User-defined attribute mappings and transformations can be applied during synchronization.
 
@@ -28,9 +28,6 @@ See the figure below for a high-level architecture of the synchronization proces
 ## How this manual is organized
 
 This guide is broken down into the following chapters:
-
-[Introduction](introduction.md)
-This chapter offers a quick introduction to this guide in addition to how the manual is organized and how to contact Radiant Logic technical support.
 
 [Concept and Definitions](concepts-and-definitions/terms-and-processes.md)
 This chapter introduces the main concepts that are essential to understand for configuring and administering Global Synchronization.
