@@ -22,3 +22,27 @@ This site provides resources for DevOps professionals to deploy the RadiantOne p
     
 </section>
 
+# Global sync guide
+
+<section>
+    
+  > [Overview](/connector-properties-guide/overview) 
+  > Connectors are used for synchronization in the RadiantOne Global Sync module and have three main functions: 1) Query data sources and collect changed entries, 2) Filter unneeded events, and 3) publish changed entries with the required information (requested attributes).
+  
+  > [Configuring connector types and properties](/connector-properties-guide/configuring-connector-types-and-properties)
+  > The process of configuring connector properties and the property definitions described throughout the rest of this section are applicable to all connector types.
+  
+  > [LDAP connectors](/connector-properties-guide/ldap-connectors)
+  > There are two types of LDAP connectors: Changelog and Persistent Search. These connector types are described in this chapter.
+  
+  > [Active Directory Connectors](/connector-properties-guide/active-directory-connectors)
+  > There are three types of Active Directory connectors: USNChanged, DirSync and Hybrid. These connector types are described in this chapter.
+  
+  > [Database Changelog (Triggers) Connector](/connector-properties-guide/database-changelog-triggers-connector)
+  > When a database object is configured as a publisher, triggers are installed on the object and document all changes to a log table.
+  
+  > [Database Timestamp Connector](/connector-properties-guide/database-timestamp-connector)
+  > For Oracle, SQL Server, MySQL, MariaDB, and Salesforce backends (using the RadiantOne JDBC driver), a timestamp-based change detection mechanism is available.
+  
+  
+</section>
