@@ -7,7 +7,7 @@ description: Homepage 2 Description
 
 This site provides resources for DevOps professionals to deploy the RadiantOne platform. Docker images and Kubernetes for orchestration allows for easily deploying the RadiantOne platform in the cloud.
 
-# Global sync guide
+## Global sync guide
 
 <section>
   
@@ -22,7 +22,7 @@ This site provides resources for DevOps professionals to deploy the RadiantOne p
     
 </section>
 
-# Global sync guide
+## Connector Properties guide
 
 <section>
     
