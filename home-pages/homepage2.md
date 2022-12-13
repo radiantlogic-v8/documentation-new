@@ -29,7 +29,7 @@ This site provides resources for DevOps professionals to deploy the RadiantOne p
   > [Overview](/connector-properties-guide/overview) 
   > Connectors are used for synchronization in the RadiantOne Global Sync module and have three main functions: 1) Query data sources and collect changed entries, 2) Filter unneeded events, and 3) publish changed entries with the required information (requested attributes).
   
-  > [Configuring connector types and properties](/connector-properties-guide/configuring-connector-types-and-properties)
+  > [Configuring connector types and properties](/connector-properties-guide/configure-connector-types-and-properties)
   > The process of configuring connector properties and the property definitions described throughout the rest of this section are applicable to all connector types.
   
   > [LDAP connectors](/connector-properties-guide/ldap-connectors)
