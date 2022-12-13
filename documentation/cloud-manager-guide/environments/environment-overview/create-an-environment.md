@@ -23,7 +23,7 @@ The new environment setup requires you to define the environment type, details, 
 
 To create a new environment, select the **New Environment** button on the *Environments* home screen.
 
-![image description](environments/environment-overview/images/new-env-button.png)
+![image description](images/new-env-button.png)
 
 This takes you to the *New Environment* form that contains all the input fields for the information required to create a new environment. The following sections outline how to complete these required fields.
 
