@@ -1,9 +1,9 @@
 ---
 keywords:
-title: Environments overview
+title: Environments Overview
 description: Overview of the Environments home screen user interface
 ---
-# Environments overview
+# Environments Overview
 
 This guide provides an overview of the *Environments* home screen and its features. To navigate to the *Environments* home screen, select **Environments** in the left navigation.
 

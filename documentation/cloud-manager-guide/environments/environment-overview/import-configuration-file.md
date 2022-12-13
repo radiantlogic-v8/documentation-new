@@ -1,9 +1,9 @@
 ---
 keywords:
-title: Import a configuration file
+title: Import a Configuration File
 description: Steps to import a configuration file to an existing environment
 ---
-# Import a configuration file
+# Import a Configuration File
 
 This guide outlines the steps required to import a configuration file into an existing environment in Cloud Manager. 
 

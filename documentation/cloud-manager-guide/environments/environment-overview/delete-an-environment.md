@@ -1,9 +1,9 @@
 ---
 keywords:
-title: Delete an environment
+title: Delete an Environment
 description: Delete an environment
 ---
-# Delete an environment
+# Delete an Environment
 
 This guide outlines the required steps to delete an environment in Cloud Manager.
 

@@ -1,9 +1,9 @@
 ---
 keywords:
-title: Create an environment
+title: Create an Environment
 description: Guide to create a new environment
 ---
-# Create an environment
+# Create an Environment
 
 This guide provides an overview of the steps required to create a new environment in Cloud Manager.
 

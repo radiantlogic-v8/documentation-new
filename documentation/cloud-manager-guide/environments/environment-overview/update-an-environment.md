@@ -1,6 +1,6 @@
 ---
 keywords:
-title: Update an environment
+title: Update an Environment
 description: Steps to update an existing environment
 ---
 # Update an Environment
