@@ -59,6 +59,24 @@ If the environment update is unsuccessful, you will receive an error notificatio
 
 ![image description](images/update-failed.png)
 
+## Previous updates
+
+You can view updates previously applied to an environment from the *Activity Log* screen, located within a specific environment's details view. From here, you also have the option to revert back to a previous environment update.
+
+### View previous updates
+
+To navigate to an environment's details section, select the environment name from the *Environments* home screen.
+
+![image description](images/update-select-envname.png)
+
+This brings you to the environment *Overview* screen. From here, select **Activity Log** tab in the top navigation to display a chronological list of all actions performed on the environment.
+
+![image description](images/update-activity-log.png)
+
+### Revert back to a previous update
+
+To revert back to a previous update... (**This still needs to be defined and is included in the questions list**).
+
 ## Next steps
 
 After reading this guide you should have an understanding of the steps required to update an environment, including updating the version number and number of FID nodes to display. To learn how to import a configuration file to an existing environment, review the guide on [importing a configuration file](import-configuration-file.md).
