@@ -37,8 +37,7 @@ You can view this data source configuration from Main Control Panel > Settings >
 
 For security reasons, the user account (Bind DN) you have configured in the vdsha data source should be the only one allowed to access the cn=queue and cn=dlqueue naming contexts.
 
-Configure access controls for these root naming contexts from Main Control Panel > Settings  
--> Security > Access Control. Access should only be allowed for the account configured in the vdsha data source. For details on configuring access controls, see the RadiantOne System Administration Guide.
+Configure access controls for these root naming contexts from Main Control Panel > Settings > Security > Access Control. Access should only be allowed for the account configured in the vdsha data source. For details on configuring access controls, see the RadiantOne System Administration Guide.
 
 ## Manage synchronization
 
