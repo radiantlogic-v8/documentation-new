@@ -1,6 +1,6 @@
 ---
-title: Chapter 3: Global Identity Viewer
-description: Chapter 3: Global Identity Viewer
+title: Chapter 3 Global Identity Viewer
+description: Chapter 3 Global Identity Viewer
 ---
 
 # Chapter 3: Global Identity Viewer
