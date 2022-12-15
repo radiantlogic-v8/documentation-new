@@ -1,6 +1,6 @@
 ---
-title: Chapter 2: Configuration
-description: Chapter 2: Configuration
+title: Chapter 2 Configuration
+description: Chapter 2 Configuration
 ---
 
 # Chapter 2: Configuration
