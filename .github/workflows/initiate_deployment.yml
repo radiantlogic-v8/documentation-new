@@ -1,0 +1,18 @@
+name: Remote Dispatch Action Initiator
+
+on:
+  push:
+    branches: [master, 'v[0-9].[0-9].[0-9]']
+  repository_dispatch:
+
+jobs:
+  ping-pong:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dispatch initiating repository event
+       
+        run: |
+          curl -X POST https://api.github.com/repos/github.com/radiantlogic-v8/developer-site/dispatches \
+          -H 'Accept: application/vnd.github.everest-preview+json' \
+          -u ${{ secrets.ACCESS_TOKEN }} \
+          --data '{"event_type": "initiate_deploy", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'" }}'
