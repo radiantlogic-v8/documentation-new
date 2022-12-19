@@ -19,7 +19,7 @@ Alternatively, you can select the **Options** (**...**) menu located in the node
 
 ### FID node details
 
-The FID node details dialog provides the following information for the selected node:
+The FID node details dialog provides the following information for the selected node (**waiting for definitions from RL**):
 
 - Name:
 - Status:
@@ -40,7 +40,7 @@ Select **Cancel** to exit the node details dialog.
 
 ### Zookeeper node details
 
-The Zookeeper node details dialog provides the following information for the selected node:
+The Zookeeper node details dialog provides the following information for the selected node (**waiting for definitions from RL**):
 
 - Name:
 - Status:
@@ -55,6 +55,6 @@ Select **Cancel** to exit the node details dialog.
 
 ![image description](images/node-zookeeper-logs.png)
 
-## Next Steps
+## Next steps
 
 After reviewing this guide, you should have an understanding of how to review the status and health of specific FID and Zookeeper nodes. For information on reviewing environment logs, see the guide on [logging](../logging/environment-logs.md).

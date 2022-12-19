@@ -37,6 +37,6 @@ Select **Dismiss** to close the error notification.
 
 ![image description](images/delete-failed.png)
 
-## Next Steps
+## Next steps
 
 After reading this guide you should have an understanding of the steps required to delete an existing environment. If you would prefer to update the environment, please refer to the guide on [updating an environment](update-an-environment.md).

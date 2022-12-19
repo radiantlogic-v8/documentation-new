@@ -140,6 +140,6 @@ An expandable **Options** (**...**) menu is available for each node. Selecting t
 
 (**Requested further info on alerts: what triggers them, definitions/messaging, etc.**)
 
-## Next Steps
+## Next steps
 
 After reading this guide you should be able to navigate the *Overview* screen of an environment and understand its main features including the top navigation, Environment Details, Application Endpoints, and Node Monitoring. For details on updating the environment, review the guide to [update an environment](update-environment.md).
