@@ -7,6 +7,8 @@ description: Delete an environment
 
 This guide outlines the required steps to delete an environment in Cloud Manager.
 
+> **Note:** Only non-production environments can be deleted by users. To delete a production environment... (**waiting for these details from RL**).
+
 ## Select the environment
 
 From the *Environments* home screen, locate the environment you would like to delete from the list of environments. Select the ellipsis (**...**) located within the environment's row to expand the **Options** dropdown menu. From the **Options** menu, select **Delete** to open the delete environment confirmation dialog.

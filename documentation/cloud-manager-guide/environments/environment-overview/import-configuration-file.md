@@ -108,4 +108,4 @@ Select **Dismiss** to close the error message.
 
 ## Next steps
 
-After reading this guide you should have an understanding of the steps required to import a configuration file to an existing environment, either from the *Environment's* home screen or from a specific environment's detailed view. To learn how to export a configuration file, review the guide on **exporting a configuration file**.
+After reading this guide you should have an understanding of the steps required to import a configuration file to an existing environment, either from the *Environment's* home screen or from a specific environment's detailed view. To learn how to export a configuration file, review the guide on [exporting a configuration file](../environment-details/export-configuration-file.md).
