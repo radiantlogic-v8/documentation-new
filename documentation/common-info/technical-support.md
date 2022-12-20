@@ -1,4 +1,4 @@
-## Technical Support
+# Technical support guide
 
 Before contacting Customer Support, please make sure you have the following information:
 
