@@ -74,7 +74,7 @@ The directory connectors leverage the failover servers that have been configured
 
  ![Configuring Failover Servers for the Backend Directory](../../media/image38.png)
 
-If a connection cannot be made to the primary server and the maximum number of retry attempts has been exhausted, the connector connects to the failover servers in the order they are listed. There is no automatic failback, meaning once the primary server is back online, the connector doesn't automatically go back to it.
+If a connection cannot be made to the primary server and the maximum number of retry attempts has been exhausted, the connector connects to the failover servers in the order they are listed. There is no automatic failback, meaning once the primary server is back online, the connector does not automatically go back to it.
 
 This failover mechanism is supported for Active Directory, OpenDJ, Oracle Directory Server Enterprise Edition (Sun Directory v7), Oracle Unified Directory (OUD). In addition, any LDAP directory implementing cn=changelog and `replicationCSN` attribute or the persistent search control is also supported.
 
