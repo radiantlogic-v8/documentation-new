@@ -19,7 +19,7 @@ Choose either the **LDAP** option (for Changelog) or **Persistent Search** and *
 
 ### Changelog
 
-The connector leverages a changelog that has been enabled on the backend directory. The connector picks up changes from the cn=changelog naming context based on a polling interval. The changenumber attribute in the changelog entries is used to keep track of the processed changes. The changelog must be enabled in the backend directory. Please check with your directory vendor for instructions on how to enable the changelog.
+The connector leverages a changelog that has been enabled on the backend directory. The connector picks up changes from the `cn=changelog` naming context based on a polling interval. The `changenumber` attribute in the changelog entries is used to keep track of the processed changes. The changelog must be enabled in the backend directory. Please check with your directory vendor for instructions on how to enable the changelog.
 
 ### Persistent search
 
@@ -74,9 +74,9 @@ The directory connectors leverage the failover servers that have been configured
 
  ![Configuring Failover Servers for the Backend Directory](../../media/image38.png)
 
-If a connection cannot be made to the primary server and the maximum number of retry attempts has been exhausted, the connector connects to the failover servers in the order they are listed. There is no automatic failback, meaning once the primary server is back online, the connector doesn't automatically go back to it.
+If a connection cannot be made to the primary server and the maximum number of retry attempts has been exhausted, the connector connects to the failover servers in the order they are listed. There is no automatic failback, meaning once the primary server is back online, the connector does not automatically go back to it.
 
-This failover mechanism is supported for Active Directory, OpenDJ, Oracle Directory Server Enterprise Edition (Sun Directory v7), Oracle Unified Directory (OUD). In addition, any LDAP directory implementing cn=changelog and `replicationCSN` attribute or the persistent search control is also supported.
+This failover mechanism is supported for Active Directory, OpenDJ, Oracle Directory Server Enterprise Edition (Sun Directory v7), Oracle Unified Directory (OUD). In addition, any LDAP directory implementing `cn=changelog` and `replicationCSN` attribute or the persistent search control is also supported.
 
 >[!warning]
 >When the Active Directory DirSync connector fails over to another DC replica, the current cursor (cookie) is used. The connector may receive all objects and attributes from the replica instead of just the delta from its last request. Therefore, you may notice the number of entries published by the connector is more than you were expecting. This behavior is dictated by the Active Directory server and is out of the control of the connector. Keep this in mind when you define the Max Retries and Retry Intervals for the connector properties. The smaller the numbers of retries, the higher the chance the connector will fail over and possibly receive all objects and attributes (a full sync) from the domain controller.

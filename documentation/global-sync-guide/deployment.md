@@ -13,7 +13,7 @@ The queuing system uses RadiantOne Universal Directory stores which are automati
 
 ![High Availability of Global Sync Components](media/image91.png)
 
-The agent starts automatically once a global sync pipeline is configured. This component manages the change-capture connectors, which includes, deploying, stopping/suspending and starting them as needed. The agent can run on any type of RadiantOne cluster node (follower or leaders) and there is only one agent running at any given time in a RadiantOne cluster. The agent doesn't consume a lot of memory, and they are not CPU-intensive, so there is no point in running multiple processes to distribute connectors on multiple nodes. One agent is enough per cluster and makes things simpler. To determine the node where the agent is running, run `{RLI_HOME}/bin/monitoring.bat` (`.sh` on Linux) `-d pipeline` to locate your sync process and the value of the `"captureHostname"` propertyId value indicates the machine where the agent is running. Knowing which RadiantOne node the agent is running on is required for certain monitoring and for knowing which node contains the connector log files.
+The agent starts automatically once a global sync pipeline is configured. This component manages the change-capture connectors, which includes, deploying, stopping/suspending and starting them as needed. The agent can run on any type of RadiantOne cluster node (follower or leaders) and there is only one agent running at any given time in a RadiantOne cluster. The agent does not consume a lot of memory, and they are not CPU-intensive, so there is no point in running multiple processes to distribute connectors on multiple nodes. One agent is enough per cluster and makes things simpler. To determine the node where the agent is running, run `{RLI_HOME}/bin/monitoring.bat` (`.sh` on Linux) `-d pipeline` to locate your sync process and the value of the `"captureHostname"` propertyId value indicates the machine where the agent is running. Knowing which RadiantOne node the agent is running on is required for certain monitoring and for knowing which node contains the connector log files.
 
 ![Agent Node/host](media/image92.png)
 
@@ -35,7 +35,7 @@ The Agent and Sync Engine process read and/or write into the queues using the cr
 
 You can view this data source configuration from Main Control Panel > Settings > Server Backend > LDAP Data Sources.
 
-For security reasons, the user account (Bind DN) you have configured in the vdsha data source should be the only one allowed to access the cn=queue and cn=dlqueue naming contexts.
+For security reasons, the user account (Bind DN) you have configured in the vdsha data source should be the only one allowed to access the `cn=queue` and `cn=dlqueue` naming contexts.
 
 Configure access controls for these root naming contexts from Main Control Panel > Settings > Security > Access Control. Access should only be allowed for the account configured in the vdsha data source. For details on configuring access controls, see the RadiantOne System Administration Guide.
 
@@ -111,7 +111,7 @@ When a change cannot be applied to a destination, and the error is due to a comm
 
 When a change cannot be applied to a destination, and the error is not due to a communication failure, the message is replayed for a configurable number of attempts. This is 5 attempts by default and is configurable in ZooKeeper at: `/radiantone/{VERSION}/cluster1/config/vds_server.conf`, the `refreshEngineEventErrorRetriesMax` property.
 
-After the number of retries is exhausted, the message is written into the queue associated with the pipeline below cn=dlqueue.
+After the number of retries is exhausted, the message is written into the queue associated with the pipeline below `cn=dlqueue`.
 
 ![Global Sync Flow for Failed Messages not related to a Communications Error](media/image98.png)
 

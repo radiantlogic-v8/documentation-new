@@ -59,7 +59,7 @@ To configure DB Changelog connector:
 
 7. Select **Save**.
 8. A message is displayed that asks if you want to apply the scripts to configure the log table immediately or not.
-![Configuration to Apply SQL Script Automatically or Not](../../media/image26.png)
+    ![Configuration to Apply SQL Script Automatically or Not](../../media/image26.png)
 9. To apply now, select **OK**. Otherwise, select **NO**.
 
 >[!note]
@@ -108,7 +108,7 @@ If schema and/or table name contain mixed-case characters, they must be quoted. 
 
 ### Create scripts to generate triggers and changelog table
 
-If the database backend doesn't have a changelog table, you can use RadiantOne to create one. RadiantOne can generate SQL scripts that a DBA can run on the database backend. These scripts create the needed configuration to support the DB Changelog connector. Use `{RLI_HOME}/bin/advanced/create_db_triggers.bat` to generate the scripts. The command uses seven arguments (which are described below) and generates four SQL scripts needed to configure the database to support the DB Changelog connector.
+If the database backend does not have a changelog table, you can use RadiantOne to create one. RadiantOne can generate SQL scripts that a DBA can run on the database backend. These scripts create the needed configuration to support the DB Changelog connector. Use `{RLI_HOME}/bin/advanced/create_db_triggers.bat` to generate the scripts. The command uses seven arguments (which are described below) and generates four SQL scripts needed to configure the database to support the DB Changelog connector.
 
 These scripts can be provided to the database backend DBA to review, modify and execute on the database server. Scripts generated using this command cannot be executed in the Main Control Panel.
 
@@ -148,7 +148,7 @@ The following steps assume your backend database table has a primary key defined
 1. Select a Capture component and the configuration displays.
 1. Select **DB Timestamp** from the **Connector Type** drop-down list.
 1. Indicate the column name in the database table that contains the timestamp. An example is shown below.
-![DB Timestamp Connector Configuration](../../media/image27.png)
+    ![DB Timestamp Connector Configuration](../../media/image27.png)
 1. Select **Save**.
 1. You can configure connector properties in the Advanced Properties section.
 1. After the capture connector is configured, configure the transformation.
@@ -164,7 +164,7 @@ The following steps assume your database backend table contains an indexed colum
 1. On the right, select the sync pipeline to configure.
 1. Select the Capture component and the configuration displays.
 1. Select **DB Counter** from the **Connector Type** drop-down list.
-1. Enter a value in the Change Type Column field. This value should be the database table column that contains the information about the type of change (insert, update or delete). If the column doesn't have a value, an update operation is assumed.
+1. Enter a value in the Change Type Column field. This value should be the database table column that contains the information about the type of change (insert, update or delete). If the column does not have a value, an update operation is assumed.
 1. Enter the column name in the database table that contains the counter. An example is shown below.
 1. Select **Save**
 1. You can configure connector properties in the Advanced Properties section.
@@ -186,4 +186,4 @@ The database connectors leverage the failover server that has been configured fo
 
  ![Configuring Failover Servers for the Backend Database](../../media/image33.png)
 
-If a connection cannot be made to the primary server, the connector tries to connect to the failover server configured in the data source. If a connection to both the primary and failover servers fails, the retry count goes up. The connector repeats this process until the value configured in "Max Retries on Connection Error" is reached. There is no automatic failback, meaning once the primary server is back online, the connector doesn't automatically go back to it.
+If a connection cannot be made to the primary server, the connector tries to connect to the failover server configured in the data source. If a connection to both the primary and failover servers fails, the retry count goes up. The connector repeats this process until the value configured in "Max Retries on Connection Error" is reached. There is no automatic failback, meaning once the primary server is back online, the connector does not automatically go back to it.

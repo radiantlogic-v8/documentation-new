@@ -13,7 +13,7 @@ A transformation describes how changes on source entries should be translated in
 |---|---|---|---|
 | Source and target attribute (names) are the same and mappings are simple | :heavy_check_mark: |  |  |
 | Lookups or other complex logic (conditions or actions) is required and you are comfortable with using java to code the entire logic |  | :heavy_check_mark: |  |
-| Complex conditions or actions are required and you don't want to code in java |  |  | :heavy_check_mark: |
+| Complex conditions or actions are required and you do not want to code in java |  |  | :heavy_check_mark: |
 
 ## Attribute mappings
 

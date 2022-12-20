@@ -19,7 +19,7 @@ To create a rule set:
 1. Select the object class associated with the entries in the source that you want to detect changes on from the **Source ObjectClass** drop-down list.
 1. Select the object class associated with the entries in the target that you want changes applied to from the **Target ObjectClass** drop-down list.
 1. (Optional) enter a description.
-![Rule Definition](../../media/image70.png)
+    ![Rule Definition](../../media/image70.png)
 1. (Optional) if you need to define variables to use in conditions, select the [RULE VARIABLES](variable-configuration.md) section and configure them.
 1. Select the [RULES](rule-configuration.md) section to configure the Rules for transformation.
 1. (Optional) to configure advanced options like Target Object RDN and DN generation, rules processing order and others, select the [ADVANCED OPTIONS](identity-linkage.md) section.
