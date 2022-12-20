@@ -5,7 +5,7 @@ description: Queues
 
 # Queues
 
-RadiantOne Global Sync relies on queues for guaranteed delivery of messages. Queues are a special kind of store managed in the RadiantOne Universal Directory below the cn=queue and cn=dlqueue root naming contexts. Every synchronization pipeline has its own queue below the cn=queue and cn=dlqueue naming contexts identified by the pipelineID. Messages are added into the queues by the capture connectors and retrieved from the queues by the sync engine. Cn=queue and cn=dlqueue are hidden root naming contexts, so if you want to view them, you must search for them. The Main Control Panel > Directory Browser tab can be used. An example is shown below.
+RadiantOne Global Sync relies on queues for guaranteed delivery of messages. Queues are a special kind of store managed in the RadiantOne Universal Directory below the `cn=queue` and `cn=dlqueue` root naming contexts. Every synchronization pipeline has its own queue below the `cn=queue` and `cn=dlqueue` naming contexts identified by the pipelineID. Messages are added into the queues by the capture connectors and retrieved from the queues by the sync engine. Both `cn=queue` and `cn=dlqueue` are hidden root naming contexts, so if you want to view them, you must search for them. The Main Control Panel > Directory Browser tab can be used. An example is shown below.
 
 ![The Directory Browser tab in the Main Control Panel with search results for "(objectclass=*)"](../media/image18.png)
 
