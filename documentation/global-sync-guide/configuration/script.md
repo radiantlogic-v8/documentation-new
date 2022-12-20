@@ -70,5 +70,5 @@ When your script has been modified, you can test it by emulating changes from th
 1. Add source attribute names and values. Attribute names are in the left column and corresponding value in the right column. Select in the cell, type the value and select **Enter**. Attribute types can be simple or complex. The definitions for "simple" and "complex" are based on SCIM (<http://www.simplecloud.info/specs/draft-scim-core-schema-01.html>). Use the red X button next to the attribute to remove it from the test.
     ![Example - Entering Attributes for Testing Script](../media/image68.png)
 1. Select **Test**
-1.  The results of the script logic are shown in the Output section.
-1.  When you are finished testing the mappings, select **CLOSE** to go back to the "Configure Pipeline" screen.
+1. The results of the script logic are shown in the Output section.
+1. When you are finished testing the mappings, select **CLOSE** to go back to the "Configure Pipeline" screen.
