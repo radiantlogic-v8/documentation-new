@@ -59,7 +59,7 @@ To configure DB Changelog connector:
 
 7. Select **Save**.
 8. A message is displayed that asks if you want to apply the scripts to configure the log table immediately or not.
-![Configuration to Apply SQL Script Automatically or Not](../../media/image26.png)
+    ![Configuration to Apply SQL Script Automatically or Not](../../media/image26.png)
 9. To apply now, select **OK**. Otherwise, select **NO**.
 
 >[!note]
@@ -148,7 +148,7 @@ The following steps assume your backend database table has a primary key defined
 1. Select a Capture component and the configuration displays.
 1. Select **DB Timestamp** from the **Connector Type** drop-down list.
 1. Indicate the column name in the database table that contains the timestamp. An example is shown below.
-![DB Timestamp Connector Configuration](../../media/image27.png)
+    ![DB Timestamp Connector Configuration](../../media/image27.png)
 1. Select **Save**.
 1. You can configure connector properties in the Advanced Properties section.
 1. After the capture connector is configured, configure the transformation.

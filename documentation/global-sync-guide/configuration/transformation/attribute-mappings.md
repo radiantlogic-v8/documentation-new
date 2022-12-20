@@ -137,11 +137,11 @@ Test the attribute mappings by entering values for the source attributes.
 1. Select the Transformation component.
 1. Expand below the Mappings section at the bottom.
 1. Select **TEST**.
-![Test Attribute Mappings](../../media/image57.png)
+    ![Test Attribute Mappings](../../media/image57.png)
 1. Select the source event type (e.g. **Insert**, **Update**, **Delete**) to test.
 1. Enter an Event ID. This is a DN that matches the location in the RadiantOne namespace for the source entries. (e.g. `uid=Aaron_Medler,ou=Accounting,o=companydirectory` assuming `o=companydirectory` is the source naming context in RadiantOne).
 1. Add source attribute names and values. Attribute names are in the left column and corresponding value in the right column. Click in the cell, type the value and select **Enter**. Attribute types can be simple or complex. The definitions for "simple" and "complex" are based on SCIM (<http://www.simplecloud.info/specs/draft-scim-core-schema-01.html>). Use the red X button next to the attribute to remove it from the test.
-![Example - Entering Simple Attributes for Testing](../../media/image58.png)
+    ![Example - Entering Simple Attributes for Testing](../../media/image58.png)
 1. Select **TEST**.
 1. The results of the Attribute Mappings are shown in the Output section.
 1. When you are finished testing the mappings, select **CLOSE** to go back to the "Configure Pipeline" screen.
