@@ -42,7 +42,7 @@ This chapter describes tuning options for specific types of backends virtualized
 [Chapter 5 – Testing RadiantOne Performance](05-testing-radiantone-performance.md)
 <br> This chapter describes what tool to use to test RadiantOne search and authentication performance.
 
-[Chapter 6 – Starting and Stopping Components](06-starting-and-stipping-components-and-services.md)
+[Chapter 6 – Starting and Stopping Components](06-starting-and-stopping-components-and-services.md)
 <br> This chapter describes how to start and stop RadiantOne service and Control Panel. This also includes steps on how to installs these components to run as Windows services and Linux daemons.
 
 [Chapter 7 – Deployment Architectures](07-deployment-architecture.md)

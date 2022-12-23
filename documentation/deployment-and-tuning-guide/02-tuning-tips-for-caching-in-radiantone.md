@@ -1173,7 +1173,7 @@ This option should be enabled if you want to support replication between this pe
 
 If inter-cluster replication is enabled, a replication journal is used to store changes that happen on the persistent cache branch.  The replication journal is associated with the default LDAP data source defined as replicationjournal and root naming context named cn=replicationjournal. The RadiantOne leader node in the cluster associated with the persistent cache, publishes changes into the replication journal. The RadiantOne leader nodes in all other clusters (that are configured for inter-cluster replication) pick up changes from the replication journal to update their local replica. Persistent caches usually only publish changes into the replication journal (for other RadiantOne Universal Directory replicas in other clusters). There are some cases where persistent cache can accept changes from other clusters. For use cases where this option could be applicable, please see [Authoritative Backends Inaccessible by All Sites](07-deployment-architecture#backends-inaccessible-by-all-sites).
 
-IMPORTANT NOTE – Changes that haven’t been picked up from the replicationjournal for 3 days are automatically purged.
+><span style="color:red">**IMPORTANT NOTE – Changes that haven’t been picked up from the replicationjournal for 3 days are automatically purged.**
 
 ##### Accept Changes from Replicas
 
@@ -1266,7 +1266,7 @@ An example of a proxy view to an Active Directory backend, and the required step
  
 Figure 2.26: Mapping unicodePwd Attribute to a Virtual Name
 
-Then, define a computed attribute named userPassword with the value based on the getADPassword() function. An example for a proxy view to an Active Directory backend is shown below.
+Then, define a computed attribute named userPassword with the value based on the getADPassword( ) function. An example for a proxy view to an Active Directory backend is shown below.
 
 1.	Select the configured proxy view on the Main Control Panel > Directory Namespace tab.
 
@@ -1497,25 +1497,26 @@ If an entry in the persistent cache fails to be updated, the entry in the cache 
 
 An example of a failed cache refresh log entry can be seen in the figure below.
 
-![An image showing ](Media/Image..jpg)
+![An image showing ](Media/Image2.32.jpg)
  
-Figure 2. 27: Persistent Cache Refresh Log Entry
+Figure 2.32: Persistent Cache Refresh Log Entry
 
 If the problem resulting in the update error has been fixed, you can manually reissue the update request with a base search on the entry using the targetDN attribute in the persistent cache refresh log. Using the example shown above, the entry in persistent cache is Employee=1,Category=employees,dc=csaa. Therefore, the command to refresh this entry in cache would look similar to the following:
 
 ldapsearch -h 10.11.12.91 -p 2389 -D "cn=directory manager" -w "secret" -b "action=synchronizecache,Employee=1,Category=employees,dc=csaa" -s base (objectclass=*)
 
-IMPORTANT NOTE – if there are many failed entries in the persistent cache refresh log, meaning that the cache image is significantly different than the backends, it might be more efficient to reinitialize the persistent cache as opposed to trying to fix the failed updates one at a time.
+><span style="color:red">**IMPORTANT NOTE – if there are many failed entries in the persistent cache refresh log, meaning that the cache image is significantly different than the backends, it might be more efficient to reinitialize the persistent cache as opposed to trying to fix the failed updates one at a time.**
 
 ##### Deleting the Persistent Cache
+
 To delete a persistent cache branch, uncheck the Active checkbox (on the Properties tab for the cached branch), then click Save to apply the changes to the server. Then click **Delete**.
 
 ##### Tuning the Persistent Cache Initialization
 
 Initialization of a persistent cache happens in two phases. The first phase is to create an LDIF formatted file of the cache contents (if you already have an LDIF file, you have the option to use this existing file as opposed to generating a new one). If you choose to generate a new LDIF file during the initialization wizard, you can indicate a file location for it to be generated. The second phase is to initialize the cache with the LDIF file. 
 
-After the first phase, RadiantOne prepares the LDIF file to initialize the cache. This could include re-ordering some entries to enforce parent-child relationships, re-formatting entries…etc. and leverages the Persistent Cache Initialization Location setting. This can be defined on the Main Control Panel -> Settings Tab -> Server Backend section -> Internal connections sub-section (requires Expert Mode). The value is the location where the prepared LDIF file is written to. For the best performance (to avoid reading/writing from the same disk), this should be a different disk than where the original LDIF file was created or currently exists (the location indicated during the initialization wizard, whether you choose to generate the LDIF or browse to an existing LDIF). Ideally, the Persistent Cache Initialization Location is also a different disk than where RadiantOne is installed.
+After the first phase, RadiantOne prepares the LDIF file to initialize the cache. This could include re-ordering some entries to enforce parent-child relationships, re-formatting entries…etc. and leverages the Persistent Cache Initialization Location setting. This can be defined on the Main Control Panel > Settings Tab > Server Backend section > Internal connections sub-section (requires [Expert Mode](00-preface#expert-mode)). The value is the location where the prepared LDIF file is written to. For the best performance (to avoid reading/writing from the same disk), this should be a different disk than where the original LDIF file was created or currently exists (the location indicated during the initialization wizard, whether you choose to generate the LDIF or browse to an existing LDIF). Ideally, the Persistent Cache Initialization Location is also a different disk than where RadiantOne is installed.
 
-![An image showing ](Media/Image..jpg)
+![An image showing ](Media/Image2.33.jpg)
            
-Figure 2. 28: Tuning Persistent Cache Initialization
+Figure 2.33: Tuning Persistent Cache Initialization
