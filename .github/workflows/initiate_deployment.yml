@@ -2,7 +2,7 @@ name: Remote Dispatch Action Initiator
 
 on:
   push:
-    branches: [master, 'v[0-9].[0-9].[0-9]']
+    branches: [master, '^v[0-9].[0-9].[0-9]']
   repository_dispatch:
 
 jobs:
