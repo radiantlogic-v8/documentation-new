@@ -60,7 +60,7 @@ Best recommendations for deploying FID across site(s), based on the cluster arch
 
 <section>
   
-  > [LDAP error codes](/ldap_reference/ldap_error)  
-  > Erat isque animo quod quae ignesque pertulit notat. Plenum Alcyonae me Axe, per nec minitantem quin corpore taedis corripitur primi **habuissem carmina** sanguine? Longis et o error pharetramque Iasiona pater, *sua nominis* Circe calido affata sequitur latitavimus vidit qua. Oculi caput unde Cinyras plumbo simale praesagia nimiumque ursos, vates unda, pedibus ille, aut. 
+  > [LDAP Browser Guide](/ldap-browser/LDAPBrowser)  
+  > The LDAP Browser is a Java-based LDAP client used for viewing and managing the content of any LDAP directory.
   
 </section>
