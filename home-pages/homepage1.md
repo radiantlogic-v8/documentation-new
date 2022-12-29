@@ -13,13 +13,13 @@ Web services API's A rich set of HTTP-based API's have been developed on top of 
 
 <section>
   
-  > [SCIM](/web_services/SCIM)  
+  > [SCIM](/web-services-api-guide/04-scim)  
   > The System for Cross-domain Identity Management (SCIM) specification automates user identity management between identity domains. 
   
-  > [HTTP/REST](/web_services/HTTP)  
+  > [HTTP/REST](/web-services-api-guide/05-rest)  
   > The REST interface supports all LDAP operations and the ability to navigate the directory tree. Wrapping these operations and the progressive disclosure capabilities that exist in LDAP directories into a REST interface opens it up to the web.
 
-  > [SPML](/web_services/SPML)  
+  > [SPML](/web-services-api-guide/03-spml)  
   > SPML is an XML-based provisioning request-and-response protocol. RadiantOne supports SPML v2 and plays the role of a Provisioning Service Provider (PSP).
    
 </section>
