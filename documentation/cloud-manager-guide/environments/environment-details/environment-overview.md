@@ -6,7 +6,7 @@ description: Components and navigation for an environment's detailed view
 
 # Environment Details
 
-Each environment has a detailed view where you can see further information about the environment, monitor its status, and perform various operations on the environment. This guide outlines the features of a specific environment's *Overview* screen and how to navigate the detailed view of the environment. For an overview of the *Environments* screen that lists all available environments, see the [environments overview guide](../environment-overview/environments-overview.md).
+Each environment has a detailed view where you can see further information about the environment, monitor its status, and perform various operations on the environment. This guide outlines the detailed view of an environment as seen in the environment *Overview* screen. For an overview of the *Environments* screen that lists all available environments, see the [environments overview guide](../environment-overview/environments-overview.md).
 
 ## Getting started
 
@@ -32,17 +32,17 @@ A navigation bar is located at the top of the *Overview* screen and is visible f
 
 ### Logs
 
-The *Log* screen allows you to view an environment's log details, imported from Elastic.
+The *Log* tab allows you to view an environment's log details, imported from Elastic.
 
-> **Note:** For further details on reviewing environment logs, see the [Environment Logs](../logging/environment-logs.md) guide.
+For further details on reviewing environment logs, see the [Environment Logs](../logging/environment-logs.md) guide.
 
-![image description](environments/environment-details/images/overview-log-tab.png)
+![image description](images/overview-log-tab.png)
 
 ### Backups
 
 From the *Backups* tab, you can save a backup of the current environment configuration and view previous backups.
 
-> **Note:** For information on managing your environment backups, refer to the [backup and restore documentation](../backup-and-restore/backup-restore-overview.md).
+For information on managing your environment backups, refer to the [backup and restore documentation](../backup-and-restore/backup-restore-overview.md).
 
 ![image description](images/overview-backups-tab.png)
 
@@ -50,7 +50,7 @@ From the *Backups* tab, you can save a backup of the current environment configu
 
 From the *Configuration* tab, you can view a chronological list of the configuration file import and export history for an environment. Configuration file import or export workflows can also be launched from this screen.
 
-> **Note:** To learn how to import a configuration file, review the [import a configuration file](../environment-overview/import-configuration-file.md) guide. Or, for details on exporting a configuration file, review the [export a configuration file](export-configuration-file.md) guide.
+To learn how to import a configuration file, review the [import a configuration file](../environment-overview/import-configuration-file.md) guide. Or, for details on exporting a configuration file, review the [export a configuration file](export-configuration-file.md) guide.
 
 ![image description](images/overview-configuration-tab.png)
 
@@ -72,7 +72,7 @@ A **Monitor Environment** button is located near the top of the *Overview* scree
 
 An expandable **Options** (**...**) menu is located next to the **Monitor Environment** button. Selecting the **Options** (**...**) dropdown menu displays the options to **Update** or **Delete** the environment.
 
-> **Note:** To learn how to delete the environment, review the [delete environment](delete-environment.md) guide. For details on updating the environment, review the [update environment](update-environment.md) guide.
+To learn how to delete the environment, review the [delete environment](delete-environment.md) guide. For details on updating the environment, review the [update environment](update-environment.md) guide.
 
 ![image description](images/overview-options.png)
 
@@ -96,13 +96,13 @@ The environment status will change depending on the state of the environment. St
 
 If the environment version is out of date, an "Update Now" message appears next to the version number. 
 
-> **Note:** For details on updating the environment, review the [update environment](update-environment.md) guide.
+For details on updating the environment, review the [update environment](update-environment.md) guide.
 
 ![image description](images/overview-updatenow.png)
 
 You can view the environment's version history by selecting the **View Version History** button in the lower right corner of the *Environment Details* box. 
 
-> **Note:** See the guide on [version history](version-history.md) for further details on reviewing and restoring an environment's previous versions.
+See the guide on [version history](version-history.md) for further details on reviewing and restoring an environment's previous versions.
 
 ![image description](images/overview-version-history.png)
 
@@ -132,7 +132,7 @@ CPU, memory, and disk are all displayed as color-coded percentages to indicate t
 
 An expandable **Options** (**...**) menu is available for each node. Selecting the **Options** dropdown menu displays the options to **View Details** or **View Logs** for the selected node. 
 
-> **Note:** For further details on reviewing nodes details, see the [node details](node-details.md) guide.
+For further details on reviewing nodes details, see the [node details](node-details.md) guide.
 
 ![image description](images/overview-node-options.png)
 
