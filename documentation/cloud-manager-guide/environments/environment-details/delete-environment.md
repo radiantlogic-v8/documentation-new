@@ -1,13 +1,15 @@
 ---
 keywords:
-title: Delete an Environment
+title: Delete an Environment from its Detailed View
 description: Steps required to delete a specific environment from its detailed view
 ---
-# Delete an Environment
+# Delete an Environment from its Detailed View
 
-This guide outlines the required steps to delete an environment from a specific environment's *Overview* screen. For details on deleting an environment from the *Environments* screen that lists all environments, review the [delete an environment guide](../environment-overview/delete-an-environment.md).
+This guide outlines the required steps to delete an environment from a specific environment's *Overview* screen. For details on deleting an environment from the *Environments* home screen that lists all environments, review the [delete an environment guide](../environment-overview/delete-an-environment.md).
 
 > **Note:** Only non-production environments can be deleted by users. To delete a production environment... (**waiting for these details from RL**).
+
+## Getting started
 
 To begin the workflow to delete the environment, select the ellipsis next to **Monitor Environment** to expand the **Options** menu. From the **Options** menu, select **Delete**. This will open the delete environment dialog box.
 
@@ -15,7 +17,7 @@ To begin the workflow to delete the environment, select the ellipsis next to **M
 
 ## Enter environment details
 
-> **Note:** Deleting an environment is a permanent action and cannot be undone once submitted.
+> **Warning:** Deleting an environment is a permanent action and cannot be undone once submitted.
 
 To delete the selected environment, enter the name of the environment in the space provided in the dialog box and select the **Delete** button. The environment name entered must match the actual environment name exactly, otherwise you will receive an error message and will not be able to submit the delete request.
 
