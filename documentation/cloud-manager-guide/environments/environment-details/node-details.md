@@ -1,9 +1,9 @@
 ---
 keywords:
-title: Monitor Node Health
+title: Monitor Node Health of an Environment
 description: Guide to review and monitor node status
 ---
-# Monitor Node Health
+# Monitor Node Health of an Environment
 
 This guide outlines the steps required to monitor the status details for a specific node. The *Overview* tab provides a high-level view of all FID and Zookeeper node statuses for quick monitoring of cluster health. Each individual node also has a detailed view that provides further information on the status and health of a given node. The details provided for FID nodes versus Zookeeper nodes are slightly different and are outlined within this guide.
 

@@ -1,9 +1,9 @@
 ---
 keywords:
-title: Update an Environment from Detailed View
+title: Update an Environment from its Detailed View
 description: Guide to update an environment from its details view
 ---
-# Update an Environment from Detailed View
+# Update an Environment from its Detailed View
 
 When version updates are applied to your Environment Operations Center instance, your environments are not updated automatically (**This still needs to be confirmed/there may be other update conditions and requirements**). There are two ways that you can manually update the version of individual environments: From the *Environments* home screen or the *Overview* screen of the environment that you wish to update. This guide outlines the steps required to update an environment from its *Overview* screen. For details on updating an environment from the *Environments* home screen, review the overview guide on [updating an environment](../environment-overview/update-an-environment.md).
 

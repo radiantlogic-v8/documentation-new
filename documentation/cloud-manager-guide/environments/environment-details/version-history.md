@@ -1,11 +1,11 @@
 ---
 keywords:
-title: Version History
-description: Guide to view and revert back to an environment's version history
+title: Individual Environment Version History
+description: Guide to view and revert to an environment's version history
 ---
-# Version History
+# Individual Environment Version History
 
-Environment Operations Center maintains a chronological record of all updates applied to each environment. This allows you to review previous updates and revert back to an earlier version of the environment if required.
+Environment Operations Center maintains a chronological record of all updates applied to each environment. This allows you to review previous updates and revert to an earlier version of the environment if required.
 
 ## View version history
 
