@@ -7,7 +7,7 @@ description: Guide to create a new environment
 
 This guide provides an overview of the steps required to create a new environment in Environment Operations Center.
 
-An environment is where a Radiant One product lives. Each environment is completely isolated and contains endpoints to access different applications.
+An environment is where a Radiant One product lives. Each environment is completely isolated and contains endpoints to access different applications. Each instance of Environment Operations Center can have only one production environment, but several environments can be created for development, quality assurance, and staging purposes. **(RL to confirm max number of envs that can be created)**.
 
 ## Getting Started
 
@@ -88,7 +88,7 @@ Depending on the strength of your password, you will receive a notification that
 
 Adjust your password accordingly to ensure you have entered a strong password before proceeding to the confirmation step.
 
-To confirm your password, reenter or copy and paste your password in the confirmation space provided.
+To confirm your password, reenter or copy and paste your password in the confirmation space provided. If you selected to have a password automatically generated, the password will also automatically populate in the confirmation text box.
 
 ![image description](images/passwords-match.png)
 
@@ -120,7 +120,7 @@ Next, choose the type of configuration you would like to upload by selecting eit
 
 - The **Upload Configuration Artifact** option allows you to upload a configuration ZIP file from an external environment.
 
-- The **Install Samples** option allows you to... **(this still needs to be defined)**
+- The **Install Samples** option allows you to upload pre-configured samples **(requested explanation from RL for what samples are and what happens when install samples option is chosen)**
 
 ![image description](images/advanced-upload-type.png)
 

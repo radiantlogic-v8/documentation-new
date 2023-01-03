@@ -5,7 +5,7 @@ description: Steps to update an existing environment
 ---
 # Update an Environment
 
-When version updates are applied to your Environment Operations Center instance, your environments are not automatically updated (**This still needs to be confirmed/there may be other update conditions and requirements**). You can update your environments from the *Environments* home screen or you can update a specific environment from it's *Overview* screen. This guide outlines the steps required to update your environments from the *Environments* home screen. For details on updating an environment from its detailed view, review the environment details guide on [updating an environment](../environment-details/update-environment.md)
+When version updates are available for environments in your Environment Operations Center instance, you will receive an *Update Now* notification. You can update your environments from the *Environments* home screen or you can update a specific environment from its *Overview* screen. This guide outlines the steps required to update your environments from the *Environments* home screen. For details on updating an individual environment from its detailed view, review the environment details guide on [updating an environment](../environment-details/update-environment.md)
 
 > **Note:** Before getting started, make sure you have your current version of Environment Operations Center and the required number of FID nodes to display for each environment that requires updating.
 

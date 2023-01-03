@@ -58,7 +58,7 @@ To delete the uploaded configuration file and return to the screen to select a d
 
 After selecting **Import**, a confirmation message will appear notifying that importing your file will replace the existing configuration file. If you would like to proceed, select **Yes, Import Configuration**. 
 
-Select **Cancel** if you wish to cancel and exit out of the file upload process.
+Select **Cancel** if you wish to cancel and exit out of the file upload process. You will return to the main *Environments* home screen.
 
 ![image description](images/import-confirm.png)
 

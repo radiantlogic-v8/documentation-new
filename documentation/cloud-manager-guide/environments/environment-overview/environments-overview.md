@@ -39,16 +39,16 @@ The environment **Type** indicates whether the environment is configured as a "P
 
 ## Environment status
 
-The environment **Status** indicates the current state of the environment. Statuses automatically change as operations are performed on an environment or if any errors have occurred. Statuses include (**these still need to be defined by Prashanth**):
+The environment **Status** indicates the current state of the environment. Statuses automatically change as operations are performed on an environment or if any errors have occurred. Environment statuses include:
 
-- Operational:
-- Warning:
-- Outage:
-- Update failed:
-- Creation failed:
-- Import failed:
-- Updating:
-- Creating:
+- Operational: Indicates all FID and Zookeeper nodes are running.
+- Warning: There are nodes not running, but the minimum number of nodes required for an environment to operate are running.
+- Outage: The minimum number of nodes required for an environment to operate are not running.
+- Update failed: An attempt to update the environment failed.
+- Creation failed: An attempt to create a new environment failed.
+- Import failed: An attempt to import a configuration file failed.
+- Updating: The environment is currently updating (this can take up to 1 hour).
+- Creating: The environment is currently being created (this can take up to 1 hour).
 
 ![image description](images/env-status.png)
 
