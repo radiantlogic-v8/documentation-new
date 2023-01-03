@@ -5,7 +5,7 @@ description: Steps to import a configuration file to an existing environment
 ---
 # Import a Configuration File
 
-This guide outlines the steps required to import a configuration file into an existing environment in Cloud Manager. 
+This guide outlines the steps required to import a configuration file into an existing environment in Environment Operations Center. 
 
 ## Getting started
 
