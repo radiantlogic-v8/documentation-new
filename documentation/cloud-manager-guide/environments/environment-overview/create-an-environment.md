@@ -5,7 +5,7 @@ description: Guide to create a new environment
 ---
 # Create an Environment
 
-This guide provides an overview of the steps required to create a new environment in Cloud Manager.
+This guide provides an overview of the steps required to create a new environment in Environment Operations Center.
 
 An environment is where a Radiant One product lives. Each environment is completely isolated and contains endpoints to access different applications.
 
@@ -14,7 +14,7 @@ An environment is where a Radiant One product lives. Each environment is complet
 You will need to have the following before setting up your new environment:
 
 - Your license key.
-- Your Cloud Manager version number.
+- Your Environment Operations Center version number.
 - If you are importing a configuration file, ensure you have the correct file type saved and ready to go.
 
 The new environment setup requires you to define the environment type, details, and provides an optional step to upload a configuration file from another environment.
@@ -37,7 +37,7 @@ Start by selecting the required **Environment Type** and **Environment Tier**.
 
 To set the **Environment Type**, use the radio buttons to select either **Non-production**, for development and testing, or **Production**, for production purposes.
 
-> **Note:** Only one production environment can be created per Cloud Manager instance, per region.
+> **Note:** Only one production environment can be created per Environment Operations Center instance, per region.
 
 ![image description](images/env-type-selected.png) 
 
@@ -67,7 +67,7 @@ To set the **Environment Name**, enter the required name in the space provided. 
 
 #### Version
 
-To set the Environment **Version**, select the version drop down to display all available versions. Select the value that corresponds with your organization's version of Cloud Manager.
+To set the Environment **Version**, select the version drop down to display all available versions. Select the value that corresponds with your organization's version of Environment Operations Center.
 
 ![image description](images/select-env-version.png)
 
@@ -96,7 +96,7 @@ To reveal your original or confirmation password, select the eye icon (![image d
 
 #### License key
 
-Your license key is the same unique license key that was originally provided to unlock your instance of Cloud Manager. Enter your key in the space provided.
+Your license key is the same unique license key that was originally provided to unlock your instance of Environment Operations Center. Enter your key in the space provided.
 
 ![image description](images/licsensekey.png)
 

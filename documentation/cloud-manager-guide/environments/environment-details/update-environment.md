@@ -5,9 +5,9 @@ description: Guide to update an environment from its details view
 ---
 # Update an Environment from Detailed View
 
-When version updates are applied to your Cloud Manager instance, your environments are not automatically updated (**This still needs to be confirmed/there may be other update conditions and requirements**). You can update a specific environment from the *Overview* screen of that environment or from the *Environments* home screen. This guide outlines the steps required to update an environment from the *Overview* screen. For details on updating an environment from the *Environments* home screen, review the overview guide on [updating an environment](../environment-overview/update-an-environment.md).
+When version updates are applied to your Environment Operations Center instance, your environments are not automatically updated (**This still needs to be confirmed/there may be other update conditions and requirements**). You can update a specific environment from the *Overview* screen of that environment or from the *Environments* home screen. This guide outlines the steps required to update an environment from the *Overview* screen. For details on updating an environment from the *Environments* home screen, review the overview guide on [updating an environment](../environment-overview/update-an-environment.md).
 
-> **Note:** Before getting started, make sure you have your current version of of Cloud Manager and the required number of FID nodes to display for each environment that requires updating.
+> **Note:** Before getting started, make sure you know your current version number of Environment Operations Center and the required number of FID nodes to display for each environment that requires updating.
 
 ## Managing environment updates
 
@@ -29,7 +29,7 @@ Alternatively, you can select the **Update Now** message located next to the env
 
 ### Update version number and nodes
 
-Once you have started the environment update workflow, a dialog box appears containing the fields required to update the environment version and number of FID nodes. To update your environment, you must provide the correct version number that corresponds with your current version number of Cloud Manager and the number of FID nodes to display.
+Once you have started the environment update workflow, a dialog box appears containing the fields required to update the environment version and number of FID nodes. To update your environment, you must provide the correct version number that corresponds with your current version number of Environment Operations Center and the number of FID nodes to display.
 
 To update your version number, select the correct number from the **Version** drop down menu. Your currently installed version number is displayed just above the dropdown menu for reference.
 

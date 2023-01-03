@@ -5,7 +5,7 @@ description: Delete an environment
 ---
 # Delete an Environment
 
-This guide outlines the required steps to delete an environment in Cloud Manager.
+This guide outlines the required steps to delete an environment in Environment Operations Center.
 
 > **Note:** Only non-production environments can be deleted by users. To delete a production environment... (**waiting for these details from RL**).
 

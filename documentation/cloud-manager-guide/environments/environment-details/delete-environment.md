@@ -5,7 +5,7 @@ description: Steps required to delete a specific environment from its detailed v
 ---
 # Delete an Environment
 
-This guide outlines the required steps to delete an environment from a specific environment's *Overview* screen.
+This guide outlines the required steps to delete an environment from a specific environment's *Overview* screen. For details on deleting an environment from the *Environments* screen that lists all environments, review the [delete an environment guide](../environment-overview/delete-an-environment.md).
 
 > **Note:** Only non-production environments can be deleted by users. To delete a production environment... (**waiting for these details from RL**).
 

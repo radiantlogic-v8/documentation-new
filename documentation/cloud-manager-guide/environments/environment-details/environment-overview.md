@@ -6,7 +6,7 @@ description: Components and navigation for an environment's detailed view
 
 # Environment Overview
 
-Each environment has a detailed view where you can see further information about the environment, monitor its status, and perform various operations on the environment. This guide outlines the features of the *Overview* screen and how to navigate the detailed view of an environment.
+Each environment has a detailed view where you can see further information about the environment, monitor its status, and perform various operations on the environment. This guide outlines the features of a specific environment's *Overview* screen and how to navigate the detailed view of the environment. For an overview of the *Environments* screen that lists all available environments, see the [environments overview guide](../environment-overview/environments-overview.md).
 
 ## Getting started
 

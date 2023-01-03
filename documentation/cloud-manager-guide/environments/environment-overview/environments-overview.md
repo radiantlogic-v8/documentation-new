@@ -33,7 +33,7 @@ This brings you to the environment's *Overview* screen, where you can view furth
 
 The environment **Type** indicates whether the environment is configured as a "Production or "Non-production" environment. "Production" environments are for production purposes, and "Non-production" environments are for development and testing.
 
-> **Note:** Only one production environment can be created per Cloud Manager instance, per region.
+> **Note:** Only one production environment can be created per Environment Operations Center instance, per region.
 
 ![image description](images/env-type.png)
 
@@ -54,7 +54,7 @@ The environment **Status** indicates the current state of the environment. Statu
 
 ## Environment version
 
-**Version** indicates the current version of the environment. The version number is set by the environment administrator during environment setup. If the version number no longer matches the current version of Cloud Manager **(confirming this behavior with Prashanth)**, an "Update Now" notification is displayed next to the version number prompting you to update the environment. 
+**Version** indicates the current version of the environment. The version number is set by the environment administrator during environment setup. If the version number no longer matches the current version of Environment Operations Center **(confirming this behavior with Prashanth)**, an "Update Now" notification is displayed next to the version number prompting you to update the environment. 
 
 To learn more about updating an environment, review the [update an environment](update-an-environment.md) guide.
 
