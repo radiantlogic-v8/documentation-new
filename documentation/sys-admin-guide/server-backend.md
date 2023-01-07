@@ -281,6 +281,7 @@ When a client binds to RadiantOne using a simple bind (DN+password) and their DN
 >**Note – The user is authenticated by the KDC and RadiantOne passes this Kerberos ticket in the SASL GSSAPI LDAP bind to connect to the backend Active Directory. All subsequent requests after the bind request flow over the standard LDAP port. If you need to secure/encrypt subsequent requests, configure SSL/TLS in the data source in addition to the Kerberos configuration described in this section.**
 
 #### Chasing Referrals
+
 By default, RadiantOne does not attempt to chase referrals that have been configured in the underlying LDAP server.  If you want RadiantOne to chase referrals when searching the underlying LDAP server, then you should uncheck the Disable Referral Chasing option. Click **Save** to apply the changes to the server.
 
 Chasing referrals can affect the overall performance of the RadiantOne service because if the referral server is unresponsive, RadiantOne could take a long time to respond to the client. For example, in the case of querying an underlying Active Directory (with a base DN starting at the root of Active Directory) you may get entries like the following returned:
