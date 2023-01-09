@@ -5,7 +5,7 @@ description: Overview of the Admin home screen user interface
 ---
 # Admin Overview
 
-This guide provides an overview of the *Admin* home screen and its features. From the *Admin* screen you can access tabs to manage your account settings, Environment Operation Center user's settings, environment alerts and integrations, and monitor cluster health.
+This guide provides an overview of the *Admin* home screen and its features. From the *Admin* screen you can access tabs to manage your account settings Environment Operation Center users, environment alerts and integrations, and monitor cluster health.
 
 ## Getting started
 
@@ -90,3 +90,4 @@ For details on managing environment backups from the *Admin* screen, see the [ad
 
 ## Next steps
 
+After reading this guide you should be able to navigate the *Admin* home screen and understand its main features including the top navigation and how to access your account settings. For details on updating your account settings, review the [account settings](account-settings/update-account.md) guide. To learn how to create a new user, review the [create a new user](user-management/create-user.md) guide.

@@ -75,3 +75,5 @@ If the token is successfully deleted you will receive a confirmation message and
 You can proceed to generate a new token or exit out of *Account Settings* without generating a new token by selecting **Save**.
 
 ## Next steps
+
+After reading this guide you should have an understanding of how to update your account settings and manage your API tokens. For details on managing Environment Operations Center users, see the [create a new user](../user-management/create-user.md) or [edit an existing user](../user-management/edit-user.md) guides.
