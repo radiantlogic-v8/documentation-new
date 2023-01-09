@@ -19,7 +19,7 @@ From the **Options** menu, select **Restore** to open the *Restore Backup* dialo
 
 The *Restore Backup* dialog displays a warning notifying you that restoring a previous backup will erase your existing configuration.
 
-> **Note:** Ensure you have created a back up of your current environment configuration before proceeding.
+> **Note:** Ensure you have created a backup of your current environment configuration before proceeding.
 
 The environment backup you are restoring is listed along with its associated date and time stamp and version number.
 

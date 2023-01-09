@@ -27,7 +27,7 @@ Under "Backup Details" a "Backup Name" will auto-populate for you in the space p
 
 ![image description](images/create-backup-name.png)
 
-Next, set the back up destination by selecting the checkbox next to the desired storage location. Multiple destinations can be selected at the same time.
+Next, set the backup destination by selecting the checkbox next to the desired storage location. Multiple destinations can be selected at the same time.
 
 (**confirming with RL if other destinations will be available**)
 
@@ -43,7 +43,7 @@ While the backup is being created, you will return to the main **Backups** scree
 
 ![image description](images/create-progressbar.png)
 
-If the back up was successfully created, you will receive a confirmation message and the new backup will be visible in the list of backups on the main *Backups* screen.
+If the backup was successfully created, you will receive a confirmation message and the new backup will be visible in the list of backups on the main *Backups* screen.
 
 Select **Dismiss** to close the message.
 

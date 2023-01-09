@@ -9,7 +9,7 @@ You can create and restore backups of your environments in Environment Operation
 
 ## Getting started
 
-To navigate to the *Backups* screen for a specific environment, select **Backups** from the top navigation in the environment's detailed view.
+To navigate to the *Backups* tab for a specific environment, select **Backups** from the top navigation in the environment's detailed view.
 
 ![image description](images/backups-tab.png)
 
@@ -19,7 +19,7 @@ This brings you to the *Backups* view that provides a chronological overview of 
 
 ## Review backups
 
-From the *Backups* screen, you can review all backups that have been performed on the environment. For each back up, the backup name, date and time stamp, and version are listed.
+From the *Backups* tab, you can review all backups that have been performed on the environment. For each backup, the backup name, date and time stamp, and version are listed.
 
 ![image description](images/backups-titles.png)
 
@@ -45,7 +45,7 @@ Alternatively, you can select the gear icon (![image description](images/gear-ic
 
 If you have read-only access to the environment, you will still be able to view the list of backups that have been performed and the backup schedule if an automated backup has been created. You will not be able to create new backups or modify existing backups.
 
-The **Back Up** now button will be deactivated, the **Backup Settings** icon will be hidden, and the **Options** menu for each back up wil be hidden.
+The **Backup Now** button will be deactivated, the **Backup Settings** icon will be hidden, and the **Options** menu for each backup wil be hidden.
 
 ![image description](images/backups-readonly.png)
 
