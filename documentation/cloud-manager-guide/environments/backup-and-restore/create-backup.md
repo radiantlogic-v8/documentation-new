@@ -13,17 +13,17 @@ To begin creating a manual backup of an environment, select the **Backup Now** b
 
 ![image description](images/backup-now.png)
 
-This brings you to the backup **Details** screen where you will provide the required details to create the environment backup.
+This brings you to the backup *Details* screen where you will provide the required details to create the environment backup.
 
 ![image description](images/create-details.png)
 
 ## Backup details
 
-On the backup **Details** screen, the "Backup Details" and "Backup Destination" fields must be completed in order to submit the form to create a backup.
+On the backup *Details* screen, the "Backup Details" and "Backup Destination" fields must be completed in order to submit the form to create a backup.
 
 Under "Backup Details" a "Backup Name" will auto-populate for you in the space provided. If you wish to change the name, it must meet the following naming conventions... (**confirming with RL**).
 
-> **Note:** Backup names must be unique. You will receive a warning if a backup name is entered that is already in use.
+> **Note:** Backup names must be unique. You will receive a warning if the backup name entered is already in use.
 
 ![image description](images/create-backup-name.png)
 
@@ -39,7 +39,7 @@ Once you have completed all the required fields, select **Create** to begin crea
 
 ## Backup confirmation
 
-While the backup is being created, you will return to the main **Backups** screen. A progress bar will display in the main space indicating that the backup is being created.
+While the backup is being created, you will return to the main *Backups* screen. A progress bar on the *Backups* screen indicates that a backup is being created.
 
 ![image description](images/create-progressbar.png)
 

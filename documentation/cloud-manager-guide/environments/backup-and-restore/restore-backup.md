@@ -11,7 +11,7 @@ This guide provides an overview of the steps required to restore an environment 
 
 To begin restoring an environment from a backup version, locate the backup from the list and select the corresponding **Options** (**...**) menu.
 
-From the **Options** menu, select **Restore** to open the *Restore Backup* dialog.
+From the **Options** (**...**) menu, select **Restore** to open the *Restore Backup* dialog.
 
 ![image description](images/restore-button.png)
 
@@ -19,15 +19,17 @@ From the **Options** menu, select **Restore** to open the *Restore Backup* dialo
 
 The *Restore Backup* dialog displays a warning notifying you that restoring a previous backup will erase your existing configuration.
 
-> **Note:** Ensure you have created a backup of your current environment configuration before proceeding.
+> **Note:** Ensure you have created a backup of your current environment configuration before proceeding. For details on creating a backup, see the [create a backup](create-backup.md) guide.
 
-The environment backup you are restoring is listed along with its associated date and time stamp and version number.
+The environment backup you are restoring is displayed, along with its creation date and version number.
 
 To proceed with restoring the backup, select **Restore**.
 
 ![image description](images/restore-confirmation.png)
 
 > **Note:** You cannot restore a backup with a version number that does not match the current version number of the environment. If the environment and backup versions don't match, you will receive a notification prompting you to update the environment. Select **OK** to close the notification and proceed to update the environment before trying to restore the backup again.
+
+> For details on updating an environment, see the [update environment](../environment-details/update-environment.md) guide.
 
 > ![image description](images/restore-warning-nomatch.png)
 

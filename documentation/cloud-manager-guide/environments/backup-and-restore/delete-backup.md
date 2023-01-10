@@ -7,11 +7,11 @@ description: How to delete an environment backup
 
 This guide provides an overview of the steps required to delete an environment backup.
 
-> **Note:** Deleting an environment backup is a permanent action that cannot be undone. Ensure you have selected the correct backup before deleting.
+> **Warning:** Deleting an environment backup is a permanent action that cannot be undone. Ensure you have selected the correct backup before deleting.
 
 ## Getting started
 
-To delete an environment backup, navigate to the **Backups** tab under the detailed view of an environment. Select the **Options** (**...**) menu located next to the environment backup you want to delete. From the **Options** dropdown menu, select **Delete**.
+To delete an environment backup, navigate to the *Backups* tab under the detailed view of an environment. Select the **Options** (**...**) menu located next to the environment backup you want to delete. From the **Options** (**...**) dropdown menu, select **Delete**.
 
 ![image description](images/delete-option-select.png)
 
@@ -45,4 +45,4 @@ Select **Dismiss** to close the error message and continue on to try deleting th
 
 ## Next steps
 
-After reading this guide you should have an understanding of the steps required to delete an environment backup.
+After reading this guide you should have an understanding of the steps required to delete an environment backup. For further details on creating and environment backup, see the [create a backup](create-backup.md) guide.
