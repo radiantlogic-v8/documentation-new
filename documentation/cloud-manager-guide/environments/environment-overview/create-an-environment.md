@@ -61,7 +61,7 @@ Under the **Environment Details** section, set the environment name, version, pa
 
 #### Environment name
 
-To set the **Environment Name**, enter the required name in the space provided. Names must follow the naming convention **(which still needs to be defined)** and can contain 100 characters or less.
+To set the **Environment Name**, enter the required name in the space provided. Names must follow the naming convention: can be alphanumeric, can contain underscores and hyphens, cannot contain any other special characters, and can contain 18 characters or less.
 
 ![image description](images/successful-env-name.png)
 
@@ -77,12 +77,7 @@ Select a password by either entering your chosen password in the space provided,
 
 > **Note:** Passwords must be a minimum of 12 characters, contain at least 1 special character, contain lower and upper case letters, and contain at least 1 number.
 
-Depending on the strength of your password, you will receive a notification that your password is **(requires definitions from Prashanth)**:
-
-- Weak:
-- Fair:
-- Good:
-- Strong:
+Depending on the complexity and strength of your password, you will receive a notification that your password is "Weak", "Fair", "Good", or "Strong". It is recommended that you adjust the password until you receive a "Strong" rating.
 
 ![image description](images/strong-password.png)
 
