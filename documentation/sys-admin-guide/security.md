@@ -19,7 +19,7 @@ Simple authentication consists of sending the LDAP server the fully qualified DN
 
 **SASL:**
 
-Clients that send an authentication request to RadiantOne using Kerberos (GSS-SPNEGO), NTLM (GSSAPI), MD5 (DIGEST-MD5) or Certificate (EXTERNAL) are leveraging one of the supported SASL mechanisms.  The SASL EXTERNAL mechanism is supported by default, but you must configure the [Client Certificate to DN Mapping]() so the RadiantOne service knows how to identify the user in the certificate to a user in the RadiantOne namespace. For details on these supported mechanisms, please see [Authentication Methods].
+Clients that send an authentication request to RadiantOne using Kerberos (GSS-SPNEGO), NTLM (GSSAPI), MD5 (DIGEST-MD5) or Certificate (EXTERNAL) are leveraging one of the supported SASL mechanisms. The SASL EXTERNAL mechanism is supported by default, but you must configure the [Client Certificate to DN Mapping]() so the RadiantOne service knows how to identify the user in the certificate to a user in the RadiantOne namespace. For details on these supported mechanisms, please see [Authentication Methods].
 
 ![An image showing ](Media/Image3.81.jpg)
 
@@ -31,9 +31,9 @@ SSL settings are applicable to clients connecting to the RadiantOne service via 
 
 ### Enable SSL
 
-SSL/TLS is enabled by default (TLS v1.0, v1.1 and v1.2 are supported), and during the installation of RadiantOne a self-signed default certificate is generated.  For steps on replacing the self-signed certificate, see [Replacing the Default Self-Signed Certificate]().
+SSL/TLS is enabled by default (TLS v1.0, v1.1 and v1.2 are supported), and during the installation of RadiantOne a self-signed default certificate is generated. For steps on replacing the self-signed certificate, see [Replacing the Default Self-Signed Certificate]().
 
-By default the SSL port is set to 636 and this is defined during the installation of RadiantOne.  
+By default the SSL port is set to 636 and this is defined during the installation of RadiantOne.
 
 ><span style="color:red">**IMPORTANT NOTE – you must restart the RadiantOne service after changing any SSL-related settings. RadiantOne loads the server certificate when it is started, so in order for the newly added certificate to take effect, restart the server.**
 
@@ -55,9 +55,9 @@ The diagram below shows how certificates and the SSL protocol are used together 
 
 Figure 3.82: Mutual Authentication
 
-There are three options for mutual authentication and this can be set from the Main Control Panel > Settings Tab > Security section > SSL > Mutual Auth. Client Certificate drop-down menu: Required, Requested and None (default value). If mutual authentication is required, choose the Required option. If this option is selected, it forces a mutual authentication. If the client fails to provide a valid certificate which can be trusted by RadiantOne, authentication fails, and the TCP/IP connection is dropped.  
+There are three options for mutual authentication and this can be set from the Main Control Panel > Settings Tab > Security section > SSL > Mutual Auth. Client Certificate drop-down menu: Required, Requested and None (default value). If mutual authentication is required, choose the Required option. If this option is selected, it forces a mutual authentication. If the client fails to provide a valid certificate which can be trusted by RadiantOne, authentication fails, and the TCP/IP connection is dropped.
 
-If mutual authentication is not required, but you would like RadiantOne to request a certificate from the client, choose the Requested option. In this scenario, if the client provides a valid/trusted certificate, a mutual authentication connection is established. If the certificate presented is invalid, the authentication fails. If no certificate is presented, the connection continues (using a simple LDAP bind) but is not mutual authentication.  
+If mutual authentication is not required, but you would like RadiantOne to request a certificate from the client, choose the Requested option. In this scenario, if the client provides a valid/trusted certificate, a mutual authentication connection is established. If the certificate presented is invalid, the authentication fails. If no certificate is presented, the connection continues (using a simple LDAP bind) but is not mutual authentication.
 
 If you do not want RadiantOne to request a client certificate at all, check the None option.
 
@@ -131,17 +131,17 @@ ou=ny,dc=radiant,dc=com??sub?(&(uid=laura_callahan)(dc=radiant))
 
 RadiantOne uses the DN returned in the search result to base authorization on. 
 
-If the subject in the SSL certificate is blank, you can specify that a Subject Alternative Name (SAN) should be used.  You can use an alternative name in the mapping by specifying {alt} before the regular expression. For example: {alt}^(.+)$ uses the first alternative name found. You can be more specific and specify which alternative name in the certificate that you want to match by specifying the type [0-8]. For example: {alt:0}^(.+)$ uses the otherName alternative name. The type number associated with each is shown below.
+If the subject in the SSL certificate is blank, you can specify that a Subject Alternative Name (SAN) should be used. You can use an alternative name in the mapping by specifying {alt} before the regular expression. For example: {alt}^(.+)$ uses the first alternative name found. You can be more specific and specify which alternative name in the certificate that you want to match by specifying the type [0-8]. For example: {alt:0}^(.+)$ uses the otherName alternative name. The type number associated with each is shown below.
 
-otherName                         [0]     
-rfc822Name                       [1]     
-dNSName                          [2]     
-x400Address                      [3]     
-directoryName                   [4]     
-ediPartyName                    [5]     
-uniformResourceIdentifier  [6]     	
-iPAddress                           [7]     
-registeredID                        [8]   
+otherName                         [0]
+rfc822Name                       [1]
+dNSName                          [2]
+x400Address                      [3]
+directoryName                   [4]
+ediPartyName                    [5]
+uniformResourceIdentifier  [6]
+iPAddress                           [7]
+registeredID                        [8]
 
 For example, {alt:0}^(.+)@my.gov$ defined as the Certificate DN captures "james.newt" for the certificate shown below.
 
@@ -163,7 +163,7 @@ The test-cert-mapping command can be used to test the subject (or SAN) associate
 
 **Processing Multiple Mapping Rules**
 
-Many Client Certificate DN Mapping rules can be configured. They are processed by RadiantOne in the order they appear.  
+Many Client Certificate DN Mapping rules can be configured. They are processed by RadiantOne in the order they appear.
 
 The first DN mapping rule in the list is applied first. IF the user is found with the first mapping rule, then no other rules are evaluated. ONLY if the user is NOT found using the first DN mapping rule will the other rules be evaluated. If all mapping rules fail to locate a user, anonymous access is granted (if anonymous access is allowed to RadiantOne).
 
@@ -180,7 +180,7 @@ The first DN Mapping rule will be evaluated like:
 dc=domain1,dc=com??sub?(sAMAccountName=laura_callahan)
 ```
 
-If Laura Callahan’s entry is found from the search, authorization is based on this user DN (and the groups this user is a member of). If the account is not found, then the second mapping rule is evaluated. If all mapping rules fail to locate a user in the virtual namespace, the user who authenticated with the certificate is considered anonymous.  
+If Laura Callahan’s entry is found from the search, authorization is based on this user DN (and the groups this user is a member of). If the account is not found, then the second mapping rule is evaluated. If all mapping rules fail to locate a user in the virtual namespace, the user who authenticated with the certificate is considered anonymous.
 
 Only when the first DN mapping rule fails to find a user will the other DN mapping rules be used.
 
@@ -200,7 +200,7 @@ Figure 4: Managing Client Certificates in the Default Java Truststore
 
 **Viewing Client Certificates**
 
-To view a certificate, select the certificate in the list and click the View Certificate button. Valuable information about the certificate is shown (who issued the certificate, who the certificate was issued to, when the certificate is set to expire, status…etc.). From this location, you have the option to copy the certificate to a file.
+To view a certificate, select the certificate in the list and click **View Certificate**. Valuable information about the certificate is shown (who issued the certificate, who the certificate was issued to, when the certificate is set to expire, status…etc.). From this location, you have the option to copy the certificate to a file.
 
 **Adding Client Certificates**
 
@@ -224,7 +224,7 @@ To add a certificate:
 
 To delete a certificate:
 
-1. Select the desired certificate and click the Delete Certificate button.
+1. Select the desired certificate and click **Delete Certificate**.
 
 2. Click **Yes** to confirm the deletion.
 
@@ -262,7 +262,7 @@ If you want to support one of the less secure protocols, edit the java.security 
 
 ### Enable STARTTLS
 
-Start TLS allows clients to request a secure channel to RadiantOne at any time without having to establish a new connection on a different port.  For example, a client can process an LDAP search operation on a normal connection and then, without closing the connection, request a secure layer over the same connection with StartTLS for the use of changing passwords or viewing encrypted attributes. After finishing the use of the secure channel, the client can switch back to the non-secure channel on the same connection. The flexibility offered by the Start TLS extension allows for the secure LDAPS channel to be turned on and off on demand.
+Start TLS allows clients to request a secure channel to RadiantOne at any time without having to establish a new connection on a different port. For example, a client can process an LDAP search operation on a normal connection and then, without closing the connection, request a secure layer over the same connection with StartTLS for the use of changing passwords or viewing encrypted attributes. After finishing the use of the secure channel, the client can switch back to the non-secure channel on the same connection. The flexibility offered by the Start TLS extension allows for the secure LDAPS channel to be turned on and off on demand.
 
 To enable Start TLS for clients to access RadiantOne:
 
@@ -274,7 +274,7 @@ To enable Start TLS for clients to access RadiantOne:
 
 4. Restart the RadiantOne service.
 
-><span style="color:red">**IMPORTANT NOTE - When using Start TLS, the default server certificate included with the RadiantOne installation does not work. You must generate a new certificate (either self-signed or requested from a Certificate Authority) that contains the proper machine and domain name of the RadiantOne machine.  Also, the host name specified from the client should match the value in the certificate. If you try to use the default self-signed certificate included with the RadiantOne installation, the following error message (‘xxxxx’ being your server name) is returned: javax.net.ssl.SSLPeerUnverifiedException: hostname of the server 'xxxxx' does not match the hostname in the server's certificate.**
+><span style="color:red">**IMPORTANT NOTE - When using Start TLS, the default server certificate included with the RadiantOne installation does not work. You must generate a new certificate (either self-signed or requested from a Certificate Authority) that contains the proper machine and domain name of the RadiantOne machine. Also, the host name specified from the client should match the value in the certificate. If you try to use the default self-signed certificate included with the RadiantOne installation, the following error message (‘xxxxx’ being your server name) is returned: javax.net.ssl.SSLPeerUnverifiedException: hostname of the server 'xxxxx' does not match the hostname in the server's certificate.**
 
 ### Debug SSL
 
@@ -290,7 +290,7 @@ To enable SSL logging:
 
 3. Verify that the Log Level drop-down menu is set to one of the following: INFO, DEBUG, or TRACE. 
 
-4. If you change the log level, click the Save button. 
+4. If you change the log level, click **Save**. 
 
 5. Click **Security -> SSL**.
 
@@ -350,7 +350,7 @@ Figure 5: Inter Nodes Communication
 
 ### Kerberos
 
-RadiantOne supports Kerberos v5, and can act as both a [Kerberos client](server-backend#kerberos), and a Kerberized service.  As a Kerberos client, RadiantOne can request tickets from a KDC to use to connect to kerberized services. As a Kerberized service, RadiantOne can accept tickets from clients as a form of authentication. These configurations have been certified with Windows 2000, 2003 and 2008 in addition to MIT Kerberos on Linux CENTOS. This section describes RadiantOne support as a Kerberized server. For details on RadiantOne support as a Kerberos client, please see the section on defining [LDAP data sources](). The following diagram provides the high-level architecture and process flow for RadiantOne acting as a Kerberized service.
+RadiantOne supports Kerberos v5, and can act as both a [Kerberos client](server-backend#kerberos), and a Kerberized service. As a Kerberos client, RadiantOne can request tickets from a KDC to use to connect to kerberized services. As a Kerberized service, RadiantOne can accept tickets from clients as a form of authentication. These configurations have been certified with Windows 2000, 2003 and 2008 in addition to MIT Kerberos on Linux CENTOS. This section describes RadiantOne support as a Kerberized server. For details on RadiantOne support as a Kerberos client, please see the section on defining [LDAP data sources](). The following diagram provides the high-level architecture and process flow for RadiantOne acting as a Kerberized service.
 
 ![An image showing ](Media/Image3.87.jpg)
  
@@ -374,7 +374,7 @@ UPN: ldap/vds.example.net@example.net**
 
 ### Configuring RadiantOne as a Kerberized Service
 
-><span style="color:red">**IMPORTANT NOTE – RadiantOne MUST be running on port 389. The default port for RadiantOne is 2389.  To change the port, you must stop the RadiantOne service, and then edit the port from the Main Control Panel > Settings Tab > Administration section. After changing the port and saving your changes, restart the RadiantOne service. If RadiantOne is deployed in a cluster, all the service on all nodes.**
+><span style="color:red">**IMPORTANT NOTE – RadiantOne MUST be running on port 389. The default port for RadiantOne is 2389. To change the port, you must stop the RadiantOne service, and then edit the port from the Main Control Panel > Settings Tab > Administration section. After changing the port and saving your changes, restart the RadiantOne service. If RadiantOne is deployed in a cluster, all the service on all nodes.**
 
 1. Create a Kerberos identification for the RadiantOne service by creating a user account in the Active Directory domain controller (KDC) for the host computer on which RadiantOne runs. When creating the account, you can use the name of the computer. For example, if the host is named AMAZONA-EQ3PKP4.cloudcfs.radiant.com, create a user in Active Directory with a user logon name of AMAZONA-EQ3PKP4.cloudcfs.radiant.com.
 
@@ -399,7 +399,7 @@ If you do not have the ktpass utility (part of the Windows Resource Kit Tools), 
 
         Below is a sample command to be run on the KDC machine:
 
-```        
+```
 ktpass –princ ldap/AMAZONA-EQ3PKP4.cloudcfs.radiant.com@CLOUDCFS.RADIANT.COM -pass password -mapuser “vds server” -out c:\temp\amazona-eq3pkp4.LDAP.keytab 
 
 ------result of executing the command------
@@ -446,7 +446,7 @@ useKeyTab=true
 keyTab= "c:/radiantone/amazona-eq3pkp4.LDAP.keytab”
 ```
 
-**useKeyTab** – set this to true if you want the server to get the principal’s key from the keytab. The default value (if this parameter is not set in the file) is False.  As mentioned above, if there is no keytab specified, RadiantOne uses the service name and password defined on the Main Control Panel > Settings Tab > Security Section > Authentication Methods sub-section > Kerberos Authentication section on the right side, to authenticate to the KDC when the RadiantOne service first starts.
+**useKeyTab** – set this to true if you want the server to get the principal’s key from the keytab. The default value (if this parameter is not set in the file) is False. As mentioned above, if there is no keytab specified, RadiantOne uses the service name and password defined on the Main Control Panel > Settings Tab > Security Section > Authentication Methods sub-section > Kerberos Authentication section on the right side, to authenticate to the KDC when the RadiantOne service first starts.
 
 **principal** – set this to the user principal name of the account in the KDC associated with the RadiantOne service. If this property is not defined in the keytab file, it must be set in the Main Control Panel -> Settings Tab -> Security section -> Authentication Methods sub-section -> Kerberos Authentication section.
 
@@ -456,7 +456,7 @@ For information on other optional configuration parameters, please refer to the 
 
 6. Edit the RadiantOne Kerberos configuration file to include the realm and KDC. The Kerberos configuration file is named vds_server_krb5.conf and is in <RLI_HOME>/vds_server/conf/krb5.
 
-Edit this file and set the appropriate values in the [libdefaults] and [realms] sections.  Below is an example that matches the use case we have been using in this section.
+Edit this file and set the appropriate values in the [libdefaults] and [realms] sections. Below is an example that matches the use case we have been using in this section.
 
 ```
 [libdefaults]
@@ -475,7 +475,7 @@ supportedSASLMechanisms: GSSAPI
 supportedSASLMechanisms: GSS-SPNEGO
 ```
 
-8. Configure Client Principal Name Mapping. This step is optional and can be used to define a mapping between the user who authenticates with a Kerberos ticket and a user DN in the virtual namespace. The DN is required for the RadiantOne service to enforce access permissions (authorization). If no client principal name mappings are configured, RadiantOne creates an account in a local Universal Directory store that is linked to the person who authenticated using a Kerberos ticket.  
+8. Configure Client Principal Name Mapping. This step is optional and can be used to define a mapping between the user who authenticates with a Kerberos ticket and a user DN in the virtual namespace. The DN is required for the RadiantOne service to enforce access permissions (authorization). If no client principal name mappings are configured, RadiantOne creates an account in a local Universal Directory store that is linked to the person who authenticated using a Kerberos ticket.
 
 There are three different ways to determine the DN from the user ID in the Kerberos ticket received in the LDAP bind (using regular expression syntax). Each is described below.
 
@@ -531,7 +531,7 @@ Changing any Kerberos-related parameters requires a restart of the RadiantOne se
 
 The Kerberos client (user or machine) must also have an account on the KDC machine.
 
-><span style="color:red">**IMPORTANT NOTE – RadiantOne must be running on a different machine than the client that is connecting to it, otherwise the Microsoft libraries for LDAP use the local security and not a Kerberos ticket.  This is only relevant for LDAP clients that use the Microsoft libraries (LDP and Softerra LDAP Administrator v3.3 for example).**
+><span style="color:red">**IMPORTANT NOTE – RadiantOne must be running on a different machine than the client that is connecting to it, otherwise the Microsoft libraries for LDAP use the local security and not a Kerberos ticket. This is only relevant for LDAP clients that use the Microsoft libraries (LDP and Softerra LDAP Administrator v3.3 for example).**
 
 The following example configurations describe:
 
@@ -588,7 +588,7 @@ Run ldp and create a new connection. Enter the values for RadiantOne and click O
 
 Figure 10: Connection to RadiantOne from LDP Client
 
-Click on the Advanced button, you should have the NEGOTIATE (or in older LDP versions, use the SSPI method) selected.  See Figure below.
+Click **Advanced**, you should have the NEGOTIATE (or in older LDP versions, use the SSPI method) selected. See Figure below.
 
 ![An image showing ](Media/Image3.92.jpg)
 
@@ -670,7 +670,7 @@ After a client successfully authenticates with a Kerberos ticket, RadiantOne tri
 uid=lcallahan,cn=NOVATO.RADIANTLOGIC.COM,ou=krbusers,cn=config
 ```
 
-In the example above, all users who authenticate from the NOVATO.RADIANTLOGIC.COM realm are located here. Each realm has its own location in the local LDAP store.  Below is an example from a different realm:
+In the example above, all users who authenticate from the NOVATO.RADIANTLOGIC.COM realm are located here. Each realm has its own location in the local LDAP store. Below is an example from a different realm:
 
 ```
 uid=sbuchanan,cn=NA.RADIANTLOGIC.COM,ou=krbusers,cn=config
@@ -700,7 +700,7 @@ In the figure above, since the client is accessing RadiantOne from domain B and 
 
 3. Domain controller responds with a challenge. The domain controller generates a challenge, and sends it to RadiantOne.
 
-4. RadiantOne sends the challenge message to client.  The challenge message includes an LDAP bind response code 14 (SASL_BIND_IN_PROGRESS). This indicates the server requires the client to send a new bind request, with the same SASL mechanism, to continue the authentication process. 
+4. RadiantOne sends the challenge message to client. The challenge message includes an LDAP bind response code 14 (SASL_BIND_IN_PROGRESS). This indicates the server requires the client to send a new bind request, with the same SASL mechanism, to continue the authentication process. 
 
 5. Client sends response message. The client then issues a new bind request via GSS-SPNEGO along with an NTLM Type 3 Message {e.g. Username='test5' NT_Domain=‘DOMAINB' }.
 
@@ -730,7 +730,7 @@ More details about the NT Domain Controller settings can be found below. After y
 
 **NT Domain**
 
-A unique domain name that a client may belong to (connecting to RadiantOne from). If the client is not connecting to RadiantOne from the same domain (or a trusted domain), then their domain must be configured otherwise they cannot connect to RadiantOne.  
+A unique domain name that a client may belong to (connecting to RadiantOne from). If the client is not connecting to RadiantOne from the same domain (or a trusted domain), then their domain must be configured otherwise they cannot connect to RadiantOne.
 
 **Client Principal Suffix**
 
@@ -746,9 +746,9 @@ Enter the host name (NETBIOS name) of the machine hosting the NT Domain.
 
 **Computer Account**
 
-RadiantOne must have a service account (defined as a computer account) in the NT Domain. If the RadiantOne host machine joined an Active Directory (AD) domain, the domain controller should have already generated a Computer account for your host. It is under the node "CN=Computer, DC=`<domain>`" in AD.  However, RadiantOne does not require a physical Computer account to run NTLMv2. It can be a service account but it must be defined under the "CN=Computers" container. To create a service/computer account in your NT Domain, from the Active Directory Users and Computers interface, right-click on the "CN=Computers" node. Choose 'New' and then click on 'Computer'. Follow the wizard to create a service computer account. 
+RadiantOne must have a service account (defined as a computer account) in the NT Domain. If the RadiantOne host machine joined an Active Directory (AD) domain, the domain controller should have already generated a Computer account for your host. It is under the node "CN=Computer, DC=`<domain>`" in AD. However, RadiantOne does not require a physical Computer account to run NTLMv2. It can be a service account but it must be defined under the "CN=Computers" container. To create a service/computer account in your NT Domain, from the Active Directory Users and Computers interface, right-click on the "CN=Computers" node. Choose 'New' and then click on 'Computer'. Follow the wizard to create a service computer account. 
 
-The Computer Account value you enter in the Main Control Panel must be in format of:  `<computer_name>$@<domain>`
+The Computer Account value you enter in the Main Control Panel must be in format of: `<computer_name>$@<domain>`
 e.g. NTLMv2$@testad.com 
 
 **Computer Account Password**
@@ -815,9 +815,9 @@ Changing any NTLM-related parameters requires a restart of RadiantOne. Click **S
 
 **MD5**
 
-If desired, an LDAP client can send RadiantOne a hashed password using Digest MD5 for authentication. RadiantOne must have access to the password in clear.  When the password is received, RadiantOne uses the Digest MD5 hashing algorithm to encrypt it and compare to the value received from the client. If the compare succeeds, the bind was successful. Otherwise, the bind fails.
+If desired, an LDAP client can send RadiantOne a hashed password using Digest MD5 for authentication. RadiantOne must have access to the password in clear. When the password is received, RadiantOne uses the Digest MD5 hashing algorithm to encrypt it and compare to the value received from the client. If the compare succeeds, the bind was successful. Otherwise, the bind fails.
 
-To enable MD5 authentication, check the MD5 Authentication box from the Main Control Panel > Settings Tab > Security section > Authentication Methods sub-section.  
+To enable MD5 authentication, check the MD5 Authentication box from the Main Control Panel > Settings Tab > Security section > Authentication Methods sub-section.
 
 Changing any MD5-related settings requires a restart of the RadiantOne service after saving the new settings.
 

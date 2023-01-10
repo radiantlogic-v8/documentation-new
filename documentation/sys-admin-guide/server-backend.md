@@ -17,9 +17,9 @@ Figure 1: Connection Pooling Settings
 
 Connection pooling for database and LDAP sources is enabled by default. The settings can be modified in the Main Control Panel > Settings Tab > Server Backend section, Connection Pooling sub-section. Connection pooling improves performance for virtual views because a connection to the underlying source does not need to be created every time data needs to be retrieved.
 
-When RadiantOne receives a search for information (that is not stored locally, either in cache or a local Universal Directory store), a connection to the underlying system is established. Since opening and closing a connection every time information must be retrieved from an underlying source can be time consuming, RadiantOne can pool the open connections and re-use them (thus saving the overhead involved in having to open/close a connection every time a backend needs to be accessed).  
+When RadiantOne receives a search for information (that is not stored locally, either in cache or a local Universal Directory store), a connection to the underlying system is established. Since opening and closing a connection every time information must be retrieved from an underlying source can be time consuming, RadiantOne can pool the open connections and re-use them (thus saving the overhead involved in having to open/close a connection every time a backend needs to be accessed).
 
-The first time RadiantOne queries an underlying source, a connection is opened. When the operation is done, the open connection remains in the connection pool (for the specified timeout parameter that has been set). The next time RadiantOne receives a query for the same underlying source, an open connection is retrieved from the pool (instead of opening a new connection).  If no connections are available in the pool, a new connection is opened. This process continues until the connection-poolsize parameter has been reached (the maximum number of open connections to keep in the pool).  Once this happens (the max number of open connections has been reached and they are all in use), the client must wait until one of the used connections is finished before their query can be processed.
+The first time RadiantOne queries an underlying source, a connection is opened. When the operation is done, the open connection remains in the connection pool (for the specified timeout parameter that has been set). The next time RadiantOne receives a query for the same underlying source, an open connection is retrieved from the pool (instead of opening a new connection). If no connections are available in the pool, a new connection is opened. This process continues until the connection-poolsize parameter has been reached (the maximum number of open connections to keep in the pool). Once this happens (the max number of open connections has been reached and they are all in use), the client must wait until one of the used connections is finished before their query can be processed.
 
 ### LDAP Backends
 
@@ -33,7 +33,7 @@ The default is 7. This is the maximum number of seconds RadiantOne waits while t
 
 ### Operation Timeout
 
-The default is 0 (no timeout). This is the maximum number of seconds RadiantOne waits to receive a response from the backend LDAP server.  After this time, RadiantOne drops the request and attempts to send the request again. After two failed attempts to get a response back, RadiantOne returns an error to the client.
+The default is 0 (no timeout). This is the maximum number of seconds RadiantOne waits to receive a response from the backend LDAP server. After this time, RadiantOne drops the request and attempts to send the request again. After two failed attempts to get a response back, RadiantOne returns an error to the client.
 
 ### Write Operation Timeout
 
@@ -166,10 +166,10 @@ The Bind Password for the data source configuration should be the one defined in
 
 ```
 Example:
-Host:  ADServer1.na.radiantlogic.com 
-Port:  389
-Bind DN:  cert:mycert.pfx
-Bind Password:  mypassword
+Host: ADServer1.na.radiantlogic.com 
+Port: 389
+Bind DN: cert:mycert.pfx
+Bind Password: mypassword
 ```
 
 ![An image showing ](Media/Image3.65.jpg)
@@ -282,7 +282,7 @@ When a client binds to RadiantOne using a simple bind (DN+password) and their DN
 
 #### Chasing Referrals
 
-By default, RadiantOne does not attempt to chase referrals that have been configured in the underlying LDAP server.  If you want RadiantOne to chase referrals when searching the underlying LDAP server, then you should uncheck the Disable Referral Chasing option. Click **Save** to apply the changes to the server.
+By default, RadiantOne does not attempt to chase referrals that have been configured in the underlying LDAP server. If you want RadiantOne to chase referrals when searching the underlying LDAP server, then you should uncheck the Disable Referral Chasing option. Click **Save** to apply the changes to the server.
 
 Chasing referrals can affect the overall performance of the RadiantOne service because if the referral server is unresponsive, RadiantOne could take a long time to respond to the client. For example, in the case of querying an underlying Active Directory (with a base DN starting at the root of Active Directory) you may get entries like the following returned:
 
@@ -291,11 +291,11 @@ ldaps://ForestDnsZones.na.radiantlogic.com:636…
 ldaps://DomainDnsZones.na.radiantlogic.com:636…
 ```
 
-If RadiantOne attempts to “chase” these referrals, there can be extreme degradation in response times.  Therefore, it is recommended that you disable referral chasing if you need to connect to Active Directory starting at the root of the Active Directory tree, or connect to any other directory where you don’t care about following referrals.
+If RadiantOne attempts to “chase” these referrals, there can be extreme degradation in response times. Therefore, it is recommended that you disable referral chasing if you need to connect to Active Directory starting at the root of the Active Directory tree, or connect to any other directory where you don’t care about following referrals.
 
 #### Paged Results Control
 
-The paged results option is only relevant for LDAP directories that support the paged results control (such as Active Directory and the RadiantOne service).  
+The paged results option is only relevant for LDAP directories that support the paged results control (such as Active Directory and the RadiantOne service).
 
 >**Note - Sun Java Directory Server does NOT support the paged results control (at least as of v5.2).**
 
@@ -339,7 +339,7 @@ To define advanced impersonation rules:
 
 3.	Expand the Advanced section at the bottom. The mappings defined here dictate which credentials to use when connecting to the backend data source. Members of the selected group are impersonated by the configured user. 
 
-4.	Click  **Add**.
+4.	Click **Add**.
 
 5.	Click **Choose** to locate a group in the virtual namespace that contains members to be impersonated.
 
@@ -367,9 +367,9 @@ Figure 11: Indicating a Default User Account
 
 A database data source represents a connection to a SQL/JDBC-accessible backend.
 
-The following JDBC drivers are installed with RadiantOne:  JDBC-ODBC Bridge from Sun, Oracle (thin), Oracle oci, Microsoft SQL Server, HSQL, MariaDB (used for MySQL as well), IBM DB2, Sybase, and Derby.
+The following JDBC drivers are installed with RadiantOne: JDBC-ODBC Bridge from Sun, Oracle (thin), Oracle oci, Microsoft SQL Server, HSQL, MariaDB (used for MySQL as well), IBM DB2, Sybase, and Derby.
 
-You have the option to use one of the above drivers, however, it is recommended that you use the driver that was delivered with the database that you want to connect to.  To add a JDBC driver, you must make sure that the driver libraries are added in the <RLI_HOME>/lib/jdbc directory.
+You have the option to use one of the above drivers, however, it is recommended that you use the driver that was delivered with the database that you want to connect to. To add a JDBC driver, you must make sure that the driver libraries are added in the <RLI_HOME>/lib/jdbc directory.
 
 ><span style="color:red">**IMPORTANT NOTE – updating to a different DB2 driver may require more than just replacing the existing driver files in the <RLI_HOME>/lib/jdbc directory if the name or license has changed. Please consult the Radiant Logic knowledge base for additional details.**
 
@@ -397,11 +397,11 @@ To update the connection information associated with a data source, select the c
 
 #### Delete a Database Data Source
 
-To delete a data source, select the configured data source and click on the Delete button. After deleting any data source, save your changes.
+To delete a data source, select the configured data source and click **Delete**. After deleting any data source, save your changes.
 
 #### Adding a New Database Driver
 
-A list of drivers appears in the drop-down list box when you are defining a database data source. Only the drivers that are shown in green were installed with RadiantOne.  The other driver names/syntaxes that appear in the drop-down list have been provided to save time. If you would like to use one of these drivers or to include a new JDBC driver, install the driver files in the <RLI_HOME>/lib/jdbc directory. Restart the RadiantOne service and any open tools. During the creation of the database data source, if your driver type is listed in the drop-down list, select it and the syntax for the driver class name and URL is populated for you. Update the URL with the connection details for your database. If the drop-down list does not include your database driver type, you can leave this blank and manually type in the data source name, driver class name, driver URL, user and password.
+A list of drivers appears in the drop-down list box when you are defining a database data source. Only the drivers that are shown in green were installed with RadiantOne. The other driver names/syntaxes that appear in the drop-down list have been provided to save time. If you would like to use one of these drivers or to include a new JDBC driver, install the driver files in the <RLI_HOME>/lib/jdbc directory. Restart the RadiantOne service and any open tools. During the creation of the database data source, if your driver type is listed in the drop-down list, select it and the syntax for the driver class name and URL is populated for you. Update the URL with the connection details for your database. If the drop-down list does not include your database driver type, you can leave this blank and manually type in the data source name, driver class name, driver URL, user and password.
 
 This information is saved in a file so you do not have to re-enter the same connection parameters every time you extract a schema from the same type of database. The name of the file is jdbcxml.xml, and it can be found in the directory <RLI_HOME>\<instance_name>.
 
@@ -423,13 +423,13 @@ If the primary backend is not available, RadiantOne attempts to connect to a fai
 
 A custom data source is defined as something that cannot be accessed directly using JDBC/ODBC or LDAP. To access these types of data sources, you need to configure what is known as a custom object. RadiantOne includes a few default custom objects representing data sources you can virtualize. These data sources are for the following applications: Google Apps, Azure AD, Okta Universal Directory, any SCIM v1 source, any SCIM v2 source, Workday, Concur, Epic, SharePoint Users and Profile, and SharePoint Online Profile. To use these objects in virtual views, you just need to update the connection properties to point to your own application instances. For more details on leveraging these custom data sources in virtual views, please see the RadiantOne Namespace Configuration Guide.
 
-To edit a custom data source, from the Main Control Panel > Settings Tab > Server Backend section > Custom Data Sources sub-section, select the custom data source from the list and click the Edit button. Select a custom property and click **EDIT**. Save your changes when finished.
+To edit a custom data source, from the Main Control Panel > Settings Tab > Server Backend section > Custom Data Sources sub-section, select the custom data source from the list and click **Edit**. Select a custom property and click **EDIT**. Save your changes when finished.
 
 ![An image showing ](Media/Image3.73.jpg)
 
 Figure 13: Sample Custom Data Source
 
-><span style="color:red">**IMPORTANT NOTES – Most default custom data sources do not support authentication operations.  They are primarily to allow for provisioning/de-provisioning identity information to these apps through RadiantOne and/or retrieving identity profile information from these apps for RadiantOne to present a complete user profile (to join views of these backends to identities from other data sources). However, Azure AD (graphapi and mgraph data sources) and Okta Universal Directory (oktaclient data source) do support authentication operations. For details on creating virtual views from the default custom data sources, see the RadiantOne Namespace Configuration Guide.
+><span style="color:red">**IMPORTANT NOTES – Most default custom data sources do not support authentication operations. They are primarily to allow for provisioning/de-provisioning identity information to these apps through RadiantOne and/or retrieving identity profile information from these apps for RadiantOne to present a complete user profile (to join views of these backends to identities from other data sources). However, Azure AD (graphapi and mgraph data sources) and Okta Universal Directory (oktaclient data source) do support authentication operations. For details on creating virtual views from the default custom data sources, see the RadiantOne Namespace Configuration Guide.
 
 #### DSML/SPML Sources
 
@@ -477,7 +477,7 @@ Figure 15: Sample Custom SCIM v2 Data Source
 
 6.	Click **Test Connection**.
 
-7.	To customize or add new property names, click **Advanced Edit**.  See [Custom Properties](#custom-properties) for details.
+7.	To customize or add new property names, click **Advanced Edit**. See [Custom Properties](#custom-properties) for details.
 
 8.	Click **Save**.
 
@@ -578,7 +578,7 @@ To add a test connection URL:
 
 3.	Name the property “test_connection_url”. 
 
-4.	Indicate the URL to be tested.  
+4.	Indicate the URL to be tested.
 
 5.	Click **OK**. 
 
@@ -660,7 +660,7 @@ Figure 18: Disabling SCIM Backend Exception Parameters
 
 The username (Bind DN property for LDAP data sources, User property for Database data sources) and/or password properties of a data source can be updated via an LDAP modify command. This modifies the configuration in the RadiantOne data source and does not modify any credentials in the backend. Updating data sources via LDAP requires the RadiantOne super user (cn=directory manager) credentials. The DN in the modify should be in the form of: id=<data_source_name>,cn=metads
 
->**Note – to update the RadiantOne credentials associated with the KDC account that is defined on Main Control Panel -> Settings -> Security -> Authentication Methods -> Kerberos Authentication, modify the username (user principal name) and/or password (service password) with a DN of “id=KDCconnect,cn=metads”.  These special credentials are stored in ZooKeeper and updating the credentials via LDAP updates the kerberosUserPrincipalName and kerberosServicePassword properties in /radiantone/v1/cluster/config/vds_server.conf in ZooKeeper.**
+>**Note – to update the RadiantOne credentials associated with the KDC account that is defined on Main Control Panel > Settings > Security > Authentication Methods > Kerberos Authentication, modify the username (user principal name) and/or password (service password) with a DN of “id=KDCconnect,cn=metads”. These special credentials are stored in ZooKeeper and updating the credentials via LDAP updates the kerberosUserPrincipalName and kerberosServicePassword properties in /radiantone/v1/cluster/config/vds_server.conf in ZooKeeper.**
 
 The LDAP attribute names to issue in the modify request for the Bind DN and password are: username and password respectively.
 

@@ -19,11 +19,11 @@ The settings configured in the Authorization section determine how RadiantOne ha
 
 ### Enable ACI
 
-The checking of ACIs by RadiantOne can be enabled or disabled by using the Enable ACI checkbox. Check the box to enable and uncheck to disable.  For specific details about setting ACI, please see [Security and Access Controls](security-and-access-controls).
+The checking of ACIs by RadiantOne can be enabled or disabled by using the Enable ACI checkbox. Check the box to enable and uncheck to disable. For specific details about setting ACI, please see [Security and Access Controls](security-and-access-controls).
 
 ### Allow Anonymous Access
 
-If RadiantOne should allow anonymous access, then check the Allow Anonymous Access checkbox. If RadiantOne should not allow anonymous access, make sure this checkbox is not checked. This is the default global access permission for anonymous users and is enforced before subsequent ACI rules. In other words, even if anonymous access were allowed as a general policy, subsequent ACI rules could prevent anonymous users from accessing any data.  For details on access controls that can be set, please [Security and Access Controls](security-and-access-controls).
+If RadiantOne should allow anonymous access, then check the Allow Anonymous Access checkbox. If RadiantOne should not allow anonymous access, make sure this checkbox is not checked. This is the default global access permission for anonymous users and is enforced before subsequent ACI rules. In other words, even if anonymous access were allowed as a general policy, subsequent ACI rules could prevent anonymous users from accessing any data. For details on access controls that can be set, please [Security and Access Controls](security-and-access-controls).
 
 ### Allow Directory Manager to Impersonate Other Users
 

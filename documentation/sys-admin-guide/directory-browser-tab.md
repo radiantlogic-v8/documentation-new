@@ -31,7 +31,7 @@ To refresh the selected entry/sub-tree branch, click ![An image showing ](Media/
 
 ## Search
 
-To issue a search, select a branch in the virtual namespace and click ![An image showing ](Media/search-button.jpg).  Condition the search with the options described below.
+To issue a search, select a branch in the virtual namespace and click ![An image showing ](Media/search-button.jpg). Condition the search with the options described below.
 
 **Search Base DN** – starting point in the RadiantOne namespace to start looking for entries.
 
@@ -74,7 +74,7 @@ To create entries based on an object class other than group, organizationalUnit,
 
 ## New Group
 
-When creating a new group, you can select from the following list of object classes: group, groupOfNames, groupOfUniqueNames, groupOfUrls.  More than one object class may be selected. 
+When creating a new group, you can select from the following list of object classes: group, groupOfNames, groupOfUniqueNames, groupOfUrls. More than one object class may be selected. 
 
 >**Note – if you want the group to be a dynamic group, you must choose the groupOfUrls object class.**
 
@@ -84,7 +84,7 @@ Figure 5: Creating a New Group Entry
 
 ## New OrganizationalUnit
 
-If you choose to create a new organizationalUnit, the entry is associated with the organizationalUnit object class.  
+If you choose to create a new organizationalUnit, the entry is associated with the organizationalUnit object class.
 
 ## New Active Directory User
 
@@ -92,7 +92,7 @@ This is only relevant if the underlying source is Active Directory. This is a sp
 
 ## New inetOrgPerson
 
-If you choose to create a new user, the entry is associated with the inetOrgPerson object class.  
+If you choose to create a new user, the entry is associated with the inetOrgPerson object class.
 ## New Active Directory Group
 
 If you choose to create a new Active Directory group, it is associated with the group object class. After entering a group name and description, select one of the following group types. 
@@ -122,15 +122,15 @@ To add explicit members, follow the steps below.
 
 3.	Click **Add More** and then click **Browse Tree** to select a starting point in the virtual namespace to look for users.
 
-4.	To limit the search criteria, enter a value before clicking Search. The value must match either a uid, sn, or cn value.  
+4.	To limit the search criteria, enter a value before clicking Search. The value must match either a uid, sn, or cn value.
 
 The object class for the user must be inetOrgPerson, user, person, or organizationalPerson (for the search to return them as a user entry). If you selected the option to search for groups, the group must be associated with an object class of group, groupofnames or groupOfUniqueNames. 
 
-5.	Once you find the user (or group) account you want to add to the group, select the account and click the down arrow and click Confirm.  
+5.	Once you find the user (or group) account you want to add to the group, select the account and click the down arrow and click Confirm.
 
 ### Dynamic Members
 
-Dynamic group members are different than explicit group members because instead of specifying a user DN in the group membership attributes (either the member or uniqueMember attributes), you need to specify the LDAP URL containing the filter to find the group members in an attribute named memberURL.  The syntax for the memberURL value is as follows:
+Dynamic group members are different than explicit group members because instead of specifying a user DN in the group membership attributes (either the member or uniqueMember attributes), you need to specify the LDAP URL containing the filter to find the group members in an attribute named memberURL. The syntax for the memberURL value is as follows:
 
 ```
 <base_dn>?[attrs]?[sub|one|base]?<filter>
@@ -176,7 +176,7 @@ An alternative to using a wizard to manage dynamic group members is to manually 
 
 6.	In the attribute drop-down list, select memberURL.
 
-7.	Enter the memberURL using the syntax mentioned above.  Click **OK** and the group entry is updated accordingly.
+7.	Enter the memberURL using the syntax mentioned above. Click **OK** and the group entry is updated accordingly.
 
 For more details on managing groups stored in a Universal Directory store, please see the RadiantOne Namespace Configuration Guide.
 
@@ -186,7 +186,7 @@ To remove group members, from the Main Control Panel > Directory Browser Tab, se
 
 To remove explicit members:
 
-1.	Select the group entry and click  ![An image showing ](Media/manage-group-button.jpg). 
+1.	Select the group entry and click ![An image showing ](Media/manage-group-button.jpg). 
 
 2.	Click **Edit Explicit Members**. 
 
@@ -200,7 +200,7 @@ To remove explicit members:
 
 To remove dynamic members:
 
-1.	Select the group entry and click  ![An image showing ](Media/manage-group-button.jpg). 
+1.	Select the group entry and click ![An image showing ](Media/manage-group-button.jpg). 
 
 2.	Click **Edit Dynamic Members**. 
 
@@ -345,7 +345,7 @@ You can test authentication for any entry in the RadiantOne namespace. To test a
 
 2.	Expand a root naming context and select an entry.
 
-3.	Click the ![An image showing ](Media/test-authentication.jpg) button. The Test Authentication window opens.
+3.	Click ![An image showing ](Media/test-authentication.jpg). The Test Authentication window opens.
 
-4.	Enter the password and click the Test Bind button. If the password is correct, the Test Authentication window returns the message “Binding Successful”. If the password is incorrect, a message similar to the following is returned.
+4.	Enter the password and click **Test Bind**. If the password is correct, the Test Authentication window returns the message “Binding Successful”. If the password is incorrect, a message similar to the following is returned.
 <br>Connection failed:javax.naming.AuthenticationException: [LDAP: error code 49 – Reason: 52e – Invalid credentials.

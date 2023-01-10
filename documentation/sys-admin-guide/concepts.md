@@ -14,15 +14,15 @@ This chapter introduces the various concepts that you should understand to confi
   - [Bind Order](#bind-order)
   - [Computed Attributes](#computed-attributes)
   - [Interception Scripts](#interception-scripts)
-  - [Groups](#groups)    
+  - [Groups](#groups)
   - [Schema Extraction](#metadataschema-extraction)
   - [Delegated Authentication](#delegated-authentication)
-    
+
 ## Data Source
 
 A data source in RadiantOne represents the connection to a backend. This could be a source that is LDAP-accessible (LDAP Data Source), JDBC-accessible (Database Data Source), or accessible through an API call (Java, web service or REST using a Custom Data Source). Data sources can be managed from the Main Control Panel > Settings Tab > Server Backend section.
 
-![An image showing ](Media/Image2.1.jpg)
+![managing data sources](Media/Image2.1.jpg)
  
 Figure 1: Managing Data Sources
 
@@ -46,7 +46,7 @@ If you have existing data sources defined ([exported](#to-export-data-sources) f
 
 If you have existing data sources defined in a RadiantOne server and you would like to re-use them for another RadiantOne server, from the Main Control Panel > Settings Tab > Server Backend click on the sub-section representing the types of data sources you want to export (LDAP Data Sources, Database Data Sources or Custom Data Sources). On the right side, click **Export**. Select the data sources you want to export, indicate a file name and location and click **OK**.
 
-![An image showing ](Media/Image2.2.jpg)
+![exporting data sources](Media/Image2.2.jpg)
 
 Figure 2: Exporting Data Sources
 
@@ -66,19 +66,19 @@ The diagrams below provide a summary/review of data sources containing duplicate
 
 In the first scenario, the data sources have no overlap of identities. In this scenario the benefits of union would still be important for identity management since a single unique index/list is still required for applications to identify a user for authentication. However, the design effort is a bit easier as no correlation logic is required. An aggregation of sources A, B, and C is sufficient, so the primary design consideration in this case is what hierarchy applications are expecting and to build this namespace accordingly.
 
-![An image showing ](Media/Image2.3.jpg)
+![data sources with no overlapping identities](Media/Image2.3.jpg)
 
 Figure 3: Data Sources with no Overlapping Identities
 
 In cases where there starts to be user overlap (as seen in Sources A and B in the diagram below), the configuration starts to require correlation. In this scenario, an aggregation of users from sources A, B and C is required in addition to correlation for the overlapping users in sources A and B. The design considerations now involve correlation logic in addition to where you want the unique list of users to appear in the virtual namespace.
 
-![An image showing ](Media/Image2.4.jpg)
+![data sources with some lovel of overlapping identities](Media/Image2.4.jpg)
 
 Figure 4: Data Sources with Some Level of Overlapping Identities
 
 In scenarios where the number of data sources increases, the amount of overlapping identities varies (as depicted in the diagram below), and the logic required to correlate identities becomes complex with the possible need of cascading rules to determine correlation, RadiantOne can create the union of identities which is the basis for supporting authentication and authorization and the foundation for the RadiantOne Identity Data Platform.
 
-![An image showing ](Media/Image2.5.jpg)
+![complex identity integration scenario](Media/Image2.5.jpg)
 
 Figure 5: Complex Identity Integration Scenario
 
@@ -98,7 +98,7 @@ Joining is a way to combine information from multiple data sources into a single
 
 A Regular Join is defined as adding existing attribute(s) from another data source(s) to a virtual entry. The starting point for the join is known as the primary (or main) object. The data sources to be joined are known as secondary (or target) objects. Any object in the RadiantOne namespace can be a primary or secondary object. In RadiantOne, entries representing the same user across all data sources must have a unique identifier (common key) or a set of common identifiers in order to join. In the diagram below, the LDAP directory has been joined with Active Directory and a database based on a common value of userID matching EmployeeID in Active Directory and Emp_ID in the database.
 
-![An image showing ](Media/Image2.6.jpg)
+![regular join example](Media/Image2.6.jpg)
 
 Figure 6: Regular Join Example
 
@@ -106,7 +106,7 @@ Figure 6: Regular Join Example
 
 The primary source for regular joins is a virtual view of either an LDAP Backend, Database Backend (a specific object in the database), a web service backend, or you can even set up the join at a global level (to apply to all entries in the RadiantOne namespace).
 
-><span style="color:red">**IMPORTANT NOTE – the only exception to the following steps is if you want the join configured at a global level (to apply to all virtual entries contained in any root naming context). In this case, the join is configured from the Main Control Panel > Settings Tab > Interception > Global Join. Click Add to configure a global level join.**
+><span style="color:red">**IMPORTANT NOTE – the only exception to the following steps is if you want the join configured at a global level (to apply to all virtual entries contained in any root naming context). In this case, the join is configured from the Main Control Panel > Settings Tab > Interception > Global Join. Click **Add** to configure a global level join.**
 
 Configuration Steps for LDAP and DSML Backends
 
@@ -182,7 +182,7 @@ If you would like to create an attribute based on existing attributes of the pri
 
 9.	Specify the size limit (the number of entries to return to join for each unique entry in the primary source). Typically, this should be one (one entry in the primary source matches one entry in the secondary source).
 
-10.	Select the specific object class associated with the secondary entries you want to join with in the Object Class drop-down menu. If the target source is RadiantOne and the object class required for your secondary entries is not listed in the drop-down, you must first extend the RadiantOne LDAP schema. For information on schema extension, please see [Extending RadiantOne LDAP Schema](04-radiantone-ldap-schema#extending-the-radiantone-ldap-schema).
+10.	Select the specific object class associated with the secondary entries you want to join with in the Object Class drop-down menu. If the target source is RadiantOne and the object class required for your secondary entries is not listed in the drop-down, you must first extend the RadiantOne LDAP schema. For information on schema extension, please see [Extending RadiantOne LDAP Schema](radiantone-ldap-schema#extending-the-radiantone-ldap-schema).
 
 11.	Select the attribute from the secondary object that you want to base the join condition on from the drop-down menu. The value of this attribute should match the value of the primary object join attribute that you set above. The Join Condition parameter displays the attribute matching criteria for the join.
 
@@ -190,9 +190,9 @@ If you would like to create an attribute based on existing attributes of the pri
 
 13.	If you would like all of the possible attributes returned from the secondary object, select the All attributes option. Otherwise, list the attributes to return.
 
-14.	If you choose to list the attributes, all attributes are listed by default. You can choose to remove the ones you don’t want by selecting them (you can select multiple at once), and clicking Remove.
+14.	If you choose to list the attributes, all attributes are listed by default. You can choose to remove the ones you don’t want by selecting them (you can select multiple at once), and clicking **Remove**.
 
-15.	If you accidently delete an attribute and need to add it back, click Add and select the attribute from the list. You can select multiple attributes at once using Ctrl + click.
+15.	If you accidently delete an attribute and need to add it back, click **Add** and select the attribute from the list. You can select multiple attributes at once using Ctrl + click.
 
 16.	You can provide a virtual/mapped name for any of the attributes as well by clicking in the Virtual Name column for the attribute and entering the mapped attribute name.
 
@@ -208,17 +208,17 @@ If you would like to create an attribute based on existing attributes of the pri
 
 If you need to edit the join condition, select the join in the list of Join Profiles, click the **Edit** option and modify the relevant parameters.
 
--	Base DN – The location in the directory containing the objects you would like to join with. This was set in step 7 above.
+-	**Base DN** – The location in the directory containing the objects you would like to join with. This was set in step 7 above.
 
--	Scope – the scope of search that should be performed to locate the entries to join with in the secondary source. This was set in step 8 above.
+-	**Scope** – the scope of search that should be performed to locate the entries to join with in the secondary source. This was set in step 8 above.
 
--	Join Condition – the matching criteria used to identify the entries to join. This was set during step 4 and 11 above.
+-	**Join Condition** – the matching criteria used to identify the entries to join. This was set during step 4 and 11 above.
 
--	Additional Filter – By default, the only filter criteria to condition a join is the object class of the parent entry (e.g. objectclass=inetOrgPerson). You can add more criteria to condition the primary entries to join. For example, if you only want to join entries that have a location of San Francisco, you could add (l=San Francisco) in the Additional Filter parameter.
+-	**Additional Filter** – By default, the only filter criteria to condition a join is the object class of the parent entry (e.g. objectclass=inetOrgPerson). You can add more criteria to condition the primary entries to join. For example, if you only want to join entries that have a location of San Francisco, you could add (l=San Francisco) in the Additional Filter parameter.
 
--	Attributes to return from the secondary objects – list of attributes to return from the secondary object.
+-	**Attributes to return from the secondary objects** – list of attributes to return from the secondary object.
 
--	Computed Attributes – if you are basing the join on a [computed attribute](#computed-attributes) and you want to change the join to use a different/new computed attribute or you want to edit/delete a previously created computed attribute, click **Computed Attributes**. Remember that if you choose to add a new computed attribute, this computed attribute name is prefixed with “vsysa” and is only used to condition the join. It is not returned as part of the virtual entry even if a client were to specifically request it. If you add a new computed attribute to base the join on, you must edit the join condition manually to use the new computed attribute.
+-	**Computed Attributes** – if you are basing the join on a [computed attribute](#computed-attributes) and you want to change the join to use a different/new computed attribute or you want to edit/delete a previously created computed attribute, click **Computed Attributes**. Remember that if you choose to add a new computed attribute, this computed attribute name is prefixed with “vsysa” and is only used to condition the join. It is not returned as part of the virtual entry even if a client were to specifically request it. If you add a new computed attribute to base the join on, you must edit the join condition manually to use the new computed attribute.
 
 If you make any changes to the join condition, remember to click **Save** in the top right corner and click **OK** to apply the changes to the server.
 
@@ -228,7 +228,7 @@ If you are familiar with the [syntax](#deactivating-a-join), you can click **Edi
 
 To deactivate a join, uncheck the join’s Active box in the Join Profiles section on the Objects tab and click Save. To reactivate the join, check the join’s Active box and click Save.
 
-![An image showing ](Media/Image2.7.jpg)
+![marking a join as active/inactive](Media/Image2.7.jpg)
 
 Figure 7: Marking a Join as Active/Inactive
 
@@ -238,7 +238,7 @@ An extended join is defined by adding new attributes (meaning these attributes d
 
 The diagram below depicts an extended join. AuthzCode, lastLogon, and pwdreset are the application-specific extension attributes that are stored in a local RadiantOne Universal Directory store. RadiantOne manages the lifecycle (creation, modification, deletion) of the entries/attributes in the local store.
 
-![An image showing ](Media/Image2.8.jpg)
+![extended join example(Media/Image2.8.jpg)
 
 Figure 8: Extended Join Example
 
@@ -262,11 +262,11 @@ The primary source is a virtual view of either an LDAP Backend, Database Backend
 6.	Select the object class that will condition the primary entries to be the source of the join.
 
 7.	Choose whether you want the default data store or custom settings.
-<br> Default – if this is chosen, RadiantOne stores the extension attributes below the cn=extendedxjoin naming context. This is a hidden naming context and is not seen from the LDAP clients. Hidden naming contexts are prefixed with the keyword hiddenContexts in the rootdse.ldif file. 
+<br> **Default** – if this is chosen, RadiantOne stores the extension attributes below the cn=extendedxjoin naming context. This is a hidden naming context and is not seen from the LDAP clients. Hidden naming contexts are prefixed with the keyword hiddenContexts in the rootdse.ldif file. 
 
-  The entries are created automatically and the extension attributes are added, update and deleted based on client requests. The only parameters to configure when using the default settings are the object class you want associated with the extension attributes, and the attribute names.
+    The entries are created automatically and the extension attributes are added, update and deleted based on client requests. The only parameters to configure when using the default settings are the object class you want associated with the extension attributes, and the attribute names.
 
-  **Custom** – if this is chosen, RadiantOne stores the extension attributes in the location of your choice. The location must first exist (create it if you haven’t already) in the virtual namespace. RadiantOne manages the creation of the entries and attributes as well as all modifications to these entries. The parameters you must configure are; the base DN (the location in the virtual namespace where you want to store the extension attributes), the object class to associate the extension attributes with, and how to comprise the RDN attribute (name and attribute from the primary object to populate the target RDN with).
+    **Custom** – if this is chosen, RadiantOne stores the extension attributes in the location of your choice. The location must first exist (create it if you haven’t already) in the virtual namespace. RadiantOne manages the creation of the entries and attributes as well as all modifications to these entries. The parameters you must configure are; the base DN (the location in the virtual namespace where you want to store the extension attributes), the object class to associate the extension attributes with, and how to comprise the RDN attribute (name and attribute from the primary object to populate the target RDN with).
 
 ><span style="color:red">**IMPORTANT NOTE – if your chosen location in the virtual namespace is configured as something other than a RadiantOne Universal Directory store, then the underlying backend must be capable of storing the extension attributes. For example, if the backend is a database table, then columns representing the extension attributes must exist. If the backend is an LDAP directory, the extension attributes should be defined in the schema (if schema checking is enforced) and the object class that is associated with the extension attributes should be set during the configuration steps described below.**
 
@@ -324,13 +324,13 @@ If you need to modify the join condition, select the corresponding join profile 
 
 -	If the default data store settings are used, then nothing can be changed in the Secondary Object section. If custom data store settings are used, then you can change the Base DN (location in RadiantOne to store the extension entries).
 
--	Additional Filter –By default, the only filter criteria to condition a join is the object class of the parent entry (e.g. objectclass=inetOrgPerson). You can add more criteria to condition the primary entries to join. For example, if you only want to join entries that have a location of San Francisco, you could add (l=San Francisco) in the Additional Filter parameter.
+-	Additional Filter – By default, the only filter criteria to condition a join is the object class of the parent entry (e.g. objectclass=inetOrgPerson). You can add more criteria to condition the primary entries to join. For example, if you only want to join entries that have a location of San Francisco, you could add (l=San Francisco) in the Additional Filter parameter.
 
 -	Extended Object Class – this is the objectclass associated with the extension attributes.
 
 -	Extension Attributes to join to the primary objects – list of attributes to return. 
 
-If you make any changes to the join, click Save in the top right corner and click OK to apply the changes to the server.
+If you make any changes to the join, click **Save** in the top right corner and click **OK** to apply the changes to the server.
 
 If you are familiar with the [syntax](#join-syntax), you can click **Edit Manually** at the bottom of the Attribute tab in the Edit window. 
 
@@ -338,7 +338,7 @@ If you are familiar with the [syntax](#join-syntax), you can click **Edit Manual
 
 To deactivate a join, uncheck the join’s Active box in the Join Profiles section on the Objects tab and click **Save**. To reactivate the join, check the join’s Active box and click **Save**.
 
-![An image showing ](Media/Image2.9.jpg)
+![marking a join as active/inactive](Media/Image2.9.jpg)
 
 Figure 9: Marking a Join as Active/Inactive
 
@@ -356,7 +356,7 @@ LDAP://[VDS]/ou=people,o=myviews?sn:1,cn:1,mail:255,title?sub?(uid=@[CID]) ##JOI
 
 -	The ou=people,o=myviews section specifies the branch (known as the Secondary Object Base DN) that contains the entries to join to the primary entries.
 
--	The attributes listed (sn, cn, mail, title) are the attributes to be returned from the secondary entries. The numeric value set after the attribute indicates the precedence level (0 being least authoritative, 255 being most authoritative…if no value is specified, an authority level of 128 is assumed). For more information, please see the section titled Attribute Priority.
+-	The attributes listed (sn, cn, mail, title) are the attributes to be returned from the secondary entries. The numeric value set after the attribute indicates the precedence level (0 being least authoritative, 255 being most authoritative…if no value is specified, an authority level of 128 is assumed). For more information, please see the section titled [Attribute Priority](#attribute-priority).
 
 -	A sub level search scope is specified to find the secondary objects to join.
 
@@ -396,7 +396,7 @@ LDAP://198.123.123.444:389/dc=anotherldap,dc=com?sub?(&(sn=@[LASTNAME])(givennam
 
 >**NOTE - If no sizelimit is specified, the default used is 1000.**
 
-Example 3 – Extended Join
+**Example 3 – Extended Join**
 
 ```
 LDAP://[VDS]/xid=@[uid],cn=config?newattr1,newattr2?base?(objectclass=*)##EXTENDED=extensibleObject
@@ -434,20 +434,16 @@ The priority level is only needed when the attribute name returned from the seco
 Priority Level – Numeric Value:
 
 -	Lowest – 1
-
 -	Low – 64
-
 -	Normal – 128
-
 -	High – 192 
-
 -	Highest – 255
 
 If you have defined your virtual view from the Main Control Panel > Directory Namespace tab, select the primary object in the list of Root Naming Contexts. On the right side, select the Objects tab (for database backends, this tab is named Object). In the Virtual Object section, the entire list of attributes coming from the primary object is displayed, returned from any secondary objects, and any computed attributes. Select the attribute name that has more than one source and then click Edit Attribute. The details for the attribute are shown. The origin of the attribute shows all sources the attribute comes from. Click in the Priority column to set the priority accordingly. The attribute with the higher priority is returned in the virtual entry.
 
 In addition to setting priority, you can also specify whether the attributes returned from secondary sources are hidden (not visible in the virtual entry), searchable, or updateable.
 
-![An image showing ](Media/Image2.10.jpg)
+![Attribute properties](Media/Image2.10.jpg)
 
 Figure 10: Attribute Properties (Hidden, Searchable, Updateable, Priority/Weight)
 
@@ -475,7 +471,7 @@ To define an attribute as searchable, from the Main Control Panel > Directory Na
 
 You can define attributes as updateable or not.
 
--	If an attribute is updateable, clients may modify the value (remember just because they can doesn’t mean [access controls]() will allow it).
+-	If an attribute is updateable, clients may modify the value (remember just because they can doesn’t mean [access controls](access-control) will allow it).
 
 -	If an attribute is not updateable, clients cannot modify the value.
 
@@ -532,7 +528,7 @@ For example, using the join condition defined above, if RadiantOne receives a fi
 
 In a Left Join, all entries from the primary source are returned in the result and if they have a matching entry in a secondary source(s), those additional attributes comprise the main entry. If an entry in the primary source does not have a matching entry in a secondary source it is still a possible candidate to be returned to the client (if it matches the original filter in the client request).
 
-![An image showing ](Media/Image2.11.jpg)
+![left join example](Media/Image2.11.jpg)
 
 Figure 11: Left Join Example
 
@@ -540,7 +536,7 @@ Figure 11: Left Join Example
 
 In an Inner Join, the primary entries (from the starting point for the join) are joined with matching secondary entries. Only entries that can be joined (the intersection) are possible candidates to be returned to the client (if it matches the original filter in the client request). The entry(s) that are returned will be comprised of attributes from the primary object and any secondary objects that were joined.
 
-![An image showing ](Media/Image2.12.jpg)
+![inner join example](Media/Image2.12.jpg)
 
 Figure 12: Inner Join Example
 
@@ -564,7 +560,7 @@ Please see the diagram below for more details on the [join behavior](#join-behav
  
 #### Join Behavior Diagram
 
-![An image showing ](Media/Image2.13.jpg)
+![Join Behavior Diagram](Media/Image2.13.jpg)
 
 Figure 13: Join Behavior Diagram
 
@@ -576,7 +572,7 @@ If you have configured joins between multiple sources, RadiantOne can send the b
 
 After the join is configured, you can set the bind order (the backends to check in a particular order). The diagram below depicts an example. The database is configured with bind order 1. Therefore, RadiantOne attempts the bind there first. If the bind fails against the database, the LDAP directory receives the bind request (as per the configuration). If the bind were to fail again, Active Directory would receive the bind request. If all sources fail, the client receives a bind failure error from RadiantOne.
 
-![An image showing ](Media/Image2.14.jpg)
+![bind order example](Media/Image2.14.jpg)
 
 Figure 14: Bind Order Example
 
@@ -586,7 +582,7 @@ For specific configuration details, please see the RadiantOne Namespace Configur
 
 If you would like your virtual entries to include attributes that are derived from existing attributes, or set to a constant value, you can use Computed Attributes. Computed attributes can be based on attributes from the primary object, secondary objects, and/or previously computed attributes, or can contain a constant value. 
 
-If you create a computed attribute from a binary attribute, use the getBinary(attribute) function to get the binary value. If you do not use this function, the computed attribute will have the value in the form of {base64Binary}xxxx. Also, the computed attribute name should be defined in the list of [binary attributes]() in order for RadiantOne to handle it properly.
+If you create a computed attribute from a binary attribute, use the getBinary(attribute) function to get the binary value. If you do not use this function, the computed attribute will have the value in the form of {base64Binary}xxxx. Also, the computed attribute name should be defined in the list of [binary attributes](settings-tab#binary-attributes) in order for RadiantOne to handle it properly.
 
 Creating multiple computed attributes with the same name is not allowed. If you need to create a computed attribute from a previously computed attribute, that attribute must appear in the virtual object list first. All attributes of the virtual object can be seen on the Objects tab.
 
@@ -594,7 +590,7 @@ Creating multiple computed attributes with the same name is not allowed. If you 
 
 To use a computed attribute to base a join on, click **Add Computed Attribute** during step 2 of the join configuration. The diagram below depicts a computed attribute named login that can be used in a join condition.
 
-![An image showing ](Media/Image2.15.jpg)
+![Computed Attribute Example to use as Join Criteria](Media/Image2.15.jpg)
 
 Figure 15: Computed Attribute Example to use as Join Criteria
 
@@ -602,7 +598,7 @@ If you do not need to create a join based on a computed attribute, you can defin
 
 The diagram below depicts a computed attribute example where the value is comprised of attributes coming from both the primary object and a secondary object.
 
-![An image showing ](Media/Image2.16.jpg)
+![Computed Attribute Example](Media/Image2.16.jpg)
 
 Figure 16: Computed Attribute Example
 
@@ -615,75 +611,143 @@ There are three options available to assist in the configuration of a computed a
 -	Function – a list of the most common functions that are available for creating the computed attribute value are described briefly below.
 
 **avg(this.attributeName)** – Computes the average from the specified attribute values. The attribute name in this example is uid.
-<br> Example: avg(this.uid) values[1,2,3] returns 2 
+
+```
+Example: avg(this.uid) values[1,2,3] returns 2
+```
 
 **firstValue(this.attributeName)** – Selects the first value from the specified attribute values. The attribute name in this example is uid.
-<br>Example: firstValue(this.uid) values[1,2,3] returns 1
+
+```
+Example: firstValue(this.uid) values[1,2,3] returns 1
+```
 
 **lastValue(this.attributeName)** - Select last value from attribute values.
-<br>Example: lastValue(this.uid) values[1,2,3] returns 3 
+
+```
+Example: lastValue(this.uid) values[1,2,3] returns 3
+```
 
 **left(attribute,separ)** - Leftmost characters of the specified attribute before the separator string are returned.
-<br>Example: left("me@mydomain.com","@") returns "me" 
+
+```
+Example: left("me@mydomain.com","@") returns "me"
+```
 
 **left(attribute,size)** - Leftmost characters (up to the amount specified in the size) of the specified attribute are returned.
-<br>Example: left("123456789",5) returns "12345" 
+
+```
+Example: left("123456789",5) returns "12345"
+```
 
 **lookup(dataSourceID,baseDN,scope,filter,attrName,sizelimit)** - Executes an LDAP search/lookup and returns the value(s) found. The following is a sub-tree search to find the mail attribute for user with uid=me. VDS is the data source name/ID.
-<br>Example: lookup("[VDS]","o=mycompany",2,"(uid=me)","mail",1)
 
-**lower(attribute)** - Converts all of the characters in the specified attribute to lower case. 
-<br> Example: upper("abCD") returns "abcd" 
+```
+Example: lookup("[VDS]","o=mycompany",2,"(uid=me)","mail",1)
+```
+
+**lower(attribute)** - Converts all of the characters in the specified attribute to lower case.
+
+```
+Example: upper("abCD") returns "abcd" 
+```
 
 **max(this.attributName)** – Returns the maximum value from the specified attribute values. The attribute name in this example is uid.
-<br>Example: max(this.uid) values[1,2,3] returns 3 
+
+```
+Example: max(this.uid) values[1,2,3] returns 3
+```
 
 **min(this.attributeName)** – Returns the minimum value from the specified attribute values. The attribute name in this example is uid.
-<br> Example: min(this.uid) values[1,2,3] returns 1 
+
+```
+<br> Example: min(this.uid) values[1,2,3] returns 1
+```
 
 **parent(dnAttribute)** - Returns the parent DN of a given dnAttribute.
-<br> Example: parent(dn), assuming the dn value is "uid=me,ou=myorg,o=mycompany", the function returns "ou=myorg,o=mycompany for the computed attribute value.
+
+```
+Example: parent(dn), assuming the dn value is "uid=me,ou=myorg,o=mycompany", the function returns "ou=myorg,o=mycompany for the computed attribute value.
+```
 
 **rdn(dnAttribute)** - Returns the RDN part of a given dnAttribute.
-<br>Example: rdn(dn), assuming the dn value is "uid=me,ou=myorg,o=mycompany", the function returns "uid=me" for the computed attribute value.
+
+```
+Example: rdn(dn), assuming the dn value is "uid=me,ou=myorg,o=mycompany", the function returns "uid=me" for the computed attribute value.
+```
 
 **rdnval(dnAttribute)** – Returns the value of the RDN for a given dnAttribute.
-<br> Example: rdnval("uid=me") returns "me" for the computed attribute value.
+
+```
+Example: rdnval("uid=me") returns "me" for the computed attribute value.
+```
 
 **remapDN(originalDNattribute,dnTemplate)** – Re-maps the original DN attribute based on a template. DN template is a representation of pattern to apply and it may contain a placeholder of %rdn and/or %dn. %rdn is the rdn value of the original DN. %dn is the value of original DN.
-<br> Example: remapDN(memberOf,"cn=%rdn,dc=my_groups") - %rdn is replaced with the rdn value extracted from the memberof attribute. 
 
-Example: remapDN(uniqueMember,"%dn,dc=my_users") adds a suffix of “dc=my_users” to the original dn. 
+```
+Example: remapDN(memberOf,"cn=%rdn,dc=my_groups") - %rdn is replaced with the rdn value extracted from the memberof attribute. 
+
+Example: remapDN(uniqueMember,"%dn,dc=my_users") adds a suffix of “dc=my_users” to the original dn.
+```
 
 **remapDN(originalDNattribute,oldSuffix,newSuffix)** – Changes the old suffix in the originalDNattribute to the newSuffix. Based on the example below, if a uniqueMember value was “uid=lcallahan,o=mycompany”, the computed attribute value would be “uid=lcallahan,dc=mycorp”.
-<br>Example: remapDN(uniqueMember,"o=mycompany","dc=mycomp") 
+
+```
+Example: remapDN(uniqueMember,"o=mycompany","dc=mycomp") 
+```
 
 **remapDN(attr2remap,dataSourceID,externalBaseDN,scope,externalIdAttr)** – Extracts the RDN value from the <attr2remap> attribute and does a lookup in a data source where <externaldAttr>=<attr2remap>. Based on the example below, if a uniqueMember value was “uid=lcallahan,o=mycompany”, and the DN resulting from the lookup where sAMAccountName=lcallahan (in the vds data source, one level below o=proxy), was cn=lcallahan,dc=addomain1,dc=com, the computed attribute value would be “cn=lcallahan,dc=addomain1,dc=com”.
-<br> Example: remapDN("uniqueMember","vds","o=proxy",1,"samAccountName")
+
+```
+Example: remapDN("uniqueMember","vds","o=proxy",1,"samAccountName")
+```
 
 >**Note: This is not compatible with other functions meaning you can’t take the result of this function and pass it as a parameter to another function.**
 
 **replaceFromDictionary(attribute,normalizedFileName,defaultValue)** – Normalizes an attribute value based on a mapping described in a file. Some sample dictionary files are located here: <RLI_HOME>/ontology/normalization
-<br>Replaces the value of the attribute based on matching values in the given dictionary file.
-<br>Example: replaceFromDictionary("BOB","firstname.dat",null) returns "ROBERT" (this mapping was dictated by the contents of the firstname.dat file).
+
+Replaces the value of the attribute based on matching values in the given dictionary file.
+
+```
+Example: replaceFromDictionary("BOB","firstname.dat",null) returns "ROBERT" (this mapping was dictated by the contents of the firstname.dat file).
+```
 
 **right(attribute,separ)** - Rightmost characters of Attribute (after separ) are returned. 
-<br>Example: right("me@mydomain.com","@") returns "mydomain.com" for the computed attribute value.
+
+```
+Example: right("me@mydomain.com","@") returns "mydomain.com" for the computed attribute value.
+```
 
 **right(attribute,size)** - Rightmost characters of Attribute (number of characters is specified in the size) are returned.
-<br>Example: right("123456789",5) returns "56789" 
+
+```
+Example: right("123456789",5) returns "56789" 
+```
 
 **sortAsc(this.attributeName)** - Sorts the specified attribute values into ascending order.
-<br>Example: sortAsc(this.uid), assuming values of uid are [1,3,2] returns [1,2,3] 
+
+```
+Example: sortAsc(this.uid), assuming values of uid are [1,3,2] returns [1,2,3] 
+```
 
 **sortDesc(this.attributeName)** - Sorts the specified attribute values into descending order.
-<br>Example: sortDesc(this.uid), assuming values of uid are [1,3,2] returns [3,2,1] 
+
+```
+Example: sortDesc(this.uid), assuming values of uid are [1,3,2] returns [3,2,1] 
+```
+
 
 **sum(this.attributeName)** - Computes total sum from attribute values.
-<br>Example: sum(this.uid), assuming values of uid are [1,2,3] returns 6 
+
+```
+Example: sum(this.uid), assuming values of uid are [1,2,3] returns 6 
+```
 
 **upper(attributename)** - Converts all of the characters in the value of attribute to upper case.
-<br>Example: upper("abCD") returns "ABCD" 
+
+```
+Example: upper("abCD") returns "ABCD" 
+```
 
 For detailed steps based on the type of primary source you are configuring, please see the Namespace Configuration Guide.
 
@@ -699,7 +763,7 @@ Interception scripts are written in Java and used to override the default behavi
 
 ><span style="color:red">**IMPORTANT NOTE – Interception scripts are powerful and offer a lot of flexibility. However, this logic is executed inside RadiantOne so caution should be taken to ensure no undesirable effects. It is highly recommended that you engage Radiant Logic Professional Services to write the interception script(s). If you choose to write your own script(s), the Radiant Logic support team might be unable to diagnose problems in a timely manner. This can result in additional consultation fees imposed on the customer related to the time required to assess and certify the script logic. This is beyond the scope of support and falls under Radiant Logic Professional Services.**
 
-Interception scripts can be configured at a [global level]() (to apply to all root naming contexts configured for the RadiantOne namespace), or for a specific backend (LDAP, Database, Web Services). For details on how to enable interception scripts for your specific type of backend, please see the RadiantOne Namespace Configuration Guide. This section describes the tasks that are common for interception scripts no matter where they are enabled.
+Interception scripts can be configured at a [global level](interception#global-interception) (to apply to all root naming contexts configured for the RadiantOne namespace), or for a specific backend (LDAP, Database, Web Services). For details on how to enable interception scripts for your specific type of backend, please see the RadiantOne Namespace Configuration Guide. This section describes the tasks that are common for interception scripts no matter where they are enabled.
 
 1.	After the script has been enabled from the Main Control Panel click Save in the upper right corner and apply the changes to the server. 
 
@@ -722,19 +786,19 @@ You can use our own Java IDE to customize scripts instead of using the Main Cont
 
 2.	Launch Eclipse and choose File > Import.
 
-![An image showing ](Media/Image2.17.jpg)
+![Option to Import Projects into Eclipse IDE](Media/Image2.17.jpg)
 
 Figure 17: Option to Import Projects into Eclipse IDE
 
 3.	Expand the General folder, select Existing Projects into Workspace and click **Next**.
 
-![An image showing ](Media/Image2.18.jpg)
+![Option to Import Existing Projects into Workspace](Media/Image2.18.jpg)
 
 Figure 18: Option to Import Existing Projects into Workspace
 
-4.	Click Browse next to Select Root Directory and navigate to <RLI_HOME>/vds_server/custom.
+4.	Click **Browse** next to Select Root Directory and navigate to <RLI_HOME>/vds_server/custom.
 
-![An image showing ](Media/Image2.19.jpg)
+![Importing RadiantOne Custom Project](Media/Image2.19.jpg)
 
 Figure 19: Importing RadiantOne Custom Project
 
@@ -742,7 +806,7 @@ Figure 19: Importing RadiantOne Custom Project
 
 6.	Navigate below the Custom folder to src.com.rli.scripts.intercept. The scripts associated with the interceptions appears below. Double-click on the script to open it in the Eclipse IDE editor.
 
-![An image showing ](Media/Image2.20.jpg)
+![Example Global Intercept Script](Media/Image2.20.jpg)
 
 Figure 20: Example Global Intercept Script
 
@@ -766,7 +830,7 @@ When it comes to evaluating access permissions/authorization, the notion of enfo
   <br>Typically, in situations where the application is configured to assign roles to specific groups, it will be the enforcement point for authorization. This is common with Web Access Management (WAM) products. The application searches the directory for the groups and then checks group membership to see if a particular user should have access to a protected resource. In this scenario, RadiantOne only must respond with groups and members, and the application enforces authorization for the resources it protects.
 
   **RadiantOne Enforcement:**
-  <br>[Access control checking]() can be turned on or off at the level of RadiantOne. If access control checking is enabled, every time a user authenticates to RadiantOne, it verifies whether the user (or a group the user is a member of) has permissions to access the entries. It allows or denies access based on permissions that have been defined. 
+  <br>[Access control checking](access-control#access-control) can be turned on or off at the level of RadiantOne. If access control checking is enabled, every time a user authenticates to RadiantOne, it verifies whether the user (or a group the user is a member of) has permissions to access the entries. It allows or denies access based on permissions that have been defined. 
 
 Both the application and RadiantOne can play a role in authorization enforcement if required. If access control checking is enabled in RadiantOne, it decides whether the service account the application connects to the directory with can see groups or not. Then, after reading the group entries, the application decides whether a particular user can access a resource based on roles that are defined in the application itself.
 
@@ -776,11 +840,11 @@ Group members can be either static (explicit member DN in the group entry) or dy
 
 The differences between static and dynamic groups are depicted in the diagrams below.
 
-![An image showing ](Media/Image2.21.jpg)
+![example of static group](Media/Image2.21.jpg)
 
 Figure 21: Example of Static Group
 
-![An image showing ](Media/Image2.22.jpg)
+![Example of Traditional LDAP Dynamic Groups](Media/Image2.22.jpg)
  
 Figure 22: Example of Traditional LDAP Dynamic Groups
 
@@ -788,12 +852,12 @@ Figure 22: Example of Traditional LDAP Dynamic Groups
 
 RadiantOne can be configured for both static and dynamic LDAP groups (as they are described above). In RadiantOne, static and dynamic LDAP groups are described and configured as user-defined groups. RadiantOne also offers auto-generated groups in which both the group names and members are dynamically created.
 
-All types of groups can be created with the [Groups Builder wizard](). This section focuses on the definition of each type.
+All types of groups can be created with the [Groups Builder wizard](administration-and-configuration#groups-builder). This section focuses on the definition of each type.
 
   **User-Defined Groups**
 <br>Static group names are explicitly listed for the group entry (just as with “standard” LDAP group entries). A user-defined group may be named anything and have members that are either statically defined or dynamically created based on a specific rule (dynamically assigned group members are similar to “standard” LDAP dynamic groups). The diagram below depicts an example of user-defined groups with dynamic members. In the example, group members are built dynamically based on the department attribute in the user entries. If a user’s department were to change, they would automatically be reflected as a member of the new group. For simplicity, only the member ID is shown in the virtual entry whereas the full user DN is returned (as an LDAP client expects) when these groups are requested.
 
-![An image showing ](Media/Image2.23.jpg)
+![User-Defined Groups with Dynamic Members](Media/Image2.23.jpg)
  
 Figure 23: User-Defined Groups with Dynamic Members
 
@@ -809,17 +873,17 @@ With auto-generated groups, group names are determined based on all possible val
 
 The diagram below depicts an example of auto-generated groups with both group names and members generated dynamically. In this example, department names are the basis for determining the group names in RadiantOne. This offers an enormous amount of flexibility. If a new department were to appear in the database, a new group would automatically appear in RadiantOne with this new name. Group members are built dynamically based on the department attribute in their entries. If a user’s department were to change, they would automatically be reflected as a member of the new group in RadiantOne. For simplicity, only the member ID is shown in the virtual entry whereas the full user DN will be returned (as an LDAP client expects).
 
-![An image showing ](Media/Image2.24.jpg)
+![Auto-Generated Groups with Dynamic Group Names and Dynamic Members](Media/Image2.24.jpg)
  
 Figure 24: Auto-Generated Groups with Dynamic Group Names and Dynamic Members
 
-See the [Groups Builder Wizard]() for details on creating both user-defined and auto-generated groups.
+See the [Groups Builder wizard](administration-and-configuration#groups-builder) for details on creating both user-defined and auto-generated groups.
 
 ## Metadata/Schema Extraction
 
-A main key capability of RadiantOne is metadata/schema extraction. To virtualize each [data source](02-concepts#data-source) the first step is to discover the metadata/schema. This is essential for understanding how each data source stores identities and the related context about the identities. During the schema extraction process, existing objects, attributes and relationships are discovered. This metadata allows RadiantOne to create a global common model of all objects and is the core/basis for defining virtual views. This entire process is depicted in the diagram below.
+A main key capability of RadiantOne is metadata/schema extraction. To virtualize each [data source](concepts#data-source) the first step is to discover the metadata/schema. This is essential for understanding how each data source stores identities and the related context about the identities. During the schema extraction process, existing objects, attributes and relationships are discovered. This metadata allows RadiantOne to create a global common model of all objects and is the core/basis for defining virtual views. This entire process is depicted in the diagram below.
 
-![An image showing ](Media/Image2.25.jpg)
+![Metadata/Schema Discovery and View Definition Global Process](Media/Image2.25.jpg)
  
 Figure 25: Metadata/Schema Discovery and View Definition Global Process
 
@@ -831,7 +895,7 @@ Since all data sources store user and password information differently (and use 
 
 After the federated namespace has been built, an application can query RadiantOne and unknowingly be able to search across numerous sources of user information.
 
-![An image showing ](Media/Image2.26.jpg)
+![Example of a Federated Namespace](Media/Image2.26.jpg)
  
 Figure 26: Example of a Federated Namespace
 
@@ -841,21 +905,21 @@ When a user logs in with a username and password, some applications send a searc
 
 In the example below, the backend source is an LDAP directory that is mounted in the RadiantOne namespace using a proxy configuration. Again, there are two steps in the process: Identification and Credentials Checking. 
  
-![An image showing ](Media/Image2.27.jpg)
+![Identification Step](Media/Image2.27.jpg)
 
 Figure 27: Identification Step
 
-![An image showing ](Media/Image2.28.jpg)
+![Credentials Checking Step](Media/Image2.28.jpg)
  
 Figure 28: Credentials Checking Step
 
 If the underlying source does not understand an LDAP bind operation (i.e. a relational database), RadiantOne can be customized to encrypt the password that was passed from the client using the appropriate algorithm and then compare that value with the value stored in the database (the attribute that has been mapped to userPassword) to decide whether the bind succeeds or fails. This encryption is performed via an interception script. As mentioned before, the entire authentication process happens in two steps: Identification and Credentials Checking. They are depicted below.
 
-![An image showing ](Media/Image2.29.jpg)
+![Identification Step](Media/Image2.29.jpg)
  
 Figure 29: Identification Step
 
-![An image showing ](Media/Image2.30.jpg)
+![Credentials Checking](Media/Image2.30.jpg)
  
 Figure 30: Credentials Checking
 
@@ -863,11 +927,11 @@ A template for the interception script is provided and can be customized to use 
 
 ### Authentication – Client Issues a User ID Only
 
-If a client application only sends a user ID to RadiantOne, and is not configured to first search for the user and then issue a bind with the full DN, RadiantOne can be configured with User ID to DN Mappings (to first find the DN and then issue the bind to the appropriate backend source). For details on configuring User ID to DN Mappings please see [User to DN Mapping](). The following diagram depicts the process.
+If a client application only sends a user ID to RadiantOne, and is not configured to first search for the user and then issue a bind with the full DN, RadiantOne can be configured with User ID to DN Mappings (to first find the DN and then issue the bind to the appropriate backend source). For details on configuring User ID to DN Mappings please see [User to DN Mapping](interception#user-to-dn-mapping). The following diagram depicts the process.
 
 ><span style="color:red">**IMPORTANT NOTE – the Identification and Credentials Checking steps still happen, however, they are both performed by RadiantOne (first find the user, then Bind to check credentials).**
 
-![An image showing ](Media/Image..jpg)
+![Entire Authentication Process using User ID to DN Mapping Rules](Media/Image..jpg)
  
 Figure 2.31: Entire Authentication Process using User ID to DN Mapping Rules
  

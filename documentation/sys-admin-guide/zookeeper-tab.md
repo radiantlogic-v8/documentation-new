@@ -15,7 +15,7 @@ Figure 1: ZooKeeper Tab
 
 Certain nodes contain editable information. To modify settings for a specific node, click **EDIT MODE**. You can also import ZooKeeper configuration while in the EDIT MODE. This allows you to rollback to a previously saved ZooKeeper configuration or import configuration from another ZooKeeper (from another cluster for example). Click **SAVE** when you are finished.
 
-You can also export the ZooKeeper configuration (to make backup copies) by clicking on the EXPORT button. Indicate the parent node in ZooKeeper from where you want to start exporting from. The default is the root (entire config). Indicate the directory to export the file to and the file name. This export can be used to save a backup of the ZooKeeper configuration.
+You can also export the ZooKeeper configuration (to make backup copies) by clicking **EXPORT**. Indicate the parent node in ZooKeeper from where you want to start exporting from. The default is the root (entire config). Indicate the directory to export the file to and the file name. This export can be used to save a backup of the ZooKeeper configuration.
 
 ![An image showing ](Media/Image3.162.jpg)
  

@@ -27,7 +27,7 @@ From the Tools menu, you can start and stop the persistent cache refresh process
 
 Click the Logs menu to display the logs section at the bottom of the topology. From here you can view the logs associated with the components in the topology.
 
-To enlarge the displayed topology, click the ![An image showing ](Media/enlarge-topology.jpg) button in the upper-right.
+To enlarge the displayed topology, click ![An image showing ](Media/enlarge-topology.jpg) in the upper-right.
 
 To reduce the size of the displayed topology, click ![An image showing ](Media/reduce-topology.jpg) in the upper-right.
 

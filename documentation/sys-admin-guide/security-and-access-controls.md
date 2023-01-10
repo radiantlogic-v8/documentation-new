@@ -52,7 +52,7 @@ The location is the target where the access control is to be applied and is a di
 
 ><span style="color:red">**IMPORTANT NOTE – it is recommended that you set access permissions at the root of your tree. When setting the target, you can navigate to the specific branch that you want to protect.**
 
-When setting access controls on a sub-branch, you do not see which access controls have been set up at the parent nodes in the tree. This increases the chance that you may have conflicting access controls defined. Defining access controls at the root helps prevent creating conflicting access rules.  
+When setting access controls on a sub-branch, you do not see which access controls have been set up at the parent nodes in the tree. This increases the chance that you may have conflicting access controls defined. Defining access controls at the root helps prevent creating conflicting access rules.
 
 ### Target Filter
 
@@ -60,7 +60,7 @@ You can also add an LDAP filter condition on the target resource (location) to p
 
 For example, you can define the target resource as: all the entries under dv=address book,o=vds that have the attribute securitylevel set to 'secret'. 
 
-To create this example, from the Main Control Panel -> Settings Tab -> Security section -> Access Control sub-section, browse to the dv=address book,o=vds branch and click **Add**.  
+To create this example, from the Main Control Panel -> Settings Tab -> Security section -> Access Control sub-section, browse to the dv=address book,o=vds branch and click **Add**. 
 
 ![An image showing ](Media/Image6.1.jpg)
 
@@ -181,7 +181,7 @@ Indicates whether users can add or delete their own DN in an attribute of the ta
 
 **Proxy**
 
-Authorization for RadiantOne data is checked based on the user who authenticated. The authorization ID (DN) is linked to the authenticated ID (DN) for the same connection.  With the proxy authorization control enabled, the client can switch the user ID (for authorization purposes) without having to re-authenticate with a new connection.
+Authorization for RadiantOne data is checked based on the user who authenticated. The authorization ID (DN) is linked to the authenticated ID (DN) for the same connection. With the proxy authorization control enabled, the client can switch the user ID (for authorization purposes) without having to re-authenticate with a new connection.
 
 If there is the need to base authorization on a different user than the one who authenticated, you can use the proxy authorization control. This is primarily useful in environments where an application must authenticate many users and doesn’t want to maintain an open connection to RadiantOne for each of them. With this approach, the application can authenticate the user, and after, impersonate that user for authorization purposes. The application can use its own service account when connecting to RadiantOne and pass the needed control along with the user DN of the person they want to represent for authorization in their requests. RadiantOne then checks the proxy authorization rules that have been configured in access controls to make sure the service account is allowed to represent the person passed in their request. If so, the service account is allowed to perform any operations the person they are impersonating would be allowed to do.
 The proxy option indicates whether the subject can access the target with the rights of another entry. You can grant proxy access using the DN of any user in the directory except the special cn=directory manager user. In addition, you cannot grant proxy rights to the cn=directory manager user. If the branch you are protecting with access controls is a local LDAP/HDAP store, then this requires the [Proxy Authorization control](settings-tab#proxied-authorization-control) enabled for RadiantOne.
@@ -260,7 +260,7 @@ To define access controls:
 
 7.	In the Target Filter, enter an applicable LDAP filter to narrow the entries affected by the access control rule. This step is optional.
 
-8.	For the Target Attributes, select either “equal to” (=) or “not equal to” (!=) from the drop-down list. Then choose to either have the access rule apply to “all” or “custom”. If custom is selected, click the SELECT button to narrow the list.
+8.	For the Target Attributes, select either “equal to” (=) or “not equal to” (!=) from the drop-down list. Then choose to either have the access rule apply to “all” or “custom”. If custom is selected, click SELECT to narrow the list.
 
     If you choose custom, and your attribute doesn’t appear in the list, you must update the RadiantOne LDAP schema appropriately before setting the ACI. For details on this, please see [Extending RadiantOne LDAP Schema](). After the schema has been updated, go back to the Settings tab > Security section > Access Controls sub-section and follow the steps mentioned above to add the custom attribute list.
 
@@ -271,7 +271,7 @@ To define access controls:
 
 12.	In the Apply to section, select the [subjects]() that will be allowed or denied access. 
 
-    To assign users, groups or users associated in a specific tree/branch, click on the LDAP SEARCH button. 
+    To assign users, groups or users associated in a specific tree/branch, click **LDAP SEARCH**. 
 
     To assign public, click **ALLOW PUBLIC**.
 

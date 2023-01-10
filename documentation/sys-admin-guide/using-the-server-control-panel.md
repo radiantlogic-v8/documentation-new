@@ -201,7 +201,7 @@ Enter key password for <rli>
 (RETURN if same as keystore password):
 ```
 
--	The rli.keystore must be located in <RLI_HOME>/<instance_name>/conf. The default keystore password is radiantlogic. The key password can be whatever you want. You must set this same password for the Server Certificate Password parameter on the Server Control Panel > Settings Tab. After setting the password here, remember to click **Save** and restart the RadiantOne service.    
+-	The rli.keystore must be located in <RLI_HOME>/<instance_name>/conf. The default keystore password is radiantlogic. The key password can be whatever you want. You must set this same password for the Server Certificate Password parameter on the Server Control Panel > Settings Tab. After setting the password here, remember to click **Save** and restart the RadiantOne service.
 
 -	The -dname value is the name of the machine RadiantOne is running on.
 -	The -alias value must be rli

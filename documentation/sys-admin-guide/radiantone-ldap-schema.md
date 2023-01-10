@@ -28,7 +28,7 @@ The LDIF file should be properly named, formatted, and saved to the following lo
 
 View the contents of the existing schema files in this location to understand the format required for the LDIF file and make sure your LDIF file follows this format.
 
-The name of the LDIF file should be ldapschema_<any 2 digit number greater than the existing file names>.ldif.  For example, the following schema files already exist by default: ldapschema_00.ldif, ldapschema_01.ldif, and ldapschema_05.ldif, so a new schema file could be ldapschema_03.ldif (any unused 2 digit number could be used).	
+The name of the LDIF file should be ldapschema_<any 2 digit number greater than the existing file names>.ldif. For example, the following schema files already exist by default: ldapschema_00.ldif, ldapschema_01.ldif, and ldapschema_05.ldif, so a new schema file could be ldapschema_03.ldif (any unused 2 digit number could be used).	
 
 ><span style="color:red">**IMPORTANT NOTES – If an object class or attribute is defined in multiple ldapschema files numbered between ldapschema_00.ldif and ldapschema_49.ldif, the ldapschema file with the largest number will override the definition in lower numbered files. For example, if an object class named domain is defined in both ldapschema_01.ldif and ldapschema_10.ldif, the definition from ldapschema_10.ldif is used.**
 
@@ -40,7 +40,7 @@ As long as RadiantOne and ZooKeeper are running on the leader node machine where
 
 ## Extending the RadiantOne Schema with Objects and Attributes Contained in .orx Files
 
-The metadata from any backend that is virtualized by RadiantOne is maintained in a file with a .orx extension. All .orx files are shown in the Main Control Panel > Settings Tab > Configuration section, when the ORX Schema node is selected. If you extracted a new schema, and it does not appear in the list, click **Refresh List** button. To add the object classes and attributes contained in a file to the RadiantOne LDAP schema, check the Publish in Server Schema option next to the proper .orx file. After all schema files have been selected, click **Generate LDAP Schema button**.
+The metadata from any backend that is virtualized by RadiantOne is maintained in a file with a .orx extension. All .orx files are shown in the Main Control Panel > Settings Tab > Configuration section, when the ORX Schema node is selected. If you extracted a new schema, and it does not appear in the list, click **Refresh List**. To add the object classes and attributes contained in a file to the RadiantOne LDAP schema, check the Publish in Server Schema option next to the proper .orx file. After all schema files have been selected, click **Generate LDAP Schema**.
 
 ![An image showing ](Media/Image3.187.jpg)
 
@@ -48,7 +48,7 @@ Figure 1: ORX Files Available for Extending RadiantOne LDAP Schema
 
 The object classes and attributes contained in the select files are added to the RadiantOne LDAP schema and can be viewed from the Main Control Panel > Settings Tab > Configuration section, LDAP Schema node.
 
->**Note – if you have already added object classes and attributes from some .orx files, then they automatically have a check mark in the Publish in Server Schema column. If you want them removed from the RadiantOne LDAP schema, uncheck them before clicking the Generate LDAP Schema button.**
+>**Note – if you have already added object classes and attributes from some .orx files, then they automatically have a check mark in the Publish in Server Schema column. If you want them removed from the RadiantOne LDAP schema, uncheck them before clicking Generate LDAP Schema.**
 
 ## Extending the RadiantOne Schema with New Objects and Attributes from the Main Control Panel
 
@@ -96,4 +96,4 @@ Figure 3: Requesting subschemaSubentry
 
 ## Schema Extensions for Select Access v6.0 Integration
 
-Schema extensions are required for Select Access to work with RadiantOne.  Make sure that the RadiantOne service is stopped. Copy the two files from <RLI_HOME>/vds_server/schema_extension into <RLI_HOME>/vds_server/conf.  Restart the RadiantOne service.
+Schema extensions are required for Select Access to work with RadiantOne. Make sure that the RadiantOne service is stopped. Copy the two files from <RLI_HOME>/vds_server/schema_extension into <RLI_HOME>/vds_server/conf. Restart the RadiantOne service.

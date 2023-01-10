@@ -9,7 +9,7 @@ description: System Administration Guide
 
 RadiantOne includes a set of wizards to assist administrators with some of the most common configuration tasks. They are designed to guide administrators through the creation of an identity service. This includes tasks such as building a unique user list, how to handle group entries (migrate them or create dynamic groups), and how to design the namespace (flat tree or merge into an existing hierarchy). Each wizard is tailored for specific use cases, depending on the needs of the applications that will be consuming the identity service.
 
-The wizards are launched from the [Wizards Tab]() in the Main Control Panel. The RadiantOne service must be running prior to launching a wizard and can be started from the Dashboard tab in the Main Control Panel if needed.
+The wizards are launched from the [Wizards Tab](wizards-tab#wizards-tab) in the Main Control Panel. The RadiantOne service must be running prior to launching a wizard and can be started from the Dashboard tab in the Main Control Panel if needed.
 
 Below is a summary for each wizard. For more information including configuration steps, please see the Identity Service Wizards Guide.
 
@@ -59,6 +59,7 @@ Any user that can bind to RadiantOne can potentially administrator the server if
 
 These functions are dictated by the following values of the vdPrivilege attribute in the group entry: 
 
+```
 - config-read
 - config-write
 - services-restart
@@ -79,6 +80,7 @@ These functions are dictated by the following values of the vdPrivilege attribut
 - globalidviewer-read
 - globalidviewer-write
 - globalidviewer-designer
+```
 
 The group entry is located in the RadiantOne namespace at:
 cn=directory administrators,ou=globalgroups,cn=config
@@ -93,11 +95,13 @@ cn=directory administrators,ou=globalgroups,cn=config
 
 These functions are dictated by the following values of the vdPrivilege attribute in the group entry: 
 
+```
 - config-read
 - instance-read
 - naming-context-read
 - data-source-read
 - globalidviewer-read
+```
 
 The group entry is located in the RadiantOne namespace at:
 cn=readonly,ou=globalgroups,cn=config
@@ -117,6 +121,7 @@ cn=readonly,ou=globalgroups,cn=config
 
 These functions are dictated by the following values of the vdPrivilege attribute in the group entry:
 
+```
 - config-read
 - config-write
 - services-restart
@@ -129,6 +134,7 @@ These functions are dictated by the following values of the vdPrivilege attribut
 - data-store-write
 - tasks-admin
 - ics-admin
+```
 
 The group entry is located in the RadiantOne namespace at:
 cn=namespaceadmin,ou=globalgroups,cn=config
@@ -144,6 +150,7 @@ cn=namespaceadmin,ou=globalgroups,cn=config
 
 These functions are dictated by the following values of the vdPrivilege attribute in the group entry:
 
+```
 - config-read
 - config-write
 - services-restart
@@ -152,6 +159,7 @@ These functions are dictated by the following values of the vdPrivilege attribut
 - data-store-write
 - tasks-admin
 - naming-context-read
+```
 
 The group entry is located in the RadiantOne namespace at:
 cn=operator,ou=globalgroups,cn=config
@@ -166,10 +174,12 @@ cn=operator,ou=globalgroups,cn=config
 
 These functions are dictated by the following values of the vdPrivilege attribute in the group entry:
 
+```
 - config-read
 - update-schema
 - data-source-read
 - data-source-write
+```
 
 The group entry is located in the RadiantOne namespace at:
 cn=schemaadmin,ou=globalgroups,cn=config
@@ -182,10 +192,12 @@ cn=schemaadmin,ou=globalgroups,cn=config
 
 These functions are dictated by the following values of the vdPrivilege attribute in the group entry: 
 
+```
 - config-read
 - acl-read
 - acl-write 
 - naming-context-read
+```
 
 The group entry is located in the RadiantOne namespace at:
 cn=aciadmin,ou=globalgroups,cn=config
@@ -198,6 +210,7 @@ cn=aciadmin,ou=globalgroups,cn=config
 
 These functions are dictated by the following values of the vdPrivilege attribute in the group entry:
 
+```
 - config-read
 - config-write
 - naming-context-read
@@ -208,6 +221,7 @@ These functions are dictated by the following values of the vdPrivilege attribut
 - globalidviewer-read
 - globalidviewer-write
 - globalidviewer-designer
+```
 
 The group entry is located in the RadiantOne namespace at:
 cn=icsadmin,ou=globalgroups,cn=config
@@ -219,8 +233,10 @@ cn=icsadmin,ou=globalgroups,cn=config
 
 These functions are dictated by the following values of the vdPrivilege attribute in the group entry:
 
+```
 - config-read
 - ics-operator
+```
 
 The group entry is located in the RadiantOne namespace at:
 cn=icsoperator,ou=globalgroups,cn=config
@@ -229,9 +245,9 @@ cn=icsoperator,ou=globalgroups,cn=config
 
 As mentioned above, the groups used for delegated administration are Directory Administrator, Namespace Administrator, Operator, Read Only, Schema Administrator, ICS Administrator, ICS Operator and ACI Administrator. These roles can be assigned to static members or dynamic members. Both are described below. Any user that is assigned to one of the delegated administration roles can login to the Control Panels and manage certain server settings based on the privileges (vdPrivilege attribute) assigned to the role. 
 
->**Notes – remember that you might require a [User ID to DN Mapping]() configuration depending on the ID that users log in with (their full DN versus just an ID).**
+>**Notes – remember that you might require a [User ID to DN Mapping](interception#user-to-dn-mapping) configuration depending on the ID that users log in with (their full DN versus just an ID).**
 
->**Delegated administrators do not have default permissions to manage virtual entries in the directory. If this is required, assign the proper [access controls]() for the delegated admin groups.**
+>**Delegated administrators do not have default permissions to manage virtual entries in the directory. If this is required, assign the proper [access controls](access-control#access-control) for the delegated admin groups.**
 
 #### Managing Explicit Members
 
@@ -241,11 +257,11 @@ As mentioned above, the groups used for delegated administration are Directory A
 
 2.	Navigate below ou=globalgroups,cn=config node to locate all of the groups.
 
-3.	Select the group you want to manage and click ![An image showing ](Media/manage-group-button.jpg) (Manage Group). From here you can remove users from groups and search for new users (located anywhere in the virtual namespace) to add to groups.
+3.	Select the group you want to manage and click ![manage group button](Media/manage-group-button.jpg) (Manage Group). From here you can remove users from groups and search for new users (located anywhere in the virtual namespace) to add to groups.
 
-![An image showing ](Media/Image3.1.jpg)
+![manage group members](Media/Image3.1.jpg)
  
-Figure 3.1: Manage Group Members
+Figure : Manage Group Members
 
 #### Managing Dynamic Members
 
@@ -261,17 +277,17 @@ Figure 3.1: Manage Group Members
 
 5.	Enter a new value of groupOfURLS and click **OK**.
 
-6.	Select the group entry and click ![An image showing ](Media/manage-group-button.jpg) (Manage Group).
+6.	Select the group entry and click ![manage group button](Media/manage-group-button.jpg) (Manage Group).
 
 7.	Click **Edit Dynamic Members**. From here you can manage the criteria for dynamic members.
 
-![An image showing ](Media/Image3.2.jpg)
+![manage group window](Media/Image3.2.jpg)
 
-Figure 3. 2: Manage Group Window
+Figure 2: Manage Group Window
 
 8.	Click **Add Member(s)**.
 
-9.	Enter the base DN where users/potential group members are located, or click ![An image showing ](Media/Image..jpg) to navigate to this location.
+9.	Enter the base DN where users/potential group members are located, or click ![base dn button](Media/basedn.jpg) to navigate to this location.
 
 10.	Select the scope associated with the base DN to locate potential members.
 
@@ -295,9 +311,9 @@ Figure 3. 2: Manage Group Window
 
 20.	Click **OK**.
 
-![An image showing ](Media/Image3.3.jpg)
+![Dynamic Group Setting](Media/Image3.3.jpg)
 
-Figure 3.3: Dynamic Group Setting
+Figure 3: Dynamic Group Setting
 
 21.	Set the member attribute to either member or uniqueMember (to match your membership attribute) and click Save in the upper right.
 
@@ -307,7 +323,7 @@ Any user that is dynamically assigned to a delegated admin group can log in to t
 
 As mentioned above, the groups used for delegated administration are Directory Administrator, Namespace Administrator, Operator, Schema Administrator, ACI Administrator, ICS Administrator, ICS Operator, and one role for Read Only access.
 
-Note - Delegated administrators do not have default permissions to manage virtual entries in the directory. If this is required, assign the proper [access controls]() for the delegated admin groups.
+Note - Delegated administrators do not have default permissions to manage virtual entries in the directory. If this is required, assign the proper [access controls](access-control#access-control) for the delegated admin groups.
 
 Default administrative users are included as members of these groups. They are as follows:
 
@@ -335,7 +351,7 @@ Default administrative users are included as members of these groups. They are a
 ><span style="color:lightblue">uid=readonly,ou=globalusers,cn=config</span>
 <br>Member of the Read Only Group.
 
-You can use the default users for delegated administration of RadiantOne activities, or you can add your own users to the various admin roles as described in the [Managing Delegation Administration Roles](#managing-default-delegated-administration-roles). To use the default users, you can log in with any of the following (depending on the RadiantOne configuration you want to manage). For details on what activities these users can perform, please see Delegated Administration of RadiantOne.
+You can use the default users for delegated administration of RadiantOne activities, or you can add your own users to the various admin roles as described in the [Managing Delegation Administration Roles](#managing-default-delegated-administration-roles). To use the default users, you can log in with any of the following (depending on the RadiantOne configuration you want to manage). For details on what activities these users can perform, please see [Delegated Administration of RadiantOne](#delegated-administration-of-radiantone).
 
 >**Note – for details on how to update the default delegate admin user’s passwords, see the RadiantOne Hardening Guide.**
 
@@ -364,15 +380,15 @@ user: readonly
 <br> password: <set to the same password you defined for the 
 super user (cn=directory manager) during the installation>
 
-The reason you can login with just the user ID as opposed to the full DN is because a default [user ID to DN mapping] has been configured for the cn=config branch in RadiantOne. This allows RadiantOne to identify the proper user DN based on the ID they log into the Main Control Panel with. This default mapping is shown below.
+The reason you can login with just the user ID as opposed to the full DN is because a default [user ID to DN mapping](interception#user-to-dn-mapping) has been configured for the cn=config branch in RadiantOne. This allows RadiantOne to identify the proper user DN based on the ID they log into the Main Control Panel with. This default mapping is shown below.
 
-![An image showing ](Media/Image3.4.jpg)
+![Default User ID to DN Mapping Rule](Media/Image3.4.jpg)
  
-Figure 3. 4: Default User ID to DN Mapping Rule
+Figure 4: Default User ID to DN Mapping Rule
 
 ### Leveraging Existing Groups for Delegated Administration
 
-As an alternative to using the [default delegated admin groups]() for enforcing authorization in the Control Panels, you can leverage your existing groups for these roles. Your groups and members must be in either a RadiantOne Universal Directory store, or persistent cache. If you choose to use your own existing groups and users, the [default delegated admin users]() will not be able to log into the Control Panel.
+As an alternative to using the [default delegated admin groups](administration-and-configuration#delegated-administration-of-radiantone) for enforcing authorization in the Control Panels, you can leverage your existing groups for these roles. Your groups and members must be in either a RadiantOne Universal Directory store, or persistent cache. If you choose to use your own existing groups and users, the [default delegated admin users](administration-and-configuration#delegated-administration-roles) will not be able to log into the Control Panel.
 
 ><span style="color:red">**IMPORTANT NOTE – if your users and groups are in a persistent cache, the bind (credentials-checking) step during the login to the Control Panel is delegated to the backend directory for validation. If the backend isn’t accessible, then the user login to the Control Panel will fail and the user will not be able to administer RadiantOne. Also, performance can be degraded because RadiantOne must delegate the bind to the backend instead of processing it locally.**
 
@@ -382,35 +398,35 @@ To configure groups and users for delegated administration, follow the steps bel
 
 2.	(Optional) If your groups and users are in persistent cache, go to the Main Control Panel > Directory Namespace > Cache node and select your cache branch. On the Properties tab on the right, enter vdPrivilege in the Extension Attributes list and click Save.
 
-![An image showing ](Media/Image3.5.jpg)
+![Entering vdPrivilege in the Extension Attributes Field](Media/Image3.5.jpg)
 
-Figure 3.5: Entering vdPrivilege in the Extension Attributes Field
+Figure 5: Entering vdPrivilege in the Extension Attributes Field
 
 3.	Navigate to the Main Control Panel > Directory Browser tab.
 
-4.	Navigate to the group location and select the group that you want to be associated with a delegated administrator role. Click **Add Attribute** and enter the name vdPrivilege and enter a value associated with the [delegated admin role]().
+4.	Navigate to the group location and select the group that you want to be associated with a delegated administrator role. Click **Add Attribute** and enter the name vdPrivilege and enter a value associated with the [delegated admin role](#delegated-administration-roles).
 
-![An image showing ](Media/Image3.6.jpg)
+![Modify Attribute > Add Value](Media/Image3.6.jpg)
 
-Image 3.7: Modify Attribute > Add Value
+Image 6: Modify Attribute > Add Value
  
 5.	Select the vdPrivilege attribute and click **Modify Attribute > Add Value**.
 
-![An image showing ](Media/Image3.7.jpg)
+![Adding the vdPrilvilege Attribute](Media/Image3.7.jpg)
 
-Image 3.6: Adding the vdPrilvilege Attribute 
+Image 7: Adding the vdPrilvilege Attribute
 
-6.	Add a required value for the role. The required values and corresponding roles are described in [Delegated Administration Roles]().
+6.	Add a required value for the role. The required values and corresponding roles are described in [Delegated Administration Roles](#delegated-administration-roles).
 
-7.	In the Add Value window, click ![An image showing ](Media/add-value-button.jpg) to add another value. Repeat this step to add all required values as outlined in Delegated Administration Roles. Click **Confirm** after all values have been added. In the example below, a group named Management has been assigned the privileges required for the Directory Administrator role.
+7.	In the Add Value window, click ![An image showing ](Media/add-value-button.jpg) to add another value. Repeat this step to add all required values as outlined in [Delegated Administration Roles](#delegated-administration-roles). Click **Confirm** after all values have been added. In the example below, a group named Management has been assigned the privileges required for the Directory Administrator role.
 
 ![An image showing ](Media/Image3.8.jpg)
  
-Figure 3.8: Example of Assigning an Existing Group to the Directory Administrator Role
+Figure 8: Example of Assigning an Existing Group to the Directory Administrator Role
 
->**Note - Delegated administrators do not have default permissions to manage virtual entries in the directory. If this is required, assign the proper [access controls]() for the delegated admin groups.**
+>**Note - Delegated administrators do not have default permissions to manage virtual entries in the directory. If this is required, assign the proper [access controls](access-control#access-control) for the delegated admin groups.**
 
-8.	Go to the Main Control Panel > Zookeeper tab (requires Expert Mode).
+8.	Go to the Main Control Panel > Zookeeper tab (requires [Expert Mode](introduction#expert-mode)).
 
 9.	Navigate to /radiantone/v1/cluster/config/vds_server.conf.
 
@@ -425,11 +441,11 @@ Figure 3.8: Example of Assigning an Existing Group to the Directory Administrato
 
 14.	Click **Save**.
 
-15.	To test, logout of the Control Panel and login with a user that is a member of one of your existing groups. Make sure the user can perform the activities associated with their role as outlined in [Delegated Administration Roles](). Remember, you must either use the full user DN as the login name, or define the proper User to DN mapping rules to allow the user to login with just an “ID”.
+15.	To test, logout of the Control Panel and login with a user that is a member of one of your existing groups. Make sure the user can perform the activities associated with their role as outlined in [Delegated Administration Roles](#delegated-administration-roles). Remember, you must either use the full user DN as the login name, or define the proper User to DN mapping rules to allow the user to login with just an “ID”.
 
 ![An image showing ](Media/Image3.9.jpg)
  
-Figure 3.9: Example of User Login with Full DN
+Figure 9: Example of User Login with Full DN
 
 #### Delegated Administration Roles
 
