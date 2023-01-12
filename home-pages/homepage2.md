@@ -46,3 +46,35 @@ This site provides resources for DevOps professionals to deploy the RadiantOne p
   
   
 </section>
+
+## Global Identity Builder Guide
+<section>
+    
+  > [Introduction to Global Identity Builder](/global-identity-builder-guide/introduction) 
+  > Introduction to Global Identity Builder.
+  
+  > [Global Identity Builder concepts](/global-identity-builder-guide/concepts) 
+  > This chapter introduces concepts applicable to the Global Identity Builder.
+  
+  > [Create a Global Identity Builder project](/global-identity-builder-guide/create-projects/create-project) 
+  > This chapter presents how to create a Global Identity Builder project.
+
+  > [Perform manual identity administration](/global-identity-builder-guide/identity-administration) 
+  > With every Global Identity Builder project, there is usually an element of manual intervention required after initial project creation.
+  
+  > [Manage real-time persistent cache refresh](/global-identity-builder-guide/manage-persistent-cache/overview) 
+  > Once a Global Identity Builder project is complete, the global profile is kept up to date with changes that happen in the identity sources using real-time persistent cache refresh.
+
+  > [Link existing groups to global profile identities](/global-identity-builder-guide/link-groups/overview) 
+  > Many client applications leverage LDAP directories for authentication and a policy information point. These applications rely on group memberships for enforcing authorization and personalization.
+  
+  > [Integrate and configure a custom data source](/global-identity-builder-guide/integrate-configure-data-source) 
+  > The custom data source example described in this section is Azure AD. 
+  
+  > [Adress group membership challenges](/global-identity-builder-guide/address-group-challenges/ldap-dynamic-groups) 
+  > Adress group membership challenges.
+  
+  > [Extend the global profile view](/global-identity-builder-guide/global-profile-view) 
+  > Extend the global profile view
+
+</section>
