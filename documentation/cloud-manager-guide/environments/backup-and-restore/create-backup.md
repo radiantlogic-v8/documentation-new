@@ -21,15 +21,13 @@ This brings you to the backup *Details* screen where you will provide the requir
 
 On the backup *Details* screen, the "Backup Details" and "Backup Destination" fields must be completed in order to submit the form to create a backup.
 
-Under "Backup Details" a "Backup Name" will auto-populate for you in the space provided. If you wish to change the name, it must meet the following naming conventions... (**confirming with RL**).
+Under "Backup Details" a "Backup Name" will auto-populate for you in the space provided.
 
 > **Note:** Backup names must be unique. You will receive a warning if the backup name entered is already in use.
 
 ![image description](images/create-backup-name.png)
 
 Next, set the backup destination by selecting the checkbox next to the desired storage location. Multiple destinations can be selected at the same time.
-
-(**confirming with RL if other destinations will be available**)
 
 ![image description](images/create-backup-destination.png)
 

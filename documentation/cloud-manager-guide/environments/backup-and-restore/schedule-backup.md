@@ -5,7 +5,7 @@ description: How to schedule environment backups
 ---
 # Schedule Automated Environment Backups
 
-This guide provides an overview of the steps required to schedule automated backups for a specific environment.
+This guide provides an overview of the steps required to schedule automated backups for a specific environment. For details on manually creating backups, see the [create a backup](create-backup.md) guide.
 
 ## Getting started
 
@@ -25,7 +25,7 @@ To create a scheduled backup, you must complete the sections outlined on the *Ba
 
 The data retention policy specifies when to delete previously created backups. To set the retention period for your scheduled backups, select a time period from the dropdown menu.
 
-The maximum retention period... (**requested from RL**).
+Scheduled backups can be stored for 30, 60, or 90 days, or the the maximum retention period of 6 months. 
 
 ![image description](images/schedule-retention-dropdown.png)
 
@@ -43,9 +43,7 @@ To set the backup frequency, use the appropriate Cron Expression syntax in the s
 
 ### Destination
 
-In the "Destination" section, select the location where you would like to store the environment backup.
-
-(**confirming w/RL if there will be multiple storage options or just S3**)
+In the "Destination" section, the destination is automatically set to the AWS-S3-Bucket associated with your Environment Operations Center instance.
 
 Once you have completed all required sections, select **Save** to create the scheduled environment backup.
 

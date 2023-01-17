@@ -64,7 +64,9 @@ Under the *Activity Log*, you can view a list of all actions performed on an env
 
 ## Monitor environment
 
-A **Monitor Environment** button is located near the top of the *Overview* screen. Select **Monitor Environment** to... **Workflow needs clarification (included in question doc)**.
+A **Monitor Environment** button is located near the top of the *Overview* screen. Select **Monitor Environment** to navigate to the monitoring section with the current environment selected.
+
+For further details on monitoring environments, see the [monitoring](../../monitoring/monitoring-overview.md) guide.
 
 ![image description](images/overview-monitoring.png)
 
@@ -84,11 +86,11 @@ The *Environment Details* section outlines the environment name, scale, type, st
 
 ### Status
 
-The environment status will change depending on the state of the environment. Statuses include (**clarifying with Prashanth**):
+The environment status will change depending on the state of the environment. Statuses include:
 
-- Operational:
-- Warning??
-- Outage??
+- Operational: The environment is fully operational with 100% of services running.
+- Warning: There are services down. This can range from 10%-90% of services.
+- Outage: There are too many services down for the environment to operate. Less than 10% of services are running.
 
 ![image description](images/overview-envdetails-status.png)
 
@@ -126,7 +128,9 @@ Node status will be listed as "Healthy", "Warning, or "Outage".
 
 CPU, memory, and disk are all displayed as color-coded percentages to indicate their health.
 
-(**outline what the different health indicators mean**)
+- Green: Indicates the component is operational.
+- Yellow: Indicates the component has a partial outage.
+- Red: Indicates a full outage.
 
 ![image description](images/overview-health-indicators.png)
 
@@ -138,7 +142,23 @@ For further details on reviewing nodes details, see the [node details](node-deta
 
 ## Alerts
 
-(**Requested further info on alerts: what triggers them, definitions/messaging, etc.**)
+Environment alerts display at the top of the Overview screen when warnings or outages occur. A maximum of three alerts display at a time in order of priority. If there are more than three alerts, each subsequent alert will display once a previous alert has been closed or resolved.
+
+![image description](images/alerts.png)
+
+You can hide an alert by selecting the "X" located in the alert message. If the issue has not been resolved, the alert notification will persist when you navigate back to the *Overview* screen.
+
+![image description](images/alerts-close.png)
+
+To view further details about the alert, select **View Alert Logs**. 
+
+![image description](images/alerts-view-logs.png)
+
+This brings you to the *Alerts* tab where you can review the alert details.
+
+To learn more about managing environment alerts, see the [alert management guide](../../admin/alert-management/alert-management-overview.md).
+
+![image description](images/alerts-tab.png)
 
 ## Next steps
 

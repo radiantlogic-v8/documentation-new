@@ -25,6 +25,8 @@ From the *Backups* tab, you can review all backups that have been performed on t
 
 Each backup has an **Options** (**...**) menu that allows you to perform actions on the backup. Actions include **Download**, **Restore**, and **Delete**.
 
+Selecting **Download** will download the configuration file of that backup to your system. To learn how to create environment backups, review the [create a backup](create-backup.md) guide.
+
 For more information on restoring or deleting environment backups, see the [restore a backup](restore-backup.md) guide or the [delete a backup](delete-backup.md) guide.
 
 ![image description](images/backups-options.png)

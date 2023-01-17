@@ -43,15 +43,15 @@ Select **Dismiss** to close the updating notification.
 
 While the environment is updating, the environment status will change to "Updating". This status is visible on both the *Overview* screen of the specific environment and on the main *Environments* screen next to the environment that is updating.
 
-If the backup is successful... (**confirming with RL**). **Tentative:**
+![image description](images/restore-status-updating.png)
 
-- Receives a success confirmation message
-- The environment details on the Overview screen update to reflect the details of the restored backup
+If the backup is successful:
+
+- You will receive a success notification confirming that the environment has been restored to the selected backup version.
+- The environment details on the environment's *Overview* screen will update to reflect the details of the restored backup.
 - A restored backup action is added to the Activity Log along with the corresponding date and time stamp, and the user who performed the backup restore.
 
-**associated images**
-
-If the backup is unsuccessful, you will receive an error message indicating the backup failed.
+If the backup is unsuccessful, you will receive an error message indicating the backup failed and the environment status will change to "Update Failed".
 
 Select **Dismiss** to close the error message and proceed to try restoring the backup again.
 
