@@ -7,7 +7,7 @@ description: Delete an environment
 
 This guide outlines the required steps to delete an environment in Environment Operations Center.
 
-> **Note:** Only non-production environments can be deleted by users. To delete a production environment... (**waiting for these details from RL**).
+> **Note:** Only non-production environments can be deleted by users. To delete a production environment, please contact Radiant Logic.
 
 ## Select the environment
 

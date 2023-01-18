@@ -21,7 +21,7 @@ This opens the confirmation dialog where you will enter the required information
 
 ## Confirm backup deletion
 
-The confirmation dialog to delete an environment backup displays the name of the backup you are about to delete and confirmation message verifying that you would like to proceed with this action.
+The confirmation dialog to delete an environment backup displays the name of the backup you are about to delete and a confirmation message verifying that you would like to proceed with this action.
 
 Enter "Delete" in the space provided to confirm that you would like to delete the selected environment backup and select the **Delete** button.
 

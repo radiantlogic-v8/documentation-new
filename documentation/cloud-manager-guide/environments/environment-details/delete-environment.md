@@ -7,7 +7,7 @@ description: Steps required to delete a specific environment from its detailed v
 
 This guide outlines the required steps to delete an environment from a specific environment's *Overview* screen. For details on deleting an environment from the *Environments* home screen that lists all environments, review the [delete an environment guide](../environment-overview/delete-an-environment.md).
 
-> **Note:** Only non-production environments can be deleted by users. To delete a production environment... (**waiting for these details from RL**).
+> **Note:** Only non-production environments can be deleted by users. To delete a production environment, please contact Radiant Logic.
 
 ## Getting started
 

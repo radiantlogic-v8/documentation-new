@@ -13,7 +13,7 @@ To create a new user, select the **Create User** button on the *Users* screen.
 
 ![image description](images/create-button.png)
 
-This takes you to the *Create User* form that contains all the required input fields to create a new user. Within the form you will provide the user's details and assign their role and environments.
+The *Create User* form contains all of the required input fields to create a new user. Within the form you will provide the user's details and assign their role and environments. All fields must be completed in both sections to create a new user.
 
 ![image description](images/create-user.png)
 
@@ -31,7 +31,9 @@ Once you have completed the *User Details* section, you can proceed to the *Role
 
 ## Role details
 
-In the *Role Details* section you can assign roles and environments to the user. Only one role can be assigned per environment, but multiple environments can be associated with one role. See the [role based permission](../role-based-permission/role-based-permissions.md) guide for role definitions and permission details.
+In the *Role Details* section you can assign roles and environments to the user. A user can be assigned to more than one role, but can only hold one role per environment. For example, a user may be assigned Tenant Administrator to environments "A" and "B", and also be assigned as an Environment User for environments "C" and "D". The user holds two different roles, but the environment assignments for each role are unique. 
+
+ See the [role based permission](../role-based-permission/role-based-permissions.md) guide for further details on role definitions and permission details.
 
 To assign the user a role, select the *Role* field to expand the role dropdown. From the list, select the role that is best suited for the user.
 
@@ -69,7 +71,7 @@ If you wish to return to the *Create User* form to continue creating the new use
 
 ## Confirmation
 
-After completing the *Create User* form and selecting **Save**, you will be directed to the *User* tab where you will receive a success message indicating the user has been successfully created and they will appear in the list of users.
+After completing the *Create User* form and selecting **Save**, you will be directed to the *User* tab where you will receive a success message indicating the user has been successfully created and they will appear in the list of users. The new user will receive a confirmation email notification at the specified address containing their new account information and login details.
 
 ![image description](images/create-success.png)
 

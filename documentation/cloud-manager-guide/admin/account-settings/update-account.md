@@ -6,13 +6,10 @@ description: Overview of the Account Settings tab
 # Account Settings
 
 This guide provides an overview of how to update your account settings and manage your API tokens.
-(**confirming with RL where these details appear/what they are used for, ie. just for display on *Users* tab? For EOC communications? Communications with RL tech support?**
-
-**Also confirming API details, what they are used for, etc.** ).
 
 ## Getting started
 
-From any tab in the *Admin* view, your account avatar (![image description](../images/icon-avatar.png)) will be visible in the upper right corner of the screen. To access your account settings, select the avatar icon (![image description](../images/icon-avatar.png)) which will expand the account dropdown menu. From the dropdown menu, select **Account Settings** to open the *Account Settings* screen.
+From any section or tab in Environment Operations Center, your account avatar will be visible in the upper right corner of the screen. To access your account settings, select the avatar icon to expand the account dropdown menu. From the dropdown menu, select **Account Settings** to open the *Account Settings* screen.
 
 ![image description](images/account-select-settings.png)
 
@@ -44,21 +41,23 @@ Set the API token expiration date by selecting a duration from the *Expiration D
 
 ![image description](images/account-expiration-dropdown.png)
 
-You will receive an expiration warning when your API token is close to expiring. A warning is displayed in your *Account Settings* next to the *Expiration Date* dropdown and ... (**confirming with RL when user receives first notification and where warnings appear**). You will receive an expiration reminder every day starting *X amount of time* before your API token is set to expire.
+You will receive a warning when your API token is close to expiring. A warning is displayed in your *Account Settings* next to the *Expiration Date* dropdown.
 
-> **Warning:** API token expiration is a permanent action. Once a token has expired it cannot be retrieved.
+> **Warning:** API token expiry cannot be extended. Once a token has expired, a new token must be generated.
 
 ![image description](images/account-expiration-warning.png)
 
-### Share an API token
+### Copy an API token
 
-To copy the API token to share, select the **Copy to Clipboard* icon (![image description](images/icon-copy.png)) located next to the *API Token* input field and proceed to share through your preferred channel.
+To copy the API token, select the **Copy to Clipboard** icon (![image description](images/icon-copy.png)) located next to the *API Token* input field and proceed to save or use the token as needed.
 
 ![image description](images/account-select-copy.png)
 
 ### Delete an API token
 
-You can delete the API token by selecting the trash bin icon (![image description](images/icon-delete.png)) also located next to the *API Token* input field.
+Only one API token can be created at a time. If you need to create a new API token but one already exists, you must first delete the current token.
+
+You can delete the API token by selecting the trash bin icon (![image description](images/icon-delete.png)) located next to the *API Token* input field.
 
 > **Warning:** Deleting an API token is a permanent action and cannot be undone.
 

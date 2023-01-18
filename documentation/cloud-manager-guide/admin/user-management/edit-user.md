@@ -9,33 +9,39 @@ This guide outlines the required steps to edit the details, status, role, and en
 
 ## Getting started
 
-There are two ways to open the *Edit User* tab, either by selecting the user's name or by selecting the **Options** (**...**) menu associated with that user.
+From the *Users* tab in the *Admin* section of Environment Operations Center, there are two ways to begin the workflow to edit a user. You can either select the **Options** (**...**) menu associated with the user or select the user's name to access the *Edit User* screen.
 
-To access the *Edit User* tab by directly selecting the user, select the user name from the list of users on the *Admin* *User* tab.
+### Edit from options menu
 
-![image description](images/edit-select-username.png)
-
-This brings you to the *Environment Access* tab in a detailed overview of the user. This view lists all the environments and associated roles assigned to the user. From the *Environment Access* tab, select the **Edit User** button to open the *Edit User* tab.
-
-![image description](images/edit-select-edituser.png)
-
-Alternatively, from the *User* tab you can select the **Options** (**...**) menu associated with the user. Select **Edit** from the dropdown menu to bypass the user detailed view and navigate directly to the *Edit User* tab.
+To edit a user from the **Options** (**...**) menu, select **Edit** from the **Options** (**...**) dropdown menu associated with the user.
 
 ![image description](images/edit-users-options.png)
 
-The *Edit User* tab contains all of the same categories and fields as the *Create User* tab. From here you can update the user's details, status, role, and environment assignments accordingly.
+This opens the *Edit User* screen where you can update the details and role assignments of a user. 
 
 ![image description](images/edit-user-tab.png)
 
+### Edit from user name
+
+To access the *Edit User* screen by directly selecting the user, select the user name from the list of users on the *Admin* *User* tab.
+
+![image description](images/edit-select-username.png)
+
+This brings you to the *Environment Access* tab in a detailed overview of the user. This view lists all the environments and associated roles assigned to the user. From the *Environment Access* tab, select the **Edit User** button to open the *Edit User* screen.
+
+![image description](images/edit-select-edituser.png)
+
 ## Update user details
 
-From the *Edit User* tab, you can update a user's first name, last name, and email address in the *User Details* section. Enter the updated information in the associated field provided and select **Save** to update the user's details.
+From the *Edit User* screen, you can update a user's first name, last name, and email address in the *User Details* section. Enter the updated information in the associated field provided and select **Save** to update the user's details.
 
 ![image description](images/edit-user-details.png)
 
 ## Update user status
 
-There are two ways to update the status of a user, either from the *Admin* *Users* tab or from the *Edit User* tab.
+There are two ways to update the status of a user, either from the **Options** (**...**) menu on the *Admin* *Users* tab or from the *Edit User* screen.
+
+### Update user from options menu
 
 To update a user's status from the *Users* tab, select the **Options** (**...**) menu located next to the user who you would like to deactivate or activate.
 
@@ -53,7 +59,9 @@ The user's status will change from "Active" to "Inactive"
 
 ![image description](images/edit-inactive-status.png)
 
-To update a user's status from the *Edit User* tab, adjust the *Status* toggle in the *User Details* section to the "Active" or "Inactive". Select *Save* to update the user's status.
+### Update user from Edit User screen
+
+To update a user's status from the *Edit User* screen, adjust the *Status* toggle in the *User Details* section to the "Active" or "Inactive". Select *Save* to update the user's status.
 
 ![image description](images/edit-user-inactive.png)
 
@@ -63,7 +71,7 @@ After selecting save, you will return to the *Users* tab where the user status w
 
 ## Update role details
 
-To update the role or environment assignments of a user, select the **Options** (**...**) menu next to the role and environment pairing to be edited. Select **Edit** from the dropdown to enable editing for the role and environment fields.
+To update the role or environment assignments of a user, from the *Edit User* screen select the **Options** (**...**) menu next to the role and environment pairing to be edited. Select **Edit** from the dropdown to enable editing for the role and environment fields.
 
 ![image description](images/edit-roledetails.png)
 
@@ -107,9 +115,9 @@ Select **Save** to update the user environment assignments.
 
 ![image description](images/edit-save-envs.png)
 
-### Confirmation
+### Review user roles and environments
 
-You can review the role and environment assignments for a user from the *Environment Access* tab. From the *Users* tab, select the name of the user to review.
+You can review the role and environment assignments for a user from the *Environment Access* tab. From the *Users* tab, select the name of a user in order to review the roles and environments assigned to that user.
 
 ![image description](images/edit-select-username.png)
 
@@ -119,4 +127,4 @@ The *Environment Access* tab of a user lists the environments they have been ass
 
 ## Next steps
 
-After reading this guide you should have an understanding of the steps required to edit an existing Environment Operations Center user, including their user details, status, role, and assigned environments.
+After reading this guide you should have an understanding of the steps required to edit an existing Environment Operations Center user, including their user details, status, role, and assigned environments. To learn how to delete a user, review the [delete a user](...) guide.

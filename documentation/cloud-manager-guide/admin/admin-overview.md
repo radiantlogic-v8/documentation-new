@@ -5,27 +5,13 @@ description: Overview of the Admin home screen user interface
 ---
 # Admin Overview
 
-This guide provides an overview of the *Admin* home screen and its features. From the *Admin* screen you can access tabs to manage your account settings Environment Operation Center users, environment alerts and integrations, and monitor cluster health.
+This guide provides an overview of the *Admin* home screen and its features. From the *Admin* screen you can access tabs to manage your account settings, Environment Operation Center users, environment alerts and integrations, and monitor cluster health.
 
 ## Getting started
 
 To navigate to the *Admin* screen, select **Admin** (![image description](images/icon-admin.png)) located at the bottom of the left navigation.
 
 ![image description](images/overview-select-admin.png)
-
-This brings you to the *Admin* home screen, which is the admin *Users* tab.
-
-![image description](images/overview-admin-home.png)
-
-## Account management
-
-A user avatar is located in the upper right corner of the *Admin* screen. Select the avatar (![image description](images/icon-avatar.png)) to expand your account dropdown menu. This displays your name, email, and permissions associated with the account. 
-
-From the dropdown menu you can navigate to your **Account Settings** (![image description](images/icon-account-settings.png)), access the **Help** (![image description](images/icon-help.png))center, or **Logout** (![image description](images/icon-logout.png)) of Environment Operations Center.
-
-For information on managing your account settings, see the [account settings](...) guide.
-
-![image description](images/overview-account-dropdown.png)
 
 ## Top navigation
 
@@ -74,20 +60,20 @@ For details on managing authentication providers, see the [authentication](...) 
 
 ### Integrations
 
-From the *Integrations* tab you can manage your connections to external applications to send alerts from Environment Operations Center (**confirming with RL if this is accurate or if any further functionality is missing**). The *Integrations* tab displays the integration "Label", indicating the integrations purpose, the "Integration", indicating the external application, and the "Channel" that is used within the external application integration.
+From the *Integrations* tab you can manage your connections to external applications to send alerts from Environment Operations Center. The *Integrations* tab displays the integration "Label", indicating the integrations purpose, the "Integration", indicating the external application, and the "Channel" that is used within the external application integration.
 
-For details on managing integrations, see the [managing integrations](...).
+For details on managing integrations, see the [managing integrations](integrations/manage-integrations.md) guide.
 
 ![image description](images/overview-integration-tab.png)
 
 ### Backups
 
-The *Backups* tab provides extended environment backup management functionality compared to the environment *Backups* screen (**confirming details/use cases with RL**). The admin *Backups* tab allows you to filter backups by environment and state. It displays the backup name, creation date and time, version number, and state.
+The admin *Backups* tab provides similar functionality as an environment's *Backups* tab. You cannot create or scheduled environment backups from the admin section, but you can delete or restore backups. From the admin *Backups* tab you can also recover deleted backups, which you cannot do from an environment's *Backups* tab. 
 
-For details on managing environment backups from the *Admin* screen, see the [admin backup management](...) guide.
+For details on managing environment backups see the [environment backup](../environments/backup-and-restore/backup-restore-overview.md) guide. To learn how to recover a deleted backup, see the [recover a backup](backups/recover-backups.md) guide.
 
 ![image description](images/overview-backups-tab.png)
 
 ## Next steps
 
-After reading this guide you should be able to navigate the *Admin* home screen and understand its main features including the top navigation and how to access your account settings. For details on updating your account settings, review the [account settings](account-settings/update-account.md) guide. To learn how to create a new user, review the [create a new user](user-management/create-user.md) guide.
+After reading this guide you should be able to navigate the *Admin* home screen and understand its main features including the top navigation. For details on updating your account settings, review the [account settings](account-settings/update-account.md) guide. To learn how to create a new user, review the [create a new user](user-management/create-user.md) guide.
