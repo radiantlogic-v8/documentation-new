@@ -233,6 +233,7 @@ If the VLV control has been enabled but a client searches (and passes the VLV co
 -	Not use the VLV control at all (if the backend is associated with something other than an LDAP server or local Universal Directory store/persistent cache).
 
 If the VLV control has not been enabled at all, but a client issues it in the search request as a critical control, the RadiantOne service returns LDAP protocol error code 2.
+
 The flowchart shown below depicts the behavior of RadiantOne for applying the VLV control.
 
 ![Behavior for Supporting VLV Control](Media/Image3.41.jpg)
@@ -255,7 +256,7 @@ This control can be enabled/disabled from the Main Control Panel > Settings Tab 
 
 Authorization for RadiantOne data is checked based on the user who authenticated. The authorization ID (DN) is linked to the authenticated ID (DN) for the same connection. With the proxy authorization control enabled, the client can switch the user ID (for authorization purposes) without having to re-authenticate with a new connection. After the Proxy Authorization control is enabled from here, the configuration (who is allowed to impersonate whom) is defined as access controls from the Settings tab > Security section > Access Control sub-section. For more details on the configuration, please see [Operations](security-and-access-controls#operations).
 
-><span style="color:red">**IMPORTANT NOTE – to allow the RadiantOne super user (e.g. cn=directory manager) to impersonate other users, you must enable the “[Allow Directory Manager to Impersonate Other Users]()” option. In this special scenario, access controls defining the “proxy” permission is not required. However, the Proxy Authorization Control must be enabled.**
+><span style="color:red">**IMPORTANT NOTE – to allow the RadiantOne super user (e.g. cn=directory manager) to impersonate other users, you must enable the “[Allow Directory Manager to Impersonate Other Users](access-control#allow-directory-manager-to-impersonate-other-users)” option. In this special scenario, access controls defining the “proxy” permission is not required. However, the Proxy Authorization Control must be enabled.**
 
 #### Subtree Delete Control
 
@@ -297,7 +298,9 @@ Delete request without passing the subtree delete control:
 2017-10-03 10:39:51,526 INFO  SessionHandler:1115 - --> conn[SSL/TLS]=1886 op=16 MsgID=16 DeleteRequest {entry=ou=test,o=companydirectory} LDAPControl {2.16.840.1.113730.3.4.2 false}
 
 2017-10-03 10:39:51,606 ERROR BackendRouter:3743 - ??? BackendRouter.deleteEntry(): Error from backend: com.rli.slapd.server.LDAPException:  (66); Only leaf entry can be deleted.; Operation not allowed on nonleaf
+
 2017-10-03 10:39:51,654 INFO  SessionHandler:3152 - <== conn[SSL/TLS]=1886 op=16 MsgID=16 DeleteResponse {resultCode=66, matchedDN=null, errorMessage=Only leaf entry can be deleted.} ### etime=128 ###
+
 2017-10-03 10:40:40,583 WARN  session:561 - Session 17zh5m7l2n01j1gis29nv1entj is now immortal (maxInactiveInterval=-1)
 ```
 
@@ -370,7 +373,7 @@ Authorization Identity Control is a mechanism that allows a client to retrieve t
 
 The Authorization Identity Control (--reportAuthzID) may be submitted in a bind request only. The authorization identity request control has an object identifier of "2.16.840.1.113730.3.4.16" and does not have a value. RadiantOne advertises support for the Authorization Identity Control in the rootDSE. A client that requests the rootDSE sees this value returned as a supported control.
 
-![An image showing ](Media/Image3.43.jpg)
+![Authorization Identity Control](Media/Image3.43.jpg)
 
 Image 7: Authorization Identity Control
 
@@ -395,10 +398,10 @@ BindResponse {resultCode=0, matchedDN=null, errorMessage=null} AuthorizationIden
 
 #### Who Am I Extended Operation
 
-The "Who am I?" extended operation, as outlined in [RFC 4532](https://www.rfc-editor.org/rfc/rfc4532), provides a mechanism for a client to request the authorization identity associated with the bound connection. Using this extended operation obtains the authorization identity associated with the user or application entity after the bind has established integrity and data confidentiality protections. This approach provides greater flexibility than the [Authorization Identity Control]() because it can be requested at any time, not just during a bind operation. In addition, this extended operation can be augmented with a Proxied Authorization Control to determine the authorization identity that the server associated with the identity asserted in the [Proxied Authorization Control]().
+The "Who am I?" extended operation, as outlined in [RFC 4532](https://www.rfc-editor.org/rfc/rfc4532), provides a mechanism for a client to request the authorization identity associated with the bound connection. Using this extended operation obtains the authorization identity associated with the user or application entity after the bind has established integrity and data confidentiality protections. This approach provides greater flexibility than the [Authorization Identity Control](settings-tab#authorization-identity-control) because it can be requested at any time, not just during a bind operation. In addition, this extended operation can be augmented with a Proxied Authorization Control to determine the authorization identity that the server associated with the identity asserted in the [Proxied Authorization Control](settings-tab#proxied-authorization-control).
 RadiantOne advertises support for the “Who Am I” extended operation in the rootDSE. A client that requests the rootDSE sees the 1.3.6.1.4.1.4203.1.11.3 OID value returned as a supported control.
 
-![An image showing ](Media/Image3.44.jpg)
+![Who Am I extended request support](Media/Image3.44.jpg)
 
 Figure 8: Who Am I extended request support
 
@@ -414,6 +417,7 @@ Below is an example of a RadiantOne response to a “Who Am I” extended operat
 
 ```
 2018-05-25 08:20:45,246 INFO  SessionHandler:1135 - --> conn=477 op=2 MsgID=2 ExtendedRequest {OID='1.3.6.1.4.1.4203.1.11.3', value=''}
+
 2018-05-25 08:20:45,246 INFO  SessionHandler:3498 - <== conn=477 op=2 MsgID=2 ExtendedResponse {resultCode=0, matchedDN=null, errorMessage=null, OID='1.3.6.1.4.1.4203.1.11.3', value='dn:uid=Aaron_Medler,ou=Accounting,o=companydirectory'} ### etime=0 ###
 ```
 
@@ -421,9 +425,9 @@ Below is an example of a RadiantOne response to a “Who Am I” extended operat
 
 The RadiantOne Universal Directory supports temporary entries using the dynamicObject auxiliary object class as specified in [RFC 2589](https://www.rfc-editor.org/rfc/rfc2589). These entries are associated with a time to live attribute and once expired, the entry is automatically removed from the directory. For details on this extension, see the RadiantOne Namespace Configuration Guide.
 
-Attributes Handling
+### Attributes Handling
 
-![An image showing ](Media/Image3.45.jpg)
+![Attributes Handling Section](Media/Image3.45.jpg)
  
 Figure 9: Attributes Handling Section
 
@@ -442,6 +446,7 @@ If checked, the Hide Operational Attributes option hides all operational attribu
 #### Attributes Not Displayed in Logs
 
 This property allows you to control which attribute values are not printed in clear in the RadiantOne logs. If you do not want certain attribute values printed in clear in the logs, you can indicate them here. Each attribute name should be separated with a single space. Any attribute indicated here has a value of ***** printed in the logs instead of the value in clear.
+
 #### Binary Attributes
 
 Sometimes, LDAP directory schema definitions do not define certain attributes as binary even though the value of these attributes is binary. An example of this is the objectGUID attribute in Microsoft Active Directory. If the LDAP backend schema definition does not properly define the attribute type as binary, RadiantOne does not translate the value properly when returning it to an LDAP client. To ensure RadiantOne translates the value as binary, you must list the attribute name in the Binary Attributes parameter (space separated list). This parameter is global and applies to any backend LDAP that RadiantOne is accessing. The binary attributes can be defined from the Main Control Panel > Settings tab > Server Front End > Attributes Handling section. As long as the attribute name is listed, RadiantOne returns the value to a client as binary even if the backend LDAP server doesn’t define it as such.
@@ -497,7 +502,7 @@ For more information on Context Browser, please see the RadiantOne Context Brows
 
 ### Duplicate Identity Handling
 
-![An image showing ](Media/Image3.46.jpg)
+![Duplicate Identity Handling Section](Media/Image3.46.jpg)
 
 Figure 10: Duplicate Identity Handling Section
 
@@ -509,27 +514,27 @@ When aggregating model-driven virtual views (created in Context Builder) from mu
 
 Let’s look at an example of duplicate DN’s being returned for the same person. A person named Laura Callahan has an Active Directory account and a Sun Directory account. If both sources are virtualized and then merge-linked into a common virtual tree, a search on the tree would yield two results (because the RDN configured in the virtual views is exactly the same). Below is a screen shot of the virtual tree where both virtual views are linked, and a search from the Main Control Panel, Directory Browser tab, that returns two results.
 
-![An image showing ](Media/Image3.47.jpg)
+![Virtual View Aggregating Two Data Sources](Media/Image3.47.jpg)
  
 Figure 11: Virtual View Aggregating Two Data Sources
 
-![An image showing ](Media/Image3.48.jpg)
+![Same user ID Exists in Multiple Data Sources that have been Aggregated by RadiantOne](Media/Image3.48.jpg)
  
 Figure 12: Same user ID Exists in Multiple Data Sources that have been Aggregated by RadiantOne
 
 If Laura Callahan in Active Directory is in fact the same Laura Callahan as in Sun, you can enable Duplicate DN Removal to consolidate the two accounts. The screen shots below show the Duplicate DN Removal option enabled and the new result for the search.
 
-![An image showing ](Media/Image3.49.jpg)
+![Duplicate DN Removal Setting](Media/Image3.49.jpg)
  
 Figure 13: Duplicate DN Removal Setting
 
-![An image showing ](Media/Image3.50.jpg)
+![Search Result after Enabling Duplicate DN Removal](Media/Image3.50.jpg)
  
 Figure 14: Search Result after Enabling Duplicate DN Removal
 
 The one entry returned with attributes from the first source the user was found in (Active Directory in this example).
 
-![An image showing ](Media/Image3.51.jpg)
+![Result of Duplicate DN Removal](Media/Image3.51.jpg)
  
 Figure 15: Result of Duplicate DN Removal
 
@@ -539,30 +544,30 @@ Figure 15: Result of Duplicate DN Removal
 
 In cases where RadiantOne is aggregating common user identities from multiple data sources, you have the option to configure it to remove any duplicate users (from search responses) if it finds there is a common attribute/identifier (across the data sources you have aggregated). It can also be used as a way for RadiantOne to eliminate ambiguity by returning only one unique entry. Let’s take two sources as an example. Source 1 is Active Directory and source 2 is a Sun directory. Both sources have been aggregated into the virtual namespace below a naming context of dc=demo and as the two following screens show, Laura Callahan exists in both.
 
-![An image showing ](Media/Image3.52.jpg)
+![Virtual Entry from Active Directory Backend](Media/Image3.52.jpg)
  
 Figure 16: Virtual Entry from Active Directory Backend
 
-![An image showing ](Media/Image3.53.jpg)
+![Virtual Entry from Sun Directory Backend](Media/Image3.53.jpg)
  
 Figure 17: Virtual Entry from Sun Directory Backend
 
 The unique Identifier between the examples above is employeeID (employeeNumber in Sun has been mapped to employeeID to provide a common attribute between Sun and Active Directory). Therefore, a subtree search for employeeID=8 below dc=demo would return two people in this example.
 
-![An image showing ](Media/Image3.54.jpg)
+![Two Entries are Returned based on Filter of EmployeeID=8](Media/Image3.54.jpg)
  
 Figure 18: Two Entries are Returned based on Filter of EmployeeID=8
 
 Now, if Duplicate Identity Removal rules are configured, RadiantOne returns only the first entry that it finds (in this case, the one from Active Directory). Multiple duplicate identity rules can be configured (each branch in the RadiantOne namespace may have a duplicate identity removal rule). In addition, multiple attributes may be used to determine a duplicate identity. For example, you can set uid,employeeid and this means if an entry has the same uid and employeeid then it is the same person. Make sure to list the attributes you want to use to determine a duplicate identity with a comma separating each attribute name. Remember to save your settings after defining the rules.
 
-![An image showing ](Media/Image3.55.jpg)
+![Duplicate Identity Removal Settings](Media/Image3.55.jpg)
 
 Figure 19: Duplicate Identity Removal Settings
 
 ><span style="color:red">**IMPORTANT NOTES: <br>The identity attribute selected, must satisfy the following requirements: 
 <br>Single-valued <br>Represent an identity (sAMAccountName, employeeID, etc...) <br>If the attribute is not present in an entry, the entry is returned. <br>If no suffix is specified, this identity attribute applies to the whole server search response.<br>The RadiantOne service must be restarted after changing these parameters. <br>Any search response returned by RadiantOne (below the specified starting suffix) checks if another entry with the same attribute/value has already been returned. If an entry with the same identity attribute value has been returned, then others are not returned.**
 
-![An image showing ](Media/Image3.56.jpg)
+![One Entry for Laura is Returned with Duplicate Identity Removal Rules Enabled](Media/Image3.56.jpg)
 
 Figure 20: One Entry for Laura is Returned with Duplicate Identity Removal Rules Enabled
 
@@ -604,7 +609,7 @@ To define an entry cache:
 
 For complete details on how entry memory cache works, please see the RadiantOne Deployment and Tuning Guide.
 
-Query Cache
+#### Query Cache
 
 >**Note – This setting is accessible only in [Expert Mode](introduction#expert-mode).**
 
@@ -632,7 +637,7 @@ For complete details on how query memory cache works, please see the RadiantOne 
 
 In addition to supporting LDAP operations, RadiantOne can also be accessed via SQL (JDBC), SPML, DSML, REST and SAML. The configuration for these additional services is located on the Settings tab, Server Front End Section, Other Protocols sub-section.
 
-![An image showing ](Media/Image3.58.jpg)
+![Other Protocols Section](Media/Image3.58.jpg)
 
 Figure 22: Other Protocols Section
 
@@ -674,7 +679,7 @@ For details on configuring and accessing RadiantOne via DSML, SPML, SCIM, and RE
 
 >**Note – The settings in this section are accessible only in [Expert Mode](01-introduction#expert-mode).**
  
-![An image showing ](Media/Image3.59.jpg)
+![Advanced Section](Media/Image3.59.jpg)
 
 Figure 23: Advanced Section
 
@@ -730,7 +735,7 @@ Some LDAP clients search the rootDSE to determine the naming contexts available 
 
 To configure the rules that RadiantOne should abide by when responding to rootDSE requests from clients, click **ADD** in the Custom RootDSE section of the Server Front End > Advanced section.
 
-![An image showing ](Media/Image3.60.jpg)
+![Custom RootDSE Settings](Media/Image3.60.jpg)
  
 Figure 24: Custom RootDSE Settings
 

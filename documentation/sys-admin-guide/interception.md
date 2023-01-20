@@ -32,7 +32,7 @@ C:\radiantone\vds\vds_server\custom>c:\radiantone\vds\ant\bin\ant.bat buildjars
 
 A global join applies to all entries contained in any root naming context. Joins that you want to be global to RadiantOne can be configured using the Join Wizard accessed from the Global Join sub-tab. This wizard helps you configure the syntax.
 
-For complete details on the usage and configuration of joins, please see the section titled [Joins]().
+For complete details on the usage and configuration of joins, please see the section titled [Joins](concepts#joins).
 
 To configure a global join:
 
@@ -53,7 +53,7 @@ To configure a global join:
 8.	Specify the scope of search to perform to find the entries to join with. The drop-down options are base, one, 
 or sub.
 
-10.	Select the specific object class associated with the secondary entries you want to join with in the Object Class parameter from the drop-down list. For information on schema extension, please see [Extending RadiantOne LDAP Schema]().
+10.	Select the specific object class associated with the secondary entries you want to join with in the Object Class parameter from the drop-down list. For information on schema extension, please see [Extending RadiantOne LDAP Schema](radiantone-ldap-schema#extending-the-radiantone-ldap-schema).
 
 11.	Select the attribute from the secondary object that you want to base the join condition on from the Join Attribute drop-down menu. The value of this attribute should match the value of the primary source join attribute that you set in step above. The Join Condition parameter displays the attribute matching criteria for the join.
 
@@ -91,7 +91,7 @@ Figure 4: Authentication Process based on User ID to DN Mapping
 
 ### Manage Global User to DN Mapping
 
-This location is just for configuring a global user ID to DN mapping. If you are configuring a mapping for [Kerberos](), [NTLM](), or [MD5](), the configuration is set in those sections located on the Main Control Panel > Settings Tab > Security section > Authentication Methods.
+This location is just for configuring a global user ID to DN mapping. If you are configuring a mapping for [Kerberos](security#kerberos), [NTLM](security#ntlm), or [MD5](security#md5), the configuration is set in those sections located on the Main Control Panel > Settings Tab > Security section > Authentication Methods.
 
 There are three different ways to determine the DN from the user ID (using regular expression syntax). Each is described below.
 
@@ -163,31 +163,31 @@ Below are some examples of search filter mappings.
 
 For this example, if an LDAP search filter contains “city”, it is replaced by a search for the attribute “l”. Using regular expression, define that any filter with the pattern (.*)\(city=(.*) should be replaced by $1(l=$2), as shown below.
 
-![An image showing ](Media/Image3.123.jpg)
+![Sample Search Filter Mapping](Media/Image3.123.jpg)
  
 Figure 5: Sample Search Filter Mapping
 
 If RadiantOne receives a request containing a filter of (city=Los Angeles), all entries with l=Los Angeles are returned. This is shown in the example below.
 
-![An image showing ](Media/Image3.124.jpg)
+![Sample Result of Search Filter Mapping](Media/Image3.124.jpg)
  
 Figure 6: Sample Result of Search Filter Mapping
 
 The (.*) before and after city in the filter pattern ensures all information before and after city in the incoming LDAP filter is not translated. For example, if the incoming filter is something like (&(city=Los Angeles)(employeeType=Manager)), while the filter component for city is replaced by “l”, the search for employeeType=Manager is not translated. Therefore, the search filter is processed as: (&(l=Los Angeles)(employeeType=Manager)). An example is shown below.
 
-![An image showing ](Media/Image3.125.jpg)
+![Sample Search Filter Mapping Result](Media/Image3.125.jpg)
  
 Figure 7: Sample Search Filter Mapping Result
 
 The search filter mapping rules can also be used to replace more than one attribute condition in a single search. For example, assume you want all searches for city and title to be replaced by location (“l”) and employeetype, therefore, the filter pattern could be defined as: (.*)\(city=(.+)\)\(title=(.+)\)(.*) and the replacement pattern as $1(&(l=$2)(employeetype=$3))$4
 
-![An image showing ](Media/Image3.126.jpg)
+![Sample Search Filter Mapping](Media/Image3.126.jpg)
  
 Figure 8: Sample Search Filter Mapping
 
 Now, as a runtime example, all searches containing a filter for (&(city=Los Angeles)(title=Manager)) will return a list of entries with l=Los Angeles and employeetype=Manager and this can be seen in the screen below.
 
-![An image showing ](Media/Image3.127.jpg)
+![Sample Search Filter Mapping Result](Media/Image3.127.jpg)
  
 Figure 9: Sample Search Filter Mapping Result
 
@@ -199,13 +199,13 @@ Replacement: $1(l=`ldap://[vds]/o=companydirectory?ou?sub?(postalcode=$2)`)$3
 
 ><span style="color:red">**IMPORTANT NOTE – in the replacement syntax, the LDAP URL is enclosed in backticks/grave accents (generally located below the tilde character on keyboards), not to be mistaken for single quotes.**
 
-![An image showing ](Media/Image3.128.jpg)
+![Sample Search Filter Mapping with Lookup](Media/Image3.128.jpg)
  
 Figure 10: Sample Search Filter Mapping with Lookup
 
 According to the filter pattern in this example, if the incoming filter included (zipcode=94949), it would be translated into a filter of l=Novato (lookup in vds data source where postalcode=94949 and returning the l attribute for this entry). Therefore, in this example, all entries with l=Novato are returned by the search and a sample can be seen below.
 
-![An image showing ](Media/Image3.129.jpg)
+![Sample Search Filter Mapping Result](Media/Image3.129.jpg)
  
 Figure 11: Sample Search Filter Mapping Result
 
@@ -238,13 +238,13 @@ owner/ownerBL
 
 The most common back link/forward link relationship is between group and user objects. A list of groups a user is a member of can be automatically calculated by RadiantOne and returned in the membership attribute of the user entry. The default attribute name for the back link attribute is isMemberOf. However, you can configure any attribute name (e.g. memberOf) you want. 
 
-The back link attribute is returned only when explicitly requested by a client unless the back link location and forward link location are stored in a RadiantOne Universal Directory store or Persistent Cache and the Optimize Linked Attribute option is enabled, in which case the back link attribute is always returned even when not requested (unless [Hide Operational Attributes]() is enabled). Also, if the groups returned in the backlink attribute (isMemberOf/memberOf) can be members of other groups (nested groups) and you want to un-nest/flatten these groups (return all the groups in isMemberOf/memberOf), you must check the option to [Enable Nested Groups]() on the Main Control Panel > Settings tab > Security section > Access Control sub-section. Users can also be members of dynamic groups (indicated in the criteria of the memberURL attribute of the group entry).
+The back link attribute is returned only when explicitly requested by a client unless the back link location and forward link location are stored in a RadiantOne Universal Directory store or Persistent Cache and the Optimize Linked Attribute option is enabled, in which case the back link attribute is always returned even when not requested (unless [Hide Operational Attributes](settings-tab#hide-operational-attributes) is enabled). Also, if the groups returned in the backlink attribute (isMemberOf/memberOf) can be members of other groups (nested groups) and you want to un-nest/flatten these groups (return all the groups in isMemberOf/memberOf), you must check the option to [Enable Nested Groups](access-control#enable-nested-groups) on the Main Control Panel > Settings tab > Security section > Access Control sub-section. Users can also be members of dynamic groups (indicated in the criteria of the memberURL attribute of the group entry).
 
 To configure rules for linked attributes, following the steps below:
 
-1.	On the Main Control Panel, click Settings -> Interception -> Special Attributes Handling.
+1.	On the Main Control Panel, click Settings > Interception > Special Attributes Handling.
 
-![An image showing ](Media/Image3.130.jpg)
+![Special Attributes Handling](Media/Image3.130.jpg)
  
 Figure 12: Special Attributes Handling
 
@@ -386,7 +386,7 @@ Figure 18: Defining memberURL Attribute for DN Remapping
 
 For groups defined in this section, RadiantOne automatically evaluates and computes the list of members based on the memberURL attribute indicated in the group. The group named “Dynamic” configured above would be returned by RadiantOne as a virtual static group like shown below (with the member list computed automatically based on the criteria indicated in the memberURL attribute). 
 
-![An image showing ](Media/Image3.138.jpg)
+![Example - Dynamic Group Translated into Virtual Static Group](Media/Image3.138.jpg)
 
 Figure 19: Example - Dynamic Group Translated into Virtual Static Group
 
@@ -402,7 +402,7 @@ If you require the group members to be cached as static group entries, check the
 
 >**Note – if the location of the dynamic group is already configured for persistent cache when you select to Enable Caching in the dynamic group setting, you must reindex the persistent cache to ensure the group members are also in the cache.**
 
-![An image showing ](Media/Image3.139.jpg)
+![Cache Setting for Group Members](Media/Image3.139.jpg)
 
 Figure 20: Cache Setting for Group Members
 

@@ -7,7 +7,7 @@ description: System Administration Guide
 
 The settings found in the Main Control Panel > Settings Tab > Security section > Access Control sub-section are for defining access permissions for the virtual namespace. There is a section for configuring access controls, and there is a section for global authorization settings.
 
-![An image showing ](Media/Image3.110.jpg)
+![Access Controls](Media/Image3.110.jpg)
  
 Figure 1: Access Controls
 
@@ -27,7 +27,7 @@ If RadiantOne should allow anonymous access, then check the Allow Anonymous Acce
 
 ### Allow Directory Manager to Impersonate Other Users
 
-Proxy authorization allows the user that creates a connection to RadiantOne to impersonate/request access on behalf of another user. This allows authorization to be enforced for a user other than the one that creates the connection/binds to RadiantOne. By default, the RadiantOne super user (e.g. cn=directory manager) is not allowed to impersonate other users. If you want this special user to be able to impersonate other users (to enforce authorization based on other users instead of as the super user), enable the “Allow Directory Manager to Impersonate Other Users” option. Also, verify that the [Proxy Authorization Control]() is enabled for RadiantOne because this is the control that allows clients to request access on behalf of another user.
+Proxy authorization allows the user that creates a connection to RadiantOne to impersonate/request access on behalf of another user. This allows authorization to be enforced for a user other than the one that creates the connection/binds to RadiantOne. By default, the RadiantOne super user (e.g. cn=directory manager) is not allowed to impersonate other users. If you want this special user to be able to impersonate other users (to enforce authorization based on other users instead of as the super user), enable the “Allow Directory Manager to Impersonate Other Users” option. Also, verify that the [Proxy Authorization Control](settings-tab#proxied-authorization-control) is enabled for RadiantOne because this is the control that allows clients to request access on behalf of another user.
 
 ### Bind Requires SSL or StartTLS
 
@@ -35,11 +35,11 @@ If a user binds to RadiantOne and provides a password, that password is vulnerab
 
 ><span style="color:red">**IMPORTANT NOTE – As a best practice, it is recommended that you only allow SSL communication to the RadiantOne service. If you require non-SSL communication but still want to require that binds use SSL or StartTLS, you can use this option.**
 
-This option requires enabling SSL. If you want binds to use StartTLS, you must also enable StartTLS. Refer to [SSL Settings]() for more information on these settings.
+This option requires enabling SSL. If you want binds to use StartTLS, you must also enable StartTLS. Refer to [SSL Settings](security#ssl-settings) for more information on these settings.
 
 If you enable Bind Requires SSL or StartTLS, to avoid problems when using the Main Control Panel you must enable “Use SSL” for internal connections in Main Control Panel > Settings > Internal Connections. This setting corresponds to the “internalVDSClientEnableSSL” setting in ZooKeeper at: /radiantone/v2/doc737cluster/config/vds_server.conf.
 
-![An image showing ](Media/Image3.111.jpg)
+![Internal Connection Settings](Media/Image3.111.jpg)
  
 Figure 2: Internal Connection Settings
 
@@ -63,13 +63,13 @@ RadiantOne supports the LDAP_MATCHING_RULE_IN_CHAIN operator and allows clients 
 
 As a simple example, assume there is a group named All Users and that this group is a member of another group named Sales. The screen below shows the All Users group containing member Adan_Funston.
 
-![An image showing ](Media/Image3.113.jpg)
+![Example Group](Media/Image3.113.jpg)
  
 Figure 3: Example Group
 
 The screen below shows the Sales group containing the All Users group as a member.
 
-![An image showing ](Media/Image3.114jpg)
+![Example Nested Group](Media/Image3.114jpg)
  
 Figure 4: Example Nested Group
 
@@ -81,7 +81,7 @@ A client can issue a search leveraging the matching rule OID to retrieve all gro
 
 A search request to RadiantOne with the above filter would return Sales and All Users as shown in the example client below.
 
-![An image showing ](Media/Image3.115.jpg)
+![Search Filter using Matching Rule OID](Media/Image3.115.jpg)
  
 Figure 5: Search Filter using Matching Rule OID
 

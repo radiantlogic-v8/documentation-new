@@ -11,7 +11,7 @@ These settings are related to how RadiantOne accesses backend data sources and c
 
 >**Note – This section is accessible only in [Expert Mode](introduction#expert-mode).**
 
-![An image showing ](Media/Image3.61.jpg)
+![Connection Pooling Settings](Media/Image3.61.jpg)
 
 Figure 1: Connection Pooling Settings
 
@@ -24,22 +24,24 @@ The first time RadiantOne queries an underlying source, a connection is opened. 
 ### LDAP Backends
 
 Connection pooling for LDAP backends is configured with the following settings:
-### Pool size
+
+#### Pool size
 
 This is the maximum number of concurrent connections by RadiantOne to each LDAP source. For example, if you have four LDAP sources and your maximum connections value is set to 200, then you could have up to a total of 800 LDAP connections maintained by RadiantOne.
-### Timeout
+
+#### Timeout
 
 The default is 7. This is the maximum number of seconds RadiantOne waits while trying to establish a connection to the backend LDAP server. There are two attempts to create a connection (each tries to create a connection for 7 seconds).
 
-### Operation Timeout
+#### Operation Timeout
 
 The default is 0 (no timeout). This is the maximum number of seconds RadiantOne waits to receive a response from the backend LDAP server. After this time, RadiantOne drops the request and attempts to send the request again. After two failed attempts to get a response back, RadiantOne returns an error to the client.
 
-### Write Operation Timeout
+#### Write Operation Timeout
 
 The default is 0 (no timeout). This is the maximum number of seconds RadiantOne waits to receive a response from the backend LDAP server for a write operation. After this time, RadiantOne drops the request and attempts to send the request again. After two failed attempts to get a response back, RadiantOne returns an error to the client.
 
-### Idle Timeout
+#### Idle Timeout
 
 The default is 5 minutes. This is the maximum amount of time to keep an idle connection in the pool.
 
@@ -47,20 +49,21 @@ The default is 5 minutes. This is the maximum amount of time to keep an idle con
 
 Connection pooling for database backends is configured with the following settings:
 
-### Pool Size
+#### Pool Size
 
 The default is set to 20, this means 20 open connections are held in the pool for each JDBC data source. A connection pool is managed per each data source.
 
-### Idle Timeout
+#### Idle Timeout
 
 The default is 15. This is the number of minutes a connection stays in the connection pool once it is idle. Setting this to “0” (zero) results in opened connections to stay in the pool forever.
 
-### Prepared Statement Cache
+#### Prepared Statement Cache
 
 The default is 50. RadiantOne uses parameterized SQL statements and maintains a cache of the most used SQL prepared statements. This improves performance by reducing the number of times the database SQL engine parses and prepares SQL. 
 
 This setting is per database connection. Use caution when changing this default value as not all databases have the same limits on the number of 'active' prepared statements allowed.
-### Manually Clearing the Connection Pool
+
+#### Manually Clearing the Connection Pool
 
 RadiantOne supports special LDAP commands to reset connections in the pools. If you issue these commands to RadiantOne, all the connections that are currently not being used in the pool are closed.
 
@@ -105,7 +108,7 @@ An LDAP data source represents a connection to an LDAP/JNDI-accessible backend.
 To add an LDAP data source:
 1.	From the Main Control Panel > Settings Tab > Server Backend section > LDAP Data Sources sub-section, click **Add**.
 
-![An image showing ](Media/Image3.63.jpg)
+![Adding a New LDAP Data Source](Media/Image3.63.jpg)
 
 Figure 3: Adding a New LDAP Data Source
 
@@ -123,10 +126,12 @@ For LDAP backends there are five additional settings that are optional: SSL/TLS,
 
 #### SSL/TLS
 
-If the backend LDAP server you are connecting to uses a certificate issued by a trusted Certificate Authority, then all you need to do is enter the SSL port and check the SSL checkbox when you define the data source. If the server you are connecting to uses a self-signed certificate, then this certificate must be imported into the [RadiantOne client truststore]().
+If the backend LDAP server you are connecting to uses a certificate issued by a trusted Certificate Authority, then all you need to do is enter the SSL port and check the SSL checkbox when you define the data source. If the server you are connecting to uses a self-signed certificate, then this certificate must be imported into the [RadiantOne client truststore](security#client-certificates-default-java-truststore).
+
 #### Verify SSL Certificate Hostname
 
 This setting is only applicable if SSL is used to connect to the backend. If enabled, RadiantOne validates the CN/SAN of the certificate and only establishes a connection to the backend if the hostname matches. This setting is not enabled by default meaning that RadiantOne doesn’t validate the hostname to the CN/SAN of the certificate for SSL connections.
+
 ?**Note - RadiantOne does not perform a reverse lookup when the Host Name for the backend is defined as an IP address instead of a fully qualified server name.**
 
 ### STARTTLS
@@ -143,13 +148,13 @@ Some important tips for using STARTTLS are:
 
     Below is an example of the setting:
 
-![An image showing ](Media/Image3.64.jpg)
+![Configuration for RadiantOne to Connect to the Underlying LDAP Server via STARTTLS](Media/Image3.64.jpg)
 
 Figure 4: Configuration for RadiantOne to Connect to the Underlying LDAP Server via STARTTLS
 
-><span style="color:red">**IMPORTANT NOTE - When using STARTTLS, be aware that you cannot use the IP of the server in the Host Name parameter, you need the exact name of the server (which should match what is in the certificate), or you will get the following error:
-...JNDI connect Error : javax.net.ssl.SSLPeerUnverifiedException: hostname of the server '10.11.12.203' does not match the hostname in the server's certificate.**
+><span style="color:red">**IMPORTANT NOTE - When using STARTTLS, be aware that you cannot use the IP of the server in the Host Name parameter, you need the exact name of the server (which should match what is in the certificate), or you will get the following error:**
 
+><span style="color:red">**...JNDI connect Error : javax.net.ssl.SSLPeerUnverifiedException: hostname of the server '10.11.12.203' does not match the hostname in the server's certificate.**
 
 ### Mutual Authentication
 
@@ -172,7 +177,7 @@ Bind DN: cert:mycert.pfx
 Bind Password: mypassword
 ```
 
-![An image showing ](Media/Image3.65.jpg)
+![Enabling Mutual Authentication Between RadiantOne and the Underlying LDAP Server](Media/Image3.65.jpg)
 
 Figure 5: Enabling Mutual Authentication Between RadiantOne and the Underlying LDAP Server
 
@@ -192,7 +197,7 @@ Some important tips are:
 
 RadiantOne can play the role of a Kerberos client and issue a bind request with a Kerberos ticket to a backend LDAP server leveraging the SASL GSSAPI mechanism. This allows RadiantOne to connect to and virtualize data from any LDAP-accessible kerberos service (typically Active Directory, but could be any Kerberized LDAP service) in the same domain/realm as the RadiantOne server or any trusted domain/realm using Windows Integrated Authentication (WIA). 
 
-![An image showing ](Media/Image3.66.jpg)
+![RadiantOne Acting as a Kerberos Client](Media/Image3.66.jpg)
 
 Figure 6: RadiantOne Acting as a Kerberos Client – Note the client accessing RadiantOne is NOT portrayed in this Diagram
 
@@ -246,7 +251,7 @@ The [libdefaults] section specifies where to find the Kerberos user account. The
 
 Kerberos profile files are managed from the Main Control Panel > Settings Tab > Server Backend section > Kerberos Profiles sub-section. You can add, edit and delete Kerberos profiles here.
 
-![An image showing ](Media/Image3.67.jpg)
+![Kerberos Profile Settings](Media/Image3.67.jpg)
 
 Figure 7: Kerberos Profile Settings
 
@@ -351,7 +356,7 @@ Figure 9: Impersonation Rules
 
 When you define a virtual view based on this data source, there is an option that can be enabled for Role Mapped Access. If this option is enabled, the impersonation rules defined for the data source take effect and dictate which credentials are used when connecting to the backend data source. This means that if a user binds to RadiantOne and accesses a virtual view from a backend data source where Role Mapped Access has been enabled, and this user is a member of a group that has been configured for impersonation rules, the credentials defined for the group are used for accessing the backend. Below is an example of a virtual view where Role Mapped Access has been enabled.
 
-![An image showing ](Media/Image3.70.jpg)
+![Virtual View with Role Mapped Access Enabled](Media/Image3.70.jpg)
  
 Figure 10: Virtual View with Role Mapped Access Enabled
 
@@ -359,7 +364,7 @@ Figure 10: Virtual View with Role Mapped Access Enabled
 
 If proxy impersonation rules are defined, you can also define a default user. If Role Mapped access is enabled for the proxy view and the user that binds to RadiantOne is not a member of any groups defined for proxy impersonation, the default user account is used. If the connected user is not a member of any groups defined in the proxy impersonation section and there is no default user account defined, then the BindDN set in the data source is used to connect to the backend.
 
-![An image showing ](Media/Image3.70.jpg)
+![Indicating a Default User Account](Media/Image3.70.jpg)
 
 Figure 11: Indicating a Default User Account
 
@@ -373,7 +378,7 @@ You have the option to use one of the above drivers, however, it is recommended 
 
 ><span style="color:red">**IMPORTANT NOTE – updating to a different DB2 driver may require more than just replacing the existing driver files in the <RLI_HOME>/lib/jdbc directory if the name or license has changed. Please consult the Radiant Logic knowledge base for additional details.**
 
-![An image showing ](Media/Image3.72.jpg)
+![Database Data Sources](Media/Image3.72.jpg)
 
 Figure 12: Database Data Sources
 
@@ -385,7 +390,7 @@ Figure 12: Database Data Sources
 
 3.	Enter a unique data source name (do not use spaces in the name) along with the connection information to reach your backend server. You can select a Data Source Type from the drop-down list and the driver class name and URL syntax is populated for you. You can then just modify the needed parameters in the URL and enter the required user/password. 
 
->**Note - A secure connection can be made to the database if the JDBC driver supports it. If the server you are connecting to uses a certificate issued by a trusted Certificate Authority, then all you need to do during the creation of the data source is enter the SSL port in the appropriate location of the URL. If the server you are connecting to uses a self-signed certificate, then this certificate must be imported into the RadiantOne client trust store.**
+>**Note - A secure connection can be made to the database if the JDBC driver supports it. If the server you are connecting to uses a certificate issued by a trusted Certificate Authority, then all you need to do during the creation of the data source is enter the SSL port in the appropriate location of the URL. If the server you are connecting to uses a self-signed certificate, then this certificate must be imported into the [RadiantOne client trust store](security#client-certificates-default-java-truststore).**
 
 4.	Click **Test Connection**.
 
@@ -425,7 +430,7 @@ A custom data source is defined as something that cannot be accessed directly us
 
 To edit a custom data source, from the Main Control Panel > Settings Tab > Server Backend section > Custom Data Sources sub-section, select the custom data source from the list and click **Edit**. Select a custom property and click **EDIT**. Save your changes when finished.
 
-![An image showing ](Media/Image3.73.jpg)
+![Sample Custom Data Source](Media/Image3.73.jpg)
 
 Figure 13: Sample Custom Data Source
 
@@ -449,7 +454,7 @@ For DSML/SPML accessible services, you can define the data source backend from t
 
 7.	Enter the path (prefix) to reach the service.
 
-![An image showing ](Media/Image3.74.jpg)
+![Sample Custom DSML/SPML Data Source](Media/Image3.74.jpg)
 
 Figure 14: Sample Custom DSML/SPML Data Source
 
@@ -471,7 +476,7 @@ To virtualize a SCIM backend:
 
 5.	Enter the credentials (e.g. username and password) to connect to the service.
 
-![An image showing ](Media/Image3.75.jpg)
+![Sample Custom SCIM v2 Data Source](Media/Image3.75.jpg)
  
 Figure 15: Sample Custom SCIM v2 Data Source
 
@@ -485,7 +490,7 @@ Figure 15: Sample Custom SCIM v2 Data Source
 
 ##### Custom Properties
 
-Custom properties are optional. To add new properties, in the Advanced Edit window, click Add. To delete a property, select the property and click Delete. To edit a property, select the property and click Edit. Click Save after making any changes. 
+Custom properties are optional. To add new properties, in the Advanced Edit window, click **Add**. To delete a property, select the property and click Delete. To edit a property, select the property and click **Edit**. Click **Save** after making any changes. 
 
 ><span style="color:red">**IMPORTANT NOTE – Certain SCIM-accessible backends can require more properties than others. If you are unsure about the properties required for your SCIM service, contact support@radiantlogic.com for guidance.**
 
@@ -582,7 +587,7 @@ To add a test connection URL:
 
 5.	Click **OK**. 
 
-![An image showing ](Media/Image3.76.jpg)
+![The Test Connection URL Property](Media/Image3.76.jpg)
 
 Figure 16: The Test Connection URL Property
 
@@ -610,7 +615,7 @@ If a keyword is detected in the exception message from the SCIM service (backend
 
 In the event of an error, RadiantOne can wait before it attempts to resend a request to the SCIM service (backend). The waiting time is defined by the “retry_interval_on_error” property in the SCIM data source. If this property is missing from the data source, the default value is 5 seconds. To change the value of the “retry_interval_on_error” property:
 
-1.	Select the SCIM data source and click Edit. 
+1.	Select the SCIM data source and click **Edit**. 
 
 2.	In the Custom Properties section, click Add. 
 
@@ -618,23 +623,23 @@ In the event of an error, RadiantOne can wait before it attempts to resend a req
 
 4.	Indicate the length of time (in seconds) RadiantOne should wait before retrying when it queries the SCIM service. 
 
-5.	Click OK. 
+5.	Click **OK**. 
 
 #### Retries On Error
 
 You can specify how many times RadiantOne should try to resend a request to the SCIM service (backend). The number of retries on error is defined by the “retries_on_error” property in the SCIM data source. If this property is missing from the data source, the default value of this property is 60. To change the value of the “retries_on_error” property:
 
-1.	Select the SCIM data source and click Edit. 
+1.	Select the SCIM data source and click **Edit**. 
 
-2.	In the Custom Properties section, click Add. 
+2.	In the Custom Properties section, click **Add**. 
 
 3.	Name the property “retries_on_error”. 
 
 4.	Indicate the number of times RadiantOne should attempt to reconnect to the SCIM service. This includes connection errors. 
 
-5.	Click OK. 
+5.	Click **OK**. 
 
-![An image showing ](Media/Image3.77.jpg)
+![SCIM Properties](Media/Image3.77.jpg)
 
 Figure 17: SCIM Properties
 
@@ -648,7 +653,7 @@ To disable attempting retries on error:
 
 4.	In the Property Value field, enter a negative value. 
 
-![An image showing ](Media/Image3.78.jpg)
+![Disabling SCIM Backend Exception Parameters](Media/Image3.78.jpg)
 
 Figure 18: Disabling SCIM Backend Exception Parameters
 
@@ -717,7 +722,7 @@ ldapmodify -h localhost -p 2389 -D "cn=directory manager" -w password -f ldapmod
 modifying entry id=ad203,cn=metads
 ```
 
-To verify the username and password update, go to the Main Control Panel > Settings tab > Server Backend > LDAP Data Sources and edit the data source (e.g. ad203). Click Test Connection to confirm it succeeds. Also validate that virtual views associated with this data source still work fine. This can be checked from the Directory Browser tab in the Main Control Panel.
+To verify the username and password update, go to the Main Control Panel > Settings tab > Server Backend > LDAP Data Sources and edit the data source (e.g. ad203). Click **Test Connection** to confirm it succeeds. Also validate that virtual views associated with this data source still work fine. This can be checked from the Directory Browser tab in the Main Control Panel.
 
 ### Internal Connections
 
@@ -749,7 +754,7 @@ This functionality can be useful when RadiantOne (as a client to itself) has lim
 
 Connections made internally, when RadiantOne is a client to itself, are configured with a default idle timeout length of 6 hours. This value is configurable in ZooKeeper. From the Main Control Panel -> ZooKeeper tab, navigate to /radiantone/v1/cluster/config/vds_server.conf. Click Edit Mode and locate the "idleTimeoutForLocalConnection" property. Define the idle timeout value (in seconds) for this property. Click **Save**.
 
-><span style="color:red">**IMPORTANT NOTE - the idleTimeoutForLocalConnection property must always be greater than the [Global Idle Timeout](), otherwise the Global Idle Timeout takes precedence for closing the internal connections as well as the external (client) connections.**
+><span style="color:red">**IMPORTANT NOTE - the idleTimeoutForLocalConnection property must always be greater than the [Global Idle Timeout](limits#idle-timeout), otherwise the Global Idle Timeout takes precedence for closing the internal connections as well as the external (client) connections.**
 
 ## Persistent Cache Initialization Location
 
