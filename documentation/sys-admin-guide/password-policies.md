@@ -289,6 +289,12 @@ Click **Test** to compile your expression.
 
 The Enable Dictionary Check option is comparable to the Strong Password Check plug-in found in legacy LDAP directories. This enables RadiantOne to verify that a user’s password doesn’t contain unallowed strings from a specified dictionary file. This can be used as a method to enforce strong password policies.
 
+><span style="color:red">**Note - The default behavior uses an exact match comparison of the password to a dictionary value. To enforce a contains match comparison, go to the Main Control Panel > Zookeeper tab, navigate to `/radiantone/<version>/<clusterName>/config/vds_server.conf` and click EDIT MODE. Set the following: "enablePwdPolicyDictionarySubstringCheck" : true**
+
+><span style="color:red">**The value of “true” must be in all lowercase, as shown above.**
+
+><span style="color:red">**You can also set this property using the vdsconfig command line utility, set-property command. For details, see the RadiantOne Command Line Configuration Guide.**
+
 To enable this feature:
 
 1.	From Main Control Panel, navigate to the Settings tab >Security > Password policies section.
