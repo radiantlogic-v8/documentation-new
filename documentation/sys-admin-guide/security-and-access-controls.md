@@ -1,13 +1,13 @@
 ---
-title: 
-description: 
+title: System Administration Guide
+description: System Administration Guide
 ---
 
 # Security and Access Controls
 
 When RadiantOne receives a request, it uses the user in the bind operation, and the access control instructions (ACIs) defined in order to allow or deny access to directory information. The server can allow or deny permissions such as read, write, search, or compare. 
 
-><span style="color:red">**IMPORTANT NOTE – ACI are not enforced for the [RadiantOne super user]() (e.g. cn=directory manager).**
+><span style="color:red">**IMPORTANT NOTE – ACI are not enforced for the [RadiantOne super user](settings-tab#directory-manager-user) (e.g. cn=directory manager).**
 
 With ACI, you can control access to targets such as:
 -	the entire virtual namespace
@@ -60,9 +60,9 @@ You can also add an LDAP filter condition on the target resource (location) to p
 
 For example, you can define the target resource as: all the entries under dv=address book,o=vds that have the attribute securitylevel set to 'secret'. 
 
-To create this example, from the Main Control Panel -> Settings Tab -> Security section -> Access Control sub-section, browse to the dv=address book,o=vds branch and click **Add**. 
+To create this example, from the Main Control Panel > Settings Tab > Security section -> Access Control sub-section, browse to the dv=address book,o=vds branch and click **Add**. 
 
-![An image showing ](Media/Image6.1.jpg)
+![Setting Access Controls](Media/Image6.1.jpg)
 
 Figure 1: Setting Access Controls
 
@@ -70,11 +70,11 @@ Figure 1: Setting Access Controls
 
 The scope of an access control rule can be entry level (base), one level or subtree level. Entry level pertains to the single entry specified in the Target DN. One level pertains to the entry specified in the Target DN and all child branches one level below it. Subtree level pertains to the entry specified in the Target DN as well as all child branches below this point.
 
-![An image showing ](Media/Image6.2.jpg)
+![Example of Entry Level Access Control](Media/Image6.2.jpg)
  
 Figure 2: Example of Entry Level Access Control
 
-![An image showing ](Media/Image6.3.jpg)
+![Example of Sub Tree Level Access Control](Media/Image6.3.jpg)
  
 Figure 3: Example of Sub Tree Level Access Control
 
@@ -82,7 +82,7 @@ Figure 3: Example of Sub Tree Level Access Control
 
 The rule can indicate “equal to” (=) or “not equal to” (!=). Select the desired condition in the drop-down list. 
 
-![An image showing ](Media/Image6.4.jpg)
+![Target Attributes Operator](Media/Image6.4.jpg)
 
 Figure 4: Target Attributes Operator
 
@@ -90,7 +90,7 @@ The access rule can apply to “all” attributes or choose the “custom” opt
 
 For example, if you wanted an access control to apply to all attributes except for “aci”, you can use the (!=) operator, and click Select to choose the aci attribute. This results in a rule indicating the following for targetattr: (targetattr!="aci"). You would see this syntax if you chose to manually edit (by clicking **Manual Edit**) the rule after it was created. An example is shown below.
 
-![An image showing ](Media/Image6.5.jpg)
+![Manual Edit of ACI](Media/Image6.5.jpg)
 
 Figure 5: Manual Edit of ACI
 
@@ -121,13 +121,13 @@ Select the assurance level from the drop-down list and select an operator. You c
 
 #### Days and Times
 
-Indicate the days and times during the week which the access control instruction is applicable. Select a week day and then enter a time range. Click ![An image showing ](Media/add-button.jpg) to add the time range. Multiple time ranges per day are supported.
+Indicate the days and times during the week which the access control instruction is applicable. Select a week day and then enter a time range. Click ![add button](Media/add-button.jpg) to add the time range. Multiple time ranges per day are supported.
 
 ### Permissions
 
 If no access permissions have been defined, the default behavior is to grant read access to all attributes except “aci” to everyone. This default is set on the Main Control Panel > Settings Tab > Security section > Access Control sub-section. Select the “root” node. Click **Edit** or **Manual Edit** to view/edit it.
 
-![An image showing ](Media/Image6.6.jpg)
+![Default Global ACI Setting](Media/Image6.6.jpg)
  
 Figure 6: Default Global ACI Setting
 
@@ -135,7 +135,7 @@ Figure 6: Default Global ACI Setting
 
 You can explicitly allow or deny access permissions by selecting the applicable option from the drop-down.
 
-![An image showing ](Media/Image6.7.jpg)
+![Permission Type](Media/Image6.7.jpg)
  
 Figure 7: Permission Type
 
@@ -184,6 +184,7 @@ Indicates whether users can add or delete their own DN in an attribute of the ta
 Authorization for RadiantOne data is checked based on the user who authenticated. The authorization ID (DN) is linked to the authenticated ID (DN) for the same connection. With the proxy authorization control enabled, the client can switch the user ID (for authorization purposes) without having to re-authenticate with a new connection.
 
 If there is the need to base authorization on a different user than the one who authenticated, you can use the proxy authorization control. This is primarily useful in environments where an application must authenticate many users and doesn’t want to maintain an open connection to RadiantOne for each of them. With this approach, the application can authenticate the user, and after, impersonate that user for authorization purposes. The application can use its own service account when connecting to RadiantOne and pass the needed control along with the user DN of the person they want to represent for authorization in their requests. RadiantOne then checks the proxy authorization rules that have been configured in access controls to make sure the service account is allowed to represent the person passed in their request. If so, the service account is allowed to perform any operations the person they are impersonating would be allowed to do.
+
 The proxy option indicates whether the subject can access the target with the rights of another entry. You can grant proxy access using the DN of any user in the directory except the special cn=directory manager user. In addition, you cannot grant proxy rights to the cn=directory manager user. If the branch you are protecting with access controls is a local LDAP/HDAP store, then this requires the [Proxy Authorization control](settings-tab#proxied-authorization-control) enabled for RadiantOne.
 
 ### Subjects
@@ -193,7 +194,7 @@ A subject is whom the access control rule applies to. The subject types that can
 ><span style="color:red">**IMPORTANT NOTE – It is recommended to define access controls on subjects that are located in a RadiantOne Universal Directory (HDAP) store or persistent cache. This prevents possible performance or network issues involved with RadiantOne connecting to a backend directory in order to enforce authorization. If your ACI’s require subjects that are located in backend directories, make sure that the backend is configured for high availability and that the [RadiantOne data source](concepts#data-source) is configured with the failover servers appropriately.**
 
 -	Users – applicable to any specific user(s).
--	Groups – applicable to a group of users. If the group is a nested group in HDAP, enable Main Control Panel > Settings > Security > Access Control > Enable Nested Groups and configure Linked Attribute settings from Main Control Panel > Settings > Interception > Special Attributes Handling.
+-	Groups – applicable to a group of users. If the group is a nested group in HDAP, enable Main Control Panel > Settings > Security > Access Control > [Enable Nested Groups](access-control#enable-nested-groups) and configure [Linked Attribute](interception#linked-attributes) settings from Main Control Panel > Settings > Interception > Special Attributes Handling.
 -	Tree Branch - Applicable to the DN specified as part of the subject and all entries below it in the virtual directory tree. The defined access permissions apply to any user found in the tree branch you choose.
 -	Public – anyone connected to the directory is considered public. This also includes anonymous users.
 -	Self – applicable to the user whose authenticated DN matches the DN of the entry that is being accessed.
@@ -234,13 +235,13 @@ The ACI evaluation rules that RadiantOne follows are:
 
 If both lists are empty, access is denied.
 
-><span style="color:red">**IMPORTANT NOTE – to troubleshoot/trace ACI evaluation decisions, [RadiantOne server log level]() must be set to DEBUG. When DEBUG level is set, the evaluation rules can be seen in: <RLI_HOME>/vds_server/logs/vds_server.log**
+><span style="color:red">**IMPORTANT NOTE – to troubleshoot/trace ACI evaluation decisions, [RadiantOne server log level](logs#log-settings) must be set to DEBUG. When DEBUG level is set, the evaluation rules can be seen in: <RLI_HOME>/vds_server/logs/vds_server.log**
 
 ## Setting Access Controls
 
 To define access controls:
 
-><span style="color:red">**IMPORTANT NOTE - Access rights can be defined by any user who is a member of the ACI Administrators group or the Directory Administrators group. For details on all administrative groups available for RadiantOne, please see [Delegated Administration of RadiantOne]().**
+><span style="color:red">**IMPORTANT NOTE - Access rights can be defined by any user who is a member of the ACI Administrators group or the Directory Administrators group. For details on all administrative groups available for RadiantOne, please see [Delegated Administration of RadiantOne](administration-and-configuration#delegated-administration-of-radiantone).**
 
 1.	From the Main Control Panel > Settings Tab > Security section > Access Control sub-section, select the Enable ACI checkbox on the right side in the Authorization section and click **Save**.
 
@@ -262,14 +263,14 @@ To define access controls:
 
 8.	For the Target Attributes, select either “equal to” (=) or “not equal to” (!=) from the drop-down list. Then choose to either have the access rule apply to “all” or “custom”. If custom is selected, click SELECT to narrow the list.
 
-    If you choose custom, and your attribute doesn’t appear in the list, you must update the RadiantOne LDAP schema appropriately before setting the ACI. For details on this, please see [Extending RadiantOne LDAP Schema](). After the schema has been updated, go back to the Settings tab > Security section > Access Controls sub-section and follow the steps mentioned above to add the custom attribute list.
+    If you choose custom, and your attribute doesn’t appear in the list, you must update the RadiantOne LDAP schema appropriately before setting the ACI. For details on this, please see [Extending RadiantOne LDAP Schema](radiantone-ldap-schema#extending-the-radiantone-ldap-schema). After the schema has been updated, go back to the Settings tab > Security section > Access Controls sub-section and follow the steps mentioned above to add the custom attribute list.
 
 9.	In the Permissions section, select either to allow or deny. 
-10.	Select the [operations]() that you want allowed or denied.
+10.	Select the [operations](security-and-access-controls#operations) that you want allowed or denied.
 
 11.	In the Authentication Context section, configure bind rules as needed.
 
-12.	In the Apply to section, select the [subjects]() that will be allowed or denied access. 
+12.	In the Apply to section, select the [subjects](security-and-access-controls#subjects) that will be allowed or denied access. 
 
     To assign users, groups or users associated in a specific tree/branch, click **LDAP SEARCH**. 
 

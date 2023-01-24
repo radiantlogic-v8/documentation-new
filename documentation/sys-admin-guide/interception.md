@@ -589,13 +589,13 @@ C:\radiantone\vds\vds_server\custom>c:\radiantone\vds\ant\bin\ant.bat buildjars
 
 18.	The DN to ID property is used by RadiantOne to lookup the user’s local entry and retrieve the attribute to identify the user in the external authentication service. In the DN to ID property, enter the attribute name in the virtual entry that stores the value of the user that uniquely identifies them in the external authentication service. In the example below, rsaid is the value entered in the DN to ID property. This means that the value of the rsaid in the user’s virtual entry is used to delegate the credentials checking to the external authentication service. 
 
-![An image showing ](Media/Image3.142.jpg)
+![Example Custom Authentication Provider](Media/Image3.142.jpg)
  
 Figure 23: Example Custom Authentication Provider
 
 Continuing with this scenario, in the example shown below, the unique ID of johnny_appleseed is sent to the external authentication service when the user identified by a DN of uid=Aaron_Medler,ou=Accounting,o=companydirectory authenticates to RadiantOne.
 
-![An image showing ](Media/Image3.143.jpg)
+![Example Describing the Usage of the DN to ID Property](Media/Image3.143.jpg)
 
 Figure 24: Example Describing the Usage of the DN to ID Property
 

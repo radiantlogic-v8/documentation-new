@@ -33,9 +33,9 @@ For more details on the access log including advanced settings for archiving des
 
 ## Changelog
 
-The changelog is one of the recommended approaches for other processes to detect changes that have happened to RadiantOne entries. The [Persistent Search control]() is the other method that can be used.
+The changelog is one of the recommended approaches for other processes to detect changes that have happened to RadiantOne entries. The [Persistent Search control](settings-tab#persistent-search-control) is the other method that can be used.
 
-The Changelog can be enabled from the Main Control Panel > Settings Tab > Logs section > Changelog sub-section. If enabled, the change log stores all modifications made to any entry in the RadiantOne namespace including entries that are stored in [persistent cache](). The contents of the change log can be viewed below the cn=changelog suffix in the directory.This suffix is indicated in the RadiantOne rootDSE changelog attribute. The [rootDSE]() also contains the firstchangenumber and lastchangenumber attributes. This information can be used by clients as a cursor to track changes.
+The Changelog can be enabled from the Main Control Panel > Settings Tab > Logs section > Changelog sub-section. If enabled, the change log stores all modifications made to any entry in the RadiantOne namespace including entries that are stored in [persistent cache](cache.md). The contents of the change log can be viewed below the cn=changelog suffix in the directory.This suffix is indicated in the RadiantOne rootDSE changelog attribute. The [rootDSE](settings-tab#rootdse) also contains the firstchangenumber and lastchangenumber attributes. This information can be used by clients as a cursor to track changes.
 
 Each entry in the changelog is comprised of the following attributes:
 
@@ -111,9 +111,9 @@ To exclude attributes in changelog searches:
 
 When a member of the group searches the changelog, the specified attributes are not included in the “changes” attribute. An example is shown below. 
 
-![An image showing ](Media/Image3.144.jpg)
+![cn=config Searches with No Excluded Attributes (left) and with Attributes Excluded (right)](Media/Image3.144.jpg)
 
-Figure 3. 134: cn=config Searches with No Excluded Attributes (left) and with Attributes Excluded (right)
+Figure 1: cn=config Searches with No Excluded Attributes (left) and with Attributes Excluded (right)
 
 ### Changelog and Replication Journal Max Age
 
@@ -145,9 +145,11 @@ Activity performed against a persistent cache is logged below a branch in the vi
 If all log level is selected, the cn=cacherefreshlog branch contains all requests (successful or not) to refresh the persistent cache. This includes information about the exact changes (what information changed). The attribute named ‘changes’ contains the attribute level changes. The format is compatible with the changelog format.
 
 The latest IETF description of it is:
+
 http://www.mozilla.org/directory/ietf-docs/draft-good-ldap-changelog-03.txt
 
 The ‘changes’ attribute is actually an LDIF representation of the change as defined in:
+
 http://ietfreport.isoc.org/rfc/rfc2849.txt
 
 The difference between status level and all level is that all only logs entries that have **actually** changed whereas status level logs all changes coming into the persistent cache whether the actual entry has changed or not. To provide an example, say you have cached data from a materialized view in a database and are using triggers to detect changes on the database. A materialized view may be rebuilt daily, triggering many “changes” detected by the RadiantOne change capture connector. On a more simplistic level, updating an entry with the exact same value results in the connector picking up an update change. Therefore, the persistent cache connector sends a cache refresh to RadiantOne for the entry that was updated.If the cache refresh log level is set to status, this update is logged in the cn=cacherefreshlog. If the cache refresh log level is all, the existing entry in persistent cache is compared with the entry received in the message from the connector, if the entry really has changed, it is stored in the cache refresh log. If the entry did not change, then the “change” is not documented in the cacherefresh log. Because of this, the all log level generates LESS entries in the cn=cacherefreshlog, and documents which attribute actually changed, but is more time consuming because of the comparison required. 
@@ -166,7 +168,7 @@ For more information, please see the RadiantOne Deployment and Tuning Guide, sec
 
 ## Clustermonitor
 
-The [Server Control Panel -> Dashboard tab](), displays a variety of aspects related to a given RadiantOne node. The graphs display CPU usage, JVM memory usage, disk space usage, disk latency and number of client connections. To use the dashboard tab for monitoring, the cluster monitor store must be enabled. This parameter is set in the Main Control Panel > Settings Tab > Logs section > Clustermonitor sub-section. Select the enabled option and enter a max age (in hours). The default is 72 hours, meaning the statistics displayed cover the past 3 days.
+The [Server Control Panel > Dashboard tab](clusters-tab#dashboard-tab), displays a variety of aspects related to a given RadiantOne node. The graphs display CPU usage, JVM memory usage, disk space usage, disk latency and number of client connections. To use the dashboard tab for monitoring, the cluster monitor store must be enabled. This parameter is set in the Main Control Panel > Settings Tab > Logs section > Clustermonitor sub-section. Select the enabled option and enter a max age (in hours). The default is 72 hours, meaning the statistics displayed cover the past 3 days.
 
 ### Statistics
 
@@ -175,5 +177,3 @@ RadiantOne logs statistics related to operations it receives. This includes aver
 This logging is enabled by default and can be managed from the Main Control Panel > Settings Tab > Logs section > Statistics > Statistics Analyzer Settings sub-section. The log location is <RLI_HOME>/vds_server/logs/stats.log. This logging is enabled by default and calculates statistics during 1 minute intervals prior to saving to the stats.log.
 
 For each RadiantOne Universal Directory store or persistent cache initialization, statistics are calculated for the total number of entries and sub-categorized by branches and object classes. The average and peak number of attributes per entry, and the average and peak size (in KB) per entry are also calculated. This information is logged into the <RLI_HOME>/vds_server/logs/stats.log. This logging is enabled by default and can be managed from the Main Control Panel > Settings Tab > Logs section > Statistics > Init Statistics Settings sub-section.
-
-

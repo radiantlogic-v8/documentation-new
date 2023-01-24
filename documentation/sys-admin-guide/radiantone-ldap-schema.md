@@ -42,7 +42,7 @@ As long as RadiantOne and ZooKeeper are running on the leader node machine where
 
 The metadata from any backend that is virtualized by RadiantOne is maintained in a file with a .orx extension. All .orx files are shown in the Main Control Panel > Settings Tab > Configuration section, when the ORX Schema node is selected. If you extracted a new schema, and it does not appear in the list, click **Refresh List**. To add the object classes and attributes contained in a file to the RadiantOne LDAP schema, check the Publish in Server Schema option next to the proper .orx file. After all schema files have been selected, click **Generate LDAP Schema**.
 
-![An image showing ](Media/Image3.187.jpg)
+![ORX Files Available for Extending RadiantOne LDAP Schema](Media/Image3.187.jpg)
 
 Figure 1: ORX Files Available for Extending RadiantOne LDAP Schema
 
@@ -54,7 +54,7 @@ The object classes and attributes contained in the select files are added to the
 
 Object classes and attributes can be manually defined from the Main Control Panel > Settings Tab > Configuration section > LDAP Schema.
 
-![An image showing ](Media/Image4.2.jpg)
+![Manually Defining New Object Classes and Attributes](Media/Image4.2.jpg)
 
 Figure 2: Manually Defining New Object Classes and Attributes
 
@@ -90,7 +90,7 @@ Figure 2: Manually Defining New Object Classes and Attributes
 
 The subschemaSubentry attribute is an operational attribute that is returned by RadiantOne for every entry in the directory when it is specifically requested. The value of the subschemaSubentry attribute is the DN of the entry that contains schema information for this entry. An example of an LDAP search with subschemaSubentry requested is shown below.
 
-![An image showing ](Media/Image4.3.jpg)
+![Requesting subschemaSubentry](Media/Image4.3.jpg)
 
 Figure 3: Requesting subschemaSubentry
 

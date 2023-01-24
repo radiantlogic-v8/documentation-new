@@ -15,7 +15,7 @@ If inter-cluster replication is enabled, the clusters that are participating in 
 
 More than one store per cluster can be participating in inter-cluster replication. The table shown in the Central Journal Replication section lists each store involved in replication. Then, for each cluster, the table shows the number of pending changes. An example is shown below.
 
-![An image showing ](Media/Image3.165.jpg)
+![Replication Monitoring](Media/Image3.165.jpg)
  
 Figure 3. 159: Replication Monitoring
 

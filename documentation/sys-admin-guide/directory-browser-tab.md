@@ -11,11 +11,11 @@ Functions offered in the Directory Browser are broken into operations applicable
 
 The tables below describe the buttons.
 
-![An image showing ](Media/Image3.150.jpg)
+![Options Applicable to the Server and Directory Tree/Entries](Media/Image3.150.jpg)
  
 Figure 1: Options Applicable to the Server and Directory Tree/Entries
 
-![An image showing ](Media/Image3.151.jpg)
+![Options for Attributes of a Selected Entry](Media/Image3.151.jpg)
  
 Figure 2: Options for Attributes of a Selected Entry
 
@@ -23,15 +23,15 @@ Each function is described in more detail below.
 
 ## Reconnect
 
-To re-establish the connections to the RadiantOne service, click ![An image showing ](Media/reconnect-button.jpg).
+To re-establish the connections to the RadiantOne service, click ![reconnect button](Media/reconnect-button.jpg).
 
 ## Refresh
 
-To refresh the selected entry/sub-tree branch, click ![An image showing ](Media/refresh-button.jpg).
+To refresh the selected entry/sub-tree branch, click ![refresh button](Media/refresh-button.jpg).
 
 ## Search
 
-To issue a search, select a branch in the virtual namespace and click ![An image showing ](Media/search-button.jpg). Condition the search with the options described below.
+To issue a search, select a branch in the virtual namespace and click ![search button](Media/search-button.jpg). Condition the search with the options described below.
 
 **Search Base DN** – starting point in the RadiantOne namespace to start looking for entries.
 
@@ -46,25 +46,25 @@ To issue a search, select a branch in the virtual namespace and click ![An image
 
 The search results display on the Directory Tree View tab by default. To view the results in a table format instead, click the Table View tab.
 
-Multiple search windows can be opened at a time. To launch a new search, go back to the Directory Browser tab, select a branch in the virtual tree and click ![An image showing ](Media/search-button.jpg). An example of three searches is shown below.
+Multiple search windows can be opened at a time. To launch a new search, go back to the Directory Browser tab, select a branch in the virtual tree and click ![search button](Media/search-button.jpg). An example of three searches is shown below.
 
-![An image showing ](Media/Image3.152.jpg)
+![Search Function on the Directory Browser Tab](Media/Image3.152.jpg)
  
 Figure 3: Search Function on the Directory Browser Tab
 
 **Exporting Search Results** – To support exporting search results, enable the Proxy Authorization Control. This can be enabled from the Main Control Panel -> Settings -> Server Front End -> Support Controls. Also ensure you have proper access controls defined for the delegated admin user/group from Main Control Panel > Settings > Security > Access Control.
 
-After performing a search on the Directory Browser tab, you can export the search results to an LDIF file. Use ![An image showing ](Media/ldif-file-name.jpg) to specify a file name for the LDIF (if not specified, it defaults to Search) and the drop-down list to indicate the destination. The destination of the LDIF file can be either the RadiantOne Server or the local client. Choose one of these options from the drop-down menu. If “Export to FID Server” is selected, the location of the exported file is: <RLI_HOME>\vds_server\ldif\. If the specified file name already exists at the destination, the new file name is appended with a timestamp.
+After performing a search on the Directory Browser tab, you can export the search results to an LDIF file. Use ![LDIF file name](Media/ldif-file-name.jpg) to specify a file name for the LDIF (if not specified, it defaults to Search) and the drop-down list to indicate the destination. The destination of the LDIF file can be either the RadiantOne Server or the local client. Choose one of these options from the drop-down menu. If “Export to FID Server” is selected, the location of the exported file is: <RLI_HOME>\vds_server\ldif\. If the specified file name already exists at the destination, the new file name is appended with a timestamp.
 
 If “Download” is selected from the drop-down menu, the client machine downloads the LDIF according to your web browser’s configuration.
 
-![An image showing ](Media/Image3.153.jpg)
+![Search and Export Functions on the Directory Browser Tab](Media/Image3.153.jpg)
  
 Figure 4: Search and Export Functions on the Directory Browser Tab
 
 ## Create Entries
 
-To create new entries, select the parent location in the tree above where you want the entry created and click ![An image showing ](Media/manage-group-button.jpg). Select New Entry, New inetOrgPerson, New Active Directory User New OrganizationalUnit, New Group, or New Active Directory Group. If the entry is not created in a RadiantOne Universal Directory store, the create request is sent to the authoritative backend and processed accordingly. If this operation fails, the error code from the backend is returned to the Directory Browser tab. If the parent entry is in a Universal Directory store, RadiantOne processes the create request directly.
+To create new entries, select the parent location in the tree above where you want the entry created and click ![manage group button](Media/manage-group-button.jpg). Select New Entry, New inetOrgPerson, New Active Directory User New OrganizationalUnit, New Group, or New Active Directory Group. If the entry is not created in a RadiantOne Universal Directory store, the create request is sent to the authoritative backend and processed accordingly. If this operation fails, the error code from the backend is returned to the Directory Browser tab. If the parent entry is in a Universal Directory store, RadiantOne processes the create request directly.
 
 The sections below describe these default new entry options including the object classes that are used. If you want to create entries using different types of object classes than the ones mentioned here, then choose the New Entry option and select the desired object class from the drop-down list. Only object classes available in the RadiantOne LDAP schema are shown here. If the desired object class is not shown, extend the schema first and then come back to this screen to add your entry. See [RadiantOne Schema](radiantone-ldap-schema) for details on extending the LDAP schema.
 
@@ -105,7 +105,7 @@ By default, the Security Group option is selected. To make this group a distribu
 ## Managing Entries
 
 ### Managing Group Entries
-Groups stored in a Universal Directory store may contain members from any branch in the RadiantOne namespace (not just limited to the local store where the group is defined). Groups virtualized from existing backends might not have this same flexibility. Select the desired group and click ![An image showing ](Media/manage-group-button.jpg).
+Groups stored in a Universal Directory store may contain members from any branch in the RadiantOne namespace (not just limited to the local store where the group is defined). Groups virtualized from existing backends might not have this same flexibility. Select the desired group and click ![manage group button](Media/manage-group-button.jpg).
 
 #### Adding Members
 
@@ -114,11 +114,11 @@ Members can be either “static/explicit” or “dynamic”. Each option is des
 ##### Explicit Members
 
 To add explicit members, follow the steps below.
-1.	From the Directory Browser tab, select the group entry in the tree and click ![An image showing ](Media/manage-group-button.jpg).
+1.	From the Directory Browser tab, select the group entry in the tree and click ![manage group button](Media/manage-group-button.jpg).
 
 2.	If group members can be other groups, click the checkbox next to the “Search Groups” option in the upper left. 
 
->**Note – if RadiantOne needs to [support nested groups](), you must enable that feature.**
+>**Note – if RadiantOne needs to [support nested groups](access-control#enable-nested-groups), you must enable that feature.**
 
 3.	Click **Add More** and then click **Browse Tree** to select a starting point in the virtual namespace to look for users.
 
@@ -143,13 +143,13 @@ Dynamic group members are different than explicit group members because instead 
 
 To add dynamic members with the assistance of a wizard, follow the steps below.
 
-1.	Select a group associated with the groupOfURLs object class and click ![An image showing ](Media/manage-group-button.jpg).
+1.	Select a group associated with the groupOfURLs object class and click ![manage group button](Media/manage-group-button.jpg).
 
 2.	Click **Edit Dynamic Members**. 
 
 3.	If group members can be other groups, click on the checkbox next to the “Search Groups” option in the upper left.
 
->**Note – if RadiantOne needs to [support nested groups](), you must enable that feature.**
+>**Note – if RadiantOne needs to [support nested groups](access-control#enable-nested-groups), you must enable that feature.**
 
 4.	Click **Add**.
 
@@ -182,11 +182,11 @@ For more details on managing groups stored in a Universal Directory store, pleas
 
 ### Removing Members
 
-To remove group members, from the Main Control Panel > Directory Browser Tab, select the group entry and click ![An image showing ](Media/manage-group-button.jpg). If the group is a dynamic group, there is an option to edit “explicit” members and one to edit “dynamic” members.
+To remove group members, from the Main Control Panel > Directory Browser Tab, select the group entry and click ![manage group button](Media/manage-group-button.jpg). If the group is a dynamic group, there is an option to edit “explicit” members and one to edit “dynamic” members.
 
 To remove explicit members:
 
-1.	Select the group entry and click ![An image showing ](Media/manage-group-button.jpg). 
+1.	Select the group entry and click ![manage group button](Media/manage-group-button.jpg). 
 
 2.	Click **Edit Explicit Members**. 
 
@@ -200,7 +200,7 @@ To remove explicit members:
 
 To remove dynamic members:
 
-1.	Select the group entry and click ![An image showing ](Media/manage-group-button.jpg). 
+1.	Select the group entry and click ![manage group button](Media/manage-group-button.jpg). 
 
 2.	Click **Edit Dynamic Members**. 
 
@@ -240,13 +240,13 @@ When an account is disabled, the user is not able to authenticate (bind) to the 
 
 2.	Type in nsAccountLock and press Enter on your keyboard.
 
-![An image showing ](Media/Image3.155.jpg)
+![Adding nsAccountLock to a User Entry](Media/Image3.155.jpg)
  
 Figure 6: Adding nsAccountLock to a User Entry
 
 3.	Enter a value of true and click **OK**. 
 
-![An image showing ](Media/Image3.156.jpg)
+![Locking a User Account](Media/Image3.156.jpg)
  
 Figure 7: Locking a User Account
 
@@ -280,31 +280,31 @@ Figure 8: Binary Attribute Editor
 
 To reset a user’s password, select the user entry in the tree and on the right, select the userPassword attribute. Click Modify Attribute > Edit. Change the value and click **OK**.
 
->**Note – If the account is in a proxy virtual view to an Active Directory backend, you can reset the password using ![An image showing ](Media/reset-password.jpg) on the Main Control Panel > Directory Browser. The account must be associated with the “user” object class and the data source connection to the backend Active Directory requires SSL.**
+>**Note – If the account is in a proxy virtual view to an Active Directory backend, you can reset the password using ![reset password](Media/reset-password.jpg) on the Main Control Panel > Directory Browser. The account must be associated with the “user” object class and the data source connection to the backend Active Directory requires SSL.**
 
 ## Modify RDN
 
-To modify the RDN value of the selected entry, click ![An image showing ](Media/modify-rdn.jpg). If the entry is not located in a RadiantOne Universal Directory store, the modify RDN request is sent to the authoritative backend and processed accordingly. If this operation fails, the error code from the backend is returned to the Directory Browser tab. If the entry is in a Universal Directory store, RadiantOne processes the modify RDN request directly.
+To modify the RDN value of the selected entry, click ![modify rdn](Media/modify-rdn.jpg). If the entry is not located in a RadiantOne Universal Directory store, the modify RDN request is sent to the authoritative backend and processed accordingly. If this operation fails, the error code from the backend is returned to the Directory Browser tab. If the entry is in a Universal Directory store, RadiantOne processes the modify RDN request directly.
 
 ## Delete Entry
 
-To delete the selected entry, click ![An image showing ](Media/delete-entry.jpg). If the entry is not located in RadiantOne Universal Directory store, the delete request is sent to the authoritative backend and processed accordingly. If this operation fails, the error code from the backend is returned to the Directory Browser tab. If the entry is in a Universal Directory store, RadiantOne processes the delete request directly.
+To delete the selected entry, click ![delete entry](Media/delete-entry.jpg). If the entry is not located in RadiantOne Universal Directory store, the delete request is sent to the authoritative backend and processed accordingly. If this operation fails, the error code from the backend is returned to the Directory Browser tab. If the entry is in a Universal Directory store, RadiantOne processes the delete request directly.
 
 ## Copy DN
 
-To copy the DN of the selected entry, click ![An image showing ](Media/copy-rdn.jpg). This is useful if you need to paste this value somewhere else (e.g. into a uniquemember attribute of a group entry, or in an LDAP connection as the Bind DN).
+To copy the DN of the selected entry, click ![copy dn](Media/copy-rdn.jpg). This is useful if you need to paste this value somewhere else (e.g. into a uniquemember attribute of a group entry, or in an LDAP connection as the Bind DN).
 
 ## Number of Entries (Size Limit) 
 
-To change the number of entries displayed below each branch in the directory tree, click ![An image showing ](Media/gear-icon.jpg). The default is 20 entries. Enter a new value for the size limit and click OK. Then click ![An image showing ](Media/refresh-button.jpg).
+To change the number of entries displayed below each branch in the directory tree, click ![gear icon](Media/gear-icon.jpg). The default is 20 entries. Enter a new value for the size limit and click OK. Then click ![refresh button](Media/refresh-button.jpg).
 
 ><span style="color:red">**IMPORTANT NOTE – if you set the size limit to more than 100, you should make sure the Paged Results Control is enabled for RadiantOne. This setting can be found on the Main Control Panel -> Settings tab -> Server Front End -> Supported Controls.**
 
 ## Export LDIF
 
-To export entries to an LDIF file, click ![An image showing ](Media/Image..jpg). The possible properties are described below.
+To export entries to an LDIF file, click ![export ldif](Media/export-ldif.jpg). The possible properties are described below.
 
-Exporting entries to an LDIF file requires enabling Proxy Authorization for users other than the RadiantOne super user. The exported entries contain only the attributes that applicable ACIs allow the user to read. Refer to [Security and Access Controls](security-and-access-controls) for more information.
+Exporting entries to an LDIF file requires enabling [Proxy Authorization](settings-tab#proxied-authorization-control) for users other than the [RadiantOne super user](administration-and-configuration#delegated-administration-roles). The exported entries contain only the attributes that applicable ACIs allow the user to read. Refer to [Security and Access Controls](security-and-access-controls) for more information.
 
 **Location** – select “To a Local File” to download to the local client. The destination of the LDIF file is dictated by the client’s browser settings. Select “To a File on the Server” to download to <RLI_HOME>/vds_server/ldif/export.
 
@@ -331,9 +331,9 @@ Figure 9: Export to LDIF
 
 ## Import LDIF
 
-Make sure the LDIF file you want to import is located on the RadiantOne server under <RLI_HOME>/vds_server/ldif/. To import entries from an LDIF file, click ![An image showing ](Media/import-ldif.jpg). Navigate to the location of the LDIF file. Select the option to Add or Override Entries (this option adds new entries and updates entries that already exist) or Add Entries (This option adds entries only and does not try to update the entry if it already exists).
+Make sure the LDIF file you want to import is located on the RadiantOne server under <RLI_HOME>/vds_server/ldif/. To import entries from an LDIF file, click ![import ldif](Media/import-ldif.jpg). Navigate to the location of the LDIF file. Select the option to Add or Override Entries (this option adds new entries and updates entries that already exist) or Add Entries (This option adds entries only and does not try to update the entry if it already exists).
 
-![An image showing ](Media/Image3.159.jpg)
+![Import LDIF](Media/Image3.159.jpg)
  
 Figure 10: Import LDIF
 
@@ -345,7 +345,7 @@ You can test authentication for any entry in the RadiantOne namespace. To test a
 
 2.	Expand a root naming context and select an entry.
 
-3.	Click ![An image showing ](Media/test-authentication.jpg). The Test Authentication window opens.
+3.	Click ![test authentication](Media/test-authentication.jpg). The Test Authentication window opens.
 
 4.	Enter the password and click **Test Bind**. If the password is correct, the Test Authentication window returns the message “Binding Successful”. If the password is incorrect, a message similar to the following is returned.
 <br>Connection failed:javax.naming.AuthenticationException: [LDAP: error code 49 – Reason: 52e – Invalid credentials.

@@ -17,13 +17,13 @@ A series of graphs are displayed on the Dashboard tab and allow for monitoring a
 
 ><span style="color:red">**IMPORTANT NOTE – To use this feature, enable the cluster monitor at Main Control Panel > Settings > Logs > Clustermonitor.**
 
-![An image showing ](Media/Image3.167.jpg)
+![Graphs Related to a Specific RadiantOne Node](Media/Image3.167.jpg)
 
 Figure 1: Graphs Related to a Specific RadiantOne Node
 
 In the upper right, you can indicate the time range the graphs should display. To indicate a time period of longer than 12 hours, choose the Custom option.
 
-![An image showing ](Media/Image3.168.jpg)
+![Graph Range](Media/Image3.168.jpg)
  
 Figure 2: Graph Range
 
@@ -33,11 +33,11 @@ Figure 2: Graph Range
 
 From the Usage & Activity tab on the Server Control Panel, you can access information about the RadiantOne software version installed on the node, monitor the current connections and operations, view statistics for all Universal Directory (HDAP) stores and view network latency between nodes (only applicable to cluster deployments).
 
-Server Information
+### Server Information
 
 Specific product details associated with the node are shown in the Server Information section.
 
-![An image showing ](Media/Image3.169.jpg)
+![Server Information](Media/Image3.169.jpg)
  
 Figure 3: Server Information
 
@@ -79,7 +79,7 @@ Figure 3: Server Information
 
 From the Connections & Ops section you can view the current usage summary in terms of connections and operations to RadiantOne.
 
-![An image showing ](Media/Image3.170.jpg)
+![Server Connections and Operations](Media/Image3.170.jpg)
  
 Figure 4: Server Connections and Operations
 
@@ -93,15 +93,15 @@ The Processing Activity Details section, shows how many operations are waiting t
 
 ### RadiantOne Universal Directory (HDAP) Status
 
-Statistics for the stores can be viewed from the Universal Directory Status section. To filter the stores displayed, click on ![An image showing ](Media/gear-icon.jpg) and then click Select Filters. Select the stores to display and click OK.
+Statistics for the stores can be viewed from the Universal Directory Status section. To filter the stores displayed, click on ![gear icon](Media/gear-icon.jpg) and then click Select Filters. Select the stores to display and click OK.
 
-![An image showing ](Media/Image3.171.jpg)
+![Tables to Display](Media/Image3.171.jpg)
  
 Figure 5: Tables to Display
 
 For each store, you see total number of entries, index size, search operations per second and write operations per second.
 
-![An image showing ](Media/Image3.172.jpg)
+![RadiantOne Universal Directory Stores](Media/Image3.172.jpg)
  
 Figure 6: RadiantOne Universal Directory Stores
 
@@ -109,7 +109,7 @@ Figure 6: RadiantOne Universal Directory Stores
 
 In the Data Source Status you can see the status of all data sources defined in RadiantOne. A green dot in the Status column indicates that the data source is configured properly and running. A red dot in the Status column indicates that something is wrong with the data source configuration and RadiantOne cannot currently access it. There is a corresponding error message that states the main problem. If the error is due to incorrect connection information, update the data source on the Main Control Panel > Settings Tab > Server Backend section. Once the error has been corrected click on the refresh icon next to “Data Source Status” and the data source information refreshes to reflect your changes.
 
-![An image showing ](Media/Image3.173.jpg)
+![Data Source Status](Media/Image3.173.jpg)
 
 Figure 7: Data Source Status
 
@@ -128,15 +128,15 @@ The graphs in the Network Latency section display the network latency between no
 
 ><span style="color:red">**IMPORTANT NOTE – To use this feature, enable the cluster monitor at Main Control Panel > Settings > Logs > Clustermonitor.**
 
-![An image showing ](Media/Image3.174.jpg)
+![Network Latency Graphs](Media/Image3.174.jpg)
  
 Figure 8: Network Latency Graphs
 
-### Settings Tab
+## Settings Tab
 
 To change the server name and manage server certificates, go to the Server Control Panel > Settings tab.
 
-#### Server Name
+### Server Name
 
 The hostname where the server is installed. By default this is set to the machine name.
 
@@ -176,7 +176,7 @@ A server certificate used by RadiantOne uniquely identifies it to clients for es
 
 ><span style="color:red">**IMPORTANT NOTE – Every time you change the RadiantOne server certificate, you must export the public key and import this public key into the [Client Certificate Truststore](client-certificate-trust-store) (unless the CA that signed the server certificate is already trusted). Also, the RadiantOne server certificate is shared by the Jetty server to support HTTPS access to the Control Panel(s). If you prefer HTTPS access to the Main Control Panel to use a different certificate, you must [manually update the settings for Jetty](#updating-certificate-settings-for-jetty-https-access-to-the-main-control-panel).**
 
-#### Replacing the Default Self-Signed Certificate
+### Replacing the Default Self-Signed Certificate
 
 During the RadiantOne installation, a default self-signed certificate is generated for RadiantOne. This self-signed certificate can be replaced with one assigned by a Certificate Authority (CA). Follow the steps below corresponding to your certificate type. If you require a certificate and RadiantOne configuration that is FIPS 140-2 compliant, skip the steps in this section and see the RadiantOneFIPS_Mode Guide.
 
@@ -212,15 +212,16 @@ Enter key password for <rli>
 
 >**Note – The View button is enabled for JKS certificate types only. It is not applicable for another other certificate types.**
 
-![An image showing ](Media/Image3.175.jpg)
+![SSL Server Certificate for RadiantOne](Media/Image3.175.jpg)
 
 Figure 9: SSL Server Certificate for RadiantOne
 
 6.	Next, you can download the Root Certificate from the Microsoft CA. From a web browser, access the certificate server.
 http://< IP address>/certsrv
+
 7.	Select Download a CA Certificate, Certificate Chain, or CRL.
 
-![An image showing ](Media/Image3.176.jpg)
+![Certificates Services Console](Media/Image3.176.jpg)
  
 Figure 10: Certificates Services Console
 
@@ -228,7 +229,7 @@ Figure 10: Certificates Services Console
 
 9.	Click **Download CA certificate**.
 
-![An image showing ](Media/Image3.177.jpg)
+![Downloading a Root CA Certificate](Media/Image3.177.jpg)
  
 Figure 11: Downloading a Root CA Certificate
 
@@ -275,7 +276,7 @@ Figure 12: Requesting a Certificate
 
 18.	Choose Submit a certificate request by using a base-64-encoded CMC or PKCS #10 file, or submit a renewal request by using a base-64-encoded PKCS #7 file.
 
-![An image showing ](Media/Image3.179.jpg)
+![Advanced Certificate Request](Media/Image3.179.jpg)
  
 Figure 13: Advanced Certificate Request
 
@@ -285,7 +286,7 @@ Figure 13: Advanced Certificate Request
 
 21.	Click **Submit**.
 
-![An image showing ](Media/Image3.180.jpg)
+![Submitting the Certificate Request](Media/Image3.180.jpg)
  
 Figure 14: Submitting the Certificate Request
 
@@ -293,7 +294,7 @@ Figure 14: Submitting the Certificate Request
 
 23.	Click **Download Certificate**.
 
- ![An image showing ](Media/Image3.181.jpg)
+ ![Downloading the Certificate](Media/Image3.181.jpg)
  
 Figure 15: Downloading the Certificate
 
@@ -303,10 +304,12 @@ Figure 15: Downloading the Certificate
 
 26.	Finally, you can import the signed server certificate into the RadiantOne keystore using the following command:
 
+```
 C:\radiantone\vds\jdk\jre\bin>keytool -import -file c:\radiantone\vds\vds_server\conf\vds.cer -keystore c:\radiantone\vds\vds_server\conf\rli.keystore -v -alias rli
 Enter keystore password: radiantlogic
 Certificate reply was installed in keystore
 [Saving c:\radiantone\vds\vds_server\conf\rli.keystore]
+```
 
 ><span style="color:red">**IMPORTANT NOTE – this updates the server certificate that was created in Step 3. It will now be signed by the CA (and not self-signed anymore).**
 
@@ -416,7 +419,7 @@ security.provider.10=sun.security.pkcs11.SunPKCS11 /home/vdsuser/vds-fips/nss_fi
 
 12.	Restart the RadiantOne service. If RadiantOne is deployed in a cluster, each node has its own server certificate and must be updated independently.
 
-><span style="color:red">**IMPORTANT NOTE – if Jetty is configured to use the same SSL certificate as RadiantOne (jetty.ssl.useVDSSSLConfig=true in <RLI_HOME>/vds_server/conf/jetty/config.properties), and you modify the RadiantOne server certificate outside of the RadiantOne Main Control Panel (e.g. using command line utilities like keytool), you must manually update the Jetty settings.**
+><span style="color:red">**IMPORTANT NOTE – if Jetty is configured to use the same SSL certificate as RadiantOne (jetty.ssl.useVDSSSLConfig=true in <RLI_HOME>/vds_server/conf/jetty/config.properties), and you modify the RadiantOne server certificate outside of the RadiantOne Main Control Panel (e.g. using command line utilities like keytool), you must [manually update the Jetty settings](#updating-certificate-settings-for-jetty-https-access-to-the-main-control-panel).**
 
 ><span style="color:red">**If you use the RadiantOne SAML Attribute service, manually update the certificate keystore path in <RLI_HOME>/vds_server/conf/saml/server/AttributeService.properties.**
 
@@ -439,11 +442,11 @@ Restart Jetty after making changes to the SSL configuration.
 
 ><span style="color:red">**IMPORTANT NOTE – The certificate key password is expected to be the same as the keystore password.**
 
-### Tasks Tab
+## Tasks Tab
 
 From the Server Control Panel > Tasks tab, you can start and stop the scheduler and manage defined tasks. When you perform various actions in the tools or wizards, a notification appears alerting you that the task has been defined and added to the scheduler. These tasks can be viewed and updated in the task list section of the Tasks tab. You can define a task as re-occurring in addition to setting the execution interval. You can also configure the JVM parameters for tasks that run inside their own dedicated JVM.
 
-![An image showing ](Media/Image3.182.jpg)
+![Tasks Tab](Media/Image3.182.jpg)
  
 Figure 16: Tasks Tab
 
@@ -456,11 +459,11 @@ The following operations are considered tasks and generate an event in the Task 
 -	Login Analysis (initiated from the Global Identity Builder)
 -	[Custom tasks](#custom-tasks) can be defined 
 
-Task Scheduler Configuration
+### Task Scheduler Configuration
 
 Task Scheduler parameters can be modified by clicking **Config** in the Task Scheduler section. The Scheduler Configuration menu appears and allows you to modify the default JVM parameters and the lifespan of terminated tasks in the scheduler.
 
-![An image showing ](Media/Image3.183.jpg)
+![Task Scheduler Configuration](Media/Image3.183.jpg)
  
 Figure 17: Task Scheduler Configuration
 
@@ -474,7 +477,7 @@ You can specify the number of days that completed tasks are kept on the task lis
 
 When operations are added as tasks, they appear in the Task List section, with information about the task displayed. Completed tasks by default are not displayed in the Task List unless the “Terminated” checkbox is checked. When there is a checked box by “Recurrent” this means that the task occurs more than once, on a regularly scheduled basis. The Last Termination date shows when the task was last executed.
 
-![An image showing ](Media/Image3.184.jpg)
+![Sample Task List](Media/Image3.184.jpg)
  
 Figure 18: Sample Task List
 
@@ -483,10 +486,12 @@ To edit an existing task, click the pencil icon. The Task Configuration menu dis
 By default, all tasks run in their own dedicated JVM and the memory allocated for the task automatically expands up to ¼ of the total machine memory. For example, if the machine where RadiantOne is installed has 16 GB of RAM, the task memory expands up to 4 GB to process a task. If you prefer, you can define a max Java heap size in the JVM parameters instead of leveraging this default expansion. Other custom settings can be entered in the JVM Parameters as well. For a full list of possible behavioral and performance options, please see the link below.
 
 http://www.oracle.com/technetwork/java/javase/tech/vmoptions-jsp-140102.html
+
 If the “Dedicated JVM” option is unchecked, the task runs inside the JVM of the Task Scheduler.
+
 Users must click “Update Task” before closing out of the task configuration screen to save the changes.
 
-![An image showing ](Media/Image..jpg)
+![Task Configuration](Media/tasks-configuration.jpg)
  
 Figure 19: Task Configuration
 
@@ -541,13 +546,13 @@ jvmargs	 | Only applicable if newjvm=true. This property can be used to customiz
 
 7.	Click **Restart** (and Yes to confirm) to restart the Task Scheduler. After restart, the custom task should appear in the list of tasks. The task can be managed from here.
 
-![An image showing ](Media/Image3.185.jpg)
+![Task Scheduler and Tasks](Media/Image3.185.jpg)
 
 Figure 20: Task Scheduler and Tasks
 
 >**Note – logs related to tasks are located in <RLI_HOME>/vds_server/logs/scheduler/task.<task_name>.log**
 
-Log Viewer Tab
+### Log Viewer Tab
 
 On the Server Control Panel > Logs Viewer Tab, you will find the logging console.
 
@@ -555,7 +560,7 @@ On the Server Control Panel > Logs Viewer Tab, you will find the logging console
 
 Select the log file from the drop-down list. You can also set a filter to limit your view of the log based on certain criteria (this only filters on the subset of log data visible in the log window), refresh the log view and/or choose to refresh continuously.
 
-![An image showing ](Media/Image3.186.jpg)
+![Log Viewer](Media/Image3.186.jpg)
  
 Figure 21: Log Viewer
 

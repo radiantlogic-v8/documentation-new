@@ -25,7 +25,7 @@ File alerts are logged in a CSV formatted file located at <RLI_HOME>/logs/alerts
 
 In the File Alerts Settings section, indicate a rollover file size and how many files to keep in the archive.
 
-![An image showing ](Media/Image3.145.jpg)
+![File Alert Settings](Media/Image3.145.jpg)
 
 Figure 1: File Alert Settings
 
@@ -33,7 +33,7 @@ Figure 1: File Alert Settings
 
 If you would like to receive email alerts for certain monitored activities, enter your SMTP settings (host, port, user, password, from email and to email) in the Email Alerts (SMTP Settings) section. Click Save when finished. If you would like to test your settings, click on Send Test Email. 
 
-![An image showing ](Media/Image3.146.jpg)
+![Email Alert Settings](Media/Image3.146.jpg)
 
 Figure 2: Email Alert Settings
 

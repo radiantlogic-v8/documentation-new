@@ -7,9 +7,9 @@ description: System Administration Guide
 
 Settings found in the reporting section on the Main Control Panel > Settings Tab are related to the components required to generate reports on RadiantOne activities. These settings are described in this section.
 
-![An image showing ](Media/Image3.147.jpg)
+![Settings Required for Reporting](Media/Image3.147.jpg)
 
-Figure 3. 137: Settings Required for Reporting
+Figure 1: Settings Required for Reporting
 
 ## Log2db Settings
 
