@@ -78,3 +78,14 @@ This site provides resources for DevOps professionals to deploy the RadiantOne p
   > Extend the global profile view
 
 </section>
+
+
+
+## AWS Cloud Installation Guide
+
+<section>
+    
+  > [Radiant One Configuration](/aws-cloud-installation-guide/radiantone-configuration) 
+  > Radiant One Configuration.
+
+</section>
