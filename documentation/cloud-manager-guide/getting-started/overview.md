@@ -1,20 +1,128 @@
 ---
 keywords:
-title: Overview
-description: Overview 
+title: Getting Started
+description: Getting started
 ---
-# Overview
+# Getting Started
 
-**This page is a WIP**
+This guide provides an overview of the Environment Operations Center *Overview* screen and how to navigate the user interface.
 
+## Overview
 
-## Account management
+You are brought to the *Overview* screen after logging in to Environment Operations center. This is the Env Ops Center home screen and provides access to Radiant Logic supporting documentation. This screen also provides a high-level overview of your environments. 
 
-A user avatar is located in the upper right corner of the *Admin* screen. Select the avatar to expand your account dropdown menu. This displays your name, email, and permissions associated with the account. 
+A navigation bar is located to the left and is visible from all screens within Environment Operation Center. You can access your account settings by selecting the avatar in the upper right corner, also visible from all screens in the application.
 
-From the dropdown menu you can navigate to your **Account Settings** (![image description](images/icon-account-settings.png)), access the **Help** (![image description](images/icon-help.png))center, or **Logout** (![image description](images/icon-logout.png)) of Environment Operations Center.
+### Documentation
 
-For information on managing your account settings, see the [account settings](...) guide.
+The Radiant Logic documentation suite contains guides and resources to help your work in RadiantOne and Environment Operations Center.
 
-![image description](images/overview-account-dropdown.png)
+To access the suite of supporting documentation, select **Access Documentation**.
 
+![image description](images/overview-access-docs.png)
+
+### Environments preview
+
+The *Environments* section on the *Overview* screen allows you to quickly preview your available environments and sort the previews by status.
+
+![image description](images/overview-env-preview.png)
+
+Each environment preview contains the environment name, type, status, number of nodes, and version number.
+
+![image description](images/overview-preview-details.png)
+
+The environments displayed differ depending on your assigned role in Environment Operations Center. The Tenant Administrator environment preview displays all of your organization's environments. Environment Administrators and Environment Users will only be able to preview the environments assigned to them.
+
+For further details on role based permissions, see the [role permissions](../admin/role-based-permission/role-based-permissions.md) guide.
+
+#### Filter environments
+
+A status count displays how many environments have a status of "Critical", "Warning", and "Operational.
+
+![image description](images/overview-status-count.png)
+
+To filter the displayed environments by status, select a status card. For example, selecting "Critical" will update the *Environments* section to only display environments with "Outage" statuses.
+
+![image description](images/overview-filter-by-status.png)
+
+If more than two environments are available to view, you can select **Load More** to load additional environment previews.
+
+![image description](images/overview-load-more.png)
+
+#### Manage environments
+
+Each environment preview contains an **Options** (**...**) menu that allows you access further details about the environment or delete it. Dropdown menu options include:
+
+- View Details: Navigate to the detailed screen of the environment to view additional information.
+- View Logs: Navigate to the logs tab for the environment.
+- Delete: Begin the workflow to delete the environment.
+
+To learn more about each of these actions, review the [environment details](../environments/environment-details/environment-overview.md) overview, the [logs](../environments/logging/environment-logs.md) guide, or the guide to [delete an environment](../environments/environment-details/delete-environment.md).
+
+![image description](images/overview-options.png)
+
+## Left navigation
+
+The left navigation contains various tabs that allow you to access Environment Operation Center features.
+
+![image description](images/overview-left-nav.png)
+
+### Overview
+
+To navigate to the *Overview* screen, select either **Overview** or the Radiant Logic logo.
+
+![image description](images/overview-nav-overview.png)
+
+### Environments
+
+The main *Environments* screen provides an overview of all the environments you have access to. Select **Environments** to navigate to the *Environments* overview.
+
+To learn more about the *Environments* section, see the [environments overview](../environments/environment-overview/environments-overview.md) guide.
+
+![image description](images/overview-nav-env.png)
+
+### Reporting
+
+The *Reporting* section allows you to run and review various reports for your environments. Select **Reporting** to navigate to the *Reporting* screen.
+
+To learn how to create reports, see the [reporting](../reporting/reporting-overview.md) guide.
+
+![image description](images/overview-nav-report.png)
+
+### Monitoring
+
+The *Monitoring* section provides interactive dashboards where you can review the operating status of various server components for each environment. Select **Monitoring** to navigate to the *Monitoring* section of Environment Operations Center.
+
+For details on monitoring server components, see the [monitoring](../monitoring/monitoring-overview.md) guide.
+
+![image description](images/overview-nav-monitor.png)
+
+### Agent Management
+
+You can manage connections to on-premise agents in the *Agent Management* section. Select **Agent Management** to navigate to the *Agent Management* screen.
+
+For details on managing agent connections, see the [agent management](...) guide.
+
+![image description](images/overview-nav-agent.png)
+
+### Admin
+
+From the *Admin* section you can perform various administrative actions in Environment Operations Center. Select **Admin** to navigate to the *Admin* home screen.
+
+For further details on operations available in the *Admin* section, see the [admin overview](../admin/admin-overview.md) guide.
+
+![image description](images/overview-nav-admin.png)
+
+## Account settings
+
+A user avatar is always located in the upper right corner of the Env Ops Center user interface. Select the avatar to expand your account dropdown menu. 
+
+![image description](images/overview-account-icon.png)
+
+The dropdown displays your name, email, and permissions associated with the account. From the dropdown menu you can navigate to your **Account Settings**, access the **Help** center, or **Logout** of Env Ops Center.
+
+For information on managing your account settings, see the [account settings](../admin/account-settings/update-account.md) guide.
+
+![image description](images/overview-account-menu.png)
+
+## Next steps
