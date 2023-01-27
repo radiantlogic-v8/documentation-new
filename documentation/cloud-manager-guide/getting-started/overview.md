@@ -126,3 +126,5 @@ For information on managing your account settings, see the [account settings](..
 ![image description](images/overview-account-menu.png)
 
 ## Next steps
+
+After reading this guide you should have an understanding of the *Overview* screen components and how to navigate the Environment Operations Center user interface. For more information on environments, see the [environments overview](../environments/environment-overview/environments-overview.md) guide. To learn how to create and environment, see the [create an environment](../environments/environment-overview/create-an-environment.md) guide.
