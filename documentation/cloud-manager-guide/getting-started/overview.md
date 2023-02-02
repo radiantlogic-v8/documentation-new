@@ -9,7 +9,7 @@ This guide provides an overview of the Environment Operations Center *Overview* 
 
 ## Overview
 
-You are brought to the *Overview* screen after logging in to Environment Operations center. This is the Env Ops Center home screen and provides access to Radiant Logic supporting documentation. This screen also provides a high-level overview of your environments. 
+After logging into the Environment Operations Center, the *Overview* screen appears. This is the Env Ops Center home screen and provides access to Radiant Logic supporting documentation. This screen also provides a high-level overview of your environments. 
 
 A navigation bar is located to the left and is visible from all screens within Environment Operation Center. You can access your account settings by selecting the avatar in the upper right corner, also visible from all screens in the application.
 
@@ -17,7 +17,7 @@ A navigation bar is located to the left and is visible from all screens within E
 
 The Radiant Logic documentation suite contains guides and resources to help your work in RadiantOne and Environment Operations Center.
 
-To access the suite of supporting documentation, select **Access Documentation**.
+To access supporting documentation from within Environment Operations Center, select **Access Documentation**.
 
 ![image description](images/overview-access-docs.png)
 
@@ -37,7 +37,7 @@ For further details on role based permissions, see the [role permissions](../adm
 
 #### Filter environments
 
-A status count displays how many environments have a status of "Critical", "Warning", and "Operational.
+A status count displays how many environments have a status of "Critical", "Warning", and "Operational".
 
 ![image description](images/overview-status-count.png)
 
@@ -51,7 +51,7 @@ If more than two environments are available to view, you can select **Load More*
 
 #### Manage environments
 
-Each environment preview contains an **Options** (**...**) menu that allows you access further details about the environment or delete it. Dropdown menu options include:
+Each environment preview contains an **Options** (**...**) menu that allows you to access further details about the environment or delete it. Dropdown menu options include:
 
 - View Details: Navigate to the detailed screen of the environment to view additional information.
 - View Logs: Navigate to the logs tab for the environment.
@@ -63,7 +63,7 @@ To learn more about each of these actions, review the [environment details](../e
 
 ## Left navigation
 
-The left navigation contains various tabs that allow you to access Environment Operation Center features.
+The left navigation contains links to various screens, providing access Environment Operation Center features.
 
 ![image description](images/overview-left-nav.png)
 
@@ -127,4 +127,4 @@ For information on managing your account settings, see the [account settings](..
 
 ## Next steps
 
-After reading this guide you should have an understanding of the *Overview* screen components and how to navigate the Environment Operations Center user interface. For more information on environments, see the [environments overview](../environments/environment-overview/environments-overview.md) guide. To learn how to create and environment, see the [create an environment](../environments/environment-overview/create-an-environment.md) guide.
+After reading this guide you should have an understanding of the *Overview* screen components and how to navigate the Environment Operations Center user interface. For more information on environments, see the [environments overview](../environments/environment-overview/environments-overview.md) guide. To learn how to create an environment, see the [create an environment](../environments/environment-overview/create-an-environment.md) guide.
