@@ -47,6 +47,8 @@ You will receive a warning when your API token is close to expiring. A warning i
 
 ![image description](images/account-expiration-warning.png)
 
+**Waiting on feedback from RL re: expiration details - why the time period matters, why user would select certain dates, etc.**
+
 ### Copy an API token
 
 To copy the API token, select the **Copy to Clipboard** icon (![image description](images/icon-copy.png)) located next to the *API Token* input field and proceed to save or use the token as needed.

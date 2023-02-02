@@ -5,7 +5,9 @@ description: Overview of the Admin home screen user interface
 ---
 # Admin Overview
 
-This guide provides an overview of the *Admin* home screen and its features. From the *Admin* screen you can access tabs to manage your account settings, Environment Operation Center users, environment alerts and integrations, and monitor cluster health.
+This guide provides an overview of the *Admin* home screen and its features. From the *Admin* screen, you can access tabs to manage your account settings, Environment Operation Center users, environment alerts and integrations, and monitor cluster health.
+
+All Env Ops Center users can access the **Admin** screen, but view and edit permissions will differ depending on a user's assigned role. For details on role-based permissions, see the [role-based permissions](role-based-permission/role-based-permissions.md) guide.
 
 ## Getting started
 
