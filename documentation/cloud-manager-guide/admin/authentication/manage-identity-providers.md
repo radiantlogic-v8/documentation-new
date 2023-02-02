@@ -21,9 +21,9 @@ To open the *Edit Provider* screen, select **Edit** from the **Options** (**...*
 
 The *Edit Provider* form contains the same sections and fields as the *New Provider* form. Adjust the fields as required and select **Save** to update the provider information. The provider details will update immediately.
 
-For further details on the fields contained in the form, see the [add a provider](add-authentication-provider.md) guide.
+For further details on the fields contained in the form, see the [add a provider](add-identity-provider.md) guide.
 
-> **Note:** The fields displayed in the *Identity Provider Setup* section will differ depending on the **Provider Type**.
+> **Note:** The fields displayed in the *Identity Provider Setup* section will differ depending on the **Provider Type**. Further information on the provider types is available in the [add a provider](add-identity-provider.md) guide.
 
 ![image description](images/manage-edit-form.png)
 
@@ -63,4 +63,4 @@ The provider will also be removed from the login page.
 
 ## Next steps
 
-After reading this guide you should have an understanding of the steps required to edit, disable, or delete an identity provider. To learn how to add a new identity provider, see the [add a provider](add-authentication-provider.md) guide.
+After reading this guide you should have an understanding of the steps required to edit, disable, or delete an identity provider. To learn how to add a new identity provider, see the [add a provider](add-identity-provider.md) guide.

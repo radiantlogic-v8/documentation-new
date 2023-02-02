@@ -13,7 +13,7 @@ From the *Authentication* tab you can begin the workflows to add new identity pr
 
 ### New providers
 
-New authentication providers can be added from the *Authentication* tab by selecting the **New Provider** button. To learn how to add a new identity provider, see the [add a new provider](add-authentication-provider.md) guide.
+New authentication providers can be added from the *Authentication* tab by selecting the **New Provider** button. To learn how to add a new identity provider, see the [add a new provider](add-identity-provider.md) guide.
 
 ![image description](images/overview-new-provider.png)
 
@@ -27,11 +27,11 @@ All existing authentication providers are listed on the *Authentication* tab. Th
 
 ![image description](images/overview-title-bar.png)
 
-Each service provider has an **Options** (**...**) dropdown menu that allows you to manage the identity provider. For details on managing identity authentication providers, see the [manage providers](manage-authentication-providers.md) guide.
+Each service provider has an **Options** (**...**) dropdown menu that allows you to manage the identity provider. For details on managing identity authentication providers, see the [manage providers](manage-identity-providers.md) guide.
 
 ![image description](images/overview-options.png)
 
 ## Next steps
 
-After reading this guide you should be familiar with the features of the *Admin* *Authentication* tab. For details on adding a new provider, see the [add a new authentication provider](add-authentication-provider.md) guide.
+After reading this guide you should be familiar with the features of the *Admin* *Authentication* tab. For details on adding a new provider, see the [add a new authentication provider](add-identity-provider.md) guide.
 

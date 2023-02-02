@@ -35,13 +35,9 @@ Depending on the selected provider, the **Provider Type** may or may not auto po
 
 ![image description](images/add-provider-type.png)
 
-## Identity provider setup
+## General identity provider setup
 
-The required fields listed in the *Identity Provider Setup* section will differ depending on the type of provider selected. OAuth providers require a different set of authentication details than other provider types.
-
-### General provider setup 
-
-For most provider types, the required setup fields include:
+The required fields listed in the *Identity Provider Setup* section will differ depending on the type of provider selected. For most provider types, the required setup fields include:
 
 - Discovery URL
 - Authorization Endpoint URL
@@ -54,7 +50,7 @@ For most provider types, the required setup fields include:
 
 **confirming definitions with RL**
 
-#### URL fields
+### URL fields
 
 For OIDC providers, the **Discovery URL** field automatically populates after the **Provider** is selected in the *Identity Provider Info* section. This also renders the **Discover** button active. 
 
@@ -66,7 +62,7 @@ Select **Discover** to populate the **Authorization Endpoint URL** and the **Tok
 
 **confirming with RL workflow for other provider types**
 
-#### Client details
+### Client details
 
 Client details include client ID, secret, and authentication method. In the spaces provided, enter your **Client ID** and **Client Secret** that you received when you configured the provider.
 
@@ -76,21 +72,21 @@ Select the **Client Authentication Method** from the provided dropdown list.
 
 ![image description](images/add-client-auth.png)
 
-#### Scope
+### Scope
 
 Set the required scopes from the **Scope** dropdown menu. More than one entry can be selected. Select all scopes that are applicable to your login process.
 
 ![image description](images/add-scope.png)
 
-#### Status
+### Status
 
 Adjust the **Status** toggle to "Active" to ensure the provider is activated after the form is saved.
 
 ![image description](images/add-status.png)
 
-### OAuth-specific provider setup
+## OAuth-specific provider setup
 
-For OAuth providers, the required setup fields include:
+OAuth providers require a different set of authentication details than other provider types. For OAuth providers, the required setup fields include:
 
 - Authorization Endpoint URL
 - Client ID
@@ -107,7 +103,7 @@ Adjust the **Status** toggle to "Active" to ensure the provider is activated aft
 
 ![image description](images/add-oauth-status.png)
 
-### Custom provider setup 
+## Custom provider setup 
 
 If a "Custom" **Provider** is selected, the *Identity Provider Setup* section will reload to display the setup fields that correspond with the chosen **Provider Type**. The general setup fields or the OAuth-specific fields will display in the *Identity Provider Setup* section. Follow the steps that correspond with the selected **Provider Type** to complete the required fields. (**confirming these details with RL**).
 
@@ -129,6 +125,6 @@ The new provider is also added to the Environment Operations Center login screen
 
 ## Next steps
 
-After reading this guide you should have an understanding of the steps required to add a new identity provider for user authentication. To learn how to edit, disable, or delete identity providers, see the [manage providers](manage-authentication-providers.md) guide.
+After reading this guide you should have an understanding of the steps required to add a new identity provider for user authentication. To learn how to edit, disable, or delete identity providers, see the [manage providers](manage-identity-providers.md) guide.
 
 
