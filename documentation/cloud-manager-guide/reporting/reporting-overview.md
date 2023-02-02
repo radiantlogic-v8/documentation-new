@@ -1,9 +1,9 @@
 ---
 keywords:
-title: Generate Reports
-description: Generate reports
+title: Reporting Overview
+description: Reporting overview
 ---
-# Generate Reports
+# Reporting Overview
 
 From the *Reporting* screen, you can generate various reports to assist in monitoring performance and operations within your environments. This guide provides an overview of the *Reporting* section in Environment Operations Center, including its features and how to generate reports. 
 
