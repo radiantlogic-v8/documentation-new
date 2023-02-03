@@ -5,7 +5,7 @@ description: Edit a user
 ---
 # Edit a User
 
-This guide outlines the required steps to edit the details, status, role, and environment assignments for a specific user in Environment Operations Center.
+This guide outlines the steps to edit the details, status, role, and environment assignments for a specific user in Environment Operations Center.
 
 ## Getting started
 
@@ -61,7 +61,7 @@ The user's status will change from "Active" to "Inactive"
 
 ### Update user from Edit User screen
 
-To update a user's status from the *Edit User* screen, adjust the *Status* toggle in the *User Details* section to the "Active" or "Inactive". Select *Save* to update the user's status.
+To update a user's status from the *Edit User* screen, adjust the *Status* toggle in the *User Details* section to the "Active" or "Inactive". Select **Save** to update the user's status.
 
 ![image description](images/edit-user-inactive.png)
 
@@ -89,7 +89,7 @@ Select the checkmark icon (check mark icon) to set the new role.
 
 ![image description](images/edit-role-checkmark.png)
 
-Select **Save** to update the new user role.
+Select **Save** to update the user role.
 
 ![image description](images/edit-save-role.png)
 
@@ -107,7 +107,7 @@ To remove assigned environments, select the **X** located next to the environmen
 
 ![image description](images/edit-delete-envs.png)
 
-Once you have updated the user environment assignments, select the checkmark (checkmark icon) to set the new environment assignments.
+Once you have updated the user environment assignments, select the **checkmark** to set the new environment assignments.
 
 ![image description](images/edit-env-checkmark.png)
 

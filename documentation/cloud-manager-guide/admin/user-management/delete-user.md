@@ -27,11 +27,9 @@ The *Delete User* dialog displays the email address associated with the user you
 
 To proceed with deleting the user, enter the email address associated with their account in the space provided and select **Delete**.
 
-![image description](images/delete-dialog.png)
-
 To keep the user and exit out of the *Delete User* dialog, select **Keep The User**. You will return to the admin *Users* tab.
 
-![image description](images/delete-cancel.png)
+![image description](images/delete-dialog.png)
 
 ## Confirmation
 

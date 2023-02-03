@@ -5,11 +5,13 @@ description: Create new users
 ---
 # Create a User
 
-This guide outlines the required steps to create new users and assign roles in Environment Operations Center. What a user can view and which actions they can perform are dependent on their assigned role. User roles include Tenant Administrator, Environment Administrator, and Environment User. For details on permissions for each role, see the [role based permissions](../role-based-permission/role-based-permissions.md) guide.
+This guide outlines the required steps to create new users and assign roles in Environment Operations Center. What a user can view and which actions they can perform are dependent on their assigned role. User roles include Tenant Administrator, Environment Administrator, and Environment User. For details on permissions for each role, see the [role-based permissions](../role-based-permission/role-based-permissions.md) guide.
 
 ## Getting started
 
-To create a new user, select the **Create User** button on the *Users* screen.
+Select **Admin** from the left navigation to access the *Admin* home screen and *Users* tab.
+
+To create a new user, select the **Create User** button on the *Users* tab.
 
 ![image description](images/create-button.png)
 
@@ -71,7 +73,7 @@ If you wish to return to the *Create User* form to continue creating the new use
 
 ## Confirmation
 
-After completing the *Create User* form and selecting **Save**, you will be directed to the *User* tab where you will receive a success message indicating the user has been successfully created and they will appear in the list of users. The new user will receive a confirmation email notification at the specified address containing their new account information and login details.
+After completing the *Create User* form and selecting **Save**, you will be directed to the *Users* tab where you will receive a success message indicating the user has been successfully created and they will appear in the list of users. The new user will receive a confirmation email notification at the specified address containing their new account information and login details.
 
 ![image description](images/create-success.png)
 
