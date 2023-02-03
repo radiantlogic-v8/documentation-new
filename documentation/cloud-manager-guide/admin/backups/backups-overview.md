@@ -7,13 +7,15 @@ description: Overview of the admin backups tab
 
 Environment backups can be managed from two locations in Environment Operations Center, from the *Admin* section, if you have an administrator role, or from the detailed view of an environment, for all users. The different backup operations that can be performed from each *Backups* tab are outlined below.
 
-| Admin Backups | Environment Backups |
-| ------------- | ------------------- |
-| Recover       | Create or Schedule  |
-| Delete        | Delete              |
-| Restore       | Restore             |
+| Operation | Admin Backups | Environment Backups |
+| --------- | ------------- | ------------------- |
+| Create    |               |         X           |
+| Schedule  |               |         X           |
+| Delete    |       X       |         X           |
+| Recover   |       X       |                     |
+| Restore   |       X       |         X           |
 
-The workflows to delete and restore environment backups are the same whether performed from the Admin *Backups* tab or an environment's *Backups* tab. To learn how to delete or restore an environment backup, review the [delete a backup](../../environments/backup-and-restore/delete-backup.md) or [restore a backup](../../environments/backup-and-restore/restore-backup.md) guide.
+> **Note:** The workflows to delete and restore environment backups are the same whether performed from the Admin *Backups* tab or an environment's *Backups* tab. To learn how to delete or restore an environment backup, review the [delete a backup](../../environments/backup-and-restore/delete-backup.md) or [restore a backup](../../environments/backup-and-restore/restore-backup.md) guide.
 
 ## Getting started
 

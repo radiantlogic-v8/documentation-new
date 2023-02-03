@@ -5,7 +5,7 @@ description: How to recover deleted environment backups
 ---
 # Recover a Deleted Environment Backup
 
-This guide outlines the steps to recover a deleted environment backup. Recovering a deleted backup makes it available in the list of backups for potential restoration. Deleted backups can only be recovered by an Environment Operations center Tenant Administrator (**confirming with RL**).
+This guide outlines the steps to recover a deleted environment backup. Recovering a deleted backup makes it available in the list of backups for restoration. Deleted backups can only be recovered by an Environment Operations center Tenant Administrator (**confirming with RL**).
 
 ## Getting started
 
@@ -37,4 +37,4 @@ If the backup recovery is successful, you will receive a confirmation message an
 
 ## Next steps
 
-You should know have an understanding of the steps required to recover a deleted environment backup to make it available for restoration. To learn how to restore an environment backup, see the [restore a backup](../../environments/backup-and-restore/backup-restore-overview.md) guide.
+You should now have an understanding of the steps required to recover a deleted environment backup to make it available for restoration. To learn how to restore an environment backup, see the [restore a backup](../../environments/backup-and-restore/backup-restore-overview.md) guide.
