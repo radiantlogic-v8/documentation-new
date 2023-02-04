@@ -3,13 +3,13 @@ title: Command Line Configuration Guide
 description: Command Line Configuration Guide
 ---
 
-# Chapter 7: Tree Hierarchy Commands
+# Tree Hierarchy Commands
 
 This chapter explains how to manage node properties in a virtual tree using the <RLI_HOME>/bin/vdsconfig utility.
 
-After creating a new virtual tree type of naming context, you can create “sub-containers” with the new-label command. After the new label is created, you can mount different types of backends at these labels (using the [naming context commands](06-naming-context-commands.md)). An example is shown below.
+After creating a new virtual tree type of naming context, you can create “sub-containers” with the new-label command. After the new label is created, you can mount different types of backends at these labels (using the [naming context commands](naming-context-commands.md)). An example is shown below.
 
-![An image showing ](Media/Image7.1.jpg)
+![tree hierarchy commands](Media/Image7.1.jpg)
 
 ## new-label
 
@@ -108,7 +108,7 @@ IMPORTANT NOTE – The value of -prop is case sensitive. You can use the list-no
 
 Assume a virtual view named northwind2 (dv=northwind2) created in Context Builder has been mounted in the virtual namespace below o=vds. The output columns defined for the EMPLOYEES container can be seen in Context Builder on the Attributes tab as shown below.
 
-![An image showing ](Media/Image7.2.jpg)
+![Virtual view northwind2](Media/Image7.2.jpg)
 
 To get these columns with the get-node-property command, you would use the following:
 
@@ -131,7 +131,7 @@ TE:TIMESTAMP],[HIREDATE:TIMESTAMP],[ADDRESS:VARCHAR(255)],[CITY:VARCHAR
 ```
 The objectclass defined for the EMPLOYEES container on the Advanced Settings tab as shown below.
 
-![An image showing ](Media/Image7.3.jpg)
+![objectclass defined for the employees container](Media/Image7.3.jpg)
 
 To get this property with the get-node-property command, you would use the following:
 
@@ -167,7 +167,7 @@ The response is shown below. The \r\n in the SystemOut represents a carriage ret
 
 This command sets the value of a given property of a specified node. Setting node property values with this command should be done with extreme caution as the syntax of the properties is very specific and editing them manually is prone to error. It is highly recommended that setting node properties in this manner is done only if advised and guided by the Radiant Logic support team.
 
-><span style="color:red">**IMPORTANT NOTE – This command should not be used to modify RDNs. To modify an RDN, use the set-node-rdn command.**
+><span style="color:red">**IMPORTANT NOTE – This command should not be used to modify RDNs. To modify an RDN, use the [set-node-rdn](tree-hierarchy-commands#set-node-rdn) command.**
 
 **Usage:**
 <br>`set-node-property -dn <dn> -prop <prop> -value <value> [-instance <instance>]`
@@ -192,7 +192,7 @@ This command gets the values configured for an interception script on a specifie
 
 An example of a virtual view configured for an interception script is shown below.
 
-![An image showing ](Media/Image7.4.jpg)
+![virtual view configured for an interception scripth](Media/Image7.4.jpg)
 
 Based on the screen shot above, the command to get the configured interception is as follows (the address book virtual view is mounted in the virtual namespace below the o=vds root naming context):
 
@@ -246,8 +246,7 @@ After editing the Java file, the intercept.jar file must be rebuilt and the Radi
 An example of setting interception is as follows:
 
 ```
-C:\radiantone\vds\bin>vdsconfig.bat set-node-interception -dn "CN,dv=address book,o=vds -
-search true -bind false -modify true -delete true -add true
+C:\radiantone\vds\bin>vdsconfig.bat set-node-interception -dn "CN,dv=address book,o=vds -search true -bind false -modify true -delete true -add true
 ```
 
 **Command Arguments:**
@@ -311,7 +310,7 @@ This command sets the RDN attribute name/value of the specified node.
 
 Assume a virtual view named hr (ou=hr) has been mounted in the virtual namespace below o=examples. The entries have an RDN of HR, as shown below.
 
-![An image showing ](Media/Image7.5.jpg)
+![virtual view named hr](Media/Image7.5.jpg)
 
 The following example command changes the RDN of these entries to NEWHR.
 
@@ -332,7 +331,7 @@ vx/ou_hr_o_examples.dvx/196/DATA
 The RDN attribute name has been modified.
 ```
 
-![An image showing ](Media/Image7.6.jpg)
+![rdn attribute name has been modified](Media/Image7.6.jpg)
 
 **REST (ADAP) Example**
 
@@ -346,7 +345,7 @@ https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=set-node-r
 
 Assume a table called “CUSTOMERS” exists below dv=northwind,o=vds.
 
-![An image showing ](Media/Image7.7.jpg)
+![customers table](Media/Image7.7.jpg)
 
 The following example command changes the RDN this table to ou=sales.
 

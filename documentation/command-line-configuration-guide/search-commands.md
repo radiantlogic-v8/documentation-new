@@ -3,11 +3,11 @@ title: Command Line Configuration Guide
 description: Command Line Configuration Guide
 ---
 
-# Chapter 19: Search Commands
+# Search Commands
 
 Searches on the RadiantOne namespace can be performed on the Directory Browser tab in the Main Control Panel. This chapter describes how to perform an LDAP search on the RadiantOne namespace using the <RLI_HOME>/bin/vdsconfig utility instead of using the UI.
 
-![An image showing ](Media/Image19.1.jpg)
+![Search Commands](Media/Image19.1.jpg)
 
 ## search-vds
 
@@ -48,7 +48,7 @@ This command performs an LDAP search on the RadiantOne namespace.
 
 Periodic persistent cache refresh can be configured from the Main Control Panel > Directory Namespace tab > Cache section > selected cache branch > Refresh Settings tab.
 
-![An image showing ](Media/Image19.2.jpg)
+![Cache Refresh](Media/Image19.2.jpg)
 
 You can manually initiate a periodic persistent cache refresh with the following command (substitute your cached naming context for <pcache naming>).
 

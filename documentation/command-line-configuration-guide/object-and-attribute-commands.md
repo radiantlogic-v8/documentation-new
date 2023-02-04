@@ -3,7 +3,7 @@ title: Command Line Configuration Guide
 description: Command Line Configuration Guide
 ---
 
-# Chapter 8: Object and Attribute Commands
+# Object and Attribute Commands
 
 This chapter explains how to perform various object and attribute commands using <RLI_HOME>/bin/vdsconfig.
 
@@ -11,7 +11,7 @@ This chapter explains how to perform various object and attribute commands using
 
 Managing special properties (e.g. Always Requested, Virtual Attribute Name, Hidden, DN remapping) for attributes associated with primary LDAP backends (globally, meaning that the attributes could be associated with any object class in the backend) is done from the Main Control Panel > Directory Namespace tab > selected LDAP proxy view > Attributes tab.
 
-![An image showing ](Media/Image8.1.jpg)
+![Attributes tab](Media/Image8.1.jpg)
 
 The following commands can be used instead of the UI mentioned above.
 
@@ -270,7 +270,7 @@ https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=delete-lda
 
 Attributes associated with primary objects configured for LDAP proxy views can be managed from the Main Control Panel, Directory Namespace tab, selected LDAP proxy view, Objects tab. Once a primary object has been added, properties can be assigned for the attributes. Computed attributes can also be defined.
 
-![An image showing ](Media/Image8.3.jpg)
+![objects tab](Media/Image8.3.jpg)
 
 The following commands can be used with the <RLI_HOME>/bin/vdsconfig utility instead of the UI mentioned above.
 
@@ -333,7 +333,7 @@ This command adds an attribute to a primary object for an LDAP proxy view.
 <br>[required] The source of an attribute. For computed attributes use 'Computed'. For join attributes, use the join ID.
 
 **`- computedexpr <computedexpr>`**
-The computed expression for the attribute. This expression should contain the attribute name. Example: EMAIL=lastname+"@radiant.com". Note: applies only to computed attributes. For information on parsing options for the values in this argument, see [Parsing Command Argument Strings](01-introduction.md#parsing-command-argument-strings).
+The computed expression for the attribute. This expression should contain the attribute name. Example: EMAIL=lastname+"@radiant.com". Note: applies only to computed attributes. For information on parsing options for the values in this argument, see [Parsing Command Argument Strings](introduction.md#parsing-command-argument-strings).
 
 **`- hidden <hidden>`**
 <br>The 'hidden' property value for an attribute. Accepted values are: true, false.

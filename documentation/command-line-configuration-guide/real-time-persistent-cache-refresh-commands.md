@@ -3,17 +3,17 @@ title: Command Line Configuration Guide
 description: Command Line Configuration Guide
 ---
 
-# Chapter 20: Real-time Persistent Cache Refresh Commands
+# Real-time Persistent Cache Refresh Commands
 
 This chapter outlines commands used to configure Real-time Persistent Cache.
 
 Real-time persistent cache refresh commands can be performed on the Directory Namespace tab and PCache Monitoring tab in the Main Control Panel.
 
-![An image showing ](Media/Image20.1.jpg)
+![Real-time Persistent Cache Refresh Command](Media/Image20.1.jpg)
 
 Several commands in this chapter contain the argument connectorname. For persistent cache refreshes, the value for this argument can be found in the Main Control Panel > PCache Monitoring tab. Select the cache under the PCaches node on the left. Click the connector. Note the Connector Name value. An example is shown below.
 
-![An image showing ](Media/Image20.2.jpg)
+![Connector name](Media/Image20.2.jpg)
 
 ## change-connector-state
 
@@ -139,7 +139,7 @@ https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=stop-agent
 
 Agents manage connectors used for real-time persistent cache refreshes. Persistent Cache Refresh Agents are started automatically once a persistent cache with real-time refresh is configured. Agents can run on any type of RadiantOne cluster node (follower or leaders) and there is only one agent running at any given time in a RadiantOne cluster.
 
-Agents are also used for global synchronization and CPLDS sync processes. CPLDS Agents run on follower-only cluster nodes and multiple agents can be running at the same time. The more agents the better in order to distribute the load. For more details on CPLDS, see the RadiantOne CPLDS Guide. For more details on [global synchronization](21-global-sync-commands.md), see the RadiantOne Global Sync Guide.
+Agents are also used for global synchronization and CPLDS sync processes. CPLDS Agents run on follower-only cluster nodes and multiple agents can be running at the same time. The more agents the better in order to distribute the load. For more details on CPLDS, see the RadiantOne CPLDS Guide. For more details on [global synchronization](global-sync-commands.md), see the RadiantOne Global Sync Guide.
 
 This command stops all agents.
 
@@ -163,7 +163,7 @@ https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=stop-all-a
 
 Agents manage connectors used for real-time persistent cache refreshes. Persistent Cache Refresh Agents are started automatically once a persistent cache with real-time refresh is configured. Agents can run on any type of RadiantOne cluster node (follower or leaders) and there is only one agent running at any given time in a RadiantOne cluster.
 
-Agents are also used for [global synchronization](21-global-sync-commands.md) and CPLDS sync processes. CPLDS Agents run on follower-only cluster nodes and multiple agents can be running at the same time. The more agents the better in order to distribute the load. For more details on CPLDS, see the RadiantOne CPLDS Guide. For more details on global synchronization, see the RadiantOne Global Sync Guide.
+Agents are also used for [global synchronization](global-sync-commands.md) and CPLDS sync processes. CPLDS Agents run on follower-only cluster nodes and multiple agents can be running at the same time. The more agents the better in order to distribute the load. For more details on CPLDS, see the RadiantOne CPLDS Guide. For more details on global synchronization, see the RadiantOne Global Sync Guide.
 
 This command stops all local agents running on the machine from which the command was launched.
 

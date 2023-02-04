@@ -3,7 +3,7 @@ title: Command Line Configuration Guide
 description: Command Line Configuration Guide
 ---
 
-# Chapter 6: Naming Context Commands
+# Naming Context Commands
 
 This chapter describes how to create persistent caches, naming contexts, proxy naming contexts, and backup images of RadiantOne Universal Directory (HDAP) stores. It also describes how to delete naming contexts and their caches. These commands can be set using <RLI_HOME>/bin/vdsconfig.
 
@@ -11,9 +11,9 @@ This chapter describes how to create persistent caches, naming contexts, proxy n
 
 Proxy naming contexts and Universal Directory stores can be created and managed from the Main Control Panel, Directory Namespace tab.
 
-![An image showing ](Media/Image6.1.jpg)
+![New naming context](Media/Image6.1.jpg)
 
-![An image showing ](Media/Image6.2.jpg)
+![proxy backend](Media/Image6.2.jpg)
 
 The following commands can be used instead of the UI mentioned above.
 
@@ -177,17 +177,17 @@ https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=delete-con
 
 Persistent cache can be created and managed from the Main Control Panel, Directory Namespace tab.
 
-![An image showing ](Media/Image6.3.jpg)
+![create persistent cache](Media/Image6.3.jpg)
 
-![An image showing ](Media/Image6.4.jpg)
+![persistent cache](Media/Image6.4.jpg)
 
 The <RLI_HOME>/bin/vdsconfig utility can be used instead of the UI mentioned above.
 
 #### create-pcache
 
-This command creates a persistent cache for a root naming context in the RadiantOne namespace. In multi-node clusters, this command must be executed on the RadiantOne leader node. For information on determining the RadiantOne leader, refer to the RadiantOne System Administration Guide.
+T chisommand creates a persistent cache for a root naming context in the RadiantOne namespace. In multi-node clusters, this command must be executed on the RadiantOne leader node. For information on determining the RadiantOne leader, refer to the RadiantOne System Administration Guide.
 
->**Note – Use the configure-real-time-pcache-sync-topology command to configure a real-time refresh.
+>**Note – Use the [configure-real-time-pcache-sync-topology](real-time-persistent-cache-refresh-commands#configure-real-time-pcache-sync-topology) command to configure a real-time refresh.
 
 **Usage:**
 <br>`create-pcache -namingcontext <namingcontext> [-autorefresh] [-indexattr <indexattr>] [-instance <instance>]`
@@ -369,7 +369,7 @@ For typical LDAP migration use cases where you are migrating from a legacy LDAP 
 
 Before converting a persistent cache to a RadiantOne Universal Directory store, the persistent cache refresh should be stopped. You can set the refresh method to “none” on the Main Control Panel -> Directory Namespace -> Cache -> `<cached branch>` -> Refresh Settings tab. Also, suspend inter-cluster replication if it is used by setting “replicationInSuspendMode” : true, in ZooKeeper at /radiantone/<zk_version>/<clustername>/config/namings/<namingcontext_being_replicated>
 
-After the persistent cache has been converted to a RadiantOne Universal Directory store, rebuild the index to remove any persistent cache operational attributes. If inter-cluster replication is used, enable it by setting “replicationInSuspendMode” : false, in ZooKeeper at /radiantone/<zk_version>/<clustername>/config/namings/<namingcontext_being_replicated>
+After the persistent cache has been converted to a RadiantOne Universal Directory store, [rebuild the index](task-launch-commands#rebuilding-indexes-for-radiantone-universal-directory-stores) to remove any persistent cache operational attributes. If inter-cluster replication is used, enable it by setting “replicationInSuspendMode” : false, in ZooKeeper at /radiantone/<zk_version>/<clustername>/config/namings/<namingcontext_being_replicated>
 
 **Usage:**
 <br>`convert-pcache-to-hdap -namingcontext <namingcontext> [-instance <instance>]`

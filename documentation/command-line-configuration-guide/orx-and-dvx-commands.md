@@ -3,11 +3,11 @@ title: Command Line Configuration Guide
 description: Command Line Configuration Guide
 ---
 
-# Chapter 18: ORX and DVX Commands
+# ORX and DVX Commands
 
 Schema files containing metadata and mappings associated with backend data sources are ORX files (names have a .orx extension). Virtual directory view files describing hierarchies based on schema metadata associated with backend data sources are DVX files (names have a .dvx extension). The list of .orx and .dvx files on a server can be viewed from the Main Control Panel > Context Builder tab > Schema Manager > Open menu and View Designer > Open menu. Viewing the connection information, testing the connection and changing the associated data source can be accomplished from Context Builder.
 
-![An image showing ](Media/Image18.1.jpg)
+![Orx and dvx commands](Media/Image18.1.jpg)
 
 As an alternative, you can list the files, print the connection information associated with the files, test the connection to the data source associated with the files and change the data source name and/or base DN of an existing file using <RLI_HOME>/bin/vdsconfig and the following commands.
 
