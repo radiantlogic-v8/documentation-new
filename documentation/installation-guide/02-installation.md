@@ -3,7 +3,7 @@ title: Installation Guide
 description: Installation Guide
 ---
 
-# Chapter 2: Installation
+# Installation
 
 Apache ZooKeeper is a centralized service for maintaining configuration information across a RadiantOne cluster. Although RadiantOne comes bundled with ZooKeeper to simplify installation in Dev/QA environments, it is discouraged to use this architecture in production. Shutting down a redundant RadiantOne node (e.g. for upgrading) also shuts down ZooKeeper on this server. Because a ZooKeeper ensemble must have a quorum of more than half its servers running at any given time, this can be a problem for cluster integrity and stability. The solution is to deploy ZooKeeper in a separate, external ensemble. Other advantages of deploying an external ZooKeeper ensemble are outlined in the RadiantOne External ZooKeeper Install guide.
 
@@ -81,11 +81,11 @@ The basic installation involves setting up one RadiantOne node and is sufficient
 
 Several aspects of RadiantOne are configured during installation. The basic installation steps are described below.
 
-IMPORTANT NOTE – Even if you only deploy one RadiantOne node, the basic cluster configuration is defined during the install. Take note of the cluster settings defined here as they can be used later to add nodes to the cluster.
+><span style="color:red">**IMPORTANT NOTE – Even if you only deploy one RadiantOne node, the basic cluster configuration is defined during the install. Take note of the cluster settings defined here as they can be used later to add nodes to the cluster.**
 
 1. At the System Check step, verify that the system passed all checks and click Next.
 
-><span style="color:red">**IMPORTANT NOTE – Hardware sizing is a critical component of directory service planning and deployment. The system check report verifies that important RadiantOne system requirements are met. Refer to the RadiantOne Hardware Sizing Guide for more information.**
+><span style="color:red">**IMPORTANT NOTE – Hardware sizing is a critical component of directory service planning and deployment. The system check report verifies that important RadiantOne system requirements are met. If a test fails, an X is shown, like in the screenshot below. The failure should be addressed before continuing with the installation. Refer to the RadiantOne Hardware Sizing Guide for more information.**
 
 ![An image showing ](Media/Image2.1.jpg)
 
@@ -159,9 +159,9 @@ If you are using a separate ZooKeeper ensemble, before attempting to add Radiant
 
 1. At the “System Check Report” step, verify that the system passed all checks and click Next.
 
-    ><span style="color:red">**IMPORTANT NOTE **–** Hardware sizing is a critical component of directory service planning and deployment. The system check report verifies that important RadiantOne system requirements are met. Refer to the RadiantOne Hardware Sizing Guide for more information.**
+    ><span style="color:red">**IMPORTANT NOTE **–** Hardware sizing is a critical component of directory service planning and deployment. The system check report verifies that important RadiantOne system requirements are met. If a test fails, an X is shown, like in the screenshot below. The failure should be addressed before continuing with the installation. Refer to the RadiantOne Hardware Sizing Guide for more information.**
 
-![An image showing ](Media/Image2.9.jpg)
+![An image showing ](Media/Image2.1.jpg)
 
 2. When adding a new RadiantOne node to an existing cluster, select the Join An Existing
     Cluster option.
