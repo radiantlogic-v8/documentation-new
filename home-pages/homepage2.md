@@ -47,7 +47,7 @@ This site provides resources for DevOps professionals to deploy the RadiantOne p
 
 <section>
   
-  > [Support](/common-info/tehnical-support)
+  > [Support](/common-info/technical-support)
   > Support page
   
 </section>
@@ -74,7 +74,7 @@ This site provides resources for DevOps professionals to deploy the RadiantOne p
 
 <section>
   
-  > [Overview](/custom-authentication-providers-guide/overview)
+  > [Overview](/custom-authentication-providers-guide/01-overview)
   > Overview page
   
 </section>
