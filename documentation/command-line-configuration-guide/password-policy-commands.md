@@ -3,11 +3,11 @@ title: Command Line Configuration Guide
 description: Command Line Configuration Guide
 ---
 
-# Chapter 13: Password Policy Commands
+# Password Policy Commands
 
 Password policies are managed from the Main Control Panel, Settings tab, Security section, Password Policies, and can also be managed from command line using the <RLI_HOME>/bin/vdsconfig utility.
 
-![An image showing ](Media/Image13.1.jpg)
+![password policy commands](Media/Image13.1.jpg)
 
 This chapter explains how to add, update, and remove a password policy using the <RLI_HOME>/bin/vdsconfig utility instead of the GUI mentioned above.
 

@@ -3,20 +3,20 @@ title: Command Line Configuration Guide
 description: Command Line Configuration Guide
 ---
 
-# Chapter 17: Security Commands
+# Security Commands
 
 Attribute encryption cipher and key can be set from the Main Control Panel > Settings tab > Security section -> HDAP Attribute Encryption section.
 
-NOTE – The commands in this chapter do not support output format configuration. Refer to [Configuring Command Output Format](01-introduction.md#configuring-command-output-format) for more
+NOTE – The commands in this chapter do not support output format configuration. Refer to [Configuring Command Output Format](introduction.md#configuring-command-output-format) for more
 information.
 
-![An image showing ](Media/Image17.1.jpg)
+![security commands](Media/Image17.1.jpg)
 
 As an alternative, you can configure the cipher and key from command line using the <RLI_HOME>/bin/vdsconfig utility. Attribute encryption is only applicable to RadiantOne Universal Directory (HDAP) stores and persistent cache. Once you’ve defined the cipher and key, it cannot be changed if there are stores and/or persistent caches that use it. If you need to change the cipher/key, you must remove the existing attribute encryption. For details on how to do this, see the Namespace Configuration Guide.
 
 Support for client certificate/PIV card authentication and client certificate DN Mapping is configured from Main Control Panel, Settings tab, Security section, SSL.
 
-![An image showing ](Media/Image17.2.jpg)
+![add mapping](Media/Image17.2.jpg)
 
 Use the test-cert-mapping command to determine if a match exists between a certificate’s subject (or SAN) and a client certificate DN mapping.
 

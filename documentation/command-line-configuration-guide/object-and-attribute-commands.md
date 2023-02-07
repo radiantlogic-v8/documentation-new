@@ -833,11 +833,11 @@ The LDAP proxy view example seen below in the Main Control Panel can have a merg
 C:\radiantone\vds\bin>vdsconfig add-merge-backend -datasourcename adeurope - namingcontext CN=Users,o=adproxy -basedn CN=Users,DC=adeurope,DC=com -instance vds_server
 ```
 
-![An image showing ](Media/Image8.9.jpg)
+![LDAP proxy view example](Media/Image8.9.jpg)
 
 After the command is run, the following screen shows the configuration in the Main Control Panel.
 
-![An image showing ](Media/Image8.10.jpg)
+![Main Control Panel configuration](Media/Image8.10.jpg)
 
 ### delete-merge-backend
 
@@ -867,15 +867,15 @@ Example:
 C:\radiantone\vds\bin>vdsconfig delete-merge-backend -datasourcename adeurope - namingcontext CN=Users,o=adproxy -basedn CN=Users,DC=adeurope,DC=com -instance vds_server
 ```
 
-![An image showing ](Media/Image8.11.jpg)
+![merged backend example](Media/Image8.11.jpg)
 
 ## Database Proxy Attributes
 
 Attributes associated with database proxy views can be managed from the Main Control Panel, Directory Namespace tab, selected database proxy view, Attributes tab and from the Object tab. Computed attributes can also be defined.
 
-![An image showing ](Media/Image8.12.jpg)
+![main attribute window](Media/Image8.12.jpg)
 
-![An image showing ](Media/Image8.13.jpg)
+![object tab](Media/Image8.13.jpg)
 
 The following commands can be used with the <RLI_HOME>/bin/vdsconfig utility instead of the UI mentioned above.
 
@@ -925,7 +925,7 @@ This command adds an attribute to a content or container node.
 
 **`- computedexpr <computedexpr>`**
 <br>The computed expression for the attribute. This expression should contain the attribute name. Example: EMAIL=lastname+"@radiant.com". Note: applies only to computed attributes. For information on parsing options for the values in this argument, see [Parsing Command Argument
-Strings](01-introduction.md#parsing-command-argument-strings).
+Strings](introduction.md#parsing-command-argument-strings).
 
 **`- hidden <hidden>`**
 The 'hidden' property value for an attribute. Accepted values are: true, false.
@@ -973,7 +973,7 @@ This command updates the properties of an existing attribute for a content or co
 <br>[required] The source of an attribute. For primary backend attributes use 'Main'. For computed attributes use 'Computed'. For join attributes, use the join ID.
 
 **`- computedexpr <computedexpr>`**
-<br>The computed expression for the attribute. This expression should contain the attribute name. Example: EMAIL=lastname+"@radiant.com". Note: applies only to computed attributes. For information on parsing options for the values in this argument, see Parsing Command Argument Strings.
+<br>The computed expression for the attribute. This expression should contain the attribute name. Example: EMAIL=lastname+"@radiant.com". Note: applies only to computed attributes. For information on parsing options for the values in this argument, see [Parsing Command Argument Strings](introduction.md#parsing-command-argument-strings).
 
 **`- hidden <hidden>`**
 <br>The 'hidden' property value for an attribute. Accepted values are: true, false.
@@ -1034,7 +1034,7 @@ https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=delete-con
 
 Joins configured for database proxy views can be managed from the Main Control Panel > Directory Namespace tab > selected Database proxy view > Object tab.
 
-![An image showing ](Media/Image8.14.jpg)
+![object tab](Media/Image8.14.jpg)
 
 The following commands can be used with the <RLI_HOME>/bin/vdsconfig utility instead of the UI mentioned above.
 
@@ -1223,9 +1223,9 @@ https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=delete-con
 
 ### Bind Order on Database Proxy Views
 
-After joins are defined, bind order can be configured on the bottom of the Objects tab.
+After [joins](#joins-on-database-objects) are defined, bind order can be configured on the bottom of the Objects tab.
 
-![An image showing ](Media/Image8.16.jpg)
+![bind order on database proxy views](Media/Image8.16.jpg)
 
 The following commands can be used with the <RLI_HOME>/bin/vdsconfig utility instead of the UI mentioned above.
 

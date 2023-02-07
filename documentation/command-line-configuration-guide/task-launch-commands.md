@@ -3,7 +3,7 @@ title: Command Line Configuration Guide
 description: Command Line Configuration Guide
 ---
 
-# Chapter 9: Task Launch Commands
+# Task Launch Commands
 
 This chapter describes how to launch tasks to initialize a cache, initialize a RadiantOne Universal Directory (HDAP) store from LDIF file, import an LDIF file, export data from an LDAP data source to LDIF file, and rebuild an index for a Universal Directory store or persistent cache.
 
@@ -11,7 +11,7 @@ This chapter describes how to launch tasks to initialize a cache, initialize a R
 
 Persistent cache can be initialized and exported from the Main Control Panel, Directory Namespace tab, selected branch below the Cache section.
 
-![An image showing ](Media/Image9.1.jpg)
+![initializing persistent cache](Media/Image9.1.jpg)
 
 The following command can be used with the <RLI_HOME>/bin/vdsconfig utility instead of the UI mentioned above.
 
@@ -155,7 +155,7 @@ https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=export-ldi
 
 RadiantOne Universal Directory (HDAP) stores can be initialized and exported from the Main Control Panel > Directory Namespace tab > selected naming context.
 
-![An image showing ](Media/Image9.2.jpg)
+![initializing radiantone universal directory stores](Media/Image9.2.jpg)
 
 The following command can be used with the <RLI_HOME>/bin/vdsconfig utility instead of the UI mentioned above.
 
@@ -193,7 +193,7 @@ companydirectory&interactive
 
 RadiantOne Universal Directory stores can be re-indexed from the Main Control Panel > Directory Namespace tab > selected naming context.
 
-![An image showing ](Media/Image9.3.jpg)
+![Rebuilding Indexes for RadiantOne Universal Directory Stores](Media/Image9.3.jpg)
 
 The following command can be used instead of the UI mentioned above.
 

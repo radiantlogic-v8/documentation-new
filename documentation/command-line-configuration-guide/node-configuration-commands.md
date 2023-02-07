@@ -3,7 +3,7 @@ title: Command Line Configuration Guide
 description: Command Line Configuration Guide
 ---
 
-# Chapter 4: Node Configuration Commands
+# Node Configuration Commands
 
 This chapter describes how to display the contents of the Cluster Node Configuration. It also explains how to get and set a node property. These commands can be issued using
 <RLI_HOME>/bin/vdsconfig.
