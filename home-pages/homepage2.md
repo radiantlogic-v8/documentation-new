@@ -11,7 +11,7 @@ This site provides resources for DevOps professionals to deploy the RadiantOne p
 
 <section>
   
-  > [Overview](/documentation/aci-migration-guide/overview)
+  > [Overview](/aci-migration-guide/overview)
   > Overview page
   
 </section>
