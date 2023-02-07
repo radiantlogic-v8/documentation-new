@@ -20,7 +20,7 @@ This site provides resources for DevOps professionals to deploy the RadiantOne p
 
 <section>
   
-  > [Preface](/documentation/architect-guide)
+  > [Preface](/architect-guide/preface)
   > Preface page
   
 </section>
@@ -29,7 +29,7 @@ This site provides resources for DevOps professionals to deploy the RadiantOne p
 
 <seciton>
   
-  > [Overview](/documentation/azure-cloud-installation-guide)
+  > [Overview](/azure-cloud-installation-guide/overview)
   > Overview page
   
 </section>
@@ -38,7 +38,7 @@ This site provides resources for DevOps professionals to deploy the RadiantOne p
 
 <section>
   
-  > [Introduction](/documentation/command-line-configuration-guide)
+  > [Introduction](/command-line-configuration-guide/01-introduction%202)
   > Introduction page
   
 </section>
@@ -47,7 +47,7 @@ This site provides resources for DevOps professionals to deploy the RadiantOne p
 
 <section>
   
-  > [Support](/documentation/common-info)
+  > [Support](/common-info/tehnical-support)
   > Support page
   
 </section>
@@ -56,7 +56,7 @@ This site provides resources for DevOps professionals to deploy the RadiantOne p
 
 <section>
   
-  > [Introduction](/documentation/context-builder-guide)
+  > [Introduction](/context-builder-guide/01-introduction)
   > Introduction page
   
 </section>
@@ -65,7 +65,7 @@ This site provides resources for DevOps professionals to deploy the RadiantOne p
 
 <section>
   
-  > [Introduction](/documentation/cplds-guide)
+  > [Introduction](/cplds-guide/01-introduction)
   > Introduction page
   
 </section>
@@ -74,7 +74,7 @@ This site provides resources for DevOps professionals to deploy the RadiantOne p
 
 <section>
   
-  > [Overview](/documentation/custom-authentication-providers-guide)
+  > [Overview](/custom-authentication-providers-guide/overview)
   > Overview page
   
 </section>
@@ -83,7 +83,7 @@ This site provides resources for DevOps professionals to deploy the RadiantOne p
 
 <section>
   
-  > [Introduction](/documentation/data-analysis-guide)
+  > [Introduction](/data-analysis-guide/01-introduction)
   > Introduction page
   
 </section>
@@ -92,7 +92,7 @@ This site provides resources for DevOps professionals to deploy the RadiantOne p
 
 <section>
   
-  > [Preface](/documentation/deployment-and-tuning-guide)
+  > [Preface](/deployment-and-tuning-guide/00-preface)
   > Preface guide
   
 </section>
@@ -101,7 +101,7 @@ This site provides resources for DevOps professionals to deploy the RadiantOne p
 
 <seciton>
   
-  > [Introduction](/documentation/external-zookeeper-install-guide)
+  > [Introduction](/external-zookeeper-install-guide/01-introduction)
   > Introduction page
   
 </section>
@@ -110,7 +110,7 @@ This site provides resources for DevOps professionals to deploy the RadiantOne p
 
 <section>
   
-  > [Docker](/documentation/getting_started)
+  > [Docker](/getting_started/docker)
   > Docker page
   
 </section>
@@ -119,7 +119,7 @@ This site provides resources for DevOps professionals to deploy the RadiantOne p
 
 <section>
   
-  > [Introduction](/documentation/global-identity-viewer-guide)
+  > [Introduction](/global-identity-viewer-guide/01-introduction)
   > Introduction page
   
 </section>
@@ -128,7 +128,7 @@ This site provides resources for DevOps professionals to deploy the RadiantOne p
 
 <section>
   
-  > [Preface](/documentation/hardening-guide)
+  > [Preface](/hardening-guide/00-preface)
   > Preface page
   
 </section>
@@ -137,7 +137,7 @@ This site provides resources for DevOps professionals to deploy the RadiantOne p
 
 <section>
   
-  > [Guide](/documentation/hardware-sizing-guide)
+  > [Guide](/hardware-sizing-guide/hardware-sizing-guide)
   > Guide page
   
 </section>
@@ -146,7 +146,7 @@ This site provides resources for DevOps professionals to deploy the RadiantOne p
 
 <section>
   
-  > [Overview](/documentation/identity-service-wizards-guide)
+  > [Overview](/identity-service-wizards-guide/01-overview)
   > Overview page
   
 </section>
@@ -155,7 +155,7 @@ This site provides resources for DevOps professionals to deploy the RadiantOne p
 
 <section>
   
-  > [Prerequisites](/documentation/installation-guide)
+  > [Prerequisites](/installation-guide/01-prerequisites)
   > Prerequisites page
   
 </section>
@@ -164,7 +164,7 @@ This site provides resources for DevOps professionals to deploy the RadiantOne p
 
 <section>
   
-  > [LDAP](/documentation/ldap-browser)
+  > [LDAP](/ldap-browser/LDAPBrowser)
   > LDAP page
   
 </section>
@@ -173,7 +173,7 @@ This site provides resources for DevOps professionals to deploy the RadiantOne p
 
 <section>
   
-  > [Overview](/documentation/ldap-replacement-guide)
+  > [Overview](/ldap-replacement-guide/01-overview)
   > Overview page
   
 </section>
@@ -182,7 +182,7 @@ This site provides resources for DevOps professionals to deploy the RadiantOne p
 
 <section>
   
-  > [Overview](/documentation/ldif-utility-guide)
+  > [Overview](/ldif-utility-guide/01-overview)
   > Overview page
   
 </section>
@@ -191,7 +191,7 @@ This site provides resources for DevOps professionals to deploy the RadiantOne p
 
 <section>
   
-  > [Overview](/documentation/logging-and-troubleshooting-guide)
+  > [Overview](/logging-and-troubleshooting-guide/01-overview)
   > Overview page
   
 </section>
@@ -200,7 +200,7 @@ This site provides resources for DevOps professionals to deploy the RadiantOne p
 
 <section>
   
-  > [Monitoring](/documentation/monitoring-and-reporting-guide)
+  > [Monitoring](/monitoring-and-reporting-guide/01-monitoring)
   > Monitoring page
   
 </section>
@@ -209,7 +209,7 @@ This site provides resources for DevOps professionals to deploy the RadiantOne p
 
 <section>
   
-  > [Introduction](/documentation/namespace-configuration-guide)
+  > [Introduction](/namespace-configuration-guide/01-introduction)
   > Introduction page
   
 </section>
@@ -218,7 +218,7 @@ This site provides resources for DevOps professionals to deploy the RadiantOne p
 
 <section>
   
-  > [Overview](/documentation/operational-attributes-guide)
+  > [Overview](/operational-attributes-guide/01-overview)
   > Overview page
   
 </section>
@@ -227,7 +227,7 @@ This site provides resources for DevOps professionals to deploy the RadiantOne p
 
 <section>
   
-  > [Overview](/documentation/operations-guide)
+  > [Overview](/operations-guide/01-overview)
   > Overview page
   
 </section>
@@ -236,8 +236,8 @@ This site provides resources for DevOps professionals to deploy the RadiantOne p
 
 <section>
   
-  > [Password](/documentation/password-filter-guide)
-  > Password page
+  > [Password](/password-filter-guide/01-password-filter-guide)
+  > Password filter guide page
   
 </section>
 
@@ -245,7 +245,7 @@ This site provides resources for DevOps professionals to deploy the RadiantOne p
 
 <section>
   
-  > [Getting Started](/documentation/quick-start-guide)
+  > [Getting Started](/quick-start-guide/01-getting-started-with-radiantone)
   > Getting started page
   
 </section>
@@ -254,7 +254,7 @@ This site provides resources for DevOps professionals to deploy the RadiantOne p
 
 <section>
   
-  > [Overview](/documentation/radiantone-fips-mode-guide)
+  > [Overview](/radiantone-fips-mode-guide/01-overview)
   > Overview page
   
 </section>
@@ -263,7 +263,7 @@ This site provides resources for DevOps professionals to deploy the RadiantOne p
 
 <section>
   
-  > [Readme](/documentation/readme)
+  > [Readme](/readme/01-readme)
   > Readme page
   
 </section>
@@ -272,7 +272,7 @@ This site provides resources for DevOps professionals to deploy the RadiantOne p
 
 <section>
   
-  > [Introduction](/documentation/sys-admin-guide)
+  > [Introduction](/sys-admin-guide/introduction)
   > Introduction page
   
 </section>
@@ -281,7 +281,7 @@ This site provides resources for DevOps professionals to deploy the RadiantOne p
 
 <section>
   
-  > [VRS Overview](/documentation/vrs-guide)
+  > [VRS Overview](/vrs-guide/01-vrs-overview)
   > VRS Overview
  
 </section>
@@ -290,7 +290,7 @@ This site provides resources for DevOps professionals to deploy the RadiantOne p
 
 <section>
   
-  > [Overview](/documentation/wca-compliance-guide)
+  > [Overview](/wca-compliance-guide/01-overview)
   > Overview page
   
 </section>
@@ -299,7 +299,7 @@ This site provides resources for DevOps professionals to deploy the RadiantOne p
 
 <section>
   
-  > [Overview](/documentation/web-services-api-guide)
+  > [Overview](/web-services-api-guide/01-overview)
   > Overview page
   
 </section>
