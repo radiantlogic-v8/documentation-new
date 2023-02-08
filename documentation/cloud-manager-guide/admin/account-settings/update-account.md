@@ -25,11 +25,15 @@ To update your first name, last name, or email address, enter your information i
 
 ### Update profile image
 
-To update your profile image, select "Edit Avatar"... (**confirming with RL if this opens a drag and drop screen or if it just opens the user's local file system to upload, and if there are any image size limits**).
+To update your profile image, select "Edit Avatar"... 
+
+> **(RL QUESTION: does this open a drag and drop screen or just opens the user's local file system to upload, and are there any image size limits**).
 
 ![image description](images/account-edit-avatar.png)
 
 ## Manage API tokens
+
+> **(RL QUESTION: Define API token purpose/use)**
 
 ### Create an API token
 
@@ -47,7 +51,7 @@ You will receive a warning when your API token is close to expiring. A warning i
 
 ![image description](images/account-expiration-warning.png)
 
-**Waiting on feedback from RL re: expiration details - why the time period matters, why user would select certain dates, etc.**
+> **(RL QUESTION re: expiration details - why the time period matters, why user would select certain dates, etc.)**
 
 ### Copy an API token
 
