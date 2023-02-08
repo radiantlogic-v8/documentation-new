@@ -29,6 +29,8 @@ To access the *Edit User* screen by directly selecting the user, select the user
 
 This brings you to the *Environment Access* tab in a detailed overview of the user. This view lists all the environments and associated roles assigned to the user. From the *Environment Access* tab, select the **Edit User** button to open the *Edit User* screen.
 
+> **(RL QUESTION: Do the other tabs need to be documented as well (VPN, DevSpace, Tokens)??)**
+
 ![image description](images/edit-select-edituser.png)
 
 ## Update user details
@@ -41,7 +43,7 @@ From the *Edit User* screen, you can update a user's first name, last name, and 
 
 There are two ways to update the status of a user, either from the **Options** (**...**) menu on the *Admin* *Users* tab or from the *Edit User* screen.
 
-### Update user from options menu
+### Update status from options menu
 
 To update a user's status from the *Users* tab, select the **Options** (**...**) menu located next to the user who you would like to deactivate or activate.
 
@@ -59,7 +61,7 @@ The user's status will change from "Active" to "Inactive"
 
 ![image description](images/edit-inactive-status.png)
 
-### Update user from Edit User screen
+### Update status from Edit User screen
 
 To update a user's status from the *Edit User* screen, adjust the *Status* toggle in the *User Details* section to the "Active" or "Inactive". Select **Save** to update the user's status.
 
