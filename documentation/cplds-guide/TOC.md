@@ -3,7 +3,7 @@ title: CPLDS Guide
 description: CPLDS Guide
 ---
 
-- [Introduction](01-introduction.md)
-- [Sizing](02-sizing.md)
-- [Installation & Configuration](03-installation-and-configuration.md)
-- [Starting Synchronization](04-starting-synchronization.md)
+- [Introduction](introduction.md)
+- [Sizing](sizing.md)
+- [Installation & Configuration](installation-and-configuration.md)
+- [Starting Synchronization](starting-synchronization.md)
