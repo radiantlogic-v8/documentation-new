@@ -29,7 +29,9 @@ The environment configuration ZIP file will download directly to your system.
 
 ![image description](images/export-success.png)
 
-If the export is not successful, you will receive an error message.... (**need RL to confirm error codes and resolutions**)
+If the export is not successful, you will receive an error message... 
+
+> **(RL to confirm error codes and resolution steps for all EOC errors)**
 
 **image of export error**
 

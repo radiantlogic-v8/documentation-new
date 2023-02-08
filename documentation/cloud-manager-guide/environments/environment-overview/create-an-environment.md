@@ -7,7 +7,9 @@ description: Guide to create a new environment
 
 This guide provides an overview of the steps required to create a new environment in Environment Operations Center.
 
-An environment is where a Radiant One product lives. Each environment is completely isolated and contains endpoints to access different applications. Each instance of Environment Operations Center can have only one production environment, but several environments can be created for development, quality assurance, and staging purposes. **(RL to confirm max number of envs that can be created)**.
+An environment is where a Radiant One product lives. Each environment is completely isolated and contains endpoints to access different applications. Each instance of Environment Operations Center can have only one production environment, but several environments can be created for development, quality assurance, and staging purposes. 
+
+> **(RL to confirm max number of non-production environments that can be created)**.
 
 ## Getting Started
 
@@ -51,7 +53,9 @@ To set the **Environment Tier**, select either the Tier 1 or Tier 2 card.
 
 ![image description](images/env-tier-selected.png)
 
-To view further details of a tier, select **View More** to expand the tier card. Select **View Less** to collapse the card **(Tier outlines require definitions from Prashanth)**.
+To view further details of a tier, select **View More** to expand the tier card. Select **View Less** to collapse the card.
+
+> **(RL Question: Should we include a note about who they should contact/how they go about upgrading their tier subscription??)**
 
 ![image description](images/expand-tier-card.png)
 
@@ -115,7 +119,9 @@ Next, choose the type of configuration you would like to upload by selecting eit
 
 - The **Upload Configuration Artifact** option allows you to upload a configuration ZIP file from an external environment.
 
-- The **Install Samples** option allows you to upload pre-configured samples **(requested explanation from RL for what samples are and what happens when install samples option is chosen)**
+- The **Install Samples** option allows you to upload pre-configured samples 
+
+> **(Requested explanation from RL for what samples are and what happens when "install samples" option is selected)**
 
 ![image description](images/advanced-upload-type.png)
 

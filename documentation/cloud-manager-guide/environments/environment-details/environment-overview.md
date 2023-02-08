@@ -58,7 +58,7 @@ To learn how to import a configuration file, review the [import a configuration 
 
 Under the *Activity Log*, you can view a list of all actions performed on an environment. Each action has a corresponding time and date stamp of when it was performed and the user who performed the action is also listed.
 
-**Confirming with Prashanth if titles are static or can be used for navigation/actions**
+> **(RL QUESTION: Are the listed actions "clickable" or static? If they are "clickable", what is displayed when one is selected??)**
 
 ![image description](images/overvieew-activitylog-tab.png)
 
@@ -112,7 +112,7 @@ See the guide on [version history](version-history.md) for further details on re
 
 The *Application Endpoints* section lists all of the environment endpoints.
 
-(**Waiting on further info from Prashanth for endpoint details**).
+> **(RL Question: Are there further details that should be outlined in this section regarding Application Endpoints that would be helpful for a user to know?).**
 
 ![image description](images/overview-endpoints.png)
 
@@ -120,11 +120,9 @@ The *Application Endpoints* section lists all of the environment endpoints.
 
 The lower section of the *Overview* page displays monitoring sections for the FID and Zookeeper nodes of an environment. For both FID and Zookeeper nodes, the status, CPU, memory, and disk space are provided for each node. The number of connections are listed for all FID nodes.
 
+Node status will be listed as "Healthy", "Warning, or "Outage", indicating that the node is either operational, experiencing a partial outage, or experiencing a complete outage.
+
 ![image description](images/overview-node-monitoring.png)
-
-Node status will be listed as "Healthy", "Warning, or "Outage".
-
-(**note what each status means**)
 
 CPU, memory, and disk are all displayed as color-coded percentages to indicate their health.
 

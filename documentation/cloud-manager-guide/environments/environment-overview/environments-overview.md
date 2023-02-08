@@ -54,7 +54,7 @@ The environment **Status** indicates the current state of the environment. Statu
 
 ## Environment version
 
-**Version** indicates the current version of the environment. The version number is set by the environment administrator during environment setup. If the version number no longer matches the current version of Environment Operations Center **(confirming this behavior with Prashanth)**, an "Update Now" notification is displayed next to the version number prompting you to update the environment. 
+**Version** indicates the current version of the environment. The version number is set by the environment administrator during environment setup. If the environment version number no longer matches the current available version of Environment Operations Center, an "Update Now" notification is displayed next to the version number prompting you to update the environment. 
 
 To learn more about updating an environment, review the [update an environment](update-an-environment.md) guide.
 
@@ -78,7 +78,7 @@ The **New Environment** button allows you to quickly start creating a new enviro
 
 ![image description](images/new-env-button.png)
 
-## Read-only access
+## Access Permissions
 
 Depending on your role, your administrator may set your access permissions to read-only for certain environments. If you have read-only access:
 

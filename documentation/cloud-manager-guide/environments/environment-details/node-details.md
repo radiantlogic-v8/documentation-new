@@ -5,7 +5,7 @@ description: Guide to review and monitor node status
 ---
 # Monitor Node Health of an Environment
 
-This guide outlines the steps required to monitor the status details for a specific node. The *Overview* tab provides a high-level view of all FID and Zookeeper node statuses for quick monitoring of cluster health. Each individual node also has a detailed view that provides further information on the status and health of a given node. The details provided for FID nodes versus Zookeeper nodes are slightly different and are outlined within this guide.
+This guide outlines the steps required to monitor the status details for a specific node. The *Overview* tab provides a high-level view of all FID and Zookeeper node statuses for quick monitoring of cluster health. Each individual node has a detailed view that provides further information on the status and health of a given node. The details provided for FID nodes versus Zookeeper nodes are slightly different and are outlined within this guide.
 
 ## View node details
 
@@ -21,41 +21,47 @@ Alternatively, you can select the **Options** (**...**) menu located in the node
 
 ### FID node details
 
-The FID node details dialog provides the following information for the selected node (**waiting for definitions from RL**):
+The FID node details dialog provides the following information for the selected node:
 
-- Name:
-- Status:
+> **(RL Question: Definitions required for Cloud ID, Version (is there something appended to the version number?), Disk Latency, Up Time, Services (are these the same as endpoints?))**
+
+- Name: The name assigned to the specific FID node.
+- Status: Indicates if the node is operational, experiencing a partial outage, or experiencing a full outage. Displays as "Healthy", "Warning", or "Outage".
 - Cloud ID:
-- Version
-- Health:
+- Version: 
+- Health: The status of the CPU and quantity used of memory and disk space.
 - Disk Latency:
-- Up Time
-- Connections??
+- Up Time:
+- Services/Endpoints??
 
 ![image description](images/node-fid-details.png)
 
-To view the log details of the chosen node, select **View Logs**. This takes you to.... (**waiting for confirmation from RL**).
+### Zookeeper node details
+
+The Zookeeper node details dialog provides the following information for the selected node:
+
+> **(RL Question: Services (are these the same as endpoints?))**
+
+- Name: The name assigned to the specific Zookeeper node.
+- Status: Indicates if the node is operational, experiencing a partial outage, or experiencing a full outage. Displays as "Healthy", "Warning", or "Outage".
+- Health: The status of the CPU and quantity used of memory and disk space.
+- Services/Endpoints??
+
+![image description](images/node-zookeeper-details.png)
+
+## View node logs
+
+Each node has associated log files that contain further information about the node's health and status alerts. The log files for a specific node can be accessed from the node details dialog or from the **Options** (**...**) dropdown of a node.
+
+To access log files from a node's details dialog, select **View Logs** in the dialog. The **View Logs** button is available in the details dialog for both FID and Zookeeper nodes.
 
 Select **Close** to exit the node details dialog.
 
 ![image description](images/node-fid-logs.png)
 
-### Zookeeper node details
+Alternatively, the log files of a node can be accessed by selecting **View Logs** from the associated **Options** (**menu**).
 
-The Zookeeper node details dialog provides the following information for the selected node (**waiting for definitions from RL**):
-
-- Name:
-- Status:
-- Health:
-- Connections??
-
-![image description](images/node-zookeeper-details.png)
-
-To view the log details of the chosen node, select **View Logs**. This takes you to.... (**waiting for confirmation from RL**).
-
-Select **Close** to exit the node details dialog.
-
-![image description](images/node-zookeeper-logs.png)
+![image description](images/node-view-logs.png)
 
 ## Next steps
 

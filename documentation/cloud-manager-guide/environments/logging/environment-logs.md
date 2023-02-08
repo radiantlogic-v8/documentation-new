@@ -5,7 +5,7 @@ description: Reviewing environment logs
 ---
 # Environment Logs
 
-This guide outlines the steps to review logs for a specific environment. The Environment Operations Center is connected to Elastic, allowing you to review environment logs directly in Environment Operations Center without navigating away from the application.
+This guide outlines the steps to review logs for a specific environment. Environment Operations Center is connected to Elastic, allowing you to review environment logs directly in Env Ops Center without navigating away from the application.
 
 ## Getting started
 
