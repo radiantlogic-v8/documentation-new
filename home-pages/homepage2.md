@@ -27,7 +27,7 @@ This site provides resources for DevOps professionals to deploy the RadiantOne p
 
 ## Azure Cloud installation guide
 
-<seciton>
+<section>
   
   > [Overview](/azure-cloud-installation-guide/overview)
   > Overview page
@@ -99,7 +99,7 @@ This site provides resources for DevOps professionals to deploy the RadiantOne p
 
 ## External zookeeper install guide
 
-<seciton>
+<section>
   
   > [Introduction](/external-zookeeper-install-guide/01-introduction)
   > Introduction page
