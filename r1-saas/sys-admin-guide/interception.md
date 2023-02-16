@@ -91,7 +91,7 @@ Figure 4: Authentication Process based on User ID to DN Mapping
 
 ### Manage Global User to DN Mapping
 
-This location is just for configuring a global user ID to DN mapping. If you are configuring a mapping for [Kerberos](security#kerberos), [NTLM](security#ntlm), or [MD5](security#md5), the configuration is set in those sections located on the Main Control Panel > Settings Tab > Security section > Authentication Methods.
+This location is just for configuring a global user ID to DN mapping. If you are configuring a mapping for <!--[Kerberos](security#kerberos),--> [NTLM](security#ntlm) or [MD5](security#md5), the configuration is set in those sections located on the Main Control Panel > Settings Tab > Security section > Authentication Methods.
 
 There are three different ways to determine the DN from the user ID (using regular expression syntax). Each is described below.
 

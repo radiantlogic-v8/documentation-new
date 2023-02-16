@@ -106,7 +106,7 @@ Level 1 indicates an authentication method of basic credentials (username+passwo
 
 Level 2 indicates an authentication method of Kerberos (leveraging GSSAPI) is required to access the data. At this level, there is some confidence in the asserted identity's validity. You can use this level when there is moderate risk associated with the authentication strength used to access the RadiantOne data.
 
->[!warning] Ensure you have RadiantOne configured properly as a [Kerberos LDAP service](security#kerberos).
+<!-- >[!warning] Ensure you have RadiantOne configured properly as a [Kerberos LDAP service](security#kerberos).-->
 
 Level 3 indicates multi-factor authentication (e.g. RSA SecurID token code, Yubikey) is required to access the data. At this level, there is high confidence in the asserted identity's validity. You can use this level when there is high risk associated with the authentication strength used to access the RadiantOne data. 
 

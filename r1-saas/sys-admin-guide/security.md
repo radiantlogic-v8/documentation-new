@@ -19,7 +19,7 @@ Simple authentication consists of sending the LDAP server the fully qualified DN
 
 **SASL:**
 
-Clients that send an authentication request to RadiantOne using Kerberos (GSS-SPNEGO), NTLM (GSSAPI), MD5 (DIGEST-MD5) or Certificate (EXTERNAL) are leveraging one of the supported SASL mechanisms. The SASL EXTERNAL mechanism is supported by default, but you must configure the [Client Certificate to DN Mapping](security#client-certificate-dn-mapping) so the RadiantOne service knows how to identify the user in the certificate to a user in the RadiantOne namespace. For details on these supported mechanisms, please see [Authentication Methods](security#authentication-methods).
+Clients that send an authentication request to RadiantOne using <!-- Kerberos (GSS-SPNEGO), --> NTLM (GSSAPI), MD5 (DIGEST-MD5), or Certificate (EXTERNAL) are leveraging one of the supported SASL mechanisms. The SASL EXTERNAL mechanism is supported by default, but you must configure the [Client Certificate to DN Mapping](security#client-certificate-dn-mapping) so the RadiantOne service knows how to identify the user in the certificate to a user in the RadiantOne namespace. For details on these supported mechanisms, please see [Authentication Methods](security#authentication-methods).
 
 ![SSL Settings](Media/Image3.81.jpg)
 
@@ -352,6 +352,7 @@ Figure 5: Inter Nodes Communication
 
 >[!note] This section is accessible only in [Expert Mode](introduction#expert-mode).
 
+<!--
 ### Kerberos
 
 RadiantOne supports Kerberos v5, and can act as both a [Kerberos client](server-backend#kerberos), and a Kerberized service. As a Kerberos client, RadiantOne can request tickets from a KDC to use to connect to kerberized services. As a Kerberized service, RadiantOne can accept tickets from clients as a form of authentication. These configurations have been certified with Windows 2000, 2003 and 2008 in addition to MIT Kerberos on Linux CENTOS. This section describes RadiantOne support as a Kerberized server. For details on RadiantOne support as a Kerberos client, please see the section on defining [LDAP data sources](server-backend#ldap-data-sources). The following diagram provides the high-level architecture and process flow for RadiantOne acting as a Kerberized service.
@@ -686,9 +687,11 @@ Once the user is stored locally (or linked to an existing DN), they can be added
 
 Figure 17: Location of Users who Successfully Authenticate using Kerberos
 
-### NTLM
+-->
 
-SASL binding via GSSAPI/GSS-SPNEGO will attempt to use Kerberos by default. You have the option to use NTLM in conjunction with Kerberos, or not at all (based on your company security policy). If used in conjunction with Kerberos, it applies as a backup protocol to be used if there is a problem with Kerberos authentication. If enabled, the NTLM protocol is used if one of the systems involved in authentication cannot use Kerberos authentication, is configured improperly, or if the client application does not provide sufficient information to use Kerberos. If NTLM is not enabled, and there is a problem with the Kerberos authentication, the bind (using GSSAPI/GSS-SPNEGO) to RadiantOne fails. Also, by using NTLM, RadiantOne is able to support cross-domain authentication. This means, that a user that is not logged into the same domain that RadiantOne is a member of (or a domain that is trusted by the RadiantOne domain) can still access RadiantOne and benefit from NTLM for authentication. RadiantOne supports NTLM v2.
+### NTLM
+<!-- 
+SASL binding via GSSAPI/GSS-SPNEGO will attempt to use Kerberos by default. You have the option to use NTLM in conjunction with Kerberos, or not at all (based on your company security policy). If used in conjunction with Kerberos, it applies as a backup protocol to be used if there is a problem with Kerberos authentication. If enabled, the NTLM protocol is used if one of the systems involved in authentication cannot use Kerberos authentication, is configured improperly, or if the client application does not provide sufficient information to use Kerberos. If NTLM is not enabled, and there is a problem with the Kerberos authentication, the bind (using GSSAPI/GSS-SPNEGO) to RadiantOne fails. Also,--> By using NTLM, RadiantOne is able to support cross-domain authentication. This means, that a user that is not logged into the same domain that RadiantOne is a member of (or a domain that is trusted by the RadiantOne domain) can still access RadiantOne and benefit from NTLM for authentication. RadiantOne supports NTLM v2.
 
 Like all challenge-response protocols, the password is not sent over the protocol but the challenge instead. Since NTLM relies on the domain controller to authenticate its users, RadiantOne needs to know on which domain controller the challenge is generated before sending the challenge back to the user. This information can typically be retrieved from user’s request. If the domain information is not passed, RadiantOne takes the default one to generate the challenge. The first domain listed in the NT Domain parameter is the default one. The diagram below depicts the architecture and process flows.
 
@@ -696,7 +699,7 @@ Like all challenge-response protocols, the password is not sent over the protoco
 
 Figure 18: RadiantOne Support for NTLM Authentication
 
-In the figure above, since the client is accessing RadiantOne from domain B and VDS has been “kerberized” in domain A (and domain A and B do not trust each other), Kerberos cannot be used for authentication. However, NTLM can. The NTLM authentication flow is as follows:
+<!-- In the figure above, since the client is accessing RadiantOne from domain B and VDS has been “kerberized” in domain A (and domain A and B do not trust each other), Kerberos cannot be used for authentication. However, NTLM can. --> The NTLM authentication flow is as follows:
 
 1. Client binds to RadiantOne - The client sends an LDAP bind request to RadiantOne via GSSAPI/GSS-SPNEGO along with an NTLM Type 1 Message {e.g. NT_Domain=‘DOMAINB' Workstation='W-RLI06-MACHINE1' }
 

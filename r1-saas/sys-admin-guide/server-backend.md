@@ -122,7 +122,7 @@ Figure 3: Adding a New LDAP Data Source
 
 ### LDAP Data Source Advanced Settings
 
-For LDAP backends there are five additional settings that are optional: SSL/TLS, STARTTLS, Mutual Authentication, Kerberos, Chasing Referrals and the Paged Results Control. These options are described below.
+For LDAP backends there are four additional settings that are optional: SSL/TLS, STARTTLS, Mutual Authentication, <!-- Kerberos, --> Chasing Referrals and the Paged Results Control. These options are described below.
 
 #### SSL/TLS
 
@@ -192,6 +192,8 @@ Some important tips are:
 -	When storing a private certificate in a java keystore, the store password and the certificate password must match. This is why you should put only one certificate per store.
 
 -	RadiantOne uses StartTLS when connecting to the backend directory. Therefore, the SSL checkbox should be UNchecked and the normal (non-SSL) port should be listed in the port parameter of the data source.
+
+<!-- 
 
 ### Kerberos
 
@@ -284,6 +286,8 @@ Figure 8: Sample LDAP Data Source Using Kerberos
 When a client binds to RadiantOne using a simple bind (DN+password) and their DN “suffix” matches a virtual view where Kerberos is enabled for the backend data source, RadiantOne uses the value set in the Bind DN of the data source to determine how to perform the Kerberos authentication to the backend directory. RadiantOne searches in the KDC where sAMAccountName matches the value used in the Bind DN and then requests a ticket from the KDC on behalf of this user to connect to the backend directory (Kerberized service). The details in the krb5.conf (Kerberos profile) file dictate which realm and KDC RadiantOne uses.
 
 >[!note] The user is authenticated by the KDC and RadiantOne passes this Kerberos ticket in the SASL GSSAPI LDAP bind to connect to the backend Active Directory. All subsequent requests after the bind request flow over the standard LDAP port. If you need to secure/encrypt subsequent requests, configure SSL/TLS in the data source in addition to the Kerberos configuration described in this section.
+
+-->
 
 #### Chasing Referrals
 
@@ -665,7 +669,11 @@ Figure 18: Disabling SCIM Backend Exception Parameters
 
 The username (Bind DN property for LDAP data sources, User property for Database data sources) and/or password properties of a data source can be updated via an LDAP modify command. This modifies the configuration in the RadiantOne data source and does not modify any credentials in the backend. Updating data sources via LDAP requires the RadiantOne super user (cn=directory manager) credentials. The DN in the modify should be in the form of: id=<data_source_name>,cn=metads
 
+<!-- 
+
 >[!note] to update the RadiantOne credentials associated with the KDC account that is defined on Main Control Panel > Settings > Security > Authentication Methods > Kerberos Authentication, modify the username (user principal name) and/or password (service password) with a DN of “id=KDCconnect,cn=metads”. These special credentials are stored in ZooKeeper and updating the credentials via LDAP updates the kerberosUserPrincipalName and kerberosServicePassword properties in /radiantone/v1/cluster/config/vds_server.conf in ZooKeeper.
+
+-->
 
 The LDAP attribute names to issue in the modify request for the Bind DN and password are: username and password respectively.
 
