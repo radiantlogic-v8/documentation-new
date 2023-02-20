@@ -7,7 +7,7 @@ description: Add a new identity provider
 
 This guide outlines the required steps to add a new authentication identity provider in Environment Operations Center.
 
-[!note] You should already have configured your Env Ops Center instance with your chosen identity provider prior to following the steps outlined in this guide.
+[!note] An identity provider must be configured before it can be added to Environment Operations Center. Before proceeding with the following steps, please ensure you have followed the steps outlined by your selected provider to configure authentication for Env Ops Center.
 
 ## Getting Started
 
@@ -35,7 +35,7 @@ Depending on the selected provider, the **Provider Type** may or may not auto po
 
 ![image description](images/add-provider-type.png)
 
-## General identity provider setup
+## Identity provider setup
 
 The required fields listed in the *Identity Provider Setup* section will differ depending on the type of provider selected. For most provider types, the required setup fields include:
 
@@ -47,6 +47,8 @@ The required fields listed in the *Identity Provider Setup* section will differ 
 - Client Authentication Method
 - Scopes
 - Status
+
+[!note] Details for OAuth-specific identity provider set up are outlined in the following section.
 
 **confirming definitions with RL**
 
