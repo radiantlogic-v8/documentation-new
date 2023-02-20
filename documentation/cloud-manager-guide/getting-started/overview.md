@@ -5,11 +5,11 @@ description: Getting started
 ---
 # Getting Started
 
-This guide provides an overview of the Environment Operations Center *Overview* screen and how to navigate the user interface.
+This guide provides an overview of the Environment Operations Center *Overview* screen and how to navigate the application user interface.
 
 ## Overview
 
-After logging into the Environment Operations Center, the *Overview* screen appears. This is the Env Ops Center home screen and provides access to Radiant Logic supporting documentation. This screen also provides a high-level overview of your environments. 
+After logging in to the Environment Operations Center, the *Overview* screen appears. This is the Env Ops Center home screen and provides access to Radiant Logic supporting documentation. This screen also provides a high-level overview of your environments. 
 
 A navigation bar is located to the left and is visible from all screens within Environment Operation Center. You can access your account settings by selecting the avatar in the upper right corner, also visible from all screens in the application.
 
@@ -33,7 +33,7 @@ Each environment preview contains the environment name, type, status, number of 
 
 The environments displayed differ depending on your assigned role in Environment Operations Center. The Tenant Administrator environment preview displays all of your organization's environments. Environment Administrators and Environment Users will only be able to preview the environments assigned to them.
 
-For further details on role based permissions, see the [role permissions](../admin/role-based-permission/role-based-permissions.md) guide.
+For further details on role-based permissions, see the [role-based permissions](../admin/role-based-permission/role-based-permissions.md) guide.
 
 #### Filter environments
 
@@ -97,13 +97,13 @@ For details on monitoring server components, see the [monitoring](../monitoring/
 
 ![image description](images/overview-nav-monitor.png)
 
-### Agent Management
+### Secure data connectors
 
-You can manage connections to on-premise agents in the *Agent Management* section. Select **Agent Management** to navigate to the *Agent Management* screen.
+You can manage connections to on-premise data connectors in the *Secure Data Connectors* section. Select **Secure Data Connectors** to navigate to the *Secure Data Connectors* screen.
 
-For details on managing agent connections, see the [agent management](...) guide.
+For details on managing data connections, see the [secure data connectors](../secure-data-connectors/data-connectors-overview.md) guide.
 
-![image description](images/overview-nav-agent.png)
+![image description](images/overview-nav-connectors.png)
 
 ### Admin
 
