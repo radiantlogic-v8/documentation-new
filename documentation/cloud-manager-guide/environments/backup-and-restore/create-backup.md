@@ -23,7 +23,7 @@ On the backup *Details* screen, the "Backup Details" and "Backup Destination" fi
 
 Under "Backup Details" a "Backup Name" will auto-populate for you in the space provided.
 
-> **Note:** Backup names must be unique. You will receive a warning if the backup name entered is already in use.
+[!note] Backup names must be unique. You will receive a warning if the backup name entered is already in use.
 
 ![image description](images/create-backup-name.png)
 

@@ -7,7 +7,7 @@ description: Reporting overview
 
 From the *Reporting* screen, you can generate various reports to assist in monitoring performance and operations within your environments. This guide provides an overview of the *Reporting* section in Environment Operations Center, including its features and how to generate reports. 
 
-> **Note:** Reports should be generated frequently to maintain a clear understanding of performance, load, configuration updates, and user activity.
+[!note] Reports should be generated frequently to maintain a clear understanding of performance, load, configuration updates, and user activity.
 
 ## Getting started
 
@@ -47,7 +47,7 @@ You can set the report to automatically refresh, providing updated data on the e
 
 To set the report to automatically update at a specific interval, select an interval from the **Refresh** dropdown.
 
-**confirming with RL if reports run in the background after navigating away and if multiple reports can run at the same time**
+> **RL QUESTION: Do reports run in the background after navigating away and can multiple reports run at the same time??**
 
 ![image description](images/overview-refresh.png)
 

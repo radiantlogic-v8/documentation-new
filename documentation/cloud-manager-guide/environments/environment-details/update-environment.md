@@ -7,7 +7,7 @@ description: Guide to update an environment from its details view
 
 When version updates are applied to your Environment Operations Center instance, your environments are not updated automatically. There are two ways that you can manually update the version of individual environments: From the *Environments* home screen or the *Overview* screen of the environment that you wish to update. This guide outlines the steps required to update an environment from its *Overview* screen. For details on updating an environment from the *Environments* home screen, review the overview guide on [updating an environment](../environment-overview/update-an-environment.md).
 
-> **Note:** Before getting started, make sure you know the current version of Environment Operations Center and the required number of FID nodes to display for each environment that requires updating.
+[!note] Before getting started, make sure you know the current version of Environment Operations Center and the required number of FID nodes to display for each environment that requires updating.
 
 ## Managing environment updates
 
@@ -71,7 +71,7 @@ You can view updates previously applied to an environment by selecting **Activit
 
 From either, you can also begin the workflow to revert to a previous environment update.
 
-> **Note:** For further details on reviewing version history and reverting to a previous environment version, review the [version history](version-history.md) guide.
+[!note] For further details on reviewing version history and reverting to a previous environment version, review the [version history](version-history.md) guide.
 
 ![image description](images/update-view-versionhistory.png)
 

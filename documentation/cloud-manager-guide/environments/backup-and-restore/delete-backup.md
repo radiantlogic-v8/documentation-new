@@ -7,7 +7,7 @@ description: How to delete an environment backup
 
 This guide provides an overview of the steps required to delete an environment backup.
 
-> **Warning:** Deleting an environment backup is a permanent action that cannot be undone. Ensure you have selected the correct backup before deleting.
+[!warning] Deleting an environment backup is a permanent action that cannot be undone. Ensure you have selected the correct backup before deleting.
 
 ## Getting started
 

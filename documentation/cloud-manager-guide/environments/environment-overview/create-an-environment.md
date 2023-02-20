@@ -39,7 +39,7 @@ Start by selecting the required **Environment Type** and **Environment Tier**.
 
 To set the **Environment Type**, use the radio buttons to select either **Non-production**, for development and testing, or **Production**, for production purposes.
 
-> **Note:** Only one production environment can be created per Environment Operations Center instance, per region.
+[!note] Only one production environment can be created per Environment Operations Center instance, per region.
 
 ![image description](images/env-type-selected.png) 
 
@@ -79,7 +79,7 @@ To set the Environment **Version**, select the version drop down to display all 
 
 Select a password by either entering your chosen password in the space provided, or by selecting the **Generate** button to have a password automatically generated for you. 
 
-> **Note:** Passwords must be a minimum of 12 characters, contain at least 1 special character, contain lower and upper case letters, and contain at least 1 number.
+[!note] Passwords must be a minimum of 12 characters, contain at least 1 special character, contain lower and upper case letters, and contain at least 1 number.
 
 Depending on the complexity and strength of your password, you will receive a notification that your password is "Weak", "Fair", "Good", or "Strong". It is recommended that you adjust the password until you receive a "Strong" rating.
 
@@ -103,7 +103,7 @@ Your license key is the same unique license key that was originally provided to 
 
 Completing the steps outlined in the **Environment Type** and **Environment Details** sections are all that is required to set up your new environment. Once both sections are complete, select **Save** to create the new environment.
 
-> **Note:** If you would like to upload a configuration file from an external environment, proceed to the Advanced Setup section.
+[!note] If you would like to upload a configuration file from an external environment, proceed to the Advanced Setup section.
 
 ![image description](images/env-form-savebutton.png)
 

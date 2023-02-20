@@ -15,7 +15,7 @@ To navigate to the *Logs* screen for a specific environment, select **Logs** fro
 
 There are two dropdown menus located at the top of the *Logs* screen. The first is the **Log File** dropdown and the second is the **Date Range** dropdown.
 
-> **Note:** A warning message will display on the *Logs* screen notifying you that a log file must be selected before any log data can be displayed.
+[!note] A warning message will display on the *Logs* screen notifying you that a log file must be selected before any log data can be displayed.
 
 ![image description](images/logs-home.png)
 

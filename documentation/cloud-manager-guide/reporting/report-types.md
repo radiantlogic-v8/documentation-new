@@ -9,7 +9,7 @@ description: Report types
 
 Several types of reports can be generated to help monitor the activities and operations in Environment Operations Center.
 
-Every time any application or client accesses the server, that data is logged anc captured in Elastic Search.
+Every time any application or client accesses the server, that data is logged and captured in Elastic Search.
 
 The reporting dashboards displayed in Environment Operation Center are a representation of the log monitoring user interface available in Kibana.
 
@@ -43,7 +43,7 @@ The response time interval, response time threshold, and error codes are reporte
 
 Lists operations performed by a user including the number of times the type of operation was performed.
 
-> **Note:** "If RadiantOne is deployed in a cluster, the default behavior of the Audit Report generator is to create a report for each node."
+[!note] "If RadiantOne is deployed in a cluster, the default behavior of the Audit Report generator is to create a report for each node."
 
 Audit reports provide a summary of all operations performed by a user during a specific session.
 

@@ -7,7 +7,7 @@ description: Delete a user
 
 This guide outlines the required steps to delete a user in Environment Operations Center.
 
-> **Warning:** Deleting a user is a permanent operation and cannot be undone.
+[!warning] Deleting a user is a permanent operation and cannot be undone.
 
 If you would prefer to deactivate a user, see the [edit a user](edit-user.md) guide for details on deactivating a user's account.
 

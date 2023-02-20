@@ -47,7 +47,7 @@ Set the API token expiration date by selecting a duration from the *Expiration D
 
 You will receive a warning when your API token is close to expiring. A warning is displayed in your *Account Settings* next to the *Expiration Date* dropdown.
 
-> **Warning:** API token expiry cannot be extended. Once a token has expired, a new token must be generated.
+[!warning] API token expiry cannot be extended. Once a token has expired, a new token must be generated.
 
 ![image description](images/account-expiration-warning.png)
 
@@ -65,7 +65,7 @@ Only one API token can be created at a time. If you need to create a new API tok
 
 You can delete the API token by selecting the trash bin icon (![image description](images/icon-delete.png)) located next to the *API Token* input field.
 
-> **Warning:** Deleting an API token is a permanent action and cannot be undone.
+[!warning] Deleting an API token is a permanent action and cannot be undone.
 
 ![image description](images/account-select-delete.png)
 

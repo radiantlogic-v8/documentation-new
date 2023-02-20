@@ -25,7 +25,7 @@ To access further details about an environment, select the environment you wish 
 
 This brings you to the environment's *Overview* screen, where you can view further information about a given environment, such as node status or connections, and perform monitoring and updating actions.
 
-> **Note:** To learn more about the environment *Overview* features, review the [Environment Details](environments/environment-details/environment-details-ui.md) guide.
+[!note] To learn more about the environment *Overview* features, review the [Environment Details](environments/environment-details/environment-details-ui.md) guide.
 
 ![image description](images/env-details-home.png)
   
@@ -33,7 +33,7 @@ This brings you to the environment's *Overview* screen, where you can view furth
 
 The environment **Type** indicates whether the environment is configured as a "Production or "Non-production" environment. "Production" environments are for production purposes, and "Non-production" environments are for development and testing.
 
-> **Note:** Only one production environment can be created per Environment Operations Center instance, per region.
+[!note] Only one production environment can be created per Environment Operations Center instance, per region.
 
 ![image description](images/env-type.png)
 

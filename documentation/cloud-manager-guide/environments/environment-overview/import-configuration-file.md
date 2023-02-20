@@ -11,7 +11,7 @@ This guide outlines the steps required to import a configuration file into an ex
 
 You can begin the configuration file import from the *Environments* home screen or from a specific environment's *Overview* screen. After initiating the file import workflow, the steps to import a configuration file are the same.
 
-> **Note:** Before getting started, ensure you have the correct configuration ZIP file saved and ready to upload.
+[!note] Before getting started, ensure you have the correct configuration ZIP file saved and ready to upload.
 
 ### Environments home screen
 
@@ -46,7 +46,7 @@ Once the file upload is complete, your file name appears next to a blue circle a
 
 To begin importing the configuration file, select **Import**. This will take you to the confirmation screen.
 
-> **Note:** Importing a new configuration file will replace the environment's current configuration file.
+[!note] Importing a new configuration file will replace the environment's current configuration file.
 
 ![image description](images/import-successful-upload.png)
 

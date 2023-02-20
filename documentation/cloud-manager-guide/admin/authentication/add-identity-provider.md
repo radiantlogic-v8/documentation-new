@@ -7,7 +7,7 @@ description: Add a new identity provider
 
 This guide outlines the required steps to add a new authentication identity provider in Environment Operations Center.
 
-> **Note:** You should already have configured your Env Ops Center instance with your chosen identity provider prior to following the steps outlined in this guide.
+[!note] You should already have configured your Env Ops Center instance with your chosen identity provider prior to following the steps outlined in this guide.
 
 ## Getting Started
 
