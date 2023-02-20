@@ -49,7 +49,7 @@ If your organization already has a production environment configured, the produc
 
 #### Environment tier
 
-To set the **Environment Tier**, select either the Tier 1 or Tier 2 card.
+To set the **Environment Tier**, select the tier that suits your organization's needs for the environment.
 
 ![image description](images/env-tier-selected.png)
 

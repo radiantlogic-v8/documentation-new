@@ -5,7 +5,7 @@ description: Overview of the Account Settings tab
 ---
 # Account Settings
 
-This guide provides an overview of how to update your account settings and manage your API tokens.
+This guide provides an overview of how to update your account settings and manage your API tokens. Users can generate API tokens for applications that are required to connect to Environment Operations Center without logging in.
 
 ## Getting started
 
@@ -33,8 +33,6 @@ To update your profile image, select "Edit Avatar"...
 
 ## Manage API tokens
 
-> **(RL QUESTION: Define API token purpose/use)**
-
 ### Create an API token
 
 To create a new API token, select the **Generate** (![image description](images/icon-generate.png)) button located just above the *API token* input field. This will generate a unique API token that populates in the *API token* input field.
@@ -50,8 +48,6 @@ You will receive a warning when your API token is close to expiring. A warning i
 [!warning] API token expiry cannot be extended. Once a token has expired, a new token must be generated.
 
 ![image description](images/account-expiration-warning.png)
-
-> **(RL QUESTION re: expiration details - why the time period matters, why user would select certain dates, etc.)**
 
 ### Copy an API token
 

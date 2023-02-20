@@ -35,7 +35,7 @@ To update your version number, select the correct number from the **Version** dr
 
 ![image description](../environment-overview/images/update-select-version.png)
 
-To set the number of FID nodes to display for the environment, use the provided slider to increase or decrease the quantity. Alternatively, you can select either the minus (**-**) or plus (**+**) sign on either side of the slider to increase or decrease the number of FID nodes to display.
+To set the number of FID nodes for the environment, use the provided slider to increase or decrease the quantity as needed. Alternatively, you can select either the minus (**-**) or plus (**+**) sign on either side of the slider to increase or decrease the number of FID nodes.
 
 ![image description](../environment-overview/images/update-node-slider.png)
 
