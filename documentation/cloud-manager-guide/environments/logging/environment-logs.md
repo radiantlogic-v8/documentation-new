@@ -5,7 +5,11 @@ description: Reviewing environment logs
 ---
 # Environment Logs
 
-This guide outlines the steps to review logs for a specific environment. Environment Operations Center is connected to Elastic, allowing you to review environment logs directly in Env Ops Center without navigating away from the application.
+This guide outlines the steps to review logs for a specific environment. Log files let you monitor activities and troubleshoot errors in your environments. They outline the event description, a date and time stamp of when the event occurred, and the email of the user who triggered the event. The information contained in these logs is helpful if you require assistance from Radiant Logic Support to troubleshoot problems if they arise.
+
+Environment Operations Center is connected to Elastic and displays the Elastic monitoring user interface directly within the Env Ops Center logging tab. This allows you to review environment logs directly in Env Ops Center without having to navigate away from the application.
+
+[!note] For further details on specific log types and the data they provide, see the RadiantOne logging and troubleshooting guide (**link to the guide when it is available**).
 
 ## Getting started
 
