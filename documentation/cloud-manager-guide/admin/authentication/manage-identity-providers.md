@@ -23,7 +23,7 @@ The *Edit Provider* form contains the same sections and fields as the *New Provi
 
 For further details on the fields contained in the form, see the [add a provider](add-identity-provider.md) guide.
 
-> **Note:** The fields displayed in the *Identity Provider Setup* section will differ depending on the **Provider Type**. Further information on the provider types is available in the [add a provider](add-identity-provider.md) guide.
+[!note] The fields displayed in the *Identity Provider Setup* section will differ depending on the **Provider Type**. Further information on the provider types is available in the [add a provider](add-identity-provider.md) guide.
 
 ![image description](images/manage-edit-form.png)
 

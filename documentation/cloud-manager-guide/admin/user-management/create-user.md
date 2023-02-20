@@ -35,7 +35,7 @@ Once you have completed the *User Details* section, you can proceed to the *Role
 
 In the *Role Details* section you can assign roles and environments to the user. A user can be assigned to more than one role, but can only hold one role per environment. For example, a user may be assigned Tenant Administrator to environments "A" and "B", and also be assigned as an Environment User for environments "C" and "D". The user holds two different roles, but the environment assignments for each role are unique. 
 
- See the [role based permission](../role-based-permission/role-based-permissions.md) guide for further details on role definitions and permission details.
+See the [role based permission](../role-based-permission/role-based-permissions.md) guide for further details on role definitions and permission details.
 
 To assign the user a role, select the *Role* field to expand the role dropdown. From the list, select the role that is best suited for the user.
 

@@ -15,7 +15,7 @@ Environment backups can be managed from two locations in Environment Operations 
 | Recover   |       X       |                     |
 | Restore   |       X       |         X           |
 
-> **Note:** The workflows to delete and restore environment backups are the same whether performed from the Admin *Backups* tab or an environment's *Backups* tab. To learn how to delete or restore an environment backup, review the [delete a backup](../../environments/backup-and-restore/delete-backup.md) or [restore a backup](../../environments/backup-and-restore/restore-backup.md) guide.
+[!note] The workflows to delete and restore environment backups are the same whether performed from the Admin *Backups* tab or an environment's *Backups* tab. To learn how to delete or restore an environment backup, review the [delete a backup](../../environments/backup-and-restore/delete-backup.md) or [restore a backup](../../environments/backup-and-restore/restore-backup.md) guide.
 
 ## Getting started
 
