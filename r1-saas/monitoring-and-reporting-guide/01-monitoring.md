@@ -1436,6 +1436,8 @@ The default rollover size for the alert file is 100MB. The default number of log
 archived is 10. The default archive location and file name is: <RLI_HOME>/logs/alerts-<number>.log. These settings can be changed from the Main Control Panel > Settings Tab >
 Monitoring section > File Alerts Settings sub-section.
 
+
+
 To change the alert file location and/or the archive location, expand the Advanced section (requires [Expert Mode](#expert-mode)) and change the value for alert.log.file and alert.log.file.archive respectively.
 
 ![An image showing ](Media/Image1.34.jpg)
@@ -1744,15 +1746,14 @@ When any user that is a member of one of the above delegated administration grou
 <RLI_HOME>/vds_server/logs/jetty/web_access.log. This is a CSV formatted log file with the delimiter being <TAB>. To configure the log output for the Control Panel, navigate to the Main
 Control Panel > Settings tab > Logs > Log Settings section.
 
-Select Control Panel – Access from the Log Settings to Configure drop-down list. Define the log
-level, rollover size and number of files to keep archived.
+Select Control Panel – Access from the Log Settings to Configure drop-down list. Define the log level, rollover size and number of files to keep archived.
 
 In the Advanced section (requires [Expert Mode](#expert-mode)), you can indicate the log file location/name
 (default is <RLI_HOME>/logs/jetty/web_access.log) and the archive location/name.
 
 ![An image showing ](Media/Image1.42.jpg)
 
-Figure 1. 42 : Main Control Panel Access Log Settings
+Figure 1.42 : Main Control Panel Access Log Settings
 
 For more fine-grained log configuration you must edit the configuration in ZooKeeper. From the
 Main Control Panel -> ZooKeeper tab (requires [Expert Mode](#expert-mode)), navigate to
@@ -2265,7 +2266,7 @@ zookeeper node no longer able to contact peers in ensemble)
 
 ### RadiantOne Activity – Check/Parse Access Log (CSV Format) Output
 
-CSV logging is enabled in the Main Control Panel > Settings tab > Log > Access Logs settings. On the right, check the CSV option in Output format and click Save.
+By default, CSV logging is enabled in the Main Control Panel > Settings tab > Log > Access Logs settings. On the right, check the CSV option in Output format and click Save.
 
 ![An image showing ](Media/Image1.52.jpg)
 
