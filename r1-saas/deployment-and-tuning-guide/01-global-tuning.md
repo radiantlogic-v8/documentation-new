@@ -232,7 +232,9 @@ In the Log Settings section, select VDS – Server from the drop-down list. The 
  
 Figure 1. 2: Server Log Settings
 
+<!--
 In the Access Logs section, Advanced section (requires [Expert Mode](00-preface#expert-mode)), the Buffer Size for File logging property can be used for tuning. Increasing this value results in fewer writes by RadiantOne to the log file on disk. However, increasing this value requires more memory. Make sure the machine memory and amount allocated to the RadiantOne service can accommodate the buffer size you set.
+-->
 
 You should also put in place an effective log management strategy: location, rollover and archiving. For details on these options, please see the RadiantOne Logging and Troubleshooting Guide.
 
