@@ -29,7 +29,11 @@ The RadiantOne access log contains details about client requests to RadiantOne a
 
 The access log rolls over when it reaches 100MB in size. This size can be set in the Rollover size property. The access logs are kept for 30 days by default and then deleted. This is configurable in the “Rollover: How long to keep the logs” property.
 
+<!-- 
+
 For more details on the access log including advanced settings for archiving destination and logging into a database, please see the RadiantOne Logging and Troubleshooting Guide.
+
+-->
 
 ## Changelog
 
