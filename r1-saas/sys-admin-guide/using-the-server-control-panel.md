@@ -132,9 +132,13 @@ The graphs in the Network Latency section display the network latency between no
  
 Figure 8: Network Latency Graphs
 
+<!-- 
+
 ## Settings Tab
 
 To change the server name and manage server certificates, go to the Server Control Panel > Settings tab.
+
+-->
 
 ### Server Name
 
@@ -181,6 +185,8 @@ A server certificate used by RadiantOne uniquely identifies it to clients for es
 During the RadiantOne installation, a default self-signed certificate is generated for RadiantOne. This self-signed certificate can be replaced with one assigned by a Certificate Authority (CA). Follow the steps below corresponding to your certificate type. If you require a certificate and RadiantOne configuration that is FIPS 140-2 compliant, skip the steps in this section and see the RadiantOneFIPS_Mode Guide.
 
 >[!warning] if RadiantOne is deployed in a cluster, and each node has their own server certificate, the following steps must be performed on each node independently.
+
+<!-- 
 
 #### JKS Certificate
 
@@ -422,6 +428,8 @@ security.provider.10=sun.security.pkcs11.SunPKCS11 /home/vdsuser/vds-fips/nss_fi
 >[!warning] if Jetty is configured to use the same SSL certificate as RadiantOne (jetty.ssl.useVDSSSLConfig=true in <RLI_HOME>/vds_server/conf/jetty/config.properties), and you modify the RadiantOne server certificate outside of the RadiantOne Main Control Panel (e.g. using command line utilities like keytool), you must [manually update the Jetty settings](#updating-certificate-settings-for-jetty-https-access-to-the-main-control-panel).
 
 ><span style="color:red">**If you use the RadiantOne SAML Attribute service, manually update the certificate keystore path in <RLI_HOME>/vds_server/conf/saml/server/AttributeService.properties.**
+
+-->
 
 ## Updating Certificate Settings for Jetty (HTTPS Access to the Main Control Panel) 
 

@@ -704,6 +704,7 @@ When a machine that hosts RadiantOne has multiple IP addresses, the RadiantOne s
 
 This allows for having more than one RadiantOne instance using the same port but listening on different IP address.
 
+<!-- 
 This feature can also increase the security for accessing RadiantOne. You can set the server name in the Server Control Panel > Settings tab as localhost (which is the default when installing RadiantOne) and then restrict access to localhost for the plain socket/port (by checking the option next to the Server socket: Restrict to Host/IP specified in Server Control Panel: Settings). Leave the option of SSL Server socket: Restrict to Host/IP specified in Server Control Panel: Settings unchecked. This allows all available IP addresses only over the SSL port but access to the non-secured port only from the same machine where the RadiantOne service is running (essentially forcing a secure connection over SSL when accessing the RadiantOne service from a remote machine).
 
 **Server socket: Restrict access to host/IP defined in Server Control Panel: Settings**
@@ -715,6 +716,7 @@ Check this option to restrict access for the plain socket/port to the Host/IP ad
 Check this option to restrict access for the secured SSL socket/port to the Host/IP address specified in the server setting.
 
 >[!warning] “localhost” is available only if it is set as the host name on the Server Control Panel > Settings tab > Server Name property. If it is set as the server name, the RadiantOne service is accessible ONLY by using a server name of localhost.
+-->
 
 #### RootDSE
 
