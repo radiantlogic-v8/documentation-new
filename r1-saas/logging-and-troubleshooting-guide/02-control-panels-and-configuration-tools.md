@@ -3,7 +3,7 @@ title: Logging and Troubleshooting Guide
 description: Logging and Troubleshooting Guide
 ---
 
-# Chapter 2: Control Panels and Configuration Tools
+# Control Panels and Configuration Tools
 
 ## Control Panel
 
@@ -20,13 +20,14 @@ Information about stopping the service can be found in:
 <RLI_HOME>/logs/rli_mgmt_console_service_stop.log
 
 ### Server Log
+
 The log file and default location is: <RLI_HOME>/vds_server/logs/jetty/web.log. 
 
 This file rolls over when it reaches 100M in size and 5 files are archived. These settings are configured from the Main Control Panel > Settings tab > Logs > Log Settings section. Select Control Panel – Server from the Log Settings to Configure drop-down list. Define the log level, rollover size and number of files to keep archived.
 
 ![An image showing ](Media/Image2.1.jpg)
 
-Figure 2. 1: Main Control Panel Server Log Settings
+Figure 1: Main Control Panel Server Log Settings
 
 The condition for deleting an archive is based on the total number of archives (configured in the How Many Files to Keep in Archive setting), or the age of the archive (configured in the web.log.file.maxTime property in the Advanced section), whichever comes first.
 
@@ -46,7 +47,9 @@ The Control Panel access log file contains the save operations performed by admi
 
 ![An image showing ](Media/Image2.2.jpg)
  
-Figure 2. 2: Main Control Panel Access Log Settings
+Figure 2: Main Control Panel Access Log Settings
+
+<!-- 
 
 The condition for deleting an archive is based on the total number of archives (configured in the How Many Files to Keep in Archive setting), or the age of the archive (configured in the web.access.file.maxTime property in the Advanced section), whichever comes first.
 
@@ -60,29 +63,31 @@ Other Advanced properties (requires [Expert Mode](01-overview#expert-mode)) that
 
 -	web.access.file.archive.scan.glob -  the regex (glob style) to match to select which files to delete
 
+-->
+
 ### Custom Settings
 
-More fine-grained configuration log settings related to the Main and Server Control Panels can be managed from the Main Control Panel -> ZooKeeper tab (requires [Expert Mode](01-overview#expert-mode)). Navigate to radiantone/v1/cluster/config/logging/log4j2-control-panel.json. Click Edit Mode to modify the settings. Generally, these advanced settings should only be changed if advised by Radiant Logic.
+More fine-grained configuration log settings related to the Main and Server Control Panels can be managed from the Main Control Panel > ZooKeeper tab (requires [Expert Mode](01-overview#expert-mode)). Navigate to radiantone/v1/cluster/config/logging/log4j2-control-panel.json. Click Edit Mode to modify the settings. Generally, these advanced settings should only be changed if advised by Radiant Logic.
 
 ![An image showing ](Media/Image2.3.jpg)
  
-Figure 2. 3: Log4J Settings Applicable to the Main and Server Control Panels
+Figure 3: Log4J Settings Applicable to the Main and Server Control Panels
 
 ## Server Control Panel - Cluster Monitor
 
-A special storage mounted at cn=clustermonitor is used to store historical information about the RadiantOne service’s statistics including CPU usage, memory usage, disk space, disk latency, and connection usage. This historical information is used to populate the graphs shown on the Server Control Panel -> Dashboard tab. An example is shown below.
+A special storage mounted at cn=clustermonitor is used to store historical information about the RadiantOne service’s statistics including CPU usage, memory usage, disk space, disk latency, and connection usage. This historical information is used to populate the graphs shown on the Server Control Panel > Dashboard tab. An example is shown below.
 
 ![An image showing ](Media/Image2.4.jpg)
  
-Figure 2. 4: Server Control Panel > Dashboard tab
+Figure 4: Server Control Panel > Dashboard tab
 
 The cluster monitor store is configurable from Main Control Panel > Settings > Logs > Clustermonitor. You can enable/disable the store from here and indicate a max age for the entries to prevent the contents from growing too large.
 
->[!note] if you disable the cluster monitor store, no graphs display on the Server Control Panel -> Dashboard tab.
+>[!note] if you disable the cluster monitor store, no graphs display on the Server Control Panel > Dashboard tab.
 
 ![An image showing ](Media/Image2.5.jpg)
  
-Figure 2.5: Cluster Monitor Log Settings
+Figure 5: Cluster Monitor Log Settings
 
 ## Context Builder
 

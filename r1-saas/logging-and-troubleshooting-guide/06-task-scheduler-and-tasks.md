@@ -4,6 +4,7 @@ description: Logging and Troubleshooting Guide
 ---
 
 # Chapter 6: Task Scheduler and Tasks
+
 The Task Scheduler schedules tasks. Activities that are processed as tasks are: 
 
 -	Exporting to LDIF
