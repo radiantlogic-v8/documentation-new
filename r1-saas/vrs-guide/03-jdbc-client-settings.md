@@ -49,13 +49,15 @@ jdbc:vrs://<hostname>:<ssl_port>/<context>&ssl=true[&user=<user_dn>&password=<pa
 
 >[!warning] the user and password properties are optional. If [mutual authentication](#certificate-basedmutual-authentication) is used, and the client certificate to DN mapping fails to identify a user to base authorization on, the user DN in the connection string can be used by RadiantOne to enforce authorization for the connection. If the mapping fails and no user is specified in the JDBC connection string, RadiantOne enforces anonymous access.
 
+
+
 #### Certificate-based/Mutual Authentication 
 
-There is a self-signed certificate included with RadiantOne and this certificate can be viewed from the Server Control Panel > Settings Tab. Click the View button next to View Server Certificates. For more details on the RadiantOne server certificate, please see the RadiantOne System Administration Guide. 
+There is a self-signed certificate included with RadiantOne<!-- and this certificate can be viewed from the Server Control Panel > Settings Tab. Click the View button next to View Server Certificates-->. For more details on the RadiantOne server certificate, please see the RadiantOne System Administration Guide. 
 
 For normal SSL communications, where the only requirement is that the client trusts the server, no additional configuration is necessary (as long as both entities trust each other). For mutual authentication, where there is a reciprocal trust relationship between the client and the server, the client must generate a certificate containing his identity and private key in his keystore. The client must also make a version of the certificate containing his identity and public key, which the RadiantOne service must store in its truststore. In turn, the client needs to trust the server; this is accomplished by importing the server's CA certificate into the client truststore.
 
->**Note - Certificate-based authentication (mutual authentication) requires the use of SSL or StartTLS for the communication between the client and RadiantOne.**
+>[!note] Certificate-based authentication (mutual authentication) requires the use of SSL or StartTLS for the communication between the client and RadiantOne.**
 
 ![An image showing ](Media/Image3.1.jpg)
 
@@ -109,7 +111,7 @@ Access RadiantOne in context mode, use SSL between the driver and VRS, set the d
 jdbc:vrs://127.0.0.1:2388/ou=Accounting,o=enterprisedirectory&ssl=true&tracelevel=3&tracefile=C:\\VRS_JDBC_Client.log
 ```
 
->**Note - there is no order to respect between options.**
+>[!note] there is no order to respect between options.**
  
 ## Certified JDBC Clients
 
