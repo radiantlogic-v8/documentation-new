@@ -26,8 +26,7 @@ The following sections describe each recommendation in more details.
 
 ### Analyzing Problems
 
-If consumers of the RadiantOne service are experiencing problems (time-consuming logins, expected information not being returned...etc.), the access report can be helpful in pinpointing
-what is happening on the server and diagnosing the problem.
+If consumers of the RadiantOne service are experiencing problems (time-consuming logins, expected information not being returned...etc.), the access report can be helpful in pinpointing what is happening on the server and diagnosing the problem.
 
 The instructions in this section assume the following:
 
@@ -46,13 +45,7 @@ file>. On UNIX platforms, execute runAccessLog2DB.sh <path to
 AccessLog2DBconfig.properties file>. The AccessLog2DBconfig.properties file is in
 <RLI_HOME>/config/log2db.
 
-The Log2DB utility writes the access log information into a database. After, generate the Access
-Report from the Main Control Panel -> Settings Tab -> Reporting section -> Access Log Report
-sub-section. On the right side, click on the Generate Report button. The report can be found in
-the location indicated in the Output Location parameter which is <RLI_HOME>/reporting-
-birt/reports by default. If RadiantOne is deployed in a cluster, you can generate a single report
-that aggregates statistics from all nodes in the cluster. For more information on configuring and
-generating an Access Log report, see [Access Log Report Settings](#access-log-report-settings) and [Access Log Report](#access-log-report).
+The Log2DB utility writes the access log information into a database. After, generate the Access Report from the Main Control Panel -> Settings Tab -> Reporting section -> Access Log Report sub-section. On the right side, click on the Generate Report button. The report can be found in the location indicated in the Output Location parameter which is <RLI_HOME>/reporting-birt/reports by default. If RadiantOne is deployed in a cluster, you can generate a single report that aggregates statistics from all nodes in the cluster. For more information on configuring and generating an Access Log report, see [Access Log Report Settings](#access-log-report-settings) and [Access Log Report](#access-log-report).
 
 The summary section provides you with valuable information regarding how long operations are
 taking and a summary of error codes found. In the detailed section of the report, you will find

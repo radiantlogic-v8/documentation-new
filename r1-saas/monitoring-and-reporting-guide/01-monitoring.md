@@ -175,7 +175,7 @@ Server Control Panel for monitoring other server-specific activities.
 
 ##### CPU, Memory, Disk Space, Disk Latency and Connection Usage
 
-From the Server Control Panel -> Dashboard Tab, you can monitor the CPU, disk space and
+From the Server Control Panel > Dashboard Tab, you can monitor the CPU, disk space and
 latency on the machine hosting RadiantOne, and the RadiantOne service memory and
 connections.
 
@@ -184,21 +184,20 @@ Panel > Settings > Logs > Clustermonitor.
 
 ![An image showing monitoring resources from the server control panel ](Media/Image1.3.jpg)
 
-Figure 1. 3 : Monitoring Resources from the Server Control Panel
+Figure 1.3 : Monitoring Resources from the Server Control Panel
 
-Alerts can be configured for memory, connections, disk space and disk latency from the Main
-Control Panel > Settings tab > Monitoring > Standard Alerts.
+Alerts can be configured for memory, connections, disk space and disk latency from the Main Control Panel > Settings tab > Monitoring > Standard Alerts.
 
 To manage alerts:
 
-1. In the Main Control Panel go to Settings Tab -> Monitoring section → Standard Alerts sub-section.
+1. In the Main Control Panel go to Settings Tab > Monitoring section > Standard Alerts sub-section.
 2. Define the memory threshold in the Memory section.
 3. Define the connection threshold in the Connections section.
 4. Define the disk space and disk latency thresholds in the Disk Alerts section.
 
 ![An image showing configuring standard alerts from the Main Control panel ](Media/Image1.4.jpg)
 
-Figure 1. 4 : Configuring Standard Alerts from the Main Control Panel
+Figure 1.4: Configuring Standard Alerts from the Main Control Panel
 
 5. File alerts are enabled by default. If SMTP settings are configured in the Monitoring -> Email Alert Settings section you can also use the Email Alert output.
 6. Click Save.
@@ -214,7 +213,7 @@ To enable an alert script:
 
 ![An image showing enabling an alert script ](Media/Image1.5.jpg)
 
-Figure 1. 5 : Enabling an Alert Script from the Main Control Panel
+Figure 1.5 : Enabling an Alert Script from the Main Control Panel
 
 4. Click Save.
 
@@ -245,43 +244,31 @@ Figure 1.6 : Example Alert Descriptions
 
 ##### Connections and Operations
 
-The Server Control Panel -> Usage & Activity Tab -> Usage Summary section, displays the total
-number of connections made to the server (since startup), and the total number of operations
-(since startup). The average per minute for each is calculated and displayed.
+The Server Control Panel > Usage & Activity Tab > Usage Summary section, displays the total number of connections made to the server (since startup), and the total number of operations (since startup). The average per minute for each is calculated and displayed.
 
 From the Current Connections section, you can also view the number of open connections to
 RadiantOne including:
-
 
 - Client IP/port that opened the connection
 - Time the connection was opened
 - How many operations have been performed on the connection
 - Which user authenticated on the connection
 
-The Processing Activity Details section shows how many operations are waiting to be
-processed, how many operations are currently being executed in addition to the maximum
-working threads available and peak worker threads used. This allows you to see the load on the
-server in terms of working threads. If you are consistently seeing peak working threads close to
-the max working threads number, you should possibly increase the max working threads or
-number of processors (depending on the processing capabilities of the machine RadiantOne is
-deployed on). This may also indicate that you need to scale out and deploy a new machine (e.g.
-add a cluster node).
+The Processing Activity Details section shows how many operations are waiting to be processed, how many operations are currently being executed in addition to the maximum working threads available and peak worker threads used. This allows you to see the load on the server in terms of working threads. If you are consistently seeing peak working threads close to the max working threads number, you should possibly increase the max working threads or number of processors (depending on the processing capabilities of the machine RadiantOne is deployed on). This may also indicate that you need to scale out and deploy a new machine (e.g. add a cluster node).
 
 ![An image showing monitoring connections and processing activity ](Media/Image1.7.jpg)
 
-Figure 1. 7 : Monitoring Connections and Processing Activity from the Server Control Panel
+Figure 1.7 : Monitoring Connections and Processing Activity from the Server Control Panel
 
 ##### RadiantOne Universal Directory (HDAP) Status
 
-Store status (including number of entries, index size, revision, and search and write operations)
-can be monitored from the Server Control Panel > Usage & Activity tab > Universal Directory Status section.
+Store status (including number of entries, index size, revision, and search and write operations) can be monitored from the Server Control Panel > Usage & Activity tab > Universal Directory Status section.
 
-To filter the stores displayed, click on gear icon and then click Select Filters. Select the stores to
-display and click OK. Click OK to exit the settings.
+To filter the stores displayed, click on gear icon and then click Select Filters. Select the stores to display and click OK. Click OK to exit the settings.
 
 ![An image showing the ](Media/Image1.8.jpg)
 
-Figure 1. 8 : Monitoring RadiantOne Universal Directory Stores from the Server Control Panel
+Figure 1.8 : Monitoring RadiantOne Universal Directory Stores from the Server Control Panel
 
 ###### Resetting Peak Operations
 
@@ -296,7 +283,7 @@ To reset the peak operations without restarting the RadiantOne service, you can 
 Alerts can be configured for RadiantOne Universal Directory stores. To configure store alerts
 
 1. In the Main Control Panel go to Settings Tab > Monitoring section > Custom Alerts sub-section (requires [Expert Mode](#expert-mode)).
-2. Click the Add button.
+2. Click Add.
 3. From the Template drop-down menu, select **Custom**.
 4. From the Monitoring Source drop-down menu, select hdap-store. The page refreshes and displays the store information in the table at the bottom.
 5. Configure other parameters as required.
@@ -304,7 +291,7 @@ Alerts can be configured for RadiantOne Universal Directory stores. To configure
 
 ![An image showing the ](Media/Image1.9.jpg)
 
-Figure 1. 9 : Configuring a RadiantOne Universal Directory Store Alert from the Main Control Panel
+Figure 1.9 : Configuring a RadiantOne Universal Directory Store Alert from the Main Control Panel
 
 ##### Data Source Status
 
@@ -312,7 +299,7 @@ The status of the RadiantOne service (data sources named vds and vdsha) and any 
 
 ![An image showing the ](Media/Image1.10.jpg)
 
-Figure 1. 10 : Monitoring Data Sources from the Server Control Panel
+Figure 1.10 : Monitoring Data Sources from the Server Control Panel
 
 The status values are on, off, offline, and unavailable. The following table describes each status.
 
@@ -333,7 +320,7 @@ To configure alerts for data source availability:
 
 ![An image showing configurating a data source](Media/Image1.11.jpg)
 
-Figure 1. 11 : Configuring a Data Source Alert from the Main Control Panel
+Figure 1.11 : Configuring a Data Source Alert from the Main Control Panel
 
 3. Define the interval to check the data source availability. The default is 120 seconds.
 4. File alerts are enabled by default. If SMTP settings are configured in the Monitoring > Email Alert Settings section you can also use the Email Alert output.
@@ -341,14 +328,14 @@ Figure 1. 11 : Configuring a Data Source Alert from the Main Control Panel
 
 ![An image showing selecting a data source to monitor ](Media/Image1.12.jpg)
 
-Figure 1. 12 : Selecting a Data Source to Monitor
+Figure 1.12: Selecting a Data Source to Monitor
 
 6. Verify that the data source name is displayed in the “Data sources to monitor” field.
 7. Click Save.
 
 ![An image showing a data source to monitor](Media/Image1.13.jpg)
 
-Figure 1. 13 : Example of a Data Source to Monitor
+Figure 1.13: Example of a Data Source to Monitor
 
 >[!note] To disable alerts for a data source, click the X next to the data source
 name in the Data Source to monitor field, which removes it from the list.
@@ -422,38 +409,24 @@ Click the Save button when you are finished.
 
 ###### Disk Usage
 
-A file alert, when the disk usage on the RadiantOne machine reaches 90% of max capacity, is
-enabled by default. These settings can be changed from the Main Control Panel > Settings tab > Monitoring section > Standard Alerts. To change the disk usage, enter a threshold. Define
-the interval to check the data usage (default is 120 seconds). The default alert output is File
-Alert, but if SMTP settings are configured in the Monitoring > Email Alert Settings section you can also use the Email Alert output. Click the Save button when you are finished.
-
+A file alert, when the disk usage on the RadiantOne machine reaches 90% of max capacity, is enabled by default. These settings can be changed from the Main Control Panel > Settings tab > Monitoring section > Standard Alerts. To change the disk usage, enter a threshold. Define the interval to check the data usage (default is 120 seconds). The default alert output is File Alert, but if SMTP settings are configured in the Monitoring > Email Alert Settings section you can also use the Email Alert output. Click the Save button when you are finished.
 
 >[!warning] closely monitoring disk space usage is extremely critical. If disk space is full, the RadiantOne service shuts down automatically.
 
 ###### Disk Latency
 
 A file alert, when the disk latency on the RadiantOne machine reaches 100ms, is enabled by
-default. These settings can be changed from the Main Control Panel -> Settings tab ->
-Monitoring section -> Standard Alerts. To change the disk latency, enter a threshold (in
-milliseconds). Define the interval to check the disk latency (default is 120 seconds). The default
-alert output is File Alert, but if SMTP settings are configured in the Monitoring -> Email Alert
-Settings section you can also check the Email Alert output. Click the Save button when you are
-finished making changes.
+default. These settings can be changed from the Main Control Panel > Settings tab >
+Monitoring section > Standard Alerts. To change the disk latency, enter a threshold (in
+milliseconds). Define the interval to check the disk latency (default is 120 seconds). The default alert output is File Alert, but if SMTP settings are configured in the Monitoring > Email Alert Settings section you can also check the Email Alert output. Click Save when you are finished making changes.
 
 ###### Processing Load on RadiantOne
 
-Alerts based on RadiantOne processing load are pre-configured, but not enabled by default. If
-you would like to receive an alert when the RadiantOne processing queues reach a certain
-threshold, from the Main Control Panel -> Settings tab -> Monitoring section -> Standard Alerts,
-slide the bars for processing queues and internal queues to the threshold amount. Check the
-“Enable processing queues alerts” option. Click the Save button when you are finished.
+Alerts based on RadiantOne processing load are pre-configured, but not enabled by default. If you would like to receive an alert when the RadiantOne processing queues reach a certain threshold, from the Main Control Panel > Settings tab > Monitoring section > Standard Alerts, slide the bars for processing queues and internal queues to the threshold amount. Check the “Enable processing queues alerts” option. Click Save when you are finished.
 
 ##### Custom Alerts
 
-Custom alerts allow you to define monitoring rules for all aspects of RadiantOne not addressed
-by a standard alert. The RadiantOne aspects that can be used in custom alerts are described in
-[data collectors](#data-collectors). Custom alerts are highly specialized and generally require services from Radiant Logic to setup. Please contact support@radiantlogic.com for details. When these alerts
-are activated, they are also displayed on the Main Control Panel’s Dashboard tab.
+Custom alerts allow you to define monitoring rules for all aspects of RadiantOne not addressed by a standard alert. The RadiantOne aspects that can be used in custom alerts are described in [data collectors](#data-collectors). Custom alerts are highly specialized and generally require services from Radiant Logic to setup. Please contact support@radiantlogic.com for details. When these alerts are activated, they are also displayed on the Main Control Panel’s Dashboard tab.
 
 All custom alerts defined appear on the Main Control Panel > Settings tab > Monitoring section > Custom Alerts section.
 
@@ -462,47 +435,33 @@ The “Enabled” column/status indicates if the alert is active.
 ###### RadiantOne Service Availability
 
 The RadiantOne service should be monitored. A default custom alert named “VDS Running
-Check” is configured to monitor the state of the service. If RadiantOne is deployed in a cluster,
-the state of the service on all nodes is monitored. To view the alert, navigate to the Main Control Panel > Settings Tab > Monitoring > Custom Alerts (requires [Expert Mode](#expert-mode)). Select the “VDS
-Running Check” alert and click Edit.
+Check” is configured to monitor the state of the service. If RadiantOne is deployed in a cluster, the state of the service on all nodes is monitored. To view the alert, navigate to the Main Control Panel > Settings Tab > Monitoring > Custom Alerts (requires [Expert Mode](#expert-mode)). Select the “VDS Running Check” alert and click Edit.
 
-This custom alert leverages the isVdsRunning property of the [node-monitor](#node-monitor) data collector to
-trigger a [file alert](#file-alert-settings) if the RadiantOne service is not equal to true. If the value of the isVdsRunning
-property is false or N/A, an alert is triggered.
+This custom alert leverages the isVdsRunning property of the [node-monitor](#node-monitor) data collector to trigger a [file alert](#file-alert-settings) if the RadiantOne service is not equal to true. If the value of the isVdsRunning property is false or N/A, an alert is triggered.
 
 ![An image showing the default alert for RadiantOne Service Availability](Media/Image1.15.jpg)
 
 Figure 1.15 : Default Alert for the RadiantOne Service Availability
 
-If you have RadiantOne deployed in a cluster, you can monitor each service independently to
-have more granularity of alerts. For example, if one service stops in a cluster, the default “VDS
-Running Check” alert will be triggered. If another RadiantOne service in the cluster stops, no
-new alert is sent since the status is currently in a triggered state. Only when the RadiantOne
-service on all nodes is running again is a new alert sent to indicate the status of the services is
-back to normal. To be alerted about each RadiantOne service status change independently,
-configure custom alerts for each node. To do this, create a custom alert for each node,
-conditioning the alert by nodeId and/or hostname. The examples shown in the following screens
-describe a three-node cluster. The node IDs are used in the filters conditioning each custom
-alert.
+If you have RadiantOne deployed in a cluster, you can monitor each service independently to have more granularity of alerts. For example, if one service stops in a cluster, the default “VDS Running Check” alert will be triggered. If another RadiantOne service in the cluster stops, no new alert is sent since the status is currently in a triggered state. Only when the RadiantOne service on all nodes is running again is a new alert sent to indicate the status of the services is back to normal. To be alerted about each RadiantOne service status change independently, configure custom alerts for each node. To do this, create a custom alert for each node, conditioning the alert by nodeId and/or hostname. The examples shown in the following screens describe a three-node cluster. The node IDs are used in the filters conditioning each custom alert.
 
 Three custom alerts (shown below) can be used to monitor the RadiantOne service status on
 each cluster node. The isVdsRunning property name is case sensitive.
 
 ![An image showing ](Media/Image1.16.jpg)
 
-Figure 1. 16 : Custom Alert for RadiantOne Node 1
+Figure 1.16 : Custom Alert for RadiantOne Node 1
 
 ![An image showing ](Media/Image1.17.jpg)
 
-Figure 1. 17 : Custom Alert for RadiantOne Node 2
+Figure 1.17 : Custom Alert for RadiantOne Node 2
 
 ![An image showing ](Media/Image1.18.jpg)
 
-Figure 1. 18 : Custom Alert for RadiantOne Node 3
+Figure 1.18 : Custom Alert for RadiantOne Node 3
 
 ```sh
-If all RadiantOne services are stopped, the alerts.log would contain something like the following,
-related to the three custom alerts described above:
+If all RadiantOne services are stopped, the alerts.log would contain something like the following, related to the three custom alerts described above:
 
 2018 - 10 - 11 14:55:47 Alert FID Node 1 Status TRIGGERED
 
@@ -581,30 +540,26 @@ alert.
 
 ![An image showing configuring a trigger for a custom alert](Media/Image1.19.jpg)
 
-Figure 1. 19 : Configure Trigger for Custom Alert
+Figure 1.19 : Configure Trigger for Custom Alert
 
 8. Click OK.
 9. If you want to only be alerted if the validation threshold has been exceeded, you can configure a Trigger with parameters above -1 like shown below instead of using (equals value WARN).
 
 ![An image showing configuring a trigger for custom alerts based on validation threshold](Media/Image1.20.jpg)
 
-Figure 1. 20 : Configure Trigger for Custom Alert based on a Validation Threshold being Exceeded
+Figure 1.20 : Configure Trigger for Custom Alert based on a Validation Threshold being Exceeded
 
 10. Click Save.
 
 When triggered, this alert displays on the Main Control Panel's Dashboard tab under Active
-Alerts as "ALERT: <alert_name>” and triggers a [file alert](#file-alert-settings). If SMTP settings are configured, [email
-alerts](#email-alerts) can be triggered as well by adding EmailAlert to the Alert Output setting (click save if you
-modify the alert output).
+Alerts as "ALERT: <alert_name>” and triggers a [file alert](#file-alert-settings). If SMTP settings are configured, [email alerts](#email-alerts) can be triggered as well by adding EmailAlert to the Alert Output setting (click save if you modify the alert output).
 
 ###### ZooKeeper Write Failure
 
 The ZooKeeper Write Check alert is enabled by default. This custom alert can be configured
 from the Main Control Panel (of the current leader node if you have a cluster deployment) > Settings Tab > Monitoring > Custom Alerts (requires [Expert Mode](#expert-mode)). Select the ZooKeeper Write Check alert and click Edit.
 
-This custom alert triggers a [file alert](#file-alert-settings) if clients cannot write to ZooKeeper. If SMTP settings are
-configured, [email alerts](#email-alert-settings) can be triggered as well by adding EmailAlert to the Alert Output setting
-(click Save if you modify the alert output).
+This custom alert triggers a [file alert](#file-alert-settings) if clients cannot write to ZooKeeper. If SMTP settings are configured, [email alerts](#email-alert-settings) can be triggered as well by adding EmailAlert to the Alert Output setting (click Save if you modify the alert output).
 
 ###### Global Synchronization Capture Connector Stopped
 
@@ -625,16 +580,13 @@ To send an alert in the event of a global synchronization capture connector stat
 
 ![An image showing ](Media/Image1.21.jpg)
 
-Figure 1. 21 : Custom Alert on Capture Connector
+Figure 1.21 : Custom Alert on Capture Connector
 
-13. When triggered, this alert displays on the Main Control Panel's Dashboard tab under  Active Alerts as "ALERT: <alert_name>” and triggers a [file alert](#file-alert-settings). If SMTP settings are
-    configured, [email alerts](#email-alert-settings) can be triggered as well by adding EmailAlert to the Alert Output
-    setting (click save if you modify alert output).
+13. When triggered, this alert displays on the Main Control Panel's Dashboard tab under  Active Alerts as "ALERT: <alert_name>” and triggers a [file alert](#file-alert-settings). If SMTP settings are configured, [email alerts](#email-alert-settings) can be triggered as well by adding EmailAlert to the Alert Output setting (click save if you modify alert output).
 
 ###### Global Synchronization Queue Size
 
-To send an alert in the event of a global synchronization queue growing, configure a custom
-alert.
+To send an alert in the event of a global synchronization queue growing, configure a custom alert.
 
 1. Navigate to the Main Control Panel (of the current leader node if you have a cluster deployment) > Settings tab > Monitoring > Custom Alerts (requires [Expert Mode](#expert-mode)).
 2. Select Custom from the Template drop-down menu.
@@ -651,7 +603,7 @@ events, an alert is triggered.
 
 ![An image showing configuring an alert trigger](Media/Image1.22.jpg)
 
-Figure 1. 22 : Configuring Alert Trigger
+Figure 1.22 : Configuring Alert Trigger
 
 10. Enter an Alert Name.
 11. Click Save.
@@ -676,7 +628,7 @@ custom alert.
 
 ![An image showing ](Media/Image1.24.jpg)
 
-Figure 1. 24 : Setting Trigger Parameter (equals true)
+Figure 1.24 : Setting Trigger Parameter (equals true)
 
 7. Click OK.
 8. Click Save.
@@ -684,9 +636,7 @@ Figure 1. 24 : Setting Trigger Parameter (equals true)
 
 #### File Descriptor Availability (Linux Only)
 
-A file descriptor is an integer that uniquely represents an opened file. To ensure that the number
-of file descriptors in use does not reach the maximum file descriptor limit, configure a custom
-alert as follows.
+A file descriptor is an integer that uniquely represents an opened file. To ensure that the number of file descriptors in use does not reach the maximum file descriptor limit, configure a custom alert as follows.
 
 1. Navigate to the Main Control Panel (of the current leader node if you have a cluster deployment) > Settings tab > Monitoring > Custom Alerts (requires [Expert Mode](#expert-mode)).
 2. Click Add.
@@ -699,7 +649,7 @@ alert as follows.
 
 ![An image showing ](Media/Image1.25.jpg)
 
-Figure 1. 25 : Setting a Trigger Threshold (above 60)
+Figure 1.25 : Setting a Trigger Threshold (above 60)
 
 9. Click OK.
 10. Click Save.
@@ -712,26 +662,21 @@ The names of data collectors are shown below.
 
 ![An image showing ](Media/Image1.26.jpg)
 
-Figure 1. 26 : Data Collectors
+Figure 1.26 : Data Collectors
 
-Descriptions for each data collector can be found in the following sections. Some properties
-within data collectors require the RadiantOne service to be running to get status information.
-Each description in this section indicates if the RadiantOne service needs to be running. If you
-have configured custom alerts that use properties in a data collector that require the
-RadiantOne service to be running, and the service stops, no alerts are sent. Be mindful of this
-when using data collectors in custom alerts.
+Descriptions for each data collector can be found in the following sections. Some properties within data collectors require the RadiantOne service to be running to get status information.
+
+Each description in this section indicates if the RadiantOne service needs to be running. If you have configured custom alerts that use properties in a data collector that require the RadiantOne service to be running, and the service stops, no alerts are sent. Be mindful of this when using data collectors in custom alerts.
 
 #### Active-alerts
 
-The active-alerts data collector returns information about all active alerts that are currently
-triggered. If the response is empty, this means there are currently no alerts triggered.
+The active-alerts data collector returns information about all active alerts that are currently triggered. If the response is empty, this means there are currently no alerts triggered.
 
 >[!note] This data collector does not require a RadiantOne service to be running to return status information.
 
 #### Cloud-replication
 
-The cloud-replication data collector returns information and statistics about all configured inter-
-cluster replication.
+The cloud-replication data collector returns information and statistics about all configured inter-cluster replication.
 
 >[!note] This data collector requires a RadiantOne service to be running return status information.
 
@@ -777,9 +722,7 @@ require a RadiantOne service to be running to return information.
 
 #### Cluster-latency
 
-The cluster-latency data collector returns information about the current network latency and
-peak network latency both on the local node and between cluster nodes. The results indicate
-the current and peak network latency between all nodes. The format of the result is as follows:
+The cluster-latency data collector returns information about the current network latency and peak network latency both on the local node and between cluster nodes. The results indicate the current and peak network latency between all nodes. The format of the result is as follows:
 
 ```sh
 {
@@ -812,9 +755,7 @@ information.
 
 #### Cluster-LDAP
 
-The cluster-ldap data collector returns information about the current LDAP/LDAPS connectivity
-between RadiantOne cluster nodes. The results indicate the LDAP connectivity between all
-nodes and include the status of the local connectivity. The format of the result is as follows:
+The cluster-ldap data collector returns information about the current LDAP/LDAPS connectivity between RadiantOne cluster nodes. The results indicate the LDAP connectivity between all nodes and include the status of the local connectivity. The format of the result is as follows:
 
 ```json
 {
@@ -895,9 +836,7 @@ to return information.
 
 #### Cluster-zk-v2
 
-This is like the cluster-zk data collector, but it supports monitoring an external ZooKeeper
-ensemble. If you have deployed ZooKeeper in a separate cluster than RadiantOne, use this
-data collector to monitor ZooKeeper connectivity.
+This is like the cluster-zk data collector, but it supports monitoring an external ZooKeeper ensemble. If you have deployed ZooKeeper in a separate cluster than RadiantOne, use this data collector to monitor ZooKeeper connectivity.
 
 The following are the propertyID names and values:
 
@@ -988,8 +927,7 @@ connection cannot be tested, which is the case for custom data sources.
 
 #### Event-log
 
-The event-log data collector returns information about recent events (eventType) like persistent cache initialization failures and refresh events that fail for a given RadiantOne node (nodeId)
-and naming context (namingDN). eventType has a value of PCACHE for persistent cache related events and SERVER for all other events.
+The event-log data collector returns information about recent events (eventType) like persistent cache initialization failures and refresh events that fail for a given RadiantOne node (nodeId) and naming context (namingDN). eventType has a value of PCACHE for persistent cache related events and SERVER for all other events.
 
 >[!note] This data collector requires the RadiantOne service to be running to return information.
 
@@ -1044,8 +982,7 @@ service started.
 
 #### Node-info
 
-The node-info data collector returns general information about all RadiantOne cluster nodes. If
-you pass a nodeId in the request, the information returned is applicable to that single node.
+The node-info data collector returns general information about all RadiantOne cluster nodes. If you pass a nodeId in the request, the information returned is applicable to that single node.
 
 The response includes the following properties for each node:
 
@@ -1100,7 +1037,7 @@ The cloud_ID associated with a node can also be seen from the Main Control panel
 
 ![An image showing ](Media/Image1.28.jpg)
 
-Figure 1. 28 : Location to View Cloud ID Associated with a Cluster Node on Main Control Panel
+Figure 1.28 : Location to View Cloud ID Associated with a Cluster Node on Main Control Panel
 
 For each cluster node, the following properties are returned.
 
@@ -1196,9 +1133,7 @@ does NOT require the RadiantOne service to be running to return information.
 
 #### Node-status
 
-The node-status data collector returns an ON/OFF status for each RadiantOne service running
-on each cluster node. If you pass a nodeId in the request, the information returned is applicable
-to that single node.
+The node-status data collector returns an ON/OFF status for each RadiantOne service running on each cluster node. If you pass a nodeId in the request, the information returned is applicable to that single node.
 
 
 - http_status – status of the RadiantOne service HTTP port. A value of ON means the RadiantOne service is listening on the HTTP port. A value of OFF indicates the RadiantOne service is not listening on the HTTP port. This property does NOT require
@@ -1231,11 +1166,9 @@ This property does NOT require the RadiantOne service to be running to returninf
 
 #### Orchestrator-agent-job
 
-The orchestrator-agent-job data collector returns information about the agents currently deployed in RadiantOne and their type. This data collector doesn't use traditional propertyId's.
-Instead, it outputs the agent ID as the propertyId and its type as the value.
+The orchestrator-agent-job data collector returns information about the agents currently deployed in RadiantOne and their type. This data collector doesn't use traditional propertyId's. Instead, it outputs the agent ID as the propertyId and its type as the value.
 
-It also outputs any connector pcache ID's as the propertyId and any agents they are using it as
-the value.
+It also outputs any connector pcache ID's as the propertyId and any agents they are using it as the value.
 
 
 >[!note] This data collector requires the RadiantOne service to be running to return information.
@@ -1259,27 +1192,23 @@ For each periodic refresh, the following properties are returned:
 
 - inserted – number of inserted entries applied to the persistent cache.
 - updated – number of updates applied to the persistent cache.
- deleted – number of deleted entries applied to the persistent cache.
+-  deleted – number of deleted entries applied to the persistent cache.
 - agentName – the agent name that is running the periodic refresh. If RadiantOne is
 handling the periodic refresh (default), then an agent is not used and this property is
 blank.
 
 #### Pipeline
 
-The pipeline data collector is for retrieving information about real-time persistent cache refresh
-and/or global synchronization processes
+The pipeline data collector is for retrieving information about real-time persistent cache refresh and/or global synchronization processes
 
 >[!note] This data collector requires the RadiantOne service to be running to
 return information.
 
-For details on properties returned for pipelines associated with real-time persistent cache
-refreshes, see Real-time Persistent Cache Refresh. For details on properties returned for
-pipelines associated with global synchronization, see Global Synchronization.
+For details on properties returned for pipelines associated with real-time persistent cache refreshes, see Real-time Persistent Cache Refresh. For details on properties returned for pipelines associated with global synchronization, see Global Synchronization.
 
 #### Process-info
 
-The process-info data collector returns information and statistics about the internal RadiantOne
-processing queues.
+The process-info data collector returns information and statistics about the internal RadiantOne processing queues.
 
 >[!note] This data collector requires the RadiantOne service to be running to return information.
 
@@ -1296,25 +1225,23 @@ deployments and should not be changed unless recommended by Radiant Logic.
 
 #### Server-event
 
-The server-event data collector returns the last 15 entries (not lines) in the server event log file
-(<RLI_HOME>/vds_server/logs/vds_events.log).
+The server-event data collector returns the last 15 entries (not lines) in the server event log file (<RLI_HOME>/vds_server/logs/vds_events.log).
 
 >[!note] This data collector requires the RadiantOne service to be running to return information.
 
 ### Email Alert Settings
 
-If you would like to receive email alerts, configure the SMTP settings on the Main Control Panel
-(associated with the leader node if deployed in a cluster) -> Settings Tab > Monitoring section > Email Alerts Settings.
+If you would like to receive email alerts, configure the SMTP settings on the Main Control Panel (associated with the leader node if deployed in a cluster) -> Settings Tab > Monitoring section > Email Alerts Settings.
 
 ![An image showing ](Media/Image1.29.jpg)
 
-Figure 1. 29 : Email Alert Settings
+Figure 1.29 : Email Alert Settings
 
 These properties are saved in Zookeeper at /radiantone/v1/cluster/config/monitoring.properties
 
 ![An image showing ](Media/Image1.30.jpg)
 
-Figure 1. 30 : Email Settings in the Monitoring.properties
+Figure 1.30 : Email Settings in the Monitoring.properties
 
 These settings can be reused in log4j logging configurations by using the following properties:
 
@@ -2047,11 +1974,9 @@ The values for the following attributes indicate how many of each type of operat
 
 RadiantOne supports a special LDAP command to reset the operation statistics for a given naming context without requiring the server to be restarted.
 
-To reset the operations statistics for a given naming context, any LDAP client can be used. The
-example below uses an ldapsearch command line tool.
+To reset the operations statistics for a given naming context, any LDAP client can be used. The example below uses an ldapsearch command line tool.
 
-To reset the number of operations (compare, bind, modify, modrdn, delete, add and search) for a naming context of o=ad203 (assuming RadiantOne is listening on LDAP port 2389 and the
-super user password is “password”):
+To reset the number of operations (compare, bind, modify, modrdn, delete, add and search) for a naming context of o=ad203 (assuming RadiantOne is listening on LDAP port 2389 and the super user password is “password”):
 
 #ldapsearch -h host -p 2389 -D "cn=directory manager" -w "password" -b
 "action=resetnamingctxcounters,o=ad203,cn=namings,cn=monitor" (objectclass=*)
@@ -2059,14 +1984,12 @@ super user password is “password”):
 #### Connection Pools
 
 Connection pool statistics related to connections between RadiantOne and the backend data
-sources are logged into the cn=conn-pools,cn=monitor branch. You can retrieve these statistics
-by querying this branch from any LDAP client.
+sources are logged into the cn=conn-pools,cn=monitor branch. You can retrieve these statistics by querying this branch from any LDAP client.
 
 >[!note] The values of the attributes for backend connection pooling are read
 only.
 
-Below the cn=conn-pools container, you will see information on the internal connection pool
-(INTL), JNDI, LDAP and JDBC connections. The example below shows this information from the RadiantOne LDAP Browser.
+Below the cn=conn-pools container, you will see information on the internal connection pool (INTL), JNDI, LDAP and JDBC connections. The example below shows this information from the RadiantOne LDAP Browser.
 
 ![An image showing ](Media/Image1.47.jpg)
 
@@ -2084,16 +2007,13 @@ Figure 1.48: Example of Internal Connection Pool Activity
 
 Max_Pool_Size: The maximum number of connections. When the number of connections reaches this value, further connections are refused.
 
-Idle_Timeout: The length of time that a connection may remain idle before being removed from
-the pool. A value of 0 (zero) means that the idle time is unlimited, so connections are never
-timed out.
+Idle_Timeout: The length of time that a connection may remain idle before being removed from the pool. A value of 0 (zero) means that the idle time is unlimited, so connections are never timed out.
 
 Current_Num_Of_Pools: Number of connections in the pool that are currently connected.
 
 ##### JNDI Connection Pool Attributes
 
-JNDI connection pooling is leveraged for model-driven virtual views and join definitions from
-directory backends.
+JNDI connection pooling is leveraged for model-driven virtual views and join definitions from directory backends.
 
 ![An image showing ](Media/Image1.49.jpg)
 Figure 1.49: Example of JNDI Connection Pool Activity
@@ -2101,8 +2021,7 @@ Figure 1.49: Example of JNDI Connection Pool Activity
 **Current pool size (anonymous)**: Number of connections in the pool that are currently
 connected using authentication type “none”.
 
-**Preferred pool size**: This is the optimal pool size. Idle connections are removed when the number of connections grows larger than this value. A value of zero means that there is no
-preferred size, so the number of idle connections is unlimited.
+**Preferred pool size**: This is the optimal pool size. Idle connections are removed when the number of connections grows larger than this value. A value of zero means that there is no preferred size, so the number of idle connections is unlimited.
 
 **Authentication types**: Only these authentication types are allowed to connect to the directory server.
 
