@@ -115,9 +115,13 @@ value. Graphs for the following items are displayed.
 
 From the Usage & Activity tab, you can access information about the RadiantOne software version installed on the node, monitor the current connections and operations, view statistics for all RadiantOne Universal Directory (HDAP) stores and view network latency between nodes (only applicable to cluster deployments).
 
+<!-- 
+
 **Settings**
 
 The server name and server certificates can be managed from the Settings tab.
+
+-->
 
 **Tasks**
 
