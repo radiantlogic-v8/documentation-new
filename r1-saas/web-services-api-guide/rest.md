@@ -518,7 +518,7 @@ The PageSize option indicates paging via the Paged Results Control should be pas
 
 For REST access, the paging functionality leverages a session cookie which is linked to the original LDAP connection. Since this requires the same connection/session to work properly, paging through the REST interface does not work against a RadiantOne cluster deployment because subsequent requests could be directed to a RadiantOne node that is not associated with the original session cookie. If paging is required for cluster deployments, it is recommended to use source address affinity persistence in your load balancer.
 
->[!note] To use this option, paged results must be enabled in RadiantOne. To enable paged results, go to the Main Control Panel -> Settings tab -> Server Front End -> Supported Controls. Check the ‘Enable paged results’ checkbox, and click Save. 
+>[!note] To use this option, paged results must be enabled in RadiantOne. To enable paged results, go to the Main Control Panel > Settings tab > Server Front End > Supported Controls. Check the ‘Enable paged results’ checkbox, and click Save. 
 
 ![Enabling Paged Results](Media/Image5.23.jpg)
  

@@ -33,6 +33,8 @@ You can disable any HTTP/HTTPS protocols/endpoints that are not used by clients 
  
 Figure 2: Disabled Protocols Options
 
+<!-- 
+
 ## Accessing the Web Services over SSL (HTTPS)
 
 The server certificate used for HTTPS communication is the one configured on the Server Control Panel > Settings tab. Click **Manage** next to Server Certificate. If this certificate has been signed by a Certificate Authority (CA) known by the client, then HTTPS communication should work without further configuration.
@@ -44,6 +46,8 @@ You can export the server certificate for the client’s use by viewing the cert
 >[!note] If you have deployed RadiantOne in a cluster, each node has its own server certificate.**
 
 Send the certificate (RadiantOne server public certificate) file to the client machine(s), which communicates via SSL with the RadiantOne service. For example, Java clients generally store this file in the <Java_Home>/lib/security/cacerts directory. 
+
+-->
 
 ## Expert Mode
 
