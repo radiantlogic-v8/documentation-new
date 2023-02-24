@@ -4,6 +4,7 @@ description: Logging and Troubleshooting Guide
 ---
 
 # Chapter 6: Task Scheduler and Tasks
+
 The Task Scheduler schedules tasks. Activities that are processed as tasks are: 
 
 -	Exporting to LDIF
@@ -45,7 +46,7 @@ The task scheduler log file is server.log and is in <RLI_HOME>/<instance_name>/l
 
 ### Log Archiving
 
-By default, 10 files are kept in the archive. Change this value in the How Many Files to Keep in Archive setting. The archived files are named server-<number>.log and located in <RLI_HOME>/<instance_name>/logs/scheduler. The default instance name is vds_server, so the path would be: <RLI_HOME>/vds_server/logs/scheduler. To change the archive location, expand below the Advanced section (requires [Expert Mode](01-overview#expert-mode)) and indicate the path in the scheduler.server.log.file.archive property. Generally, these advanced settings should only be changed if advised by Radiant Logic.
+By default, 10 files are kept in the archive. Change this value in the How Many Files to Keep in Archive setting. The archived files are named server-<number>.log and located in <RLI_HOME>/<instance_name>/logs/scheduler. The default instance name is vds_server, so the path would be: <RLI_HOME>/vds_server/logs/scheduler.
 
 The condition for deleting an archive is based on the total number of archives (configured in the How Many Files to Keep in Archive setting), or the age of the archive (configured in the scheduler.server.log.file.maxTime property in the Advanced section), whichever comes first.
 

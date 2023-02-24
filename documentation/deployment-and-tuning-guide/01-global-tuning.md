@@ -58,7 +58,7 @@ Also, set shell limits for the Max Number of Processes. These steps are describe
 user      soft      nproc      2047
 user    hard      nproc      16384
  	
-><span style="color:red">**IMPORTANT NOTE - Do not set the hard limit for the user equal to (or higher than) the maximum number of file descriptors assigned to the system itself in /proc/sys/fs/file-max. If the hard limit is too high and the user uses all those file descriptors, then the entire system runs out of file descriptors.**
+>[!warning] Do not set the hard limit for the user equal to (or higher than) the maximum number of file descriptors assigned to the system itself in /proc/sys/fs/file-max. If the hard limit is too high and the user uses all those file descriptors, then the entire system runs out of file descriptors.
 
 ## Virtual Machine Considerations
 
@@ -118,7 +118,7 @@ Figure 1.1: Task Settings
 
 Service settings are related to how RadiantOne handles client activity. 
 
-><span style="color:red">**IMPORTANT NOTE - Details about each of the parameters mentioned below can be found in the RadiantOne System Administration Guide. This document is only for pointing out these parameters as key to review when tuning.**
+>[!warning] Details about each of the parameters mentioned below can be found in the RadiantOne System Administration Guide. This document is only for pointing out these parameters as key to review when tuning.
 
 ### Maximum Connections
 
@@ -144,7 +144,7 @@ The length of time to keep a connection open without any activity from the clien
 
 If you are running RadiantOne on a multi-processor machine, performance and efficiency of the server might improve by increasing the value for the Number of Processing Queues parameter. This parameter can be changed from the Main Control Panel > Settings Tab > Limits section > Custom Limits sub-section (requires [Expert Mode](00-preface#expert-mode)). The default value is 2 and is sufficient for most deployments. As a general guideline, this value should never exceed 3. 
 
-><span style="color:red">**IMPORTANT NOTE - This parameter does not affect the actual number of physical processors that get used. However, it improves RadiantOne’s utilization of the available processors.**
+>[!warning] This parameter does not affect the actual number of physical processors that get used. However, it improves RadiantOne’s utilization of the available processors.
 
 A better indicator for performance is the number of threads allocated for each processing queue. For each processing queue, the maximum number of concurrent worker threads is 4 by default. This value can be seen/changed in the [Max Concurrent Working Threads](#max-concurrent-working-threads) parameter.
 
@@ -181,7 +181,7 @@ The checking interval parameter indicated in the Per User or Per Computer sectio
 
 The following groups of users found on the Main Control Panel > Settings tab > Limits section > Per User sub-section allow you to configure fine-grained activity control:
 
->**Note - Members of the Administrators group specified on the Main Control Panel > Settings Tab > Server Front End > Administration section do not have any access limitations in terms of max connections or max operations per second.**
+>[!note] Members of the Administrators group specified on the Main Control Panel > Settings Tab > Server Front End > Administration section do not have any access limitations in terms of max connections or max operations per second.
 
 **Anonymous**
 
@@ -218,7 +218,7 @@ Example set for a range of IPv6 addresses:
 
 To enable checking for this category of computer/client, check the Enable Access Checking option in the Special IP Address section on the Per Computer sub-section. Enter a number for the maximum number of connections all computers are allowed to create. Also enter a number for the maximum number of operations per second they are allowed to issue. Any parameters that are set to 0 have no limits applied. The restrictions checking interval dictates the number of seconds the server should wait before determining if these thresholds are reached.
 
-><span style="color:red">**IMPORTANT NOTE - If you have enabled activity checking for both users (special users, authenticated and/or anonymous) and computers (IP address and Special IP), the activity per computer takes precedence over the user activity. The order of precedence is special IP addresses, IP addresses, special users, authenticated users, and then anonymous users.  For example, let’s say that special user access checking, IP address access checking, and special IP address access checking have been enabled, and the max connections are set to 50, 30, and 40 respectively. Any user who connects that is a member of the special users group from a computer that is not a member of the special IP address group, is only allowed to make a maximum of 30 connections during the checking interval.**
+>[!warning] If you have enabled activity checking for both users (special users, authenticated and/or anonymous) and computers (IP address and Special IP), the activity per computer takes precedence over the user activity. The order of precedence is special IP addresses, IP addresses, special users, authenticated users, and then anonymous users.  For example, let’s say that special user access checking, IP address access checking, and special IP address access checking have been enabled, and the max connections are set to 50, 30, and 40 respectively. Any user who connects that is a member of the special users group from a computer that is not a member of the special IP address group, is only allowed to make a maximum of 30 connections during the checking interval.
 
 ## Logging
 
@@ -232,7 +232,9 @@ In the Log Settings section, select VDS – Server from the drop-down list. The 
  
 Figure 1. 2: Server Log Settings
 
+<!--
 In the Access Logs section, Advanced section (requires [Expert Mode](00-preface#expert-mode)), the Buffer Size for File logging property can be used for tuning. Increasing this value results in fewer writes by RadiantOne to the log file on disk. However, increasing this value requires more memory. Make sure the machine memory and amount allocated to the RadiantOne service can accommodate the buffer size you set.
+-->
 
 You should also put in place an effective log management strategy: location, rollover and archiving. For details on these options, please see the RadiantOne Logging and Troubleshooting Guide.
 

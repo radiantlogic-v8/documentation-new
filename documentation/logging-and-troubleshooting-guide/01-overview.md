@@ -16,7 +16,7 @@ The log4J configurations for the RadiantOne components use paths that include ${
  
 ![An image showing ](Media/Image1.1.jpg)
 
-Figure 1.1: Log4J Configuration Settings in Zookeeper
+Figure 1: Log4J Configuration Settings in Zookeeper
 
 The default root location/drive is identified by the environment variable RLI_HOME.
 
@@ -26,7 +26,7 @@ logging.root=${env:RLI_HOME}
 
 You can change the value of logging.root to indicate another location/drive. Restart the RadiantOne services if you change the default logging root.
 
->**Note – This is a node-specific configuration as each node may need to log to its own drive/location.**
+>[!note] This is a node-specific configuration as each node may need to log to its own drive/location.
 
 ### Log Levels
 
@@ -70,7 +70,7 @@ Another series of checking related to DNS resolution (for all cluster nodes), Zo
 
 C:\radiantone\vds\bin\advanced>cluster.bat remote-check
 
-><span style="color:red">**IMPORTANT NOTE - If you experience any problems, it is best to run these system checks prior to restarting any RadiantOne services.  The result of these checks can provide a glimpse at the current system environment and help determine if something in the environment is contributing to your problem.**
+>[!warning] If you experience any problems, it is best to run these system checks prior to restarting any RadiantOne services.  The result of these checks can provide a glimpse at the current system environment and help determine if something in the environment is contributing to your problem.**
 
 The items checked are outlined below.
 -	CPU Cores - minimum 2 cores.
@@ -93,7 +93,7 @@ In general, knowing statistics about your data can be helpful for troubleshootin
 
 To get statistics about the entries in your view, you can use the LDIFStatistics function of the <RLI_HOME>/bin/advanced/ldif-utils utility. Once you have an LDIF file containing your entries, pass the file name and path to the utility with the -f property. 
 
->**Note – if you have nested groups, and want them included in the results, include -n in the command.**
+>[!note] if you have nested groups, and want them included in the results, include -n in the command.
 
 The syntax of the command is:
 
@@ -247,6 +247,6 @@ Some settings in the Main Control Panel are accessible only in Expert Mode. To s
 
 ![An image showing ](Media/expert-mode.jpg)
 
-Figure 1. 2: Switching Control Panel to Expert Mode
+Figure 2: Switching Control Panel to Expert Mode
 
->**Note - The Main Control Panel saves the last mode (Expert or Standard) it was in when you log out and returns to this mode automatically when you log back in. The mode is saved on a per-role basis.**
+>[!note] The Main Control Panel saves the last mode (Expert or Standard) it was in when you log out and returns to this mode automatically when you log back in. The mode is saved on a per-role basis.**

@@ -76,7 +76,7 @@ To create entries based on an object class other than group, organizationalUnit,
 
 When creating a new group, you can select from the following list of object classes: group, groupOfNames, groupOfUniqueNames, groupOfUrls. More than one object class may be selected. 
 
->**Note – if you want the group to be a dynamic group, you must choose the groupOfUrls object class.**
+>[!note] if you want the group to be a dynamic group, you must choose the groupOfUrls object class.
 
 ![An image showing ](Media/Image3.154.jpg)
 
@@ -118,7 +118,7 @@ To add explicit members, follow the steps below.
 
 2.	If group members can be other groups, click the checkbox next to the “Search Groups” option in the upper left. 
 
->**Note – if RadiantOne needs to [support nested groups](access-control#enable-nested-groups), you must enable that feature.**
+>[!note] if RadiantOne needs to [support nested groups](access-control#enable-nested-groups), you must enable that feature.
 
 3.	Click **Add More** and then click **Browse Tree** to select a starting point in the virtual namespace to look for users.
 
@@ -149,7 +149,7 @@ To add dynamic members with the assistance of a wizard, follow the steps below.
 
 3.	If group members can be other groups, click on the checkbox next to the “Search Groups” option in the upper left.
 
->**Note – if RadiantOne needs to [support nested groups](access-control#enable-nested-groups), you must enable that feature.**
+>[!note] if RadiantOne needs to [support nested groups](access-control#enable-nested-groups), you must enable that feature.
 
 4.	Click **Add**.
 
@@ -280,7 +280,7 @@ Figure 8: Binary Attribute Editor
 
 To reset a user’s password, select the user entry in the tree and on the right, select the userPassword attribute. Click Modify Attribute > Edit. Change the value and click **OK**.
 
->**Note – If the account is in a proxy virtual view to an Active Directory backend, you can reset the password using ![reset password](Media/reset-password.jpg) on the Main Control Panel > Directory Browser. The account must be associated with the “user” object class and the data source connection to the backend Active Directory requires SSL.**
+>[!note] If the account is in a proxy virtual view to an Active Directory backend, you can reset the password using ![reset password](Media/reset-password.jpg) on the Main Control Panel > Directory Browser. The account must be associated with the “user” object class and the data source connection to the backend Active Directory requires SSL.
 
 ## Modify RDN
 
@@ -298,7 +298,7 @@ To copy the DN of the selected entry, click ![copy dn](Media/copy-rdn.jpg). This
 
 To change the number of entries displayed below each branch in the directory tree, click ![gear icon](Media/gear-icon.jpg). The default is 20 entries. Enter a new value for the size limit and click OK. Then click ![refresh button](Media/refresh-button.jpg).
 
-><span style="color:red">**IMPORTANT NOTE – if you set the size limit to more than 100, you should make sure the Paged Results Control is enabled for RadiantOne. This setting can be found on the Main Control Panel -> Settings tab -> Server Front End -> Supported Controls.**
+>[!warning] if you set the size limit to more than 100, you should make sure the Paged Results Control is enabled for RadiantOne. This setting can be found on the Main Control Panel -> Settings tab -> Server Front End -> Supported Controls.
 
 ## Export LDIF
 
@@ -308,7 +308,7 @@ Exporting entries to an LDIF file requires enabling [Proxy Authorization](settin
 
 **Location** – select “To a Local File” to download to the local client. The destination of the LDIF file is dictated by the client’s browser settings. Select “To a File on the Server” to download to <RLI_HOME>/vds_server/ldif/export.
 
->**Note – the LDIFZ format is not available for local downloads because the client does not have access to the encryption key.**
+>[!note] the LDIFZ format is not available for local downloads because the client does not have access to the encryption key.
 
 **Source DN** – starting location from where to export entries.
 
@@ -326,8 +326,8 @@ The LDIFZ format (zipped and encrypted) is available for server-side exports onl
  
 Figure 9: Export to LDIF
 
-><span style="color:red">**IMPORTANT NOTE – If an LDIFZ encryption key is not defined and secureldifexport is set to true, the Export LDIF window displays the following message: <br>
-“For security purposes, only encrypted LDIF exports are allowed (using LDIFZ). Please contact your RadiantOne Administrator to configure LDIFZ encryption.”**
+>[!warning] If an LDIFZ encryption key is not defined and secureldifexport is set to true, the Export LDIF window displays the following message: <br>
+“For security purposes, only encrypted LDIF exports are allowed (using LDIFZ). Please contact your RadiantOne Administrator to configure LDIFZ encryption.”
 
 ## Import LDIF
 

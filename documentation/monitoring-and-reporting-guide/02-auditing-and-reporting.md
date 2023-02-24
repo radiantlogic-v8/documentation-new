@@ -2,7 +2,7 @@
 title: Monitoring and Reporting Guide
 description: Monitoring and Reporting Guide
 ---
-
+<!--
 # Chapter 2: Auditing and Reporting
 
 Reports are a key tool for monitoring the health of the RadiantOne service and should be
@@ -22,12 +22,11 @@ There are four recommendations for auditing and reporting:
 
 The following sections describe each recommendation in more details.
 
-><span style="color:red">**IMPORTANT NOTE - The scenarios provided below are general guidelines and entirely optional. You should generate reports as often as required for your deployment.**
+>[!warning] The scenarios provided below are general guidelines and entirely optional. You should generate reports as often as required for your deployment.
 
 ### Analyzing Problems
 
-If consumers of the RadiantOne service are experiencing problems (time-consuming logins, expected information not being returned...etc.), the access report can be helpful in pinpointing
-what is happening on the server and diagnosing the problem.
+If consumers of the RadiantOne service are experiencing problems (time-consuming logins, expected information not being returned...etc.), the access report can be helpful in pinpointing what is happening on the server and diagnosing the problem.
 
 The instructions in this section assume the following:
 
@@ -46,13 +45,7 @@ file>. On UNIX platforms, execute runAccessLog2DB.sh <path to
 AccessLog2DBconfig.properties file>. The AccessLog2DBconfig.properties file is in
 <RLI_HOME>/config/log2db.
 
-The Log2DB utility writes the access log information into a database. After, generate the Access
-Report from the Main Control Panel -> Settings Tab -> Reporting section -> Access Log Report
-sub-section. On the right side, click on the Generate Report button. The report can be found in
-the location indicated in the Output Location parameter which is <RLI_HOME>/reporting-
-birt/reports by default. If RadiantOne is deployed in a cluster, you can generate a single report
-that aggregates statistics from all nodes in the cluster. For more information on configuring and
-generating an Access Log report, see [Access Log Report Settings](#access-log-report-settings) and [Access Log Report](#access-log-report).
+The Log2DB utility writes the access log information into a database. After, generate the Access Report from the Main Control Panel -> Settings Tab -> Reporting section -> Access Log Report sub-section. On the right side, click on the Generate Report button. The report can be found in the location indicated in the Output Location parameter which is <RLI_HOME>/reporting-birt/reports by default. If RadiantOne is deployed in a cluster, you can generate a single report that aggregates statistics from all nodes in the cluster. For more information on configuring and generating an Access Log report, see [Access Log Report Settings](#access-log-report-settings) and [Access Log Report](#access-log-report).
 
 The summary section provides you with valuable information regarding how long operations are
 taking and a summary of error codes found. In the detailed section of the report, you will find
@@ -85,7 +78,7 @@ To log configuration changes made through command line, using the vdsconfig util
 config logging with the following steps:
 
 
-><span style="color:red">**IMPORTANT NOTE – these steps require downtime since all services must be stopped. If RadiantOne is deployed in a cluster, perform the following steps on each node.**
+>[!warning] these steps require downtime since all services must be stopped. If RadiantOne is deployed in a cluster, perform the following steps on each node.
 
 1. Stop all RadiantOne services including ZooKeeper.
 2. Edit <RLI_HOME>\config\advanced\features.properties and set:
@@ -106,8 +99,8 @@ You can generate the Audit Report from the Main Control Panel > Settings Tab > R
 report can be found in the location indicated in the Output Location parameter which is <RLI_HOME>/reporting-birt/reports by default. If RadiantOne is deployed in a cluster, you can
 generate a single report that aggregates statistics from all nodes in the cluster. For more information on configuring and generating an audit report, see [Audit Report Settings](#audit-report-settings) and [Audit Report](#audit-report).
 
-><span style="color:red">**IMPORTANT NOTE – you can also audit user activity and have the report sorted by
-groups. The [Group Audit Report](#group-audit-report) is similar in output to the Audit Report. The only difference being the report categorizes user activity based on groups.**
+>[!warning] you can also audit user activity and have the report sorted by
+groups. The [Group Audit Report](#group-audit-report) is similar in output to the Audit Report. The only difference being the report categorizes user activity based on groups.
 
 The session information is listed at the top of a section followed by the user DN that performed
 the operations. Next to the user DN is a table consisting of all types of operations performed by
@@ -124,23 +117,22 @@ frequency the Log2DB utility is run and the activity against RadiantOne). This i
 like sizing the table properly for log history it should store, clearing the old log content from the
 table when it is no longer needed...etc.
 
->**Note – For assistance with establishing log maintenance and a reporting program, please contact Radiant Logic for professional services.**
+>[!note] For assistance with establishing log maintenance and a reporting program, please contact Radiant Logic for professional services.
 
 ## Configuration
 
 The reports are built on top of the capability of RadiantOne to store the access log content into a
 database table. RadiantOne uses a separate utility named Log2DB to log into a database. There are four configuration settings that need to be considered. The [Log2DB settings](#log2db-settings), the [Access Report settings](#access-log-report-settings), the [Audit Report settings](#audit-report-settings), and the [Group Audit Report settings](#group-audit-report-settings). These are described in this section.
 
-><span style="color:red">**IMPORTANT NOTE – the database associated with the Log2DB settings must be
-running in order start the Log2DB Utility.**
+>[!warning] the database associated with the Log2DB settings must be running in order start the Log2DB Utility.
 
 ### Log2DB Settings
 
 The database that houses the table which contains the RadiantOne access log content may be in any database server you choose. The default settings leverage a Derby database that is
 included with RadiantOne. These settings are described below and are located on the Main Control Panel > Settings Tab > Reporting section > [Log2DB Settings](#log2db-settings) sub-section.
 
-><span style="color:red">**IMPORTANT NOTE – if you plan on using the RadiantOne [default report generation](#generating-reports),
-then the log2db database must be Microsoft SQL Server, Oracle, Derby or PostgreSQL.**
+>[!warning] if you plan on using the RadiantOne [default report generation](#generating-reports),
+then the log2db database must be Microsoft SQL Server, Oracle, Derby or PostgreSQL.
 
 The default configuration file for logging to a database is:
 <RLI_HOME>/config/log2db/AccessLog2DBconfig.properties
@@ -161,8 +153,7 @@ contents.
 - Table Creation
 <br>Enter the appropriate create table syntax for the type of database you want to use. If you want to create the table on your own, then you can leave this parameter blank.
 
-><span style="color:red">**IMPORTANT NOTE – By default, the FILTER field in the table only allows 255 characters. If you are expecting client queries containing filters longer than 255 characters, edit the length accordingly in the create table statement and recreate the
-log table. Otherwise, any request from clients containing a filter longer than 255 characters is not logged into the database table by RadiantOne.**
+>[!warning] By default, the FILTER field in the table only allows 255 characters. If you are expecting client queries containing filters longer than 255 characters, edit the length accordingly in the create table statement and recreate the log table. Otherwise, any request from clients containing a filter longer than 255 characters is not logged into the database table by RadiantOne.
 
 - Testing the Connection
 <br>Click the Test Connection button to verify the connection to the database is working.
@@ -240,15 +231,15 @@ Per operation type, you can specify that any operation that exceeds a specified 
 time, is included in the report. Include the maximum amount of time (in milliseconds) that a
 response should not exceed.
 
->**Note - If the check box is not checked for the Response Time Exceeding
-parameter, then nothing is reported for this kind of operation.**
+>[!note] If the check box is not checked for the Response Time Exceeding
+parameter, then nothing is reported for this kind of operation.
 
 Error Codes to Report
 Per operation type you can indicate certain error codes to include in the report. Enter the
 specific error codes you are concerned about.
 
->**Note – If the check box is not checked for the Error Codes to Report parameter,
-then nothing is reported for this kind of operation.**
+>[!note] If the check box is not checked for the Error Codes to Report parameter,
+then nothing is reported for this kind of operation.
 
 ### Audit Report Settings
 
@@ -307,8 +298,8 @@ To generate the access log report:
 5. Indicate a time period the report should include (start and end dates and times).
 6. To generate a report that aggregates statistics from all nodes in your RadiantOne clusterinto a single report, check the Global Report box.
 7. To generate a report for a single node, indicate the server name in the Server Name field.
-><span style="color:red">**IMPORTANT NOTE – if RadiantOne is deployed in a cluster, the default behavior of the
-Access Report generator is to create a report for each node. Values entered in the Server Name field override checking the Global Report Box.**
+>[!warning] if RadiantOne is deployed in a cluster, the default behavior of the
+Access Report generator is to create a report for each node. Values entered in the Server Name field override checking the Global Report Box.
 8. You can specify a session ID if needed.
 
 ![An image showing ](Media/Image2.2.jpg)
@@ -384,10 +375,7 @@ include the result code, date, session ID, connection ID, operation ID, and the 
 Figure 2. 5 : Example of Bind Operations Details in an Access Report
 
 
->**Note – If both the Response Time Exceeding and the Error Codes to Report options are unchecked for ALL operations (Bind, Base search, One Levelsearch, Sub Tree search, Add, Modify, Delete and Compare), the detailed part
-of the report is not generated. If both Response Time Exceeding and the ErrorCodes to Report options are unchecked just for a specific kind of operation,
-the corresponding part of the report designated for the operation is empty. However, if one of these options is enabled for a specific operation and no
-operations of the type are found, the part is empty, but it is still included in the detailed report.**
+>[!note] If both the Response Time Exceeding and the Error Codes to Report options are unchecked for ALL operations (Bind, Base search, One Levelsearch, Sub Tree search, Add, Modify, Delete and Compare), the detailed part of the report is not generated. If both Response Time Exceeding and the ErrorCodes to Report options are unchecked just for a specific kind of operation, the corresponding part of the report designated for the operation is empty. However, if one of these options is enabled for a specific operation and no operations of the type are found, the part is empty, but it is still included in the detailed report.**
 
 ### Audit Report
 
@@ -402,8 +390,8 @@ To generate the audit report:
     into a single report, check the Global Report box.
 7. To generate a report for a single node, indicate the server name in the Server Name field.
 
-><span style="color:red">**IMPORTANT NOTE – if RadiantOne is deployed in a cluster, the default behavior of the
-Audit Report generator is to create a report for each node. The values entered in the Server Name field override checking the Global Report box.**
+>[!warning] if RadiantOne is deployed in a cluster, the default behavior of the
+Audit Report generator is to create a report for each node. The values entered in the Server Name field override checking the Global Report box.
 
 8. You can specify a session ID if needed.
 
@@ -456,3 +444,4 @@ the user in addition to the total number of times that type of operation was per
 ![An image showing ](Media/Image2.9.jpg)
 
 Figure 2. 9 : Example Contents of a Group Audit Report
+-->

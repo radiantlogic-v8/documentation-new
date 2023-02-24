@@ -7,7 +7,7 @@ description: System Administration Guide
 
 The idea behind interception is that it allows you to customize and override the default processing of RadiantOne. In most cases, this is accomplished with interception scripts. However, there are also some built-in configuration capabilities that allow you to customize the behavior of RadiantOne within invoking a script. This section introduces Global Interception Scripts, User to DN Mapping and Search Filter Mapping Rules.
 
->**Note – This section is accessible only in [Expert Mode](introduction#expert-mode).
+>[!note] This section is accessible only in [Expert Mode](introduction#expert-mode).
 
 ## Global Interception
 
@@ -91,7 +91,7 @@ Figure 4: Authentication Process based on User ID to DN Mapping
 
 ### Manage Global User to DN Mapping
 
-This location is just for configuring a global user ID to DN mapping. If you are configuring a mapping for [Kerberos](security#kerberos), [NTLM](security#ntlm), or [MD5](security#md5), the configuration is set in those sections located on the Main Control Panel > Settings Tab > Security section > Authentication Methods.
+This location is just for configuring a global user ID to DN mapping. If you are configuring a mapping for <!--[Kerberos](security#kerberos), [NTLM](security#ntlm) or --> [MD5](security#md5), the configuration is set in those sections located on the Main Control Panel > Settings Tab > Security section > Authentication Methods.
 
 There are three different ways to determine the DN from the user ID (using regular expression syntax). Each is described below.
 
@@ -197,7 +197,7 @@ Incoming Filter: (.*)\(zipcode=(.+)\)(.*)
 
 Replacement: $1(l=`ldap://[vds]/o=companydirectory?ou?sub?(postalcode=$2)`)$3
 
-><span style="color:red">**IMPORTANT NOTE – in the replacement syntax, the LDAP URL is enclosed in backticks/grave accents (generally located below the tilde character on keyboards), not to be mistaken for single quotes.**
+>[!warning] in the replacement syntax, the LDAP URL is enclosed in backticks/grave accents (generally located below the tilde character on keyboards), not to be mistaken for single quotes.**
 
 ![Sample Search Filter Mapping with Lookup](Media/Image3.128.jpg)
  
@@ -256,7 +256,7 @@ Figure 12: Special Attributes Handling
 
 5.	Select a base DN containing the entries (e.g. users) for which the back link attributes should be managed. In the example below, ou=allprofiles is selected.
 
-><span style="color:red">**IMPORTANT NOTE – If your users and groups are in RadiantOne Universal Directory stores, and you plan on enabling the Optimize Linked Attribute setting and must support nested groups, only one user location per Universal Directory store is supported. For example, having a user location configured for ou=people1,dc=myhdap and ou=people2,dc=myhdap (both in the same dc=myhdap store) is not supported. In this case, you should configure a single user location as dc=myhdap as a shared parent for both user containers. For information about the Optimize Linked Attribute function for Universal Directory stores, see the Namespace Configuration Guide. For information about the Optimize Linked Attribute function for persistent cache stores, see the Deployment and Tuning Guide.**
+>[!warning] If your users and groups are in RadiantOne Universal Directory stores, and you plan on enabling the Optimize Linked Attribute setting and must support nested groups, only one user location per Universal Directory store is supported. For example, having a user location configured for ou=people1,dc=myhdap and ou=people2,dc=myhdap (both in the same dc=myhdap store) is not supported. In this case, you should configure a single user location as dc=myhdap as a shared parent for both user containers. For information about the Optimize Linked Attribute function for Universal Directory stores, see the Namespace Configuration Guide. For information about the Optimize Linked Attribute function for persistent cache stores, see the Deployment and Tuning Guide.
 
 ![An image showing ](Media/Image3.131.jpg)
  
@@ -314,13 +314,13 @@ If referential integrity is enabled, and you want RadiantOne to ensure any value
 
 Referential integrity is only supported for Universal Directory stores and persistent cache. This means that the users and groups locations configured must point to a Universal Directory store or persistent cache.
 
-><span style="color:red">**IMPORTANT NOTE – If you cache entries from a directory backend that maintains referential integrity, and use a native change type for detecting changes for cache refresh (e.g. Changelog, Active Directory, DirSync), you must list all backlink attributes that need refreshed in the cache when a change is detected on the main object. For example, to update the directReports attribute in the persistent cache when a change is detected on a user entry, list the manager attribute in the List of Referential Integrity Attributes property. Some common related attributes typically found in Active Directory are listed below (this list is not exhaustive):
+>[!warning] If you cache entries from a directory backend that maintains referential integrity, and use a native change type for detecting changes for cache refresh (e.g. Changelog, Active Directory, DirSync), you must list all backlink attributes that need refreshed in the cache when a change is detected on the main object. For example, to update the directReports attribute in the persistent cache when a change is detected on a user entry, list the manager attribute in the List of Referential Integrity Attributes property. Some common related attributes typically found in Active Directory are listed below (this list is not exhaustive):
      member/memberOf
      manager/directReports
      owner/ownerBL
      altRecipient/altRecipientBL
      dLMemRejectPerms/dLMemSubmitPermsBL
-     publicDelegates/publicDelegatesBL**
+     publicDelegates/publicDelegatesBL
 
 Referential integrity is not enabled by default. To enable and configure it, following the steps below.
 
@@ -390,7 +390,7 @@ For groups defined in this section, RadiantOne automatically evaluates and compu
 
 Figure 19: Example - Dynamic Group Translated into Virtual Static Group
 
->**Note – To avoid returning duplicate entries, when a dynamic group is queried in RadiantOne, if both member and memberURL are requested, the memberURL attribute is not returned.**
+>[!note] To avoid returning duplicate entries, when a dynamic group is queried in RadiantOne, if both member and memberURL are requested, the memberURL attribute is not returned.
 
 #### Caching Dynamic Groups
 
@@ -400,7 +400,7 @@ The default and recommended behavior of RadiantOne for cached dynamic groups is 
 
 If you require the group members to be cached as static group entries, check the Enable Caching option when you define the Dynamic Group in Special Attributes Handling. Enabling this setting means that the static groups are stored in the persistent cache (members are evaluated and cached in the member attribute) and refreshed as needed with either a periodic refresh or a real-time refresh. If caching is not enabled, the dynamic groups are stored in the cache, and the evaluation of membership to compute the static group is performed when the group is requested. 
 
->**Note – if the location of the dynamic group is already configured for persistent cache when you select to Enable Caching in the dynamic group setting, you must reindex the persistent cache to ensure the group members are also in the cache.**
+>[!note] if the location of the dynamic group is already configured for persistent cache when you select to Enable Caching in the dynamic group setting, you must reindex the persistent cache to ensure the group members are also in the cache.
 
 ![Cache Setting for Group Members](Media/Image3.139.jpg)
 
@@ -479,7 +479,7 @@ Done in 12ms
 
 Some directory vendors, like Microsoft Active Directory, support nested groups where groups can be members of other groups. For clients that are unable to process nested groups, RadiantOne can flatten them and return all members in a single response. The unnest groups setting is applicable to proxy views or model-driven views (designed in Context Builder) that have been configured for persistent cache. Flattening nested groups adds processing overhead to RadiantOne, so persistent cache is required for optimal performance, and you must configure the unnest groups setting before initializing the persistent cache. The unnest group setting is not applicable to Universal Directory stores.
 
->**Note – Using a computed attribute in the virtual view to unnest groups is an alternative to using the unnest groups setting. However, the computed attribute approach does not support circular groups (GroupA is a member of GroupB and Group B is a member of GroupA) whereas the unnest groups setting does.**
+>[!note] Using a computed attribute in the virtual view to unnest groups is an alternative to using the unnest groups setting. However, the computed attribute approach does not support circular groups (GroupA is a member of GroupB and Group B is a member of GroupA) whereas the unnest groups setting does.**
 
 The unnest groups setting is not enabled by default. To define a naming context that contains nested groups that RadiantOne should automatically flatten for client queries, follow the steps below.
 
@@ -535,7 +535,7 @@ Figure 22: Operations Redirection Setting
 
 RadiantOne includes a framework for calling custom authentication services like RSA SecurID and Yubicloud. This allows standard LDAP applications to benefit from stronger, multi-factor security without requiring any changes to their authentication logic. Users of the application can log in with their existing ID and password + tokencode/One Time Password (OTP). RadiantOne translates the standard LDAP authentication (bind) request into a validation of the user’s password to the authoritative source (whether that is local in RadiantOne namespace or some other authoritative backend) and a call to your specialized authentication service like RSA SecurID (or others) to validate the rest of the credentials. The custom authentication service may provide validation for the entire credentials (e.g. user’s password plus additional tokencode/pin/OTP) or just a portion of the credentials (e.g. just validate the tokencode/pin).
 
->**Note – Logic for Custom Authentication Providers is invoked like an interception script. As such, any global interception scripts defined in RadiantOne are executed before custom authentication providers.**
+>[!note] Logic for Custom Authentication Providers is invoked like an interception script. As such, any global interception scripts defined in RadiantOne are executed before custom authentication providers.
 
 RadiantOne includes sample scripts for RSA SecurID and Yubikey. For details on this configuration and how to test, please see the Custom Authentication Providers Guide.
 
@@ -543,7 +543,7 @@ RadiantOne includes sample scripts for RSA SecurID and Yubikey. For details on t
 
 Many different custom authentication providers can be defined, each configured for a specific naming context/branch in the RadiantOne namespace where you want this logic to be invoked.
 
-><span style="color:red">**IMPORTANT NOTE – RadiantOne includes code to call Yubicloud (yubikeys) or RSA SecurID. All other MFA solutions require customization. These customizations are typically implemented by the Radiant Logic Solution Integrator team via professional services. If the 2nd factor is a form of code/one-time password that can be appended to the password in the bind (by the client app) and RadiantOne can call a service to validate the code, then we should be able to support it. If you are interested in integrating with an MFA solution, contact your Radiant Logic Account Representative to discuss the use case.**
+>[!warning] RadiantOne includes code to call Yubicloud (yubikeys) or RSA SecurID. All other MFA solutions require customization. These customizations are typically implemented by the Radiant Logic Solution Integrator team via professional services. If the 2nd factor is a form of code/one-time password that can be appended to the password in the bind (by the client app) and RadiantOne can call a service to validate the code, then we should be able to support it. If you are interested in integrating with an MFA solution, contact your Radiant Logic Account Representative to discuss the use case.
 
 The following configuration steps should be considered when defining a custom authentication provider. An example script named RsaRestAuthenticator.java is included in RadiantOne at <RLI_HOME>\vds_server\custom\src\com\rli\scripts\customobjects\rsa. 
 

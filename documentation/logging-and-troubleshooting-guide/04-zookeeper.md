@@ -18,6 +18,6 @@ Figure 4.1: Warning Indicating ZooKeeper Entered Read-only Mode
 
 To recover from ZooKeeper read-only mode, make sure ZooKeeper is restarted on more than half of the cluster nodes. Once the quorum is reestablished, the RadiantOne cluster recovers automatically.
 
->**Note - As an alternative to the default read-only mode, ZooKeeper can be configured for SHUTDOWN mode when the quorum is lost. In this case, the RadiantOne service on all cluster nodes shuts down. If this behavior is preferable, set <span style="color:lightblue">"onZkWriteLossVdsServerBehavior"</span> : "SHUTDOWN", for the /radiantone/v1/cluster/config/vds_server.conf node on the Main Control Panel -> ZooKeeper tab. For more information, see the RadiantOne Deployment and Tuning Guide.**
+>[!note] As an alternative to the default read-only mode, ZooKeeper can be configured for SHUTDOWN mode when the quorum is lost. In this case, the RadiantOne service on all cluster nodes shuts down. If this behavior is preferable, set **"onZkWriteLossVdsServerBehavior"** : "SHUTDOWN", for the /radiantone/v1/cluster/config/vds_server.conf node on the Main Control Panel -> ZooKeeper tab. For more information, see the RadiantOne Deployment and Tuning Guide.**
  
  

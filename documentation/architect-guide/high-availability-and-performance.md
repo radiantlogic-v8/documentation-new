@@ -101,7 +101,7 @@ Figure 6: High Availability at the Application Layer
 
 At the Application Layer, use an LDAP-aware hardware load balancer to distribute the requests to the cluster nodes.
 
->**NOTE – some clients have the built-in capability to failover to multiple LDAP servers. This may remove the requirement to have a hardware load balancer.**
+>[!note] some clients have the built-in capability to failover to multiple LDAP servers. This may remove the requirement to have a hardware load balancer.
 
 ### High Availability at the Data Source Access Layer
 
@@ -114,7 +114,7 @@ Figure 7: Load Balancing/Failover to Backend Servers
 
 If you require either load balancing and/or failover to the underlying directories, you can use a hardware load balancer between RadiantOne and the underlying directories (as depicted above). The data source configured in RadiantOne would point to the hardware load balancer and this middle layer would be configured with access to the required backend servers.
 
->**NOTE – if you only require failover to the back-end LDAP servers (no load balancing required), then you can use the built-in mechanism of the RadiantOne service for this. When configuring the LDAP data source, you can list the failover server for that specific back-end in the Failover Servers parameter. Multiple failover servers may be listed (if they are exact replicas of the primary server). In this scenario, a hardware load balancer is not required.**
+>[!note] if you only require failover to the back-end LDAP servers (no load balancing required), then you can use the built-in mechanism of the RadiantOne service for this. When configuring the LDAP data source, you can list the failover server for that specific back-end in the Failover Servers parameter. Multiple failover servers may be listed (if they are exact replicas of the primary server). In this scenario, a hardware load balancer is not required.
 
 ## Related Material
 

@@ -15,7 +15,7 @@ The configuration and monitoring features described in this section are applicab
 
 A series of graphs are displayed on the Dashboard tab and allow for monitoring a variety of aspects related to a given RadiantOne node. The graphs display CPU usage, JVM memory usage, disk space usage, disk latency and number of client connections.
 
-><span style="color:red">**IMPORTANT NOTE – To use this feature, enable the cluster monitor at Main Control Panel > Settings > Logs > Clustermonitor.**
+>[!warning] To use this feature, enable the cluster monitor at Main Control Panel > Settings > Logs > Clustermonitor.
 
 ![Graphs Related to a Specific RadiantOne Node](Media/Image3.167.jpg)
 
@@ -27,7 +27,7 @@ In the upper right, you can indicate the time range the graphs should display. T
  
 Figure 2: Graph Range
 
-><span style="color:red">**IMPORTANT NOTE - it is generally not recommended to expand the graph range beyond a 12-hour period since it causes a large amount of HTTP and LDAP requests to RadiantOne that is proportional in quantity to the length of the time period requested. For example, a 12-hour period generates ~100 requests.**
+>[!warning] it is generally not recommended to expand the graph range beyond a 12-hour period since it causes a large amount of HTTP and LDAP requests to RadiantOne that is proportional in quantity to the length of the time period requested. For example, a 12-hour period generates ~100 requests.
 
 ## Usage & Activity Tab
 
@@ -126,15 +126,19 @@ Unavailable	| No classname property is defined for the data source.
 
 The graphs in the Network Latency section display the network latency between nodes in a cluster in addition to the network latency on the local node. In the upper right, you can indicate the time range the graphs should display.
 
-><span style="color:red">**IMPORTANT NOTE – To use this feature, enable the cluster monitor at Main Control Panel > Settings > Logs > Clustermonitor.**
+>[!warning] To use this feature, enable the cluster monitor at Main Control Panel > Settings > Logs > Clustermonitor.
 
 ![Network Latency Graphs](Media/Image3.174.jpg)
  
 Figure 8: Network Latency Graphs
 
+<!-- 
+
 ## Settings Tab
 
 To change the server name and manage server certificates, go to the Server Control Panel > Settings tab.
+
+-->
 
 ### Server Name
 
@@ -174,13 +178,15 @@ Changing this value is a delicate operation that must be performed during off-pe
 
 A server certificate used by RadiantOne uniquely identifies it to clients for establishing SSL/TLS and StartTLS connections. RadiantOne supports the JSSE standard provided by Java. RadiantOne is installed with a default self-signed certificate. If you have your own server certificate, please follow the steps listed below in the Replacing the Default Self-signed Certificate section.
 
-><span style="color:red">**IMPORTANT NOTE – Every time you change the RadiantOne server certificate, you must export the public key and import this public key into the [Client Certificate Truststore](client-certificate-trust-store) (unless the CA that signed the server certificate is already trusted). Also, the RadiantOne server certificate is shared by the Jetty server to support HTTPS access to the Control Panel(s). If you prefer HTTPS access to the Main Control Panel to use a different certificate, you must [manually update the settings for Jetty](#updating-certificate-settings-for-jetty-https-access-to-the-main-control-panel).**
+>[!warning] Every time you change the RadiantOne server certificate, you must export the public key and import this public key into the [Client Certificate Truststore](client-certificate-trust-store) (unless the CA that signed the server certificate is already trusted). Also, the RadiantOne server certificate is shared by the Jetty server to support HTTPS access to the Control Panel(s). If you prefer HTTPS access to the Main Control Panel to use a different certificate, you must [manually update the settings for Jetty](#updating-certificate-settings-for-jetty-https-access-to-the-main-control-panel).
 
 ### Replacing the Default Self-Signed Certificate
 
 During the RadiantOne installation, a default self-signed certificate is generated for RadiantOne. This self-signed certificate can be replaced with one assigned by a Certificate Authority (CA). Follow the steps below corresponding to your certificate type. If you require a certificate and RadiantOne configuration that is FIPS 140-2 compliant, skip the steps in this section and see the RadiantOneFIPS_Mode Guide.
 
-><span style="color:red">**IMPORTANT NOTE – if RadiantOne is deployed in a cluster, and each node has their own server certificate, the following steps must be performed on each node independently.**
+>[!warning] if RadiantOne is deployed in a cluster, and each node has their own server certificate, the following steps must be performed on each node independently.
+
+<!-- 
 
 #### JKS Certificate
 
@@ -206,11 +212,11 @@ Enter key password for <rli>
 -	The -dname value is the name of the machine RadiantOne is running on.
 -	The -alias value must be rli
 
-><span style="color:red">**IMPORTANT NOTE - This stores a new certificate in the rli.keystore as alias rli, and with common name:machine1.novato.radiantlogic.com. Machine1 in this case is the name to reference RadiantOne through TCP/IP, so make sure to enter a valid dname parameter matching the hostname of the machine where RadiantOne is running. At this point the certificate will be “self-signed”. Later, the certificate will be modified and signed by the CA.**
+>[!warning] This stores a new certificate in the rli.keystore as alias rli, and with common name:machine1.novato.radiantlogic.com. Machine1 in this case is the name to reference RadiantOne through TCP/IP, so make sure to enter a valid dname parameter matching the hostname of the machine where RadiantOne is running. At this point the certificate will be “self-signed”. Later, the certificate will be modified and signed by the CA.
 
 5.	From the Server Control Panel -> Settings tab, click **View** next to View Server Certificate. The initial key has been generated. 
 
->**Note – The View button is enabled for JKS certificate types only. It is not applicable for another other certificate types.**
+>[!note] The View button is enabled for JKS certificate types only. It is not applicable for another other certificate types.
 
 ![SSL Server Certificate for RadiantOne](Media/Image3.175.jpg)
 
@@ -246,7 +252,7 @@ C:\radiantone\vds\jdk\jre\bin>keytool -import -file c:\radiantone\vds\vds_server
 Enter keystore password: radiantlogic
 ```
 
-><span style="color:red">**IMPORTANT NOTE – The Root CA certificate and any intermediary signing certificates must be imported into rli.keystore.**
+>[!warning] The Root CA certificate and any intermediary signing certificates must be imported into rli.keystore.
 
 13.	Next, you can generate a certificate signing request. The next few steps describe how to generate a request file that will be sent to the Microsoft CA so it can sign the private key that was generated in step 3 above.
 
@@ -311,11 +317,11 @@ Certificate reply was installed in keystore
 [Saving c:\radiantone\vds\vds_server\conf\rli.keystore]
 ```
 
-><span style="color:red">**IMPORTANT NOTE – this updates the server certificate that was created in Step 3. It will now be signed by the CA (and not self-signed anymore).**
+>[!warning] this updates the server certificate that was created in Step 3. It will now be signed by the CA (and not self-signed anymore).
 
 27.	Import the CA Root Certificate (e.g. certca.cer) into the RadiantOne client truststore from the Main Control Panel > Settings Tab > Security section > Client Certificate Truststore. On the right side, click IMPORT.
 
-><span style="color:red">**IMPORTANT NOTE – any client that needs to connect to the RadiantOne service via LDAPS or HTTPS (for the web service interface) must import this CA Root Certificate into their trust store (unless they already trust the CA who signed it).**
+>[!warning] any client that needs to connect to the RadiantOne service via LDAPS or HTTPS (for the web service interface) must import this CA Root Certificate into their trust store (unless they already trust the CA who signed it).
 
 28.	Enter an alias to uniquely identify the certificate in the truststore. Then, depending on the location of the certificate, choose to import the file from the server or the local box from where you are accessing the Control Panel from. After browsing to the certificate, click Open and then OK to exit the Import window.
 
@@ -333,7 +339,7 @@ Certificate reply was installed in keystore
 
 35.	If you made changes to the Server Certificate Key Store, Server Certificate Key Type or Server Certificate Password, restart the RadiantOne service. If RadiantOne is deployed in a cluster, each node has its own server certificate and must be updated independently.
 
-><span style="color:red">**IMPORTANT NOTE – if Jetty is configured to use the same server certificate as RadiantOne (jetty.ssl.useVDSSSLConfig=true in <RLI_HOME>/vds_server/conf/jetty/config.properties), and you modify the RadiantOne server certificate outside of the RadiantOne Main Control Panel (e.g. using command line utilities like keytool), you must [manually update the Jetty settings](#updating-certificate-settings-for-jetty-https-access-to-the-main-control-panel).**
+>[!warning] if Jetty is configured to use the same server certificate as RadiantOne (jetty.ssl.useVDSSSLConfig=true in <RLI_HOME>/vds_server/conf/jetty/config.properties), and you modify the RadiantOne server certificate outside of the RadiantOne Main Control Panel (e.g. using command line utilities like keytool), you must [manually update the Jetty settings](#updating-certificate-settings-for-jetty-https-access-to-the-main-control-panel).
 
 ><span style="color:red">**If you use the RadiantOne SAML Attribute service, manually update the certificate keystore path in <RLI_HOME>/vds_server/conf/saml/server/AttributeService.properties.**
 
@@ -361,13 +367,13 @@ For PKCS12 types of certificates (.pfx or .p12), make sure the certificate is cr
 
 10.	Click **OK** to save the changes.
 
-><span style="color:red">**IMPORTANT NOTE – any client that needs to connect to the RadiantOne service via LDAPS or HTTPS (for the web service interface) must import this public key certificate into their trust store (unless they already trust the CA who signed it).**
+>[!warning] any client that needs to connect to the RadiantOne service via LDAPS or HTTPS (for the web service interface) must import this public key certificate into their trust store (unless they already trust the CA who signed it).
 
 11.	Save the changes.
 
 12.	Restart the RadiantOne service. If RadiantOne is deployed in a cluster, each node has its own server certificate and must be updated independently.
 
-><span style="color:red">**IMPORTANT NOTE – if Jetty is configured to use the same SSL certificate as RadiantOne (jetty.ssl.useVDSSSLConfig=true in <RLI_HOME>/vds_server/conf/jetty/config.properties), and you modify the RadiantOne server certificate outside of the RadiantOne Main Control Panel (e.g. using command line utilities like keytool), you must [manually update the Jetty settings](#updating-certificate-settings-for-jetty-https-access-to-the-main-control-panel).**
+>[!warning] if Jetty is configured to use the same SSL certificate as RadiantOne (jetty.ssl.useVDSSSLConfig=true in <RLI_HOME>/vds_server/conf/jetty/config.properties), and you modify the RadiantOne server certificate outside of the RadiantOne Main Control Panel (e.g. using command line utilities like keytool), you must [manually update the Jetty settings](#updating-certificate-settings-for-jetty-https-access-to-the-main-control-panel).
 
 If you use the RadiantOne SAML Attribute service, manually update the certificate keystore path in <RLI_HOME>/vds_server/conf/saml/server/AttributeService.properties.
 
@@ -375,7 +381,7 @@ If you use the RadiantOne SAML Attribute service, manually update the certificat
 
 The Cryptographic Token Interface Standard, PKCS#11, is produced by RSA Security and defines native programming interfaces to cryptographic tokens, such as hardware cryptographic accelerators and Smartcards. The Sun PKCS#11 provider included in Java is used to facilitate the integration of native PKCS11 tokens. This provider enables RadiantOne to access native PKCS11 tokens. The Sun PKCS11 provider does not implement cryptographic algorithms, but instead acts as a bridge between the Java JCA and JCE APIs and the native PKCS11 cryptographic API, translating the calls between the two. Any cryptographic device (e.g. smartcards, hardware accelerators...etc.) that includes a PKCS11 implementation can be leveraged by RadiantOne. The Sun PCKS11 provider requires an implementation of PKCS11 v2.0 or later installed on the RadiantOne machine. This implementation is in the form of a shared-object library (.so file on Linux) or dynamic-link library (.dll on Windows).
 
->**Note – for an example of RadiantOne deployed with PKCS11 and an NSS Database, see the RadiantOneFIPS_Mode document included with your RadiantOne install.**
+>[!note] for an example of RadiantOne deployed with PKCS11 and an NSS Database, see the RadiantOneFIPS_Mode document included with your RadiantOne install.
 
 1.	Before you can create a PKS11 provider in the JVM you need to create a configuration file. The configuration file is a text file containing key-value pairs for the configuration options. Although there are many options available (see the Oracle Java PKCS11 Reference Guide), the example used below is for NSS.
 
@@ -386,12 +392,12 @@ The Cryptographic Token Interface Standard, PKCS#11, is produced by RSA Security
     nssSecmodDirectory = /home/vdsuser/vds-fips/nssdb
     nssModule = fips
 
-    >**Note - “/usr/lib64” is the folder under which the NSS libraries reside and “/home/vdsuser/vds-fips/nssdb” is the NSS database.**
+    >[!note] “/usr/lib64” is the folder under which the NSS libraries reside and “/home/vdsuser/vds-fips/nssdb” is the NSS database.
 
 2.	Edit the java.security configuration file located at <RLI_HOME>\jdk\jre\lib\security and add the following line (10 is the next sequential number available in this example):
 security.provider.10=sun.security.pkcs11.SunPKCS11 /home/vdsuser/vds-fips/nss_fips.cfg
 
-    >**Note – the new line adds the PKCS11 provider with the appropriate configuration file configured in the step above.**
+    >[!note] the new line adds the PKCS11 provider with the appropriate configuration file configured in the step above.
 
 3.	Open the Server Control Panel > Settings Tab.
 
@@ -413,21 +419,23 @@ security.provider.10=sun.security.pkcs11.SunPKCS11 /home/vdsuser/vds-fips/nss_fi
 
 10.	Enter an alias to uniquely identify the public key certificate in the truststore. Then, depending on the location of the certificate, choose to import the file from the server or the local box from where you are accessing the Control Panel from. After browsing to the certificate, click **Open** and then **OK** to exit the Import window.
 
-><span style="color:red">**IMPORTANT NOTE – any client that needs to connect to the RadiantOne service via LDAPS or HTTPS (for the web service interface) must import this public key certificate into their trust store (unless they already trust the CA who signed it).**
+>[!warning] any client that needs to connect to the RadiantOne service via LDAPS or HTTPS (for the web service interface) must import this public key certificate into their trust store (unless they already trust the CA who signed it).
 
 11.	Save the changes.
 
 12.	Restart the RadiantOne service. If RadiantOne is deployed in a cluster, each node has its own server certificate and must be updated independently.
 
-><span style="color:red">**IMPORTANT NOTE – if Jetty is configured to use the same SSL certificate as RadiantOne (jetty.ssl.useVDSSSLConfig=true in <RLI_HOME>/vds_server/conf/jetty/config.properties), and you modify the RadiantOne server certificate outside of the RadiantOne Main Control Panel (e.g. using command line utilities like keytool), you must [manually update the Jetty settings](#updating-certificate-settings-for-jetty-https-access-to-the-main-control-panel).**
+>[!warning] if Jetty is configured to use the same SSL certificate as RadiantOne (jetty.ssl.useVDSSSLConfig=true in <RLI_HOME>/vds_server/conf/jetty/config.properties), and you modify the RadiantOne server certificate outside of the RadiantOne Main Control Panel (e.g. using command line utilities like keytool), you must [manually update the Jetty settings](#updating-certificate-settings-for-jetty-https-access-to-the-main-control-panel).
 
 ><span style="color:red">**If you use the RadiantOne SAML Attribute service, manually update the certificate keystore path in <RLI_HOME>/vds_server/conf/saml/server/AttributeService.properties.**
+
+-->
 
 ## Updating Certificate Settings for Jetty (HTTPS Access to the Main Control Panel) 
 
 For HTTPS access to the Main Control Panel, the Jetty web server uses the RadiantOne SSL server certificate by default, but could be updated to use a different store/certificate. To modify the default behavior and configure a separate server certificate for Jetty, modify the <RLI_HOME>/vds_server/conf/jetty/config.properties file and set jetty.ssl.useVDSSSLConfig=false. Then, you can use the <RLI_HOME>/bin/advanced/updateControlPanelSSLConfig command line utility to configure the Jetty certificate properties. Below is an example of the command properties.
 
-><span style="color:red">**IMPORTANT NOTE – if Jetty is configured to use the same SSL certificate as RadiantOne (jetty.ssl.useVDSSSLConfig=true), and you modify the RadiantOne server certificate outside of the RadiantOne Main Control Panel (e.g. using command line utilities like keytool), you must use the tool mentioned below to manually update the Jetty settings.**
+>[!warning] if Jetty is configured to use the same SSL certificate as RadiantOne (jetty.ssl.useVDSSSLConfig=true), and you modify the RadiantOne server certificate outside of the RadiantOne Main Control Panel (e.g. using command line utilities like keytool), you must use the tool mentioned below to manually update the Jetty settings.
 
 C:\radiantone\vds\bin\advanced>updateControlPanelSSLConfig
 
@@ -440,7 +448,7 @@ Command line options:
 -f, --keystore <file>: optional, the JKS Keystore location
 Restart Jetty after making changes to the SSL configuration.
 
-><span style="color:red">**IMPORTANT NOTE – The certificate key password is expected to be the same as the keystore password.**
+>[!warning] The certificate key password is expected to be the same as the keystore password.
 
 ## Tasks Tab
 
@@ -550,13 +558,13 @@ jvmargs	 | Only applicable if newjvm=true. This property can be used to customiz
 
 Figure 20: Task Scheduler and Tasks
 
->**Note – logs related to tasks are located in <RLI_HOME>/vds_server/logs/scheduler/task.<task_name>.log**
+>[!note] logs related to tasks are located in <RLI_HOME>/vds_server/logs/scheduler/task.<task_name>.log**
 
 ### Log Viewer Tab
 
 On the Server Control Panel > Logs Viewer Tab, you will find the logging console.
 
->**Note – only users that belong to the Directory Administrators group have access to the Log Viewer tab.**
+>[!note] only users that belong to the Directory Administrators group have access to the Log Viewer tab.**
 
 Select the log file from the drop-down list. You can also set a filter to limit your view of the log based on certain criteria (this only filters on the subset of log data visible in the log window), refresh the log view and/or choose to refresh continuously.
 
@@ -564,6 +572,6 @@ Select the log file from the drop-down list. You can also set a filter to limit 
  
 Figure 21: Log Viewer
 
-><span style="color:red">**IMPORTANT NOTE – if you change the log location of RadiantOne server log, the Log Viewer tab on the Server Control Panel cannot be used to view the log contents. A basic text viewer (like Notepad) must be used instead.**
+>[!warning] if you change the log location of RadiantOne server log, the Log Viewer tab on the Server Control Panel cannot be used to view the log contents. A basic text viewer (like Notepad) must be used instead.
 
 For complete details on logs and troubleshooting, please see the RadiantOne Logging and Troubleshooting Guide.

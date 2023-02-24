@@ -7,7 +7,7 @@ description: System Administration Guide
 
 The settings found in the Main Control Panel -> Settings Tab -> Limits section are related to enforcing search size limits and activity quotas. These settings prevent against Denial of Service (DoS) attacks towards RadiantOne. Remember to save any changes you make to limits.
 
-><span style="color:red">**IMPORTANT NOTE – Changing any property in the Limits section requires a restart of the RadiantOne service to take effect. If RadiantOne is deployed in a cluster, restart the service on all nodes.**
+>[!warning]Changing any property in the Limits section requires a restart of the RadiantOne service to take effect. If RadiantOne is deployed in a cluster, restart the service on all nodes.
 
 ## Global Limits
 
@@ -39,7 +39,7 @@ C:\SunKit>ldapsearch -h 10.11.10.40 -p 2389 -D "cn=directory manager" -w passwor
 
 The maximum number of entries a search operation can return. This allows for limiting the number of entries LDAP clients can receive from a query. By default this value is set to 0 which means there is no restriction on the size. 
 
-><span style="color:red">**IMPORTANT NOTE - This parameter is a global parameter for RadiantOne. If you want more granular, specific size limits set, then you should set them in the Custom Limits sections.**
+>[!warning] This parameter is a global parameter for RadiantOne. If you want more granular, specific size limits set, then you should set them in the Custom Limits sections.
 
 ### Time Limit
 
@@ -49,7 +49,7 @@ The time (in seconds) during which a search operation is expected to finish. If 
 
 The look through limit is the maximum number of entries you want the server to check in response to a search request. You should use this value to limit the number of entries the server will look through to find an entry. This limits the processing and time spent by the server to respond to potentially bogus search requests (for example, if a client sends a search filter based on an attribute that is not indexed). By default, this is set to 0, which means that there is no limit set for the number of entries that the server will look through.
 
-><span style="color:red">**IMPORTANT NOTE – This property is not used by RadiantOne Universal Directory (HDAP) stores.**
+>[!warning] This property is not used by RadiantOne Universal Directory (HDAP) stores.
 
 ### Idle Timeout
 
@@ -59,11 +59,11 @@ The length of time (in seconds) to keep a connection open without any activity f
 
 Custom limits are more fine-grained than global limits and can be defined in the Main Control Panel > Settings > Limits > Custom Limits section. Custom limits can be configured for the pre-defined users: “Anonymous Users”, and “Authenticated Users”. They can also be more granular and associated with users belonging to any group or located below any branch/naming context (subtree) in RadiantOne.
 
->**Note – multiple custom limits are not allowed for anonymous users and authenticated users.**
+>[!note] multiple custom limits are not allowed for anonymous users and authenticated users.
 
 Custom limits override any Global Limits defined in the Main Control Panel > Settings tab > Limits section > Global Limits sub-section. The order of precedence (highest to lowest) for global and custom limits containing the same subject is: Group, Sub-tree, Authenticated Users, Anonymous Users, Global. For custom limits defined within the same root naming context, the limit defined for the deepest entry in the tree will take precedence. For example, if a custom size limit of 3 is defined for a subject location of ou=Novato,ou=California,dc=USA and a size limit of 5 is defined for a subject location of ou=California,dc=USA, if a user of uid=Svc1,ou=Novato,ou=California,dc=USA connects to RadiantOne, the custom size limit of 3 will be enforced.
 
->**Note – This section is accessible only in [Expert Mode](introduction#expert-mode).** 
+>[!note] This section is accessible only in [Expert Mode](introduction#expert-mode).
 
 ### Granular Limits
 
@@ -92,7 +92,7 @@ To define custom limits:
 
 If you are running RadiantOne on a multi-processor machine, performance and efficiency of the server might improve by increasing the value for the Number of Processing Queues parameter. The default value is 2 and is sufficient for most deployments. As a general guideline, this value should never exceed 3.
 
-><span style="color:red">**IMPORTANT NOTE - This parameter does not affect the actual number of processors that get used. However, it does improve the utilization of the available processors.**
+>[!warning] This parameter does not affect the actual number of processors that get used. However, it does improve the utilization of the available processors.
 
 A better indicator for performance is the number of threads allocated for each processing queue. For each processing queue, the maximum number of concurrent worker threads is 80 by default. This value can be seen/changed in the Max Concurrent Working Threads parameter. For more details, see the next section.
 
@@ -126,7 +126,7 @@ The “Restrictions Checking Interval” parameter indicated in the Per User or 
 
 The following groups of users found on the Main Control Panel > Settings tab > Limits section > Per User sub-section allow you to configure fine-grained activity control:
 
->**Note - Members of the Administrators group specified on the Main Control Panel > Settings Tab > Server Front End > Administration section do not have any access limitations in terms of max connections or max operations per second.**
+>[!note] Members of the Administrators group specified on the Main Control Panel > Settings Tab > Server Front End > Administration section do not have any access limitations in terms of max connections or max operations per second.
 
 ### Anonymous
 
@@ -168,4 +168,4 @@ Example set for a range of IPv6 addresses:
 
 To enable checking for this category of computer/client, check the Enable Access Checking option in the Special IP Address section on the Per Computer sub-section. Enter a number for the maximum amount of connections all computers are allowed to create. Also enter a number for the maximum number of operations per checking interval they are allowed to issue. Any parameters that are set to 0 have no limits applied. The restrictions checking interval dictates the number of seconds the server should wait before determining if these thresholds are reached.
 
-><span style="color:red">**IMPORTANT NOTE - If you have enabled activity checking for both users (special users, authenticated and/or anonymous) and computers (IP address and Special IP), the activity per computer takes precedence over the user activity. The order of precedence is special IP addresses, IP addresses, special users, authenticated users, and then anonymous users. For example, let’s say that special user access checking, IP address access checking, and special IP address access checking have been enabled, and the max connections are set to 50, 30, and 40 respectively. Any user who connects that is a member of the special users group from a computer that is not a member of the special IP address group, is only allowed to make a maximum of 30 connections during the checking interval.**
+>[!warning] If you have enabled activity checking for both users (special users, authenticated and/or anonymous) and computers (IP address and Special IP), the activity per computer takes precedence over the user activity. The order of precedence is special IP addresses, IP addresses, special users, authenticated users, and then anonymous users. For example, let’s say that special user access checking, IP address access checking, and special IP address access checking have been enabled, and the max connections are set to 50, 30, and 40 respectively. Any user who connects that is a member of the special users group from a computer that is not a member of the special IP address group, is only allowed to make a maximum of 30 connections during the checking interval.

@@ -7,7 +7,7 @@ description: System Administration Guide
 
 The RadiantOne Control Panels are web-based interfaces to provide remote access to the most commonly used tools and wizards. The control panels are used by administrators to configure and maintain the service. In addition, the control panels offer monitoring, access to server statistics, reports, task management, and other administration options. It can be accessed from mobile or non-mobile devices including smartphones and tablets.
 
->**Note - To access the control panels, JavaScript must be enabled in the Internet browser you are using.**
+>[!note] To access the control panels, JavaScript must be enabled in the Internet browser you are using.
 
 For cluster deployments, each RadiantOne node includes a Control Panel and administrators can log into any of them.
 
@@ -25,7 +25,7 @@ The Main Control Panel displays the name of the RadiantOne cluster.
 
 Figure 1: Main Control Panel Login Page
 
-><span style="color:red">**IMPORTANT NOTE - You are unable to log in to the Control Panel if [mutual authentication](server-backend#mutual-authentication) is set to REQUIRED.**
+>[!warning] You are unable to log in to the Control Panel if [mutual authentication](server-backend#mutual-authentication) is set to REQUIRED.
 
 The background color of the login screen can be customized after you log into the Main Control Panel. Click ![gear icon](Media/gear-icon.jpg) and enter a value for the Color Theme.
 
@@ -57,7 +57,7 @@ You can log in using a PIV Card/Smart Card/Certificate as an alternative to usin
 
 6.	On the Settings tab, Security section, SSL, click CHANGE next to Client Certificate DN Mapping.
 
-><span style="color:red">**IMPORTANT NOTE – the Client Certificate DN Mapping is only accessible by a member of the [Directory Administrator role/group](administration-and-configuration#delegated-administration-roles).**
+>[!warning] the Client Certificate DN Mapping is only accessible by a member of the [Directory Administrator role/group](administration-and-configuration#delegated-administration-roles).
 
 7.	Click **ADD** and set the Certificate DN to the subject in the user’s certificate. If the subject in the SSL certificate is blank, you can specify that a Subject Alternative Name (SAN) should be used. You can use an alternative name in the mapping by specifying {alt} before the regular expression. For example: {alt}^(.+)$ uses the first alternative name found. You can be more specific to specify which alternative name you want to match by specifying the type [0-8]. For example: {alt:0}^(.+)$ uses the otherName alternative name. The type number associated with each is shown below.
 
@@ -73,11 +73,11 @@ uniformResourceIdentifier | [6]
 iPAddress | [7]
 registeredID | [8]
 
->**Note – If the certificate subject/SAN fails to match a Client Certificate DN Mapping rule, the login to the Control Panel fails.**
+>[!note] If the certificate subject/SAN fails to match a Client Certificate DN Mapping rule, the login to the Control Panel fails.
 
 8.	Set the mapped DN to any [delegated admin user](administration-and-configuration#delegated-administration-roles) configured in RadiantOne. An example is shown below where the certificate subject is mapped to cn=directory manager.
 
->**Note – If the RadiantOne service is not running, you are only able to log into the Main Control Panel with the directory super user account (e.g. cn=directory manager). If your Client Certificate DN mapping results in a user that is not the directory super user, and the RadiantOne service is not running, you will not be able to log into the Main Control Panel.**
+>[!note] If the RadiantOne service is not running, you are only able to log into the Main Control Panel with the directory super user account (e.g. cn=directory manager). If your Client Certificate DN mapping results in a user that is not the directory super user, and the RadiantOne service is not running, you will not be able to log into the Main Control Panel.
 
 ![Client Certificate DN Mapping](Media/Image3.11.jpg)
  
@@ -106,13 +106,13 @@ Figure 4: User Selects Certificate Associated with PIV Card
 
 15.	Once logged into the Main Control Panel, the user is prompted to select the certificate again. This second prompt is to indicate the credentials to be used for the Directory Browser tab (as a REST client to the RadiantOne service). 
 
-><span style="color:red">**IMPORTANT NOTE – If you log out of the Control Panel, you are redirected to the main login form. If you want to be prompted to select your certificate again, you must close and re-open your web browser.**
+>[!warning] If you log out of the Control Panel, you are redirected to the main login form. If you want to be prompted to select your certificate again, you must close and re-open your web browser.
 
 ### Logging in with Two-factor Authentication
 
 The Control Panel, as a client to the RadiantOne service, supports two-factor authentication for administrators to log in. This is supported through the Custom Authentication Provider framework and supports RSA SecurID and Yubikey token codes by default. High-level configuration steps to support two-factor authentication for RadiantOne administrators are outlined below. For details on Custom Authentication Providers, see the RadiantOne Custom Authentication Providers Guide.
 
-><span style="color:red">**IMPORTANT NOTE – Two-factor authentication is not required for the RadiantOne super user account (e.g. cn=directory manager). If a custom authentication provider is enabled for other RadiantOne delegated administrator accounts, the super user account is still able to log into the Control Panel without requiring two-factor authentication. This is to prevent complete lockout of server administration.**
+>[!warning] Two-factor authentication is not required for the RadiantOne super user account (e.g. cn=directory manager). If a custom authentication provider is enabled for other RadiantOne delegated administrator accounts, the super user account is still able to log into the Control Panel without requiring two-factor authentication. This is to prevent complete lockout of server administration.
 
 1.	Create a custom data source that defines the connection to the web service for credentials validation.
 
@@ -132,7 +132,7 @@ Figure 6: Token ID Defined for an Administrator Example
 
 5.	Log out/re-log into the Control Panel with the administrator password (in the password property) and one time code (in the passcode property). RadiantOne delegates the credentials checking based on the configuration defined in the Custom Authentication Provider.
 
-![Control Panel Login when a Custom Authentication Provider is Configured](Media/Image3.16.jpg)
+![Control Panel Login when a Custom Authentication Provider is Configured](Media/login-page.png)
  
 Figure 7: Control Panel Login when a Custom Authentication Provider is Configured
 
@@ -204,7 +204,7 @@ Figure 11: “Manage certificates” option in Google Chrome
 
 22.	Click **Close** to close the certificate window. Restart your browser and then go to the Main Control Panel again on the HTTPS port. You should not see the certificate warning anymore.
 
->**Note – In cluster deployments, when you access the Main Control Panel via HTTPS, it connects to the RadiantOne service on the HTTPS web service port (https://rliserver:8090). To avoid connection problems, your browser must trust the RadiantOne server certificate of each cluster node.**
+>[!note] In cluster deployments, when you access the Main Control Panel via HTTPS, it connects to the RadiantOne service on the HTTPS web service port (https://rliserver:8090). To avoid connection problems, your browser must trust the RadiantOne server certificate of each cluster node.
 
 ### OpenID Connect Token Authentication 
 
@@ -310,7 +310,7 @@ The Main Control Panel login page contains a basic username and password text bo
 
 4.	On the right, click **Edit Mode**.
 
-><span style="color:red">**IMPORTANT NOTE – each property (corresponding to a line) must end in a comma (,) except for the last property in the configuration.**
+>[!warning] each property (corresponding to a line) must end in a comma (,) except for the last property in the configuration.
 
 5.	Add (or edit) the motdHtml tag containing the message to display on the login page.
 

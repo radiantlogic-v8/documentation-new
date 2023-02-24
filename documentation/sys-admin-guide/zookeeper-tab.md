@@ -6,8 +6,8 @@ description: System Administration Guide
 # Zookeeper Tab
 The Zookeeper tab is used for browsing and editing ZooKeeper contents. The configurations that are managed for all cluster nodes can be viewed from here. RadiantOne specific configuration is shown when expanding the RadiantOne node. ZooKeeper specific configuration is shown when expanding the zookeeper node.
 
->**Note – This tab is accessible only in [Expert Mode](introduction#expert-mode). 
-One of the key configuration nodes is vds_server.conf located at /radiantone/<version>/cluster/config. This node contains most configuration information that was previously contained in the vds_server.conf file used in previous RadiantOne versions.**
+>[!note] This tab is accessible only in [Expert Mode](introduction#expert-mode). 
+One of the key configuration nodes is vds_server.conf located at /radiantone/<version>/cluster/config. This node contains most configuration information that was previously contained in the vds_server.conf file used in previous RadiantOne versions.
 
 ![zookeeper tab](Media/Image3.161.jpg)
  

@@ -69,9 +69,10 @@ If Bind Requires Password is not enabled, and a bind request comes in with a val
 This setting can be enabled from Main Control Panel > Settings tab > Security section >
 Access Control. Check the Bind requires a password option.
 
+
 ## Define a Global Authentication Strength
 
-Global Authentication Strength is used to specify that a client must bind to the RadiantOne service by using a specific authentication method. The values supported are: None, Simple (e.g. bindDN+password), SSL (require SSL/TLS or StartTLS), or SASL. The SASL mechanisms supported are DIGEST-MD5, GSSAPI, GSS-SPNEGO, or EXTERNAL (e.g. certificate-based authentication).
+Global Authentication Strength is used to specify that a client must bind to the RadiantOne service by using a specific authentication method. The values supported are: None, Simple (e.g. bindDN+password), SSL (require SSL/TLS or StartTLS), or SASL. The SASL mechanisms supported are DIGEST-MD5<!--, GSSAPI, GSS-SPNEGO,--> or EXTERNAL (e.g. certificate-based authentication).
 
 This setting can be enabled from Main Control Panel > Settings tab > Security > Authentication Methods. On the right, navigate to the Global Authentication Strength section and select an option from the drop-down list. For more details, see the RadiantOne System Administration Guide.
 

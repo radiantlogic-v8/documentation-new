@@ -11,7 +11,7 @@ As discussed throughout this document, at the heart of most identity integration
 
 The RadiantOne Control Panels are web-based interfaces to provide remote access to the most commonly used tools and wizards. In addition, the control panels offer monitoring, access to server statistics, reports, task management, and other administration options. They can be accessed from mobile or non-mobile devices including iPods and iPads.
 
->**Note - To access the control panels, JavaScript must be enabled in the Internet browser you are using.**
+>[!note] To access the control panels, JavaScript must be enabled in the Internet browser you are using.
 
 ### Main Control Panel
 
@@ -25,7 +25,7 @@ The default HTTP port for the web server hosting the control panels is 7070, and
 
 The login page displays two fields, Username and Password. Enter your credentials you defined during the installation of RadiantOne.
 
-![Main Control Panel Login Page](Media/Image5.1.jpg)
+![Main Control Panel Login Page](Media/login-page.png)
 
 Figure 1: Main Control Panel Login Page
 
@@ -115,9 +115,13 @@ value. Graphs for the following items are displayed.
 
 From the Usage & Activity tab, you can access information about the RadiantOne software version installed on the node, monitor the current connections and operations, view statistics for all RadiantOne Universal Directory (HDAP) stores and view network latency between nodes (only applicable to cluster deployments).
 
+<!-- 
+
 **Settings**
 
 The server name and server certificates can be managed from the Settings tab.
+
+-->
 
 **Tasks**
 
@@ -135,7 +139,7 @@ The Log Viewer Tab is the console where you can view all RadiantOne log files.
 
 RadiantOne includes a set of wizards to assist administrators with some of the most common configuration tasks. They are designed to guide administrators through the identity integration process. This includes tasks such as building a unique user list, how to handle group entries (migrate them or create dynamic groups), and how to design the virtual namespace (flat tree or merge into an existing hierarchy). Each wizard is tailored for specific use cases, depending on the needs of the applications that will be consuming the identity. For more information on the wizards, please see the sections below.
 
->**Note – for step-by-step instructions on using the wizards, please see the RadiantOne Identity Service Wizards Guide.**
+>[!note] for step-by-step instructions on using the wizards, please see the RadiantOne Identity Service Wizards Guide.
 
 ### Global Identity Builder
 

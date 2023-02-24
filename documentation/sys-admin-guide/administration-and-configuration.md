@@ -45,7 +45,7 @@ Existing group membership references user DNs, the naming of which is based on t
 
 The Merge Tree Wizard merges multiple data sources into a single RadiantOne naming context, while maintaining the underlying directory hierarchy. The Merge Tree Wizard is ideal for situations where applications expect to find information in an explicit hierarchy which already exists in a backend LDAP directory and there is a need to extend a part of this hierarchy with additional entries from other data sources. 
 
-><span style="color:red">**IMPORTANT NOTE - The Merge Tree Wizard does not perform identity correlation or joins. If the data sources being merged contain overlapping users (identified by the same DN after the merge) only the entry from the primary/main source are returned when browsing or searching against the view. If the overlapping users have an attribute in common, you can always join the view created in the merge tree wizard with another virtual view to return attributes from other sources.**
+>[!warning] The Merge Tree Wizard does not perform identity correlation or joins. If the data sources being merged contain overlapping users (identified by the same DN after the merge) only the entry from the primary/main source are returned when browsing or searching against the view. If the overlapping users have an attribute in common, you can always join the view created in the merge tree wizard with another virtual view to return attributes from other sources.
 
 ## Delegated Administration of RadiantOne
 
@@ -245,13 +245,13 @@ cn=icsoperator,ou=globalgroups,cn=config
 
 As mentioned above, the groups used for delegated administration are Directory Administrator, Namespace Administrator, Operator, Read Only, Schema Administrator, ICS Administrator, ICS Operator and ACI Administrator. These roles can be assigned to static members or dynamic members. Both are described below. Any user that is assigned to one of the delegated administration roles can login to the Control Panels and manage certain server settings based on the privileges (vdPrivilege attribute) assigned to the role. 
 
->**Notes – remember that you might require a [User ID to DN Mapping](interception#user-to-dn-mapping) configuration depending on the ID that users log in with (their full DN versus just an ID).**
+>[!note] remember that you might require a [User ID to DN Mapping](interception#user-to-dn-mapping) configuration depending on the ID that users log in with (their full DN versus just an ID).
 
 >**Delegated administrators do not have default permissions to manage virtual entries in the directory. If this is required, assign the proper [access controls](access-control#access-control) for the delegated admin groups.**
 
 #### Managing Explicit Members
 
-><span style="color:red">**IMPORTANT NOTE – it is generally advised to assign only local (in a RadiantOne Universal Directory store) user accounts to delegated admin roles. Although you can assign any user in the RadiantOne namespace to a delegated admin role, use caution with this approach because if the backend isn’t accessible, then the user login to the Control Panel will fail and the user will not be able to administer RadiantOne. Also, performance can be degraded because RadiantOne must delegate the bind (authentication) to the backend instead of processing it locally.**
+>[!warning] it is generally advised to assign only local (in a RadiantOne Universal Directory store) user accounts to delegated admin roles. Although you can assign any user in the RadiantOne namespace to a delegated admin role, use caution with this approach because if the backend isn’t accessible, then the user login to the Control Panel will fail and the user will not be able to administer RadiantOne. Also, performance can be degraded because RadiantOne must delegate the bind (authentication) to the backend instead of processing it locally.
 
 1.	Log into the Main Control Panel as the super user and click on the Directory Browser tab.
 
@@ -261,11 +261,13 @@ As mentioned above, the groups used for delegated administration are Directory A
 
 ![manage group members](Media/Image3.1.jpg)
  
-Figure : Manage Group Members
+Figure 1: Manage Group Members
 
 #### Managing Dynamic Members
 
-><span style="color:red">**IMPORTANT NOTE – it is generally advised to assign only local (in a RadiantOne Universal Directory store) user accounts to delegated admin roles. Although you can assign any user in the RadiantOne namespace to a delegated admin role, use caution with this approach because if the backend isn’t accessible, then the user login to the Control Panel will fail and the user will not be able to administer RadiantOne. Also, performance can be degraded because RadiantOne must delegate the bind (authentication) to the backend instead of processing it locally.**
+Figure 1: Manage Group Members
+
+>[!warning] It is generally advised to assign only local (in a RadiantOne Universal Directory store) user accounts to delegated admin roles. Although you can assign any user in the RadiantOne namespace to a delegated admin role, use caution with this approach because if the backend isn’t accessible, then the user login to the Control Panel will fail and the user will not be able to administer RadiantOne. Also, performance can be degraded because RadiantOne must delegate the bind (authentication) to the backend instead of processing it locally.
 
 1.	Log into the Main Control Panel as the super user and click on the Directory Browser tab. 
 
@@ -323,7 +325,7 @@ Any user that is dynamically assigned to a delegated admin group can log in to t
 
 As mentioned above, the groups used for delegated administration are Directory Administrator, Namespace Administrator, Operator, Schema Administrator, ACI Administrator, ICS Administrator, ICS Operator, and one role for Read Only access.
 
-Note - Delegated administrators do not have default permissions to manage virtual entries in the directory. If this is required, assign the proper [access controls](access-control#access-control) for the delegated admin groups.
+>[!note] Delegated administrators do not have default permissions to manage virtual entries in the directory. If this is required, assign the proper [access controls](access-control#access-control) for the delegated admin groups.
 
 Default administrative users are included as members of these groups. They are as follows:
 
@@ -353,7 +355,7 @@ Default administrative users are included as members of these groups. They are a
 
 You can use the default users for delegated administration of RadiantOne activities, or you can add your own users to the various admin roles as described in the [Managing Delegation Administration Roles](#managing-default-delegated-administration-roles). To use the default users, you can log in with any of the following (depending on the RadiantOne configuration you want to manage). For details on what activities these users can perform, please see [Delegated Administration of RadiantOne](#delegated-administration-of-radiantone).
 
->**Note – for details on how to update the default delegate admin user’s passwords, see the RadiantOne Hardening Guide.**
+>[!note] for details on how to update the default delegate admin user’s passwords, see the RadiantOne Hardening Guide.
 
 user: aciadmin
 <br> password: <set to the same password you defined for the super user (cn=directory manager) during the installation>
@@ -390,7 +392,7 @@ Figure 4: Default User ID to DN Mapping Rule
 
 As an alternative to using the [default delegated admin groups](administration-and-configuration#delegated-administration-of-radiantone) for enforcing authorization in the Control Panels, you can leverage your existing groups for these roles. Your groups and members must be in either a RadiantOne Universal Directory store, or persistent cache. If you choose to use your own existing groups and users, the [default delegated admin users](administration-and-configuration#delegated-administration-roles) will not be able to log into the Control Panel.
 
-><span style="color:red">**IMPORTANT NOTE – if your users and groups are in a persistent cache, the bind (credentials-checking) step during the login to the Control Panel is delegated to the backend directory for validation. If the backend isn’t accessible, then the user login to the Control Panel will fail and the user will not be able to administer RadiantOne. Also, performance can be degraded because RadiantOne must delegate the bind to the backend instead of processing it locally.**
+>[!warning] if your users and groups are in a persistent cache, the bind (credentials-checking) step during the login to the Control Panel is delegated to the backend directory for validation. If the backend isn’t accessible, then the user login to the Control Panel will fail and the user will not be able to administer RadiantOne. Also, performance can be degraded because RadiantOne must delegate the bind to the backend instead of processing it locally.
 
 To configure groups and users for delegated administration, follow the steps below.
 
@@ -424,7 +426,7 @@ Image 7: Adding the vdPrilvilege Attribute
  
 Figure 8: Example of Assigning an Existing Group to the Directory Administrator Role
 
->**Note - Delegated administrators do not have default permissions to manage virtual entries in the directory. If this is required, assign the proper [access controls](access-control#access-control) for the delegated admin groups.**
+>[!note] Delegated administrators do not have default permissions to manage virtual entries in the directory. If this is required, assign the proper [access controls](access-control#access-control) for the delegated admin groups.
 
 8.	Go to the Main Control Panel > Zookeeper tab (requires [Expert Mode](introduction#expert-mode)).
 

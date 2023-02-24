@@ -29,7 +29,11 @@ The RadiantOne access log contains details about client requests to RadiantOne a
 
 The access log rolls over when it reaches 100MB in size. This size can be set in the Rollover size property. The access logs are kept for 30 days by default and then deleted. This is configurable in the “Rollover: How long to keep the logs” property.
 
+<!-- 
+
 For more details on the access log including advanced settings for archiving destination and logging into a database, please see the RadiantOne Logging and Troubleshooting Guide.
+
+-->
 
 ## Changelog
 
@@ -55,7 +59,7 @@ For more details on these operational attributes, see the RadiantOne Operational
 
 Changes to entries in certain naming contexts representing certain RadiantOne Universal Directory stores or local persistent cache, are not applicable to logging into change log (e.g. cn=replicationjournal, cn=config…etc.). Other naming contexts that represent backend directories (proxy views to these directories) might not require changelog either. Therefore, these naming contexts can have this function disabled. The list of disabled naming contexts is configured from the Changelog sub-section. Uncheck the Changelog box to disable the naming context.
 
-><span style="color:red">**IMPORTANT NOTE – In most cases, this setting should not be touched. Only naming contexts representing RadiantOne Universal Directory (HDAP) stores, local persistent cache, or proxy views are shown in the list. Disabling changelog for certain naming contexts should only be done when advised by Radiant Logic.**
+>[!warning] In most cases, this setting should not be touched. Only naming contexts representing RadiantOne Universal Directory (HDAP) stores, local persistent cache, or proxy views are shown in the list. Disabling changelog for certain naming contexts should only be done when advised by Radiant Logic.
 
 ### Automatic Backup of Changelog
 
@@ -122,7 +126,7 @@ For the RadiantOne service to maintain efficiency and performance (as well as sa
 -	cn=cacherefreshlog
 -	cn=replicationjournal
 
-    >**Note - Maximum age also applies to the vdsSyncHist attribute maintained at the level of entries involved in inter-cluster replication. This attribute is multi-valued and continues to grow until the RadiantOne service scans the values and removes ones that are older than the maximum age. RadiantOne scans the values only when the entry is modified. For entries that aren’t updated often, vdsSyncHist will potentially contain values that are older than the maximum age.**
+  >[!note] Maximum age also applies to the vdsSyncHist attribute maintained at the level of entries involved in inter-cluster replication. This attribute is multi-valued and continues to grow until the RadiantOne service scans the values and removes ones that are older than the maximum age. RadiantOne scans the values only when the entry is modified. For entries that aren’t updated often, vdsSyncHist will potentially contain values that are older than the maximum age.**
 -	cn=localjournal
 -	cn=tombstone
 -	stores below cn=queue 

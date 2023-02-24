@@ -61,7 +61,7 @@ Requesting BLOB attributes can significantly decrease performance. When this opt
 
 Use caution when enabling this parameter if an interception script is defined (which may need such attributes even if they are not requested by the client).
 
-><span style="color:red">**IMPORTANT NOTE - Do not enable this option if a memory entry cache is used (as the whole virtual entry is needed, including the BLOBs).**
+>[!warning] Do not enable this option if a memory entry cache is used (as the whole virtual entry is needed, including the BLOBs).
 
 ##### Process Joins and Computed Attributes Only When Necessary
 
@@ -71,7 +71,7 @@ If you enable this option, RadiantOne FID does not perform joins or computations
 
 Use caution when enabling this option if you have interception scripts defined on these objects, or access controls based on filters are being used (both of which may require other attributes returned from secondary sources or computations regardless of whether or not the client requested or searched for them).
 
-><span style="color:red">**IMPORTANT NOTE - Do not enable this option if a memory entry cache is used (as the whole virtual entry is needed for the cache).**
+>[!warning] Do not enable this option if a memory entry cache is used (as the whole virtual entry is needed for the cache).
 
 #### Connection Pooling
 
@@ -99,7 +99,7 @@ RadiantOne uses parameterized SQL statements and maintains a cache of the most u
 
 This setting is per database connection.
 
-><span style="color:red">**IMPORTANT NOTE - Use caution when changing this default value as not all databases have the same limits on the number of 'active' prepared statements allowed.**
+>[!warning] Use caution when changing this default value as not all databases have the same limits on the number of 'active' prepared statements allowed.
 
 ### LDAP Backends
 
@@ -172,7 +172,7 @@ If you enable this option, RadiantOne FID does not perform joins or computations
 
 Use caution when enabling this option if you have interception scripts defined on these objects, or access controls based on filters are being used (both of which may require other attributes returned from secondary sources or computations regardless of whether or not the client requested or searched for them). 
 
-><span style="color:red">**IMPORTANT NOTE - Do not enable this option if a memory entry cache is used (as the whole virtual entry is needed for the cache).**
+>[!warning] Do not enable this option if a memory entry cache is used (as the whole virtual entry is needed for the cache).
 
 ##### Use Client Size Limit Value to Query Backend
 
@@ -308,7 +308,7 @@ For database backends, requesting BLOB attributes can significantly decrease per
 
 Use caution when enabling this parameter if an interception script is defined (which may need such attributes even if they are not requested by the client). 
 
-><span style="color:red">**IMPORTANT NOTE - Do not enable this option if a memory entry cache is used (as the whole virtual entry is needed, including the BLOBs).**
+>[!warning] Do not enable this option if a memory entry cache is used (as the whole virtual entry is needed, including the BLOBs).
 
 ##### Process Joins and Computed Attributes Only When Necessary 
 
@@ -318,7 +318,7 @@ If you enable this option, RadiantOne FID does not perform joins or computations
 
 Use caution when enabling this option if you have interception scripts defined on these objects, or access controls based on filters are being used (both of which may require other attributes returned from secondary sources or computations regardless of whether the client requested or searched for them).
 
-><span style="color:red">**IMPORTANT NOTE - Do not enable this option if a memory entry cache is used (as the whole virtual entry is needed for the cache).**
+>[!warning] Do not enable this option if a memory entry cache is used (as the whole virtual entry is needed for the cache).
 
 #### Connection Pooling
 
@@ -340,7 +340,7 @@ RadiantOne FID uses parameterized SQL statements and maintains a cache of the mo
 
 This setting is per database connection.
 
-><span style="color:red">**IMPORTANT NOTE - Use caution when changing this default value as not all databases have the same limits on the number of 'active' prepared statements allowed.**
+>[!warning] Use caution when changing this default value as not all databases have the same limits on the number of 'active' prepared statements allowed.
 
 ### LDAP Backends
 
@@ -387,7 +387,7 @@ If you enable this option, RadiantOne FID does not perform joins or computations
 
 Use caution when enabling this option if you have interception scripts defined on these objects, or access controls based on filters are being used (both of which may require other attributes returned from secondary sources or computations regardless of whether the client requested or searched for them).
 
-><span style="color:red">**IMPORTANT NOTE - Do not enable this option if a memory entry cache is used (as the whole virtual entry is needed for the cache).**
+>[!warning] Do not enable this option if a memory entry cache is used (as the whole virtual entry is needed for the cache).
 
 #### Connection Pooling
 

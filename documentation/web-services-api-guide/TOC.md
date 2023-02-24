@@ -3,9 +3,9 @@ title: Web Services API Guide
 description: Web Services API Guide
 ---
 
-- [Overview](01-overview.md)
-- [DSML](02-dsml.md)
-- [SPML](03-spml.md)
-- [SCIM](04-scim.md)
-- [REST (ADAP)](05-rest.md)
-- [SAML Attribute Service](06-saml-attribute-service.md)
+- [Overview](overview.md)
+- [DSML](dsml.md)
+- [SPML](spml.md)
+- [SCIM](scim.md)
+- [REST (ADAP)](rest.md)
+- [SAML Attribute Service](saml-attribute-service.md)

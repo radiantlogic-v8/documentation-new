@@ -27,7 +27,7 @@ Figure 2: Administration Section
 
 The LDAP port that the RadiantOne service listens on. By default, this value is set to 2389 (this can be set during the RadiantOne install). A couple of things to keep in mind if you plan on changing the port are: on Windows platforms, you can use any available port less than 65355 and on UNIX platforms you must have admin/root privileges to start the RadiantOne service on any port less than 1024 (because these are considered "privileged").
 
-><span style="color:red">**IMPORTANT NOTE – The RadiantOne service must be stopped before changing the port. If RadiantOne is deployed in a cluster, it must be stopped on all nodes. In the Main Control Panel go to the Dashboard tab and stop the RadiantOne service. If it is running as a service/daemon, stop it from the applicable service window/command. Once the service has stopped, change the port on the Settings tab, Server Front End section, Administration. Click Save. Now, re-start the service and it listens on the new port. Also, you must manually edit both the vdsha and replicationjournal LDAP data sources to update the port here as well, in both the primary server settings and for servers defined in the “Failover LDAP Servers” section. Changes to the data sources are performed from the Main Control Panel > Settings Tab > Server Backend > LDAP Data Sources.**
+>[!warning] The RadiantOne service must be stopped before changing the port. If RadiantOne is deployed in a cluster, it must be stopped on all nodes. In the Main Control Panel go to the Dashboard tab and stop the RadiantOne service. If it is running as a service/daemon, stop it from the applicable service window/command. Once the service has stopped, change the port on the Settings tab, Server Front End section, Administration. Click Save. Now, re-start the service and it listens on the new port. Also, you must manually edit both the vdsha and replicationjournal LDAP data sources to update the port here as well, in both the primary server settings and for servers defined in the “Failover LDAP Servers” section. Changes to the data sources are performed from the Main Control Panel > Settings Tab > Server Backend > LDAP Data Sources.
 
 The RadiantOne service can also listen on an [SSL port](security#ssl-settings), [HTTP port](settings-tab#web-services-http-port) (to process DSML, SPML, SCIM or REST requests) or a [SQL port](settings-tab#sql).
 
@@ -44,7 +44,7 @@ To configure the Directory Manager username:
 1.	In the Main Control Panel, go to the Setting Tab > Server Front End section > Administration sub-section.
 2.	In the Directory Manager Settings section on the right side, edit the value in the User name field.
 
-><span style="color:red">**IMPORTANT NOTE – The new value of the parameter should be in the same syntax: `cn=<new user value>`.**
+>[!warning] The new value of the parameter should be in the same syntax: `cn=<new user value>`.
 
 3.	Click **Save**.
 
@@ -60,7 +60,7 @@ If you update the Directory Manager username, the LDAP entry in the RadiantOne n
 
 The directory administrator (cn=directory manager) password is set during the install of RadiantOne and can be changed here. To change this password, from the Main Control Panel > Settings Tab > Administration section, click “Change the password” link. Enter the new value and click **Save** in the upper right corner.
 
-><span style="color:red">**IMPORTANT NOTES – if you change the password and you are currently logged into the Control Panel as the directory administrator, you must close the Control Panel and re-open it logging in with the new password.**
+>[!warning] if you change the password and you are currently logged into the Control Panel as the directory administrator, you must close the Control Panel and re-open it logging in with the new password.
 
 To change the directory manager’s password from the Instance Manager command line utility, you can use the following command:
 
@@ -87,13 +87,13 @@ An example of the syntax used in the command is shown below, assuming the LDIF f
 ldapmodify.exe -D "cn=Directory Manager,ou=RootUsers,cn=config" -w password -h localhost -p 2389 -f c:\radiantone\ChangePassword.ldif
 ```
 
->**Note – The RadiantOne service may be running when this command is executed.**
+>[!note] The RadiantOne service may be running when this command is executed.
 
 #### Allowed IP Addresses
 
 To prevent the unwarranted use of the directory administrator (super user) account, you can set specific IP addresses from where the directory administrator account can connect to the RadiantOne service from. This value can be a single IP address or a list of IP addresses separated by a comma. The IP address syntax can also support a range of IP addresses.
 
-><span style="color:red">**IMPORTANT NOTE – When the “Allowed IP Addresses” property is used, the Control Panel is accessible from any machine whose IP address matches that of a registered RadiantOne cluster node (with the list of node IPs being resolved periodically), in addition to the allowed IPs configured in this property.**
+>[!warning] When the “Allowed IP Addresses” property is used, the Control Panel is accessible from any machine whose IP address matches that of a registered RadiantOne cluster node (with the list of node IPs being resolved periodically), in addition to the allowed IPs configured in this property.
 
 The default value for this parameter is 0 (or could also have no value). This means that the directory administrator (super user) can bind against the RadiantOne service from anywhere.
 
@@ -131,7 +131,7 @@ The RadiantOne service Admin HTTP Service ports are used internally for:
 -	RadiantOne service actions like restart and standby. 
 You can disable the HTTP port by setting the value to zero. This leaves access only on the HTTPS port. If you disable the HTTP port, ensure the “Use SSL” setting is enabled for internal connections (Main Control Panel > Settings > Server Backend > Internal Connections), and Inter Nodes Communication is set to “Always use SSL” (Main Control Panel > Settings > Security > SSL). A restart of the RadiantOne service is required when these settings are changed. Restart the service on all cluster nodes.
 
-Note – This setting is accessible only in [Expert Mode](introduction#expert-mode). 
+>[!note] This setting is accessible only in [Expert Mode](introduction#expert-mode). 
 
 ## Supported Controls and Features
 
@@ -248,7 +248,7 @@ This control can be enabled/disabled from the Main Control Panel > Settings Tab 
 
 If you enable the persistent search control, an LDAP client can receive notifications of changes that occur in the RadiantOne namespace. When a persistent search is requested, RadiantOne keeps the search operation going so clients can receive changed entries (and additional information about the changes that occurred). 
 
->**Note - The changelog number associated with the changed entries (logged into cn=changelog) is also returned in the persistent search response.**
+>[!note] The changelog number associated with the changed entries (logged into cn=changelog) is also returned in the persistent search response.
 
 #### Proxied Authorization Control
 
@@ -256,7 +256,7 @@ This control can be enabled/disabled from the Main Control Panel > Settings Tab 
 
 Authorization for RadiantOne data is checked based on the user who authenticated. The authorization ID (DN) is linked to the authenticated ID (DN) for the same connection. With the proxy authorization control enabled, the client can switch the user ID (for authorization purposes) without having to re-authenticate with a new connection. After the Proxy Authorization control is enabled from here, the configuration (who is allowed to impersonate whom) is defined as access controls from the Settings tab > Security section > Access Control sub-section. For more details on the configuration, please see [Operations](security-and-access-controls#operations).
 
-><span style="color:red">**IMPORTANT NOTE – to allow the RadiantOne super user (e.g. cn=directory manager) to impersonate other users, you must enable the “[Allow Directory Manager to Impersonate Other Users](access-control#allow-directory-manager-to-impersonate-other-users)” option. In this special scenario, access controls defining the “proxy” permission is not required. However, the Proxy Authorization Control must be enabled.**
+>[!warning] to allow the RadiantOne super user (e.g. cn=directory manager) to impersonate other users, you must enable the “[Allow Directory Manager to Impersonate Other Users](access-control#allow-directory-manager-to-impersonate-other-users)” option. In this special scenario, access controls defining the “proxy” permission is not required. However, the Proxy Authorization Control must be enabled.
 
 #### Subtree Delete Control
 
@@ -282,9 +282,9 @@ By default, only the RadiantOne super user (e.g. cn=directory manager) is allowe
 
 Figure 6: Manually editing the ACI
 
->**Note – to allow anyone to perform a subtree delete request, use a value of “ldap:///anyone” for the userdn as shown in the example below.**
+>[!note] to allow anyone to perform a subtree delete request, use a value of “ldap:///anyone” for the userdn as shown in the example below.
 
->**(targetcontrol = "1.2.840.113556.1.4.805") (version 3.0; acl "Anonymous tree delete control access"; allow(read) userdn ="ldap:///anyone";).**
+>(targetcontrol = "1.2.840.113556.1.4.805") (version 3.0; acl "Anonymous tree delete control access"; allow(read) userdn ="ldap:///anyone";).
 
 7.	Click **Save**.
 
@@ -359,7 +359,7 @@ RadiantOne supports the All Operational Attributes extension feature as outlined
 
 Using the + character in your comma-separated list of return attributes, this extension allows LDAP searches of RadiantOne Universal Directory stores to return all operational attributes (except computed operational attributes, which must be specified by name). This feature can be useful when trying to determine which operational attributes exist in an entry.
 
->**Note – search results may not include all requested attributes if precluded by access controls.**
+>[!note] search results may not include all requested attributes if precluded by access controls.
 
 #### Absolute True and False Filters
 
@@ -377,7 +377,7 @@ The Authorization Identity Control (--reportAuthzID) may be submitted in a bind 
 
 Image 7: Authorization Identity Control
 
-><span style="color:red">**IMPORTANT NOTE – the Authorization Identity Control is allowed for use in conjunction with LDAP bind operations only and therefore cannot be used after the client has authenticated. To obtain the authorization identity at any time after the bind has completed, use the “[Who Am I](settings-tab#who-am-i-extended-operation)” extended operation.**
+>[!warning] the Authorization Identity Control is allowed for use in conjunction with LDAP bind operations only and therefore cannot be used after the client has authenticated. To obtain the authorization identity at any time after the bind has completed, use the “[Who Am I](settings-tab#who-am-i-extended-operation)” extended operation.
 
 In the following example, the authorization identity control is requested by sending --reportAuthzID in the request.
 
@@ -435,7 +435,7 @@ Figure 9: Attributes Handling Section
 
 Check the Hide Operational Attributes option on the Main Control Panel > Settings tab > Server Front End > Attributes Handling section if you do not want LDAP clients to have access to operational attributes (stored in a RadiantOne Universal Directory store) such as: createTimestamp, modifiersName, modifyTimestamp, creatorsName…etc. If you choose to hide operational attributes, LDAP clients must specifically request the operational attribute they want during the search request, otherwise it is not returned.
 
->**Note – Operational attributes are not hidden from the root user (e.g. cn=Directory Manager) or members of the cn=Directory Administrators group.**
+>[!note] Operational attributes are not hidden from the root user (e.g. cn=Directory Manager) or members of the cn=Directory Administrators group.
 
 Uncheck the Hide Operational Attributes option if LDAP clients are allowed to view the attributes.
 
@@ -451,7 +451,7 @@ This property allows you to control which attribute values are not printed in cl
 
 Sometimes, LDAP directory schema definitions do not define certain attributes as binary even though the value of these attributes is binary. An example of this is the objectGUID attribute in Microsoft Active Directory. If the LDAP backend schema definition does not properly define the attribute type as binary, RadiantOne does not translate the value properly when returning it to an LDAP client. To ensure RadiantOne translates the value as binary, you must list the attribute name in the Binary Attributes parameter (space separated list). This parameter is global and applies to any backend LDAP that RadiantOne is accessing. The binary attributes can be defined from the Main Control Panel > Settings tab > Server Front End > Attributes Handling section. As long as the attribute name is listed, RadiantOne returns the value to a client as binary even if the backend LDAP server doesn’t define it as such.
 
->**Note – If a binary attribute should be searchable, define the attribute in the RadiantOne LDAP schema with a friendly name indicating it as binary. Below is an example for the certificateRevocationList attribute: attributeTypes: ( 2.5.4.39 NAME ( 'certificateRevocationList;binary' 'certificateRevocationList' ) DESC 'Standard LDAP attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.5 X-ORIGIN 'RFC 2256’ )**
+>[!note] If a binary attribute should be searchable, define the attribute in the RadiantOne LDAP schema with a friendly name indicating it as binary. Below is an example for the certificateRevocationList attribute: attributeTypes: ( 2.5.4.39 NAME ( 'certificateRevocationList;binary' 'certificateRevocationList' ) DESC 'Standard LDAP attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.5 X-ORIGIN 'RFC 2256’ )
 
 #### Excluded Attributes from Active Directory
 
@@ -540,7 +540,7 @@ Figure 15: Result of Duplicate DN Removal
 
 #### Duplicate Identity Removal Rules
 
->**Note - In general, it is usually recommended that you use the Global Identity Builder to build your view if you know you have overlapping entries that require correlation/disambiguation.**
+>[!note] In general, it is usually recommended that you use the Global Identity Builder to build your view if you know you have overlapping entries that require correlation/disambiguation.
 
 In cases where RadiantOne is aggregating common user identities from multiple data sources, you have the option to configure it to remove any duplicate users (from search responses) if it finds there is a common attribute/identifier (across the data sources you have aggregated). It can also be used as a way for RadiantOne to eliminate ambiguity by returning only one unique entry. Let’s take two sources as an example. Source 1 is Active Directory and source 2 is a Sun directory. Both sources have been aggregated into the virtual namespace below a naming context of dc=demo and as the two following screens show, Laura Callahan exists in both.
 
@@ -564,8 +564,8 @@ Now, if Duplicate Identity Removal rules are configured, RadiantOne returns only
 
 Figure 19: Duplicate Identity Removal Settings
 
-><span style="color:red">**IMPORTANT NOTES: <br>The identity attribute selected, must satisfy the following requirements: 
-<br>Single-valued <br>Represent an identity (sAMAccountName, employeeID, etc...) <br>If the attribute is not present in an entry, the entry is returned. <br>If no suffix is specified, this identity attribute applies to the whole server search response.<br>The RadiantOne service must be restarted after changing these parameters. <br>Any search response returned by RadiantOne (below the specified starting suffix) checks if another entry with the same attribute/value has already been returned. If an entry with the same identity attribute value has been returned, then others are not returned.**
+>[!warning] <br>The identity attribute selected, must satisfy the following requirements: 
+<br>Single-valued <br>Represent an identity (sAMAccountName, employeeID, etc...) <br>If the attribute is not present in an entry, the entry is returned. <br>If no suffix is specified, this identity attribute applies to the whole server search response.<br>The RadiantOne service must be restarted after changing these parameters. <br>Any search response returned by RadiantOne (below the specified starting suffix) checks if another entry with the same attribute/value has already been returned. If an entry with the same identity attribute value has been returned, then others are not returned.
 
 ![One Entry for Laura is Returned with Duplicate Identity Removal Rules Enabled](Media/Image3.56.jpg)
 
@@ -573,7 +573,7 @@ Figure 20: One Entry for Laura is Returned with Duplicate Identity Removal Rules
 
 This is ideal for handling authentication requests (to ensure only one entry is returned to base authentication on). However, for authorization purposes, if a user exists in more than one source, only attributes from the first source are returned. If you need a complete profile of attributes coming from all the user’s accounts, then you need to configure joins to all branches in the virtual tree where the user may have an account. This join condition can be based on the identity attribute (or any other attribute that can be used to uniquely identify the person in the other branch). As a result, searches for the user still return only one entry. Without a join configured across these virtual views, only attributes from the first source the user was found in would be returned. For details on joining, please see [Joins](02-concepts#joins) in the Concepts section.
 
-><span style="color:red">**IMPORTANT NOTE – If your use case requires identity correlation to address user overlap, and a complete identity profile is needed for authorization, you should review the capabilities of the Global Identity Builder as opposed to trying to use Duplicate Identity Removal.**
+>[!warning] If your use case requires identity correlation to address user overlap, and a complete identity profile is needed for authorization, you should review the capabilities of the Global Identity Builder as opposed to trying to use Duplicate Identity Removal.
 
 ### Memory Cache
 
@@ -587,7 +587,7 @@ Figure 21: Memory Cache Settings
 
 #### Entry Cache
 
->**Note – This setting is accessible only in [Expert Mode](introduction#expert-mode).
+>[!note] This setting is accessible only in [Expert Mode](introduction#expert-mode).
 
 To define an entry cache:
 
@@ -605,13 +605,13 @@ To define an entry cache:
 
 7.	Click **Save**.
 
->**Note – You can flush the entry memory cache at any time from the Main Control Panel > Settings Tab > Server Front End > Memory Cache section. Click FLUSH ALL located in the Entry cache section.**
+>[!note] You can flush the entry memory cache at any time from the Main Control Panel > Settings Tab > Server Front End > Memory Cache section. Click FLUSH ALL located in the Entry cache section.
 
 For complete details on how entry memory cache works, please see the RadiantOne Deployment and Tuning Guide.
 
 #### Query Cache
 
->**Note – This setting is accessible only in [Expert Mode](introduction#expert-mode).**
+>[!note] This setting is accessible only in [Expert Mode](introduction#expert-mode).
 
 To define a query cache:
 
@@ -629,7 +629,7 @@ To define a query cache:
 
 7.	Click **Save**.
 
->**Note – You can flush the query memory cache at any time from the Main Control Panel -> Settings Tab -> Server Front End -> Memory Cache section. Click **FLUSH ALL** located in the Query cache section.**
+>[!note] You can flush the query memory cache at any time from the Main Control Panel -> Settings Tab -> Server Front End -> Memory Cache section. Click **FLUSH ALL** located in the Query cache section.
 
 For complete details on how query memory cache works, please see the RadiantOne Deployment and Tuning Guide. 
 
@@ -641,6 +641,7 @@ In addition to supporting LDAP operations, RadiantOne can also be accessed via S
 
 Figure 22: Other Protocols Section
 
+<!--
 #### SQL
 
 The Virtual Relational Server (VRS) allows for SQL clients to query the RadiantOne service. Details on how to enable the SQL interface can be found in this section. For complete details on the SQL interface, please see the RadiantOne VRS Guide.
@@ -657,7 +658,9 @@ To enable SQL access:
 
 5.	Restart the RadiantOne service to start listening on the new VRS port. If deployed in a cluster, restart the service on all nodes.
 
-><span style="color:red">**IMPORTANT NOTE – If you need to change the port, first stop the RadiantOne service, change the port for the database server and save the new configuration. Then, Restart the RadiantOne service and it should listen on the new port. If RadiantOne is deployed in a cluster, restart the service on all nodes.**
+>[!warning] If you need to change the port, first stop the RadiantOne service, change the port for the database server and save the new configuration. Then, Restart the RadiantOne service and it should listen on the new port. If RadiantOne is deployed in a cluster, restart the service on all nodes.
+
+-->
 
 #### Web Services (HTTP) Port
 
@@ -665,7 +668,7 @@ The HTTP interface is enabled by default. These are the ports the RadiantOne ser
 
 If you would only like to support encrypted traffic over HTTPS, just set the standard HTTP port to a value of 0.
 
-><span style="color:red">**IMPORTANT NOTE – you can enable both secure and non-secure ports. This way, clients may choose to use either one.**
+>[!warning] you can enable both secure and non-secure ports. This way, clients may choose to use either one.
 
 Restart the RadiantOne service if changes are made to these settings. If RadiantOne is deployed in a cluster, the service on all nodes must be restarted.
 
@@ -677,7 +680,7 @@ For details on configuring and accessing RadiantOne via DSML, SPML, SCIM, and RE
 
 ### Advanced Settings
 
->**Note – The settings in this section are accessible only in [Expert Mode](01-introduction#expert-mode).**
+>[!note] The settings in this section are accessible only in [Expert Mode](introduction#expert-mode).
  
 ![Advanced Section](Media/Image3.59.jpg)
 
@@ -701,6 +704,7 @@ When a machine that hosts RadiantOne has multiple IP addresses, the RadiantOne s
 
 This allows for having more than one RadiantOne instance using the same port but listening on different IP address.
 
+<!-- 
 This feature can also increase the security for accessing RadiantOne. You can set the server name in the Server Control Panel > Settings tab as localhost (which is the default when installing RadiantOne) and then restrict access to localhost for the plain socket/port (by checking the option next to the Server socket: Restrict to Host/IP specified in Server Control Panel: Settings). Leave the option of SSL Server socket: Restrict to Host/IP specified in Server Control Panel: Settings unchecked. This allows all available IP addresses only over the SSL port but access to the non-secured port only from the same machine where the RadiantOne service is running (essentially forcing a secure connection over SSL when accessing the RadiantOne service from a remote machine).
 
 **Server socket: Restrict access to host/IP defined in Server Control Panel: Settings**
@@ -711,7 +715,8 @@ Check this option to restrict access for the plain socket/port to the Host/IP ad
 
 Check this option to restrict access for the secured SSL socket/port to the Host/IP address specified in the server setting.
 
-><span style="color:red">**IMPORTANT NOTE – “localhost” is available only if it is set as the host name on the Server Control Panel > Settings tab > Server Name property. If it is set as the server name, the RadiantOne service is accessible ONLY by using a server name of localhost.**
+>[!warning] “localhost” is available only if it is set as the host name on the Server Control Panel > Settings tab > Server Name property. If it is set as the server name, the RadiantOne service is accessible ONLY by using a server name of localhost.
+-->
 
 #### RootDSE
 

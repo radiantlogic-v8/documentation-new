@@ -19,7 +19,7 @@ To define the criteria used to generate an encryption key:
 
 3.	Select the desired cipher from the drop-down list or select [AWSKMS](#using-amazon-web-services-aws-with-a-customer-master-key-cmk) if you want to use your own Customer Master Key (CMK) in Amazon Web Services (AWS) Key Management Service (KMS) and have configured the necessary settings in ZooKeeper. If unlimited Java security libraries are installed, there are more ciphers shown in this drop-down list.
 
->**Note - If you want to use stronger ciphers that are not listed, you must add crypto.policy=unlimited in <RLI_HOME>/jdk/jre/lib/security/java.security file. For more details, see the RadiantOne Hardening Guide.**
+>[!note] If you want to use stronger ciphers that are not listed, you must add crypto.policy=unlimited in <RLI_HOME>/jdk/jre/lib/security/java.security file. For more details, see the RadiantOne Hardening Guide.
 
 ![An image showing ](Media/Image3.116.jpg)
  
@@ -33,7 +33,7 @@ An encryption key is auto-generated based on the cipher and security key value p
 
 Instead of using the default key generation, you have the option to use a customer master key stored in AWS. The following steps describe the configuration.
 
->**Note – Key rotation is optional in AWS for KMS. If enabled, the default key rotation is once every 365 days. For details on AWS Key Management Service, please see the AWS documentation.**
+>[!note] Key rotation is optional in AWS for KMS. If enabled, the default key rotation is once every 365 days. For details on AWS Key Management Service, please see the AWS documentation.
 
 1.	Log into your AWS account to create your CMK (Customer Master Key).
 
@@ -115,7 +115,7 @@ To add a user to the Clear Attributes Only group:
 
 5.	From here you can add users to the group.
 
->**Note – To change the default group, on the Main Control Panel, go to the Zookeeper tab (requires [Expert Mode](introduction#expert-mode)). Expand radiantone > `<version>` > `<clustername>` > config and select vds_server.conf. Modify the value for "encryptedAttributeBlacklistGroupDn" to the full DN that points to the group entry to which the exclusion behavior should apply.**
+>[!note] To change the default group, on the Main Control Panel, go to the Zookeeper tab (requires [Expert Mode](introduction#expert-mode)). Expand radiantone > `<version>` > `<clustername>` > config and select vds_server.conf. Modify the value for "encryptedAttributeBlacklistGroupDn" to the full DN that points to the group entry to which the exclusion behavior should apply.
 
 ### Updating Encrypted Attributes
 
@@ -167,7 +167,7 @@ To define the criteria used to generate an encryption key:
 
 3.	Select the desired cipher from the drop-down list or select [AWSKMS](#using-amazon-web-services-aws-with-a-customer-master-key-cmk) if you want to use your own Customer Master Key (CMK) in Amazon Web Services (AWS) Key Management Service (KMS) and have configured the necessary settings in ZooKeeper. If unlimited Java security libraries are enabled, there are more available ciphers in this drop-down list.
 
->**Note - If you want to use stronger ciphers that are not listed, you must add (or uncomment) crypto.policy=unlimited in <RLI_HOME>/jdk/jre/lib/security/java.security file. For more details, see the RadiantOne Hardening Guide.**
+>[!note] If you want to use stronger ciphers that are not listed, you must add (or uncomment) crypto.policy=unlimited in <RLI_HOME>/jdk/jre/lib/security/java.security file. For more details, see the RadiantOne Hardening Guide.
 
 4.	If you selected a cipher suite in the previous step, enter a security key. This value is used to auto-generate an encryption key. If you plan on deploying multiple clusters that will participate in inter cluster replication and you are going to initialize Universal Directory (HDAP) stores from an exported LDIFZ file, take note of the value you enter here as you must use it when configuring the LDIFZ cipher and security key in the other clusters.
 
@@ -185,13 +185,13 @@ If you need to change the LDIFZ encryption security key, follow the steps below.
 
 5.	Click **Save**.
 
->**Note – LDIFZ files generated with the old encryption key are no longer usable.**
+>[!note] LDIFZ files generated with the old encryption key are no longer usable.
 
 ### Requiring LDIFZ for Exports
 
 The Secure LDIF Export option allows you to enforce the use of the encrypted LDIFZ format when exporting entries from the Directory Browser tab. With this setting enabled, using the unencrypted LDIF format for exports is not supported.
 
->**Note – Enabling secure LDIF exports requires first defining an LDIFZ encryption key. See the [Changing an Encryption Key](#changing-an-encryption-key) section for more information.**
+>[!note] Enabling secure LDIF exports requires first defining an LDIFZ encryption key. See the [Changing an Encryption Key](#changing-an-encryption-key) section for more information.
 
 To enable the secure LDIF export option:
 

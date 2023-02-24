@@ -2,7 +2,7 @@
 title: System Administration Guide
 description: System Administration Guide
 ---
-
+<!-- 
 # Reporting
 
 Settings found in the reporting section on the Main Control Panel > Settings Tab are related to the components required to generate reports on RadiantOne activities. These settings are described in this section.
@@ -32,3 +32,4 @@ For complete details on the Audit Report and the required settings, please see t
 One of the default reports included with RadiantOne is the Group Audit Report. Settings related to this report can be found on the Main Control Panel > Settings Tab > Reporting section > Group Audit Report sub-section.
 
 For complete details on the Group Audit Report and the required settings, please see the RadiantOne Monitoring and Reporting Guide.
+-->

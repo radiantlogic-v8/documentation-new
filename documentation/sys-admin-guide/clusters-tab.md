@@ -66,7 +66,7 @@ The Cancel button reverts the changes back to the previous settings.
 
 The Overview section displays the cluster nodes. You can see the status of services on the nodes and which node is the cluster’s RadiantOne leader (![An image showing ](Media/yellow-triangle.jpg) beside the server name) The RadiantOne leader node handles write operations for the cluster. 
 
->**Note - You can also determine the current RadiantOne leader by using the node-monitor data collector. For details, see the Monitoring and Reporting Guide.**
+>[!note] You can also determine the current RadiantOne leader by using the node-monitor data collector. For details, see the Monitoring and Reporting Guide.
 
 You can start, stop and restart the RadiantOne service here by selecting an option from the ![An image showing ](Media/power.jpg) drop-down menu, (as long as it is not configured to run as a service) and access the Server Control Panel associated with the node by clicking ![An image showing ](Media/server-control-panel.jpg). You are only able to perform these operations if the Jetty Application Server hosting the Control Panel on a particular node is running. If it isn’t, these buttons are gray. A red exclamation point icon next to the node name indicates that the application server hosting the Control Panel is not running on the node. Go to the node machine to start the application server hosting the Control Panel.
 
@@ -81,7 +81,7 @@ For each node, the Overview section displays the status of:
 -	Current disk usage
 -	RadiantOne service’s LDAP port
 
->**Note – if “Bind requires SSL or StartTLS” is enabled, a message is displayed indicating “Secure Bind Required”.**
+>[!note] if “Bind requires SSL or StartTLS” is enabled, a message is displayed indicating “Secure Bind Required”.
 
 -	RadiantOne service’s LDAPS port
 -	RadiantOne service’s HTTP port

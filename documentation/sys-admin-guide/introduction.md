@@ -26,16 +26,10 @@ Technical support can be reached using any of the following options:
 
 -	Website: https://support.radiantlogic.com 
 
--	Phone: 415-209-6800
-
--	Toll-Free Phone: 1-877-727-6442
-
--	Fax: 415-798-5697
-
 ## Expert Mode
 
 Some settings in the Main Control Panel are accessible only in Expert Mode. To switch to Expert Mode, click the Logged in as, (username) drop-down menu and select Expert Mode. 
 
 ![An image showing ](Media/expert-mode.jpg)
 
->**Note - The Main Control Panel saves the last mode (Expert or Standard) it was in when you log out and returns to this mode automatically when you log back in. The mode is saved on a per-role basis.**
+>[!note] The Main Control Panel saves the last mode (Expert or Standard) it was in when you log out and returns to this mode automatically when you log back in. The mode is saved on a per-role basis.
