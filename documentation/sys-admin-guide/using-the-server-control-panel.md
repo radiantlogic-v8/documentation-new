@@ -145,8 +145,9 @@ To change the server name and manage server certificates, go to the Server Contr
 The hostname where the server is installed. By default this is set to the machine name.
 
 This value can be seen in ZooKeeper from the Zookeeper tab in the Main Control Panel at: /radiantone/v1/cluster/shards/shard1/services/vds/registry/<unique ID assigned to the server>
-
+<!--
 If RadiantOne is running on a multi-homed machine, you can change this parameter to specify a single IP address (or host name). The value set here can work in conjunction with the Server Socket: Restrict to Host/IP specified in Multi Home settings and SSL Server socket: Restrict to Host/IP specified in [Multi Home settings](settings-tab#multi-home-settings) defined in the Main Control Panel > Settings tab > Server Front End section > Advanced sub-section.
+-->
 
 Changing this value is a delicate operation that must be performed during off-peak hours generally during a maintenance window. You must have your original (unapplied) license key file from Radiant Logic and make sure that the RadiantOne service and Jetty (that hosts the Control Panel) are stopped. Then, follow the steps below.
 

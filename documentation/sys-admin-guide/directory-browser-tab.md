@@ -52,7 +52,7 @@ Multiple search windows can be opened at a time. To launch a new search, go back
  
 Figure 3: Search Function on the Directory Browser Tab
 
-**Exporting Search Results** – To support exporting search results, enable the Proxy Authorization Control. This can be enabled from the Main Control Panel -> Settings -> Server Front End -> Support Controls. Also ensure you have proper access controls defined for the delegated admin user/group from Main Control Panel > Settings > Security > Access Control.
+**Exporting Search Results** – To support exporting search results, enable the Proxy Authorization Control. This can be enabled from the Main Control Panel > Settings > Server Front End > Support Controls. Also ensure you have proper access controls defined for the delegated admin user/group from Main Control Panel > Settings > Security > Access Control.
 
 After performing a search on the Directory Browser tab, you can export the search results to an LDIF file. Use ![LDIF file name](Media/ldif-file-name.jpg) to specify a file name for the LDIF (if not specified, it defaults to Search) and the drop-down list to indicate the destination. The destination of the LDIF file can be either the RadiantOne Server or the local client. Choose one of these options from the drop-down menu. If “Export to FID Server” is selected, the location of the exported file is: <RLI_HOME>\vds_server\ldif\. If the specified file name already exists at the destination, the new file name is appended with a timestamp.
 
@@ -298,7 +298,7 @@ To copy the DN of the selected entry, click ![copy dn](Media/copy-rdn.jpg). This
 
 To change the number of entries displayed below each branch in the directory tree, click ![gear icon](Media/gear-icon.jpg). The default is 20 entries. Enter a new value for the size limit and click OK. Then click ![refresh button](Media/refresh-button.jpg).
 
->[!warning] if you set the size limit to more than 100, you should make sure the Paged Results Control is enabled for RadiantOne. This setting can be found on the Main Control Panel -> Settings tab -> Server Front End -> Supported Controls.
+>[!warning] if you set the size limit to more than 100, you should make sure the Paged Results Control is enabled for RadiantOne. This setting can be found on the Main Control Panel > Settings tab > Server Front End > Supported Controls.
 
 ## Export LDIF
 

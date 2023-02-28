@@ -632,7 +632,7 @@ To define a query cache:
 
 7.	Click **Save**.
 
->[!note] You can flush the query memory cache at any time from the Main Control Panel -> Settings Tab -> Server Front End -> Memory Cache section. Click **FLUSH ALL** located in the Query cache section.
+>[!note] You can flush the query memory cache at any time from the Main Control Panel > Settings Tab > Server Front End > Memory Cache section. Click **FLUSH ALL** located in the Query cache section.
 
 For complete details on how query memory cache works, please see the RadiantOne Deployment and Tuning Guide. 
 
@@ -677,7 +677,7 @@ Restart the RadiantOne service if changes are made to these settings. If Radiant
 
 #### DSML, SPML, SCIM, REST (ADAP), SAML
 
-SCIM settings are configured in the Server Front End -> SCIM section. 
+SCIM settings are configured in the Server Front End > SCIM section. 
 
 For details on configuring and accessing RadiantOne via DSML, SPML, SCIM, and REST, please see the RadiantOne Web Services API Guide. 
 
@@ -734,7 +734,7 @@ The RadiantOne rootDSE is located at <RLI_HOME>\vds_server\conf\rootdse.ldif and
 ```
 
 RadiantOne searches across the naming contexts listed in this property when a client issues a one-level or subtree search with an empty/blank base DN. If the client issues a base search, only the contents of the rootDSE are returned.
-
+<!--
 ##### Custom RootDSE
 
 Depending on the backends that are integrated into the RadiantOne platform, it might be appropriate for RadiantOne to reply with different rootDSE content. This feature should be used with caution and is generally only pertinent if RadiantOne is configured as a proxy to a backend directory (e.g. Active Directory). This proxy view can be "merged/extended" with branches from other directories if needed, but the main/primary directory hierarchy being virtualized must remain the same and conform to the desired rootDSE to return. This is important because as mentioned, the contents of the rootDSE often dictates subsequent requests the client issues to RadiantOne. Therefore, any supported controls, mechanisms, schema locations...etc. must match and be supported by the backend so the subsequent client requests are routed/handled properly.
