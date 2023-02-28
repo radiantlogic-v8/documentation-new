@@ -3,21 +3,15 @@ title: Quick Start Guide
 description: Quick Start Guide
 ---
 
-# Chapter 1: Getting Started with RadiantOne
+# Getting Started with RadiantOne
 
-RadiantOne is managed from a Main Control Panel and a Server Control Panel. For cluster deployments, there is one Main Control Panel and one Server Control Panel associated with
-each node in a cluster. For example, if you have a three node cluster, you have one Main
-Control Panel and three Server Control Panels.
+RadiantOne is managed from a Main Control Panel and a Server Control Panel. For cluster deployments, there is one Main Control Panel and one Server Control Panel associated with each node in a cluster. For example, if you have a three node cluster, you have one Main Control Panel and three Server Control Panels.
 
 ## Main Control Panel
 
 Once RadiantOne has been installed, users should first launch the Main Control Panel, a web-based interface that serves as the central access point for settings and administrative controls.
 
-The Main Control Panel offers administrators remote access to perform common tasks such as
-monitoring the RadiantOne components and backend data sources, checking server statistics,
-configuring persistent caches, and managing the virtual namespace. In addition, the identity
-service wizards and Server Control Panel are accessed from the Main Control Panel. For more
-information on the [Server Control Panel](#starting-the-main-control-panel), see Starting the Server Control Panel.
+The Main Control Panel offers administrators remote access to perform common tasks such as monitoring the RadiantOne components and backend data sources, checking server statistics, configuring persistent caches, and managing the virtual namespace. In addition, the identity service wizards and Server Control Panel are accessed from the Main Control Panel. For more information on the [Server Control Panel](#starting-the-main-control-panel), see Starting the Server Control Panel.
 
 >[!note] To access the Main Control Panel, JavaScript must be enabled in the Internet browser you are using.
 
@@ -69,12 +63,8 @@ The Server Control Panel offers administrators remote access to perform common t
 
 ### Starting the Server Control Panel
 
-There are three links in the Main Control Panel that open the Server Control Panel.
+There is a link in the Main Control Panel that open the Server Control Panel. The Server Control Panel link at the top of the Main Control Panel’s Dashboard tab.
 
-- The “Connected to...” server name at the top of the Main Control Panel’s Dashboard tab.
-- The button in the Overview section on the Main Control Panel’s Dashboard tab.
-- The button in the Internode Health section on the Main Control Panel’s Dashboard tab.
-
-When any of these links is clicked, the Server Control Panel associated with the corresponding RadiantOne node opens to the Server Dashboard tab in a new browser tab. The user you are currently connected to the Main Control Panel with is automatically logged into the Server Control Panel.
+When this link is clicked, the Server Control Panel associated with the corresponding RadiantOne node opens to the Server Dashboard tab in a new browser tab. The user you are currently connected to the Main Control Panel with is automatically logged into the Server Control Panel.
 
 For details on the usage of each tab in the Server Control Panel, please see the RadiantOne Architect Guide and the RadiantOne System Administration Guide.
