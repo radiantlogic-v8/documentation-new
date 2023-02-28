@@ -25,7 +25,7 @@ For some components, there is an Advanced section where finer-grained logging pr
 
 ## Access Logs
 
-The RadiantOne access log contains details about client requests to RadiantOne and the response. This is a structured log file and the contents can be used for auditing RadiantOne activity. The default output is a text file named vds_server_access.log and is in <RLI_HOME>/vds_server/logs. From the Main Control Panel > Settings tab > Logs section > Access Logs, you can indicate the output format. If you want the logs to be written to a database, check the CSV output format. Then, use the RadiantOne Log2DB utility, which reads the CSV log contents and writes them to the database that is configured in the Reporting > Log2DB Settings section.
+The RadiantOne access log contains details about client requests to RadiantOne and the response. This is a structured log file and the contents can be used for auditing RadiantOne activity. The default output is a text file named vds_server_access.log and is in <RLI_HOME>/vds_server/logs. From the Main Control Panel > Settings tab > Logs section > Access Logs, you can indicate the output format. <!--If you want the logs to be written to a database, check the CSV output format. Then, use the RadiantOne Log2DB utility, which reads the CSV log contents and writes them to the database that is configured in the Reporting > Log2DB Settings section.-->
 
 The access log rolls over when it reaches 100MB in size. This size can be set in the Rollover size property. The access logs are kept for 30 days by default and then deleted. This is configurable in the “Rollover: How long to keep the logs” property.
 
