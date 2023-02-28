@@ -95,15 +95,13 @@ From the ZooKeeper tab, you can view configuration files maintained in ZooKeeper
 
 ### Server Control Panel
 
-To open the Server Control Panel, click the (ServerName) icon located on the Main Control Panel’s Health section or the ![server control panel](Media/server-control-panel.jpg) button below the server name in the Overview section. The Server Control Panel opens in a new browser tab and the user currently logged into the Main Control Panel is automatically signed into the Server Control Panel.
+To open the Server Control Panel, click the Server Control Panel icon located at the top of the Main Control Panel's Dashboard tab. The Server Control Panel opens in a new browser tab and the user currently logged into the Main Control Panel is automatically signed into the Server Control Panel.
 
 The following tabs are accessible from the Server Control Panel.
 
 **Dashboard**
 
-The Dashboard tab displays detailed server-level statistics in each section. To change the time
-frame for data displayed in the graphs, click the Graph range drop-down menu and select a
-value. Graphs for the following items are displayed.
+The Dashboard tab displays detailed server-level statistics in each section. To change the time frame for data displayed in the graphs, click the Graph range drop-down menu and select a value. Graphs for the following items are displayed.
 
 - CPU of the machine hosting RadiantOne.
 - Memory usage of the RadiantOne service
