@@ -41,11 +41,10 @@ Once you have tested your virtual views and are ready to deploy your architectur
 
 #### Uninstalling the Windows Service
 
-To uninstall the Windows service, stop the service and execute <RLI_HOME>\ \bin\windows.service\fid-server-service-uninstall.bat. The process of uninstalling RadiantOne as a Windows service does not update the setting in ZooKeeper. Therefore, the Dashboard tab in the Main Control Panel does not properly display the stop/start options for the RadiantOne service since it assumes it is still configured to run as a service. To address this, manually update the asAService property in ZooKeeper. There are two methods you can choose from.
-
--	From the Main Control Panel, switch to [Expert Mode](00-preface#expert-mode). Go to the Settings tab and navigate to Server Front End -> Advanced. Uncheck the Run as a Window Service option and save the configuration. Restart the Control Panel.
-
--	Use the vdsconfig utility to update the asAService property to false. Below is an example. After running the command, restart the Control Panel.
+To uninstall the Windows service, stop the service and execute <RLI_HOME>\ \bin\windows.service\fid-server-service-uninstall.bat. The process of uninstalling RadiantOne as a Windows service does not update the setting in ZooKeeper. Therefore, the Dashboard tab in the Main Control Panel does not properly display the stop/start options for the RadiantOne service since it assumes it is still configured to run as a service. To address this, manually update the asAService property in ZooKeeper. To manually update the asAService property in ZooKeeper, Use the vdsconfig utility to update the asAService property to false. Below is an example. After running the command, restart the Control Panel.
+<!--
+-	From the Main Control Panel, switch to [Expert Mode](00-preface#expert-mode). Go to the Settings tab and navigate to Server Front End > Advanced. Uncheck the Run as a Window Service option and save the configuration. Restart the Control Panel.
+-->
 
 ```
 C:\radiantone\vds\bin>vdsconfig.bat set-property -name asAService -value false 
