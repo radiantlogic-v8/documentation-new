@@ -71,3 +71,29 @@ Harness your identity data with intelligent integration to drive better business
   
 </section>
 
+## RadiantOne Global Synchronization
+
+<section>
+   
+  > [Introduction](/global-sync-guide/introduction)  
+  > Learn about RadiantOne Global Synchronization including detailed architecture, key concepts and common use cases for the tool.
+  
+  > [Installation](/)  
+  > Learn how to use the Environments Operations Center to create environments and install the RadiantOne Intelligent Identity Data Platform which offers Global Synchronization. 
+  
+  > [Configuration](/global-sync-guide/introduction)  
+  > Learn how to configure synchronization pipelines and create transformation logic using a combination of scripting, attribute mappings and advanced rules. 
+  
+  > [Connector Properties](/connector-properties-guide/overview)  
+  > Learn how to configure change capture connectors for detecting and processing changes from data sources. 
+  
+  > [Deployment & Tuning](/global-sync-guide/deployment)  
+  > Learn the best practices approaches for deploying and tuning RadiantOne Global Synchronization.
+  
+  > [Troubleshooting](/logging-and-troubleshooting-guide/05-global-synchronization)  
+  > Learn about the structure and contents of the log files associated with RadiantOne Global Synchronization.
+  
+  > [Monitoring](/monitoring-and-reporting-guide/01-monitoring)  
+  > Learn how to monitor RadiantOne Global Synchronization and configure alerts for concerning activities.
+  
+</section>
