@@ -2195,26 +2195,23 @@ For details on the columns in the CSV file, please see the RadiantOne Logging an
 
 #### RadiantOne Activity – Read Changes from a Database Table
 
-The RadiantOne service logs all access to data in the vds_server_access.log by default as long
-as the server log level is set to a minimum of ACCESS. This includes who accessed the data, when (day and time) and what operations they performed. This information can also be logged
-into a database which allows for third-party reporting tools to easily create meaningful charts and graphs for compliance analysis. Logging to a database requires the [CSV log format output](#radiantone-activity--checkparse-access-log-csv-format-output)
-enabled and running the Log2DB utility.
+The RadiantOne service logs all access to data in the vds_server_access.log by default as long as the server log level is set to a minimum of ACCESS. This includes who accessed the data, when (day and time) and what operations they performed. <!--This information can also be logged into a database which allows for third-party reporting tools to easily create meaningful charts and graphs for compliance analysis. Logging to a database requires the [CSV log format output](#radiantone-activity--checkparse-access-log-csv-format-output) enabled and running the Log2DB utility.
 
-The database that houses the table which contains the log contents can be in any database
-server you choose. These settings are located on the Main Control Panel > Settings Tab >
-Reporting section > Log2DB Settings sub-section. The database associated with the “Database
+The database that houses the table which contains the log contents can be in any database server you choose. These settings are located on the Main Control Panel > Settings Tab > Reporting section > Log2DB Settings sub-section. The database associated with the “Database
 Datasource” configured here must be running and accessible. To check which database this
 data source points to, navigate to the Main Control Panel -> Settings Tab -> Server Backend > DB Data Sources.
 
 >[!note] The default settings leverage a Derby database that is included with RadiantOne and can be started with <RLI_HOME>/bin/DerbyServer.exe.
 
-Once RadiantOne is configured to log to CSV and the database hosting the log contents is
-running, launch the Log2DB utility which is in charge of reading the CSV contents and writing
-into your database table (table name configured in the Log2db Settings).
+<!-->
+
+Once RadiantOne is configured to log to CSV and the database hosting the log contents is running, launch the Log2DB utility which is in charge of reading the CSV contents and writing into your database table (table name configured in the Log2db Settings).
 
 >[!warning] If RadiantOne is deployed in a cluster, the Log2DB utility must be running on each node.
 
 Details about configuring and starting the Log2DB utility and the database columns (describing the log contents) can be found in the Logging and Troubleshooting Guide.
+
+-->
 
 #### Check/Parse Alert File (CSV Format) Output or Emails Generated from Alerts enabled in Main Control Panel 
 

@@ -110,11 +110,7 @@ addition to what operations they are performing. This can help pinpoint undesira
 
 ### Maintaining the Log Database
 
-It is important to note that there is no built-in maintenance of the log database. The database
-administrator responsible for the database chosen to store the log content should maintain the
-database table as needed (the amount of log content stored in the database depends on
-frequency the Log2DB utility is run and the activity against RadiantOne). This includes things
-like sizing the table properly for log history it should store, clearing the old log content from the
+It is important to note that there is no built-in maintenance of the log database. The database administrator responsible for the database chosen to store the log content should maintain the database table as needed (the amount of log content stored in the database depends on frequency the Log2DB utility is run and the activity against RadiantOne). This includes things like sizing the table properly for log history it should store, clearing the old log content from the
 table when it is no longer needed...etc.
 
 >[!note] For assistance with establishing log maintenance and a reporting program, please contact Radiant Logic for professional services.
