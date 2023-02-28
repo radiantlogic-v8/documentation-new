@@ -169,9 +169,9 @@ ldapsearch -h localhost -p 2389 -D "cn=directory manager" -w secret -b "cn=Laura
 ```
 
 To configure an entry memory cache, follow the steps below (requires [Expert Mode](00-preface#expert-mode)).
-1.	On the Main Control Panel -> Settings Tab -> Server Front End section -> Memory Cache sub-section, on the right side click on the Add button in the Entry Cache section.
+1.	On the Main Control Panel > Settings Tab > Server Front End section > Memory Cache sub-section, on the right side click Add in the Entry Cache section.
 2.	Select a starting point location in the virtual tree. All entries queried below this point are cached. The maximum number of entries allowed in the main memory is specified in the Number of Cache Entries parameter.
-3.	Enter values for the Number of Cache Entries, Time to Live, Indexed attributes, and include/exclude filters.  Details about these settings can be found below.
+3.	Enter values for the Number of Cache Entries, Time to Live, Indexed attributes, and include/exclude filters. Details about these settings can be found below.
 
 ![An image showing ](Media/Image2.2.jpg)
  
@@ -267,7 +267,7 @@ The query memory cache is filled as the RadiantOne service receives queries. The
 
 A time-to-live parameter can be set for both the entry cache and the query cache.  The time starts when the entry/query is added into memory.  Once the time-to-live value is reached, the entry/query is removed from the cache. The next time a query is received for the entry, RadiantOne issues a query to the underlying store(s), retrieves the latest value and the entry is stored in the entry memory cache and/or the query memory cache again.
 
-You also have the option to flush the entire memory cache from the Main Control Panel -> Settings Tab -> Server Front End section -> Memory Cache section (requires [Expert Mode](00-preface#expert-mode)). On the right side, click on the “Flush All” button next to the type of cache you are interested in clearing.
+You also have the option to flush the entire memory cache from the Main Control Panel > Settings Tab > Server Front End section > Memory Cache section (requires [Expert Mode](00-preface#expert-mode)). On the right side, click on the “Flush All” button next to the type of cache you are interested in clearing.
 
 ![An image showing ](Media/Image2.3.jpg)
  
@@ -419,7 +419,7 @@ In some cases, the virtual engine parallel processor (vpp) can be used to speed 
 
 Depending on the complexity of the virtual view, building the persistent cache image can take some time. Since the internal connections used by RadiantOne to build the persistent cache image are subject to the Idle Connection Timeout server setting, the cache initialization process might fail due to the connection being automatically closed by the server. To avoid cache initialization problems, it is recommended to use paging for internal connections.  To use paging:
 
-1.	Navigate to the Main Control Panel -> Settings tab -> Server Front End -> Supported Controls.
+1.	Navigate to the Main Control Panel > Settings tab > Server Front End > Supported Controls.
 
 2.	On the right, check the option to Enable Paged Results.
 
