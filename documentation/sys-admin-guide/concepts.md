@@ -54,6 +54,14 @@ You can then copy the export file to the desired RadiantOne server and use the [
 
 >[!warning] The following default data sources are included with RadiantOne: vdsha (points to the RadiantOne nodes in the cluster), advworks, derbyorders, derbysales, examples, northwind, log2db, and vdapdb (points to the local Derby database server), and replicationjournal (points to a local RadiantOne Universal Directory store and is used for inter-cluster replication). Therefore, be aware that when you import one of these data sources on the target RadiantOne server, the data sources with the same name are overwritten. For this reason, it is recommended that you do not export these data sources.
 
+### To download data sources
+
+You can download existing data sources. This might be usefule if, for example, RadiantOne is running in a deployment and you do not have access to the files on the server. From the Main Control Panel > Settings Tab > Server Backend click on the sub-section representing the types of data sources you want to export (LDAP, database, or custom). On the right side, click **Export**. Select the data sources you want to export, indicate a file name and location and click **Download**.
+
+![exporting data sources](Media/Image2.2.jpg)
+
+Figure 2: Downloading Data Sources
+
 ## Union
 
 Union is a well-known term in the RDBMS-world and the value of the union operation is key for any federated identity service. Union is essentially the ability to create a list where every user is listed once and only once, even if they appear multiple times in the data stores across the enterprise. User overlap can occur for several different reasons. There could be one user listed numerous times, or multiple users with the same name spread across disparate data silos. The result of a union is a unique list of users that is indexed for each system which enables fast and easy lookups. The reason this capability is critical for an identity service is because it makes the identification of a user more accurate and efficient. 
