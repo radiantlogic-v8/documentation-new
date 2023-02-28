@@ -9,7 +9,7 @@ description: Hardening Guide
 
 Access limits are related to how the server handles activity received from clients. Details about each of the parameters mentioned below can be found in the RadiantOne System Administration Guide. This document is only for pointing out these parameters as key to hardening the RadiantOne service against security risks.
 
-><span style="color:red">**IMPORTANT NOTE – Changing any property mentioned in this section requires a restart of RadiantOne to take effect. If deployed in a cluster, restart on all nodes.**
+>[!warning] Changing any property mentioned in this section requires a restart of RadiantOne to take effect. If deployed in a cluster, restart on all nodes.
 
 ### Size Limit
 

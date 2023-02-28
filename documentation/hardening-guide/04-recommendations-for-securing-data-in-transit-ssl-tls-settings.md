@@ -21,8 +21,8 @@ Below is a high-level architecture diagram depicting the communication between t
 
 If SSL has been enabled for RadiantOne and you want to forbid access on the non-SSL port, follow the steps below.
 
-><span style="color:red">**IMPORTANT NOTE - If you have not enabled SSL for RadiantOne and set a value of 0 for the standard port, the RadiantOne service does not start at all.
-Therefore, be sure to enable the SSL port before setting the standard port to 0.**
+>[!warning] If you have not enabled SSL for RadiantOne and set a value of 0 for the standard port, the RadiantOne service does not start at all.
+Therefore, be sure to enable the SSL port before setting the standard port to 0.
 
 1. Stop the RadiantOne service (from the Dashboard tab in the Main Control Panel or as a service if it is installed as a service). If running in a cluster, shutdown the RadiantOne  service on all nodes starting with the follower/follower-only nodes and stopping the leader node last. View the leader/follower status of each node from the Main Control Panel dashboard tab. Take note of the current leader node (noted with the yellow-colored triangle).
 2. Go to the Settings tab > Server Front End > Administration section.
@@ -54,7 +54,7 @@ If you use the Main Control Panel, Directory Browser tab to manage entries, you 
 
 If you are using a self-signed server certificate, you must install/trust the RadiantOne server certificate into your Internet browser. This can be done with the steps below.
 
->**Note – This is also applicable if you are simply accessing the Control Panel via the HTTPS port (e.g. 7171) even if the non-SSL is still available. This is because when you access the Main Control Panel via HTTPS, it connects to the RadiantOne service on the HTTPS web service port (https://rliserver:8090) and this requires the browser to trust the RadiantOne node’s server certificate. The [diagram](04-recommendations-for-securing-data-in-transit-ssl-tls-settings.md) shown at the beginning of this chapter depicts the different certificates, keystores and truststores in the architecture and is helpful to
+>[!note] This is also applicable if you are simply accessing the Control Panel via the HTTPS port (e.g. 7171) even if the non-SSL is still available. This is because when you access the Main Control Panel via HTTPS, it connects to the RadiantOne service on the HTTPS web service port (https://rliserver:8090) and this requires the browser to trust the RadiantOne node’s server certificate. The [diagram](04-recommendations-for-securing-data-in-transit-ssl-tls-settings.md) shown at the beginning of this chapter depicts the different certificates, keystores and truststores in the architecture and is helpful to
 understand where certificates need to be imported.**
 
 1. Open your Internet Browser (as an administrator, in order to install the RadiantOne server certificate when prompted) and navigate to RadiantOne on the HTTPS port (e.g. https://radiantoneserver:8090)
@@ -103,7 +103,7 @@ should not see the certificate warning anymore.
 
 You can limit the SSL protocols supported in RadiantOne from the Main Control Panel > Settings Tab > Security section > SSL sub-section. Click **Change** next to Enabled SSL Protocols. Select the protocols to support and click OK. Restart the RadiantOne service on all nodes.
 
->**Note – Only enable the SSL protocols that comply with your company’s security policy.**
+>[!note] Only enable the SSL protocols that comply with your company’s security policy.**
 
 ## Use Strong Cipher Suites and Disable Weak Ones
 
@@ -142,17 +142,17 @@ To only support HTTPS access to the Control Panels, edit
 Restart Jetty (which hosts the Control Panel applications). You can force Jetty to stop by running %RLI_HOME%\bin\StopWebAppServer.bat (StopWebAppServer.sh on Linux). Jetty restarts when you launch the Main Control Panel. Or, if you’ve configured it to run as a service
 at the level of the operating system, restart it from there.
 
->**Note - If RadiantOne is installed on Windows platforms, edit the Control Panel shortcuts (typically on the desktop and from the Start menu > All Programs > RadiantOne > Control Panel). Change the default target from:
+>[!note] If RadiantOne is installed on Windows platforms, edit the Control Panel shortcuts (typically on the desktop and from the Start menu > All Programs > RadiantOne > Control Panel). Change the default target from:
 C:\radiantone\vds\bin\openControlPanel.bat vds_server http
 ><br> To the following target:
 C:\radiantone\vds\bin\openControlPanel.bat vds_server https**
 
 By default, Jetty leverages the same SSL settings as the RadiantOne service.
 
->**Note – To force Jetty to use its own SSL configurations instead of the same as
+>[!note] To force Jetty to use its own SSL configurations instead of the same as
 used by the RadiantOne service, edit
 <RLI_HOME>\vds_server\conf\jetty\config.properties and set:
-useVDSSSLConfig=false**
+useVDSSSLConfig=false
 
 Since Jetty uses the same server keystore as the RadiantOne sevice (jetty.ssl.keystore.location=<RLI_HOME>/vds_server/conf/rli.keystore), this server certificate must be trusted by your Internet Browser if you need to access the Control Panel via HTTPS. If you have replaced the default self-signed certificate with one signed by a Certificate Authority that is trusted by your client browser, you should be able to access the Control Panels via the SSL port without problems (e.g. https://radiantoneserver:7171). If you are using a self-signed
 certificate, you must install/trust the server certificate into your Internet browser. This can be done with the steps below.
@@ -220,7 +220,7 @@ If you are deploying RadiantOne in a cluster, all nodes must be able to communic
 stores and Persistent Cache) which uses HTTP/HTTPS and redirecting write operations to the leader node which uses LDAP/LDAPS. To force the usage of SSL communication between
 cluster nodes, choose the Always use SSL option from the Main Control Panel > Settings Tab > Security section > SSL sub-section.
 
->**Note - Forcing the use of SSL slows down the communication speed between nodes.**
+>[!note] Forcing the use of SSL slows down the communication speed between nodes.
 
 ## Configure SSL/TLS for Backend Connections
 

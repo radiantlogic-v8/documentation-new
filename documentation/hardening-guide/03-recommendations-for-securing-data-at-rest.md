@@ -36,12 +36,12 @@ This default access control can be removed from the Main Control Panel ->
 Settings Tab > Security section > Access Control. Click root on the right and select the
 configured access control described as “grant read access to anyone”. Then click on the Delete button.
 
-><span style="color:red">**IMPORTANT NOTE – If you delete the default read access, this does not delete read access to the RootDSE for RadiantOne. If you want to remove public access to the RootDSE, check the Enable RootDSE ACI option after you delete the default global read access. This denies access to the RootDSE to everyone except cn=directory manager. You can also add a new ACI that
-dictates RootDSE access. Below is an example of allowing public access to the RootDSE:**
+>[!warning] If you delete the default read access, this does not delete read access to the RootDSE for RadiantOne. If you want to remove public access to the RootDSE, check the Enable RootDSE ACI option after you delete the default global read access. This denies access to the RootDSE to everyone except cn=directory manager. You can also add a new ACI that
+dictates RootDSE access. Below is an example of allowing public access to the RootDSE:
 
-><span style="color:red">**(target="ldap:///")(targetscope="base")(targetattr="*")(version 3.0; acl
+>[!warning](target="ldap:///")(targetscope="base")(targetattr="*")(version 3.0; acl
 "RootDSE accessible to public"; allow (read,search,compare)
-userdn="ldap:///anyone";)**
+userdn="ldap:///anyone";)
 
 Although there is not an absolute requirement, it is generally recommended to define all your
 access controls at the root level so you can come back to this single level and see all configured
@@ -82,10 +82,7 @@ RadiantOne offers advanced password policy settings to control everything from p
 
 ## Use Multi-Factor Authentication
 
-RadiantOne includes a framework for calling custom authentication services like RSA SecurID
-and Yubicloud. This allows standard LDAP applications to benefit from stronger, multi-factor
-security without requiring any changes to their authentication logic. Users of the application can
-login with their existing ID and password + tokencode/One Time Password (OTP). RadiantOne
+RadiantOne includes a framework for calling custom authentication services like RSA SecurID and Yubicloud. This allows standard LDAP applications to benefit from stronger, multi-factor security without requiring any changes to their authentication logic. Users of the application can login with their existing ID and password + tokencode/One Time Password (OTP). RadiantOne
 translates the standard LDAP authentication (bind) request into a validation of the user’s
 password to the authoritative source (whether that is local in a RadiantOne Universal Directory
 stored, or some other authoritative backend) and a call to your specialized authentication
@@ -152,9 +149,9 @@ certain attribute values printed in clear in the logs, you can indicate them her
 name should be separated with a single space. Any attribute indicated here has a value of *****
 printed in the logs instead of the value in clear.
 
-><span style="color:red">**IMPORTANT NOTE – If Interception Scripting is used, remove or comment out
+>[!warning] If Interception Scripting is used, remove or comment out
 the following line from each method to avoid cleartext passwords being written
-to log files: prop.list(System.out)**
+to log files: prop.list(System.out)
 
 ## Avoid Displaying Sensitive Changelog Attributes
 

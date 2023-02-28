@@ -15,9 +15,9 @@ Generally, RadiantOne is deployed behind a hardware load balancer that is charge
 
 Each RadiantOne node must be able to communicate to the other nodes on the following ports (these are configurable during install). Therefore, the firewall rules for these ports must be inbound and outbound. Note here that the non-SSL ports can be disabled if desired.
 
->**NOTE – for more information on disabling non-SSL access, see the [Forbid Access to RadiantOne on the Non-SSL Port](04-recommendations-for-securing-data-in-transit-ssl-tls-settings.md#forbid-access-to-radiantone-on-the-non-ssl-port) section.**
+>[!note] For more information on disabling non-SSL access, see the [Forbid Access to RadiantOne on the Non-SSL Port](04-recommendations-for-securing-data-in-transit-ssl-tls-settings.md#forbid-access-to-radiantone-on-the-non-ssl-port) section.
 
-The default TCP ports defined during install are described here. You might have changed these defaults.
+The default TCP ports defined during install are described here. You might have changed some of these defaults.
 
 - Standard LDAP: 2389 and 636 or 1636 (SSL)
   
@@ -26,7 +26,7 @@ The default TCP ports defined during install are described here. You might have 
 - RadiantOne Admin Service HTTP Ports: 9100 and 9101 (SSL)
 - Zookeeper (configuration management): 2181 (ZK Client port), 2182 (JMX), 2888(ZK Ensemble port), 3888 (ZK Leader Election Port)
 
-><span style="color:red">**IMPORTANT NOTE – if you are using third party tools, that are monitoring the above components, then all ports listed above might be required for their service. Also, if you want to allow administration/configuration of RadiantOne remotely, the Control Panel HTTP port must be made available.**
+>[!warning] if you are using third party tools, that are monitoring the above components, then all ports listed above might be required for their service. Also, if you want to allow administration/configuration of RadiantOne remotely, the Control Panel HTTP port must be made available.
 
 - SMTP emails for alerts and other notifications use outbound ports 25 and 465 (SSL).
   
@@ -49,15 +49,19 @@ appropriate delegated administrator groups to define the roles they should have 
 
 For details on updating the RadiantOne super user (e.g. cn=directory manager) credentials, see the RadiantOne Operations Guide.
 
+<!--
+
 ## Limit Access as Directory Manager to Specific Clients
 
 To help prevent against the unwarranted use of the directory administrator account, you can set specific IP addresses from where the directory administrator account can connect to the RadiantOne service from. This value can be a single IP address or a list of IP addresses separated by a comma. The syntax can also support a range of IP addresses. Both IPv4 and IPv6 addresses are allowed and a mix of both is supported.
 
 This parameter can be changed in the Main Control Panel > Settings Tab > Administration section. On the right side, set the value below the Allowed IPs parameter.
 
-><span style="color:red">**IMPORTANT NOTE – if you use this setting, you must list the IP address of each RadiantOne node in addition to the addresses from all servers you want the directory administrator to connect from. If RadiantOne is deployed in a cluster, you must list all IP addresses for all nodes.**
+>[!warning] if you use this setting, you must list the IP address of each RadiantOne node in addition to the addresses from all servers you want the directory administrator to connect from. If RadiantOne is deployed in a cluster, you must list all IP addresses for all nodes.
 
 For more details and example syntax, please see the RadiantOne System Administration Guide.
+
+-->
 
 ## Protect and Monitor Access to the Underlying Host Where RadiantOne is Deployed
 
@@ -72,21 +76,17 @@ RadiantOne locally stores passwords and/or certificates to access backend data s
 - Restrict access to underlying host to trusted administrators with operational need to access hosts.
 - Monitor access to underlying host using a SIEM system such as RSA envision.
 
-><span style="color:red">**IMPORTANT NOTE – If deploying a cluster, each node/machine in the cluster should be protected and monitored based on the recommendations in this section.**
+>[!warning] If deploying a cluster, each node/machine in the cluster should be protected and monitored based on the recommendations in this section.
 
 RadiantOne offers a command line configuration utility (<RLI_HOME>/bin/vdsconfig.bat/.sh) that must be run on the same machine where RadiantOne is installed. Restrict access to the machine (and the ability to execute this utility) to trusted administrators with operational needs to use this command line configuration utility. Requiring a username and password to be passed in the commands can also be enabled in ZooKeeper. Please see the Command Line Configuration Guide for details on how to enable this.
 
 ## Secure Access to Log Files
 
-RadiantOne can be installed on an encrypted drive (e.g. BitLocker on Windows or Linux-equivalent) to limit exposure to log files. In the RadiantOne Main Control Panel you can configure log location to write to a secure, encrypted drive where strict system-level write
-permissions are enforced for the user account under which the RadiantOne service runs.
-RadiantOne also offers a Log2DB utility that can write logs into any secure JDBC-accessible database you choose. For details on configuring log location and writing into a database, see the Logging and Troubleshooting Guide.
+RadiantOne can be installed on an encrypted drive (e.g. BitLocker on Windows or Linux-equivalent) to limit exposure to log files. In the RadiantOne Main Control Panel you can configure log location to write to a secure, encrypted drive where strict system-level write permissions are enforced for the user account under which the RadiantOne service runs. <!-- RadiantOne also offers a Log2DB utility that can write logs into any secure JDBC-accessible database you choose. -->For details on configuring log location and writing into a database, see the Logging and Troubleshooting Guide.
 
 ## Require Credentials for Making Configuration Changes from Command Line
 
-By default, the commands available in the vdsconfig utility can be executed by anyone who can launch the utility and the change, as tracked by Zookeeper, is logged as simply that the change was made from the command line utility. The only exception here is when the command is
-updating a property containing a password. In this context, the RadiantOne super user credentials are required. If you want to enforce that credentials are required to execute any command in the vdsconfig utility, add "enableVdsConfigAuth" : true to the vds_server.conf
-settings in Zookeeper. For details on changing this setting and how it impacts the vdsconfig utility, see the RadiantOne Command Line Configuration Guide.
+By default, the commands available in the vdsconfig utility can be executed by anyone who can launch the utility and the change, as tracked by Zookeeper, is logged as simply that the change was made from the command line utility. The only exception here is when the command is updating a property containing a password. In this context, the RadiantOne super user credentials are required. If you want to enforce that credentials are required to execute any command in the vdsconfig utility, add "enableVdsConfigAuth" : true to the vds_server.conf settings in Zookeeper. For details on changing this setting and how it impacts the vdsconfig utility, see the RadiantOne Command Line Configuration Guide.
 
 ## Update Default Delegated Admin Account Passwords
 
@@ -211,8 +211,8 @@ By default, communication between RadiantOne (client) to ZooKeeper is over a non
 
 The configuration of SSL between RadiantOne and ZooKeeper must be configured after installation. When you install RadiantOne, make sure you indicate the ZooKeeper connection using the hostname and not the IP address as it must match the hostname (or SAN) of the ZooKeeper server certificates.
 
-><span style="color:red">**IMPORTANT NOTE - If you use SSL connectivity between RadiantOne and ZooKeeper nodes, take note that the non SSL port 2181 is still open in ZooKeeper. The following link explains the problem:
-https://issues.apache.org/jira/browse/ZOOKEEPER-3166. The work-around is to use firewall rules to block traffic on that non-ssl port in ZooKeeper.**
+>[!warning] If you use SSL connectivity between RadiantOne and ZooKeeper nodes, take note that the non SSL port 2181 is still open in ZooKeeper. The following link explains the problem:
+https://issues.apache.org/jira/browse/ZOOKEEPER-3166. The work-around is to use firewall rules to block traffic on that non-ssl port in ZooKeeper.
 
 As outlined in the diagram above, each node (RadiantOne and ZooKeeper nodes) currently maintains their own certificate truststores. The following steps outline the overall process and use the default certificates included in the installation. For production, you will replace these certificates with your own CA-signed ones, and if you use a known/trusted Certificate Authority then you shouldn’t need to import the public key certificates into all the corresponding truststores (as outlined in the steps below). For test environments, you can follow the steps below to configure mutual authentication.
 
