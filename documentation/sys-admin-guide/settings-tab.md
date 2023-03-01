@@ -25,9 +25,10 @@ Figure 2: Administration Section
 
 #### LDAP Port
 
-The LDAP port that the RadiantOne service listens on. By default, this value is set to 2389 (this can be set during the RadiantOne install). <!-- couple of things to keep in mind if you plan on changing the port are: on Windows platforms, you can use any available port less than 65355 and on UNIX platforms you must have admin/root privileges to start the RadiantOne service on any port less than 1024 (because these are considered "privileged").
+The LDAP port that the RadiantOne service listens on. By default, this value is set to 2389 (this can be set during the RadiantOne install). 
+<!-- couple of things to keep in mind if you plan on changing the port are: on Windows platforms, you can use any available port less than 65355 and on UNIX platforms you must have admin/root privileges to start the RadiantOne service on any port less than 1024 (because these are considered "privileged").-->
 
-<!-- >[!warning] The RadiantOne service must be stopped before changing the port. If RadiantOne is deployed in a cluster, it must be stopped on all nodes. In the Main Control Panel go to the Dashboard tab and stop the RadiantOne service. If it is running as a service/daemon, stop it from the applicable service window/command. Once the service has stopped, change the port on the Settings tab, Server Front End section, Administration. Click Save. Now, re-start the service and it listens on the new port. Also, you must manually edit both the vdsha and replicationjournal LDAP data sources to update the port here as well, in both the primary server settings and for servers defined in the “Failover LDAP Servers” section. Changes to the data sources are performed from the Main Control Panel > Settings Tab > Server Backend > LDAP Data Sources.-->
+<!-- [!warning] The RadiantOne service must be stopped before changing the port. If RadiantOne is deployed in a cluster, it must be stopped on all nodes. In the Main Control Panel go to the Dashboard tab and stop the RadiantOne service. If it is running as a service/daemon, stop it from the applicable service window/command. Once the service has stopped, change the port on the Settings tab, Server Front End section, Administration. Click Save. Now, re-start the service and it listens on the new port. Also, you must manually edit both the vdsha and replicationjournal LDAP data sources to update the port here as well, in both the primary server settings and for servers defined in the “Failover LDAP Servers” section. Changes to the data sources are performed from the Main Control Panel > Settings Tab > Server Backend > LDAP Data Sources.-->
 
 The RadiantOne service can also listen on an [SSL port](security#ssl-settings), [HTTP port](settings-tab#web-services-http-port) (to process DSML, SPML, SCIM or REST requests) or a [SQL port](settings-tab#sql).
 
@@ -680,7 +681,7 @@ Restart the RadiantOne service if changes are made to these settings. If Radiant
 SCIM settings are configured in the Server Front End > SCIM section. 
 
 For details on configuring and accessing RadiantOne via DSML, SPML, SCIM, and REST, please see the RadiantOne Web Services API Guide. 
-
+<!-->
 ### Advanced Settings
 
 >[!note] The settings in this section are accessible only in [Expert Mode](introduction#expert-mode).
@@ -719,7 +720,7 @@ Check this option to restrict access for the plain socket/port to the Host/IP ad
 Check this option to restrict access for the secured SSL socket/port to the Host/IP address specified in the server setting.
 
 >[!warning] “localhost” is available only if it is set as the host name on the Server Control Panel > Settings tab > Server Name property. If it is set as the server name, the RadiantOne service is accessible ONLY by using a server name of localhost.
--->
+
 
 #### RootDSE
 
@@ -734,7 +735,7 @@ The RadiantOne rootDSE is located at <RLI_HOME>\vds_server\conf\rootdse.ldif and
 ```
 
 RadiantOne searches across the naming contexts listed in this property when a client issues a one-level or subtree search with an empty/blank base DN. If the client issues a base search, only the contents of the rootDSE are returned.
-<!--
+
 ##### Custom RootDSE
 
 Depending on the backends that are integrated into the RadiantOne platform, it might be appropriate for RadiantOne to reply with different rootDSE content. This feature should be used with caution and is generally only pertinent if RadiantOne is configured as a proxy to a backend directory (e.g. Active Directory). This proxy view can be "merged/extended" with branches from other directories if needed, but the main/primary directory hierarchy being virtualized must remain the same and conform to the desired rootDSE to return. This is important because as mentioned, the contents of the rootDSE often dictates subsequent requests the client issues to RadiantOne. Therefore, any supported controls, mechanisms, schema locations...etc. must match and be supported by the backend so the subsequent client requests are routed/handled properly.
@@ -748,3 +749,4 @@ To configure the rules that RadiantOne should abide by when responding to rootDS
 Figure 24: Custom RootDSE Settings
 
 Enter the IP address of the client (or a range or IP addresses like 127.0.0.1,10.11.12.1/139) and indicate which RootDSE definition RadiantOne should respond with. This can be configured with a specific path and LDIF file name, or with a RadiantOne data source name. If a data source name is used, RadiantOne connects to the backend indicated in the data source configuration and requests its rootDSE content to return to the client.
+-->

@@ -83,12 +83,12 @@ For each node, the Overview section displays the status of:
 
 >[!note] if “Bind requires SSL or StartTLS” is enabled, a message is displayed indicating “Secure Bind Required”.
 
--	RadiantOne service’s LDAPS port
+<!---	RadiantOne service’s LDAPS port
 -	RadiantOne service’s HTTP port
 -	RadiantOne service’s HTTPS port
 -	VRS (SQL) port
 -	VRS (SQL) SSL port
--	ZooKeeper (ZK) on the node (in Node Component Status section). If ZK is running in a separate cluster instead of on the same machine as RadiantOne, the external ZK URL is shown. If SSL Is configured for the ZK connection, the SSL port is shown here.
+-	ZooKeeper (ZK) on the node (in Node Component Status section). If ZK is running in a separate cluster instead of on the same machine as RadiantOne, the external ZK URL is shown. If SSL Is configured for the ZK connection, the SSL port is shown here.-->
 -	Disk latency
 -	Up time – how long the RadiantOne service on the node has been running.
 -	Version of RadiantOne installed on the node
