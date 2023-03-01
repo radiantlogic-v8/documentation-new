@@ -33,7 +33,7 @@ The following tabs are accessible from the Main Control Panel.
 
 **Dashboard**
 
-The dashboard tab is displayed upon successfully logging in to the Main Control Panel. There are two sections on the Dashboard tab: Overview and Internode Health. The Overview section displays the status of all nodes, and it indicates whether each node is the cluster’s RadiantOne leader (yellow-colored triangle beside the server name). You can start and stop the service from here as long as the Jetty web server is running on the node (and as long as the RadiantOne service is not installed to run as a service). This section also displays the status of ZooKeeper (ZK) port, ZooKeeper SSL port (ZK SSL), the RadiantOne service’s LDAP and LDAPS ports, the RadiantOne service’s Web Services HTTP and HTTPS ports, and VRS (SQL port).
+The dashboard tab is displayed upon successfully logging in to the Main Control Panel. There are two sections on the Dashboard tab: Overview and Internode Health. The Overview section displays the status of all nodes, and it indicates whether each node is the cluster’s RadiantOne leader (yellow-colored triangle beside the server name). You can start and stop the service from here as long as the Jetty web server is running on the node (and as long as the RadiantOne service is not installed to run as a service).
 
 ![The Overview section of the Main Control Panel’s Dashboard tab](Media/Image5.2.jpg)
 
@@ -95,7 +95,7 @@ From the ZooKeeper tab, you can view configuration files maintained in ZooKeeper
 
 ### Server Control Panel
 
-To open the Server Control Panel, click the Server Control Panel icon located at the top of the Main Control Panel's Dashboard tab. The Server Control Panel opens in a new browser tab and the user currently logged into the Main Control Panel is automatically signed into the Server Control Panel.
+To open the Server Control Panel, click the "Server Control Panel" icon located at the top of the Main Control Panel. The Server Control Panel opens in a new browser tab and the user currently logged into the Main Control Panel is automatically signed into the Server Control Panel.
 
 The following tabs are accessible from the Server Control Panel.
 
