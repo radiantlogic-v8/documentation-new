@@ -278,7 +278,7 @@ file C:\ZooKeeper\rli-zookeeper-external\zkDOC-E1WIN1.cer -storepass radiantlogi
 11. Stop the RadiantOne service on all nodes.
 12. Stop all ZooKeeper services in the ensemble.
 13. Restart the ZooKeeper services one at a time until all servers are back online.
-14. Restart the RadiantOne service on all nodes. Once the RadiantOne service is back online, you should see the Main Control Panel > Dashboard tab indicate the ZK SSL port.
+14. Restart the RadiantOne service on all nodes. <!--Once the RadiantOne service is back online, you should see the Main Control Panel > Dashboard tab indicate the ZK SSL port.
 
 #### Using Your Own Certificates
 
