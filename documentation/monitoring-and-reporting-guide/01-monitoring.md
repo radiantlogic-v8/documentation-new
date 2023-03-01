@@ -36,8 +36,7 @@ RadiantOne includes built-in monitoring and alert capabilities and can also be m
 
 #### Monitoring from the Main Control Panel
 
-The Main Control Panel provides a view of RadiantOne nodes deployed. When RadiantOne is deployed in a cluster, the state of services running on all nodes is visible in the Overview
-section of the Dashboard tab. In the Intranode Health section you can see the connectivity across all nodes.
+The Main Control Panel provides a view of RadiantOne nodes deployed. When RadiantOne is deployed in a cluster, the state of services running on all nodes is visible in the Overview section of the Dashboard tab. In the Intranode Health section you can see the connectivity across all nodes.
 
 If RadiantOne is deployed in a classic active/active or active/passive architecture, the Intranode
 Health section is irrelevant and only one node is shown in the Overview section.
@@ -55,20 +54,21 @@ For each node, the Overview section displays the status of:
 - Current CPU usage of the machine hosting RadiantOne.
 - Current RadiantOne service memory usage.
 - Current disk usage of the drive on the machine hosting RadiantOne.
+<!--
 - The RadiantOne service’s LDAP port
 - The RadiantOne service’s LDAPS port
 - The RadiantOne service’s HTTP port
 - The RadiantOne service’s HTTPS port
 - VRS (SQL) port
-- VRS (SQL) SSL port
-- ZooKeeper (ZK) on the node (in Node Component Status section). If ZooKeeper is running on a separate machine instead of on the same machine as the RadiantOne service, N/A is shown.
+- VRS (SQL) SSL port-->
+- ZooKeeper (ZK) on the node (in Node Component Status section). <!--If ZooKeeper is running on a separate machine instead of on the same machine as the RadiantOne service, N/A is shown.
 - Disk latency
 - Up time – how long the RadiantOne service has been running on the node.
 - Version of RadiantOne installed on the node
 
 ![An image showing monitoring two RadiantOne cluster nodes ](Media/Image1.1.jpg)
 
-Figure 1. 1 : Example Monitoring of a RadiantOne Cluster Containing Two Nodes
+Figure 1.1 : Example Monitoring of a RadiantOne Cluster Containing Two Nodes
 
 If RadiantOne is deployed in a cluster, you can also use <RLI_HOME>/bin/advanced/cluster.bat list (cluster.sh on Linux) to monitor the status (ON/OFF) of each cluster node and see which one is the current RadiantOne service (VDS) leader and ZooKeeper (ZK) leader. Below is an example.
 
@@ -93,21 +93,15 @@ ON |
 **: ZK Leader
 ```
 
-The Internode Health section is applicable for cluster deployments only and displays a topology
-of all nodes in the cluster and information about the connectivity between the nodes. If you
-hover the mouse pointer over a node, the direction of connectivity is conditioned by this node
-and more details are shown. By default, this includes the availability of the LDAP and LDAPS
-ports for the RadiantOne service, and the ability to read and write to ZooKeeper on the target node. To toggle information about ZooKeeper or LDAP connectivity, check/uncheck the
-corresponding box in the upper-left corner of the Internode Health section.
+The Internode Health section is applicable for cluster deployments only and displays a topology of all nodes in the cluster and information about the connectivity between the nodes. If you hover the mouse pointer over a node, the direction of connectivity is conditioned by this node and more details are shown. By default, this includes the availability of the LDAP and LDAPS ports for the RadiantOne service, and the ability to read and write to ZooKeeper on the target node. To toggle information about ZooKeeper or LDAP connectivity, check/uncheck the corresponding box in the upper-left corner of the Internode Health section.
 
 ![An image showing the internode health monitoring](Media/Image1.2.jpg)
 
-Figure 1. 2 : Internode Health Monitoring
+Figure 1.2 : Internode Health Monitoring
 
 A green checkmark means connectivity on the RadiantOne LDAP and/or LDAPS ports is fine and ZooKeeper can be read from and written to.
 
-A red X means there is no connectivity on the LDAP and/or LDAPS ports for RadiantOne and/or
-ZooKeeper cannot be read from or written to.
+A red X means there is no connectivity on the LDAP and/or LDAPS ports for RadiantOne and/or ZooKeeper cannot be read from or written to.
 
 ##### Replication Monitoring Tab
 
@@ -115,14 +109,9 @@ RadiantOne Universal Directory (HDAP) stores across multiple sites/data centers 
 
 ###### Central Journal Replication
 
-The default, recommended replication model for RadiantOne Universal Directory stores is based on a publish-and-subscribe methodology. When writes occur on a site, the leader node
-publishes the changes into a central journal. The leader nodes on all other sites pick up the changes from the central journal and update their local stores. These changes are then
-automatically replicated out to follower/follower-only nodes within the cluster. For more details on inter-cluster replication, please see the RadiantOne Deployment and Tuning Guide.
+The default, recommended replication model for RadiantOne Universal Directory stores is based on a publish-and-subscribe methodology. When writes occur on a site, the leader node publishes the changes into a central journal. The leader nodes on all other sites pick up the changes from the central journal and update their local stores. These changes are then automatically replicated out to follower/follower-only nodes within the cluster. For more details on inter-cluster replication, please see the RadiantOne Deployment and Tuning Guide.
 
-If inter-cluster replication is enabled, the clusters that are participating in replication can be
-viewed in the Central Journal Replication section. The topology depicts the connectivity
-between the clusters and the cluster housing the replication journal. If a red line is visible, this
-indicates a connection problem between a cluster and the replication journal.
+If inter-cluster replication is enabled, the clusters that are participating in replication can be viewed in the Central Journal Replication section. The topology depicts the connectivity between the clusters and the cluster housing the replication journal. If a red line is visible, this indicates a connection problem between a cluster and the replication journal.
 
 An example is shown below.
 
@@ -138,49 +127,32 @@ An example is shown below.
 
 More than one store per cluster can be participating in inter-cluster replication. The table shown in the Central Journal Replication section details for each store the clusters involved in replication. Then, for each cluster, the table shows:
 
-- The number of changes subscribed to, are broken down into changes that have been
-applied and changes that are pending.
+- The number of changes subscribed to, are broken down into changes that have been applied and changes that are pending.
 - The number of changes published into the replication journal.
 
 ###### Push Mode Replication
 
-To address a very small subset of use cases, namely where a global load balancer directs client
-traffic across data centers/sites, where the inter-cluster replication architecture might be too
-slow, you have the option to enable an additional, more real-time replication mode where changes can be pushed directly to intended targets. For example, an update made by a client to
-one data center might not be replicated to other data centers in time for the client to immediately
-read the change, if the read request it sent to a different data center than the update was. This
-is generally not an ideal load distribution policy when working with distributed systems. Load
-balancing is best deployed across multiple nodes within the same cluster on the same site/data
-center.
+To address a very small subset of use cases, namely where a global load balancer directs client traffic across data centers/sites, where the inter-cluster replication architecture might be too slow, you have the option to enable an additional, more real-time replication mode where changes can be pushed directly to intended targets. For example, an update made by a client to one data center might not be replicated to other data centers in time for the client to immediately read the change, if the read request it sent to a different data center than the update was. This is generally not an ideal load distribution policy when working with distributed systems. Load balancing is best deployed across multiple nodes within the same cluster on the same site/data center.
 
-In any event, to address scenarios like this, a push replication mode can be used to send the changes directly to the intended targets. The targets must be other RadiantOne servers defined
-as LDAP data sources. For more details on Push Mode Replication, please see the RadiantOne Deployment and Tuning Guide.
+In any event, to address scenarios like this, a push replication mode can be used to send the changes directly to the intended targets. The targets must be other RadiantOne servers defined as LDAP data sources. For more details on Push Mode Replication, please see the RadiantOne Deployment and Tuning Guide.
 
-If push mode replication is enabled, the clusters that are participating in replication can be
-viewed in the table in the Push Mode Replication section. The table lists, for each store, the
-clusters involved in replication. The source cluster, target cluster and connectivity status
+If push mode replication is enabled, the clusters that are participating in replication can be viewed in the table in the Push Mode Replication section. The table lists, for each store, the clusters involved in replication. The source cluster, target cluster and connectivity status
 between them is shown.
 
 #### Monitoring from the Server Control Panels
 
 The items that can be monitored from the Server Control Panels are described in this section.
 
-Server Control Panels can be launched from the Dashboard tab in the Main Control Panel.
+Server Control Panels can be launched from the "Server Control Panel" link at the top of the Main Control Panel.
 
-Locate the node and click the ![An image showing the server control panel button](Media/server-control-panel.jpg) button to launch the Server Control Panel.
-
->[!warning] when deploying RadiantOne in a cluster, the Main Control Panel
-allows you to monitor certain aspects of all cluster nodes. Each node also has its own
-Server Control Panel for monitoring other server-specific activities.
+>[!warning] when deploying RadiantOne in a cluster, the Main Control Panel allows you to monitor certain aspects of all cluster nodes. Each node also has its own Server Control Panel for monitoring other server-specific activities.
 
 ##### CPU, Memory, Disk Space, Disk Latency and Connection Usage
 
-From the Server Control Panel > Dashboard Tab, you can monitor the CPU, disk space and
-latency on the machine hosting RadiantOne, and the RadiantOne service memory and
+From the Server Control Panel > Dashboard Tab, you can monitor the CPU, disk space and latency on the machine hosting RadiantOne, and the RadiantOne service memory and
 connections.
 
->[!warning] To use this feature, enable the cluster monitor at Main Control
-Panel > Settings > Logs > Clustermonitor.
+>[!warning] To use this feature, enable the cluster monitor at Main Control Panel > Settings > Logs > Clustermonitor.
 
 ![An image showing monitoring resources from the server control panel ](Media/Image1.3.jpg)
 
@@ -199,11 +171,10 @@ To manage alerts:
 
 Figure 1.4: Configuring Standard Alerts from the Main Control Panel
 
-5. File alerts are enabled by default. If SMTP settings are configured in the Monitoring -> Email Alert Settings section you can also use the Email Alert output.
+5. File alerts are enabled by default. If SMTP settings are configured in the Monitoring > Email Alert Settings section you can also use the Email Alert output.
 6. Click Save.
 
-To invoke actions other than generating a file or sending an email, you can create a custom
-script that is invoked when an alert is triggered.
+To invoke actions other than generating a file or sending an email, you can create a custom script that is invoked when an alert is triggered.
 
 To enable an alert script:
 
@@ -218,7 +189,6 @@ Figure 1.5 : Enabling an Alert Script from the Main Control Panel
 4. Click Save.
 
 To generate additional alert information, you can append your custom script mentioned above with the following four arguments.
-
 
 | Argument | Description | Examples |
 |----------|-------------|---------------------|
