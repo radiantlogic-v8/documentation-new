@@ -63,8 +63,6 @@ The Server Control Panel offers administrators remote access to perform common t
 
 ### Starting the Server Control Panel
 
-There is a link in the Main Control Panel that open the Server Control Panel. The Server Control Panel link at the top of the Main Control Panel’s Dashboard tab.
-
-When this link is clicked, the Server Control Panel associated with the corresponding RadiantOne node opens to the Server Dashboard tab in a new browser tab. The user you are currently connected to the Main Control Panel with is automatically logged into the Server Control Panel.
+The Server Control Panel link in the Main Control Panel opens the Server Control Panel. When this link is clicked, the Server Control Panel associated with the corresponding RadiantOne node opens to the Server Dashboard tab in a new browser tab. The user you are currently connected to the Main Control Panel with is automatically logged into the Server Control Panel.
 
 For details on the usage of each tab in the Server Control Panel, please see the RadiantOne Architect Guide and the RadiantOne System Administration Guide.
