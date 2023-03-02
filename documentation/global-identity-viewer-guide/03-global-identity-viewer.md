@@ -5,7 +5,7 @@ description: Global Identity Viewer
 
 # Chapter 3: Global Identity Viewer
 
-After the configuration outlined in Chapter 2 is completed, the Global Identity Viewer is accessible from the RadiantOne Insights, Reports and Administration Console. Any user that is a member of RadiantOne Directory Administrator, Global ID Viewer Design, Global ID Viewer Write or Read Only roles can log into the Insights, Reports and Administration Console and access the Global Identity Viewer. For details on the RadiantOne delegated admin roles, see the RadiantOne System Administration Guide.
+After the configuration outlined in Chapter 2 is completed, the Global Identity Viewer is accessible from the RadiantOne Global Identity Viewer Console. Any user that is a member of RadiantOne Directory Administrator, Global ID Viewer Design, Global ID Viewer Write or Read Only roles can log into the Global Identity Viewer Console and access the Global Identity Viewer. For details on the RadiantOne delegated admin roles, see the RadiantOne System Administration Guide.
 
 ## Logging in with Two-factor Authentication
 
@@ -21,7 +21,7 @@ The Global Identity Viewer, as a client to the RadiantOne service, supports two-
 Figure 3. 1 : Custom Authentication Provider Example
 
 3. Ensure the users of the Global Identity View have an attribute that contains their unique token ID. In the example shown above, the token ID is set in the carLicense attribute.
-4. Restart the RadiantOne service and Jetty that hosts the Insights Reports and Administration applicatin. If a cluster is deployed, restart them on all nodes.
+4. Restart the RadiantOne service and Jetty that hosts the Global Identity Viewer application. If a cluster is deployed, restart them on all nodes.
 
 ![An image showing ](Media/Image3.2.jpg)
 
@@ -40,11 +40,11 @@ https://vdservername:7171/portal/login
 https://10.11.12.10:7171/portal/login
 ```
 
->**Note – If RadiantOne is deployed in a cluster, you can access the Insights, Reports and Administration Console on any node.**
+>**Note – If RadiantOne is deployed in a cluster, you can access the Global Identity Viewer Console on any node.**
 
 ![An image showing ](Media/Image3.3.jpg)
 
-Figure 3. 3 : The RadiantOne Insights, Reports and Administration Console Login Page
+Figure 3. 3 : The RadiantOne Global Identity Viewer Console Login Page
 
 Enter your credentials and click Login. Click Global Identity Viewer.
 

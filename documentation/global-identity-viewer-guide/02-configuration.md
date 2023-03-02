@@ -18,7 +18,7 @@ documented in the RadiantOne Global Identity Builder Guide.
 
 ✓ Configure the needed access permissions and privileges to authorize use of the application. This step is documented in this chapter.
 
-><span style="color:red">**IMPORTANT NOTE – The Global Identity Viewer requires a subscription to the Insights, Reports and Adminstration module. If you would like to add this subscription, please contact your Radiant Logic account representative.**
+><span style="color:red">**IMPORTANT NOTE – The Global Identity Viewer requires a subscription to the FID module. If you would like to add this subscription, please contact your Radiant Logic account representative.**
 
 ## Enable Full-Text Search
 
@@ -65,7 +65,7 @@ identity source views are recreated. Therefore, you must delete and reconfigure 
 
 ## Define Access Permissions
 
-Three default groups are designed to be used with the Global Identity Viewer. They are Global ID Viewer Design, Global ID Viewer Write, and Read Only. Any member associated with these roles can log into the Insights, Reports and Administration Console and access the Global Identity Viewer. There are three privileges assigned to these roles to dictate what the user is authorized to do within the Global Identity Viewer.
+Three default groups are designed to be used with the Global Identity Viewer. They are Global ID Viewer Design, Global ID Viewer Write, and Read Only. Any member associated with these roles can log into the Global Identity Viewer Console and access the Global Identity Viewer. There are three privileges assigned to these roles to dictate what the user is authorized to do within the Global Identity Viewer.
 
 | vdPrivilege Name | View entries & attributes | Perform searches | Edit, delete templates | Create, edit, delete queries | Export results | Modify attr values | configure/ schedule reports | Default groups/ roles that have this privilege
 |------|------|------|------|------|-----|-----|-----|-----| 
