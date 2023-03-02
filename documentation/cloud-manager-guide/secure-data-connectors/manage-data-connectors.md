@@ -9,17 +9,17 @@ Secure data connectors can be managed from the *Secure Data Connectors* screen. 
 
 ## Getting started
 
-All of the operations to manage secure data connectors are available in the **Options** (**...**) dropdown for each connector. To begin managing a connector, select the **Options** (**...**) menu of specific connector you wish to modify.
+All of the operations to manage secure data connectors are available in the **Options** (**...**) dropdown for each connector. To begin managing a connector, select the **Options** (**...**) menu of the specific connector you wish to modify.
 
-**image**
+![image description](images/options.png)
 
 ## Edit a data connector
 
-The name and description of a data connector can be updated. To edit connector details, select **Edit** from the associated **Options** (**...**) dropdown.
+The name, group, and description of a data connector can be updated. To edit connector details, select **Edit** from the associated **Options** (**...**) dropdown.
 
 ![image description](images/manage-select-edit.png)
 
-This opens the *Edit Data Connector** dialog. In the provided name and description fields, update the connector details as needed. Select **Save** to update the connector details.
+This opens the *Edit Data Connector** dialog. In the provided name, group, and description fields, update the connector details as needed. Select **Save** to update the connector details.
 
 The connector details will update on the *Secure Data Connectors* home screen and in the connector details section.
 
