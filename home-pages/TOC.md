@@ -3,5 +3,5 @@ title: Homepages TOC
 description: Homepages TOC Description
 ---
 
-- [Knowledge](/) 
+- [Knowledge]() 
 - [Developer](developer.md)
