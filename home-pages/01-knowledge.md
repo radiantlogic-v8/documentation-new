@@ -51,9 +51,6 @@ Harness your identity data with intelligent integration to drive better business
   > [Operational Attributes](/operational-attributes-guide/01-overview)  
   > Learn about the operational attributes used by RadiantOne Federated Identity to handle functionality for authorization enforcement, password policies, replication...etc.
   
-  > [LDIF Utility](/ldif-utility-guide/01-overview)  
-  > LDIF Utility
-  
   > [Troubleshooting](/logging-and-troubleshooting-guide/01-overview)  
   > Learn about the structure and contents of the log files associated with RadiantOne Federated Identity.
   
