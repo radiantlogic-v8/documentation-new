@@ -21,7 +21,6 @@ Harness your identity data with intelligent integration to drive better business
   > [Secure data Connectors](/)  
   > Learn how to install, configure and use Secure Data Connectors as a secure way for RadiantOne cloud environments to selectively access on-premise identity data sources without having to open ports for each in the corporate firewall.
 
-   
 </section>
 
 ## RadiantOne Federated Identity
@@ -39,6 +38,21 @@ Harness your identity data with intelligent integration to drive better business
   
   > [Global Identity Builder](/global-identity-builder-guide/introduction)  
   > Learn how to use the Global Identity Builder tool for creating a virtual view that aggregates identities from multiple data sources into a unique reference list. Overlapping identities are joined creating a complete global profile.
+  
+  > [Global Identity Viewer](/global-identity-viewer-guide/01-introduction)  
+  > Learn how to use the Global Identity Viewer tool for keyword searching and generating reports containing users and groups returned in the reference list created by using the Global Identity Builder tool.
+  
+  > [Proxy Virtual Views](/namespace-configuration-guide/01-introduction)  
+  > Learn how to configure proxy virtual views from identity source backends. This is most commonly used for creating views from LDAP directory and Active Directory data sources.
+  
+  > [Model Driven Virtual Views](/context-builder-guide/introduction)  
+  > Learn how to configure model-driven virtual views from identity source backends using a variety of design elements such as label, content, and container nodes. This allows for creating flexible new hierarchies to accommodate many custom application’s needs.
+  
+  > [Operational Attributes](/operational-attributes-guide/01-overview)  
+  > Learn about the operational attributes used by RadiantOne Federated Identity to handle functionality for authorization enforcement, password policies, replication...etc.
+  
+  > [LDIF Utility](/ldif-utility-guide/01-overview)  
+  > LDIF Utility
   
   > [Troubleshooting](/logging-and-troubleshooting-guide/01-overview)  
   > Learn about the structure and contents of the log files associated with RadiantOne Federated Identity.
@@ -59,8 +73,14 @@ Harness your identity data with intelligent integration to drive better business
   > [Installation](/)  
   > Learn how to use the Environments Operations Center to create environments and install the RadiantOne Intelligent Identity Data Platform which includes the Universal Directory
   
+  > [Configuration](/namespace-configuration-guide/05-radiantone-universal-directory)  
+  > Learn how to create Universal Directory stores and manage all configuration properties related to indexing, attribute encryption, and replication.
+  
   > [Deployment & Tuning](/deployment-and-tuning-guide/00-preface)  
   > Learn the best practices approaches for deploying and tuning RadiantOne Universal Directory.
+  
+  > [Operational Attributes](/operational-attributes-guide/01-overview)  
+  > Learn about the operational attributes used by RadiantOne Universal Directory to handle functionality for authorization enforcement, password policies, replication...etc.
   
   > [Troubleshooting](/logging-and-troubleshooting-guide/01-overview)  
   > Learn about the structure and contents of the log files associated with RadiantOne Universal Directory.
@@ -74,8 +94,20 @@ Harness your identity data with intelligent integration to drive better business
 
 <section>
    
+  > [Introduction](/global-sync-guide/introduction)  
+  > Learn about RadiantOne Global Synchronization including detailed architecture, key concepts and common use cases for the tool.
+  
   > [Installation](/)  
   > Learn how to use the Environments Operations Center to create environments and install the RadiantOne Intelligent Identity Data Platform which offers Global Synchronization. 
+  
+  > [Configuration](/global-sync-guide/introduction)  
+  > Learn how to configure synchronization pipelines and create transformation logic using a combination of scripting, attribute mappings and advanced rules. 
+  
+  > [Connector Properties](/connector-properties-guide/overview)  
+  > Learn how to configure change capture connectors for detecting and processing changes from data sources. 
+  
+  > [Deployment & Tuning](/global-sync-guide/deployment)  
+  > Learn the best practices approaches for deploying and tuning RadiantOne Global Synchronization.
   
   > [Troubleshooting](/logging-and-troubleshooting-guide/05-global-synchronization)  
   > Learn about the structure and contents of the log files associated with RadiantOne Global Synchronization.
