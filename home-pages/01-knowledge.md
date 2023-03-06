@@ -29,7 +29,7 @@ Harness your identity data with intelligent integration to drive better business
   > [LDAP Browser](/ldap-browser/LDAPBrowser)  
   > Learn how to use the general purpose LDAP Browser tool to manage entries in an LDAP directory.
   
-  > [Hardening](/)  
+  > [Hardening](/hardening-guide/00-preface)  
   > Learn the best practices approaches for Hardening the RadiantOne Platform against security threats.
   
   > [Operations](/operations-guide/01-overview)  
