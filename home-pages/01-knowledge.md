@@ -12,52 +12,55 @@ Harness your identity data with intelligent integration to drive better business
 <section>
   
   > [Introduction](/architect-guide/preface)  
-  > Learn about the common use cases for RadiantOne Federated Identity including how it addresses the widespread problem of a fragmented identity data infrastructure, which makes user authentication and authorization difficult to support and costly to manage. 
-  
-  > [Installation](/installation-guide/01-prerequisites)  
-  > Installation
-  
-  > [Operations](/operations-guide/01-overview)  
-  > Operations
-  
-  > [Accessibility](/wca-compliance-guide/01-overview)  
-  > Accessibility
-  
-  > [LDIF Utility](/ldif-utility-guide/01-overview)  
-  > LDIF Utility
-  
-  > [LDAP Browser](/ldap-browser/LDAPBrowser)  
-  > LDAP Browser
-  
-</section>
-
-## RadiantOne Platform
-
-<section>
-  
-  > [Server Configuration](/sys-admin-guide/introduction)  
-  > Learn about the common use cases for RadiantOne Federated Identity including how it addresses the widespread problem of a fragmented identity data infrastructure, which makes user authentication and authorization difficult to support and costly to manage. 
+  > Learn about the common use cases for the RadiantOne Platform including how it addresses the widespread problem of a fragmented identity data infrastructure, which makes user authentication and authorization difficult to support and costly to manage. 
   
   > [Installation](/installation-guide/01-prerequisites)  
   > Learn how to install the RadiantOne Platform using the web-based GUI process and in silent-mode from command line. 
   
+  > [Hardware Sizing](/hardware-sizing-guide/hardware-sizing-guide)  
+  > Understand hardware sizing aspects for capacity planning to help ensure that the RadiantOne server hardware is adequate for handling peak loads.
+  
+  > [Accessibility](/wca-compliance-guide/01-overview)  
+  > Understand how RadiantOne reaches level AA compliance for W3C standards for accessibility.
+  
+  > [LDIF Utility](/ldif-utility-guide/01-overview)  
+  > Learn how the LDIF utility can be used to compile statistics about the entries in your virtual view, determine if a persistent cache is out of sync from backends, verify uniqueness of attribute values, and import/export LDIF files.
+  
+  > [LDAP Browser](/ldap-browser/LDAPBrowser)  
+  > Learn how to use the general purpose LDAP Browser tool to manage entries in an LDAP directory.
+  
+  > [Hardening](/)  
+  > Learn the best practices approaches for Hardening the RadiantOne Platform against security threats.
+  
+  > [Operations](/operations-guide/01-overview)  
+  > Learn how to maintain the RadiantOne platform once it is deployed. Topics include the management of clusters (single cluster and multi cluster), persistent cache, Universal Directory stores, and applying patches.
+  
+</section>
+
+## RadiantOne Federated Identity
+
+<section>
+  
   > [Server Configuration](/sys-admin-guide/introduction)  
   > Learn how to use the Control Panel to configure RadiantOne Federated Identity including connecting to identity data silos, creating virtual views, defining access controls and password policies, and global server settings.
-
+  
   > [Global Identity Builder](/global-identity-builder-guide/introduction)  
   > Learn how to use the Global Identity Builder tool for creating a virtual view that aggregates identities from multiple data sources into a unique reference list. Overlapping identities are joined creating a complete global profile.
   
   > [Global Identity Viewer](/global-identity-viewer-guide/01-introduction)  
   > Learn how to use the Global Identity Viewer tool for keyword searching and generating reports containing users and groups returned in the reference list created by using the Global Identity Builder tool.
   
-  > [Proxy Virtual Views](/namespace-configuration-guide/01-introduction)  
-  > Learn how to configure proxy virtual views from identity source backends. This is most commonly used for creating views from LDAP directory and Active Directory data sources
+  > [Directory Proxy Views](/namespace-configuration-guide/01-introduction)  
+  > Learn how to configure proxy virtual views from identity source backends. This is most commonly used for creating views from LDAP directory and Active Directory data sources.
   
   > [Model Driven Virtual View](/context-builder-guide/introduction)  
   > Learn how to configure model-driven virtual views from identity source backends using a variety of design elements such as label, content, and container nodes. This allows for creating flexible new hierarchies to accommodate many custom application’s needs.
   
   > [Operational Attributes](/operational-attributes-guide/01-overview)  
   > Learn about the operational attributes used by RadiantOne Federated Identity to handle functionality for authorization enforcement, password policies, replication...etc.
+  
+  > [Data Analysis](/data-analysis-guide/01-introduction)  
+  > Learn how the Data Analysis tool can generate a report for each of your data sources to provide insight on the quality of your data and what is available for you to use for correlation logic to handle identity overlap.
   
   > [Troubleshooting](/logging-and-troubleshooting-guide/01-overview)  
   > Learn about the structure and contents of the log files associated with RadiantOne Federated Identity.
@@ -93,7 +96,7 @@ Harness your identity data with intelligent integration to drive better business
 </section>
 
 
-## RadiantOne Universal Directory
+## RadiantOne Global Synchronization
 
 <section>
   
@@ -103,13 +106,19 @@ Harness your identity data with intelligent integration to drive better business
   > [Configuration](/command-line-configuration-guide/01-introduction)  
   > Learn how to configure synchronization pipelines and create transformation logic using a combination of scripting, attribute mappings and advanced rules.
 
+  > [Connector Properties](/connector-properties-guide/overview)  
+  > Learn how to configure change capture connectors for detecting and processing changes from data sources.
+
   > [Deployment & Tuning](/global-sync-guide/deployment)  
   > Learn the best practices approaches for deploying and tuning RadiantOne Global Synchronization.
   
   > [Troubleshooting](/logging-and-troubleshooting-guide/05-global-synchronization)  
-  > Learn about the structure and contents of the log files associated with RadiantOne Universal Directory.
+  > Learn about the structure and contents of the log files associated with RadiantOne Global Synchronization.
   
   > [Monitoring](/monitoring-and-reporting-guide/01-monitoring)  
-  > Learn how to monitor RadiantOne Universal Directory, configure alerts for concerning activities, and access the default reports (Access, Audit and Group Audit) available in the platform.
+  > Learn how to monitor RadiantOne Global Synchronization and configure alerts for concerning activities.
+  
+  > [Password Filter](/password-filter-guide/01-password-filter-guide)  
+  > Learn how to use the Password Filter component to synchronization passwords from accounts in Active Directory to other directory targets.
   
 </section>
