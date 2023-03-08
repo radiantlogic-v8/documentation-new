@@ -9,7 +9,7 @@ description: Architect Guide
 
 If the identity data sources you plan on integrating with RadiantOne are anything other than LDAP directories or Active Directories, the recommended approach is to first create a basic virtual view that has no specific attribute mappings, computed attributes, joins...etc. and then configure the virtual view with persistent cache and the desired refresh strategy. This is the process to stage the backend data in persistent cache. Then, as a second step, create a virtual view using the cache image as the data source. The parent virtual view should be what is configured with the attribute mappings, computed attributes, joins...etc. This data staging and virtual view layering methodology works well for RDBMS and custom backend data source (e.g. Azure AD, Okta, Salesforce...etc.) that are not as performant as directories for search queries. Keep this in mind as you read through the general view design sections below.
 
->>[!note] you can also stage Active Directory and LDAP backends in persistent cache, if these backends are unreliable, or performance needs to be optimized.
+>[!note] you can also stage Active Directory and LDAP backends in persistent cache, if these backends are unreliable, or performance needs to be optimized.
 
 ## General Virtual View Design
 
