@@ -17,7 +17,7 @@ By understanding the clients involved and the variables addressed above, you are
 
 The RadiantOne namespace can be comprised of many branches, each of which can come from a different configuration and be combined below a common naming context or have their own.  The following are the options that can comprise the namespace:
 
--	Virtual views created with Context Builder (Main Control Panel -> Context Builder tab).  The virtual views can be built from databases (anything JDBC/ODBC accessible), LDAP directories, or any data source reachable as a web service or through a Java API.
+-	Virtual views created with Context Builder (Main Control Panel > Context Builder tab).  The virtual views can be built from databases (anything JDBC/ODBC accessible), LDAP directories, or any data source reachable as a web service or through a Java API.
 
 -	Virtual views created with the Main Control Panel (including any of the identity service wizards). The virtual views can be built from databases (anything JDBC/ODBC accessible), or LDAP directories using LDAP or DSML.
 
