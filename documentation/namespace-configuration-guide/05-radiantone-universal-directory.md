@@ -9,7 +9,7 @@ The RadiantOne platform offers the Universal Directory as a scalable storage tha
 
 Once a Universal Directory naming context is created, a properties tab is available for managing the configuration. To access the properties tab, select the node representing the Universal Directory storage below the Root Naming Contexts section on the Main Control Panel > Directory Namespace Tab.
 
-Properties – This tab lists the settings: [storage location](#storage-location), [schema checking](#schema-checking), [normalizing attribute names](#normalize-attribute-names), [indexed attributes](#indexed-attributes), [non-indexed](#non-indexed-attributes) attributes, [sorted attributes](#sorted-attributes), [encrypted attributes](#encrypted-attributes-for-data-at-rest), [inter-cluster replication](#inter-cluster-replication), and support for [full text search](#support-for-full-text-search). There are also buttons for saving, [initializing](#initializing-radiantone-universal-directory-stores), [exporting], [re-building the index](#rebuilding-indexes), [backing up](#backing-up-a-radiantone-universal-directory-store), [restoring](#restoring-a-radiantone-universal-directory-store), and [deleting the local storage](#deleting-a-radiantone-universal-directory-store) (must be de-activated to delete).
+Properties – This tab lists the settings:<!-- [storage location](#storage-location),--> [schema checking](#schema-checking), [normalizing attribute names](#normalize-attribute-names), [indexed attributes](#indexed-attributes), [non-indexed](#non-indexed-attributes) attributes, [sorted attributes](#sorted-attributes), [encrypted attributes](#encrypted-attributes-for-data-at-rest), [inter-cluster replication](#inter-cluster-replication), and support for [full text search](#support-for-full-text-search). There are also buttons for saving, [initializing](#initializing-radiantone-universal-directory-stores), [exporting], [re-building the index](#rebuilding-indexes), [backing up](#backing-up-a-radiantone-universal-directory-store), [restoring](#restoring-a-radiantone-universal-directory-store), and [deleting the local storage](#deleting-a-radiantone-universal-directory-store) (must be de-activated to delete).
 
 ><span style="color:red">**IMPORTANT NOTE – Although persistent cache leverages the Universal Directory as a storage, the functionality and configuration can vary slightly. For steps on configuring persistent cache and details on applicable properties, see the RadiantOne Deployment and Tuning Guide as this chapter is related to Universal Directory stores only.**
 
@@ -35,6 +35,8 @@ The parameters and settings appear on the Properties tab for the selected Univer
 ### Naming Context
 The external suffix used by clients to access this branch in the RadiantOne namespace. 
 
+<!--
+
 ### Storage Location
 The default location for data files is <RLI_HOME>\vds_server\data. To tune the local disk load, you can specify a different location on the file system. To define a storage location, follow the steps below.
 
@@ -53,6 +55,8 @@ The default location for data files is <RLI_HOME>\vds_server\data. To tune the l
 ><span style="color:red">**IMPORTANT NOTE – any data in the default location is lost if the storage location is changed. If you have data in the existing location that you want to keep, export it to an LDIF file and after the storage location is changed, import this LDIF file.**
 
 If RadiantOne is deployed in a cluster, the value of the storage location parameter is also assigned to all other nodes. The drive location indicated in the value must exist on the file system of each node. The nodes cannot leverage a single shared drive.
+
+-->
 
 ### Schema Checking
 
@@ -324,37 +328,23 @@ By default, the RadiantOne Universal Directory supports a maximum of 1024 clause
 
 ### Exporting RadiantOne Universal Directory Stores
 
-Stores can be exported into an LDIF file from the Main Control Panel, Directory Namespace tab or the Directory Browser tab. From the Directory Namespace tab, navigate to the RadiantOne Universal Directory store below Root Naming Contexts. On the right side, click the Export button. Enter a file name, select a type (LDIF or LDIFZ which is a zipped and encrypted file) and location. 
+Stores can be exported into an LDIF file from the Main Control Panel, Directory Namespace tab. 
 
 ><span style="color:red">**IMPORTANT NOTE - If exporting to an LDIFZ file, a security key must be configured for RadiantOne. Any target stores where you want to import this LDIFZ file must use the same LDIFZ security key value. For steps on defining key generation or changing the encryption security key, see the RadiantOne System Administration Guide.**
 
-If this exported file is going to be used to initialize another RadiantOne Universal Directory store for replication, check the option to Export for Replication. Otherwise, leave this option unchecked and click OK. All entries in the RadiantOne Universal Directory store are exported with this option. 
+1.	From the Main Control Panel, Directory Namespace tab, select the branch in the virtual namespace where you want to export entries.
 
-For a more granular approach, use the export option from the Directory Browser tab as described below.
+2.	On the right side, click Export. 
 
->**Note – when exporting entries from the Directory Browser tab, check the “Export for Replication” option if this LDIF file is going to be used to initialize a replica. This ensures the UUID attribute is included in the export.**
-
->**When exporting encrypted RadiantOne Universal Directory attributes from the Main Control Panel -> Directory Browser tab -> selected RadiantOne Universal Directory store, the attributes defined as encrypted appear in the generated LDIF file as encrypted because this operation is not connected to RadiantOne via SSL. If you are connected to the Control Panel via SSL, then the export operation on the Directory Browser tab connects to RadiantOne via SSL and the attributes defined as encrypted are decrypted when stored in the exported LDIF file as long as the user you’ve connected to the Main Control Panel is authorized to read those attributes. For details on how to connect to the Control Panel via SSL, please see the System Administration Guide.**
-
-1.	From the Main Control Panel, Directory Browser tab, navigate to the branch in the virtual namespace where you want to export entries.
-
-2.	Click ![An image showing ](Media/export-button.jpg). 
-
-3.	Enter the required information for the LDIF file. Depending on the option chosen, only the selected entry (one entry), the entries below this entry (one level), or the entire tree below this entry (sub tree) are exported to the LDIF file. 
-
-4.	Select to export all entries or specify a maximum amount of entries to be exported. Enter a name for the file, or accept the default.
-
-5.	Change the Target DN if needed. In the figure below, the Target DN has been set to ou=people,o=airius.com.
-
-6.	Enter a file name and select an extension type (.ldif or .ldifz). If you want the exported file to be zipped and encrypted, select the .ldifz option from the drop-down list. In order to support exporting to an encrypted file, a security key must be configured for RadiantOne. Any target RadiantOne Universal Directory stores where you want to import this LDIFZ file must use the same LDIFZ security key value. For steps on defining key generation or changing the encryption security key, see the RadiantOne System Administration Guide.
+3.	Enter a file name and select an extension type (.ldif or .ldifz). If you want the exported file to be zipped and encrypted, select the .ldifz option from the drop-down list. In order to support exporting to an encrypted file, a security key must be configured for RadiantOne. Any target RadiantOne Universal Directory stores where you want to import this LDIFZ file must use the same LDIFZ security key value. For steps on defining key generation or changing the encryption security key, see the RadiantOne System Administration Guide.
 
 ![An image showing ](Media/Image5.5.jpg)
  
 Figure 5.5: LDIF Export Configuration
 
-7.	Click **OK** when finished.
+4. If this exported file is going to be used to initialize another RadiantOne Universal Directory store for replication, check the option to Export for Replication. Otherwise, leave this option unchecked. All entries in the RadiantOne Universal Directory store are exported with this option. 
 
-The LDIF file is saved to <RLI_HOME>/vds_server/ldif/export, which is the default location.
+5.	Click Download.
 
 ### Rebuilding Indexes
 
