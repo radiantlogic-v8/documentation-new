@@ -27,7 +27,7 @@ Figure 1: SSL Settings
 
 ## SSL Settings
 
-SSL settings are applicable to clients connecting to the RadiantOne service via LDAPS and involve enabling SSL/TLS and Start TLS, indicating how mutual authentication should be handled, client certificate DN mapping (for enforcing authorization), managing the certificates in the default Java truststore (cacerts), which cipher suites are supported by RadiantOne, certificate revocation and inter nodes communications (relevant only for cluster deployments). These subjects are described in this section.
+SSL settings are applicable to clients connecting to the RadiantOne service via LDAPS and involve enabling SSL/TLS <!-- and Start TLS, --> indicating how mutual authentication should be handled, client certificate DN mapping (for enforcing authorization), managing the certificates in the default Java truststore (cacerts), which cipher suites are supported by RadiantOne, certificate revocation and inter nodes communications (relevant only for cluster deployments). These subjects are described in this section.
 
 ### Enable SSL
 
@@ -264,6 +264,8 @@ If you want to support one of the less secure protocols, edit the java.security 
 
 >[!note] Only enable the SSL protocols that comply with your company’s security policy.
 
+<!-- 
+
 ### Enable STARTTLS
 
 Start TLS allows clients to request a secure channel to RadiantOne at any time without having to establish a new connection on a different port. For example, a client can process an LDAP search operation on a normal connection and then, without closing the connection, request a secure layer over the same connection with StartTLS for the use of changing passwords or viewing encrypted attributes. After finishing the use of the secure channel, the client can switch back to the non-secure channel on the same connection. The flexibility offered by the Start TLS extension allows for the secure LDAPS channel to be turned on and off on demand.
@@ -279,6 +281,8 @@ To enable Start TLS for clients to access RadiantOne:
 4. Restart the RadiantOne service.
 
 >[!warning] When using Start TLS, the default server certificate included with the RadiantOne installation does not work. You must generate a new certificate (either self-signed or requested from a Certificate Authority) that contains the proper machine and domain name of the RadiantOne machine. Also, the host name specified from the client should match the value in the certificate. If you try to use the default self-signed certificate included with the RadiantOne installation, the following error message (‘xxxxx’ being your server name) is returned: javax.net.ssl.SSLPeerUnverifiedException: hostname of the server 'xxxxx' does not match the hostname in the server's certificate.
+
+-->
 
 ### Debug SSL
 

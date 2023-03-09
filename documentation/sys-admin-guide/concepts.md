@@ -8,6 +8,7 @@ description: System Administration Guide
 This chapter introduces the various concepts that you should understand to configure and administer RadiantOne. The topics include:
 
   - [Data Source](#data-source)
+  - [Data Agent](#data-agent)
   - [Union](#union)
   - [Identity Correlation](#identity-correlation)
   - [Joins](#joins)
@@ -61,6 +62,13 @@ You can download existing data sources. This might be usefule if, for example, R
 ![exporting data sources](Media/Image2.2.jpg)
 
 Figure 2: Downloading Data Sources
+
+## Data Agent
+
+A data agent retrieves identity-related data from your on-prem environment or cloud and sends it back to RadiantOne. When you define a data source, the configuration process allows you to define how you connect to the data source. Connections to custom objects that connect to a REST API or web endpoint, for example, typically do not require a data agent.
+
+For on-prem backends, on the other hand, typically require selecting a data agent.
+
 
 ## Union
 

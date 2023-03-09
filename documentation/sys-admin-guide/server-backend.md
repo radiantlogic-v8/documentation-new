@@ -116,9 +116,11 @@ Figure 3: Adding a New LDAP Data Source
 
 >[!warning] Do not use spaces, commas, brackets or parenthesis, colons, or the word “domain” in the data source name and do not use special characters in the Base DN value.
 
-3.	Click **Test Connection** to validate the values entered above.
+3.	Select a data agent from the Connect with Agent drop-down menu. For information on data agents, see [Data Agents](concepts#data-agent).
 
-4.	Click **Save** to apply the changes to the server.
+4.  Click **Test Connection** to validate the values entered above.
+
+5.	Click **Save** to apply the changes to the server.
 
 ### LDAP Data Source Advanced Settings
 
@@ -368,7 +370,7 @@ Figure 10: Virtual View with Role Mapped Access Enabled
 
 If proxy impersonation rules are defined, you can also define a default user. If Role Mapped access is enabled for the proxy view and the user that binds to RadiantOne is not a member of any groups defined for proxy impersonation, the default user account is used. If the connected user is not a member of any groups defined in the proxy impersonation section and there is no default user account defined, then the BindDN set in the data source is used to connect to the backend.
 
-![Indicating a Default User Account](Media/Image3.70.jpg)
+![Indicating a Default User Account](Media/Image3.188.jpg)
 
 Figure 11: Indicating a Default User Account
 
@@ -396,9 +398,11 @@ Figure 12: Database Data Sources
 
 >[!note] A secure connection can be made to the database if the JDBC driver supports it. If the server you are connecting to uses a certificate issued by a trusted Certificate Authority, then all you need to do during the creation of the data source is enter the SSL port in the appropriate location of the URL. If the server you are connecting to uses a self-signed certificate, then this certificate must be imported into the [RadiantOne client trust store](security#client-certificates-default-java-truststore).
 
-4.	Click **Test Connection**.
+4.  Select a data agent from the Connect with Agent drop-down menu. For information on data agents, see [Data Agents](concepts#data-agent).
 
-5.	Click **Save**.
+5.	Click **Test Connection**.
+
+6.	Click **Save**.
 
 #### Edit a Database Data Source
 
