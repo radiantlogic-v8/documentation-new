@@ -12,14 +12,13 @@ Harness your identity data with intelligent integration to drive better business
 <section>
   
   > [Introduction](/)  
-  > Radiant Logic’s fully managed, RadiantOne SaaS offering is built to deploy quickly and streamline configuration, maintenance, and upgrades – while benefiting from all of Radiant Logic's innovations in identity data management.
+  > Radiant Logic’s fully managed, RadiantOne SaaS offering is built to deploy quickly and streamline configuration, maintenance, and upgrades.
   
   > [Environment Operations Center](/)  
-  > Learn how to use the Environments Operations Center as a centralized control plane to manage all RadiantOne environments, from development to production, including hybrid options involving the Secure Data Connector to integrate with on-prem identity data silos.
-
+  > Learn how to use the Environments Operations Center as a centralized control plane to manage all RadiantOne environments.
 
   > [Secure data Connectors](/)  
-  > Learn how to install, configure and use Secure Data Connectors as a secure way for RadiantOne cloud environments to selectively access on-premise identity data sources without having to open ports for each in the corporate firewall.
+  > Learn how to install, configure and use Secure Data Connectors as a secure way for cloud environments to selectively access on-premise identity data sources.
 
 </section>
 
@@ -28,34 +27,37 @@ Harness your identity data with intelligent integration to drive better business
 <section>
   
   > [Introduction](/architect-guide/preface)  
-  > Learn about the common use cases for RadiantOne Federated Identity including how it addresses the widespread problem of a fragmented identity data infrastructure, which makes user authentication and authorization difficult to support and costly to manage. 
+  > Learn about the common use cases for RadiantOne Federated Identity including how it addresses the widespread problems of a fragmented identity data infrastructure. 
   
   > [Installation](/)  
-  > Learn how to use the Environments Operations Center to create environments and install the RadiantOne Intelligent Identity Data Platform which includes the Federated Identity module.
+  > Learn how to use the Environments Operations Center to create environments and install the RadiantOne Intelligent Identity Data Platform.
   
   > [Server Configuration](/sys-admin-guide/introduction)  
-  > Learn how to use the Control Panel to configure RadiantOne Federated Identity including connecting to identity data silos, creating virtual views, defining access controls and password policies, and global server settings.
+  > Learn how to use the Control Panel to integrate identity data silos into RadiantOne Federated Identity and define global server settings.
   
   > [Global Identity Builder](/global-identity-builder-guide/introduction)  
-  > Learn how to use the Global Identity Builder tool for creating a virtual view that aggregates identities from multiple data sources into a unique reference list. Overlapping identities are joined creating a complete global profile.
+  > Learn how to use the Global Identity Builder tool for creating a virtual view that aggregates identities from multiple data sources into a unique reference list. 
   
   > [Global Identity Viewer](/global-identity-viewer-guide/01-introduction)  
-  > Learn how to use the Global Identity Viewer tool for keyword searching and generating reports containing users and groups returned in the reference list created by using the Global Identity Builder tool.
+  > Learn how to use the Global Identity Viewer tool for keyword searching and reporting on users and groups associated with Global Identity Builder projects.
   
   > [Proxy Virtual Views](/namespace-configuration-guide/01-introduction)  
-  > Learn how to configure proxy virtual views from identity source backends. This is most commonly used for creating views from LDAP directory and Active Directory data sources.
+  > Learn how to configure proxy virtual views from LDAP and Active Directory data sources.
   
   > [Model Driven Virtual Views](/context-builder-guide/introduction)  
-  > Learn how to configure model-driven virtual views from identity source backends using a variety of design elements such as label, content, and container nodes. This allows for creating flexible new hierarchies to accommodate many custom application’s needs.
+  > Learn how to configure flexible, model-driven virtual views from identity source backends using a variety of design elements such as label, content, and container nodes.
   
   > [Operational Attributes](/operational-attributes-guide/01-overview)  
   > Learn about the operational attributes used by RadiantOne Federated Identity to handle functionality for authorization enforcement, password policies, replication...etc.
+  
+  > [Identity Data Analysis](/data-analysis-guide/01-introduction)  
+  > Learn how the Identity Data Analysis tool can generate a report for each of your data sources to provide insight on the quality of your data and what is available for you to use for correlation logic to handle identity overlap. 
   
   > [Troubleshooting](/logging-and-troubleshooting-guide/01-overview)  
   > Learn about the structure and contents of the log files associated with RadiantOne Federated Identity.
   
   > [Monitoring & Reporting](/monitoring-and-reporting-guide/01-monitoring)  
-  > Learn how to monitor RadiantOne Federated Identity, configure alerts for concerning activities, and access the default reports (Access, Audit and Group Audit) available in the platform. 
+  > Learn how to monitor RadiantOne Federated Identity, configure alerts for concerning activities, and access the default reports (Access, Audit and Group Audit).  
   
   > [Deployment & Tuning](/deployment-and-tuning-guide/00-preface)  
   > Learn the best practices approaches for deploying and tuning RadiantOne Federated Identity.
@@ -68,7 +70,7 @@ Harness your identity data with intelligent integration to drive better business
 <section>
    
   > [Installation](/)  
-  > Learn how to use the Environments Operations Center to create environments and install the RadiantOne Intelligent Identity Data Platform which includes the Universal Directory
+  > Learn how to use the Environments Operations Center to create environments and install the RadiantOne Intelligent Identity Data Platform.
   
   > [Configuration](/namespace-configuration-guide/05-radiantone-universal-directory)  
   > Learn how to create Universal Directory stores and manage all configuration properties related to indexing, attribute encryption, and replication.
@@ -83,7 +85,7 @@ Harness your identity data with intelligent integration to drive better business
   > Learn about the structure and contents of the log files associated with RadiantOne Universal Directory.
   
   > [Monitoring & Reporting](/monitoring-and-reporting-guide/01-monitoring)  
-  > Learn how to monitor RadiantOne Universal Directory, configure alerts for concerning activities, and access the default reports (Access, Audit and Group Audit) available in the platform. 
+  > Learn how to monitor RadiantOne Universal Directory, configure alerts for concerning activities, and access the default reports (Access, Audit and Group Audit). 
   
 </section>
 
