@@ -5,13 +5,15 @@ description: Global Identity Viewer
 
 # Chapter 3: Global Identity Viewer
 
-After the configuration outlined in Chapter 2 is completed, the Global Identity Viewer is accessible from the RadiantOne Global Identity Viewer Console. Any user that is a member of RadiantOne Directory Administrator, Global ID Viewer Design, Global ID Viewer Write or Read Only roles can log into the Global Identity Viewer Console and access the Global Identity Viewer. For details on the RadiantOne delegated admin roles, see the RadiantOne System Administration Guide.
+After the configuration outlined in Chapter 2 is completed, the Global Identity Viewer can be used. Any user that is a member of RadiantOne Directory Administrator, Global ID Viewer Design, Global ID Viewer Write or Read Only roles can log into the Global Identity Viewer Console and access the Global Identity Viewer. For details on the RadiantOne delegated admin roles, see the RadiantOne System Administration Guide.
+
+<!-->
 
 ## Logging in with Two-factor Authentication
 
 The Global Identity Viewer, as a client to the RadiantOne service, supports two-factor authentication for logging in. This is supported through the Custom Authentication Provider framework and supports RSA SecurID and Yubikey token codes by default. High-level configuration steps to support two-factor authentication are outlined below. For details on Custom Authentication Providers, see the RadiantOne Custom Authentication Providers Guide.
 
-><span style="color:red">**IMPORTANT NOTE – Two-factor authentication is not required for the RadiantOne super user account (e.g. cn=directory manager).**
+>[!warning] Two-factor authentication is not required for the RadiantOne super user account (e.g. cn=directory manager).
 
 1. Create a custom data source that defines the connection the web service for token code validation.
 2. Configure a Custom Authentication Provider (Settings > Interception > Custom Authentication Provider) that indicates the base DN where accounts that will be logging into the Global Identity Viewer are located (e.g. cn=config), reference to the custom data source created in step 1, and other necessary parsing criteria.
@@ -19,6 +21,8 @@ The Global Identity Viewer, as a client to the RadiantOne service, supports two-
 ![An image showing ](Media/Image3.1.jpg)
 
 Figure 3. 1 : Custom Authentication Provider Example
+
+-->
 
 3. Ensure the users of the Global Identity View have an attribute that contains their unique token ID. In the example shown above, the token ID is set in the carLicense attribute.
 4. Restart the RadiantOne service and Jetty that hosts the Global Identity Viewer application. If a cluster is deployed, restart them on all nodes.
@@ -29,24 +33,9 @@ Figure 3. 2 : Token ID Defined for an Administrator Example
 
 To access the Global Identity Viewer, navigate in a web browser as follows.
 
-```
-https://<hostname>:7171/portal/login
-```
+`<ENDPOINT FOR ACCESSING GLOBAL IDENTITY VIEWER>`
 
-Examples include the following.
-```
-https://vdservername:7171/portal/login
-
-https://10.11.12.10:7171/portal/login
-```
-
->**Note – If RadiantOne is deployed in a cluster, you can access the Global Identity Viewer Console on any node.**
-
-![An image showing ](Media/Image3.3.jpg)
-
-Figure 3. 3 : The RadiantOne Global Identity Viewer Console Login Page
-
-Enter your credentials and click Login. Click Global Identity Viewer.
+Enter your credentials and click Login.
 
 If you have more than one Global Identity Builder project, a drop-down list appears for you to
 select the one to use. Otherwise, you are shown the main search page.
@@ -119,11 +108,11 @@ For information on how to edit a display template, see the [Editing Display Temp
 
 Like display templates, modify templates allow you to control the appearance and arrangement of the content in the Profile Info section of the Global Identity Viewer. However, modify templates also allow users to update profile attribute values in the Global Identity Viewer. These changes are propagated to the backend data source. Modify Templates are available on data source tabs only; attribute values cannot be edited from the Global Profile tab. In order to update attribute values, the logged in user must belong to the Global ID Viewer Write group, or any group in FID that has vdPrivilege=globalidviewer-write and have write permissions assigned in [RadiantOne ACL’s on the identity source virtual view](02-configuration.md#define-access-permissions).
 
->**Note – If a source attribute is mapped to the global profile, and the persistent cache refresh is running, a modification to a source attribute in the Global Identity Viewer, should also be reflected on the Global Profile tab for the entry.**
+>[!note] If a source attribute is mapped to the global profile, and the persistent cache refresh is running, a modification to a source attribute in the Global Identity Viewer, should also be reflected on the Global Profile tab for the entry.
 
 To make attribute values editable, a modify template must first be defined for the data source. A user that belongs to the Global ID Viewer Design group (or any group in the RadiantOne namespace that has vdPrivilege=globalidviewer-designer) must define a Modify Template for the identity source. Once a template is defined, attribute values can be modified only in Template View (attribute values are read-only in Attributes View).
 
-Note – Some attributes are read-only, even if a modify template is defined. These read-only attributes include binary attributes (e.g. photo and userpassword) and attributes that are the result of a computation or lookup (e.g. group members, manager, and owner).
+>[!note] Some attributes are read-only, even if a modify template is defined. These read-only attributes include binary attributes (e.g. photo and userpassword) and attributes that are the result of a computation or lookup (e.g. group members, manager, and owner).
 
 For more information on how to edit a modify template, see the [Editing Modify Templates](#editing-modify-templates)
 section.
@@ -146,19 +135,19 @@ To edit a display template:
 
 1. Select a global profile project from the drop-down menu and click Confirm.
 
->**Note – if you have only one global profile project, skip this step.**
+>[!note] If you have only one global profile project, skip this step.
 
 2. Select a Global Profile entry from the table on the left.
 
 3. Click the Edit Templates button. The Editor View is displayed.
 
->**Note – see the Templates section for information on requirements for template access.**
+>[!note] See the Templates section for information on requirements for template access.
 
 4. From the drop-down menu, select display.
 5. Make changes to the template as required.
 6. If you modify label options, click Save Options.
 
->**Note – if you do not make label option changes, skip this step.**
+>[!note] If you do not make label option changes, skip this step.
 
 7. Click Save.
 8. Click Back to Global Profile. Changes to the Profile Info section are displayed.
@@ -169,24 +158,24 @@ To edit a modify template and allow attribute values to be updated in the Global
 
 1. Select a global profile project from the drop-down menu and click Confirm.
 
->**Note – if you have only one global profile project, skip this step.**
+>[!note] If you have only one global profile project, skip this step.
 
 2. Select a data source tab.
 
 ![An image showing ](Media/Image3.8.jpg)
 
-Figure 3. 8 : Selecting a Data Source Tab
+Figure 3.8 : Selecting a Data Source Tab
 
 3. Click the Edit Templates button. The Editor View is displayed.
 
->**Note – see the [Templates](#templates) section for information on requirements for template access.**
+>[!note] See the [Templates](#templates) section for information on requirements for template access.
 
-4. From the drop-down menu, select modify.
-5. Click the attribute that you want to make editable.
-6. In the Label Options section on the right, check the Editable check box.
-7. Click Save Options.
+1. From the drop-down menu, select modify.
+2. Click the attribute that you want to make editable.
+3. In the Label Options section on the right, check the Editable check box.
+4. Click Save Options.
 
->**Note – if you do not make label option changes, skip this step.
+>[!note] If you do not make label option changes, skip this step.
 
 8. Click Save.
 9. Click Back to Global Profile.
@@ -226,20 +215,19 @@ To edit a label:
 
 Figure 3. 10 : Label Settings
 
->**Note – The Editable checkbox is available only for Modify Templates. For more information on Modify Templates, see the Modify Templates section.**
+>[!note] The Editable checkbox is available only for Modify Templates. For more information on Modify Templates, see the Modify Templates section.
 
 7. (Optional) Under Icon, check the “use an icon” box to display an icon next to the attribute label on the template.
 8. Click the box below the “use an icon” checkbox.
 9. Click an icon or, to search for an icon, enter text in the Choose an Icon field.
 
->**Note – to select another icon, click the box below the “use an icon” box and delete the
-descriptive text above the selected icon.**
+>[!note] To select another icon, click the box below the “use an icon” box and delete the descriptive text above the selected icon.
 
 10. In the Add custom CSS class(es) (optional) field, specify the custom class(es) you want
     applied to the label in a comma-separated list.
     
-    >**Note – if you specify custom CSS classes here, you must also define the style for that
-    class on the CSS tab.**
+    >[!note] If you specify custom CSS classes here, you must also define the style for that
+    class on the CSS tab.
 11. Click Save Options.
 12. Click Save.
 
@@ -291,7 +279,7 @@ To add a map, select the Map component and drag it into the template area on the
 
 Editing Maps
 
->**Note - The Google API is used for displaying locations on maps. To use the Google application key associated with your own Google account, log into the RadiantOne Main Control Panel with an admin account and go to the Directory Browser tab. Navigate to `<Name of your Global Identity Builder project suffix>`,ou=webapps,ou=globalsettings,cn=config. Modify the googleApiKey attribute and enter the Application Key associated with your Google account.**
+>[!note] The Google API is used for displaying locations on maps. To use the Google application key associated with your own Google account, log into the RadiantOne Main Control Panel with an admin account and go to the Directory Browser tab. Navigate to `<Name of your Global Identity Builder project suffix>`,ou=webapps,ou=globalsettings,cn=config. Modify the googleApiKey attribute and enter the Application Key associated with your Google account.
 
 To edit the map settings:
 
@@ -340,7 +328,7 @@ To create a default template that contains every attribute found in the source s
 Searches performed in the Global Identity Viewer are performed against the data source
 selected in the drop-down list. All searches can be saved, modified, or deleted.
 
->**Note – the logged in user must be associated with a role that has either the globalidviewer-write or globalidviewer-designer privilege in order to save, modify or delete search queries.**
+>[!note] The logged in user must be associated with a role that has either the globalidviewer-write or globalidviewer-designer privilege in order to save, modify or delete search queries.
 
 ![An image showing ](Media/Image3.15.jpg)
 
@@ -383,10 +371,9 @@ Figure 3. 17 : Saved Queries
 
 3. Enter a name for the query.
 
-NOTE – It is recommended that query name indicate the parameters of the search (e.g.
-users located in Dallas in the AD Partner Domain).
+>[!note] It is recommended that query name indicate the parameters of the search (e.g. users located in Dallas in the AD Partner Domain).
 
-4. Enter a query filter. This can be either an LDAP filter, or enter any value to invoke a full-text    search.
+4. Enter a query filter. This can be either an LDAP filter, or enter any value to invoke a full-text search.
 
 ![An image showing ](Media/Image3.18.jpg)
 
@@ -411,7 +398,7 @@ Figure 3. 19 : Example Search Results of a Full-text Search
 
 If two words are entered (e.g. Seattle Accounting) a search across all entries finds those that have attributes containing the words (at least one attribute that contains the word Seattle and one that contains the word Accounting). If you want to search for an entry that has a single attribute that contains both words, you must enter the value surrounded by double quotes (e.g. “Seattle Accounting”). This search would return entries that contain a single attribute that has the exact value of Seattle Accounting.
 
-><span style="color:red">**IMPORTANT NOTE – Searches span across all user attributes from the underlying data source. This can be confusing because the template to display the results might not contain all attributes used in the search.**
+>[!warning] Searches span across all user attributes from the underlying data source. This can be confusing because the template to display the results might not contain all attributes used in the search.
 
 In the following image, the following full-text is performed.
 
@@ -437,7 +424,7 @@ In the following example, the Global Identity Viewer search option receives a re
 
 All entries where objectclass=inetorgperson and employeetype=intern are returned.
 
-><span style="color:red">**IMPORTANT NOTE – Searches span across all user attributes from the underlying directory. This can be confusing because the template to display the results might not contain all attributes used in the search.**
+>[!warning] Searches span across all user attributes from the underlying directory. This can be confusing because the template to display the results might not contain all attributes used in the search.
 
 ![An image showing ](Media/Image3.21.jpg)
 
@@ -464,7 +451,7 @@ Figure 3.23: Advanced Query Builder
 
 4. Enter a name for the query.
 
->**NOTE – It is recommended that query name indicate the parameters of the search (e.g. Groups located in Dallas).**
+>[!note] It is recommended that query name indicate the parameters of the search (e.g. Groups located in Dallas).
 
 5. Select the data source the query is applicable to. This can be the global profile list, or any identity source configured in the Global Identity Builder project.
 6. Select an attribute from the attribute drop-down menu.
@@ -490,7 +477,7 @@ Figure 3. 25 : Advanced Query Builder
 
 To edit a saved query:
 
->**NOTE - Saved queries are associated with a data source. Only queries associated with the selected data source are shown when you click.**
+>[!note] Saved queries are associated with a data source. Only queries associated with the selected data source are shown when you click.
 
 ![An image showing ](Media/Image3.26.jpg)
 
@@ -510,7 +497,7 @@ Figure 3. 27 : Editing a Saved Query
 
 To speak a query, click the **Microphone** button on the search page. Voice commands must begin with by speaking the word “find”. When you begin a voice command with “find”, the search parameter field populates with what is spoken after the word “find”.
 
->**NOTES – Verify that your microphone is enabled for use in your internet browser.**
+>[!note] Verify that your microphone is enabled for use in your internet browser.
 
 >**Activating the voice-to-text function in the Global Identity Viewer requires accessing the Identity Management Console over HTTPS.**
 
@@ -557,6 +544,8 @@ Figure 3.29: Search Settings
 
 Figure 3.30: Example of Exported Entries
 
+<!-->
+
 #### Command Line Utility
 
 Global Identity Viewer search results can be exported to a JSON formatted file using the global_id_viewer.bat (.sh on UNIX platforms) command line utility located at <RLI_HOME>/bin/advanced.
@@ -591,13 +580,13 @@ If your advanced query has a “parameter display name” defined, use this for 
 “Enter City”:”San Francisco” “Enter Title”:Sales
 ```
 
->**NOTE – this argument is for advanced queries where the Parameter option is enabled. Refer to the Advanced Queries section for more information.**
+>[!note] This argument is for advanced queries where the Parameter option is enabled. Refer to the Advanced Queries section for more information.
 
 - f `<file name>`
 
     [required] The output file name. The format of the output data is JSON.
 
->**NOTE – In addition to the file name, the file’s location can also be specified. If the location is not specified, the output file is saved in <RLI_HOME>\bin\advanced.**
+>[!note] In addition to the file name, the file’s location can also be specified. If the location is not specified, the output file is saved in <RLI_HOME>\bin\advanced.
 
 ## Example
 
@@ -608,29 +597,29 @@ into test.json.
 global_id_viewer.bat -g myprofile -q Usersbylocation -p l:laredo -f c:/radiantone/test.json
 ```
 
->**NOTE – If your query name contains spaces, surround the -q value with double-quotes. If your query has more than one parameterized attribute/expression, separate each param with a `<space>` in the -p property. If any parameter value contains `<spaces>`, surround the value with double-quotes. An example is shown below.
+>[!note] If your query name contains spaces, surround the -q value with double-quotes. If your query has more than one parameterized attribute/expression, separate each param with a `<space>` in the -p property. If any parameter value contains `<spaces>`, surround the value with double-quotes. An example is shown below.
 
 ```
 global_id_viewer.bat -g globalprofile -q "Managers per location" - p title:”sales manager" l:London -f c:/radiantone/salesInLondon.json
 ```
+--> 
 
 ## Configure Reports
 
-Global Identity Viewer query results can be scheduled to be periodically exported to a PDF, CSV, and JSON file using the Configure Reports option. This option requires at least one query to be set up prior to use. Reports can be generated on a periodic basis, are saved to <RLI_HOME>/logs/globalReports, and can be auto-distributed via email.
+Global Identity Viewer query results can be scheduled to be periodically exported to a PDF, CSV, and JSON file using the Configure Reports option. This option requires at least one query to be set up prior to use. Reports can be generated on a periodic basis, and can be auto-distributed via email.
 
->**NOTE – Reports generated using the Configure Reports option are not affected by Export Settings.**
+>[!note] Reports generated using the Configure Reports option are not affected by Export Settings.
 
 To configure a report:
 
 1. From the Global Profile View page, click the Configure Reports button. The Reports window displays.
 
->**NOTE – if you have already created reports, they are displayed here.**
+>[!note] If you have already created reports, they are displayed here.**
 
 2. Click the New Report button. Step 1 of the Report Wizard displays.
 3. Enter a unique name for the report. The report file names are derived from this name. For example, a report named Users in Dayton would generate a report named users_in_dayton.pdf/csv/json.
    
-    >**NOTE – It is recommended that the report name indicate the report parameters (query,
-    return attributes, frequency, etc.).**
+    >[!note] It is recommended that the report name indicate the report parameters (query, return attributes, frequency, etc.).
 4. (optional) Describe the report. This description is displayed in the generated report.
 
 ![An image showing ](Media/Image3.31.jpg)
@@ -640,11 +629,11 @@ Figure 3.31: Step 1 of Report Wizard
 5. Click Next. Step 2 – Query Selection is displayed.
 6. Select a saved query from the list of saved queries drop-down menu.
 
->**NOTE – if you need to create a query for a report, see [Basic Queries](#basic-queries) and [Advanced Queries](#advanced-queries).**
+>[!note] If you need to create a query for a report, see [Basic Queries](#basic-queries) and [Advanced Queries](#advanced-queries).
 
 7. To specify which attributes you want in your report, select an attribute from the Available Attributes table on the left and click the **Right Arrow** button. Attributes displayed in the Report Attributes table on the right are included in the report. You can select multiple attributes at once. To add all attributes to the report, click the **Double right-arrow** button. In the following example, the attributes cn, employeeNumber, l, mail, o, and ou are included in the report.
 
->**NOTE – to remove an attribute from the report, select an attribute from the table on the right and click the Left arrow button. To remove all attributes from the report, click the Double left-arrow button.**
+>[!note] To remove an attribute from the report, select an attribute from the table on the right and click the Left arrow button. To remove all attributes from the report, click the Double left-arrow button.
 
 ![An image showing ](Media/Image3.32.jpg)
 
@@ -653,10 +642,9 @@ Figure 3.32: Step 2 - Query Selection and Returned Attributes
 8. Click Next.
 9. Select a frequency for the report. This indicates how often you want to generate the report.
 10. Select one or more report formats.
-11. (optional) Enter one or more email addresses for the generated report to be emailed to. The
-    field offers autocompletion of email addresses contained in the global profile view.
+11. Enter one or more email addresses for the generated report to be emailed to. The field offers autocompletion of email addresses contained in the global profile view.
     
-    >**NOTE – Emailing reports to addresses specified here requires configuring RadiantOne FID Email Alerts (Main Control Panel > Settings > Monitoring > Email Alerts Settings). Refer to the RadiantOne System Administration Guide for more information.**
+    >[!note] Emailing reports to addresses specified here requires configuring RadiantOne FID Email Alerts (Main Control Panel > Settings > Monitoring > Email Alerts Settings). Refer to the RadiantOne System Administration Guide for more information.
 12. (optional) To immediately generate a view of the configured report(s), click the Preview Report button.
 13. Click the Finish button.
 
@@ -666,7 +654,7 @@ Figure 3.33: Step 3 – Scheduling and Distribution
 
 14. You are returned to the Reports page.
 
->**NOTE – Shortly after creation, reports are  scheduled.**
+>[!note] Shortly after creation, reports are  scheduled.
 
 ## The Reports Page
 
@@ -697,10 +685,6 @@ To delete an existing report, click the report’s ![An image showing ](Media/de
 Searching for a Report
 
 To search for a saved report, type any part of the report name in the Search Reports field. Reports matching your search parameters are displayed below the Search Reports field.
-
-Viewing Generated Reports
-
-In a file explorer, navigate to <RLI_HOME>/logs/globalReports. Reports that have been generated are stored here. An example of a report is shown below.
 
 ![An image showing ](Media/Image3.35.jpg)
 

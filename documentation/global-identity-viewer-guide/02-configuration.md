@@ -18,8 +18,6 @@ documented in the RadiantOne Global Identity Builder Guide.
 
 ✓ Configure the needed access permissions and privileges to authorize use of the application. This step is documented in this chapter.
 
-><span style="color:red">**IMPORTANT NOTE – The Global Identity Viewer requires a subscription to the FID module. If you would like to add this subscription, please contact your Radiant Logic account representative.**
-
 ## Enable Full-Text Search
 
 To enable full-text search capabilities against the global profile reference list:
@@ -44,7 +42,7 @@ Figure 2. 1 : Full Text Search Option
 
 Select one of the virtual views representing an identity source (e.g. based on the samples shown above is dv=ids_adpartnerdomain_directoryaggregation).
 
-><span style="color:red">**IMPORTANT NOTE – Configure the persistent cache at the level of each individual backend. Do not configure the persistent cache at the dv=sourcecatalog or the dv=globalprofiles levels.**
+>[!warning] Configure the persistent cache at the level of each individual backend. Do not configure the persistent cache at the dv=sourcecatalog or the dv=globalprofiles levels.
 
 11. Click Create Persistent Cache.
 12. Click OK.
@@ -60,8 +58,8 @@ Select one of the virtual views representing an identity source (e.g. based on t
 22. You can either select the running task and click View Log to track the progress, or you can click OK to close the Tasks Monitor window.
 23. Repeat steps 8-21 to cache virtual views for all identity sources.
 
-><span style="color:red">**IMPORTANT NOTE – If you make any changes to the identity sources (e.g. mappings, correlation rules...etc.) in the Glo bal Identity Builder project the
-identity source views are recreated. Therefore, you must delete and reconfigure the persistent cache on these views.**
+>[!warning] If you make any changes to the identity sources (e.g. mappings, correlation rules...etc.) in the Glo bal Identity Builder project the
+identity source views are recreated. Therefore, you must delete and reconfigure the persistent cache on these views.
 
 ## Define Access Permissions
 
@@ -85,12 +83,12 @@ In addition to being assigned one of the roles mentioned above, proper read, sea
 
 To define access permissions:
 
-><span style="color:red">**IMPORTANT NOTE - Access rights can be defined by any user who is a member of the ACI Administrators group or the Directory Administrators group. For details on all administrative groups available for RadiantOne, please see Delegated Administration of RadiantOne in the RadiantOne System Administration Guide.**
+>[!warning] Access rights can be defined by any user who is a member of the ACI Administrators group or the Directory Administrators group. For details on all administrative groups available for RadiantOne, please see Delegated Administration of RadiantOne in the RadiantOne System Administration Guide.
 
 5. From the Main Control Panel > Settings Tab > Security section > Access Control sub-section, select the Enable ACI checkbox on the right side in the Authorization section and click Save.
 6. In the Access Control section, click **Add**. The Edit ACI pane is displayed.
 
->**Note – The Target Scope pull-down menu value defaults to subtree, and the Target Attributes value defaults to All.**
+>[!note] The Target Scope pull-down menu value defaults to subtree, and the Target Attributes value defaults to All.
 
 7. Enter an ACI description (e.g. globalprofileaci).
 8. Click the Choose button to navigate to the target DN.
@@ -98,8 +96,7 @@ To define access permissions:
 
 ![An image showing ](Media/Image2.2.jpg)
 
-Figure 2. 2 : Example of a Naming Context Configured in the Global Identity Builder and Location for
-Defining Access Controls
+Figure 2. 2 : Example of a Naming Context Configured in the Global Identity Builder and Location for Defining Access Controls
 
 10. In the Permissions section, select Allow from the drop-down menu and select the Read and Search operations.
 11. In the Apply To section, click Specific Users.
@@ -112,19 +109,19 @@ Figure 2. 3 : Defining Access Controls
 
 14. Select the groups that require the ability to perform searches on users and groups from the Global Identity Viewer and click Allow Selected. This should be the group that contains the user you added in step 3 earlier in this section.
 
-       ><span style="color:red">**IMPORTANT NOTE – Any groups that should be able to update attributes in the identity sources (that are associated with [Modify Templates](03-global-identity-viewer.md#modify-templates)) should also have “write” permissions.**
+       >[!warning] Any groups that should be able to update attributes in the identity sources (that are associated with [Modify Templates](03-global-identity-viewer.md#modify-templates)) should also have “write” permissions.
 15. Select the default “anyone” and click Delete.
 16. Click Save.
 17. Repeat steps 6-16 for dv=globalprofiles target (naming the aci something like identitysourcesaci).
      
-       ><span style="color:red">**IMPORTANT NOTE **–** If you have multiple Global Identity Builder projects and want to grant access on a per-project basis, define access permissions on the sub-branch under dv=globalprofiles that is associated with the project   (ou=<Global_Identity_Builder_ProjectName>) instead of the dv=globalprofiles level.**
+       >[!warning] If you have multiple Global Identity Builder projects and want to grant access on a per-project basis, define access permissions on the sub-branch under dv=globalprofiles that is associated with the project   (ou=<Global_Identity_Builder_ProjectName>) instead of the dv=globalprofiles level.
 
 Permissions must also be granted to allow the user to save, edit, and delete queries, and save custom templates.
 
 18. From the Main Control Panel > Settings Tab > Security section, select Access Control.
 19. In the Access Control section, click **Add**. The Edit ACI pane is displayed.
 
->**Note – The Target Scope pull-down menu value defaults to subtree, and the TargetAttributes value defaults to All.**
+>[!note] The Target Scope pull-down menu value defaults to subtree, and the TargetAttributes value defaults to All.
 
 20. Enter an ACI description (e.g. configurationaci).
 21. Click the Choose button to navigate to the Target DN.
@@ -132,7 +129,7 @@ Permissions must also be granted to allow the user to save, edit, and delete que
 23. In the Permissions section, select Allow from the drop-down menu.
 24. Select the Read, Search, Add, Delete, and Write operations.
 
-IMPORTANT NOTE – Users assigned to the Read Only role only need Search
+>[!warning] Users assigned to the Read Only role only need Search
 permissions. Whereas users assigned to the Global ID Viewer Design or Global
 ID Viewer Write roles need Search, Add, Delete, and Write permissions.
 
