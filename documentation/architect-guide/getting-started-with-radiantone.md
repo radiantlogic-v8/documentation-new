@@ -33,7 +33,7 @@ The following tabs are accessible from the Main Control Panel.
 
 **Dashboard**
 
-The dashboard tab is displayed upon successfully logging in to the Main Control Panel. There are two sections on the Dashboard tab: Overview and Internode Health. The Overview section displays the status of all nodes, and it indicates whether each node is the cluster’s RadiantOne leader (yellow-colored triangle beside the server name). You can start and stop the service from here as long as the Jetty web server is running on the node (and as long as the RadiantOne service is not installed to run as a service).
+The dashboard tab is displayed upon successfully logging in to the Main Control Panel. There are two sections on the Dashboard tab: Overview and Internode Health. The Overview section displays the status of all nodes, and it indicates whether each node is the cluster’s RadiantOne leader (yellow-colored triangle beside the server name). You can start and stop the service from here as long as the Jetty web server is running on the node (and as long as the RadiantOne service is not installed to run as a service). This section also displays the status of ZooKeeper, ZooKeeper SSL (ZK SSL), the RadiantOne service's LDAP and LDAPS ports, the RadiantOne service's Web Services HTTP and HTTPS.
 
 ![The Overview section of the Main Control Panel’s Dashboard tab](Media/Image5.2.jpg)
 
@@ -48,7 +48,7 @@ Figure 3: Cluster Nodes Depicted in the Health Section
 
 **Settings**
 
-The Settings tab is where you will manage the majority of RadiantOne settings. This includes server front end and backend settings, SSL, logs, reporting, alerts, memory cache and alert settings. All changes on this tab are shared/affect all nodes if a cluster architecture is deployed.
+The Settings tab is where you will manage the majority of RadiantOne settings. This includes server front end and backend settings, access controls, password policies along with advanced settings like interception scripts. All changes on this tab are shared/affect all nodes if a cluster architecture is deployed.
 
 **Context Builder**
 
@@ -66,7 +66,7 @@ The Directory Browser tab is a client interface where an administrator can view 
 
 **Wizards**
 
-All Identity Service Wizards can be launched from the Wizards tab. Details on the usage of each wizard can be found in the [Identity Service Wizards](#identity-service-wizards) section.
+The Data Analysis tool and Global Identity Builder can be launched from the Wizards tab. Details on the usage of each can be found in the [Identity Service Wizards](#identity-service-wizards) section.
 
 **PCache Monitoring**
 
@@ -95,7 +95,7 @@ From the ZooKeeper tab, you can view configuration files maintained in ZooKeeper
 
 ### Server Control Panel
 
-To open the Server Control Panel, click the "Server Control Panel" icon located at the top of the Main Control Panel. The Server Control Panel opens in a new browser tab and the user currently logged into the Main Control Panel is automatically signed into the Server Control Panel.
+To open the Server Control Panel, click the "Server Control Panel" icon located at the top of the Main Control Panel's Health section. The Server Control Panel opens in a new browser tab and the user currently logged into the Main Control Panel is automatically signed into the Server Control Panel.
 
 The following tabs are accessible from the Server Control Panel.
 
@@ -133,11 +133,11 @@ The Log Viewer Tab is the console where you can view all RadiantOne log files.
 
 - RadiantOne System Administration Guide
 
-## Identity Service Wizards
+## Identity Service Tools
 
-RadiantOne includes a set of wizards to assist administrators with some of the most common configuration tasks. They are designed to guide administrators through the identity integration process. This includes tasks such as building a unique user list, how to handle group entries (migrate them or create dynamic groups), and how to design the virtual namespace (flat tree or merge into an existing hierarchy). Each wizard is tailored for specific use cases, depending on the needs of the applications that will be consuming the identity. For more information on the wizards, please see the sections below.
+RadiantOne includes a couple of tools designed to assist administrators with creating views containing unique lists of identities. The Data Analysis tool helps discover data quality issues and identify ideal attributes to base correlation rules on. The Global Identity Builder tool guides administrators through the identity integration and correlation process. For more information on the tools, please see the sections below.
 
->[!note] for step-by-step instructions on using the wizards, please see the RadiantOne Identity Service Wizards Guide.
+>[!note] for step-by-step instructions on using the tools, please see the Global Identity Builder Guide and RadiantOne Data Analysis Guide.
 
 ### Global Identity Builder
 
@@ -145,45 +145,16 @@ The Global Identity Builder is used to build an integrated list of identities fr
 
 The Global Identity Builder should be used in situations where applications require a single source to locate all users required for authentication and/or need to access a complete user profile for attribute-based authorization. It should be used in cases where the data sources contain overlapping users whether there is a single existing common identifier. It can also be used in cases where there are no overlapping users but a complete aggregated flat list of users is required. At the end of the Global Identity Builder process, a persistent cache is configured and initialized for the identity data. Configure a cache refresh strategy from the Main Control Panel > Directory Namespace tab > Cache node.
 
-### Groups Builder Wizard
+### Identity Data Analysis
 
-The Groups Builder Wizard is used to manage virtual views for defining groups and members. With this wizard, you can define rules for dynamically creating groups from multiple heterogeneous data sources. Administrators can utilize this wizard to either create auto-generated groups or user-defined groups.
+The RadiantOne Identity Data Analysis tool analyzes the quality of data in the backends, helping you determine which attributes would be the best candidates for correlation rules. 
 
-When creating user-defined groups, you specify a group name and who you want the members of this group to be. The members can either be explicitly defined by looking for specific user accounts to add, or dynamically defined based on an LDAP filter where any user matching the filter populates the group.
+The Identity Data Analysis tool generates a report for each of your data sources. These reports give you a glimpse of your existing data and provide insight on the quality of your data and what is available for you to use for correlation logic. 
 
-When defining auto-generated groups, the group name is generated based on a specified attribute available in user entries. An administrator will select which attribute contains the possible group names. For example, if all user entries contained a location attribute, possible group names could be determined by creating a unique list of all possible locations. The list will then be the basis for creating the group names. The group members are then dynamically defined based on who contains this attribute value.
+>[!warning] - You can also choose to mount virtual views from each of your data sources below a global root naming context in RadiantOne and point the Identity Data Analysis tool to this location to perform a single analysis/report from all of your sources at once. This helps you detect attribute uniqueness and statistics across heterogeneous data sources.
 
-For more information on user-defined and auto-generated groups please see the [Design Considerations](virtual-view-design.md#design-considerations) section of this guide.
-
-The Groups Builder wizard should be used in situations where applications are accessing RadiantOne FID to retrieve groups/membership for enforcing authorization and a list of applicable groups either does not currently exist in any backend data source or the existing groups are insufficient because they lack all the required members. This wizard should be used if there is the need to add new members into existing groups or if there is the need to build entirely new global groups containing members from multiple different data sources.
-
-### Groups Migration Wizard
-
-The Groups Migration Wizard is used to import existing LDAP groups from data sources into RadiantOne FID. In LDAP directories, the "address" (DN) for the user and group entries are static. Existing group membership references user DNs, the naming of which are based on the structure of the LDAP directory. When you model a new directory namespace with virtualization, the group identity DNs will change. Therefore, the group members must reference the new naming. The group migration wizard assists you with the effort of translating the existing group membership to match the new name.
-
-The Groups Migration wizard can be used in situations where applications are accessing RadiantOne FID to retrieve groups/membership for enforcing authorization and a list of applicable groups exists in a backend data source. The existing groups and users (who are members of these groups) should be virtualized in the virtual namespace. Then, the Groups Migration wizard is used to migrate and translate the group member DNs to match the new naming structure of RadiantOne FID.
-
-### Merge Tree Wizard
-
-The Merge Tree Wizard is used for merging multiple data sources into a single RadiantOne FID naming context, while maintaining the underlying directory hierarchy. The wizard helps you build a virtual view that not only creates a unique list of users across multiple sources, but also allows you to join common users based on different criteria (on a DN or an LDAP filter).
-
-The Merge Tree Wizard should be used in cases where applications are expecting to find information in an explicit hierarchy which already exists in a backend LDAP directory and there is a need to extend a part of this hierarchy with additional information from other data sources. The Merge Tree Wizard helps you create the view that maintains the existing hierarchy and allows you to append/extend this hierarchy with information from other data sources. A basic example is depicted in the diagram below.
-
-![Example of Merging Tree](Media/Image5.4.jpg)
-
-Figure 4: Example of Merging Trees
-
-### Directory Tree Wizard
-
-The Directory Tree Wizard walks you through the process of defining a new directory tree and
-allows you to create a virtual view which aggregates multiple types of backends (a combination
-of LDAP and database). Once created, the naming context stores entries from these different
-backends in separate organizational units, containers, organizations, and domains.
-
-![Example of a Directory tree Comprised of an Aggregation of Three Sources](Media/Image5.5.jpg)
-
-Figure 5: Example of a Directory tree Comprised of an Aggregation of Three Sources
 
 ### Related Material
 
-- RadiantOne Identity Service Wizards Guide
+- RadiantOne Global Identity Builder Guide
+- RadiantOne Data Analysis Guide

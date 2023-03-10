@@ -29,7 +29,7 @@ This manual is written with the assumption that the reader is familiar with the 
 This guide is broken down into the following chapters:
 
 [RadiantOne Federated Identity Engine (FID)](radiantone-federated-identity-engine.md)
-<br>The first chapter of this guide describes the main RadiantOne module, the Federated Identity Engine, along with a logical architecture of the product. In particular, it covers the different layers involved in a directory design and how each work alongside one another.
+<br>The first chapter of this guide describes the RadiantOne Federated Identity product. In particular, it covers the different layers involved in a directory design and how each work alongside one another.
 
 [Concepts](concepts.md)
 <br>This chapter develops the concept of “identity union” in addition to concepts for handling issues such as authentication and authorization when facing an identity aggregation/integration challenge.
@@ -43,19 +43,12 @@ This guide is broken down into the following chapters:
 [Getting Started with RadiantOne](getting-started-with-radiantone.md)
 <br>This chapter offers advice for the best ways to get started using RadiantOne. This includes an introduction to the two different Control Panels along with descriptions of which namespace configuration approach to use and what the best tool/wizard is to get you started.
 
-[High Availability and Performance](high-availability-and-performance.md)
-<br>The final chapter focuses on how to design a highly available, fault tolerant architecture that meets required performance expectations.
+[Performance](high-availability-and-performance.md)
+<br>The final chapter focuses on how to use persistent caching to achive performance expectations.
 
 ### Technical Support
 
-Before contacting Customer Support, please make sure you have the following information:
-
-- Version of RadiantOne
-- Type of computer you are using including operating system.
-- The license number for your software.
-- A description of your problem including error numbers if appropriate
-
-Technical support can be reached using any of the following options:
+Technical support can be reached using email or our support website:
 
 E-mail: support@radiantlogic.com
 

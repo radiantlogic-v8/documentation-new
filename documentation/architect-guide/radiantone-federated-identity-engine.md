@@ -3,7 +3,7 @@ title: Architect Guide
 description: Architect Guide
 ---
 
-# RadiantOne Federated Identity Engine
+# RadiantOne Federated Identity
 
 ## Overview
 
@@ -33,7 +33,7 @@ The solution is the RadiantOne Platform that acts as a hub capable of delivering
 
 Figure 2: RadiantOne Federated Identity Hub/Service
 
-The RadiantOne Federated Identity Engine aggregates, integrates, and translates data from across the identity infrastructure, into a single access point for applications. Through virtualization and join, RadiantOne seamlessly builds global profiles by extracting the schemas from each local data source and builds the new view (in a flat or hierarchical form) where identities and attributes are remapped and virtualized. The custom views can be created by the use of the Identity Service Wizards that are described in [Getting Started with RadiantOne](getting-started-with-radiantone.md).
+RadiantOne Federated Identity aggregates, integrates, and translates data from across the identity infrastructure, into a single access point for applications. Through virtualization and join, RadiantOne seamlessly builds global profiles by extracting the schemas from each local data source and builds the new view (in a flat or hierarchical form) where identities and attributes are remapped and virtualized. The custom views can be created by the use of the tools that are described in [Getting Started with RadiantOne](getting-started-with-radiantone.md).
 
 With a virtualized central access point, authentication and authorization decisions are made simple. Credentials checking can be handled by the RadiantOne directly against a local store or persistent cache, or delegated to the underlying data sources. Fine-grained authorization is achieved by quick access to all user attributes in the data silos. This allows RadiantOne to feed your applications the required user attributes from a variety of identity stores via a standards-based protocol, so they can perform richer, attribute-based authorization based on a more complete identity picture. Also, for applications that leverage groups-based authorization, RadiantOne offers flexible group definitions by aggregating, mapping and migrating existing groups into the RadiantOne platform, or allowing you to dynamically create new groups based on a select set of criteria.
 
@@ -41,21 +41,20 @@ With a virtualized central access point, authentication and authorization decisi
 
 At the core of RadiantOne Platform is the ability to make a union set of identities, to make identification of users more accurate and efficient. Union is the ability to create a global list where each user is represented once and only once, even if they have multiple accounts spread across the identity infrastructure.
 
-To create a global list without duplicate identities, you need to correlate and disambiguate the identities. Union requires some kind of criteria, one or more attributes, to detect and correlate same-users across systems. This is the common, global identifier. A match based on this attributes(s) allows us to remove duplicates. The result is a “union compatible” operation, where all users are represented exactly once, and only once, in the virtualized global list. Correlating same-users across various data sources enables the creation of a global profile. The global profile maintains links to local accounts, to pull in attributes from them, for a complete 360-degree view of users.
+To create a global list without duplicate identities, you need to correlate and disambiguate the identities. Union requires some kind of criteria, one or more attributes, to detect and correlate same-users across systems. This is the common, global identifier. A match based on this attribute(s) allows the RadiantOne service to consolidate duplicates. The result is a “union compatible” operation, where all users are represented exactly once, and only once, in the virtualized global list. Correlating same-users across various data sources enables the creation of a global profile. The global profile maintains links to local accounts, to pull in attributes from them, for a complete 360-degree view of users.
 
 **How RadiantOne Solves the Union Challenge**
 
-The Global Identity Builder makes it easy to create a union of all users in your identity infrastructure, which is used as a reference list for authentication and authorization. The wizard walks you through the process of correlating (detecting) same-user accounts across identity silos, so that there are no duplicate identities in the final list.
+The Global Identity Builder makes it easy to create a union of all users in your identity infrastructure, which is used as a reference list for authentication and authorization. The tool guides you through the process of correlating (detecting) same-user accounts across identity silos, so that there are no duplicate identities in the final list.
 
 The profiles in this list have pointers back to the identity’s accounts across data sources. This means that attributes can be pulled from the original identity sources to create a rich global profile to be used for authentication and authorization. You can find more details on the union process in the Concepts section found [here](concepts.md).
 
 ## RadiantOne Feature Overview
 
-RadiantOne accepts requests submitted by applications using LDAP, SQL, or Web Services:
+RadiantOne accepts requests submitted by applications using LDAP or Web Services:
 SCIMv2 and REST. These requests are then routed, mapped, transformed by the engine, and forwarded to the underlying data sources. The results are gathered, normalized, filtered, and returned to the requesting application.
 
-RadiantOne is a full-service platform that comes complete with many wizards that makes
-identity integration seamless. You can find additional information on these wizards in [Getting Started with RadiantOne](getting-started-with-radiantone.md).
+RadiantOne is a full-service platform that comes complete with many tools that makes identity integration seamless. You can find additional information on these tools in [Getting Started with RadiantOne](getting-started-with-radiantone.md).
 
 As a bonus, the RadiantOne platform also offers a local storage that can be used for purposes such as:
 
@@ -64,7 +63,7 @@ As a bonus, the RadiantOne platform also offers a local storage that can be used
 by the RadiantOne service.
 - Storage of application-specific attributes that don’t currently exist when deploying new applications, often they require storage of very specific attributes. Instead of having to extend your existing directory schemas to accommodate these, you can use the RadiantOne Universal Directory store.
 - Legacy LDAP Directory Replacement
-<br>If your identity integration/virtualization project involves a need for LDAP directory consolidation/migration, the RadiantOne Universal Directory and Directory Migration modules provide the storage and temporary synchronization mechanisms to provide you with a flexible, scalable alternative that allows you to migrate your applications at your own pace.
+<br>If your identity integration/virtualization project involves a need for LDAP directory consolidation/migration, the RadiantOne Universal Directory provides the storage and temporary synchronization mechanisms to provide you with a flexible, scalable alternative that allows you to migrate your applications at your own pace.
 
 ### Logical Architecture
 
@@ -76,7 +75,7 @@ The logical model is based on three primary layers.
 
 **Application Layer**
 
-The application layer is the interface between applications and the RadiantOne Platform. Applications query RadiantOne using LDAP, SQL, SCIMv2 or REST and expect standard directory responses in return. The applications are not aware of the complexity or number of data sources they are receiving data from. To them, RadiantOne represents the single data source where all of the information they require resides. For claims-aware applications, the RadiantOne Single Sign-on module handles the different authentication methods and the token translation. It is integrated with the RadiantOne Federated Identity Engine to identify users and retrieve profile attributes to augment claims. For more details on the Single Sign-on module, please see [http://www.radiantlogic.com/docs.](http://www.radiantlogic.com/docs.)
+The application layer is the interface between applications and the RadiantOne Platform. Applications query RadiantOne using LDAP, SCIMv2 or REST and expect standard directory responses in return. The applications are not aware of the complexity or number of data sources they are receiving data from. To them, RadiantOne represents the single data source where all of the information they require resides. For claims-aware applications, the RadiantOne Single Sign-on module handles the different authentication methods and the token translation. It is integrated with  RadiantOne Federated Identity to identify users and retrieve profile attributes to augment claims. For more details on the Single Sign-on module, please see [https://developer.radiantlogic.com](https://developer.radiantlogic.com.).
 
 **RadiantOne Platform**
 
