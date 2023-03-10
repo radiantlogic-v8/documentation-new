@@ -32,17 +32,13 @@ Some settings in the Main Control Panel are accessible only in Expert Mode. To s
 
 ### RadiantOne Built-in Monitoring and Alerts
 
-RadiantOne includes built-in monitoring and alert capabilities and can also be monitored by external [third party monitoring tools](#external-monitoring-options-with-third-party-tools).
+RadiantOne includes built-in monitoring and alert capabilities.
 
 #### Monitoring from the Main Control Panel
 
 The Main Control Panel provides a view of RadiantOne nodes deployed. When RadiantOne is deployed in a cluster, the state of services running on all nodes is visible in the Overview section of the Dashboard tab. In the Intranode Health section you can see the connectivity across all nodes.
 
-If RadiantOne is deployed in a classic active/active or active/passive architecture, the Intranode
-Health section is irrelevant and only one node is shown in the Overview section.
-
-The Replication Monitoring tab is relevant if inter-cluster replication is deployed or if you have
-RadiantOne deployed in an active/active or active/passive architecture and are replicating HDAP stores across them.
+The Replication Monitoring tab is relevant if inter-cluster replication is deployed.
 
 ##### Dashboard Tab
 
@@ -61,7 +57,7 @@ For each node, the Overview section displays the status of:
 - The RadiantOne service’s HTTPS port
 - VRS (SQL) port
 - VRS (SQL) SSL port-->
-- ZooKeeper (ZK) on the node (in Node Component Status section). <!--If ZooKeeper is running on a separate machine instead of on the same machine as the RadiantOne service, N/A is shown.
+- ZooKeeper (ZK) <!-- on the node (in Node Component Status section). If ZooKeeper is running on a separate machine instead of on the same machine as the RadiantOne service, N/A is shown.
 - Disk latency
 - Up time – how long the RadiantOne service has been running on the node.
 - Version of RadiantOne installed on the node
@@ -70,30 +66,7 @@ For each node, the Overview section displays the status of:
 
 Figure 1.1 : Example Monitoring of a RadiantOne Cluster Containing Two Nodes
 
-If RadiantOne is deployed in a cluster, you can also use <RLI_HOME>/bin/advanced/cluster.bat list (cluster.sh on Linux) to monitor the status (ON/OFF) of each cluster node and see which one is the current RadiantOne service (VDS) leader and ZooKeeper (ZK) leader. Below is an example.
-
-```sh
-c:\radiantone\vds\bin\advanced>cluster.bat list
-
-+----------------+--------------------------------------+------------+--------------------+--------------+
-
-| SU-WINUD-E1N1* | cd96bcc3-40f9- 4286 - 810d-881f0aa10eb4 | ON | #1 |
-ON |
-
-| SU-WINUD-E1N2 | b40c196b- 5596 - 499d- 9855 - 1f8d3980fd1a | ON | #2** |
-ON |
-
-| SU-WINUD-E1N3 | 53df2 904 - 63b6-41f1-8de6-62c10369846a | ON | #3 |
-ON |
-
-+----------------+--------------------------------------+------------+--------------------+--------------+
-
-*: VDS Leader
-
-**: ZK Leader
-```
-
-The Internode Health section is applicable for cluster deployments only and displays a topology of all nodes in the cluster and information about the connectivity between the nodes. If you hover the mouse pointer over a node, the direction of connectivity is conditioned by this node and more details are shown. By default, this includes the availability of the LDAP and LDAPS ports for the RadiantOne service, and the ability to read and write to ZooKeeper on the target node. To toggle information about ZooKeeper or LDAP connectivity, check/uncheck the corresponding box in the upper-left corner of the Internode Health section.
+The Internode Health displays a topology of all nodes in the cluster and information about the connectivity between the nodes. If you hover the mouse pointer over a node, the direction of connectivity is conditioned by this node and more details are shown. By default, this includes the availability of the LDAP and LDAPS ports for the RadiantOne service, and the ability to read and write to ZooKeeper on the target node. To toggle information about ZooKeeper or LDAP connectivity, check/uncheck the corresponding box in the upper-left corner of the Internode Health section.
 
 ![An image showing the internode health monitoring](Media/Image1.2.jpg)
 
@@ -143,9 +116,7 @@ between them is shown.
 
 The items that can be monitored from the Server Control Panels are described in this section.
 
-Server Control Panels can be launched from the "Server Control Panel" link at the top of the Main Control Panel.
-
->[!warning] when deploying RadiantOne in a cluster, the Main Control Panel allows you to monitor certain aspects of all cluster nodes. Each node also has its own Server Control Panel for monitoring other server-specific activities.
+Click the "Server Control Panel" link at the top of the Main Control Panel to launch the Server Control Panel.
 
 ##### CPU, Memory, Disk Space, Disk Latency and Connection Usage
 
@@ -173,6 +144,8 @@ Figure 1.4: Configuring Standard Alerts from the Main Control Panel
 
 5. File alerts are enabled by default. If SMTP settings are configured in the Monitoring > Email Alert Settings section you can also use the Email Alert output.
 6. Click Save.
+
+<!--
 
 To invoke actions other than generating a file or sending an email, you can create a custom script that is invoked when an alert is triggered.
 
@@ -212,12 +185,13 @@ echo %1 %2 %3 %4 >>C:\radiantone\vds\alerts.txt
 
 Figure 1.6 : Example Alert Descriptions
 
+-->
+
 ##### Connections and Operations
 
 The Server Control Panel > Usage & Activity Tab > Usage Summary section, displays the total number of connections made to the server (since startup), and the total number of operations (since startup). The average per minute for each is calculated and displayed.
 
-From the Current Connections section, you can also view the number of open connections to
-RadiantOne including:
+From the Current Connections section, you can also view the number of open connections to RadiantOne including:
 
 - Client IP/port that opened the connection
 - Time the connection was opened
@@ -242,7 +216,7 @@ Figure 1.8 : Monitoring RadiantOne Universal Directory Stores from the Server Co
 
 ###### Resetting Peak Operations
 
-To reset the peak operations without restarting the RadiantOne service, you can use the following (assuming the service is listening on LDAP port 2389 and the super user password is
+To reset the peak operations without restarting the RadiantOne service, you can use the following query from an LDAP client (assuming the service is listening on LDAP port 2389 and the super user password is
 “password”):
 
 #ldapsearch -h host -p 2389 -D "cn=directory manager" -w "password" -b
@@ -584,6 +558,8 @@ Figure 1. 23 : Custom Alert for Monitoring Global Sync Queue Size
 
 12. When triggered, this alert displays on the Main Control Panel's Dashboard tab under Active Alerts as "ALERT: <alert_name>” and triggers a [file alert](#file-alert-settings). If SMTP settings are configured, [email alerts](#email-alert-settings) can be triggered as well by adding EmailAlert to the Alert Output setting (click save if you modify alert output).
 
+<!-->
+
 #### Configuration Changes
 
 To configure alerts when configuration changes are made from the Main Control Panel > Settings tab or using the command line configuration utility (vdsconfig), configure the following
@@ -623,6 +599,8 @@ Figure 1.25 : Setting a Trigger Threshold (above 60)
 
 9. Click OK.
 10. Click Save.
+
+-->
 
 ### Data Collectors
 
@@ -1341,7 +1319,8 @@ To change the alert file location and/or the archive location, expand the Advanc
 
 Figure 1. 34 : File Alerts Settings
 
-## Monitoring and Alerts from the Command Line
+
+<!--## Monitoring and Alerts from the Command Line
 
 A command-line script can monitor the status of the following items:
 
@@ -1448,6 +1427,8 @@ Example contents of the mystatus.log file:
 - advworks[JDBC]=OK
 - rli_client_db_datasource[JDBC]=OK
 
+-->
+
 ### Monitoring Real-time Persistent Cache Refresh and Global Sync Components
 
 #### Monitoring Global Sync from the Control Panel
@@ -1489,6 +1470,8 @@ cache refresh configuration and monitor the activities of the capture and apply 
 
 Figure 1. 38 : Persistent Cache Refresh Monitoring
 
+<!-->
+
 #### Monitoring Real-time Persistent Cache Refresh and Global Sync Components from Command Line
 
 You can use the <RLI_HOME>/bin/monitoring.bat (monitoring.sh on Unix) to monitor real-time
@@ -1504,6 +1487,8 @@ pipeline(sourceDn=*,targetDn=*,pipelineId=*,pipelineType=*,componentType=*,prope
 
 Run the monitoring script with the pipeline command to get a list of possible values for the
 properties that can be passed in the command.
+
+-->
 
 ##### Real-time Persistent Cache Refresh
 
@@ -1579,6 +1564,8 @@ processorCounter, processorHostname, processorQueueSize. The processor component
 where this process is running. ProcessorQueueSize is the number of entries in the queue waiting to be processed. ProcessorQueueSize is a good candidate to configure custom alerts for. If this number is growing, and the pipeline is fully
 started, it is an indicator that events are being processed too slow. This could be due to errors while applying events, or just slow machine hardware or network.
 
+<!-->
+
 ## External Monitoring Options with Third Party Tools
 
 Even though RadiantOne does not log activities directly to any third party/external monitoring tool by default, there are various methods available for these tools to get information about what they want to monitor. These methods are described below.
@@ -1622,6 +1609,8 @@ Figure 1. 41 : Exporting Default Log4J Configuration as a Backup
 8. Click Edit Mode on the right and configure your appender.
 9. Click Save.
 
+-->
+
 ### Control Panels - Delegated Administration Activity
 
 Any user that can bind to RadiantOne can potentially administrator the server (if they belong to
@@ -1639,18 +1628,16 @@ defined for RadiantOne:
 
 For details on the operations allowed for each user, please see the RadiantOne System Administration Guide.
 
-When any user that is a member of one of the above delegated administration groups saves changes in the Main or Server Control Panel, this activity is logged into:
-<RLI_HOME>/vds_server/logs/jetty/web_access.log. This is a CSV formatted log file with the delimiter being <TAB>. To configure the log output for the Control Panel, navigate to the Main
-Control Panel > Settings tab > Logs > Log Settings section.
+When any user that is a member of one of the above delegated administration groups saves changes in the Main or Server Control Panel, this activity is logged into: web_access.log. This is a CSV formatted log file with the delimiter being <TAB>. To configure the log output for the Control Panel, navigate to the Main
+Control Panel > Settings tab > Logs > Log Settings section. You can view and download web_access.log from Server Control Panel > Log Viewer.
 
 Select Control Panel – Access from the Log Settings to Configure drop-down list. Define the log level, rollover size and number of files to keep archived.
-
-In the Advanced section (requires [Expert Mode](#expert-mode)), you can indicate the log file location/name
-(default is <RLI_HOME>/logs/jetty/web_access.log) and the archive location/name.
 
 ![An image showing ](Media/Image1.42.jpg)
 
 Figure 1.42 : Main Control Panel Access Log Settings
+
+<!-->
 
 For more fine-grained log configuration you must edit the configuration in ZooKeeper. From the
 Main Control Panel -> ZooKeeper tab (requires [Expert Mode](#expert-mode)), navigate to
@@ -1804,7 +1791,7 @@ opCountCompare, and opCountDelete.
 - opPeak – the peak (the longest duration) operation info.
 
     For example:
-2014 - 09 - 02 16:39:44,120 --> conn=45 op=5 SEARCH REQUEST Duration=1050
+2014 - 09 - 02 16:39:44,120  conn=45 op=5 SEARCH REQUEST Duration=1050
 
     The above could be parsed as:
 <br>Operation Time: 2 014 - 09 - 02 16:39:44,120
@@ -2077,11 +2064,13 @@ the RadiantOne install.
 When RadiantOne runs as a service on Windows platforms, you can also use System Center Operations Manager (SCOM) to monitor it. On LINUX platforms, Nagios (or some other daemon
 service monitor) can be used.
 
+-->
+
 ### RadiantOne Logs and Error Messages to Monitor
 
-The most important logs and error messages to monitor for RadiantOne are:
+The most important logs to monitor for RadiantOne are vds_server.log and vds_server_access.log. The log files can be viewed and downloaded from Server Control Panel > Log Viewer: You can monitor these logs for the following errors.
 
-<RLI_HOME>/vds_server/logs/vds_server_access.log
+vds_server_access.log
 
 - SearchResult {resultCode=53
 - VDS_Server is shutting-down [Connection to ZooKeeper lost.]
@@ -2115,15 +2104,14 @@ not writable any more.
 - ConnectionStateListener: ZK connection is not writable any more.
 - ZooKeeper session has been lost. [vds_server]
 
-RadiantOne logging is configured from the Main Control Panel -> ZooKeeper tab (requires [Expert Mode](#expert-mode)). Navigate to /radiantone/<version>/<cluster_name>/config/logging/log4j2-vds.json and click EDIT MODE on the right.
-
 ### Periodic Persistent Cache Refresh Threshold Failures
 
 To monitor periodic persistent cache refresh failures due to thresholds being reached, monitor
-the <RLI_HOME>\vds_server\logs\periodiccache.log for keywords: “Threshold reached”
+the periodiccache.log for keywords: “Threshold reached”. 
 
-For example, assume a 50% Add Threshold has been configured and during the next refresh
-cycle, there are 85% more entries in the backend than there are in the persistent cache image.
+The periodiccache.log file can be viewed and downloaded from Server Control Panel > Log Viewer.
+
+For example, assume a 50% Add Threshold has been configured and during the next refresh cycle, there are 85% more entries in the backend than there are in the persistent cache image.
 This persistent cache refresh is aborted, and the following message can be found in the
 periodiccache.log.
 
@@ -2131,6 +2119,8 @@ periodiccache.log.
 java.lang.Exception: Threshold reached with 85% difference for adds.
 
 In the example above, a periodic persistent cache refresh is configured on the o=sql naming context.
+
+<!-->
 
 ### ZooKeeper Status – Heartbeat Check
 
@@ -2142,16 +2132,19 @@ running ZooKeeper in an ensemble). If more than a port check is desired, third-p
 support JMX can be used. Contact Radiant Logic Support (support@radiantlogic.com) to
 discuss this option.
 
+-->
+
 ### ZooKeeper Logs and Error Messages to Monitor
 
-The most important log to monitor for ZooKeeper is
-<RLI_HOME>/logs/zookeeper/zookeeper.log. The following are critical error messages to monitor in this log:
+The most important log to monitor for ZooKeeper is zookeeper.log. This log file can be viewed and downloaded from Server Control Panel > Log Viewer. The following are critical error messages to monitor in this log:
 
 - ERROR [ConnectionStateManager-0:ZooManager@?] - Connection lost. (local
 zookeeper node no longer able to contact peers in ensemble)
 - Non-optimial configuration, consider an odd number of servers.
 - Could not add appenderMBean for [null]
 - Unexpected exception causing shutdown while sock still open
+
+<!-->
 
 ### RadiantOne Activity – Check/Parse Access Log (CSV Format) Output
 
@@ -2173,7 +2166,6 @@ data source points to, navigate to the Main Control Panel -> Settings Tab -> Ser
 
 >[!note] The default settings leverage a Derby database that is included with RadiantOne and can be started with <RLI_HOME>/bin/DerbyServer.exe.
 
-<!-->
 
 Once RadiantOne is configured to log to CSV and the database hosting the log contents is running, launch the Log2DB utility which is in charge of reading the CSV contents and writing into your database table (table name configured in the Log2db Settings).
 
@@ -2181,7 +2173,6 @@ Once RadiantOne is configured to log to CSV and the database hosting the log con
 
 Details about configuring and starting the Log2DB utility and the database columns (describing the log contents) can be found in the Logging and Troubleshooting Guide.
 
--->
 
 #### Check/Parse Alert File (CSV Format) Output or Emails Generated from Alerts enabled in Main Control Panel 
 
@@ -2486,5 +2477,4 @@ disk, archive more frequently...etc.). To keep track of the statistics, run the 
 script and redirect the output (using >) to a file.
 <RLI_HOME>/bin/advanced/diskspaceMonitoring.bat -i 600 -t 90 > diskspacestats.txt
 
-Once disk space usage has been assessed, kill the diskspaceMonitoring script and relaunch
-again without redirecting output to a file. At this time, you can also increase the checking interval.
+Once disk space usage has been assessed, kill the diskspaceMonitoring script and relaunch again without redirecting output to a file. At this time, you can also increase the checking interval.
