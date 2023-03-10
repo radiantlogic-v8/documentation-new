@@ -3,32 +3,13 @@ title: Identity Data Analysis
 description: Identity Data Analysis 
 ---
 
-# Chapter 2: Using the Identity Data Analysis Web Interface
+# Chapter 2: Using the Identity Data Analysis Tool
 
 The Identity Data Analysis web tool is accessible from the RadiantOne Main Control Panel > Wizards tab. 
 
 Any user that is a member of the RadiantOne Directory Administrator role, ICS Admin role, or Namespace Admin role can log into the RadiantOne Main Control Panel and access the Identity Data Analysis tool on the Wizards tab. For details on the RadiantOne delegated admin roles, see the RadiantOne System Administration Guide.
 
 >**Note – Images displayed in this guide are meant to describe expected behavior of features in RadiantOne. Your results may vary from those shown in this guide as data sets are subject to change at any time.**
-
-To access the Identity Data Analysis Tool, navigate in a web browser as follows. 
-
-```
-http://<hostname>:7070/main/login
-```
-
-Examples include the following.
-
-```
-http://RadiantoneService:7070/main/login
-http://10.11.12.10:7070/main/login
-```
-
-![An image showing ](Media/Image2.1.jpg)
- 
-Figure 2.1: The RadiantOne Main Control Panel Login Page
-
-Enter your credentials and click Login. Go to the Wizards tab and click on Identity Data Analysis.
 
 >**NOTE – The Identity Data Analysis tool is not compatible with Compatibility View in Microsoft Internet Explorer 11.**
 
