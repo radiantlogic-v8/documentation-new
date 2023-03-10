@@ -170,7 +170,7 @@ Based on the examples shown above, a link parameter is required for the virtual 
 
 In the previous example, the link condition was based on a single-valued attribute in the parent entry. This is the primary use case for a link parameter. However, if the attribute in the parent entry contains multiple values you can use it to configure the link parameter.
 
-><span style="color:red">**IMPORTANT NOTE – There are limitations when working with link parameters involving multi-valued attributes from parent objects. The link is limited to one multi-valued parent attribute. If there are too many values in the parent node, the query might fail due to the limit on LDAP filter size or SQL statement size.**
+>[!warning] There are limitations when working with link parameters involving multi-valued attributes from parent objects. The link is limited to one multi-valued parent attribute. If there are too many values in the parent node, the query might fail due to the limit on LDAP filter size or SQL statement size.
 
 The example in this section describes using a multi-valued attribute in the parent object to condition the child object(s). The following diagrams depicts two objects. One object contains identity information including a list of entitlements the user has, while the other object contains entitlements information including which application the entitlement is associated with. 
 
@@ -213,7 +213,7 @@ An example value is:
 
 APP.IDENTITY.IDLINK IN (@[entitlements:VARCHAR(255)] 
 
-><span style="color:red">**IMPORTANT NOTE - For child nodes from database backends, make sure in the link parameter value there is a <space> between the “IN” and the following open parenthesis. Also, performance can be negatively impacted because the “IN” operator does not benefit from prepared statements.**
+>[!warning] For child nodes from database backends, make sure in the link parameter value there is a <space> between the “IN” and the following open parenthesis. Also, performance can be negatively impacted because the “IN” operator does not benefit from prepared statements.
  
 An example depicting the model of the virtual view and the runtime view leveraging the link parameter between the two virtual views described in this section is shown below. 
 
@@ -245,7 +245,7 @@ Figure 20: Example Virtual View using Merge Links with No Parameters
 
 This example described how links can be used to aggregate a list of people from three different data sources. Since there is no overlap of users in this scenario, using merge links is a simple way to create a union of all user accounts across three different data sources. Since the subtrees linked do not need to be conditioned by a parent attribute, a link parameter was not required to achieve the desired result. 
 
->**NOTE – The intermediate virtual view names (EmployeeView, PartnerView and CustomerView respectively) are suppressed in the final runtime view because merge links were used.**
+>[!note] The intermediate virtual view names (EmployeeView, PartnerView and CustomerView respectively) are suppressed in the final runtime view because merge links were used.
 
 Configuration steps for using links can be found in the [Working with Links](#working-with-links) section.
 
@@ -323,7 +323,7 @@ For combining tables, see [Joins](concepts-and-utilities.md#joins-between-object
 
 By setting a mapping for an attribute name, you are defining the name that appears in the virtual entries for this view. The value shown in the Virtual Name column is the name of the attribute in the virtual entries. If you would like to map an attribute to a different name, click in the Virtual Name column and set the name you would like to use. 
 
->**Note – if the view you are modifying the attribute mapping for is joined to other virtual views, and the attribute you are changing the mapping for is configured to be returned in the joined view, you must update the external join condition in the joined view to reflect the newly mapped attribute name.**
+>[!note] If the view you are modifying the attribute mapping for is joined to other virtual views, and the attribute you are changing the mapping for is configured to be returned in the joined view, you must update the external join condition in the joined view to reflect the newly mapped attribute name.
 
 ##### Object Tab
 
@@ -365,7 +365,7 @@ To modify a label:
 
 1.	On the Properties tab, you can change RDN name and value.
 
-    >**NOTE – DO NOT name a label with “dv”. The dv syntax is reserved for RadiantOne and labels should not contain it.**
+    >[!note] DO NOT name a label with “dv”. The dv syntax is reserved for RadiantOne and labels should not contain it.
 
 2.	On the Primary Object tab, you can manage (add/delete) the attributes of the label. All attributes defined here are returned when a client requests label entries in the virtual view. 
 
@@ -487,7 +487,7 @@ To declare an RDN attribute value:
 
 2.	The RDN name and value are displayed here. Click the Edit button to select the attribute(s) that should comprise the RDN value. The attribute(s) that you select is combined with the primary key to comprise the RDN value. 
 
-    ><span style="color:red">**IMPORTANT NOTE – the column(s) that you select as the RDN attribute value should not allow NULL values.**
+    >[!warning] The column(s) that you select as the RDN attribute value should not allow NULL values.
 
 ![Configuring RDN Name and Value](Media/Image4.29.jpg)
 
@@ -566,7 +566,7 @@ Requesting certain types of attributes like binary/BLOB, can significantly decre
 
 Use caution when enabling this parameter if an interception script is defined (which may need such attributes even if they are not requested by the client).
 
-><span style="color:red">**IMPORTANT NOTE - Do not enable this option if a memory entry cache is going to be enabled for this virtual view (as the whole virtual entry is needed, including the BLOBs).**
+>[!warning] Do not enable this option if a memory entry cache is going to be enabled for this virtual view (as the whole virtual entry is needed, including the BLOBs).
 
 ##### Process Joins and Computed Attributes Only When Necessary 
 
@@ -576,7 +576,7 @@ If you enable this option, RadiantOne does not perform joins or computations if 
 
 Use caution when enabling this option if you have interception scripts defined on these objects, or access controls based on filters are being used (both of which may require other attributes returned from secondary sources or computations regardless of whether or not the client requested or searched for them).
 
-><span style="color:red">**IMPORTANT NOTE - Do not enable this option if a memory entry cache is going to be enabled for this virtual view (as the whole entry is needed for the cache).**
+>[!warning] Do not enable this option if a memory entry cache is going to be enabled for this virtual view (as the whole entry is needed for the cache).
 
 #### Virtual Views from LDAP Backends 
 
@@ -592,7 +592,7 @@ If you enable this option, RadiantOne does not perform joins or computations if 
 
 Use caution when enabling this option if you have interception scripts defined on these objects, or access controls based on filters are being used (both of which may require other attributes returned from secondary sources or computations regardless of whether or not the client requested or searched for them).
 
-><span style="color:red">**IMPORTANT NOTE - Do not enable this option if a memory entry cache is going to be enabled for this virtual view (as the whole entry is needed for the cache).**
+>[!warning] Do not enable this option if a memory entry cache is going to be enabled for this virtual view (as the whole entry is needed for the cache).
 
 #### Max Requested Attributes 
 
@@ -625,17 +625,17 @@ If your backend is a database, you must be precise and use the proper syntax for
 
 Figure 35: Example Order By Additional Clause for Database Backend
 
->**Note – use the actual database attribute name in the additional clause, not the remapped virtual name.**
+>[!note] use the actual database attribute name in the additional clause, not the remapped virtual name.
 
 If your backend is an LDAP server, the value in the additional clause should be the specific LDAP filter that RadiantOne should send prefixed with filter:. For example, if the virtual view should be restricted to entries with employeenumber of 11 and a givenName of henry, the following would be the value entered for the additional clause: filter:(&(employeenumber=11)(givenname=henry)) 
 
-><span style="color:red">**IMPORTANT NOTES – When entering an LDAP filter in the Additional Clause, keep in mind the following: 1) If there are some re-mapped attributes in your view, use the non-remapped name in the filter 2) Only attributes from the main (primary/source) object can be filtered (attributes from joined/secondary sources cannot comprise the filter).**
+>[!warning] When entering an LDAP filter in the Additional Clause, keep in mind the following: 1) If there are some re-mapped attributes in your view, use the non-remapped name in the filter 2) Only attributes from the main (primary/source) object can be filtered (attributes from joined/secondary sources cannot comprise the filter).
 
 ##### Stored Procedures
 
 Database views can call stored procedures instead of using the default functionality for handling inserts, updates, and deletes.
 
-><span style="color:red">**IMPORTANT NOTE – Once you have declared stored procedures for a database, the standard functionality for inserts, updates, and deletes is no longer used; only the stored procedures are called.**
+>[!warning] Once you have declared stored procedures for a database, the standard functionality for inserts, updates, and deletes is no longer used; only the stored procedures are called.
 
 To add a stored procedure:
 
@@ -669,7 +669,7 @@ Another customization is available for database backends. The Base Search parame
 
 Since some databases are case sensitive, RadiantOne transforms primary key attribute values to upper case before comparing. This is only applicable when the database key is a character data type. “UPPER” is generated automatically for the following databases: Oracle, SQL MX, MS SQL Server, Sybase, Interbase, and DB2. If you do not want UPPER to be used for searches and updates (because your database is not case sensitive), you can use the Base Search parameter to remove it.
 
-><span style="color:red">**IMPORTANT NOTE – using the UPPER can slow down performance because the indexes in the database may not be used. IF your database has an index on an attribute and it stores the value in upper case, then you have the option of removing the UPPER generated on the left side of the parameter.**
+>[!warning] Using the UPPER can slow down performance because the indexes in the database may not be used. IF your database has an index on an attribute and it stores the value in upper case, then you have the option of removing the UPPER generated on the left side of the parameter.
 
 Below is an example of the parameter that is generated for a database (for the search). If the database is case sensitive and the CN attribute is indexed (and the index stores the value in upper case), then the UPPER generated on the left side of the “=” can be removed and performance is improved (also remove the leading and ending parentheses). 
 
@@ -690,7 +690,7 @@ In addition to using the View Designer to manually build virtual views, Context 
 There are three main types of virtual views you can build from LDAP backends. 
 -	Virtualize the whole directory tree (based on existing relationships). 
 
-><span style="color:red">**IMPORTANT NOTE – If you want to keep the entire existing tree structure intact and expose it in the RadiantOne namespace, it is recommended that you configure an LDAP backend from the Main Control Panel > Directory Namespace instead of using Context Builder which is typically for building virtual views that reflect a new directory hierarchy than the one that exists. For details on configuring LDAP backends from the Main Control Panel, please see the RadiantOne Namespace Configuration Guide.**
+>[!warning] If you want to keep the entire existing tree structure intact and expose it in the RadiantOne namespace, it is recommended that you configure an LDAP backend from the Main Control Panel > Directory Namespace instead of using Context Builder which is typically for building virtual views that reflect a new directory hierarchy than the one that exists. For details on configuring LDAP backends from the Main Control Panel, please see the RadiantOne Namespace Configuration Guide.
 
 -	Flat virtual directory views.
 -	New hierarchical virtual view based on attributes available in an object class.
@@ -792,7 +792,7 @@ When the virtual entries are returned, the entry contains both the virtual DN (w
 
 Figure 49: Results Showing Virtual DN and Actual DN
 
-><span style="color:red">**IMPORTANT NOTE – Although the “actualdn” attribute is returned for each entry, it is NOT a searchable attribute.**
+>[!warning] Although the “actualdn” attribute is returned for each entry, it is NOT a searchable attribute.
 
 #### Building Virtual Views from Database Backends 
 
@@ -962,7 +962,7 @@ If your database is case sensitive and you know the values are stored in upperca
 
 Database views can call stored procedures instead of using the default functionality for handling inserts, updates, and deletes.
 
-><span style="color:red">**IMPORTANT NOTE – Once you have declared stored procedures for a database, the standard functionality for inserts, updates, and deletes is no longer used; only the stored procedures are called.**
+>[!warning] Once you have declared stored procedures for a database, the standard functionality for inserts, updates, and deletes is no longer used; only the stored procedures are called.
 
 To add a stored procedure: 
 
@@ -996,7 +996,7 @@ To log stored procedure values used at runtime, set the RadiantOne server log le
 
 #### Building Virtual Views from SCIMv2 Backends
 
-><span style="color:red">**IMPORTANT NOTE – Do not use attribute mappings, computed attributes, or joins directly on the virtual view from the SCIM backend. Create a basic view with no attribute mappings, computed attributes or joins and then define the view with persistent cache. Initialize the persistent cache and then use Schema Manager and View Designer to point to the cached naming context in the RadiantOne namespace as an [LDAP backend](schema-manager.md#ldap-accessible-backend). Define the attribute mappings, computed attributes and joins on this virtual view.**
+>[!warning] Do not use attribute mappings, computed attributes, or joins directly on the virtual view from the SCIM backend. Create a basic view with no attribute mappings, computed attributes or joins and then define the view with persistent cache. Initialize the persistent cache and then use Schema Manager and View Designer to point to the cached naming context in the RadiantOne namespace as an [LDAP backend](schema-manager.md#ldap-accessible-backend). Define the attribute mappings, computed attributes and joins on this virtual view.
 
 It is assumed that the SCIMv2 schema has already been extracted. If you need help with this process, please see [Schema Manager](03-schema-manager.md#ldap-accessible-backend) on the Schema Manager. The steps below describe the basic of creating a virtual view from a SCIMv2 backend. 
 

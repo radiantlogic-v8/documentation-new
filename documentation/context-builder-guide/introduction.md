@@ -31,9 +31,9 @@ Figure 2: View Designer
 
 ### Logging/Debugging
 
-Context Builder logging is enabled by default. All errors that occur while using Context Builder have a popup with an error message or have an entry in web.log. This log file is located in <RLI_HOME>\vds_server\logs\jetty. 
+Context Builder logging is enabled by default. All errors that occur while using Context Builder have a popup with an error message or have an entry in web.log. 
 
-For auditing purposes, <RLI_HOME>/logs/contextbuilder_audit.log can be used. This log contains details about when the Context Builder was started/stopped, the files that were saved/created/deleted, the date/time the change occurred, and the user that was using Context Builder.
+For auditing purposes, contextbuilder_audit.log can be used. This log contains details about when the Context Builder was started/stopped, the files that were saved/created/deleted, the date/time the change occurred, and the user that was using Context Builder.
 
 The log level is configurable from Main Control Panel > Settings > Logs > Log Settings.
 
@@ -42,3 +42,5 @@ Select the Control Panel – Context Builder Audit option from the “Log Settin
  ![Context Builder Log Settings](Media/Image1.3.jpg)
 
 Figure 3: Context Builder Log Settings
+
+The log files can be viewed and downloaded from Server Control Panel > Log Viewer tab. For details on the Server Control Panel, see the RadiantOne System Administration Guide. 
