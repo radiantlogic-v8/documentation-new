@@ -20,7 +20,7 @@ Figure 1: Log4J Configuration Settings in Zookeeper
 
 The default root location/drive is identified by the environment variable RLI_HOME.
 
-This is configured in <RLI_HOME>\config\logging\logging.properties.
+This is configured in `<RLI_HOME>\config\logging\logging.properties`.
 
 logging.root=${env:RLI_HOME}
 
@@ -229,7 +229,7 @@ The utility is in <RLI_HOME>/bin/advanced/LdifAnonymizer.bat (.sh on Linux) and 
 
 -s is optional and can contain a comma-separated list of attributes to keep secret, meaning that the process randomizes these attributes within the different ranges instead of using the shuffling sets.
 
-The utility generates a modified LDIF file (<sourcefilename>.anon.ldif) in the same location as the source LDIF file. This anonymized file can be sent to the Radiant Logic support team for testing.
+The utility generates a modified LDIF file (`<sourcefilename>.anon.ldif`) in the same location as the source LDIF file. This anonymized file can be sent to the Radiant Logic support team for testing.
 
 In addition to sending an anonymized LDIF file containing sample data, it is also helpful to share [data statistics](#data-statistics) with the Radiant Logic support team.
 
@@ -237,9 +237,9 @@ In addition to sending an anonymized LDIF file containing sample data, it is als
 
 RadiantOne logs statistics related to operations it receives. This includes average execution time, peak execution time, and whether the operation was successful. No actual data (entries/attributes) is logged, only metadata. This log is primarily for Radiant Logic support to have key information to assist with troubleshooting.
 
-This logging is enabled by default and can be managed from the Main Control Panel > Settings Tab > Logs section > Statistics > Statistics Analyzer Settings sub-section.  The log location is <RLI_HOME>/vds_server/logs/stats.log. This logging is enabled by default and calculates statistics during 1-minute intervals prior to saving to the stats.log.
+This logging is enabled by default and can be managed from the Main Control Panel > Settings Tab > Logs section > Statistics > Statistics Analyzer Settings sub-section.  The log location is `<RLI_HOME>/vds_server/logs/stats.log`. This logging is enabled by default and calculates statistics during 1-minute intervals prior to saving to the stats.log.
 
-For each RadiantOne Universal Directory (HDAP) store or persistent cache initialization, statistics are calculated for the total number of entries and sub-categorized by branches and object classes. The average and peak number of attributes per entry, and the average and peak size (in KB) per entry are also calculated. This information is logged into the <RLI_HOME>/vds_server/logs/stats.log. This logging is enabled by default and can be managed from the Main Control Panel -> Settings Tab -> Logs section -> Statistics -> Init Statistics Settings sub-section.
+For each RadiantOne Universal Directory (HDAP) store or persistent cache initialization, statistics are calculated for the total number of entries and sub-categorized by branches and object classes. The average and peak number of attributes per entry, and the average and peak size (in KB) per entry are also calculated. This information is logged into the `<RLI_HOME>/vds_server/logs/stats.log`. This logging is enabled by default and can be managed from the Main Control Panel -> Settings Tab -> Logs section -> Statistics -> Init Statistics Settings sub-section.
 
 ### Expert Mode
 
