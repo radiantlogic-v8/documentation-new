@@ -219,7 +219,7 @@ It is often difficult for the Radiant Logic support team to reproduce problems s
 
 The utility is in <RLI_HOME>/bin/advanced/LdifAnonymizer.bat (.sh on Linux) and has the following usage:
 
-LdifAnonymizer.bat -f <ldif_file_path> [-i <ignored attributes>] [-d <dn attributes>][-s <secret attributes>]
+`LdifAnonymizer.bat -f <ldif_file_path> [-i <ignored attributes>] [-d <dn attributes>][-s <secret attributes>]`
 
 -f is the source LDIF file containing the entries. You must have an LDIF file containing the data prior to using the LdifAnonymizer utility.
 
