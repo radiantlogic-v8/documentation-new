@@ -24,13 +24,10 @@ You can define access to the following subjects:
 - a particular user
 - all users who belong to a specific group
 - all users in the directory
-- a specific client identified by its IP address (or range of addresses)
-Access controls are set from the Main Control Panel > Settings Tab > Security section >
-Access Control sub-section.
 
-By default, all users have read access to all naming contexts in RadiantOne for search,
-compare, and read operations. This includes read access to the RadiantOne directory RootDSE
-(accessible by requested an empty base DN).
+Access controls are set from the Main Control Panel > Settings Tab > Security section > Access Control sub-section.
+
+By default, all users have read access to all naming contexts in RadiantOne for search, compare, and read operations. This includes read access to the RadiantOne directory RootDSE (accessible by requested an empty base DN).
 
 This default access control can be removed from the Main Control Panel ->
 Settings Tab > Security section > Access Control. Click root on the right and select the
@@ -52,29 +49,13 @@ want to protect.
 For details on defining access controls, please see the RadiantOne System Administration
 Guide.
 
-## Turn off Anonymous Access
-
-Depending on the needs of the applications that are consuming the RadiantOne service,
-anonymous access may be disabled. Remember this is access (authorization) NOT binding
-(authentication)
-
-Anonymous access can be disabled from Main Control Panel > Settings tab > Security section > Access Control. Uncheck the Allow Anonymous Access option.
-
 ## Turn on Bind Requires Password Setting
 
 If the Bind Requires Password setting is enabled, and no password is specified in the bind request, the RadiantOne service tries to bind the specified user and returns an invalid credential error to the client.
 
 If Bind Requires Password is not enabled, and a bind request comes in with a valid user DN and no password, it is considered an anonymous bind.
 
-This setting can be enabled from Main Control Panel > Settings tab > Security section >
-Access Control. Check the Bind requires a password option.
-
-
-## Define a Global Authentication Strength
-
-Global Authentication Strength is used to specify that a client must bind to the RadiantOne service by using a specific authentication method. The values supported are: None, Simple (e.g. bindDN+password), SSL (require SSL/TLS or StartTLS), or SASL. The SASL mechanisms supported are DIGEST-MD5<!--, GSSAPI, GSS-SPNEGO,--> or EXTERNAL (e.g. certificate-based authentication).
-
-This setting can be enabled from Main Control Panel > Settings tab > Security > Authentication Methods. On the right, navigate to the Global Authentication Strength section and select an option from the drop-down list. For more details, see the RadiantOne System Administration Guide.
+This setting can be enabled from Main Control Panel > Settings tab > Security section > Access Control. Check the Bind requires a password option.
 
 ## Define Strong Password Policies
 
@@ -82,16 +63,7 @@ RadiantOne offers advanced password policy settings to control everything from p
 
 ## Use Multi-Factor Authentication
 
-RadiantOne includes a framework for calling custom authentication services like RSA SecurID and Yubicloud. This allows standard LDAP applications to benefit from stronger, multi-factor security without requiring any changes to their authentication logic. Users of the application can login with their existing ID and password + tokencode/One Time Password (OTP). RadiantOne
-translates the standard LDAP authentication (bind) request into a validation of the user’s
-password to the authoritative source (whether that is local in a RadiantOne Universal Directory
-stored, or some other authoritative backend) and a call to your specialized authentication
-service like RSA SecurID (or others) to validate the rest of the credentials. The custom
-authentication service may provide validation for the entire credentials (e.g. user’s password
-plus additional tokencode/pin/OTP) or just a portion of the credentials (e.g. just validate the
-tokencode/pin). For details on using RSA SecurID or Yubikey, see the Custom Authentication
-Providers Guide. For details on configuring your own custom authentication provider, see the
-System Administration Guide.
+Configure your corporate OIDC provider from Main Control Panel > Settings > Security > OIDC Provider Configuration. The OIDC provider should be configured to support the desired MFA vendor.
 
 ## Use Least Privilege Accounts for Backend Connections
 
@@ -120,11 +92,7 @@ You can use your own security key (Customer Master Key) for attribute encryption
 KMS. For details on using AWS KMS, see the RadiantOne System Administration Guide.
 
 
-For details on configuring attribute encryption, see the RadiantOne Namespace Configuration
-Guide.
-
-For details on deploying RadiantOne in FIPS-mode, to ensure all cryptographic operations are
-performed using a FIPS 140-2 certified module, see the RadiantOneFIPS_Mode Guide.
+For details on configuring attribute encryption, see the RadiantOne Namespace Configuration Guide.
 
 ## Use Zipped and Encrypted LDIF Files
 
@@ -173,18 +141,15 @@ You can view this data source configuration from Main Control Panel > Settings >
 For security reasons, the user account (Bind DN) you have configured in the vdsha data source
 should be the only one allowed to access the cn=queue and cn=dlqueue naming contexts.
 
-Configure access controls for these root naming contexts from Main Control Panel > Settings > Security > Access Control. Access should only be allowed for the account configured in the
-vdsha data source. For details on configuring access controls, see the RadiantOne System
-Administration Guide.
+Configure access controls for these root naming contexts from Main Control Panel > Settings > Security > Access Control. Access should only be allowed for the account configured in the vdsha data source. For details on configuring access controls, see the RadiantOne System Administration Guide.
+
+<!-->
 
 ## Enable FIPS Mode
 
-For details on deploying RadiantOne in FIPS-mode, to ensure all cryptographic operations are
-performed using a FIPS 140-2 certified module, see the RadiantOneFIPS_Mode Guide.
+For details on deploying RadiantOne in FIPS-mode, to ensure all cryptographic operations are performed using a FIPS 140-2 certified module, see the RadiantOneFIPS_Mode Guide.
 
-Once FIPS-mode is enabled, go to the Main Control Panel -> Settings tab -> Security ->
-Attribute Encryption and define the security keys for attribute encryption and LDIFZ attribute
-encryption.
+Once FIPS-mode is enabled, go to the Main Control Panel -> Settings tab -> Security -> Attribute Encryption and define the security keys for attribute encryption and LDIFZ attribute encryption.
 
 ![An image showing the ](Media/Image3.1.jpg)
 

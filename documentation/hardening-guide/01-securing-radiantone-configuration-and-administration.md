@@ -5,32 +5,7 @@ description: Hardening Guide
 
 # Chapter 1: Securing RadiantOne Configuration and Administration
 
-There are several options available for securing the RadiantOne configuration and administration. Firewalls can be configured to allow only permitted traffic to pass through. Intrusion Prevention Systems (IPS) can detect and identify anomalous behaviors. Using secure channels and strong authentication, Virtual Private Networks (VPNs) help secure the network perimeter. Logical Unit Number masking and zoning is an authorization process that makes the unique identifier of a storage device that executes input/output commands available to some hosts and unavailable to others.
-
-## Put in Place Proper Firewall Rules
-
-Outside access to a production deployment of RadiantOne is generally only required for client access to RadiantOne which is on the LDAP/LDAPS port, the web services ports (HTTP/HTTPS), and/or the VRS port. All other ports, mentioned later in this section (e.g. Control Panel, Admin Service, ZooKeeper) can be inaccessible to outside clients, enforced by the needed firewall rules.
-
-Generally, RadiantOne is deployed behind a hardware load balancer that is charge of directing client traffic to the appropriate node(s). If there is a load balancer, then it can be configured with firewall rules as the only access from outside the network. Then, the load balancer is the only thing accessing the RadiantOne nodes. This allows the cluster nodes, inside the network, to be able to communicate with each other with fewer restrictions.
-
-Each RadiantOne node must be able to communicate to the other nodes on the following ports (these are configurable during install). Therefore, the firewall rules for these ports must be inbound and outbound. Note here that the non-SSL ports can be disabled if desired.
-
->[!note] For more information on disabling non-SSL access, see the [Forbid Access to RadiantOne on the Non-SSL Port](04-recommendations-for-securing-data-in-transit-ssl-tls-settings.md#forbid-access-to-radiantone-on-the-non-ssl-port) section.
-
-The default TCP ports defined during install are described here. You might have changed some of these defaults.
-
-- Standard LDAP: 2389 and 636 or 1636 (SSL)
-  
-- Control Panel HTTP Ports: 7070 and 7171 (SSL)
-- RadiantOne Web Service HTTP Ports: 8089 and 8090 (SSL)
-- RadiantOne Admin Service HTTP Ports: 9100 and 9101 (SSL)
-- Zookeeper (configuration management): 2181 (ZK Client port), 2182 (JMX), 2888(ZK Ensemble port), 3888 (ZK Leader Election Port)
-
->[!warning] if you are using third party tools, that are monitoring the above components, then all ports listed above might be required for their service. Also, if you want to allow administration/configuration of RadiantOne remotely, the Control Panel HTTP port must be made available.
-
-- SMTP emails for alerts and other notifications use outbound ports 25 and 465 (SSL).
-  
-- Task scheduler ports 1099 and another random port between 49,000-65,000 do not need inbound or outbound connectivity. However, they must be accessible by localhost. This is used for running tasks on a RadiantOne node. Tasks are associated with initializing or exporting stores/persistent cache, re-indexing, etc.
+The options available for securing the RadiantOne configuration and administration are discussed in this chapter. 
 
 ## Protect and Monitor Access to the Directory Manager Account
 
@@ -40,14 +15,14 @@ The directory manager account (e.g. cn=Directory Manager by default, this is def
 - Does not contain any dictionary words
 - Contains a mixture of uppercase, lowercase, numbers and special characters
 
-Provide this password only to trusted administrators with business need for super user access. Monitor failed login attempts to this account using a Security Incident and Event Management (SIEM) system such as RSA envision or others. Other accounts used by RadiantOne are managed by backend data sources and subject to lockout policies associated with those backend data sources.
+Provide this password only to trusted administrators with business need for super user access. Other accounts used by RadiantOne are managed by backend data sources and subject to lockout policies associated with those backend data sources.
 
 ## Limit Usage of Directory Manager Account
 
 Knowledge and usage of the RadiantOne super user (e.g. cn=Directory Manager) credentials should be limited. It is highly recommended to use the delegated administrator accounts to manage RadiantOne configuration instead of the super user account. Add your users to the
 appropriate delegated administrator groups to define the roles they should have for managing the RadiantOne configuration. For details on what activities the delegated administrators can perform, please see the RadiantOne System Admin Guide.
 
-For details on updating the RadiantOne super user (e.g. cn=directory manager) credentials, see the RadiantOne Operations Guide.
+For details on updating the RadiantOne super user (e.g. cn=directory manager) credentials, see the RadiantOne System Administration Guide.
 
 <!--
 
@@ -62,31 +37,6 @@ This parameter can be changed in the Main Control Panel > Settings Tab > Adminis
 For more details and example syntax, please see the RadiantOne System Administration Guide.
 
 -->
-
-## Protect and Monitor Access to the Underlying Host Where RadiantOne is Deployed
-
-RadiantOne locally stores passwords and/or certificates to access backend data sources.Although these credentials are obfuscated, a determined attacker with the right level of access to the underlying host could recover them to use in an unauthorized fashion. To mitigate this threat:
-
-- Apply operating system ACLs to limit exposure of these files:
-<RLI_HOME>\vds_server\datasources\ldap.xml
-<RLI_HOME>\vds_server\datasources\database.xml
-<RLI_HOME>\vds_server\datasources\custom.xml
-<RLI_HOME>\vds_server\data\<all files and folders>
-
-- Restrict access to underlying host to trusted administrators with operational need to access hosts.
-- Monitor access to underlying host using a SIEM system such as RSA envision.
-
->[!warning] If deploying a cluster, each node/machine in the cluster should be protected and monitored based on the recommendations in this section.
-
-RadiantOne offers a command line configuration utility (<RLI_HOME>/bin/vdsconfig.bat/.sh) that must be run on the same machine where RadiantOne is installed. Restrict access to the machine (and the ability to execute this utility) to trusted administrators with operational needs to use this command line configuration utility. Requiring a username and password to be passed in the commands can also be enabled in ZooKeeper. Please see the Command Line Configuration Guide for details on how to enable this.
-
-## Secure Access to Log Files
-
-RadiantOne can be installed on an encrypted drive (e.g. BitLocker on Windows or Linux-equivalent) to limit exposure to log files. In the RadiantOne Main Control Panel you can configure log location to write to a secure, encrypted drive where strict system-level write permissions are enforced for the user account under which the RadiantOne service runs. <!-- RadiantOne also offers a Log2DB utility that can write logs into any secure JDBC-accessible database you choose. -->For details on configuring log location and writing into a database, see the Logging and Troubleshooting Guide.
-
-## Require Credentials for Making Configuration Changes from Command Line
-
-By default, the commands available in the vdsconfig utility can be executed by anyone who can launch the utility and the change, as tracked by Zookeeper, is logged as simply that the change was made from the command line utility. The only exception here is when the command is updating a property containing a password. In this context, the RadiantOne super user credentials are required. If you want to enforce that credentials are required to execute any command in the vdsconfig utility, add "enableVdsConfigAuth" : true to the vds_server.conf settings in Zookeeper. For details on changing this setting and how it impacts the vdsconfig utility, see the RadiantOne Command Line Configuration Guide.
 
 ## Update Default Delegated Admin Account Passwords
 
@@ -203,6 +153,7 @@ It is recommended that only users required to configure and administer RadiantOn
 
 Log into the Control Panel using a PIV Card/Certificate as an alternative to using username and password. For details on this configuration, please see the RadiantOne System Administration Guide.
 
+<!-->
 ### Configure SSL between RadiantOne and ZooKeeper
 
 By default, communication between RadiantOne (client) to ZooKeeper is over a non-SSL port. The basic configuration and state information that are stored in ZooKeeper pose a generally low security risk. However, if your corporate policies dictate that all internal services must connect to each other via SSL/TLS, you can configure this secure connection between RadiantOne nodes and ZooKeeper. A high-level architecture depicting the certificates involved is shown below.
