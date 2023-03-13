@@ -9,7 +9,7 @@ description: Namespace Configuration Guide
 
 Prior to diving into this guide, it is recommended that you read the Architect Guide for a high-level overview of the capabilities of RadiantOne and the System Admin Guide for an understanding of general concepts and usage of the Main Control Panel and Server Control Panel. This guide provides step-by-step instructions to configure the virtual namespace. Configuring persistent cache is out of the scope of this guide. For details on persistent cache, see the RadiantOne Deployment and Tuning Guide.
 
-><span style="color:red">**IMPORTANT NOTE – For production deployments, RadiantOne configuration changes must be performed during non-peak/off-hours to avoid any disruption in service.**
+>[!warning] For production deployments, RadiantOne configuration changes must be performed during non-peak/off-hours to avoid any disruption in service.
 
 For details on deploying RadiantOne including tuning and maintenance, please see the RadiantOne Deployment and Tuning Guide.
 
@@ -35,28 +35,20 @@ This chapter provides step-by-step configuration details for the RadiantOne Univ
 [Chapter 6 - Virtual Views based on an Aggregation of Multiple Types of Backends](06-virtual-views-based-on-aggregation)
 This chapter provides step-by-step configuration details for virtualizing many different types of backends (e.g. LDAP, JDBC) below a common root naming context.
 
+<!-->
 [Chapter 7 – Virtual Views for DSML or SPML Backends](07-virtual-vews-for-dsml-or-spml-backends)
 This chapter provides step-by-step configuration details for virtualizing DSML or SPML accessible backend data sources.
+-->
 
-[Chapter 8 – Virtual Views of Cloud Applications](08-virtual-views-of-cloud-directories-or-services)
+[Chapter 7 – Virtual Views of Cloud Applications](08-virtual-views-of-cloud-directories-or-services)
 This chapter provides step-by-step configuration details for virtualizing cloud applications and directories like Salesforce, Azure AD, Google directory, PingOne Directory, and SailPoint IdentityIQ.
 
 ## Technical Support
 
-Before contacting Customer Support, please make sure you have the following information:
-
--	Version of RadiantOne. 
--	Type of computer you are using including operating system.
--	The license number for your software.
--	A description of your problem including error numbers if appropriate
-
 Technical support can be reached using any of the following options:
 
 - E-mail: support@radiantlogic.com
-- Website: https://support.radiantlogic.com 
--	Phone: 415-209-6800
--	Toll-Free Phone: 1-877-727-6442
--	Fax: 415-798-5697
+- Website: https://support.radiantlogic.com
 
 ### Expert Mode
 

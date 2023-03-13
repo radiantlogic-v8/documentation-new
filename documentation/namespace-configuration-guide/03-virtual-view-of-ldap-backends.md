@@ -25,7 +25,7 @@ Figure 3.1: Example LDAP Backend
 
 If you configure the LDAP backend directly at the Root Naming Context, it is the only backend that can be defined for this specific naming context. If you want to comprise the tree from many different backends, choose the Virtual Tree option for the type of naming context instead of LDAP Backend.
 
->**Note – if you would like to build your virtual view using the Directory Tree Wizard, refer to the RadiantOne Identity Service Wizards Guide.**
+>[!note] If you would like to build your virtual view using the Directory Tree Wizard, refer to the RadiantOne Identity Service Wizards Guide.
 
 1.	First, data sources for each backend must be defined. From the Main Control Panel > Settings tab, expand below the Server Backend node and go to the LDAP Data Sources section. Click on the **Add** button to define LDAP or Active Directory data sources.
 
@@ -43,7 +43,7 @@ If you configure the LDAP backend directly at the Root Naming Context, it is the
 
 8.	Click **OK** when finished and a new naming context matching the mapped base DN parameter is created for RadiantOne. When LDAP clients access this naming context, the contents from the remote base DN branch will be returned.
 
->**Note – For every virtual view of an LDAP backend you create, a file containing the schema definition is created. The schema file is stored on the file system at <RLI_HOME>\vds_server\lod\<normalized root naming context where the view is mounted>.orx. An LDIF formatted file containing the schema is also saved in the lod folder (with the same name as the .orx file) and is used to retrieve object class and attribute definitions if the metadata is used to extend the RadiantOne LDAP schema. For details on extending the RadiantOne LDAP schema, see the RadiantOne System Administration Guide.**
+>[!note] For every virtual view of an LDAP backend you create, a file containing the schema definition is created. The schema file is stored on the file system at <RLI_HOME>\vds_server\lod\<normalized root naming context where the view is mounted>.orx. An LDIF formatted file containing the schema is also saved in the lod folder (with the same name as the .orx file) and is used to retrieve object class and attribute definitions if the metadata is used to extend the RadiantOne LDAP schema. For details on extending the RadiantOne LDAP schema, see the RadiantOne System Administration Guide.
 
 9.	If you need to modify the LDAP backend configuration, select the appropriate node below Root Naming Contexts and modify the settings on the right side. Click **Save** when finished.
 
@@ -57,11 +57,16 @@ LDAP Backends can also be configured at any label node in a virtual directory tr
 
 The parameters applicable for LDAP backends are as follows (only some of these parameters are available when you go through the Directory Tree Wizard. After you exit the Wizard, click on the LDAP Backend node below Root Naming Contexts and you have all these parameters available on the tabs on the right side):
 
+### Use Secure Data Connector
+
+If your directory service is running in a network that is not accessible from the RadiantOne SaaS environment, you can use a Secure Data Connector to access it. For details on Secure Data Connectors, see the Environment Operations Center Guide and the Secure Data Connector Deployment Guide.
+
+
 ### Host discovery
 
 Automatic host discovery can be used when connecting to underlying Active Directory servers using DNS lookups.
 
-><span style="color:red">**IMPORTANT NOTE – if you plan to use persistent cache with real-time/connector-based refresh for your virtual view of Active Directory, do not use host discovery since the native Active Directory capture connector requires the FQDN of the primary and failover servers defined in the data source, in combination with the replication vector to perform failover. If you do not plan on caching your virtual view and/or you plan on using a periodic refresh strategy, then using host discovery is fine.**
+>[!warning] if you plan to use persistent cache with real-time/connector-based refresh for your virtual view of Active Directory, do not use host discovery since the native Active Directory capture connector requires the FQDN of the primary and failover servers defined in the data source, in combination with the replication vector to perform failover. If you do not plan on caching your virtual view and/or you plan on using a periodic refresh strategy, then using host discovery is fine.**
 
 The LDAP services reached are the ones published in the DNS service record. If the LDAP service is not published, it cannot be reached (the service is defined by a host AND port in the SRV record). Some examples are shown below (0 means highest priority level)
 
@@ -72,7 +77,7 @@ _ldap._tcp.example.com.    SRV 0 100 636 ldap.example.net
 
 DNS lookups leverage the domain specified in the host parameter. When the specific domain is set in the host parameter, the BaseDN value can be omitted. To use this functionality, the host option should specify the domain name you are interested in and optionally a port (if you are looking for a specific service on a specific port). If you do specify a port, then RadiantOne tries to get the first LDAP service it finds that is listening on that specific port (no matter what order of that particular service in the srv record). Additionally, if you enter a port and there is no LDAP service available on that port, RadiantOne uses the first LDAP service returned from the srv record.
 
->**Note – If there are multiple LDAP services available in the SRV record, RadiantOne uses the first five as “main/primary” and “failover” servers. RadiantOne uses these to automatically failover if the primary LDAP is down. Do not manually specify failover servers in the data source.**
+>[!note] If there are multiple LDAP services available in the SRV record, RadiantOne uses the first five as “main/primary” and “failover” servers. RadiantOne uses these to automatically failover if the primary LDAP is down. Do not manually specify failover servers in the data source.
 
 Below are some examples of the syntax.
 
@@ -104,13 +109,13 @@ Server name or IP address. If you want to use host discovery, you can enter the 
 
 You can list replica servers in the Failover LDAP Servers section. The only properties to indicate are server/host, port and if the port is for SSL. The same bind DN and password listed in the primary server are used to connect to the failover servers. If a connection to a backend fails, RadiantOne tries to connect to the primary server again. After two failures, RadiantOne connects to the failover servers in the order they are listed.
 
->**Note – At DEBUG log level, the following comments are shown in the <RLI_HOME>/vds_server/logs/vds_server.log indicating that RadiantOne has exhausted connection attempts and is switching to a failover server.**
-
->**?? After several tries (2), new resource could not be acquired: Cannot assign requested address**
+>[!note] At DEBUG log level, the following comments are shown in the vds_server.log indicating that RadiantOne has exhausted connection attempts and is switching to a failover server. After several tries (2), new resource could not be acquired: Cannot assign requested address**
 
 >**Followed by:**
 
 >**Error connecting to: ldap://<primary_server>/, switching to failover backend: ldap://<failover_server>**
+
+You can view and download vds_server.log from the Server Control Panel > Log Viewer.
 
 ### Port
 
@@ -134,7 +139,7 @@ Figure 3.3: Pass Thru Authorization
  
 This functionality is best described with examples. The following three examples/diagrams detail the different configurations possible.
 
-><span style="color:red">**IMPORTANT NOTE – This feature (and the description below) is for AUTHORIZATION.**
+>[!warning] This feature (and the description below) is for AUTHORIZATION.
 
 ![An image showing ](Media/Image3.4.jpg)
  
@@ -346,11 +351,11 @@ This auto re-mapping capability is useful for two main purposes:
 
 -	Manage group membership from an external application – when new users are added to these groups, the “real” DN is entered properly in the backend LDAP directory even though the members can be returned with their re-mapped DNs in RadiantOne.
 
-><span style="color:red">**IMPORTANT NOTE – If RadiantOne is configured to re-map DN attributes, and you need to perform searches on these attributes, then your options for the search filter are as follows:
+>[!warning] If RadiantOne is configured to re-map DN attributes, and you need to perform searches on these attributes, then your options for the search filter are as follows:
 <br>Enter the whole attribute value in the search filter
 (i.e. uniqueMember=uid=Cbrady,ou=people,ou=SunOne,ou=RemoteDirectories,o=vds) 
 <br>Only use the wild card character (*) in the filter up to the point of the new suffix 
-(i.e. uniqueMember=uid=Cbrady,ou=*) or (uniqueMember=uid=*)**
+(i.e. uniqueMember=uid=Cbrady,ou=*) or (uniqueMember=uid=*)
 
 If your virtual view does not keep the existing backend hierarchy (for example if you don’t map direct to a backend LDAP), then you can use the Groups Migration Wizard to auto-translate the member DNs to the new virtual namespace. For details on the Groups Migration Wizard, please see the RadiantOne Identity Service Wizards Guide.
 
@@ -368,13 +373,13 @@ Attributes that have a checkmark in the Always Requested column are always reque
 
 The client only receives the attributes it requests (and is allowed to see via ACL’s) even though RadiantOne may actually request more attributes from the backend LDAP server.
 
-><span style="color:red">**IMPORTANT NOTE – this is NOT the approach you should take to prevent certain attributes from being returned to the client. Preventing attributes from being returned should be accomplished with ACL’s.**
+>[!warning] This is NOT the approach you should take to prevent certain attributes from being returned to the client. Preventing attributes from being returned should be accomplished with ACL’s.
 
 For example, if objectclass, cn, sAMAccountName, and employeeID are set as Always Requested attributes and a client requests the title attribute in the query to RadiantOne, it requests, title, objectclass, cn, sAMAccountName, and employeeID from the backend LDAP.
 
 As another example: If the client requests ALL attributes in its query to RadiantOne, it requests ALL attributes from the underlying LDAP in addition to any attributes set as Always Requested (again, because the use of (*) in an LDAP query does not return operational attributes – these must be specifically requested). 
 
-><span style="color:red">**IMPORTANT NOTE – if you plan on caching (either entry memory cache or persistent cache) the branch in the RadiantOne namespace that maps to an LDAP backend, you must list the operational attributes you want to be in the cache as “always requested”. Otherwise, the entry stored in cache would not have these attributes and clients accessing these entries may need them.**
+>[!warning] If you plan on caching the branch in the RadiantOne namespace that maps to an LDAP backend, you must list the operational attributes you want to be in the cache as “always requested”. Otherwise, the entry stored in cache would not have these attributes and clients accessing these entries may need them.
 
 If you make any changes, click **Save** in the upper right corner and then click **Yes** to apply the changes to the server.
 
@@ -394,7 +399,7 @@ Figure 3.16: Dedicated Connection Setting
 
 If the dedicated connection option is enabled, RadiantOne does not use the connection pool and the connection to the underlying LDAP directory is closed when the client disconnects from RadiantOne. If dedicated connections are not used, and a client disconnects from RadiantOne, the connection to the underlying LDAP server can still remain in the connection pool (until the configured timeout parameter is reached, which then removes the connection from the pool).
 
->**NOTE - Dedicated connections are best used in cases where there are only a few clients accessing RadiantOne but generate a lot of traffic. Clients must handle the opening and closing of connections efficiently (e.g. don’t leave open connections idle for long periods of time).**
+>[!note] Dedicated connections are best used in cases where there are only a few clients accessing RadiantOne but generate a lot of traffic. Clients must handle the opening and closing of connections efficiently (e.g. don’t leave open connections idle for long periods of time).
 
 ### Schema Enforcement Policy
 
@@ -410,7 +415,7 @@ To define a schema enforcement policy:
 
     -	Pass-through: All attributes in the operation are sent to the backend regardless of whether they match the backend schema. This is the default mode.
 
->**NOTE - Modifications may fail at the backend if this option is selected and the entry to be added violates the backend schema definition.**
+>[!note] Modifications may fail at the backend if this option is selected and the entry to be added violates the backend schema definition.
 
     - Filter: Attributes in the operation that do not match the backend schema are removed before being passed to the backend layer.
 
@@ -458,7 +463,7 @@ To define a pre-processing filter:
 
 3.	Enter a valid LDAP filter or select one from the drop-down list. 
 
-    >**Note - As mentioned, the value set here is added to the filter requested from RadiantOne client when it issues the query to the backend.**
+    >[!note] As mentioned, the value set here is added to the filter requested from RadiantOne client when it issues the query to the backend.
 
 4.	Click **Save** when finished and **Yes** to apply the changes to the server.
 
@@ -568,7 +573,7 @@ For specific details, please see Interception Scripts in the Concepts section of
 
 2.	On the right side, select the Proxy Advanced tab.
 
-3.	Enable the operations you want to customize by checking the box next to it. The Java script associated with this LDAP backend is displayed in the Source Location parameter. This is this script that you must customize and it is located at <RLI_HOME>/vds_server/custom/src/com/rli/scripts/intercept.
+3.	Enable the operations you want to customize by checking the box next to it. The Java script associated with this LDAP backend is displayed in the Source Location parameter. This is this script that you must customize.
 
 4.	Click **Save** in the upper right corner and then **Yes** to apply the changes to the server.
 
@@ -726,7 +731,7 @@ If you enable this option, RadiantOne does not perform joins or computations if 
 
 Use caution when enabling this option if you have interception scripts defined on these objects, or access controls based on filters are being used (both of which may require other attributes returned from secondary sources or computations regardless of whether the client requested or searched for them).
 
-><span style="color:red">**IMPORTANT NOTE - Do not enable this option if a memory entry cache is used (as the whole virtual entry is needed for the cache).**
+>[!warning] Do not enable this option if a memory entry cache is used (as the whole virtual entry is needed for the cache).
 
 **Use Client Sizelimit Value to Query Backend**
 

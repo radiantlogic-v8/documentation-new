@@ -31,8 +31,6 @@ Figure 4.2: Sample Database Backend
 
 If you configure the database backend directly at the Root Naming Context, it is the only backend that can be defined for this specific naming context. If you want to comprise the tree from many different backends, choose the Virtual Tree option for the type of naming context instead of Database Backend.
 
->**Note – if you would like to build your virtual view using the Directory Tree Wizard, refer to the RadiantOne Identity Service Wizards Guide.**
-
 1.	First, data sources for each backend must be defined. From the Main Control Panel > Settings tab, expand below the Server Backend node and go to the DB Data Sources section. Click **Add** to define database data sources.
 
 2.	On the Main Control Panel -> Directory Namespace Tab click ![An image showing ](Media/plus-sign.jpg).
@@ -62,6 +60,11 @@ For details on the available parameters for [database backends](#database-backen
 ## Database Backend Parameters and Settings
 
 The parameters applicable for a database backend are as follows (only some of these parameters are available when you go through the wizard. After you exit the Wizard, click on the Database Backend node below Root Naming Contexts. All these parameters are available on the tabs on the right side):
+
+### Use Secure Data Connector
+
+If your directory service is running in a network that is not accessible from the RadiantOne SaaS environment, you can use a Secure Data Connector to access it. For details on Secure Data Connectors, see the Environment Operations Center Guide and the Secure Data Connector Deployment Guide.
+
 
 ### Database Type
 You set the data source type when you create the data source. This type list contains default values. If the value is green it means the driver file(s) is properly loaded in RadiantOne. If the value is pink, it means the basic driver name and syntax are provided, but the proper driver files are not loaded in RadiantOne. You must copy the needed driver files into <RLI_HOME>\lib\jdbc. 
@@ -141,7 +144,7 @@ If your database is case sensitive and you know the values are stored in upperca
 
 If you want to condition the virtual view of your database to only return a set of entries that match a certain criterion, you can enter a SQL Filter on the Advanced Settings tab. An example of a filter would be ENAME=’s%’, which would only return entries that have an ENAME value that starts with “s” (the % is a wild card character).
 
->**NOTE - You must enter a valid SQL filter and use the actual database attribute names (as opposed to using any virtual names you have configured through mapping). The SQL syntax you use in your filter must be compatible with the database brand/version you are accessing on the backend.**
+>[!note] You must enter a valid SQL filter and use the actual database attribute names (as opposed to using any virtual names you have configured through mapping). The SQL syntax you use in your filter must be compatible with the database brand/version you are accessing on the backend.
 
 To get assistance on defining the SQL filter:
 1.	Click **Assist**.
@@ -297,7 +300,7 @@ For specific details, please see Interception Scripts in the Concepts section of
 
 2.	On the right side, select the Advanced Settings Tab.
 
-3.	Locate the Interception section and enable the operations you want to customize by checking the box next to it. The Java script associated with this Database object is displayed in the Source Location parameter. This is this script that you will customize and it is located in <RLI_HOME>\vds_server\custom\src\com\rli\scripts\intercept.
+3.	Locate the Interception section and enable the operations you want to customize by checking the box next to it. The Java script associated with this Database object is displayed in the Source Location parameter. This is the script that you will customize.
 
 4.	Click **Save** and then **Yes** to apply the changes to the server.
 
@@ -330,7 +333,7 @@ Harold Carter| hcarter@rli.com # harold@yahoo.com | HR Mgr # HR Associate
 
 1.	Stop the RadiantOne service.
 
-2.	Edit the /radiantone/v1/cluster/config/vds_server.conf node either from the Zookeeper tab in the Main Control Panel or from ZooInspector and locate the “multiValuedAttrs” parameter. The value of this parameter should be the database attribute name (or mapped/virtual name if one is being used). For example, using the same database table shown above, the parameter would be
+2.	Edit the `/radiantone/<version>/<clustername>/config/vds_server.conf` node either from the Zookeeper tab in the Main Control Panel or from ZooInspector and locate the “multiValuedAttrs” parameter. The value of this parameter should be the database attribute name (or mapped/virtual name if one is being used). For example, using the same database table shown above, the parameter would be
 “multiValuedAttrs” : “Title,Mail”
 
 As shown above, if there is more than one attribute, separate them with a comma.
@@ -361,7 +364,7 @@ Since some databases are case sensitive, RadiantOne transforms primary key attri
 
 The Base Search parameter allows you to remove UPPER (that is generated by default) for base searches. If your database is not case sensitive, then the UPPER can be removed. If your database is case sensitive, then you must make sure that the attribute that is indexed (and is used in the base parameter) uses the UPPER case. Otherwise, performance of the virtual view (during a base search) is unpredictable.
 
-><span style="color:red">**IMPORTANT NOTE – using the UPPER can slow down performance because the indexes in the database may not be used. IF your database has an index on an attribute and it stores the value in upper case, then you have the option of removing the UPPER generated on the left side of the parameter (it is the UPPER on the left that is most costly in terms of performance).**
+>[!warning] Using the UPPER can slow down performance because the indexes in the database may not be used. IF your database has an index on an attribute and it stores the value in upper case, then you have the option of removing the UPPER generated on the left side of the parameter (it is the UPPER on the left that is most costly in terms of performance).
 
 Below is an example of the Base Search filter that is generated for a database. If the database is case sensitive and the CN attribute is indexed (and the index stores the value in upper case), then the UPPER generated on the left side of the “=” can be removed and performance is improved (also remove the leading and ending parentheses).
 
@@ -387,7 +390,7 @@ Requesting BLOB attributes can significantly decrease performance. When this opt
 
 Use caution when enabling this parameter if an interception script is defined (which may need such attributes even if they are not requested by the client).
 
-><span style="color:red">**IMPORTANT NOTE - Do not enable this option if a memory entry cache is used (as the whole virtual entry is needed, including the BLOBs).**
+>[!warning] Do not enable this option if a memory entry cache is used (as the whole virtual entry is needed, including the BLOBs).
 
 **Process Joins and Computed Attributes Only When Necessary**
 
@@ -397,4 +400,4 @@ If you enable this option, RadiantOne does not perform joins or computations if 
 
 Use caution when enabling this option if you have interception scripts defined on these objects, or access controls based on filters are being used (both of which may require other attributes returned from secondary sources or computations regardless of whether or not the client requested or searched for them). 
 
-●	IMPORTANT NOTE - Do not enable this option if a memory entry cache is used (as the whole virtual entry is needed for the cache). 
+>[!warning] Do not enable this option if a memory entry cache is used (as the whole virtual entry is needed for the cache). 

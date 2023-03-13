@@ -9,5 +9,4 @@ description: Namespace Configuration Guide
 - [Chapter 4: Virtual Views of Database (JDBC/ODBC-accessible) Backends](04-virtual-views-of-database-backends.md)
 - [Chapter 5: RadiantOne Universal Directory](05-radiantone-universal-directory.md)
 - [Chapter 6: Virtual Views based on an Aggregation of Multiple Types of Backends](06-virtual-views-based-on-aggregation.md)
-- [Chapter 7: Virtual Views for DSML or SPML Backends](07-virtual-vews-for-dsml-or-spml-backends.md)
-- [Chapter 8: Virtual Views of Cloud Directories and Services](08-virtual-views-of-cloud-directories-or-services.md)
+- [Chapter 7: Virtual Views of Cloud Directories and Services](08-virtual-views-of-cloud-directories-or-services.md)

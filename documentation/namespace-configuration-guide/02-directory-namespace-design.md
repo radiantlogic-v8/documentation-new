@@ -7,15 +7,11 @@ description: Namespace Configuration Guide
 
 The virtual namespace is managed from the Main Control Panel > Directory Namespace tab. 
 
->**Note – the Directory Namespace tab is not available on follower-only cluster nodes.**
-
 The RadiantOne namespace can be comprised of many different branches, each of which can come from a different configuration and be combined below a common naming context or have their own. The following are the options that can comprise the virtual Directory Information Tree (DIT):
 
 ▪	[Views from JDBC-accessible Backends](04-virtual-views-of-database-backends)
 
 ▪	[Views from LDAP Backends](03-virtual-view-of-ldap-backends)
-
-▪	[Views from DSML or SPML Web Service Backends](07-virtual-vews-for-dsml-or-spml-backends)
 
 ▪	[RadiantOne Universal Directory (local storage)](05-radiantone-universal-directory)
 
@@ -25,17 +21,11 @@ RadiantOne includes some sample root naming contexts with the install. However, 
 
 From the Main Control Panel > Directory Namespace Tab, the Root Naming Contexts node displays all naming contexts configured in the directory. You can have as many naming contexts as you want. The naming contexts can be based on virtual trees (which aggregate multiple types of backends), local RadiantOne Universal directory stores, LDAP backends, database backends, web service backends, cloud services backends or any combination of the above. 
 
-><span style="color:red">**IMPORTANT NOTE – You have the ability to hide root naming contexts so that when querying the rootDSE (by sending a query to RadiantOne using base dn=" "), some naming contexts are not displayed. This can be useful to optimize products like Tivoli Access Manager (TAM which is now known as iSAM) which tries to search for users in all published naming contexts. This is also useful when some naming context’s entries are only used as part of a join and do not need to be seen in the “global” tree. To hide naming contexts, edit the <RLI_HOME>\<instance_name>\conf\rootdse.ldif file and prefix the naming contexts you want to hide with “hiddenContexts” like shown below:**
-
-><span style="color:red">**# hide some naming contexts 
-<br>hiddenContexts: cn=cacherefreshlog
-<br>hiddenContexts: dv=syncobjectcatalog**
-
-><span style="color:red">**After restarting the RadiantOne service, the hidden root naming contexts do not appear in the list of available naming contexts when a client queries the rootDSE. This affects the display of the root naming contexts in the rootDSE only, not the access to the actual branches.**
-
 ## Creating Naming Contexts
 
-Root naming contexts can be created from command line using the VDSConfig Utility or from the Main Control Panel -> Directory Namespace tab. For details on creating root naming contexts from command line, please see the RadiantOne Command Line Configuration Guide. To configure Root Naming Contexts from the Main Control Panel, click on the ![An image showing ](Media/plus-sign.jpg) button on the Directory Namespace tab. Follow the steps outlined in Chapters 3-8 applicable to the type of backend you want to mount below the naming context.
+Root naming contexts can be created from the Main Control Panel > Directory Namespace tab.
+
+To configure Root Naming Contexts from the Main Control Panel, click on the ![An image showing ](Media/plus-sign.jpg) button on the Directory Namespace tab. Follow the steps outlined in Chapters 3-8 applicable to the type of backend you want to mount below the naming context.
 
 ### Icon Descriptions
 
@@ -69,8 +59,6 @@ Icon | Description
 
 To delete a naming context, you must first deactivate it (and delete any child naming contexts first if there are any defined).
 
-><span style="color:red">**IMPORTANT NOTE – When deleting [LDAP proxy naming contexts](03-virtual-view-of-ldap-backends), the underlying `<RLI_HOME>/vds_server/lod/<suffixname>.orx` and `<RLI_HOME>/vds_server/dvx/<suffixname>.dvx` are removed. For all other types of virtual views, the underlying .orx and .dvx files remain if the naming context is deleted. This is because these files can be used or referenced from other virtual views. If you want to manually delete specific .orx and .dvx files, do so from the Main Control Panel > Context Builder tab. For details, see the RadiantOne Context Builder Guide.**
-
 1.	From the Main Control Panel > Directory Namespace Tab, select the naming context you want to delete below the Root Naming Contexts node.
 
 2.	On the right side, uncheck the Active option and click **Save**.
@@ -87,7 +75,7 @@ To delete a naming context, you must first deactivate it (and delete any child n
 
 ## Importing LDIF Files
 
-Make sure the LDIF file is accessible from your leader node. To import entries from an LDIF file, click ![An image showing ](Media/import-button.jpg). Navigate to the location of the LDIF file (either a local file on the host machine where RadiantOne is installed or a file on the server in the <RLI_HOME> file system). Select the option to Add or Override Entries (this option adds new entries and updates entries that already exist) or Add Entries (This option adds entries only and does not try to update the entry if it already exists). Click **OK** to start the import task.
+Make sure the LDIF file is accessible on your local machine or has been uploaded to the RadiantOne service.Use the Main Control Panel > Settings > Configuration > File Manager to upload files. To import entries from an LDIF file, click ![An image showing ](Media/import-button.jpg). Navigate to the location of the LDIF file. Select the option to Add or Override Entries (this option adds new entries and updates entries that already exist) or Add Entries (This option adds entries only and does not try to update the entry if it already exists). Click **OK** to start the import task.
 
 ![An image showing ](Media/Image2.1.jpg)
 
@@ -97,7 +85,7 @@ Figure 2.1: Import LDIF
 
 Virtual entries are comprised of attributes from the primary backend, secondary objects (from joins, if relevant), and computed attributes (if relevant). All attributes that comprise the virtual entries can be seen on the Objects tab, in the Virtual Attribute table. From the Main Control Panel -> Directory Namespace Tab, select the primary backend below Root Naming Contexts and on the right side, select the Objects tab.
 
->**Note - If the primary backend is an LDAP directory and no primary object has been added, click **Add** to select one.**
+>[!note] If the primary backend is an LDAP directory and no primary object has been added, click **Add** to select one.
 
 The Virtual Attribute table displays all attributes from the primary objects (noted with a blue square in the origin column), attributes from secondary objects (noted with a green square in the origin column) and computed attributes (noted with an orange square in the origin column).
 

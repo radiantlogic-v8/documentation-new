@@ -5,9 +5,7 @@ description: Namespace Configuration Guide
 
 # Chapter 6: Virtual Views based on an Aggregation of Multiple Types of Backends
 
-If your goal is to create a virtual view which aggregates multiple types of backends (combination of directories, database, web services…etc.), you can either use the Directory Tree Wizard, or configure it manually.
-
->**Note – if you would like to build your virtual view using the Directory Tree Wizard, refer to the RadiantOne Identity Service Wizards Guide.**
+If your goal is to create a virtual view which aggregates multiple types of backends (combination of directories, database, web services…etc.), use the Virtual Tree type of option when creating the Root Naming Context.
 
 ## Configuration
 
@@ -54,8 +52,6 @@ For details on the different parameters for each type of backend, please see the
 -	[LDAP Backend Parameters and Settings](03-virtual-view-of-ldap-backends#ldap-backend-parameters-and-settings)
 
 -	[Database Backend Parameters and Settings](04-virtual-views-of-database-backends#database-backend-parameters-and-settings)
-
--	[Web Service Parameters and Settings](07-virtual-vews-for-dsml-or-spml-backends#web-service-backend-parameters-and-settings)
 
 -	[Universal Directory Parameters and Settings](05-radiantone-universal-directory#universal-directory-storage-parameters-and-settings)
 
