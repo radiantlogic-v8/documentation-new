@@ -278,8 +278,6 @@ To define access controls:
 
     To assign self, click **ALLOW SELF**.
 
-    To assign specific IP addresses, click **ALLOW IP**.
-
     To assign all authenticated users, click **ALLOW AUTHENTICATED**.
 
     To assign permissions associated with the parent, click **ALLOW PARENT**.
