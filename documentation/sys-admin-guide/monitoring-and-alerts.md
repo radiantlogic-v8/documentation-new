@@ -21,8 +21,6 @@ File alerts can be enabled for custom alerts also. These settings are in the Mon
 
 File alerts are logged in a CSV formatted file located at <RLI_HOME>/logs/alerts.log.
 
->[!note] The Advanced File Alert settings are accessible only in [Expert Mode](introduction#expert-mode). 
-
 In the File Alerts Settings section, indicate a rollover file size and how many files to keep in the archive.
 
 ![File Alert Settings](Media/Image3.145.jpg)
