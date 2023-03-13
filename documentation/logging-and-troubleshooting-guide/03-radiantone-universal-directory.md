@@ -1,8 +1,10 @@
 # Chapter 3: RadiantOne Universal Directory and Federated Identity Service
 
-The main log file for troubleshooting the RadiantOne service is <RLI_HOME>/<instance_name>/logs/vds_server.log. For clients accessing the RadiantOne service via the SQL interface (VRS), the log file is <RLI_HOME>/<instance_name>/logs/vrs/vrs_server.log.
+The main log file for troubleshooting the RadiantOne service is vds_server.log.
 
 This chapter describes the RadiantOne Universal Directory and Federated Identity Service logs.
+
+<!-->
 
 ## Windows Service Log
 
@@ -14,15 +16,11 @@ Information about stopping the service can be found in:
 
 <RLI_HOME>/logs/rli_fid_server_service_stop.log
 
+-->
+
 ## RadiantOne Server Log
 
 Server logging is configured from the Main Control Panel > Settings tab > Logs > Logs Settings section. Select the VDS – Server option from the Log Settings to Configure drop-down menu.
-
-More fine-grained configuration settings related to the RadiantOne service can be managed from the Main Control Panel > ZooKeeper tab (requires [Expert Mode](01-overview#expert-mode)). Navigate to radiantone/v1/cluster/config/logging/log4j2-vds.json. These advanced settings should only be changed if advised by Radiant Logic.
-
-![An image showing ](Media/Image3.1.jpg)
- 
-Figure 3.1: Log4J Settings for the RadiantOne Service
 
 ### Log Contents
 
@@ -50,7 +48,7 @@ The vds_server.log records:
 
 Select a log level from the drop-down list in the Log Settings section. For details on available log levels, see [Chapter 1](01-overview).
 
->[!warning] to troubleshoot/trace ACI evaluation decisions, RadiantOne server log level must be set to DEBUG. When DEBUG level is set, the evaluation rules can be seen in: <RLI_HOME>/vds_server/logs/vds_server.log. An example of ACI evaluation is shown below:
+>[!warning] to troubleshoot/trace ACI evaluation decisions, RadiantOne server log level must be set to DEBUG. When DEBUG level is set, the evaluation rules can be seen in vds_server.log. An example of ACI evaluation is shown below:
 2021-05-07T15:40:44,920 DEBUG com.rli.slapd.aci.generic.AciHandler:436 - 
   [ACI EVAL] operation: 'SEARCH REQUEST'
   [ACI EVAL]  targetDN: 'ou=Accounting,o=companydirectory'
@@ -67,19 +65,7 @@ By default, the vds_server.log file rolls over once it reaches 100MB in size. Ch
 
 ### Log Archiving
 
-By default, 20 log files are kept (oldest ones are deleted to maintain a maximum of 20). You can change this value in the How Many Files to Keep in Archive setting. The archived files are named vds_server-<yyyy-MM-dd_HH-mm-ss>.log.zip and located in <RLI_HOME>/<instance_name>/logs. The default instance name is vds_server, so the path would be: <RLI_HOME>/vds_server/logs/.
-
-The condition for deleting an archive is based on the total number of archives (configured in the How Many Files to Keep in Archive setting), or the age of the archive (configured in the server.log.file.maxTime property in the Advanced section), whichever comes first.
-
-If you want to base archive deletion on the total number of archives, configure the server.log.file.maxTime property to 1000000d (1 million days), so that it is never triggered and indicate the maximum number of archive files to keep in the How Many Files to Keep in Archive property. If you want to base archive deletion on the age of the archive, configure the How Many Files to Keep in Archive to something like 1000000 (1 million files) so it is never triggered, and define the max age in number of days (e.g. 30d for 30 days) for the server.log.file.maxTime property in the Advanced section (requires [Expert Mode](01-overview#expert-mode)).
-
-Other Advanced properties (requires Expert Mode) that can be used to further condition the archive deletion are:
-
--	server.log.file.archive.scan.folder - the base folder where to find the logs to delete
-
--	server.log.file.archive.scan.depth - the depth to search for log files
-
--	server.log.file.archive.scan.glob -  the regex (glob style) to match to select which files to delete
+By default, 20 log files are kept (oldest ones are deleted to maintain a maximum of 20). You can change this value in the How Many Files to Keep in Archive setting. The archived files are named vds_server-<yyyy-MM-dd_HH-mm-ss>.log.zip and can be downloaded from Server Control Panel > Log Viewer. <!-- The default instance name is vds_server, so the path would be: <RLI_HOME>/vds_server/logs/.
 
 ## RadiantOne Access Log 
 
@@ -87,13 +73,7 @@ The vds_server_access.log contains less information than vds_server.log and is u
 
 ### Log Output Format
 
-The output format for the access log is Text by default. The other output option is CSV. If you want the log content written to a database, you must enable the CSV output option and use the [Log2DB utility](#configuring-the-database-logging-utility-log2db).
-
->[!note] to turn off access logging, uncheck both the text and csv output options.
-
-If you would like column name headers (descriptions) in the CSV file, check the “Add Column Name Headers to CSV Logging” option.
-
-If you change any output format settings, remember to click the Save button. The RadiantOne service does not need to be restarted unless you check the option to Add Column Name Headers to CSV Logging. If you enable/disable this option, you must restart the RadiantOne service. Also, the headers are only added/removed on a new log file.
+The output formats for the access log are text and CSV by default. The other output option is CSV. <!--If you want the log content written to a database, you must enable the CSV output option and use the [Log2DB utility](#configuring-the-database-logging-utility-log2db).
 
 ### Bind DN Information in vds_server_access.log
 
@@ -129,15 +109,23 @@ The following example entry shows bind DN information for an unsuccessful bind a
 2022-05-09 15:02:40,446 |localhost ~220509150108|<== conn=5 op=3 MsgID=3 BindResponse {resultCode=49, matchedDN=null, errorMessage=Reason: 52e - Invalid credentials} ### bindDN="cn=Marketing User,dc=hdap" ### etime=8 ###
 ```
 
+### Log Location
+
+The vds_server_access.log and vds_server_access.csv can be viewed and downloaded from Server Control Panel > Log Viewer.
+
 ### Rollover Size
 
 The vds_server_access.log rolls over when it reaches 100MB in size. Change this value if needed.
+
+### Log Archiving
+
+By default, once the vds_server_access log rolls over, it is kept for 30 days. Change this value in the Rollover: How long to keep the logs property if needed.
 
 ### Log Contents
 
 This log file acts as an audit log (and is used to generate reports from) and records the following information:
 
-- 	Who binds to RadiantOne
+- Who binds to RadiantOne
 
 -	Open/closed connections by LDAP clients to the RadiantOne service
 
@@ -151,7 +139,7 @@ More information can be found in the Log Details section below.
 
 Details regarding the CSV column names and descriptions are shown below.
 
-Table 1: Access Log CSV/Database Column Names and Description
+Table 1: Access Log CSV Column Names and Description
 
 ACCESS LOG COLUMNS	| DESCRIPTION
 -|-	
@@ -223,6 +211,7 @@ Queries to certain internal naming contexts can happen frequently resulting in a
 -	cn=clustermonitor – various statistics and availability of cluster nodes are retrieved by querying cn=clustermonitor.
 	cn=replicationjournal – inter-cluster replication queries the cn=replicationjournal.
 
+<!--
 ### Ignore Logging Related to Monitoring
 
 Certain queries used to monitor RadiantOne can happen frequently, resulting in a lot of “noise” in the access log. Logging of monitoring requests is disabled by default. To enable logging of monitoring requests, navigate to <RLI_HOME>/config/advanced and edit features.properties. Set vds.data.collection.logging=true. Restart the RadiantOne service. If RadiantOne is deployed in a cluster, restart the service on all nodes.
@@ -231,7 +220,7 @@ Certain queries used to monitor RadiantOne can happen frequently, resulting in a
 
 ### Logging to a Database
 
-RadiantOne logs all access to data in the vds_server_access.log (if the server [log level](#log-level) is set to a minimum of Info) by default. All this information can also be logged into a database which allows for third-party reporting tools to easily create meaningful charts and graphs for compliance analysis. Logging to a database requires the [CSV log format](#log-output-format) option enabled and running the Log2DB utility. Configuring and starting the Log2DB utility are described in the section below.
+RadiantOne logs all access to data in the vds_server_access.log (if the server [log level](#log-level) is set to a minimum of Info) by default. <!--All this information can also be logged into a database which allows for third-party reporting tools to easily create meaningful charts and graphs for compliance analysis. Logging to a database requires the [CSV log format](#log-output-format) option enabled and running the Log2DB utility. Configuring and starting the Log2DB utility are described in the section below.
 
 #### Configuring the Database Logging Utility (Log2DB)
 
@@ -241,7 +230,7 @@ The database that houses the table which the Log2DB utility writes to may be in 
 
 >[!warning] if you plan on using the RadiantOne default report generation, then the log2db database must be Microsoft SQL Server, Oracle, Derby or PostgreSQL. For details on default reports see the RadiantOne Monitoring and Reporting Guide.
 
-The default settings leverage a Derby database that is included with RadiantOne. These settings are described below and are located on the Main Control Panel -> Settings Tab -> Reporting section -> Log2db Settings sub-section. The default configuration file for logging to a database is: <RLI_HOME>/config/log2db/AccessLog2DBconfig.properties.
+The default settings leverage a Derby database that is included with RadiantOne. These settings are described below and are located on the Main Control Panel > Settings Tab > Reporting section > Log2db Settings sub-section. The default configuration file for logging to a database is: <RLI_HOME>/config/log2db/AccessLog2DBconfig.properties.
 
 -	Database Datasource – data source defined in Main Control Panel -> Settings tab -> Server Backend section -> DB Data Sources representing the database that the Log2DB utility writes to.
 
@@ -258,6 +247,8 @@ If the table that is going to store the access log content does not exist, use t
 To create the indexes for the log table, click the CREATE INDEX button.
 
 To delete the contents of the log table, click the EMPTY TABLE button.
+
+<!--
 
 #### Starting the Database Logging Utility 
 
@@ -314,14 +305,17 @@ chmod +x /etc/init.d/runAccessLog2DB.sh
 /sbin/chkconfig –add runAccessLog2DB.sh
 ```
 
+--> 
+
 ## JVM Garbage Collection and Memory Heap
 
-Logging for the garbage collection and memory for the RadiantOne JVM is enabled by default. If java.lang.OutOfMemoryError appears in the vds_server.log file, logs for the JVM can be found in <RLI_HOME>/vds_server/logs. Example files:
+Logging for the garbage collection and memory for the RadiantOne JVM is enabled by default. If java.lang.OutOfMemoryError appears in the vds_server.log file, logs for the JVM can be viewed and downloaded from the Server Control Panel > Log Viewer. Example files:
 
 ```
 gc2018-07-12_12-09-02.log.0.current
 java_pic3577.hprof
 ```
+<!-->
 
 ## VRS Logs
 
@@ -390,10 +384,11 @@ Other Advanced properties (requires [Expert Mode](01-overview#expert-mode)) that
 
 -	vrs.access.log.file.archive.scan.glob -  the regex (glob style) to match to select which files to delete
 
-## RadiantOne Persistent Cache with Real-time Refresh
+-->
 
-The logs associated with persistent cache with real-time refresh are described in this section.
-The high-level diagram below depicts the components involved.
+## RadiantOne FID Persistent Cache with Real-time Refresh
+
+The logs associated with persistent cache with real-time refresh are described in this section. The high-level diagram below depicts the components involved.
 
 ![An image showing ](Media/Image3.3.jpg)
 
@@ -409,9 +404,9 @@ Figure 3.3: High-level Persistent Cache with Real-time Refresh Diagram
 
 ### Agent
 
-The agent logs are located at: <RLI_HOME>\logs\sync_agents\agent_fid_sd_agent_real_time.log
+The agent logs to agent_fid_sd_agent_real_time.log. This log can be viewed and downloaded from Server Control Panel > Log Viewer.
 
-The log level is controlled by the setting in Main Control Panel -> Settings tab -> Logs -> Log Settings. Select the Sync Agents – Agents option.
+The agent logs level is controlled by the setting in Main Control Panel -> Settings tab -> Logs -> Log Settings. Select the Sync Agents – Agents option.
 
 ![An image showing ](Media/Image3.4.jpg)
 
@@ -419,7 +414,7 @@ Figure 3.4: Sync Agents Log Settings
 
 ### Connectors
 
-The capture connector logs are located at: <RLI_HOME>\logs\sync_agents\<naming_context>_<baseDN>_<data_source>\connector.log
+The capture connector logs use the following syntax: `<naming_context>_<baseDN>_<data_source>\connector.log`. These logs can be viewed and downloaded from Server Control Panel > Log Viewer. They can also be viewed from the Main Control Panel > PCache Monitoring tab. 
 
 The log level is defined per connector with the setting in Main Control Panel -> PCache Monitoring tab. Select the connector on the topology and the configuration window displays. In the Configuration section, select the level from the Log Level drop-down list.
 
@@ -429,11 +424,11 @@ Figure 3.5: Connector Log Level
 
 ### Sync Engine
 
-The sync engine log is located at <RLI_HOME>\vds_server\logs\sync_engine\sync_engine.log on the RadiantOne node where the sync engine processor that is assigned for the pipeline is running. If RadiantOne is deployed in a cluster, a sync engine processor can be running on one or more nodes and the pipeline processing is distributed across them. Check for the <RLI_HOME>\vds_server\logs\sync_engine\sync_engine.log on each cluster node to find the correct log file. Or you can use the Global Sync tab to download the corresponding sync_engine.log file by selecting the topology and clicking Configure next to the pipeline. Select the Apply component and in the Log Viewer section, click the Download button.
+The sync engine log sync_engine.log on the RadiantOne node where the sync engine processor that is assigned for the pipeline is running. If RadiantOne is deployed in a cluster, a sync engine processor can be running on one or more nodes and the pipeline processing is distributed across them. The sync_engine.log can be viewed and downloaded from the Server Control Panel > Log Viewer.
 
 ## HDAP Trigger
 
-When virtual views are created on RadiantOne Universal Directory (HDAP) stores or persistent cache, and those views are configured for persistent cache, the change capture connector type defaults to HDAP Trigger. This is an internal mechanism that automatically refreshes persistent caches that are built on top of other persistent caches or RadiantOne Universal Directory (HDAP) stores. When the RadiantOne VDS Sync Engine is configured for DEBUG log level, the HDAP trigger activity is logged into: <RLI_HOME>/vds_server/logs/sync_engine/sync_engine.log
+When virtual views are created on RadiantOne Universal Directory (HDAP) stores or persistent cache, and those views are configured for persistent cache, the change capture connector type defaults to HDAP Trigger. This is an internal mechanism that automatically refreshes persistent caches that are built on top of other persistent caches or RadiantOne Universal Directory (HDAP) stores. When the RadiantOne VDS Sync Engine is configured for DEBUG log level, the HDAP trigger activity is logged into the sync_engine.log
 
 You can set the log level from Main Control Panel > Settings > Logs > Log Settings as shown below.
 
@@ -441,21 +436,17 @@ You can set the log level from Main Control Panel > Settings > Logs > Log Settin
 
 Figure 3.6: VDS Sync Engine Log Level
 
+-->
+
 ## RadiantOne Persistent Cache with Periodic Refresh
 
 ### Snapshot Files
 
-Periodic persistent cache refresh leverages a snapshot mechanism to detect changes in the backend data source(s). The “snapshot” is an LDIF formatted file that contains the entries from the backend. During a refresh cycle, a new LDIF file is generated from the backend and compared to the last snapshot to detect changes. The current snapshot file is located in: <RLI_HOME>/vds_server/ldif/import/<naming>_FULL_periodic.ldif
+Periodic persistent cache refresh leverages a snapshot mechanism to detect changes in the backend data source(s). The “snapshot” is an LDIF formatted file that contains the entries from the backend. During a refresh cycle, a new LDIF file is generated from the backend and compared to the last snapshot to detect changes. 
 
 #### Log
 
 The log associated with persistent cache with periodic refresh is configured from the Main Control Panel > Settings tab > Logs > Logs Settings section. Select the VDS – Persistent Cache Periodic Refresh option from the Log Settings to Configure drop-down menu.
-
-More fine-grained configuration settings related to RadiantOne can be managed from the Main Control Panel -> ZooKeeper tab (requires [Expert Mode](01-overview)). Navigate to radiantone/<version>/<cluster_name>/config/logging/log4j2-vds.json. These advanced settings should only be changed if advised by Radiant Logic.
-
-![An image showing ](Media/Image3.7.jpg)
-
-Figure 3.7: Log4J Settings Applicable to Persistent Cache with Periodic Refresh
 
 #### Log Contents
 
@@ -470,6 +461,10 @@ The periodiccache.log records persistent cache, periodic refresh activity. Below
 [2016-03-18 14:58:01,590] [Storage Periodic Refresh - dc=pxy] Finished: total compared 10015 entries [inserted=4, updated=10, deleted=0]
 ```
 
+#### Log Location
+
+Periodiccache.log can be viewed and downloaded from Server Control Panel > Log Viewer.
+
 #### Log Level
 
 Only log level INFO is applicable. Therefore, this cannot be changed.
@@ -480,19 +475,7 @@ By default, the periodiccache.log file rolls over once it reaches 10MB in size. 
 
 #### Log Archiving
 
-By default, 10 files are kept in the archive. Change this value in the How Many Files to Keep in Archive setting. The archived files are named periodiccache-<N>.log and located in <RLI_HOME>/<instance_name>/logs. The default instance name is vds_server, so the path would be: <RLI_HOME>/vds_server/logs/.
-
-The condition for deleting an archive is based on the total number of archives (configured in the How Many Files to Keep in Archive setting), or the age of the archive (configured in the periodiccache.log.file.maxTime property in the Advanced section), whichever comes first.
-
-If you want to base archive deletion on the total number of archives, configure the periodiccache.log.file.maxTime property to 1000000d (1 million days), so that it is never triggered and indicate the maximum number of archive files to keep in the How Many Files to Keep in Archive property. If you want to base archive deletion on the age of the archive, configure the How Many Files to Keep in Archive to something like 1000000 (1 million files) so it is never triggered, and define the max age in number of days (e.g. 30d for 30 days) for the periodiccache.log.file.maxTime property in the Advanced section (requires [Expert Mode](01-overview)).
-
-Other Advanced properties (requires [Expert Mode](01-overview)) that can be used to further condition the archive deletion are:
-
--	periodiccache.log.file.archive.scan.folder - the base folder where to find the logs to delete
-
--	periodiccache.log.file.archive.scan.depth - the depth to search for log files
-
--	periodiccache.log.file.archive.scan.glob -  the regex (glob style) to match to select which files to delete
+By default, 10 files are kept in the archive. Change this value in the How Many Files to Keep in Archive setting. The archived files are named `periodiccache-<N>.log` and can be viewed and downloaded form Server Control Panel > Log Viewer.
 
 ## ADAP Access Log
 
@@ -510,6 +493,10 @@ The ADAP access log records the following.
 -	Operations including Post, Put, RDN Patch, and deletes
 
 -	Detailed error messages
+
+#### Log Location
+
+The adap_access.log file can be viewed and downloaded from Server Control Panel > Log Viewer
 
 ### Log Level 
 
@@ -537,17 +524,7 @@ By default, the adap_access.log file rolls over once it reaches 100MB in size. C
 
 ### Log Archiving
 
-By default, 10 files are kept in the archive. Change this value in the How Many Files to Keep in Archive setting. The archived files are named adap_access-<N>.log and located in <RLI_HOME>/<instance_name>/logs. The default instance name is vds_server, so the path would be: <RLI_HOME>/vds_server/logs/. 
-
-The condition for deleting an archive is based on the total number of archives (configured in the How Many Files to Keep in Archive setting), or the age of the archive (configured in the adap.access.log.file.maxTime property in the Advanced section), whichever comes first.
-
-If you want to base archive deletion on the total number of archives, configure the adap.access.log.file.maxTime property to 1000000d (1 million days), so that it is never triggered and indicate the maximum number of archive files to keep in the How Many Files to Keep in Archive property. If you want to base archive deletion on the age of the archive, configure the How Many Files to Keep in Archive to something like 1000000 (1 million files) so it is never triggered, and define the max age in number of days (e.g. 30d for 30 days) for the adap.access.log.file.maxTime property in the Advanced section (requires [Expert Mode](01-overview#expert-mode)).
-
-Other Advanced properties (requires [Expert Mode](01-overview#expert-mode)) that can be used to further condition the archive deletion are:
-
-	adap.access.log.file.archive.scan.folder - the base folder where to find the logs to delete
-	adap.access.log.file.archive.scan.depth - the depth to search for log files
-	adap.access.log.file.archive.scan.glob -  the regex (glob style) to match to select which files to delete
+By default, 10 files are kept in the archive. Change this value in the How Many Files to Keep in Archive setting. The archived files are named `adap_access-<N>.log` and can be viewed and downloaded from Server Control Panel > Log Viewer. 
 
 ## SCIM Log
 
@@ -561,6 +538,10 @@ The SCIM log records the following.
 
 -	Internal processing related to servicing requests from SCIM clients
 
+### Log Location
+
+The SCIM log file is scim.log. It can be viewed and downloaded from the Server Control Panel > Log Viewer. 
+
 ### Log Level
 
 Select a log level from the drop-down list in the Log Settings section. The default log level for this log is INFO. For details on available log levels, see [Chapter 1](01-overview). 
@@ -571,63 +552,5 @@ By default, the scim.log file rolls over once it reaches 100MB in size. Change t
 
 ### Log Archiving
 
-By default, 20 files are kept in the archive. Change this value in the How Many Files to Keep in Archive setting. The archived files are named scim-<yyyy-MM-dd_HH-mm-ss>.log.zip and are located in <RLI_HOME>/<instance_name>/logs. The default instance name is vds_server, so the path would be <RLI_HOME>/vds_server/logs/.
+By default, 20 files are kept in the archive. Change this value in the How Many Files to Keep in Archive setting. The archived files are named `scim-<yyyy-MM-dd_HH-mm-ss>.log.zip` and and can be downloaded from Server Control Panel > Log Viewer. 
 
-The condition for deleting an archive is based on the total number of archives (configured in the How Many Files to Keep in Archive setting), or the age of the archive (configured in the scim.log.file.maxTime property in the Advanced section), whichever comes first. 
-
-If you want to base archive deletion on the total number of archives, configure the scim.log.file.maxTime property to 1000000d (1 million days), so that it is never triggered and indicate the maximum number of archive files to keep in the How Many Files to Keep in Archive property. If you want to base archive deletion on the age of the archive, configure the How Many Files to Keep in Archive to something like 1000000 (1 million files) so it is never triggered, and define the max age in number of days (e.g. 30d for 30 days) for the scim.log.file.maxTime property in the Advanced section (requires [Expert Mode](01-overview#expert-mode)). 
-
-Other Advanced properties (requires [Expert Mode](01-overview#expert-mode))  that can be used to further condition the archive deletion are: 
-
--	scim.log.file.archive.scan.folder – the base folder where to find the logs to delete
-
--	scim.log.file.archive.scan.depth – the depth to search for log files
-
--	scim.log.file.archive.scan.glob – the regex (glob style) to select the files to delete
-
-## Active Directory Password Capture Component
-
-The component that captures an Active Directory password hash (ADPasswordHash.Ws.exe) logs activity to the following file by default: <RLI_HOME>/bin/ad_pwd/logs/ad_pwd_has_ws_server.log
-
-To edit the log file settings:
-1.	In a file explorer, navigate to <RLI_HOME>\bin\ad_pwd.
-2.	In a file editor such as Notepad, open ADPasswordHash.Ws.exe.config. 
-3.	Edit and save the following parameters as required. 
-
-![An image showing ](Media/Image3.8.jpg)
- 
-Figure 3.8: Configuring Active Directory Password Extraction Logs
-
-### FileName
-
-This parameter sets the name and location of the log file, including archived log files. By default, the log file is named ad_pwd_hash_ws_server.log. The default base directory (“basedir”) is <RLI_HOME>\bin\ad_pwd. 
-
->[!warning] If you change the base directory, verify that RadiantOne has access to the folder.
-
-Archived log files are also saved to this location. Archived log file names use filename value and are appended with the archiveNumbering value. See ArchiveNumbering below for more information. 
-
-### ArchiveNumbering
-
-Archived log file names are appended according to the selection for this property. Allowable values for this parameter include the following. 
-
->[!note] In the following examples, the fileName has been set to PwdHashWSServer.
-
-Allowable Value	| How the log file name is appended	| Example(s) 
--|-|-
-Sequence 	| In a continuous series where the most recent log file has the highest number.	| PwdHashWSServer1.log <br>PwdHashWSServer2.log <br>PwdHashWSServer3.log
-Rolling	| In a continuous series where the most recent log file is numbered 0. | PwdHashWSServer0.log <br>PwdHashWSServer1.log <br>PwdHashWSServer2.log
-Date 	| With the date the archive was created in the format YYYYMMDD. 	| PwdHashWSServer20221022.log <br> PwdHashWSServer20221023.log <br>PwdHashWSServer20221024.log
-DateAndSequence 	| With the date followed by a sequence. Useful if multiple log files reach the maximum archive file size on the same day (see ArchiveAboveSize below). 	| <br>PwdHashWSServer20221022.1.log <br>PwdHashWSServer20221022.2.log <br>PwdHashWSServer20221022.3.log
-
-### ArchiveAboveSize
-
-By default, this log file rolls over once it reaches 10 MB in size. Change this value if needed. 
-
-### MaxArchiveFiles
-
-By default, 20 files are kept in the archive. Change this value, if needed, in the maxArchiveFiles setting. 
-
-### Log Level
-
-Specify a log level by modifying the minlevel parameter value. The default level is “Info”. For details on available log levels, see [Chapter 1](01-overview).
- 
