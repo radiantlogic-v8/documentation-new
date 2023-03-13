@@ -9,7 +9,7 @@ description: Architect Guide
 
 If the identity data sources you plan on integrating with RadiantOne are anything other than LDAP directories or Active Directories, the recommended approach is to first create a basic virtual view that has no specific attribute mappings, computed attributes, joins...etc. and then configure the virtual view with persistent cache and the desired refresh strategy. This is the process to stage the backend data in persistent cache. Then, as a second step, create a virtual view using the cache image as the data source. The parent virtual view should be what is configured with the attribute mappings, computed attributes, joins...etc. This data staging and virtual view layering methodology works well for RDBMS and custom backend data source (e.g. Azure AD, Okta, Salesforce...etc.) that are not as performant as directories for search queries. Keep this in mind as you read through the general view design sections below.
 
->[!note] you can also stage Active Directory and LDAP backends in persistent cache, if these backends are unreliable, or performance needs to be optimized.
+>>[!note] you can also stage Active Directory and LDAP backends in persistent cache, if these backends are unreliable, or performance needs to be optimized.
 
 ## General Virtual View Design
 
@@ -436,7 +436,7 @@ Access permissions are configured from the RadiantOne Main Control Panel and can
 - Target Filter: You can add an LDAP filter condition on the target resource (location) to protect.
 - Target Attributes: The rule can indicate “equal to” (=) or “not equal to (!=). Select the desired condition in the drop-down list.
 - Operations: Read, Search, Add, Delete, Compare, Write, Self Write, Proxy, Move (current DN), Move (future DN)
-- Apply To: Who the access permission is applying to: specific IP addresses, public, all authenticated users, self, parent, users, groups, or users associated in a specific tree/branch.
+- Apply To: Who the access permission is applying to: public, all authenticated users, self, parent, users, groups, or users associated in a specific tree/branch.
 
 ### SSL, TLS, and Mutual Authentication
 
