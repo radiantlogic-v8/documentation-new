@@ -1307,13 +1307,7 @@ Alert Disk Usage above 90% TRIGGERED at 2015- 11 - 10 14:50:25
 File output is used for all pre-configured standard alerts. The alerts are logged in a CSV
 formatted file located at <RLI_HOME>/logs/alerts.log.
 
-The default rollover size for the alert file is 100MB. The default number of log files to keep
-archived is 10. The default archive location and file name is: <RLI_HOME>/logs/alerts-<number>.log. These settings can be changed from the Main Control Panel > Settings Tab >
-Monitoring section > File Alerts Settings sub-section.
-
-
-
-To change the alert file location and/or the archive location, expand the Advanced section (requires [Expert Mode](#expert-mode)) and change the value for alert.log.file and alert.log.file.archive respectively.
+The default rollover size for the alert file is 100MB. The default number of log files to keep archived is 10. This setting can be changed from the Main Control Panel > Settings Tab > Monitoring section > File Alerts Settings sub-section.
 
 ![An image showing ](Media/Image1.34.jpg)
 
