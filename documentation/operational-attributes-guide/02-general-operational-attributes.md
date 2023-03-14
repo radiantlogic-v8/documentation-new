@@ -7,11 +7,11 @@ description: Operational Attributes
 
 ## vendorversion
 
-An attribute found in the rootDSE (<RLI_HOME>\vds_server\conf\rootdse.ldif) that indicates the RadiantOne version/release. An example would be RadiantOne 7.2. This is only updated with each major release, not each patch release.
+An attribute found in the rootDSE that indicates the RadiantOne version/release. An example would be RadiantOne v7.4.3.r59470-11152022-2222.
 
 ## supportedControl
 
-An attribute found in the rootDSE (<RLI_HOME>\vds_server\conf\rootdse.ldif) that indicates the LDAP controls and extensions that RadiantOne supports. The values could be any combination of the following:
+An attribute found in the rootDSE that indicates the LDAP controls and extensions that RadiantOne supports. The values could be any combination of the following:
 
 -	Subtree Delete Control - 1.2.840.113556.1.4.805
 
@@ -45,23 +45,23 @@ An attribute found in the rootDSE (<RLI_HOME>\vds_server\conf\rootdse.ldif) that
 
 ## changelog
 
-An attribute found in the rootDSE (<RLI_HOME>\vds_server\conf\rootdse.ldif) that indicates the location in RadiantOne where changes that have occurred in the directory are logged. This allows clients to query this location to learn about these changes. 
+An attribute found in the rootDSE that indicates the location in RadiantOne where changes that have occurred in the directory are logged. This allows clients to query this location to learn about these changes. 
 
 ## serverType
 
-An attribute found in the rootDSE (<RLI_HOME>\vds_server\conf\rootdse.ldif) that indicates the type of server. For RadiantOne, the value is VDS.
+An attribute found in the rootDSE that indicates the type of server. For RadiantOne, the value is VDS.
 
 ## namingContexts
 
-An attribute found in the rootDSE (<RLI_HOME>\vds_server\conf\rootdse.ldif) that indicates the naming contexts which the server contains. This attribute allows a client to choose suitable base objects for searching when it contacts the server.
+An attribute found in the rootDSE that indicates the naming contexts which the server contains. This attribute allows a client to choose suitable base objects for searching when it contacts the server.
 
 ## supportedldapversion
 
-An attribute found in the rootDSE (<RLI_HOME>\vds_server\conf\rootdse.ldif) that indicates which protocol version of LDAP RadiantOne supports. It has values of 2 and 3.
+An attribute found in the rootDSE that indicates which protocol version of LDAP RadiantOne supports. It has values of 2 and 3.
 
 ## supportedSASLMechanisms
 
-An attribute found in the rootDSE (<RLI_HOME>\vds_server\conf\rootdse.ldif) that indicates the names of the supported SASL mechanisms which RadiantOne supports. The values could be any combination of the following:
+An attribute found in the rootDSE that indicates the names of the supported SASL mechanisms which RadiantOne supports. The values could be any combination of the following:
 
 <br>EXTERNAL
 <br>DIGEST-MD5
@@ -70,7 +70,7 @@ An attribute found in the rootDSE (<RLI_HOME>\vds_server\conf\rootdse.ldif) that
 
 ## vendorname
 
-An attribute found in the rootDSE (<RLI_HOME>\vds_server\conf\rootdse.ldif) that indicates the name of the LDAP server implementer. It has a value of Radiant Logic, Inc.
+An attribute found in the rootDSE that indicates the name of the LDAP server implementer. It has a value of Radiant Logic, Inc.
 
 ## createTimestamp
 

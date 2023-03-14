@@ -56,11 +56,11 @@ This attribute uniquely identifies an entry in the changelog and is automaticall
 
 ## firstChangeNumber 
 
-This attribute contains the first changelog number. This attribute is part of the rootdse entry (<RLI_HOME>\vds_server\conf\rootdse.ldif). This attribute is also in the cn=changelog entry and cn=replicationjournal entry and is used internally by RadiantOne for cluster consistency and cursor positioning during startup or when switching leadership.
+This attribute contains the first changelog number. This attribute is part of the rootdse entry. This attribute is also in the cn=changelog entry and cn=replicationjournal entry and is used internally by RadiantOne for cluster consistency and cursor positioning during startup or when switching leadership.
 
 ## lastChangeNumber
 
-This attribute contains the last changelog number. This attribute is part of the rootdse entry (<RLI_HOME>\vds_server\conf\rootdse.ldif) and can be used by clients to detect (and keep track of) changes on RadiantOne entries from the changelog. This attribute is also in the cn=changelog entry and cn=replicationjournal entry and is used internally by RadiantOne for cluster consistency and cursor positioning during startup or when switching leadership.
+This attribute contains the last changelog number. This attribute is part of the rootdse entry and can be used by clients to detect (and keep track of) changes on RadiantOne entries from the changelog. This attribute is also in the cn=changelog entry and cn=replicationjournal entry and is used internally by RadiantOne for cluster consistency and cursor positioning during startup or when switching leadership.
 
 ## targetDN
 
