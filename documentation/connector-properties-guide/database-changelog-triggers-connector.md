@@ -14,7 +14,7 @@ The `RLI_CON` user (configurable) is the default owner of the log table. This sp
 Database connectors can leverage a failover backend that has been configured for the data source. When you configure a data source for your backend database, indicate a failover server. An example is shown below.
 
 >[!note]
->For SQL Server backends, indicating the failover server in the data source is not required. You only need to indicate the primary server in the data source and the connector can automatically detect the failover/mirrored server.**
+>For SQL Server backends, indicating the failover server in the data source is not required. You only need to indicate the primary server in the data source and the connector can automatically detect the failover/mirrored server.
 
 ![Where to select a Failover Server for the Backend Database](media/image15.png)
 
@@ -68,7 +68,7 @@ When you save the connector type configuration, you are prompted to execute the 
 
 ![A prompt to execute DB Changelog configure scripts with **No** and **OK** buttons](media/image17.png)
 
-Select **OK** to execute the DB Changelog scripts, `SELECT`, `INSERT`, `UPDATE`, and `DELETE` access are granted for PUBLIC to the LOG table. Check with your database administrator if you need to restrict access rights on the log table. You can select the **NO** option and the generated script can be reviewed, modified if needed, and run on the database by a DBA. The location of the generated scripts is: `{RLI_HOME}/work/sql/{PIPELINE_ID}`
+If you choose **OK** to execute the DB Changelog scripts, `SELECT`, `INSERT`, `UPDATE`, and `DELETE` access are granted for PUBLIC to the LOG table. Check with your database administrator if you need to restrict access rights on the log table. You can select the **NO** option and the generated script can be reviewed, modified if needed, and run on the database by a DBA. Click the Download button to download the sql scripts.
 
 ### SQL Filter
 
@@ -89,7 +89,7 @@ Some examples of valid SQL Filters are:
 - `NAME LIKE 'AL%'`
 - `NAME LIKE 'ALLE_'`
 
-If the SQL Filter syntax entered in the property is not correct, an error occurs. The connector waits for the length of time specified in the [Retry Interval on Error](configure-connector-types-and-properties.md#retry-interval-on-error) and then tries to get the changed entries in the database again. After the maximum number of retries (indicated in the [Max Retries on Error](configure-connector-types-and-properties.md#max-retries-on-error) property) is exhausted, if the SQL syntax is still invalid, the connector stops. You must either remove or correct the SQL filter before restarting the connector. It is recommended that you set the connector [Log Level](configure-connector-types-and-properties.md#log-level) to `DEBUG` and check the connector log for the SQL query (**Executing query:**) that is generated to ensure the value entered in the SQL Filter property is translated properly. The capture connector log is located at `{RLI_HOME}\logs\sync_agents\{PIPELINE_ID}\connector.log` on the RadiantOne node where the sync agent is running. Run `{RLI_HOME}/bin/monitoring.bat` (`.sh` on Linux) `-d pipeline` to locate your sync process and the value of the `captureHostname` propertyId value indicates the machine where the connector.log is located.
+If the SQL Filter syntax entered in the property is not correct, an error occurs. The connector waits for the length of time specified in the [Retry Interval on Error](configure-connector-types-and-properties.md#retry-interval-on-error) and then tries to get the changed entries in the database again. After the maximum number of retries (indicated in the [Max Retries on Error](configure-connector-types-and-properties.md#max-retries-on-error) property) is exhausted, if the SQL syntax is still invalid, the connector stops. You must either remove or correct the SQL filter before restarting the connector. It is recommended that you set the connector [Log Level](configure-connector-types-and-properties.md#log-level) to `DEBUG` and check the connector log for the SQL query (**Executing query:**) that is generated to ensure the value entered in the SQL Filter property is translated properly. The capture connector log is located at `{RLI_HOME}\logs\sync_agents\{PIPELINE_ID}\connector.log` on the RadiantOne node where the sync agent is running. Go to the Server Control Panel > Log Viewer to download and/or view the log file. See the RadiantOne System Administration Guide for details on the Server Control Panel. 
 
 If the connector should process all changed entries, do not enter a SQL filter.
 

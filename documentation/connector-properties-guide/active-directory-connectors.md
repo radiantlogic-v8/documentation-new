@@ -51,7 +51,7 @@ The Active Directory hybrid capture connector uses a combination of the uSNChang
 
 When the connector restarts, uSNChanged detection catches the entries that have been modified or deleted while the connector was stopped. The LDAP search uses the last processed uSN to catch up. After the connector processes all entries, it requests a new cookie from AD (not from the cursor) and switches to DirSync change detection.
 
-## Active Directory connector failover
+## Active Directory Connector Failover
 
 All Active Directory connectors have the ability to failover to a replica if the primary server is unavailable and the number of failure exceptions exceeds either the [Maximum Retries on Error](configure-connector-types-and-properties.md#max-retries-on-error) or [Maximum Retries on Connection Error](configure-connector-types-and-properties.md#max-retries-on-connection-error) value. This mechanism leverages the Active Directory replication vectors `[replUpToDateVector]`, and the failover servers configured at the level of the RadiantOne data source associated with Active Directory, to determinate which server(s) the connector switches to in case of failure. Since the replication vector contains all domains, in addition to some possibly retired domains, the connector narrows down the list of possible failover candidates to only the ones listed as failover servers in the RadiantOne data source associated with the Active Directory backend. If there are no failover server defined for the data source, all domains in the replication vector are possible candidates for failover.
 
@@ -128,8 +128,6 @@ If the changed entry DN contains a suffix that matches the excluded branches val
 
 >[!note]
 >If both included and excluded branches are used, an entry must satisfy the conditions defined in both settings to be included in the message. The included branches condition(s) is checked first.
->If you set this value using the vdsconfig command line utility on Windows, separate the branches with a comma. E.g. `C:\radiantone\vds\bin>vdsconfig.bat set-connector-property -connectorname o_sead_pcache_proxy__dc_seradiant_dc_dom__seradiantad -propertyid excludedBranches`
->`-propertyvalue "[\"cn=users,dc=seradiant,dc=dom\",\"cn=domain groups,dc=seradiant,dc=dom\"]".`
 
 If a change is made to this property while the connector is running, the new value is taken into account once the connector re-initializes which happens automatically every 20 seconds.
 
@@ -143,8 +141,6 @@ If the changed entry DN contains a suffix that matches the included branches val
 
 >[!note]
 >If both included and excluded branches are used, an entry must satisfy the conditions defined in both settings to be included in the message. The included branches condition(s) is checked first.
->If you set this value using the vdsconfig command line utility on Windows, separate the branches with a comma. E.g. `C:\radiantone\vds\bin>vdsconfig.bat set-connector-property -connectorname o_sead_pcache_proxy__dc_seradiant_dc_dom__seradiantad -propertyid includedBranches`
->`-propertyvalue "[\"cn=users,dc=seradiant,dc=dom\",\"cn=domain groups,dc=seradiant,dc=dom\"]"`
 
 If a change is made to this property while the connector is running, the new value is taken into account once the connector re-initializes which happens automatically every 20 seconds.
 
@@ -163,33 +159,3 @@ When the Determine Move Operations property is enabled, the connector maintains 
 
 >[!warning]
 >When defining the data source for the backend Active Directory, check the Paged Results Control option to ensure that all entries can be retrieved from the backend. This is required for the connector to get all entries in the cache to map objectGUID to DN and support `modDN/modRDN` operations.
-
-#### Synchronize Password
-
-If your use case requires synchronizing passwords from Active Directory, make sure the `unicodePwd` attribute is in your attribute mappings (to the `unicodePwd` attribute if the target is Active Directory or `userPassword` attribute if the target is RadiantOne Universal Directory) and set the Synchronize Password property for the capture connector to `true`. The default is `false`, meaning the capture connector does not get the passwords from Active Directory.
-
->[!note]
->The capture connector retrieves only the MD4 hashed password value – not the password value in clear. Therefore, password synchronization is only supported for Active Directory targets or RadiantOne Universal Directory (HDAP) targets.
->If there is an error when capturing passwords in the Active Directory backend, the connector retries 3 times. After three failures, the connector logs an error.
-
-When the Synchronize Password property is set to `true`, the connector can get an Active Directory user's password when it requests the entry. This can be used for both initializing a target Active Directory and/or RadiantOne Universal Directory (HDAP) store and synchronizing password changes.
-
->[!note]
->The ability to get passwords is supported for Active Directory 2008 R2(+) backends. RadiantOne must be deployed on a Windows OS. All Windows updates should be applied to both the machine hosting RadiantOne and the backend Active Directory machine. The credentials configured in the Active Directory data source for RadiantOne must have the following permissions:
->* **Domain Level**: Read, Replicating Directory Changes, Replicating Directory Changes All, Replicating Directory Changes in Filtered Set.
->* **Ou Level**: Read all properties.
-
-To leverage the Active Directory native replication mechanism to get the password, Microsoft recommends the following firewall ports are opened between the Active Directory server and the RadiantOne machine. Check with your Active Directory administrator to confirm these ports.
-
-| PORTS | PURPOSE |
-|---|---|
-| TCP 135 | RPC |
-| TCP 139 | NetBIOS |
-| TCP and UDP 389 | LDAP <br /> *This could be used by RadiantOne to get the user information. Some other port may be used. |
-| TCP and UDP 445   | SMB over IP |
-| TCP and UDP 464 | Kerberos change/set password |
-| TCP 636 | LDAPS <br /> *This could be used by RadiantOne to get the user information. Some other port may be used. |
-| TCP 3268 and TCP 3269 | Global Catalog non SSL and SSL <br /> *This could be used by RadiantOne to get the user information. Some other port may be used. |
-| TCP 49152 through 65535 | Dynamic ports |
-
-To learn more about connectors, please read the document that describes properties specific to the [Database Changelog (triggers) connector](database-changelog-triggers-connector.md).

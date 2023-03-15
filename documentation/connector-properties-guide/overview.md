@@ -5,13 +5,13 @@ description: Connector Properties Guide
 
 # Overview
 
-Connectors are used for synchronization in the RadiantOne Global Sync module and have three main functions.
+Connectors are used for synchronization in the RadiantOne Global Synchronization (Global Sync) product and have three main functions.
 
 1. Query data sources and collect changed entries.
-1. Filter unneeded events.
-1. Publish changed entries with the required information (requested attributes).
+2. Filter unneeded events.
+3. Publish changed entries with the required information (requested attributes).
 
-This document provides a brief introduction to the RadiantOne Global Sync module's architecture and some common topics applicable for all connectors like how to reset the cursor and message size. Other documents in this guide focus on specific connectors per data source type.
+This document provides a brief introduction to the architecture and some common topics applicable for all connectors like how to reset the cursor and message size. Other documents in this guide focus on specific connectors per data source type.
 
 ## About this manual
 
@@ -44,7 +44,7 @@ For databases, there are three capture connector types: Counter, Changelog (Trig
 
 For LDAP directories, there are two connector type options: LDAP (changelog), or Persistent Search.
 
-For Active Directory, there are three connector type options: AD USNChanged, AD DirSync, and AD Hybrid.
+For Active Directory, there are three connector type options: AD USNChanged, AD DirSync, and AD Hybrid. These connectors are described in this guide. 
 
 Capture connectors publish change messages to queues. A sync engine receives notification when messages are in a queue, applies transformation to the message (based on attribute mappings and or scripting) and sends the transformed message to the destination.
 
@@ -62,29 +62,6 @@ On the Main Control Panel > Global Sync tab, choose the topology on the left. Se
 
 ![The Reset Cursor option in the Global Sync tab of the Main Control Panel](media/image2.png)
 
-### Command line
-
-To reset the cursor, run the following command to locate the Pipelines Identifier for your topology: `{RLI_HOME}/bin/vdsconfig list-topologies`
-
-Once you have the Pipelines Identifier, run the following command to reset the cursor for the capture connector: `{RLI_HOME}/bin/vdsconfig reset-cursor -pipelineid {PIPELINES_IDENTIFIER}`
-
-An example is shown below (log output was removed to simplify the response):
-
-```sh
-C:\radiantone\vds\bin>vdsconfig reset-cursor -pipelineid
-o_activedirectory_sync_o_companydirectory_pipeline_o_activedirectory
-
-{
-
- "success" : true,
-
- "data" : "The pipeline connector
-<o_activedirectory_sync_o_companydirectory_pipeline_o_activedirectory>
-has been successfully reset."
-
-}
-```
-
 ## Manually update connector cursor
 
 Each connector stores a cursor to maintain information about the last processed change. In some cases, you may need to edit the cursor value to force the connector to pick up some missed changes (during a disaster recovery scenario where you will start synchronization in another data center), or skip some changes in cases like where [non-sequential change IDs](database-timestamp-connector.md#force-sequential-counters) were detected. Connector configuration is stored in a RadiantOne Universal Directory store mounted at the `cn=registry` naming context.
@@ -96,7 +73,7 @@ Each connector stores a cursor to maintain information about the last processed 
 1. Connect to RadiantOne with an administrator that has permissions to modify entries in `cn=registry` and browse to the configuration for your capture connector: `cn=cursor,{PIPELINE_ID},cn=registry`
 1. Edit the cursor attribute and enter the value to indicate the point from which the connector should capture changes from. An example for a database changelog connector is shown below.
     ![Example of Database Changelog Connector Cursor Settings](media/image3.png)
-1. Resume the pipeline which redeploys/starts the connector. You can do this from the Main Control Panel > Global Sync tab, or using the vdsconfig command line utility, `change-pipeline-state` command.
+2. Resume the pipeline which redeploys/starts the connector. You can do this from the Main Control Panel > Global Sync tab.
 
 ## Message size
 

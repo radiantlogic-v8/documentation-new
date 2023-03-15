@@ -35,7 +35,7 @@ Each connector produces log files as events occur in the pipeline. The following
 - Log level 4: `DEBUG`  
 - Log level 5: `TRACE`
 
-Connector log files are located at: `{RLI_HOME}\logs\sync_agents\{PIPELINE_NAME}\connector.log` on the RadiantOne node where the sync agent is running. Run `{RLI_HOME}/bin/monitoring.bat (.sh on Linux) -d pipeline` to locate your sync process and the value of the `captureHostname` propertyId value indicates the machine where the connector.log is located.
+Connector log files are located at: `logs\sync_agents\{PIPELINE_NAME}\connector.log` on the RadiantOne node where the sync agent is running. The log file can be viewed from the Global Sync tab. Select the topology and the click CONFIGURE next to the pipeline. Click the APPLY component to access the Log Viewer.
 
 ![The location of the sync process](media/image6.png)
 
