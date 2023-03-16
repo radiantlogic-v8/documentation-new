@@ -25,7 +25,7 @@ For database backends (JDBC-accessible), the change detection options are:
 
 ## DB changelog
 
-RadiantOne can generate the SQL scripts which create the configuration needed to support the DB Changelog Connector. The scripts can be generated in the Main Control Panel or from command line. Both options store the scripts under `{RLI_HOME}/work/sql`. The following scripts are generated.
+RadiantOne can generate the SQL scripts which create the configuration needed to support the DB Changelog Connector. The scripts can be generated in the Main Control Panel. The following scripts are generated and can be download from Main Control Panel > Settings > Configuration > File Manager.  The are located in the /work/sql folder.
 
 - create_user.sql - Creates the log table user and the log table schema.
 - create_capture.sql - Creates the log table and the triggers on the base table.
@@ -50,7 +50,7 @@ To configure DB Changelog connector:
 1. Select a Capture component and the configuration displays.
 1. Select **DB Changelog** from the **Connector Type** drop-down list.
 1. Indicate the user name and password for the connector's dedicated credentials for connecting to the log table. If you do not have the user name and password, contact your DBA for the credentials.
-1. Enter the log table name using the proper syntax for your database (e.g. `{USER}.{TABLE}_LOG`). If you used [RadiantOne to generate the SQL scripts](#create-scripts-to-generate-triggers-and-changelog-table) for configuring the changelog components in the database, you can view the scripts to see the exact table name. Otherwise, contact your DBA for the log table name.
+1. Enter the log table name using the proper syntax for your database (e.g. `{USER}.{TABLE}_LOG`).
 
 >[!warning]
 >Change the value for this property only if you are creating the log table manually and the capture connector does not calculate the log table name correctly. Be sure to use the [correct syntax](#log-table-name-syntax) if you change the value.
@@ -63,7 +63,7 @@ To configure DB Changelog connector:
 9. To apply now, select **OK**. Otherwise, select **NO**.
 
 >[!note]
->Selecting **OK** creates and executes the SQL scripts on the database server. If you choose to apply later, the scripts are created at the following location: `{RLI_HOME}/work/sql/` but not executed. They must be run on the database manually. Any DBA can configure the connector by selecting the **NO** option and running the scripts manually on the database server. For most databases, this is also sufficient to apply the configuration directly selecting the **OK** option. However, for Oracle databases, you must connect as either the SYS user or a non SYS user that has the SYSDBA role assigned to them. If you choose to use a non SYS user, you must use the syntax userid as sysdba for the user name in the connection. An example would be scott as sysdba.
+>Selecting **OK** creates and executes the SQL scripts on the database server. If you choose to apply later, the scripts are created but not executed. They must be run on the database manually. You can download the sql scripts from here or from Main Control Panel > Settings > Configuration > File Manager. Any DBA can configure the connector by selecting the **NO** option and running the scripts manually on the database server. For most databases, this is also sufficient to apply the configuration directly selecting the **OK** option. However, for Oracle databases, you must connect as either the SYS user or a non SYS user that has the SYSDBA role assigned to them. If you choose to use a non SYS user, you must use the syntax userid as sysdba for the user name in the connection. An example would be scott as sysdba.
 
 10. After the capture connector is configured, configure the transformation in the pipeline.
 
@@ -102,39 +102,9 @@ Or with optional quoting:
 
 Example 3:
 
-If schema and/or table name contain mixed-case characters, they must be quoted. For example, if the schema is `Rli_Con`, and log table name is `Test_Log`, the property should be as follows.
+If schema and/or table name contain mixed-case characters, they must be quoted. For example, if the schema is `Rli_Con`, and log table name is `Test_Log`, the property should be as follows.
 
 `"Rli_con"."Test_log"`
-
-### Create scripts to generate triggers and changelog table
-
-If the database backend does not have a changelog table, you can use RadiantOne to create one. RadiantOne can generate SQL scripts that a DBA can run on the database backend. These scripts create the needed configuration to support the DB Changelog connector. Use `{RLI_HOME}/bin/advanced/create_db_triggers.bat` to generate the scripts. The command uses seven arguments (which are described below) and generates four SQL scripts needed to configure the database to support the DB Changelog connector.
-
-These scripts can be provided to the database backend DBA to review, modify and execute on the database server. Scripts generated using this command cannot be executed in the Main Control Panel.
-
-Example:  
-`create_db_triggers.bat -d sql123 -n sql_server_data_source -t DBO.EMPLOYEES -u rli_con -p rli_con -l EMPLOYEES_LOG`
-
-Based on this example, the command generates scripts at the following location: `{RLI_HOME}/work/sql/sql123/`
-
-The RadiantOne data source name is sql_server_data_source (it must exist prior to running the command).
-
-The base table name is `EMPLOYEES` in the DBO schema.
-
-The log table user to be created is: rli_con with a password of: rli_con
-
-The log table name is `EMPLOYEES_LOG`.
-
-The table below outlines the available arguments.
-
- Argument | Description 
----|---
- `-d` | The name of the folder where the scripts are saved (e.g. sql1). The name should not contain any special or path characters (e.g. /,\\). The folder will be created under the `{RLI_HOME}/work/sql/` directory. If the location already contains scripts, they are overwritten without warning. 
- `-n` | The RadiantOne data source name. The data source contains information (JDBC connection string, user, and password) that is used to connect to the database and read the base table schema. The credentials defined in the data source must have permission to read the base table schema. Note - the data source must exist prior to using the command. 
- `-t` | "The base table name. The name of the table is used to create the create_capture.sql and the drop_capture.sql scripts. The base table name should be in the form: `{SCHEMA}.{TABLE_NAME}`, for example `DBO.CUSTOMERS`. `{SCHEMA}` and `{TABLE_NAME}` should not contain special characters (e.g. [ ]`"".), should not be quoted, and should be in the proper upper/lower case (depends on the database type/vendor)." 
- `-u` | The log table user. The create_user.sql script includes commands to create a log table user/owner and the log table schema (which will have the same name as the log table user). The log table user is created with the password assigned by the `-p` option. 
- `-l` | Specify the log table name instead of using default computation based on full base table nam1. 
- `-s` | Specify the log table schema nam1. 
 
 ## DB timestamp
 
@@ -182,8 +152,8 @@ This section describes the failover mechanism for the database connectors.
 >[!warning]
 >The backend servers must be configured for multi-master replication. Please check the vendor documentation for assistance with configuring replication for your backends.
 
-The database connectors leverage the failover server that has been configured for the data source. When you configure a data source for your backend database, select a failover database server from the drop-down list. The failover server must be configured as a RadiantOne data source. See the screen shot below for how to indicate a failover server for the Data Sources from the Main Control Panel.
+The database connectors leverage the failover server that has been configured for the data source. When you configure a data source for your backend database, select a failover database server from the drop-down list. The failover server must be configured as a RadiantOne data source. See the screen shot below for how to indicate a failover server for the Data Sources from the Main Control Panel.
 
- ![Configuring Failover Servers for the Backend Database](../../media/image33.png)
+ ![Configuring Failover Servers for the Backend Database](../../media/image33.png)
 
 If a connection cannot be made to the primary server, the connector tries to connect to the failover server configured in the data source. If a connection to both the primary and failover servers fails, the retry count goes up. The connector repeats this process until the value configured in "Max Retries on Connection Error" is reached. There is no automatic failback, meaning once the primary server is back online, the connector does not automatically go back to it.
