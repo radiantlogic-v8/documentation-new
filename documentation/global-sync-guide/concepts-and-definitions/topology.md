@@ -21,13 +21,9 @@ The pipeline ID is required for a variety of scenarios. A few examples are shown
 
 | Example | Description |
 |---|---|
-| `{RLI_HOME}/bin>vdsconfig dl-replay-sync-pipeline -pipelineid {PIPELINE_ID}` | Replaying messages from a dead letter queue |
-| `{RLI_HOME}/bin>vdsconfig init-sync-pipeline -pipelineid {PIPELINE_ID}` | Running an upload from command line |
-| `{RLI_HOME}/logs/sync_agents/{PIPELINE_ID}/connector.log` | Locating connector logs associated with the pipeline |
-
-You can find the pipeline ID using the vdsconfig command line utility with the `list-topologies` command. The `"pipelinesIdentifiers"` property returns the pipeline ID. An example is shown below.
-
-![A terminal application and the execution of the "vdsconfig list-topologies" command with the subsequent output](../media/image7.png)
+| `https://<rli_server_name>/adap/util?action=vdsconfig&commandname=dl-replay-sync-pipeline&pipelineid=<PIPELINE_ID>` | REST command for replaying messages from a dead letter queue. |
+| `https://<rli_server_name>/adap/util?action=vdsconfig&commandname=init-sync-pipeline&pipelineid=<PIPELINE_ID>` | REST command for running an upload from command line. |
+| `<PIPELINE_ID>/connector.log` | Locating connector logs associated with the pipeline. You can view and download the connector log from the Environment Operations Center. |
 
 You can find the pipeline ID from the Main Control Panel > Global Sync tab.
 

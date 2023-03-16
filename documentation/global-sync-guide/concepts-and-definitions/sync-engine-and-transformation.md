@@ -19,13 +19,11 @@ A transformation describes how changes on source entries should be translated in
 
 Attribute mappings indicate how data should be transformed before propagating the event to the destination. This could involve a simple 1-to-1 mapping of a value, setting a constant value, or computing a new value. Each sync pipeline can be associated with one or more attribute mappings. Typically, each type of object (e.g. group, user) you are synchronizing has an Attribute Mapping associated with it.
 
-Mappings are saved in JSON-formatted files located at: `{RLI_HOME}\vds_server\conf\sync\mappings\{TOPOLOGY_NAME}\{PIPELINE_NAME}\mappings.json`
-
 See [Attribute mappings](../configuration/transformation/attribute-mappings.md) for configuration steps.
 
 ## Script
 
-When attribute mappings are insufficient to achieve your business logic, you can use Java scripting (or [Rules](#rules-based-transformation)). This is helpful when lookups or other complex logic is required and the capabilities of the attribute mappings and rules options are insufficient. The Main Control Panel > Global Sync tab provides an interface for configuring the script (with some support for basic syntax checking). If you prefer a [full Java development environment](../configuration/script.md#use-a-java-ide-to-customize-scripts), you can install something like Eclipse and import the RadiantOne Custom Project.
+When attribute mappings are insufficient to achieve your business logic, you can use Java scripting (or [Rules](#rules-based-transformation)). This is helpful when lookups or other complex logic is required and the capabilities of the attribute mappings and rules options are insufficient. The Main Control Panel > Global Sync tab provides an interface for configuring the script (with some support for basic syntax checking). 
 
 See [Script](../configuration/script.md) for configuration steps.
 
