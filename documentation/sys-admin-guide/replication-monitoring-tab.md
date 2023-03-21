@@ -5,7 +5,7 @@ description: System Administration Guide
 
 # Replication Monitoring Tab
 
-RadiantOne Universal Directory (HDAP) stores across multiple sites/data centers support multi-master replication. This type of replication is referred to as inter-cluster replication. The state of inter-cluster replication can be monitored from the Replication Monitoring Tab.
+RadiantOne Universal Directory (HDAP) stores across clusters support multi-master replication. This type of replication is referred to as inter-cluster replication. The state of inter-cluster replication can be monitored from the Replication Monitoring Tab.
 
 ## Central Journal Replication
 

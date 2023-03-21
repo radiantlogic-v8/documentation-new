@@ -91,8 +91,6 @@ Figure 2: LDAP Browser Client used to Clear the Connection Pool
 
 A data source in RadiantOne represents the connection to a backend. Data sources can be managed from the Main Control Panel > Settings Tab > Server Backend section. Configuring connections to all backends from a central location simplifies the management task when changes to the backend are required. For more details on data sources, please see [Concepts](concepts).
 
->[!note] Data sources can also be managed from the command line using the RadiantOne command line config utility. Details on this utility can be found in the RadiantOne Command Line Configuration Guide.
-
 ### Status
 
 Each data source has a status associated with it. The status is either Active or Offline and can be changed as needed. If a backend server is known to be down/unavailable, setting the status to Offline can prevent undesirable performance impact to views associated with this backend. When a data source status is set to Offline, all views associated with this data source are not accessed to avoid the performance problems resulting from RadiantOne having to wait for a response from the backend before being able to process the client’s query. To change the status for a data source, navigate to the Main Control Panel -> Settings Tab -> Server Back End section. Select the section associated with the type of data source that is known to be unavailable (e.g. LDAP Data Sources, Database Data Sources or Custom Data Sources). On the right side, select the data source representing the backend that is down and click Edit. Locate the status drop-down list and choose Offline. Save the change.
@@ -112,7 +110,9 @@ To add an LDAP data source:
 
 Figure 3: Adding a New LDAP Data Source
 
-2.	Enter a unique data source name along with the connection information to reach your backend server. Also select the type of LDAP Data Source (VDS/OpenDJ/SunOne/Active Directory/Novell/Other LDAP).
+2.	Enter a unique data source name along with the connection information to reach your backend server. If you are using a Secure Data Connector to access your directory, choose the service from the drop-down list. For information about Secure Data Connectors, see the Secure Data Connector Deployment Guide and the Environment Operations Center Guide. 
+
+Select the type of LDAP Data Source (VDS/OpenDJ/SunOne/Active Directory/Novell/Other LDAP).
 
 >[!warning] Do not use spaces, commas, brackets or parenthesis, colons, or the word “domain” in the data source name and do not use special characters in the Base DN value.
 
@@ -124,7 +124,7 @@ Figure 3: Adding a New LDAP Data Source
 
 ### LDAP Data Source Advanced Settings
 
-For LDAP backends there are four additional settings that are optional: SSL/TLS, STARTTLS, Mutual Authentication, <!-- Kerberos, --> Chasing Referrals and the Paged Results Control. These options are described below.
+For LDAP backends there are additional settings that are optional: SSL/TLS, STARTTLS, Mutual Authentication, <!-- Kerberos, --> Chasing Referrals and the Paged Results Control. These options are described below.
 
 #### SSL/TLS
 
@@ -394,15 +394,19 @@ Figure 12: Database Data Sources
 
 2.	Click **Add**.
 
-3.	Enter a unique data source name (do not use spaces in the name) along with the connection information to reach your backend server. You can select a Data Source Type from the drop-down list and the driver class name and URL syntax is populated for you. You can then just modify the needed parameters in the URL and enter the required user/password. 
+3.	Enter a unique data source name (do not use spaces in the name). 
+
+4. If you are using a Secure Data Connector to access your directory, choose the service from the drop-down list. For information about Secure Data Connectors, see the Secure Data Connector Deployment Guide and the Environment Operations Center Guide.
+
+5. Enter the connection information to reach your backend server. You can select a Data Source Type from the drop-down list and the driver class name and URL syntax is populated for you. You can then just modify the needed parameters in the URL and enter the required user/password.
 
 >[!note] A secure connection can be made to the database if the JDBC driver supports it. If the server you are connecting to uses a certificate issued by a trusted Certificate Authority, then all you need to do during the creation of the data source is enter the SSL port in the appropriate location of the URL. If the server you are connecting to uses a self-signed certificate, then this certificate must be imported into the [RadiantOne client trust store](security#client-certificates-default-java-truststore).
 
-4.  Select a data agent from the Connect with Agent drop-down menu. For information on data agents, see [Data Agents](concepts#data-agent).
+6.  Select a data agent from the Connect with Agent drop-down menu. For information on data agents, see [Data Agents](concepts#data-agent).
 
-5.	Click **Test Connection**.
+7.	Click **Test Connection**.
 
-6.	Click **Save**.
+8.	Click **Save**.
 
 #### Edit a Database Data Source
 
@@ -414,9 +418,9 @@ To delete a data source, select the configured data source and click **Delete**.
 
 #### Adding a New Database Driver
 
-A list of drivers appears in the drop-down list box when you are defining a database data source. Only the drivers that are shown in green were installed with RadiantOne. The other driver names/syntaxes that appear in the drop-down list have been provided to save time. If you would like to use one of these drivers or to include a new JDBC driver, install the driver files in the <RLI_HOME>/lib/jdbc directory. Restart the RadiantOne service and any open tools. During the creation of the database data source, if your driver type is listed in the drop-down list, select it and the syntax for the driver class name and URL is populated for you. Update the URL with the connection details for your database. If the drop-down list does not include your database driver type, you can leave this blank and manually type in the data source name, driver class name, driver URL, user and password.
+A list of drivers appears in the drop-down list box when you are defining a database data source. Only the drivers that are shown in green were installed with RadiantOne. The other driver names/syntaxes that appear in the drop-down list have been provided to save time. If you would like to use one of these drivers or to include a new JDBC driver, upload the driver files. Restart the RadiantOne service and any open tools. During the creation of the database data source, if your driver type is listed in the drop-down list, select it and the syntax for the driver class name and URL is populated for you. Update the URL with the connection details for your database. If the drop-down list does not include your database driver type, you can leave this blank and manually type in the data source name, driver class name, driver URL, user and password.
 
-This information is saved in a file so you do not have to re-enter the same connection parameters every time you extract a schema from the same type of database. The name of the file is jdbcxml.xml, and it can be found in the directory <RLI_HOME>\<instance_name>.
+This information is saved in a file so you do not have to re-enter the same connection parameters every time you extract a schema from the same type of database.
 
 #### Configure Failover Servers
 
@@ -444,6 +448,8 @@ Figure 13: Sample Custom Data Source
 
 >[!warning] Most default custom data sources do not support authentication operations. They are primarily to allow for provisioning/de-provisioning identity information to these apps through RadiantOne and/or retrieving identity profile information from these apps for RadiantOne to present a complete user profile (to join views of these backends to identities from other data sources). However, Azure AD (graphapi and mgraph data sources) and Okta Universal Directory (oktaclient data source) do support authentication operations. For details on creating virtual views from the default custom data sources, see the RadiantOne Namespace Configuration Guide.
 
+<!-->
+
 #### DSML/SPML Sources
 
 For DSML/SPML accessible services, you can define the data source backend from the Main Control Panel.
@@ -465,6 +471,8 @@ For DSML/SPML accessible services, you can define the data source backend from t
 ![Sample Custom DSML/SPML Data Source](Media/Image3.74.jpg)
 
 Figure 14: Sample Custom DSML/SPML Data Source
+
+-->
 
 ### SCIM v2 Sources
 
@@ -748,9 +756,13 @@ Three advanced settings applicable to internal connections to the RadiantOne ser
  
 Figure 19: Internal Connection to RadiantOne
 
+<!-->
+
 #### Use SSL
 
 RadiantOne leverages an internal connection to the LDAP port for performing joins configured in virtual views. If the non-SSL LDAP port is turned off in RadiantOne, and the internal connection must connect via SSL, check the Use SSL option. Click **Save** to apply the changes to the server.
+
+-->
 
 #### Disable Referral Chasing 
 
@@ -767,10 +779,3 @@ This functionality can be useful when RadiantOne (as a client to itself) has lim
 Connections made internally, when RadiantOne is a client to itself, are configured with a default idle timeout length of 6 hours. This value is configurable in ZooKeeper. From the Main Control Panel -> ZooKeeper tab, navigate to /radiantone/v1/cluster/config/vds_server.conf. Click Edit Mode and locate the "idleTimeoutForLocalConnection" property. Define the idle timeout value (in seconds) for this property. Click **Save**.
 
 >[!warning] the idleTimeoutForLocalConnection property must always be greater than the [Global Idle Timeout](limits#idle-timeout), otherwise the Global Idle Timeout takes precedence for closing the internal connections as well as the external (client) connections.
-
-
-## Kerberos Profiles
-
-A Kerberos profile file defines the realm, domain and KDC information. These profiles are used by RadiantOne when it acts as a client a backend Active Directory. For configuration details, please see [Kerberos](#kerberos).
-
->[!note] This section is accessible only in [Expert Mode](introduction#expert-mode).

@@ -33,8 +33,6 @@ Configuring connections to all backends from a central location simplifies the m
 
 Data sources are used when configuring virtual views from database backends, LDAP backends, and joins. 
 
-LDAP data sources defined for RadiantOne are contained in <RLI_HOME>/vds_server/datasources/ldap.xml. Database data sources are contained in <RLI_HOME>/vds_server/datasources/database.xml, and custom data sources are contained in <RLI_HOME>/vds_server/datasources/custom.xml.
-
 >[!warning] one of the main purposes of having a data source defining the connection is to isolate the connection string from the metadata files (.dvx and .orx). It is strongly recommended that you use generic data source names that can remain (be relevant) as you migrate from a development to production environment where you only need to change the connection information. In addition, there are reserved characters that should not be used in data source names which are spaces, commas, brackets or parenthesis, colons, and the word “domain”.**
 
 ### To Import Data Sources
@@ -51,7 +49,7 @@ If you have existing data sources defined in a RadiantOne server and you would l
 
 Figure 2: Exporting Data Sources
 
-You can then copy the export file to the desired RadiantOne server and use the [Import](#to-import-data-sources) option to import the data sources.
+You can then upload the export file to the desired RadiantOne server and use the [Import](#to-import-data-sources) option to import the data sources.
 
 >[!warning] The following default data sources are included with RadiantOne: vdsha (points to the RadiantOne nodes in the cluster), advworks, derbyorders, derbysales, examples, northwind, log2db, and vdapdb (points to the local Derby database server), and replicationjournal (points to a local RadiantOne Universal Directory store and is used for inter-cluster replication). Therefore, be aware that when you import one of these data sources on the target RadiantOne server, the data sources with the same name are overwritten. For this reason, it is recommended that you do not export these data sources.
 
@@ -67,7 +65,7 @@ Figure 2: Downloading Data Sources
 
 A data agent retrieves identity-related data from your on-prem environment or cloud and sends it back to RadiantOne. When you define a data source, the configuration process allows you to define how you connect to the data source. Connections to custom objects that connect to a REST API or web endpoint, for example, typically do not require a data agent.
 
-For on-prem backends, on the other hand, typically require selecting a data agent.
+On-prem backends, on the other hand, typically require selecting a data agent.
 
 
 ## Union
@@ -783,10 +781,10 @@ Interception scripts can be configured at a [global level](interception#global-i
 
 1.	After the script has been enabled from the Main Control Panel click Save in the upper right corner and apply the changes to the server. 
 
-2.	Edit the script located in: <RLI_HOME>/vds_server/custom/src/com/rli/scripts/intercept/<naming_context>
-<br>If you are using a global Interception, the script is: <RLI_HOME>/vds_server/custom/src/com/rli/scripts/intercept/globalIntercept.java
+2.	Edit the script <naming_context>.java
+<br>If you are using a global Interception, the script is: globalIntercept.java
 
-3.	Rebuild the intercept.jar file by clicking **Build Interception Jar** or by using ANT: C:\radiantone\vds\vds_server\custom>c:\radiantone\vds\ant\bin\ant.bat buildjars
+3.	Rebuild the intercept.jar file by clicking **Build Interception Jar**. 
 
 4.	Restart the RadiantOne service. If RadiantOne is deployed in a cluster, you must restart the service on all nodes. Your script logic should now be invoked for the operations you have enabled.
 
@@ -794,45 +792,6 @@ For samples of interception scripts, please see the Radiant Logic Knowledge Base
 
 Only registered customers have access to the Knowledge Base. 
 
-### Using a Java IDE to Customize Scripts
-
-You can use our own Java IDE to customize scripts instead of using the Main Control Panel. Import the RadiantOne Custom project into your Java IDE. An example is described below using Eclipse IDE.
-
-1.	Install Eclipse IDE for Java developers.
-
-2.	Launch Eclipse and choose File > Import.
-
-![Option to Import Projects into Eclipse IDE](Media/Image2.17.jpg)
-
-Figure 17: Option to Import Projects into Eclipse IDE
-
-3.	Expand the General folder, select Existing Projects into Workspace and click **Next**.
-
-![Option to Import Existing Projects into Workspace](Media/Image2.18.jpg)
-
-Figure 18: Option to Import Existing Projects into Workspace
-
-4.	Click **Browse** next to Select Root Directory and navigate to <RLI_HOME>/vds_server/custom.
-
-![Importing RadiantOne Custom Project](Media/Image2.19.jpg)
-
-Figure 19: Importing RadiantOne Custom Project
-
-5.	Click **Finish**.
-
-6.	Navigate below the Custom folder to src.com.rli.scripts.intercept. The scripts associated with the interceptions appears below. Double-click on the script to open it in the Eclipse IDE editor.
-
-![Example Global Intercept Script](Media/Image2.20.jpg)
-
-Figure 20: Example Global Intercept Script
-
-7.	Edit the script.
-
-8.	Save the script.
-
-9.	On the RadiantOne machine, rebuild the intercept.jar with ANT using the following syntax: C:\radiantone\vds\vds_server\custom>c:\radiantone\vds\ant\bin\ant.bat buildjars
-
-10.	Restart the RadiantOne service. If deployed in a cluster, restart it on all nodes.
 
 ## Groups
 
@@ -866,11 +825,9 @@ Figure 22: Example of Traditional LDAP Dynamic Groups
 
 ### Groups Supported by RadiantOne
 
-RadiantOne can be configured for both static and dynamic LDAP groups (as they are described above). In RadiantOne, static and dynamic LDAP groups are described and configured as user-defined groups. RadiantOne also offers auto-generated groups in which both the group names and members are dynamically created.
+RadiantOne can be configured for both static and dynamic LDAP groups (as they are described above). In RadiantOne, static and dynamic LDAP groups are described and configured as user-defined groups.
 
-All types of groups can be created with the [Groups Builder wizard](administration-and-configuration#groups-builder). This section focuses on the definition of each type.
-
-  **User-Defined Groups**
+**User-Defined Groups**
 <br>Static group names are explicitly listed for the group entry (just as with “standard” LDAP group entries). A user-defined group may be named anything and have members that are either statically defined or dynamically created based on a specific rule (dynamically assigned group members are similar to “standard” LDAP dynamic groups). The diagram below depicts an example of user-defined groups with dynamic members. In the example, group members are built dynamically based on the department attribute in the user entries. If a user’s department were to change, they would automatically be reflected as a member of the new group. For simplicity, only the member ID is shown in the virtual entry whereas the full user DN is returned (as an LDAP client expects) when these groups are requested.
 
 ![User-Defined Groups with Dynamic Members](Media/Image2.23.jpg)
@@ -880,20 +837,6 @@ Figure 23: User-Defined Groups with Dynamic Members
 Static group members are specific user DNs explicitly listed as members for the group entry. Static group members can be any user DN in the virtual directory tree which means they can come from any backend source.
 
 Dynamic group members are assigned to groups based on rules defined for specific attributes. The attribute values determine which group the member is associated with. First, determine the starting point in the virtual namespace to locate the possible group members. Then, decide which attribute(s) of these entries should be used to determine which group they belong to. For example, if all user entries that contain a department attribute value of “Sales” or “Sales Associate” should be a member of the Sales group, then the LDAP filter used in the rule would look like: (|(departmentNumber=Sales)(departmentNumber=Sales Associate)). Any valid LDAP filter can be used to create the rule for populating group membership.
-
-**Auto-Generated Groups**
-
-With auto-generated groups, group names are determined based on all possible values of a specified user attribute. The attribute values to determine the group names can be pulled from any virtual entries. First, determine the starting point in the virtual namespace to locate entries that contain the attribute you want to base group names on. Then, decide which attribute of these entries contains the possible group names. For example, if all user entries contained a department attribute, possible group names could be determined by creating a unique list of all possible departments. The list is the basis for creating the group names. If all users were associated with one of five different departments (Marketing, Sales, HR, Support, Engineering), then there would be a total of five auto-generated group names based on these values. The group members are determined dynamically based on the value of their department attribute.
-
->[!warning] the attribute you select to base the auto-generated group names on must be single-valued in the user entries.
-
-The diagram below depicts an example of auto-generated groups with both group names and members generated dynamically. In this example, department names are the basis for determining the group names in RadiantOne. This offers an enormous amount of flexibility. If a new department were to appear in the database, a new group would automatically appear in RadiantOne with this new name. Group members are built dynamically based on the department attribute in their entries. If a user’s department were to change, they would automatically be reflected as a member of the new group in RadiantOne. For simplicity, only the member ID is shown in the virtual entry whereas the full user DN will be returned (as an LDAP client expects).
-
-![Auto-Generated Groups with Dynamic Group Names and Dynamic Members](Media/Image2.24.jpg)
- 
-Figure 24: Auto-Generated Groups with Dynamic Group Names and Dynamic Members
-
-See the [Groups Builder wizard](administration-and-configuration#groups-builder) for details on creating both user-defined and auto-generated groups.
 
 ## Metadata/Schema Extraction
 

@@ -11,33 +11,27 @@ RadiantOne supports logging at different levels for different components. Logs f
 
 Log level, rollover size and number of files to keep in archive are configurable for each RadiantOne component. On the Logs > Log Settings section, select the component from the drop-down list. The default log level is INFO. The default rollover size is 100MB and the default number of log files to keep is 10.
 
-For RadiantOne (FID and Universal Directory), the item in the drop-down list is VDS – Server. The default log file name and location is <RLI_HOME>/vds_server/logs/vds_server.log.
+For RadiantOne (FID and Universal Directory), the item in the drop-down list is VDS – Server. The default log file name is vds_server.log.
 
-For VRS (SQL interface to RadiantOne) the items in the drop-down list are VDS -VRS Server and VDS - VRS Access, the default log file names and location are <RLI_HOME>/vds_server/logs/vrs/vrs_server.log and vrs_access.log.
+For the Scheduler, the items in the drop-down list are Scheduler – Scheduler server and Scheduler – Scheduler Tasks. The default log file name for the server is server.log. The default log file name for the tasks is `task.<taskID>.log`. 
 
-For the Scheduler, the items in the drop-down list are Scheduler – Scheduler server and Scheduler – Scheduler Tasks. The default log file name and location for the server is <RLI_HOME>/vds_server/logs/scheduler/server.log. The default log file name and location for the tasks is <RLI_HOME>/vds_server/logs/scheduler/task.<taskID>.log
+For the Control Panels, the items in the drop-down list are Control Panel – Server and Control Panel – Access. The default log file name for the server is web.log. The default log file name for the access information is web_access.log.
 
-For the Control Panels, the items in the drop-down list are Control Panel – Server and Control Panel – Access. The default log file name and location for the server is <RLI_HOME>/vds_server/logs/jetty/web.log. The default log file name for the access information is <RLI_HOME>/vds_server/logs/jetty/web_access.log.
-
-For the Sync Agents used in real-time persistent cache refresh, the item in the drop-down list is Sync Agents – Agents. The default log file name and location is <RLI_HOME>/logs/sync_agents/agent_fid_sd_agent_real_time.log. 
-
-For some components, there is an Advanced section where finer-grained logging properties can be configured. For details on log levels and advanced log settings, please see the RadiantOne Logging and Troubleshooting Guide.
+For the Sync Agents used in real-time persistent cache refresh, the item in the drop-down list is Sync Agents – Agents. The default log file name is agent_fid_sd_agent_real_time.log. 
 
 ## Access Logs
 
-The RadiantOne access log contains details about client requests to RadiantOne and the response. This is a structured log file and the contents can be used for auditing RadiantOne activity. The default output is a text file named vds_server_access.log and is in <RLI_HOME>/vds_server/logs. From the Main Control Panel > Settings tab > Logs section > Access Logs, you can indicate the output format. <!--If you want the logs to be written to a database, check the CSV output format. Then, use the RadiantOne Log2DB utility, which reads the CSV log contents and writes them to the database that is configured in the Reporting > Log2DB Settings section.-->
+The RadiantOne access log contains details about client requests to RadiantOne and the response. This is a structured log file and the contents can be used for auditing RadiantOne activity. The output is a text file named vds_server_access.log and a .csv file named vds_server_access.csv. <!-- From the Main Control Panel > Settings tab > Logs section > Access Logs, you can indicate the output format. If you want the logs to be written to a database, check the CSV output format. Then, use the RadiantOne Log2DB utility, which reads the CSV log contents and writes them to the database that is configured in the Reporting > Log2DB Settings section.-->
 
 The access log rolls over when it reaches 100MB in size. This size can be set in the Rollover size property. The access logs are kept for 30 days by default and then deleted. This is configurable in the “Rollover: How long to keep the logs” property.
 
-<!-- 
-For more details on the access log including advanced settings for archiving destination and logging into a database, please see the RadiantOne Logging and Troubleshooting Guide.
--->
+For more details on the access log, please see the RadiantOne Logging and Troubleshooting Guide.
 
 ## Changelog
 
 The changelog is one of the recommended approaches for other processes to detect changes that have happened to RadiantOne entries. The [Persistent Search control](settings-tab#persistent-search-control) is the other method that can be used.
 
-The Changelog can be enabled from the Main Control Panel > Settings Tab > Logs section > Changelog sub-section. If enabled, the change log stores all modifications made to any entry in the RadiantOne namespace including entries that are stored in [persistent cache](cache.md). The contents of the change log can be viewed below the cn=changelog suffix in the directory.This suffix is indicated in the RadiantOne rootDSE changelog attribute. The [rootDSE](settings-tab#rootdse) also contains the firstchangenumber and lastchangenumber attributes. This information can be used by clients as a cursor to track changes.
+The Changelog can be enabled from the Main Control Panel > Settings Tab > Logs section > Changelog sub-section. If enabled, the change log stores all modifications made to any entry in the RadiantOne namespace including entries that are stored in [persistent cache](cache.md). The contents of the change log can be viewed below the cn=changelog suffix in the directory.This suffix is indicated in the RadiantOne rootDSE changelog attribute. The rootDSE also contains the firstchangenumber and lastchangenumber attributes. This information can be used by clients as a cursor to track changes. Access the rootDSE by querying the RadiantOne service with an empty/blank Base DN.
 
 Each entry in the changelog is comprised of the following attributes:
 
@@ -63,20 +57,6 @@ Changes to entries in certain naming contexts representing certain RadiantOne Un
 
 Whenever the RadiantOne service starts, the changelog storage is checked to see if there are enough change numbers left for use (a total of 2 billion numbers are allocated for use). If there is less than 10% of the 2 billion numbers left, the existing records are automatically be rolled over into the corresponding backup storage and the change number will start over at number 1. 
 
-The backup locations are as follows:
-
-```
-<RLI_HOME>\vds_server\data_backup\most_recent\db_changelog 
-```
-
-The most_recent\db_changelog directory contains the most current back up image. 
-
-```
-<RLI_HOME>\vds_server\data_backup\prev_record\db_changelog
-```
-
-The prev_record\db_changelog contains all previous images that have been backed up (prior to the most recent image). The previous images are stored as a precaution in case the most recent image is damaged or unusable.
-
 While the RadiantOne service running, once the change log number reaches 90% capacity (90% of the allocated 2 billion numbers are used), the following warning message will appear in the RadiantOne log "!!!  90% change numbers have been used! The VDS should be restarted to prevent any possible exhaust of change number and loss of change records." When this message appears, the RadiantOne service should be restarted. If it is not restarted and the entire 2 billion allocated numbers are used, changes are no longer logged into the changelog.
 
 ### Excluded Change Log Attributes
@@ -93,7 +73,7 @@ To exclude attributes in changelog searches:
 
 4.	Add users and/or groups that you do not want to have access to the “changes” attribute for certain attributes. For more information on adding users and groups, refer to the RadiantOne Namespace Configuration Guide. 
 
-5.	On the Zookeeper tab, expand radiantone/v2/<clustername>/config. 
+5.	On the Zookeeper tab, expand `radiantone/v2/<clustername>/config`. 
 
 6.	Select vds_server.conf. 
 
@@ -138,7 +118,7 @@ This parameter is set in the Main Control Panel > Settings Tab > Logs section > 
 
 This is the number of milliseconds RadiantOne waits to receive a response from the replication journal. When the replication journal read timeout time is exceeded, RadiantOne skips the entry, and the next entry in the replication journal is searched. The next time the RadiantOne node checks the replication journal, it attempts to read the skipped entries.
 
-This setting is in Zookeeper and can be edited from the Main Control Panel -> ZooKeeper tab at `radiantone/v2/<clustername>/config/vds_server.conf` (or from command line using the vdsconfig utility). The setting is called “replicationReadTimeoutMS”. The default is 0 (no timeout) meaning that the RadiantOne service waits forever for a response from the query to the replication journal. If the replicationReadTimeMS property is zero and there is a non-zero value for the Operation Timeout in the JNDI Pooling property (Main Control Panel > Settings > Server Backend > Connection Pooling), RadiantOne uses the Operation Timeout value to determine how long to wait for a response when querying the replication journal. If the replicationReadTimeMS property has a non-zero value, then it overrides the Operation Timeout value.
+This setting is in Zookeeper and can be edited from the Main Control Panel > ZooKeeper tab at `radiantone/version/<clustername>/config/vds_server.conf`. The setting is called “replicationReadTimeoutMS”. The default is 0 (no timeout) meaning that the RadiantOne service waits forever for a response from the query to the replication journal. If the replicationReadTimeMS property is zero and there is a non-zero value for the Operation Timeout in the JNDI Pooling property (Main Control Panel > Settings > Server Backend > Connection Pooling), RadiantOne uses the Operation Timeout value to determine how long to wait for a response when querying the replication journal. If the replicationReadTimeMS property has a non-zero value, then it overrides the Operation Timeout value.
 
 ### Persistent Cache Refresh Log Level
 
@@ -176,6 +156,6 @@ The [Server Control Panel > Dashboard tab](clusters-tab#dashboard-tab), displays
 
 RadiantOne logs statistics related to operations it receives. This includes average execution time, peak execution time, and whether the operation was successful. No actual data (entires/attributes) is logged, only metadata. This log is primarily for Radiant Logic support to have key information to assist with troubleshooting.
 
-This logging is enabled by default and can be managed from the Main Control Panel > Settings Tab > Logs section > Statistics > Statistics Analyzer Settings sub-section. The log location is <RLI_HOME>/vds_server/logs/stats.log. This logging is enabled by default and calculates statistics during 1 minute intervals prior to saving to the stats.log.
+This logging is enabled by default and can be managed from the Main Control Panel > Settings Tab > Logs section > Statistics > Statistics Analyzer Settings sub-section. The log name is stats.log. This logging is enabled by default and calculates statistics during 1 minute intervals prior to saving to the stats.log.
 
-For each RadiantOne Universal Directory store or persistent cache initialization, statistics are calculated for the total number of entries and sub-categorized by branches and object classes. The average and peak number of attributes per entry, and the average and peak size (in KB) per entry are also calculated. This information is logged into the <RLI_HOME>/vds_server/logs/stats.log. This logging is enabled by default and can be managed from the Main Control Panel > Settings Tab > Logs section > Statistics > Init Statistics Settings sub-section.
+For each RadiantOne Universal Directory store or persistent cache initialization, statistics are calculated for the total number of entries and sub-categorized by branches and object classes. The average and peak number of attributes per entry, and the average and peak size (in KB) per entry are also calculated. This information is logged into the stats.log. This logging is enabled by default and can be managed from the Main Control Panel > Settings Tab > Logs section > Statistics > Init Statistics Settings sub-section.

@@ -7,11 +7,7 @@ description: System Administration Guide
 
 From the Settings Tab, you can manage the majority of RadiantOne settings. All settings found on this tab are detailed in this section.
 
-Cluster settings are stored in ZooKeeper. These can be viewed/edited from the Zookeeper tab in the Main Control Panel (navigate to radiantone > `<version>` > <cluster_name> > config > vds_server.conf and click **Edit Mode** in the upper right corner). Or, these settings can be viewed/edited with ZooInspector. ZooInspector can be started with: <RLI_HOME>\apps\zookeeper\contrib\ZooInspector\run.cmd (or run.sh on UNIX platforms). In ZooInspector, click on ![zooinspector button](Media/zooinspector-button.jpg) to connect to the ZooKeeper instance. For more details on ZooKeeper, please see the RadiantOne Architect Guide.
-
-![ZooInspector](Media/Image3.37.jpg)
- 
-Figure 1: ZooInspector
+Cluster settings are stored in ZooKeeper. These can be viewed/edited from the Zookeeper tab in the Main Control Panel (navigate to radiantone > `<version>` > <cluster_name> > config > vds_server.conf and click **Edit Mode** in the upper right corner).
 
 ## Server Front End
 
@@ -25,16 +21,16 @@ Figure 2: Administration Section
 
 #### LDAP Port
 
-The LDAP port that the RadiantOne service listens on. By default, this value is set to 2389 (this can be set during the RadiantOne install). 
-<!-- couple of things to keep in mind if you plan on changing the port are: on Windows platforms, you can use any available port less than 65355 and on UNIX platforms you must have admin/root privileges to start the RadiantOne service on any port less than 1024 (because these are considered "privileged").-->
+<!--The LDAP port that the RadiantOne service listens on. By default, this value is set to 2389 (this can be set during the RadiantOne install). 
+A couple of things to keep in mind if you plan on changing the port are: on Windows platforms, you can use any available port less than 65355 and on UNIX platforms you must have admin/root privileges to start the RadiantOne service on any port less than 1024 (because these are considered "privileged").-->
 
 <!-- [!warning] The RadiantOne service must be stopped before changing the port. If RadiantOne is deployed in a cluster, it must be stopped on all nodes. In the Main Control Panel go to the Dashboard tab and stop the RadiantOne service. If it is running as a service/daemon, stop it from the applicable service window/command. Once the service has stopped, change the port on the Settings tab, Server Front End section, Administration. Click Save. Now, re-start the service and it listens on the new port. Also, you must manually edit both the vdsha and replicationjournal LDAP data sources to update the port here as well, in both the primary server settings and for servers defined in the “Failover LDAP Servers” section. Changes to the data sources are performed from the Main Control Panel > Settings Tab > Server Backend > LDAP Data Sources.-->
 
-The RadiantOne service can also listen on an [SSL port](security#ssl-settings), [HTTP port](settings-tab#web-services-http-port) (to process DSML, SPML, SCIM or REST requests) or a [SQL port](settings-tab#sql).
+The RadiantOne service also offers an endpoint for the [HTTP port](settings-tab#web-services-http-port) for SCIM and REST requests.
 
 #### Directory Manager User
 
-The directory manager (cn=directory manager by default) is the super user for the directory and this account is defined during the RadiantOne install.
+The directory manager (cn=directory manager by default) is the super user for the directory and this account is defined during the RadiantOne install. For details on defining this account, see the Environment Operations Center Guide.
 
 The super user is the only user that can login to the Main Control Panel while RadiantOne is not running. When you log into the Main Control Panel with this user, you can perform any of the operations described in [Delegation Administration](administration-and-configuration#delegated-administration-of-radiantone). Also, access permissions and password policies do not apply for this user. This safety measure prevents someone from accidentally denying the rights needed to access and manage the server. Access to this super user account should be limited. If you require many directory managers, add these as members to the [Directory Administrator Role](administration-and-configuration#delegated-administration-roles) instead of having them all use the single super user account.
 
@@ -62,16 +58,6 @@ If you update the Directory Manager username, the LDAP entry in the RadiantOne n
 The directory administrator (cn=directory manager) password is set during the install of RadiantOne and can be changed here. To change this password, from the Main Control Panel > Settings Tab > Administration section, click “Change the password” link. Enter the new value and click **Save** in the upper right corner.
 
 >[!warning] if you change the password and you are currently logged into the Control Panel as the directory administrator, you must close the Control Panel and re-open it logging in with the new password.
-
-To change the directory manager’s password from the Instance Manager command line utility, you can use the following command:
-
-```
-<RLI_HOME>/bin/instancemanager -u -n vds_server -p 2389 -w newpassword
-```
-
-The -p option is required when updating the password.
-
-The RadiantOne service must be stopped when running this command. For more details on the Instance Manager utility, please see the RadiantOne Deployment and Tuning Guide.
 
 You can also change the directory administrator’s password via LDAP. The DN representing the directory administrator is: cn=Directory Manager,ou=RootUsers,cn=config. The example below is using an LDIF file and the ldapmodify command to modify the password:
 
@@ -133,9 +119,6 @@ The RadiantOne service Admin HTTP Service ports are used internally for:
 -	REST admin API for collecting statistics and monitoring things like, node status, cluster status, and replication status.
 
 -	RadiantOne service actions like restart and standby. 
-You can disable the HTTP port by setting the value to zero. This leaves access only on the HTTPS port. If you disable the HTTP port, ensure the “Use SSL” setting is enabled for internal connections (Main Control Panel > Settings > Server Backend > Internal Connections), and Inter Nodes Communication is set to “Always use SSL” (Main Control Panel > Settings > Security > SSL). A restart of the RadiantOne service is required when these settings are changed. Restart the service on all cluster nodes.
-
->[!note] This setting is accessible only in [Expert Mode](introduction#expert-mode). 
 
 ## Supported Controls and Features
 
@@ -184,7 +167,7 @@ Below is an example of an LDAP client issuing a query to RadiantOne using paging
  
 Figure 4: Client Accessing RadiantOne using Paging
 
-In the <RLI_HOME>/<instance_name>/logs/vds_server_access.log you should see multiple search requests returning a maximum number of entries specified in the page size from the client (a minimum log level of ACCESS must be set for RadiantOne server log). In the screen shot above, a total of 5,040 entries were returned to the client.
+In the vds_server_access.log you should see multiple search requests returning a maximum number of entries specified in the page size from the client (a minimum log level of ACCESS must be set for RadiantOne server log). In the screen shot above, a total of 5,040 entries were returned to the client. The vds_server_access.log can be viewed and downloaded from the Server Control Panel > Log Viewer.
 
 Sample vds_server_access.log content:
 
@@ -639,7 +622,7 @@ For complete details on how query memory cache works, please see the RadiantOne 
 
 ### Other Access Protocols
 
-In addition to supporting LDAP operations, RadiantOne can also be accessed via SQL (JDBC), SPML, DSML, REST and SAML. The configuration for these additional services is located on the Settings tab, Server Front End Section, Other Protocols sub-section.
+In addition to supporting LDAP operations, RadiantOne can also be accessed via SPML, DSML, REST and SAML. The configuration for these additional services is located on the Settings tab, Server Front End Section, Other Protocols sub-section.
 
 ![Other Protocols Section](Media/Image3.58.jpg)
 
@@ -668,13 +651,7 @@ To enable SQL access:
 
 #### Web Services (HTTP) Port
 
-The HTTP interface is enabled by default. These are the ports the RadiantOne service accepts web service requests (SCIM, ADAP, DSML, SPML) on. For details on accessing the RadiantOne Web Services, please see the RadiantOne Web Services API Guide. 
-
-If you would only like to support encrypted traffic over HTTPS, just set the standard HTTP port to a value of 0.
-
->[!warning] you can enable both secure and non-secure ports. This way, clients may choose to use either one.
-
-Restart the RadiantOne service if changes are made to these settings. If RadiantOne is deployed in a cluster, the service on all nodes must be restarted.
+The HTTPS interface is enabled by default. The RadiantOne service accepts web service requests (SCIM, ADAP, DSML, SPML) on this endpoint. For details on accessing the RadiantOne Web Services, please see the RadiantOne Web Services API Guide. 
 
 #### DSML, SPML, SCIM, REST (ADAP), SAML
 

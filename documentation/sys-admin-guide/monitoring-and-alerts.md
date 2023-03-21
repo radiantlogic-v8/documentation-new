@@ -19,7 +19,7 @@ File alerts are enabled by default for some standard alerts which are associated
 
 File alerts can be enabled for custom alerts also. These settings are in the Monitoring > Custom Alerts section.
 
-File alerts are logged in a CSV formatted file located at <RLI_HOME>/logs/alerts.log.
+File alerts are logged in a CSV formatted file alerts.log.
 
 In the File Alerts Settings section, indicate a rollover file size and how many files to keep in the archive.
 

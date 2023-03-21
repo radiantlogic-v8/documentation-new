@@ -5,19 +5,13 @@ description: System Administration Guide
 
 # Administration and Configuration
 
-## Identity Service Wizards
+## Identity Service Tools
 
-RadiantOne includes a set of wizards to assist administrators with some of the most common configuration tasks. They are designed to guide administrators through the creation of an identity service. This includes tasks such as building a unique user list, how to handle group entries (migrate them or create dynamic groups), and how to design the namespace (flat tree or merge into an existing hierarchy). Each wizard is tailored for specific use cases, depending on the needs of the applications that will be consuming the identity service.
+RadiantOne includes a set of tools to assist administrators with some of the most common analysis and configuration tasks.
 
-The wizards are launched from the [Wizards Tab](wizards-tab#wizards-tab) in the Main Control Panel. The RadiantOne service must be running prior to launching a wizard and can be started from the Dashboard tab in the Main Control Panel if needed.
+The tools are launched from the [Wizards Tab](wizards-tab#wizards-tab) in the Main Control Panel. The RadiantOne service must be running prior to launching a wizard and can be started from the Dashboard tab in the Main Control Panel if needed.
 
-Below is a summary for each wizard. For more information including configuration steps, please see the Identity Service Wizards Guide.
-
-### Directory Tree Wizard
-
-The Directory Tree Wizard creates a virtual view which can aggregate multiple types of backends (combination of directories, database, web services, and so on) under a naming context. The wizard guides you through creating the root naming context, creating levels of hierarchy beneath the root naming context, and mounting LDAP and database backends to leaf nodes.
-
-Data sources that you connect to in the Directory Tree Wizard must be configured prior to reaching the Define Backends page of the wizard. This can be done before launching the wizard from the Main Control Panel > Settings tab > Server Backend section.
+Below is a summary for each tool. For more information including configuration steps, please see the Data Analysis Guide and the Global Identity Builder Guide.
 
 ### Identity Data Analysis
 
@@ -28,24 +22,6 @@ The Identity Data Analysis tool generates a report for each of your data sources
 ### Global Identity Builder
 
 The Global Identity Builder can be used in situations where applications require a single data source to locate all users required for authentication and/or need to access a complete user profile for attribute-based authorization. The overlapping identities do not need to have a single common identifier, because a combination of matching rules can be used to determine a link. The Global Identity Builder creates a unique reference list of identities spread throughout multiple data silos. An existing single source of identities is not required. For details, please see the RadiantOne Global Identity Builder Guide.
-
-### Groups Builder
-
-The Groups Builder Wizard manages virtual views for defining groups and members. With this wizard, you can define rules for dynamically creating groups from multiple heterogeneous data sources. Administrators can utilize this wizard to either create user-defined or auto-generated groups. 
-
-For more information on [groups](concepts#groups) supported in RadiantOne please see [Concepts](concepts.md).
-
-The Groups Builder wizard should be used in situations where applications are accessing RadiantOne to retrieve groups/membership for enforcing authorization and a list of applicable groups either does not currently exist in any backend data source or the existing groups are insufficient because they lack all the required members. This wizard should be used if there is the need to add new members into existing groups or if there is the need to build entirely new global groups containing members from multiple different data sources.
-
-### Groups Migration
-
-Existing group membership references user DNs, the naming of which is based on the structure of the LDAP directory. When you model a new directory namespace with virtualization, the user DNs change. The four steps in the Group Migration Wizard assist with the effort of translating the existing group membership to match the new namespace. 
-
-### Merge Tree
-
-The Merge Tree Wizard merges multiple data sources into a single RadiantOne naming context, while maintaining the underlying directory hierarchy. The Merge Tree Wizard is ideal for situations where applications expect to find information in an explicit hierarchy which already exists in a backend LDAP directory and there is a need to extend a part of this hierarchy with additional entries from other data sources. 
-
->[!warning] The Merge Tree Wizard does not perform identity correlation or joins. If the data sources being merged contain overlapping users (identified by the same DN after the merge) only the entry from the primary/main source are returned when browsing or searching against the view. If the overlapping users have an attribute in common, you can always join the view created in the merge tree wizard with another virtual view to return attributes from other sources.
 
 ## Delegated Administration of RadiantOne
 
@@ -430,7 +406,7 @@ Figure 8: Example of Assigning an Existing Group to the Directory Administrator 
 
 8.	Go to the Main Control Panel > Zookeeper tab (requires [Expert Mode](introduction#expert-mode)).
 
-9.	Navigate to /radiantone/v1/cluster/config/vds_server.conf.
+9.	Navigate to `/radiantone/<version>/<clusterName>/config/vds_server.conf`.
 
 10.	Click **Edit Mode**.
 
@@ -461,8 +437,7 @@ Role	| Required Permissions (Value of vdPrivilege)
 <span style="color:lightblue">Operator</span> <br> Members of this group can perform the following operations: <br> Read RadiantOne configuration <br> Create, update, or delete RadiantOne Universal Directory (HDAP) Stores <br> Restart the RadiantOne service from the Main Control Panel <br> Stop the RadiantOne service from the Main Control Panel <br> Launch Tasks | <span style="color:lightblue">config-read <br> config-write <br> services-restart <br> services-shutdown <br> data-store-read <br> data-store-write <br> tasks-admin <br> naming-context-read</span>
 <span style="color:lightblue">Schema Administrator </span> <br> Members of this group can perform the following operations: <br> Read RadiantOne configuration <br> Create, update or delete schema objects (objectclasses or attributes <br> Extend RadiantOne LDAP schema with objects and attributes from orx files <br> Create, update or delete data sources | <span style="color:lightblue">config-read <br> update-schema <br> data-source-read <br> data-source-write </span>
 <span style="color:lightblue">ACI Administrator</span> <br> Members of this group can perform the following operations: <br> Read RadiantOne configuration <br> Create, update and delete access controls | <span style="color:lightblue">config-read <br> acl-read <br> acl-write <br> naming-context-read </span>
-<span style="color:lightblue">ICS Administrator</span> <br> Members of this group can perform the following operations: <br> Read RadiantOne configuration <br> Access Wizards tab in Main Control Panel <br> Perform all operations from the Global Sync Tab <br> Log into the RadiantOne Global Identity Viewer console and access all applications	| <span style="color:lightblue">config-read <br> config-write <br> naming-context-read <br> data-source-read <br> ics-admin <br> ics-workflow-approve <br> tasks-admin <br> globalidviewer-read <br> globalidviewer-write <br> globalidviewer-designer</span>
-<span style="color:lightblue">Approvers</span> <br> Members of this group can perform the following operations: <br> Read RadiantOne configuration <br> Access the Approvals Application in the RadiantOne Global Identity Viewer Console | <span style="color:lightblue">config-read <br> ics-workflow-approve </span>
-<span style="color:lightblue">ICS Operator</span> <br> Members of this group can perform the following operations: <br> Read RadiantOne configuration <br> Access the Global Sync tab and read topologies <br> Log into the RadiantOne Global Identity Viewer console and access all applications | <span style="color:lightblue">config-read <br> ics-operator
+<span style="color:lightblue">ICS Administrator</span> <br> Members of this group can perform the following operations: <br> Read RadiantOne configuration <br> Access Wizards tab in Main Control Panel <br> Perform all operations from the Global Sync Tab <br> Log into the RadiantOne Global Identity Viewer | <span style="color:lightblue">config-read <br> config-write <br> naming-context-read <br> data-source-read <br> ics-admin <br> ics-workflow-approve <br> tasks-admin <br> globalidviewer-read <br> globalidviewer-write <br> globalidviewer-designer</span>
+<span style="color:lightblue">ICS Operator</span> <br> Members of this group can perform the following operations: <br> Read RadiantOne configuration <br> Access the Global Sync tab and read topologies <br> Log into the RadiantOne Global Identity Viewer | <span style="color:lightblue">config-read <br> ics-operator
 <span style="color:lightblue">Global ID Viewer Design</span> <br> Members of this group can log into the Global Identity Viewer and perform the following operations: <br> View entries & attributes <br> Perform searches <br> Edit & delete templates <br> Create, edit and delete queries <br> Export search results <br> Modify attribute values <br> Configure and schedule reports <br> For details on the Global Identity Viewer, see the RadiantOne Global Identity Viewer Guide | <span style="color:lightblue"> config-read <br> config-write <br> globalidviewer-designer <br> tasks-admin
 <span style="color:lightblue">Global ID Viewer Write</span> <br> Members of this group can log into the Global Identity Viewer and perform the following operations: <br> View entries & attributes <br> Perform searches <br> Export search results <br> Modify attribute values <br> For details on the Global Identity Viewer, see the RadiantOne Global Identity Viewer Guide	| <span style="color:lightblue"> config-read <br> globalidviewer-write

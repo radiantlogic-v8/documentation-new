@@ -20,7 +20,6 @@ You can define access to the following subjects:
 -	a particular user
 -	all users who belong to a specific group
 -	all users of the directory
--	a specific client identified by its IP address
 
 Access controls are set from the Main Control Panel > Settings Tab > Security section > Access Control sub-section. 
 
@@ -98,6 +97,8 @@ Figure 5: Manual Edit of ACI
 
 The Authentication Context section offers a variety of settings related to bind rules that can be used for defining the access control instruction. These include the level of assurance associated with the authentication method, days and times of the week during which the identity is allowed to authenticate, and location from which the identity must bind (IP or DNS addresses).
 
+<!-->
+
 #### Level of Assurance
 
 A Level of Assurance, as defined by the ISO/IEC 29115 Standard, describes the degree of confidence in the process leading up to and including an authentication. It provides assurance that the entity claiming a particular identity, is the entity to which that identity was assigned. There are 5 levels of assurance used by RadiantOne to enforce access controls to data. The default level is no enforcement of assurance (Level 0). You can use this level when there is minimum risk associated with the authentication strength used to access the RadiantOne data. 
@@ -106,7 +107,7 @@ Level 1 indicates an authentication method of basic credentials (username+passwo
 
 Level 2 indicates an authentication method of Kerberos (leveraging GSSAPI) is required to access the data. At this level, there is some confidence in the asserted identity's validity. You can use this level when there is moderate risk associated with the authentication strength used to access the RadiantOne data.
 
-<!-- >[!warning] Ensure you have RadiantOne configured properly as a [Kerberos LDAP service](security#kerberos).-->
+[!warning] Ensure you have RadiantOne configured properly as a [Kerberos LDAP service](security#kerberos).
 
 Level 3 indicates multi-factor authentication (e.g. RSA SecurID token code, Yubikey) is required to access the data. At this level, there is high confidence in the asserted identity's validity. You can use this level when there is high risk associated with the authentication strength used to access the RadiantOne data. 
 
@@ -118,6 +119,8 @@ Level 4 indicates certificate-based (mutual) authentication is required to acces
 >[!warning] Ensure you have RadiantOne configured properly for [Mutual Authentication](server-backend#mutual-authentication).
 
 Select the assurance level from the drop-down list and select an operator. You can use Equals (=), Not Equal To (!=), Greater Than (>), Greater Than or Equal To (>=), Less Than (<), or Less Than or Equal To (<=).
+
+-->
 
 #### Days and Times
 
@@ -201,7 +204,8 @@ A subject is whom the access control rule applies to. The subject types that can
 -	Authenticated – applicable to any user who successfully authenticates.
 -	Parent – applicable to the entry only if their bind DN is the parent of the targeted entry. For example, to allow users to modify any child entries of their bind DN, create the following ACI on the dv=address book,o=vds node:
 (targetattr = "*")(target = "ldap:///dv=address book,o=vds")(targetscope = "subtree")(version 3.0;acl "myaci";allow (write) (userdn = "ldap:///parent");)
--	IP Address – applicable to a specific client IP address. 
+
+<!-->
 
 You can indicate that a client connection must originate from a single IP address or a range of addresses. Both IPv4 and IPv6 addresses are supported and you can indicate a range of IP addresses using “/”. A mix of IPv4 and IPv6 can also be used. See below for examples:
 
@@ -219,6 +223,8 @@ For IPv6 addresses, use the syntax defined by RFC 2373. For example, 0:0:0:0:0:0
 
 >[!note] to use DNS addresses, manually edit the ACI after saving it by clicking **Manually Edit**. Use the keyword dns and enter the fully qualified DNS domain name. Use an operator of either “equal to” (=) or “not equal to” (!=). Wildcards are supported in the DNS address.
 
+-->
+
 ## ACI Evaluation Rules
 
 The ACI evaluation rules that RadiantOne follows are:
@@ -235,7 +241,7 @@ The ACI evaluation rules that RadiantOne follows are:
 
 If both lists are empty, access is denied.
 
->[!warning] to troubleshoot/trace ACI evaluation decisions, [RadiantOne server log level](logs#log-settings) must be set to DEBUG. When DEBUG level is set, the evaluation rules can be seen in: <RLI_HOME>/vds_server/logs/vds_server.log
+>[!warning] to troubleshoot/trace ACI evaluation decisions, [RadiantOne server log level](logs#log-settings) must be set to DEBUG. When DEBUG level is set, the evaluation rules can be seen in vds_server.log. This log can be viewed and downloaded from Server Control Panel > Log Viewer.
 
 ## Setting Access Controls
 

@@ -11,20 +11,7 @@ For details on deploying RadiantOne including tuning and maintenance, please see
 
 ## Technical Support
 
-Before contacting Customer Support, please make sure you have the following information:
-
--	Version of RadiantOne. 
-
--	Type of computer you are using including operating system.
-
--	The license number for your software.
-
--	A description of your problem including error numbers if appropriate
-Technical support can be reached using any of the following options:
-
--	E-mail: support@radiantlogic.com
-
--	Website: https://support.radiantlogic.com 
+Refer to the [Technical support guide](../common-info/technical-support.md) for more information.
 
 ## Expert Mode
 

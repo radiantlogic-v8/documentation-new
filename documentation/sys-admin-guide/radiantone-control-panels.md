@@ -11,17 +11,11 @@ The RadiantOne Control Panels are web-based interfaces to provide remote access 
 
 For cluster deployments, each RadiantOne node includes a Control Panel and administrators can log into any of them.
 
-## Starting the Control Panels
+## Accessing the Control Panels
 
-The Control Panels utilize a web server that is installed with RadiantOne. The default http port for the web server is 7070 (you can set the port during the RadiantOne install on the settings for the Control Panel). For details on starting the web server that hosts the Control Panels, please see the RadiantOne Deployment and Tuning Guide.
+The Control Panels utilize a web server that is installed with RadiantOne. The endpoint to access the Control Panel is defined when you create an environment in the Environment Operations Center. For details on creating environments and locating the Control Panel endpoint, see the Environment Operations Center Guide.
 
-## Accessing the Main Control Panel
-
-If the Web Server is already started, you can also access the control panel by opening a web browser and use the following URL: <RadiantOne server machine>:<control panel port set during RadiantOne install>/main/login. You would also use this method for accessing the control panel from a remote machine.
-
-The Main Control Panel displays the name of the RadiantOne cluster. 
-
-![An image showing ](Media/Image3.10.jpg)
+![An image showing ](Media/login-page.png)
 
 Figure 1: Main Control Panel Login Page
 
@@ -89,7 +83,7 @@ Figure 2: Client Certificate DN Mapping
 
 11.	Open a Chrome Internet browser and use Ctrl+Shift+n to enter incognito mode (you can use other browsers, and it is also recommended to use Incognito/InPrivate mode to ensure no cache affects the behavior).
 
-12.	Access the Control Panel on the HTTPS port. E.g. https://w-rli10-lisapc:7171/main/login
+12.	Access the Control Panel on the HTTPS endpoint. E.g. https://cp-rliqa.dc.federated-identity.com/main/login
 <br>By default, the Control Panel leverages the same SSL server certificate as the RadiantOne service. Make sure this certificate is trusted by your computer/browser, otherwise the browser displays security warnings when you access the Control Panel over HTTPS. An example is shown below.
 
 ![Security Message in Browser Due to Untrusted Certificate of the Control Panel](Media/Image3.12.jpg)
@@ -107,104 +101,6 @@ Figure 4: User Selects Certificate Associated with PIV Card
 15.	Once logged into the Main Control Panel, the user is prompted to select the certificate again. This second prompt is to indicate the credentials to be used for the Directory Browser tab (as a REST client to the RadiantOne service). 
 
 >[!warning] If you log out of the Control Panel, you are redirected to the main login form. If you want to be prompted to select your certificate again, you must close and re-open your web browser.
-
-### Logging in with Two-factor Authentication
-
-The Control Panel, as a client to the RadiantOne service, supports two-factor authentication for administrators to log in. This is supported through the Custom Authentication Provider framework and supports RSA SecurID and Yubikey token codes by default. High-level configuration steps to support two-factor authentication for RadiantOne administrators are outlined below. For details on Custom Authentication Providers, see the RadiantOne Custom Authentication Providers Guide.
-
->[!warning] Two-factor authentication is not required for the RadiantOne super user account (e.g. cn=directory manager). If a custom authentication provider is enabled for other RadiantOne delegated administrator accounts, the super user account is still able to log into the Control Panel without requiring two-factor authentication. This is to prevent complete lockout of server administration.
-
-1.	Create a custom data source that defines the connection to the web service for credentials validation.
-
-2.	Configure a Custom Authentication Provider (Settings -> Interception -> Custom Authentication Provider) that indicates the base DN where administrator accounts are located (e.g. cn=config), reference to the custom data source created in step 1, and other necessary parsing criteria of the password.
-
-![Custom Authentication Provider Example](Media/Image3.14.jpg)
- 
-Figure 5: Custom Authentication Provider Example
-
-3.	Ensure the delegated administrator accounts have an attribute that contains their unique ID in the custom authentication service. In the example shown above, the token ID is set in the carLicense attribute.
-
-![Token ID Defined for an Administrator Example](Media/Image3.15.jpg)
-
-Figure 6: Token ID Defined for an Administrator Example
-
-4.	Restart the RadiantOne service and Jetty (hosting the control panel). If a cluster is deployed, restart them on all nodes.
-
-5.	Log out/re-log into the Control Panel with the administrator password (in the password property) and one time code (in the passcode property). RadiantOne delegates the credentials checking based on the configuration defined in the Custom Authentication Provider.
-
-![Control Panel Login when a Custom Authentication Provider is Configured](Media/login-page.png)
- 
-Figure 7: Control Panel Login when a Custom Authentication Provider is Configured
-
-### Accessing the Control Panel over SSL
-
-If you are using a self-signed server certificate (or any certificate not signed by a trusted/known Certificate Authority), you must install/trust the RadiantOne server certificate into your Internet browser. This can be done with the steps below.
-
-1.	Open your Internet Browser (as an administrator, in order to install the RadiantOne server certificate when prompted) and navigate to the Control Panel on the HTTPS port (e.g. https://radiantoneserver:7171). 
-
-2.	The browser should warn you about the certificate. Select to continue/proceed.
-
-3.	Click on the "Certificate Error" red area in the address bar, to show information about the certificate.
-
-![Certificate Information](Media/Image3.17.jpg)
-
-Figure 8: Certificate Information
-
-4.	Select the option to install the certificate, in Trusted Root Certificates.
-
-![Installing the Certificate](Media/Image3.18.jpg)
-
-Figure 9: Installing the Certificate
-
-5.	Restart your browser after installing the certificate.
-
-6.	If your browser does not have the option to install it, you can export the certificate and then import it directly in your browser settings. Below is an example for Google Chrome.
-
-7.	Click the Certificate Information link.
-
-![Importing the Certificate](Media/Image3.19.jpg)
-
-Figure 10: Importing the Certificate
-
-8.	On the Details tab, click **Copy to File**. 
-
-9.	Click **Next** in the Certificate Export Wizard. 
-
-10.	Choose DER encoded binary and click Next. Enter a file name (e.g. jetty.cer) and click **Next**. 
-
-11.	Click **Finish** and then click **OK**.
-
-12.	Go to your Internet browser settings. The example below shows the Google Chrome browser settings.
-
-![Browser Settings in Google Chrome](Media/Image3.20.jpg)
-
-Figure 11: Browser Settings in Google Chrome
-
-13.	Under settings, click **Show Advanced Settings**.
-
-14.	Click **Manage Certificates** in the HTTPS/SSL section. 
-
-![“Manage certificates” option in Google Chrome](Media/Image3.21.jpg)
-
-Figure 11: “Manage certificates” option in Google Chrome
-
-15.	On the Trusted Root Certification Authorities tab, click Import. 
-
-16.	Click **Next** in the Certificate Import Wizard. 
-
-17.	Click **Browse** to navigate to the certificate file you exported above. 
-
-18.	Click **Next**. 
-
-19.	Click **Next**.
-
-20.	Click **Finish**. 
-
-21.	Click **OK** to exit the confirmation. 
-
-22.	Click **Close** to close the certificate window. Restart your browser and then go to the Main Control Panel again on the HTTPS port. You should not see the certificate warning anymore.
-
->[!note] In cluster deployments, when you access the Main Control Panel via HTTPS, it connects to the RadiantOne service on the HTTPS web service port (https://rliserver:8090). To avoid connection problems, your browser must trust the RadiantOne server certificate of each cluster node.
 
 ### OpenID Connect Token Authentication 
 
@@ -241,11 +137,10 @@ Detailed steps:
 
 To enable support for OIDC authentication:
 
-1.	Have your client ID and secret associated with the Control Panel application configured in your OIDC server ready. The Redirect URLs configured for the web application should point to the URLs associated with the Main Control Panel (one for the HTTP port and one for HTTPS:
+1.	Have your client ID and secret associated with the Control Panel application configured in your OIDC server ready. The Redirect URL configured for the web application should point to the URLs associated with the Main Control Panel 
 
 ```
-http://hostname:7070/main/j_spring_openid_security_check
-https://hostname:7171/main/j_spring_openid_security_check
+https://cp.federated-identity.com/main/j_spring_openid_security_check
 ```
 
 2.	Log into the Main Control Panel.
@@ -254,15 +149,7 @@ https://hostname:7171/main/j_spring_openid_security_check
 
 4.	Select an OIDC Provider from the drop-down list. If you are using your own provider, select the Custom option.
 
-5.	Click Discover. The Authorization Endpoint URL and Token Endpoint URL should auto-populate. If you configure a custom provider, you can enter the needed Authorization Endpoint URL and Token Endpoint URL. In OpenID Connect the authorization endpoint handles authentication and authorization of a user. In the OpenID Connect Authorization Code Flow, the token endpoint is used by a client to obtain an ID token, access token, and refresh token. To use the embedded OIDC server in RadiantOne, the following URLs can be used (enter your FID server name accordingly):
-<br>metadata endpoint (discovery URL): 
-<br>https://<RadiantOneServer>:7171/openid/.well-known/openid-configuration
-<br>user endpoint:
-<br>https://<RadiantOneServer>:7171/openid/userinfo
-<br>token endpoint:
-<br>https://<RadiantOneServer>:7171/openid/token
-<br>authorization endpoint:
-<br>https://<RadiantOneServer>:7171/openid/authorize
+5.	Click Discover. The Authorization Endpoint URL and Token Endpoint URL should auto-populate. If you configure a custom provider, you can enter the needed Authorization Endpoint URL and Token Endpoint URL. In OpenID Connect the authorization endpoint handles authentication and authorization of a user. In the OpenID Connect Authorization Code Flow, the token endpoint is used by a client to obtain an ID token, access token, and refresh token.
 
 6.	Enter the Client ID associated with the Control Panel application configured in the OIDC provider.
 
@@ -306,7 +193,7 @@ The Main Control Panel login page contains a basic username and password text bo
 
 2.	Go to the Zookeeper tab (requires [Expert mode](introduction#expert-mode)).
 
-3.	Navigate to radiantone/<version>/cluster/config/vds_server.conf.
+3.	Navigate to `radiantone/<version>/<clusterName>/config/vds_server.conf`.
 
 4.	On the right, click **Edit Mode**.
 

@@ -27,19 +27,11 @@ Figure 1: SSL Settings
 
 ## SSL Settings
 
-SSL settings are applicable to clients connecting to the RadiantOne service via LDAPS and involve enabling SSL/TLS <!-- and Start TLS, --> indicating how mutual authentication should be handled, client certificate DN mapping (for enforcing authorization), managing the certificates in the default Java truststore (cacerts), which cipher suites are supported by RadiantOne, certificate revocation and inter nodes communications (relevant only for cluster deployments). These subjects are described in this section.
+SSL settings are applicable to clients connecting to the RadiantOne service LDAPS endpoint and involve  indicating how mutual authentication should be handled, client certificate DN mapping (for enforcing authorization), managing the certificates in the default Java truststore (cacerts), which cipher suites are supported by RadiantOne, andcertificate revocation. These subjects are described in this section.
 
 ### Enable SSL
 
-SSL/TLS is enabled by default (TLS v1.0, v1.1 and v1.2 are supported), and during the installation of RadiantOne a self-signed default certificate is generated. For steps on replacing the self-signed certificate, see [Replacing the Default Self-Signed Certificate](using-the-server-control-panel#replacing-the-default-self-signed-certificate).
-
-By default the SSL port is set to 636 and this is defined during the installation of RadiantOne.
-
->[!warning] you must restart the RadiantOne service after changing any SSL-related settings. RadiantOne loads the server certificate when it is started, so in order for the newly added certificate to take effect, restart the server.
-
-### Forbidding Access on the Non-SSL Port
-
-For steps to disable access on the non-ssl ports, please see the RadiantOne Hardening Guide.
+SSL/TLS is used by default and cannot be disabled. 
 
 ### Certificate-based Authentication: Support for Mutual Authentication
 
@@ -71,15 +63,13 @@ If you want to require certificate-based authentication:
 
 2. The RadiantOne service must trust the client (import the client’s public key certificate into the [RadiantOne client truststore](client-certificate-trust-store#client-certificate-trust-store-cluster-level-trust-store), unless the client certificate is signed by a known/trusted certificate authority).
 
-3. From the Main Control Panel > Settings Tab > Security section > SSL, make sure either SSL and/or StartTLS is enabled.
+3. From the Main Control Panel > Settings Tab > Security section > SSL > Mutual Auth. Client Certificate drop-down menu, select Required.
 
-4. From the Main Control Panel > Settings Tab > Security section > SSL > Mutual Auth. Client Certificate drop-down menu, select Required.
-
-5. From the Main Control Panel > Settings Tab > Security section > SSL, click **Change** next to [Client Certificate DN Mapping](security#client-certificate-dn-mapping) and define your mappings.
+4. From the Main Control Panel > Settings Tab > Security section > SSL, click **Change** next to [Client Certificate DN Mapping](security#client-certificate-dn-mapping) and define your mappings.
 
 >[!warning] the Client Certificate DN Mapping is only accessible by a member of the [Directory Administrator role/group](administration-and-configuration#delegated-administration-of-radiantone).
 
-6. Click **Save** and restart the RadiantOne service. If RadiantOne is deployed in a cluster, restart RadiantOne on all nodes.
+5. Click **Save** and restart the RadiantOne service. If RadiantOne is deployed in a cluster, restart RadiantOne on all nodes.
 
 ### Client Certificate DN Mapping
 
@@ -157,10 +147,6 @@ If all mapping rules fail to locate a user, anonymous access is granted (if anon
 
 Figure 3: Example Default Mapping Rule
 
-### Testing Certificate DN Mapping Rules
-
-The test-cert-mapping command can be used to test the subject (or SAN) associated with a given certificate against the existing certificate to DN mappings. This allows you to verify your client principal mapping rules. For information about the test-cert-mapping command see, the RadiantOne Command Line Configuration Guide.
-
 **Processing Multiple Mapping Rules**
 
 Many Client Certificate DN Mapping rules can be configured. They are processed by RadiantOne in the order they appear.
@@ -200,7 +186,7 @@ To manage the client certificates contained in the default Java trust store, cli
 
 Figure 4: Managing Client Certificates in the Default Java Truststore
 
--->
+
 
 **Viewing Client Certificates**
 
@@ -246,23 +232,18 @@ To change the Key Store password (which by default is changeit):
 
 3. Save **Save** in the upper right corner.
 
+-->
+
 ### Supported Cipher Suites
 
 To view the cipher strength levels enabled by default in RadiantOne, go to the Main Control Panel > Settings Tab > Security section > SSL sub-section and click **Change** next to Supported Cipher Suites. The ciphers that are checked are enabled. To change the enabled ciphers, check/uncheck the desired values.
 
 After changing the cipher levels, save your changes and restart the RadiantOne service.
 
-For details on installing stronger cipher suites, see the RadiantOne Hardening Guide.
-
 ### Enabled SSL Protocols
 
-The default SSL/TLS protocol options are SSLv2Hello, SSL v3, TLSv1, TLSv1.1 TLSv1.2 and TLS v1.3. Some of the less secure protocols in this list are disabled by default in the <RLI_HOME>/jdk/jre/lib/security/java.security file, noted in the jdk.tls.disabledAlgorithms property.
-
-Out of the available protocols, not in the disabled list, you can limit which ones you want RadiantOne to support. You can limit the protocols from the Main Control Panel > Settings Tab > Security section > SSL sub-section. Click **Change** next to Enabled SSL Protocols. Select the protocols to support and click **OK**. Restart the RadiantOne service on all nodes.
-
-If you want to support one of the less secure protocols, edit the java.security file and remove the protocol from the jdk.tls.disabledAlgorithms value. Then, make sure it is enabled in RadiantOne. Restart RadiantOne on all nodes. If a protocol is enabled in RadiantOne, but in the list of disabled algorithms in the java.security file, it will not be supported at runtime for SSL communication.
-
->[!note] Only enable the SSL protocols that comply with your company’s security policy.
+Enabled SSL Protocols
+To view the enabled SSL protocols enabled in RadiantOne, go to the Main Control Panel > Settings Tab > Security section > SSL sub-section. 
 
 <!-- 
 
@@ -286,7 +267,7 @@ To enable Start TLS for clients to access RadiantOne:
 
 ### Debug SSL
 
-SSL is enabled by default, but SSL logging is disabled by default. When SSL logging is enabled, SSL events have an entry in vds_server.log. This log file is located in <RLI_HOME>\vds_server\logs. SSL events are logged at INFO level, so log settings for VDS – Server must be at least at INFO level. 
+SSL is enabled by default, but SSL logging is disabled by default. When SSL logging is enabled, SSL events have an entry in vds_server.log.  SSL events are logged at INFO level, so log settings for VDS – Server must be at least at INFO level. You can view and download the vds_server.log from the Server Control Panel > Log Viewer.
 
 >[!note] For more information on log levels, refer to the RadiantOne Logging and Troubleshooting Guide.
 
@@ -306,7 +287,7 @@ To enable SSL logging:
 
 7. Click **Save**.
 
-8. On the Main Control Panel’s Dashboard tab, restart the RadiantOne service. 
+8. Restart the RadiantOne service. 
 
 ### Certificate Revocation List
 
@@ -330,13 +311,15 @@ CRLDP and OCSP are used to determine certificate validity and revocation status.
 
 ### Failover
 
-CRLDP and OCSP are used to determine certificate validity and revocation status (OCSP is checked first). If the checking fails to get the CRL from CRLDP and using OCSP, then it attempts to check the certificate’s status against the static CRL file(s) specified in the [CRL file/directory parameter](#crl-filedirectory). The CRL file(s) are loaded only once when the RadiantOne service starts.
+CRLDP and OCSP are used to determine certificate validity and revocation status (OCSP is checked first). If the checking fails to get the CRL from CRLDP and using OCSP, then it attempts to check the certificate’s status against the static CRL file(s). The CRL file must be uploaded to the RadiantOne service using Main Control Panel > Settings > Configuration > File Manager. This can be a zip file containing multiple CRL files if needed. The CRL file(s) are loaded only once when the RadiantOne service starts.
 
 ### Static
 
-The certificate is validated against a preloaded local CRL file (this can be many files zipped together or could be a file system directory where all CRL files are located). The certificate authority’s CRL file must be downloaded and the location of the file must be specified in the [CRL file/directory parameter](#crl-filedirectory). The CRL file(s) are loaded only once when the RadiantOne service starts.
+The certificate is validated against a preloaded local CRL file (this can be many files zipped together or could be a file system directory where all CRL files are located). The certificate authority’s CRL file must be uploaded to the RadiantOne service using Main Control Panel > Settings > Configuration > File Manager. This can be a zip file containing multiple CRL files if needed. The CRL file(s) are loaded only once when the RadiantOne service starts.
 
 To select the CRL method, from the Main Control Panel got to the Settings tab > Security > SSL. Then, on the right side, once the Enable CRL option is checked, the CRL Method drop-down list is available. Select the desired method from this list. Click **Save** to apply your changes to the server.
+
+<!-->
 
 #### CRL File/Directory
 
@@ -351,6 +334,8 @@ Within a cluster, nodes must be able to communicate with each other. This is req
 ![Inter Nodes Communication](Media/Image3.86.jpg)
 
 Figure 5: Inter Nodes Communication
+
+-->
 
 ## Authentication Methods
 
@@ -691,10 +676,8 @@ Once the user is stored locally (or linked to an existing DN), they can be added
 
 Figure 17: Location of Users who Successfully Authenticate using Kerberos
 
--->
-
 ### NTLM
-<!-- 
+
 SASL binding via GSSAPI/GSS-SPNEGO will attempt to use Kerberos by default. You have the option to use NTLM in conjunction with Kerberos, or not at all (based on your company security policy). If used in conjunction with Kerberos, it applies as a backup protocol to be used if there is a problem with Kerberos authentication. If enabled, the NTLM protocol is used if one of the systems involved in authentication cannot use Kerberos authentication, is configured improperly, or if the client application does not provide sufficient information to use Kerberos. If NTLM is not enabled, and there is a problem with the Kerberos authentication, the bind (using GSSAPI/GSS-SPNEGO) to RadiantOne fails. Also, By using NTLM, RadiantOne is able to support cross-domain authentication. This means, that a user that is not logged into the same domain that RadiantOne is a member of (or a domain that is trusted by the RadiantOne domain) can still access RadiantOne and benefit from NTLM for authentication. RadiantOne supports NTLM v2.
 
 Like all challenge-response protocols, the password is not sent over the protocol but the challenge instead. Since NTLM relies on the domain controller to authenticate its users, RadiantOne needs to know on which domain controller the challenge is generated before sending the challenge back to the user. This information can typically be retrieved from user’s request. If the domain information is not passed, RadiantOne takes the default one to generate the challenge. The first domain listed in the NT Domain parameter is the default one. The diagram below depicts the architecture and process flows.
@@ -905,6 +888,8 @@ The Global Authentication Strength parameter is used to specify that a client mu
 
 **SASL**
 <br>The bind rule is evaluated to be true if the client authenticates to the directory by using one of the following SASL mechanisms: DIGEST-MD5, GSSAPI, EXTERNAL or GSS-SPNEGO.
+
+-->
 
 **Simple LDAP Bind**
 <br>For accounts stored in Universal Directory (HDAP) stores, the following table lists the potential LDAP response codes returned during bind operations.

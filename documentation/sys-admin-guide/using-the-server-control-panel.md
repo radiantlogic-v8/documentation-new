@@ -5,9 +5,7 @@ description: System Administration Guide
 
 # Using the Server Control Panel
 
-The Server Control Panel allows RadiantOne administrators to configure and monitor a specific RadiantOne node. If a cluster is deployed, all nodes can be monitored and some aspects can be managed from the Main Control Panel. However, there are some configurations that must be managed separately for each node like server certificates.
-
-Node/server specific configuration is managed from the Server Control Panel. The Server Control Panel associated with each RadiantOne server can be launched from the Dashboard tab of the Main Control Panel.
+The Server Control Panel allows RadiantOne administrators to configure and monitor a specific RadiantOne node.
 
 The configuration and monitoring features described in this section are applicable to the Server Control Panel. Configuration and monitoring features associated with the Main Control Panel are described [here](radiantone-control-panels#using-the-main-control-panel).
 
@@ -45,9 +43,9 @@ Figure 3: Server Information
 
 **Resolved IP** – The resolved IP address associated with the host name of the machine.
 
-**Port** – Indicates the non-SSL (LDAP) port for the RadiantOne service.
+**Port** – Indicates the internal non-SSL (LDAP) port for the RadiantOne service.
 
-**SSL Port** – Indicates the SSL (LDAPS) port for the RadiantOne service.
+**SSL Port** – Indicates the internal SSL (LDAPS) port for the RadiantOne service.
 
 **SSL Enabled** – Indicates if SSL is enabled for the RadiantOne service. This is the LDAPS port.
 
@@ -65,7 +63,7 @@ Figure 3: Server Information
 
 **Node Type** – Indicates the type of node. If RadiantOne is deployed in a cluster, the value could be core (leader), core (follower) or follower only. If RadiantOne is deployed in a classic (active/active or active/passive) all servers are leaders.
 
-**RadiantOne Leader** – Has a value of true if the RadiantOne node is the leader of the cluster. Otherwise the value is false, meaning it is a follower or follower only node in the cluster. If RadiantOne is deployed in a classic (active/active or active/passive) all servers are leaders.
+**RadiantOne Leader** – Has a value of true if the RadiantOne node is the leader of the cluster. Otherwise the value is false, meaning it is a follower or follower only node in the cluster.
 
 **Product** - SKU associated with the RadiantOne version.
 
@@ -85,9 +83,7 @@ Figure 4: Server Connections and Operations
 
 In the Usage Summary section, you see connection usage since startup and average per minute. You all see operations since startup and average per minute.
 
-In the Current Connections section, there is a summary of operation types per connection (including a total number of operations) and the bind user that established the connection. You will also see the Client IP address associated with the open connections. To export current connection data into a CSV-format report, click **Export to CSV**. The Select CSV File window opens. Specify a file location (within <RLI_HOME>) or keep the default (<RLI_HOME>/vds_server/logs). Specify a file name. Click **OK**. If you specify a location that contains a CSV with the same file name, you are asked if you want to overwrite the existing file.
-
-The data used to calculate these numbers can be found by querying RadiantOne with a base DN of cn=monitor. When you query RadiantOne with a base DN of cn=monitor (from the RadiantOne LDAP Browser, or any other LDAP client), the result is 1 entry per established connection. Each entry includes how many operations the client has performed and what the operation was (bind, search, compare, delete, modify, or add). For details on the information available in cn=monitor, please see the RadiantOne Monitoring and Reporting Guide.
+In the Current Connections section, there is a summary of operation types per connection (including a total number of operations) and the bind user that established the connection. You will also see the Client IP address associated with the open connections. To export current connection data into a CSV-format report, click **Export to CSV**. The .csv file is downloaded the client machine according to the web browser’s configuration.
 
 The Processing Activity Details section, shows how many operations are waiting to be processed, how many operations are currently being executed in addition to the maximum working threads available and peak worker threads used.
 
@@ -138,8 +134,6 @@ Figure 8: Network Latency Graphs
 
 To change the server name and manage server certificates, go to the Server Control Panel > Settings tab.
 
--->
-
 ### Server Name
 
 The hostname where the server is installed. By default this is set to the machine name.
@@ -147,7 +141,7 @@ The hostname where the server is installed. By default this is set to the machin
 This value can be seen in ZooKeeper from the Zookeeper tab in the Main Control Panel at: /radiantone/v1/cluster/shards/shard1/services/vds/registry/<unique ID assigned to the server>
 <!--
 If RadiantOne is running on a multi-homed machine, you can change this parameter to specify a single IP address (or host name). The value set here can work in conjunction with the Server Socket: Restrict to Host/IP specified in Multi Home settings and SSL Server socket: Restrict to Host/IP specified in [Multi Home settings](settings-tab#multi-home-settings) defined in the Main Control Panel > Settings tab > Server Front End section > Advanced sub-section.
--->
+
 
 Changing this value is a delicate operation that must be performed during off-peak hours generally during a maintenance window. You must have your original (unapplied) license key file from Radiant Logic and make sure that the RadiantOne service and Jetty (that hosts the Control Panel) are stopped. Then, follow the steps below.
 
@@ -430,8 +424,6 @@ security.provider.10=sun.security.pkcs11.SunPKCS11 /home/vdsuser/vds-fips/nss_fi
 
 ><span style="color:red">**If you use the RadiantOne SAML Attribute service, manually update the certificate keystore path in <RLI_HOME>/vds_server/conf/saml/server/AttributeService.properties.**
 
--->
-
 ## Updating Certificate Settings for Jetty (HTTPS Access to the Main Control Panel) 
 
 For HTTPS access to the Main Control Panel, the Jetty web server uses the RadiantOne SSL server certificate by default, but could be updated to use a different store/certificate. To modify the default behavior and configure a separate server certificate for Jetty, modify the <RLI_HOME>/vds_server/conf/jetty/config.properties file and set jetty.ssl.useVDSSSLConfig=false. Then, you can use the <RLI_HOME>/bin/advanced/updateControlPanelSSLConfig command line utility to configure the Jetty certificate properties. Below is an example of the command properties.
@@ -451,6 +443,8 @@ Restart Jetty after making changes to the SSL configuration.
 
 >[!warning] The certificate key password is expected to be the same as the keystore password.
 
+-->
+
 ## Tasks Tab
 
 From the Server Control Panel > Tasks tab, you can start and stop the scheduler and manage defined tasks. When you perform various actions in the tools or wizards, a notification appears alerting you that the task has been defined and added to the scheduler. These tasks can be viewed and updated in the task list section of the Tasks tab. You can define a task as re-occurring in addition to setting the execution interval. You can also configure the JVM parameters for tasks that run inside their own dedicated JVM.
@@ -466,7 +460,6 @@ The following operations are considered tasks and generate an event in the Task 
 -	Exporting entries to an LDIF file
 -	Importing entries from an LDIF file
 -	Login Analysis (initiated from the Global Identity Builder)
--	[Custom tasks](#custom-tasks) can be defined 
 
 ### Task Scheduler Configuration
 
@@ -503,6 +496,8 @@ Users must click “Update Task” before closing out of the task configuration 
 ![Task Configuration](Media/tasks-configuration.jpg)
  
 Figure 19: Task Configuration
+
+<!-->
 
 ### Custom Tasks
 
@@ -561,6 +556,8 @@ Figure 20: Task Scheduler and Tasks
 
 >[!note] logs related to tasks are located in <RLI_HOME>/vds_server/logs/scheduler/task.<task_name>.log**
 
+--> 
+
 ### Log Viewer Tab
 
 On the Server Control Panel > Logs Viewer Tab, you will find the logging console.
@@ -572,7 +569,5 @@ Select the log file from the drop-down list. You can also set a filter to limit 
 ![Log Viewer](Media/Image3.186.jpg)
  
 Figure 21: Log Viewer
-
->[!warning] if you change the log location of RadiantOne server log, the Log Viewer tab on the Server Control Panel cannot be used to view the log contents. A basic text viewer (like Notepad) must be used instead.
 
 For complete details on logs and troubleshooting, please see the RadiantOne Logging and Troubleshooting Guide.

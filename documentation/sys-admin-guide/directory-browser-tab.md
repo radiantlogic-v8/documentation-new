@@ -54,7 +54,7 @@ Figure 3: Search Function on the Directory Browser Tab
 
 **Exporting Search Results** – To support exporting search results, enable the Proxy Authorization Control. This can be enabled from the Main Control Panel > Settings > Server Front End > Support Controls. Also ensure you have proper access controls defined for the delegated admin user/group from Main Control Panel > Settings > Security > Access Control.
 
-After performing a search on the Directory Browser tab, you can export the search results to an LDIF file. Use ![LDIF file name](Media/ldif-file-name.jpg) to specify a file name for the LDIF (if not specified, it defaults to Search) and the drop-down list to indicate the destination. The destination of the LDIF file can be either the RadiantOne Server or the local client. Choose one of these options from the drop-down menu. If “Export to FID Server” is selected, the location of the exported file is: <RLI_HOME>\vds_server\ldif\. If the specified file name already exists at the destination, the new file name is appended with a timestamp.
+After performing a search on the Directory Browser tab, you can export the search results to an LDIF file. Use ![LDIF file name](Media/ldif-file-name.jpg) to specify a file name for the LDIF (if not specified, it defaults to Search) and the drop-down list to indicate the destination. The destination of the LDIF file can be either the RadiantOne Server or the local client. Choose one of these options from the drop-down menu. If “Export to FID Server” is selected, the location of the exported file is: <RLI_HOME>\vds_server\ldif\export. If the specified file name already exists at the destination, the new file name is appended with a timestamp.
 
 If “Download” is selected from the drop-down menu, the client machine downloads the LDIF according to your web browser’s configuration.
 
@@ -246,7 +246,7 @@ Figure 6: Adding nsAccountLock to a User Entry
 
 3.	Enter a value of true and click **OK**. 
 
-![Locking a User Account](Media/Image3.156.jpg)
+![Disabling a User Account](Media/Image3.156.jpg)
  
 Figure 7: Locking a User Account
 
@@ -306,21 +306,17 @@ To export entries to an LDIF file, click ![export ldif](Media/export-ldif.jpg). 
 
 Exporting entries to an LDIF file requires enabling [Proxy Authorization](settings-tab#proxied-authorization-control) for users other than the [RadiantOne super user](administration-and-configuration#delegated-administration-roles). The exported entries contain only the attributes that applicable ACIs allow the user to read. Refer to [Security and Access Controls](security-and-access-controls) for more information.
 
-**Location** – select “To a Local File” to download to the local client. The destination of the LDIF file is dictated by the client’s browser settings. Select “To a File on the Server” to download to <RLI_HOME>/vds_server/ldif/export.
-
->[!note] the LDIFZ format is not available for local downloads because the client does not have access to the encryption key.
-
 **Source DN** – starting location from where to export entries.
 
-**Target DN** – the suffix associated with the target DNs. The entries in the LDIF file have their source DN suffix translated into the target DN. If there is no value here, the entries in the LDIF file have keep the source DN.
+**Target DN** – (optional) the suffix associated with the target DNs. The entries in the LDIF file have their source DN suffix translated into the target DN. If there is no value here, the entries in the LDIF file have keep the source DN.
 
 **Scope – select the One Entry option to export only the entry indicated by the Source DN. Select One Level to export entries one level below the Source DN. Select Sub Tree to export all entries below the Source DN.**
 
 **Entries and File** – Choose to either export all entries, or enter a max number to export. Also, enter a file name in the Save As property.
 
-**File Type Drop-down Menu** – The file extension can be either LDIF or LDIFZ. The LDIF format is available only if the [secureldifexport]() property in ZooKeeper is set to False. The LDIF format is available for both local and server-side exports. The location of the local downloads depends on the web browser’s configuration.
+**File Type Drop-down Menu** – The file extension can be either LDIF or LDIFZ (requires LDIF encryption key). The LDIF format is available only if the [secureldifexport](radiantone-universal-directory-attribute-encryption#requiring-ldifz-for-exports) property in ZooKeeper is set to False. The location of the local downloads depends on the web browser’s configuration.
 
-The LDIFZ format (zipped and encrypted) is available for server-side exports only because the client does not have access to the encryption key. This format requires an [LDIF encryption key](). The location of the exported file is: <RLI_HOME>/vds_server/ldif/export.
+When exporting a RadiantOne Universal Directory store to an LDIF file, you have the option to export the UUID attribute or not. The UUID attribute should be exported into LDIF if you plan on using this export to initialize another RadiantOne Universal Directory store, a replica for inter-cluster replication. Otherwise, the UUID attribute generally should not be exported. To export a RadiantOne Universal Directory store and include the UUID attributes, check the Export for Replication option. 
 
 ![An image showing ](Media/Image3.158.jpg)
  
@@ -331,7 +327,7 @@ Figure 9: Export to LDIF
 
 ## Import LDIF
 
-Make sure the LDIF file you want to import is located on the RadiantOne server under <RLI_HOME>/vds_server/ldif/. To import entries from an LDIF file, click ![import ldif](Media/import-ldif.jpg). Navigate to the location of the LDIF file. Select the option to Add or Override Entries (this option adds new entries and updates entries that already exist) or Add Entries (This option adds entries only and does not try to update the entry if it already exists).
+To import entries from an LDIF file, click ![import ldif](Media/import-ldif.jpg). Navigate to the location of the LDIF file. Select the option to Add or Override Entries (this option adds new entries and updates entries that already exist) or Add Entries (This option adds entries only and does not try to update the entry if it already exists).
 
 ![Import LDIF](Media/Image3.159.jpg)
  

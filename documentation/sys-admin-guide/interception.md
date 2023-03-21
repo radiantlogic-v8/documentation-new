@@ -17,14 +17,13 @@ To enable global interception:
 
 1.	From the Main Control Panel > Settings Tab > Interception section > Global Interception sub section.
 
-2.	On the right side, enable the operations you want to intercept. Save the settings and then you can edit the script. The script file is located at <RLI_HOME>\vds_server\custom\src\com\rli\scripts\intercept\globalIntercept.java
+2.	On the right side, enable the operations you want to intercept. Save the settings and then you can edit the globalintercept.java script.
 
 ![An image showing ](Media/Image3.119.jpg)
  
 Figure 1: Global Interception Settings
 
-3.	After your script has been customized, save the file and then rebuild the intercept.jar with ANT. On the RadiantOne machine, rebuild the fidsync.jar with ANT using the following syntax:
-C:\radiantone\vds\vds_server\custom>c:\radiantone\vds\ant\bin\ant.bat buildjars
+3.	After your script has been customized, save the file and then rebuild the intercept.jar
 
 4.	Restart the RadiantOne service. Your script logic is now invoked for the operations you have enabled.
 
@@ -91,7 +90,7 @@ Figure 4: Authentication Process based on User ID to DN Mapping
 
 ### Manage Global User to DN Mapping
 
-This location is just for configuring a global user ID to DN mapping. If you are configuring a mapping for <!--[Kerberos](security#kerberos), [NTLM](security#ntlm) or --> [MD5](security#md5), the configuration is set in those sections located on the Main Control Panel > Settings Tab > Security section > Authentication Methods.
+This location is just for configuring a global user ID to DN mapping. If you are configuring a mapping for <!--[Kerberos](security#kerberos), [NTLM](security#ntlm) or --> [MD5](security#md5), the configuration is set in that section located on the Main Control Panel > Settings Tab > Security section > Authentication Methods.
 
 There are three different ways to determine the DN from the user ID (using regular expression syntax). Each is described below.
 
@@ -428,6 +427,8 @@ Figure 21: Attribute Uniqueness Example
 
 Repeat these steps to configure attribute uniqueness checking for additional containers/branches.
 
+<!-->
+
 #### Testing Attribute Uniqueness
 
 To test attribute uniqueness, you must have an LDIF file containing all entries you want to check attribute uniqueness for.
@@ -474,6 +475,8 @@ uid=owright,ou=users,o=globaldirectory
 uid=ytanaka,ou=users,o=globaldirectory
 Done in 12ms
 ```
+
+-->
 
 ### Unnest Groups
 
@@ -530,6 +533,8 @@ For more examples of using redirects, please see the RadiantOne Deployment and T
 ![An image showing ](Media/Image3.141.jpg)
 
 Figure 22: Operations Redirection Setting
+
+<!-->
 
 ## Custom Authentication Providers
 
