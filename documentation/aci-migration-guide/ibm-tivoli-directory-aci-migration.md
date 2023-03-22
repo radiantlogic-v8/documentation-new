@@ -77,7 +77,8 @@ This utility employs two parameters. Parameters are written in a command line. B
 ibmAciMigration.bat <configurationfilelocation> <mappingfilelocation>
 ```
 
->**NOTE – The command argument `<configurationfilelocation>` is the path to the configuration properties file. The command argument `<mappingfilelocation>` is the path to the mapping properties file. These files were configured in the Preparing Properties Files section.**
+>[!note]
+>The command argument `<configurationfilelocation>` is the path to the configuration properties file. The command argument `<mappingfilelocation>` is the path to the mapping properties file. These files were configured in the Preparing Properties Files section.
 
 ### Example
 
