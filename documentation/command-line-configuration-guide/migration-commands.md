@@ -11,7 +11,8 @@ This chapter explains how to traverse, export, and import resources and their de
 
 For more information, see the RadiantOne Operations Guide.
 
->**NOTE – The commands in this chapter do not support output format configuration. Refer to [Configuring Command Output Format](introduction#configuring-command-output-format) for more information.**
+>[!note]
+>The commands in this chapter do not support output format configuration. Refer to [Configuring Command Output Format](introduction#configuring-command-output-format) for more information.
 
 ### resource-traverse
 
@@ -85,7 +86,8 @@ This command imports the resource and its dependencies.
 **`- interactive`**
 <br>Indicates the command should run in interactive mode (user may be prompted for input if a resource already exists).
 
->**NOTE – REST (ADAP) commands do not support this argument.**
+>[!note]
+>REST (ADAP) commands do not support this argument.
 
 **`- overwrite`**
 <br>Indicates that existing resources are allowed to be overwritten during the import.

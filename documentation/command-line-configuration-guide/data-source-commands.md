@@ -229,7 +229,8 @@ create-ldap-datasource -datasourcename LDAP2 -autocommit true ....<other props>
 **`- basedn <basedn>`**
 <br>The base DN for the data source.
 
-><span style="color:red">**IMPORTANT NOTE – When creating an LDAP data source, do not use special characters in the Base DN value.**
+>[!warning]
+>When creating an LDAP data source, do not use special characters in the Base DN value.
 
 **`- binddn <binddn>`**
 <br>The DN used to bind.
@@ -300,7 +301,8 @@ update-ldap-datasource -datasourcename LDAP2 -autocommit true ....<other props>
 **`- basedn <basedn>`**
 <br>The base DN for the data source.
 
-><span style="color:red">**IMPORTANT NOTE – When updating an LDAP data source, do not use special characters in the Base DN value.**
+>[!warning]
+>When updating an LDAP data source, do not use special characters in the Base DN value.
 
 **`- binddn <binddn>`**
 <br>The DN used to bind.
@@ -351,7 +353,8 @@ The following commands are for managing connections to custom data sources.
 
 This command creates a new custom data source.
 
->**Note - This command requires you to pass either the -propfile or -propstr command argument to set the custom data source properties.**
+>[!note]
+>This command requires you to pass either the -propfile or -propstr command argument to set the custom data source properties.
 
 **Usage:**
 `create-custom-datasource -datasourcename <datasourcename> [-instance <instance>] [-propfile <propfile>] [-propstr <propstr>]`
@@ -382,7 +385,8 @@ https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=create-cus
 
 This command updates the connection information for the specified custom data source.
 
->**Note - This command requires you to pass either the -propfile or -propstr command argument to set the custom data source properties.**
+>[!note]
+>This command requires you to pass either the -propfile or -propstr command argument to set the custom data source properties.
 
 **Usage:**
 <br>`update-custom-datasource -datasourcename <datasourcename>[-instance <instance>] [-propfile <propfile>] [-propstr <propstr>]`
@@ -428,7 +432,8 @@ Imports data sources from a given XML file.
 **`- instance <instance>`**
 <br> The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
 
-><span style="color:red">**IMPORTANT NOTE – if a data source in the import file has the same name as an existing data source, the existing data source is overwritten by the one you are importing.**
+>[!warning]
+>If a data source in the import file has the same name as an existing data source, the existing data source is overwritten by the one you are importing.
 
 **REST (ADAP) Example**
 

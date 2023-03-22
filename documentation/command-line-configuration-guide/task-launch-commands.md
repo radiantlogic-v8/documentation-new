@@ -141,7 +141,8 @@ is used.
 **`- returnattributes <returnattributes>`**
 <br>Optional list of comma-separated attributes to return from the search and include in the exported LDIF file. If nothing is specified, all attributes are requested.
 
->**Note – returnattributes is not considered if the -replication option is used. This is because the -replication option automatically returns all attributes for export.**
+>[!note]
+>returnattributes is not considered if the -replication option is used. This is because the -replication option automatically returns all attributes for export.
 
 **REST (ADAP) Example**
 
@@ -254,7 +255,8 @@ This command launches a task scheduled according to report configuration that ou
 **`- reportconfigdn <reportconfigdn>`**
 <br>[required] The DN of global ID report configuration.
 
->**Note – this argument requires a configured query and report in the Global Identity Viewer. Refer to the Global Identity Viewer Guide for more information With a query and report configured, navigate to and expand ou=reports,o=<projectname>,ou=webapps,ou=globalsettings,cn=config on the Directory Browser tab. Select a report and view its filter, format, and frequency values to determine if it is the report you want to schedule. The entrydn value is used for the reportconfigdn.
+>[!note]
+>This argument requires a configured query and report in the Global Identity Viewer. Refer to the Global Identity Viewer Guide for more information With a query and report configured, navigate to and expand ou=reports,o=<projectname>,ou=webapps,ou=globalsettings,cn=config on the Directory Browser tab. Select a report and view its filter, format, and frequency values to determine if it is the report you want to schedule. The entrydn value is used for the reportconfigdn.
 
 ![An image showing ](Media/Image9.4.jpg)
 

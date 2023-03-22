@@ -81,8 +81,8 @@ This guide is broken down into the following chapters:
 
 Vdsconfig command output format is configured using operating system environment variables. These variables format command output (JSON, YAML, or tables), determine whether a command logs details of its progress, and limit log messages to a specific level. Create the environment variables and set each variable’s value as described in the table below.
 
-><span style="color:red">**IMPORTANT NOTE – To return legacy, plain-text command output, use vdsconfig72.bat (Windows), or vdsconfig72.sh (Linux). Vdsconfig72 is located
-in <RLI_HOME>/bin.**
+>[!warning]
+>To return legacy, plain-text command output, use vdsconfig72.bat (Windows), or vdsconfig72.sh (Linux). Vdsconfig72 is located in <RLI_HOME>/bin.
 
 ><span style="color:red">**For information on formatting ADAP command responses, see the [Configuring ADAP Response Format section](#configuring-adap-response-format).**
 
@@ -158,7 +158,8 @@ Header value: Basic <username>:<password>
 Ex: Basic cn=directory manager:password
 ```
 
->**Note - In the following image, the authentication header value is encoded.**
+>[!note]
+>In the following image, the authentication header value is encoded.
 
 ## Expert Mode
 
@@ -166,7 +167,8 @@ Some settings in the Control Panel are accessible only in Expert Mode. To switch
 
 ![expert mode](Media/expert-mode.jpg)
 
->**Note - The Main Control Panel saves the last mode (Expert or Standard) it was in when you log out and returns to this mode automatically when you log back in. The mode is saved on a per-role basis.**
+>[!note]
+>The Main Control Panel saves the last mode (Expert or Standard) it was in when you log out and returns to this mode automatically when you log back in. The mode is saved on a per-role basis.
 
 ## Require a UserID and Password to Execute Commands
 
@@ -204,7 +206,8 @@ In the following example, a request is made to display product information passi
 https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=product-info&authuser=operator&authpwdfile=C:\radiantone\vds\password.txt
 ```
 
->**Note – When passing the authuser and authpwdfile command arguments, basic password authentication is still required. See [Basic Password Authentication](#basic-password-authentication) for more information.**
+>[!note]
+>When passing the authuser and authpwdfile command arguments, basic password authentication is still required. See [Basic Password Authentication](#basic-password-authentication) for more information.
 
 ## Parsing Command Argument Strings
 
@@ -229,7 +232,8 @@ attribute&apos;&quot;"
 
 These special notations should be used only when indicating quotes as part of the value for your argument, and they also work when used as described in the [execfile](general-commands.md#execfile) command.
 
->**Note - These notations are not compatible with operations issued through a REST (ADAP) interface.**
+>[!note]
+>These notations are not compatible with operations issued through a REST (ADAP) interface.
 
 ## Audit Log
 
@@ -238,7 +242,8 @@ Configuration commands issued using the vdsconfig utility can be logged. To enab
 
 The default audit log is <RLI_HOME>/logs/vdsconfig.log.
 
-><span style="color:red">**IMPORTANT NOTE – if you want the admin name that issued the command logged, make sure you [Require a UserID and Password to Execute Commands](#require-a-userid-and-password-to-execute-commands).**
+>[!warning]
+>If you want the admin name that issued the command logged, make sure you [Require a UserID and Password to Execute Commands](#require-a-userid-and-password-to-execute-commands).
 
 ## Technical Support
 

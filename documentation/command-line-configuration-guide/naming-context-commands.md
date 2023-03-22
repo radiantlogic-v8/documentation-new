@@ -187,7 +187,8 @@ The <RLI_HOME>/bin/vdsconfig utility can be used instead of the UI mentioned abo
 
 T chisommand creates a persistent cache for a root naming context in the RadiantOne namespace. In multi-node clusters, this command must be executed on the RadiantOne leader node. For information on determining the RadiantOne leader, refer to the RadiantOne System Administration Guide.
 
->**Note – Use the [configure-real-time-pcache-sync-topology](real-time-persistent-cache-refresh-commands#configure-real-time-pcache-sync-topology) command to configure a real-time refresh.
+>[!note]
+>Use the [configure-real-time-pcache-sync-topology](real-time-persistent-cache-refresh-commands#configure-real-time-pcache-sync-topology) command to configure a real-time refresh.
 
 **Usage:**
 <br>`create-pcache -namingcontext <namingcontext> [-autorefresh] [-indexattr <indexattr>] [-instance <instance>]`
@@ -382,7 +383,8 @@ After the persistent cache has been converted to a RadiantOne Universal Director
 - instance <instance>
 <br> The name of the RadiantOne instance. If this is not specified, the default instance named vds_server is used.
 
->**Note – before the conversion, you are prompted to confirm the operation. Enter “y” to confirm, or “n” to discontinue. An example is shown below.
+>[!note]
+>Before the conversion, you are prompted to confirm the operation. Enter “y” to confirm, or “n” to discontinue. An example is shown below.
 
 ```
 Conversion will remove the underlying virtual layer, both the pcache and its view/proxy will be replaced by a HDAP store. 
@@ -391,4 +393,5 @@ o=db (VIEW)
 Would you like to continue? (y/n):
 ```
 
-><span style="color:red">**IMPORTANT NOTE – the convert-pcache-to-hdap command is not supported through ADAP.**
+>[!warning]
+>The convert-pcache-to-hdap command is not supported through ADAP.

@@ -36,4 +36,5 @@ Create a file containing the commands to run (one command per line) and then pas
 `ignoreError`
 <br>Flag to indicate if remaining commands should be executed if an error is returned from a previous command.
 
-><span style="color:red">**IMPORTANT NOTE – the execfile command is not supported through REST (ADAP).**
+>[!warning]
+>The execfile command is not supported through REST (ADAP).

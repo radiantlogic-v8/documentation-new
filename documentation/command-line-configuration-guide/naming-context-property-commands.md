@@ -127,7 +127,8 @@ https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=list-ctx&d
 
 This command prints the current value for a given property on the specified naming context.
 
->**Note - To retrieve properties for a virtual view that uses a merge tree configuration, the mergedatasource and mergedn arguments must be used.**
+>[!note]
+>To retrieve properties for a virtual view that uses a merge tree configuration, the mergedatasource and mergedn arguments must be used.
 
 **Usage:**
 <br>`get-ctx-prop -namingcontext <namingcontext> -prop <prop> [-cache] [-instance <instance>] [-mergedatasource <mergedatasource>] [-mergedn <mergedn>]`
@@ -164,7 +165,8 @@ https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=get-ctx-pr
 
 This command sets the value for a given property on the specified naming context.
 
->**Note - To set properties for a virtual view that uses a merge tree configuration, the mergedatasource and mergedn arguments must be used.**
+>[!note]
+>To set properties for a virtual view that uses a merge tree configuration, the mergedatasource and mergedn arguments must be used.
 
 **Usage:**
 <br>`set-ctx-prop -namingcontext <namingcontext> -prop <prop> -value <value> [-cache] [-instance <instance>][-mergedatasource <mergedatasource>] [-mergedn <mergedn>]`
@@ -212,7 +214,8 @@ An example command for a naming context of “o=mytest” is:
 
 vdsconfig.bat set-ctx-prop -namingcontext o=mytest -cache -prop fulltextenabled -value true
 
-><span style="color:red">**IMPORTANT NOTE – setting this value to true only enables full text searching. You must rebuild the index for the store after setting the value to true.**
+>[!warning]
+>Setting this value to true only enables full text searching. You must rebuild the index for the store after setting the value to true.
 
 #### Persistent Cache Periodic Refresh Validation Threshold
 
@@ -235,7 +238,8 @@ The validationthresholdperiodicrefresh property described above is a global sett
 
 This command removes the value for the given property and sets it to empty on the specified naming context.
 
->**Note - To remove properties for a virtual view that uses a merge tree configuration, the mergedatasource and mergedn arguments must be used.**
+>[!note]
+>To remove properties for a virtual view that uses a merge tree configuration, the mergedatasource and mergedn arguments must be used.
 
 **Usage:**
 <br>`unset-ctx-prop -namingcontext <namingcontext> -prop <prop> [-cache] [-instance <instance>] [-mergedatasource <mergedatasource>] [-mergedn <mergedn>]`
@@ -270,7 +274,8 @@ An example of using the command for a naming context of o=companyprofiles is sho
 vdsconfig.bat get-ctx-interception -namingcontext o=companyprofiles
 ```
 
->**Note - To retrieve interception options for a virtual view that uses a merge tree configuration, the mergedatasource and mergedn arguments must be used.**
+>[!note]
+>To retrieve interception options for a virtual view that uses a merge tree configuration, the mergedatasource and mergedn arguments must be used.
 
 Usage:
 get-ctx-interception -namingcontext <namingcontext> [-instance <instance>]
@@ -307,7 +312,8 @@ Below is an example of configuring an interception for bind, add and delete for 
 vdsconfig.bat set-ctx-interception -namingcontext o=companyprofiles -bind true -add true - delete true
 ```
 
->**Note - To retrieve interception options for a virtual view that uses a merge tree configuration, the mergedatasource and mergedn arguments must be used.**
+>[!note]
+>To retrieve interception options for a virtual view that uses a merge tree configuration, the mergedatasource and mergedn arguments must be used.
 
 The first time you use set-ctx-interception, a default interception script matching your naming context is generated in <RLI_HOME>\vds_server\custom\src\com\rli\scripts\intercept. You can always get the full path to the java file with get-ctx-interception.
 

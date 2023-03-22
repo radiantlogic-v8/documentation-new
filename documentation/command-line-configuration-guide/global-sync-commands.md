@@ -203,7 +203,8 @@ time in a RadiantOne cluster.
 
 Agents are also used for CPLDS sync processes and real-time persistent cache refreshes. This command stops all agents.
 
->**Note – this command stops agents used in CPLDS, global synchronization and real-time persistent cache refresh.**
+>[!note]
+>This command stops agents used in CPLDS, global synchronization and real-time persistent cache refresh.
 
 ## stop-all-local-agents
 
@@ -211,7 +212,8 @@ Agents manage capture connectors used in synchronization. Agents can run on any 
 
 Agents are also used for CPLDS sync processes and real-time persistent cache refreshes. This command stops all local agents running on the machine from which the command was launched.
 
->**Note – this command stops agents used in CPLDS, global synchronization and real-time persistent cache refresh.**
+>[!note]
+>This command stops agents used in CPLDS, global synchronization and real-time persistent cache refresh.
 
 ## configure-connector-type
 
@@ -289,7 +291,8 @@ identifiers for each topology.
 **`- propertyvalue <property value>`**
 <br>[required] The connector property value.
 
->**Note – For Windows command line, some property values require double quotes surrounding them. In this case, you can use the \ to protect the “. E.g. C:\radiantone\vds\bin>vdsconfig.bat set-connector-property -connectorname o_sead_pcache_proxy__dc_seradiant_dc_dom__seradiantad -propertyid "excludedAttributes" -propertyvalue [\"member\",\"memberOf\",\"whenCreated\"]**
+>[!note]
+>For Windows command line, some property values require double quotes surrounding them. In this case, you can use the \ to protect the “. E.g. C:\radiantone\vds\bin>vdsconfig.bat set-connector-property -connectorname o_sead_pcache_proxy__dc_seradiant_dc_dom__seradiantad -propertyid "excludedAttributes" -propertyvalue [\"member\",\"memberOf\",\"whenCreated\"]
 
 >**If the property value contains a `<space>`, protect the entire value with double quotes. E.g. C:\radiantone\vds\bin>vdsconfig.bat set-connector-property - connectorname o_sead_pcache_proxy__dc_seradiant_dc_dom__seradiantad - propertyid includedBranches -propertyvalue “[ \"cn=users,dc=seradiant,dc=dom\",\"cn=domain groups,dc=seradiant,dc=dom\ "]”**
 
@@ -308,7 +311,8 @@ This command can be used to set multiple connector properties contained in a pro
 **`- propertyfilename <property file name>`**
 <br>[required] The full path to a file containing the connector configuration properties.
 
->**Note - the contents of the file must be in JSON format. An example of the syntax used inside the properties file is shown below.**
+>[!note]
+>The contents of the file must be in JSON format. An example of the syntax used inside the properties file is shown below.
 
 >**{ "pollingInterval" : 10001, "sizeLimit" : 1001, "retryIntervalOnError" : 10001,
 "retryIntervalOnConnectionError" : 10001, "retryIntervalOnCommitError" :

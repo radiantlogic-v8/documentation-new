@@ -48,7 +48,8 @@ This command displays the value of a property in the RadiantOne configuration.
 **Usage:**
 <br> `get-property -name <name> [-instance <instance>]`
 
->**Notes – properties that contain a password value do not return with the get-property command. A message is returned indicating, “The property XXX contains a password and cannot be displayed.”
+>[!note]
+>Properties that contain a password value do not return with the get-property command. A message is returned indicating, “The property XXX contains a password and cannot be displayed.”
 
 To list supported SSL cipher suites, use the list-cipher-suites command.
 
@@ -72,7 +73,8 @@ This command sets the value of a property in the RadiantOne configuration.
 **Usage:**
 <br> `set-property -name <name> -value <value> [-instance <instance>] [-pwdfile <path to file>]`
 
->**Note – Updating properties containing a password value requires the super user (e.g. cn=directory manager) credentials. You are prompted to enter this password interactively. To pass the credentials in the command, use the - pwdfile flag. See the Examples section below. To set the current list of enabled SSL cipher suites, use the set-cipher-suites command.**
+>>[!note]
+>Updating properties containing a password value requires the super user (e.g. cn=directory manager) credentials. You are prompted to enter this password interactively. To pass the credentials in the command, use the - pwdfile flag. See the Examples section below. To set the current list of enabled SSL cipher suites, use the set-cipher-suites command.
 
 **Command Arguments:**
 
@@ -134,13 +136,15 @@ C:\radiantone\vds\bin>vdsconfig.bat set-property -name mutualAuthClientCert -val
 REQUESTED
 ```
 
->**Note - accepted values are NONE, REQUESTED, REQUIRED. Values are case-sensitive.**
+>[!note]
+>Accepted values are NONE, REQUESTED, REQUIRED. Values are case-sensitive.
 
 #### Change Supported Cipher Suites
 
 C:\radiantone\vds\bin>vdsconfig.bat get-property -name ciphersList
 
->**Note – if the ciphersList is empty the default ciphers included in the JDK are used.**
+>[!note]
+>If the ciphersList is empty the default ciphers included in the JDK are used.
 
 ```
 C:\radiantone\vds\bin>vdsconfig.bat set-property -name ciphersList -value
@@ -172,7 +176,8 @@ C:\radiantone\vds\bin>vdsconfig.bat get-property -name checkCRLmethod
 C:\radiantone\vds\bin>vdsconfig.bat set-property -name checkCRLmethod -value Static
 ```
 
->**Note – Possible values are: Dynamic, Static, Failover.**
+>[!note]
+>Possible values are: Dynamic, Static, Failover.
 
 #### Configure CRL File
 
@@ -191,7 +196,8 @@ C:\radiantone\vds\bin>vdsconfig.bat set-property -name clusterCommunicationMode 
 SSL_ALL
 ```
 
->**Note - Possible values are PLAIN, SSL_ALL. Use SSL_ALL for “Always use SSL”, and PLAIN for “Never use SSL”.
+>[!note]
+>Possible values are PLAIN, SSL_ALL. Use SSL_ALL for “Always use SSL”, and PLAIN for “Never use SSL”.
 
 #### Updating Passwords
 
@@ -217,7 +223,8 @@ Configuration has been updated successfully.
 ```
 If you do not want to pass the directory manager credentials interactively, you can save the password into a file and use the -pwdfile flag in the command. The -value property sets the new password and the directory manager credentials are passed in a file named pwd.txt in the example below.
 
->**Note – for security, the password value is shown as **** in <RLI_HOME>/logs/vdsconfig.log.**
+>[!note]
+>For security, the password value is shown as **** in <RLI_HOME>/logs/vdsconfig.log.
 
 ```
 C:\radiantone\vds\bin>vdsconfig set-property -name directoryManagerPassword -value secret4444 -pwdfile C:\pwd.txt
@@ -248,7 +255,8 @@ C:\radiantone\vds\bin>vdsconfig set-property -name
 "specialSettings(SKIP_HOSTNAME_VERIFICATION)" -value "true"
 ```
 
-><span style="color:red">**IMPORTANT NOTE - Bypassing the hostname checking of the certificate used for internal SSL (HTTPS) communication between cluster nodes is generally not recommended.**
+>[!warning]
+>Bypassing the hostname checking of the certificate used for internal SSL (HTTPS) communication between cluster nodes is generally not recommended.
 
 #### Enabling Global Interception Script
 

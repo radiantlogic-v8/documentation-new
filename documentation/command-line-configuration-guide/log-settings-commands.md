@@ -94,12 +94,14 @@ This command performs a merge of two logging configurations.
 **`- mergepath <mergepath>`**
 <br>[required] The path of the JSON-formatted logging configuration to merge with.
 
->**Note – the value for this argument should specify the location of a logging configuration in either the file system (i.e. file:c/tmp/mylogger.json) or in Zookeeper (i.e. zk:log4j2-vds.json).
+>[!note]
+>The value for this argument should specify the location of a logging configuration in either the file system (i.e. file:c/tmp/mylogger.json) or in Zookeeper (i.e. zk:log4j2-vds.json).
 
 **`- path <path>`**
 <br>[required] The path of the JSON-formatted logging configuration. The result of the merge operation is stored in the location specified by this argument.
 
->**Note – the value for this argument should specify the location of a logging configuration in either the file system (i.e. file:c/tmp/mylogger.json) or in Zookeeper (i.e. zk:log4j2-vds.json).**
+>[!note]
+>The value for this argument should specify the location of a logging configuration in either the file system (i.e. file:c/tmp/mylogger.json) or in Zookeeper (i.e. zk:log4j2-vds.json).
 
 **`- instance <instance>`**
 <br>The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.

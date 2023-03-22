@@ -90,7 +90,8 @@ Agents are also used for CPLDS sync processes. CPLDS Agents run on follower-only
 
 This command lists the currently running agents, both the ones used for persistent cache refresh and the ones used for CPLDS.
 
->**Note – this command lists both CPLDS agents and real-time persistent cache agents.**
+>[!note]
+>This command lists both CPLDS agents and real-time persistent cache agents.
 
 **Usage**
 <br>list-agents
@@ -114,7 +115,8 @@ Agents are also used for CPLDS sync processes. CPLDS Agents run on follower-only
 
 This command stops an agent specified by name.
 
->**Note – this command can be used to stop either Persistent Cache Refresh agents or CPLDS agents.**
+>[!note]
+>This command can be used to stop either Persistent Cache Refresh agents or CPLDS agents.
 
 **Usage**
 <br>`stop-agent [-agentname <agentname>]`
@@ -124,7 +126,8 @@ This command stops an agent specified by name.
 **`- agentname <agentname>`**
 <br>The name of the agent to stop.
 
->**Note - this value can be found by running the command monitoring.bat -d orchestrator-agent-job. Monitoring.bat is located at <RLI_HOME>\bin.**
+>[!note]
+>This value can be found by running the command monitoring.bat -d orchestrator-agent-job. Monitoring.bat is located at <RLI_HOME>\bin.
 
 
 **REST (ADAP) Example**
@@ -143,7 +146,8 @@ Agents are also used for global synchronization and CPLDS sync processes. CPLDS 
 
 This command stops all agents.
 
->**Note – this command stops agents used in CPLDS, global synchronization and real-time persistent cache refresh.**
+>[!note]
+>This command stops agents used in CPLDS, global synchronization and real-time persistent cache refresh.
 
 **Usage**
 <br>stop-all-agents
@@ -167,7 +171,8 @@ Agents are also used for [global synchronization](global-sync-commands.md) and C
 
 This command stops all local agents running on the machine from which the command was launched.
 
->**Note – this command stops agents used in CPLDS, global synchronization and real-time persistent cache refresh.**
+>[!note]
+>This command stops agents used in CPLDS, global synchronization and real-time persistent cache refresh.
 
 **Usage**
 <br>stop-all-local-agents
@@ -285,7 +290,8 @@ This command gets a property for a connector configuration.
 **`- propertyid <propertyid>`**
 <br>The connector configuration property ID.
 
->**Note - you can use the list-connector-properties command to display available options for this argument.**
+>[!note]
+>you can use the list-connector-properties command to display available options for this argument.
 
 **REST (ADAP) Example**
 
@@ -312,12 +318,14 @@ This command sets a property for a connector configuration. Run the list-connect
 **`- propertyid <propertyid>`**
 <br>[required] The connector property ID.
 
->**Note - you can use list-connector-properties to display available options for this argument.**
+>[!note]
+>You can use list-connector-properties to display available options for this argument.
 
 **`- propertyvalue <propertyvalue>`**
 <br>[required] The connector property value.
 
->**Note – For Windows command line, some property values require double quotes surrounding them. In this case, you can use the \ to protect the “. E.g. C:\radiantone\vds\bin>vdsconfig.bat set-connector-property -connectorname o_sead_pcache_proxy__dc_seradiant_dc_dom__seradiantad -propertyid "excludedAttributes" -propertyvalue [\"member\",\"memberOf\",\"whenCreated\"]**
+>[!note]
+>For Windows command line, some property values require double quotes surrounding them. In this case, you can use the \ to protect the “. E.g. C:\radiantone\vds\bin>vdsconfig.bat set-connector-property -connectorname o_sead_pcache_proxy__dc_seradiant_dc_dom__seradiantad -propertyid "excludedAttributes" -propertyvalue [\"member\",\"memberOf\",\"whenCreated\"]
 
 >**If the property value contains a <space>, protect the entire value with double quotes. E.g. C:\radiantone\vds\bin>vdsconfig.bat set-connector-property -connectorname o_sead_pcache_proxy__dc_seradiant_dc_dom__seradiantad -propertyid includedBranches -propertyvalue “[ \"cn=users,dc=seradiant,dc=dom\",\"cn=domain groups,dc=seradiant,dc=dom\ "]”**
 
@@ -344,7 +352,8 @@ This command sets multiple connector configuration properties with a text file.
 **`- propertyfilename <propertyfilename>`**
 <br>The full path to a file containing the connector configuration properties.
 
->**Note - the contents of the file must be in JSON format. An example of the syntax used inside the properties file is shown below.**
+>[!note]
+>The contents of the file must be in JSON format. An example of the syntax used inside the properties file is shown below.
 
 >**{ "pollingInterval" : 10001, "sizeLimit" : 1001, "retryIntervalOnError" : 10001,
 "retryIntervalOnConnectionError" : 10001, "retryIntervalOnCommitError" :

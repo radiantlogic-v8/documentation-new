@@ -7,8 +7,8 @@ description: Command Line Configuration Guide
 
 Attribute encryption cipher and key can be set from the Main Control Panel > Settings tab > Security section -> HDAP Attribute Encryption section.
 
-NOTE – The commands in this chapter do not support output format configuration. Refer to [Configuring Command Output Format](introduction.md#configuring-command-output-format) for more
-information.
+>[!note]
+>The commands in this chapter do not support output format configuration. Refer to [Configuring Command Output Format](introduction.md#configuring-command-output-format) for more information.
 
 ![security commands](Media/Image17.1.jpg)
 
@@ -82,7 +82,8 @@ https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=set-ldifz-
 
 This command, if enabled, forces users to use the LDIFZ format when exporting an LDIF file.
 
->**NOTE – enabling this property requires an LDIFZ encryption key to first be defined.**
+>[!note]
+>Enabling this property requires an LDIFZ encryption key to first be defined.
 
 **Usage:**
 <br>`set-secure-ldif-export -enable <enable> [-instance <instance>]`
@@ -180,7 +181,8 @@ https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=delete-clo
 
 This command enables FIPS mode. For details on FIPS mode, see the RadiantOne FIPS Mode Guide.
 
->**NOTE – this command must be run on all nodes.
+>[!note]
+>This command must be run on all nodes.
 
 **Usage:**
 <br>`fips-mode-enable [-instance <instance>]`

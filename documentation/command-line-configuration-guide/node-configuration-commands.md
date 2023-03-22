@@ -69,7 +69,8 @@ This command sets the value of a property in the Cluster Node Configuration.
 **- value <value>**
 <br>[required] The value of the property.
 
->**Note: use the file:::path\to\file notation if you want to use a value contained in a file.**
+>[!note]
+>Use the file:::path\to\file notation if you want to use a value contained in a file.
 
 **- guid <guid>**
 <br>The GUID of the node. Defaults to the current node.

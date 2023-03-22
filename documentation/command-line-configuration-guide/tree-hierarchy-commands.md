@@ -88,7 +88,8 @@ https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=list-node-
 
 This command displays the current value of a property of a specified node.
 
-IMPORTANT NOTE – The value of -prop is case sensitive. You can use the list-node-property command to get a list of property values that you can pass in -prop. Use the exact case shown for the property (e.g. OutputColumns not outputcolumns).
+>[!warning]
+>The value of -prop is case sensitive. You can use the list-node-property command to get a list of property values that you can pass in -prop. Use the exact case shown for the property (e.g. OutputColumns not outputcolumns).
 
 **Usage:**
 <br>`get-node-property -dn <dn> -prop <prop> [-instance <instance>]`
@@ -167,7 +168,8 @@ The response is shown below. The \r\n in the SystemOut represents a carriage ret
 
 This command sets the value of a given property of a specified node. Setting node property values with this command should be done with extreme caution as the syntax of the properties is very specific and editing them manually is prone to error. It is highly recommended that setting node properties in this manner is done only if advised and guided by the Radiant Logic support team.
 
-><span style="color:red">**IMPORTANT NOTE – This command should not be used to modify RDNs. To modify an RDN, use the [set-node-rdn](tree-hierarchy-commands#set-node-rdn) command.**
+>[!warning]
+>This command should not be used to modify RDNs. To modify an RDN, use the [set-node-rdn](tree-hierarchy-commands#set-node-rdn) command.
 
 **Usage:**
 <br>`set-node-property -dn <dn> -prop <prop> -value <value> [-instance <instance>]`

@@ -1173,7 +1173,8 @@ The data source name of a registered LDAP data source that is used for the join.
 **`- primaryfilter <primaryfilter>`**
 <br>A LDAP filter to apply to the primary object, before a join is performed.
 
->**Note - specify the value 'EMPTY' to clear this filter.**
+>[!note]
+>Specify the value 'EMPTY' to clear this filter.
 
 **`- returnall`**
 <br>Indicates that a join should return all attributes from the secondary source.
