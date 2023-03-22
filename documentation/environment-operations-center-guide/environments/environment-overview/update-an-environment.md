@@ -11,67 +11,63 @@ When version updates are available for environments in your Environment Operatio
 
 ## Managing environment updates
 
-When an environment requires updating, an **Update Now** message appears next to the environment's version number.
+When an environment requires updating, an **Update Available** message appears next to the environment's version number.
 
-![image description](images/update-now-notification.png)
+![image description](images/update-alert.png)
 
 ### Begin update
 
-There are two ways to begin the environment update workflow from the home screen, either from the **Options** menu (**...**) or by selecting the **Update Now** message.
+There are two ways to begin the environment update workflow from the home screen, either from the **Options** menu (**...**) or by selecting the **Update Available** message.
 
 To update using the **Options** menu, locate the environment you would like to update and select the corresponding ellipsis (**...**) to display the environment's **Options** menu. From the menu, select **Update** to open the **Update Environment** dialog box.
 
-![image description](images/update-options-menu.png)
+![image description](images/options-update.png)
 
-Alternatively, you can locate the environment you would like to update and directly select the **Update Now** message located next to the environment's version number. This will also open the **Update Environment** dialog box.
+Alternatively, you can locate the environment you would like to update and directly select the **Update Available** message located next to the environment's version number. This will also open the **Update Environment** dialog box.
 
-![image description](images/update-select-updatenow.png)
+![image description](images/select-update.png)
 
-### Update version number and nodes
+### Update version number
 
-Once you have started the environment update workflow, a dialog box appears containing the fields required to update the environment version and number of FID nodes. To update your environment, you must provide the correct version number that corresponds with your current version number of Environment Operations Center and the number of FID nodes to display.
+Once you have started the environment update workflow, a dialog box appears containing the field required to update the environment version. To update your environment, select the next available version number that is ahead of your current environment version. Your currently installed version number is displayed just above the dropdown menu for reference.
 
-To update your version number, select the correct number from the **Version** drop down menu. Your currently installed version number is displayed just above the dropdown menu for reference.
+[!note] Environment versions can only be increased incrementally. You cannot select a version that is more than one level ahead of your current version. 
 
-![image description](images/update-select-version.png)
+![image description](images/select-version.png)
 
-To set the number of FID nodes to display for the environment, use the provided slider to increase or decrease the quantity. Alternatively, you can select either the minus (**-**) or plus (**+**) sign on either side of the slider to increase or decrease the number of FID nodes to display.
+Once you have set the correct version number, select **Update** to begin updating the environment.To quit the update and return to the main *Environments* screen, select **Cancel**.
 
-![image description](images/update-node-slider.png)
-
-Once you have set the correct version number and number of FID nodes, select **Update** to begin updating the environment.
-
-![image description](images/update-env-button.png)
-
-To quit the update and return to the main *Environments* screen, select **Cancel**.
+![image description](images/update.png)
 
 ### Environment update confirmation
 
-After selecting **Update** you will return to the main *Environments* screen. The status of the environment being updated will display as "Updating".
+After selecting **Update** you will return to the main *Environments* screen. The status of the environment being updated will display as "Updating". A confirmation message will appear indicating that the environment is updating and the process can take up to 1 hour.
 
-![image description](images/update-updating-status.png)
+![image description](images/updating.png)
 
 If the environment updates successfully, you will receive a success notification and the environment's status will change to "Operational".
 
-![image description](images/update-successful.png)
-
 If the environment update is unsuccessful, you will receive an error notification and the environment's status will change to "Update Failed".
 
-![image description](images/update-failed.png)
+![image description](images/update-success.png)
 
 ## Previous updates
 
-You can view updates previously applied to an environment from the *Activity Log* screen, located within a specific environment's details view. From here, you also have the option to revert back to a previous environment update.
+You can view updates previously applied to an environment from the *Version History*, located within a specific environment's details view.
 
 ### View previous updates
 
 To navigate to an environment's details section, select the environment name from the *Environments* home screen.
 
-![image description](images/update-select-envname.png)
+![image description](images/view-env-details.png)
 
-This brings you to the environment *Overview* screen. From here, select **Activity Log** tab in the top navigation to display a chronological list of all actions performed on the environment.
+This brings you to the environment *Overview* screen. From here, select **View Version History** in the *Environment Details* section to open the *Version History* dialog.
 
-![image description](images/update-activity-log.png)
+![image description](images/view-version-history.png)
+
+The *Version History* dialog will display a chronological list of all previous updates including the version number, the date the update was applied, and the user who applied the update.
+
+![image description](images/version-history.png)
 
 ### Revert to a previous update
 
@@ -81,4 +77,15 @@ To revert to a previous update, follow the same steps to restore an environment 
 
 ## Next steps
 
-After reading this guide you should have an understanding of the steps required to update an environment, including updating the version number and number of FID nodes to display. To learn how to import a configuration file to an existing environment, review the guide on [importing a configuration file](import-configuration-file.md).
+After reading this guide you should have an understanding of the steps required to update an environment. To learn how to import a configuration file to an existing environment, review the guide on [importing a configuration file](import-configuration-file.md).
+
+
+
+
+
+
+
+
+
+
+
