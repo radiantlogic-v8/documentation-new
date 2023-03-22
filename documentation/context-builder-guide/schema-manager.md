@@ -16,7 +16,8 @@ This section presents the Schema Manager concepts and procedures.
 ### Primary Key 
 In a well-designed relational database, every table has a column, or combination of columns, known as the primary key of the table. These values uniquely identify each row in the table. Occasionally you will find tables that were created in the database, but the uniquely identifying column(s) were not documented in the system catalog as the primary key. Declaring implicit primary keys is one of the database refining processes you perform using Schema Manager.   
 
->[!warning] All objects you want to virtualize must have a primary key defined, and any attribute that you declare as the primary key in the Schema Manager must be unique for all entries in your table.
+>[!warning] 
+>All objects you want to virtualize must have a primary key defined, and any attribute that you declare as the primary key in the Schema Manager must be unique for all entries in your table.
 
 In a directory, there is a notion of a “unique identifier” which is an attribute in each entry that uniquely identifies it from the sibling entries. This is not something that is explicitly documented in the directory schema; therefore, you must declare the primary key for the object class in the Schema Manager. Typically, the unique identifier in the directory comprises the RDN. For example, if a user DN were: uid=lcallahan,dc=ldap,dc=com, the unique identifier for the person objectclass would be uid.
 
@@ -78,7 +79,8 @@ Figure 3. 4: Schema Manager Tab
 
 When you open a schema (orx) file, the Schema Manager displays the objects in alphabetical order. Objects are tables and views (for databases), or object classes (for LDAP directories). As you select an object, information about that object appears on the right side.  
 
->[!note] If you select the Fields (for database objects) or Attributes (for LDAP objects) node (below a specific object) the Nullable column on the right side indicates which attributes are required. Attributes that have a ‘false’ value in the Nullable column are required. Attributes that have a ‘true’ value are optional. This is important to know if you want to insert users into the backend. Make sure that all required attributes are populated for the new entry or else the insert operation will fail in the underlying source.
+>[!note] 
+>If you select the Fields (for database objects) or Attributes (for LDAP objects) node (below a specific object) the Nullable column on the right side indicates which attributes are required. Attributes that have a ‘false’ value in the Nullable column are required. Attributes that have a ‘true’ value are optional. This is important to know if you want to insert users into the backend. Make sure that all required attributes are populated for the new entry or else the insert operation will fail in the underlying source.
 
 Relationships between database objects are displayed below the relationships node. 
 
@@ -120,7 +122,9 @@ Figure 3.7: Extract LDAP Schema Wizard
 
 6.	Enter a name for the file and click Create Schema. A schema file is generated and contains the metadata about the selected objects. This schema file is stored on the file system at <RLI_HOME>\vds_server\lod\<schema name>.orx. An LDIF formatted file containing the schema is also saved in the lod folder (with the same name as the .orx file) and is used to retrieve object class and attribute definitions if the metadata is used to extend the RadiantOne LDAP schema. For details on extending the schema, see the RadiantOne System Administration Guide.  
 
->[!warning] DO NOT USE HYPHENS (-) IN FILE NAMES. 
+>[!warning] 
+>DO NOT USE HYPHENS (-) IN FILE NAMES. 
+
 You can view and modify this schema by opening the .orx file in the Schema Manager tab. Any changes made do not affect the underlying schema.
 
 ###### Handling Auxiliary Object Classes from LDAP Backends 
@@ -141,7 +145,8 @@ To merge object classes together:
 
 Figure 3.8: Merging LDAP Object Classes
 
->[!warning] The direction in which you merge the objects is significant because the ‘base’ object (the structured object class) is used in the filter for the query that is sent to the backend directory. You can see this in the View Designer, Attributes tab for the node in the view definition that is built from the merged object. This can be seen in the screen shot below. Note that the attributes defined for this virtual node come from both the structured objectclass inetorgperson (uid, cn, displayName) and the auxiliary objectclass, RLIUser (rliuserattribute2, rliuserattribute3).
+>[!warning] 
+>The direction in which you merge the objects is significant because the ‘base’ object (the structured object class) is used in the filter for the query that is sent to the backend directory. You can see this in the View Designer, Attributes tab for the node in the view definition that is built from the merged object. This can be seen in the screen shot below. Note that the attributes defined for this virtual node come from both the structured objectclass inetorgperson (uid, cn, displayName) and the auxiliary objectclass, RLIUser (rliuserattribute2, rliuserattribute3).
 
 ![An image showing ](Media/Image3.9.jpg)
 
@@ -161,7 +166,8 @@ The database data source must be created before completing the schema extraction
 3.	Select a data source and click Next. 
 4.	Include Schema Name and User Authentication Information if needed.  You can limit the types of objects to be returned by selecting tables, views, system tables, or synonyms.  If you would like all types of objects returned, then select all options.  If you only want a subset of the selected objects returned, then you can enter a pattern for the Table Pattern parameter using the “%” for a wildcard character.  For example, if you want to return only tables that start with “N”, then for the Table Pattern you can enter N%.  
 
->[!note] The ANSI standard syntax for naming relational database tables is catalog.schema.table. Therefore, if you are authenticating as a user who has access to multiple different schemas, and want to narrow the search, you can enter in the specific schema name.
+>[!note] 
+>The ANSI standard syntax for naming relational database tables is catalog.schema.table. Therefore, if you are authenticating as a user who has access to multiple different schemas, and want to narrow the search, you can enter in the specific schema name.
 
 5.	Click Next to proceed and select the desired Tables and Views from the list.   
  
@@ -171,7 +177,8 @@ Figure 3.11: Sample Table and View List
 
 6.	Click Next, then enter the name of the new .orx file. 
 
-    >[!note] DO NOT USE HYPHENS (-) IN FILE NAMES.
+    >[!note] 
+    >DO NOT USE HYPHENS (-) IN FILE NAMES.
 
 7.	Click Create Schema to start the database schema extraction process.  This generates the schema (orx) file, an XML representation of the schema. 
 
@@ -212,13 +219,15 @@ You can view/modify this schema by opening the .orx file in the Schema Manager t
 
 Once the metadata has been captured, the next step is to improve it in a way that best serves your needs. This may involve declaring primary keys, relationships and RDN names, mapping object classes and attributes, creating synonyms, and/or removing objects, attributes and relationships.  Each of these topics is discussed in more details below. 
 
->[!note] Changes made in the Schema Manager do not affect the underlying schema.
+>[!note] 
+>Changes made in the Schema Manager do not affect the underlying schema.
 
 ##### Declaring Primary Keys 
 
 Primary keys that are implicit, but not declared in the data dictionary, are not included in objects and relationships file (.orx) unless you declare them.   
 
->[!warning] All objects you want to create virtual views from must have a primary key defined, and any attribute that you declare as the primary key in the Schema Manager must be unique for all entries in your table.
+>[!warning] 
+>All objects you want to create virtual views from must have a primary key defined, and any attribute that you declare as the primary key in the Schema Manager must be unique for all entries in your table.
 
 For directory schemas, declare the attribute that uniquely identifies each entry as the primary key. 
 To declare and modify the primary keys: 
@@ -247,7 +256,8 @@ The Schema Manager provides the information and resources to help you identify, 
 
 The Relationships dialog box requires source and destination tables (or views). When setting relationships, it does not matter which entity is the source and which is the destination. 
 
->[!note] Declaring implicit relationships relates to database schemas only.
+>[!note] 
+>Declaring implicit relationships relates to database schemas only.
 
 To set a relationship between two objects: 
 1.	Right-click on the desired object and choose the Define Relationships option. The Relationships dialog box appears. 
@@ -288,7 +298,8 @@ Figure 3.18: Example Relationships in a Database Schema
 
 Once the recursive relationship is described in the schema file, a hierarchical virtual directory view can be created. For details on how to build virtual views, please see [Chapter 4](04-view-designer.md). 
 
->[!note] If you do not know the depth of recursion, there is a way to build a virtual view without first defining the recursive relationships in the Schema Manager. For detailed steps, please see the article titled Building a Hierarchical Virtual View Based on Recursive Relationships in a Database in the RadiantOne Knowledge Base at: https://support.radiantlogic.com
+>[!note] 
+>If you do not know the depth of recursion, there is a way to build a virtual view without first defining the recursive relationships in the Schema Manager. For detailed steps, please see the article titled Building a Hierarchical Virtual View Based on Recursive Relationships in a Database in the RadiantOne Knowledge Base at: https://support.radiantlogic.com
 
 You will need a user ID and password for accessing the knowledge base. If you do not have one, please contact Radiant Logic at support@radiantlogic.com.
 
@@ -306,7 +317,8 @@ Figure 3.19: Define Synonym
 
 2.	Enter a name for the Synonym when prompted. 
 
->[!note] Synonyms may NOT have the same name as an existing object in the schema.
+>[!note] 
+>Synonyms may NOT have the same name as an existing object in the schema.
 
 ![An image showing ](Media/Image3.20.jpg)
 
@@ -330,7 +342,8 @@ To declare or Modify RDN Attribute Name and Value:
 
 Figure 3.21: RDN Attribute Name and Value Dialog Box
 
->[!warning] The attributes that you select as the display attribute(s) should not allow NULL values.
+>[!warning] 
+>The attributes that you select as the display attribute(s) should not allow NULL values.
 
 To remove attribute(s) from the RDN Display Attribute(s) list, choose the column(s) and click the left arrow button. 
 
@@ -350,7 +363,8 @@ Unwanted tables, views, attributes, or relationships can be removed from the sch
 
 Objects in a database schema are tables or views. Objects in an LDAP schema are object classes. Right-click on the desired object and choose Delete. 
 
->[!note] If any of the objects are involved in a relationship, the corresponding relationship must be removed first.
+>[!note] 
+>If any of the objects are involved in a relationship, the corresponding relationship must be removed first.
 
 ![An image showing ](Media/Image3.23.jpg)
 
@@ -389,7 +403,8 @@ Figure 3.26: Define Derived View Dialog Box
 
 The new derived view object appears in the list of views in the Schema Manager tab. This new object can be used when building virtual views in the [View Designer](04-view-designer.md). 
 
->[!note] A derived view may NOT be created from the same attribute twice.
+>[!note] 
+>A derived view may NOT be created from the same attribute twice.
 
 ##### Mapping Metadata 
 
