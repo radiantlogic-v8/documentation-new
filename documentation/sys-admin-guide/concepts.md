@@ -931,7 +931,7 @@ If a client application only sends a user ID to RadiantOne, and is not configure
 
 ><span style="color:red">**IMPORTANT NOTE – the Identification and Credentials Checking steps still happen, however, they are both performed by RadiantOne (first find the user, then Bind to check credentials).**
 
-![Entire Authentication Process using User ID to DN Mapping Rules](Media/Image3.21.jpg)
+![Entire Authentication Process using User ID to DN Mapping Rules](Media/Image2.31.jpg)
  
 Figure 2.31: Entire Authentication Process using User ID to DN Mapping Rules
  
