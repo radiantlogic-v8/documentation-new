@@ -11,7 +11,8 @@ Many large enterprises have multiple Active Directory forests and LDAP directori
 
 RadiantOne aggregates and links overlapping identities and addresses the complex challenges of determining group membership. It can evaluate LDAP dynamic groups and flatten nested groups to provide an accurate list of group members. RadiantOne also includes a web-based application named the Global Identity Viewer that administrators can use to search across disparate data sources for all identities and groups. This tool is for searching/auditing identities and groups. This guide describes the Global Identity Viewer application. A high-level diagram of the configuration process is depicted below.
 
->[!warning] For assistance on using RadiantOne to integrate identities from disparate data sources, see the RadiantOne Global Identity Builder guide.
+>[!warning] 
+>For assistance on using RadiantOne to integrate identities from disparate data sources, see the RadiantOne Global Identity Builder guide.
 
 ![An image showing ](Media/Image1.1.jpg)
 
@@ -19,7 +20,8 @@ Figure 1. 1 : High Level Process
 
 The Global Identity Viewer facilitates searching for identities and/or groups across all data sources that have been integrated in the Global Identity Builder project. When a query returns an identity, a list of tabs display for the selected user based on how many identity sources the user has an account in. If the identity was found in the global profile list, the attributes corresponding to this account display on the Global Profile tab. This tab can contain attribute(s) that have been joined across all accounts that have been linked to a single identity.
 
->[!note] If a user does not have an identity in the global profile, a appears next to their displayname above the Profile Info pane.
+>[!note] 
+>If a user does not have an identity in the global profile, a appears next to their displayname above the Profile Info pane.
 
 ![An image showing ](Media/Image1.2.jpg)
 
