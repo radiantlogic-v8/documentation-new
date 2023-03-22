@@ -24,7 +24,8 @@ Below is a high-level architecture diagram depicting the communication between t
 
 If SSL has been enabled for RadiantOne and you want to forbid access on the non-SSL port, follow the steps below.
 
->[!warning] If you have not enabled SSL for RadiantOne and set a value of 0 for the standard port, the RadiantOne service does not start at all.
+>[!warning] 
+>If you have not enabled SSL for RadiantOne and set a value of 0 for the standard port, the RadiantOne service does not start at all.
 Therefore, be sure to enable the SSL port before setting the standard port to 0.
 
 1. Stop the RadiantOne service (from the Dashboard tab in the Main Control Panel or as a service if it is installed as a service). If running in a cluster, shutdown the RadiantOne  service on all nodes starting with the follower/follower-only nodes and stopping the leader node last. View the leader/follower status of each node from the Main Control Panel dashboard tab. Take note of the current leader node (noted with the yellow-colored triangle).
@@ -57,7 +58,8 @@ If you use the Main Control Panel, Directory Browser tab to manage entries, you 
 
 If you are using a self-signed server certificate, you must install/trust the RadiantOne server certificate into your Internet browser. This can be done with the steps below.
 
->[!note] This is also applicable if you are simply accessing the Control Panel via the HTTPS port (e.g. 7171) even if the non-SSL is still available. This is because when you access the Main Control Panel via HTTPS, it connects to the RadiantOne service on the HTTPS web service port (https://rliserver:8090) and this requires the browser to trust the RadiantOne node’s server certificate. The [diagram](04-recommendations-for-securing-data-in-transit-ssl-tls-settings.md) shown at the beginning of this chapter depicts the different certificates, keystores and truststores in the architecture and is helpful to
+>[!note] 
+>This is also applicable if you are simply accessing the Control Panel via the HTTPS port (e.g. 7171) even if the non-SSL is still available. This is because when you access the Main Control Panel via HTTPS, it connects to the RadiantOne service on the HTTPS web service port (https://rliserver:8090) and this requires the browser to trust the RadiantOne node’s server certificate. The [diagram](04-recommendations-for-securing-data-in-transit-ssl-tls-settings.md) shown at the beginning of this chapter depicts the different certificates, keystores and truststores in the architecture and is helpful to
 understand where certificates need to be imported.**
 
 1. Open your Internet Browser (as an administrator, in order to install the RadiantOne server certificate when prompted) and navigate to RadiantOne on the HTTPS port (e.g. https://radiantoneserver:8090)
@@ -108,7 +110,8 @@ should not see the certificate warning anymore.
 
 You can limit the SSL protocols supported in RadiantOne from the Main Control Panel > Settings Tab > Security section > SSL sub-section. Click **Change** next to Enabled SSL Protocols. Select the protocols to support and click OK. Restart the RadiantOne service on all nodes.
 
->[!note] Only enable the SSL protocols that comply with your company’s security policy.**
+>[!note] 
+>Only enable the SSL protocols that comply with your company’s security policy.**
 
 
 ## Use Strong Cipher Suites and Disable Weak Ones

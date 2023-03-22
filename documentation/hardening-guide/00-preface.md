@@ -50,4 +50,5 @@ Some settings in the Main Control Panel are accessible only in Expert Mode. To s
 
 ![An image showing Expert Mode](Media/Image1.1.jpg)
 
->[!note] The Main Control Panel saves the last mode (Expert or Standard) it was in when you log out and returns to this mode automatically when you log back in. The mode is saved on a per-role basis.
+>[!note
+>The Main Control Panel saves the last mode (Expert or Standard) it was in when you log out and returns to this mode automatically when you log back in. The mode is saved on a per-role basis.
