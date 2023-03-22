@@ -9,7 +9,8 @@ description: Azure Cloud Installation Guide
 
 Through the jumpbox, you can connect to and manage any RadiantOne node.
 
->**Note – the RadiantOne service and the Jetty web server hosting the Main Control Panel are configured to automatically startup as services.**
+>[!note]
+>The RadiantOne service and the Jetty web server hosting the Main Control Panel are configured to automatically startup as services.
 
 1. Use the [SSH key](installation.md) you provided during the configuration to establish a tunnel connection to the RadiantOne node that you want to manage through the jumpbox server.
 
@@ -26,7 +27,8 @@ Through the jumpbox, you can connect to and manage any RadiantOne node.
 
 The steps in this section describe how to configure a Remote Desktop Connection to the Remote Desktop Gateway.
 
->**Note – the RadiantOne service and the Jetty web server hosting the Main Control Panel are configured to automatically startup as services.**
+>[!note]
+>The RadiantOne service and the Jetty web server hosting the Main Control Panel are configured to automatically startup as services.
 
 1. Make sure the certificate installed on the remote desktop gateway is trusted on your administrative client.
 
