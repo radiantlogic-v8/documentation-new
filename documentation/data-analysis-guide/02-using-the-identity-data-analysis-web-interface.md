@@ -9,9 +9,11 @@ The Identity Data Analysis web tool is accessible from the RadiantOne Main Contr
 
 Any user that is a member of the RadiantOne Directory Administrator role, ICS Admin role, or Namespace Admin role can log into the RadiantOne Main Control Panel and access the Identity Data Analysis tool on the Wizards tab. For details on the RadiantOne delegated admin roles, see the RadiantOne System Administration Guide.
 
->**Note – Images displayed in this guide are meant to describe expected behavior of features in RadiantOne. Your results may vary from those shown in this guide as data sets are subject to change at any time.**
+>[!note]
+>Images displayed in this guide are meant to describe expected behavior of features in RadiantOne. Your results may vary from those shown in this guide as data sets are subject to change at any time.
 
->**NOTE – The Identity Data Analysis tool is not compatible with Compatibility View in Microsoft Internet Explorer 11.**
+>[!note]
+>The Identity Data Analysis tool is not compatible with Compatibility View in Microsoft Internet Explorer 11.
 
 ## Working with Datasets
 
@@ -25,11 +27,13 @@ Figure 2.2: The Choose Dataset Type Page
 
 This option generates and analyzes an LDIF file based on your specifications. Creating a new dataset is the default option on this page. This option allows you to select a point of analysis within the RadiantOne namespace. 
 
-><span style="color:red">**IMPORTANT NOTE – You can mount virtual views from each of your data sources below a global root naming context in the RadiantOne namespace and point the Data Analysis tool to this location to perform a single analysis/report from all of your sources at once. This helps you detect attribute uniqueness and statistics across heterogeneous data sources.**
+>[!warning] 
+>You can mount virtual views from each of your data sources below a global root naming context in the RadiantOne namespace and point the Data Analysis tool to this location to perform a single analysis/report from all of your sources at once. This helps you detect attribute uniqueness and statistics across heterogeneous data sources.
 
 There are two default LDAP filters that can be used for creating a new data set – one for identities and one for groups – and allows you to provide an export location and file name for the LDIF that the Data Analysis tool generates. 
 
->**NOTE – The RadiantOne service must be running to create a new dataset.** 
+>[!note]
+>The RadiantOne service must be running to create a new dataset.
 
 To create a new dataset: 
 
@@ -60,7 +64,9 @@ Figure 2.3: The Create New Dataset Page
 <RLI_HOME>\vds_server\ldif\export
 
 7.	Verify the export file name. The export file name is based on the selected branch in the virtual namespace. 
-Note – avoid using invalid characters (< > : " / \ | ? or *) in the file name.
+
+>[!note]
+>Avoid using invalid characters (< > : " / \ | ? or *) in the file name.
 
 ![An image showing ](Media/Image2.4.jpg)
 
@@ -76,7 +82,8 @@ Figure 2.5: Exporting the Dataset
 
 10.	Click Run Analysis. The data analysis process time varies depending on the size of the LDIF file.
 
->**NOTE – If you click the Run Analysis button to analyze an LDIF that has already been created without moving or renaming the output .csv and .xls files, they are overwritten.** 
+>[!note]
+>If you click the Run Analysis button to analyze an LDIF that has already been created without moving or renaming the output .csv and .xls files, they are overwritten.
 
 ### Using an Existing Dataset
 
@@ -126,7 +133,8 @@ Figure 2.8: The Data Analysis Tool’s Summary Tab
 
 The Run New Analysis button restarts the analysis process and returns you to the Choose Dataset Type. 
 
->**NOTE – re-starting the analysis process over discards your current analysis re-sults.**
+>[!note]
+>Re-starting the analysis process over discards your current analysis re-sults.
 
 To export your data analysis to PDF, click the Export to PDF button. The Export to PDF button generates a PDF report of the entire analysis, which it displays in a PDF web viewer in a new browser tab. You may then download and save the generated PDF file. 
 
@@ -180,7 +188,8 @@ Figure 2. 13: Table with “firstname” and “city” Values
 
 Values in the Unique Values column indicate the number of values that occur only once in the attribute values. From the table above, the number of unique values of CITY for our database source is 3 (Kirkland, Redmond, and Tacoma) since these values occur only once each in the database source.
 
->**NOTE - Distinct values = `<Unique Values> + <Duplicate Values>`.**
+>[!note]
+>Distinct values = `<Unique Values> + <Duplicate Values>`.
 
 Values in the Duplicate Values column indicate the number of values that occur more than once in the database source. To continue with the example above, this value would be 2 for the CITY attribute - London and Seattle.
 
@@ -203,7 +212,8 @@ Review the Biggest Counts section (located below the Entry and Value statistics)
 
 Below the Distinct Values Biggest/Smallest Counts section, click the  ![An image showing ](Media/Down-arrow.jpg) button to the right of Entries with the most values in `<attributename>` header. 
 
-NOTE – this section displays for multi-value attributes only. 
+>[!note]
+>This section displays for multi-value attributes only.
 
 ![An image showing ](Media/Image2.16.jpg)
 
