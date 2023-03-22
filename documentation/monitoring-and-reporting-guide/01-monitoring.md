@@ -7,10 +7,7 @@ description: Monitoring and Reporting Guide
 
 - [Chapter 1: Monitoring](01-monitoring.md)
 
-<!-- 
 - [Chapter 2: Auditing and Reporting](02-auditing-and-reporting.md)
-
--->
 
 ## Chapter 1 - Monitoring
 
@@ -26,7 +23,7 @@ The key services to monitor are RadiantOne and ZooKeeper. There are default moni
 
 Some settings in the Main Control Panel are accessible only in Expert Mode. To switch to Expert Mode, click the Logged in as, (username) drop-down menu and select Expert Mode.
 
-![An image showing expert mode](Media/expert-mode.jpg)
+![An image showing expert mode](Media/Expert-Mode.jpg)
 
 >[!note] 
 >The Main Control Panel saves the last mode (Expert or Standard) it was in when you log out and returns to this mode automatically when you log back in. The mode is saved on a per-role basis.
