@@ -48,7 +48,8 @@ The vds_server.log records:
 
 Select a log level from the drop-down list in the Log Settings section. For details on available log levels, see [Chapter 1](01-overview).
 
->[!warning] to troubleshoot/trace ACI evaluation decisions, RadiantOne server log level must be set to DEBUG. When DEBUG level is set, the evaluation rules can be seen in vds_server.log. An example of ACI evaluation is shown below:
+>[!warning] 
+>To troubleshoot/trace ACI evaluation decisions, RadiantOne server log level must be set to DEBUG. When DEBUG level is set, the evaluation rules can be seen in vds_server.log. An example of ACI evaluation is shown below:
 2021-05-07T15:40:44,920 DEBUG com.rli.slapd.aci.generic.AciHandler:436 - 
   [ACI EVAL] operation: 'SEARCH REQUEST'
   [ACI EVAL]  targetDN: 'ou=Accounting,o=companydirectory'
@@ -95,7 +96,8 @@ Figure 3. 2: Enabling bind DN info for vds_server_access.log
 
 The access log now displays bind DN information for Search Results for both successful and unsuccessful binds.
 
->[!note] This setting does not affect vds_server_access.csv, which displays bind DN information by default.
+>[!note] 
+>This setting does not affect vds_server_access.csv, which displays bind DN information by default.
 
 The following example entry shows bind DN information for a successful bind. 
 
@@ -216,7 +218,8 @@ Queries to certain internal naming contexts can happen frequently resulting in a
 
 Certain queries used to monitor RadiantOne can happen frequently, resulting in a lot of “noise” in the access log. Logging of monitoring requests is disabled by default. To enable logging of monitoring requests, navigate to <RLI_HOME>/config/advanced and edit features.properties. Set vds.data.collection.logging=true. Restart the RadiantOne service. If RadiantOne is deployed in a cluster, restart the service on all nodes.
 
->[!note] if vds.data.collection.logging is set to true, ZooKeeper exceptions returned by data collectors used for monitoring are logged into <RLI_HOME>/vds/vds_server/logs/vds_server.log. Also, requests for data collectors on the admin HTTP port are logged into <RLI_HOME>/vds/vds_server/logs/scheduler/server.log.
+>[!note] 
+>If vds.data.collection.logging is set to true, ZooKeeper exceptions returned by data collectors used for monitoring are logged into <RLI_HOME>/vds/vds_server/logs/vds_server.log. Also, requests for data collectors on the admin HTTP port are logged into <RLI_HOME>/vds/vds_server/logs/scheduler/server.log.
 
 ### Logging to a Database
 
@@ -228,7 +231,8 @@ The Log2DB utility reads the contents from vds_server_access.csv (CSV log output
 
 The database that houses the table which the Log2DB utility writes to may be in any database server you choose. 
 
->[!warning] if you plan on using the RadiantOne default report generation, then the log2db database must be Microsoft SQL Server, Oracle, Derby or PostgreSQL. For details on default reports see the RadiantOne Monitoring and Reporting Guide.
+>[!warning] 
+>If you plan on using the RadiantOne default report generation, then the log2db database must be Microsoft SQL Server, Oracle, Derby or PostgreSQL. For details on default reports see the RadiantOne Monitoring and Reporting Guide.
 
 The default settings leverage a Derby database that is included with RadiantOne. These settings are described below and are located on the Main Control Panel > Settings Tab > Reporting section > Log2db Settings sub-section. The default configuration file for logging to a database is: <RLI_HOME>/config/log2db/AccessLog2DBconfig.properties.
 
@@ -254,7 +258,8 @@ To delete the contents of the log table, click the EMPTY TABLE button.
 
 The utility that writes the RadiantOne logs into a database is named Log2DB and can be started from command line or as a service. The database server configured to store the log contents must be running prior to starting the Log2DB utility.
 
->[!warning] If RadiantOne is deployed in a cluster, the data source associated with the database housing the log content is shared by all cluster nodes. However, since search requests can be directed to any cluster node, the Log2DB utility must be running on each cluster node.
+>[!warning] 
+>If RadiantOne is deployed in a cluster, the data source associated with the database housing the log content is shared by all cluster nodes. However, since search requests can be directed to any cluster node, the Log2DB utility must be running on each cluster node.
 
 **From Command Line**
 
@@ -281,7 +286,8 @@ To install the RadiantOne database access logger as a service:
 
 4.	Check your Windows Services. You should now have a service named RadiantOne DB Access Logger (or other name as defined in step 2 above). You can now start and stop the database logger as a Windows service. 
 
->[!note] If you would like to uninstall the service, first stop the service and then execute db-access-logger-service-uninstall.bat.
+>[!note] 
+>If you would like to uninstall the service, first stop the service and then execute db-access-logger-service-uninstall.bat.
 
 **As a Linux Daemon
 
@@ -502,7 +508,8 @@ The adap_access.log file can be viewed and downloaded from Server Control Panel 
 
 Select a log level from the drop-down list in the Log Settings section. For details on available log levels, see Chapter 1. The default log level for this log is OFF.
 
->[!warning] to log Certificate Revocation error messages when accessing ADAP using mutual authentication, set the log level to DEBUG from the Main Control Panel -> Zookeeper tab by navigating to radiantone/v2/<cluster_name>/config/logging/log4j2-vds.json and updating the “Loggers” section with the information shown below.
+>[!warning] 
+>To log Certificate Revocation error messages when accessing ADAP using mutual authentication, set the log level to DEBUG from the Main Control Panel -> Zookeeper tab by navigating to radiantone/v2/<cluster_name>/config/logging/log4j2-vds.json and updating the “Loggers” section with the information shown below.
 
 ```json
 "loggers" : {

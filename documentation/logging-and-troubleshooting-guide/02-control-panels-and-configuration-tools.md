@@ -66,7 +66,8 @@ Figure 4: Server Control Panel > Dashboard tab
 
 The cluster monitor store is configurable from Main Control Panel > Settings > Logs > Clustermonitor. You can enable/disable the store from here and indicate a max age for the entries to prevent the contents from growing too large.
 
->[!note] if you disable the cluster monitor store, no graphs display on the Server Control Panel > Dashboard tab.
+>[!note] 
+>If you disable the cluster monitor store, no graphs display on the Server Control Panel > Dashboard tab.
 
 ![An image showing ](Media/Image2.5.jpg)
  
@@ -84,4 +85,5 @@ Configuration commands issued using the vdsconfig utility can be logged. To enab
 
 The default audit log is <RLI_HOME>/logs/vdsconfig.log.
 
->[!warning] if you want the admin name that issued the command logged, make sure you have enabled the setting to Require a UserID and Password to Execute Commands. For information about this setting, see the RadiantOne Command Line Configuration Guide.
+>[!warning] 
+>If you want the admin name that issued the command logged, make sure you have enabled the setting to Require a UserID and Password to Execute Commands. For information about this setting, see the RadiantOne Command Line Configuration Guide.

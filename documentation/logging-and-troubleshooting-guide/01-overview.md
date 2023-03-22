@@ -26,13 +26,15 @@ Logs events that may cause the RadiantOne service to not be able to respond.  An
 Logs any error message encountered by RadiantOne (database connection problems, fatal errors…etc.).
 
 **Warn**
-**Logs any warning messages encountered by RadiantOne (client disconnected before response could be sent, and errors, fatal messages…etc.).
+
+Logs any warning messages encountered by RadiantOne (client disconnected before response could be sent, and errors, fatal messages…etc.).
 
 **Info**
 
 **Logs all access to RadiantOne.  All actions taken by RadiantOne and the results (including warnings, errors, and fatal messages).
 
 **Debug**
+
 Logs very detailed information about the actions taken by RadiantOne.
 
 **Trace**
@@ -48,4 +50,5 @@ Some settings in the Main Control Panel are accessible only in Expert Mode. To s
 
 Figure 2: Switching Control Panel to Expert Mode
 
->[!note] The Main Control Panel saves the last mode (Expert or Standard) it was in when you log out and returns to this mode automatically when you log back in. The mode is saved on a per-role basis.**
+>[!note] 
+>The Main Control Panel saves the last mode (Expert or Standard) it was in when you log out and returns to this mode automatically when you log back in. The mode is saved on a per-role basis.**
