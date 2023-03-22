@@ -17,7 +17,8 @@ To configure the first ZooKeeper server:
 
 1. On the first node in the Zookeeper ensemble, extract the compressed Zookeeper installer.
 
-   >**Note – the screen shot below is a general reference and the file name indicated is not the latest zip file name. For Windows deployments, use the rli-zookeeper-external-`<version>`-windows_64.zip file. For Linux deployments, use the rli-zookeeper-external-`<version>`-linux_64.tar.gz file.**
+   >[!warning]
+   >The screen shot below is a general reference and the file name indicated is not the latest zip file name. For Windows deployments, use the rli-zookeeper-external-`<version>`-windows_64.zip file. For Linux deployments, use the rli-zookeeper-external-`<version>`-linux_64.tar.gz file.
 
 ![An image showing ](Media/Image2.2.jpg)
 
@@ -39,7 +40,9 @@ Figure 2. 3 : Opening setup.properties
     zk.id=1
 ```
 
->  <span style="color:red">**IMPORTANT NOTE – This value must be a unique incremental value for all nodes in the cluster. The first node’s zk.id value should be 1, the second node’s zk.id value should be 2, and so on.**
+>[!warning]
+>This value must be a unique incremental value for all nodes in the cluster. The first node’s zk.id value should be 1, the second node’s zk.id value should be 2, and so on.
+
 8. Enter values for the zk.peer parameters. The syntax for this parameter is as follows.
 
 ```
@@ -75,14 +78,16 @@ Figure 2. 5 : Configuring Zookeeper
 
 Figure 2. 6 : Starting ZooKeeper
 
-><span style="color:red">**IMPORTANT NOTE – Any change to the setup.properties file requires re-configuring (configure.bat) and then restarting (start_zookeeper.bat) ZooKeeper.**
+>[!warning]
+>Any change to the setup.properties file requires re-configuring (configure.bat) and then restarting (start_zookeeper.bat) ZooKeeper.
 
 ## Configuring Additional ZooKeeper Nodes
 
 Once the first Zookeeper node is configured, you are ready to configure additional nodes.
 
 1. On the second node in the cluster, perform the instructions in [Configuring the First Zookeeper Server](#configuring-the-first-zookeeper-server). The configured setup.properties file on Zookeeper node #2 should resemble the following image.
-       IMPORTANT NOTE **–** Note that the zk.id value for this node is set to 2.
+>[!warning]
+>Note that the zk.id value for this node is set to 2.
 
 ![An image showing ](Media/Image2.7.jpg)
 
@@ -91,10 +96,12 @@ Figure 2. 7 : The setup.properties File on the Second Zookeeper Node
 2. On the third node in the cluster, perform the instructions in [Configuring the First Zookeeper Server](#configuring-the-first-zookeeper-server). The configured setup.properties file on Zookeeper node #3 should resemble the following image.
 
 
-    >  <span style="color:red">**IMPORTANT NOTE **–** Note that the zk.id value for this node is set to 3.**
+    >[!warning]
+    > Note that the zk.id value for this node is set to 3.
 
 ![An image showing ](Media/Image2.8.jpg)
 
 Figure 2. 8 : The setup.properties File on the Third Zookeeper Node
 
->  <span style="color:red">**IMPORTANT NOTE – Any change to the setup.properties file requires re-configuring (configure.bat) and then restarting (start_zookeeper.bat) Zookeeper.**
+>[!warning]
+>Any change to the setup.properties file requires re-configuring (configure.bat) and then restarting (start_zookeeper.bat) Zookeeper.
