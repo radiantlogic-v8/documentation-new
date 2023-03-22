@@ -11,7 +11,8 @@ Once a Universal Directory naming context is created, a properties tab is availa
 
 Properties – This tab lists the settings:<!-- [storage location](#storage-location),--> [schema checking](#schema-checking), [normalizing attribute names](#normalize-attribute-names), [indexed attributes](#indexed-attributes), [non-indexed](#non-indexed-attributes) attributes, [sorted attributes](#sorted-attributes), [encrypted attributes](#encrypted-attributes-for-data-at-rest), [inter-cluster replication](#inter-cluster-replication), and support for [full text search](#support-for-full-text-search). There are also buttons for saving, [initializing](#initializing-radiantone-universal-directory-stores), [exporting], [re-building the index](#rebuilding-indexes), [backing up](#backing-up-a-radiantone-universal-directory-store), [restoring](#restoring-a-radiantone-universal-directory-store), and [deleting the local storage](#deleting-a-radiantone-universal-directory-store) (must be de-activated to delete).
 
->[!warning] Although persistent cache leverages the Universal Directory as a storage, the functionality and configuration can vary slightly. For steps on configuring persistent cache and details on applicable properties, see the RadiantOne Deployment and Tuning Guide as this chapter is related to Universal Directory stores only.
+>[!warning] 
+>Although persistent cache leverages the Universal Directory as a storage, the functionality and configuration can vary slightly. For steps on configuring persistent cache and details on applicable properties, see the RadiantOne Deployment and Tuning Guide as this chapter is related to Universal Directory stores only.
 
 ## Configuration
 
@@ -51,7 +52,8 @@ The default location for data files is <RLI_HOME>\vds_server\data. To tune the l
 
 6.	Click Save and then Yes to apply the change to the server.
 
->[!warning] Any data in the default location is lost if the storage location is changed. If you have data in the existing location that you want to keep, export it to an LDIF file and after the storage location is changed, import this LDIF file.
+>[!warning] 
+>Any data in the default location is lost if the storage location is changed. If you have data in the existing location that you want to keep, export it to an LDIF file and after the storage location is changed, import this LDIF file.
 
 If RadiantOne is deployed in a cluster, the value of the storage location parameter is also assigned to all other nodes. The drive location indicated in the value must exist on the file system of each node. The nodes cannot leverage a single shared drive.
 
@@ -87,7 +89,8 @@ This option is to improve the performance of initializing the local store when p
 
 This property lists the attributes that should be indexed (separated by a comma). Attributes in this list support client search filters that use presence, equality, approximate, substring, matching rule, and browsing indexes. By default, all attributes are indexed (except for binary attributes and a few “internal” attributes defined in the Non Indexed Attributes property). If the Indexed Attributes setting is empty, this means all attributes are indexed. If you do not want all attributes indexed, define a comma separated list of attributes to index in this setting. If you indicate a list of attributes and later add attributes to index, you must remember to re-build the index. To do so, select the naming context below Root Naming Contexts on the Directory Namespace tab and on the Properties tab on the right side, click **Re-build Index**. 
 
->[!note] Although the underlying Lucene engine enforces a size limit of 32K characters for indexed attributes, we generally advise not indexing attributes containing more than 4K characters. To ignore these attributes, add them to the Non-indexed Attributes list and Re-build the Index (click Re-build Index).
+>[!note] 
+>Although the underlying Lucene engine enforces a size limit of 32K characters for indexed attributes, we generally advise not indexing attributes containing more than 4K characters. To ignore these attributes, add them to the Non-indexed Attributes list and Re-build the Index (click Re-build Index).
 
 >**Using OR conditions in filters containing non-indexed attributes is strongly discouraged since it requires a full scan and all entries fetched from disk.**
 
@@ -137,7 +140,8 @@ If the Indexed Attributes list is empty, all attributes (except binary ones and 
 
 If you change the non indexed attributes, you must re-build the index. You can do this from the Properties tab by clicking **Re-build Index**.
 
->[!warning] If possible, add attributes that must be modified frequently to the non-indexed attribute list to improve update performance of RadiantOne Universal Directory. Attributes that don’t need to be used in searches are good candidates for the non-indexed attribute list. Limit the number of configured non-indexed attributes to further improve update performance.
+>[!warning] 
+>If possible, add attributes that must be modified frequently to the non-indexed attribute list to improve update performance of RadiantOne Universal Directory. Attributes that don’t need to be used in searches are good candidates for the non-indexed attribute list. Limit the number of configured non-indexed attributes to further improve update performance.
 
 ### Active
 
@@ -166,7 +170,8 @@ manager/directReports
 
 The most common back link/forward link relationship is between group and user objects. A list of groups a user is a member of can be automatically calculated by RadiantOne and returned in the membership attribute of the user entry. The default attribute name in the user entry for the group membership is isMemberOf. However, you can configure any attribute name (e.g. memberOf) you want. This is configured on the Main Control Panel, click Settings > Interception > Special Attributes Handling, Linked Attribute section.
 
->[!note] When the Optimize Linked Attribute setting is enabled, the backlink attribute is always returned to clients even when not requested unless Hide Operational Attributes is enabled in RadiantOne (in which case isMemberOf is only returned when a client explicitly requests it). For details on the Hide Operational Attributes setting, please see the RadiantOne System Administration Guide.
+>[!note] 
+>When the Optimize Linked Attribute setting is enabled, the backlink attribute is always returned to clients even when not requested unless Hide Operational Attributes is enabled in RadiantOne (in which case isMemberOf is only returned when a client explicitly requests it). For details on the Hide Operational Attributes setting, please see the RadiantOne System Administration Guide.
 
 If the back link attribute location and forward link attribute location in the Linked Attributes setting is a RadiantOne Universal Directory store, the computation of the references can be optimized in order to return client requests for the back link attribute(s) at high speed. To enable this optimization, follow the steps below.
 
@@ -178,7 +183,8 @@ It is assumed you have configured the Linked Attribute Special Attributes Handli
 
 3.	Click **Re-build Index**.
 
->[!warning] If your users and groups are in RadiantOne Universal Directory stores, and you enable the Optimize Linked Attribute setting, and must support nested groups, only one Target Base DN location and Source Base DN location per RadiantOne Universal Directory store is supported. For example, in the Linked Attribute Special Attribute Handling, having a Target Base DN location configured for ou=people1,dc=myhdap and ou=people2,dc=myhdap (both in the same dc=myhdap store) is not supported. In this case, you should configure a single location as dc=myhdap as a shared parent for both containers.
+>[!warning] 
+>If your users and groups are in RadiantOne Universal Directory stores, and you enable the Optimize Linked Attribute setting, and must support nested groups, only one Target Base DN location and Source Base DN location per RadiantOne Universal Directory store is supported. For example, in the Linked Attribute Special Attribute Handling, having a Target Base DN location configured for ou=people1,dc=myhdap and ou=people2,dc=myhdap (both in the same dc=myhdap store) is not supported. In this case, you should configure a single location as dc=myhdap as a shared parent for both containers.
 
 #### Enable Changelog
 
@@ -196,17 +202,20 @@ Enabling this option forces the RadiantOne service to update the linked entries 
 
 If async indexing is not used, all objects containing either a forward link or back link attribute are updated before the modify response is returned to the client. If the modification request results in many objects getting updated, this can be time-consuming and the client may receive a timeout error.
 
->[!note] For persistent cached branches, you should only consider enabling this option if client applications issue modification requests to the RadiantOne service for the cached branch. If the data is only modified directly on the backend, and this is the event that triggers the persistent cache refresh, async indexing is irrelevant and not used.
+>[!note] 
+>For persistent cached branches, you should only consider enabling this option if client applications issue modification requests to the RadiantOne service for the cached branch. If the data is only modified directly on the backend, and this is the event that triggers the persistent cache refresh, async indexing is irrelevant and not used.
 
 ### Encrypted Attributes for Data at Rest
 
 Attribute encryption protects sensitive data while it is stored in RadiantOne Universal Directory. You can specify that certain attributes of an entry are stored in an encrypted format. This prevents data from being readable while stored, in any temporary replication stores/attributes (cn=changelog, cn=replicationjournal, cn=localjournal), in backup files, and exported in [LDIF files](#importing-changes-from-an-ldif-file) (must use the LDIFZ file extension). Attribute values are encrypted before they are stored in RadiantOne Universal Directory, and decrypted before being returned to the client, as long as the client is authorized to read the attribute (based on ACLs defined in RadiantOne), is connected to RadiantOne via SSL, and is not a member of the special blacklisted group (e.g. cn=ClearAttributesOnly,cn=globalgroups,cn=config). For more information about the blacklisted group, see the RadiantOne System Administration Guide.
 
->[!warning] Define a security encryption key from the Main Control Panel -> Settings Tab -> Security section -> Attribute Encryption prior to configuring encrypted attributes. For steps on defining key generation, changing the encryption security key, or using an HSM like Amazon Web Services KMS as the master security key storage, see the RadiantOne System Administration Guide.
+>[!warning] 
+>Define a security encryption key from the Main Control Panel -> Settings Tab -> Security section -> Attribute Encryption prior to configuring encrypted attributes. For steps on defining key generation, changing the encryption security key, or using an HSM like Amazon Web Services KMS as the master security key storage, see the RadiantOne System Administration Guide.
 
 Defined on the Properties Tab for the selected RadiantOne Universal Directory store, this is a comma-separated list of attributes to store encrypted. Attributes listed in the Encrypted Attributes property are added to the Non-indexed attribute list by default. This means these attributes are not searchable by default. Indexing encrypted attributes is generally not advised as the index itself is less secure than the attribute stored in RadiantOne Universal Directory, because the index is not salted. However, if you must be able to search on the encrypted attribute value, it must be indexed. Only “exact match/equality” index is supported for encrypted attributes. To make an encrypted attribute searchable, remove the attribute from the list of nonindexed attributes, save the configuration and then click **Re-build Index**.
 
->[!warning] To prevent the sensitive attribute values from being logged in clear in RadiantOne logs, make sure you add them to the Attributes Not Displayed in Logs property on the Main Control Panel > Settings tab > Server Front End > Attributes Handling. Each attribute name should be separated with a single space. Any attribute indicated here has a value of ***** printed in the RadiantOne logs instead of the value in clear.
+>[!warning] 
+>To prevent the sensitive attribute values from being logged in clear in RadiantOne logs, make sure you add them to the Attributes Not Displayed in Logs property on the Main Control Panel > Settings tab > Server Front End > Attributes Handling. Each attribute name should be separated with a single space. Any attribute indicated here has a value of ***** printed in the RadiantOne logs instead of the value in clear.
 
 #### Updating Encrypted Attributes
 
@@ -254,13 +263,15 @@ To import an LDIF file:
 
 3.	Browse to the LDIF file (or LDIFZ which is a zipped and encrypted file) and click OK. 
 
->[!warning] If using an LDIFZ file, the security key used on the RadiantOne node where the file was exported must be the same security key value used on the RadiantOne node that you are trying to import the file into. For steps on defining key generation or changing the encryption security key, see the RadiantOne System Administration Guide.
+>[!warning] 
+>If using an LDIFZ file, the security key used on the RadiantOne node where the file was exported must be the same security key value used on the RadiantOne node that you are trying to import the file into. For steps on defining key generation or changing the encryption security key, see the RadiantOne System Administration Guide.
 
 4.	The initialization process is performed as a task. The Tasks Monitor window displays. Click **OK** to exit the window. To view the task details, go to the Tasks tab in the Server Control Panel of the leader node (click the Config button next to the node on the Dashboard tab in the Main Control Panel).
 
 If you have a large data set and generated multiple LDIF files for the purpose of initializing the local store (each containing a subset of what you want to store), name the files with a suffix of “_2”, “_3”…etc. For example, let’s say the initial LDIF file (containing the first subset of data you want to import) is named init.ldif. After this file has been imported, the process tries to find init_2.ldif, then init_3.ldif…etc. Make sure all files are located in the same place so the initialization process can find them.
 
->[!warning] Deactivate any inter-cluster replication on the RadiantOne Universal Directory store prior to re-initializing them. To do so, navigate to the naming context associated with the RadiantOne Universal Directory store on the Main Control Panel -> Directory Namespace tab, below the Root Naming Contexts section. On the right side, uncheck “Inter-cluster Replication”, then click Save. Click Yes to apply the changes to the server.
+>[!warning] 
+>Deactivate any inter-cluster replication on the RadiantOne Universal Directory store prior to re-initializing them. To do so, navigate to the naming context associated with the RadiantOne Universal Directory store on the Main Control Panel -> Directory Namespace tab, below the Root Naming Contexts section. On the right side, uncheck “Inter-cluster Replication”, then click Save. Click Yes to apply the changes to the server.
 
 ### EntryDN
 
@@ -306,7 +317,8 @@ By default, the RadiantOne Universal Directory supports a maximum of 1024 clause
 
 Stores can be exported into an LDIF file from the Main Control Panel, Directory Namespace tab. 
 
->[!warning] If exporting to an LDIFZ file, a security key must be configured for RadiantOne. Any target stores where you want to import this LDIFZ file must use the same LDIFZ security key value. For steps on defining key generation or changing the encryption security key, see the RadiantOne System Administration Guide.
+>[!warning] 
+>If exporting to an LDIFZ file, a security key must be configured for RadiantOne. Any target stores where you want to import this LDIFZ file must use the same LDIFZ security key value. For steps on defining key generation or changing the encryption security key, see the RadiantOne System Administration Guide.
 
 1.	From the Main Control Panel, Directory Namespace tab, select the branch in the virtual namespace where you want to export entries.
 
@@ -348,7 +360,8 @@ To delete a RadiantOne Universal Directory, first de-activate it (uncheck the Ac
 
 Inter Cluster replication in RadiantOne leverages a publish-and-subscribe architecture. The leader nodes within each cluster play the role of a master in the multi-master replication. Each leader node publishes their changes in the common replication journal. Each leader node is also responsible for periodically checking the journal for changes that they need to apply locally. The default checking interval is 7 seconds. Should conflicting change events occur, a combination of timestamps and sequence numbers associated with the conflicting events are used to resolve the conflict.
 
->[!note] On startup, a RadiantOne node first applies any missed change events from the replication journal. After these changes have been applied it is able to serve as an active node in the cluster.
+>[!note] 
+>On startup, a RadiantOne node first applies any missed change events from the replication journal. After these changes have been applied it is able to serve as an active node in the cluster.
 
 A data source named replicationjournal is included in the RadiantOne install and plays the role of the journal. This data source points to the default cn=replicationjournal naming context installed with RadiantOne and should not be deleted or deactivated. You can decide to have the journal running on one of the clusters that is participating in replication, or run a separate cluster whose only role is to house the central journal. Having the journal housed in a Universal Directory (HDAP) store deployed in a cluster ensures high availability of this repository. The replicationjournal data source should indicate a primary server/node in the cluster and the failover servers should point to the other cluster nodes.
 
@@ -364,11 +377,13 @@ To configure inter-cluster replication, follow the steps below.
  
 Figure 5.13: Configuration of Multi-Master Replication
 
->[!note] All clusters that participate in the inter cluster replication topology must have unique cluster names to be uniquely identified.
+>[!note] 
+>All clusters that participate in the inter cluster replication topology must have unique cluster names to be uniquely identified.
 
 2.	To modify the replicationjournal data source in clusters 2 and 3, launch the Main Control Panel associated with the leader node of that cluster and login as the RadiantOne Directory manager. From the Settings Tab-> Server Backend section -> LDAP Data Sources sub-section, click on the replicationjournal data source and click **Edit**. Modify the hostname and port to point to the replicationjournal running in cluster 1. The base DN should be cn=replicationjournal. All nodes running in the cluster housing the journal should be defined in the data source: one of them as the primary server and the others as failover.
 
->[!warning] Make sure the port used in the replicationjournal settings can be accessed from all clusters and that firewall rules do not prevent the cluster from reading and writing into the central journal.
+>[!warning] 
+>Make sure the port used in the replicationjournal settings can be accessed from all clusters and that firewall rules do not prevent the cluster from reading and writing into the central journal.
 
 3.	The same naming context and RadiantOne Universal Directory store to be replicated must be configured in each cluster. To create a new Universal Directory store, go to the leader node’s Main Control Panel > Directory Namespace tab and click ![An image showing ](Media/plus-sign.jpg). Remember, configuration changes in a cluster are shared across all cluster nodes. Therefore, you only need to configure the Universal Directory store on one node.
 
@@ -481,11 +496,13 @@ On the Main Control Panel > Directory Browser tab of the leader node, you can se
 
 ### Creating New Entries
 
->[!warning] The user you are logged into the Control Panel as must have rights to create users.
+>[!warning] 
+>The user you are logged into the Control Panel as must have rights to create users.
 
 To create new entries, select the parent location in the tree above where you want the entry created and click ![An image showing ](Media/add-new-entry-button.jpg). Select New Entry, New inetOrgPerson, New Active Directory User New OrganizationalUnit, or New Group. The sections below describe these default options including the object classes that are used. If you want to create entries using different types of object classes than the ones mentioned here, then choose the New Entry option and select the desired object class from the drop-down list. Only object classes available in the RadiantOne LDAP schema are shown here. If the desired object class is not shown, extend the RadiantOne LDAP schema first and then come back to this screen to add your entry. See the RadiantOne System Administration Guide for steps on extending the RadiantOne LDAP schema.
 
->[!warning] Creating/Modifying entries on the Directory Browser tab is not just for local Universal Directory stores. If a backend other than a local store is mounted under the naming context where you are creating/modifying entries, the backend source is modified accordingly. For example, if you are modifying a branch that represents an LDAP backend and you create a new user entry, that operation is sent to the backend (assuming the credentials stored in the connection string/data source to the backend has the appropriate rights to create users).
+>[!warning] 
+>Creating/Modifying entries on the Directory Browser tab is not just for local Universal Directory stores. If a backend other than a local store is mounted under the naming context where you are creating/modifying entries, the backend source is modified accordingly. For example, if you are modifying a branch that represents an LDAP backend and you create a new user entry, that operation is sent to the backend (assuming the credentials stored in the connection string/data source to the backend has the appropriate rights to create users).
 
 #### New Entry
 
@@ -499,7 +516,8 @@ Figure 5.19: Creating a New Entry
 
 When creating a new group, you are able to select from the following list of object classes: group, groupOfNames, groupOfUniqueNames, groupOfUrls. More than one object class may be selected. 
 
->[!note] If you want the group to be a dynamic group, you must choose the groupOfUrls object class.
+>[!note] 
+>If you want the group to be a dynamic group, you must choose the groupOfUrls object class.
 
 ![An image showing ](Media/Image5.20.jpg)
  
@@ -620,7 +638,8 @@ To add dynamic members with the assistance of a wizard, follow the steps below.
 
 2.	Click **Edit Dynamic Members**. 
 
->[!note] The Edit Dynamic Members option displays only if the group contains the groupOfUrls object class.
+>[!note] 
+>The Edit Dynamic Members option displays only if the group contains the groupOfUrls object class.
 
 3.	Click **Add Member(s)**.
 
@@ -660,7 +679,8 @@ An alternative to using a wizard to manage dynamic group members is to manually 
 
 7.	Enter the memberURL using the syntax mentioned above. Click Confirm and the group entry is updated accordingly.
 
->[!note] Groups stored in RadiantOne Universal Directory can contain both explicit members and dynamic members. If RadiantOne is the enforcement point for authorization it first checks to see if the user is an explicit member of the group(s). Then, dynamic group membership is evaluated.
+>[!note] 
+>Groups stored in RadiantOne Universal Directory can contain both explicit members and dynamic members. If RadiantOne is the enforcement point for authorization it first checks to see if the user is an explicit member of the group(s). Then, dynamic group membership is evaluated.
 
 The notion of dynamic group membership is discussed in the Concepts section of the RadiantOne System Administration Guide. It is worth mentioning again, that if the client application is the enforcement point for authorization, then the logic to perform the extra search to the directory to find the group members (based on the memberUrl value of the group entry) must be implemented in the client application code. If the application does not support LDAP dynamic groups, then RadiantOne can be configured to dynamically build the group membership on-the-fly and make all groups managed by RadiantOne appear to have static (explicit) group members. For complete details on this behavior, please see the Groups Builder Wizard in the RadiantOne Identity Service Wizards Guide.
 
@@ -672,7 +692,8 @@ To remove explicit group members, from the Main Control Panel > Directory Browse
 
 To remove dynamic members, select the group entry and click ![An image showing ](Media/manage-group-button.jpg). Click **Edit Dynamic Members**. Click **Remove Member(s)**, select the LDAP URL representing the members to remove and click **Confirm Remove Member(s)**. Click **Close**. 
 
->[!note] Only groups that are of objectclass type groupOfUrls can have dynamic members. If the group you are managing does not have this object class, then the Dynamic Members option is not shown.
+>[!note] 
+>Only groups that are of objectclass type groupOfUrls can have dynamic members. If the group you are managing does not have this object class, then the Dynamic Members option is not shown.
 
 #### Modifying Group Attributes
 
@@ -712,7 +733,8 @@ An example of how to perform a Range Retrieval search in RadiantOne is described
 
 `<member> or <uniquemember>;range=<lowerlimit>-<upperlimit>`
 
->[!note] For more information on lower and upper limits, see the [Range Limits](#range-limits) section. Refer to the [Examples](#base-search-with-the-dereferencing-flag-set-to-search) section for example searches.
+>[!note] 
+>For more information on lower and upper limits, see the [Range Limits](#range-limits) section. Refer to the [Examples](#base-search-with-the-dereferencing-flag-set-to-search) section for example searches.
 
 8.	Click **Search**. 
 
@@ -746,7 +768,8 @@ Below are some example range searches.
 
 In the following example, a search is performed on all group member attributes. 
 
->[!warning] Searches with large ranges may impact client performance.
+>[!warning] 
+>Searches with large ranges may impact client performance.
 
 The Return Attributes value for this example is as follows.
 
@@ -854,7 +877,8 @@ If an account is locked by the RadiantOne server, due to a password policy viola
 
 Attributes can be updated, added or deleted.
 
->[!warning] The user you are logged into the Main Control Panel as must have rights to modify users.
+>[!warning] 
+>The user you are logged into the Main Control Panel as must have rights to modify users.
 
 ##### Updating Attributes
 
@@ -885,7 +909,8 @@ To reset a user’s password, select the user entry in the tree and on the right
 
 To move a user entry from one container to another within the same root naming context representing the same backend data source, select the entry and click the Move Entry (![An image showing ](Media/move-entry.jpg)) button. Browse to the location where you want the entry moved to and click **OK**. Click **OK** to confirm the move.
 
->[!warning] Entries can only be moved to/from containers below the same naming context representing the same backend data source.
+>[!warning] 
+>Entries can only be moved to/from containers below the same naming context representing the same backend data source.
 
 ![An image showing ](Media/Image5.33.jpg)
 
@@ -907,7 +932,8 @@ Figure 5.34: Delete Tree Confirmation
 
 RadiantOne Universal Directory supports alias entries as defined in RFC 22521. Alias entries point to/reference another entry in the directory. The attribute containing the location of the target entry (DN) is aliasedObjectName and the object class associated with these entries is alias. When a client requests an alias entry, they can indicate if they want the alias dereferenced or not. The indicators are outlined in the table below.
 
->[!warning] Dereferencing alias entries is only supported on base-level searches. One-level and subtree searches are not supported at this time.
+>[!warning] 
+>Dereferencing alias entries is only supported on base-level searches. One-level and subtree searches are not supported at this time.
 
 Flag | RadiantOne Behavior
 -|-

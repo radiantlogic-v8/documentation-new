@@ -85,7 +85,8 @@ Figure 2.1: Import LDIF
 
 Virtual entries are comprised of attributes from the primary backend, secondary objects (from joins, if relevant), and computed attributes (if relevant). All attributes that comprise the virtual entries can be seen on the Objects tab, in the Virtual Attribute table. From the Main Control Panel -> Directory Namespace Tab, select the primary backend below Root Naming Contexts and on the right side, select the Objects tab.
 
->[!note] If the primary backend is an LDAP directory and no primary object has been added, click **Add** to select one.
+>[!note] 
+>If the primary backend is an LDAP directory and no primary object has been added, click **Add** to select one.
 
 The Virtual Attribute table displays all attributes from the primary objects (noted with a blue square in the origin column), attributes from secondary objects (noted with a green square in the origin column) and computed attributes (noted with an orange square in the origin column).
 
