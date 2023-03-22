@@ -775,7 +775,7 @@ Note – the Edit Dynamic Members option displays only if the group contains the
 
 10.	In the LDAP URL, replace. 1.1 with a comma separated list of attributes to return and click OK.
 
-![An image showing ](Media/Image..jpg)
+![An image showing ](Media/Image5.23.jpg)
  
 Figure 5.23: memberURL Criteria for Dynamic Group
 
@@ -893,7 +893,7 @@ member;range=0-*
 
 ![An image showing ](Media/Image5.23.jpg)
 
-Figure 5.23: Full-range Search Example
+Figure 5.24: Full-range Search Example
 
 **Mid-range Search**
 
@@ -906,7 +906,7 @@ Return attributes: member;range=1-10
 
 ![An image showing ](Media/Image5.24.jpg)
 
-Figure 5.24: Mid-range Search Example
+Figure 5.25: Mid-range Search Example
 
 **Large-range Search**
 
@@ -918,7 +918,7 @@ member;range=0-5000
 
 ![An image showing ](Media/Image5.25.jpg)
 
-Figure 5.25: Large-range Search Example
+Figure 5.26: Large-range Search Example
 
 #### Nested Groups
 
@@ -938,22 +938,22 @@ An example query using the RadiantOne LDAP Browser is shown below.
 
 ![An image showing ](Media/Image5.26.jpg)
  
-Figure 5.26: Sample Search Request Leveraging LDAP_MATCHING_RULE_IN_CHAIN
+Figure 5.27: Sample Search Request Leveraging LDAP_MATCHING_RULE_IN_CHAIN
 
 If a Linked Attribute configuration has been configured for isMemberOf on the naming context, and “Optimize Linked Attribute” is enabled on the Universal Directory store, a filter requesting the ismemberOf attribute using the LDAP_MATCHING_RULE_IN_CHAIN OID is also supported. An example is shown below.
 
 ![An image showing ](Media/Image5.27.jpg)
 
-Figure 5.27: Linked Attribute Settings
+Figure 5.28: Linked Attribute Settings
 
 ![An image showing ](Media/Image5.28.jpg)
 
-Figure 5.28: Optimize Linked Attribute Setting
+Figure 5.29: Optimize Linked Attribute Setting
 An example query using the RadiantOne LDAP Browser is shown below.
 
 ![An image showing ](Media/Image5.29.jpg)
 
-Figure 5.29: Sample Search Request Leveraging LDAP_MATCHING_RULE_IN_CHAIN
+Figure 5.30: Sample Search Request Leveraging LDAP_MATCHING_RULE_IN_CHAIN
 
 ### Managing User Entries
 
@@ -969,13 +969,13 @@ Disabled accounts are inactive. The user is not able to authenticate (bind) to t
 
 ![An image showing ](Media/Image5.30.jpg)
 
-Figure 5.30: Adding nsAccountLock to a User Entry
+Figure 5.31: Adding nsAccountLock to a User Entry
 
 3.	Enter a value of true and click Confirm. 
 
 ![An image showing ](Media/Image5.31.jpg)
  
-Figure 5.31: Disabling a User Account
+Figure 5.32: Disabling a User Account
 
 The account is now disabled. If this user tries to authenticate to the directory, the server responds with: [LDAP: error code 53 - Account inactivated. Contact system administrator to activate this account].
 
@@ -1010,7 +1010,7 @@ If an attribute is of binary type, select the attribute and choose Modify Attrib
 
 ![An image showing ](Media/Image5.32.jpg)
  
-Figure 5.32: Binary Attribute Editor
+Figure 5.33: Binary Attribute Editor
 
 ##### Resetting Passwords
 
@@ -1026,7 +1026,7 @@ To move a user entry from one container to another within the same root naming c
 
 ![An image showing ](Media/Image5.33.jpg)
 
-Figure 5.33: Move Entry
+Figure 5.34: Move Entry
 
 #### Setting Access Permissions
 
@@ -1038,7 +1038,7 @@ From the Main Control Panel > Directory Namespace tab, select the entry in the t
 
 ![An image showing ](Media/Image5.34.jpg)
 
-Figure 5.34: Delete Tree Confirmation
+Figure 5.35: Delete Tree Confirmation
 
 ### Alias Entries
 
@@ -1163,7 +1163,7 @@ Numsubordinates is an operational attribute and is only returned in searches whe
 
 ![An image showing ](Media/Image5.35.jpg)
  
-Figure 5.35: Sample Search Requesting numSubordinates Attribute
+Figure 5.36: Sample Search Requesting numSubordinates Attribute
 
 ## Detecting Changes in RadiantOne Universal Directory
 
