@@ -28,7 +28,8 @@ To use this example, follow the steps below.
 
 10.	For the value of classname, enter: com.rli.scripts.customobjects.rsa.RsaRestAuthenticator
 
-><span style="color:red">**IMPORTANT NOTE – to view the script logic to call the RSA service, navigate to <RLI_HOME>\vds_server\custom\src\com\rli\scripts\customobjects\rsaRsaRestAuthenticator.java.**
+>[!warning]
+>To view the script logic to call the RSA service, navigate to <RLI_HOME>\vds_server\custom\src\com\rli\scripts\customobjects\rsaRsaRestAuthenticator.java.
 
 11.	Click OK.
 
@@ -46,7 +47,8 @@ To use this example, follow the steps below.
 
 Figure 2. 1: RSA SecurID Custom Authentication Service
 
-><span style="color:red">**IMPORTANT NOTE – if you edit the custom data source properties, you must restart RadiantOne FID. If deployed in a cluster, restart it on all nodes.**
+>[!warning]
+>If you edit the custom data source properties, you must restart RadiantOne FID. If deployed in a cluster, restart it on all nodes.
 
 17.	Navigate to the Main Control Panel > Settings tab > Interception section > Custom Authentication Providers (requires [Expert Mode](01-overview#expert-mode)).
 

@@ -11,7 +11,8 @@ RadiantOne includes a framework for calling custom authentication services like 
  
 Figure 1. 1: Integration with Custom Authentication Providers
 
->**Note – Logic for Custom Authentication Providers is invoked like an interception script. As such, any global interception scripts defined in RadiantOne are executed before custom authentication providers.**
+>[!note]
+>Logic for Custom Authentication Providers is invoked like an interception script. As such, any global interception scripts defined in RadiantOne are executed before custom authentication providers.
 
 ## Expert Mode
 
@@ -21,4 +22,14 @@ Some settings in the Main Control Panel are accessible only in Expert Mode. To s
  
 Figure 1. 2: Main Control Panel, Expert Mode
 
->**Note - The Main Control Panel saves the last mode (Expert or Standard) it was in when you log out and returns to this mode automatically when you log back in. The mode is saved on a per-role basis.**
+>[!note]
+>The Main Control Panel saves the last mode (Expert or Standard) it was in when you log out and returns to this mode automatically when you log back in. The mode is saved on a per-role basis.
+
+
+
+
+
+
+
+
+

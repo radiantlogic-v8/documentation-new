@@ -9,7 +9,8 @@ RadiantOne includes code to leverage Yubikey as a custom authentication provider
 
 1.	Plug your Yubikey device into your computer.
 
->**Note – the first time you plug your yubikey into your machine, a driver is installed/updated and generally takes a few minutes to setup.**
+>[!note]
+>The first time you plug your yubikey into your machine, a driver is installed/updated and generally takes a few minutes to setup.
  
  ![An image showing ](Media/Image3.1.jpg)
 
@@ -87,11 +88,12 @@ To view the script logic to call Yubico, navigate to <RLI_HOME>\vds_server\custo
 
 Figure 3.4: Yubikey Custom Authentication Service
 
-><span style="color:red">**IMPORTANT NOTE – if you edit the custom data source properties, you must restart RadiantOne FID. If deployed in a cluster, restart it on all nodes.**
+>[!warning]
+>If you edit the custom data source properties, you must restart RadiantOne FID. If deployed in a cluster, restart it on all nodes.
 
 28.	Navigate to the Main Control Panel > Settings tab > Interception section > Custom Authentication Providers (requires [Expert Mode](01-overview#expert-mode)).
 
-29.	On the right, click on the ADD button.
+29.	On the right, click ADD.
 
 30.	Enter a unique name for the custom authentication provider (e.g. yubikeypolicy).
 
