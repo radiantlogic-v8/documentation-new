@@ -276,7 +276,7 @@ The Password Strength Rule option allows you to define and test password strengt
 ```
 
 Another example would be if you do not want to allow special characters to be used in the password. This would be expressed in the Password Strength Rule field as:
-^[a-zA-Z0-9]+$
+`^[a-zA-Z0-9]+$`
 
 >[!note] Checking the Password Strength Rule box disables and overrides all other password Content options except Password minimum length and Password encryption.
 
