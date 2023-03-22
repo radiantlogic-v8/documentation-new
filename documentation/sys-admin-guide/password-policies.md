@@ -271,7 +271,7 @@ The default options for enforcing password content are based on an AND operation
 
 The Password Strength Rule option allows you to define and test password strength requirements that are more complex using an OR condition. For example, you could use the Password Strength Rule option to require a password to have 'n' number of special characters OR 'n' number of Upper Case characters. In another example, a password strength rule requiring at least six total characters, with at least one lower case, at least one uppercase letter, and at least one digit OR one symbol would be expressed in the Password Strength Rule field as follows.
 
-```
+```regex
 ^.(?=.{6,})(?=.[a-z])(?=.[A-Z])(?=.[\d\W]).*$
 ```
 
