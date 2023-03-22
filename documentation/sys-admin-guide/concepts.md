@@ -65,11 +65,11 @@ You can download existing data sources. This might be usefule if, for example, R
 
 Figure 2: Downloading Data Sources
 
-## Data Agent
+## Secure Data Connector
 
-A data agent retrieves identity-related data from your on-prem environment or cloud and sends it back to RadiantOne. When you define a data source, the configuration process allows you to define how you connect to the data source. Connections to custom objects that connect to a REST API or web endpoint, for example, typically do not require a data agent.
+A secure data connector retrieves identity-related data from your on-prem environment or cloud and sends it back to RadiantOne. When you define a data source, the configuration process allows you to define how you connect to the data source. Connections to custom objects that connect to a REST API or web endpoint, for example, typically do not require a secure data connector.
 
-On-prem backends, on the other hand, typically require selecting a data agent.
+On-prem backends, on the other hand, typically require selecting a secure data connector.
 
 
 ## Union
