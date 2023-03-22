@@ -11,7 +11,8 @@ As discussed throughout this document, at the heart of most identity integration
 
 The RadiantOne Control Panels are web-based interfaces to provide remote access to the most commonly used tools and wizards. In addition, the control panels offer monitoring, access to server statistics, reports, task management, and other administration options. They can be accessed from mobile or non-mobile devices including iPods and iPads.
 
->[!note] To access the control panels, JavaScript must be enabled in the Internet browser you are using.
+>[!note] 
+>To access the control panels, JavaScript must be enabled in the Internet browser you are using.
 
 ### Main Control Panel
 
@@ -137,7 +138,8 @@ The Log Viewer Tab is the console where you can view all RadiantOne log files.
 
 RadiantOne includes a couple of tools designed to assist administrators with creating views containing unique lists of identities. The Data Analysis tool helps discover data quality issues and identify ideal attributes to base correlation rules on. The Global Identity Builder tool guides administrators through the identity integration and correlation process. For more information on the tools, please see the sections below.
 
->[!note] for step-by-step instructions on using the tools, please see the Global Identity Builder Guide and RadiantOne Data Analysis Guide.
+>[!note] 
+>For step-by-step instructions on using the tools, please see the Global Identity Builder Guide and RadiantOne Data Analysis Guide.
 
 ### Global Identity Builder
 
@@ -151,7 +153,8 @@ The RadiantOne Identity Data Analysis tool analyzes the quality of data in the b
 
 The Identity Data Analysis tool generates a report for each of your data sources. These reports give you a glimpse of your existing data and provide insight on the quality of your data and what is available for you to use for correlation logic. 
 
->[!warning] - You can also choose to mount virtual views from each of your data sources below a global root naming context in RadiantOne and point the Identity Data Analysis tool to this location to perform a single analysis/report from all of your sources at once. This helps you detect attribute uniqueness and statistics across heterogeneous data sources.
+>[!warning] 
+>You can also choose to mount virtual views from each of your data sources below a global root naming context in RadiantOne and point the Identity Data Analysis tool to this location to perform a single analysis/report from all of your sources at once. This helps you detect attribute uniqueness and statistics across heterogeneous data sources.
 
 
 ### Related Material
