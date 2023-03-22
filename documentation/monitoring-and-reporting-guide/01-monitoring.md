@@ -28,7 +28,8 @@ Some settings in the Main Control Panel are accessible only in Expert Mode. To s
 
 ![An image showing expert mode](Media/expert-mode.jpg)
 
->[!note] The Main Control Panel saves the last mode (Expert or Standard) it was in when you log out and returns to this mode automatically when you log back in. The mode is saved on a per-role basis.
+>[!note] 
+>The Main Control Panel saves the last mode (Expert or Standard) it was in when you log out and returns to this mode automatically when you log back in. The mode is saved on a per-role basis.
 
 ### RadiantOne Built-in Monitoring and Alerts
 
@@ -123,7 +124,8 @@ Click the "Server Control Panel" link at the top of the Main Control Panel to la
 From the Server Control Panel > Dashboard Tab, you can monitor the CPU, disk space and latency on the machine hosting RadiantOne, and the RadiantOne service memory and
 connections.
 
->[!warning] To use this feature, enable the cluster monitor at Main Control Panel > Settings > Logs > Clustermonitor.
+>[!warning] 
+>To use this feature, enable the cluster monitor at Main Control Panel > Settings > Logs > Clustermonitor.
 
 ![An image showing monitoring resources from the server control panel ](Media/Image1.3.jpg)
 
@@ -281,8 +283,8 @@ Figure 1.12: Selecting a Data Source to Monitor
 
 Figure 1.13: Example of a Data Source to Monitor
 
->[!note] To disable alerts for a data source, click the X next to the data source
-name in the Data Source to monitor field, which removes it from the list.
+>[!note] 
+>To disable alerts for a data source, click the X next to the data source name in the Data Source to monitor field, which removes it from the list.
 
 ##### Network Latency
 
@@ -300,7 +302,8 @@ Control Panel -> Settings tab -> Monitoring section and are tied to the Task Sch
 must be running. The status of the Task Scheduler can be seen on the Tasks tab in the Server
 Control Panel associated with the current leader node.
 
->[!warning] For alerts that leverage data collectors, it is important to note
+>[!warning] 
+>For alerts that leverage data collectors, it is important to note
 that some properties within data collectors require the RadiantOne service to be running to get status information. If you have configured custom alerts that use properties in a data collector that require the RadiantOne service to be running, andthe service stops, no alerts are sent. Be mindful of this when using data collectors in custom alerts.
 
 RadiantOne offers standard alerts and custom alerts. Standard alerts cover the recommended
@@ -355,7 +358,8 @@ Click the Save button when you are finished.
 
 A file alert, when the disk usage on the RadiantOne machine reaches 90% of max capacity, is enabled by default. These settings can be changed from the Main Control Panel > Settings tab > Monitoring section > Standard Alerts. To change the disk usage, enter a threshold. Define the interval to check the data usage (default is 120 seconds). The default alert output is File Alert, but if SMTP settings are configured in the Monitoring > Email Alert Settings section you can also use the Email Alert output. Click the Save button when you are finished.
 
->[!warning] closely monitoring disk space usage is extremely critical. If disk space is full, the RadiantOne service shuts down automatically.
+>[!warning] 
+>Closely monitoring disk space usage is extremely critical. If disk space is full, the RadiantOne service shuts down automatically.
 
 ###### Disk Latency
 
@@ -620,13 +624,15 @@ Each description in this section indicates if the RadiantOne service needs to be
 
 The active-alerts data collector returns information about all active alerts that are currently triggered. If the response is empty, this means there are currently no alerts triggered.
 
->[!note] This data collector does not require a RadiantOne service to be running to return status information.
+>[!note] 
+>This data collector does not require a RadiantOne service to be running to return status information.
 
 #### Cloud-replication
 
 The cloud-replication data collector returns information and statistics about all configured inter-cluster replication.
 
->[!note] This data collector requires a RadiantOne service to be running return status information.
+>[!note] 
+>This data collector requires a RadiantOne service to be running return status information.
 
 A description of the properties is shown below.
 
@@ -810,13 +816,15 @@ to the configuration since last polling. The value is true if there have been
 configuration changes. Otherwise, the value is false.
 - revision – Current ZooKeeper revision.
 
->[!note] This data collector does not require a RadiantOne service to be running to return information.
+>[!note] 
+>This data collector does not require a RadiantOne service to be running to return information.
 
 #### Connections-info
 
 The connections-info data collector returns information about current connections for a given RadiantOne node.
 
->[!note] This data collector requires a RadiantOne service to be running to return information.
+>[!note] 
+>This data collector requires a RadiantOne service to be running to return information.
 
 For each current connection, the following properties are returned.
 
@@ -829,7 +837,8 @@ For each current connection, the following properties are returned.
 - opCount - the total number of operations the RadiantOne node has processed for the
 connection.
 
->[!note] The opCount for certain connections, used for internal operations, returns a value that is higher than the combined total of opCountAdd, opCountAbandon, opCountBind, opCountModify, opCountModifyDn, opCountCompare, and opCountDelete.
+>[!note] 
+>The opCount for certain connections, used for internal operations, returns a value that is higher than the combined total of opCountAdd, opCountAbandon, opCountBind, opCountModify, opCountModifyDn, opCountCompare, and opCountDelete.
 - opCountAbandon – number of abandon operations performed on this connection.
 - opCountAdd – number of add operations performed on this connection.
 
@@ -845,7 +854,8 @@ connection.
 The cplds-monitoring data collector returns information about the automatic synchronization
 process from LDAP backends to RadiantOne Universal Directory stores.
 
->[!note] This data collector requires the RadiantOne service to be running to return information.
+>[!note] 
+>This data collector requires the RadiantOne service to be running to return information.
 
 The following are the propertyID names and descriptions returned by this collector:
 
@@ -863,7 +873,8 @@ used by the change detection process to determine what data needs synchronized.
 The datasource-status data collector returns information about the data source and its status
 based on if the RadiantOne node can connect to it.
 
->[!note] This data collector does NOT require the RadiantOne servcie to be running to return information.
+>[!note] 
+>This data collector does NOT require the RadiantOne servcie to be running to return information.
 
 For each data source, the following properties are returned.
 
@@ -877,7 +888,8 @@ connection cannot be tested, which is the case for custom data sources.
 
 The event-log data collector returns information about recent events (eventType) like persistent cache initialization failures and refresh events that fail for a given RadiantOne node (nodeId) and naming context (namingDN). eventType has a value of PCACHE for persistent cache related events and SERVER for all other events.
 
->[!note] This data collector requires the RadiantOne service to be running to return information.
+>[!note] 
+>This data collector requires the RadiantOne service to be running to return information.
 
 The following properties (propertyID) are returned for each periodic persistent cache refresh
 event.
@@ -901,7 +913,8 @@ java.lang.Exception: Threshold reached with -10% difference.
 
 The hdap-store data collector returns information and statistics about all RadiantOne Universal Directory (HDAP) stores and persistent cached branches for a given RadiantOne node (nodeID).
 
->[!note] This data collector requires the RadiantOne service to be running to return information.
+>[!note] 
+>This data collector requires the RadiantOne service to be running to return information.
 
 For each store/persistent cache (storeId), the following properties are returned.
 
@@ -1119,7 +1132,8 @@ The orchestrator-agent-job data collector returns information about the agents c
 It also outputs any connector pcache ID's as the propertyId and any agents they are using it as the value.
 
 
->[!note] This data collector requires the RadiantOne service to be running to return information.
+>[!note] 
+>This data collector requires the RadiantOne service to be running to return information.
 
 For each agent, the following properties are returned:
 
@@ -1134,7 +1148,8 @@ value. This shows which connectors are using which agents.
 
 The periodic-refresh data collector returns information and statistics about persistent caches configured for periodic refresh.
 
->[!note] This data collector requires the RadiantOne service to be running to return information.
+>[!note] 
+>This data collector requires the RadiantOne service to be running to return information.
 
 For each periodic refresh, the following properties are returned:
 
@@ -1149,7 +1164,8 @@ blank.
 
 The pipeline data collector is for retrieving information about real-time persistent cache refresh and/or global synchronization processes
 
->[!note] This data collector requires the RadiantOne service to be running to
+>[!note] 
+>This data collector requires the RadiantOne service to be running to
 return information.
 
 For details on properties returned for pipelines associated with real-time persistent cache refreshes, see Real-time Persistent Cache Refresh. For details on properties returned for pipelines associated with global synchronization, see Global Synchronization.
@@ -1158,7 +1174,8 @@ For details on properties returned for pipelines associated with real-time persi
 
 The process-info data collector returns information and statistics about the internal RadiantOne processing queues.
 
->[!note] This data collector requires the RadiantOne service to be running to return information.
+>[!note] 
+>This data collector requires the RadiantOne service to be running to return information.
 
 This is the same information that you can find on the Server Control Panel > Usage & Activity tab > Connections & Ops.
 
@@ -1175,7 +1192,8 @@ deployments and should not be changed unless recommended by Radiant Logic.
 
 The server-event data collector returns the last 15 entries (not lines) in the server event log file (<RLI_HOME>/vds_server/logs/vds_events.log).
 
->[!note] This data collector requires the RadiantOne service to be running to return information.
+>[!note] 
+>This data collector requires the RadiantOne service to be running to return information.
 
 ### Email Alert Settings
 
@@ -1592,7 +1610,8 @@ To configure your own log4j appender:
 3. Click Export on the right.
 4. The ZooKeeper parent node should be /radiantone/v1/cluster/config/logging.
 5. Enter a path to a directory to save the default log4j configuration and a file name.
-    >[!note] This file can be imported on the ZooKeeper tab if you want to revert back to the default log4j configuration.
+    >[!note] 
+    >This file can be imported on the ZooKeeper tab if you want to revert back to the default log4j configuration.
 6. Click OK.
 
 ![An image showing ](Media/Image1.41.jpg)
@@ -1777,7 +1796,8 @@ serve client requests and how fast the Garbage Collector (GC) can recycle the
 discarded resources.
 - memPeak - the peak memory usage of RadiantOne since last startup.
 - opCount – the total number of operations RadiantOne has processed on the connection.
->[!note] The opCount for certain connections, used for internal operations,
+>[!note]
+>The opCount for certain connections, used for internal operations,
 returns a value that is higher than the combined total of opCountAdd,
 opCountAbandon, opCountBind, opCountModify, opCountModifyDn,
 opCountCompare, and opCountDelete.
@@ -1847,7 +1867,8 @@ Figure 1.44 : Example of Active Connection Information by Querying cn=monitor Br
 
 The value of opCount attribute indicates how many total operations have been performed by this connection.
 
->[!note] The opCount for certain connections, used for internal operations, returns a value that is higher than the combined total of opCountAdd, opCountAbandon, opCountBind, opCountModify, opCountModifyDn, opCountCompare, and opCountDelete.
+>[!note] 
+>The opCount for certain connections, used for internal operations, returns a value that is higher than the combined total of opCountAdd, opCountAbandon, opCountBind, opCountModify, opCountModifyDn, opCountCompare, and opCountDelete.
 
 The values for the following attributes indicate how many of each type of operation the connection has performed:
 
@@ -1937,7 +1958,8 @@ To reset the number of operations (compare, bind, modify, modrdn, delete, add an
 Connection pool statistics related to connections between RadiantOne and the backend data
 sources are logged into the cn=conn-pools,cn=monitor branch. You can retrieve these statistics by querying this branch from any LDAP client.
 
->[!note] The values of the attributes for backend connection pooling are read
+>[!note] 
+>The values of the attributes for backend connection pooling are read
 only.
 
 Below the cn=conn-pools container, you will see information on the internal connection pool (INTL), JNDI, LDAP and JDBC connections. The example below shows this information from the RadiantOne LDAP Browser.
@@ -2158,7 +2180,8 @@ The database that houses the table which contains the log contents can be in any
 Datasource” configured here must be running and accessible. To check which database this
 data source points to, navigate to the Main Control Panel -> Settings Tab -> Server Backend > DB Data Sources.
 
->[!note] The default settings leverage a Derby database that is included with RadiantOne and can be started with <RLI_HOME>/bin/DerbyServer.exe.
+>[!note] 
+>The default settings leverage a Derby database that is included with RadiantOne and can be started with <RLI_HOME>/bin/DerbyServer.exe.
 
 
 Once RadiantOne is configured to log to CSV and the database hosting the log contents is running, launch the Log2DB utility which is in charge of reading the CSV contents and writing into your database table (table name configured in the Log2db Settings).

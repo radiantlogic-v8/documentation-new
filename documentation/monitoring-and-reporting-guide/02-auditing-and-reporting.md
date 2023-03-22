@@ -63,7 +63,8 @@ To log configuration changes made through command line, using the vdsconfig util
 config logging with the following steps:
 
 
->[!warning] these steps require downtime since all services must be stopped. If RadiantOne is deployed in a cluster, perform the following steps on each node.
+>[!warning] 
+>These steps require downtime since all services must be stopped. If RadiantOne is deployed in a cluster, perform the following steps on each node.
 
 1. Stop all RadiantOne services including ZooKeeper.
 2. Edit <RLI_HOME>\config\advanced\features.properties and set:
@@ -82,5 +83,6 @@ configured size.
 
 You can generate the Audit Report from the Environment Operations Center. 
 
->[!warning] you can also audit user activity and have the report sorted by groups. The [Group Audit Report](#group-audit-report) is similar in output to the Audit Report. The only difference being the report categorizes user activity based on groups.
+>[!warning] 
+>You can also audit user activity and have the report sorted by groups. The [Group Audit Report](#group-audit-report) is similar in output to the Audit Report. The only difference being the report categorizes user activity based on groups.
 
