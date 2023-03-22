@@ -10,7 +10,8 @@ RadiantOne includes a Capture Process for Large numbers of distributed Directory
 
 At the sync interval (process schedule), the worker(s) connect to the backend(s) or read designated LDIF files and get all entries. The entries are sorted and compared against the current contents of the RadiantOne Universal Directory (HDAP) store. This operation is performed in memory without the need to generate LDIF files. The delta is determined and then the RadiantOne Universal Directory is updated to match the current image of the backend(s). The updates are issued to the RadiantOne Universal Directory store as standard LDAP operations meaning that the store continues to be accessible by clients during the sync cycles. A high-level architecture is shown below.
 
->**Note – during the first sync cycle, each worker initializes their own RadiantOne Universal Directory container(s).**
+>[!note]
+>During the first sync cycle, each worker initializes their own RadiantOne Universal Directory container(s).
 
 ![high-level architecture ](Media/Image1.1.jpg)
  
@@ -18,7 +19,8 @@ At the sync interval (process schedule), the worker(s) connect to the backend(s)
 
 For use cases involving aggregating LDAP backends, or Active Directory backends containing unique user populations into a single view in RadiantOne (for authentication), it might make more sense to use the CPLDS function instead of trying to build an aggregated virtual view that is then configured as persistent cache with real time refresh with hundreds of connectors. 
 
-><span style="color:red">**IMPORTANT NOTE – CPLDS has been tested with up to 2,500 LDAP backends.**
+>[!warning]
+>CPLDS has been tested with up to 2,500 LDAP backends.
 
 The CPLDS functionality performs a one-way synchronization from the backend directories into a RadiantOne Universal Directory (HDAP) store. The store is essentially a read-only replica of the backends that can be used to identify users, authenticate users (can be validated locally only if passwords are able to be synchronized) and deliver attributes for authorization.
 
@@ -32,4 +34,5 @@ Some settings in the Main Control Panel are accessible only in Expert Mode. To s
 
 ![expert mode](Media/expert-mode.jpg)
  
->**Note - The Main Control Panel saves the last mode (Expert or Standard) it was in when you log out and returns to this mode automatically when you log back in. The mode is saved on a per-role basis.**
+>[!note]
+>The Main Control Panel saves the last mode (Expert or Standard) it was in when you log out and returns to this mode automatically when you log back in. The mode is saved on a per-role basis.
