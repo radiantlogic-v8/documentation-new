@@ -13,25 +13,25 @@ From the *Reporting* screen, you can generate various reports to assist in monit
 
 To navigate to the *Reporting* screen, select **Reporting** (![image description](images/report-icon.png)) from the left navigation.
 
-![image description](images/overview-select-reporting.png)
+![image description](images/select-reporting.png)
 
 ## Generate a report
 
-To generate a report you must select the report type and the environment to generate the report for. 
+To generate a report you must select an environment to generate the report for. Optionally, you can also select a time range to filter the data for a specified period of time. 
 
-From the **Report Type** dropdown, select the type of report. Report types include:
+![image description](images/reporting-dropdowns.png)
 
-- Access Log Report: Provides details on various operations received by RadiantOne, including operation type, response times, and error codes.
-- Audit Report: Provides details on user activity, including what operations are performed by specific users, time frame, and frequency.
-- Group Audit Report: Provides similar details on user activity as the Audit Report for a specific group of users.
-
-For further details on the components of each report, see the [report types](report-types.md) guide.
-
-![image description](images/overview-report-type.png)
+### Select an environment
 
 From the **Environment** dropdown, select the environment to generate the report for.
 
-![image description](images/overview-env-type.png)
+![image description](images/env-dropdown.png)
+
+A detailed overview of the various components of the environment, their status, and operational health will display.
+
+For further details on the components of each report, see the [report types](report-types.md) guide.
+
+![image description](images/report-details.png)
 
 ### Filter data by time range
 
@@ -39,18 +39,8 @@ You can filter the report data by time range, allowing you to narrow down the da
 
 To filter by time, select a range from the **Time Range** dropdown.
 
-![image description](images/overview-time-range.png)
-
-### Set report refresh
-
-You can set the report to automatically refresh, providing updated data on the environment operations at a specific frequency.
-
-To set the report to automatically update at a specific interval, select an interval from the **Refresh** dropdown.
-
-> **RL QUESTION: Do reports run in the background after navigating away and can multiple reports run at the same time??**
-
-![image description](images/overview-refresh.png)
+![image description](images/time-range-dropdown.png)
 
 ## Next steps
 
-After reading this guide you should have an understanding of how to generate various reports to review the operations and health of your environments. For details on reviewing detailed environment logs, see the [environment logs](../environments/logging/environment-logs.md) guide. To learn how to monitor RadiantOne components, see the [monitoring](../monitoring/monitoring-overview.md) guide.
+After reading this guide you should have an understanding of how to generate environment reports to review the operations and health of your environments. For details on reviewing detailed environment logs, see the [environment logs](../environments/logging/environment-logs.md) guide. To learn how to monitor RadiantOne components, see the [monitoring](../monitoring/monitoring-overview.md) guide.
