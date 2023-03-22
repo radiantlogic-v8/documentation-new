@@ -767,6 +767,6 @@ Figure 3.31: Configuring ActualDN Attribute as Always Requested
 
 This attribute can be used in computed attributes by using the getactualDN() function. 
  
-![An image showing ](Media/Image..jpg)
+![An image showing ](Media/Image3.32.jpg)
 
-Figure 3. 29: Using ActualDN in a Computed Attribute
+Figure 3.32: Using ActualDN in a Computed Attribute
