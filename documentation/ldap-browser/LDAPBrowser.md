@@ -117,9 +117,10 @@ The parameters needed to connect to the RadiantOne LDAP service are as follows:
 
 Opens the LDAP Directory tree by loading the values from the selected profile file. The left pane displays the directory tree.
 
->**NOTE - If you already have a profile open, you should disconnect before trying to open a different profile.**
+>[!note] 
+>If you already have a profile open, you should disconnect before trying to open a different profile.
 
-1. Choose File -> Open/Connect.
+1. Choose File > Open/Connect.
 
 2. Select the profile and click Connect. See Figure 4.5.
 
@@ -135,7 +136,8 @@ The loaded profile can be edited. The different parameters can be modified and t
 
 2. Enter new parameters and click Next.
 
->**NOTE – you can also click on the Edit Profile button on the toolbar to reach this same menu.**
+>[!note]
+>Uou can also click on the Edit Profile button on the toolbar to reach this same menu.
 
 #### Delete a Profile
 
@@ -154,7 +156,8 @@ Figure 4.6: Delete Profile
 
 1. Right-click on the node above where you would like to add an entry and choose New Entry and choose the type of entry.
 
->**NOTE – if you choose the User entry type, this uses the inetOrgPerson objectclass. If you choose Active Directory User, the entry uses the User object. The Active Directory User option is only for adding users into Active Directory. If you want to add a new entry using a different objectclass, then choose the More option. If you are trying to insert a new entry through RadiantOne, then you must make sure the correct objectclass appears in the RadiantOne LDAP schema (or else it is not displayed in the Object Class drop-down list when you select the More option). For details on extending the LDAP schema, please see the RadiantOne System Administration Guide.**
+>[!note]
+>If you choose the User entry type, this uses the inetOrgPerson objectclass. If you choose Active Directory User, the entry uses the User object. The Active Directory User option is only for adding users into Active Directory. If you want to add a new entry using a different objectclass, then choose the More option. If you are trying to insert a new entry through RadiantOne, then you must make sure the correct objectclass appears in the RadiantOne LDAP schema (or else it is not displayed in the Object Class drop-down list when you select the More option). For details on extending the LDAP schema, please see the RadiantOne System Administration Guide.
 
 2. Enter the information about the new entry. See Figure 4.7.
 3. Click OK when finished.
@@ -169,7 +172,8 @@ Figure 4.7: Add New Entry
 
 2. A confirmation box is displayed. Click Yes to proceed with the deletion (See Figure 4.8).
 
->**NOTE – You will be notified if the entry has children. You will have the option to delete the child nodes too.**
+>[!note]
+>You will be notified if the entry has children. You will have the option to delete the child nodes too.
 
 ![An image showing deleting an entry](Media/Image4.8.jpg)
 
@@ -219,7 +223,8 @@ Attributes of the selected entry can be deleted if the connected user has permis
    
 2. In the right pane, right-click on the attribute and choose Delete > Attribute.
 
->**NOTE - Required attributes cannot be deleted. To remove a value of an attribute (for multi-valued attributes), choose the Delete > Value option.**
+>[!note]
+>Required attributes cannot be deleted. To remove a value of an attribute (for multi-valued attributes), choose the Delete > Value option.
 
 3. A confirmation box is displayed. Click Yes to proceed with the deletion. See Figure 4.12.
 
@@ -247,7 +252,8 @@ You must send the LDAP server certificate file to the client machine(s), which c
 >C:\radiantone\jdk\jre\bin>keytool -import -alias rli -keystore c:\radiantone\jdk\jre\lib\security\cacerts -file rli.cer
 ```
 
->**NOTE – <Java_Home>/lib/security/cacerts is the default truststore from JDK with password _changeit_ and _rli.cer_ is the server’s c ertificate in this example.**
+>[!note]
+><Java_Home>/lib/security/cacerts is the default truststore from JDK with password _changeit_ and _rli.cer_ is the server’s c ertificate in this example.
 
 #### Using the Main Control Panel to Import the Certificate File
 
