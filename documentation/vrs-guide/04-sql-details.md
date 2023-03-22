@@ -18,7 +18,8 @@ DELETE | DELETE FROM Table name <br>[WHERE predicates]
 CREATE | CREATE VIEW View name AS SELECT STATEMENT
 DROP | DROP VIEW View name
 
->[!note] an expression in a select statement can be a numeric value or anything delimited with simple quote.**
+>[!note] 
+>An expression in a select statement can be a numeric value or anything delimited with simple quote.**
  
 ## SQL 92 Identifiers
 
@@ -34,7 +35,8 @@ Table name syntax:
 [schema name .] table [correlation name]
 ```
 
->[!note] Correlation name means alias. Schema name is either vds (for LDAP mode) or vcs (for Context mode).
+>[!note] 
+>Correlation name means alias. Schema name is either vds (for LDAP mode) or vcs (for Context mode).
 
 ## Schema
 
@@ -44,7 +46,8 @@ Table name syntax:
 
 The objects (tables) returned in the schema are the same whether you are using context or ldap mode and is based on the LDAP schema that is defined for the RadiantOne service. To view the LDAP schema, use the Main Control Panel -> Settings Tab -> Configuration section LDAP Schema node. The only difference between the schema returned in context mode and LDAP mode is at the level of the attributes. In context mode, each object (table) has the contextid and parentcontext attributes and in LDAP mode, each object (table) has the dn attribute.
 
->[!warning] if you are using computed attributes, or attributes that have been remapped to a name that is not defined as an attribute in the RadiantOne LDAP schema, you cannot access them in SQL queries. You must define an attribute in the RadiantOne LDAP schema with the same name as the computed/remapped attribute before you can access them in VRS. For more information on computed attributes and the LDAP schema, please see the RadiantOne System Administration Guide.
+>[!warning] 
+>If you are using computed attributes, or attributes that have been remapped to a name that is not defined as an attribute in the RadiantOne LDAP schema, you cannot access them in SQL queries. You must define an attribute in the RadiantOne LDAP schema with the same name as the computed/remapped attribute before you can access them in VRS. For more information on computed attributes and the LDAP schema, please see the RadiantOne System Administration Guide.
 
 -	Tables: There is a special table in the schema named context. This table is defined with all the possible columns from the RadiantOne service and allows SQL results from any object in RadiantOne. It is a join and union of all columns from the RadiantOne LDAP schema. In addition to the context table, there is one table per objectclass defined in the RadiantOne LDAP schema. All these tables are a projection (or a view) on the context table.
 
@@ -82,7 +85,8 @@ Context Mode - append % to the contextid in the where clause (using LIKE) as sho
 SELECT cn,mail,uid FROM inetorgperson WHERE contextid LIKE 'o=companydirectory/ou=Accounting%'
 ```
 
->[!note] Ending the contextid value with /% will tell VRS to ignore the current context, meaning that the parent/base entry will not be included in the result set. Below is an example of a select statement using this syntax: 
+>[!note] 
+>Ending the contextid value with /% will tell VRS to ignore the current context, meaning that the parent/base entry will not be included in the result set. Below is an example of a select statement using this syntax: 
 SELECT cn,mail,uid FROM inetorgperson WHERE contextid = 'o=mycompany/ou=people/%'
 
 The following examples results in a one level search below a branch in the virtual namespace named ou=Accounting,o=companydirectory.
@@ -99,7 +103,8 @@ Context Mode – To issue a one level search in context mode, use the parentcont
 SELECT cn,mail,uid FROM inetorgperson WHERE parentcontext = 'o=companydirectory/ou=Accounting'
 ```
 
->[!note] Multi-value attributes are returned by the RadiantOne service as one column, with each value separated by ' # '.
+>[!note] 
+>Multi-value attributes are returned by the RadiantOne service as one column, with each value separated by ' # '.
 
 Please see [Sample VRS Queries](#sample-vrs-queries) for more examples.
 
