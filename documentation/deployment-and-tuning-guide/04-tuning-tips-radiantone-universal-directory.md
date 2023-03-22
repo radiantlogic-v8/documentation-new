@@ -7,7 +7,8 @@ description: Deployment and Tuning Guide
 
 The RadiantOne platform offers an LDAP v3 compliant storage that can be used to store any entries.  After the root naming context is created, the local store can be populated from an LDIF file or manually on the Main Control Panel -> Directory Browser Tab. RadiantOne can support multiple Universal Directory stores. 
 
->[!warning] Details about each of the parameters mentioned below can be found in the RadiantOne System Administration Guide. This document is only for pointing out these parameters as key to review when tuning RadiantOne.**
+>[!warning] 
+>Details about each of the parameters mentioned below can be found in the RadiantOne System Administration Guide. This document is only for pointing out these parameters as key to review when tuning RadiantOne.**
 
 ## Indexed Attributes
 
@@ -56,7 +57,8 @@ When processing this filter, RadiantOne returns all the entries containing an at
 
 The memory required to host data in the Universal Directory is unrelated to the memory allocated to RadiantOne service (for the JVM). The Universal Directory storage leverages Memory Mapping Files (MMapDirectory) which uses virtual memory and a kernel feature called “mmap” to access the disk files. To estimate the amount of memory required to house your stores, take the size of the LDIF file (that stores all the entries) and multiply it times 2. This is also roughly equivalent to: (`<number of entries> x <size of an entry>` x 2). For example, if you needed to store 1 million entries each 1 KB in size (results in about 1 GB sized LDIF file), approximately 2-3 GB of memory would be required.
 
->[!warning] when RadiantOne is deployed primarily for local Universal Directory stores on machines with large amounts of memory (e.g. 32GB), it is recommended to [set a max JVM (-Xmx) for the RadiantOne](01-global-tuning#memory-size) service instead of letting it expand to ¼ of the available memory. This leaves more memory for the local stores to ensure optimal performance.
+>[!warning] 
+>When RadiantOne is deployed primarily for local Universal Directory stores on machines with large amounts of memory (e.g. 32GB), it is recommended to [set a max JVM (-Xmx) for the RadiantOne](01-global-tuning#memory-size) service instead of letting it expand to ¼ of the available memory. This leaves more memory for the local stores to ensure optimal performance.
 
 ## Storage Location
 

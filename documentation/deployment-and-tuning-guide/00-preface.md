@@ -69,4 +69,5 @@ Some settings are accessible only in Expert Mode. To switch to Expert Mode, clic
 
 ![An image showing ](Media/expert-mode.jpg)
 
->[!note] The Main Control Panel saves the last mode (Expert or Standard) when you log out and returns to this mode automatically when you log back in. The mode is saved on a per-role basis.
+>[!note] 
+>The Main Control Panel saves the last mode (Expert or Standard) when you log out and returns to this mode automatically when you log back in. The mode is saved on a per-role basis.
