@@ -13,9 +13,11 @@ Radiant Logic offers templates for the following types of RadiantOne architectur
 
 Templates are available for Ubuntu 18.04 LTS, Red Hat Enterprise Linux 7.5, CentOS 7.6, or Windows Server 2016 as the host operating system.
 
-><span style="color:red">**IMPORTANT NOTES – the templates provided by Radiant Logic install an approved and supported RadiantOne Azure architecture. This is to ensure that RadiantOne is deployed on a certified architecture. If the provided templates do not meet your needs, please contact support@radiantlogic.com and they will work with your Radiant Logic Account Manager to assess the required professional services needed (if any) to alter the default templates.**
+>[!warning]
+>The templates provided by Radiant Logic install an approved and supported RadiantOne Azure architecture. This is to ensure that RadiantOne is deployed on a certified architecture. If the provided templates do not meet your needs, please contact support@radiantlogic.com and they will work with your Radiant Logic Account Manager to assess the required professional services needed (if any) to alter the default templates.
 
-><span style="color:red">**If you deploy a customized architecture without using the certified templates, the Radiant Logic support team might be unable to resolve problems in a timely manner. This can result in additional consultation fees imposed on the customer related to the time required to assess and certify the custom deployment.**
+>[!warning]
+>If you deploy a customized architecture without using the certified templates, the Radiant Logic support team might be unable to resolve problems in a timely manner. This can result in additional consultation fees imposed on the customer related to the time required to assess and certify the custom deployment.
 
 All templates install and configure one [load balancer](#load-balancer) and a remote desktop gateway/jumpbox for secure administrative access. A high-level diagram for a three-node cluster deployment is shown below.
 
@@ -23,7 +25,8 @@ All templates install and configure one [load balancer](#load-balancer) and a re
 
 The templates require one VNet, one virtual machine for the Windows Remote Desktop Gateway (RDG) or Linux Jumpbox server, and up to five virtual machines for the RadiantOne nodes.
 
-><span style="color:red">**IMPORTANT NOTE – Check your Microsoft Azure limits to ensure you have the resources available. Otherwise, the RadiantOne installation will fail.
+>[!warning]
+> Check your Microsoft Azure limits to ensure you have the resources available. Otherwise, the RadiantOne installation will fail.
 <br> https://docs.microsoft.com/en-us/azure/azure-subscription-service-limits**
 
 To install RadiantOne in Microsoft Azure follow the steps below.
@@ -42,11 +45,13 @@ To install RadiantOne in Microsoft Azure follow the steps below.
 
 6. [Linux only] Select an authentication type. If you select the Password option, proceed to the next step. If you select SSH public key, enter an RSA public key in the single-line format (starting with “ssh-rsa”) or the multi-line PEM format.
 
->**Note – you can generate SSH keys using ssh-keygen on Linux and OS X, or PuTTYGen on Windows.**
+>[!note]
+>You can generate SSH keys using ssh-keygen on Linux and OS X, or PuTTYGen on Windows.
 
 7. Enter and confirm the password associated with the user name.
 
->**Note – After installation, when you connect to the RadiantOne server ([through the Remote Desktop Gateway](#remote-desktop-gatewayjumpbox)), you need to login with these credentials.**
+>[!note]
+>After installation, when you connect to the RadiantOne server ([through the Remote Desktop Gateway](#remote-desktop-gatewayjumpbox)), you need to login with these credentials.
 
 8. Select a subscription option.
 
@@ -54,18 +59,19 @@ To install RadiantOne in Microsoft Azure follow the steps below.
 
 10. Select a location.
 
->**Note – Only US regions are supported. This includes the following regions.**
- <br> **- Central US**
- <br>  **- East US**
-<br>**- East US 2**
-<br>**- North Central US**
-<br>**- South Central US**
-<br>**- West Central US**
-<br>**- West US**
-<br>**- West US 2**
-<br>**- US Gov Arizona (Linux Only)**
-<br>**- US Gov Texas (Linux Only)**
-<br>**- US Gov Virginia (Linux Only)**
+>[!note]
+>Only US regions are supported. This includes the following regions.
+ <br>- Central US
+ <br>- East US
+<br>- East US 2
+<br>- North Central US
+<br>- South Central US
+<br>- West Central US
+<br>- West US
+<br>- West US 2
+<br>- US Gov Arizona (Linux Only)
+<br>- US Gov Texas (Linux Only)
+<br>- US Gov Virginia (Linux Only)
 
 ![configuring basic settings](Media/Image2.3.jpg)
 
@@ -92,7 +98,8 @@ To install RadiantOne in Microsoft Azure follow the steps below.
 
 16. Enter an administration location. This is the IP CIDR from which you must connect to the Remote Desktop Gateway/Jumpbox server. The default value is 0.0.0.0/0.
 
-><span style="color:red">**IMPORTANT NOTE – The default value allows connection from any IP address. For this reason, it is strongly recommended that you modify this value.**
+>[!warning]
+>The default value allows connection from any IP address. For this reason, it is strongly recommended that you modify this value.**
 
 ![virtual machine options ](Media/Image2.4.jpg)
 
@@ -114,7 +121,8 @@ To install RadiantOne in Microsoft Azure follow the steps below.
 
 9.  Enter your unique RadiantOne license key for each cluster node. Each node must have its own license key unless you received a cluster-based license key. If you have a cluster-based license key, the same license key can be used for all cluster nodes. Check with your Radiant Logic representative if you are not sure what kind of license you received.
 
->**Note – the license key starts with braces (e.g. {xxxx}xxxx....).**
+>[!note]
+>The license key starts with braces (e.g. {xxxx}xxxx....).
 
 26. Enter the LDAPS port for the RadiantOne service to accept client requests on. This is also the LDAPS port configured in the load balancer. All client requests go through the load balancer on the LDAPS port (or HTTPS port mentioned in the next step). The non-SSL port is not configurable in the template and defaults to 2389. There is no external access allowed to the RadiantOne service on the non-SSL LDAP port.
 
