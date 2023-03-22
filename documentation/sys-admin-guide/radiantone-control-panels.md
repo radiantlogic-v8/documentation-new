@@ -242,11 +242,10 @@ Detailed steps:
 To enable support for OIDC authentication:
 
 1.	Have your client ID and secret associated with the Control Panel application configured in your OIDC server ready. The Redirect URLs configured for the web application should point to the URLs associated with the Main Control Panel (one for the HTTP port and one for HTTPS:
-
-```
-http://hostname:7070/main/j_spring_openid_security_check
-https://hostname:7171/main/j_spring_openid_security_check
-```
+    ```
+    http://hostname:7070/main/j_spring_openid_security_check
+    https://hostname:7171/main/j_spring_openid_security_check
+    ```
 
 2.	Log into the Main Control Panel.
 
