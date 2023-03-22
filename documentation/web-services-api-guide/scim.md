@@ -146,7 +146,8 @@ To add a new schema:
 
 Custom SCIM attributes can be created for new schemas or when editing existing custom schemas. 
 
->[!note] it is not advised to modify the attributes of the default core SCIM schemas.
+>[!note] 
+>It is not advised to modify the attributes of the default core SCIM schemas.
 
 Attributes can be either single-valued or multi-valued. Multi-valued attributes like email, phoneNumbers, and ims can support canonical values, like Type (work, home, mobile, fax, pager…etc.). SCIM also supports complex attributes where an attribute can have sub-attributes. This section describes the attribute types and provides an example for each.
 
@@ -278,13 +279,15 @@ To delete a schema:
 
 4.	In the confirmation window, click Confirm. 
 
->[!note] if you delete the JSON-formatted schema files directly on the file system, the RadiantOne service must be restarted for changes to take effect. If RadiantOne is deployed in a cluster, restart the service on all nodes.
+>[!note] 
+>If you delete the JSON-formatted schema files directly on the file system, the RadiantOne service must be restarted for changes to take effect. If RadiantOne is deployed in a cluster, restart the service on all nodes.
 
 ## SCIM Resource Types
 
 SCIM resource types are managed from the Main Control Panel > Settings Tab > Server Front End > SCIM section > Resource Types tab on the right.
 
->[!note]To view a list of resource types configured in RadiantOne, use: `http://<RadiantOneService>:8089/scim2/v2/resourcetypes`
+>[!note]
+>To view a list of resource types configured in RadiantOne, use: `http://<RadiantOneService>:8089/scim2/v2/resourcetypes`
 
 A SCIM resource type is a collection of SCIM attributes identified by one or more SCIM schemas. Resource types are associated with specific base DNs in the RadiantOne namespace. For example, the “Users” resource type could be associated with o=companydirectory. This means that resource type “Users” cannot be associated with any other base DN. If you want to associate a resource type to multiple base DNs/views, you must aggregate them under a common root naming context and associate the resource type with the root naming context level.
 
@@ -334,7 +337,8 @@ To add a new resource type:
 
 19.	Click the Save button. The SCIM Configuration page displays the configured resource.
 
->[!note] To view a list of resource types configured in RadiantOne, use: http://<RadiantOneService>:8089/scim2/v2/resourcetypes
+>[!note] 
+>To view a list of resource types configured in RadiantOne, use: http://<RadiantOneService>:8089/scim2/v2/resourcetypes
 
 #### Template-based Attribute Mapping
 
@@ -352,13 +356,15 @@ If no match is detected, a drop-down menu allows you to select one of the follow
  
 Figure 6: Selecting a Template
 
->[!note] to remove a mapping, click the ![An image showing ](Media/x-button.jpg) button in the LDAP Attribute column in the table on the right.
+>[!note] 
+>To remove a mapping, click the ![An image showing ](Media/x-button.jpg) button in the LDAP Attribute column in the table on the right.
 
 #### Manual Attribute Mapping
 
-To manually define an attribute mapping, select an attribute in the table on the left. In the table on the right, click the corresponding SCIM attribute, and click the  ![An image showing ](Media/x-button.jpg) button. Repeat this process for all attributes to be mapped.
+To manually define an attribute mapping, select an attribute in the table on the left. In the table on the right, click the corresponding SCIM attribute, and click the ![An image showing ](Media/curvy-arrows.jpg) button. Repeat this process for all attributes to be mapped.
 
->[!note] to remove a mapping, click the   button in the LDAP Attribute column in the table on the right.
+>[!note] 
+>To remove a mapping, click the ![An image showing ](Media/x-button.jpg) button in the LDAP Attribute column in the table on the right.
 
 ##### Mapping Complex Attributes
 
@@ -373,7 +379,8 @@ Figure 4.7: Expanding a Complex Attribute
 
 3.	In the table on the right, click the corresponding SCIM sub-attribute, and click the ![An image showing ](Media/curvy-arrows.jpg) button.
 
->[!note] Mapping a complex attribute overrides any of its existing sub-attribute mappings and vice versa.
+>[!note] 
+>Mapping a complex attribute overrides any of its existing sub-attribute mappings and vice versa.
 
 In the following example, the sub-attributes of the complex attribute Office are mapped. 
 
@@ -407,7 +414,8 @@ To delete a resource:
 4.	Click the **Delete**  button. 
 5.	In the confirmation window, click Confirm. 
 
->[!note] if you delete JSON-formatted resource type files directly on the file system, the RadiantOne service must be restarted for changes to take effect. If RadiantOne is deployed in a cluster, restart the service on all nodes.
+>[!note] 
+>If you delete JSON-formatted resource type files directly on the file system, the RadiantOne service must be restarted for changes to take effect. If RadiantOne is deployed in a cluster, restart the service on all nodes.
 
 ## Accessing the RadiantOne SCIM Service
 
@@ -417,7 +425,8 @@ To list all SCIM resource types configured in RadiantOne, use:
 http://<RadiantOneService>:8089/scim2/v2/resourcetypes
 ```
 
->[!note] the keywords in this request are not case-sensitive.
+>[!note] 
+>The keywords in this request are not case-sensitive.
 
 Examples of SCIM clients used in this guide are WizTools.org REST Client and Postman. Some important items to keep in mind are listed below:
 
@@ -632,7 +641,8 @@ The following example updates an entry for a user named Barbara Jensen in one of
 
 The resource type configuration and attribute mappings used in this example are shown below.
 
->[!note] To execute this example command, the default SCIM user schema must be used. To use this schema, create a resource type using the New Resource Type option. Resource types created using the Quick Start option do not use the default SCIM user schema.
+>[!note] 
+>To execute this example command, the default SCIM user schema must be used. To use this schema, create a resource type using the New Resource Type option. Resource types created using the Quick Start option do not use the default SCIM user schema.
 
 ![An image showing ](Media/Image4.15.jpg)
  
@@ -699,7 +709,8 @@ Figure 18: Sample Entry Updated with a SCIM PATCH Operation
 
 The following SCIM PUT query example describes how to update a user entry that contains enterprise extension attributes like employeeNumber, division, and department. This example is based on the configuration described in the [Insert Entry](#insert-user) example above.
 
->[!note] For PUT requests, only attributes that are mapped for the resource type are replaced in the entry. If the body of the request contains an attribute that is not mapped, it is ignored by the RadiantOne service. If the body of the request does not contain an attribute that has a mapping, the value is removed (set to NULL) in the entry in RadiantOne. This behavior does not apply to the objectclass attribute.**
+>[!note] 
+>For PUT requests, only attributes that are mapped for the resource type are replaced in the entry. If the body of the request contains an attribute that is not mapped, it is ignored by the RadiantOne service. If the body of the request does not contain an attribute that has a mapping, the value is removed (set to NULL) in the entry in RadiantOne. This behavior does not apply to the objectclass attribute.**
 
 <table>
 <tr>

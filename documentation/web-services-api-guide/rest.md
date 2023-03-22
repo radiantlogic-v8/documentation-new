@@ -31,7 +31,8 @@ This section describes how to perform the following functions:
 
 -	Working with Complex Attributes
 
->[!note] The examples shown in this section use the Advanced Rest Client Google Chrome app.
+>[!note] 
+>The examples shown in this section use the Advanced Rest Client Google Chrome app.
 
 # Accessing the RadiantOne RESTFul Web Service
 
@@ -80,7 +81,8 @@ Figure 2: Proxy Header for Proxy Authorization
 
 Ensure the proxy authorization control is enabled for the RadantOne service and access controls have been defined to indicate who is allowed to impersonate who. For more information on enabling the proxy authorization control and defining access controls, please see the RadiantOne System Administration Guide.
 
->[!warning] – to allow the super user (e.g. cn=directory manager) to impersonate other users, you must enable the “Allow Directory Manager to Impersonate Other Users” option. For more information on this setting, please see the RadiantOne System Administration Guide.
+>[!warning] 
+>To allow the super user (e.g. cn=directory manager) to impersonate other users, you must enable the “Allow Directory Manager to Impersonate Other Users” option. For more information on this setting, please see the RadiantOne System Administration Guide.
 
 ## Authentication
 
@@ -96,7 +98,8 @@ You can use any base64 encoder to get this value. For example, the base64 encode
 
 Y249ZGlyZWN0b3J5IG1hbmFnZXI6c2VjcmV0c2VjcmV0
 
->[!note] The encoded header value does not contain “:”.
+>[!note] 
+>The encoded header value does not contain “:”.
 
 Resulting in a header of: 
 <br> `<header key="authorization" value="Basic Y249ZGlyZWN0b3J5IG1hbmFnZXI6c2VjcmV0c2VjcmV0"/>`
@@ -155,7 +158,8 @@ Figure 6: Enabling the Always Authenticate Option
 
 For normal SSL communications, where the only requirement is that the client trusts the server, no additional configuration is necessary (as long as both entities trust each other). For mutual authentication, where there is a reciprocal trust relationship between the client and the server, the client must generate a certificate containing his identity and private key in his keystore. The client must also make a version of the certificate containing his identity and public key, which RadiantOne must store in its truststore. In turn, the client needs to trust the server; this is accomplished by importing the server's CA certificate into the client truststore.
 
->[!note]  Certificate-based authentication (mutual authentication) requires the use of SSL (HTTPS) for the communication between the client and RadiantOne REST/ADAP service.**
+>[!note] 
+>Certificate-based authentication (mutual authentication) requires the use of SSL (HTTPS) for the communication between the client and RadiantOne REST/ADAP service.**
 
 ![An image showing ](Media/Image5.7.jpg)
 
@@ -290,7 +294,8 @@ https://<rli_server_name>:8090/adap?bind=oidc
 
 2.	If the user has not already attempted to log in, the RadiantOne OpenID Connect Login page is displayed. The user logs in with thee RadiantOne credentials. If this page does not display, proceed to the next step. An authorization page similar to the one below displays.
  
->[!note] if a message states, “Client with ID <clientname> was not found”, the oidcClientId value in ZooKeeper must be configured. Refer to the RadiantOne Configuration section for more information.
+>[!note] 
+>If a message states, “Client with ID <clientname> was not found”, the oidcClientId value in ZooKeeper must be configured. Refer to the RadiantOne Configuration section for more information.
 
 ![Authorization Access Page](Media/Image5.13.jpg)
  
@@ -370,7 +375,8 @@ Table 5: Search Operation
 
 Figure 19: Search Operation
 
->[!note] Depending on the parameters you define for the search, the loading time for your search results may be significantly longer than the loading times of other operations. A search’s initial loading time may be reduced by performing a paged search. See the PageSize section.
+>[!note] 
+>Depending on the parameters you define for the search, the loading time for your search results may be significantly longer than the loading times of other operations. A search’s initial loading time may be reduced by performing a paged search. See the PageSize section.
 
 >The search example shown in the table above displays a total of 10,011 results returned, as shown below.
 
@@ -382,7 +388,8 @@ Figure 20: Example Search Results
 
 You can use the following search parameters: filter, attributes, scope, startIndex, count, sizelimit, paging, context, context filter, return mode, special character encoding, and derefAliases. The & sign is the parameter delimiter in the URL. These options are described in this section.
 
->[!note] Special characters that appear in an LDAP filter may have a different usage in a URL syntax. For example, the ‘&’ character is the parameter delimiter in URLs. These special characters should be replaced by their hexadecimal value.  Below, the character ‘&’ is replaced by its hexadecimal equivalent, ‘%26’.
+>[!note] 
+>Special characters that appear in an LDAP filter may have a different usage in a URL syntax. For example, the ‘&’ character is the parameter delimiter in URLs. These special characters should be replaced by their hexadecimal value.  Below, the character ‘&’ is replaced by its hexadecimal equivalent, ‘%26’.
 <br>LDAP Filter	            ->     Corrected URL
 <br>(&(objectclass=*)(cn=a*))  ->  (%26(objectclass=*)(cn=a*))
 
@@ -518,13 +525,15 @@ The PageSize option indicates paging via the Paged Results Control should be pas
 
 For REST access, the paging functionality leverages a session cookie which is linked to the original LDAP connection. Since this requires the same connection/session to work properly, paging through the REST interface does not work against a RadiantOne cluster deployment because subsequent requests could be directed to a RadiantOne node that is not associated with the original session cookie. If paging is required for cluster deployments, it is recommended to use source address affinity persistence in your load balancer.
 
->[!note] To use this option, paged results must be enabled in RadiantOne. To enable paged results, go to the Main Control Panel > Settings tab > Server Front End > Supported Controls. Check the ‘Enable paged results’ checkbox, and click Save. 
+>[!note] 
+>To use this option, paged results must be enabled in RadiantOne. To enable paged results, go to the Main Control Panel > Settings tab > Server Front End > Supported Controls. Check the ‘Enable paged results’ checkbox, and click Save. 
 
 ![Enabling Paged Results](Media/Image5.23.jpg)
  
 Figure 23: Enabling Paged Results
 
->[!note] In multi-node clusters, an HTTP Status 302 is issued on a node that receives a paging request but did not generate the cookie related to paged results. This node redirects the request to the node that generated the cookie. No action is required. The cookie timeout can be configured in RadiantOne. To configure this timeout, go to the Main Control Panel > Settings > Server Front End > Other Protocols (requires [Expert Mode](overview#expert-mode)). Expand the REST/ADAP section. Enter a value in the Cookie Timeout field in seconds (the default is 60). Click Save.**
+>[!note] 
+>In multi-node clusters, an HTTP Status 302 is issued on a node that receives a paging request but did not generate the cookie related to paged results. This node redirects the request to the node that generated the cookie. No action is required. The cookie timeout can be configured in RadiantOne. To configure this timeout, go to the Main Control Panel > Settings > Server Front End > Other Protocols (requires [Expert Mode](overview#expert-mode)). Expand the REST/ADAP section. Enter a value in the Cookie Timeout field in seconds (the default is 60). Click Save.**
 
 ![Configuring Cookie Timeout](Media/Image5.24.jpg)
  
@@ -544,13 +553,15 @@ Example URL	| http://localhost:8089/adap/o=companydirectory?pageSize=5
 
 Table 13: Search Operation using PageSize Parameter
 
->[!note] If the PageSize option is used, ‘startIndex’, ‘count’ and ‘sizeLimit’ options will be ignored.
+>[!note] 
+>If the PageSize option is used, ‘startIndex’, ‘count’ and ‘sizeLimit’ options will be ignored.
 
 ![An image showing ](Media/Image5.25.jpg)
  
 Figure 25: Example Paged Search Results
 
->[!note] Record the value in the ‘cookie’ field. This value defines a search parameter that will be used to display the next page of search results. If the value in the ‘cookie’ field is “null”, the last page of search results has been reached; there are no more pages to retrieve. 
+>[!note] 
+>Record the value in the ‘cookie’ field. This value defines a search parameter that will be used to display the next page of search results. If the value in the ‘cookie’ field is “null”, the last page of search results has been reached; there are no more pages to retrieve. 
 
 The totalResults’ field displays one of three values. The following table explains each of these values.
 
@@ -664,7 +675,8 @@ An example LDAP filter of:
 
 RadiantOne Universal Directory stores supports alias entries as defined in RFC 22521. Alias entries point to/reference another entry in the directory. The attribute containing the location of the target entry (DN) is aliasedObjectName and the object class associated with these entries is alias. When a client requests an alias entry, they can indicate if they want the alias dereferenced or not. The indicators are outlined in the table below.
 
->[!warning] Dereferencing alias entries is only supported on base-level searches. One-level and subtree searches are not supported at this time.
+>[!warning] 
+>Dereferencing alias entries is only supported on base-level searches. One-level and subtree searches are not supported at this time.
 
 Flag	| RadiantOne Behavior
 -|-
@@ -764,7 +776,8 @@ Figure 31: Add Failure Response Example
 
 In this section, an existing entry is replaced using the parameters shown in the table below.
 
->[!note] “baseDN” is the DN of the targeted entry.
+>[!note] 
+>“BaseDN” is the DN of the targeted entry.
 
 Field	| Value
 -|-
@@ -1074,7 +1087,8 @@ Table 34: REST Operation to Delete a Node Containing Sub-nodes
  
 Figure 40: Deleing a Node Containing Sub-nodes
 
->[!note] The “deletetree=true” parameter does not delete root naming contexts.
+>[!note] 
+>The “deletetree=true” parameter does not delete root naming contexts.
 
 #### Performing Bulk Operations
 
@@ -1090,7 +1104,8 @@ Performing large quantities of REST requests may affect your network’s workloa
 
 A bulk operation contains unique fields in its syntax. The “method” field indicates the type of REST operation performed, and the “dn” field indicates the DN of the entry the operation applies to. 
 
->[!note] The fields “method”, “dn”, and “params” are required for every bulk operation.
+>[!note] 
+>The fields “method”, “dn”, and “params” are required for every bulk operation.
 
 <table>
 <tr>
