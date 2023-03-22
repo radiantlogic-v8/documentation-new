@@ -161,8 +161,7 @@ Figure 4: Configuration for RadiantOne to Connect to the Underlying LDAP Server 
 
 >[!warning] 
 >When using STARTTLS, be aware that you cannot use the IP of the server in the Host Name parameter, you need the exact name of the server (which should match what is in the certificate), or you will get the following error:
-
->...JNDI connect Error : javax.net.ssl.SSLPeerUnverifiedException: hostname of the server '10.11.12.203' does not match the hostname in the server's certificate.
+...JNDI connect Error : javax.net.ssl.SSLPeerUnverifiedException: hostname of the server '10.11.12.203' does not match the hostname in the server's certificate.
 
 ### Mutual Authentication
 
