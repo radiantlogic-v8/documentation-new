@@ -13,7 +13,7 @@ From the *Monitoring* screen, you can review the status and health of various Ra
 
 To navigate to the *Monitoring* screen, select **Monitoring** (![image description](images/monitoring-icon.png)) from the left navigation.
 
-![image description](images/overview-select-monitoring.png)
+![image description](images/select-monitoring.png)
 
 ## Monitor an environment
 
@@ -21,19 +21,19 @@ To generate monitoring metrics, an environment and at least one node must be sel
 
 To set the environment, select an environment from the **Environment** dropdown.
 
-![image description](images/overview-select-env.png)
+![image description](images/select-env.png)
 
 Select at least one node from the **Node** dropdown. 
 
-![image description](images/overview-select-node.png)
+![image description](images/select-node.png)
 
 If you would like to monitor more than one node, continue selecting all required nodes and then collapse the **Node** dropdown. The monitoring dashboard will update to display the component metrics for all nodes selected.
 
-![image description](images/overview-multiple-nodes.png)
+![image description](images/multiple-nodes.png)
 
 To remove a node, select the "X" associated with the node name.
 
-![image description](images/overview-remove-node.png)
+![image description](images/remove-node.png)
 
 ### Filter data by time range
 
@@ -41,29 +41,31 @@ You can filter monitoring data by time range, allowing you to narrow down the ta
 
 To filter by time, select a range from the **Time Range** dropdown.
 
-![image description](images/overview-time-range.png)
+![image description](images/select-timerange.png)
 
 ## Monitoring components
 
 The monitoring dashboard displays several node component metrics, allowing you to monitor the health of RadiantOne servers.
 
-Component metrics displayed include (**these have been pulled from existing guides, discussions with RL, and wire frames - need to be reviewed/confirmed by RL team**):
+Component metrics displayed include:
 
 | Component | Definition |
 |--------|------------|
 | CPU Used | Current CPU usage of the machine hosting RadiantOne. |
-| RAM Usage | Current RadiantOne service memory usage. |
+| RAM Usage | JVM memory used. |
 | Disk Used | Current disk usage of the drive on the machine hosting RadiantOne. |
 | Version | Current version of RadiantOne installed on the node. |
 | Server Current | Details about the server you connected to. |
 | FID Pool | The number of connections in a pool organized by anonymous, digest, and simple. |
-| Up Time | How long the RadiantOne service has been running on the node. |
+| Up Time | Time elapsed since the server started. |
 | Operations Count | How many operations have ben performed on the connection. |
-| Live Connections | How many connections are currently live. |
+| Live Connections | The live number of concurrent connections to RadiantOne FID. |
 | Ops | The type and number of operations performed. |
 | Peak Stats | Peak statistics for various components, such as CPU, Connections, Memory, and Disk. |
 | CPU Usage | A line graph that charts CPU usage over time. |
 | RAM Usage | A line graph that charts RAM usage over time. |
+
+![image description](images/monitoring-components.png)
 
 ## Next steps
 
