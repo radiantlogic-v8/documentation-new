@@ -1664,7 +1664,7 @@ False indicates that the node is a follower), ZooKeeper server ID, ZooKeeper ser
 (ON/OFF), ZooKeeper Server leader status (true for the ZooKeeper leader node. False for all
 non-leader nodes). An example is shown below for a 3-node cluster.
 
-![An image showing ](Media/clusterstate.jpg)
+![An image showing ](Media/ClusterState.jpg)
 
 To return just the table info, and avoid other logged output, pass RLI_CLI_VERBOSE=false
 before the command, like shown below.
