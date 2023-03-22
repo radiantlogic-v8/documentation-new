@@ -252,7 +252,7 @@ An extended join is defined by adding new attributes (meaning these attributes d
 
 The diagram below depicts an extended join. AuthzCode, lastLogon, and pwdreset are the application-specific extension attributes that are stored in a local RadiantOne Universal Directory store. RadiantOne manages the lifecycle (creation, modification, deletion) of the entries/attributes in the local store.
 
-![extended join example(Media/Image2.8.jpg)
+![extended join example](Media/Image2.8.jpg)
 
 Figure 8: Extended Join Example
 
