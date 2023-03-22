@@ -13,7 +13,8 @@ Once RadiantOne has been installed, users should first launch the Main Control P
 
 The Main Control Panel offers administrators remote access to perform common tasks such as monitoring the RadiantOne components and backend data sources, checking server statistics, configuring persistent caches, and managing the virtual namespace. In addition, the identity service wizards and Server Control Panel are accessed from the Main Control Panel. For more information on the [Server Control Panel](#starting-the-main-control-panel), see Starting the Server Control Panel.
 
->[!note] To access the Main Control Panel, JavaScript must be enabled in the Internet browser you are using.
+>[!note] 
+>To access the Main Control Panel, JavaScript must be enabled in the Internet browser you are using.
 
 ### Starting the Main Control Panel
 

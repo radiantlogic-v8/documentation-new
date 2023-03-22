@@ -39,7 +39,8 @@ After deleting the naming context, you can also delete the underlying .dvx files
 <br> <RLI_HOME>/vds_server/dvx/o_allprofiles.dvx
 <br> <RLI_HOME>/vds_server/dvx/virtualgroups.dvx.
 
->[!note] Although the ou=AllProfiles naming context is associated with the default.orx, this schema file should not be deleted if you delete the ou=AllProfiles naming context as it is used by other RadiantOne internal components.
+>[!note] 
+>Although the ou=AllProfiles naming context is associated with the default.orx, this schema file should not be deleted if you delete the ou=AllProfiles naming context as it is used by other RadiantOne internal components.
 
 - cn=replicationjournal
 <br> This naming context is used for inter-cluster replication. This naming context may be hidden (by specifying it as a hidden context in the rootdse.ldif file for RadiantOne) but should not be deleted.
@@ -75,7 +76,8 @@ An LDAP data source named vdsha is included by default. This data source contain
 
 An LDAP data source named replicationjournal is included by default. This data source plays a role in inter-cluster replication and should not be deleted or have its status changed to “offline”.
 
-><span style="color:red">**IMPORTANT NOTE – if you change the super user/directory administrator password after installing RadiantOne, you must manually edit both the vdsha and replicationjournal LDAP data sources to update the password here as well. Changes to the data sources are performed from the Main Control Panel > Settings Tab > Server Backend section > LDAP Data Sources.**
+>[!warning]
+>If you change the super user/directory administrator password after installing RadiantOne, you must manually edit both the vdsha and replicationjournal LDAP data sources to update the password here as well. Changes to the data sources are performed from the Main Control Panel > Settings Tab > Server Backend section > LDAP Data Sources.
 
 ### Database
 
