@@ -657,7 +657,7 @@ To add dynamic members with the assistance of a wizard, follow the steps below.
 
 10.	In the LDAP URL, replace. 1.1 with a comma separated list of attributes to return and click OK.
 
-![An image showing ](Media/Image..jpg)
+![An image showing ](Media/Image5.23.jpg)
  
 Figure 5.23: memberURL Criteria for Dynamic Group
 
@@ -665,7 +665,7 @@ Figure 5.23: memberURL Criteria for Dynamic Group
 
 An alternative to using a wizard to manage dynamic group members is to manually add the groupOfUrls objectclass and memberURL to the group entry. Follow the steps below.
 
-1.	Navigate to the group in the Main Control Panel -> Directory Browser Tab.
+1.	Navigate to the group in the Main Control Panel > Directory Browser Tab.
 
 2.	Select the group entry and on the right side, select the objectclass attribute.
 
@@ -924,7 +924,7 @@ For information on setting access permissions, please see the RadiantOne System 
 
 From the Main Control Panel > Directory Namespace tab, select the entry in the tree and click ![An image showing ](Media/delete-button.jpg). Click Confirm to accept the deletion. If the entry being deleted is a container with child entries, you are prompted a second time to confirm the deletion of the sub-tree.
 
-![An image showing ](Media/Image..jpg)
+![An image showing ](Media/Image5.34.jpg)
 
 Figure 5.34: Delete Tree Confirmation
 
