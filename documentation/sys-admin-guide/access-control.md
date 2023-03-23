@@ -90,5 +90,4 @@ A search request to RadiantOne with the above filter would return Sales and All 
 Figure 5: Search Filter using Matching Rule OID
 
 >[!warning] Queries requesting an intersecting set of multiple memberships like in the following filter are not supported.**
-
->[!warning](&(ismemberof:1.2.840.113556.1.4.1941:=cn=max,ou=groups,dc=data)(ismemberof:1.2.840.113556.1.4.1941:=cn=othergroup,ou=groups,dc=data))
+`(&(ismemberof:1.2.840.113556.1.4.1941:=cn=max,ou=groups,dc=data)(ismemberof:1.2.840.113556.1.4.1941:=cn=othergroup,ou=groups,dc=data))`
