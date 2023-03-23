@@ -266,7 +266,7 @@ The toolbar contains the View Designer buttons that can be used in designing the
 
 Figure 21: View Designer Toolbar
 
--	New View Definition ![An image showing ](Media/ImageNewviewdefinition.jpg) 
+-	New View Definition ![An image showing ](Media/Imagenewviewdefinition.jpg)
 -	Open DVX File ![An image showing ](Media/Imageopendvx.jpg)
 -	Save ![An image showing ](Media/ImageSave.jpg)
 -	Save As ![An image showing ](Media/ImageSaveAs.jpg)
