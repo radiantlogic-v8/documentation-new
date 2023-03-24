@@ -21,8 +21,8 @@ A rich set of HTTP-based API's have been developed on top of LDAP, to provide br
 
 <section>
   
-  > [API Specification](/api)
-  > Api specification
+  > [API Specification](/)
+  > Coming soon
   
 </section>
 
