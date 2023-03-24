@@ -174,7 +174,8 @@ RadiantOne configuration can be migrated from one environment (e.g. dev/qa) to a
 3. Scale down the RadiantOne cluster to one node. From the Kubernetes web dashboard, go to Workloads -> Stateful Sets.
 4. Select the RadiantOne FID stateful set.
 
-<mark>Note – make sure you are in the correct Namespace!<mark>
+>[!note]
+> Make sure you are in the correct Namespace!
 
 5. Click SCALE.
 6. Enter 1 for the (total) number of nodes the RadiantOne cluster should have. In the example shown below, there are currently 3 nodes in the RadiantOne cluster and 1 node is desired.
@@ -182,7 +183,9 @@ RadiantOne configuration can be migrated from one environment (e.g. dev/qa) to a
 <img src="./img/scaledown.jpg" alt="Scale Down"/>
  
 7. Click OK. Kubernetes scales down to one node.
-<mark>Note – you must scale down instead of just stopping the RadiantOne services on the nodes. Stopping the services would result in Kubernetes trying to restart them.  By default, when Kubernetes scales down the nodes, they still remain a part of the cluster. If you run cluster.sh list, you still see the nodes, but the RadiantOne services will not be running. This way, Kubernetes does not try to restart the RadiantOne services automatically.</mark>
+
+>[!note]
+> You must scale down instead of just stopping the RadiantOne services on the nodes. Stopping the services would result in Kubernetes trying to restart them.  By default, when Kubernetes scales down the nodes, they still remain a part of the cluster. If you run cluster.sh list, you still see the nodes, but the RadiantOne services will not be running. This way, Kubernetes does not try to restart the RadiantOne services automatically.
 
 8. From the machine where the kubectl utility is installed, copy the file that was exported from the dev/qa environment to the RadiantOne leader node (the example below has a RadiantOne node identified as fid-0 in the demo namespace).
 ```
@@ -207,7 +210,9 @@ To add nodes to the existing RadiantOne FID cluster:
 1. From the Kubernetes web dashboard, go to Workloads -> Stateful Sets.
 2. Select the RadiantOne FID stateful set.
 
-<mark>Note – make sure you are in the correct Namespace!</mark>
+>[!note]
+> make sure you are in the correct Namespace!
+
 <img src="./img/statefulsets.jpg" alt="Stateful Sets"/>
 
 3. Click  SCALE.
@@ -221,7 +226,8 @@ To add nodes to the existing RadiantOne FID cluster:
 #### Using LDAP
 The default RadiantOne configuration assumes that clients accessing RadiantOne FID are managed by the same Kubernetes cluster and will use an internal service to query RadiantOne FID as opposed to an externally facing ELB. This is dictated by the ```type: NodePort``` keyword in the .yaml file that describes the RadiantOne FID LDAP ports. 
 
-<mark>Note - If you changed the .yaml file prior to deploying, and set ```type: LoadBalancer```, then clients would access RadiantOne FID via LDAP through an Elastic Load Balancer (ELB).</mark>
+>[!note] 
+> If you changed the .yaml file prior to deploying, and set ```type: LoadBalancer```, then clients would access RadiantOne FID via LDAP through an Elastic Load Balancer (ELB).
 
 From the Kubernetes web console, navigate to Discovery and Load Balancing -> Services. You can see the service name and port (LDAP port 2389 by default) in the section matching the label you defined for the RadiantOne deployment. An example is shown below.
 
@@ -232,7 +238,8 @@ From the Kubernetes web dashboard, navigate to Discovery and Load Balancing -> S
  
 The external endpoints, which point to the AWS Elastic Load Balancer (ELB) that is in front of the RadiantOne services, are shown. There are four external endpoints configured. Two point to the Control Panel (one is for the non-ssl port and the other is for the ssl port). Two point to the RadiantOne web services (SCIM, DSML/SPML, REST/ADAP) ports. Hover over the endpoint to see the server and port. Give this information to clients to connect to RadiantOne on the web services ports. 
 
-<mark>Note - You can map the ELB endpoint to a friendly DNS name by creating a Hosted Zone in AWS.</mark>
+>[!note]
+> You can map the ELB endpoint to a friendly DNS name by creating a Hosted Zone in AWS.
 
 ### Applying RadiantOne Patches
 Patching a version of RadiantOne is classified as an update. Patch versions are identified by the 3rd number in the whole version. For example, v7.3.10 indicates it is the 10th patch release for v7.3. 
@@ -265,7 +272,8 @@ Once the image is modified, the rolling update starts. This can take quite a bit
 An example of the log is shown below.
 <img src="./img/logcontents.jpg" alt="Log Contents" style="height: 300px; width:1000px;"/>
  
-<mark>Note – A backup of the existing install is made to vds-<version>.tar prior to updating.</mark>
+>[!note]
+> A backup of the existing install is made to vds-<version>.tar prior to updating.
 
 ### Deleting Deployments
 To remove a deployment, delete the stateful sets, services, config maps, persistent volumes, and persistent volume claims.
