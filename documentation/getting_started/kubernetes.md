@@ -16,7 +16,8 @@ In addition, you should:
 1. Have a supported Kubernetes cluster running in the cloud. A commonly deployed Kubernetes cluster is [Amazon Elastic Kubernetes Service](https://docs.aws.amazon.com/eks/latest/APIReference/API_CreateCluster.html). 
 For a highly available architecture, the underlying Kubernetes cluster should support at least two pods running RadiantOne nodes and three pods running ZooKeeper. 
 
-<mark>Note - Kubernetes v1.18+ is required. The pods running RadiantOne nodes need at least 2 CPUs and 4 GiB memory. The pods running ZK need at least 2 CPUs and 2 GiB memory.</mark>
+>[!note]
+>  Kubernetes v1.18+ is required. The pods running RadiantOne nodes need at least 2 CPUs and 4 GiB memory. The pods running ZK need at least 2 CPUs and 2 GiB memory.
 
 2. Install and configure the Kubernetes kubectl command-line tool on the machine where you will manage the Kubernetes cluster from.  This utility controls the Kubernetes Cluster. An example is [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/install-windows.html).
 
@@ -32,7 +33,8 @@ The StatefulSet manifest, zk-aws.yaml, creates a ZooKeeper cluster that consists
 1. Update zk-aws.yaml file if necessary. 
 You can modify the ZooKeeper ports, number of nodes (ZOOKEEPER_FLEET_SIZE) in the ensemble (3 is the default, but you can make it 5 if needed), name of the Kubernetes service linked to the ZooKeeper nodes (make sure this matches what is defined in the configmap.yaml).
 
-<mark>Note – Do not use “TABS” for spacing in the .yaml file.  Use the space bar to indent as needed.</mark>
+>[!note]
+>Do not use “TABS” for spacing in the .yaml file.  Use the space bar to indent as needed.
 
 2. Open a command prompt and navigate to the location where you have installed the kubectl command line tool. 
 
@@ -41,7 +43,8 @@ You can modify the ZooKeeper ports, number of nodes (ZOOKEEPER_FLEET_SIZE) in th
 kubectl --namespace=prod apply -f zk-aws.yaml
 ```
 
-<mark>Note – if no namespace is used in the Kubernetes cluster, you can omit the --namespace property.</mark>
+>[!note]
+> if no namespace is used in the Kubernetes cluster, you can omit the --namespace property.
 
 
 ##### Validating the ZooKeeper Service
@@ -58,7 +61,9 @@ Before installing RadiantOne nodes, make sure the ZooKeeper service is running. 
 ```
 export JAVA_HOME=/opt/radiantone/rli-zookeeper-external/jdk/jre/;/opt/radiantone/rli-zookeeper-external/zookeeper/bin/zkServer.sh status
 ```
-<mark>Note - Use Shift+Insert to Paste.</mark>
+>[!note]
+> Use Shift+Insert to Paste.
+
 The returned value should indicate “Mode: follower” or “Mode: Leader”. The ZooKeeper in the following example is a follower node.
 
 <img src="./img/followerzk.jpg" alt="Follower ZK Node" style="height: 150px; width:1000px;"/>
@@ -95,7 +100,8 @@ The StatefulSet manifests (configmap.yaml and fid.yaml) create a RadiantOne node
 ```
 kubectl --namespace=prod apply -f C:\Kubernetes\FID
 ```
-<mark>Note – if no namespace is used in your Kubernetes cluster, you can omit the --namespace property.</mark>
+>[!note]
+> if no namespace is used in your Kubernetes cluster, you can omit the --namespace property.</mark>
  
 ## RadiantOne Configuration
 The configuration can be managed from the RadiantOne Main Control Panel, kubectl command line utility, or from the Kubernetes web dashboard by launching a shell directly on the RadiantOne node/pod you want to administer.
