@@ -17,11 +17,24 @@ A rich set of HTTP-based API's have been developed on top of LDAP, to provide br
    
 </section>
 
+## DevOps 
+
+<section>
+  
+  > [Docker](/getting_started/docker)  
+  > Learn how to automate your deployment of RadiantOne in your cloud using Docker containers.
+  
+  > [Kubernetes](/getting_started/kubernetes)  
+  > Learn how to automate your deployment of RadiantOne using Kubernetes orchestration. 
+  
+   
+</section>
+
 ## Configuration APIs
 
 <section>
   
-  > [API Specification](/)
+  > [API Specification](/developer)
   > Coming soon
   
 </section>
