@@ -61,7 +61,9 @@ Before installing RadiantOne nodes, make sure the ZooKeeper service is running. 
 ```
 export JAVA_HOME=/opt/radiantone/rli-zookeeper-external/jdk/jre/;/opt/radiantone/rli-zookeeper-external/zookeeper/bin/zkServer.sh status
 ```
-<mark>Note - Use Shift+Insert to Paste.</mark>
+>[!note]
+> Use Shift+Insert to Paste.
+
 The returned value should indicate “Mode: follower” or “Mode: Leader”. The ZooKeeper in the following example is a follower node.
 
 <img src="./img/followerzk.jpg" alt="Follower ZK Node" style="height: 150px; width:1000px;"/>
