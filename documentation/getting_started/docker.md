@@ -13,7 +13,8 @@ Compose works in all environments: production, staging, development, testing, as
 
 These samples provide a starting point for how to integrate different services using a Compose file and to manage their deployment with Docker Compose.
 
-<mark>Note: The following samples are intended for use in local development environments such as project setups, tinkering with software stacks, etc. These samples are not supported for production environments.</mark>
+>[!note]
+>  The following samples are intended for use in local development environments such as project setups, tinkering with software stacks, etc. These samples are not supported for production environments.
 
 ### Getting started
 These instructions guide you through the bootstrap phase of creating and deploying samples of containerized RadiantOne deployments with Docker Compose.
