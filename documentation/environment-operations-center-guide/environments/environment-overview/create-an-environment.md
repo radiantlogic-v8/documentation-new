@@ -39,9 +39,11 @@ Start by selecting the required **Environment Type** and **Environment Tier**.
 
 To set the **Environment Type**, use the radio buttons to select either **Non-production**, for development and testing, or **Production**, for production purposes.
 
-[!note] If your organization has already configured the maximum number of production environments available for your tier, the production option will be greyed out and not able to be selected. Hovering over **Production** will display a confirmation message that your organization has already used the maximum number of production environments.
-
 ![image description](images/create-env-type.png) 
+
+A status bar located just below the environment types indicates how many of your available production and non-production environments have been used. If your organization has already configured the maximum number of environments available in your tier, the environment type and associated radio button will be greyed out.
+
+![image description](images/env-type-used.png)
 
 #### Environment tier
 
