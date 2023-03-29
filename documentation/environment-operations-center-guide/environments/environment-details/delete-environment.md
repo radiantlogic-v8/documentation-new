@@ -21,23 +21,17 @@ To begin the workflow to delete the environment, select the ellipsis next to **M
 
 To delete the selected environment, enter the name of the environment in the space provided in the dialog box and select the **Delete** button. The environment name entered must match the actual environment name exactly, otherwise you will receive an error message and will not be able to submit the delete request.
 
-![image description](../environment-overview/images/delete-enter-name.png)
+![image description](images/delete-enter-name.png)
 
 If you would like to keep the environment and exit out of the confirmation dialog, select **Keep the Environment** to return to the *Overview*  screen.
 
-![image description](../environment-overview/images/delete-keep-env.png)
+![image description](images/delete-keep-env.png)
 
 ## Confirmation
 
 After selecting **Delete** in the confirmation dialog you will return to the *Environments* home screen. Here, you'll receive a confirmation message that the environment was successfully deleted and the environment will be removed from the environments list.
 
-![image description](../environment-overview/images/delete-success.png)
-
-If the environment could not be deleted, you will return to the environment *Overview* screen and receive an error notification indicating that the attempt to delete the environment failed.
-
-Select **Dismiss** to close the error notification.
-
-![image description](images/delete-failed.png)
+If the environment could not be deleted, you will return to the environment *Overview* screen and receive an error notification indicating that the attempt to delete the environment failed. Select **Dismiss** to close the error notification.
 
 ## Next steps
 

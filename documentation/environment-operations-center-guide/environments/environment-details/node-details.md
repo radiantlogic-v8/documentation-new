@@ -1,11 +1,25 @@
 ---
 keywords:
-title: Monitor Node Health of an Environment
-description: Guide to review and monitor node status
+title: Update and Monitor Environment Nodes
+description: Update and monitor nodes
 ---
-# Monitor Node Health of an Environment
+# Update and Monitor Environment Nodes
 
-This guide outlines the steps required to monitor the status details for a specific node. The *Overview* tab provides a high-level view of all FID and Zookeeper node statuses for quick monitoring of cluster health. Each individual node has a detailed view that provides further information on the status and health of a given node. The details provided for FID nodes versus Zookeeper nodes are slightly different and are outlined within this guide.
+This guide outlines the required steps adjust the number of nodes in an environment and to monitor the status details of a specific node. The *Overview* tab provides a high-level view of all FID node statuses for quick monitoring of cluster health. Each individual node has a detailed view that provides further information on the status and health of a given node.
+
+## Adjust number of nodes
+
+To set the number of FID nodes contained in an environment, select the **Options** (**...**) menu and select **Scale**.
+
+![image description](images/select-scale.png)
+
+In the *Adjust Environment Scale* dialog, use the provided slider to increase or decrease the quantity. Alternatively, you can select either the minus (**-**) or plus (**+**) sign on either side of the slider to increase or decrease the number of FID nodes to display.
+
+![image description](images/adjust-scale.png)
+
+The number of nodes in the environment will increase or decrease accordingly.
+
+![image description](images/reduced-nodes.png)
 
 ## View node details
 
@@ -13,11 +27,11 @@ There are two ways to access the status details for a specific node: select the 
 
 You can select the node name to open the node details dialog.
 
-![image details](images/node-name.png)
+![image details](images/select-node-name.png)
 
 Alternatively, you can select the **Options** (**...**) menu located in the node row to expand the dropdown menu. From the **Options** menu select **View Details** to open the the node details dialog.
 
-![image details](images/node-options.png)
+![image details](images/options-view-details.png)
 
 ### FID node details
 
@@ -34,7 +48,7 @@ The FID node details dialog provides the following information for the selected 
 | Up Time | How long the application has been running. |
 | Services | Lists the internal ports and their statuses. |
 
-![image description](images/node-fid-details.png)
+![image description](images/node-details.png)
 
 ## View node logs
 
@@ -44,13 +58,13 @@ To access log files from a node's details dialog, select **View Logs** in the di
 
 Select **Close** to exit the node details dialog.
 
-![image description](images/node-fid-logs.png)
+![image description](images/details-view-logs.png)
 
 Alternatively, the log files of a node can be accessed by selecting **View Logs** from the associated **Options** (**menu**).
 
 [!note] For further details on reviewing logs, see the [environment logs](../logging/environment-logs.md) guide.
 
-![image description](images/node-view-logs.png)
+![image description](images/options-view-logs.png)
 
 ## Next steps
 
