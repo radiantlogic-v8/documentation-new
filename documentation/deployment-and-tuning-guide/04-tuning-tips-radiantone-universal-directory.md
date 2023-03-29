@@ -5,10 +5,10 @@ description: Deployment and Tuning Guide
 
 # Chapter 4: Tuning Tips for RadiantOne Universal Directory
 
-The RadiantOne platform offers an LDAP v3 compliant storage that can be used to store any entries.  After the root naming context is created, the local store can be populated from an LDIF file or manually on the Main Control Panel -> Directory Browser Tab. RadiantOne can support multiple Universal Directory stores. 
+The RadiantOne platform offers an LDAP v3 compliant storage that can be used to store any entries. After the root naming context is created, the local store can be populated from an LDIF file or manually on the Main Control Panel -> Directory Browser Tab. RadiantOne can support multiple Universal Directory stores. 
 
 >[!warning] 
->Details about each of the parameters mentioned below can be found in the RadiantOne System Administration Guide. This document is only for pointing out these parameters as key to review when tuning RadiantOne.**
+>Details about each of the parameters mentioned below can be found in the RadiantOne System Administration Guide. This document is only for pointing out these parameters as key to review when tuning RadiantOne.
 
 ## Indexed Attributes
 
@@ -20,7 +20,7 @@ Figure 4.1: RadiantOne Universal Directory Index Lists
 
 ### Non-Indexed Attributes
 
-If possible, add attributes that must be modified frequently (e.g. pwdLastLogonTime) to the non-indexed attributes list to improve update performance of the RadiantOne Universal Directory. Attributes that don’t need to be used in searches are good candidates for the non-indexed attribute list.  Limit the number of configured non-indexed attributes to further improve update performance.
+If possible, add attributes that must be modified frequently (e.g. pwdLastLogonTime) to the non-indexed attributes list to improve update performance of the RadiantOne Universal Directory. Attributes that don’t need to be used in searches are good candidates for the non-indexed attribute list. Limit the number of configured non-indexed attributes to further improve update performance.
 
 The userPassword, description and pwdLastLogonTime attributes are in the non-indexed list by default along with some other operational attributes.
 
@@ -53,18 +53,6 @@ When processing this filter, RadiantOne returns all the entries containing an at
 	-	"B Z A C D" (matches the filter)
 
 	To support full text searches, check the Full-Text Search option on the Properties tab for the select store and click Save. If you add support for full text searches, re-build the index. To do so, select the naming context below Root Naming Contexts on the Configuration tab and on the Properties tab on the right side, click the Re-build Index button.
-## Memory
-
-The memory required to host data in the Universal Directory is unrelated to the memory allocated to RadiantOne service (for the JVM). The Universal Directory storage leverages Memory Mapping Files (MMapDirectory) which uses virtual memory and a kernel feature called “mmap” to access the disk files. To estimate the amount of memory required to house your stores, take the size of the LDIF file (that stores all the entries) and multiply it times 2. This is also roughly equivalent to: (`<number of entries> x <size of an entry>` x 2). For example, if you needed to store 1 million entries each 1 KB in size (results in about 1 GB sized LDIF file), approximately 2-3 GB of memory would be required.
-
->[!warning] 
->When RadiantOne is deployed primarily for local Universal Directory stores on machines with large amounts of memory (e.g. 32GB), it is recommended to [set a max JVM (-Xmx) for the RadiantOne](01-global-tuning#memory-size) service instead of letting it expand to ¼ of the available memory. This leaves more memory for the local stores to ensure optimal performance.
-
-## Storage Location
-
-The default location for Universal Directory data files is <RLI_HOME>\vds_server\data. To tune the local disk load, you can specify a different location on the file system. If RadiantOne is deployed in a cluster, the value of the storage location parameter is also assigned to all other nodes. The drive location indicated in the value must exist on the file system of each node. The nodes cannot leverage a single shared drive.
-
-Any data in the default location is lost if the storage location is changed. If you have data in the existing location that you want to keep, export it to an LDIF file and after the storage location is changed, import this LDIF file.
 
 ## Changelog
 
@@ -74,13 +62,4 @@ To disable the changelog, navigate to the Main Control Panel > Settings tab > Lo
 
 ## Statistics
 
-For each Universal Directory store initialization, statistics are calculated for the total number of entries and sub-categorized by branches and object classes. The average and peak number of attributes per entry, and the average and peak size (in KB) per entry are also calculated. This information is logged into the <RLI_HOME>/vds_server/logs/stats.log. If you don’t care about statistics, you can improve the performance of initialization by disabling the statistics logging.  This logging is enabled by default and can be managed from the Main Control Panel > Settings Tab > Logs section > Statistics > Init Statistics Settings sub-section.
-
-## Replication 
-If you configure replication for Universal Directory stores across clusters, and the bandwidth between the clusters is low (e.g. 10 Megabits/sec), increasing the ReplicationPollChunkSize can help improve replication efficiency. The ReplicationPollChunkSize can be modified using <RLI_HOME>/bin/vdsconfig and a recommended value is between 10,000 and 15,000.
-
-An example of using vdsconfig to configure ReplicationPollChunkSize is shown below.
-
-c:\radiantone\vds\bin\vdsconfig.bat set-property -name replicationPollChunkSize -value 15000
-
-For more details on the vdsconfig utility, see the RadiantOne Command Line Configuration Guide.
+For each Universal Directory store initialization, statistics are calculated for the total number of entries and sub-categorized by branches and object classes. The average and peak number of attributes per entry, and the average and peak size (in KB) per entry are also calculated. This information is logged into the stats.log. This log can be viewed and downloaded from the Server Control Panel > Log Viewer. If you don’t care about statistics, you can improve the performance of initialization by disabling the statistics logging. This logging is enabled by default and can be managed from the Main Control Panel > Settings Tab > Logs section > Statistics > Init Statistics Settings sub-section.

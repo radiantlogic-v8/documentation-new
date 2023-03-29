@@ -15,84 +15,15 @@ Things to take into consideration when tuning RadiantOne:
 
 By understanding the clients involved and the variables addressed above, you are better able to set appropriate values for the RadiantOne service such as search size limits, maximum connections, attributes to index, what information needs to be cached and what information can be accessed dynamically.
 
-The RadiantOne namespace can be comprised of many branches, each of which can come from a different configuration and be combined below a common naming context or have their own.  The following are the options that can comprise the namespace:
+The RadiantOne namespace can be comprised of many branches, each of which can come from a different configuration and be combined below a common naming context or have their own. The following are the options that can comprise the namespace:
 
--	Virtual views created with Context Builder (Main Control Panel > Context Builder tab).  The virtual views can be built from databases (anything JDBC/ODBC accessible), LDAP directories, or any data source reachable as a web service or through a Java API.
+-	Virtual views created with Context Builder (Main Control Panel > Context Builder tab). The virtual views can be built from databases (anything JDBC/ODBC accessible), LDAP directories, or any data source reachable as a web service or through a Java API.
 
--	Virtual views created with the Main Control Panel (including any of the identity service wizards). The virtual views can be built from databases (anything JDBC/ODBC accessible), or LDAP directories using LDAP or DSML.
+-	Virtual views created with the Main Control Panel > Directory Namespace. The virtual views can be built from databases (anything JDBC/ODBC accessible), or LDAP directories.
 
 -	Local RadiantOne Universal Directory stores. When virtual views are stored as persistent cache, they leverage this storage.
 
 This chapter describes the tuning parameters that are relevant at a global level and encompass any type of tree configuration unless otherwise noted.
-
-## Hardware Sizing
-
-As a first step when deploying RadiantOne, read the Hardware Sizing Guide.
-
-## Linux Deployments
-
-### Memory Map Areas
-
-Check the value for the number of discrete mapped memory areas with the following command:
-
-sysctl vm.max_map_count
-
-The default value is 65536.
-
-For a majority of deployments, the default is too low. It is recommended to increase it to 262144 in /etc/sysctl.conf file. This file contains the maximum number of memory map areas a process may have.
-
-### User Limits
-
-For Linux, the number of file descriptors should be set to at least 65536. Check the amount with: 
-
-$ ulimit -n
-
-Confirm that ulimit -v and -u return unlimited to prevent problems with the amount of virtual address space that can be allocated.
-
-Also, set shell limits for the Max Number of Processes. These steps are described below.
-
-1.	As root, open the system's /etc/security/limits.conf file.
-
-2.	Add two lines that set the hard and soft limits for the number of processes (nproc) for the RadiantOne service user. The soft limit sets how many processes the user has available by default; the user can manually adjust that setting until they hit the hard limit.
-
-user      soft      nproc      2047
-user    hard      nproc      16384
- 	
->[!warning] 
->Do not set the hard limit for the user equal to (or higher than) the maximum number of file descriptors assigned to the system itself in /proc/sys/fs/file-max. If the hard limit is too high and the user uses all those file descriptors, then the entire system runs out of file descriptors.
-
-## Virtual Machine Considerations
-
-Some important items to consider should you choose to deploy on a virtualization platform:
-
--	Memory ballooning in the hypervisor should be disabled as it is a feature that can impact the throughput performance of RadiantOne. 
-
-In typical deployments, the primary function of RadiantOne is processing end user authentication and authorization. The user experience is highly dependent on the efficient processing of these requests. To ensure the consistent availability of free memory assigned to RadiantOne by VMWare, it is highly recommended that Memory Ballooning be turned off for the Virtual Machines hosting RadiantOne.  If Memory Ballooning is enabled and triggered, the EXSi Host may claim free memory from the Virtual Machine host causing subsequent authentication and authorization requests processed by RadiantOne to page to disk frequently, significantly reducing the processing throughput of the server and negatively impacting the end users.
-
--	The memory requirements/allocation to the virtual machine must meet the minimum requirements. The memory requirements for RadiantOne are sometimes considered high for allocating to standard virtual machines and this is often a contributing factor to the decision made to go with “physical” or “virtual” hardware for the product deployment. The RadiantOne specifications recommends at least 16GB of RAM and it is not unusual to have a deployment with a higher amount of memory depending on the number of identities, complexity of the views and number of persistent caches.
-
--	One network interface (1GB or greater) of the Hypervisor should be dedicated to RadiantOne as low network latency and high network throughput are desired.
-
--	Time synchronization between cluster nodes is imperative! It is recommended to reduce the polling interval to 15 minutes. As timekeeping is different with virtual machines, please follow the recommendations made by the hypervisor vendor. Example, for VMWare:
-http://www.vmware.com/files/pdf/Timekeeping-In-VirtualMachines.pdf
-http://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=1005092
-
-## Vulnerability and Web Application Scanners
-
-Scanners can have a negative impact on performance and server resources. It is recommended to configure scanner software to not scan <RLI_HOME> files and folders and avoid scanning all RadiantOne processes (e.g. RadiantOne, Jetty which hosts the Control Panels, ZooKeeper) if possible. At a bare minimum, avoid scanning the files found under:
-
-<RLI_HOME>\vds_server\logs folder and all files with a suffix .log 
-<br> <RLI_HOME>\vds_server\data
-<br> <RLI_HOME>\apps\zookeeper\data
-<br><RLI_HOME>\vds_server\work\main
-
-Avoid scanning the following ports (the following are the default, but could have been changed during install):
-
-<br>RadiantOne LDAP interface: 2389 and 636 (SSL)
-<br>RadiantOne Web Services Interface HTTP Ports: 8089 and 8090 (SSL)
-<br>RadiantOne Main Control Panel HTTP Ports: 7070 and 7171 (SSL)
-<br>RadiantOne Admin HTTP Service: 9100 and 9101 (SSL)
-<br> Zookeeper (configuration management): 2181 (client port), 2182 (JMX), 2888 (ensemble port), 3888 (leader election port)
 
 ## Tasks
 
@@ -103,7 +34,7 @@ The following operations are considered tasks and generate an event in the Task 
 -	Re-indexing a cache
 -	Exporting entries to an LDIF file
 -	Importing entries from an LDIF file
--	Login Analysis (initiated from the Global Identity Builder wizard)
+-	Login Analysis (initiated from the Global Identity Builder)
 
 By default, all tasks run in their own dedicated JVM and the memory allocated for the task automatically expands up to ¼ of the total machine memory. For example, if the machine where RadiantOne is installed has 16 GB of RAM, the task memory expands up to 4 GB to process a task. If you prefer, you can define a max Java heap size in the JVM parameters instead of leveraging this default expansion. Other custom settings can be entered in the JVM Parameters as well. From the Tasks Tab in the Server Control Panel, click on the pencil icon next to the task you want to edit. For a full list of possible behavioral and performance options, please see the link below. 
 
@@ -136,11 +67,11 @@ The amount of time (in seconds) during which a search operation is expected to f
 
 ### Look Through Limit
 
-The look through limit is the maximum number of entries you want the server to check in response to a search request. Use this value to limit the number of entries the server looks through to find an entry. This limits the processing and time spent by the server to respond to potentially bogus search requests (for example, if a client sends a search filter based on an attribute that isn’t indexed). This parameter can be changed from the Main Control Panel -> Settings Tab -> Limits section -> Global Limits sub-section.  By default, this is set to 0, which means that there is no limit set for the number of entries that the server looks through. The limit defined here is global for RadiantOne. To enforce finer-grained limits to specific users, configure limits in the Custom Limits section.
+The look through limit is the maximum number of entries you want the server to check in response to a search request. Use this value to limit the number of entries the server looks through to find an entry. This limits the processing and time spent by the server to respond to potentially bogus search requests (for example, if a client sends a search filter based on an attribute that isn’t indexed). This parameter can be changed from the Main Control Panel > Settings Tab -> Limits section > Global Limits sub-section. By default, this is set to 0, which means that there is no limit set for the number of entries that the server looks through. The limit defined here is global for RadiantOne. To enforce finer-grained limits to specific users, configure limits in the Custom Limits section.
 
 ### Idle Connection Timeout
 
-The length of time to keep a connection open without any activity from the client.  This is configured in seconds. The default is 15 minutes (900 seconds), which means an idle connection remains open for 15 minutes and is then automatically closed by RadiantOne. This parameter can be changed from the Main Control Panel -> Settings Tab -> Limits section -> Global Limits sub-section.  The limit defined here is global for RadiantOne. To enforce finer-grained limits to specific users, configure limits in the Custom Limits section.
+The length of time to keep a connection open without any activity from the client. This is configured in seconds. The default is 15 minutes (900 seconds), which means an idle connection remains open for 15 minutes and is then automatically closed by RadiantOne. This parameter can be changed from the Main Control Panel > Settings Tab > Limits section > Global Limits sub-section. The limit defined here is global for RadiantOne. To enforce finer-grained limits to specific users, configure limits in the Custom Limits section.
 
 ### Number of Processing Queues
 
@@ -170,15 +101,11 @@ It is difficult to provide an exact formula for determining the optimal number o
 
 The max pending connection property represents a queue of server socket connections associated with requests from clients. This is not managed by the RadiantOne process. As soon as a TCP connection is established to RadiantOne, the connection is removed from the pending queue. A maximum number of pending client requests can be set in the Max Pending Connection Requests parameter. This parameter can be changed from the Main Control Panel > Settings Tab > Limits section -> Custom Limits sub-section (requires [Expert Mode](00-preface#expert-mode)). This parameter should not be changed unless advised by a Radiant Logic Support Engineer.
 
-### Memory Size
-
-See [Setting the Java Virtual Memory Size for RadiantOne](07-deployment-architecture#setting-the-java-virtual-memory-size-for-the-radiantone-service).
-
 ### Access Regulation
 
 After a client connects to RadiantOne, the amount of activity they perform can be limited by configuring access regulation. The activity checking can be performed based on the user that connects to the server and/or what computer/client (IP address) they are connecting from.
 
-The checking interval parameter indicated in the Per User or Per Computer sections is the time frame in which the activity (max connections and max operations per connection) is monitored.  Once the time interval is reached, the counts are reset.  For example, if Special User checking is enabled, and the checking interval, max connections and max operations per second are set to 300, 30 and 10 respectively, during a 5 minute (300 secs) period, anyone who is a member of the special users group can make no more than 30 connections to RadiantOne and not perform more than 10 operations per second.  This count resets every 5 minutes.  If a user attempts to make more than the allowed number of connections, the server refuses the connections, and the client must wait until the checking interval resets.
+The checking interval parameter indicated in the Per User section is the time frame in which the activity (max connections and max operations per connection) is monitored. Once the time interval is reached, the counts are reset. For example, if Special User checking is enabled, and the checking interval, max connections and max operations per second are set to 300, 30 and 10 respectively, during a 5 minute (300 secs) period, anyone who is a member of the special users group can make no more than 30 connections to RadiantOne and not perform more than 10 operations per second. This count resets every 5 minutes. If a user attempts to make more than the allowed number of connections, the server refuses the connections, and the client must wait until the checking interval resets.
 
 #### Per User
 
@@ -199,6 +126,8 @@ An authenticated user encompasses any client who successfully authenticates no m
 
 Special Users are anyone who successfully binds and is a member of the special user group defined on the Main Control Panel -> Server Front End -> Administration section. To enable checking for this category of users, check the Enable Access Checking option in the Special Users Group section in the Per User sub-section. Enter a number for the maximum connections special users are allowed to create. Also enter a number for the maximum number of operations per second they are allowed to issue. Any parameters that are set to 0 have no limits applied. The restrictions checking interval dictates the number of seconds the server should wait before determining if these thresholds are reached.
 
+<!--
+
 #### Per Computer/Client
 
 Computers/client applications are identified by their IP address. IP configurations are located on the Main Control Panel -> Settings Tab -> Limits Section -> Per Computer sub-section. These settings allow you to configure fine-grained activity control per computer/client machines.
@@ -214,16 +143,18 @@ Both IPv4 and IPv6 addresses are supported, and you can indicate a range of IP a
 
 Example set for a range of IPv4 addresses: 
 
-10.11.12.0/24    which represents the given IPv4 address and its associated routing prefix 10.11.12.0, or equivalently, its subnet mask 255.255.255.0, which has 24 leading 1-bits. This covers the range between 10.11.12.0 to 10.11.12.255.	
+10.11.12.0/24  which represents the given IPv4 address and its associated routing prefix 10.11.12.0, or equivalently, its subnet mask 255.255.255.0, which has 24 leading 1-bits. This covers the range between 10.11.12.0 to 10.11.12.255.	
 
 Example set for a range of IPv6 addresses:
 
-2001:db8::/32    which covers the range between 2001:db8:0:0:0:0:0:0 to 2001:db8:ffff:ffff:ffff:ffff:ffff:ffff
+2001:db8::/32  which covers the range between 2001:db8:0:0:0:0:0:0 to 2001:db8:ffff:ffff:ffff:ffff:ffff:ffff
 
 To enable checking for this category of computer/client, check the Enable Access Checking option in the Special IP Address section on the Per Computer sub-section. Enter a number for the maximum number of connections all computers are allowed to create. Also enter a number for the maximum number of operations per second they are allowed to issue. Any parameters that are set to 0 have no limits applied. The restrictions checking interval dictates the number of seconds the server should wait before determining if these thresholds are reached.
 
 >[!warning] 
->If you have enabled activity checking for both users (special users, authenticated and/or anonymous) and computers (IP address and Special IP), the activity per computer takes precedence over the user activity. The order of precedence is special IP addresses, IP addresses, special users, authenticated users, and then anonymous users.  For example, let’s say that special user access checking, IP address access checking, and special IP address access checking have been enabled, and the max connections are set to 50, 30, and 40 respectively. Any user who connects that is a member of the special users group from a computer that is not a member of the special IP address group, is only allowed to make a maximum of 30 connections during the checking interval.
+>If you have enabled activity checking for both users (special users, authenticated and/or anonymous) and computers (IP address and Special IP), the activity per computer takes precedence over the user activity. The order of precedence is special IP addresses, IP addresses, special users, authenticated users, and then anonymous users. For example, let’s say that special user access checking, IP address access checking, and special IP address access checking have been enabled, and the max connections are set to 50, 30, and 40 respectively. Any user who connects that is a member of the special users group from a computer that is not a member of the special IP address group, is only allowed to make a maximum of 30 connections during the checking interval.
+
+-->
 
 ## Logging
 
