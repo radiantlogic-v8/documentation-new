@@ -276,31 +276,6 @@ To enable SSL logging:
 
 8. Restart the RadiantOne service. 
 
-#### Enable CRL
-
-If clients are connecting to RadiantOne with certificates (establishing mutual authentication) and the client certificate should be validated to ensure it has not been revoked prior to accepting it, the Enable CRL parameter needs checked. From the Main Control Panel go to the Settings tab > Security > SSL. Then, on the right side, check the Enable CRL option.
-
-#### CRL Methods
-
-There are three different supported CRL checking methods; dynamic, static and failover. These methods are described below. 
-
->[!note] 
->The tradeoff between a static CRL file and a dynamic CRL checking would be that a dynamic CRL would be more robust and correct but the size of the CRL file may impact the performance of the revocation checking logic.
-
-### Dynamic
-
-CRLDP and OCSP are used to determine certificate validity and revocation status. OCSP is checked first. If OCSP returns the certificate's status as unknown, then the CRLDP is used.
-
-### Failover
-
-CRLDP and OCSP are used to determine certificate validity and revocation status (OCSP is checked first). If the checking fails to get the CRL from CRLDP and using OCSP, then it attempts to check the certificate’s status against the static CRL file(s). The CRL file must be uploaded to the RadiantOne service using Main Control Panel > Settings > Configuration > File Manager. This can be a zip file containing multiple CRL files if needed. The CRL file(s) are loaded only once when the RadiantOne service starts.
-
-### Static
-
-The certificate is validated against a preloaded local CRL file (this can be many files zipped together or could be a file system directory where all CRL files are located). The certificate authority’s CRL file must be uploaded to the RadiantOne service using Main Control Panel > Settings > Configuration > File Manager. This can be a zip file containing multiple CRL files if needed. The CRL file(s) are loaded only once when the RadiantOne service starts.
-
-To select the CRL method, from the Main Control Panel got to the Settings tab > Security > SSL. Then, on the right side, once the Enable CRL option is checked, the CRL Method drop-down list is available. Select the desired method from this list. Click **Save** to apply your changes to the server.
-
 ## Authentication Methods
 
 >[!note] 
