@@ -106,7 +106,7 @@ The first step in using the Schema Manager is capturing the metadata for each of
 
 Examples of LDAP-accessible backends are Sun Java Directory, Microsoft Active Directory, IBM Tivoli Directory, eDirectory, Red Hat Directory, and OpenLDAP.  The LDAP data source must be created before completing the schema extraction steps below. See the RadiantOne System Administration Guide for details on creating LDAP data sources.
 
-1.	In the Schema Manager click the Create button (Plus sign).
+1.	In the Schema Manager click Create (Plus sign).
 
 2.	Choose the LDAP option and click Next. 
 
@@ -202,7 +202,7 @@ You have the option to use one of the above drivers, however, it is recommended 
 
 The SCIMv2 data source must be created before completing the schema extraction steps below. See the RadiantOne System Administration Guide for details on creating SCIMv2 data sources.
 
-1.	In the Schema Manager click the Create button (Plus sign).
+1.	In the Schema Manager click Create (Plus sign).
 2.	Select the SCIMv2.0 option and click OK. 
 3.	Select a SCIM data source from the drop-down list and click Next. 
 4.	Select the SCIM resource types from the list and click Next.
@@ -267,8 +267,9 @@ To set a relationship between two objects:
 Figure 3.15: Relationships Dialog Box
 
 2.	Select the destination object that has a relationship with the source object. 
-3.	Choose the column(s) from the source and the matching column in the destination and then click the  
-![An image showing ](Media/Imagebutton.jpg) button. 
+3.	Choose the column(s) from the source and the matching column in the destination and then click  
+![An image showing ](Media/definerelationships.jpg).
+
 4.	Click Apply when finished to establish the relationship. The relationships are created and appear at the bottom of the list of relationships. 
 
 ##### Declaring Recursive Relationships 
@@ -493,7 +494,7 @@ Figure 3.33: Add Default LDAP Attribute Mapping
 
 9.	Right-click on the Fields node below the database object containing the attributes you want to map and choose Object Mapping.
 
-10.	In the Map to LDAP Object Class window, click the Apply Default Mappings button. This establishes the attribute mapping based on a pre-defined list in the defaultmapping.orx file. 
+10.	In the Map to LDAP Object Class window, click Apply Default Mappings. This establishes the attribute mapping based on a pre-defined list in the defaultmapping.orx file. 
 
 11.	For attributes that are not mapped by the default mapping, you can choose an attribute from the drop-down list which is populated with the attributes available from the LDAP object class that the object is currently mapped to.
 

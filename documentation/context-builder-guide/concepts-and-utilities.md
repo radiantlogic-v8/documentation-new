@@ -54,7 +54,7 @@ To configure a join, the virtual view built from the primary source must be open
 
 5.	Click Choose and select the virtual view (dvx file) that contains the secondary object(s) you want to join with. Click OK and then click Next. 
 
-6.	The primary object join attribute is the one you want to base the join on. Select the attribute from the drop-down list, or click the Edit button to compute your own attribute to base the join on. Please see [Computed Attributes](#computed-attributes) for more information on how to configure a computed attribute. 
+6.	The primary object join attribute is the one you want to base the join on. Select the attribute from the drop-down list, or click Edit to compute your own attribute to base the join on. Please see [Computed Attributes](#computed-attributes) for more information on how to configure a computed attribute. 
 
 7.	The secondary object join attribute is the attribute from the object you are joining with that matches the primary source join attribute. Click Set to navigate to the location in the virtual view that contains the objects you want to join with and select the corresponding attribute. Click **OK** and then click **Next**. 
 
@@ -62,7 +62,7 @@ To configure a join, the virtual view built from the primary source must be open
 
 9.	Enter a unique ID for this join profile and click **Finish**. 
 
-10.	If you need to [edit the join condition](#configuring-a-regular-join-with-objects-existing-in-an-external-ldap-server), select the join in the list of Join Profiles, click the Edit option and modify the relevant parameters. 
+10.	If you need to [edit the join condition](#configuring-a-regular-join-with-objects-existing-in-an-external-ldap-server), select the join in the list of Join Profiles, click Edit and modify the relevant parameters. 
 
 11.	Click **OK**. If you make any changes to the join condition, click **Save**.
 
@@ -447,9 +447,9 @@ To configure computed attributes:
 5.	Enter the Computed Attribute name in the Name parameter. 
 6.	Configure the needed expression to comprise the computed attribute. This is based on Java and if you are already familiar with the syntax, you can enter it directly for the value.
 7.	(Optional) For assistance with creating an attribute based on a constant, click the constant button and enter the value.
-8.	(Optional) For assistance with creating an attribute based on an existing attribute, click the Attribute button (a list of all attributes available in the virtual object displays).
+8.	(Optional) For assistance with creating an attribute based on an existing attribute, click Attribute (a list of all attributes available in the virtual object displays).
 
-9.	(Optional) For assistance with creating an attribute based on a function, click the Function button for a list to display. 
+9.	(Optional) For assistance with creating an attribute based on a function, click Function for a list to display. 
 
 10.	Click **Validate** to check the syntax of your expression.
 
@@ -547,7 +547,7 @@ Figure 19: Enabling Interception Script
 
 #### Editing an Intercept Script 
 
-After an interception script has been activated, click the Edit button next to the script, located on the Advanced Settings tab. This opens the script, which contains the default template. All interception scripts must implement the UserDefinedInterception2 interface. More information regarding this can be found in the Javadoc. 
+After an interception script has been activated, click Edit next to the script, located on the Advanced Settings tab. This opens the script, which contains the default template. All interception scripts must implement the UserDefinedInterception2 interface. More information regarding this can be found in the Javadoc. 
 
 After you edit the script to include your custom logic, save the file.
 
@@ -648,7 +648,7 @@ Figure 25: Hierarchy Builder
 
 Figure 26: Hierarchy Builder 
 
-8.	If you want to change the RDN name for the node, select the node and click the Rename button on the right.
+8.	If you want to change the RDN name for the node, select the node and click Rename on the right.
 
 9.	You can also create additional labels (using the New Label button) to organize the tree if needed (optional). 
 
