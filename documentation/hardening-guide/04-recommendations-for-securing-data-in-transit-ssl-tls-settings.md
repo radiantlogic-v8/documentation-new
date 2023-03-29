@@ -7,7 +7,7 @@ description: Hardening Guide
 
 By default, only SSL-enabled endpoints are accessible to the RadiantOne Service.
 
-<!-->
+<!--
 RadiantOne supports SSL/TLS and StartTLS to encrypt communication with clients and for communication to backend services.
 
 ## Configure SSL/TLS for Accessing RadiantOne
