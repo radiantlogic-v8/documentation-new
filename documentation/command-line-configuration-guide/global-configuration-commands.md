@@ -187,6 +187,8 @@ C:\radiantone\vds\bin>vdsconfig.bat get-property -name checkCRLfile
 C:\radiantone\vds\bin>vdsconfig.bat set-property -name checkCRLfile -value C:\\path\\to\\file
 ```
 
+<!--
+
 #### Configure Inter Nodes Communication (SSL)
 
 ```
@@ -198,6 +200,8 @@ SSL_ALL
 
 >[!note]
 >Possible values are PLAIN, SSL_ALL. Use SSL_ALL for “Always use SSL”, and PLAIN for “Never use SSL”.
+
+-->
 
 #### Updating Passwords
 
