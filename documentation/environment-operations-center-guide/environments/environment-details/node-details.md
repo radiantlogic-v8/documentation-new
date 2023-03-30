@@ -54,7 +54,7 @@ The FID node details dialog provides the following information for the selected 
 
 Each node has associated log files that contain further information about the node's health and status alerts. The log files for a specific node can be accessed from the node details dialog or from the **Options** (**...**) dropdown of a node.
 
-To access log files from a node's details dialog, select **View Logs** in the dialog. The **View Logs** button is available in the details dialog for both FID and Zookeeper nodes.
+To access log files from a node's details dialog, select **View Logs** in the dialog.
 
 Select **Close** to exit the node details dialog.
 
@@ -68,4 +68,4 @@ Alternatively, the log files of a node can be accessed by selecting **View Logs*
 
 ## Next steps
 
-After reviewing this guide, you should have an understanding of how to review the status and health of specific FID and Zookeeper nodes. For information on reviewing environment logs, see [environment logs](../logging/environment-logs.md).
+After reviewing this guide, you should have an understanding of how to review the status and health of specific FID nodes. For information on reviewing environment logs, see [environment logs](../logging/environment-logs.md).
