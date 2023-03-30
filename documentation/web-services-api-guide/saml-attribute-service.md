@@ -160,6 +160,8 @@ mapping2=subjectDN >> (.+) --> uid=$1,ou=Accounting,o=companydirectory
 
 The mapping2 example looks for the specified DN where the $1 placeholder is replaced by the value passed in the request’s subject name.
 
+<!--
+
 ### RadiantOne Web Services Port
 
 After modifying the AttributeService.properties, AttributeMapping.properties and IdMapping.properties files as described in the previous section, verify that the RadiantOne HTTP server is enabled. You can check this from the Main Control Panel ->Settings tab-> Server Front End -> Other Protocols as shown below.  
@@ -174,6 +176,8 @@ If the HTTP server is not enabled, check the “Enable HTTP Server” box, click
 
 >[!note] 
 >The RadiantOne service needs to be restarted every time changes are made to any properties in the AttributeService.properties file.
+
+-->
 
 ### SAML Client Metadata
 
