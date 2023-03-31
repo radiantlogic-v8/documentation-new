@@ -30,18 +30,18 @@ In the *New Data Connector* dialog, enter the data connector information in the 
 | Data Connector Info | Description |
 | ------------------- | ----------- |
 | Name | Provide a name that is relevant to the network being connected to. |
-| Group | A minimum of two data connectors should be created per network environment to form a group. Groups provide failover and load balancing for the network. The group field is an editable dropdown, so you can either select an existing group or add a new group. | 
+| Group | A minimum of two data connectors should be created per network environment to form a group. Groups provide failover and load balancing for the network. Either select a group from the **Group Name** dropdown list or select **New Group** to add a new group. | 
 | Description | The description field is optional but is recommended to provide any details that are relevant about the network. This helps with maintaining data connectors. |
 
 Once you have completed the required fields in the *Data Connector Info* section, select **Save** to add the new connector.
 
-![image description](images/add-save.png)
+![image description](images/save-connector.png)
 
 If the data connector is successfully created, it will appear in the list of available data connectors on the *Secure Data Connectors* home screen.
 
 The *Status* of the new data connector will display as "Inactive". A connection needs to be established between a new data connector and the on-prem or cloud network for the connector to become "Active". For details on deploying the secure data connector client, see the [deploy a secure data connector client](deploy-sdc-client.md) guide.
 
-![image description](images/add-new-connector.png)
+![image description](images/new-connector-created.png)
 
 ## Next steps
 

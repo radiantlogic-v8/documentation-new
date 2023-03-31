@@ -11,7 +11,7 @@ Secure data connectors allow data to flow from your on premises or private cloud
 
 To navigate to the *Secure Data Connectors* home screen, select **Secure Data Connectors** (![image description](images/agent-icon.png)) from the left navigation.
 
-![image description](images/left-nav.png)
+![image description](../images/secure-data-connectors.png)
 
 ## Secure data connector home screen
 
@@ -43,7 +43,7 @@ Data connector details can be accessed in two ways. One way is to select the dat
 
 Another way to access data connector details is to select **View Details** from the **Options** (**...**) dropdown menu of the corresponding data connector.
 
-![image description](images/select-view-details.png)
+![image description](images/view-details.png)
 
 ### Data connector info
 
@@ -66,11 +66,13 @@ All of the on-premise or cloud connections made to the data connector are listed
 
 | Connection details | Description |
 | ------------------ | ----------- |
-| Connection | The name of the on-premise or cloud environment connected to the data connector |
+| Data Source Name | The name of the on-premise or cloud environment connected to the data connector. |
+| Environment Name | The name of the Env Opes Center environment the connector is associated with. |
 | Port | The high port where the connection is initiated. |
-| Server IP | The IP of the on-prem or cloud data source that has been connected. |
+| Server Name/IP | The IP of the on-prem or cloud data source that has been connected. |
 | Server Port | The port of the on-prem or cloud data source where the connection was made. |
-| Status | Indicates if the connection "Failed" or is "Active" or "Inactive" |
+| Status | Indicates if the connection "Failed" or is "Active" or "Inactive". |
+| Last Updated Time | The date and time when the connector was last updated. |
 
 ![image description](images/connections.png)
 
