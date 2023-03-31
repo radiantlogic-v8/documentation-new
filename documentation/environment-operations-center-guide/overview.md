@@ -5,7 +5,9 @@ description: Getting started
 ---
 # Getting Started
 
-This guide provides an overview of the Environment Operations Center *Overview* screen and how to navigate the application user interface.
+Environment Operations Center allows you to control your RadiantOne implementation in a cloud environment. It provides all of the required tools to create, manage, and monitor your RadiantOne environments. 
+
+This guide provides an overview of the Environment Operations Center home screen and how to navigate the application user interface.
 
 ## Overview
 
