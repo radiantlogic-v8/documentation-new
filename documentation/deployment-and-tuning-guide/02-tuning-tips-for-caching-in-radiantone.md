@@ -387,8 +387,6 @@ During each refresh interval, the periodic persistent cache refresh is performed
 
 2.	(Optional) If a [validation threshold](#add-validation-threshold) is defined, RadiantOne determines if the threshold defined has been exceeded. If it has, the persistent cache is not refreshed during this cycle.
 
-3.	(Optional) If a [validation script](#validation-script-path) is defined, RadiantOne invokes the script logic. If the validation script is successful, RadiantOne updates the cache. If the validation script is unsuccessful, RadiantOne does not update the persistent cache during this cycle.
-
 4.	RadiantOne compares the LDIF file generated in step 1 to the current cache image and applies changes to the cache immediately as it goes through the comparison.
 
 The periodic persistent cache refresh activity is logged into periodiccache.log. This file can be viewed and downloaded from Server Control Panel > Log Viewer. For details on this log, see the Logging and Troubleshooting Guide.
@@ -412,15 +410,13 @@ To configure persistent cache with Periodic refresh
 
 6.	Enter the [CRON expression](#periodic-refresh-cron-expression) to define the refresh interval.
 
-7.	(Optional) Define a [Validation Script Path](#validation-script-path).
+7.	(Optional) Define a [Delete Validation Threshold](#delete-validation-threshold).
 
-8.	(Optional) Define a [Delete Validation Threshold](#delete-validation-threshold).
+8.	(Optional) Define an [Add Validation Threshold](#add-validation-threshold).
 
-9.	(Optional) Define an [Add Validation Threshold](#add-validation-threshold).
+9.	Click **Save**.
 
-10.	Click **Save**.
-
-11.	Click **Initialize** to start the initialization process.
+10.	Click **Initialize** to start the initialization process.
 
 There are two options for initializing the persistent cache: Creating a new LDIF file or initializing from an existing LDIF file. Each is described below.
 
@@ -456,7 +452,7 @@ You can define a threshold to validate the generated LDIF file/image prior to Ra
 
 To define a granular threshold for delete operations, indicate the percentage in the Delete Validation Threshold. For example, if Delete Validation Threshold contains a value of 50, it means if the generated LDIF image contains at least 50% fewer entries than the current cache image, the periodic persistent cache refresh is aborted for the current refresh cycle.
 
-If both a [validation script](#validation-script-path) and validation threshold are configured, the threshold is checked first. If the threshold does not invalidate the refresh, the validation script is invoked. If neither a threshold nor a script is configured, RadiantOne compares the generated LDIF file to the current cache image and updates the cache based on the differences between the two.
+If a validation threshold is configured, the threshold is checked.
 
 ##### Add Validation Threshold
 
