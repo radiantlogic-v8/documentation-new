@@ -11,7 +11,7 @@ This guide provides an overview of how to update your account settings and manag
 
 From any section or tab in Environment Operations Center, your account avatar will be visible in the upper right corner of the screen. To access your account settings, select the avatar icon to expand the account dropdown menu. From the dropdown menu, select **Account Settings** to open the *Account Settings* screen.
 
-![image description](images/account-select-settings.png)
+![image description](images/account-settings.png)
 
 ## Account settings
 
@@ -19,41 +19,35 @@ From the *Account Settings* screen you can update your user details including yo
 
 ### Update user details
 
-To update your first name, last name, or email address, enter your information in the spaces provided and select **Save** to update.
+To update your first or last name, enter your information in the spaces provided and select **Save** to update.
 
-![image description](images/account-userdetails.png)
+[!note] Only administrators can update email addresses. Please contact your administrator if you need to change the email associated with your Env Ops Center account.
+
+![image description](images/account-details.png)
 
 ### Update profile image
 
-To update your profile image, select "Edit Avatar"... 
+To update your profile image, select "Edit Avatar" and select an image from you local file system to upload.
 
-> **(RL QUESTION: does this open a drag and drop screen or just opens the user's local file system to upload, and are there any image size limits**).
-
-![image description](images/account-edit-avatar.png)
+![image description](images/edit-avatar.png)
 
 ## Manage API tokens
 
 ### Create an API token
 
-To create a new API token, select the **Generate** (![image description](images/icon-generate.png)) button located just above the *API token* input field. This will generate a unique API token that populates in the *API token* input field.
+To create a new API token, set the API expiration by selecting one of the **Expires In** radio buttons. Then select **Generate** to generate a new API token. A unique API token will populate in the *API token* input field.
 
-![image description](images/account-select-generate.png)
+![image description](images/generate-token.png)
 
-Set the API token expiration date by selecting a duration from the *Expiration Date* dropdown menu and select **Save** to create the new API token.
+A unique API token will populate in the *API token* input field and the creation and expiration dates will display below the token. Copy the token immediately and store in a save place.
 
-![image description](images/account-expiration-dropdown.png)
+[!warning] Once you leave the page, you can no longer view or copy the API token. Ensure you copy the token before saving.
+
+![image description](images/created-copy.png)
 
 You will receive a warning when your API token is close to expiring. A warning is displayed in your *Account Settings* next to the *Expiration Date* dropdown.
 
 [!warning] API token expiry cannot be extended. Once a token has expired, a new token must be generated.
-
-![image description](images/account-expiration-warning.png)
-
-### Copy an API token
-
-To copy the API token, select the **Copy to Clipboard** icon (![image description](images/icon-copy.png)) located next to the *API Token* input field and proceed to save or use the token as needed.
-
-![image description](images/account-select-copy.png)
 
 ### Delete an API token
 
@@ -63,17 +57,13 @@ You can delete the API token by selecting the trash bin icon (![image descriptio
 
 [!warning] Deleting an API token is a permanent action and cannot be undone.
 
-![image description](images/account-select-delete.png)
+![image description](images/delete-token.png)
 
 A confirmation message will appear to verify that you would like to delete the API token and reminding you that a new API token will need to be generated for future calls. Select **Confirm** to delete the token.
 
-![image description](images/account-confirm-delete.png)
+![image description](images/delete-confirmation.png)
 
-If the token is successfully deleted you will receive a confirmation message and the *API token* field will be empty.
-
-![image description](images/account-delete-success.png)
-
-You can proceed to generate a new token or exit out of *Account Settings* without generating a new token by selecting **Save**.
+If the token is successfully deleted you will receive a confirmation message and the *API token* field will be empty. You can proceed to generate a new token or exit out of *Account Settings* without generating a new token by selecting **Save**.
 
 ## Next steps
 
