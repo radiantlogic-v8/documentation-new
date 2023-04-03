@@ -296,7 +296,7 @@ To delete the selected entry, click ![delete entry](Media/delete-entry.jpg). If 
 
 ## Copy DN
 
-To copy the DN of the selected entry, click ![copy dn](Media/copy-rdn.jpg). This is useful if you need to paste this value somewhere else (e.g. into a uniquemember attribute of a group entry, or in an LDAP connection as the Bind DN).
+To copy the DN of the selected entry, click ![copy dn](Media/copy-dn.jpg). This is useful if you need to paste this value somewhere else (e.g. into a uniquemember attribute of a group entry, or in an LDAP connection as the Bind DN).
 
 ## Number of Entries (Size Limit) 
 
