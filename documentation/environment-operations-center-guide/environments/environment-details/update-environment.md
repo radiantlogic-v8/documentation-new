@@ -13,7 +13,7 @@ When version updates are applied to your Environment Operations Center instance,
 
 When an environment requires updating, an **Update Now** message appears next to the environment version number under "Environment Details".
 
-![image description](images/overview-updatenow.png)
+![image description](images/update-now.png)
 
 ### Begin update
 
@@ -21,29 +21,25 @@ There are two ways to begin the environment update workflow from the *Overview* 
 
 To update using the **Options** menu, select the ellipsis (**...**) located next to the **Monitor Environment** button to display the environment's **Options** menu. From the dropdown menu, select **Update** to open the *Update Environment* dialog box.
 
-![image description](images/overview-options.png)
+![image description](images/options-update.png)
 
 Alternatively, you can select the **Update Now** message located next to the environment's version number. This will also open the *Update Environment* dialog box.
 
-![image description](images/update-select-updatenow.png)
+![image description](images/select-update-now.png)
 
-### Update version number and nodes
+### Update version number
 
-Once you have started the environment update workflow, a dialog box appears containing the fields required to update the environment version and number of FID nodes. To update your environment, you must provide the correct version number that corresponds with your current version number of Environment Operations Center and the number of FID nodes to display.
+The *Update Environment* dialog box contains a **Version** dropdown field to update the environment version. To update your version number, select the correct number from the **Version** drop down menu. Your currently installed version number is displayed just above the dropdown menu for reference.
 
-To update your version number, select the correct number from the **Version** drop down menu. Your currently installed version number is displayed just above the dropdown menu for reference.
+![note] Environment versions can only be updated incrementally. You must select the version number that immediately succeeds your current environment version.
 
-![image description](../environment-overview/images/update-select-version.png)
+![image description](images/select-version.png)
 
-To set the number of FID nodes for the environment, use the provided slider to increase or decrease the quantity as needed. Alternatively, you can select either the minus (**-**) or plus (**+**) sign on either side of the slider to increase or decrease the number of FID nodes.
-
-![image description](../environment-overview/images/update-node-slider.png)
-
-Once you have set the correct version number and number of FID nodes, select **Update** to begin updating the environment.
-
-![image description](../environment-overview/images/update-env-button.png)
+Once you have selected the correct version number, select **Update** to begin updating the environment.
 
 To quit the update and return to the environment *Overview* screen, select **Cancel**.
+
+![image description](images/select-update.png)
 
 ### Environment update confirmation
 
@@ -51,30 +47,24 @@ After selecting **Update** you will return to the *Overview* screen. An updating
 
 While the environment is updating its status will display as "Updating", the **Update Now** message will no longer be visible, and the **Options** (**...**) menu will be greyed out and unable to be selected.
 
-![image description](images/update-updating.png)
+![image description](images/updating.png)
 
 If the environment updates successfully, you will receive a success notification and the environment status will change to "Operational".
 
-Select **Dismiss** to close the notification.
+![image description](images/updated.png)
 
-![image description](images/update-success.png)
+If the environment update is unsuccessful, you will receive an error notification and the environment status will change to "Update Failed". Select **Dismiss** to close the notification and proceed to retry updating the environment.
 
-If the environment update is unsuccessful, you will receive an error notification and the environment status will change to "Update Failed".
+## View version history
 
-Select **Dismiss** to close the notification and proceed to retry updating the environment.
+To view updates previously applied to an environment, select **View Version History** located in the *Environment Details* section.
 
-![image description](images/update-failed.png)
+![image description](images/view-version-history.png)
 
-## Previous updates
+The *Version History* dialog lists all updates applied to the environment by their version number in chronological order. Each update also has a time and date stamp for when the update was applied and lists the user who performed the update.
 
-You can view updates previously applied to an environment by selecting **Activity Log** from the top navigation or by selecting **View Version History** located in the *Environment Details* section.
-
-From either, you can also begin the workflow to revert to a previous environment update.
-
-[!note] For further details on reviewing version history and reverting to a previous environment version, review the [version history](version-history.md) guide.
-
-![image description](images/update-view-versionhistory.png)
+![image description](images/version-history-details.png)
 
 ## Next steps
 
-After reading this guide you should have an understanding of the steps required to update an environment, including updating the version number and number of FID nodes to display, from the *Overview* screen of the environment. To learn how to review all updates applied to an individual environment, see the guide on monitoring environment [version history](version-history.md).
+After reading this guide you should have an understanding of the steps required to update an environment. To learn how to adjust the number of environment nodes, see the [update and monitor environment nodes](node-details.md) guide. For details on backing up and restoring environment versions, see the [backups overview](../backup-and-restore/backup-restore-overview.md).

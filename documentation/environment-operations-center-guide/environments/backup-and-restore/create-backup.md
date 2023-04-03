@@ -9,49 +9,31 @@ This guide provides an overview of the steps required to create environment back
 
 ## Getting started
 
-To begin creating a manual backup of an environment, select the **Backup Now** button.
+To begin creating a manual backup of an environment, select the **Backup** button.
 
-![image description](images/backup-now.png)
-
-This brings you to the backup *Details* screen where you will provide the required details to create the environment backup.
-
-![image description](images/create-details.png)
+![image description](images/create-backup.png)
 
 ## Backup details
 
-On the backup *Details* screen, the "Backup Details" and "Backup Destination" fields must be completed in order to submit the form to create a backup.
+On the *Create Backup* screen, the "Backup Name" field must be completed in order to submit the form to create a backup. A unique backup name will automatically generate in the name field. You can adjust the provided name but it must be unique. If a backup with the same name exists, you will not be able to save the backup.
 
-Under "Backup Details" a "Backup Name" will auto-populate for you in the space provided.
+Once you have completed the name field, select **Save** to create the backup.
 
-[!note] Backup names must be unique. You will receive a warning if the backup name entered is already in use.
-
-![image description](images/create-backup-name.png)
-
-Next, set the backup destination by selecting the checkbox next to the desired storage location. Multiple destinations can be selected at the same time.
-
-![image description](images/create-backup-destination.png)
-
-Once you have completed all the required fields, select **Create** to begin creating the backup.
-
-![image description](images/create-button.png)
+![image description](images/backup-name.png)
 
 ## Backup confirmation
 
-While the backup is being created, you will return to the main *Backups* screen. A progress bar on the *Backups* screen indicates that a backup is being created.
+While the backup is being created, you will return to the main *Backups* tab and a "Creating Backup" message is displayed below the name of the new backup.
 
-![image description](images/create-progressbar.png)
+![image description](images/backup-creating.png)
 
-If the backup was successfully created, you will receive a confirmation message and the new backup will be visible in the list of backups on the main *Backups* screen.
+If the backup was successfully created, you will receive a confirmation message and the new backup will be visible in the list of backups on the main *Backups* screen. Select **Dismiss** to close the message.
 
-Select **Dismiss** to close the message.
+![image description](images/backup-success.png)
 
-![image description](images/create-success.png)
+If the backup could not be successfully created, you will receive an error message indicating that the backup creation failed and it will no longer be listed on the main *Backups* screen. Select **Dismiss** to close the message and proceed to try creating the backup again.
 
-If the backup could not be successfully created, you will receive an error message indicating that the backup creation failed.
-
-Select **Dismiss** to close the message and proceed to try creating the backup again.
-
-![image description](images/create-failed.png)
+![image description](images/backup-failure.png)
 
 ## Next steps
 

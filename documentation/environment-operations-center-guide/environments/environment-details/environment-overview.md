@@ -12,11 +12,11 @@ Each environment has a detailed view where you can see further information about
 
 To navigate to the detailed view of an environment, select the environment name from the list of environments displayed on the *Environments* screen.
 
-![image description](images/overview-select-env.png)
+![image description](images/view-details.png)
 
 This brings you to the environment's *Overview* screen that displays a summary of the environment details and operation statuses. Further monitoring and updating tools for the environment are accessible from the navigation bar located at the top of the page.
 
-![image description](images/overview-screen.png)
+![image description](images/details-overview.png)
 
 ## Top navigation
 
@@ -28,7 +28,7 @@ A navigation bar is located at the top of the *Overview* screen and is visible f
 - Configuration
 - Activity Log
 
-![image description](images/overview-topnav.png)
+![image description](images/top-nav.png)
 
 ### Logs
 
@@ -36,7 +36,7 @@ The *Log* tab allows you to view an environment's log details, imported from Ela
 
 For further details on reviewing environment logs, see the [Environment Logs](../logging/environment-logs.md) guide.
 
-![image description](images/overview-log-tab.png)
+![image description](images/logs.png)
 
 ### Backups
 
@@ -44,21 +44,21 @@ From the *Backups* tab, you can save a backup of the current environment configu
 
 For information on managing your environment backups, refer to the [backup and restore documentation](../backup-and-restore/backup-restore-overview.md).
 
-![image description](images/overview-backups-tab.png)
+![image description](images/backups.png)
 
-### Configuration
+### Alerts
 
-From the *Configuration* tab, you can view a chronological list of the configuration file import and export history for an environment. Configuration file import or export workflows can also be launched from this screen.
+The *Alerts* tab provides an overview of all alerts that have been triggered for the environment including the alert message, the channel the alert was sent to, date, and status. 
 
-To learn how to import a configuration file, review the [import a configuration file](../environment-overview/import-configuration-file.md) guide. Or, for details on exporting a configuration file, review the [export a configuration file](export-configuration-file.md) guide.
+For details on creating environment alerts, see the [alert management](../../admin/alert-management/alert-management-overview.md) guide.
 
-![image description](images/overview-configuration-tab.png)
+![image description](images/alerts.png)
 
 ### Activity log
 
 Under the *Activity Log*, you can view a list of all actions performed on an environment. Each action has a corresponding time and date stamp of when it was performed and the user who performed the action is also listed.
 
-![image description](images/overvieew-activitylog-tab.png)
+![image description](images/activity-log.png)
 
 ## Monitor environment
 
@@ -66,21 +66,27 @@ A **Monitor Environment** button is located near the top of the *Overview* scree
 
 For further details on monitoring environments, see the [monitoring](../../monitoring/monitoring-overview.md) guide.
 
-![image description](images/overview-monitoring.png)
+![image description](images/monitor-env.png)
+
+## Refresh Environment Details
+
+A refresh button is located next to **Monitor Environment**. Select **Refresh** to display the most up to date details for the environment.
+
+![image description](images/refresh-env.png)
 
 ## Environment options
 
-An expandable **Options** (**...**) menu is located next to the **Monitor Environment** button. Selecting the **Options** (**...**) dropdown menu displays the options to **Update** or **Delete** the environment.
+An expandable **Options** (**...**) menu is located next to the **Monitor Environment** button. Selecting the **Options** (**...**) dropdown menu displays the options to **Update**, **Scale**, or **Delete** the environment.
 
-To learn how to delete the environment, review the [delete environment](delete-environment.md) guide. For details on updating the environment, review the [update environment](update-environment.md) guide.
+To learn how to update or delete the environment, review the respective [delete environment](delete-environment.md) or [updated environment](update-environment.md) guides. For details on monitoring and adjusting nodes, see the [update and monitor nodes](node-details.md) guide.
 
-![image description](images/overview-options.png)
+![image description](images/env-options.png)
 
 ## Environment details
 
 The *Environment Details* section outlines the environment name, scale, type, status and version number.
 
-![image description](images/overview-env-details.png)
+![image description](images/env-details.png)
 
 ### Status
 
@@ -90,7 +96,7 @@ The environment status will change depending on the state of the environment. St
 - Warning: There are services down. This can range from 10%-90% of services.
 - Outage: There are too many services down for the environment to operate. Less than 10% of services are running.
 
-![image description](images/overview-envdetails-status.png)
+![image description](images/env-status.png)
 
 ### Version
 
@@ -98,27 +104,27 @@ If the environment version is out of date, an "Update Now" message appears next 
 
 For details on updating the environment, review the [update environment](update-environment.md) guide.
 
-![image description](images/overview-updatenow.png)
+![image description](images/update-env.png)
 
 You can view the environment's version history by selecting the **View Version History** button in the lower right corner of the *Environment Details* box. 
 
 See the guide on [version history](version-history.md) for further details on reviewing and restoring an environment's previous versions.
 
-![image description](images/overview-version-history.png)
+![image description](images/view-version-hist.png)
 
 ## Endpoints
 
 The *Application Endpoints* section lists all of the environment endpoints.
 
-![image description](images/overview-endpoints.png)
+![image description](images/endpoints.png)
 
 ## Node monitoring
 
-The lower section of the *Overview* page displays monitoring sections for the FID and Zookeeper nodes of an environment. For both FID and Zookeeper nodes, the status, CPU, memory, and disk space are provided for each node. The number of connections are listed for all FID nodes.
+The lower section of the *Overview* page displays monitoring sections for the FID nodes of an environment. The status, CPU, memory, disk space, and number of connections are provided for each node.
 
 Node status will be listed as "Healthy", "Warning, or "Outage", indicating that the node is either operational, experiencing a partial outage, or experiencing a complete outage.
 
-![image description](images/overview-node-monitoring.png)
+![image description](images/node-details.png)
 
 CPU, memory, and disk are all displayed as color-coded percentages to indicate their health.
 
@@ -132,27 +138,7 @@ An expandable **Options** (**...**) menu is available for each node. Selecting t
 
 For further details on reviewing nodes details, see the [node details](node-details.md) guide.
 
-![image description](images/overview-node-options.png)
-
-## Alerts
-
-Environment alerts display at the top of the Overview screen when warnings or outages occur. Alerts include general operational alerts from Env Ops Center, as well as any custom alerts you have configured for your environments. A maximum of three alerts display at a time in order of priority. If there are more than three alerts, each subsequent alert will display once a previous alert has been closed or resolved.
-
-![image description](images/alerts.png)
-
-You can hide an alert by selecting the "X" located in the alert message. If the issue has not been resolved, the alert notification will persist when you navigate back to the *Overview* screen.
-
-![image description](images/alerts-close.png)
-
-To view further details about the alert, select **View Alert Logs**. 
-
-![image description](images/alerts-view-logs.png)
-
-This brings you to the *Alerts* tab where you can review the alert details.
-
-To learn more about managing environment alerts, see the [alert management guide](../../admin/alert-management/alert-management-overview.md).
-
-![image description](images/alerts-tab.png)
+![image description](images/node-options.png)
 
 ## Next steps
 

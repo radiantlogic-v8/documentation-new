@@ -13,7 +13,7 @@ All Env Ops Center users can access the **Admin** screen, but view and edit perm
 
 To navigate to the *Admin* screen, select **Admin** (![image description](images/icon-admin.png)) located at the bottom of the left navigation.
 
-![image description](images/overview-select-admin.png)
+![image description](../images/admin.png)
 
 ## Top navigation
 
@@ -21,12 +21,10 @@ A navigation bar is located at the top of the *Admin* home screen and is visible
 
 - Users
 - Alerts
-- Clusters
-- Authentication
-- Integrations
-- Backups
+- Integration
+- Activity Log
 
-![image description](images/overview-top-navigation.png)
+![image description](images/top-nav.png)
 
 ### Users
 
@@ -34,47 +32,29 @@ The *Users* tab allows you to manage all users within your Environment Operation
 
 For details on managing Environment Operation Center users, including their roles and permissions, see the [user management](...) guide.
 
-![image description](images/overview-user-tab.png)
+![image description](images/user-tab.png)
 
 ### Alerts
 
-From the *Alerts* tab you can monitor and create alerts for your environments. The main *Alerts* screen displays all of your current alerts including their notification channel, a time and date stamp of the last update to the alert, and the severity status.
+From the *Alerts* tab you can monitor and create alerts for your environments. The main *Alerts* screen displays all of your current alerts including their associated environment, notification channel, a time and date stamp of the last update to the alert, and the severity status.
 
 For more information on alert management, see the [alert management](...) guide.
 
-![image description](images/overview-alerts-tab.png)
+![image description](images/alerts-tab.png)
 
-### Clusters
+### Integration
 
-The *Clusters* tab allows you to monitor cluster health. The *Clusters* screen displays your cluster, the region of that cluster, its number of nodes, Kubernetes version, and current status.
-
-For details on monitoring clusters, see the guide on [cluster monitoring](...).
-
-![image description](images/overview-clusters-tab.png)
-
-### Authentication
-
-The *Authentication* tab allows you to manage Environment Operation Center authentication methods. From the main *Authentication* screen you can view current authentication providers, the provider type, and the status of the authentication method.
-
-For details on managing authentication providers, see the [authentication](...) guide.
-
-![image description](images/overview-auth-tab.png)
-
-### Integrations
-
-From the *Integrations* tab you can manage your connections to external applications to send alerts from Environment Operations Center. The *Integrations* tab displays the integration "Label", indicating the integrations purpose, the "Integration", indicating the external application, and the "Channel" that is used within the external application integration.
+From the *Integrations* tab you can manage your connections to external applications to send alerts from Environment Operations Center. The *Integrations* tab displays the integration "Label", indicating the integrations purpose, and the "Integration", indicating the external application the integration is connected to.
 
 For details on managing integrations, see the [managing integrations](integrations/manage-integrations.md) guide.
 
-![image description](images/overview-integration-tab.png)
+![image description](images/integration-tab.png)
 
-### Backups
+### Activity Log
 
-The admin *Backups* tab provides similar functionality as an environment's *Backups* tab. You cannot create or scheduled environment backups from the admin section, but you can delete or restore backups. From the admin *Backups* tab you can also recover deleted backups, which you cannot do from an environment's *Backups* tab. 
+The *Activity Log* provides an overview of all create, update, and delete activities performed for all environments, including the action, environment, date and time stamp of the activity, and the user who performed the activity.
 
-For details on managing environment backups see the [environment backup](../environments/backup-and-restore/backup-restore-overview.md) guide. To learn how to recover a deleted backup, see the [recover a backup](backups/recover-backups.md) guide.
-
-![image description](images/overview-backups-tab.png)
+![image description](images/activity-log-tab.png)
 
 ## Next steps
 

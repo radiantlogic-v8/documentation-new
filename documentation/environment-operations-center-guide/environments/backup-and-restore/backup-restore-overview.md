@@ -11,45 +11,45 @@ You can create and restore backups of your environments in Environment Operation
 
 To navigate to the *Backups* tab for a specific environment, select **Backups** from the top navigation in the environment's detailed view.
 
-![image description](images/backups-tab.png)
+![image description](images/select-backups.png)
 
 This brings you to the *Backups* view that provides a chronological overview of all backups that have been performed on the environment.
 
-![image description](images/backups-home.png)
+![image description](images/backups-tab.png)
 
 ## Review backups
 
 From the *Backups* tab, you can review all backups that have been performed on the environment. For each backup, the backup name, creation date, and version are listed.
 
-![image description](images/backups-titles.png)
-
-Each backup has an **Options** (**...**) menu that allows you to perform actions on the backup. Actions include **Download**, **Restore**, and **Delete**.
-
-Selecting **Download** will download the configuration file of that backup to your system. To learn how to create environment backups, review the [create a backup](create-backup.md) guide.
-
-For more information on restoring or deleting environment backups, see the [restore a backup](restore-backup.md) guide or the [delete a backup](delete-backup.md) guide.
-
-![image description](images/backups-options.png)
+![image description](images/backups-details.png)
 
 If you have set a scheduled backup for the environment, a "Scheduled" notification appears at the top of the workspace indicating the frequency and time of the scheduled backup.
 
 For more information on scheduling environment backups, see the [schedule backups](schedule-backup.md) guide.
 
-![image description](images/backups-scheduled.png)
+![image description](images/backups-schedule.png)
 
-## Create backups
+## Manage backups
 
-You can create backups manually or schedule an automated backup workflow. 
+You can create backups manually by selecting **Backup** or schedule an automated backup workflow by selecting the gear icon. 
 
 For details on creating manual environment backups, see the [create a backup](create-backup.md) guide. For details on scheduling automated environment backups, see the [schedule a backup](schedule-backup.md) guide.
+
+![image description](images/backup-button.png)
+
+Each backup has an **Options** (**...**) menu that allows you to either **Download** or **Restore** a backup. Selecting **Download** will download the configuration file of that backup to your system.
+
+![image description](images/backups-options.png)
+
+The workflow to restore a backup can also be initiated by selecting the **Restore** button. For more information on restoring backups, see the [restore a backup](restore-backup.md) guide.
+
+![image description](images/restore-button.png)
 
 ## Read-only mode
 
 If you have read-only access to the environment, you will still be able to view the list of backups that have been performed and the backup schedule if an automated backup has been created. You will not be able to create new backups or modify existing backups.
 
-The **Backup Now** button will be deactivated, the **Backup Settings** icon will be hidden, and the **Options** (**...**) menu for each backup wil be hidden.
-
-![image description](images/backups-readonly.png)
+The gear icon, **Restore**, and **Backup** buttons will be deactivated and the **Options** (**...**) menu for each backup wil be hidden.
 
 ## Next steps
 
