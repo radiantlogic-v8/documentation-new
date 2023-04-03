@@ -9,8 +9,7 @@ description: System Administration Guide
 - [Backend Settingts](04-backend-settings.md)
 - [Creating Virtual Views](05-creating-virtual-views.md)
 - [Security](06-security.md)
-- [0Directory Schema](07-directory-schema.md)
+- [Directory Schema](07-directory-schema.md)
 - [Directory Browser Tab](08-directory-browser-tab.md)
 - [Logs](09-logs.md)
 - [Monitoring](10-monitorying.md)
-- 
