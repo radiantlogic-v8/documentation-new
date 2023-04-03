@@ -87,7 +87,7 @@ Figure 3: Selecting a Location for Users
 
 11.	Click **OK**. The configuration is displayed in the Linked Attributes section.
 
-![An image showing ](Media/Image1.132.jpg)
+![An image showing ](Media/Image3.132.jpg)
  
 Figure 4: Linked Attributes Configuration Rules
 
