@@ -175,7 +175,7 @@ Some settings in the Control Panel are accessible only in Expert Mode. To switch
 By default, the commands available in the vdsconfig utility can be executed by anyone who can launch the utility and make the change, as tracked by Zookeeper, is logged as simply that the change was made from the command line utility. The only exception here is when the command is updating a property containing a password. In this context, the RadiantOne super user credentials are required. If you want to enforce that credentials are required to execute any command in the vdsconfig utility, add "enableVdsConfigAuth" : true to the vds_server.conf settings in Zookeeper. To change this setting:
 
 1. From the Main Control Panel, switch to [Expert Mode](#expert-mode).
-2. Go to the Zookeeper tab and navigate to /radiantone/<version>/<cluster_name>/config/vds_server.conf.
+2. Go to the Zookeeper tab and navigate to `/radiantone/<version>/<cluster_name>/config/vds_server.conf`.
 3. On the right, click **Edit Mode** and locate the enableVdsConfigAuth setting.
 4. Change the value to true and click **Save**.
 After enabling this setting, all commands require the -authuser flag and the -authpwdfile flag is
