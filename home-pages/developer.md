@@ -34,7 +34,7 @@ A rich set of HTTP-based API's have been developed on top of LDAP, to provide br
 
 <section>
   
-  > [API Specification](/developer)
+  > [API Specification](/command-line-configuration-guide)
   > Learn how to install the RadiantOne Platform using the web-based GUI process and in silent-mode from command line.
   
 </section>
