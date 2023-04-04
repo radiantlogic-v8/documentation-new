@@ -147,7 +147,7 @@ Aborts dead-letter replay process on a sync pipeline. The request is processed a
 This command is used to resume or suspend the synchronization process associated with a given pipeline in a topology.
 
 **Usage**
-<br>`change-pipeline-state -pipelineid <pipelineID> -state `<state>
+<br>`change-pipeline-state -pipelineid <pipelineID> -state ``<state>`
 
 **Command Arguments:**
 
