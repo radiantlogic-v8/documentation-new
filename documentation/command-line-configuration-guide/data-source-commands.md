@@ -30,7 +30,7 @@ This command displays a list of configured data source names.
 **- database**
 <br>Indicates that database-type data sources should be listed.
 
-**- instance <instance>**
+**- instance `<instance>`**
 The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
 
 **- ldap < ldap >**
@@ -52,10 +52,10 @@ This command displays the connection info for the specified data source.
 
 **Command Arguments:**
 
-**- datasourcename <datasourcename>**
+`- datasourcename <datasourcename>`
 <br> [required] The name of the data source.
 
-**- instance <instance>**
+**`- instance <instance>`**
 <br> The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
 
 **REST (ADAP) Example**
