@@ -208,7 +208,9 @@ https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=set-ctx-pr
 
 To enable full text searching on a RadiantOne Universal Directory (HDAP) store or persistent cache naming context, use the “fulltextenabled” property. The syntax is shown below.
 
+```
 <RLI_HOME>/bin/vdsconfig.bat set-ctx-prop -namingcontext <naming context> -cache -prop fulltextenabled -value <true or false>
+```
 
 An example command for a naming context of “o=mytest” is:
 
