@@ -34,7 +34,7 @@ You can connect to any Bastion host running in any availability zone. Through th
 11. Run C:\"Program Files"\PuTTY\plink.exe -l ec2-user -N -L 7070:10.0.0.10:7070 -L 8089:10.0.0.10:8089 `<ec2DNSname>`
 
 >[!warning]
->All Linux instances configured with the Cloud Formation Templates are using the ec2-user account EXCEPT for CentOS which is using centos. Use the DNS name of the bastion server for the <ec2DNSname> in the command.
+>All Linux instances configured with the Cloud Formation Templates are using the ec2-user account EXCEPT for CentOS which is using centos. Use the DNS name of the bastion server for the `<ec2DNSname>` in the command.
 
 From your local machine, access the control panel on the RadiantOne node.
 E.g. [http://localhost:7070/main/login](http://localhost:7070/main/login)
