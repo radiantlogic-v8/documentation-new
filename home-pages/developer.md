@@ -1,5 +1,5 @@
 ---
-title: Homepage 2
+title: Developer
 description: Homepage 2 Description
 ---
 
