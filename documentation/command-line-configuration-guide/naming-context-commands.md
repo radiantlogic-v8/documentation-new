@@ -312,7 +312,7 @@ https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=restore-hd
 
 #### Examples
 
-C:\radiantone\vds\bin>vdsconfig.bat backup-hdapstore -namingcontext o=companydirectory
+C:\radiantone\vds\bin>vdsconfig.bat backup-hdapstore -namingcontext o=companydirectory`
 
 ```
 Using RLI home : C:\radiantone\vds
@@ -368,19 +368,19 @@ For typical LDAP migration use cases where you are migrating from a legacy LDAP 
 
 #### convert-pcache-to-hdap
 
-Before converting a persistent cache to a RadiantOne Universal Directory store, the persistent cache refresh should be stopped. You can set the refresh method to “none” on the Main Control Panel -> Directory Namespace -> Cache -> `<cached branch>` -> Refresh Settings tab. Also, suspend inter-cluster replication if it is used by setting “replicationInSuspendMode” : true, in ZooKeeper at /radiantone/<zk_version>/<clustername>/config/namings/<namingcontext_being_replicated>
+Before converting a persistent cache to a RadiantOne Universal Directory store, the persistent cache refresh should be stopped. You can set the refresh method to “none” on the Main Control Panel -> Directory Namespace -> Cache -> `<cached branch>` -> Refresh Settings tab. Also, suspend inter-cluster replication if it is used by setting “replicationInSuspendMode” : true, in ZooKeeper at `/radiantone/<zk_version>/<clustername>/config/namings/<namingcontext_being_replicated>`
 
-After the persistent cache has been converted to a RadiantOne Universal Directory store, [rebuild the index](task-launch-commands#rebuilding-indexes-for-radiantone-universal-directory-stores) to remove any persistent cache operational attributes. If inter-cluster replication is used, enable it by setting “replicationInSuspendMode” : false, in ZooKeeper at /radiantone/<zk_version>/<clustername>/config/namings/<namingcontext_being_replicated>
+After the persistent cache has been converted to a RadiantOne Universal Directory store, [rebuild the index](task-launch-commands#rebuilding-indexes-for-radiantone-universal-directory-stores) to remove any persistent cache operational attributes. If inter-cluster replication is used, enable it by setting “replicationInSuspendMode” : false, in ZooKeeper at `/radiantone/<zk_version>/<clustername>/config/namings/<namingcontext_being_replicated>`
 
 **Usage:**
 <br>`convert-pcache-to-hdap -namingcontext <namingcontext> [-instance <instance>]`
 
 **Command Arguments:**
 
-- namingcontext <namingcontext>
+- `namingcontext <namingcontext>`
 <br>[required] The name of the persistent cache naming context to be converted to an HDAP store.
 
-- instance <instance>
+- `instance <instance>`
 <br> The name of the RadiantOne instance. If this is not specified, the default instance named vds_server is used.
 
 >[!note]
