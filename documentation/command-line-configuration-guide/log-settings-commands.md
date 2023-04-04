@@ -53,7 +53,7 @@ https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=get-loggin
 This command updates a logging configuration.
 
 Usage:
-set-logging-property -key <key> -path <path> [-instance <instance>] [-value <value>]
+set-logging-property -key <key> -path <path> [-instance <instance>] [-value `<value>`]
 
 Command Arguments:
 
