@@ -29,7 +29,7 @@ Harness your identity data with intelligent integration to drive better business
   > [Introduction](/architect-guide/preface)  
   > Learn about the common use cases for RadiantOne Federated Identity including how it addresses the widespread problems of a fragmented identity data infrastructure. 
   
-  > [Installation](/cloud-manager-guide/environments/environment-overview/create-an-environment)  
+  > [Installation](/environment-operations-center-guide/environments/environment-overview/create-an-environment)  
   > Learn how to use the Environments Operations Center to create environments and install the RadiantOne Intelligent Identity Data Platform.
   
   > [Server Configuration](/sys-admin-guide/introduction)  
