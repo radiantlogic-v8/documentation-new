@@ -1381,7 +1381,7 @@ Alert ID: 00000000 - 0000 - 0000 - 0000 - 000000000002
 To customize the email message associated with email alerts:
 
 1. From the Zookeeper tab in the Main Control Panel navigate to
-    /radiantone/<version>/<clusterName>/config/logging/log4j2-scheduler.json.
+    `/radiantone/<version>/<clusterName>/config/logging/log4j2-scheduler.json`.
 2. On the right, click Edit Mode.
 3. To customize the email subject, edit the alert.email.subject property and overwrite the
     default value.
@@ -1694,10 +1694,10 @@ The default log4j configurations are described in the table below:
 | Service or Tool | Log4J Default Configuration |
 |---------------|----------------------------------------|
 | RadiantOne FID and Universal Directory |  In ZooKeeper at /radiantone/<version>/<cluster_name>/config/logging/log4j2-vds.json | 
-| Task Scheduler | In ZooKeeper at /radiantone/<version>/<cluster_name>/config/logging/log4j2- scheduler.json | 
-| Control Panels | In ZooKeeper at /radiantone/<version>/cluster_name>/config/logging/log4j2-control-panel.json | 
-| Monitoring Script | In ZooKeeper at /radiantone/<version>/<cluster_name>/config/logging/log4j2-monitoring-command.json
-| Agents used to manage capture connectors for real-time persistent cache refresh and global sync. | In ZooKeeper at /radiantone/<version>/<cluster_name>/config/logging/log4j2-cragents.json | 
+| Task Scheduler | In ZooKeeper at `/radiantone/<version>/<cluster_name>/config/logging/log4j2- scheduler.json` | 
+| Control Panels | In ZooKeeper at `/radiantone/<version>/cluster_name>/config/logging/log4j2-control-panel.json` | 
+| Monitoring Script | In ZooKeeper at `/radiantone/<version>/<cluster_name>/config/logging/log4j2-monitoring-command.json`
+| Agents used to manage capture connectors for real-time persistent cache refresh and global sync. | In ZooKeeper at `/radiantone/<version>/<cluster_name>/config/logging/log4j2-cragents.json` | 
 
 To configure your own log4j appender:
 
@@ -1752,7 +1752,7 @@ Figure 1. 42 : Main Control Panel Access Log Settings
 
 For more fine-grained log configuration you must edit the configuration in ZooKeeper. From the
 Main Control Panel -> ZooKeeper tab (requires [Expert Mode](#expert-mode)), navigate to
-radiantone/<version>/<cluster_name>/config/logging/log4j2-control-panel.json. Click the Edit
+`radiantone/<version>/<cluster_name>/config/logging/log4j2-control-panel.json`. Click the Edit
 Mode button on the right to make changes. Generally, these advanced settings should only be
 changed if advised by Radiant Logic.
 
@@ -2220,12 +2220,12 @@ not writable any more.
 - ConnectionStateListener: ZK connection is not writable any more.
 - ZooKeeper session has been lost. [vds_server]
 
-RadiantOne logging is configured from the Main Control Panel -> ZooKeeper tab (requires [Expert Mode](#expert-mode)). Navigate to /radiantone/<version>/<cluster_name>/config/logging/log4j2-vds.json and click EDIT MODE on the right.
+RadiantOne logging is configured from the Main Control Panel -> ZooKeeper tab (requires [Expert Mode](#expert-mode)). Navigate to `/radiantone/<version>/<cluster_name>/config/logging/log4j2-vds.json` and click EDIT MODE on the right.
 
 ### Periodic Persistent Cache Refresh Threshold Failures
 
 To monitor periodic persistent cache refresh failures due to thresholds being reached, monitor
-the <RLI_HOME>\vds_server\logs\periodiccache.log for keywords: “Threshold reached”
+the `<RLI_HOME>\vds_server\logs\periodiccache.log` for keywords: “Threshold reached”
 
 For example, assume a 50% Add Threshold has been configured and during the next refresh
 cycle, there are 85% more entries in the backend than there are in the persistent cache image.
