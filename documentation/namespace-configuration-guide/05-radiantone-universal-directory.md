@@ -563,7 +563,7 @@ Adding and removing attributes from the Replication Excluded Attributes list tak
 
 2.	Navigate to the ZooKeeper tab (requires [Expert Mode](01-introduction#expert-mode)).
 
-3.	Navigate to /radiantone/<zk_version>/<clustername>/config/namings/<namingcontext_being_replicated>.
+3.	Navigate to `/radiantone/<zk_version>/<clustername>/config/namings/<namingcontext_being_replicated>`.
 4.	Click **Edit Mode**.
 
 5.	Set the replicationInSuspendMode property to true (as shown below).
@@ -590,7 +590,7 @@ Figure 5.17: Location of Configuration to Suspend Inter-cluster Replication
 
 14.	Navigate to the Main Control Panel -> ZooKeeper tab.
 
-15.	Navigate to /radiantone/<zk_version>/<clustername>/config/namings/<namingcontext_being_replicated>.
+15.	Navigate to `/radiantone/<zk_version>/<clustername>/config/namings/<namingcontext_being_replicated>`.
 
 16.	Click **Edit Mode**.
 
@@ -606,7 +606,7 @@ With subtree replication, you can indicate which containers/sub-branches should 
 
 Figure 5.18: Export to LDIF for a Specific Sub-branch (e.g. ou=Accounting)
 
-The replication sub-trees must be defined in a comma-separated list in the “replicationSubtreeDomains” property located in ZooKeeper at: /radiantone/<version>/<cluster_name>/config/namings/<root_naming_context>
+The replication sub-trees must be defined in a comma-separated list in the “replicationSubtreeDomains” property located in ZooKeeper at: `/radiantone/<version>/<cluster_name>/config/namings/<root_naming_context>`
 
 An example of configuring two sub-trees for replication would be:
 
