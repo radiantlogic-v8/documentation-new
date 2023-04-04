@@ -15,7 +15,7 @@ This command displays help information about a given command name and its usage.
 <br> `help <commandname>`
 
 Command Arguments:
-<commandname>
+`<commandname>`
 The name of the command. If no command is specified, all commands and their functions are
 displayed.
 
