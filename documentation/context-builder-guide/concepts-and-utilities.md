@@ -383,7 +383,7 @@ Please see the diagram below for more details on the join behavior.
  
 ##### Join Behavior Diagram 
 
-![joins](Media/Image2.12a.jpg)
+![joins](Media/Image2.12A.jpg)
  
 Disabling Joins 
 
