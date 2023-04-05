@@ -7,7 +7,7 @@ description: Global Identity Viewer
 
 After the configuration outlined in Chapter 2 is completed, the Global Identity Viewer can be used. Any user that is a member of RadiantOne Directory Administrator, Global ID Viewer Design, Global ID Viewer Write or Read Only roles can log into the Global Identity Viewer Console and access the Global Identity Viewer. For details on the RadiantOne delegated admin roles, see the RadiantOne System Administration Guide.
 
-<!-->
+<!--
 
 ## Logging in with Two-factor Authentication
 
@@ -21,7 +21,7 @@ The Global Identity Viewer, as a client to the RadiantOne service, supports two-
 
 ![An image showing ](Media/Image3.1.jpg)
 
-Figure 3. 1 : Custom Authentication Provider Example
+Figure 3.1: Custom Authentication Provider Example
 
 -->
 
@@ -30,7 +30,7 @@ Figure 3. 1 : Custom Authentication Provider Example
 
 ![An image showing ](Media/Image3.2.jpg)
 
-Figure 3. 2 : Token ID Defined for an Administrator Example
+Figure 3.2 : Token ID Defined for an Administrator Example
 
 To access the Global Identity Viewer, navigate in a web browser as follows.
 
@@ -47,13 +47,13 @@ By default, the first 100 entries from the global profile are returned. Click on
 
 ![An image showing ](Media/Image3.4.jpg)
 
-Figure 3. 4 : Example Global Profile Identity
+Figure 3.3 : Example Global Profile Identity
 
 Select a tab to view the identity’s attributes and group membership contained in that particular source. In the example below, the user Brian Carmen’s account in the Active Directory Partner Domain (identified as identity source adpartnerdomain) is displayed. Specific attributes are displayed based on the template associated with the data source. This particular template returns the names of the groups Brian is a member of as the Roles attribute (e.g. Support and Managers).
 
 ![An image showing ](Media/Image3.5.jpg)
 
-Figure 3. 5 : Example of Viewing an Account in a Specific Identity Source
+Figure 3.4 : Example of Viewing an Account in a Specific Identity Source
 
 ## Templates
 
@@ -243,8 +243,7 @@ Figure 3. 10 : Label Settings
 
 Removing Labels
 
-To remove a label, click the Delete button next to the label component on the template and then click Yes to confirm the deletion. Or, to hide the label in the template view while keeping the component in place within the template, click on the label component and click the red X to the right of the
-Attribute Value field.
+To remove a label, click the Delete button next to the label component on the template and then click Yes to confirm the deletion. Or, to hide the label in the template view while keeping the component in place within the template, click on the label component and click the red X to the right of the Attribute Value field.
 
 #### Images
 
@@ -262,7 +261,7 @@ To edit the image settings:
 
 ![An image showing ](Media/Image3.11.jpg)
 
-Figure 3. 11 : Image Settings
+Figure 3.11 : Image Settings
 
 4. (Optional) To specify custom dimensions for the image, uncheck the Use Default Size box
     and enter the image dimensions (in pixels) in the Height and Width fields. If “Use Default
@@ -277,7 +276,7 @@ Figure 3. 12 : Specifying Custom Image Dimensions
 5. Click Save Options.
 6. Click Save.
 
-#####Removing Images
+##### Removing Images
 
 To remove an image, click the **Delete** next to the image component on the template and then click Yes to confirm the deletion. Or, to hide the image in the template view while keeping the component in place within the template, click on the image component click the red X to the right of the Attribute Value field.
 
@@ -299,12 +298,12 @@ To edit the map settings:
 
 ![An image showing ](Media/Image3.13.jpg)
 
-Figure 3. 13 : Map Settings
+Figure 3.13 : Map Settings
 
 3. Click Save Options.
 4. Click Save.
 
-Removing Maps
+##### Removing Maps
 
 To remove a table, click **Delete** next to the map component on the template and then click Yes to confirm the deletion. Or, to hide the map in the template view while keeping its component in place within the template, click on the map component and click the red X to the right of the Attribute Value field.
 
@@ -562,7 +561,7 @@ Figure 3.29: Search Settings
 
 Figure 3.30: Example of Exported Entries
 
-<!-->
+<!--
 
 #### Command Line Utility
 
