@@ -38,7 +38,7 @@ Figure 2. 1 : Full Text Search Option
 9. Click Browse.
 10. All underlying identity views are located below     dv=sourcecatalog,ou=directoryaggregation,dv=globalprofiles. An example with four identity sources is shown below.
 
-![An image showing ](Media/note1.jpg)
+![An image showing ](Media/Note1.jpg)
 
 Select one of the virtual views representing an identity source (e.g. based on the samples shown above is dv=ids_adpartnerdomain_directoryaggregation).
 
