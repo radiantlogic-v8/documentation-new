@@ -13,7 +13,7 @@ jobs:
       - name: Dispatch initiating repository event
        
         run: |
-          curl -X POST ${{ secrets.TARGET_REPO }} \
+          curl -X POST $TARGET_REPO \
           -H 'Accept: application/vnd.github.everest-preview+json' \
           -u ${{ secrets.USER_NAME }}:${{ secrets.ACCESS_TOKEN }} \
           --data '{"event_type": "initiate_deploy", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'" }}'
