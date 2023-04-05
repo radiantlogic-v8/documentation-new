@@ -33,7 +33,6 @@ description: Environment operations center guide
 - [Secure data connectors](#)
   - [Secure data connectors overview](secure-data-connectors/data-connectors-overview.md)
   - [Add a data connector](secure-data-connectors/add-data-connector.md)
-  - [Configure the secure data connector client](secure-data-connectors/sdc-client.md)
   - [Manage data connectors](secure-data-connectors/manage-data-connectors.md)
 - [Admin](#)
   - [Admin overview](admin/admin-overview.md)
