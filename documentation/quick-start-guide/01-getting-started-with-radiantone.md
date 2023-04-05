@@ -36,7 +36,7 @@ Figure 1: Main Control Panel Login
 
 ### Starting RadiantOne LDAP and HTTP Services
 
-You can start the RadiantOne LDAP and HTTP services from the Main Control Panel. The Dashboard tab shows the server status. From the ![An image showing ](Media/server-start.jpg) drop-down menu, select to start the service. You can stop or restart the service on this screen unless you have installed RadiantOne as a service in which case you must start the service using the methods available on the host operating system. The Dashboard tab displays server statistics when the RadiantOne LDAP service is running.
+You can start the RadiantOne LDAP and HTTP services from the Main Control Panel. The Dashboard tab shows the server status. From the ![An image showing ](Media/Server-start.jpg) drop-down menu, select to start the service. You can stop or restart the service on this screen unless you have installed RadiantOne as a service in which case you must start the service using the methods available on the host operating system. The Dashboard tab displays server statistics when the RadiantOne LDAP service is running.
 
 >[!warning] For test environments and when initially setting up a cluster, it is best to have control over how and when the RadiantOne service starts. Therefore, it is recommended to not configure it as a Windows/Daemon service until you have your environment successfully configured. After, you can configure it to start/stop as a Windows service or Linux Daemon.
 
