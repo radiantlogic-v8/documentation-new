@@ -83,7 +83,7 @@ Auto-Generated Groups
 
 2.	Select the starting point in the RadiantOne namespace (search base dn) to locate the entries that contain the attribute you want to base group names on. Click CHOOSE to navigate the RadiantOne namespace and select a location.
 
-3.	Select the object class the entries are associated with from the Objectclass drop-down list. If your backend data source object is not mapped to an LDAP object class that is a part of the RadiantOne LDAP schema, it does not appear in the drop-down list. Therefore, you can click the ![An image showing ](Media/edit-button.jpg) button and enter the name of your object class.
+3.	Select the object class the entries are associated with from the Objectclass drop-down list. If your backend data source object is not mapped to an LDAP object class that is a part of the RadiantOne LDAP schema, it does not appear in the drop-down list. Therefore, you can click the ![An image showing ](Media/Edit-button.jpg) button and enter the name of your object class.
 
 4.	To further condition the entries that the group names are derived from, you can enter any valid LDAP filter in the Additional Filter parameter. Keep in mind that the filter you enter here may not only affect the possible group names but also affects the group members (this filter is also a part of the condition to determine the group members for these dynamic group names).
 
