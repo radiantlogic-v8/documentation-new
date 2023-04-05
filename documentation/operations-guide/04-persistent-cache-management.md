@@ -116,7 +116,7 @@ tagged with a status attribute of 2.
 
 An example of a failed cache refresh log entry can be seen in the figure below.
 
-![An image showing ](Media/FailedCacherefresh.jpg)
+![An image showing ](Media/FailedCacheRefresh.jpg)
 
 The fix-cacherefresh command in the vdsconfig utility (<RLI_HOME>/bin/vdsconfig) can be used to issue persistent cache refreshes for the failed entries. The command searches the cn=cacherefreshlog with a filter of (&(changenumber>=x)(status=y)) where the default changenumber is 0 and the default status=2 (to refresh only failed entries). You can change these default values when running the command if needed. The command then invokes an “action=synchronizecache” operation for each entry returned from the search which results in those entries being refreshed in the persistent cache.
 
