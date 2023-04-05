@@ -10,7 +10,6 @@ description: Environment operations center guide
   - [Environment overview](#)
     - [Environments overview](environments/environment-overview/environments-overview.md)
     - [Create an environment](environments/environment-overview/create-an-environment.md)
-    - [Import a configuration file](environments/environment-overview/import-configuration-file.md)
     - [Update an environment](environments/environment-overview/update-an-environment.md)
     - [Delete an environment](environments/environment-overview/delete-an-environment.md)
   - [Environment details](#)
