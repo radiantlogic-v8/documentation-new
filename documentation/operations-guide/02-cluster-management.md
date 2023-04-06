@@ -71,11 +71,11 @@ Linux):
 2. On any RadiantOne node, run:
     <br><RLI_HOME>/bin/advanced/cluster.sh rename-cluster-zk <vds_instance_name>
     <old_cluster_name> <new_cluster_name>
-    This moves the Zookeeper data from /radiantone/<version>/<old_cluster_name> to
-    /radiantone/<version>/<new_cluster_name>
+    This moves the Zookeeper data from `/radiantone/<version>/<old_cluster_name>` to
+    `/radiantone/<version>/<new_cluster_name>`
 3. On each RadiantOne node, run:
-    <br><RLI_HOME>/bin/advanced/cluster.sh rename-cluster-local <vds_instance_name>
-    <new_cluster_name>
+    <br>`<RLI_HOME>/bin/advanced/cluster.sh rename-cluster-local <vds_instance_name>
+    <new_cluster_name>`
 4. Start the Radiantone services on all nodes.
 
 ### Updating ZooKeeper Admin Credentials
@@ -99,8 +99,8 @@ RadiantOne nodes unless otherwise mentioned.
 1. On any RadiantOne node, run <RLI_HOME>/bin/advanced/cluster.bat list (use cluster.sh on Linux) from command line. Ensure the cluster is in a healthy state with all RadiantOne and ZooKeeper services up and running.
 2. Run <RLI_HOME>/bin/advanced/stop_servers.bat (use stop_servers.sh on Linux) on all RadiantOne cluster nodes. This ensures all RadiantOne services are stopped.
 3. If you are using an internal/local ZooKeeper, run <RLI_HOME>/bin/runZookeeper.bat (use runZookeeper.sh on Linux) on all RadiantOne cluster nodes. ZooKeeper on all nodes must be running. If you are using an external ZooKeeper ensemble, all servers should be running already, so you can skip this step.
-4. On any RadiantOne node in the cluster, run <RLI_HOME>/bin/advanced/cluster.bat change-zk-server-credentials <instance_name> <new_adminuser> <new_password> where <instance_name> is vds_server, <new_adminuser> is the new ZooKeeper admin user. To keep the same admin user, enter the value of the current admin user and <new_password> is the new password for the ZooKeeper admin user. An example is shown below:
-<br><RLI_HOME>/bin/advanced/cluster.bat change-zk-server-credentials vds_server admin newpassword
+4. On any RadiantOne node in the cluster, run `<RLI_HOME>/bin/advanced/cluster.bat change-zk-server-credentials <instance_name> <new_adminuser> <new_password>` where `<instance_name>` is vds_server, `<new_adminuser>` is the new ZooKeeper admin user. To keep the same admin user, enter the value of the current admin user and `<new_password>` is the new password for the ZooKeeper admin user. An example is shown below:
+<br>`<RLI_HOME>/bin/advanced/cluster.bat change-zk-server-credentials vds_server admin newpassword`
 
 5. A warning appears, enter Y to continue.
 
@@ -117,7 +117,7 @@ WARN ClusterCommands:489 - Continue (y/n)?
 
 >[!note]
 >If you want to bypass the warning, use the true flag as follows:
-<br><RLI_HOME>/bin/advanced/cluster.bat change-zk-server-credentials <instance_name> <new_adminuser> <new_password> true
+<br>`<RLI_HOME>/bin/advanced/cluster.bat change-zk-server-credentials <instance_name> <new_adminuser> <new_password> true`
 
 6. After the command executes, the following warning is displayed.
 
@@ -392,7 +392,7 @@ files (e.g. underlying data sources, .dvx files...etc.)
 - Monitoring configuration
 - RadiantOne Universal Directory (HDAP) stores (not persistent cache)
 - Custom project (restored only if the target RadiantOne version is the same as the version of the export). A backup copy of the custom folder is made in
-<RLI_HOME>/<instance_name>/custom.yyyyMMdd-HHmmss/
+`<RLI_HOME>/<instance_name>/custom.yyyyMMdd-HHmmss/`
 
 When the RadiantOne configuration is [exported](#backing-up-configuration), a migration plan is generated. This migration plan contains the list of configuration (to be restored) and is named migration_plan.json. If you want to modify the migration plan prior to importing, use the following command to extract the migration plan from the zip file. In the example shown below, C:/import is the location where the backupMay.zip file has been copied to.
 
@@ -438,10 +438,10 @@ restore-hdapstore -namingcontext <namingcontext> [-backupdir <backupdir>] [-back
 - backupdir `<backupdir>`
 <br> The full path to the directory containing the backup files. Do not specify this option if you use the - backupid option.
 
-- backupid <backupid>
+- backupid `<backupid>`
 <br>The ID of an existing backup image. If this is not specified, the restore attempts to use the latest backup image found. Use the -list argument to obtain a list of possible backup ids for the given naming context.
 
-- instance <instance>
+- instance `<instance>`
 <br>The name of the RadiantOne instance. If this is not specified, the default instance named
 vds_server is used.
 
@@ -536,7 +536,7 @@ Command Arguments
 - backupid `<backupid>`
 <br>The ID of an existing backup image. If this is not specified, the restore attempts to use the latest backup image found. Use the -list argument to obtain a list of possible backup ids for the given naming context.
 
-- instance <instance>
+- instance `<instance>`
 <br>The name of the RadiantOne instance. If this is not specified, the default instance named vds_server is used.
 
 - list

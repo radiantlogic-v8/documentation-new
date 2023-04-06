@@ -23,7 +23,7 @@ The tool used for traversing, exporting and importing configuration is named vds
 It is recommended that configuration migration is performed during non-peak/off hours.
 
 1. On a node in the primary cluster, open a command prompt and navigate to <RLI_HOME>\bin.
-2. Run vdsconfig passing the resource-traverse -name <name of resource> -instance vds_server. The result is a hierarchy depicting the dependencies associated with the resource. Therefore, if you were to migrate the resource to another environment, all the needed dependencies must be considered as well. For example, if a new naming context named dc=ad needed to be migrated to an existing production environment the following command would traverse the resource and display the dependencies:
+2. Run vdsconfig passing the `resource-traverse -name <name of resource> -instance vds_server`. The result is a hierarchy depicting the dependencies associated with the resource. Therefore, if you were to migrate the resource to another environment, all the needed dependencies must be considered as well. For example, if a new naming context named dc=ad needed to be migrated to an existing production environment the following command would traverse the resource and display the dependencies:
 <br><RLI_HOME>/bin/vdsconfig.bat resource-traverse -name dc=ad -instance vds_server
 
 ```
@@ -135,12 +135,11 @@ If RadiantOne is deployed in a cluster architecture, the copied jar files are au
 ## Detecting Differences Across Replicated RadiantOne Universal Directory (HDAP) Stores
 
 The resync utility allows you to analyze and reconcile RadiantOne Universal Directory (HDAP) stores in two different clusters. This can be useful when, for example, a network outage has prevented the clusters from communicating changes between them, resulting in a period of time in which they become out of sync. The utility compares the current image of a store in two different clusters. This analysis results in two LDIF-formatted files containing the changes applicable to each store required to bring the two stores in-sync. The source names are part of the LDIF file names so you know which file is applicable to which cluster. Two other LDIF-formatted files are also generated for sorting the entries. If no changes are required, the LDIF file dedicated for that data source is empty. The LDIF files containing the changes are located at <RLI_HOME>\vds_server\ldif\export and have the following syntax:
-<HDAP_Store_Suffix>_`<data source name>`.ldif
+`<HDAP_Store_Suffix>_<data source name>.ldif`
 
 The basis for determining what is out-of-sync is determined in one of two ways:
 
-- The first data source passed to the utility in the -d property is the one considered as the base, up-to-date image with which the image from the second data source is
-compared against.
+- The first data source passed to the utility in the -d property is the one considered as the base, up-to-date image with which the image from the second data source is compared against.
 - The timestamp passed in the -x property determines which new or deleted entries should apply to each store.
 
 Both stores must be accessible and defined in the base DN of the LDAP data sources when the command is executed. You need one LDAP data source per cluster. Resync-util.bat (resync-
@@ -161,31 +160,27 @@ c:\radiantone\vds\bin\advanced>resync-util.bat resync -d localvds,localvds2 -b o
 
 ### Command Arguments
 
-**- d <datasource1,datasource2>**
+`- d <datasource1,datasource2>`
 <br> [required] This parameter specifies the names of the data sources. The data sources must exist
-in RadiantOne prior to using the utility and you need one LDAP data source per cluster. Data sources are passed in the command as comma-separated values (e.g. cluster1,cluster2). If the - x argument is not specified, the first data source indicated in the -d argument is considered the
-definitive source for discrepant entries.
-**- b <base_dn>**
+in RadiantOne prior to using the utility and you need one LDAP data source per cluster. Data sources are passed in the command as comma-separated values (e.g. cluster1,cluster2). If the - x argument is not specified, the first data source indicated in the -d argument is considered the definitive source for discrepant entries.
+
+`- b <base_dn>`
 <br>[required] The base DN of the stores to be examined.
 
-**- x `<disconnectionTimestamp>`**
+`- x <disconnectionTimestamp>`
 <br>[optional] This value is the date and time used to determine which entries should be added and deleted in each store to bring the images in-sync. This timestamp would generally be the time the network connectivity between the clusters and the replication journal failed. If this value is specified, new entries and entry deletions that occur after the specified disconnectionTimestamp are noted in the LDIF files associated with the data source where the changes should be applied. If this value is not specified, the first data source indicated in the -d argument is considered the definitive source for discrepant entry additions and deletions. In addition, if the disconnectionTimestamp is equivalent to the time an entry was created or deleted, the first data source indicated in the -d argument is considered the definitive source.
 
 >[!note]
 >The disconnectionTimestamp format is yyyyMMddHHmmss.SSS or yyyyMMddHHmmss.SSSZ.
 
-**[-i `<ignoreAttributes>`]**
+`[-i <ignoreAttributes>]`
 <br>[optional] This argument specifies the attribute(s) to be ignored by the utility when comparing stores. If not specified, the utility examines all attributes in the specified stores. Attributes are comma-separated (e.g. cn,description,mail).
 
-**[-c <true/false>]**
+`[-c <true/false>]`
 <br>[optional] The default behavior is to save the LDIF files that sort and describe the entries that are discrepant between the two stores. If you do not want the LDIF files stored on the file system, pass -c false. If generated, these LDIF files are stored at <RLI_HOME>vds_server\ldif\export.
 
-**[-a <true/false>]**
-<br> [optional] To perform an analysis of the stores without applying changes, pass the -a false
-argument, or omit this argument from the command. After analysis, you can copy the relevant
-LDIF file to the corresponding cluster and manually import it to update the store. If you prefer to
-automatically apply the changes required to bring the stores back in sync, pass the - a true
-argument and the re-sync occurs.
+`[-a <true/false>]`
+<br> [optional] To perform an analysis of the stores without applying changes, pass the -a false argument, or omit this argument from the command. After analysis, you can copy the relevant LDIF file to the corresponding cluster and manually import it to update the store. If you prefer to automatically apply the changes required to bring the stores back in sync, pass the - a true argument and the re-sync occurs.
 
-**[-m <ignoreCase>]**
+`[-m <ignoreCase>]`
 <br> [optional] To ignore case when detecting changes, pass the - i true argument, or omit this argument from the command. To detect case differences, pass the -i false argument.
