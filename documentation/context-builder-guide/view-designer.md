@@ -145,7 +145,7 @@ A merge link (noted with the blue arrow) is used to aggregate the virtual views.
 Figure 11: Example Linking Two Existing Views
 
 In the linked view shown above, the sub-branch (view named EmpByDeptView) can be conditioned by setting a linking attribute. In this example, all projects are associated with a department (there is a one-to-one relationship based on the project ID), so the project ID can be established as the linking attribute. By adding a condition to the link based on the project ID attribute, the subtree shown at runtime is dependent upon the project (the parent node). The link parameter syntax is: 
-<childobject.attribute>=@[<parentobject_attribute>:<datatype>] 
+`<childobject.attribute>=@[<parentobject_attribute>:<datatype>]`
 
 An example value is: 
 APP.EMP.PROJECTID=(@[projectid:INTEGER])
@@ -215,7 +215,7 @@ An example value is:
 APP.IDENTITY.IDLINK IN (@[entitlements:VARCHAR(255)] 
 
 >[!warning] 
->For child nodes from database backends, make sure in the link parameter value there is a <space> between the “IN” and the following open parenthesis. Also, performance can be negatively impacted because the “IN” operator does not benefit from prepared statements.
+>For child nodes from database backends, make sure in the link parameter value there is a `<space>` between the “IN” and the following open parenthesis. Also, performance can be negatively impacted because the “IN” operator does not benefit from prepared statements.
  
 An example depicting the model of the virtual view and the runtime view leveraging the link parameter between the two virtual views described in this section is shown below. 
 
