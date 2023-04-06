@@ -259,14 +259,14 @@ The steps to apply a patch are outlined below.
 
 <img src="./img/editstatefulset.jpg" alt="Edit Stateful Set YAML" style="height: 300px; width:1000px;"/>
  
-Once the image is modified, the rolling update starts. This can take quite a bit of time to perform. Stateful sets are updated in order from the highest number to the lowest number. For three RadiantOne nodes, the fid-2 node is updated first, followed by the fid-1 node and finally the fid-0 node. The pod gets stopped and the latest image (indicated in the yaml file) is compared to the current version of RadiantOne on the node. If the current version is less than the version specified in the yaml, then the RadiantOne update process is executed on the node. This process is logged in the RadiantOne logs on the node. You can acces the logs from the Kubernetes web dashboard -> Workloads -> Pods -> <RadiantOne pod> by clicking LOGS.
+Once the image is modified, the rolling update starts. This can take quite a bit of time to perform. Stateful sets are updated in order from the highest number to the lowest number. For three RadiantOne nodes, the fid-2 node is updated first, followed by the fid-1 node and finally the fid-0 node. The pod gets stopped and the latest image (indicated in the yaml file) is compared to the current version of RadiantOne on the node. If the current version is less than the version specified in the yaml, then the RadiantOne update process is executed on the node. This process is logged in the RadiantOne logs on the node. You can acces the logs from the Kubernetes web dashboard > Workloads > Pods > `<RadiantOne pod>` by clicking LOGS.
 
 <img src="./img/logs.jpg" alt="Logs" style="height: 75px; width:1000px;"/>
 
 An example of the log is shown below.
 <img src="./img/logcontents.jpg" alt="Log Contents" style="height: 300px; width:1000px;"/>
  
-<mark>Note – A backup of the existing install is made to vds-<version>.tar prior to updating.</mark>
+<mark>Note – A backup of the existing install is made to `vds-<version>.tar` prior to updating.</mark>
 
 ### Deleting Deployments
 To remove a deployment, delete the stateful sets, services, config maps, persistent volumes, and persistent volume claims.
