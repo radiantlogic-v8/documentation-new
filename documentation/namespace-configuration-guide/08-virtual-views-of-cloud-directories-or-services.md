@@ -260,7 +260,7 @@ Figure 8.15: Salesforce Custom Data Source
 5.	If you are connecting to a production instance of Salesforce, the URL value should be: jdbc:salesforce:
 If you are connecting to a sanbox/dev instance of Salesforce, the URL value should be: 
 
-jdbc:salesforce:<sandboxURL>
+`jdbc:salesforce:<sandboxURL>`
 
 e.g. jdbc:salesforce:https://test.salesforce.com/services/Soap/u/30.0
 
@@ -268,7 +268,7 @@ e.g. jdbc:salesforce:https://test.salesforce.com/services/Soap/u/30.0
 
 7.	To view the schema associated with the radiantsalesforce data source, go to the Context Builder tab, Schema Manager sub-tab and open the schema named salesforce. The objects that can be virtualized from Salesforce are described in this file.
 
-8.	To create a new virtual view, use the Context Builder tab -> View Designer sub-tab. For details on using View Designer, see the RadiantOne Context Builder Guide.
+8.	To create a new virtual view, use the Context Builder tab > View Designer sub-tab. For details on using View Designer, see the RadiantOne Context Builder Guide.
 
 #### Getting a Security Token from Salesforce
 
@@ -742,7 +742,7 @@ Figure 8.35: Google Service Account
 7.	Verify that the service account appears in API Project -> Permissions.
 
 >[!warning] 
->Take note of the client ID (<numbers-numbers&letters>.apps.googleusercontent.com) and the email address (``<same>@developer.gserviceaccount.com) attached to the service account created, as you will need them later. Also notice that your browser just downloaded the P12 certificate that is needed to authenticate the Service account.
+>Take note of the client ID (<numbers-numbers&letters>.apps.googleusercontent.com) and the email address (`<same>@developer.gserviceaccount.com`) attached to the service account created, as you will need them later. Also notice that your browser just downloaded the P12 certificate that is needed to authenticate the Service account.
 
 8.	Go to the Admin console and log in as an administrator for your domain. 
 
@@ -1023,7 +1023,7 @@ Figure 8.49: SailPoint OAuth Client Configuration
 11.	Click **Add**.
 
 12.	Enter oauthurl for the Name property and enter the SailPoint Token Endpoint for the value. The syntax is:
-http://<SailPointServer>:<port>/identityiq/oauth2/token 
+`http://<SailPointServer>:<port>/identityiq/oauth2/token`
 
 13.	Click **OK**.
 

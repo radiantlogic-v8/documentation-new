@@ -441,7 +441,7 @@ Adding and removing attributes from the Replication Excluded Attributes list tak
 
 2.	Navigate to the ZooKeeper tab (requires [Expert Mode](01-introduction#expert-mode)).
 
-3.	Navigate to /radiantone/<zk_version>/<clustername>/config/namings/<namingcontext_being_replicated>.
+3.	Navigate to `/radiantone/<zk_version>/<clustername>/config/namings/<namingcontext_being_replicated>`.
 4.	Click **Edit Mode**.
 
 5.	Set the replicationInSuspendMode property to true (as shown below).
@@ -468,7 +468,7 @@ Figure 5.17: Location of Configuration to Suspend Inter-cluster Replication
 
 14.	Navigate to the Main Control Panel -> ZooKeeper tab.
 
-15.	Navigate to /radiantone/<zk_version>/<clustername>/config/namings/<namingcontext_being_replicated>.
+15.	Navigate to `/radiantone/<zk_version>/<clustername>/config/namings/<namingcontext_being_replicated>`.
 
 16.	Click **Edit Mode**.
 
