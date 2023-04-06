@@ -7,31 +7,6 @@ description: Global Identity Viewer
 
 After the configuration outlined in Chapter 2 is completed, the Global Identity Viewer can be used. Any user that is a member of RadiantOne Directory Administrator, Global ID Viewer Design, Global ID Viewer Write or Read Only roles can log into the Global Identity Viewer Console and access the Global Identity Viewer. For details on the RadiantOne delegated admin roles, see the RadiantOne System Administration Guide.
 
-<!--
-
-## Logging in with Two-factor Authentication
-
-The Global Identity Viewer, as a client to the RadiantOne service, supports two-factor authentication for logging in. This is supported through the Custom Authentication Provider framework and supports RSA SecurID and Yubikey token codes by default. High-level configuration steps to support two-factor authentication are outlined below. For details on Custom Authentication Providers, see the RadiantOne Custom Authentication Providers Guide.
-
->[!warning] 
->Two-factor authentication is not required for the RadiantOne super user account (e.g. cn=directory manager).
-
-1. Create a custom data source that defines the connection the web service for token code validation.
-2. Configure a Custom Authentication Provider (Settings > Interception > Custom Authentication Provider) that indicates the base DN where accounts that will be logging into the Global Identity Viewer are located (e.g. cn=config), reference to the custom data source created in step 1, and other necessary parsing criteria.
-
-![An image showing ](Media/Image3.1.jpg)
-
-Figure 3.1: Custom Authentication Provider Example
-
--->
-
-3. Ensure the users of the Global Identity View have an attribute that contains their unique token ID. In the example shown above, the token ID is set in the carLicense attribute.
-4. Restart the RadiantOne service and Jetty that hosts the Global Identity Viewer application. If a cluster is deployed, restart them on all nodes.
-
-![An image showing ](Media/Image3.2.jpg)
-
-Figure 3.2 : Token ID Defined for an Administrator Example
-
 To access the Global Identity Viewer, navigate in a web browser as follows.
 
 `<ENDPOINT FOR ACCESSING GLOBAL IDENTITY VIEWER>`
@@ -560,69 +535,6 @@ Figure 3.29: Search Settings
 ![An image showing ](Media/Image3.30.jpg)
 
 Figure 3.30: Example of Exported Entries
-
-<!--
-
-#### Command Line Utility
-
-Global Identity Viewer search results can be exported to a JSON formatted file using the global_id_viewer.bat (.sh on UNIX platforms) command line utility located at <RLI_HOME>/bin/advanced.
-
-#### Usage
-
-`global_id_viewer.bat [-g <project name>] [-q <query name>] [-p <parameter>] [-f <file name>]`
-
-## Command Arguments
-
-- g `<project name>`
-
-    [required] The name of the global identity project.
-
-- q `<query name>`
-
-    [required] The name of the query to be executed.
-
-- p `<parameter>`
-
-    The parameter name and value. The parameter name and its value are separated in this argument by a colon. If multiple parameters are used, separate them with a space.
-
-```
-<parametername>:<parametervalue>
-
-<parametername>:<parametervalue><space><parametername>:<parametervalue>
-```
-
-If your advanced query has a “parameter display name” defined, use this for the <parametername> instead of the attribute name.
-
-```
-“Enter City”:”San Francisco” “Enter Title”:Sales
-```
-
->[!note] 
->This argument is for advanced queries where the Parameter option is enabled. Refer to the Advanced Queries section for more information.
-
-- f `<file name>`
-
-    [required] The output file name. The format of the output data is JSON.
-
->[!note] 
->In addition to the file name, the file’s location can also be specified. If the location is not specified, the output file is saved in <RLI_HOME>\bin\advanced.
-
-## Example
-
-In the following example, a search is made for users located in Laredo and the results are saved
-into test.json.
-
-```
-global_id_viewer.bat -g myprofile -q Usersbylocation -p l:laredo -f c:/radiantone/test.json
-```
-
->[!note] 
->If your query name contains spaces, surround the -q value with double-quotes. If your query has more than one parameterized attribute/expression, separate each param with a `<space>` in the -p property. If any parameter value contains `<spaces>`, surround the value with double-quotes. An example is shown below.
-
-```
-global_id_viewer.bat -g globalprofile -q "Managers per location" - p title:”sales manager" l:London -f c:/radiantone/salesInLondon.json
-```
---> 
 
 ## Configure Reports
 
