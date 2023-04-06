@@ -82,7 +82,7 @@ By default, the Search Results in vds_server_access.log do not contain bind DN i
 
 1.	In the Main Control Panel, go to the Zookeeper tab. 
 
-2.	In the pane on the left, expand /radiantone/v2/<cluster name>/config/ and select the vds_server.conf node. 
+2.	In the pane on the left, expand `/radiantone/v2/<cluster name>/config/` and select the vds_server.conf node. 
 
 3.	Click **Edit Mode**. 
 
@@ -166,7 +166,7 @@ SCOPE	| This is the scope received in the request.
 FILTER	| This is the filter received in the request.
 SIZELIMIT	| This is the sizelimit received in the request.
 TIMELIMIT	| This is the timelimit received in the request.
-LDAPCONTROLS	| These are the LDAP controls received in the request. This column also indicates if a secure socket is used. If the request came in on the non SSL/TLS port, this column has [Plain]. If the request came in on the SSL/TLS port, this column has [SSL/TLS] followed by the LDAP control requested (if any). A summary is shown below.<br> [Plain]  - plain socket, not secure <br> [SSL/TLS]  -  secure socket, protocol unknown <br> [SSL/TLS-<protocol>] - secure socket with protocol used (e.g. [SSL/TLS-TLSV1.2])
+LDAPCONTROLS	| These are the LDAP controls received in the request. This column also indicates if a secure socket is used. If the request came in on the non SSL/TLS port, this column has `[Plain]`. If the request came in on the SSL/TLS port, this column has `[SSL/TLS]` followed by the LDAP control requested (if any). A summary is shown below.<br> `[Plain]`  - plain socket, not secure <br> `[SSL/TLS]`  -  secure socket, protocol unknown <br> `[SSL/TLS-<protocol>]` - secure socket with protocol used (e.g. `[SSL/TLS-TLSV1.2])`
 CHANGES	| These are the changes for add/delete/modify requests.
 RESULTCODE | This is the ldap operation result code returned by RadiantOne.
 ERRORMESSAGE	| This is the error message returned by RadiantOne.
@@ -212,185 +212,6 @@ Queries to certain internal naming contexts can happen frequently resulting in a
 
 -	cn=clustermonitor – various statistics and availability of cluster nodes are retrieved by querying cn=clustermonitor.
 	cn=replicationjournal – inter-cluster replication queries the cn=replicationjournal.
-
-<!--
-### Ignore Logging Related to Monitoring
-
-Certain queries used to monitor RadiantOne can happen frequently, resulting in a lot of “noise” in the access log. Logging of monitoring requests is disabled by default. To enable logging of monitoring requests, navigate to <RLI_HOME>/config/advanced and edit features.properties. Set vds.data.collection.logging=true. Restart the RadiantOne service. If RadiantOne is deployed in a cluster, restart the service on all nodes.
-
->[!note] 
->If vds.data.collection.logging is set to true, ZooKeeper exceptions returned by data collectors used for monitoring are logged into <RLI_HOME>/vds/vds_server/logs/vds_server.log. Also, requests for data collectors on the admin HTTP port are logged into <RLI_HOME>/vds/vds_server/logs/scheduler/server.log.
-
-### Logging to a Database
-
-RadiantOne logs all access to data in the vds_server_access.log (if the server [log level](#log-level) is set to a minimum of Info) by default. <!--All this information can also be logged into a database which allows for third-party reporting tools to easily create meaningful charts and graphs for compliance analysis. Logging to a database requires the [CSV log format](#log-output-format) option enabled and running the Log2DB utility. Configuring and starting the Log2DB utility are described in the section below.
-
-#### Configuring the Database Logging Utility (Log2DB)
-
-The Log2DB utility reads the contents from vds_server_access.csv (CSV log output must be configured) and writes this into a database.
-
-The database that houses the table which the Log2DB utility writes to may be in any database server you choose. 
-
->[!warning] 
->If you plan on using the RadiantOne default report generation, then the log2db database must be Microsoft SQL Server, Oracle, Derby or PostgreSQL. For details on default reports see the RadiantOne Monitoring and Reporting Guide.
-
-The default settings leverage a Derby database that is included with RadiantOne. These settings are described below and are located on the Main Control Panel > Settings Tab > Reporting section > Log2db Settings sub-section. The default configuration file for logging to a database is: <RLI_HOME>/config/log2db/AccessLog2DBconfig.properties.
-
--	Database Datasource – data source defined in Main Control Panel -> Settings tab -> Server Backend section -> DB Data Sources representing the database that the Log2DB utility writes to.
-
--	Table Name - The table name that stores the log contents.
-
--	Mode – Value of either Truncate or Append. When you start the Log2DB utility, if you are in truncate mode, it empties the contents of the log table before anything new gets added. If you are using append mode, then the new log content is appended at the end of the table (rows are added).
-
--	Table Creation - Enter the appropriate create table syntax for the type of database you want to use.
-
-#### Managing the Log Table
-
-If the table that is going to store the access log content does not exist, use the CREATE TABLE Button to create it. Make sure the create table statement listed in the Table Creation parameter is accurate. You can also execute <RLI_HOME>\bin\advanced\runCreateAccessLogTable.bat (runCreateAccessLogTable.sh on UNIX) to create the log table in the database.
-
-To create the indexes for the log table, click the CREATE INDEX button.
-
-To delete the contents of the log table, click the EMPTY TABLE button.
-
-<!--
-
-#### Starting the Database Logging Utility 
-
-The utility that writes the RadiantOne logs into a database is named Log2DB and can be started from command line or as a service. The database server configured to store the log contents must be running prior to starting the Log2DB utility.
-
->[!warning] 
->If RadiantOne is deployed in a cluster, the data source associated with the database housing the log content is shared by all cluster nodes. However, since search requests can be directed to any cluster node, the Log2DB utility must be running on each cluster node.
-
-**From Command Line**
-
-On Windows platforms, execute <RLI_HOME>/bin/runAccessLog2DB.bat <path to properties file>. On UNIX platforms, execute runAccessLog2DB.sh <path to properties file>.
-
-For example:
-
-```
-runAccessLog2DB.bat 
-C:\radiantone\vds\config\log2db\AccessLog2DBconfig.properties
-```
-
-This starts the database logging utility. The Log2DB utility reads the vds_server_access.csv file and inserts the contents into the database log table. If you want activity that has happened while the Log2DB utility was not running to be written into the log table (for reporting purposes for example) set the “detect new only” property in the AccessLog2DBconfig.properties to false before starting the utility.
-
-**As a Windows Service**
-
-To install the RadiantOne database access logger as a service:
-
-1.	Navigate to <RLI_HOME>/bin/windows.service. 
-
-2.	(optional) To change the name of the service that gets installed, edit db-access-logger-service-install.bat.
-
-3.	Execute the db-access-logger-service-install.bat file. A command window opens briefly and then closes.
-
-4.	Check your Windows Services. You should now have a service named RadiantOne DB Access Logger (or other name as defined in step 2 above). You can now start and stop the database logger as a Windows service. 
-
->[!note] 
->If you would like to uninstall the service, first stop the service and then execute db-access-logger-service-uninstall.bat.
-
-**As a Linux Daemon
-
-To install the Log2DB utility as a Linux daemon: 
-
-1.	Copy the script using the following command:
-
-```
-cp runAccessLog2DB.sh
-```
-
-2.	Modify the script’s file access rights using the following command:
-
-```
-chmod +x /etc/init.d/runAccessLog2DB.sh
-```
-
-3.	Install the script as follows:
-
-```
-/sbin/chkconfig –add runAccessLog2DB.sh
-```
-
---> 
-
-## JVM Garbage Collection and Memory Heap
-
-Logging for the garbage collection and memory for the RadiantOne JVM is enabled by default. If java.lang.OutOfMemoryError appears in the vds_server.log file, logs for the JVM can be viewed and downloaded from the Server Control Panel > Log Viewer. Example files:
-
-```
-gc2018-07-12_12-09-02.log.0.current
-java_pic3577.hprof
-```
-<!-->
-
-## VRS Logs
-
-If the SQL API (VRS) is used to access RadiantOne, there are two logs associated with this. They are vrs_access and vrs_server. 
-
-### VRS Server
-
-VRS Server logging is configured from the Main Control Panel -> Settings tab -> Logs -> Logs Settings section. Select the VDS - VRS Server option from the Log Settings to Configure drop-down menu.
-
-#### Log Location
-
-These log files are located in <RLI_HOME>/<instance_name>/logs/vrs. The default instance name is vds_server, so the path would be: <RLI_HOME>/vds_server/logs/vrs.
-
-#### Log Level
-Select a log level from the drop-down list in the Log Settings section. For details on available log levels, see [Chapter 1](01-overview).
-
-### Rollover Size
-
-By default, the vrs_server.log file rolls over once it reaches 100MB in size. Change this value if needed.
-
-### Log Archiving
-
-By default, 10 files are kept in the archive. Change this value in the How Many Files to Keep in Archive setting. The archived files are named vrs_server-`<number>`.log and located in `<RLI_HOME>/<instance_name>/logs/vrs`. The default instance name is vds_server, so the path would be: <RLI_HOME>/vds_server/logs/vrs.
-
-The condition for deleting an archive is based on the total number of archives (configured in the How Many Files to Keep in Archive setting), or the age of the archive (configured in the vrs.general.log.file.maxTime property in the Advanced section), whichever comes first.
-
-If you want to base archive deletion on the total number of archives, configure the vrs.general.log.file.maxTime property to 1000000d (1 million days), so that it is never triggered and indicate the maximum number of archive files to keep in the How Many Files to Keep in Archive property. If you want to base archive deletion on the age of the archive, configure the How Many Files to Keep in Archive to something like 1000000 (1 million files) so it is never triggered, and define the max age in number of days (e.g. 30d for 30 days) for the vrs.general.log.file.maxTime property in the Advanced section (requires [Expert Mode](01-overview#expert-mode)).
-
-Other Advanced properties (requires [Expert Mode](01-overview#expert-mode)) that can be used to further condition the archive deletion are:
-
--	vrs.general.log.file.archive.scan.folder - the base folder where to find the logs to delete
-
--	vrs.general.log.file.archive.scan.depth - the depth to search for log files
-
--	vrs.general.log.file.archive.scan.glob -  the regex (glob style) to match to select which files to delete
-
-### VRS Access
-
-VRS Access logging is configured from the Main Control Panel -> Settings tab -> Logs -> Logs Settings section. Select the VDS - VRS Access option from the Log Settings to Configure drop-down menu. The vrs_access.log contains less information than vrs_server.log and is used more for auditing.
-
-#### Log Location
-
-These log files are in <RLI_HOME>/<instance_name>/logs/vrs. The default instance name is vds_server, so the path would be: <RLI_HOME>/vds_server/logs/vrs.
-
-#### Log Level
-
-Select a log level from the drop-down list in the Log Settings section. For details on available log levels, see [Chapter 1](01-overview).
-
-#### Rollover Size
-
-By default, the vrs_access.log file rolls over once it reaches 100MB in size. Change this value if needed.
-
-### Log Archiving
-
-By default, 10 files are kept in the archive. Change this value in the How Many Files to Keep in Archive setting. The archived files are named vrs_access-<number>.log and located in <RLI_HOME>/<instance_name>/logs/vrs. The default instance name is vds_server, so the path would be: <RLI_HOME>/vds_server/logs/vrs.
-
-The condition for deleting an archive is based on the total number of archives (configured in the How Many Files to Keep in Archive setting), or the age of the archive (configured in the server.log.file.maxTime property in the Advanced section), whichever comes first.
-
-If you want to base archive deletion on the total number of archives, configure the vrs.access.log.file.maxTime property to 1000000d (1 million days), so that it is never triggered and indicate the maximum number of archive files to keep in the How Many Files to Keep in Archive property. If you want to base archive deletion on the age of the archive, configure the How Many Files to Keep in Archive to something like 1000000 (1 million files) so it is never triggered, and define the max age in number of days (e.g. 30d for 30 days) for the vrs.access.log.file.maxTime property in the Advanced section (requires [Expert Mode](01-overview#expert-mode)).
-
-Other Advanced properties (requires [Expert Mode](01-overview#expert-mode)) that can be used to further condition the archive deletion are:
-
--	vrs.access.log.file.archive.scan.folder - the base folder where to find the logs to delete
-
--	vrs.access.log.file.archive.scan.depth - the depth to search for log files
-
--	vrs.access.log.file.archive.scan.glob -  the regex (glob style) to match to select which files to delete
-
--->
 
 ## RadiantOne FID Persistent Cache with Real-time Refresh
 
@@ -509,7 +330,7 @@ The adap_access.log file can be viewed and downloaded from Server Control Panel 
 Select a log level from the drop-down list in the Log Settings section. For details on available log levels, see Chapter 1. The default log level for this log is OFF.
 
 >[!warning] 
->To log Certificate Revocation error messages when accessing ADAP using mutual authentication, set the log level to DEBUG from the Main Control Panel -> Zookeeper tab by navigating to radiantone/v2/<cluster_name>/config/logging/log4j2-vds.json and updating the “Loggers” section with the information shown below.
+>To log Certificate Revocation error messages when accessing ADAP using mutual authentication, set the log level to DEBUG from the Main Control Panel > Zookeeper tab by navigating to `radiantone/v2/<cluster_name>/config/logging/log4j2-vds.json` and updating the “Loggers” section with the information shown below.
 
 ```json
 "loggers" : {

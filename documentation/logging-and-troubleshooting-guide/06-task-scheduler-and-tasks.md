@@ -74,7 +74,7 @@ By default, 10 files are kept in the archive. Change this value in the How Many 
 
 ### Email Alert Task
 
-Email Alert settings are configured from the Main Control Panel (associated with the leader node if deployed in a cluster) -> Settings Tab -> Monitoring section -> Email Alerts Settings. These properties are saved in Zookeeper at /radiantone/<version>/<cluster_name>>/config/monitoring.properties.
+Email Alert settings are configured from the Main Control Panel (associated with the leader node if deployed in a cluster) > Settings Tab > Monitoring section > Email Alerts Settings. These properties are saved in Zookeeper at `/radiantone/<version>/<cluster_name>/config/monitoring`.properties.
 
 These settings can be reused in log4j logging configurations by using the following properties:
 
