@@ -31,7 +31,8 @@ This section describes how to perform the following functions:
 
 -	Working with Complex Attributes
 
->**Note - The examples shown in this section use the Advanced Rest Client Google Chrome app.**
+>[!note]
+>The examples shown in this section use the Advanced Rest Client Google Chrome app.
 
 # Accessing the RadiantOne RESTFul Web Service
 
@@ -154,7 +155,8 @@ Figure 5.6: Enabling the Always Authenticate Option
 
 For normal SSL communications, where the only requirement is that the client trusts the server, no additional configuration is necessary (as long as both entities trust each other). For mutual authentication, where there is a reciprocal trust relationship between the client and the server, the client must generate a certificate containing his identity and private key in his keystore. The client must also make a version of the certificate containing his identity and public key, which RadiantOne must store in its truststore. In turn, the client needs to trust the server; this is accomplished by importing the server's CA certificate into the client truststore.
 
->**Note - Certificate-based authentication (mutual authentication) requires the use of SSL (HTTPS) for the communication between the client and RadiantOne REST/ADAP service.**
+>[!note]
+>Certificate-based authentication (mutual authentication) requires the use of SSL (HTTPS) for the communication between the client and RadiantOne REST/ADAP service.
 
 ![An image showing ](Media/Image5.7.jpg)
 
