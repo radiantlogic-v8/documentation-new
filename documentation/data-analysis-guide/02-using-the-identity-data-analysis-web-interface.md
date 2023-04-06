@@ -195,12 +195,11 @@ Values in the Duplicate Values column indicate the number of values that occur m
 
 Values in the Blank Values column indicate the number of blank (empty) values for the analyzed attribute. Before analysis, the value is trimmed (spaces deleted at the beginning and end of the value). The result for blank values in the analysis used in this section is 0, which means that no entries had blank values for the attributes analyzed.
 
-Below the pie chart, click the ![An image showing ](Media/down-arrow.jpg)  button to the right of Distinct Values Biggest/Smallest Counts. 
+Below the pie chart, click the ![An image showing ](Media/down-arrow.jpg) button to the right of Distinct Values Biggest/Smallest Counts. 
 
 ![An image showing ](Media/Image2.14.jpg)
 
-Figure 2.14: Opening the Distinct Values Biggest/Smallest 
-Counts Table
+Figure 2.14: Opening the Distinct Values Biggest/Smallest Counts Table
 
 The Distinct Values Biggest/Smallest Counts table displays. 
 
@@ -245,7 +244,7 @@ The Multi-valued Attributes tab shows maximum multiple values and average multip
 
 Figure 2. 19: The Multi-valued Attributes Tab
 
-To display data for a multi valued attribute, click an attribute in the Most Multiple Values table on the left. The <ATTRIBUTE> Multiple Values table on the right populates. In the example below, the MEMBER attribute is selected and the table on the right shows a list of groups and the number of values in the MEMBER attribute (meaning number of members) for each. For example, you can see that there is 24 members in the CN=GLOBAL,OU=VIRTUAL GROUPS,OU=ALLPROFILES group. 
+To display data for a multi valued attribute, click an attribute in the Most Multiple Values table on the left. The `<ATTRIBUTE>` Multiple Values table on the right populates. In the example below, the MEMBER attribute is selected and the table on the right shows a list of groups and the number of values in the MEMBER attribute (meaning number of members) for each. For example, you can see that there is 24 members in the CN=GLOBAL,OU=VIRTUAL GROUPS,OU=ALLPROFILES group. 
  
 ![An image showing ](Media/Image2.20.jpg)
 
