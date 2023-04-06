@@ -11,13 +11,11 @@ description: Monitoring and Reporting Guide
 
 ## Chapter 1 - Monitoring
 
-Monitoring is one of the most important aspects of maintaining the health of RadiantOne. It is highly recommended that you monitor the RadiantOne components on a regular basis using the
-methods and utilities discussed in this guide.
+Monitoring is one of the most important aspects of maintaining the health of RadiantOne. It is highly recommended that you monitor the RadiantOne components on a regular basis using the methods and utilities discussed in this guide.
 
 The RadiantOne components can be monitored from both the Main and Server Control Panels and command line scripts, in addition to using third party tools.
 
-The key services to monitor are RadiantOne and ZooKeeper. There are default monitoring and alerts for these services. For RadiantOne, see [RadiantOne Availability](#radiantone-service-availability). For ZooKeeper, see
-[ZooKeeper Write Failure](#zookeeper-write-failure).
+The key services to monitor are RadiantOne and ZooKeeper. There are default monitoring and alerts for these services. For RadiantOne, see [RadiantOne Availability](#radiantone-service-availability). For ZooKeeper, see [ZooKeeper Write Failure](#zookeeper-write-failure).
 
 ### Expert Mode
 
@@ -285,8 +283,7 @@ Figure 1.13: Example of a Data Source to Monitor
 
 ##### Network Latency
 
-If deployed in a cluster, the latency between RadiantOne nodes can be monitored from the
-Server Control Panel -> Usage & Activity tab -> Network Latency section.
+If deployed in a cluster, the latency between RadiantOne nodes can be monitored from the Server Control Panel > Usage & Activity tab -> Network Latency section.
 
 ![An image showing monitoring network latency](Media/Image1.14.jpg)
 
@@ -559,7 +556,7 @@ Figure 1. 23 : Custom Alert for Monitoring Global Sync Queue Size
 
 12. When triggered, this alert displays on the Main Control Panel's Dashboard tab under Active Alerts as "ALERT: <alert_name>” and triggers a [file alert](#file-alert-settings). If SMTP settings are configured, [email alerts](#email-alert-settings) can be triggered as well by adding EmailAlert to the Alert Output setting (click save if you modify alert output).
 
-<!-->
+<!--
 
 #### Configuration Changes
 
@@ -1468,7 +1465,7 @@ deleting them or manually resending them.
 
 ![An image showing ](Media/Image1.37.jpg)
 
-Figure 1. 37 : Queue Monitoring **–** Resending Failed Messages
+Figure 1. 37 : Queue Monitoring – Resending Failed Messages
 
 #### Monitoring Real-time Persistent Cache Refresh from the Control Panel
 
@@ -1479,7 +1476,7 @@ cache refresh configuration and monitor the activities of the capture and apply 
 
 Figure 1. 38 : Persistent Cache Refresh Monitoring
 
-<!-->
+<!--
 
 #### Monitoring Real-time Persistent Cache Refresh and Global Sync Components from Command Line
 
@@ -1573,7 +1570,7 @@ processorCounter, processorHostname, processorQueueSize. The processor component
 where this process is running. ProcessorQueueSize is the number of entries in the queue waiting to be processed. ProcessorQueueSize is a good candidate to configure custom alerts for. If this number is growing, and the pipeline is fully
 started, it is an indicator that events are being processed too slow. This could be due to errors while applying events, or just slow machine hardware or network.
 
-<!-->
+<!--
 
 ## External Monitoring Options with Third Party Tools
 
@@ -1592,11 +1589,11 @@ The default log4j configurations are described in the table below:
 
 | Service or Tool | Log4J Default Configuration |
 |---------------|----------------------------------------|
-| RadiantOne FID and Universal Directory |  In ZooKeeper at /radiantone/<version>/<cluster_name>/config/logging/log4j2-vds.json | 
-| Task Scheduler | In ZooKeeper at /radiantone/<version>/<cluster_name>/config/logging/log4j2- scheduler.json | 
-| Control Panels | In ZooKeeper at /radiantone/<version>/cluster_name>/config/logging/log4j2-control-panel.json | 
-| Monitoring Script | In ZooKeeper at /radiantone/<version>/<cluster_name>/config/logging/log4j2-monitoring-command.json
-| Agents used to manage capture connectors for real-time persistent cache refresh and global sync. | In ZooKeeper at /radiantone/<version>/<cluster_name>/config/logging/log4j2-cragents.json | 
+| RadiantOne FID and Universal Directory |  In ZooKeeper at `/radiantone/<version>/<cluster_name>/config/logging/log4j2-vds.json` | 
+| Task Scheduler | In ZooKeeper at `/radiantone/<version>/<cluster_name>/config/logging/log4j2- scheduler.json` | 
+| Control Panels | In ZooKeeper at `/radiantone/<version>/cluster_name>/config/logging/log4j2-control-panel.json` | 
+| Monitoring Script | In ZooKeeper at `/radiantone/<version>/<cluster_name>/config/logging/log4j2-monitoring-command.json`
+| Agents used to manage capture connectors for real-time persistent cache refresh and global sync. | In ZooKeeper at `/radiantone/<version>/<cluster_name>/config/logging/log4j2-cragents.json` | 
 
 To configure your own log4j appender:
 
@@ -1638,7 +1635,7 @@ defined for RadiantOne:
 
 For details on the operations allowed for each user, please see the RadiantOne System Administration Guide.
 
-When any user that is a member of one of the above delegated administration groups saves changes in the Main or Server Control Panel, this activity is logged into: web_access.log. This is a CSV formatted log file with the delimiter being <TAB>. To configure the log output for the Control Panel, navigate to the Main
+When any user that is a member of one of the above delegated administration groups saves changes in the Main or Server Control Panel, this activity is logged into: web_access.log. This is a CSV formatted log file with the delimiter being `<TAB>`. To configure the log output for the Control Panel, navigate to the Main
 Control Panel > Settings tab > Logs > Log Settings section. You can view and download web_access.log from Server Control Panel > Log Viewer.
 
 Select Control Panel – Access from the Log Settings to Configure drop-down list. Define the log level, rollover size and number of files to keep archived.
@@ -1647,11 +1644,11 @@ Select Control Panel – Access from the Log Settings to Configure drop-down lis
 
 Figure 1.42 : Main Control Panel Access Log Settings
 
-<!-->
+<!--
 
 For more fine-grained log configuration you must edit the configuration in ZooKeeper. From the
-Main Control Panel -> ZooKeeper tab (requires [Expert Mode](#expert-mode)), navigate to
-radiantone/<version>/<cluster_name>/config/logging/log4j2-control-panel.json. Click the Edit
+Main Control Panel > ZooKeeper tab (requires [Expert Mode](#expert-mode)), navigate to
+`radiantone/<version>/<cluster_name>/config/logging/log4j2-control-panel.json`. Click the Edit
 Mode button on the right to make changes. Generally, these advanced settings should only be
 changed if advised by Radiant Logic.
 
@@ -1905,12 +1902,12 @@ To reset the number of operations (opAbandon, opAdd, opBind, opCompare, opCount,
 
 The processing activity of RadiantOne can be retrieved below the cn=processor,cn=monitor
 container. Here you can retrieve the properties associated with the processing queues (the ones
-seen from the Server Control Panel -> Usage & Activity tab -> Connections & Operations
+seen from the Server Control Panel > Usage & Activity tab -> Connections & Operations
 section).
 
 ![An image showing ](Media/Image1.45.jpg)
 
-Figure 1. 45 : Example of Processing Activity by Querying cn=monitor Branch
+Figure 1.45 : Example of Processing Activity by Querying cn=monitor Branch
 
 - opWaiting – operations waiting in the queue (waiting to be processed by RadiantOne).
 - opExecuting – operations currently being executed by RadiantOne.
@@ -2074,8 +2071,7 @@ the RadiantOne install.
 
 >[!warning] when deploying RadiantOne in a cluster, issue the heartbeat check against each node.
 
-When RadiantOne runs as a service on Windows platforms, you can also use System Center Operations Manager (SCOM) to monitor it. On LINUX platforms, Nagios (or some other daemon
-service monitor) can be used.
+When RadiantOne runs as a service on Windows platforms, you can also use System Center Operations Manager (SCOM) to monitor it. On LINUX platforms, Nagios (or some other daemon service monitor) can be used.
 
 -->
 
@@ -2133,7 +2129,7 @@ java.lang.Exception: Threshold reached with 85% difference for adds.
 
 In the example above, a periodic persistent cache refresh is configured on the o=sql naming context.
 
-<!-->
+<!--
 
 ### ZooKeeper Status – Heartbeat Check
 
@@ -2157,7 +2153,7 @@ zookeeper node no longer able to contact peers in ensemble)
 - Could not add appenderMBean for [null]
 - Unexpected exception causing shutdown while sock still open
 
-<!-->
+<!--
 
 ### RadiantOne Activity – Check/Parse Access Log (CSV Format) Output
 
@@ -2350,7 +2346,7 @@ An example is shown below:
 The log level must be set to INFO or higher for this verbose option to work.
 
 SMTP settings (if the following parameters are not specified, the values configured in the Main
-Control Panel -> Settings Tab -> Monitoring -> Email Alerts Settings are used):
+Control Panel > Settings Tab > Monitoring > Email Alerts Settings are used):
 
 - H host name of SMTP server.
 - P SMTP port number. Default is 25.
