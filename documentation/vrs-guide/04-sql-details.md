@@ -12,7 +12,7 @@ The following section describes the SQL supported statements, clauses, syntax an
 Statement | Syntax & supported SQL clauses
 -|-
 SELECT | SELECT [ALL &#124; DISTINCT] {column name&#124; aggregation&#124; expression} [AS remapping name] [, {column name&#124; aggregation &#124; expression} [AS remapping name]] <br> FROM Table name <br>[ [ [ LEFT&#124;RIGHT [OUTER] ] &#124; [INNER] ] JOIN Table name [ON conditions &&#124; predicates]<br>&#124; [, Table name 2 [, Table name n]] ] <br> [WHERE conditions &&#124; predicates] <br>[GROUP BY column name] <br>[ORDER BY column name [DESC/ASC]]
-INSERT | INSERT INTO Table name [(column name [,column name 2 [,column name n]])] <br>VALUES (<expressions value>)
+INSERT | INSERT INTO Table name [(column name [,column name 2 [,column name n]])] <br>VALUES (`<expressions value>`)
 UPDATE | UPDATE Table name <br>SET column name = expressions value [, column name 2= expressions value [, column name n= expressions value]] <br>[WHERE predicates]
 DELETE | DELETE FROM Table name <br>[WHERE predicates]
 CREATE | CREATE VIEW View name AS SELECT STATEMENT
