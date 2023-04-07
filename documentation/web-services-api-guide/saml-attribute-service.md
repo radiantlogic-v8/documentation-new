@@ -214,11 +214,11 @@ Figure 2: Modifying the Keystore Path Values in client.properties
 
 The URL to access the RadiantOne SAML Attribute Service is:
 
-http[s]://<hostname>:<port>/saml/AttributeServiceSoap
+`http[s]://<hostname>:<port>/saml/AttributeServiceSoap`
 
 An example is shown below:
 
-http://vds.server.com:8089/saml/AttributeServiceSoap
+`http://vds.server.com:8089/saml/AttributeServiceSoap`
 
 This URL can be reach using the GET and POST HTTP verbs:
 GET: by reaching the URL using a GET, the metadata of the RadiantOne SAML Attribute Service is sent to the requester. Do not use localhost as host name to retrieve the metadata. The IP Address or the host name of the machine hosting RadiantOne needs to be used instead. 

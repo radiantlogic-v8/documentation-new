@@ -92,7 +92,7 @@ This section discusses password authentication and token authentication.
 
 All REST operations require a header which is used to bind to the LDAP server. If this header is not populated, it uses anonymous access. 
 
-The header must be named “authorization” and the header value is derived by concatenating: Basic base64(dn:password). Use a <space> between Basic and the encoded value. 
+The header must be named “authorization” and the header value is derived by concatenating: Basic base64(dn:password). Use a `<space>` between Basic and the encoded value. 
 
 You can use any base64 encoder to get this value. For example, the base64 encoded value for cn=directory manager and password of secretsecret would be the following. 
 
@@ -112,13 +112,13 @@ In this section, a simple bind to the RadiantOne REST service is shown in the ta
 
 Field	| Value
 -|-
-URL Syntax	| http://`<RadiantOneServer>`:8089/adap?bind=simpleBind
+URL Syntax	| `http://<RadiantOneServer>:8089/adap?bind=simpleBind`
 Method	| Get
 Header Name	| Authorization
-Header Value	| Basic <base64 value (dn:password)>
+Header Value	| Basic `<base64 value (dn:password)>`
 Example Header Value	| Basic Y249ZGlyZWN0b3J5IG1hbmFnZXI6c2VjcmV0c2VjcmV0
 
-Table 1 A Simple Bind to the RadiantOne REST Service
+Table 1: A Simple Bind to the RadiantOne REST Service
 
 An authentication attempt with the above parameters results in the message {“httpStatus”:200}.  This means the credentials check was successful.
 
@@ -204,9 +204,9 @@ The application’s parameters must be configured on the authorization server th
 
 To configure ADAP in the OIDC Service:
 
-1.	(Optional) If the name you want to use to access the OIDC server is not the FQDN of the machine, navigate to <RLI_HOME>/vds_server/conf/jetty and edit config.properties. Set openid.host=<desired hostname that matches the one in the server SSL certificate>.
+1.	(Optional) If the name you want to use to access the OIDC server is not the FQDN of the machine, navigate to <RLI_HOME>/vds_server/conf/jetty and edit config.properties. Set `openid.host=<desired hostname that matches the one in the server SSL certificate>`.
 
-2.	In a web browser, navigate to the RadiantOne OpenID Connect Authorization Server’s Login page: https://<RadiantOneServer>:7171/openid
+2.	In a web browser, navigate to the RadiantOne OpenID Connect Authorization Server’s Login page: `https://<RadiantOneServer>:7171/openid`
 
 3.	Click **Log in**. The login page is displayed. 
 
@@ -241,13 +241,13 @@ The client settings configured in the previous section must be added to the Radi
 
 1.	In the Main Control Panel, click the Zookeeper tab (requires [Expert Mode](overview#expert-mode)).
 
-2.	Browse to radiantone/<version>/<cluster_name>/config/vds_server.conf.
+2.	Browse to `radiantone/<version>/<cluster_name>/config/vds_server.conf`.
 
-3.	Click the **Edit Mode** button. 
+3.	Click `Edit Mode`. 
 
 4.	Set the value for “oidcClientId” to the value recorded in the Client ID field in the previous section. In this example, the value is set to adap.
 
-5.	Set the value for “oidcDiscoveryUrl” to the URL of the OpenID Connect Server. In this example, the value is set to https://<RadiantOneServer>:7171/openid/.well-known/openid-configuration.
+5.	Set the value for “oidcDiscoveryUrl” to the URL of the OpenID Connect Server. In this example, the value is set to `https://<RadiantOneServer>:7171/openid/.well-known/openid-configuration`.
 
 6.	Set the value for “oidcClientSecret” to the client secret that was recorded in the previous section. 
 
@@ -295,7 +295,7 @@ https://<rli_server_name>:8090/adap?bind=oidc
 2.	If the user has not already attempted to log in, the RadiantOne OpenID Connect Login page is displayed. The user logs in with thee RadiantOne credentials. If this page does not display, proceed to the next step. An authorization page similar to the one below displays.
  
 >[!note] 
->If a message states, “Client with ID <clientname> was not found”, the oidcClientId value in ZooKeeper must be configured. Refer to the RadiantOne Configuration section for more information.
+>If a message states, “Client with ID `<clientname>` was not found”, the oidcClientId value in ZooKeeper must be configured. Refer to the RadiantOne Configuration section for more information.
 
 ![Authorization Access Page](Media/Image5.13.jpg)
  
@@ -310,13 +310,13 @@ Figure 14: Generated OpenID Connect Token
 4.	Record the token value. 
 
 5.	Use the token value recorded above in a header configured in your Postman client as follows. 
- 
+
 Field	| Value
 -|-
 URL Syntax	| `http://<RadiantOneServer>:8089/adap/<baseDN>`
 Method	| Get
 Header Name	| Authorization
-Header Value	| Token <token>
+Header Value	| Token `<token>`
 Example URL	| http://localhost:8089/adap/o=companydirectory
 
 Table 4: Passing an OpenID Connect Token in a Header
@@ -548,7 +548,7 @@ Field	| Value
 URL	| `http://localhost:8089/adap/<baseDN>?<searchparam>&<searchparam>`
 Method	| Get
 Header Name	| Authorization
-Header Value	| Basic <userDN>:<password>
+Header Value	| Basic `<userDN>:<password>`
 Example URL	| http://localhost:8089/adap/o=companydirectory?pageSize=5
 
 Table 13: Search Operation using PageSize Parameter
@@ -694,7 +694,7 @@ Field	| Value
 URL	| `http://localhost:8089/adap/<baseDN>?<searchparam>&<searchparam>`
 Method	| Get
 Header Name	| Authorization
-Header Value	| Basic <userDN>:<password>
+Header Value	| Basic `<userDN>:<password>`
 Example URL	| http://localhost:8089/adap/ou=Headquarters,o=companydirectory?derefAliases=3
 
 Table 22: Passing the derefealiases parameter
@@ -781,7 +781,7 @@ In this section, an existing entry is replaced using the parameters shown in the
 
 Field	| Value
 -|-
-URL Syntax	| http://localhost:8089/adap/<baseDN>
+URL Syntax | `http://localhost:8089/adap/<baseDN>`
 Example URL	| http://localhost:8089/adap/uid=alice,cn=config
 Method	| Put
 Header Name	| Authorization
@@ -810,7 +810,7 @@ URL Syntax	| `http://localhost:8089/adap/<baseDN>`
 Example URL	| http://localhost:8089/adap/uid=alice,cn=config
 Method	| Patch
 Header Name	| Authorization
-Header Value	| Basic <userDN>:<password>
+Header Value	| Basic `<userDN>:<password>`
 Example Request Body	| { "params" : { <br>"mods" : [ { "attribute" : "telephoneNumber", <br>"type" : "ADD",<br>"values" : [ "+1 354 2344 5433" ] }, <br>{ "attribute" : "mobile", <br>"type" : "REPLACE", <br>"values" : [ "+1 123 4544 1290" ] } ] } <br>}
 
 Table 26: Adding and Replacing Attributes
@@ -831,7 +831,7 @@ In this example an attribute (e.g. email) containing a specified value (e.g. ali
 <td>Value
 <tr>
 <td>URL Syntax	
-<td>http://localhost:8089/adap/<baseDN>
+<td>http://localhost:8089/adap/`< baseDN>`
 <tr>
 <td>Example URL	
 <td>http://localhost:8089/adap/uid=alice,cn=config
@@ -964,7 +964,7 @@ In this example, a group entry’s members are replaced by a new member.
 <td>Value
 <tr>
 <td>URL Syntax	
-<td>http://localhost:8089/adap/<baseDN>
+<td>http://localhost:8089/adap/< baseDN>
 <tr>
 <td>Example URL	
 <td>http://localhost:8089/adap/cn=operator,ou=globalgroups,cn=config

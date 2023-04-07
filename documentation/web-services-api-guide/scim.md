@@ -64,7 +64,7 @@ Figure 4.4: SCIM Preview Tab
 
 A SCIM schema designates attribute characteristics such as their mutability, type, and other features. The core SCIM schemas: User, Group, and Enterprise User Extensions are supported and configured by default in RadiantOne. Custom schemas are also supported. SCIM schemas are managed from the Main Control Panel > Settings Tab > Server Front End > SCIM section -> Schemas tab on the right.
 
-To query the SCIM schema (core, extension and custom) in the RadiantOne service, a SCIM client can use: http://<RadiantOneService>:8089/scim2/v2/Schemas
+To query the SCIM schema (core, extension and custom) in the RadiantOne service, a SCIM client can use: `http://<RadiantOneService>:8089/scim2/v2/Schemas`
 
 ### Default Core Schemas
 
@@ -338,7 +338,7 @@ To add a new resource type:
 19.	Click the Save button. The SCIM Configuration page displays the configured resource.
 
 >[!note] 
->To view a list of resource types configured in RadiantOne, use: http://<RadiantOneService>:8089/scim2/v2/resourcetypes
+>To view a list of resource types configured in RadiantOne, use: `http://<RadiantOneService>:8089/scim2/v2/resourcetypes`
 
 #### Template-based Attribute Mapping
 
@@ -471,7 +471,7 @@ Table 7: SCIM Response Status Codes
 ### Authentication
 
 Authentication can be performed using basic authentication by passing the credentials in a header.
-The header must be named “authorization” and the value is set by concatenating: Basic base64(dn:password). Don’t forget to use a <space> between Basic and the encoded value. Don’t forget to use “:” to separate dn value from password value. You can use any base64 encoder to get this value. An example for cn=directory manager and password of secretsecret would be this: cn=directory manager:secretsecret 
+The header must be named “authorization” and the value is set by concatenating: Basic base64(dn:password). Don’t forget to use a `<space>` between Basic and the encoded value. Don’t forget to use “:” to separate dn value from password value. You can use any base64 encoder to get this value. An example for cn=directory manager and password of secretsecret would be this: cn=directory manager:secretsecret 
 
 The base64 encoded value of this would be: Y249ZGlyZWN0b3J5IG1hbmFnZXI6c2VjcmV0c2VjcmV0
 
@@ -502,7 +502,7 @@ Based on the above configuration, the following is a sample SCIM POST query to c
 <td>Value
 <tr>
 <td>URL Syntax	
-<td><http://<`RadiantOneService`>:8089/scim2/v2/<`ResourceType`>
+<td>< http://< RadiantOneService>:8089/scim2/v2/<`ResourceType`>
 <tr>
 <td>Example URL	
 <td>	http://localhost:8089/scim2/v2/companydirectory
@@ -582,7 +582,7 @@ The following SCIM POST query example describes how to create a user entry that 
 <td>Value
 <tr>
 <td>URL Syntax	
-<td>http://<RadiantOneServer>:8089/scim2/v2/<ResourceType>
+<td>http://< RadiantOneServer >:8089/scim2/v2/< ResourceType>
 <tr>
 <td>Example URL	
 <td> http://localhost:8089/scim2/v2/companydirectory
@@ -660,7 +660,7 @@ Based on the above configuration, the following is a sample SCIM PATCH query to 
 <td>Value
 <tr>
 <td>URL 
-<td>Syntax http://<`RadiantOneService`>:8089/scim2/v2/<ResourceType>/<DN>
+<td>Syntax http://<`RadiantOneService`>:8089/scim2/v2/< ResourceType>/< DN>
 <tr>
 <td>Example URL	
 <td>http://localhost:8089/scim2/v2/companydirectory/uid=bjensen@example.com,o=companydirectory
@@ -776,7 +776,7 @@ The following SCIM GET query example describes how to retrieve the entry that wa
 
 Field	| Value
 -|-
-URL Syntax	| `http://<RadiantOneServer>:8089/scim2/v2/<ResourceType>/<DN>`
+URL Syntax	| `http://<RadiantOneServer>:8089/scim2/v2/< ResourceType>/< DN>`
 Example URL	| http://localhost:8089/scim2/v2/companydirectory/uid=bjensen@example.com,o=companydirectory
 Method	| Get
 Header Name	| Authorization
@@ -796,7 +796,7 @@ The following SCIM DELETE query example describes how to delete the entry that w
 
 Field	| Value
 -|-
-URL Syntax	| `http://<RadiantOneServer>:8089/scim2/v2/<ResourceType>/<DN>`
+URL Syntax	| `http://<RadiantOneServer>:8089/scim2/v2/< ResourceType>/< DN>`
 Example URL	| http://localhost:8089/scim2/v2/companydirectory/uid=bjensen@example.com,o=companydirectory
 Method	| Delete
 Header Name	| Authorization
