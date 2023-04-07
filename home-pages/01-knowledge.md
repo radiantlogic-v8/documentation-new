@@ -32,7 +32,7 @@ Harness your identity data with intelligent integration to drive better business
   > [Installation](/environment-operations-center-guide/environments/environment-overview/create-an-environment)  
   > Learn how to use the Environments Operations Center to create environments and install the RadiantOne Intelligent Identity Data Platform.
   
-  > [Server Configuration](/sys-admin-guide/introduction)  
+  > [Server Configuration](/sys-admin-guide-rebuild/introduction)  
   > Learn how to use the Control Panel to integrate identity data silos into RadiantOne Federated Identity and define global server settings.
   
   > [Global Identity Builder](/global-identity-builder-guide/introduction)  
