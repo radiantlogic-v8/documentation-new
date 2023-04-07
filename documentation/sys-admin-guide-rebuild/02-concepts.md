@@ -732,7 +732,7 @@ Example: remapDN(uniqueMember,"%dn,dc=my_users") adds a suffix of “dc=my_users
 Example: remapDN(uniqueMember,"o=mycompany","dc=mycomp") 
 ```
 
-**remapDN(attr2remap,dataSourceID,externalBaseDN,scope,externalIdAttr)** – Extracts the RDN value from the <attr2remap> attribute and does a lookup in a data source where <externaldAttr>=<attr2remap>. Based on the example below, if a uniqueMember value was “uid=lcallahan,o=mycompany”, and the DN resulting from the lookup where sAMAccountName=lcallahan (in the vds data source, one level below o=proxy), was cn=lcallahan,dc=addomain1,dc=com, the computed attribute value would be “cn=lcallahan,dc=addomain1,dc=com”.
+**remapDN(attr2remap,dataSourceID,externalBaseDN,scope,externalIdAttr)** – Extracts the RDN value from the `<attr2remap>` attribute and does a lookup in a data source where `<externaldAttr>=<attr2remap>`. Based on the example below, if a uniqueMember value was “uid=lcallahan,o=mycompany”, and the DN resulting from the lookup where sAMAccountName=lcallahan (in the vds data source, one level below o=proxy), was cn=lcallahan,dc=addomain1,dc=com, the computed attribute value would be “cn=lcallahan,dc=addomain1,dc=com”.
 
 ```
 Example: remapDN("uniqueMember","vds","o=proxy",1,"samAccountName")

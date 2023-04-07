@@ -165,7 +165,7 @@ Figure 4: Configuration for RadiantOne to Connect to the Underlying LDAP Server 
 
 ### Mutual Authentication
 
-If you want to use mutual authentication between RadiantOne and the backend LDAP directory, in the data source configuration, Bind DN parameter specify cert:<client certificate file> instead of an actual user DN. In this case, RadiantOne is the client when accessing the underlying LDAP server. Also the suffix of the certificate file must indicate the store type. For example, PFX assumes pkcs12. If no suffix is specified, or the suffix is unknown, JKS type is assumed.
+If you want to use mutual authentication between RadiantOne and the backend LDAP directory, in the data source configuration, Bind DN parameter specify cert:`<client certificate file>` instead of an actual user DN. In this case, RadiantOne is the client when accessing the underlying LDAP server. Also the suffix of the certificate file must indicate the store type. For example, PFX assumes pkcs12. If no suffix is specified, or the suffix is unknown, JKS type is assumed.
 
 Below are the valid values for the suffix:
 
