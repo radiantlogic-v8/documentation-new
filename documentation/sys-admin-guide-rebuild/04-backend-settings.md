@@ -747,19 +747,11 @@ These settings define how RadiantOne accesses itself (internally) as a client. T
 >[!note] 
 >The settings in this section are accessible only in [Expert Mode](01-introduction#expert-mode).
 
-Three advanced settings applicable to internal connections to the RadiantOne service are, Use SSL, Disable Referral Chasing and Paged Results Control. These are each described in more details below.
+Two advanced settings applicable to internal connections to the RadiantOne service are Disable Referral Chasing and Paged Results Control. These are each described in more details below.
 
 ![An image showing ](Media/Image3.79.jpg)
  
 Figure 14: Internal Connection to RadiantOne
-
-<!-->
-
-#### Use SSL
-
-RadiantOne leverages an internal connection to the LDAP port for performing joins configured in virtual views. If the non-SSL LDAP port is turned off in RadiantOne, and the internal connection must connect via SSL, check the Use SSL option. Click **Save** to apply the changes to the server.
-
--->
 
 #### Disable Referral Chasing 
 
