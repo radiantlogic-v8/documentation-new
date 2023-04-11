@@ -11,11 +11,13 @@ description: Monitoring and Reporting Guide
 
 ## Chapter 1 - Monitoring
 
-Monitoring is one of the most important aspects of maintaining the health of RadiantOne. It is highly recommended that you monitor the RadiantOne components on a regular basis using the methods and utilities discussed in this guide.
+Monitoring is one of the most important aspects of maintaining the health of RadiantOne. It is highly recommended that you monitor the RadiantOne components on a regular basis using the
+methods and utilities discussed in this guide.
 
 The RadiantOne components can be monitored from both the Main and Server Control Panels and command line scripts, in addition to using third party tools.
 
-The key services to monitor are RadiantOne and ZooKeeper. There are default monitoring and alerts for these services. For RadiantOne, see [RadiantOne Availability](#radiantone-service-availability). For ZooKeeper, see [ZooKeeper Write Failure](#zookeeper-write-failure).
+The key services to monitor are RadiantOne and ZooKeeper. There are default monitoring and alerts for these services. For RadiantOne, see [RadiantOne Availability](#radiantone-service-availability). For ZooKeeper, see
+[ZooKeeper Write Failure](#zookeeper-write-failure).
 
 ### Expert Mode
 
@@ -46,14 +48,6 @@ For each node, the Overview section displays the status of:
 - Current CPU usage of the machine hosting RadiantOne.
 - Current RadiantOne service memory usage.
 - Current disk usage of the drive on the machine hosting RadiantOne.
-<!--
-- The RadiantOne service’s LDAP port
-- The RadiantOne service’s LDAPS port
-- The RadiantOne service’s HTTP port
-- The RadiantOne service’s HTTPS port
-- VRS (SQL) port
-- VRS (SQL) SSL port-->
-- ZooKeeper (ZK) <!-- on the node (in Node Component Status section). If ZooKeeper is running on a separate machine instead of on the same machine as the RadiantOne service, N/A is shown.
 - Disk latency
 - Up time – how long the RadiantOne service has been running on the node.
 - Version of RadiantOne installed on the node
@@ -283,7 +277,8 @@ Figure 1.13: Example of a Data Source to Monitor
 
 ##### Network Latency
 
-If deployed in a cluster, the latency between RadiantOne nodes can be monitored from the Server Control Panel > Usage & Activity tab -> Network Latency section.
+If deployed in a cluster, the latency between RadiantOne nodes can be monitored from the
+Server Control Panel -> Usage & Activity tab -> Network Latency section.
 
 ![An image showing monitoring network latency](Media/Image1.14.jpg)
 
@@ -556,7 +551,7 @@ Figure 1. 23 : Custom Alert for Monitoring Global Sync Queue Size
 
 12. When triggered, this alert displays on the Main Control Panel's Dashboard tab under Active Alerts as "ALERT: <alert_name>” and triggers a [file alert](#file-alert-settings). If SMTP settings are configured, [email alerts](#email-alert-settings) can be triggered as well by adding EmailAlert to the Alert Output setting (click save if you modify alert output).
 
-<!--
+<!-->
 
 #### Configuration Changes
 
@@ -1272,16 +1267,13 @@ Alert ID: 00000000 - 0000 - 0000 - 0000 - 000000000002
 To customize the email message associated with email alerts:
 
 1. From the Zookeeper tab in the Main Control Panel navigate to
-    `/radiantone/<version>/<clusterName>/config/logging/log4j2-scheduler.json.`
+    `/radiantone/<version>/<clusterName>/config/logging/log4j2-scheduler.json`.
 2. On the right, click Edit Mode.
-3. To customize the email subject, edit the alert.email.subject property and overwrite the
-    default value.
-4. To customize the email content type, locate the property named:
-    alert.email.contentType.
+3. To customize the email subject, edit the alert.email.subject property and overwrite the default value.
+4. To customize the email content type, locate the property named: alert.email.contentType.
 5. Enter a value of text/plain or text/html (to send HTML emails).
 6. To customize the email message, locate the property named: alert.email.pattern.
-7. Enter the pattern that dictates the email message. In addition to the regular log4j2
-    pattern elements, the following properties are available by using %X{property}:
+7. Enter the pattern that dictates the email message. In addition to the regular log4j2    pattern elements, the following properties are available by using %X{property}:
     rli.alert.id - example "00000000- 0000 - 0000 - 0000 - 000000000002"
     rli.alert.name - name of the monitoring alert (for example "Alert Disk Usage above 90%")
     rli.alert.status - "TRIGGERED" or "BACK TO NORMAL"
@@ -1326,115 +1318,6 @@ The default rollover size for the alert file is 100MB. The default number of log
 Figure 1. 34 : File Alerts Settings
 
 
-<!--## Monitoring and Alerts from the Command Line
-
-A command-line script can monitor the status of the following items:
-
-- The RadiantOne service’s [Memory](#radiantone-services-memory)
-- [Connections](#connections-to-radiantone) to RadiantOne
-- Status of the [RadiantOne LDAP service and LDAP Backend Data Sources](#status-of-radiantone-ldap-service-and-ldap-backend-data-sources)
-- Status of [Database Backend Data Sources](#status-of-database-backend-data-sources)
-- [Disk Space](#disk-space) on the machine where RadiantOne is installed
-- Status of [Data sources (Backends)](#data-source-backends)
-
-The script, monitoring.bat (monitoring.sh on Linux), is located in <RLI_HOME>/bin. This script
-must run on the same machine as RadiantOne. If triggers are configured, the alert is triggered
-when you first running the monitoring script (if a trigger condition is met) or when there is a
-change of state for the property you are monitoring. If there is no change of state for a
-monitored property, no alert is issued. To configure the alert to go to a file, edit the
-<RLI_HOME>/bin/monitoring.bat (monitoring.sh on Linux) to add the following (below is an
-example for the Linux script)
-
-```sh
-"${RLI_JHOME}/bin/java" -Dlog4j.configurationFile=file:/usr/local/apps/vds/config/logging/log4j2-
-default-file.json -Drli.app.key=myalert ${RLI_JOPTS_EXTRA} ${RLI_JOPTS_DEFAULT_VM_SIZE} -cp "${RLI_ALL_CP}" com.rli.monitoring.MonitoringCommand "$@"
-```
-
-usage: < script > [-n < instance name >] -d < data collector key > [-p < data property >]
-
-[-t <trigger type>] [-g <key:value>] [-i <seconds>]
-
-- n,--instance <instance name> Which instance to use (optional), vds_server is the default if
-nothing is specified.
-- d,--data <data collector key> Which data to collect
-- p,--data-param <data property> Which property of the data to collect
-- t,--trigger <trigger type> Defines the type of the trigger to use
-- g,--trigger-param <key:value> Trigger parameter (repeat the option for each parameter)
-- i,--interval <seconds> Sets the monitoring polling interval
-
-The possible data collector keys are described [here](#radiantone-memory-connections-connection-pools-and-processing-queues-with-a-search-against-cnmonitor).
-
-List of available triggers:
-
-- above(threshold)
-- below(threshold)
-- equals(value)
-- always()
-
-### RadiantOne Service’s Memory
-
-The following example command shows how to monitor the RadiantOne service’s memory every 15 minutes (900 seconds) and trigger an alert when the memory reaches above 90% of
-the allocated amount:
-
-<RLI_HOME>/bin/monitoring.bat -d node-monitor -p propertyId:memoryPercent -t above -g threshold:90 -i 900
-
-### Connections to RadiantOne
-
-The following example command shows how to monitor connections to RadiantOne every 15 minutes (900 seconds) and trigger an alert when the connections reaches above 90% of the allocated amount:
-
-<RLI_HOME>/bin/monitoring.bat -d node-monitor -p propertyId:connectionPercent -t above -g
-threshold:90 -i 900
-
-### Status of RadiantOne LDAP Service and LDAP Backend Data Sources
-
-The following example command shows how to monitor an LDAP backend every 15 minutes
-(900 seconds) and trigger an alert when the status changes, using monitoring.bat:
-
-<RLI_HOME>/bin/monitoring.bat -d datasource-status -p datasourceId:sundirectory -p
-propertyId:status -t equals -g value:false -i 900
-
-### Status of Database Backend Data Sources
-
-The following example command shows how to monitor a database backend every 15 minutes (900 seconds) and trigger an alert when the status changes, using monitoring.bat:
-
-<RLI_HOME>/bin/monitoring.bat -d datasource-status -p datasourceId:sqlserver -p
-propertyId:status -t equals -g value:false -i 900
-
-#### Disk Space
-
-The following example command shows how to monitor the available disk space every 15 minutes (900 seconds) on the machine where RadiantOne is installed and trigger an alert when
-the disk space usage reaches above 90% of the available amount (meaning only 10% of the available disk space is left):
-
-<RLI_HOME>/bin/monitoring.bat -d node-monitor -p propertyId:diskPercent -t above -g
-threshold:90 -i 900
-
-#### Data Source Backends
-
-You can use the <RLI_HOME>/vds/advanced/checkDataSources.bat (.sh on Unix) script to check the status of all data sources (or only the ones listed in the command) and prints their
-status either to the console or a specified file. The status is either “OK” (indicating that nothing was found to be wrong with accessing the data source) or “FAILED [specific error]” (indicating
-that is something wrong with accessing the data source). Execute the command with? to find
-out more about the command. Below are the possible parameters:
-
-- n Name of the RadiantOne instance. If this is not specified, the default instance is used.
-- l List of data sources (comma separated) to be checked. If not specified, all data sources are
-checked.
-- o Output file to store the status. If nothing is specified, the output is printed to the console.
-
-The following example command checks the status of data sources named Sun ONE, AD, Oracle, and SQL_Server and writes the status of each data source in mystatus.log (which is
-located in $RLI_HOME/bin since it is default path).
-
-<RLI_HOME>/bin/advanced/checkdatasources.sh -l sunone, ad, oracle, sql_server -o mystatus.log
-
-Example contents of the mystatus.log file:
-
-- replicationjournal[LDAP]=OK
-- log2db[JDBC]=OK
-- remotevds[LDAP]=OK
-- advworks[JDBC]=OK
-- rli_client_db_datasource[JDBC]=OK
-
--->
-
 ### Monitoring Real-time Persistent Cache Refresh and Global Sync Components
 
 #### Monitoring Global Sync from the Control Panel
@@ -1444,7 +1327,7 @@ activities of the capture, transform and apply processes associated with each pi
 
 ![An image showing ](Media/Image1.35.jpg)
 
-Figure 1. 35 : Global Sync Monitoring
+Figure 1.35 : Global Sync Monitoring
 
 All topologies are listed on the left. Select a topology to view the sync pipelines. For each
 running pipeline, a list of entries processed by the Capture, Transform and Apply components
@@ -1455,7 +1338,7 @@ From the Global Sync tab, you can stop the synchronization flows with **Stop**. 
 
 ![An image showing ](Media/Image1.36.jpg)
 
-Figure 1. 36 : Resume Synchronization for a Specific Pipeline
+Figure 1.36 : Resume Synchronization for a Specific Pipeline
 
 Click **Configure** next to a pipeline to access the queue monitoring, alert settings, and logs
 associated with the synchronization. In the Queue section, you can view the number of
@@ -1465,7 +1348,7 @@ deleting them or manually resending them.
 
 ![An image showing ](Media/Image1.37.jpg)
 
-Figure 1. 37 : Queue Monitoring – Resending Failed Messages
+Figure 1. 37 : Queue Monitoring **–** Resending Failed Messages
 
 #### Monitoring Real-time Persistent Cache Refresh from the Control Panel
 
@@ -1476,25 +1359,8 @@ cache refresh configuration and monitor the activities of the capture and apply 
 
 Figure 1. 38 : Persistent Cache Refresh Monitoring
 
-<!--
 
-#### Monitoring Real-time Persistent Cache Refresh and Global Sync Components from Command Line
 
-You can use the <RLI_HOME>/bin/monitoring.bat (monitoring.sh on Unix) to monitor real-time
-persistent cache refresh and global synchronization components from command line. This script must run on the same machine as the services you want to monitor. If triggers are configured, the default alert is a file alert: <RLI_HOME>/logs/alerts.log. Alerts associated with the monitoring command are configured on the Main Control Panel -> ZooKeeper tab (requires [Expert Mode](#expert-mode)). Navigate to /radiantone/v1/cluster/config/logging/log4j2-monitoring-
-command.json and click EDIT MODE on the right.
-
-The monitoring script offers a set of data collectors that retrieve information about specific
-components of RadiantOne. The “pipeline” data collector is used for persistent cache refresh and Global Sync components. The syntax and properties supported are shown below.
-
-```sh 
-pipeline(sourceDn=*,targetDn=*,pipelineId=*,pipelineType=*,componentType=*,propertyId=*)
-```
-
-Run the monitoring script with the pipeline command to get a list of possible values for the
-properties that can be passed in the command.
-
--->
 
 ##### Real-time Persistent Cache Refresh
 
@@ -1570,54 +1436,6 @@ processorCounter, processorHostname, processorQueueSize. The processor component
 where this process is running. ProcessorQueueSize is the number of entries in the queue waiting to be processed. ProcessorQueueSize is a good candidate to configure custom alerts for. If this number is growing, and the pipeline is fully
 started, it is an indicator that events are being processed too slow. This could be due to errors while applying events, or just slow machine hardware or network.
 
-<!--
-
-## External Monitoring Options with Third Party Tools
-
-Even though RadiantOne does not log activities directly to any third party/external monitoring tool by default, there are various methods available for these tools to get information about what they want to monitor. These methods are described below.
-
-### Configure a Log4J Appender
-
-RadiantOne logging leverages log4j format. Log4j offers many different appenders that can be utilized in RadiantOne, such as sysLog, SNMP trap and socket, among others. A list of
-appenders supported for Log4J v2 can be found here:
-https://logging.apache.org/log4j/2.x/manual/appenders.html
-
-An example SNMP trap appender configuration can be found in the Radiant Logic online
-knowledge base. [http://www.radiantlogic.com/support/knowledge-database/](http://www.radiantlogic.com/support/knowledge-database/)
-
-The default log4j configurations are described in the table below:
-
-| Service or Tool | Log4J Default Configuration |
-|---------------|----------------------------------------|
-| RadiantOne FID and Universal Directory |  In ZooKeeper at `/radiantone/<version>/<cluster_name>/config/logging/log4j2-vds.json` | 
-| Task Scheduler | In ZooKeeper at `/radiantone/<version>/<cluster_name>/config/logging/log4j2- scheduler.json` | 
-| Control Panels | In ZooKeeper at `/radiantone/<version>/cluster_name>/config/logging/log4j2-control-panel.json` | 
-| Monitoring Script | In ZooKeeper at `/radiantone/<version>/<cluster_name>/config/logging/log4j2-monitoring-command.json`
-| Agents used to manage capture connectors for real-time persistent cache refresh and global sync. | In ZooKeeper at `/radiantone/<version>/<cluster_name>/config/logging/log4j2-cragents.json` | 
-
-To configure your own log4j appender:
-
->[!warning] Extreme caution should be used when configuring your own log4j appender. If this is done incorrectly, you could negatively impact the service that you are customizing the logging for. It is highly recommended you consult with Radiant Logic (support@radiantlogic.com) prior to modifying the default log4j configuration.
-
-1. Make a backup of the existing Log4J configuration by navigating to the Main Control Panel -> ZooKeeper tab (requires [Expert Mode](#expert-mode)).
-2. Browse to /radiantone/v1/cluster/config/logging.
-3. Click Export on the right.
-4. The ZooKeeper parent node should be /radiantone/v1/cluster/config/logging.
-5. Enter a path to a directory to save the default log4j configuration and a file name.
-    >[!note] 
-    >This file can be imported on the ZooKeeper tab if you want to revert back to the default log4j configuration.
-6. Click OK.
-
-![An image showing ](Media/Image1.41.jpg)
-
-Figure 1. 41 : Exporting Default Log4J Configuration as a Backup
-
-7. On the Zookeeper tab, navigate to the log4j configuration you want to configure your appender for. The service/tool and corresponding log4j configuration are described in the table above.
-8. Click Edit Mode on the right and configure your appender.
-9. Click Save.
-
--->
-
 ### Control Panels - Delegated Administration Activity
 
 Any user that can bind to RadiantOne can potentially administrator the server (if they belong to
@@ -1642,438 +1460,7 @@ Select Control Panel – Access from the Log Settings to Configure drop-down lis
 
 ![An image showing ](Media/Image1.42.jpg)
 
-Figure 1.42 : Main Control Panel Access Log Settings
-
-<!--
-
-For more fine-grained log configuration you must edit the configuration in ZooKeeper. From the
-Main Control Panel > ZooKeeper tab (requires [Expert Mode](#expert-mode)), navigate to
-`radiantone/<version>/<cluster_name>/config/logging/log4j2-control-panel.json`. Click the Edit
-Mode button on the right to make changes. Generally, these advanced settings should only be
-changed if advised by Radiant Logic.
-
-### Cluster State
-
-You can use <RLI_HOME>/bin/advanced/cluster.bat (.sh on Linux) with the list option to return
-a table of information about the cluster nodes. This includes the hostname, cloudID,
-RadiantOne Service status (ON/OFF), RadiantOne node leader status (true for the leader node.
-False indicates that the node is a follower), ZooKeeper server ID, ZooKeeper server status
-(ON/OFF), ZooKeeper Server leader status (true for the ZooKeeper leader node. False for all
-non-leader nodes). An example is shown below for a 3-node cluster.
-
-![An image showing ](Media/ClusterState.jpg)
-
-To return just the table info, and avoid other logged output, pass RLI_CLI_VERBOSE=false
-before the command, like shown below.
-
-
-C:\radiantone\vds\bin\advanced>set RLI_CLI_VERBOSE=false
-C:\radiantone\vds\bin\advanced>cluster.bat list
-
-On Linux, the command is:
-[admin@localhost advanced]$ RLI_CLI_VERBOSE=false ./cluster.sh list
-
-To get the result in JSON format, use:
-
-C:\radiantone\vds\bin\advanced>set RLI_CLI_FORMAT=JSON
-C:\radiantone\vds\bin\advanced>cluster.bat list
-
-```sh
-{
-
-"success" : true,
-
-"data" : [ {
-
-"Hostname" : "DOC-E1WIN1",
-
-"CloudID" : "fbcd9ce3- 1648 - 43a5-bad4-4673f065814e",
-
-"FIDServerStatus" : "ON",
-
-"FIDServerLeader" : true,
-
-"ZKServerId" : 1,
-
-"ZKServerStatus" : "ON",
-
-"ZKServerLeader" : false
-
-}, {
-
-"Hostname" : "DOC-E1WIN2",
-
-"CloudID" : "32d06d7e-217a-4b8b-ade5-82fd281d5179",
-
-"FIDServerStatus" : "ON",
-
-"FIDServerLeader" : false,
-
-"ZKServerId" : 3,
-
-"ZKServerStatus" : "ON",
-
-"ZKServerLeader" : true
-
-}, {
-
-"Hostname" : "DOC-E1WIN3",
-
-"CloudID" : "2bddf61f-3e30-4e03-a845-10ee610f87cc",
-
-"FIDServerStatus" : "ON",
-
-"FIDServerLeader" : false,
-
-"ZKServerId" : 2,
-
-"ZKServerStatus" : "ON",
-
-"ZKServerLeader" : false
-
-} ]
-
-}
-```
-
-###  RadiantOne Memory, Connections, Connection Pools, and Processing Queues with a Search Against CN=MONITOR
-
-Certain information available for monitoring RadiantOne can be reached with an LDAP search request to the cn=monitor naming context. Searching this naming context provides live access
-to some memory structures in RadiantOne.
-
->[!warning] when deploying RadiantOne in a cluster, you will have to query the cn=monitor branch at each node (as the stats are specific per node).
-
-#### Memory and Connection Usage
-
-If you perform a base search on the cn=monitor node, the following “live” server information is
-available:
-
-- connection: < conn-id >:< startTime >:< indUser >:< client-ip >:< client-port >@< server-ip>:< server-port>:< op-count>
-
-    For example:
-9:20140902225743.020Z:cn=Directory
-Manager:10.11.0.236:53376@10.11.12.164:2389:23
-
-    The above could be parsed as:
-Connection number: 9
-<br>Time the connection was established: 20140902225743.020Z
-<br>Bind User associated with the connection: cn=Directory Manager
-<br>Client IP address: 10.11.0.236
-<br>Client Port: 53376
-<br>RadiantOne IP address: 10.11.12.164
-<br>RadiantOne LDAP Port: 2389
-<br>Operation Count: 23
-
-- connectionCount - the total (cumulative) number of connections established to
-RadiantOne since last startup.
-- connectionIdleTimeout – the value of the Idle Timeout property configured for
-RadiantOne.
-- connectionMax - the maximum concurrent connections allowed to RadiantOne.
-- connectionPeak - the peak number of concurrent connections to RadiantOne since
-last startup.
-- currentConnections - the live number of concurrent connections to RadiantOne (will never be more than connectionMax). This number increases or decreases depending on new connections coming into RadiantOne or existing connections being closed.
-- cpuPeak - highest percentage of system CPU utilized since server startup.
-- cpuUsed – current amount of system CPU utilized.
-- currentTime – the current time on the machine hosting RadiantOne.
-- diskPeak - the peak amount of machine disk space used (in bytes) since startup.
-- diskTotal – total amount of machine disk space (in bytes) on the machine storage
-device.
-- diskUsed – current amount of machine disk-space used (in bytes).
-- lookThroughLimit – the value of the Look Through Limit property configured for
-RadiantOne.
-- memAllocated – the total amount of memory allocated for the RadiantOne node.
-- memMax – maximum amount of memory (Java heap size) configured for the
-instance.
-- memUsed – the total amount of memory currently used by RadiantOne. This number
-fluctuates (as the server is running) depending on how much memory it needs to
-serve client requests and how fast the Garbage Collector (GC) can recycle the
-discarded resources.
-- memPeak - the peak memory usage of RadiantOne since last startup.
-- opCount – the total number of operations RadiantOne has processed on the connection.
->[!note]
->The opCount for certain connections, used for internal operations,
-returns a value that is higher than the combined total of opCountAdd,
-opCountAbandon, opCountBind, opCountModify, opCountModifyDn,
-opCountCompare, and opCountDelete.
-
-- opPeak – the peak (the longest duration) operation info.
-
-    For example:
-2014 - 09 - 02 16:39:44,120  conn=45 op=5 SEARCH REQUEST Duration=1050
-
-    The above could be parsed as:
-<br>Operation Time: 2 014 - 09 - 02 16:39:44,120
-<br>Connection number: 45
-<br>Operation number: 5
-<br>Type of operation: SEARCH REQUEST
-<br>Length of operation to complete=1050 ms
-<br>More information about the connection can be seen by navigating to cn=connection-
-45,cn=monitor like shown below.
-
-![An image showing ](Media/Image1.43.jpg)
-
-Figure 1. 43 : Sample of Querying cn=monitor Branch in RadiantOne
-
-- readOPS – read (search, bind, or compare) rate (op/s) during the last 5 seconds.
-- sizeLimit – the value of the Size Limit property configured for RadiantOne.
-- startTime – the timestamp when the RadiantOne service started.
-- timeLimit – the value of the Time Limit property configured for RadiantOne.
-- version – the version of RadiantOne.
-- writeOPS - write (add, delete, or modify) rate (op/s) during the last 5 seconds.
-
-There is also a script that can be run that returns statistics about the memory usage and
-connection usage for RadiantOne. This script is in the <RLI_HOME>/bin/advanced directory
-and is named checkvds. When this script is run, the default RadiantOne instance is queried
-(cn=monitor branch) and the following statistics are returned: memAllocated, memMax,
-connectionMax, memUsed, currentConnections, memPeak, and connectionPeak.
-
-##### Manually Resetting Connection and Memory Peak
-
-RadiantOne supports special LDAP commands to reset the memory and connection peaks
-without requiring the server to be restarted.
-
-To reset these values, any LDAP client can be used. The examples below use an ldapsearch command line tool.
-
-To reset the connection peak you can use the following (assuming RadiantOne is listening on
-LDAP port 2389 and the super user password is “password”):
-
-#ldapsearch -h host -p 2389 -D "cn=directory manager" -w "password" –b
-"action=resetconnectionpeak" (objectclass=*)
-
-To reset the memory peak, you can use the following (assuming RadiantOne is listening on
-LDAP port 2389 and the super user password is “password”):
-
-#ldapsearch -h host -p 2389 -D "cn=directory manager" -w "password" –b
-"action=resetmempeak" (objectclass=*)
-
->[!warning] If you manually reset the connection peak, the Server Control Panel - > Dashboard tab associated with the node you’ve reset does not reflect the
-current connection peak. This value on the Server Control Panel dashboard only refreshes every 24 hours.
-
-#### Connection, Operation and Client Details
-
-The sample in the screen shot below shows that there are currently eight connections made to
-RadiantOne. Each entry represents a connection. The details pertaining to a specific connection
-can be seen when selecting a specific entry (see the LDAP Browser client below).
-
-![An image showing ](Media/Image1.44.jpg)
-
-Figure 1.44 : Example of Active Connection Information by Querying cn=monitor Branch
-
-The value of opCount attribute indicates how many total operations have been performed by this connection.
-
->[!note] 
->The opCount for certain connections, used for internal operations, returns a value that is higher than the combined total of opCountAdd, opCountAbandon, opCountBind, opCountModify, opCountModifyDn, opCountCompare, and opCountDelete.
-
-The values for the following attributes indicate how many of each type of operation the connection has performed:
-
-- opAdd ---- Add operations
-- opModify ---- Modify operations
-- opAbandon ---- Abandon operations
-- opDelete ---- Delete operations
-- opSearch ---- Search operations
-- opCompare ---- Compare operations
-- opBind ---- Bind operations
-
-Details about which client opened the connection are described in the following attributes:
-
-- clientPort
-- clientIP
-- startTime ---- when the client opened the connection
-- bindDn ---- who the client authenticated with
-- connectionID ---- unique identification allocated for the connection
-
-Details about the server that the client connected to are detailed in the following attributes:
-
-- serverPort
-- serverIP
-
-##### Manually Resetting Connection Operation Statistics
-
-RadiantOne supports a special LDAP command to reset the operation statistics for connections without requiring the server to be restarted.
-
-To reset the operations statistics for connections, any LDAP client can be used. The example below uses an ldapsearch command line tool.
-
-To reset the number of operations (opAbandon, opAdd, opBind, opCompare, opCount, opDelete, opModify, opModifyDn, and opSearch) for all current connections (assuming RadiantOne is listening on LDAP port 2389 and the super user password is “password”):
-
-#ldapsearch -h host -p 2389 -D "cn=directory manager" -w "password" -b
-“action=resetconncounters" (objectclass=*)
-
-#### Processing Activity of RadiantOne
-
-The processing activity of RadiantOne can be retrieved below the cn=processor,cn=monitor
-container. Here you can retrieve the properties associated with the processing queues (the ones
-seen from the Server Control Panel > Usage & Activity tab -> Connections & Operations
-section).
-
-![An image showing ](Media/Image1.45.jpg)
-
-Figure 1.45 : Example of Processing Activity by Querying cn=monitor Branch
-
-- opWaiting – operations waiting in the queue (waiting to be processed by RadiantOne).
-- opExecuting – operations currently being executed by RadiantOne.
-- threadPoolMaxSize – the value of the Max Concurrent Working Threads property
-configured for RadiantOne.
-- threadPoolPeakSize – peak number of threads used by RadiantOne to process
-requests.
-
-#### Naming Context Activity
-
-The amount of activity per naming context can be retrieved by selecting the naming context
-below cn=namings,cn=monitor. An example is shown below.
-
-![An image showing ](Media/Image1.46.jpg)
-
-Figure 1. 46 : Example of Processing Activity for a given Naming Context
-
-The values for the following attributes indicate how many of each type of operation the naming context has received.
-
-- add ---- Add operations
-- modify ---- Modify operations
-- modrdn ---- Modify RDN operations
-- delete ---- Delete operations
-- search ---- Search operations
-- compare ---- Compare operations
-- bind ---- Bind operations
-- total ---- Total number of operations
-
-##### Manually Resetting Operation Statistics for a given Naming Context without Restarting the RadiantOne Service 
-
-RadiantOne supports a special LDAP command to reset the operation statistics for a given naming context without requiring the server to be restarted.
-
-To reset the operations statistics for a given naming context, any LDAP client can be used. The example below uses an ldapsearch command line tool.
-
-To reset the number of operations (compare, bind, modify, modrdn, delete, add and search) for a naming context of o=ad203 (assuming RadiantOne is listening on LDAP port 2389 and the super user password is “password”):
-
-#ldapsearch -h host -p 2389 -D "cn=directory manager" -w "password" -b
-"action=resetnamingctxcounters,o=ad203,cn=namings,cn=monitor" (objectclass=*)
-
-#### Connection Pools
-
-Connection pool statistics related to connections between RadiantOne and the backend data
-sources are logged into the cn=conn-pools,cn=monitor branch. You can retrieve these statistics by querying this branch from any LDAP client.
-
->[!note] 
->The values of the attributes for backend connection pooling are read
-only.
-
-Below the cn=conn-pools container, you will see information on the internal connection pool (INTL), JNDI, LDAP and JDBC connections. The example below shows this information from the RadiantOne LDAP Browser.
-
-![An image showing ](Media/Image1.47.jpg)
-
-Figure 1.47: Example of Connecting Pooling Activity from the cn=monitor Branch
-
-Details regarding the attributes available for each pool type are shown below.
-
-##### Internal Connection Pool Attributes
-
-Internal connection pooling is leveraged in scenarios where RadiantOne makes calls to itself. This can happen during authorization enforcement (e.g. checking group membership) or certain lookup functions used in an interception script.
-
-![An image showing ](Media/Image1.48.jpg)
-
-Figure 1.48: Example of Internal Connection Pool Activity
-
-Max_Pool_Size: The maximum number of connections. When the number of connections reaches this value, further connections are refused.
-
-Idle_Timeout: The length of time that a connection may remain idle before being removed from the pool. A value of 0 (zero) means that the idle time is unlimited, so connections are never timed out.
-
-Current_Num_Of_Pools: Number of connections in the pool that are currently connected.
-
-##### JNDI Connection Pool Attributes
-
-JNDI connection pooling is leveraged for model-driven virtual views and join definitions from directory backends.
-
-![An image showing ](Media/Image1.49.jpg)
-Figure 1.49: Example of JNDI Connection Pool Activity
-
-**Current pool size (anonymous)**: Number of connections in the pool that are currently
-connected using authentication type “none”.
-
-**Preferred pool size**: This is the optimal pool size. Idle connections are removed when the number of connections grows larger than this value. A value of zero means that there is no preferred size, so the number of idle connections is unlimited.
-
-**Authentication types**: Only these authentication types are allowed to connect to the directory server.
-
-**Current pool size (digest)**: Number of JNDI connections in the pool that are currently
-connected using authentication type “digest”
-
-**Protocol types**: Only these protocol types are allowed to connect to the directory server.
-
-**Initial pool size**: Number of JNDI connections created when initially connecting to the pool.
-
-**Current pool size (simple)**: Number of JNDI connections in the pool that are currently
-connected using authentication type “simple”.
-
-**Idle time out**: The length of time that a JNDI connection may remain idle before being removed
-from the pool. A value of 0 (zero) means that the idle time is unlimited, so connections will never
-be timed out.
-
-**Maximum pool size**: The maximum number of JNDI connections. When the number of connections reaches this value, further connections are refused. A value of 0 (zero) means that
-the number of connections is unlimited.
-
-##### LDAP Connection Pool Attributes
-
-LDAP connection pooling is leveraged for proxy views of directory backends.
-
-![An image showing ](Media/Image1.50.jpg)
-
-Figure 1. 50 : Example of LDAP Connection Pool Activity
-
-**Connect_Timeout**: Number of seconds a request for a LDAP connection waits when there are
-no connections available in the free pool and no new connections can be created.
-
-**Max_Pool_Size**: The maximum number of LDAP connections. When the number of
-connections reaches this value, further connections are refused.
-
-**Idle_Timeout**: The length of time that an LDAP connection may remain idle before being
-removed from the pool. A value of 0 (zero) means that the idle time is unlimited, so connections
-are never timed out.
-
-**Current_Num_Of_Pools**: Number of LDAP connections in the pool that are currently connected.
-
-##### JDBC Connection Pool Attributes
-
-JDBC connection pooling is leveraged for views from database backends.
-
-![An image showing ](Media/Image1.51.jpg)
-Figure 1. 51 : Example of JDBC Connection Pool Activity
-
-**Max_Pool_Size**: The maximum number of JDBC connections allowed. When the number of
-connections reaches this value, further connections are refused.
-
-**Idle_Timeout**: The length of time that a JDBC connection may remain idle before being removed from the pool. A value of 0 (zero) means that the idle time is unlimited, so connections
-are never timed out.
-
-**Current_Num_Of_Pools**: Number of JDBC connections in the pool that are currently connected.
-
-##### Manually Resetting Connection Pools without Restarting the RadiantOne Service
-
-RadiantOne supports a special LDAP command to reset the connection pools without requiring the server to be restarted.
-
-To reset the connection pools, any LDAP client can be used. The example below uses an
-ldapsearch command line tool to clear the LDAP connection pool.
-
-#ldapsearch -h host -p 2389 -D "cn=directory manager" -w "password" -b
-“action=clearldappool" (objectclass=*)
-
-The example below uses an ldapsearch command line tool to clear the Database (JDBC)
-connection pool.
-
-#ldapsearch -h host -p 2389 -D "cn=directory manager" -w "password" -b
-“action=clearjdbcpool" (objectclass=*)
-
-### RadiantOne Service Status and Responsiveness – Heartbeat Check
-
-To check if the RadiantOne service is up and responding, it is recommended to issue a periodic
-LDAP search request against cn=config. In the request, bind with any user that has permissions
-(stored locally in RadiantOne Universal Directory) to read cn=config. This indicates that
-RadiantOne is listening on the LDAP port and is able to respond to requests. The default
-RadiantOne ports are 2389/636 (LDAP/LDAPS) although you define the port you want during
-the RadiantOne install.
-
->[!warning] when deploying RadiantOne in a cluster, issue the heartbeat check against each node.
-
-When RadiantOne runs as a service on Windows platforms, you can also use System Center Operations Manager (SCOM) to monitor it. On LINUX platforms, Nagios (or some other daemon service monitor) can be used.
-
--->
+Figure 1.42: Main Control Panel Access Log Settings
 
 ### RadiantOne Logs and Error Messages to Monitor
 
@@ -2129,26 +1516,11 @@ java.lang.Exception: Threshold reached with 85% difference for adds.
 
 In the example above, a periodic persistent cache refresh is configured on the o=sql naming context.
 
-<!--
-
-### ZooKeeper Status – Heartbeat Check
-
-To check if ZooKeeper is up, it is recommended to check that ports 2181 (this is the ZooKeeper
-connection string defined during install and is the port for the cluster), 2888 (communication port
-between ZooKeeper servers in the ensemble), and 3888 (ZooKeeper election port) are open.
-Ports 2888 and 3888 are only applicable if you are deployed in a Cluster (of three nodes
-running ZooKeeper in an ensemble). If more than a port check is desired, third-party tools that
-support JMX can be used. Contact Radiant Logic Support (support@radiantlogic.com) to
-discuss this option.
-
--->
-
 ### ZooKeeper Logs and Error Messages to Monitor
 
 The most important log to monitor for ZooKeeper is zookeeper.log. This log file can be viewed and downloaded from Server Control Panel > Log Viewer. The following are critical error messages to monitor in this log:
 
-- ERROR [ConnectionStateManager-0:ZooManager@?] - Connection lost. (local
-zookeeper node no longer able to contact peers in ensemble)
+- ERROR [ConnectionStateManager-0:ZooManager@?] - Connection lost. (local zookeeper node no longer able to contact peers in ensemble)
 - Non-optimial configuration, consider an odd number of servers.
 - Could not add appenderMBean for [null]
 - Unexpected exception causing shutdown while sock still open
@@ -2346,7 +1718,7 @@ An example is shown below:
 The log level must be set to INFO or higher for this verbose option to work.
 
 SMTP settings (if the following parameters are not specified, the values configured in the Main
-Control Panel > Settings Tab > Monitoring > Email Alerts Settings are used):
+Control Panel -> Settings Tab -> Monitoring -> Email Alerts Settings are used):
 
 - H host name of SMTP server.
 - P SMTP port number. Default is 25.
@@ -2488,3 +1860,5 @@ script and redirect the output (using >) to a file.
 <RLI_HOME>/bin/advanced/diskspaceMonitoring.bat -i 600 -t 90 > diskspacestats.txt
 
 Once disk space usage has been assessed, kill the diskspaceMonitoring script and relaunch again without redirecting output to a file. At this time, you can also increase the checking interval.
+
+-->
