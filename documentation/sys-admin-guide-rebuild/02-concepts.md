@@ -805,7 +805,7 @@ Interception scripts can be configured at a [global level](03-front-end-settings
 
 1.	After the script has been enabled from the Main Control Panel click Save in the upper right corner and apply the changes to the server. 
 
-2.	Edit the script <naming_context>.java
+2.	To edit <naming_context>.java, click Edit Script. When finished editing, click Save.  
 <br>If you are using a global Interception, the script is: globalIntercept.java
 
 3.	Rebuild the intercept.jar file by clicking **Build Interception Jar**. 
