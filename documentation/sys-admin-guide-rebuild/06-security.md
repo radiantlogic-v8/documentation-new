@@ -623,7 +623,7 @@ Figure 9: Manual Edit of ACI
 
 ### Authentication Context
 
-The Authentication Context section offers a variety of settings related to bind rules that can be used for defining the access control instruction. These include the level of assurance associated with the authentication method, days and times of the week during which the identity is allowed to authenticate, and location from which the identity must bind (IP or DNS addresses).
+The Authentication Context section offers a variety of settings related to bind rules that can be used for defining the access control instruction. These include the days and times of the week during which the identity is allowed to authenticate and location from which the identity must bind (IP or DNS addresses).
 
 <!--
 
