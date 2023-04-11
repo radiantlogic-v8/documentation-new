@@ -815,7 +815,7 @@ Users must click “Update Task” before closing out of the task configuration 
  
 Figure 11: Task Configuration
 
-<!-->
+<!--
 
 ### Custom Tasks
 
