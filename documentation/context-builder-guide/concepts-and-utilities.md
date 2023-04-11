@@ -11,7 +11,7 @@ These sections describe some common terms you will find when using the Context B
 
 ### Data Source
 
-A data source represents the connection to a backend identity store. Managing all data sources from one central location simplifies the migration process from a development environment to a production environment. Data sources are managed on the Settings Tab  Server Backend in the Main Control Panel. For details on creating data sources, see RadiantOne System Administration Guide.
+A data source represents the connection to a backend identity store. Managing all data sources from one central location simplifies the migration process from a development environment to a production environment. Data sources are managed on the Settings Tab -> Server Backend in the Main Control Panel. For details on creating data sources, see RadiantOne System Administration Guide.
 
 >[!warning] 
 >One of the main purposes of having a data source defining the connection is to isolate the connection string from the metadata files (.dvx and .orx). It is strongly recommended that you use generic data source names that can remain (be relevant) as you migrate from a development to production environment where you only need to change the connection information.
@@ -558,7 +558,7 @@ To use your own custom class in an interception script:
 
 1.	Use File Manager and upload your .jar file into vds_server/custom/lib. 
 
-2.	Restart the RadiantOne service  to ensure the new jar file is loaded properly. If RadiantOne is deployed in a cluster, restart the services on all nodes. For details on restarting services, see the RadiantOne Environment Operations Center Guide.
+2.	Restart the RadiantOne service to ensure the new jar file is loaded properly. If RadiantOne is deployed in a cluster, restart the services on all nodes. For details on restarting services, see the RadiantOne Environment Operations Center Guide.
 
 3.	Import the class at the beginning of the script. An example is shown below.
 
