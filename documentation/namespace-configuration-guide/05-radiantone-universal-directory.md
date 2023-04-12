@@ -293,15 +293,15 @@ An example of a more complex filter on entryDN is shown below and is equivalent 
 
 The Universally Unique Identifier (UUID) attribute is a reserved, internal attribute that is assigned to each entry and can guarantee uniqueness across space and time.
 
-When adding entries into RadiantOne Universal Directory (LDAP ADD operations) from an LDIF file, if there are UUID attributes they are ignored by RadiantOne during import. RadiantOne generates a unique value for each entry based on the specifications in RFC 4122. 
+When adding entries into RadiantOne Universal Directory (LDAP ADD operations) from an LDIF file, if there are UUID attributes they are ignored by RadiantOne during import. RadiantOne generates a unique value for each entry based on the specifications in RFC 4122.
 
 When initializing with an LDIF file (LDIF INIT), if the entry has a UUID attribute, RadiantOne keeps it. If the entry does not have a UUID attribute, RadiantOne generates a unique value for each entry based on the specifications in RFC 4122.
 
-UUID is an operational attribute meaning that if a client wants this attribute, they must explicitly ask for it in the search request sent to RadiantOne. 
+UUID is an operational attribute meaning that if a client wants this attribute, they must explicitly ask for it in the search request sent to RadiantOne.
 
-When exporting a RadiantOne Universal Directory store to an LDIF file, you have the option to export the UUID attribute or not. The UUID attribute should be exported into LDIF if you plan on using this export to initialize another RadiantOne Universal Directory store, a replica for inter-cluster replication. Otherwise, the UUID attribute generally should not be exported. To export a RadiantOne Universal Directory store and include the UUID attributes, check the Export for Replication option in the export window shown when you click the Export button on the Main Control Panel > Directory Namespace tab, selected RadiantOne Universal Directory store > Properties tab. If you only need to replicate a sub-branch instead of the whole RadiantOne Universal Directory store, you can use the Export option ![An image showing ](Media/export-button.jpg) on the Main Control Panel > Directory Browser tab when you have the sub-branch selected. 
+When exporting a RadiantOne Universal Directory store to an LDIF file, you have the option to export the UUID attribute or not. The UUID attribute should be exported into LDIF if you plan on using this export to initialize another RadiantOne Universal Directory store, a replica for inter-cluster replication. Otherwise, the UUID attribute generally should not be exported. To export a RadiantOne Universal Directory store and include the UUID attributes, check the Export for Replication option in the export window shown when you click the Export button on the Main Control Panel > Directory Namespace tab, selected RadiantOne Universal Directory store > Properties tab. If you only need to replicate a sub-branch instead of the whole RadiantOne Universal Directory store, you can use the Export option ![An image showing ](Media/export-button.jpg) on the Main Control Panel > Directory Browser tab when you have the sub-branch selected.
 
-![An image showing ](Media/Image5.3.jpg)
+![export for replication option](Media/export-universal-directory-store.jpg)
  
 Figure 5.3: Export for Replication Option
 
@@ -663,7 +663,7 @@ Figure 5.23: memberURL Criteria for Dynamic Group
 
 ### Manually Adding Dynamic Members
 
-An alternative to using a wizard to manage dynamic group members is to manually add the groupOfUrls objectclass and memberURL to the group entry. Follow the steps below.
+An option to manage dynamic group members is to manually add the groupOfUrls objectclass and memberURL to the group entry. Follow the steps below.
 
 1.	Navigate to the group in the Main Control Panel > Directory Browser Tab.
 
@@ -682,7 +682,7 @@ An alternative to using a wizard to manage dynamic group members is to manually 
 >[!note] 
 >Groups stored in RadiantOne Universal Directory can contain both explicit members and dynamic members. If RadiantOne is the enforcement point for authorization it first checks to see if the user is an explicit member of the group(s). Then, dynamic group membership is evaluated.
 
-The notion of dynamic group membership is discussed in the Concepts section of the RadiantOne System Administration Guide. It is worth mentioning again, that if the client application is the enforcement point for authorization, then the logic to perform the extra search to the directory to find the group members (based on the memberUrl value of the group entry) must be implemented in the client application code. If the application does not support LDAP dynamic groups, then RadiantOne can be configured to dynamically build the group membership on-the-fly and make all groups managed by RadiantOne appear to have static (explicit) group members. For complete details on this behavior, please see the Groups Builder Wizard in the RadiantOne Identity Service Wizards Guide.
+The notion of dynamic group membership is discussed in the Concepts section of the RadiantOne System Administration Guide. It is worth mentioning again, that if the client application is the enforcement point for authorization, then the logic to perform the extra search to the directory to find the group members (based on the memberUrl value of the group entry) must be implemented in the client application code. If the application does not support LDAP dynamic groups, then RadiantOne can be configured to dynamically build the group membership on-the-fly and make all groups managed by RadiantOne appear to have static (explicit) group members.
 
 For more information on LDAP dynamic groups as opposed to RadiantOne auto-generated groups, please see Groups in Chapter 2 of the RadiantOne System Administration Guide.
 
