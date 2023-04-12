@@ -342,11 +342,13 @@ Rebuilding an index should not happen very frequently. It is a time-consuming pr
 
 ### Backing up a RadiantOne Universal Directory Store
 
-To backup a RadiantOne Universal Directory store, click the Back Up button on the Properties Tab. 
+To back up a RadiantOne Universal Directory store, click Back Up on the Properties Tab.
+
+To download a copy of the backed up Universal Directory store, click `Download`. The compressed file is located in your web browser's default download location. 
 
 ### Restoring a RadiantOne Universal Directory Store
 
-To restore a RadiantOne Universal Directory store from a previous backed up image, click on the Restore button on the Properties Tab for the selected store. Select a date associated with the backup point you would like to restore in the default directory, or browse to the custom backup location containing the files to restore the image from. You must select the .zip file containing the image to restore. The RadiantOne Universal Directory store is deactivated and is inaccessible by clients during the restore operation.
+To restore a RadiantOne Universal Directory store from a previous backed up image, click Restore on the Properties Tab for the selected store. Select a date associated with the backup point you would like to restore in the default directory, or browse to the custom backup location containing the files to restore the image from. You must select the .zip file containing the image to restore. The RadiantOne Universal Directory store is deactivated and is inaccessible by clients during the restore operation.
 
 ### Interception Scripts
 
