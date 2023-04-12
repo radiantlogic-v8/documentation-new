@@ -1,6 +1,6 @@
 ---
 title: Architect Guide
-description: Architect Guide
+description: Learn how to leverage the RadiantOne platform for aggregating, integrating and unifying identities so that applications and services have a single policy information point for identification and authorization of users. Challenges with integrating multiple identity silos, most often untrusted Active Directory domains, are most commonly seen across businesses going through mergers and acquisitions or divestitures. 
 ---
 
 # Common Use Cases
