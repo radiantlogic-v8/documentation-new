@@ -881,13 +881,21 @@ Figure 20: Task Scheduler and Tasks
 On the Server Control Panel > Logs Viewer Tab, you will find the logging console.
 
 >[!note] 
->Only users that belong to the Directory Administrators group have access to the Log Viewer tab.**
+>Only users that belong to the Directory Administrators group have access to the Log Viewer tab.
 
-Select the log file from the drop-down list. You can also set a filter to limit your view of the log based on certain criteria (this only filters on the subset of log data visible in the log window), refresh the log view and/or choose to refresh continuously.
+Select the log from the Log File drop-down list. You can also set a filter to limit your view of the log based on certain criteria (this only filters on the subset of log data visible in the log window), refresh the log view and/or choose to refresh continuously.
 
 ![Log Viewer](Media/Image3.186.jpg)
  
 Figure 12: Log Viewer
+
+To download a log file, select it from the Log File drop-down list and click `Download`. The log file is downloaded to your web browser's default download location.
+
+To include a log's rollover files in the download, select the log from the Log File drop-down menu. Click the drop-down menu beside Download and select `Download from All with Rollovers`. A compressed file is downloaded to your web browser's default download location.
+
+![download all](Media/download-all.jpg)
+ 
+Figure 13: Downloading a Log File and Its Rollover Files
 
 For complete details on logs and troubleshooting, please see the RadiantOne Logging and Troubleshooting Guide.
 
@@ -897,7 +905,7 @@ For complete details on logs and troubleshooting, please see the RadiantOne Logg
 
 Any user that can bind to RadiantOne can potentially administrator the server if they belong to the proper group. A user can belong to multiple groups and the value(s) of the vdPrivilege operational attribute assigned to the group entry dictates the operations that members are authorized to do. The following administration groups are defined for RadiantOne:
 
-**Directory Administrator Role** – members of this group can perform all operations (all operations that the other groups defined below can perform) in addition to:
+`Directory Administrator Role` – members of this group can perform all operations (all operations that the other groups defined below can perform) in addition to:
 
 -	Change privileges for the delegated roles
 
@@ -931,7 +939,7 @@ These functions are dictated by the following values of the vdPrivilege attribut
 The group entry is located in the RadiantOne namespace at:
 cn=directory administrators,ou=globalgroups,cn=config
 
-**Read Only Role** – Members of this group can perform the following operations:
+`Read Only Role` – Members of this group can perform the following operations:
 
 -	Read RadiantOne configuration 
 -	Read settings for any configured instances
@@ -952,7 +960,7 @@ These functions are dictated by the following values of the vdPrivilege attribut
 The group entry is located in the RadiantOne namespace at:
 cn=readonly,ou=globalgroups,cn=config
 
-**Namespace Administrator Role** – Members of this group can perform the following operations:
+`Namespace Administrator Role` – Members of this group can perform the following operations:
 
 -	Read RadiantOne configuration 
 -	Restart the RadiantOne service from Main Control Panel 
@@ -985,7 +993,7 @@ These functions are dictated by the following values of the vdPrivilege attribut
 The group entry is located in the RadiantOne namespace at:
 cn=namespaceadmin,ou=globalgroups,cn=config
 
-**Operator Role** – Members of this group can perform the following operations:
+`Operator Role` – Members of this group can perform the following operations:
 
 -	Read RadiantOne configuration 
 -	Create, update, or delete RadiantOne Universal Directory (HDAP) Stores
@@ -1010,7 +1018,7 @@ These functions are dictated by the following values of the vdPrivilege attribut
 The group entry is located in the RadiantOne namespace at:
 cn=operator,ou=globalgroups,cn=config
 
-**Schema Administrator Role** – Members of this group can perform the following operations:
+``Schema Administrator Role` – Members of this group can perform the following operations:
 
 -	Read RadiantOne configuration 
 -	Create, update or delete schema objects (objectclasses or attributes)
@@ -1030,7 +1038,7 @@ These functions are dictated by the following values of the vdPrivilege attribut
 The group entry is located in the RadiantOne namespace at:
 cn=schemaadmin,ou=globalgroups,cn=config
 
-**ACI Administrator Role** – Members of this group can perform the following operations:
+`ACI Administrator Role` – Members of this group can perform the following operations:
 
 -	Read RadiantOne configuration 
 -	Create, update and delete access controls
@@ -1048,7 +1056,7 @@ These functions are dictated by the following values of the vdPrivilege attribut
 The group entry is located in the RadiantOne namespace at:
 cn=aciadmin,ou=globalgroups,cn=config
 
-**ICS Administrator Role** – Members of this group can perform the following operations:
+`ICS Administrator Role` – Members of this group can perform the following operations:
 
 -	Read RadiantOne configuration 
 -	Stop and start pipelines on the Global Sync Tab
@@ -1072,7 +1080,7 @@ These functions are dictated by the following values of the vdPrivilege attribut
 The group entry is located in the RadiantOne namespace at:
 cn=icsadmin,ou=globalgroups,cn=config
 
-**ICS Operator Role** – This role varies from the ICS Admin role in that this role cannot perform uploads from the Global Sync tab, nor can it modify connector properties. Members of this group can perform the following operations:
+`ICS Operator Role` – This role varies from the ICS Admin role in that this role cannot perform uploads from the Global Sync tab, nor can it modify connector properties. Members of this group can perform the following operations:
 
 -	Read RadiantOne configuration 
 -	Log into the Global Identity Viewer Console and access all applications
@@ -1110,11 +1118,11 @@ As mentioned above, the groups used for delegated administration are Directory A
 
 ![manage group members](Media/Image3.1.jpg)
  
-Figure 13: Manage Group Members
+Figure 14: Manage Group Members
 
 #### Managing Dynamic Members
 
-Figure 14: Manage Group Members
+Figure 15: Manage Group Members
 
 >[!warning] 
 >It is generally advised to assign only local (in a RadiantOne Universal Directory store) user accounts to delegated admin roles. Although you can assign any user in the RadiantOne namespace to a delegated admin role, use caution with this approach because if the backend isn’t accessible, then the user login to the Control Panel will fail and the user will not be able to administer RadiantOne. Also, performance can be degraded because RadiantOne must delegate the bind (authentication) to the backend instead of processing it locally.
@@ -1135,7 +1143,7 @@ Figure 14: Manage Group Members
 
 ![manage group window](Media/Image3.2.jpg)
 
-Figure 15: Manage Group Window
+Figure 16: Manage Group Window
 
 8.	Click **Add Member(s)**.
 
@@ -1165,7 +1173,7 @@ Figure 15: Manage Group Window
 
 ![Dynamic Group Setting](Media/Image3.3.jpg)
 
-Figure 16: Dynamic Group Setting
+Figure 17: Dynamic Group Setting
 
 21.	Set the member attribute to either member or uniqueMember (to match your membership attribute) and click Save in the upper right.
 
@@ -1225,7 +1233,7 @@ The reason you can login with just the user ID as opposed to the full DN is beca
 
 ![Default User ID to DN Mapping Rule](Media/Image3.4.jpg)
  
-Figure 17: Default User ID to DN Mapping Rule
+Figure 18: Default User ID to DN Mapping Rule
 
 ### Leveraging Existing Groups for Delegated Administration
 
@@ -1242,7 +1250,7 @@ To configure groups and users for delegated administration, follow the steps bel
 
 ![Entering vdPrivilege in the Extension Attributes Field](Media/Image3.5.jpg)
 
-Figure 18: Entering vdPrivilege in the Extension Attributes Field
+Figure 19: Entering vdPrivilege in the Extension Attributes Field
 
 3.	Navigate to the Main Control Panel > Directory Browser tab.
 
@@ -1250,13 +1258,13 @@ Figure 18: Entering vdPrivilege in the Extension Attributes Field
 
 ![Modify Attribute > Add Value](Media/Image3.6.jpg)
 
-Image 19: Modify Attribute > Add Value
+Image 20: Modify Attribute > Add Value
  
 5.	Select the vdPrivilege attribute and click **Modify Attribute > Add Value**.
 
 ![Adding the vdPrilvilege Attribute](Media/Image3.7.jpg)
 
-Image 20: Adding the vdPrilvilege Attribute
+Image 21: Adding the vdPrilvilege Attribute
 
 6.	Add a required value for the role. The required values and corresponding roles are described in [Delegated Administration Roles](#delegated-administration-roles).
 
@@ -1264,7 +1272,7 @@ Image 20: Adding the vdPrilvilege Attribute
 
 ![An image showing ](Media/Image3.8.jpg)
  
-Figure 20: Example of Assigning an Existing Group to the Directory Administrator Role
+Figure 22: Example of Assigning an Existing Group to the Directory Administrator Role
 
 >[!note] 
 >Delegated administrators do not have default permissions to manage virtual entries in the directory. If this is required, assign the proper [access controls](06-security#access-control) for the delegated admin groups.
@@ -1288,7 +1296,7 @@ Figure 20: Example of Assigning an Existing Group to the Directory Administrator
 
 ![An image showing ](Media/Image3.9.jpg)
  
-Figure 21: Example of User Login with Full DN
+Figure 23: Example of User Login with Full DN
 
 #### Delegated Administration Roles
 
@@ -1317,4 +1325,4 @@ When other users log into the Control Panel, there is a message prompting the us
 
 ![Message Displayed for Locked Configuration](Media/Image3.149.jpg)
  
-Figure 22: Message Displayed for Locked Configuration
+Figure 24: Message Displayed for Locked Configuration
