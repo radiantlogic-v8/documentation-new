@@ -1,7 +1,7 @@
 ---
 keywords:
 title: Environments Overview
-description: Overview of the Environments home screen user interface
+description: Learn how to access environment details and status in Environment Operations Center, and understand the topics accessible in the options menu.
 ---
 # Environments Overview
 
