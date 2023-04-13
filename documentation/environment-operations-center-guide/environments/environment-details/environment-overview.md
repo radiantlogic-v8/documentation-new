@@ -1,7 +1,7 @@
 ---
 keywords:
 title: Environment Details
-description: Components and navigation for an environment's detailed view
+description: Get a quick introduction to navigating environments in Environment Operations Center. This includes where to see an overview, how to access logs, how to create backups, how to configure alerts and where to see the activity log.
 ---
 
 # Environment Details
