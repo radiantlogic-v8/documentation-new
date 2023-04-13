@@ -1,7 +1,7 @@
 ---
 keywords:
 title: Backup Overview
-description: Overview of environment backups
+description: Get a quick introduction to backing up environments in Environment Operations Center.
 ---
 # Backup Overview
 
