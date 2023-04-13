@@ -1,7 +1,7 @@
 ---
 keywords:
 title: Delete a User
-description: Delete a user
+description: Learn how to delete a user in Environment Operations Center.
 ---
 # Delete a User
 
