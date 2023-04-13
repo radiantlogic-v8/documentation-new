@@ -1,7 +1,7 @@
 ---
 keywords:
 title: Types of Reports
-description: Report types
+description: Learn about Access Reports available in Environment Operations Center that can be used to monitor activities and the overall health of your environments.
 ---
 # Types of Reports
 
