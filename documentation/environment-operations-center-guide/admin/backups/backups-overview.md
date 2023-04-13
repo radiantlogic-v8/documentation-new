@@ -1,7 +1,7 @@
 ---
 keywords:
 title: Admin Backups Overview
-description: Overview of the admin backups tab
+description: Learn how to manage environment backups in Environment Operations Center.
 ---
 # Admin Backups Overview
 
