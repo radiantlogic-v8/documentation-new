@@ -1,6 +1,6 @@
 ---
 title: Architect Guide
-description: Architect Guide
+description: Get a quick introduction to the RadiantOne Main Control Panel and Server Control Panel, in addition to two commonly used tools that facilitate identity view design: Identity Data Analysis and Global Identity Builder.
 ---
 
 # Getting Started with RadiantOne

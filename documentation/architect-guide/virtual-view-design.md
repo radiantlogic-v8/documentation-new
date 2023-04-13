@@ -1,6 +1,6 @@
 ---
 title: Architect Guide
-description: Architect Guide
+description: Get a quick introduction to virtual view design concepts like bind order, object class and attribute mapping, groups-based authorization, and handling overlapping attribute names by defining attribute priority. Other design elements including joins, links to existing virtual views, and access controls are also introduced.
 ---
 
 # Virtual View Design

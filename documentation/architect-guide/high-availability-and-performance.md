@@ -1,6 +1,6 @@
 ---
 title: Architect Guide
-description: Architect Guide
+description: Get a quick introduction to using persistent cache to offer a guaranteed level of search performance for the RadiantOne service. The persistent caching feature offers a variety of refresh mechanisms, periodic (time-based) or near real-time (event-driven), to detect changes and automatically update the cache image.
 ---
 
 # Performance

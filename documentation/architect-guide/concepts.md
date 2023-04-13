@@ -1,6 +1,6 @@
 ---
 title: Architect Guide
-description: Architect Guide
+description: Learn how the concepts of union, authentication and authorization are key in understanding how the RadiantOne platform helps create the identity data fabric used to solve the challenges of having multiple, distributed identity silos.
 ---
 
 # Chapter 2 – Concepts
