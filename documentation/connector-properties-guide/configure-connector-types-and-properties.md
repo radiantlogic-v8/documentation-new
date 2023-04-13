@@ -1,6 +1,6 @@
 ---
 title: Configure capture connector types and properties
-description: Configure capture connector types and properties
+description: Learn how to configure capture connector types, core properties (log level, advanced properties (polling interval, size limit, max retries on connection error, retry interval on connection error, max retries on error, retry interval on error), event filtering (ldap filter, excluded branches, included branches) and event contents (granular per event type mode, request all attributes, operational attributes, excluded attributes, and requested attributes).
 ---
 
 # Configure capture connector types and properties

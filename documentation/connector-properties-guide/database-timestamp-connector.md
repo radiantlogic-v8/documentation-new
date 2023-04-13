@@ -1,6 +1,6 @@
 ---
 title: Database timestamp connector
-description: Database timestamp connector
+description: Learn how to configure a database timestamp capture connector including the supported database date types. The core properties Timestamp Column and the optional properties Processing Delay, SQL Filter and Force Sequential Counters are also discussed.
 ---
 
 # Database timestamp connector

@@ -1,6 +1,6 @@
 ---
 title: Connector Properties Guide
-description: Connector Properties Guide
+description: Get a quick introduction to RadiantOne Global Synchronization. This includes a high-level architecture, and how to manually update the connector cursor which conditions the changed entries that the connector captures during the next polling interval.
 ---
 
 # Overview

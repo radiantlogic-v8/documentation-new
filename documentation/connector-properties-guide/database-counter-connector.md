@@ -1,6 +1,6 @@
 ---
 title: Database Counter connector
-description: Database Counter connector
+description: Learn how to configure a database counter capture connector including the supported database integer types. The core properties Change Type Column and Counter Column and the optional properties SQL Filter and Force Sequential Counters are also discussed.
 ---
 
 # Database Counter connector

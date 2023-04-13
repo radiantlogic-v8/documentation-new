@@ -1,6 +1,6 @@
 ---
 title: Database Changelog (triggers) connector
-description: Database Changelog (triggers) connector
+description: Learn how to configure a database changelog capture connector including where to set the Log Table User, Log Table User Password and Table Name. The optional properties SQL Filter and Force Sequential Counters are also discussed.
 ---
 
 # Database Changelog (triggers) connector

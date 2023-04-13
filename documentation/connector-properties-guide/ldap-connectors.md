@@ -1,6 +1,6 @@
 ---
 title: LDAP connectors
-description: LDAP connectors
+description: Learn about the different LDAP capture connector types: Changelog and Persistent Search. Defining connector properties like LDAP filter, Excluded Branches, Included Branches, and how the connectors use the Switch to Primary Server and Failover Algorithm properties to handle failover if the primary LDAP directory is unavailable are also covered topics.
 ---
 
 # LDAP connectors
