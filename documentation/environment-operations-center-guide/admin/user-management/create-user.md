@@ -1,7 +1,7 @@
 ---
 keywords:
 title: Create a User
-description: Create new users
+description: Learn how to create new users and assign roles in Environment Operations Center. What a user can view and which actions they can perform are dependent on their assigned role. User roles include Tenant Administrator, Environment Administrator, and Environment User
 ---
 # Create a User
 
