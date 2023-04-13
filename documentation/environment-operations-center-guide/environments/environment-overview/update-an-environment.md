@@ -1,7 +1,7 @@
 ---
 keywords:
 title: Update an Environment
-description: Steps to update an existing environment
+description: Learn how to manually update the RadiantOne version running in an environment.
 ---
 # Update an Environment
 
