@@ -1,7 +1,7 @@
 ---
 keywords:
 title: Cluster Monitoring
-description: Cluster monitoring
+description: Learn how to review the status and details of a cluster and how to review the status of all nodes within a cluster in Environment Operations Center.
 ---
 # Cluster Monitoring
 
