@@ -1,7 +1,7 @@
 ---
 keywords:
 title: Account Settings
-description: Overview of the Account Settings tab
+description: Learn how to update your account settings and manage your API tokens. Users can generate API tokens for applications that are required to connect to Environment Operations Center without logging in.
 ---
 # Account Settings
 
