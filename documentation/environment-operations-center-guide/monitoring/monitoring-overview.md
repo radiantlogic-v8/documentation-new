@@ -1,7 +1,7 @@
 ---
 keywords:
 title: Monitoring 
-description: Monitoring
+description: Learn how to use the Monitoring section in Environment Operations Center to view metrics associated with specific environments and RadiantOne FID Nodes. Default monitored metrics include CPU Usage, RAM Usage, Disk space used, connection pool usage, operations count since startup broken down by operation type, and current number of live connections.
 ---
 # Monitoring
 
