@@ -242,14 +242,11 @@ To change the Key Store password (which by default is changeit):
 
 ### Supported Cipher Suites
 
-To view the cipher strength levels enabled by default in RadiantOne, go to the Main Control Panel > Settings Tab > Security section > SSL sub-section and click **Change** next to Supported Cipher Suites. The ciphers that are checked are enabled. To change the enabled ciphers, check/uncheck the desired values.
-
-After changing the cipher levels, save your changes and restart the RadiantOne service.
+To view the cipher strength levels enabled in RadiantOne, go to the Main Control Panel > Settings Tab > Security section > SSL sub-section and click `View` next to Supported Cipher Suites.
 
 ### Enabled SSL Protocols
 
-Enabled SSL Protocols
-To view the enabled SSL protocols enabled in RadiantOne, go to the Main Control Panel > Settings Tab > Security section > SSL sub-section. 
+To view the enabled SSL protocols enabled in RadiantOne, go to the Main Control Panel > Settings Tab > Security section > SSL sub-section. Click `View` next to Enabled SSL Protocols.
 
 ### Debug SSL
 

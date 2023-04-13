@@ -318,8 +318,6 @@ The unnest groups setting is not enabled by default. To define a naming context 
 
 7.	Configure the persistent cache for the virtual view containing the nested groups. For help with configuring persistent cache, see the RadiantOne Deployment and Tuning Guide.
 
-
-
 ## Identity Service Tools
 
 RadiantOne includes a set of tools to assist administrators with some of the most common analysis and configuration tasks.

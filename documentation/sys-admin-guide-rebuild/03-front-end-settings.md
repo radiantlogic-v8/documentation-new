@@ -21,10 +21,7 @@ Figure 1: Administration Section
 
 #### LDAP Port
 
-<!--The LDAP port that the RadiantOne service listens on. By default, this value is set to 2389 (this can be set during the RadiantOne install). 
-A couple of things to keep in mind if you plan on changing the port are: on Windows platforms, you can use any available port less than 65355 and on UNIX platforms you must have admin/root privileges to start the RadiantOne service on any port less than 1024 (because these are considered "privileged").-->
-
-<!-- [!warning] The RadiantOne service must be stopped before changing the port. If RadiantOne is deployed in a cluster, it must be stopped on all nodes. In the Main Control Panel go to the Dashboard tab and stop the RadiantOne service. If it is running as a service/daemon, stop it from the applicable service window/command. Once the service has stopped, change the port on the Settings tab, Server Front End section, Administration. Click Save. Now, re-start the service and it listens on the new port. Also, you must manually edit both the vdsha and replicationjournal LDAP data sources to update the port here as well, in both the primary server settings and for servers defined in the “Failover LDAP Servers” section. Changes to the data sources are performed from the Main Control Panel > Settings Tab > Server Backend > LDAP Data Sources.-->
+This is the internal LDAP port used by the RadiantOne service. The externally facing endpoint/port that clients use to access the service is created when the RadiantOne environment is installed. For details on creating environments and locating the RadiantOne service endpoints, see the Environment Operations Center Guide.
 
 The RadiantOne service also offers an endpoint for the HTTP port for SCIM and REST requests.
 
@@ -670,13 +667,13 @@ To enable SQL access:
 
 #### Web Services (HTTP) Port
 
-The HTTPS interface is enabled by default. The RadiantOne service accepts web service requests (SCIM, ADAP, DSML, SPML) on this endpoint. For details on accessing the RadiantOne Web Services, please see the RadiantOne Web Services API Guide. 
+The HTTPS interface is enabled by default. The RadiantOne service accepts web service requests (SCIM, ADAP, DSML, SPML) on this endpoint. For details on accessing the RadiantOne Web Services, please see http://developer.radiantlogic.com/developer/.
 
 #### DSML, SPML, SCIM, REST (ADAP), SAML
 
 SCIM settings are configured in the Server Front End > SCIM section. 
 
-For details on configuring and accessing RadiantOne via DSML, SPML, SCIM, and REST, please see the RadiantOne Web Services API Guide. 
+For details on configuring and accessing RadiantOne via DSML, SPML, SCIM, and REST, please see http://developer.radiantlogic.com/developer/. 
 
 # Interception
 

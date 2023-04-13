@@ -111,7 +111,7 @@ You can log in using a PIV Card/Smart Card/Certificate as an alternative to usin
 >[!warning] 
 >The Client Certificate DN Mapping is only accessible by a member of the [Directory Administrator role/group](01-introduction#delegated-administration-roles).
 
-7.	Click **ADD** and set the Certificate DN to the subject in the user’s certificate. If the subject in the SSL certificate is blank, you can specify that a Subject Alternative Name (SAN) should be used. You can use an alternative name in the mapping by specifying {alt} before the regular expression. For example: {alt}^(.+)$ uses the first alternative name found. You can be more specific to specify which alternative name you want to match by specifying the type [0-8]. For example: {alt:0}^(.+)$ uses the otherName alternative name. The type number associated with each is shown below.
+7.	Click `ADD` and set the Certificate DN to the subject in the user’s certificate. If the subject in the SSL certificate is blank, you can specify that a Subject Alternative Name (SAN) should be used. You can use an alternative name in the mapping by specifying {alt} before the regular expression. For example: {alt}^(.+)$ uses the first alternative name found. You can be more specific to specify which alternative name you want to match by specifying the type [0-8]. For example: {alt:0}^(.+)$ uses the otherName alternative name. The type number associated with each is shown below.
 
 Alternative Name | Type Number
 -|-
@@ -198,10 +198,11 @@ Detailed steps:
 
 To enable support for OIDC authentication:
 
-1.	Have your client ID and secret associated with the Control Panel application configured in your OIDC server ready. The Redirect URL configured for the web application should point to the URLs associated with the Main Control Panel 
+1.	Have your client ID and secret associated with the Control Panel application configured in your OIDC server ready. The Redirect URL configured for the web application should point to the URL associated with the Main Control Panel.
 
 ```
 https://cp.federated-identity.com/main/j_spring_openid_security_check
+
 ```
 
 2.	Log into the Main Control Panel.
@@ -222,11 +223,11 @@ https://cp.federated-identity.com/main/j_spring_openid_security_check
 
 10.	Click Edit next to OIDC to FID User Mapping. This configuration determines the logic to link the user that logs into the Control Panel with an Open ID Connect token with an identity in the RadiantOne namespace. This process determines which identity is used to enforce authorization within the Main Control Panel. The user mappings must result in a single user. If no user is found or if more than one user is found, the login fails. The RadiantOne user that is linked to the authentication token must be a member of a RadiantOne [Delegated Administrative group](01-introduction#delegated-administration-roles). 
 
-11.	In the OIDC to FID User Mappings window, click **Add**.
+11.	In the OIDC to FID User Mappings window, click `Add`.
 
 12.	There are two options for identifying the RadiantOne admin user. If the RadiantOne user can be identified by using values/claims from the token to comprise the DN, use the Simple DN Expression Builder. If the RadiantOne user can be identified by performing a lookup in RadiantOne based on values from the token, use the Search Expression Builder.
 
-13.	Click **Save**.
+13.	Click `Save`.
 
 Examples of configuring the Simple DN Expression and the Search Expression are shown below.
 
@@ -1326,3 +1327,5 @@ When other users log into the Control Panel, there is a message prompting the us
 ![Message Displayed for Locked Configuration](Media/Image3.149.jpg)
  
 Figure 24: Message Displayed for Locked Configuration
+
+
