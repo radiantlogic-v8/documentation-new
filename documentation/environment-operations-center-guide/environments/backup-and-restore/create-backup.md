@@ -1,7 +1,7 @@
 ---
 keywords:
 title: Create an Environment Backup
-description: Overview of environment backups
+description: Learn how to manually create backups of environments in Environment Operations Center.
 ---
 # Create an Environment Backup
 
