@@ -1,7 +1,7 @@
 ---
 keywords:
 title: Create an Environment
-description: Guide to create a new environment
+description: Learn how to create a new environment in Environment Operations Center.
 ---
 # Create an Environment
 
