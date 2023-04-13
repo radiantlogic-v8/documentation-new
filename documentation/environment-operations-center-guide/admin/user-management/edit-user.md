@@ -1,7 +1,7 @@
 ---
 keywords:
 title: Edit a User
-description: Edit a user
+description: Learn how to edit the details, status, role, and environment assignments for users in Environment Operations Center.
 ---
 # Edit a User
 
