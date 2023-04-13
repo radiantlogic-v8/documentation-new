@@ -1,7 +1,7 @@
 ---
 keywords:
 title: Delete an Environment
-description: Delete an environment
+description: Learn how to delete an environment in Environment Operations Center.
 ---
 # Delete an Environment
 
