@@ -1,7 +1,7 @@
 ---
 keywords:
 title: Environment Logs
-description: Reviewing environment logs
+description: Learn how to access and review logs for a specific environment in Environment Operations Center. Log files let you monitor activities and troubleshoot errors in your environments. They outline the event description, a date and time stamp of when the event occurred, and the email of the user who triggered the event.
 ---
 # Environment Logs
 
