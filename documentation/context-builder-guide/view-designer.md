@@ -1,6 +1,6 @@
 ---
 title: Context Builder Guide
-description: Context Builder Guide
+description: Learn about the View Designer tool key concepts of Global Catalog, Container, Label, Content, Standard Link and Merge Link. You will also learn how to use the View Designer including how to configure RDN Settings, define Attributes to be exposed in the virtual view and creating virtual views using containers, contents, labels and links.
 ---
 
 # View Designer

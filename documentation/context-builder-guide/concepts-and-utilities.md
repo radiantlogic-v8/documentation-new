@@ -1,6 +1,6 @@
 ---
 title: Context Builder Guide
-description: Context Builder Guide
+description: Learn the concepts of data sources, joins, computed attributes, and interception scripts and how they are used for creating virtual views. An introduction to the Hierarchy Builder tool is also discussed.
 ---
 
 # Concepts and Utilities

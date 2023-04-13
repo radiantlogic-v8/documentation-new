@@ -1,6 +1,6 @@
 ---
 title: Context Builder Guide
-description: Context Builder Guide
+description: Get a quick introduction to the Context Builder tool for creating model-driven virtual views for the RadiantOne platform. Topics include the Schema Manager and View Designer tools, and log settings/file applicable for troubleshooting the Context Builder.
 ---
 
 # Introduction

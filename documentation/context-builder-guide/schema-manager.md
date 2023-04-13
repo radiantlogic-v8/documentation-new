@@ -1,6 +1,6 @@
 ---
 title: Context Builder Guide
-description: Context Builder Guide
+description: Learn about the Schema Manager tool key concepts of Primary Key, Display Name, Derived View, and Relationships. You will also learn how to use the Schema Manager including how to display objects and relationships in a schema file, capture metedata from ldap-accessible backends, jdbc-accessible database backends and SCIMv2 backends, and enhance the captured metadata by declaring primary keys, relationships, creating synonyms and mapping metadata.
 ---
 
 # Schema Manager
