@@ -1,7 +1,7 @@
 ---
 keywords:
 title: Deploy the Secure Data Connector Client
-description: Deploy the secure data connector client
+description: Learn how to deploy the Secure Data Connector client in your on-premise or private cloud environment.
 ---
 # Deploy the Secure Data Connector Client
 
