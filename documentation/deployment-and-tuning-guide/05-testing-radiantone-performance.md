@@ -1,6 +1,6 @@
 ---
 title: Deployment and Tuning Guide
-description: Deployment and Tuning Guide
+description: Learn about testing LDAP performance for the RadiantOne service and what aspects can impact performance: Joins, interception scripts, cache, referral chasing, network delays and logging.
 ---
 
 # Chapter 5: Testing RadiantOne Performance

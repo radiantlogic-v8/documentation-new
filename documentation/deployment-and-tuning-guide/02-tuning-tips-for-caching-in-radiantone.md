@@ -1,6 +1,6 @@
 ---
 title: Deployment and Tuning Guide
-description: Deployment and Tuning Guide
+description: Learn how to tune RadiantOne performance by configuring persistent cache. Topics include initializing the persistent cache, using paging, and supporting zipped and encrypted ldif files. Options and configuration details for refreshing persistent cache are also discussed. 
 ---
 
 # Chapter 2: Tuning Tips for Caching in the RadiantOne Federated Identity Service

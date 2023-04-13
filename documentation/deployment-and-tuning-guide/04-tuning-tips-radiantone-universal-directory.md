@@ -1,6 +1,6 @@
 ---
 title: Deployment and Tuning Guide
-description: Deployment and Tuning Guide
+description: Learn about key tuning options for RadiantOne Universal Directory stores. This includes indexed attributes, non-indexed attributes, full text search, disabling changelog, and logging statistics.
 ---
 
 # Chapter 4: Tuning Tips for RadiantOne Universal Directory

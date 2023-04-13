@@ -1,6 +1,6 @@
 ---
 title: Deployment and Tuning Guide
-description: Deployment and Tuning Guide
+description: Learn about key tuning options for virtual views created in the Main Control Panel > Directory Namespace tab or Wizards tab. These options include case sensitivity for searches, modifying attributes exposed in virtual views, indexing attributes used in joins, Request Binary/BLOB Attributes Only When Necessary, Process Joins and Computed Attributes Only When Necessary, connection pooling, disable referral chasing, excluded attributes for Active Directory backends, Include & Exclude filters, and limiting attributes requested from LDAP backends.
 ---
 
 # Chapter 3: Tuning Tips for Specific Types of Backend Data Sources in the RadiantOne Federated Identity Service

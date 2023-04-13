@@ -1,6 +1,6 @@
 ---
 title: Deployment and Tuning Guide
-description: Deployment and Tuning Guide
+description: Learn about global tuning options for the RadiantOne platform. This includes Maximum Connections, Size Limit, Time Limit, Look Through Limit, Idle Connection Timeout, Number of Processing Queues, Max Concurrent Working Threads, Max Pending Connection Request, Access Regulation, Server Logs, Changelog and Log Archiving.
 ---
 
 # Chapter 1: Global Tuning

@@ -1,6 +1,6 @@
 ---
 title: Deployment and Tuning Guide
-description: Deployment and Tuning Guide
+description: Learn about a common, basic deployment architecture and how to configure inter-cluster replication.
 ---
 
 # Chapter 7: Deployment Architecture
