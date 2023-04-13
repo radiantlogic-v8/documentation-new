@@ -1,7 +1,7 @@
 ---
 keywords:
 title: Add a Data Connector
-description: Add a data connector
+description: Learn how to add a Secure Data Connector to deploy a secure tunnel for integrating data from data sources on-premises to RadiantOne FID running in the cloud environment.
 ---
 # Add a Data Connector
 
