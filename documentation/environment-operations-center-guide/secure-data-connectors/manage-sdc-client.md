@@ -1,7 +1,7 @@
 ---
 keywords:
 title: Manage the Secure Data Connector Client
-description: Manage the secure data connector client
+description: Learn how to manage a Secure Data Connector client, including updating, troubleshooting, and reviewing client logs.
 ---
 # Manage the Secure Data Connector Client
 
