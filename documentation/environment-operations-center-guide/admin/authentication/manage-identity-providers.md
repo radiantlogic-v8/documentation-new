@@ -1,7 +1,7 @@
 ---
 keywords:
 title: Manage Identity Authentication Providers
-description: Manage identity authentication providers
+description: Learn how to edit, disable, or delete identity providers in Environment Operations Center.
 ---
 # Manage Identity Authentication Providers
 
