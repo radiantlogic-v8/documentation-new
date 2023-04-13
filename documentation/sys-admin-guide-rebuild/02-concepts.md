@@ -530,7 +530,7 @@ Only one priority level is assigned per attribute per source. Whereas a combinat
 
 Attribute mail coming from a join/secondary source that is searchable, updateable, NORMAL priority and NOT hidden = 128 
 
-Attribute mail coming from a join/secondary source that is NOT searchable, updateable, NORMAL priority and NOT hidden = 640         (128+512=640)
+Attribute mail coming from a join/secondary source that is NOT searchable, updateable, NORMAL priority and NOT hidden = 640       (128+512=640)
 
 Attribute mail coming from a join/secondary source that is searchable, NOT updateable, HIGHEST priority and NOT hidden = 1279      (255+1024=1279)
 

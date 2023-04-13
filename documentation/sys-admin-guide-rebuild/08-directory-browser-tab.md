@@ -311,15 +311,15 @@ To export entries to an LDIF file, click ![export ldif](Media/export-ldif.jpg). 
 
 Exporting entries to an LDIF file requires enabling [Proxy Authorization](03-front-end-settings#proxied-authorization-control) for users other than the [RadiantOne super user](01-introduction#delegated-administration-roles). The exported entries contain only the attributes that applicable ACIs allow the user to read. Refer to [Security and Access Controls](06-security#security-and-access-controls) for more information.
 
-**Source DN** – starting location from where to export entries.
+`Source DN` – starting location from where to export entries.
 
-**Target DN** – (optional) the suffix associated with the target DNs. The entries in the LDIF file have their source DN suffix translated into the target DN. If there is no value here, the entries in the LDIF file have keep the source DN.
+`Target DN` – (optional) the suffix associated with the target DNs. The entries in the LDIF file have their source DN suffix translated into the target DN. If there is no value here, the entries in the LDIF file have keep the source DN.
 
-**Scope – select the One Entry option to export only the entry indicated by the Source DN. Select One Level to export entries one level below the Source DN. Select Sub Tree to export all entries below the Source DN.**
+`Scope` – select the One Entry option to export only the entry indicated by the Source DN. Select One Level to export entries one level below the Source DN. Select Sub Tree to export all entries below the Source DN.
 
-**Entries and File** – Choose to either export all entries, or enter a max number to export. Also, enter a file name in the Save As property.
+`Entries and File` – Choose to either export all entries, or enter a max number to export. Also, enter a file name in the Save As property.
 
-**File Type Drop-down Menu** – The file extension can be either LDIF or LDIFZ (requires LDIF encryption key). The LDIF format is available only if the [secureldifexport](06-security#requiring-ldifz-for-exports) property in ZooKeeper is set to False. The location of the local downloads depends on the web browser’s configuration.
+`File Type Drop-down Menu` – The file extension can be either LDIF or LDIFZ (requires LDIF encryption key). The LDIF format is available only if the [secureldifexport](06-security#requiring-ldifz-for-exports) property in ZooKeeper is set to False. The location of the local downloads depends on the web browser’s configuration.
 
 When exporting a RadiantOne Universal Directory store to an LDIF file, you have the option to export the UUID attribute or not. The UUID attribute should be exported into LDIF if you plan on using this export to initialize another RadiantOne Universal Directory store, a replica for inter-cluster replication. Otherwise, the UUID attribute generally should not be exported. To export a RadiantOne Universal Directory store and include the UUID attributes, check the Export for Replication option. 
 

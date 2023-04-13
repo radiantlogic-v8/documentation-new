@@ -37,11 +37,11 @@ To automatically organize the display for all objects associated with the topolo
 
 For details about configuring persistent cache with periodic and real-time refresh, see the RadiantOne Deployment and Tuning Guide.
 
-# Replication Monitoring Tab
+## Replication Monitoring Tab
 
 RadiantOne Universal Directory (HDAP) stores across clusters support multi-master replication. This type of replication is referred to as inter-cluster replication. The state of inter-cluster replication can be monitored from the Replication Monitoring Tab.
 
-## Central Journal Replication
+### Central Journal Replication
 
 The default, recommended replication model for RadiantOne Universal Directory (HDAP) stores is based on a publish and subscribe methodology. When writes occur on a site, the leader node publishes the changes into a central journal. The leader nodes on all other sites pick up the changes from the central journal and update their local store. These changes are then automatically replicated out to follower/follower-only nodes within the cluster. For more details on inter-cluster replication, please see the RadiantOne Deployment and Tuning Guide.
 
@@ -77,7 +77,7 @@ File alerts are enabled by default for some standard alerts which are associated
 
 File alerts can be enabled for custom alerts also. These settings are in the Monitoring > Custom Alerts section.
 
-File alerts are logged in a CSV formatted file alerts.log.
+File alerts are logged in a CSV formatted file named alerts.log.
 
 In the File Alerts Settings section, indicate a rollover file size and how many files to keep in the archive.
 

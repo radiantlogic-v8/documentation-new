@@ -122,7 +122,7 @@ Select the type of LDAP Data Source (VDS/OpenDJ/SunOne/Active Directory/Novell/O
 
 3.	Select a secure data connector from the Connect with Agent drop-down menu. For information on secure data connector, see [secure data connector](02-concepts#secure-data-connector).
 
-4.  Click **Test Connection** to validate the values entered above.
+4. Click **Test Connection** to validate the values entered above.
 
 5.	Click **Save** to apply the changes to the server.
 
@@ -415,7 +415,7 @@ Figure 9: Database Data Sources
 >[!note] 
 >A secure connection can be made to the database if the JDBC driver supports it. If the server you are connecting to uses a certificate issued by a trusted Certificate Authority, then all you need to do during the creation of the data source is enter the SSL port in the appropriate location of the URL. If the server you are connecting to uses a self-signed certificate, then this certificate must be imported into the [RadiantOne client trust store](06-security#client-certificates-default-java-truststore).
 
-6.  Select a secure data connector from the Connect with Agent drop-down menu. For information on secure data connector, see [secure data connector](02-concepts#secure-data-connector).
+6. Select a secure data connector from the Connect with Agent drop-down menu. For information on secure data connector, see [secure data connector](02-concepts#secure-data-connector).
 
 7.	Click **Test Connection**.
 

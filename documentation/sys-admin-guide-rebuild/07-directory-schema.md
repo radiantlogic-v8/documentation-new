@@ -62,7 +62,7 @@ Figure 2: Manually Defining New Object Classes and Attributes
 
 3.	Click **Add** at the bottom.
 
-4.	Enter a name for the object class, parent (if it inherits from an existing object class), and OID (optional). Using the left and right arrow buttons, declare which attributes are required and which are optional.  
+4.	Enter a name for the object class, parent (if it inherits from an existing object class), and OID (optional). Using the left and right arrow buttons, declare which attributes are required and which are optional.
 
 5.	An auxiliary object class is one that does not define the core type of an entry, but defines additional characteristics of that entry. If the object class you are creating should be auxiliary, check the Auxiliary Object Class option.
 

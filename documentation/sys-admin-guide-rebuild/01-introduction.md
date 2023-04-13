@@ -32,7 +32,7 @@ This guide is broken down into the following chapters:
 <br> This chapter describes access controls, security settings for RadiantOne, and how to configure them.
 
 [Chapter 7 - Directory Schema](07-directory-schema.md)
-<br> This chapter describes the RadiantOne LDAP schema and the different ways to extend it.  
+<br> This chapter describes the RadiantOne LDAP schema and the different ways to extend it.
 
 [Chapter 8 - Directory Browser](08-directory-browser-tab.md)
 <br> This chapter describes the functions offered in the Directory Browser tab.
@@ -309,7 +309,7 @@ The configuration and monitoring features described in this section are applicab
 
 # Accessing the Server Control Panel
 
-Once the Main Control Panel is started, you can also access the Server Control Panel by clicking ![Server Control Panel button](Media/server-control-panel-button.png) the top banner. The Server Control Panel opens in a new browser tab and you are automatically logged in based on the identity used in the Main Control Panel. 
+Once the Main Control Panel is started, you can also access the Server Control Panel by clicking ![Server Control Panel button](Media/server-control-panel-button.png) in the top banner. The Server Control Panel opens in a new browser tab and you are automatically logged in based on the identity used in the Main Control Panel. 
 
 # Using the Server Control Panel
 
@@ -371,7 +371,7 @@ Figure 2: Server Information
 
 **Created Time** – Indicates the time RadiantOne was installed.
 
-**Node Type** – Indicates the type of node. If RadiantOne is deployed in a cluster, the value could be core (leader), core (follower) or follower only. If RadiantOne is deployed in a classic (active/active or active/passive) all servers are leaders.
+**Node Type** – Indicates the type of node. If RadiantOne is deployed in a cluster, the value could be core (leader), core (follower) or follower only.
 
 **RadiantOne Leader** – Has a value of true if the RadiantOne node is the leader of the cluster. Otherwise the value is false, meaning it is a follower or follower only node in the cluster.
 

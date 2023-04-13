@@ -27,7 +27,7 @@ Figure 1: SSL Settings
 
 ## SSL Settings
 
-SSL settings are applicable to clients connecting to the RadiantOne service LDAPS endpoint and involve  indicating how mutual authentication should be handled, client certificate DN mapping (for enforcing authorization), managing the certificates in the default Java truststore (cacerts), which cipher suites are supported by RadiantOne, andcertificate revocation. These subjects are described in this section.
+SSL settings are applicable to clients connecting to the RadiantOne service LDAPS endpoint and involve indicating how mutual authentication should be handled, client certificate DN mapping (for enforcing authorization), managing the certificates in the default Java truststore (cacerts), which cipher suites are supported by RadiantOne, andcertificate revocation. These subjects are described in this section.
 
 ### Enable SSL
 
@@ -746,7 +746,7 @@ You can indicate that a client connection must originate from a single IP addres
 **Range of IPv4 addresses (use the “/”) like:**
 <br>10.11.12.0/24 which represents the given IPv4 address and its associated routing prefix 10.11.12.0, or equivalently, its subnet mask 255.255.255.0, which has 24 leading 1-bits. This covers the range between 10.11.12.0 to 10.11.12.255.	
 **Range of IPv6 addresses:**
-<br>2001:db8::/32    which covers the range between 2001:db8:0:0:0:0:0:0 to 2001:db8:ffff:ffff:ffff:ffff:ffff:ffff
+<br>2001:db8::/32 which covers the range between 2001:db8:0:0:0:0:0:0 to 2001:db8:ffff:ffff:ffff:ffff:ffff:ffff
 
 For IPv6 addresses, use the syntax defined by RFC 2373. For example, 0:0:0:0:0:0:13.1.68.3 which can also be expressed as ::13.1.68.3 are both valid forms of IPv6 addresses. An address with a subnet prefix length can also be used (e.g. 12AB::CD30:0:0:0:0/60). Wildcards cannot be used in IPv6 addresses.
 
@@ -807,6 +807,7 @@ To define access controls:
     If you choose custom, and your attribute doesn’t appear in the list, you must update the RadiantOne LDAP schema appropriately before setting the ACI. For details on this, please see [Extending RadiantOne LDAP Schema](07-directory-schema#extending-the-radiantone-ldap-schema). After the schema has been updated, go back to the Settings tab > Security section > Access Controls sub-section and follow the steps mentioned above to add the custom attribute list.
 
 9.	In the Permissions section, select either to allow or deny. 
+
 10.	Select the [operations](06-security#operations) that you want allowed or denied.
 
 11.	In the Authentication Context section, configure bind rules as needed.
@@ -867,7 +868,7 @@ To export a certificate:
 
 # Limits
 
-The settings found in the Main Control Panel -> Settings Tab -> Limits section are related to enforcing search size limits and activity quotas. These settings prevent against Denial of Service (DoS) attacks towards RadiantOne. Remember to save any changes you make to limits.
+The settings found in the Main Control Panel > Settings Tab > Limits section are related to enforcing search size limits and activity quotas. These settings prevent against Denial of Service (DoS) attacks towards RadiantOne. Remember to save any changes you make to limits.
 
 >[!warning]
 >Changing any property in the Limits section requires a restart of the RadiantOne service to take effect. If RadiantOne is deployed in a cluster, restart the service on all nodes.
@@ -934,10 +935,10 @@ To define custom limits:
 1.	Click **ADD** in the Custom Limits section.
 
 2.	Select a subject from the drop-down list. The possible subjects are described below.
-    -	Sub-tree - the location (base DN) in the RadiantOne namespace containing the users that are affected by the custom limits.
-    -	Group – a group entry in the virtual namespace. All members of this group are affected by the custom limits.
-    -	Anonymous users – any authenticated users or anonymous users.
-    -	Authenticated Users – any authenticated users.
+    - Sub-tree - the location (base DN) in the RadiantOne namespace containing the users that are affected by the custom limits.
+    - Group – a group entry in the virtual namespace. All members of this group are affected by the custom limits.
+    - Anonymous users – any authenticated users or anonymous users.
+    - Authenticated Users – any authenticated users.
 
 3.	Click **CHOOSE** to browse and select a subject location – if sub-tree is selected, the subject location is the base DN containing the users that are affected by the custom limits. If group is selected, the subject location is the DN of the group entry. All members of this group are affected by the custom limits. If authenticated users or anonymous users are selected, subject location is irrelevant.
 
@@ -984,7 +985,7 @@ The max pending connection property represents a queue of server socket connecti
 
 After a client connects to the RadiantOne service, the amount of activity they perform can be limited by configuring access regulation. The activity checking can be performed based on the user that connects to RadiantOne.
 
-The “Restrictions Checking Interval” parameter indicated in the Per User  section is the time frame in which the activity (max binds and max operations) is monitored. Once the time interval is reached, the counts are reset. For example, if Special Users Group checking is enabled, and the checking interval, max bind operations per checking interval and max operations per checking interval are set to 300, 30 and 10 respectively, during a 5 minute (300 secs) period, anyone who is a member of the special users group can bind no more than 30 times to the RadiantOne service and not perform more than 10 operations. This count resets every 5 minutes. If a user attempts to perform more than the allowed number of operations, the RadiantOne service refuses the operation and the client must wait until the checking interval resets.
+The “Restrictions Checking Interval” parameter indicated in the Per User section is the time frame in which the activity (max binds and max operations) is monitored. Once the time interval is reached, the counts are reset. For example, if Special Users Group checking is enabled, and the checking interval, max bind operations per checking interval and max operations per checking interval are set to 300, 30 and 10 respectively, during a 5 minute (300 secs) period, anyone who is a member of the special users group can bind no more than 30 times to the RadiantOne service and not perform more than 10 operations. This count resets every 5 minutes. If a user attempts to perform more than the allowed number of operations, the RadiantOne service refuses the operation and the client must wait until the checking interval resets.
 
 ### Per User
 
