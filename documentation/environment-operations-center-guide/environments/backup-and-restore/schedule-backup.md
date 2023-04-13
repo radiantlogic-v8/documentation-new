@@ -1,7 +1,7 @@
 ---
 keywords:
 title: Schedule Automated Environment Backups
-description: How to schedule environment backups
+description: Learn how to schedule automated backups of environments in Environment Operations Center.
 ---
 # Schedule Automated Environment Backups
 
