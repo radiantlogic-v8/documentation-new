@@ -1,7 +1,7 @@
 ---
 keywords:
 title: Manage Data Connectors
-description: Manage data connectors
+description: Learn how to edit, enable or disable, and delete Secure Data Connectors from Environment Operations Center.
 ---
 # Manage Data Connectors
 
