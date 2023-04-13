@@ -1,7 +1,7 @@
 ---
 keywords:
 title: Getting Started
-description: Getting started
+description: Get a quick introduction to the Environment Operations Center including how to view and manage environments, access the reporting and monitoring sections, configuring secure data connectors, and performing administrative functions.
 ---
 # Getting Started
 
