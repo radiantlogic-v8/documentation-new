@@ -1,6 +1,6 @@
 ---
 title: Identity Data Analysis 
-description: Identity Data Analysis 
+description: Learn how to use the Data Analysis tool to analyze data sets and understand the data analysis results for Entry Statistics, Value Statistics, and Correlation Candidates. 
 ---
 
 # Chapter 2: Using the Identity Data Analysis Tool

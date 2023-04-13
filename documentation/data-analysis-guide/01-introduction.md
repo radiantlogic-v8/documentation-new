@@ -1,6 +1,6 @@
 ---
 title: Identity Data Analysis 
-description: Identity Data Analysis 
+description: Get a quick introduction to the Data Analysis tool to understand how it can help assess the quality of your identity data and assist in determining good attribute candidates for correlation logic depending on the complexity and amount of identity data overlap. 
 ---
 
 # Chapter 1: Introduction
