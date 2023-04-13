@@ -1,7 +1,7 @@
 ---
 keywords:
 title: Authentication Overview
-description: Authentication overview
+description: Get a quick introduction to how authentication is handled for Environment Operations Center. Environment Operations Center leverages external identity authentication providers for user login. Authentication service providers are managed under the the Authentication tab of the Admin section. This guide provides an overview of the Authentication tab and its features.
 ---
 # Authentication Overview
 
