@@ -1,7 +1,7 @@
 ---
 keywords:
 title: Restore an Environment from a Backup
-description: How to restore a previous environment backup
+description: Learn how to manually restore backups of environments in Environment Operations Center.
 ---
 # Restore an Environment from a Backup
 
