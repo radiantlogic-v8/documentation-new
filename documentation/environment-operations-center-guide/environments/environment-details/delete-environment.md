@@ -1,7 +1,7 @@
 ---
 keywords:
 title: Delete an Environment from its Detailed View
-description: Steps required to delete a specific environment from its detailed view
+description: Learn how to delete environments in Environment Operations Center.
 ---
 # Delete an Environment from its Detailed View
 
