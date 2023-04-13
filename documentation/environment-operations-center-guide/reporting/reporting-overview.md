@@ -1,7 +1,7 @@
 ---
 keywords:
 title: Reporting Overview
-description: Reporting overview
+description: Learn about the environment reporting options available Environment Operations Center.
 ---
 # Reporting Overview
 
