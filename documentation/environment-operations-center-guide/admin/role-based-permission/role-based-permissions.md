@@ -1,5 +1,4 @@
 ---
-keywords:
 title: Role-based Permissions
 description: Learn about the three roles supported in Environment Operations Center: Tenant Administrator, Environment Administrator, and Environment User. 
 ---
