@@ -1,7 +1,7 @@
 ---
 keywords:
 title: Update an Environment from its Detailed View
-description: Guide to update an environment from its details view
+description: Learn how to manually update the RadiantOne version running in an environment.
 ---
 # Update an Environment from its Detailed View
 
