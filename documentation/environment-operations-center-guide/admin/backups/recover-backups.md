@@ -1,7 +1,7 @@
 ---
 keywords:
 title: Recover a Deleted Environment Backup
-description: How to recover deleted environment backups
+description: Learn how to recover a deleted environment in Environment Operations Center.
 ---
 # Recover a Deleted Environment Backup
 
