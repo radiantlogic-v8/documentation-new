@@ -1,7 +1,7 @@
 ---
 keywords:
 title: Add an Identity Provider
-description: Add a new identity provider
+description: Learn how to add a new authentication identity provider for logging into Environment Operations Center. GitHub and Google are configured by default.
 ---
 # Add an Identity Provider
 
