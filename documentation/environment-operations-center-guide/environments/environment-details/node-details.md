@@ -1,7 +1,7 @@
 ---
 keywords:
 title: Update and Monitor Environment Nodes
-description: Update and monitor nodes
+description: Learn how to adjust the number of nodes in a RadiantOne cluster and to monitor the status details of a specific node. 
 ---
 # Update and Monitor Environment Nodes
 
