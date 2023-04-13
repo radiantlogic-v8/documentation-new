@@ -1,7 +1,7 @@
 ---
 keywords:
 title: Admin Overview
-description: Overview of the Admin home screen user interface
+description: Learn more about the administrative functions than can be performed in the Environment Operations Center. This includes how you can access tabs to manage your account settings, Environment Operation Center users, environment alerts and integrations, and monitor cluster health.
 ---
 # Admin Overview
 
