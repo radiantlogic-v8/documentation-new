@@ -1,7 +1,7 @@
 ---
 keywords:
 title: Manage Integrations
-description: Manage integrations
+description: Learn how to integrate with external notification services (e.g. Slack, Email, PagerDuty) to send alerts about monitored events in Environment Operations Center.
 ---
 # Manage Integrations
 
