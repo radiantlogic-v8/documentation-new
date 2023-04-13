@@ -1,7 +1,7 @@
 ---
 keywords:
 title: Secure Data Connectors Overview
-description: Secure data connectors overview
+description: Get a quick introduction to using Secure Data Connectors for connecting data from sources on-premises or private cloud environments to RadiantOne SaaS.
 ---
 # Secure Data Connectors Overview
 
