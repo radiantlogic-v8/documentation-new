@@ -1,6 +1,6 @@
 ---
 title: Upload a Global Identity Builder project
-description: Upload a Global Identity Builder project
+description: Learn how to perform single and bulk uploads in a Global Identity Builder project. Details on upload behavior and upload logs are also discussed.
 ---
 
 # Upload a Global Identity Builder project
