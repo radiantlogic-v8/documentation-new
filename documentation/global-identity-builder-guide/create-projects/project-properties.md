@@ -1,6 +1,6 @@
 ---
 title: Global Identity Builder project properties
-description: Global Identity Builder project properties
+description: Learn about Global Identity Builder project properties and runtime optimizations. These include Project Name, Naming Context, Global Profile Object Class, Additional Object Classes, Login Attributes, Display/Search Attributes, Custom Attributes. Runtime optimizations include: Skip correlation on first source upload and Automatic login attribute analysis
 ---
 
 # Global Identity Builder project properties
