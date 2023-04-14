@@ -1,6 +1,6 @@
 ---
 title: Extend the global profile view
-description: Extend the global profile view
+description: Learn how to extend the virtual view created in Global Identity Builder to add interception scripts, computed attributes, or external joins.
 ---
 
 # Extend the global profile view

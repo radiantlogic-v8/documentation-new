@@ -1,6 +1,6 @@
 ---
 title: Perform manual identity administration in Global Identity Builder
-description: Perform manual identity administration in Global Identity Builder
+description: Learn how to perform manual identity administration in the Global Identity Builder tool. This includes removing identities from the global profile, identity unlinking, viewing unresolved identities, adding unresolved identities into the global profile, running login conflict analysis, and launching login
 ---
 
 # Perform manual identity administration in Global Identity Builder
@@ -93,7 +93,7 @@ Possible ways to resolve a conflicted identity are:
 >[!warning]
 >This approach should only be done when [real-time persistent cache refresh](manage-persistent-cache/overview.md) is not running. When you reset a data source, the identities are removed from the global profile. If the identity is the last reference in the global profile (there are no other users linked to it) it is deleted and the unique identifier (VUID) assigned to the identity is removed. In this case, identities that are uploaded again from the same data source are assigned a new global identifier.
 
-2. Change the attribute mappings that populates the login attribute from one (or more) of the identity sources. Then re-upload the identity sources.  
+2. Change the attribute mappings that populates the login attribute from one (or more) of the identity sources. Then re-upload the identity sources.  
 
 >[!note]
 >This approach should only be done if when [real-time persistent cache refresh](manage-persistent-cache/overview.md) is not running.

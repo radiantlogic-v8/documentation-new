@@ -1,6 +1,6 @@
 ---
 title: Introduction to Global Identity Builder
-description: Introduction to Global Identity Builder
+description: Get a quick introduction to the Global Identity Builder tool. Learn how it can be used to create a unique reference list of identities that client applications can query to identify and authenticate users and to retrieve user profile attributes to use as a basis for enforcing authorization and personalizaton.
 ---
 
 # Introduction to Global Identity Builder
@@ -40,19 +40,6 @@ The purpose of this guide is to describe how to use the Global Identity Builder 
 The Global Identity Builder tool is accessible from the Wizards tab in the RadiantOne Main Control Panel.
 
 Any user that is a member of the RadiantOne Directory Administrator role, or the Namespace Admin role can access the tool. For details on the RadiantOne delegated admin roles, see the RadiantOne System Administration Guide.
-
-To access the Global Identity Builder tool, navigate in a web browser to the **Main Control Panel** associated with the RadiantOne leader node.
-
-`http://{HOST_NAME}:7070/main/login`
-
-Examples include the following:
-
-- `http://vdservername:7070/main/login`
-- `http://10.11.12.10:7070/main/login`
-
-![The RadiantOne Main Control Panel Login Page](./media/image5.png)
-
-Enter your credentials and select **Login**. Go to the Wizards tab and select **Global Identity Builder**.
 
 ## Next steps
 

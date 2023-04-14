@@ -1,6 +1,6 @@
 ---
 title: Global Identity Builder concepts
-description: Global Identity Builder concepts
+description: Learn the concepts of projects, identity correlation, identity source, identity source browser, global profile, global profile browser, unresolved identity, correlation rule, and VUID as they relate to using the Global Identity Builder tool.
 ---
 
 # Global Identity Builder concepts
@@ -20,7 +20,7 @@ Identity Correlation is the process of linking overlapping users based on correl
 
 ## Identity source
 
-An identity source is a data source such as Active Directory, Oracle database, Oracle Directory Server, etc. that can contribute identities to the global profile view. Any data source configured in RadiantOne can be an identity source used in the tool. When correlation rules result in a source identity matching exactly one global profile identity, the identities are automatically linked.  If a source identity does not match any identities in the global profile, or matches more than one global profile identity, the default behavior is to categorize it as [unresolved](#unresolved-identity) and not add it to the global profile.
+An identity source is a data source such as Active Directory, Oracle database, Oracle Directory Server, etc. that can contribute identities to the global profile view. Any data source configured in RadiantOne can be an identity source used in the tool. When correlation rules result in a source identity matching exactly one global profile identity, the identities are automatically linked.  If a source identity does not match any identities in the global profile, or matches more than one global profile identity, the default behavior is to categorize it as [unresolved](#unresolved-identity) and not add it to the global profile.
 
 >[!warning]
 >Custom data sources are supported. However, you must first virtualize the identities in RadiantOne and store them in persistent cache. Then, use the persistent cache as the LDAP data source for the project. For details on this process, please see [integrate and configure a Global Identity Builder custom data source](integrate-configure-data-source.md).
@@ -61,7 +61,7 @@ After uploading identity sources into the global profile, a persistent cache is 
 
 ## Correlation rule
 
-Correlation rules are defined for each identity source and indicate how a source identity can be automatically linked to a global profile identity. When correlation rules result in a source identity matching exactly one global profile identity, the identities are automatically linked and share the same [VUID](#vuid) unique identifier.  If a source identity does not match any identities in the global profile, or matches more than one global profile identity, the default behavior is to categorize it as [unresolved](#unresolved-identity) and not add it to the global profile.
+Correlation rules are defined for each identity source and indicate how a source identity can be automatically linked to a global profile identity. When correlation rules result in a source identity matching exactly one global profile identity, the identities are automatically linked and share the same [VUID](#vuid) unique identifier.  If a source identity does not match any identities in the global profile, or matches more than one global profile identity, the default behavior is to categorize it as [unresolved](#unresolved-identity) and not add it to the global profile.
 
 ## Attribute mapping
 

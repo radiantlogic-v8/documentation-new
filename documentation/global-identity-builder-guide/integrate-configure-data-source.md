@@ -1,6 +1,6 @@
 ---
 title: Integrate and configure a Global Identity Builder custom data source
-description: Integrate and configure a Global Identity Builder custom data source
+description: Learn how to integrate custom identity data sources into the Global Identity Builder. A custom identity data source is defined as one that cannot be accessed via LDAP or JDBC.
 ---
 
 # Integrate and configure a Global Identity Builder custom data source
