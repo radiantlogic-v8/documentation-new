@@ -1,6 +1,6 @@
 ---
 title: Link existing groups to global profile identities
-description: Link existing groups to global profile identities
+description: Get a quick introduction to the potential need for associating existing groups to users in the view created using the Global Identity Builder tool. Group membership is based on member DN values. The member DN must be converted into the DN used in the Global Identity Builder view to ensure applications that rely on group membership for enforcing authorization retrieve the correct user memberships.
 ---
 
 # Link existing groups to global profile identities
