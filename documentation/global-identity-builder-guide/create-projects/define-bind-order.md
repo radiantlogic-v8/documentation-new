@@ -1,6 +1,6 @@
 ---
 title: Define bind order in Global Identity Builder
-description: Define bind order in Global Identity Builder
+description: Learn how to define bind order in a Global Identity Builder project to dictate how RadiantOne directs authentication request to backend data sources. 
 ---
 
 # Define bind order in Global Identity Builder
