@@ -17,9 +17,13 @@ Clients that send an LDAP request without doing a "bind" are treated as anonymou
 
 Simple authentication consists of sending the LDAP server the fully qualified DN of the client (user) and the client's clear-text password. To avoid exposing the password in clear over the network, you can use SSL (an encrypted channel). For details on configuring SSL, please see the [SSL Settings](#ssl-settings) section.
 
+<!--
+
 **SASL:**
 
-Clients that send an authentication request to RadiantOne using <!-- Kerberos (GSS-SPNEGO), (GSSAPI), --> MD5 (DIGEST-MD5) or Certificate (EXTERNAL) are leveraging one of the supported SASL mechanisms. The SASL EXTERNAL mechanism is supported by default, but you must configure the [Client Certificate to DN Mapping](#client-certificate-dn-mapping) so the RadiantOne service knows how to identify the user in the certificate to a user in the RadiantOne namespace. For details on these supported mechanisms, please see [Authentication Methods](#authentication-methods).
+Clients that send an authentication request to RadiantOne using Kerberos (GSS-SPNEGO), (GSSAPI), MD5 (DIGEST-MD5) or Certificate (EXTERNAL) are leveraging one of the supported SASL mechanisms. The SASL EXTERNAL mechanism is supported by default, but you must configure the [Client Certificate to DN Mapping](#client-certificate-dn-mapping) so the RadiantOne service knows how to identify the user in the certificate to a user in the RadiantOne namespace. For details on these supported mechanisms, please see [Authentication Methods](#authentication-methods).
+
+-->
 
 ![SSL Settings](Media/Image3.81.jpg)
 
@@ -27,11 +31,13 @@ Figure 1: SSL Settings
 
 ## SSL Settings
 
-SSL settings are applicable to clients connecting to the RadiantOne service LDAPS endpoint and involve indicating how mutual authentication should be handled, client certificate DN mapping (for enforcing authorization), managing the certificates in the default Java truststore (cacerts), which cipher suites are supported by RadiantOne, andcertificate revocation. These subjects are described in this section.
+SSL settings are applicable to clients connecting to the RadiantOne service LDAPS endpoint and involve indicating how <!--mutual authentication should be handled, client certificate DN mapping (for enforcing authorization), -->managing the certificates in the default Java truststore (cacerts), which cipher suites are supported by RadiantOne, and certificate revocation. These subjects are described in this section.
 
 ### Enable SSL
 
-SSL/TLS is used by default and cannot be disabled. 
+SSL/TLS is used by default and cannot be disabled.
+
+<!--
 
 ### Certificate-based Authentication: Support for Mutual Authentication
 
@@ -55,6 +61,8 @@ If mutual authentication is not required, but you would like RadiantOne to reque
 If you do not want RadiantOne to request a client certificate at all, check the None option.
 
 If the client certificate is not signed by a known certificate authority, it must be added in the [RadiantOne client truststore](#client-certificate-trust-store-cluster-level-trust-store).
+
+
 
 #### Requiring Certificate-based Authentication
 
@@ -177,8 +185,6 @@ Only when the first DN mapping rule fails to find a user will the other DN mappi
 
 Remember, changing any parameters related to SSL requires a restart of the RadiantOne service.
 
-
-<!-- 
 ### Client Certificates (Default Java Truststore)
 
 For RadiantOne to connect via SSL to an underlying data source, or accept client certificates for authentication, the appropriate client certificate needs imported (unless they are signed by a trusted/known Certificate Authority). For classic RadiantOne architectures (active/active or active/passive), these certificates can be imported into the default Java trust store (<RLI_HOME>\jdk\jre\lib\security\cacerts). 
@@ -191,8 +197,6 @@ To manage the client certificates contained in the default Java trust store, cli
 ![Managing Client Certificates in the Default Java Truststore](Media/Image3.85.jpg)
 
 Figure 4: Managing Client Certificates in the Default Java Truststore
-
-
 
 **Viewing Client Certificates**
 

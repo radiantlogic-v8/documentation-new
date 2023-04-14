@@ -128,7 +128,7 @@ Select the type of LDAP Data Source (VDS/OpenDJ/SunOne/Active Directory/Novell/O
 
 ### LDAP Data Source Advanced Settings
 
-For LDAP backends there are additional settings that are optional: SSL/TLS, STARTTLS, Mutual Authentication, <!-- Kerberos, --> Chasing Referrals and the Paged Results Control. These options are described below.
+For LDAP backends there are additional settings that are optional: SSL/TLS, STARTTLS,  <!-- Mutual Authentication, Kerberos, --> Chasing Referrals, and the Paged Results Control. These options are described below.
 
 #### SSL/TLS
 
@@ -162,6 +162,8 @@ Figure 4: Configuration for RadiantOne to Connect to the Underlying LDAP Server 
 >[!warning] 
 >When using STARTTLS, be aware that you cannot use the IP of the server in the Host Name parameter, you need the exact name of the server (which should match what is in the certificate), or you will get the following error:
 ...JNDI connect Error : javax.net.ssl.SSLPeerUnverifiedException: hostname of the server '10.11.12.203' does not match the hostname in the server's certificate.
+
+ <!--
 
 ### Mutual Authentication
 
@@ -199,8 +201,6 @@ Some important tips are:
 -	When storing a private certificate in a java keystore, the store password and the certificate password must match. This is why you should put only one certificate per store.
 
 -	RadiantOne uses StartTLS when connecting to the backend directory. Therefore, the SSL checkbox should be UNchecked and the normal (non-SSL) port should be listed in the port parameter of the data source.
-
-<!-- 
 
 ### Kerberos
 
