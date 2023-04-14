@@ -1,6 +1,6 @@
 ---
 title: Define attribute priority in Global Identity Builder
-description: Define attribute priority in Global Identity Builder
+description: Learn how to define attribute priority precedence in a Global Identity Builder project when multiple identity sources publish values to the same global profile attribute (defined in the attribute mapping).
 ---
 
 # Define attribute priority in Global Identity Builder
