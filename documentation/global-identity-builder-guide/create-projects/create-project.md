@@ -1,6 +1,6 @@
 ---
 title: Create a Global Identity Builder project
-description: Create a Global Identity Builder project
+description: Get a quick introduction to the high level steps associated with creating a Global Identity Builder project.
 ---
 
 # Create a Global Identity Builder project
