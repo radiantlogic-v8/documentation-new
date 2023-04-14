@@ -1,6 +1,6 @@
 ---
 title: Users and groups distributed in multiple containers in Global Identity Builder
-description: Users and groups distributed in multiple containers in Global Identity Builder
+description: Learn how to work with LDAP directory data sources in Global Identity Builder when the identity data is spread across mulitple containers.
 ---
 
 # Users and groups distributed in multiple containers in Global Identity Builder
