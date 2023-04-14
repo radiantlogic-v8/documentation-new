@@ -1,6 +1,6 @@
 ---
 title: Global Identity Builder identity sources
-description: Global Identity Builder identity sources
+description: Learn how to add identity data sources into a Global Identity Builder project.
 ---
 
 # Global Identity Builder identity sources
