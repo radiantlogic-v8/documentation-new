@@ -1,6 +1,6 @@
 ---
 title: Nested groups in Global Identity Builder
-description: Nested groups in Global Identity Builder
+description: Learn how to integrate identities in Global Identity Builder that are associated with LDAP nested groups. If a source used in the Global Identity Builder contains identities that are associated with LDAP nested groups, and you plan on using the Global Identity Viewer to search for identities and groups, use RadiantOne to create a virtual view of the source that automatically flattens nested groups, and then add this view as an identity source into the Global Identity Builder project. 
 ---
 
 # Nested groups in Global Identity Builder
