@@ -1,6 +1,6 @@
 ---
 title: Define computed group membership in Global Identity Builder
-description: Define computed group membership in Global Identity Builder
+description: Learn how to define a computed attribute for a group membership attribute to remap the user DNs to reference/match the naming used in the Global Identity Builder project.
 ---
 
 # Define computed group membership in Global Identity Builder
