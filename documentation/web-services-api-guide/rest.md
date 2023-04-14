@@ -154,6 +154,8 @@ Figure 6: Enabling the Always Authenticate Option
 
 4.	Restart the RadiantOne service. If deployed in a cluster, restart the service on all nodes.
 
+<!--
+
 ### Mutual Authentication – Certificate-based Authentication
 
 For normal SSL communications, where the only requirement is that the client trusts the server, no additional configuration is necessary (as long as both entities trust each other). For mutual authentication, where there is a reciprocal trust relationship between the client and the server, the client must generate a certificate containing his identity and private key in his keystore. The client must also make a version of the certificate containing his identity and public key, which RadiantOne must store in its truststore. In turn, the client needs to trust the server; this is accomplished by importing the server's CA certificate into the client truststore.
@@ -187,6 +189,8 @@ To configure support for mutual authentication to ADAP, follow the steps below.
 9.	In the SSL section, click the Change button next to Client Certificate DN Mapping. This is the mapping between the client certificate subject/SAN and the target/mapped DN in the RadiantOne namespace. Authorization is enforced by the RadiantOne service based on the target/mapped DN that is the result of your mapping rules. For details on how to define client certificate DN mapping, see the RadiantOne System Administration Guide.
 
 10.	Click Save and restart the RadiantOne service. If RadiantOne is deployed in a cluster, restart the service on all nodes.
+
+-->
 
 #### OpenID Connect Token Authentication
 
