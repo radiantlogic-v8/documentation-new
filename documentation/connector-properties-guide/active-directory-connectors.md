@@ -1,6 +1,6 @@
 ---
 title: Active Directory connectors
-description: Learn about the three different Active Diretory capture connector types: USNChanged, DirSync, and Hybrid that are included in the RadiantOne platform. These connectors can be used to detect changes in Active Directory for persistent cache refreshes and/or used for detecting changes in Active Directory as a source for a Global Synchronization pipeline. Defining connector properties like LDAP filter, Excluded Branches, Included Branches, Determine Move Operations, and how the connectors handle failover if the primary Active Directory is unavailable are also covered topics.
+description: Learn about the three different Active Diretory capture connector types- USNChanged, DirSync, and Hybrid that are included in the RadiantOne platform. These connectors can be used to detect changes in Active Directory for persistent cache refreshes and/or used for detecting changes in Active Directory as a source for a Global Synchronization pipeline. Defining connector properties like LDAP filter, Excluded Branches, Included Branches, Determine Move Operations, and how the connectors handle failover if the primary Active Directory is unavailable are also covered topics.
 ---
 
 # Active Directory connectors
