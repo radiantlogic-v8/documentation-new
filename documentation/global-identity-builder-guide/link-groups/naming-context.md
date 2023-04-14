@@ -1,6 +1,6 @@
 ---
 title: Create a root naming context for global profile identities and groups
-description: Create a root naming context for global profile identities and groups
+description: Learn how to create a root naming context in RadiantOne that aggregates existing groups along with the virtual view containing the unique list of users created with the Global Identity Builder.
 ---
 
 # Create a root naming context for global profile identities and groups
