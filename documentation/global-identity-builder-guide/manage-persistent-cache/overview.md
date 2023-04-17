@@ -1,6 +1,6 @@
 ---
 title: Manage Global Identity Builder real-time persistent cache refresh
-description: Manage Global Identity Builder real-time persistent cache refresh
+description: Learn how the cached virtual view created by the Global Identity Builder is kept up to date with changes that happen in the identity sources using real-time persistent cache refresh.
 ---
 
 # Manage Global Identity Builder real-time persistent cache refresh
