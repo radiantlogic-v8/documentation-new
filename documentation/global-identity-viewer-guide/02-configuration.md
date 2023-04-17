@@ -1,6 +1,6 @@
 ---
 title: Global Identity Viewer
-description: Global Identity Viewer
+description: Learn how to perform the needed prerequisite configuration tasks prior to using the Global Identity Viewer.
 ---
 
 # Chapter 2: Configuration

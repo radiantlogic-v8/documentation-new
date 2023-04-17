@@ -1,6 +1,6 @@
 ---
 title: Global Identity Viewer
-description: Global Identity Viewer
+description: Learn how to navigate and use the Global Identity Viewer to browse and search identities and groups, manage display templates, manage edit templates, define basic queries, define advanced queries, and configure reports.
 ---
 
 # Chapter 3: Global Identity Viewer
@@ -22,7 +22,7 @@ By default, the first 100 entries from the global profile are returned. Click on
 
 ![An image showing ](Media/Image3.4.jpg)
 
-Figure 3.3 : Example Global Profile Identity
+Figure 3.30: Example Global Profile Identity
 
 Select a tab to view the identity’s attributes and group membership contained in that particular source. In the example below, the user Brian Carmen’s account in the Active Directory Partner Domain (identified as identity source adpartnerdomain) is displayed. Specific attributes are displayed based on the template associated with the data source. This particular template returns the names of the groups Brian is a member of as the Roles attribute (e.g. Support and Managers).
 

@@ -1,6 +1,6 @@
 ---
 title: Global Identity Viewer
-description: Global Identity Viewer
+description: Get a quick introduction to the Global Identity Viewer and how it facilitates searching for identities and/or groups across all data sources that have been integrated in a given Global Identity Builder project.
 ---
 
 # RadiantOne Global Identity Viewer
