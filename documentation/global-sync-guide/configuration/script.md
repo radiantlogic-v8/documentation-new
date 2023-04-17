@@ -1,6 +1,6 @@
 ---
 title: Script
-description: Script
+description: Learn how to configure transformation scripts for Global Synchronization pipelines. Topics include how to leverage existing Java classes, introduce custom logging, and testing the script.
 ---
 
 # Script
