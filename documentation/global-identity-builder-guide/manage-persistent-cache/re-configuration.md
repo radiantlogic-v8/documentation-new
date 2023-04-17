@@ -1,6 +1,6 @@
 ---
 title: Re-configure Global Identity Builder project properties
-description: Re-configure Global Identity Builder project properties
+description: Learn how to stop the persistent cache refresh process associated with the virtual view created by the Global Identity Builder when configuration changes are needed in the project.
 ---
 
 # Re-configure Global Identity Builder project properties
