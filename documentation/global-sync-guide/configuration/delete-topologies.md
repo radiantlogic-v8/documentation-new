@@ -1,6 +1,6 @@
 ---
 title: Delete topologies
-description: Delete topologies
+description: Learn how to delete topologies configured in Global Synchronization.
 ---
 
 # Delete topologies
