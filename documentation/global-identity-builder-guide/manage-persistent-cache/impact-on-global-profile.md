@@ -1,6 +1,6 @@
 ---
 title: Impact of real-time persistent cache refresh on global profile identities
-description: Impact of real-time persistent cache refresh on global profile identities
+description: Learn about the expected update behavior to global profile identities based on events detected on the sources that are published as cache refresh operations.
 ---
 
 # Impact of real-time persistent cache refresh on global profile identities
