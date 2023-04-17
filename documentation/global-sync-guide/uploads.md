@@ -1,6 +1,6 @@
 ---
 title: Uploads
-description: Uploads
+description: Learn how to perform uploads in Global Synchroniztaion when the destination needs populated with entries before starting synchronization.
 ---
 
 # Uploads
