@@ -1,6 +1,6 @@
 ---
 title: Deployment
-description: Deployment
+description: Learn about the deployment architecture for RadiantOne Global Synchronization and how it includes fault tolerance and recovery. Learn how to secure access to the message queues and manage synchronization including viewing logs, suspending synchronization, and monitoring and alerts.
 ---
 
 # Deployment
