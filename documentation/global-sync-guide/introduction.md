@@ -1,6 +1,6 @@
 ---
 title: Global Sync module introduction
-description: Get a quick introduction to the RadiantOne Global Synchronization architecture and related components: Agents, Queues, Sync Engine, Attribute mappings and transformation scripts
+description: Get a quick introduction to the RadiantOne Global Synchronization architecture and related components - Agents, Queues, Sync Engine, Attribute mappings and transformation scripts
 ---
 
 # Global Sync module introduction
