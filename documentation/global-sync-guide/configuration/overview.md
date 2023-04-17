@@ -1,6 +1,6 @@
 ---
 title: Overview
-description: Overview
+description: Get a quick introduction to the Global Synchronization configuration steps.
 ---
 
 # Overview
