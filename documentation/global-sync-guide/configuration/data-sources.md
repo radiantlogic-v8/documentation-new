@@ -1,6 +1,6 @@
 ---
 title: Data sources
-description: Data sources
+description: Quick introduction on where to configure data sources.
 ---
 
 # Data sources
