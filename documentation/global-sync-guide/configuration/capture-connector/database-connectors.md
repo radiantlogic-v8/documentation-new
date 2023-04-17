@@ -1,6 +1,6 @@
 ---
 title: Database connectors
-description: Database connectors
+description: Learn about database capture connector types and how to configure them for detecting changes in sources. Topics include DB Changelog, DB Timestamp, and DB Counter change detection methods.
 ---
 
 # Database connectors
