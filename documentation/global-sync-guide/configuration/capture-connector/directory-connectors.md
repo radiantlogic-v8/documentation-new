@@ -1,6 +1,6 @@
 ---
 title: Directory connectors
-description: Directory connectors
+description: Learn about directory capture connector types and how to configure them for detecting changes in sources. Topics include Active Directory Dirsync, Active Directory USNChanged, Active Directory Hybrid, LDAP, and Persistent Search  change detection methods.
 ---
 
 # Directory connectors
