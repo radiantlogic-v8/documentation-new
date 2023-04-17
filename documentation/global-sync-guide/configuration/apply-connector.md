@@ -1,6 +1,6 @@
 ---
 title: Apply connector
-description: Apply connector
+description: Get a quick introduction to the apply connector process in Global Synchronization.
 ---
 
 # Apply connector
