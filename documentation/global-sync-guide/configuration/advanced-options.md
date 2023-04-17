@@ -1,6 +1,6 @@
 ---
 title: Advanced options
-description: Advanced options
+description: Learn about advanced configuration options for defining Target Object RDN, defining Target DN, Rule Processing, Synchronizing Identity Linkage across Rules, Logging Rule Variables in the sync_engine.log, and Logging Transformed XML Messages in sync_engine.log.
 ---
 
 # Advanced options
