@@ -1,6 +1,6 @@
 ---
 title: Capture connector configuration
-description: Capture connector configuration
+description: Get a quick introduction to how to configure capture connector types in Global Synchronization.
 ---
 
 # Capture connector configuration
