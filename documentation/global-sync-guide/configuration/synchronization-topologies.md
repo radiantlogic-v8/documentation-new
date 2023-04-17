@@ -1,6 +1,6 @@
 ---
 title: Synchronization topologies
-description: Learn about the two prerequisite steps for configuring global synchronization topologies: mounting the objects you want to synchronize in the RadiantOne directory namespace and extending the RadiantOne LDAP schema with any new/custom object definitions.
+description: Learn about the two prerequisite steps for configuring global synchronization topologies - mounting the objects you want to synchronize in the RadiantOne directory namespace and extending the RadiantOne LDAP schema with any new/custom object definitions.
 ---
 
 # Synchronization topologies
