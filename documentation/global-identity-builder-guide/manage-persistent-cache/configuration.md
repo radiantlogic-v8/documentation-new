@@ -1,6 +1,6 @@
 ---
 title: Configure Global Identity Builder real-time persistent cache refresh
-description: Configure Global Identity Builder real-time persistent cache refresh
+description: Learn how to configure persistent cache refreshes for the virtual view created by the Global Identity Builder.
 ---
 
 # Configure Global Identity Builder real-time persistent cache refresh
