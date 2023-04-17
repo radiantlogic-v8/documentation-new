@@ -1,6 +1,6 @@
 ---
 title: Custom data sources
-description: Custom data sources
+description: Get a quick introduction to how to integrate custom data sources into Global Synchronization pipelines.
 ---
 
 # Custom data sources
