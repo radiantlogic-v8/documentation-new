@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  ping-pong:
+  trigger-remote-build-action:
     runs-on: ubuntu-latest
     steps:
       - name: Dispatch initiating repository event
