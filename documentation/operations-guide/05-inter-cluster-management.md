@@ -160,15 +160,12 @@ c:\radiantone\vds\bin\advanced>resync-util.bat resync -d localvds,localvds2 -b o
 
 ### Command Arguments
 
-```
-- d <datasource1,datasource2>
-```
+**- d `<datasource1,datasource2>`**
+
 <br> [required] This parameter specifies the names of the data sources. The data sources must exist
 in RadiantOne prior to using the utility and you need one LDAP data source per cluster. Data sources are passed in the command as comma-separated values (e.g. cluster1,cluster2). If the - x argument is not specified, the first data source indicated in the -d argument is considered the definitive source for discrepant entries.
 
-```
-- b <base_dn>
-```
+**- b `<base_dn>`**
 <br>[required] The base DN of the stores to be examined.
 
 ```
@@ -179,22 +176,14 @@ in RadiantOne prior to using the utility and you need one LDAP data source per c
 >[!note]
 >The disconnectionTimestamp format is yyyyMMddHHmmss.SSS or yyyyMMddHHmmss.SSSZ.
 
-```
-[-i <ignoreAttributes>]
-```
+**[-i `<ignoreAttributes>`]**
 <br>[optional] This argument specifies the attribute(s) to be ignored by the utility when comparing stores. If not specified, the utility examines all attributes in the specified stores. Attributes are comma-separated (e.g. cn,description,mail).
 
-```
-[-c <true/false>]
-```
+**[-c `<true/false>`]**
 <br>[optional] The default behavior is to save the LDIF files that sort and describe the entries that are discrepant between the two stores. If you do not want the LDIF files stored on the file system, pass -c false. If generated, these LDIF files are stored at <RLI_HOME>vds_server\ldif\export.
 
-```
-[-a <true/false>]
-```
+**[-a `<true/false>`]**
 <br> [optional] To perform an analysis of the stores without applying changes, pass the -a false argument, or omit this argument from the command. After analysis, you can copy the relevant LDIF file to the corresponding cluster and manually import it to update the store. If you prefer to automatically apply the changes required to bring the stores back in sync, pass the - a true argument and the re-sync occurs.
 
-```
-[-m <ignoreCase>]
-```
+**[-m `<ignoreCase>`]**
 <br> [optional] To ignore case when detecting changes, pass the - i true argument, or omit this argument from the command. To detect case differences, pass the -i false argument.
