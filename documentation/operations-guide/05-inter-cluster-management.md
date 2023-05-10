@@ -173,7 +173,9 @@ in RadiantOne prior to using the utility and you need one LDAP data source per c
 >[!note]
 >The disconnectionTimestamp format is yyyyMMddHHmmss.SSS or yyyyMMddHHmmss.SSSZ.
 
-`\[-i <ignoreAttributes>]`
+```
+[-i <ignoreAttributes>]
+```
 <br>[optional] This argument specifies the attribute(s) to be ignored by the utility when comparing stores. If not specified, the utility examines all attributes in the specified stores. Attributes are comma-separated (e.g. cn,description,mail).
 
 `[-c <true/false>]`
