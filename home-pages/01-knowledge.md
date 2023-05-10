@@ -70,7 +70,7 @@ Harness your identity data with intelligent integration to drive better business
 <section>
    
   > [Installation](/environment-operations-center-guide/environments/environment-overview/create-an-environment)  
-  > Learn how to use the Environments Operations Center to create environments and install the RadiantOne Intelligent Identity Data Platform.
+  > Learn how to use the Environments Operations Center to create environments and install the RadiantOne Identity Data Platform.
   
   > [Configuration](/namespace-configuration-guide/05-radiantone-universal-directory)  
   > Learn how to create Universal Directory stores and manage all configuration properties related to indexing, attribute encryption, and replication.
@@ -97,7 +97,7 @@ Harness your identity data with intelligent integration to drive better business
   > Learn about RadiantOne Global Synchronization including detailed architecture, key concepts and common use cases for the tool.
   
   > [Installation](/environment-operations-center-guide/environments/environment-overview/create-an-environment)  
-  > Learn how to use the Environments Operations Center to create environments and install the RadiantOne Intelligent Identity Data Platform which offers Global Synchronization. 
+  > Learn how to use the Environments Operations Center to create environments and install the RadiantOne Identity Data Platform which offers Global Synchronization. 
   
   > [Configuration](/global-sync-guide/introduction)  
   > Learn how to configure synchronization pipelines and create transformation logic using a combination of scripting, attribute mappings and advanced rules. 
