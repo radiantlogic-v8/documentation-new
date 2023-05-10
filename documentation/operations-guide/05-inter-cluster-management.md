@@ -168,9 +168,8 @@ in RadiantOne prior to using the utility and you need one LDAP data source per c
 **- b `<base_dn>`**
 <br>[required] The base DN of the stores to be examined.
 
-```
-- x <disconnectionTimestamp>
-```
+**- x `<disconnectionTimestamp>`**
+
 <br>[optional] This value is the date and time used to determine which entries should be added and deleted in each store to bring the images in-sync. This timestamp would generally be the time the network connectivity between the clusters and the replication journal failed. If this value is specified, new entries and entry deletions that occur after the specified disconnectionTimestamp are noted in the LDIF files associated with the data source where the changes should be applied. If this value is not specified, the first data source indicated in the -d argument is considered the definitive source for discrepant entry additions and deletions. In addition, if the disconnectionTimestamp is equivalent to the time an entry was created or deleted, the first data source indicated in the -d argument is considered the definitive source.
 
 >[!note]
