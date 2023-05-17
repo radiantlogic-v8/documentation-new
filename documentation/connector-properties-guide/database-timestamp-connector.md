@@ -5,7 +5,7 @@ description: Database timestamp connector
 
 # Database timestamp connector
 
-For Oracle, SQL Server, MySQL, MariaDB, and Salesforce backends (using the RadiantOne JDBC driver), a timestamp-based change detection mechanism is available. To leverage this mechanism, your database table must have a column that contains a timestamp/date value associated with updates. For Salesforce, this column is `LastModifiedDate`. The column used in the timestamp connector must be indexed for performance.
+For Oracle, SQL Server, MySQL, MariaDB, DB2, and Salesforce backends (using the RadiantOne JDBC driver), a timestamp-based change detection mechanism is available. To leverage this mechanism, your database table must have a column that contains a timestamp/date value associated with updates. For Salesforce, this column is `LastModifiedDate`. The column used in the timestamp connector must be indexed for performance.
 
 >[!warning]
 >This connector type does not detect delete operations. If you have a need to detect and propagate delete operations from the database, you should choose a different connector type. However, for Salesforce backends, delete operations can be detected because a delete operation is detected when the `isActive` attribute is set to `false`.
@@ -15,12 +15,13 @@ For each database object that is a publisher of changes, a new/changed row in th
 
 ## Supported database date types
 
-The timestamp connector has been validated against Oracle, SQL Server, MySQL, and MariaDB databases, and Salesforce only (when accessed using the RadiantOne Salesforce JDBC driver). The timestamp connector time stamp mode supports the following database date types:
+The timestamp connector has been validated against Oracle, SQL Server, MySQL, MariaDB databases, DB2, and Salesforce only (when accessed using the RadiantOne Salesforce JDBC driver). The timestamp connector time stamp mode supports the following database date types:
 
 - For Oracle DB: `TIMESTAMP`, `TIMESTAMP WITH TIME ZONE`, `TIMESTAMP WITH LOCAL TIME ZONE`, and `DATE`.
 - For SQL Server: `SMALLDATETIME`, `DATETIME`, and `DATETIME2`
 - For Salesforce (using RadiantOne Salesforce JDBC driver): `LastModifiedDate`
 - For MySQL or MariaDB: `DATETIME` is preferable, but `TIMESTAMP` can also be used. `DATETIME`, `DATETIME(3)`, or `DATETIME(6)` can be used. `DATETIME(7)` is not supported.
+- For DB2, the timestamp column type must be: “TIMESTAMP”
 
 ## Database connector failover
 
