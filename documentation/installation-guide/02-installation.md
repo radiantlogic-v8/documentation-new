@@ -17,7 +17,8 @@ The installer files are available on the Radiant Logic support site. Contact sup
 
 RadiantOne can be installed via a web-based GUI wizard, or through a silent (non-GUI) installer. The installer files are described below in the table below.
 
->**Note – RadiantOne generates a random master key by default to use for encrypting information in configuration files. If you prefer to use Password-based encryption (PBE) to generate the key, you must use a silent install and indicate vds.security.pbe.enabled=true in the <UnzipLocation>/ vds\install\install.properties file before using [Instance Manager](#silent-mode-installs) to install RadiantOne.**
+>[!note]
+>RadiantOne generates a random master key by default to use for encrypting information in configuration files. If you prefer to use Password-based encryption (PBE) to generate the key, you must use a silent install and indicate vds.security.pbe.enabled=true in the <UnzipLocation>/ vds\install\install.properties file before using [Instance Manager](#silent-mode-installs) to install RadiantOne.
 
 | Installer File | Description
 |------------|------------|
@@ -26,7 +27,8 @@ RadiantOne can be installed via a web-based GUI wizard, or through a silent (non
 
 Installer files for each platform are described below.
 
-><span style="color:red">**IMPORTANT NOTE - The full installers described below install the RadiantOne Federated Identity engine, Control Panels, LDAP Browser client application, a sample Apache Derby database, global synchronization, local RadiantOne Universal Directory (HDAP) storage, and ZooKeeper. If you are deploying in production, it is recommended to use an external ZooKeeper ensemble. Configure the ensemble prior to installing RadiantOne. For steps, see the RadiantOne External ZooKeeper Install Guide.**
+>[!warning]
+>The full installers described below install the RadiantOne Federated Identity engine, Control Panels, LDAP Browser client application, a sample Apache Derby database, global synchronization, local RadiantOne Universal Directory (HDAP) storage, and ZooKeeper. If you are deploying in production, it is recommended to use an external ZooKeeper ensemble. Configure the ensemble prior to installing RadiantOne. For steps, see the RadiantOne External ZooKeeper Install Guide.
 
 ## GUI-based Installation
 
@@ -81,19 +83,23 @@ The basic installation involves setting up one RadiantOne node and is sufficient
 
 Several aspects of RadiantOne are configured during installation. The basic installation steps are described below.
 
-><span style="color:red">**IMPORTANT NOTE – Even if you only deploy one RadiantOne node, the basic cluster configuration is defined during the install. Take note of the cluster settings defined here as they can be used later to add nodes to the cluster.**
+>[!warning]
+>Even if you only deploy one RadiantOne node, the basic cluster configuration is defined during the install. Take note of the cluster settings defined here as they can be used later to add nodes to the cluster.
 
 1. At the System Check step, verify that the system passed all checks and click Next.
 
-><span style="color:red">**IMPORTANT NOTE – Hardware sizing is a critical component of directory service planning and deployment. The system check report verifies that important RadiantOne system requirements are met. If a test fails, an X is shown, like in the screenshot below. The failure should be addressed before continuing with the installation. Refer to the RadiantOne Hardware Sizing Guide for more information.**
+>[!warning]
+>Hardware sizing is a critical component of directory service planning and deployment. The system check report verifies that important RadiantOne system requirements are met. If a test fails, an X is shown, like in the screenshot below. The failure should be addressed before continuing with the installation. Refer to the RadiantOne Hardware Sizing Guide for more information.
 
 ![An image showing ](Media/Image2.1.jpg)
 
 2. At the Select a type of installation step, select the Create A New Cluster option.
 
-><span style="color:red">**IMPORTANT NOTES – Shard subclusters are for very advanced use cases involving the storage of millions of identities. If you have a use case of this scale, contact your Radiant Logic Account Representative to discuss sizing.**
+>[!warning]
+>Shard subclusters are for very advanced use cases involving the storage of millions of identities. If you have a use case of this scale, contact your Radiant Logic Account Representative to discuss sizing.
 
-><span style="color:red">**Instance subcluster installation is described in Installing an Instance Subcluster.**
+>[!warning]
+>Instance subcluster installation is described in Installing an Instance Subcluster.
 
 ![An image showing ](Media/Image2.2.jpg)
 
@@ -101,24 +107,29 @@ Several aspects of RadiantOne are configured during installation. The basic inst
 
 Production environments typically require a connection to an existing, external ZooKeeper ensemble. If you use a load balancer in front of your ZooKeeper ensemble, enter the hostname of the load balancer in the ZooKeeper Hostname/IP field. If you do not use a load balancer, enter the hostname (or IP address) and port number of one of the machines in the Zookeeper ensemble in the ZooKeeper Hostname/IP field. In the following example, a load balancer is not used, so the hostname value would be 10.11.10.31, and the Zookeeper port number would be 2181. After entering the ZooKeeper ensemble connection string, click Next.
 
-><span style="color:red">**IMPORTANT NOTE - Do not use underscores in the Hostname.**
+>[!warning]
+>Do not use underscores in the Hostname.
 
 ![An image showing ](Media/Image2.3.jpg)
 
 4. If you clicked **Skip and use local ZK** on the previous page, in the Zookeeper Configuration section of the Node Settings page, enter the ZooKeeper login, password, and ports.
 
->**Note – If you are connecting to an existing ZooKeeper ensemble, click Back and enter the ZooKeeper login and password that authorizes you to add a cluster node.**
+>[!note]
+>If you are connecting to an existing ZooKeeper ensemble, click Back and enter the ZooKeeper login and password that authorizes you to add a cluster node.
 
 ![An image showing ](Media/Image2.4.jpg)
 
 5. Next, in the RadiantOne Configuration section of the Node Settings page, enter the RadiantOne cluster name, administrator user, and password. To remove sample data from the installation of RadiantOne, uncheck the Install Samples box.
 
-    ><span style="color:red">**IMPORTANT NOTES **– The value of the “Administrator Name” property should** be in the syntax: `cn=<user value>`.**
-    ><span style="color:red">**<br>Don’t use underscores in the Cluster Name.**
+    >[!warning]
+    >The value of the “Administrator Name” property should** be in the syntax: `cn=<user value>`.
+    >[!warning]
+    >Don’t use underscores in the Cluster Name.
 
 ![An image showing ](Media/Image2.5.jpg)
 
-><span style="color:red">**IMPORTANT NOTE - When installing multiple clusters (either on the same site/data center or different sites/data centers), use different cluster names if you intend to use inter-cluster replication. Inter-cluster replication relies on the names to identify replication events.**
+>[!warning]
+>When installing multiple clusters (either on the same site/data center or different sites/data centers), use different cluster names if you intend to use inter-cluster replication. Inter-cluster replication relies on the names to identify replication events.
 
 6. In the Ports section of the Node Settings page, enter the LDAP port, SSL port (for LDAPS communication between clients and the RadiantOne service, and support for StartTLS between clients and RadiantOne), scheduler port used by the process that schedules tasks). SSL is enabled by default and a self-signed certificate is generated for the RadiantOne service. Details on changing the admin user, LDAP port, SSL settings and replacing the default self-signed certificate can be found in the RadiantOne System Administration Guide.
 
@@ -126,13 +137,14 @@ The RadiantOne web services (HTTP/HTTPS and admin HTTP/HTTPS) ports are enabled 
 
 ![An image showing ](Media/Image2.6.jpg)
 
-7. Next, you are prompted to enter your license key. If you have your license key, you may paste it into license key field. If you would like an evaluation key, leave the license field blank. The evaluation license is valid for 30 days. If you have a license key, and want to copy the license.lic file into the proper location after the install (<RLI_HOME>/vds_server), you can leave the license key field blank. A default key is generated and can be replaced with your license.lic file after install.
+7. Next, you are prompted to enter your license key. If you have your license key, you may paste it into license key field. If you would like an evaluation key, leave the license field blank. The evaluation license is valid for 14 days. If you have a license key, and want to copy the license.lic file into the proper location after the install (<RLI_HOME>/vds_server), you can leave the license key field blank. A default key is generated and can be replaced with your license.lic file after install.
 
 ![An image showing ](Media/Image2.7.jpg)
 
 8. Finally, you are shown a pre-installation summary where you can review your settings and then click the Start Installation button.
       
->**Note – the following image shows a summary page for installing RadiantOne using a local Zookeeper. For installations using an existing Zookeeper ensemble, the Zookeeper Configuration of the summary page would contain only the ZK Login and Client Port fields.**
+>[!note]
+>The following image shows a summary page for installing RadiantOne using a local Zookeeper. For installations using an existing Zookeeper ensemble, the Zookeeper Configuration of the summary page would contain only the ZK Login and Client Port fields.
 
 ![An image showing ](Media/Image2.8.jpg)
 
@@ -145,7 +157,8 @@ Once you have tested and validated a [basic installation](#installing-a-single-n
 
 Please see the System Requirements document and the RadiantOne Hardware Sizing Guide for proper sizing of the machines.
 
-><span style="color:red">**IMPORTANT NOTE - When deploying a cluster, nodes must be running on hardware that is configured for optimal redundancy and highly reliable connectivity between the cluster nodes/machines.**
+>[!warning]
+>When deploying a cluster, nodes must be running on hardware that is configured for optimal redundancy and highly reliable connectivity between the cluster nodes/machines.
 
 If you received a cluster-based license key, the same key value can be used for all nodes you install in a given cluster. If you received a server-based/single node license key, each RadiantOne server you deploy requires its own Radiant Logic license key.**
 
@@ -153,13 +166,15 @@ If you received a cluster-based license key, the same key value can be used for 
 
 If you are not using a separate ZooKeeper ensemble, before attempting to add nodes to an existing cluster, please make sure the ZooKeeper process on the first cluster node (installed following the steps in the [Installing a Single Node](#installing-a-single-node) is running.
 
-><span style="color:red">**IMPORTANT NOTE – Do NOT attempt to install multiple new nodes at the same time. Wait until each new node is successfully added and ZooKeeper is running properly on the node (if you are using local ZooKeeper) before installing additional nodes to the cluster.**
+>[!warning]
+>Do NOT attempt to install multiple new nodes at the same time. Wait until each new node is successfully added and ZooKeeper is running properly on the node (if you are using local ZooKeeper) before installing additional nodes to the cluster.
 
 If you are using a separate ZooKeeper ensemble, before attempting to add RadiantOne nodes to an existing cluster, please make sure that at least two ZooKeepers servers are up and running.
 
 1. At the “System Check Report” step, verify that the system passed all checks and click Next.
 
-    ><span style="color:red">**IMPORTANT NOTE **–** Hardware sizing is a critical component of directory service planning and deployment. The system check report verifies that important RadiantOne system requirements are met. If a test fails, an X is shown, like in the screenshot below. The failure should be addressed before continuing with the installation. Refer to the RadiantOne Hardware Sizing Guide for more information.**
+    >[!warning]
+    >Hardware sizing is a critical component of directory service planning and deployment. The system check report verifies that important RadiantOne system requirements are met. If a test fails, an X is shown, like in the screenshot below. The failure should be addressed before continuing with the installation. Refer to the RadiantOne Hardware Sizing Guide for more information.
 
 ![An image showing ](Media/Image2.1.jpg)
 
@@ -170,7 +185,8 @@ If you are using a separate ZooKeeper ensemble, before attempting to add Radiant
 
 3. Enter the server name or IP address for the machine where the ZooKeeper is currently running and the ZooKeeper client port. Enter the existing ZooKeeper login and password. Click Next.
 
-    ><span style="color:red">**IMPORTANT NOTE - Do not use underscores in the Hostname.**
+    >[!warning]
+    >Do not use underscores in the Hostname.
 
 ![An image showing ](Media/Image2.11.jpg)
 
@@ -179,22 +195,20 @@ If you are using a separate ZooKeeper ensemble, before attempting to add Radiant
 
 ![An image showing ](Media/Image2.12.jpg)
 
-><span style="color:red">**IMPORTANT NOTE – RadiantOne is a network-intensive application. The network check verifies that the network connections between RadiantOne nodes are fast, with plenty of bandwidth and low latency. Refer to the RadiantOne Hardware Sizing Guide for more information.**
+>[!warning]
+>RadiantOne is a network-intensive application. The network check verifies that the network connections between RadiantOne nodes are fast, with plenty of bandwidth and low latency. Refer to the RadiantOne Hardware Sizing Guide for more information.
 
-6. Next, you are prompted to enter your license key. If you have your license key, paste it into the window. If you would like a temporary key, leave the license key field blank. The evaluation license is valid for 30 days. If you would like a longer temporary license, Radiant Logic, Inc at support@radiantlogic.com.
+6. Next, you are prompted to enter your license key. If you have your license key, paste it into the window. If you would like a temporary key, leave the license key field blank. The evaluation license is valid for 14 days. If you would like a longer temporary license, Radiant Logic, Inc at support@radiantlogic.com.
        
- ><span style="color:red">**IMPORTANT NOTE - If you received a cluster-based license key, the same key value can be used for all nodes you install in a given cluster. If you received a   server-based/single node license key, each RadiantOne server you deploy requires its own Radiant Logic license key.**
+>[!warning]
+>If you received a cluster-based license key, the same key value can be used for all nodes you install in a given cluster. If you received a   server-based/single node license key, each RadiantOne server you deploy requires its own Radiant Logic license key.
  
  ![An image showing ](Media/Image2.13.jpg)
 
-7. Finally, you are shown a pre-installation summary where you can review your settings and then click the Start Installation button.
+1. Finally, you are shown a pre-installation summary where you can review your settings and then click Start Installation.
     
-   >**Note – All settings (ports, user passwords, etc.) are the same as used for the first node in the cluster, so you will not see this step during the install. The
-       only configuration that varies from the first node in the cluster is the server
-       SSL certificate (for LDAPS communication between clients and the RadiantOne
-       service). A default, self-signed certificate is generated for each node you add to
-       the cluster. Details on replacing the default self-signed certificate can be found
-       in the RadiantOne System Administration Guide.**
+   >[!note]
+   >All settings (ports, user passwords, etc.) are the same as used for the first node in the cluster, so you will not see this step during the install. The only configuration that varies from the first node in the cluster is the server SSL certificate (for LDAPS communication between clients and the RadiantOne service). A default, self-signed certificate is generated for each node you add to the cluster. Details on replacing the default self-signed certificate can be found in the RadiantOne System Administration Guide.
 
 
 8. Start the Main Control Panel (<RLI_HOME>/bin/openControl.bat/.sh) and then start the RadiantOne service (Main Control Panel -> Dashboard Tab).
@@ -249,17 +263,18 @@ To install the first node:
     - Set node.follower.only to false
     - Node.use.local.zk should be set to false if you are installing a new cluster that will re-use an existing ZooKeeper either on the same machine, or an external one.
 
-       ><span style="color:red">**IMPORTANT NOTE **–** If you are using an external ZooKeeper ensemble, also
-       enter the comma-separated list of nodes in the zk.connstring property. E.g.  zk1:2181,zk2:2181,zk3:2181**
+      >[!warning]
+      >If you are using an external ZooKeeper ensemble, also enter the comma-separated list of nodes in the zk.connstring property. E.g.  zk1:2181,zk2:2181,zk3:2181
 
     The following image depicts the install-sample.properties file for the first node in a cluster. For details about properties files for follower nodes, see the Using a Manually Edited Properties File on Follower Nodes section.
 
-    ><span style="color:red">**IMPORTANT NOTE - Do not use underscores in the Hostname or Cluster Name.**
+    >[!warning]
+    >Do not use underscores in the Hostname or Cluster Name.
 
 ![An image showing ](Media/Image2.17.jpg)
 
-><span style="color:red">**IMPORTANT NOTE **–** The silent installer does not validate property values in the properties file. Invalid values may cause the installation to fail. Verify your
-property values prior to executing the silent install command.**
+>[!warning]
+>The silent installer does not validate property values in the properties file. Invalid values may cause the installation to fail. Verify your property values prior to executing the silent install command.
 
 5. From a command prompt, navigate to <RLI_HOME>/bin folder and use the following syntax to install RadiantOne using the properties file that was customized in step 4 above.
 
@@ -270,7 +285,8 @@ c:/radiantone/vds/install/install-sample.properties
 
 When installation is complete, the command prompt displays the message “Installation has been initialized successfully”.
 
-><span style="color:red">**IMPORTANT NOTES – values in the properties file, including passwords, are stored in clear. After installation, install-sample.properties should be deleted.**
+>[!warning]
+>Values in the properties file, including passwords, are stored in clear. After installation, install-sample.properties should be deleted.
 
 This silent install mode does not create shortcuts or menu items. To open the RadiantOne Main Control Panel, navigate to <RLI_HOME>/bin and run openControlPanel.
 
@@ -297,15 +313,17 @@ To install a follower node:
 | Cluster.name | Must match value of the first node’s properties file.
 | Node.follower.only | If the node is a follower only, this value must be set to true. Otherwise, set to false.
 | Node.use.local.zk | If the node’s local Zookeeper is going to be a part of the ensemble, set this to true. Otherwise, set this to false, indicating that an external Zookeeper ensemble is used.
-Zk.connstring | If local Zookeeper is used, enter the Zookeeper server and port (e.g. zk1:2181) running in the existing cluster. If external Zookeeper is used, include the hostnames of the machines in the external Zookeeper ensemble in a comma-separated list: (e.g.zk1:2181,zk2:2181,zk3:2181)
+Zk.connstring | If local Zookeeper is used, only enter the Zookeeper server and port for one node (e.g. zk1:2181) running in the existing cluster. Do not list all Zookeeper servers. <br><br> If external Zookeeper is used, include the hostnames of the machines in the external Zookeeper ensemble in a comma-separated list: (e.g.zk1:2181,zk2:2181,zk3:2181)
 
->**Note – In follower nodes’ properties file, properties that follow “Parameters below are only relevant for the first node” may safely be deleted.**
+>[!note]
+>In follower nodes’ properties file, properties that follow “Parameters below are only relevant for the first node” may safely be deleted.
 
 In the following image, the properties file is edited for configuring a follower node (not a follower-only node).
 
 ![An image showing ](Media/Image2.18.jpg)
 
-><span style="color:red">**IMPORTANT NOTE – The silent installer does not validate property values in the properties file. Invalid values may cause the installation to fail. Verify your property values prior to executing the silent install command.**
+>[!warning]
+>The silent installer does not validate property values in the properties file. Invalid values may cause the installation to fail. Verify your property values prior to executing the silent install command.
 
 5. From a command prompt, navigate to <RLI_HOME>/bin folder and use the following syntax to install RadiantOne using the properties file that was customized in step 4 above.
 
@@ -315,7 +333,8 @@ c:/radiantone/vds/install/install-sample.properties
 ```
 When installation is complete, the command prompt displays the message “Installation has been initialized successfully”.
 
-><span style="color:red">**IMPORTANT NOTES – values in the properties file, including passwords, are stored in clear. After installation, install-sample.properties should be deleted.**
+>[!warning]
+>Values in the properties file, including passwords, are stored in clear. After installation, install-sample.properties should be deleted.
 
 This silent install mode does not create shortcuts or menu items. To open the RadiantOne Main Control Panel, navigate to <RLI_HOME>/bin and run openControlPanel.
 
@@ -348,7 +367,8 @@ In the following image, the properties file is edited for configuring the first 
 
 ![An image showing ](Media/Image2.19.jpg)
 
-><span style="color:red">**IMPORTANT NOTE – The silent installer does not validate property values in the properties file. Invalid values may cause the installation to fail. Verify your property values prior to executing the silent install command.**
+>[!warning]
+>The silent installer does not validate property values in the properties file. Invalid values may cause the installation to fail. Verify your property values prior to executing the silent install command.
 
 5. From a command prompt, navigate to <RLI_HOME>/bin folder and use the following syntax to install RadiantOne using the properties file that was customized in step 4 above.
 
@@ -359,4 +379,5 @@ c:/radiantone/vds/install/install-sample.properties
 
 When installation is complete, the command prompt displays the message “Installation has been initialized successfully”.
 
-><span style="color:red">**IMPORTANT NOTES – values in the properties file, including passwords, are stored in clear. After installation, install-sample.properties should be deleted.**
+>[!warning]
+>values in the properties file, including passwords, are stored in clear. After installation, install-sample.properties should be deleted.
