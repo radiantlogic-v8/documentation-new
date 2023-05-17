@@ -53,7 +53,8 @@ Within a cluster, the nodes are designated as “leader” or “follower” and
 
 The RadiantOne cluster supports read and write operations from clients. All write operations received by nodes designated as “followers” are redirected to the designated “leader” node. The changes are made on the leader node and then replicated out to the follower nodes. This is depicted in the diagram below.
 
->**Note - The leader node is responsible for handling all write operations from clients and all persistent cache refresh (periodic or real-time) operations.**
+>[!note]
+>The leader node is responsible for handling all write operations from clients and all persistent cache refresh (periodic or real-time) operations.
 
 ![An image showing ](Media/Image7.2.jpg)
  
@@ -92,7 +93,8 @@ If the RadiantOne service failed on the leader node, a new node takes over as le
  
 Figure 7.6: Change in RadiantOne Leader Node
 
->**Note - Once the failed RadiantOne service is back up on this node, it does not automatically become the leader again. It remains a follower node and connects to the current leader node to retrieve data changes (Universal Directory or persistent cache) that occurred while it was down.**
+>[!note]
+>Once the failed RadiantOne service is back up on this node, it does not automatically become the leader again. It remains a follower node and connects to the current leader node to retrieve data changes (Universal Directory or persistent cache) that occurred while it was down.
 
 If the machine is not able to be restarted and/or the RadiantOne processes won’t start, the administrator can install RadiantOne on another machine and have it join the cluster (during the install configuration, you define this). All cluster installation steps are described in the RadiantOne Installation Guide. Once this new machine starts up, the new RadiantOne node pulls the data from the current leader node automatically. The failed node that is unable to be recovered can be manually removed from the cluster configuration. Please see the RadiantOne Operations Guide for details.
 
@@ -126,7 +128,8 @@ Figure 7.7: ZooKeeper Process Fails
 
 The Dashboard tab in the Main Control Panel indicates if the ZooKeeper process is down. Other external monitoring techniques are also available. Please see the RadiantOne Monitoring and Reporting Guide for details. An administrator should troubleshoot the failure and restart ZooKeeper. ZooKeeper can be restarted with <RLI_HOME>/bin/runZooKeeper.bat (runZooKeeper.sh on UNIX platforms). Once the ZooKeeper process is back up, it synchronizes the configuration state maintained in the ensemble. If the ZooKeeper service and/or the machine won’t restart, a new machine/ZooKeeper server should be added to the ensemble to maintain the 3-node minimum. 
 
->**Note - For complete machine failure notifications, use something like Nagios, which is a 3rd party tool, not included with RadiantOne.**
+>[!note]
+>For complete machine failure notifications, use something like Nagios, which is a 3rd party tool, not included with RadiantOne.
 
 ## Migration to Production
 
@@ -170,7 +173,8 @@ Each step is described in more details below.
 
 Install RadiantOne on the first production machine. All machines must have either the same version/build ID (or a newer patch release), and the same port settings that were used in the development/QA environment that you are migrating from. The ports can be updated in the target environment after migration if needed. Do not try to upgrade the RadiantOne version (e.g. moving from v7.3 to v7.4) when migrating to production. 
 
->**Note – the admin passwords for the RadiantOne administrator (e.g. cn=directory manager), and ZooKeeper administrator that were defined during installation are not impacted in the migration of configuration. The passwords that were defined in the target environment are not overwritten when the configuration is imported.**
+>[!note]
+>The admin passwords for the RadiantOne administrator (e.g. cn=directory manager), and ZooKeeper administrator that were defined during installation are not impacted in the migration of configuration. The passwords that were defined in the target environment are not overwritten when the configuration is imported.
 
 Typically, you should plan on having between 2-5 RadiantOne servers running in a production cluster. After installing the first RadiantOne node, import the configuration from the QA environment onto this node. Steps for this are detailed in [Migrating Configuration](#migrating-configuration---migration-utility) section. Then, proceed to install the other nodes of the cluster. This way they automatically inherit the configuration.
 
@@ -301,7 +305,8 @@ Edit the runVDSServer.sh file before running and change the -Xms and -Xmx settin
 
 If you have decided to configure a persistent cache from your underlying data sources, you must reconfigure and reinitialize the cache in your production environment (or every time you move through environments where the data set is different). As you migrate your files to production, the data stored in the persistent cache may become irrelevant because the information stored in the cache is development/QA data (which may not be the same as production data). 
 
->**Note – if you are using a persistent cache with periodic refresh, you do not need to reconfigure the periodic refresh in the target environment. Only a reinitialization of the data is needed in the target environment. If you are using a persistent cache with real-time refresh, you need to reconfigure and reinitialize the data in the target environment.**
+>[!note]
+>If you are using a persistent cache with periodic refresh, you do not need to reconfigure the periodic refresh in the target environment. Only a reinitialization of the data is needed in the target environment. If you are using a persistent cache with real-time refresh, you need to reconfigure and reinitialize the data in the target environment.
 
 To configure a persistent cache:
 
@@ -349,7 +354,8 @@ FIPS Mode settings are not migrated with the migration utility. To enable FIPS M
 
 ### (Optional) Configuring Instance Subclusters of RadiantOne
 
->**Note – As of RadiantOne v7.4.2, instances are no longer created and deleted via the Main Control Panel. Instead, they are now installed and uninstalled using the RadiantOne Instance Manager utility. For details on installing Instances, see the RadiantOne Installation Guide.**
+>[!note]
+>As of RadiantOne v7.4.2, instances are no longer created and deleted via the Main Control Panel. Instead, they are now installed and uninstalled using the RadiantOne Instance Manager utility. For details on installing Instances, see the RadiantOne Installation Guide.
 
 RadiantOne instance subclusters are used to address a very small set of use cases:
 
@@ -391,7 +397,8 @@ Usage: InstanceManager {-u -d} -n `<instanceName> -D <manager dn> {-w <manager p
 
 Command arguments:
 
->**NOTE – Some command arguments have both long and short options, whereas some arguments have only a long option. If an argument has both a long and short option, this section lists only the short option. If a long option is listed, no short option exists for the argument.**
+>[!note]
+>Some command arguments have both long and short options, whereas some arguments have only a long option. If an argument has both a long and short option, this section lists only the short option. If a long option is listed, no short option exists for the argument.
 
 Options:
 
@@ -437,7 +444,8 @@ Options:
 
 When updating an instance, you would pass -u -n newvdsinstance with new user ID, new password, or new port. If you don’t want to change one of the parameters (-D, -w, or -p), then just enter the current value. 
 
->**NOTE– if you want to change the port of the instance, you must stop the RadiantOne service before running the update command.**
+>[!note]
+>If you want to change the port of the instance, you must stop the RadiantOne service before running the update command.
 
 For example, to change the port for newvdsinstance, make sure that the RadiantOne instance is stopped and then use the following to change the port to 6389:
 
@@ -473,7 +481,8 @@ Figure 7.14: Inter-cluster Replication
 
 Each RadiantOne leader node plays the role of a “writer” in the replication and publishes their changes into a journal. Each leader is also responsible for periodically checking the journal for changes that they need to apply locally. Should conflicting change events occur, a combination of timestamps and sequence numbers associated with the conflicting events are used to resolve the conflict.
 
->**Note – on startup, the RadiantOne service first applies any missed change events from the replication journal and only after these changes have been applied is it able to serve as an active server.**
+>[!note]
+>On startup, the RadiantOne service first applies any missed change events from the replication journal and only after these changes have been applied is it able to serve as an active server.
 
 RadiantOne Universal Directory stores also support subtree replication architectures. A main cluster is configured for and maintains the image for all replicas and houses the replication journal. Each replica can be a subset of containers from the main image. An example is depicted in the diagram below where Cluster 1 maintains the global namespace and Cluster 2 is a replica of the ou=Site1 subtree and Cluster 3 is a replica of the ou=Site2 subtree.
 
@@ -565,7 +574,8 @@ Figure 7.19: Enabling a Universal Directory Store for Inter-Cluster Replication
 
 4.	Repeat these steps on one RadiantOne node in each cluster.
 
->**Note – Monitor inter-cluster replication from Main Control Panel > Replication Monitoring tab.**
+>[!note]
+>Monitor inter-cluster replication from Main Control Panel > Replication Monitoring tab.
 
 ##### Push Mode Replication
 
@@ -583,7 +593,8 @@ In any event, to address scenarios like this, a push replication mode is availab
 
 Pushing replication events can make the changes available in other data centers faster than waiting for the publish/subscribe method. There are two modes to push events: default and ensured push mode. The default push mode is a broadcast of the changes to the configured targets. There is no waiting for acknowledgement that the targets can be reached prior to returning the modify response to the client. The server that receives the write operation pushes the change to all configured targets, updates its local store, writes the change to the replication journal and responds to the client with a modify response. With the ensured push mode, the server sends the changes to the configured targets and waits for an acknowledgement about whether the target(s) could be reached or not. Enabling this mode provides a certain level of assurance that the target(s) have received the changes without any guarantee that they were actually able to update their replica. However, this can reduce the throughput of the RadiantOne service because it does not respond to the client’s modify request until it gets an acknowledgment from all configured targets. If a target server is not responding with an acknowledgement, the “Write Operation Timeout” configured for LDAP connection pooling can indicate that RadiantOne should skip that target, update its own image, publish the change to the replication journal and send a modify response back to the client.
 
->**Note – The intended targets receive the changes from the replication journal whether the changes were successfully replicated with push mode.**
+>[!note]
+>The intended targets receive the changes from the replication journal whether the changes were successfully replicated with push mode.
 
 ### Persistent Cache Configuration
 
@@ -625,7 +636,8 @@ If client applications issue modify requests (e.g. updates, adds, deletes), thes
 
 If each site (e.g. data center) does not have access to the backend data sources (either directly or a replica), or if the number of virtual views and integration logic is very complex, the recommended approach is to have a primary data center where all write operations and persistent cache refreshes are handled and a replica of the cache image in all other data centers that are responsible for servicing client requests. This is depicted in the diagram below.
 
->**Note – the cluster responsible for the persistent cache refreshes doesn’t necessarily need to be in its own data center as depicted in the diagram below. Speak with a Radiant Logic Solution Architect for advice on how best to achieve your throughput needs.**
+>[!note]
+>The cluster responsible for the persistent cache refreshes doesn’t necessarily need to be in its own data center as depicted in the diagram below. Speak with a Radiant Logic Solution Architect for advice on how best to achieve your throughput needs.
 
 ![An image showing ](Media/Image7.22.jpg)
  
@@ -635,7 +647,8 @@ Figure 7.22: Multiple Clusters and Sites for Persistent Cache Deployments
 
 The RadiantOne leader node in the main (cache refresh) cluster plays the role of the authoritative cache image. This node publishes the changes to the persistent cache into a replication journal. The leader nodes in the other clusters are responsible for periodically checking the journal for changes that they need to apply locally. Should conflicting change events occur, a combination of timestamps and sequence numbers associated with the conflicting events are used to resolve the conflict.
 
->**Note – on startup, a RadiantOne leader node first applies any missed change events from the replication journal and only after these changes have been applied will it be able to serve as an active node in the cluster.**
+>[!note]
+>On startup, a RadiantOne leader node first applies any missed change events from the replication journal and only after these changes have been applied will it be able to serve as an active node in the cluster.
 
 A data source named replicationjournal is included in the RadiantOne install and plays the role of the journal. This data source points to the default cn=replicationjournal store installed with RadiantOne and should not be deleted or deactivated. You can decide to have the journal running on one of the clusters that is participating in replication, or run a separate cluster whose only role is to house the journal. Having the journal housed in an Universal Directory store deployed in a cluster ensures high availability of this repository. The replicationjournal data source should indicate a primary server/node in the cluster and the failover servers should point to the other cluster nodes.
 
@@ -683,7 +696,8 @@ To configure replication across sites, follow the steps below.
  
 Figure 7.24: Option to Redirect Binds to the Cache Refresh Site
 
->**Note – if the ‘[Use Cache for Authentication](02-tuning-tips-for-caching-in-radiantone#use-cache-for-authentication)’ option is enabled for the persistent cache in the primary (cache refresh) site, the passwords are stored in the cache and authentication is handled locally by RadiantOne as opposed to being delegated to the backend. In this scenario, the passwords are replicated to the Universal Directory stores located on all other sites. This allows the Universal Directory stores on these sites to handle bind operations locally and not require a bind redirect to the primary (cache) site.**
+>[!note]
+>If the ‘[Use Cache for Authentication](02-tuning-tips-for-caching-in-radiantone#use-cache-for-authentication)’ option is enabled for the persistent cache in the primary (cache refresh) site, the passwords are stored in the cache and authentication is handled locally by RadiantOne as opposed to being delegated to the backend. In this scenario, the passwords are replicated to the Universal Directory stores located on all other sites. This allows the Universal Directory stores on these sites to handle bind operations locally and not require a bind redirect to the primary (cache) site.
 
 14.	On the leader node of the primary/main (cache refresh) site, configure the persistent cache to support Inter-Cluster Replication. Go to the Main Control Panel -> Directory Namespace Tab. Expand the Cache node and select the applicable persistent cache. On the Properties tab on the right, check the box for Inter-cluster replication. Click **Save**.
 
@@ -711,6 +725,7 @@ The write request is redirected to the remote data source. There is no immediate
 
 The write request is redirected and if it is successful the local store is written to immediately.
 
->**Note - In all cases, the local entry is updated (later) through inter-cluster replication when the leader node picks up the changes from the replication journal.**
+>[!note]
+>In all cases, the local entry is updated (later) through inter-cluster replication when the leader node picks up the changes from the replication journal.
 
 3.	(Optional) If the new replica site(s) must be able to accept write operations from clients, and you require a more real-time replication mode where changes are pushed directly to intended targets, click on the “Configure Push Mode” button and select the data sources representing the intended RadiantOne targets. For more information on the use case where this might be applicable, please see [Push Mode Replication](#push-mode-replication).

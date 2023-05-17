@@ -25,7 +25,8 @@ If RadiantOne is used to virtualize an LDAP source, you should first determine t
 
 -	Any logging enabled – for performance testing, logs should be either turned off or reduced to a minimum level. With only access log enabled, you can expect about a 25% reduction in performance. 
 
-    >**Note – to turn off access logging, uncheck both the text and csv output options in Main Control Panel > Settings > Logs > Access Logs. All other types of logging can be disabled from Main Control Panel > Settings > Logs > Log Settings.**
+    >[!note]
+    >To turn off access logging, uncheck both the text and csv output options in Main Control Panel > Settings > Logs > Access Logs. All other types of logging can be disabled from Main Control Panel > Settings > Logs > Log Settings.**
 
 For testing performance of RadiantOne Universal Directory stores, keep in mind the following:
 

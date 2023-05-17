@@ -3,13 +3,15 @@ title: Deployment and Tuning Guide
 description: Deployment and Tuning Guide
 ---
 
-# Preface
+# RadiantOne Deployment and Tuning Guide
 
-## About this Manual
+## Preface
+
+### About this Manual
 
 This guide provides conceptual and procedural information for tuning and deploying RadiantOne. This includes the topics of caching and the server settings for different types of deployment configurations. The tuning tips described in this guide refer to the specific parameters you should take into consideration when tuning. For specific details and exact steps on configuring these parameters, you should see the RadiantOne System Administration Guide.
 
-## Audience
+### Audience
 
 This manual is intended for administrators who are responsible for tuning and deploying RadiantOne.  This manual assumes that the reader is familiar with the following: 
 
@@ -23,12 +25,12 @@ This manual is intended for administrators who are responsible for tuning and de
 
 -	LDAP failover and load balancing
 
-## How the Manual is Organized
+### How the Manual is Organized
 
 [Chapter 1 – Global Tuning](01-global-tuning)
 <br>This chapter describes tuning options that apply to the RadiantOne service at a global level, no matter what kind of namespace configuration options you use.
 
-[Chapter 2 – Tuning Tips for Caching in the RadiantOne](02-tuning-tips-for-caching-in-radiantone.md) Federated Identity Service 
+[Chapter 2 – Tuning Tips for Caching in the RadiantOne Federated Identity Service](02-tuning-tips-for-caching-in-radiantone.md)
 <br> This chapter describes memory and persistent caching in RadiantOne FID.
 
 [Chapter 3 - Tuning Tips for Specific Types of Backend Data](03-tuning-tips-for-specific-types-of-backend-data-sources.md) <br>Sources in the RadiantOne Federated Identity Service
@@ -57,16 +59,15 @@ Before contacting Customer Support, please make sure you have the following info
 
 -	A description of your problem including error numbers if appropriate
 
-Technical support can be reached using the following options:
+Technical support can be reached using any of the following options:
 -	Website: https://support.radiantlogic.com
--	E-mail: support@radiantlogic.com 
+-	E-mail: support@radiantlogic.com
 
-## Expert Mode
+### Expert Mode
 
 Some settings are accessible only in Expert Mode. To switch to Expert Mode, click the Logged in as, (username) drop-down menu and select Expert Mode. 
 
-![An image showing ](Media/Expert-Mode.jpg)
+![An image showing ](Media/expert-mode.jpg)
 
- 
 >[!note]
 >The Main Control Panel saves the last mode (Expert or Standard) when you log out and returns to this mode automatically when you log back in. The mode is saved on a per-role basis.
