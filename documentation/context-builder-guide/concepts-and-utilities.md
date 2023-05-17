@@ -13,7 +13,8 @@ These sections describe some common terms you will find when using the Context B
 
 A data source represents the connection to a backend identity store. Managing all data sources from one central location simplifies the migration process from a development environment to a production environment. Data sources are managed on the Settings Tab  Server Backend in the Main Control Panel. For details on creating data sources, see RadiantOne System Administration Guide.
 
-><span style="color:red">**IMPORTANT NOTE – one of the main purposes of having a data source defining the connection is to isolate the connection string from the metadata files (.dvx and .orx). It is strongly recommended that you use generic data source names that can remain (be relevant) as you migrate from a development to production environment where you only need to change the connection information.**
+>[!warning]
+>One of the main purposes of having a data source defining the connection is to isolate the connection string from the metadata files (.dvx and .orx). It is strongly recommended that you use generic data source names that can remain (be relevant) as you migrate from a development to production environment where you only need to change the connection information.
 
 ![The Server Backend Sub-tab](Media/Image2.1.jpg)
  
@@ -53,7 +54,7 @@ To configure a join, the virtual view built from the primary source must be open
 
 5.	Click Choose and select the virtual view (dvx file) that contains the secondary object(s) you want to join with. Click OK and then click Next. 
 
-6.	The primary object join attribute is the one you want to base the join on. Select the attribute from the drop-down list, or click the Edit button to compute your own attribute to base the join on. Please see [Computed Attributes](#computed-attributes) for more information on how to configure a computed attribute. 
+6.	The primary object join attribute is the one you want to base the join on. Select the attribute from the drop-down list, or click Edit to compute your own attribute to base the join on. Please see [Computed Attributes](#computed-attributes) for more information on how to configure a computed attribute. 
 
 7.	The secondary object join attribute is the attribute from the object you are joining with that matches the primary source join attribute. Click Set to navigate to the location in the virtual view that contains the objects you want to join with and select the corresponding attribute. Click **OK** and then click **Next**. 
 
@@ -123,7 +124,8 @@ When you configure the extended join, there are two settings you can choose from
 
 -	Custom – if this is chosen, RadiantOne stores the extension attributes in the location of your choice. The location must first exist (create it in the RadiantOne namespace if you haven’t already). RadiantOne manages the creation of the entries and attributes as well as all modifications to these entries. The parameters you must configure are the target base DN (the location in the RadiantOne namespace where you want to store the extension attributes), the object class to associate the extension attributes with, and how to comprise the RDN attribute (name and attribute from the source to populate the target RDN with). 
 
-    ><span style="color:red">**IMPORTANT NOTE – if your chosen location in the RadiantOne namespace is configured as something other than a local Universal Directory (HDAP) store, then the underlying backend must be capable of storing the extension attributes. For example, if the backend is a database table, then columns representing the extension attributes must exist. If the backend is an LDAP directory, the extension attributes should be defined in the schema (if schema checking is enforced) and the object class that is associated with the extension attributes should be set during the configuration described below.**
+    >[!warning]
+    >If your chosen location in the RadiantOne namespace is configured as something other than a local Universal Directory (HDAP) store, then the underlying backend must be capable of storing the extension attributes. For example, if the backend is a database table, then columns representing the extension attributes must exist. If the backend is an LDAP directory, the extension attributes should be defined in the schema (if schema checking is enforced) and the object class that is associated with the extension attributes should be set during the configuration described below.
 
 ##### Configuring an Extended Join 
 
@@ -223,7 +225,8 @@ The join takes place when uid from the ou=people,o=myviews branch matches the CI
 
 ##SIZELIMIT=1 is set to specify only one entry should be returned to join with. In this case, it is assumed that only one entry should be returned from the ou=people,o=myviews branch for each primary entry. 
 
->**NOTE - If no sizelimit is specified, the default used is 1000.**
+>[!note]
+>If no sizelimit is specified, the default used is 1000.
 
 **Example 2 – Regular Join**
 
@@ -244,8 +247,10 @@ The join takes place when sn matches LASTNAME and givenName matches FIRSTNAME.
 ##USERID specifies the user to connect to the server (198.123.123.444). 
 ##PASSWORD specifies the password for the user mentioned above. 
 
-##SIZELIMIT=1 is set to specify only one entry should be returned to join with. In this case, it is assumed that only one entry should be returned from the dc=anotherldap,dc=com branch. 
-NOTE - If no sizelimit is specified, the default used is 1000.
+##SIZELIMIT=1 is set to specify only one entry should be returned to join with. In this case, it is assumed that only one entry should be returned from the dc=anotherldap,dc=com branch.
+
+>[!note]
+>If no sizelimit is specified, the default used is 1000.
 
 **Example 3 – Extended Join**
 
@@ -299,7 +304,8 @@ To define an attribute as hidden, select the Object tab (for the appropriate con
 
 Figure 7: Marking Attribute as Hidden
 
-><span style="color:red">**IMPORTANT NOTE – if you edit the join condition manually, and want to make an attribute returned from a joined object hidden, add a value of 1792 to the priority weight you have set. For example, if mail were an attribute returned from a join and you had it set with a priority value of 128 (NORMAL), then to make it hidden in the virtual entry, you would change the numeric value to be 1920 (128 + 1792). Mail:1920 is how it would appear in the join condition if you were to edit the join manually.**
+>[!warning]
+>If you edit the join condition manually, and want to make an attribute returned from a joined object hidden, add a value of 1792 to the priority weight you have set. For example, if mail were an attribute returned from a join and you had it set with a priority value of 128 (NORMAL), then to make it hidden in the virtual entry, you would change the numeric value to be 1920 (128 + 1792). Mail:1920 is how it would appear in the join condition if you were to edit the join manually.
 
 ##### Making Attributes Searchable
 
@@ -313,7 +319,8 @@ To define an attribute as searchable, choose the Object tab (for the appropriate
 
 Figure 8: Making Attribute Searchable
 
-><span style="color:red">**IMPORTANT NOTE – if you edit the join condition manually, and want to make an attribute returned from a joined object non-searchable, add a value of 512 to the priority weight you have set. For example, if mail were an attribute returned from a join and you had it set with a priority value of 128 (NORMAL), then to make it non-searchable, you would change the numeric value to be 640 (128 + 512). Mail:640 is how it would appear in the join condition if you were to edit the join manually.**
+>[!warning]
+>If you edit the join condition manually, and want to make an attribute returned from a joined object non-searchable, add a value of 512 to the priority weight you have set. For example, if mail were an attribute returned from a join and you had it set with a priority value of 128 (NORMAL), then to make it non-searchable, you would change the numeric value to be 640 (128 + 512). Mail:640 is how it would appear in the join condition if you were to edit the join manually.
 
 ##### Making Attributes Updateable
 
@@ -325,7 +332,8 @@ To define an attribute as updateable, choose the Object tab (for the appropriate
 
 Figure 9: Making an Attribute Updateable
 
-><span style="color:red">**IMPORTANT NOTE – if you edit the join condition manually, and want to make an attribute returned from a joined object not updateable, add a value of 1024 to the priority weight you have set. For example, if phone were an attribute returned from a join and you had it set with a priority value of 128 (NORMAL), then to make it not updateable, you would change the numeric value to be 1152 (128 + 1024). Phone:1152 is how it would appear in the join condition if you were to edit the join manually. If you didn’t want the phone attribute to be searchable or updateable, it would have a numeric value of 1664. (128 + 512 + 1024).**
+>[!warning]
+>If you edit the join condition manually, and want to make an attribute returned from a joined object not updateable, add a value of 1024 to the priority weight you have set. For example, if phone were an attribute returned from a join and you had it set with a priority value of 128 (NORMAL), then to make it not updateable, you would change the numeric value to be 1152 (128 + 1024). Phone:1152 is how it would appear in the join condition if you were to edit the join manually. If you didn’t want the phone attribute to be searchable or updateable, it would have a numeric value of 1664. (128 + 512 + 1024).
 
 #### How the Join is Performed 
 
@@ -417,7 +425,8 @@ If the entries in virtual view should include attributes that are derived from e
 
 If you need to create a computed attribute from a previously computed attribute, that attribute must appear first in the list in the Computed Attributes window.
 
-><span style="color:red">**IMPORTANT NOTE – On the Object tab, attributes from the primary/main source are displayed with a blue square icon in the Origin column. Attributes from Joined sources are displayed with a green square icon in the Origin column. Computed Attributes are displayed with a orange square icon in the Origin column.**
+>[!warning]
+>On the Object tab, attributes from the primary/main source are displayed with a blue square icon in the Origin column. Attributes from Joined sources are displayed with a green square icon in the Origin column. Computed Attributes are displayed with a orange square icon in the Origin column.
 
 The diagram below depicts a computed attribute named login that can be computed based on the attributes: givenName, sn, and uid. 
 
@@ -440,7 +449,7 @@ To configure computed attributes:
 5.	Enter the Computed Attribute name in the Name parameter. 
 6.	Configure the needed expression to comprise the computed attribute. This is based on Java and if you are already familiar with the syntax, you can enter it directly for the value.
 7.	(Optional) For assistance with creating an attribute based on a constant, click the constant button and enter the value.
-8.	(Optional) For assistance with creating an attribute based on an existing attribute, click the Attribute button (a list of all attributes available in the virtual object displays).
+8.	(Optional) For assistance with creating an attribute based on an existing attribute, click Attribute (a list of all attributes available in the virtual object displays).
 
 9.	(Optional) For assistance with creating an attribute based on a function, click the Function button for a list to display. 
 
@@ -483,7 +492,8 @@ Only registered customers have access to the Knowledge Base. If you are a custom
 
 All operations performed by RadiantOne (authentication, update, insert, delete, search) can have custom logic applied with interception scripts. The following section describes the default behavior for processing authentication, select, update, delete and insert requests. If you require additional capability, an interception script may be used. 
 
->**Note – consult with a Radiant Logic Support Engineer or Solution Architect to discuss any interception scripts you need.**
+>[!note]
+>Consult with a Radiant Logic Support Engineer or Solution Architect to discuss any interception scripts you need.
 
 **Authentication**
 
@@ -539,9 +549,10 @@ Figure 19: Enabling Interception Script
 
 #### Editing an Intercept Script 
 
-After an interception script has been activated, click the Edit button next to the script, located on the Advanced Settings tab. This opens the script, which contains the default template. All interception scripts must implement the UserDefinedInterception2 interface. More information regarding this can be found in the Javadoc. 
+After an interception script has been activated, click Edit next to the script, located on the Advanced Settings tab. This opens the script, which contains the default template. All interception scripts must implement the UserDefinedInterception2 interface. More information regarding this can be found in the Javadoc. 
 
->**NOTE – on the file system, the file is located in <RLI_HOME>/vds_server/custom/src/com/rli/scripts/intercept/<name of script>.java.**
+>[!note]
+>On the file system, the file is located in <RLI_HOME>/vds_server/custom/src/com/rli/scripts/intercept/<name of script>.java.**
 
 After you edit the script to include your custom logic, save the file. The appropriate class file is generated and stored in: <RLI_HOME>/vds_server/custom/classes/com/rli/scripts/intercept. 
 
@@ -581,7 +592,8 @@ buildjars:
 <br>BUILD SUCCESSFUL 
 <br>Total time: 9 seconds
 
-><span style="color:red">**IMPORTANT NOTE – every time you change the script/class, the JAR file MUST be rebuilt and the RadiantOne service must be restarted. If RadiantOne is deployed in a cluster, restart the service on all nodes.**
+>[!warning]
+>Every time you change the script/class, the JAR file MUST be rebuilt and the RadiantOne service must be restarted. If RadiantOne is deployed in a cluster, restart the service on all nodes.
 
 #### Disabling an Interception Script 
 
@@ -675,4 +687,5 @@ Figure 27: Example Virtual View Created with Hierarchy Builder
 
 As shown in the example above, the Hierarchy Builder tool allows you to take an existing flat LDAP tree and virtualize it into a complex hierarchy. The same steps could be used to take a database table and build a hierarchical view based on its columns. 
 
-><span style="color:red">**IMPORTANT NOTES – All attributes used to comprise the hierarchy should have VALUES for each entry, and the attributes should be indexed in the underlying data source. It is also recommended that if there are many entries (500,000+) that no more than 3-4 levels of hierarchy be used (otherwise performance could be a problem with dynamic access because RadiantOne must perform the “select distinct” operation on all entries to properly build the hierarchy). If persistent cache is used, then performance shouldn’t be a problem – but building the persistent cache could take some time. For details persistent cache, please see the RadiantOne Deployment and Tuning Guide.**
+>[!warning]
+>All attributes used to comprise the hierarchy should have VALUES for each entry, and the attributes should be indexed in the underlying data source. It is also recommended that if there are many entries (500,000+) that no more than 3-4 levels of hierarchy be used (otherwise performance could be a problem with dynamic access because RadiantOne must perform the “select distinct” operation on all entries to properly build the hierarchy). If persistent cache is used, then performance shouldn’t be a problem – but building the persistent cache could take some time. For details persistent cache, please see the RadiantOne Deployment and Tuning Guide.
