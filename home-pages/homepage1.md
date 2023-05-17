@@ -17,7 +17,7 @@ Harness your identity data with intelligent integration to drive better business
   > [Installation](/)  
   > Learn how to use the Environments Operations Center to create environments and install the RadiantOne Intelligent Identity Data Platform which includes the Federated Identity module.
   
-  > [Server Configuration](/sys-admin-guide/introduction)  
+  > [Server Configuration](sys-admin-guide-rebuild/01-introduction)  
   > Learn how to use the Control Panel to configure RadiantOne Federated Identity including connecting to identity data silos, creating virtual views, defining access controls and password policies, and global server settings.
   
   > [Global Identity Builder](/global-identity-builder-guide/introduction)  
