@@ -3,7 +3,7 @@ title: Web Services API Guide
 description: Web Services API Guide
 ---
 
-# Chapter 3: SPML
+# SPML
 
 SPML is an XML-based provisioning request-and-response protocol. RadiantOne supports SPML v2 and plays the role of a Provisioning Service Provider (PSP) or provider and listens for, processes, and returns the results for well-formed SPML requests from a known requesting authority or requestor.
 

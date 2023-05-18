@@ -3,7 +3,7 @@ title: Web Services API Guide
 description: Web Services API Guide
 ---
 
-# Chapter 2: DSML
+# DSML
 
 Directory Service Markup Language (DSML) is an open, extensible format that allows directories to exchange information across directory server types. RadiantOne support for DSML version 2.0 allows directory contents to be accessed, modified, and controlled through XML (eXtensible Markup Language), a more flexible language than HTML that allows customized markup languages to be created for different uses. 
 
@@ -11,7 +11,7 @@ As a Web services protocol, DSML closely mirrors Lightweight Directory Access Pr
 
 Simple Object Access Protocol (SOAP) is an XML-based protocol used in combination with Hypertext Transfer Protocol (HTTP) to access information in a distributed database. DSMLv2 uses SOAP to bind to a Directory Server over the Web in such a way those LDAP directories, such as the RadiantOne service, can be rendered in XML.
 
-This service is available from any DSML client on the context /dsml.  The authentication is performed with the bind information given in the HTTP header.
+This service is available from any DSML client on the context /dsml. The authentication is performed with the bind information given in the HTTP header.
 
 A WSDL is also available on /dsml?wsdl (see [WSDL for RadiantOne DSML Web Service](#wsdl-for-radiantone-dsml-web-service) section below). It can be used when building a web service client from any generation tool. 
 

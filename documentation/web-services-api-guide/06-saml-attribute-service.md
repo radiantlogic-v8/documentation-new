@@ -3,10 +3,12 @@ title: Web Services API Guide
 description: Web Services API Guide
 ---
 
-# Chapter 6: SAML Attribute Service
+# SAML Attribute Service
 
-The RadiantOne service supports SAML attribute queries. It responds to such queries with SAML assertions. 
->**Note – to use the SAML attribute service, ensure that saml is not included in the list of [disabled protocols](#01-overview#disabling-protocolsendpoints).**
+The RadiantOne service supports SAML attribute queries. It responds to such queries with SAML assertions.
+
+>[!note]
+>To use the SAML attribute service, ensure that saml is not included in the list of [disabled protocols](#01-overview#disabling-protocolsendpoints).**
 
 ## Configuration
 To configure RadiantOne as a SAML Attribute Service, three properties files are required: 
@@ -162,13 +164,15 @@ After modifying the AttributeService.properties, AttributeMapping.properties and
 
 ![An image showing ](Media/Image6.1.jpg)
  
-Figure 6.1: RadiantOne HTTP Server Settings
+Figure 1: RadiantOne HTTP Server Settings
   
 If the HTTP server is enabled, restart the RadiantOne service.
 
 If the HTTP server is not enabled, check the “Enable HTTP Server” box, click on the save button at the top of the screen and restart the RadiantOne service.
 
->**Note – The RadiantOne service needs to be restarted every time changes are made to any properties in the AttributeService.properties file.**
+>[!note]
+>The RadiantOne service needs to be restarted every time changes are made to any properties in the AttributeService.properties file.
+
 ### SAML Client Metadata
 
 Copy all SAML client metadata files into `<RLI_HOME>/<instanceName>/conf/saml/clients`.
@@ -187,9 +191,9 @@ To configure the SAML Attribute Service to use a PKCS12 keystore:
 
 3.	Replace the existing values for the parameters signKeystorePath and encKeystorePath with the full path and file name of the PKCS12 certificate/keystore created in step 1 above. This keystore must have a .p12 file extension. In the example below, the keystore, rli.p12, is located at $RLI_HOME/vds_server/conf.
 
-![An image showing ](Media/Image6.2.jpg)
+![Modifying the Keystore Path Values in client.properties](Media/Image6.2.jpg)
  
-Figure 6.2: Modifying the Keystore Path Values in client.properties
+Figure 2: Modifying the Keystore Path Values in client.properties
 
 4.	Save the file. 
 5.	In a command processor, navigate to the following location:
@@ -217,11 +221,12 @@ POST: by reaching the URL using a POST, the requester can send an Attribute Quer
 
 This URL can be used to get the RadiantOne SAML Attribute Service Metadata. An example of the metadata is shown below.
 
-![An image showing ](Media/Image6.3.jpg)
+![RadiantOne Attribute Service Metadata](Media/Image6.3.jpg)
  
-Figure 6.3: RadiantOne Attribute Service Metadata
+Figure 3: RadiantOne Attribute Service Metadata
 
->**Note - The SOAP binding is the only Binding method supported by the RadiantOne SAML Attribute Service. The attribute queries need to be embedded in a SOAP message and the SAML Attribute Service responds with a SAML assertion embedded in a SOAP message as well.**
+>[!note]
+>The SOAP binding is the only Binding method supported by the RadiantOne SAML Attribute Service. The attribute queries need to be embedded in a SOAP message and the SAML Attribute Service responds with a SAML assertion embedded in a SOAP message as well.
  
 ## Testing the RadiantOne SAML Attribute Service
 
@@ -235,7 +240,8 @@ RadiantOne includes a SAML client utility that can be used to test the RadiantOn
 
 First, the utility generates the client’s.xml metadata file. The attribute query service gets client information including the client’s ID and public key from this file. By default, the RadiantOne SAML Attribute Query service does not encrypt its responses. In this section, you will configure the client xml file to indicate that RadiantOne should encrypt its responses. The instructions in this section are performed on the server side.
 
- ><span style="color:red">**IMPORTANT NOTE – These steps should be performed when the RadiantOne service is stopped.**
+>[!warning]
+>These steps should be performed when the RadiantOne service is stopped.
 
 1.	The following property files are located at <RLI_HOME>/config/saml.
 
@@ -272,7 +278,8 @@ If this command is executed successfully, the file, client.xml, is generated in 
 
 Next, the utility generates an .xml file that contains an attribute query which the client will send to the RadiantOne SAML attribute service. In this example, the client requests the value of the attribute “mail” for the user identified as Aaron Medler. The instructions in this section are performed on the client side.
 
->**Note – The instructions in this section require the use of a web client. The examples shown in this section use the Advanced Rest Client available for Google Chrome browsers.**
+>[!note]
+>The instructions in this section require the use of a web client. The examples shown in this section use the Advanced Rest Client available for Google Chrome browsers.
 
 1.	Return to the command line and execute the following command (example shown assumes RadiantOne is installed at C:/radiantone/vds and there is a folder named samlHelper on the C drive where you want the query.xml file to be generated). 
 
@@ -293,20 +300,22 @@ Method	| POST
 Headers	| (N/A)
 Request Body | (Paste the content copied from the query.xml file into this field. See image below.)
 
-![An image showing ](Media/Image6.4.jpg)
+![Sample SAML Attribute Query](Media/Image6.4.jpg)
  
-Figure 6.4: Sample SAML Attribute Query
+Figure 4: Sample SAML Attribute Query
+
 5.	Click Send. 
 6.	To confirm the success of the SAML attribute query, scroll down through the response. If the operation is successful, the response section contains the text “status:Success”, as shown below.
 
-![An image showing ](Media/Image6.5.jpg)
+![Query Status Successful](Media/Image6.5.jpg)
  
-Figure 6.5: Query Status Successful
+Figure 5: Query Status Successful
+
 7.	If the operation is unsuccessful, the response section contains the text “status:RequestDenied”, as shown below.
 
-![An image showing ](Media/Image6.6.jpg)
+![Query Status Unsuccessful](Media/Image6.6.jpg)
  
-Figure 6.6: Query Status Unsuccessful
+Figure 6: Query Status Unsuccessful
 
 ### Decrypting the Response from the RadiantOne SAML Attribute Service
 
@@ -326,6 +335,6 @@ samlUtils.bat response "C:/radiantone/vds/config/saml/serverEncryption.propertie
 
 5.	Open the file “C:/samlHelper/decryptedResponse.xml” and scroll down to see the value of the requested attribute.
 
-![An image showing ](Media/Image6.7.jpg)
+![Sample Decrypted Response](Media/Image6.7.jpg)
  
-Figure 6.7: Sample Decrypted Response
+Figure 7: Sample Decrypted Response
