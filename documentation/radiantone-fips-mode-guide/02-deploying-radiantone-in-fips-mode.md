@@ -13,15 +13,11 @@ During the RadiantOne installation, a self-signed server certificate of type JKS
 
 If RadiantOne is deployed in a cluster, follow these steps to enable FIPS mode on each node. To ensure all nodes are at the same level of security at the same time, all RadiantOne processes except ZooKeeper should be stopped to enable FIPS mode. ZooKeeper must remain running. 
 
-><span style="color:red">**IMPORTANT NOTE - Since enabling FIPS mode requires cluster downtime, only perform the change during a maintenance window.**
+>[!warning]
+>Since enabling FIPS mode requires cluster downtime, only perform the change during a maintenance window.
 
-><span style="color:red">**If you have deployed RadiantOne in Kubernetes, modify the file <RLI_HOME>/jdk/jre/lib/security/java.security and replace this line:**
-
-><span style="color:red">**securerandom.source=file:/dev/random**
-
-><span style="color:red">**With this line:**
-
-><span style="color:red">**securerandom.source=file:/dev/urandom**
+>[!warning]
+>If you have deployed RadiantOne in Kubernetes, modify the file <RLI_HOME>/jdk/jre/lib/security/java.security and replace this line: <br> securerandom.source=file:/dev/random <br> With this line: <br> securerandom.source=file:/dev/urandom
 
 To enable FIPS mode on each node, use the following command:
 
@@ -206,7 +202,8 @@ In FIPS-mode, LDIFZ files should be used when exporting RadiantOne Universal Dir
 
 Although generally not needed, FIPS-mode can be disabled. If RadiantOne is deployed in a cluster, follow these steps to disable FIPS mode on each node. To ensure all nodes are at the same level of security at the same time, all RadiantOne processes except ZooKeeper should be stopped to disable FIPS mode. 
 
-><span style="color:red">**IMPORTANT NOTE - Since disabling FIPS mode requires cluster downtime, only perform the change during a maintenance window.**
+>[!warning]
+>Since disabling FIPS mode requires cluster downtime, only perform the change during a maintenance window.
 
 To disable FIPS mode on each node:
 
