@@ -21,7 +21,8 @@ configuring persistent caches, and managing the virtual namespace. In addition, 
 service wizards and Server Control Panel are accessed from the Main Control Panel. For more
 information on the [Server Control Panel](#starting-the-main-control-panel), see Starting the Server Control Panel.
 
->**Note - To access the Main Control Panel, JavaScript must be enabled in the Internet browser you are using.**
+>[!note]
+>To access the Main Control Panel, JavaScript must be enabled in the Internet browser you are using.
 
 #### Starting the Main Control Panel
 
@@ -45,7 +46,8 @@ Figure 1 : Main Control Panel Login
 
 You can start the RadiantOne LDAP and HTTP services from the Main Control Panel. The Dashboard tab shows the server status. From the ![An image showing ](Media/server-start.jpg) drop-down menu, select to start the service. You can stop or restart the service on this screen unless you have installed RadiantOne as a service in which case you must start the service using the methods available on the host operating system. The Dashboard tab displays server statistics when the RadiantOne LDAP service is running.
 
-><span style="color:red">**IMPORTANT NOTE - For test environments and when initially setting up a cluster, it is best to have control over how and when the RadiantOne service starts. Therefore, it is recommended to not configure it as a Windows/Daemon service until you have your environment successfully configured. After, you can configure it to start/stop as a Windows service or Linux Daemon.**
+>[!warning]
+>For test environments and when initially setting up a cluster, it is best to have control over how and when the RadiantOne service starts. Therefore, it is recommended to not configure it as a Windows/Daemon service until you have your environment successfully configured. After, you can configure it to start/stop as a Windows service or Linux Daemon.
 
 ><span style="color:red">**For details on configuring and starting RadiantOne as a Windows service or Linux Daemon, please see the RadiantOne Deployment and Tuning Guide.**
 

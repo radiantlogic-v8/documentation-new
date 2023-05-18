@@ -28,11 +28,14 @@ The sample naming contexts are as follows:
 <RLI_HOME>/vds_server/dvx/ou_hr_o_examples.dvx, and
 <RLI_HOME>/vds_server/org/ou_hr_o_examples.orx.
 
-><span style="color:red">**IMPORTANT NOTE – Before you can view the data in the sample o=examples naming context, you must start the Derby database server.**
+>[!warning]
+>Before you can view the data in the sample o=examples naming context, you must start the Derby database server.
 
-><span style="color:red">**On Windows → execute %RLI_HOME%\bin\DerbyServer.exe**
+>[!warning]
+>On Windows → execute %RLI_HOME%\bin\DerbyServer.exe
 
-><span style="color:red">**On UNIX platforms → $RLI_HOME/bin/runDerbyServer.sh**
+>[!warning]
+>On UNIX platforms → $RLI_HOME/bin/runDerbyServer.sh
 
 - ou=AllProfiles
 <br> This naming context is used by the legacy ID-Connect client web application and has three levels mounted below it. There are two nodes pointing to local RadiantOne Universal Directory stores (ou=ad_sample and ou=localvds) and one virtual view containing definitions to dynamically build groups (ou=VirtualGroups). If you do not plan on using the legacy ID-Connect application then this entire naming context may be deleted (de-activate each node first before removing the naming context).
@@ -40,7 +43,8 @@ After deleting the naming context, you can also delete the underlying .dvx files
 <br> <RLI_HOME>/vds_server/dvx/o_allprofiles.dvx
 <br> <RLI_HOME>/vds_server/dvx/virtualgroups.dvx.
 
->**Note – Although the ou=AllProfiles naming context is associated with the default.orx, this schema file should not be deleted if you delete the ou=AllProfiles naming context as it is used by other RadiantOne internal components.**
+>[!note]
+>Although the ou=AllProfiles naming context is associated with the default.orx, this schema file should not be deleted if you delete the ou=AllProfiles naming context as it is used by other RadiantOne internal components.
 
 - cn=replicationjournal
 <br> This naming context is used for inter-cluster replication. This naming context may be hidden (by specifying it as a hidden context in the rootdse.ldif file for RadiantOne) but should not be deleted.
@@ -76,7 +80,8 @@ An LDAP data source named vdsha is included by default. This data source contain
 
 An LDAP data source named replicationjournal is included by default. This data source plays a role in inter-cluster replication and should not be deleted or have its status changed to “offline”.
 
-><span style="color:red">**IMPORTANT NOTE – if you change the super user/directory administrator password after installing RadiantOne, you must manually edit both the vdsha and replicationjournal LDAP data sources to update the password here as well. Changes to the data sources are performed from the Main Control Panel > Settings Tab > Server Backend section > LDAP Data Sources.**
+>[!warning]
+>If you change the super user/directory administrator password after installing RadiantOne, you must manually edit both the vdsha and replicationjournal LDAP data sources to update the password here as well. Changes to the data sources are performed from the Main Control Panel > Settings Tab > Server Backend section > LDAP Data Sources.
 
 ### Database
 
@@ -88,10 +93,11 @@ The default radiantsalesforce database data source supports a sample virtual vie
 
 Custom data sources are accessible via a Java API, or web service including REST or SCIM. Each custom data source is associated with a Java script that includes the needed API calls. There are twenty custom data sources included in RadiantOne. Some of the installed custom data sources are associated with code that is externalized and can be viewed. These are noted below. All others are associated with code that is packaged and maintained by Radiant Logic (in <RLI_HOME>/lib/custom-objects-1.0-SNAPSHOT.jar) and not editable externally.
 
-><span style="color:red">**IMPORTANT NOTES – to use a custom data source, edit and update the connection properties (credentials, URL...etc.) and set the active property to true. Restart the RadiantOne service for changes to custom data sources to take effect.**
+>[!warning]
+>to use a custom data source, edit and update the connection properties (credentials, URL...etc.) and set the active property to true. Restart the RadiantOne service for changes to custom data sources to take effect.
 
-><span style="color:red">**Some of these data sources require further customization by the Radiant Logic
-Professional Services team. Contact your Radiant Logic Account Representative for further details.**
+>[!warning]
+>Some of these data sources require further customization by the Radiant Logic Professional Services team. Contact your Radiant Logic Account Representative for further details.
 
 - acsclient – to virtualize information and authenticate users against Cisco TACACS
 and RADIUS. This data source requires customization by Radiant Logic to use.
@@ -128,9 +134,8 @@ at /src/com/rli/scripts/customobjects/gdatacontacts.java
 
 - scimclient2 – for creating virtual views from SCIM v2 accessible data sources. See RadiantOne Context Builder Guide for details on virtualizing SCIMv2 backends.
 
-- sharepoint – for creating virtual views from SharePoint on-premise user profile database. Script can be viewed at <RLI_HOME>/vds_server/custom/src/com/rli/scripts/customobjects/sharepoint.java
-
-- sharepointonline – for creating virtual views from SharePoint Online (Office 365) user profile database. Script can be viewed at <RLI_HOME>/vds_server/custom/src/com/rli/scripts/customobjects/sharepointonline.java. **This data source requires customization by Radiant Logic to use.**
+- saviynt – for creating virtual views from Saviynt. Scripts can be viewed at <RLI_HOME>/vds_server/custom/src/com/rli/scripts/customobects/SaviyntClient. This data source requires customization by Radiant Logic to use.
+  
 - workdayhr – for creating virtual views from Workday. Scripts can be viewed at <RLI_HOME>/vds_server/custom /src/com/rli/scripts/customobjects/workday30. This data source is associated with <RLI_HOME>\vds_server\dvx\workdayhr.dvx and <RLI_HOME>\vds_server\org\workdayhr.orx. **This data source requires customization by Radiant Logic in order to use.**
 - awscognito – for creating read-only virtual views of AWS Cognito user accounts. This data source is associated with <RLI_HOME>\vds_server\dvx\awscognito.dvx and <RLI_HOME>\vds_server\org\awscognito.orx. **This data source requires customization by Radiant Logic in order to use.**
 
@@ -138,8 +143,10 @@ at /src/com/rli/scripts/customobjects/gdatacontacts.java
 
 The following JDBC drivers are installed with RadiantOne: JDBC-ODBC Bridge from Sun, Oracle (thin), Oracle oci, Microsoft SQL Server, HSQL, MariaDB, IBM DB2, Sybase, RadiantOne Salesforce, and Derby.
 
-><span style="color:red">**IMPORTANT NOTE – The MariaDB JDBC driver supports connecting to both MySQL and MariaDB databases.**
+>[!warning]
+>The MariaDB JDBC driver supports connecting to both MySQL and MariaDB databases.
 
 JDBC drivers are used during the creation of database data sources (the connection to the database backend). A list of drivers appears in the drop-down list box when you are defining a data source. Only the drivers that are listed above were actually installed with RadiantOne. The other driver names/syntaxes that appear in the drop-down list have been provided to save time. If you would like to use one of these drivers or to include a new JDBC driver, install the driver files in the <RLI_HOME>/lib/jdbc directory. Restart the RadiantOne service and any open tools. During the creation of the database data source, if your driver type is listed in the drop-down list, select it and the syntax for the driver class name and URL will be populated for you. Update the URL with the connection details for your database. If the drop-down list does not include your database driver type, you can leave this blank and manually type in the data source name, driver class name, driver URL, user and password.
 
-><span style="color:red">**IMPORTANT NOTES – updating to a different DB2 driver may require more than just replacing the existing driver files in the <RLI_HOME>/lib/jdbc directory if the name or license has changed. Please consult the Radiant Logic knowledge base for additional details.**
+>[!warning]
+>Updating to a different DB2 driver may require more than just replacing the existing driver files in the <RLI_HOME>/lib/jdbc directory if the name or license has changed. Please consult the Radiant Logic knowledge base for additional details.
