@@ -9,7 +9,8 @@ The schema details described in this section apply to the entire RadiantOne plat
 
 The default schema is contained in two LDIF files. They are, ldapschema_00.ldif and ldapschema_01.ldif. These files are stored in the directory of <RLI_HOME>/<instance_name>/conf. Radiant Logic specific object classes and attributes found in these files are assigned identifiers (oid) prefixed with 1.3.6.1.4.1.40747.1.X for attributes and 1.3.6.1.4.1.40747.2.X for object classes.
 
-><span style="color:red">**IMPORTANT NOTE – If you have WebSphere configured to use RadiantOne as the LDAP security directory, and RadiantOne is accessing an Active Directory server backend, you must extend the RadiantOne LDAP schema with all objects and attributes from the Active Directory schema. Otherwise, you can encounter problems with WebSphere not being able to properly get group membership. For detailed steps, please see below. You must already have established a connection to Active Directory before following the steps in the Extending the RadiantOne LDAP Schema section.**
+>[!warning]
+>If you have WebSphere configured to use RadiantOne as the LDAP security directory, and RadiantOne is accessing an Active Directory server backend, you must extend the RadiantOne LDAP schema with all objects and attributes from the Active Directory schema. Otherwise, you can encounter problems with WebSphere not being able to properly get group membership. For detailed steps, please see below. You must already have established a connection to Active Directory before following the steps in the Extending the RadiantOne LDAP Schema section.
 
 ## Extending the RadiantOne LDAP Schema
 
@@ -30,11 +31,8 @@ View the contents of the existing schema files in this location to understand th
 
 The name of the LDIF file should be ldapschema_<any 2 digit number greater than the existing file names>.ldif. For example, the following schema files already exist by default: ldapschema_00.ldif, ldapschema_01.ldif, and ldapschema_05.ldif, so a new schema file could be ldapschema_03.ldif (any unused 2 digit number could be used).	
 
-><span style="color:red">**IMPORTANT NOTES – If an object class or attribute is defined in multiple ldapschema files numbered between ldapschema_00.ldif and ldapschema_49.ldif, the ldapschema file with the largest number will override the definition in lower numbered files. For example, if an object class named domain is defined in both ldapschema_01.ldif and ldapschema_10.ldif, the definition from ldapschema_10.ldif is used.**
-
-><span style="color:red">**The ldapschema_50.ldif is a special file generated from [.orx schema definitions](configuration#orx-schema). If an object class or attribute is defined in multiple ldapschema files numbered between ldapschema_50.ldif and ldapschema_98.ldif, the ldapschema file with the largest number will override the definition in the lower numbered files but will not override any definition in files numbered between ldapschema_00.ldif through ldapschema_49.ldif. For example, ldapschema_90.ldif would override ldapschema_50.ldif, but would not override a definition in ldapschema_48.ldif.**
-
-><span style="color:red">**The ldapschema_99.ldif overrides all previous definitions in ldapschema_00-98.ldif.**
+>[!warning]
+>If an object class or attribute is defined in multiple ldapschema files numbered between ldapschema_00.ldif and ldapschema_49.ldif, the ldapschema file with the largest number will override the definition in lower numbered files. For example, if an object class named domain is defined in both ldapschema_01.ldif and ldapschema_10.ldif, the definition from ldapschema_10.ldif is used. <BR> The ldapschema_50.ldif is a special file generated from [.orx schema definitions](configuration#orx-schema). If an object class or attribute is defined in multiple ldapschema files numbered between ldapschema_50.ldif and ldapschema_98.ldif, the ldapschema file with the largest number will override the definition in the lower numbered files but will not override any definition in files numbered between ldapschema_00.ldif through ldapschema_49.ldif. For example, ldapschema_90.ldif would override ldapschema_50.ldif, but would not override a definition in ldapschema_48.ldif. <BR> The ldapschema_99.ldif overrides all previous definitions in ldapschema_00-98.ldif.
 
 As long as RadiantOne and ZooKeeper are running on the leader node machine where you add the LDIF file, the schema file takes effect after the RadiantOne on all nodes are restarted. 
 
@@ -48,7 +46,8 @@ Figure 1: ORX Files Available for Extending RadiantOne LDAP Schema
 
 The object classes and attributes contained in the select files are added to the RadiantOne LDAP schema and can be viewed from the Main Control Panel > Settings Tab > Configuration section, LDAP Schema node.
 
->**Note – if you have already added object classes and attributes from some .orx files, then they automatically have a check mark in the Publish in Server Schema column. If you want them removed from the RadiantOne LDAP schema, uncheck them before clicking Generate LDAP Schema.**
+>[!note]
+>If you have already added object classes and attributes from some .orx files, then they automatically have a check mark in the Publish in Server Schema column. If you want them removed from the RadiantOne LDAP schema, uncheck them before clicking Generate LDAP Schema.
 
 ## Extending the RadiantOne Schema with New Objects and Attributes from the Main Control Panel
 

@@ -7,7 +7,8 @@ description: System Administration Guide
 
 When RadiantOne receives a request, it uses the user in the bind operation, and the access control instructions (ACIs) defined in order to allow or deny access to directory information. The server can allow or deny permissions such as read, write, search, or compare. 
 
-><span style="color:red">**IMPORTANT NOTE – ACI are not enforced for the [RadiantOne super user](settings-tab#directory-manager-user) (e.g. cn=directory manager).**
+>[!warning]
+>ACI are not enforced for the [RadiantOne super user](settings-tab#directory-manager-user) (e.g. cn=directory manager).
 
 With ACI, you can control access to targets such as:
 -	the entire virtual namespace
@@ -33,8 +34,9 @@ The general ACI syntax is as follows:
 The following default ACIs are defined:
 -	All users have read access to the directory for search, compare, and read operations.
 
-><span style="color:red">**IMPORTANT NOTE – If you delete the default read access, this does not delete read access to the RootDSE for RadiantOne. If you want to remove access to the RootDSE, check the ![An image showing ](Media/enable-root-dse.jpg) option after you delete the default global read access. This denies access to the RootDSE to everyone except cn=directory manager. You can also add a new ACI that dictates RootDSE access. Below is an example of allowing public access to the RootDSE: 
-<br>(target="ldap:///")(targetscope="base")(targetattr="*")(version 3.0; acl "RootDSE accessible to public"; allow (read,search,compare) userdn="ldap:///anyone";)**
+>[!warning]
+>If you delete the default read access, this does not delete read access to the RootDSE for RadiantOne. If you want to remove access to the RootDSE, check the ![An image showing ](Media/enable-root-dse.jpg) option after you delete the default global read access. This denies access to the RootDSE to everyone except cn=directory manager. You can also add a new ACI that dictates RootDSE access. Below is an example of allowing public access to the RootDSE: 
+<br>(target="ldap:///")(targetscope="base")(targetattr="*")(version 3.0; acl "RootDSE accessible to public"; allow (read,search,compare) userdn="ldap:///anyone";)
 
 -	Users in the group cn=directory administrators,ou=globalgroups,cn=config have full access to the RadiantOne configuration as it is equivalent to cn=directory manager access. However, unlike cn=directory manager, users in this Directory Administrators group are subject to ACIs when accessing data in the RadiantOne namespace.
 
@@ -50,7 +52,8 @@ Each access control instruction has a description which explains the context of 
 
 The location is the target where the access control is to be applied and is a distinguished name.
 
-><span style="color:red">**IMPORTANT NOTE – it is recommended that you set access permissions at the root of your tree. When setting the target, you can navigate to the specific branch that you want to protect.**
+>[!warning]
+>It is recommended that you set access permissions at the root of your tree. When setting the target, you can navigate to the specific branch that you want to protect.
 
 When setting access controls on a sub-branch, you do not see which access controls have been set up at the parent nodes in the tree. This increases the chance that you may have conflicting access controls defined. Defining access controls at the root helps prevent creating conflicting access rules.
 
@@ -106,16 +109,19 @@ Level 1 indicates an authentication method of basic credentials (username+passwo
 
 Level 2 indicates an authentication method of Kerberos (leveraging GSSAPI) is required to access the data. At this level, there is some confidence in the asserted identity's validity. You can use this level when there is moderate risk associated with the authentication strength used to access the RadiantOne data.
 
-><span style="color:red">**IMPORTANT NOTE – Ensure you have RadiantOne configured properly as a [Kerberos LDAP service](security#kerberos).**
+>[!warning]
+>Ensure you have RadiantOne configured properly as a [Kerberos LDAP service](security#kerberos).
 
 Level 3 indicates multi-factor authentication (e.g. RSA SecurID token code, Yubikey) is required to access the data. At this level, there is high confidence in the asserted identity's validity. You can use this level when there is high risk associated with the authentication strength used to access the RadiantOne data. 
 
 
-><span style="color:red">**IMPORTANT NOTE – Ensure you have RadiantOne configured properly with a [Custom Authentication Provider](interception#custom-authentication-providers).**
+>[!warning]
+>Ensure you have RadiantOne configured properly with a [Custom Authentication Provider](interception#custom-authentication-providers).
 
 Level 4 indicates certificate-based (mutual) authentication is required to access the data. There is very high confidence in an asserted identity of the entity. This is the highest level of authentication assurance and should be used when there is very high risk associated with accessing the data.
 
-><span style="color:red">**IMPORTANT NOTE – Ensure you have RadiantOne configured properly for [Mutual Authentication](server-backend#mutual-authentication).**
+>[!warning]
+>Ensure you have RadiantOne configured properly for [Mutual Authentication](server-backend#mutual-authentication).
 
 Select the assurance level from the drop-down list and select an operator. You can use Equals (=), Not Equal To (!=), Greater Than (>), Greater Than or Equal To (>=), Less Than (<), or Less Than or Equal To (<=).
 
@@ -191,7 +197,8 @@ The proxy option indicates whether the subject can access the target with the ri
 
 A subject is whom the access control rule applies to. The subject types that can be associated with access control rules are described below:
 
-><span style="color:red">**IMPORTANT NOTE – It is recommended to define access controls on subjects that are located in a RadiantOne Universal Directory (HDAP) store or persistent cache. This prevents possible performance or network issues involved with RadiantOne connecting to a backend directory in order to enforce authorization. If your ACI’s require subjects that are located in backend directories, make sure that the backend is configured for high availability and that the [RadiantOne data source](concepts#data-source) is configured with the failover servers appropriately.**
+>[!warning]
+>It is recommended to define access controls on subjects that are located in a RadiantOne Universal Directory (HDAP) store or persistent cache. This prevents possible performance or network issues involved with RadiantOne connecting to a backend directory in order to enforce authorization. If your ACI’s require subjects that are located in backend directories, make sure that the backend is configured for high availability and that the [RadiantOne data source](concepts#data-source) is configured with the failover servers appropriately.
 
 -	Users – applicable to any specific user(s).
 -	Groups – applicable to a group of users. If the group is a nested group in HDAP, enable Main Control Panel > Settings > Security > Access Control > [Enable Nested Groups](access-control#enable-nested-groups) and configure [Linked Attribute](interception#linked-attributes) settings from Main Control Panel > Settings > Interception > Special Attributes Handling.
@@ -217,7 +224,8 @@ You can indicate that a client connection must originate from a single IP addres
 
 For IPv6 addresses, use the syntax defined by RFC 2373. For example, 0:0:0:0:0:0:13.1.68.3 which can also be expressed as ::13.1.68.3 are both valid forms of IPv6 addresses. An address with a subnet prefix length can also be used (e.g. 12AB::CD30:0:0:0:0/60). Wildcards cannot be used in IPv6 addresses.
 
->**Note – to use DNS addresses, manually edit the ACI after saving it by clicking **Manually Edit**. Use the keyword dns and enter the fully qualified DNS domain name. Use an operator of either “equal to” (=) or “not equal to” (!=). Wildcards are supported in the DNS address.**
+>[!note]
+>To use DNS addresses, manually edit the ACI after saving it by clicking **Manually Edit**. Use the keyword dns and enter the fully qualified DNS domain name. Use an operator of either “equal to” (=) or “not equal to” (!=). Wildcards are supported in the DNS address.
 
 ## ACI Evaluation Rules
 
@@ -235,23 +243,27 @@ The ACI evaluation rules that RadiantOne follows are:
 
 If both lists are empty, access is denied.
 
-><span style="color:red">**IMPORTANT NOTE – to troubleshoot/trace ACI evaluation decisions, [RadiantOne server log level](logs#log-settings) must be set to DEBUG. When DEBUG level is set, the evaluation rules can be seen in: <RLI_HOME>/vds_server/logs/vds_server.log**
+>[!warning]
+>To troubleshoot/trace ACI evaluation decisions, [RadiantOne server log level](logs#log-settings) must be set to DEBUG. When DEBUG level is set, the evaluation rules can be seen in: <RLI_HOME>/vds_server/logs/vds_server.log
 
 ## Setting Access Controls
 
 To define access controls:
 
-><span style="color:red">**IMPORTANT NOTE - Access rights can be defined by any user who is a member of the ACI Administrators group or the Directory Administrators group. For details on all administrative groups available for RadiantOne, please see [Delegated Administration of RadiantOne](administration-and-configuration#delegated-administration-of-radiantone).**
+>[!warning]
+>Access rights can be defined by any user who is a member of the ACI Administrators group or the Directory Administrators group. For details on all administrative groups available for RadiantOne, please see [Delegated Administration of RadiantOne](administration-and-configuration#delegated-administration-of-radiantone).
 
 1.	From the Main Control Panel > Settings Tab > Security section > Access Control sub-section, select the Enable ACI checkbox on the right side in the Authorization section and click **Save**.
 
 2.	In the Access Control section, select root.
 
->**Note - Although there is not an absolute requirement, it is generally recommended to define all your access controls at the root level so you can come back to this single level and see all configured access controls across the entire virtual namespace.**
+>[!note]
+>Although there is not an absolute requirement, it is generally recommended to define all your access controls at the root level so you can come back to this single level and see all configured access controls across the entire virtual namespace.
 
 3.	Click **Add**. The Edit ACI pane is displayed.
 
->**Note –The Target Scope pull-down menu value defaults to subtree, and the Target Attributes value defaults to All.**
+>[!note]
+>The Target Scope pull-down menu value defaults to subtree, and the Target Attributes value defaults to All.
 
 4.	Enter an ACI description.
 

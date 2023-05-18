@@ -9,7 +9,8 @@ These settings are related to how RadiantOne accesses backend data sources and c
 
 ## Connection Pooling
 
->**Note – This section is accessible only in [Expert Mode](introduction#expert-mode).**
+>[!note]
+>This section is accessible only in [Expert Mode](introduction#expert-mode).
 
 ![Connection Pooling Settings](Media/Image3.61.jpg)
 
@@ -91,7 +92,8 @@ Figure 2: LDAP Browser Client used to Clear the Connection Pool
 
 A data source in RadiantOne represents the connection to a backend. Data sources can be managed from the Main Control Panel > Settings Tab > Server Backend section. Configuring connections to all backends from a central location simplifies the management task when changes to the backend are required. For more details on data sources, please see [Concepts](concepts).
 
->**Note - Data sources can also be managed from the command line using the RadiantOne command line config utility. Details on this utility can be found in the RadiantOne Command Line Configuration Guide.**
+>[!note]
+>Data sources can also be managed from the command line using the RadiantOne command line config utility. Details on this utility can be found in the RadiantOne Command Line Configuration Guide.
 
 ### Status
 
@@ -103,7 +105,8 @@ Each data source has a status associated with it. The status is either Active or
 
 An LDAP data source represents a connection to an LDAP/JNDI-accessible backend.
 
-><span style="color:red">**IMPORTANT NOTE – When configuring data sources for Active Directory backends, always enable the Paged Results Control option.**
+>[!warning]
+>When configuring data sources for Active Directory backends, always enable the Paged Results Control option.
 
 To add an LDAP data source:
 1.	From the Main Control Panel > Settings Tab > Server Backend section > LDAP Data Sources sub-section, click **Add**.
@@ -114,7 +117,8 @@ Figure 3: Adding a New LDAP Data Source
 
 2.	Enter a unique data source name along with the connection information to reach your backend server. Also select the type of LDAP Data Source (VDS/OpenDJ/SunOne/Active Directory/Novell/Other LDAP).
 
-><span style="color:red">**IMPORTANT NOTE – Do not use spaces, commas, brackets or parenthesis, colons, or the word “domain” in the data source name and do not use special characters in the Base DN value.**
+>[!warning]
+>Do not use spaces, commas, brackets or parenthesis, colons, or the word “domain” in the data source name and do not use special characters in the Base DN value.
 
 3.	Click **Test Connection** to validate the values entered above.
 
@@ -132,7 +136,8 @@ If the backend LDAP server you are connecting to uses a certificate issued by a 
 
 This setting is only applicable if SSL is used to connect to the backend. If enabled, RadiantOne validates the CN/SAN of the certificate and only establishes a connection to the backend if the hostname matches. This setting is not enabled by default meaning that RadiantOne doesn’t validate the hostname to the CN/SAN of the certificate for SSL connections.
 
-?**Note - RadiantOne does not perform a reverse lookup when the Host Name for the backend is defined as an IP address instead of a fully qualified server name.**
+>[!note]
+>RadiantOne does not perform a reverse lookup when the Host Name for the backend is defined as an IP address instead of a fully qualified server name.
 
 ### STARTTLS
 
@@ -152,7 +157,8 @@ Some important tips for using STARTTLS are:
 
 Figure 4: Configuration for RadiantOne to Connect to the Underlying LDAP Server via STARTTLS
 
-><span style="color:red">**IMPORTANT NOTE - When using STARTTLS, be aware that you cannot use the IP of the server in the Host Name parameter, you need the exact name of the server (which should match what is in the certificate), or you will get the following error:**
+>[!warning]
+>When using STARTTLS, be aware that you cannot use the IP of the server in the Host Name parameter, you need the exact name of the server (which should match what is in the certificate), or you will get the following error:
 
 ><span style="color:red">**...JNDI connect Error : javax.net.ssl.SSLPeerUnverifiedException: hostname of the server '10.11.12.203' does not match the hostname in the server's certificate.**
 
@@ -203,13 +209,15 @@ Figure 6: RadiantOne Acting as a Kerberos Client – Note the client accessing R
 
 To use this option, you first need to define a Kerberos profile.
 
->**Note – All machines (client, domain controller…etc.) must be in sync in terms of clock (time/date settings).**
+>[!note]
+>All machines (client, domain controller…etc.) must be in sync in terms of clock (time/date settings).
 
 ### Kerberos Profile
 
 A Kerberos profile file defines the realm, domain and KDC information. All Kerberos profiles are stored in <RLI_HOME>/<instance_name>/conf/krb5. 
 
->**Note - Kerberos profile files are automatically shared across all RadiantOne cluster nodes.**
+>[!note]
+>Kerberos profile files are automatically shared across all RadiantOne cluster nodes.
 
 There is a default file named vds_krb5.conf included with RadiantOne. Each data source backend (associated with a KDC) that you want RadiantOne to connect to via Kerberos requires its own “…krb5.conf” file. It is recommended that the name of the conf file indicate the relevant realm, since each KDC realm requires its own krb5.conf file. For example, the sample below uses NA.RADIANTLOGIC.COM as the default realm, so a good name for the krb5.conf file may be na_krb5.conf.
 
@@ -283,7 +291,8 @@ Figure 8: Sample LDAP Data Source Using Kerberos
 
 When a client binds to RadiantOne using a simple bind (DN+password) and their DN “suffix” matches a virtual view where Kerberos is enabled for the backend data source, RadiantOne uses the value set in the Bind DN of the data source to determine how to perform the Kerberos authentication to the backend directory. RadiantOne searches in the KDC where sAMAccountName matches the value used in the Bind DN and then requests a ticket from the KDC on behalf of this user to connect to the backend directory (Kerberized service). The details in the krb5.conf (Kerberos profile) file dictate which realm and KDC RadiantOne uses.
 
->**Note – The user is authenticated by the KDC and RadiantOne passes this Kerberos ticket in the SASL GSSAPI LDAP bind to connect to the backend Active Directory. All subsequent requests after the bind request flow over the standard LDAP port. If you need to secure/encrypt subsequent requests, configure SSL/TLS in the data source in addition to the Kerberos configuration described in this section.**
+>[!note]
+>The user is authenticated by the KDC and RadiantOne passes this Kerberos ticket in the SASL GSSAPI LDAP bind to connect to the backend Active Directory. All subsequent requests after the bind request flow over the standard LDAP port. If you need to secure/encrypt subsequent requests, configure SSL/TLS in the data source in addition to the Kerberos configuration described in this section.
 
 #### Chasing Referrals
 
@@ -302,7 +311,8 @@ If RadiantOne attempts to “chase” these referrals, there can be extreme degr
 
 The paged results option is only relevant for LDAP directories that support the paged results control (such as Active Directory and the RadiantOne service).
 
->**Note - Sun Java Directory Server does NOT support the paged results control (at least as of v5.2).**
+>[!note]
+>Sun Java Directory Server does NOT support the paged results control (at least as of v5.2).
 
 If you enable the paged results option, RadiantOne (as a client to other LDAP servers) will request the result of a query in chunks (to control the rate at which search results are returned). After enabling the paged results control option, specify the page size (number of entries per chunk). Click **Save** to apply the changes to the server.
 
@@ -320,7 +330,8 @@ To delete a data source, select the configured data source and click **Delete**.
 
 If the primary backend is not available or the SSL certificate is expired (resulting in a connection error), RadiantOne attempts to connect to failover servers that are configured for the data source.
 
->**Note – if your data source is Active Directory and you are using Host Discovery in your data source settings, there is no need to define failover server. RadiantOne automatically leverages the first five LDAP servers listed in the SRV record as primary/failover servers. For more information on Host Discovery, see the RadiantOne Namespace Configuration Guide.**
+>[!note]
+>If your data source is Active Directory and you are using Host Discovery in your data source settings, there is no need to define failover server. RadiantOne automatically leverages the first five LDAP servers listed in the SRV record as primary/failover servers. For more information on Host Discovery, see the RadiantOne Namespace Configuration Guide.
 
 1.	Go to the Main Control Panel > Settings Tab > Server Backend section.
 
@@ -330,7 +341,8 @@ If the primary backend is not available or the SSL certificate is expired (resul
 
 4.	Save the configuration when you are finished.
 
->**Note – RadiantOne attempts to connect to failover servers only if there is an error in connection to the primary server (it attempts to connect twice) or if the SSL certificate for the backend server is expired.**
+>[!note]
+>RadiantOne attempts to connect to failover servers only if there is an error in connection to the primary server (it attempts to connect twice) or if the SSL certificate for the backend server is expired.
 
 ### Proxy Impersonation Rules
 
@@ -390,7 +402,8 @@ Figure 12: Database Data Sources
 
 3.	Enter a unique data source name (do not use spaces in the name) along with the connection information to reach your backend server. You can select a Data Source Type from the drop-down list and the driver class name and URL syntax is populated for you. You can then just modify the needed parameters in the URL and enter the required user/password. 
 
->**Note - A secure connection can be made to the database if the JDBC driver supports it. If the server you are connecting to uses a certificate issued by a trusted Certificate Authority, then all you need to do during the creation of the data source is enter the SSL port in the appropriate location of the URL. If the server you are connecting to uses a self-signed certificate, then this certificate must be imported into the [RadiantOne client trust store](security#client-certificates-default-java-truststore).**
+>[!note]
+>A secure connection can be made to the database if the JDBC driver supports it. If the server you are connecting to uses a certificate issued by a trusted Certificate Authority, then all you need to do during the creation of the data source is enter the SSL port in the appropriate location of the URL. If the server you are connecting to uses a self-signed certificate, then this certificate must be imported into the [RadiantOne client trust store](security#client-certificates-default-java-truststore).
 
 4.	Click **Test Connection**.
 
@@ -472,7 +485,8 @@ To virtualize a SCIM backend:
 
 4.	Enter the SCIM URL path to reach the service. When testing the connection for this data source, RadiantOne attempts to get data from the /ServiceProviderConfig endpoint. You can validate the connection to an alternate URL using the “test_connection_url” property.
 
->**Notes – If a RadiantOne service is the backend you are connecting to, the syntax of the URL is: http://`<fid_server>:8089/scim2/v2`**
+>[!note]
+>If a RadiantOne service is the backend you are connecting to, the syntax of the URL is: http://`<fid_server>:8089/scim2/v2`
 
 5.	Enter the credentials (e.g. username and password) to connect to the service.
 
@@ -486,7 +500,8 @@ Figure 15: Sample Custom SCIM v2 Data Source
 
 8.	Click **Save**.
 
->**Notes - If you plan on virtualizing a RadiantOne Universal Directory backend, and are going to use the SCIM connector for detecting changes (for sync or persistent cache refreshes), the modifyTimestamp attribute must be removed from the Non-indexed Attributes property, and added to the Indexed Attributes and Sorted Attributes properties for the store. Rebuild the index for the store after modifying these properties. Also, the VLV/Sort control must be enabled on the RadiantOne service. This can be enabled from the Main Control Panel (associated with the RadiantOne backend) > Settings > Server Front End > Supported Controls.**
+>[!note]
+>If you plan on virtualizing a RadiantOne Universal Directory backend, and are going to use the SCIM connector for detecting changes (for sync or persistent cache refreshes), the modifyTimestamp attribute must be removed from the Non-indexed Attributes property, and added to the Indexed Attributes and Sorted Attributes properties for the store. Rebuild the index for the store after modifying these properties. Also, the VLV/Sort control must be enabled on the RadiantOne service. This can be enabled from the Main Control Panel (associated with the RadiantOne backend) > Settings > Server Front End > Supported Controls.
 
 ##### Custom Properties
 
@@ -500,7 +515,8 @@ The Namespace Configuration Guide describes the properties necessary for common 
 
 For update operations, some SCIM servers support both PATCH and PUT operations, and some only support PUT. If the SCIM server backend supports both operations, the value of the “replaceonupdate” property determines which operation RadiantOne sends. Set the “replaceonupdate” property to true, for RadiantOne to issue a PUT to the SCIM server. Otherwise set the “replaceonupdate” to false, and RadiantOne issues a PATCH to the SCIM server. You do not need to set this property for SCIM servers that do not support PATCH operations. In this scenario, RadiantOne detects that the server doesn’t support PATCH operations and sends the updates as PUT operations.
 
->**Notes – For SCIM servers that do not support PATCH operations: When clients send update requests to RadiantOne, values for all attributes (even which were not changed) must be set because it sends a PUT request to the SCIM Server, which replaces the entry.**
+>[!note]
+>For SCIM servers that do not support PATCH operations: When clients send update requests to RadiantOne, values for all attributes (even which were not changed) must be set because it sends a PUT request to the SCIM Server, which replaces the entry.
 
 #### Pass Through Authorization
 
@@ -657,7 +673,8 @@ To disable attempting retries on error:
 
 Figure 18: Disabling SCIM Backend Exception Parameters
 
->**NOTE – With this setting, when an exception is thrown, it is logged and changes are discarded.**
+>[!note]
+>With this setting, when an exception is thrown, it is logged and changes are discarded.
 
 5.	Click **OK**.
 
@@ -665,7 +682,8 @@ Figure 18: Disabling SCIM Backend Exception Parameters
 
 The username (Bind DN property for LDAP data sources, User property for Database data sources) and/or password properties of a data source can be updated via an LDAP modify command. This modifies the configuration in the RadiantOne data source and does not modify any credentials in the backend. Updating data sources via LDAP requires the RadiantOne super user (cn=directory manager) credentials. The DN in the modify should be in the form of: id=<data_source_name>,cn=metads
 
->**Note – to update the RadiantOne credentials associated with the KDC account that is defined on Main Control Panel > Settings > Security > Authentication Methods > Kerberos Authentication, modify the username (user principal name) and/or password (service password) with a DN of “id=KDCconnect,cn=metads”. These special credentials are stored in ZooKeeper and updating the credentials via LDAP updates the kerberosUserPrincipalName and kerberosServicePassword properties in /radiantone/v1/cluster/config/vds_server.conf in ZooKeeper.**
+>[!note]
+>To update the RadiantOne credentials associated with the KDC account that is defined on Main Control Panel > Settings > Security > Authentication Methods > Kerberos Authentication, modify the username (user principal name) and/or password (service password) with a DN of “id=KDCconnect,cn=metads”. These special credentials are stored in ZooKeeper and updating the credentials via LDAP updates the kerberosUserPrincipalName and kerberosServicePassword properties in /radiantone/v1/cluster/config/vds_server.conf in ZooKeeper.
 
 The LDAP attribute names to issue in the modify request for the Bind DN and password are: username and password respectively.
 
@@ -728,7 +746,8 @@ To verify the username and password update, go to the Main Control Panel > Setti
 
 These settings define how RadiantOne accesses itself (internally) as a client. This can happen in some cases where interception scripts or joins are used. 
 
->**Note – The settings in this section are accessible only in [Expert Mode](introduction#expert-mode).**
+>[!note]
+>The settings in this section are accessible only in [Expert Mode](introduction#expert-mode).
 
 Three advanced settings applicable to internal connections to the RadiantOne service are, Use SSL, Disable Referral Chasing and Paged Results Control. These are each described in more details below.
 
@@ -770,4 +789,5 @@ Figure 20: Persistent Cache Initialization Location
 
 A Kerberos profile file defines the realm, domain and KDC information. These profiles are used by RadiantOne when it acts as a client a backend Active Directory. For configuration details, please see [Kerberos](#kerberos).
 
->**Note – This section is accessible only in [Expert Mode](introduction#expert-mode).**
+>[!note]
+>This section is accessible only in [Expert Mode](introduction#expert-mode).

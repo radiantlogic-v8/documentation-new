@@ -15,7 +15,8 @@ Figure 1: Password Policies
 
 To allow users to bypass password policies, you can add them to the PrivilegedPasswordPolicyGroup group. This group can be useful, for example, if you want a helpdesk user to reset a user’s password. The password policies are not checked, so this user can set a password that does not meet the password content criteria, could be in history, etc.
 
-><span style="color:red">**IMPORTANT NOTE – In addition to PrivilegedPasswordPolicyGroup group members, password policies also do NOT apply to the RadiantOne super user account (cn=directory manager for example) or any member of the cn=directory administrators,ou=globalgroups,cn=config group (or the specific Directory Administrators group you have set on the Main Control Panel > Settings Tab > Server Front End > Administration sub-section).**
+>[!warning]
+>In addition to PrivilegedPasswordPolicyGroup group members, password policies also do NOT apply to the RadiantOne super user account (cn=directory manager for example) or any member of the cn=directory administrators,ou=globalgroups,cn=config group (or the specific Directory Administrators group you have set on the Main Control Panel > Settings Tab > Server Front End > Administration sub-section).
 
 To assign users to the Privileged Password Policy Group:
 
@@ -37,7 +38,8 @@ From the Main Control Panel > Settings Tab > Security section > Password Policie
 
 There is a default password policy that is enforced at a global level for all RadiantOne Universal Directory stores and persistent cache (if password policy enforcement is enabled), no matter where a user account is located. You can override the default policy with a custom one that is applicable only to a certain subset of the user population (determined by group they are a member of, or the location of the entry in the virtual namespace).
 
->**Note – If a given user entry is affected by both a global and local policy, the local policy takes precedence. For more details, see [Password Policy Precedence](#password-policy-precedence). To enable password policy enforcement for a persistent cache branch, check the Enable Password Policy Enforcement option on the cache settings. For more details on persistent cache, see the RadiantOne Deployment and Tuning Guide.**
+>[!note]
+>If a given user entry is affected by both a global and local policy, the local policy takes precedence. For more details, see [Password Policy Precedence](#password-policy-precedence). To enable password policy enforcement for a persistent cache branch, check the Enable Password Policy Enforcement option on the cache settings. For more details on persistent cache, see the RadiantOne Deployment and Tuning Guide.
 
 ### Default Password Policy
 
@@ -53,11 +55,13 @@ To create a custom password policy, next to the ‘Choose a Password Policy’ d
 
 The ‘Subject’ of the custom policy can be either Sub-tree or Group and is based on a specific base DN. Click **CHOOSE** to select a base DN. If the subject is set to sub-tree, this means that all user entries below the chosen base DN (which must be a RadiantOne Universal Directory store or persistent cache) are affected by the custom policy. If the subject is set to group, this means that all users that are a member of the group specified in the base DN are affected by the custom policy. The group DN can represent a static group (unique members listed in the group entry) or a dynamic group (associated with the groupOfURLs object class and contains a memberURL attribute dictating the members). RadiantOne evaluates dynamic membership automatically to enforce password policies. If a user is affected by a policy defined for sub-tree and for group, the one associated with the group takes precedence.
 
->**Note – Custom policy properties override those defined in the default policy. The only exception is the password content properties where you can choose to enable the enforcement of the custom policy, or choose to use the default policy. Keep in mind that a value of 0 (zero) in a custom policy for password content means an unlimited amount is allowed. It does not mean that it is undefined.**
+>[!note]
+>Custom policy properties override those defined in the default policy. The only exception is the password content properties where you can choose to enable the enforcement of the custom policy, or choose to use the default policy. Keep in mind that a value of 0 (zero) in a custom policy for password content means an unlimited amount is allowed. It does not mean that it is undefined.
 
 An example of a custom password policy is shown below. It is applicable to all users who are located in a RadiantOne Universal Directory store and are a member of the Special Users group identified in the DIT as cn=special users,ou=globalgroups,cn=config.
 
->**Note – If you define multiple custom password policies associated with groups (as the Subject), they should not have the same precedence if they share members. If a user is affected by multiple group-based policies, the one with the highest precedence (lowest numeric value in the precedence setting) is enforced.**
+>[!note]
+>If you define multiple custom password policies associated with groups (as the Subject), they should not have the same precedence if they share members. If a user is affected by multiple group-based policies, the one with the highest precedence (lowest numeric value in the precedence setting) is enforced.
 
 ![Example Custom Password Policy Applicable to a Group](Media/Image3.104.jpg)
  
@@ -65,7 +69,8 @@ Figure 3: Example Custom Password Policy Applicable to a Group
 
 An example of a custom password policy applicable to all users below a specific container is shown below. This custom policy is enforced for all users in a RadiantOne Universal Directory store located below o=local.
 
->**Note – precedence level is not configurable for policies defined on a sub tree. Multiple password policies configured with sub tree subject, should not be configured for the same location. If multiple policies impact the same branch, the policy defined at the lowest point is enforced.**
+>[!note]
+>precedence level is not configurable for policies defined on a sub tree. Multiple password policies configured with sub tree subject, should not be configured for the same location. If multiple policies impact the same branch, the policy defined at the lowest point is enforced.
 
 ![An image showing ](Media/Image3.105.jpg)
  
@@ -107,7 +112,8 @@ Figure 5: Password Changes Options
 
 This value is stored in the pwdMustChange attribute of the cn=Password Policy entry and has a value of True or False. If True, the user must change their passwords when they first bind to the directory after their password has been reset. The bind error message returned from RadiantOne is “You must change your password before submitting any other requests”.
 
-><span style="color:red">**IMPORTANT NOTE – The applicable password policy must indicate: "User must change password after reset" and "User may change password".**
+>[!warning]
+>The applicable password policy must indicate: "User must change password after reset" and "User may change password".
 
 Actions considered as a reset that will trigger the “You must change your password before submitting any other requests” bind error are:
 
@@ -129,7 +135,8 @@ This value is stored in the pwdSafeModify attribute of the cn=Password Policy en
 
 This value is stored in the pwdMinAge attribute of the cn=Password Policy entry. It holds the number of seconds that must elapse between modifications to the password. If this attribute is not present, 0 seconds is assumed. From the Main Control Panel, you can indicate the length of time in any combination of days, hours and/or minutes using “d” for days (e.g. 1d), “h” for hours (e.g. 4h), and “m” for minutes (e.g. 5m). A value of 1d 5h 45m would indicate a password could be changed after 1 day, 5 hours and 45 minutes.
 
->**NOTE – your password policy must uphold the following rule: pwdMinAge + pwdExpireWarning < pwdMaxAge.**
+>[!note]
+>Your password policy must uphold the following rule: pwdMinAge + pwdExpireWarning < pwdMaxAge.
 
 ### Keep a password history
 
@@ -149,7 +156,8 @@ This value is stored in the pwdMaxAge attribute of the cn=Password Policy entry.
 
 This value is stored in the pwdMaxAge attribute of the cn=Password Policy entry. If this option is enabled, the value contains the amount of time after which a modified password expires. If this attribute is not present, or if the value is 0d, the password does not expire. If not 0d, the value must be greater than or equal to the value of pwdMinAge (the Allow a password to be changed after a certain number of days parameter). From the Main Control Panel, you can indicate the length of time in any combination of days, hours and/or minutes using “d” for days (e.g. 1d), “h” for hours (e.g. 4h), and “m” for minutes (e.g. 5m). A value of 1d 5h 45m would indicate a password expires after 1 day, 5 hours and 45 minutes.
 
->**NOTE – your password policy must uphold the following rule: pwdMinAge + pwdExpireWarning < pwdMaxAge.**
+>[!note]
+>Your password policy must uphold the following rule: pwdMinAge + pwdExpireWarning < pwdMaxAge.
 
 If a user’s password is expired, the next time a client (on the user’s behalf) connects to RadiantOne, the bind will fail and the additional information returned to the client indicates the password has expired. An example using an ldapsearch command line client by a user identified as “tuser” is shown below.
 
@@ -174,7 +182,8 @@ This value is stored in the pwdExpireWarning attribute of the cn=Password Policy
 
 If this attribute is not present, or if the value is 0d no warnings are returned. If not 0d, the value must be smaller than the value of the pwdMaxAge attribute.
 
->**NOTE – your password policy must uphold the following rule: pwdMinAge + pwdExpireWarning < pwdMaxAge.**
+>[!note]
+>Your password policy must uphold the following rule: pwdMinAge + pwdExpireWarning < pwdMaxAge.
 
 When this is configured, a control is returned with the BindResponse (even if the client doesn’t specifically request it) indicating the amount of time until expiration. An example is shown below.
 
@@ -236,7 +245,8 @@ This value indicates the number of special characters required in passwords.
 
 This value indicates the number of characters that must vary between the old password and the new password. This option requires enabling both “User must change password after reset” and “Require existing password in order to change password” in the Password Change section of the password policy.
 
->**Note – This leverages the Damerau Levenshtein algorithm to determine the variation of characters between the old and new passwords.**
+>[!note]
+>This leverages the Damerau Levenshtein algorithm to determine the variation of characters between the old and new passwords.
 
 ### Restrictions on Using Accountname or Username
 
@@ -248,7 +258,8 @@ For the accountname value, the sAMAccountname attribute is checked first. If sAM
 
 The passwords that are stored in a RadiantOne Universal Directory store may be hashed using any of the following methods: Clear, CRYPT, MD5, PBKDF2AD, Salted SHA-1, Salted SHA-256, Salted SHA-384, Salted SHA-512, and SHA-1. The least secure methods of CRYPT, MD5, and SHA-1 have been hidden as options from the Main Control Panel.
 
-><span style="color:red">**IMPORTANT NOTE – PBKDF2AD is the required password encryption expected in Azure AD. Therefore, if your HDAP store (or persistent cache) will be synchronized to Azure AD, and passwords are a part of the synchronization, use the PBKDF2AD encryption option to store passwords in the RadiantOne Universal Directory.**
+>[!warning]
+>PBKDF2AD is the required password encryption expected in Azure AD. Therefore, if your HDAP store (or persistent cache) will be synchronized to Azure AD, and passwords are a part of the synchronization, use the PBKDF2AD encryption option to store passwords in the RadiantOne Universal Directory.
 
 ### Automatic Update to Stronger Password Hash
 
@@ -260,7 +271,8 @@ The strength order is as follows:
 CLEAR -> CRYPT -> MD5 -> SHA1 -> SSHA1 -> SHA256 -> SSHA256 -> SHA384 -> SSHA384 -> SHA512 -> SSHA512 -> (PKCS5S2 | PBKDF2 | PBKDF2AD | SCRYPT | BCRYPT | SMD4 | MD4)
 ```
 
->**Note - PKCS5S2, PBKDF2, PBKDF2AD, SCRYPT, BCRYPT, SMD4, and MD4 are considered as special hashes of the strongest ranking.**
+>[!note]
+>PKCS5S2, PBKDF2, PBKDF2AD, SCRYPT, BCRYPT, SMD4, and MD4 are considered as special hashes of the strongest ranking.
 
 ### Password Strength Rule
 
@@ -279,7 +291,8 @@ The Password Strength Rule option allows you to define and test password strengt
 Another example would be if you do not want to allow special characters to be used in the password. This would be expressed in the Password Strength Rule field as:
 ^[a-zA-Z0-9]+$
 
->**Note - Checking the Password Strength Rule box disables and overrides all other password Content options except Password minimum length and Password encryption.**
+>[!note]
+>Checking the Password Strength Rule box disables and overrides all other password Content options except Password minimum length and Password encryption.
 
 Enter your password strength rule using regular expression syntax.
 
@@ -289,11 +302,8 @@ Click **Test** to compile your expression.
 
 The Enable Dictionary Check option is comparable to the Strong Password Check plug-in found in legacy LDAP directories. This enables RadiantOne to verify that a user’s password doesn’t contain unallowed strings from a specified dictionary file. This can be used as a method to enforce strong password policies.
 
-><span style="color:red">**Note - The default behavior uses an exact match comparison of the password to a dictionary value. To enforce a contains match comparison, go to the Main Control Panel > Zookeeper tab, navigate to `/radiantone/<version>/<clusterName>/config/vds_server.conf` and click EDIT MODE. Set the following: "enablePwdPolicyDictionarySubstringCheck" : true**
-
-><span style="color:red">**The value of “true” must be in all lowercase, as shown above.**
-
-><span style="color:red">**You can also set this property using the vdsconfig command line utility, set-property command. For details, see the RadiantOne Command Line Configuration Guide.**
+>[!warning]
+>The default behavior uses an exact match comparison of the password to a dictionary value. To enforce a contains match comparison, go to the Main Control Panel > Zookeeper tab, navigate to `/radiantone/<version>/<clusterName>/config/vds_server.conf` and click EDIT MODE. Set the following: "enablePwdPolicyDictionarySubstringCheck" : true <BR> The value of “true” must be in all lowercase, as shown above. <BR>You can also set this property using the vdsconfig command line utility, set-property command. For details, see the RadiantOne Command Line Configuration Guide.**
 
 To enable this feature:
 
@@ -303,7 +313,8 @@ To enable this feature:
 
 3.	Click **Browse** to navigate to the dictionary file. The value for the location of the dictionary file is stored in the pwdDictionaryFile attribute of the cn=Password Policy entry.
 
->**Note - The dictionary file must be a text-formatted file containing one dictionary word per line.**
+>[!note]
+>The dictionary file must be a text-formatted file containing one dictionary word per line.
 
 4.	Click **Save**.
 
@@ -319,13 +330,13 @@ Accounts may be automatically locked under two circumstances:
 
 If you want to keep track of a user’s last successful login time, enable the option to “Keep track of the user’s last successful logon time” in the Account Activity section of the password policy.
 
-><span style="color:red">**IMPORTANT NOTE - You can exclude pwdLastLogonTime changes from the RadiantOne changelog by setting the following property in ZooKeeper at /radiantone/<Config_Version>/<RadiantOne_ClusterName>/config/vds_server.conf: "skipLoggingIntoChangelogForPwdLastLogonTime" : "true",**
-
-><span style="color:red">**This alleviates excessive writing into the changelog when you have a large volume of user login activity. This property is enforced globally and affects all password policies.**
+>[!warning]
+>You can exclude pwdLastLogonTime changes from the RadiantOne changelog by setting the following property in ZooKeeper at /radiantone/<Config_Version>/<RadiantOne_ClusterName>/config/vds_server.conf: "skipLoggingIntoChangelogForPwdLastLogonTime" : "true", <BR> This alleviates excessive writing into the changelog when you have a large volume of user login activity. This property is enforced globally and affects all password policies.
 
 You can indicate the frequency that RadiantOne records the time of the last successful authentication. The default value is 0s meaning that the last login time is updated on every successful authentication. To change the default, indicate the length of time in any combination of days, hours and/or minutes using “d” for days (e.g. 1d), “h” for hours (e.g. 4h), and “m” for minutes (e.g. 5m). For example, a value of 1d indicates the last login time is updated if at least 1 day has passed since the last successful authentication. Subsequent successful authentications, within this time frame, do not change the last login time.
 
-><span style="color:red">**IMPORTANT NOTE – there is a performance impact on RadiantOne if you keep track of last successful logins because a write operation is performed with a successful bind. It is recommended that you indicate a frequency for writing the last login and that you test the usage of this feature to determine if the degradation in performance is acceptable for your usage.**
+>[!warning]
+>There is a performance impact on RadiantOne if you keep track of last successful logins because a write operation is performed with a successful bind. It is recommended that you indicate a frequency for writing the last login and that you test the usage of this feature to determine if the degradation in performance is acceptable for your usage.
 
 If accounts should be automatically locked when a user has not authenticated successfully for a predetermined amount of time, indicate the threshold (number of days) in the “Account Activity” section of the password policy where you see “Lock user’s account if the user is idle longer than <X> days”. The user’s password must be reset to unlock the account. Once the account is unlocked, if it is not used for login longer than the specified time, the account is locked again. If the value is zero days, this means users will never be locked out.
 
@@ -343,7 +354,8 @@ Enter this value for X (Reset failure count after X minutes).
 
 This value is stored in the pwdFailureCountInterval attribute of the cn=Password Policy entry. This is the temporary interval of time in which RadiantOne keeps track of the number of failed login attempts. For example, if the number of login failures allowed is 2 and the reset failure account is 5 minutes, this means if a user login fails twice within 5 minutes, the account will be locked. If the user logs in unsuccessfully once and then doesn’t try again until after the 5-minute interval has passed, the number of unsuccessful login attempts is reset and the new failed login attempt counts as the first failure instead of the second failure. This relates to the number of values for the pwdFailureTime operational attribute in the user’s entry which is used to determine how many failed logins have been attempted.
 
->**Note – Once an account is locked, the reset failure count is irrelevant in terms of determining how many failed login attempts have occurred.**
+>[!note]
+>Once an account is locked, the reset failure count is irrelevant in terms of determining how many failed login attempts have occurred.
 
 -	How long is an account locked out?
     <br>Lockout forever
@@ -357,7 +369,8 @@ If a user’s account is locked, it can become unlocked by resetting the user’
 
 ### Operational Password Attributes Stored in User Entries
 
-><span style="color:red">**IMPORTANT NOTE – since these attributes are defined as operational attributes, they do not appear in the user entries unless specifically requested in the search from the client.**
+>[!warning]
+>Since these attributes are defined as operational attributes, they do not appear in the user entries unless specifically requested in the search from the client.
 
 #### pwdHistory
 
@@ -391,7 +404,8 @@ Figure 8: Number of Login Failures
  
 If the last login was successful, this attribute is not present.
 
->**Note - Once the Reset Failure count has passed, the values of the pwdFailureTime attribute are updated during the next unsuccessful login attempt and the values are removed if the next login is successful.**
+>[!note]
+>Once the Reset Failure count has passed, the values of the pwdFailureTime attribute are updated during the next unsuccessful login attempt and the values are removed if the next login is successful.
 
 #### pwdGraceUseTime
 

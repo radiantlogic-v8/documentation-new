@@ -58,7 +58,7 @@ If you update the Directory Manager username, the LDAP entry in the RadiantOne n
 
 #### Directory Manager Password
 
-The directory administrator (cn=directory manager) password is set during the install of RadiantOne and can be changed here. To change this password, from the Main Control Panel > Settings Tab > Administration section, click “Change the password” link. Enter the new value and click **Save** in the upper right corner.
+The directory administrator (cn=directory manager) password is set during the install of RadiantOne and can be changed here. To change this password, from the Main Control Panel > Settings Tab > Administration section, click “Change the password” link. Enter the old (current) password and the new value. Confirm the new value and click **Save** in the upper right corner.
 
 ><span style="color:red">**IMPORTANT NOTES – if you change the password and you are currently logged into the Control Panel as the directory administrator, you must close the Control Panel and re-open it logging in with the new password.**
 
@@ -87,7 +87,8 @@ An example of the syntax used in the command is shown below, assuming the LDIF f
 ldapmodify.exe -D "cn=Directory Manager,ou=RootUsers,cn=config" -w password -h localhost -p 2389 -f c:\radiantone\ChangePassword.ldif
 ```
 
->**Note – The RadiantOne service may be running when this command is executed.**
+>[!note]
+>The RadiantOne service may be running when this command is executed.
 
 #### Allowed IP Addresses
 
@@ -131,7 +132,8 @@ The RadiantOne service Admin HTTP Service ports are used internally for:
 -	RadiantOne service actions like restart and standby. 
 You can disable the HTTP port by setting the value to zero. This leaves access only on the HTTPS port. If you disable the HTTP port, ensure the “Use SSL” setting is enabled for internal connections (Main Control Panel > Settings > Server Backend > Internal Connections), and Inter Nodes Communication is set to “Always use SSL” (Main Control Panel > Settings > Security > SSL). A restart of the RadiantOne service is required when these settings are changed. Restart the service on all cluster nodes.
 
-Note – This setting is accessible only in [Expert Mode](introduction#expert-mode). 
+>[!note]
+>This setting is accessible only in [Expert Mode](introduction#expert-mode). 
 
 ## Supported Controls and Features
 
@@ -248,7 +250,8 @@ This control can be enabled/disabled from the Main Control Panel > Settings Tab 
 
 If you enable the persistent search control, an LDAP client can receive notifications of changes that occur in the RadiantOne namespace. When a persistent search is requested, RadiantOne keeps the search operation going so clients can receive changed entries (and additional information about the changes that occurred). 
 
->**Note - The changelog number associated with the changed entries (logged into cn=changelog) is also returned in the persistent search response.**
+>[!note]
+>The changelog number associated with the changed entries (logged into cn=changelog) is also returned in the persistent search response.
 
 #### Proxied Authorization Control
 
@@ -282,7 +285,8 @@ By default, only the RadiantOne super user (e.g. cn=directory manager) is allowe
 
 Figure 6: Manually editing the ACI
 
->**Note – to allow anyone to perform a subtree delete request, use a value of “ldap:///anyone” for the userdn as shown in the example below.**
+>[!note]
+>To allow anyone to perform a subtree delete request, use a value of “ldap:///anyone” for the userdn as shown in the example below.
 
 >**(targetcontrol = "1.2.840.113556.1.4.805") (version 3.0; acl "Anonymous tree delete control access"; allow(read) userdn ="ldap:///anyone";).**
 
@@ -359,7 +363,8 @@ RadiantOne supports the All Operational Attributes extension feature as outlined
 
 Using the + character in your comma-separated list of return attributes, this extension allows LDAP searches of RadiantOne Universal Directory stores to return all operational attributes (except computed operational attributes, which must be specified by name). This feature can be useful when trying to determine which operational attributes exist in an entry.
 
->**Note – search results may not include all requested attributes if precluded by access controls.**
+>[!note]
+>Search results may not include all requested attributes if precluded by access controls.
 
 #### Absolute True and False Filters
 
@@ -435,7 +440,8 @@ Figure 9: Attributes Handling Section
 
 Check the Hide Operational Attributes option on the Main Control Panel > Settings tab > Server Front End > Attributes Handling section if you do not want LDAP clients to have access to operational attributes (stored in a RadiantOne Universal Directory store) such as: createTimestamp, modifiersName, modifyTimestamp, creatorsName…etc. If you choose to hide operational attributes, LDAP clients must specifically request the operational attribute they want during the search request, otherwise it is not returned.
 
->**Note – Operational attributes are not hidden from the root user (e.g. cn=Directory Manager) or members of the cn=Directory Administrators group.**
+>[!note]
+>Operational attributes are not hidden from the root user (e.g. cn=Directory Manager) or members of the cn=Directory Administrators group.
 
 Uncheck the Hide Operational Attributes option if LDAP clients are allowed to view the attributes.
 
@@ -451,7 +457,8 @@ This property allows you to control which attribute values are not printed in cl
 
 Sometimes, LDAP directory schema definitions do not define certain attributes as binary even though the value of these attributes is binary. An example of this is the objectGUID attribute in Microsoft Active Directory. If the LDAP backend schema definition does not properly define the attribute type as binary, RadiantOne does not translate the value properly when returning it to an LDAP client. To ensure RadiantOne translates the value as binary, you must list the attribute name in the Binary Attributes parameter (space separated list). This parameter is global and applies to any backend LDAP that RadiantOne is accessing. The binary attributes can be defined from the Main Control Panel > Settings tab > Server Front End > Attributes Handling section. As long as the attribute name is listed, RadiantOne returns the value to a client as binary even if the backend LDAP server doesn’t define it as such.
 
->**Note – If a binary attribute should be searchable, define the attribute in the RadiantOne LDAP schema with a friendly name indicating it as binary. Below is an example for the certificateRevocationList attribute: attributeTypes: ( 2.5.4.39 NAME ( 'certificateRevocationList;binary' 'certificateRevocationList' ) DESC 'Standard LDAP attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.5 X-ORIGIN 'RFC 2256’ )**
+>[!note]
+>If a binary attribute should be searchable, define the attribute in the RadiantOne LDAP schema with a friendly name indicating it as binary. Below is an example for the certificateRevocationList attribute: attributeTypes: ( 2.5.4.39 NAME ( 'certificateRevocationList;binary' 'certificateRevocationList' ) DESC 'Standard LDAP attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.5 X-ORIGIN 'RFC 2256’ )
 
 #### Excluded Attributes from Active Directory
 
@@ -540,7 +547,8 @@ Figure 15: Result of Duplicate DN Removal
 
 #### Duplicate Identity Removal Rules
 
->**Note - In general, it is usually recommended that you use the Global Identity Builder to build your view if you know you have overlapping entries that require correlation/disambiguation.**
+>[!note]
+>In general, it is usually recommended that you use the Global Identity Builder to build your view if you know you have overlapping entries that require correlation/disambiguation.
 
 In cases where RadiantOne is aggregating common user identities from multiple data sources, you have the option to configure it to remove any duplicate users (from search responses) if it finds there is a common attribute/identifier (across the data sources you have aggregated). It can also be used as a way for RadiantOne to eliminate ambiguity by returning only one unique entry. Let’s take two sources as an example. Source 1 is Active Directory and source 2 is a Sun directory. Both sources have been aggregated into the virtual namespace below a naming context of dc=demo and as the two following screens show, Laura Callahan exists in both.
 
@@ -587,7 +595,8 @@ Figure 21: Memory Cache Settings
 
 #### Entry Cache
 
->**Note – This setting is accessible only in [Expert Mode](introduction#expert-mode).
+>[!note]
+>This setting is accessible only in [Expert Mode](introduction#expert-mode).
 
 To define an entry cache:
 
@@ -605,13 +614,15 @@ To define an entry cache:
 
 7.	Click **Save**.
 
->**Note – You can flush the entry memory cache at any time from the Main Control Panel > Settings Tab > Server Front End > Memory Cache section. Click FLUSH ALL located in the Entry cache section.**
+>[!note]
+>You can flush the entry memory cache at any time from the Main Control Panel > Settings Tab > Server Front End > Memory Cache section. Click FLUSH ALL located in the Entry cache section.
 
 For complete details on how entry memory cache works, please see the RadiantOne Deployment and Tuning Guide.
 
 #### Query Cache
 
->**Note – This setting is accessible only in [Expert Mode](introduction#expert-mode).**
+>[!note]
+>This setting is accessible only in [Expert Mode](introduction#expert-mode).
 
 To define a query cache:
 
@@ -629,7 +640,8 @@ To define a query cache:
 
 7.	Click **Save**.
 
->**Note – You can flush the query memory cache at any time from the Main Control Panel -> Settings Tab -> Server Front End -> Memory Cache section. Click **FLUSH ALL** located in the Query cache section.**
+>[!note]
+>You can flush the query memory cache at any time from the Main Control Panel > Settings Tab > Server Front End > Memory Cache section. Click **FLUSH ALL** located in the Query cache section.
 
 For complete details on how query memory cache works, please see the RadiantOne Deployment and Tuning Guide. 
 
@@ -677,7 +689,8 @@ For details on configuring and accessing RadiantOne via DSML, SPML, SCIM, and RE
 
 ### Advanced Settings
 
->**Note – The settings in this section are accessible only in [Expert Mode](01-introduction#expert-mode).**
+>[!note]
+>The settings in this section are accessible only in [Expert Mode](01-introduction#expert-mode).
  
 ![Advanced Section](Media/Image3.59.jpg)
 

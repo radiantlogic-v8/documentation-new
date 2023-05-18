@@ -21,7 +21,8 @@ File alerts can be enabled for custom alerts also. These settings are in the Mon
 
 File alerts are logged in a CSV formatted file located at <RLI_HOME>/logs/alerts.log.
 
->**Note – The Advanced File Alert settings are accessible only in [Expert Mode](introduction#expert-mode). 
+>[!note]
+>The Advanced File Alert settings are accessible only in [Expert Mode](introduction#expert-mode). 
 
 In the File Alerts Settings section, indicate a rollover file size and how many files to keep in the archive.
 
@@ -37,11 +38,13 @@ If you would like to receive email alerts for certain monitored activities, ente
 
 Figure 2: Email Alert Settings
 
->**Note – For security and audit purposes, it is not advised to connect to your mail server anonymously (leaving user and password properties blank in the Email Alert Settings).**
+>[!note]
+>For security and audit purposes, it is not advised to connect to your mail server anonymously (leaving user and password properties blank in the Email Alert Settings).
 
 ## Custom Alerts
 
 Standard Alerts are configured by default and are described in the one of the sections above. All other aspects of RadiantOne that you want to monitor can be configured as custom alerts in the Monitoring > Custom Alerts section. For details on custom alerts, please see the Monitoring and Reporting Guide.
 
->**Note – This section is accessible only in [Expert Mode](introduction#expert-mode). 
+>[!note]
+>This section is accessible only in [Expert Mode](introduction#expert-mode). 
 

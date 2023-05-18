@@ -35,7 +35,8 @@ SSL/TLS is enabled by default (TLS v1.0, v1.1 and v1.2 are supported), and durin
 
 By default the SSL port is set to 636 and this is defined during the installation of RadiantOne.
 
-><span style="color:red">**IMPORTANT NOTE – you must restart the RadiantOne service after changing any SSL-related settings. RadiantOne loads the server certificate when it is started, so in order for the newly added certificate to take effect, restart the server.**
+>[!warning]
+>You must restart the RadiantOne service after changing any SSL-related settings. RadiantOne loads the server certificate when it is started, so in order for the newly added certificate to take effect, restart the server.
 
 ### Forbidding Access on the Non-SSL Port
 
@@ -47,7 +48,8 @@ A certificate is an electronic document that identifies an entity which can be a
 
 For normal SSL communications, where the only requirement is that the client trusts the server, no additional configuration is necessary (if both entities trust each other). For mutual authentication, where there is a reciprocal trust relationship between the client and the server, the client must generate a certificate containing his identity and private key in his keystore. The client must also make a version of the certificate containing his identity and public key, which RadiantOne must store in its truststore. In turn, the client needs to trust the server; this is accomplished by importing the server's CA certificate into the client truststore.
 
->**Note - Certificate-based authentication (mutual authentication) requires the use of SSL or StartTLS for the communication between the client and RadiantOne.**
+>[!note]
+>Certificate-based authentication (mutual authentication) requires the use of SSL or StartTLS for the communication between the client and RadiantOne.
 
 The diagram below shows how certificates and the SSL protocol are used together for authentication.
 
@@ -77,7 +79,8 @@ If you want to require certificate-based authentication:
 
 5. From the Main Control Panel > Settings Tab > Security section > SSL, click **Change** next to [Client Certificate DN Mapping](security#client-certificate-dn-mapping) and define your mappings.
 
-><span style="color:red">**IMPORTANT NOTE – the Client Certificate DN Mapping is only accessible by a member of the [Directory Administrator role/group](administration-and-configuration#delegated-administration-of-radiantone).**
+>[!warning]
+>The Client Certificate DN Mapping is only accessible by a member of the [Directory Administrator role/group](administration-and-configuration#delegated-administration-of-radiantone).
 
 6. Click **Save** and restart the RadiantOne service. If RadiantOne is deployed in a cluster, restart RadiantOne on all nodes.
 
@@ -85,7 +88,8 @@ If you want to require certificate-based authentication:
 
 To authorize a user who authenticates using a certificate (e.g. SASL External) you must set a client certificate DN mapping. This maps the user DN (Subject or Subject Alternate Name from the certificate) to a specific DN in the RadiantOne namespace. After, the DN in the RadiantOne namespace determines authorization (access controls). 
 
->**Note – To avoid problems with special characters, RadiantOne normalizes the certificate subject prior to applying the certificate DN mapping.**
+>[!note]
+>To avoid problems with special characters, RadiantOne normalizes the certificate subject prior to applying the certificate DN mapping.
 
 To set the client certificate DN mapping:
 
@@ -93,7 +97,8 @@ To set the client certificate DN mapping:
 
 2. Click **Change** next to the Client Certificate DN Mapping property.
 
-><span style="color:red">**IMPORTANT NOTE – the Client Certificate DN Mapping is only accessible by a member of the [Directory Administrator role/group](administration-and-configuration#delegated-administration-of-radiantone).**
+>[!warning]
+>The Client Certificate DN Mapping is only accessible by a member of the [Directory Administrator role/group](administration-and-configuration#delegated-administration-of-radiantone).
 
 There are different ways to determine the DN from the subject or subject alternative name in the certificate (using regular expression syntax).
 
@@ -151,7 +156,8 @@ Figure 2: Example SSL Certificate
 
 If all mapping rules fail to locate a user, anonymous access is granted (if anonymous access is allowed to RadiantOne).
 
->**Note – as an alternative to anonymous access, it is generally recommended that you create a final mapping that results in associating the authenticated user with a default user that has minimum access rights. An example is shown below where the last mapping rule matches to a user identified in RadiantOne as “uid=default,ou=globalusers,cn=config”.**
+>[!note]
+>As an alternative to anonymous access, it is generally recommended that you create a final mapping that results in associating the authenticated user with a default user that has minimum access rights. An example is shown below where the last mapping rule matches to a user identified in RadiantOne as “uid=default,ou=globalusers,cn=config”.
 
 ![Example Default Mapping Rule](Media/Image3.84.jpg)
 
@@ -190,7 +196,8 @@ Remember, changing any parameters related to SSL requires a restart of the Radia
 
 For RadiantOne to connect via SSL to an underlying data source, or accept client certificates for authentication, the appropriate client certificate needs imported (unless they are signed by a trusted/known Certificate Authority). For classic RadiantOne architectures (active/active or active/passive), these certificates can be imported into the default Java trust store (<RLI_HOME>\jdk\jre\lib\security\cacerts). 
 
-><span style="color:red">**IMPORTANT NOTE - If RadiantOne is deployed in a cluster, import the client certificates into the [cluster level truststore](client-certificate-trust-store#client-certificate-trust-store-cluster-level-trust-store) instead of the default one so they can be dynamically shared across all cluster nodes.**
+>[!warning]
+>If RadiantOne is deployed in a cluster, import the client certificates into the [cluster level truststore](client-certificate-trust-store#client-certificate-trust-store-cluster-level-trust-store) instead of the default one so they can be dynamically shared across all cluster nodes.
 
 To manage the client certificates contained in the default Java trust store, click **Manage** next to the Client Certificates property.
 
@@ -258,7 +265,8 @@ Out of the available protocols, not in the disabled list, you can limit which on
 
 If you want to support one of the less secure protocols, edit the java.security file and remove the protocol from the jdk.tls.disabledAlgorithms value. Then, make sure it is enabled in RadiantOne. Restart RadiantOne on all nodes. If a protocol is enabled in RadiantOne, but in the list of disabled algorithms in the java.security file, it will not be supported at runtime for SSL communication.
 
->**Note – Only enable the SSL protocols that comply with your company’s security policy.**
+>[!note]
+>Only enable the SSL protocols that comply withour company’s security policy.**
 
 ### Enable STARTTLS
 
@@ -274,13 +282,15 @@ To enable Start TLS for clients to access RadiantOne:
 
 4. Restart the RadiantOne service.
 
-><span style="color:red">**IMPORTANT NOTE - When using Start TLS, the default server certificate included with the RadiantOne installation does not work. You must generate a new certificate (either self-signed or requested from a Certificate Authority) that contains the proper machine and domain name of the RadiantOne machine. Also, the host name specified from the client should match the value in the certificate. If you try to use the default self-signed certificate included with the RadiantOne installation, the following error message (‘xxxxx’ being your server name) is returned: javax.net.ssl.SSLPeerUnverifiedException: hostname of the server 'xxxxx' does not match the hostname in the server's certificate.**
+>[!warning]
+>When using Start TLS, the default server certificate included with the RadiantOne installation does not work. You must generate a new certificate (either self-signed or requested from a Certificate Authority) that contains the proper machine and domain name of the RadiantOne machine. Also, the host name specified from the client should match the value in the certificate. If you try to use the default self-signed certificate included with the RadiantOne installation, the following error message (‘xxxxx’ being your server name) is returned: javax.net.ssl.SSLPeerUnverifiedException: hostname of the server 'xxxxx' does not match the hostname in the server's certificate.
 
 ### Debug SSL
 
 SSL is enabled by default, but SSL logging is disabled by default. When SSL logging is enabled, SSL events have an entry in vds_server.log. This log file is located in <RLI_HOME>\vds_server\logs. SSL events are logged at INFO level, so log settings for VDS – Server must be at least at INFO level. 
 
->**Note – For more information on log levels, refer to the RadiantOne Logging and Troubleshooting Guide.**
+>[!note]
+>For more information on log levels, refer to the RadiantOne Logging and Troubleshooting Guide.
 
 To enable SSL logging:
 
@@ -314,7 +324,8 @@ If clients are connecting to RadiantOne with certificates (establishing mutual a
 
 There are three different supported CRL checking methods; dynamic, static and failover. These methods are described below. 
 
->**Note - The tradeoff between a static CRL file and a dynamic CRL checking would be that a dynamic CRL would be more robust and correct but the size of the CRL file may impact the performance of the revocation checking logic.**
+>[!note]
+>The tradeoff between a static CRL file and a dynamic CRL checking would be that a dynamic CRL would be more robust and correct but the size of the CRL file may impact the performance of the revocation checking logic.
 
 ### Dynamic
 
@@ -346,7 +357,8 @@ Figure 5: Inter Nodes Communication
 
 ## Authentication Methods
 
->**Note – This section is accessible only in [Expert Mode](introduction#expert-mode).
+>[!note]
+>This section is accessible only in [Expert Mode](introduction#expert-mode).
 
 ### Kerberos
 
@@ -358,7 +370,8 @@ Figure 6: RadiantOne as a Kerberized Service
 
 Kerberos can be used for authentication to RadiantOne (acting as a Kerberized Service) as long as the client resides within the same domain or trusted domain forest as the RadiantOne service (and the RadiantOne machine must be in the same Kerberos realm/domain, or at least within the same forest as Active Directory). For authentication amongst un-trusted/different domains, the NTLM protocol is triggered instead. For details on configuring cross-domain authentication for RadiantOne, please see the section on [NTLM](security#ntlm). To continue with configuring Kerberos for access to RadiantOne in Microsoft domains, follow the steps below. For details on MIT Kerberos support, see [Support for MIT Kerberos](security#support-for-mit-kerberos).
 
->**Notes - All machines (client, domain controller…etc.) must be in sync in terms of clock (time/date settings). Also, if you have deployed RadiantOne in a cluster, the service account created in the KDC can use the server name of the load balancer that is configured in front of the RadiantOne cluster nodes.**
+>[!note]
+>All machines (client, domain controller…etc.) must be in sync in terms of clock (time/date settings). Also, if you have deployed RadiantOne in a cluster, the service account created in the KDC can use the server name of the load balancer that is configured in front of the RadiantOne cluster nodes.
 
 >**To use a generic or common account for multiple RadiantOne cluster nodes, you need to set the SPN on the account matching the FQDN of the host that requests the kerberos ticket. There is no need to create individual accounts for each RadiantOne node/host. Refer to the account using the UPN in the RadiantOne configuration.**
 
@@ -374,12 +387,13 @@ UPN: ldap/vds.example.net@example.net**
 
 #### Configuring RadiantOne as a Kerberized Service
 
-><span style="color:red">**IMPORTANT NOTE – RadiantOne MUST be running on port 389. The default port for RadiantOne is 2389. To change the port, you must stop the RadiantOne service, and then edit the port from the Main Control Panel > Settings Tab > Administration section. After changing the port and saving your changes, restart the RadiantOne service. If RadiantOne is deployed in a cluster, all the service on all nodes.**
+>[!warning]
+>RadiantOne MUST be running on port 389. The default port for RadiantOne is 2389. To change the port, you must stop the RadiantOne service, and then edit the port from the Main Control Panel > Settings Tab > Administration section. After changing the port and saving your changes, restart the RadiantOne service. If RadiantOne is deployed in a cluster, all the service on all nodes.
 
 1. Create a Kerberos identification for the RadiantOne service by creating a user account in the Active Directory domain controller (KDC) for the host computer on which RadiantOne runs. When creating the account, you can use the name of the computer. For example, if the host is named AMAZONA-EQ3PKP4.cloudcfs.radiant.com, create a user in Active Directory with a user logon name of AMAZONA-EQ3PKP4.cloudcfs.radiant.com.
 
->**Notes - If you have deployed RadiantOne in a cluster behind a load balancer (the clients access the load balancer), the KDC service account in Active Directory should use the server name of the load balancer. The UPN of the account should represent the load balancer machine and the SPN attribute should list the FQDN of each RadiantOne node in the cluster (as separate values of the SPN attribute). There is no need to create individual accounts for each RadiantOne host because the KDC account can have multiple SPNs. Each SPN will be associated with a RadiantOne node (and local traffic manager(s) if multiple layers of traffic managers are used). An example of a KDC account is described below.**
->**sAMAccountName: svc-vdsadmin**
+>[!note]
+>If you have deployed RadiantOne in a cluster behind a load balancer (the clients access the load balancer), the KDC service account in Active Directory should use the server name of the load balancer. The UPN of the account should represent the load balancer machine and the SPN attribute should list the FQDN of each RadiantOne node in the cluster (as separate values of the SPN attribute). There is no need to create individual accounts for each RadiantOne host because the KDC account can have multiple SPNs. Each SPN will be associated with a RadiantOne node (and local traffic manager(s) if multiple layers of traffic managers are used). An example of a KDC account is described below <BR> sAMAccountName: svc-vdsadmin
 
 >**UPN: ldap/vds.example.net@example.net**
 
@@ -531,7 +545,8 @@ Changing any Kerberos-related parameters requires a restart of the RadiantOne se
 
 The Kerberos client (user or machine) must also have an account on the KDC machine.
 
-><span style="color:red">**IMPORTANT NOTE – RadiantOne must be running on a different machine than the client that is connecting to it, otherwise the Microsoft libraries for LDAP use the local security and not a Kerberos ticket. This is only relevant for LDAP clients that use the Microsoft libraries (LDP and Softerra LDAP Administrator v3.3 for example).**
+>[!warning]
+>RadiantOne must be running on a different machine than the client that is connecting to it, otherwise the Microsoft libraries for LDAP use the local security and not a Kerberos ticket. This is only relevant for LDAP clients that use the Microsoft libraries (LDP and Softerra LDAP Administrator v3.3 for example).
 
 The following example configurations describe:
 
@@ -726,7 +741,8 @@ Figure 19: NTLM Domain Controller Configuration
 
 More details about the NT Domain Controller settings can be found below. After you have configured the default domain, click **ADD** to add any additional domains that are required.
 
->**Note - Changing any of these parameters requires a restart of the RadiantOne service. If RadiantOne is deployed in a cluster, restart the service on all nodes.**
+>[!note]
+>Changing any of these parameters requires a restart of the RadiantOne service. If RadiantOne is deployed in a cluster, restart the service on all nodes.
 
 **NT Domain**
 

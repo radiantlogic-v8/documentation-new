@@ -210,7 +210,8 @@ Enter key password for <rli>
 
 5.	From the Server Control Panel -> Settings tab, click **View** next to View Server Certificate. The initial key has been generated. 
 
->**Note – The View button is enabled for JKS certificate types only. It is not applicable for another other certificate types.**
+>[!note]
+>The View button is enabled for JKS certificate types only. It is not applicable for another other certificate types.
 
 ![SSL Server Certificate for RadiantOne](Media/Image3.175.jpg)
 
@@ -375,7 +376,8 @@ If you use the RadiantOne SAML Attribute service, manually update the certificat
 
 The Cryptographic Token Interface Standard, PKCS#11, is produced by RSA Security and defines native programming interfaces to cryptographic tokens, such as hardware cryptographic accelerators and Smartcards. The Sun PKCS#11 provider included in Java is used to facilitate the integration of native PKCS11 tokens. This provider enables RadiantOne to access native PKCS11 tokens. The Sun PKCS11 provider does not implement cryptographic algorithms, but instead acts as a bridge between the Java JCA and JCE APIs and the native PKCS11 cryptographic API, translating the calls between the two. Any cryptographic device (e.g. smartcards, hardware accelerators...etc.) that includes a PKCS11 implementation can be leveraged by RadiantOne. The Sun PCKS11 provider requires an implementation of PKCS11 v2.0 or later installed on the RadiantOne machine. This implementation is in the form of a shared-object library (.so file on Linux) or dynamic-link library (.dll on Windows).
 
->**Note – for an example of RadiantOne deployed with PKCS11 and an NSS Database, see the RadiantOneFIPS_Mode document included with your RadiantOne install.**
+>[!note]
+>for an example of RadiantOne deployed with PKCS11 and an NSS Database, see the RadiantOneFIPS_Mode document included with your RadiantOne install.
 
 1.	Before you can create a PKS11 provider in the JVM you need to create a configuration file. The configuration file is a text file containing key-value pairs for the configuration options. Although there are many options available (see the Oracle Java PKCS11 Reference Guide), the example used below is for NSS.
 
@@ -386,12 +388,14 @@ The Cryptographic Token Interface Standard, PKCS#11, is produced by RSA Security
     nssSecmodDirectory = /home/vdsuser/vds-fips/nssdb
     nssModule = fips
 
-    >**Note - “/usr/lib64” is the folder under which the NSS libraries reside and “/home/vdsuser/vds-fips/nssdb” is the NSS database.**
+    >[!note]
+    >“/usr/lib64” is the folder under which the NSS libraries reside and “/home/vdsuser/vds-fips/nssdb” is the NSS database.
 
 2.	Edit the java.security configuration file located at <RLI_HOME>\jdk\jre\lib\security and add the following line (10 is the next sequential number available in this example):
 security.provider.10=sun.security.pkcs11.SunPKCS11 /home/vdsuser/vds-fips/nss_fips.cfg
 
-    >**Note – the new line adds the PKCS11 provider with the appropriate configuration file configured in the step above.**
+    >[!note]
+    >The new line adds the PKCS11 provider with the appropriate configuration file configured in the step above.
 
 3.	Open the Server Control Panel > Settings Tab.
 
@@ -550,13 +554,15 @@ jvmargs	 | Only applicable if newjvm=true. This property can be used to customiz
 
 Figure 20: Task Scheduler and Tasks
 
->**Note – logs related to tasks are located in <RLI_HOME>/vds_server/logs/scheduler/task.<task_name>.log**
+>[!note]
+>Logs related to tasks are located in <RLI_HOME>/vds_server/logs/scheduler/task.<task_name>.log
 
 ### Log Viewer Tab
 
 On the Server Control Panel > Logs Viewer Tab, you will find the logging console.
 
->**Note – only users that belong to the Directory Administrators group have access to the Log Viewer tab.**
+>[!note]
+>Only users that belong to the Directory Administrators group have access to the Log Viewer tab.
 
 Select the log file from the drop-down list. You can also set a filter to limit your view of the log based on certain criteria (this only filters on the subset of log data visible in the log window), refresh the log view and/or choose to refresh continuously.
 
