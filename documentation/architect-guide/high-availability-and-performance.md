@@ -55,8 +55,7 @@ The Universal Directory component in RadiantOne is the highly scalable, performa
 
 ## Intra Cluster Block Replication
 
-Within a cluster, block replication flows from the RadiantOne leader node to follower nodes. However, each node that may become the RadiantOne leader node can replicate Universal Directory (HDAP) store changes out to other nodes. If the node that receives a write request is not designated as the RadiantOne leader, it forwards the request to the designated leader node and then it becomes the responsibility of this node to replicate the change out to all follower
-nodes. This is depicted in the diagram below. For more details on this approach, see the
+Within a cluster, block replication flows from the RadiantOne leader node to follower nodes. However, each node that may become the RadiantOne leader node can replicate Universal Directory (HDAP) store changes out to other nodes. If the node that receives a write request is not designated as the RadiantOne leader, it forwards the request to the designated leader node and then it becomes the responsibility of this node to replicate the change out to all follower nodes. This is depicted in the diagram below. For more details on this approach, see the
 RadiantOne Deployment and Tuning Guide.
 
 ![Intra-Cluster Replication](Media/Image6.4.jpg)
@@ -101,7 +100,8 @@ Figure 6: High Availability at the Application Layer
 
 At the Application Layer, use an LDAP-aware hardware load balancer to distribute the requests to the cluster nodes.
 
->**NOTE – some clients have the built-in capability to failover to multiple LDAP servers. This may remove the requirement to have a hardware load balancer.**
+>[!note]
+>Some clients have the built-in capability to failover to multiple LDAP servers. This may remove the requirement to have a hardware load balancer.
 
 ### High Availability at the Data Source Access Layer
 
@@ -114,7 +114,8 @@ Figure 7: Load Balancing/Failover to Backend Servers
 
 If you require either load balancing and/or failover to the underlying directories, you can use a hardware load balancer between RadiantOne and the underlying directories (as depicted above). The data source configured in RadiantOne would point to the hardware load balancer and this middle layer would be configured with access to the required backend servers.
 
->**NOTE – if you only require failover to the back-end LDAP servers (no load balancing required), then you can use the built-in mechanism of the RadiantOne service for this. When configuring the LDAP data source, you can list the failover server for that specific back-end in the Failover Servers parameter. Multiple failover servers may be listed (if they are exact replicas of the primary server). In this scenario, a hardware load balancer is not required.**
+>[!note]
+>If you only require failover to the back-end LDAP servers (no load balancing required), then you can use the built-in mechanism of the RadiantOne service for this. When configuring the LDAP data source, you can list the failover server for that specific back-end in the Failover Servers parameter. Multiple failover servers may be listed (if they are exact replicas of the primary server). In this scenario, a hardware load balancer is not required.
 
 ## Related Material
 
@@ -197,7 +198,4 @@ There are three refresh mechanisms available for persistent caching.
 ![Real Time Cache Refresh](Media/Image6.9.jpg)
 
 Figure 9: Real Time Cache Refresh
-
-## Related Material
-
-- RadiantOne Deployment and Tuning Guide.
+ 

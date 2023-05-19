@@ -54,8 +54,7 @@ The profiles in this list have pointers back to the identity’s accounts across
 RadiantOne accepts requests submitted by applications using LDAP, SQL, or Web Services:
 SCIMv2 and REST. These requests are then routed, mapped, transformed by the engine, and forwarded to the underlying data sources. The results are gathered, normalized, filtered, and returned to the requesting application.
 
-RadiantOne is a full-service platform that comes complete with many wizards that makes
-identity integration seamless. You can find additional information on these wizards in [Getting Started with RadiantOne](getting-started-with-radiantone.md).
+RadiantOne is a full-service platform that comes complete with many wizards that makes identity integration seamless. You can find additional information on these wizards in [Getting Started with RadiantOne](getting-started-with-radiantone.md).
 
 As a bonus, the RadiantOne platform also offers a local storage that can be used for purposes such as:
 

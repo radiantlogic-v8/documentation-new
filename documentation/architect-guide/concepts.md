@@ -33,7 +33,7 @@ In scenarios where the number of data sources increases, and the number of overl
 
 ![Complex Identity Unification Scenario](Media/Image2.3.jpg)
 
-Figure 3 : Complex Identity Unification Scenario
+Figure 3: Complex Identity Unification Scenario
 
 Now that the need for a union of identities has been addressed, it is time to dive into the role the master index list plays in authentication and authorization.
 
@@ -89,7 +89,8 @@ RadiantOne uses one of the following methods to perform the credentials checking
 
 Figure 7: Authentication Process Example
 
->**NOTE: RadiantOne includes an interception/hook scripting mechanism that allows for defining custom logic needed to evaluate passwords.**
+>[!note]
+>RadiantOne includes an interception/hook scripting mechanism that allows for defining custom logic needed to evaluate passwords.
 
 **Delegating authentication:**
 <br>The authentication request is rephrased into a bind request compatible with the underlying directory, properly routed to that directory for processing, and the authentication response is returned to RadiantOne which in turn responds with a bind pass or fail message to the application. This is the default functionality if the underlying data source is an LDAP directory. See the diagram below depicting this example.

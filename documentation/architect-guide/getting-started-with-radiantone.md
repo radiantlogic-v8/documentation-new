@@ -11,7 +11,8 @@ As discussed throughout this document, at the heart of most identity integration
 
 The RadiantOne Control Panels are web-based interfaces to provide remote access to the most commonly used tools and wizards. In addition, the control panels offer monitoring, access to server statistics, reports, task management, and other administration options. They can be accessed from mobile or non-mobile devices including iPods and iPads.
 
->**Note - To access the control panels, JavaScript must be enabled in the Internet browser you are using.**
+>[!note]
+>To access the control panels, JavaScript must be enabled in the Internet browser you are using.
 
 ### Main Control Panel
 
@@ -19,7 +20,9 @@ To launch the Main Control Panel on Windows, navigate to <RL_HOME>/bin and run o
 
 To launch the Main Control Panel on UNIX/Linux, after starting the Jetty web server that hosts the Control Panel application, open an Internet Browser and use the following URL:
 
-`http://<server>:7070/main`
+```
+http://<server>:7070/main
+```
 
 The default HTTP port for the web server hosting the control panels is 7070, and the default TLS port is 7171 (you can set the ports during the RadiantOne install).
 
@@ -75,7 +78,7 @@ refresh.
 
 On the PCache Monitoring Tab, a list of cache refresh topologies appears on the left.
 
-![real-time refresh](Media/Imagerealtimerefresh.jpg) is the symbol for a real-time refresh.
+![real-time refresh](Media/ImageRealTimeRefresh.jpg) is the symbol for a real-time refresh.
 
 ![periodic refresh](Media/ImagePeriodicRefresh.jpg) is the symbol for a periodic refresh.
 
@@ -135,7 +138,8 @@ The Log Viewer Tab is the console where you can view all RadiantOne log files.
 
 RadiantOne includes a set of wizards to assist administrators with some of the most common configuration tasks. They are designed to guide administrators through the identity integration process. This includes tasks such as building a unique user list, how to handle group entries (migrate them or create dynamic groups), and how to design the virtual namespace (flat tree or merge into an existing hierarchy). Each wizard is tailored for specific use cases, depending on the needs of the applications that will be consuming the identity. For more information on the wizards, please see the sections below.
 
->**Note – for step-by-step instructions on using the wizards, please see the RadiantOne Identity Service Wizards Guide.**
+>[!note]
+>For step-by-step instructions on using the wizards, please see the RadiantOne Identity Service Wizards Guide.
 
 ### Global Identity Builder
 
@@ -173,10 +177,7 @@ Figure 4: Example of Merging Trees
 
 ### Directory Tree Wizard
 
-The Directory Tree Wizard walks you through the process of defining a new directory tree and
-allows you to create a virtual view which aggregates multiple types of backends (a combination
-of LDAP and database). Once created, the naming context stores entries from these different
-backends in separate organizational units, containers, organizations, and domains.
+The Directory Tree Wizard walks you through the process of defining a new directory tree and allows you to create a virtual view which aggregates multiple types of backends (a combination of LDAP and database). Once created, the naming context stores entries from these different backends in separate organizational units, containers, organizations, and domains.
 
 ![Example of a Directory tree Comprised of an Aggregation of Three Sources](Media/Image5.5.jpg)
 

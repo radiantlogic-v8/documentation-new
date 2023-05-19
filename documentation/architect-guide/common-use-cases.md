@@ -16,7 +16,7 @@ Many enterprises face similar technical complexities that can be solved seamless
 
 ![RadiantOne Platform and Use Cases](Media/Image4.1.jpg)
 
-Figure 1 : RadiantOne Platform and Use Cases
+Figure 1: RadiantOne Platform and Use Cases
 
 ## Mergers and Acquisitions
 
@@ -28,7 +28,7 @@ The RadiantOne platform allows applications that expect a specific LDAP Director
 
 ![Object Class and Attribute Mapping Example](Media/Image4.2.jpg)
 
-Figure 2 : Object Class and Attribute Mapping Example
+Figure 2: Object Class and Attribute Mapping Example
 
 ### Active Directory Integration
 
