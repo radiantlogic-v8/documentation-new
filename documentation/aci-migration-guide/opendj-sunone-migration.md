@@ -11,7 +11,8 @@ This chapter describes the process of migrating OpenDJ, SunOne/Oracle ODSEE and 
 
 With the expvds option, the utility searches RadiantOne for old ACI format and translates them into a format that is compatible with RadiantOne v7. Next, it creates the following LDIF files in the drive path indicated in the command. This option is recommended for scenarios where the server that contained the old-format ACI and the server that will contain the new-format ACI are different machines; however, this option can also be executed in scenarios where the server that contained the old-format ACI and the server that will contain the new-format ACI can be the same machine.
 
->**NOTE – To run this command, the RadiantOne service must be running.**
+>[!note]
+>To run this command, the RadiantOne service must be running.
 
 | LDIF File Name | Description
 |---|----|
@@ -42,7 +43,8 @@ target.
 
 - openDJGlobal.ldif – for global ACI which can target any entry on the server.
 
-    >**NOTE – The RadiantOne service is NOT required to be running when this command is run.**
+    >[!note]
+    >The RadiantOne service is NOT required to be running when this command is run.
 
 ### Parameters
 
