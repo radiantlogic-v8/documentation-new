@@ -7,9 +7,7 @@ description: LDIF Utility Guide
 
 Entries can be added, modified, and deleted based on changes described in an LDIF formatted file using the ldif-utils utility located at <RLI_HOME>/bin/advanced. The command syntax to import an LDIF file is shown below.
 
-```
-ldif-utils ImportLdifChanges -f <ldif_file_path> -d <datasource_name>  [-g true/false (continueOnError;default=true)]
-```
+`ldif-utils ImportLdifChanges -f <ldif_file_path> -d <datasource_name>  [-g true/false (continueOnError;default=true)]`
 
 An example of the syntax used inside the LDIF file is shown below.
 
