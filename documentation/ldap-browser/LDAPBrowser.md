@@ -49,9 +49,9 @@ After you click the menu name to display a list of commands, click the command f
 - Popup Menus
 <br> In the LDAP Browser, right-click on an entry to display the popup menu (See Figure 4.1)
 
-    ![An image showing the popup menu](Media/Image4.1.jpg)
+![An image showing the popup menu](Media/Image4.1.jpg)
 
-    Figure 4.1: LDAP Browser Shortcut Menu
+ Figure 4.1: LDAP Browser Shortcut Menu
 
 - The Toolbar
 <br> The toolbar contains the LDAP Browser buttons required to use the interface (See Figure 4.2).
