@@ -3,7 +3,7 @@ title: Operations Guide
 description: Operations Guide
 ---
 
-# Chapter 3: RadiantOne Universal Directory (HDAP) Store Management
+# RadiantOne Universal Directory (HDAP) Store Management
 
 ## Re-Indexing
 
@@ -19,7 +19,8 @@ Stores must be re-initialized on the RadiantOne leader nodes of the cluster only
 
 If more than one cluster is involved, use an LDIF file exported from the cluster considered the “master” image to re-initialize all needed replicas.
 
-><span style="color:red">**IMPORTANT NOTE – disable inter-cluster replication for the store prior to re-initializing the store only if you plan on re-initializing all replicas with a clean image. To maintain inter-cluster replication and process changes from other replicas that happen while one (or more) replicas are being re-initialized, do NOT disable inter-cluster replication.**
+>[!warning]
+>Disable inter-cluster replication for the store prior to re-initializing the store only if you plan on re-initializing all replicas with a clean image. To maintain inter-cluster replication and process changes from other replicas that happen while one (or more) replicas are being re-initialized, do NOT disable inter-cluster replication.
 
 Re-initializing a store is an operation that is time-consuming and should only be done while the service is offline during a scheduled maintenance window. The store is inaccessible and no other operations can be performed during the re-initialization.
 
@@ -51,7 +52,8 @@ init-hdap-store -ldif <ldif> -namingcontext <namingcontext>[-instance <instance>
 
 The ongoing maintenance of your RadiantOne Universal Directory stores involves making regular back-ups.
 
->**Note – backups can be performed while the store is online. The store can be read/written to while the backup is taking place. However, it is generally best practice to backup during off-peak hours.**
+>[!note]
+>Backups can be performed while the store is online. The store can be read/written to while the backup is taking place. However, it is generally best practice to backup during off-peak hours.
 
 After a store has been initialized, you can create backups anytime.
 
@@ -65,8 +67,9 @@ To back up an HDAP store:
 - Default backup location (<RLI_HOME>/vds_server/data/oldbackup)
 - Custom backup location. Click Browse, specify a file path, and click OK.
 
->**Note – the browse option in the Custom Backup Location does not permit browsing above <RLI_HOME>. To select a custom backup location outside the <RLI_HOME> directory, enter the full location manually in the field below the
-custom backup location radio button.**
+>[!note]
+>The browse option in the Custom Backup Location does not permit browsing above <RLI_HOME>. To select a custom backup location outside the <RLI_HOME> directory, enter the full location manually in the field below the
+custom backup location radio button.
 
 5. Click **OK**. Click **OK** again to close the dialog box.
 
@@ -82,16 +85,17 @@ To restore a RadiantOne Universal Directory (HDAP) store:
 2. Select a RadiantOne Universal Directory (HDAP) store node and on the Properties tab on the right, click the Restore button.
 3. Select one of the following restore options.
 
-- Click the “Select the date available in the default backup directory” button, and select the drop-down menu option that corresponds to the data and time of the backup to be restored.
-- Click the “Select the directory of an existing HDAP Store Backup” button, click Browse, select the location of the backup file, and click OK.
+4. Click the “Select the date available in the default backup directory” button, and select the drop-down menu option that corresponds to the data and time of the backup to be restored.
+5. Click the “Select the directory of an existing HDAP Store Backup” button, click Browse, select the location of the backup file, and click OK.
 
-4. Click **OK** again. Click **OK** to close the dialog box.
+6. Click **OK** again. Click **OK** to close the dialog box.
 
 The restore is performed using the compressed file located in the folder indicated. The compressed file is automatically decrypted using the RadiantOne server certificate keystore
 password. The server where you are restoring the store must have the same server certificate keystore password than the server where you created the backup from.
 
->**Note – the compressed store files can only be unpacked in either the Main Control Panel or using the command line utility. For details on restoring a RadiantOne Universal Directory store from command line, see the RadiantOne
-Command Line Configuration Guide.**
+>[!note]
+>The compressed store files can only be unpacked in either the Main Control Panel or using the command line utility. For details on restoring a RadiantOne Universal Directory store from command line, see the RadiantOne
+Command Line Configuration Guide.
 
 ![An image showing ](Media/Image3.1.jpg)
 
