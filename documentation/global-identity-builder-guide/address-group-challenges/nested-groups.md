@@ -51,18 +51,28 @@ Since RadiantOne is computing the `memberOf` attribute, the actual one returned 
 
 15. Choose **memberOf** and select **Edit Attribute**.
     ![List of Attributes Associated with Virtual Entries](../media/image142.png)
+
 16. To avoid returning the same groups multiple times, with both their virtual DN and real DN, assign a `Highest` priority to the computed value and a `Lowest` priority to the primary value. This ensures only the computed value is returned.
     ![Attribute Properties](../media/image143.png)
+
 17. Select **OK**.
+
 18. Select **Save**.
 The virtual view now returns an un-nested list of groups for the user's `memberOf` attribute.
     ![Sample Virtual View Returning Un-nested Groups in the User Entry](../media/image144.png)
 19. From the **Main Control Panel** > **Directory Namespace** tab, select the **Cache** node.
+
 20. Select **Browse** to navigate to the naming context you want to cache.
+
 21. Select **Create Persistent Cache**.
+
 22. On the **Refresh Settings** tab, select the type of cache refresh strategy you want to use and select **Save**. For details on the different refresh options and how to initialize the cache, see the RadiantOne Deployment and Tuning Guide.
+
 23. After the persistent cache is configured, select the cached branch below **Cache** and on the **Refresh Settings** tab, select **Initialize**.
+
 24. If you selected a Real-time refresh strategy, configure the connectors accordingly and start them. For details, see the Connector Properties Guide and the Deployment and Tuning Guide. If you selected a periodic cache refresh approach, configure the refresh interval. For details, see the Deployment and Tuning Guide.
+
 25. From the **RadiantOne Main Control Panel** > **Wizards tab**, select the **Global Identity Builder**.
+
 26. Add **RadiantOne** as an [identity source](../create-projects/identity-sources.md). Remember to provide a meaningful data source name so you can identify the actual underlying data source. The [Base DN](../create-projects/identity-sources.md#base-dn) should point to the persistent cached view of the actual backend data source. An example is shown below.
     ![Sample Identity Source Pointing to RadiantOne](../media/image145.png)
