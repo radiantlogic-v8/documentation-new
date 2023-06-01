@@ -186,9 +186,7 @@ There are two methods that can be used: keytool or the Main Control Panel.
 
 You must send the LDAP server certificate file to the client machine(s), which commutes via SSL with the directory server. The following command can be used to import the certificate into the keystore for the LDAP Browser:
 
-```
->C:\radiantone\jdk\jre\bin>keytool -import -alias rli -keystore c:\radiantone\jdk\jre\lib\security\cacerts -file rli.cer
-```
+`>C:\radiantone\jdk\jre\bin>keytool -import -alias rli -keystore c:\radiantone\jdk\jre\lib\security\cacerts -file rli.cer`
 
 >[!note]
 >Java_Home>/lib/security/cacerts is the default truststore from JDK with password _changeit_ and _rli.cer_ is the server’s certificate in this example.
