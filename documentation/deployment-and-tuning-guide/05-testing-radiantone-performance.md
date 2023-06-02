@@ -11,7 +11,7 @@ If you are deploying a cluster architecture, a hardware load balancer should be 
 
 If a single standalone RadiantOne node is deployed, the SLAMD client can point directly to this instance for testing performance.
 
-If RadiantOne is used to virtualize an LDAP source, you should first determine the performance of the underlying LDAP server by accessing it directly (using SLAMD mentioned above).  This provides you with some base performance numbers. Then, run SLAMD against the RadiantOne service (on the branch built from the underlying LDAP source). You should keep in mind that the following additional configurations on your RadiantOne branch could impact performance:
+If RadiantOne is used to virtualize an LDAP source, you should first determine the performance of the underlying LDAP server by accessing it directly (using SLAMD mentioned above). This provides you with some base performance numbers. Then, run SLAMD against the RadiantOne service (on the branch built from the underlying LDAP source). You should keep in mind that the following additional configurations on your RadiantOne branch could impact performance:
 
 -	Joins
 

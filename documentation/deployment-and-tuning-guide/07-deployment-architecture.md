@@ -203,10 +203,10 @@ C:\r1\migration\radiantone-migration-tool-2.1.0\migrate.bat export C:/tmp/export
 
 5.	Copy the export file to the production machine and with the RadiantOne services stopped (all except for ZooKeeper), from a cmd prompt, run the import command (assuming you saved the exported file to C:/tmp on the target production machine).
 
->[!warning]
->Ensure all RadiantOne services EXCEPT ZooKeeper are stopped on the target machine prior to importing. ZooKeeper servers in the ensemble must be running prior to importing.
+    >[!warning]
+    >Ensure all RadiantOne services EXCEPT ZooKeeper are stopped on the target machine prior to importing. ZooKeeper servers in the ensemble must be running prior to importing.
 
-`C:\r1\migration\radiantone-migration-tool-2.1.0\migrate.bat import C:\tmp\export.zip cross-environment`
+    `C:\r1\migration\radiantone-migration-tool-2.1.0\migrate.bat import C:\tmp\export.zip cross-environment`
 
 6.	After the import, start the needed RadiantOne services on the new machine.
 
@@ -386,7 +386,7 @@ The InstanceManager command line utility can be used to:
 
 To start the InstanceManager, from a command prompt, navigate to <RLI_HOME>/bin and execute instancemanager. You are prompted with the options as follows:
 
-Usage: InstanceManager {-u -d} -n `<instanceName> -D <manager dn> {-w <manager password> -W <encoded manager password>} -p [ldap port] -S <ssl_port> -T -F <server_cert> 
+Usage: `InstanceManager {-u -d} -n <instanceName> -D <manager dn> {-w <manager password> -W <encoded manager password>} -p [ldap port] -S <ssl_port> -T -F <server_cert> 
 -t <server_cert_type> -P <server_cert_password> -Q <cert encoded password> -a <cert alias> 
 -k <sched port> --vds-http-port <port> --vds-https-port <port> --vds-admin-http-port <port> 
 --vds-admin-https-port <port> -l <http port> -o <https port> -Z <ZK connection string> 
@@ -560,9 +560,9 @@ To enable replication for a Universal Directory store:
 
 2.	On the Properties tab on the right, check the box for Inter-cluster Replication as shown in the screenshot below. 
 
-![An image showing ](Media/Image7.19.jpg)
+    ![An image showing ](Media/Image7.19.jpg)
 
-Figure 7.19: Enabling a Universal Directory Store for Inter-Cluster Replication
+    Figure 7.19: Enabling a Universal Directory Store for Inter-Cluster Replication
 
 3.	Click **Save**.
 
@@ -661,8 +661,8 @@ To configure replication across sites, follow the steps below.
 
 1.	Designate one data center as the primary/main. At this site, define the virtual views, persistent cache and desired refresh. 
 
->[!warning]
->Make sure the port used by RadiantOne that houses the replication journal (2389 by default) can be accessed from all clusters and that firewall rules do not prevent the cluster from reading and writing into the journal.
+    >[!warning]
+    >Make sure the port used by RadiantOne that houses the replication journal (2389 by default) can be accessed from all clusters and that firewall rules do not prevent the cluster from reading and writing into the journal.
 
 2.	Install the first cluster node at the new data center. Be sure the name of the cluster you create at this site is different than the cluster name used in the primary site/data center.
 
@@ -688,12 +688,12 @@ To configure replication across sites, follow the steps below.
 
 13.	 (Optional) If the [Use Cache for Authentication](02-tuning-tips-for-caching-in-radiantone#use-cache-for-authentication) option is not enabled on the persistent cache in the primary/main site, then passwords are not replicated to the Universal Directory stores in the additional site(s). Therefore, you must redirect bind operations to the primary/main (cache refresh) site, which will redirect the credentials to the backend(s) accordingly. On the leader node of (each) new replica site, go to the Main Control Panel > Settings Tab > Interception section > Redirections sub-section (requires [Expert Mode](00-preface#expert-mode)). Select the naming context representing the Universal Directory store and click **Edit**. In the “Redirect Bind Operations to” drop-down list, select the data source that represents the RadiantOne nodes in the primary (cache refresh) site (use the VDSLBCache data source that was defined in step 11 above). If you do not have a data source configured that points to the RadiantOne nodes in the primary site, go to the Server Backend section, LDAP Data Sources sub-section and create one that points to the load balancer configured in front of the nodes at the primary/cache refresh site. Then go back to the Interception section, Redirections sub-section and define that all Binds be redirected to the data source associated with the primary site.
 
-![An image showing ](Media/Image7.24.jpg)
+    ![An image showing ](Media/Image7.24.jpg)
  
-Figure 7.24: Option to Redirect Binds to the Cache Refresh Site
+    Figure 7.24: Option to Redirect Binds to the Cache Refresh Site
 
->[!note]
->If the ‘[Use Cache for Authentication](02-tuning-tips-for-caching-in-radiantone#use-cache-for-authentication)’ option is enabled for the persistent cache in the primary (cache refresh) site, the passwords are stored in the cache and authentication is handled locally by RadiantOne as opposed to being delegated to the backend. In this scenario, the passwords are replicated to the Universal Directory stores located on all other sites. This allows the Universal Directory stores on these sites to handle bind operations locally and not require a bind redirect to the primary (cache) site.
+    >[!note]
+    >If the ‘[Use Cache for Authentication](02-tuning-tips-for-caching-in-radiantone#use-cache-for-authentication)’ option is enabled for the persistent cache in the primary (cache refresh) site, the passwords are stored in the cache and authentication is handled locally by RadiantOne as opposed to being delegated to the backend. In this scenario, the passwords are replicated to the Universal Directory stores located on all other sites. This allows the Universal Directory stores on these sites to handle bind operations locally and not require a bind redirect to the primary (cache) site.
 
 14.	On the leader node of the primary/main (cache refresh) site, configure the persistent cache to support Inter-Cluster Replication. Go to the Main Control Panel -> Directory Namespace Tab. Expand the Cache node and select the applicable persistent cache. On the Properties tab on the right, check the box for Inter-cluster replication. Click **Save**.
 

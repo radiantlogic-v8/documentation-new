@@ -124,23 +124,23 @@ Service settings are related to how RadiantOne handles client activity.
 
 ### Maximum Connections
 
-The maximum number of client connections the server can accept concurrently (connecting at the exact same time). This parameter is configured from the Main Control Panel -> Settings Tab -> Limits section -> Global Limits sub-section.
+The maximum number of client connections the server can accept concurrently (connecting at the exact same time). This parameter is configured from the Main Control Panel > Settings Tab > Limits section > Global Limits sub-section.
 
 ### Size Limit
 
-The maximum number of entries a search operation can return. This allows for limiting the number of entries clients can receive from a query. By default this value is set to 0 which means there is no restriction on the size. This parameter is configured from the Main Control Panel -> Settings Tab -> Limits section -> Global Limits sub-section. The limit defined here is global for the RadiantOne service. To enforce finer-grained limits to specific users, configure limits in the Custom Limits section.
+The maximum number of entries a search operation can return. This allows for limiting the number of entries clients can receive from a query. By default this value is set to 0 which means there is no restriction on the size. This parameter is configured from the Main Control Panel > Settings Tab > Limits section > Global Limits sub-section. The limit defined here is global for the RadiantOne service. To enforce finer-grained limits to specific users, configure limits in the Custom Limits section.
 
 ### Time Limit
 
-The amount of time (in seconds) during which a search operation is expected to finish. If a search operation does not finish within this time parameter, the query is aborted. By default, this value is set to 0 which means there is no restriction on time. This parameter can be changed from the Main Control Panel -> Settings Tab -> Limits section -> Global Limits sub-section. The limit defined here is global for the RadiantOne service. To enforce finer-grained limits to specific users, configure limits in the Custom Limits section.
+The amount of time (in seconds) during which a search operation is expected to finish. If a search operation does not finish within this time parameter, the query is aborted. By default, this value is set to 0 which means there is no restriction on time. This parameter can be changed from the Main Control Panel > Settings Tab > Limits section > Global Limits sub-section. The limit defined here is global for the RadiantOne service. To enforce finer-grained limits to specific users, configure limits in the Custom Limits section.
 
 ### Look Through Limit
 
-The look through limit is the maximum number of entries you want the server to check in response to a search request. Use this value to limit the number of entries the server looks through to find an entry. This limits the processing and time spent by the server to respond to potentially bogus search requests (for example, if a client sends a search filter based on an attribute that isn’t indexed). This parameter can be changed from the Main Control Panel -> Settings Tab -> Limits section -> Global Limits sub-section.  By default, this is set to 0, which means that there is no limit set for the number of entries that the server looks through. The limit defined here is global for RadiantOne. To enforce finer-grained limits to specific users, configure limits in the Custom Limits section.
+The look through limit is the maximum number of entries you want the server to check in response to a search request. Use this value to limit the number of entries the server looks through to find an entry. This limits the processing and time spent by the server to respond to potentially bogus search requests (for example, if a client sends a search filter based on an attribute that isn’t indexed). This parameter can be changed from the Main Control Panel > Settings Tab > Limits section > Global Limits sub-section.  By default, this is set to 0, which means that there is no limit set for the number of entries that the server looks through. The limit defined here is global for RadiantOne. To enforce finer-grained limits to specific users, configure limits in the Custom Limits section.
 
 ### Idle Connection Timeout
 
-The length of time to keep a connection open without any activity from the client.  This is configured in seconds. The default is 15 minutes (900 seconds), which means an idle connection remains open for 15 minutes and is then automatically closed by RadiantOne. This parameter can be changed from the Main Control Panel -> Settings Tab -> Limits section -> Global Limits sub-section.  The limit defined here is global for RadiantOne. To enforce finer-grained limits to specific users, configure limits in the Custom Limits section.
+The length of time to keep a connection open without any activity from the client.  This is configured in seconds. The default is 15 minutes (900 seconds), which means an idle connection remains open for 15 minutes and is then automatically closed by RadiantOne. This parameter can be changed from the Main Control Panel > Settings Tab > Limits section > Global Limits sub-section. The limit defined here is global for RadiantOne. To enforce finer-grained limits to specific users, configure limits in the Custom Limits section.
 
 ### Number of Processing Queues
 
@@ -156,7 +156,7 @@ After making changes, click Save. The RadiantOne service must be restarted for t
 ### Max Concurrent Working Threads
 
 This is the number of threads RadiantOne uses for handling client requests. If there are backends involved (e.g. proxy views without persistent cache), then you must also consider how the backend handles the level of concurrency you define here as well because requests made to RadiantOne may directly result in concurrent requests sent to the backend(s).
-The default value is 16, which means 16 worker threads allocated per processing queue defined in the Number of Processing Queues property. This property can be changed from the Main Control Panel -> Settings Tab -> Limits section -> Custom Limits sub-section (requires [Expert Mode](00-preface#expert-mode)). The default amount is sufficient for most deployments and generally should not be modified unless recommended by Radiant Logic. You might be able to increase this number if:
+The default value is 16, which means 16 worker threads allocated per processing queue defined in the Number of Processing Queues property. This property can be changed from the Main Control Panel > Settings Tab > Limits section > Custom Limits sub-section (requires [Expert Mode](00-preface#expert-mode)). The default amount is sufficient for most deployments and generally should not be modified unless recommended by Radiant Logic. You might be able to increase this number if:
 
 -	You are using a multiprocessor system - Multiprocessor systems can support larger thread pools than single processor systems. See the Number of Processors parameter above.
 
@@ -235,7 +235,7 @@ In the Log Settings section, select VDS – Server from the drop-down list. The 
 
 ![An image showing ](Media/Image1.2.jpg)
  
-Figure 1. 2: Server Log Settings
+Figure 1.2: Server Log Settings
 
 In the Access Logs section, Advanced section (requires [Expert Mode](00-preface#expert-mode)), the Buffer Size for File logging property can be used for tuning. Increasing this value results in fewer writes by RadiantOne to the log file on disk. However, increasing this value requires more memory. Make sure the machine memory and amount allocated to the RadiantOne service can accommodate the buffer size you set.
 

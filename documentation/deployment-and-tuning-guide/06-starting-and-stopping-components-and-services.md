@@ -31,8 +31,8 @@ Once you have tested your virtual views and are ready to deploy your architectur
 
 2.	Navigate to the <RLI_HOME>\bin\windows.service directory. You will find fid-server-service-install.bat and fid-server-service-uninstall.bat. These files install RadiantOne as a service and uninstall the service respectively.
 
->[!warning]
->If you are running RadiantOne on Windows 7, 2008, 2012, or 2016 you should execute fid-server-service-install or fid-server-service-uninstall as an administrator. To do so, right-click on the file and choose Run as administrator.
+    >[!warning]
+    >If you are running RadiantOne on Windows 7, 2008, 2012, or 2016 you should execute fid-server-service-install or fid-server-service-uninstall as an administrator. To do so, right-click on the file and choose Run as administrator.
 
 3.	Execute the fid-server-service-install.bat file. A command window opens briefly and then closes. Check your services window (refresh if it was already open) and you should see a new service for the RadiantOne Server.
 
@@ -143,8 +143,8 @@ The web server that hosts the control panels can be installed as a Windows servi
 
 1.	Navigate to the %RLI_HOME%\bin\windows.service directory. Control-panel-service-install and control-panel-service-uninstall are located here. You can use these to install the web server as a service and uninstall the web server as a service respectively.
 
->[!warning]
->If you are running the web server that hosts the control panel on Windows 7, 2008, 2012, or 2016, you should execute control-panel-service-install or control-panel-service-uninstall as an administrator. To do so, right-click on the file and choose Run as administrator.
+    >[!warning]
+    >If you are running the web server that hosts the control panel on Windows 7, 2008, 2012, or 2016, you should execute control-panel-service-install or control-panel-service-uninstall as an administrator. To do so, right-click on the file and choose Run as administrator.
 
 2.	Verify that the web server is stopped. For example, try going to: http://localhost:7070 (this is using the default port, if you set a different port during the RadiantOne install, you should use it here). If this page doesn’t return anything, the web server probably isn’t running. If it is running you can stop it with: <RLI_HOME>/bin/stopWebAppserver.bat. 
 3.	Execute the control-panel-service-install file. A command window opens briefly and then exits. Check your services window (refresh if it was already open) and you should see a new service for the RadiantOne FID Management Console. 
