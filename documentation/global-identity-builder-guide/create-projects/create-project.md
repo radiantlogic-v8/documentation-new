@@ -14,8 +14,8 @@ When you first launch the Global Identity Builder tool, there are no projects de
 
 1. Select **Get Started!**.
 
->[!note]
->If you have already created projects, they are accessible on this page. To create a new project, select **New Project**.
+    >[!note]
+    >If you have already created projects, they are accessible on this page. To create a new project, select **New Project**.
 
 2. Define the [project properties](project-properties.md) and select **Save Changes**.
 3. Add [identity sources](identity-sources.md) to your project and select **Save Changes**.
