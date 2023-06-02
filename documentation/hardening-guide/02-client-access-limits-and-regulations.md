@@ -33,8 +33,7 @@ parameter can be changed from the Main Control Panel > Settings Tab > Limits sec
 
 ### Custom Limits
 
-Custom limits are more fine-grained and override any Global Limits that are defined. These are
-defined on the Main Control Panel > Settings > Limits > Custom Limits.
+Custom limits are more fine-grained and override any Global Limits that are defined. These are defined on the Main Control Panel > Settings > Limits > Custom Limits.
 
 ### Access Regulation
 
@@ -49,11 +48,6 @@ The “Restrictions Checking Interval” parameter indicated in the Per User or 
 sections is the time frame in which the activity (max binds and max operations) is monitored.
 Once the time interval is reached, the counts are reset. For example, if Special Users Group
 checking is enabled, and the checking interval, max bind operations per checking interval and
-max operations per checking interval are set to 300, 30 and 10 respectively, during a 5 minute
-(300 secs) period, anyone who is a member of the special users group can bind no more than
-30 times to the RadiantOne service and not perform more than 10 operations. This count resets
-every 5 minutes. If a user attempts to perform more than the allowed number of operations, the
-RadiantOne service refuses the operation, and the client must wait until the checking interval
-resets.
+max operations per checking interval are set to 300, 30 and 10 respectively, during a 5 minute (300 secs) period, anyone who is a member of the special users group can bind no more than 30 times to the RadiantOne service and not perform more than 10 operations. This count resets every 5 minutes. If a user attempts to perform more than the allowed number of operations, the RadiantOne service refuses the operation, and the client must wait until the checking interval resets.
 
 For more details on configuring access regulation per user and/or per computer, please see the RadiantOne System Administration Guide.

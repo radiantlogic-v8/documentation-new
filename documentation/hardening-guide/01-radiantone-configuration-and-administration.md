@@ -220,62 +220,53 @@ As outlined in the diagram above, each node (RadiantOne and ZooKeeper nodes) cur
 
 1. Copy the ZooKeeper public key certificate (<ZooKeeperInstall>/rli-zookeeper-external/zookeeper/conf/zk<hostname>.cer file) from each ZooKeeper server to each RadiantOne node.
 
-![An image showing copying the Zookeeper public key certificate](Media/Image2.3.jpg)
+    ![An image showing copying the Zookeeper public key certificate](Media/Image2.3.jpg)
 
 2. Copy the ZooKeeper public key certificate (<ZooKeeperInstall>/zookeeper/conf/zk<hostname>.cer file) from each ZooKeeper node to all other ZooKeeper nodes. Each ZooKeeper node should have the corresponding public key certificate for all other nodes in the ensemble.
 
-![An image showing each ensemble node's public key certificate](Media/Image2.4.jpg)
+    ![An image showing each ensemble node's public key certificate](Media/Image2.4.jpg)
 
 3. On each RadiantOne node, import the zk<hostname>.cer files into <RLI_HOME>/vds_server/conf/fidzk.truststore. This can be done with keytool. An example is shown below, your install paths and keystore password may vary.
 
-```sh
-    <RLI_HOME>\jdk\bin\keytool -import -alias zk:E1WIN1 -keystore
-    C:\radiantone\vds\vds_server\conf\fidzk.truststore -file
-    C:\radiantone\vdsv7311\certs\zkDOC-E1WIN1.cer -storepass radiantlogic -storetype
-    JKS –noprompt
-```    
+    `<RLI_HOME>\jdk\bin\keytool -import -alias zk:E1WIN1 -keystore'`
+    <br> `C:\radiantone\vds\vds_server\conf\fidzk.truststore -file`
+    <br> `C:\radiantone\vdsv7311\certs\zkDOC-E1WIN1.cer -storepass radiantlogic -storetype`
+    <br> `JKS –noprompt`    
 
-![An image showing importing the zk certificate files](Media/Image2.5.jpg)
+    ![An image showing importing the zk certificate files](Media/Image2.5.jpg)
 
 4. Copy the RadiantOne public key certificate (<RLI_HOME>/vds_server/conf/fidzk-<hostname>.cer file) from each RadiantOne node to each ZooKeeper server. An example is shown below, your install paths may vary.
 
-![An image showing copying the RadiantOne public key certificate](Media/Image2.6.jpg)
+    ![An image showing copying the RadiantOne public key certificate](Media/Image2.6.jpg)
 
 5. On each ZooKeeper server, import the fidzk-<hostname>.cer files into
     <ZooKeeperInstall>/zookeeper/conf/zk.truststore. This can be done with keytool. An example is shown below, your install paths and keystore password may vary.
 
-```sh
-<ZooKeeperInstall>/rli-zookeeper-external/jdk/bin/keytool.exe -import -alias fidzk:W-RLI10-LISAPC -keystore 
-C:\ZooKeeper\rli-zookeeper-external\zookeeper\conf\zk.truststore -file C:\ZooKeeper\rli-zookeeper-external\fidzk-W-RLI10-LISAPC.cer -storepass radiantlogic -storetype JKS –noprompt
-```
+    `<ZooKeeperInstall>/rli-zookeeper-external/jdk/bin/keytool.exe -import -alias fidzk:W-RLI10-LISAPC -keystore`
+    <br> `C:\ZooKeeper\rli-zookeeper-external\zookeeper\conf\zk.truststore -file C:\ZooKeeper\rli-zookeeper-external\fidzk-W-RLI10-LISAPC.cer -storepass radiantlogic -storetype JKS –noprompt`
 
-![An image showing importing the fidzk-.cer files](Media/Image2.7.jpg)
+    ![An image showing importing the fidzk-.cer files](Media/Image2.7.jpg)
 
-6. On each ZooKeeper server, import the zk-<hostname>.cer files (corresponding to all other servers in the ZooKeeper ensemble) into <ZooKeeperInstall>/rli-zookeeper-external/zookeeper/conf/zk.truststore. This can be done with keytool. An example is shown below, your install paths and keystore password may vary.
+6. On each ZooKeeper server, import the `zk-<hostname>.cer` files (corresponding to all other servers in the ZooKeeper ensemble) into <ZooKeeperInstall>/rli-zookeeper-external/zookeeper/conf/zk.truststore. This can be done with keytool. An example is shown below, your install paths and keystore password may vary.
 
-```sh
-<ZooKeeperInstall>/rli-zookeeper-external/jdk/bin/keytool.exe -import -alias zk1:zkDOC-E1WIN1 -keystore C:\ZooKeeper\rli-zookeeper-external\zookeeper\conf\zk.truststore -
-file C:\ZooKeeper\rli-zookeeper-external\zkDOC-E1WIN1.cer -storepass radiantlogic -storetype JKS -noprompt
-```
+    `<ZooKeeperInstall>/rli-zookeeper-external/jdk/bin/keytool.exe -import -alias zk1:zkDOC-E1WIN1 -keystore C:\ZooKeeper\rli-zookeeper-external\zookeeper\conf\zk.truststore -file C:\ZooKeeper\rli-zookeeper-external\zkDOC-E1WIN1.cer -storepass radiantlogic -storetype JKS -noprompt`
 
-![An image showing importing the zk hostname certificate files](Media/Image2.8.jpg)
+    ![An image showing importing the zk hostname certificate files](Media/Image2.8.jpg)
 
 7. On each ZooKeeper server, modify <ZooKeeperInstall>/rli-zookeeper-external/zookeeper/conf/zoo.cfg and set the secureClientPort and sslQuorum (they are in the file, so you can uncomment them by removing the # at the beginning of the line).
 
     An example is shown below.
 
-    ```sh
-    <br>secureClientPort=2155
-    <br>sslQuorum=true
-    ```
+    `secureClientPort=2155`
+    <br>`sslQuorum=true`
 
-8. (Optional) to allow both non-SSL and SSL access to ZooKeeper, uncomment
-    portUnification=true and/or client.portUnification=true in the zoo.cfg file on each
-    ZooKeeper server.
+8. (Optional) to allow both non-SSL and SSL access to ZooKeeper, uncomment portUnification=true and/or client.portUnification=true in the zoo.cfg file on each ZooKeeper server.
+
 9. On each RadiantOne node, modify <RLI_HOME>\vds_server\conf\cloud.properties and add zk.client.isSSL=true.
+
 10. Change the zk.client.port and zk.servers properties in the cloud.properties file to match the secureClientPort you set in the ZooKeeper zoo.cfg file. An example is shown below.
 
-![An image showing the ](Media/Image2.9.jpg)
+    ![An image showing the ](Media/Image2.9.jpg)
 
 11. Stop the RadiantOne service on all nodes.
 12. Stop all ZooKeeper services in the ensemble.
@@ -325,6 +316,4 @@ Default ACLs:
 
 To limit client access to ZooKeeper to only RadiantOne (the user/creds in cloud.properties), you can use the following command:
 
-```sh
-<RLI_HOME>/bin/advanced/cluster.bat enforce-zk-system-acl
-```
+`<RLI_HOME>/bin/advanced/cluster.bat enforce-zk-system-acl`

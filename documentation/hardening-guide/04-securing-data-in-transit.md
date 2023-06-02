@@ -9,9 +9,7 @@ RadiantOne supports SSL/TLS and StartTLS to encrypt communication with clients a
 
 ## Configure SSL/TLS for Accessing RadiantOne
 
-During the RadiantOne installation, a self-signed certificate is generated for SSL/TLS access to RadiantOne. This certificate is also used for HTTPS access to the Control Panels. It is
-recommended to replace the default self-signed certificate with a CA-signed certificate that complies with your corporate security policy. Please see the RadiantOne System Administration
-Guide for more information.
+During the RadiantOne installation, a self-signed certificate is generated for SSL/TLS access to RadiantOne. This certificate is also used for HTTPS access to the Control Panels. It is recommended to replace the default self-signed certificate with a CA-signed certificate that complies with your corporate security policy. Please see the RadiantOne System Administration Guide for more information.
 
 Below is a high-level architecture diagram depicting the communication between the different layers (clients to RadiantOne and RadiantOne to backend data sources). This provides a glimpse of the different certificates, keystores and truststores involved. All components at the RadiantOne layer are installed on the same server.
 
@@ -55,25 +53,24 @@ If you use the Main Control Panel, Directory Browser tab to manage entries, you 
 If you are using a self-signed server certificate, you must install/trust the RadiantOne server certificate into your Internet browser. This can be done with the steps below.
 
 >[!note]
->This is also applicable if you are simply accessing the Control Panel via the HTTPS port (e.g. 7171) even if the non-SSL is still available. This is because when you access the Main Control Panel via HTTPS, it connects to the RadiantOne service on the HTTPS web service port (https://rliserver:8090) and this requires the browser to trust the RadiantOne node’s server certificate. The [diagram](04-recommendations-for-securing-data-in-transit-ssl-tls-settings.md) shown at the beginning of this chapter depicts the different certificates, keystores and truststores in the architecture and is helpful to
-understand where certificates need to be imported.
+>This is also applicable if you are simply accessing the Control Panel via the HTTPS port (e.g. 7171) even if the non-SSL is still available. This is because when you access the Main Control Panel via HTTPS, it connects to the RadiantOne service on the HTTPS web service port (https://rliserver:8090) and this requires the browser to trust the RadiantOne node’s server certificate. The [diagram](04-recommendations-for-securing-data-in-transit-ssl-tls-settings.md) shown at the beginning of this chapter depicts the different certificates, keystores and truststores in the architecture and is helpful to understand where certificates need to be imported.
 
 1. Open your Internet Browser (as an administrator, in order to install the RadiantOne server certificate when prompted) and navigate to RadiantOne on the HTTPS port (e.g. https://radiantoneserver:8090)
 2. The browser should warn you about the certificate. Select to continue/proceed.
 3. Click on the "Certificate Error" red area in the address bar, to show information about the certificate.
 
-![An image showing the certificate error](Media/Image4.2.jpg)
+    ![An image showing the certificate error](Media/Image4.2.jpg)
 
 4. You should have the option to install it, which you should do, in Trusted Root Certificates.
 
-![An image showing the trusted root certificates](Media/Image4.3.jpg)
+    ![An image showing the trusted root certificates](Media/Image4.3.jpg)
 
 5. Restart your browser after installing the certificate.
 
 6. If your browser does not have the option to install it, you can export the certificate and then import it directly in your browser settings. Below is an example for Google Chrome.
 7. Click the Certificate Information link.
 
-![An image showing the certificate information link](Media/Image4.4.jpg)
+    ![An image showing the certificate information link](Media/Image4.4.jpg)
 
 8. On the Details tab, click Copy to File.
 9. Click Next in the Certificate Export Wizard.
@@ -81,12 +78,12 @@ understand where certificates need to be imported.
 11. Click Finish and then click OK.
 12. Go to your Internet browser settings. The example below shows the Google Chrome browser settings.
 
-![An image showing the Settings option](Media/Image4.5.jpg)
+    ![An image showing the Settings option](Media/Image4.5.jpg)
 
 13. Under settings, click Show Advanced Settings.
 14. Click Manage Certificates in the HTTPS/SSL section.
 
-![An image showing the Manage Certificates button](Media/Image4.6.jpg)
+    ![An image showing the Manage Certificates button](Media/Image4.6.jpg)
 
 15. On the Trusted Root Certification Authorities tab, click **Import**.
 16. Click **Next** in the Certificate Import Wizard.
@@ -158,8 +155,7 @@ used by the RadiantOne service, edit
 <RLI_HOME>\vds_server\conf\jetty\config.properties and set:
 useVDSSSLConfig=false
 
-Since Jetty uses the same server keystore as the RadiantOne sevice (jetty.ssl.keystore.location=<RLI_HOME>/vds_server/conf/rli.keystore), this server certificate must be trusted by your Internet Browser if you need to access the Control Panel via HTTPS. If you have replaced the default self-signed certificate with one signed by a Certificate Authority that is trusted by your client browser, you should be able to access the Control Panels via the SSL port without problems (e.g. https://radiantoneserver:7171). If you are using a self-signed
-certificate, you must install/trust the server certificate into your Internet browser. This can be done with the steps below.
+Since Jetty uses the same server keystore as the RadiantOne sevice (jetty.ssl.keystore.location=<RLI_HOME>/vds_server/conf/rli.keystore), this server certificate must be trusted by your Internet Browser if you need to access the Control Panel via HTTPS. If you have replaced the default self-signed certificate with one signed by a Certificate Authority that is trusted by your client browser, you should be able to access the Control Panels via the SSL port without problems (e.g. https://radiantoneserver:7171). If you are using a self-signed certificate, you must install/trust the server certificate into your Internet browser. This can be done with the steps below.
 
 1. Open your Internet Browser (as an administrator, in order to install the RadiantOne server certificate when prompted) and navigate to the Main Control Panel on the HTTPS port (e.g. https://radiantoneserver:7171)
 2. The browser should warn you about the certificate. Select to continue/proceed.
@@ -167,7 +163,7 @@ certificate, you must install/trust the server certificate into your Internet br
 4. If your browser does not have the option to install it, you can export the certificate and then import it directly in your browser settings. Below is an example for Google Chrome.
 5. Click the Certificate Information link.
 
-![An image showing the certificate information link](Media/Image4.9.jpg)
+    ![An image showing the certificate information link](Media/Image4.9.jpg)
 
 6. On the Details tab, click Copy to File.
 7. Click Next in the Certificate Export Wizard.
@@ -175,7 +171,7 @@ certificate, you must install/trust the server certificate into your Internet br
 9. Click Finish and then click OK.
 10. Go to your Internet browser settings. The example below shows the Google Chrome browser settings.
 
-![An image showing the Settings option](Media/Image4.10.jpg)
+    ![An image showing the Settings option](Media/Image4.10.jpg)
 
 11. Under settings, click Show Advanced Settings.
 12. Click Manage Certificates in the HTTPS/SSL section.
@@ -191,19 +187,16 @@ certificate, you must install/trust the server certificate into your Internet br
 
 ## Configure SSL Protocols Allowed for Control Panels
 
-To configure the SSL protocols to allow in your environment for the Jetty web server that hosts
-the Main and Server Control Panels, edit: <RLI_HOME>/vds_server/conf/jetty/config.properties.
+To configure the SSL protocols to allow in your environment for the Jetty web server that hosts the Main and Server Control Panels, edit: <RLI_HOME>/vds_server/conf/jetty/config.properties.
 
-Set the value for jetty.ssl.protocols to the ones you want to support. The default server socket
-protocols allowed in Java 8 are: SSLv2Hello, TLSv1, TLSv1.1, and TLSv1.2
+Set the value for jetty.ssl.protocols to the ones you want to support. The default server socket protocols allowed in Java 8 are: SSLv2Hello, TLSv1, TLSv1.1, and TLSv1.2
 
 For example, if jetty.ssl.protocols=TLSv1.2 is set, the following cipher suites are enabled:
 
-```sh
-Enabled protocol: TLSv1.2
-Enabled cipher suite: TLS_RSA_WITH_AES_128_CBC_SHA256
-Enabled cipher suite: SSL_RSA_WITH_3DES_EDE_CBC_SHA
-```
+`Enabled protocol: TLSv1.2`
+<br> `Enabled cipher suite: TLS_RSA_WITH_AES_128_CBC_SHA256`
+<br> `Enabled cipher suite: SSL_RSA_WITH_3DES_EDE_CBC_SHA`
+
 Restart Jetty after making changes to config.properties.
 
 ## Advise Application Owners to use the Latest Java Patches
@@ -215,14 +208,11 @@ Radiant Logic releases patches for RadiantOne approximately one week after OpenJ
 
 It is highly advised that all client applications connecting to RadiantOne via LDAPS or HTTPS have the latest Java patch in order to reduce the risk of security breaches. This is to ensure the latest bugs and security vulnerabilities have been addressed, and that clients don’t attempt to negotiate obsolete, unsafe or disabled ciphers.
 
-Although you can configure the SSL ciphers and protocols enabled in RadiantOne, it is not advised to enable less secure settings solely to accommodate client applications running older
-versions of Java.
+Although you can configure the SSL ciphers and protocols enabled in RadiantOne, it is not advised to enable less secure settings solely to accommodate client applications running older versions of Java.
 
 ## Enable SSL Communication Between Cluster Nodes
 
-If you are deploying RadiantOne in a cluster, all nodes must be able to communicate with each other. This is required for block replication (replicating data in RadiantOne Universal Directory
-stores and Persistent Cache) which uses HTTP/HTTPS and redirecting write operations to the leader node which uses LDAP/LDAPS. To force the usage of SSL communication between
-cluster nodes, choose the Always use SSL option from the Main Control Panel > Settings Tab > Security section > SSL sub-section.
+If you are deploying RadiantOne in a cluster, all nodes must be able to communicate with each other. This is required for block replication (replicating data in RadiantOne Universal Directory stores and Persistent Cache) which uses HTTP/HTTPS and redirecting write operations to the leader node which uses LDAP/LDAPS. To force the usage of SSL communication between cluster nodes, choose the Always use SSL option from the Main Control Panel > Settings Tab > Security section > SSL sub-section.
 
 >[!note]
 >Forcing the use of SSL slows down the communication speed between nodes.**
@@ -234,8 +224,7 @@ If RadiantOne is connecting to backends over a network connection that is consid
 If the backend server uses a certificate issued by a trusted Certificate Authority, then all you need to do is enter the SSL port and check the SSL checkbox when you define the data source.
 For database backends, just enter the SSL port in the URL as there is no SSL checkbox.
 
-If the server you are connecting to uses a self-signed certificate, or signed by a Certificate Authority not known by RadiantOne, then this certificate must be imported into the client truststore. Import client certificates into the RadiantOne truststore from the Main Control Panel -
-> Settings Tab -> Security section > Client Certificate Truststore. RadiantOne dynamically loads client certificates from here meaning certificates can be added at any time without requiring a restart.
+If the server you are connecting to uses a self-signed certificate, or signed by a Certificate Authority not known by RadiantOne, then this certificate must be imported into the client truststore. Import client certificates into the RadiantOne truststore from the Main Control Panel > Settings Tab > Security section > Client Certificate Truststore. RadiantOne dynamically loads client certificates from here meaning certificates can be added at any time without requiring a restart.
 
 For more information on SSL/TLS support, please see the RadiantOne System Administration Guide.
 

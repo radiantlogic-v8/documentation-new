@@ -7,9 +7,7 @@ description: Hardening Guide
 
 ## Delete Global Read Access and Assign Finer-Grained Access Controls
 
-When the RadiantOne service receives a request, it uses the user in the bind operation, and the
-access control instructions (ACIs) defined to allow or deny access to directory information. The
-service can allow or deny permissions such as read, write, search, or compare.
+When the RadiantOne service receives a request, it uses the user in the bind operation, and the access control instructions (ACIs) defined to allow or deny access to directory information. The service can allow or deny permissions such as read, write, search, or compare.
 
 With ACI, you can control access to targets such as:
 
@@ -42,10 +40,7 @@ configured access control described as “grant read access to anyone”. Then c
 userdn="ldap:///anyone";)**
 
 Although there is not an absolute requirement, it is generally recommended to define all your
-access controls at the root level so you can come back to this single level and see all configured
-access controls across the entire RadiantOne namespace. When you define the actual ACI at
-the root level, you can set the Target DN to only the applicable branch in the namespace you
-want to protect.
+access controls at the root level so you can come back to this single level and see all configured access controls across the entire RadiantOne namespace. When you define the actual ACI at the root level, you can set the Target DN to only the applicable branch in the namespace you want to protect.
 
 For details on defining access controls, please see the RadiantOne System Administration
 Guide.
@@ -81,17 +76,7 @@ RadiantOne offers advanced password policy settings to control everything from p
 
 RadiantOne includes a framework for calling custom authentication services like RSA SecurID
 and Yubicloud. This allows standard LDAP applications to benefit from stronger, multi-factor
-security without requiring any changes to their authentication logic. Users of the application can
-login with their existing ID and password + tokencode/One Time Password (OTP). RadiantOne
-translates the standard LDAP authentication (bind) request into a validation of the user’s
-password to the authoritative source (whether that is local in a RadiantOne Universal Directory
-stored, or some other authoritative backend) and a call to your specialized authentication
-service like RSA SecurID (or others) to validate the rest of the credentials. The custom
-authentication service may provide validation for the entire credentials (e.g. user’s password
-plus additional tokencode/pin/OTP) or just a portion of the credentials (e.g. just validate the
-tokencode/pin). For details on using RSA SecurID or Yubikey, see the Custom Authentication
-Providers Guide. For details on configuring your own custom authentication provider, see the
-System Administration Guide.
+security without requiring any changes to their authentication logic. Users of the application can login with their existing ID and password + tokencode/One Time Password (OTP). RadiantOne translates the standard LDAP authentication (bind) request into a validation of the user’s password to the authoritative source (whether that is local in a RadiantOne Universal Directory stored, or some other authoritative backend) and a call to your specialized authentication service like RSA SecurID (or others) to validate the rest of the credentials. The custom authentication service may provide validation for the entire credentials (e.g. user’s password plus additional tokencode/pin/OTP) or just a portion of the credentials (e.g. just validate the tokencode/pin). For details on using RSA SecurID or Yubikey, see the Custom Authentication Providers Guide. For details on configuring your own custom authentication provider, see the System Administration Guide.
 
 ## Use Least Privilege Accounts for Backend Connections
 
@@ -106,19 +91,10 @@ RadiantOne data source configurations.
 
 ## Encrypt Attributes in RadiantOne Universal Directory Stores
 
-Attribute encryption protects sensitive data while it is stored in RadiantOne Universal Directory
-stores. You can specify that certain attributes of an entry are stored in an encrypted format. This
-prevents data from being readable while stored in the RadiantOne Universal Directory stores,
-backup files, and exported LDIF files. Attribute values are encrypted before they are stored, and
-decrypted before being returned to the client, as long as the client is authorized to read the
-attribute (based on ACLs defined in RadiantOne), is connected to RadiantOne via SSL and not
-a member of the special group containing members not allowed to get these attributes (e.g.
-cn=ClearAttributesOnly,cn=globalgroups,cn=config). For details on this special group, please
-see the RadiantOne System Administration Guide.
+Attribute encryption protects sensitive data while it is stored in RadiantOne Universal Directory stores. You can specify that certain attributes of an entry are stored in an encrypted format. This prevents data from being readable while stored in the RadiantOne Universal Directory stores, backup files, and exported LDIF files. Attribute values are encrypted before they are stored, and decrypted before being returned to the client, as long as the client is authorized to read the attribute (based on ACLs defined in RadiantOne), is connected to RadiantOne via SSL and not a member of the special group containing members not allowed to get these attributes (e.g. cn=ClearAttributesOnly,cn=globalgroups,cn=config). For details on this special group, please see the RadiantOne System Administration Guide.
 
 You can use your own security key (Customer Master Key) for attribute encryption via AWS
 KMS. For details on using AWS KMS, see the RadiantOne System Administration Guide.
-
 
 For details on configuring attribute encryption, see the RadiantOne Namespace Configuration
 Guide.
@@ -129,9 +105,7 @@ performed using a FIPS 140-2 certified module, see the RadiantOneFIPS_Mode Guide
 ## Use Zipped and Encrypted LDIF Files
 
 When exporting (or initializing) RadiantOne Universal Directory stores or persistent cache
-stores, choose to use LDIFZ file types (which are zipped and encrypted) instead of classic LDIF
-files. LDIFZ files are encrypted using the security key defined in RadiantOne. For details on
-creating a security key, see the RadiantOne System Administration Guide.
+stores, choose to use LDIFZ file types (which are zipped and encrypted) instead of classic LDIF files. LDIFZ files are encrypted using the security key defined in RadiantOne. For details on creating a security key, see the RadiantOne System Administration Guide.
 
 You can use your own security key (Customer Master Key) for attribute encryption via AWS
 KMS. For details on using AWS KMS, see the RadiantOne System Administration Guide.
@@ -144,10 +118,7 @@ see the RadiantOne Deployment and Tuning Guide.
 
 Configure sensitive attributes in the Main Control Panel > Settings > Server Front End >
 Attribute Handling -> Attributes Not Displayed in Logs setting. This property allows you to
-control which attribute values are not printed in clear in the RadiantOne logs. If you do not want
-certain attribute values printed in clear in the logs, you can indicate them here. Each attribute
-name should be separated with a single space. Any attribute indicated here has a value of *****
-printed in the logs instead of the value in clear.
+control which attribute values are not printed in clear in the RadiantOne logs. If you do not want certain attribute values printed in clear in the logs, you can indicate them here. Each attribute name should be separated with a single space. Any attribute indicated here has a value of ***** printed in the logs instead of the value in clear.
 
 >[!warning]
 >If Interception Scripting is used, remove or comment out the following line from each method to avoid cleartext passwords being written to log files: prop.list(System.out)
@@ -185,10 +156,7 @@ encryption.
 
 ### RadiantOne Universal Directory (HDAP) Stores Attribute Encryption
 
-Attribute encryption protects sensitive data while it is stored in RadiantOne. Attribute encryption
-allows you to specify that certain attributes of an entry are stored in an encrypted format. This
-prevents data from being readable while stored in RadiantOne Universal Directory stores,
-persistent cache, backup files, and exported LDIF files.
+Attribute encryption protects sensitive data while it is stored in RadiantOne. Attribute encryption allows you to specify that certain attributes of an entry are stored in an encrypted format. This prevents data from being readable while stored in RadiantOne Universal Directory stores, persistent cache, backup files, and exported LDIF files.
 
 There are two items to configure. One is the criteria for the key generation used to
 encrypt/decrypt the attributes. Two is the list of attributes you want to encrypt.
@@ -204,8 +172,7 @@ To define the criteria used to generate an encryption key:
 
 An encryption key is auto-generated based on the cipher and security key value provided. This
 key is used across nodes in a cluster to encrypt/decrypt the attributes configured for encryption.
-If inter-cluster replication is deployed, all clusters must be configured with the same cipher and
-security key.
+If inter-cluster replication is deployed, all clusters must be configured with the same cipher and security key.
 
 #### Attributes to Encrypt
 
@@ -241,19 +208,16 @@ To define the criteria used to generate an encryption key:
 1. Navigate to Main Control Panel > Settings Tab > Security section > Attribute Encryption sub-section.
 2. On the right, for LDIFZ Encryption Key, click Define Key Generation.
 3. Select the desired cipher from the drop-down list.
-4. Enter a security key. This value is used to auto-generate an encryption key. If you plan on deploying multiple clusters that will participate in inter-cluster replication and you are    going to initialize stores from an exported LDIFZ file, take note of the value you enter here as you must use it when configuring the LDIFZ cipher and security key in the other    clusters.
+4. Enter a security key. This value is used to auto-generate an encryption key. If you plan on deploying multiple clusters that will participate in inter-cluster replication and you are    going to initialize stores from an exported LDIFZ file, take note of the value you enter here as you must use it when configuring the LDIFZ cipher and security key in the other clusters.
 
 #### Using LDIFZ
 
-In FIPS-mode, LDIFZ files should be used for persistent cache initialization (for the file that gets
-generated as the first step of the initialization process). Make sure the option to “Use .ldifz...” is
-selected during the initialization process.
+In FIPS-mode, LDIFZ files should be used for persistent cache initialization (for the file that gets generated as the first step of the initialization process). Make sure the option to “Use .ldifz...” is selected during the initialization process.
 
 ![An image showing the ](Media/Image3.3.jpg)
 
 In FIPS-mode, LDIFZ files should be used when exporting RadiantOne Universal Directory
-(HDAP) or persistent cache. Select .ldifz from the drop-down list next to the Export File Name
-property.
+(HDAP) or persistent cache. Select .ldifz from the drop-down list next to the Export File Name property.
 
 ![An image showing the ](Media/Image3.4.jpg)
 
