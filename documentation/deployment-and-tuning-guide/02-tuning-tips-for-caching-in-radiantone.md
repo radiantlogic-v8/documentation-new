@@ -3,7 +3,7 @@ title: Deployment and Tuning Guide
 description: Deployment and Tuning Guide
 ---
 
-# Chapter 2: Tuning Tips for Caching in the RadiantOne Federated Identity Service
+# Tuning Tips for Caching in the RadiantOne Federated Identity Service
 
 This chapter provides guidelines on how to effectively use caching for optimal performance. The first part covers the different categories and levels of cache along with a quick review of the different use cases that justify a cache deployment. The second part provides details and describes the advantages and trade-off between “in-memory” and “persistent” cache.  Finally, a description of cache refresh methods is reviewed. This is an essential and often overlooked aspect of cache management.
 
@@ -142,15 +142,11 @@ Entry cache is for caching every entry (a unique DN) of the specified tree. This
 
 For example, to populate/pre-fill the entry cache with unique user entries, you can preload with a query like:
 
-```
-ldapsearch -h localhost -p 2389 -D “uid=myuser,ou=people,dc=vds” -w secret -b “ou=people,dc=vds” -s sub (uid=*)
-```
+`ldapsearch -h localhost -p 2389 -D “uid=myuser,ou=people,dc=vds” -w secret -b “ou=people,dc=vds” -s sub (uid=*)`
 
 With this type of LDAP search, all entries (containing uid) are stored in the entry memory cache.  Therefore, if a client then searched for:
 
-```
-ldapsearch -h localhost -p 2389 -D “uid=myuser,ou=people,dc=vds” -w secret -b “ou=people,dc=vds” -s sub (uid=lcallahan)
-```
+`ldapsearch -h localhost -p 2389 -D “uid=myuser,ou=people,dc=vds” -w secret -b “ou=people,dc=vds” -s sub (uid=lcallahan)`
 
 The entry could be retrieved from the entry cache and the underlying source would not need to be accessed.
 
@@ -161,17 +157,13 @@ Also, since all DNs in an LDAP tree are unique, base searches can benefit from e
 
 For example, if your entry cache settings indexed the cn attribute, a search like the following (using the ldapsearch command line utility) doesn’t qualify to return the entry from entry cache even though it may be in the cache:
 
-```
-ldapsearch -h localhost -p 2389 -D "cn=directory manager" -w secret -b "cn=Laura Callahan,ou=Active Directory,dc=demo" -s sub (objectclass=*)
-```
+`ldapsearch -h localhost -p 2389 -D "cn=directory manager" -w secret -b "cn=Laura Callahan,ou=Active Directory,dc=demo" -s sub (objectclass=*)`
 
 However, both of the following searches WOULD return the entry from the memory cache (because one uses a subtree search requesting a filter based on the indexed attribute, and one is a base search):
 
-```
-ldapsearch -h localhost -p 2389 -D "cn=directory manager" -w secret -b "cn=Laura Callahan,ou=Active Directory,dc=demo" -s sub "(cn=Laura Callahan)"
+`ldapsearch -h localhost -p 2389 -D "cn=directory manager" -w secret -b "cn=Laura Callahan,ou=Active Directory,dc=demo" -s sub "(cn=Laura Callahan)"`
 
-ldapsearch -h localhost -p 2389 -D "cn=directory manager" -w secret -b "cn=Laura Callahan,ou=Active Directory,dc=demo" -s base "(objectclass=*)"
-```
+`ldapsearch -h localhost -p 2389 -D "cn=directory manager" -w secret -b "cn=Laura Callahan,ou=Active Directory,dc=demo" -s base "(objectclass=*)"`
 
 To configure an entry memory cache, follow the steps below (requires [Expert Mode](00-preface#expert-mode)).
 1.	On the Main Control Panel -> Settings Tab -> Server Front End section -> Memory Cache sub-section, on the right side click on the Add button in the Entry Cache section.
@@ -258,7 +250,8 @@ First, enable the Query Memory Cache (requires [Expert Mode](00-preface#expert-m
 
 6.	Click **Save** (located in the top right hand corner) to save your settings.
 
-><span style="color:red">**IMPORTANT NOTE - the user and ACI information are also part of the query. This is why it was mentioned above that the query cache is sensitive to syntax.  If User A issues a query, and then User B issued a query asking for the exact same information, this would count as two queries in the Query Cache.**
+>[!warning]
+>The user and ACI information are also part of the query. This is why it was mentioned above that the query cache is sensitive to syntax.  If User A issues a query, and then User B issued a query asking for the exact same information, this would count as two queries in the Query Cache.
 
 #### Populating the Memory Cache
 
@@ -298,47 +291,46 @@ To get statistics about the entries in your view, you can use the LDIFStatistics
 
 The results include the following statistics about entries (non-group), groups and objectclasses:
 
-```
-###### Entries statistics ######
-Entry count – number of entries
-Max attributes per entry
-###### Non-group entry statistics ######
-AVG attributes per entry
-Max entry size in bytes
-AVG entry size in bytes
-Max attribute size
-AVG attributes size (non-objectclass)
-###### Groups statistics ######
-Group count – number of group entries
-Groups Statistics: [
-### Groups SIZE_RANGE_NAME statistics ###
-Group entry count
-Max members
-AVG members
-Max entry size in bytes
-AVG entry size in bytes
-###### ObjectClass Statistics ###### 
-### objectclass_name statistics ###
-Entry count – number of entries
-Max attributes per entry
-AVG attributes per entry
-Max entry size in bytes
-AVG entry size in bytes
-Max attribute size
-AVG attributes size
-RDN Types: [rdn_name]
-Entry count per branch: {branch_dn=entrycount_x}, 
-The following would be an example of the command and statistics returned.
-C:\radiantone\vds\bin\advanced>ldif-utils LDIFStatistics -f "C:\radiantone\vds\vds_server\ldif\export\mydirectory.ldif"
-###### Entries statistics ######
-Entry count: 10014
-Max attributes per entry: 19
-###### Non-group entry statistics ######
-AVG attributes per entry: 8
-Max entry size: 956 bytes
-AVG entry size: 813 bytes
-Max attribute size: 1
-AVG attributes size (non-objectclass): 1
+`###### Entries statistics ######`
+<br> `Entry count – number of entries`
+<br> `Max attributes per entry`
+<br> `###### Non-group entry statistics ######`
+<br> `AVG attributes per entry`
+<br> `Max entry size in bytes`
+<br> `AVG entry size in bytes`
+<br> `Max attribute size`
+<br> `AVG attributes size (non-objectclass)`
+<br> `###### Groups statistics ######`
+<br> `Group count – number of group entries`
+<br> `Groups Statistics: [`
+<br> `### Groups SIZE_RANGE_NAME statistics ###`
+<br> `Group entry count`
+<br> `Max members`
+<br> `AVG members`
+<br> `Max entry size in bytes`
+<br> `AVG entry size in bytes`
+<br> `###### ObjectClass Statistics ###### `
+<br> `### objectclass_name statistics ###`
+<br> `Entry count – number of entries`
+<br> `Max attributes per entry`
+<br> `AVG attributes per entry`
+<br> `Max entry size in bytes`
+<br> `AVG entry size in bytes`
+<br> `Max attribute size`
+<br> `AVG attributes size`
+<br> `RDN Types: [rdn_name]`
+<br> `Entry count per branch: {branch_dn=entrycount_x},` 
+<br> `The following would be an example of the command and statistics returned.`
+<br> `C:\radiantone\vds\bin\advanced>ldif-utils LDIFStatistics -f` <br> `"C:\radiantone\vds\vds_server\ldif\export\mydirectory.ldif"`
+<br> `###### Entries statistics ######`
+<br> `Entry count: 10014`
+<br> `Max attributes per entry: 19`
+<br> `###### Non-group entry statistics ######`
+<br> `AVG attributes per entry: 8`
+<br> `Max entry size: 956 bytes`
+<br> `AVG entry size: 813 bytes`
+<br> `Max attribute size: 1`
+<br> `AVG attributes size (non-objectclass): 1`
 
 ###### Groups statistics ######
 Group count: 2
@@ -408,7 +400,6 @@ Groups Statistics: [
         -RDN Types: [cn]
         -Entry count per branch: {ou=groups,o=companydirectory=1}]
 Done in 1169ms
-```
 
 #### Initializing Persistent Cache
 
@@ -641,7 +632,8 @@ To configure persistent cache with real-time refresh:
 
 5. On the Refresh Settings tab, select the Real-time refresh option.
 
-><span style="color:red">**IMPORTANT NOTE - If your virtual view is joined with other virtual views you must cache the secondary views first. Otherwise, you are unable to configure the real-time refresh and will see the following message. A Diagnostic button is also shown and provides more details about which virtual views require caching.**
+>[!warning]
+>If your virtual view is joined with other virtual views you must cache the secondary views first. Otherwise, you are unable to configure the real-time refresh and will see the following message. A Diagnostic button is also shown and provides more details about which virtual views require caching.
 
 ![An image showing ](Media/Image2.8.jpg)
  	 
@@ -786,15 +778,11 @@ Example 2:
 >[!note]
 >By default, many databases, including SQL Server, use upper-case table names.
 
-```
-RLI_CON.TEST_LOG 
-```
+`RLI_CON.TEST_LOG `
 
 Or with optional quoting: 
 
-```
-"RLI_CON"."TEST_LOG"
-```
+`"RLI_CON"."TEST_LOG"`
 
 >[!note]
 >If this name is the same as the log name in the database, leave the property empty.
@@ -802,9 +790,7 @@ Or with optional quoting:
 Example 3:
 <br>If schema and/or table name contain mixed-case characters, they must be quoted. For example, if the schema is Rli_Con, and log table name is Test_Log, the property should be as follows.
 
-```
-"Rli_con"."Test_log"
-```
+`"Rli_con"."Test_log"`
 
 ###### Create Scripts to Generate Triggers and Changelog Table
 
@@ -814,9 +800,7 @@ These scripts can be provided to the database backend DBA to review, modify and 
 
 Example: 
 
-```
-create_db_triggers.bat -d sql123 -n sql_server_data_source -t DBO.EMPLOYEES -u rli_con -p rli_con -l EMPLOYEES_LOG
-```
+`create_db_triggers.bat -d sql123 -n sql_server_data_source -t DBO.EMPLOYEES -u rli_con -p rli_con -l EMPLOYEES_LOG`
 
 Based on this example, the command generates scripts at the following location: <RLI_HOME>/work/sql/sql123/
 
@@ -843,7 +827,8 @@ Argument | Description
 
 The following steps assume your backend database table has a primary key defined and contains a timestamp column. The timestamp column name is required for configuring the connector. The timestamp column database types supported are described in the [Database Connectors](#database-connectors) section.
 
-><span style="color:red">**IMPORTANT NOTES – this connector type does not detect delete operations. If you need to detect delete operations from the database, you should choose a different connector type.**
+>[!warning]
+>this connector type does not detect delete operations. If you need to detect delete operations from the database, you should choose a different connector type.
 
 1. From the Main Control Panel > Directory Namespace Tab, select the configured persistent cache branch below the Cache node.
 
@@ -928,7 +913,8 @@ Figure 2.13: Kafka Connector for Persistent Cache Refresh
 
 This section describes the failover mechanism for the database connectors.
 
-><span style="color:red">**IMPORTANT NOTE - The backend servers must be configured for multi-master replication. Please check the vendor documentation for assistance with configuring replication for your backends.**
+>[!warning]
+>The backend servers must be configured for multi-master replication. Please check the vendor documentation for assistance with configuring replication for your backends.
 
 The database connectors leverage the failover server that has been configured for the data source.  When you configure a data source for your backend database, select a failover database server from the drop-down list. The failover server must be configured as a RadiantOne data source.  See the screen shot below for how to indicate a failover server for the Data Sources from the Main Control Panel.
 
@@ -983,9 +969,8 @@ Figure 2.17: Selecting a Active Directory Change Detection  Mechanism
 
 **The Active Directory DirSync** capture connector retrieves changes that occur to entries by passing a cookie that identifies the directory state at the time of the previous DirSync search. The first time the DirSync capture connector is started, it stores a cookie in a cursor file. At the next polling interval, the connector performs a DirSync search to detect changes by sending the current cookie. To use the DirSync control, the Bind DN connecting to the directory must have the DS-Replication-Get-Changes extended right, which can be enabled with the “Replicating Directory Changes” permission, on the root of the partition being monitored. By default, this right is assigned to the Administrator and LocalSystem accounts on domain controllers.
 
-<span style="color:red">**IMPORTANT NOTE – to detect delete events, the service account used by RadiantOne to connect to the backend Active Directory (configured in the connection string of the RadiantOne data source) must have permissions to search the tombstone objects. Usually, a member of the Administrators group is sufficient. However, some Active Directory servers may require a member of the Domain Admins group. Check with your Active Directory administrator to determine the appropriate credentials required.**
-
-<span style="color:red">**If you are virtualizing and detecting changes from a Global Catalog, then you must use the Active Directory USNChanged changed connector because the DirSync connector cannot detect change events on sub-domains.**
+>[!warning]
+>To detect delete events, the service account used by RadiantOne to connect to the backend Active Directory (configured in the connection string of the RadiantOne data source) must have permissions to search the tombstone objects. Usually, a member of the Administrators group is sufficient. However, some Active Directory servers may require a member of the Domain Admins group. Check with your Active Directory administrator to determine the appropriate credentials required. <BR>If you are virtualizing and detecting changes from a Global Catalog, then you must use the Active Directory USNChanged changed connector because the DirSync connector cannot detect change events on sub-domains.
 
 The Active Directory USNChanged capture connector keeps track of changes based on the uSNChanged attribute for the entry.  Based on a configured polling interval, the connector connects with the user and password configured in the connection string/data source and checks the list of changes stored by Active Directory.  The connector internally maintains the last processed change number (uSNChanged value) and this allows for the recovery of all changes that occur even if the connector is down (deliberately or due to failure).
 
@@ -1022,7 +1007,8 @@ Figure 2.19: Connector Properties
 
 This section describes the failover mechanism for the LDAP, Persistent Search and Active Directory connectors.
  	
-><span style="color:red">**IMPORTANT NOTE - The backend servers must be configured for multi-master replication. Please check the vendor documentation for assistance with configuring replication for your backends.**
+>[!warning]
+>The backend servers must be configured for multi-master replication. Please check the vendor documentation for assistance with configuring replication for your backends.
 
 The directory connectors leverage the failover servers that have been configured for the data source.  When you configure a data source for your backend directory, you need to indicate the list of failover servers in order of priority. When the connector fails over, it uses the failover servers in the order they are listed. See the screen shot below for how to indicate a failover server for the Data Sources from the Main Control Panel.
 
@@ -1104,7 +1090,7 @@ Retry Interval on Error | Used in conjunction with the Max Retries on Error prop
 Max Retries on Connection Error | For Database Connectors - If the connector is unable to connect to the primary backend server, it tries to connect to the failover server. If the connector cannot connect to the primary or failover servers because of a connection error, it tries to connect again later. Maximum Retries on Connection Error is the total number of times the connector tries reconnecting. A failed attempt to connect to both the primary and failover server is considered a single retry. The frequency of the reconnect attempt is based on the Retry Interval on Connection Error property. If there are no backends available to connect to, the agent automatically redeploys the connector until a connection to the backend can be made.<br>For Directory Connectors - If the connector is unable to connect to the primary backend server because of a connection error, it tries to connect again later. Maximum Retries on Connection Error is the total number of times the connector tries reconnecting. The frequency of the reconnect attempt is based on the Retry Interval on Connection Error property. After all attempts have been tried, the connector failover logic is triggered. If there are no backends available to connect to, the agent automatically redeploys the connector until a connection to the backend can be made.<br> This property is applicable to all connectors except HDAP triggers. The default value is 5.
 Retry Interval on Connection Error | Used in conjunction with the Max Retries on Connection Error property. This is the amount of time (in milliseconds) the connector waits before trying to establish a connection to the source if there was a connection problem during the previous attempt. <br> This property is applicable to all connectors except HDAP triggers. The default value is 10,000 ms (10 seconds).
 LDAP Filter | To further condition the entries that are published, you can indicate the desired criteria in the LDAP Filter property. This is a post filter, used to qualify which entries are published by the connector. You must enter a valid LDAP filter in the property.<br>  This property can be used to avoid publishing unwanted information.<br> If a captured entry matches the criteria indicated in the LDAP filter property, it is published by the connector. If it doesn’t, the entry is not published. Information about the skipped entries is in the connector log (with log level set to DEBUG). <br> If the captured change type is delete, and not enough information is known about the entry, the LDAP filter is not used and the entry is published by the connector. For example, if the LDAP filter property contained a value of (l=Novato) and the captured entry did not contain an “l” attribute, the LDAP filter is not applied and the entry is published. <br> If the captured change type is not delete (e.g. insert, update, move…etc.), and not enough information is known about the entry, the LDAP filter is still used and the entry is not published. For example, if the LDAP filter property contained a value of (l=Novato) and the captured entry did not contain an “l” attribute, the LDAP filter is still applied and the entry is not published by the connector.<br> This property is only applicable to Active Directory, LDAP and Persistent Search connectors. The default value is blank (no specific filter).<br> This property also plays a role in recovering changes that happen while a connector is stopped.  The LDAP filter is added to the (internal) default filter used to further condition the entries to capture. For example, if the "LDAP Filter" property = <br> (&#124;(objectclass=myProvider)(objectclass=myPerson)(objectclass=mySubscriber)), then, the following LDAP filter is used by the connector to capture changes that were missed while the connector was stopped:<br>(&(&#124;(modifyTimestamp>=20211014212817.215Z)(createTimestamp>=20211014212817.215Z))(&#124;(objectclass=myProvider)(objectclass=myPerson)(objectclass=mySubscriber))) <br> Note - If a change is made to this property while the connector is running, it must be restarted for the new value to take effect.
-Excluded Branches | To further condition the entries that are published, you can indicate branch(es) to exclude. In the Excluded Branches property, enter one or more suffixes associated with entries that should not be published in the message by the connector. Click “Enter” to accept the value and to be able to enter another suffix.  You can use the “x” next to the suffix to remove it.<br> ![An image showing ](Media/excluded-branches.jpg) <br> If the changed entry DN contains a suffix that matches the excluded branches value, or is a change in the exact entry that is listed (e.g. CN=CFS users,DC=seradiant,DC=dom), this entry is not published by the connector. Otherwise, the entry is published. This can avoid publishing unwanted information.<br>**Note – if both included and excluded branches are used, an entry must satisfy the conditions defined in both settings to be included in the message. The included branches condition(s) is checked first. <br> If you set this value using the vdsconfig command line utility on Windows, separate the branches with a comma. E.g. C:\radiantone\vds\bin>vdsconfig.bat set-connector-property -connectorname o_sead_pcache_proxy__dc_seradiant_dc_dom__seradiantad -propertyid excludedBranches <br> -propertyvalue “[\"cn=users,dc=seradiant,dc=dom\",\"cn=domain groups,dc=seradiant,dc=dom\"]”** <br> This property is only applicable to Active Directory, LDAP and Persistent Search connectors. The default value is blank (no excluded branches). <br> If a change is made to this property while the connector is running, the new value is taken into account once the connector re-initializes (happens automatically every 20 seconds). 
+Excluded Branches | To further condition the entries that are published, you can indicate branch(es) to exclude. In the Excluded Branches property, enter one or more suffixes associated with entries that should not be published in the message by the connector. Click “Enter” to accept the value and to be able to enter another suffix.  You can use the “x” next to the suffix to remove it.<br> ![An image showing ](Media/excluded-branches.jpg) <br> If the changed entry DN contains a suffix that matches the excluded branches value, or is a change in the exact entry that is listed (e.g. CN=CFS users,DC=seradiant,DC=dom), this entry is not published by the connector. Otherwise, the entry is published. This can avoid publishing unwanted information.<br>Note – if both included and excluded branches are used, an entry must satisfy the conditions defined in both settings to be included in the message. The included branches condition(s) is checked first. <br> If you set this value using the vdsconfig command line utility on Windows, separate the branches with a comma. E.g. C:\radiantone\vds\bin>vdsconfig.bat set-connector-property -connectorname o_sead_pcache_proxy__dc_seradiant_dc_dom__seradiantad -propertyid excludedBranches <br> -propertyvalue “[\"cn=users,dc=seradiant,dc=dom\",\"cn=domain groups,dc=seradiant,dc=dom\"]” <br> This property is only applicable to Active Directory, LDAP and Persistent Search connectors. The default value is blank (no excluded branches). <br> If a change is made to this property while the connector is running, the new value is taken into account once the connector re-initializes (happens automatically every 20 seconds). 
 Included Branches | To further condition the entries that are published, you can indicate branch(es) to include. In the Included Branches property, enter one or more suffixes associated with entries that should be published by the connector. Click “Enter” to accept the value and to be able to enter another suffix.  You can use the “x” next to the suffix to remove it. <br> ![An image showing ](Media/included-branches.jpg) <br> If the changed entry DN contains a suffix that matches the included branches value, or is a change in the exact entry that is listed (e.g. CN=All Users,DC=seradiant,DC=com), this entry is published by the connector. Otherwise, the entry is not published. This can avoid publishing unwanted information. <br> **Note - if both included and excluded branches are used, an entry must satisfy the conditions defined in both settings to be included in the message. The included branches condition(s) is checked first. <br> If you set this value using the vdsconfig command line utility on Windows, separate the branches with a comma. E.g. C:\radiantone\vds\bin>vdsconfig.bat set-connector-property -connectorname o_sead_pcache_proxy__dc_seradiant_dc_dom__seradiantad -propertyid includedBranches -propertyvalue “[\"cn=users,dc=seradiant,dc=dom\",\"cn=domain groups,dc=seradiant,dc=dom\"]”** <br> This property is only applicable to Active Directory, LDAP and Persistent Search connectors. The default value is blank (no included branches). <br> If a change is made to this property while the connector is running, the new value is taken into account once the connector re-initializes (happens automatically every 20 seconds).
 SQL Filter | SQL filter is a post filter used to evaluate entries captured by the connector. Only changes that match the filter are published by the connector. <br>A SQL filter is either a single expression or several single expressions joined by binary operators and brackets ( ). Possible binary operators are: <br>-	AND <br> - OR <br> -NOT <br> Some examples of valid SQL Filters are: <br>- ID='5' <br> - ID='5' AND NAME='ALLEN' <br> -	ID='5' AND NAME='ALLEN' OR CITY='SAN FRANCISCO' <br> -	ID='5' AND (NAME='ALLEN' OR CITY='SAN FRANCISCO') <br> - NAME LIKE 'AL%' <br> -	NAME LIKE 'ALLE_' <br> If the SQL Filter syntax entered into the property is not correct, an error is logged by the connector and it continues working without applying the SQL Filter (all changes are published). <br> This property is only applicable for the DB Changelog, DB Counter, and DB Timestamp connectors. The default value is blank (no specific filter).
 Force Sequential Counters (true/false) | This property accepts a value of true or false and dictates how the connector treats entries it picks up from the LOG table that have non-sequential change IDs. The default is true meaning that if the connector detects a non-sequential change ID for an entry in the LOG table, it behaves as if there is an error (non-connection error) and the retry logic based on the Max Retries on Error and Retry Interval on Error properties takes effect. Sometimes rows in the log table are not written in the order of the change ID, and if the connector doesn’t wait for the entries to have sequential IDs, some changes could be missed. The connector waits for the length of time specified in the Retry Interval on Error property and then tries to get the changed entries in the database again. After the maximum number of retries (indicated in the Max Retries on Error property) is exhausted, if it still detects non-sequential change IDs, the connector stops. Set “Force Sequential Counters” to false before restarting the connector to have the connector ignore non-sequential change IDs. <br> If the connector should ignore non-sequential change IDs, and process all changes immediately, set the property to false.<br> This property is only applicable to the DB Changelog and DB Counter connectors. The default value is true.
@@ -1362,16 +1348,14 @@ If you want the persistent cache to support full text searches, check the Full-T
 ##### Optimize Linked Attributes
 Linked attributes are attributes that allow relationships between objects. A typical example would be isMemberOf/uniqueMember for user/groups objects. A group has members (uniqueMember attribute) which is the forward link relationship. Those members have an isMemberOf attribute which is the back link (to the group entry) relationship. Other examples of linked attributes are:
 
-```
-manager/directReports
-altRecipient/altRecipientBL
-dLMemRejectPerms/dLMemRejectPermsBL
-dLMemSubmitPerms/dLMemSubmitPermsBL
-msExchArchiveDatabaseLink/msExchArchiveDatabaseLinkBL
-msExchDelegateListLink/msExchDelegateListBL
-publicDelegates/publicDelegatesBL
-owner/ownerBL
-```
+`manager/directReports`
+<br> `altRecipient/altRecipientBL`
+<br> `dLMemRejectPerms/dLMemRejectPermsBL`
+<br> `dLMemSubmitPerms/dLMemSubmitPermsBL`
+<br> `msExchArchiveDatabaseLink/msExchArchiveDatabaseLinkBL`
+<br> `msExchDelegateListLink/msExchDelegateListBL`
+<br> `publicDelegates/publicDelegatesBL`
+<br> `owner/ownerBL`
 
 The most common back link/forward link relationship is between group and user objects. A list of groups a user is a member of can be calculated automatically by RadiantOne and returned in the membership attribute of the user entry. The most common back link attributes are in the drop-down list. However, you can manually enter any attribute name you want. This is configured on the Main Control Panel, click Settings > Interception > Special Attributes Handling > Linked Attributes setting (on the right).
 
@@ -1454,15 +1438,11 @@ To test the persistent cache refresh process, use an LDAP command line utility l
 
 The ldapsearch utility offered in the Sun Resource Kit can be used to force a refresh of the persistent cache based on a specific DN. The command would look similar to the following:
 
-```
-ldapsearch -h 10.11.12.91 -p 2389 -D "cn=directory manager" -w "secret" -b "action=synchronizecache,customers=ALFKI,dv=northwind,o=vds" -s base (objectclass=*)
-```
+`ldapsearch -h 10.11.12.91 -p 2389 -D "cn=directory manager" -w "secret" -b "action=synchronizecache,customers=ALFKI,dv=northwind,o=vds" -s base (objectclass=*)`
 
 The above command refreshes the single entry identified by the DN of customers=ALFKI,dv=northwind,o=vds. If you want to refresh multiple entries with a single command, you can use a ONE LEVEL or SUBTREE scope. If you wanted to refresh all entries below dv=northwind, the command would be:
 
-```
-ldapsearch -h 10.11.12.91 -p 2389 -D "cn=directory manager" -w "secret" -b "action=synchronizecache,dv=northwind,o=vds" -s one (objectclass=*)
-```
+`ldapsearch -h 10.11.12.91 -p 2389 -D "cn=directory manager" -w "secret" -b "action=synchronizecache,dv=northwind,o=vds" -s one (objectclass=*)`
 
 Each parameter of the command is described below.
 

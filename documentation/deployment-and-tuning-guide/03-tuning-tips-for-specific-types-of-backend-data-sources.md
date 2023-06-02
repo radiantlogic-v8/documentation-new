@@ -3,7 +3,7 @@ title: Deployment and Tuning Guide
 description: Deployment and Tuning Guide
 ---
 
-# Chapter 3: Tuning Tips for Specific Types of Backend Data Sources in the RadiantOne Federated Identity Service
+# Tuning Tips for Specific Types of Backend Data Sources in the RadiantOne Federated Identity Service
 
 There are three approaches to creating virtual views from the Main Control Panel. The Wizards tab, the Context Builder tab, and the Directory Namespace tab. Although the tuning parameters are typically the same no matter which tab you use, the location to set the parameter may be different. This chapter describes the possible tuning parameters and how to configure them depending on which tool you used to create the virtual views.
 
@@ -61,7 +61,8 @@ Requesting BLOB attributes can significantly decrease performance. When this opt
 
 Use caution when enabling this parameter if an interception script is defined (which may need such attributes even if they are not requested by the client).
 
-><span style="color:red">**IMPORTANT NOTE - Do not enable this option if a memory entry cache is used (as the whole virtual entry is needed, including the BLOBs).**
+>[!warning]
+>Do not enable this option if a memory entry cache is used (as the whole virtual entry is needed, including the BLOBs).
 
 ##### Process Joins and Computed Attributes Only When Necessary
 
@@ -71,7 +72,8 @@ If you enable this option, RadiantOne FID does not perform joins or computations
 
 Use caution when enabling this option if you have interception scripts defined on these objects, or access controls based on filters are being used (both of which may require other attributes returned from secondary sources or computations regardless of whether or not the client requested or searched for them).
 
-><span style="color:red">**IMPORTANT NOTE - Do not enable this option if a memory entry cache is used (as the whole virtual entry is needed for the cache).**
+>[!warning]
+>Do not enable this option if a memory entry cache is used (as the whole virtual entry is needed for the cache).
 
 #### Connection Pooling
 
@@ -99,7 +101,8 @@ RadiantOne uses parameterized SQL statements and maintains a cache of the most u
 
 This setting is per database connection.
 
-><span style="color:red">**IMPORTANT NOTE - Use caution when changing this default value as not all databases have the same limits on the number of 'active' prepared statements allowed.**
+>[!warning]
+>Use caution when changing this default value as not all databases have the same limits on the number of 'active' prepared statements allowed.
 
 ### LDAP Backends
 
@@ -115,10 +118,7 @@ Figure 3.4: Disabling Referral Chasing
 
 Chasing referrals can affect the overall performance because if the referral server is not responding (or responding slowly) RadiantOne FID could take a long time to respond to the client. For example, in the case of querying an underlying Active Directory (with a base DN starting at the root of Active Directory) you may get entries like the following returned:
 
-```
-ldaps://ForestDnsZones.na.radiantlogic.com:636…
-ldaps://DomainDnsZones.na.radiantlogic.com:636…
-```
+`ldaps://ForestDnsZones.na.radiantlogic.com:636… <BR>ldaps://DomainDnsZones.na.radiantlogic.com:636…`
 
 If RadiantOne FID attempts to “chase” these referrals, this can result in an extreme degradation in response times.  Therefore, it is recommended that referral chasing is disabled, especially if you need to connect to Active Directory starting at the root of the tree.
 
@@ -172,7 +172,8 @@ If you enable this option, RadiantOne FID does not perform joins or computations
 
 Use caution when enabling this option if you have interception scripts defined on these objects, or access controls based on filters are being used (both of which may require other attributes returned from secondary sources or computations regardless of whether or not the client requested or searched for them). 
 
-><span style="color:red">**IMPORTANT NOTE - Do not enable this option if a memory entry cache is used (as the whole virtual entry is needed for the cache).**
+>[!warning]
+>Do not enable this option if a memory entry cache is used (as the whole virtual entry is needed for the cache).
 
 ##### Use Client Size Limit Value to Query Backend
 
@@ -308,7 +309,8 @@ For database backends, requesting BLOB attributes can significantly decrease per
 
 Use caution when enabling this parameter if an interception script is defined (which may need such attributes even if they are not requested by the client). 
 
-><span style="color:red">**IMPORTANT NOTE - Do not enable this option if a memory entry cache is used (as the whole virtual entry is needed, including the BLOBs).**
+>[!warning]
+>Do not enable this option if a memory entry cache is used (as the whole virtual entry is needed, including the BLOBs).
 
 ##### Process Joins and Computed Attributes Only When Necessary 
 
@@ -318,7 +320,8 @@ If you enable this option, RadiantOne FID does not perform joins or computations
 
 Use caution when enabling this option if you have interception scripts defined on these objects, or access controls based on filters are being used (both of which may require other attributes returned from secondary sources or computations regardless of whether the client requested or searched for them).
 
-><span style="color:red">**IMPORTANT NOTE - Do not enable this option if a memory entry cache is used (as the whole virtual entry is needed for the cache).**
+>[!warning]
+>Do not enable this option if a memory entry cache is used (as the whole virtual entry is needed for the cache).
 
 #### Connection Pooling
 
@@ -340,7 +343,8 @@ RadiantOne FID uses parameterized SQL statements and maintains a cache of the mo
 
 This setting is per database connection.
 
-><span style="color:red">**IMPORTANT NOTE - Use caution when changing this default value as not all databases have the same limits on the number of 'active' prepared statements allowed.**
+>[!warning]
+>Use caution when changing this default value as not all databases have the same limits on the number of 'active' prepared statements allowed.
 
 ### LDAP Backends
 
@@ -356,10 +360,7 @@ Figure 3.12: Disabling Referral Chasing
 
 Chasing referrals can affect the overall performance of RadiantOne FID because if the referral server is not responding (or responding slowly) it could take a long time to respond to the client. For example, in the case of RadiantOne FID querying an underlying Active Directory (with a base DN starting at the root of Active Directory) you may get entries like the following returned:
 
-```
-ldaps://ForestDnsZones.na.radiantlogic.com:636…
-ldaps://DomainDnsZones.na.radiantlogic.com:636…
-```
+`ldaps://ForestDnsZones.na.radiantlogic.com:636… <br>ldaps://DomainDnsZones.na.radiantlogic.com:636…`
 
 If RadiantOne FID attempts to “chase” these referrals, this can result in an extreme degradation in response times.  Therefore, it is recommended that referral chasing is disabled if you need to connect to Active Directory starting at the root of the tree.
 
@@ -387,7 +388,8 @@ If you enable this option, RadiantOne FID does not perform joins or computations
 
 Use caution when enabling this option if you have interception scripts defined on these objects, or access controls based on filters are being used (both of which may require other attributes returned from secondary sources or computations regardless of whether the client requested or searched for them).
 
-><span style="color:red">**IMPORTANT NOTE - Do not enable this option if a memory entry cache is used (as the whole virtual entry is needed for the cache).**
+>[!warning]
+>Do not enable this option if a memory entry cache is used (as the whole virtual entry is needed for the cache).
 
 #### Connection Pooling
 

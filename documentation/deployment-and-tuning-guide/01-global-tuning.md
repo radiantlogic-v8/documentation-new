@@ -3,7 +3,7 @@ title: Deployment and Tuning Guide
 description: Deployment and Tuning Guide
 ---
 
-# Chapter 1: Global Tuning
+# Global Tuning
 
 Things to take into consideration when tuning RadiantOne:
 
