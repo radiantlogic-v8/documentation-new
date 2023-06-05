@@ -7,7 +7,8 @@ description: Add a data connector
 
 The process to create a new secure data connector and establish a connection with a data source requires the following high-level steps:
 
-- The data connector must be created in Environment Operations Center.
+- The data connector group must be created in Environment Operations Center.
+- Atleast a data connector must be added to the group.
 - The secure data connector client must be deployed on the local machine.
 - The data source must be defined in the FID Control Panel. 
 
@@ -17,9 +18,9 @@ This guide outlines the steps to add a new secure data connector in Environment 
 
 To establish a connection between Env Ops Center and an on-premises network, a data connector must first be created in Env Ops Center.
 
-To add a new data connector, select **Add New Connector** from the *Secure Data Connectors* home screen.
+To add a new data connector, select **New Group** from the *Secure Data Connectors* home screen.
 
-![image description](images/new-connector.png)
+![image description](images/new-group.png)
 
 ## Add data connector info
 
