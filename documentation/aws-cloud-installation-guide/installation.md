@@ -27,7 +27,8 @@ If installing a multi-node RadiantOne cluster, one node is installed per availab
 
 The templates require 1 VPC per environment (can use an existing one or a new one will be created), 1 or 3 t3.small instances for the bastion/remote desktop gateway servers, up to 5 instances per RadiantOne cluster, and up to 5 m5.large instances for the Zookeeper ensemble.
 
-><span style="color:red">**IMPORTANT NOTE – Check your Amazon VPC limits to ensure you have the resources available. Otherwise, the RadiantOne installation will fail.**
+>[!warning]
+>Check your Amazon VPC limits to ensure you have the resources available. Otherwise, the RadiantOne installation will fail.
 
 https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/amazon-vpc-limits.html
 
@@ -35,25 +36,24 @@ To install RadiantOne in AWS follow the steps below.
 
 1. Log into AWS with your administrator account in the region you want to install RadiantOne. This user should have permission to create instances, configure VPN, subnets, load balancers, logs and access s3.
 
->**Note – At this time, no international regions are supported. The following regions are supported:
-us-east- 1
-us-east- 2
-us-west- 2
-eu-central- 1
-us-gov-west-1 (CentOS not available in this data center)
-us-gov-east-1 (CentOS not available in this data center)
-**
+    >[!note]
+    >At this time, no international regions are supported. The following regions are supported:<br> us-east- 1
+    <br> us-east- 2
+    <br> us-west- 2
+    <br> eu-central- 1
+    <br> us-gov-west-1 (CentOS not available in this data center)
+    <br> us-gov-east-1 (CentOS not available in this data center)
 
 2. Click on the user name in the header and select My Account. Record the Account ID located under Account Settings. Provide this ID to your Radiant Logic account representative. Your Account ID is used to authorize access to the template.
 
->**NOTE – To obtain your account ID using an alternate method, from the Support menu in the header, select Support Center. The account number is located just below the header.
-**
+    >[!note]
+    >To obtain your account ID using an alternate method, from the Support menu in the header, select Support Center. The account number is located just below the header.
 
 3. Navigate to EC2 dashboard > Network & Security > Key Pairs section.
 
 4. Click **Create Key Pair**. This process creates a .pem file that will be used later to connect securely to the bastion hosts via SSH.
 
-![creating a key pair](Media/Image2.2.jpg)
+    ![creating a key pair](Media/Image2.2.jpg)
 
 5. Enter in a key pair name and click Create. Download the .pem file and copy it to the client machine where you will be connecting to the bastion hosts from.
 
@@ -62,7 +62,7 @@ https://aws.amazon.com/marketplace/pp?sku=aw0evgkw8e5c1q413zgy5pjce and click Co
 
 7. In the AWS Management Console select CloudFormation in the Services menu.
 
-![cloudformation option](Media/Image2.3.jpg)
+    ![cloudformation option](Media/Image2.3.jpg)
 
 8. Click **Create Stack**.
 
@@ -87,6 +87,7 @@ U.S. Government URLs:
 | 3 - node cluster | https://s3-us-gov-west-1.amazonaws.com/radiantlogic-us-gov-west-1/fid-3.0/templates/radiantOneFullDeployment3N.yaml
 | 5 - node cluster |  https://s3-us-gov-west-1.amazonaws.com/radiantlogic-us-gov-west-1/fid-3.0/templates/radiantOneFullDeployment5N.yaml | 
 
+
 ![creating a stack](Media/Image2.4.jpg)
 
 11.  Click **Next**.
@@ -99,7 +100,8 @@ U.S. Government URLs:
 
 15.  Enter an administration location. This is the IP CIDR from which you must connect to the bastion server. The default value is 0.0.0.0/0.
 
-><span style="color:red">**IMPORTANT NOTE – The default value allows connection from any IP address. For this reason, it is strongly recommended that you modify this value.**
+>[!warning]
+>The default value allows connection from any IP address. For this reason, it is strongly recommended that you modify this value.
 
 16. Either enter an existing VPC ID or leave this value blank and the template creates a new one. If you use an existing VPC, the template adds security groups and three subnets.
 
@@ -136,7 +138,8 @@ The templates install self-signed SSL/TLS certificates based on the internal ser
 28.  Enter a password to use for the Directory Manager account. This value can be changed after the install.
 29.  Enter your unique RadiantOne license key for each cluster node. Each node must have its own license key unless you received a cluster-based license key. If you have a  cluster-based license key, the same license key can be used for all cluster nodes. Check with your Radiant Logic representative if you are not sure what kind of license you received.
 
->**Note – the license key starts with braces (e.g. {xxxx}xxxx....).**
+>[!note]
+>The license key starts with braces (e.g. {xxxx}xxxx....).
 
 30. Click **Next**.
 
@@ -160,22 +163,25 @@ The following ports are opened when the stack is created.
 
 - The Amazon Elastic Load Balancer is externally accessible on ports LDAPS (1636 by default) and HTTPS (8090 by default), the CIDR IP is 0.0.0.0/0. These ports are configurable in the stack parameters.
 
-    ><span style="color:red">**IMPORTANT NOTE – you can restrict access to the ELB by updating the applicable inbound rules for your security group.**
+    >[!warning]
+    >you can restrict access to the ELB by updating the applicable inbound rules for your security group.
 
 - Amazon EC2 Instances can communicate in between each other on any port.
 - On Linux, the bastion is accessible on port 22 (SSH) from the CIDR IP provided in the parameter Administration Location of the Cloud Formation Stack.
 - On Windows, the Remote Desktop Gateway is equivalent to the bastion server and it is accessible on port 443 (HTTPS) from the CIDR IP provided in the parameter Administration Location of the Cloud Formation Stack.
 
-><span style="color:red">**IMPORTANT NOTE - There is a temporary port 3389 (RDP) opened but must be
-removed manually in post deployment.**
+>[!warning]
+>There is a temporary port 3389 (RDP) opened but must be
+removed manually in post deployment.
 
 #### Elastic Load Balancer
 
 Amazon’s Elastic Load Balancing (ELB) automatically scales its request handling capacity to meet the demands of application traffic. Additionally, Elastic Load Balancing offers integration with Auto Scaling to ensure that you have back-end capacity to meet varying levels of traffic levels without requiring manual intervention. The RadiantOne templates install one ELB. Client applications should query the ELB to reach the RadiantOne service. ELB distributes client load across RadiantOne cluster nodes.
 
 
-><span style="color:red">**IMPORTANT NOTE - There can be periods in which your load balancer will return an HTTP 503 error when it cannot handle any more requests. The load balancers do not try to queue all requests, so if they are at capacity, additional requests will fail. If traffic grows over time, then this behavior works well, but in the case of significant spikes in traffic or in certain load testing scenarios, the traffic may be sent to your load balancer at a rate that increases faster than Elastic Load Balancing can scale to meet it. There are two options for addressing this situation: 1) Pre Warming the Load Balancer or using a 2) Controlled Increase in Load Traffic. For more details see: https://aws.amazon.com/articles/best-practices-in-evaluating-elastic-load-
-balancing/#pre-warming**
+>[!warning]
+>There can be periods in which your load balancer will return an HTTP 503 error when it cannot handle any more requests. The load balancers do not try to queue all requests, so if they are at capacity, additional requests will fail. If traffic grows over time, then this behavior works well, but in the case of significant spikes in traffic or in certain load testing scenarios, the traffic may be sent to your load balancer at a rate that increases faster than Elastic Load Balancing can scale to meet it. There are two options for addressing this situation: 1) Pre Warming the Load Balancer or using a 2) Controlled Increase in Load Traffic. For more details see: https://aws.amazon.com/articles/best-practices-in-evaluating-elastic-load-
+balancing/#pre-warming
 
 To view the settings for the ELB configured, from Cloud Formation, click on the Stack Name link. In the Resources section, locate the PublicElasticLoadBalancer Logical ID and click the Physical ID link.
 
@@ -216,13 +222,15 @@ On the Description tab you can see the Private DNS, Private IP, Public DNS, and 
 
 Perform the following instructions to complete the configuration of your AWS environment. The steps describe how to retrieve the root certificate from the Remote Desktop Gateway machine to enable a secure connection from a local Windows machine, allowing you to connect to and manage a RadiantOne node.
 
-><span style="color:red">**IMPORTANT NOTE – Each RadiantOne instance and each Remote Desktop Gateway has a different Administrator user password. You must know the password of the instance you want to connect to.**
+>[!warning]
+>Each RadiantOne instance and each Remote Desktop Gateway has a different Administrator user password. You must know the password of the instance you want to connect to.
 
 1. To get the server certificate, connect to your AWS portal EC2 dashboard and locate the IP address of the Remote Desktop Gateway instance. From the EC2 Dashboard, you can see your running instances. Select the instance ID associated with the bastion (remote desktop gateway) server and click **Connect**.
 
 ![connecting to an instance](Media/Image2.9.jpg)
 
->**Note – you can locate the instance ID in the stack details.**
+>[!note]
+>You can locate the instance ID in the stack details.
 
 2. Take note of the Public DNS (you need this later in step 6) and click **Get Password**. 
 
@@ -274,7 +282,7 @@ Perform the following instructions to complete the configuration of your AWS env
 
 25. Now that you have the certificate, connect to your AWS portal EC2 dashboard and go to Network & Security > Security Groups. Select the Group ID associated with the “...RDGSecurityGroup...” and delete the inbound rule allowing TCP port 3389.
 
-![Network & Security > Security Groups](Media/Image2.11.jpg)
+    ![Network & Security > Security Groups](Media/Image2.11.jpg)
 
 26. Configure the [Remote Desktop connection](radiantone-configuration.md#radiantone-nodes-running-on-windows) to connect to a RadiantOne node to configure it as needed. You will need the Administrator password you took note of in step 4 above.
 
@@ -289,7 +297,7 @@ configuration, you do not select the OS or LDAPS and HTTPS ports. These template
 
 1. In the AWS Management Console select CloudFormation in the Services menu.
 
-![CloudFormation in the Services menu](Media/Image2.13.jpg)
+    ![CloudFormation in the Services menu](Media/Image2.13.jpg)
 
 2. Click **Create Stack**.
 
@@ -343,7 +351,8 @@ U.S. Government URLs:
 
 14. Enter your unique RadiantOne license key for each cluster node. Each node must have its own license key unless you received a cluster-based license key. If you have a cluster-based license key, the same license key can be used for all cluster nodes. Check with your Radiant Logic representative if you are not sure what kind of license you received.
 
->**Note – the license key s tarts with braces (e.g. {xxxx}xxxx....).**
+>[!note]
+>The license key s tarts with braces (e.g. {xxxx}xxxx....).
 
 15. Click **Next**.
 

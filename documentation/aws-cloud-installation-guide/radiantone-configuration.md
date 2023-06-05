@@ -3,7 +3,7 @@ title: AWS Cloud Installation Guide
 description: AWS Cloud Installation Guide
 ---
 
-#  RadiantOne Configuration
+# RadiantOne Configuration
 
 ## RadiantOne Nodes Running on Linux
 
@@ -23,17 +23,18 @@ You can connect to any Bastion host running in any availability zone. Through th
 
 7. To import the PuTTY-formatted key into Pageant, right-click the Pageant icon in the System tray and choose “View Keys”.
 
-![view keys option](Media/Image3.1.jpg)
+    ![view keys option](Media/Image3.1.jpg)
 
-1. The Pageant window shows the private keys Pageant is holding. Click “Add Key”.
-2.  Select the .ppk and click Open. If your key is associated with a passphrase, you are prompted to enter it.
+8. The Pageant window shows the private keys Pageant is holding. Click “Add Key”.
+9.  Select the .ppk and click Open. If your key is associated with a passphrase, you are prompted to enter it.
 
-![pageant key list](Media/Image3.2.jpg)
+    ![pageant key list](Media/Image3.2.jpg)
 
 10. Click Close in the Pageant Key List window.
 11. Run C:\"Program Files"\PuTTY\plink.exe -l ec2-user -N -L 7070:10.0.0.10:7070 -L 8089:10.0.0.10:8089 `<ec2DNSname>`
 
-><span style="color:red">**IMPORTANT NOTE – All Linux instances configured with the Cloud Formation Templates are using the ec2-user account EXCEPT for CentOS which is using centos. Use the DNS name of the bastion server for the <ec2DNSname> in the command.**
+    >[!warning]
+    >All Linux instances configured with the Cloud Formation Templates are using the ec2-user account EXCEPT for CentOS which is using centos. Use the DNS name of the bastion server for the `<ec2DNSname>` in the command.
 
 From your local machine, access the control panel on the RadiantOne node.
 E.g. [http://localhost:7070/main/login](http://localhost:7070/main/login)
@@ -46,21 +47,21 @@ The steps in this section describe how to configure a Remote Desktop Connection 
 
 2. Enter the computer name (or IP address) of the RadiantOne node.
 
-![remote desktop connection](Media/Image3.3.jpg)
+    ![remote desktop connection](Media/Image3.3.jpg)
 
-1. Click **Show Options**.
+3. Click **Show Options**.
 
-2. On the Advanced tab, click **Settings**.
+4. On the Advanced tab, click **Settings**.
 
-![Advanced tab's Settings button](Media/Image3.4.jpg)
+    ![Advanced tab's Settings button](Media/Image3.4.jpg)
 
 5. Click **Use these RD Gateway server settings**.
 
-![Use these RD Gateway server settings](Media/Image3.5.jpg)
+    ![Use these RD Gateway server settings](Media/Image3.5.jpg)
 
 6. For Server Name, enter the address of the gateway instance (e.g. ec2-18-204-206-236.compute-1.amazonaws.com). You can view the instance DNS name in the AWS stack details for the bastion server. An example of the stack details is shown below.
 
-![stack details](Media/Image3.6.jpg)
+    ![stack details](Media/Image3.6.jpg)
 
 7. Select the Logon method Ask for password.
 
@@ -72,7 +73,7 @@ The steps in this section describe how to configure a Remote Desktop Connection 
 
 11. In General tab, provide the RadiantOne Computer name (or IP address) and User name (Administrator).
 
-![the general tab](Media/Image3.7.jpg)
+    ![the general tab](Media/Image3.7.jpg)
 
 12. Click **Connect**.
 
