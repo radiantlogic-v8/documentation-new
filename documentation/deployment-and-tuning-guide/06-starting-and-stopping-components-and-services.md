@@ -203,7 +203,7 @@ To check the status of each component, go to the Main Control Panel > Dashboard 
 
 5.	Start [Management Console](#control-panels) (Jetty web server that hosts the Control Panels) on all nodes in the cluster.
 
-6.	Start the [RadiantOne service](#radiantone-service) first on the previous leader node, wait until it has fully started and then start it on the follower nodes. To find the previous leader node, log in to the Main Control Panel (expert mode) > ZooKeeper tab and navigate to /radiantone/<version>/<cluster_name>. The previous leader is noted in the lastLeaderID property. You can identify the server corresponding to this cloud ID from the Dashboard tab. 
+6.	Start the [RadiantOne service](#radiantone-service) first on the previous leader node, wait until it has fully started and then start it on the follower nodes. To find the previous leader node, log in to the Main Control Panel (expert mode) > ZooKeeper tab and navigate to `/radiantone/<version>/<cluster_name>`. The previous leader is noted in the lastLeaderID property. You can identify the server corresponding to this cloud ID from the Dashboard tab. 
 
 7.	(Optional) Start/resume [Global Synchronization](#global-synchronization) if used.
 
