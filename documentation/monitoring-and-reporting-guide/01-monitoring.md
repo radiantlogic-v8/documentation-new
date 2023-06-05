@@ -3,12 +3,7 @@ title: Monitoring and Reporting Guide
 description: Monitoring and Reporting Guide
 ---
 
-# RadiantOne Monitoring and Reporting Guide
-
-- [Chapter 1: Monitoring](01-monitoring.md)
-- [Chapter 2: Auditing and Reporting](02-auditing-and-reporting.md)
-
-## Chapter 1 - Monitoring
+# Monitoring
 
 Monitoring is one of the most important aspects of maintaining the health of RadiantOne. It is highly recommended that you monitor the RadiantOne components on a regular basis using the
 methods and utilities discussed in this guide.
@@ -18,28 +13,26 @@ The RadiantOne components can be monitored from both the Main and Server Control
 The key services to monitor are RadiantOne and ZooKeeper. There are default monitoring and alerts for these services. For RadiantOne, see [RadiantOne Availability](#radiantone-service-availability). For ZooKeeper, see
 [ZooKeeper Write Failure](#zookeeper-write-failure).
 
-### Expert Mode
+## Expert Mode
 
 Some settings in the Main Control Panel are accessible only in Expert Mode. To switch to Expert Mode, click the Logged in as, (username) drop-down menu and select Expert Mode.
 
 ![An image showing expert mode](Media/Expert-Mode.jpg)
 
->**Note - The Main Control Panel saves the last mode (Expert or Standard) it was in when you log out and returns to this mode automatically when you log back in. The mode is saved on a per-role basis.**
+>[!note]
+>The Main Control Panel saves the last mode (Expert or Standard) it was in when you log out and returns to this mode automatically when you log back in. The mode is saved on a per-role basis.
 
-### RadiantOne Built-in Monitoring and Alerts
+## RadiantOne Built-in Monitoring and Alerts
 
 RadiantOne includes built-in monitoring and alert capabilities and can also be monitored by external [third party monitoring tools](#external-monitoring-options-with-third-party-tools).
 
-#### Monitoring from the Main Control Panel
+### Monitoring from the Main Control Panel
 
-The Main Control Panel provides a view of RadiantOne nodes deployed. When RadiantOne is deployed in a cluster, the state of services running on all nodes is visible in the Overview
-section of the Dashboard tab. In the Intranode Health section you can see the connectivity across all nodes.
+The Main Control Panel provides a view of RadiantOne nodes deployed. When RadiantOne is deployed in a cluster, the state of services running on all nodes is visible in the Overview section of the Dashboard tab. In the Intranode Health section you can see the connectivity across all nodes.
 
-If RadiantOne is deployed in a classic active/active or active/passive architecture, the Intranode
-Health section is irrelevant and only one node is shown in the Overview section.
+If RadiantOne is deployed in a classic active/active or active/passive architecture, the Intranode Health section is irrelevant and only one node is shown in the Overview section.
 
-The Replication Monitoring tab is relevant if inter-cluster replication is deployed or if you have
-RadiantOne deployed in an active/active or active/passive architecture and are replicating HDAP stores across them.
+The Replication Monitoring tab is relevant if inter-cluster replication is deployed or if you have RadiantOne deployed in an active/active or active/passive architecture and are replicating HDAP stores across them.
 
 ##### Dashboard Tab
 
@@ -64,41 +57,27 @@ For each node, the Overview section displays the status of:
 
 ![An image showing monitoring two RadiantOne cluster nodes ](Media/Image1.1.jpg)
 
-Figure 1. 1 : Example Monitoring of a RadiantOne Cluster Containing Two Nodes
+Figure 1.1 : Example Monitoring of a RadiantOne Cluster Containing Two Nodes
 
 If RadiantOne is deployed in a cluster, you can also use <RLI_HOME>/bin/advanced/cluster.bat list (cluster.sh on Linux) to monitor the status (ON/OFF) of each cluster node and see which one is the current RadiantOne service (VDS) leader and ZooKeeper (ZK) leader. Below is an example.
 
-```sh
-c:\radiantone\vds\bin\advanced>cluster.bat list
-
-+----------------+--------------------------------------+------------+--------------------+--------------+
-
-| SU-WINUD-E1N1* | cd96bcc3-40f9- 4286 - 810d-881f0aa10eb4 | ON | #1 |
-ON |
-
-| SU-WINUD-E1N2 | b40c196b- 5596 - 499d- 9855 - 1f8d3980fd1a | ON | #2** |
-ON |
-
-| SU-WINUD-E1N3 | 53df2 904 - 63b6-41f1-8de6-62c10369846a | ON | #3 |
-ON |
-
-+----------------+--------------------------------------+------------+--------------------+--------------+
+`c:\radiantone\vds\bin\advanced>cluster.bat list`
+<br> `+----------------+--------------------------------------+------------+--------------------+--------------+`
+<br> `| SU-WINUD-E1N1* | cd96bcc3-40f9- 4286 - 810d-881f0aa10eb4 | ON | #1 | ON |`
+<br> `| SU-WINUD-E1N2 | b40c196b- 5596 - 499d- 9855 - 1f8d3980fd1a | ON | #2** | ON |`
+<br> `| SU-WINUD-E1N3 | 53df2 904 - 63b6-41f1-8de6-62c10369846a | ON | #3 | ON |`
+<br> `+----------------+--------------------------------------+------------+--------------------+--------------+`
 
 *: VDS Leader
 
 **: ZK Leader
 ```
 
-The Internode Health section is applicable for cluster deployments only and displays a topology
-of all nodes in the cluster and information about the connectivity between the nodes. If you
-hover the mouse pointer over a node, the direction of connectivity is conditioned by this node
-and more details are shown. By default, this includes the availability of the LDAP and LDAPS
-ports for the RadiantOne service, and the ability to read and write to ZooKeeper on the target node. To toggle information about ZooKeeper or LDAP connectivity, check/uncheck the
-corresponding box in the upper-left corner of the Internode Health section.
+The Internode Health section is applicable for cluster deployments only and displays a topology of all nodes in the cluster and information about the connectivity between the nodes. If you hover the mouse pointer over a node, the direction of connectivity is conditioned by this node and more details are shown. By default, this includes the availability of the LDAP and LDAPS ports for the RadiantOne service, and the ability to read and write to ZooKeeper on the target node. To toggle information about ZooKeeper or LDAP connectivity, check/uncheck the corresponding box in the upper-left corner of the Internode Health section.
 
 ![An image showing the internode health monitoring](Media/Image1.2.jpg)
 
-Figure 1. 2 : Internode Health Monitoring
+Figure 1.2: Internode Health Monitoring
 
 A green checkmark means connectivity on the RadiantOne LDAP and/or LDAPS ports is fine and ZooKeeper can be read from and written to.
 
@@ -115,10 +94,7 @@ The default, recommended replication model for RadiantOne Universal Directory st
 publishes the changes into a central journal. The leader nodes on all other sites pick up the changes from the central journal and update their local stores. These changes are then
 automatically replicated out to follower/follower-only nodes within the cluster. For more details on inter-cluster replication, please see the RadiantOne Deployment and Tuning Guide.
 
-If inter-cluster replication is enabled, the clusters that are participating in replication can be
-viewed in the Central Journal Replication section. The topology depicts the connectivity
-between the clusters and the cluster housing the replication journal. If a red line is visible, this
-indicates a connection problem between a cluster and the replication journal.
+If inter-cluster replication is enabled, the clusters that are participating in replication can be viewed in the Central Journal Replication section. The topology depicts the connectivity between the clusters and the cluster housing the replication journal. If a red line is visible, this indicates a connection problem between a cluster and the replication journal.
 
 An example is shown below.
 
@@ -140,22 +116,11 @@ applied and changes that are pending.
 
 ###### Push Mode Replication
 
-To address a very small subset of use cases, namely where a global load balancer directs client
-traffic across data centers/sites, where the inter-cluster replication architecture might be too
-slow, you have the option to enable an additional, more real-time replication mode where changes can be pushed directly to intended targets. For example, an update made by a client to
-one data center might not be replicated to other data centers in time for the client to immediately
-read the change, if the read request it sent to a different data center than the update was. This
-is generally not an ideal load distribution policy when working with distributed systems. Load
-balancing is best deployed across multiple nodes within the same cluster on the same site/data
-center.
+To address a very small subset of use cases, namely where a global load balancer directs client traffic across data centers/sites, where the inter-cluster replication architecture might be too slow, you have the option to enable an additional, more real-time replication mode where changes can be pushed directly to intended targets. For example, an update made by a client to one data center might not be replicated to other data centers in time for the client to immediately read the change, if the read request it sent to a different data center than the update was. This is generally not an ideal load distribution policy when working with distributed systems. Load balancing is best deployed across multiple nodes within the same cluster on the same site/data center.
 
-In any event, to address scenarios like this, a push replication mode can be used to send the changes directly to the intended targets. The targets must be other RadiantOne servers defined
-as LDAP data sources. For more details on Push Mode Replication, please see the RadiantOne Deployment and Tuning Guide.
+In any event, to address scenarios like this, a push replication mode can be used to send the changes directly to the intended targets. The targets must be other RadiantOne servers defined as LDAP data sources. For more details on Push Mode Replication, please see the RadiantOne Deployment and Tuning Guide.
 
-If push mode replication is enabled, the clusters that are participating in replication can be
-viewed in the table in the Push Mode Replication section. The table lists, for each store, the
-clusters involved in replication. The source cluster, target cluster and connectivity status
-between them is shown.
+If push mode replication is enabled, the clusters that are participating in replication can be viewed in the table in the Push Mode Replication section. The table lists, for each store, the clusters involved in replication. The source cluster, target cluster and connectivity status between them is shown.
 
 #### Monitoring from the Server Control Panels
 
@@ -175,12 +140,12 @@ From the Server Control Panel -> Dashboard Tab, you can monitor the CPU, disk sp
 latency on the machine hosting RadiantOne, and the RadiantOne service memory and
 connections.
 
-><span style="color:red">**IMPORTANT NOTE – To use this feature, enable the cluster monitor at Main Control
-Panel > Settings > Logs > Clustermonitor.**
+>[!warning]
+>To use this feature, enable the cluster monitor at Main Control Panel > Settings > Logs > Clustermonitor.
 
 ![An image showing monitoring resources from the server control panel ](Media/Image1.3.jpg)
 
-Figure 1. 3 : Monitoring Resources from the Server Control Panel
+Figure 1.3: Monitoring Resources from the Server Control Panel
 
 Alerts can be configured for memory, connections, disk space and disk latency from the Main
 Control Panel > Settings tab > Monitoring > Standard Alerts.
@@ -192,15 +157,14 @@ To manage alerts:
 3. Define the connection threshold in the Connections section.
 4. Define the disk space and disk latency thresholds in the Disk Alerts section.
 
-![An image showing configuring standard alerts from the Main Control panel ](Media/Image1.4.jpg)
+    ![An image showing configuring standard alerts from the Main Control panel ](Media/Image1.4.jpg)
 
-Figure 1. 4 : Configuring Standard Alerts from the Main Control Panel
+    Figure 1.4: Configuring Standard Alerts from the Main Control Panel
 
 5. File alerts are enabled by default. If SMTP settings are configured in the Monitoring -> Email Alert Settings section you can also use the Email Alert output.
 6. Click Save.
 
-To invoke actions other than generating a file or sending an email, you can create a custom
-script that is invoked when an alert is triggered.
+To invoke actions other than generating a file or sending an email, you can create a custom script that is invoked when an alert is triggered.
 
 To enable an alert script:
 
@@ -208,9 +172,9 @@ To enable an alert script:
 2. Expand the Advanced section.
 3. In the Alert Script field, enter the pathname to your script file (.bat file on Windows, .sh on Unix systems).
 
-![An image showing enabling an alert script ](Media/Image1.5.jpg)
+    ![An image showing enabling an alert script ](Media/Image1.5.jpg)
 
-Figure 1. 5 : Enabling an Alert Script from the Main Control Panel
+    Figure 1.5: Enabling an Alert Script from the Main Control Panel
 
 4. Click Save.
 
@@ -229,9 +193,8 @@ To modify your custom script to output these alert descriptions:
 1. Open your custom script in a text editor such as Notepad.
 2. Append the script. The following example (Windows systems) calls for all four arguments and generates a text file called “alerts”.
 
-```sh
-echo %1 %2 %3 %4 >>C:\radiantone\vds\alerts.txt
-```
+`echo %1 %2 %3 %4 >>C:\radiantone\vds\alerts.txt`
+
 3. Save the file.
 4. Navigate in the file system to the file location and open the file. An example is shown below.
 
@@ -256,12 +219,7 @@ RadiantOne including:
 
 The Processing Activity Details section shows how many operations are waiting to be
 processed, how many operations are currently being executed in addition to the maximum
-working threads available and peak worker threads used. This allows you to see the load on the
-server in terms of working threads. If you are consistently seeing peak working threads close to
-the max working threads number, you should possibly increase the max working threads or
-number of processors (depending on the processing capabilities of the machine RadiantOne is
-deployed on). This may also indicate that you need to scale out and deploy a new machine (e.g.
-add a cluster node).
+working threads available and peak worker threads used. This allows you to see the load on the server in terms of working threads. If you are consistently seeing peak working threads close to the max working threads number, you should possibly increase the max working threads or number of processors (depending on the processing capabilities of the machine RadiantOne is deployed on). This may also indicate that you need to scale out and deploy a new machine (e.g. add a cluster node).
 
 ![An image showing monitoring connections and processing activity ](Media/Image1.7.jpg)
 
@@ -269,20 +227,17 @@ Figure 1. 7 : Monitoring Connections and Processing Activity from the Server Con
 
 ##### RadiantOne Universal Directory (HDAP) Status
 
-Store status (including number of entries, index size, revision, and search and write operations)
-can be monitored from the Server Control Panel > Usage & Activity tab > Universal Directory Status section.
+Store status (including number of entries, index size, revision, and search and write operations) can be monitored from the Server Control Panel > Usage & Activity tab > Universal Directory Status section.
 
-To filter the stores displayed, click on gear icon and then click Select Filters. Select the stores to
-display and click OK. Click OK to exit the settings.
+To filter the stores displayed, click on gear icon and then click Select Filters. Select the stores to display and click OK. Click OK to exit the settings.
 
 ![An image showing the ](Media/Image1.8.jpg)
 
-Figure 1. 8 : Monitoring RadiantOne Universal Directory Stores from the Server Control Panel
+Figure 1.8: Monitoring RadiantOne Universal Directory Stores from the Server Control Panel
 
 ###### Resetting Peak Operations
 
-To reset the peak operations without restarting the RadiantOne service, you can use the following (assuming the service is listening on LDAP port 2389 and the super user password is
-“password”):
+To reset the peak operations without restarting the RadiantOne service, you can use the following (assuming the service is listening on LDAP port 2389 and the super user password is “password”):
 
 #ldapsearch -h host -p 2389 -D "cn=directory manager" -w "password" -b
 "action=resethdapactivityinfos,cn=monitor" (objectclass=*)
@@ -327,27 +282,28 @@ To configure alerts for data source availability:
 1. In the Main Control Panel go to Settings Tab -> Monitoring section > Standard Alerts sub-section.
 2. In the Data Sources section, there is the option to enable/disable alerts when a data source is disconnected (unreachable).
 
-![An image showing configurating a data source](Media/Image1.11.jpg)
+    ![An image showing configurating a data source](Media/Image1.11.jpg)
 
-Figure 1. 11 : Configuring a Data Source Alert from the Main Control Panel
+    Figure 1.11: Configuring a Data Source Alert from the Main Control Panel
 
 3. Define the interval to check the data source availability. The default is 120 seconds.
 4. File alerts are enabled by default. If SMTP settings are configured in the Monitoring > Email Alert Settings section you can also use the Email Alert output.
 5. Click the field next to “Data sources to monitor:” and select a data source from the drop-down menu. The vds data source is selected by default and is used to monitor the RadiantOne service and alert when the service is stopped or started.
 
-![An image showing selecting a data source to monitor ](Media/Image1.12.jpg)
+    ![An image showing selecting a data source to monitor ](Media/Image1.12.jpg)
 
-Figure 1. 12 : Selecting a Data Source to Monitor
+    Figure 1. 12 : Selecting a Data Source to Monitor
 
 6. Verify that the data source name is displayed in the “Data sources to monitor” field.
 7. Click Save.
 
 ![An image showing a data source to monitor](Media/Image1.13.jpg)
 
-Figure 1. 13 : Example of a Data Source to Monitor
+Figure 1.13: Example of a Data Source to Monitor
 
->**Note – To disable alerts for a data source, click the X next to the data source
-name in the Data Source to monitor field, which removes it from the list.**
+>[!note]
+>To disable alerts for a data source, click the X next to the data source
+name in the Data Source to monitor field, which removes it from the list.
 
 ##### Network Latency
 
@@ -356,29 +312,23 @@ Server Control Panel -> Usage & Activity tab -> Network Latency section.
 
 ![An image showing monitoring network latency](Media/Image1.14.jpg)
 
-Figure 1. 14 : Monitoring Network Latency Between RadiantOne Nodes
+Figure 1.14: Monitoring Network Latency Between RadiantOne Nodes
 
 #### Alerts
 
-Alerts associated with activities monitored from the Control Panels are configured from the Main
-Control Panel -> Settings tab -> Monitoring section and are tied to the Task Scheduler which
-must be running. The status of the Task Scheduler can be seen on the Tasks tab in the Server
-Control Panel associated with the current leader node.
+Alerts associated with activities monitored from the Control Panels are configured from the Main Control Panel -> Settings tab -> Monitoring section and are tied to the Task Scheduler which must be running. The status of the Task Scheduler can be seen on the Tasks tab in the Server Control Panel associated with the current leader node.
 
-><span style="color:red">**IMPORTANT NOTES – For alerts that leverage data collectors, it is important to note
-that some properties within data collectors require the RadiantOne service to be running to get status information. If you have configured custom alerts that use properties in a data collector that require the RadiantOne service to be running, andthe service stops, no alerts are sent. Be mindful of this when using data collectors in custom alerts.**
+>[!warning]
+>For alerts that leverage data collectors, it is important to note that some properties within data collectors require the RadiantOne service to be running to get status information. If you have configured custom alerts that use properties in a data collector that require the RadiantOne service to be running, andthe service stops, no alerts are sent. Be mindful of this when using data collectors in custom alerts.
 
 RadiantOne offers standard alerts and custom alerts. Standard alerts cover the recommended
 minimum monitoring for the RadiantOne components and are pre-configured by default. Custom
 alerts allow you to define monitoring rules for all aspects of RadiantOne not addressed by a
-standard alert. Custom alerts are highly specialized and require services from Radiant Logic to
-setup. Please contact support@radiantlogic.com for details.
+standard alert. Custom alerts are highly specialized and require services from Radiant Logic to setup. Please contact support@radiantlogic.com for details.
 
 ##### Standard Alerts
 
-For standard alerts, the default alert output is a file, but you can easily add email alerts to the
-configuration. When these alerts are activated, they are also displayed on the Main Control
-Panel’s Dashboard tab.
+For standard alerts, the default alert output is a file, but you can easily add email alerts to the configuration. When these alerts are activated, they are also displayed on the Main Control Panel’s Dashboard tab.
 
 This section describes the aspects addressed by standard alerts.
 
@@ -388,8 +338,7 @@ A [file alert](#file-alert-settings), when the RadiantOne service’s memory usa
 These settings can be changed from the Main Control Panel -> Settings tab -> Monitoring
 section -> Standard Alerts. To change the memory threshold, slide the bar in the Memory
 section to the needed amount. Define the interval to check the memory (default is 120 seconds).
-The default alert output is File Alert, but if SMTP settings are configured in the Monitoring > Email Alert Settings section you can also use the Email Alert output. Click the Save button when
-you are finished making changes.
+The default alert output is File Alert, but if SMTP settings are configured in the Monitoring > Email Alert Settings section you can also use the Email Alert output. Click the Save button when you are finished making changes.
 
 ###### Connections to RadiantOne
 
@@ -431,25 +380,16 @@ Alert, but if SMTP settings are configured in the Monitoring > Email Alert Setti
 A file alert, when the disk latency on the RadiantOne machine reaches 100ms, is enabled by
 default. These settings can be changed from the Main Control Panel -> Settings tab ->
 Monitoring section -> Standard Alerts. To change the disk latency, enter a threshold (in
-milliseconds). Define the interval to check the disk latency (default is 120 seconds). The default
-alert output is File Alert, but if SMTP settings are configured in the Monitoring -> Email Alert
-Settings section you can also check the Email Alert output. Click the Save button when you are
-finished making changes.
+milliseconds). Define the interval to check the disk latency (default is 120 seconds). The default alert output is File Alert, but if SMTP settings are configured in the Monitoring -> Email Alert Settings section you can also check the Email Alert output. Click the Save button when you are finished making changes.
 
 ###### Processing Load on RadiantOne
 
-Alerts based on RadiantOne processing load are pre-configured, but not enabled by default. If
-you would like to receive an alert when the RadiantOne processing queues reach a certain
-threshold, from the Main Control Panel -> Settings tab -> Monitoring section -> Standard Alerts,
-slide the bars for processing queues and internal queues to the threshold amount. Check the
-“Enable processing queues alerts” option. Click the Save button when you are finished.
+Alerts based on RadiantOne processing load are pre-configured, but not enabled by default. If you would like to receive an alert when the RadiantOne processing queues reach a certain
+threshold, from the Main Control Panel -> Settings tab -> Monitoring section -> Standard Alerts, slide the bars for processing queues and internal queues to the threshold amount. Check the “Enable processing queues alerts” option. Click the Save button when you are finished.
 
 ##### Custom Alerts
 
-Custom alerts allow you to define monitoring rules for all aspects of RadiantOne not addressed
-by a standard alert. The RadiantOne aspects that can be used in custom alerts are described in
-[data collectors](#data-collectors). Custom alerts are highly specialized and generally require services from Radiant Logic to setup. Please contact support@radiantlogic.com for details. When these alerts
-are activated, they are also displayed on the Main Control Panel’s Dashboard tab.
+Custom alerts allow you to define monitoring rules for all aspects of RadiantOne not addressed by a standard alert. The RadiantOne aspects that can be used in custom alerts are described in [data collectors](#data-collectors). Custom alerts are highly specialized and generally require services from Radiant Logic to setup. Please contact support@radiantlogic.com for details. When these alerts are activated, they are also displayed on the Main Control Panel’s Dashboard tab.
 
 All custom alerts defined appear on the Main Control Panel > Settings tab > Monitoring section > Custom Alerts section.
 
@@ -1758,17 +1698,13 @@ changed if advised by Radiant Logic.
 
 ### Cluster State
 
-You can use <RLI_HOME>/bin/advanced/cluster.bat (.sh on Linux) with the list option to return
-a table of information about the cluster nodes. This includes the hostname, cloudID,
-RadiantOne Service status (ON/OFF), RadiantOne node leader status (true for the leader node.
-False indicates that the node is a follower), ZooKeeper server ID, ZooKeeper server status
-(ON/OFF), ZooKeeper Server leader status (true for the ZooKeeper leader node. False for all
-non-leader nodes). An example is shown below for a 3-node cluster.
+You can use <RLI_HOME>/bin/advanced/cluster.bat (.sh on Linux) with the list option to return a table of information about the cluster nodes. This includes the hostname, cloudID, RadiantOne Service status (ON/OFF), RadiantOne node leader status (true for the leader node.
+
+False indicates that the node is a follower), ZooKeeper server ID, ZooKeeper server status (ON/OFF), ZooKeeper Server leader status (true for the ZooKeeper leader node. False for all non-leader nodes). An example is shown below for a 3-node cluster.
 
 ![An image showing ](Media/ClusterState.jpg)
 
-To return just the table info, and avoid other logged output, pass RLI_CLI_VERBOSE=false
-before the command, like shown below.
+To return just the table info, and avoid other logged output, pass RLI_CLI_VERBOSE=false before the command, like shown below.
 
 
 C:\radiantone\vds\bin\advanced>set RLI_CLI_VERBOSE=false
