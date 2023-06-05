@@ -20,9 +20,7 @@ To launch the Main Control Panel on Windows, navigate to <RL_HOME>/bin and run o
 
 To launch the Main Control Panel on UNIX/Linux, after starting the Jetty web server that hosts the Control Panel application, open an Internet Browser and use the following URL:
 
-```
-http://<server>:7070/main
-```
+`http://<server>:7070/main`
 
 The default HTTP port for the web server hosting the control panels is 7070, and the default TLS port is 7171 (you can set the ports during the RadiantOne install).
 
