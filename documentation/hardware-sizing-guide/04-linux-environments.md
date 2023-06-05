@@ -21,9 +21,7 @@ For most deployments, the default is too low. It is recommended to increase it t
 
 For Linux, the number of file descriptors should be set to at least 65536. Check the amount with:
 
-```
-$ ulimit -n
-```
+`$ ulimit -n`
 
 Confirm that ulimit -v and -u return unlimited to prevent problems with the amount of virtual
 address space that can be allocated.
@@ -33,11 +31,9 @@ Also, set shell limits for the Max Number of Processes. These steps are describe
 1. As root, open the system's /etc/security/limits.conf file.
 2. Add two lines that set the hard and soft limits for the number of processes (nproc) for the Directory Server user. The soft limit sets how many processes the user has available by default; the user can manually adjust that setting until they hit the hard limit.
 
-```
-user soft nproc 2047
+`user soft nproc 2047`
 
-user hard nproc 16384
-```
+`user hard nproc 16384`
 
 >[!warning]
 >Do not set the hard limit for the Directory Server user equal to (or higher than) the maximum number of file descriptors assigned to the system itself in /proc/sys/fs/file-max. If the hard limit is too high and the user users all of those file descriptors, then the entire system runs out of file descriptors.

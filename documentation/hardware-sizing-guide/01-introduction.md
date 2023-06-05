@@ -3,7 +3,7 @@ title: Hardware Sizing Guide
 description: Hardware Sizing Guide
 ---
 
-# Introduction Contents
+# Introduction
 
 Hardware sizing is a critical component of directory service planning and deployment. When sizing hardware, both the amount of memory and the amount of local disk space available are of key importance.
 

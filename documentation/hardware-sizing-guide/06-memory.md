@@ -44,11 +44,9 @@ In addition to the items listed in the table, to estimate approximate machine me
 
 - If your deployment contains a lot of virtual views (a lot of metadata), ZooKeeper can run out of memory, especially during periods where additional cluster nodes are added and the existing configuration must be synchronized to the new nodes. To check the size of the ZooKeeper data, view the folder size located at <RLI_HOME>/apps/zookeeper/data/version-2. For large amounts of metadata (e.g. 3GB), ZooKeeper memory should be increased (e.g. -Xmx5g would increase it to 5GB). ZooKeeper memory size can be set in <RLI_HOME>/bin/advanced/runZooKeeperBlocking.bat file. An example of setting the memory to 5GB is shown below:
 
-```
-"%RLI_JHOME%\bin\java" –Xmx5g -cp "%ZOO_CP%"
-"com.rli.zookeeper.commands.ZooKeeperServerWrapper"
-"%RLI_RHOME%\apps\zookeeper\conf\zoo.cfg"
-```
+`"%RLI_JHOME%\bin\java" –Xmx5g -cp "%ZOO_CP%"`
+<br> `"com.rli.zookeeper.commands.ZooKeeperServerWrapper"`
+<br> `"%RLI_RHOME%\apps\zookeeper\conf\zoo.cfg"`
 
 - The Task Scheduler requires approximately 1 GB to schedule tasks. The actual tasks themselves each run inside their own JVM. For cache initialization containing a large number of entries (e.g. 1 million) it is recommended you manually define the memory used by the task to at least 8GB. This speeds up the cache initialization. For more details on Tasks and how to tune the JVM, please see the System Administration Guide.
 
