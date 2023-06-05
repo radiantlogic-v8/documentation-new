@@ -7,4 +7,5 @@ description: Azure Cloud Installation Guide
 
 Radiant Logic offers templates in the Azure Marketplace to assist with deploying RadiantOne in a Virtual Network (VNet).
 
->**Note – to enroll in email notifications related to template updates, please go to https://support.radiantlogic.com and sign up.**
+>[!note]
+>To enroll in email notifications related to template updates, please go to https://support.radiantlogic.com and sign up.
