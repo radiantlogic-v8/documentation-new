@@ -3,9 +3,7 @@ title: ZooKeeper Install Guide
 description: ZooKeeper Install Guide
 ---
 
-# RadiantOne ZooKeeper Install Guide
-
-## Chapter 1: Introduction
+# Introduction
 
 Apache ZooKeeper is a centralized service for maintaining configuration information across a RadiantOne cluster. Although RadiantOne comes bundled with ZooKeeper to simplify installation in Dev/QA environments, it is discouraged to use this architecture in production. Shutting down a redundant RadiantOne server will also shut down ZooKeeper on this server. Because a ZooKeeper ensemble must have a quorum of more than half its servers running at any given time, this can be a problem for cluster integrity and stability. The solution is to deploy ZooKeeper in a separate, external ensemble.
 
