@@ -118,7 +118,7 @@ Harness your identity data with intelligent integration to drive better business
   > [Monitoring](/monitoring-and-reporting-guide/01-monitoring)  
   > Learn how to monitor RadiantOne Global Synchronization and configure alerts for concerning activities.
   
-  > [Password Filter](/password-filter-guide/01-password-filter-guide)  
+  > [Password Filter](/password-filter-guide/01-overview)  
   > Learn how to use the Password Filter component to synchronization passwords from accounts in Active Directory to other directory targets.
   
 </section>
