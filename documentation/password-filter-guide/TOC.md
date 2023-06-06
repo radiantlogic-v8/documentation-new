@@ -1,6 +1,9 @@
 ---
-title: Password Filter Guide TOC
-description: Password Filter Guide TOC Description
+title: Password Filter Guide
+description: Password Filter Guide
 ---
 
-- [RadiantOne Password Filter Guide](01-password-filter-guide.md)
+- [Overview](01-overview.md)
+- [Configuring the Topology](02-configure-topology.md)
+- [Configure the Password Filter](03-configure-password-filter.md)
+- [Starting the Synchronization](04-start-synchronization.md)
