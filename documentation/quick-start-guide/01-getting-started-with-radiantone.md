@@ -28,26 +28,24 @@ You can also execute <RLI_HOME>\bin\openControlPanel.bat. This starts the web se
 
 If the Jetty web server is started, you can launch the Main Control Panel from an Internet Browser using the following URL:
 
-[http://<machine](http://<machine) name>:7070/main/login
+`[http://<machine](http://<machinename>:7070/main/login)`
 
 The default HTTP port for the web server hosting the control panel is 7070, the default SSL port is 7171 (you can set the ports during the RadiantOne install).
 
 Your default web browser opens the Main Control Panel in a new tab. You can log in using cn=directory manager as the user with the password you defined during the install.
 
-![An image showing ](Media/Image1.jpg)
+![Main Control Panel Login](Media/Image1.jpg)
 
 Figure 1: Main Control Panel Login
 
 ### Starting RadiantOne LDAP and HTTP Services
 
-You can start the RadiantOne LDAP and HTTP services from the Main Control Panel. The Dashboard tab shows the server status. From the ![An image showing ](Media/server-start.jpg) drop-down menu, select to start the service. You can stop or restart the service on this screen unless you have installed RadiantOne as a service in which case you must start the service using the methods available on the host operating system. The Dashboard tab displays server statistics when the RadiantOne LDAP service is running.
+You can start the RadiantOne LDAP and HTTP services from the Main Control Panel. The Dashboard tab shows the server status. From the ![server start](Media/server-start.jpg) drop-down menu, select to start the service. You can stop or restart the service on this screen unless you have installed RadiantOne as a service in which case you must start the service using the methods available on the host operating system. The Dashboard tab displays server statistics when the RadiantOne LDAP service is running.
 
 >[!warning]
->For test environments and when initially setting up a cluster, it is best to have control over how and when the RadiantOne service starts. Therefore, it is recommended to not configure it as a Windows/Daemon service until you have your environment successfully configured. After, you can configure it to start/stop as a Windows service or Linux Daemon.
+>For test environments and when initially setting up a cluster, it is best to have control over how and when the RadiantOne service starts. Therefore, it is recommended to not configure it as a Windows/Daemon service until you have your environment successfully configured. After, you can configure it to start/stop as a Windows service or Linux Daemon. <br> For details on configuring and starting RadiantOne as a Windows service or Linux Daemon, please see the RadiantOne Deployment and Tuning Guide.
 
-><span style="color:red">**For details on configuring and starting RadiantOne as a Windows service or Linux Daemon, please see the RadiantOne Deployment and Tuning Guide.**
-
-![An image showing ](Media/Image2.jpg)
+![Overview Section of the Dashboard Tab](Media/Image2.jpg)
 
 Figure 2: Overview Section of the Dashboard Tab
 
@@ -59,7 +57,7 @@ For details on the usage of each tab in the Main Control Panel, please see the R
 
 Although there are many ways to create virtual views, the easiest way to get started with RadiantOne is by using the Directory Tree Wizard. This wizard can be launched from the Wizards tab in the Main Control Panel and allows you to quickly aggregate multiple heterogeneous backend data sources below a common root naming context.
 
-![An image showing ](Media/Image3.jpg)
+![Building Virtual Views](Media/Image3.jpg)
 
 There are other wizards available that are focused on more specific use cases (e.g. identity correlation, building dynamic groups). For details on the usage of each wizard, please see the RadiantOne Architect Guide.
 
