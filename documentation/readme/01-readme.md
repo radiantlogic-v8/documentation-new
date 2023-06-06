@@ -3,19 +3,17 @@ title: Readme
 description: Readme
 ---
 
-# RadiantOne Readme
-
-## Installation
+# Installation
 
 For installation steps, see the Installation Guide located in  <RLI_HOME>\Documentation\GettingStarted.
 
-## Getting Started
+# Getting Started
 
 The Quick Start Guide, located in <RLI_HOME>\Documentation\GettingStarted, describes how to start the RadiantOne services and access the Main Control Panel. Details about the included samples can also be found here. If you chose a custom install, the sample files are not included.
 
 For an introduction to the RadiantOne components and some common use cases, see the Architect Guide located in <RLI_HOME>\Documentation\GettingStarted.
 
-## Getting Support
+# Getting Support
 
 Before contacting Customer Support, please make sure you have the following information:
 
@@ -28,12 +26,8 @@ Technical support can be reached using any of the following options:
 
 - E-mail: support@radiantlogic.com
 - Website: https://support.radiantlogic.com
-- Phone: 415-209-6800
-- Toll-Free Phone: 1-877-727-6442
-- Fax: 415-798-5697
 
-
-## RadiantOne Documentation
+# RadiantOne Documentation
 
 Documentation is included with the RadiantOne installation and is located at <RLI_HOME>/Documentation.
 
