@@ -15,24 +15,27 @@ The Global Identity Viewer, as a client to the RadiantOne service, supports two-
 >Two-factor authentication is not required for the RadiantOne super user account (e.g. cn=directory manager).
 
 1. Create a custom data source that defines the connection the web service for token code validation.
+
 2. Configure a Custom Authentication Provider (Settings > Interception > Custom Authentication Provider) that indicates the base DN where accounts that will be logging into the Global Identity Viewer are located (e.g. cn=config), reference to the custom data source created in step 1, and other necessary parsing criteria.
 
-![An image showing ](Media/Image3.1.jpg)
+    ![Custom Authentication Provider Example](Media/Image3.1.jpg)
 
-Figure 1: Custom Authentication Provider Example
+    Figure 1: Custom Authentication Provider Example
 
 3. Ensure the users of the Global Identity View have an attribute that contains their unique token ID. In the example shown above, the token ID is set in the carLicense attribute.
+
 4. Restart the RadiantOne service and Jetty that hosts the Insights Reports and Administration applicatin. If a cluster is deployed, restart them on all nodes.
 
-![An image showing ](Media/Image3.2.jpg)
+    ![Token ID Defined for an Administrator Example](Media/Image3.2.jpg)
 
-Figure 2: Token ID Defined for an Administrator Example
+    Figure 2: Token ID Defined for an Administrator Example
 
 To access the Global Identity Viewer, navigate in a web browser as follows.
 
 `https://<hostname>:7171/portal/login`
 
 Examples include the following.
+
 `https://vdservername:7171/portal/login`
 
 `https://10.11.12.10:7171/portal/login`
@@ -40,7 +43,7 @@ Examples include the following.
 >[!note]
 >If RadiantOne is deployed in a cluster, you can access the Insights, Reports and Administration Console on any node.
 
-![An image showing ](Media/Image3.3.jpg)
+![The RadiantOne Insights, Reports and Administration Console Login Page](Media/Image3.3.jpg)
 
 Figure 3: The RadiantOne Insights, Reports and Administration Console Login Page
 
@@ -52,13 +55,13 @@ If you have more than one Global Identity Builder project, a drop-down list appe
 
 By default, the first 100 entries from the global profile are returned. Click on one entry and the profile of the identity is displayed on the Global Profile tab. Additional tabs are displayed to represent each underlying data source the identity is found in. The names of the additional tabs correspond to the names of the identity sources defined in the Global Identity Builder project.
 
-![An image showing ](Media/Image3.4.jpg)
+![Example Global Profile Identity](Media/Image3.4.jpg)
 
 Figure 4: Example Global Profile Identity
 
 Select a tab to view the identity’s attributes and group membership contained in that particular source. In the example below, the user Brian Carmen’s account in the Active Directory Partner Domain (identified as identity source adpartnerdomain) is displayed. Specific attributes are displayed based on the template associated with the data source. This particular template returns the names of the groups Brian is a member of as the Roles attribute (e.g. Support and Managers).
 
-![An image showing ](Media/Image3.5.jpg)
+![Example of Viewing an Account in a Specific Identity Source](Media/Image3.5.jpg)
 
 Figure 5: Example of Viewing an Account in a Specific Identity Source
 
@@ -83,7 +86,7 @@ Group | Name | cn
 
 If the data in a virtual view does not match the object classes listed in the table above, a general template is used to display the attributes in a basic table format using the exact source attribute name(s) and value(s). An example is shown below.
 
-![An image showing ](Media/Image3.6.jpg)
+![Default Generic Template](Media/Image3.6.jpg)
 
 Figure 6: Default Generic Template
 
@@ -98,7 +101,7 @@ The Editor View page currently contains two template types. To access these temp
 
 These templates, available in a dropdown menu on the Editor View page, are described below.
 
-![An image showing ](Media/Image3.7.jpg)
+![The Editor View Page’s Template Drop - down Menu](Media/Image3.7.jpg)
 
 Figure 7: The Editor View Page’s Template Drop - down Menu
 
@@ -142,21 +145,21 @@ To edit a display template:
 1. Select a global profile project from the drop-down menu and click Confirm.
 
 >[!note]
->If you have only one global profile project, skip this step.**
+>If you have only one global profile project, skip this step.
 
 2. Select a Global Profile entry from the table on the left.
 
 3. Click the Edit Templates button. The Editor View is displayed.
 
->[!note]
->See the Templates section for information on requirements for template access.
+    >[!note]
+    >See the Templates section for information on requirements for template access.
 
 4. From the drop-down menu, select display.
 5. Make changes to the template as required.
 6. If you modify label options, click Save Options.
 
->[!note]
->If you do not make label option changes, skip this step.
+    >[!note]
+    >If you do not make label option changes, skip this step.
 
 7. Click Save.
 8. Click Back to Global Profile. Changes to the Profile Info section are displayed.
@@ -167,27 +170,27 @@ To edit a modify template and allow attribute values to be updated in the Global
 
 1. Select a global profile project from the drop-down menu and click Confirm.
 
->[!note]
->If you have only one global profile project, skip this step.
+    >[!note]
+    >If you have only one global profile project, skip this step.
 
 2. Select a data source tab.
 
-![An image showing ](Media/Image3.8.jpg)
+    ![Selecting a Data Source Tab](Media/Image3.8.jpg)
 
-Figure 8: Selecting a Data Source Tab
+    Figure 8: Selecting a Data Source Tab
 
 3. Click the Edit Templates button. The Editor View is displayed.
 
->[!note]
->See the [Templates](#templates) section for information on requirements for template access.**
+    >[!note]
+    >See the [Templates](#templates) section for information on requirements for template access.
 
 4. From the drop-down menu, select modify.
 5. Click the attribute that you want to make editable.
 6. In the Label Options section on the right, check the Editable check box.
 7. Click Save Options.
 
->[!note]
->iI you do not make label option changes, skip this step.
+    >[!note]
+    >If you do not make label option changes, skip this step.
 
 8. Click Save.
 9. Click Back to Global Profile.
@@ -196,9 +199,9 @@ Figure 8: Selecting a Data Source Tab
 12. Verify that Template View is selected.
 13. Click the Modify button in the upper-left corner of the Profile Info pane. The attribute value     fields in the Profile Info section become editable.
 
-![An image showing ](Media/Image3.9.jpg)
+    ![Editing Profile Attributes](Media/Image3.9.jpg)
 
-Figure 9: Editing Profile Attributes
+    Figure 9: Editing Profile Attributes
 
 14. Make your changes and click Save.
 
@@ -223,27 +226,27 @@ To edit a label:
     <br> Font Style (bold, italic, underlined)
     <br> Font Position (left, middle, right)
 
-![An image showing ](Media/Image3.10.jpg)
+    ![Label Settings](Media/Image3.10.jpg)
 
-Figure 10: Label Settings
+    Figure 10: Label Settings
 
->[!note]
->The Editable checkbox is available only for Modify Templates. For more information on Modify Templates, see the Modify Templates section.
+    >[!note]
+    >The Editable checkbox is available only for Modify Templates. For more information on Modify Templates, see the Modify Templates section.
 
 7. (Optional) Under Icon, check the “use an icon” box to display an icon next to the attribute label on the template.
 8. Click the box below the “use an icon” checkbox.
 9. Click an icon or, to search for an icon, enter text in the Choose an Icon field.
 
->[!note]
->To select another icon, click the box below the “use an icon” box and delete the
-descriptive text above the selected icon.
+    >[!note]
+    >To select another icon, click the box below the “use an icon” box and delete the descriptive text above the selected icon.
 
 10. In the Add custom CSS class(es) (optional) field, specify the custom class(es) you want applied to the label in a comma-separated list.
-    
->[!note]
->If you specify custom CSS classes here, you must also define the style for that class on the CSS tab.
-11. Click Save Options.
-12. Click Save.
+
+    >[!note]
+    >If you specify custom CSS classes here, you must also define the style for that class on the CSS tab.
+
+11.  Click Save Options.
+12.  Click Save.
 
 #### Removing Labels
 
@@ -263,13 +266,13 @@ To edit the image settings:
 2. Select the source attribute that contains the image from the drop-down list.
 3. (Optional) Select the position of the image (left, middle, right).
 
-![An image showing ](Media/Image3.11.jpg)
+![Image Settings](Media/Image3.11.jpg)
 
 Figure 11: Image Settings
 
 4. (Optional) To specify custom dimensions for the image, uncheck the Use Default Size box and enter the image dimensions (in pixels) in the Height and Width fields. If “Use Default Size” is checked, the Global Identity Viewer resizes the image automatically. If “Use Default Size” is unchecked, larger images may be truncated. In either case, browser window size and screen resolution factor into how images display.
 
-![An image showing ](Media/Image3.12.jpg)
+![Specifying Custom Image Dimensions](Media/Image3.12.jpg)
 
 Figure 12: Specifying Custom Image Dimensions
 
@@ -296,7 +299,7 @@ To edit the map settings:
 1. Click the map icon in the template area.
 2. Select the source attribute that contains the location that can be pinpointed on the map (e.g. l).
 
-![An image showing ](Media/Image3.13.jpg)
+![Map Settings](Media/Image3.13.jpg)
 
 Figure 13: Map Settings
 
@@ -311,7 +314,7 @@ To remove a table, click **Delete** next to the map component on the template an
 
 Columns allow you to create different sections to display content. The options are 1, 2 or 3 columns. The example template shown below has 3 columns. The first column contains an image. The second column contains a list of labels for displaying attributes. The third column contains a map.
 
-![An image showing ](Media/Image3.14.jpg)
+![Example Template with 3 Columns](Media/Image3.14.jpg)
 
 Figure 14: Example Template with 3 Columns
 
@@ -325,7 +328,7 @@ To remove all components and settings from a template, click Clear.
 
 ### Deleting Templates
 
-To delete a template, click **Delete** . This option deletes both the display template and modify template for the selected source and object class. For more information on templates, see the [Templates](#templates) section.
+To delete a template, click **Delete**. This option deletes both the display template and modify template for the selected source and object class. For more information on templates, see the [Templates](#templates) section.
 
 If an entry isn’t associated with a custom template, a default template is used.
 
@@ -340,13 +343,13 @@ Searches performed in the Global Identity Viewer are performed against the data 
 >[!note]
 >the logged in user must be associated with a role that has either the globalidviewer-write or globalidviewer-designer privilege in order to save, modify or delete search queries.
 
-![An image showing ](Media/Image3.15.jpg)
+![Search Option](Media/Image3.15.jpg)
 
 Figure 15: Search Option
 
 The search results page displays the results from the query in a list on the left side. The result can be either identities and/or groups that match the search criteria. When searching against the global profile data source, only identities are returned in the search result. Groups are not stored in the global profile list. To search for groups, select a data source from the drop-down list that contains the group entries. An example of searching for groups is shown below. The Description contains information about what the members of the group are authorized to do. The Managed By contains the identity of the person responsible for the group. The Members contains a list of names of users that belong to the group. This information is displayed based on the default template associated with the group object class.
 
-![An image showing ](Media/Image3.16.jpg)
+![Search Results](Media/Image3.16.jpg)
 
 Figure 16: Search Results
 
@@ -359,28 +362,27 @@ To limit the number of profiles returned in your search:
 
 ### Basic Queries
 
-A basic query allows either an LDAP filter (using the correct LDAP filter syntax) or full-text
-search.
+A basic query allows either an LDAP filter (using the correct LDAP filter syntax) or full-text search.
 
 To define a new basic query:
 
 1. Click **Star**. The window displays a list of saved queries and allows for creating new queries and editing existing queries.
 2. Click the New button next to “basic queries”.
 
-![An image showing ](Media/Image3.17.jpg)
+![Saved Queries](Media/Image3.17.jpg)
 
 Figure 17: Saved Queries
 
 3. Enter a name for the query.
 
->[!note]
->It is recommended that query name indicate the parameters of the search (e.g. users located in Dallas in the AD Partner Domain).
+    >[!note]
+    >It is recommended that query name indicate the parameters of the search (e.g. users located in Dallas in the AD Partner Domain).
 
 4. Enter a query filter. This can be either an LDAP filter, or enter any value to invoke a full-text search.
 
-![An image showing ](Media/Image3.18.jpg)
+    ![Basic Query Editor](Media/Image3.18.jpg)
 
-Figure 18: Basic Query Editor
+    Figure 18: Basic Query Editor
 
 5. Click Save.
 
@@ -392,7 +394,7 @@ In the following example, the request contains the following full-text value: no
 
 The selected entry contains the value Novato in the Address attribute.
 
-![An image showing ](Media/Image3.19.jpg)
+![Example Search Results of a Full-text Search](Media/Image3.19.jpg)
 
 Figure 19: Example Search Results of a Full-text Search
 
@@ -405,7 +407,7 @@ In the following image, the following full-text is performed.
 
 `Seattle accounting`
 
-![An image showing ](Media/Image3.20.jpg)
+![Example Search Results of a Full-text Search](Media/Image3.20.jpg)
 
 Figure 20: Example Search Results of a Full-text Search
 
@@ -424,7 +426,7 @@ All entries where objectclass=inetorgperson and employeetype=intern are returned
 >[!warning]
 >Searches span across all user attributes from the underlying directory. This can be confusing because the template to display the results might not contain all attributes used in the search.
 
-![An image showing ](Media/Image3.21.jpg)
+!Example Search Results](Media/Image3.21.jpg)
 
 Figure 21: Example Search Results
 
@@ -437,20 +439,20 @@ To define an advanced query:
 1. Click.
 2. Click the New button next to “advanced queries”.
 
-![An image showing ](Media/Image3.22.jpg)
+    ![An image showing ](Media/Image3.22.jpg)
 
-Figure 22: Configuring Advanced Queries
+    Figure 22: Configuring Advanced Queries
 
 3. The Advanced Query Builder displays.
 
-![An image showing ](Media/Image3.23.jpg)
+    ![An image showing ](Media/Image3.23.jpg)
 
-Figure 23: Advanced Query Builder
+    Figure 23: Advanced Query Builder
 
 4. Enter a name for the query.
 
->[!note]
->It is recommended that query name indicate the parameters of the search (e.g. Groups located in Dallas).
+    >[!note]
+    >It is recommended that query name indicate the parameters of the search (e.g. Groups located in Dallas).
 
 5. Select the data source the query is applicable to. This can be the global profile list, or any identity source configured in the Global Identity Builder project.
 6. Select an attribute from the attribute drop-down menu.
@@ -460,15 +462,15 @@ Figure 23: Advanced Query Builder
 10. (conditional) If parameter is on, enter a display name for the attribute that will be requested.
 11. (optional) You can add or remove expressions and conditions. Each condition is a set of one or more expressions. To remove an expression, click the ![An image showing ](Media/button.jpg) button next to the expression.
 
-![An image showing ](Media/Image3.24.jpg)
+    ![An image showing ](Media/Image3.24.jpg)
 
-Figure 24: Adding Expressions and Conditions
+    Figure 24: Adding Expressions and Conditions
 
 12. The LDAP filter generated from the conditions is displayed at the bottom of the window. As you add expressions/conditions, a preview of the query results is shown on the right.
 
-![An image showing ](Media/Image3.25.jpg)
+    ![An image showing ](Media/Image3.25.jpg)
 
-Figure 25: Advanced Query Builder
+    Figure 25: Advanced Query Builder
 
 13. Click Save.
 
@@ -486,9 +488,9 @@ Figure 26: Saved Queries
 1. Click the **Star** button.
 2. Click the Edit button next to the query you want to edit.
 
-![An image showing ](Media/Image3.27.jpg)
+    ![An image showing ](Media/Image3.27.jpg)
 
-Figure 27: Editing a Saved Query
+    Figure 27: Editing a Saved Query
 
 3. Edit the filter.
 4. Click Save. To delete a query, click Edit, click Delete, and then click Yes to confirm the deletion.
@@ -508,7 +510,7 @@ For example, the following spoken-word search performed.
 The search returns entries that contain the value 728 as shown in the following image (e.g.
 phone attribute).
 
-![An image showing ](Media/Image3.28.jpg)
+![Example Result of Voice Search Query](Media/Image3.28.jpg)
 
 Figure 28: Example Result of Voice Search Query
 
@@ -524,11 +526,13 @@ Global Identity Viewer search results can be exported to a PDF, CSV, or JSON fil
 
 To generate a report containing Global Identity Viewer search results:
 
-1. (optional) Click the Export Settings button (![An image showing ](Media/Gear.jpg)). The Export Settings window displays.
+1. (optional) Click the Export Settings button (![gear icon](Media/Gear.jpg)). The Export Settings window displays.
+
 2. (optional) To limit the number of entries in the search results and the exported report, enter a value in the Size Limit field. A change to the size limit requires clicking Search, in order to take effect.
+
 3. (optional) To specify which attributes you want returned in your search, type an attribute name. Press enter after each attribute name. When the attribute name is surrounded by gray shading, this indicates that the attribute has been selected as an attribute to be returned in the report. In the following example, the attributes ou, employeetype, and have been selected to be returned in search results. When you’re finished entering return attributes, click Save.
 
-![An image showing ](Media/Image3.29.jpg)
+![Search Settings](Media/Image3.29.jpg)
 
 Figure 29: Search Settings
 
@@ -537,7 +541,7 @@ Figure 29: Search Settings
 
 6. Open the exported file.
 
-![An image showing ](Media/Image3.30.jpg)
+![Example of Exported Entries](Media/Image3.30.jpg)
 
 Figure 30: Example of Exported Entries
 
@@ -551,15 +555,15 @@ Global Identity Viewer search results can be exported to a JSON formatted file u
 
 ## Command Arguments
 
-- g `<project name>`
+- `g <project name>`
 
     [required] The name of the global identity project.
 
-- q `<query name>`
+- `q <query name>`
 
     [required] The name of the query to be executed.
 
-- p `<parameter>`
+- `p <parameter>`
 
     The parameter name and value. The parameter name and its value are separated in this argument by a colon. If multiple parameters are used, separate them with a space.
 
@@ -574,7 +578,7 @@ If your advanced query has a “parameter display name” defined, use this for 
 >[!note]
 >this argument is for advanced queries where the Parameter option is enabled. Refer to the Advanced Queries section for more information.**
 
-- f `<file name>`
+- `f <file name>`
 
 [required] The output file name. The format of the output data is JSON.
 
@@ -583,8 +587,7 @@ If your advanced query has a “parameter display name” defined, use this for 
 
 ## Example
 
-In the following example, a search is made for users located in Laredo and the results are saved
-into test.json.
+In the following example, a search is made for users located in Laredo and the results are saved into test.json.
 
 `global_id_viewer.bat -g myprofile -q Usersbylocation -p l:laredo -f c:/radiantone/test.json`
 
@@ -604,33 +607,30 @@ To configure a report:
 
 1. From the Global Profile View page, click the Configure Reports button. The Reports window displays.
 
->[!note]
->If you have already created reports, they are displayed here.
+    >[!note] If you have already created reports, they are displayed here.
 
 2. Click the New Report button. Step 1 of the Report Wizard displays.
 3. Enter a unique name for the report. The report file names are derived from this name. For example, a report named Users in Dayton would generate a report named users_in_dayton.pdf/csv/json.
    
->[!note]
->It is recommended that the report name indicate the report parameters (query, return attributes, frequency, etc.).
+    >[!note] It is recommended that the report name indicate the report parameters (query, return attributes, frequency, etc.).
 
 4. (optional) Describe the report. This description is displayed in the generated report.
 
-![An image showing ](Media/Image3.31.jpg)
+    ![An image showing ](Media/Image3.31.jpg)
 
-Figure 31: Step 1 of Report Wizard
+    Figure 31: Step 1 of Report Wizard
 
 5. Click Next. Step 2 – Query Selection is displayed.
 6. Select a saved query from the list of saved queries drop-down menu.
 
->[!note]
->if you need to create a query for a report, see [Basic Queries](#basic-queries) and [Advanced Queries](#advanced-queries).
+    >[!note] If you need to create a query for a report, see [Basic Queries](#basic-queries) and [Advanced Queries](#advanced-queries).
 
 7. To specify which attributes you want in your report, select an attribute from the Available Attributes table on the left and click the **Right Arrow** button. Attributes displayed in the Report Attributes table on the right are included in the report. You can select multiple attributes at once. To add all attributes to the report, click the **Double right-arrow** button. In the following example, the attributes cn, employeeNumber, l, mail, o, and ou are included in the report.
 
 >[!note]
 >To remove an attribute from the report, select an attribute from the table on the right and click the Left arrow button. To remove all attributes from the report, click the Double left-arrow button.
 
-![An image showing ](Media/Image3.32.jpg)
+![Query Selection and Returned Attributes](Media/Image3.32.jpg)
 
 Figure 32: Step 2 - Query Selection and Returned Attributes
 
@@ -649,7 +649,7 @@ Figure 32: Step 2 - Query Selection and Returned Attributes
 
 13. Click the Finish button.
 
-![An image showing ](Media/Image3.33.jpg)
+![Scheduling and Distribution](Media/Image3.33.jpg)
 
 Figure 33: Step 3 – Scheduling and Distribution
 
@@ -662,7 +662,7 @@ Figure 33: Step 3 – Scheduling and Distribution
 
 Reports that have been configured are displayed here. This page displays report creation dates, report status (scheduled, not scheduled, or finished), and which administrator created them. This page allows you to edit or delete existing reports, search for existing reports, create a new report, schedule a report, and stop a scheduled report.
 
-![An image showing ](Media/Image3.34.jpg)
+![The Reports Page](Media/Image3.34.jpg)
 
 Figure 34: The Reports Page
 
@@ -670,19 +670,19 @@ Editing Existing Reports
 
 To edit an existing report:
 
-1. From the Reports page, click the ![An image showing ](Media/yellow-icon.jpg) button. Step 1 of the Reports Wizard displays.
+1. From the Reports page, click the ![yellow-icon](Media/yellow-icon.jpg) button. Step 1 of the Reports Wizard displays.
 2. Make changes to the report as needed. Because all required parameters are already configured, you can advance or backtrack to any step in the Report Wizard by clicking the “Step...” buttons.
 3. When you have finished configuring the report, click Finish.
 
 **Report Scheduling**
 
-The Status column displays one of the following values: Scheduled, Not scheduled, and Finished. Reports can be scheduled or stopped from the Reports page. To stop a scheduled report, click the ![An image showing ](Media/stop-report.jpg) button in the Status column. To start a report that is not scheduled, click the ![An image showing ](Media/start-report.jpg) button.
+The Status column displays one of the following values: Scheduled, Not scheduled, and Finished. Reports can be scheduled or stopped from the Reports page. To stop a scheduled report, click the ![stop-report](Media/stop-report.jpg) button in the Status column. To start a report that is not scheduled, click the ![start-report](Media/start-report.jpg) button.
 
-To schedule a report that has finished, click the ![An image showing ](Media/yellow-icon.jpg) button. Advance to Step 3 – Scheduling and Distribution. Specify a report frequency and click **Finish**.
+To schedule a report that has finished, click the ![yellow-icon](Media/yellow-icon.jpg) button. Advance to Step 3 – Scheduling and Distribution. Specify a report frequency and click **Finish**.
 
 **Deleting Reports**
 
-To delete an existing report, click the report’s ![An image showing ](Media/delete-report.jpg) button. Click Yes to confirm the deletion.
+To delete an existing report, click the report’s ![delete-report](Media/delete-report.jpg) button. Click Yes to confirm the deletion.
 
 Searching for a Report
 
@@ -692,6 +692,6 @@ Viewing Generated Reports
 
 In a file explorer, navigate to <RLI_HOME>/logs/globalReports. Reports that have been generated are stored here. An example of a report is shown below.
 
-![An image showing ](Media/Image3.35.jpg)
+![Example Report](Media/Image3.35.jpg)
 
 Figure 35: Example Report

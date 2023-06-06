@@ -12,7 +12,7 @@ RadiantOne aggregates and links overlapping identities and addresses the complex
 >[!warning]
 >For assistance on using RadiantOne to integrate identities from disparate data sources, see the RadiantOne Global Identity Builder guide.
 
-![An image showing ](Media/Image1.1.jpg)
+![High Level Process](Media/Image1.1.jpg)
 
 Figure 1: High Level Process
 
