@@ -20,16 +20,16 @@ This command creates a new label node in a virtual tree hierarchy.
 
 Command Arguments:
 
-**`- parentdn <parentdn>`**
+`- parentdn <parentdn>`
 <br>[required] The DN of the parent of the new label.
 
-**`- rdn <rdn>`**
+`- rdn <rdn>`
 <br>[required] The RDN name and value of the new label. E.g. ou=Groups
 
-**`- instance <instance>`**
+`- instance <instance>`
 <br>The name of the RadiantOne instance. If this is not specified, the default instance named vds_server is used.
 
-**`- objectclass <objectclass>`**
+`- objectclass <objectclass>`
 <br>The objectclass for the new label. Use the # character as a separator for multiple objectclasses. Example: top # person # inetOrgPerson
 
 **REST (ADAP) Example**
@@ -46,10 +46,10 @@ This command deletes an existing label node in a virtual tree hierarchy.
 
 **Command Arguments:**
 
-**`- dn <dn>`**
+`- dn <dn>`
 [required] The full DN of the existing label node to delete.
 
-**`- instance <instance>`**
+`- instance <instance>`
 <br>The name of the RadiantOne instance. If this is not specified, the default instance named vds_server is used.
 
 **REST (ADAP) Example**
@@ -66,10 +66,10 @@ This command displays a list of all properties/values for the specified virtual 
 
 Command Arguments:
 
-**`- dn <dn>`**
+`- dn <dn>`
 <br>[required argument] The DN of the node.
 
-**`- instance <instance>`**
+`- instance <instance>`
 <br>The name of the RadiantOne instance. If this is not specified, the default instance named vds_server is used.
 
 **REST (ADAP) Example**
@@ -81,21 +81,20 @@ In the following example, a request is made to display a list of all properties 
 
 This command displays the current value of a property of a specified node.
 
->[!warning]
->The value of -prop is case sensitive. You can use the list-node-property command to get a list of property values that you can pass in -prop. Use the exact case shown for the property (e.g. OutputColumns not outputcolumns).
+>[!warning] The value of -prop is case sensitive. You can use the list-node-property command to get a list of property values that you can pass in -prop. Use the exact case shown for the property (e.g. OutputColumns not outputcolumns).
 
 **Usage:**
 <br>`get-node-property -dn <dn> -prop <prop> [-instance <instance>]`
 
 **Command Arguments:**
 
-**`- dn <dn>`**
+`- dn <dn>`
 <br>[required argument] The DN of the node.
 
-**`- prop <prop>`**
+`- prop <prop>`
 <br>[required argument] The name of the property to get. Use list-node-property to get the list of available property names to use. This value is case sensitive.
 
-**`- instance <instance>`**
+`- instance <instance>`
 <br>The name of the RadiantOne instance. If this is not specified, the default instance named vds_server is used.
 
 ### Examples
@@ -106,55 +105,46 @@ Assume a virtual view named northwind2 (dv=northwind2) created in Context Builde
 
 To get these columns with the get-node-property command, you would use the following:
 
-C:\radiantone\vds\bin>vdsconfig.bat get-node-property -dn employees,dv=northwind2,o=vds -prop OutputColumns
+`C:\radiantone\vds\bin>vdsconfig.bat get-node-property -dn employees,dv=northwind2,o=vds -prop OutputColumns`
 
-```
-Using RLI home : C:\radiantone\vds
-Using Java home : C:\radiantone\vds\jdk\jre
-Loading module BASICS
-2018 - 04 - 06 15:40:47 INFO c.r.s.s.LDAPServerParameter:2299 - ... Building MetaTree
-2018 - 04 - 06 15:40:49 INFO c.r.s.s.LDAPServerParameter:2310 - ... MetaTree built
-2018 - 04 - 06 15:40:53 INFO c.r.s.s.LDAPServerParameter:2294 - ... Re-building MetaTree
-2018 - 04 - 06 15:40:54 INFO c.r.s.s.LDAPServerParameter:2310 - ... MetaTree built
-OutputColumns=[EMPLOYEEID:INTEGER],[LASTNAME:VARCHAR(255)],[FIRSTNAME:V
-ARCHAR(255)],[TITLE:VARCHAR(255)],[TITLEOFCOURTESY:VARCHAR(255)],[BIRTHDA
-TE:TIMESTAMP],[HIREDATE:TIMESTAMP],[ADDRESS:VARCHAR(255)],[CITY:VARCHAR
-(255)],[REGION:VARCHAR(255)],[POSTALCODE:VARCHAR(255)],[COUNTRY:VARCHAR
-(255)],[HOMEPHONE:VARCHAR(255)],[EXTENSION:VARCHAR(255)],[PHOTO:BLOB(104
-8576)],[NOTES:VARCHAR(255)],[REPORTSTO:INTEGER]
-```
+`Using RLI home : C:\radiantone\vds`
+<br> `Using Java home : C:\radiantone\vds\jdk\jre`
+<br> `Loading module BASICS`
+<br> `2018 - 04 - 06 15:40:47 INFO c.r.s.s.LDAPServerParameter:2299 - ... Building MetaTree`
+<br> `2018 - 04 - 06 15:40:49 INFO c.r.s.s.LDAPServerParameter:2310 - ... MetaTree built`
+<br> `2018 - 04 - 06 15:40:53 INFO c.r.s.s.LDAPServerParameter:2294 - ... Re-building MetaTree`
+<br> `2018 - 04 - 06 15:40:54 INFO c.r.s.s.LDAPServerParameter:2310 - ... MetaTree built`
+<br> `OutputColumns=[EMPLOYEEID:INTEGER],[LASTNAME:VARCHAR(255)],[FIRSTNAME:VARCHAR(255)],[TITLE:VARCHAR(255)],[TITLEOFCOURTESY:VARCHAR(255)],[BIRTHDATE:TIMESTAMP],[HIREDATE:TIMESTAMP],[ADDRESS:VARCHAR(255)],[CITY:VARCHAR(255)],[REGION:VARCHAR(255)],[POSTALCODE:VARCHAR(255)],[COUNTRY:VARCHAR(255)],[HOMEPHONE:VARCHAR(255)],[EXTENSION:VARCHAR(255)],[PHOTO:BLOB(1048576)],[NOTES:VARCHAR(255)],[REPORTSTO:INTEGER]`
+`
 The objectclass defined for the EMPLOYEES container on the Advanced Settings tab as shown below.
 
 ![objectclass defined for the employees container](Media/Image7.3.jpg)
 
 To get this property with the get-node-property command, you would use the following:
 
-C:\radiantone\vds\bin>vdsconfig.bat get-node-property -dn employees,dv=northwind2,o=vds -prop Class
+`C:\radiantone\vds\bin>vdsconfig.bat get-node-property -dn employees,dv=northwind2,o=vds -prop Class`
 
-```
-Using RLI home : C:\radiantone\vds
-Using Java home : C:\radiantone\vds\jdk\jre
-Loading module BASICS
-2018 - 04 - 06 15:43:34 INFO c.r.s.s.LDAPServerParameter:2299 - ... Building MetaTree
-2018 - 04 - 06 15:43:35 INFO c.r.s.s.LDAPServerParameter:2310 - ... MetaTree built
-2018 - 04 - 06 15:43:39 INFO c.r.s.s.LDAPServerParameter:2294 - ... Re-building MetaTree
-2018 - 04 - 06 15:43:40 INFO c.r.s.s.LDAPServerParameter:2310 - ... MetaTree built
-Class=vdAPPEMPLOYEES
-```
-REST (ADAP) Example
+`Using RLI home : C:\radiantone\vds`
+<br> `Using Java home : C:\radiantone\vds\jdk\jre`
+<br> `Loading module BASICS`
+<br> `2018 - 04 - 06 15:43:34 INFO c.r.s.s.LDAPServerParameter:2299 - ... Building MetaTree`
+<br> `2018 - 04 - 06 15:43:35 INFO c.r.s.s.LDAPServerParameter:2310 - ... MetaTree built`
+<br> `2018 - 04 - 06 15:43:39 INFO c.r.s.s.LDAPServerParameter:2294 - ... Re-building MetaTree`
+<br> `2018 - 04 - 06 15:43:40 INFO c.r.s.s.LDAPServerParameter:2310 - ... MetaTree built Class=vdAPPEMPLOYEES`
+
+**REST (ADAP) Example**
+
 In the following example, a request is made to display the value for the Name property.
 
 `https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=get-node-property&dn= employees,dv=northwind2,o=vds&prop=Name`
 
 The response is shown below. The \r\n in the SystemOut represents a carriage return/line feed. The value of the Name property is EMPLOYEES.
 
-```sh
-"result": {
-"Exitcode": 0,
-"SystemOut": "[Thursday, 25 Oct 2018 16:14:14 PDT]\r\nName=EMPLOYEES"
-}
-}
-```
+`"result": {`
+<br> `"Exitcode": 0,`
+<br> `"SystemOut": "[Thursday, 25 Oct 2018 16:14:14 PDT]\r\nName=EMPLOYEES"`
+<br> `}`
+<br> `}`
 
 ## set-node-property
 
@@ -194,30 +184,29 @@ Based on the screen shot above, the command to get the configured interception i
 
 The result is the following:
 
-```
-On Bind=true
-On Search=false
-On Modify=true
-On Delete=false
-On Add=true
-On Search Result Entry Processing=false
-On Compare=false
-On Special Operations(invoke)=false
-Script path=C:\radiantone\vds\vds_server\custom\src\com\rli\scripts\intercept\AddressBook.java (file currently exists)
-```
+`On Bind=true`
+<br> `On Search=false`
+<br> `On Modify=true`
+<br> `On Delete=false`
+<br> `On Add=true`
+<br> `On Search Result Entry Processing=false`
+<br> `On Compare=false`
+<br> `On Special Operations(invoke)=false`
+<br> `Script` <br> `path=C:\radiantone\vds\vds_server\custom\src\com\rli\scripts\intercept\AddressBook.java (file currently exists)`
 
 **Usage:**
-K<br>`get-node-interception -dn <dn> [-instance <instance>]`
+<br>`get-node-interception -dn <dn> [-instance <instance>]`
 
 **Command Arguments:**
 
-**`- dn <dn>`**
+`- dn <dn>`
 <br>[required argument] The DN of the node. Be sure to use the syntax based on the model of the view, similar to the example shown above.
 
-**`- instance <instance>`**
+`- instance <instance>`
 <br>The name of the RadiantOne instance. If this is not specified, the default instance named vds_server is used.
 
 **REST (ADAP) Example**
+
 In the following example, a request is made to display the values configured for an interception script.
 
 `https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=get-node-interception&dn=CN,dv=address book,o=vds`
@@ -231,8 +220,7 @@ The first time you use set-node-interception, a default interception script matc
 After editing the Java file, the intercept.jar file must be rebuilt and the RadiantOne service must be restarted for the script to take effect. If deployed in a cluster, restart it on all nodes.
 
 **Usage:**
-`set-node-interception -dn <dn> [-add <true/false>] [-bind <true/false] [-search <true/false>]
-[-modify <true/false>] [-delete <true/false>] [-srep <true/false>] [-instance <instance>]`
+`set-node-interception -dn <dn> [-add <true/false>] [-bind <true/false] [-search <true/false>] [-modify <true/false>] [-delete <true/false>] [-srep <true/false>] [-instance <instance>]`
 
 An example of setting interception is as follows:
 
@@ -240,29 +228,28 @@ An example of setting interception is as follows:
 
 **Command Arguments:**
 
-**`- dn <dn>`**
+`- dn <dn>`
 <br>[required argument] The DN of the node.
 
-**`- add <true/false>`**
+`- add <true/false>`
 <br>A value of true indicates interception on add (insert) operations is enabled. A value of false means it is not enabled.
 
-**`- delete <true/false>`**
+`- delete <true/false>`
 <br>A value of true indicates interception on delete operations is enabled. A value of false means it is not enabled.
 
-**`- bind <true/false>`**
+`- bind <true/false>`*
 <br>A value of true indicates interception on bin (authentication) operations is enabled. A value of false means it is not enabled.
 
-**`- search <true/false>`**
+`- search <true/false>`
 <br>A value of true indicates interception on search (select) operations is enabled. A value of false means it is not enabled.
 
-**`- modify <true/false>`**
-<br>A value of true indicates interception on modify (update) operations is enabled. A value of false
-means it is not enabled.
+`- modify <true/false>`
+<br>A value of true indicates interception on modify (update) operations is enabled. A value of false means it is not enabled.
 
-**`- srep <true/false>`**
+`- srep <true/false>`
 <br>A value of true indicates interception on search result entry processing (process result) operations is enabled. A value of false means it is not enabled.
 
-**`- instance <instance>
+`- instance <instance>`
 <br>The name of the RadiantOne instance. If this is not specified, the default instance named vds_server is used.
 
 **REST (ADAP) Example**
@@ -280,16 +267,16 @@ This command sets the RDN attribute name/value of the specified node.
 
 **Command Arguments:**
 
-**`- dn <dn>`**
+`- dn <dn>`
 <br>[required argument] The DN of the node.
 
-**`- rdn <rdn>`**
+`- rdn <rdn>`
 <br>The RDN attribute name for the node.
 
-`**- instance <instance>`**
+`- instance <instance>`
 <br>The name of the RadiantOne instance. If this is not specified, the default instance named vds_server is used.
 
-**`- value <value>`**
+`- value <value>`
 <br>The RDN attribute value for the node.
 
 ### Examples
@@ -307,16 +294,12 @@ The following example command changes the RDN of these entries to NEWHR.
 The command processor displays the following at the end of successful completion of the
 command.
 
-```
-2017 - 10 - 20 16:03:41 INFO c.r.s.s.LDAPServerParameter:2299 - ... Building MetaTree
-2017 - 10 - 20 16:03:42 INFO c.r.s.s.LDAPServerParameter:2310 - ... MetaTree built
-2017 - 10 - 20 16:03:44 INFO c.r.s.s.LDAPServerParameter:2294 - ... Re-building MetaTree
-2017 - 10 - 20 16:03:45 INFO c.r.s.s.LDAPServerParameter:2310 - ... MetaTree built
-2017 - 10 - 20 16:03:46 INFO c.r.c.b.ConfigVersioningService:151 - Saving up configuration
-file /radiantone/v1/cluster/config/dvx/ou_hr_o_examples.dvx to /radiantone/v1/cluster/config-versioning/config/d
-vx/ou_hr_o_examples.dvx/196/DATA
-The RDN attribute name has been modified.
-```
+`2017 - 10 - 20 16:03:41 INFO c.r.s.s.LDAPServerParameter:2299 - ... Building MetaTree`
+<br> `2017 - 10 - 20 16:03:42 INFO c.r.s.s.LDAPServerParameter:2310 - ... MetaTree built`
+<br> `2017 - 10 - 20 16:03:44 INFO c.r.s.s.LDAPServerParameter:2294 - ... Re-building MetaTree`
+<br> `2017 - 10 - 20 16:03:45 INFO c.r.s.s.LDAPServerParameter:2310 - ... MetaTree built`
+<br> `2017 - 10 - 20 16:03:46 INFO c.r.c.b.ConfigVersioningService:151 - Saving up configuration file /radiantone/v1/cluster/config/dvx/ou_hr_o_examples.dvx to /radiantone/v1/cluster/config-versioning/config/dvx/ou_hr_o_examples.dvx/196/DATA`
+<br> `The RDN attribute name has been modified.`
 
 ![rdn attribute name has been modified](Media/Image7.6.jpg)
 
@@ -338,12 +321,10 @@ The following example command changes the RDN this table to ou=sales.
 
 The command processor displays the following at the end of successful completion of the command.
 
-```
-2018 - 05 - 07 16:35:41 INFO c.r.s.s.LDAPServerParameter:2274 - ... Building MetaTree
-2018 - 05 - 07 16:35:41 INFO c.r.s.s.LDAPServerParameter:2285 - ... MetaTree built
-2018 - 05 - 07 16:35:42 INFO c.r.s.s.LDAPServerParameter:2269 - ... Re-building MetaTree
-2018 - 05 - 07 16:35:42 INFO c.r.s.s.LDAPServerParameter:2285 - ... MetaTree built
-2018 - 05 - 07 16:35:43 INFO c.r.s.s.LDAPServerParameter:2269 - ... Re-building MetaTree
-2018 - 05 - 07 16:35:43 INFO c.r.s.s.LDAPServerParameter:2285 - ... MetaTree built
-The RDN has been modified for the label node.
-```
+`2018 - 05 - 07 16:35:41 INFO c.r.s.s.LDAPServerParameter:2274 - ... Building MetaTree`
+<br> `2018 - 05 - 07 16:35:41 INFO c.r.s.s.LDAPServerParameter:2285 - ... MetaTree built`
+<br> `2018 - 05 - 07 16:35:42 INFO c.r.s.s.LDAPServerParameter:2269 - ... Re-building MetaTree`
+<br> `2018 - 05 - 07 16:35:42 INFO c.r.s.s.LDAPServerParameter:2285 - ... MetaTree built`
+<br> `2018 - 05 - 07 16:35:43 INFO c.r.s.s.LDAPServerParameter:2269 - ... Re-building MetaTree`
+<br> `2018 - 05 - 07 16:35:43 INFO c.r.s.s.LDAPServerParameter:2285 - ... MetaTree built`
+<br> `The RDN has been modified for the label node.`

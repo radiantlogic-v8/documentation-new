@@ -20,13 +20,13 @@ This command publishes/adds objects and attributes from a given ORX file to the 
 
 **Command Arguments:**
 
-**`- name <name>`**
+`- name <name>`
 <br>[required] The ORX name (must be an existing ORX file).
 
-**`- instance <instance>`**
+`- instance <instance>`
 <br>The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
 
-**`- ldap`**
+`- ldap`
 <br>Indicates that the ORX name is an LDAP Schema, found in the 'lod' folder. If this option is not specified, the tool looks for the ORX in the 'org' folder.
 
 **REST (ADAP) Example**
@@ -44,13 +44,13 @@ This command removes objects and attributes defined in a given ORX file from the
 
 **Command Arguments:**
 
-**`- name <name>`**
+`- name <name>`
 <br>[required] The ORX name (must be an existing ORX file).
 
-**`- instance <instance>`**
+`- instance <instance>`
 <br>The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
 
-**`- ldap`**
+`- ldap`
 <br>Indicates that the ORX name is an LDAP Schema, found in the 'lod' folder. If this option is not specified, the tool will look for the ORX in the 'org' folder.
 
 **REST (ADAP) Example**

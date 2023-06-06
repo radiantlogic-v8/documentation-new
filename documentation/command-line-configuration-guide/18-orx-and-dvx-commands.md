@@ -54,16 +54,16 @@ Prints the connection information (to the command line interface) associated wit
 
 **Command Arguments:**
 
-**`- name <name of dvx or orx>`**
+`- name <name of dvx or orx>`
 <br>[required] The name of the dvx or orx file that you want to print the connection for.
 
-**`- dvx`**
+`- dvx`
 <br>Indicates that the command should work with a dvx file.
 
-**`- instance <instance>`**
+`- instance <instance>`
 <br>The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
 
-**`- orx`**
+`- orx`
 <br>Indicates that the command should work with an orx file.
 
 **REST (ADAP) Example**
@@ -81,16 +81,16 @@ Tests the connection to the data source associated with a given orx or dvx file.
 
 **Command Arguments:**
 
-**`- name <name of dvx or orx>`**
+`- name <name of dvx or orx>`
 <br>[required] The name of the dvx or orx file that you want to test the connection for.
 
-**`- dvx`**
+`- dvx`
 <br>Indicates that the command should work with a dvx file.
 
-**`- instance <instance>`**
+`- instance <instance>`
 <br>The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
 
-**`- orx`**
+`- orx`
 <br>Indicates that the command should work with an orx file.
 
 **REST (ADAP) Example**
@@ -108,22 +108,22 @@ Allows you to change the data source name associated with an orx or dvx file. Fo
 
 **Command Arguments:**
 
-**`- name <name of dvx or orx>`**
-<br>[required] The name of the dvx or orx file that you want to modify the data source and/or base
-DN for.
+`- name <name of dvx or orx>`
+<br>[required] The name of the dvx or orx file that you want to modify the data source and/or base DN for.
 
-**`- basedn <basedn>`**
+`- basedn <basedn>`
 <br> The new base DN to set for the orx or dvx file. This option only applies to schemas and views associated with LDAP backends.
-**`- datasourcename <datasourcename>`**
+
+`- datasourcename <datasourcename>`
 <br>The new data source name to set for the orx/dvx file.
 
-**`- dvx`**
+`- dvx`
 <br>Indicates that the command should work with a dvx file.
 
-**`- instance <instance>`**
+`- instance <instance>`
 <br>The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
 
-**`- orx`**
+`- orx`
 <br>Indicates that the command should work with an orx file.
 
 **REST (ADAP) Example**
@@ -141,28 +141,28 @@ This command extracts an LDAP/database schema to a new .orx file.
 
 **Command Arguments:**
 
-**`- datasourcename <datasourcename>`**
+`- datasourcename <datasourcename>`
 <br>[required] The name of the data source to use for schema extraction.
 
-**`- name <name>`**
+`- name <name>`
 <br>[required] The name of the new .orx file.
 
-**`- objects <objects>`**
+`- objects <objects>`
 <br>[required] The list of objects to extract. The value ALL indicates all schema objects.
 
-**`- type <type>`**
+`- type <type>`
 <br>[required] The type of schema (orx). Accepted values are: ldap, database.
 
-**`- basedn <basedn>`**
+`- basedn <basedn>`
 <br>When extracting a LDAP schema, use this option if you want to overwrite the base DN.
 
-**`- dbschema <dbschema>`**
+`- dbschema <dbschema>`
 <br>When extracting a database schema, use this option to specify a database schema name.
 
-**`- instance <instance>`**
+`- instance <instance>`
 <br>The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
 
-**`- overwrite`**
+`- overwrite`
 <br>Indicates that the command is allowed to overwrite existing files.
 
 **REST (ADAP) Example**
@@ -179,23 +179,22 @@ This command prints out the list of objects in a schema(.orx) file.
 
 **Command Arguments:**
 
-**`- name <name>`**
+`- name <name>`
 <br>[required] The name of the file (.dvx or .orx) used with the command.
 
-**`- type <type>`**
+`- type <type>`
 <br>[required] The type of schema (orx). Accepted values are: ldap, database.
 
-**`- instance <instance>`**
+`- instance <instance>`
 <br>The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
 
-**`- objects`**
+`- objects`
 <br>Indicates that the command should print out all the objects in the schema of type 'OBJECT' or 'TABLE'.
 
-**`- relations`**
-<br>Indicates that the command should print out all the objects in the schema of type
-'RELATIONSHIP'.
+`- relations`
+<br>Indicates that the command should print out all the objects in the schema of type 'RELATIONSHIP'.
 
-**`- views`**
+`- views`
 <br>Indicates that the command should print out all the objects in the schema of type 'VIEW'.
 
 **REST (ADAP) Example**
@@ -213,31 +212,31 @@ This command prints out the properties for an object in a schema(.orx) file.
 
 **Command Arguments:**
 
-**`- name <name>`**
+`- name <name>`
 <br>[required] The name of the file (.dvx or .orx) used with the command.
 
-**`- object <object>`**
+`- object <object>`
 <br>[required] The name of the object in the ORX.
 
-**`- type <type>`**
+`- type <type>`
 <br>[required] The type of schema (orx). Accepted values are: ldap, database.
 
-**`- basetable`**
+`- basetable`
 <br>The base table property for the object.
 
-**`- instance <instance>`**
+`- instance <instance>`
 <br>The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
 
-**`- objectclass`**
+`- objectclass`
 <br>The LDAP Object Class for the object.
 
-**`- pkey`**
+`- pkey`
 <br>The list of primary key attribute(s) for the object.
 
-**`- rdnattr`**
+`- rdnattr`
 <br>The attribute(s) that will be used for the RDN value for the object
 
-- rdnname
+`- rdnname`
 <br>The name of the RDN for the object.
 
 **REST (ADAP) Example**
@@ -254,31 +253,31 @@ This command sets properties for an object in a schema(.orx) file.
 
 **Command Arguments:**
 
-**`- name <name>`**
+`- name <name>`
 <br>[required] The name of the file (.dvx or .orx) used with the command.
 
-**`- object <object>`**
+`- object <object>`
 <br>[required] The name of the object in the ORX.
 
-**`- type <type>`**
+`- type <type>`
 <br>[required] The type of schema (orx). Accepted values are: ldap, database.
 
-**`- basetable <basetable>`**
+`- basetable <basetable>`
 <br>The base table property for the object.
 
-**`- instance <instance>`**
+`- instance <instance>`
 <br>The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
 
-**`- objectclass <objectclass>`**
+`- objectclass <objectclass>`
 <br>The LDAP Object Class for the object.
 
-**`- pkey <pkey>`**
+`- pkey <pkey>`
 <br>The list of primary key attribute(s) for the object.
 
-**`- rdnattr <rdnattr>`**
+`- rdnattr <rdnattr>`
 <br>The attribute(s) that will be used for the RDN value for the object
 
-**`- rdnname <rdnname>`**
+`- rdnname <rdnname>`
 <br>The name of the RDN for the object.
 
 **REST (ADAP) Example**
@@ -296,19 +295,19 @@ This command prints out the list of attributes for an object in a schema(.orx) f
 
 **Command Arguments:**
 
-**`- name <name>`**
+`- name <name>`
 <br>[required] The name of the file (.dvx or .orx) used with the command.
 
-**`- object <object>`**
+`- object <object>`
 <br>[required] The name of the object in the ORX.
 
-**`- type <type>`**
+`- type <type>`
 <br>[required] The type of schema (orx). Accepted values are: ldap, database.
 
-**`- instance <instance>`**
+`- instance <instance>`
 <br>The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
 
-**`- properties
+`- properties`
 <br>Indicates that the command should print out the properties of the attributes in addition to the attribute names.
 
 **REST (ADAP) Example**

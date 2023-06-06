@@ -32,10 +32,10 @@ Creates a Global Sync topology and its pipelines between two RadiantOne naming c
 
 **Command Arguments:**
 
-**`- namingcontextdn <naming context DN>`**
+`- namingcontextdn <naming context DN>`
 <br>[required] The DN of the naming context representing the source in the synchronization topology to be created.
 
-**`- targetnamingcontextdn <target naming context DN>`**
+`- targetnamingcontextdn <target naming context DN>`
 <br>[required] The DN of the target naming context representing the destination in the synchronization topology to be created.
 
 ## remove-sync-topology
@@ -47,7 +47,7 @@ Removes a sync topology setup between two RadiantOne naming contexts.
 
 **Command Arguments:**
 
-**`- topologyid <topologyID>`**
+`- topologyid <topologyID>`
 [required] The identifier of the topology to be removed. Run the list-topologies command to locate the topologyIdentifier.
 
 ## list-topologies
@@ -63,10 +63,10 @@ Get the topology identifier associated with two RadiantOne naming contexts.
 
 **Command Arguments:**
 
-**`- namingcontextdn <naming context DN>`**
+`- namingcontextdn <naming context DN>`
 <br>[required] The DN of the source naming context in the sync topology.
 
-**`- targetnamingcontextdn <target naming context DN>`**
+`- targetnamingcontextdn <target naming context DN>`
 <br>[required] The DN of the target naming context in the sync topology.
 
 ## get-topology
@@ -78,9 +78,8 @@ Gets the topology information associated with a given topology identifier.
 
 **Command Arguments:**
 
-**`- topologyid <topologyID>`**
+`- topologyid <topologyID>`
 <br>[required] The identifier of the topology. Run the list-topologies command to locate the topologyIdentifier.
-
 
 ## get-pipeline
 
@@ -91,7 +90,7 @@ Gets the pipeline information and data metrics for a given pipeline identifier.
 
 **Command Arguments:**
 
-**`- pipelineid <pipelineID>`**
+`- pipelineid <pipelineID>`
 <br>[required] The identifier of the pipeline. Run the list-topologies command to locate the pipelines identifiers for each topology.
 
 ## init-sync-pipeline
@@ -103,7 +102,7 @@ Initializes/uploads data into the target store for a given sync pipeline.
 
 **Command Arguments:**
 
-**`- pipelineid <pipelineID>`**
+`- pipelineid <pipelineID>`
 <br>[required] The identifier of the pipeline. Run the list-topologies command to locate the pipelines identifiers for each topology.
 
 ## abort-init-sync-pipeline
@@ -115,7 +114,7 @@ Aborts any current init/upload process on a sync pipeline. Requests are processe
 
 **Command Arguments:**
 
-**`- pipelineid <pipelineID>`**
+`- pipelineid <pipelineID>`
 <br>[required] The identifier of the pipeline. Run the list-topologies command to locate the pipelines identifiers for each topology.
 
 ## dl-replay-sync-pipeline
@@ -127,7 +126,7 @@ Replays events from the dead-letter queue associated with a sync pipeline. Messa
 
 **Command Arguments:**
 
-**`- pipelineid <pipelineID>`**
+`- pipelineid <pipelineID>`
 <br>[required] The identifier of the pipeline. Run the list-topologies command to locate the pipelines identifiers for each topology.
 
 ## abort-dl-replay-sync-pipeline
@@ -139,7 +138,7 @@ Aborts dead-letter replay process on a sync pipeline. The request is processed a
 
 **Command Arguments:**
 
-**`- pipelineid <pipelineID>`**
+`- pipelineid <pipelineID>`
 <br>[required] The identifier of the pipeline. Run the list-topologies command to locate the pipelines identifiers for each topology.
 
 ## change-pipeline-state
@@ -151,10 +150,10 @@ This command is used to resume or suspend the synchronization process associated
 
 **Command Arguments:**
 
-**`- pipelineid <pipelineID>`**
+`- pipelineid <pipelineID>`
 <br>[required] The identifier of the pipeline. Run the list-topologies command to locate the pipelines identifiers for each topology.
 
-**`- state <state>`**
+`- state <state>`
 <br>[required] The state for the pipeline. Use a value of “resume” to start the synchronization process. Use a value of “suspend” to stop the synchronization process.
 
 ## empty-queues
@@ -166,11 +165,10 @@ Every synchronization pipeline has its own queues below the cn=queue and cn=dlqu
 
 **Command Arguments:**
 
-**`- pipelineid <pipelineID>`**
-<br>[required] The identifier of the pipeline. Run the list-topologies command to locate the pipelines
-identifiers for each topology.
+`- pipelineid <pipelineID>`
+<br>[required] The identifier of the pipeline. Run the list-topologies command to locate the pipelines identifiers for each topology.
 
-**`- mode <mode>`**
+`- mode <mode>`
 <br>This property indicates which queue to empty. Accepted values are: QUEUE_ONLY, DEAD_LETTER_QUEUE, or ALL. If mode is not passed in the command, ALL is the default, and both the main queue and dead letters queues are emptied. If you only want to empty the main queue, enter a value of QUEUE_ONLY for the mode. If you only want to empty the dead letter queue, enter a value of DEAD-LETTER_QUEUE for the mode.
 
 ## reset-cursor
@@ -182,7 +180,7 @@ This command resets the cursor for a capture connector associated with a specifi
 
 **Command Arguments:**
 
-**`- pipelineid <pipelineID>`**
+`- pipelineid <pipelineID>`
 <br>[required] The identifier of the pipeline. Run the list-topologies command to locate the pipelines identifiers for each topology.
 
 ## list-agents
@@ -196,13 +194,11 @@ Lists the identifier of currently running agents. An example of the output of th
 
 ## stop-all-agents
 
-Agents manage connectors used for synchronization. Agents can run on any type of RadiantOne cluster node (follower or leaders) and there is only one agent running at any given
-time in a RadiantOne cluster.
+Agents manage connectors used for synchronization. Agents can run on any type of RadiantOne cluster node (follower or leaders) and there is only one agent running at any given time in a RadiantOne cluster.
 
 Agents are also used for CPLDS sync processes and real-time persistent cache refreshes. This command stops all agents.
 
->[!note]
->This command stops agents used in CPLDS, global synchronization and real-time persistent cache refresh.
+>[!note] This command stops agents used in CPLDS, global synchronization and real-time persistent cache refresh.
 
 ## stop-all-local-agents
 
@@ -222,13 +218,13 @@ Sets the connector type for a connector.
 
 **Command Arguments:**
 
-**`- connectortype <connector type>`**
+`- connectortype <connector type>`
 <br>[required] The connector type. Use one of the following values: CHANGELOG, AD_DIRSYNC, AD_USN, AD_HYBRID, DB_TIMESTAMP, DB_COUNTER, DB_TRIGGER, SCIM2, SCIM1, GRAPHAPI, MGRAPH, OKTA, KAFKA, KAFKA_GG, PERSISTENT_SEARCH, LDAP_APPLY, SCIM2_APPLY
 
-**`- pipelineid <pipelineID>`**
+`- pipelineid <pipelineID>`
 <br>[required] The identifier of the pipeline. Run the list-topologies command to locate the pipelines identifiers for each topology.
 
-**`- skipconfirmation`**
+`- skipconfirmation`
 <br>Bypasses the confirmation when deconfiguring the connector. If this argument is omitted, the command requires confirmation before deconfiguring the connector.
 
 ## list-connectors
@@ -240,7 +236,7 @@ Lists the connector names for a specified topology.
 
 **Command Arguments:**
 
-**`- topologyid <topologyID>`**
+`- topologyid <topologyID>`
 <br>[required] The identifier of the topology. Run the list-topologies command to locate the topologyIdentifier.
 
 ## list-connector-properties
@@ -252,7 +248,7 @@ Lists all the properties and values for a connector in a given sync pipeline.
 
 **Command Arguments:**
 
-**`- pipelineid <pipelineID>`**
+`- pipelineid <pipelineID>`
 <br>[required] The identifier of the pipeline. Run the list-topologies command to locate the pipelines identifiers for each topology.
 
 ## get-connector-property
@@ -264,10 +260,10 @@ Returns the value of a specific property for a connector.
 
 **Command Arguments:**
 
-**`- pipelineid <pipelineID>`**
+`- pipelineid <pipelineID>`
 <br>[required] The identifier of the pipeline. Run the list-topologies command to locate the pipelines identifiers for each topology.
 
-**`- propertyid <propertyID>`**
+`- propertyid <propertyID>`
 <br>[required] The connector property name. Run the list-connector-properties command to see a list of property IDs.
 
 ## set-connector-property
@@ -279,18 +275,16 @@ Sets the value of a specific property for a connector.
 
 **Command Arguments:**
 
-**`- pipelineid <pipelineID>`**
-<br>[required] The identifier of the pipeline. Run the list-topologies command to locate the pipelines
-identifiers for each topology.
+`- pipelineid <pipelineID>`
+<br>[required] The identifier of the pipeline. Run the list-topologies command to locate the pipelines identifiers for each topology.
 
-**`- propertyid <propertyID>`**
+`- propertyid <propertyID>`
 <br>[required] The connector propery name. Run the list-connector-properties command to see a list of property IDs.
 
-**`- propertyvalue <property value>`**
+`- propertyvalue <property value>`
 <br>[required] The connector property value.
 
->[!note]
->For Windows command line, some property values require double quotes surrounding them. In this case, you can use the \ to protect the “. E.g. C:\radiantone\vds\bin>vdsconfig.bat set-connector-property -connectorname o_sead_pcache_proxy__dc_seradiant_dc_dom__seradiantad -propertyid "excludedAttributes" -propertyvalue [\"member\",\"memberOf\",\"whenCreated\"] <br> If the property value contains a `<space>`, protect the entire value with double quotes. E.g. C:\radiantone\vds\bin>vdsconfig.bat set-connector-property - connectorname o_sead_pcache_proxy__dc_seradiant_dc_dom__seradiantad - propertyid includedBranches -propertyvalue “[ \"cn=users,dc=seradiant,dc=dom\",\"cn=domain groups,dc=seradiant,dc=dom\ "]”
+>[!note] For Windows command line, some property values require double quotes surrounding them. In this case, you can use the \ to protect the “. E.g. C:\radiantone\vds\bin>vdsconfig.bat set-connector-property -connectorname o_sead_pcache_proxy__dc_seradiant_dc_dom__seradiantad -propertyid "excludedAttributes" -propertyvalue [\"member\",\"memberOf\",\"whenCreated\"] <br> If the property value contains a `<space>`, protect the entire value with double quotes. E.g. C:\radiantone\vds\bin>vdsconfig.bat set-connector-property - connectorname o_sead_pcache_proxy__dc_seradiant_dc_dom__seradiantad - propertyid includedBranches -propertyvalue “[ \"cn=users,dc=seradiant,dc=dom\",\"cn=domain groups,dc=seradiant,dc=dom\ "]”
 
 ## file-set-connector-properties
 
@@ -301,16 +295,13 @@ This command can be used to set multiple connector properties contained in a pro
 
 **Command Arguments:**
 
-**`- pipelineid <pipelineID>`**
+`- pipelineid <pipelineID>`
 <br>[required] The identifier of the pipeline. Run the list-topologies command to locate the pipelines identifiers for each topology.
 
-**`- propertyfilename <property file name>`**
+`- propertyfilename <property file name>`
 <br>[required] The full path to a file containing the connector configuration properties.
 
->[!note]
->The contents of the file must be in JSON format. An example of the syntax used inside the properties file is shown below.
-
->**{ "pollingInterval" : 10001, "sizeLimit" : 1001, "retryIntervalOnError" : 10001,
+>[!note] The contents of the file must be in JSON format. An example of the syntax used inside the properties file is shown below. <br> { "pollingInterval" : 10001, "sizeLimit" : 1001, "retryIntervalOnError" : 10001,
 "retryIntervalOnConnectionError" : 10001, "retryIntervalOnCommitError" :
 10001, "retryIntervalOnPartialCommitError" : 10001, "queueCommitDelay" :
 10001, "queueCommitSize" : 1001}**
@@ -324,13 +315,13 @@ Executes scripts to configure or de-configure a database capture connector.
 
 **Command Arguments:**
 
-**`- namingcontextdn <naming context DN>`**
+`- namingcontextdn <naming context DN>`
 <br>[required] The DN for the source RadiantOne naming context for a given sync topology.
 
-**`- pipelineid <pipelineID>`**
+`- pipelineid <pipelineID>`
 <br>[required] The identifier of the pipeline. Run the list-topologies command to locate the pipelines identifiers for each topology.
 
-**- deconfigure**
+`- deconfigure`
 <br>If this is specified, scripts are run to de-configure the connector. Otherwise, scripts are executed to configure the capture connector.
 
 ## set-transform-mode
@@ -342,14 +333,14 @@ Sets the transformation mode (mappings, script, or all) for a sync pipeline.
 
 **Command Arguments:**
 
-**`- mode <mode>`**
+`- mode <mode>`
 <br>[required] The transformation mode to assign. If you only want to use attribute mappings for the transformation, set the value to: mappings
 
 If you only want to use a script for transformation, set the value to: script
 
 To use both attribute mappings and a script for transformation, set the value to: all
 
-**`- pipelineid <pipelineID>`**
+`- pipelineid <pipelineID>`
 <br>[required] The identifier of the pipeline. Run the list-topologies command to locate the pipelines identifiers for each topology.
 
 ## create-transform-jar
@@ -365,10 +356,10 @@ Re-creates the transformation script for a pipeline.
 
 **Command Arguments:**
 
-**`- pipelineid <pipelineID>`**
+`- pipelineid <pipelineID>`
 <br>[required] The identifier of the pipeline. Run the list-topologies command to locate the pipelines identifiers for each topology.
 
-**`- overwrite`**
+`- overwrite`
 <br>If this is specified, existing resources are overwritten. Otherwise, existing resources are not overwritten.
 
 ## list-pipeline-mappings
@@ -380,7 +371,7 @@ Lists all attribute mappings for a pipeline.
 
 **Command Arguments:**
 
-**`- pipelineid <pipelineID>`**
+`- pipelineid <pipelineID>`
 <br>[required] The identifier of the pipeline. Run the list-topologies command to locate the pipelines identifiers for each topology.
 
 ## set-pipeline-mappings
@@ -392,10 +383,10 @@ Sets the attribute mappings for a pipeline.
 
 **Command Arguments:**
 
-**`- mappingfile <mappingfile>`**
+`- mappingfile <mappingfile>`
 <br>[required] The full path to a file containing the pipeline mappings in JSON format.
 
-**`- pipelineid <pipelineID>`**
+`- pipelineid <pipelineID>`
 <br>[required] The identifier of the pipeline. Run the list-topologies command to locate the pipelines identifiers for each topology.
 
 ## delete-pipeline-mappings
@@ -407,5 +398,5 @@ Deletes all attribute mappings for a pipeline.
 
 **Command Arguments:**
 
-**`- pipelineid <pipelineID>`**
+`- pipelineid <pipelineID>`
 <br>[required] The identifier of the pipeline. Run the list-topologies command to locate the pipelines identifiers for each topology.

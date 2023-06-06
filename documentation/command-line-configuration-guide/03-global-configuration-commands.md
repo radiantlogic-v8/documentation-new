@@ -21,6 +21,7 @@ This command displays the product information for RadiantOne. This includes Prod
 <br> The following example describes how to issue the request through ADAP.
 
 `https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=product-info`
+
 ## list-properties
 
 This command displays the contents of the RadiantOne configuration.
@@ -45,8 +46,7 @@ This command displays the value of a property in the RadiantOne configuration.
 **Usage:**
 <br> `get-property -name <name> [-instance <instance>]`
 
->[!note]
->Properties that contain a password value do not return with the get-property command. A message is returned indicating, “The property XXX contains a password and cannot be displayed.”
+>[!note] Properties that contain a password value do not return with the get-property command. A message is returned indicating, “The property XXX contains a password and cannot be displayed.”
 
 To list supported SSL cipher suites, use the list-cipher-suites command.
 
@@ -54,6 +54,7 @@ To list supported SSL cipher suites, use the list-cipher-suites command.
 
 **`- name <name>`**
 <br> [required] The name of the property. This is case sensitive, except for vdshttpPort and vdshttpsPort.
+
 **`- instance <instance>`**
 <br> The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
 
@@ -69,8 +70,7 @@ This command sets the value of a property in the RadiantOne configuration.
 **Usage:**
 <br> `set-property -name <name> -value <value> [-instance <instance>] [-pwdfile <path to file>]`
 
->[!note]
->Updating properties containing a password value requires the super user (e.g. cn=directory manager) credentials. You are prompted to enter this password interactively. To pass the credentials in the command, use the - pwdfile flag. See the Examples section below. To set the current list of enabled SSL cipher suites, use the set-cipher-suites command.
+>[!note] Updating properties containing a password value requires the super user (e.g. cn=directory manager) credentials. You are prompted to enter this password interactively. To pass the credentials in the command, use the - pwdfile flag. See the Examples section below. To set the current list of enabled SSL cipher suites, use the set-cipher-suites command.
 
 **Command Arguments:**
 
@@ -100,7 +100,7 @@ In the following example, a request is made to modify the LDAP port to 9999.
 
 The SSL settings for RadiantOne can be defined in the Control Panel from the Settings tab, Security section, SSL.
 
-![An image showing ](Media/Image3.2.jpg)
+![SSl settings](Media/Image3.2.jpg)
 
 This section explains how to display and set these property values using
 <RLI_HOME>/bin/vdsconfig instead of using the UI mentioned above.
@@ -124,15 +124,13 @@ C:\radiantone\vds\bin>vdsconfig.bat set-property -name ldapSslPort -value 639
 `C:\radiantone\vds\bin>vdsconfig.bat set-property -name mutualAuthClientCert -value
 REQUESTED`
 
->[!note]
->accepted values are NONE, REQUESTED, REQUIRED. Values are case-sensitive.
+>[!note] Accepted values are NONE, REQUESTED, REQUIRED. Values are case-sensitive.
 
 #### Change Supported Cipher Suites
 
 C:\radiantone\vds\bin>vdsconfig.bat get-property -name ciphersList
 
->[!note]
->If the ciphersList is empty the default ciphers included in the JDK are used.
+>[!note] If the ciphersList is empty the default ciphers included in the JDK are used.
 
 `C:\radiantone\vds\bin>vdsconfig.bat set-property -name ciphersList -value "SSL_DH_anon_WITH_RC4_128_MD5,SSL_DHE_DSS_WITH_3DES_EDE_CBC_SHA,SSL_DHE_RSA_WITH_3DES_EDE_CBC_SHA,SSL_RSA_WITH_3DES_EDE_CBC_SHA,SSL_RS A_WITH_RC4_128_MD5 "`
 
@@ -154,8 +152,7 @@ C:\radiantone\vds\bin>vdsconfig.bat get-property -name ciphersList
 
 `C:\radiantone\vds\bin>vdsconfig.bat set-property -name checkCRLmethod -value Static`
 
->[!note]
->Possible values are: Dynamic, Static, Failover.
+>[!note] Possible values are: Dynamic, Static, Failover.
 
 #### Configure CRL File
 
@@ -170,8 +167,7 @@ C:\radiantone\vds\bin>vdsconfig.bat get-property -name ciphersList
 `C:\radiantone\vds\bin>vdsconfig.bat set-property -name clusterCommunicationMode -value
 SSL_ALL`
 
->[!note]
->Possible values are PLAIN, SSL_ALL. Use SSL_ALL for “Always use SSL”, and PLAIN for “Never use SSL”.
+>[!note] Possible values are PLAIN, SSL_ALL. Use SSL_ALL for “Always use SSL”, and PLAIN for “Never use SSL”.
 
 #### Updating Passwords
 
@@ -195,20 +191,17 @@ C:\radiantone\vds\bin>vdsconfig set-property -name directoryManagerPassword -val
 
 If you do not want to pass the directory manager credentials interactively, you can save the password into a file and use the -pwdfile flag in the command. The -value property sets the new password and the directory manager credentials are passed in a file named pwd.txt in the example below.
 
->[!note]
->For security, the password value is shown as **** in <RLI_HOME>/logs/vdsconfig.log.
+>[!note] For security, the password value is shown as **** in <RLI_HOME>/logs/vdsconfig.log.
 
 `C:\radiantone\vds\bin>vdsconfig set-property -name directoryManagerPassword -value secret4444 -pwdfile C:\pwd.txt`
 
-```
-Using RLI home : C:\radiantone\vds
-Using Java home : C:\radiantone\vds\jdk\jre
-0 [ConnectionStateManager-0] WARN com.rli.zookeeper.ZooManagerConnectionStateListener - Curator connection state change: CONNECTED
-8 [ConnectionStateManager-0] WARN com.rli.zookeeper.ZooManagerConnectionStateListener - VDS-ZK connection state changed: CONNECTED
-8 [ConnectionStateManager-0] WARN com.rli.zookeeper.ZooManager - ZooManager connection state changed: CONNECTED
-Property 'directoryManagerPassword' has been modified.
-Configuration has been updated successfully.
-```
+`Using RLI home : C:\radiantone\vds`
+<br> `Using Java home : C:\radiantone\vds\jdk\jre`
+<br> `0 [ConnectionStateManager-0] WARN com.rli.zookeeper.ZooManagerConnectionStateListener - Curator connection state change: CONNECTED`
+<br> `8 [ConnectionStateManager-0] WARN com.rli.zookeeper.ZooManagerConnectionStateListener - VDS-ZK connection state changed: CONNECTED`
+<br> `8 [ConnectionStateManager-0] WARN com.rli.zookeeper.ZooManager - ZooManager connection state changed: CONNECTED`
+<br> `Property 'directoryManagerPassword' has been modified.`
+<br> `Configuration has been updated successfully.`
 
 If you do not want to pass the new value in the command, you can save the new password into a file and use file:::<path_to_file> in the command. The file contains the new password and the directory manager credentials are passed in a file named pwd.txt in the example below:
 

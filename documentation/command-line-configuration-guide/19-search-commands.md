@@ -18,28 +18,28 @@ This command performs an LDAP search on the RadiantOne namespace.
 
 **Command Arguments**
 
-**`- dn <dn>`**
+`- dn <dn>`
 <br>[required] The base DN for the search.
 
-**`- attr <attr>`**
+`- attr <attr>`
 <br>The attributes to return from the search. If this argument is not specified, all attributes are returned.
 
-**`- filter <filter>`**
+`- filter <filter>`
 <br>The LDAP search filter. If this argument is not specified, the search filter defaults to (objectClass=*).
 
-**`- instance <instance>`**
+`- instance <instance>`
 <br>The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
 
-**- leader**
+`- leader`
 <br>Indicates that the search should be performed on the current RadiantOne leader.
 
-**`- scope <scope>`**
+`- scope <scope>`
 <br>The scope of the search. If this argument is not specified, the search defaults to base scope. Accepted values: base, one, sub.
 
-**`- sizelimit <sizelimit>`**
+`- sizelimit <sizelimit>`
 <br>The size limit for the search.
 
-**`- timelimit <timelimit>`**
+`- timelimit <timelimit>`
 <br>The time limit for the search, in milliseconds.
 
 **Examples**

@@ -24,16 +24,16 @@ This command displays a list of configured data source names.
 
 **Command Arguments:**
 
-**- custom**
+`- custom`
 <br> Indicates that custom-type data sources should be listed.
 
-**- database**
+`- database`
 <br>Indicates that database-type data sources should be listed.
 
-**- instance <instance>**
+`- instance <instance>`
 The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
 
-**- ldap < ldap >**
+`- ldap <ldap>`
 <br> Indicates that LDAP-type data sources should be listed.
 
 **REST (ADAP) Example**
@@ -50,10 +50,10 @@ This command displays the connection info for the specified data source.
 
 **Command Arguments:**
 
-**- datasourcename <datasourcename>**
+`- datasourcename <datasourcename>`
 <br> [required] The name of the data source.
 
-**- instance <instance>**
+`- instance <instance>`
 <br> The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
 
 **REST (ADAP) Example**
@@ -70,10 +70,10 @@ This command deletes the data source.
 
 **Command Arguments:**
 
-**`- datasourcename <datasourcename>`**
+`- datasourcename <datasourcename>`
 <br> [required] The name of the data source.
 
-**`- instance <instance>`**
+`- instance <instance>`
 <br> The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
 
 **REST (ADAP) Example**
@@ -96,11 +96,13 @@ This command creates a new database data source.
 
 Command Arguments:
 
-**`- datasourcename <datasourcename>`**
+`- datasourcename <datasourcename>`
 <br> [required] The name of the data source. Do not use spaces in the name.
-**`- active <active>`**
+
+`- active <active>`
 <br> Indicates that the data source is active or disabled. Accepted values are “true”, “false”.
-**`- autocommit <autocommit>`**
+
+`- autocommit <autocommit>`
 <br> Indicates if the data source should be written/saved in ZooKeeper. The default is true (if this property is omitted). Accepted values are “true”, “false”. If you are using execfile to run a series of commands from a file, to create many data sources, you can indicate to only commit to ZooKeeper after the last data source. This limits the number of transactions done in ZooKeeper and can avoid I/O overhead by writing one batch of new data sources as opposed to writing one at a time. An example of the file contents is shown below.
 
 create-db-datasource -datasourcename DB1 -autocommit false ....<other props>
@@ -144,13 +146,13 @@ This command updates the connection info for the specified database data source.
 
 **Command Arguments:**
 
-**`- datasourcename <datasourcename>`**
+`- datasourcename <datasourcename>`
 <br>[required] The name of the data source.
 
-**`- active <active>`**
+`- active <active>`
 <br>Indicates that the data source is active or disabled. Accepted values are “true”, “false.
 
-**`- autocommit <autocommit>`**
+`- autocommit <autocommit>`
 <br>Indicates if the data source should be written/saved in ZooKeeper. The default is true (if this property is omitted). Accepted values are “true”, “false”. If you are using [execfile](general-commands.md#execfile) to run a series of commands from a file, to update many data sources, you can indicate to only commit to ZooKeeper after the last data source is updated. This limits the number of transactions done in ZooKeeper and can avoid I/O overhead by writing one batch of updated data sources as opposed to writing one at a time. An example of the file contents is shown below.
 
 update-db-datasource -datasourcename DB1 -autocommit false ....<other props>
@@ -159,25 +161,25 @@ update-db-datasource -datasourcename DB3 -autocommit false ....<other props>
 update-ldap-datasource -datasourcename LDAP1 -autocommit false ....<other props>
 update-ldap-datasource -datasourcename LDAP2 -autocommit true ....<other props>
 
-**`- dbtype <dbtype>`**
+`- dbtype <dbtype>`
 <br>The type of database (example: Oracle, Sybase, DB2)
 
-**`- driverclass <driverclass>`**
+`- driverclass <driverclass>`
 <br>The fully qualified class name of the JDBC driver.
 
-**`- failover <failover>`**
+`- failover <failover>`
 <br>The name of the data source used for failover.
 
-**`- instance <instance>`**
+`- instance <instance>`
 <br>The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
 
-**`- jdbcurl <jdbcurl>`**
+`- jdbcurl <jdbcurl>`
 <br>The JDBC URL.
 
-**`- password <password>`**
+`- password <password>`
 <br>The password used to connect to the database.
 
-**`- username <username>`**
+`- username <username>`
 <br>The username for the database connection.
 
 **REST (ADAP) Example**
@@ -199,58 +201,57 @@ This command creates a new LDAP data source.
 
 **Command Arguments:**
 
-**`- datasourcename <datasourcename>`**
+`- datasourcename <datasourcename>`
 <br>[required] The name of the data source. Do not use spaces in the name.
 
-**`- active <active>`**
+`- active <active>`
 <br>Indicates that the data source is active or disabled. Accepted values are “true”, “false.
 
-**`- autocommit <autocommit>`**
+`- autocommit <autocommit>`
 <br>Indicates if the data source should be written/saved in ZooKeeper. The default is true (if this property is omitted). Accepted values are “true”, “false”. If you are using [execfile](general-commands.md#execfile) to run a series of commands from a file, to create many data sources, you can indicate to only commit to ZooKeeper after the last data source is updated. This limits the number of transactions done in ZooKeeper and can avoid I/O overhead by writing one batch of data sources as opposed to writing one at a time. An example of the file contents is shown below.
 
-create-db-datasource -datasourcename DB1 -autocommit false ....<other props>
-create-db-datasource -datasourcename DB2 -autocommit false ....<other props>
-create-db-datasource -datasourcename DB3 -autocommit false ....<other props>
-create-ldap-datasource -datasourcename LDAP1 -autocommit false ....<other props>
-create-ldap-datasource -datasourcename LDAP2 -autocommit true ....<other props>
+`create-db-datasource -datasourcename DB1 -autocommit false ....<other props>`
+<br> `create-db-datasource -datasourcename DB2 -autocommit false ....<other props>`
+<br> `create-db-datasource -datasourcename DB3 -autocommit false ....<other props>`
+<br> `create-ldap-datasource -datasourcename LDAP1 -autocommit false ....<other props>`
+<br> `create-ldap-datasource -datasourcename LDAP2 -autocommit true ....<other props>`
 
-**`- basedn <basedn>`**
+`- basedn <basedn>`
 <br>The base DN for the data source.
 
->[!warning]
->When creating an LDAP data source, do not use special characters in the Base DN value.
+>[!warning] When creating an LDAP data source, do not use special characters in the Base DN value.
 
-**`- binddn <binddn>`**
+`- binddn <binddn>`
 <br>The DN used to bind.
 
-**`- chaseref <chaseref>`**
+`- chaseref <chaseref>`
 <br>Indicates that referral-chasing is used for this data source (default is no referral-chasing).
 
-**`- dirtype <dirtype>`**
+`- dirtype <dirtype>`
 <br>The type of LDAP directory.
 
-**`- failover <failover>`**
+`- failover <failover>`
 <br>The list of failover servers, separated by a single space (example: -failover “ldap://vds72f1:2389 ldap://vds72f2:4489 ldaps://vds72f3:636”). If the connection is via TLS/SSL (you have -ssl set to true), the URL listed in the failover server must indicate ldaps.
 
-**`- host <host>`**
+`- host <host>`
 <br>The host name/server IP.
 
-**`- instance <instance>`**
+`- instance <instance>`
 <br>The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
 
-**`- pagedresults <pagedresults>`**
+`- pagedresults <pagedresults>`
 <br>Indicates that paged results is used for this data source (default is no paged results).
 
-**`- pagesize <pagesize>`**
+`- pagesize <pagesize>`
 <br>The page size (used only if paged results are enabled).
 
-**`- password <password>`**
+`- password <password>`
 <br>The password used to bind
 
-**`- port <port>`**
+`- port <port>`
 <br>The port number.
 
-**`- ssl <ssl>`**
+`- ssl <ssl>`
 <br>true to indicate SSL is used, false otherwise.
 
 **REST (ADAP) Example**
@@ -268,58 +269,57 @@ This command updates the connection info for the specified LDAP data source.
 
 Command Arguments:
 
-**`- datasourcename <datasourcename>`**
+`- datasourcename <datasourcename>`
 <br>[required] The name of the data source.
 
-**`- active <active>`**
+`- active <active>`
 <br>Indicates that the data source is active or disabled. Accepted values are “true”, “false”.
 
-**`- autocommit <autocommit>`**
+`- autocommit <autocommit>`
 <br>Indicates if the data source should be written/saved in ZooKeeper. The default is true (if this property is omitted). Accepted values are “true”, “false”. If you are using execfile to run a series of commands from a file, to update many data sources, you can indicate to only commit to ZooKeeper after the last data source is updated. This limits the number of transactions done in ZooKeeper and can avoid I/O overhead by writing one batch of updated data sources as opposed to writing one at a time. An example of the file contents is shown below.
 
-update-db-datasource -datasourcename DB1 -autocommit false ....<other props>
-update-db-datasource -datasourcename DB2 -autocommit false ....<other props>
-update-db-datasource -datasourcename DB3 -autocommit false ....<other props>
-update-ldap-datasource -datasourcename LDAP1 -autocommit false ....<other props>
-update-ldap-datasource -datasourcename LDAP2 -autocommit true ....<other props>
+`update-db-datasource -datasourcename DB1 -autocommit false ....<other props>`
+<br> `update-db-datasource -datasourcename DB2 -autocommit false ....<other props>`
+<br> `update-db-datasource -datasourcename DB3 -autocommit false ....<other props>`
+<br> `update-ldap-datasource -datasourcename LDAP1 -autocommit false ....<other props>`
+<br> `update-ldap-datasource -datasourcename LDAP2 -autocommit true ....<other props>`
 
-**`- basedn <basedn>`**
+`- basedn <basedn>`
 <br>The base DN for the data source.
 
->[!warning]
->When updating an LDAP data source, do not use special characters in the Base DN value.
+>[!warning] When updating an LDAP data source, do not use special characters in the Base DN value.
 
-**`- binddn <binddn>`**
+`- binddn <binddn>`
 <br>The DN used to bind.
 
-**`- chaseref <chaseref>`**
+`- chaseref <chaseref>`
 <br>Indicates that referral-chasing is used for this data source (default is no referral-chasing).
 
-**`- dirtype <dirtype>`**
+`- dirtype <dirtype>`
 <br>The type of LDAP directory.
 
-**`- failover <failover>`**
+`- failover <failover>`
 <br>The list of failover servers, separated by a single space (example: -failover “ldap://vds72f1:2389 ldap://vds72f2:4489 ldaps://vds72f3:636”). If the connection is via TLS/SSL (you have -ssl set to true), the URL listed in the failover server must indicate ldaps.
 
-**`- host <host>`**
+`- host <host>`
 <br>The host name/server IP.
 
-**`- instance <instance>`**
+`- instance <instance>`
 <br>The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
 
-**`- pagedresults <pagedresults>`**
+`- pagedresults <pagedresults>`
 <br>Indicates that paged results is used for this data source (default is no paged results).
 
-**`- pagesize <pagesize>`**
+`- pagesize <pagesize>`
 <br>The page size (used only if paged results are enabled).
 
-**`- password <password>`**
+`- password <password>`
 <br>The password used to bind.
 
-**`- port <port>`**
+`- port <port>`
 <br>The port number.
 
-**`- ssl <ssl>`**
+`- ssl <ssl>`
 <br>true to indicate SSL is used, false otherwise.
 
 **REST (ADAP) Example**
@@ -335,24 +335,23 @@ The following commands are for managing connections to custom data sources.
 
 This command creates a new custom data source.
 
->[!note]
->This command requires you to pass either the -propfile or -propstr command argument to set the custom data source properties.
+>[!note] This command requires you to pass either the -propfile or -propstr command argument to set the custom data source properties.
 
 **Usage:**
 `create-custom-datasource -datasourcename <datasourcename> [-instance <instance>] [-propfile <propfile>] [-propstr <propstr>]`
 
 **Command Arguments:**
 
-**`- datasourcename <datasourcename>`**
+`- datasourcename <datasourcename>`
 [required] The name of the data source.
 
-**`- instance <instance>`**
+`- instance <instance>`
 The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
 
-**`- propfile <propfile>`**
+`- propfile <propfile>`
 The full path to a file containing the properties to set for your custom data source.
 
-**`- propstr <propstr>`**
+`- propstr <propstr>`
 A string containing the different properties to set for your custom data source. Properties can be separated by semi-colons. Example usage: -propstr prop1=value1;prop2=value2.
 
 **REST (ADAP) Example**
@@ -365,24 +364,23 @@ In the following example, a request is made to create a custom data source named
 
 This command updates the connection information for the specified custom data source.
 
->[!note]
->This command requires you to pass either the -propfile or -propstr command argument to set the custom data source properties.
+>[!note] This command requires you to pass either the -propfile or -propstr command argument to set the custom data source properties.
 
 **Usage:**
 <br>`update-custom-datasource -datasourcename <datasourcename>[-instance <instance>] [-propfile <propfile>] [-propstr <propstr>]`
 
 **Command Arguments:**
 
-**`- datasourcename <datasourcename>`**
+`- datasourcename <datasourcename>`
 <br> [required] The name of the data source.
 
-**`- instance <instance>`**
+`- instance <instance>`
 <br> The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
 
-**`- propfile <propfile>`**
+`- propfile <propfile>`
 <br> The full path to a file containing the properties to set for your custom data source.
 
-**`- propstr <propstr>`**
+`- propstr <propstr>`
 <br> A string containing the different properties to set for your custom data source. Properties can be separated by semi-colons. Example usage: -propstr prop1=value1;prop2=value2.
 
 **REST (ADAP) Example**
@@ -404,14 +402,13 @@ Imports data sources from a given XML file.
 
 **Command Arguments:**
 
-**`- filepath <filepath>`**
+`- filepath <filepath>`
 <br> [required] The full path to the file that contains the data sources to import.
 
-**`- instance <instance>`**
+`- instance <instance>`
 <br> The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
 
->[!warning]
->If a data source in the import file has the same name as an existing data source, the existing data source is overwritten by the one you are importing.
+>[!warning] If a data source in the import file has the same name as an existing data source, the existing data source is overwritten by the one you are importing.
 
 **REST (ADAP) Example**
 
@@ -424,24 +421,23 @@ In the following example, a request is made to import data sources using an XML 
 Exports data sources to an XML file.
 
 **Usage:**
-<br>`export-datasource -filepath <filepath> [-all] [-datasources <datasources>] [-instance <instance>]
-[-overwrite]`
+<br>`export-datasource -filepath <filepath> [-all] [-datasources <datasources>] [-instance <instance>] [-overwrite]`
 
 **Command Arguments:**
 
-**`- filepath <filepath>`**
+`- filepath <filepath>`
 <br> [required] The full path to the file that will contain the exported data sources.
 
-**`- all`**
+`- all`
 <br> This option is used to indicate that all data sources (LDAP, database and custom) should be exported.
 
-- datasources <datasources>
+`- datasources <datasources>`
 <br> If you don’t want all data sources to be exported, list the name(s) of the data sources to export. Separate the names by a comma (e.g. oracle,ad,sun)
 
-**`- instance <instance>`**
+`- instance <instance>`
 <br> The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
 
-**`- overwrite`**
+`- overwrite`
 <br> This option is used to indicate that the export file should overwrite an existing file of the same
 name.
 

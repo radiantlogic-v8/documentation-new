@@ -86,7 +86,7 @@ Vdsconfig command output format is configured using operating system environment
 
 | Environment Variable | Allowable Values | Result
 |---|---|---
-RLI_CLI_FORMAT <br>(Note – If this variable is not set, output displays in TABLE format (if supported). If the command does not support TABLE format, output defaults to JSON format. | JSON | Displays command output in JSON format.
+RLI_CLI_FORMAT <br> Note – If this variable is not set, output displays in TABLE format (if supported). If the command does not support TABLE format, output defaults to JSON format. | JSON | Displays command output in JSON format.
 | | YAML | Displays command output in YAML format.
 RLI_CLI_VERBOSE | TRUE | The command log details of its progress. This is the default value.
 | | FALSE | The command does not log details of its progress.
@@ -148,8 +148,7 @@ An example is shown below.
 <br>`Header value: Basic <username>:<password>`
 <br>`Ex: Basic cn=directory manager:password`
 
->[!note]
->In the following image, the authentication header value is encoded.
+>[!note] In the following image, the authentication header value is encoded.
 
 ## Expert Mode
 
@@ -157,8 +156,7 @@ Some settings in the Control Panel are accessible only in Expert Mode. To switch
 
 ![expert mode](Media/expert-mode.jpg)
 
->[!note]
->The Main Control Panel saves the last mode (Expert or Standard) it was in when you log out and returns to this mode automatically when you log back in. The mode is saved on a per-role basis.
+>[!note] The Main Control Panel saves the last mode (Expert or Standard) it was in when you log out and returns to this mode automatically when you log back in. The mode is saved on a per-role basis.
 
 ## Require a UserID and Password to Execute Commands
 
@@ -190,8 +188,7 @@ In the following example, a request is made to display product information passi
 
 `https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=product-info&authuser=operator&authpwdfile=C:\radiantone\vds\password.txt`
 
->[!note]
->When passing the authuser and authpwdfile command arguments, basic password authentication is still required. See [Basic Password Authentication](#basic-password-authentication) for more information.
+>[!note] When passing the authuser and authpwdfile command arguments, basic password authentication is still required. See [Basic Password Authentication](#basic-password-authentication) for more information.
 
 ## Parsing Command Argument Strings
 
@@ -211,8 +208,7 @@ The &quot; notation is replaced at runtime by a double quote character and is in
 
 These special notations should be used only when indicating quotes as part of the value for your argument, and they also work when used as described in the [execfile](general-commands.md#execfile) command.
 
->[!note]
->These notations are not compatible with operations issued through a REST (ADAP) interface.
+>[!note] These notations are not compatible with operations issued through a REST (ADAP) interface.
 
 ## Audit Log
 
@@ -221,8 +217,7 @@ Configuration commands issued using the vdsconfig utility can be logged. To enab
 
 The default audit log is <RLI_HOME>/logs/vdsconfig.log.
 
->[!warning]
->If you want the admin name that issued the command logged, make sure you [Require a UserID and Password to Execute Commands](#require-a-userid-and-password-to-execute-commands).
+>[!warning] If you want the admin name that issued the command logged, make sure you [Require a UserID and Password to Execute Commands](#require-a-userid-and-password-to-execute-commands).
 
 ## Technical Support
 

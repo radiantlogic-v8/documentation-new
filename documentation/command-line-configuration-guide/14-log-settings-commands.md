@@ -25,10 +25,10 @@ This command displays a logging configuration property.
 
 **Command Arguments:**
 
-**` - key <key>`**
+` - key <key>`
 <br>[required] The logging property key. Examples of logging property keys for RadiantOne are: server.log.level, server.log.file, and server.log.file.archive. The logging property key names can be seen from the ZooKeeper tab in the Main Control Panel as described above.
 
-**`- path <path>`**
+`- path <path>`
 <br>[required] The path to the logging configuration. Examples of the path to the logging configuration are:
 
 For RadiantOne: zk:log4j2-vds.json
@@ -37,7 +37,7 @@ For Control Panel: zk:log4j2-control-panel.json
 
 The path to the logging configurations can be seen from the Zookeeper tab in the Main Control Panel as described above.
 
-**`- instance <instance>`**
+`- instance <instance>`
 <br>The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
 
 **REST (ADAP) Example**
@@ -55,21 +55,20 @@ set-logging-property -key <key> -path <path> [-instance <instance>] [-value <val
 
 Command Arguments:
 
-**`- key <key>`**
+`- key <key>`
 <br>[required] The logging property key. Examples of logging property keys for RadiantOne are: server.log.level, server.log.file, and server.log.file.archive. The logging property key names can be seen from the ZooKeeper tab in the Main Control Panel as described above.
 
-**`- path <path>`**
+`- path <path>`
 <br>[required] The path to the logging configuration. Examples of the path to the logging configuration are:
 For RadiantOne: zk:log4j2-vds.json
 For Control Panel: zk:log4j2-control-panel.json
 
-The path to the logging configurations can be seen from the ZooKeeper tab in the Main Control
-Panel as described above.
+The path to the logging configurations can be seen from the ZooKeeper tab in the Main Control Panel as described above.
 
-**`- instance <instance>`**
+`- instance <instance>`
 <br>The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
 
-**`- value <value>`**
+`- value <value>`
 <br>The logging property value.
 
 **REST (ADAP) Example**
@@ -87,19 +86,17 @@ This command performs a merge of two logging configurations.
 
 **Command Arguments:**
 
-**`- mergepath <mergepath>`**
+`- mergepath <mergepath>`
 <br>[required] The path of the JSON-formatted logging configuration to merge with.
 
->[!note]
->The value for this argument should specify the location of a logging configuration in either the file system (i.e. file:c/tmp/mylogger.json) or in Zookeeper (i.e. zk:log4j2-vds.json).
+>[!note] The value for this argument should specify the location of a logging configuration in either the file system (i.e. file:c/tmp/mylogger.json) or in Zookeeper (i.e. zk:log4j2-vds.json).
 
-**`- path <path>`**
+`- path <path>`
 <br>[required] The path of the JSON-formatted logging configuration. The result of the merge operation is stored in the location specified by this argument.
 
->[!note]
->The value for this argument should specify the location of a logging configuration in either the file system (i.e. file:c/tmp/mylogger.json) or in Zookeeper (i.e. zk:log4j2-vds.json).
+>[!note] The value for this argument should specify the location of a logging configuration in either the file system (i.e. file:c/tmp/mylogger.json) or in Zookeeper (i.e. zk:log4j2-vds.json).
 
-**`- instance <instance>`**
+`- instance <instance>`
 <br>The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
 
 **REST (ADAP) Example**

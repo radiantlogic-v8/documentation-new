@@ -24,28 +24,29 @@ This command launches a task to initialize a persistent cache. In multi-node clu
 
 **Command Arguments:**
 
-**`- namingcontext <namingcontext>`**
+`- namingcontext <namingcontext>`
 <br>[required] The name of the naming context.
 
-**`- instance <instance>`**
+`- instance <instance>`
 <br>The name of the RadiantOne instance. If this is not specified, the default instance named vds_server is used.
 
-**`- interactive`**
+`- interactive`
 <br>When this argument is specified, the command launches the tasks and periodically displays their current state until they are finished. An error code is returned if the task ends with an error. If this argument is not specified, the command launches the tasks and terminates.
 
-**`- ldif <ldif>`**
+`- ldif <ldif>`
 <br>The path to an LDIF file that is used to initialize the cache. If not specified, an LDIF is generated directly from the data source.
 
-**`- nthreads <nthreads>`**
+`- nthreads <nthreads>`
 <br>Defines the number of threads to use during indexing. It is advised to let the system handle this automatically unless the vpp option is used.
 
-**`- useldifz`**
+`- useldifz`
 <br>If this argument is specified, an LDIFz (secure and zipped) file will be generated to initialize the cache. If not specified, the default LDIF file format is used.
 
 **`- vpp`**
 <br>Use the virtual engine parallel processor (vpp) to speed up the cache image creation while indexing. This is useful when the virtual view to be cached contains many entries and other time-intensive configurations like joins, and computed attributes involving lookups. This option isn’t compatible with views associated with interception scripts. Initializing a view that is incompatible with the -vpp command results in an error that indicates why the view is incompatible.
 
 **REST (ADAP) Example**
+
 In the following example, a request is made to initialize a persistent cache for o=companyprofiles.
 
 `https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=init-pcache&namingcontext=o=companyprofiles&interactive&vpp&nthreads=32`
@@ -65,22 +66,22 @@ This command launches a task to import an LDIF file.
 
 **Command Arguments:**
 
-**`- ldif <ldif>`**
+`- ldif <ldif>`
 <br>[required] The path to an LDIF file. If you have defined an LDIF Encryption Key from Main Control Panel > Settings > Security > Attribute Encryption (LDIFZ Encryption Key section), indicate an ldifz suffix on the file name to import (e.g. myfile.ldifz). LDIFZ is a zipped and encrypted file format used to prevent the data in the file from being read. Both the source and target RadiantOne services must be configured for the same LDIF Encryption Key in order to support the contents of the ldifz file.
 
-**`- basedn <basedn>`**
+`- basedn <basedn>`
 <br>The base DN for a branch containing the entries that should be included in the import.
 
-**`- datasourcename <datasourcename>`**
+`- datasourcename <datasourcename>`
 <br>The name of an LDAP data source. If this argument is not specified, the 'vds' data source will be used.
 
-**`- instance <instance>`**
+`- instance <instance>`
 <br>The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
 
-**`- interactive`**
+`- interactive`
 <br>When this argument is specified, the command will launch the tasks and periodically print out their current state until they are finished. If this argument is not specified, the command launches the tasks and terminates.
 
-**`- override`**
+`- override`
 <br>If this argument is specified, existing entries may be overridden. By default, if not specified, existing entries are not overridden.
 
 **REST (ADAP) Example**
@@ -105,40 +106,43 @@ This command launches a task to export data from a LDAP data source backend, Uni
 
 **Command Arguments:**
 
-**`- basedn <basedn>`**
+`- basedn <basedn>`
 <br>[required] The base DN that is used to export data to the LDIF.
-**`- ldif <ldif>`**
+
+`- ldif <ldif>`
 <br>[required] The path to an LDIF file. If you have defined an LDIF Encryption Key from Main Control Panel > Settings > Security > Attribute Encryption (LDIFZ Encryption Key section), indicate an ldifz suffix on the file name (e.g. myfile.ldifz). LDIFZ is a zipped and encrypted file format used to prevent the data in the file from being read. Both the source and target RadiantOne services must be configured for the same LDIF Encryption Key in order to support the contents of the ldifz file.
-**`- scope <scope>`**
+
+`- scope <scope>`
 <br>[required] The scope that is used to export data to the LDIF. Accepted values are: base, one, sub. Default value is one.
 
-**`- csv`**
+`- csv`
 <br>Creates a CSV file after the LDIF file is created. The CSV file will be in the same directory as the LDIF file and have the same name as the LDIF file with .csv extension. If the CSV file exists, it will be overwritten. CSV files are not created if .ldifz is used.
 
-**`- datasourcename <datasourcename>`**
+`- datasourcename <datasourcename>`
 <br>The name of an LDAP data source. If this argument is not specified, the 'vds' data source is used.
 
-**`- filter <filter>`**
+`- filter <filter>`
 <br>Optional LDAP search filter to be applied before exporting the data to the LDIF file.
-**`- instance <instance>`**
-<br>The name of the RadiantOne instance. If not specified, the default instance named vds_server
-is used.
-**`- interactive`**
+
+`- instance <instance>`
+<br>The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
+
+`- interactive`
 <br>When this argument is specified, the command will launch the tasks and periodically print out their current state until they are finished. If this argument is not specified, the command launches the tasks and terminates.
-**`- limit <limit>`**
+
+`- limit <limit>`
 <br>The maximum number of entries to export to the LDIF. If this argument is not specified, all entries are exported. Note: when this argument is specified, the export task may throw a SizeLimitException and end in an ERROR state. However, the LDIF file will still be generated as expected with the specified number of entries.
 
-**`- mappedbasedn <mappedbasedn>`**
+`- mappedbasedn <mappedbasedn>`
 <br>The optional remapped base DN that each entry will have in the LDIF file.
 
-**`- replication`**
+`- replication`
 <br>If this is specified, the UUID attributes are included in the exported LDIF file. If you want to use the exported LDIF file to initialize a RadiantOne Universal Directory store (a replica), then you should pass -replication in the export-ldif command.
 
-**`- returnattributes <returnattributes>`**
+`- returnattributes <returnattributes>`
 <br>Optional list of comma-separated attributes to return from the search and include in the exported LDIF file. If nothing is specified, all attributes are requested.
 
->[!note]
->Returnattributes is not considered if the -replication option is used. This is because the -replication option automatically returns all attributes for export.
+>[!note] Returnattributes is not considered if the -replication option is used. This is because the -replication option automatically returns all attributes for export.
 
 **REST (ADAP) Example**
 
@@ -163,16 +167,16 @@ This command launches a task to initialize a RadiantOne Universal Directory (HDA
 
 **Command Arguments:**
 
-**`- ldif <ldif>`**
+`- ldif <ldif>`
 <br>[required] The path to the LDIF file used for initializing.
 
-**`- namingcontext <namingcontext>`**
+`- namingcontext <namingcontext>`
 <br>[required] The name of the naming context.
 
-**`- instance <instance>`**
+`- instance <instance>`
 <br>The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
 
-**`- interactive`**
+`- interactive`
 <br>When this argument is specified, the command launches the tasks and periodically displays their current state until they are finished. If this argument is not specified, the command launches the tasks and terminates.
 
 **REST (ADAP) Example**
@@ -198,13 +202,13 @@ This command launches a task to rebuild an index for a RadiantOne Universal Dire
 
 **Command Arguments:**
 
-**`- namingcontext <namingcontext>`**
+`- namingcontext <namingcontext>`
 <br>[required] The name of the naming context that you want to rebuild the indexes for.
 
-**`- instance <instance>`**
+`- instance <instance>`
 <br>The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
 
-**`- interactive`**
+`- interactive`
 <br>When this argument is specified, the command launches the tasks and periodically displays their current state until they are finished. If this argument is not specified, the command launches the tasks and terminates.
 
 **REST (ADAP) Example**
@@ -241,12 +245,11 @@ This command launches a task scheduled according to report configuration that ou
 **`- reportconfigdn <reportconfigdn>`**
 <br>[required] The DN of global ID report configuration.
 
->[!note]
->This argument requires a configured query and report in the Global Identity Viewer. Refer to the Global Identity Viewer Guide for more information With a query and report configured, navigate to and expand ou=reports,o=<projectname>,ou=webapps,ou=globalsettings,cn=config on the Directory Browser tab. Select a report and view its filter, format, and frequency values to determine if it is the report you want to schedule. The entrydn value is used for the reportconfigdn.
+>[!note] This argument requires a configured query and report in the Global Identity Viewer. Refer to the Global Identity Viewer Guide for more information With a query and report configured, navigate to and expand ou=reports,o=<projectname>,ou=webapps,ou=globalsettings,cn=config on the Directory Browser tab. Select a report and view its filter, format, and frequency values to determine if it is the report you want to schedule. The entrydn value is used for the reportconfigdn.
 
 ![An image showing ](Media/Image9.4.jpg)
 
-**`- instance <instance>`**
+`- instance <instance>`
 The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
 
 **REST (ADAP) Example**

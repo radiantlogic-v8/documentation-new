@@ -24,10 +24,10 @@ This command starts or stops a specified connector in a real-time persistent cac
 
 **Command Arguments:**
 
-**`- connectorname <connectorname>`**
+`- connectorname <connectorname>`
 <br>The name of the real-time persistent cache connector.
 
-**`- state <state>`**
+`- state <state>`
 <br>Indicates that the connector be started or stopped. Accepted values are “start” and “stop”.
 
 **REST (ADAP) Example**
@@ -45,11 +45,10 @@ This command empties the queue of a specified real-time persistent cache refresh
 
 **Command Arguments:**
 
-**`- pipelineid <pipelineID>`**
-<br>[required] The identifier of the pipeline. Run the list-topologies command to locate the pipelines
-identifiers for each topology.
+`- pipelineid <pipelineID>`
+<br>[required] The identifier of the pipeline. Run the list-topologies command to locate the pipelines identifiers for each topology.
 
-**`- mode <mode>`**
+`- mode <mode>`
 <br>This property indicates which queue to empty. Accepted values are: QUEUE_ONLY, DEAD_LETTER_QUEUE, or ALL. If mode is not passed in the command, ALL is the default. For persistent cache refreshes, mode is typically left empty. For global synchronization queues, you may want to only empty the main queue or the dead letter queue.
 
 **REST (ADAP) Example**
@@ -62,12 +61,12 @@ In the following example, a request is made to empty a cache’s queue.
 
 This command resets the cursor for a specified persistent cache refresh.
 
-**Usage(())
+**Usage**
 <br>`reset-cursor [-connectorname <connectorname>]`
 
 **Command Arguments:**
 
-**`- connectorname <connectorname>`**
+`- connectorname <connectorname>`
 <br>The name of the persistent cache connector.
 
 **REST (ADAP) Example**
@@ -84,8 +83,7 @@ Agents are also used for CPLDS sync processes. CPLDS Agents run on follower-only
 
 This command lists the currently running agents, both the ones used for persistent cache refresh and the ones used for CPLDS.
 
->[!note]
->This command lists both CPLDS agents and real-time persistent cache agents.
+>[!note] This command lists both CPLDS agents and real-time persistent cache agents.
 
 **Usage**
 <br>list-agents
@@ -115,11 +113,10 @@ This command stops an agent specified by name.
 
 **Command Arguments:**
 
-**`- agentname <agentname>`**
+`- agentname <agentname>`
 <br>The name of the agent to stop.
 
->[!note]
->This value can be found by running the command monitoring.bat -d orchestrator-agent-job. Monitoring.bat is located at <RLI_HOME>\bin.
+>[!note] This value can be found by running the command monitoring.bat -d orchestrator-agent-job. Monitoring.bat is located at <RLI_HOME>\bin.
 
 **REST (ADAP) Example**
 
@@ -158,8 +155,7 @@ Agents are also used for [global synchronization](global-sync-commands.md) and C
 
 This command stops all local agents running on the machine from which the command was launched.
 
->[!note]
->This command stops agents used in CPLDS, global synchronization and real-time persistent cache refresh.
+>[!note] This command stops agents used in CPLDS, global synchronization and real-time persistent cache refresh.
 
 **Usage**
 <br>stop-all-local-agents
@@ -182,7 +178,7 @@ This command configures a persistent cache with a real-time refresh strategy.
 
 **Command Arguments:**
 
-**`- namingcontextdn <namingcontextdn>`**
+`- namingcontextdn <namingcontextdn>`
 <br>The naming context DN of the persistent cache to configure as a real-time refresh.
 
 **REST (ADAP) Example**
@@ -201,13 +197,13 @@ configure-connector-type [-connectorname <connectorname>]
 
 **Command Arguments:**
 
-**`- connectorname <connectorname>`**
+`- connectorname <connectorname>`
 <br>The name of the persistent cache connector.
 
-**`- connectortype <connectortype>`**
+`- connectortype <connectortype>`
 <br>The connector type. Possible values are: CHANGELOG, AD_DIRSYNC, AD_USN, AD_HYBRID, DB_TIMESTAMP, DB_COUNTER, DB_TRIGGER, SCIM2, SCIM1, GRAPHAPI, MGRAPH, OKTA, KAFKA, KAFKA_GG, PERSISTENT_SEARCH, LDAP_APPLY, SCIM2_APPLY
 
-**`- skipconfirmation`**
+`- skipconfirmation`
 <br>Bypasses the confirmation when deconfiguring the connector. If this argument is omitted, the command requires confirmation before deconfiguring the connector.
 
 **REST (ADAP) Example**
@@ -225,7 +221,7 @@ This command lists the connector names for a specified real-time cache refresh.
 
 **Command Arguments:**
 
-**`- namingcontextdn <namingcontextdn>`**
+`- namingcontextdn <namingcontextdn>`
 <br>[required] The DN of the naming context (must have a persistent cache).
 
 **REST (ADAP) Example**
@@ -243,7 +239,7 @@ This command lists properties and their values for a connector.
 
 **Command Arguments:**
 
-**`- connectorname <connectorname>`**
+`- connectorname <connectorname>`
 <br>The name of the persistent cache connector.
 
 **REST (ADAP) Example**
@@ -261,14 +257,13 @@ This command gets a property for a connector configuration.
 
 **Command Arguments:**
 
-**`- connectorname <connectorname>`**
+`- connectorname <connectorname>`
 <br>The name of the persistent cache connector.
 
-**`- propertyid <propertyid>`**
+`- propertyid <propertyid>`
 <br>The connector configuration property ID.
 
->[!note]
->You can use the list-connector-properties command to display available options for this argument.
+>[!note] You can use the list-connector-properties command to display available options for this argument.
 
 **REST (ADAP) Example**
 
@@ -283,24 +278,22 @@ This command sets a property for a connector configuration. Run the list-connect
 **Usage**
 <br>`set-connector-property -connectorname <connectorname> -propertyid <propertyid>`
 
-**`- propertyvalue <propertyvalue>`**
+`- propertyvalue <propertyvalue>`
 
 **Command Arguments:**
 
-**`- connectorname <connectorname>`**
+`- connectorname <connectorname>`
 <br>[required] The name of the persistent cache connector.
 
-**`- propertyid <propertyid>`**
+`- propertyid <propertyid>`
 <br>[required] The connector property ID.
 
->[!note]
->You can use list-connector-properties to display available options for this argument.
+>[!note] You can use list-connector-properties to display available options for this argument.
 
-**`- propertyvalue <propertyvalue>`**
+`- propertyvalue <propertyvalue>`
 <br>[required] The connector property value.
 
->[!note]
->For Windows command line, some property values require double quotes surrounding them. In this case, you can use the \ to protect the “. E.g. C:\radiantone\vds\bin>vdsconfig.bat set-connector-property -connectorname o_sead_pcache_proxy__dc_seradiant_dc_dom__seradiantad -propertyid "excludedAttributes" -propertyvalue [\"member\",\"memberOf\",\"whenCreated\"]. <br> If the property value contains a `<space>`, protect the entire value with double quotes. E.g. C:\radiantone\vds\bin>vdsconfig.bat set-connector-property -connectorname o_sead_pcache_proxy__dc_seradiant_dc_dom__seradiantad -propertyid includedBranches -propertyvalue “[ \"cn=users,dc=seradiant,dc=dom\",\"cn=domain groups,dc=seradiant,dc=dom\ "]”
+>[!note] For Windows command line, some property values require double quotes surrounding them. In this case, you can use the \ to protect the “. E.g. C:\radiantone\vds\bin>vdsconfig.bat set-connector-property -connectorname o_sead_pcache_proxy__dc_seradiant_dc_dom__seradiantad -propertyid "excludedAttributes" -propertyvalue [\"member\",\"memberOf\",\"whenCreated\"]. <br> If the property value contains a `<space>`, protect the entire value with double quotes. E.g. C:\radiantone\vds\bin>vdsconfig.bat set-connector-property -connectorname o_sead_pcache_proxy__dc_seradiant_dc_dom__seradiantad -propertyid includedBranches -propertyvalue “[ \"cn=users,dc=seradiant,dc=dom\",\"cn=domain groups,dc=seradiant,dc=dom\ "]”
 
 **REST (ADAP) Example**
 
@@ -317,19 +310,16 @@ This command sets multiple connector configuration properties with a text file.
 
 **Command Arguments:**
 
-**`- connectorname <connectorname>`**
+`- connectorname <connectorname>`
 <br>The name of the persistent cache connector.
 
-**`- propertyfilename <propertyfilename>`**
+`- propertyfilename <propertyfilename>`
 <br>The full path to a file containing the connector configuration properties.
 
->[!note]
->The contents of the file must be in JSON format. An example of the syntax used inside the properties file is shown below.
-
->**{ "pollingInterval" : 10001, "sizeLimit" : 1001, "retryIntervalOnError" : 10001,
+>[!note] The contents of the file must be in JSON format. An example of the syntax used inside the properties file is shown below. <br> { "pollingInterval" : 10001, "sizeLimit" : 1001, "retryIntervalOnError" : 10001,
 "retryIntervalOnConnectionError" : 10001, "retryIntervalOnCommitError" :
 10001, "retryIntervalOnPartialCommitError" : 10001, "queueCommitDelay" :
-10001, "queueCommitSize" : 1001}**
+10001, "queueCommitSize" : 1001}
 
 **REST (ADAP) Example**
 
@@ -346,13 +336,13 @@ This command executes DB changelog configure or deconfigure scripts for a DB con
 
 **Command Arguments:**
 
-**`- connectorname <connectorname>`**
+`- connectorname <connectorname>`
 <br>[required] The name of the persistent cache connector.
 
-**`- namingcontextdn <namingcontextdn>`**
+`- namingcontextdn <namingcontextdn>`
 <br>[required] The DN of the naming context (must have a persistent cache).
 
-**`- deconfigure`**
+`- deconfigure`
 <br>If this option is specified, deconfigure scripts are run instead of configure scripts.
 
 **REST (ADAP) Example**
@@ -370,17 +360,16 @@ This command attempts to refresh the cache on entries where errors occurred duri
 
 **Command Arguments:**
 
-**`- changenumber <changenumber>`**
+`- changenumber <changenumber>`
 <br>The changenumber used to search the 'cn=cachefreshlog'. Only entries equal or greater to the given changenumber will be processed. The default value is 0.
 
-**`- instance <instance>`**
+`- instance <instance>`
 <br>The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
 
-**`- status <status>`**
-<br>The value of the 'status' attribute for the entries to be refreshed. By default, all entries with a
-status value equal to 2 are refreshed.
+`- status <status>`
+<br>The value of the 'status' attribute for the entries to be refreshed. By default, all entries with a status value equal to 2 are refreshed.
 
-**`- verbose`**
+`- verbose`
 <br>Indicates if the command should log details of its progress.
 
 **REST (ADAP) Example**

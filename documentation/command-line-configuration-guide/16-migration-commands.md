@@ -11,8 +11,7 @@ This chapter explains how to traverse, export, and import resources and their de
 
 For more information, see the RadiantOne Operations Guide.
 
->[!note]
->The commands in this chapter do not support output format configuration. Refer to [Configuring Command Output Format](introduction#configuring-command-output-format) for more information.
+>[!note] The commands in this chapter do not support output format configuration. Refer to [Configuring Command Output Format](introduction#configuring-command-output-format) for more information.
 
 ### resource-traverse
 
@@ -23,10 +22,10 @@ This command displays the resource dependency tree. The results include any data
 
 **Command Arguments:**
 
-**`- name <name>`**
+`- name <name>`
 <br>[required] The name of the resource. This could be a data source name, a .dvx file name (e.g. contextcatalog.dvx), an .orx file name (e.g. sales.orx), or a root naming context (e.g. o=companydirectory).
 
-**`- instance <instance>`**
+`- instance <instance>`
 <br>The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
 
 **REST (ADAP) Example**
@@ -34,6 +33,7 @@ This command displays the resource dependency tree. The results include any data
 In the following example, a request is made to display the resource dependency tree for a virtual view named contextcatalog.dvx.
 
 `https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=resource-traverse&name=contextcatalog.dvx`
+
 ### resource-export
 
 This command exports the resource and its dependencies.
@@ -43,16 +43,16 @@ This command exports the resource and its dependencies.
 
 **Command Arguments:**
 
-**`- name <name>`**
+`- name <name>`
 <br>[required] The name of the resource.
 
-**`- instance <instance>`**
+`- instance <instance>`
 <br>The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
 
-**`- path <path>`**
+`- path <path>`
 <br>The file or folder to export to.
 
-**`- skip <name>`**
+`- skip <name>`
 <br>The name of the resource to skip and exclude from the export.
 
 **REST (ADAP) Example**
@@ -70,28 +70,27 @@ This command imports the resource and its dependencies.
 
 **Command Arguments:**
 
-**`- path <path>`**
+`- path <path>`
 <br>[required] The file or folder to import from.
 
-**`- apply`**
+`- apply`
 <br>Flag required to apply the import. If this isn’t passed, a summary of all resources to be added and overwritten in the target is displayed.
 
-**`- instance <instance>`**
+`- instance <instance>`
 <br>The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
 
-**`- interactive`**
+`- interactive`
 <br>Indicates the command should run in interactive mode (user may be prompted for input if a resource already exists).
 
->[!note]
->REST (ADAP) commands do not support this argument.
+>[!note] REST (ADAP) commands do not support this argument.
 
-**`- overwrite`**
+`- overwrite`
 <br>Indicates that existing resources are allowed to be overwritten during the import.
 
-**`- skip <name>`**
+`- skip <name>`
 <br>Resource name to skip. Always run the command without the -apply flag first to see how the target environment resources are going to be affected. This allows you to take note of the resources that should be skipped (using the -skip flag) when you run the command with the -apply flag.
 
-**`- skipregex <skipregex>`**
+`- skipregex <skipregex>`
 <br>A regular expression indicating which resources to skip. The format for the regex is: resourcetype: regex. Supported resource types are: naming, ds, orx, dvx, file, custom, all.
 Example: naming:^ou.* --> skips all naming contexts starting with the name ou
 Example: all:^test.* --> skips all resources starting with the name test.

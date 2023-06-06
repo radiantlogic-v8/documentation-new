@@ -17,13 +17,13 @@ This command converts an LDIF file into a CSV file.
 
 **Command Arguments**
 
-**`- csv <csv>`**
+`- csv <csv>`
 <br>[required] The path to a CSV file. If the file exists, it will be overwritten.
 
-**`- ldif <ldif>`**
+`- ldif <ldif>`
 <br>[required] The path to an LDIF file.
 
-**`- returnattributes <returnattributes>`**
+`- returnattributes <returnattributes>`
 <br>Optional comma-separated list of specified return attributes.
 
 **REST (ADAP) Example**

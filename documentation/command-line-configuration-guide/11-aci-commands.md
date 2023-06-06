@@ -20,13 +20,14 @@ This command lists all the Access Control Instructions.
 
 **Command Arguments:**
 
-**`- dn <dn>`**
+`- dn <dn>`
 <br>[required] The target DN to add ACI to.
 
-**`- instance <instance>`**
+`- instance <instance>`
 <br>The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
 
 **REST (ADAP) Example**
+
 In the following example, a request is made to list all ACIs configured for ou=allprofiles.
 
 `https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=list-acis&dn=ou=allprofiles`
@@ -40,16 +41,16 @@ This command gets/exports an Access Control Instruction.
 
 **Command Arguments:**
 
-**`- aciname <aciname>`**
+`- aciname <aciname>`
 <br>[required] The name of the ACI to fetch.
 
-**`- dn <dn>`**
+`- dn <dn>`
 <br>[required] The target DN to add ACI to.
 
-**`- file <file>`**
+`- file <file>`
 <br>The file to export the ACI to.
 
-**`- instance <instance>`**
+`- instance <instance>`
 <br>The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
 
 **REST (ADAP) Example**
@@ -67,16 +68,16 @@ This command creates/imports an Access Control Instruction.
 
 **Command Arguments:**
 
-**`- dn <dn>`**
+`- dn <dn>`
 <br>[required] The target DN to add ACI to.
 
-**`- file <file>`**
+`- file <file>`
 <br>The file containing the ACI to add to RadiantOne.
 
-**`- instance <instance>`**
+`- instance <instance>`
 <br>The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
 
-**`- value <value>`**
+`- value <value>`
 <br>The ACI to add to RadiantOne.
 
 **REST (ADAP) Example**
@@ -94,10 +95,10 @@ This command removes all Access Control Instructions for a given DN.
 
 **Command Arguments:**
 
-**`- dn <dn>`**
+`- dn <dn>`
 <br>[required] The DN in which all ACIs are removed.
 
-**`- instance <instance>`**
+`- instance <instance>`
 <br>The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
 
 **REST (ADAP) Example**

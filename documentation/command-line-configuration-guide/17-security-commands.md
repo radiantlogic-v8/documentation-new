@@ -5,11 +5,9 @@ description: Command Line Configuration Guide
 
 # Security Commands
 
-Attribute encryption cipher and key can be set from the Main Control Panel > Settings tab > Security section -> HDAP Attribute Encryption section.
+Attribute encryption cipher and key can be set from the Main Control Panel > Settings tab > Security section > HDAP Attribute Encryption section.
 
->[!note]
->The commands in this chapter do not support output format configuration. Refer to [Configuring Command Output Format](introduction.md#configuring-command-output-format) for more
-information.
+>[!note] The commands in this chapter do not support output format configuration. Refer to [Configuring Command Output Format](introduction.md#configuring-command-output-format) for more information.
 
 ![security commands](Media/Image17.1.jpg)
 
@@ -26,25 +24,27 @@ Use the test-cert-mapping command to determine if a match exists between a certi
 This command sets the encryption cipher and key used for attribute encryption/decryption.
 
 **Usage:**
+
 <br>`set-attrenc-key -cipher <cipher> -key <key> [-instance <instance>] [-nowarning]`
 
 **Command Arguments:**
 
-**`- cipher <cipher>`**
+`- cipher <cipher>`
 <br>[required] The name of the cipher to use for encryption. The accepted possible values are: DES3, AES128 and AES256. Possible values are dependent upon whether unlimited strength cipher suites have been installed in RadiantOne. For details on supporting unlimited strength ciphers, see the RadiantOne Hardening Guide.
 
-**`- key <key>`**
+`- key <key>`
 <br>[required] The secret key to use for encryption/decryption.
 
-**`- instance <instance>`**
+`- instance <instance>`
 <br>The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
 
-**`- nowarning`**
+`- nowarning`
 <br>Indicates that this command should not display the confirmation warning to the user. If this argument is not passed, the user is shown the following warning when they run the command and they must enter Y (to proceed) or N (to cancel the configuration of the security key).
 
 `Warning: this command can only be launched once. Once these parameters have been set, you will no longer be able to change them. Are you sure you want to proceed (Y/N)?`
 
 **REST (ADAP) Example**
+
 In the following example, a request is made to set the encryption cipher and key used for attribute encryption/decryption.
 
 `https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=set-attrenc-key&cipher=AES128&key=secret123`
@@ -53,18 +53,19 @@ In the following example, a request is made to set the encryption cipher and key
 
 This command sets the key generation parameters (security key and cipher) for LDIFZ encryption.
 
-Usage:
+**Usage:**
+
 set-ldifz-key -cipher <cipher> -key <key> [-instance <instance>]
 
 **Command Arguments:**
 
-**`- cipher <cipher>`**
+`- cipher <cipher>`
 <br>[required] The cipher to use for encryption. The following ciphers are accepted by this command: DES3, AES128, AES256, and AWSKMS.
 
-**`- key <key>`**
+`- key <key>`
 <br>[required] The security key used to generate an encryption key.
 
-**`- instance <instance>`**
+`- instance <instance>`
 <br>The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
 
 **REST (ADAP) Example**
@@ -77,18 +78,18 @@ In the following example, a request is made to set LDIFZ key generation paramete
 
 This command, if enabled, forces users to use the LDIFZ format when exporting an LDIF file.
 
->[!note]
->Enabling this property requires an LDIFZ encryption key to first be defined.
+>[!note] Enabling this property requires an LDIFZ encryption key to first be defined.
 
 **Usage:**
+
 <br>`set-secure-ldif-export -enable <enable> [-instance <instance>]`
 
 **Command Arguments:**
 
-**`- enable <enable>`**
+`- enable <enable>`
 <br>[required] Indicates if secure LDIF export should be enabled (true) or disabled (false).
 
-**`- instance <instance>`**
+`- instance <instance>`
 <br>The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
 
 **REST (ADAP) Example**
@@ -106,10 +107,10 @@ This command tests the subject (or SAN) associated with a given certificate agai
 
 **Command Arguments:**
 
-**`- cert <cert>`**
+`- cert <cert>`
 <br>[required] The path to the certificate to test.
 
-**`- instance <instance>`**
+`- instance <instance>`
 <br>The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
 
 **REST (ADAP) Example**
@@ -123,17 +124,18 @@ In the following example, a request is made to test the subject associated with 
 The client certificate truststore contains security certificates that RadiantOne uses to establish secure SSL/TLS connections to backend sources. Certificates can be managed from the Main Control Panel > Settings tab > Security > Client Certificate truststore. Certificates can also be added using the following command.
 
 **Usage:**
+
 <br>`set-cloud-certificate -cert <cert> -name <name> [-instance <instance>]`
 
 **Command Arguments:**
 
-**`- cert <cert>`**
+`- cert <cert>`
 <br>[required] The path to the certificate to add to the client certificate truststore.
 
-**`- name <name>`**
+`- name <name>`
 <br>[required] The name of the certificate to add to the client certificate truststore. This is equivalent to the certificate alias and must be unique across all certificates in the truststore.
 
-**`- instance <instance>`**
+`- instance <instance>`
 <br>The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
 
 **REST (ADAP) Example**
@@ -151,14 +153,13 @@ Certificates can be deleted from the RadiantOne client certificate truststore us
 
 **Command Arguments:**
 
-**`- name <name>`**
+`- name <name>`
 <br>[required] The name of the certificate to delete from the client certificate truststore. This is equivalent to the certificate alias and must be unique across all certificates in the truststore.
 
 **`- instance <instance>`**
 The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
 
-**REST (ADAP) Example
-**REST (ADAP) Example
+**REST (ADAP) Example**
 
 In the following example, a request is made to delete a certificate from the RadiantOne client certificate truststore.
 
@@ -168,15 +169,14 @@ In the following example, a request is made to delete a certificate from the Rad
 
 This command enables FIPS mode. For details on FIPS mode, see the RadiantOne FIPS Mode Guide.
 
->[!note]
->This command must be run on all nodes.
+>[!note] This command must be run on all nodes.
 
 **Usage:**
 <br>`fips-mode-enable [-instance <instance>]`
 
 **Command Arguments:**
 
-**`- instance <instance>`**
+`- instance <instance>`
 <br>The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
 
 **REST (ADAP) Example**

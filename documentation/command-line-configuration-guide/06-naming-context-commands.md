@@ -26,19 +26,19 @@ This command creates a new database proxy naming context.
 
 Command Arguments:
 
-**`- datasourcename <datasourcename>`**
+`- datasourcename <datasourcename>`
 <br> [required] The name of the data source used to create the root naming context.
 
-**`- namingcontext <namingcontext>`**
+`- namingcontext <namingcontext>`
 <br>[required] The name of the naming context.
 
-**`- tables <tables>`**
+`- tables <tables>`
 <br>[required] The tables to include in your database proxy.
 
-**`- instance <instance>`**
+`- instance <instance>`
 <br>The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
 
-**`- rootnc <rootnc>`**
+`- rootnc <rootnc>`
 <br>true for root naming context, false to indicate a sub-level naming context.
 
 **REST (ADAP) Example**
@@ -55,19 +55,19 @@ This command creates a new LDAP proxy naming context.
 
 **Command Arguments:**
 
-**`- datasourcename <datasourcename>`**
+`- datasourcename <datasourcename>`
 <br> [required] The name of the data source used to create the root naming context.
 
-**`- namingcontext <namingcontext>`**
+`- namingcontext <namingcontext>`
 <br> [required] The name of the naming context.
 
-**`- remotebasedn <remotebasedn>`**
+`- remotebasedn <remotebasedn>`
 <br> [required] The base DN that the LDAP Proxy should point to on the remote LDAP data source.
 
-**`- instance <instance>`**
+`- instance <instance>`
 <br> The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
 
-**`- rootnc <rootnc>`**
+`- rootnc <rootnc>`
 <br> true for root naming context, false to indicate a sub-level naming context.
 
 **REST (ADAP) Example**
@@ -85,32 +85,33 @@ Usage:
 
 **Command Arguments:**
 
-**`- namingcontext <namingcontext>`**
+`- namingcontext <namingcontext>`
 <br>[required] The name of the naming context.
 
-**`- inactive`**
+`- inactive`
 <br>Creates the naming context but sets it as inactive (active by default).
 
-**`- indexattr <indexattr>`**
+`- indexattr <indexattr>`
 <br>The list of the attributes (comma-separated) to index.
 
-**`- instance <instance>`**
+`- instance <instance>`
 <br>The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
 
-**`- normalizenames`**
+`- normalizenames`
 <br>ormalize attribute names (disabled by default).
 
-**`- rootnc <rootnc>`**
+`- rootnc <rootnc>`
 <br>true for root naming context, false to indicate a sub-level naming context.
 
-**`- schemacheck`**
+`- schemacheck`
 <br>Enables schema checking on the RadiantOne Universal Directory (HDAP) store (disabled by
 default).
 
-**`- sortedindexattr (sortedindexattr)`**
+`- sortedindexattr (sortedindexattr)`
 <br>The list of the attributes (comma-separated) to maintain a sorted index for.
 
-REST (ADAP) Example
+**REST (ADAP) Example**
+
 In the following example, a request is made to create a Universal Directory store mounted at o=hdap in the RadiantOne namespace.
 
 `https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=create-hdapstore&namingcontext=o=hdap`
@@ -124,17 +125,16 @@ This command creates a new virtual tree naming context.
 
 **Command Arguments:**
 
-**`- namingcontext <namingcontext>`**
+`- namingcontext <namingcontext>`
 <br>[required] The name of the naming context.
 
-**`- dvxname <dvxname>`**
+`- dvxname <dvxname>`
 <br>The name of an existing view (dvx). If this is not specified, a new dvx is generated.
 
-**`- instance <instance>`**
+`- instance <instance>`
 <br>The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
 
-
-**`- rootnc <rootnc>`**
+`- rootnc <rootnc>`
 <br>True for root naming context, false to indicate a sub-level naming context.
 
 **REST (ADAP) Example**
@@ -152,10 +152,10 @@ This command deletes a naming context.
 
 **Command Arguments:**
 
-**`- namingcontext <namingcontext>`**
+`- namingcontext <namingcontext>`
 <br> [required] The name of the naming context.
 
-**`- instance <instance>`**
+`- instance <instance>`
 <br>The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
 
 **REST (ADAP) Example**
@@ -178,21 +178,20 @@ The <RLI_HOME>/bin/vdsconfig utility can be used instead of the UI mentioned abo
 
 This command creates a persistent cache for a root naming context in the RadiantOne namespace. In multi-node clusters, this command must be executed on the RadiantOne leader node. For information on determining the RadiantOne leader, refer to the RadiantOne System Administration Guide.
 
->[!note]
->Use the [configure-real-time-pcache-sync-topology](real-time-persistent-cache-refresh-commands#configure-real-time-pcache-sync-topology) command to configure a real-time refresh.
+>[!note] Use the [configure-real-time-pcache-sync-topology](real-time-persistent-cache-refresh-commands#configure-real-time-pcache-sync-topology) command to configure a real-time refresh.
 
 **Usage:**
 <br>`create-pcache -namingcontext <namingcontext> [-autorefresh] [-indexattr <indexattr>] [-instance <instance>]`
 
 Command Arguments:
 
-**`- namingcontext <namingcontext>`**
+`- namingcontext <namingcontext>`
 <br>[required] The name of the naming context.
 
-**`- indexattr <indexattr>`**
+`- indexattr <indexattr>`
 <br>The list of the attributes (comma-separated) to index.
 
-**`- instance <instance>`**
+`- instance <instance>`
 <br>The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
 
 **REST (ADAP) Example**
@@ -210,10 +209,10 @@ This command deletes an existing cache on a naming context.
 
 **Command Arguments:**
 
-**`- namingcontext <namingcontext>`**
+`- namingcontext <namingcontext>`
 <br>[required] The name of the naming context.
 
-**`- instance <instance>`**
+`- instance <instance>`
 <br>The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
 
 **REST (ADAP) Example**
@@ -239,18 +238,18 @@ This command creates a backup image of a RadiantOne Universal Directory store. T
 
 **Command Arguments:**
 
-**`- namingcontext <namingcontext>`**
+`- namingcontext <namingcontext>`
 <br>[required] The name of the naming context.
 
-**`- backupzip <backupzip>`**
+`- backupzip <backupzip>`
 <br>The full path to the directory where backup archives will be kept. If not specified, the default location of <RLI_HOME>/vds_server/data/oldbackup/<storage_name>-backup is used.
 
 A compressed backup file is created in the location, in a folder named after the root naming context being backed up (i.e. o_companydirectory-backup). The naming convention for the compressed file is yyyy-mm-dd_hh-mm-ss.zip. The compressed file is automatically encrypted using the RadiantOne server certificate keystore password.
 
-**`- instance <instance>`**
+`- instance <instance>`
 <br> The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
 
-**`- nocopy`**
+`- nocopy`
 <br>Indicates that the backup should not be archived (only the most recent backup image is kept). This means that a history of all backups is not maintained, and you won’t be able to restore a RadiantOne Universal Directory store from a previous, point in time. You will only be able to restore from the most recent backup. If -nocopy is not specified, a history of images is stored during every backup in the location dictated by the -backupdir argument.
 
 **REST (ADAP) Example**
@@ -270,19 +269,19 @@ The restore is performed using the compressed file located in the folder indicat
 
 **Command Arguments:**
 
-**`- namingcontext <namingcontext>`**
+`- namingcontext <namingcontext>`
 <br>[required] The name of the naming context.
 
-**`- backupzip <backupzip>`**
+`- backupzip <backupzip>`
 <br>The full path to the directory containing the backup files. Do not specify this option if you use the - backupid option.
 
-**`- backupid <backupid>`**
+`- backupid <backupid>`
 <br>The ID of an existing backup image. If this is not specified, the restore attempts to use the latest backup image found. Use the -list argument to obtain a list of possible backup ids for the given naming context.
 
-**`- instance <instance>`**
+`- instance <instance>`
 <br>The name of the RadiantOne instance. If this is not specified, the default instance named vds_server is used.
 
-**`- list`**
+`- list`
 <br>Option used to print out the list of backup ids for the given naming context. Use this option first to get the list of backup ids as you must pass the backupid when you restore if you want to restore to a specific point in time.
 
 **REST (ADAP) Example**
@@ -295,53 +294,41 @@ In the following example, a request is made to restore a RadiantOne Universal Di
 
 C:\radiantone\vds\bin>vdsconfig.bat backup-hdapstore -namingcontext o=companydirectory
 
-```
-Using RLI home : C:\radiantone\vds
-Using Java home : C:\radiantone\vds\jdk\jre
-0 [ConnectionStateManager-0] WARN
-com.rli.zookeeper.ZooManagerConnectionStateListener - Curator connection state change:
-CONNECTED
-10 [ConnectionStateManager-0] WARN
-com.rli.zookeeper.ZooManagerConnectionStateListener - VDS-ZK connection state
-changed: CONNECTED
-10 [ConnectionStateManager-0] WARN com.rli.zookeeper.ZooManager - ZooManager
-connection state changed: CONNECTED
-A backup has been created for naming context 'o=companydirectory'.
-```
+`Using RLI home : C:\radiantone\vds`
+<br> `Using Java home : C:\radiantone\vds\jdk\jre`
+<br> `0 [ConnectionStateManager-0] WARN`
+<br> `com.rli.zookeeper.ZooManagerConnectionStateListener - Curator connection state change: CONNECTED`
+<br> `10 [ConnectionStateManager-0] WARN`
+<br> `com.rli.zookeeper.ZooManagerConnectionStateListener - VDS-ZK connection state changed: CONNECTED`
+<br> `10 [ConnectionStateManager-0] WARN com.rli.zookeeper.ZooManager - ZooManagerconnection state changed: CONNECTED`
+<br> `A backup has been created for naming context 'o=companydirectory'.`
 
-C:\radiantone\vds\bin>vdsconfig.bat restore-hdapstore -namingcontext o=companydirectory -list
+`C:\radiantone\vds\bin>vdsconfig.bat restore-hdapstore -namingcontext o=companydirectory -list`
 
-```
-Using RLI home : C:\radiantone\vds
-Using Java home : C:\radiantone\vds\jdk\jre
-0 [ConnectionStateManager-0] WARN
-com.rli.zookeeper.ZooManagerConnectionStateListener - Curator connection state change:
-CONNECTED
-8 [ConnectionStateManager-0] WARN
-com.rli.zookeeper.ZooManagerConnectionStateListener - VDS-ZK connection state
-changed: CONNECTED
-9 [ConnectionStateManager-0] WARN com.rli.zookeeper.ZooManager - ZooManager
-connection state changed: CONNECTED
-Current backups for 'o=companydirectory':
-Backup Id Date of Backup
--------------------------------------------
-1440023312307 08/19/2015 15:28:32
-1440023472460 08/19/2015 15:31:12
-1440023524906 08/19/2015 15:32:05
-1440088234257 08/20/2015 09:30:34
-```
-C:\radiantone\vds\bin>vdsconfig.bat restore-hdapstore -namingcontext o=companydirectory - backupid 1440023312307
+`Using RLI home : C:\radiantone\vds`
+<br> `Using Java home : C:\radiantone\vds\jdk\jre`
+<br> `0 [ConnectionStateManager-0] WARN`
+<br> `com.rli.zookeeper.ZooManagerConnectionStateListener - Curator connection state change: CONNECTED`
+<br> `8 [ConnectionStateManager-0] WARN`
+<br> `com.rli.zookeeper.ZooManagerConnectionStateListener - VDS-ZK connection state changed: CONNECTED`
+<br> `9 [ConnectionStateManager-0] WARN com.rli.zookeeper.ZooManager - ZooManager connection state changed: CONNECTED`
+<br> `Current backups for 'o=companydirectory':`
+<br> `Backup Id Date of Backup`
+<br> `-------------------------------------------`
+<br> `1440023312307 08/19/2015 15:28:32`
+<br> `1440023472460 08/19/2015 15:31:12`
+<br> `1440023524906 08/19/2015 15:32:05`
+<br> `1440088234257 08/20/2015 09:30:34`
+<br> `C:\radiantone\vds\bin>vdsconfig.bat restore-hdapstore -namingcontext o=companydirectory - backupid 1440023312307`
 
-```
-Using RLI home : C:\radiantone\vds
-Using Java home : C:\radiantone\vds\jdk\jre
-0 [ConnectionStateManager-0] WARN
-com.rli.zookeeper.ZooManagerConnectionStateListener - Curator connection state change: CONNECTED
-9 [ConnectionStateManager-0] WARN
-com.rli.zookeeper.ZooManagerConnectionStateListener - VDS-ZK connection state changed: CONNECTED
-9 [ConnectionStateManager-0] WARN com.rli.zookeeper.ZooManager - ZooManager connection state changed: CONNECTED
-The naming context has been successfully restored from its backup.
-```
+`Using RLI home : C:\radiantone\vds`
+<br> `Using Java home : C:\radiantone\vds\jdk\jre`
+<br> `0 [ConnectionStateManager-0] WARN`
+<br> `com.rli.zookeeper.ZooManagerConnectionStateListener - Curator connection state change: CONNECTED`
+<br> `9 [ConnectionStateManager-0] WARN`
+<br> `com.rli.zookeeper.ZooManagerConnectionStateListener - VDS-ZK connection state changed: CONNECTED`
+<br> `9 [ConnectionStateManager-0] WARN com.rli.zookeeper.ZooManager - ZooManager connection state changed: CONNECTED`
+<br> `The naming context has been successfully restored from its backup.`
 
 ## Converting Persistent Cache to a RadiantOne Universal Directory store
 
@@ -349,7 +336,7 @@ For typical LDAP migration use cases where you are migrating from a legacy LDAP 
 
 #### convert-pcache-to-hdap
 
-Before converting a persistent cache to a RadiantOne Universal Directory store, the persistent cache refresh should be stopped. You can set the refresh method to “none” on the Main Control Panel -> Directory Namespace -> Cache -> `<cached branch>` -> Refresh Settings tab. Also, suspend inter-cluster replication if it is used by setting “replicationInSuspendMode” : true, in ZooKeeper at /radiantone/<zk_version>/<clustername>/config/namings/<namingcontext_being_replicated>
+Before converting a persistent cache to a RadiantOne Universal Directory store, the persistent cache refresh should be stopped. You can set the refresh method to “none” on the Main Control Panel > Directory Namespace > Cache > `<cached branch>` > Refresh Settings tab. Also, suspend inter-cluster replication if it is used by setting “replicationInSuspendMode” : true, in ZooKeeper at `/radiantone/<zk_version>/<clustername>/config/namings/<namingcontext_being_replicated>`
 
 After the persistent cache has been converted to a RadiantOne Universal Directory store, [rebuild the index](task-launch-commands#rebuilding-indexes-for-radiantone-universal-directory-stores) to remove any persistent cache operational attributes. If inter-cluster replication is used, enable it by setting “replicationInSuspendMode” : false, in ZooKeeper at /radiantone/<zk_version>/<clustername>/config/namings/<namingcontext_being_replicated>
 
@@ -358,19 +345,17 @@ After the persistent cache has been converted to a RadiantOne Universal Director
 
 **Command Arguments:**
 
-- namingcontext <namingcontext>
+`- namingcontext <namingcontext>`
 <br>[required] The name of the persistent cache naming context to be converted to an HDAP store.
 
-- instance <instance>
+`- instance <instance>`
 <br> The name of the RadiantOne instance. If this is not specified, the default instance named vds_server is used.
 
->[!note]
->Before the conversion, you are prompted to confirm the operation. Enter “y” to confirm, or “n” to discontinue. An example is shown below.
+>[!note] Before the conversion, you are prompted to confirm the operation. Enter “y” to confirm, or “n” to discontinue. An example is shown below.
 
 `Conversion will remove the underlying virtual layer, both the pcache and its view/proxy will be replaced by a HDAP store.`
 <br>`Virtual Naming context list to be removed:`
 <br>`o=db (VIEW)`
 <br>`Would you like to continue? (y/n):`
 
->[!warning]
->The convert-pcache-to-hdap command is not supported through ADAP.
+>[!warning] The convert-pcache-to-hdap command is not supported through ADAP.
