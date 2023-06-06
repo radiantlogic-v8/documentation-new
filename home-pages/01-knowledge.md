@@ -17,7 +17,7 @@ Harness your identity data with intelligent integration to drive better business
   > [Installation](/installation-guide/01-prerequisites)  
   > Learn how to install the RadiantOne Platform using the web-based GUI process and in silent-mode from command line. 
   
-  > [Hardware Sizing](/hardware-sizing-guide/hardware-sizing-guide)  
+  > [Hardware Sizing](/hardware-sizing-guide/01-introduction)  
   > Understand hardware sizing aspects for capacity planning to help ensure that the RadiantOne server hardware is adequate for handling peak loads.
   
   > [Accessibility](/wca-compliance-guide/01-overview)  
