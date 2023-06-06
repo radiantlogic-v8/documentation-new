@@ -9,8 +9,7 @@ Part of the process to migrate from a legacy LDAP directory into RadiantOne Univ
 Directory involves access controls. This document describes migrating OpenDJ, SunOne/Oracle
 ODSEE, IBM Tivoli Directory, and RadiantOne v6 ACI into ACI compatible with RadiantOne v7.
 ACI in OpenDJ, SunOne/Oracle ODSEE and RadiantOne v6 formats are migrated using the
-migration tool, aciUtils.bat (.sh on Unix systems). IBM Tivoli Directory ACIs are migrated using
-the migration tool ibmAciMigration.bat (.sh on Unix systems). Both tools are located at
+migration tool, aciUtils.bat (.sh on Unix systems). IBM Tivoli Directory ACIs are migrated using the migration tool ibmAciMigration.bat (.sh on Unix systems). Both tools are located at
 <RLI_HOME>\bin\advanced.
 
 ## How the Manual is Organized
@@ -46,6 +45,3 @@ Technical support can be reached using any of the following options:
 
 - E-mail: support@radiantlogic.com
 - Website: http://support.radiantlogic.com
-- Phone: 415-209-6800
-- Toll-Free Phone: 1-877-727-6442
-- Fax: 415-798-5697

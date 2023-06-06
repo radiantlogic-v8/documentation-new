@@ -30,12 +30,11 @@ To create the properties files:
     <br>**outputFile**: The value for this field indicates the path to the file, including the file name itself,that will contain the converted ACI.
     <br>Below is an example of a completed configuration properties file.
 
-```
-serverURL=ldap://10.11.9.15:389/dc=lgsmall
-bindDN=cn=directory manager
-password=Password
-outputFile=C:\genldif\output.ldif
-```
+    `serverURL=ldap://10.11.9.15:389/dc=lgsmall`
+    <br> `bindDN=cn=directory manager`
+    <br> `password=Password`
+    <br> `outputFile=C:\genldif\output.ldif`
+
 4. Save the file with a .properties file extension type. In this example, the file is saved as “config.properties”. Record the saved location of this file as it is required for the migration command.
 
 ### Creating the Mapping Properties File
@@ -73,17 +72,12 @@ This utility employs two parameters. Parameters are written in a command line. B
 
 ### Command Syntax
 
-```
-ibmAciMigration.bat <configurationfilelocation> <mappingfilelocation>
-```
+`ibmAciMigration.bat <configurationfilelocation> <mappingfilelocation>`
 
->[!note]
->The command argument `<configurationfilelocation>` is the path to the configuration properties file. The command argument `<mappingfilelocation>` is the path to the mapping properties file. These files were configured in the Preparing Properties Files section.
+>[!note] The command argument `<configurationfilelocation>` is the path to the configuration properties file. The command argument `<mappingfilelocation>` is the path to the mapping properties file. These files were configured in the Preparing Properties Files section.
 
 ### Example
 
-```
-ibmAciMigration.bat C:\genldif\config.properties C:\genldif\mapping.properties
-```
+`ibmAciMigration.bat C:\genldif\config.properties C:\genldif\mapping.properties`
 
 The utility extracts and converts the IBM Tivoli Directory ACI to an ACI format compatible with RadiantOne v7 in the location specified by the outputFile value (this was configured in the [Creating the Configuration Properties File](#creating-the-configuration-properties-file) section). The ACI are now ready to be imported into RadiantOne manually. For more information on RadiantOne ACI, refer to the RadiantOne System Administration Guide.
