@@ -236,7 +236,7 @@ This site provides resources for DevOps professionals to deploy the RadiantOne p
 
 <section>
   
-  > [Password](/password-filter-guide/01-password-filter-guide)
+  > [Password](/password-filter-guide/01-overview)
   > Password filter guide page
   
 </section>
