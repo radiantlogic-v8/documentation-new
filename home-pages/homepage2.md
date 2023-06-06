@@ -137,7 +137,7 @@ This site provides resources for DevOps professionals to deploy the RadiantOne p
 
 <section>
   
-  > [Guide](/hardware-sizing-guide/hardware-sizing-guide)
+  > [Guide](/hardware-sizing-guide/01-introduction)
   > Guide page
   
 </section>
