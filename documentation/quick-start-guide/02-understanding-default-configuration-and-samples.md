@@ -3,12 +3,11 @@ title: Quick Start Guide
 description: Quick Start Guide
 ---
 
-# Chapter 2: Understanding Default Configuration and Samples
+# Understanding Default Configuration and Samples
 
 ## Default Naming Contexts
 
-This section describes all the default root naming contexts included with RadiantOne. The naming contexts can be viewed/managed from the Main Control Panel > Directory Namespace
-tab and the data (run-time) can be seen from the Directory Browser tab. If a naming context is safe to delete, it is indicated in the description below.
+This section describes all the default root naming contexts included with RadiantOne. The naming contexts can be viewed/managed from the Main Control Panel > Directory Namespace tab and the data (run-time) can be seen from the Directory Browser tab. If a naming context is safe to delete, it is indicated in the description below.
 
 The sample naming contexts are as follows:
 
