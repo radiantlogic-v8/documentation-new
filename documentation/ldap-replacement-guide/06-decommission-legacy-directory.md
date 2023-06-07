@@ -3,7 +3,7 @@ title: LDAP Replacement Guide
 description: LDAP Replacement Guide
 ---
 
-# Chapter 6: Decommission Legacy Directory
+# Decommission Legacy Directory
 
 Once all applications have successfully migrated over to use RadiantOne Universal Directory, the legacy directory can be decommissioned and the persistent cache refresh and inter cluster replication processes can be stopped.
 
@@ -28,12 +28,12 @@ Convert the persistent cache naming context into a RadiantOne Universal Director
 
 **Command Arguments:**
 
-**`-namingcontext <namingcontext>`**
+`-namingcontext <namingcontext>`
 <br>[required] The name of the persistent cache naming context to be converted to a RadiantOne Universal Directory (HDAP) store.
 
-**`-instance <instance>`**
+`-instance <instance>`
 <br>The name of the RadiantOne FID instance. If this is not specified, the default instance named vds_server is used.
 
->**Note – before the conversion, you are prompted to confirm the operation.  Enter “y” to confirm, or “n” to discontinue.**
+>[!note] Before the conversion, you are prompted to confirm the operation.  Enter “y” to confirm, or “n” to discontinue.
 
 After the persistent cache has been converted to a RadiantOne Universal Directory store, rebuild the index to remove any persistent cache operational attributes. For details on how to rebuild the index, see the RadiantOne Command Line Configuration Guide. If intercluster replication is used, enable it by setting “replicationInSuspendMode” : false, in ZooKeeper at /`radiantone/<zk_version>/<clustername>/config/namings/<namingcontext_being_replicated>`

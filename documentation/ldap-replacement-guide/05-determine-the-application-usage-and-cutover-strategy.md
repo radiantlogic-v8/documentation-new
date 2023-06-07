@@ -3,7 +3,7 @@ title: LDAP Replacement Guide
 description: LDAP Replacement Guide
 ---
 
-# Chapter 5: Determine the Application Usage and Cutover Strategy
+# Determine the Application Usage and Cutover Strategy
 
 ## Determine Cutover Strategy
 

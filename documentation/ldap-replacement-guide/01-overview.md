@@ -3,9 +3,7 @@ title: LDAP Replacement Guide
 description: LDAP Replacement Guide
 ---
 
-# RadiantOne LDAP Replacement Guide
-
-## Chapter 1: Overview
+# Overview
 
 The purpose of this handbook is to provide guidance for migrating from a legacy LDAP directory (OpenDJ, SunOne/ODSEE, IBM Tivoli Directory) into the RadiantOne Universal Directory. This document provides a general overview of the migration process. The steps provided in this handbook are not exhaustive and may vary depending on the use case.
 
@@ -23,10 +21,10 @@ This gets you all of the components needed for your replacement task. Then, the 
 
 [Chapter 6](06-decommission-legacy-directory.md) - Decommission legacy directory
 
-## Expert Mode
+# Expert Mode
 
 Some settings in the Main Control Panel are accessible only in Expert Mode. To switch to Expert Mode, click the Logged in as, (username) drop-down menu and select Expert Mode. 
 
 ![An image showing ](Media/expert-mode.jpg)
  
->**Note - The Main Control Panel saves the last mode (Expert or Standard) it was in when you log out and returns to this mode automatically when you log back in. The mode is saved on a per-role basis.**
+>[!note] The Main Control Panel saves the last mode (Expert or Standard) it was in when you log out and returns to this mode automatically when you log back in. The mode is saved on a per-role basis.

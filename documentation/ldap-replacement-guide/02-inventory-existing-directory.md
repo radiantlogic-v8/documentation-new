@@ -3,7 +3,7 @@ title: LDAP Replacement Guide
 description: LDAP Replacement Guide
 ---
 
-# Chapter 2: Inventory Existing Directory
+# Inventory Existing Directory
 
 Taking inventory of the existing directory is mostly a manually process. Once you’ve acquired the basic credentials from the directory owner, you can access the directory from any LDAP client. RadiantOne includes the LDAP Browser client that can be used to connect to the directory. From here, you can get a glimpse of the existing hierarchy and export schema and branches to LDIF files. Below is an example of using the RadiantOne LDAP Browser.
 

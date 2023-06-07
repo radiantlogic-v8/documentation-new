@@ -3,7 +3,7 @@ title: LDAP Replacement Guide
 description: LDAP Replacement Guide
 ---
 
-# Chapter 4: Configure RadiantOne Server Settings
+# Configure RadiantOne Server Settings
 
 Configure the appropriate server settings on the Client [Consumption Layer machine](03-import-data-into-radiantone-universal-directory.md):
 
@@ -106,7 +106,7 @@ The dictionary file must be a text-formatted file containing one dictionary word
 
 The RadiantOne LDAP schema is comprised a series of LDIF files located: <RLI_HOME>\vds_server\conf\ldaschema_XX.ldif. XX being the number indicating the order in which the files are loaded. To extend the schema, the easiest approach is to get the object classes and attributes in LDIF format and then name the file ldapschema_XX.ldif where XX is the sequence you want the file loaded.
 
-><span style="color:red">**IMPORTANT NOTE - If you apply a new ldapschema_XX.ldif file and it has a number GREATER than 50 (e.g. ldapschema_51.ldif) and this definition includes object classes or attributes that are already defined in the VDS schema (in lower numbered schema files), the existing definitions are overridden with the latest definitions. This only starts AFTER the ldapschema_50.ldif file.  Otherwise, the definition in the lower numbered files are not overridden.**
+>[!warning] If you apply a new ldapschema_XX.ldif file and it has a number GREATER than 50 (e.g. ldapschema_51.ldif) and this definition includes object classes or attributes that are already defined in the VDS schema (in lower numbered schema files), the existing definitions are overridden with the latest definitions. This only starts AFTER the ldapschema_50.ldif file.  Otherwise, the definition in the lower numbered files are not overridden.
 
 If the LDAP directory stores the schema information in the cn=schema naming context, connect to this naming context from the RadiantOne LDAP Browser and you can export the schema to LDIF from there. Name the file ldapschema_XX.ldif (where XX is the sequence you want the schema loaded in) and save in <RLI_HOME>/vds_server/conf.
  
