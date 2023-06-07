@@ -3,17 +3,17 @@ title: Custom Authentication Providers Guide
 description: Custom Authentication Providers Guide
 ---
 
-# Chapter 3: Yubikey
+# Yubikey
 
 RadiantOne includes code to leverage Yubikey as a custom authentication provider. To use this example, follow the steps below.
 
 1.	Plug your Yubikey device into your computer.
 
->**Note – the first time you plug your yubikey into your machine, a driver is installed/updated and generally takes a few minutes to setup.**
+>[!note] The first time you plug your yubikey into your machine, a driver is installed/updated and generally takes a few minutes to setup.
  
- ![An image showing ](Media/Image3.1.jpg)
+  ![An image showing ](Media/Image3.1.jpg)
 
-Figure 3. 1: Yubikey USB Driver Installation
+   Figure 3.1: Yubikey USB Driver Installation
 
 2.	Navigate to https://demo.yubico.com/ to test your yubikey
 
@@ -23,17 +23,17 @@ Figure 3. 1: Yubikey USB Driver Installation
 
 5.	Enter email address and touch the Yubikey button on your Yubikey which populates the code into the browser.
 
-![An image showing ](Media/Image3.2.jpg)
+    ![An image showing ](Media/Image3.2.jpg)
 
-Figure 3.2: Getting Yubico API Key
+    Figure 3.2: Getting Yubico API Key
 
 6.	Click Get API Key.
 
 7.	Take note of the client ID and Secret Key values returned as they are needed when you create the custom data source in RadiantOne.
 
-![An image showing ](Media/Image3.3.jpg)
+    ![An image showing ](Media/Image3.3.jpg)
 
-Figure 3.3: Client ID and Secret Key
+    Figure 3.3: Client ID and Secret Key
 
 8.	Navigate to the Main Control Panel > Settings tab > Server Backend section > Custom Data Sources.
 
@@ -47,11 +47,12 @@ Figure 3.3: Client ID and Secret Key
 
 13.	For the value of the url property, enter: v2
 RadiantOne automatically connects to the following Yubicloud services:
-https://api2.yubico.com/wsapi/2.0/verify
-https://api.yubico.com/wsapi/2.0/verify
-https://api3.yubico.com/wsapi/2.0/verify
-https://api4.yubico.com/wsapi/2.0/verify
-https://api5.yubico.com/wsapi/2.0/verify
+
+    https://api2.yubico.com/wsapi/2.0/verify
+    <br> https://api.yubico.com/wsapi/2.0/verify
+    <br> https://api3.yubico.com/wsapi/2.0/verify
+    <br> https://api4.yubico.com/wsapi/2.0/verify
+    <br> https://api5.yubico.com/wsapi/2.0/verify
 
 14.	Click OK.
 
@@ -61,7 +62,7 @@ https://api5.yubico.com/wsapi/2.0/verify
 
 17.	For the value of classname, enter: com.rli.scripts.customobjects.yubikey
 
-To view the script logic to call Yubico, navigate to <RLI_HOME>\vds_server\custom\src\com\rli\scripts\customobjects\yubikey.java.
+    To view the script logic to call Yubico, navigate to <RLI_HOME>\vds_server\custom\src\com\rli\scripts\customobjects\yubikey.java.
 
 18.	Click OK.
 
@@ -83,11 +84,11 @@ To view the script logic to call Yubico, navigate to <RLI_HOME>\vds_server\custo
 
 27.	Click Save.
 
-![An image showing ](Media/Image3.4.jpg)
+    ![An image showing ](Media/Image3.4.jpg)
 
-Figure 3.4: Yubikey Custom Authentication Service
+    Figure 3.4: Yubikey Custom Authentication Service
 
-><span style="color:red">**IMPORTANT NOTE – if you edit the custom data source properties, you must restart RadiantOne FID. If deployed in a cluster, restart it on all nodes.**
+>[!note] If you edit the custom data source properties, you must restart RadiantOne FID. If deployed in a cluster, restart it on all nodes.
 
 28.	Navigate to the Main Control Panel > Settings tab > Interception section > Custom Authentication Providers (requires [Expert Mode](01-overview#expert-mode)).
 
@@ -103,15 +104,15 @@ Figure 3.4: Yubikey Custom Authentication Service
 
 34.	The DN to ID property is used by RadiantOne FID to lookup the user’s local virtual entry and retrieves the attribute to identify the user in the external authentication service. In the DN to ID property, enter the attribute name in the user entry that stores the value that uniquely identifies them in the external authentication service. In the example below, carLicense is the value entered in the DN to ID property. This means that the value of the carLicense in the user’s virtual entry is used to delegate the credentials checking to the external authentication service. 
 
-![An image showing ](Media/Image3.5.jpg)
+    ![An image showing ](Media/Image3.5.jpg)
 
-Figure 3.5: Example Yubikey Custom Authentication Provider
+    Figure 3.5: Example Yubikey Custom Authentication Provider
 
-Continuing with this scenario, in the example shown below, the unique ID of ccccccfcnghi is sent to the external authentication service when the user identified by a DN of uid=Lisa_Grady,ou=Accounting,o=companydirectory authenticates to RadiantOne FID.
+    Continuing with this scenario, in the example shown below, the unique ID of ccccccfcnghi is sent to the external authentication service when the user identified by a DN of uid=Lisa_Grady,ou=Accounting,o=companydirectory authenticates to RadiantOne FID.
 
-![An image showing ](Media/Image3.6.jpg)
+    ![An image showing ](Media/Image3.6.jpg)
 
-Figure 3.6: Example Describing the Usage of the DN to ID Property
+    Figure 3.6: Example Describing the Usage of the DN to ID Property
 
 35.	In the Data Source Name property, enter the name of the custom data source you defined which contains the connection criteria for the custom authentication service. This was defined in step 10 above.
 
