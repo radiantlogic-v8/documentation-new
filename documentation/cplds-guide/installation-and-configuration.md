@@ -11,7 +11,7 @@ This chapter outlines the installation and configuration of RadiantOne Worker no
 
 1.	Install RadiantOne as a follower-only node that joins the existing cluster. For detailed installation steps, see the RadiantOne ReadMe. 
 
-><span style="color:red">**IMPORTANT NOTE - These nodes should not be accessible by consuming client applications, so do not add them to your front-end load balancer configuration. This separates the synchronization tasks from the RadiantOne nodes that are servicing client applications.**
+>[!warning] These nodes should not be accessible by consuming client applications, so do not add them to your front-end load balancer configuration. This separates the synchronization tasks from the RadiantOne nodes that are servicing client applications.
 
 2.	Locate the cloud ID associated with the RadiantOne follower-only node(s) from the Main Control Panel > Dashboard tab. Make a note of the Cloud ID as it is used in the next step.
 
@@ -47,9 +47,9 @@ This configuration uses RadiantOne’s LDAP Data Source option to connect direct
 
     ![mapping a data source ](Media/Image3.1.jpg)
  
->**Note – Deleting a data source only removes the sync process from that backend. It does NOT delete the data in the RadiantOne Universal Directory. You must do this manually if you want the entries removed permanently. For details on deleting entries, see the RadiantOne Namespace Configuration Guide.**
+>[!note] Deleting a data source only removes the sync process from that backend. It does NOT delete the data in the RadiantOne Universal Directory. You must do this manually if you want the entries removed permanently. For details on deleting entries, see the RadiantOne Namespace Configuration Guide.**
 
-11.		Click Save.
+11.	Click Save.
 
 ### Synchronizing User Passwords from Active Directory Backends
 
@@ -80,29 +80,29 @@ TCP 49152 through 65535	| Dynamic ports
 
 The LDIF file configuration uses RadiantOne’s Custom Data Source option to read the directory entries from an LDIF file as described below. 
 
->**Note – The LDIF export function is documented in the LDIF Utility Guide.**
+>[!note] The LDIF export function is documented in the LDIF Utility Guide.
 
 1.	The core nodes and worker nodes all require access to the LDIF file, typically located on a network share. To make a network share accessible to the nodes, create a mapped drive on each node in the cluster pointing to the network share containing the LDIF file. Record the mapped network share path as it is required for the RadiantOne custom data source configuration.
 
->**Note – This mapped drive location, including drive letter, must match across all nodes in the cluster.** 
+>[!note] This mapped drive location, including drive letter, must match across all nodes in the cluster.
 
 2.	A pre-sync script can be used, for example, to extract a compressed LDIF file, validate entries within the source LDIF file, filter, and edit the LDIF file. If your LDIF file is in a location inaccessible to the nodes in your cluster (such as the cloud), you must define a pre-sync script that copies the LDIF onto the worker node(s). Store a copy of the script on each worker node in the same location on each node. The worker node tasked with running the synchronization at the next sync interval runs the pre-sync script and downloads the LDIF file. If, in the next sync interval, another worker node is tasked with syncing the same datasource, it uses the script to download the LDIF file. 
 
->**Note – After processing, the script outputs the file to <RLI_HOME>/vds_server/ ldif/import/<customDataSourceName_processed>.ldif. This path cannot be modified.**
+>[!note] After processing, the script outputs the file to <RLI_HOME>/vds_server/ ldif/import/<customDataSourceName_processed>.ldif. This path cannot be modified.
 
 3.	All backends must be created as custom data sources on a core cluster node. Custom data sources can be created from the Main Control Panel  Settings tab  Server Backend section. If you are not using a pre-sync script, only the URL parameter is required for the custom data source. The value for the URL parameter must indicate the absolute path in the source directory to the LDIF applicable for synchronizing into the target RadiantOne Universal Directory store. 
 
- ![add custom data source](Media/Image3.2.jpg)
+    ![add custom data source](Media/Image3.2.jpg)
 
-If you do use a pre-sync script, two parameters are required for the custom data source. 
+    If you do use a pre-sync script, two parameters are required for the custom data source. 
 
--	URL: the value for this parameter indicates the absolute path in the source directory to the LDIF (i.e. s3://bucketName/folderName/lg100k.ldif, or F://lg100k.ldif).
+    -	URL: the value for this parameter indicates the absolute path in the source directory to the LDIF (i.e. s3://bucketName/folderName/lg100k.ldif, or F://lg100k.ldif).
 
--	Presync script: the value for this parameter is the location of the pre-sync script on the worker node(s) (i.e. C:/Users/Administrator/scripts/script.bat). 
+    -	Presync script: the value for this parameter is the location of the pre-sync script on the worker node(s) (i.e. C:/Users/Administrator/scripts/script.bat). 
 
- ![presyncscript ](Media/Image3.3.jpg)
+    ![presyncscript ](Media/Image3.3.jpg)
 
->**Note – For assistance with creating data sources, see the RadiantOne System Administration Guide. If you have many custom data sources to define, using the command line utility for this is more efficient than using the Control Panel. For details, see the create-custom-datasource command in the RadiantOne Command Line Configuration Guide.**
+>[!note] For assistance with creating data sources, see the RadiantOne System Administration Guide. If you have many custom data sources to define, using the command line utility for this is more efficient than using the Control Panel. For details, see the create-custom-datasource command in the RadiantOne Command Line Configuration Guide.
 
 4.	Create the naming context for the RadiantOne Universal Directory store on a core cluster node from the Main Control Panel -> Directory Namespace tab. If you need assistance, see the RadiantOne Namespace Configuration Guide.
 
@@ -124,7 +124,7 @@ If you do use a pre-sync script, two parameters are required for the custom data
  
     ![o=companydirectory ](Media/Image3.1.jpg)
 
-    >**Note – Deleting a data source only removes the sync process from that backend. It does NOT delete the data in the RadiantOne Universal Directory. You must do this manually if you want the entries removed permanently. For details on deleting entries, see the RadiantOne Namespace Configuration Guide.**
+    >[!note] Deleting a data source only removes the sync process from that backend. It does NOT delete the data in the RadiantOne Universal Directory. You must do this manually if you want the entries removed permanently. For details on deleting entries, see the RadiantOne Namespace Configuration Guide.
 
 13.		Click Save.
  
