@@ -3,19 +3,17 @@ title: LDIF Utility Guide
 description: LDIF Utility Guide
 ---
 
-# Chapter 2: Data Statistics
+# Data Statistics
 
 In general, knowing statistics about your data can be helpful for troubleshooting.
 
 To get statistics about the entries in your view, you can use the LDIFStatistics function of the <RLI_HOME>/bin/advanced/ldif-utils utility. Once you have an LDIF file containing your entries, pass the file name and path to the utility. 
 
->**Note – if you have nested groups, and want them included in the results, include -n in the command.**
+>[!note] If you have nested groups, and want them included in the results, include -n in the command.
 
-The syntax of the command is: 
+The syntax of the command is:
 
-```
-ldif-utils LDIFStatistics -f <ldif_file_path> [-n (to get nested group stats)]
-```
+`ldif-utils LDIFStatistics -f <ldif_file_path> [-n (to get nested group stats)]`
 
 The results include the following statistics about entries (non-group), groups, and objectclasses: 
 
@@ -56,9 +54,7 @@ The results include the following statistics about entries (non-group), groups, 
 
 The following would be an example of the command and statistics returned. 
 
-``
-C:\radiantone\vds\bin\advanced>ldif-utils LDIFStatistics -f "C:\radiantone\vds\vds_server\ldif\export\mydirectory.ldif" 
-``
+`C:\radiantone\vds\bin\advanced>ldif-utils LDIFStatistics -f "C:\radiantone\vds\vds_server\ldif\export\mydirectory.ldif" `
 
 `###### Entries statistics ######`
 

@@ -3,9 +3,7 @@ title: LDIF Utility Guide
 description: LDIF Utility Guide
 ---
 
-# RadiantOne LDIF Utility Guide
-
-## Chapter 1: Overview
+# Overview
 
 RadiantOne includes a command line utility that allows you to perform the following functions.
 
