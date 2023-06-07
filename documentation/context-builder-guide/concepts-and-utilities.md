@@ -13,8 +13,7 @@ These sections describe some common terms you will find when using the Context B
 
 A data source represents the connection to a backend identity store. Managing all data sources from one central location simplifies the migration process from a development environment to a production environment. Data sources are managed on the Settings Tab  Server Backend in the Main Control Panel. For details on creating data sources, see RadiantOne System Administration Guide.
 
->[!warning]
->One of the main purposes of having a data source defining the connection is to isolate the connection string from the metadata files (.dvx and .orx). It is strongly recommended that you use generic data source names that can remain (be relevant) as you migrate from a development to production environment where you only need to change the connection information.
+>[!warning] One of the main purposes of having a data source defining the connection is to isolate the connection string from the metadata files (.dvx and .orx). It is strongly recommended that you use generic data source names that can remain (be relevant) as you migrate from a development to production environment where you only need to change the connection information.
 
 ![The Server Backend Sub-tab](Media/Image2.1.jpg)
  
@@ -112,7 +111,7 @@ An extended join is defined by adding new attributes (meaning these attributes d
 
 The diagram below depicts an extended join. AuthzCode, lastLogon, and pwdreset are the application-specific extension attributes that are stored in RadiantOne. RadiantOne manages the lifecycle (creation, modification, deletion) of these entries/attributes. 
  
-![xtended Join Example](Media/Image2.3.jpg)
+![Extended Join Example](Media/Image2.3.jpg)
 
 Figure 3: Extended Join Example 
 
@@ -124,8 +123,7 @@ When you configure the extended join, there are two settings you can choose from
 
 -	Custom – if this is chosen, RadiantOne stores the extension attributes in the location of your choice. The location must first exist (create it in the RadiantOne namespace if you haven’t already). RadiantOne manages the creation of the entries and attributes as well as all modifications to these entries. The parameters you must configure are the target base DN (the location in the RadiantOne namespace where you want to store the extension attributes), the object class to associate the extension attributes with, and how to comprise the RDN attribute (name and attribute from the source to populate the target RDN with). 
 
-    >[!warning]
-    >If your chosen location in the RadiantOne namespace is configured as something other than a local Universal Directory (HDAP) store, then the underlying backend must be capable of storing the extension attributes. For example, if the backend is a database table, then columns representing the extension attributes must exist. If the backend is an LDAP directory, the extension attributes should be defined in the schema (if schema checking is enforced) and the object class that is associated with the extension attributes should be set during the configuration described below.
+    >[!warning] If your chosen location in the RadiantOne namespace is configured as something other than a local Universal Directory (HDAP) store, then the underlying backend must be capable of storing the extension attributes. For example, if the backend is a database table, then columns representing the extension attributes must exist. If the backend is an LDAP directory, the extension attributes should be defined in the schema (if schema checking is enforced) and the object class that is associated with the extension attributes should be set during the configuration described below.
 
 ##### Configuring an Extended Join 
 
@@ -163,9 +161,9 @@ Figure 4: Use the Add Button to Join Objects from the Same Schema
  
 3.	Navigate through the relationships to select the related object to join. The relationship must exist and be declared in the schema (using Schema Manager) before using it here.
 
-![Accessing the Add Table Dialog](Media/Image2.5.jpg)
+    ![Accessing the Add Table Dialog](Media/Image2.5.jpg)
 
-Figure 5: Accessing the Add Table Dialog
+    Figure 5: Accessing the Add Table Dialog
 
 4.	Expand the table drop-down list on the Attributes tab. All tables in the join appear in the list, and you can select attributes from each to display at run time. Choose the appropriate table from the drop-down list, select the attribute(s) and use the right-arrow button to declare them as attributes of the virtual entries. 
 
@@ -207,9 +205,7 @@ Examples of the join syntax are shown below. If you edit the join condition manu
 
 **Example 1 – Regular Join**
 
-```
-LDAP://[VDS]/ou=people,o=myviews?sn:1,cn:1,mail:255,title?sub?(uid=@[CID]) ##JOINTYPE=INNER##SIZELIMIT=1 
-```
+`LDAP://[VDS]/ou=people,o=myviews?sn:1,cn:1,mail:255,title?sub?(uid=@[CID]) ##JOINTYPE=INNER##SIZELIMIT=1`
 
 The [VDS] shown here indicates the RadiantOne service (as the server containing the branch you want to join). 
 
@@ -225,14 +221,11 @@ The join takes place when uid from the ou=people,o=myviews branch matches the CI
 
 ##SIZELIMIT=1 is set to specify only one entry should be returned to join with. In this case, it is assumed that only one entry should be returned from the ou=people,o=myviews branch for each primary entry. 
 
->[!note]
->If no sizelimit is specified, the default used is 1000.
+>[!note] If no sizelimit is specified, the default used is 1000.
 
 **Example 2 – Regular Join**
 
-```
-LDAP://198.123.123.444:389/dc=anotherldap,dc=com?sub?(&(sn=@[LASTNAME])(givenname=@[FIRSTNAME]))##USERID=cn=directorymanager##PASSWORD=secret##SIZELIMIT=1 
-```
+`LDAP://198.123.123.444:389/dc=anotherldap,dc=com?sub?(&(sn=@[LASTNAME])(givenname=@[FIRSTNAME]))##USERID=cn=directorymanager##PASSWORD=secret##SIZELIMIT=1`
 
 The IP address shown here indicates the server that you want to join to (also known as the secondary source). 
 
@@ -244,19 +237,17 @@ A sub level search scope is specified to find the secondary objects to join.
 
 The join takes place when sn matches LASTNAME and givenName matches FIRSTNAME. 
 
-##USERID specifies the user to connect to the server (198.123.123.444). 
+##USERID specifies the user to connect to the server (198.123.123.444).
+
 ##PASSWORD specifies the password for the user mentioned above. 
 
 ##SIZELIMIT=1 is set to specify only one entry should be returned to join with. In this case, it is assumed that only one entry should be returned from the dc=anotherldap,dc=com branch.
 
->[!note]
->If no sizelimit is specified, the default used is 1000.
+>[!note] If no sizelimit is specified, the default used is 1000.
 
 **Example 3 – Extended Join**
 
-```
-LDAP://[VDS]/xid=@[uid],cn=config?newattr1,newattr2?base?(objectclass=*)##EXTENDED =extensibleObject 
-```
+`LDAP://[VDS]/xid=@[uid],cn=config?newattr1,newattr2?base?(objectclass=*)##EXTENDED =extensibleObject`
 
 The [VDS] shown here indicates the RadiantOne service (as the server containing the branch you want to join). 
 
@@ -274,9 +265,7 @@ A base search scope is specified to find the extension entries to join.
 
 To manually add more than one join condition, separate each LDAP URL with a semicolon (if you go through the wizard to setup multiple join conditions, then they will automatically be separated with a semicolon). 
 
-```
-LDAP://[VDS]/dv=activedirectory,o=vds?sAMAccountName,objectclass,cn?one?(employeeID=@[employeeNumber:VARCHAR(255)]);LDAP://[VDS]/dv=oracle,o=vds?EMPNO,ENAME?one?(EMPNO=@[employeeNumber:VARCHAR(255)]) 
-```
+`LDAP://[VDS]/dv=activedirectory,o=vds?sAMAccountName,objectclass,cn?one?(employeeID=@[employeeNumber:VARCHAR(255)]);LDAP://[VDS]/dv=oracle,o=vds?EMPNO,ENAME?one?(EMPNO=@[employeeNumber:VARCHAR(255)])`
 
 ##### Attribute Priority
 
@@ -319,8 +308,7 @@ To define an attribute as searchable, choose the Object tab (for the appropriate
 
 Figure 8: Making Attribute Searchable
 
->[!warning]
->If you edit the join condition manually, and want to make an attribute returned from a joined object non-searchable, add a value of 512 to the priority weight you have set. For example, if mail were an attribute returned from a join and you had it set with a priority value of 128 (NORMAL), then to make it non-searchable, you would change the numeric value to be 640 (128 + 512). Mail:640 is how it would appear in the join condition if you were to edit the join manually.
+>[!warning] If you edit the join condition manually, and want to make an attribute returned from a joined object non-searchable, add a value of 512 to the priority weight you have set. For example, if mail were an attribute returned from a join and you had it set with a priority value of 128 (NORMAL), then to make it non-searchable, you would change the numeric value to be 640 (128 + 512). Mail:640 is how it would appear in the join condition if you were to edit the join manually.
 
 ##### Making Attributes Updateable
 
@@ -332,8 +320,7 @@ To define an attribute as updateable, choose the Object tab (for the appropriate
 
 Figure 9: Making an Attribute Updateable
 
->[!warning]
->If you edit the join condition manually, and want to make an attribute returned from a joined object not updateable, add a value of 1024 to the priority weight you have set. For example, if phone were an attribute returned from a join and you had it set with a priority value of 128 (NORMAL), then to make it not updateable, you would change the numeric value to be 1152 (128 + 1024). Phone:1152 is how it would appear in the join condition if you were to edit the join manually. If you didn’t want the phone attribute to be searchable or updateable, it would have a numeric value of 1664. (128 + 512 + 1024).
+>[!warning] If you edit the join condition manually, and want to make an attribute returned from a joined object not updateable, add a value of 1024 to the priority weight you have set. For example, if phone were an attribute returned from a join and you had it set with a priority value of 128 (NORMAL), then to make it not updateable, you would change the numeric value to be 1152 (128 + 1024). Phone:1152 is how it would appear in the join condition if you were to edit the join manually. If you didn’t want the phone attribute to be searchable or updateable, it would have a numeric value of 1664. (128 + 512 + 1024).
 
 #### How the Join is Performed 
 
@@ -341,9 +328,7 @@ If the filter in the client search involves attribute(s) that come from the prim
 
 If you require the attributes from the secondary sources to be searchable (used in a filter from a client search), you must specify them as such. If the filter received in the search contains any attributes that are defined as searchable from a secondary source, then RadiantOne does not pre-filter against the primary source for those attributes. The join is first performed (all entries are joined), and then the filter is applied on the result. For example, let’s say you have a backend pointing to a Sun Java Directory and you want to join with a virtual view of Active Directory. The following join condition could be defined: 
 
-```
-LDAP://[VDS]/dv=activedirectory,o=vds?sAMAccountName,objectclass,cn:640?one?(emplo yeeID=@[employeeNumber:VARCHAR(255)]) 
-```
+`LDAP://[VDS]/dv=activedirectory,o=vds?sAMAccountName,objectclass,cn:640?one?(emplo yeeID=@[employeeNumber:VARCHAR(255)])`
 
 Since cn is listed in the join condition as searchable (numeric value of 640), RadiantOne knows that it should apply the filter after first joining the entries. The Sun entries are joined with the Active Directory entries (where employeeNumber=employeeID) and then the filter is applied to the result. Performance is slower if you want attributes from joined sources to be searchable (because of the requirement to first join all entries). 
 
@@ -377,7 +362,7 @@ If the Process Joins and Computed Attributes Only when Necessary optimization is
 
 If you would prefer RadiantOne to return partial entries, then you must specifically indicate this in the external join condition. Manually edit the join condition and add the following: 
 
-##ALLOW_PARTIAL_ENTRY=yes 
+`##ALLOW_PARTIAL_ENTRY=yes`
 
 If partial entries are allowed, and the client issued a base search, they receive LDAP error code 0 (no error) along with the partial entry (whatever information RadiantOne was able to retrieve from available sources). Each returned entry contains an additional attribute of vsyspartialentry=true. If the client issued a one level or subtree search, they receive LDAP error code 9 along with the partial entry (whatever information RadiantOne was able to retrieve from available sources) and an error message from the secondary backend that was unavailable. Each returned entry contains an additional attribute of vsyspartialentry=true.
 
@@ -425,8 +410,7 @@ If the entries in virtual view should include attributes that are derived from e
 
 If you need to create a computed attribute from a previously computed attribute, that attribute must appear first in the list in the Computed Attributes window.
 
->[!warning]
->On the Object tab, attributes from the primary/main source are displayed with a blue square icon in the Origin column. Attributes from Joined sources are displayed with a green square icon in the Origin column. Computed Attributes are displayed with a orange square icon in the Origin column.
+>[!warning] On the Object tab, attributes from the primary/main source are displayed with a blue square icon in the Origin column. Attributes from Joined sources are displayed with a green square icon in the Origin column. Computed Attributes are displayed with a orange square icon in the Origin column.
 
 The diagram below depicts a computed attribute named login that can be computed based on the attributes: givenName, sn, and uid. 
 
@@ -443,12 +427,19 @@ Figure 15: Computed Attribute Example
 To configure computed attributes: 
 
 1.	Have the virtual view built from the primary source open in the View Designer tab. 
+
 2.	Select the primary/main object (represented as a container or content) and select the Object tab on the right side. 
+
 3.	On the bottom of the Object tab, click **Edit** next to Define Computed Attributes. 
+
 4.	Click **Add**.
+
 5.	Enter the Computed Attribute name in the Name parameter. 
+
 6.	Configure the needed expression to comprise the computed attribute. This is based on Java and if you are already familiar with the syntax, you can enter it directly for the value.
+
 7.	(Optional) For assistance with creating an attribute based on a constant, click the constant button and enter the value.
+
 8.	(Optional) For assistance with creating an attribute based on an existing attribute, click Attribute (a list of all attributes available in the virtual object displays).
 
 9.	(Optional) For assistance with creating an attribute based on a function, click the Function button for a list to display. 
@@ -492,8 +483,7 @@ Only registered customers have access to the Knowledge Base. If you are a custom
 
 All operations performed by RadiantOne (authentication, update, insert, delete, search) can have custom logic applied with interception scripts. The following section describes the default behavior for processing authentication, select, update, delete and insert requests. If you require additional capability, an interception script may be used. 
 
->[!note]
->Consult with a Radiant Logic Support Engineer or Solution Architect to discuss any interception scripts you need.
+>[!note] Consult with a Radiant Logic Support Engineer or Solution Architect to discuss any interception scripts you need.
 
 **Authentication**
 
@@ -551,8 +541,7 @@ Figure 19: Enabling Interception Script
 
 After an interception script has been activated, click Edit next to the script, located on the Advanced Settings tab. This opens the script, which contains the default template. All interception scripts must implement the UserDefinedInterception2 interface. More information regarding this can be found in the Javadoc. 
 
->[!note]
->On the file system, the file is located in <RLI_HOME>/vds_server/custom/src/com/rli/scripts/intercept/<name of script>.java.**
+>[!note] On the file system, the file is located in `<RLI_HOME>/vds_server/custom/src/com/rli/scripts/intercept/<name of script>.java`.
 
 After you edit the script to include your custom logic, save the file. The appropriate class file is generated and stored in: <RLI_HOME>/vds_server/custom/classes/com/rli/scripts/intercept. 
 
@@ -570,7 +559,7 @@ To use your own custom class in an interception script:
  
 #### Deploying an Interception Script 
 
-After the script has been customized and saved, the last step is to generate the appropriate jar file. This can be done by clicking the Build Interception Jar button on the Node Properties -> Advanced Settings sub-tab.
+After the script has been customized and saved, the last step is to generate the appropriate jar file. This can be done by clicking the Build Interception Jar button on the Node Properties > Advanced Settings sub-tab.
 
 ![Building Intercept Jar](Media/Image2.20.jpg)
  
@@ -578,22 +567,20 @@ Figure 20: Building Intercept Jar
 
 Jar files can be rebuilt from command line using ANT. An example is shown below (for simplicity, most of the output of the script has been excluded below). This command rebuilds customobjects.jar, intercept.jar, fidsync.jar and changeMessageConvertors.jar.
 
-C:\radiantone\vds\vds_server\custom>c:\radiantone\vds\ant\bin\ant.bat buildjars 
+`C:\radiantone\vds\vds_server\custom>c:\radiantone\vds\ant\bin\ant.bat buildjars`
 
-Buildfile: build.xml 
-<br>.
-<br>.
-<br>[propertyfile] Creating new property file: C:\radiantone\vds\vds_server\custom\build.txt 
-buildjars: 
-<br>[jar] Building jar: C:\radiantone\vds\vds_server\custom\lib\customobjects.jar
-<br>[jar] Building jar: C:\radiantone\vds\vds_server\custom\lib\intercept.jar 
-<br>[jar] Building jar: C:\radiantone\vds\vds_server\custom\lib\fidsync.jar 
-<br>[jar] Building jar: C:\radiantone\vds\vds_server\custom\lib\changeMessageConvertors.jar 
-<br>BUILD SUCCESSFUL 
-<br>Total time: 9 seconds
+`Buildfile: build.xml `
+<br>`.`
+<br>`.`
+<br>`[propertyfile] Creating new property file: C:\radiantone\vds\vds_server\custom\build.txt buildjars:`
+<br>`[jar] Building jar: C:\radiantone\vds\vds_server\custom\lib\customobjects.jar`
+<br>`[jar] Building jar: C:\radiantone\vds\vds_server\custom\lib\intercept.jar `
+<br>`[jar] Building jar: C:\radiantone\vds\vds_server\custom\lib\fidsync.jar `
+<br>`[jar] Building jar: C:\radiantone\vds\vds_server\custom\lib\changeMessageConvertors.jar`
+<br>`BUILD SUCCESSFUL`
+<br>`Total time: 9 seconds`
 
->[!warning]
->Every time you change the script/class, the JAR file MUST be rebuilt and the RadiantOne service must be restarted. If RadiantOne is deployed in a cluster, restart the service on all nodes.
+>[!warning] Every time you change the script/class, the JAR file MUST be rebuilt and the RadiantOne service must be restarted. If RadiantOne is deployed in a cluster, restart the service on all nodes.
 
 #### Disabling an Interception Script 
 
@@ -607,23 +594,23 @@ The following example describes how the hierarchy builder works. This example bu
 
 An LDAP directory contains an object class named inetOrgPerson. All user accounts are created with this object class. A sample entry is shown below. 
 
-dn: uid=SBuchanan,ou=People,dc=domain1,dc=com 
-<br>givenName: Steve 
-<br>telephoneNumber: 111-111-5000 
-<br>sn: Buchanan 
-<br>mail: stevebuchanan@rli.net 
-<br>carLicense: CX4398 
-<br>objectClass: top 
-<br>objectClass: person 
-<br>objectClass: organizationalPerson 
-<br>objectClass: inetorgperson 
-<br>uid: SBuchanan 
-<br>postalCode: 94954 
-<br>cn: Steve Buchanan 
-<br>title: big sales guy 
-<br>employeeNumber: 26568 
-<br>description: This is the description for Steve Buchanan 
-<br>businessCategory: Sales 
+`dn: uid=SBuchanan,ou=People,dc=domain1,dc=com`
+<br>`givenName: Steve`
+<br>`telephoneNumber: 111-111-5000`
+<br>`sn: Buchanan`
+<br>`mail: stevebuchanan@rli.net`
+<br>`carLicense: CX4398`
+<br>`objectClass: top`
+<br>`objectClass: person`
+<br>`objectClass: organizationalPerson`
+<br>`objectClass: inetorgperson`
+<br>`uid: SBuchanan`
+<br>`postalCode: 94954`
+<br>`cn: Steve Buchanan`
+<br>`title: big sales guy`
+<br>`employeeNumber: 26568`
+<br>`description: This is the description for Steve Buchanan`
+<br>`businessCategory: Sales`
 
 The LDAP directory has a flat structure with all user accounts located below ou=People,dc=domain1,dc=com. The diagram below has been simplified to show two user accounts for this example. 
 
@@ -641,15 +628,15 @@ The following steps can be used to build the new virtual hierarchy. This example
 
 1.	Extract the object class from the LDAP directory using the Schema Manager. If you need help with this, see section on [Capturing Metadata from LDAP Backends](schema-manager.md#ldap-accessible-backend). 
 
-![Example LDAP Schema](Media/Image2.23.jpg)
+    ![Example LDAP Schema](Media/Image2.23.jpg)
 
-Figure 23: Example LDAP Schema 
+    Figure 23: Example LDAP Schema 
 
 2.	On the View Designer tab, click Hierarchy Builder.
 
-![Hierarchy Builder](Media/Image2.24.jpg)
+    ![Hierarchy Builder](Media/Image2.24.jpg)
  
-Figure 24: Hierarchy Builder
+    Figure 24: Hierarchy Builder
 
 3.	Select the Schema by clicking Browse.
 
@@ -657,17 +644,17 @@ Figure 24: Hierarchy Builder
 
 5.	Select the LDAP object class from the list of schema objects.
 
-![Hierarchy Builder](Media/Image2.25.jpg)
+    ![Hierarchy Builder](Media/Image2.25.jpg)
 
-Figure 25: Hierarchy Builder 
+    Figure 25: Hierarchy Builder 
 
 6.	Click **Next**.
 
 7.	The available attributes from the object class selected on the previous screen are displayed in the column on the left. Use the > button to move the attribute into the hierarchy on the right. 
 
-![Hierarchy Builder](Media/Image2.26.jpg)
+    ![Hierarchy Builder](Media/Image2.26.jpg)
 
-Figure 26: Hierarchy Builder 
+    Figure 26: Hierarchy Builder 
 
 8.	If you want to change the RDN name for the node, select the node and click the Rename button on the right.
 
@@ -681,11 +668,10 @@ Figure 26: Hierarchy Builder
 
 13.	Click on the Runtime Preview tab to test the new hierarchy.
 
-![Example Virtual View Created with Hierarchy Builder](Media/Image2.27.jpg)
+    ![Example Virtual View Created with Hierarchy Builder](Media/Image2.27.jpg)
 
-Figure 27: Example Virtual View Created with Hierarchy Builder 
+    Figure 27: Example Virtual View Created with Hierarchy Builder 
 
 As shown in the example above, the Hierarchy Builder tool allows you to take an existing flat LDAP tree and virtualize it into a complex hierarchy. The same steps could be used to take a database table and build a hierarchical view based on its columns. 
 
->[!warning]
->All attributes used to comprise the hierarchy should have VALUES for each entry, and the attributes should be indexed in the underlying data source. It is also recommended that if there are many entries (500,000+) that no more than 3-4 levels of hierarchy be used (otherwise performance could be a problem with dynamic access because RadiantOne must perform the “select distinct” operation on all entries to properly build the hierarchy). If persistent cache is used, then performance shouldn’t be a problem – but building the persistent cache could take some time. For details persistent cache, please see the RadiantOne Deployment and Tuning Guide.
+>[!warning] All attributes used to comprise the hierarchy should have VALUES for each entry, and the attributes should be indexed in the underlying data source. It is also recommended that if there are many entries (500,000+) that no more than 3-4 levels of hierarchy be used (otherwise performance could be a problem with dynamic access because RadiantOne must perform the “select distinct” operation on all entries to properly build the hierarchy). If persistent cache is used, then performance shouldn’t be a problem – but building the persistent cache could take some time. For details persistent cache, please see the RadiantOne Deployment and Tuning Guide.

@@ -147,8 +147,9 @@ Figure 11: Example Linking Two Existing Views
 In the linked view shown above, the sub-branch (view named EmpByDeptView) can be conditioned by setting a linking attribute. In this example, all projects are associated with a department (there is a one-to-one relationship based on the project ID), so the project ID can be established as the linking attribute. By adding a condition to the link based on the project ID attribute, the subtree shown at runtime is dependent upon the project (the parent node). The link parameter syntax is: 
 <childobject.attribute>=@[<parentobject_attribute>:<datatype>] 
 
-An example value is: 
-APP.EMP.PROJECTID=(@[projectid:INTEGER])
+An example value is:
+
+`APP.EMP.PROJECTID=(@[projectid:INTEGER])`
 
 Without this link condition, all departments would be shown below each project and the hierarchy would not make sense. The difference between using a link parameter and not using one are shown in the following two figures. 
 
@@ -181,8 +182,7 @@ Figure 14: Example – Source Entries
 
 Let’s assume the desired virtual view should represent identities followed by a list of entitlements associated with the identities. Since the information is maintained in two separate objects, a virtual view can be built from each. This is depicted in the diagram below. One view is built for identities while the other is a view of entitlements. 
 
-![Two Example Virtual Views 
-](Media/Image4.15.jpg)
+![Two Example Virtual Views](Media/Image4.15.jpg)
 
 Figure 15: Two Example Virtual Views 
 
@@ -194,28 +194,21 @@ Figure 16: Example Linking Two Existing Views
 
 In the linked view shown above, the sub-branch (view named EntitlementView) can be conditioned by setting a linking attribute. In this example, all identities are associated with entitlements, so the entitlements attribute in the identity can be established as the linking attribute to the idlink attribute of the entitlement view. By adding a condition to the link based on the entitlements attribute, the subtree shown at runtime is dependent upon the entitlements associated with parent identity. However, since the value of the entitlements attribute in the parent identity is multi-valued, the link condition must be manually altered to include a special syntax. If the link parameter is associated with a child node from an LDAP backend, the syntax to handle a multi-valued parent attribute is: 
 
-```
-<childobject.attribute>~=@[<parentattribute>:<datatype>] 
-```
+`<childobject.attribute>~=@[<parentattribute>:<datatype>] `
 
 An example value is:
 
-```
-vdentitlements.idlink~=@[entitlements:VARCHAR(255)] 
-```
+`vdentitlements.idlink~=@[entitlements:VARCHAR(255)] `
 
 If the link parameter is associated with a child node from a database backend, the syntax to handle a multi-valued parent attribute is: 
 
-```
-<childobject.attribute> IN (@[<parentattribute>:<datatype>]) 
-```
+`<childobject.attribute> IN (@[<parentattribute>:<datatype>]) `
 
 An example value is: 
 
-APP.IDENTITY.IDLINK IN (@[entitlements:VARCHAR(255)] 
+`APP.IDENTITY.IDLINK IN (@[entitlements:VARCHAR(255)]`
 
->[!warning]
->For child nodes from database backends, make sure in the link parameter value there is a <space> between the “IN” and the following open parenthesis. Also, performance can be negatively impacted because the “IN” operator does not benefit from prepared statements.
+>[!warning] For child nodes from database backends, make sure in the link parameter value there is a `<space>` between the “IN” and the following open parenthesis. Also, performance can be negatively impacted because the “IN” operator does not benefit from prepared statements.
  
 An example depicting the model of the virtual view and the runtime view leveraging the link parameter between the two virtual views described in this section is shown below. 
 
@@ -247,8 +240,7 @@ Figure 20: Example Virtual View using Merge Links with No Parameters
 
 This example described how links can be used to aggregate a list of people from three different data sources. Since there is no overlap of users in this scenario, using merge links is a simple way to create a union of all user accounts across three different data sources. Since the subtrees linked do not need to be conditioned by a parent attribute, a link parameter was not required to achieve the desired result. 
 
->[!note]
->The intermediate virtual view names (EmployeeView, PartnerView and CustomerView respectively) are suppressed in the final runtime view because merge links were used.
+>[!note] The intermediate virtual view names (EmployeeView, PartnerView and CustomerView respectively) are suppressed in the final runtime view because merge links were used.
 
 Configuration steps for using links can be found in the [Working with Links](#working-with-links) section.
 
@@ -326,8 +318,7 @@ For combining tables, see [Joins](concepts-and-utilities.md#joins-between-object
 
 By setting a mapping for an attribute name, you are defining the name that appears in the virtual entries for this view. The value shown in the Virtual Name column is the name of the attribute in the virtual entries. If you would like to map an attribute to a different name, click in the Virtual Name column and set the name you would like to use. 
 
->[!note]
->If the view you are modifying the attribute mapping for is joined to other virtual views, and the attribute you are changing the mapping for is configured to be returned in the joined view, you must update the external join condition in the joined view to reflect the newly mapped attribute name.
+>[!note] If the view you are modifying the attribute mapping for is joined to other virtual views, and the attribute you are changing the mapping for is configured to be returned in the joined view, you must update the external join condition in the joined view to reflect the newly mapped attribute name.
 
 ##### Object Tab
 
@@ -475,8 +466,7 @@ A link parameter can be used to condition the subtree based on the primary key o
 
 3.	Navigate to the first node in the linked virtual view and select the attribute that matches the primary key of the parent node. 
 
-    >[!note]
-    > if the link attribute in the parent node is multi-valued, manually edit the link parameter condition as described in [Linking on a Multi-Valued Attribute](#linking-on-a-multi-valued-attribute). 
+    >[!note] If the link attribute in the parent node is multi-valued, manually edit the link parameter condition as described in [Linking on a Multi-Valued Attribute](#linking-on-a-multi-valued-attribute). 
 
 5.	Click OK. 
 
@@ -493,8 +483,7 @@ To declare an RDN attribute value:
 
 2.	The RDN name and value are displayed here. Click the Edit button to select the attribute(s) that should comprise the RDN value. The attribute(s) that you select is combined with the primary key to comprise the RDN value. 
 
-    >[!warning]
-    >The column(s) that you select as the RDN attribute value should not allow NULL values.
+    >[!warning] The column(s) that you select as the RDN attribute value should not allow NULL values.
 
 ![Configuring RDN Name and Value](Media/Image4.29.jpg)
 
@@ -516,24 +505,24 @@ To create filters for database backends:
 
 4.	Select an operator. The comparison operator default is "equal". The drop-down list includes all available comparison operators. 
 
-![Filter for SQL-accessible Backend Dialog Box](Media/Image4.30.jpg)
+    ![Filter for SQL-accessible Backend Dialog Box](Media/Image4.30.jpg)
 
-Figure 30: Filter for SQL-accessible Backend Dialog Box
+    Figure 30: Filter for SQL-accessible Backend Dialog Box
 
 5.	Enter a value in the blank field if applicable.
 6.	Using the Add Rule and Add Group buttons, repeat steps 2-4 for each attribute you want to use in the filter. 
 
-For example, in the following illustration, the query is for Service Managers in the United States. The inferred operation for the condition in this example is “AND”. This means that the result displays information where Title = Service Manager AND Country = United States. You can see an example of the Where Clause that is generated below the list of columns by clicking the Preview button.
+    For example, in the following illustration, the query is for Service Managers in the United States. The inferred operation for the condition in this example is “AND”. This means that the result displays information where Title = Service Manager AND Country = United States. You can see an example of the Where Clause that is generated below the list of columns by clicking the Preview button.
 
-![Add Filter Dialog Box](Media/Image4.31.jpg)
+    ![Add Filter Dialog Box](Media/Image4.31.jpg)
 
-Figure 31: Add Filter Dialog Box
+    Figure 31: Add Filter Dialog Box
 
 7.	To enter an additional filter, click Add Rule. You can choose to either use an AND or OR condition. The example below uses an OR condition. For example, if “Operations Manager” were entered in the Condition 2 column for the Contact Title attribute, the results would include information where Contact Title = Service Manager OR Contact Title = Operations Manager AND Country = United States Therefore, all service and operation managers in the United States are included in the virtual view at runtime. 
 
-![Additional Condition for Filter](Media/Image4.32.jpg)
+    ![Additional Condition for Filter](Media/Image4.32.jpg)
 
-Figure 32: Additional Condition for Filter
+    Figure 32: Additional Condition for Filter
 
 8.	If more customization is required for the filter than is provided by this interface, then you can use the Additional Clause feature to manually create your own. For more information, please see the [Additional Clause](#additional-clause).
 
@@ -544,10 +533,10 @@ To create filters for LDAP backends:
 2.	Click **Assist** next to LDAP Filter. 
 
 3.	Enter a valid LDAP filter in the LDAP Filter parameter. There is a built-in syntax checker to verify the LDAP filter you have entered. For assistance with building your filter you can use the buttons along the right side. For example, if your filter should contain an AND condition, click on the New AND Operator button and then click New Condition. Enter one of the conditions you would like to filter on and click OK. Click on Next Condition button again and enter the next condition. In the screen shot below, the virtual view is conditioned by only returning entries that have l=Novato and postalCode=94947. 
- 
-![Sample LDAP Filter](Media/Image4.33.jpg)
 
-Figure 33: Sample LDAP Filter
+    ![Sample LDAP Filter](Media/Image4.33.jpg)
+
+    Figure 33: Sample LDAP Filter
 
 4.	To add an OR operation, click New OR Operator. Then click **New Condition** to indicate what the OR operation should contain. 
 
@@ -573,8 +562,7 @@ Requesting certain types of attributes like binary/BLOB, can significantly decre
 
 Use caution when enabling this parameter if an interception script is defined (which may need such attributes even if they are not requested by the client).
 
->[!warning]
->Do not enable this option if a memory entry cache is going to be enabled for this virtual view (as the whole virtual entry is needed, including the BLOBs).
+>[!warning] Do not enable this option if a memory entry cache is going to be enabled for this virtual view (as the whole virtual entry is needed, including the BLOBs).
 
 ##### Process Joins and Computed Attributes Only When Necessary 
 
@@ -584,8 +572,7 @@ If you enable this option, RadiantOne does not perform joins or computations if 
 
 Use caution when enabling this option if you have interception scripts defined on these objects, or access controls based on filters are being used (both of which may require other attributes returned from secondary sources or computations regardless of whether or not the client requested or searched for them).
 
->[!warning]
->Do not enable this option if a memory entry cache is going to be enabled for this virtual view (as the whole entry is needed for the cache).
+>[!warning] Do not enable this option if a memory entry cache is going to be enabled for this virtual view (as the whole entry is needed for the cache).
 
 #### Virtual Views from LDAP Backends 
 
@@ -601,12 +588,11 @@ If you enable this option, RadiantOne does not perform joins or computations if 
 
 Use caution when enabling this option if you have interception scripts defined on these objects, or access controls based on filters are being used (both of which may require other attributes returned from secondary sources or computations regardless of whether or not the client requested or searched for them).
 
->[!warning]
->Do not enable this option if a memory entry cache is going to be enabled for this virtual view (as the whole entry is needed for the cache).
+>[!warning] Do not enable this option if a memory entry cache is going to be enabled for this virtual view (as the whole entry is needed for the cache).
 
 #### Max Requested Attributes 
 
-If more than 30 attributes are configured to be returned for a container or content node (indicated on the Node Properties -> Attributes sub-tab), RadiantOne optimizes the query by requesting `(*)` instead of requesting each attribute explicitly. If your virtual view is required to include operational attributes (computed by the backend server when requested), and you have more than 30 attributes declared in the view definition, the default behavior to translate the query to use `(*)` can cause problems resulting in the operational attributes not being returned from the backend server because they are not explicitly requested. You can adjust the maximum number of attributes to determine the usage of the `(*)` translation in the Max Requested Attributes property. If this property is set to zero, all attributes specified on the Attributes tab are requested. 
+If more than 30 attributes are configured to be returned for a container or content node (indicated on the Node Properties > Attributes sub-tab), RadiantOne optimizes the query by requesting `(*)` instead of requesting each attribute explicitly. If your virtual view is required to include operational attributes (computed by the backend server when requested), and you have more than 30 attributes declared in the view definition, the default behavior to translate the query to use `(*)` can cause problems resulting in the operational attributes not being returned from the backend server because they are not explicitly requested. You can adjust the maximum number of attributes to determine the usage of the `(*)` translation in the Max Requested Attributes property. If this property is set to zero, all attributes specified on the Attributes tab are requested. 
 
 #### Setting Advanced Configuration Parameters 
 
@@ -651,8 +637,7 @@ If your backend is a database, you must be precise and use the proper syntax for
 
 Figure 36: Example Order By Additional Clause for Database Backend
 
->[!note]
->Use the actual database attribute name in the additional clause, not the remapped virtual name.
+>[!note] Use the actual database attribute name in the additional clause, not the remapped virtual name.
 
 If your backend is an LDAP server, the value in the additional clause should be the specific LDAP filter that RadiantOne should send prefixed with filter:. For example, if the virtual view should be restricted to entries with employeenumber of 11 and a givenName of henry, the following would be the value entered for the additional clause: filter:(&(employeenumber=11)(givenname=henry)) 
 
@@ -698,12 +683,11 @@ Another customization is available for database backends. The Base Search parame
 
 Since some databases are case sensitive, RadiantOne transforms primary key attribute values to upper case before comparing. This is only applicable when the database key is a character data type. “UPPER” is generated automatically for the following databases: Oracle, SQL MX, MS SQL Server, Sybase, Interbase, and DB2. If you do not want UPPER to be used for searches and updates (because your database is not case sensitive), you can use the Base Search parameter to remove it.
 
->[!warning]
->using the UPPER can slow down performance because the indexes in the database may not be used. IF your database has an index on an attribute and it stores the value in upper case, then you have the option of removing the UPPER generated on the left side of the parameter.
+>[!warning] Using the UPPER can slow down performance because the indexes in the database may not be used. IF your database has an index on an attribute and it stores the value in upper case, then you have the option of removing the UPPER generated on the left side of the parameter.
 
 Below is an example of the parameter that is generated for a database (for the search). If the database is case sensitive and the CN attribute is indexed (and the index stores the value in upper case), then the UPPER generated on the left side of the “=” can be removed and performance is improved (also remove the leading and ending parentheses). 
 
-(UPPER(SCOTT.PEOPLE.CN)=UPPER(@@[cn : VARCHAR2(60)])) 
+`(UPPER(SCOTT.PEOPLE.CN)=UPPER(@@[cn : VARCHAR2(60)]))`
 
 If you are not able to remove the UPPER then you should consider using cache at the level of RadiantOne to improve performance. RadiantOne queries the database the first time (the UPPER is used), the result is cached and future queries receive the information from cache.
 
@@ -720,8 +704,7 @@ In addition to using the View Designer to manually build virtual views, Context 
 There are three main types of virtual views you can build from LDAP backends. 
 -	Virtualize the whole directory tree (based on existing relationships). 
 
->[!warning]
->If you want to keep the entire existing tree structure intact and expose it in the RadiantOne namespace, it is recommended that you configure an LDAP backend from the Main Control Panel > Directory Namespace instead of using Context Builder which is typically for building virtual views that reflect a new directory hierarchy than the one that exists. For details on configuring LDAP backends from the Main Control Panel, please see the RadiantOne Namespace Configuration Guide.
+>[!warning] If you want to keep the entire existing tree structure intact and expose it in the RadiantOne namespace, it is recommended that you configure an LDAP backend from the Main Control Panel > Directory Namespace instead of using Context Builder which is typically for building virtual views that reflect a new directory hierarchy than the one that exists. For details on configuring LDAP backends from the Main Control Panel, please see the RadiantOne Namespace Configuration Guide.
 
 -	Flat virtual directory views.
 -	New hierarchical virtual view based on attributes available in an object class.
@@ -749,15 +732,15 @@ To build a flat virtual view based on an LDAP Object class:
 
 3.	Click the top node and, on the right, click New Content.
 
-![New Content Option](Media/Image4.40.jpg)
+    ![New Content Option](Media/Image4.40.jpg)
 
-Figure 41: New Content Option
+    Figure 41: New Content Option
 
 4.	Select the object class associated with the entries that should populate this node and click OK. 
 
-![Object Class Associated with Entries that will Populate the Node ](Media/Image4.41.jpg)
+    ![Object Class Associated with Entries that will Populate the Node ](Media/Image4.41.jpg)
 
-Figure 42: Object Class Associated with Entries that will Populate the Node
+    Figure 42: Object Class Associated with Entries that will Populate the Node
 
 5.	On the Node Properties > Attributes sub-tab, define the attributes that should comprise the entries by moving them from the list on the left to the list on the right.
 
@@ -769,7 +752,7 @@ Figure 43: Flat Virtual View from Existing LDAP Directory Object class InetOrgPe
 
 The Base DN that was entered when the directory schema was extracted is the starting point that the RadiantOne service uses to search for entries and populate the virtual view. Therefore, all entries associated with the chosen object class below the base DN defined in the data source comprise the virtual view. You can change the starting point by modifying the base DN in the data source. 
 
-After the virtual view is complete, it can be mounted in the RadiantOne namespace. Use the Main Control Panel -> Directory Namespace tab for this. For details on this process, please see the RadiantOne Namespace Configuration Guide.
+After the virtual view is complete, it can be mounted in the RadiantOne namespace. Use the Main Control Panel > Directory Namespace tab for this. For details on this process, please see the RadiantOne Namespace Configuration Guide.
 
 ##### Hierarchical Virtual View Based on Attributes of an Object Class 
 
@@ -823,8 +806,7 @@ When the virtual entries are returned, the entry contains both the virtual DN (w
 
 Figure 50: Results Showing Virtual DN and Actual DN
 
->[!warning]
->Although the “actualdn” attribute is returned for each entry, it is NOT a searchable attribute.
+>[!warning] Although the “actualdn” attribute is returned for each entry, it is NOT a searchable attribute.
 
 #### Building Virtual Views from Database Backends 
 
@@ -857,7 +839,7 @@ Figure 52: Recursive Relationship-driven Hierarchy Built with Containers
 
 It is assumed that the database schema has already been extracted (and all relationships defined). If you need help with this process, please see [Schema Manager](schema-manager.md) on the Schema Manager. The steps below describe the process using the default Northwind schema that is included with RadiantOne. 
 
-1.	On the View Designer tab, click ![new view definition ](Media/Imagenewviewdefinition.jpg) and enter a virtual view name. If a view with the same name already exists, it is overwritten.
+1. On the View Designer tab, click ![new view definition ](Media/Imagenewviewdefinition.jpg) and enter a virtual view name. If a view with the same name already exists, it is overwritten.
 
 2.	Click Select to choose a schema file. On the Database Schemas tab, select the Northwind file and click OK. 
 
@@ -925,9 +907,9 @@ Using the example above, the following steps describe how to build a flat virtua
 
 9.	Click the Add button next to the table drop-down list selecting the Projects table this time. Click OK.
 
-All joined tables should appear in the drop-down list on the Attributes tab. Attributes from any of the tables can comprise the virtual entry. Select the table in the drop-down list and move the attribute that you want in the virtual entry into the column list on the right (using the ![right arrow ](Media/ImageRightArrow.jpg) button). 
+    All joined tables should appear in the drop-down list on the Attributes tab. Attributes from any of the tables can comprise the virtual entry. Select the table in the drop-down list and move the attribute that you want in the virtual entry into the column list on the right (using the ![right arrow ](Media/ImageRightArrow.jpg) button). 
 
-![database tables for the join ](Media/Image4.57.jpg)
+    ![database tables for the join ](Media/Image4.57.jpg)
  
 Figure 58: Database Tables for the Join
 
@@ -1029,8 +1011,7 @@ To log stored procedure values used at runtime, set the RadiantOne server log le
 
 #### Building Virtual Views from SCIMv2 Backends
 
->[!warning]
->Do not use attribute mappings, computed attributes, or joins directly on the virtual view from the SCIM backend. Create a basic view with no attribute mappings, computed attributes or joins and then define the view with persistent cache. Initialize the persistent cache and then use Schema Manager and View Designer to point to the cached naming context in the RadiantOne namespace as an [LDAP backend](schema-manager.md#ldap-accessible-backend). Define the attribute mappings, computed attributes and joins on this virtual view.
+>[!warning] Do not use attribute mappings, computed attributes, or joins directly on the virtual view from the SCIM backend. Create a basic view with no attribute mappings, computed attributes or joins and then define the view with persistent cache. Initialize the persistent cache and then use Schema Manager and View Designer to point to the cached naming context in the RadiantOne namespace as an [LDAP backend](schema-manager.md#ldap-accessible-backend). Define the attribute mappings, computed attributes and joins on this virtual view.
 
 It is assumed that the SCIMv2 schema has already been extracted. If you need help with this process, please see [Schema Manager](03-schema-manager.md#ldap-accessible-backend) on the Schema Manager. The steps below describe the basic of creating a virtual view from a SCIMv2 backend. 
 
