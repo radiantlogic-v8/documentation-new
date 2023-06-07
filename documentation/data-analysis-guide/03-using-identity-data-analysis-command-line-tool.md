@@ -3,7 +3,7 @@ title: Identity Data Analysis
 description: Identity Data Analysis 
 ---
 
-# Chapter 3: Using Identity Data Analysis Command Line Tool
+# Using Identity Data Analysis Command Line Tool
 
 ## Identity Data Analysis for Database Objects
 
@@ -11,7 +11,7 @@ This section describes how to virtualize database objects, run the data analysis
 
 ### Virtualizing the Database Source
 
-1.	From the Main Control Panel -> Settings tab-> Server Backend -> DB data sources, cre-ate a connection to your backend database. Refer to the System Administration Guide if you need help with this step. 
+1.	From the Main Control Panel > Settings tab > Server Backend > DB data sources, cre-ate a connection to your backend database. Refer to the System Administration Guide if you need help with this step. 
 
 2.	From the Main Control Panel, Directory Namespace tab, click ![An image showing ](Media/newnamingcontext.jpg) (new naming context button).
 
@@ -42,37 +42,35 @@ From a command prompt, run this tool passing the following arguments (-d and -f 
 
 -d  The report directory where the report files are saved. The report directory should not contain path characters (/,\). The report directory is created under <RLI_HOME>/vds/r1syncsvcs/profiler.
 
- -f	Full name of LDIF file (may include path).
+-f	Full name of LDIF file (may include path).
  
- -h  help
+-h  help
  
- -o  This option allows you to overwrite files in the report directory. If you don’t pass this option, and the report directory already exists, no analysis is done and the report directory's files are not be changed.
+-o  This option allows you to overwrite files in the report directory. If you don’t pass this option, and the report directory already exists, no analysis is done and the report directory's files are not be changed.
  
- -r   Remove detailed analysis files in the report directory. 
+-r   Remove detailed analysis files in the report directory. 
 
 An example is shown below:
 
-```
-C:\radiantone\vds\bin\advanced>data_analysis.bat -d DBANALYSIS -f 
+`C:\radiantone\vds\bin\advanced>data_analysis.bat -d DBANALYSIS -f 
 "C:\radiantone\vds\vds_server\ldif\export\database.ldif"
 Using RLI home : C:\radiantone\vds
 Using Java home : C:\radiantone\vds\jdk\jre                                     ldifFile=C:\radiantone\vds\vds_server\ldif\export\database.ldif                
 outputDir=DBANALYSIS
 isOverwrite=false
 isRemoveDetailedFiles=false
-Done. Reports are in the following directory: C:\radiantone\vds\r1syncsvcs\profiler\DBANALYSIS
-```                                                                  
+Done. Reports are in the following directory: C:\radiantone\vds\r1syncsvcs\profiler\DBANALYSIS`                                                                  
 ### Interpreting the Data Analysis Results for a Database Object
 
 Files created from the data analysis process are located in <RLI_HOME>/r1syncsvcs/profiler/<value passed in the -d argument>. One is a CSV-formatted file named result.csv and contains the summary analysis and most/least used values. One is an XLS (Excel) file named result.xls that breaks down the analysis in more details. It contains a summary tab with a list of all column names, summarizing the results of the analysis (like shown below). In addition, there is one tab associated with each attribute selected for analysis containing details relevant for that particular attribute. All other files created by the LDIF data analysis tool are used for sorting.
 
->**Note – If double-byte characters do not display properly in your CSV file, use the following steps (based on Microsoft Office 365) to display them.**
+>[!note] If double-byte characters do not display properly in your CSV file, use the following steps (based on Microsoft Office 365) to display them.
 
 1.	Open the .csv file in Excel.
 
 2.	In the menu bar, click Data. 
 
-3.	Click Get Data -> From File -> From Text/CSV.
+3.	Click Get Data > From File > From Text/CSV.
 
 4.	Select the CSV file and click Import. 
 
@@ -84,7 +82,7 @@ Files created from the data analysis process are located in <RLI_HOME>/r1syncsvc
 
 ![An image showing ](Media/Image3.1.jpg)
 
-Figure 3.1: Sample Analysis
+Figure 1: Sample Analysis
 
 Below are details about each column of the data analysis report shown in the results.xls file.
 
@@ -126,19 +124,19 @@ One of the details available is a “BIGGEST COUNTS” analysis that lists the d
 
 ![An image showing ](Media/Image3.2.jpg)
 
-Figure 3. 2: Sample Attribute-Specific Analysis
+Figure 2: Sample Attribute-Specific Analysis
 
 This tab also contains charts and graphs that interpret the data for the attribute. The first bar chart represents the summary details (as seen below), showing the counts for the analysis of the CITY attribute in a graphical form.
 
 ![An image showing ](Media/Image3.3.jpg)
 
-Figure 3. 3: Sample Attribute-Specific Analysis
+Figure 3: Sample Attribute-Specific Analysis
 
 The next two charts represent the details regarding the biggest and smallest counts, and a sample can be seen below.
 
 ![An image showing ](Media/Image3.4.jpg)
 
-Figure 3. 4: Sample Attribute-Specific Analysis
+Figure 4: Sample Attribute-Specific Analysis
 
 The other tabs contain similar formatted details specific to the other analyzed attributes.
 
@@ -148,7 +146,7 @@ This section describes how to virtualize LDAP objects, run the data analysis too
 
 ### Virtualizing the LDAP Source
 
-1.	From the Main Control Panel -> Settings tab-> Server Backend -> LDAP data sources, create a connection to your LDAP directory backend. Refer to the System Administration Guide if you need help with this step. 
+1.	From the Main Control Panel > Settings tab > Server Backend > LDAP data sources, create a connection to your LDAP directory backend. Refer to the System Administration Guide if you need help with this step. 
 
 2.	From the Main Control Panel, Directory Namespace tab, click ![An image showing ](Media/newnamingcontext.jpg) (new naming context button).
 
@@ -160,7 +158,7 @@ This section describes how to virtualize LDAP objects, run the data analysis too
 
 6.	Click Browse to navigate to the container in your backend directory that contains your identities and click OK.
 
-><span style="color:red">**IMPORTANT NOTE – Do not use special characters in the Base DN value.**
+    >[!warning] Do not use special characters in the Base DN value.
 
 7.	Click OK to finish the configuration.
 
@@ -171,6 +169,7 @@ This section describes how to virtualize LDAP objects, run the data analysis too
 10.	Click on the naming context you created in step 3 and click ![An image showing ](Media/download.jpg) (export LDIF button).
 
 11.	You can customize the LDIF output, but generally accept the defaults (e.g. empty target DN, sub-tree scope, All Entries) and enter a file name (e.g. ldap.ldif). The default location of exported LDIF files is: <RLI_HOME>/vds_server/ldif/export.
+
 12.	Click OK. 
 
 ### Running the Data Analysis 
@@ -180,38 +179,35 @@ The LDIF data analysis tool is located in <RLI_HOME>/bin/advanced and is named d
 From a command prompt, run this tool passing the following arguments (-d and -f are required.
 -h, -o and -r are optional):
 -d  The report directory where the report files are saved. The report directory should not contain path characters (/,\). The report directory is created under <RLI_HOME>/vds/r1syncsvcs/profiler.
- -f	Full name of LDIF file (may include path).
- -h  help
- -o  This option allows you to overwrite files in the report directory. If you don’t pass this option, and the report directory already exists, no analysis is done and the report directory's files are not be changed.
- -r   Remove detailed analysis files in the report directory. 
+-f	Full name of LDIF file (may include path). -h  help
+-o  This option allows you to overwrite files in the report directory. If you don’t pass this option, and the report directory already exists, no analysis is done and the report directory's files are not be changed.
+-r   Remove detailed analysis files in the report directory. 
 
 An example is shown below:
 
-```
-C:\radiantone\vds\bin\advanced>data_analysis.bat -d LDAPANALYSIS -f "C:\radiantone\vds\vds_server\ldif\export\ldap.ldif"
-Using RLI home : C:\radiantone\vds
-Using Java home : C:\radiantone\vds\jdk\jre                                     ldifFile=C:\radiantone\vds\vds_server\ldif\export\ldap.ldif                
-outputDir=LDAPANALYSIS
-isOverwrite=false
-isRemoveDetailedFiles=false
-Done. Reports are in the following directory: C:\radiantone\vds\r1syncsvcs\profiler\LDAPANALYSIS
-```
+`C:\radiantone\vds\bin\advanced>data_analysis.bat -d LDAPANALYSIS -f "C:\radiantone\vds\vds_server\ldif\export\ldap.ldif"`
+<br>`Using RLI home : C:\radiantone\vds`
+<br>`Using Java home : C:\radiantone\vds\jdk\jre                                     ldifFile=C:\radiantone\vds\vds_server\ldif\export\ldap.ldif  `              
+<br>`outputDir=LDAPANALYSIS`
+<br>`isOverwrite=false`
+<br>`isRemoveDetailedFiles=false`
+<br>`Done. Reports are in the following directory: C:\radiantone\vds\r1syncsvcs\profiler\LDAPANALYSIS`
 
 ### Interpreting the Data Analysis Results for a LDAP Object
 
 Files created from the data analysis process are located in <RLI_HOME>/r1syncsvcs/profiler/< value passed in the -d argument >. One is a CSV formatted file named result.csv containing the summary analysis and most/least used values. One is an XLS (Excel) file named result.xls that breaks down the analysis in more details. It contains a summary tab with a list of all column names, summarizing the results of the analysis (like shown below). In addition, there is one tab associated with each attribute selected for analysis containing details relevant for that particular attribute. All other files created by the LDIF data analysis tool are used for sorting.
 
->**Note – If double-byte characters do not display properly in your CSV file, use the following steps (based on Microsoft Office 365) to display them.**
+>[!note] If double-byte characters do not display properly in your CSV file, use the following steps (based on Microsoft Office 365) to display them.
 
 1.	Open the .csv file in Excel.
 
 2.	In the menu bar, click Data. 
 
-3.	Click Get Data  From File  From Text/CSV.
+3.	Click Get Data > From File > From Text/CSV.
 
 4.	Select the CSV file and click Import. 
 
-5.	From the File Origin drop-down menu, select “650001:Unicode (UTF8)” or other lan-guage character identifier). 
+5.	From the File Origin drop-down menu, select “650001:Unicode (UTF8)” or other language character identifier). 
 
 6.	From the Delimiter drop-down menu, select Comma. 
 
@@ -219,7 +215,7 @@ Files created from the data analysis process are located in <RLI_HOME>/r1syncsvc
 
 ![An image showing ](Media/Image3.5.jpg)
 
-Figure 3. 5: Sample Analysis Results
+Figure 5: Sample Analysis Results
 
 Below are details about each column of the data analysis report shown in the results.xls file. 
 
@@ -229,7 +225,7 @@ The analysis of each attribute is divided into two groups: Entry Statistics and 
 
 ![An image showing ](Media/Image3.6.jpg)
 
-Figure 3. 6: Sample Analysis Results
+Figure 6: Sample Analysis Results
 
 #### Entry Statistics
 
@@ -245,13 +241,13 @@ Entries with Multiple Values - Since LDAP entries can support multi-valued attri
 
 ![An image showing ](Media/Image3.7.jpg)
 
-Figure 3. 7: Sample Analysis Results
+Figure 7: Sample Analysis Results
 
 In this case, the value for Entries with multiple values for the Title attribute would be 1 as shown in the example results below. 
 
 ![An image showing ](Media/Image3.8.jpg)
 
-Figure 3. 8: Sample Analysis Results
+Figure 8: Sample Analysis Results
 
 **Max Multiple Value** – If entries have multi-values for the analyzed attribute, then the max multiple value column indicates the maximum number of values. In the screenshot above, the TITLE attribute is associated with one entry and this entry has 2 values for TITLE. So the counter for the Max Multiple Value column is 2.  Similarly, if the source contained an identity with 3 values for the title attribute and another identity contains 4 values for their title attribute then the Max Multiple Value column would have a value of 4 (and the “Entries with Multiple Values” would obviously be 2 in this scenario).
 
@@ -259,7 +255,7 @@ Figure 3. 8: Sample Analysis Results
 
 ![An image showing ](Media/Image3.9.jpg)
 
-Figure 3. 9: Sample Analysis Results
+Figure 9: Sample Analysis Results
 
 **Values** - Number of attribute values among all entries. An entry that does not have values for the attribute does not contribute any amount for the value analysis; an entry that has one value contributes one value for the value analysis and so on. From the snapshot above, we see that the attribute POSTALADDRESS has a count of 3 for the Values column. This implies that this attribute has only 3 entries which are used for the value analysis.
 
@@ -290,7 +286,7 @@ The number of distinct values of “l” from the table above would be 8 (San Ma
 
 **Duplicate values** – Number of values that occur more than once in the LDAP source. To continue with the example above, this value would be 3 for the “l” attribute - San Mateo, London and Seattle.
 
->**Note - Distinct values = `<Unique Values> + <Duplicate Values>`.
+>[!note] Distinct values = `<Unique Values> + <Duplicate Values>`.
 
 As mentioned previously, in the XLS file there is a tab associated with each attribute selected for analysis containing details relevant for that particular attribute. Based on the example used in this section, the next tab in the results.xls file contains more details related to the L attribute. 
 
@@ -298,19 +294,19 @@ One of the details available is a “BIGGEST COUNTS” analysis that lists the d
 
 ![An image showing ](Media/Image3.10.jpg)
 
-Figure 3. 10: Sample Analysis Results
+Figure 10: Sample Analysis Results
 
 This tab also contains charts and graphs that interpret the data for the attribute. The first bar chart represents the Entry Statistics and the other represents the Value Statistics (as seen below), showing the counts for the analysis of the L attribute in a graphical form. 
 
 ![An image showing ](Media/Image3.11.jpg)
 
-Figure 3. 11: Sample Analysis Results 
+Figure 11: Sample Analysis Results 
 
 The next two charts represent the Biggest and Smallest counts, as in the figure below. 
 
 ![An image showing ](Media/Image3.12.jpg)
 
-Figure 3. 12: Sample Analysis Results
+Figure 12: Sample Analysis Results
 
 **Maximum Entry Size**
 
@@ -323,7 +319,6 @@ The biggest entry size in KB. This statistic is only found in the .csv output an
 The average entry size in KB. This statistic is only found in the .csv output and is not in the .xls output.
 
 ![An image showing ](Media/Image3.14.jpg)
-
  
 **Biggest 20 Entries**
 

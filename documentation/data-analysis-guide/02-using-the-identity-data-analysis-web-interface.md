@@ -3,34 +3,31 @@ title: Identity Data Analysis
 description: Identity Data Analysis 
 ---
 
-# Chapter 2: Using the Identity Data Analysis Web Interface
+# Using the Identity Data Analysis Web Interface
 
 The Identity Data Analysis web tool is accessible from the RadiantOne Main Control Panel > Wizards tab. 
 
 Any user that is a member of the RadiantOne Directory Administrator role, ICS Admin role, or Namespace Admin role can log into the RadiantOne Main Control Panel and access the Identity Data Analysis tool on the Wizards tab. For details on the RadiantOne delegated admin roles, see the RadiantOne System Administration Guide.
 
->**Note – Images displayed in this guide are meant to describe expected behavior of features in RadiantOne. Your results may vary from those shown in this guide as data sets are subject to change at any time.**
+>[!note] Images displayed in this guide are meant to describe expected behavior of features in RadiantOne. Your results may vary from those shown in this guide as data sets are subject to change at any time.
 
 To access the Identity Data Analysis Tool, navigate in a web browser as follows. 
 
-```
-http://<hostname>:7070/main/login
-```
+`http://<hostname>:7070/main/login`
 
 Examples include the following.
 
-```
-http://RadiantoneService:7070/main/login
-http://10.11.12.10:7070/main/login
-```
+`http://RadiantoneService:7070/main/login`
+
+`http://10.11.12.10:7070/main/login`
 
 ![An image showing ](Media/Image2.1.jpg)
  
-Figure 2.1: The RadiantOne Main Control Panel Login Page
+Figure 1: The RadiantOne Main Control Panel Login Page
 
 Enter your credentials and click Login. Go to the Wizards tab and click on Identity Data Analysis.
 
->**NOTE – The Identity Data Analysis tool is not compatible with Compatibility View in Microsoft Internet Explorer 11.**
+>[!note] The Identity Data Analysis tool is not compatible with Compatibility View in Microsoft Internet Explorer 11.
 
 ## Working with Datasets
 
@@ -38,64 +35,63 @@ The first page of the Identity Data Analysis tool offers two options: [Creating 
 
 ![An image showing ](Media/Image2.2.jpg)
  
-Figure 2.2: The Choose Dataset Type Page
+Figure 2: The Choose Dataset Type Page
 
 ### Creating a New Dataset
 
 This option generates and analyzes an LDIF file based on your specifications. Creating a new dataset is the default option on this page. This option allows you to select a point of analysis within the RadiantOne namespace. 
 
-><span style="color:red">**IMPORTANT NOTE – You can mount virtual views from each of your data sources below a global root naming context in the RadiantOne namespace and point the Data Analysis tool to this location to perform a single analysis/report from all of your sources at once. This helps you detect attribute uniqueness and statistics across heterogeneous data sources.**
+>[!warning] You can mount virtual views from each of your data sources below a global root naming context in the RadiantOne namespace and point the Data Analysis tool to this location to perform a single analysis/report from all of your sources at once. This helps you detect attribute uniqueness and statistics across heterogeneous data sources.
 
 There are two default LDAP filters that can be used for creating a new data set – one for identities and one for groups – and allows you to provide an export location and file name for the LDIF that the Data Analysis tool generates. 
 
->**NOTE – The RadiantOne service must be running to create a new dataset.** 
+>[!note] The RadiantOne service must be running to create a new dataset.*
 
 To create a new dataset: 
 
 1.	Click the Create New Dataset option and click Next. The Create New Dataset page displays. 
 
-![An image showing ](Media/Image2.3.jpg)
+![The Create New Dataset Page](Media/Image2.3.jpg)
 
-Figure 2.3: The Create New Dataset Page
+Figure 3: The Create New Dataset Page
 
 2.	Select a branch in the Directory Tree in the left pane. 
 
 3.	Select Identity or Group depending on the type of object you want to analyze. These but-tons modify the default LDAP filter. Selecting the Identity option sets the default identity LDAP filter to:
 
-```
-(|(objectclass=inetorgperson)(objectclass=user))
-```
+    `(|(objectclass=inetorgperson)(objectclass=user))`
 
 4.	Selecting the Group option sets the default group LDAP filter to: 
 
-```
-(|(objectclass=group)(objectclass=groupOfNames)(objectclass=groupOfUniqueNames))
-```
+    `(|(objectclass=group)(objectclass=groupOfNames)(objectclass=groupOfUniqueNames))`
 
 5.	If necessary, modify the LDAP filter to match your data. In this example, the LDAP filter is modified as follows. 
-(|(objectclass=inetorgperson)(objectclass=vdAPPEMPLOYEES))
+
+    `(|(objectclass=inetorgperson)(objectclass=vdAPPEMPLOYEES))`
 
 6.	Specify an export location. The default export location (based on a default RadiantOne FID installation) is:
-<RLI_HOME>\vds_server\ldif\export
+
+`<RLI_HOME>\vds_server\ldif\export`
 
 7.	Verify the export file name. The export file name is based on the selected branch in the virtual namespace. 
-Note – avoid using invalid characters (< > : " / \ | ? or *) in the file name.
 
-![An image showing ](Media/Image2.4.jpg)
+    >[!note] Avoid using invalid characters (< > : " / \ | ? or *) in the file name.
 
-Figure 2.4: The Create New Dataset Option
+    ![An image showing ](Media/Image2.4.jpg)
+
+    Figure 4: The Create New Dataset Option
 
 8.	Click Next. 
 
 9.	Wait for the message “Dataset exported successfully”. The time to export the data into an LDIF file varies depending on the number of entries in the naming context being export-ed.
 
-![An image showing ](Media/Image2.5.jpg)
+    ![An image showing ](Media/Image2.5.jpg)
 
-Figure 2.5: Exporting the Dataset
+    Figure 5: Exporting the Dataset
 
 10.	Click Run Analysis. The data analysis process time varies depending on the size of the LDIF file.
 
->**NOTE – If you click the Run Analysis button to analyze an LDIF that has already been created without moving or renaming the output .csv and .xls files, they are overwritten.** 
+>[!note] If you click the Run Analysis button to analyze an LDIF that has already been created without moving or renaming the output .csv and .xls files, they are overwritten.
 
 ### Using an Existing Dataset
 
@@ -107,9 +103,9 @@ To analyze an existing dataset:
 
 2.	Click the Browse button next to the LDIF File Path field, and navigate to the pathname of the LDIF to be analyzed. 
 
-![An image showing ](Media/Image2.6.jpg)
+    ![An image showing ](Media/Image2.6.jpg)
 
-Figure 2.6: Selecting an LDIF for Analysis
+    Figure 6: Selecting an LDIF for Analysis
 
 3.	Click OK. 
 
@@ -121,7 +117,7 @@ When data analysis is complete, four tabs are displayed at the top of the Data A
 
 ![An image showing ](Media/Image2.7.jpg)
 
-Figure 2.7: Data Analysis Tabs
+Figure 7: Data Analysis Tabs
 
 The four Data Analysis tabs are described in the following sections. 
 
@@ -141,11 +137,11 @@ Understanding entry size can help in developing a strategy for sizing memory and
 
 ![An image showing ](Media/Image2.8.jpg)
 
-Figure 2.8: The Data Analysis Tool’s Summary Tab
+Figure 8: The Data Analysis Tool’s Summary Tab
 
 The Run New Analysis button restarts the analysis process and returns you to the Choose Dataset Type. 
 
->**NOTE – re-starting the analysis process over discards your current analysis re-sults.**
+>[!note] Re-starting the analysis process over discards your current analysis re-sults.
 
 To export your data analysis to PDF, click the Export to PDF button. The Export to PDF button generates a PDF report of the entire analysis, which it displays in a PDF web viewer in a new browser tab. You may then download and save the generated PDF file. 
 
@@ -157,13 +153,13 @@ Review the Entry Statistics and Value Statistics pie charts (located below the b
 
 ![An image showing ](Media/Image2.9.jpg)
 
-Figure 2.9: Attributes Tab
+Figure 9: Attributes Tab
 
 ### Entry Statistics
 
 ![An image showing ](Media/Image2.10.jpg)
 
-Figure 2.10: Entry Statistics for the City Attribute
+Figure 10: Entry Statistics for the City Attribute
 
 Values in the Total column indicate the number of entries in the analyzed data set. This value is the same for all the attributes (11 in this case, as seen above). This means there are 11 entries containing these attributes. 
 
@@ -177,7 +173,7 @@ Values in the Multi Values column indicate the number of entries which contain m
 
 ![An image showing ](Media/Image2.11.jpg)
 
-Figure 2.11: Two Values the ‘Title’ Attribute for uid=Aggie_Newcombe
+Figure 11: Two Values the ‘Title’ Attribute for uid=Aggie_Newcombe
 
 If entries have multiple values for the analyzed attribute, then the Max Multi Value column indicates the maximum number of values. In the image above, one entry associated with the Title attribute has two values for Title. So, the counter for the Max Multi Value column is 2. Similarly, if the source contained an identity with 3 values for the Title attribute and another identity contained four values for its Title attribute, then the Max Multiple Value column would have a value of four.
 
@@ -187,7 +183,7 @@ If entries have multiple values for the analyzed attribute, then the Average Mul
 
 ![An image showing ](Media/Image2.12.jpg)
  
-Figure 2.12: Value Statistics Pie Chart
+Figure 12: Value Statistics Pie Chart
 
 Values in the Total column indicate the number of attribute values among all entries. An entry that does not have values for the attribute does not contribute any amount for the value analysis; an entry that has one value contributes one value for the value analysis and so on. The image above shows that the attribute CITY has a count of 9 for the Values column. This implies that this attribute has 9 entries which are used for the value analysis.
 
@@ -195,44 +191,43 @@ Values in the Distinct Values column indicate the number of distinct (different)
 
 ![An image showing ](Media/Image2.13.jpg)
 
-Figure 2. 13: Table with “firstname” and “city” Values
+Figure 13: Table with “firstname” and “city” Values
 
 Values in the Unique Values column indicate the number of values that occur only once in the attribute values. From the table above, the number of unique values of CITY for our database source is 3 (Kirkland, Redmond, and Tacoma) since these values occur only once each in the database source.
 
->**NOTE - Distinct values = `<Unique Values> + <Duplicate Values>`.**
+>[!note] Distinct values = `<Unique Values> + <Duplicate Values>`.
 
 Values in the Duplicate Values column indicate the number of values that occur more than once in the database source. To continue with the example above, this value would be 2 for the CITY attribute - London and Seattle.
 
 Values in the Blank Values column indicate the number of blank (empty) values for the analyzed attribute. Before analysis, the value is trimmed (spaces deleted at the beginning and end of the value). The result for blank values in the analysis used in this section is 0, which means that no entries had blank values for the attributes analyzed.
 
-Below the pie chart, click the ![An image showing ](Media/Down-arrow.jpg)  button to the right of Distinct Values Biggest/Smallest Counts. 
+Below the pie chart, click the ![An image showing ](Media/Down-arrow.jpg) button to the right of Distinct Values Biggest/Smallest Counts. 
 
-![An image showing ](Media/Image2.14.jpg)
+![Opening the Distinct Values Biggest/Smallest Counts Table](Media/Image2.14.jpg)
 
-Figure 2.14: Opening the Distinct Values Biggest/Smallest 
-Counts Table
+Figure 14: Opening the Distinct Values Biggest/Smallest Counts Table
 
 The Distinct Values Biggest/Smallest Counts table displays. 
 
-![An image showing ](Media/Image2.15.jpg)
+![Distinct Values Biggest/Smallest Counts Table](Media/Image2.15.jpg)
 
-Figure 2. 15: The Distinct Values Biggest/Smallest Counts Table for the City Attribute
+Figure 15: The Distinct Values Biggest/Smallest Counts Table for the City Attribute
 
 Review the Biggest Counts section (located below the Entry and Value statistics). This section lists the different values for the CITY attribute starting with the most-used value. A similar section named “Smallest Counts” lists the values for the attribute CITY starting with the least-used value.
 
-Below the Distinct Values Biggest/Smallest Counts section, click the  ![An image showing ](Media/Down-arrow.jpg) button to the right of Entries with the most values in `<attributename>` header. 
+Below the Distinct Values Biggest/Smallest Counts section, click the ![An image showing ](Media/Down-arrow.jpg) button to the right of Entries with the most values in `<attributename>` header. 
 
-NOTE – this section displays for multi-value attributes only. 
+>[!note] This section displays for multi-value attributes only. 
 
-![An image showing ](Media/Image2.16.jpg)
+![Opening the Entries with Most Values Table](Media/Image2.16.jpg)
 
-Figure 2. 16: Opening the Entries with Most Values Table
+Figure 16: Opening the Entries with Most Values Table
 
 The values in the Count column in this table indicate the number of values found for the analyzed entry. In the example below, the entry cn=Aggie Newcombe has six values for the objectclass attribute. 
 
-![An image showing ](Media/Image2.17.jpg)
+![Entries with Most Multi-values Table](Media/Image2.17.jpg)
 
-Figure 2. 17: Entries with Most Multi-values Table
+Figure 17: Entries with Most Multi-values Table
 
 ## Correlation Candidates Tab
 
@@ -242,20 +237,20 @@ For example, if, after analysis, the report indicates an attribute named “Empl
 
 Once you’ve determined the best attributes for correlation rules, the Global Identity Builder can be used to build a unique view of overlapping identities. Refer to the RadiantOne Global Identity Builder Guide for details.
 
-![An image showing ](Media/Image2.18.jpg)
+![Possible Candidate for Correlation](Media/Image2.18.jpg)
 
-Figure 2. 18: Possible Candidate for Correlation
+Figure 18: Possible Candidate for Correlation
 
 ### Multi-valued Attributes Tab
 
 The Multi-valued Attributes tab shows maximum multiple values and average multiple values by attribute. It also shows which groups have the highest number of values by attribute. This can be useful, for example, to examine the number of members (based on the member or, uniquemember attributes). 
 
-![An image showing ](Media/Image2.19.jpg)
+![The Multi-valued Attributes Tab](Media/Image2.19.jpg)
 
-Figure 2. 19: The Multi-valued Attributes Tab
+Figure 19: The Multi-valued Attributes Tab
 
 To display data for a multi valued attribute, click an attribute in the Most Multiple Values table on the left. The <ATTRIBUTE> Multiple Values table on the right populates. In the example below, the MEMBER attribute is selected and the table on the right shows a list of groups and the number of values in the MEMBER attribute (meaning number of members) for each. For example, you can see that there is 24 members in the CN=GLOBAL,OU=VIRTUAL GROUPS,OU=ALLPROFILES group. 
  
-![An image showing ](Media/Image2.20.jpg)
+![The Member Multiple Values Table](Media/Image2.20.jpg)
 
-Figure 2.20: The Member Multiple Values Table 
+Figure 20: The Member Multiple Values Table 
