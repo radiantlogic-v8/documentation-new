@@ -3,7 +3,7 @@ title: Identity Service Wizards
 description: Identity Service Wizards
 ---
 
-# Chapter 7: Global Identity Builder
+# Global Identity Builder
 
 If you don’t have a single source of users, an application would have to look in all the different data stores across the enterprise to find a particular user. Even if a user is listed in only one store (unless that exact store is already known), an application still needs to locate them, resulting in multiple queries issued (at least one to each source the user could potentially be located in). However, if you have a master index (an “identity hub”), the application only needs to query this list to locate a user, which results in queries to only the backend stores where the user is located. The more sources involved, the more valuable this global index is. It is this global list that is created by the Global Identity Builder tool and maintained by RadiantOne.
 

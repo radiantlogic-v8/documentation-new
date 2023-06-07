@@ -3,7 +3,7 @@ title: Identity Service Wizards
 description: Identity Service Wizards
 ---
 
-# Chapter 6: Identity Data Analysis
+# Identity Data Analysis
 
 The RadiantOne Identity Data Analysis tool analyzes the quality of data in the backends, helping you determine which attributes would be the best candidates for correlation rules. 
 
