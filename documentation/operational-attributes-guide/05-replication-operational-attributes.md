@@ -4,6 +4,7 @@ description: Operational Attributes
 ---
 
 # Replication Operational Attributes
+
 ## timestampms
 
 This attribute indicates the date/time (Unix epoch time format) the entry was added into the “changelog” (“changelog” meaning cn=changelog, cn=replicationjournal, and/or cn=replicationjournal…depending on the context) as opposed to the time the entry (originally) changed. Entries in the cn=changelog, cn=replicationjournal, and cn=localjournal branches contain this attribute. This attribute is used by RadiantOne internally for storage cleanup and changelog isolation per context.
@@ -15,6 +16,7 @@ This attribute is used by RadiantOne internally for storage cleanup and changelo
 ## targetEntryuuid
 
 UUID of the target entry.
+
 ## replicationDomain
 
 The naming context on which the replication topology is established.
@@ -26,6 +28,7 @@ Change Sequence Number (CSN) which is a unique number to differentiate change ev
 ## replicaIdentifier
 
 The identifier to distinguish each replica within the replication topology.
+
 ## changetype
 
 This attribute indicates the type of change associated with the entry. Possible values are add, modify and delete. Entries in the cn=changelog, cn=replicationjournal, and cn=localjournal branches contain this attribute.
@@ -38,17 +41,15 @@ This attribute indicates the time the entry (originally) changed, as opposed to 
 
 This attribute includes details about the changes associated with the entry. Entries in the cn=changelog, cn=replicationjournal, and cn=localjournal branches contain this attribute. The following example is associated with an update to the “l” attribute of an entry:
 
-```
-replace: l
-l: San Francisco
--
-replace: modifiersName
-modifiersName: cn=directory manager
--
-replace: modifyTimestamp
-modifyTimestamp: 20180904173203.571Z
--
-```
+`replace: l`
+<br>`l: San Francisco`
+<br>`-`
+<br>`replace: modifiersName`
+<br>`modifiersName: cn=directory manager`
+<br>`-`
+<br>`replace: modifyTimestamp`
+<br>`modifyTimestamp: 20180904173203.571Z`
+<br>`-`
 
 ## changenumber
 
@@ -78,4 +79,4 @@ Keeps track of the cursor which is the last record applied on this replica.
 
 Keeps track of the historical information (attribute changes) within the entry. Whenever an attribute's value is changed, the information indicating who/when/what is logged inside the vdsSyncHist attribute to be used for replication conflict resolution.
 
->**Note – the maximum age defined for the changelog at Main Control Panel -> Settings -> Logs -> Changelog also applies to the vdsSyncHist attribute maintained at the level of entries involved in inter-cluster replication. This attribute is multi-valued and continues to grow until the RadiantOne service scans the values and removes ones that are older than the maximum age. RadiantOne scans the values only when the entry is modified. For entries that aren’t updated often, vdsSyncHist will potentially contain values that are older than the maximum age.**
+>[!note] The maximum age defined for the changelog at Main Control Panel > Settings > Logs > Changelog also applies to the vdsSyncHist attribute maintained at the level of entries involved in inter-cluster replication. This attribute is multi-valued and continues to grow until the RadiantOne service scans the values and removes ones that are older than the maximum age. RadiantOne scans the values only when the entry is modified. For entries that aren’t updated often, vdsSyncHist will potentially contain values that are older than the maximum age.

@@ -26,6 +26,7 @@ A multi-valued attribute that stores information about the configured access con
 -	“groupdn” indicates the subject the access control is applicable for.
 
     An example value is: (target="ldap:///ou=globalaci,cn=config")(targetscope="subtree")(targetattr="*")(version 3.0; acl "aci7"; allow (read,search,write) groupdn="ldap:///cn=directory administrators,ou=globalgroups,cn=config";)
+
 ## acilocation
 
 A single-valued attribute that indicates the location/target DN that an access control is applicable for.

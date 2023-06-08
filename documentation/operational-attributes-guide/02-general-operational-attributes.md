@@ -110,7 +110,8 @@ The Universally Unique Identifier (UUID) attribute is a reserved, internal attri
 
 ## subschemaSubentry
 
-The value of the subschemaSubentry attribute is the DN of the entry that contains schema information for this entry. 
+The value of the subschemaSubentry attribute is the DN of the entry that contains schema information for this entry.
+
 ## isMemberOf
 
 isMemberOf is an operational attribute that automatically maintains the relationships between groups and user entries. A user’s group memberships are available in the isMemberOf/memberOf attribute and updated automatically if a user is added or removed from a group. A user can be a member of a nested group, dynamic group, or standard static group. The isMemberOf/memberOf attribute can either be computed dynamically when it is explicitly requested or pre-computed at indexing time of the RadiantOne Universal Directory store if the “Optimize MemberOf” option is enabled. 

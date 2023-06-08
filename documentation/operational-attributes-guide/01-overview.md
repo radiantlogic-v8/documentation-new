@@ -3,9 +3,7 @@ title: Operational Attributes
 description: Operational Attributes
 ---
 
-# Operational Attributes Guide
-
-## Overview
+# Overview
 
 Operational Attributes are used for processing within the RadiantOne service and typically are not to be modified by user operations. In the RadiantOne LDAP schema, these attributes have USAGE directoryOperation.
 
