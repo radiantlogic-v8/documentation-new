@@ -11,10 +11,9 @@ Some settings in RadiantOne are accessible only in Expert Mode. To switch to Exp
 
 ![An image showing ](Media/Image2.1.jpg)
 
-Figure 2.1: Accessing Expert Mode
+Figure 2. 1 : Accessing Expert Mode
 
->[!note]
->The Main Control Panel saves the last mode (Expert or Standard) it was in when you log out and returns to this mode automatically when you log back in. The mode is saved on a per-role basis.
+>[!note] The Main Control Panel saves the last mode (Expert or Standard) it was in when you log out and returns to this mode automatically when you log back in. The mode is saved on a per-role basis.
 
 ## Adding Nodes
 
@@ -24,7 +23,8 @@ To install nodes to an existing cluster, you need the following details:
 - The server names and ports of the ZooKeeper ensemble.
 - The cluster name.
 - The ZooKeeper login and password.
-- A valid RadiantOne license key. Keys can be enforced at the cluster level or the node level. Please check with your Radiant Logic representative to verify your license key type.
+- A valid RadiantOne license key. Keys can be enforced at the cluster level or the node
+level. Please check with your Radiant Logic representative to verify your license key type.
 
 For exact installation steps, please see the RadiantOne Installation Guide.
 
@@ -32,7 +32,7 @@ For exact installation steps, please see the RadiantOne Installation Guide.
 
 If ZooKeeper is deployed in an external ensemble, make sure all nodes are running.
 
-If ZooKeeper is deployed local, on the same machines as the RadiantOne nodes, make sure it is running on all nodes. If ZooKeeper cannot be started on the RadiantOne node that needs to be removed, follow the steps in [Node and/or Services Cannot Be Restarted](#node-andor-services-cannot-be-restarted) instead of the steps in this section.
+If ZooKeeper is deployed local, on the same machines as the RadiantOne nodes, make sure it is running on all nodes. If ZooKeeper cannot be started on the RadiantOne node that needs removed, follow the steps in [Node and/or Services Cannot Be Restarted](#node-andor-services-cannot-be-restarted) instead of the steps in this section.
 
 Make sure all other RadiantOne services are stopped on all nodes.
 
@@ -42,15 +42,14 @@ To remove a node from a cluster:
 <br> <RLI_HOME>/bin/advanced/cluster.bat detach
 2. Edit the <RLI_HOME>\vds_server\conf\cloud.properties file on each remaining cluster node and verify that the zk.servers value correctly lists the cluster nodes and ZooKeeper client port. If the zk.servers value is incorrect, run the following command (using cluster.bat on Windows, cluster.sh on Linux):
     <br><RLI_HOME>/bin/advanced/cluster.bat update-zk-client-conf
-3. To update the vdsha and replicationjournal data sources (that still reference the removed RadiantOne node), on one of the remaining cluster nodes, run the following command (using cluster.bat on Windows, cluster.sh on Linux):     <br><RLI_HOME>/bin/advanced/cluster.bat reset-cluster-datasource
+3. To update the vdsha and replicationjournal data sources (that still reference the removed RadiantOne node), on one of the remaining cluster nodes, run the following command (using cluster.bat on Windows, cluster.sh on Linux): <br><RLI_HOME>/bin/advanced/cluster.bat reset-cluster-datasource
 
 To update a specific data source, like vdsha, use the following command instead of the one mentioned above (vds_server is the instance name and vdsha is the data source name in this example):
 <RLI_HOME>/bin/advanced/cluster.bat reset-cluster-datasource vds_server vdsha
 
 4. To update the vdsha and replicationjournal data sources (that still reference the other cluster nodes), on the removed node, run the following command (using cluster.bat on Windows, cluster.sh on Linux):
     <br><RLI_HOME>/bin/advanced/cluster.bat reset-cluster-datasource
-5. To update the cluster name on the removed node, run the following command (using
-    cluster.bat on Windows, cluster.sh on Linux):
+5. To update the cluster name on the removed node, run the following command (using cluster.bat on Windows, cluster.sh on Linux):
     <RLI_HOME>/bin/advanced/cluster.sh rename-cluster-zk <vds_instance_name>
     <new_cluster_name>
     vds_server is the default instance name.
@@ -62,7 +61,8 @@ At this point, you have a two-node cluster and one node by itself, which could b
 
 Renaming a cluster is a delicate operation that should not be used frequently and is not recommended for deployed architectures involved in inter-cluster replication since the cluster name is key for the replication logic.
 
-To rename a cluster, perform the following steps (using cluster.bat on Windows, cluster.sh on Linux):
+To rename a cluster, perform the following steps (using cluster.bat on Windows, cluster.sh on
+Linux):
 
 1. Stop all RadiantOne services except ZooKeeper.
 2. On any RadiantOne node, run:
@@ -79,9 +79,9 @@ To rename a cluster, perform the following steps (using cluster.bat on Windows, 
 
 During RadiantOne installation, the ZooKeeper admin username and password are defined. An example is shown below.
 
-![An image showing ](Media/Image2.2.jpg)
+![Setting Zookeeper Admin Credentials During Install](Media/Image2.2.jpg)
 
-Figure 2.2: Setting Zookeeper Admin Credentials During Install
+Figure 2: Setting Zookeeper Admin Credentials During Install
 
 Updating the ZooKeeper admin credentials that were defined during installation is a very delicate operation. All ZooKeepers in the cluster must be functioning properly and allow read/write operations (they can’t be in read-only mode). All other RadiantOne services on all cluster nodes must be stopped, meaning that client requests cannot be processed during the time the ZooKeeper admin credentials are being updated.
 
@@ -93,57 +93,46 @@ To update the ZooKeeper admin username and/or password follow the steps below. T
 
 3. If you are using an internal/local ZooKeeper, run <RLI_HOME>/bin/runZookeeper.bat (use runZookeeper.sh on Linux) on all RadiantOne cluster nodes. ZooKeeper on all nodes must be running. If you are using an external ZooKeeper ensemble, all servers should be running already, so you can skip this step.
 
-4. On any RadiantOne node in the cluster, run <RLI_HOME>/bin/advanced/cluster.bat change-zk-server-credentials <instance_name> <new_adminuser> <new_password> where <instance_name> is vds_server, <new_adminuser> is the new ZooKeeper admin user. To keep the same admin user, enter the value of the current admin user and <new_password> is the new password for the ZooKeeper admin user. An example is shown below:
-<br><RLI_HOME>/bin/advanced/cluster.bat change-zk-server-credentials vds_server admin newpassword
+4. On any RadiantOne node in the cluster, run <RLI_HOME>/bin/advanced/cluster.bat change-zk-server-credentials <instance_name> <new_adminuser> <new_password> where <instance_name> is vds_server, <new_adminuser> is the new ZooKeeper admin user. To keep the same admin user, enter the value of the current admin user and <new_password> is the new password for the ZooKeeper admin user. An example is shown below: <br><RLI_HOME>/bin/advanced/cluster.bat change-zk-server-credentials vds_server admin newpassword
 
 5. A warning appears, enter Y to continue.
 
-```sh
-WARN ClusterCommands:485 - !!! WARNING !!!`
+    `WARN ClusterCommands:485 - !!! WARNING !!!`
 
-WARN ClusterCommands:486 - This is a very sensitive operation.
+    `WARN ClusterCommands:486 - This is a very sensitive operation.`
 
-WARN ClusterCommands:487 - Please make sure that all the other RadiantOne programs and
-services are stopped on all the nodes of the cluster.
+    `WARN ClusterCommands:487 - Please make sure that all the other RadiantOne programs and services are stopped on all the nodes of the cluster.`
 
-WARN ClusterCommands:489 - Continue (y/n)?
-```
+    `WARN ClusterCommands:489 - Continue (y/n)?`
 
-
->[!note]
->If you want to bypass the warning, use the true flag as follows:
-<br><RLI_HOME>/bin/advanced/cluster.bat change-zk-server-credentials <instance_name> <new_adminuser> <new_password> true
+    >[!note] If you want to bypass the warning, use the true flag as follows: <br>`<RLI_HOME>/bin/advanced/cluster.bat change-zk-server-credentials <instance_name> <new_adminuser> <new_password> true`
 
 6. After the command executes, the following warning is displayed.
 
-```sh
-WARN ClusterCommands:552 - Please update the client credentials and restart ZooKeeper on all the nodes.
-```
+    `WARN ClusterCommands:552 - Please update the client credentials and restart ZooKeeper on all the nodes.`
 
 7. On each remaining RadiantOne cluster node, run <RLI_HOME>/bin/advanced/cluster.bat change-zk-client-credentials `<instance_name> <new_adminuser> <new_password>` where <instance_name> is vds_server, <new_adminuser> is the ZooKeeper admin user and <new_password> is the new password for the ZooKeeper admin user. An example is shown below:
     <br><RLI_HOME>/bin/advanced/cluster.bat change-zk-client-credentials vds_server admin
     newpassword
-8. If you are using an internal/local ZooKeeper, restart ZooKeeper, one at a time, on all RadiantOne cluster nodes. You can use <RLI_HOME>/bin/stopZookeeper.bat (use    stopZookeeper.sh on Linux) and then <RLI_HOME>/bin/runZookeeper.bat (use runZookeeper.sh on Linux) to restart ZooKeeper. Ensure the ZooKeeper you restarted is back up prior to restarting it on another node. If you are using an external ZooKeeper ensemble, restart each ZooKeeper service, one at a time, on all nodes. Typically the ZooKeeper services in an external ensemble run as Windows Service/Linux Daemons, so restart using the native OS utilities.
+8. If you are using an internal/local ZooKeeper, restart ZooKeeper, one at a time, on all RadiantOne cluster nodes. You can use <RLI_HOME>/bin/stopZookeeper.bat (use stopZookeeper.sh on Linux) and then <RLI_HOME>/bin/runZookeeper.bat (use runZookeeper.sh on Linux) to restart ZooKeeper. Ensure the ZooKeeper you restarted is back up prior to restarting it on another node. If you are using an external ZooKeeper ensemble, restart each ZooKeeper service, one at a time, on all nodes. Typically the ZooKeeper services in an external ensemble run as Windows Service/Linux Daemons, so restart using the native OS utilities.
+
 9. Start the RadiantOne service on all cluster nodes.
-10. To ensure all servers in the cluster are running and accessible, run
-    <RLI_HOME>/bin/advanced/cluster.bat list (use cluster.sh on Linux) from command line.
+
+10. To ensure all servers in the cluster are running and accessible, run <RLI_HOME>/bin/advanced/cluster.bat list (use cluster.sh on Linux) from command line.
 
 If the command returns with errors, resolve them prior to allowing clients to access
 RadiantOne again.
 
 ## Updating RadiantOne Super User Credentials
 
-The directory administrator (e.g. cn=directory manager) password is set during the install of RadiantOne and can be changed from Main Control Panel > Settings > Server Front End > Administration. Click “Change the password” link in the Directory Manager Settings section.
-Enter the new value and click on the Save button in the upper right corner.
+The directory administrator (e.g. cn=directory manager) password is set during the install of
+RadiantOne and can be changed from Main Control Panel > Settings > Server Front End > Administration. Click “Change the password” link in the Directory Manager Settings section. Enter the new value and click on the Save button in the upper right corner.
 
->[!warning]
->If you change the password and you are currently logged into the Control Panel as the super user, you must close the Control Panel and re-open it logging in with the new password.
+>[!warning] If you change the password and you are currently logged into the Control Panel as the super user, you must close the Control Panel and re-open it logging in with the new password.
 
 To change the directory manager’s password from the Instance Manager command line utility, you can use the following command:
 
-```
-<RLI_HOME>/bin/instancemanager -u -n vds_server -p 2389 -w newpassword
-```
+`<RLI_HOME>/bin/instancemanager -u -n vds_server -p 2389 -w newpassword`
 
 The -p option is required when updating the password.
 
@@ -152,22 +141,17 @@ The RadiantOne service must be stopped when running this command. For more detai
 You can also change the directory administrator’s password via LDAP. The DN representing the directory administrator is: cn=Directory Manager,ou=RootUsers,cn=config. The example below
 is using an LDIF file and the ldapmodify command to modify the password:
 
-```
-dn: cn=Directory Manager,ou=RootUsers,cn=config
-changetype: modify
-replace: userPassword
-userPassword: newpassword
-```
+`dn: cn=Directory Manager,ou=RootUsers,cn=config`
+<br>`changetype: modify`
+<br>`replace: userPassword`
+<br>`userPassword: newpassword`
 
 An example of the syntax used in the command is shown below, assuming the LDIF file described above is named ChangePassword.ldif.
 
-```
-ldapmodify.exe -D "cn=Directory Manager,ou=RootUsers,cn=config" -w password -h localhost -
-p 2389 -f c:\radiantone\ChangePassword.ldif
-```
+`ldapmodify.exe -D "cn=Directory Manager,ou=RootUsers,cn=config" -w password -h localhost -
+p 2389 -f c:\radiantone\ChangePassword.ldif`
 
->[!note]
->The RadiantOne service may be running when this command is executed.
+>[!note] The RadiantOne service may be running when this command is executed.
 
 ## Maintaining Connections to Backend Systems
 
@@ -177,57 +161,36 @@ The connection string information can be changed from the Main Control Panel > S
 
 ## Backing up Configuration
 
-If you are running RadiantOne on a virtual machine and would like to take periodic snapshots, ensure all RadiantOne components are stopped (<RLI_HOME>/bin/advanced/stop_servers)
-prior to taking the snapshot.
+If you are running RadiantOne on a virtual machine and would like to take periodic snapshots, ensure all RadiantOne components are stopped (<RLI_HOME>/bin/advanced/stop_servers) prior to taking the snapshot.
 
 You should periodically use the RadiantOne Migration Utility with the export option to save a copy of the RadiantOne configuration.
 
 The example below assumes the file containing the backup of the RadiantOne configuration is C:\tmp\backupMay.zip and the RadiantOne Migration Utility has been installed at
 C:\MigrationUtility\radiantone-migration-tool-2.0.0:
 
-```
-C:\MigrationUtility\radiantone-migration-tool-2.0.0\migrate.bat export C:\tmp\backupMay.zip
-```
+`C:\MigrationUtility\radiantone-migration-tool-2.0.0\migrate.bat export C:\tmp\backupMay.zip`
 
 Copy the exported file to a safe location where you maintain backups. If you need to [restore your RadiantOne configuration](#restoring-cluster-from-backup-configuration), you can use this backup file.
 
->[!note]
->It is also recommended to occasionally save a backup of your entire <RLI_HOME> folder to a safe location.**
+>[!note] It is also recommended to occasionally save a backup of your entire <RLI_HOME> folder to a safe location.
 
 ## Rebuilding Jar Files
 
 Jar files can be rebuilt from command line. An example is shown below. Restart the RadiantOne service after jars are rebuilt.
 
-```
-C:\radiantone\vds\vds_server\custom>c:\radiantone\vds\ant\bin\ant.bat buildjars
 
-Buildfile: build.xml
-
-compile:
-
-[javac] Compiling 28 source files to C:\radiantone\vds\vds_server\custom\classes
-
-[propertyfile] Updating property file: C:\radiantone\vds\vds_server\custom\build.txt
-
-buildjars:
-
-[jar] Building jar: C:\radiantone\vds\vds_server\custom\lib\customobjects.jar
-
-[jar] Building jar: C:\radiantone\vds\vds_server\custom\lib\intercept.jar
-
-[jar] Building jar: C:\radiantone\vds\vds_server\custom\lib\fidsync.jar
-
-[jar] Warning: skipping jar archive C:\radiantone\vds\vds_server\custom\lib\sync.jar because
-no files were included.
-
-[jar] Building jar: C:\radiantone\vds\vds_server\custom\lib\sync.jar
-
-[jar] Building jar: C:\radiantone\vds\vds_server\custom\lib\changeEventConvertors.jar
-
-##### BUILD SUCCESSFUL
-
-Total time: 5 seconds
-```
+`C:\radiantone\vds\vds_server\custom>c:\radiantone\vds\ant\bin\ant.bat buildjars`
+<br>`Buildfile: build.xml compile:`
+<br>`[javac] Compiling 28 source files to C:\radiantone\vds\vds_server\custom\classes`
+<br>`[propertyfile] Updating property file: C:\radiantone\vds\vds_server\custom\build.txt buildjars:`
+<br>`[jar] Building jar: C:\radiantone\vds\vds_server\custom\lib\customobjects.jar`
+<br>`[jar] Building jar: C:\radiantone\vds\vds_server\custom\lib\intercept.jar`
+<br>`[jar] Building jar: C:\radiantone\vds\vds_server\custom\lib\fidsync.jar`
+<br>`[jar] Warning: skipping jar archive C:\radiantone\vds\vds_server\custom\lib\sync.jar because no files were included.`
+<br>`[jar] Building jar: C:\radiantone\vds\vds_server\custom\lib\sync.jar`
+<br>`[jar] Building jar: C:\radiantone\vds\vds_server\custom\lib\changeEventConvertors.jar`
+<br>`##### BUILD SUCCESSFUL`
+<br>`Total time: 5 seconds`
 
 ## Recovering a Failed Node
 
@@ -237,21 +200,14 @@ If the node and services (e.g. ZooKeeper, RadiantOne, Jetty) can be restarted, o
 
 ### Node and/or Services Cannot Be Restarted
 
-If the failed node cannot be restarted, or the required services on the node cannot be restarted, the failed node should be removed and a new cluster node should be created following the steps below. If ZooKeeper is local on the RadiantOne node to be removed, make sure the
-ZooKeeper service is stopped.
+If the failed node cannot be restarted, or the required services on the node cannot be restarted, the failed node should be removed and a new cluster node should be created following the steps below. If ZooKeeper is local on the RadiantOne node to be removed, make sure the ZooKeeper service is stopped.
 
 1. At this point, the RadiantOne service on the failed node is still registered in the cluster. Get the Cloud ID and ZooKeeper ID of the failed node by running <RLI_HOME>/bin/advanced/cluster.bat list on a healthy cluster node. Take note of the Cloud ID and ZooKeeper Server ID (e.g. 1, 2, 3) of the failed node. Below is an example:
 
-```
-| Hostname | Cloud ID | VDS status | ZooKeeper Server ID | ZooKeeper UP?
-
-| DOC-E1WIN1 | 8773eaa7-3de0- 4421 - 96ad-7de4c1b56c1c | ON | #1 | ON |
-
-| DOC-E1WIN2* | 4a506e15-b726- 4551 - 82a9-42759f00981c | ON | #2** | ON |
-
-| DOC-E1WIN3 | 2ded0740-3aeb- 4430 - bcf9-788ce666cc38 | ON | #3 |
-OFF |
-```
+`| Hostname | Cloud ID | VDS status | ZooKeeper Server ID | ZooKeeper UP?`
+<br>`| DOC-E1WIN1 | 8773eaa7-3de0- 4421 - 96ad-7de4c1b56c1c | ON | #1 | ON |`
+<br>`| DOC-E1WIN2* | 4a506e15-b726- 4551 - 82a9-42759f00981c | ON | #2** | ON |`
+<br>`| DOC-E1WIN3 | 2ded0740-3aeb- 4430 - bcf9-788ce666cc38 | ON | #3 | OFF |`
 
 2. To remove reference to the failed node, on one healthy node of the cluster, run the following command (using cluster.bat on Windows, cluster.sh on Linux): <br><RLI_HOME>/bin/advanced/cluster.bat zk-leave vds_server `<ZooKeeper Server ID of the failed node>`
 
@@ -280,16 +236,14 @@ The utility to synchronize files to ZooKeeper is:
 Pass the file name to synchronize to ZooKeeper using the -f property. Below is an example of
 synchronizing the custom.xml file.
 
-```
-C:\radiantone\vds\bin\advanced>zookeeperupdateUtil.bat -f
-C:\radiantone\vds\vds_server\datasources\custom.xml
+`C:\radiantone\vds\bin\advanced>zookeeperupdateUtil.bat -f`
+<br>`C:\radiantone\vds\vds_server\datasources\custom.xml`
 
-Using RLI home : C:\radiantone\vds
-Using Java home : C:\radiantone\vds\jdk\jre
-Radiant home Product env var : C:\radiantone\vds
-updating zookeeper with local file content
-[C:\radiantone\vds\vds_server\datasources\custom.xml]
-```
+<br>`Using RLI home : C:\radiantone\vds`
+<br>`Using Java home : C:\radiantone\vds\jdk\jre`
+<br>`Radiant home Product env var : C:\radiantone\vds`
+<br>`updating zookeeper with local file content`
+<br>`[C:\radiantone\vds\vds_server\datasources\custom.xml]`
 
 The utility does not require the RadiantOne service on the node to be running, but does require ZooKeeper on the node to be running.
 
@@ -300,7 +254,9 @@ The utility does not require the RadiantOne service on the node to be running, b
 This option assumes you have maintained a cluster in a DR site that can be used to repair your primary cluster using the steps below. The overall objective is to temporarily add a new node to the DR cluster and then decouple it from the cluster so it becomes the leader node for your primary cluster.
 
 1. Install RadiantOne on a new machine and have it join the existing DR cluster. For detailed steps on adding a node to an existing cluster, please see the RadiantOne Installation Guide. For a list of cluster configuration required to add a new node, see [Adding Nodes](#adding-nodes). Once the new node is installed, it automatically inherits from the existing configuration and data (Universal Directory stores and persistent cache).
+
 2. Stop all RadiantOne service and Jetty. ZooKeeper should be running on all nodes.
+
 3. On the node that is to be used for restoring your primary cluster, run the following command to decouple it from the DR cluster (using cluster.bat on Windows, cluster.sh on Linux).
 
 `<RLI_HOME>/bin/advanced/cluster.bat detach`
@@ -311,16 +267,12 @@ Steps Associated with the Disaster Recovery Cluster/Site
 
 1. Edit the <RLI_HOME>\vds_server\conf\cloud.properties file on each of the DR cluster nodes and verify that the zk.servers value correctly lists only the nodes currently in the DR cluster and ZooKeeper client port. If the zk.servers value is incorrect, run the following command (using cluster.bat on Windows, cluster.sh on Linux):
 
-```
-<RLI_HOME>/bin/advanced/cluster.bat update-zk-client-conf
-```
+    `<RLI_HOME>/bin/advanced/cluster.bat update-zk-client-conf`
 
 2. To update the vdsha and replicationjournal data sources (that still reference the removed cluster node), on one of the DR cluster nodes, run the following command (using
 cluster.bat on Windows, cluster.sh on Linux):
 
-```
-<RLI_HOME>/bin/advanced/cluster.bat reset-cluster-datasource
-```
+`<RLI_HOME>/bin/advanced/cluster.bat reset-cluster-datasource`
 
 At this point, the DR cluster should be back to normal.
 
@@ -328,19 +280,16 @@ At this point, the DR cluster should be back to normal.
 
 1. Edit the <RLI_HOME>\vds_server\conf\cloud.properties file on the detached node and verify that the zk.servers value correctly lists only this detached node and ZooKeeper client port. If the zk.servers value is incorrect, run the following command (using cluster.bat on Windows, cluster.sh on Linux):
 
-`<RLI_HOME>/bin/advanced/cluster.bat update-zk-client-conf`
+    `<RLI_HOME>/bin/advanced/cluster.bat update-zk-client-conf`
 
 2. To update the vdsha and replicationjournal data sources (that still reference the other cluster nodes), run the following command (using cluster.bat on Windows, cluster.sh on Linux):
 
-`<RLI_HOME>/bin/advanced/cluster.bat reset-cluster-datasource`
+    `<RLI_HOME>/bin/advanced/cluster.bat reset-cluster-datasource`
 
 3. To update the cluster name on the removed node, run the following command (using cluster.bat on Windows, cluster.sh on Linux):
 
-```
-<RLI_HOME>/bin/advanced/cluster.sh rename-cluster-zk <vds_instance_name>
-<new_cluster_name>
-vds_server is the default instance name.
-```
+    `<RLI_HOME>/bin/advanced/cluster.sh rename-cluster-zk <vds_instance_name> <new_cluster_name>`
+    <br>`vds_server is the default instance name.`
 
 4. Start the RadiantOne service and Jetty on this node.
 
@@ -350,20 +299,19 @@ vds_server is the default instance name.
 
 ### Restoring Cluster from Backup Configuration
 
-If there is no disaster recovery site to leverage for restoring a cluster, you can attempt to restore
-from backup files.
+If there is no disaster recovery site to leverage for restoring a cluster, you can attempt to restore from backup files.
 
 #### Restoring Configuration
 
-You can restore your RadiantOne configuration in cases where you need to revert back to a previous time, or in case of corruption to critical files required for the service to function. The information in this section assumes you are restoring the configuration on the same machine from which the [export](#backing-up-configuration) was performed.
+You can restore your RadiantOne configuration in cases where you need to revert back to a
+previous time, or in case of corruption to critical files required for the service to function. The information in this section assumes you are restoring the configuration on the same machine from which the [export](#backing-up-configuration) was performed.
 
 To restore the configuration, you can use an [exported file](#backing-up-configuration) that was generated with the RadiantOne migration utility. Use the migration utility with the import option, reference the backup file and use the backup-restore argument.
 
-The example below assumes the file containing the backup of the RadiantOne configuration is C:\tmp\backupMay.zip and the RadiantOne Migration Utility has been installed at C:\MigrationUtility\radiantone-migration-tool-2.0.0:
+The example below assumes the file containing the backup of the RadiantOne configuration is C:\tmp\backupMay.zip and the RadiantOne Migration Utility has been installed at
+C:\MigrationUtility\radiantone-migration-tool-2.0.0:
 
-```
-C:\MigrationUtility\radiantone-migration-tool-2.0.0\migrate.bat import C:\tmp\backupMay.zip backup-restore
-```
+`C:\MigrationUtility\radiantone-migration-tool-2.0.0\migrate.bat import C:\tmp\backupMay.zip backup-restore`
 
 The backup-restore mode restores the following:
 
@@ -373,7 +321,8 @@ The backup-restore mode restores the following:
 - RadiantOne instances (if multiple instances were used)
 - .orx and .dvx files
 - JDBC drivers (jdbcxml.xml)
-- naming contexts (in ZooKeeper) – only the definition of the names, not the dependent  files (e.g. underlying data sources, .dvx files...etc.)
+- naming contexts (in ZooKeeper) – only the definition of the names, not the dependent
+files (e.g. underlying data sources, .dvx files...etc.)
 - RadiantOne LDAP Schema files
 - Monitoring configuration
 - RadiantOne Universal Directory (HDAP) stores (not persistent cache)
@@ -382,15 +331,11 @@ The backup-restore mode restores the following:
 
 When the RadiantOne configuration is [exported](#backing-up-configuration), a migration plan is generated. This migration plan contains the list of configuration (to be restored) and is named migration_plan.json. If you want to modify the migration plan prior to importing, use the following command to extract the migration plan from the zip file. In the example shown below, C:/import is the location where the backupMay.zip file has been copied to.
 
-```
-C:\MigrationUtility\radiantone-migration-tool-2.0.0\migrate.bat generate-migration-plan C:\import\backupMay.zip
-```
+`C:\MigrationUtility\radiantone-migration-tool-2.0.0\migrate.bat generate-migration-plan C:\import\backupMay.zip`
 
 This command creates migration_plan.json which contains the list of configurations that were exported from the source environment. Edit this file in your chosen text editor. Use the value: KEEP to indicate the resource should not be included in the restore. Use the value: MIGRATE to indicate the resource should be included in the restore. Do not change anything else in the file. When you are ready to import the configuration, run the following command. If you extracted and edited the migration_plan.json, it is used during the import instead of the one from the .zip file.
 
-```
-C:\MigrationUtility\radiantone-migration-tool-2.0.0\migrate.bat import C:\import\backupMay.zip backup-restore
-```
+`C:\MigrationUtility\radiantone-migration-tool-2.0.0\migrate.bat import C:\import\backupMay.zip backup-restore`
 
 #### Restoring RadiantOne Universal Directory (HDAP) Stores
 
@@ -398,8 +343,7 @@ RadiantOne Universal Directory stores can be restored from the Main Control Pane
 
 ##### From Main Control Panel
 
-To restore a RadiantOne Universal Directory (HDAP) store, on the current RadiantOne leader node, go to the Main Control Panel > Directory Namespace Tab and select the RadiantOne Universal Directory (HDAP) store node. On the right side, click the Restore button on the Properties tab. Click Yes to confirm the restore operation and then select the date
-corresponding to the backup image to restore from.
+To restore a RadiantOne Universal Directory (HDAP) store, on the current RadiantOne leader node, go to the Main Control Panel > Directory Namespace Tab and select the RadiantOne Universal Directory (HDAP) store node. On the right side, click the Restore button on the Properties tab. Click Yes to confirm the restore operation and then select the date corresponding to the backup image to restore from.
 
 ##### From Command Line
 
@@ -409,9 +353,7 @@ The restore-hdapstore command restores a RadiantOne Universal Directory (HDAP) s
 
 **Usage**
 
-```
-restore-hdapstore -namingcontext <namingcontext> [-backupdir <backupdir>] [-backupid] <backupid>] [-instance <instance>] [-list]
-```
+`restore-hdapstore -namingcontext <namingcontext> [-backupdir <backupdir>] [-backupid] <backupid>] [-instance <instance>] [-list]`
 
 **Command Arguments**
 
@@ -425,51 +367,45 @@ restore-hdapstore -namingcontext <namingcontext> [-backupdir <backupdir>] [-back
 <br>The ID of an existing backup image. If this is not specified, the restore attempts to use the latest backup image found. Use the -list argument to obtain a list of possible backup ids for the given naming context.
 
 - instance <instance>
-<br>The name of the RadiantOne instance. If this is not specified, the default instance named vds_server is used.
+<br>The name of the RadiantOne instance. If this is not specified, the default instance named
+vds_server is used.
 
 - list
 <br> Option used to print out the list of backup ids for the given naming context. Use this option first to get the list of backup ids as you must pass the backupid when you restore if you want to restore to a specific point in time.
 
 **Examples**
 
-```
-C:\radiantone\vds\bin>vdsconfig.bat restore-hdapstore -namingcontext o=newstore -backupzip
-C:\install\o_newstore-backup\ 2017 - 03 - 28_12- 17 - 53.zip
-```
+`C:\radiantone\vds\bin>vdsconfig.bat restore-hdapstore -namingcontext o=newstore -backupzip C:\install\o_newstore-backup\ 2017 - 03 - 28_12- 17 - 53.zip`
 
 The following example shows two separate commands starting with listing the backup images and then passing a backup ID to use to restore.
 
-```
-C:\radiantone\vds\bin>vdsconfig.bat restore-hdapstore -namingcontext o=companydirectory -list
-Using RLI home : C:\radiantone\vds
-Using Java home : C:\radiantone\vds\jdk\jre
-0 [ConnectionStateManager-0] WARN com.rli.zookeeper.ZooManagerConnectionStateListener
-- Curator connection state change: CONNECTED
-8 [ConnectionStateManager-0] WARN com.rli.zookeeper.ZooManagerConnectionStateListener
-- VDS-ZK connection state changed: CONNECTED
-9 [ConnectionStateManager-0] WARN com.rli.zookeeper.ZooManager - ZooManager
-connection state changed: CONNECTED
-Current backups for 'o=companydirectory':
-Backup Id Date of Backup
--------------------------------------------
-1440023312307 08/19/2015 15:28:
-1440023472460 08/19/2015 15:31:
-1440023524906 08/19/2015 15:32:
-1440088234257 08/20/2015 09:30:
+`C:\radiantone\vds\bin>vdsconfig.bat restore-hdapstore -namingcontext o=companydirectory -list`
+<br>`Using RLI home : C:\radiantone\vds`
+<br>`Using Java home : C:\radiantone\vds\jdk\jre`
+<br>`0 [ConnectionStateManager-0] WARN com.rli.zookeeper.ZooManagerConnectionStateListener`
+<br>`- Curator connection state change: CONNECTED`
+<br>`8 [ConnectionStateManager-0] WARN com.rli.zookeeper.ZooManagerConnectionStateListener`
+<br>`- VDS-ZK connection state changed: CONNECTED`
+<br>`9 [ConnectionStateManager-0] WARN com.rli.zookeeper.ZooManager - ZooManager connection state changed: CONNECTED`
+<br>`Current backups for 'o=companydirectory':`
+<br>`Backup Id Date of Backup`
+<br>`-------------------------------------------`
+<br>`1440023312307 08/19/2015 15:28:`
+<br>`1440023472460 08/19/2015 15:31:`
+<br>`1440023524906 08/19/2015 15:32:`
+<br>`1440088234257 08/20/2015 09:30:`
 
-C:\radiantone\vds\bin>vdsconfig.bat restore-hdapstore -namingcontext o=companydirectory
+<br>`C:\radiantone\vds\bin>vdsconfig.bat restore-hdapstore -namingcontext o=companydirectory`
 
-- backupid 1440023312307
-Using RLI home : C:\radiantone\vds
-Using Java home : C:\radiantone\vds\jdk\jre
-0 [ConnectionStateManager-0] WARN com.rli.zookeeper.ZooManagerConnectionStateListener
-- Curator connection state change: CONNECTED
-9 [ConnectionStateManager-0] WARN com.rli.zookeeper.ZooManagerConnectionStateListener
-- VDS-ZK connection state changed: CONNECTED
-9 [ConnectionStateManager-0] WARN com.rli.zookeeper.ZooManager - ZooManager
-connection state changed: CONNECTED
-The naming context has been successfully restored from its backup.
-```
+<br>`- backupid 1440023312307`
+<br>`Using RLI home : C:\radiantone\vds`
+<br>`Using Java home : C:\radiantone\vds\jdk\jre`
+<br>`0 [ConnectionStateManager-0] WARN com.rli.zookeeper.ZooManagerConnectionStateListener`
+<br>`- Curator connection state change: CONNECTED`
+<br>`9 [ConnectionStateManager-0] WARN com.rli.zookeeper.ZooManagerConnectionStateListener`
+<br>`- VDS-ZK connection state changed: CONNECTED`
+<br>`9 [ConnectionStateManager-0] WARN com.rli.zookeeper.ZooManager - ZooManager connection state changed: CONNECTED`
+<br>`The naming context has been successfully restored from its backup.`
 
 #### Restoring Persistent Cache
 
@@ -497,9 +433,7 @@ The restore-hdapstore command restores a persistent cache branch back to the sta
 
 **Usage**
 
-```
-restore-hdapstore -namingcontext <namingcontext> [-backupdir <backupdir>] [-backupid] <backupid>] [-instance <instance>] [-list]
-```
+`restore-hdapstore -namingcontext <namingcontext> [-backupdir <backupdir>] [-backupid] <backupid>] [-instance <instance>] [-list]`
 
 Command Arguments
 
@@ -520,26 +454,25 @@ Command Arguments
 
 Example
 
-```
-C:\radiantone\vds\bin>vdsconfig.bat restore-hdapstore -namingcontext dc=sun -backupdir“C:\radiantone\vds\vds_server\data\oldbackup\dc_sun\ 2015 - 12 - 21_14- 41 - 02” -instance vds_server
+`C:\radiantone\vds\bin>vdsconfig.bat restore-hdapstore -namingcontext dc=sun -backupdir“C:\radiantone\vds\vds_server\data\oldbackup\dc_sun\ 2015 - 12 - 21_14- 41 - 02” -instance vds_server`
 
-Using RLI home : C:\radiantone\vds
-Using Java home : C:\radiantone\vds\jdk\jre
-0 [ConnectionStateManager-0] WARN com.rli.zookeeper.ZooManagerConnectionStateListener
-- Curator connection state change: CONNECTED
-9 [ConnectionStateManager-0] WARN com.rli.zookeeper.ZooManagerConnectionStateListener
-- VDS-ZK connection state changed: CONNECTED
-9 [ConnectionStateManager-0] WARN com.rli.zookeeper.ZooManager - ZooManager
-connection state changed: CONNECTED
-The naming context has been successfully restored from its backup
-```
+<br>`Using RLI home : C:\radiantone\vds`
+<br>`Using Java home : C:\radiantone\vds\jdk\jre
+0 [ConnectionStateManager-0] WARN com.rli.zookeeper.ZooManagerConnectionStateListener - Curator connection state change: CONNECTED`
+<br>`9 [ConnectionStateManager-0] WARN com.rli.zookeeper.ZooManagerConnectionStateListener - VDS-ZK connection state changed: CONNECTED`
+<br>`9 [ConnectionStateManager-0] WARN com.rli.zookeeper.ZooManager - ZooManager connection state changed: CONNECTED`
+<br>`The naming context has been successfully restored from its backup`
 
 ##### Reinitialize Persistent Cache
 
 To reinitialize a persistent cache:
 
 1. On the RadiantOne leader node, go to the Main Control Panel > Directory Namespace tab.
+
 2. Navigate below the Cache node and select the persistent cache branch.
+
 3. On the right side, Refresh Settings tab, click on the Initialize button.
+
 4. Select to Create a new LDIF file.
+
 5. Click OK. A task is launched to re-initialize the persistent cache. Tasks can be monitored on from the Server Control Panel > Tasks tab associated with the RadiantOne leader node.
