@@ -3,9 +3,8 @@ title: RadiantOne FIPS 140-2 Mode
 description: RadiantOne FIPS 140-2 Mode
 ---
 
-# RadiantOne FIPS 140-2 Mode
+# Overview
 
-Chapter 1: Overview
 Federal Information Processing Standards (FIPS) are issued by the National Institute of Standards and Technology (NIST) after approval by the Secretary of Commerce pursuant to Section 5131 of the Information Technology Management Reform Act of 1996 (Public Law 104-106) and the Computer Security Act of 1987 (Public Law 100-235). 
 
 FIPS 140-2 lists the security requirements for cryptographic operations, and the purpose is to establish a baseline standard of how well the confidentiality and integrity of the information protected is. Data encrypted to the standards within FIPS 140-2 is considered to be protected against attacks. Many federal government agencies require that any Personally Identifiable Information (PII) that is classified as sensitive be secured by FIPS 140-2 certified algorithms. The Cryptographic Module Validation Program (CMVP) validates cryptographic modules to FIPS 140-2 and other cryptography based standards. 

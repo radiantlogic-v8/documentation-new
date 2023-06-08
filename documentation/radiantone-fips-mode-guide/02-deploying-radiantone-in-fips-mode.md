@@ -3,7 +3,7 @@ title: RadiantOne FIPS 140-2 Mode
 description: RadiantOne FIPS 140-2 Mode
 ---
 
-# Chapter 2: Deploying RadiantOne in FIPS Mode
+# Deploying RadiantOne in FIPS Mode
 
 In FIPS mode, RadiantOne performs all cryptographic operations using the Radiant Logic Cryptographic Module for Java. This includes key generation and key derivation, message digests and message authentication codes, random number generation, symmetric and asymmetric encryption, signature generation and verification, etc. RadiantOne supports FIPS mode on Windows Server 2016, RHEL, and CentOS.
 
@@ -21,10 +21,8 @@ If RadiantOne is deployed in a cluster, follow these steps to enable FIPS mode o
 
 To enable FIPS mode on each node, use the following command:
 
-```
-C:\radiantone\vds\bin>vdsconfig.bat fips-mode-enable
-><span style="color:red">
-```
+`C:\radiantone\vds\bin>vdsconfig.bat fips-mode-enable`
+
 
 Restart Jetty and the RadiantOne service. If deployed in a cluster, restart these services on each node.
 
@@ -40,18 +38,13 @@ For a given keystore of type JKS or PKCS12, you can convert it into the RadiantO
 
 Below is an example that converts JKS type of keystore into BCFKS type:
 
-```
-C:\radiantone\vds\vds_server\conf>"C:\radiantone\vds7.3\jdk\bin\keytool" -importkeystore 
--srckeystore rli.keystore -srcstoretype JKS -srcstorepass radiantlogic -destkeystore rli_fips.keystore -deststoretype BCFKS -deststorepass radiantlogic -provider com.safelogic.cryptocomply.jcajce.provider.CryptoComplyFipsProvider -providerpath C:\radiantone\vds7.3\lib\ccj-3.0.1.jar"
-```
+`C:\radiantone\vds\vds_server\conf>"C:\radiantone\vds7.3\jdk\bin\keytool" -importkeystore  -srckeystore rli.keystore -srcstoretype JKS -srcstorepass radiantlogic -destkeystore rli_fips.keystore -deststoretype BCFKS -deststorepass radiantlogic -provider com.safelogic.cryptocomply.jcajce.provider.CryptoComplyFipsProvider -providerpath C:\radiantone\vds7.3\lib\ccj-3.0.1.jar"`
 
 Output of the command:
 
-```
-Importing keystore rli.keystore to rli_fips.keystore...
+`Importing keystore rli.keystore to rli_fips.keystore...
 Entry for alias rli successfully imported.
-Import command completed:  1 entries successfully imported, 0 entries failed or cancelled
-```
+Import command completed:  1 entries successfully imported, 0 entries failed or cancelled`
 
 ## Allowed SSL/TLS Protocols
 
@@ -59,70 +52,67 @@ The configurations to check and update if needed are the SSL/TLS protocols allow
 
 1.	When FIPS mode is enabled, RadiantOne only supports the following SSL/TLS protocols: TLS v1, TLS v1.1, TLS v1.2, and TLS v1.3. The supported protocols can be seen from Main Control Panel > Settings tab > Security > SSL. Click the Change button next to Enabled SSL Protocols.
 
-![An image showing ](Media/Image2.2.jpg)
+    ![An image showing ](Media/Image2.2.jpg)
  
-2.	One of the elements of hardening the RadiantOne service, is to set the vdsha LDAP data source to use SSL. From the Main Control Panel -> Settings tab -> Server backend -> LDAP Data Sources. Select the vdsha data source and click Edit. Enable the SSL checkbox on the right and set the SSL port. Click Save.
+2.	One of the elements of hardening the RadiantOne service, is to set the vdsha LDAP data source to use SSL. From the Main Control Panel > Settings tab > Server backend > LDAP Data Sources. Select the vdsha data source and click Edit. Enable the SSL checkbox on the right and set the SSL port. Click Save.
  
-![An image showing ](Media/Image2.3.jpg)
+    ![An image showing ](Media/Image2.3.jpg)
 
 3.	One of the elements of hardening the RadiantOne service is to ensure that all Internal Connections are configured to use SSL. From the Main Control Panel -> Settings tab -> Server Backend -> Internal Connections, ensure the Use SSL option is enabled. Click Save.
 
 ![An image showing ](Media/Image2.4.jpg)
-
  
 ## Allowed Cipher Suites
 
 The cipher suites allowed in FIPS mode can be seen from Main Control Panel > Settings tab > Security > SSL. Click the Change button next to Supported Cipher Suites.
 
-```
-TLS_DHE_DSS_WITH_AES_128_CBC_SHA
-TLS_DHE_DSS_WITH_AES_128_CBC_SHA256
-TLS_DHE_DSS_WITH_AES_128_GCM_SHA256
-TLS_DHE_DSS_WITH_AES_256_CBC_SHA
-TLS_DHE_DSS_WITH_AES_256_CBC_SHA256
-TLS_DHE_DSS_WITH_AES_256_GCM_SHA384
-TLS_DHE_RSA_WITH_AES_128_CBC_SHA
-TLS_DHE_RSA_WITH_AES_128_CBC_SHA256
-TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
-TLS_DHE_RSA_WITH_AES_256_CBC_SHA
-TLS_DHE_RSA_WITH_AES_256_CBC_SHA256
-TLS_DHE_RSA_WITH_AES_256_GCM_SHA384
-TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA
-TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256
-TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256
-TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA
-TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA384
-TLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384
-TLS_ECDH_RSA_WITH_AES_128_CBC_SHA
-TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256
-TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256
-TLS_ECDH_RSA_WITH_AES_256_CBC_SHA
-TLS_ECDH_RSA_WITH_AES_256_CBC_SHA384
-TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384
-TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA
-TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
-TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
-TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA
-TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
-TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA
-TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
-TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
-TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA
-TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
-TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-TLS_RSA_WITH_AES_128_CBC_SHA
-TLS_RSA_WITH_AES_128_CBC_SHA256
-TLS_RSA_WITH_AES_128_GCM_SHA256
-TLS_RSA_WITH_AES_256_CBC_SHA
-TLS_RSA_WITH_AES_256_CBC_SHA256
-TLS_RSA_WITH_AES_256_GCM_SHA384
-```
+- TLS_DHE_DSS_WITH_AES_128_CBC_SHA
+- TLS_DHE_DSS_WITH_AES_128_CBC_SHA256
+- TLS_DHE_DSS_WITH_AES_128_GCM_SHA256
+- TLS_DHE_DSS_WITH_AES_256_CBC_SHA
+- TLS_DHE_DSS_WITH_AES_256_CBC_SHA256
+- TLS_DHE_DSS_WITH_AES_256_GCM_SHA384
+- TLS_DHE_RSA_WITH_AES_128_CBC_SHA
+- TLS_DHE_RSA_WITH_AES_128_CBC_SHA256
+- TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
+- TLS_DHE_RSA_WITH_AES_256_CBC_SHA
+- TLS_DHE_RSA_WITH_AES_256_CBC_SHA256
+- TLS_DHE_RSA_WITH_AES_256_GCM_SHA384
+- TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA
+- TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256
+- TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256
+- TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA
+- TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA384
+- TLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384
+- TLS_ECDH_RSA_WITH_AES_128_CBC_SHA
+- TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256
+- TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256
+- TLS_ECDH_RSA_WITH_AES_256_CBC_SHA
+- TLS_ECDH_RSA_WITH_AES_256_CBC_SHA384
+- TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384
+- TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA
+- TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
+- TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+- TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA
+- TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
+- TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA
+- TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
+- TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+- TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA
+- TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+- TLS_RSA_WITH_AES_128_CBC_SHA
+- TLS_RSA_WITH_AES_128_CBC_SHA256
+- TLS_RSA_WITH_AES_128_GCM_SHA256
+- TLS_RSA_WITH_AES_256_CBC_SHA
+- TLS_RSA_WITH_AES_256_CBC_SHA256
+- TLS_RSA_WITH_AES_256_GCM_SHA384
 
 ## Allowed Password Hash/Encryption
 
 When RadiantOne is in FIPS mode, the password hash/encryption options allowed for password policies are reduced to: PBKDF2AD, Salted SHA-256, Salted SHA-384 and Salted SHA-512
 
-Password policies can be seen from the Main Control Panel -> Settings tab > Security > Password Policies.
+Password policies can be seen from the Main Control Panel > Settings tab > Security > Password Policies.
 
 ![An image showing ](Media/Image2.5.jpg)
  
@@ -145,6 +135,7 @@ There are two items to configure. One is the criteria for the key generation use
 **Key Generation**
 
 To define the criteria used to generate an encryption key:
+
 1.	Navigate to Main Control Panel > Settings Tab > Security section > Attribute Encryption sub-section.
 
 2.	On the right, click on Define Key Generation.
@@ -195,7 +186,7 @@ In FIPS-mode, LDIFZ files should be used for persistent cache initialization (fo
  
 In FIPS-mode, LDIFZ files should be used when exporting RadiantOne Universal Directory (HDAP) or persistent cache. Select .ldifz from the drop-down list next to the Export File Name property.
  
- ![An image showing ](Media/Image2.8.jpg)
+![An image showing ](Media/Image2.8.jpg)
 ![An image showing ](Media/Image2.9.jpg)
 
 ## Disabling FIPS-Mode
@@ -215,9 +206,6 @@ To disable FIPS mode on each node:
 
 4.	To disable FIPS mode on each node, use the following command:
 
-```
-C:\radiantone\vds\bin>vdsconfig.bat set-property -name fipsMode -value false 
-```
+    `C:\radiantone\vds\bin>vdsconfig.bat set-property -name fipsMode -value false `
 
 5.	Restart RadiantOne processes. If deployed in a cluster, restart them on each node.
-
