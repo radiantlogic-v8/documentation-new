@@ -9,12 +9,10 @@ The JDBC driver is rli-vrs-driver-1.0-SNAPSHOT.jar. This file can be retrieved f
 
 Following are the classname and URL to use the driver to connect to VRS:
 
-```
-Classname: com.rli.vrs.driver.JDBCDriver
-URL Syntax: jdbc:vrs://<hostname>:<port>/<context>[client options]
-```
+`Classname: com.rli.vrs.driver.JDBCDriver
+URL Syntax: jdbc:vrs://<hostname>:<port>/<context>[client options]`
 
->**Note – for URL syntax when connecting VRS with a client certificate, see the [Client Options](#client-options) section.**
+>[!note] For URL syntax when connecting VRS with a client certificate, see the [Client Options](#client-options) section.
 
 ## Context
 
@@ -22,12 +20,10 @@ The context used in the URL can be any valid DN (starting point) in the RadiantO
 
 Some examples of different contexts are:
 
-```
-jdbc:vrs://127.0.0.1:2388/o=vds
-jdbc:vrs://127.0.0.1:2388/o=companydirectory
-jdbc:vrs://127.0.0.1:2388/ou=Accounting,o=companyprofiles
-jdbc:vrs://127.0.0.1:2388/
-```
+`jdbc:vrs://127.0.0.1:2388/o=vds`
+<br>`jdbc:vrs://127.0.0.1:2388/o=companydirectory`
+<br>`jdbc:vrs://127.0.0.1:2388/ou=Accountingo=companyprofiles`
+<br>`jdbc:vrs://127.0.0.1:2388/`
 
 ## Client Options
 
@@ -40,13 +36,12 @@ There are two modes supported by the JDBC driver: ldap and context.
 -	Context – This is the default mode. If &id=dn is NOT appended at the end of the context, VRS accesses the RadiantOne service in Context mode. In this mode, the primary key of the table is an attribute named contextid. The value of contextid is the “path” to the entry which is essentially the entry DN reversed. For example, if an entry’s DN is something like uid=sbuchanan,ou=accounting,o=vds, the contextid for this entry would be o=vds/ou=accounting/uid=sbuchanan. The foreign key of the table is an attribute named parentcontext. The value of parentcontext is the “path” to the to the parent entry. Using the previous example, the parentcontext would be o=vds/ou=accounting.
 
 ### SSL 
+
 Use of SSL between the JDBC driver and VRS. If you want the JDBC driver to connect to VRS over SSL, use the syntax shown in the following URL.
 
-```
-jdbc:vrs://<hostname>:<ssl_port>/<context>&ssl=true[&user=<user_dn>&password=<password>] 
-```
+`jdbc:vrs://<hostname>:<ssl_port>/<context>&ssl=true[&user=<user_dn>&password=<password>]`
 
-><span style="color:red">**IMPORTANT NOTE – the user and password properties are optional. If [mutual authentication](#certificate-basedmutual-authentication) is used, and the client certificate to DN mapping fails to identify a user to base authorization on, the user DN in the connection string can be used by RadiantOne to enforce authorization for the connection. If the mapping fails and no user is specified in the JDBC connection string, RadiantOne enforces anonymous access.**
+>[!warning] The user and password properties are optional. If [mutual authentication](#certificate-basedmutual-authentication) is used, and the client certificate to DN mapping fails to identify a user to base authorization on, the user DN in the connection string can be used by RadiantOne to enforce authorization for the connection. If the mapping fails and no user is specified in the JDBC connection string, RadiantOne enforces anonymous access.
 
 #### Certificate-based/Mutual Authentication 
 
@@ -54,11 +49,11 @@ There is a self-signed certificate included with RadiantOne and this certificate
 
 For normal SSL communications, where the only requirement is that the client trusts the server, no additional configuration is necessary (as long as both entities trust each other). For mutual authentication, where there is a reciprocal trust relationship between the client and the server, the client must generate a certificate containing his identity and private key in his keystore. The client must also make a version of the certificate containing his identity and public key, which the RadiantOne service must store in its truststore. In turn, the client needs to trust the server; this is accomplished by importing the server's CA certificate into the client truststore.
 
->**Note - Certificate-based authentication (mutual authentication) requires the use of SSL or StartTLS for the communication between the client and RadiantOne.**
+>[!note] Certificate-based authentication (mutual authentication) requires the use of SSL or StartTLS for the communication between the client and RadiantOne.
 
 ![An image showing ](Media/Image3.1.jpg)
 
-Figure 3.1.: Mutual Authentication
+Figure 1.: Mutual Authentication
 
 There are three options for mutual authentication and this can be set from the Main Control Panel > Settings Tab > Security section > SSL > Mutual Auth. Client Certificate drop-down menu: Required, Requested and None (default value). 
 
@@ -92,23 +87,17 @@ Some examples of different client options are:
 
 Access RadiantOne in LDAP mode:
 
-```
-jdbc:vrs://127.0.0.1:2388/o=vds&id=dn
-```
+`jdbc:vrs://127.0.0.1:2388/o=vds&id=dn`
 
 Access RadiantOne in LDAP mode and use SSL between the driver and VRS:
 
-```
-jdbc:vrs://127.0.0.1:2388/o=mycompany&id=dn&ssl=true 
-```
+`jdbc:vrs://127.0.0.1:2388/o=mycompany&id=dn&ssl=true `
 
 Access RadiantOne in context mode, use SSL between the driver and VRS, set the driver debug level to 3 and log to a file named VRS_JDBC_Client.log.
 
-```
-jdbc:vrs://127.0.0.1:2388/ou=Accounting,o=enterprisedirectory&ssl=true&tracelevel=3&tracefile=C:\\VRS_JDBC_Client.log
-```
+`jdbc:vrs://127.0.0.1:2388/ou=Accounting,o=enterprisedirectory&ssl=true&tracelevel=3&tracefile=C:\\VRS_JDBC_Client.log`
 
->**Note - there is no order to respect between options.**
+>[!note] There is no order to respect between options.
  
 ## Certified JDBC Clients
 

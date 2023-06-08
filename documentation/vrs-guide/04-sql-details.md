@@ -18,7 +18,7 @@ DELETE | DELETE FROM Table name <br>[WHERE predicates]
 CREATE | CREATE VIEW View name AS SELECT STATEMENT
 DROP | DROP VIEW View name
 
->**Note - an expression in a select statement can be a numeric value or anything delimited with simple quote.**
+>[!note] An expression in a select statement can be a numeric value or anything delimited with simple quote.
  
 ## SQL 92 Identifiers
 
@@ -30,11 +30,9 @@ Column name syntax:
 
 Table name syntax:
 
-```
-[schema name .] table [correlation name]
-```
+`[schema name .] table [correlation name`
 
->**Note – Correlation name means alias. Schema name is either vds (for LDAP mode) or vcs (for Context mode).**
+>[!note] Correlation name means alias. Schema name is either vds (for LDAP mode) or vcs (for Context mode).
 
 ## Schema
 
@@ -44,7 +42,7 @@ Table name syntax:
 
 The objects (tables) returned in the schema are the same whether you are using context or ldap mode and is based on the LDAP schema that is defined for the RadiantOne service. To view the LDAP schema, use the Main Control Panel -> Settings Tab -> Configuration section LDAP Schema node. The only difference between the schema returned in context mode and LDAP mode is at the level of the attributes. In context mode, each object (table) has the contextid and parentcontext attributes and in LDAP mode, each object (table) has the dn attribute.
 
-><span style="color:red">**IMPORTANT NOTE – if you are using computed attributes, or attributes that have been remapped to a name that is not defined as an attribute in the RadiantOne LDAP schema, you cannot access them in SQL queries. You must define an attribute in the RadiantOne LDAP schema with the same name as the computed/remapped attribute before you can access them in VRS. For more information on computed attributes and the LDAP schema, please see the RadiantOne System Administration Guide.**
+>[!note] If you are using computed attributes, or attributes that have been remapped to a name that is not defined as an attribute in the RadiantOne LDAP schema, you cannot access them in SQL queries. You must define an attribute in the RadiantOne LDAP schema with the same name as the computed/remapped attribute before you can access them in VRS. For more information on computed attributes and the LDAP schema, please see the RadiantOne System Administration Guide.
 
 -	Tables: There is a special table in the schema named context. This table is defined with all the possible columns from the RadiantOne service and allows SQL results from any object in RadiantOne. It is a join and union of all columns from the RadiantOne LDAP schema. In addition to the context table, there is one table per objectclass defined in the RadiantOne LDAP schema. All these tables are a projection (or a view) on the context table.
 
@@ -66,40 +64,30 @@ This section details some important aspects about how queries to VRS are transla
 
 The following examples result in a subtree search below a branch in the RadiantOne namespace named ou=Accounting,o=companydirectory:
 
-```
-ldap://vds:2389/ou=Accounting,o=companydirectory?cn,mail,uid?sub?(objectclass=inetOrgPerson)
-```
+`ldap://vds:2389/ou=Accounting,o=companydirectory?cn,mail,uid?sub?(objectclass=inetOrgPerson)`
 
 LDAP Mode – prefix the dn in the where clause (using LIKE) with % as shown in the example below. This gives you a subset of the inetOrgPerson table (all entries found below and including ou=Accounting,o=companydirectory will be returned).
 
-```
-SELECT dn,cn,mail,uid FROM inetorgperson WHERE dn LIKE '%ou=Accounting,o=companydirectory'
-```
+`SELECT dn,cn,mail,uid FROM inetorgperson WHERE dn LIKE '%ou=Accounting,o=companydirectory`
 
 Context Mode - append % to the contextid in the where clause (using LIKE) as shown in the example below. This gives you a subset of the inetOrgPerson table (all entries found below and including ou=people,o=mycompany will be returned).
 
-```
-SELECT cn,mail,uid FROM inetorgperson WHERE contextid LIKE 'o=companydirectory/ou=Accounting%'
-```
+`SELECT cn,mail,uid FROM inetorgperson WHERE contextid LIKE 'o=companydirectory/ou=Accounting%'`
 
->**Note – Ending the contextid value with /% will tell VRS to ignore the current context, meaning that the parent/base entry will not be included in the result set. Below is an example of a select statement using this syntax: 
-SELECT cn,mail,uid FROM inetorgperson WHERE contextid = 'o=mycompany/ou=people/%'**
+>[!note] Ending the contextid value with /% will tell VRS to ignore the current context, meaning that the parent/base entry will not be included in the result set. Below is an example of a select statement using this syntax: 
+SELECT cn,mail,uid FROM inetorgperson WHERE contextid = 'o=mycompany/ou=people/%'
 
 The following examples results in a one level search below a branch in the virtual namespace named ou=Accounting,o=companydirectory.
 
 LDAP Mode – prefix the dn in the where clause (using LIKE) with %, as shown in the example below. This gives you a subset of the inetOrgPerson table (only those entries found ONE level below ou=Accounting,o=companydirectory).
 
-```
-SELECT dn,cn,mail,uid FROM inetorgperson WHERE dn LIKE '%,ou=Accounting,o=companydirectory'
-```
+`SELECT dn,cn,mail,uid FROM inetorgperson WHERE dn LIKE '%,ou=Accounting,o=companydirectory'`
 
 Context Mode – To issue a one level search in context mode, use the parentcontext attribute in the where clause (using LIKE) as shown in the example below. This gives you a subset of the inetOrgPerson table (only those entries found one level below ou=Accounting,o=companydirectory).
 
-```
-SELECT cn,mail,uid FROM inetorgperson WHERE parentcontext = 'o=companydirectory/ou=Accounting'
-```
+`SELECT cn,mail,uid FROM inetorgperson WHERE parentcontext = 'o=companydirectory/ou=Accounting'`
 
->**Note - Multi-value attributes are returned by the RadiantOne service as one column, with each value separated by ' # '.**
+>[!note] Multi-value attributes are returned by the RadiantOne service as one column, with each value separated by ' # '.
 
 Please see [Sample VRS Queries](#sample-vrs-queries) for more examples.
 
@@ -124,124 +112,85 @@ Please see [Sample VRS Queries](#sample-vrs-queries) for examples.
 
 Return all entries from the inetOrgPerson table with the following attributes: dn, cn, mail, and uid:
 
-```
-SELECT dn, cn, mail, uid FROM inetorgperson 
-```
+`SELECT dn, cn, mail, uid FROM inetorgperson `
 
 Return all entries from the inetOrgPerson table that have a uid attribute starting with the letter a. Return the following attributes for these entries: dn, cn, mail, and uid:
 
-```
-SELECT dn,cn,mail,uid FROM inetorgperson WHERE uid LIKE 'a%'
-```
+`SELECT dn,cn,mail,uid FROM inetorgperson WHERE uid LIKE 'a%'`
 
 Return all entries from the inetOrgPerson table that have a uid attribute starting with the letter a. Return the following attributes for these entries: dn, cn, mail, uid, sn with an alias of LastName, and givenName with an alias of FirstName:
 
-```
-SELECT dn,cn,mail,uid,sn AS "LastName", givenname AS FirstName FROM inetorgperson WHERE uid LIKE 'a%'
-```
+`SELECT dn,cn,mail,uid,sn AS "LastName", givenname AS FirstName FROM inetorgperson WHERE uid LIKE 'a%'`
 
 Return all attributes for all entries from the inetOrgPerson table that have a uid attribute starting with the letter a. 
 
-```
-SELECT * from inetorgperson where uid like 'a%'
-```
+`SELECT * from inetorgperson where uid like 'a%'`
 
 Return the dn attribute for all entries in the Context table that have an objectclass attribute value of inetorgperson or groupofnames. 
 
-```
-SELECT dn from context where (objectclass=inetorgperson) OR (objectclass=groupofnames)
-```
+`SELECT dn from context where (objectclass=inetorgperson) OR (objectclass=groupofnames)`
 
 Return a summary (total count) for the different possible values of “l” from entries in the inetorgperson table that are located below the o=enterprisecontext context. 
 
-```
-SELECT l,count(*) FROM inetOrgPerson WHERE dn Like '%o=EnterpriseContext' GROUP BY  l
-```
+`SELECT l,count(*) FROM inetOrgPerson WHERE dn Like '%o=EnterpriseContext' GROUP BY  l`
 
 HR is the alias of the table inetorgperson in the context ou=Human Resources. PAY is the alias of the table inetorgperson in ou=Payroll context. This select statement does a join between these two datasets based on the mail column that is common between the two. HR and PAY are just two aliases in the sql query. It's necessary here because we are using the same table (inetorgperson) but they are pointing to two different datasets.
 
-```
-SELECT HR.dn,PAY.dn FROM inetOrgPerson HR, inetOrgPerson PAY 
-WHERE HR.dn Like '%,ou=Human Resources, o=EnterpriseContext' AND PAY.dn Like '%,ou=Payroll,o=EntrepriseContext' AND PAY.mail=HR.mail
-```
+`SELECT HR.dn,PAY.dn FROM inetOrgPerson HR, inetOrgPerson PAY WHERE HR.dn Like '%,ou=Human Resources, o=EnterpriseContext' AND PAY.dn Like '%,ou=Payroll,o=EntrepriseContext' AND PAY.mail=HR.mail`
 
 ### INSERT
 
 Insert an entry identified by a dn of “uid=Nico,ou=dev,o=radiantlogic.com” into the inetorgperson table with a uid value of “Nicog”, a cn value of “Nico Guyot” and a telephone number of “555-555-5555”.
 
-```
-INSERT INTO inetorgperson (dn,uid,cn,telephonenumber) VALUES ('uid=Nico,ou=dev,o=radiantlogic.com','Nicog','Nico Guyot','555-555-5555')
-```
+`INSERT INTO inetorgperson (dn,uid,cn,telephonenumber) VALUES ('uid=Nico,ou=dev,o=radiantlogic.com','Nicog','Nico Guyot','555-555-5555')`
 
 Insert an entry identified by a dn of “c=Sweden,dc=se” into the country table. Since the attribute names to insert are not specified in the insert statement, the order is based on the metadata for the country table. In this example, the first attribute is dn (‘c=Sweden,dc=se’), followed by c (‘Sweden’), searchguide (empty), description (‘The country of Sweden’), and objectclass (‘top’) respectively.
 
-```
-INSERT INTO country VALUES ('c=Sweden,dc=se','Sweden','','The country of Sweden','top')
-```
+`INSERT INTO country VALUES ('c=Sweden,dc=se','Sweden','','The country of Sweden','top')`
 
 ### UPDATE
 
 Update the telephone number for the user in the inetOrgPerson table identified by the dn of “uid=Nico,ou=dev,o=radiantlogic.com”:
 
-```
-UPDATE inetorgperson SET telephonenumber='555-888-8888' WHERE dn='uid=Nico,ou=dev,o=radiantlogic.com'
-```
+`UPDATE inetorgperson SET telephonenumber='555-888-8888' WHERE dn='uid=Nico,ou=dev,o=radiantlogic.com'`
 
 Update the facsimileTelephoneNumber and description column for all entries in the ou=hr container in the “mycompany” context:
 
-```
-UPDATE inetorgperson SET facsimileTelephoneNumber='555-555-8888', description='mycompany's employee' WHERE dn LIKE '%ou=hr,o=mycompany'
-```
+`UPDATE inetorgperson SET facsimileTelephoneNumber='555-555-8888', description='mycompany's employee' WHERE dn LIKE '%ou=hr,o=mycompany'`
 
 Set the telephonenumber to '555-888-8888' for all entries in the inetorgperson table where sn='Guyot':
 
-```
-UPDATE inetorgperson SET telephonenumber='555-888-8888' WHERE sn='Guyot'
-```
+`UPDATE inetorgperson SET telephonenumber='555-888-8888' WHERE sn='Guyot'`
 
 Remove all telephonenumbers in the inetorgperson table:
 
-```
-UPDATE inetorgperson SET telephonenumber=null
-```
+`UPDATE inetorgperson SET telephonenumber=null`
 
 ### DELETE
 
 Accessing the RadiantOne service in LDAP mode (because ‘dn’ is used in the query), delete the entry from the inetorgperson table identitied by a dn value of “uid=name,ou=hr,o=mycompany”:
 
-```
-DELETE FROM inetorgperson WHERE dn='uid=name,ou=hr,o=mycompany'
-```
+`DELETE FROM inetorgperson WHERE dn='uid=name,ou=hr,o=mycompany'`
 
 Accessing the RadiantOne service in context mode (because ‘contextid’ is used in the query), delete the entry from the inetorgperson table identitied by a dn value of “uid=name,ou=hr,o=mycompany”:
 
-```
-DELETE FROM inetorgperson WHERE contextid='o=mycompany/ou=hr/uid=name'
-```
+`DELETE FROM inetorgperson WHERE contextid='o=mycompany/ou=hr/uid=name'`
 
 Accessing the RadiantOne service in LDAP mode (because ‘dn’ is used in the query), delete the object from the Context table identified by a dn value of “uid=name,ou=hr,o=mycompany”:
 
-```
-DELETE FROM context WHERE dn='uid=name,ou=hr,o=mycompany'
-```
+`DELETE FROM context WHERE dn='uid=name,ou=hr,o=mycompany'`
 
 Accessing the RadiantOne service in LDAP mode (because ‘dn’ is used in the query), delete all rows in any table that contains a dn attribute with a suffix of “ou=hr,o=mycompany”:
 
-```
-DELETE FROM context WHERE dn LIKE '%ou=hr,o=mycompany'
-```
+`DELETE FROM context WHERE dn LIKE '%ou=hr,o=mycompany'`
 
 Accessing the RadiantOne service in Context mode (because ‘contextid’ is used in the query), delete all rows in any table that contains a contextid attribute with a suffix of “o=mycompany/ou=hr”.
 
-```
-DELETE FROM context WHERE contextid LIKE 'o=mycompany/ou=hr% '
-```
+`DELETE FROM context WHERE contextid LIKE 'o=mycompany/ou=hr% '`
 
 Delete all rows of any table which have the column sn that begins with “on”.
 
-```
-DELETE FROM context WHERE sn like 'on%'
-```
+`DELETE FROM context WHERE sn like 'on%'`
 
 ## Limitations
 

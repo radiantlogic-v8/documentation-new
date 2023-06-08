@@ -11,4 +11,4 @@ On the Settings Tab > Server Front End Settings > Other Protocols, on the right 
 
 ![An image showing ](Media/Image2.1.jpg)
 
-Figure 2.1: VRS Settings
+Figure 1: VRS Settings
