@@ -79,8 +79,7 @@ If you want to require certificate-based authentication:
 
 5. From the Main Control Panel > Settings Tab > Security section > SSL, click **Change** next to [Client Certificate DN Mapping](#client-certificate-dn-mapping) and define your mappings.
 
->[!warning]
->The Client Certificate DN Mapping is only accessible by a member of the [Directory Administrator role/group](01-introduction#delegated-administration-of-radiantone).
+>[!warning] The Client Certificate DN Mapping is only accessible by a member of the [Directory Administrator role/group](01-introduction#delegated-administration-of-radiantone).
 
 6. Click **Save** and restart the RadiantOne service. If RadiantOne is deployed in a cluster, restart RadiantOne on all nodes.
 
@@ -182,8 +181,7 @@ Remember, changing any parameters related to SSL requires a restart of the Radia
 
 For RadiantOne to connect via SSL to an underlying data source, or accept client certificates for authentication, the appropriate client certificate needs imported (unless they are signed by a trusted/known Certificate Authority). For classic RadiantOne architectures (active/active or active/passive), these certificates can be imported into the default Java trust store (<RLI_HOME>\jdk\jre\lib\security\cacerts). 
 
->[!warning]
->If RadiantOne is deployed in a cluster, import the client certificates into the [cluster level truststore](#client-certificate-trust-store-cluster-level-trust-store) instead of the default one so they can be dynamically shared across all cluster nodes.
+>[!warning] If RadiantOne is deployed in a cluster, import the client certificates into the [cluster level truststore](#client-certificate-trust-store-cluster-level-trust-store) instead of the default one so they can be dynamically shared across all cluster nodes.
 
 To manage the client certificates contained in the default Java trust store, click **Manage** next to the Client Certificates property.
 
@@ -251,8 +249,7 @@ Out of the available protocols, not in the disabled list, you can limit which on
 
 If you want to support one of the less secure protocols, edit the java.security file and remove the protocol from the jdk.tls.disabledAlgorithms value. Then, make sure it is enabled in RadiantOne. Restart RadiantOne on all nodes. If a protocol is enabled in RadiantOne, but in the list of disabled algorithms in the java.security file, it will not be supported at runtime for SSL communication.
 
->[!note]
->Only enable the SSL protocols that comply withour company’s security policy.
+>[!note] Only enable the SSL protocols that comply withour company’s security policy.
 
 ### Enable STARTTLS
 
@@ -369,58 +366,55 @@ UPN: ldap/vds.example.net@example.net**
 
 #### Configuring RadiantOne as a Kerberized Service
 
->[!warning]
->RadiantOne MUST be running on port 389. The default port for RadiantOne is 2389. To change the port, you must stop the RadiantOne service, and then edit the port from the Main Control Panel > Settings Tab > Administration section. After changing the port and saving your changes, restart the RadiantOne service. If RadiantOne is deployed in a cluster, all the service on all nodes.
+>[!warning] RadiantOne MUST be running on port 389. The default port for RadiantOne is 2389. To change the port, you must stop the RadiantOne service, and then edit the port from the Main Control Panel > Settings Tab > Administration section. After changing the port and saving your changes, restart the RadiantOne service. If RadiantOne is deployed in a cluster, all the service on all nodes.
 
 1. Create a Kerberos identification for the RadiantOne service by creating a user account in the Active Directory domain controller (KDC) for the host computer on which RadiantOne runs. When creating the account, you can use the name of the computer. For example, if the host is named AMAZONA-EQ3PKP4.cloudcfs.radiant.com, create a user in Active Directory with a user logon name of AMAZONA-EQ3PKP4.cloudcfs.radiant.com.
 
->[!note]
->If you have deployed RadiantOne in a cluster behind a load balancer (the clients access the load balancer), the KDC service account in Active Directory should use the server name of the load balancer. The UPN of the account should represent the load balancer machine and the SPN attribute should list the FQDN of each RadiantOne node in the cluster (as separate values of the SPN attribute). There is no need to create individual accounts for each RadiantOne host because the KDC account can have multiple SPNs. Each SPN will be associated with a RadiantOne node (and local traffic manager(s) if multiple layers of traffic managers are used). An example of a KDC account is described below <BR> sAMAccountName: svc-vdsadmin
+    >[!note] If you have deployed RadiantOne in a cluster behind a load balancer (the clients access the load balancer), the KDC service account in Active Directory should use the server name of the load balancer. The UPN of the account should represent the load balancer machine and the SPN attribute should list the FQDN of each RadiantOne node in the cluster (as separate values of the SPN attribute). There is no need to create individual accounts for each RadiantOne host because the KDC account can have multiple SPNs. Each SPN will be associated with a RadiantOne node (and local traffic manager(s) if multiple layers of traffic managers are used). An example of a KDC account is described below <BR> sAMAccountName: svc-vdsadmin
 
->**UPN: ldap/vds.example.net@example.net**
+    >**UPN: ldap/vds.example.net@example.net**
 
->**SPN: ldap/vds.example.net@example.net
+    >**SPN: ldap/vds.example.net@example.net
           <br>ldap/host1.example.net
           <br>ldap/vds.example.net
           <br>ldap/host2.example.net
           <br>ldap/host3.example.net**
 
-!Sample Active Directory Account for RadiantOne on the KDC](Media/Image3.88.jpg)
+    ![Sample Active Directory Account for RadiantOne on the KDC](Media/Image3.88.jpg)
 
-Figure 8: Sample Active Directory Account for RadiantOne on the KDC
+    Figure 8: Sample Active Directory Account for RadiantOne on the KDC
 
-1. Create a User Mapping and Keytab file using KTPASS. 
+2. Create a User Mapping and Keytab file using KTPASS. 
 
-If you do not have the ktpass utility (part of the Windows Resource Kit Tools), you can download it from Microsoft’s website.
+    If you do not have the ktpass utility (part of the Windows Resource Kit Tools), you can download it from Microsoft’s website.
 
-Below is a sample command to be run on the KDC machine:
+    Below is a sample command to be run on the KDC machine:
 
-`ktpass –princ ldap/AMAZONA-EQ3PKP4.cloudcfs.radiant.com@CLOUDCFS.RADIANT.COM -pass` 
-<br> `password -mapuser “vds server” -out c:\temp\amazona-eq3pkp4.LDAP.keytab `
+    `ktpass –princ ldap/AMAZONA-EQ3PKP4.cloudcfs.radiant.com@CLOUDCFS.RADIANT.COM -pass` 
+    <br> `password -mapuser “vds server” -out c:\temp\amazona-eq3pkp4.LDAP.keytab `
 
-<br> `------result of executing the command------`
-<br> `Targeting domain controller: AMAZONA-CMF8EDC.cloudcfs.radiant.com`
-<br> `Successfully mapped AMAZONA-EQ3PKP4.cloudcfs.radiant.com to AMAZONA-EQ3PKP4.`
-<br> `Password successfully set!`
-<br> `WARNING: pType and account type do not match. This might cause problems.`
-<br> `Key created.`
-<br> `Output keytab to c:\temp\amazona-eq3pkp4.LDAP.keytab:`
-<br> `Keytab version: 0x502`
-<br> `keysize 97 ldap/amazona-eq3pkp4.radiant.com@CLOUDCFS.RADIANT.COM ptype 0` 
-<br> `(KRB5_NT_UNKNOWN) vno 3 etype 0x17 (RC4-HMAC) keylength 16` 
-<br> `(0xf70be0d13c22ee9e2bc249af6874019e)`
+    <br> `------result of executing the command------`
+    <br> `Targeting domain controller: AMAZONA-CMF8EDC.cloudcfs.radiant.com`
+    <br> `Successfully mapped AMAZONA-EQ3PKP4.cloudcfs.radiant.com to AMAZONA-EQ3PKP4.`
+    <br> `Password successfully set!`
+    <br> `WARNING: pType and account type do not match. This might cause problems.`
+    <br> `Key created.`
+    <br> `Output keytab to c:\temp\amazona-eq3pkp4.LDAP.keytab:`
+    <br> `Keytab version: 0x502`
+    <br> `keysize 97 ldap/amazona-eq3pkp4.radiant.com@CLOUDCFS.RADIANT.COM ptype 0` 
+    <br> `(KRB5_NT_UNKNOWN) vno 3 etype 0x17 (RC4-HMAC) keylength 16` 
+    <br> `(0xf70be0d13c22ee9e2bc249af6874019e)`
 
+    -	Amazona-eq3pkp4.cloudcfs.radiant.com is the fully qualified domain name for the machine running RadiantOne.
+    -	CLOUDCFS.RADIANT.COM is the realm and must be in upper case in the ktpass command.
+    -	password is the password for the user account created in Step 1. 
+    -	The keytab file will be in c:/temp and be named amazon-eq3pkp4.LDAP.keytab.
 
--	Amazona-eq3pkp4.cloudcfs.radiant.com is the fully qualified domain name for the machine running RadiantOne.
--	CLOUDCFS.RADIANT.COM is the realm and must be in upper case in the ktpass command.
--	password is the password for the user account created in Step 1. 
--	The keytab file will be in c:/temp and be named amazon-eq3pkp4.LDAP.keytab.
+    After executing the ktpass command, if you go into the Active Directory account created in [Step 1](#configuring-radiantone-as-a-kerberized-service), you will see that the user login name value has been changed to ldap/amazona-eq3pkp4.cloudcfs.radiant.com.
 
-After executing the ktpass command, if you go into the Active Directory account created in [Step 1](#configuring-radiantone-as-a-kerberized-service), you will see that the user login name value has been changed to ldap/amazona-eq3pkp4.cloudcfs.radiant.com.
+    ![Example User Account on the KDC after using the ktpass Utility](Media/Image3.89.jpg)
 
-![Example User Account on the KDC after using the ktpass Utility](Media/Image3.89.jpg)
-
-Figure 9: Example User Account on the KDC after using the ktpass Utility
+    Figure 9: Example User Account on the KDC after using the ktpass Utility
 
 3.	Go to the Main Control Panel > Settings Tab > Security section > Authentication Methods sub-section and check the box to enable Kerberos Authentication. Click **Save**.
 
@@ -428,46 +422,46 @@ Figure 9: Example User Account on the KDC after using the ktpass Utility
 
 5. Copy the keytab file created when running the ktpass utility to the RadiantOne machine (anywhere on the machine is fine) and configure the needed parameters described below. This step is optional. If there is no keytab file present, RadiantOne uses the service principal and password that are defined on the Main Control Panel > Settings Tab > Security Section > Authentication Methods sub-section > Kerberos Authentication to authenticate to the KDC. 
 
-If you choose to copy the keytab file to the RadiantOne machine, edit the <RLI_HOME>/<instance_name>/conf/krb5/vds_krb5login.conf file. To enable RadiantOne to participate in SSO with clients via Kerberos tokens, a JAAS login file is needed to tell where and how the RadiantOne service is authenticated. The JAAS login file (vds_ krb5login.conf) is provided with RadiantOne. The default content of this file is as follows:
+    If you choose to copy the keytab file to the RadiantOne machine, edit the <RLI_HOME>/<instance_name>/conf/krb5/vds_krb5login.conf file. To enable RadiantOne to participate in SSO with clients via Kerberos tokens, a JAAS login file is needed to tell where and how the RadiantOne service is authenticated. The JAAS login file (vds_ krb5login.conf) is provided with RadiantOne. The default content of this file is as follows:
 
-`vds_server {`
-<br> `com.sun.security.auth.module.Krb5LoginModule required`
-<br> `storeKey=true;`
-<br> `};`
+    `vds_server {`
+    <br> `com.sun.security.auth.module.Krb5LoginModule required`
+    <br> `storeKey=true;`
+    <br> `};`
 
-If RadiantOne should use the keytab file, add the following parameters to the vds_krb5login.conf file:
+    If RadiantOne should use the keytab file, add the following parameters to the vds_krb5login.conf file:
 
-`useKeyTab=true`
-<br> `keyTab= "c:/radiantone/amazona-eq3pkp4.LDAP.keytab”`
+    `useKeyTab=true`
+    <br> `keyTab= "c:/radiantone/amazona-eq3pkp4.LDAP.keytab”`
 
-**useKeyTab** – set this to true if you want the server to get the principal’s key from the keytab. The default value (if this parameter is not set in the file) is False. As mentioned above, if there is no keytab specified, RadiantOne uses the service name and password defined on the Main Control Panel > Settings Tab > Security Section > Authentication Methods sub-section > Kerberos Authentication section on the right side, to authenticate to the KDC when the RadiantOne service first starts.
+    **useKeyTab** – set this to true if you want the server to get the principal’s key from the keytab. The default value (if this parameter is not set in the file) is False. As mentioned above, if there is no keytab specified, RadiantOne uses the service name and password defined on the Main Control Panel > Settings Tab > Security Section > Authentication Methods sub-section > Kerberos Authentication section on the right side, to authenticate to the KDC when the RadiantOne service first starts.
 
-**principal** – set this to the user principal name of the account in the KDC associated with the RadiantOne service. If this property is not defined in the keytab file, it must be set in the Main Control Panel > Settings Tab > Security section > Authentication Methods sub-section > Kerberos Authentication section.
+    **principal** – set this to the user principal name of the account in the KDC associated with the RadiantOne service. If this property is not defined in the keytab file, it must be set in the Main Control Panel > Settings Tab > Security section > Authentication Methods sub-section > Kerberos Authentication section.
 
-**keyTab** – set this to the full path and file name of the keytab to get the principal’s secret key. Surround the value with double quotes and the word keyTab is case-sensitive (it should appear in the vds_krb5login.conf file in this exact case).
+    **keyTab** – set this to the full path and file name of the keytab to get the principal’s secret key. Surround the value with double quotes and the word keyTab is case-sensitive (it should appear in the vds_krb5login.conf file in this exact case).
 
-For information on other optional configuration parameters, please refer to the Krb5LoginModule class in the Java Authentication and Authorization Service (JAAS) documentation.
+    For information on other optional configuration parameters, please refer to the Krb5LoginModule class in the Java Authentication and Authorization Service (JAAS) documentation.
 
 6. Edit the RadiantOne Kerberos configuration file to include the realm and KDC. The Kerberos configuration file is named vds_server_krb5.conf and is in <RLI_HOME>/vds_server/conf/krb5.
 
-Edit this file and set the appropriate values in the [libdefaults] and [realms] sections. Below is an example that matches the use case we have been using in this section.
+    Edit this file and set the appropriate values in the [libdefaults] and [realms] sections. Below is an example that matches the use case we have been using in this section.
 
-`[libdefaults]`
-<br> `default_realm = CLOUDCFS.RADIANT.COM`
-<br> `[realms]`
-<br> `CLOUDCFS.RADIANT.COM = {`
-<br> `kdc = 10.11.12.205:88`
-<br> `default_domain = CLOUDCFS.RADIANT.COM`
-<br> `}`
+    `[libdefaults]`
+    <br> `default_realm = CLOUDCFS.RADIANT.COM`
+    <br> `[realms]`
+    <br> `CLOUDCFS.RADIANT.COM = {`
+    <br> `kdc = 10.11.12.205:88`
+    <br> `default_domain = CLOUDCFS.RADIANT.COM`
+    <br> `}`
 
 7.	Verify the RadiantOne rootdse responds with the appropriate Supported SASL Mechanisms by using a client (e.g. LDAP Browser) to query RadiantOne with a “blank/empty” base DN. The following should be returned.
 
-`supportedSASLMechanisms: GSSAPI`
-<br> `supportedSASLMechanisms: GSS-SPNEGO`
+    `supportedSASLMechanisms: GSSAPI`
+    <br> `supportedSASLMechanisms: GSS-SPNEGO`
 
 8. Configure Client Principal Name Mapping. This step is optional and can be used to define a mapping between the user who authenticates with a Kerberos ticket and a user DN in the virtual namespace. The DN is required for the RadiantOne service to enforce access permissions (authorization). If no client principal name mappings are configured, RadiantOne creates an account in a local Universal Directory store that is linked to the person who authenticated using a Kerberos ticket.
 
-There are three different ways to determine the DN from the user ID in the Kerberos ticket received in the LDAP bind (using regular expression syntax). Each is described below.
+    There are three different ways to determine the DN from the user ID in the Kerberos ticket received in the LDAP bind (using regular expression syntax). Each is described below.
 
 -	Setting a specific User ID to DN. In this example, if lcallahan were received in the authentication request, RadiantOne would base the authorization on the DN: cn=laura Callahan,cn=users,dc=mycompany,dc=com
 
@@ -583,21 +577,21 @@ The following describes the connection parameters from Softerra LDAP Administrat
 
 1. Create a new profile specifying the RadiantOne connection criteria. Be sure to use the fully qualified name for RadiantOne machine.
 
-![Sample Connection to RadiantOne from Softerra](Media/Image3.94.jpg)
+    ![Sample Connection to RadiantOne from Softerra](Media/Image3.94.jpg)
 
-Figure 14: Sample Connection to RadiantOne from Softerra
+    Figure 14: Sample Connection to RadiantOne from Softerra
 
 2. Click **Next**.
 
 3. You can choose the option currently logged on user (for Active Directory only) or select the GSS Negotiate mechanism and specify the username you want to use to connect and click Finish. See the screen shots below as an example.
 
-![Use User Currently Logged into the Machine Option](Media/Image3.95.jpg)
+    ![Use User Currently Logged into the Machine Option](Media/Image3.95.jpg)
 
-Figure 15: Use User Currently Logged into the Machine Option
+    Figure 15: Use User Currently Logged into the Machine Option
 
-![Specifying Alternate Credentials](Media/Image3.96.jpg)
+    ![Specifying Alternate Credentials](Media/Image3.96.jpg)
 
-Figure 16: Specifying Alternate Credentials
+    Figure 16: Specifying Alternate Credentials
 
 4. Click **Finish**. At the bottom of the LDAP Administrator console you will be able to see whom you are connected as (johnny_appleseed@setree1.com is the example shown below). 
 
@@ -613,11 +607,11 @@ The following steps were certified on Linux CENTOS to configure RadiantOne as a 
 
 1. To manage the Kerberos database locally, launch
 
-`kadmin.local`
+    `kadmin.local`
 
 2. Add the RadiantOne service to Kerberos database with the following:
 
-`add_principal ldap/vds.novato.radiantlogic.com@EXAMPLE.COM`
+    `add_principal ldap/vds.novato.radiantlogic.com@EXAMPLE.COM`
 
 3. Ensure FQDN of service can be resolved via DNS using ping or other methods.
 
@@ -867,12 +861,11 @@ To define the criteria used to generate an encryption key:
 
 3.	Select the desired cipher from the drop-down list or select [AWSKMS](#using-amazon-web-services-aws-with-a-customer-master-key-cmk) if you want to use your own Customer Master Key (CMK) in Amazon Web Services (AWS) Key Management Service (KMS) and have configured the necessary settings in ZooKeeper. If unlimited Java security libraries are installed, there are more ciphers shown in this drop-down list.
 
->[!note]
->If you want to use stronger ciphers that are not listed, you must add crypto.policy=unlimited in <RLI_HOME>/jdk/jre/lib/security/java.security file. For more details, see the RadiantOne Hardening Guide.
+    >[!note] If you want to use stronger ciphers that are not listed, you must add crypto.policy=unlimited in <RLI_HOME>/jdk/jre/lib/security/java.security file. For more details, see the RadiantOne Hardening Guide.
 
-![An image showing ](Media/Image3.116.jpg)
+    ![An image showing ](Media/Image3.116.jpg)
  
-Figure 20: Attribute Encryption Key
+    Figure 20: Attribute Encryption Key
 
 4.	If you selected a cipher suite in the previous step, enter a security key. This value is used to auto-generate an encryption key. If you plan on deploying multiple clusters that will participate in inter cluster replication for encrypted attributes, take note of the value you enter here as you must use it when configuring the security key in the other clusters.
 
@@ -1016,8 +1009,7 @@ To define the criteria used to generate an encryption key:
 
 3.	Select the desired cipher from the drop-down list or select [AWSKMS](#using-amazon-web-services-aws-with-a-customer-master-key-cmk) if you want to use your own Customer Master Key (CMK) in Amazon Web Services (AWS) Key Management Service (KMS) and have configured the necessary settings in ZooKeeper. If unlimited Java security libraries are enabled, there are more available ciphers in this drop-down list.
 
->[!note]
->If you want to use stronger ciphers that are not listed, you must add (or uncomment) crypto.policy=unlimited in <RLI_HOME>/jdk/jre/lib/security/java.security file. For more details, see the RadiantOne Hardening Guide.
+    >[!note] If you want to use stronger ciphers that are not listed, you must add (or uncomment) crypto.policy=unlimited in <RLI_HOME>/jdk/jre/lib/security/java.security file. For more details, see the RadiantOne Hardening Guide.
 
 4.	If you selected a cipher suite in the previous step, enter a security key. This value is used to auto-generate an encryption key. If you plan on deploying multiple clusters that will participate in inter cluster replication and you are going to initialize Universal Directory (HDAP) stores from an exported LDIFZ file, take note of the value you enter here as you must use it when configuring the LDIFZ cipher and security key in the other clusters.
 
@@ -1134,8 +1126,7 @@ Each access control instruction has a description which explains the context of 
 
 The location is the target where the access control is to be applied and is a distinguished name.
 
->[!warning]
->It is recommended that you set access permissions at the root of your tree. When setting the target, you can navigate to the specific branch that you want to protect.
+>[!warning] It is recommended that you set access permissions at the root of your tree. When setting the target, you can navigate to the specific branch that you want to protect.
 
 When setting access controls on a sub-branch, you do not see which access controls have been set up at the parent nodes in the tree. This increases the chance that you may have conflicting access controls defined. Defining access controls at the root helps prevent creating conflicting access rules.
 
@@ -1195,7 +1186,6 @@ Level 2 indicates an authentication method of Kerberos (leveraging GSSAPI) is re
 >Ensure you have RadiantOne configured properly as a [Kerberos LDAP service](06-security#kerberos).
 
 Level 3 indicates multi-factor authentication (e.g. RSA SecurID token code, Yubikey) is required to access the data. At this level, there is high confidence in the asserted identity's validity. You can use this level when there is high risk associated with the authentication strength used to access the RadiantOne data. 
-
 
 >[!warning]
 >Ensure you have RadiantOne configured properly with a [Custom Authentication Provider](interception#custom-authentication-providers).
@@ -1339,13 +1329,11 @@ To define access controls:
 
 2.	In the Access Control section, select root.
 
->[!note]
->Although there is not an absolute requirement, it is generally recommended to define all your access controls at the root level so you can come back to this single level and see all configured access controls across the entire virtual namespace.
+    >[!note] Although there is not an absolute requirement, it is generally recommended to define all your access controls at the root level so you can come back to this single level and see all configured access controls across the entire virtual namespace.
 
 3.	Click **Add**. The Edit ACI pane is displayed.
 
->[!note]
->The Target Scope pull-down menu value defaults to subtree, and the Target Attributes value defaults to All.
+    >[!note] The Target Scope pull-down menu value defaults to subtree, and the Target Attributes value defaults to All.
 
 4.	Enter an ACI description.
 
@@ -1410,8 +1398,7 @@ Proxy authorization allows the user that creates a connection to RadiantOne to i
 
 If a user binds to RadiantOne and provides a password, that password is vulnerable to interception by a third party when sent over non-SSL ports. To help prevent this vulnerability, you can enforce that binds always use the SSL/TLS ports by using the Bind requires SSL or StartTLS option.
 
->[!warning]
->As a best practice, it is recommended that you only allow SSL communication to the RadiantOne service. If you require non-SSL communication but still want to require that binds use SSL or StartTLS, you can use this option.
+>[!warning] As a best practice, it is recommended that you only allow SSL communication to the RadiantOne service. If you require non-SSL communication but still want to require that binds use SSL or StartTLS, you can use this option.
 
 This option requires enabling SSL. If you want binds to use StartTLS, you must also enable StartTLS. Refer to [SSL Settings](security#ssl-settings) for more information on these settings.
 
@@ -1429,15 +1416,13 @@ If a user binds to RadiantOne and does not provide a password, the default behav
 
 If you have groups stored in a RadiantOne Universal Directory store and want to support groups as members, check the Enable Nested Groups option.
 
->[!warning]
->Processing nested groups is not efficient and is not enabled by default. When nested groups are used in RadiantOne ACLs for access controls, many recursive searches are required. Large groups with a mix of many members including other groups as members can have poor performance. Use nested groups with caution and validate your use case with performance testing to ensure response times meet your needs.
+>[!warning] Processing nested groups is not efficient and is not enabled by default. When nested groups are used in RadiantOne ACLs for access controls, many recursive searches are required. Large groups with a mix of many members including other groups as members can have poor performance. Use nested groups with caution and validate your use case with performance testing to ensure response times meet your needs.
 
 ### LDAP_MATCHING_RULE_IN_CHAIN
 
 RadiantOne supports the LDAP_MATCHING_RULE_IN_CHAIN operator and allows clients to issue search filters using the 1.2.840.113556.1.4.1941 matching rule OID. This provides a method to look up the ancestry of an object and can be used in a search filter to retrieve all groups a user is a member of even when that group is nested (and is a member of another group). If the base DN in the RadiantOne namespace is associated with a proxy view, the search filter containing the matching rule OID is passed to the backend which must process the LDAP_MATCHING_RULE_IN_CHAIN. If the base DN in the RadiantOne namespace is associated with a persistent cache or a Universal Directory store, RadiantOne processes the matching rule locally.
 
->[!warning]
->If you are using the Linked Attributes calculation in RadiantOne and the users and groups are local, in a persistent cache or Universal Directory store, you must enable the Optimize Linked Attribute setting to support filters requesting isMemberOf/memberOf. This ensures good performance. For details on this setting, see the Namespace Configuration Guide (applicable to RadiantOne Universal Directory stores) or the Deployment and Tuning Guide (applicable to persistent cache).
+>[!warning] If you are using the Linked Attributes calculation in RadiantOne and the users and groups are local, in a persistent cache or Universal Directory store, you must enable the Optimize Linked Attribute setting to support filters requesting isMemberOf/memberOf. This ensures good performance. For details on this setting, see the Namespace Configuration Guide (applicable to RadiantOne Universal Directory stores) or the Deployment and Tuning Guide (applicable to persistent cache).
 
 ![An image showing ](Media/Image3.112.jpg)
 
@@ -1600,8 +1585,7 @@ To export a certificate:
 5.	Click **OK** to exit the confirmation.
 6.	Click **Save** in the upper right corner.
 
->[!note]
->If RadiantOne is deployed in a cluster, all nodes share the contents of the client certificate truststore.
+>[!note] If RadiantOne is deployed in a cluster, all nodes share the contents of the client certificate truststore.
 
 # Password Policies
 
@@ -1615,8 +1599,7 @@ Figure 38: Password Policies
 
 To allow users to bypass password policies, you can add them to the PrivilegedPasswordPolicyGroup group. This group can be useful, for example, if you want a helpdesk user to reset a user’s password. The password policies are not checked, so this user can set a password that does not meet the password content criteria, could be in history, etc.
 
->[!warning]
->In addition to PrivilegedPasswordPolicyGroup group members, password policies also do NOT apply to the RadiantOne super user account (cn=directory manager for example) or any member of the cn=directory administrators,ou=globalgroups,cn=config group (or the specific Directory Administrators group you have set on the Main Control Panel > Settings Tab > Server Front End > Administration sub-section).
+>[!warning] In addition to PrivilegedPasswordPolicyGroup group members, password policies also do NOT apply to the RadiantOne super user account (cn=directory manager for example) or any member of the cn=directory administrators,ou=globalgroups,cn=config group (or the specific Directory Administrators group you have set on the Main Control Panel > Settings Tab > Server Front End > Administration sub-section).
 
 To assign users to the Privileged Password Policy Group:
 
@@ -1655,13 +1638,11 @@ To create a custom password policy, next to the ‘Choose a Password Policy’ d
 
 The ‘Subject’ of the custom policy can be either Sub-tree or Group and is based on a specific base DN. Click **CHOOSE** to select a base DN. If the subject is set to sub-tree, this means that all user entries below the chosen base DN (which must be a RadiantOne Universal Directory store or persistent cache) are affected by the custom policy. If the subject is set to group, this means that all users that are a member of the group specified in the base DN are affected by the custom policy. The group DN can represent a static group (unique members listed in the group entry) or a dynamic group (associated with the groupOfURLs object class and contains a memberURL attribute dictating the members). RadiantOne evaluates dynamic membership automatically to enforce password policies. If a user is affected by a policy defined for sub-tree and for group, the one associated with the group takes precedence.
 
->[!note]
->Custom policy properties override those defined in the default policy. The only exception is the password content properties where you can choose to enable the enforcement of the custom policy, or choose to use the default policy. Keep in mind that a value of 0 (zero) in a custom policy for password content means an unlimited amount is allowed. It does not mean that it is undefined.
+>[!note] Custom policy properties override those defined in the default policy. The only exception is the password content properties where you can choose to enable the enforcement of the custom policy, or choose to use the default policy. Keep in mind that a value of 0 (zero) in a custom policy for password content means an unlimited amount is allowed. It does not mean that it is undefined.
 
 An example of a custom password policy is shown below. It is applicable to all users who are located in a RadiantOne Universal Directory store and are a member of the Special Users group identified in the DIT as cn=special users,ou=globalgroups,cn=config.
 
->[!note]
->If you define multiple custom password policies associated with groups (as the Subject), they should not have the same precedence if they share members. If a user is affected by multiple group-based policies, the one with the highest precedence (lowest numeric value in the precedence setting) is enforced.
+>[!note] If you define multiple custom password policies associated with groups (as the Subject), they should not have the same precedence if they share members. If a user is affected by multiple group-based policies, the one with the highest precedence (lowest numeric value in the precedence setting) is enforced.
 
 ![Example Custom Password Policy Applicable to a Group](Media/Image3.104.jpg)
  
@@ -1669,8 +1650,7 @@ Figure 40: Example Custom Password Policy Applicable to a Group
 
 An example of a custom password policy applicable to all users below a specific container is shown below. This custom policy is enforced for all users in a RadiantOne Universal Directory store located below o=local.
 
->[!note]
->precedence level is not configurable for policies defined on a sub tree. Multiple password policies configured with sub tree subject, should not be configured for the same location. If multiple policies impact the same branch, the policy defined at the lowest point is enforced.
+>[!note] Precedence level is not configurable for policies defined on a sub tree. Multiple password policies configured with sub tree subject, should not be configured for the same location. If multiple policies impact the same branch, the policy defined at the lowest point is enforced.
 
 ![An image showing ](Media/Image3.105.jpg)
  
@@ -1735,8 +1715,7 @@ This value is stored in the pwdSafeModify attribute of the cn=Password Policy en
 
 This value is stored in the pwdMinAge attribute of the cn=Password Policy entry. It holds the number of seconds that must elapse between modifications to the password. If this attribute is not present, 0 seconds is assumed. From the Main Control Panel, you can indicate the length of time in any combination of days, hours and/or minutes using “d” for days (e.g. 1d), “h” for hours (e.g. 4h), and “m” for minutes (e.g. 5m). A value of 1d 5h 45m would indicate a password could be changed after 1 day, 5 hours and 45 minutes.
 
->[!note]
->Your password policy must uphold the following rule: pwdMinAge + pwdExpireWarning < pwdMaxAge.
+>[!note] Your password policy must uphold the following rule: pwdMinAge + pwdExpireWarning < pwdMaxAge.
 
 ### Keep a password history
 
@@ -1756,8 +1735,7 @@ This value is stored in the pwdMaxAge attribute of the cn=Password Policy entry.
 
 This value is stored in the pwdMaxAge attribute of the cn=Password Policy entry. If this option is enabled, the value contains the amount of time after which a modified password expires. If this attribute is not present, or if the value is 0d, the password does not expire. If not 0d, the value must be greater than or equal to the value of pwdMinAge (the Allow a password to be changed after a certain number of days parameter). From the Main Control Panel, you can indicate the length of time in any combination of days, hours and/or minutes using “d” for days (e.g. 1d), “h” for hours (e.g. 4h), and “m” for minutes (e.g. 5m). A value of 1d 5h 45m would indicate a password expires after 1 day, 5 hours and 45 minutes.
 
->[!note]
->Your password policy must uphold the following rule: pwdMinAge + pwdExpireWarning < pwdMaxAge.
+>[!note] Your password policy must uphold the following rule: pwdMinAge + pwdExpireWarning < pwdMaxAge.
 
 If a user’s password is expired, the next time a client (on the user’s behalf) connects to RadiantOne, the bind will fail and the additional information returned to the client indicates the password has expired. An example using an ldapsearch command line client by a user identified as “tuser” is shown below.
 
@@ -1903,8 +1881,8 @@ To enable this feature:
 
 3.	Click **Browse** to navigate to the dictionary file. The value for the location of the dictionary file is stored in the pwdDictionaryFile attribute of the cn=Password Policy entry.
 
->[!note]
->The dictionary file must be a text-formatted file containing one dictionary word per line.
+    >[!note]
+    >The dictionary file must be a text-formatted file containing one dictionary word per line.
 
 4.	Click **Save**.
 

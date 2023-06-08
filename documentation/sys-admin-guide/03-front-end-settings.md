@@ -3,7 +3,7 @@ title: System Administration Guide
 description: System Administration Guide
 ---
 
-# Settings Tab
+# Front End Settings
 
 From the Settings Tab, you can manage the majority of RadiantOne settings. All settings found on this tab are detailed in this section.
 
@@ -46,8 +46,7 @@ To configure the Directory Manager username:
 
 2.	In the Directory Manager Settings section on the right side, edit the value in the User name field.
 
->[!warning]
->The new value of the parameter should be in the same syntax: `cn=<new user value>`.
+    >[!warning] The new value of the parameter should be in the same syntax: `cn=<new user value>`.
 
 3.	Click **Save**.
 
@@ -85,15 +84,13 @@ An example of the syntax used in the command is shown below, assuming the LDIF f
 
 `ldapmodify.exe -D "cn=Directory Manager,ou=RootUsers,cn=config" -w password -h localhost -p 2389 -f c:\radiantone\ChangePassword.ldif`
 
->[!note]
->The RadiantOne service may be running when this command is executed.
+>[!note] The RadiantOne service may be running when this command is executed.
 
 #### Allowed IP Addresses
 
 To prevent the unwarranted use of the directory administrator (super user) account, you can set specific IP addresses from where the directory administrator account can connect to the RadiantOne service from. This value can be a single IP address or a list of IP addresses separated by a comma. The IP address syntax can also support a range of IP addresses.
 
->[!warning]
->When the “Allowed IP Addresses” property is used, the Control Panel is accessible from any machine whose IP address matches that of a registered RadiantOne cluster node (with the list of node IPs being resolved periodically), in addition to the allowed IPs configured in this property.
+>[!warning] When the “Allowed IP Addresses” property is used, the Control Panel is accessible from any machine whose IP address matches that of a registered RadiantOne cluster node (with the list of node IPs being resolved periodically), in addition to the allowed IPs configured in this property.
 
 The default value for this parameter is 0 (or could also have no value). This means that the directory administrator (super user) can bind against the RadiantOne service from anywhere.
 
@@ -101,16 +98,16 @@ This parameter can be changed in the Main Control Panel > Settings Tab > Adminis
 
 Example set for a range of IP addresses:
 
-10.11.12.0/24    which represents the given IPv4 address and its associated routing prefix 10.11.12.0, or equivalently, its subnet mask 255.255.255.0, which has 24 leading 1-bits. This covers the range between 10.11.12.0 to 10.11.12.255.
+10.11.12.0/24  which represents the given IPv4 address and its associated routing prefix 10.11.12.0, or equivalently, its subnet mask 255.255.255.0, which has 24 leading 1-bits. This covers the range between 10.11.12.0 to 10.11.12.255.
 
 Example set for a range of IPv6 addresses:
-2001:db8::/32    which covers the range between 2001:db8:0:0:0:0:0:0 to 2001:db8:ffff:ffff:ffff:ffff:ffff:ffff
+2001:db8::/32 which covers the range between 2001:db8:0:0:0:0:0:0 to 2001:db8:ffff:ffff:ffff:ffff:ffff:ffff
 
 Restart Jetty (server hosting the Control Panel) and the RadiantOne service (on all nodes if running in a cluster) after making changes to this property.
 
 #### Special Users Group DN
 
-This parameter can be set to the DN of any special group you want that is defined in the virtual namespace. The special users group is checked for enforcing access regulation (if access restrictions are set). To manage this value, from the Main Control Panel -> Settings Tab -> Administration section, locate the Special Users Group DN parameter. Enter the value of a valid group DN located in the virtual namespace.
+This parameter can be set to the DN of any special group you want that is defined in the virtual namespace. The special users group is checked for enforcing access regulation (if access restrictions are set). To manage this value, from the Main Control Panel > Settings Tab > Administration section, locate the Special Users Group DN parameter. Enter the value of a valid group DN located in the virtual namespace.
 
 For details on how this group is related to access restrictions, see the section titled [Access Regulation](06-security#access-regulation).
 
@@ -131,8 +128,7 @@ The RadiantOne service Admin HTTP Service ports are used internally for:
 -	RadiantOne service actions like restart and standby. 
 You can disable the HTTP port by setting the value to zero. This leaves access only on the HTTPS port. If you disable the HTTP port, ensure the “Use SSL” setting is enabled for internal connections (Main Control Panel > Settings > Server Backend > Internal Connections), and Inter Nodes Communication is set to “Always use SSL” (Main Control Panel > Settings > Security > SSL). A restart of the RadiantOne service is required when these settings are changed. Restart the service on all cluster nodes.
 
->[!note]
->This setting is accessible only in [Expert Mode](01-introduction#expert-mode). 
+>[!note] This setting is accessible only in [Expert Mode](01-introduction#expert-mode). 
 
 ## Supported Controls and Features
 
@@ -163,6 +159,7 @@ RadiantOne supports the following LDAP features:
 1.3.6.1.4.1.4203.1.5.3 - Absolute True and False Filters as described in RFC 4526
 
 The Paged Results, VLV, Server Side Sort, Persistent Search and Proxy Authorization controls are not enabled by default. The Subtree Delete and Password Policy Controls are enabled by default. The Modify-Increment, All Operational Attributes, and Absolute True/False filters extensions are enabled by default.
+
 This section describes each control or feature and how to enable it if needed.
 
 ![Supported Controls Section](Media/Image3.39.jpg)
@@ -249,8 +246,7 @@ This control can be enabled/disabled from the Main Control Panel > Settings Tab 
 
 If you enable the persistent search control, an LDAP client can receive notifications of changes that occur in the RadiantOne namespace. When a persistent search is requested, RadiantOne keeps the search operation going so clients can receive changed entries (and additional information about the changes that occurred). 
 
->[!note]
->The changelog number associated with the changed entries (logged into cn=changelog) is also returned in the persistent search response.
+>[!note] The changelog number associated with the changed entries (logged into cn=changelog) is also returned in the persistent search response.
 
 #### Proxied Authorization Control
 
@@ -258,8 +254,7 @@ This control can be enabled/disabled from the Main Control Panel > Settings Tab 
 
 Authorization for RadiantOne data is checked based on the user who authenticated. The authorization ID (DN) is linked to the authenticated ID (DN) for the same connection. With the proxy authorization control enabled, the client can switch the user ID (for authorization purposes) without having to re-authenticate with a new connection. After the Proxy Authorization control is enabled from here, the configuration (who is allowed to impersonate whom) is defined as access controls from the Settings tab > Security section > Access Control sub-section. For more details on the configuration, please see [Operations](06-security#operations).
 
->[!warning]
->To allow the RadiantOne super user (e.g. cn=directory manager) to impersonate other users, you must enable the “[Allow Directory Manager to Impersonate Other Users](06-security#allow-directory-manager-to-impersonate-other-users)” option. In this special scenario, access controls defining the “proxy” permission is not required. However, the Proxy Authorization Control must be enabled.
+>[!warning] To allow the RadiantOne super user (e.g. cn=directory manager) to impersonate other users, you must enable the “[Allow Directory Manager to Impersonate Other Users](06-security#allow-directory-manager-to-impersonate-other-users)” option. In this special scenario, access controls defining the “proxy” permission is not required. However, the Proxy Authorization Control must be enabled.
 
 #### Subtree Delete Control
 
@@ -281,18 +276,17 @@ By default, only the RadiantOne super user (e.g. cn=directory manager) is allowe
 
     (targetcontrol = "1.2.840.113556.1.4.805") (version 3.0; acl "Tree delete control access"; allow(read) userdn="ldap:///uid=Aaron_Medler,ou=Accounting,o=companydirectory";).
 
-![Manually editing the ACI](Media/Image3.42.jpg)
+    ![Manually editing the ACI](Media/Image3.42.jpg)
 
-Figure 6: Manually editing the ACI
+    Figure 6: Manually editing the ACI
 
->[!note]
->To allow anyone to perform a subtree delete request, use a value of “ldap:///anyone” for the userdn as shown in the example below.<br> (targetcontrol = "1.2.840.113556.1.4.805") (version 3.0; acl "Anonymous tree delete control access"; allow(read) userdn ="ldap:///anyone";).
+    >[!note] To allow anyone to perform a subtree delete request, use a value of “ldap:///anyone” for the userdn as shown in the example below.<br> (targetcontrol = "1.2.840.113556.1.4.805") (version 3.0; acl "Anonymous tree delete control access"; allow(read) userdn ="ldap:///anyone";).
 
 7.	Click **Save**.
 
-If the target DN is associated with a RadiantOne Universal Directory (HDAP) store, then RadiantOne processes the subtree delete control. If the target DN is a proxy view to a backend directory, RadiantOne request with the subtree delete control is delegated to the backend for processing.
+    If the target DN is associated with a RadiantOne Universal Directory (HDAP) store, then RadiantOne processes the subtree delete control. If the target DN is a proxy view to a backend directory, RadiantOne request with the subtree delete control is delegated to the backend for processing.
 
-For example, there are two delete requests shown below (snippets from vds_server.log). The first delete request shows the scenario where the sub tree delete control isn’t passed and the delete fails (with error code 66) and the other shows where the control (1.2.840.113556.1.4.805) is passed and the delete is successful.
+    For example, there are two delete requests shown below (snippets from vds_server.log). The first delete request shows the scenario where the sub tree delete control isn’t passed and the delete fails (with error code 66) and the other shows where the control (1.2.840.113556.1.4.805) is passed and the delete is successful.
 
 Delete request without passing the subtree delete control:
 
@@ -351,8 +345,7 @@ RadiantOne supports the All Operational Attributes extension feature as outlined
 
 Using the + character in your comma-separated list of return attributes, this extension allows LDAP searches of RadiantOne Universal Directory stores to return all operational attributes (except computed operational attributes, which must be specified by name). This feature can be useful when trying to determine which operational attributes exist in an entry.
 
->[!note]
->Search results may not include all requested attributes if precluded by access controls.
+>[!note] Search results may not include all requested attributes if precluded by access controls.
 
 #### Absolute True and False Filters
 
@@ -370,8 +363,7 @@ The Authorization Identity Control (--reportAuthzID) may be submitted in a bind 
 
 Image 7: Authorization Identity Control
 
->[!warning]
->The Authorization Identity Control is allowed for use in conjunction with LDAP bind operations only and therefore cannot be used after the client has authenticated. To obtain the authorization identity at any time after the bind has completed, use the “[Who Am I](#who-am-i-extended-operation)” extended operation.
+>[!warning] The Authorization Identity Control is allowed for use in conjunction with LDAP bind operations only and therefore cannot be used after the client has authenticated. To obtain the authorization identity at any time after the bind has completed, use the “[Who Am I](#who-am-i-extended-operation)” extended operation.
 
 In the following example, the authorization identity control is requested by sending --reportAuthzID in the request.
 
@@ -421,8 +413,7 @@ Figure 9: Attributes Handling Section
 
 Check the Hide Operational Attributes option on the Main Control Panel > Settings tab > Server Front End > Attributes Handling section if you do not want LDAP clients to have access to operational attributes (stored in a RadiantOne Universal Directory store) such as: createTimestamp, modifiersName, modifyTimestamp, creatorsName…etc. If you choose to hide operational attributes, LDAP clients must specifically request the operational attribute they want during the search request, otherwise it is not returned.
 
->[!note]
->Operational attributes are not hidden from the root user (e.g. cn=Directory Manager) or members of the cn=Directory Administrators group.
+>[!note] Operational attributes are not hidden from the root user (e.g. cn=Directory Manager) or members of the cn=Directory Administrators group.
 
 Uncheck the Hide Operational Attributes option if LDAP clients are allowed to view the attributes.
 
@@ -458,7 +449,6 @@ Harold Carter | hcarter@rli.com # harold@yahoo.com | HR Admin # HR # HR MGR
 RadiantOne can return the database record with multi-valued attributes for Mail and Title.
 
 Entry returned by RadiantOne with Multi-Valued Attributes Set:
-
 
 `cn=Harold Carter`
 <br> `mail = hcarter@rli.com`
@@ -658,14 +648,13 @@ The HTTP interface is enabled by default. These are the ports the RadiantOne ser
 
 If you would only like to support encrypted traffic over HTTPS, just set the standard HTTP port to a value of 0.
 
->[!warning]
->You can enable both secure and non-secure ports. This way, clients may choose to use either one.
+>[!warning] You can enable both secure and non-secure ports. This way, clients may choose to use either one.
 
 Restart the RadiantOne service if changes are made to these settings. If RadiantOne is deployed in a cluster, the service on all nodes must be restarted.
 
 #### DSML, SPML, SCIM, REST (ADAP), SAML
 
-SCIM settings are configured in the Server Front End -> SCIM section. 
+SCIM settings are configured in the Server Front End > SCIM section. 
 
 For details on configuring and accessing RadiantOne via DSML, SPML, SCIM, and REST, please see the RadiantOne Web Services API Guide. 
 
@@ -787,17 +776,17 @@ To configure a global join:
 8.	Specify the scope of search to perform to find the entries to join with. The drop-down options are base, one, 
 or sub.
 
-10.	Select the specific object class associated with the secondary entries you want to join with in the Object Class parameter from the drop-down list. For information on schema extension, please see [Extending RadiantOne LDAP Schema](07-directory-schema#extending-the-radiantone-ldap-schema).
+9.	Select the specific object class associated with the secondary entries you want to join with in the Object Class parameter from the drop-down list. For information on schema extension, please see [Extending RadiantOne LDAP Schema](07-directory-schema#extending-the-radiantone-ldap-schema).
 
-11.	Select the attribute from the secondary object that you want to base the join condition on from the Join Attribute drop-down menu. The value of this attribute should match the value of the primary source join attribute that you set in step above. The Join Condition parameter displays the attribute matching criteria for the join.
+10.	Select the attribute from the secondary object that you want to base the join condition on from the Join Attribute drop-down menu. The value of this attribute should match the value of the primary source join attribute that you set in step above. The Join Condition parameter displays the attribute matching criteria for the join.
 
-12.	Click **Next**.
+11.	Click **Next**.
 
-13.	Decide if you would like all the possible attributes returned from the secondary object or if you would like to list the attributes to return. If you choose to list the attributes, click Add and enter the name of the attribute (or select from the drop-down list). You also can provide a virtual/mapped name (this is optional and is the name of the attribute that appears in the virtual entry). Click **OK** and repeat this process for each attribute you would like returned from the secondary object. Click **Next**.
+1312.	Decide if you would like all the possible attributes returned from the secondary object or if you would like to list the attributes to return. If you choose to list the attributes, click Add and enter the name of the attribute (or select from the drop-down list). You also can provide a virtual/mapped name (this is optional and is the name of the attribute that appears in the virtual entry). Click **OK** and repeat this process for each attribute you would like returned from the secondary object. Click **Next**.
 
-14.	Enter a unique name for this join profile and click **Finish**.
+13.	Enter a unique name for this join profile and click **Finish**.
 
-15.	Click **Save**.
+14.	Click **Save**.
 
 ## User to DN Mapping
 
@@ -917,8 +906,7 @@ Incoming Filter: (.*)\(zipcode=(.+)\)(.*)
 
 Replacement: $1(l=`ldap://[vds]/o=companydirectory?ou?sub?(postalcode=$2)`)$3
 
->[!warning]
->In the replacement syntax, the LDAP URL is enclosed in backticks/grave accents (generally located below the tilde character on keyboards), not to be mistaken for single quotes.
+>[!warning] In the replacement syntax, the LDAP URL is enclosed in backticks/grave accents (generally located below the tilde character on keyboards), not to be mistaken for single quotes.
 
 ![Sample Search Filter Mapping with Lookup](Media/Image3.128.jpg)
  
@@ -1025,15 +1013,15 @@ C:\radiantone\vds\vds_server\custom>c:\radiantone\vds\ant\bin\ant.bat buildjars
 
 18.	The DN to ID property is used by RadiantOne to lookup the user’s local entry and retrieve the attribute to identify the user in the external authentication service. In the DN to ID property, enter the attribute name in the virtual entry that stores the value of the user that uniquely identifies them in the external authentication service. In the example below, rsaid is the value entered in the DN to ID property. This means that the value of the rsaid in the user’s virtual entry is used to delegate the credentials checking to the external authentication service. 
 
-![Example Custom Authentication Provider](Media/Image3.142.jpg)
+    ![Example Custom Authentication Provider](Media/Image3.142.jpg)
  
-Figure 23: Example Custom Authentication Provider
+    Figure 23: Example Custom Authentication Provider
 
-Continuing with this scenario, in the example shown below, the unique ID of johnny_appleseed is sent to the external authentication service when the user identified by a DN of uid=Aaron_Medler,ou=Accounting,o=companydirectory authenticates to RadiantOne.
+    Continuing with this scenario, in the example shown below, the unique ID of johnny_appleseed is sent to the external authentication service when the user identified by a DN of uid=Aaron_Medler,ou=Accounting,o=companydirectory authenticates to RadiantOne.
 
-![Example Describing the Usage of the DN to ID Property](Media/Image3.143.jpg)
+    ![Example Describing the Usage of the DN to ID Property](Media/Image3.143.jpg)
 
-Figure 24: Example Describing the Usage of the DN to ID Property
+    Figure 24: Example Describing the Usage of the DN to ID Property
 
 19.	In the Data Source Name property, enter the name of the custom data source you defined which contains the connection criteria for the custom authentication service. This was defined in steps 4-10 above.
 

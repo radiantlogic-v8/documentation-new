@@ -125,12 +125,11 @@ Configuration Steps for LDAP and DSML Backends
 
 5.	Select the attribute you want to base the join condition on from the Join Attribute drop-down menu.
 
-If you would like to create an attribute based on existing attributes of the primary object to base your join condition on, click ** Add Computed Attributes**. This allows you to build a new attribute based on the attributes available in the primary object. This new attribute can then be used to base your join condition on. This computed attribute name is prefixed with “vsysa” and is used only to condition the join. It is not returned as part of the virtual entry even if a client were to specifically request it.
+  If you would like to create an attribute based on existing attributes of the primary object to base your join condition on, click ** Add Computed Attributes**. This allows you to build a new attribute based on the attributes available in the primary object. This new attribute can then be used to base your join condition on. This computed attribute name is prefixed with “vsysa” and is used only to condition the join. It is not returned as part of the virtual entry even if a client were to specifically request it.
 
-For more information, please see [Computed Attributes](#computed-attributes).
+  For more information, please see [Computed Attributes](#computed-attributes).
 
->[!note]
->The Object Class is set for the class associated with the primary object and cannot be changed. Even if you have defined an object class mapping, you see the base object class, not the remapped one.
+  >[!note] The Object Class is set for the class associated with the primary object and cannot be changed. Even if you have defined an object class mapping, you see the base object class, not the remapped one.
 
 6.	Click **Next**.
 
@@ -176,8 +175,7 @@ For more information, please see [Computed Attributes](#computed-attributes).
 
 If you would like to create an attribute based on existing attributes of the primary object to base your join condition on, click the Add Computed Attributes option. This allows you to build a new attribute based on the attributes available in the primary object. This new attribute can then be used to base your join condition on. For more information, please see [Computed Attributes](#computed-attributes).
 
->[!note]
->The Object Class will be set to the class for the primary object. You cannot change the object mapping from here. For more information on changing the object class associated with the database object, please see the RadiantOne Namespace Configuration Guide.
+  >[!note] The Object Class will be set to the class for the primary object. You cannot change the object mapping from here. For more information on changing the object class associated with the database object, please see the RadiantOne Namespace Configuration Guide.
 
 5.	Click **Next**.
 
@@ -245,7 +243,7 @@ An extended join is defined by adding new attributes (meaning these attributes d
 
 The diagram below depicts an extended join. AuthzCode, lastLogon, and pwdreset are the application-specific extension attributes that are stored in a local RadiantOne Universal Directory store. RadiantOne manages the lifecycle (creation, modification, deletion) of the entries/attributes in the local store.
 
-![extended join example(Media/Image2.8.jpg)
+![extended join example](Media/Image2.8.jpg)
 
 Figure 8: Extended Join Example
 
@@ -253,8 +251,7 @@ Figure 8: Extended Join Example
 
 The primary source is a virtual view of either an LDAP Backend, Database Backend (a specific object in the database), or a web service backend.
 
->[!warning]
->Deleting an extended join does not remove the entries in the extension storage. If you want the extension entries removed, you must do it manually.
+>[!warning] Deleting an extended join does not remove the entries in the extension storage. If you want the extension entries removed, you must do it manually.
 
 #### Configuration Steps for LDAP Backends
 
@@ -272,12 +269,11 @@ The primary source is a virtual view of either an LDAP Backend, Database Backend
 7.	Choose whether you want the default data store or custom settings.
 <br> **Default** – if this is chosen, RadiantOne stores the extension attributes below the cn=extendedxjoin naming context. This is a hidden naming context and is not seen from the LDAP clients. Hidden naming contexts are prefixed with the keyword hiddenContexts in the rootdse.ldif file. 
 
-The entries are created automatically and the extension attributes are added, update and deleted based on client requests. The only parameters to configure when using the default settings are the object class you want associated with the extension attributes, and the attribute names.
+  The entries are created automatically and the extension attributes are added, update and deleted based on client requests. The only parameters to configure when using the default settings are the object class you want associated with the extension attributes, and the attribute names.
 
   **Custom** – if this is chosen, RadiantOne stores the extension attributes in the location of your choice. The location must first exist (create it if you haven’t already) in the virtual namespace. RadiantOne manages the creation of the entries and attributes as well as all modifications to these entries. The parameters you must configure are; the base DN (the location in the virtual namespace where you want to store the extension attributes), the object class to associate the extension attributes with, and how to comprise the RDN attribute (name and attribute from the primary object to populate the target RDN with).
 
->[!warning]
->If your chosen location in the virtual namespace is configured as something other than a RadiantOne Universal Directory store, then the underlying backend must be capable of storing the extension attributes. For example, if the backend is a database table, then columns representing the extension attributes must exist. If the backend is an LDAP directory, the extension attributes should be defined in the schema (if schema checking is enforced) and the object class that is associated with the extension attributes should be set during the configuration steps described below.
+  >[!warning] If your chosen location in the virtual namespace is configured as something other than a RadiantOne Universal Directory store, then the underlying backend must be capable of storing the extension attributes. For example, if the backend is a database table, then columns representing the extension attributes must exist. If the backend is an LDAP directory, the extension attributes should be defined in the schema (if schema checking is enforced) and the object class that is associated with the extension attributes should be set during the configuration steps described below.
 
 8.	The Base DN parameter is relevant only when Custom data store settings has been selected in step 4. The Base DN is the location in the virtual namespace where you want the extension entries/attributes stored.
 
@@ -312,8 +308,7 @@ The entries are created automatically and the extension attributes are added, up
 
   **Custom** – if this is chosen, RadiantOne stores the extension attributes in the location of your choice. The location must first exist (create it if you haven’t already) in the RadiantOne namespace. RadiantOne manages the creation of the entries and attributes as well as all modifications to these entries. The parameters you must configure are; the base DN (the location in the virtual namespace where you want to store the extension attributes), the object class to associate the extension attributes with, and how to comprise the RDN attribute (name and attribute from the primary object to populate the target RDN with).
 
->[!warning]
->If your chosen location in the RadiantOne namespace is configured as something other than a local RadiantOne Universal Directory store, then the underlying backend must be capable of storing the extension attributes. For example, if the backend is a database table, then columns representing the extension attributes must exist. If the backend is an LDAP directory, the extension attributes should be defined in the schema (if schema checking is enforced) and the object class that is associated with the extension attributes should be set during the configuration steps described below.
+>[!warning] If your chosen location in the RadiantOne namespace is configured as something other than a local RadiantOne Universal Directory store, then the underlying backend must be capable of storing the extension attributes. For example, if the backend is a database table, then columns representing the extension attributes must exist. If the backend is an LDAP directory, the extension attributes should be defined in the schema (if schema checking is enforced) and the object class that is associated with the extension attributes should be set during the configuration steps described below.
 
 6.	The Base DN parameter is only relevant when Custom data store settings have been selected in step 6. The Base DN is the location in the RadiantOne namespace where you want the extension entries/attributes stored. 
 
@@ -375,8 +370,7 @@ Examples of the join syntax are shown below. If you need to edit the join condit
 
 -	##SIZELIMIT=1 is set to specify only one entry should be returned from the secondary object (for each entry in the primary source). In this case, it is assumed that only one entry should be returned from the ou=people,o=myviews branch (for each entry in the primary source).
 
->[!note]
->If no sizelimit is specified, the default used is 1000.
+>[!note] If no sizelimit is specified, the default used is 1000.
 
 -	##ALLOW_PARTIAL_ENTRY=yes. This is to specify the behavior of RadiantOne if this secondary source is unavailable and it is not able to join. If this is present in the join condition, RadiantOne returns a partial entry to the client. For more details, see [Behavior if a Secondary Source is Unavailable](#behavior-if-a-secondary-source-is-unavailable).
 
@@ -755,29 +749,29 @@ You can use our own Java IDE to customize scripts instead of using the Main Cont
 
 2.	Launch Eclipse and choose File > Import.
 
-![Option to Import Projects into Eclipse IDE](Media/Image2.17.jpg)
+  ![Option to Import Projects into Eclipse IDE](Media/Image2.17.jpg)
 
-Figure 17: Option to Import Projects into Eclipse IDE
+  Figure 17: Option to Import Projects into Eclipse IDE
 
 3.	Expand the General folder, select Existing Projects into Workspace and click **Next**.
 
-![Option to Import Existing Projects into Workspace](Media/Image2.18.jpg)
+  ![Option to Import Existing Projects into Workspace](Media/Image2.18.jpg)
 
-Figure 18: Option to Import Existing Projects into Workspace
+  Figure 18: Option to Import Existing Projects into Workspace
 
 4.	Click **Browse** next to Select Root Directory and navigate to <RLI_HOME>/vds_server/custom.
 
-![Importing RadiantOne Custom Project](Media/Image2.19.jpg)
+  ![Importing RadiantOne Custom Project](Media/Image2.19.jpg)
 
-Figure 19: Importing RadiantOne Custom Project
+  Figure 19: Importing RadiantOne Custom Project
 
 5.	Click **Finish**.
 
 6.	Navigate below the Custom folder to src.com.rli.scripts.intercept. The scripts associated with the interceptions appears below. Double-click on the script to open it in the Eclipse IDE editor.
 
-![Example Global Intercept Script](Media/Image2.20.jpg)
+  ![Example Global Intercept Script](Media/Image2.20.jpg)
 
-Figure 20: Example Global Intercept Script
+  Figure 20: Example Global Intercept Script
 
 7.	Edit the script.
 

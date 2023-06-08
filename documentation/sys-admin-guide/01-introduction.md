@@ -50,7 +50,7 @@ The Control Panels utilize a web server that is installed with RadiantOne. The d
 
 ## Accessing the Main Control Panel
 
-If the Web Server is already started, you can also access the control panel by opening a web browser and use the following URL: <RadiantOne server machine>:<control panel port set during RadiantOne install>/main/login. You would also use this method for accessing the control panel from a remote machine.
+If the Web Server is already started, you can also access the control panel by opening a web browser and use the following URL: `<RadiantOne server machine>:<control panel port set during RadiantOne install>/main/login`. You would also use this method for accessing the control panel from a remote machine.
 
 The Main Control Panel displays the name of the RadiantOne cluster. 
 
@@ -108,14 +108,14 @@ registeredID | [8]
 >[!note]
 >If the certificate subject/SAN fails to match a Client Certificate DN Mapping rule, the login to the Control Panel fails.
 
-8.	Set the mapped DN to any [delegated admin user](n#delegated-administration-roles) configured in RadiantOne. An example is shown below where the certificate subject is mapped to cn=directory manager.
+8.	Set the mapped DN to any [delegated admin user](#delegated-administration-roles) configured in RadiantOne. An example is shown below where the certificate subject is mapped to cn=directory manager.
 
->[!note]
->If the RadiantOne service is not running, you are only able to log into the Main Control Panel with the directory super user account (e.g. cn=directory manager). If your Client Certificate DN mapping results in a user that is not the directory super user, and the RadiantOne service is not running, you will not be able to log into the Main Control Panel.
+    >[!note]
+    >If the RadiantOne service is not running, you are only able to log into the Main Control Panel with the directory super user account (e.g. cn=directory manager). If your Client Certificate DN mapping results in a user that is not the directory super user, and the RadiantOne service is not running, you will not be able to log into the Main Control Panel.
 
-![Client Certificate DN Mapping](Media/Image3.11.jpg)
+    ![Client Certificate DN Mapping](Media/Image3.11.jpg)
  
-Figure 2: Client Certificate DN Mapping
+    Figure 2: Client Certificate DN Mapping
 
 9.	Click **OK** to exit the Client Principal Mapping window.
 
@@ -126,15 +126,15 @@ Figure 2: Client Certificate DN Mapping
 12.	Access the Control Panel on the HTTPS port. E.g. https://w-rli10-lisapc:7171/main/login
 <br>By default, the Control Panel leverages the same SSL server certificate as the RadiantOne service. Make sure this certificate is trusted by your computer/browser, otherwise the browser displays security warnings when you access the Control Panel over HTTPS. An example is shown below.
 
-![Security Message in Browser Due to Untrusted Certificate of the Control Panel](Media/Image3.12.jpg)
+    ![Security Message in Browser Due to Untrusted Certificate of the Control Panel](Media/Image3.12.jpg)
 
-Figure 3: Security Message in Browser Due to Untrusted Certificate of the Control Panel
+    Figure 3: Security Message in Browser Due to Untrusted Certificate of the Control Panel
 
 13.	The Control Panel will request a certificate from the browser, so the browser will prompt the user with a list of loaded/trusted certificates. The user selects/confirms their certificate. An example is shown below.
 
-![An image showing ](Media/Image3.13.jpg)
+    ![An image showing ](Media/Image3.13.jpg)
 
-Figure 4: User Selects Certificate Associated with PIV Card
+    Figure 4: User Selects Certificate Associated with PIV Card
 
 14.	[CRL checking](06-security#certificate-revocation-list) (if enabled) is applied and if the certificate is valid and trusted, the user is logged into the Control Panel and has the permissions associated with the user defined in the Client Certificate DN Mapping configured in steps 7&8 above.
 
@@ -154,15 +154,15 @@ The Control Panel, as a client to the RadiantOne service, supports two-factor au
 
 2.	Configure a Custom Authentication Provider (Settings > Interception > Custom Authentication Provider) that indicates the base DN where administrator accounts are located (e.g. cn=config), reference to the custom data source created in step 1, and other necessary parsing criteria of the password.
 
-![Custom Authentication Provider Example](Media/Image3.14.jpg)
+    ![Custom Authentication Provider Example](Media/Image3.14.jpg)
  
-Figure 5: Custom Authentication Provider Example
+    Figure 5: Custom Authentication Provider Example
 
 3.	Ensure the delegated administrator accounts have an attribute that contains their unique ID in the custom authentication service. In the example shown above, the token ID is set in the carLicense attribute.
 
-![Token ID Defined for an Administrator Example](Media/Image3.15.jpg)
+    ![Token ID Defined for an Administrator Example](Media/Image3.15.jpg)
 
-Figure 6: Token ID Defined for an Administrator Example
+    Figure 6: Token ID Defined for an Administrator Example
 
 4.	Restart the RadiantOne service and Jetty (hosting the control panel). If a cluster is deployed, restart them on all nodes.
 
@@ -182,15 +182,15 @@ If you are using a self-signed server certificate (or any certificate not signed
 
 3.	Click on the "Certificate Error" red area in the address bar, to show information about the certificate.
 
-![Certificate Information](Media/Image3.17.jpg)
+    ![Certificate Information](Media/Image3.17.jpg)
 
-Figure 8: Certificate Information
+    Figure 8: Certificate Information
 
 4.	Select the option to install the certificate, in Trusted Root Certificates.
 
-![Installing the Certificate](Media/Image3.18.jpg)
+    ![Installing the Certificate](Media/Image3.18.jpg)
 
-Figure 9: Installing the Certificate
+    Figure 9: Installing the Certificate
 
 5.	Restart your browser after installing the certificate.
 
@@ -198,9 +198,9 @@ Figure 9: Installing the Certificate
 
 7.	Click the Certificate Information link.
 
-![Importing the Certificate](Media/Image3.19.jpg)
+    ![Importing the Certificate](Media/Image3.19.jpg)
 
-Figure 10: Importing the Certificate
+    Figure 10: Importing the Certificate
 
 8.	On the Details tab, click **Copy to File**. 
 
@@ -212,17 +212,17 @@ Figure 10: Importing the Certificate
 
 12.	Go to your Internet browser settings. The example below shows the Google Chrome browser settings.
 
-![Browser Settings in Google Chrome](Media/Image3.20.jpg)
+    ![Browser Settings in Google Chrome](Media/Image3.20.jpg)
 
-Figure 11: Browser Settings in Google Chrome
+    Figure 11: Browser Settings in Google Chrome
 
 13.	Under settings, click **Show Advanced Settings**.
 
 14.	Click **Manage Certificates** in the HTTPS/SSL section. 
 
-![“Manage certificates” option in Google Chrome](Media/Image3.21.jpg)
+    ![“Manage certificates” option in Google Chrome](Media/Image3.21.jpg)
 
-Figure 11: “Manage certificates” option in Google Chrome
+    Figure 11: “Manage certificates” option in Google Chrome
 
 15.	On the Trusted Root Certification Authorities tab, click Import. 
 
@@ -280,7 +280,8 @@ To enable support for OIDC authentication:
 
 1.	Have your client ID and secret associated with the Control Panel application configured in your OIDC server ready. The Redirect URLs configured for the web application should point to the URLs associated with the Main Control Panel (one for the HTTP port and one for HTTPS:
 
-`http://hostname:7070/main/j_spring_openid_security_check <br> https://hostname:7171/main/j_spring_openid_security_check`
+    `http://hostname:7070/main/j_spring_openid_security_check` 
+    <br> `https://hostname:7171/main/j_spring_openid_security_check`
 
 2.	Log into the Main Control Panel.
 
@@ -342,9 +343,9 @@ The Main Control Panel login page contains a basic username and password text bo
 
 1. Make a backup of your Zookeeper configuration by clicking Export.
 
-![Making a backup of your Zookeeper configuration](Media/zookeeper-export.jpg)
+    ![Making a backup of your Zookeeper configuration](Media/zookeeper-export.jpg)
 
-Figure 16: Making a backup of your Zookeeper configuration
+    Figure 16: Making a backup of your Zookeeper configuration
 
 1. Leave the default export settings and click OK.
 
@@ -354,12 +355,12 @@ Figure 16: Making a backup of your Zookeeper configuration
 
 1.	On the right, click **Edit Mode**.
 
->[!warning]
->Each property (corresponding to a line) must end in a comma (,) except for the last property in the configuration.
+    >[!warning]
+    >Each property (corresponding to a line) must end in a comma (,) except for the last property in the configuration.
 
 1. Add (or edit) the motdHtml tag containing the message to display on the login page.
 
-`"motdHtml": "This is my custom message. Please login with your RadiantOne Administrator account.",`
+    `"motdHtml": "This is my custom message. Please login with your RadiantOne Administrator account.",`
 
 1. Add (or edit) the motdTitle tag containing the title for the message to display on the login page. Ensure your configuration line ends with a comma.
 
@@ -434,8 +435,7 @@ You can also export the ZooKeeper configuration (to make backup copies) by click
 
 ![Exporting ZooKeeper Configuration](Media/Image3.162.jpg)
  
-Figure 2: Exporting ZooKeeper Configuration
-
+Figure 22: Exporting ZooKeeper Configuration
 
 ## Dashboard Tab
 
@@ -447,7 +447,7 @@ The Dashboard Settings options (![An image showing ](Media/gear-icon.jpg)) locat
 
 ![Dashboard Settings](Media/Image3.30.jpg)
  
-Figure 22: Dashboard Settings
+Figure 23: Dashboard Settings
 
 ### Color Theme
 
@@ -497,7 +497,7 @@ You can start, stop and restart the RadiantOne service here by selecting an opti
 
 ![Message When Control Panel Associated with a Node is Not Running](Media/Image3.31.jpg)
  
-Figure 23: Message When Control Panel Associated with a Node is Not Running
+Figure 24: Message When Control Panel Associated with a Node is Not Running
 
 For each node, the Overview section displays the status of:
 
@@ -521,7 +521,7 @@ For each node, the Overview section displays the status of:
 
 ![Overview Section of the Main Dashboard Tab](Media/Image3.32.jpg)
 
-Figure 24: Overview Section of the Main Dashboard Tab – Example of Cluster Containing 2 FID Nodes
+Figure 25: Overview Section of the Main Dashboard Tab – Example of Cluster Containing 2 FID Nodes
 
 A green dot next to the line item indicates the service/port is running. 
 
@@ -539,7 +539,7 @@ The Server Events log aggregates major events on server nodes such as startup in
 
 ![Accessing the Server Event Log](Media/Image3.33.jpg)
 
-Figure 25: Accessing the Server Event Log from the Main Control Panel’s Dashboard Tab
+Figure 26: Accessing the Server Event Log from the Main Control Panel’s Dashboard Tab
 
 Click the status information to view the end of the Events Log. To view the entire log, open the log file directly from a text viewer like Notepad++. This log is located at <RLI_HOME>\<instance_name>\logs\vds_events.log. 
 
@@ -549,7 +549,7 @@ The Active Alerts section displays alert information about memory, connections, 
 
 ![AThe Active Alerts Section](Media/Image3.34.jpg)
  
-Figure 26: The Active Alerts Section on the Main Dashboard Tab
+Figure 27: The Active Alerts Section on the Main Dashboard Tab
 
 For more information on configuring standard and custom alerts, refer to the RadiantOne Monitoring and Reporting Guide.
 
@@ -559,13 +559,13 @@ The Internode Health section displays a topology of all nodes in the cluster and
 
 ![Internode Health Diagram](Media/Image3.35.jpg)
  
-Figure 27: Internode Health Diagram
+Figure 28: Internode Health Diagram
 
 If you hover the mouse pointer over a node, more details are shown. By default, this includes the availability of the LDAP and LDAPS ports for the RadiantOne service, and the ability to read and write to ZooKeeper on the target node. To toggle information about ZooKeeper or LDAP connectivity, check/uncheck the corresponding box in the upper-left corner of the Internode Health section.
 
 ![Health Details](Media/Image3.36.jpg)
  
-Figure 28: Health Details
+Figure 29: Health Details
 
 A green checkmark means connectivity on the RadiantOne LDAP and/or LDAPS ports is fine and ZooKeeper can be read from and written to.
 
@@ -596,13 +596,13 @@ A series of graphs are displayed on the Dashboard tab and allow for monitoring a
 
 ![Graphs Related to a Specific RadiantOne Node](Media/Image3.167.jpg)
 
-Figure 29: Graphs Related to a Specific RadiantOne Node
+Figure 30: Graphs Related to a Specific RadiantOne Node
 
 In the upper right, you can indicate the time range the graphs should display. To indicate a time period of longer than 12 hours, choose the Custom option.
 
 ![Graph Range](Media/Image3.168.jpg)
  
-Figure 30: Graph Range
+Figure 31: Graph Range
 
 >[!warning]
 >It is generally not recommended to expand the graph range beyond a 12-hour period since it causes a large amount of HTTP and LDAP requests to RadiantOne that is proportional in quantity to the length of the time period requested. For example, a 12-hour period generates ~100 requests.
@@ -617,7 +617,7 @@ Specific product details associated with the node are shown in the Server Inform
 
 ![Server Information](Media/Image3.169.jpg)
  
-Figure 30: Server Information
+Figure 32: Server Information
 
 **Server Name** – Indicates the machine name where RadiantOne is installed.
 
@@ -659,7 +659,7 @@ From the Connections & Ops section you can view the current usage summary in ter
 
 ![Server Connections and Operations](Media/Image3.170.jpg)
  
-Figure 31: Server Connections and Operations
+Figure 33: Server Connections and Operations
 
 In the Usage Summary section, you see connection usage since startup and average per minute. You all see operations since startup and average per minute.
 
@@ -675,13 +675,13 @@ Statistics for the stores can be viewed from the Universal Directory Status sect
 
 ![Tables to Display](Media/Image3.171.jpg)
  
-Figure 32: Tables to Display
+Figure 34: Tables to Display
 
 For each store, you see total number of entries, index size, search operations per second and write operations per second.
 
 ![RadiantOne Universal Directory Stores](Media/Image3.172.jpg)
  
-Figure 33: RadiantOne Universal Directory Stores
+Figure 35: RadiantOne Universal Directory Stores
 
 ### Data Source Status
 
@@ -689,7 +689,7 @@ In the Data Source Status you can see the status of all data sources defined in 
 
 ![Data Source Status](Media/Image3.173.jpg)
 
-Figure 34: Data Source Status
+Figure 36: Data Source Status
 
 The status values are on, off, offline, and unavailable. The following table describes each status. 
 
@@ -709,7 +709,7 @@ The graphs in the Network Latency section display the network latency between no
 
 ![Network Latency Graphs](Media/Image3.174.jpg)
  
-Figure 35: Network Latency Graphs
+Figure 37: Network Latency Graphs
 
 ## Settings Tab
 
@@ -775,44 +775,43 @@ To replace the default installed self-signed certificate with a new JKS certific
 
 4.	Request a certificate from a certificate authority. The example below uses a Microsoft Certificate Authority. The following command generates the virtual directory server’s private key. In this scenario, this command creates the rli.keystore file.
 
-`C:\radiantone\vds\jdk\jre\bin>keytool -genkey -alias rli -keyalg RSA -keystore` `C:\radiantone\vds\vds_server\conf\rli.keystore -dname “cn=machine1,dc=novato,dc=radiantlogic,dc=com"`
-<br> `Enter keystore password: radiantlogic`
-<br> `Enter key password for <rli>`
-<br> `(RETURN if same as keystore password):`
+    `C:\radiantone\vds\jdk\jre\bin>keytool -genkey -alias rli -keyalg RSA -keystore` `C:\radiantone\vds\vds_server\conf\rli.keystore -dname “cn=machine1,dc=novato,dc=radiantlogic,dc=com"`
+    <br> `Enter keystore password: radiantlogic`
+    <br> `Enter key password for <rli>`
+    <br> `(RETURN if same as keystore password):`
 
--	The rli.keystore must be located in `<RLI_HOME>/<instance_name>/conf`. The default keystore password is radiantlogic. The key password can be whatever you want. You must set this same password for the Server Certificate Password parameter on the Server Control Panel > Settings Tab. After setting the password here, remember to click **Save** and restart the RadiantOne service.
+    -	The rli.keystore must be located in `<RLI_HOME>/<instance_name>/conf`. The default keystore password is radiantlogic. The key password can be whatever you want. You must set this same password for the Server Certificate Password parameter on the Server Control Panel > Settings Tab. After setting the password here, remember to click **Save** and restart the RadiantOne service.
 
--	The -dname value is the name of the machine RadiantOne is running on.
--	The -alias value must be rli
+    -	The -dname value is the name of the machine RadiantOne is running on.
+    -	The -alias value must be rli
 
->[!warning]
->This stores a new certificate in the rli.keystore as alias rli, and with common name:machine1.novato.radiantlogic.com. Machine1 in this case is the name to reference RadiantOne through TCP/IP, so make sure to enter a valid dname parameter matching the hostname of the machine where RadiantOne is running. At this point the certificate will be “self-signed”. Later, the certificate will be modified and signed by the CA.
+    >[!warning] This stores a new certificate in the rli.keystore as alias rli, and with common name:machine1.novato.radiantlogic.com. Machine1 in this case is the name to reference RadiantOne through TCP/IP, so make sure to enter a valid dname parameter matching the hostname of the machine where RadiantOne is running. At this point the certificate will be “self-signed”. Later, the certificate will be modified and signed by the CA.
 
 5.	From the Server Control Panel > Settings tab, click **View** next to View Server Certificate. The initial key has been generated. 
 
->[!note]
->The View button is enabled for JKS certificate types only. It is not applicable for another other certificate types.
+    >[!note] The View button is enabled for JKS certificate types only. It is not applicable for another other certificate types.
 
-![SSL Server Certificate for RadiantOne](Media/Image3.175.jpg)
+    ![SSL Server Certificate for RadiantOne](Media/Image3.175.jpg)
 
-Figure 36: SSL Server Certificate for RadiantOne
+    Figure 38: SSL Server Certificate for RadiantOne
 
 6.	Next, you can download the Root Certificate from the Microsoft CA. From a web browser, access the certificate server.
-http://< IP address>/certsrv
+
+    `http://<IP address>/certsrv`
 
 7.	Select Download a CA Certificate, Certificate Chain, or CRL.
 
-![Certificates Services Console](Media/Image3.176.jpg)
+    ![Certificates Services Console](Media/Image3.176.jpg)
  
-Figure 37: Certificates Services Console
+    Figure 39: Certificates Services Console
 
 8.	Select the certificate from the list and choose the encoding method DER.
 
 9.	Click **Download CA certificate**.
 
-![Downloading a Root CA Certificate](Media/Image3.177.jpg)
+    ![Downloading a Root CA Certificate](Media/Image3.177.jpg)
  
-Figure 38: Downloading a Root CA Certificate
+    Figure 40: Downloading a Root CA Certificate
 
 10.	Click **Save** to save the certificate file.
 
@@ -822,18 +821,15 @@ The file can be saved in any location. The location mentioned above is a suggest
 
 12.	Import the certca.cert into rli.keystore with the following command:
 
-`
-C:\radiantone\vds\jdk\jre\bin>keytool -import -file <br> c:\radiantone\vds\vds_server\conf\certca.cer -keystore <br> c:\radiantone\vds\vds_server\conf\rli.keystore -alias rootca <br> Enter keystore password: radiantlogic
-`
+    `C:\radiantone\vds\jdk\jre\bin>keytool -import -file` 
+    <br> `c:\radiantone\vds\vds_server\conf\certca.cer -keystore` 
+    <br> `c:\radiantone\vds\vds_server\conf\rli.keystore -alias rootca <br> Enter keystore password: radiantlogic`
 
->[!warning]
->The Root CA certificate and any intermediary signing certificates must be imported into rli.keystore.
+    >[!warning] The Root CA certificate and any intermediary signing certificates must be imported into rli.keystore.
 
 13.	Next, you can generate a certificate signing request. The next few steps describe how to generate a request file that will be sent to the Microsoft CA so it can sign the private key that was generated in step 3 above.
 
-`
-C:\radiantone\vds\jdk\jre\bin>keytool -certreq -alias rli -keystore <br> C:\radiantone\vds\vds_server\conf\rli.keystore -file <br> C:\radiantone\vds\vds_server\conf\vdsserver.csr <br> Enter keystore password: radiantlogic
-`
+`C:\radiantone\vds\jdk\jre\bin>keytool -certreq -alias rli -keystore <br> C:\radiantone\vds\vds_server\conf\rli.keystore -file <br> C:\radiantone\vds\vds_server\conf\vdsserver.csr <br> Enter keystore password: radiantlogic`
 
 14.	Navigate to <RLI_HOME>\<instance_name>\conf and open the file vdsserver.csr and you will find the certificate request (see sample below):
 
@@ -848,15 +844,15 @@ http://<IP address>/certsrv
 
 17.	Select Advanced Certificate Request.
 
-![An image showing ](Media/Image3.178.jpg)
+    ![An image showing ](Media/Image3.178.jpg)
 
-Figure 39: Requesting a Certificate
+    Figure 41: Requesting a Certificate
 
 18.	Choose Submit a certificate request by using a base-64-encoded CMC or PKCS #10 file, or submit a renewal request by using a base-64-encoded PKCS #7 file.
 
-![Advanced Certificate Request](Media/Image3.179.jpg)
+    ![Advanced Certificate Request](Media/Image3.179.jpg)
  
-Figure 40: Advanced Certificate Request
+    Figure 42: Advanced Certificate Request
 
 19.	Paste the entire contents from the certificate request file that was generated previously.
 
@@ -864,17 +860,17 @@ Figure 40: Advanced Certificate Request
 
 21.	Click **Submit**.
 
-![Submitting the Certificate Request](Media/Image3.180.jpg)
- 
-Figure 41: Submitting the Certificate Request
+    ![Submitting the Certificate Request](Media/Image3.180.jpg)
+
+    Figure 43: Submitting the Certificate Request
 
 22.	Choose the DER encoded option.
 
 23.	Click **Download Certificate**.
 
- ![Downloading the Certificate](Media/Image3.181.jpg)
+    ![Downloading the Certificate](Media/Image3.181.jpg)
  
-Figure 42: Downloading the Certificate
+    Figure 44: Downloading the Certificate
 
 24.	Click **Save**.
 
@@ -882,18 +878,16 @@ Figure 42: Downloading the Certificate
 
 26.	Finally, you can import the signed server certificate into the RadiantOne keystore using the following command:
 
-`C:\radiantone\vds\jdk\jre\bin>keytool -import -file c:\radiantone\vds\vds_server\conf\vds.cer -keystore c:\radiantone\vds\vds_server\conf\rli.keystore -v -alias rli`
-<br> `Enter keystore password: radiantlogic`
-<br> `Certificate reply was installed in keystore`
-<br> `[Saving c:\radiantone\vds\vds_server\conf\rli.keystore]`
+    `C:\radiantone\vds\jdk\jre\bin>keytool -import -file c:\radiantone\vds\vds_server\conf\vds.cer -keystore c:\radiantone\vds\vds_server\conf\rli.keystore -v -alias rli`
+    <br> `Enter keystore password: radiantlogic`
+    <br> `Certificate reply was installed in keystore`
+    <br> `[Saving c:\radiantone\vds\vds_server\conf\rli.keystore]`
 
->[!warning]
->This updates the server certificate that was created in Step 3. It will now be signed by the CA (and not self-signed anymore).
+    >[!warning] This updates the server certificate that was created in Step 3. It will now be signed by the CA (and not self-signed anymore).
 
 27.	Import the CA Root Certificate (e.g. certca.cer) into the RadiantOne client truststore from the Main Control Panel > Settings Tab > Security section > Client Certificate Truststore. On the right side, click IMPORT.
 
->[!warning]
->Any client that needs to connect to the RadiantOne service via LDAPS or HTTPS (for the web service interface) must import this CA Root Certificate into their trust store (unless they already trust the CA who signed it).
+    >[!warning] Any client that needs to connect to the RadiantOne service via LDAPS or HTTPS (for the web service interface) must import this CA Root Certificate into their trust store (unless they already trust the CA who signed it).
 
 28.	Enter an alias to uniquely identify the certificate in the truststore. Then, depending on the location of the certificate, choose to import the file from the server or the local box from where you are accessing the Control Panel from. After browsing to the certificate, click Open and then OK to exit the Import window.
 
@@ -938,8 +932,7 @@ For PKCS12 types of certificates (.pfx or .p12), make sure the certificate is cr
 
 10.	Click **OK** to save the changes.
 
->[!warning]
->Any client that needs to connect to the RadiantOne service via LDAPS or HTTPS (for the web service interface) must import this public key certificate into their trust store (unless they already trust the CA who signed it).
+    >[!warning] Any client that needs to connect to the RadiantOne service via LDAPS or HTTPS (for the web service interface) must import this public key certificate into their trust store (unless they already trust the CA who signed it).
 
 11.	Save the changes.
 
@@ -961,19 +954,17 @@ The Cryptographic Token Interface Standard, PKCS#11, is produced by RSA Security
 
     A file named “/home/vdsuser/vds-fips/nss_fips.cfg” is created with the following contents:
 
-    name = nss-fips
-    nssLibraryDirectory = /usr/lib64
-    nssSecmodDirectory = /home/vdsuser/vds-fips/nssdb
-    nssModule = fips
+    `name = nss-fips`
+    <br> `nssLibraryDirectory = /usr/lib64`
+    <br> `nssSecmodDirectory = /home/vdsuser/vds-fips/nssdb`
+    <br> `nssModule = fips`
 
-    >[!note]
-    >“/usr/lib64” is the folder under which the NSS libraries reside and “/home/vdsuser/vds-fips/nssdb” is the NSS database.
+    >[!note] “/usr/lib64” is the folder under which the NSS libraries reside and “/home/vdsuser/vds-fips/nssdb” is the NSS database.
 
 2.	Edit the java.security configuration file located at <RLI_HOME>\jdk\jre\lib\security and add the following line (10 is the next sequential number available in this example):
 security.provider.10=sun.security.pkcs11.SunPKCS11 /home/vdsuser/vds-fips/nss_fips.cfg
 
-    >[!note]
-    >The new line adds the PKCS11 provider with the appropriate configuration file configured in the step above.
+    >[!note] The new line adds the PKCS11 provider with the appropriate configuration file configured in the step above.
 
 3.	Open the Server Control Panel > Settings Tab.
 
@@ -987,28 +978,25 @@ security.provider.10=sun.security.pkcs11.SunPKCS11 /home/vdsuser/vds-fips/nss_fi
 
 8.	Now, the public key associated with the new server certificate must be added to the RadiantOne client truststore. The following command uses certutil to export the public key and store it in a file named cacert.cer.
 
-`# certutil -L -d /home/vdsuser/vds-fips/nssdb/ -n "vds" -r > /home/vdsuser/vds-fips/cacert.cer`
+    `# certutil -L -d /home/vdsuser/vds-fips/nssdb/ -n "vds" -r > /home/vdsuser/vds-fips/cacert.cer`
 
 9.	Go to the Main Control Panel > Settings tab. Go to Security > Client Certificate Truststore. On the right, click **Import**.
 
 10.	Enter an alias to uniquely identify the public key certificate in the truststore. Then, depending on the location of the certificate, choose to import the file from the server or the local box from where you are accessing the Control Panel from. After browsing to the certificate, click **Open** and then **OK** to exit the Import window.
 
->[!warning]
->Any client that needs to connect to the RadiantOne service via LDAPS or HTTPS (for the web service interface) must import this public key certificate into their trust store (unless they already trust the CA who signed it).
+    >[!warning] Any client that needs to connect to the RadiantOne service via LDAPS or HTTPS (for the web service interface) must import this public key certificate into their trust store (unless they already trust the CA who signed it).
 
 11.	Save the changes.
 
 12.	Restart the RadiantOne service. If RadiantOne is deployed in a cluster, each node has its own server certificate and must be updated independently.
 
->[!warning]
->If Jetty is configured to use the same SSL certificate as RadiantOne (jetty.ssl.useVDSSSLConfig=true in <RLI_HOME>/vds_server/conf/jetty/config.properties), and you modify the RadiantOne server certificate outside of the RadiantOne Main Control Panel (e.g. using command line utilities like keytool), you must [manually update the Jetty settings](#updating-certificate-settings-for-jetty-https-access-to-the-main-control-panel). <br> If you use the RadiantOne SAML Attribute service, manually update the certificate keystore path in <RLI_HOME>/vds_server/conf/saml/server/AttributeService.properties.
+    >[!warning] If Jetty is configured to use the same SSL certificate as RadiantOne (jetty.ssl.useVDSSSLConfig=true in <RLI_HOME>/vds_server/conf/jetty/config.properties), and you modify the RadiantOne server certificate outside of the RadiantOne Main Control Panel (e.g. using command line utilities like keytool), you must [manually update the Jetty settings](#updating-certificate-settings-for-jetty-https-access-to-the-main-control-panel). <br> If you use the RadiantOne SAML Attribute service, manually update the certificate keystore path in <RLI_HOME>/vds_server/conf/saml/server/AttributeService.properties.
 
 ## Updating Certificate Settings for Jetty (HTTPS Access to the Main Control Panel) 
 
 For HTTPS access to the Main Control Panel, the Jetty web server uses the RadiantOne SSL server certificate by default, but could be updated to use a different store/certificate. To modify the default behavior and configure a separate server certificate for Jetty, modify the <RLI_HOME>/vds_server/conf/jetty/config.properties file and set jetty.ssl.useVDSSSLConfig=false. Then, you can use the <RLI_HOME>/bin/advanced/updateControlPanelSSLConfig command line utility to configure the Jetty certificate properties. Below is an example of the command properties.
 
->[!warning]
->If Jetty is configured to use the same SSL certificate as RadiantOne (jetty.ssl.useVDSSSLConfig=true), and you modify the RadiantOne server certificate outside of the RadiantOne Main Control Panel (e.g. using command line utilities like keytool), you must use the tool mentioned below to manually update the Jetty settings.
+>[!warning] If Jetty is configured to use the same SSL certificate as RadiantOne (jetty.ssl.useVDSSSLConfig=true), and you modify the RadiantOne server certificate outside of the RadiantOne Main Control Panel (e.g. using command line utilities like keytool), you must use the tool mentioned below to manually update the Jetty settings.
 
 `C:\radiantone\vds\bin\advanced>updateControlPanelSSLConfig`
 
@@ -1030,7 +1018,7 @@ From the Server Control Panel > Tasks tab, you can start and stop the scheduler 
 
 ![Tasks Tab](Media/Image3.182.jpg)
  
-Figure 43: Tasks Tab
+Figure 45: Tasks Tab
 
 The following operations are considered tasks and generate an event in the Task Scheduler when they occur: 
 -	Initializing a persistent cache 
@@ -1047,7 +1035,7 @@ Task Scheduler parameters can be modified by clicking **Config** in the Task Sch
 
 ![Task Scheduler Configuration](Media/Image3.183.jpg)
  
-Figure 44: Task Scheduler Configuration
+Figure 46: Task Scheduler Configuration
 
 By default, each task executes in its own dedicated JVM. If the option “Dedicated JVM” is not checked in the specific task configuration, then the task executes inside the JVM of the scheduler. Users can customize the default JVM parameters to allow more memory, or change the performance settings. Users can customize the default JVM parameters to allow more memory to the virtual machine, or change the performance settings. However, tuning the JVM of the task scheduler is less important than tuning the dedicated JVM for the individual task. For a full list of possible behavioral and performance options, please see the link below.
 
@@ -1061,7 +1049,7 @@ When operations are added as tasks, they appear in the Task List section, with i
 
 ![Sample Task List](Media/Image3.184.jpg)
  
-Figure 45: Sample Task List
+Figure 47: Sample Task List
 
 To edit an existing task, click the pencil icon. The Task Configuration menu displays all task components. The name and status are shown, but cannot be changed. To make the task non-recurring (the task no longer repeats) uncheck the “Recurrent” box, the task runs one final time and then the status automatically changes to “Finished.” The execution interval (the frequency at which the task is executed) can be modified by changing the hours, minutes, and second boxes.
 
@@ -1075,7 +1063,7 @@ Users must click “Update Task” before closing out of the task configuration 
 
 ![Task Configuration](Media/tasks-configuration.jpg)
  
-Figure 46: Task Configuration
+Figure 48: Task Configuration
 
 ### Custom Tasks
 
@@ -1091,19 +1079,19 @@ Certain operations like initializing a persistent cache or RadiantOne Universal 
 
 5.	Create a properties file (e.g. customTask.properties) with the information about the task. An example of the file contents is shown below. Save this file to: <RLI_HOME>\vds_server\conf\scheduler\<someName>.properties
 
-`#Wed Jun 02 16:36:30 PDT 2021`
-<br> `arguments="-p" "29148"`
-<br> `isvolatile=false`
-<br> `_exitstatus=0`
-<br> `newjvm=false`
-<br> `runonerror=true`
-<br> `exec.order=16`
-<br> `repeat.seconds=8`
-<br> `disabled=false`
-<br> `exec.queue=customTask`
-<br> `taskname=customTask`
-<br> `main.class=com.rli.scripts.tasks.CustomTask`
-<br> `jvmargs=`
+    `#Wed Jun 02 16:36:30 PDT 2021`
+    <br> `arguments="-p" "29148"`
+    <br> `isvolatile=false`
+    <br> `_exitstatus=0`
+    <br> `newjvm=false`
+    <br> `runonerror=true`
+    <br> `exec.order=16`
+    <br> `repeat.seconds=8`
+    <br> `disabled=false`
+    <br> `exec.queue=customTask`
+    <br> `taskname=customTask`
+    <br> `main.class=com.rli.scripts.tasks.CustomTask`
+    <br> `jvmargs=`
 
 A brief description of each property is outlined in the table below.
 
@@ -1128,26 +1116,23 @@ jvmargs	 | Only applicable if newjvm=true. This property can be used to customiz
 
 ![Task Scheduler and Tasks](Media/Image3.185.jpg)
 
-Figure 47: Task Scheduler and Tasks
+Figure 49: Task Scheduler and Tasks
 
->[!note]
->Logs related to tasks are located in <RLI_HOME>/vds_server/logs/scheduler/task.<task_name>.log
+>[!note] Logs related to tasks are located in <RLI_HOME>/vds_server/logs/scheduler/task.<task_name>.log
 
 ### Log Viewer Tab
 
 On the Server Control Panel > Logs Viewer Tab, you will find the logging console.
 
->[!note]
->Only users that belong to the Directory Administrators group have access to the Log Viewer tab.
+>[!note] Only users that belong to the Directory Administrators group have access to the Log Viewer tab.
 
 Select the log file from the drop-down list. You can also set a filter to limit your view of the log based on certain criteria (this only filters on the subset of log data visible in the log window), refresh the log view and/or choose to refresh continuously.
 
 ![Log Viewer](Media/Image3.186.jpg)
  
-Figure 48: Log Viewer
+Figure 50: Log Viewer
 
->[!warning]
->If you change the log location of RadiantOne server log, the Log Viewer tab on the Server Control Panel cannot be used to view the log contents. A basic text viewer (like Notepad) must be used instead.
+>[!warning] If you change the log location of RadiantOne server log, the Log Viewer tab on the Server Control Panel cannot be used to view the log contents. A basic text viewer (like Notepad) must be used instead.
 
 For complete details on logs and troubleshooting, please see the RadiantOne Logging and Troubleshooting Guide.
 
@@ -1349,7 +1334,7 @@ As mentioned above, the groups used for delegated administration are Directory A
 
 ![manage group members](Media/Image3.1.jpg)
  
-Figure 49: Manage Group Members
+Figure 51: Manage Group Members
 
 #### Managing Dynamic Members
 
@@ -1372,7 +1357,7 @@ Figure 49: Manage Group Members
 
 ![manage group window](Media/Image3.2.jpg)
 
-Figure 50: Manage Group Window
+Figure 52: Manage Group Window
 
 8.	Click **Add Member(s)**.
 
@@ -1402,7 +1387,7 @@ Figure 50: Manage Group Window
 
 ![Dynamic Group Setting](Media/Image3.3.jpg)
 
-Figure 51: Dynamic Group Setting
+Figure 53: Dynamic Group Setting
 
 21.	Set the member attribute to either member or uniqueMember (to match your membership attribute) and click Save in the upper right.
 
@@ -1467,7 +1452,7 @@ The reason you can login with just the user ID as opposed to the full DN is beca
 
 ![Default User ID to DN Mapping Rule](Media/Image3.4.jpg)
  
-Figure 53: Default User ID to DN Mapping Rule
+Figure 54: Default User ID to DN Mapping Rule
 
 ### Leveraging Existing Groups for Delegated Administration
 
@@ -1484,7 +1469,7 @@ To configure groups and users for delegated administration, follow the steps bel
 
 ![Entering vdPrivilege in the Extension Attributes Field](Media/Image3.5.jpg)
 
-Figure 54: Entering vdPrivilege in the Extension Attributes Field
+Figure 55: Entering vdPrivilege in the Extension Attributes Field
 
 3.	Navigate to the Main Control Panel > Directory Browser tab.
 
@@ -1492,7 +1477,7 @@ Figure 54: Entering vdPrivilege in the Extension Attributes Field
 
 ![Modify Attribute > Add Value](Media/Image3.6.jpg)
 
-Image 55: Modify Attribute > Add Value
+Image 56: Modify Attribute > Add Value
  
 5.	Select the vdPrivilege attribute and click **Modify Attribute > Add Value**.
 
@@ -1504,12 +1489,11 @@ Image 56: Adding the vdPrilvilege Attribute
 
 7.	In the Add Value window, click ![An image showing ](Media/add-value-button.jpg) to add another value. Repeat this step to add all required values as outlined in [Delegated Administration Roles](#delegated-administration-roles). Click **Confirm** after all values have been added. In the example below, a group named Management has been assigned the privileges required for the Directory Administrator role.
 
-![An image showing ](Media/Image3.8.jpg)
+    ![An image showing ](Media/Image3.8.jpg)
  
-Image 57: Example of Assigning an Existing Group to the Directory Administrator Role
+    Image 57: Example of Assigning an Existing Group to the Directory Administrator Role
 
->[!note]
->Delegated administrators do not have default permissions to manage virtual entries in the directory. If this is required, assign the proper [access controls](06-securityy#access-control) for the delegated admin groups.
+    >[!note] Delegated administrators do not have default permissions to manage virtual entries in the directory. If this is required, assign the proper [access controls](06-securityy#access-control) for the delegated admin groups.
 
 8.	Go to the Main Control Panel > Zookeeper tab (requires [Expert Mode](#expert-mode)).
 
@@ -1538,17 +1522,17 @@ The roles and corresponding required permissions are described in the table belo
 
 Role	| Required Permissions (Value of vdPrivilege)
 -|-
-<span style="color:lightblue">Directory Administrator</span> <br> Members of this group can perform all operations (all operations that the other groups defined below can perform) in addition to:<br>Change privileges for the delegated roles<br>Access the Global Sync Tab <br>Update username and password properties for data sources via LDAP modify command | <span style="color:lightblue">config-read <br>config-write <br>services-restart <br> services-shutdown <br>update-schema <br>instance-read <br>instance-write <br>acl-read <br>acl-write <br>naming-context-read <br>naming-context-write <br>data-source-read <br>data-source-write <br>data-store-read <br>data-store-write <br>ics-admin <br>tasks-admin <br>globalidviewer-read <br>globalidviewer-write </span>
-<span style="color:lightblue">Read Only</span> <br> Members of this group can read the RadiantOne configuration, read settings for any configured instances, read naming context configurations, read configured data sources, and view synchronization topologies on the Global Sync Tab. Members can also log into the RadiantOne Insights, Reports and Administration Console and use the Global Identity Viewer to search for identities and groups. | <span style="color:lightblue">config-read <br>instance-read <br>naming-context-read <br>data-source-read <br>globalidviewer-read </span>
-<span style="color:lightblue">Namespace Administrator</span> <br> Members of this group can perform the following operations:<br> Read RadiantOne configuration<br> Access Wizards tab in Main Control Panel<br> Restart the RadiantOne service from Main Control Panel<br> Create, update, or delete naming contexts<br> Create, update, or delete backend mappings<br> Create, update, and manage persistent cache <br> Create, update, or delete data sources<br> Create, update, or delete RadiantOne Universal Directory stores<br> Update RadiantOne LDAP schema<br> Launch tasks	| <span style="color:lightblue">config-readconfig-write <br>services-restart<br>update-schema <br>naming-context-read<br>naming-context-write <br>data-source-read <br> data-store-read <br> data-store-write <br> tasks-admin <br> ics-admin
-<span style="color:lightblue">Operator</span> <br> Members of this group can perform the following operations: <br> Read RadiantOne configuration <br> Create, update, or delete RadiantOne Universal Directory (HDAP) Stores <br> Restart the RadiantOne service from the Main Control Panel <br> Stop the RadiantOne service from the Main Control Panel <br> Launch Tasks | <span style="color:lightblue">config-read <br> config-write <br> services-restart <br> services-shutdown <br> data-store-read <br> data-store-write <br> tasks-admin <br> naming-context-read</span>
-<span style="color:lightblue">Schema Administrator </span> <br> Members of this group can perform the following operations: <br> Read RadiantOne configuration <br> Create, update or delete schema objects (objectclasses or attributes <br> Extend RadiantOne LDAP schema with objects and attributes from orx files <br> Create, update or delete data sources | <span style="color:lightblue">config-read <br> update-schema <br> data-source-read <br> data-source-write </span>
-<span style="color:lightblue">ACI Administrator</span> <br> Members of this group can perform the following operations: <br> Read RadiantOne configuration <br> Create, update and delete access controls | <span style="color:lightblue">config-read <br> acl-read <br> acl-write <br> naming-context-read </span>
-<span style="color:lightblue">ICS Administrator</span> <br> Members of this group can perform the following operations: <br> Read RadiantOne configuration <br> Access Wizards tab in Main Control Panel <br> Perform all operations from the Global Sync Tab <br> Log into the RadiantOne Insights, Reports and Administration console and access all applications	| <span style="color:lightblue">config-read <br> config-write <br> naming-context-read <br> data-source-read <br> ics-admin <br> ics-workflow-approve <br> tasks-admin <br> globalidviewer-read <br> globalidviewer-write <br> globalidviewer-designer</span>
-<span style="color:lightblue">Approvers</span> <br> Members of this group can perform the following operations: <br> Read RadiantOne configuration <br> Access the Approvals Application in the RadiantOne Insights, Reports and Administration Console | <span style="color:lightblue">config-read <br> ics-workflow-approve </span>
-<span style="color:lightblue">ICS Operator</span> <br> Members of this group can perform the following operations: <br> Read RadiantOne configuration <br> Access the Global Sync tab and read topologies <br> Log into the RadiantOne Insights, Reports, and Administration console and access all applications | <span style="color:lightblue">config-read <br> ics-operator
-<span style="color:lightblue">Global ID Viewer Design</span> <br> Members of this group can log into the Global Identity Viewer and perform the following operations: <br> View entries & attributes <br> Perform searches <br> Edit & delete templates <br> Create, edit and delete queries <br> Export search results <br> Modify attribute values <br> Configure and schedule reports <br> For details on the Global Identity Viewer, see the RadiantOne Global Identity Viewer Guide | <span style="color:lightblue"> config-read <br> config-write <br> globalidviewer-designer <br> tasks-admin
-<span style="color:lightblue">Global ID Viewer Write</span> <br> Members of this group can log into the Global Identity Viewer and perform the following operations: <br> View entries & attributes <br> Perform searches <br> Export search results <br> Modify attribute values <br> For details on the Global Identity Viewer, see the RadiantOne Global Identity Viewer Guide	| <span style="color:lightblue"> config-read <br> globalidviewer-write
+**Directory Administrator** <br> Members of this group can perform all operations (all operations that the other groups defined below can perform) in addition to:<br>Change privileges for the delegated roles<br>Access the Global Sync Tab <br>Update username and password properties for data sources via LDAP modify command | config-read <br>config-write <br>services-restart <br> services-shutdown <br>update-schema <br>instance-read <br>instance-write <br>acl-read <br>acl-write <br>naming-context-read <br>naming-context-write <br>data-source-read <br>data-source-write <br>data-store-read <br>data-store-write <br>ics-admin <br>tasks-admin <br>globalidviewer-read <br>globalidviewer-write
+**Read Only** <br> Members of this group can read the RadiantOne configuration, read settings for any configured instances, read naming context configurations, read configured data sources, and view synchronization topologies on the Global Sync Tab. Members can also log into the RadiantOne Insights, Reports and Administration Console and use the Global Identity Viewer to search for identities and groups. | config-read <br>instance-read <br>naming-context-read <br>data-source-read <br>globalidviewer-read
+**Namespace Administrator** <br> Members of this group can perform the following operations:<br> Read RadiantOne configuration<br> Access Wizards tab in Main Control Panel<br> Restart the RadiantOne service from Main Control Panel<br> Create, update, or delete naming contexts<br> Create, update, or delete backend mappings<br> Create, update, and manage persistent cache <br> Create, update, or delete data sources<br> Create, update, or delete RadiantOne Universal Directory stores<br> Update RadiantOne LDAP schema<br> Launch tasks | config-readconfig-write <br>services-restart<br>update-schema <br>naming-context-read<br>naming-context-write <br>data-source-read <br> data-store-read <br> data-store-write <br> tasks-admin <br> ics-admin
+**Operator** <br> Members of this group can perform the following operations: <br> Read RadiantOne configuration <br> Create, update, or delete RadiantOne Universal Directory (HDAP) Stores <br> Restart the RadiantOne service from the Main Control Panel <br> Stop the RadiantOne service from the Main Control Panel <br> Launch Tasks | config-read <br> config-write <br> services-restart <br> services-shutdown <br> data-store-read <br> data-store-write <br> tasks-admin <br> naming-context-read
+Schema Administrator <br> Members of this group can perform the following operations: <br> Read RadiantOne configuration <br> Create, update or delete schema objects (objectclasses or attributes <br> Extend RadiantOne LDAP schema with objects and attributes from orx files <br> Create, update or delete data sources | config-read <br> update-schema <br> data-source-read <br> data-source-write 
+**ACI Administrator** <br> Members of this group can perform the following operations: <br> Read RadiantOne configuration <br> Create, update and delete access controls | config-read <br> acl-read <br> acl-write <br> naming-context-read 
+**ICS Administrator** <br> Members of this group can perform the following operations: <br> Read RadiantOne configuration <br> Access Wizards tab in Main Control Panel <br> Perform all operations from the Global Sync Tab <br> Log into the RadiantOne Insights, Reports and Administration console and access all applications	| config-read <br> config-write <br> naming-context-read <br> data-source-read <br> ics-admin <br> ics-workflow-approve <br> tasks-admin <br> globalidviewer-read <br> globalidviewer-write <br> globalidviewer-designer
+**Approvers** <br> Members of this group can perform the following operations: <br> Read RadiantOne configuration <br> Access the Approvals Application in the RadiantOne Insights, Reports and Administration Console | config-read <br> ics-workflow-approve 
+**ICS Operator** <br> Members of this group can perform the following operations: <br> Read RadiantOne configuration <br> Access the Global Sync tab and read topologies <br> Log into the RadiantOne Insights, Reports, and Administration console and access all applications | config-read <br> ics-operator
+**Global ID Viewer Design** <br> Members of this group can log into the Global Identity Viewer and perform the following operations: <br> View entries & attributes <br> Perform searches <br> Edit & delete templates <br> Create, edit and delete queries <br> Export search results <br> Modify attribute values <br> Configure and schedule reports <br> For details on the Global Identity Viewer, see the RadiantOne Global Identity Viewer Guide | config-read <br> config-write <br> globalidviewer-designer <br> tasks-admin
+**Global ID Viewer Write** <br> Members of this group can log into the Global Identity Viewer and perform the following operations: <br> View entries & attributes <br> Perform searches <br> Export search results <br> Modify attribute values <br> For details on the Global Identity Viewer, see the RadiantOne Global Identity Viewer Guide | config-read <br> globalidviewer-write
 
 ## Configuration Lock
 

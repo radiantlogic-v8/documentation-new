@@ -3,11 +3,6 @@ title: System Administration Guide
 description: System Administration Guide
 ---
 
----
-title: System Administration Guide
-description: System Administration Guide
----
-
 # Logs
 
 RadiantOne supports logging at different levels for different components. Logs for the different components are configured in the Log Settings section. RadiantOne access logs are configured in the Access Logs section and RadiantOne changelog is configured in the Changelog section. An introduction to these sections is below. For more details, please see the RadiantOne Logging and Troubleshooting Guide.
@@ -103,7 +98,7 @@ To exclude attributes in changelog searches:
 
 9.	In the brackets, enter attributes to be excluded in a comma-separated list. Wrap each attribute in double quotes. For example:
 
-`["mail", "l", "homePhone"],`
+    `["mail", "l", "homePhone"],`
 
 10.	Click **Save**. 
 

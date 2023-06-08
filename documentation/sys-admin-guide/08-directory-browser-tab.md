@@ -119,14 +119,13 @@ To add explicit members, follow the steps below.
 
 2.	If group members can be other groups, click the checkbox next to the “Search Groups” option in the upper left. 
 
->[!note]
->If RadiantOne needs to [support nested groups](access-control#enable-nested-groups), you must enable that feature.
+    >[!note] If RadiantOne needs to [support nested groups](access-control#enable-nested-groups), you must enable that feature.
 
 3.	Click **Add More** and then click **Browse Tree** to select a starting point in the virtual namespace to look for users.
 
 4.	To limit the search criteria, enter a value before clicking Search. The value must match either a uid, sn, or cn value.
 
-The object class for the user must be inetOrgPerson, user, person, or organizationalPerson (for the search to return them as a user entry). If you selected the option to search for groups, the group must be associated with an object class of group, groupofnames or groupOfUniqueNames. 
+    The object class for the user must be inetOrgPerson, user, person, or organizationalPerson (for the search to return them as a user entry). If you selected the option to search for groups, the group must be associated with an object class of group, groupofnames or groupOfUniqueNames. 
 
 5.	Once you find the user (or group) account you want to add to the group, select the account and click the down arrow and click Confirm.
 
@@ -149,8 +148,7 @@ To add dynamic members with the assistance of a wizard, follow the steps below.
 
 3.	If group members can be other groups, click on the checkbox next to the “Search Groups” option in the upper left.
 
->[!note]
->If RadiantOne needs to [support nested groups](06-security#enable-nested-groups), you must enable that feature.
+    >[!note] If RadiantOne needs to [support nested groups](06-security#enable-nested-groups), you must enable that feature.
 
 4.	Click **Add**.
 
@@ -171,6 +169,7 @@ An alternative to using a wizard to manage dynamic group members is to manually 
 2.	Select the group entry and on the right side, select the objectclass attribute.
 
 3.	Choose Modify Attribute > Add Value.
+
 4.	Enter groupOfURLs for the new object class and click **OK**.
 
 5.	To add members, with the group selected in the tree, click **Add Attribute** on the right side.
@@ -241,9 +240,9 @@ When an account is disabled, the user is not able to authenticate (bind) to the 
 
 2.	Type in nsAccountLock and press Enter on your keyboard.
 
-![Adding nsAccountLock to a User Entry](Media/Image3.155.jpg)
- 
-Figure 6: Adding nsAccountLock to a User Entry
+    ![Adding nsAccountLock to a User Entry](Media/Image3.155.jpg)
+
+    Figure 6: Adding nsAccountLock to a User Entry
 
 3.	Enter a value of true and click **OK**. 
 

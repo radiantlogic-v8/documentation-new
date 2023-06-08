@@ -3,12 +3,11 @@ title: System Administration Guide
 description: System Administration Guide
 ---
 
-## Directory Namespace Tab
+# Creating Virtual Views
 
 The RadiantOne namespace is managed from the Directory Namespace tab. New root naming contexts are configured and managed from here. A naming context can represent virtual views from LDAP, database or web service backends or local RadiantOne Universal Directory stores. For details, please see the RadiantOne Namespace Configuration Guide.
 
->[!note]
->The Directory Namespace tab is not accessible from follower-only cluster nodes.
+>[!note] The Directory Namespace tab is not accessible from follower-only cluster nodes.
 
 # Context Builder Tab
 
@@ -98,9 +97,9 @@ To configure rules for linked attributes, following the steps below:
 
 1.	On the Main Control Panel, click Settings > Interception > Special Attributes Handling.
 
-![Special Attributes Handling](Media/Image3.130.jpg)
+    ![Special Attributes Handling](Media/Image3.130.jpg)
  
-Figure 12: Special Attributes Handling
+    Figure 12: Special Attributes Handling
 
 2.	Under the Linked Attributes section, click **Add**. The Configure Mapping window is displayed.
 
@@ -110,12 +109,11 @@ Figure 12: Special Attributes Handling
 
 5.	Select a base DN containing the entries (e.g. users) for which the back link attributes should be managed. In the example below, ou=allprofiles is selected.
 
->[!warning]
->If your users and groups are in RadiantOne Universal Directory stores, and you plan on enabling the Optimize Linked Attribute setting and must support nested groups, only one user location per Universal Directory store is supported. For example, having a user location configured for ou=people1,dc=myhdap and ou=people2,dc=myhdap (both in the same dc=myhdap store) is not supported. In this case, you should configure a single user location as dc=myhdap as a shared parent for both user containers. For information about the Optimize Linked Attribute function for Universal Directory stores, see the Namespace Configuration Guide. For information about the Optimize Linked Attribute function for persistent cache stores, see the Deployment and Tuning Guide.
+    >[!warning] If your users and groups are in RadiantOne Universal Directory stores, and you plan on enabling the Optimize Linked Attribute setting and must support nested groups, only one user location per Universal Directory store is supported. For example, having a user location configured for ou=people1,dc=myhdap and ou=people2,dc=myhdap (both in the same dc=myhdap store) is not supported. In this case, you should configure a single user location as dc=myhdap as a shared parent for both user containers. For information about the Optimize Linked Attribute function for Universal Directory stores, see the Namespace Configuration Guide. For information about the Optimize Linked Attribute function for persistent cache stores, see the Deployment and Tuning Guide.
 
-![An image showing ](Media/Image3.131.jpg)
+    ![An image showing ](Media/Image3.131.jpg)
  
-Figure 13: Selecting a Location for Users
+    Figure 13: Selecting a Location for Users
 
 6.	Click **OK**. You are returned to the Add Linked Attribute Mapping window.
 
@@ -129,9 +127,9 @@ Figure 13: Selecting a Location for Users
 
 11.	Click **OK**. The configuration is displayed in the Linked Attributes section.
 
-![An image showing ](Media/Image1.132.jpg)
+    ![An image showing ](Media/Image1.132.jpg)
  
-Figure 14: Linked Attributes Configuration Rules
+    Figure 14: Linked Attributes Configuration Rules
 
 12.	Click **Save** in the upper right corner.
 
@@ -204,15 +202,15 @@ To enable support for dynamic groups, follow the steps below.
 
 4.	Browse to the exact group entry that you like RadiantOne to automatically evaluate members for and click OK. To configure this logic for multiple groups located in the same container, just enter an LDAP URL that encompasses all groups instead of browsing to the exact group entry. E.g. ldap:///cn=config??sub?(objectClass=groupOfURLs) could be used to indicate all dynamic groups located below cn=config. If you are not knowledgeable about LDAP URL syntax, just browse to the container/parent node where all dynamic groups are located and the LDAP URL is automatically calculated for you.
 
-Below is an example of a dynamic group indicating a memberURL of: ldap:///ou=ad_sample,ou=allprofiles??sub?(&(objectclass=*)(l=San Mateo)) and how this would be configured respectively.
+    Below is an example of a dynamic group indicating a memberURL of: ldap:///ou=ad_sample,ou=allprofiles??sub?(&(objectclass=*)(l=San Mateo)) and how this would be configured respectively.
 
-![An image showing ](Media/Image3.135.jpg)
+    ![An image showing ](Media/Image3.135.jpg)
  
-Figure 16: Dynamic Group Example
+    Figure 16: Dynamic Group Example
 
-![An image showing ](Media/Image3.136.jpg)
+    ![An image showing ](Media/Image3.136.jpg)
  
-Figure 17: Dynamic Group Configuration
+    Figure 17: Dynamic Group Configuration
 
 5.	Repeat steps 3 and 4 to add all dynamic groups. 
 
@@ -228,9 +226,9 @@ Figure 17: Dynamic Group Configuration
 
 11.	Click **OK**.
 
-![An image showing ](Media/Image3.137.jpg)
+    ![An image showing ](Media/Image3.137.jpg)
 
-Figure 18: Defining memberURL Attribute for DN Remapping
+    Figure 18: Defining memberURL Attribute for DN Remapping
 
 12.	Click **Save** in the upper right.
 
@@ -240,8 +238,7 @@ For groups defined in this section, RadiantOne automatically evaluates and compu
 
 Figure 19: Example - Dynamic Group Translated into Virtual Static Group
 
->[!note]
->To avoid returning duplicate entries, when a dynamic group is queried in RadiantOne, if both member and memberURL are requested, the memberURL attribute is not returned.
+>[!note] To avoid returning duplicate entries, when a dynamic group is queried in RadiantOne, if both member and memberURL are requested, the memberURL attribute is not returned.
 
 #### Caching Dynamic Groups
 
@@ -272,9 +269,9 @@ Attribute uniqueness is not enabled by default. To define which attributes requi
 
 3.	Enter a list of comma-separated attributes that should contain unique values. In the example shown in the screen below, the attributes uid and mail must be unique across all entries located below o=local.
 
-![An image showing ](Media/Image3.140.jpg)
+    ![An image showing ](Media/Image3.140.jpg)
 
-Figure 21: Attribute Uniqueness Example
+    Figure 21: Attribute Uniqueness Example
 
 4.	Click **Save** in the upper right corner.
 
