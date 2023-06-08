@@ -3,7 +3,7 @@ title: Namespace Configuration Guide
 description: Namespace Configuration Guide
 ---
 
-# Chapter 7: Virtual Views for DSML or SPML Backends
+# Virtual Views for DSML or SPML Backends
 Virtual views of DSML and SPML backends are supported with RadiantOne. 
 
 ## Configuration
@@ -11,12 +11,14 @@ Virtual views of DSML and SPML backends are supported with RadiantOne.
 To configure virtual views pointing to a backend SPML or DSML service, follow the steps below.
 
 1.	From the Main Control Panel > Settings tab > Server Backend > Custom Data Sources, add a DSML/SPML data source. For details on creating data sources, see the RadiantOne System Administration Guide.
-2.	From the Main Control Panel -> Directory Namespace Tab, click ![An image showing ](Media/plus-sign.jpg).
+
+2.	From the Main Control Panel > Directory Namespace Tab, click ![An image showing ](Media/plus-sign.jpg).
+
 3.	Enter a name for the naming context, select the DSML/SPML Service option and click Next.
 
-![An image showing ](Media/Image7.1.jpg)
+    ![An image showing ](Media/Image7.1.jpg)
 
-Figure 7. 1: Defining Naming Context for a Web Service
+    Figure 1: Defining Naming Context for a Web Service
 
 4.	Select the DSML/SPML data source from the drop-down list and click OK.
 
@@ -30,7 +32,7 @@ The properties to connect to the DSML/SPML backend are defined in the custom dat
  
 Figure 7.2: DSML/SPML Service
 
-Once the naming context is defined, the DSML/SPML service properties can be managed from the Main Control Panel -> Directory Namespace tab. Select the naming context and the Backend Properties tab is shown on the right.
+Once the naming context is defined, the DSML/SPML service properties can be managed from the Main Control Panel > Directory Namespace tab. Select the naming context and the Backend Properties tab is shown on the right.
 
 ![An image showing ](Media/Image7.3.jpg)
  
@@ -98,10 +100,8 @@ By default, RadiantOne attempts to chase referrals that have been configured in 
 
 Chasing referrals can affect the overall performance of RadiantOne because if the referral server is not responding (or responding slowly) RadiantOne could take a long time to respond to the client. For example, in the case of RadiantOne querying an underlying Active Directory (with a base DN starting at the root of Active Directory) you may get entries like the following returned:
 
-```
-ldaps://ForestDnsZones.na.radiantlogic.com:636…
-ldaps://DomainDnsZones.na.radiantlogic.com:636…
-```
+`ldaps://ForestDnsZones.na.radiantlogic.com:636…
+ldaps://DomainDnsZones.na.radiantlogic.com:636…`
 
 RadiantOne attempts to “chase” these referrals which can result in an extreme degradation in response times. Therefore, it is recommended that you disable referral checking if you need to proxy to Active Directory starting at the root of the Active Directory tree.
 
@@ -117,7 +117,7 @@ If the unique identifier in the SPML service is not a DN, then uncheck this opti
 
 ![An image showing ](Media/Image7.4.jpg)
  
-Figure 7.4: SPML Backend Properties
+Figure 4: SPML Backend Properties
 
 ### Interception Scripts
 

@@ -3,17 +3,15 @@ title: Namespace Configuration Guide
 description: Namespace Configuration Guide
 ---
 
-# Namespace Configuration Guide
-
-## Chapter 1: Introduction 
+# Introduction 
 
 Prior to diving into this guide, it is recommended that you read the Architect Guide for a high-level overview of the capabilities of RadiantOne and the System Admin Guide for an understanding of general concepts and usage of the Main Control Panel and Server Control Panel. This guide provides step-by-step instructions to configure the virtual namespace. Configuring persistent cache is out of the scope of this guide. For details on persistent cache, see the RadiantOne Deployment and Tuning Guide.
 
-><span style="color:red">**IMPORTANT NOTE – For production deployments, RadiantOne configuration changes must be performed during non-peak/off-hours to avoid any disruption in service.**
+>[!warning] For production deployments, RadiantOne configuration changes must be performed during non-peak/off-hours to avoid any disruption in service.
 
 For details on deploying RadiantOne including tuning and maintenance, please see the RadiantOne Deployment and Tuning Guide.
 
-### How this Manual is Organized
+## How this Manual is Organized
 
 This guide is broken down into the following chapters:
 
@@ -54,14 +52,11 @@ Technical support can be reached using any of the following options:
 
 - E-mail: support@radiantlogic.com
 - Website: https://support.radiantlogic.com 
--	Phone: 415-209-6800
--	Toll-Free Phone: 1-877-727-6442
--	Fax: 415-798-5697
 
-### Expert Mode
+## Expert Mode
 
 Some settings in the Main Control Panel are accessible only in Expert Mode. To switch to Expert Mode, click the Logged in as, (username) drop-down menu and select Expert Mode. 
 
 ![An image showing ](Media/expert-mode.jpg)
  
-Figure 1.1: Expert Mode
+Figure 1: Expert Mode

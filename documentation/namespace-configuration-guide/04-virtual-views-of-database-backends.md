@@ -3,7 +3,7 @@ title: Namespace Configuration Guide
 description: Namespace Configuration Guide
 ---
 
-# Chapter 4: Virtual Views of Database (JDBC/ODBC-accessible) Backends
+# Virtual Views of Database (JDBC/ODBC-accessible) Backends
 
 Virtual views can be configured for database backends and are associated with a specific root naming context. A root naming context is the very top node of a virtual directory view and RadiantOne can respond to many different root naming contexts. This section describes how to create and manage root naming contexts for databases. 
 
@@ -11,13 +11,13 @@ After the virtual view of the database backend has been configured, a series of 
 
 ![An image showing ](Media/Image4.1.jpg)
  
-Figure 4.1: Sample Database Backend Connection Properties
+Figure 1: Sample Database Backend Connection Properties
 
 All other aspects are managed per object. Therefore, you must select the specific database object (represented by a blue or white folder icon) to expose the needed tabs (RDN Settings, Advanced Settings, Attributes and Object).
  
 ![An image showing ](Media/Image4.2.jpg)
 
-Figure 4.2: Sample Database Backend
+Figure 2: Sample Database Backend
 
 -	RDN Settings – Used for configuring the [RDN name](#rdn-name) that will comprise the user DN for entries virtualized from this database backend.
 
@@ -31,7 +31,7 @@ Figure 4.2: Sample Database Backend
 
 If you configure the database backend directly at the Root Naming Context, it is the only backend that can be defined for this specific naming context. If you want to comprise the tree from many different backends, choose the Virtual Tree option for the type of naming context instead of Database Backend.
 
->**Note – if you would like to build your virtual view using the Directory Tree Wizard, refer to the RadiantOne Identity Service Wizards Guide.**
+>[!note] If you would like to build your virtual view using the Directory Tree Wizard, refer to the RadiantOne Identity Service Wizards Guide.
 
 1.	First, data sources for each backend must be defined. From the Main Control Panel > Settings tab, expand below the Server Backend node and go to the DB Data Sources section. Click **Add** to define database data sources.
 
@@ -43,9 +43,9 @@ If you configure the database backend directly at the Root Naming Context, it is
 
 5.	Select the objects you are interested in and click **OK**.
 
-![An image showing ](Media/Image4.3.jpg)
- 
-Figure 4.3: Sample Objects Available for Creating a Flat Virtual View from a Database
+    ![An image showing ](Media/Image4.3.jpg)
+
+    Figure 4.3: Sample Objects Available for Creating a Flat Virtual View from a Database
 
 6.	Click **OK** in the New Database Proxy confirmation window.
 
@@ -105,9 +105,9 @@ If you want to map the database objects to a new/different object class:
 5.	Select the object class to map to from the LDAP Object Class drop down list.
 If the object class inherits from multiple classes, the classes are displayed with a # as the separator. 
 
-![An image showing ](Media/Image4.4.jpg)
- 
-Figure 4.4: Mapping Object Classes
+    ![An image showing ](Media/Image4.4.jpg)
+
+    Figure 4.4: Mapping Object Classes
 
 6.	Click **Save** and then **Yes** to apply the changes to the server.
 
@@ -141,7 +141,7 @@ If your database is case sensitive and you know the values are stored in upperca
 
 If you want to condition the virtual view of your database to only return a set of entries that match a certain criterion, you can enter a SQL Filter on the Advanced Settings tab. An example of a filter would be ENAME=’s%’, which would only return entries that have an ENAME value that starts with “s” (the % is a wild card character).
 
->**NOTE - You must enter a valid SQL filter and use the actual database attribute names (as opposed to using any virtual names you have configured through mapping). The SQL syntax you use in your filter must be compatible with the database brand/version you are accessing on the backend.**
+>[!note] You must enter a valid SQL filter and use the actual database attribute names (as opposed to using any virtual names you have configured through mapping). The SQL syntax you use in your filter must be compatible with the database brand/version you are accessing on the backend.
 
 To get assistance on defining the SQL filter:
 1.	Click **Assist**.
@@ -164,11 +164,11 @@ An example filter is shown below where only entries that have CITY = Seattle and
 
 ![An image showing ](Media/Image4.5.jpg)
  
-Figure 4.5: Adding SQL Filter (Where Clause)
+Figure 5: Adding SQL Filter (Where Clause)
 
 ![An image showing ](Media/Image4.6.jpg)
  
-Figure 4.6: Example of Filtered Database View
+Figure 6: Example of Filtered Database View
 
 ### Preventing Duplicate Rows (Distinct)
 
@@ -192,7 +192,7 @@ To map database attribute names to LDAP attribute names:
  
 ![An image showing ](Media/Image4.7.jpg)
 
-Figure 4.7: Attribute Mapping
+Figure 7: Attribute Mapping
 
 ### Hidden Attributes
 
@@ -234,7 +234,7 @@ If you would like to build the attribute based on a constant and need assistance
 
 If you would like the computed attribute to be based on an existing attribute, click on the Attribute button for assistance (a list of all attributes available in the virtual object displays). 
 
-If you would like to use a function to build your computed attribute, click on the **Function** button for a list to display.
+If you would like to use a function to build your computed attribute, click **Function** for a list to display.
 
 7.	Click **Validate** to check the syntax of your expression. 
 
@@ -246,11 +246,12 @@ If you would like to see a list of only computed attributes for the virtual obje
 
 ![An image showing ](Media/Image4.8.jpg)
  
-Figure 4.8: Display Computed Attributes Only
+Figure 8: Display Computed Attributes Only
 
 For more details, please see Computed Attributes in the Concepts section of the RadiantOne System Administration Guide.
 
 #### Deactivate Computed Attributes
+
 If you have defined multiple computed attributes, it can be helpful to deactivate some for testing or if you (temporarily) don’t need them anymore. 
 
 To deactivate a computed attribute:
@@ -265,9 +266,9 @@ To deactivate a computed attribute:
 
 5.	Uncheck the “Active” checkbox next to the computed attributes that you want to deactivate.
 
-![An image showing ](Media/Image4.9.jpg)
- 
-Figure 4.9: Computed Attributes Example with One Deactivated
+    ![An image showing ](Media/Image4.9.jpg)
+
+    Figure 4.9: Computed Attributes Example with One Deactivated
 
 6.	Click **OK**.
 
@@ -322,7 +323,8 @@ For complete details and steps, please see Joins in the Concepts section of the 
 ### Handling Multi-Valued Attributes from a Database
 
 If a database table you are virtualizing contains an attribute that stores a list of values, RadiantOne can return this attribute as multi-valued in the virtual entries. The database attribute must contain values separated by a space then the pound sign (#), then a space before the next value. See the sample database table below as an example:
-** Database Table:**
+
+**Database Table:**
 
 Name | Mail	| Title
 -|-|-
@@ -350,9 +352,11 @@ mail = hcarter@rli.com # harold@yahoo.com
 title = HR mgr # HR Associate
 
 ### RDN Name
+
 For virtual entries from a database backend, the default RDN name is the name of the database object. This parameter is editable on the RDN Settings tab. Click EDIT to select the attributes that should comprise the RDN value.
 
 ### Optimizations
+
 For certain configurations/use cases, there are two parameters that may be enabled to improve processing/performance. They are located on the Main Control Panel > Directory Namespace Tab. Navigate below the Root Naming Context section and select the node representing the virtual view to your backend. On the right side, select the Advanced Settings tab. Each optimization is described below.
 
 **Removing UPPER**
@@ -361,21 +365,17 @@ Since some databases are case sensitive, RadiantOne transforms primary key attri
 
 The Base Search parameter allows you to remove UPPER (that is generated by default) for base searches. If your database is not case sensitive, then the UPPER can be removed. If your database is case sensitive, then you must make sure that the attribute that is indexed (and is used in the base parameter) uses the UPPER case. Otherwise, performance of the virtual view (during a base search) is unpredictable.
 
-><span style="color:red">**IMPORTANT NOTE – using the UPPER can slow down performance because the indexes in the database may not be used. IF your database has an index on an attribute and it stores the value in upper case, then you have the option of removing the UPPER generated on the left side of the parameter (it is the UPPER on the left that is most costly in terms of performance).**
+>[!warning] Using the UPPER can slow down performance because the indexes in the database may not be used. IF your database has an index on an attribute and it stores the value in upper case, then you have the option of removing the UPPER generated on the left side of the parameter (it is the UPPER on the left that is most costly in terms of performance).
 
 Below is an example of the Base Search filter that is generated for a database. If the database is case sensitive and the CN attribute is indexed (and the index stores the value in upper case), then the UPPER generated on the left side of the “=” can be removed and performance is improved (also remove the leading and ending parentheses).
 
 The following example:
 
-```
-(UPPER(SCOTT.PEOPLE.CN)=UPPER(@@[cn : VARCHAR2(60)]))
-```
+`(UPPER(SCOTT.PEOPLE.CN)=UPPER(@@[cn : VARCHAR2(60)]))`
 
 Would become:
 
-```
-(SCOTT.PEOPLE.CN=UPPER(@@[cn : VARCHAR2(60)]))
-```
+`(SCOTT.PEOPLE.CN=UPPER(@@[cn : VARCHAR2(60)]))`
 
 If you are not able to remove the UPPER then you should consider using cache at the level of RadiantOne in order to improve performance. RadiantOne queries the database the first time (the UPPER is used), the results are cached and future queries receive the information from cache.
 
@@ -387,7 +387,7 @@ Requesting BLOB attributes can significantly decrease performance. When this opt
 
 Use caution when enabling this parameter if an interception script is defined (which may need such attributes even if they are not requested by the client).
 
-><span style="color:red">**IMPORTANT NOTE - Do not enable this option if a memory entry cache is used (as the whole virtual entry is needed, including the BLOBs).**
+>[!warning] Do not enable this option if a memory entry cache is used (as the whole virtual entry is needed, including the BLOBs).
 
 **Process Joins and Computed Attributes Only When Necessary**
 
@@ -397,4 +397,4 @@ If you enable this option, RadiantOne does not perform joins or computations if 
 
 Use caution when enabling this option if you have interception scripts defined on these objects, or access controls based on filters are being used (both of which may require other attributes returned from secondary sources or computations regardless of whether or not the client requested or searched for them). 
 
-●	IMPORTANT NOTE - Do not enable this option if a memory entry cache is used (as the whole virtual entry is needed for the cache). 
+>[!warning] Do not enable this option if a memory entry cache is used (as the whole virtual entry is needed for the cache). 

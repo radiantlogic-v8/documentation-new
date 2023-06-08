@@ -3,13 +3,13 @@ title: Namespace Configuration Guide
 description: Namespace Configuration Guide
 ---
 
-# Chapter 8: Virtual Views of Cloud Directories and Services
+# Virtual Views of Cloud Directories and Services
 
 ## Introduction
 
 Cloud services like Salesforce, Google Directory, Azure AD (which stores identities that access services like Office 365), among others can be virtualized in RadiantOne and a default virtual view mounted at o=cloudservices,o=vds can be seen as an example. If you update the default data sources associated with this view, it should return your data. The following list includes the default data sources that you can edit to point to your service. 
 
->**Note - The default data sources mentioned below can be used as samples of virtualizing data sources reachable via an API. To configure new custom data sources, see the RadiantOne Context Builder Guide.**
+>[!note] The default data sources mentioned below can be used as samples of virtualizing data sources reachable via an API. To configure new custom data sources, see the RadiantOne Context Builder Guide.
 
 Cloud Directory or Service	| RadiantOne Data Source
 -|-
@@ -54,9 +54,9 @@ In order for RadiantOne to virtualize Salesforce via SCIM, it must authenticate 
 
 1.	Log into Salesforce and go to Setup > Apps > App Manager and click **New Connected App**.
 
-![An image showing ](Media/Image8.1.jpg)
+    ![An image showing ](Media/Image8.1.jpg)
 
-Figure 8. 1: Creating a Salesforce Connected App
+    Figure 1: Creating a Salesforce Connected App
 
 2.	Enter a name for the application, email to associate with the application and check the option to Enable OAuth Settings.
 
@@ -66,11 +66,11 @@ Figure 8. 1: Creating a Salesforce Connected App
 
 5.	Leave all other defaults and click **Save**.
 
-![An image showing ](Media/Image8.2.jpg)
+    ![An image showing ](Media/Image8.2.jpg)
 
-Figure 8.2: Configuring Salesforce Connected App
+    Figure 2: Configuring Salesforce Connected App
 
-><span style="color:red">**IMPORTANT NOTE – Allow up to 10 minutes before using the connected app.**
+>[!warning] Allow up to 10 minutes before using the connected app.
 
 6.	After clicking save, you are warned about the 10-minute wait time. Click **Continue**.
 
@@ -80,19 +80,19 @@ Figure 8.2: Configuring Salesforce Connected App
 
 ![An image showing ](Media/Image8.3.jpg)
 
-Figure 8.3: Sample Salesforce Connected App
+Figure 3: Sample Salesforce Connected App
 
->**Note - If you did not note the consumer key and secret values, you can return to this information from the App Manager section by selecting “View” from the drop-down list next to your app.**
+>[!note] If you did not note the consumer key and secret values, you can return to this information from the App Manager section by selecting “View” from the drop-down list next to your app.
 
 ![An image showing ](Media/Image8.4.jpg)
 
-Figure 8.4: Viewing Consumer Key and Secret for Connected App
+Figure 4: Viewing Consumer Key and Secret for Connected App
 
 #### Configure a RadiantOne SCIM Data Source
 
 1.	In the RadiantOne Main Control Panel -> Settings tab -> Server Backend -> Custom data Sources section, select scimclient and click Edit.
 
->**Note – if you are already using the scimclient custom data source to virtualize a SCIM backend, click the Clone button to make a copy that you can work with for Salesforce to avoid impacting your existing configuration.**
+    >[!note] If you are already using the scimclient custom data source to virtualize a SCIM backend, click the Clone button to make a copy that you can work with for Salesforce to avoid impacting your existing configuration.
 
 2.	Click **Add**.
 
@@ -104,9 +104,9 @@ Figure 8.4: Viewing Consumer Key and Secret for Connected App
 
 6.	Enter oauthclientid for the Name property and provide the [Consumer Key](#create-a-salesforce-connected-application) value associated with your Salesforce Application. 
 
-![An image showing ](Media/Image8.5.jpg)
+    ![An image showing ](Media/Image8.5.jpg)
 
-Figure 8.5: Sample Consumer Key Value
+    Figure 8.5: Sample Consumer Key Value
 
 7.	Click **OK**.
 
@@ -120,15 +120,15 @@ Figure 8.5: Sample Consumer Key Value
 
 12.	Enter the value matching your Salesforce SCIM service. The syntax is: https://<your_SCIMservice_url>/services/scim/v1
 
-![An image showing ](Media/Image8.6.jpg)
+    ![An image showing ](Media/Image8.6.jpg)
 
-Figure 8.6: The value matching your Salesforce SCIM service
+    Figure 8.6: The value matching your Salesforce SCIM service
  
-This URL should contain the same address you see when you are logged into Salesforce.  
+    This URL should contain the same address you see when you are logged into Salesforce.  
 
-![An image showing ](Media/Image8.7.jpg)
+    ![An image showing ](Media/Image8.7.jpg)
 
-Figure 8.7: Salesforce SCIM URL
+    Figure 8.7: Salesforce SCIM URL
 
 13.	Click **OK**. 
 
@@ -158,39 +158,39 @@ RadiantOne includes a default SCIM schema file that can be modified to meet the 
 
 4.	The SCIM schema information is going to be modified slightly for Salesforce, so save the file with a new name to avoid working with the default template. Click ![An image showing ](Media/save-button.jpg) and enter the new name (e.g. salesforcescimclient) and click OK.
 
-Note – The default data source associated with scimclient.orx is scimclient. if you cloned the default scimclient custom data source to work with Salesforce, right-click on the file name and choose Edit Connection String.  
+>[!note] The default data source associated with scimclient.orx is scimclient. if you cloned the default scimclient custom data source to work with Salesforce, right-click on the file name and choose Edit Connection String.  
 
-![An image showing ](Media/Image8.8.jpg)
+    ![An image showing ](Media/Image8.8.jpg)
 
-Figure 8.8: The Edit Connection String Option
+    Figure 8.8: The Edit Connection String Option
 
-Click “Edit” to select the appropriate custom data source. 
+    Click “Edit” to select the appropriate custom data source. 
 
-![An image showing ](Media/Image8.9.jpg)
+    ![An image showing ](Media/Image8.9.jpg)
 
-Figure 8.9: Click Edit to select the appropriate custom data source
+    Figure 9: Click Edit to select the appropriate custom data source
  
 5.	Expand the file name > Objects > Tables and right-click on Users.
 
 6.	Choose Edit Primary Key(s).
  
-![An image showing ](Media/Image8.10.jpg)
+    ![An image showing ](Media/Image8.10.jpg)
 
-Figure 8.10: Editing Primary Key for SCIM Schema
+    Figure 10: Editing Primary Key for SCIM Schema
 
 7.	Select the id attribute from the attributes list and use ![An image showing ](Media/right-arrow2.jpg) to move it to the column on the right.
 
 8.	Select the username attribute from the column on the right and use ![An image showing ](Media/left-arrow.jpg) to move it to the attributes column on the left.
  
-![An image showing ](Media/Image8.11.jpg)
+    ![An image showing ](Media/Image8.11.jpg)
 
-Figure 8.11: Setting Primary Key
+    Figure 11: Setting Primary Key
 
 9.	Click **Apply**.
 
 10.	Click ![An image showing ](Media/save2.jpg).
 
-><span style="color:red">**IMPORTANT NOTES – To virtualize group objects, define the primary key as ‘id’ just like you did above for the users object. Only Users and Group objects are in the schema definition by default. To virtualize other objects via SCIM, you must first create the object (Right-click on Tables -> Add New Object) and add the attribute 'id' and define it as the primary key, just like you did above for the users object.**
+>[!warning] To virtualize group objects, define the primary key as ‘id’ just like you did above for the users object. Only Users and Group objects are in the schema definition by default. To virtualize other objects via SCIM, you must first create the object (Right-click on Tables > Add New Object) and add the attribute 'id' and define it as the primary key, just like you did above for the users object.
 
 11.	Click the View Designer tab.
 
@@ -200,11 +200,11 @@ Figure 8.11: Setting Primary Key
 
 14.	Click “Select” and browse to the salesforcescimclient file on the Custom Schemas tab and click OK.
 
-Note – the virtual view definition can be customized as needed. The steps in this guide create a basic virtual view of users.
+    >[!note] The virtual view definition can be customized as needed. The steps in this guide create a basic virtual view of users.
 
-![An image showing ](Media/Image8.12.jpg)
+    ![An image showing ](Media/Image8.12.jpg)
 
-Figure 8.12: Creating a Virtual View from Salesforce
+    Figure 12: Creating a Virtual View from Salesforce
 
 15.	Select the salesforcescimclient node on the left and choose New Label on the right.
 
@@ -216,9 +216,9 @@ Figure 8.12: Creating a Virtual View from Salesforce
 
 19.	Select the Users object and click **OK**.
  
-![An image showing ](Media/Image8.13.jpg)
+    ![An image showing ](Media/Image8.13.jpg)
 
-Figure 8.13: Salesforce Virtual View
+    Figure 8.13: Salesforce Virtual View
 
 20.	For the selected users content node, click the Attributes tab.
 
@@ -228,23 +228,23 @@ Figure 8.13: Salesforce Virtual View
 
 23.	To mount this virtual view in the RadiantOne namespace, do so from the [Main Control Panel](06-virtual-views-based-on-aggregation#mounting-virtual-views-created-with-context-builder) -> Directory Namespace tab. 
 
-24.	To test the virtual view, go to the Main Control Panel -> Directory Browser tab and navigate below the naming context where you mounted the view in step 23. Your Salesforce user accounts are shown.
+24.	To test the virtual view, go to the Main Control Panel > Directory Browser tab and navigate below the naming context where you mounted the view in step 23. Your Salesforce user accounts are shown.
 
 ![An image showing ](Media/Image8.14.jpg)
 
-Figure 8.14: Sample Run Time Virtual View from Salesforce
+Figure 14: Sample Run Time Virtual View from Salesforce
 
 ### JDBC Access
 
 As an alternative to using SCIM, RadiantOne includes a JDBC driver to virtualize Salesforce. This section describes the configuration.
 
-1.	On the Main Control Panel -> Settings tab -> Server Backend section, go to DB Data Sources.
+1.	On the Main Control Panel > Settings tab > Server Backend section, go to DB Data Sources.
 
 2.	On the right, click on radiantsalesforce and click **Edit**.
- 
-![An image showing ](Media/Image8.15.jpg)
 
-Figure 8.15: Salesforce Custom Data Source
+    ![An image showing ](Media/Image8.15.jpg)
+
+    Figure 8.15: Salesforce Custom Data Source
 
 3.	Enter your Salesforce user email in the User property.
 
@@ -253,9 +253,9 @@ Figure 8.15: Salesforce Custom Data Source
 5.	If you are connecting to a production instance of Salesforce, the URL value should be: jdbc:salesforce:
 If you are connecting to a sanbox/dev instance of Salesforce, the URL value should be: 
 
-jdbc:salesforce:<sandboxURL>
+    jdbc:salesforce:<sandboxURL>
 
-e.g. jdbc:salesforce:https://test.salesforce.com/services/Soap/u/30.0
+    e.g. `jdbc:salesforce:https://test.salesforce.com/services/Soap/u/30.0`
 
 6.	Click ![An image showing ](Media/save4.jpg). At this point, the default Salesforce view located at dv=salesforce,o=cloudservices,o=vds should return your data (contacts and accounts are the objects defined in the view).
 
@@ -295,16 +295,16 @@ If you have not already created an application in Azure AD, you must do so prior
 
 5.	Click **Register**. The registered app is displayed. Take note of the Application ID.
 
-![An image showing ](Media/Image8.16.jpg)
+    ![An image showing ](Media/Image8.16.jpg)
 
-Figure 8.16: Azure AD Application
+    Figure 8.16: Azure AD Application
 
 6.	Click the application to access the specific settings.
 7.	Navigate to Certificates & Secrets.
 
 8.	In the Client Secret Section, click **New Client Secret**.
 
->**Note - If you configured a certificate to use instead of a client secret, you will reference the certificate in the RadiantOne configuration instead and can skip this step and steps 9-10 below.**
+>[!note] If you configured a certificate to use instead of a client secret, you will reference the certificate in the RadiantOne configuration instead and can skip this step and steps 9-10 below.
 
 9.	Enter a description, expiration and click **Add** .
 
@@ -314,17 +314,17 @@ Figure 8.16: Azure AD Application
 
 12.	RadiantOne supports both the legacy Azure Active Directory Graph API and the Microsoft Graph API. If you use the default graphapi custom data source in RadiantOne, it uses the legacy Azure Active Directory Graph API. If you use the default mgraph [custom data source](#configure-a-radiantone-scim-data-source) in RadiantOne, it uses the Microsoft Graph API. On the Microsoft API tab, be sure to select permission for the applicable API, based on what custom data source you are going to use.
 
-Note - Azure Active Directory Graph is in the legacy API section. Since support for the Azure Active Directory Graph API will soon be deprecated, it is recommended you use the RadiantOne mgraph custom data source and the Microsoft Graph API.
+>[!note] Azure Active Directory Graph is in the legacy API section. Since support for the Azure Active Directory Graph API will soon be deprecated, it is recommended you use the RadiantOne mgraph custom data source and the Microsoft Graph API.
 
 13.	Select Application permissions for the Type.
 
 14.	Enable Directory.Read.All for read-only access. If you want read/write access to the data, enable the Directory.ReadWrite.All access.
 
->**NOTE – if you need to be able to delete groups, you must also have the Group.ReadWrite.All permission.**
+>[!note] If you need to be able to delete groups, you must also have the Group.ReadWrite.All permission.
 
-![An image showing ](Media/Image8.17.jpg)
+    ![An image showing ](Media/Image8.17.jpg)
  
-Figure 8.17: Azure AD Application Permissions
+    Figure 8.17: Azure AD Application Permissions
 
 15.	Click **Add Permissions**.
 
@@ -332,46 +332,47 @@ Figure 8.17: Azure AD Application Permissions
 
 17.	Click Yes.
 
->**Note – it might take a few minutes for the permissions to take effect. If you change the permissions after you have started testing with RadiantOne, you should restart the RadiantOne service to force the new permissions to take effect.**
+>[!note] It might take a few minutes for the permissions to take effect. If you change the permissions after you have started testing with RadiantOne, you should restart the RadiantOne service to force the new permissions to take effect.
 
 Remember, if you are going to use the graphapi custom data source (as outlined in the next section) then the API permissions (for read/write access) should be assigned to the Azure Active Directory Graph API.
 
 ![An image showing ](Media/Image8.18.jpg)
 
-Figure 8.18: Read and write permissions for the Azure Active Directory Graph API
+Figure 18: Read and write permissions for the Azure Active Directory Graph API
  
 If you are going to use the mgraph custom data source (as outlined in the next section) then the API permissions (for read/write access) should be assigned to the Microsoft Graph API.
 
 ![An image showing ](Media/Image8.19.jpg)
 
-Figure 8.19: Read and write permissions for the Microsoft Graph API. 
+Figure 19: Read and write permissions for the Microsoft Graph API. 
  
 To support delegating authentication requests to Azure AD (RadiantOne getting an LDAP bind request and sending the credentials checking to Azure AD), when using the mgraph custom data source, set “Treat Application as a public client” to Yes in the Authentication configuration for the application.
 
 ![An image showing ](Media/Image8.20.jpg)
 
-Figure 8.20: The "Treat Application as a public client" option
+Figure 20: The "Treat Application as a public client" option
 
 To support deleting user entries in Azure AD, one additional application API permission is required: User.ReadWrite.All. To support deleting groups, you must also have the Group.ReadWrite.all permission.
 
 ![An image showing ](Media/Image8.21.jpg)
 
-Figure 8.21: The User.Read.Write.All permission
+Figure 21: The User.Read.Write.All permission
  
 ### Configure RadiantOne Custom Data Source
 
 The Azure application APPLICATION ID and SECRET KEY (or Certificate) described in the previous section are required to configure the Azure AD data source in RadiantOne.
+
 RadiantOne supports both the legacy Azure Active Directory Graph API and the Microsoft Graph API. If you use the default graphapi custom data source in RadiantOne, it uses the legacy Azure Active Directory Graph API. If you use the default mgraph custom data source in RadiantOne, it uses the Microsoft Graph API. 
 
->**Note - Since the Azure Active Directory Graph API will soon be deprecated by Microsoft, it is advised to use the mgraph custom data source.**
+>[!note] Since the Azure Active Directory Graph API will soon be deprecated by Microsoft, it is advised to use the mgraph custom data source.
 
 1.	On the Main Control Panel > Settings tab > Server Backend section, go to Custom Data Sources.
 
 2.	On the right, click either the *graphapi* or *mgraph* data source and click Edit.
 
-![An image showing ](Media/Image8.22.jpg) 
+    ![An image showing ](Media/Image8.22.jpg) 
 
-Figure 8.22: Azure AD Custom Data Source
+    Figure 8.22: Azure AD Custom Data Source
 
 3.	Select the username property and click **Edit**.
 
@@ -419,7 +420,7 @@ Figure 8.22: Azure AD Custom Data Source
 
 25.	If your company requires API calls to be made through a Web Proxy Server, add a property named “proxy” with a value that points to the proxy server and port (e.g. rli.vip.proxy.com:9090). If SSL is required, add a property named “proxyssl” with a value of true. 
 
->**Note - If SSL is used, ensure RadiantOne trusts the public certificate for the proxy server. To manually trust the certificate, import it the RadiantOne Client Certificate Truststore from the Main Control Panel > Settings > Security > Client Certificate Truststore.**
+>[!note] If SSL is used, ensure RadiantOne trusts the public certificate for the proxy server. To manually trust the certificate, import it the RadiantOne Client Certificate Truststore from the Main Control Panel > Settings > Security > Client Certificate Truststore.
 
 26.	Click **OK**.
 
@@ -431,23 +432,23 @@ Figure 8.22: Azure AD Custom Data Source
 
 30.	(If using the mgraph custom data source and Azure AD contains large volumes of users and/or groups; ~50K+ users) add two new properties: **max_retries_on_error** and **retry_interval_on_error**. These properties dictate the behavior of error recovery when initializing persistent cache on the virtual view of the Azure AD backend. Max_retries_on_error defines the number of retries when an error is encountered. This must be a positive, numeric value. After the maximum retries is exhausted, the exception is logged and the persistent cache initialization is stopped. If this property is not present, or contains an invalid value, no retry logic is used. Retry_interval_on_error indicates the amount of time to wait before the next retry. This value is in milliseconds. If this property is not present, or contains an invalid value, a default value of 10000 ms (10 seconds) is used.
 
-><span style="color:red">**IMPORTANT NOTE – After you successfully initialize the persistent cache, edit the mgraph custom data source and delete the max_retries_on_error and retry_interval_on_error properties so they don’t interfere with the persistent cache connector refresh logic which enforces similar properties.**
+>[!warning] After you successfully initialize the persistent cache, edit the mgraph custom data source and delete the max_retries_on_error and retry_interval_on_error properties so they don’t interfere with the persistent cache connector refresh logic which enforces similar properties.
 
 31.	If you are going to virtualize Azure AD Groups, see Working with Azure AD Groups and you might need to add more properties to the graphapi data source described in these steps.
 
 32.	Click **Save**. At this point, if you are using the graphapi custom data source, the default Azure view located at dv=graphapi,o=cloudservices,o=vds should return your data. If you are using the mgraph custom data source, you must create a new Root Naming Context on the Directory Namespace tab and mount the mgraph.dvx (default virtual view) in order to see the data.
 
->**Note – if you are using Azure Active Directory B2C, you can use the graphapib2c custom data source instead.**
+>[!note] If you are using Azure Active Directory B2C, you can use the graphapib2c custom data source instead.
 
 ![An image showing ](Media/Image8.23.jpg)
 
-Figure 8.23: Azure AD B2C Custom Data Source
+Figure 23: Azure AD B2C Custom Data Source
 
 #### Working with Azure AD Groups
 
 When working with Azure AD groups, the entries can be returned either with or without the members. Both options are described in the following sections.
 
-><span style="color:red">**IMPORTANT NOTE – This section is only applicable when using the graphapi custom data source. If you are using the mgraph custom data source, the group members are always returned with their virtual DNs (as long as users are in the same view definition as groups), comprised of either the user’s ID (GUID) or userPrincipalName depending on which attribute is defined as the “primary key” of the “Users” object in the mgraph.orx/mgraph.dvx files. Keep in mind that the member value must match the definition of the user in the view. For example, a group member identified by user=adot@globalrli.onmicrosoft.com,Category=User,dv=mgraph should match a user entry at this location/DN. If the group member is identified by the ID (e.g. users=859bab3d-1a09-4a7c-acc0-b1f2bef16f05,object=users,dv=graphapi,o=cloudservices,o=vds), then the user location/container in the view defintion should be based on the ID of the user as well.**
+>[!warning] This section is only applicable when using the graphapi custom data source. If you are using the mgraph custom data source, the group members are always returned with their virtual DNs (as long as users are in the same view definition as groups), comprised of either the user’s ID (GUID) or userPrincipalName depending on which attribute is defined as the “primary key” of the “Users” object in the mgraph.orx/mgraph.dvx files. Keep in mind that the member value must match the definition of the user in the view. For example, a group member identified by user=adot@globalrli.onmicrosoft.com,Category=User,dv=mgraph should match a user entry at this location/DN. If the group member is identified by the ID (e.g. users=859bab3d-1a09-4a7c-acc0-b1f2bef16f05,object=users,dv=graphapi,o=cloudservices,o=vds), then the user location/container in the view defintion should be based on the ID of the user as well.
 
 ##### Returning Group Members
 
@@ -461,7 +462,7 @@ If you have more than 500 groups and/or large groups (many members) you can opti
 
 ![An image showing ](Media/Image8.25.jpg)
 
-Figure 8.25: Group Members Returned with ObjectID in the DN
+Figure 25: Group Members Returned with ObjectID in the DN
 
 To add the memberoid property:
 
@@ -477,9 +478,9 @@ To add the memberoid property:
 
 6.	Click **OK**.
 
-![An image showing ](Media/Image8.26.jpg)
+    ![An image showing ](Media/Image8.26.jpg)
 
-Figure 8.26: Adding Memberoid Property
+    Figure 26: Adding Memberoid Property
 
 7.	Click **Save**.
 
@@ -489,9 +490,9 @@ Figure 8.26: Adding Memberoid Property
 
 10.	Define the Objectid attribute as the primary key and remove userPrincipalName. 
 
-![An image showing ](Media/Image8.27.jpg)
+    ![An image showing ](Media/Image8.27.jpg)
 
-Figure 8.27: Modifying Primary Key for Users Object
+    Figure 8.27: Modifying Primary Key for Users Object
 
 11.	Click **Apply**. 
 
@@ -509,7 +510,7 @@ Figure 8.27: Modifying Primary Key for Users Object
 
 18.	On the Attributes tab for this node, use ![An image showing ](Media/right-arrow2.jpg) to define specific attributes as part of the view, or click ![An image showing ](Media/right-arrow3.jpg) to define all attributes.
 
-><span style="color:red">**IMPORTANT NOTE – if you do not require directReports, ownedDevices, registeredDevices or other backlink attributes to be returned, avoid defining them in the virtual view. This will avoid costly lookups to return these attributes and greatly improve performance. If you need to support searches on surname, be sure to add “sn” as the Virtual Name as outlined in Virtualizing Surname/SN Attribute.**
+>[!warning] If you do not require directReports, ownedDevices, registeredDevices or other backlink attributes to be returned, avoid defining them in the virtual view. This will avoid costly lookups to return these attributes and greatly improve performance. If you need to support searches on surname, be sure to add “sn” as the Virtual Name as outlined in Virtualizing Surname/SN Attribute.
 
 19.	Click ![An image showing ](Media/save3.jpg) to save the virtual view.
 
@@ -523,9 +524,8 @@ Figure 8.28: Users Returned with ObjectID in the DN
 
 If you only need the basic group information without the members, on queries containing one level or sub tree scope, you can configure ignoremember=true in the graphapi custom data source. This is the most efficient method to get groups from Azure AD since no extra request for members is required. With this property, RadiantOne does not return members in the group entries for queries containing one level or sub tree scope. The members are only returned for group queries using base scope. On base searches, the members are returned with their UserPrincipalName in the DN.
 
-><span style="color:red">**IMPORTANT NOTE – if you set memberoid=true as described in the previous section, that value overrides the ignoremember=true setting. It is not recommended to use both ignoremember=true and memberoid=true.**
-
-><span style="color:red">**If you do not want group members returned at all, no matter the search scope, edit the graphapi.dvx file in the Main Control Panel > Context Builder tab > View Designer sub-tab and remove the member attribute on the Attributes tab, for the objectid content node below object=groups.**
+>[!warning] If you set memberoid=true as described in the previous section, that value overrides the ignoremember=true setting. It is not recommended to use both ignoremember=true and memberoid=true. <br> 
+If you do not want group members returned at all, no matter the search scope, edit the graphapi.dvx file in the Main Control Panel > Context Builder tab > View Designer sub-tab and remove the member attribute on the Attributes tab, for the objectid content node below object=groups.**
 
 To add the ignoremember property:
 
@@ -541,39 +541,35 @@ To add the ignoremember property:
 
 6.	Click **OK**.
 
-![An image showing ](Media/Image8.29.jpg)
+    ![An image showing ](Media/Image8.29.jpg)
 
-Figure 8.29: Adding Ignoremember Property
+    Figure 8.29: Adding Ignoremember Property
 
 7.	Click **Save**.
 
 In the example shown below, group entries are returned without members. Note that a basic LDAP command line query is used. Using the Main Control Panel -> Directory Browser tab can be confusing because the “click” on the group entry (when browsing) is actually doing a base search, in which case the members are always returned.
 
-```
-C:\SunResourceKit>ldapsearch -h doc-e1win1 -p 2389 -D "cn=directory manager" -w secretsecret -b "object=groups,dv=graphapi,o=cloudservices,o=vds" -s one (displayName=Sales)
+`C:\SunResourceKit>ldapsearch -h doc-e1win1 -p 2389 -D "cn=directory manager" -w secretsecret -b "object=groups,dv=graphapi,o=cloudservices,o=vds" -s one (displayName=Sales)`
 
-version: 1
-dn: objectid=68feb57e-7775-455b-be7e-4844aee817d6,object=groups,dv=graphapi,o=
- cloudservices,o=vds
-mailnickname: d964c0c4-9eb8-4c4f-aaae-43ca687be1dc
-owners: users=b7c684a9-c5c0-4dee-aead-21eae98dd86a,object=users,dv=graphapi,o=
- cloudservices,o=vds
-displayname: Sales
-odatatype: Microsoft.DirectoryServices.Group
-objectclass: top
-objectclass: vdgroups
-objectid: 68feb57e-7775-455b-be7e-4844aee817d6
-securityenabled: true
-objecttype: Group
-description: The group has access to Salesforce
-mailenabled: false
-```
+`version: 1`
+<br>`dn: objectid=68feb57e-7775-455b-be7e-4844aee817d6,object=groups,dv=graphapi,o=cloudservices,o=vds`
+<br>`mailnickname: d964c0c4-9eb8-4c4f-aaae-43ca687be1dc
+owners: users=b7c684a9-c5c0-4dee-aead-21eae98dd86a,object=users,dv=graphapi,o=cloudservices,o=vds`
+<br>`displayname: Sales`
+<br>`odatatype: Microsoft.DirectoryServices.Group`
+<br>`objectclass: top`
+<br>`objectclass: vdgroups`
+<br>`objectid: 68feb57e-7775-455b-be7e-4844aee817d6`
+<br>`securityenabled: true`
+<br>`objecttype: Group`
+<br>`description: The group has access to Salesforce`
+<br>`mailenabled: false`
 
 #### Working with Multiple Azure AD Tenants
 
 To work with multiple Azure AD tenants, you can clone the default graphapi or mgraph custom data source and change the properties to point to the tenant.
 
-1.	From the Main Control Panel > Settings tab > Server Backend -> Custom Data Sources, select graphapi and click  .
+1.	From the Main Control Panel > Settings tab > Server Backend > Custom Data Sources, select graphapi and click **Clone**.
 
 2.	Enter a data source name (e.g. graphapitenantb) and click Clone.
 
@@ -593,9 +589,9 @@ Any attributes that you want clients to use in a search filter, or insert/update
 
 ![An image showing ](Media/Image8.30.jpg)
 
-Figure 8.30: Graphapi Schema File
+Figure 30: Graphapi Schema File
 
->**Note – if you are using Azure AD B2C, use the graphapib2c.orx file instead of the graphapi.orx file.**
+>[!note] If you are using Azure AD B2C, use the graphapib2c.orx file instead of the graphapi.orx file.
 
 #### Working with Extension Attributes
 
@@ -603,7 +599,7 @@ To work with extension attributes in Azure objects, add the attribute name to th
 
 ![An image showing ](Media/Image8.31.jpg)
 
-Figure 8.31: Copying the appId value
+Figure 31: Copying the appId value
  
 Once you have the appId, follow the steps below.
 
@@ -611,21 +607,21 @@ Once you have the appId, follow the steps below.
 
 2.	Enter the extension attribute full name using the appId value with the hyphens removed (e.g. extension_41ebd369484d4088bab5c9077f9e13a7_skypeId) with an alias for the friendly attribute name (e.g. skypeId).
 
-![An image showing ](Media/Image8.32.jpg)
+    ![An image showing ](Media/Image8.32.jpg)
 
-Figure 8.32: Example Extension Attribute
+    Figure 8.32: Example Extension Attribute
 
 3.	Click **Add**.
 
 4.	Click **Save**.
 
-><span style="color:red">**IMPORTANT NOTE – the case used in Azure AD to create the extension attribute must match the case used when adding the extension attribute to the schema. In the example above, the “I” in skypeId is in uppercase. Therefore, when adding the extension attribute to the graphapi schema, make sure to follow this case-sensitive syntax.**
+>[!warning] The case used in Azure AD to create the extension attribute must match the case used when adding the extension attribute to the schema. In the example above, the “I” in skypeId is in uppercase. Therefore, when adding the extension attribute to the graphapi schema, make sure to follow this case-sensitive syntax.
 
 ### Azure AD Virtual View
 
 The default graphapi custom data source is associated with a virtual view file named graphapi.dvx. The default mgraph custom data source is associated with a virtual view file named mgraph.dvx. These files can be opened and modified in the Main Control Panel > Context Builder tab > View Designer sub-tab. 
 
->**Note – if you are using Azure AD B2C, use the graphapib2c.dvx file instead of the graphapi.dvx or mgraph.dvx files.**
+>[!note] If you are using Azure AD B2C, use the graphapib2c.dvx file instead of the graphapi.dvx or mgraph.dvx files.
 
 ![An image showing ](Media/Image8.33.jpg)
 
@@ -643,7 +639,7 @@ If you’ve modified the graphapi.orx or mgraph.orx schema files to support exte
 
 5.	On the Attributes tab, select the extension attribute from the source attribute list (on the left) and use the ![An image showing ](Media/right-arrow2.jpg) button and move it to the published attribute list (on the right). 
 
-><span style="color:red">**IMPORTANT NOTE – if you do not require directReports, ownedDevices, registeredDevices or other backlink attributes to be returned, avoid defining them in the virtual view. This will avoid costly lookups to return these attributes and greatly improve performance.**
+>[!warning] If you do not require directReports, ownedDevices, registeredDevices or other backlink attributes to be returned, avoid defining them in the virtual view. This will avoid costly lookups to return these attributes and greatly improve performance.
 
 6.	Save the virtual view. The run time view mounted at dv=graphapi,o=cloudservices,o=vds should now return the extension attributes. If you are using the mgraph.dvx file, you can create a New Root Naming Context in the Main Control Panel > Directory Namespace tab and mount the mgraph.dvx file there. 
 
@@ -653,13 +649,11 @@ To create a new virtual view, load the graphapi.orx or mgraph.orx schema file in
 
 The Azure AD schema uses the attribute “surname” to store a user’s last name. The RadiantOne default LDAP schema includes the following attribute type definition for “sn”:
 
-```
-attributeTypes: ( 2.5.4.4 NAME ( 'sn' 'surName' ) DESC 'Standard LDAP attribute type' SUP name SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'RFC 2256' )
-```
+`attributeTypes: ( 2.5.4.4 NAME ( 'sn' 'surName' ) DESC 'Standard LDAP attribute type' SUP name SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'RFC 2256' )`
 
 This schema definition can cause problems if clients issue searches for the Azure AD view using a filter of (surname=<last_name>) because RadiantOne automatically translates this into a filter of (sn=<last_name>) when it queries Azure AD. Since the attribute in Azure AD is “surname” and not “sn”, the expected entry is not returned. To avoid this, you can either configure a mapping in the virtual view to map surname to sn, or edit the RadiantOne FID schema and remove the surname mapping from the sn attribute. 
 
->**Note – an alias of “streetaddress” is defined for the street attribute, and can run into the same issues. Either remove the alias from the RadiantOne FID schema, or remap properly in the virtual view using the same process outlined for the surname attribute below.**
+>[!note] An alias of “streetaddress” is defined for the street attribute, and can run into the same issues. Either remove the alias from the RadiantOne FID schema, or remap properly in the virtual view using the same process outlined for the surname attribute below.
 
 To configure a mapping for the surname attribute:
 
@@ -691,7 +685,7 @@ If you only want to support client requests with filters using (surname=<last_na
 
 ## Google Directory
 
->**Note - The steps below provide general guidance and may not reflect the latest Google Directory interface. For more detailed configuration steps, refer to the Google Directory documentation.**
+>[!note] The steps below provide general guidance and may not reflect the latest Google Directory interface. For more detailed configuration steps, refer to the Google Directory documentation.
 
 To virtualize Google Directory, a Service Account on the domain must be set to enable the connection. 
 
@@ -709,13 +703,13 @@ To virtualize Google Directory, a Service Account on the domain must be set to e
 
 6.	In OAuth, create a new client ID and select the type “Service Account” and validate it by clicking “Create Client ID”.
 
-![An image showing ](Media/Image8.35.jpg)
+    ![An image showing ](Media/Image8.35.jpg)
 
-Figure 8.35: Google Service Account
+    Figure 8.35: Google Service Account
 
 7.	Verify that the service account appears in API Project -> Permissions.
 
-><span style="color:red">**IMPORTANT NOTE - Take note of the client ID (<numbers-numbers&letters>.apps.googleusercontent.com) and the email address (``<same>@developer.gserviceaccount.com) attached to the service account created, as you will need them later. Also notice that your browser just downloaded the P12 certificate that is needed to authenticate the Service account.**
+>[!warning] Take note of the client ID (<numbers-numbers&letters>.apps.googleusercontent.com) and the email address (``<same>@developer.gserviceaccount.com) attached to the service account created, as you will need them later. Also notice that your browser just downloaded the P12 certificate that is needed to authenticate the Service account.
 
 8.	Go to the Admin console and log in as an administrator for your domain. 
 
@@ -723,9 +717,9 @@ Figure 8.35: Google Service Account
 
 10.	In Security, click API reference and check “Enable API access”.
 
-![An image showing ](Media/Image8.36.jpg)
+    ![An image showing ](Media/Image8.36.jpg)
 
-Figure 8.36: Enabling Google API Access
+    Figure 8.36: Enabling Google API Access
 
 11.	In Security, click “show more” then “Advanced settings” then “Manage API client access”. Here you can authorize the service account with different scopes that constrain its access to data. 
 
@@ -737,25 +731,25 @@ https://www.googleapis.com/auth/admin.directory.user,https://www.googleapis.com/
 
 ![An image showing ](Media/Image8.37.jpg)
 
-Figure 8.37: Enabling Google API Access
+Figure 37: Enabling Google API Access
 
 **Define Google Directory Data Source**
 
 RadiantOne includes a custom data source defined for Google Directory. This default data source can be updated with connection criteria to your Google Directory instance. These steps are described in this section.
 
->**Note – you need the following information to update the data source. This information was described in the previous section.
+>[!note] You need the following information to update the data source. This information was described in the previous section.
 <br>domain: your domain name (e.g. radiantlogic.com).
 <br>service_account_user: the email of the admin account you created the service account with.
 <br>service_account_email: the email of the service account. 
 <br>service_account_p12_certificate: the full path on the server to the p12 certificate file. 
 
-1.	On the Main Control Panel -> Settings tab -> Server Backend section, go to Custom Data Sources.
+1.	On the Main Control Panel > Settings tab > Server Backend section, go to Custom Data Sources.
 
 2.	On the right, click on googledirectory and click **Edit**.
 
-![An image showing ](Media/Image8.38.jpg)
+    ![An image showing ](Media/Image8.38.jpg)
 
-Figure 8.38: Google Directory Custom Data Source
+    Figure 8.38: Google Directory Custom Data Source
 
 3.	Select the domain property and click **Edit**.
 
@@ -781,9 +775,9 @@ Figure 8.38: Google Directory Custom Data Source
 
 14.	Enter a new root naming context (e.g. o=googledirectory) and select the Virtual Tree option.
 
-![An image showing ](Media/Image8.39.jpg)
+    ![An image showing ](Media/Image8.39.jpg)
 
-Figure 8.39: New Root Naming Context
+    Figure 8.39: New Root Naming Context
 
 15.	Click **Next**.
 
@@ -793,13 +787,13 @@ Figure 8.39: New Root Naming Context
 
 18.	Click **Ok** to complete the wizard and **OK** again to exit the confirmation.
 
->**Note - To view the schema associated with the googledirectory data source and default virtual view, go to the Main Control Panel > Context Builder tab > Schema Manager sub-tab and open the schema named googledirectory. The objects that can be virtualized from Google are described in this file. To create a new virtual view, use the View Designer sub-tab on the Context Builder tab and load the googledirectory.orx file. For details on using View Designer, see the RadiantOne Context Builder Guide.**
+>[!note] To view the schema associated with the googledirectory data source and default virtual view, go to the Main Control Panel > Context Builder tab > Schema Manager sub-tab and open the schema named googledirectory. The objects that can be virtualized from Google are described in this file. To create a new virtual view, use the View Designer sub-tab on the Context Builder tab and load the googledirectory.orx file. For details on using View Designer, see the RadiantOne Context Builder Guide.
 
 You can browse the runtime virtual view from the Main Control Panel > Directory Browser tab. An example is shown below.
 
 ![An image showing ](Media/Image8.40.jpg)
 
-Figure 8.40: Sample Virtual View of Google Directory
+Figure 40: Sample Virtual View of Google Directory
 
 ## Okta Universal Directory
 
@@ -823,9 +817,9 @@ The virtual view can be aggregated and/or joined with virtual views from other i
 
 7.	(Optional) If you have enabled the Advanced Search option in Okta, you can leverage it by creating a new property named “usesearch”. Click ADD and create a property named usesearch with a value of true like in the example shown below.  
 
-![An image showing ](Media/Image8.41.jpg)
+    ![An image showing ](Media/Image8.41.jpg)
 
-Figure 8.41: Creating the usesearch property
+    Figure 41: Creating the usesearch property
 
 8.	Click **OK**.
 
@@ -839,15 +833,15 @@ Figure 8.41: Creating the usesearch property
 
 13.	Click **Save**.
 
-![An image showing ](Media/Image8.42.jpg)
+    ![An image showing ](Media/Image8.42.jpg)
 
-Figure 8.42: Okta Custom Data Source Configuration
+    Figure 8.42: Okta Custom Data Source Configuration
  
 14.	From the Main Control Panel -> Directory Browser tab, navigate to the location where you’ve [mounted your virtual view](#optional-modify-the-virtual-view) (oktaclient.dvx). 
 
 ![An image showing ](Media/Image8.43.jpg)
 
-Figure 8.43: Sample Run Time Virtual View from Okta Universal Directory
+Figure 43: Sample Run Time Virtual View from Okta Universal Directory
 
 ### (Optional) Extend Virtual View with New Okta Attributes 
 
@@ -863,15 +857,15 @@ Virtual views are based on a metadata configuration file containing default attr
 
 5.	Right click on Fields and select Add New Attribute.
 
-![An image showing ](Media/Image8.44.jpg)
+    ![An image showing ](Media/Image8.44.jpg)
 
-Figure 8.44: Add New Attributes
+    Figure 44: Add New Attributes
 
 6.	The ‘Add New Attribute’ opens. The Name of the attribute needs to be prefixed by ‘profile-’. For example, a custom attribute ‘uid’ in okta, should be entered as profile-uid.
 
-![An image showing ](Media/Image8.45.jpg)
+    ![An image showing ](Media/Image8.45.jpg)
 
-Figure 8.45: Attribute Name
+    Figure 8.45: Attribute Name
 
 7.	Click OK.
 
@@ -895,9 +889,9 @@ If you have modified the metadata as described in Extend Virtual View with New O
 
 6.	Select the custom attribute from the list on the left and then use the ![An image showing ](Media/right-arrow2.jpg) button to map the attribute to the list on the right. Attributes shown in the right column are returned in the virtual view. If you want the attribute to display with a different name, click in the Virtual Name column and enter the name. In the example below, a custom attribute named profile-rli is added to the virtual view and has a virtual name of rli.
 
-![An image showing ](Media/Image8.46.jpg)
+    ![An image showing ](Media/Image8.46.jpg)
 
-Figure 8.46: Virtual View Definitions – Attributes
+    Figure 46: Virtual View Definitions – Attributes
 
 7.	To expose all Okta attributes in the virtual view, click the ![An image showing ](Media/right-arrow3.jpg) button.
 
@@ -919,7 +913,7 @@ RadiantOne can virtualize the SailPoint Identity IQ database via SCIM. The confi
 
 1.	In the RadiantOne Main Control Panel > Settings tab > Server Backend > Custom data Sources section, select scimclient2 and click **Edit**.
 
->**Note – if you are already using the scimclient2 custom data source to virtualize a SCIM backend, click the Clone button to make a copy that you can work with for SailPoint to avoid impacting your existing configuration.**
+>[!note] If you are already using the scimclient2 custom data source to virtualize a SCIM backend, click the Clone button to make a copy that you can work with for SailPoint to avoid impacting your existing configuration.
 
 2.	Click **Advanced Edit**.
 
@@ -941,11 +935,11 @@ RadiantOne can virtualize the SailPoint Identity IQ database via SCIM. The confi
 
 11.	Click **OK**.
 
-Note – If OAuth is used for authentication, you do not need the username and password properties. Configure the oauthurl, oauthclientid, and oauthclientsecret properties instead. This is described in [OAuth Authentication](#oauth-authentication).
+>[!note] If OAuth is used for authentication, you do not need the username and password properties. Configure the oauthurl, oauthclientid, and oauthclientsecret properties instead. This is described in [OAuth Authentication](#oauth-authentication).
 
 12.	Select the replaceonupdate property (add if it doesn’t exist). Set the value to true. This is required because the SailPoint SCIM interface doesn’t support standard update (PATCH) operations and requires a replace operation (PUT) instead. 
 
->**Notes – For SCIM servers that do not support PATCH operations, FID sends a PUT request to the SCIM Server, which replaces the entry.**
+>[!note] For SCIM servers that do not support PATCH operations, FID sends a PUT request to the SCIM Server, which replaces the entry.
 
 13.	Click **Save**.
 
@@ -953,21 +947,21 @@ Note – If OAuth is used for authentication, you do not need the username and p
 
 For RadiantOne to support OAuth authentication in the SCIM requests to SailPoint, you must enable API Authentication in the SailPoint Admin Console.
 
->**Note - The steps below provide general guidance and may not reflect the latest SailPoint interface. For more detailed configuration steps, refer to the SailPoint documentation.**
+>[!note] The steps below provide general guidance and may not reflect the latest SailPoint interface. For more detailed configuration steps, refer to the SailPoint documentation.
 
 1.	Log into the SailPoint Admin Console as an administrator.
 
 2.	Go to Global Settings.
 
-![An image showing ](Media/Image8.47.jpg)
+    ![An image showing ](Media/Image8.47.jpg)
 
-Figure 8.47: SailPoint Global Settings
+    Figure 8.47: SailPoint Global Settings
 
 3.	Click API Authentication
 
-![An image showing ](Media/Image8.48.jpg)
+    ![An image showing ](Media/Image8.48.jpg)
 
-Figure 8.48: SailPoint API Authentication
+    Figure 8.48: SailPoint API Authentication
 
 4.	Click **Create**.
 
@@ -979,9 +973,9 @@ Figure 8.48: SailPoint API Authentication
 
 8.	Take note of the Client Id and the Secret (click ![An image showing ](Media/client-button.jpg) to reveal the secret).
 
-![An image showing ](Media/Image8.49.jpg)
+    ![An image showing ](Media/Image8.49.jpg)
 
-Figure 8.49: SailPoint OAuth Client Configuration
+    Figure 8.49: SailPoint OAuth Client Configuration
 
 9.	In the RadiantOne Main Control Panel > Settings tab > Server Backend > Custom Data Sources, select the configuration associated with SailPoint and click **Edit**.
 
@@ -998,9 +992,9 @@ http://<SailPointServer>:<port>/identityiq/oauth2/token
 
 15.	Enter oauthclientid for the Name property and provide the Client ID value associated with your SailPint OAuth client configuration. 
  
-![An image showing ](Media/Image8.50.jpg)
+    ![An image showing ](Media/Image8.50.jpg)
 
-Figure 8.50: Sample Client ID Value
+    Figure 8.50: Sample Client ID Value
 
 16.	Click **OK**.
 
@@ -1024,9 +1018,9 @@ The Context Builder can be used to extract the metadata/schema from SailPoint an
 
 4.	Select the data source associated with SailPoint from the drop-down list and click **Next**.
 
-![An image showing ](Media/Image8.51.jpg)
+    ![An image showing ](Media/Image8.51.jpg)
  
-Figure 8.51: SCIM v2 Schema Extraction
+    Figure 8.51: SCIM v2 Schema Extraction
 
 5.	Select the objects to extract and click Next. You can select all objects at this step because the virtual view definition can be customized to include only desired objects and attributes.
 
@@ -1038,7 +1032,7 @@ Figure 8.51: SCIM v2 Schema Extraction
 
 9.	Click Select to choose the file containing the SailPoint schema on the Custom tab and click **OK***. 
 
->**Note – the virtual view definition can be customized as needed. The steps in this guide create a basic virtual view.**
+>[!note] The virtual view definition can be customized as needed. The steps in this guide create a basic virtual view.
 
 10.	Click **OK** to create the view.
 
@@ -1052,27 +1046,27 @@ Figure 8.51: SCIM v2 Schema Extraction
 
 15.	Select the Users object and click **OK**.
 
-![An image showing ](Media/Image8.52.jpg)
+    ![An image showing ](Media/Image8.52.jpg)
  
-Figure 8.52: SailPoint Virtual View
+    Figure 52: SailPoint Virtual View
 
 16.	For the selected users content node, click the Attributes tab.
 
 17.	Click ![An image showing ](Media/right-arrow3.jpg) to expose all available attributes in the virtual view.
 
-![An image showing ](Media/Image8.53.jpg)
+    ![An image showing ](Media/Image8.53.jpg)
  
-Figure 8. 43: SailPoint Attributes Available in the Virtual View
+    Figure 43: SailPoint Attributes Available in the Virtual View
 
 18.	Click ![An image showing ](Media/Save3.jpg). 
 
 19.	Mount this virtual view below a naming context, from the [Main Control Panel > Directory Namespace tab](06-virtual-views-based-on-aggregation#mounting-virtual-views-created-with-context-builder). 
 
-20.	To test the virtual view, go to the Main Control Panel -> Directory Browser tab and navigate below the naming context where you mounted the virtual view. Your SailPoint users are shown.
+20.	To test the virtual view, go to the Main Control Panel > Directory Browser tab and navigate below the naming context where you mounted the virtual view. Your SailPoint users are shown.
 
-![An image showing ](Media/Image8.54.jpg)
+    ![An image showing ](Media/Image8.54.jpg)
 
-Figure 8.54: Sample Run Time Virtual View from SailPoint
+    Figure 54: Sample Run Time Virtual View from SailPoint
 
 #### Configure Virtual View of Users with Groups/Entitlements
 
@@ -1098,13 +1092,13 @@ To virtualize SailPoint users with their entitlements/groups returned in the ent
 
 10.	On the Attributes tab, click ![An image showing ](Media/right-arrow3.jpg) to expose all available attributes in the virtual view. 
 
->**Note - ID is the only required attribute. However, any attribute that you want clients to use in a filter (when querying RadiantOne) must be defined for the object.**
+>[!note] ID is the only required attribute. However, any attribute that you want clients to use in a filter (when querying RadiantOne) must be defined for the object.
 
 11.	Click ![An image showing ](Media/save3.jpg).
 
-![An image showing ](Media/Image8.55.jpg)
+    ![An image showing ](Media/Image8.55.jpg)
  
-Figure 8.55: SailPoint Accounts Virtual View
+    Figure 55: SailPoint Accounts Virtual View
 
 12.	Mount this virtual view below a naming context from the [Main Control Panel > Directory Namespace tab](06-virtual-views-based-on-aggregation#mounting-virtual-views-created-with-context-builder). 
 
@@ -1121,13 +1115,13 @@ Configure RadiantOne SCIM Data Source
 
 1.	In the RadiantOne Main Control Panel > Settings tab > Server Backend > Custom data Sources section, select scimclient and click **Edit**.
 
->**Note – if you are already using the scimclient custom data source to virtualize a SCIM backend, click the Clone button to make a copy that you can work with for PingOne to avoid impacting your existing configuration.**
+>[!note] If you are already using the scimclient custom data source to virtualize a SCIM backend, click the Clone button to make a copy that you can work with for PingOne to avoid impacting your existing configuration.
 
 2.	Select the url property and click **Edit**.
 
 3.	Enter the value matching your PingOne service. 
 
-https://directory-api.pingone.com/api/directory
+    https://directory-api.pingone.com/api/directory
 
 4.	Click **OK**. 
 
@@ -1147,15 +1141,15 @@ https://directory-api.pingone.com/api/directory
 
 12.	Enter bodyauth for the property name with a value of true. This ensures that the authentication credentials (for authenticating users in the PingOne data source) are sent in the body of the request instead of in the URL. If this property is not present, the credentials are sent to PingOne in the URL.
 
-![An image showing ](Media/Image8.57.jpg)
+    ![An image showing ](Media/Image8.57.jpg)
  
-Figure 8.57: Sample PingOne Custom Data Source
+    Figure 57: Sample PingOne Custom Data Source
 
 13.	(Optional) RadiantOne (as a SCIM client) uses paging when communicating with the SCIM service (backend). The default page size is 500. You can customize the page size by adding a custom property named pagesize to the data source. Click Add and enter pagesize for the property name and the page size for the value.
 
-![An image showing ](Media/Image8.58.jpg)
+    ![An image showing ](Media/Image8.58.jpg)
  
-Figure 8.58: Page Size Property for SCIM Backend
+    Figure 58: Page Size Property for SCIM Backend
 
 14.	(Optional) If you want to connect to PingOne directory using OAuth 2.0, click Add and complete steps 15-22. Otherwise, skip to step 23.
 
@@ -1191,29 +1185,29 @@ RadiantOne includes a default SCIM virtual view that can be used to virtualize P
 
 5.	Click Edit to select the appropriate custom data source.
 
-![An image showing ](Media/Image8.59.jpg)
+    ![An image showing ](Media/Image8.59.jpg)
  
-Figure 8.59: Custom Data Source Associated with Virtual View
+    Figure 59: Custom Data Source Associated with Virtual View
 
 6.	Click **OK**. 
 
 7.	Click ![An image showing ](Media/save2.jpg).
 
-><span style="color:red">**IMPORTANT NOTE – You can create a new virtual view instead of using the scimclient.dvx default one described in this section. However, you must first open scimclient.orx in Context Builder and Edit the Connection String to point to your appropriate custom data source. Otherwise, it continues to use the default custom data source named scimclient.**
+>[!warning] You can create a new virtual view instead of using the scimclient.dvx default one described in this section. However, you must first open scimclient.orx in Context Builder and Edit the Connection String to point to your appropriate custom data source. Otherwise, it continues to use the default custom data source named scimclient.
 
 8.	Mount this virtual view below a root naming context, from the [Main Control Panel > Directory Namespace tab](06-virtual-views-based-on-aggregation#mounting-virtual-views-created-with-context-builder). 
 
-9.	To test the virtual view, go to the Main Control Panel -> Directory Browser tab and navigate below the naming context where you mounted the virtual view. Your PingOne user accounts are shown.
+9.	To test the virtual view, go to the Main Control Panel > Directory Browser tab and navigate below the naming context where you mounted the virtual view. Your PingOne user accounts are shown.
 
-![An image showing ](Media/Image8.60.jpg)
+    ![An image showing ](Media/Image8.60.jpg)
  
-Figure 8.60: Sample Run Time Virtual View from PingOne Directory
+    Figure 8.60: Sample Run Time Virtual View from PingOne Directory
 
 ## AWS Cognito
 
 This section describes how to virtualize AWS Cognito users and groups in RadiantOne using a default virtual view. Views created from AWS Cognito data sources are read-only, and binds are not supported. LDAP filters are also not supported. This means that when RadiantOne receives queries that contain filters from clients, those filters are not forwarded to AWS Cognito for processing. 
 
->**Note – To support LDAP filters, create a view of AWS Cognito and configure it for a persistent cache with periodic refresh. For information on creating your own views, refer to the Context Builder Guide. For information on configuring persistent cache with periodic refresh, refer to the Deployment and Tuning Guide.**
+>[!note] To support LDAP filters, create a view of AWS Cognito and configure it for a persistent cache with periodic refresh. For information on creating your own views, refer to the Context Builder Guide. For information on configuring persistent cache with periodic refresh, refer to the Deployment and Tuning Guide.
 
 To virtualize AWS cognito users and groups: 
 
@@ -1241,13 +1235,13 @@ To virtualize AWS cognito users and groups:
 
 10.	Name the property classname. In the Value field, enter: com.rli.scripts.customobjects.awscognito
  
-![An image showing ](Media/Image8.61.jpg)
+    ![An image showing ](Media/Image8.61.jpg)
 
-Figure 8.61: AWS Cognito Custom Data Source
+    Figure 8.61: AWS Cognito Custom Data Source
 
 11.	Click **Save**. 
 
->**Note – if a confirmation box displays the message “Connection to the data source backend failed, save anyway?”, click Yes**.  
+>[!note] If a confirmation box displays the message “Connection to the data source backend failed, save anyway?”, click Yes**.
 
 12.	On the Directory Namespace tab, click the New Naming Context button. 
 

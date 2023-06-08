@@ -61,56 +61,42 @@ The parameters applicable for LDAP backends are as follows (only some of these p
 
 Automatic host discovery can be used when connecting to underlying Active Directory servers using DNS lookups.
 
-><span style="color:red">**IMPORTANT NOTE – if you plan to use persistent cache with real-time/connector-based refresh for your virtual view of Active Directory, do not use host discovery since the native Active Directory capture connector requires the FQDN of the primary and failover servers defined in the data source, in combination with the replication vector to perform failover. If you do not plan on caching your virtual view and/or you plan on using a periodic refresh strategy, then using host discovery is fine.**
+>[!warning] if you plan to use persistent cache with real-time/connector-based refresh for your virtual view of Active Directory, do not use host discovery since the native Active Directory capture connector requires the FQDN of the primary and failover servers defined in the data source, in combination with the replication vector to perform failover. If you do not plan on caching your virtual view and/or you plan on using a periodic refresh strategy, then using host discovery is fine.
 
 The LDAP services reached are the ones published in the DNS service record. If the LDAP service is not published, it cannot be reached (the service is defined by a host AND port in the SRV record). Some examples are shown below (0 means highest priority level)
 
-```
-_ldap._tcp.example.com.    SRV 1 100 389 ldap.example.net
-_ldap._tcp.example.com.    SRV 0 100 636 ldap.example.net
-```
+`_ldap._tcp.example.com. SRV 1 100 389 ldap.example.net
+_ldap._tcp.example.com. SRV 0 100 636 ldap.example.net`
 
 DNS lookups leverage the domain specified in the host parameter. When the specific domain is set in the host parameter, the BaseDN value can be omitted. To use this functionality, the host option should specify the domain name you are interested in and optionally a port (if you are looking for a specific service on a specific port). If you do specify a port, then RadiantOne tries to get the first LDAP service it finds that is listening on that specific port (no matter what order of that particular service in the srv record). Additionally, if you enter a port and there is no LDAP service available on that port, RadiantOne uses the first LDAP service returned from the srv record.
 
->**Note – If there are multiple LDAP services available in the SRV record, RadiantOne uses the first five as “main/primary” and “failover” servers. RadiantOne uses these to automatically failover if the primary LDAP is down. Do not manually specify failover servers in the data source.**
+>[!note] If there are multiple LDAP services available in the SRV record, RadiantOne uses the first five as “main/primary” and “failover” servers. RadiantOne uses these to automatically failover if the primary LDAP is down. Do not manually specify failover servers in the data source.
 
 Below are some examples of the syntax.
 
 Example 1 - Host specified with port set to 0 (a value of zero means no port is indicated). This uses the novato.radiantlogic.com domain and returns the first server found as there is no specific port mentioned.
 
-```
-host:[domain:novato.radiantlogic.com] 
-port:0
-```
+`host:[domain:novato.radiantlogic.com] 
+port:0`
 
 Example 2 - This example tries to get the 'global catalog' ldap service (the one listening on port 3268).
 
-```
-host:[domain:radiantlogic.com]
-port:  3268
-```
+`host:[domain:radiantlogic.com]
+port: 3268`
 
 Example 3 - This example tries to get an SSL connection to the LDAP server (on port 636).
 
-```
-host:  [domain:na.radiantlogic.com]
-port:  636
-```
+`host: [domain:na.radiantlogic.com] port: 636`
 
 ### Host 
+
 Server name or IP address. If you want to use host discovery, you can enter the Active Directory domain here (fully qualified domain name in [ ] like the examples shown above). 
 
 #### Failover Servers
 
 You can list replica servers in the Failover LDAP Servers section. The only properties to indicate are server/host, port and if the port is for SSL. The same bind DN and password listed in the primary server are used to connect to the failover servers. If a connection to a backend fails, RadiantOne tries to connect to the primary server again. After two failures, RadiantOne connects to the failover servers in the order they are listed.
 
->**Note – At DEBUG log level, the following comments are shown in the <RLI_HOME>/vds_server/logs/vds_server.log indicating that RadiantOne has exhausted connection attempts and is switching to a failover server.**
-
->**?? After several tries (2), new resource could not be acquired: Cannot assign requested address**
-
->**Followed by:**
-
->**Error connecting to: ldap://<primary_server>/, switching to failover backend: ldap://<failover_server>**
+>[!note] At DEBUG log level, the following comments are shown in the <RLI_HOME>/vds_server/logs/vds_server.log indicating that RadiantOne has exhausted connection attempts and is switching to a failover server. <br> After several tries (2), new resource could not be acquired: Cannot assign requested address. <br> <br> Followed by: <br> Error connecting to: ldap://<primary_server>/, switching to failover backend: ldap://<failover_server>
 
 ### Port
 
@@ -130,15 +116,15 @@ Pass thru authorization is for determining which account RadiantOne uses to conn
 
 ![An image showing ](Media/Image3.3.jpg)
 
-Figure 3.3: Pass Thru Authorization
+Figure 3: Pass Thru Authorization
  
 This functionality is best described with examples. The following three examples/diagrams detail the different configurations possible.
 
-><span style="color:red">**IMPORTANT NOTE – This feature (and the description below) is for AUTHORIZATION.**
+>[!warning] This feature (and the description below) is for AUTHORIZATION.
 
 ![An image showing ](Media/Image3.4.jpg)
  
-Figure 3.4: Sample Proxy Configuration
+Figure 4: Sample Proxy Configuration
 
 In the diagram above, there are two different proxy views configured in RadiantOne. One for an Enterprise Directory mounted in the virtual namespace below dc=server1people,ou=global,o=vds. The other one is for a Partner Directory and is mounted in the virtual namespace below dc=server2,ou=global,o=vds.
 
@@ -148,19 +134,17 @@ The example below explains what happens when a service account credential define
 
 Data Source for Server 1 in this example is:
 
-```
-Hostname: Server1
-Port:1389
-Base DN: o=airius,dc=server1
-Bind DN (service account): cn=specialuser,ou=people,o=airius,dc=server1
-Bind Password: password 
-Data Source for Server 2 in this example is:
-Hostname: Server 2
-Port: 389 
-Base DN: dc=server2
-Bind DN (service account): cn=superuser,dc=partners,dc=airius,dc=com,dc=server2
-Bind Password: password2
-```
+`Hostname: Server1`
+<br>`Port:1389`
+<br>`Base DN: o=airius,dc=server1`
+<br>`Bind DN (service account): cn=specialuser,ou=people,o=airius,dc=server1`
+<br>`Bind Password: password`
+<br>`Data Source for Server 2 in this example is:`
+<br>`Hostname: Server 2`
+<br>`Port: 389 `
+<br>`Base DN: dc=server2`
+<br>`Bind DN (service account): cn=superuser,dc=partners,dc=airius,dc=com,dc=server2`
+<br>`Bind Password: password2`
 
 **Example 1: No Pass Thru Authorization**
 <br>If user: “cn=joe,dc=partners,dc=airius,dc=com,dc=server2,ou=global,o=vds” binds successfully to RadiantOne and accesses the dc=server2,ou=global,o=vds branch (the same backend server that processed the bind request), then his access rights to the data are determined by the service account user credentials in the backend server (“cn=superuser,dc=partners,dc=airius,dc=com,dc=server2”).
@@ -178,34 +162,28 @@ With this configuration approach, any user that successfully binds (anywhere in 
 
 ![An image showing ](Media/Image3.5.jpg)
  
-Figure 3.5: Sample Proxy Configuration
+Figure 5: Sample Proxy Configuration
 
 Data Source for Server 1 in this example is:
 
-```
-Hostname: Server1
-Port: 1389
-Base DN: ou=People,o=airius,dc=server1
-Pass Thru Authorization: Enabled 
-```
+`Hostname: Server1`
+<br>`Port: 1389`
+<br>`Base DN: ou=People,o=airius,dc=server1`
+<br>`Pass Thru Authorization: Enabled`
 
 Another Proxy Configuration for Server 1 (with a different Base DN) is:
 
-```
-Hostname: Server 1
-Port: 1389 
-Base DN: ou=temps,o=airius,dc=server1
-Pass Thru Authorization: Enabled
-```
+`Hostname: Server 1`
+<br>`Port: 1389 `
+<br>`Base DN: ou=temps,o=airius,dc=server1`
+<br>`Pass Thru Authorization: Enabled`
 
 Data Source for Server 2 in this example is:
 
-```
-Hostname: Server 2
-Port: 389 
-Base DN: dc=server2
-Pass Thru Authorization: Enabled
-```
+`Hostname: Server 2`
+<br>`Port: 389 `
+<br>`Base DN: dc=server2`
+<br>`Pass Thru Authorization: Enabled`
 
 If no service account credentials (Bind DN/Bind password) are configured in the data source, and Pass Thru Authorization is enabled on the proxy view, then the user that binds successfully has access rights that are defined for them in the directory where they have been authenticated. This is known as impersonation. RadiantOne impersonates this user when performing operations on the underlying server.
 
@@ -221,29 +199,25 @@ The two LDAP proxy definitions shown in the diagram below are used to explain th
 
 ![An image showing ](Media/Image3.6.jpg)
  
-Figure 3.6: Sample Proxy Configuration
+Figure 6: Sample Proxy Configuration
 
 Data Source for Server 1 in this example is:
 
-```
-Hostname: Server1
-Port:1389
-Base DN: o=airius,dc=server1
-Bind DN (service account): cn=specialuser,ou=people,o=airius,dc=server1
-Bind Password: password 
-Pass Thru Authorization defined on the proxy view defined: Enabled
-```
+`Hostname: Server1`
+<br>`Port:1389`
+<br>`Base DN: o=airius,dc=server1
+Bind DN (service account): cn=specialuser,ou=people,o=airius,dc=server1`
+<br>`Bind Password: password `
+<br>`Pass Thru Authorization defined on the proxy view defined: Enabled`
 
 Data Source for Server 2 in this example is:
 
-```
-Hostname: Server 2
-Port: 389 
-Base DN: dc=server2
-Bind DN (service account): cn=superuser,dc=partners,dc=airius,dc=com,dc=server2
-Bind Password: password2
-Pass Thru Authorization defined on the proxy view defined: Enabled
-```
+`Hostname: Server 2`
+<br>`Port: 389 `
+<br>`Base DN: dc=server2`
+<br>`Bind DN (service account): cn=superuser,dc=partners,dc=airius,dc=com,dc=server2`
+<br>`Bind Password: password2`
+<br>`Pass Thru Authorization defined on the proxy view defined: Enabled`
 
 If a service account (Bind DN/Bind Password) is specified in the data source and the Pass Thru Authorization feature is enabled on the proxy view, then, as in the previous sample, a user that successfully binds has the access rights that have been defined for them in the corresponding server (impersonation). 
 
@@ -265,7 +239,7 @@ If the backend LDAP directory supports the paged results control, RadiantOne can
 
 ![An image showing ](Media/Image3.7.jpg)
 
-Figure 3.7: Paged Results Control for an LDAP Backend
+Figure 7: Paged Results Control for an LDAP Backend
 
 #### Controls Passed from Client Requests
 
@@ -285,7 +259,7 @@ When RadiantOne acts as a client and connects to a backend directory, certain cr
 
 ![An image showing ](Media/Image3.8.jpg)
 
-Figure 3.8: Proxy Authorization
+Figure 8: Proxy Authorization
  
 ### Role Mapped Access
 
@@ -297,7 +271,7 @@ A high-level diagram detailing the behavior is shown below.
 
 ![An image showing ](Media/Image3.9.jpg)
 
-Figure 3.9: Role-mapped Access
+Figure 9: Role-mapped Access
  
 ### Remote Base DN
 
@@ -305,7 +279,7 @@ The Remote Base DN is the starting point to search from in the backend directory
 
 ![An image showing ](Media/Image3.10.jpg)
 
-Figure 3.10: Proxy Backend Settings
+Figure 10: Proxy Backend Settings
 
 All entries below the remote base DN a
 re displayed when clients navigate below the mapped base DN location in the RadiantOne namespace.
@@ -320,25 +294,25 @@ This setting allows for automatic re-mapping of attributes of DN syntax type. Th
 
 ![An image showing ](Media/Image3.11.jpg)
 
-Figure 3.11: LDAP Backend Attributes Defined with DN Remapping
+Figure 11: LDAP Backend Attributes Defined with DN Remapping
 
 For the selected LDAP Backend, click on the **Attributes** tab. If there are no attributes defined with DN Remapping in this list, then all attributes that have the DN syntax data type will be returned with the DN that exists in the backend LDAP directory. For example, the figure below shows the HR Managers group members, and you can see that they contain the real DN (for the uniqueMember attributes) that exists in the backend LDAP because there is no DN Remapping defined for the uniquemember attribute (i.e “uid=LCallahan,ou=People,dc=toshiba,dc=com”).
 
 ![An image showing ](Media/Image3.12.jpg) 
 
-Figure 3.12: Sample of Actual DN (non-remapped) Returned for Uniquemember
+Figure 12: Sample of Actual DN (non-remapped) Returned for Uniquemember
 
 Now, if you enter a specific attribute name that contains a DN value that you want to re-map for the RadiantOne namespace, then the DN suffix for this namespace is returned for that attribute. In the figure below, you can see that the uniqueMember attribute has been specified for the DN Remapping.
 
 ![An image showing ](Media/Image3.13.jpg)
 
-Figure 3.13: Configuration to Re-Map the UniqueMember Attribute
+Figure 13: Configuration to Re-Map the UniqueMember Attribute
 
 RadiantOne re-maps the uniqueMember attribute values into the proper DN for the location in the RadiantOne namespace. In the figure below, the HR Managers group (from the backend LDAP server) contains unique members whose DN’s have been remapped to their DN’s in the RadiantOne namespace (containing a suffix of “ou=RemoteDirectories,o=vds”). 
 
 ![An image showing ](Media/Image3.14.jpg)
 
-Figure 3.14: Result of Re-Mapping the UniqueMember Attribute
+Figure 14: Result of Re-Mapping the UniqueMember Attribute
 
 This auto re-mapping capability is useful for two main purposes:
 
@@ -346,11 +320,9 @@ This auto re-mapping capability is useful for two main purposes:
 
 -	Manage group membership from an external application – when new users are added to these groups, the “real” DN is entered properly in the backend LDAP directory even though the members can be returned with their re-mapped DNs in RadiantOne.
 
-><span style="color:red">**IMPORTANT NOTE – If RadiantOne is configured to re-map DN attributes, and you need to perform searches on these attributes, then your options for the search filter are as follows:
-<br>Enter the whole attribute value in the search filter
-(i.e. uniqueMember=uid=Cbrady,ou=people,ou=SunOne,ou=RemoteDirectories,o=vds) 
-<br>Only use the wild card character (*) in the filter up to the point of the new suffix 
-(i.e. uniqueMember=uid=Cbrady,ou=*) or (uniqueMember=uid=*)**
+>[!warning] If RadiantOne is configured to re-map DN attributes, and you need to perform searches on these attributes, then your options for the search filter are as follows:
+<br>Enter the whole attribute value in the search filter (i.e. uniqueMember=uid=Cbrady,ou=people,ou=SunOne,ou=RemoteDirectories,o=vds) 
+<br>Only use the wild card character (*) in the filter up to the point of the new suffix (i.e. uniqueMember=uid=Cbrady,ou=*) or (uniqueMember=uid=*)
 
 If your virtual view does not keep the existing backend hierarchy (for example if you don’t map direct to a backend LDAP), then you can use the Groups Migration Wizard to auto-translate the member DNs to the new virtual namespace. For details on the Groups Migration Wizard, please see the RadiantOne Identity Service Wizards Guide.
 
@@ -362,19 +334,19 @@ To specify these requested attributes, from the Main Control Panel > Directory N
 
 ![An image showing ](Media/Image3.15.jpg)
 
-Figure 3.15: Defining Attribute as Always Requested
+Figure 15: Defining Attribute as Always Requested
 
 Attributes that have a checkmark in the Always Requested column are always requested by RadiantOne (in addition to all, or only attributes requested in the query – depending on which option you have selected in the Attribute Handling section). 
 
 The client only receives the attributes it requests (and is allowed to see via ACL’s) even though RadiantOne may actually request more attributes from the backend LDAP server.
 
-><span style="color:red">**IMPORTANT NOTE – this is NOT the approach you should take to prevent certain attributes from being returned to the client. Preventing attributes from being returned should be accomplished with ACL’s.**
+>[!warning] this is NOT the approach you should take to prevent certain attributes from being returned to the client. Preventing attributes from being returned should be accomplished with ACL’s.
 
 For example, if objectclass, cn, sAMAccountName, and employeeID are set as Always Requested attributes and a client requests the title attribute in the query to RadiantOne, it requests, title, objectclass, cn, sAMAccountName, and employeeID from the backend LDAP.
 
 As another example: If the client requests ALL attributes in its query to RadiantOne, it requests ALL attributes from the underlying LDAP in addition to any attributes set as Always Requested (again, because the use of (*) in an LDAP query does not return operational attributes – these must be specifically requested). 
 
-><span style="color:red">**IMPORTANT NOTE – if you plan on caching (either entry memory cache or persistent cache) the branch in the RadiantOne namespace that maps to an LDAP backend, you must list the operational attributes you want to be in the cache as “always requested”. Otherwise, the entry stored in cache would not have these attributes and clients accessing these entries may need them.**
+>[!warning] If you plan on caching (either entry memory cache or persistent cache) the branch in the RadiantOne namespace that maps to an LDAP backend, you must list the operational attributes you want to be in the cache as “always requested”. Otherwise, the entry stored in cache would not have these attributes and clients accessing these entries may need them.
 
 If you make any changes, click **Save** in the upper right corner and then click **Yes** to apply the changes to the server.
 
@@ -390,11 +362,11 @@ If [Proxy Authorization](#proxy-authorization) and [Role Mapped Access](#role-ma
 
  ![An image showing ](Media/Image3.16.jpg)
 
-Figure 3.16: Dedicated Connection Setting
+Figure 16: Dedicated Connection Setting
 
 If the dedicated connection option is enabled, RadiantOne does not use the connection pool and the connection to the underlying LDAP directory is closed when the client disconnects from RadiantOne. If dedicated connections are not used, and a client disconnects from RadiantOne, the connection to the underlying LDAP server can still remain in the connection pool (until the configured timeout parameter is reached, which then removes the connection from the pool).
 
->**NOTE - Dedicated connections are best used in cases where there are only a few clients accessing RadiantOne but generate a lot of traffic. Clients must handle the opening and closing of connections efficiently (e.g. don’t leave open connections idle for long periods of time).**
+>[!note] Dedicated connections are best used in cases where there are only a few clients accessing RadiantOne but generate a lot of traffic. Clients must handle the opening and closing of connections efficiently (e.g. don’t leave open connections idle for long periods of time).
 
 ### Schema Enforcement Policy
 
@@ -410,7 +382,7 @@ To define a schema enforcement policy:
 
     -	Pass-through: All attributes in the operation are sent to the backend regardless of whether they match the backend schema. This is the default mode.
 
->**NOTE - Modifications may fail at the backend if this option is selected and the entry to be added violates the backend schema definition.**
+>[!note] Modifications may fail at the backend if this option is selected and the entry to be added violates the backend schema definition.
 
     - Filter: Attributes in the operation that do not match the backend schema are removed before being passed to the backend layer.
 
@@ -438,13 +410,13 @@ In the example below, the inetOrgPerson object class is set to map to User.
 
 ![An image showing ](Media/Image3.17.jpg)
 
-Figure 3.17: Example of Setting up Objectclass Mapping
+Figure 17: Example of Setting up Objectclass Mapping
 
 This means that all inetOrgPerson entries from the underlying source are returned with objectclass=user (as depicted in the screen shot below).
 
 ![An image showing ](Media/Image3.18.jpg) 
  
-Figure 3.18: Result of Objectclass Mapping
+Figure 18: Result of Objectclass Mapping
 
 ### Pre-Processing Filter
 
@@ -458,7 +430,7 @@ To define a pre-processing filter:
 
 3.	Enter a valid LDAP filter or select one from the drop-down list. 
 
-    >**Note - As mentioned, the value set here is added to the filter requested from RadiantOne client when it issues the query to the backend.**
+    >[!note] As mentioned, the value set here is added to the filter requested from RadiantOne client when it issues the query to the backend.
 
 4.	Click **Save** when finished and **Yes** to apply the changes to the server.
 
@@ -466,7 +438,7 @@ To define a pre-processing filter:
 
 ![An image showing ](Media/Image3.19.jpg)
 
-Figure 3.19: Pre-Processing Filter Settings
+Figure 19: Pre-Processing Filter Settings
 
 ### Post-processing exclusion filter
 
@@ -506,13 +478,13 @@ The screen shot below shows a mapping established between uid and sAMAccountName
 
 ![An image showing ](Media/Image3.20.jpg)
  
-Figure 3.20: Example of Attribute Mapping
+Figure 20: Example of Attribute Mapping
 
 This means that all entries from the underlying source containing a uid attribute be returned with it mapped as sAMAccountName (as depicted in the screen shot below).
 
 ![An image showing ](Media/Image3.21.jpg)
  
-Figure 3.21: Result of Attribute Mapping
+Figure 21: Result of Attribute Mapping
 
 ### Hidden Attributes
 
@@ -530,13 +502,13 @@ Click on **ADD** and select the branch you would like to exclude from the virtua
 
 ![An image showing ](Media/Image3.22.jpg)
  
-Figure 3.22: Suffix Branch Exclusion Settings
+Figure 22: Suffix Branch Exclusion Settings
 
 You can exclude as many branches as you want. The image below depicts three branches configured for exclusion. These branches will not appear in the virtual tree. [Suffix (branch) Inclusion](#suffix-branch-inclusion) can be used as an alternative to the Exclusion setting.
 
 ![An image showing ](Media/Image3.23.jpg)
  
-Figure 3.23: Multiple Branches can be Excluded from the Virtual View
+Figure 23: Multiple Branches can be Excluded from the Virtual View
 
 The default size limit is set to 100 meaning only 100 containers below the Remote Base DN are visible to select for exclusion. Increase the size limit if you need to display more branches and click **Refresh Tree**. You can also enter a result filter to dynamically reduce the branches to the ones you want to exclude.
 
@@ -550,13 +522,13 @@ Click **ADD** and select the branch you would like to include in the virtual tre
 
 ![An image showing ](Media/Image3.24.jpg)
  
-Figure 3.24: Suffix Branch Inclusion Settings
+Figure 24: Suffix Branch Inclusion Settings
 
 You can include as many branches as you want. The screen shot below depicts three branches configured for inclusion. These branches will appear in the virtual tree. [Suffix (branch) Exclusion](#suffix-branch-exclusion) can be used as an alternative to the Inclusion setting.
 
 ![An image showing ](Media/Image3.25.jpg)
  
-Figure 3.25: Multiple Branches can be Included in the Virtual View
+Figure 25: Multiple Branches can be Included in the Virtual View
 
 The default size limit is set to 100 meaning only 100 containers below the Remote Base DN are visible to select for exclusion. Increase the size limit if you need to display more branches and click **Refresh Tree**. You can also enter a result filter to dynamically reduce the branches to the ones you want to exclude.
 
@@ -588,11 +560,11 @@ Typically you would specify one or the other (inclusion filters or exclusion fil
 
 ![An image showing ](Media/Image3.26.jpg)
  
-Figure 3.26: Sample Inclusion Filter for LDAP Backend 1
+Figure 26: Sample Inclusion Filter for LDAP Backend 1
 
 ![An image showing ](Media/Image3.27.jpg)
  
-Figure 3.27: Sample Inclusion Search Filter LDAP Backend 2
+Figure 27: Sample Inclusion Search Filter LDAP Backend 2
 
 In the examples shown above, different inclusion filters have been set for two different LDAP backend configurations. The sample configured for LDAP backend 1 dictates that it only receives subtree queries that have a filter of (`mail=<something>@radiantlogic.com`). The * in the filter indicates any value. Therefore, if the filter is searching for an email address of someone with a suffix of @radiantlogic.com, then LDAP Backend 1 receives the query.
 
@@ -604,11 +576,11 @@ Subtree queries that contain a filter of department=marketing are not sent to LD
 
 ![An image showing ](Media/Image3.28.jpg)
  
-Figure 3.28: Sample Exclusion Filter set for LDAP Backend 1
+Figure 28: Sample Exclusion Filter set for LDAP Backend 1
 
 ![An image showing ](Media/Image3.29.jpg)
  
-Figure 3.29: Sample Exclusion Filter Set for LDAP Backend 2
+Figure 29: Sample Exclusion Filter Set for LDAP Backend 2
 
 The use of inclusion and exclusion filters can improve performance and efficiency because only relevant queries are routed to the appropriate remote servers.
 
@@ -668,7 +640,7 @@ To deactivate a computed attribute:
 
 ![An image showing ](Media/Image3.30.jpg)
  
-Figure 3.30: Computed Attributes Example with One Deactivated
+Figure 30: Computed Attributes Example with One Deactivated
 
 6.	Click **OK**.
 
@@ -726,7 +698,7 @@ If you enable this option, RadiantOne does not perform joins or computations if 
 
 Use caution when enabling this option if you have interception scripts defined on these objects, or access controls based on filters are being used (both of which may require other attributes returned from secondary sources or computations regardless of whether the client requested or searched for them).
 
-><span style="color:red">**IMPORTANT NOTE - Do not enable this option if a memory entry cache is used (as the whole virtual entry is needed for the cache).**
+>[!warning] Do not enable this option if a memory entry cache is used (as the whole virtual entry is needed for the cache).
 
 **Use Client Sizelimit Value to Query Backend**
 
@@ -745,10 +717,10 @@ If you want to use the actualdn attribute in computed attributes, the actualdn a
 
 ![An image showing ](Media/Image3.31.jpg)
  
-Figure 3.31: Configuring ActualDN Attribute as Always Requested
+Figure 31: Configuring ActualDN Attribute as Always Requested
 
 This attribute can be used in computed attributes by using the getactualDN() function. 
  
 ![An image showing ](Media/Image3.32.jpg)
 
-Figure 3.32: Using ActualDN in a Computed Attribute
+Figure 32: Using ActualDN in a Computed Attribute
