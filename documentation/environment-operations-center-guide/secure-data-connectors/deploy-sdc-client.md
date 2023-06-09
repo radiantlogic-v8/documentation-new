@@ -15,7 +15,7 @@ The following system specifications are required to deploy the secure data conne
 
 System requirements:
 
-- ASP.NET core runtime must be installed on the machined or SDK (version 6 and above). The runtime is available on the [Microsoft .NET](https://dotnet.microsoft.com/en-us/download/dotnet/6.0) page.
+- ASP.NET core runtime must be installed on the machine or SDK (version 6 and above). The runtime is available on the [Microsoft .NET](https://dotnet.microsoft.com/en-us/download/dotnet/6.0) page.
 - CPU: x-64 processor
 - Processor: 1 GHz
 - RAM 512 MB
@@ -27,13 +27,12 @@ Before deploying the secure data connector client, you must retrieve the registr
 
 To locate these dependencies in Env Ops Center, select the connector name to open the connector details. Alternatively, you can also select **View Details** from the **Options** (**...**) dropdown menu to open the connector details.
 
-**image**
+![image description](images/connector-view-details.png)
 
 In the *Data Connector Info* section the connector status will display as "Unregistered" and there will be no available connections. 
 
 Next to the status in the *Data Connector Info* section select **Register**.
-
-**image**
+![image description](images/connector-register.png)
 
 For Windows or Linux systems, select the applicable card to download the binary.
 
@@ -58,7 +57,7 @@ To deploy the secure data connector client on a Windows system, first unzip the 
 - *appsettings.Production.json*
 - *RadiantLogic.OnPremisesAgentClient.Agent.exe*
 
-![image description] (insert screenshot of file system)
+![image description](images/binary-windows-files.png)
 
 Open the *appsettings.Production.json* file and locate the `"AgentToken"` field. Enter the token copied from the *Data Connector Registration* dialog in Env Ops Center into the `"AgentToken"` field.
 
@@ -78,7 +77,7 @@ To deploy the secure data connector client on a Linux system, first unzip the *s
 - *appsettings.Production.json*
 - *RadiantLogic.OnPremisesAgentClient.Agent.exe*
 
-![image description] (insert screenshot of file system)
+![image description](images/appsettings-token.png)
 
 Open the *appsettings.Production.json* file and locate the `"AgentToken"` field. Enter the token copied from the *Data Connector Registration* dialog in Env Ops Center into the `"AgentToken"` field.
 
@@ -100,7 +99,7 @@ Open the command line and run the following command to start the client, replaci
 
 The `radiantone/sdc-client` is the latest image of the secure data connector client container located in the Radiant Logic Docker Hub repository.
 
-![image description] (insert screenshot of docker command line)
+![image description](images/docker-command-line.png)
 
 Once the client is running, you can can setup a connection with the on-premise backend. For details on setting up a connection, see the [server backend](../../sys-admin-guide/server-backend.md) guide.
 
