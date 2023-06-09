@@ -15,33 +15,41 @@ All of the operations to manage secure data connectors are available in the **Op
 
 ## Edit a data connector
 
-The name, group, and description of a data connector can be updated. To edit connector details, select **Edit** from the associated **Options** (**...**) dropdown.
+The name and description of a data connector can be updated. To edit connector details, select **Edit** from the associated **Options** (**...**) dropdown.
 
 ![image description](images/select-edit.png)
 
-This opens the *Edit Data Connector** dialog. In the provided name, group, and description fields, update the connector details as needed. Select **Save** to update the connector details.
+This enables the **Data Connector** row editable. In the provided name and description fields, update the connector details as needed. Select :white_check_mark: to update the connector details.
 
-The connector details will update on the *Secure Data Connectors* home screen and in the connector details section.
+The connectors list will display updated  details for the updated *Secure Data Connector*.
 
 ![image description](images/update-info.png)
 
 ## Enable or disable a connector
 
-To disable a data connector, select **Disable** from the **Options** (**...**) dropdown.
+To disable a data connector, select **Pause** from the **Options** (**...**) dropdown.
 
 ![image description](images/disable.png)
 
-The connector status will update to "Inactive" and all associated connections will be disabled.
+The connector status will update to "Paused" and all associated connections will be disabled.
 
 ![image description](images/inactive.png)
 
-To reactivate a data connector, select **Enable** from the **Options** (**...**) dropdown.
+To reactivate a data connector, select **Start** from the **Options** (**...**) dropdown.
 
 ![image description](images/enable.png)
 
 The connector status will update to "Active" and all associated connections will be enabled.
 
 ![image description](images/active.png)
+
+## Restart a data connector
+
+To restart a data connector, select **Restart** from the **Options** (**...**) dropdown.
+
+The connector will completely stop and get started. This action is similar to starting a data connector for the first time, which does pulling all latest configurations, stops, and starts all the required processes.
+
+![image description](images/disable.png)
 
 ## Delete a data connector
 
