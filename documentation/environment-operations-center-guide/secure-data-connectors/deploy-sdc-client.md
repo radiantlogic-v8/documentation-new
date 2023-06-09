@@ -61,7 +61,7 @@ To deploy the secure data connector client on a Windows system, first unzip the 
 
 Open the *appsettings.Production.json* file and locate the `"AgentToken"` field. Enter the token copied from the *Data Connector Registration* dialog in Env Ops Center into the `"AgentToken"` field.
 
-![image description] (insert screenshot of the appsettings file containing the agent token field)
+![image description](images/appsettings-token.png)
 
 Launch the *RadiantLogic.OnPremisesAgentClient.Agent.exe* file. A notification will display in the command line that confirms a connection has been established between the agent and server.
 
@@ -83,7 +83,7 @@ Open the *appsettings.Production.json* file and locate the `"AgentToken"` field.
 
 ![image description] (insert screenshot of the appsettings file containing the agent token field)
 
-Open the command line and navigate to the directory that contains the unzipped *sdc-windows.zip* files. From the directory, run the following command to launch the secure data connector client:
+Open the command line and navigate to the directory that contains the unzipped *sdc-linux.zip* files. From the directory, run the following command to launch the secure data connector client:
 
 `dotnet run RadiantLogic.OnPremisesAgentClient.Agent.dll`
 

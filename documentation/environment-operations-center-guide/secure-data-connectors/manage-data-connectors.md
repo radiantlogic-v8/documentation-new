@@ -33,7 +33,7 @@ To disable a data connector, select **Pause** from the **Options** (**...**) dro
 
 The connector status will update to "Paused" and all associated connections will be disabled.
 
-![image description](images/inactive.png)
+![image description](images/paused.png)
 
 To reactivate a data connector, select **Start** from the **Options** (**...**) dropdown.
 
@@ -49,7 +49,7 @@ To restart a data connector, select **Restart** from the **Options** (**...**) d
 
 The connector will completely stop and get started. This action is similar to starting a data connector for the first time, which does pulling all latest configurations, stops, and starts all the required processes.
 
-![image description](images/disable.png)
+![image description](images/restart.png)
 
 ## Delete a data connector
 
