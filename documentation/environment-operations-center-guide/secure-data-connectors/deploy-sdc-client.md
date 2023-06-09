@@ -46,7 +46,7 @@ Select the copy icon to copy the registration token located just below the Windo
 
 ![image description](images/copy-token.png)
 
-For a Docker container, copy the registration token located in the *Docker* section of the *Data Connector Registration* dialog. You will use this while deploying the secure data connector client on the Docker container. The steps to deploy a secure data connector on a Docker container are outlined in the following sections.
+For a Docker container, copy the docker command located in the *Docker* section of the *Data Connector Registration* dialog. You will use this while deploying the secure data connector client on the Docker container. The steps to deploy a secure data connector on a Docker container are outlined in the following sections.
 
 ![image description](images/docker-token.png)
 
@@ -63,6 +63,8 @@ Open the *appsettings.Production.json* file and locate the `"AgentToken"` field.
 
 ![image description](images/appsettings-token.png)
 
+If the client to be run on a network where proxy is setup, see the *Proxy Configuration for Windows* section in [run the secure data connector client under proxy network setup](deploy-sdc-client-in-proxy.md) guide.
+
 Launch the *RadiantLogic.OnPremisesAgentClient.Agent.exe* file. A notification will display in the command line that confirms a connection has been established between the agent and server.
 
 ![image description](images/windows-success.png)
@@ -77,11 +79,11 @@ To deploy the secure data connector client on a Linux system, first unzip the *s
 - *appsettings.Production.json*
 - *RadiantLogic.OnPremisesAgentClient.Agent.exe*
 
-![image description](images/appsettings-token.png)
-
 Open the *appsettings.Production.json* file and locate the `"AgentToken"` field. Enter the token copied from the *Data Connector Registration* dialog in Env Ops Center into the `"AgentToken"` field.
 
-![image description] (insert screenshot of the appsettings file containing the agent token field)
+![image description](images/appsettings-token.png)
+
+If the client to be run on a network where proxy is setup, see the *Proxy Configuration for Linux* section in [run the secure data connector client under proxy network setup](deploy-sdc-client-in-proxy.md) guide.
 
 Open the command line and navigate to the directory that contains the unzipped *sdc-linux.zip* files. From the directory, run the following command to launch the secure data connector client:
 
@@ -93,9 +95,11 @@ Once the client is running, you can can setup a connection with the on-premise b
 
 To deploy the secure data connector client on Docker, Docker must first be installed on the system. If you have not yet installed Docker, please visit the [Docker](https://docs.docker.com/get-docker) site and follow the instructions to download and install.
 
-Open the command line and run the following command to start the client, replacing "`access_token`" with the token copied from Env Ops Center:
+Open the command line and run the copied command from Env Ops Center to start the client:
 
 `docker run -e "ServerHubConfiguration_AgentToken=[access_token]" radiantone/sdc-client`
+
+If the client to be run on a network where proxy is setup, see the *Proxy Configuration for Docker* section in [run the secure data connector client under proxy network setup](deploy-sdc-client-in-proxy.md) guide.
 
 The `radiantone/sdc-client` is the latest image of the secure data connector client container located in the Radiant Logic Docker Hub repository.
 
