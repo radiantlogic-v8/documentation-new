@@ -3,7 +3,7 @@ title: Web Services API Guide
 description: Web Services API Guide
 ---
 
-# Chapter 1: Overview
+# Overview
 
 In addition to handling LDAP and SQL requests for data stored in RadiantOne Universal Directory stores or Persistent Cache, the RadiantOne service can also respond to Directory Service Markup Language (DSML) and Service Provisioning Markup Language (SPML), SCIM (System for Cross-domain Identity Management), REST requests via HTTP/SOAP, and SAML attribute queries.
 
@@ -58,11 +58,9 @@ Some settings in the Control Panel are accessible only in Expert Mode. To switch
 
 You can access the welcome page by opening a browser and typing the following URL. 
 
-```
-http[s]://host[:port]
-```
+`http[s]://host[:port]`
 
-i.e. http://localhost:8089
+i.e. `http://localhost:8089`
 
 This displays the welcome screen and shows the supported services.
 

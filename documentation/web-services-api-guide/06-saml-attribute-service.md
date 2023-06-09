@@ -7,8 +7,7 @@ description: Web Services API Guide
 
 The RadiantOne service supports SAML attribute queries. It responds to such queries with SAML assertions.
 
->[!note]
->To use the SAML attribute service, ensure that saml is not included in the list of [disabled protocols](#01-overview#disabling-protocolsendpoints).**
+>[!note] To use the SAML attribute service, ensure that saml is not included in the list of [disabled protocols](#01-overview#disabling-protocolsendpoints).**
 
 ## Configuration
 To configure RadiantOne as a SAML Attribute Service, three properties files are required: 
@@ -24,6 +23,7 @@ Examples of these files are included in RadiantOne and located here:
 <RLI_HOME>/vds_server/conf/saml/server/
 
 ### AttributeService.properties
+
 For AttributeService.properties, some of the properties defined in this configuration file already have default values. See below for a list of the properties along with descriptions of each.
 
 entityid	
@@ -170,8 +170,7 @@ If the HTTP server is enabled, restart the RadiantOne service.
 
 If the HTTP server is not enabled, check the “Enable HTTP Server” box, click on the save button at the top of the screen and restart the RadiantOne service.
 
->[!note]
->The RadiantOne service needs to be restarted every time changes are made to any properties in the AttributeService.properties file.
+>[!note] The RadiantOne service needs to be restarted every time changes are made to any properties in the AttributeService.properties file.
 
 ### SAML Client Metadata
 
@@ -191,11 +190,12 @@ To configure the SAML Attribute Service to use a PKCS12 keystore:
 
 3.	Replace the existing values for the parameters signKeystorePath and encKeystorePath with the full path and file name of the PKCS12 certificate/keystore created in step 1 above. This keystore must have a .p12 file extension. In the example below, the keystore, rli.p12, is located at $RLI_HOME/vds_server/conf.
 
-![Modifying the Keystore Path Values in client.properties](Media/Image6.2.jpg)
- 
-Figure 2: Modifying the Keystore Path Values in client.properties
+	![Modifying the Keystore Path Values in client.properties](Media/Image6.2.jpg)
+
+	Figure 2: Modifying the Keystore Path Values in client.properties
 
 4.	Save the file. 
+
 5.	In a command processor, navigate to the following location:
 
 	<RLI_HOME>\bin\advanced
@@ -208,13 +208,14 @@ Figure 2: Modifying the Keystore Path Values in client.properties
 
 The URL to access the RadiantOne SAML Attribute Service is:
 
-http[s]://<hostname>:<port>/saml/AttributeServiceSoap
+`http[s]://<hostname>:<port>/saml/AttributeServiceSoap`
 
 An example is shown below:
 
 http://vds.server.com:8089/saml/AttributeServiceSoap
 
 This URL can be reach using the GET and POST HTTP verbs:
+
 GET: by reaching the URL using a GET, the metadata of the RadiantOne SAML Attribute Service is sent to the requester. Do not use localhost as host name to retrieve the metadata. The IP Address or the host name of the machine hosting RadiantOne needs to be used instead. 
 
 POST: by reaching the URL using a POST, the requester can send an Attribute Query to the RadiantOne SAML Attribute Service. It responds with an SAML Assertion.
@@ -225,8 +226,7 @@ This URL can be used to get the RadiantOne SAML Attribute Service Metadata. An e
  
 Figure 3: RadiantOne Attribute Service Metadata
 
->[!note]
->The SOAP binding is the only Binding method supported by the RadiantOne SAML Attribute Service. The attribute queries need to be embedded in a SOAP message and the SAML Attribute Service responds with a SAML assertion embedded in a SOAP message as well.
+>[!note] The SOAP binding is the only Binding method supported by the RadiantOne SAML Attribute Service. The attribute queries need to be embedded in a SOAP message and the SAML Attribute Service responds with a SAML assertion embedded in a SOAP message as well.
  
 ## Testing the RadiantOne SAML Attribute Service
 
@@ -240,25 +240,24 @@ RadiantOne includes a SAML client utility that can be used to test the RadiantOn
 
 First, the utility generates the client’s.xml metadata file. The attribute query service gets client information including the client’s ID and public key from this file. By default, the RadiantOne SAML Attribute Query service does not encrypt its responses. In this section, you will configure the client xml file to indicate that RadiantOne should encrypt its responses. The instructions in this section are performed on the server side.
 
->[!warning]
->These steps should be performed when the RadiantOne service is stopped.
+>[!warning] These steps should be performed when the RadiantOne service is stopped.
 
 1.	The following property files are located at <RLI_HOME>/config/saml.
 
--	Client.properties
-<br> The first section/paragraph in this file contains the client’s paramters used for encryption. The second section/paragraph contains the client’s parameters used for signing. The third section/paragraph contains other details about the client, one of which is the “clientEntityID” that must match the issuer in the query sent by the client.
+	-	Client.properties
+	<br> The first section/paragraph in this file contains the client’s paramters used for encryption. The second section/paragraph contains the client’s parameters used for signing. The third section/paragraph contains other details about the client, one of which is the “clientEntityID” that must match the issuer in the query sent by the client.
 
--	Query.properties
-<br> The first section/paragraph is used by the utility to sign the query. It must be the same as the first section/paragraph in the client.properties file described above. The second section/paragraph contains query parameters: “queryIssuer” – should have the same value as “clientEntityID” in the client.properties file; “queryNameID” – subject name ID. This is used via ID mapping to look for the corresponding DN in RadiantOne; “queryNameIDFormat” is the format of the previous name ID; “queryID” – the name of the query; “queryDestination” – represents the destination where the query is sent to. This should have the same value as the parameter “entityID” which is located at the top of the service’s metadata; “queryAttribute1, queryAttribute2, …” – the names of the attributes you want to retrieve from RadiantOne FID. If no queryAttributes are sent in the request, then the RadiantOne SAML attribute query service returns all attributes that have a mapping in the AttributeMapping.properties file.
+	-	Query.properties
+	<br> The first section/paragraph is used by the utility to sign the query. It must be the same as the first section/paragraph in the client.properties file described above. The second section/paragraph contains query parameters: “queryIssuer” – should have the same value as “clientEntityID” in the client.properties file; “queryNameID” – subject name ID. This is used via ID mapping to look for the corresponding DN in RadiantOne; “queryNameIDFormat” is the format of the previous name ID; “queryID” – the name of the query; “queryDestination” – represents the destination where the query is sent to. This should have the same value as the parameter “entityID” which is located at the top of the service’s metadata; “queryAttribute1, queryAttribute2, …” – the names of the attributes you want to retrieve from RadiantOne FID. If no queryAttributes are sent in the request, then the RadiantOne SAML attribute query service returns all attributes that have a mapping in the AttributeMapping.properties file.
 
--	ServerEncryption.properties
-<br> Contains encryption parameters used by the utility to decrypt the response from the RadiantOne SAML attribute query service. RadiantOne uses the client’s public key to encrypt the response and the utility uses the client’s private key to decrypt it. The encryption parameters contained in this properties file should be the same as in the client.properties file described above.
+	-	ServerEncryption.properties
+	<br> Contains encryption parameters used by the utility to decrypt the response from the RadiantOne SAML attribute query service. RadiantOne uses the client’s public key to encrypt the response and the utility uses the client’s private key to decrypt it. The encryption parameters contained in this properties file should be the same as in the client.properties file described above.
 
 2.	Open a command line and navigate to the folder <RLI_HOME>\bin\advanced. Execute the following command (example shown assumes RadiantOne is installed at C:/radiantone/vds and there is a folder named samlHelper on the C drive where you want the client.xml file to be generated):
 
-	samlUtils.bat client "C:/radiantone/vds/config/saml/client.properties" "C:/samlHelper/client.xml"
+	`samlUtils.bat client "C:/radiantone/vds/config/saml/client.properties" "C:/samlHelper/client.xml"`
 
-If this command is executed successfully, the file, client.xml, is generated in c:/samlHelper.
+	If this command is executed successfully, the file, client.xml, is generated in c:/samlHelper.
 
 3.	Copy client.xml.
 
@@ -278,14 +277,13 @@ If this command is executed successfully, the file, client.xml, is generated in 
 
 Next, the utility generates an .xml file that contains an attribute query which the client will send to the RadiantOne SAML attribute service. In this example, the client requests the value of the attribute “mail” for the user identified as Aaron Medler. The instructions in this section are performed on the client side.
 
->[!note]
->The instructions in this section require the use of a web client. The examples shown in this section use the Advanced Rest Client available for Google Chrome browsers.
+>[!note] The instructions in this section require the use of a web client. The examples shown in this section use the Advanced Rest Client available for Google Chrome browsers.
 
 1.	Return to the command line and execute the following command (example shown assumes RadiantOne is installed at C:/radiantone/vds and there is a folder named samlHelper on the C drive where you want the query.xml file to be generated). 
 
-samlUtils.bat query "C:/radiantone/vds/config/saml/query.properties" "C:/samlHelper/query.xml"
+	`samlUtils.bat query "C:/radiantone/vds/config/saml/query.properties" "C:/samlHelper/query.xml"`
 
-If this command is executed successfully, the file query.xml is created in C:/samlHelper.
+	If this command is executed successfully, the file query.xml is created in C:/samlHelper.
 
 2.	Open query.xml and copy the content of the file (without character formatting).
 
@@ -300,21 +298,22 @@ Method	| POST
 Headers	| (N/A)
 Request Body | (Paste the content copied from the query.xml file into this field. See image below.)
 
-![Sample SAML Attribute Query](Media/Image6.4.jpg)
- 
-Figure 4: Sample SAML Attribute Query
+	![Sample SAML Attribute Query](Media/Image6.4.jpg)
+
+	Figure 4: Sample SAML Attribute Query
 
 5.	Click Send. 
+
 6.	To confirm the success of the SAML attribute query, scroll down through the response. If the operation is successful, the response section contains the text “status:Success”, as shown below.
 
-![Query Status Successful](Media/Image6.5.jpg)
- 
-Figure 5: Query Status Successful
+	![Query Status Successful](Media/Image6.5.jpg)
+
+	Figure 5: Query Status Successful
 
 7.	If the operation is unsuccessful, the response section contains the text “status:RequestDenied”, as shown below.
 
 ![Query Status Unsuccessful](Media/Image6.6.jpg)
- 
+
 Figure 6: Query Status Unsuccessful
 
 ### Decrypting the Response from the RadiantOne SAML Attribute Service
@@ -329,9 +328,7 @@ Next, the client decrypts a response from the service. The instructions in this 
 
 4.	In the command line, execute the following command (example shown assumes RadiantOne is installed at C:/radiantone/vds and there is a folder named samlHelper on the C drive where you want the decryptedResponse.xml file to be generated).
 
-```
-samlUtils.bat response "C:/radiantone/vds/config/saml/serverEncryption.properties" "C:/samlHelper/encryptedResponse.xml" "C:/samlHelper/decryptedResponse.xml"
-```
+`samlUtils.bat response "C:/radiantone/vds/config/saml/serverEncryption.properties" "C:/samlHelper/encryptedResponse.xml" "C:/samlHelper/decryptedResponse.xml"`
 
 5.	Open the file “C:/samlHelper/decryptedResponse.xml” and scroll down to see the value of the requested attribute.
 

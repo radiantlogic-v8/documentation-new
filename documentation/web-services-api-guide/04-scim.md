@@ -5,11 +5,11 @@ description: Web Services API Guide
 
 # SCIM
 
-The System for Cross-domain Identity Management (SCIM) specification automates user identity management between identity domains. This chapter describes the configuration of the RadiantOne SCIM service.  The RadiantOne service supports SCIMv2.
+The System for Cross-domain Identity Management (SCIM) specification automates user identity management between identity domains. This chapter describes the configuration of the RadiantOne SCIM service. The RadiantOne service supports SCIMv2.
 
 ## Configuration
 
-For the RadiantOne service to support SCIM queries from clients, a SCIM schema and resource type are required. To access the SCIM configuration in the Main Control Panel, go to Settings Tab -> Server Front End -> SCIM. The SCIM Configuration page contains three sub tabs: Schemas, Resource Types, and Preview. 
+For the RadiantOne service to support SCIM queries from clients, a SCIM schema and resource type are required. To access the SCIM configuration in the Main Control Panel, go to Settings Tab > Server Front End > SCIM. The SCIM Configuration page contains three sub tabs: Schemas, Resource Types, and Preview. 
  
 ![SCIM Configuration](Media/Image4.1.jpg)
 
@@ -38,19 +38,20 @@ To configure SCIM access to RadiantOne entries you can use the Quick Start optio
 8.	For the Base DN, click Browse and select the root naming context in the RadiantOne namespace where your virtual view is mounted.
 
 9.	For the Primary Object Class, select the object class associated with the identities in the virtual view from the drop-down list. If you do not see your object class here, extend the RadiantOne schema prior to using this Quick Start. See Chapter 4 in the RadiantOne System Administration Guide. 
+
 10.	Click Save. An example is shown below.
 
-![SCIM Quick Start](Media/Image4.2.jpg)
+  ![SCIM Quick Start](Media/Image4.2.jpg)
  
-Figure 2: SCIM Quick Start
+  Figure 2: SCIM Quick Start
 
 11.	To view the attribute mappings that were auto-generated, select the Resource Types tab.
 
 12.	Select the resource type name you configured and click the MAPPINGS tab.  An example is shown below.
  
-![Example of Auto-generated Attribute Mappings](Media/Image4.3.jpg)
+  ![Example of Auto-generated Attribute Mappings](Media/Image4.3.jpg)
 
-Figure 3: Example of Auto-generated Attribute Mappings
+  Figure 3: Example of Auto-generated Attribute Mappings
 
 13.	Click the Preview tab and select the Resource Type from the drop-down list. 
 
@@ -64,20 +65,20 @@ Figure 4: SCIM Preview Tab
 
 A SCIM schema designates attribute characteristics such as their mutability, type, and other features. The core SCIM schemas: User, Group, and Enterprise User Extensions are supported and configured by default in RadiantOne. Custom schemas are also supported. SCIM schemas are managed from the Main Control Panel > Settings Tab > Server Front End > SCIM section -> Schemas tab on the right.
 
-To query the SCIM schema (core, extension and custom) in the RadiantOne service, a SCIM client can use: http://<RadiantOneService>:8089/scim2/v2/Schemas
+To query the SCIM schema (core, extension and custom) in the RadiantOne service, a SCIM client can use: `http://<RadiantOneService>:8089/scim2/v2/Schemas`
 
 ### Default Core Schemas
 
 #### Group
 
-To view the default Group SCIM schema, go to the Main Control Panel -> Settings Tab -> Server Front End -> SCIM. On the Schemas tab, click Group. The default attributes are outlined in the table below.
+To view the default Group SCIM schema, go to the Main Control Panel > Settings Tab > Server Front End > SCIM. On the Schemas tab, click Group. The default attributes are outlined in the table below.
 
 Name | Type | Description
 -|-|-
 displayName | string | A human-readable name for the Group. REQUIRED.
 members	| complex | A list of members of the Group.
 
-Table 4.1: SCIM Attributes Associated with the Default Group Schema
+Table 1: SCIM Attributes Associated with the Default Group Schema
 
 #### User
 
@@ -132,7 +133,7 @@ To add a new schema:
 
 1.	From the Main Control Panel, click the Settings Tab > Server Front End section > SCIM sub-section.
 
-2.	Click the New Schema button.
+2.	Click **New Schema**.
 
 3.	Enter the Schema URN (Uniform Resource Name). This value must be unique.
 
@@ -146,8 +147,7 @@ To add a new schema:
 
 Custom SCIM attributes can be created for new schemas or when editing existing custom schemas. 
 
->[!note]
->It is not advised to modify the attributes of the default core SCIM schemas.
+>[!note] It is not advised to modify the attributes of the default core SCIM schemas.
 
 Attributes can be either single-valued or multi-valued. Multi-valued attributes like email, phoneNumbers, and ims can support canonical values, like Type (work, home, mobile, fax, pager…etc.). SCIM also supports complex attributes where an attribute can have sub-attributes. This section describes the attribute types and provides an example for each.
 
@@ -236,7 +236,7 @@ Type | Description
 readOnly | The attribute SHALL NOT be modified.
 readWrite | The attribute MAY be updated and read at any time. This is the default value.     
 immutable | The attribute MAY be defined at resource creation (e.g. POST) or at record replacement via a request (e.g. a PUT).  The attribute SHALL NOT be updated.
-writeOnly | The attribute MAY be updated at any time. Attribute values SHALL NOT be returned (e.g. because the value is a stored hash).  Note: An attribute with a mutability of "writeOnly" usually also has a returned setting of "never".
+writeOnly | The attribute MAY be updated at any time. Attribute values SHALL NOT be returned (e.g. because the value is a stored hash). Note: An attribute with a mutability of "writeOnly" usually also has a returned setting of "never".
 
 Table 5: Attribute Mutability
 
@@ -315,36 +315,33 @@ To add a new resource type:
 
 8.	Click Browse next to the Base DN property and select the root naming context in the RadiantOne namespace where the identities (e.g. users and groups) that you want accessible with SCIM are located.
 
-![](Media/Image..jpg)
-
 9. (Optional) Define a DN Pattern using regular expression(s). This set of regular expressions is used to determine the Resource Type of a given entry, based on that entry's full DN. Any entry that has a DN that fully matches one of these regular expressions will be associated with this Resource Type. In the example shown below, only entries that start with “cn=” located in any “ou=” container below o=companydirectory or entries that start with “uid=” located below “ou=Employees,o=companydirectory” will be associated with this resource type.
 
-![Defining a DN pattern](Media/define-dn-pattern.jpg)
+  ![Defining a DN pattern](Media/define-dn-pattern.jpg)
 
-9.	(Optional) Enter an LDAP filter if you want to condition the entries returned by the search.
+10.	(Optional) Enter an LDAP filter if you want to condition the entries returned by the search.
 
-10.	Enter the maximum number of entries to return in a query in the Max Entries Returned property. 
+11.	Enter the maximum number of entries to return in a query in the Max Entries Returned property. 
 
-11.	Enter the Primary Object Class associated with your identities. This is the object class associated with the identities in your virtual view and/or Universal Directory store. This and the auxiliary object class(es) property determine which attributes are available to map to the SCIM schema. 
+12.	Enter the Primary Object Class associated with your identities. This is the object class associated with the identities in your virtual view and/or Universal Directory store. This and the auxiliary object class(es) property determine which attributes are available to map to the SCIM schema. 
 
-12.	(Optional) Enter additional [auxiliary] object class(es) associated with the identities in your virtual view and/or Universal Directory store. This and the primary object class determine which attributes are available to map to the SCIM schema. This drop-down menu allows the selection of multiple items. 
+13.	(Optional) Enter additional [auxiliary] object class(es) associated with the identities in your virtual view and/or Universal Directory store. This and the primary object class determine which attributes are available to map to the SCIM schema. This drop-down menu allows the selection of multiple items. 
 
-13.	Enter a DN Expression to calculate the LDAP DN for new entries. If the SCIM URL in the POST request does not specify the DN of the entry to insert, this property dictates how attribute value(s) from the body of the request are used to generate the DN for the new entry (e.g. uid=${userName},o=companydirectory). This DN expression should mimic the root naming context in the RadiantOne namespace where you want new entries created, prefixed with the RDN name and SCIM attribute in curly braces used to populate the RDN value.
+14.	Enter a DN Expression to calculate the LDAP DN for new entries. If the SCIM URL in the POST request does not specify the DN of the entry to insert, this property dictates how attribute value(s) from the body of the request are used to generate the DN for the new entry (e.g. uid=${userName},o=companydirectory). This DN expression should mimic the root naming context in the RadiantOne namespace where you want new entries created, prefixed with the RDN name and SCIM attribute in curly braces used to populate the RDN value.
 
-14.	Select the core SCIM schema to associate with the resource type from the SCIM Core Schema drop-down list.
+15.	Select the core SCIM schema to associate with the resource type from the SCIM Core Schema drop-down list.
 
-15.	(Optional) Select required (extension) schemas from the table on the left. To add all items as required schemas, click the ![An image showing ](Media/double-right-arrow.jpg) button. To add selected items as required schemas, select schemas from the table on the left and click the ![An image showing ](Media/right-arrow.jpg) button.
+16.	(Optional) Select required (extension) schemas from the table on the left. To add all items as required schemas, click the ![An image showing ](Media/double-right-arrow.jpg) button. To add selected items as required schemas, select schemas from the table on the left and click the ![An image showing ](Media/right-arrow.jpg) button.
 
-16.	(Optional) Select optional schemas from the table on the left. To add all choices as optional schemas, click the  ![An image showing ](Media/double-right-arrow.jpg) button. To add only selected items as optional schemas, select schemas from the table on the left and click the ![An image showing ](Media/right-arrow.jpg) button.
+17.	(Optional) Select optional schemas from the table on the left. To add all choices as optional schemas, click the  ![An image showing ](Media/double-right-arrow.jpg) button. To add only selected items as optional schemas, select schemas from the table on the left and click the ![An image showing ](Media/right-arrow.jpg) button.
 
-17.	Click Next. The Mappings page is displayed.
+18.	Click Next. The Mappings page is displayed.
 
-18.	Map LDAP attributes in your RadiantOne virtual view or Universal Directory store to SCIM attributes using either a [pre-defined template](#template-based-attribute-mapping) or a [manual mapping](#manual-attribute-mapping).
+19.	Map LDAP attributes in your RadiantOne virtual view or Universal Directory store to SCIM attributes using either a [pre-defined template](#template-based-attribute-mapping) or a [manual mapping](#manual-attribute-mapping).
 
-19.	Click the Save button. The SCIM Configuration page displays the configured resource.
+20.	Click the Save button. The SCIM Configuration page displays the configured resource.
 
->[!note]
->To view a list of resource types configured in RadiantOne, use: http://<RadiantOneService>:8089/scim2/v2/resourcetypes
+>[!note]To view a list of resource types configured in RadiantOne, use: `http://<RadiantOneService>:8089/scim2/v2/resourcetypes`
 
 #### Template-based Attribute Mapping
 
@@ -367,32 +364,34 @@ Figure 6: Selecting a Template
 
 #### Manual Attribute Mapping
 
-To manually define an attribute mapping, select an attribute in the table on the left. In the table on the right, click the corresponding SCIM attribute, and click the  ![An image showing ](Media/x-button.jpg) button. Repeat this process for all attributes to be mapped.
+To manually define an attribute mapping, select an attribute in the table on the left. In the table on the right, click the corresponding SCIM attribute, and click the ![An image showing ](Media/x-button.jpg) button. Repeat this process for all attributes to be mapped.
 
 >[!note]
->to remove a mapping, click the   button in the LDAP Attribute column in the table on the right.
+>to remove a mapping, click the ![An image showing ](Media/x-button.jpg) button in the LDAP Attribute column in the table on the right.
 
 ##### Mapping Complex Attributes
 
-A complex attribute is a singular or multi-valued attribute whose value is a composition of one or more simple attributes (sub-attributes). A complex attribute may be mapped, or its sub-attributes may be mapped, but not both. To manually map a complex attribute, select an attribute in the table on the left. In the table on the right, click the corresponding SCIM attribute, and click the ![An image showing ](Media/curvy-arrows.jpg) button. 
+A complex attribute is a singular or multi-valued attribute whose value is a composition of one or more simple attributes (sub-attributes). A complex attribute may be mapped, or its sub-attributes may be mapped, but not both. To manually map a complex attribute, select an attribute in the table on the left. In the table on the right, click the corresponding SCIM attribute, and click the ![An image showing ](Media/curvy-arrows.jpg) button.
+
 To map a complex attribute’s sub-attribute(s): 
+
 1.	Select an attribute in the table on the left. 
+
 2.	In the table on the right, click Plus-sign next to the complex SCIM attribute. The complex attribute is hidden, and its sub-attributes are displayed. 
 
-![An image showing ](Media/Image4.7.jpg)
+  ![An image showing ](Media/Image4.7.jpg)
  
-Figure 7: Expanding a Complex Attribute
+  Figure 7: Expanding a Complex Attribute
 
 3.	In the table on the right, click the corresponding SCIM sub-attribute, and click the ![An image showing ](Media/curvy-arrows.jpg) button.
 
->[!note]
->Mapping a complex attribute overrides any of its existing sub-attribute mappings and vice versa.
+  >[!note] Mapping a complex attribute overrides any of its existing sub-attribute mappings and vice versa.
 
-In the following example, the sub-attributes of the complex attribute Office are mapped. 
+  In the following example, the sub-attributes of the complex attribute Office are mapped. 
 
-![An image showing ](Media/Image4.8.jpg)
+  ![An image showing ](Media/Image4.8.jpg)
  
-Figure 8: Mapping Sub-attributes
+  Figure 8: Mapping Sub-attributes
 
 4.	Click Save. 
 
@@ -404,7 +403,7 @@ If you have an existing resource type definition (JSON-formatted), you can impor
 
 To import a resource type:
 
-1.	From the Main Control Panel, click the Settings Tab -> Server Front End > SCIM > Resource Types tab on the right.
+1.	From the Main Control Panel, click the Settings Tab > Server Front End > SCIM > Resource Types tab on the right.
 2.	Click Import Resource Type.
 
 3.	Click Choose File and navigate to the folder containing the schema file, select the file, and click Open.
@@ -414,10 +413,15 @@ To import a resource type:
 ### Deleting Resource Types
 
 To delete a resource:
-1.	From the Main Control Panel, click the Settings Tab -> Server Front End -> SCIM.
+
+1.	From the Main Control Panel, click the Settings Tab > Server Front End > SCIM.
+
 2.	On the SCIM2 Configuration page, click the Resource Types tab. 
+
 3.	Click the checkbox of the resource to be deleted. 
-4.	Click the **Delete**  button. 
+
+4.	Click **Delete**. 
+
 5.	In the confirmation window, click Confirm. 
 
 >[!note]
@@ -427,9 +431,7 @@ To delete a resource:
 
 To list all SCIM resource types configured in RadiantOne, use: 
 
-```
-http://<RadiantOneService>:8089/scim2/v2/resourcetypes
-```
+`http://<RadiantOneService>:8089/scim2/v2/resourcetypes`
 
 >[!note]
 >the keywords in this request are not case-sensitive.
@@ -458,7 +460,7 @@ PUT	| Updates an existing resource. Use caution with PUT operations, since they 
 PATCH	| Updates an existing resource. 
 DELETE	| Deletes a resource in the RadiantOne service.
 
-Table 4.7: SCIM Operations Supported
+Table 7: SCIM Operations Supported
 
 ### SCIM Response Status Codes
 
@@ -472,17 +474,18 @@ HTTP Status #	| Description	| Next Step
 404	| Entry not found.	| You get this message when searching for an entry or deleting an entry that doesn’t exist.
 500	| Server error. | Send the exception message along with the <RLI_HOME>/vds_server/logs/vds_server.log to Radiant Logic customer support. 
 
-Table 7: SCIM Response Status Codes
+Table 8: SCIM Response Status Codes
 
 ### Authentication
 
 Authentication can be performed using basic authentication by passing the credentials in a header.
+
 The header must be named “authorization” and the value is set by concatenating: Basic base64(dn:password). Don’t forget to use a <space> between Basic and the encoded value. Don’t forget to use “:” to separate dn value from password value. You can use any base64 encoder to get this value. An example for cn=directory manager and password of secretsecret would be this: cn=directory manager:secretsecret 
 
 The base64 encoded value of this would be: Y249ZGlyZWN0b3J5IG1hbmFnZXI6c2VjcmV0c2VjcmV0
 
 Resulting in a header of: 
-<header key="authorization" value="Basic Y249ZGlyZWN0b3J5IG1hbmFnZXI6c2VjcmV0c2VjcmV0"/>
+`<header key="authorization" value="Basic Y249ZGlyZWN0b3J5IG1hbmFnZXI6c2VjcmV0c2VjcmV0"/>`
 
 ### Examples
 
@@ -490,6 +493,7 @@ Below are some example SCIM requests using a Postman client.
 
 #### Insert User
 The following example creates an entry for a user named Barbara Jensen in one of the default RadiantOne Universal Directory stores located at o=companydirectory.
+
 The resource type configuration and attribute mappings used in this example are shown below.
 
 ![An image showing ](Media/Image4.9.jpg)
@@ -699,7 +703,7 @@ Based on the above configuration, the following is a sample SCIM PATCH query to 
 }
 </table>
 
-Table 4.10: SCIM PATCH Query to Update A User
+Table 10: SCIM PATCH Query to Update A User
  
 ![PATCH Query to SCIMv2 API of RadiantOne](Media/Image4.17.jpg)
 
@@ -762,7 +766,7 @@ The following SCIM PUT query example describes how to update a user entry that c
    }
 </table>
 
-Table 4:11: SCIM PUT Query to Updated A User with Enterprise Extension Attributes
+Table 11: SCIM PUT Query to Updated A User with Enterprise Extension Attributes
 
 The PUT request from a Postman client is shown below.
 

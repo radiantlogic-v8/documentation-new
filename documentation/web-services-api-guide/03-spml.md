@@ -11,7 +11,7 @@ SPML Version 2 defines a core protocol over which different data models can be u
 
 The following capabilities and operations (as defined in the SPML v2 specifications) are supported:
 
--	listTargets Operation - enables a requestor to determine the set of targets that the RadiantOne service makes available for provisioning and also enables a requestor to determine the set of capabilities that the provider supports for each target).
+-	listTargets Operation - enables a requestor to determine the set of targets that the RadiantOne service makes available for provisioning and also enables a requestor to determine the set of capabilities that the provider supports for each target.
 
 -	Batch Capability– enables a requestor to send multiple requests to be executed as a set. The batch capability supports batch operations.
 
@@ -36,11 +36,9 @@ A WSDL is also available on /spml.wsdl (see WSDL for RadiantOne SPML Web Service
 ## WSDL for RadiantOne SPML Web Service
 
 The WSDL file for the RadiantOne web service can be retrieved by accessing the following URL: 
-http[s]://host[:port]/spml/spml.wsdl
+`http[s]://host[:port]/spml/spml.wsdl`
 
-```
-e.g. http://localhost:8089/spml/spml.wsdl
-```
+e.g. `http://localhost:8089/spml/spml.wsdl`
 
 ## Sample Requests
 

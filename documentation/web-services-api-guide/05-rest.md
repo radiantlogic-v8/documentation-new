@@ -38,9 +38,7 @@ This section describes how to perform the following functions:
 
 You can access the RadiantOne RESTFul Web Service using the following URL syntax: 
 
-```
-http://<RadiantOneService>:8089/adap/<baseDN>
-```
+`http://<RadiantOneService>:8089/adap/<baseDN>`
 
 ### REST Response Status Codes
 
@@ -63,9 +61,9 @@ To set the maximum threads value:
 
 2.	On the right side, under the REST/ADAP header, enter a value in the Max Thread field. 
 
-![Max Thread/requests for REST Clients](Media/Image5.1.jpg)
+  ![Max Thread/requests for REST Clients](Media/Image5.1.jpg)
 
-Figure 1: Max Thread/requests for REST Clients
+  Figure 1: Max Thread/requests for REST Clients
 
 3.	Click Save in the upper right corner. 
 
@@ -81,8 +79,7 @@ Figure 2: Proxy Header for Proxy Authorization
 
 Ensure the proxy authorization control is enabled for the RadantOne service and access controls have been defined to indicate who is allowed to impersonate who. For more information on enabling the proxy authorization control and defining access controls, please see the RadiantOne System Administration Guide.
 
->[!warning]
->To allow the super user (e.g. cn=directory manager) to impersonate other users, you must enable the “Allow Directory Manager to Impersonate Other Users” option. For more information on this setting, please see the RadiantOne System Administration Guide.
+>[!warning] To allow the super user (e.g. cn=directory manager) to impersonate other users, you must enable the “Allow Directory Manager to Impersonate Other Users” option. For more information on this setting, please see the RadiantOne System Administration Guide.
 
 ### Authentication
 
@@ -92,14 +89,13 @@ This section discusses password authentication and token authentication.
 
 All REST operations require a header which is used to bind to the LDAP server. If this header is not populated, it uses anonymous access. 
 
-The header must be named “authorization” and the header value is derived by concatenating: Basic base64(dn:password). Use a <space> between Basic and the encoded value. 
+The header must be named “authorization” and the header value is derived by concatenating: Basic base64(dn:password). Use a `<space>` between Basic and the encoded value. 
 
 You can use any base64 encoder to get this value. For example, the base64 encoded value for cn=directory manager and password of secretsecret would be the following. 
 
 Y249ZGlyZWN0b3J5IG1hbmFnZXI6c2VjcmV0c2VjcmV0
 
->[!note]
->The encoded header value does not contain “:”.
+>[!note] The encoded header value does not contain “:”.
 
 Resulting in a header of: 
 <br> `<header key="authorization" value="Basic Y249ZGlyZWN0b3J5IG1hbmFnZXI6c2VjcmV0c2VjcmV0"/>`
@@ -112,15 +108,15 @@ In this section, a simple bind to the RadiantOne REST service is shown in the ta
 
 Field	| Value
 -|-
-URL Syntax	| http://`<RadiantOneServer>`:8089/adap?bind=simpleBind
+URL Syntax | http://`<RadiantOneServer>`:8089/adap?bind=simpleBind
 Method	| Get
 Header Name	| Authorization
 Header Value	| Basic <base64 value (dn:password)>
 Example Header Value	| Basic Y249ZGlyZWN0b3J5IG1hbmFnZXI6c2VjcmV0c2VjcmV0
 
-Table 1 A Simple Bind to the RadiantOne REST Service
+Table 1: A Simple Bind to the RadiantOne REST Service
 
-An authentication attempt with the above parameters results in the message {“httpStatus”:200}.  This means the credentials check was successful.
+An authentication attempt with the above parameters results in the message {“httpStatus”:200}. This means the credentials check was successful.
 
 ![Connection Successful](Media/Image5.4.jpg)
  
@@ -157,8 +153,7 @@ Figure 6: Enabling the Always Authenticate Option
 
 For normal SSL communications, where the only requirement is that the client trusts the server, no additional configuration is necessary (as long as both entities trust each other). For mutual authentication, where there is a reciprocal trust relationship between the client and the server, the client must generate a certificate containing his identity and private key in his keystore. The client must also make a version of the certificate containing his identity and public key, which RadiantOne must store in its truststore. In turn, the client needs to trust the server; this is accomplished by importing the server's CA certificate into the client truststore.
 
->[!note]
->Certificate-based authentication (mutual authentication) requires the use of SSL (HTTPS) for the communication between the client and RadiantOne REST/ADAP service.
+>[!note] Certificate-based authentication (mutual authentication) requires the use of SSL (HTTPS) for the communication between the client and RadiantOne REST/ADAP service.
 
 ![Mutual Authentication](Media/Image5.7.jpg)
 
@@ -170,11 +165,12 @@ To configure support for mutual authentication to ADAP, follow the steps below.
 
 1.	Log into the Main Control Panel as a member of the Directory Administrators group.
 
-2.	Go to the Settings tab -> Server Front End -> Supported Controls and verify Enable Proxy Authorization is checked. If not, enable it and click Save.
+2.	Go to the Settings tab > Server Front End > Supported Controls and verify Enable Proxy Authorization is checked. If not, enable it and click Save.
 
 3.	If you had to enable the Proxy Authorization control, restart the RadiantOne service (on all nodes if you are deployed in a cluster).
 
 4.	Go to the Settings tab > Security > Access Control.
+
 5.	Verify Allow Directory Manager to impersonate other users is checked. If not, enable it and click Save.
 
 6.	Go to the Settings tab > Security > Client Certificate Truststore and verify the client public key certificate has been added to the truststore. You should only need to do this if the client certificate has not been signed by a known/trusted certificate authority. For details on the Client Certificate Trust Store, see the RadiantOne System Administration Guide.
@@ -203,9 +199,9 @@ The application’s parameters must be configured on the authorization server th
 
 To configure ADAP in the OIDC Service:
 
-1.	(Optional) If the name you want to use to access the OIDC server is not the FQDN of the machine, navigate to <RLI_HOME>/vds_server/conf/jetty and edit config.properties. Set openid.host=<desired hostname that matches the one in the server SSL certificate>.
+1.	(Optional) If the name you want to use to access the OIDC server is not the FQDN of the machine, navigate to <RLI_HOME>/vds_server/conf/jetty and edit config.properties. Set openid.host=`<desired hostname that matches the one in the server SSL certificate>`.
 
-2.	In a web browser, navigate to the RadiantOne OpenID Connect Authorization Server’s Login page: https://<RadiantOneServer>:7171/openid
+2.	In a web browser, navigate to the RadiantOne OpenID Connect Authorization Server’s Login page: `https://<RadiantOneServer>:7171/openid`
 
 3.	Click **Log in**. The login page is displayed. 
 
@@ -220,12 +216,12 @@ To configure ADAP in the OIDC Service:
 8.	Enter a value in the Client ID field. In this example, the value adap is entered.
 
 9.	You can enter values for the other properties, or leave them blank and click Save. A confirmation window displayed details of the new client. 
+
 10.	Click the Show Secret button. Record the value in the Secret field. 
 
-![Confirmation of New OIDC Client](Media/Image5.9.jpg)
+  ![Confirmation of New OIDC Client](Media/Image5.9.jpg)
 
-  
-Figure 9: Confirmation of New OIDC Client
+  Figure 9: Confirmation of New OIDC Client
 
 11.	Click OK. The Manage Clients page displays the new client.
 
@@ -239,13 +235,13 @@ The client settings configured in the previous section must be added to the Radi
 
 1.	In the Main Control Panel, click the Zookeeper tab (requires [Expert Mode](01-overview#expert-mode)).
 
-2.	Browse to radiantone/<version>/<cluster_name>/config/vds_server.conf.
+2.	Browse to `radiantone/<version>/<cluster_name>/config/vds_server.conf`.
 
 3.	Click **Edit Mode**. 
 
 4.	Set the value for “oidcClientId” to the value recorded in the Client ID field in the previous section. In this example, the value is set to adap.
 
-5.	Set the value for “oidcDiscoveryUrl” to the URL of the OpenID Connect Server. In this example, the value is set to https://<RadiantOneServer>:7171/openid/.well-known/openid-configuration.
+5.	Set the value for “oidcDiscoveryUrl” to the URL of the OpenID Connect Server. In this example, the value is set to `https://<RadiantOneServer>:7171/openid/.well-known/openid-configuration`.
 
 6.	Set the value for “oidcClientSecret” to the client secret that was recorded in the previous section. 
 
@@ -259,15 +255,15 @@ Profile	| name, family_name, given_name, middle_name, nickname, preferred_userna
 Phone	| phone_number, phone_number_verified
 Openid	| sub, auth_time, acr
 
-Table 5.: Standard Claims per Scope
+Table 2: Standard Claims per Scope
 
 8.	Click the Save button on the ZooKeeper tab. 
 
 9.	Click OK.
 
-![Configuring the OIDC parameters in RadiantOne](Media/Image5.11.jpg)
+  ![Configuring the OIDC parameters in RadiantOne](Media/Image5.11.jpg)
 
-Figure 11: Configuring the OIDC parameters in RadiantOne
+  Figure 11: Configuring the OIDC parameters in RadiantOne
 
 10.	(Optional) If you plan on using Proxy Authorization, go to Main Control Panel > Settings > Server Front End > Supported Controls. Check the option to enable the Proxy Authorization Control and click Save.
 
@@ -277,9 +273,9 @@ Figure 11: Configuring the OIDC parameters in RadiantOne
 
 13.	Click Add and define the rule(s) that will translate the identity from the OpenID Connect token to the identity in the RadiantOne namespace. For example, if a user authenticates to the OpenID connect server (to request a token) as Aaron_Medler, this value is issued as the identifier subject in the token and must be translated into an identity DN in the RadiantOne namespace when requests are sent. Assuming “Aaron_Medler” is the value in the uid attribute and this account is located in the o=companydirectory naming context, the mapping rule shown below would be needed to translate “Aaron_Melder” into the identity represented as: “uid=Aaron_Medler,ou=Accounting,o=companydirectory”
 
-![Example User to DN Mapping](Media/Image5.12.jpg)
- 
-Figure 12: Example User to DN Mapping
+  ![Example User to DN Mapping](Media/Image5.12.jpg)
+
+  Figure 12: Example User to DN Mapping
 
 14.	Click Save.
 
@@ -288,22 +284,21 @@ Figure 12: Example User to DN Mapping
 In the context of this guide, Postman is the REST client that will issue calls to ADAP. To obtain an OpenID Connect Token for Postman using the RadiantOne embedded OpenID Connect Service:
 
 1.	Open a web browser and navigate to: 
-https://<rli_server_name>:8090/adap?bind=oidc
+`https://<rli_server_name>:8090/adap?bind=oidc`
 
 2.	If the user has not already attempted to log in, the RadiantOne OpenID Connect Login page is displayed. The user logs in with thee RadiantOne credentials. If this page does not display, proceed to the next step. An authorization page similar to the one below displays.
  
->[!note]
->If a message states, “Client with ID <clientname> was not found”, the oidcClientId value in ZooKeeper must be configured. Refer to the RadiantOne Configuration section for more information.
+>[!note] If a message states, “Client with ID `<clientname>` was not found”, the oidcClientId value in ZooKeeper must be configured. Refer to the RadiantOne Configuration section for more information.
 
-![Authorization Access Page](Media/Image5.13.jpg)
- 
-Figure 13: Authorization Access Page
+  ![Authorization Access Page](Media/Image5.13.jpg)
+
+  Figure 13: Authorization Access Page
 
 3.	Click Yes. The OpenID Connect token is issued. A page similar to the following is displayed.
 
-![An image showing ](Media/Image5.14.jpg)
-   
-Figure 14: Generated OpenID Connect Token
+  ![An image showing ](Media/Image5.14.jpg)
+
+  Figure 14: Generated OpenID Connect Token
 
 4.	Record the token value. 
 5.	Use the token value recorded above in a header configured in your Postman client as follows. 
@@ -316,7 +311,7 @@ Header Name	| Authorization
 Header Value	| Token <token>
 Example URL	| http://localhost:8089/adap/o=companydirectory
 
-Table 5.4: Passing an OpenID Connect Token in a Header
+Table 4: Passing an OpenID Connect Token in a Header
 
 ![Passing an OpenID Connect Token in a Header](Media/Image5.15.jpg)
 
@@ -373,9 +368,7 @@ Table 5: Search Operation
 Figure 19: Search Operation
 
 >[!note]
->Depending on the parameters you define for the search, the loading time for your search results may be significantly longer than the loading times of other operations. A search’s initial loading time may be reduced by performing a paged search. See the PageSize section.
-
->**The search example shown in the table above displays a total of 10,011 results returned, as shown below.**
+>Depending on the parameters you define for the search, the loading time for your search results may be significantly longer than the loading times of other operations. A search’s initial loading time may be reduced by performing a paged search. See the PageSize section. <br> The search example shown in the table above displays a total of 10,011 results returned, as shown below.**
 
 ![Example Search Results](Media/Image5.20.jpg)
  
@@ -385,8 +378,7 @@ Figure 20: Example Search Results
 
 You can use the following search parameters: filter, attributes, scope, startIndex, count, sizelimit, paging, context, context filter, return mode, special character encoding, and derefAliases. The & sign is the parameter delimiter in the URL. These options are described in this section.
 
->[!note]
->Special characters that appear in an LDAP filter may have a different usage in a URL syntax. For example, the ‘&’ character is the parameter delimiter in URLs. These special characters should be replaced by their hexadecimal value.  Below, the character ‘&’ is replaced by its hexadecimal equivalent, ‘%26’.
+>[!note] Special characters that appear in an LDAP filter may have a different usage in a URL syntax. For example, the ‘&’ character is the parameter delimiter in URLs. These special characters should be replaced by their hexadecimal value.  Below, the character ‘&’ is replaced by its hexadecimal equivalent, ‘%26’.
 <br>LDAP Filter	            ->     Corrected URL
 <br>(&(objectclass=*)(cn=a*))  ->  (%26(objectclass=*)(cn=a*))
 
@@ -498,13 +490,11 @@ SizeLimit indicates the maximum number of entries to request from the RadiantOne
 
 In the example used for the “count” parameter described previously, the query to return the attribute “cn” for entries number 101 and 102 located under o=companydirectory is: 
 
-```
-http://localhost:8080/webservices/o=companydirectory?attributes=cn&startIndex=101&count=2 
-```
+`http://localhost:8080/webservices/o=companydirectory?attributes=cn&startIndex=101&count=2`
 
 However, even if the REST interface only returns entries 101 and 102, it requests all entries from the RadiantOne LDAP service. Then, post filtering is performed using the values for the “startIndex” and “count” parameters. 
 
-A more efficient way to get entries 101 and 102 is by using SizeLimit. SizeLimit could be set to the maximum number of entries required in order to retrieve the desired 101 and 102.  This example is shown in the table below.
+A more efficient way to get entries 101 and 102 is by using SizeLimit. SizeLimit could be set to the maximum number of entries required in order to retrieve the desired 101 and 102. This example is shown in the table below.
 
 Field	| Value
 -|-
@@ -522,15 +512,13 @@ The PageSize option indicates paging via the Paged Results Control should be pas
 
 For REST access, the paging functionality leverages a session cookie which is linked to the original LDAP connection. Since this requires the same connection/session to work properly, paging through the REST interface does not work against a RadiantOne cluster deployment because subsequent requests could be directed to a RadiantOne node that is not associated with the original session cookie. If paging is required for cluster deployments, it is recommended to use source address affinity persistence in your load balancer.
 
->[!note]
->To use this option, paged results must be enabled in RadiantOne. To enable paged results, go to the Main Control Panel > Settings tab > Server Front End > Supported Controls. Check the ‘Enable paged results’ checkbox, and click Save.*
+>[!note] To use this option, paged results must be enabled in RadiantOne. To enable paged results, go to the Main Control Panel > Settings tab > Server Front End > Supported Controls. Check the ‘Enable paged results’ checkbox, and click Save.
 
 ![Enabling Paged Results](Media/Image5.23.jpg)
  
 Figure 23: Enabling Paged Results
 
->[!note]
->In multi-node clusters, an HTTP Status 302 is issued on a node that receives a paging request but did not generate the cookie related to paged results. This node redirects the request to the node that generated the cookie. No action is required. The cookie timeout can be configured in RadiantOne. To configure this timeout, go to the Main Control Panel > Settings > Server Front End > Other Protocols (requires [Expert Mode](01-overview#expert-mode)). Expand the REST/ADAP section. Enter a value in the Cookie Timeout field in seconds (the default is 60). Click Save.
+>[!note] In multi-node clusters, an HTTP Status 302 is issued on a node that receives a paging request but did not generate the cookie related to paged results. This node redirects the request to the node that generated the cookie. No action is required. The cookie timeout can be configured in RadiantOne. To configure this timeout, go to the Main Control Panel > Settings > Server Front End > Other Protocols (requires [Expert Mode](01-overview#expert-mode)). Expand the REST/ADAP section. Enter a value in the Cookie Timeout field in seconds (the default is 60). Click Save.
 
 ![Configuring Cookie Timeout](Media/Image5.24.jpg)
  
@@ -550,8 +538,7 @@ Example URL	| http://localhost:8089/adap/o=companydirectory?pageSize=5
 
 Table 13: Search Operation using PageSize Parameter
 
->[!note]
->If the PageSize option is used, ‘startIndex’, ‘count’ and ‘sizeLimit’ options will be ignored.
+>[!note] If the PageSize option is used, ‘startIndex’, ‘count’ and ‘sizeLimit’ options will be ignored.
 
 ![Example Paged Search Results](Media/Image5.25.jpg)
  
@@ -578,7 +565,7 @@ URL	| `http://localhost:8089/adap/<baseDN>?<searchparam>&<searchparam>`
 Method	| Get
 Header Name	| Authorization
 Header Value	| Basic `<userDN>:<password>`
-Example URL	| http://localhost:8089/adap/o=companydirectory?pageSize=5&cookie= localhost=NTEyNDIzODcw
+Example URL	| http://localhost:8089/adap/o=companydirectory?pageSize=5&cookie=localhost=NTEyNDIzODcw
 
 Table 15: Search Operation using Cookie Parameter
 
@@ -678,8 +665,7 @@ An example LDAP filter of:
 
 RadiantOne Universal Directory stores supports alias entries as defined in RFC 22521. Alias entries point to/reference another entry in the directory. The attribute containing the location of the target entry (DN) is aliasedObjectName and the object class associated with these entries is alias. When a client requests an alias entry, they can indicate if they want the alias dereferenced or not. The indicators are outlined in the table below.
 
->[!warning]
->Dereferencing alias entries is only supported on base-level searches. One-level and subtree searches are not supported at this time.
+>[!warning] Dereferencing alias entries is only supported on base-level searches. One-level and subtree searches are not supported at this time.
 
 Flag	| RadiantOne Behavior
 -|-
@@ -719,7 +705,7 @@ Method	| Get
 Header Name	| Authorization
 Header Value	| Basic `<userDN>:<password>`
 
-Table 5.23: Displaying LDAP Server's Root Naming Contexts
+Table 23: Displaying LDAP Server's Root Naming Contexts
 
 An example of the list displayed by this command is shown below.
 
@@ -779,8 +765,7 @@ Figure 32: Add Failure Response Example
 
 In this section, an existing entry is replaced using the parameters shown in the table below.
 
->[!note]
->“BaseDN” is the DN of the targeted entry.
+>[!note] “BaseDN” is the DN of the targeted entry.
 
 Field	| Value
 -|-
@@ -1090,8 +1075,7 @@ Table 34: REST Operation to Delete a Node Containing Sub-nodes
  
 Figure 41: Deleing a Node Containing Sub-nodes
 
->[!note]
->The “deletetree=true” parameter does not delete root naming contexts.
+>[!note] The “deletetree=true” parameter does not delete root naming contexts.
 
 #### Performing Bulk Operations
 
@@ -1107,8 +1091,7 @@ Performing large quantities of REST requests may affect your network’s workloa
 
 A bulk operation contains unique fields in its syntax. The “method” field indicates the type of REST operation performed, and the “dn” field indicates the DN of the entry the operation applies to. 
 
->[!note]
->The fields “method”, “dn”, and “params” are required for every bulk operation.
+>[!note] The fields “method”, “dn”, and “params” are required for every bulk operation.
 
 <table>
 <tr>
@@ -1256,7 +1239,6 @@ Figure 44: Complex Attribute Search Result with Specified Sub-attributes
 
 In this section, an entry with complex attributes is added using the parameters shown in the table below. The value in the Example Request Body field contains the information for the entry to be added. The “phone” attribute contains the sub-attributes “type” and “value”, and the “address” attribute contains the sub-attributes “state”, “country”, and “streetNumber”.
 
-
 <table>
 <tr>
 <td>Field	
@@ -1325,7 +1307,7 @@ In this section, complex attributes are added to an existing user entry using th
 <td>Value
 <tr>
 <td>URL Syntax	
-<td>`http://localhost:8089/adap/<userDN you want to add attributes to>,<baseDN>`
+<td>http://localhost:8089/adap/<`userDN you want to add attributes to>,<`baseDN>
 <tr>
 <td>Example URL	
 <td>http://localhost:8089/adap/uid=alice,cn=config
@@ -1337,7 +1319,7 @@ In this section, complex attributes are added to an existing user entry using th
 <td>Authorization
 <tr>
 <td>Header Value	
-<td>Basic `<userDN>:<password>`
+<td>Basic <`userDN>:<`password>
 <tr>
 <td>Example Request Body	
 <td><pre>{
@@ -1375,7 +1357,7 @@ In this section, new attributes are added to an existing user entry using the pa
 <td>Field	Value
 <tr>
 <td>URL Syntax	
-<td>`http://localhost:8089/adap/<userDN you want to add attributes to>,<baseDN>`
+<td>http://localhost:8089/adap/<`userDN you want to add attributes to>,<`baseDN>
 <tr>
 <td>Example URL	
 <td>http://localhost:8089/adap/uid=alice,cn=config
@@ -1387,7 +1369,7 @@ In this section, new attributes are added to an existing user entry using the pa
 <td>Authorization
 <tr>
 <td>Header Value	
-<td>Basic `<userDN>:<password>`
+<td>Basic <`userDN>:<`password>
 <tr>
 <td>Example Request Body	
 <td><pre>{
@@ -1424,7 +1406,7 @@ In this section, sub-attributes are deleted from an existing entry using the par
 <td>Field	Value
 <tr>
 <td>URL Syntax	
-<td>`http://localhost:8089/adap/<userDN you want to delete attributes from>,<baseDN>`
+<td>http://localhost:8089/adap/<`userDN you want to delete attributes from>,<`baseDN>
 <tr>
 <td>Example URL	
 <td>http://localhost:8089/adap/uid=alice,cn=config
@@ -1435,7 +1417,7 @@ In this section, sub-attributes are deleted from an existing entry using the par
 <td>Authorization
 <tr>
 <td>Header Value	
-<td>Basic `<userDN>:<password>`
+<td>Basic <`userDN>:<`password>
 <tr>
 <td>Example Request Body	
 <td><pre>{
@@ -1465,7 +1447,7 @@ In the following example, all values for the attribute “address” are deleted
 <td>Field	Value
 <tr>
 <td>URL Syntax	
-<td>`http://localhost:8089/adap/<userDN you want to delete attributes from>,<baseDN>`
+<td>http://localhost:8089/adap/<`userDN you want to delete attributes from>,<`baseDN>
 <tr>
 <td>Example URL	
 <td>http://localhost:8089/adap/uid=alice,cn=config
@@ -1477,7 +1459,7 @@ In the following example, all values for the attribute “address” are deleted
 <td>Authorization
 <tr>
 <td>Header Value	
-<td>Basic `<userDN>:<password>`
+<td>Basic <`userDN>:<`password>
 <tr>
 <td>Example Request Body	
 <td><pre>{
@@ -1506,7 +1488,7 @@ In this section, the sub-attributes “streetNumber” and “country” are add
 <td>Field	Value
 <tr>
 <td>URL Syntax	
-<td>`http://localhost:8089/adap/<userDN you want to modify>,<baseDN>`
+<td>http://localhost:8089/adap/<`userDN you want to modify>,<`baseDN>
 <tr>
 <td>Example URL	
 <td>http://localhost:8089/adap/uid=alice,cn=config
@@ -1518,7 +1500,7 @@ In this section, the sub-attributes “streetNumber” and “country” are add
 <td>Authorization
 <tr>
 <td>Header Value	
-<td>Basic `<userDN>:<password>`
+<td>Basic <`userDN>:<`password>
 <tr>
 <td>Example Request Body	
 <td><pre>{
