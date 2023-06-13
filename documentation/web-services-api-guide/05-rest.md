@@ -185,53 +185,54 @@ To configure support for mutual authentication to ADAP, follow the steps below.
 
 #### OpenID Connect Token Authentication
 
+The RadiantOne REST (ADAP) interface supports token authentication. An OIDC token is recommended and described later on in this section. However, RadiantOne also includes a proprietary token mechanism that can be used if you don't have an OIDC provider. To generate a proprietary token, pass the userDN and password in the Authorization header in a GET request to the following endpoint: `https://r1server:8090/adap?bind=token`
+
+Field | Value
+-|-
+URL Syntax | http://localhost:8089/adap?bind=token
+Method | Get
+Header Name | Authorization
+Header Value | Basic `<userDN>:<password>`
+
+Table 2: Generating a proprietary token
+
+![header-for-token-authentication](Media/header-for-token-authentication.jpg)
+
+Figure 8: Header used for Token Authentication 
+
+The REST client displays the token value like in the example shown below. 
+
+![token-issued](Media/token-issued.jpg)
+
+Figure 9: The REST client displays the issued token 
+
+Record the token value and use it in the authorization header field (instead of user name and password) for subsequent ADAP requests. An example is shown in the table below.
+
+Field | Value
+-|-
+URL Syntax | (Varies by operation. Refer to the corresponding section in this guide for information.) 
+Method | (Varies by operation. Refer to the corresponding section in this guide for information.) 
+Header Name | Authorization
+Header Value | Token `<token>`
+Example Header Value | Token b85935a32dae4303ab17d985ad88cc34
+
+Table 3: OpenID Connect token authentication
+
 The RadiantOne REST (ADAP) interface supports OpenID Connect token-based authentication. This option provides the security of sending user login credentials to the authentication server, not the application (ADAP). OpenID Connect token authentication allows you to send your username and password just once and then pass the token in the request to ADAP. However, the user cannot use the token authentication to request a new token. Multiple requests can be performed during a [token’s lifetime](#token-lifetime).
  
 A high-level diagram of the different components is shown below. Postman is used as a simple client to illustrate the flow.
 
-![OpenID Connect Token Authentication](Media/Image5.8.jpg)
+![openid-connect-token-authentication](Media/openid-connect-token-authentication.jpg)
  
-Figure 8: OpenID Connect Token Authentication
+Figure 10: OpenID Connect Token Authentication
 
 ##### Authorization Server Configuration
 
-The application’s parameters must be configured on the authorization server that will issue the OpenID Connect tokens. The application in this context is the ADAP service. The steps below describe how to use the RadiantOne embedded OIDC service for the tokens.
-
-To configure ADAP in the OIDC Service:
-
-1.	(Optional) If the name you want to use to access the OIDC server is not the FQDN of the machine, navigate to <RLI_HOME>/vds_server/conf/jetty and edit config.properties. Set openid.host=`<desired hostname that matches the one in the server SSL certificate>`.
-
-2.	In a web browser, navigate to the RadiantOne OpenID Connect Authorization Server’s Login page: `https://<RadiantOneServer>:7171/openid`
-
-3.	Click **Log in**. The login page is displayed. 
-
-4.	Log in with the cn=directory manager credentials. The OpenID Connect server Control Panel is displayed. 
-
-5.	Click the Manage Clients link on the left side of the control panel.
-
-6.	Click **New Client**.The main tab of the New Client page displays. 
-
-7.	Enter a value in the name field. In this example, the value adap is entered.
-
-8.	Enter a value in the Client ID field. In this example, the value adap is entered.
-
-9.	You can enter values for the other properties, or leave them blank and click Save. A confirmation window displayed details of the new client. 
-
-10.	Click the Show Secret button. Record the value in the Secret field. 
-
-  ![Confirmation of New OIDC Client](Media/Image5.9.jpg)
-
-  Figure 9: Confirmation of New OIDC Client
-
-11.	Click OK. The Manage Clients page displays the new client.
-
-![Manage Clients Page](Media/Image5.10.jpg)
-
-Figure 10: Manage Clients Page
+The application’s parameters must be configured on the authorization server that will issue the OpenID Connect tokens. The application in this context is the ADAP service. Configure an application for the ADAP service in your OIDC server and note the client ID and secret that are generated for it.
 
 ##### RadiantOne Configuration
 
-The client settings configured in the previous section must be added to the RadiantOne configuration for ADAP to use. The following configuration can be performed on the Main Control Panel. 
+The client/application settings configured in the previous section must be added to the RadiantOne configuration for ADAP to use. The following configuration can be performed on the Main Control Panel. 
 
 1.	In the Main Control Panel, click the Zookeeper tab (requires [Expert Mode](01-overview#expert-mode)).
 
@@ -239,9 +240,9 @@ The client settings configured in the previous section must be added to the Radi
 
 3.	Click **Edit Mode**. 
 
-4.	Set the value for “oidcClientId” to the value recorded in the Client ID field in the previous section. In this example, the value is set to adap.
+4.	Set the value for “oidcClientId” to the value recorded in the Client ID field in the previous section.
 
-5.	Set the value for “oidcDiscoveryUrl” to the URL of the OpenID Connect Server. In this example, the value is set to `https://<RadiantOneServer>:7171/openid/.well-known/openid-configuration`.
+5.	Set the value for “oidcDiscoveryUrl” to the URL of the OpenID Connect Server.
 
 6.	Set the value for “oidcClientSecret” to the client secret that was recorded in the previous section. 
 
@@ -255,7 +256,7 @@ Profile	| name, family_name, given_name, middle_name, nickname, preferred_userna
 Phone	| phone_number, phone_number_verified
 Openid	| sub, auth_time, acr
 
-Table 2: Standard Claims per Scope
+Table 4: Standard Claims per Scope
 
 8.	Click the Save button on the ZooKeeper tab. 
 
@@ -281,27 +282,7 @@ Table 2: Standard Claims per Scope
 
 ##### Obtaining an OpenID Connect Token
 
-In the context of this guide, Postman is the REST client that will issue calls to ADAP. To obtain an OpenID Connect Token for Postman using the RadiantOne embedded OpenID Connect Service:
-
-1.	Open a web browser and navigate to: 
-`https://<rli_server_name>:8090/adap?bind=oidc`
-
-2.	If the user has not already attempted to log in, the RadiantOne OpenID Connect Login page is displayed. The user logs in with thee RadiantOne credentials. If this page does not display, proceed to the next step. An authorization page similar to the one below displays.
- 
->[!note] If a message states, “Client with ID `<clientname>` was not found”, the oidcClientId value in ZooKeeper must be configured. Refer to the RadiantOne Configuration section for more information.
-
-  ![Authorization Access Page](Media/Image5.13.jpg)
-
-  Figure 13: Authorization Access Page
-
-3.	Click Yes. The OpenID Connect token is issued. A page similar to the following is displayed.
-
-  ![An image showing ](Media/Image5.14.jpg)
-
-  Figure 14: Generated OpenID Connect Token
-
-4.	Record the token value. 
-5.	Use the token value recorded above in a header configured in your Postman client as follows. 
+In the context of this guide, Postman is the REST client that will issue calls to ADAP. Obtain an OpenID Connect Token for Postman from your OIDC provider. Use the token value in a header configured in your Postman client as follows. 
  
 Field	| Value
 -|-
@@ -311,17 +292,17 @@ Header Name	| Authorization
 Header Value	| Token <token>
 Example URL	| http://localhost:8089/adap/o=companydirectory
 
-Table 4: Passing an OpenID Connect Token in a Header
+Table 5: Passing an OpenID Connect Token in a Header
 
 ![Passing an OpenID Connect Token in a Header](Media/Image5.15.jpg)
 
-Figure 15: Passing an OpenID Connect Token in a Header
+Figure 13: Passing an OpenID Connect Token in a Header
 
 If successful, the operation displays results similar to the following. 
 
 ![Successful REST Operation using OpenID Connect Token](Media/Image5.16.jpg)
  
-Figure 16: Successful REST Operation using OpenID Connect Token
+Figure 14: Successful REST Operation using OpenID Connect Token
 
 ### Token Lifetime
 
@@ -337,13 +318,13 @@ By default the token lifetime is set to 10 hours. To configure the token timeout
 
 ![Editing the Token Timeout value](Media/Image5.17.jpg)
  
-Figure 17: Editing the Token Timeout value
+Figure 15: Editing the Token Timeout value
 
 When an expired or unrecognized token is used, the Response section displays the message “Authentication failed: Unknown token”.
 
 ![Error Related to Unrecognized or Expired Token](Media/Image5.18.jpg)
  
-Figure 18: Error Related to Unrecognized or Expired Token
+Figure 16: Error Related to Unrecognized or Expired Token
 
 ### Examples
 
@@ -361,18 +342,18 @@ Method	| Get
 Header Name	| Authorization
 Header Value	| Basic `<userDN>:<password>`
 
-Table 5: Search Operation
+Table 6: Search Operation
 
 ![Search Operation](Media/Image5.19.jpg)
 
-Figure 19: Search Operation
+Figure 17: Search Operation
 
 >[!note]
 >Depending on the parameters you define for the search, the loading time for your search results may be significantly longer than the loading times of other operations. A search’s initial loading time may be reduced by performing a paged search. See the PageSize section. <br> The search example shown in the table above displays a total of 10,011 results returned, as shown below.**
 
 ![Example Search Results](Media/Image5.20.jpg)
  
-Figure 20: Example Search Results
+Figure 18: Example Search Results
 
 ##### Optional Search Parameters
 
@@ -394,13 +375,13 @@ Method	| Get
 Header Name	| Authorization
 Header Value	| Basic `<userDN>:<password>`
 
-Table 6: Search Operation with Filter Attributes
+Table 7: Search Operation with Filter Attributes
 
 An example is shown below.
 
 ![Search Results with Filter Attributes](Media/Image5.21.jpg)
  
-Figure 21: Search Results with Filter Attributes
+Figure 19: Search Results with Filter Attributes
 
 By default, all attributes associated with the matching entries are returned. The attributes option allows you to indicate which attributes you want returned in the search result. Separate attribute names with a comma in the URL.  The value defined for this option is translated into requested attributes in the LDAP query issued to the RadiantOne service. The example shown below expects the objectclass and cn attributes returned for each entry.
 
@@ -412,7 +393,7 @@ Method	| Get
 Header Name	| Authorization
 Header Value	| Basic `<userDN>:<password>`
 
-Table 7: Search Operation Returning ObjectClass and CN
+Table 8: Search Operation Returning ObjectClass and CN
 
 ##### Scope
 
@@ -432,7 +413,7 @@ Method	| Get
 Header Name	| Authorization
 Header Value	| Basic `<userDN>:<password>`
 
-Table 8: Search Operation with Scope Parameter
+Table 9: Search Operation with Scope Parameter
 
 ##### StartIndex (Paging Results)
 
@@ -447,7 +428,7 @@ Method	| Get
 Header Name	| Authorization
 Header Value	| Basic `<userDN>:<password>`
 
-Table 9: Search Operation using StartIndex Parameter
+Table 10: Search Operation using StartIndex Parameter
 
 ##### Count
 
@@ -463,13 +444,13 @@ Method	| Get
 Header Name	| Authorization
 Header Value	| Basic `<userDN>:<password>`
 
-Table 10: Search Operation using Count Parameter
+Table 11: Search Operation using Count Parameter
 
 An example is shown below. 
 
 ![An image showing ](Media/Image5.22.jpg)
  
-Figure 22: Search Results with Count
+Figure 20: Search Results with Count
 
 The ‘totalResults’ field displays one of the following values. The following table explains each of these values.
 
@@ -480,7 +461,7 @@ The ‘totalResults’ field displays one of the following values. The following
 -3	| The last page of search results has been reached.  
 Any other value	| The total number of entries that were matched. This value is displayed only if the parameter SizeLimit is set to 0. 
 
-Table 11: Total Results Descriptions
+Table 12: Total Results Descriptions
 
 The “count” value represents the number of results actually returned in the response and was set when “count=2” was added to the URL in the example above. Otherwise, the count value would have been equal to the total number of entries returned without the use of paging. 
 
@@ -504,7 +485,7 @@ Method	| Get
 Header Name	| Authorization
 Header Value	| Basic `<userDN>:<password>`
 
-Table 12: Search Operation using SizeLimit Parameter
+Table 13: Search Operation using SizeLimit Parameter
 
 ###### Paging
 
@@ -516,13 +497,13 @@ For REST access, the paging functionality leverages a session cookie which is li
 
 ![Enabling Paged Results](Media/Image5.23.jpg)
  
-Figure 23: Enabling Paged Results
+Figure 21: Enabling Paged Results
 
 >[!note] In multi-node clusters, an HTTP Status 302 is issued on a node that receives a paging request but did not generate the cookie related to paged results. This node redirects the request to the node that generated the cookie. No action is required. The cookie timeout can be configured in RadiantOne. To configure this timeout, go to the Main Control Panel > Settings > Server Front End > Other Protocols (requires [Expert Mode](01-overview#expert-mode)). Expand the REST/ADAP section. Enter a value in the Cookie Timeout field in seconds (the default is 60). Click Save.
 
 ![Configuring Cookie Timeout](Media/Image5.24.jpg)
  
-Figure 24: Configuring Cookie Timeout
+Figure 22: Configuring Cookie Timeout
 
 If you try to use the PageSize option without paging enabled in RadiantOne, the REST interface ignores paging and performs a non-paged search against RadiantOne with SizeLimit equal to the PageSize parameter.
 
@@ -536,13 +517,13 @@ Header Name	| Authorization
 Header Value	| Basic <userDN>:<password>
 Example URL	| http://localhost:8089/adap/o=companydirectory?pageSize=5
 
-Table 13: Search Operation using PageSize Parameter
+Table 14: Search Operation using PageSize Parameter
 
 >[!note] If the PageSize option is used, ‘startIndex’, ‘count’ and ‘sizeLimit’ options will be ignored.
 
 ![Example Paged Search Results](Media/Image5.25.jpg)
  
-Figure 25: Example Paged Search Results
+Figure 23: Example Paged Search Results
 
 >[!note]
 >Record the value in the ‘cookie’ field. This value defines a search parameter that will be used to display the next page of search results. If the value in the ‘cookie’ field is “null”, the last page of search results has been reached; there are no more pages to retrieve. 
@@ -555,7 +536,7 @@ The totalResults’ field displays one of three values. The following table expl
 -2	| Paged search results were successfully retrieved.
 -3	| The search was terminated prior to reaching the end of the search results. This result is displayed only in sessions that use cookies.
 
-Table 14: TotalResults Values
+Table 15: TotalResults Values
 
 The next page of search results is displayed using the parameters shown in the table below. In this example, the value for the second search parameter, cookie, is derived from the value in the cookie field in the search results displayed above.
 
@@ -567,7 +548,7 @@ Header Name	| Authorization
 Header Value	| Basic `<userDN>:<password>`
 Example URL	| http://localhost:8089/adap/o=companydirectory?pageSize=5&cookie=localhost=NTEyNDIzODcw
 
-Table 15: Search Operation using Cookie Parameter
+Table 16: Search Operation using Cookie Parameter
 
 A paged search stops automatically after five minutes of inactivity, the client consumes enough pages to retrieve all of the RadiantOne service’s search results, or it can be stopped manually using pageSize=0 shown in the table below.
 
@@ -579,13 +560,13 @@ Header Name	| Authorization
 Header Value	| Basic `<userDN>:<password>`
 Example URL	| http://localhost:8089/adap/o=companydirectory?pageSize=0&cookie=localhost=NTEyNDIzODcw
 
-Table 16: Manually Stopping a paged search
+Table 17: Manually Stopping a paged search
 
 The absolute number of paged searches that can be supported by the RadiantOne service concurrently is defined in the Max Paged Searches property configured in Main Control Panel > Settings > Server Frontend > Other Protocols, REST/ADAP section. This limit controls how many concurrent active paged searches the RadiantOne service maintains state for. Once this limit is reached, no new paged searches can be processed until one of the existing paged search requests is closed. This limit does not impact clients from paging through the results for searches that have already been started.
 
 ![Max Concurrent Paged Searches](Media/max-paged-searches.jpg)
 
-Figure 26: Max Concurrent Paged Searches
+Figure 24: Max Concurrent Paged Searches
 
 ##### Context
 
@@ -599,11 +580,11 @@ Method	| Get
 Header Name	| Authorization
 Header Value	| Basic `<userDN>:<password>`
 
-Table 17: Example Response for Context Search
+Table 18: Example Response for Context Search
 
 ![Performing a Context Search](Media/Image5.26.jpg)
 
-Figure 27: Performing a Context Search
+Figure 25: Performing a Context Search
 
 In the figure above, starting at the bottom, the bottom box contains the uid that matches the search criteria defined in the URL. The next box up contains the parent entry that uid=Aaron Medler belongs to, ou=Accounting. The top box contains the top entry, o=companydirectory. 
 
@@ -623,11 +604,11 @@ Method	| Get
 Header Name	| Authorization
 Header Value	| Basic `<userDN>:<password>`
 
-Table 18: Search Operation using Context Filter
+Table 19: Search Operation using Context Filter
 
 ![Example Search Result Leveraging Context Filter](Media/Image5.27.jpg)
  
-Figure 28: Example Search Result Leveraging Context Filter
+Figure 26: Example Search Result Leveraging Context Filter
 
 ##### Return Mode
 
@@ -641,7 +622,7 @@ Method	| Get
 Header Name	| Authorization
 Header Value	| Basic `<userDN>:<password>`
 
-Table 19: Return Mode
+Table 20: Return Mode
 
 ##### Special Character Encoding
 
@@ -655,7 +636,7 @@ Space	| %20
 |	| %7C
 =	| %3D
 
-Table 20: Special Character Encoding
+Table 21: Special Character Encoding
 
 An example LDAP filter of:
 (|(cn=Lisa Grady)(sAMAccountName=Lisa Grady)(uid=Lisa Grady)) 
@@ -674,7 +655,7 @@ derefAliases=1 <br> (equivalent to using -a search in an ldapsearch command)	| D
 derefAliases=2	<br> (equivalent to using -a find in an ldapsearch command)	| Dereferences the base object in a search, but does not dereference alias entries that are under the base.
 derefAliases=3 <br> (equivalent to using -a always in an ldapsearch command)	| Dereferences aliases both in searching and in locating the base object of the search.
 
-Table 21: Dereferencing Alias Entries
+Table 22: Dereferencing Alias Entries
 
 The default behavior of the REST/ADAP service is to never dereference aliases. If the REST client wants an alias entry dereferenced, they must pass the search parameter derefaliases as described below.
 
@@ -686,13 +667,13 @@ Header Name	| Authorization
 Header Value	| Basic <userDN>:<password>
 Example URL	| http://localhost:8089/adap/ou=Headquarters,o=companydirectory?derefAliases=3
 
-Table 22: Passing the derefealiases parameter
+Table 23: Passing the derefealiases parameter
 
 When a client requests derefAliases=3, RadiantOne automatically dereferences the alias entry and returns the entry it points to. In this example, the search dereferences “ou=Headquarters,o=companydirectory”, which is an alias entry, and returns “ou=Information Technology,o=companydirectory” as shown below.
 
 ![Example Result Dereferencing Aliases](Media/Image5.28.jpg)
  
-Figure 29: Example Result Dereferencing Aliases
+Figure 24: Example Result Dereferencing Aliases
 
 ##### Display LDAP server’s root naming contexts
 
@@ -705,13 +686,13 @@ Method	| Get
 Header Name	| Authorization
 Header Value	| Basic `<userDN>:<password>`
 
-Table 23: Displaying LDAP Server's Root Naming Contexts
+Table 25: Displaying LDAP Server's Root Naming Contexts
 
 An example of the list displayed by this command is shown below.
 
 ![Example Search Returning Root Naming Contexts](Media/Image5.29.jpg)
  
-Figure 30: Example Search Returning Root Naming Contexts
+Figure 26: Example Search Returning Root Naming Contexts
 
 #### Add
 
@@ -747,11 +728,11 @@ In this section, a new entry is added to RadiantOne using the parameters shown i
 }
 </table>
 
-Table 24: Add Operation
+Table 27: Add Operation
 
 ![Add Request Example](Media/Image5.30.jpg)
   
-Figure 31: Add Request Example
+Figure 29: Add Request Example
 
 If successful, the Response section displays the message “{"httpStatus":200}”. 
 
@@ -759,7 +740,7 @@ If unsuccessful, the Response section displays the message “{"httpStatus":400}
 
 ![Add Failure Response Example](Media/Image5.31.jpg)
  
-Figure 32: Add Failure Response Example
+Figure 30: Add Failure Response Example
 
 #### Replace (PUT)
 
@@ -776,11 +757,11 @@ Header Name	| Authorization
 Header Value	| Basic `<userDN>:<password>`
 Example Request Body	| { "params" : { <br>"attributes" : {"objectClass" : [ "top",  <br>"person", <br>"organizationalPerson", <br>"inetOrgPerson" ], <br>"cn" : "Alice Wonderland2", <br>"sn" : "Wonderland2", <br>"uid" : "alice" } } <br>}
 
-Table 25: Replacing an Entry
+Table 28: Replacing an Entry
 
 ![Example PUT Request](Media/Image5.32.jpg)
 
-Figure 33: Example PUT Request
+Figure 31: Example PUT Request
 
 If successful, the Response section displays the message “{"httpStatus":200}”. 
 
@@ -801,11 +782,11 @@ Header Name	| Authorization
 Header Value	| Basic <userDN>:<password>
 Example Request Body	| { "params" : { <br>"mods" : [ { "attribute" : "telephoneNumber", <br>"type" : "ADD",<br>"values" : [ "+1 354 2344 5433" ] }, <br>{ "attribute" : "mobile", <br>"type" : "REPLACE", <br>"values" : [ "+1 123 4544 1290" ] } ] } <br>}
 
-Table 26: Adding and Replacing Attributes
+Table 29: Adding and Replacing Attributes
 
 ![Example PATCH Request](Media/Image5.33.jpg)
  
-Figure 34: Example PATCH Request
+Figure 32: Example PATCH Request
 
 If successful, the Response section displays the message “{"httpStatus":200}”. 
 
@@ -847,7 +828,7 @@ In this example an attribute (e.g. email) containing a specified value (e.g. ali
 }
 </table>
 
-Table 27: REST Operation to Delete an Attribute Value
+Table 30: REST Operation to Delete an Attribute Value
 
 If successful, the Response section displays the message “{"httpStatus":200}”.
 
@@ -889,7 +870,7 @@ In this example, an attribute is deleted, regardless of its attribute values, us
 }
 </table>
 
-Table 28: REST Operation to Delete an Attribute
+Table 31: REST Operation to Delete an Attribute
 
 If successful, the Response section displays the message “{"httpStatus":200}”.
 
@@ -934,11 +915,11 @@ In this example, a group entry identified as “cn=operator,ou=globalgroups,cn=c
 
 </table> 
 
-Table 29: REST Operation to add group members
+Table 32: REST Operation to add group members
 
 ![Example PATCH Request – Add Group Members](Media/Image5.34.jpg)
  
-Figure 35: Example PATCH Request – Add Group Members
+Figure 33: Example PATCH Request – Add Group Members
 
 If successful, the Response section displays the message “{"httpStatus":200}”.
 
@@ -982,11 +963,11 @@ In this example, a group entry’s members are replaced by a new member.
 }
 </table>
 
-Table 30: REST operation to replace group members
+Table 33: REST operation to replace group members
 
 ![Example PATCH Request – Replace Group Members](Media/Image5.35.jpg)
  
-Figure 36: Example PATCH Request – Replace Group Members
+Figure 34: Example PATCH Request – Replace Group Members
 
 If successful, the Response section displays the message “{"httpStatus":200}”.
 
@@ -1002,11 +983,11 @@ Header Name	| Authorization
 Header Value	| Basic `<userDN>:<password>`
 Example Request Body	| {"params" : { "DN" : " uid=alice,cn=config ", <br>"newRDN" : " uid=lewis "} <br>}
 
-Table 31: REST Operation to modify an entry's RDN
+Table 34: REST Operation to modify an entry's RDN
 
 ![Example PATCH – Modify RDN](Media/Image5.36.jpg)
  
-Figure 37: Example PATCH – Modify RDN
+Figure 35: Example PATCH – Modify RDN
 
 If successful, the Response section displays the message “{"httpStatus":200}”. 
 
@@ -1023,11 +1004,11 @@ Header Value	| Basic `<userDN>:<password>`
 Example Request Body	| {"params" : { "DN" : <br>uid=Adalberto_Flecha,ou=Accounting,o=companydirectory", <br>"newRDN" : "uid=Adalberto_Flecha",<br>"newSuperiorDN" : "ou=Administration,o=companydirectory"} 
 }
 
-Table 32: REST Operation to move an entry
+Table 35: REST Operation to move an entry
 
 ![Example PATCH – Move Entry](Media/Image5.37.jpg)
  
-Figure 38: Example PATCH – Move Entry
+Figure 36: Example PATCH – Move Entry
 
 If successful, the Response section displays the message “{"httpStatus":200}”. 
 
@@ -1043,11 +1024,11 @@ Method	| Delete
 Header Name	| Authorization
 Header Value	| Basic `<userDN>:<password>`
 
-Table 33: REST Operation to delete an entry
+Table 36: REST Operation to delete an entry
 
 ![Example DELETE Request](Media/Image5.38.jpg)
  
-Figure 39: Example DELETE Request
+Figure 37: Example DELETE Request
 
 If successful, the Response section displays the message “{"httpStatus":200}”. 
 
@@ -1057,7 +1038,7 @@ This section explains how to delete a node and its sub-nodes. When attempting to
 
 ![Failure to Delete Entry Containing Sub-nodes](Media/Image5.39.jpg)
 
- Figure 40: Failure to Delete Entry Containing Sub-nodes
+ Figure 38: Failure to Delete Entry Containing Sub-nodes
 
 To delete a node that contains sub-nodes, perform a deletion using the parameters shown in the table below. “baseDN” is the DN of the targeted entry.
 
@@ -1069,11 +1050,11 @@ Method	| Delete
 Header Name	| Authorization
 Header Value	| Basic `<userDN>:<password>`
 
-Table 34: REST Operation to Delete a Node Containing Sub-nodes
+Table 37: REST Operation to Delete a Node Containing Sub-nodes
 
 ![Deleing a Node Containing Sub-nodes](Media/Image5.40.jpg)
  
-Figure 41: Deleing a Node Containing Sub-nodes
+Figure 39: Deleing a Node Containing Sub-nodes
 
 >[!note] The “deletetree=true” parameter does not delete root naming contexts.
 
@@ -1171,11 +1152,11 @@ A bulk operation contains unique fields in its syntax. The “method” field in
 
 </table>
 
-Table 35: REST Operation to Perform Bulk Operation
+Table 38: REST Operation to Perform Bulk Operation
 
 ![Sample Response from Bulk Operations](Media/Image5.41.jpg)
  
-Figure 42: Sample Response from Bulk Operations
+Figure 40: Sample Response from Bulk Operations
 
 In the image above, starting at the top, in the top box, the addition of a new entry to the directory is confirmed. In the second box, the replacement of an existing directory entry is confirmed. In the third box, the modification of an entry’s attribute is confirmed. In the fourth box, the deletion of an entry is confirmed.
 
@@ -1209,13 +1190,13 @@ Method	| Get
 Header Name	| Authorization
 Header Value	| Basic `<userDN>:<password>`
 
-Table 36: REST Operation Searching for Complex Attributes
+Table 39: REST Operation Searching for Complex Attributes
 
 An example complex attribute search result is shown in the image below.
  
 ![Example Complex Attribute Search Results](Media/Image5.42.jpg)
 
-Figure 43: Example Complex Attribute Search Results
+Figure 41: Example Complex Attribute Search Results
 
 When using a complex attribute in a filter, you can search for entries with a specific sub-attribute value. The value defined for this option is translated into an LDAP filter when the query is issued to RadiantOne. In the following example, a search is performed for records with the value NY for the “state” sub-attribute within cn=config.
 
@@ -1227,13 +1208,13 @@ Method	| Get
 Header Name	| Authorization
 Header Value	| Basic `<userDN>:<password>`
 
-Table 37: Complex Attribute Search Using a Filter
+Table 40: Complex Attribute Search Using a Filter
 
 An example complex attribute search result is shown in the image below.
 
 ![Complex Attribute Search Result with Specified Sub-attributes](Media/Image5.43.jpg)
  
-Figure 44: Complex Attribute Search Result with Specified Sub-attributes
+Figure 42: Complex Attribute Search Result with Specified Sub-attributes
 
 ##### Add an Entry with Complex Attributes
 
@@ -1290,11 +1271,11 @@ In this section, an entry with complex attributes is added using the parameters 
 }
 </table>
 
-Table 38: Adding an entry with complex attributes
+Table 41: Adding an entry with complex attributes
 
 ![Adding an entry with complex attributes](Media/Image5.44.jpg)
  
-Figure 45: Adding an entry with complex attributes
+Figure 43: Adding an entry with complex attributes
 
 ##### Add Complex Attributes to an Existing Entry
 
@@ -1344,7 +1325,7 @@ In this section, complex attributes are added to an existing user entry using th
 }
 </table>
 
-Table 39: Adding Complex Attributes to an Existing Entry
+Table 42: Adding Complex Attributes to an Existing Entry
 
 If you attempt to add an attribute that has an already existing, identical value, the REST client displays LDAP code 20 (the provided attribute contains a value that would result in duplicate value in the entry). If this happens, the entire request is ignored by the REST client. 
 
@@ -1395,7 +1376,7 @@ In this section, new attributes are added to an existing user entry using the pa
 }
 </table>
 
-Table 40: Replacing an Entry’s Complex Attributes
+Table 43: Replacing an Entry’s Complex Attributes
 
 ##### Delete an Entry’s Complex Attributes
 
@@ -1438,7 +1419,7 @@ In this section, sub-attributes are deleted from an existing entry using the par
 }
 </table>
 
-Table 41: Deleting an Entry’s Complex Attributes
+Table 44: Deleting an Entry’s Complex Attributes
 
 In the following example, all values for the attribute “address” are deleted using the parameters in the table below. The value in the Example Request Body field contains the information for the sub-attributes to be deleted from the entry.
 
@@ -1477,7 +1458,7 @@ In the following example, all values for the attribute “address” are deleted
 }
 </table>
 
-Table 42: Deleting Sub-attributes
+Table 45: Deleting Sub-attributes
 
 ##### Modify Multiple Complex Attributes in an Operation
 
@@ -1536,4 +1517,4 @@ In this section, the sub-attributes “streetNumber” and “country” are add
 }
 </table>
 
-Table 43: Modifying Multiple Complex Attributes in an Operation
+Table 46: Modifying Multiple Complex Attributes in an Operation
