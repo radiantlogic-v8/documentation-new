@@ -194,54 +194,54 @@ To configure support for mutual authentication to ADAP, follow the steps below.
 
 #### OpenID Connect Token Authentication
 
+The RadiantOne REST (ADAP) interface supports token authentication. An OIDC token is recommended and described later on in this section. However, RadiantOne also includes a proprietary token mechanism that can be used if you don't have an OIDC provider. To generate a proprietary token, pass the userDN and password in the Authorization header in a GET request to the following endpoint: `https://r1server:8090/adap?bind=token`
+
+Field | Value
+-|-
+URL Syntax | http://localhost:8089/adap?bind=token
+Method | Get
+Header Name | Authorization
+Header Value | Basic `<userDN>:<password>`
+
+Table 2: Generating a proprietary token
+
+![header-for-token-authentication](Media/header-for-token-authentication.jpg)
+
+Figure 8: Header used for Token Authentication 
+
+The REST client displays the token value like in the example shown below. 
+
+![token-issued](Media/token-issued.jpg)
+
+Figure 9: The REST client displays the issued token 
+
+Record the token value and use it in the authorization header field (instead of user name and password) for subsequent ADAP requests. An example is shown in the table below.
+
+Field | Value
+-|-
+URL Syntax | (Varies by operation. Refer to the corresponding section in this guide for information.) 
+Method | (Varies by operation. Refer to the corresponding section in this guide for information.) 
+Header Name | Authorization
+Header Value | Token `<token>`
+Example Header Value | Token b85935a32dae4303ab17d985ad88cc34
+
+Table 3: OpenID Connect token authentication
+
 The RadiantOne REST (ADAP) interface supports OpenID Connect token-based authentication. This option provides the security of sending user login credentials to the authentication server, not the application (ADAP). OpenID Connect token authentication allows you to send your username and password just once and then pass the token in the request to ADAP. However, the user cannot use the token authentication to request a new token. Multiple requests can be performed during a [token’s lifetime](#token-lifetime).
  
 A high-level diagram of the different components is shown below. Postman is used as a simple client to illustrate the flow.
 
-![An image showing ](Media/Image5.8.jpg)
- 
+![An image showing ](Media/openid-connect-token-authentication.jpg)
+
 Figure 8: OpenID Connect Token Authentication
 
 ##### Authorization Server Configuration
 
-The application’s parameters must be configured on the authorization server that will issue the OpenID Connect tokens. The application in this context is the ADAP service. The steps below describe how to use the RadiantOne embedded OIDC service for the tokens.
-
-To configure ADAP in the OIDC Service:
-
-1.	(Optional) If the name you want to use to access the OIDC server is not the FQDN of the machine, navigate to <RLI_HOME>/vds_server/conf/jetty and edit config.properties. Set `openid.host=<desired hostname that matches the one in the server SSL certificate>`.
-
-2.	In a web browser, navigate to the RadiantOne OpenID Connect Authorization Server’s Login page: `https://<RadiantOneServer>:7171/openid`
-
-3.	Click **Log in**. The login page is displayed. 
-
-4.	Log in with the cn=directory manager credentials. The OpenID Connect server Control Panel is displayed. 
-
-5.	Click the Manage Clients link on the left side of the control panel.
-
-6.	Click **New Client**.The main tab of the New Client page displays. 
-
-7.	Enter a value in the name field. In this example, the value adap is entered.
-
-8.	Enter a value in the Client ID field. In this example, the value adap is entered.
-
-9.	You can enter values for the other properties, or leave them blank and click Save. A confirmation window displayed details of the new client. 
-10.	Click the Show Secret button. Record the value in the Secret field. 
-
-![Confirmation of New OIDC Client](Media/Image5.9.jpg)
-
-  
-Figure  9: Confirmation of New OIDC Client
-
-11.	Click OK. The Manage Clients page displays the new client.
-
-![Manage Clients Page](Media/Image5.10.jpg)
-
- 
-Figure 10: Manage Clients Page
+The application’s parameters must be configured on the authorization server that will issue the OpenID Connect tokens. The application in this context is the ADAP service. Configure an application for the ADAP service in your OIDC server and note the client ID and secret that are generated for it.
 
 ##### RadiantOne Configuration
 
-The client settings configured in the previous section must be added to the RadiantOne configuration for ADAP to use. The following configuration can be performed on the Main Control Panel. 
+The client/application settings configured in the previous section must be added to the RadiantOne configuration for ADAP to use. The following configuration can be performed on the Main Control Panel. 
 
 1.	In the Main Control Panel, click the Zookeeper tab (requires [Expert Mode](overview#expert-mode)).
 
@@ -249,9 +249,9 @@ The client settings configured in the previous section must be added to the Radi
 
 3.	Click `Edit Mode`. 
 
-4.	Set the value for “oidcClientId” to the value recorded in the Client ID field in the previous section. In this example, the value is set to adap.
+4.	Set the value for “oidcClientId” to the value recorded in the Client ID field in the previous section.
 
-5.	Set the value for “oidcDiscoveryUrl” to the URL of the OpenID Connect Server. In this example, the value is set to `https://<RadiantOneServer>:7171/openid/.well-known/openid-configuration`.
+5.	Set the value for “oidcDiscoveryUrl” to the URL of the OpenID Connect Server.
 
 6.	Set the value for “oidcClientSecret” to the client secret that was recorded in the previous section. 
 
@@ -291,29 +291,7 @@ Figure 12: Example User to DN Mapping
 
 #### Obtaining an OpenID Connect Token
 
-In the context of this guide, Postman is the REST client that will issue calls to ADAP. To obtain an OpenID Connect Token for Postman using the RadiantOne embedded OpenID Connect Service:
-
-1.	Open a web browser and navigate to: 
-https://<rli_server_name>:8090/adap?bind=oidc
-
-2.	If the user has not already attempted to log in, the RadiantOne OpenID Connect Login page is displayed. The user logs in with thee RadiantOne credentials. If this page does not display, proceed to the next step. An authorization page similar to the one below displays.
- 
->[!note] 
->If a message states, “Client with ID `<clientname>` was not found”, the oidcClientId value in ZooKeeper must be configured. Refer to the RadiantOne Configuration section for more information.
-
-![Authorization Access Page](Media/Image5.13.jpg)
- 
-Figure 13: Authorization Access Page
-
-3.	Click Yes. The OpenID Connect token is issued. A page similar to the following is displayed.
-
-![Generated OpenID Connect Token](Media/Image5.14.jpg)
-   
-Figure 14: Generated OpenID Connect Token
-
-4.	Record the token value. 
-
-5.	Use the token value recorded above in a header configured in your Postman client as follows. 
+In the context of this guide, Postman is the REST client that will issue calls to ADAP. Obtain an OpenID Connect Token for Postman from your OIDC provider. Use the token value in a header configured in your Postman client as follows.
 
 Field	| Value
 -|-
