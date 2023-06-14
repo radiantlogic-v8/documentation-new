@@ -2,7 +2,7 @@ name: Build and Deploy Developer Website
 
 on:
 #   push:
-#     branches: [r1-saas, v7.4]
+#     branches: [r1-saas, v7.v]
 #   repository_dispatch:
   workflow_dispatch:
 
