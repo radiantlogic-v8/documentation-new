@@ -3,9 +3,7 @@ title: Global Identity Viewer
 description: Get a quick introduction to the Global Identity Viewer and how it facilitates searching for identities and/or groups across all data sources that have been integrated in a given Global Identity Builder project.
 ---
 
-# RadiantOne Global Identity Viewer
-
-## Chapter 1: Introduction
+# Introduction
 
 Many large enterprises have multiple Active Directory forests and LDAP directories. As the number of directories continues to grow, and expands to cloud directories (e.g. Azure AD, Okta), getting a global view of identities and groups can be a huge challenge. In addition to the number of disparate directories, often containing overlapping user accounts that must be properly linked, directory vendors have variations in the how groups are managed. Some LDAP directory servers support dynamic groups. For dynamic groups, the membership is determined by search criteria using an LDAP URL as opposed to being maintained explicitly in a list. For example, suppose that you want a Sales group to contain every employee that has a title of Sales Manager. To do this, you create a dynamic group named Sales associated with the groupOfURLs objectclass. Then, instead of statically assigning member DNs as unique members (in the member or uniqueMember attribute), you define a memberURL attribute that contains the LDAP URL and criteria (search base, scope and filter) to be used for determining members of the group. Dynamic groups offer flexibility and less administration. However, it also becomes difficult to quickly get a list of members without issuing an additional query based on the memberURL criteria for each group. In Active Directory, group nesting, where a group can be a member of another group, is a way to simplify the aintenance of groups. This also offers flexibility and less administration but can be more cumbersome to quickly assess who is a member of which group(s).
 
@@ -16,7 +14,7 @@ RadiantOne aggregates and links overlapping identities and addresses the complex
 
 ![An image showing ](Media/Image1.1.jpg)
 
-Figure 1. 1 : High Level Process
+Figure  1 : High Level Process
 
 The Global Identity Viewer facilitates searching for identities and/or groups across all data sources that have been integrated in the Global Identity Builder project. When a query returns an identity, a list of tabs display for the selected user based on how many identity sources the user has an account in. If the identity was found in the global profile list, the attributes corresponding to this account display on the Global Profile tab. This tab can contain attribute(s) that have been joined across all accounts that have been linked to a single identity.
 

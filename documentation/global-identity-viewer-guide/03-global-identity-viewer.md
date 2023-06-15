@@ -3,13 +3,19 @@ title: Global Identity Viewer
 description: Learn how to navigate and use the Global Identity Viewer to browse and search identities and groups, manage display templates, manage edit templates, define basic queries, define advanced queries, and configure reports.
 ---
 
-# Chapter 3: Global Identity Viewer
+#  Global Identity Viewer
 
 After the configuration outlined in Chapter 2 is completed, the Global Identity Viewer can be used. Any user that is a member of RadiantOne Directory Administrator, Global ID Viewer Design, Global ID Viewer Write or Read Only roles can log into the Global Identity Viewer Console and access the Global Identity Viewer. For details on the RadiantOne delegated admin roles, see the RadiantOne System Administration Guide.
 
-To access the Global Identity Viewer, navigate in a web browser as follows.
+To access the Global Identity Viewer, append `/portal` to the end of the Control Panel endpoint as follows.
 
-`<ENDPOINT FOR ACCESSING GLOBAL IDENTITY VIEWER>`
+`https://<hostname>/portal`
+
+For example:
+
+`https://cp-rliqa.dc.federated-identity.com/portal`
+
+>[!note]The endpoint for Control Panel can be located in the Environment Details section in Environment Operations Center. ![Global Identity Viewer endpoint](Media/endpoint.png)
 
 Enter your credentials and click Login.
 
