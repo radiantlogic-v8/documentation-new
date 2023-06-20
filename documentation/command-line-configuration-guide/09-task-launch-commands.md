@@ -257,3 +257,52 @@ The name of the RadiantOne instance. If not specified, the default instance name
 In the following example, a request is made to schedule a report.
 
 `https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=schedule-report&reportconfigdn=cn=0a91d6de-c124-4c4d-82b5-d10be9a0cc2b,ou=reports,o=project,ou=webapps,ou=globalsettings,cn=config`
+
+## Global Profile Upload Management
+
+Global profiles can be configured in the Global Identity Builder. After you have configured the global profile, you can upload or reset the global profile using the commands described in this section. For more information on the Global Identity Builder, see the RadiantOne Global Identity Builder Guide.
+
+### globalprofile-upload
+
+This command launches a task to upload entries into an existing global profile.
+
+**Usage:**
+<br>`globalprofile-upload -project <project> [-createviews] [-identitysource <identitysource>] [-instance <instance>] [-interactive]`
+
+**Command Arguments:**
+
+`-project <project>`
+<br> [required] The name of an existing Global Identity Builder project.
+
+`-createviews`
+<br> If this option is specified, the schemas and views that compose the global profile (the global profile view, and the identity source views) will be regenerated before the upload task is launched.
+
+`-identitysource <identitysource>`
+<br> The name of an existing identity source to upload. If not specified, all identity sources will be uploaded.
+
+`-instance <instance>`
+<br> The name of the VDS instance. The default vds instance will be used if not specified.
+
+`-interactive`
+<br> When this argument is specified, the command launches the tasks and periodically print out their current state until they are finished. If this argument is not specified, the command launches the tasks and terminates.
+
+### globalprofile-reset
+
+This command launches a task to reset entries in an existing global profile.
+
+**Usage:**
+<br>`globalprofile-reset -project <project> [-identitysource <identitysource>] [-instance <instance>] [-interactive]`
+
+**Command Arguments:**
+
+`-project <project>`
+<br> [required argument] The name of an existing Global Identity Builder project.
+
+`-identitysource <identitysource>`
+<br> The name of an existing identity source to reset. If not specified, all identity sources are reset.
+
+`-instance <instance>`
+<br> The name of the VDS instance. The default vds instance will be used if not specified.
+
+`-interactive`
+<br> When this argument is specified, the command launches the tasks and periodically print out their current state until they are finished. If this argument is not specified, the command launches the tasks and terminates.
