@@ -113,9 +113,9 @@ This section explains how to display and set these property values using
 
 #### Change SSL (LDAPS) Port
 
-C:\radiantone\vds\bin>vdsconfig.bat get-property -name ldapSslPort
+`C:\radiantone\vds\bin>vdsconfig.bat get-property -name ldapSslPort`
 
-C:\radiantone\vds\bin>vdsconfig.bat set-property -name ldapSslPort -value 639
+`C:\radiantone\vds\bin>vdsconfig.bat set-property -name ldapSslPort -value 639`
 
 #### Change Mutual Authentication
 
@@ -239,4 +239,10 @@ Alert scripts can be configured to deliver custom alerts for memory, connections
 
 If you want to stop the script from delivering alerts, run the set-property command, passing an empty value as follows.
 
-`vdsconfig.bat set-property -name alertScript -value ""`
+`vdsconfig.bat  -name alertScript -value ""`
+
+### Generate a CSV File With Headers
+
+If you want to generate access logs in CSV format with column headers, run the set-property command as follows:
+
+`vdsconfig set-property -name accessLogCsvAddColNames -value true`
