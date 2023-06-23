@@ -31,8 +31,7 @@ This section describes how to perform the following functions:
 
 -	Working with Complex Attributes
 
->[!note]
->The examples shown in this section use the Advanced Rest Client Google Chrome app.
+>[!note] The examples shown in this section use the Advanced Rest Client Google Chrome app.
 
 # Accessing the RadiantOne RESTFul Web Service
 
@@ -1064,6 +1063,8 @@ Performing large quantities of REST requests may affect your network’s workloa
 
 -	A new entry is added to the directory
 
+- A branch (and any sub-branches) is deleted
+
 -	An existing directory entry is replaced 
 
 -	An entry’s attribute is modified
@@ -1160,6 +1161,58 @@ Figure 40: Sample Response from Bulk Operations
 
 In the image above, starting at the top, in the top box, the addition of a new entry to the directory is confirmed. In the second box, the replacement of an existing directory entry is confirmed. In the third box, the modification of an entry’s attribute is confirmed. In the fourth box, the deletion of an entry is confirmed.
 
+##### Delete Nodes and Their Sub-Nodes
+
+This section explains how to delete nodes and their sub-nodes. When attempting to perform a standard deletion on a node that contains sub-nodes, the operation fails because of those sub-nodes. The value in the Example Request Body field below contains the information needed to delete the nodes. 
+
+<table>
+<tr>
+<td>Field	Value
+<tr>
+<td>URL Syntax
+<td>http://localhost:8089/adap/bulk
+<tr>
+<td>Method	
+<td>Post
+<tr>
+<td>Header Name	
+<td>Authorization
+<tr>
+<td>Header Value	
+<td>Basic <`userDN>:<`password>
+<tr>
+<td>Example Request Body
+<td><pre> {
+    "params": [
+        {
+            "method": "DELETE",
+            "dn": "ou=Human Resources,o=companydirectory",
+            "deletetree": true
+        },
+        {
+            "method": "DELETE",
+            "dn": "ou=Information Technology,o=companydirectory",
+            "deletetree": false
+        },
+        {
+            "method": "DELETE",
+            "dn": "ou=Inventory,o=companydirectory",
+            "deletetree": true
+        }
+    ]
+}
+</table>
+
+Table 39: REST Bulk Operation to Delete Nodes and Their Sub-nodes
+
+![Sample Response from Bulk Deletion of Nodes and thier sub-nodes](Media/bulk-delete-nodes.jpg)
+ 
+Figure 41: Sample Response from Bulk Deletion of Nodes and Their Sub-Nodes
+
+In the image above, starting at the top, in the top box, the deletion of this node is confirmed. In the second box, this node was not deleted because deletetree it had a value of false in the body of the request. In the third box, the deletion of this node is confirmed.
+
+>[!note] The “deletetree=true” parameter does not delete root naming contexts.
+
 #### Working with Complex Attributes
 
 Complex attributes are those that contain one or more sub-attributes. With the REST interface, you can search for and modify “complex” attributes. Complex attributes are not compatible with bulk operations.
@@ -1190,13 +1243,13 @@ Method	| Get
 Header Name	| Authorization
 Header Value	| Basic `<userDN>:<password>`
 
-Table 39: REST Operation Searching for Complex Attributes
+Table 40: REST Operation Searching for Complex Attributes
 
 An example complex attribute search result is shown in the image below.
  
 ![Example Complex Attribute Search Results](Media/Image5.42.jpg)
 
-Figure 41: Example Complex Attribute Search Results
+Figure 42: Example Complex Attribute Search Results
 
 When using a complex attribute in a filter, you can search for entries with a specific sub-attribute value. The value defined for this option is translated into an LDAP filter when the query is issued to RadiantOne. In the following example, a search is performed for records with the value NY for the “state” sub-attribute within cn=config.
 
@@ -1208,13 +1261,13 @@ Method	| Get
 Header Name	| Authorization
 Header Value	| Basic `<userDN>:<password>`
 
-Table 40: Complex Attribute Search Using a Filter
+Table 41: Complex Attribute Search Using a Filter
 
 An example complex attribute search result is shown in the image below.
 
 ![Complex Attribute Search Result with Specified Sub-attributes](Media/Image5.43.jpg)
  
-Figure 42: Complex Attribute Search Result with Specified Sub-attributes
+Figure 43: Complex Attribute Search Result with Specified Sub-attributes
 
 ##### Add an Entry with Complex Attributes
 
@@ -1271,11 +1324,11 @@ In this section, an entry with complex attributes is added using the parameters 
 }
 </table>
 
-Table 41: Adding an entry with complex attributes
+Table 42: Adding an entry with complex attributes
 
 ![Adding an entry with complex attributes](Media/Image5.44.jpg)
  
-Figure 43: Adding an entry with complex attributes
+Figure 44: Adding an entry with complex attributes
 
 ##### Add Complex Attributes to an Existing Entry
 
@@ -1284,7 +1337,6 @@ In this section, complex attributes are added to an existing user entry using th
 <table>
 <tr>
 <td>Field	
-<tr>
 <td>Value
 <tr>
 <td>URL Syntax	
@@ -1325,7 +1377,7 @@ In this section, complex attributes are added to an existing user entry using th
 }
 </table>
 
-Table 42: Adding Complex Attributes to an Existing Entry
+Table 43: Adding Complex Attributes to an Existing Entry
 
 If you attempt to add an attribute that has an already existing, identical value, the REST client displays LDAP code 20 (the provided attribute contains a value that would result in duplicate value in the entry). If this happens, the entire request is ignored by the REST client. 
 
@@ -1376,7 +1428,7 @@ In this section, new attributes are added to an existing user entry using the pa
 }
 </table>
 
-Table 43: Replacing an Entry’s Complex Attributes
+Table 44: Replacing an Entry’s Complex Attributes
 
 ##### Delete an Entry’s Complex Attributes
 
@@ -1392,7 +1444,8 @@ In this section, sub-attributes are deleted from an existing entry using the par
 <td>Example URL	
 <td>http://localhost:8089/adap/uid=alice,cn=config
 <tr>
-<td>Method	Patch
+<td>Method 
+<td> Patch
 <tr>
 <td>Header Name	
 <td>Authorization
@@ -1419,7 +1472,7 @@ In this section, sub-attributes are deleted from an existing entry using the par
 }
 </table>
 
-Table 44: Deleting an Entry’s Complex Attributes
+Table 45: Deleting an Entry’s Complex Attributes
 
 In the following example, all values for the attribute “address” are deleted using the parameters in the table below. The value in the Example Request Body field contains the information for the sub-attributes to be deleted from the entry.
 
@@ -1458,7 +1511,7 @@ In the following example, all values for the attribute “address” are deleted
 }
 </table>
 
-Table 45: Deleting Sub-attributes
+Table 46: Deleting Sub-attributes
 
 ##### Modify Multiple Complex Attributes in an Operation
 
@@ -1517,4 +1570,5 @@ In this section, the sub-attributes “streetNumber” and “country” are add
 }
 </table>
 
-Table 46: Modifying Multiple Complex Attributes in an Operation
+Table 47: Modifying Multiple Complex Attributes in an Operation
+
