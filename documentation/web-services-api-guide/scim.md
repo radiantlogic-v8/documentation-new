@@ -38,19 +38,20 @@ To configure SCIM access to RadiantOne entries you can use the Quick Start optio
 8.	For the Base DN, click Browse and select the root naming context in the RadiantOne namespace where your virtual view is mounted.
 
 9.	For the Primary Object Class, select the object class associated with the identities in the virtual view from the drop-down list. If you do not see your object class here, extend the RadiantOne schema prior to using this Quick Start. See Chapter 4 in the RadiantOne System Administration Guide. 
+
 10.	Click Save. An example is shown below.
 
-![An image showing ](Media/Image4.2.jpg)
+  ![An image showing ](Media/Image4.2.jpg)
  
-Figure 4.2: SCIM Quick Start
+  Figure 4.2: SCIM Quick Start
 
 11.	To view the attribute mappings that were auto-generated, select the Resource Types tab.
 
 12.	Select the resource type name you configured and click the MAPPINGS tab.  An example is shown below.
  
-![An image showing ](Media/Image4.3.jpg)
+  ![An image showing ](Media/Image4.3.jpg)
 
-Figure 4.3: Example of Auto-generated Attribute Mappings
+  Figure 4.3: Example of Auto-generated Attribute Mappings
 
 13.	Click the Preview tab and select the Resource Type from the drop-down list. 
 
@@ -153,34 +154,30 @@ Attributes can be either single-valued or multi-valued. Multi-valued attributes 
 
 Simple, single-valued attribute – an attribute that contains a single value. 
 
-```sh
-{
-  "displayName" : "Carmen, Brian"
-}
-Simple, multi-valued attribute – an attribute that contains multiple values. These attributes can include a canonical “type” attribute to indicate the type of value specified.
-{
-  "emails" : [
-  {
-    "type" : "other",
-    "value" : "bcarmen@yahoo.com"
-  },
-  {
-    "type" : "work",
-    "value" : "bcarmen@radiantlogic.com"
-  }]
-}
-```
+<br>`{`
+<br> `"displayName" : "Carmen, Brian"`
+<br>`}`
+<br>`Simple, multi-valued attribute – an attribute that contains multiple values. These attributes can include a canonical “type” attribute to indicate the type of value specified.`
+<br>`{`
+<br> `"emails" : [`
+<br> `{`
+<br>`    "type" : "other",`
+<br>`    "value" : "bcarmen@yahoo.com"`
+<br>`},`
+  <br>`{`
+<br> `"type" : "work",`
+<br> `"value" : "bcarmen@radiantlogic.com"`
+<br> `}]`
+<br>`}`
 
 Complex attribute – an attribute that contains one or more simple attributes as sub-attributes.
 
-```sh
-{
-  "name" : {
-    "familyName" : "Carmen",
-    "givenName" : "Brian",
-    "displayName" : "Carmen, Brian" }
-}
-```
+`{`
+<br>`  "name" : {`
+<br>`"familyName" : "Carmen",`
+<br>`"givenName" : "Brian",`
+<br>`"displayName" : "Carmen, Brian" }`
+<br>`}`
 
 “givenName” is a sub-attribute of the “name” complex attribute.
 
@@ -414,19 +411,15 @@ To delete a resource:
 4.	Click the **Delete**  button. 
 5.	In the confirmation window, click Confirm. 
 
->[!note] 
->If you delete JSON-formatted resource type files directly on the file system, the RadiantOne service must be restarted for changes to take effect. If RadiantOne is deployed in a cluster, restart the service on all nodes.
+>[!note] If you delete JSON-formatted resource type files directly on the file system, the RadiantOne service must be restarted for changes to take effect. If RadiantOne is deployed in a cluster, restart the service on all nodes.
 
 ## Accessing the RadiantOne SCIM Service
 
 To list all SCIM resource types configured in RadiantOne, use: 
 
-```
-http://<RadiantOneService>:8089/scim2/v2/resourcetypes
-```
+`http://<RadiantOneService>:8089/scim2/v2/resourcetypes`
 
->[!note] 
->The keywords in this request are not case-sensitive.
+>[!note] The keywords in this request are not case-sensitive.
 
 Examples of SCIM clients used in this guide are WizTools.org REST Client and Postman. Some important items to keep in mind are listed below:
 
@@ -623,17 +616,17 @@ The following SCIM POST query example describes how to create a user entry that 
 }
 </table>
  
-Table 4:9: SCIM POST Query to Insert A User with Enterprise Extension Attributes
+Table 9: SCIM POST Query to Insert A User with Enterprise Extension Attributes
 
 ![An image showing ](Media/Image4.13.jpg)
  
-Figure 4.13: Example POST Query Shown in Postman
+Figure 13: Example POST Query Shown in Postman
 
 Based on the New Entry DN Expression in the Resource Type configuration described above, the entry is created as uid=Acooper,o=companydirectory. This can be seen in the RadiantOne in the screen shot below.
 
 ![An image showing ](Media/Image4.14.jpg)
  
-Figure 4.14: Sample Entry Created with a SCIM POST Operation
+Figure 14: Sample Entry Created with a SCIM POST Operation
 
 #### Update (PATCH) User
 
@@ -710,7 +703,7 @@ Figure 18: Sample Entry Updated with a SCIM PATCH Operation
 The following SCIM PUT query example describes how to update a user entry that contains enterprise extension attributes like employeeNumber, division, and department. This example is based on the configuration described in the [Insert Entry](#insert-user) example above.
 
 >[!note] 
->For PUT requests, only attributes that are mapped for the resource type are replaced in the entry. If the body of the request contains an attribute that is not mapped, it is ignored by the RadiantOne service. If the body of the request does not contain an attribute that has a mapping, the value is removed (set to NULL) in the entry in RadiantOne. This behavior does not apply to the objectclass attribute.**
+>For PUT requests, only attributes that are mapped for the resource type are replaced in the entry. If the body of the request contains an attribute that is not mapped, it is ignored by the RadiantOne service. If the body of the request does not contain an attribute that has a mapping, the value is removed (set to NULL) in the entry in RadiantOne. This behavior does not apply to the objectclass attribute.
 
 <table>
 <tr>

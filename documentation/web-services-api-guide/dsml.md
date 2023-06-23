@@ -28,6 +28,4 @@ The WSDL file for the RadiantOne DSML web service can be retrieved by either cli
 
 http[s]://host[:port]/dsml?wsdl
 
-```
-e.g. http://localhost:8089/dsml?wsdl
-```
+`e.g. http://localhost:8089/dsml?wsdl`

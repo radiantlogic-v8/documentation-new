@@ -38,9 +38,7 @@ A WSDL is also available on /spml.wsdl (see WSDL for RadiantOne SPML Web Service
 The WSDL file for the RadiantOne web service can be retrieved by accessing the following URL: 
 http[s]://host[:port]/spml/spml.wsdl
 
-```
-e.g. http://localhost:8089/spml/spml.wsdl
-```
+`e.g. http://localhost:8089/spml/spml.wsdl`
 
 ## Sample Requests
 
@@ -48,8 +46,7 @@ The following are sample SPML Requests using SOAP.
 
 ### Batch Request Sample
 
-```sh
-<soapenv:Envelope xmlns:soapenv=   "http://schemas.xmlsoap.org/soap/envelope/"
+`<soapenv:Envelope xmlns:soapenv=   "http://schemas.xmlsoap.org/soap/envelope/"
                   xmlns:spmlbatch= "urn:oasis:names:tc:SPML:2:0:batch"
                   xmlns:spmlbulk=  "urn:oasis:names:tc:SPML:2:0:bulk"
                   xmlns:spmlsearch="urn:oasis:names:tc:SPML:2:0:search"
@@ -169,13 +166,11 @@ The following are sample SPML Requests using SOAP.
 -->
       </spmlbatch:batchRequest>
    </soapenv:Body>
-</soapenv:Envelope>
-```
+</soapenv:Envelope>`
 
 ### Add Request Sample
 
-```sh
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spml="urn:oasis:names:tc:SPML:2:0" xmlns:dsml="urn:oasis:names:tc:DSML:2:0:core">
+`<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spml="urn:oasis:names:tc:SPML:2:0" xmlns:dsml="urn:oasis:names:tc:DSML:2:0:core">
    <soapenv:Header/>
    <soapenv:Body>
       <spml:addRequest requestID="0" targetID="VDS" returnData="everything">
@@ -201,13 +196,11 @@ The following are sample SPML Requests using SOAP.
          </spml:data>
       </spml:addRequest>
    </soapenv:Body>
-</soapenv:Envelope>
-```
+</soapenv:Envelope>`
 
 ### BulkModify Request Sample
 
-```sh
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:oasis:names:tc:SPML:2:0:bulk" xmlns:urn1="urn:oasis:names:tc:SPML:2:0:search" xmlns:urn2="urn:oasis:names:tc:SPML:2:0" xmlns:spmldsml="urn:oasis:names:tc:SPML:2:0:DSML">
+`<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:oasis:names:tc:SPML:2:0:bulk" xmlns:urn1="urn:oasis:names:tc:SPML:2:0:search" xmlns:urn2="urn:oasis:names:tc:SPML:2:0" xmlns:spmldsml="urn:oasis:names:tc:SPML:2:0:DSML">
    <soapenv:Header/>
    <soapenv:Body>
       <urn:bulkModifyRequest requestID="6">
@@ -223,26 +216,22 @@ The following are sample SPML Requests using SOAP.
          </urn:modification>
       </urn:bulkModifyRequest>
    </soapenv:Body>
-</soapenv:Envelope>
-```
+</soapenv:Envelope>`
 
 ### ListTargets Request Sample
 
-```sh
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:oasis:names:tc:SPML:2:0">
+`<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:oasis:names:tc:SPML:2:0">
    <soapenv:Header/>
    <soapenv:Body>
       <urn:listTargetsRequest requestID="0">
          <!--You may enter ANY elements at this point-->
       </urn:listTargetsRequest>
    </soapenv:Body>
-</soapenv:Envelope>
-```
+</soapenv:Envelope>`
 
 ### Updates Request Sample
 
-```sh
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:oasis:names:tc:SPML:2:0:updates" xmlns:urn1="urn:oasis:names:tc:SPML:2:0:search" xmlns:urn2="urn:oasis:names:tc:SPML:2:0">
+`<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:oasis:names:tc:SPML:2:0:updates" xmlns:urn1="urn:oasis:names:tc:SPML:2:0:search" xmlns:urn2="urn:oasis:names:tc:SPML:2:0">
    <soapenv:Header/>
    <soapenv:Body>
       <urn:updatesRequest requestID="r1" executionMode="synchronous" updatedSince="20110216230000.000">
@@ -258,13 +247,11 @@ The following are sample SPML Requests using SOAP.
 -->
       </urn:updatesRequest>
    </soapenv:Body>
-</soapenv:Envelope>
-```
+</soapenv:Envelope>`
 
 ### Search Request Sample
 
-```sh
-<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+`<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
    <soap:Body>
 <spmlsearch:searchRequest maxSelect="1" xmlns:spml="urn:oasis:names:tc:SPML:2:0" xmlns:spmlsearch="urn:oasis:names:tc:SPML:2:0:search" xmlns:dsml="urn:oasis:names:tc:DSML:2:0:core">
          <spmlsearch:query targetID="o=mycompany" scope="subLevel">
@@ -277,5 +264,4 @@ The following are sample SPML Requests using SOAP.
          </spmlsearch:query>
       </spmlsearch:searchRequest>
    </soap:Body>
-</soap:Envelope>
-```
+</soap:Envelope>`
