@@ -32,7 +32,7 @@ into these options:
 
 - 8 nodes: 1 CPU / 2 GB RAM
 
-![Kubernetes Cluster Capacity](Media/kubernetes-cluster-capacity.jpg)
+![Kubernetes Cluster Capacity](./img/kubernetes-cluster-capacity.jpg)
 
 Figure 1: Kubernetes Cluster Capacity
 
@@ -135,7 +135,7 @@ The total size of your cluster is 64 CPU/128 GB RAM
 
 Pod allocation in a 4 node cluster
 
-![pod allocation](Media/pod-allocation.jpg)
+![pod allocation](./img//pod-allocation.jpg)
 
 Figure 2: Pod Allocation in a 4-node Cluster
 
