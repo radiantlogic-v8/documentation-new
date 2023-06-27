@@ -9,7 +9,7 @@ The RadiantOne platform offers the Universal Directory as a scalable storage tha
 
 Once a Universal Directory naming context is created, a properties tab is available for managing the configuration. To access the properties tab, select the node representing the Universal Directory storage below the Root Naming Contexts section on the Main Control Panel > Directory Namespace Tab.
 
-Properties – This tab lists the settings: [storage location](#storage-location), [schema checking](#schema-checking), [normalizing attribute names](#normalize-attribute-names), [indexed attributes](#indexed-attributes), [non-indexed](#non-indexed-attributes) attributes, [sorted attributes](#sorted-attributes), [encrypted attributes](#encrypted-attributes-for-data-at-rest), [inter-cluster replication](#inter-cluster-replication), and support for [full text search](#support-for-full-text-search). There are also buttons for saving, [initializing](#initializing-radiantone-universal-directory-stores), [exporting], [re-building the index](#rebuilding-indexes), [backing up](#backing-up-a-radiantone-universal-directory-store), [restoring](#restoring-a-radiantone-universal-directory-store), and [deleting the local storage](#deleting-a-radiantone-universal-directory-store) (must be de-activated to delete).
+Properties – This tab lists the settings: [storage location](#storage-location), [schema checking](#schema-checking), [normalizing attribute names](#normalize-attribute-names), [indexed attributes](#indexed-attributes), [non-indexed](#non-indexed-attributes) attributes, [sorted attributes](#sorted-attributes), [encrypted attributes](#encrypted-attributes-for-data-at-rest), [inter-cluster replication](#inter-cluster-replication), and support for [full text search](#support-for-full-text-search). There are also buttons for saving, [initializing](#initializing-radiantone-universal-directory-stores), [exporting](#exporting-radiantone-universal-directory-stores), [re-building the index](#rebuilding-indexes), [backing up](#backing-up-a-radiantone-universal-directory-store), [restoring](#restoring-a-radiantone-universal-directory-store), and [deleting the local storage](#deleting-a-radiantone-universal-directory-store) (must be de-activated to delete).
 
 >[!warning] Although persistent cache leverages the Universal Directory as a storage, the functionality and configuration can vary slightly. For steps on configuring persistent cache and details on applicable properties, see the RadiantOne Deployment and Tuning Guide as this chapter is related to Universal Directory stores only.
 
@@ -276,7 +276,7 @@ Entries can be added, modified and deleted based on changes described in an LDIF
 <br>`add: member`
 <br>`member: uid=en1314,ou=people,ou=rli,o=world`
 <br>`member: uid=en1494,ou=people,ou=rli,o=world`
--`
+<br>`-`
 
 The utility to import the LDIF file is <RLI_HOME>/bin/advanced/ldif-utils. The command syntax to import an ldif file is shown below.
 
@@ -495,15 +495,15 @@ To configure inter-cluster replication, follow the steps below.
 
 1.	The replicationjournal data source for all clusters must be configured to point to the same journal. For example, if there are three clusters (1, 2, and 3) and cluster 1 is where the journal is located, the replicationjournal data source in clusters 2 and 3 must point to the cn=replicationjournal naming context in Cluster 1. All nodes running in Cluster 1 should be defined in the data source: one of them as the primary server and the others as failover.
 
-![An image showing ](Media/Image5.13.jpg)
+    ![An image showing ](Media/Image5.13.jpg)
  
-Figure 13: Configuration of Multi-Master Replication
+    Figure 13: Configuration of Multi-Master Replication
 
->[!note] All clusters that participate in the inter cluster replication topology must have unique cluster names to be uniquely identified.
+    >[!note] All clusters that participate in the inter cluster replication topology must have unique cluster names to be uniquely identified.
 
-2.	To modify the replicationjournal data source in clusters 2 and 3, launch the Main Control Panel associated with the leader node of that cluster and login as the RadiantOne Directory manager. From the Settings Tab-> Server Backend section -> LDAP Data Sources sub-section, click on the replicationjournal data source and click **Edit**. Modify the hostname and port to point to the replicationjournal running in cluster 1. The base DN should be cn=replicationjournal. All nodes running in the cluster housing the journal should be defined in the data source: one of them as the primary server and the others as failover.
+2.	To modify the replicationjournal data source in clusters 2 and 3, launch the Main Control Panel associated with the leader node of that cluster and login as the RadiantOne Directory manager. From the Settings Tab > Server Backend section > LDAP Data Sources sub-section, click on the replicationjournal data source and click **Edit**. Modify the hostname and port to point to the replicationjournal running in cluster 1. The base DN should be cn=replicationjournal. All nodes running in the cluster housing the journal should be defined in the data source: one of them as the primary server and the others as failover.
 
->[!warning] Make sure the port used in the replicationjournal settings can be accessed from all clusters and that firewall rules do not prevent the cluster from reading and writing into the central journal.
+    >[!warning] Make sure the port used in the replicationjournal settings can be accessed from all clusters and that firewall rules do not prevent the cluster from reading and writing into the central journal.
 
 3.	The same naming context and RadiantOne Universal Directory store to be replicated must be configured in each cluster. To create a new Universal Directory store, go to the leader node’s Main Control Panel > Directory Namespace tab and click ![An image showing ](Media/plus-sign.jpg). Remember, configuration changes in a cluster are shared across all cluster nodes. Therefore, you only need to configure the Universal Directory store on one node.
 
@@ -625,7 +625,6 @@ To create new entries, select the parent location in the tree above where you wa
 #### New Entry
 
 To create entries based on an object class other than group, organizationalUnit, inetOrgPerson, or user, choose the New Entry option. When you select the “New Entry” option, you are shown a drop-down list with all object classes available in the RadiantOne LDAP schema. Select the object class that the entry should belong to. After the object class is selected, enter the RDN in the space provided, and then enter values for the attributes below (all required attributes must have values – required attributes are noted with a “yes” in the “Required?” column). Type the value after clicking in the Value column. 
-
     ![An image showing ](Media/Image5.19.jpg)
 
     Figure 19: Creating a New Entry
@@ -747,7 +746,7 @@ To add dynamic members with the assistance of a wizard, follow the steps below.
 
 2.	Click **Edit Dynamic Members**. 
 
->[!note] The Edit Dynamic Members option displays only if the group contains the groupOfUrls object class.
+    >[!note] The Edit Dynamic Members option displays only if the group contains the groupOfUrls object class.
 
 3.	Click **Add Member(s)**.
 
@@ -837,9 +836,9 @@ An example of how to perform a Range Retrieval search in RadiantOne is described
 
 7.	In the Return Attributes field, enter your range in the following syntax. 
 
-`<member> or <uniquemember>;range=<lowerlimit>-<upperlimit>`
+    `<member> or <uniquemember>;range=<lowerlimit>-<upperlimit>`
 
->[!note] For more information on lower and upper limits, see the [Range Limits](#range-limits) section. Refer to the [Examples](#base-search-with-the-dereferencing-flag-set-to-search) section for example searches.
+    >[!note] For more information on lower and upper limits, see the [Range Limits](#range-limits) section. Refer to the [Examples](#base-search-with-the-dereferencing-flag-set-to-search) section for example searches.
 
 8.	Click **Search**. 
 

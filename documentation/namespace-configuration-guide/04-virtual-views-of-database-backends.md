@@ -103,7 +103,8 @@ If you want to map the database objects to a new/different object class:
 3.	Click on the Change button next to Object Class Mapping. 
 4.	Select the schema containing the object class you want to map to from the LDAP Schema drop down list. 
 5.	Select the object class to map to from the LDAP Object Class drop down list.
-If the object class inherits from multiple classes, the classes are displayed with a # as the separator. 
+
+    If the object class inherits from multiple classes, the classes are displayed with a # as the separator. 
 
     ![An image showing ](Media/Image4.4.jpg)
 

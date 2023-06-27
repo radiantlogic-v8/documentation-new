@@ -25,11 +25,11 @@ Figure 3.1: Example LDAP Backend
 
 If you configure the LDAP backend directly at the Root Naming Context, it is the only backend that can be defined for this specific naming context. If you want to comprise the tree from many different backends, choose the Virtual Tree option for the type of naming context instead of LDAP Backend.
 
->**Note – if you would like to build your virtual view using the Directory Tree Wizard, refer to the RadiantOne Identity Service Wizards Guide.**
+>[!note] If you would like to build your virtual view using the Directory Tree Wizard, refer to the RadiantOne Identity Service Wizards Guide.
 
 1.	First, data sources for each backend must be defined. From the Main Control Panel > Settings tab, expand below the Server Backend node and go to the LDAP Data Sources section. Click on the **Add** button to define LDAP or Active Directory data sources.
 
-2.	In the Main Control Panel -> Directory Namespace Tab, click the ![An image showing ](Media/plus-sign.jpg) button. 
+2.	In the Main Control Panel > Directory Namespace Tab, click the ![An image showing ](Media/plus-sign.jpg) button. 
 
 3.	Enter the new root name and choose the LDAP Backend option.
 
@@ -43,7 +43,7 @@ If you configure the LDAP backend directly at the Root Naming Context, it is the
 
 8.	Click **OK** when finished and a new naming context matching the mapped base DN parameter is created for RadiantOne. When LDAP clients access this naming context, the contents from the remote base DN branch will be returned.
 
->**Note – For every virtual view of an LDAP backend you create, a file containing the schema definition is created. The schema file is stored on the file system at <RLI_HOME>\vds_server\lod\<normalized root naming context where the view is mounted>.orx. An LDIF formatted file containing the schema is also saved in the lod folder (with the same name as the .orx file) and is used to retrieve object class and attribute definitions if the metadata is used to extend the RadiantOne LDAP schema. For details on extending the RadiantOne LDAP schema, see the RadiantOne System Administration Guide.**
+>[!note] For every virtual view of an LDAP backend you create, a file containing the schema definition is created. The schema file is stored on the file system at <RLI_HOME>\vds_server\lod\<normalized root naming context where the view is mounted>.orx. An LDIF formatted file containing the schema is also saved in the lod folder (with the same name as the .orx file) and is used to retrieve object class and attribute definitions if the metadata is used to extend the RadiantOne LDAP schema. For details on extending the RadiantOne LDAP schema, see the RadiantOne System Administration Guide.
 
 9.	If you need to modify the LDAP backend configuration, select the appropriate node below Root Naming Contexts and modify the settings on the right side. Click **Save** when finished.
 
@@ -65,8 +65,8 @@ Automatic host discovery can be used when connecting to underlying Active Direct
 
 The LDAP services reached are the ones published in the DNS service record. If the LDAP service is not published, it cannot be reached (the service is defined by a host AND port in the SRV record). Some examples are shown below (0 means highest priority level)
 
-`_ldap._tcp.example.com. SRV 1 100 389 ldap.example.net
-_ldap._tcp.example.com. SRV 0 100 636 ldap.example.net`
+_ldap._tcp.example.com. SRV 1 100 389 ldap.example.net
+_ldap._tcp.example.com. SRV 0 100 636 ldap.example.net
 
 DNS lookups leverage the domain specified in the host parameter. When the specific domain is set in the host parameter, the BaseDN value can be omitted. To use this functionality, the host option should specify the domain name you are interested in and optionally a port (if you are looking for a specific service on a specific port). If you do specify a port, then RadiantOne tries to get the first LDAP service it finds that is listening on that specific port (no matter what order of that particular service in the srv record). Additionally, if you enter a port and there is no LDAP service available on that port, RadiantOne uses the first LDAP service returned from the srv record.
 
@@ -382,7 +382,7 @@ To define a schema enforcement policy:
 
     -	Pass-through: All attributes in the operation are sent to the backend regardless of whether they match the backend schema. This is the default mode.
 
->[!note] Modifications may fail at the backend if this option is selected and the entry to be added violates the backend schema definition.
+    >[!note] Modifications may fail at the backend if this option is selected and the entry to be added violates the backend schema definition.
 
     - Filter: Attributes in the operation that do not match the backend schema are removed before being passed to the backend layer.
 

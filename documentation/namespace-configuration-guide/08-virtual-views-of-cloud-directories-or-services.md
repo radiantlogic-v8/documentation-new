@@ -70,7 +70,7 @@ In order for RadiantOne to virtualize Salesforce via SCIM, it must authenticate 
 
     Figure 2: Configuring Salesforce Connected App
 
->[!warning] Allow up to 10 minutes before using the connected app.
+    >[!warning] Allow up to 10 minutes before using the connected app.
 
 6.	After clicking save, you are warned about the 10-minute wait time. Click **Continue**.
 
@@ -90,7 +90,7 @@ Figure 4: Viewing Consumer Key and Secret for Connected App
 
 #### Configure a RadiantOne SCIM Data Source
 
-1.	In the RadiantOne Main Control Panel -> Settings tab -> Server Backend -> Custom data Sources section, select scimclient and click Edit.
+1.	In the RadiantOne Main Control Panel > Settings tab > Server Backend > Custom data Sources section, select scimclient and click Edit.
 
     >[!note] If you are already using the scimclient custom data source to virtualize a SCIM backend, click the Clone button to make a copy that you can work with for Salesforce to avoid impacting your existing configuration.
 
@@ -159,14 +159,13 @@ RadiantOne includes a default SCIM schema file that can be modified to meet the 
 4.	The SCIM schema information is going to be modified slightly for Salesforce, so save the file with a new name to avoid working with the default template. Click ![An image showing ](Media/save-button.jpg) and enter the new name (e.g. salesforcescimclient) and click OK.
 
 >[!note] The default data source associated with scimclient.orx is scimclient. if you cloned the default scimclient custom data source to work with Salesforce, right-click on the file name and choose Edit Connection String.  
-
     ![An image showing ](Media/Image8.8.jpg)
 
     Figure 8.8: The Edit Connection String Option
 
     Click “Edit” to select the appropriate custom data source. 
 
-    ![An image showing ](Media/Image8.9.jpg)
+![An image showing ](Media/Image8.9.jpg)
 
     Figure 9: Click Edit to select the appropriate custom data source
  
