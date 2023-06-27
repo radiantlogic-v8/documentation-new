@@ -128,7 +128,73 @@ The RadiantOne service Admin HTTP Service ports are used internally for:
 -	RadiantOne service actions like restart and standby. 
 You can disable the HTTP port by setting the value to zero. This leaves access only on the HTTPS port. If you disable the HTTP port, ensure the “Use SSL” setting is enabled for internal connections (Main Control Panel > Settings > Server Backend > Internal Connections), and Inter Nodes Communication is set to “Always use SSL” (Main Control Panel > Settings > Security > SSL). A restart of the RadiantOne service is required when these settings are changed. Restart the service on all cluster nodes.
 
->[!note] This setting is accessible only in [Expert Mode](01-introduction#expert-mode). 
+>[!note] This setting is accessible only in [Expert Mode](01-introduction#expert-mode).
+
+#### Internal Banner Configuration
+
+A custom message can be added to the banner of RadiantOne User Interface pages. This includes the Main Control Panel, the Server Control Panel, and the Insights, Reports, and Administration Console.
+
+To add a custom message:
+
+1. Log into the Main Control Panel as a member of the Directory Administrators role. 
+
+2. Navigate to Settings > Administration > Internal Banner Configuration section. 
+
+3. Enter the message to appear in the banner in the Banner Text field. 
+
+4. Specify a color in the Banner Background Color field. You can indicate the color by name or by hex color code.
+
+    >[!note] If you enter a hex color code, include the "#" character here. If the color specified is not recognized, it defaults to gray. 
+
+5. Specify the banner's text color. You can indicate the color by name or by hex color code.
+
+    >[!note] If you enter a hex color code, include the "#" character here. If the color specified is not recognized, it defaults to gray. 
+
+    ![internal banner configuration](Media/internal-banner-config.jpg)
+
+6. Click Save. The next time the control panel or console is opened (or the browser tab is refreshed), the custom banner message is displayed. 
+
+![banner message](Media/banner-message.jpg)
+
+#### Message of the Day Configuration
+
+The Main Control Panel login page contains a basic username and password text box. To add a custom message on the login page, follow the steps below.
+
+1. Log in to the Main Control Panel as a member of the Directory Administrators role.
+
+1. Navigate to Settings > Administration > Message of the Day Configuration section.
+
+    ![message of the day](Media/message-of-the-day.jpg)
+
+1. Add (or edit) the **Message Content (Text)** field containing the message to display on the login page. For example:
+
+    `This is my custom message. Please login with your RadiantOne Administrator account.`
+
+    An example of the custom message on the login page is shown below.
+
+    ![Custom Message on Login Page](Media/Image3.26.jpg)
+    
+    Figure 16: Custom Message on Login Page
+
+1. Add (or edit) the message title to display on the login page. 
+   
+   >[!note] For the message title to be displayed, the **Is Popup?** option must also be selected (see step 6).
+
+1. If you would like the message to be prefixed with a “Warning” icon, click the **Is Warning?** box. This displays the message of the day in a bold font. An example is shown below.
+
+    ![Custom Message on Login Page with Warning Label and Bold Font](Media/Image3.27.jpg)
+
+    Figure 17: Custom Message on Login Page with Warning Label and Bold Font
+
+1. If you would like the custom message and “Warning” icon to display as a popup window, check the **Is Popup?** box. An example is shown below.
+
+    ![Custom Message Popup Window](Media/Image3.28.jpg)
+
+    Figure 18: Custom Message Popup Window
+
+1.	Click **Save**.
+
+1.	Log out of the Main Control Panel. The changes you have made are displayed on the Login Page. 
 
 ## Supported Controls and Features
 
