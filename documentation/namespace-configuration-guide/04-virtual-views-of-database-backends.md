@@ -31,11 +31,11 @@ Figure 2: Sample Database Backend
 
 If you configure the database backend directly at the Root Naming Context, it is the only backend that can be defined for this specific naming context. If you want to comprise the tree from many different backends, choose the Virtual Tree option for the type of naming context instead of Database Backend.
 
->[!note] If you would like to build your virtual view using the Directory Tree Wizard, refer to the RadiantOne Identity Service Wizards Guide.
+>[!note] If you would like to build your virtual view using the Directory Tree Wizard, refer to the [RadiantOne Identity Service Wizards Guide](/documentation/identity-service-wizards-guide/01-overview.md).
 
 1.	First, data sources for each backend must be defined. From the Main Control Panel > Settings tab, expand below the Server Backend node and go to the DB Data Sources section. Click **Add** to define database data sources.
 
-2.	On the Main Control Panel -> Directory Namespace Tab click ![An image showing ](Media/plus-sign.jpg).
+2.	On the Main Control Panel > Directory Namespace Tab click ![An image showing ](Media/plus-sign.jpg).
 
 3.	Enter the new naming context and select the Database Backend option. Click **Next**.
 
