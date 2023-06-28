@@ -63,7 +63,7 @@ Icon | Description
 
 To delete a naming context, you must first deactivate it (and delete any child naming contexts first if there are any defined).
 
->[!warning] When deleting [LDAP proxy naming contexts](03-virtual-view-of-ldap-backends), the underlying `<RLI_HOME>/vds_server/lod/<suffixname>.orx` and `<RLI_HOME>/vds_server/dvx/<suffixname>.dvx` are removed. For all other types of virtual views, the underlying .orx and .dvx files remain if the naming context is deleted. This is because these files can be used or referenced from other virtual views. If you want to manually delete specific .orx and .dvx files, do so from the Main Control Panel > Context Builder tab. For details, see the [RadiantOne Context Builder Guide](/documentation-new/documentation/context-builder-guide/introduction.md).
+>[!warning] When deleting [LDAP proxy naming contexts](03-virtual-view-of-ldap-backends), the underlying `<RLI_HOME>/vds_server/lod/<suffixname>.orx` and `<RLI_HOME>/vds_server/dvx/<suffixname>.dvx` are removed. For all other types of virtual views, the underlying .orx and .dvx files remain if the naming context is deleted. This is because these files can be used or referenced from other virtual views. If you want to manually delete specific .orx and .dvx files, do so from the Main Control Panel > Context Builder tab. For details, see the [RadiantOne Context Builder Guide](/documentation/context-builder-guide/introduction.md).
 
 1.	From the Main Control Panel > Directory Namespace Tab, select the naming context you want to delete below the Root Naming Contexts node.
 
