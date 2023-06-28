@@ -26,7 +26,7 @@ Harness your identity data with intelligent integration to drive better business
   > [LDIF Utility](/ldif-utility-guide/01-overview)  
   > Learn how to use the LDIF utility for a variety of functions like compiling statistics about the entries in your virtual view, and determining if a persistent cache is out of sync from backends.
   
-  > [LDAP Browser](/ldap-browser/LDAPBrowser)  
+  > [LDAP Browser](/ldap-browser/LDAPBrowser/01-overview)  
   > Learn how to use the general purpose LDAP Browser tool to manage entries in an LDAP directory.
   
   > [Hardening](/hardening-guide/00-preface)  
