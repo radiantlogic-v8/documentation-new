@@ -56,3 +56,6 @@ Some settings in the Main Control Panel are accessible only in Expert Mode. To s
 ![An image showing ](Media/expert-mode.jpg)
  
 Figure 1.1: Expert Mode
+
+
+[_](documentation/context-builder-guide/introduction.md)
