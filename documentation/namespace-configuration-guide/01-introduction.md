@@ -57,5 +57,3 @@ Some settings in the Main Control Panel are accessible only in Expert Mode. To s
  
 Figure 1.1: Expert Mode
 
-
-[_](../context-builder-guide/introduction.md)
