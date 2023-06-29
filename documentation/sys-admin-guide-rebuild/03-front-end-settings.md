@@ -53,7 +53,7 @@ If you update the Directory Manager username, the LDAP entry in the RadiantOne n
 
 #### Directory Manager Password
 
-The directory administrator (cn=directory manager) password is set during the install of RadiantOne and can be changed here. To change this password, from the Main Control Panel > Settings Tab > Administration section, click “Change the password” link. Enter the new value and click **Save** in the upper right corner.
+The directory administrator (cn=directory manager) password is set during the install of RadiantOne and can be changed here. To change this password, from the Main Control Panel > Settings Tab > Administration section, click “Change the password” link. Enter the old (current) password and the new value. Confirm the new value and click **Save** in the upper right corner.
 
 >[!warning] 
 >If you change the password and you are currently logged into the Control Panel as the directory administrator, you must close the Control Panel and re-open it logging in with the new password.
