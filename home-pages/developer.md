@@ -34,7 +34,7 @@ A rich set of HTTP-based API's have been developed on top of LDAP, to provide br
 
 <section>
   
-  > [API Specification](/command-line-configuration-guide/01-introduction.md)
+  > [API Specification](/command-line-configuration-guide/01-introduction)
   > Learn how to configure RadiantOne from command line.
   
 </section>
