@@ -103,7 +103,7 @@ Harness your identity data with intelligent integration to drive better business
   > [Introduction](/global-sync-guide/introduction)  
   > Learn about RadiantOne Global Synchronization including detailed architecture, key concepts and common use cases for the tool.
  
-  > [Configuration](/command-line-configuration-guide/01-introduction)  
+  > [Configuration](/global-sync-guide/configuration/overview)  
   > Learn how to configure synchronization pipelines and create transformation logic using a combination of scripting, attribute mappings and advanced rules.
 
   > [Connector Properties](/connector-properties-guide/overview)  
