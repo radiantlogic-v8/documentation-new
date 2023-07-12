@@ -5,38 +5,49 @@ description: Get a quick introduction to using Secure Data Connectors for connec
 ---
 # Secure Data Connectors Overview
 
-Secure data connectors allow data to flow from your on premises or private cloud environments to your RadiantOne SaaS environment. This guide provides an overview of the *Secure Data Connectors* home screen in Env Ops Center and its features. 
+Secure data connectors allow data to flow from your on premises or private cloud environments to your RadiantOne SaaS environment. This guide provides an overview of the *Secure Data Connectors* home screen in Environment Operations Center and its features. 
 
 ## Getting started 
 
-To navigate to the *Secure Data Connectors* home screen, select **Secure Data Connectors** (![image description](images/agent-icon.png)) from the left navigation.
+To navigate to the *Secure Data Connectors* home screen, select **Secure Data Connectors** (![image description](images/agent-icon.png)) from the left navigation bar.
 
 ![image description](images/secure-data-connectors.png)
 
-## Secure data connector home screen
+## Basic Concepts
 
-The *Secure Data Connector* home screen provides an overview of all your organization's configured data connectors and allows you to start the workflows to add and manage data connectors.
+### Secure Data Connector
 
-All existing data connectors are listed on the home screen including the group, environments, data connector name, description, and status, grouped under the expand/collapsible groups.
+A secure data connector (SDC) provides a secure channel for TCP-based communication between your cloud-based RadiantOne environments and your on-premise or private cloud data sources. One or more secure data connectors can be deployed in your on-premises network.
+
+### Group
+
+Secure data connectors are organized in **groups**. A group is a logical grouping of one or more secure data connectors that connect to the same set of data sources. By adding more than one secure data connector to a group, you can ensure high availability. Traffic is load-balanced equally to all data connectors that belong to the same group. If one or more secure data connectors within a group fail or become unresponsive, the remaining secure data connectors will automatically ensure connectivity is not interrupted. 
+
+## Secure Data Connector Home Screen
+
+The *Secure Data Connector* home screen provides an overview of all your organization's configured data connectors and allows you to manage them.
+
+The list of data connectors is organized by group. Each group has a set of RadiantOne environments that are allowed to use the data connectors belonging to that group.
+Each group contains a list of data connectors and their associated information (name, description, status). You can expand/collapse each group to show or hide the associated data connectors.
 
 ![image description](images/connector-info-bar.png)
 
 ![image description](images/connector-info-expanded.png)
 
-### Add a new data connector
+### Adding a New Data Connector
 
-You can start adding new data connectors from the *Secure Data Connector* home screen by selecting the **New Group** button.
+Before you can add new data connectors, you must first add a **group**. This can be done by selecting the **New Group** button.
 
 ![image description](images/new-group.png)
 
-Or by selecting ***Add Data Connector*** from the options(...) menu of a selected group.
+After creating a group, you can add a new data connector by clicking the "..." button on the selected group and selecting ***Add Data Connector*** from the drop-down menu.
 
 ![image description](images/add-data-connector.png)
-To learn how to add a data connector, see the [add a data connector](add-data-connector.md) guide.
+For more details on adding a new data connector, please refer to the [Add a Data Connector](add-data-connector.md) guide.
 
-### Manage data connectors
+### Manage Data Connectors
 
-Each data connector has an **Options** (**...**) dropdown menu that allows you to manage the connector. For details on managing data connectors, see the [manage data connectors](manage-data-connectors.md) guide.
+Each data connector has an **Options** (**"..."**) drop-down menu that allows you to manage the connector. For more details on managing data connectors, please refer to the [Manage Data Connectors](manage-data-connectors.md) guide.
 
 ![image description](images/options.png)
 
