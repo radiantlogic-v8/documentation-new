@@ -34,6 +34,8 @@ Harness your identity data with intelligent integration to drive better business
   
   > [Operations](/operations-guide/01-overview)  
   > Learn how to maintain the RadiantOne platform once it is deployed. Topics include the management of clusters, persistent cache, and Universal Directory stores.
+
+  > [Release Notes](/release-notes/v740-release-notes.md)
   
 </section>
 
