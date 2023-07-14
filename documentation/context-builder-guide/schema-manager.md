@@ -208,7 +208,7 @@ The SCIMv2 data source must be created before completing the schema extraction s
 
     ![An image showing ](Media/Image3.12.jpg)
  
-Figure 3.12: SCIM Schema Objects
+    Figure 3.12: SCIM Schema Objects
 
 5.	Enter a schema file name and click Create Schema. This generates the schema (orx) file, an XML representation of the schema. 
 
@@ -231,9 +231,9 @@ To declare and modify the primary keys:
 
 1.	Right-click on the desired object and choose Edit Primary Key.
 
-![An image showing ](Media/Image3.13.jpg)
+    ![An image showing ](Media/Image3.13.jpg)
 
-Figure 3.13: Editing the Primary Key
+    Figure 3.13: Editing the Primary Key
 
 2.	Choose the column(s) from the Attributes List that you want to use as the primary key and click the right arrow button. 
 
@@ -259,9 +259,9 @@ To set a relationship between two objects:
 
 1.	Right-click on the desired object and choose the Define Relationships option. The Relationships dialog box appears. 
 
-![An image showing ](Media/Image3.15.jpg)
+    ![An image showing ](Media/Image3.15.jpg)
 
-Figure 3.15: Relationships Dialog Box
+    Figure 3.15: Relationships Dialog Box
 
 2.	Select the destination object that has a relationship with the source object. 
 
@@ -291,11 +291,11 @@ To create a recursive relationship:
 
 You should now see new views created corresponding to the depth level entered, and new relationships between these objects.
 
-    ![An image showing ](Media/Image3.18.jpg)
+![An image showing ](Media/Image3.18.jpg)
 
-    Figure 3.18: Example Relationships in a Database Schema
+Figure 3.18: Example Relationships in a Database Schema
 
-Once the recursive relationship is described in the schema file, a hierarchical virtual directory view can be created. For details on how to build virtual views, please see [Chapter 4](04-view-designer.md). 
+Once the recursive relationship is described in the schema file, a hierarchical virtual directory view can be created. For details on how to build virtual views, please see [View Designer](04-view-designer.md). 
 
 >[!note] If you do not know the depth of recursion, there is a way to build a virtual view without first defining the recursive relationships in the Schema Manager. For detailed steps, please see the article titled Building a Hierarchical Virtual View Based on Recursive Relationships in a Database in the RadiantOne Knowledge Base at: http://support.radiantlogic.com
 
@@ -516,9 +516,9 @@ To merge schema files:
 2.	Open the existing schema file in Schema Manager. 
 3.	Right-click at the top node of the schema and choose Merge with Other Schema. 
 
-![An image showing ](Media/Image3.34.jpg)
+    ![An image showing ](Media/Image3.34.jpg)
 
-Figure 3.34: Merge Schema Option
+    Figure 3.34: Merge Schema Option
 
 4.	Browse to the schema file that you extracted/saved in step 1 above. 
 
