@@ -7,7 +7,7 @@ description: Identity Data Analysis
 
 The Identity Data Analysis web tool is accessible from the RadiantOne Main Control Panel > Wizards tab. 
 
-Any user that is a member of the RadiantOne Directory Administrator role, ICS Admin role, or Namespace Admin role can log into the RadiantOne Main Control Panel and access the Identity Data Analysis tool on the Wizards tab. For details on the RadiantOne delegated admin roles, see the RadiantOne System Administration Guide.
+Any user that is a member of the RadiantOne Directory Administrator role, ICS Admin role, or Namespace Admin role can log into the RadiantOne Main Control Panel and access the Identity Data Analysis tool on the Wizards tab. For details on the RadiantOne delegated admin roles, see the [RadiantOne System Administration Guide](/documentation/sys-admin-guide/01-introduction).
 
 >[!note] Images displayed in this guide are meant to describe expected behavior of features in RadiantOne. Your results may vary from those shown in this guide as data sets are subject to change at any time.
 
@@ -51,9 +51,9 @@ To create a new dataset:
 
 1.	Click the Create New Dataset option and click Next. The Create New Dataset page displays. 
 
-![The Create New Dataset Page](Media/Image2.3.jpg)
+    ![The Create New Dataset Page](Media/Image2.3.jpg)
 
-Figure 3: The Create New Dataset Page
+    Figure 3: The Create New Dataset Page
 
 2.	Select a branch in the Directory Tree in the left pane. 
 
@@ -71,7 +71,7 @@ Figure 3: The Create New Dataset Page
 
 6.	Specify an export location. The default export location (based on a default RadiantOne FID installation) is:
 
-`<RLI_HOME>\vds_server\ldif\export`
+    `<RLI_HOME>\vds_server\ldif\export`
 
 7.	Verify the export file name. The export file name is based on the selected branch in the virtual namespace. 
 
@@ -141,7 +141,7 @@ Figure 8: The Data Analysis Tool’s Summary Tab
 
 The Run New Analysis button restarts the analysis process and returns you to the Choose Dataset Type. 
 
->[!note] Re-starting the analysis process over discards your current analysis re-sults.
+>[!note] Re-starting the analysis process over discards your current analysis results.
 
 To export your data analysis to PDF, click the Export to PDF button. The Export to PDF button generates a PDF report of the entire analysis, which it displays in a PDF web viewer in a new browser tab. You may then download and save the generated PDF file. 
 
@@ -215,7 +215,7 @@ Figure 15: The Distinct Values Biggest/Smallest Counts Table for the City Attrib
 
 Review the Biggest Counts section (located below the Entry and Value statistics). This section lists the different values for the CITY attribute starting with the most-used value. A similar section named “Smallest Counts” lists the values for the attribute CITY starting with the least-used value.
 
-Below the Distinct Values Biggest/Smallest Counts section, click the ![An image showing ](Media/Down-arrow.jpg) button to the right of Entries with the most values in `<attributename>` header. 
+Below the Distinct Values Biggest/Smallest Counts section, click the ![An image showing ](Media/down-arrow.jpg) button to the right of Entries with the most values in `<attributename>` header. 
 
 >[!note] This section displays for multi-value attributes only. 
 
@@ -235,7 +235,7 @@ The Identity Data Analysis tool helps you determine which attributes would be th
 
 For example, if, after analysis, the report indicates an attribute named “EmployeeID” has values for only half the user population in your backend data source, this might not be the best attribute to use in correlation rules. Or if the analysis report indicates that the same “EmployeeID” value is used for more than one entry, this would also mean that it is not the best attribute to base correlation rules on (unless of course the entries with the same “EmployeeID” value do in fact represent the same person, meaning the identity has more than one entry in the same data source). 
 
-Once you’ve determined the best attributes for correlation rules, the Global Identity Builder can be used to build a unique view of overlapping identities. Refer to the RadiantOne Global Identity Builder Guide for details.
+Once you’ve determined the best attributes for correlation rules, the Global Identity Builder can be used to build a unique view of overlapping identities. Refer to the [RadiantOne Global Identity Builder Guide](/documentation/global-identity-builder-guide/introduction) for details.
 
 ![Possible Candidate for Correlation](Media/Image2.18.jpg)
 

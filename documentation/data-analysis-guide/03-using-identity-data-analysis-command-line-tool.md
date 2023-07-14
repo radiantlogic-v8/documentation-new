@@ -11,7 +11,7 @@ This section describes how to virtualize database objects, run the data analysis
 
 ### Virtualizing the Database Source
 
-1.	From the Main Control Panel > Settings tab > Server Backend > DB data sources, cre-ate a connection to your backend database. Refer to the System Administration Guide if you need help with this step. 
+1.	From the Main Control Panel > Settings tab > Server Backend > DB data sources, create a connection to your backend database. Refer to the System Administration Guide if you need help with this step. 
 
 2.	From the Main Control Panel, Directory Namespace tab, click ![An image showing ](Media/newnamingcontext.jpg) (new naming context button).
 
@@ -74,7 +74,7 @@ Files created from the data analysis process are located in <RLI_HOME>/r1syncsvc
 
 4.	Select the CSV file and click Import. 
 
-5.	From the File Origin drop-down menu, select “650001:Unicode (UTF8)” or other lan-guage character identifier). 
+5.	From the File Origin drop-down menu, select “650001:Unicode (UTF8)” or other language character identifier). 
 
 6.	From the Delimiter drop-down menu, select Comma. 
 
@@ -146,7 +146,7 @@ This section describes how to virtualize LDAP objects, run the data analysis too
 
 ### Virtualizing the LDAP Source
 
-1.	From the Main Control Panel > Settings tab > Server Backend > LDAP data sources, create a connection to your LDAP directory backend. Refer to the System Administration Guide if you need help with this step. 
+1.	From the Main Control Panel > Settings tab > Server Backend > LDAP data sources, create a connection to your LDAP directory backend. Refer to the [RadiantOne System Administration Guide](/documentation/sys-admin-guide/01-introduction) if you need help with this step. 
 
 2.	From the Main Control Panel, Directory Namespace tab, click ![An image showing ](Media/newnamingcontext.jpg) (new naming context button).
 
@@ -176,22 +176,25 @@ This section describes how to virtualize LDAP objects, run the data analysis too
 
 The LDIF data analysis tool is located in <RLI_HOME>/bin/advanced and is named data_analysis.bat (on Linux it is data_analysis.sh). 
 
-From a command prompt, run this tool passing the following arguments (-d and -f are required.
--h, -o and -r are optional):
+From a command prompt, run this tool passing the following arguments (-d and -f are required. -h, -o and -r are optional):
+
 -d  The report directory where the report files are saved. The report directory should not contain path characters (/,\). The report directory is created under <RLI_HOME>/vds/r1syncsvcs/profiler.
+
 -f	Full name of LDIF file (may include path). -h  help
+
 -o  This option allows you to overwrite files in the report directory. If you don’t pass this option, and the report directory already exists, no analysis is done and the report directory's files are not be changed.
+
 -r   Remove detailed analysis files in the report directory. 
 
 An example is shown below:
 
-`C:\radiantone\vds\bin\advanced>data_analysis.bat -d LDAPANALYSIS -f "C:\radiantone\vds\vds_server\ldif\export\ldap.ldif"`
-<br>`Using RLI home : C:\radiantone\vds`
-<br>`Using Java home : C:\radiantone\vds\jdk\jre                                     ldifFile=C:\radiantone\vds\vds_server\ldif\export\ldap.ldif  `              
-<br>`outputDir=LDAPANALYSIS`
-<br>`isOverwrite=false`
-<br>`isRemoveDetailedFiles=false`
-<br>`Done. Reports are in the following directory: C:\radiantone\vds\r1syncsvcs\profiler\LDAPANALYSIS`
+C:\radiantone\vds\bin\advanced>data_analysis.bat -d LDAPANALYSIS -f "C:\radiantone\vds\vds_server\ldif\export\ldap.ldif"
+<br>Using RLI home : C:\radiantone\vds
+<br>Using Java home : C:\radiantone\vds\jdk\jre                                     ldifFile=C:\radiantone\vds\vds_server\ldif\export\ldap.ldif              
+<br>outputDir=LDAPANALYSIS
+<br>isOverwrite=false
+<br>isRemoveDetailedFiles=false
+<br>Done. Reports are in the following directory: C:\radiantone\vds\r1syncsvcs\profiler\LDAPANALYSIS
 
 ### Interpreting the Data Analysis Results for a LDAP Object
 
