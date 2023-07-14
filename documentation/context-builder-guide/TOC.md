@@ -1,6 +1,6 @@
 ---
 title: Context Builder Guide
-description: Context Builder Guide
+description: Context Builder
 ---
 
 - [Introduction](introduction.md)
