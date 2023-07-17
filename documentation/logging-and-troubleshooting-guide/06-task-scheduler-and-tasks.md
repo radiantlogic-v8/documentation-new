@@ -1,9 +1,10 @@
 ---
-title: Logging and Troubleshooting Guide
-description: Logging and Troubleshooting Guide
+title: Logging and Troubleshooting
+description: Logging and Troubleshooting
 ---
 
-# Chapter 6: Task Scheduler and Tasks
+# Task Scheduler and Tasks
+
 The Task Scheduler schedules tasks. Activities that are processed as tasks are: 
 
 -	Exporting to LDIF
@@ -33,7 +34,7 @@ Figure 6. 1: Main Control Panel, Task Scheduler Log Settings
 
 ### Log Level
 
-Select a log level from the drop-down list in the Log Settings section. For details on available log levels, see [Chapter 1](01-overview).
+Select a log level from the drop-down list in the Log Settings section. For details on available log levels, see [Overview](01-overview).
 
 ### Rollover Size
 

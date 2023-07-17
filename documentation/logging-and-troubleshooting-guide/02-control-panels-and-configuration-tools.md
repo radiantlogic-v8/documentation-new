@@ -1,13 +1,14 @@
 ---
-title: Logging and Troubleshooting Guide
-description: Logging and Troubleshooting Guide
+title: Logging and Troubleshooting
+description: Logging and Troubleshooting
 ---
 
-# Chapter 2: Control Panels and Configuration Tools
+# Control Panels and Configuration Tools
 
 ## Control Panel
 
 A Jetty web server hosts the Main and Server Control Panels. There are four log files applicable to this component. The Windows service logs contains information related to installing, starting, uninstalling, and stopping the service. The Server Log contains internal server activities and is generated the first time each day that Jetty is started. The Access Log contains the save operations performed by administrators.
+
 ### Windows Service Log
 
 If the Control Panel has been installed as a Windows Service, information related to installing, starting, and uninstalling the service can be found in: 
@@ -65,7 +66,7 @@ Other Advanced properties (requires [Expert Mode](01-overview#expert-mode)) that
 
 ### Custom Settings
 
-More fine-grained configuration log settings related to the Main and Server Control Panels can be managed from the Main Control Panel -> ZooKeeper tab (requires [Expert Mode](01-overview#expert-mode)). Navigate to radiantone/v1/cluster/config/logging/log4j2-control-panel.json. Click the Edit Mode button to modify the settings. Generally, these advanced settings should only be changed if advised by Radiant Logic.
+More fine-grained configuration log settings related to the Main and Server Control Panels can be managed from the Main Control Panel -> ZooKeeper tab (requires [Expert Mode](01-overview#expert-mode)). Navigate to `radiantone/<version>/<clustername>/config/logging/log4j2-control-panel.json`. Click the Edit Mode button to modify the settings. Generally, these advanced settings should only be changed if advised by Radiant Logic.
 
 ![An image showing ](Media/Image2.3.jpg)
  
@@ -96,4 +97,4 @@ Configuration commands issued using the vdsconfig utility can be logged. To enab
 
 The default audit log is <RLI_HOME>/logs/vdsconfig.log.
 
-><span style="color:red">**IMPORTANT NOTE – if you want the admin name that issued the command logged, make sure you have enabled the setting to Require a UserID and Password to Execute Commands. For information about this setting, see the RadiantOne Command Line Configuration Guide.**
+>[!warning] If you want the admin name that issued the command logged, make sure you have enabled the setting to Require a UserID and Password to Execute Commands. For information about this setting, see the RadiantOne Command Line Configuration Guide.
