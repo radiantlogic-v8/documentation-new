@@ -9,7 +9,7 @@ There are three approaches to creating virtual views from the Main Control Panel
 
 ## Virtual Views Created in the Main Control Panel > Directory Namespace or Wizards tabs
 
-Details about the parameters mentioned below can be found in the RadiantOne System Administration Guide. This document is only for pointing out these parameters as key to review when tuning.
+Details about the parameters mentioned below can be found in the [RadiantOne System Administration Guide](/documentation/sys-admin-guide/01-introduction). This document is only for pointing out these parameters as key to review when tuning.
 ### Database Backends
 
 Database backends are any source accessed via JDBC or ODBC. This includes Oracle, SQL Server, and IBM DB2 among others.
@@ -118,7 +118,7 @@ Figure 3.4: Disabling Referral Chasing
 
 Chasing referrals can affect the overall performance because if the referral server is not responding (or responding slowly) RadiantOne FID could take a long time to respond to the client. For example, in the case of querying an underlying Active Directory (with a base DN starting at the root of Active Directory) you may get entries like the following returned:
 
-`ldaps://ForestDnsZones.na.radiantlogic.com:636… <BR>ldaps://DomainDnsZones.na.radiantlogic.com:636…`
+ldaps://ForestDnsZones.na.radiantlogic.com:636… <BR>ldaps://DomainDnsZones.na.radiantlogic.com:636…
 
 If RadiantOne FID attempts to “chase” these referrals, this can result in an extreme degradation in response times. Therefore, it is recommended that referral chasing is disabled, especially if you need to connect to Active Directory starting at the root of the tree.
 
@@ -230,7 +230,7 @@ Default is 5. This is the maximum number of minutes to keep an idle connection i
 
 ## Virtual Views Created in the Main Control Panel > Context Builder Tab
 
-Details about the parameters mentioned below can be found in the Context Builder Guide. This document is only for pointing out these parameters as key to review when tuning RadiantOne FID.
+Details about the parameters mentioned below can be found in the [RadiantOne Context Builder Guide](/documentation/context-builder-guide/introduction). This document is only for pointing out these parameters as key to review when tuning RadiantOne FID.
 
 ### Database Backends
 
@@ -360,7 +360,7 @@ Figure 3.12: Disabling Referral Chasing
 
 Chasing referrals can affect the overall performance of RadiantOne FID because if the referral server is not responding (or responding slowly) it could take a long time to respond to the client. For example, in the case of RadiantOne FID querying an underlying Active Directory (with a base DN starting at the root of Active Directory) you may get entries like the following returned:
 
-`ldaps://ForestDnsZones.na.radiantlogic.com:636… <br>ldaps://DomainDnsZones.na.radiantlogic.com:636…`
+ldaps://ForestDnsZones.na.radiantlogic.com:636… <br>ldaps://DomainDnsZones.na.radiantlogic.com:636…
 
 If RadiantOne FID attempts to “chase” these referrals, this can result in an extreme degradation in response times. Therefore, it is recommended that referral chasing is disabled if you need to connect to Active Directory starting at the root of the tree.
 

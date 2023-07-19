@@ -50,15 +50,15 @@ To uninstall the Windows service, stop the service and execute <RLI_HOME>\ \bin\
 
 -	Use the vdsconfig utility to update the asAService property to false. Below is an example. After running the command, restart the Control Panel.
 
-`C:\radiantone\vds\bin>vdsconfig.bat set-property -name asAService -value false`
-<br> `Using RLI home : C:\radiantone\vds`
-<br> `Using Java home : C:\radiantone\vds\jdk\jre `
-<br> `0 [ConnectionStateManager-0] WARN com.rli.zookeeper.ZooManagerConnectionStateListener - Curator connection state change: CONNECTED`
-<br> `9 [ConnectionStateManager-0] WARN com.rli.zookeeper.ZooManagerConnectionStateListener - VDS-ZK connection state changed: CONNECTED`
-<br> `9 [ConnectionStateManager-0] WARN com.rli.zookeeper.ZooManager - ZooManager connection state changed: CONNECTED`
-<br> `Previous value: true`
-<br> `New value: false`
-<br> `Configuration has been updated successfully.`
+C:\radiantone\vds\bin>vdsconfig.bat set-property -name asAService -value false
+<br> Using RLI home : C:\radiantone\vds
+<br> Using Java home : C:\radiantone\vds\jdk\jre
+<br> 0 [ConnectionStateManager-0] WARN com.rli.zookeeper.ZooManagerConnectionStateListener - Curator connection state change: CONNECTED
+<br> 9 [ConnectionStateManager-0] WARN com.rli.zookeeper.ZooManagerConnectionStateListener - VDS-ZK connection state changed: CONNECTED
+<br> 9 [ConnectionStateManager-0] WARN com.rli.zookeeper.ZooManager - ZooManager connection state changed: CONNECTED
+<br> Previous value: true
+<br> New value: false
+<br> Configuration has been updated successfully.
 
 ### As a LINUX Daemon
 
@@ -70,15 +70,15 @@ Assuming you are logged into your LINUX machine, use the following commands on t
 
 For init.d scripts:
 
-`sudo cp $RLI_HOME/bin/rc.d/vds /etc/init.d/`
-<br> `sudo chmod +x /etc/init.d/vds`
-<br> `sudo chkconfig --add vds   #To automatically configure the vds init script for the configured runlevels (3 and 5, these are defined in the vds script). If you want to uninstall the script, use: chkconfig --del vds` 
-<br> `sudo service vds start`
-<br> `ps -ef | grep vds   #To verify that RadiantOne FID is not running as root, but as the user that owns the RadiantOne install location.`
+sudo cp $RLI_HOME/bin/rc.d/vds /etc/init.d/
+<br> sudo chmod +x /etc/init.d/vds
+<br> sudo chkconfig --add vds   #To automatically configure the vds init script for the configured runlevels (3 and 5, these are defined in the vds script). If you want to uninstall the script, use: chkconfig --del vds 
+<br> sudo service vds start
+<br> ps -ef | grep vds   #To verify that RadiantOne FID is not running as root, but as the user that owns the RadiantOne install location.
 
 For system.d scripts:
 
-`sudo cp $RLI_HOME/bin/system.d/vds.service /etc/systemd/system/ <BR>sudo systemctl enable vds.service <BR>sudo systemctl start vds.service`
+sudo cp $RLI_HOME/bin/system.d/vds.service /etc/systemd/system/ <BR>sudo systemctl enable vds.service <BR>sudo systemctl start vds.service
 
 >[!warning]
 >If you are deploying RadiantOne in a cluster, be sure to start the RadiantOne service on the leader node first before you start it on any follower/follower-only nodes.
@@ -125,7 +125,7 @@ change-pipeline-state -pipelineid <pipelineID> -state <state>
 
 Run the list-topologies command to locate the pipelines identifiers for each topology. This is the value to pass in the -pipelineid. For the -state property, use a value of “resume” to start the synchronization process. Use a value of “suspend” to stop the synchronization process.
 
-For more details on the vdsconfig utility, see the RadiantOne Command Line Configuration Guide.
+For more details on the vdsconfig utility, see the [Radiantone Command Line Configuration Guide](/documentation/command-line-configuration-guide/01-introduction).
 
 ## Control Panels
 
@@ -161,14 +161,14 @@ The Jetty server that hosts the Control Panels can also be configured as a Linux
 
 For init.d scripts:
 
-`sudo cp $RLI_HOME/bin/rc.d/control_panel /etc/init.d/`
-<br> `sudo chmod +x /etc/init.d/control_panel`
-<br> `sudo chkconfig -add control_panel  #To automatically configure the script for the configured runlevels (3 and 5, these are defined in the control_panel script). If you want to uninstall the script, use: chkconfig --del control_panel`
-<br> `sudo service control_panel start`
+sudo cp $RLI_HOME/bin/rc.d/control_panel /etc/init.d/
+<br> sudo chmod +x /etc/init.d/control_panel
+<br> sudo chkconfig -add control_panel  #To automatically configure the script for the configured runlevels (3 and 5, these are defined in the control_panel script). If you want to uninstall the script, use: chkconfig --del control_panel
+<br> sudo service control_panel start
 
 For system.d scripts:
 
-`sudo cp $RLI_HOME/bin/system.d/control_panel.service /etc/systemd/system/ <BR>sudo systemctl enable control_panel.service <BR> sudo systemctl start control_panel.service`
+sudo cp $RLI_HOME/bin/system.d/control_panel.service /etc/systemd/system/ <BR>sudo systemctl enable control_panel.service <BR> sudo systemctl start control_panel.service
 
 >[!warning]
 >If a cluster is deployed, execute the steps described in this section on each cluster node.
