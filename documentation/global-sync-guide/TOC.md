@@ -7,7 +7,6 @@ description: RadiantOne Global Synchronization guide
 
 - [Introduction](introduction.md)
 - [Concepts and definitions](#)
-  - [Terms and processes](concepts-and-definitions/terms-and-processes.md)
   - [Data source](concepts-and-definitions/data-source.md)
   - [Synchronization object](concepts-and-definitions/synchronization-object.md)
   - [Topology](concepts-and-definitions/topology.md)
