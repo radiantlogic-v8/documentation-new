@@ -36,7 +36,7 @@ The default custom data sources support Read, Update, and Delete (or deactivate)
 
 If you configure persistent cache for virtual views of cloud directories/services, the change detection mechanisms for cache refresh are limited to Periodic and Custom (only for sources that contain a timestamp attribute for their entries, or Differential Query like Azure AD). The periodic change detection mechanism requires the entire data set to be retrieved at each polling interval and then the connector determines what has changed. The Custom change detection mechanism is a special timestamp-based approach that works with Azure AD (which also leverages Differential Query), Okta, and any SCIM-accessible backend. If the cloud directory/service does not support SCIM (and is something other than Azure AD or Okta), then the periodic option is the only choice for detecting changes for persistent cache refreshes.
 
-For details on persistent cache refresh connectors, see the RadiantOne Deployment and Tuning Guide.
+For details on persistent cache refresh connectors, see the [RadiantOne Deployment and Tuning Guide](/documentation/deployment-and-tuning-guide/00-preface).
 
 ### Calling the Web Service through a Proxy Server 
 
@@ -1204,7 +1204,7 @@ RadiantOne includes a default SCIM virtual view that can be used to virtualize P
 
 This section describes how to virtualize AWS Cognito users and groups in RadiantOne using a default virtual view. Views created from AWS Cognito data sources are read-only, and binds are not supported. LDAP filters are also not supported. This means that when RadiantOne receives queries that contain filters from clients, those filters are not forwarded to AWS Cognito for processing. 
 
->[!note] To support LDAP filters, create a view of AWS Cognito and configure it for a persistent cache with periodic refresh. For information on creating your own views, refer to the Context Builder Guide. For information on configuring persistent cache with periodic refresh, refer to the Deployment and Tuning Guide.
+>[!note] To support LDAP filters, create a view of AWS Cognito and configure it for a persistent cache with periodic refresh. For information on creating your own views, refer to the Context Builder Guide. For information on configuring persistent cache with periodic refresh, refer to the [RadiantOne Deployment and Tuning Guide](/documentation/deployment-and-tuning-guide/00-preface).
 
 To virtualize AWS cognito users and groups: 
 

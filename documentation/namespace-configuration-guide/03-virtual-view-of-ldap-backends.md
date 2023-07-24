@@ -25,7 +25,7 @@ Figure 3.1: Example LDAP Backend
 
 If you configure the LDAP backend directly at the Root Naming Context, it is the only backend that can be defined for this specific naming context. If you want to comprise the tree from many different backends, choose the Virtual Tree option for the type of naming context instead of LDAP Backend.
 
->[!note] If you would like to build your virtual view using the Directory Tree Wizard, refer to the RadiantOne Identity Service Wizards Guide.
+>[!note] If you would like to build your virtual view using the Directory Tree Wizard, refer to the [RadiantOne Identity Service Wizards Guide](/documentation/identity-service-wizards-guide/01-overview).
 
 1.	First, data sources for each backend must be defined. From the Main Control Panel > Settings tab, expand below the Server Backend node and go to the LDAP Data Sources section. Click on the **Add** button to define LDAP or Active Directory data sources.
 
@@ -43,7 +43,8 @@ If you configure the LDAP backend directly at the Root Naming Context, it is the
 
 8.	Click **OK** when finished and a new naming context matching the mapped base DN parameter is created for RadiantOne. When LDAP clients access this naming context, the contents from the remote base DN branch will be returned.
 
->[!note] For every virtual view of an LDAP backend you create, a file containing the schema definition is created. The schema file is stored on the file system at <RLI_HOME>\vds_server\lod\<normalized root naming context where the view is mounted>.orx. An LDIF formatted file containing the schema is also saved in the lod folder (with the same name as the .orx file) and is used to retrieve object class and attribute definitions if the metadata is used to extend the RadiantOne LDAP schema. For details on extending the RadiantOne LDAP schema, see the RadiantOne System Administration Guide.
+>[!note] For every virtual view of an LDAP backend you create, a file containing the schema definition is created. The schema file is stored on the file system at <RLI_HOME>\vds_server\lod\<normalized root naming context where the view is mounted>.orx. An LDIF formatted file containing the schema is also saved in the lod folder (with the same name as the .orx file) and is used to retrieve object class and attribute definitions if the metadata is used to extend the RadiantOne LDAP schema. For details on extending the RadiantOne LDAP schema, see the [RadiantOne System Administration Guide](/documentation/sys-admin-guide/01-introduction)
+.
 
 9.	If you need to modify the LDAP backend configuration, select the appropriate node below Root Naming Contexts and modify the settings on the right side. Click **Save** when finished.
 
@@ -227,7 +228,8 @@ If user “cn=joe,dc=partners,dc=airius,dc=com,dc=server2,ou=global,o=vds” suc
 
 ### LDAP Controls
 
-A control is additional information that can be included in an LDAP request or response. RadiantOne can play the role of both an LDAP server and an LDAP client to other backend directories. To understand controls supported by RadiantOne as an LDAP server, see the RadiantOne System Administration Guide. RadiantOne’s handling of LDAP controls as a client to a backend directory is described in this section.
+A control is additional information that can be included in an LDAP request or response. RadiantOne can play the role of both an LDAP server and an LDAP client to other backend directories. To understand controls supported by RadiantOne as an LDAP server, see the [RadiantOne System Administration Guide](/documentation/sys-admin-guide/01-introduction)
+. RadiantOne’s handling of LDAP controls as a client to a backend directory is described in this section.
 
 #### VLV/Sort
 
@@ -265,7 +267,8 @@ Figure 8: Proxy Authorization
 
 If proxy impersonation rules are defined at the level of the LDAP data source associated with the proxy virtual view, you can check the Role Mapped Access option to enable them. If the Role Mapped Access option is not checked, any impersonation rules defined for the LDAP backend data source associated with the selected proxy view are not used. 
 
-For details on defining proxy impersonation rules for LDAP data sources, please see the RadiantOne System Administration Guide. 
+For details on defining proxy impersonation rules for LDAP data sources, please see the [RadiantOne System Administration Guide](/documentation/sys-admin-guide/01-introduction)
+. 
 
 A high-level diagram detailing the behavior is shown below.
 
@@ -324,7 +327,7 @@ This auto re-mapping capability is useful for two main purposes:
 <br>Enter the whole attribute value in the search filter (i.e. uniqueMember=uid=Cbrady,ou=people,ou=SunOne,ou=RemoteDirectories,o=vds) 
 <br>Only use the wild card character (*) in the filter up to the point of the new suffix (i.e. uniqueMember=uid=Cbrady,ou=*) or (uniqueMember=uid=*)
 
-If your virtual view does not keep the existing backend hierarchy (for example if you don’t map direct to a backend LDAP), then you can use the Groups Migration Wizard to auto-translate the member DNs to the new virtual namespace. For details on the Groups Migration Wizard, please see the RadiantOne Identity Service Wizards Guide.
+If your virtual view does not keep the existing backend hierarchy (for example if you don’t map direct to a backend LDAP), then you can use the Groups Migration Wizard to auto-translate the member DNs to the new virtual namespace. For details on the Groups Migration Wizard, please see the [RadiantOne Identity Service Wizards Guide](/documentation/identity-service-wizards-guide/01-overview).
 
 ### Always Requested Attributes
 
@@ -534,7 +537,8 @@ The default size limit is set to 100 meaning only 100 containers below the Remot
 
 ### Interception Scripts
 
-For specific details, please see Interception Scripts in the Concepts section of the RadiantOne System Administration Guide. This section describes how to enable interception scripts for an LDAP backend.
+For specific details, please see Interception Scripts in the Concepts section of the [RadiantOne System Administration Guide](/documentation/sys-admin-guide/01-introduction)
+. This section describes how to enable interception scripts for an LDAP backend.
 
 1.	From the Main Control Panel > Directory Namespace Tab, select the LDAP backend node below Root Naming Contexts. 
 
@@ -544,7 +548,8 @@ For specific details, please see Interception Scripts in the Concepts section of
 
 4.	Click **Save** in the upper right corner and then **Yes** to apply the changes to the server.
 
-5.	Lastly, follow the steps defined in the Interception Scripts section of Concepts of the RadiantOne System Administration Guide.
+5.	Lastly, follow the steps defined in the Interception Scripts section of Concepts of the [RadiantOne System Administration Guide](/documentation/sys-admin-guide/01-introduction)
+.
 
 ### Include and Exclude Search Filters
 
@@ -586,7 +591,8 @@ The use of inclusion and exclusion filters can improve performance and efficienc
 
 ### Computed Attributes
 
-For specific details, please see Computed Attributes in the Concepts section of the RadiantOne System Administration Guide. This section describes how to configure computed attributes for an LDAP backend.
+For specific details, please see Computed Attributes in the Concepts section of the [RadiantOne System Administration Guide](/documentation/sys-admin-guide/01-introduction)
+. This section describes how to configure computed attributes for an LDAP backend.
 
 To create computed attributes:
 
@@ -620,7 +626,8 @@ The computed attribute should appear in the list of attributes for the virtual o
 
 If you would like to see a list of only computed attributes for the virtual object, select the “Computed” option in the Display drop-down list. 
 
-For more details, please see Computed Attributes in the Concepts section of the RadiantOne System Administration Guide.
+For more details, please see Computed Attributes in the Concepts section of the [RadiantOne System Administration Guide](/documentation/sys-admin-guide/01-introduction)
+.
 
 #### Deactivate Computed Attributes
 
@@ -662,7 +669,7 @@ To configure the bind order:
 
 5.	Use the up and down arrow to determine the order RadiantOne should attempt the credential checking. RadiantOne attempts to verify the credentials against the first enabled source in the list. If it fails, then the next is tried and so forth. If all enabled sources have been tried without success, RadiantOne returns a bind failed error to the client.
 
-For more information on bind order and joining, please see the sections titled Bind Order and Joins in the Concepts section of the RadiantOne System Administration Guide.
+For more information on bind order and joining, please see the sections titled Bind Order and Joins in the Concepts section of the [RadiantOne System Administration Guide](/documentation/sys-admin-guide/01-introduction).
 
 ### Joins
 
@@ -670,7 +677,7 @@ Objects from any sources in the RadiantOne namespace can be joined. With joins, 
 
 Joins are configured by first selecting the virtual view built from the primary source below Root Naming Contexts in the Main Control Panel > Directory Namespace Tab. On the right side, select the Objects tab, choose the primary object class (add it if it isn’t listed), and click **New** in the Join Profiles section. To deactivate a join, uncheck the join’s Active box in the Join Profiles section on the Objects tab and click **Save**. To reactivate the join, check the join’s Active box and click **Save**.
 
-For complete details, please see Joins in the Concepts section of the RadiantOne System Administration Guide.
+For complete details, please see Joins in the Concepts section of the [RadiantOne System Administration Guide](/documentation/sys-admin-guide/01-introduction).
 
 ### Optimizations
 
@@ -694,7 +701,7 @@ Whenever RadiantOne queries a backend LDAP, the default behavior is to ask for a
 
 The default behavior of RadiantOne is to process associated joins and build computed attributes whenever a virtual object is reached from a query regardless of whether the attributes requested come from a secondary source or computation. 
 
-If you enable this option, RadiantOne does not perform joins or computations if a client requests or searches for attributes from a primary object only. If a client requests or searches for attributes from secondary objects or computed attributes, then RadiantOne processes the join(s) and computations accordingly. For more details on this behavior, please see the Join Behavior Diagram in the RadiantOne System Administration Guide.
+If you enable this option, RadiantOne does not perform joins or computations if a client requests or searches for attributes from a primary object only. If a client requests or searches for attributes from secondary objects or computed attributes, then RadiantOne processes the join(s) and computations accordingly. For more details on this behavior, please see the Join Behavior Diagram in the [RadiantOne System Administration Guide](/documentation/sys-admin-guide/01-introduction).
 
 Use caution when enabling this option if you have interception scripts defined on these objects, or access controls based on filters are being used (both of which may require other attributes returned from secondary sources or computations regardless of whether the client requested or searched for them).
 

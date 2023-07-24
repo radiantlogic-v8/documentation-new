@@ -10,7 +10,7 @@ Virtual views of DSML and SPML backends are supported with RadiantOne.
 
 To configure virtual views pointing to a backend SPML or DSML service, follow the steps below.
 
-1.	From the Main Control Panel > Settings tab > Server Backend > Custom Data Sources, add a DSML/SPML data source. For details on creating data sources, see the RadiantOne System Administration Guide.
+1.	From the Main Control Panel > Settings tab > Server Backend > Custom Data Sources, add a DSML/SPML data source. For details on creating data sources, see the [RadiantOne System Administration Guide](/documentation/sys-admin-guide/01-introduction).
 
 2.	From the Main Control Panel > Directory Namespace Tab, click ![An image showing ](Media/plus-sign.jpg).
 
@@ -76,7 +76,7 @@ Path that points to the DSML or SPML Service installed on the web/application se
 
 ### SSL/TLS
 
-Check whether to enable SSL/TLS access to the backend (see SSL/TLS for details on configuring RadiantOne as an SSL client in the RadiantOne System Administration Guide). Defined at the level of the custom data source.
+Check whether to enable SSL/TLS access to the backend (see SSL/TLS for details on configuring RadiantOne as an SSL client in the [RadiantOne System Administration Guide](/documentation/sys-admin-guide/01-introduction)). Defined at the level of the custom data source.
 
 ### Pass Thru Authorization
 
@@ -121,7 +121,7 @@ Figure 4: SPML Backend Properties
 
 ### Interception Scripts
 
-For specific details, please see Interception Scripts in the Concepts section of the RadiantOne System Administration Guide. This section describes how to enable interception scripts for a DSML or SPML service backend.
+For specific details, please see Interception Scripts in the Concepts section of the [RadiantOne System Administration Guide](/documentation/sys-admin-guide/01-introduction). This section describes how to enable interception scripts for a DSML or SPML service backend.
 
 1.	Navigate to the DSML or SPML Service backend node below Root Naming Contexts on the Main Control Panel > Directory Namespace Tab. 
 
@@ -131,5 +131,5 @@ For specific details, please see Interception Scripts in the Concepts section of
 
 4.	Click Save and then Yes to apply the changes to the server.
 
-5.	Lastly, follow the steps defined in the Interception Scripts section of Concepts in the RadiantOne System Administration Guide to customize the logic and rebuild the needed jar file.
+5.	Lastly, follow the steps defined in the Interception Scripts section of Concepts in the [RadiantOne System Administration Guide](/documentation/sys-admin-guide/01-introduction) to customize the logic and rebuild the needed jar file.
  

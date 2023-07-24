@@ -215,7 +215,8 @@ To see only the attributes that are visible in the virtual entry, check the “V
 
 ### Computed Attributes
 
-For specific details, please see Computed Attributes in the Concepts section of the RadiantOne System Administration Guide. This section describes how to configure computed attributes for a Database backend.
+For specific details, please see Computed Attributes in the Concepts section of the [RadiantOne System Administration Guide](/documentation/sys-admin-guide/01-introduction)
+. This section describes how to configure computed attributes for a Database backend.
 
 To create computed attributes:
 
@@ -249,7 +250,7 @@ If you would like to see a list of only computed attributes for the virtual obje
  
 Figure 8: Display Computed Attributes Only
 
-For more details, please see Computed Attributes in the Concepts section of the RadiantOne System Administration Guide.
+For more details, please see Computed Attributes in the Concepts section of the [RadiantOne System Administration Guide](/documentation/sys-admin-guide/01-introduction).
 
 #### Deactivate Computed Attributes
 
@@ -289,11 +290,11 @@ To configure the bind order:
 
 4.	Use the up and down arrow to determine the order RadiantOne should attempt the credential checking. RadiantOne attempts to verify the credentials against the first enabled source in the list. If it fails, then the next is tried and so forth. If all enabled sources have been tried without success, RadiantOne returns a bind failed error to the client.
 
-For more information on bind order and joining, please see the sections titled Bind Order and Joins in the Concepts section of the RadiantOne System Administration Guide.
+For more information on bind order and joining, please see the sections titled Bind Order and Joins in the Concepts section of the [RadiantOne System Administration Guide](/documentation/sys-admin-guide/01-introduction).
 
 ### Interception Scripts
 
-For specific details, please see Interception Scripts in the Concepts section of the RadiantOne System Administration Guide. This section describes how to enable interception scripts for a virtual view of a database backend.
+For specific details, please see Interception Scripts in the Concepts section of the [RadiantOne System Administration Guide](/documentation/sys-admin-guide/01-introduction). This section describes how to enable interception scripts for a virtual view of a database backend.
 
 1.	From the Main Control Panel -> Directory Namespace Tab, select the database object node below Root Naming Contexts. 
 
@@ -305,7 +306,7 @@ For specific details, please see Interception Scripts in the Concepts section of
 
 5.	Click **OK** to apply the changes to the server.
 
-6.	Lastly, follow the steps defined in the Interception Scripts section of Concepts of the RadiantOne System Administration Guide.
+6.	Lastly, follow the steps defined in the Interception Scripts section of Concepts of the [RadiantOne System Administration Guide](/documentation/sys-admin-guide/01-introduction).
 
 ### Joins
 
@@ -319,7 +320,7 @@ Objects from any sources in the virtual namespace can be joined. With joins, you
 
 To deactivate a join, uncheck the join’s Active box in the Join Profiles section on the Objects tab and click Save. To reactivate the join, check the join’s Active box and click Save.
 
-For complete details and steps, please see Joins in the Concepts section of the RadiantOne System Administration Guide.
+For complete details and steps, please see Joins in the Concepts section of the [RadiantOne System Administration Guide](/documentation/sys-admin-guide/01-introduction).
 
 ### Handling Multi-Valued Attributes from a Database
 
