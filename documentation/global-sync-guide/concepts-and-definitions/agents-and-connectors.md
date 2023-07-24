@@ -12,4 +12,4 @@ A connector is a component that captures changes from data sources. Capture conn
 >[!note]
 >There are no apply connectors to configure or manage. Changes are propagated through the RadiantOne virtualization layer to the destination.
 
-For details on connector types and properties available for each, please see the RadiantOne Connector Properties Guide.
+For details on connector types and properties available for each, please see the [RadiantOne Connector Properties Guide](/documentation/connector-properties-guide/overview).
