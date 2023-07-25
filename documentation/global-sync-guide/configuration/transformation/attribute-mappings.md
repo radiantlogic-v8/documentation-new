@@ -191,7 +191,7 @@ Available Functions
 User-defined functions can be created and configured from the Add Mapping Function window.
 
 1. Select ![Plus symbol](../../media/image59.png) next to User-Defined Function.
-![User-Defined Function](../../media/image60.png)
+    ![User-Defined Function](../../media/image60.png)
 2. Enter a function name.
 3. (Optional) Enter a Description.
 4. Select ![Plus symbol](../../media/image59.png) to add parameters as needed.
