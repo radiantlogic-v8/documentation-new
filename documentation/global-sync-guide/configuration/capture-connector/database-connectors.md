@@ -113,7 +113,7 @@ If the database backend does not have a changelog table, you can use RadiantOne 
 These scripts can be provided to the database backend DBA to review, modify and execute on the database server. Scripts generated using this command cannot be executed in the Main Control Panel.
 
 Example:  
-`create_db_triggers.bat -d sql123 -n sql_server_data_source -t DBO.EMPLOYEES -u rli_con -p rli_con -l EMPLOYEES_LOG`
+create_db_triggers.bat -d sql123 -n sql_server_data_source -t DBO.EMPLOYEES -u rli_con -p rli_con -l EMPLOYEES_LOG
 
 Based on this example, the command generates scripts at the following location: `{RLI_HOME}/work/sql/sql123/`
 
