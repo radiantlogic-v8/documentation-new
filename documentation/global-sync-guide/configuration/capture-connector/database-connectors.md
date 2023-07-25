@@ -52,18 +52,18 @@ To configure DB Changelog connector:
 1. Indicate the user name and password for the connector's dedicated credentials for connecting to the log table. If you do not have the user name and password, contact your DBA for the credentials.
 1. Enter the log table name using the proper syntax for your database (e.g. `{USER}.{TABLE}_LOG`). If you used [RadiantOne to generate the SQL scripts](#create-scripts-to-generate-triggers-and-changelog-table) for configuring the changelog components in the database, you can view the scripts to see the exact table name. Otherwise, contact your DBA for the log table name.
 
->[!warning]
->Change the value for this property only if you are creating the log table manually and the capture connector does not calculate the log table name correctly. Be sure to use the [correct syntax](#log-table-name-syntax) if you change the value.
+    >[!warning]
+    >Change the value for this property only if you are creating the log table manually and the capture connector does not calculate the log table name correctly. Be sure to use the [correct syntax](#log-table-name-syntax) if you change the value.
 
-![DB Changelog Connector Configuration](../../media/image24.png)
+    ![DB Changelog Connector Configuration](../../media/image24.png)
 
 7. Select **Save**.
 8. A message is displayed that asks if you want to apply the scripts to configure the log table immediately or not.
     ![Configuration to Apply SQL Script Automatically or Not](../../media/image26.png)
 9. To apply now, select **OK**. Otherwise, select **NO**.
 
->[!note]
->Selecting **OK** creates and executes the SQL scripts on the database server. If you choose to apply later, the scripts are created at the following location: `{RLI_HOME}/work/sql/` but not executed. They must be run on the database manually. Any DBA can configure the connector by selecting the **NO** option and running the scripts manually on the database server. For most databases, this is also sufficient to apply the configuration directly selecting the **OK** option. However, for Oracle databases, you must connect as either the SYS user or a non SYS user that has the SYSDBA role assigned to them. If you choose to use a non SYS user, you must use the syntax userid as sysdba for the user name in the connection. An example would be scott as sysdba.
+    >[!note]
+    >Selecting **OK** creates and executes the SQL scripts on the database server. If you choose to apply later, the scripts are created at the following location: `{RLI_HOME}/work/sql/` but not executed. They must be run on the database manually. Any DBA can configure the connector by selecting the **NO** option and running the scripts manually on the database server. For most databases, this is also sufficient to apply the configuration directly selecting the **OK** option. However, for Oracle databases, you must connect as either the SYS user or a non SYS user that has the SYSDBA role assigned to them. If you choose to use a non SYS user, you must use the syntax userid as sysdba for the user name in the connection. An example would be scott as sysdba.
 
 10. After the capture connector is configured, configure the transformation in the pipeline.
 
