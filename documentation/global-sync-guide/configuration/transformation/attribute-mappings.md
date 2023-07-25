@@ -43,7 +43,7 @@ The corresponding Destination DN Expression to match the example described above
 
 As an alternative to using a specific source attribute in the DN expression, you can use the source entry's RDN value to compute the target DN with the following syntax:
 
-`${rdn[1]},{SUFFIX_IN_THE_RADIANTONE_NAMESPACE_CORRESPONDING_TO_THE_DESTINATION}`
+${rdn[1]},{SUFFIX_IN_THE_RADIANTONE_NAMESPACE_CORRESPONDING_TO_THE_DESTINATION}
 
 As an example, assume a source entry has a DN of `CN=Anna Gold,o=activedirectory` and the target DN expression is `${rdn[1]},o=companydirectory`. The transformation would try to find an entry identified as `CN=Anna Gold,o=companydirectory` in the destination. If the entry did not exist, it would be inserted. If the entry exists, it would be updated.
 
