@@ -37,7 +37,7 @@ You can view this data source configuration from Main Control Panel > Settings >
 
 For security reasons, the user account (Bind DN) you have configured in the vdsha data source should be the only one allowed to access the `cn=queue` and `cn=dlqueue` naming contexts.
 
-Configure access controls for these root naming contexts from Main Control Panel > Settings > Security > Access Control. Access should only be allowed for the account configured in the vdsha data source. For details on configuring access controls, see the RadiantOne System Administration Guide.
+Configure access controls for these root naming contexts from Main Control Panel > Settings > Security > Access Control. Access should only be allowed for the account configured in the vdsha data source. For details on configuring access controls, see the [RadiantOne System Administration Guide](/documentation/sys-admin-guide/01-introduction).
 
 ## Manage synchronization
 
@@ -60,13 +60,13 @@ VDS – Sync Engine log file level is set to **DEBUG**. You can check the log le
 
 ### Suspend synchronization components
 
-Once a pipeline is configured, all synchronization components start automatically. For complete details on starting the synchronization components, please see the RadiantOne Deployment and Tuning Guide.
+Once a pipeline is configured, all synchronization components start automatically. For complete details on starting the synchronization components, please see the [RadiantOne Deployment and Tuning Guide](/documentation/deployment-and-tuning-guide/00-preface).
 
 ### Monitor the synchronization process
 
 The number of entries processed and the number of entries queued by the Transformation component can be viewed from the Main Control Panel > Global Sync tab. Select the topology on the left. The pipelines displayed on the right indicate the number of entries processed by the transformation and apply connectors.
 
-For complete details on monitoring Global Sync components, please see the RadiantOne Monitoring and Reporting Guide.
+For complete details on monitoring Global Sync components, please see the [RadiantOne Monitoring and Reporting Guide](/documentation/monitoring-and-reporting-guide/01-monitoring).
 
 ### Alerts
 
@@ -84,7 +84,7 @@ Default alerts can be enabled on the Global Sync tab > selected topology. Select
 
 #### Capture connector
 
-When this alert is enabled, every time the capture connector state changes (e.g. a connector state changes from RUNNING to STOPPED or vice versa), a file alert is triggered in: `{RLI_HOME}/logs/alerts`.log
+When this alert is enabled, every time the capture connector state changes (e.g. a connector state changes from RUNNING to STOPPED or vice versa), a file alert is triggered in: `{RLI_HOME}/logs/alerts.log`
 
 #### Pipeline state
 
