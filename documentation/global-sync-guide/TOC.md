@@ -26,7 +26,7 @@ description: RadiantOne Global Synchronization guide
   - [Transformation](#)
     - [Transformation configuration](configuration/transformation/transformation-configuration.md)
     - [Attribute mappings](configuration/transformation/attribute-mappings.md)
-  - [Script](configuration/script.md)
+    - [Script](configuration/script.md)
   - [Apply connector](configuration/apply-connector.md)
   - [Rules](#)
     - [Overview](configuration/rules/overview.md)
