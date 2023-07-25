@@ -35,7 +35,7 @@ You can use our own Java IDE to customize scripts instead of using the Main Cont
 1. Edit the script.
 1. Save the script.
 1. On the RadiantOne machine, rebuild the fidsync.jar with ANT using the following syntax:
-`C:\radiantone\vds\vds_server\custom\>c:\radiantone\vds\ant\bin\ant.bat buildjars`
+C:\radiantone\vds\vds_server\custom\>c:\radiantone\vds\ant\bin\ant.bat buildjars
 1. Restart the RadiantOne service. If deployed in a cluster, restart it on all nodes.
 
 ## Leverage existing Java classes
