@@ -683,19 +683,19 @@ Example 2: A configured LDAP data source named ad203 has the following username 
 
 The following LDIF formatted file (named ldapmodify_update_datasource_username.ldif) is created to update the username and password:
 
-`dn: id=ad203,cn=metads`
-<br> `changetype: modify`
-<br> `replace: username`
-<br> `username: CN=Logan Oliver,OU=Users,OU=Europe,DC=na,DC=radiantlogic,DC=com`
+dn: id=ad203,cn=metads
+<br> changetype: modify
+<br> replace: username
+<br> username: CN=Logan Oliver,OU=Users,OU=Europe,DC=na,DC=radiantlogic,DC=com
 -
-<br> `replace: password`
-<br> `password: Radiant1`
+<br> replace: password
+<br> password: Radiant1
 
 The following is the ldapmodify command that is run to update the username and password in the ad203 data source:
 
-`ldapmodify -h localhost -p 2389 -D "cn=directory manager" -w password -f '` 
-<br> `ldapmodify_update_datasource_username.ldif`
-<br> `modifying entry id=ad203,cn=metads`
+ldapmodify -h localhost -p 2389 -D "cn=directory manager" -w password -f '
+<br> ldapmodify_update_datasource_username.ldif
+<br> modifying entry id=ad203,cn=metads
 
 To verify the username and password update, go to the Main Control Panel > Settings tab > Server Backend > LDAP Data Sources and edit the data source (e.g. ad203). Click **Test Connection** to confirm it succeeds. Also validate that virtual views associated with this data source still work fine. This can be checked from the Directory Browser tab in the Main Control Panel.
 
