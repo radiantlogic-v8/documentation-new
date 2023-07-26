@@ -40,7 +40,7 @@ Set the connector type in the pipeline configuration by choosing the **Capture**
 
 ![The drop-down list for Connector Type with **LDAP** selected, in the Core Properties section of Configure Pipeline](media/image8.png)
 
-After selecting the Connector Type, configure the connector properties. For properties common to all connectors, see [Configure capture connector types and properties](configure-connector-types-and-properties.md#common-properties-for-all-connectors). The general properties for LDAP connectors are configured in the Core Properties section. Properties related to filtering of events are configured in the Event Filtering section. Properties related to the contents of the messages published by the connector are configured in the [Event Content](configure-connector-types-and-properties.md#event-contents) section. All other properties are configured in the Advanced Properties section. [Polling interval](configure-connector-types-and-properties.md#polling-interval)is not required for the LDAP Persistent Search connector. For properties that determine how the connector filters events that are not needed, configure the LDAP Filter, Included Branches and Excluded Branches in the Event Filtering section. These properties are described below.
+After selecting the Connector Type, configure the connector properties. For properties common to all connectors, see [Configure capture connector types and properties](configure-connector-types-and-properties.md#common-properties-for-all-connectors). The general properties for LDAP connectors are configured in the Core Properties section. Properties related to filtering of events are configured in the Event Filtering section. Properties related to the contents of the messages published by the connector are configured in the [Event Content](configure-connector-types-and-properties.md#event-contents) section. All other properties are configured in the Advanced Properties section. [Polling interval](configure-connector-types-and-properties.md#polling-interval) is not required for the LDAP Persistent Search connector. For properties that determine how the connector filters events that are not needed, configure the LDAP Filter, Included Branches and Excluded Branches in the Event Filtering section. These properties are described below.
 
 ### LDAP Filter
 
@@ -67,8 +67,8 @@ If the changed entry DN contains a suffix that matches the excluded branches val
 
 >[!note]
 >If both included and excluded branches are used, an entry must satisfy the conditions defined in both settings to be included in the message. The included branches condition(s) is checked first.
->If you set this value using the vdsconfig command line utility on Windows, separate the branches with a comma. E.g. `C:\radiantone\vds\bin\>vdsconfig.bat set-connector-property -connectorname o_sead_pcache_proxy__dc_seradiant_dc_dom__seradiantad -propertyid excludedBranches`
->`-propertyvalue "[\"cn=users,dc=seradiant,dc=dom\",\"cn=domain groups,dc=seradiant,dc=dom\"]".`
+>If you set this value using the vdsconfig command line utility on Windows, separate the branches with a comma. E.g. C:\radiantone\vds\bin\>vdsconfig.bat set-connector-property -connectorname o_sead_pcache_proxy__dc_seradiant_dc_dom__seradiantad -propertyid excludedBranches
+>-propertyvalue "[\"cn=users,dc=seradiant,dc=dom\",\"cn=domain groups,dc=seradiant,dc=dom\"]".
 
 If a change is made to this property while the connector is running, the new value is taken into account once the connector re-initializes which happens automatically every 20 seconds.
 
@@ -83,8 +83,8 @@ information.
 
 >[!note]
 >If both included and excluded branches are used, an entry must satisfy the conditions defined in both settings to be included in the message. The included branches condition(s) is checked first.
->If you set this value using the vdsconfig command line utility on Windows, separate the branches with a comma. E.g. `C:\radiantone\vds\bin>vdsconfig.bat set-connector-property -connectorname o_sead_pcache_proxy__dc_seradiant_dc_dom__seradiantad -propertyid includedBranches`
->`-propertyvalue "[\"cn=users,dc=seradiant,dc=dom\",\"cn=domaingroups,dc=seradiant,dc=dom\"]"`
+>If you set this value using the vdsconfig command line utility on Windows, separate the branches with a comma. E.g. C:\radiantone\vds\bin>vdsconfig.bat set-connector-property -connectorname o_sead_pcache_proxy__dc_seradiant_dc_dom__seradiantad -propertyid includedBranches
+>-propertyvalue "[\"cn=users,dc=seradiant,dc=dom\",\"cn=domaingroups,dc=seradiant,dc=dom\"]"
 
 If a change is made to this property while the connector is running, the new value is taken into account once the connector re-initializes which happens automatically every 20 seconds.
 
