@@ -14,7 +14,7 @@ The `RLI_CON` user (configurable) is the default owner of the log table. This sp
 Database connectors can leverage a failover backend that has been configured for the data source. When you configure a data source for your backend database, indicate a failover server. An example is shown below.
 
 >[!note]
->For SQL Server backends, indicating the failover server in the data source is not required. You only need to indicate the primary server in the data source and the connector can automatically detect the failover/mirrored server.**
+>For SQL Server backends, indicating the failover server in the data source is not required. You only need to indicate the primary server in the data source and the connector can automatically detect the failover/mirrored server.
 
 ![Where to select a Failover Server for the Backend Database](media/image15.png)
 
