@@ -5,23 +5,23 @@ description: Connector Properties Guide
 
 # Overview
 
-Connectors are used for synchronization in the RadiantOne Global Sync module and have three main functions.
+Connectors are used for synchronization in the RadiantOne Global Sync and have three main functions.
 
 1. Query data sources and collect changed entries.
 1. Filter unneeded events.
 1. Publish changed entries with the required information (requested attributes).
 
-This document provides a brief introduction to the RadiantOne Global Sync module's architecture and some common topics applicable for all connectors like how to reset the cursor and message size. Other documents in this guide focus on specific connectors per data source type.
+This document provides a brief introduction to the RadiantOne Global Sync architecture and some common topics applicable for all connectors like how to reset the cursor and message size. Other documents in this guide focus on specific connectors per data source type.
 
 ## About this manual
 
-Connectors are components responsible for capturing changes on entries in data sources and are used by the RadiantOne Global Sync module to propagate changes from source systems to one or more targets systems.
+Connectors are components responsible for capturing changes on entries in data sources and are used by the RadiantOne Global Sync to propagate changes from source systems to one or more targets systems.
 
 Depending on the source data store type (e.g. LDAP directory, Active Directory, RDBMS), different connectors are available. This guide provides information about each connector type and their corresponding configurable properties.
 
 ## Audience
 
-This manual is intended for administrators who are responsible for tuning and deploying the RadiantOne Global Sync module. This manual assumes that the reader is familiar with the following:
+This manual is intended for administrators who are responsible for tuning and deploying the RadiantOne Global Sync. This manual assumes that the reader is familiar with the following:
 
 - SQL Queries
 - LDAP Queries
@@ -70,7 +70,7 @@ Once you have the Pipelines Identifier, run the following command to reset the c
 
 An example is shown below (log output was removed to simplify the response):
 
-```sh
+`
 C:\radiantone\vds\bin>vdsconfig reset-cursor -pipelineid
 o_activedirectory_sync_o_companydirectory_pipeline_o_activedirectory
 
@@ -82,8 +82,7 @@ o_activedirectory_sync_o_companydirectory_pipeline_o_activedirectory
 <o_activedirectory_sync_o_companydirectory_pipeline_o_activedirectory>
 has been successfully reset."
 
-}
-```
+}`
 
 ## Manually update connector cursor
 
