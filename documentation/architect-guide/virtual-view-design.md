@@ -34,7 +34,7 @@ If there is no identity overlap, then a simple aggregation of all data sources i
 
 If there is identity overlap, then correlation logic must be defined. Correlation of identities can be expressed in the following simplified example.
 
-An LDAP Directory, Active Directory and an HR database contain different information about users. Some users are in both sources, and some are not. For this example, focusing on a single overlapping user, it is known that you can identify common users across LDAP and Active Directory by comparing uid to sAMAccountName. You can identify common users across Active Directory and the HR database by comparing employeeID to EID. This example is depicted in the diagram below where the order of upload to create the global profile list is LDAP directory, then Active Directory, followed by the HR database. The upload order is important for correlation rules. See the Global Identity Builder Guide for details.
+An LDAP Directory, Active Directory and an HR database contain different information about users. Some users are in both sources, and some are not. For this example, focusing on a single overlapping user, it is known that you can identify common users across LDAP and Active Directory by comparing uid to sAMAccountName. You can identify common users across Active Directory and the HR database by comparing employeeID to EID. This example is depicted in the diagram below where the order of upload to create the global profile list is LDAP directory, then Active Directory, followed by the HR database. The upload order is important for correlation rules. See the [RadiantOne Global Identity Builder Guide](/documentation/global-identity-builder-guide/introduction) for details.
 
 ![Example of Correlation](Media/Image3.1.jpg)
 
@@ -172,7 +172,7 @@ The Enterprise Directory phone numbers are for work phone numbers, and the HR Da
 
 Figure 11: Join Example Showing Common Attributes Returned as Multi-Valued
 
-Joins and attribute authority are configured in some of the [Identity Service Wizards](getting-started-with-radiantone.md#identity-service-wizards), but can also be defined/modified in the Main Control Panel. For detailed configuration steps, please see the RadiantOne System Administration Guide.
+Joins and attribute authority are configured in some of the [Identity Service Wizards](getting-started-with-radiantone.md#identity-service-wizards), but can also be defined/modified in the Main Control Panel. For detailed configuration steps, please see the [RadiantOne System Administration Guide](/documentation/sys-admin-guide/01-introduction).
 
 #### Model-Driven View Design
 
@@ -192,7 +192,7 @@ analysis) are the next steps.
 
 Once all data source schemas have been extracted, staged in persistent cache (if needed) and enhanced, you are ready to begin building the views that applications will consume.
 
-RadiantOne offers many tools to create virtual views. They can be built using the Main Control Panel -> Directory Namespace tab or [Identity Service Wizards](getting-started-with-radiantone.md#identity-service-wizards) (accessible on the Main Control Panel > Wizards tab) or the Main Control Panel > Context Builder tab. For complete details on Context Builder, please see the RadiantOne Context Builder Guide.
+RadiantOne offers many tools to create virtual views. They can be built using the Main Control Panel -> Directory Namespace tab or [Identity Service Wizards](getting-started-with-radiantone.md#identity-service-wizards) (accessible on the Main Control Panel > Wizards tab) or the Main Control Panel > Context Builder tab. For complete details on Context Builder, please see the [RadiantOne Context Builder Guide](/documentation/context-builder-guide/introduction).
 
 The sections below introduce possible types of virtual views you can build from LDAP and database backends. Building virtual views with objects from many different heterogeneous backends is also discussed.
 
@@ -215,13 +215,13 @@ The hierarchy shown above can be flattened out in a virtual view based on the ob
 Figure 13: Sample Flat Virtual View Built from an Existing LDAP Hierarchy (depicted in the figure
 above)
 
-When building a flat virtual view, use content objects. For details on content objects, please see the RadiantOne Context Builder Guide.
+When building a flat virtual view, use content objects. For details on content objects, please see the [RadiantOne Context Builder Guide](/documentation/context-builder-guide/introduction).
 
 **Context-Driven Hierarchies Based on Existing Metadata**
 
 The hierarchy builder utility assists you in modeling context-driven virtual views based on the existing metadata in your directory. This means that the hierarchy of the virtual view is based on attributes of an LDAP object class. Attributes from any object extracted with the Schema Manager can be used to build a virtual directory hierarchy (if all entries have a value for this attribute). This is an easy way to turn a relatively flat LDAP directory tree into a hierarchical structure.
 
-The following four figures provide an example of the process. For specific details on the configuration steps, see Hierarchy Builder in the RadiantOne Context Builder Guide.
+The following four figures provide an example of the process. For specific details on the configuration steps, see Hierarchy Builder in the [RadiantOne Context Builder Guide](/documentation/context-builder-guide/introduction).
 
 The hierarchy shown below is an example of an LDAP directory tree and three detailed user entries.
 
@@ -247,7 +247,7 @@ Virtual views built in the hierarchy builder can be viewed and modified on the M
 
 Figure 17: Virtual View Created with Hierarchy Builder Utility
 
-Hierarchical views use both container and content objects. For details on container and content objects, please see the RadiantOne Context Builder Guide.
+Hierarchical views use both container and content objects. For details on container and content objects, please see the [RadiantOne Context Builder Guide](/documentation/context-builder-guide/introduction).
 
 ##### Virtual Views from JDBC Backends
 
@@ -269,38 +269,32 @@ Figure 19: Sample RadiantOne Entries Based on Database Objects
 
 As described in this section, related database tables can be joined to create the virtual entries.
 
-Flat virtual views are created with content objects. For details on content objects, please see Chapter 4 in the RadiantOne Context Builder Guide. For details on joining objects from the same database schema, please see the Joins section in Chapter 2 of the RadiantOne Context Builder Guide.
+Flat virtual views are created with content objects. For details on content objects, please see [View Designer in the Context Builder Guide](/documentation/context-builder-guide/view-designer). For details on joining objects from the same database schema, please see the Joins section in the [RadiantOne Context Builder Guide](/documentation/context-builder-guide/concepts-and-utilities).
 
 Context-Driven Hierarchies Based on Existing Metadata
 
-Context-driven hierarchies, also known as directed knowledge graphs, use the relationships
-existing in the underlying schema to build the hierarchy. The relationship between the existing
-objects drives the structure. Relationship-driven hierarchies are composed of container objects,
-and optionally, content objects.
+Context-driven hierarchies, also known as directed knowledge graphs, use the relationships existing in the underlying schema to build the hierarchy. The relationship between the existing objects drives the structure. Relationship-driven hierarchies are composed of container objects, and optionally, content objects.
 
-The following diagram illustrates a relationship-driven hierarchy built from a database that stores
-customer and related order information.
+The following diagram illustrates a relationship-driven hierarchy built from a database that stores customer and related order information.
 
 ![Relationship-driven Hierarchy Example](Media/Image3.20.jpg)
 
 Figure 20: Relationship-driven Hierarchy Example
 
-The screen shot below depicts both the model of the virtual view and the runtime tree shown in
-the View Designer perspective.
+The screen shot below depicts both the model of the virtual view and the runtime tree shown in the View Designer perspective.
 
 ![Context-driven Virtual View Model and Runtime Preview](Media/Image3.21.jpg)
 
 Figure 21: Context-driven Virtual View Model and Runtime Preview
 
 Another example of a relationship-driven hierarchy is one that uses a recursive relationship. In a human resources database, an employees table could have a recursive relationship with itself.
-Therefore, you could build an organization hierarchy virtual view depicting the different levels of
-management. An example is shown in the figure below.
+Therefore, you could build an organization hierarchy virtual view depicting the different levels of management. An example is shown in the figure below.
 
 ![Recursive Relationship-driven Hierarchy Example](Media/Image3.22.jpg)
 
 Figure 22: Recursive Relationship-driven Hierarchy Example
 
-Virtual views based on recursive relationships are built with container and optionally content objects. For details on building context-based virtual hierarchies, please see Chapter 4 in the RadiantOne Context Builder Guide.
+Virtual views based on recursive relationships are built with container and optionally content objects. For details on building context-based virtual hierarchies, please see [View Designer in the Context Builder Guide](/documentation/context-builder-guide/view-designer).
 
 **Virtual Views Combining Objects from Heterogeneous Sources**
 
@@ -315,8 +309,7 @@ Joins are used as a way to extend a primary set of entries with attributes from 
 
 With RadiantOne, there are two categories of joins:
 
-Regular Join – extend entries with existing attributes from multiple data sources. This is
-depicted in the figure below.
+Regular Join – extend entries with existing attributes from multiple data sources. This is depicted in the figure below.
 
 ![Regular Join Example](Media/Image3.23.jpg)
 
@@ -385,7 +378,7 @@ Finally, links are used to aggregate the virtual views into one common tree. The
 
 Figure 30: Example Virtual View Using Links to Aggregate Objects from Different Data Sources
 
-This example described virtual views comprised of content objects and links. For more information, please see Chapter 4 in the RadiantOne Context Builder Guide.
+This example described virtual views comprised of content objects and links. For more information, please see [View Designer in the Context Builder Guide](/documentation/context-builder-guide/view-designer).
 
 ##### Build a Hierarchical View Leveraging Existing Relationships across Schemas
 
@@ -413,11 +406,11 @@ In the linked view shown in the figure below, the subbranch (view named EmpByDep
 
 Figure 34: Using Links with a Parameter to Condition the Subtree
 
-For detailed steps on building virtual views with links, please see Chapter 4 in the RadiantOne Context Builder Guide.
+For detailed steps on building virtual views with links, please see [View Designer in the Context Builder Guide](/documentation/context-builder-guide/view-designer).
 
 #### Related Material
 
-- RadiantOne Context Builder Guide
+- [RadiantOne Context Builder Guide](/documentation/context-builder-guide/introduction)
 
 ## Security at the Virtualization Layer
 
@@ -444,4 +437,4 @@ RadiantOne also offers the ability to force mutual authentication which means th
 
 ### Related Material
 
-- System Administration Guide sections titled: SSL, Security and Access Controls
+- [RadiantOne System Administration Guide](/documentation/sys-admin-guide/01-introduction) sections titled: SSL, Security, and Access Controls
