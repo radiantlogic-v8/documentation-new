@@ -37,6 +37,7 @@ Harness your identity data with intelligent integration to drive better business
 
   > [Release Notes](/release-notes/v740-release-notes)
   > Review the release notes to learn more about what fixes and improvements have been made for each patch release.
+
 </section>
 
 ## RadiantOne Federated Identity
