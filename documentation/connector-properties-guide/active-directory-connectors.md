@@ -20,7 +20,7 @@ Active Directory keeps track of changes that happen to entries in the directory 
 
 >[!note]
 >This is the connector type that must be used if the backend is an Active Directory Global Catalog. The Active Directory DirSync connector should not be used because it is unable to detect events in sub-domains.**
->Also, If you are pointing the Active Directory connector to the Global Catalog, when a deleted entry is detected, the connector receives only the DN of the deleted entry in the context of the `CN=Deleted Objects` container (e.g. `CN=u1\0ADEL:2ca20e8c-1748-4e7d-9044-45e64ab8105b,CN=Deleted Objects,DC=t1,DC=f6,DC=rli`). Transformation logic needs to address how to find the corresponding entry in the target(s) to remove or update them accordingly.**
+>Also, If you are pointing the Active Directory connector to the Global Catalog, when a deleted entry is detected, the connector receives only the DN of the deleted entry in the context of the `CN=Deleted Objects` container (e.g. CN=u1\0ADEL:2ca20e8c-1748-4e7d-9044-45e64ab8105b,CN=Deleted Objects,DC=t1,DC=f6,DC=rli). Transformation logic needs to address how to find the corresponding entry in the target(s) to remove or update them accordingly.**
 
 If the sequence of events is critical, use the [DirSync connector](#active-directory-dirsync-connector) because it processes events in the order in which they occur instead of prioritizing and processing inserts and updates before deletes.
 
@@ -69,16 +69,14 @@ The ReplUpToDateVector type is a tuple with the following fields:
 
 `[replUpToDateVector]` example:
 
-```sh
-01ca6e90-7d20-4f9c-ba7b-823a72fc459e @ USN 2210490 @ Time 2005-08-21
+`01ca6e90-7d20-4f9c-ba7b-823a72fc459e @ USN 2210490 @ Time 2005-08-21
 15:54:21
 
 1d9bb4b6-054a-440c-aedf-7a3f28837e7f @ USN 26245013 @ Time 2007-02-27
 10:17:33
 
 24980c9d-39fa-44d7-a153-c0c5c27f0577 @ USN 4606302 @ Time 2006-08-20
-23:33:09
-```
+23:33:09`
 
 For more information on Active Directory replication please read [how the Active Directory replication model works](http://technet.microsoft.com/en-us/library/cc772726(WS.10).aspx) and this [guide to Active Directory replication](http://technet.microsoft.com/en-us/magazine/2007.10.replication.aspx).
 
