@@ -36,7 +36,7 @@ Harness your identity data with intelligent integration to drive better business
   > Learn how to maintain the RadiantOne platform once it is deployed. Topics include the management of clusters, persistent cache, and Universal Directory stores.
 
   > [Release Notes](/release-notes/v740-release-notes)
-  > Review the release notes to learn more about what features, fixes, and improvements have been made for each patch release. 
+  <br> > Review the release notes to learn more about what features, fixes, and improvements have been made for each patch release. 
 
 </section>
 
