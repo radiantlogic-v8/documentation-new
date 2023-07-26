@@ -21,7 +21,7 @@ The timestamp connector has been validated against Oracle, SQL Server, MySQL, Ma
 - For SQL Server: `SMALLDATETIME`, `DATETIME`, and `DATETIME2`
 - For Salesforce (using RadiantOne Salesforce JDBC driver): `LastModifiedDate`
 - For MySQL or MariaDB: `DATETIME` is preferable, but `TIMESTAMP` can also be used. `DATETIME`, `DATETIME(3)`, or `DATETIME(6)` can be used. `DATETIME(7)` is not supported.
-- For DB2, the timestamp column type must be: “TIMESTAMP”
+- For DB2, the timestamp column type must be: `TIMESTAMP`
 
 ## Database connector failover
 
