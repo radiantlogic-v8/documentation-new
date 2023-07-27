@@ -90,7 +90,7 @@ RLI_CLI_FORMAT <br> Note – If this variable is not set, output displays in TAB
 | | YAML | Displays command output in YAML format.
 RLI_CLI_VERBOSE | TRUE | The command log details of its progress. This is the default value.
 | | FALSE | The command does not log details of its progress.
-RLI_CLI_MIN_LOGLEVEL | - OFF <br>- FATAL <br>- ERROR <br>- WARN <br>- INFO <br>- DEBUG <br>- TRACE | Limits the log messages to messages above specified level. Defaults to INFO. <br> For more information on log levels, refer to the Logging and Troubleshooting Guide.
+RLI_CLI_MIN_LOGLEVEL | - OFF <br>- FATAL <br>- ERROR <br>- WARN <br>- INFO <br>- DEBUG <br>- TRACE | Limits the log messages to messages above specified level. Defaults to INFO. <br> For more information on log levels, refer to the [RadiantOne Logging and Troubleshooting Guide](/documentation/logging-and-troubleshooting-guide/01-overview).
 
 The following VDSConfig command categories do not currently support this configuration.
 
@@ -171,7 +171,7 @@ optional:
 
 `- authuser (required)`
 
-The userID (or DN) to execute the command. User must be assigned to one of the delegated administration roles that has privileges to perform the operation. For details on the delegated admin roles, see the System Administration Guide.
+The userID (or DN) to execute the command. User must be assigned to one of the delegated administration roles that has privileges to perform the operation. For details on the delegated admin roles, see the [RadiantOne System Administration Guide](/documentation/sys-admin-guide/01-introduction).
 
 If the -authuser argument is used without the -authpwdfile argument, the command will interactively prompt the user to enter a bind password. If the -authuser argument is used with the -authpwdfile argument, the password will be retrieved from the file specified in -authpwdfile.
 

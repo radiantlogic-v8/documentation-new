@@ -17,7 +17,7 @@ The following command can be used with the <RLI_HOME>/bin/vdsconfig utility inst
 
 ### init-pcache
 
-This command launches a task to initialize a persistent cache. In multi-node clusters, this command must be executed on the RadiantOne leader node. For information on determining the RadiantOne leader, refer to the RadiantOne System Administration Guide.
+This command launches a task to initialize a persistent cache. In multi-node clusters, this command must be executed on the RadiantOne leader node. For information on determining the RadiantOne leader, refer to the [RadiantOne System Administration Guide](/documentation/sys-admin-guide/01-introduction).
 
 **Usage:**
 <br>`init-pcache -namingcontext <namingcontext> [-instance <instance>] [-interactive] [-ldif <ldif>] [-nthreads <nthreads>] [-useldifz] [-vpp]`
@@ -160,7 +160,7 @@ The following command can be used with the <RLI_HOME>/bin/vdsconfig utility inst
 
 ### init-hdap-store
 
-This command launches a task to initialize a RadiantOne Universal Directory (HDAP) store from an LDIF file. In multi-node clusters, this command must be executed on the RadiantOne leader node. For information on determining the RadiantOne leader, refer to the RadiantOne System Administration Guide.
+This command launches a task to initialize a RadiantOne Universal Directory (HDAP) store from an LDIF file. In multi-node clusters, this command must be executed on the RadiantOne leader node. For information on determining the RadiantOne leader, refer to the [RadiantOne System Administration Guide](/documentation/sys-admin-guide/01-introduction).
 
 **Usage:**
 <br>`init-hdap-store -ldif <ldif> -namingcontext <namingcontext>[-instance <instance>] [-interactive]`
@@ -195,7 +195,7 @@ The following command can be used instead of the UI mentioned above.
 
 ### rebuild-index
 
-This command launches a task to rebuild an index for a RadiantOne Universal Directory store. In multi-node clusters, this command must be executed on the RadiantOne leader node. For information on determining the RadiantOne leader, refer to the RadiantOne System Administration Guide.
+This command launches a task to rebuild an index for a RadiantOne Universal Directory store. In multi-node clusters, this command must be executed on the RadiantOne leader node. For information on determining the RadiantOne leader, refer to the [RadiantOne System Administration Guide](/documentation/sys-admin-guide/01-introduction).
 
 **Usage:**
 <br>`rebuild-index -namingcontext <namingcontext>[-instance <instance>] [-interactive]`
@@ -231,7 +231,7 @@ Below is an example response from interactive mode:
 
 ## Scheduling Global Identity Viewer Reports
 
-Reports can be configured and generated using the Global Identity Viewer tool. After you have used the Global Identity Viewer to configure a report, you can schedule the report to be generated using the command described in this section. For more information on the Global Identity Viewer, see the RadiantOne Global Identity Viewer Guide.
+Reports can be configured and generated using the Global Identity Viewer tool. After you have used the Global Identity Viewer to configure a report, you can schedule the report to be generated using the command described in this section. For more information on the Global Identity Viewer, see the {RadiantOne Global Identity Viewer Guide](/documentation/global-identity-viewer-guide/01-introduction).
 
 ### schedule-report
 
@@ -245,7 +245,7 @@ This command launches a task scheduled according to report configuration that ou
 **`- reportconfigdn <reportconfigdn>`**
 <br>[required] The DN of global ID report configuration.
 
->[!note] This argument requires a configured query and report in the Global Identity Viewer. Refer to the Global Identity Viewer Guide for more information With a query and report configured, navigate to and expand ou=reports,o=<projectname>,ou=webapps,ou=globalsettings,cn=config on the Directory Browser tab. Select a report and view its filter, format, and frequency values to determine if it is the report you want to schedule. The entrydn value is used for the reportconfigdn.
+>[!note] This argument requires a configured query and report in the Global Identity Viewer. Refer to the {RadiantOne Global Identity Viewer Guide](/documentation/global-identity-viewer-guide/01-introduction) for more information With a query and report configured, navigate to and expand ou=reports,o=<projectname>,ou=webapps,ou=globalsettings,cn=config on the Directory Browser tab. Select a report and view its filter, format, and frequency values to determine if it is the report you want to schedule. The entrydn value is used for the reportconfigdn.
 
 ![An image showing ](Media/Image9.4.jpg)
 

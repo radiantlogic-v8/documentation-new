@@ -11,7 +11,7 @@ Attribute encryption cipher and key can be set from the Main Control Panel > Set
 
 ![security commands](Media/Image17.1.jpg)
 
-As an alternative, you can configure the cipher and key from command line using the <RLI_HOME>/bin/vdsconfig utility. Attribute encryption is only applicable to RadiantOne Universal Directory (HDAP) stores and persistent cache. Once you’ve defined the cipher and key, it cannot be changed if there are stores and/or persistent caches that use it. If you need to change the cipher/key, you must remove the existing attribute encryption. For details on how to do this, see the Namespace Configuration Guide.
+As an alternative, you can configure the cipher and key from command line using the <RLI_HOME>/bin/vdsconfig utility. Attribute encryption is only applicable to RadiantOne Universal Directory (HDAP) stores and persistent cache. Once you’ve defined the cipher and key, it cannot be changed if there are stores and/or persistent caches that use it. If you need to change the cipher/key, you must remove the existing attribute encryption. For details on how to do this, see the [RadiantOne Namespace Configuration Guide](/documentation/namespace-configuration-guide/01-introduction).
 
 Support for client certificate/PIV card authentication and client certificate DN Mapping is configured from Main Control Panel, Settings tab, Security section, SSL.
 
@@ -30,7 +30,7 @@ This command sets the encryption cipher and key used for attribute encryption/de
 **Command Arguments:**
 
 `- cipher <cipher>`
-<br>[required] The name of the cipher to use for encryption. The accepted possible values are: DES3, AES128 and AES256. Possible values are dependent upon whether unlimited strength cipher suites have been installed in RadiantOne. For details on supporting unlimited strength ciphers, see the RadiantOne Hardening Guide.
+<br>[required] The name of the cipher to use for encryption. The accepted possible values are: DES3, AES128 and AES256. Possible values are dependent upon whether unlimited strength cipher suites have been installed in RadiantOne. For details on supporting unlimited strength ciphers, see the [RadiantOne Hardening Guide](/documentation/hardening-guide/00-preface).
 
 `- key <key>`
 <br>[required] The secret key to use for encryption/decryption.
@@ -167,7 +167,7 @@ In the following example, a request is made to delete a certificate from the Rad
 
 ## fips-mode-enable
 
-This command enables FIPS mode. For details on FIPS mode, see the RadiantOne FIPS Mode Guide.
+This command enables FIPS mode. For details on FIPS mode, see the [RadiantOne FIPS Mode Guide](/documentation/radiantone-fips-mode-guide/01-overview).
 
 >[!note] This command must be run on all nodes.
 
