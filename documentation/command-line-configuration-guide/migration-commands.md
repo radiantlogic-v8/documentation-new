@@ -9,7 +9,7 @@ Migrating resources (e.g. root naming contexts, data sources, Global Identity Bu
 
 This chapter explains how to traverse, export, and import resources and their dependencies using commands.
 
-For more information, see the RadiantOne Operations Guide.
+For more information, see the [RadiantOne Operations Guide](/documentation/operations-guide/01-overview).
 
 >[!note]
 >The commands in this chapter do not support output format configuration. Refer to [Configuring Command Output Format](introduction#configuring-command-output-format) for more information.

@@ -92,7 +92,7 @@ RLI_CLI_FORMAT <br>(Note – If this variable is not set, output displays in TAB
 | | YAML | Displays command output in YAML format.
 RLI_CLI_VERBOSE | TRUE | The command log details of its progress. This is the default value.
 | | FALSE | The command does not log details of its progress.
-RLI_CLI_MIN_LOGLEVEL | - OFF <br>- FATAL <br>- ERROR <br>- WARN <br>- INFO <br>- DEBUG <br>- TRACE  | Limits the log messages to messages above specified level. Defaults to INFO. <br> For more information on log levels, refer to the Logging and Troubleshooting Guide.
+RLI_CLI_MIN_LOGLEVEL | - OFF <br>- FATAL <br>- ERROR <br>- WARN <br>- INFO <br>- DEBUG <br>- TRACE  | Limits the log messages to messages above specified level. Defaults to INFO. <br> For more information on log levels, refer to the [RadiantOne Logging and Troubleshooting Guide](/documentation/logging-and-troubleshooting-guide/01-overview).
 
 The following VDSConfig command categories do not currently support this configuration.
 
@@ -175,23 +175,19 @@ Some settings in the Control Panel are accessible only in Expert Mode. To switch
 By default, the commands available in the vdsconfig utility can be executed by anyone who can launch the utility and make the change, as tracked by Zookeeper, is logged as simply that the change was made from the command line utility. The only exception here is when the command is updating a property containing a password. In this context, the RadiantOne super user credentials are required. If you want to enforce that credentials are required to execute any command in the vdsconfig utility, add "enableVdsConfigAuth" : true to the vds_server.conf settings in Zookeeper. To change this setting:
 
 1. From the Main Control Panel, switch to [Expert Mode](#expert-mode).
-2. Go to the Zookeeper tab and navigate to `/radiantone/<version>/<cluster_name>/config/vds_server.conf`.
+2. Go to the Zookeeper tab and navigate to /radiantone/<version>/<cluster_name>/config/vds_server.conf.
 3. On the right, click **Edit Mode** and locate the enableVdsConfigAuth setting.
 4. Change the value to true and click **Save**.
 After enabling this setting, all commands require the -authuser flag and the -authpwdfile flag is
 optional:
 
-```
 - authuser (required)
-```
 
-The userID (or DN) to execute the command. User must be assigned to one of the delegated administration roles that has privileges to perform the operation. For details on the delegated admin roles, see the System Administration Guide.
+The userID (or DN) to execute the command. User must be assigned to one of the delegated administration roles that has privileges to perform the operation. For details on the delegated admin roles, see the [RadiantOne System Administration Guide](/documentation/sys-admin-guide/01-introduction).
 
 If the -authuser argument is used without the -authpwdfile argument, the command will interactively prompt the user to enter a bind password. If the -authuser argument is used with the -authpwdfile argument, the password will be retrieved from the file specified in -authpwdfile.
 
-```
 - authpwdfile (optional)
-```
 
 The password associated with the -authuser. Save the password for the userID used in the
 
@@ -202,9 +198,7 @@ $RLI_HOME/bin/advanced/runVDSUtility
 
 In the following example, a request is made to display product information passing the command arguments described above.
 
-```
 https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=product-info&authuser=operator&authpwdfile=C:\radiantone\vds\password.txt
-```
 
 >[!note]
 >When passing the authuser and authpwdfile command arguments, basic password authentication is still required. See [Basic Password Authentication](#basic-password-authentication) for more information.
@@ -219,21 +213,16 @@ To simplify this and avoid escape characters, you can use the special notations 
 
 The &quot; notation is replaced at runtime by a double quote character and is included as part of the actual value for the command argument. Note that the use of notated quote marks does not preclude the use of quote marks in the same command.
 
-```
 add-ldap-primary-attr - name testattr -namingcontext o=companyprofiles -primaryobject inetOrgPerson -source Computed -computedexpr "testattr=&quot;this is a test attribute&quot;"
-```
 
 `&apos;` indicates single quotes. In this example, both single and double quotes are notated.
 
-```
 update-ldap-primary-attr -name testattr -namingcontext o=companyprofiles -primaryobject inetOrgPerson -source Computed -computedexpr "testattr=&quot;this is a &apos;test
 attribute&apos;&quot;"
-```
 
 These special notations should be used only when indicating quotes as part of the value for your argument, and they also work when used as described in the [execfile](general-commands.md#execfile) command.
 
->[!note]
->These notations are not compatible with operations issued through a REST (ADAP) interface.
+>[!note] These notations are not compatible with operations issued through a REST (ADAP) interface.
 
 ## Audit Log
 

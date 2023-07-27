@@ -185,7 +185,7 @@ The <RLI_HOME>/bin/vdsconfig utility can be used instead of the UI mentioned abo
 
 #### create-pcache
 
-T chisommand creates a persistent cache for a root naming context in the RadiantOne namespace. In multi-node clusters, this command must be executed on the RadiantOne leader node. For information on determining the RadiantOne leader, refer to the RadiantOne System Administration Guide.
+T chisommand creates a persistent cache for a root naming context in the RadiantOne namespace. In multi-node clusters, this command must be executed on the RadiantOne leader node. For information on determining the RadiantOne leader, refer to the [RadiantOne System Administration Guide](/documentation/sys-admin-guide/01-introduction).
 
 >[!note]
 >Use the [configure-real-time-pcache-sync-topology](real-time-persistent-cache-refresh-commands#configure-real-time-pcache-sync-topology) command to configure a real-time refresh.
@@ -246,7 +246,7 @@ The <RLI_HOME>/bin/vdsconfig utility can be used instead of the UI mentioned abo
 
 ### backup-hdapstore
 
-This command creates a backup image of a RadiantOne Universal Directory store. This command can also be used on persistent cache stores. In multi-node clusters, this command must be executed on the RadiantOne leader node. For information on determining the RadiantOne leader, refer to the RadiantOne System Administration Guide.
+This command creates a backup image of a RadiantOne Universal Directory store. This command can also be used on persistent cache stores. In multi-node clusters, this command must be executed on the RadiantOne leader node. For information on determining the RadiantOne leader, refer to the [RadiantOne System Administration Guide](/documentation/sys-admin-guide/01-introduction).
 
 **Usage:**
 <br>`backup-hdapstore -namingcontext <namingcontext> [-backupzip <backupzip>] [-instance <instance>] [-nocopy]`
@@ -277,7 +277,7 @@ https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=backup-hda
 
 ### restore-hdapstore
 
-This command restores a RadiantOne Universal Directory store back to the state of a given backup image. In multi-node clusters, this command must be executed on the RadiantOne leader node. For information on determining the RadiantOne leader, refer to the RadiantOne System Administration Guide. To restore from the most recent backup image do not pass a backupid in the command. To restore from a specific point in time, pass the applicable backupid in the command. Use the -list argument to obtain a list of possible backup ids for the given naming context.
+This command restores a RadiantOne Universal Directory store back to the state of a given backup image. In multi-node clusters, this command must be executed on the RadiantOne leader node. For information on determining the RadiantOne leader, refer to the [RadiantOne System Administration Guide](/documentation/sys-admin-guide/01-introduction). To restore from the most recent backup image do not pass a backupid in the command. To restore from a specific point in time, pass the applicable backupid in the command. Use the -list argument to obtain a list of possible backup ids for the given naming context.
 
 The restore is performed using the compressed file located in the folder indicated in the - backupdir or -backupid argument. The compressed file is automatically decrypted using the RadiantOne server certificate keystore password. The server where you are restoring the RadiantOne Universal Directory store must have the same server certificate keystore password than the server where you created the backup from.
 
@@ -312,7 +312,7 @@ https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=restore-hd
 
 #### Examples
 
-C:\radiantone\vds\bin>vdsconfig.bat backup-hdapstore -namingcontext o=companydirectory`
+C:\radiantone\vds\bin>vdsconfig.bat backup-hdapstore -namingcontext o=companydirectory
 
 ```
 Using RLI home : C:\radiantone\vds
@@ -368,19 +368,19 @@ For typical LDAP migration use cases where you are migrating from a legacy LDAP 
 
 #### convert-pcache-to-hdap
 
-Before converting a persistent cache to a RadiantOne Universal Directory store, the persistent cache refresh should be stopped. You can set the refresh method to “none” on the Main Control Panel -> Directory Namespace -> Cache -> `<cached branch>` -> Refresh Settings tab. Also, suspend inter-cluster replication if it is used by setting “replicationInSuspendMode” : true, in ZooKeeper at `/radiantone/<zk_version>/<clustername>/config/namings/<namingcontext_being_replicated>`
+Before converting a persistent cache to a RadiantOne Universal Directory store, the persistent cache refresh should be stopped. You can set the refresh method to “none” on the Main Control Panel -> Directory Namespace -> Cache -> `<cached branch>` -> Refresh Settings tab. Also, suspend inter-cluster replication if it is used by setting “replicationInSuspendMode” : true, in ZooKeeper at /radiantone/<zk_version>/<clustername>/config/namings/<namingcontext_being_replicated>
 
-After the persistent cache has been converted to a RadiantOne Universal Directory store, [rebuild the index](task-launch-commands#rebuilding-indexes-for-radiantone-universal-directory-stores) to remove any persistent cache operational attributes. If inter-cluster replication is used, enable it by setting “replicationInSuspendMode” : false, in ZooKeeper at `/radiantone/<zk_version>/<clustername>/config/namings/<namingcontext_being_replicated>`
+After the persistent cache has been converted to a RadiantOne Universal Directory store, [rebuild the index](task-launch-commands#rebuilding-indexes-for-radiantone-universal-directory-stores) to remove any persistent cache operational attributes. If inter-cluster replication is used, enable it by setting “replicationInSuspendMode” : false, in ZooKeeper at /radiantone/<zk_version>/<clustername>/config/namings/<namingcontext_being_replicated>
 
 **Usage:**
 <br>`convert-pcache-to-hdap -namingcontext <namingcontext> [-instance <instance>]`
 
 **Command Arguments:**
 
-- `namingcontext <namingcontext>`
+- namingcontext <namingcontext>
 <br>[required] The name of the persistent cache naming context to be converted to an HDAP store.
 
-- `instance <instance>`
+- instance <instance>
 <br> The name of the RadiantOne instance. If this is not specified, the default instance named vds_server is used.
 
 >[!note]

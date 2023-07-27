@@ -268,26 +268,20 @@ Global interception scripts can be enabled from Main Control Panel > Settings > 
 
 To enable a global interception script for bind operations from command line, use the following command.
 
-```
 vdsconfig.bat set-property -name interceptionMask -value 1
-```
 
 The value indicates which operations the interception should be invoked for (the example shown above invokes the script on binds). Possible values are described here.
 
 #### Configuring Alert Scripts
 
-Alert scripts can be configured to deliver custom alerts for memory, connections, disk space and disk latency (Main Control Panel > Settings > Monitoring > Standard Alerts > Advanced (requires Expert Mode). Alert scripts can also be configured using the set-property command. To configure alert scripts, set the -name command argument to alertScript, and set the -value command argument to the pathname of the script. Examples are shown below. For more information on configuring alert scripts, refer to the Monitoring and Reporting Guide.
+Alert scripts can be configured to deliver custom alerts for memory, connections, disk space and disk latency (Main Control Panel > Settings > Monitoring > Standard Alerts > Advanced (requires Expert Mode). Alert scripts can also be configured using the set-property command. To configure alert scripts, set the -name command argument to alertScript, and set the -value command argument to the pathname of the script. Examples are shown below. For more information on configuring alert scripts, refer to the [RadiantOne Monitoring and Reporting Guide](/documentation/monitoring-and-reporting-guide/01-monitoring).
 
 ##### Enable Alert Script
 
-```
 vdsconfig.bat set-property -name alertScript -value "c:\radiantone\myalert.bat"
-```
 
 ##### Disable Alert Script
 
 If you want to stop the script from delivering alerts, run the set-property command, passing an empty value as follows.
 
-```
 vdsconfig.bat set-property -name alertScript -value ""
-```
