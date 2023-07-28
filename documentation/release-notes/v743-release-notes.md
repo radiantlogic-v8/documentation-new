@@ -3,7 +3,7 @@ title: v7.4.3 Release Notes
 description: v7.4.3 Release Notes
 ---
 
-RadiantOne v7.4.3 Release Notes
+# RadiantOne v7.4.3 Release Notes
 
 November 16, 2022
 

@@ -3,7 +3,7 @@ title: v7.4.6 Release Notes
 description: v7.4.6 Release Notes
 ---
 
-RadiantOne v7.4.6 Release Notes
+# RadiantOne v7.4.6 Release Notes
 
 May 15, 2023
 
