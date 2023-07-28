@@ -1,9 +1,10 @@
 ---
-title: ZooKeeper Install Guide
-description: ZooKeeper Install Guide
+title: Installation Guide
+description: Installation Guide
 ---
 
-- [Introduction](01-introduction.md)
-- [Configuring External Zookeeper Ensemble](02-chapter-file-name.md)
-- [Installing RadiantOne](03-installing-radiantone.md)
-- [Testing A Zookeeper Cluster](04-testing-a-zookeeper-cluster.md)
+- [Prerequisites](01-prerequisites.md)
+- [Installation](02-installation.md)
+- [Post Installation](03-post-installation.md)
+- [Uninstalling RadiantOne](04-uninstalling-radiantone.md)
+- [RadiantOne External Zookeeper Installation Guide](/documentation/hardware-sizing-guide/01-introduction))
