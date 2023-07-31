@@ -402,8 +402,7 @@ This information is saved in a file so you do not have to re-enter the same conn
 
 If the primary backend is not available, RadiantOne attempts to connect to a failover server that is configured for the data source.
 
->[!warning]
->If you have not defined data sources for your failover servers, you must do so before performing the following steps.
+>[!warning] If you have not defined data sources for your failover servers, you must do so before performing the following steps.
 
 1.	In the Main Control Panel, go to > Settings Tab > Server Backend section.
 
@@ -490,8 +489,7 @@ The Namespace Configuration Guide describes the properties necessary for common 
 
 For update operations, some SCIM servers support both PATCH and PUT operations, and some only support PUT. If the SCIM server backend supports both operations, the value of the “replaceonupdate” property determines which operation RadiantOne sends. Set the “replaceonupdate” property to true, for RadiantOne to issue a PUT to the SCIM server. Otherwise set the “replaceonupdate” to false, and RadiantOne issues a PATCH to the SCIM server. You do not need to set this property for SCIM servers that do not support PATCH operations. In this scenario, RadiantOne detects that the server doesn’t support PATCH operations and sends the updates as PUT operations.
 
->[!note]
->For SCIM servers that do not support PATCH operations: When clients send update requests to RadiantOne, values for all attributes (even which were not changed) must be set because it sends a PUT request to the SCIM Server, which replaces the entry.
+>[!note] For SCIM servers that do not support PATCH operations: When clients send update requests to RadiantOne, values for all attributes (even which were not changed) must be set because it sends a PUT request to the SCIM Server, which replaces the entry.
 
 #### Pass Through Authorization
 
@@ -576,6 +574,14 @@ To add a test connection URL:
     Figure 16: The Test Connection URL Property
 
 6.	Click **Save**.
+
+#### Web Proxy Server
+
+If your company requires API calls to be made through a Web Proxy Server, add a property named “proxy” with a value that points to the proxy server and port (e.g. rli.vip.proxy.com:9090) to the scim custom data source.
+
+#### Proxy SSL
+
+If SSL is required, add a property named “proxyssl” with a value of true.
 
 #### SCIM Backend Exception Parameters
 
