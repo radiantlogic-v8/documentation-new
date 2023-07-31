@@ -39,3 +39,11 @@ A rich set of HTTP-based API's have been developed on top of LDAP, to provide br
   
 </section>
 
+## Interception and Transformation Scripting API
+
+<section>
+  
+  > [Javadocs](/javadoc/allclasses-frame)
+  > The API documentation applicable for customizing interception scripts in RadiantOne FID and transformation scripts in RadiantOne Global Synchronization.
+  
+</section>
