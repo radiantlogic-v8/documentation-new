@@ -11,8 +11,7 @@ To activate RadiantOne, copy your license file into <RLI_HOME>/vds_server or ent
 
 If you are using an evaluation or subscription-based license, the Main Control Panel displays the license’s expiration date and time. Default evaluation licenses expire after 14 days. If your evaluation license expires, you can renew it by contacting Radiant Logic, Inc.
 
->[!note]
->If you already have a license.lic file and are installing the RadiantOne platform on a new machine, during the installation, choose the Skip this Step option on the license page. After the installation, copy your existing license.lic file in <RLI_HOME>/vds_server.
+>[!note] If you already have a license.lic file and are installing the RadiantOne platform on a new machine, during the installation, choose the Skip this Step option on the license page. After the installation, copy your existing license.lic file in <RLI_HOME>/vds_server.
 
 ## Cloud Installation
 
@@ -35,8 +34,7 @@ Memory: 16 GB minimum. For most production deployments, more than 16 GB of memor
 
 Hard Drive: 500 GB of disk space (the hard disk usage will vary depending on log types/levels that are enabled and the desired log history to maintain). The recommended minimum data transfer rate is 150 MB/sec.
 
-Software
-Operating Systems: Windows Server 2016, Windows Server 2019, Windows Server Core
+Software Operating Systems: Windows Server 2016, Windows Server 2019, Windows Server 2022, Windows Server Core
 
 ### Linux 64-bit Platforms
 
