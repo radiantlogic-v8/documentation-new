@@ -1,0 +1,5 @@
+com.rli.connectors.changeevent
+com.rli.ldap.util
+com.rli.ldapclient
+com.rli.slapd.server
+com.rli.util.identityData
