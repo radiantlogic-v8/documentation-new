@@ -53,7 +53,7 @@ Harness your identity data with intelligent integration to drive better business
   > [Global Identity Viewer](/global-identity-viewer-guide/01-introduction)  
   > Learn how to use the Global Identity Viewer tool for keyword searching and reporting on users and groups associated with Global Identity Builder projects.
   
-  > [Directory Proxy Views](/namespace-configuration-guide/01-introduction)  
+  > [Directory Proxy Views](/namespace-configuration-guide/03-virtual-view-of-ldap-backends/)  
   > Learn how to configure proxy virtual views from LDAP and Active Directory data sources.
   
   > [Model Driven Virtual View](/context-builder-guide/introduction)  
