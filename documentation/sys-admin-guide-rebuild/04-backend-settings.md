@@ -603,6 +603,14 @@ Figure 11: The Test Connection URL Property
 
 6.	Click **Save**.
 
+#### Web Proxy Server
+
+If your company requires API calls to be made through a Web Proxy Server, add a property named “proxy” with a value that points to the proxy server and port (e.g. rli.vip.proxy.com:9090) to the scim custom data source.
+
+#### Proxy SSL
+
+If SSL is required, add a property named “proxyssl” with a value of true.
+
 #### SCIM Backend Exception Parameters
 
 When RadiantOne sends a SCIM request, the SCIM service (backend) might generate an exception message. RadiantOne searches for keywords in the exception message, waits a specified amount of time, and then attempts to resend the SCIM request. This section describes how to customize this behavior, including how to disable it. 
