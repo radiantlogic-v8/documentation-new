@@ -118,7 +118,9 @@ Figure 4: Viewing Consumer Key and Secret for Connected App
 
 11.	Select the url property and click Edit.
 
-12.	Enter the value matching your Salesforce SCIM service. The syntax is: https://<your_SCIMservice_url>/services/scim/v1
+12.	Enter the value matching your Salesforce SCIM service. The syntax is: 
+
+    https://`<your_SCIMservice_url>`/services/scim/v1
 
     ![An image showing ](Media/Image8.6.jpg)
 
