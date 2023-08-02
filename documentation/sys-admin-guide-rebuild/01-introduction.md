@@ -5,44 +5,43 @@ description: System Administration Guide
 
 # System Administration Guide Introduction
 
-Prior to diving into this guide, it is recommended that you read the RadiantOne Architect Guide for a high-level overview of the capabilities of the RadiantOne Platform. This guide introduces concepts in addition to step-by-step instructions to configure and administrate the RadiantOne.
+Prior to diving into this guide, it is recommended that you read the [RadiantOne Architect Guide](/documentation/architect-guide/preface) for a high-level overview of the capabilities of the RadiantOne Platform. This guide introduces concepts in addition to step-by-step instructions to configure and administrate the RadiantOne.
 
-For details on deploying RadiantOne including tuning and maintenance, please see the RadiantOne Deployment and Tuning Guide.
+For details on deploying RadiantOne including tuning and maintenance, please see the [RadiantOne Deployment and Tuning Guide](/documentation/deployment-and-tuning-guide/00-preface).
 
 ## How this Manual is Organized
 
 This guide is broken down into the following chapters:
 
-[Chapter 1 – Introduction](01-introduction.md)
+[Introduction](01-introduction.md)
 <br> This chapter offers a quick introduction to this guide in addition to how the manual is organized and how to contact Radiant Logic technical support.
 
-[Chapter 2 – Concepts](02-concepts.md)
+[Concepts](02-concepts.md)
 <br> This chapter introduces the main concepts that are essential to understand to configure and administrate RadiantOne.
 
-[Chapter 3 – Front End Settings](03-front-end-settings.md)
+[Front End Settings](03-front-end-settings.md)
 <br> This chapter describes the Settings tab, where you can manage the majority of RadiantOne settings.
 
-[Chapter 4 – Backend Settings](04-backend-settings.md)
+[Backend Settings](04-backend-settings.md)
 <br> This chapter introduces settings that are related to how RadiantOne accesses backend data sources.
 
-[Chapter 5 – Creating Virtual Views](05-creating-virtual-views.md)
+[Creating Virtual Views](05-creating-virtual-views.md)
 <br> This chapter describes how to create virtual views from LDAP, database or web service backends or local RadiantOne Universal Directory stores.
 
-[Chapter 6 – Security](06-security.md)
+[Security](06-security.md)
 <br> This chapter describes access controls, security settings for RadiantOne, and how to configure them.
 
-[Chapter 7 - Directory Schema](07-directory-schema.md)
+[Directory Schema](07-directory-schema.md)
 <br> This chapter describes the RadiantOne LDAP schema and the different ways to extend it.
 
-[Chapter 8 - Directory Browser](08-directory-browser-tab.md)
+[Directory Browser](08-directory-browser-tab.md)
 <br> This chapter describes the functions offered in the Directory Browser tab.
 
-[Chapter 9 - Logs](09-logs.md)
+[Logs](09-logs.md)
 <br> This chapter describes the RadiantOne access log, changelog, and log settings. 
 
-[Chapter 10 - Monitoring](10-monitoring.md)
+[Monitoring](10-monitoring.md)
 <br> This chapter introduces persistent cache monitoring, replication monitoring, and alerts. 
-
 
 ## Technical Support
 
@@ -54,29 +53,31 @@ Some settings in the Main Control Panel are accessible only in Expert Mode. To s
 
 ![An image showing ](Media/expert-mode.jpg)
 
->[!note] 
->The Main Control Panel saves the last mode (Expert or Standard) it was in when you log out and returns to this mode automatically when you log back in. The mode is saved on a per-role basis.
+>[!note] The Main Control Panel saves the last mode (Expert or Standard) it was in when you log out and returns to this mode automatically when you log back in. The mode is saved on a per-role basis.
 
 
 # RadiantOne Control Panels
 
 The RadiantOne Control Panels are web-based interfaces to provide remote access to the most commonly used tools and wizards. The control panels are used by administrators to configure and maintain the service. In addition, the control panels offer monitoring, access to server statistics, reports, task management, and other administration options. It can be accessed from mobile or non-mobile devices including smartphones and tablets.
 
->[!note] 
->To access the control panels, JavaScript must be enabled in the Internet browser you are using.
+>[!note] To access the control panels, JavaScript must be enabled in the Internet browser you are using.
 
 For cluster deployments, each RadiantOne node includes a Control Panel and administrators can log into any of them.
 
 ## Accessing the Control Panels
 
-The Control Panels utilize a web server that is installed with RadiantOne. The endpoint to access the Control Panel is defined when you create an environment in the Environment Operations Center. For details on creating environments and locating the Control Panel endpoint, see the Environment Operations Center Guide.
+The Control Panels utilize a web server that is installed with RadiantOne. The endpoint to access the Control Panel is defined when you create an environment in the Environment Operations Center. For details on creating environments and locating the Control Panel endpoint, see the [RadiantOne Environment Operations Center Guide](/documentation/environment-operations-center-guide/overview).
 
 ![The Main Control Panel Login Page](Media/login-page.png)
 
 Figure 1: Main Control Panel Login Page
 
+<!--
+
 >[!warning] 
 >You are unable to log in to the Control Panel if [mutual authentication](04-backend-settings#mutual-authentication) is set to REQUIRED.
+
+-->
 
 The background color of the login screen can be customized after you log into the Main Control Panel. Click ![gear icon](Media/gear-icon.jpg) and enter a value for the Color Theme.
 
@@ -91,6 +92,8 @@ Message	 | Cause | Solution
 “Authentication failed. Reason: Access is denied.” | Incorrect login ID or incorrect password. | Verify the login ID and password and try again.
 "Authentication failed. Reason [LDAP: error code 49 - Password has expired.]" [A Reset Password link is displayed.] | Password expiry.	 | Click the Reset Password link.
 “Authentication failed. Reason: [LDAP: error code 19 - The password failure limit has been reached and the account is locked. Please retry later or contact the system administrator to reset the password.]” | The account is locked. | Retry later or contact the system administrator to reset the password.
+
+<!--
 
 ### Logging in with PIV Card/Smart Card/Certificate
 
@@ -156,12 +159,14 @@ Figure 3: Security Message in Browser Due to Untrusted Certificate of the Contro
 
 Figure 4: User Selects Certificate Associated with PIV Card
 
-14.	[CRL checking](06-security#certificate-revocation-list) (if enabled) is applied and if the certificate is valid and trusted, the user is logged into the Control Panel and has the permissions associated with the user defined in the Client Certificate DN Mapping configured in steps 7&8 above.
+14.	[CRL checking](06-security#certificate-revocation-list) (if enabled) is applied and if the certificate is valid and trusted, the user is logged into the Control Panel and has the permissions associated with the user defined in the Client Certificate DN Mapping configured in steps 7 and 8 above.
 
 15.	Once logged into the Main Control Panel, the user is prompted to select the certificate again. This second prompt is to indicate the credentials to be used for the Directory Browser tab (as a REST client to the RadiantOne service). 
 
 >[!warning] 
 >If you log out of the Control Panel, you are redirected to the main login form. If you want to be prompted to select your certificate again, you must close and re-open your web browser.
+
+-->
 
 ### OpenID Connect Token Authentication 
 
@@ -172,6 +177,7 @@ The RadiantOne Main Control Panel also supports OpenID Connect (OIDC) token-base
 Figure 12: Login with Open ID Connect
 
 The administrator must click the Login with OpenID Connect option to login with an OpenID Connect token.
+
 The high-level flow is shown below.
 
 ![An image showing ](Media/Image3.23.jpg)
@@ -898,7 +904,7 @@ To include a log's rollover files in the download, select the log from the Log F
  
 Figure 13: Downloading a Log File and Its Rollover Files
 
-For complete details on logs and troubleshooting, please see the RadiantOne Logging and Troubleshooting Guide.
+For complete details on logs and troubleshooting, please see the [RadiantOne Logging and Troubleshooting Guide](/documentation/logging-and-troubleshooting-guide/01-overview).
 
 # Administration and Configuration
 
@@ -1202,8 +1208,7 @@ uid=readonly,ou=globalusers,cn=config | Member of the Read Only Group.
 
 You can use the default users for delegated administration of RadiantOne activities, or you can add your own users to the various admin roles as described in the [Managing Delegation Administration Roles](#managing-default-delegated-administration-roles). To use the default users, you can log in with any of the following (depending on the RadiantOne configuration you want to manage). For details on what activities these users can perform, please see [Delegated Administration of RadiantOne](#delegated-administration-of-radiantone).
 
->[!note] 
->For details on how to update the default delegate admin user’s passwords, see the RadiantOne Hardening Guide.
+>[!note] For details on how to update the default delegate admin user’s passwords, see the [RadiantOne Hardening Guide](/documentation/hardening-guide/00-preface).
 
 user: aciadmin
 <br> password: <set to the same password you defined for the super user (cn=directory manager) during the installation>
@@ -1245,7 +1250,7 @@ As an alternative to using the [default delegated admin groups](#delegated-admin
 
 To configure groups and users for delegated administration, follow the steps below.
 
-1.	The groups and users that you want to use for delegated administration must all be located under the same root naming context. Either import your groups and users into a RadiantOne Universal Directory store (e.g. import an LDIF file), or create a virtual view of groups and users and configure it as persistent cache. For assistance on creating RadiantOne Universal Directory stores, see the RadiantOne Namespace Configuration Guide. For assistance on configuring persistent cache, see the RadiantOne Deployment and Tuning Guide.
+1.	The groups and users that you want to use for delegated administration must all be located under the same root naming context. Either import your groups and users into a RadiantOne Universal Directory store (e.g. import an LDIF file), or create a virtual view of groups and users and configure it as persistent cache. For assistance on creating RadiantOne Universal Directory stores, see the [RadiantOne Namespace Configuration Guide](/documentation/namespace-configuration-guide/01-introduction). For assistance on configuring persistent cache, see the [RadiantOne Deployment and Tuning Guide](/documentation/deployment-and-tuning-guide/00-preface).
 
 2.	(Optional) If your groups and users are in persistent cache, go to the Main Control Panel > Directory Namespace > Cache node and select your cache branch. On the Properties tab on the right, enter vdPrivilege in the Extension Attributes list and click Save.
 
@@ -1313,7 +1318,8 @@ Role	| Required Permissions (Value of vdPrivilege)
 <span style="color:lightblue">ACI Administrator</span> <br> Members of this group can perform the following operations: <br> Read RadiantOne configuration <br> Create, update and delete access controls | <span style="color:lightblue">config-read <br> acl-read <br> acl-write <br> naming-context-read </span>
 <span style="color:lightblue">ICS Administrator</span> <br> Members of this group can perform the following operations: <br> Read RadiantOne configuration <br> Access Wizards tab in Main Control Panel <br> Perform all operations from the Global Sync Tab <br> Log into the RadiantOne Global Identity Viewer | <span style="color:lightblue">config-read <br> config-write <br> naming-context-read <br> data-source-read <br> ics-admin <br> ics-workflow-approve <br> tasks-admin <br> globalidviewer-read <br> globalidviewer-write <br> globalidviewer-designer</span>
 <span style="color:lightblue">ICS Operator</span> <br> Members of this group can perform the following operations: <br> Read RadiantOne configuration <br> Access the Global Sync tab and read topologies <br> Log into the RadiantOne Global Identity Viewer | <span style="color:lightblue">config-read <br> ics-operator
-<span style="color:lightblue">Global ID Viewer Design</span> <br> Members of this group can log into the Global Identity Viewer and perform the following operations: <br> View entries & attributes <br> Perform searches <br> Edit & delete templates <br> Create, edit and delete queries <br> Export search results <br> Modify attribute values <br> Configure and schedule reports <br> For details on the Global Identity Viewer, see the RadiantOne Global Identity Viewer Guide | <span style="color:lightblue"> config-read <br> config-write <br> globalidviewer-designer <br> tasks-admin
+<span style="color:lightblue">Global ID Viewer Design</span> <br> Members of this group can log into the Global Identity Viewer and perform the following operations: <br> View entries & attributes <br> Perform searches <br> Edit & delete templates <br> Create, edit and delete queries <br> Export search results <br> Modify attribute values <br> Configure and schedule reports <br> For details on the Global Identity Viewer, see the [RadiantOne Global Identity Viewer Guide](/documentation/global-identity-viewer-guide/01-introduction)
+ | <span style="color:lightblue"> config-read <br> config-write <br> globalidviewer-designer <br> tasks-admin
 <span style="color:lightblue">Global ID Viewer Write</span> <br> Members of this group can log into the Global Identity Viewer and perform the following operations: <br> View entries & attributes <br> Perform searches <br> Export search results <br> Modify attribute values <br> For details on the Global Identity Viewer, see the RadiantOne Global Identity Viewer Guide	| <span style="color:lightblue"> config-read <br> globalidviewer-write
 
 ## Configuration Lock

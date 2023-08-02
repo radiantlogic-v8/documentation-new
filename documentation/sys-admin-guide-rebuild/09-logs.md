@@ -17,7 +17,39 @@ For the Scheduler, the items in the drop-down list are Scheduler – Scheduler s
 
 For the Control Panels, the items in the drop-down list are Control Panel – Server and Control Panel – Access. The default log file name for the server is web.log. The default log file name for the access information is web_access.log.
 
-For the Sync Agents used in real-time persistent cache refresh, the item in the drop-down list is Sync Agents – Agents. The default log file name is agent_fid_sd_agent_real_time.log. 
+For the Sync Agents used in real-time persistent cache refresh, the item in the drop-down list is Sync Agents – Agents. The default log file name is agent_fid_sd_agent_real_time.log.
+
+### Log File Integrity Assurance
+
+The Log file integrity assurance option adds a signature file (.sig) to the contents of the compressed log file when it is archived. This signature can then be verified for authenticity. 
+
+#### Enabling Log File Integrity Assurance
+
+To enable log file integrity assurance:
+
+1. On the Main Control Panel, navigate to the Settings tab > Logs > Log Settings.
+ 
+1. Check the Integrity Assurance box (requires Expert Mode). 
+
+    >[!note] This appends the server.log.file.archive value with **_sig**.
+
+1. Click Save.
+
+1. On the Main Control Panel’s Dashboard tab, restart FID. 
+
+#### Verifying the Authenticity of the Signature
+
+With this signature file and a public key, you can use a third-party utility such as openSSL to verify the signature.
+
+To verify the signature, run the following command:
+
+    openssl dgst -verify <path_to_publickey_file> -keyform PEM -sha512 -signature <path_to_signature_file> -binary <path_to_source_file>
+
+For example:
+
+C:\radiantone\vds7.4\vds_server\logs>openssl dgst -verify rli_pub.key -keyform PEM -sha512 -signature vds_server_access-2023-04-26_18-02-20.log.sig -binary vds_server_access-2023-04-26_18-02-20.log
+
+If the source file is authentic, the above command returns “Verified OK”. If the source file has been tampered with, the above command returns “Verification Failure”. 
 
 ## Access Logs
 
@@ -26,6 +58,38 @@ The RadiantOne access log contains details about client requests to RadiantOne a
 The access log rolls over when it reaches 100MB in size. This size can be set in the Rollover size property. The access logs are kept for 30 days by default and then deleted. This is configurable in the “Rollover: How long to keep the logs” property.
 
 For more details on the access log, please see the RadiantOne Logging and Troubleshooting Guide.
+
+### Log File Integrity Assurance
+
+The Log file integrity assurance option adds a signature file (.sig) to the contents of the compressed log file when it rolls over. This signature can then be verified for authenticity. 
+
+#### Enabling Log File Integrity Assurance
+
+To enable log file integrity assurance:
+
+1. On the Main Control Panel, navigate to the Settings tab > Logs > Access Logs. 
+1. Check the Integrity Assurance box (requires Expert Mode). 
+
+  >[!note] This appends the Text Rollover Destination value with **_sig**.
+
+1. Click Save.
+
+1. On the Main Control Panel’s Dashboard tab, restart FID. 
+
+#### Verifying the Authenticity of the Signature
+
+With this signature file and a public key, you can use a third-party utility such as openSSL to verify the signature.
+
+To verify the signature, run the following command:
+
+  openssl dgst -verify <path_to_publickey_file> -keyform PEM -sha512 -signature <path_to_signature_file> -binary <path_to_source_file>
+
+For example:
+
+C:\radiantone\vds7.4\vds_server\logs>openssl dgst -verify rli_pub.key -keyform PEM -sha512 -signature vds_server_access-2023-04-26_18-02-20.log.sig -binary vds_server_access-2023-04-26_18-02-20.log
+
+If the source file is authentic, the above command returns “Verified OK”. If the source file has been tampered with, the above command returns “Verification Failure”. 
+
 
 ## Changelog
 
