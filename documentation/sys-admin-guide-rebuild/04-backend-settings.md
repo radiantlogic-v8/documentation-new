@@ -7,7 +7,7 @@ description: System Administration Guide
 
 These settings are related to how RadiantOne accesses backend data sources and can be managed from the Main Control Panel > Settings tab > Server Backend section.
 
-## Connection Pooling
+## Connection Pooling/Other
 
 >[!note] 
 >This section is accessible only in [Expert Mode](01-introduction#expert-mode).
@@ -87,6 +87,22 @@ The connection pools can also be cleared using the LDAP Browser client that is i
 ![An image showing ](Media/Image3.62.jpg)
 
 Figure 2: LDAP Browser Client used to Clear the Connection Pool
+
+### Other
+
+This section contains the Active Directory SRV Record Limit setting. 
+
+#### Active Directory SRV Record Limit
+
+If there are multiple Active Directory domains available in the SRV record, by default RadiantOne uses five as “main/primary” and “failover” servers. RadiantOne uses these to automatically failover if the primary server is down. The Active Directory SRV Record Limit can be adjusted from the Main Control Panel. 
+
+To change the Active Directory SRV record limit:
+
+1. In the Main Control Panel, navigate to Settings > Server Backend > Connection Pooling > Other. 
+
+1. Set the Active Directory SRV Record Limit value. The default value is 5. 
+
+1. Click Save. 
 
 ## Data Sources
 
