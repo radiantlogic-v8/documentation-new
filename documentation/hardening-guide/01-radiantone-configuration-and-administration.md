@@ -218,15 +218,25 @@ The configuration of SSL between RadiantOne and ZooKeeper must be configured aft
 
 As outlined in the diagram above, each node (RadiantOne and ZooKeeper nodes) currently maintains their own certificate truststores. The following steps outline the overall process and use the default certificates included in the installation. For production, you will replace these certificates with your own CA-signed ones, and if you use a known/trusted Certificate Authority then you shouldn’t need to import the public key certificates into all the corresponding truststores (as outlined in the steps below). For test environments, you can follow the steps below to configure mutual authentication.
 
+If you plan to use RadiantOne in FIPS-Mode, you must configure it before configuring SSL between RadiantOne FID and ZooKeeper. If FIPS-Mode is used:
+
+-	A FIPS keystore "fidzk_fips.keystore" is automatically added under "\vds_server\conf" -- which is required for ZK SSL/TLS client running in FIPS mode;
+
+- A line "zk.client.isFipsMode=true" is automatically added into "\vds_server\conf\cloud.properties";
+
+- TLSv1.3 is automatically deactivated after enabling FIPS mode.
+
+1.	(Optional) If you plan to use RadiantOne FID in FIPS-Mode, configure it now by following the instructions in the RadiantOne_FIPSMode Guide.
+
 1. Copy the ZooKeeper public key certificate (<ZooKeeperInstall>/rli-zookeeper-external/zookeeper/conf/zk<hostname>.cer file) from each ZooKeeper server to each RadiantOne node.
 
     ![An image showing copying the Zookeeper public key certificate](Media/Image2.3.jpg)
 
-2. Copy the ZooKeeper public key certificate (<ZooKeeperInstall>/zookeeper/conf/zk<hostname>.cer file) from each ZooKeeper node to all other ZooKeeper nodes. Each ZooKeeper node should have the corresponding public key certificate for all other nodes in the ensemble.
+1. Copy the ZooKeeper public key certificate (<ZooKeeperInstall>/zookeeper/conf/zk<hostname>.cer file) from each ZooKeeper node to all other ZooKeeper nodes. Each ZooKeeper node should have the corresponding public key certificate for all other nodes in the ensemble.
 
     ![An image showing each ensemble node's public key certificate](Media/Image2.4.jpg)
 
-3. On each RadiantOne node, import the zk<hostname>.cer files into <RLI_HOME>/vds_server/conf/fidzk.truststore. This can be done with keytool. An example is shown below, your install paths and keystore password may vary.
+1. On each RadiantOne node, import the zk<hostname>.cer files into <RLI_HOME>/vds_server/conf/fidzk.truststore. This can be done with keytool. An example is shown below, your install paths and keystore password may vary.
 
     `<RLI_HOME>\jdk\bin\keytool -import -alias zk:E1WIN1 -keystore'`
     <br> `C:\radiantone\vds\vds_server\conf\fidzk.truststore -file`
@@ -235,11 +245,11 @@ As outlined in the diagram above, each node (RadiantOne and ZooKeeper nodes) cur
 
     ![An image showing importing the zk certificate files](Media/Image2.5.jpg)
 
-4. Copy the RadiantOne public key certificate (<RLI_HOME>/vds_server/conf/fidzk-<hostname>.cer file) from each RadiantOne node to each ZooKeeper server. An example is shown below, your install paths may vary.
+1. Copy the RadiantOne public key certificate (<RLI_HOME>/vds_server/conf/fidzk-<hostname>.cer file) from each RadiantOne node to each ZooKeeper server. An example is shown below, your install paths may vary.
 
     ![An image showing copying the RadiantOne public key certificate](Media/Image2.6.jpg)
 
-5. On each ZooKeeper server, import the fidzk-<hostname>.cer files into
+1. On each ZooKeeper server, import the fidzk-<hostname>.cer files into
     <ZooKeeperInstall>/zookeeper/conf/zk.truststore. This can be done with keytool. An example is shown below, your install paths and keystore password may vary.
 
     `<ZooKeeperInstall>/rli-zookeeper-external/jdk/bin/keytool.exe -import -alias fidzk:W-RLI10-LISAPC -keystore`
@@ -247,31 +257,34 @@ As outlined in the diagram above, each node (RadiantOne and ZooKeeper nodes) cur
 
     ![An image showing importing the fidzk-.cer files](Media/Image2.7.jpg)
 
-6. On each ZooKeeper server, import the `zk-<hostname>.cer` files (corresponding to all other servers in the ZooKeeper ensemble) into <ZooKeeperInstall>/rli-zookeeper-external/zookeeper/conf/zk.truststore. This can be done with keytool. An example is shown below, your install paths and keystore password may vary.
+1. On each ZooKeeper server, import the `zk-<hostname>.cer` files (corresponding to all other servers in the ZooKeeper ensemble) into <ZooKeeperInstall>/rli-zookeeper-external/zookeeper/conf/zk.truststore. This can be done with keytool. An example is shown below, your install paths and keystore password may vary.
 
     `<ZooKeeperInstall>/rli-zookeeper-external/jdk/bin/keytool.exe -import -alias zk1:zkDOC-E1WIN1 -keystore C:\ZooKeeper\rli-zookeeper-external\zookeeper\conf\zk.truststore -file C:\ZooKeeper\rli-zookeeper-external\zkDOC-E1WIN1.cer -storepass radiantlogic -storetype JKS -noprompt`
 
     ![An image showing importing the zk hostname certificate files](Media/Image2.8.jpg)
 
-7. On each ZooKeeper server, modify <ZooKeeperInstall>/rli-zookeeper-external/zookeeper/conf/zoo.cfg and set the secureClientPort and sslQuorum (they are in the file, so you can uncomment them by removing the # at the beginning of the line).
+1. On each ZooKeeper server, modify <ZooKeeperInstall>/rli-zookeeper-external/zookeeper/conf/zoo.cfg and set the secureClientPort and sslQuorum (they are in the file, so you can uncomment them by removing the # at the beginning of the line).
 
     An example is shown below.
 
     `secureClientPort=2155`
     <br>`sslQuorum=true`
 
-8. (Optional) to allow both non-SSL and SSL access to ZooKeeper, uncomment portUnification=true and/or client.portUnification=true in the zoo.cfg file on each ZooKeeper server.
+1. (Optional) to allow both non-SSL and SSL access to ZooKeeper, uncomment portUnification=true and/or client.portUnification=true in the zoo.cfg file on each ZooKeeper server.
 
-9. On each RadiantOne node, modify <RLI_HOME>\vds_server\conf\cloud.properties and add zk.client.isSSL=true.
+1. On each RadiantOne node, modify <RLI_HOME>\vds_server\conf\cloud.properties and add zk.client.isSSL=true.
 
-10. Change the zk.client.port and zk.servers properties in the cloud.properties file to match the secureClientPort you set in the ZooKeeper zoo.cfg file. An example is shown below.
+1. Change the zk.client.port and zk.servers properties in the cloud.properties file to match the secureClientPort you set in the ZooKeeper zoo.cfg file. An example is shown below.
 
     ![An image showing the ](Media/Image2.9.jpg)
 
-11. Stop the RadiantOne service on all nodes.
-12. Stop all ZooKeeper services in the ensemble.
-13. Restart the ZooKeeper services one at a time until all servers are back online.
-14. Restart the RadiantOne service on all nodes. Once the RadiantOne service is back online, you should see the Main Control Panel > Dashboard tab indicate the ZK SSL port.
+1. Stop the RadiantOne service on all nodes.
+
+1. Stop all ZooKeeper services in the ensemble.
+
+1. Restart the ZooKeeper services one at a time until all servers are back online.
+
+1. Restart the RadiantOne service on all nodes. Once the RadiantOne service is back online, you should see the Main Control Panel > Dashboard tab indicate the ZK SSL port.
 
 #### Using Your Own Certificates
 
