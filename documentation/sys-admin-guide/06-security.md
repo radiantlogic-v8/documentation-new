@@ -875,8 +875,7 @@ An encryption key is auto-generated based on the cipher and security key value p
 
 Instead of using the default key generation, you have the option to use a customer master key stored in AWS. The following steps describe the configuration.
 
->[!note]
->Key rotation is optional in AWS for KMS. If enabled, the default key rotation is once every 365 days. For details on AWS Key Management Service, please see the AWS documentation.
+>[!note] Key rotation is optional in AWS for KMS. If enabled, the default key rotation is once every 365 days. For details on AWS Key Management Service, please see the AWS documentation.
 
 1.	Log into your AWS account to create your CMK (Customer Master Key).
 
@@ -1079,12 +1078,46 @@ This feature works with the LDIFZ Encryption option as outlined in the table bel
 <td>🗹
 </table>
 
+## DoS Filter
+
+DoS filter settings allow you to limit the number or frequency of interactions, such as the number of incoming requests, that RadiantOne has. This is useful for limiting exposure to abuse from request flooding that might result from a misconfigured client or from maliciousness. If enabled, the filter keeps track of the number of requests per second from a connection. If a limit is exceeded, the request is either rejected, delayed, or throttled. 
+
+Requests in excess of the per-second limit are throttled by being queued for delayed processing, and eventually rejected altogether if they continue to accumulate.  An unthrottled request is processed immediately without intervention by the filter.
+
+To enable DoS filtering:
+
+1. In the Main Control Panel, navigate to Settings > Security > DoS Filter. The DoS Filter page is displayed. 
+ 
+1. Make changes to the following settings as required. 
+
+ - Click Enable DoS Filter.
+ - Max Requests per Second per Connection – The maximum number of requests from a connection per second. Requests above this limit will be delayed for processing and eventually dropped if they continue to accumulate. The default value is 25.
+
+ - Minimum Delay in Milliseconds – Over-limit requests will be delayed this long before being processed. Set to -1 to immediately discard over-limit requests, or set to 0 for no delay.
+
+ - Max Over-limit Requests Pending – After Max Requests per Second per Connection + Throttled Requests total requests within a one-second period is reached, additional messages are ignored and discarded. 
+
+ - Max Processing Time in Milliseconds – The maximum allowable time to process a request. 
+
+ - Max Idle Tracker in Milliseconds – Sets the maximum amount of time to keep track of request rates for a connection before discarding it.  
+
+ - Insert Header – Check this option to insert the Dos filter headers into the response.
+
+ - Track Session – Check this option to have usage rates tracked by session (if a session exists). 
+ - Track Remote Port – Set this option to have usage rates tracked by IP and port if session tracking is not used. 
+ - IP Whitelist – Enter a comma-separated list of IP addresses that are not to be rate-limited. Each entry is IP address, either in the form of a dotted decimal notation A.B.C.D or in the CIDR notation A.B.C.D/M
+
+    >[!note] RadiantOne FID automatically whitelists all hosts that are members of the cluster so that node-to-node communications are unaffected; these hosts do not need to be added to the whitelist. This whitelist displays only the hosts that are added manually. 
+
+ - HTTP Response Code – When the DoS filter cancels the processing of a request, it sends back an HTTP response code. Use this setting to change that code. The default value is 430. 
+
+1. Click Save. 
+
 # Security and Access Controls
 
 When RadiantOne receives a request, it uses the user in the bind operation, and the access control instructions (ACIs) defined in order to allow or deny access to directory information. The server can allow or deny permissions such as read, write, search, or compare. 
 
->[!warning]
->ACI are not enforced for the [RadiantOne super user](03-front-end-settings#directory-manager-user) (e.g. cn=directory manager).
+>[!warning] ACI are not enforced for the [RadiantOne super user](03-front-end-settings#directory-manager-user) (e.g. cn=directory manager).
 
 With ACI, you can control access to targets such as:
 -	the entire virtual namespace
@@ -1108,8 +1141,7 @@ The general ACI syntax is as follows:
 The following default ACIs are defined:
 -	All users have read access to the directory for search, compare, and read operations.
 
->[!warning]
->If you delete the default read access, this does not delete read access to the RootDSE for RadiantOne. If you want to remove access to the RootDSE, check the ![An image showing ](Media/enable-root-dse.jpg) option after you delete the default global read access. This denies access to the RootDSE to everyone except cn=directory manager. You can also add a new ACI that dictates RootDSE access. Below is an example of allowing public access to the RootDSE: 
+>[!warning] If you delete the default read access, this does not delete read access to the RootDSE for RadiantOne. If you want to remove access to the RootDSE, check the ![An image showing ](Media/enable-root-dse.jpg) option after you delete the default global read access. This denies access to the RootDSE to everyone except cn=directory manager. You can also add a new ACI that dictates RootDSE access. Below is an example of allowing public access to the RootDSE: 
 <br>(target="ldap:///")(targetscope="base")(targetattr="*")(version 3.0; acl "RootDSE accessible to public"; allow (read,search,compare) userdn="ldap:///anyone";)
 
 -	Users in the group cn=directory administrators,ou=globalgroups,cn=config have full access to the RadiantOne configuration as it is equivalent to cn=directory manager access. However, unlike cn=directory manager, users in this Directory Administrators group are subject to ACIs when accessing data in the RadiantOne namespace.
@@ -1269,8 +1301,7 @@ The proxy option indicates whether the subject can access the target with the ri
 
 A subject is whom the access control rule applies to. The subject types that can be associated with access control rules are described below:
 
->[!warning]
->It is recommended to define access controls on subjects that are located in a RadiantOne Universal Directory (HDAP) store or persistent cache. This prevents possible performance or network issues involved with RadiantOne connecting to a backend directory in order to enforce authorization. If your ACI’s require subjects that are located in backend directories, make sure that the backend is configured for high availability and that the [RadiantOne data source](concepts#data-source) is configured with the failover servers appropriately.
+>[!warning] It is recommended to define access controls on subjects that are located in a RadiantOne Universal Directory (HDAP) store or persistent cache. This prevents possible performance or network issues involved with RadiantOne connecting to a backend directory in order to enforce authorization. If your ACI’s require subjects that are located in backend directories, make sure that the backend is configured for high availability and that the [RadiantOne data source](concepts#data-source) is configured with the failover servers appropriately.
 
 -	Users – applicable to any specific user(s).
 -	Groups – applicable to a group of users. If the group is a nested group in HDAP, enable Main Control Panel > Settings > Security > Access Control > [Enable Nested Groups](access-control#enable-nested-groups) and configure [Linked Attribute](interception#linked-attributes) settings from Main Control Panel > Settings > Interception > Special Attributes Handling.
@@ -1756,8 +1787,7 @@ This value is stored in the pwdExpireWarning attribute of the cn=Password Policy
 
 If this attribute is not present, or if the value is 0d no warnings are returned. If not 0d, the value must be smaller than the value of the pwdMaxAge attribute.
 
->[!note]
->Your password policy must uphold the following rule: pwdMinAge + pwdExpireWarning < pwdMaxAge.
+>[!note] Your password policy must uphold the following rule: pwdMinAge + pwdExpireWarning < pwdMaxAge.
 
 When this is configured, a control is returned with the BindResponse (even if the client doesn’t specifically request it) indicating the amount of time until expiration. An example is shown below.
 
@@ -1819,8 +1849,7 @@ This value indicates the number of special characters required in passwords.
 
 This value indicates the number of characters that must vary between the old password and the new password. This option requires enabling both “User must change password after reset” and “Require existing password in order to change password” in the Password Change section of the password policy.
 
->[!note]
->This leverages the Damerau Levenshtein algorithm to determine the variation of characters between the old and new passwords.
+>[!note] This leverages the Damerau Levenshtein algorithm to determine the variation of characters between the old and new passwords.
 
 ### Restrictions on Using Accountname or Username
 
@@ -1832,8 +1861,7 @@ For the accountname value, the sAMAccountname attribute is checked first. If sAM
 
 The passwords that are stored in a RadiantOne Universal Directory store may be hashed using any of the following methods: Clear, CRYPT, MD5, PBKDF2AD, Salted SHA-1, Salted SHA-256, Salted SHA-384, Salted SHA-512, and SHA-1. The least secure methods of CRYPT, MD5, and SHA-1 have been hidden as options from the Main Control Panel.
 
->[!warning]
->PBKDF2AD is the required password encryption expected in Azure AD. Therefore, if your HDAP store (or persistent cache) will be synchronized to Azure AD, and passwords are a part of the synchronization, use the PBKDF2AD encryption option to store passwords in the RadiantOne Universal Directory.
+>[!warning] PBKDF2AD is the required password encryption expected in Azure AD. Therefore, if your HDAP store (or persistent cache) will be synchronized to Azure AD, and passwords are a part of the synchronization, use the PBKDF2AD encryption option to store passwords in the RadiantOne Universal Directory.
 
 ### Automatic Update to Stronger Password Hash
 
@@ -1843,8 +1871,7 @@ The strength order is as follows:
 
 `CLEAR -> CRYPT -> MD5 -> SHA1 -> SSHA1 -> SHA256 -> SSHA256 -> SHA384 -> SSHA384 -> SHA512 -> SSHA512 -> (PKCS5S2 | PBKDF2 | PBKDF2AD | SCRYPT | BCRYPT | SMD4 | MD4)`
 
->[!note]
->PKCS5S2, PBKDF2, PBKDF2AD, SCRYPT, BCRYPT, SMD4, and MD4 are considered as special hashes of the strongest ranking.
+>[!note] PKCS5S2, PBKDF2, PBKDF2AD, SCRYPT, BCRYPT, SMD4, and MD4 are considered as special hashes of the strongest ranking.
 
 ### Password Strength Rule
 
@@ -1859,8 +1886,7 @@ The Password Strength Rule option allows you to define and test password strengt
 Another example would be if you do not want to allow special characters to be used in the password. This would be expressed in the Password Strength Rule field as:
 ^[a-zA-Z0-9]+$
 
->[!note]
->Checking the Password Strength Rule box disables and overrides all other password Content options except Password minimum length and Password encryption.
+>[!note] Checking the Password Strength Rule box disables and overrides all other password Content options except Password minimum length and Password encryption.
 
 Enter your password strength rule using regular expression syntax.
 
@@ -1870,8 +1896,7 @@ Click **Test** to compile your expression.
 
 The Enable Dictionary Check option is comparable to the Strong Password Check plug-in found in legacy LDAP directories. This enables RadiantOne to verify that a user’s password doesn’t contain unallowed strings from a specified dictionary file. This can be used as a method to enforce strong password policies.
 
->[!warning]
->The default behavior uses an exact match comparison of the password to a dictionary value. To enforce a contains match comparison, go to the Main Control Panel > Zookeeper tab, navigate to `/radiantone/<version>/<clusterName>/config/vds_server.conf` and click EDIT MODE. Set the following: "enablePwdPolicyDictionarySubstringCheck" : true <BR> The value of “true” must be in all lowercase, as shown above. <BR>You can also set this property using the vdsconfig command line utility, set-property command. For details, see the RadiantOne Command Line Configuration Guide.
+>[!warning] The default behavior uses an exact match comparison of the password to a dictionary value. To enforce a contains match comparison, go to the Main Control Panel > Zookeeper tab, navigate to `/radiantone/<version>/<clusterName>/config/vds_server.conf` and click EDIT MODE. Set the following: "enablePwdPolicyDictionarySubstringCheck" : true <BR> The value of “true” must be in all lowercase, as shown above. <BR>You can also set this property using the vdsconfig command line utility, set-property command. For details, see the RadiantOne Command Line Configuration Guide.
 
 To enable this feature:
 
@@ -1881,8 +1906,7 @@ To enable this feature:
 
 3.	Click **Browse** to navigate to the dictionary file. The value for the location of the dictionary file is stored in the pwdDictionaryFile attribute of the cn=Password Policy entry.
 
-    >[!note]
-    >The dictionary file must be a text-formatted file containing one dictionary word per line.
+    >[!note] The dictionary file must be a text-formatted file containing one dictionary word per line.
 
 4.	Click **Save**.
 
@@ -1898,13 +1922,11 @@ Accounts may be automatically locked under two circumstances:
 
 If you want to keep track of a user’s last successful login time, enable the option to “Keep track of the user’s last successful logon time” in the Account Activity section of the password policy.
 
->[!warning]
->You can exclude pwdLastLogonTime changes from the RadiantOne changelog by setting the following property in ZooKeeper at /radiantone/<Config_Version>/<RadiantOne_ClusterName>/config/vds_server.conf: "skipLoggingIntoChangelogForPwdLastLogonTime" : "true", <BR> This alleviates excessive writing into the changelog when you have a large volume of user login activity. This property is enforced globally and affects all password policies.
+>[!warning] You can exclude pwdLastLogonTime changes from the RadiantOne changelog by setting the following property in ZooKeeper at /radiantone/<Config_Version>/<RadiantOne_ClusterName>/config/vds_server.conf: "skipLoggingIntoChangelogForPwdLastLogonTime" : "true", <BR> This alleviates excessive writing into the changelog when you have a large volume of user login activity. This property is enforced globally and affects all password policies.
 
 You can indicate the frequency that RadiantOne records the time of the last successful authentication. The default value is 0s meaning that the last login time is updated on every successful authentication. To change the default, indicate the length of time in any combination of days, hours and/or minutes using “d” for days (e.g. 1d), “h” for hours (e.g. 4h), and “m” for minutes (e.g. 5m). For example, a value of 1d indicates the last login time is updated if at least 1 day has passed since the last successful authentication. Subsequent successful authentications, within this time frame, do not change the last login time.
 
->[!warning]
->There is a performance impact on RadiantOne if you keep track of last successful logins because a write operation is performed with a successful bind. It is recommended that you indicate a frequency for writing the last login and that you test the usage of this feature to determine if the degradation in performance is acceptable for your usage.
+>[!warning] There is a performance impact on RadiantOne if you keep track of last successful logins because a write operation is performed with a successful bind. It is recommended that you indicate a frequency for writing the last login and that you test the usage of this feature to determine if the degradation in performance is acceptable for your usage.
 
 If accounts should be automatically locked when a user has not authenticated successfully for a predetermined amount of time, indicate the threshold (number of days) in the “Account Activity” section of the password policy where you see “Lock user’s account if the user is idle longer than <X> days”. The user’s password must be reset to unlock the account. Once the account is unlocked, if it is not used for login longer than the specified time, the account is locked again. If the value is zero days, this means users will never be locked out.
 
@@ -1912,18 +1934,15 @@ If accounts should be automatically locked when a user has not authenticated suc
 
 If accounts should be locked out after a failed login threshold is met, check the Accounts may be locked out option in the password policy, and establish the criteria.
 
--	How may login failures are allowed?
-Enter this value for X (Lockout account after X login failures).
+-	How may login failures are allowed? Enter this value for X (Lockout account after X login failures).
 
 This value is stored in the pwdMaxFailure attribute of the cn=Password Policy entry and contains the number of failed login attempts to allow. This corresponds to the operational attribute for the user entry named pwdFailureTime which stores the time(s) of the login failure(s).
 
--	How often to reset the failure count?
-Enter this value for X (Reset failure count after X minutes).
+-	How often to reset the failure count? Enter this value for X (Reset failure count after X minutes).
 
 This value is stored in the pwdFailureCountInterval attribute of the cn=Password Policy entry. This is the temporary interval of time in which RadiantOne keeps track of the number of failed login attempts. For example, if the number of login failures allowed is 2 and the reset failure account is 5 minutes, this means if a user login fails twice within 5 minutes, the account will be locked. If the user logs in unsuccessfully once and then doesn’t try again until after the 5-minute interval has passed, the number of unsuccessful login attempts is reset and the new failed login attempt counts as the first failure instead of the second failure. This relates to the number of values for the pwdFailureTime operational attribute in the user’s entry which is used to determine how many failed logins have been attempted.
 
->[!note]
->Once an account is locked, the reset failure count is irrelevant in terms of determining how many failed login attempts have occurred.
+>[!note] Once an account is locked, the reset failure count is irrelevant in terms of determining how many failed login attempts have occurred.
 
 -	How long is an account locked out?
     <br>Lockout forever
@@ -1937,8 +1956,7 @@ If a user’s account is locked, it can become unlocked by resetting the user’
 
 ### Operational Password Attributes Stored in User Entries
 
->[!warning]
->Since these attributes are defined as operational attributes, they do not appear in the user entries unless specifically requested in the search from the client.
+>[!warning] Since these attributes are defined as operational attributes, they do not appear in the user entries unless specifically requested in the search from the client.
 
 #### pwdHistory
 
@@ -2010,8 +2028,7 @@ Modify Response Code | Meaning
 
 The settings found in the Main Control Panel -> Settings Tab -> Limits section are related to enforcing search size limits and activity quotas. These settings prevent against Denial of Service (DoS) attacks towards RadiantOne. Remember to save any changes you make to limits.
 
->[!warning]
->Changing any property in the Limits section requires a restart of the RadiantOne service to take effect. If RadiantOne is deployed in a cluster, restart the service on all nodes.
+>[!warning] Changing any property in the Limits section requires a restart of the RadiantOne service to take effect. If RadiantOne is deployed in a cluster, restart the service on all nodes.
 
 ## Global Limits
 
@@ -2098,8 +2115,7 @@ To define custom limits:
 
 If you are running RadiantOne on a multi-processor machine, performance and efficiency of the server might improve by increasing the value for the Number of Processing Queues parameter. The default value is 2 and is sufficient for most deployments. As a general guideline, this value should never exceed 3.
 
->[!warning]
->This parameter does not affect the actual number of processors that get used. However, it does improve the utilization of the available processors.
+>[!warning] This parameter does not affect the actual number of processors that get used. However, it does improve the utilization of the available processors.
 
 A better indicator for performance is the number of threads allocated for each processing queue. For each processing queue, the maximum number of concurrent worker threads is 80 by default. This value can be seen/changed in the Max Concurrent Working Threads parameter. For more details, see the next section.
 
