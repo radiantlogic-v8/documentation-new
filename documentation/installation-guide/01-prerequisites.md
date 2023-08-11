@@ -49,7 +49,7 @@ Memory: 16 GB minimum. For most production deployments, more than 16 GB of memor
 Hard Drive: 500 GB of disk space (the hard disk usage will vary depending on log types/levels that are enabled and the desired log history to maintain). The recommended minimum data transfer rate is 150 MB/sec.
 
 Software
-Red Hat Enterprise Linux v5+, Fedora v24+, CentOS v7+, SUSE Linux Enterprise v11+, Ubuntu 16+
+Oracle Enterprise Linux 7/8/9, Red Hat Enterprise Linux v5+, Fedora v24+, CentOS v7+, SUSE Linux Enterprise v11+, Ubuntu 16+
 
 ### DNS Settings
 
