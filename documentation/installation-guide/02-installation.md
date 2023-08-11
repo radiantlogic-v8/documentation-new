@@ -263,13 +263,15 @@ To install the first node:
 
     The following image depicts the install-sample.properties file for the first node in a cluster. For details about properties files for follower nodes, see the Using a Manually Edited Properties File on Follower Nodes section.
 
-    >[!warning]
-    >Do not use underscores in the Hostname or Cluster Name.
+    >[!warning] Do not use underscores in the Hostname or Cluster Name.
 
     ![An image showing ](Media/Image2.17.jpg)
 
-    >[!warning]
-    >The silent installer does not validate property values in the properties file. Invalid values may cause the installation to fail. Verify your property values prior to executing the silent install command.
+    >[!warning] The silent installer does not validate property values in the properties file. Invalid values may cause the installation to fail. Verify your property values prior to executing the silent install command.
+
+    >[!warning] Instancemanager must be executable. To set instancemanager.sh to executable, run Chmod a+x instanceManager.sh (Cd /opt/radiantone/vds/bin/).
+
+    >[!warning] The keytool must be executable. To set the keytool as executable, run Chmode a+x keytool (Cd opt/radiantone/vds/jdk/bin/).
 
 5. From a command prompt, navigate to <RLI_HOME>/bin folder and use the following syntax to install RadiantOne using the properties file that was customized in step 4 above.
 
@@ -278,8 +280,7 @@ c:/radiantone/vds/install/install-sample.properties`
 
 When installation is complete, the command prompt displays the message “Installation has been initialized successfully”.
 
->[!warning]
->Values in the properties file, including passwords, are stored in clear. After installation, install-sample.properties should be deleted.
+>[!warning] Values in the properties file, including passwords, are stored in clear. After installation, install-sample.properties should be deleted.
 
 This silent install mode does not create shortcuts or menu items. To open the RadiantOne Main Control Panel, navigate to <RLI_HOME>/bin and run openControlPanel.
 
