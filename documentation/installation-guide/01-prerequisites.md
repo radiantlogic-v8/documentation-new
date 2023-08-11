@@ -94,7 +94,7 @@ RadiantOne supports the following virtualization platforms:
 - VMWare ESX
 - Citrix XenServer
 
-For details on required settings for virtual machines, please see the Hardware Sizing Guide.
+For details on required settings for virtual machines, please see the [RadiantOne Hardware Sizing Guide](/documentation/hardware-sizing-guide/01-introduction).
 
 ### Virus Scanners
 
