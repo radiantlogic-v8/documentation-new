@@ -179,6 +179,8 @@ For specific hardware requirements of each, please see the RadiantOne System Req
 
 ## Known Issues
 
+Customers that have deployed virtual views of Okta please be advised that all virtual views of Okta must be manually reconfigured after updating to v7.4.7. Details can be found in knowledge article referenced below.
+
 For known issues reported after the release, please see the Radiant Logic Knowledge Base: 
 
 https://support.radiantlogic.com/hc/en-us/categories/4412501931540-Known-Issues
