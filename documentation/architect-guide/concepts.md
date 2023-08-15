@@ -137,5 +137,5 @@ In more complex scenarios where a common identifier doesn’t exist, correlation
 
 [RadiantOne System Administration Guide](/documentation/sys-admin-guide/02-concepts) (following sections)
 
-- [RadiantOne System Administration Guide](/documentation/sys-admin-guide/02-concepts)/joins
-- [RadiantOne System Administration Guide](/documentation/sys-admin-guide/02-concepts/groups)
+- [Joins](/documentation/sys-admin-guide/02-concepts)
+- [Groups](/documentation/sys-admin-guide/02-concepts)
