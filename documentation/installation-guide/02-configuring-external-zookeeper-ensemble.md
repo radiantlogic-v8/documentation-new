@@ -36,7 +36,7 @@ To configure the first ZooKeeper server:
 1. To configure the ports used by Zookeeper, edit the values under # ZK ports. In this example, the default port values (2181, 2888, and 3888) remain unchanged.
 1. Under the “# Current ZK node ID (assign each node a unique incremental integer: 1,2,3,...)” line, append the zk.id line. As this is the first node in the cluster, enter a 1 so the line reads as follows.
 
-`    zk.id=1`
+   `zk.id=1`
 
    >[!warning]
    >This value must be a unique incremental value for all nodes in the cluster. The first node’s zk.id value should be 1, the second node’s    zk.id value should be 2, and so on.
