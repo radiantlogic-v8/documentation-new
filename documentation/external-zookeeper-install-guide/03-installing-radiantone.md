@@ -11,7 +11,7 @@ If you use a load balancer, enter the hostname of the load balancer in the ZooKe
 
 ![An image showing ](Media/Image3.1.jpg)
 
-Figure 3.1: The ZK Connection String Value in the RadiantOne Installer
+Figure 1: The ZK Connection String Value in the RadiantOne Installer
 
 ## Configuring SSL between FID and ZooKeeper
 
