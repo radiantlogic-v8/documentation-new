@@ -177,6 +177,8 @@ For specific hardware requirements of each, please see the RadiantOne System Req
 
 - [VSTS45673]: Fixed an issue with Main Control Panel > Context Builder > View Designer > Content Node > Attributes Virtual Name Display.
 
+- [VSTS45727]: Fixed an issue with the node display paging process in the Main Control Panel > Dashboard tab. 
+
 ## Known Issues
 
 Customers that have deployed virtual views of Okta please be advised that all virtual views of Okta must be manually reconfigured after updating to v7.4.7. Details can be found in knowledge article referenced below.
