@@ -3,16 +3,16 @@ title: Knowledge
 description: knowledge
 ---
 
-# Welcome to the RadiantOne Identity Data Platform!
+# Welcome to the Radiant Logic Identity Data Platform!
 
-Harness your identity data with intelligent integration to drive better business outcomes, improve security and compliance posture, increase speed-to-market, and more. Browse below to learn more about the products that comprise the platform and link to the user guides to help get you started.
+Harness your identity data with intelligent integration to drive better business outcomes, improve security and compliance posture, increase speed-to-market, and more. Browse below to learn more about the products that comprise Identity Data Management and link to the user guides to help get you started.
 
-## RadiantOne Platform
+## Identity Data Platform
 
 <section>
   
   > [Introduction](/architect-guide/preface)  
-  > Learn about the common use cases for RadiantOne Federated Identity including how it addresses the widespread problems of a fragmented identity data infrastructure. 
+  > Learn about the common use cases for the Identity Data Platform including how it addresses the widespread problems of a fragmented identity data infrastructure. 
   
   > [Installation](/installation-guide/01-prerequisites)  
   > Learn how to install the RadiantOne Platform using the web-based GUI process and in silent-mode from command line. 
@@ -40,12 +40,12 @@ Harness your identity data with intelligent integration to drive better business
 
 </section>
 
-## RadiantOne Federated Identity
+## Integration
 
 <section>
   
   > [Server Configuration](/sys-admin-guide/01-introduction)  
-  > Learn how to use the Control Panel to integrate identity data silos into RadiantOne Federated Identity and define global server settings.
+  > Learn how to use the Control Panel to integrate identity data silos and define global server settings.
   
   > [Global Identity Builder](/global-identity-builder-guide/introduction)  
   > Learn how to use the Global Identity Builder tool for creating a virtual view that aggregates identities from multiple data sources into a unique reference list. 
@@ -66,45 +66,45 @@ Harness your identity data with intelligent integration to drive better business
   > Learn how the Identity Data Analysis tool can generate a report for each of your data sources to provide insight on the quality of your data.
   
   > [Troubleshooting](/logging-and-troubleshooting-guide/01-overview)  
-  > Learn about the structure and contents of the log files associated with RadiantOne Federated Identity.
+  > Learn about the structure and contents of the log files associated with Identity Data Platform.
   
   > [Monitoring & Reporting](/monitoring-and-reporting-guide/01-monitoring)  
-  > Learn how to monitor RadiantOne Federated Identity, configure alerts for concerning activities, and access the default reports (Access, Audit and Group Audit).
+  > Learn how to monitor the services, configure alerts for concerning activities, and access the default reports (Access, Audit and Group Audit).
   
   > [Deployment & Tuning](/deployment-and-tuning-guide/00-preface)  
-  > Learn the best practices approaches for deploying and tuning RadiantOne Federated Identity.
+  > Learn the best practices approaches for deploying and tuning the service.
     
 </section>
 
  
-## RadiantOne Universal Directory
+## Directory
 
 <section>
   
   > [Configuration](/namespace-configuration-guide/05-radiantone-universal-directory)  
-  > Learn how to create Universal Directory stores and manage all configuration properties related to indexing, attribute encryption, and replication.
+  > Learn how to create directory stores and manage all configuration properties related to indexing, attribute encryption, and replication.
 
   > [Deployment & Tuning](/deployment-and-tuning-guide/00-preface)  
-  > Learn the best practices approaches for deploying and tuning RadiantOne Universal Directory.
+  > Learn the best practices approaches for deploying and tuning the directory.
   
   > [Operational Attributes](/operational-attributes-guide/01-overview)  
-  > Learn about the operational attributes used by RadiantOne Universal Directory to handle functionality for authorization enforcement, password policies, replication...etc.
+  > Learn about the operational attributes used by the directory to handle functionality for authorization enforcement, password policies, replication...etc.
   
   > [Troubleshooting](/logging-and-troubleshooting-guide/01-overview)  
-  > Learn about the structure and contents of the log files associated with RadiantOne Universal Directory.
+  > Learn about the structure and contents of the log files.
   
   > [Monitoring & Reporting](/monitoring-and-reporting-guide/01-monitoring)  
-  > Learn how to monitor RadiantOne Universal Directory, configure alerts for concerning activities, and access the default reports (Access, Audit and Group Audit) available in the platform.
+  > Learn how to monitor the directory, configure alerts for concerning activities, and access the default reports (Access, Audit and Group Audit).
   
 </section>
 
 
-## RadiantOne Global Synchronization
+## Synchronization
 
 <section>
   
   > [Introduction](/global-sync-guide/introduction)  
-  > Learn about RadiantOne Global Synchronization including detailed architecture, key concepts and common use cases for the tool.
+  > Learn about synchronization including detailed architecture, key concepts and common use cases for the tool.
  
   > [Configuration](/global-sync-guide/configuration/overview)  
   > Learn how to configure synchronization pipelines and create transformation logic using a combination of scripting, attribute mappings and advanced rules.
@@ -113,13 +113,13 @@ Harness your identity data with intelligent integration to drive better business
   > Learn how to configure change capture connectors for detecting and processing changes from data sources.
 
   > [Deployment & Tuning](/global-sync-guide/deployment)  
-  > Learn the best practices approaches for deploying and tuning RadiantOne Global Synchronization.
+  > Learn the best practices approaches for deploying and tuning synchronization.
   
   > [Troubleshooting](/logging-and-troubleshooting-guide/05-global-synchronization)  
-  > Learn about the structure and contents of the log files associated with RadiantOne Global Synchronization.
+  > Learn about the structure and contents of the log files associated with synchronization.
   
   > [Monitoring](/monitoring-and-reporting-guide/01-monitoring)  
-  > Learn how to monitor RadiantOne Global Synchronization and configure alerts for concerning activities.
+  > Learn how to monitor synchronization and configure alerts for concerning activities.
   
   > [Password Filter](/password-filter-guide/01-overview)  
   > Learn how to use the Password Filter component to synchronization passwords from accounts in Active Directory to other directory targets.
