@@ -3,7 +3,7 @@ title: Logging and Troubleshooting
 description: Logging and Troubleshooting
 ---
 
-# RadiantOne Universal Directory and Federated Identity Service
+# RadiantOne Universal Directory
 
 The main log file for troubleshooting the RadiantOne service is <RLI_HOME>/<instance_name>/logs/vds_server.log. For clients accessing the RadiantOne service via the SQL interface (VRS), the log file is <RLI_HOME>/<instance_name>/logs/vrs/vrs_server.log.
 
