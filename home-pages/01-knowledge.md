@@ -15,13 +15,13 @@ Harness your identity data with intelligent integration to drive better business
   > Learn about the common use cases for the Identity Data Platform including how it addresses the widespread problems of a fragmented identity data infrastructure. 
   
   > [Installation](/installation-guide/01-prerequisites)  
-  > Learn how to install the RadiantOne Platform using the web-based GUI process and in silent-mode from command line. 
+  > Learn how to install using the web-based GUI process and in silent-mode from command line. 
   
   > [Hardware Sizing](/hardware-sizing-guide/01-introduction)  
-  > Understand hardware sizing aspects for capacity planning to help ensure that the RadiantOne server hardware is adequate for handling peak loads.
+  > Understand hardware sizing aspects for capacity planning to help ensure that the server hardware is adequate for handling peak loads.
   
   > [Accessibility](/wca-compliance-guide/01-overview)  
-  > Understand how RadiantOne reaches level AA compliance for W3C standards for accessibility.
+  > Understand how Radiant Logic Identity Data Platform reaches level AA compliance for W3C standards for accessibility.
   
   > [LDIF Utility](/ldif-utility-guide/01-overview)  
   > Learn how to use the LDIF utility for a variety of functions like compiling statistics about the entries in your virtual view, and determining if a persistent cache is out of sync from backends.
@@ -30,10 +30,10 @@ Harness your identity data with intelligent integration to drive better business
   > Learn how to use the general purpose LDAP Browser tool to manage entries in an LDAP directory.
   
   > [Hardening](/hardening-guide/00-preface)  
-  > Learn the best practices approaches for Hardening the RadiantOne Platform against security threats.
+  > Learn the best practices approaches for hardening against security threats.
   
   > [Operations](/operations-guide/01-overview)  
-  > Learn how to maintain the RadiantOne platform once it is deployed. Topics include the management of clusters, persistent cache, and Universal Directory stores.
+  > Learn how to maintain the product once it is deployed. Topics include the management of clusters, persistent cache, and Directory stores.
 
   > [Release Notes](/release-notes/v740-release-notes)
   > Review the release notes to learn more about what fixes and improvements have been made for each patch release. 
