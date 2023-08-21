@@ -131,7 +131,7 @@ For specific hardware requirements of each, please see the RadiantOne System Req
 
 - [VSTS45360]: Fixed patch operations and extension schemas in Scim2 client (RadiantOne virtualizing SCIMv2 service as backends).
 
-- [VSTS45364]: Fixed an issue that was preventing the RadiantOne Windows services from restarting properly, causing them to return “Error 200: The code segment cannot be greater than or equal to 64K”. The RadiantOne FID, RadiantOne FID Management Console, DB Access Logger, and the Derby database services display as prunsrv.exe instead of java.exe when viewing the details in Windows Task Manager.
+- [VSTS45364]: Fixed an issue that was preventing the RadiantOne Windows services from restarting properly, causing them to return “Error 200: The code segment cannot be greater than or equal to 64K”. The RadiantOne FID, RadiantOne FID Management Console, DB Access Logger, and the Derby database services now display as prunsrv.exe instead of java.exe when viewing the details in Windows Task Manager.
 
 - [VSTS45368]: Fixed an issue where forward slashes in ADAP calls were not supported.
 
