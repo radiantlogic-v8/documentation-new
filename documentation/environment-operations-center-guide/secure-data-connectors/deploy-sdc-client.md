@@ -69,7 +69,7 @@ Launch the *RadiantLogic.OnPremisesAgentClient.Agent.exe* file. A notification w
 
 ![image description](images/windows-success.png)
 
-Once the client is running, you can can setup a connection with the on-premise backend. For details on setting up a connection, see the [server backend](../../sys-admin-guide/server-backend.md) guide.
+Once the client is running, you can can setup a connection with the on-premise backend. For details on setting up a connection, see the [server backend](../../sys-admin-guide-rebuild/04-backend-settings) guide.
 
 
 ## Deploy on Linux
