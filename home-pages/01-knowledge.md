@@ -3,11 +3,11 @@ title: Knowledge
 description: knowledge
 ---
 
-# Welcome to the Radiant Logic Identity Data Platform!
+# Welcome to Radiant Logic's RadiantOne Identity Data Platform!
 
 Harness your identity data with intelligent integration to drive better business outcomes, improve security and compliance posture, increase speed-to-market, and more. Browse below to learn more about the products that comprise Identity Data Management and link to the user guides to help get you started.
 
-## Identity Data Platform
+## RadiantOne Identity Data Platform
 
 <section>
   
@@ -40,7 +40,7 @@ Harness your identity data with intelligent integration to drive better business
 
 </section>
 
-## Integration
+## RadiantOne Integration
 
 <section>
   
@@ -77,7 +77,7 @@ Harness your identity data with intelligent integration to drive better business
 </section>
 
  
-## Directory
+## RadiantOne Directory
 
 <section>
   
@@ -99,7 +99,7 @@ Harness your identity data with intelligent integration to drive better business
 </section>
 
 
-## Synchronization
+## RadiantOne Synchronization
 
 <section>
   
