@@ -45,10 +45,10 @@ Use the native operating system utilities (Task Scheduler or Linux Daemons) to c
 ZooKeeper service on each node in the ensemble so that it starts up automatically after reboot.
 The script to start ZooKeeper is <ZooKeeper_HOME>\bin\start_zookeeper.bat/.sh.
 
-Scripts to install ZooKeeper as a service can be found here:
+Scripts to install ZooKeeper as a service can be found by navigating to the RadiantOne version on the site referenced at the link above (e.g. /Installers/7.4/7.4.7) and then going to the ScriptsToInstallZKService folder.
 
-https://dl.radiantlogic.com/Global/Installers/<RadiantOne_Version>/ScriptsToInstallZKService.zip
+https://support.radiantlogic.com/hc/en-us/articles/4484716474132-RadiantOne-Installers-and-Updaters
 
-If you need credentials for accessing the download site, contact support@radiantlogic.com.
+For further assistance, contact support@radiantlogic.com.
 
 
