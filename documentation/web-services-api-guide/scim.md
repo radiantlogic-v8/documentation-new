@@ -569,38 +569,52 @@ Figure 4.12: Sample Entry Created with a SCIM POST Operation
 
 The following SCIM POST query example describes how to create a user entry that contains enterprise extension attributes like employeeNumber, division, and department. This example is based on the configuration described in the [Insert Entry](#insert-user) example above.
 
-| Field           | Value                                                                                       |
-|-----------------|---------------------------------------------------------------------------------------------|
-| URL Syntax      | http://< RadiantOneServer >:8089/scim2/v2/< ResourceType>                                 |
-| Example URL     | http://localhost:8089/scim2/v2/companydirectory                                             |
-| Method          | Post                                                                                        |
-| Header Name     | Authorization                                                                              |
-| Header Value    | Basic Y249ZGlyZWN0b3J5IG1hbmFnZXI6c2VjcmV0c2VjcmV0                                        |
-| Body            | ```json                                                                                     
-                   {                                                                                           
-                      "schemas": [                                                                           
-                          "urn:scim:schemas:core:2.0:User", "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"       
-                      ],                                                                                      
-                      "userName": "Acooper",                                                                 
-                      "name": {                                                                               
-                          "familyName": "Cooper",                                                            
-                          "givenName": "Alice in wonderland",                                                
-                          "formatted": "Alice D Cooper"                                                      
-                      },                                                                                      
-                      "emails": [{                                                                            
-                          "value": "acooper@sindersuited.com",                                              
-                          "type": "work",                                                                    
-                          "primary": true                                                                    
-                      }],                                                                                     
-                      "title": "Song writer",                                                                
-                      "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User":                          
-                     {                                                                                       
-                          "employeeNumber":"9252",                                                           
-                          "division":"Sales",                                                                
-                          "department": "Rock'n roll"                                                       
-                      }                                                                                       
-                  }                                                                                           
-                  ``` |                                                                                        
+<table>
+<tr>
+<td>Field	
+<td>Value
+<tr>
+<td>URL Syntax	
+<td>http://< RadiantOneServer >:8089/scim2/v2/< ResourceType>
+<tr>
+<td>Example URL	
+<td> http://localhost:8089/scim2/v2/companydirectory
+<tr>
+<td>Method	
+<td>Post
+<tr>
+<td>Header Name	
+<td>Authorization
+<tr>
+<td>Header Value	
+<td> Basic Y249ZGlyZWN0b3J5IG1hbmFnZXI6c2VjcmV0c2VjcmV0
+<tr>
+<td>Body	
+<td><pre>
+{
+    "schemas": [
+        "urn:scim:schemas:core:2.0:User", "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"       
+    ],    
+    "userName": "Acooper",
+    "name": {
+        "familyName": "Cooper",
+        "givenName": "Alice in wonderland",
+        "formatted": "Alice D Cooper"
+    },
+    "emails": [{
+        "value": "acooper@sindersuited.com",
+        "type": "work",
+        "primary": true
+    }],
+    "title": "Song writer",
+    "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User":
+    {
+        "employeeNumber":"9252",
+        "division":"Sales",
+        "department": "Rock'n roll"
+    }
+}
+</table>                                                                                       
  
 Table 9: SCIM POST Query to Insert A User with Enterprise Extension Attributes
 
