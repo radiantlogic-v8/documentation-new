@@ -218,7 +218,7 @@ The steps to install a follower-only node are the same as for adding a node to a
 
 ![An image showing ](Media/Image2.15.jpg)
 
-For details on the different types of nodes in a cluster, please see the [RadiantOne Architect Guide](/documentation/architect-guide/high-availability-and-performance/#leader-node.
+For details on the different types of nodes in a cluster, please see the [RadiantOne Architect Guide](/documentation/architect-guide/high-availability-and-performance/#leader-node).
 
 ### Installing an Instance Subcluster
 
@@ -228,7 +228,7 @@ To install an instance cluster, on the Installation Type stage, select the Creat
 
 ![An image showing ](Media/Image2.16.jpg)
 
-Instance clusters are managed independently and do not share configuration with the main cluster. From the Main Control Panel -> Clusters tab, you can see all instances defined. For more details on configuring and managing instances of RadiantOne, please refer to the RadiantOne Deployment and Tuning Guide.
+Instance clusters are managed independently and do not share configuration with the main cluster. From the Main Control Panel > Clusters tab, you can see all instances defined. For more details on configuring and managing instances of RadiantOne, please refer to the [RadiantOne Deployment and Tuning Guide](/documentation/deployment-and-tuning-guide/07-deployment-architecture/#managing-radiantone-instances).
 
 ## Silent Mode Installs
 
@@ -242,7 +242,7 @@ To install the first node:
 
 1. Extract the RadiantOne compressed file in a location that you identify as <RLI_HOME>. The naming convention for the file is radiantone_<version>_full_windows_64.zip (or radiantone_<version>_full_linux_64.tar.gz for Linux platforms). In the following example, the compressed file is extracted under C:/, creating the following <RLI_HOME> file path.
 
-    `C:\radiantone_7.4. 3 _windows_64\vds`
+    `C:\radiantone_7.4.3 _windows_64\vds`
 
 2. Copy your license.lic file into the proper location (<RLI_HOME>/vds_server). If you skip this step, the silent install prompts you for the license during installation.
 
@@ -264,9 +264,7 @@ To install the first node:
 
     >[!warning] The silent installer does not validate property values in the properties file. Invalid values may cause the installation to fail. Verify your property values prior to executing the silent install command.
 
-    >[!warning] Instancemanager must be executable. To set instancemanager.sh to executable, run Chmod a+x instanceManager.sh (Cd /opt/radiantone/vds/bin/).
-
-    >[!warning] The keytool must be executable. To set the keytool as executable, run Chmode a+x keytool (Cd opt/radiantone/vds/jdk/bin/).
+    >[!warning] Instancemanager must be executable. To set instancemanager.sh to executable, run chmod a+x instanceManager.sh (cd /opt/radiantone/vds/bin/). <br> <br>  The keytool must be executable. To set the keytool as executable, run chmod a+x keytool (cd opt/radiantone/vds/jdk/bin/).
 
 5. From a command prompt, navigate to <RLI_HOME>/bin folder and use the following syntax to install RadiantOne using the properties file that was customized in step 4 above.
 
@@ -287,7 +285,7 @@ To install a follower node:
 
 1. Extract the RadiantOne compressed file in a location that you identify as <RLI_HOME>. The naming convention for the file is `radiantone_<version>_full_windows_64.zip` (or `radiantone_<version>_full_linux_64.tar.gz` for Linux platforms). In the following example, the compressed file is extracted under C:/, creating the following <RLI_HOME> file path.
 
-    `C:\radiantone_7.4. 3 _windows_64\vds`
+    `C:\radiantone_7.4.3 _windows_64\vds`
 
 2. Copy your license.lic file into the proper location (<RLI_HOME>/vds_server). If you skip this step, the silent install prompts you for the license during installation.
 
@@ -334,7 +332,7 @@ To install a sub-cluster:
 
 1. Extract the RadiantOne compressed file in a location that you identify as <RLI_HOME>. This is where the sub-cluster is installed. The naming convention for the file is `radiantone_<version>_full_windows_64.zip` (or `radiantone_<version>_full_linux_64.tar.gz` for Linux platforms). In the following example, the compressed file is extracted under C:/, creating the following <RLI_HOME> file path.
 
-    `C:\radiantone_7.4. 3 _windows_64\vds.`
+    `C:\radiantone_7.4.3 _windows_64\vds.`
 
 2. Copy your license.lic file into the proper location (<RLI_HOME>/vds_server). If you choose the skip this step, the silent install prompts you for the license during installation.
 
