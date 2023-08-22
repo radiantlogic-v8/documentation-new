@@ -86,21 +86,13 @@ Open the *appsettings.Production.json* file using an editor and locate the `"Age
 
 If the client to be run on a network where proxy is setup, see the *Proxy Configuration for Linux* section in [run the secure data connector client under proxy network setup](deploy-sdc-client-in-proxy.md) guide.
 
-To deploy the sdc client on Linux, the server need to have the .NET core runtime. Depending on the Linux distribution, the installation steps can be found on the [official Microsoft website](https://learn.microsoft.com/en-us/dotnet/core/install/linux). To validate .NET is installed successfully, open a command line and run the dotnet command:
-
-`dotnet`
-
-The output result from the command line would confirm .NET is installed correctly.
-
-![image description](images/.net-installed.png)
-
 Open the command line and navigate to the directory that contains the unzipped *sdc-linux.zip* files. From the directory, run the following command to launch the secure data connector client:
 
-`dotnet RadiantLogic.OnPremisesAgentClient.Agent.dll`
+`./RadiantLogic.OnPremisesAgentClient.Agent`
 
 A notification will display in the command line that confirms a connection has been established between the agent and server.
 
-![image description](images/linux-dotnet-run-client.png)
+![image description](images/linux-run-client.png)
 
 Once the client is running, you can can setup a connection with the on-premise backend. For details on setting up a connection, see the [server backend](../../sys-admin-guide/server-backend.md) guide.
 
@@ -213,10 +205,10 @@ You can use standard systemd commands to manage your application daemon:
 case "$1" in
   start)
     cd /path/to/binary/sdc-client
-    sudo -u your-username dotnet RadiantLogic.OnPremisesAgentClient.Agent.dll &
+    sudo -u your-username RadiantLogic.OnPremisesAgentClient.Agent &
     ;;
   stop)
-    pkill -f "dotnet RadiantLogic.OnPremisesAgentClient.Agent.dll"
+    pkill -f "RadiantLogic.OnPremisesAgentClient.Agent"
     ;;
   restart)
     $0 stop
