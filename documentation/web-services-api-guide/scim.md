@@ -576,32 +576,31 @@ The following SCIM POST query example describes how to create a user entry that 
 | Method          | Post                                                                                        |
 | Header Name     | Authorization                                                                              |
 | Header Value    | Basic Y249ZGlyZWN0b3J5IG1hbmFnZXI6c2VjcmV0c2VjcmV0                                        |
-| Body            |                                                                                             |
-|                 | ```json                                                                                     |
-|                 | {                                                                                           |
-|                 |     "schemas": [                                                                           |
-|                 |         "urn:scim:schemas:core:2.0:User", "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"       |
-|                 |     ],                                                                                      |
-|                 |     "userName": "Acooper",                                                                 |
-|                 |     "name": {                                                                               |
-|                 |         "familyName": "Cooper",                                                            |
-|                 |         "givenName": "Alice in wonderland",                                                |
-|                 |         "formatted": "Alice D Cooper"                                                      |
-|                 |     },                                                                                      |
-|                 |     "emails": [{                                                                            |
-|                 |         "value": "acooper@sindersuited.com",                                              |
-|                 |         "type": "work",                                                                    |
-|                 |         "primary": true                                                                    |
-|                 |     }],                                                                                     |
-|                 |     "title": "Song writer",                                                                |
-|                 |     "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User":                          |
-|                 |     {                                                                                       |
-|                 |         "employeeNumber":"9252",                                                           |
-|                 |         "division":"Sales",                                                                |
-|                 |         "department": "Rock'n roll"                                                       |
-|                 |     }                                                                                       |
-|                 | }                                                                                           |
-|                 | ```                                                                                         |
+| Body            | ```json                                                                                     
+                   {                                                                                           
+                      "schemas": [                                                                           
+                          "urn:scim:schemas:core:2.0:User", "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"       
+                      ],                                                                                      
+                      "userName": "Acooper",                                                                 
+                      "name": {                                                                               
+                          "familyName": "Cooper",                                                            
+                          "givenName": "Alice in wonderland",                                                
+                          "formatted": "Alice D Cooper"                                                      
+                      },                                                                                      
+                      "emails": [{                                                                            
+                          "value": "acooper@sindersuited.com",                                              
+                          "type": "work",                                                                    
+                          "primary": true                                                                    
+                      }],                                                                                     
+                      "title": "Song writer",                                                                
+                      "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User":                          
+                     {                                                                                       
+                          "employeeNumber":"9252",                                                           
+                          "division":"Sales",                                                                
+                          "department": "Rock'n roll"                                                       
+                      }                                                                                       
+                  }                                                                                           
+                  ``` |                                                                                        
  
 Table 9: SCIM POST Query to Insert A User with Enterprise Extension Attributes
 
