@@ -52,7 +52,7 @@ To configure the first ZooKeeper server:
    <br> `zk.peer.2=10.11.10.39:2181:2888:3888`
    <br> `zk.peer.3=10.11.10.40:2181:2888:3888`
 
-9. Save setup.properties. In this example, the file is configured as follows for the first node in the cluster:
+1. Save setup.properties. In this example, the file is configured as follows for the first node in the cluster:
 
     ![An image showing ](Media/ZKImage2.4.jpg)
 
