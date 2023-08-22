@@ -79,23 +79,18 @@ The basic installation involves setting up one RadiantOne node and is sufficient
 
 Several aspects of RadiantOne are configured during installation. The basic installation steps are described below.
 
->[!warning]
->Even if you only deploy one RadiantOne node, the basic cluster configuration is defined during the install. Take note of the cluster settings defined here as they can be used later to add nodes to the cluster.
+>[!warning] Even if you only deploy one RadiantOne node, the basic cluster configuration is defined during the install. Take note of the cluster settings defined here as they can be used later to add nodes to the cluster.
 
 1. At the System Check step, verify that the system passed all checks and click Next.
 
->[!warning]
->Hardware sizing is a critical component of directory service planning and deployment. The system check report verifies that important RadiantOne system requirements are met. If a test fails, an X is shown, like in the screenshot below. The failure should be addressed before continuing with the installation. Refer to the RadiantOne Hardware Sizing Guide for more information.
+    >[!warning] Hardware sizing is a critical component of directory service planning and deployment. The system check report verifies that important RadiantOne system requirements are met. If a test fails, an X is shown, like in the screenshot below. The failure should be addressed before continuing with the installation. Refer to the [RadiantOne Hardware Sizing Guide](/documentation/hardware-sizing-guide/01-introduction) for more information.
 
-![An image showing ](Media/Image2.1.jpg)
+    ![An image showing ](Media/Image2.1.jpg)
 
 2. At the Select a type of installation step, select the Create A New Cluster option.
 
     >[!warning]
-    >Shard subclusters are for very advanced use cases involving the storage of millions of identities. If you have a use case of this scale, contact your Radiant Logic Account Representative to discuss sizing.
-
-    >[!warning]
-    >Instance subcluster installation is described in Installing an Instance Subcluster.
+    >Shard subclusters are for very advanced use cases involving the storage of millions of identities. If you have a use case of this scale, contact your Radiant Logic Account Representative to discuss sizing. <br> <br> Instance subcluster installation is described in Installing an Instance Subcluster.
 
     ![An image showing ](Media/Image2.2.jpg)
 
@@ -150,12 +145,12 @@ Several aspects of RadiantOne are configured during installation. The basic inst
 
 Once you have tested and validated a [basic installation](#installing-a-single-node) of RadiantOne, and have determined your throughput and high availability needs require a cluster deployment, you can start to put in place the number of nodes required for high availability and needed throughput. This section describes steps to add nodes to a cluster.
 
-Please see the System Requirements document and the RadiantOne Hardware Sizing Guide for proper sizing of the machines.
+Please see the System Requirements document and the [RadiantOne Hardware Sizing Guide](/documentation/hardware-sizing-guide/01-introduction) for proper sizing of the machines.
 
 >[!warning]
 >When deploying a cluster, nodes must be running on hardware that is configured for optimal redundancy and highly reliable connectivity between the cluster nodes/machines.
 
-If you received a cluster-based license key, the same key value can be used for all nodes you install in a given cluster. If you received a server-based/single node license key, each RadiantOne server you deploy requires its own Radiant Logic license key.**
+If you received a cluster-based license key, the same key value can be used for all nodes you install in a given cluster. If you received a server-based/single node license key, each RadiantOne server you deploy requires its own Radiant Logic license key.
 
 #### Adding a Core Cluster Node
 
@@ -169,7 +164,7 @@ If you are using a separate ZooKeeper ensemble, before attempting to add Radiant
 1. At the “System Check Report” step, verify that the system passed all checks and click Next.
 
     >[!warning]
-    >Hardware sizing is a critical component of directory service planning and deployment. The system check report verifies that important RadiantOne system requirements are met. If a test fails, an X is shown, like in the screenshot below. The failure should be addressed before continuing with the installation. Refer to the RadiantOne Hardware Sizing Guide for more information.
+    >Hardware sizing is a critical component of directory service planning and deployment. The system check report verifies that important RadiantOne system requirements are met. If a test fails, an X is shown, like in the screenshot below. The failure should be addressed before continuing with the installation. Refer to the [RadiantOne Hardware Sizing Guide](/documentation/hardware-sizing-guide/01-introduction) for more information.
 
     ![An image showing ](Media/Image2.1.jpg)
 
@@ -192,9 +187,9 @@ If you are using a separate ZooKeeper ensemble, before attempting to add Radiant
     ![An image showing ](Media/Image2.12.jpg)
 
     >[!warning]
-    >RadiantOne is a network-intensive application. The network check verifies that the network connections between RadiantOne nodes are fast, with plenty of bandwidth and low latency. Refer to the RadiantOne Hardware Sizing Guide for more information.
+    >RadiantOne is a network-intensive application. The network check verifies that the network connections between RadiantOne nodes are fast, with plenty of bandwidth and low latency. Refer to the [RadiantOne Hardware Sizing Guide](/documentation/hardware-sizing-guide/01-introduction) for more information.
 
-6. Next, you are prompted to enter your license key. If you have your license key, paste it into the window. If you would like a temporary key, leave the license key field blank. The evaluation license is valid for 14 days. If you would like a longer temporary license, Radiant Logic, Inc at support@radiantlogic.com.
+6. Next, you are prompted to enter your license key. If you have your license key, paste it into the window. If you would like a temporary key, leave the license key field blank. The evaluation license is valid for 14 days. If you would like a longer temporary license, contact Radiant Logic, Inc at support@radiantlogic.com.
 
     >[!warning]
     >If you received a cluster-based license key, the same key value can be used for all nodes you install in a given cluster. If you received a server-based/single node license key, each RadiantOne server you deploy requires its own Radiant Logic license key.
@@ -204,7 +199,7 @@ If you are using a separate ZooKeeper ensemble, before attempting to add Radiant
 7. Finally, you are shown a pre-installation summary where you can review your settings and then click Start Installation.
     
    >[!note]
-   >All settings (ports, user passwords, etc.) are the same as used for the first node in the cluster, so you will not see this step during the install. The only configuration that varies from the first node in the cluster is the server SSL certificate (for LDAPS communication between clients and the RadiantOne service). A default, self-signed certificate is generated for each node you add to the cluster. Details on replacing the default self-signed certificate can be found in the RadiantOne System Administration Guide.
+   >All settings (ports, user passwords, etc.) are the same as used for the first node in the cluster, so you will not see this step during the install. The only configuration that varies from the first node in the cluster is the server SSL certificate (for LDAPS communication between clients and the RadiantOne service). A default, self-signed certificate is generated for each node you add to the cluster. Details on replacing the default self-signed certificate can be found in the [RadiantOne System Administration Guide](/documentation/sys-admin-guide/01-introduction).
 
 
 8. Start the Main Control Panel (<RLI_HOME>/bin/openControl.bat/.sh) and then start the RadiantOne service (Main Control Panel > Dashboard Tab).
@@ -223,7 +218,7 @@ The steps to install a follower-only node are the same as for adding a node to a
 
 ![An image showing ](Media/Image2.15.jpg)
 
-For details on the different types of nodes in a cluster, please see the RadiantOne Architect Guide.
+For details on the different types of nodes in a cluster, please see the [RadiantOne Architect Guide](/documentation/architect-guide/high-availability-and-performance/#leader-node.
 
 ### Installing an Instance Subcluster
 
