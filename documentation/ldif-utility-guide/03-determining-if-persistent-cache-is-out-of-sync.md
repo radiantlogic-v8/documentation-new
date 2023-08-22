@@ -23,17 +23,17 @@ An example of how to use this utility is described below.
 
 3.	Now, the LDIF files must be sorted. Use the -s flag with ldif-utils to sort the files. Examples are shown below. 
 
-`C:\radiantone\vds\bin\advanced>ldif-utils.bat -s cache.ldif`
-<br> `Using RLI home : C:\radiantone\vds`
-<br> `Using Java home : C:\radiantone\vds\jdk\jre`
-<br> `Start sorting...`
-<br> `Done total entry sorted: 13 Done in 80ms `
-<br> `C:\radiantone\vds\bin\advanced>ldif-utils.bat -s nocache.ldif`
-<br> `Using RLI home : C:\radiantone\vds`
-<br> `Using Java home : C:\radiantone\vds\jdk\jre`
-<br> `Start sorting...`
-<br> `Done total entry sorted: 13`
-<br> `Done in 79ms `
+    `C:\radiantone\vds\bin\advanced>ldif-utils.bat -s cache.ldif`
+    <br> `Using RLI home : C:\radiantone\vds`
+    <br> `Using Java home : C:\radiantone\vds\jdk\jre`
+    <br> `Start sorting...`
+    <br> `Done total entry sorted: 13 Done in 80ms `
+    <br> `C:\radiantone\vds\bin\advanced>ldif-utils.bat -s nocache.ldif`
+    <br> `Using RLI home : C:\radiantone\vds`
+    <br> `Using Java home : C:\radiantone\vds\jdk\jre`
+    <br> `Start sorting...`
+    <br> `Done total entry sorted: 13`
+    <br> `Done in 79ms `
 
 4.	After sorting, you will have <filename>.ldif.sorted for each file. E.g. cache.ldif.sorted and nocache.ldif.sorted. These are the files to compare. Below is an example of the command to issue to compare the LDIF files: 
 

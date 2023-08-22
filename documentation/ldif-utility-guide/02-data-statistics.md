@@ -17,22 +17,25 @@ The syntax of the command is:
 
 The results include the following statistics about entries (non-group), groups, and objectclasses: 
 
-`###### Entries statistics ###### `
-<br>Entry count – number of entries 
+`###### Entries statistics ######`
+
+Entry count – number of entries 
 <br>Max attributes per entry 
 
 `###### Non-group entry statistics ###### `
-<br>AVG attributes per entry 
+
+AVG attributes per entry 
 <br>Max entry size in bytes 
 <br>AVG entry size in bytes 
 <br>Max attribute size 
 <br>AVG attributes size (non-objectclass) 
 
-`###### Groups statistics ###### `
-<br>Group count – number of group entries 
+`###### Groups statistics ######`
+
+Group count – number of group entries 
 <br>Groups Statistics: [
 
-    `### Groups SIZE_RANGE_NAME statistics ### `
+    ### Groups SIZE_RANGE_NAME statistics ###
     Group entry count 
     Max members 
     AVG members 
@@ -41,7 +44,7 @@ The results include the following statistics about entries (non-group), groups, 
 
 `###### ObjectClass Statistics ###### `
 
-    `### objectclass_name statistics ### `
+    ### objectclass_name statistics ###
     Entry count – number of entries 
     Max attributes per entry 
     AVG attributes per entry 
@@ -101,7 +104,7 @@ AVG attributes per entry: 8
     -RDN Types: [o] 
     -Entry count per branch: {root=1}, 
 
-    `### groupofuniquenames statistics ### `
+    ### groupofuniquenames statistics ###
     -Entry count: 1 
     -Max attributes per entry: 9 
     -AVG attributes per entry: 9 
@@ -112,7 +115,7 @@ AVG attributes per entry: 8
     -RDN Types: [cn] 
     -Entry count per branch: {ou=groups,o=companydirectory=1}, 
     
-    `### organizationalunit statistics ### `
+    ### organizationalunit statistics ###
 
     -Entry count: 11 
     -Max attributes per entry: 8 
@@ -124,7 +127,7 @@ AVG attributes per entry: 8
     -RDN Types: [ou] 
     -Entry count per branch: {o=companydirectory=11}, 
 
-    `### inetorgperson statistics ### `
+    ### inetorgperson statistics ###
 
     -Entry count: 10000 
     -Max attributes per entry: 19 
