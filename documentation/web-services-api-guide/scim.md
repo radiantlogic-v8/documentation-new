@@ -591,7 +591,7 @@ The following SCIM POST query example describes how to create a user entry that 
 <tr>
 <td>Body	
 <td>
-`
+```
 {
     "schemas": [
         "urn:scim:schemas:core:2.0:User", "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"       
@@ -615,7 +615,7 @@ The following SCIM POST query example describes how to create a user entry that 
         "department": "Rock'n roll"
     }
 }
-`
+```
 </table>
  
 Table 9: SCIM POST Query to Insert A User with Enterprise Extension Attributes
