@@ -128,7 +128,7 @@ After=network-online.target
 
 [Service]
 WorkingDirectory=/path/to/binary/sdc-client
-ExecStart=/usr/bin/dotnet /path/to/binary/sdc-client/RadiantLogic.OnPremisesAgentClient.Agent.dll
+ExecStart=/path/to/binary/sdc-client/RadiantLogic.OnPremisesAgentClient.Agent
 Restart=always
 RestartSec=10
 SyslogIdentifier=your-app-name
