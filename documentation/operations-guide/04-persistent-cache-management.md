@@ -7,7 +7,7 @@ description: Operations Guide
 
 ## Backing up Persistent Cache
 
-To backup a persistent cache, go to the Main Control Panel > Directory Namespace tab > Cache node. Select the cached branch and on the right, click Export. Enter a file name and click OK. You can also use the backup-hdapstore option in the Command Line Utility. See the RadiantOne Command Line Configuration Guide.
+To backup a persistent cache, go to the Main Control Panel > Directory Namespace tab > Cache node. Select the cached branch and on the right, click Export. Enter a file name and click OK. You can also use the backup-hdapstore option in the Command Line Utility. See the [Radiantone Command Line Configuration Guide](/documentation/command-line-configuration-guide/06-naming-context-commands).
 
 ## Re-Indexing Persistent Cache
 
@@ -115,4 +115,4 @@ An example of a failed cache refresh log entry can be seen in the figure below.
 
 The fix-cacherefresh command in the vdsconfig utility (<RLI_HOME>/bin/vdsconfig) can be used to issue persistent cache refreshes for the failed entries. The command searches the cn=cacherefreshlog with a filter of (&(changenumber>=x)(status=y)) where the default changenumber is 0 and the default status=2 (to refresh only failed entries). You can change these default values when running the command if needed. The command then invokes an “action=synchronizecache” operation for each entry returned from the search which results in those entries being refreshed in the persistent cache.
 
-For more information on the vdsconfig utilty and the fix-cacherefresh command, see the RadiantOne Command Line Configuration Guide.
+For more information on the vdsconfig utilty and the fix-cacherefresh command, see the [Radiantone Command Line Configuration Guide](/documentation/command-line-configuration-guide/06-naming-context-commands).

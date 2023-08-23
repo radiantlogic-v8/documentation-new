@@ -26,7 +26,7 @@ To install nodes to an existing cluster, you need the following details:
 - A valid RadiantOne license key. Keys can be enforced at the cluster level or the node
 level. Please check with your Radiant Logic representative to verify your license key type.
 
-For exact installation steps, please see the RadiantOne Installation Guide.
+For exact installation steps, please see the [RadiantOne Installation Guide](/documentation/installation-guide/01-introduction).
 
 ## Removing Nodes
 
@@ -40,8 +40,10 @@ To remove a node from a cluster:
 
 1. On the node that is to be removed from your cluster, run the following command (using  cluster.bat on Windows, cluster.sh on Linux): 
 <br> <RLI_HOME>/bin/advanced/cluster.bat detach
+
 2. Edit the <RLI_HOME>\vds_server\conf\cloud.properties file on each remaining cluster node and verify that the zk.servers value correctly lists the cluster nodes and ZooKeeper client port. If the zk.servers value is incorrect, run the following command (using cluster.bat on Windows, cluster.sh on Linux):
     <br><RLI_HOME>/bin/advanced/cluster.bat update-zk-client-conf
+
 3. To update the vdsha and replicationjournal data sources (that still reference the removed RadiantOne node), on one of the remaining cluster nodes, run the following command (using cluster.bat on Windows, cluster.sh on Linux): <br><RLI_HOME>/bin/advanced/cluster.bat reset-cluster-datasource
 
 To update a specific data source, like vdsha, use the following command instead of the one mentioned above (vds_server is the instance name and vdsha is the data source name in this example):
@@ -157,7 +159,7 @@ p 2389 -f c:\radiantone\ChangePassword.ldif`
 
 Once the connections are established between RadiantOne and the underlying systems, the only changes required are when those connections need to be updated. For example, if RadiantOne needs to point to a different server/port or use a different service account user/password then you must update the connection strings that are stored in the RadiantOne data sources.
 
-The connection string information can be changed from the Main Control Panel > Settings Tab > Server Backend section. You can also update connection strings from command line using the vdsconfig utility. For details on the vdsconfig utility, please see the RadiantOne Command Line Configuration Guide.
+The connection string information can be changed from the Main Control Panel > Settings Tab > Server Backend section. You can also update connection strings from command line using the vdsconfig utility. For details on the vdsconfig utility, please see the [Radiantone Command Line Configuration Guide](/documentation/command-line-configuration-guide/01-introduction).
 
 ## Backing up Configuration
 
@@ -204,10 +206,10 @@ If the failed node cannot be restarted, or the required services on the node can
 
 1. At this point, the RadiantOne service on the failed node is still registered in the cluster. Get the Cloud ID and ZooKeeper ID of the failed node by running <RLI_HOME>/bin/advanced/cluster.bat list on a healthy cluster node. Take note of the Cloud ID and ZooKeeper Server ID (e.g. 1, 2, 3) of the failed node. Below is an example:
 
-`| Hostname | Cloud ID | VDS status | ZooKeeper Server ID | ZooKeeper UP?`
-<br>`| DOC-E1WIN1 | 8773eaa7-3de0- 4421 - 96ad-7de4c1b56c1c | ON | #1 | ON |`
-<br>`| DOC-E1WIN2* | 4a506e15-b726- 4551 - 82a9-42759f00981c | ON | #2** | ON |`
-<br>`| DOC-E1WIN3 | 2ded0740-3aeb- 4430 - bcf9-788ce666cc38 | ON | #3 | OFF |`
+    `| Hostname | Cloud ID | VDS status | ZooKeeper Server ID | ZooKeeper UP?`
+    <br>`| DOC-E1WIN1 | 8773eaa7-3de0- 4421 - 96ad-7de4c1b56c1c | ON | #1 | ON |`
+    <br>`| DOC-E1WIN2* | 4a506e15-b726- 4551 - 82a9-42759f00981c | ON | #2** | ON |`
+    <br>`| DOC-E1WIN3 | 2ded0740-3aeb- 4430 - bcf9-788ce666cc38 | ON | #3 | OFF |`
 
 2. To remove reference to the failed node, on one healthy node of the cluster, run the following command (using cluster.bat on Windows, cluster.sh on Linux): <br><RLI_HOME>/bin/advanced/cluster.bat zk-leave vds_server `<ZooKeeper Server ID of the failed node>`
 
@@ -253,7 +255,7 @@ The utility does not require the RadiantOne service on the node to be running, b
 
 This option assumes you have maintained a cluster in a DR site that can be used to repair your primary cluster using the steps below. The overall objective is to temporarily add a new node to the DR cluster and then decouple it from the cluster so it becomes the leader node for your primary cluster.
 
-1. Install RadiantOne on a new machine and have it join the existing DR cluster. For detailed steps on adding a node to an existing cluster, please see the RadiantOne Installation Guide. For a list of cluster configuration required to add a new node, see [Adding Nodes](#adding-nodes). Once the new node is installed, it automatically inherits from the existing configuration and data (Universal Directory stores and persistent cache).
+1. Install RadiantOne on a new machine and have it join the existing DR cluster. For detailed steps on adding a node to an existing cluster, please see the [RadiantOne Installation Guide](/documentation/installation-guide/04-node-configuration-commands). For a list of cluster configuration required to add a new node, see [Adding Nodes](#adding-nodes). Once the new node is installed, it automatically inherits from the existing configuration and data (Universal Directory stores and persistent cache).
 
 2. Stop all RadiantOne service and Jetty. ZooKeeper should be running on all nodes.
 
@@ -263,7 +265,7 @@ This option assumes you have maintained a cluster in a DR site that can be used 
 
 The rest of the steps are broken into two sections. One set of steps are performed on the DR Cluster and the other set of steps are performed on the node you decoupled from the DR cluster noted as the New Primary Cluster Node.
 
-Steps Associated with the Disaster Recovery Cluster/Site
+**Steps Associated with the Disaster Recovery Cluster/Site**
 
 1. Edit the <RLI_HOME>\vds_server\conf\cloud.properties file on each of the DR cluster nodes and verify that the zk.servers value correctly lists only the nodes currently in the DR cluster and ZooKeeper client port. If the zk.servers value is incorrect, run the following command (using cluster.bat on Windows, cluster.sh on Linux):
 
@@ -321,8 +323,7 @@ The backup-restore mode restores the following:
 - RadiantOne instances (if multiple instances were used)
 - .orx and .dvx files
 - JDBC drivers (jdbcxml.xml)
-- naming contexts (in ZooKeeper) – only the definition of the names, not the dependent
-files (e.g. underlying data sources, .dvx files...etc.)
+- naming contexts (in ZooKeeper) – only the definition of the names, not the dependent files (e.g. underlying data sources, .dvx files...etc.)
 - RadiantOne LDAP Schema files
 - Monitoring configuration
 - RadiantOne Universal Directory (HDAP) stores (not persistent cache)

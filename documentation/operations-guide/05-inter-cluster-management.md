@@ -7,7 +7,7 @@ description: Operations Guide
 
 ## Migrating Configuration Changes Across Existing Environments
 
-It is recommended that you designate one data center as the primary. Therefore, you should setup your cluster/primary data center based on the recommended architectures described in the Deployment and Tuning Guide. Then, all configurations made at the primary data center are migrated to all other data centers.
+It is recommended that you designate one data center as the primary. Therefore, you should setup your cluster/primary data center based on the recommended architectures described in the [RadiantOne Deployment and Tuning Guide](/documentation/deployment-and-tuning-guide/07-deployment-architecture). Then, all configurations made at the primary data center are migrated to all other data centers.
 
 >[!note]
 >The steps described in this section would also be applicable to migrating changes from a development/QA environment to an existing/configured production environment. These steps are also applicable for migrating changes across RadiantOne deployed in a classic (active/active or active/passive) architecture. The source and the target RadiantOne versions must be the same.
@@ -26,17 +26,17 @@ It is recommended that configuration migration is performed during non-peak/off 
 2. Run vdsconfig passing the `resource-traverse -name <name of resource> -instance vds_server`. The result is a hierarchy depicting the dependencies associated with the resource. Therefore, if you were to migrate the resource to another environment, all the needed dependencies must be considered as well. For example, if a new naming context named dc=ad needed to be migrated to an existing production environment the following command would traverse the resource and display the dependencies:
 <br><RLI_HOME>/bin/vdsconfig.bat resource-traverse -name dc=ad -instance vds_server
 
-`2015 - 12 - 30 16:31:54 INFO c.r.t.c.ResourceCLI:134 - Dependency tree:`
-<br>`dc=ad [NAMING] OK`
-<br>`dc_ad.dvx [DVX] OK`
-<br>`ad203 [DATASOURCE] OK`
-<br>`dc_ad.orx [ORX] OK`
-<br>`ad203 [DATASOURCE] OK`
-<br>`2015 - 12 - 30 16:31:54 INFO c.r.t.c.ResourceCLI:135 - Resource paths:`
-<br>`zk:dvx/dc_ad.dvx`
-<br>`zk:lod/dc_ad.orx`
-<br>`zk:namings/a721f1f5-853e- 4983 - b5d7-c64105082ee3_dc=ad`
-<br>`ds:ad203`
+  `2015 - 12 - 30 16:31:54 INFO c.r.t.c.ResourceCLI:134 - Dependency tree:`
+  <br>`dc=ad [NAMING] OK`
+  <br>`dc_ad.dvx [DVX] OK`
+  <br>`ad203 [DATASOURCE] OK`
+  <br>`dc_ad.orx [ORX] OK`
+  <br>`ad203 [DATASOURCE] OK`
+  <br>`2015 - 12 - 30 16:31:54 INFO c.r.t.c.ResourceCLI:135 - Resource paths:`
+  <br>`zk:dvx/dc_ad.dvx`
+  <br>`zk:lod/dc_ad.orx`
+  <br>`zk:namings/a721f1f5-853e- 4983 - b5d7-c64105082ee3_dc=ad`
+  <br>`ds:ad203`
 
 3. Using the resource-export command, export the resource and its dependencies. This exports the resource along with its dependencies into the file indicated in the command. If there are dependencies you want to omit from the export file, there are two command arguments that allow you to skip them. The -skip argument specifies the name of the resource to be skipped. The -skipregex argument allows you to indicate which resource(s) to skip using a regular expression. This makes -skipregex especially useful in situations where you want to omit a range of resources. The -skip and -skipregex arguments can be used together in the same command. The format for -skipregex is as follows.
 
@@ -88,24 +88,17 @@ In the following example, a naming context, dc=ad, and its dependencies, except 
 
 ### Items Requiring Manual Migration
 
-After importing the configuration onto the production server, the following items should be
-reviewed to see if they are applicable to the configuration, as they must be addressed manually.
+After importing the configuration onto the production server, the following items should be reviewed to see if they are applicable to the configuration, as they must be addressed manually.
 
-- [Chapter 5: Inter Cluster Management](#chapter-5-inter-cluster-management)
-  - [Migrating Configuration Changes Across Existing Environments](#migrating-configuration-changes-across-existing-environments)
-    - [Items Requiring Manual Migration](#items-requiring-manual-migration)
-    - [Update Global Settings](#update-global-settings)
-      - [Configure and Initialize Persistent Cache](#configure-and-initialize-persistent-cache)
-      - [Managing Server Certificate](#managing-server-certificate)
-      - [Installing Servers to Run as Services](#installing-servers-to-run-as-services)
-      - [Managing Interception Scripts and Custom Object Scripts](#managing-interception-scripts-and-custom-object-scripts)
-  - [Detecting Differences Across Replicated RadiantOne Universal Directory (HDAP) Stores](#detecting-differences-across-replicated-radiantone-universal-directory-hdap-stores)
-    - [Usage](#usage)
-    - [Command Arguments](#command-arguments)
+- [Update Global Settings](#update-global-settings)
+- [Configure and Initialize Persistent Cache](#configure-and-initialize-persistent-cache)
+- [Managing Server Certificate](#managing-server-certificate)
+- [Installing Services](#installing-servers-to-run-as-services)
+- [Managing Interception Scripts and Custom Object Scripts](#managing-interception-scripts-and-custom-object-scripts)
  
 ### Update Global Settings
 
-If you modified any RadiantOne global settings from the Main Control Panel > Settings tab, you must manually make those same changes to the target servers. These settings can be updated using the command line API instead of the Main Control Panel if needed. Please see the Command Line Configuration Guide for details.
+If you modified any RadiantOne global settings from the Main Control Panel > Settings tab, you must manually make those same changes to the target servers. These settings can be updated using the command line API instead of the Main Control Panel if needed. Please see the [Radiantone Command Line Configuration Guide](/documentation/command-line-configuration-guide/01-introduction) for details.
 
 #### Configure and Initialize Persistent Cache
 
