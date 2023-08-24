@@ -23,7 +23,7 @@ For details on installing RadiantOne in a production environment, start with the
 
 The installers are available via an ftp site. Contact support@radiantlogic.com for access information.
 
-# Configuring External ZooKeeper Ensemble
+## Configuring External ZooKeeper Ensemble
 
 For HA a minimum of three Zookeeper nodes is required.
 
@@ -94,7 +94,7 @@ To configure the first ZooKeeper server:
 
 >[!warning] Any change to the setup.properties file requires re-configuring (configure.bat) and then restarting (start_zookeeper.bat) ZooKeeper.
 
-## Configuring Additional ZooKeeper Nodes
+### Configuring Additional ZooKeeper Nodes
 
 Once the first Zookeeper node is configured, you are ready to configure additional nodes.
 
@@ -118,7 +118,7 @@ Figure  8 : The setup.properties File on the Third Zookeeper Node
 
 >[!warning] Any change to the setup.properties file requires re-configuring (configure.bat) and then restarting (start_zookeeper.bat) Zookeeper.
 
-# Installing RadiantOne
+## Installing RadiantOne
 
 Once all Zookeeper nodes have been configured and started, install RadiantOne. Details about the RadiantOne installation process can be found in the RadiantOne Installation Guide.
 
@@ -128,11 +128,11 @@ If you use a load balancer, enter the hostname of the load balancer in the ZooKe
 
 Figure 9: The ZK Connection String Value in the RadiantOne Installer
 
-## Configuring SSL between FID and ZooKeeper
+### Configuring SSL between FID and ZooKeeper
 
 Configuring SSL between FID and ZooKeeper can be configured after RadiantOne is installed. The steps are described in the RadiantOne Hardening Guide.
 
-# Testing a ZooKeeper Cluster
+## Testing a ZooKeeper Cluster
 
 Once the Zookeeper ensemble and RadiantOne FID nodes are installed, you can test access to the ZooKeeper cluster.
 
