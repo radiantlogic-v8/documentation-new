@@ -15,6 +15,28 @@ Figure 2. 1 : Accessing Expert Mode
 
 >[!note] The Main Control Panel saves the last mode (Expert or Standard) it was in when you log out and returns to this mode automatically when you log back in. The mode is saved on a per-role basis.
 
+## Configuring Email Notification for License Key Expiration
+
+To configure an email notification related to a license key expiration:
+
+1. In the Main Control Panel, switch to Expert Mode by clicking the Logged in as, (username) drop-down menu and select Expert Mode.
+2. Click the Main Control Panel > Zookeeper tab.
+3. Expand folder radiantone > version > cluster_name > config > vds_server.conf.
+4. Click Edit Mode.
+5. Locate the setting named: licenseExpirationMessageConfiguration
+6. Set the following parameters:
+    - smtpServerUrl: smtp server url
+    - smtpPort: smtp port
+    - username: smpt username
+    - password: smtp password
+    - messageSubject: the subject of the email
+    - messageBody: the body of the email message
+    - numberOfDaysBeforeExpiration: when to start sending emails before license expiration
+    - licenseCheckIntervalDays: how frequently to check for when the license is going to expire.
+    - licenseExpirationMessageRecipient: who to send the email notification to.
+    - licenseExpirationMessageSender: the email address from which to send the notification.
+7. Click Save on the Zookeeper tab.
+
 ## Adding Nodes
 
 To install nodes to an existing cluster, you need the following details:
