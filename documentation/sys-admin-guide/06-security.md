@@ -35,8 +35,7 @@ SSL/TLS is enabled by default (TLS v1.0, v1.1 and v1.2 are supported), and durin
 
 By default the SSL port is set to 636 and this is defined during the installation of RadiantOne.
 
->[!warning]
->You must restart the RadiantOne service after changing any SSL-related settings. RadiantOne loads the server certificate when it is started, so in order for the newly added certificate to take effect, restart the server.
+>[!warning] You must restart the RadiantOne service after changing any SSL-related settings. RadiantOne loads the server certificate when it is started, so in order for the newly added certificate to take effect, restart the server.
 
 ### Forbidding Access on the Non-SSL Port
 
@@ -48,8 +47,7 @@ A certificate is an electronic document that identifies an entity which can be a
 
 For normal SSL communications, where the only requirement is that the client trusts the server, no additional configuration is necessary (if both entities trust each other). For mutual authentication, where there is a reciprocal trust relationship between the client and the server, the client must generate a certificate containing his identity and private key in his keystore. The client must also make a version of the certificate containing his identity and public key, which RadiantOne must store in its truststore. In turn, the client needs to trust the server; this is accomplished by importing the server's CA certificate into the client truststore.
 
->[!note]
->Certificate-based authentication (mutual authentication) requires the use of SSL or StartTLS for the communication between the client and RadiantOne.
+>[!note] Certificate-based authentication (mutual authentication) requires the use of SSL or StartTLS for the communication between the client and RadiantOne.
 
 The diagram below shows how certificates and the SSL protocol are used together for authentication.
 
@@ -87,8 +85,7 @@ If you want to require certificate-based authentication:
 
 To authorize a user who authenticates using a certificate (e.g. SASL External) you must set a client certificate DN mapping. This maps the user DN (Subject or Subject Alternate Name from the certificate) to a specific DN in the RadiantOne namespace. After, the DN in the RadiantOne namespace determines authorization (access controls). 
 
->[!note]
->To avoid problems with special characters, RadiantOne normalizes the certificate subject prior to applying the certificate DN mapping.
+>[!note] To avoid problems with special characters, RadiantOne normalizes the certificate subject prior to applying the certificate DN mapping.
 
 To set the client certificate DN mapping:
 
@@ -96,8 +93,7 @@ To set the client certificate DN mapping:
 
 2. Click **Change** next to the Client Certificate DN Mapping property.
 
->[!warning]
->The Client Certificate DN Mapping is only accessible by a member of the [Directory Administrator role/group](01-introduction#delegated-administration-of-radiantone).
+>[!warning] The Client Certificate DN Mapping is only accessible by a member of the [Directory Administrator role/group](01-introduction#delegated-administration-of-radiantone).
 
 There are different ways to determine the DN from the subject or subject alternative name in the certificate (using regular expression syntax).
 
@@ -145,8 +141,7 @@ Figure 3: Example SSL Certificate
 
 If all mapping rules fail to locate a user, anonymous access is granted (if anonymous access is allowed to RadiantOne).
 
->[!note]
->As an alternative to anonymous access, it is generally recommended that you create a final mapping that results in associating the authenticated user with a default user that has minimum access rights. An example is shown below where the last mapping rule matches to a user identified in RadiantOne as “uid=default,ou=globalusers,cn=config”.
+>[!note] As an alternative to anonymous access, it is generally recommended that you create a final mapping that results in associating the authenticated user with a default user that has minimum access rights. An example is shown below where the last mapping rule matches to a user identified in RadiantOne as “uid=default,ou=globalusers,cn=config”.
 
 ![Example Default Mapping Rule](Media/Image3.84.jpg)
 
@@ -265,15 +260,13 @@ To enable Start TLS for clients to access RadiantOne:
 
 4. Restart the RadiantOne service.
 
->[!warning]
->When using Start TLS, the default server certificate included with the RadiantOne installation does not work. You must generate a new certificate (either self-signed or requested from a Certificate Authority) that contains the proper machine and domain name of the RadiantOne machine. Also, the host name specified from the client should match the value in the certificate. If you try to use the default self-signed certificate included with the RadiantOne installation, the following error message (‘xxxxx’ being your server name) is returned: javax.net.ssl.SSLPeerUnverifiedException: hostname of the server 'xxxxx' does not match the hostname in the server's certificate.
+>[!warning] When using Start TLS, the default server certificate included with the RadiantOne installation does not work. You must generate a new certificate (either self-signed or requested from a Certificate Authority) that contains the proper machine and domain name of the RadiantOne machine. Also, the host name specified from the client should match the value in the certificate. If you try to use the default self-signed certificate included with the RadiantOne installation, the following error message (‘xxxxx’ being your server name) is returned: javax.net.ssl.SSLPeerUnverifiedException: hostname of the server 'xxxxx' does not match the hostname in the server's certificate.
 
 ### Debug SSL
 
 SSL is enabled by default, but SSL logging is disabled by default. When SSL logging is enabled, SSL events have an entry in vds_server.log. This log file is located in <RLI_HOME>\vds_server\logs. SSL events are logged at INFO level, so log settings for VDS – Server must be at least at INFO level. 
 
->[!note]
->For more information on log levels, refer to the RadiantOne Logging and Troubleshooting Guide.
+>[!note] For more information on log levels, refer to the RadiantOne Logging and Troubleshooting Guide.
 
 To enable SSL logging:
 
@@ -307,8 +300,7 @@ If clients are connecting to RadiantOne with certificates (establishing mutual a
 
 There are three different supported CRL checking methods; dynamic, static and failover. These methods are described below. 
 
->[!note]
->The tradeoff between a static CRL file and a dynamic CRL checking would be that a dynamic CRL would be more robust and correct but the size of the CRL file may impact the performance of the revocation checking logic.
+>[!note] The tradeoff between a static CRL file and a dynamic CRL checking would be that a dynamic CRL would be more robust and correct but the size of the CRL file may impact the performance of the revocation checking logic.
 
 ### Dynamic
 
@@ -340,8 +332,7 @@ Figure 6: Inter Nodes Communication
 
 ## Authentication Methods
 
->[!note]
->This section is accessible only in [Expert Mode](01-introduction#expert-mode).
+>[!note] This section is accessible only in [Expert Mode](01-introduction#expert-mode).
 
 ### Kerberos
 
@@ -353,8 +344,7 @@ Figure 7: RadiantOne as a Kerberized Service
 
 Kerberos can be used for authentication to RadiantOne (acting as a Kerberized Service) as long as the client resides within the same domain or trusted domain forest as the RadiantOne service (and the RadiantOne machine must be in the same Kerberos realm/domain, or at least within the same forest as Active Directory). For authentication amongst un-trusted/different domains, the NTLM protocol is triggered instead. For details on configuring cross-domain authentication for RadiantOne, please see the section on [NTLM](#ntlm). To continue with configuring Kerberos for access to RadiantOne in Microsoft domains, follow the steps below. For details on MIT Kerberos support, see [Support for MIT Kerberos](#support-for-mit-kerberos).
 
->[!note]
->All machines (client, domain controller…etc.) must be in sync in terms of clock (time/date settings). Also, if you have deployed RadiantOne in a cluster, the service account created in the KDC can use the server name of the load balancer that is configured in front of the RadiantOne cluster nodes. <br> To use a generic or common account for multiple RadiantOne cluster nodes, you need to set the SPN on the account matching the FQDN of the host that requests the kerberos ticket. There is no need to create individual accounts for each RadiantOne node/host. Refer to the account using the UPN in the RadiantOne configuration. <br> The account can have multiple SPNs. An example is shown below.
+>[!note] All machines (client, domain controller…etc.) must be in sync in terms of clock (time/date settings). Also, if you have deployed RadiantOne in a cluster, the service account created in the KDC can use the server name of the load balancer that is configured in front of the RadiantOne cluster nodes. <br> To use a generic or common account for multiple RadiantOne cluster nodes, you need to set the SPN on the account matching the FQDN of the host that requests the kerberos ticket. There is no need to create individual accounts for each RadiantOne node/host. Refer to the account using the UPN in the RadiantOne configuration. <br> The account can have multiple SPNs. An example is shown below.
 
 >**sAMAccountName: svc-vdsadmin
 UPN: ldap/vds.example.net@example.net**
@@ -1026,15 +1016,13 @@ If you need to change the LDIFZ encryption security key, follow the steps below.
 
 5.	Click **Save**.
 
->[!note]
->LDIFZ files generated with the old encryption key are no longer usable.
+>[!note] LDIFZ files generated with the old encryption key are no longer usable.
 
 ### Requiring LDIFZ for Exports
 
 The Secure LDIF Export option allows you to enforce the use of the encrypted LDIFZ format when exporting entries from the Directory Browser tab. With this setting enabled, using the unencrypted LDIF format for exports is not supported.
 
->[!note]
->Enabling secure LDIF exports requires first defining an LDIFZ encryption key. See the [Changing an Encryption Key](#changing-an-encryption-key) section for more information.
+>[!note] Enabling secure LDIF exports requires first defining an LDIFZ encryption key. See the [Changing an Encryption Key](#changing-an-encryption-key) section for more information.
 
 To enable the secure LDIF export option:
 
@@ -1077,6 +1065,143 @@ This feature works with the LDIFZ Encryption option as outlined in the table bel
 <td> ⌧	
 <td>🗹
 </table>
+
+## ADAP External Token Validators
+
+External token validators allow applications to use an access token to call an API on behalf of itself. The API then responds with the requested data. This section assumes that your OIDC provider is already set up.
+
+>[!warning] The processes described in this section are not hardened against security risks. For more information on hardening RadiantOne, refer to the [RadiantOne Hardening Guide](/documentation/hardening-guide/00-preface). 
+
+### Getting an Access Token
+
+This section describes using the Postman REST client to obtain an access token. 
+
+1. Start a new request. 
+
+1. Click the Auth tab.
+
+1. From the Type drop down menu, select OAuth 2.0. The Current Token section displays. 
+
+![Type drop-down menu](Media/typemenu.jpg)
+
+Figure 21: The Type drop-down menu
+ 
+2. In the Configure New Token section, enter the Client ID and client secret.
+
+    >[!note] These values were created during the OIDC provider configuration process. 
+
+3. Provide the access token URL. 
+
+    >[!note] This value can be found using the using the metadata URL from the Authorization Server. 
+
+![Configuring an access token in Postman](Media/configuringtoken.jpg)
+
+Figure 22: Configuring an access token in Postman
+
+4. Click Get New Access Token. The new access token's details are displayed. 
+
+![token details](Media/tokendetails.jpg)
+
+Figure 23: The Token Details section in Postman
+ 
+5. Copy this token and decode it for the values needed by the FID server. You can do this at https://jwt.io/.
+
+6. Keep the decoded token. Several values contained within are required for mapping attributes. 
+
+### FID Configuration
+
+This section describes configuring proxy authorization, configuring an ADAP external token validator, and attribute mapping.
+
+#### Configuring Proxy Authorization
+
+The RadiantOne ADAP (or SCIM) service queries the RadiantOne FID LDAP service using proxy authorization.
+
+To configure proxy authorization: 
+
+1. In the Main Control Panel, navigate to Settings > Server Front End > Supported Controls.
+
+1. Enable Proxy Authorization and click Save.
+
+1. Navigate to Settings > Security > Access Control.
+
+1. Enable the “Allow Directory Manager to impersonate other users” option and click Save.
+
+#### Configuring ADAP External Token Validator
+
+To add an external token validator:
+
+1. In the Main Control Panel, navigate to Settings > Security > External Token Validators. 
+
+1. Click **Add**. The New ADAP External Token Validator page displays.
+
+![The New ADAP External Token Validator Page](Media/externaltokenvalidatorpage.jpg)
+
+Figure 24: The New ADAP External Token Validator Page
+
+1. Name the external token validator.
+
+1. Toggle the Enable switch to On. 
+
+1. Select an OIDC provider from the drop-down menu. 
+
+1. Paste the Metadata URI from your OIDC authorization server into the Discovery URL field. 
+
+1. Click Discover. The JSON Web Key Set URI auto-populates. 
+
+1. Use the Expected Audience from your OIDC client to populate the Expected Audience field. 
+
+1. Other values can be obtained from the decoded access token. See the [Getting An Access Token](#getting-an-access-token) section for more information.  
+
+![Configuring an ADAP External Token Validator](Media/configuringtokenvalidator.jpg)
+
+Figure 25: Configuring an ADAP External Token Validator
+
+1. Click Edit next to Claims to FID User Mapping. The OIDC to FID User Mappings page displays.
+
+1. Click Add. 
+
+1. Define either a search expression or a simple DN Expression. In this example, a search expression is defined as shown below. 
+
+![Editing OIDC to FID User Mapping](Media/editingmapping.jpg)
+
+Figure 26: Editing OIDC to FID User Mapping
+
+1. Click OK. Click OK again to close the OIDC to FID User Mappings window.
+
+1. Click Save. 
+
+#### Attribute Mapping
+
+Map a uniquely identifying attribute to a corresponding claim value in the token (refer to the [Getting An Access Token](#getting-an-access-token) section for more information). In the following image, the attribute **mail** is mapped to the claim value **email**.
+
+>[!note] In some cases, creating a new attribute may be required.
+
+![search expression builder](Media/searchexpressionbuilder.jpg)
+
+Figure 27: The Search Expression Builder
+
+### Completing the Request with Postman
+
+To complete the request with Postman:
+
+1. Request a new access token (see [Getting An Access Token](#getting-an-access-token)). 
+1. Click Use Token. This inserts an Authorization header that inserts your bearer token. 
+
+![Requesting a new access token](Media/requestnewaccesstoken.jpg)
+
+Figure 28: Requesting a new access token
+
+1. Send the bearer token to the FID ADAP. In this example, a basic ADAP search is performed. 
+
+Field |	Value
+-|-
+URL Syntax	|http://`<ip:port>`/adap/<baseDN>
+Example URL |http://54.219.166.170:8089/adap/o=companydirectory
+Method	|Get
+
+![Sending the bearer token to RadiantOne](Media/Image..jpg)
+
+Figure 29: Sending the bearer token to RadiantOne
 
 ## DoS Filter
 
@@ -1172,7 +1297,7 @@ To create this example, from the Main Control Panel > Settings Tab > Security se
 
 ![Setting Access Controls](Media/Image6.1.jpg)
 
-Figure 21: Setting Access Controls
+Figure 30: Setting Access Controls
 
 ### Scope
 
@@ -1180,11 +1305,11 @@ The scope of an access control rule can be entry level (base), one level or subt
 
 ![Example of Entry Level Access Control](Media/Image6.2.jpg)
  
-Figure 22: Example of Entry Level Access Control
+Figure 31: Example of Entry Level Access Control
 
 ![Example of Sub Tree Level Access Control](Media/Image6.3.jpg)
  
-Figure 23: Example of Sub Tree Level Access Control
+Figure 32: Example of Sub Tree Level Access Control
 
 ### Target Attributes
 
@@ -1192,7 +1317,7 @@ The rule can indicate “equal to” (=) or “not equal to” (!=). Select the 
 
 ![Target Attributes Operator](Media/Image6.4.jpg)
 
-Figure 24: Target Attributes Operator
+Figure 33: Target Attributes Operator
 
 The access rule can apply to “all” attributes or choose the “custom” option and click **Select** to narrow the list.
 
@@ -1200,7 +1325,7 @@ For example, if you wanted an access control to apply to all attributes except f
 
 ![Manual Edit of ACI](Media/Image6.5.jpg)
 
-Figure 25: Manual Edit of ACI
+Figure 34: Manual Edit of ACI
 
 ### Authentication Context
 
@@ -1239,7 +1364,7 @@ If no access permissions have been defined, the default behavior is to grant rea
 
 ![Default Global ACI Setting](Media/Image6.6.jpg)
  
-Figure 26: Default Global ACI Setting
+Figure 35: Default Global ACI Setting
 
 #### Type
 
@@ -1247,7 +1372,7 @@ You can explicitly allow or deny access permissions by selecting the applicable 
 
 ![Permission Type](Media/Image6.7.jpg)
  
-Figure 27: Permission Type
+Figure 36: Permission Type
 
 #### Operations
 
@@ -1405,7 +1530,7 @@ The settings found in the Main Control Panel > Settings Tab > Security section >
 
 ![Access Controls](Media/Image3.110.jpg)
  
-Figure 28: Access Controls
+Figure 37: Access Controls
 
 For details on RadiantOne Access Controls and how to define them, please see [Security and Access Controls](#security-and-access-controls).
 
@@ -1437,7 +1562,7 @@ If you enable Bind Requires SSL or StartTLS, to avoid problems when using the Ma
 
 ![Internal Connection Settings](Media/Image3.111.jpg)
  
-Figure 29: Internal Connection Settings
+Figure 38: Internal Connection Settings
 
 ### Bind Requires Password
 
@@ -1461,13 +1586,13 @@ As a simple example, assume there is a group named All Users and that this group
 
 ![Example Group](Media/Image3.113.jpg)
  
-Figure 30: Example Group
+Figure 39: Example Group
 
 The screen below shows the Sales group containing the All Users group as a member.
 
 ![Example Nested Group](Media/Image3.114.jpg)
  
-Figure 31: Example Nested Group
+Figure 40: Example Nested Group
 
 A client can issue a search leveraging the matching rule OID to retrieve all groups Adan_Funston is a member of with the following search filter.
 
@@ -1477,7 +1602,7 @@ A search request to RadiantOne with the above filter would return Sales and All 
 
 ![Search Filter using Matching Rule OID](Media/Image3.115.jpg)
  
-Figure 32: Search Filter using Matching Rule OID
+Figure 41: Search Filter using Matching Rule OID
 
 >[!warning]
 >Queries requesting an intersecting set of multiple memberships like in the following filter are not supported. <BR>(&(ismemberof:1.2.840.113556.1.4.1941:=cn=max,ou=groups,dc=data)(ismemberof:1.2.840.113556.1.4.1941:=cn=othergroup,ou=groups,dc=data))
@@ -1488,7 +1613,7 @@ The settings found in the Main Control Panel > Settings Tab > Security section >
 
 ![Access Controls](Media/Image3.110.jpg)
  
-Figure 33: Access Controls
+Figure 42: Access Controls
 
 For details on RadiantOne Access Controls and how to define them, please see [Security and Access Controls](#security-and-access-controls).
 
@@ -1521,7 +1646,7 @@ If you enable Bind Requires SSL or StartTLS, to avoid problems when using the Ma
 
 ![Internal Connection Settings](Media/Image3.111.jpg)
  
-Figure 34: Internal Connection Settings
+Figure 43: Internal Connection Settings
 
 ### Bind Requires Password
 
@@ -1547,13 +1672,13 @@ As a simple example, assume there is a group named All Users and that this group
 
 ![Example Group](Media/Image3.113.jpg)
  
-Figure 35: Example Group
+Figure 44: Example Group
 
 The screen below shows the Sales group containing the All Users group as a member.
 
 ![Example Nested Group](Media/Image3.114jpg)
  
-Figure 36: Example Nested Group
+Figure 45: Example Nested Group
 
 A client can issue a search leveraging the matching rule OID to retrieve all groups Adan_Funston is a member of with the following search filter.
 
@@ -1563,7 +1688,7 @@ A search request to RadiantOne with the above filter would return Sales and All 
 
 ![Search Filter using Matching Rule OID](Media/Image3.115.jpg)
  
-Figure 37: Search Filter using Matching Rule OID
+Figure 46: Search Filter using Matching Rule OID
 
 >[!warning]
 >Queries requesting an intersecting set of multiple memberships like in the following filter are not supported. <BR>(&(ismemberof:1.2.840.113556.1.4.1941:=cn=max,ou=groups,dc=data)(ismemberof:1.2.840.113556.1.4.1941:=cn=othergroup,ou=groups,dc=data))
@@ -1624,7 +1749,7 @@ When using a RadiantOne Universal Directory store or persistent cache (with pass
 
 ![Password Policies](Media/Image3.102.jpg)
  
-Figure 38: Password Policies
+Figure 47: Password Policies
 
 ## Privileged Password Policy Group
 
@@ -1661,7 +1786,7 @@ In the ‘Choose a Password Policy’ drop-down menu, the default password polic
 
 ![Password Policy Scope](Media/Image3.103.jpg)
  
-Figure 39: Password Policy Scope
+Figure 48: Password Policy Scope
 
 ### Custom Password Policy
 
@@ -1677,7 +1802,7 @@ An example of a custom password policy is shown below. It is applicable to all u
 
 ![Example Custom Password Policy Applicable to a Group](Media/Image3.104.jpg)
  
-Figure 40: Example Custom Password Policy Applicable to a Group
+Figure 49: Example Custom Password Policy Applicable to a Group
 
 An example of a custom password policy applicable to all users below a specific container is shown below. This custom policy is enforced for all users in a RadiantOne Universal Directory store located below o=local.
 
@@ -1685,7 +1810,7 @@ An example of a custom password policy applicable to all users below a specific 
 
 ![An image showing ](Media/Image3.105.jpg)
  
-Figure 41: Example Custom Password Policy Applicable to a Sub Tree
+Figure 50: Example Custom Password Policy Applicable to a Sub Tree
 
 ### Password Policy Precedence
 
@@ -1717,7 +1842,7 @@ Items to keep in mind:
 
 ![Password Changes Options](Media/Image3.106.jpg)
  
-Figure 42: Password Changes Options
+Figure 51: Password Changes Options
 
 ### User must change password after reset
 
@@ -1756,7 +1881,7 @@ Password Expiration
 
 ![Password Expiration Options](Media/Image3.107.jpg)
  
-Figure 43: Password Expiration Options
+Figure 52: Password Expiration Options
  
 ### Password never expires
 
@@ -1815,7 +1940,7 @@ Each of these properties is described below.
  
 ![Password Content and Account Lockout Options](Media/Image3.108.jpg)
 
-Figure 44: Password Content and Account Lockout Options
+Figure 53: Password Content and Account Lockout Options
 
 ### Enabled
 
@@ -1986,7 +2111,7 @@ A multi-valued Generalized Time attribute containing the times of previous conse
 
 ![Number of Login Failures](Media/Image..jpg)
 
-Figure 45: Number of Login Failures
+Figure 54: Number of Login Failures
  
 If the last login was successful, this attribute is not present.
 
@@ -2036,7 +2161,7 @@ The following parameters are configured from the Main Control Panel > Settings T
 
 ![An image showing ](Media/Image3.117.jpg)
 
-Figure 46: Global Limits Section
+Figure 55: Global Limits Section
  
 ### Maximum Connections
 
@@ -2048,7 +2173,7 @@ A connection can be manually closed by issuing an LDAP search to RadiantOne with
 
 ![An image showing ](Media/Image3.118.jpg)
 
-Figure 47: Retrieving Connection ID from cn=Monitor
+Figure 56: Retrieving Connection ID from cn=Monitor
 
 With the connection ID, connect to RadiantOne as the super user (e.g. cn=directory manager) and perform a search request with a base DN of, action=closeconnection,ID=<connectionID>. An example is shown below using the ldapsearch utility. This example closes the connection associated with ID 148300.
 
