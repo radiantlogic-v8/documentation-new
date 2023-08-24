@@ -72,6 +72,28 @@ Launch the *RadiantLogic.OnPremisesAgentClient.Agent.exe* file. A notification w
 
 Once the client is running, you can can setup a connection with the on-premise backend. For details on setting up a connection, see the [server backend](../../sys-admin-guide/server-backend.md) guide.
 
+### Deploy as a service on Windows
+
+#### Step 1: Launch Command window as Administrator (Run as administrator)
+
+#### Step 2: Create the service using following commands
+    sc create <ServiceName> binPath= "<PathToExecutable> --service”
+
+![image description](images/windows-create-service.png)
+
+#### Step 3: Configure the service to start automatically (Optional)
+    sc config <ServiceName> start= auto
+
+![image description](images/windows-service-auto-start.png)
+
+#### Step 4: Start the service 
+    sc start <ServiceName>
+
+![image description](images/windows-service-start.png)
+
+Following all the above steps, your sdc-client should be registered to run as a Windows service and started automatically.
+
+![image description](images/windows-service-running.png)
 
 ## Deploy on Linux
 
