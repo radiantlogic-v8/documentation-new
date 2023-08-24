@@ -35,7 +35,7 @@ To enable log file integrity assurance:
  
 1. Check the Integrity Assurance box (requires Expert Mode). 
 
-    >[!note] This appends the server.log.file.archive value with **_sig**.
+    >[!note] This appends the server.log.file.archive value with **_sig**. This is part of the file definition but does not impact the naming of the zip file itself.
 
 1. Click Save.
 
@@ -74,7 +74,7 @@ To enable log file integrity assurance:
 1. On the Main Control Panel, navigate to the Settings tab > Logs > Access Logs. 
 1. Check the Integrity Assurance box (requires Expert Mode). 
 
-    >[!note] This appends the Text Rollover Destination value with **_sig**.
+    >[!note] This appends the Text Rollover Destination value with **_sig**. This is part of the file definition but does not impact the naming of the zip file itself.
 
 1. Click Save.
 
