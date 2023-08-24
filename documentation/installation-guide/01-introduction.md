@@ -141,11 +141,11 @@ To test a Zookeeper cluster:
 1. On a machine that is running RadiantOne FID, open a Command Processor.
 2. At the command line, navigate to <RLI_HOME>\bin\advanced. With a default RadiantOne FID installation, this location would be as follows (on Windows).
 
-  `c:\radiantone\vds\bin\advanced`
+   `c:\radiantone\vds\bin\advanced`
 
 3. Run the following command.
 
-  `cluster.bat check`
+   `cluster.bat check`
 
 If Zookeeper is functional on all nodes, “SUCCESS” messages similar to the following are displayed.
 
