@@ -279,6 +279,12 @@ Open the command line and run the copied command from Env Ops Center to start th
 
 `docker run -e "ServerHubConfiguration_AgentToken=[access_token]" radiantone/sdc-client`
 
+It is highly recommended to have logs from sdc-client to go into a mounted drive, to have that setup replace the above command with the one below:
+
+`docker run -v /path/on/host:/app/logs -e "ServerHubConfiguration_AgentToken=[access_token]" radiantone/sdc-client`
+
+Replace `/path/on/host` with an actual path on your host machine where you want to store the logs.
+
 If the client to be run on a network where proxy is setup, see the *Proxy Configuration for Docker* section in [run the secure data connector client under proxy network setup](deploy-sdc-client-in-proxy.md) guide.
 
 The `radiantone/sdc-client` is the latest image of the secure data connector client container located in the Radiant Logic Docker Hub repository.
