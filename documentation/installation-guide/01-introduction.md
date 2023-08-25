@@ -17,7 +17,7 @@ Other advantages of having a ZooKeeper ensemble separate from the RadiantOne nod
 
 For details on installing RadiantOne in a Dev/QA environment see [Installation](02-installation).
 
-For details on installing RadiantOne in a production environment, start with the steps in this guide to setup the external ZooKeeper ensemble. Then, refer to the RadiantOne installation guide on how to point to an external ZooKeeper ensemble.
+For details on installing RadiantOne in a production environment, start with the steps in this guide to setup the external ZooKeeper ensemble. Then, refer to [Installation](02-installation) on how to point to an external ZooKeeper ensemble.
 
 The installers are available via an ftp site. Contact support@radiantlogic.com for access information.
 
@@ -112,7 +112,7 @@ Once the first Zookeeper node is configured, you are ready to configure addition
 
 ![An image showing ](Media/ZKImage2.8.jpg)
 
-Figure  8 : The setup.properties File on the Third Zookeeper Node
+Figure  8: The setup.properties File on the Third Zookeeper Node
 
 >[!warning] Any change to the setup.properties file requires re-configuring (configure.bat) and then restarting (start_zookeeper.bat) Zookeeper.
 
@@ -160,7 +160,7 @@ Figure 11: A Cluster Check with One Node Offline
 In the following image, two Zookeeper nodes have gone offline. If the ZooKeeper ensemble only had three nodes to begin with, the loss of two nodes puts the service in a non-functional state since the quorum has been lost. The RadiantOne nodes are impacted at this point and will enter into a read-only mode where they cannot accept configuration changes nor client write operations.
 
 >[!note]
->As an alternative to the default read-only mode, ZooKeeper can be configured for SHUTDOWN mode when the quorum is lost. In this case, the RadiantOne service on all cluster nodes shuts down. If this behavior is preferable, set "onZkWriteLossVdsServerBehavior" : "SHUTDOWN", for the /radiantone/v1/cluster/config/vds_server.conf node on the Main Control Panel > ZooKeeper tab. For more information, see the RadiantOne Deployment and Tuning Guide.
+>As an alternative to the default read-only mode, ZooKeeper can be configured for SHUTDOWN mode when the quorum is lost. In this case, the RadiantOne service on all cluster nodes shuts down. If this behavior is preferable, set "onZkWriteLossVdsServerBehavior" : "SHUTDOWN", for the /radiantone/v1/cluster/config/vds_server.conf node on the Main Control Panel > ZooKeeper tab. For more information, see the [RadiantOne Deployment and Tuning Guide](/documentation/deployment-and-tuning-guide/00-preface)e.
 
 ![An image showing ](Media/ZKImage4.3.jpg)
 
