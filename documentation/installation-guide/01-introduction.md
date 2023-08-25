@@ -15,8 +15,7 @@ Other advantages of having a ZooKeeper ensemble separate from the RadiantOne nod
 - This de-coupled (single service per server) architecture is better for running in container technologies like Docker, simplifying deployment.
 - Easier to troubleshoot problems and there is one less point of failure per machine.
 
-For details on installing RadiantOne in a Dev/QA environment see the RadiantOne Installation
-Guide.
+For details on installing RadiantOne in a Dev/QA environment see [Installation](02-installation).
 
 For details on installing RadiantOne in a production environment, start with the steps in this guide to setup the external ZooKeeper ensemble. Then, refer to the RadiantOne installation guide on how to point to an external ZooKeeper ensemble.
 
@@ -119,7 +118,7 @@ Figure  8 : The setup.properties File on the Third Zookeeper Node
 
 ## Installing RadiantOne
 
-Once all Zookeeper nodes have been configured and started, install RadiantOne. Details about the RadiantOne installation process can be found in the RadiantOne Installation Guide.
+Once all Zookeeper nodes have been configured and started, install RadiantOne. Details about the RadiantOne installation process can be found in [Installation](02-installation).
 
 If you use a load balancer, enter the hostname of the load balancer in the ZooKeeper Hostname/IP field. If you do not use a load balancer, enter the hostname and port number of one of the machines in the Zookeeper ensemble in the ZooKeeper Hostname/IP field. In this example, a load balancer is not used, so the Hostname value is r1-server, and the port number would be 2181.
 
@@ -129,7 +128,7 @@ Figure 9: The ZK Connection String Value in the RadiantOne Installer
 
 ### Configuring SSL between FID and ZooKeeper
 
-Configuring SSL between FID and ZooKeeper can be configured after RadiantOne is installed. The steps are described in the RadiantOne Hardening Guide.
+Configuring SSL between FID and ZooKeeper can be configured after RadiantOne is installed. The steps are described in the [RadiantOne Hardening Guide](/documentation/hardening-guide/00-preface).
 
 ## Testing a ZooKeeper Cluster
 
