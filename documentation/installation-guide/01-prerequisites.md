@@ -15,7 +15,7 @@ If you are using an evaluation or subscription-based license, the Main Control P
 
 ## Cloud Installation
 
-If you plan to install RadiantOne in your cloud data center, on either Amazon Web Services or Azure, please see the RadiantOne AWS Cloud Installation Guide or the RadiantOne Azure Cloud Installation Guide instead of this guide.
+If you plan to install RadiantOne in your cloud data center, on either Amazon Web Services or Azure, please see the [RadiantOne AWS Cloud Installation Guide](/documentation/aws-cloud-installation-guide/overview) or the [RadiantOne Azure Cloud Installation Guide](/documentation/azure-cloud-installation-guide/overview).
 
 ## Minimum System Requirements
 
@@ -30,7 +30,7 @@ Processor Speed: 2GHZ or higher
 
 Network Bandwidth: Minimum 1Gbps, low latency
 
-Memory: 16 GB minimum. For most production deployments, more than 16 GB of memory is required. For more details on sizing, see the Hardware Sizing Guide.
+Memory: 16 GB minimum. For most production deployments, more than 16 GB of memory is required. For more details on sizing, see the [RadiantOne Hardware Sizing Guide](/documentation/hardware-sizing-guide/01-introduction).
 
 Hard Drive: 500 GB of disk space (the hard disk usage will vary depending on log types/levels that are enabled and the desired log history to maintain). The recommended minimum data transfer rate is 150 MB/sec.
 
