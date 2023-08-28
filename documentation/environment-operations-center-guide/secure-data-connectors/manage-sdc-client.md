@@ -29,13 +29,12 @@ To update a secure data connector client on Docker, stop the Docker image and th
 
 ### Rolling update
 
-Installing a rolling update allows the client to continue running with no downtime during the update. To install a rolling update, create a new data connector in Environment Operations Center within the same group as the client you would like to update. 
+Installing a rolling update allows the client to continue running with no downtime during the update. To install a rolling update, create a new data connector in Environment Operations Center (see the [add a data connector](add-data-connector.md) guide) within the same group as the client you would like to update. 
 
-![image description] (insert image of new agent creation in EOC)
 
 Copy the new token from the *Data Connector Registration* dialog in the data connector details section.
 
-![image description] (image of new token copied)
+![image description](images/docker-token.png)
 
 Follow the steps outlined in the [deploy a secure data connector client](deploy-sdc-client.md) guide for your system type to deploy the client as a fresh installation.
 
@@ -77,9 +76,9 @@ To resolve the connection failure, enter the special DNS name `host.docker.inter
 
 If the test connection is not working but you are unsure of the error, first review the secure data connector status in Env Ops Center.
 
-First, save the backend data source and then navigate to the *Secure Data Connector* section of Env Ops Center. If the secure data connector status is "Disabled", the connection has not been correctly setup. Review the associated logs for the data connector to determine the error.
+First, save the backend data source, then login to Env Ops Center and navigate to details section of one of the *Secure Data Connectors* belonging to the group used for connection. If the Data source status is "Disconnected", the connection has not been correctly setup. Review the associated server name/IP and Server Port of this data source to make sure the data connector can connect to this server.
 
-If the secure data connector status is "Active", then the inlets tunnel is working.
+If the data source connector status is "Connected", then the inlets tunnel is working and data connector is able to connect to this data source.
 
 ## Review client logs
 
