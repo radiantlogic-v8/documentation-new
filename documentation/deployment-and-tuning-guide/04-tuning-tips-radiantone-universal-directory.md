@@ -3,7 +3,7 @@ title: Deployment and Tuning Guide
 description: Learn about key tuning options for RadiantOne Universal Directory stores. This includes indexed attributes, non-indexed attributes, full text search, disabling changelog, and logging statistics.
 ---
 
-# Chapter 4: Tuning Tips for RadiantOne Universal Directory
+# Tuning Tips for RadiantOne Universal Directory
 
 The RadiantOne platform offers an LDAP v3 compliant storage that can be used to store any entries. After the root naming context is created, the local store can be populated from an LDIF file or manually on the Main Control Panel -> Directory Browser Tab. RadiantOne can support multiple Universal Directory stores. 
 
