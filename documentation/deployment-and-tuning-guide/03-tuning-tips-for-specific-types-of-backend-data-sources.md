@@ -3,7 +3,7 @@ title: Deployment and Tuning Guide
 description: Learn about key tuning options for virtual views created in the Main Control Panel > Directory Namespace tab or Wizards tab. These options include case sensitivity for searches, modifying attributes exposed in virtual views, indexing attributes used in joins, Request Binary/BLOB Attributes Only When Necessary, Process Joins and Computed Attributes Only When Necessary, connection pooling, disable referral chasing, excluded attributes for Active Directory backends, Include & Exclude filters, and limiting attributes requested from LDAP backends.
 ---
 
-# Chapter 3: Tuning Tips for Specific Types of Backend Data Sources in the RadiantOne Federated Identity Service
+# Tuning Tips for Specific Types of Backend Data Sources in the RadiantOne Federated Identity Service
 
 There are three approaches to creating virtual views from the Main Control Panel. The Wizards tab – Global Identity Builder tool, the Context Builder tab, and the Directory Namespace tab. Although the tuning parameters are typically the same no matter which tab you use, the location to set the parameter may be different. This chapter describes the possible tuning parameters and how to configure them depending on which tool you used to create the virtual views.
 
