@@ -3,7 +3,7 @@ title: Deployment and Tuning Guide
 description: Learn about a common, basic deployment architecture and how to configure inter-cluster replication.
 ---
 
-# Chapter 7: Deployment Architecture
+# Deployment Architecture
 
 Deployment options will be discussed with your Radiant Logic Account Representative and a Solution Consultant.  This chapter provides high-level details about the most common deployment architecture.
 
