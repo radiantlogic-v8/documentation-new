@@ -64,7 +64,7 @@ Open the *appsettings.Production.json* file and locate the `"AgentToken"` field.
 
 ![image description](images/appsettings-token.png)
 
-If the client to be run on a network where proxy is setup, see the *Proxy Configuration for Windows* section in [run the secure data connector client under proxy network setup](deploy-sdc-client-in-proxy.md) guide.
+If the client to be run on a network where proxy is setup, see the *Proxy Configuration for Windows* section in [run the secure data connector client under proxy network setup](deploy-sdc-client-in-proxy.md) guide. Once you have the proxy settings updated following instructions in [proxy configuration](deploy-sdc-client-in-proxy.md) guide, continue to the next steps.
 
 Launch the *RadiantLogic.OnPremisesAgentClient.Agent.exe* file. A notification will display in the command line that confirms a connection has been established between the agent and server.
 
@@ -106,7 +106,7 @@ Open the *appsettings.Production.json* file using an editor and locate the `"Age
 
 ![image description](images/linux-vi-appsettingsjson-file.png)
 
-If the client to be run on a network where proxy is setup, see the *Proxy Configuration for Linux* section in [run the secure data connector client under proxy network setup](deploy-sdc-client-in-proxy.md) guide.
+If the client to be run on a network where proxy is setup, see the *Proxy Configuration for Linux* section in [run the secure data connector client under proxy network setup](deploy-sdc-client-in-proxy.md) guide.  Once you have the proxy settings updated following instructions in [proxy configuration](deploy-sdc-client-in-proxy.md) guide, continue to the next steps.
 
 Open the command line and navigate to the directory that contains the unzipped *sdc-linux.zip* files. From the directory, run the following command to give execute permissions for inlets-pro and RadiantLogic.OnPremisesAgentClient.Agent:
     
