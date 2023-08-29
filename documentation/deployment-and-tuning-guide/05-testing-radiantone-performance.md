@@ -3,7 +3,7 @@ title: Deployment and Tuning Guide
 description: Learn about testing LDAP performance for the RadiantOne service and what aspects can impact performance- Joins, interception scripts, cache, referral chasing, network delays and logging.
 ---
 
-# Chapter 5: Testing RadiantOne Performance
+# Testing RadiantOne Performance
 
 The 3rd party SLAMD Distributed Load Generation Engine is the recommended utility to test the RadiantOne LDAP service performance. Apache JMeter can also be used.
 
