@@ -8,7 +8,7 @@ description: System Administration Guide
 This chapter introduces the various concepts that you should understand to configure and administer RadiantOne. The topics include:
 
   - [Data Source](#data-source)
-  - [Data Agent](#data-agent)
+  - [Secure Data Connector](#secure-data-connector)
   - [Union](#union)
   - [Identity Correlation](#identity-correlation)
   - [Joins](#joins)
