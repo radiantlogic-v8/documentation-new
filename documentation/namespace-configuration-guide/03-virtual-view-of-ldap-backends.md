@@ -71,7 +71,7 @@ _ldap._tcp.example.com. SRV 0 100 636 ldap.example.net
 
 DNS lookups leverage the domain specified in the host parameter. When the specific domain is set in the host parameter, the BaseDN value can be omitted. To use this functionality, the host option should specify the domain name you are interested in and optionally a port (if you are looking for a specific service on a specific port). If you do specify a port, then RadiantOne tries to get the first LDAP service it finds that is listening on that specific port (no matter what order of that particular service in the srv record). Additionally, if you enter a port and there is no LDAP service available on that port, RadiantOne uses the first LDAP service returned from the srv record.
 
->[!note] If there are multiple LDAP services available in the SRV record, RadiantOne uses the first five as “main/primary” and “failover” servers. RadiantOne uses these to automatically failover if the primary LDAP is down. Do not manually specify failover servers in the data source.
+>[!note] The number of LDAP services available in the SRV record that RadiantOne uses as the “main/primary” and “failover” servers is indicated by the Active Dir. SRV Record Limit properety that is configured in Main Control Panel > Settings > Server Backend > Connection Pooling/Other section. RadiantOne uses these servers to automatically failover if the primary LDAP is down. Do not manually specify failover servers in the data source.
 
 Below are some examples of the syntax.
 
