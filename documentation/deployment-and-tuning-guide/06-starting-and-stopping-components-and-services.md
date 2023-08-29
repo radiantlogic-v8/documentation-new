@@ -3,7 +3,7 @@ title: Deployment and Tuning Guide
 description: Learn how to stop and start RadiantOne FID and Global Synchronization using the Control Panel.
 ---
 
-# Chapter 6: Starting and Stopping Components and Services
+# Starting and Stopping Components and Services
 
 This chapter describes how to start and stop the RadiantOne service and the web server hosting the Control Panels.
 
