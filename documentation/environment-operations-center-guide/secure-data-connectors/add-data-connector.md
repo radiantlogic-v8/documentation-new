@@ -12,7 +12,7 @@ The process to create a new secure data connector and establish a connection wit
 - The secure data connector client must be deployed on the local machine.
 - The data source must be defined in the FID Control Panel. 
 
-This guide outlines the steps to add a new secure data connector in Environment Operations Center. For details on deploying the secure data connector client, see the [deploy a secure data connector client](deploy-sdc-client.md) guide. For details on connecting to an on-premise backend from the control panel, see the [RadiantOne System Administration Guide](sys-admin-guide-rebuild/04-backend-settings).
+This guide outlines the steps to add a new secure data connector in Environment Operations Center. For details on deploying the secure data connector client, see the [deploy a secure data connector client](deploy-sdc-client.md) guide. For details on connecting to an on-premise backend from the control panel, see the [RadiantOne System Administration Guide](documentation/sys-admin-guide-rebuild/04-backend-settings).
 
 ## Getting started
 
