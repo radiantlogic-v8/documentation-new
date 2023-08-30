@@ -5,9 +5,9 @@ description: System Administration Guide
 
 # Introduction
 
-Prior to diving into this guide, it is recommended that you read the RadiantOne Architect Guide for a high-level overview of the capabilities of the RadiantOne Platform. This guide introduces concepts in addition to step-by-step instructions to configure and administrate the RadiantOne.
+Prior to diving into this guide, it is recommended that you read the [RadiantOne Architect Guide](/architect-guide/preface) for a high-level overview of the capabilities of the RadiantOne Platform. This guide introduces concepts in addition to step-by-step instructions to configure and administrate the RadiantOne.
 
-For details on deploying RadiantOne including tuning and maintenance, please see the RadiantOne Deployment and Tuning Guide.
+For details on deploying RadiantOne including tuning and maintenance, please see the [RadiantOne Deployment and Tuning Guide](/deployment-and-tuning-guide/00-preface).
 
 ## Technical Support
 
@@ -46,7 +46,7 @@ For cluster deployments, each RadiantOne node includes a Control Panel and admin
 
 ## Starting the Control Panels
 
-The Control Panels utilize a web server that is installed with RadiantOne. The default http port for the web server is 7070 (you can set the port during the RadiantOne install on the settings for the Control Panel). For details on starting the web server that hosts the Control Panels, please see the RadiantOne Deployment and Tuning Guide.
+The Control Panels utilize a web server that is installed with RadiantOne. The default http port for the web server is 7070 (you can set the port during the RadiantOne install on the settings for the Control Panel). For details on starting the web server that hosts the Control Panels, please see the [RadiantOne Deployment and Tuning Guide](/deployment-and-tuning-guide/00-preface).
 
 ## Accessing the Main Control Panel
 
@@ -140,15 +140,13 @@ registeredID | [8]
 
 15.	Once logged into the Main Control Panel, the user is prompted to select the certificate again. This second prompt is to indicate the credentials to be used for the Directory Browser tab (as a REST client to the RadiantOne service). 
 
->[!warning]
->If you log out of the Control Panel, you are redirected to the main login form. If you want to be prompted to select your certificate again, you must close and re-open your web browser.
+>[!warning] If you log out of the Control Panel, you are redirected to the main login form. If you want to be prompted to select your certificate again, you must close and re-open your web browser.
 
 ### Logging in with Two-factor Authentication
 
 The Control Panel, as a client to the RadiantOne service, supports two-factor authentication for administrators to log in. This is supported through the Custom Authentication Provider framework and supports RSA SecurID and Yubikey token codes by default. High-level configuration steps to support two-factor authentication for RadiantOne administrators are outlined below. For details on Custom Authentication Providers, see the RadiantOne Custom Authentication Providers Guide.
 
->[!warning]
->Two-factor authentication is not required for the RadiantOne super user account (e.g. cn=directory manager). If a custom authentication provider is enabled for other RadiantOne delegated administrator accounts, the super user account is still able to log into the Control Panel without requiring two-factor authentication. This is to prevent complete lockout of server administration.
+>[!warning] Two-factor authentication is not required for the RadiantOne super user account (e.g. cn=directory manager). If a custom authentication provider is enabled for other RadiantOne delegated administrator accounts, the super user account is still able to log into the Control Panel without requiring two-factor authentication. This is to prevent complete lockout of server administration.
 
 1.	Create a custom data source that defines the connection to the web service for credentials validation.
 
@@ -401,7 +399,7 @@ The configuration and monitoring features described in this section are applicab
 
 # Clusters Tab
 
-The clusters tab allows you to view subclusters. This tab is available only when one or more subclusters have been installed. For more information, refer to the RadiantOne Installation Guide.
+The clusters tab allows you to view subclusters. This tab is available only when one or more subclusters have been installed. For more information, refer to the [RadiantOne Installation Guide](/installation-guide/01-introduction).
 
 Once a new subcluster is defined, you can click on the Open link to launch the Control Panel for that cluster. 
 
@@ -411,7 +409,7 @@ Figure 19: The Clusters Tab
 
 # Global Sync Tab
 
-The Global Sync tab is used to configure and managing synchronization topologies. For details on configuring synchronization, see the RadiantOne Global Sync Guide.
+The Global Sync tab is used to configure and managing synchronization topologies. For details on configuring synchronization, see the [RadiantOne Global Sync Guide](/global-sync-guide/introduction).
 
 ![Global Sync Tab](Media/Image3.166.jpg)
  
@@ -491,7 +489,7 @@ The Cancel button reverts the changes back to the previous settings.
 The Overview section displays the cluster nodes. You can see the status of services on the nodes and which node is the cluster’s RadiantOne leader (![An image showing ](Media/yellow-triangle.jpg) beside the server name) The RadiantOne leader node handles write operations for the cluster. 
 
 >[!note]
->You can also determine the current RadiantOne leader by using the node-monitor data collector. For details, see the Monitoring and Reporting Guide.
+>You can also determine the current RadiantOne leader by using the node-monitor data collector. For details, see the [RadiantOne Monitoring and Reporting Guide](/monitoring-and-reporting-guide/01-monitoring).
 
 You can start, stop and restart the RadiantOne service here by selecting an option from the ![An image showing ](Media/power.jpg) drop-down menu, (as long as it is not configured to run as a service) and access the Server Control Panel associated with the node by clicking ![An image showing ](Media/server-control-panel.jpg). You are only able to perform these operations if the Jetty Application Server hosting the Control Panel on a particular node is running. If it isn’t, these buttons are gray. A red exclamation point icon next to the node name indicates that the application server hosting the Control Panel is not running on the node. Go to the node machine to start the application server hosting the Control Panel.
 
@@ -551,7 +549,7 @@ The Active Alerts section displays alert information about memory, connections, 
  
 Figure 27: The Active Alerts Section on the Main Dashboard Tab
 
-For more information on configuring standard and custom alerts, refer to the RadiantOne Monitoring and Reporting Guide.
+For more information on configuring standard and custom alerts, refer to the [RadiantOne Monitoring and Reporting Guide](/monitoring-and-reporting-guide/01-monitoring).
 
 ## Internode Health Section
 
@@ -665,7 +663,7 @@ In the Usage Summary section, you see connection usage since startup and average
 
 In the Current Connections section, there is a summary of operation types per connection (including a total number of operations) and the bind user that established the connection. You will also see the Client IP address associated with the open connections. To export current connection data into a CSV-format report, click **Export to CSV**. The Select CSV File window opens. Specify a file location (within <RLI_HOME>) or keep the default (<RLI_HOME>/vds_server/logs). Specify a file name. Click **OK**. If you specify a location that contains a CSV with the same file name, you are asked if you want to overwrite the existing file.
 
-The data used to calculate these numbers can be found by querying RadiantOne with a base DN of cn=monitor. When you query RadiantOne with a base DN of cn=monitor (from the RadiantOne LDAP Browser, or any other LDAP client), the result is 1 entry per established connection. Each entry includes how many operations the client has performed and what the operation was (bind, search, compare, delete, modify, or add). For details on the information available in cn=monitor, please see the RadiantOne Monitoring and Reporting Guide.
+The data used to calculate these numbers can be found by querying RadiantOne with a base DN of cn=monitor. When you query RadiantOne with a base DN of cn=monitor (from the RadiantOne LDAP Browser, or any other LDAP client), the result is 1 entry per established connection. Each entry includes how many operations the client has performed and what the operation was (bind, search, compare, delete, modify, or add). For details on the information available in cn=monitor, please see the [RadiantOne Monitoring and Reporting Guide](/monitoring-and-reporting-guide/01-monitoring).
 
 The Processing Activity Details section, shows how many operations are waiting to be processed, how many operations are currently being executed in addition to the maximum working threads available and peak worker threads used.
 
@@ -758,7 +756,7 @@ A server certificate used by RadiantOne uniquely identifies it to clients for es
 
 ### Replacing the Default Self-Signed Certificate
 
-During the RadiantOne installation, a default self-signed certificate is generated for RadiantOne. This self-signed certificate can be replaced with one assigned by a Certificate Authority (CA). Follow the steps below corresponding to your certificate type. If you require a certificate and RadiantOne configuration that is FIPS 140-2 compliant, skip the steps in this section and see the RadiantOneFIPS_Mode Guide.
+During the RadiantOne installation, a default self-signed certificate is generated for RadiantOne. This self-signed certificate can be replaced with one assigned by a Certificate Authority (CA). Follow the steps below corresponding to your certificate type. If you require a certificate and RadiantOne configuration that is FIPS 140-2 compliant, skip the steps in this section and see the [RadiantOne FIPS Mode Guide](/radiantone-fips-mode-guide/01-overview).
 
 >[!warning]
 >If RadiantOne is deployed in a cluster, and each node has their own server certificate, the following steps must be performed on each node independently.
@@ -1134,7 +1132,7 @@ Figure 50: Log Viewer
 
 >[!warning] If you change the log location of RadiantOne server log, the Log Viewer tab on the Server Control Panel cannot be used to view the log contents. A basic text viewer (like Notepad) must be used instead.
 
-For complete details on logs and troubleshooting, please see the RadiantOne Logging and Troubleshooting Guide.
+For complete details on logs and troubleshooting, please see the [RadiantOne Logging and Troubleshooting Guide](/logging-and-troubleshooting-guide/01-overview).
 
 ## Delegated Administration of RadiantOne
 
@@ -1421,7 +1419,7 @@ Default administrative users are included as members of these groups. They are a
 You can use the default users for delegated administration of RadiantOne activities, or you can add your own users to the various admin roles as described in the [Managing Delegation Administration Roles](#managing-default-delegated-administration-roles). To use the default users, you can log in with any of the following (depending on the RadiantOne configuration you want to manage). For details on what activities these users can perform, please see [Delegated Administration of RadiantOne](#delegated-administration-of-radiantone).
 
 >[!note]
->for details on how to update the default delegate admin user’s passwords, see the RadiantOne Hardening Guide.
+>for details on how to update the default delegate admin user’s passwords, see the [RadiantOne Hardening Guide](/hardening-guide/00-preface).
 
 user: aciadmin
 <br> password: <set to the same password you defined for the super user (cn=directory manager) during the installation>
@@ -1463,7 +1461,7 @@ As an alternative to using the [default delegated admin groups](01-introduction#
 
 To configure groups and users for delegated administration, follow the steps below.
 
-1.	The groups and users that you want to use for delegated administration must all be located under the same root naming context. Either import your groups and users into a RadiantOne Universal Directory store (e.g. import an LDIF file), or create a virtual view of groups and users and configure it as persistent cache. For assistance on creating RadiantOne Universal Directory stores, see the RadiantOne Namespace Configuration Guide. For assistance on configuring persistent cache, see the RadiantOne Deployment and Tuning Guide.
+1.	The groups and users that you want to use for delegated administration must all be located under the same root naming context. Either import your groups and users into a RadiantOne Universal Directory store (e.g. import an LDIF file), or create a virtual view of groups and users and configure it as persistent cache. For assistance on creating RadiantOne Universal Directory stores, see the [[RadiantOne Namespace Configuration Guide](/namespace-configuration-guide/01-introduction)](/namespace-configuration-guide/01-introduction). For assistance on configuring persistent cache, see the [RadiantOne Deployment and Tuning Guide](/deployment-and-tuning-guide/00-preface).
 
 2.	(Optional) If your groups and users are in persistent cache, go to the Main Control Panel > Directory Namespace > Cache node and select your cache branch. On the Properties tab on the right, enter vdPrivilege in the Extension Attributes list and click Save.
 
@@ -1531,8 +1529,8 @@ Schema Administrator <br> Members of this group can perform the following operat
 **ICS Administrator** <br> Members of this group can perform the following operations: <br> Read RadiantOne configuration <br> Access Wizards tab in Main Control Panel <br> Perform all operations from the Global Sync Tab <br> Log into the RadiantOne Insights, Reports and Administration console and access all applications	| config-read <br> config-write <br> naming-context-read <br> data-source-read <br> ics-admin <br> ics-workflow-approve <br> tasks-admin <br> globalidviewer-read <br> globalidviewer-write <br> globalidviewer-designer
 **Approvers** <br> Members of this group can perform the following operations: <br> Read RadiantOne configuration <br> Access the Approvals Application in the RadiantOne Insights, Reports and Administration Console | config-read <br> ics-workflow-approve 
 **ICS Operator** <br> Members of this group can perform the following operations: <br> Read RadiantOne configuration <br> Access the Global Sync tab and read topologies <br> Log into the RadiantOne Insights, Reports, and Administration console and access all applications | config-read <br> ics-operator
-**Global ID Viewer Design** <br> Members of this group can log into the Global Identity Viewer and perform the following operations: <br> View entries & attributes <br> Perform searches <br> Edit & delete templates <br> Create, edit and delete queries <br> Export search results <br> Modify attribute values <br> Configure and schedule reports <br> For details on the Global Identity Viewer, see the RadiantOne Global Identity Viewer Guide | config-read <br> config-write <br> globalidviewer-designer <br> tasks-admin
-**Global ID Viewer Write** <br> Members of this group can log into the Global Identity Viewer and perform the following operations: <br> View entries & attributes <br> Perform searches <br> Export search results <br> Modify attribute values <br> For details on the Global Identity Viewer, see the RadiantOne Global Identity Viewer Guide | config-read <br> globalidviewer-write
+**Global ID Viewer Design** <br> Members of this group can log into the Global Identity Viewer and perform the following operations: <br> View entries & attributes <br> Perform searches <br> Edit & delete templates <br> Create, edit and delete queries <br> Export search results <br> Modify attribute values <br> Configure and schedule reports <br> For details on the Global Identity Viewer, see the [RadiantOne Global Identity Viewer Guide](/global-identity-viewer-guide/01-introduction) | config-read <br> config-write <br> globalidviewer-designer <br> tasks-admin
+**Global ID Viewer Write** <br> Members of this group can log into the Global Identity Viewer and perform the following operations: <br> View entries & attributes <br> Perform searches <br> Export search results <br> Modify attribute values <br> For details on the Global Identity Viewer, see the [RadiantOne Global Identity Viewer Guide](/global-identity-viewer-guide/01-introduction) | config-read <br> globalidviewer-write
 
 ## Configuration Lock
 

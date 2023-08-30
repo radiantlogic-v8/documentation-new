@@ -5,7 +5,7 @@ description: System Administration Guide
 
 # Creating Virtual Views
 
-The RadiantOne namespace is managed from the Directory Namespace tab. New root naming contexts are configured and managed from here. A naming context can represent virtual views from LDAP, database or web service backends or local RadiantOne Universal Directory stores. For details, please see the RadiantOne Namespace Configuration Guide.
+The RadiantOne namespace is managed from the Directory Namespace tab. New root naming contexts are configured and managed from here. A naming context can represent virtual views from LDAP, database or web service backends or local RadiantOne Universal Directory stores. For details, please see the [RadiantOne Namespace Configuration Guide](/namespace-configuration-guide/01-introduction).
 
 >[!note] The Directory Namespace tab is not accessible from follower-only cluster nodes.
 
@@ -15,7 +15,7 @@ For details on using the Context Builder to create model-driven views, see the R
 
 # Wizards Tab
 
-All Identity Service Wizards can be launched from the Main Control Panel > Wizards tab. RadiantOne must be running in order to launch a wizard. If RadiantOne is not running, it can be started from the Dashboard tab. Details on each wizard can be found in the Identity Service Wizards section of this guide.
+All Identity Service Wizards can be launched from the Main Control Panel > Wizards tab. RadiantOne must be running in order to launch a wizard. If RadiantOne is not running, it can be started from the Dashboard tab. Details on each wizard can be found in the [Identity Service Wizards](#identity-service-wizards) section of this guide.
 
 ![wizards tab](Media/Image3.160.jpg)
  
@@ -43,7 +43,7 @@ The Identity Data Analysis tool generates a report for each of your data sources
 
 ### Global Identity Builder
 
-The Global Identity Builder can be used in situations where applications require a single data source to locate all users required for authentication and/or need to access a complete user profile for attribute-based authorization. The overlapping identities do not need to have a single common identifier, because a combination of matching rules can be used to determine a link. The Global Identity Builder creates a unique reference list of identities spread throughout multiple data silos. An existing single source of identities is not required. For details, please see the RadiantOne Global Identity Builder Guide.
+The Global Identity Builder can be used in situations where applications require a single data source to locate all users required for authentication and/or need to access a complete user profile for attribute-based authorization. The overlapping identities do not need to have a single common identifier, because a combination of matching rules can be used to determine a link. The Global Identity Builder creates a unique reference list of identities spread throughout multiple data silos. An existing single source of identities is not required. For details, please see the [RadiantOne Global Identity Builder Guide](/global-identity-builder-guide/introduction).
 
 ### Groups Builder
 
@@ -109,7 +109,7 @@ To configure rules for linked attributes, following the steps below:
 
 5.	Select a base DN containing the entries (e.g. users) for which the back link attributes should be managed. In the example below, ou=allprofiles is selected.
 
-    >[!warning] If your users and groups are in RadiantOne Universal Directory stores, and you plan on enabling the Optimize Linked Attribute setting and must support nested groups, only one user location per Universal Directory store is supported. For example, having a user location configured for ou=people1,dc=myhdap and ou=people2,dc=myhdap (both in the same dc=myhdap store) is not supported. In this case, you should configure a single user location as dc=myhdap as a shared parent for both user containers. For information about the Optimize Linked Attribute function for Universal Directory stores, see the Namespace Configuration Guide. For information about the Optimize Linked Attribute function for persistent cache stores, see the Deployment and Tuning Guide.
+    >[!warning] If your users and groups are in RadiantOne Universal Directory stores, and you plan on enabling the Optimize Linked Attribute setting and must support nested groups, only one user location per Universal Directory store is supported. For example, having a user location configured for ou=people1,dc=myhdap and ou=people2,dc=myhdap (both in the same dc=myhdap store) is not supported. In this case, you should configure a single user location as dc=myhdap as a shared parent for both user containers. For information about the Optimize Linked Attribute function for Universal Directory stores, see the Namespace Configuration Guide. For information about the Optimize Linked Attribute function for persistent cache stores, see the [RadiantOne Deployment and Tuning Guide](/deployment-and-tuning-guide/00-preface).
 
     ![An image showing ](Media/Image3.131.jpg)
  
@@ -127,7 +127,7 @@ To configure rules for linked attributes, following the steps below:
 
 11.	Click **OK**. The configuration is displayed in the Linked Attributes section.
 
-    ![An image showing ](Media/Image1.132.jpg)
+    ![An image showing ](Media/image1.132.jpg)
  
     Figure 14: Linked Attributes Configuration Rules
 
@@ -335,4 +335,4 @@ The unnest groups setting is not enabled by default. To define a naming context 
 
 6.	Click **Save**.
 
-7.	Configure the persistent cache for the virtual view containing the nested groups. For help with configuring persistent cache, see the RadiantOne Deployment and Tuning Guide.
+7.	Configure the persistent cache for the virtual view containing the nested groups. For help with configuring persistent cache, see the [RadiantOne Deployment and Tuning Guide](/deployment-and-tuning-guide/00-preface).

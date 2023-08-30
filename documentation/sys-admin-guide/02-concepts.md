@@ -92,7 +92,7 @@ Identity overlap means a same user exists in more than one data source. If there
 
 To correlate identities, a logical rule must exist for each data source so that a combination of attributes (eventually transformed) will yield a match for common users. For each source, different attributes can be used to generate the correlation logic. 
 
-To build a virtual view that correlates identities, use the Global Identity Builder. See the RadiantOne Global Identity Builder Guide for details.
+To build a virtual view that correlates identities, use the Global Identity Builder. See the [RadiantOne Global Identity Builder Guide](/global-identity-builder-guide/introduction) for details.
 
 ## Joins
 
@@ -175,7 +175,7 @@ Configuration Steps for LDAP and DSML Backends
 
 If you would like to create an attribute based on existing attributes of the primary object to base your join condition on, click the Add Computed Attributes option. This allows you to build a new attribute based on the attributes available in the primary object. This new attribute can then be used to base your join condition on. For more information, please see [Computed Attributes](#computed-attributes).
 
-  >[!note] The Object Class will be set to the class for the primary object. You cannot change the object mapping from here. For more information on changing the object class associated with the database object, please see the RadiantOne Namespace Configuration Guide.
+  >[!note] The Object Class will be set to the class for the primary object. You cannot change the object mapping from here. For more information on changing the object class associated with the database object, please see the [RadiantOne Namespace Configuration Guide](/namespace-configuration-guide/01-introduction).
 
 5.	Click **Next**.
 
@@ -512,7 +512,7 @@ Attribute mail coming from a join/secondary source that is NOT searchable, updat
 ### How the Join is Performed
 
 >[!warning]
->If the “Limit Attributes Requested from the LDAP Backend” optimization is enabled for a proxy to an LDAP backend, in addition to a join, the attribute(s) from the primary LDAP source that the join(s) are based on should be listed as “always requested” on the Attributes Tab. Otherwise, RadiantOne may not get the attribute(s) from the primary backend that are required to perform the join and the join cannot be done. For more information on limiting attributes requested from the LDAP backend, please see the RadiantOne Namespace Configuration Guide.
+>If the “Limit Attributes Requested from the LDAP Backend” optimization is enabled for a proxy to an LDAP backend, in addition to a join, the attribute(s) from the primary LDAP source that the join(s) are based on should be listed as “always requested” on the Attributes Tab. Otherwise, RadiantOne may not get the attribute(s) from the primary backend that are required to perform the join and the join cannot be done. For more information on limiting attributes requested from the LDAP backend, please see the [RadiantOne Namespace Configuration Guide](/namespace-configuration-guide/01-introduction).
 
 #### Pre-filtering on the Primary Source
 
@@ -546,7 +546,7 @@ Figure 12: Inner Join Example
 
 #### Behavior if a Secondary Source is Unavailable
 
-The behavior of RadiantOne in cases where one or more of the secondary sources is unavailable depends on if the Process Joins and Computed Attributes Only when Necessary optimization is enabled or not. For more information on this setting, please see the RadiantOne Namespace Configuration Guide.
+The behavior of RadiantOne in cases where one or more of the secondary sources is unavailable depends on if the Process Joins and Computed Attributes Only when Necessary optimization is enabled or not. For more information on this setting, please see the [RadiantOne Namespace Configuration Guide](/namespace-configuration-guide/01-introduction).
 
 If the Process Joins and Computed Attributes Only when Necessary optimization is enabled, and the filter coming in from the client request only involves attributes from the primary source, and the attributes requested are only from the primary (main) source, RadiantOne does not need to perform the join. If one of the secondary backend sources is down, RadiantOne does not know in this case because the optimization tells it to only join if necessary, and in this example, a join is not necessary. Therefore, RadiantOne does not know if a secondary backend is down or not. In this situation, the entry (with the specific attributes requested) is returned to the client. If the filter in the client request involves attributes that could come from a secondary source (and they are configured as searchable), or if the requested attributes from the client include attributes from secondary sources(s), the optimization is not possible and RadiantOne must join. In this case, the default behavior is to not return the entry at all. If the client issued a base search, they receive LDAP error code 32 along with the error message from the secondary backend that was unavailable. If the client issued a one level or subtree search, they receive error code 9 along with the error message from the secondary backend that failed.
 
@@ -580,7 +580,7 @@ After the join is configured, you can set the bind order (the backends to check 
 
 Figure 14: Bind Order Example
 
-For specific configuration details, please see the RadiantOne Namespace Configuration Guide.
+For specific configuration details, please see the [RadiantOne Namespace Configuration Guide](/namespace-configuration-guide/01-introduction).
 
 ## Computed Attributes
 
@@ -726,7 +726,7 @@ Interception scripts are written in Java and used to override the default behavi
 >[!warning]
 >Interception scripts are powerful and offer a lot of flexibility. However, this logic is executed inside RadiantOne so caution should be taken to ensure no undesirable effects. It is highly recommended that you engage Radiant Logic Professional Services to write the interception script(s). If you choose to write your own script(s), the Radiant Logic support team might be unable to diagnose problems in a timely manner. This can result in additional consultation fees imposed on the customer related to the time required to assess and certify the script logic. This is beyond the scope of support and falls under Radiant Logic Professional Services.
 
-Interception scripts can be configured at a [global level](03-front-end-settings#global-interception) (to apply to all root naming contexts configured for the RadiantOne namespace), or for a specific backend (LDAP, Database, Web Services). For details on how to enable interception scripts for your specific type of backend, please see the RadiantOne Namespace Configuration Guide. This section describes the tasks that are common for interception scripts no matter where they are enabled.
+Interception scripts can be configured at a [global level](03-front-end-settings#global-interception) (to apply to all root naming contexts configured for the RadiantOne namespace), or for a specific backend (LDAP, Database, Web Services). For details on how to enable interception scripts for your specific type of backend, please see the [RadiantOne Namespace Configuration Guide](/namespace-configuration-guide/01-introduction). This section describes the tasks that are common for interception scripts no matter where they are enabled.
 
 1.	After the script has been enabled from the Main Control Panel click Save in the upper right corner and apply the changes to the server. 
 

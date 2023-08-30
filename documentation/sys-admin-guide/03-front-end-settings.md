@@ -7,7 +7,7 @@ description: System Administration Guide
 
 From the Settings Tab, you can manage the majority of RadiantOne settings. All settings found on this tab are detailed in this section.
 
-Cluster settings are stored in ZooKeeper. These can be viewed/edited from the Zookeeper tab in the Main Control Panel (navigate to radiantone > `<version> > <cluster_name> > config > vds_server.conf` and click **Edit Mode** in the upper right corner). Or, these settings can be viewed/edited with ZooInspector. ZooInspector can be started with: <RLI_HOME>\apps\zookeeper\contrib\ZooInspector\run.cmd (or run.sh on UNIX platforms). In ZooInspector, click on ![zooinspector button](Media/zooinspector-button.jpg) to connect to the ZooKeeper instance. For more details on ZooKeeper, please see the RadiantOne Architect Guide.
+Cluster settings are stored in ZooKeeper. These can be viewed/edited from the Zookeeper tab in the Main Control Panel (navigate to radiantone > `<version> > <cluster_name> > config > vds_server.conf` and click **Edit Mode** in the upper right corner). Or, these settings can be viewed/edited with ZooInspector. ZooInspector can be started with: <RLI_HOME>\apps\zookeeper\contrib\ZooInspector\run.cmd (or run.sh on UNIX platforms). In ZooInspector, click on ![zooinspector button](Media/zooinspector-button.jpg) to connect to the ZooKeeper instance. For more details on ZooKeeper, please see the [RadiantOne Architect Guide](/architect-guide/preface).
 
 ![ZooInspector](Media/Image3.37.jpg)
  
@@ -71,7 +71,7 @@ To change the directory manager’s password from the Instance Manager command l
 
 The -p option is required when updating the password.
 
-The RadiantOne service must be stopped when running this command. For more details on the Instance Manager utility, please see the RadiantOne Deployment and Tuning Guide.
+The RadiantOne service must be stopped when running this command. For more details on the Instance Manager utility, please see the [RadiantOne Deployment and Tuning Guide](/deployment-and-tuning-guide/00-preface).
 
 You can also change the directory administrator’s password via LDAP. The DN representing the directory administrator is: cn=Directory Manager,ou=RootUsers,cn=config. The example below is using an LDIF file and the ldapmodify command to modify the password:
 
@@ -467,7 +467,7 @@ Below is an example of a RadiantOne response to a “Who Am I” extended operat
 
 #### Dynamic Entries Extension
 
-The RadiantOne Universal Directory supports temporary entries using the dynamicObject auxiliary object class as specified in [RFC 2589](https://www.rfc-editor.org/rfc/rfc2589). These entries are associated with a time to live attribute and once expired, the entry is automatically removed from the directory. For details on this extension, see the RadiantOne Namespace Configuration Guide.
+The RadiantOne Universal Directory supports temporary entries using the dynamicObject auxiliary object class as specified in [RFC 2589](https://www.rfc-editor.org/rfc/rfc2589). These entries are associated with a time to live attribute and once expired, the entry is automatically removed from the directory. For details on this extension, see the [RadiantOne Namespace Configuration Guide](/namespace-configuration-guide/01-introduction).
 
 ### Attributes Handling
 
@@ -551,7 +551,7 @@ Figure 10: Duplicate Identity Handling Section
 
 During the identification phase (finding the person in the directory tree) of the authentication process, it is important that a search for a specific, unique user account only returns one entry.
 
-When aggregating model-driven virtual views (created in Context Builder) from multiple sources, there is the potential to have duplicate DN’s (because the same person exists in more than one source or the same identifier belongs to different people). Returning multiple users with the same DN is a violation of an LDAP directory. Therefore, if your virtual namespace encounters this configuration issue, you can enable the Duplicate DN Removal option to have RadiantOne return only the first entry. This is fine if the duplicate DN’s result in the same person. If they are not the same person, then you have a different problem which is identity correlation (correlating and reconciling the same person in multiple data sources) that needs to be addressed. To assist with your identity correlation problem, please see the RadiantOne Global Identity Builder Guide.
+When aggregating model-driven virtual views (created in Context Builder) from multiple sources, there is the potential to have duplicate DN’s (because the same person exists in more than one source or the same identifier belongs to different people). Returning multiple users with the same DN is a violation of an LDAP directory. Therefore, if your virtual namespace encounters this configuration issue, you can enable the Duplicate DN Removal option to have RadiantOne return only the first entry. This is fine if the duplicate DN’s result in the same person. If they are not the same person, then you have a different problem which is identity correlation (correlating and reconciling the same person in multiple data sources) that needs to be addressed. To assist with your identity correlation problem, please see the [RadiantOne Global Identity Builder Guide](/global-identity-builder-guide/introduction).
 
 Let’s look at an example of duplicate DN’s being returned for the same person. A person named Laura Callahan has an Active Directory account and a Sun Directory account. If both sources are virtualized and then merge-linked into a common virtual tree, a search on the tree would yield two results (because the RDN configured in the virtual views is exactly the same). Below is a screen shot of the virtual tree where both virtual views are linked, and a search from the Main Control Panel, Directory Browser tab, that returns two results.
 
@@ -621,7 +621,7 @@ This is ideal for handling authentication requests (to ensure only one entry is 
 
 ### Memory Cache
 
-RadiantOne supports two types of memory cache: Query and Entry. For complete details on both, please see the RadiantOne Deployment and Tuning Guide.
+RadiantOne supports two types of memory cache: Query and Entry. For complete details on both, please see the [RadiantOne Deployment and Tuning Guide](/deployment-and-tuning-guide/00-preface).
 
 Memory cache can be configured from the Main Control Panel > Settings Tab > Server Front End > Memory Cache section.
 
@@ -653,7 +653,7 @@ To define an entry cache:
 >[!note]
 >You can flush the entry memory cache at any time from the Main Control Panel > Settings Tab > Server Front End > Memory Cache section. Click FLUSH ALL located in the Entry cache section.
 
-For complete details on how entry memory cache works, please see the RadiantOne Deployment and Tuning Guide.
+For complete details on how entry memory cache works, please see the [RadiantOne Deployment and Tuning Guide](/deployment-and-tuning-guide/00-preface).
 
 #### Query Cache
 
@@ -679,7 +679,7 @@ To define a query cache:
 >[!note]
 >You can flush the query memory cache at any time from the Main Control Panel > Settings Tab > Server Front End > Memory Cache section. Click **FLUSH ALL** located in the Query cache section.
 
-For complete details on how query memory cache works, please see the RadiantOne Deployment and Tuning Guide. 
+For complete details on how query memory cache works, please see the [RadiantOne Deployment and Tuning Guide](/deployment-and-tuning-guide/00-preface). 
 
 ### Other Access Protocols
 
@@ -992,7 +992,7 @@ First, all RadiantOne servers must be defined as data sources in the Main Contro
 
 If you want to redirect write operations to another RadiantOne cluster, select a branch and click **EDIT**. In the “Redirect Write Operations (Add, Modify, Delete) To” drop-down list, select the data source representing the location where you want the writes to be sent.
 
-For redirected writes, you also have the option to define the local write mode. This functionality requires Inter-Cluster replication to be enabled on the Universal Directory store. For details on Inter-Cluster replication, please see the RadiantOne Deployment and Tuning Guide. The options are as follow:
+For redirected writes, you also have the option to define the local write mode. This functionality requires Inter-Cluster replication to be enabled on the Universal Directory store. For details on Inter-Cluster replication, please see the [RadiantOne Deployment and Tuning Guide](/deployment-and-tuning-guide/00-preface). The options are as follow:
 
 -	Write locally after reading from redirected source (default behavior).
 
@@ -1012,7 +1012,7 @@ If you want to redirect bind operations to another RadiantOne server, select a b
 
 When you are finished, click **Save** in the top right corner.
 
-For more examples of using redirects, please see the RadiantOne Deployment and Tuning Guide.
+For more examples of using redirects, please see the [RadiantOne Deployment and Tuning Guide](/deployment-and-tuning-guide/00-preface).
 
 ![An image showing ](Media/Image3.141.jpg)
 

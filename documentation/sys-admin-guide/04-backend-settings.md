@@ -103,7 +103,7 @@ To change the Active Directory SRV record limit:
 
 A data source in RadiantOne represents the connection to a backend. Data sources can be managed from the Main Control Panel > Settings Tab > Server Backend section. Configuring connections to all backends from a central location simplifies the management task when changes to the backend are required. For more details on data sources, please see [Concepts](concepts).
 
->[!note] Data sources can also be managed from the command line using the RadiantOne command line config utility. Details on this utility can be found in the RadiantOne Command Line Configuration Guide.
+>[!note] Data sources can also be managed from the command line using the RadiantOne command line config utility. Details on this utility can be found in the [Radiantone Command Line Configuration Guide](/command-line-configuration-guide/01-introduction).
 
 ### Status
 
@@ -324,7 +324,7 @@ To delete a data source, select the configured data source and click **Delete**.
 
 If the primary backend is not available or the SSL certificate is expired (resulting in a connection error), RadiantOne attempts to connect to failover servers that are configured for the data source.
 
->[!note] If your data source is Active Directory and you are using Host Discovery in your data source settings, there is no need to define failover server. RadiantOne automatically leverages the first five LDAP servers listed in the SRV record as primary/failover servers. For more information on Host Discovery, see the RadiantOne Namespace Configuration Guide.
+>[!note] If your data source is Active Directory and you are using Host Discovery in your data source settings, there is no need to define failover server. RadiantOne automatically leverages the first five LDAP servers listed in the SRV record as primary/failover servers. For more information on Host Discovery, see the [RadiantOne Namespace Configuration Guide](/namespace-configuration-guide/01-introduction).
 
 1.	Go to the Main Control Panel > Settings Tab > Server Backend section.
 
@@ -430,7 +430,7 @@ If the primary backend is not available, RadiantOne attempts to connect to a fai
 
 #### Custom Data Sources
 
-A custom data source is defined as something that cannot be accessed directly using JDBC/ODBC or LDAP. To access these types of data sources, you need to configure what is known as a custom object. RadiantOne includes a few default custom objects representing data sources you can virtualize. These data sources are for the following applications: Google Apps, Azure AD, Okta Universal Directory, any SCIM v1 source, any SCIM v2 source, Workday, Concur, Epic, SharePoint Users and Profile, and SharePoint Online Profile. To use these objects in virtual views, you just need to update the connection properties to point to your own application instances. For more details on leveraging these custom data sources in virtual views, please see the RadiantOne Namespace Configuration Guide.
+A custom data source is defined as something that cannot be accessed directly using JDBC/ODBC or LDAP. To access these types of data sources, you need to configure what is known as a custom object. RadiantOne includes a few default custom objects representing data sources you can virtualize. These data sources are for the following applications: Google Apps, Azure AD, Okta Universal Directory, any SCIM v1 source, any SCIM v2 source, Workday, Concur, Epic, SharePoint Users and Profile, and SharePoint Online Profile. To use these objects in virtual views, you just need to update the connection properties to point to your own application instances. For more details on leveraging these custom data sources in virtual views, please see the [RadiantOne Namespace Configuration Guide](/namespace-configuration-guide/01-introduction).
 
 To edit a custom data source, from the Main Control Panel > Settings Tab > Server Backend section > Custom Data Sources sub-section, select the custom data source from the list and click **Edit**. Select a custom property and click **EDIT**. Save your changes when finished.
 
@@ -439,7 +439,7 @@ To edit a custom data source, from the Main Control Panel > Settings Tab > Serve
 Figure 13: Sample Custom Data Source
 
 >[!warning]
->Most default custom data sources do not support authentication operations. They are primarily to allow for provisioning/de-provisioning identity information to these apps through RadiantOne and/or retrieving identity profile information from these apps for RadiantOne to present a complete user profile (to join views of these backends to identities from other data sources). However, Azure AD (graphapi and mgraph data sources) and Okta Universal Directory (oktaclient data source) do support authentication operations. For details on creating virtual views from the default custom data sources, see the RadiantOne Namespace Configuration Guide.
+>Most default custom data sources do not support authentication operations. They are primarily to allow for provisioning/de-provisioning identity information to these apps through RadiantOne and/or retrieving identity profile information from these apps for RadiantOne to present a complete user profile (to join views of these backends to identities from other data sources). However, Azure AD (graphapi and mgraph data sources) and Okta Universal Directory (oktaclient data source) do support authentication operations. For details on creating virtual views from the default custom data sources, see the [RadiantOne Namespace Configuration Guide](/namespace-configuration-guide/01-introduction).
 
 #### DSML/SPML Sources
 
@@ -465,7 +465,7 @@ Figure 14: Sample Custom DSML/SPML Data Source
 
 ### SCIM v2 Sources
 
-This section provides general details about virtualizing SCIM data sources. Details about virtualizing some common SCIM-specific data sources like SailPoint can be found in the RadiantOne Namespace Configuration Guide. For SCIM v2 accessible services, you can define the data source backend from the Main Control Panel.
+This section provides general details about virtualizing SCIM data sources. Details about virtualizing some common SCIM-specific data sources like SailPoint can be found in the [RadiantOne Namespace Configuration Guide](/namespace-configuration-guide/01-introduction). For SCIM v2 accessible services, you can define the data source backend from the Main Control Panel.
 
 To virtualize a SCIM backend: 
 

@@ -178,7 +178,7 @@ An alternative to using a wizard to manage dynamic group members is to manually 
 
 7.	Enter the memberURL using the syntax mentioned above. Click **OK** and the group entry is updated accordingly.
 
-For more details on managing groups stored in a Universal Directory store, please see the RadiantOne Namespace Configuration Guide.
+For more details on managing groups stored in a Universal Directory store, please see the [RadiantOne Namespace Configuration Guide](/namespace-configuration-guide/01-introduction).
 
 ### Removing Members
 

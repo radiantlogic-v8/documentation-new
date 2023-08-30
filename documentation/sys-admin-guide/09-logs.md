@@ -5,7 +5,7 @@ description: System Administration Guide
 
 # Logs
 
-RadiantOne supports logging at different levels for different components. Logs for the different components are configured in the Log Settings section. RadiantOne access logs are configured in the Access Logs section and RadiantOne changelog is configured in the Changelog section. An introduction to these sections is below. For more details, please see the RadiantOne Logging and Troubleshooting Guide.
+RadiantOne supports logging at different levels for different components. Logs for the different components are configured in the Log Settings section. RadiantOne access logs are configured in the Access Logs section and RadiantOne changelog is configured in the Changelog section. An introduction to these sections is below. For more details, please see the [RadiantOne Logging and Troubleshooting Guide](/logging-and-troubleshooting-guide/01-overview).
 
 ## Log Settings
 
@@ -21,7 +21,7 @@ For the Control Panels, the items in the drop-down list are Control Panel – Se
 
 For the Sync Agents used in real-time persistent cache refresh, the item in the drop-down list is Sync Agents – Agents. The default log file name and location is <RLI_HOME>/logs/sync_agents/agent_fid_sd_agent_real_time.log. 
 
-For some components, there is an Advanced section where finer-grained logging properties can be configured. For details on log levels and advanced log settings, please see the RadiantOne Logging and Troubleshooting Guide.
+For some components, there is an Advanced section where finer-grained logging properties can be configured. For details on log levels and advanced log settings, please see the [RadiantOne Logging and Troubleshooting Guide](/logging-and-troubleshooting-guide/01-overview).
 
 ### Log File Integrity Assurance
 
@@ -61,7 +61,7 @@ The RadiantOne access log contains details about client requests to RadiantOne a
 
 The access log rolls over when it reaches 100MB in size. This size can be set in the Rollover size property. The access logs are kept for 30 days by default and then deleted. This is configurable in the “Rollover: How long to keep the logs” property.
 
-For more details on the access log including advanced settings for archiving destination and logging into a database, please see the RadiantOne Logging and Troubleshooting Guide.
+For more details on the access log including advanced settings for archiving destination and logging into a database, please see the [RadiantOne Logging and Troubleshooting Guide](/logging-and-troubleshooting-guide/01-overview).
 
 ### Log File Integrity Assurance
 
@@ -149,7 +149,7 @@ To exclude attributes in changelog searches:
 
 3.	Select cn=ChangelogAllowedAttributesOnly. 
 
-4.	Add users and/or groups that you do not want to have access to the “changes” attribute for certain attributes. For more information on adding users and groups, refer to the RadiantOne Namespace Configuration Guide. 
+4.	Add users and/or groups that you do not want to have access to the “changes” attribute for certain attributes. For more information on adding users and groups, refer to the [RadiantOne Namespace Configuration Guide](/namespace-configuration-guide/01-introduction). 
 
 5.	On the Zookeeper tab, expand `radiantone/v2/<clustername>/config`.
 
@@ -219,11 +219,12 @@ The information logged can be used for the following purposes:
 -	To update some other RadiantOne persistent caches that contains the same information.
 -	As a location where any user/application can review to see what changes were made to the persistent cache and when.
 -	To monitor errors in case one of the underlying sources is down when RadiantOne attempts to get the latest image.
--	To recover from persistent cache update errors without having to reinitialize the persistent cache again. More on this topic can be found in the RadiantOne Operations Guide section titled: Recovering from Persistent Cache Update Errors.
+-	To recover from persistent cache update errors without having to reinitialize the persistent cache again. More on this topic can be found in the [RadiantOne Operations Guide](/operations-guide/01-overview)
+ section titled: Recovering from Persistent Cache Update Errors.
 
 All changes to persistent cache branches are logged in the [change log](#changelog). Therefore, the persistent cache refresh log level is typically set to error to log only entries that could not be refreshed in the cache. The other log levels are still available to support backward compatibility (when changes to the persistent cache branches were not logged into the general change log).
 
-For more information, please see the RadiantOne Deployment and Tuning Guide, section titled: Logging Persistent Cache Refreshes.
+For more information, please see the [RadiantOne Deployment and Tuning Guide](/deployment-and-tuning-guide/00-preface), section titled: Logging Persistent Cache Refreshes.
 
 ## Clustermonitor
 

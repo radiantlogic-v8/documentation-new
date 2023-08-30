@@ -39,7 +39,7 @@ By default the SSL port is set to 636 and this is defined during the installatio
 
 ### Forbidding Access on the Non-SSL Port
 
-For steps to disable access on the non-ssl ports, please see the RadiantOne Hardening Guide.
+For steps to disable access on the non-ssl ports, please see the [RadiantOne Hardening Guide](/hardening-guide/00-preface).
 
 ### Certificate-based Authentication: Support for Mutual Authentication
 
@@ -149,7 +149,7 @@ Figure 4: Example Default Mapping Rule
 
 ### Testing Certificate DN Mapping Rules
 
-The test-cert-mapping command can be used to test the subject (or SAN) associated with a given certificate against the existing certificate to DN mappings. This allows you to verify your client principal mapping rules. For information about the test-cert-mapping command see, the RadiantOne Command Line Configuration Guide.
+The test-cert-mapping command can be used to test the subject (or SAN) associated with a given certificate against the existing certificate to DN mappings. This allows you to verify your client principal mapping rules. For information about the test-cert-mapping command see, the [Radiantone Command Line Configuration Guide](/command-line-configuration-guide/01-introduction).
 
 **Processing Multiple Mapping Rules**
 
@@ -234,7 +234,7 @@ To view the cipher strength levels enabled by default in RadiantOne, go to the M
 
 After changing the cipher levels, save your changes and restart the RadiantOne service.
 
-For details on installing stronger cipher suites, see the RadiantOne Hardening Guide.
+For details on installing stronger cipher suites, see the [RadiantOne Hardening Guide](/hardening-guide/00-preface).
 
 ### Enabled SSL Protocols
 
@@ -266,7 +266,7 @@ To enable Start TLS for clients to access RadiantOne:
 
 SSL is enabled by default, but SSL logging is disabled by default. When SSL logging is enabled, SSL events have an entry in vds_server.log. This log file is located in <RLI_HOME>\vds_server\logs. SSL events are logged at INFO level, so log settings for VDS – Server must be at least at INFO level. 
 
->[!note] For more information on log levels, refer to the RadiantOne Logging and Troubleshooting Guide.
+>[!note] For more information on log levels, refer to the [RadiantOne Logging and Troubleshooting Guide](/logging-and-troubleshooting-guide/01-overview).
 
 To enable SSL logging:
 
@@ -318,7 +318,7 @@ To select the CRL method, from the Main Control Panel got to the Settings tab > 
 
 #### CRL File/Directory
 
-If the static (or failover) CRL checking mechanism has been selected, the value of the Server Certificate Revocation List File parameter should point to the CRL file downloaded from the certificate authority. This can be a zip file containing multiple CRL files if needed. Client certificates can be validated against this list. 
+If the static (or failover) CRL checking mechanism has been selected, the value of the Server Certificate Revocation List File parameter should point to the CRL file downloaded from the certificate authority. This can be a file containing multiple CRL files if needed. Client certificates can be validated against this list. 
 
 The Server Certificate Revocation List File parameter is configurable from the [Server Control Panel](01-introduction#accessing-the-server-control-panel) > Settings tab. If you are deployed in a cluster, each node must have the CRL file on their host machine and the location can vary. Therefore, you must go into the Server Control Panel associated with each node and set the location of the CRL file. 
 
@@ -605,7 +605,7 @@ The following steps were certified on Linux CENTOS to configure RadiantOne as a 
 
 3. Ensure FQDN of service can be resolved via DNS using ping or other methods.
 
-4. Ensure unlimited Java cipher suites are installed. This is to be compatible with certain clients using stronger cyphers. Note that Kerberos can be enabled in RadiantOne without installing the extra ciphers, but most clients using kerberos require these ciphers that RadiantOne does not bundle out of the box. For details on installing unlimited cipher suites, see the RadiantOne Hardening Guide.
+4. Ensure unlimited Java cipher suites are installed. This is to be compatible with certain clients using stronger cyphers. Note that Kerberos can be enabled in RadiantOne without installing the extra ciphers, but most clients using kerberos require these ciphers that RadiantOne does not bundle out of the box. For details on installing unlimited cipher suites, see the [RadiantOne Hardening Guide](/hardening-guide/00-preface).
 
 5. From the Main Control Panel > Settings Tab > Security section > Authentication Methods enable Kerberos Authentication and enter the user principal name and service password associated with the RadiantOne service account that was created in the KDC.
 
@@ -851,7 +851,7 @@ To define the criteria used to generate an encryption key:
 
 3.	Select the desired cipher from the drop-down list or select [AWSKMS](#using-amazon-web-services-aws-with-a-customer-master-key-cmk) if you want to use your own Customer Master Key (CMK) in Amazon Web Services (AWS) Key Management Service (KMS) and have configured the necessary settings in ZooKeeper. If unlimited Java security libraries are installed, there are more ciphers shown in this drop-down list.
 
-    >[!note] If you want to use stronger ciphers that are not listed, you must add crypto.policy=unlimited in <RLI_HOME>/jdk/jre/lib/security/java.security file. For more details, see the RadiantOne Hardening Guide.
+    >[!note] If you want to use stronger ciphers that are not listed, you must add crypto.policy=unlimited in <RLI_HOME>/jdk/jre/lib/security/java.security file. For more details, see the [RadiantOne Hardening Guide](/hardening-guide/00-preface).
 
     ![An image showing ](Media/Image3.116.jpg)
  
@@ -998,7 +998,7 @@ To define the criteria used to generate an encryption key:
 
 3.	Select the desired cipher from the drop-down list or select [AWSKMS](#using-amazon-web-services-aws-with-a-customer-master-key-cmk) if you want to use your own Customer Master Key (CMK) in Amazon Web Services (AWS) Key Management Service (KMS) and have configured the necessary settings in ZooKeeper. If unlimited Java security libraries are enabled, there are more available ciphers in this drop-down list.
 
-    >[!note] If you want to use stronger ciphers that are not listed, you must add (or uncomment) crypto.policy=unlimited in <RLI_HOME>/jdk/jre/lib/security/java.security file. For more details, see the RadiantOne Hardening Guide.
+    >[!note] If you want to use stronger ciphers that are not listed, you must add (or uncomment) crypto.policy=unlimited in <RLI_HOME>/jdk/jre/lib/security/java.security file. For more details, see the [RadiantOne Hardening Guide](/hardening-guide/00-preface).
 
 4.	If you selected a cipher suite in the previous step, enter a security key. This value is used to auto-generate an encryption key. If you plan on deploying multiple clusters that will participate in inter cluster replication and you are going to initialize Universal Directory (HDAP) stores from an exported LDIFZ file, take note of the value you enter here as you must use it when configuring the LDIFZ cipher and security key in the other clusters.
 
@@ -1070,7 +1070,7 @@ This feature works with the LDIFZ Encryption option as outlined in the table bel
 
 External token validators allow applications to use an access token to call an API on behalf of itself. The API then responds with the requested data. This section assumes that your OIDC provider is already set up.
 
->[!warning] The processes described in this section are not hardened against security risks. For more information on hardening RadiantOne, refer to the [RadiantOne Hardening Guide](/documentation/hardening-guide/00-preface). 
+>[!warning] The processes described in this section are not hardened against security risks. For more information on hardening RadiantOne, refer to the [RadiantOne Hardening Guide](/hardening-guide/00-preface). 
 
 ### Getting an Access Token
 
@@ -1578,7 +1578,7 @@ If you have groups stored in a RadiantOne Universal Directory store and want to 
 
 RadiantOne supports the LDAP_MATCHING_RULE_IN_CHAIN operator and allows clients to issue search filters using the 1.2.840.113556.1.4.1941 matching rule OID. This provides a method to look up the ancestry of an object and can be used in a search filter to retrieve all groups a user is a member of even when that group is nested (and is a member of another group). If the base DN in the RadiantOne namespace is associated with a proxy view, the search filter containing the matching rule OID is passed to the backend which must process the LDAP_MATCHING_RULE_IN_CHAIN. If the base DN in the RadiantOne namespace is associated with a persistent cache or a Universal Directory store, RadiantOne processes the matching rule locally.
 
->[!warning] If you are using the Linked Attributes calculation in RadiantOne and the users and groups are local, in a persistent cache or Universal Directory store, you must enable the Optimize Linked Attribute setting to support filters requesting isMemberOf/memberOf. This ensures good performance. For details on this setting, see the Namespace Configuration Guide (applicable to RadiantOne Universal Directory stores) or the Deployment and Tuning Guide (applicable to persistent cache).
+>[!warning] If you are using the Linked Attributes calculation in RadiantOne and the users and groups are local, in a persistent cache or Universal Directory store, you must enable the Optimize Linked Attribute setting to support filters requesting isMemberOf/memberOf. This ensures good performance. For details on this setting, see the Namespace Configuration Guide (applicable to RadiantOne Universal Directory stores) or the [RadiantOne Deployment and Tuning Guide](/deployment-and-tuning-guide/00-preface) (applicable to persistent cache).
 
 ![An image showing ](Media/Image3.112.jpg)
 
@@ -1664,7 +1664,7 @@ If you have groups stored in a RadiantOne Universal Directory store and want to 
 RadiantOne supports the LDAP_MATCHING_RULE_IN_CHAIN operator and allows clients to issue search filters using the 1.2.840.113556.1.4.1941 matching rule OID. This provides a method to look up the ancestry of an object and can be used in a search filter to retrieve all groups a user is a member of even when that group is nested (and is a member of another group). If the base DN in the RadiantOne namespace is associated with a proxy view, the search filter containing the matching rule OID is passed to the backend which must process the LDAP_MATCHING_RULE_IN_CHAIN. If the base DN in the RadiantOne namespace is associated with a persistent cache or a Universal Directory store, RadiantOne processes the matching rule locally.
 
 >[!warning]
->If you are using the Linked Attributes calculation in RadiantOne and the users and groups are local, in a persistent cache or Universal Directory store, you must enable the Optimize Linked Attribute setting to support filters requesting isMemberOf/memberOf. This ensures good performance. For details on this setting, see the Namespace Configuration Guide (applicable to RadiantOne Universal Directory stores) or the Deployment and Tuning Guide (applicable to persistent cache).
+>If you are using the Linked Attributes calculation in RadiantOne and the users and groups are local, in a persistent cache or Universal Directory store, you must enable the Optimize Linked Attribute setting to support filters requesting isMemberOf/memberOf. This ensures good performance. For details on this setting, see the Namespace Configuration Guide (applicable to RadiantOne Universal Directory stores) or the [RadiantOne Deployment and Tuning Guide](/deployment-and-tuning-guide/00-preface) (applicable to persistent cache).
 
 ![An image showing ](Media/Image3.112.jpg)
 
@@ -1778,7 +1778,7 @@ From the Main Control Panel > Settings Tab > Security section > Password Policie
 There is a default password policy that is enforced at a global level for all RadiantOne Universal Directory stores and persistent cache (if password policy enforcement is enabled), no matter where a user account is located. You can override the default policy with a custom one that is applicable only to a certain subset of the user population (determined by group they are a member of, or the location of the entry in the virtual namespace).
 
 >[!note]
->If a given user entry is affected by both a global and local policy, the local policy takes precedence. For more details, see [Password Policy Precedence](#password-policy-precedence). To enable password policy enforcement for a persistent cache branch, check the Enable Password Policy Enforcement option on the cache settings. For more details on persistent cache, see the RadiantOne Deployment and Tuning Guide.
+>If a given user entry is affected by both a global and local policy, the local policy takes precedence. For more details, see [Password Policy Precedence](#password-policy-precedence). To enable password policy enforcement for a persistent cache branch, check the Enable Password Policy Enforcement option on the cache settings. For more details on persistent cache, see the [RadiantOne Deployment and Tuning Guide](/deployment-and-tuning-guide/00-preface).
 
 ### Default Password Policy
 
@@ -2021,7 +2021,7 @@ Click **Test** to compile your expression.
 
 The Enable Dictionary Check option is comparable to the Strong Password Check plug-in found in legacy LDAP directories. This enables RadiantOne to verify that a user’s password doesn’t contain unallowed strings from a specified dictionary file. This can be used as a method to enforce strong password policies.
 
->[!warning] The default behavior uses an exact match comparison of the password to a dictionary value. To enforce a contains match comparison, go to the Main Control Panel > Zookeeper tab, navigate to `/radiantone/<version>/<clusterName>/config/vds_server.conf` and click EDIT MODE. Set the following: "enablePwdPolicyDictionarySubstringCheck" : true <BR> The value of “true” must be in all lowercase, as shown above. <BR>You can also set this property using the vdsconfig command line utility, set-property command. For details, see the RadiantOne Command Line Configuration Guide.
+>[!warning] The default behavior uses an exact match comparison of the password to a dictionary value. To enforce a contains match comparison, go to the Main Control Panel > Zookeeper tab, navigate to `/radiantone/<version>/<clusterName>/config/vds_server.conf` and click EDIT MODE. Set the following: "enablePwdPolicyDictionarySubstringCheck" : true <BR> The value of “true” must be in all lowercase, as shown above. <BR>You can also set this property using the vdsconfig command line utility, set-property command. For details, see the [Radiantone Command Line Configuration Guide](/command-line-configuration-guide/01-introduction).
 
 To enable this feature:
 
