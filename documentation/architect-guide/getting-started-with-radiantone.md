@@ -53,13 +53,13 @@ The Settings tab is where you will manage the majority of RadiantOne settings. T
 
 **Context Builder**
 
-The Context Builder is used to create model-driven virtual views. For details on Context Builder, see the [RadiantOne Context Builder Guide](/documentation/context-builder-guide/introduction).
+The Context Builder is used to create model-driven virtual views. For details on Context Builder, see the [RadiantOne Context Builder Guide](/context-builder-guide/introduction).
 
 **Directory Namespace**
 
 The Directory Namespace tab is where you can configure and manage root naming contexts and persistent cache. This tab is not accessible on [follower-only](high-availability-and-performance.md#follower-only-nodes) cluster nodes.
 
-Different icons represent various types of configurations associated with the Root Naming Contexts. For details on the icons and the meaning, please see the [RadiantOne Namespace Configuration Guide](/documentation/namespace-configuration-guide/01-introduction).
+Different icons represent various types of configurations associated with the Root Naming Contexts. For details on the icons and the meaning, please see the [RadiantOne Namespace Configuration Guide](/namespace-configuration-guide/01-introduction).
 
 **Directory Browser**
 
@@ -88,7 +88,7 @@ RadiantOne Universal Directory (HDAP) stores across multiple sites/data centers 
 
 **Global Sync**
 
-The Global Sync tab is for managing synchronization pipelines and monitoring their activities. You can also set connector properties and perform uploads from here. For details on Global Sync, see the [RadiantOne Global Sync Guide](/documentation/global-sync-guide/introduction).
+The Global Sync tab is for managing synchronization pipelines and monitoring their activities. You can also set connector properties and perform uploads from here. For details on Global Sync, see the [RadiantOne Global Sync Guide](/global-sync-guide/introduction).
 
 **ZooKeeper**
 
@@ -130,14 +130,14 @@ The Log Viewer Tab is the console where you can view all RadiantOne log files.
 
 ### Related Material
 
-- [RadiantOne System Administration Guide](/documentation/sys-admin-guide/01-introduction)
+- [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction)
 
 ## Identity Service Wizards
 
 RadiantOne includes a set of wizards to assist administrators with some of the most common configuration tasks. They are designed to guide administrators through the identity integration process. This includes tasks such as building a unique user list, how to handle group entries (migrate them or create dynamic groups), and how to design the virtual namespace (flat tree or merge into an existing hierarchy). Each wizard is tailored for specific use cases, depending on the needs of the applications that will be consuming the identity. For more information on the wizards, please see the sections below.
 
 >[!note]
->For step-by-step instructions on using the wizards, please see the [RadiantOne Identity Service Wizards Guide](/documentation/identity-service-wizards-guide/01-overview).
+>For step-by-step instructions on using the wizards, please see the [RadiantOne Identity Service Wizards Guide](/identity-service-wizards-guide/01-overview).
 
 ### Global Identity Builder
 
@@ -183,4 +183,4 @@ Figure 5: Example of a Directory tree Comprised of an Aggregation of Three Sourc
 
 ### Related Material
 
-- [RadiantOne Identity Service Wizards Guide](/documentation/identity-service-wizards-guide/01-overview)
+- [RadiantOne Identity Service Wizards Guide](/identity-service-wizards-guide/01-overview)
