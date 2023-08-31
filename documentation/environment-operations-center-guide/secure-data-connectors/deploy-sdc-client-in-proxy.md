@@ -40,11 +40,7 @@ The values for these variables can be of following formats:
 
 ![image description](images/win-proxy-env-variables.png)
 
-Launch the *RadiantLogic.OnPremisesAgentClient.Agent.exe* file. A notification will display in the command line that confirms a connection has been established between the agent and server.
-
-![image description](images/windows-success.png)
-
-Once the client is running, you can can setup a connection with the on-premise backend. For details on setting up a connection, see the [server backend](../../sys-admin-guide/server-backend.md) guide.
+Once you have the proxy configuration setup, go back to *Deploy on Windows* section in [deploy a secure data connector client](deploy-sdc-client.md) guide and follow the next steps.
 
 ## Proxy Configuration for Linux
 
@@ -75,13 +71,9 @@ The values for this variable can be of following formats:
 
 The value is set using the command:
 
-`export https_proxy=http://linux1:test@a92.168.8.3.3128`
+	export https_proxy=http://linux1:test@a92.168.8.3.3128
 
-Open the command line and navigate to the directory that contains the unzipped *sdc-windows.zip* files. From the directory, run the following command to launch the secure data connector client:
-
-`dotnet run RadiantLogic.OnPremisesAgentClient.Agent.dll`
-
-Once the client is running, you can can setup a connection with the on-premise backend. For details on setting up a connection, see the [server backend](../../sys-admin-guide/server-backend.md) guide.
+Once you have the proxy configuration setup, go back to *Deploy on Linux* section in [deploy a secure data connector client](deploy-sdc-client.md) guide and follow the next steps.
 
 ## Proxy Configuration for Docker
 
@@ -89,7 +81,7 @@ To have secure data connector client run on a Linux system, refer the section **
 
 There are two options to configure the proxy for Docker. First option is to set the proxy configuration at each containers by passing values for the environment variables while running the docker command.
 
-`docker run -e "ServerHubConfiguration__AgentToken=[access_token]" -e "ServerHubConfiguration__Proxy__Url=http://192.168.8.3:3128" -e "ServerHubConfiguration__Proxy__UserName=ProxyUs3r" -e "ServerHubConfiguration__Proxy__Password=$Pa$$word!" -e HTTP_PROXY="http://ProxyUs3r:$Pa$$word!@192.168.8.3:3128" -e HTTPS_PROXY="http://ProxyUs3r:$Pa$$word!@192.168.8.3:3128" radiantone/sdc-client:latest`
+	docker run -e "ServerHubConfiguration__AgentToken=[access_token]" -e "ServerHubConfiguration__Proxy__Url=http://192.168.8.3:3128" -e "ServerHubConfiguration__Proxy__UserName=ProxyUs3r" -e "ServerHubConfiguration__Proxy__Password=$Pa$$word!" -e HTTP_PROXY="http://ProxyUs3r:$Pa$$word!@192.168.8.3:3128" -e HTTPS_PROXY="http://ProxyUs3r:$Pa$$word!@192.168.8.3:3128" radiantone/sdc-client:latest
 
 The second option is to set the proxy configuration at the docker engine as shown below:
 
@@ -97,9 +89,20 @@ The second option is to set the proxy configuration at the docker engine as show
 
 When proxy configuration is set at the docker engine, the secure data connector client can be run as normal:
 
-`docker run -e "ServerHubConfiguration_AgentToken=[access_token]" radiantone/sdc-client`
+	docker run -e "ServerHubConfiguration_AgentToken=[access_token]" radiantone/sdc-client
 
 ![image description](images/docker-command-line.png)
+
+It is highly recommended to have logs from sdc-client to go into a mounted drive, to have that setup replace the above commands with the one below based on one of the options you chose for your deployment:
+
+**Option 1 (Passing proxy information as part of environment variables):**
+
+    docker run -v /path/on/host:/app/logs -e "ServerHubConfiguration__AgentToken=[access_token]" -e "ServerHubConfiguration__Proxy__Url=http://192.168.8.3:3128" -e "ServerHubConfiguration__Proxy__UserName=ProxyUs3r" -e "ServerHubConfiguration__Proxy__Password=$Pa$$word!" -e HTTP_PROXY="http://ProxyUs3r:$Pa$$word!@192.168.8.3:3128" -e HTTPS_PROXY="http://ProxyUs3r:$Pa$$word!@192.168.8.3:3128" radiantone/sdc-client:latest	
+**Option 2 (Making changes at docker engine level):**
+
+	docker run -v /path/on/host:/app/logs -e "ServerHubConfiguration_AgentToken=[access_token]" radiantone/sdc-client
+
+Replace `/path/on/host` with an actual path on your host machine where you want to store the logs.
 
 Once the client is running, you can can setup a connection with the on-premise backend. For details on setting up a connection, see the [server backend](../../sys-admin-guide/server-backend.md) guide.
 
