@@ -8,3 +8,4 @@ description: Logging and Troubleshooting Guide
 - [Radiant Universal Directory](03-radiantone-universal-directory.md)
 - [Global Synchronization](05-global-synchronization.md)
 - [Task Scheduler an Taks](06-task-scheduler-and-tasks.md)
+- [Audit Logging](07-audit-logging.md)
