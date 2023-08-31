@@ -7,7 +7,7 @@ description: Architect Guide
 
 The recommended approach to achieve high availability and fault tolerance is to deploy multiple RadiantOne nodes running in a cluster. Once the desired architecture is put in place, two additional layers must be addressed. These layers were introduced in the [Product Overview](radiantone-federated-identity-engine.md#overview) section in this guide and are known as the Application Layer and the Data Source Access Layer.
 
-The sections below provide a brief introduction to the different architecture components and vocabulary for cluster architectures. For complete configuration details on deploying these architectures, please see the [RadiantOne Deployment and Tuning Guide](/documentation/deployment-and-tuning-guide/00-preface).
+The sections below provide a brief introduction to the different architecture components and vocabulary for cluster architectures. For complete configuration details on deploying these architectures, please see the [RadiantOne Deployment and Tuning Guide](/deployment-and-tuning-guide/00-preface).
 
 ## Cluster Architectures
 
@@ -54,7 +54,7 @@ The Universal Directory component in RadiantOne is the highly scalable, performa
 ## Intra Cluster Block Replication
 
 Within a cluster, block replication flows from the RadiantOne leader node to follower nodes. However, each node that may become the RadiantOne leader node can replicate Universal Directory (HDAP) store changes out to other nodes. If the node that receives a write request is not designated as the RadiantOne leader, it forwards the request to the designated leader node and then it becomes the responsibility of this node to replicate the change out to all follower nodes. This is depicted in the diagram below. For more details on this approach, see the
-[RadiantOne Deployment and Tuning Guide](/documentation/deployment-and-tuning-guide/00-preface).
+[RadiantOne Deployment and Tuning Guide](/deployment-and-tuning-guide/00-preface).
 
 ![Intra-Cluster Replication](Media/Image6.4.jpg)
 
@@ -62,7 +62,7 @@ Figure 4: Intra-Cluster Replication
 
 ## Inter Cluster Logical Replication
 
-Universal Directory (HDAP) stores deployed across more than one site/data center can participate in inter cluster logical replication. This supports multi-master replication where the current leader node in each cluster is responsible for accepting changes from other clusters. These changes will then be pushed out to other nodes within the cluster (block replication) as depicted in the diagram below. For more details on this approach, see the [RadiantOne Deployment and Tuning Guide](/documentation/deployment-and-tuning-guide/00-preface).
+Universal Directory (HDAP) stores deployed across more than one site/data center can participate in inter cluster logical replication. This supports multi-master replication where the current leader node in each cluster is responsible for accepting changes from other clusters. These changes will then be pushed out to other nodes within the cluster (block replication) as depicted in the diagram below. For more details on this approach, see the [RadiantOne Deployment and Tuning Guide](/deployment-and-tuning-guide/00-preface).
 
 ![Inter Cluster Logical Replication](Media/Image6.5.jpg)
 
@@ -117,8 +117,8 @@ If you require either load balancing and/or failover to the underlying directori
 
 ## Related Material
 
-- [RadiantOne System Administration Guide](/documentation/sys-admin-guide/01-introduction)
-- [RadiantOne Deployment and Tuning Guide](/documentation/deployment-and-tuning-guide/00-preface)
+- [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction)
+- [RadiantOne Deployment and Tuning Guide](/deployment-and-tuning-guide/00-preface)
 
 ## Performance
 
@@ -161,7 +161,7 @@ There are two refresh mechanisms available for memory caching.
 
 **Time-to-Live Refresh** – The time-to-live value is the amount of time that entries should remain in cache. After the time has been reached, the entry is removed from the cache. The next request for the entry will be sent to the underlying data store(s). The result of the request will then be stored in the memory cache again.
 
-**Flush Entire Cache** – From the Main Control Panel -> Settings tab -> Server Front End section, Memory Cache section, you have the option to flush the entire memory cache. After flushing the entire cache, all queries sent to the RadiantOne service require the underlying data source(s) to be accessed. The RadiantOne service begins to populate the memory cache as it receives queries and retrieves data from the underlying source(s).
+**Flush Entire Cache** – From the Main Control Panel > Settings tab > Server Front End section, Memory Cache section, you have the option to flush the entire memory cache. After flushing the entire cache, all queries sent to the RadiantOne service require the underlying data source(s) to be accessed. The RadiantOne service begins to populate the memory cache as it receives queries and retrieves data from the underlying source(s).
 
 Since a memory cache is insufficient for some deployment scenarios, the RadiantOne service also offers a persistent caching mechanism. Details on this option are below.
 
