@@ -5,11 +5,11 @@ description: Namespace Configuration Guide
 
 # Introduction 
 
-Prior to diving into this guide, it is recommended that you read the [RadiantOne Architect Guide](/documentation/architect-guide/preface) for a high-level overview of the capabilities of RadiantOne and the [RadiantOne System Administration Guide](/documentation/sys-admin-guide/01-introduction) for an understanding of general concepts and usage of the Main Control Panel and Server Control Panel. This guide provides step-by-step instructions to configure the virtual namespace. Configuring persistent cache is out of the scope of this guide. For details on persistent cache, see the [RadiantOne Deployment and Tuning Guide](/documentation/deployment-and-tuning-guide/00-preface).
+Prior to diving into this guide, it is recommended that you read the [RadiantOne Architect Guide](/architect-guide/preface) for a high-level overview of the capabilities of RadiantOne and the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction) for an understanding of general concepts and usage of the Main Control Panel and Server Control Panel. This guide provides step-by-step instructions to configure the virtual namespace. Configuring persistent cache is out of the scope of this guide. For details on persistent cache, see the [RadiantOne Deployment and Tuning Guide](/deployment-and-tuning-guide/00-preface).
 
 >[!warning] For production deployments, RadiantOne configuration changes must be performed during non-peak/off-hours to avoid any disruption in service.
 
-For details on deploying RadiantOne including tuning and maintenance, please see the [RadiantOne Deployment and Tuning Guide](/documentation/deployment-and-tuning-guide/00-preface).
+For details on deploying RadiantOne including tuning and maintenance, please see the [RadiantOne Deployment and Tuning Guide](/deployment-and-tuning-guide/00-preface).
 
 ## How this Manual is Organized
 
