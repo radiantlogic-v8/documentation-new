@@ -11,7 +11,7 @@ Some settings in RadiantOne are accessible only in Expert Mode. To switch to Exp
 
 ![An image showing ](Media/Image2.1.jpg)
 
-Figure 2. 1 : Accessing Expert Mode
+Figure 1: Accessing Expert Mode
 
 >[!note] The Main Control Panel saves the last mode (Expert or Standard) it was in when you log out and returns to this mode automatically when you log back in. The mode is saved on a per-role basis.
 
@@ -48,7 +48,7 @@ To install nodes to an existing cluster, you need the following details:
 - A valid RadiantOne license key. Keys can be enforced at the cluster level or the node
 level. Please check with your Radiant Logic representative to verify your license key type.
 
-For exact installation steps, please see the [RadiantOne Installation Guide](/documentation/installation-guide/01-introduction).
+For exact installation steps, please see the [RadiantOne Installation Guide](/installation-guide/01-introduction).
 
 ## Removing Nodes
 
@@ -181,7 +181,7 @@ p 2389 -f c:\radiantone\ChangePassword.ldif`
 
 Once the connections are established between RadiantOne and the underlying systems, the only changes required are when those connections need to be updated. For example, if RadiantOne needs to point to a different server/port or use a different service account user/password then you must update the connection strings that are stored in the RadiantOne data sources.
 
-The connection string information can be changed from the Main Control Panel > Settings Tab > Server Backend section. You can also update connection strings from command line using the vdsconfig utility. For details on the vdsconfig utility, please see the [Radiantone Command Line Configuration Guide](/documentation/command-line-configuration-guide/01-introduction).
+The connection string information can be changed from the Main Control Panel > Settings Tab > Server Backend section. You can also update connection strings from command line using the vdsconfig utility. For details on the vdsconfig utility, please see the [Radiantone Command Line Configuration Guide](/command-line-configuration-guide/01-introduction).
 
 ## Backing up Configuration
 
@@ -277,7 +277,7 @@ The utility does not require the RadiantOne service on the node to be running, b
 
 This option assumes you have maintained a cluster in a DR site that can be used to repair your primary cluster using the steps below. The overall objective is to temporarily add a new node to the DR cluster and then decouple it from the cluster so it becomes the leader node for your primary cluster.
 
-1. Install RadiantOne on a new machine and have it join the existing DR cluster. For detailed steps on adding a node to an existing cluster, please see the [RadiantOne Installation Guide](/documentation/installation-guide/04-node-configuration-commands). For a list of cluster configuration required to add a new node, see [Adding Nodes](#adding-nodes). Once the new node is installed, it automatically inherits from the existing configuration and data (Universal Directory stores and persistent cache).
+1. Install RadiantOne on a new machine and have it join the existing DR cluster. For detailed steps on adding a node to an existing cluster, please see the [RadiantOne Installation Guide](/installation-guide/04-node-configuration-commands). For a list of cluster configuration required to add a new node, see [Adding Nodes](#adding-nodes). Once the new node is installed, it automatically inherits from the existing configuration and data (Universal Directory stores and persistent cache).
 
 2. Stop all RadiantOne service and Jetty. ZooKeeper should be running on all nodes.
 
