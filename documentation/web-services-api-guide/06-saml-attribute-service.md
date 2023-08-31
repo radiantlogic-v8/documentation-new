@@ -7,7 +7,7 @@ description: Web Services API Guide
 
 The RadiantOne service supports SAML attribute queries. It responds to such queries with SAML assertions.
 
->[!note] To use the SAML attribute service, ensure that saml is not included in the list of [disabled protocols](#01-overview#disabling-protocolsendpoints).**
+>[!note] To use the SAML attribute service, ensure that saml is not included in the list of [disabled protocols](01-overview#disabling-protocolsendpoints).**
 
 ## Configuration
 To configure RadiantOne as a SAML Attribute Service, three properties files are required: 
