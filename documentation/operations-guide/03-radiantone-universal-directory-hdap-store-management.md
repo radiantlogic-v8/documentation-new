@@ -75,7 +75,7 @@ To back up an HDAP store:
 
 A compressed backup file is created in the location indicated in step 4 above, in a folder named after the root naming context being backed up (i.e. o_companydirectory-backup). The naming convention for the compressed file is yyyy-mm-dd_hh-mm-ss.zip. The compressed file is automatically encrypted using the RadiantOne server certificate keystore password.
 
-Back ups can also be performed from command line. For details, please see the [Radiantone Command Line Configuration Guide](/documentation/command-line-configuration-guide/06-naming-context-commands).
+Back ups can also be performed from command line. For details, please see the [Radiantone Command Line Configuration Guide](/command-line-configuration-guide/06-naming-context-commands).
 
 ## Restoring RadiantOne Universal Directory (HDAP) Stores
 
@@ -96,7 +96,7 @@ To restore a RadiantOne Universal Directory (HDAP) store:
 The restore is performed using the compressed file located in the folder indicated. The compressed file is automatically decrypted using the RadiantOne server certificate keystore password. The server where you are restoring the store must have the same server certificate keystore password than the server where you created the backup from.
 
 >[!note]
->The compressed store files can only be unpacked in either the Main Control Panel or using the command line utility. For details on restoring a RadiantOne Universal Directory store from command line, see the [Radiantone Command Line Configuration Guide](/documentation/command-line-configuration-guide/04-node-configuration-commands).
+>The compressed store files can only be unpacked in either the Main Control Panel or using the command line utility. For details on restoring a RadiantOne Universal Directory store from command line, see the [Radiantone Command Line Configuration Guide](/command-line-configuration-guide/04-node-configuration-commands).
 
 ![An image showing ](Media/Image3.1.jpg)
 
