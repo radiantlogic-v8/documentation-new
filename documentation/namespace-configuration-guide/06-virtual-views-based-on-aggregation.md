@@ -7,7 +7,7 @@ description: Namespace Configuration Guide
 
 If your goal is to create a virtual view which aggregates multiple types of backends (combination of directories, database, web services…etc.), you can either use the Directory Tree Wizard, or configure it manually.
 
->[!note] If you would like to build your virtual view using the Directory Tree Wizard, refer to the [RadiantOne Identity Service Wizards Guide](/documentation/identity-service-wizards-guide/01-overview).
+>[!note] If you would like to build your virtual view using the Directory Tree Wizard, refer to the [RadiantOne Identity Service Wizards Guide](/identity-service-wizards-guide/01-overview).
 
 ## Configuration
 
