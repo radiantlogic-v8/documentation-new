@@ -128,7 +128,7 @@ Figure 9: The ZK Connection String Value in the RadiantOne Installer
 
 ### Configuring SSL between FID and ZooKeeper
 
-Configuring SSL between FID and ZooKeeper can be configured after RadiantOne is installed. The steps are described in the [RadiantOne Hardening Guide](/documentation/hardening-guide/00-preface).
+Configuring SSL between FID and ZooKeeper can be configured after RadiantOne is installed. The steps are described in the [RadiantOne Hardening Guide](/hardening-guide/00-preface).
 
 ## Testing a ZooKeeper Cluster
 
