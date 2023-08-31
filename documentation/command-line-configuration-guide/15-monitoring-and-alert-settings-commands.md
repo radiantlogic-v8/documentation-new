@@ -39,10 +39,10 @@ An example of creating an alert that returns the information from the node-monit
 **Command Arguments:**
 
 `- d <data collector key>`
-<br>This indicates the data collector that returns the information needed for your monitoring needs. The possible values are: active-alerts, cloud-replication, cluster-info, cluster-latency, cluster- ldap, cluster-zk, connections-info, datasource-status, event-log, hdap-store, pipeline, node-info, node-monitor, node-status, process-info, server-event. For details on each data collector, see the [RadiantOne Monitoring and Reporting Guide](/documentation/monitoring-and-reporting-guide/01-monitoring).
+<br>This indicates the data collector that returns the information needed for your monitoring needs. The possible values are: active-alerts, cloud-replication, cluster-info, cluster-latency, cluster- ldap, cluster-zk, connections-info, datasource-status, event-log, hdap-store, pipeline, node-info, node-monitor, node-status, process-info, server-event. For details on each data collector, see the [RadiantOne Monitoring and Reporting Guide](/monitoring-and-reporting-guide/01-monitoring).
 
 `- p <data property>`
-<br>Indicates the property to collect. Each data collector returns different properties. For details on possible properties for each data collector, see the [RadiantOne Monitoring and Reporting Guide](/documentation/monitoring-and-reporting-guide/01-monitoring).
+<br>Indicates the property to collect. Each data collector returns different properties. For details on possible properties for each data collector, see the [RadiantOne Monitoring and Reporting Guide](/monitoring-and-reporting-guide/01-monitoring).
 
 `- t <trigger type>`
 <br>This indicates the type of trigger that activates the alert. The possible values are: above, always, below, equals, or not-equals.
@@ -89,10 +89,10 @@ An example of editing an alert is: vdsconfig.bat edit-alert -x e7dd5763-40eb-4b5
 <br>The identifier of the alert to be edited. Run list-alerts to get the ID of the alert to pass in the -x argument.
 
 `- d <data collector key>`
-<br>This indicates the data collector that returns the information needed for your monitoring needs. The possible values are: active-alerts, cloud-replication, cluster-info, cluster-latency, cluster-ldap, cluster-zk, connections-info, datasource-status, event-log, hdap-store, pipeline, node-info, node-monitor, node-status, process-info, server-event. For details on each data collector, see the [RadiantOne Monitoring and Reporting Guide](/documentation/monitoring-and-reporting-guide/01-monitoring)e.
+<br>This indicates the data collector that returns the information needed for your monitoring needs. The possible values are: active-alerts, cloud-replication, cluster-info, cluster-latency, cluster-ldap, cluster-zk, connections-info, datasource-status, event-log, hdap-store, pipeline, node-info, node-monitor, node-status, process-info, server-event. For details on each data collector, see the [RadiantOne Monitoring and Reporting Guide](/monitoring-and-reporting-guide/01-monitoring)e.
 
 `- p <data property>`
-<br>Indicates the property to collect. Each data collector returns different properties. For details on possible properties for each data collector, see the [RadiantOne Monitoring and Reporting Guide](/documentation/monitoring-and-reporting-guide/01-monitoring).
+<br>Indicates the property to collect. Each data collector returns different properties. For details on possible properties for each data collector, see the [RadiantOne Monitoring and Reporting Guide](/monitoring-and-reporting-guide/01-monitoring).
 
 `- t <trigger type>`
 <br>This indicates the type of trigger that activates the alert. The possible values are above, always, below, equals, or not-equals.
