@@ -132,7 +132,7 @@ You can disable the HTTP port by setting the value to zero. This leaves access o
 
 #### Internal Banner Configuration
 
-A custom message can be added to the banner of RadiantOne User Interface pages. This includes the Main Control Panel, the Server Control Panel, and the Insights, Reports, and Administration Console.
+A custom message can be added to the banner of RadiantOne User Interface pages. This includes the Main Control Panel, the Server Control Panel, the login page, the logout landing page, and the Insights, Reports, and Administration Console.
 
 To add a custom message:
 
