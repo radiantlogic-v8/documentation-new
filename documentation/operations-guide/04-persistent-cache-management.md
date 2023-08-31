@@ -7,7 +7,7 @@ description: Operations Guide
 
 ## Backing up Persistent Cache
 
-To backup a persistent cache, go to the Main Control Panel > Directory Namespace tab > Cache node. Select the cached branch and on the right, click Export. Enter a file name and click OK. You can also use the backup-hdapstore option in the Command Line Utility. See the [Radiantone Command Line Configuration Guide](/documentation/command-line-configuration-guide/06-naming-context-commands).
+To backup a persistent cache, go to the Main Control Panel > Directory Namespace tab > Cache node. Select the cached branch and on the right, click Export. Enter a file name and click OK. You can also use the backup-hdapstore option in the Command Line Utility. See the [Radiantone Command Line Configuration Guide](/command-line-configuration-guide/06-naming-context-commands).
 
 ## Re-Indexing Persistent Cache
 
@@ -72,7 +72,7 @@ Figure 2 : Disabling Inter-cluster Replication
 
 ### Reinitialize the Persistent Cache
 
-Navigate to the Main Control Panel > Directory Namespace tab > Cache node. Select the cache node and on the right side, select the Refresh Settings tab. Click the **Initialize** button.
+Navigate to the Main Control Panel > Directory Namespace tab > Cache node. Select the cache node and on the right side, select the Refresh Settings tab. Click **Initialize**.
 
 Reinitializing the persistent cache is processed as a task. The task is executed on the leader node of the cluster. The cache on the leader node is reinitialized, and then activated again. All follower/follower-only nodes copy the updated data from the leader node.
 
@@ -115,4 +115,4 @@ An example of a failed cache refresh log entry can be seen in the figure below.
 
 The fix-cacherefresh command in the vdsconfig utility (<RLI_HOME>/bin/vdsconfig) can be used to issue persistent cache refreshes for the failed entries. The command searches the cn=cacherefreshlog with a filter of (&(changenumber>=x)(status=y)) where the default changenumber is 0 and the default status=2 (to refresh only failed entries). You can change these default values when running the command if needed. The command then invokes an “action=synchronizecache” operation for each entry returned from the search which results in those entries being refreshed in the persistent cache.
 
-For more information on the vdsconfig utilty and the fix-cacherefresh command, see the [Radiantone Command Line Configuration Guide](/documentation/command-line-configuration-guide/06-naming-context-commands).
+For more information on the vdsconfig utilty and the fix-cacherefresh command, see the [Radiantone Command Line Configuration Guide](/command-line-configuration-guide/06-naming-context-commands).
