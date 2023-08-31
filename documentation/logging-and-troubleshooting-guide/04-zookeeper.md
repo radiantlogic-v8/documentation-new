@@ -14,7 +14,7 @@ In a cluster, when ZooKeeper loses contact with over half of the other ZooKeeper
 
 ![An image showing ](Media/Image4.1.jpg)
  
-Figure 4.1: Warning Indicating ZooKeeper Entered Read-only Mode
+Figure 1: Warning Indicating ZooKeeper Entered Read-only Mode
 
 To recover from ZooKeeper read-only mode, make sure ZooKeeper is restarted on more than half of the cluster nodes. Once the quorum is reestablished, the RadiantOne cluster recovers automatically.
 

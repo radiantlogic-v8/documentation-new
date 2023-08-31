@@ -9,7 +9,7 @@ The components described in this section are applicable to RadiantOne Global Syn
 
 ![An image showing ](Media/Image5.1.jpg)
 
-Figure 5.1: Global Sync Architecture
+Figure 1: Global Sync Architecture
 
 If the virtual view of the source is configured in persistent cache, the default HDAP trigger method is used to detect and publish the change (detailed in 1b in the diagram). If the virtual view of the source is not configured in persistent cache, the capture connector detects changes directly on the source. In this case, the agent manages the connector (detailed in 1a in the diagram).
 
@@ -19,7 +19,7 @@ The Agent manages the capture connectors. The agent log file is located at: <RLI
 
 ![An image showing ](Media/Image5.2.jpg)
 
-Figure 5.2: The agent log file
+Figure 2: The agent log file
 
 This log file provides details about the state of capture connectors (e.g. started). An example of the kind of message you can find in this log:
 
@@ -29,7 +29,7 @@ The log level is controlled by the setting in Main Control Panel -> Settings tab
 
 ![An image showing ](Media/Image5.3.jpg)
  
-Figure 5.3: Sync Agents Log Settings
+Figure 3: Sync Agents Log Settings
 
 Connectors
 
@@ -37,7 +37,7 @@ Capture connectors log activity to: <RLI_HOME>\logs\sync_agents\<pipelineId>\con
 
 ![An image showing ](Media/Image5.4.jpg)
  
-Figure 5.4: Capture Connector Log Example
+Figure 4: Capture Connector Log Example
  
 1.	The log level is defined per connector with the setting in Main Control Panel > Global Sync tab. 
 
@@ -47,13 +47,13 @@ Figure 5.4: Capture Connector Log Example
 
     ![An image showing ](Media/Image5.5.jpg)
  
-    Figure 5.5: Capture Connector Properties
+    Figure 5: Capture Connector Properties
 
 4.	Locate the Log Level property and select the level from the drop-down list.
 
     ![An image showing ](Media/Image5.6.jpg)
  
-    Figure 5.6: Connector Log Level
+    Figure 6: Connector Log Level
 
 5.	Click **Save**.
 

@@ -18,6 +18,7 @@ The Task Scheduler schedules tasks. Activities that are processed as tasks are:
 -	Re-indexing a persistent cache or RadiantOne Universal Directory (HDAP) store
 
 -	Default monitoring
+
 There are two aspects of logging described in this section: 
 
 -	The task scheduler itself 
@@ -30,7 +31,7 @@ The task scheduler logging is configured from the Main Control Panel > Settings 
 
 ![An image showing ](Media/Image6.1.jpg)
 
-Figure 6. 1: Main Control Panel, Task Scheduler Log Settings
+Figure 1: Main Control Panel, Task Scheduler Log Settings
 
 ### Log Level
 
@@ -66,7 +67,7 @@ Logging for scheduled tasks is configured from the Main Control Panel > Settings
 
 ![An image showing ](Media/Image6.2.jpg)
 
-Figure 6.2: Main Control Panel, Scheduled Tasks Log Settings
+Figure 2: Main Control Panel, Scheduled Tasks Log Settings
 
 ### Log Level
 
@@ -88,7 +89,7 @@ More fine-grained configuration settings related to the task scheduler and tasks
 
 ![An image showing ](Media/Image6.3.jpg)
 
-Figure 6.3: Log4J Settings for the Task Scheduler
+Figure 3: Log4J Settings for the Task Scheduler
 
 ### Email Alert Task
 
@@ -107,4 +108,4 @@ An example of using these properties in a log4j configuration is shown below for
 
 ![An image showing ](Media/Image6.4.jpg)
  
-Figure 6.4: Example of Leveraging Email Alert Settings in Log4J Configurations
+Figure 4: Example of Leveraging Email Alert Settings in Log4J Configurations

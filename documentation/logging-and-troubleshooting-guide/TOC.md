@@ -11,3 +11,4 @@ description: Logging and Troubleshooting
 - [Task Scheduler and Tasks](06-task-scheduler-and-tasks.md)
 - [Determining if Persistent Cache Is Out of Sync](07-determining-if-persistent-cache-is-out-of-sync.md)
 - [Custom Logging](08-custom-logging.md)
+- [Audit Logging](09-audit-logging.md)

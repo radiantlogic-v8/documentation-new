@@ -27,7 +27,7 @@ More fine-grained configuration settings related to the RadiantOne service can b
 
 ![An image showing ](Media/Image3.1.jpg)
  
-Figure 3.1: Log4J Settings for the RadiantOne Service
+Figure 1: Log4J Settings for the RadiantOne Service
 
 ### Log Contents
 
@@ -122,7 +122,7 @@ By default, the Search Results in vds_server_access.log do not contain bind DN i
 
   ![An image showing ](Media/Image3.2.jpg)
 
-  Figure 3.2: Enabling bind DN info for vds_server_access.log 
+  Figure 2: Enabling bind DN info for vds_server_access.log 
 
 5.	Click **Save**. 
 
@@ -407,7 +407,7 @@ The high-level diagram below depicts the components involved.
 
 ![An image showing ](Media/Image3.3.jpg)
 
-Figure 3.3: High-level Persistent Cache with Real-time Refresh Diagram
+Figure 3: High-level Persistent Cache with Real-time Refresh Diagram
 
 1.	A connector detects changes in the backend.
 
@@ -425,7 +425,7 @@ The log level is controlled by the setting in Main Control Panel -> Settings tab
 
 ![An image showing ](Media/Image3.4.jpg)
 
-Figure 3.4: Sync Agents Log Settings
+Figure 4: Sync Agents Log Settings
 
 ### Connectors
 
@@ -435,7 +435,7 @@ The log level is defined per connector with the setting in Main Control Panel ->
 
 ![An image showing ](Media/Image3.5.jpg)
 
-Figure 3.5: Connector Log Level
+Figure 5: Connector Log Level
 
 ### Sync Engine
 
@@ -449,7 +449,7 @@ You can set the log level from Main Control Panel > Settings > Logs > Log Settin
 
 ![An image showing ](Media/Image3.6.jpg)
 
-Figure 3.6: VDS Sync Engine Log Level
+Figure 6: VDS Sync Engine Log Level
 
 ## RadiantOne Persistent Cache with Periodic Refresh
 
@@ -465,7 +465,7 @@ More fine-grained configuration settings related to RadiantOne can be managed fr
 
 ![An image showing ](Media/Image3.7.jpg)
 
-Figure 3.7: Log4J Settings Applicable to Persistent Cache with Periodic Refresh
+Figure 7: Log4J Settings Applicable to Persistent Cache with Periodic Refresh
 
 #### Log Contents
 
@@ -621,7 +621,7 @@ To edit the log file settings:
 
 ![An image showing ](Media/Image3.8.jpg)
  
-Figure 3.8: Configuring Active Directory Password Extraction Logs
+Figure 8: Configuring Active Directory Password Extraction Logs
 
 ### FileName
 

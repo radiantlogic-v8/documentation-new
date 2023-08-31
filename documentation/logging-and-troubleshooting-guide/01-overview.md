@@ -17,7 +17,7 @@ The log4J configurations for the RadiantOne components use paths that include ${
  
 ![An image showing ](Media/Image1.1.jpg)
 
-Figure 1.1: Log4J Configuration Settings in Zookeeper
+Figure 1: Log4J Configuration Settings in Zookeeper
 
 The default root location/drive is identified by the environment variable RLI_HOME.
 
@@ -240,7 +240,7 @@ RadiantOne logs statistics related to operations it receives. This includes aver
 
 This logging is enabled by default and can be managed from the Main Control Panel > Settings Tab > Logs section > Statistics > Statistics Analyzer Settings sub-section.  The log location is <RLI_HOME>/vds_server/logs/stats.log. This logging is enabled by default and calculates statistics during 1-minute intervals prior to saving to the stats.log.
 
-For each RadiantOne Universal Directory (HDAP) store or persistent cache initialization, statistics are calculated for the total number of entries and sub-categorized by branches and object classes. The average and peak number of attributes per entry, and the average and peak size (in KB) per entry are also calculated. This information is logged into the <RLI_HOME>/vds_server/logs/stats.log. This logging is enabled by default and can be managed from the Main Control Panel -> Settings Tab -> Logs section -> Statistics -> Init Statistics Settings sub-section.
+For each RadiantOne Universal Directory (HDAP) store or persistent cache initialization, statistics are calculated for the total number of entries and sub-categorized by branches and object classes. The average and peak number of attributes per entry, and the average and peak size (in KB) per entry are also calculated. This information is logged into the <RLI_HOME>/vds_server/logs/stats.log. This logging is enabled by default and can be managed from the Main Control Panel > Settings Tab > Logs section > Statistics > Init Statistics Settings sub-section.
 
 ### Expert Mode
 
@@ -248,6 +248,6 @@ Some settings in the Main Control Panel are accessible only in Expert Mode. To s
 
 ![An image showing ](Media/expert-mode.jpg)
 
-Figure 1. 2: Switching Control Panel to Expert Mode
+Figure 2: Switching Control Panel to Expert Mode
 
 >[!note] The Main Control Panel saves the last mode (Expert or Standard) it was in when you log out and returns to this mode automatically when you log back in. The mode is saved on a per-role basis.

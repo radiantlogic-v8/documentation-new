@@ -26,7 +26,7 @@ This file rolls over when it reaches 100M in size and 5 files are archived. Thes
 
 ![An image showing ](Media/Image2.1.jpg)
 
-Figure 2. 1: Main Control Panel Server Log Settings
+Figure  1: Main Control Panel Server Log Settings
 
 To change the archive location, expand below the Advanced section (requires [Expert Mode](01-overview#expert-mode)) and indicate the path in the web.log.file.archive property. Generally, these advanced settings should only be changed if advised by Radiant Logic.
 
@@ -48,7 +48,7 @@ The Control Panel access log file contains the save operations performed by admi
 
 ![An image showing ](Media/Image2.2.jpg)
  
-Figure 2. 2: Main Control Panel Access Log Settings
+Figure 2: Main Control Panel Access Log Settings
 
 To change the archive location, expand below the Advanced section (requires [Expert Mode](01-overview#expert-mode)) and indicate the path in the web.access.file.archive property. Generally, these advanced settings should only be changed if advised by Radiant Logic.
 
@@ -70,7 +70,7 @@ More fine-grained configuration log settings related to the Main and Server Cont
 
 ![An image showing ](Media/Image2.3.jpg)
  
-Figure 2. 3: Log4J Settings Applicable to the Main and Server Control Panels
+Figure 3: Log4J Settings Applicable to the Main and Server Control Panels
 
 ## Server Control Panel - Cluster Monitor
 
@@ -78,14 +78,14 @@ A special storage mounted at cn=clustermonitor is used to store historical infor
 
 ![An image showing ](Media/Image2.4.jpg)
  
-Figure 2. 4: Server Control Panel > Dashboard tab
+Figure 4: Server Control Panel > Dashboard tab
 
 The cluster monitor store is configurable from Main Control Panel > Settings > Logs > Clustermonitor. You can enable/disable the store from here and indicate a max age for the entries to prevent the contents from growing too large.
 Note – if you disable the cluster monitor store, no graphs display on the Server Control Panel -> Dashboard tab.
 
 ![An image showing ](Media/Image2.5.jpg)
  
-Figure 2.5: Cluster Monitor Log Settings
+Figure 5: Cluster Monitor Log Settings
 
 ## Context Builder
 
