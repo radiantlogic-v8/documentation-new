@@ -229,7 +229,7 @@ The value indicates which operations the interception should be invoked for (the
 
 #### Configuring Alert Scripts
 
-Alert scripts can be configured to deliver custom alerts for memory, connections, disk space and disk latency (Main Control Panel > Settings > Monitoring > Standard Alerts > Advanced (requires Expert Mode). Alert scripts can also be configured using the set-property command. To configure alert scripts, set the -name command argument to alertScript, and set the -value command argument to the pathname of the script. Examples are shown below. For more information on configuring alert scripts, refer to the [RadiantOne Monitoring and Reporting Guide](/documentation/monitoring-and-reporting-guide/01-monitoring).
+Alert scripts can be configured to deliver custom alerts for memory, connections, disk space and disk latency (Main Control Panel > Settings > Monitoring > Standard Alerts > Advanced (requires Expert Mode). Alert scripts can also be configured using the set-property command. To configure alert scripts, set the -name command argument to alertScript, and set the -value command argument to the pathname of the script. Examples are shown below. For more information on configuring alert scripts, refer to the [RadiantOne Monitoring and Reporting Guide](/monitoring-and-reporting-guide/01-monitoring).
 
 ##### Enable Alert Script
 
