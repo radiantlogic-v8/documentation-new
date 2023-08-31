@@ -7,7 +7,7 @@ description: Operations Guide
 
 ## Migrating Configuration Changes Across Existing Environments
 
-It is recommended that you designate one data center as the primary. Therefore, you should setup your cluster/primary data center based on the recommended architectures described in the [RadiantOne Deployment and Tuning Guide](/documentation/deployment-and-tuning-guide/07-deployment-architecture). Then, all configurations made at the primary data center are migrated to all other data centers.
+It is recommended that you designate one data center as the primary. Therefore, you should setup your cluster/primary data center based on the recommended architectures described in the [RadiantOne Deployment and Tuning Guide](/deployment-and-tuning-guide/07-deployment-architecture). Then, all configurations made at the primary data center are migrated to all other data centers.
 
 >[!note]
 >The steps described in this section would also be applicable to migrating changes from a development/QA environment to an existing/configured production environment. These steps are also applicable for migrating changes across RadiantOne deployed in a classic (active/active or active/passive) architecture. The source and the target RadiantOne versions must be the same.
@@ -98,7 +98,7 @@ After importing the configuration onto the production server, the following item
  
 ### Update Global Settings
 
-If you modified any RadiantOne global settings from the Main Control Panel > Settings tab, you must manually make those same changes to the target servers. These settings can be updated using the command line API instead of the Main Control Panel if needed. Please see the [Radiantone Command Line Configuration Guide](/documentation/command-line-configuration-guide/01-introduction) for details.
+If you modified any RadiantOne global settings from the Main Control Panel > Settings tab, you must manually make those same changes to the target servers. These settings can be updated using the command line API instead of the Main Control Panel if needed. Please see the [Radiantone Command Line Configuration Guide](/command-line-configuration-guide/01-introduction) for details.
 
 #### Configure and Initialize Persistent Cache
 
