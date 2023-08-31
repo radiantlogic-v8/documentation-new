@@ -146,7 +146,7 @@ This section describes how to virtualize LDAP objects, run the data analysis too
 
 ### Virtualizing the LDAP Source
 
-1.	From the Main Control Panel > Settings tab > Server Backend > LDAP data sources, create a connection to your LDAP directory backend. Refer to the [RadiantOne System Administration Guide](/documentation/sys-admin-guide/01-introduction) if you need help with this step. 
+1.	From the Main Control Panel > Settings tab > Server Backend > LDAP data sources, create a connection to your LDAP directory backend. Refer to the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction) if you need help with this step. 
 
 2.	From the Main Control Panel, Directory Namespace tab, click ![An image showing ](Media/newnamingcontext.jpg) (new naming context button).
 
