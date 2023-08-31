@@ -704,7 +704,7 @@ In addition to using the View Designer to manually build virtual views, Context 
 There are three main types of virtual views you can build from LDAP backends. 
 -	Virtualize the whole directory tree (based on existing relationships). 
 
->[!warning] If you want to keep the entire existing tree structure intact and expose it in the RadiantOne namespace, it is recommended that you configure an LDAP backend from the Main Control Panel > Directory Namespace instead of using Context Builder which is typically for building virtual views that reflect a new directory hierarchy than the one that exists. For details on configuring LDAP backends from the Main Control Panel, please see the [RadiantOne Namespace Configuration Guide](/documentation/namespace-configuration-guide/01-introduction).
+>[!warning] If you want to keep the entire existing tree structure intact and expose it in the RadiantOne namespace, it is recommended that you configure an LDAP backend from the Main Control Panel > Directory Namespace instead of using Context Builder which is typically for building virtual views that reflect a new directory hierarchy than the one that exists. For details on configuring LDAP backends from the Main Control Panel, please see the [RadiantOne Namespace Configuration Guide](/namespace-configuration-guide/01-introduction).
 
 -	Flat virtual directory views.
 -	New hierarchical virtual view based on attributes available in an object class.
@@ -752,7 +752,7 @@ Figure 43: Flat Virtual View from Existing LDAP Directory Object class InetOrgPe
 
 The Base DN that was entered when the directory schema was extracted is the starting point that the RadiantOne service uses to search for entries and populate the virtual view. Therefore, all entries associated with the chosen object class below the base DN defined in the data source comprise the virtual view. You can change the starting point by modifying the base DN in the data source. 
 
-After the virtual view is complete, it can be mounted in the RadiantOne namespace. Use the Main Control Panel > Directory Namespace tab for this. For details on this process, please see the [RadiantOne Namespace Configuration Guide](/documentation/namespace-configuration-guide/01-introduction).
+After the virtual view is complete, it can be mounted in the RadiantOne namespace. Use the Main Control Panel > Directory Namespace tab for this. For details on this process, please see the [RadiantOne Namespace Configuration Guide](/namespace-configuration-guide/01-introduction).
 
 ##### Hierarchical Virtual View Based on Attributes of an Object Class 
 
@@ -921,7 +921,7 @@ Using the example above, the following steps describe how to build a flat virtua
 
 Figure 59: Runtime Preview Example
 
-After the virtual view is complete, it can be mounted in the RadiantOne Namespace. Use the Main Control Panel > Directory Namespace tab for this. For details on this process, please see the [RadiantOne Namespace Configuration Guide](/documentation/namespace-configuration-guide/01-introduction). 
+After the virtual view is complete, it can be mounted in the RadiantOne Namespace. Use the Main Control Panel > Directory Namespace tab for this. For details on this process, please see the [RadiantOne Namespace Configuration Guide](/namespace-configuration-guide/01-introduction). 
 
 ##### Hierarchical Virtual View Based on Attributes of an Object 
 
@@ -945,7 +945,7 @@ Finally, the virtual view can be tested from the Runtime Preview tab. The Radian
 
 Figure 62: Runtime Preview of Virtual View Built with Hierarchy Builder
 
-After the virtual view is complete, it can be mounted in the RadiantOne namespace. Use the Main Control Panel > Directory Namespace tab for this. For details on this process, please see the [RadiantOne Namespace Configuration Guide](/documentation/namespace-configuration-guide/01-introduction). 
+After the virtual view is complete, it can be mounted in the RadiantOne namespace. Use the Main Control Panel > Directory Namespace tab for this. For details on this process, please see the [RadiantOne Namespace Configuration Guide](/namespace-configuration-guide/01-introduction). 
 
 ##### Handling Searches Against Case-Sensitive Databases 
 
@@ -1036,7 +1036,7 @@ It is assumed that the SCIMv2 schema has already been extracted. If you need hel
  
 Figure 64: Example Virtual View of a SCIMv2 Backend
 
-After the virtual view is complete, it can be mounted in the RadiantOne Namespace and configured for persistent cache. Use the Main Control Panel > Directory Namespace tab for this. For details on this process, please see the [RadiantOne Namespace Configuration Guide](/documentation/namespace-configuration-guide/01-introduction). For details on configuring a persistent cache, please see the [RadiantOne Deployment and Tuning Guide](/documentation/deployment-and-tuning-guide/00-preface). Once a persistent cache is defined, use the Schema Manager to extract the schema (LDAP type of backend now that the virtual view is in persistent cache). Make sure the SCIMv2 objects/attributes are in the RadiantOne schema before using Schema Manager. See the [RadiantOne System Administration Guide](/documentation/sys-admin-guide/01-introduction) for managing the schema. After the schema is extracted, create a virtual view where you can remap attribute names, configure joins and other customizations.
+After the virtual view is complete, it can be mounted in the RadiantOne Namespace and configured for persistent cache. Use the Main Control Panel > Directory Namespace tab for this. For details on this process, please see the [RadiantOne Namespace Configuration Guide](/namespace-configuration-guide/01-introduction). For details on configuring a persistent cache, please see the [RadiantOne Deployment and Tuning Guide](/deployment-and-tuning-guide/00-preface). Once a persistent cache is defined, use the Schema Manager to extract the schema (LDAP type of backend now that the virtual view is in persistent cache). Make sure the SCIMv2 objects/attributes are in the RadiantOne schema before using Schema Manager. See the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction) for managing the schema. After the schema is extracted, create a virtual view where you can remap attribute names, configure joins and other customizations.
 
 ### Deleting Virtual Views 
 
