@@ -11,7 +11,7 @@ Generally all applications are not switched to use the new directory at the same
 
 Likewise, the legacy LDAP directory isn’t immediately switched off overnight. There is generally a temporary time period where both the legacy LDAP directory and the RadiantOne Universal Directory store must co-exist. This results in a required temporary synchronization process between the two. 
 
-The persistent cache refresh process is in charge of keeping the LDAP directory in sync with the target RadiantOne Universal Directory store. This configuration is outlined in [Chapter 3](03-import-data-into-radiantone-universal-directory).
+The persistent cache refresh process is in charge of keeping the LDAP directory in sync with the target RadiantOne Universal Directory store. This configuration is outlined in [Import Data Into RadiantOne Universal Directory](03-import-data-into-radiantone-universal-directory).
 
 ## Analyze Client Requests
 
