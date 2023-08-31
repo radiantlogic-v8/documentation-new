@@ -27,7 +27,7 @@ This chapter describes the tuning parameters that are relevant at a global level
 
 ## Hardware Sizing
 
-As a first step when deploying RadiantOne, read the [RadiantOne Hardware Sizing Guide](/documentation/hardware-sizing-guide/01-introduction).
+As a first step when deploying RadiantOne, read the [RadiantOne Hardware Sizing Guide](/hardware-sizing-guide/01-introduction).
 
 ## Linux Deployments
 
@@ -58,8 +58,7 @@ Also, set shell limits for the Max Number of Processes. These steps are describe
 user      soft      nproc      2047
 user    hard      nproc      16384
  	
->[!warning]
->Do not set the hard limit for the user equal to (or higher than) the maximum number of file descriptors assigned to the system itself in /proc/sys/fs/file-max. If the hard limit is too high and the user uses all those file descriptors, then the entire system runs out of file descriptors.
+>[!warning] Do not set the hard limit for the user equal to (or higher than) the maximum number of file descriptors assigned to the system itself in /proc/sys/fs/file-max. If the hard limit is too high and the user uses all those file descriptors, then the entire system runs out of file descriptors.
 
 ## Virtual Machine Considerations
 
@@ -120,7 +119,7 @@ Figure 1.1: Task Settings
 Service settings are related to how RadiantOne handles client activity. 
 
 >[!warning]
->Details about each of the parameters mentioned below can be found in the [RadiantOne System Administration Guide](/documentation/sys-admin-guide/01-introduction). This document is only for pointing out these parameters as key to review when tuning.
+>Details about each of the parameters mentioned below can be found in the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction). This document is only for pointing out these parameters as key to review when tuning.
 
 ### Maximum Connections
 
@@ -239,7 +238,7 @@ Figure 1.2: Server Log Settings
 
 In the Access Logs section, Advanced section (requires [Expert Mode](00-preface#expert-mode)), the Buffer Size for File logging property can be used for tuning. Increasing this value results in fewer writes by RadiantOne to the log file on disk. However, increasing this value requires more memory. Make sure the machine memory and amount allocated to the RadiantOne service can accommodate the buffer size you set.
 
-You should also put in place an effective log management strategy: location, rollover and archiving. For details on these options, please see the [RadiantOne Logging and Troubleshooting Guide](/documentation/logging-and-troubleshooting-guide/01-overview).
+You should also put in place an effective log management strategy: location, rollover and archiving. For details on these options, please see the [RadiantOne Logging and Troubleshooting Guide](/logging-and-troubleshooting-guide/01-overview).
 
 ### Changelog
 
@@ -251,4 +250,4 @@ For the RadiantOne service to maintain efficiency and performance (as well as sa
 
 ### Log Archiving
 
-Depending on the log level configured for RadiantOne (the higher the log level, the faster log files grow), you should configure realistic log archiving (to avoid filling up available disk space with too many log files). For more information on log archiving, please see the RadiantOne [RadiantOne Logging and Troubleshooting Guide](/documentation/logging-and-troubleshooting-guide/01-overview).
+Depending on the log level configured for RadiantOne (the higher the log level, the faster log files grow), you should configure realistic log archiving (to avoid filling up available disk space with too many log files). For more information on log archiving, please see the RadiantOne [RadiantOne Logging and Troubleshooting Guide](/logging-and-troubleshooting-guide/01-overview).

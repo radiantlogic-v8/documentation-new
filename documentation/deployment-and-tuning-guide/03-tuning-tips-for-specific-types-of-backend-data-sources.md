@@ -9,7 +9,7 @@ There are three approaches to creating virtual views from the Main Control Panel
 
 ## Virtual Views Created in the Main Control Panel > Directory Namespace or Wizards tabs
 
-Details about the parameters mentioned below can be found in the [RadiantOne System Administration Guide](/documentation/sys-admin-guide/01-introduction). This document is only for pointing out these parameters as key to review when tuning.
+Details about the parameters mentioned below can be found in the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction). This document is only for pointing out these parameters as key to review when tuning.
 ### Database Backends
 
 Database backends are any source accessed via JDBC or ODBC. This includes Oracle, SQL Server, and IBM DB2 among others.
@@ -230,7 +230,7 @@ Default is 5. This is the maximum number of minutes to keep an idle connection i
 
 ## Virtual Views Created in the Main Control Panel > Context Builder Tab
 
-Details about the parameters mentioned below can be found in the [RadiantOne Context Builder Guide](/documentation/context-builder-guide/introduction). This document is only for pointing out these parameters as key to review when tuning RadiantOne FID.
+Details about the parameters mentioned below can be found in the [RadiantOne Context Builder Guide](/context-builder-guide/introduction). This document is only for pointing out these parameters as key to review when tuning RadiantOne FID.
 
 ### Database Backends
 

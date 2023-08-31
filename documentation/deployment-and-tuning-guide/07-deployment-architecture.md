@@ -20,7 +20,7 @@ Deployment guidelines:
 
 ## Basic Architecture
 
-A basic architecture for the RadiantOne platform consists of a ZooKeeper ensemble of at least 3 nodes and a RadiantOne cluster consisting of at least 2 nodes. This is the basic architecture that should be deployed in each data center. To install this basic architecture in production, follow the steps in the [RadiantOne External Zookeeper Install Guide](/documentation/external-zookeeper-install-guide/01-introduction). Once the ZooKeeper ensemble is installed, follow the steps in the [RadiantOne Installation Guide](/documentation/installation-guide/01-introduction) to setup the RadiantOne cluster nodes. 
+A basic architecture for the RadiantOne platform consists of a ZooKeeper ensemble of at least 3 nodes and a RadiantOne cluster consisting of at least 2 nodes. This is the basic architecture that should be deployed in each data center. To install this basic architecture in production, follow the steps in the [RadiantOne External Zookeeper Install Guide](/external-zookeeper-install-guide/01-introduction). Once the ZooKeeper ensemble is installed, follow the steps in the [RadiantOne Installation Guide](/installation-guide/01-introduction) to setup the RadiantOne cluster nodes. 
 
 ![An image showing ](Media/Image7.1.jpg)
  
@@ -28,7 +28,7 @@ Figure 7.1: Basic Deployment Architecture
 
 ### Configuration
 
-During the installation of the first RadiantOne node, the cluster name is defined. After this node is installed and configured as needed (e.g. virtual views, persistent cache, global synchronization, Universal Directory stores…etc.), additional RadiantOne nodes can be installed on other machines. During the install of additional nodes, they can join the existing cluster and benefit from the current configuration and get a replica of the data (Universal Directory stores and persistent cache). The configuration management and allocation of which node becomes the new [RadiantOne leader](#the-radiantone-service) (should the current leader node fail) is handled automatically by ZooKeeper. Configuration changes made on any of the nodes are shared across all nodes in the cluster. For more details, see the [RadiantOne Installation Guide](/documentation/installation-guide/01-introduction).
+During the installation of the first RadiantOne node, the cluster name is defined. After this node is installed and configured as needed (e.g. virtual views, persistent cache, global synchronization, Universal Directory stores…etc.), additional RadiantOne nodes can be installed on other machines. During the install of additional nodes, they can join the existing cluster and benefit from the current configuration and get a replica of the data (Universal Directory stores and persistent cache). The configuration management and allocation of which node becomes the new [RadiantOne leader](#the-radiantone-service) (should the current leader node fail) is handled automatically by ZooKeeper. Configuration changes made on any of the nodes are shared across all nodes in the cluster. For more details, see the [RadiantOne Installation Guide](/installation-guide/01-introduction).
 
 Any new Universal Directory stores or persistent caches that have been initialized on the leader node are automatically replicated out to all follower and follower-only nodes in the cluster. Replication across cluster nodes is based on a binary copy of data files across the cluster's nodes (from leader to followers/followers-only). Every time a Universal Directory store or persistent cache is modified on the leader, new segments are created leaving existing ones untouched. The RadiantOne followers/follower-only copy the new binary files locally to update their image.
 
@@ -86,7 +86,7 @@ A load balancer distributes the client load across all RadiantOne nodes. If one 
 
 Figure 7.5: RadiantOne Service Failure
 
-It is recommended that you use external monitoring with something like Nagios (a 3rd party tool) to be notified of machine level failures. If only the RadiantOne process fails on the machine, the administrator can be alerted via email by leveraging the RadiantOne monitoring capabilities. For details on monitoring RadiantOne, please see the [RadiantOne Monitoring and Reporting Guide](/documentation/monitoring-and-reporting-guide/01-monitoring).
+It is recommended that you use external monitoring with something like Nagios (a 3rd party tool) to be notified of machine level failures. If only the RadiantOne process fails on the machine, the administrator can be alerted via email by leveraging the RadiantOne monitoring capabilities. For details on monitoring RadiantOne, please see the [RadiantOne Monitoring and Reporting Guide](/monitoring-and-reporting-guide/01-monitoring).
 
 The administrator should troubleshoot the failure and restart the RadiantOne service. Once the process has restarted, it automatically connects to the leader node and picks up all data changes (Universal Directory stores or persistent cache) that occurred while it was down (via block replication). The hardware router should failback and again distribute the client load accordingly.
 
@@ -99,7 +99,7 @@ Figure 7.6: Change in RadiantOne Leader Node
 >[!note]
 >Once the failed RadiantOne service is back up on this node, it does not automatically become the leader again. It remains a follower node and connects to the current leader node to retrieve data changes (Universal Directory or persistent cache) that occurred while it was down.
 
-If the machine is not able to be restarted and/or the RadiantOne processes won’t start, the administrator can install RadiantOne on another machine and have it join the cluster (during the install configuration, you define this). All cluster installation steps are described in the [RadiantOne Installation Guide](/documentation/installation-guide/01-introduction). Once this new machine starts up, the new RadiantOne node pulls the data from the current leader node automatically. The failed node that is unable to be recovered can be manually removed from the cluster configuration. Please see the [RadiantOne Operations Guide](/documentation/operations-guide/01-overview) for details.
+If the machine is not able to be restarted and/or the RadiantOne processes won’t start, the administrator can install RadiantOne on another machine and have it join the cluster (during the install configuration, you define this). All cluster installation steps are described in the [RadiantOne Installation Guide](/installation-guide/01-introduction). Once this new machine starts up, the new RadiantOne node pulls the data from the current leader node automatically. The failed node that is unable to be recovered can be manually removed from the cluster configuration. Please see the [RadiantOne Operations Guide](/operations-guide/01-overview) for details.
 
 ### ZooKeeper
 
@@ -117,7 +117,7 @@ This property can also be updated via command line using the vdsconfig utility:
 
 vdsconfig.sh set-property -name onZkWriteLossVdsServerBehavior -value SHUTDOWN
 
-For more information on this utility, see the [Radiantone Command Line Configuration Guide](/documentation/command-line-configuration-guide/01-introduction).
+For more information on this utility, see the [Radiantone Command Line Configuration Guide](/command-line-configuration-guide/01-introduction).
 
 **Fault Tolerance and Recovery**
 
@@ -127,14 +127,14 @@ If a ZooKeeper process or entire machine fails, clients are unaffected as they d
  
 Figure 7.7: ZooKeeper Process Fails
 
-The Dashboard tab in the Main Control Panel indicates if the ZooKeeper process is down. Other external monitoring techniques are also available. Please see the [RadiantOne Monitoring and Reporting Guide](/documentation/monitoring-and-reporting-guide/01-monitoring) for details. An administrator should troubleshoot the failure and restart ZooKeeper. ZooKeeper can be restarted with <RLI_HOME>/bin/runZooKeeper.bat (runZooKeeper.sh on UNIX platforms). Once the ZooKeeper process is back up, it synchronizes the configuration state maintained in the ensemble. If the ZooKeeper service and/or the machine won’t restart, a new machine/ZooKeeper server should be added to the ensemble to maintain the 3-node minimum. 
+The Dashboard tab in the Main Control Panel indicates if the ZooKeeper process is down. Other external monitoring techniques are also available. Please see the [RadiantOne Monitoring and Reporting Guide](/monitoring-and-reporting-guide/01-monitoring) for details. An administrator should troubleshoot the failure and restart ZooKeeper. ZooKeeper can be restarted with <RLI_HOME>/bin/runZooKeeper.bat (runZooKeeper.sh on UNIX platforms). Once the ZooKeeper process is back up, it synchronizes the configuration state maintained in the ensemble. If the ZooKeeper service and/or the machine won’t restart, a new machine/ZooKeeper server should be added to the ensemble to maintain the 3-node minimum. 
 
 >[!note]
 >For complete machine failure notifications, use something like Nagios, which is a 3rd party tool, not included with RadiantOne.
 
 ## Migration to Production
 
-This section describes the process of moving your current configuration into a clean, new target production environment only. After the first migration, you should keep the production environment updated with configuration changes by following the steps detailed in the [RadiantOne Operations Guide](/documentation/operations-guide/01-overview).
+This section describes the process of moving your current configuration into a clean, new target production environment only. After the first migration, you should keep the production environment updated with configuration changes by following the steps detailed in the [RadiantOne Operations Guide](/operations-guide/01-overview).
 
 As you migrate from a development environment to QA and finally to production, the following items should be considered.
 
@@ -162,9 +162,9 @@ As you migrate from a development environment to QA and finally to production, t
 
 12.	(Optional) Configuring Inter-Cluster Replication.
 
-13.	(Optional) If Global Identity Builder is used, perform an upload of identities into the global profile and configure persistent cache. See [RadiantOne Global Identity Builder Guide](/documentation/global-identity-builder-guide/introduction).
+13.	(Optional) If Global Identity Builder is used, perform an upload of identities into the global profile and configure persistent cache. See [RadiantOne Global Identity Builder Guide](/global-identity-builder-guide/introduction).
 
-14.	(Optional) Enabling FIPS Mode. See [RadiantOne FIPS Mode Guide](/documentation/radiantone-fips-mode-guide/01-overview).
+14.	(Optional) Enabling FIPS Mode. See [RadiantOne FIPS Mode Guide](/radiantone-fips-mode-guide/01-overview).
 
 15.	(Optional) Configure multiple instances of RadiantOne.
 
@@ -243,7 +243,7 @@ Total time: 9 seconds
 
 ### Managing Server Certificates
 
-If you are using CA-signed server certificate for the RadiantOne service, the Migration Tool cannot generate new ones for the target machine. New certificates must be configured manually if you do not want the server to use the certificate defined during the install. For steps on configuring and installing server SSL/TLS certificates, please see the [RadiantOne System Administration Guide](/documentation/sys-admin-guide/01-introduction).
+If you are using CA-signed server certificate for the RadiantOne service, the Migration Tool cannot generate new ones for the target machine. New certificates must be configured manually if you do not want the server to use the certificate defined during the install. For steps on configuring and installing server SSL/TLS certificates, please see the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction).
 
 ### Installing Servers to Run as Services
 
@@ -256,7 +256,7 @@ Data sources store connection strings that are required for RadiantOne to establ
 >[!warning]
 >One purpose of having a data source defining the connection is to isolate the connection string from the metadata files (.dvx and .orx). It is strongly recommended that you use generic data source names that can remain (be relevant) as you migrate from a development to production environment where you only need to change the connection information.
 
-Data sources can be edited from the Main Control Panel or from the command line using the vdsconfig utility. Using the Main Control Panel is described below. For information on using the vdsconfig utility, please see the [Radiantone Command Line Configuration Guide](/documentation/command-line-configuration-guide/01-introduction).
+Data sources can be edited from the Main Control Panel or from the command line using the vdsconfig utility. Using the Main Control Panel is described below. For information on using the vdsconfig utility, please see the [Radiantone Command Line Configuration Guide](/command-line-configuration-guide/01-introduction).
 
 **Main Control Panel**
 
@@ -337,7 +337,7 @@ Figure 7.12 JVM Parameters for a Task
 
 It is essential to configure monitoring and alerts for production environments. Although there are many different aspects of RadiantOne that can be monitored, memory and disk space are two of the most important. Monitoring can also be extremely helpful in determining how to properly tune your RadiantOne environment. For example, paying close attention to how disk space and memory are growing during the first week of deployment in production can help to put in place the right archiving and memory allocations.
 
-For details on monitoring, please see the [RadiantOne Monitoring and Reporting Guide](/documentation/monitoring-and-reporting-guide/01-monitoring).
+For details on monitoring, please see the [RadiantOne Monitoring and Reporting Guide](/monitoring-and-reporting-guide/01-monitoring).
 
 ### (Optional) Configuring Inter-Cluster Replication 
 
@@ -345,16 +345,16 @@ If you have multiple data centers/sites in production, configure inter-cluster r
 
 ### (Optional) Performing Upload in Global Identity Builder 
 
-If the Global Identity Builder was used in the Dev/QA environment, perform an upload of identities into the global profile and configure persistent cache in the production environment. See the [RadiantOne Global Identity Builder Guide](/documentation/global-identity-builder-guide/introduction) for steps to upload identities and configure persistent cache.
+If the Global Identity Builder was used in the Dev/QA environment, perform an upload of identities into the global profile and configure persistent cache in the production environment. See the [RadiantOne Global Identity Builder Guide](/global-identity-builder-guide/introduction) for steps to upload identities and configure persistent cache.
 
 ### (Optional) Enabling FIPS Mode
 
-FIPS Mode settings are not migrated with the migration utility. To enable FIPS Mode in production, see the [RadiantOne FIPS Mode Guide](/documentation/radiantone-fips-mode-guide/01-overview).
+FIPS Mode settings are not migrated with the migration utility. To enable FIPS Mode in production, see the [RadiantOne FIPS Mode Guide](/radiantone-fips-mode-guide/01-overview).
 
 ### (Optional) Configuring Instance Subclusters of RadiantOne
 
 >[!note]
->As of RadiantOne v7.4.2, instances are no longer created and deleted via the Main Control Panel. Instead, they are now installed and uninstalled using the RadiantOne Instance Manager utility. For details on installing Instances, see the [RadiantOne Installation Guide](/documentation/installation-guide/01-introduction).
+>As of RadiantOne v7.4.2, instances are no longer created and deleted via the Main Control Panel. Instead, they are now installed and uninstalled using the RadiantOne Instance Manager utility. For details on installing Instances, see the [RadiantOne Installation Guide](/installation-guide/01-introduction).
 
 RadiantOne instance subclusters are used to address a very small set of use cases:
 
@@ -364,7 +364,7 @@ RadiantOne instance subclusters are used to address a very small set of use case
 
 #### Managing RadiantOne Instances
 
-Instances of RadiantOne can be managed from the Main Control Panel or the Instance Manager command line utility. Both options are described in this section. For information on installing RadiantOne instance subclusters, refer to the [RadiantOne Installation Guide](/documentation/installation-guide/01-introduction).
+Instances of RadiantOne can be managed from the Main Control Panel or the Instance Manager command line utility. Both options are described in this section. For information on installing RadiantOne instance subclusters, refer to the [RadiantOne Installation Guide](/installation-guide/01-introduction).
 
 ##### RadiantOne Main Control Panel
 
@@ -456,13 +456,13 @@ C:\radiantone\vds\bin>instancemanager -d -n newvdsinstance
 
 ### Manually Keep Configuration Synchronized
 
-When RadiantOne is deployed in a classic active/active or active/passive architecture, and not deployed in a cluster, configuration changes (e.g. server settings, new views…etc.) are not automatically shared/synchronized across all servers. Every time changes are made to one production server, they must be made on the other production servers. Refer to the [RadiantOne Operations Guide](/documentation/operations-guide/01-overview), section titled: Migrating Configuration Changes across Existing Environments for details.
+When RadiantOne is deployed in a classic active/active or active/passive architecture, and not deployed in a cluster, configuration changes (e.g. server settings, new views…etc.) are not automatically shared/synchronized across all servers. Every time changes are made to one production server, they must be made on the other production servers. Refer to the [RadiantOne Operations Guide](/operations-guide/01-overview), section titled: Migrating Configuration Changes across Existing Environments for details.
 
 ## Multiple Clusters/Data Centers
 
 When deploying RadiantOne in multiple data centers, each data center is configured as its own cluster (set of clusters). RadiantOne Universal Directory stores in each cluster should be configured for inter-cluster replication. Persistent cache architectures must be configured appropriately depending on whether the authoritative backends are accessible by all sites/data centers. These topics are discussed in this section.
 
-Although data (Universal Directory stores or persistent cache) can be replicated across clusters, configuration changes are not. Configuration changes must be manually migrated every time a change is made in the primary data center. Refer to the [RadiantOne Operations Guide](/documentation/operations-guide/01-overview), section titled: Migrating Configuration Changes across Existing Environments for details.
+Although data (Universal Directory stores or persistent cache) can be replicated across clusters, configuration changes are not. Configuration changes must be manually migrated every time a change is made in the primary data center. Refer to the [RadiantOne Operations Guide](/operations-guide/01-overview), section titled: Migrating Configuration Changes across Existing Environments for details.
 
 ### Inter-cluster Replication for Universal Directory Stores
 
@@ -532,7 +532,7 @@ To create a new Universal Directory store:
 
 #### Initialize the Replicas
 
-Before enabling replication, all replicas must have the same initial image: either an empty store or an initialized store based on the export of the Universal Directory store at the primary data center. When you export the store on the primary data center, you must have the option “Export for Replication” checked. If you want to use fractional replication, make sure you set the excluded attributes (that you don’t want replicated) in the “Replication Excluded Attributes” property. When you export the store from the primary data center, the LDIF file will not have the excluded attributes in it. For more details on fractional replication, see the [RadiantOne Namespace Configuration Guide](/documentation/namespace-configuration-guide/01-introduction).
+Before enabling replication, all replicas must have the same initial image: either an empty store or an initialized store based on the export of the Universal Directory store at the primary data center. When you export the store on the primary data center, you must have the option “Export for Replication” checked. If you want to use fractional replication, make sure you set the excluded attributes (that you don’t want replicated) in the “Replication Excluded Attributes” property. When you export the store from the primary data center, the LDIF file will not have the excluded attributes in it. For more details on fractional replication, see the [RadiantOne Namespace Configuration Guide](/namespace-configuration-guide/01-introduction).
 
 If your architecture uses sub-tree replication, you can export a specific container/sub-tree (instead of the entire root naming context) and use it to initialize the replica. You must have the option “Export for Replication” checked when doing the export to ensure the uuid attribute is properly included in the export and handled during the import into the replica cluster.
 
@@ -540,7 +540,7 @@ To initialize a replica:
 
 1.	On the RadiantOne leader node of a cluster, go to the Main Control Panel > Directory Namespace tab and below the root naming context node click the naming context representing the Universal Directory store. 
 
-2.	(Optional) If you are using fractional replication, in the Properties tab on the right, enter the excluded attributes in the “Replication Excluded Attributes” property and click **Save**. The values for this property must be the same on all replicas. For more details on fractional replication, see the [RadiantOne Namespace Configuration Guide](/documentation/namespace-configuration-guide/01-introduction).
+2.	(Optional) If you are using fractional replication, in the Properties tab on the right, enter the excluded attributes in the “Replication Excluded Attributes” property and click **Save**. The values for this property must be the same on all replicas. For more details on fractional replication, see the [RadiantOne Namespace Configuration Guide](/namespace-configuration-guide/01-introduction).
 
 3.	In the Properties tab on the right, click on the Initialize button at the bottom of the screen and choose a location for the LDIF you want to initialize your store with. The LDIF file should come from an export of the Universal Directory store on the primary data center. Make sure the “Export for Replication” option is checked during the export to ensure the UUID attribute is handled properly when this image is used to initialize the target Universal Directory store. This also ensures that the LDIF file excludes any attributes listed in the “Replication Excluded Attribute” property.
 
@@ -687,11 +687,11 @@ To configure replication across sites, follow the steps below.
 12.	If you did step 11, repeat the steps for each replica cluster. Each site/cluster should have a VDSLBCache data source that points to the load balancer for the cache refresh cluster. This data source is used for redirecting operations. See step 13 below and the section on [Handling Client Writes](#handling-client-writes) for more information on redirecting operations.
 
 13.	 (Optional) If the [Use Cache for Authentication](02-tuning-tips-for-caching-in-radiantone#use-cache-for-authentication) option is not enabled on the persistent cache in the primary/main site, then passwords are not replicated to the Universal Directory stores in the additional site(s). Therefore, you must redirect bind operations to the primary/main (cache refresh) site, which will redirect the credentials to the backend(s) accordingly. On the leader node of (each) new replica site, go to the Main Control Panel > Settings Tab > Interception section > Redirections sub-section (requires [Expert Mode](00-preface#expert-mode)). Select the naming context representing the Universal Directory store and click **Edit**. In the “Redirect Bind Operations to” drop-down list, select the data source that represents the RadiantOne nodes in the primary (cache refresh) site (use the VDSLBCache data source that was defined in step 11 above). If you do not have a data source configured that points to the RadiantOne nodes in the primary site, go to the Server Backend section, LDAP Data Sources sub-section and create one that points to the load balancer configured in front of the nodes at the primary/cache refresh site. Then go back to the Interception section, Redirections sub-section and define that all Binds be redirected to the data source associated with the primary site.
-     ![An image showing ](Media/Image7.24.jpg)
+    ![An image showing ](Media/Image7.24.jpg)
     
-     Figure 7.24: Option to Redirect Binds to the Cache Refresh Site
+    Figure 7.24: Option to Redirect Binds to the Cache Refresh Site
 
-     >[!note] If the ‘[Use Cache for Authentication](02-tuning-tips-for-caching-in-radiantone#use-cache-for-authentication)’ option is enabled for the persistent cache in the primary (cache refresh) site, the passwords are stored in the cache and authentication is handled locally by RadiantOne as opposed to being delegated to the backend. In this scenario, the passwords are replicated to the Universal Directory stores located on all other sites. This allows the Universal Directory stores on these sites to handle bind operations locally and not require a bind redirect to the primary (cache) site.
+    >[!note] If the ‘[Use Cache for Authentication](02-tuning-tips-for-caching-in-radiantone#use-cache-for-authentication)’ option is enabled for the persistent cache in the primary (cache refresh) site, the passwords are stored in the cache and authentication is handled locally by RadiantOne as opposed to being delegated to the backend. In this scenario, the passwords are replicated to the Universal Directory stores located on all other sites. This allows the Universal Directory stores on these sites to handle bind operations locally and not require a bind redirect to the primary (cache) site.
 
 14.	On the leader node of the primary/main (cache refresh) site, configure the persistent cache to support Inter-Cluster Replication. Go to the Main Control Panel -> Directory Namespace Tab. Expand the Cache node and select the applicable persistent cache. On the Properties tab on the right, check the box for Inter-cluster replication. Click **Save**.
 

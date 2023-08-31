@@ -133,7 +133,7 @@ This model of caching leverages two types of memory: Main and Virtual. Main memo
 First, enable the Entry Memory Cache. In the Main Control Panel > Settings Tab > Server Front End section > Memory Cache sub-section (requires [Expert Mode](00-preface#expert-mode)), on the right side, check the Entry Cache box. Click Save in the top right corner.
 
 >[!warning]
->if you plan on caching (either entry memory cache or persistent cache) the branch in the tree that maps to an LDAP backend, you must list the operational attributes you want to be in the cache as “always requested”. Otherwise, the entry stored in cache would not have these attributes and clients accessing these entries may need them. For details on how to define attributes as “always requested” please see the [RadiantOne System Administration Guide](/documentation/sys-admin-guide/01-introduction).
+>if you plan on caching (either entry memory cache or persistent cache) the branch in the tree that maps to an LDAP backend, you must list the operational attributes you want to be in the cache as “always requested”. Otherwise, the entry stored in cache would not have these attributes and clients accessing these entries may need them. For details on how to define attributes as “always requested” please see the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction).
 
 Entry cache is for caching every entry (a unique DN) of the specified tree. This kind of cache works well on trees where the volatility (update rate) is low (the likelihood of this data changing during the lifetime of this cache is low). This type of cache is optimized for and should only be used for finding specific entries (e.g. finding user entries during the “identification” phase of authentication) based on unique attributes that have been indexed in the cache setting, and base searches. The attributes you choose to index for the cache are very important because the value needs to be unique across all entries in the cache. For example, if you index the uid attribute, then all entries in the cache must have a unique uid (and be able to be retrieved from the cache based on this value). On the other hand, an attribute like postalcode would not be a good attribute to index (and search for entries based on) because more than one entry could have the same value for postalcode.
  	
@@ -196,7 +196,7 @@ As an alternative approach, you can indicate what entries to include by using th
 
 **Number of Cached Entries**
 
-The total number of entries kept in main memory. The entry cache can expand beyond the main memory and the entries are swapped as needed. The default value for this parameter is 5000. This means that up to 5000 most recently used entries are put in the main memory cache. As the number of entries exceeds 5000, they are stored as virtual memory (memory on disk) and swapped as needed. The default value of 5000 is usually sufficient. However, if you would like to increase this number, you must make sure you have enough memory available on your machine and allocated to the RadiantOne Java Virtual Machine (see below for memory size requirements and check the [RadiantOne Hardware Sizing Guide](/documentation/hardware-sizing-guide/01-introduction) for global recommendations).
+The total number of entries kept in main memory. The entry cache can expand beyond the main memory and the entries are swapped as needed. The default value for this parameter is 5000. This means that up to 5000 most recently used entries are put in the main memory cache. As the number of entries exceeds 5000, they are stored as virtual memory (memory on disk) and swapped as needed. The default value of 5000 is usually sufficient. However, if you would like to increase this number, you must make sure you have enough memory available on your machine and allocated to the RadiantOne Java Virtual Machine (see below for memory size requirements and check the [RadiantOne Hardware Sizing Guide](/hardware-sizing-guide/01-introduction) for global recommendations).
 
 ##### Memory Size Requirements
 
@@ -283,7 +283,7 @@ Persistent cache is the cache image stored on disk. With persistent cache, the R
 
 Initialization of a persistent cache happens in two phases. The first phase is to create an LDIF formatted file of the cache contents (if you already have an LDIF file, you have the option to use this existing file as opposed to generating a new one). The second phase is to initialize the cache with the LDIF file. After the first phase, RadiantOne prepares the LDIF file to initialize the cache. Therefore, you need to consider at least these two LDIF files and the amount of disk space to store the entries in cache. 
 
-Best practice would be to take four times the size of the LDIF file generated to determine the disk space that is required to initialize the persistent cache. For example, lab tests have shown 50 million entries (1KB or less in size) generates an LDIF file approximately 50 GB in size. So total disk space recommended to create the persistent cache for this example would be 200 GB. See the [RadiantOne Hardware Sizing Guide](/documentation/hardware-sizing-guide/01-introduction) for general recommendations on disk space.
+Best practice would be to take four times the size of the LDIF file generated to determine the disk space that is required to initialize the persistent cache. For example, lab tests have shown 50 million entries (1KB or less in size) generates an LDIF file approximately 50 GB in size. So total disk space recommended to create the persistent cache for this example would be 200 GB. See the [RadiantOne Hardware Sizing Guide](/hardware-sizing-guide/01-introduction) for general recommendations on disk space.
 
 #### Data Statistics
 
@@ -412,7 +412,7 @@ When initializing persistent cache, two settings you should take into considerat
 
 ##### Using Parallel Processing Engine
 
-In some cases, the virtual engine parallel processor (vpp) can be used to speed up the cache image creation while indexing. This option can only be used when initializing persistent cache with the vdsconfig utility, init-pcache command. This is useful when the virtual view to be cached contains many entries and other time-intensive configurations like joins, and computed attributes involving lookups. This option isn’t compatible with views associated with interception scripts. Initializing a view that is incompatible with the -vpp command results in an error that indicates why the view is incompatible. See the [Radiantone Command Line Configuration Guide](/documentation/command-line-configuration-guide/01-introduction) for details on the init-pcache command.
+In some cases, the virtual engine parallel processor (vpp) can be used to speed up the cache image creation while indexing. This option can only be used when initializing persistent cache with the vdsconfig utility, init-pcache command. This is useful when the virtual view to be cached contains many entries and other time-intensive configurations like joins, and computed attributes involving lookups. This option isn’t compatible with views associated with interception scripts. Initializing a view that is incompatible with the -vpp command results in an error that indicates why the view is incompatible. See the [Radiantone Command Line Configuration Guide](/command-line-configuration-guide/01-introduction) for details on the init-pcache command.
 
 ##### Using Paging
 
@@ -504,7 +504,7 @@ During each refresh interval, the periodic persistent cache refresh is performed
 3.	(Optional) If a [validation script](#validation-script-path) is defined, RadiantOne invokes the script logic. If the validation script is successful, RadiantOne updates the cache. If the validation script is unsuccessful, RadiantOne does not update the persistent cache during this cycle.
 
 4.	RadiantOne compares the LDIF file generated in step 1 to the current cache image and applies changes to the cache immediately as it goes through the comparison.
-The periodic persistent cache refresh activity is logged into <RLI_HOME>/vds_server/logs/periodiccache.log. For details on this log, see the [RadiantOne Logging and Troubleshooting Guide](/documentation/logging-and-troubleshooting-guide/01-overview).
+The periodic persistent cache refresh activity is logged into <RLI_HOME>/vds_server/logs/periodiccache.log. For details on this log, see the [RadiantOne Logging and Troubleshooting Guide](/logging-and-troubleshooting-guide/01-overview).
 
 The rebuild process can be very taxing on your backends, and each time a new image is built you are putting stress on the data sources. This type of cache refresh deployment works well when the data doesn’t change too frequently and the volume of data is relatively small. 
 
@@ -519,7 +519,7 @@ You can manually initiate a persistent cache refresh that leverages the same met
 
 The log containing the refresh actions performed is <RLI_HOME>/vds_server/logs/periodiccache.log.
 
-For more details on the search-vds command, see the [Radiantone Command Line Configuration Guide](/documentation/command-line-configuration-guide/01-introduction).
+For more details on the search-vds command, see the [Radiantone Command Line Configuration Guide](/command-line-configuration-guide/01-introduction).
 
 #### Configuring Persistent Cache with Periodic Refresh
 
@@ -1138,16 +1138,16 @@ If RadiantOne is deployed in a cluster, the value of the storage location parame
 
 This is a comma-separated list of attributes to be used in association with Virtual List Views (VLV) or sort control configured for RadiantOne. These sorted indexes are managed internally in the persistent cache and kept optimized for sorting. They are required if you need to sort the search result or to execute a VLV query on the persistent cache branch.
 
-If you need to support VLV, the VLV/Sort control must be enabled in RadiantOne. For details on this control, please see the [RadiantOne System Administration Guide](/documentation/sys-admin-guide/01-introduction).
+If you need to support VLV, the VLV/Sort control must be enabled in RadiantOne. For details on this control, please see the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction).
 
 If you change the sorted attributes, you must re-build the index. You can do this from the Properties tab by clicking **Re-build Index**.
 
 ##### Encrypted Attributes
 
-Attribute encryption protects sensitive data while it is stored in RadiantOne. You can specify that certain attributes of an entry are stored in an encrypted format. This prevents data from being readable while stored in persistent cache, backup files, and exported LDIF files. Attribute values are encrypted before they are stored in persistent cache, and decrypted before being returned to the client, as long as the client is authorized to read the attribute (based on ACLs defined in RadiantOne), is connected to the RadiantOne service via SSL, and not a member of the special group containing members not allowed to get these attributes (e.g. cn=ClearAttributesOnly,cn=globalgroups,cn=config). For details on this special group, please see the [RadiantOne System Administration Guide](/documentation/sys-admin-guide/01-introduction).
+Attribute encryption protects sensitive data while it is stored in RadiantOne. You can specify that certain attributes of an entry are stored in an encrypted format. This prevents data from being readable while stored in persistent cache, backup files, and exported LDIF files. Attribute values are encrypted before they are stored in persistent cache, and decrypted before being returned to the client, as long as the client is authorized to read the attribute (based on ACLs defined in RadiantOne), is connected to the RadiantOne service via SSL, and not a member of the special group containing members not allowed to get these attributes (e.g. cn=ClearAttributesOnly,cn=globalgroups,cn=config). For details on this special group, please see the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction).
 
 >[!warning]
->Define a security encryption key from the Main Control Panel > Settings Tab > Security section > Attribute Encryption prior to configuring encrypted attributes. For steps on defining key generation, see the [RadiantOne System Administration Guide](/documentation/sys-admin-guide/01-introduction).
+>Define a security encryption key from the Main Control Panel > Settings Tab > Security section > Attribute Encryption prior to configuring encrypted attributes. For steps on defining key generation, see the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction).
 
 On the Properties Tab for the selected persistent cache, enter a comma-separated list of attributes to store encrypted in the Encrypted Attributes property. Attributes listed in the Encrypted Attributes property are added to the Non-indexed attribute list by default. This means these attributes are not searchable by default. Indexing encrypted attributes is generally not advised as the index itself is less secure than the attribute stored in the persistent cache. However, if you must be able to search on the encrypted attribute value, it must be indexed. Only “exact match/equality” index is supported for encrypted attributes. To make an encrypted attribute searchable, remove the attribute from the list of nonindexed attributes and then click **Re-build Index**.
 
@@ -1161,7 +1161,7 @@ Extension attributes are stored locally and RadiantOne handles the lifecycle of 
 
 Figure 2.23: Extension Attributes for Persistent Cache
 
-For consistency of the RadiantOne LDAP schema, define the extension attributes as part of the schema, generally associated with an auxiliary object class. For details on extending the schema, see the [RadiantOne System Administration Guide](/documentation/sys-admin-guide/01-introduction).
+For consistency of the RadiantOne LDAP schema, define the extension attributes as part of the schema, generally associated with an auxiliary object class. For details on extending the schema, see the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction).
 
 Extension Attributes are replicated to other clusters in [deployment scenarios](07-deployment-architecture#backends-inaccessible-by-all-sites) where inter-cluster replication is enabled and a replica of a persistent cache is maintained as a RadiantOne Universal Directory store in the target cluster(s).
 
@@ -1229,7 +1229,7 @@ Each option is described in more details below.
 
 -	Delegate on Failure – If this option is enabled and the user entry in cache has a password but the local checking fails, RadiantOne delegates the credentials checking to the backend. If the credentials checking fails against the backend, an unsuccessful bind response is returned to the client. If the credentials checking succeeds against the backend, a successful bind response is returned to the client.
 
--	Enable Password Policy Enforcement - If you are storing user passwords in cache and you are using the cache for authentication, you can also choose to have RadiantOne enforce password policies (as opposed to delegating password checking to the backend directory and having it enforce password policies). Enable this option and then define the password policy to enforce. For details on password policies, see the [RadiantOne System Administration Guide](/documentation/sys-admin-guide/01-introduction). 
+-	Enable Password Policy Enforcement - If you are storing user passwords in cache and you are using the cache for authentication, you can also choose to have RadiantOne enforce password policies (as opposed to delegating password checking to the backend directory and having it enforce password policies). Enable this option and then define the password policy to enforce. For details on password policies, see the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction). 
 
 -	When you enable the password policy enforcement on a persistent cache, the userPassword attribute is automatically added to the Extension Attribute property and you have the option to enable Password Write Back. If Password Write Back is enabled, and a modify request for the password is sent to RadiantOne, it tries to update the password in the backend. In some circumstances, having two levels of password policies can result in inconsistencies between the cache image and the underlying backend(s). These circumstances are outlined in the table below.
 
@@ -1372,7 +1372,7 @@ Figure 2.29: Back Link Attribute Name in Special Attribute Handling
 
 2. Click **Save**. 
 
-3. You can either rebuild the index, or reinitialize the persistent cache. Click **Re-build Index** or **Initialize**. The back link attribute is always returned to clients even when not requested unless Hide Operational Attributes is enabled in RadiantOne (in which case it is only returned when a client explicitly requests it). For details on the Hide Operational Attributes setting, please see the [RadiantOne System Administration Guide](/documentation/sys-admin-guide/01-introduction). 
+3. You can either rebuild the index, or reinitialize the persistent cache. Click **Re-build Index** or **Initialize**. The back link attribute is always returned to clients even when not requested unless Hide Operational Attributes is enabled in RadiantOne (in which case it is only returned when a client explicitly requests it). For details on the Hide Operational Attributes setting, please see the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction). 
 
 >[!warning]
 >If a persistent cache has optimizations associated with it, deactivating it will interfere with queries associated with the linked attributes and they will not return properly. If you no longer need a cache, delete it instead of deactivating it.
@@ -1513,7 +1513,7 @@ Entries remain in the cn=cacherefreshlog for a default of 3 days. This is config
 
 -	cn=dlqueue
 
-Typically, if the changelog has been enabled then error log level is used for the persistent cache refresh log. For more information, please see Persistent Cache Log Setting in the [RadiantOne System Administration Guide](/documentation/sys-admin-guide/01-introduction).
+Typically, if the changelog has been enabled then error log level is used for the persistent cache refresh log. For more information, please see Persistent Cache Log Setting in the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction).
 
 ##### Detecting Persistent Cache Update Errors
 

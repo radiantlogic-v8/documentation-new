@@ -8,7 +8,7 @@ description: Deployment and Tuning Guide
 The RadiantOne platform offers an LDAP v3 compliant storage that can be used to store any entries. After the root naming context is created, the local store can be populated from an LDIF file or manually on the Main Control Panel -> Directory Browser Tab. RadiantOne can support multiple Universal Directory stores. 
 
 >[!warning]
->Details about each of the parameters mentioned below can be found in the [RadiantOne System Administration Guide](/documentation/sys-admin-guide/01-introduction). This document is only for pointing out these parameters as key to review when tuning RadiantOne.
+>Details about each of the parameters mentioned below can be found in the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction). This document is only for pointing out these parameters as key to review when tuning RadiantOne.
 
 ## Indexed Attributes
 
@@ -83,4 +83,4 @@ An example of using vdsconfig to configure ReplicationPollChunkSize is shown bel
 
 c:\radiantone\vds\bin\vdsconfig.bat set-property -name replicationPollChunkSize -value 15000
 
-For more details on the vdsconfig utility, see the [Radiantone Command Line Configuration Guide](/documentation/command-line-configuration-guide/01-introduction).
+For more details on the vdsconfig utility, see the [Radiantone Command Line Configuration Guide](/command-line-configuration-guide/01-introduction).

@@ -125,7 +125,7 @@ change-pipeline-state -pipelineid <pipelineID> -state <state>
 
 Run the list-topologies command to locate the pipelines identifiers for each topology. This is the value to pass in the -pipelineid. For the -state property, use a value of “resume” to start the synchronization process. Use a value of “suspend” to stop the synchronization process.
 
-For more details on the vdsconfig utility, see the [Radiantone Command Line Configuration Guide](/documentation/command-line-configuration-guide/01-introduction).
+For more details on the vdsconfig utility, see the [Radiantone Command Line Configuration Guide](/command-line-configuration-guide/01-introduction).
 
 ## Control Panels
 

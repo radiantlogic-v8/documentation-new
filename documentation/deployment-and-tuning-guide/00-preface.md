@@ -7,7 +7,7 @@ description: Deployment and Tuning Guide
 
 ## About this Manual
 
-This guide provides conceptual and procedural information for tuning and deploying RadiantOne. This includes the topics of caching and the server settings for different types of deployment configurations. The tuning tips described in this guide refer to the specific parameters you should take into consideration when tuning. For specific details and exact steps on configuring these parameters, you should see the [RadiantOne System Administration Guide](/documentation/sys-admin-guide/01-introduction).
+This guide provides conceptual and procedural information for tuning and deploying RadiantOne. This includes the topics of caching and the server settings for different types of deployment configurations. The tuning tips described in this guide refer to the specific parameters you should take into consideration when tuning. For specific details and exact steps on configuring these parameters, you should see the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction).
 
 ## Audience
 
