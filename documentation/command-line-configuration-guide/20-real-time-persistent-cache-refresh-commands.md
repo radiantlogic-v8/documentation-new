@@ -79,7 +79,7 @@ In the following example, a request is made to reset the cursor of a persistent 
 
 Agents manage connectors used for real-time persistent cache refreshes. Persistent Cache Refresh Agents are started automatically once a persistent cache with real-time refresh is configured. Agents can run on any type of RadiantOne cluster node (follower or leaders) and there is only one agent running at any given time in a RadiantOne cluster.
 
-Agents are also used for CPLDS sync processes. CPLDS Agents run on follower-only cluster nodes and multiple agents can be running at the same time. The more agents the better in order to distribute the load. For more details, see the [RadiantOne CPLDS Guide](/documentation/cplds-guide/introduction).
+Agents are also used for CPLDS sync processes. CPLDS Agents run on follower-only cluster nodes and multiple agents can be running at the same time. The more agents the better in order to distribute the load. For more details, see the [RadiantOne CPLDS Guide](/cplds-guide/introduction).
 
 This command lists the currently running agents, both the ones used for persistent cache refresh and the ones used for CPLDS.
 
@@ -101,7 +101,7 @@ In the following example, a request is made to list the agents that are currentl
 
 Agents manage connectors used for real-time persistent cache refreshes. Persistent Cache Refresh Agents are started automatically once a persistent cache with real-time refresh is configured. Agents can run on any type of RadiantOne cluster node (follower or leaders) and there is only one agent running at any given time in a RadiantOne cluster.
 
-Agents are also used for CPLDS sync processes. CPLDS Agents run on follower-only cluster nodes and multiple agents can be running at the same time. The more agents the better in order to distribute the load. For more details, see the [RadiantOne CPLDS Guide](/documentation/cplds-guide/introduction).
+Agents are also used for CPLDS sync processes. CPLDS Agents run on follower-only cluster nodes and multiple agents can be running at the same time. The more agents the better in order to distribute the load. For more details, see the [RadiantOne CPLDS Guide](/cplds-guide/introduction).
 
 This command stops an agent specified by name.
 
@@ -128,7 +128,7 @@ In the following example, a request is made to stop an agent.
 
 Agents manage connectors used for real-time persistent cache refreshes. Persistent Cache Refresh Agents are started automatically once a persistent cache with real-time refresh is configured. Agents can run on any type of RadiantOne cluster node (follower or leaders) and there is only one agent running at any given time in a RadiantOne cluster.
 
-Agents are also used for global synchronization and CPLDS sync processes. CPLDS Agents run on follower-only cluster nodes and multiple agents can be running at the same time. The more agents the better in order to distribute the load. For more details on CPLDS, see the [RadiantOne CPLDS Guide](/documentation/cplds-guide/introduction). For more details on [global synchronization](global-sync-commands.md), see the [RadiantOne Global Sync Guide](/documentation/global-sync-guide/introduction).
+Agents are also used for global synchronization and CPLDS sync processes. CPLDS Agents run on follower-only cluster nodes and multiple agents can be running at the same time. The more agents the better in order to distribute the load. For more details on CPLDS, see the [RadiantOne CPLDS Guide](/cplds-guide/introduction). For more details on [global synchronization](global-sync-commands.md), see the [RadiantOne Global Sync Guide](/global-sync-guide/introduction).
 
 This command stops all agents.
 
@@ -151,7 +151,7 @@ In the following example, a request is made to stop all agents.
 
 Agents manage connectors used for real-time persistent cache refreshes. Persistent Cache Refresh Agents are started automatically once a persistent cache with real-time refresh is configured. Agents can run on any type of RadiantOne cluster node (follower or leaders) and there is only one agent running at any given time in a RadiantOne cluster.
 
-Agents are also used for [global synchronization](global-sync-commands.md) and CPLDS sync processes. CPLDS Agents run on follower-only cluster nodes and multiple agents can be running at the same time. The more agents the better in order to distribute the load. For more details on CPLDS, see the [RadiantOne CPLDS Guide](/documentation/cplds-guide/introduction). For more details on global synchronization, see the [RadiantOne Global Sync Guide](/documentation/global-sync-guide/introduction).
+Agents are also used for [global synchronization](global-sync-commands.md) and CPLDS sync processes. CPLDS Agents run on follower-only cluster nodes and multiple agents can be running at the same time. The more agents the better in order to distribute the load. For more details on CPLDS, see the [RadiantOne CPLDS Guide](/cplds-guide/introduction). For more details on global synchronization, see the [RadiantOne Global Sync Guide](/global-sync-guide/introduction).
 
 This command stops all local agents running on the machine from which the command was launched.
 
