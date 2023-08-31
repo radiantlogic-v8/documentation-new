@@ -7,7 +7,7 @@ description: Identity Data Analysis
 
 The Identity Data Analysis web tool is accessible from the RadiantOne Main Control Panel > Wizards tab. 
 
-Any user that is a member of the RadiantOne Directory Administrator role, ICS Admin role, or Namespace Admin role can log into the RadiantOne Main Control Panel and access the Identity Data Analysis tool on the Wizards tab. For details on the RadiantOne delegated admin roles, see the [RadiantOne System Administration Guide](/documentation/sys-admin-guide/01-introduction).
+Any user that is a member of the RadiantOne Directory Administrator role, ICS Admin role, or Namespace Admin role can log into the RadiantOne Main Control Panel and access the Identity Data Analysis tool on the Wizards tab. For details on the RadiantOne delegated admin roles, see the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction).
 
 >[!note] Images displayed in this guide are meant to describe expected behavior of features in RadiantOne. Your results may vary from those shown in this guide as data sets are subject to change at any time.
 
@@ -235,7 +235,7 @@ The Identity Data Analysis tool helps you determine which attributes would be th
 
 For example, if, after analysis, the report indicates an attribute named “EmployeeID” has values for only half the user population in your backend data source, this might not be the best attribute to use in correlation rules. Or if the analysis report indicates that the same “EmployeeID” value is used for more than one entry, this would also mean that it is not the best attribute to base correlation rules on (unless of course the entries with the same “EmployeeID” value do in fact represent the same person, meaning the identity has more than one entry in the same data source). 
 
-Once you’ve determined the best attributes for correlation rules, the Global Identity Builder can be used to build a unique view of overlapping identities. Refer to the [RadiantOne Global Identity Builder Guide](/documentation/global-identity-builder-guide/introduction) for details.
+Once you’ve determined the best attributes for correlation rules, the Global Identity Builder can be used to build a unique view of overlapping identities. Refer to the [RadiantOne Global Identity Builder Guide](/global-identity-builder-guide/introduction) for details.
 
 ![Possible Candidate for Correlation](Media/Image2.18.jpg)
 
