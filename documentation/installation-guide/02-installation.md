@@ -9,7 +9,7 @@ Apache ZooKeeper is a centralized service for maintaining configuration informat
 
 For details on installing RadiantOne in a Dev/QA environment, where ZooKeeper is installed and configured on the RadiantOne node, follow the steps outlined in this installation guide.
 
-For details on installing RadiantOne in a production environment, start with the steps in the [RadiantOne External Zookeeper Installation Guide](/documentation/external-zookeeper-install-guide/01-introduction) to setup the external ZooKeeper ensemble. Then, refer to the steps in this guide to install RadiantOne.
+For details on installing RadiantOne in a production environment, start with the steps in the [RadiantOne External Zookeeper Installation Guide](/external-zookeeper-install-guide/01-introduction) to setup the external ZooKeeper ensemble. Then, refer to the steps in this guide to install RadiantOne.
 
 ## Installer Files
 
@@ -83,7 +83,7 @@ Several aspects of RadiantOne are configured during installation. The basic inst
 
 1. At the System Check step, verify that the system passed all checks and click Next.
 
-    >[!warning] Hardware sizing is a critical component of directory service planning and deployment. The system check report verifies that important RadiantOne system requirements are met. If a test fails, an X is shown, like in the screenshot below. The failure should be addressed before continuing with the installation. Refer to the [RadiantOne Hardware Sizing Guide](/documentation/hardware-sizing-guide/01-introduction) for more information.
+    >[!warning] Hardware sizing is a critical component of directory service planning and deployment. The system check report verifies that important RadiantOne system requirements are met. If a test fails, an X is shown, like in the screenshot below. The failure should be addressed before continuing with the installation. Refer to the [RadiantOne Hardware Sizing Guide](/hardware-sizing-guide/01-introduction) for more information.
 
     ![An image showing ](Media/Image2.1.jpg)
 
@@ -145,7 +145,7 @@ Several aspects of RadiantOne are configured during installation. The basic inst
 
 Once you have tested and validated a [basic installation](#installing-a-single-node) of RadiantOne, and have determined your throughput and high availability needs require a cluster deployment, you can start to put in place the number of nodes required for high availability and needed throughput. This section describes steps to add nodes to a cluster.
 
-Please see the System Requirements document and the [RadiantOne Hardware Sizing Guide](/documentation/hardware-sizing-guide/01-introduction) for proper sizing of the machines.
+Please see the System Requirements document and the [RadiantOne Hardware Sizing Guide](/hardware-sizing-guide/01-introduction) for proper sizing of the machines.
 
 >[!warning]
 >When deploying a cluster, nodes must be running on hardware that is configured for optimal redundancy and highly reliable connectivity between the cluster nodes/machines.
@@ -164,7 +164,7 @@ If you are using a separate ZooKeeper ensemble, before attempting to add Radiant
 1. At the “System Check Report” step, verify that the system passed all checks and click Next.
 
     >[!warning]
-    >Hardware sizing is a critical component of directory service planning and deployment. The system check report verifies that important RadiantOne system requirements are met. If a test fails, an X is shown, like in the screenshot below. The failure should be addressed before continuing with the installation. Refer to the [RadiantOne Hardware Sizing Guide](/documentation/hardware-sizing-guide/01-introduction) for more information.
+    >Hardware sizing is a critical component of directory service planning and deployment. The system check report verifies that important RadiantOne system requirements are met. If a test fails, an X is shown, like in the screenshot below. The failure should be addressed before continuing with the installation. Refer to the [RadiantOne Hardware Sizing Guide](/hardware-sizing-guide/01-introduction) for more information.
 
     ![An image showing ](Media/Image2.1.jpg)
 
@@ -187,7 +187,7 @@ If you are using a separate ZooKeeper ensemble, before attempting to add Radiant
     ![An image showing ](Media/Image2.12.jpg)
 
     >[!warning]
-    >RadiantOne is a network-intensive application. The network check verifies that the network connections between RadiantOne nodes are fast, with plenty of bandwidth and low latency. Refer to the [RadiantOne Hardware Sizing Guide](/documentation/hardware-sizing-guide/01-introduction) for more information.
+    >RadiantOne is a network-intensive application. The network check verifies that the network connections between RadiantOne nodes are fast, with plenty of bandwidth and low latency. Refer to the [RadiantOne Hardware Sizing Guide](/hardware-sizing-guide/01-introduction) for more information.
 
 6. Next, you are prompted to enter your license key. If you have your license key, paste it into the window. If you would like a temporary key, leave the license key field blank. The evaluation license is valid for 14 days. If you would like a longer temporary license, contact Radiant Logic, Inc at support@radiantlogic.com.
 
@@ -199,7 +199,7 @@ If you are using a separate ZooKeeper ensemble, before attempting to add Radiant
 7. Finally, you are shown a pre-installation summary where you can review your settings and then click Start Installation.
     
    >[!note]
-   >All settings (ports, user passwords, etc.) are the same as used for the first node in the cluster, so you will not see this step during the install. The only configuration that varies from the first node in the cluster is the server SSL certificate (for LDAPS communication between clients and the RadiantOne service). A default, self-signed certificate is generated for each node you add to the cluster. Details on replacing the default self-signed certificate can be found in the [RadiantOne System Administration Guide](/documentation/sys-admin-guide/01-introduction).
+   >All settings (ports, user passwords, etc.) are the same as used for the first node in the cluster, so you will not see this step during the install. The only configuration that varies from the first node in the cluster is the server SSL certificate (for LDAPS communication between clients and the RadiantOne service). A default, self-signed certificate is generated for each node you add to the cluster. Details on replacing the default self-signed certificate can be found in the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction).
 
 
 8. Start the Main Control Panel (<RLI_HOME>/bin/openControl.bat/.sh) and then start the RadiantOne service (Main Control Panel > Dashboard Tab).
@@ -218,7 +218,7 @@ The steps to install a follower-only node are the same as for adding a node to a
 
 ![An image showing ](Media/Image2.15.jpg)
 
-For details on the different types of nodes in a cluster, please see the [RadiantOne Architect Guide](/documentation/architect-guide/high-availability-and-performance/#leader-node).
+For details on the different types of nodes in a cluster, please see the [RadiantOne Architect Guide](/architect-guide/high-availability-and-performance/#leader-node).
 
 ### Installing an Instance Subcluster
 
@@ -228,7 +228,7 @@ To install an instance cluster, on the Installation Type stage, select the Creat
 
 ![An image showing ](Media/Image2.16.jpg)
 
-Instance clusters are managed independently and do not share configuration with the main cluster. From the Main Control Panel > Clusters tab, you can see all instances defined. For more details on configuring and managing instances of RadiantOne, please refer to the [RadiantOne Deployment and Tuning Guide](/documentation/deployment-and-tuning-guide/07-deployment-architecture/#managing-radiantone-instances).
+Instance clusters are managed independently and do not share configuration with the main cluster. From the Main Control Panel > Clusters tab, you can see all instances defined. For more details on configuring and managing instances of RadiantOne, please refer to the [RadiantOne Deployment and Tuning Guide](/deployment-and-tuning-guide/07-deployment-architecture/#managing-radiantone-instances).
 
 ## Silent Mode Installs
 
