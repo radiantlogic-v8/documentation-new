@@ -15,7 +15,7 @@ If you are using an evaluation or subscription-based license, the Main Control P
 
 ## Cloud Installation
 
-If you plan to install RadiantOne in your cloud data center, on either Amazon Web Services or Azure, please see the [RadiantOne AWS Cloud Installation Guide](/documentation/aws-cloud-installation-guide/overview) or the [RadiantOne Azure Cloud Installation Guide](/documentation/azure-cloud-installation-guide/overview).
+If you plan to install RadiantOne in your cloud data center, on either Amazon Web Services or Azure, please see the [RadiantOne AWS Cloud Installation Guide](/aws-cloud-installation-guide/overview) or the [RadiantOne Azure Cloud Installation Guide](/azure-cloud-installation-guide/overview).
 
 ## Minimum System Requirements
 
