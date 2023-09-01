@@ -204,10 +204,10 @@ User-defined functions can be created and configured from the Add Mapping Functi
 9. Click <> to edit the transformation code.
 10. From the classes drop-down list, select: com.rli.scripts.fidsync.pipelineName.UserDefinedFunctions
 
-![User-Defined Function Class](../../media/image100.jpg)
+![User-Defined Function Class](../../media/image100.png)
 
 11. Locate your user-defined function in the code and customize it accordingly.
 
-![User-Defined Function Class](../../media/image101.jpg)
+![User-Defined Function Class](../../media/image101.png)
 
 13. Click **Save** to recompile the jar file.
