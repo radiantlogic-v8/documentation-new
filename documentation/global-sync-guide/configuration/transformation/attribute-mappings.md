@@ -191,10 +191,19 @@ Available Functions
 User-defined functions can be created and configured from the Add Mapping Function window.
 
 1. Select ![Plus symbol](../../media/image59.png) next to User-Defined Function.
+   
 ![User-Defined Function](../../media/image60.png)
+
 2. Enter a function name.
 3. (Optional) Enter a Description.
 4. Select ![Plus symbol](../../media/image59.png) to add parameters as needed.
 5. Select **Add**.
 6. To use the function, select it in the User-Defined Function section and select **Next**.
 7. Define values for the parameters of the function and select **OK**.
+8. Click **OK** to go back to the Rule Set page.
+9. Click <> to edit the transformation script.
+10. In the classes drop-down list, select com.rli.scripts.fidsync.<pipeline>.UserDefinedFunctions.
+
+![User-Defined Function](../../media/image100.png)
+11. Locate your user-defined function in the code and customize it.
+12. Click **Save** to rebuild the jar.
