@@ -110,7 +110,7 @@ Field	| Value
 URL Syntax | http://`<RadiantOneServer>`:8089/adap?bind=simpleBind
 Method	| Get
 Header Name	| Authorization
-Header Value	| Basic <base64 value (dn:password)>
+Header Value	| Basic `<base64 value dn:password>`
 Example Header Value	| Basic Y249ZGlyZWN0b3J5IG1hbmFnZXI6c2VjcmV0c2VjcmV0
 
 Table 1: A Simple Bind to the RadiantOne REST Service
@@ -191,7 +191,7 @@ Field | Value
 URL Syntax | http://localhost:8089/adap?bind=token
 Method | Get
 Header Name | Authorization
-Header Value | Basic `<userDN>:<password>`
+Header Value | Basic `<base64 value dn:password>`
 
 Table 2: Generating a proprietary token
 
@@ -339,7 +339,7 @@ URL Syntax	| `http://localhost:8089/adap/<baseDN>`
 Example URL	 | http://localhost:8089/adap/o=companydirectory
 Method	| Get
 Header Name	| Authorization
-Header Value	| Basic `<userDN>:<password>`
+Header Value	| Basic `<base64 value dn:password>`
 
 Table 6: Search Operation
 
@@ -372,7 +372,7 @@ URL Syntax	| `http://localhost:8089/adap/<baseDN>?<search param>&<search param>`
 Example URL	| http://localhost:8089/adap/o=companydirectory?filter=employeeType=Manager
 Method	| Get
 Header Name	| Authorization
-Header Value	| Basic `<userDN>:<password>`
+Header Value	| Basic `<base64 value dn:password>`
 
 Table 7: Search Operation with Filter Attributes
 
@@ -390,7 +390,7 @@ URL Syntax	| `http://localhost:8089/adap/<baseDN>?<search param>&<search param>`
 Example URL	| http://localhost:8089/adap/o=companydirectory?attributes=objectclass,cn
 Method	| Get
 Header Name	| Authorization
-Header Value	| Basic `<userDN>:<password>`
+Header Value	| Basic `<base64 value dn:password>`
 
 Table 8: Search Operation Returning ObjectClass and CN
 
@@ -410,7 +410,7 @@ URL Syntax	| `http://localhost:8089/adap/<baseDN>?<search param>&<search param>`
 Example URL	| http://localhost:8089/adap/o=companydirectory?scope=sub 
 Method	| Get
 Header Name	| Authorization
-Header Value	| Basic `<userDN>:<password>`
+Header Value	| Basic `<base64 value dn:password>`
 
 Table 9: Search Operation with Scope Parameter
 
@@ -425,7 +425,7 @@ URL Syntax	| `http://localhost:8089/adap/<baseDN>?<search param>&<search param>`
 Example URL	| http://localhost:8089/adap/o=companydirectory?startIndex=101&count=2
 Method	| Get
 Header Name	| Authorization
-Header Value	| Basic `<userDN>:<password>`
+Header Value	| Basic `<base64 value dn:password>`
 
 Table 10: Search Operation using StartIndex Parameter
 
@@ -441,7 +441,7 @@ URL Syntax	| `http://localhost:8089/adap/<baseDN>?<searchparam>&<searchparam>`
 Example URL	| http://localhost:8089/adap/o=companydirectory?attributes=cn&startIndex=101&count=2 
 Method	| Get
 Header Name	| Authorization
-Header Value	| Basic `<userDN>:<password>`
+Header Value	| Basic `<base64 value dn:password>`
 
 Table 11: Search Operation using Count Parameter
 
@@ -482,7 +482,7 @@ URL Syntax	| `http://localhost:8089/adap/<baseDN>?<searchparam>&<searchparam>`
 Example URL	| http://localhost:8089/adap/o=companydirectory?attributes=cn&sizeLimit=102&startIndex=101&count=2
 Method	| Get
 Header Name	| Authorization
-Header Value	| Basic `<userDN>:<password>`
+Header Value	| Basic `<base64 value dn:password>`
 
 Table 13: Search Operation using SizeLimit Parameter
 
@@ -513,7 +513,7 @@ Field	| Value
 URL	| `http://localhost:8089/adap/<baseDN>?<searchparam>&<searchparam>`
 Method	| Get
 Header Name	| Authorization
-Header Value	| Basic <userDN>:<password>
+Header Value	| Basic `<base64 value dn:password>`
 Example URL	| http://localhost:8089/adap/o=companydirectory?pageSize=5
 
 Table 14: Search Operation using PageSize Parameter
@@ -544,7 +544,7 @@ Field	| Value
 URL	| `http://localhost:8089/adap/<baseDN>?<searchparam>&<searchparam>`
 Method	| Get
 Header Name	| Authorization
-Header Value	| Basic `<userDN>:<password>`
+Header Value	| Basic `<base64 value dn:password>`
 Example URL	| http://localhost:8089/adap/o=companydirectory?pageSize=5&cookie=localhost=NTEyNDIzODcw
 
 Table 16: Search Operation using Cookie Parameter
@@ -556,7 +556,7 @@ Field	| Value
 URL	| `http://localhost:8089/adap/<baseDN>?<searchparam>&<searchparam>`
 Method	| Get
 Header Name	| Authorization
-Header Value	| Basic `<userDN>:<password>`
+Header Value	| Basic `<base64 value dn:password>`
 Example URL	| http://localhost:8089/adap/o=companydirectory?pageSize=0&cookie=localhost=NTEyNDIzODcw
 
 Table 17: Manually Stopping a paged search
@@ -577,7 +577,7 @@ URL Syntax	| `http://localhost: 8089/adap/<baseDN>?<search param>?context=true`
 Example URL	| http://localhost:8089/adap/uid=Aaron_Medler,ou=Accounting,o=companydirectory?context=true
 Method	| Get
 Header Name	| Authorization
-Header Value	| Basic `<userDN>:<password>`
+Header Value	| Basic `<base64 value dn:password>`
 
 Table 18: Example Response for Context Search
 
@@ -601,7 +601,7 @@ URL Syntax	| `http://localhost: 8089/adap/<search param>?contextFilter=/` (or) /
 Example URL	| http://localhost:8089/adap/o=companydirectory?contextFilter=/ou=A*/uid=Aug*&attributes=objectclass
 Method	| Get
 Header Name	| Authorization
-Header Value	| Basic `<userDN>:<password>`
+Header Value	| Basic `<base64 value dn:password>`
 
 Table 19: Search Operation using Context Filter
 
@@ -619,7 +619,7 @@ URL Syntax	| `http://localhost: 8089/adap/<baseDN>?returnMode=array&<searchparam
 Example URL	| http://localhost:8089/adap/o=companydirectory?returnMode=array
 Method	| Get
 Header Name	| Authorization
-Header Value	| Basic `<userDN>:<password>`
+Header Value	| Basic `<base64 value dn:password>`
 
 Table 20: Return Mode
 
@@ -663,7 +663,7 @@ Field	| Value
 URL	| `http://localhost:8089/adap/<baseDN>?<searchparam>&<searchparam>`
 Method	| Get
 Header Name	| Authorization
-Header Value	| Basic <userDN>:<password>
+Header Value	| Basic `<base64 value dn:password>`
 Example URL	| http://localhost:8089/adap/ou=Headquarters,o=companydirectory?derefAliases=3
 
 Table 23: Passing the derefealiases parameter
@@ -683,7 +683,7 @@ Field	| Value
 URL Syntax	| http://localhost:8089/adap/rootdse 
 Method	| Get
 Header Name	| Authorization
-Header Value	| Basic `<userDN>:<password>`
+Header Value	| Basic `<base64 value dn:password>`
 
 Table 25: Displaying LDAP Server's Root Naming Contexts
 
@@ -712,10 +712,10 @@ In this section, a new entry is added to RadiantOne using the parameters shown i
 <td> Authorization
 <tr>
 <td>Header Value	
-<td> Basic `<userDN>:<password>`
+<td> Basic `<base64 value dn:password>`
 <tr>
 <td>Example Request Body	
-<td> <pre>{ "params" : { 
+<td> { "params" : { 
 "dn" : "uid=alice,cn=config", 
 "attributes" : { "objectClass" : [ "top", 
 "person", 
@@ -723,8 +723,7 @@ In this section, a new entry is added to RadiantOne using the parameters shown i
 "inetOrgPerson" ], 
 "cn" : "Alice Wonderland", 
 "sn" : "Wonderland", 
-"uid" : "alice" } } 
-}
+"uid" : "alice" } } }
 </table>
 
 Table 27: Add Operation
@@ -753,7 +752,7 @@ URL Syntax	| http://localhost:8089/adap/<baseDN>
 Example URL	| http://localhost:8089/adap/uid=alice,cn=config
 Method	| Put
 Header Name	| Authorization
-Header Value	| Basic `<userDN>:<password>`
+Header Value	| Basic `<base64 value dn:password>`
 Example Request Body	| { "params" : { <br>"attributes" : {"objectClass" : [ "top",  <br>"person", <br>"organizationalPerson", <br>"inetOrgPerson" ], <br>"cn" : "Alice Wonderland2", <br>"sn" : "Wonderland2", <br>"uid" : "alice" } } <br>}
 
 Table 28: Replacing an Entry
@@ -778,7 +777,7 @@ URL Syntax	| `http://localhost:8089/adap/<baseDN>`
 Example URL	| http://localhost:8089/adap/uid=alice,cn=config
 Method	| Patch
 Header Name	| Authorization
-Header Value	| Basic <userDN>:<password>
+Header Value	| Basic `<base64 value dn:password>`
 Example Request Body	| { "params" : { <br>"mods" : [ { "attribute" : "telephoneNumber", <br>"type" : "ADD",<br>"values" : [ "+1 354 2344 5433" ] }, <br>{ "attribute" : "mobile", <br>"type" : "REPLACE", <br>"values" : [ "+1 123 4544 1290" ] } ] } <br>}
 
 Table 29: Adding and Replacing Attributes
@@ -811,20 +810,10 @@ In this example an attribute (e.g. email) containing a specified value (e.g. ali
 <td>Authorization
 <tr>
 <td>Header Value	
-<td>Basic <userDN>:<password>
+<td>Basic `<base64 value dn:password>`
 <tr>
 <td>Example Request Body	
-<td><pre>{
-    "params": {
-        "mods": [
-            {
-                "attribute": "email",
-                "type": "DELETE",
-                "values": [alice@radiantlogic.com]
-            }
-        ]
-    }
-}
+<td> { "params": { <br> "mods": [ <br> { "attribute": "email", <br> "type": "DELETE", <br> "values": [alice@radiantlogic.com] } ] } }
 </table>
 
 Table 30: REST Operation to Delete an Attribute Value
@@ -853,20 +842,10 @@ In this example, an attribute is deleted, regardless of its attribute values, us
 <td> Authorization
 <tr>
 <td>Header Value	
-<td> Basic  < userDN>:< password>
+<td> Basic `<base64 value dn:password>`
 <tr>
 <td>Example Request Body	
-<td> <pre>{
-    "params": {
-        "mods": [
-            {
-                "attribute": "email",
-                "type": "DELETE",
-                "values": []
-            }
-        ]
-    }
-}
+<td> { "params": { <br> "mods": [ { "attribute": "email", <br> "type": "DELETE",    "values": [] } ] } }
 </table>
 
 Table 31: REST Operation to Delete an Attribute
@@ -895,23 +874,11 @@ In this example, a group entry identified as “cn=operator,ou=globalgroups,cn=c
 <td>Authorization
 <tr>
 <td>Header Value	
-<td>Basic < userDN>:< password>
+<td>Basic `<base64 value dn:password>`
 <tr>
 <td>Example Request Body
-<td><pre>	{
-  "params": {
-    "mods": [
-      {
-        "attribute": "uniquemember",
-        "type": "ADD",
-        "values": [
-          "uid=Adalberto_Flecha,ou=Accounting,o=companydirectory"
-        ]
-      }
-    ]
-  }
-}
-
+<td> { "params": { <br> "mods": [ { <br> "attribute": "uniquemember", "type": "ADD",
+        "values": [ "uid=Adalberto_Flecha,ou=Accounting,o=companydirectory" ] } ] } }
 </table> 
 
 Table 32: REST Operation to add group members
@@ -944,22 +911,11 @@ In this example, a group entry’s members are replaced by a new member.
 <td>Authorization
 <tr>
 <td>Header Value	
-<td>Basic < userDN>:< password>
+<td>Basic `<base64 value dn:password>`
 <tr>
 <td>Example Request Body	
-<td><pre>{
-  "params": {
-    "mods": [
-      {
-        "attribute": "uniquemember",
-        "type": "REPLACE",
-        "values": [
-          "uid=Adele_Kucan,ou=Accounting,o=companydirectory"
-        ]
-      }
-    ]
-  }
-}
+<td> { "params": { <br> "mods": [ { "attribute": "uniquemember", <br> "type": "REPLACE",
+        "values": [ "uid=Adele_Kucan,ou=Accounting,o=companydirectory" ] } ] } }
 </table>
 
 Table 33: REST operation to replace group members
@@ -979,7 +935,7 @@ Field	| Value
 URL Syntax	| http://localhost:8089/adap
 Method	| Patch
 Header Name	| Authorization
-Header Value	| Basic `<userDN>:<password>`
+Header Value	| Basic `<base64 value dn:password>`
 Example Request Body	| {"params" : { "DN" : " uid=alice,cn=config ", <br>"newRDN" : " uid=lewis "} <br>}
 
 Table 34: REST Operation to modify an entry's RDN
@@ -999,7 +955,7 @@ Field	| Value
 URL Syntax	| http://localhost:8089/adap
 Method	| Patch
 Header Name	| Authorization
-Header Value	| Basic `<userDN>:<password>`
+Header Value	| Basic `<base64 value dn:password>`
 Example Request Body	| {"params" : { "DN" : <br>uid=Adalberto_Flecha,ou=Accounting,o=companydirectory", <br>"newRDN" : "uid=Adalberto_Flecha",<br>"newSuperiorDN" : "ou=Administration,o=companydirectory"} 
 }
 
@@ -1021,7 +977,7 @@ URL Syntax	| `http://localhost:8089/adap/<baseDN>`
 Example URL	| http://localhost:8089/adap/uid=alice,cn=config
 Method	| Delete
 Header Name	| Authorization
-Header Value	| Basic `<userDN>:<password>`
+Header Value	| Basic `<base64 value dn:password>`
 
 Table 36: REST Operation to delete an entry
 
@@ -1047,7 +1003,7 @@ URL Syntax	| `http://localhost:8089/adap/<baseDN>?deletetree=true`
 Example URL	| http://localhost:8089/adap/uid=alice,cn=config?deletetree=true
 Method	| Delete
 Header Name	| Authorization
-Header Value	| Basic `<userDN>:<password>`
+Header Value	| Basic `<base64 value dn:password>`
 
 Table 37: REST Operation to Delete a Node Containing Sub-nodes
 
@@ -1090,67 +1046,12 @@ A bulk operation contains unique fields in its syntax. The “method” field in
 <td>Authorization
 <tr>
 <td>Header Value	
-<td>Basic < userDN>:< password>
+<td>Basic `<base64 value dn:password>`
 <tr>
 <td>Example Request Body	
-<td><pre>{
-  "Operations": [
-    {
-      "method": "POST",
-      "dn": "uid=alice,cn=config",
-      "params": {
-        "attributes": {
-          "objectClass": [
-            "top",
-            "person",
-            "organizationalPerson",
-            "inetOrgPerson"
-          ],
-          "cn": "Alice Wonderland",
-          "sn": "Wonderland",
-          "uid": "alice"
-        }
-      }
-    },
-    {
-      "method": "PUT",
-      "dn": "uid=Adalberto_Karoly,ou=Accounting,o=companydirectory",
-      "params": {
-        "attributes": {
-          "objectClass": [
-            "top",
-            "person",
-            "organizationalPerson",
-            "inetOrgPerson"
-          ],
-          "cn": "Alice Wonderland2",
-          "sn": "Wonderland2",
-          "uid": "alice"
-        }
-      }
-    },
-    {
-      "method": "PATCH",
-      "dn": "uid=Aaron_Medler,ou=Accounting,o=companydirectory",
-      "params": {
-        "mods": [
-          {
-            "attribute": "telephoneNumber",
-            "type": "ADD",
-            "values": [
-              "911"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "method": "DELETE",
-      "dn": "uid=Adan_Organista,ou=Accounting,o=companydirectory"
-    }
-  ]
-}
-
+<td>{ "Operations": [ { <br> "method": "POST", "dn": "uid=alice,cn=config", "params": {
+        "attributes": { "objectClass": [ "top", "person", "organizationalPerson",       "inetOrgPerson" ], "cn": "Alice Wonderland",  "sn": "Wonderland", "uid": "alice" } } }, {
+      "method": "PUT", "dn": "uid=Adalberto_Karoly,ou=Accounting,o=companydirectory",    "params": { "attributes": { "objectClass": [ "top", "person",         "organizationalPerson", "inetOrgPerson" ], "cn": "Alice Wonderland2", "sn": "Wonderland2", "uid": "alice" } } }, { "method": "PATCH", "dn": "uid=Aaron_Medler,ou=Accounting,o=companydirectory", "params": { "mods": [ {      "attribute": "telephoneNumber", "type": "ADD", "values": [ "911" ] } ] } }, { "method": "DELETE", "dn": "uid=Adan_Organista,ou=Accounting,o=companydirectory" } ] }
 </table>
 
 Table 38: REST Operation to Perform Bulk Operation
@@ -1179,28 +1080,10 @@ This section explains how to delete nodes and their sub-nodes. When attempting t
 <td>Authorization
 <tr>
 <td>Header Value	
-<td>Basic <`userDN>:<`password>
+<td>Basic `<base64 value dn:password>`
 <tr>
 <td>Example Request Body
-<td><pre> {
-    "params": [
-        {
-            "method": "DELETE",
-            "dn": "ou=Human Resources,o=companydirectory",
-            "deletetree": true
-        },
-        {
-            "method": "DELETE",
-            "dn": "ou=Information Technology,o=companydirectory",
-            "deletetree": false
-        },
-        {
-            "method": "DELETE",
-            "dn": "ou=Inventory,o=companydirectory",
-            "deletetree": true
-        }
-    ]
-}
+<td> { "params": [ { "method": "DELETE", "dn": "ou=Human Resources,o=companydirectory",  "deletetree": true }, { "method": "DELETE", "dn": "ou=Information Technology,o=companydirectory", "deletetree": false }, { "method": "DELETE", "dn": "ou=Inventory,o=companydirectory", "deletetree": true } ] }
 </table>
 
 Table 39: REST Bulk Operation to Delete Nodes and Their Sub-nodes
@@ -1241,7 +1124,7 @@ URL Syntax	| `http://localhost:8089/adap/<baseDN>?<search param>&<search param>.
 Example URL	| http://localhost:8089/adap/cn=config?attributes=address.*
 Method	| Get
 Header Name	| Authorization
-Header Value	| Basic `<userDN>:<password>`
+Header Value	|Basic `<base64 value dn:password>`
 
 Table 40: REST Operation Searching for Complex Attributes
 
@@ -1259,7 +1142,7 @@ URL Syntax	| `http://localhost:8089/adap/<baseDN>?<search param>&<search param>`
 Example URL	| http://localhost:8089/adap/cn=config?filter=(address.state=NY)
 Method	| Get
 Header Name	| Authorization
-Header Value	| Basic `<userDN>:<password>`
+Header Value	| Basic `<base64 value dn:password>`
 
 Table 41: Complex Attribute Search Using a Filter
 
@@ -1288,40 +1171,10 @@ In this section, an entry with complex attributes is added using the parameters 
 <td>Authorization
 <tr>
 <td>Header Value	
-<td>Basic < userDN>:< password>
+<tdBasic `<base64 value dn:password>`
 <tr>
 <td>Example Request Body	
-<td><pre>{
-    "params": {
-        "dn": "uid=alice,cn=config",
-        "attributes": {
-            "objectClass": [
-                "top",
-                "person",
-                "organizationalPerson",
-                "inetOrgPerson"
-            ],
-            "cn": "Alice Wonderland",
-            "sn": "Wonderland",
-            "uid": "alice",
-            "phone": {
-                "type": "home",
-                "value": "123"
-            },
-            "address": [
-                {
-                    "state": "NY",
-                    "country": "US",
-                    "streetNumber": "35"
-                },
-                {
-                    "country": "france",
-                    "state": "ain"
-                }
-            ]
-        }
-    }
-}
+<td> { "params": { "dn": "uid=alice,cn=config", "attributes": { "objectClass": [       "top", "person", "organizationalPerson", "inetOrgPerson" ], "cn": "Alice Wonderland",  "sn": "Wonderland", "uid": "alice", "phone": { "type": "home", "value": "123" }, "address": [ { "state": "NY", "country": "US", "streetNumber": "35" }, { "country": "france", "state": "ain" } ] } } }
 </table>
 
 Table 42: Adding an entry with complex attributes
@@ -1352,29 +1205,10 @@ In this section, complex attributes are added to an existing user entry using th
 <td>Authorization
 <tr>
 <td>Header Value	
-<td>Basic <`userDN>:<`password>
+<td>Basic `<base64 value dn:password>`
 <tr>
 <td>Example Request Body	
-<td><pre>{
-    "params": {
-        "mods": [
-            {
-                "attribute": "phone",
-                "type": "ADD",
-                "values": [
-                    {
-                        "type": "home",
-                        "value": "456"
-                    },
-                    {
-                        "type": "mobile",
-                        "value": "111"
-                    }
-                ]
-            }
-        ]
-    }
-}
+<td> { "params": { "mods": [  { "attribute": "phone", "type": "ADD", "values": [ { "type": "home", "value": "456" }, { "type": "mobile", "value": "111" } ] } ] } }
 </table>
 
 Table 43: Adding Complex Attributes to an Existing Entry
@@ -1402,30 +1236,10 @@ In this section, new attributes are added to an existing user entry using the pa
 <td>Authorization
 <tr>
 <td>Header Value	
-<td>Basic <`userDN>:<`password>
+<td>Basic `<base64 value dn:password>`
 <tr>
 <td>Example Request Body	
-<td><pre>{
-    "params": {
-        "mods": [
-            {
-                "attribute": "phone",
-                "type": "REPLACE",
-                "values": [
-                    {
-                        "type": "work",
-                        "value": "123"
-                    },
-                    {
-                        "type": "work",
-                        "value": "456",
-                        "brand": "orange"
-                    }
-                ]
-            }
-        ]
-    }
-}
+<td> { "params": { "mods": [ { "attribute": "phone", "type": "REPLACE",  "values": [ { "type": "work", "value": "123" }, { "type": "work", "value": "456", "brand": "orange" } ] } ] } }
 </table>
 
 Table 44: Replacing an Entry’s Complex Attributes
@@ -1451,25 +1265,10 @@ In this section, sub-attributes are deleted from an existing entry using the par
 <td>Authorization
 <tr>
 <td>Header Value	
-<td>Basic <`userDN>:<`password>
+<td>Basic `<base64 value dn:password>`
 <tr>
 <td>Example Request Body	
-<td><pre>{
-    "params": {
-        "mods": [
-            {
-                "attribute": "phone",
-                "type": "DELETE",
-                "values": [
-                    {
-                        "type": "home",
-                        "value": "123"
-                    }
-                ]
-            }
-        ]
-    }
-}
+<td>{ "params": { "mods": [ { "attribute": "phone", "type": "DELETE", "values": [ { "type": "home", "value": "123" } ] } ] } }
 </table>
 
 Table 45: Deleting an Entry’s Complex Attributes
@@ -1493,22 +1292,10 @@ In the following example, all values for the attribute “address” are deleted
 <td>Authorization
 <tr>
 <td>Header Value	
-<td>Basic <`userDN>:<`password>
+<td>Basic `<base64 value dn:password>`
 <tr>
 <td>Example Request Body	
-<td><pre>{
-    "params": {
-        "mods": [
-            {
-                "attribute": "address",
-                "type": "DELETE",
-                "values": [
-                    {}
-                ]
-            }
-        ]
-    }
-}
+<td> { "params": { "mods": [ { "attribute": "address", "type": "DELETE", "values": [ {} ] } ] } }
 </table>
 
 Table 46: Deleting Sub-attributes
@@ -1534,40 +1321,10 @@ In this section, the sub-attributes “streetNumber” and “country” are add
 <td>Authorization
 <tr>
 <td>Header Value	
-<td>Basic <`userDN>:<`password>
+<td>Basic `<base64 value dn:password>`
 <tr>
 <td>Example Request Body	
-<td><pre>{
-    "params": {
-        "mods": [
-            {
-                "attribute": "phone",
-                "type": "REPLACE",
-                "values": [
-                    {
-                        "type": "work",
-                        "value": "123"
-                    },
-                    {
-                        "type": "work",
-                        "value": "456",
-                        "brand": "orange"
-                    }
-                ]
-            },
-            {
-                "attribute": "address",
-                "type": "ADD",
-                "values": [
-                    {
-                        "streetNumber": "123",
-                        "country": "US"
-                    }
-                ]
-            }
-        ]
-    }
-}
+<td> { "params": { "mods": [ { "attribute": "phone", "type": "REPLACE", "values": [ { "type": "work", "value": "123" }, { "type": "work", "value": "456", "brand": "orange" } ] },  { "attribute": "address", "type": "ADD", "values": [  { "streetNumber": "123", "country": "US" } ] } ] } }
 </table>
 
 Table 47: Modifying Multiple Complex Attributes in an Operation
