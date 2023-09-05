@@ -194,22 +194,22 @@ User-defined functions can be created and configured from the Add Mapping Functi
    
 ![User-Defined Function](../../media/image60.png)
 
-2. Enter a function name.
-3. (Optional) Enter a Description.
-4. Select ![Plus symbol](../../media/image59.png) to add parameters as needed.
-5. Select **Add**.
-6. To use the function, select it in the User-Defined Function section and select **Next**.
-7. Define values for the parameters of the function and select **OK**.
-8. Click **OK** to exit the function configuration.
-9. Click **OK** when you are done with the mappings.
-10. Click **Save** to save the rules and go back to the Rule Set table.
-11. Click ![Plus symbol](../../media/image87.png) to edit the transformation code.
-12. From the classes drop-down list, select: com.rli.scripts.fidsync.pipelineName.UserDefinedFunctions
+1. Enter a function name.
+1. (Optional) Enter a Description.
+1. Select ![Plus symbol](../../media/image59.png) to add parameters as needed.
+1. Select **Add**.
+1. To use the function, select it in the User-Defined Function section and select **Next**.
+1. Define values for the parameters of the function and select **OK**.
+1. Click **OK** to exit the function configuration.
+1. Click **OK** when you are done with the mappings.
+1. Click **Save** to save the rules and go back to the Rule Set table.
+1. Click ![Plus symbol](../../media/image87.png) to edit the transformation code.
+1. From the classes drop-down list, select: com.rli.scripts.fidsync.pipelineName.UserDefinedFunctions
 
 ![User-Defined Function Class](../../media/image100.png)
 
-13. Locate your user-defined function in the code and customize it accordingly.
+1. Locate your user-defined function in the code and customize it accordingly.
 
 ![User-Defined Function Class](../../media/image101.png)
 
-14. Click **Save** to recompile the jar file.
+1. Click **Save** to recompile the jar file.
