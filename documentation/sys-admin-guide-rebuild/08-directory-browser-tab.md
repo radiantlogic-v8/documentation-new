@@ -116,19 +116,13 @@ Members can be either “static/explicit” or “dynamic”. Each option is des
 
 To add explicit members, follow the steps below.
 1.	From the Directory Browser tab, select the group entry in the tree and click ![manage group button](Media/manage-group-button.jpg).
-
-2.	If group members can be other groups, click the checkbox next to the “Search Groups” option in the upper left. 
-
+1.	If group members can be other groups, click the checkbox next to the “Search Groups” option in the upper left. 
 >[!note]
 >If RadiantOne needs to [support nested groups](06-security#enable-nested-groups), you must enable that feature.
-
-3.	Click **Add More** and then click **Browse Tree** to select a starting point in the virtual namespace to look for users.
-
-4.	To limit the search criteria, enter a value before clicking Search. The value must match either a uid, sn, or cn value.
-
+1.	Click **Add More** and then click **Browse Tree** to select a starting point in the virtual namespace to look for users.
+1.	To limit the search criteria, enter a value before clicking Search. The value must match either a uid, sn, or cn value. Do not use the attribute name in the criteria. For example to find uid=myuser, just enter myuser. Do not enter uid=myuser.
 The object class for the user must be inetOrgPerson, user, person, or organizationalPerson (for the search to return them as a user entry). If you selected the option to search for groups, the group must be associated with an object class of group, groupofnames or groupOfUniqueNames. 
-
-5.	Once you find the user (or group) account you want to add to the group, select the account and click the down arrow and click Confirm.
+1.	Once you find the user (or group) account you want to add to the group, select the account and click the down arrow and click Confirm.
 
 ### Dynamic Members
 
