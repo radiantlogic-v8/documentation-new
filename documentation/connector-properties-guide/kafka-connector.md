@@ -22,7 +22,7 @@ You can configure the properties file either for unencrypted, anonymous connecti
 
 In a text editor, enter the path on your RadiantOne server containing the bootstrap.servers value with the name and port of your Kafka server. i.e. kafka.mycompany.com:9092.
 
-![producer.properties](Media/producer-properties.jpg)
+![producer properties](Media/producer-properties.jpg)
 
 Figure : Producer.properties text file for unencrypted anonymous connections
 
