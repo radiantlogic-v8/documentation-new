@@ -36,7 +36,7 @@ In this example, PLAIN SASL is used to specify a username and password for authe
 
 Figure 2: Producer.properties text file for a Kafka broker requiring encryption and authentication
 
->[!note] Once you start using your Kafka producer to publish to a Kafka topic in a Global Sync topology, any changes you make to the producer.properties file require that you restart the RadiantOne FID service.
+>[!note] Once you start using your Kafka producer to publish to a Kafka topic in a Global Sync topology, any changes you make to the producer.properties file require restarting the RadiantOne FID service.
 
 ## Configuring Data Sources
 
