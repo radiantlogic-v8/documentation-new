@@ -129,7 +129,7 @@ Based on the JSON messages you expect to process with your Kafka connector, a sc
 
 ## Mounting the Virtual View
 
-In this section, a new naming context representing the incoming Kafka Consumer is added. If you plan to publish identity data to a Kafka topic, you will need a separate view.
+In this section, a new naming context representing the incoming Kafka Consumer is added. If you plan to publish identity data to a Kafka topic, a separate view is required.
 
 1. In the Main Control Panel, navigate to the Context Builder tab. 
 
