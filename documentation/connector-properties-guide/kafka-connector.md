@@ -171,7 +171,7 @@ In this section, a new naming context representing the incoming Kafka Consumer i
 
 1.	Click OK to acknowledge the alert that your virtual tree has been created. 
 
-If you’re configuring Global Sync to act as both a consumer and producer with Kafka, you need a separate mounted view with the appropriate schema.
+If you are configuring Global Sync to act as both a consumer and producer with Kafka, you need a separate mounted view with the appropriate schema.
 
 ## Configuring Global Sync as a Kafka Consumer
 
@@ -199,13 +199,13 @@ If you’re configuring Global Sync to act as both a consumer and producer with 
 >[!note] The minimum requirement for the Kafka Consumer Properties field is the bootstrap.servers property specifying your Kafka broker and port number. The example shown above is for an unencrypted session without authentication. If your Kafka broker requires encryption and/or authentication, additional properties can be added to the field in a comma-separated list. For example, the same parameters shown in the example above for the producer.properties file would be entered as the following  string. <br> bootstrap.servers=kafka.mycompany.com:9094,sasl.mechanism=PLAIN,
 security.protocol=SASL_SSL,ssl.truststore.location=/radiantone/vds/vds_server/custom/truststore.jks,sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="accountname" password="password";
 
->[!note] For encrypted Kafka connections, the same Java truststore requirement applies as above for the producer.properties; you must specify the full path via the ssl.truststore.location property. <br> <br> If you make changes to the Capture connector configuration once your pipeline has been started, you will need to stop and start the pipeline to pick up those changes.
+>[!note] For encrypted Kafka connections, the same Java truststore requirement applies as above for the producer.properties; you must specify the full path via the ssl.truststore.location property. <br> <br> If you make changes to the Capture connector configuration once your pipeline has been started, stop and start the pipeline to pick up those changes.
 
 1.	Click Save. 
 
 1. 	Click the Transformation tile. Select a Transformation Type from the drop-down menu.
 
-1. Expand the Mappings section and map attributes as required.
+1. 	Expand the Mappings section and map attributes as required.
 
     ![sample mappings](media/sample-mappings.jpg)
 
@@ -217,7 +217,7 @@ security.protocol=SASL_SSL,ssl.truststore.location=/radiantone/vds/vds_server/cu
 
 Global Sync uses the settings you configured for your kafkaproducer data source to call the correct changeConvertor, connect to your Kafka endpoint, and publish to the specified topic.
 
-1. In the Main Control Panel, navigate to the Global Sync tab.
+1.	In the Main Control Panel, navigate to the Global Sync tab.
 
 1.	Click ![new topology](media/new-topology.jpg).
 
