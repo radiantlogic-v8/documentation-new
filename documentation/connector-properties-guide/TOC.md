@@ -12,3 +12,4 @@ description: RadiantOne connector properties guide
 - [Database Changelog (triggers) connector](database-changelog-triggers-connector.md)
 - [Database timestamp connector](database-timestamp-connector.md)
 - [Database Counter connector](database-counter-connector.md)
+- [Kafka Connector](kafka-connector.md)
