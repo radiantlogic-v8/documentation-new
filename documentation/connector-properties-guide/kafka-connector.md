@@ -54,7 +54,7 @@ To configure the producer data source:
 
 1. Under Custom Properties, click **Add**. 
 
-1. Add each of the following properties and accompanying values. After you define a property, click OK and then click Add to start adding the next property until the properties in the table below are defined. 
+1. Add each of the following properties and accompanying values. After defining a property, click OK and then click Add to start adding the next property until the properties in the table below are defined. 
 
   	|Property Name | Value|
     -|-
