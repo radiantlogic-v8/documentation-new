@@ -4,7 +4,7 @@ The RadiantOne Kafka capture connector leverages the Apache Kafka Consumer API t
 
 The Kafka capture and apply connectors are independent, meaning that they do not need to be deployed together. The source(s) and target(s) could be any combination of Kafka topics, LDAP-accessible data stores, JDBC-accessible data stores, or web-services (SCIM or REST accessible).
 
-This section assumes that you have Kafka installed and configured. Once you have installed and configured Kafka, follow the instructions in this section.
+This section assumes that you have installed and configured Kafka. Once you have installed and configured Kafka, follow the instructions in this section.
 
 To sync between RadiantOne and Kafka topics, you need to configure the following. 
 
