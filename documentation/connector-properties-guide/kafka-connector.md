@@ -87,7 +87,7 @@ A data source is also required for the Consumer connector, but the settings are 
 
 ## Configuring the Schema
 
-Based on the JSON messages you expect to process with your Kafka connector, you need to define appropriate schema.
+Based on the JSON messages you expect to process with your Kafka connector, a schema must be defined.
 
 1. In the Main Control Panel, navigate to the Context Builder tab.
 
