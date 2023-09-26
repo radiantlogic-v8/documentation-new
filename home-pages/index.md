@@ -188,6 +188,24 @@ A rich set of HTTP-based API's have been developed on top of LDAP, to provide br
   
 </section>
 
+## RadiantOne CFS
+
+<section>
+
+  > [Introduction](cfs/01-getting-started)
+  > Learn about key concepts and system requirements for CFS. 
+
+  > [Installation](cfs/01-getting-started)
+  > Learn how to install CFS Master and create your first CFS tenant.
+
+  > [Configuration](cfs/02-configuration)
+  >Learn how to 
+
+  > [Deployment](cfs/04-deployment)
+  > Learn the best practices approaches for deploying CFS. 
+
+</section>
+
 </tabpanel>
 
 </tabpanels>
