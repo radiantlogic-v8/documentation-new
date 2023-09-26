@@ -202,7 +202,10 @@ A rich set of HTTP-based API's have been developed on top of LDAP, to provide br
   >Learn how to identity providers, applications, and smart links. 
 
   > [Deployment](cfs/04-deployment)
-  > Learn the best practices approaches for deploying CFS. 
+  > Learn the best practices approaches for deploying CFS.
+
+  > [Troubleshooting](cfs/05-troubleshooting)
+  > Learn how to use the CFS Log Analyzer. 
 
 </section>
 
