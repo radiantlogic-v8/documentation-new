@@ -199,7 +199,7 @@ A rich set of HTTP-based API's have been developed on top of LDAP, to provide br
   > Learn how to install CFS Master and create your first CFS tenant.
 
   > [Configuration](cfs/02-configuration)
-  >Learn how to identity providers, applications, and smart links. 
+  >Learn how to configure identity providers, applications, and smart links. 
 
   > [Deployment](cfs/04-deployment)
   > Learn the best practices approaches for deploying CFS.
