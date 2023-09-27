@@ -7,4 +7,4 @@ description: Hardening Guide
 - [Securing RadiantOne Configuration and Administration](01-radiantone-configuration-and-administration.md)
 - [Client Access Limits and Regulations](02-client-access-limits-and-regulations.md)
 - [Recommendations For Securing Data at Rest](03-securing-data-at-rest.md)
-- [Recommendations For Securing Data In Transit - SSL/TLS Settings](04-securing-data-in-transit-ssl-tls-settings.md)
+- [Recommendations For Securing Data In Transit - SSL/TLS Settings](04-securing-data-in-transit.md)
