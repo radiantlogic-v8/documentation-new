@@ -17,7 +17,7 @@ Now you know what this guide is about, follow the folling steps to get started.
 
 -   [Prerequisites](#prerequisites) for RadiantOne CFS and how to prepare FID.
 -   Learn about the [Concepts](#concepts) of federation.
--   Install and configure [RadiantOne CFS Master](#cfs-master).
+-   Install and configure [RadiantOne CFS Master](#radiantone-cfs-master).
 -   Create the [first tenant](#first-tenant).
 
 # Prerequisites 
@@ -41,7 +41,7 @@ Minimum Hardware Requirements:
 
 Supported Applications:
 
-A list of supported applications is available in the CFS System Administrator dashboard. Refer to Applications -> Web Gallery Node in the [system dashboard](../user-roles/system-admin.html#applications) for more information.
+A list of supported applications is available in the CFS System Administrator dashboard. Refer to Applications > Web Gallery Node in the [system dashboard](03-user-roles#applications) for more information.
 
 Firewall Ports:
 
@@ -133,7 +133,7 @@ An identity store is the user repository used to uniquely identify people for au
 
 CFS supports a multitenancy architecture allowing each configured tenant to manage their own groups, users, identity providers (authentication systems), applications and portal. Each tenant is totally independent and cannot access resources managed by other tenants.
 
-The CFS system administrator configures all tenants and then the designated tenant administrator can configure the groups, users, identity providers and applications applicable for their portal. See the [Tenant Administrator Guide](../user-roles/tenant-admin.html) for configuration details.
+The CFS system administrator configures all tenants and then the designated tenant administrator can configure the groups, users, identity providers and applications applicable for their portal. See the [Tenant Administrator Guide](03-user-roles#tenant-administrator) for configuration details.
 
 ## Web Gallery
 
@@ -272,7 +272,7 @@ The CFS installer automatically installs all the required components (including 
 
 Now you have installed and configure RadiantOne CFS, follow the steps.
 
--   Create the [first tenant](first-tenant.html).
+-   Create the [first tenant](#first-tenant).
 
 
 # First Tenant
@@ -281,7 +281,7 @@ After your installation has completed, open your web browser. In the address bar
 
 ![](media/first-tenant1.png)
 
->[!note] Select "Continue to this website (not recommended)". The reason this appears is because CFS is hosted on Microsoft's IIS Web Server and installs a self-signed certificate during installation that is not trusted by your machine. There are instructions on how to correct this in the [Microsoft IIS](#change-the-ssl-certificate) section.
+>[!note] Select "Continue to this website (not recommended)". The reason this appears is because CFS is hosted on Microsoft's IIS Web Server and installs a self-signed certificate during installation that is not trusted by your machine. There are instructions on how to correct this in the [Microsoft IIS](04-deployment#change-the-ssl-certificate) section.
 
 # Installation Wizard
 
