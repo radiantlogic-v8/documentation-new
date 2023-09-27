@@ -11,7 +11,7 @@ For detailed memory requirements for specific configurations, please see the [Ra
 
 ## LDAP Directory Servers	
 
-- Microsoft Active Directory 2008, 2012, 2016, 2019
+- Microsoft Active Directory 2008, 2012, 2016, 2019, 2022
 - Active Directory Lightweight Directory Service (AD-LDS)
 - Active Directory Application Mode (ADAM)
 - SunONE Directory Server 4.X – 7.X
