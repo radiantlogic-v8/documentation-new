@@ -51,9 +51,9 @@ Identity Store (FID) Version:
 
 CFS v3.16.2 supports FID v7.1.14 and later, with the exception of:
 
-*   v7.2.20
-*   v7.2.21
-*   v7.2.22
+-   v7.2.20
+-   v7.2.21
+-   v7.2.22
 
 ## Other Microsoft Requirements
 
@@ -90,7 +90,7 @@ Depending on the CFS features you plan to use, you must have some attributes ava
 -   If you are planning on allowing users to self-register on your CFS portal, then the user entries in FID must support the writable attribute: _IsSelfRegistered_
 -   If you are planning on allowing users to reset their passwords by answering challenge questions, then the user entries in FID must support the following writable attributes: _challengeQuestion1_ - _challengeQuestion10_ (e.g. _challengeQuestion1_, _challengeQuestion2_, _challengeQuestion3_ etc...), _challengeAnswer1_ - _challengeAnswer10_ (e.g. _challengeAnswer1_, _challengeAnswer2_, _challengeAnswer3_ etc...)
 -   If you are planning on allowing users to reset their passwords, then the user entries in FID must support the writable attribute: _userPassword_.
--   If you are planning to allow users to login to CFS with two-step verification, then the user entries in FID must support the following writable attributes: _totpSecret_ and _totpSecretNotValidated_
+-   If you are planning to allow users to log in to CFS with two-step verification, then the user entries in FID must support the following writable attributes: _totpSecret_ and _totpSecretNotValidated_
 -   A CFS HelpDesk User or Tenant Administrator can lock and lockout user accounts, therefore, the user entries in FID must support a writable attribute: _nsAccountLock_
 
 If the user or group entries integrated by FID originate from a backend store other than the local HDAP storage in FID, the easiest way to extend these entries with the writable attributes mentioned above is by configuring an Extended External Join on your FID virtual view (be sure to mark these attributes as **UPDATEABLE** and **SEARCHABLE** ). For details on configuring extended joins, please see the FID System Admin Guide. Extended joins alleviate the need to extend the schemas of the backend sources in order to support the writable attributes required by CFS. The lifecycle of these extension attributes is managed by and maintained in FID and FID joins this information to the relevant user/group entries when needed.
@@ -99,9 +99,9 @@ If the user or group entries integrated by FID originate from a backend store ot
 
 Now you know what are the prerequisites for RadiantOne CFS follow the steps.
 
--   Learn about the [Concepts](concepts.html) of federation.
--   Install and configure [RadiantOne CFS Master](cfs-master.html).
--   Create the [first tenant](first-tenant.html).
+-   Learn about the [Concepts](#concepts) of federation.
+-   Install and configure [RadiantOne CFS Master](#radiantone-cfs-master).
+-   Create the [first tenant](#first-tenant).
 
 # Concepts
 
@@ -127,7 +127,7 @@ The term "Application" can also refer to other Security Token Service's (STS) su
 
 ## Identity Store
 
-An identity store is the user repository used to uniquely identify people for authentication and retrieving profile attributes and groups to package inside tokens. The identity store used by CFS is FID. For more details, please see [Preparing the Identity Store](prerequisites.html#preparing-the-identity-store).
+An identity store is the user repository used to uniquely identify people for authentication and retrieving profile attributes and groups to package inside tokens. The identity store used by CFS is FID. For more details, please see [Preparing the Identity Store](#preparing-the-identity-store).
 
 ## Tenant
 
@@ -149,9 +149,9 @@ Some federation terms have different names across the industry. The chart below 
 
 ## IDP-Initiated SSO
 
-Once CFS has been configured by the CFS system Administrator and the Tenant Administrator has configured their portal, users can login to the portal and access applications.
+Once CFS has been configured by the CFS system Administrator and the Tenant Administrator has configured their portal, users can log in to the portal and access applications.
 
-When a user accesses the tenant portal, they choose the method with which they want to be authenticated. If they are logged into an Active Directory domain that has been configured by the tenant administrator as supported by the portal, the user will automatically be logged in (no login screen will appear). For all other users, the configured login methods will be shown
+When a user accesses the tenant portal, they choose the method with which they want to be authenticated. If they are logged into an Active Directory domain that has been configured by the tenant administrator as supported by the portal, the user will automatically be logged in (no login screen will appear). For all other users, the configured login methods will be shown.
 
 ![](media/idp-initiated-sso1.png)
 
@@ -172,8 +172,8 @@ If the user has not been authenticated by CFS, they will be redirected to the po
 
 Step(s) Flow description:
 
-1.  Browser sends a GET request to application. Because the user has not been authenticated, browser is redirected to the CFS login page
-2.  Browser sends a GET request to CFS to connect to the server
+1.  Browser sends a GET request to application. Because the user has not been authenticated, browser is redirected to the CFS login page.
+2.  Browser sends a GET request to CFS to connect to the server.
 3.  CFS Portal site
     1.  User chooses to be authenticated using Form Based Authentication, and enters their credentials, which are sent to CFS in a POST. The POST also tells CFS which Application the user wants to access
     2.  CFS delegates the user authentication to FID, using a "super" filter which combines the filters for FID, for the FBA, and for the application the user is attempting to access
@@ -241,7 +241,7 @@ The CFS installer automatically installs all the required components (including 
     1.  The System Dashboard web site will allow you to configure the tenants, packages (applications and themes) and other CFS features. You should install this feature at least once in your IIS Web Farm. ![](media/master-5.png)
     2.  If you do not want to install this feature, click on the name and select **Entire feature will be unavailable**.
     3.  The CFS Proxy Web API is the web site that CFS Proxy use as a backend. You can either install all the components on the same machine or install this CFS Proxy Web API on a separate machine for better performance. ![](.media/master-6.png)
-6.  On the **Federated Identity Service Configuration** you have to enter the information to use to connect to FID. ![](media/master-7.png)
+1.  On the **Federated Identity Service Configuration** you have to enter the information to use to connect to FID. ![](media/master-7.png)
     1.  This is the connection to the FID that CFS will point to for authenticating users, retrieving attributes and store its configuration. Since CFS only connects to FID over SSL (and the FQDN of the FID machine is the subject in the self-generated certificate), you must enter the FQDN for the host. To make sure you have the correct address for your FID, open the SSL certificate and use the issuer property for the host.
     2.  The FID SSL certificate must be trusted on the CFS machine (in the Computer certificate store, Trusted Root Certificates).
     3.  If the certificate is not trusted on your server, it should open itself for you to put it in your certificate store. ![](media/master-8.png)
@@ -255,11 +255,17 @@ The CFS installer automatically installs all the required components (including 
 
 1.  To uninstall CFS Master, go to the Windows Control Panel, select Programs, Uninstall a program. In the list of applications installed, select Cloud Federation Service and click Uninstall.
 
-2.  Click Uninstall. ![](media/uninstall-1.png)
+2.  Click Uninstall.
+   
+    ![](media/uninstall-1.png)
     
-3.  Let the setup uninstall the RTC. ![](media/uninstall-2.png)
+3.  Let the setup uninstall the RTC. 
+   
+    ![](media/uninstall-2.png)
     
-4.  The setup has successfuly uninstalled the RTC. ![](media/uninstall-3.png)
+4.  The setup has successfuly uninstalled the RTC. 
+   
+    ![](media/uninstall-3.png)
     
 
 ## Next Steps
@@ -275,11 +281,11 @@ After your installation has completed, open your web browser. In the address bar
 
 ![](media/first-tenant1.png)
 
-> **Tip:** Select "Continue to this website (not recommended)". The reason this appears is because CFS is hosted on Microsoft's IIS Web Server and installs a self-signed certificate during installation that is not trusted by your machine. There are instructions on how to correct this in the [Microsoft IIS](#change-the-ssl-certificate) section.
+>[!note] Select "Continue to this website (not recommended)". The reason this appears is because CFS is hosted on Microsoft's IIS Web Server and installs a self-signed certificate during installation that is not trusted by your machine. There are instructions on how to correct this in the [Microsoft IIS](#change-the-ssl-certificate) section.
 
 # Installation Wizard
 
-The Global Administration Page will take some time to load for the first time, but when it does, it should look something like this:
+The Global Administration Page will take some time to load for the first time, but when it does, it should look something like this.
 
 ![](media/first-tenant2.png)
 
@@ -359,9 +365,9 @@ Here, you will be able to administer your Tenant, as described in the [Tenant Ad
 
 Now you have installed and configure RadiantOne CFS and created your first tenant you can follow the guide.
 
--   Install and configure [CFS Proxy](cfs-proxy.html).
--   Install and configure [RTC](rtc.html).
--   Configure the different [Certificates](certificates.html).
+-   Install and configure [CFS Proxy](#radiantone-cfs-proxy).
+-   Install and configure [RTC](#radiant-trust-connectors-rtc).
+-   Configure the different [Certificates](#certificates).
 
 
 # RadiantOne CFS Proxy
@@ -376,7 +382,7 @@ Internal users still use the CFS Master directly to access applications. Only in
 
 You must have installed a CFS Master with the System Dashboard in order to add a CFS Proxy in the system.
 
-Login as **cn=Directory Manager** into the System Dashboard at the address `[https://<CFS_ADDRESS>/system/](https://<CFS_ADDRESS>/system/)`
+Log in as **cn=Directory Manager** into the System Dashboard at the address `[https://<CFS_ADDRESS>/system/](https://<CFS_ADDRESS>/system/)`
 
 ![](media/proxy-1.png)
 
@@ -388,7 +394,7 @@ Keep the next screen on hand you will need to get the **id** and **secret** keys
 
 ![](media/proxy-3.png)
 
-> **Tip**: Make sure you have installed a CFS Proxy Web API in your network in order for the CFS Proxy to communicate with FID. Follow the steps of the [RadiantOne CFS Master](cfs-master.html) to install the CFS Proxy Web API.
+> **Tip**: Make sure you have installed a CFS Proxy Web API in your network in order for the CFS Proxy to communicate with FID. Follow the steps of the [RadiantOne CFS Master](#radiantone-cfs-master) to install the CFS Proxy Web API.
 
 ## Installing CFS Proxy
 
@@ -414,9 +420,9 @@ On the **Cloud Federation Service - Proxy Configuration** you have to enter the 
 
 ![](media/proxy-7.png)
 
-*   The URL must be something like: `[https://<CFS_SERVER>/api/](https://<CFS_SERVER>/api/)`
-*   Use the keys you have created at the previous step in the System Dashboard.
-*   Make sure the HTTPS connection has a valid SSL certificate otherwise the connection will not work.
+-   The URL must be something like: `[https://<CFS_SERVER>/api/](https://<CFS_SERVER>/api/)`
+-   Use the keys you have created at the previous step in the System Dashboard.
+-   Make sure the HTTPS connection has a valid SSL certificate otherwise the connection will not work.
 
 On the **Ready to install Cloud Federation Service Proxy** click Install.
 
@@ -444,13 +450,12 @@ Once the install is complete, click Finish.
 4.  The setup has successfuly uninstalled the CFS Proxy. ![](media/uninstall6.png)
     
 
-Next Steps
-----------
+## Next Steps
 
 Now you have installed and configure RadiantOne CFS Proxy, you can follow the guide.
 
 -   Install and configure [RTC](#radiantone-trust-connector).
--   Configure the different [Certificates](certificates.html).
+-   Configure the different [Certificates](#certificates).
 
 # RadiantOne Trust Connector
 
@@ -475,7 +480,7 @@ Verify that the RTC is configured correctly. Check if you can access the RTC sit
 3.  In the right panel, click **browse \*:443 (https)**. ![](media/rtc-2.png)
 4.  If there is a Certificate Error warning, select "Continue to this website". ![](media/rtc-3.png)
     
-    > **Tip –** This warning is displayed if you have not yet installed a trusted SSL certificate in IIS. You should replace the default certificate installed by the CFS installer with a new one designated specifically for use by CFS. This certificate should be issued by a Certificate Authority. For instructions on how to change the certificate in IIS, refer to Adding a Certificate to use with an RTC.
+    >[!note] This warning is displayed if you have not yet installed a trusted SSL certificate in IIS. You should replace the default certificate installed by the CFS installer with a new one designated specifically for use by CFS. This certificate should be issued by a Certificate Authority. For instructions on how to change the certificate in IIS, refer to Adding a Certificate to use with an RTC.
     
 5.  You should now be at the Radiant Trust Connector site.
 
@@ -554,8 +559,7 @@ The identity providers (AKA: Authentication Systems) configured in CFS need only
 
 ![](media/certificates-3.png)
 
-Radiant Trust Connectors (RTC)
-------------------------------
+# Radiant Trust Connectors (RTC)
 
 When you install a RTC, because it is installed on IIS Web Server, and because we use https to communicate with the RTC, the installer generates a self-signed certificate and installs it in IIS. This certificate should be replaced with a “legit” CA-issued certificate. This certificate contains the private key. When you request a certificate from a CA, it is important to note that the subject of the certificate should be the FQDN of the machine where the it will used (e.g. s-se14-ad.seradiant.com). To check the certificate used by IIS where the RTC is installed, go into IIS Manager, select the root of IIS and on the right, double-click on "Server Certificates" (screen shots below based on Windows Server 2012 OS).
 
@@ -577,32 +581,31 @@ The RTC also needs a certificate to communicate with CFS (via a re-direct throug
 
 1.  If you are on the machine where IIS/RTC are installed, from the IIS Manager go to CFS Website and click on the RTC application.
 
-![](media/certificates-8.png)
+    ![](media/certificates-8.png)
 
-On the right, double-click on the Radiant Trust Connector icon. On the far right, click on View the Certificate.
+2. On the right, double-click on the Radiant Trust Connector icon. On the far right, click on View the Certificate.
 
-![](media/certificates-9.png)
+    ![](media/certificates-9.png)
 
-On the Details tab, click on Copy to File.
+3. On the Details tab, click on Copy to File.
 
-![](media/certificates-10.png)
+    ![](media/certificates-10.png)
 
-Go through the “Certificate Export Wizard” and save the file (.cer or .der are fine) somewhere. This file must be copied over to the CFS machine (you will need to access it when configuring the RTC in the CFS tenant dashboard). When you configure a RTC (Active Directory option) as an Authentication System in the Tenant Administration Dashboard, you’ll need to provide a certificate for this RTC (the one you copied from the RTC machine). This certificate (public key) will be stored in FID.
+4. Go through the “Certificate Export Wizard” and save the file (.cer or .der are fine) somewhere. This file must be copied over to the CFS machine (you will need to access it when configuring the RTC in the CFS tenant dashboard). When you configure a RTC (Active Directory option) as an Authentication System in the Tenant Administration Dashboard, you’ll need to provide a certificate for this RTC (the one you copied from the RTC machine). This certificate (public key) will be stored in FID.
 
-![](media/certificates-11.png)
+    ![](media/certificates-11.png)
 
-1.  If you are NOT on the machine where IIS/RTC are installed (can’t access IIS Manager), you can just navigate to the RTC URL: e.g. [https://<domain>/rtc/](https://<domain>/rtc/) from a web browser and then click on the FederationMetadata.xml link.
+5.  If you are NOT on the machine where IIS/RTC are installed (can’t access IIS Manager), you can just navigate to the RTC URL: e.g. [https://<domain>/rtc/](https://<domain>/rtc/) from a web browser and then click on the FederationMetadata.xml link.
 
-![](media/certificates-12.png)
+    ![](media/certificates-12.png)
 
-Copy the value for the <X509Certificate> and paste it into a text editor (e.g. Notepad).
+6. Copy the value for the <X509Certificate> and paste it into a text editor (e.g. Notepad).
 
-![](media/certificates-13.png)
+    ![](media/certificates-13.png)
 
-Save the file as a certificate (.cer or .der extension). If using a Notepad editor, be sure to enclose the file name in double-quotes to avoid it having a .txt additional extension.
+7. Save the file as a certificate (.cer or .der extension). If using a Notepad editor, be sure to enclose the file name in double-quotes to avoid it having a .txt additional extension.
 
-![](media/certificates-14.png)
+    ![](media/certificates-14.png)
 
-This file must be copied over to the CFS machine (you will need to access it when configuring the RTC in the CFS tenant dashboard). When you configure a RTC (Active Directory option) as an Authentication System in the Tenant Administration Dashboard, you’ll need to provide a certificate for this RTC (the one you saved from the RTC metadata file). This certificate (public key) will be stored in FID.
-
+8. This file must be copied over to the CFS machine (you will need to access it when configuring the RTC in the CFS tenant dashboard). When you configure a RTC (Active Directory option) as an Authentication System in the Tenant Administration Dashboard, you’ll need to provide a certificate for this RTC (the one you saved from the RTC metadata file). This certificate (public key) will be stored in FID.
 
