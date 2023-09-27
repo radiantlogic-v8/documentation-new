@@ -27,9 +27,9 @@ You can configure the properties file either for unencrypted, anonymous connecti
 
 In a text editor, enter the path on your RadiantOne server containing the bootstrap.servers value with the name and port of your Kafka server. i.e. kafka.mycompany.com:9092.
 
-![producer.properties](Media/producer-properties.jpg)
+![producer.properties](media/producer-properties.jpg)
 
-Figure : Producer.properties text file for unencrypted anonymous connections
+Figure 1: Producer.properties text file for unencrypted anonymous connections
 
 ### Configuring the Properties File for Encryption and Authentication
 
@@ -37,9 +37,9 @@ In cases where encryption and authentication are required, additional properties
 
 In this example, PLAIN SASL is used to specify a username and password for authentication. Because the connection is encrypted, you must create a Java truststore containing the trusted CAs which issued the certificate used by the Kafka broker. The ssl.truststore.location needs to be the full path to the file on your RadiantOne server. It is recommended that you store both the producer.properties and truststore.jks file in your $RLI_HOME/vds_server/custom directory so that it replicates to follower nodes in your cluster.
 
-![producer.properties file for encryption](Media/producer-properties-encryption.jpg)
+![producer.properties file for encryption](media/producer-properties-encryption.jpg)
 
-Figure : Producer.properties text file for a Kafka broker requiring encryption and authentication
+Figure 2: Producer.properties text file for a Kafka broker requiring encryption and authentication
 
 >[!note] Once you start using your Kafka producer to publish to a Kafka topic in a Global Sync topology, any changes you make to the producer.properties file require that you restart the RadiantOne FID service.
 
@@ -68,9 +68,9 @@ To configure the producer data source:
 	Topic name |(the name of the topic to which you wish to publish)
 	Messageformat | (the name of the changeEventConvertor, such as GoldenGateJSONConvertor)
 
-    ![kafka producer](Media/kafka-producer.jpg)
+    ![kafka producer](media/kafka-producer.jpg)
 
-    Figure – Configuring the Kafka Producer Properties File
+    Figure 3: Configuring the Kafka Producer Properties File
 
 1. Click Save. 
 
@@ -96,7 +96,7 @@ Based on the JSON messages you expect to process with your Kafka connector, you 
 
 1. In the Main Control Panel, navigate to the Context Builder tab.
 
-1.	On the Schema Manager tab, click ![create schema](Media/create-schema.jpg).
+1.	On the Schema Manager tab, click ![create schema](media/create-schema.jpg).
 
 1.	Select **Custom** and click OK. 
 
@@ -110,9 +110,9 @@ Based on the JSON messages you expect to process with your Kafka connector, you 
 
 1.	Right click on Tables and click **Add New Object**. 
 
-    ![](Media/add-new-object.jpg)
+    ![](media/add-new-object.jpg)
 
-    Figure : Adding a new table
+    Figure 4: Adding a new table
 
 1.	Name the table and enter an LDAP Object Class name. In this example, the table is named **worker**. Click OK. 
 
@@ -124,9 +124,9 @@ Based on the JSON messages you expect to process with your Kafka connector, you 
 
 1.	Repeat the above step for all fields which will be processed through your Kafka connector. 
 
-    ![kafka schema](Media/kakfa-schema.jpg)
+    ![kafka schema](media/kakfa-schema.jpg)
 
-    Figure : Kafka Schema
+    Figure 5: Kafka Schema
 
 1.	Click **Save**.
 
@@ -138,7 +138,7 @@ In this section, a new naming context representing the incoming Kafka Consumer i
 
 1. In the Main Control Panel, navigate to the Context Builder tab. 
 
-1.	On the View Designer tab, click ![create schema](Media/create-schema.jpg).
+1.	On the View Designer tab, click ![create schema](media/create-schema.jpg).
 
 1.	Name the view. In this example, the schema is named kafkaexample.
 
@@ -148,13 +148,13 @@ In this section, a new naming context representing the incoming Kafka Consumer i
 
 1.	Select your table name and click OK.
 
-    ![new view definition](Media/new-view-definition.jpg)
+    ![new view definition](media/new-view-definition.jpg)
 
-    Figure : New View Definition
+    Figure 6: New View Definition
 
 1.	Make any updates you need for the RDN and Attribute settings.
 
-    ![view with attributes](Media/view-with-attributes.jpg)
+    ![view with attributes](media/view-with-attributes.jpg)
 
     Figure : New View with Attributes
 
@@ -162,7 +162,7 @@ In this section, a new naming context representing the incoming Kafka Consumer i
 
 1.	Navigate to the Directory Namespace tab. 
 
-1.	Click ![new naming context](Media/new-naming-context.jpg). 
+1.	Click ![new naming context](media/new-naming-context.jpg). 
 
 1.	Enter a context name, i.e. o=kafkaexample.
 
@@ -182,7 +182,7 @@ If you’re configuring Global Sync to act as both a consumer and producer with 
 
 1.	In the Main Control Panel, navigate to the Global Sync tab. 
 
-1.	Click ![new topology](Media/new-topology.jpg).
+1.	Click ![new topology](media/new-topology.jpg).
 
 1.	Select your source and destination naming contexts and click OK. 
 
@@ -197,9 +197,9 @@ If you’re configuring Global Sync to act as both a consumer and producer with 
     Message Format |The name of your changeConvertor, such as GoldenGateJSONConvertor or KafkaExample (without .java on the end)
     Table Name | Required only if you are using KafkaGoldenGate formatting
 
-    ![new topology](Media/kafka-example.jpg)
+    ![new topology](media/kafka-example.jpg)
 
-    Figure – Capture connector properties using Kafkaexample changeConvertor
+    Figure 7: Capture connector properties using Kafkaexample changeConvertor
 
 >[!note] The minimum requirement for the Kafka Consumer Properties field is the bootstrap.servers property specifying your Kafka broker and port number. The example shown above is for an unencrypted session without authentication. If your Kafka broker requires encryption and/or authentication, additional properties can be added to the field in a comma-separated list. For example, the same parameters shown in the example above for the producer.properties file would be entered as the following  string. <br> bootstrap.servers=kafka.mycompany.com:9094,sasl.mechanism=PLAIN,
 security.protocol=SASL_SSL,ssl.truststore.location=/radiantone/vds/vds_server/custom/truststore.jks,sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="accountname" password="password";
@@ -212,9 +212,9 @@ security.protocol=SASL_SSL,ssl.truststore.location=/radiantone/vds/vds_server/cu
 
 1. Expand the Mappings section and map attributes as required.
 
-    ![sample mappings](Media/sample-mappings.jpg)
+    ![sample mappings](media/sample-mappings.jpg)
 
-    Figure – Sample Mappings
+    Figure 8: Sample Mappings
 
 1. 	Click the Apply tile and start your pipeline. 
 
@@ -224,7 +224,7 @@ Global Sync uses the settings you configured for your kafkaproducer data source 
 
 1. In the Main Control Panel, navigate to the Global Sync tab.
 
-1.	Click ![new topology](Media/new-topology.jpg).
+1.	Click ![new topology](media/new-topology.jpg).
 
 1.	Select your Source and Destination naming contexts (i.e. the destination should be the kafkaproducer data source configured in [Configuring the Producer Data Source](#configuring-the-producer-data-source)) and click OK.
 
