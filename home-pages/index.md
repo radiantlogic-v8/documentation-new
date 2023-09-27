@@ -138,6 +138,26 @@ Harness your identity data with intelligent integration to drive better business
   
 </section>
 
+## RadiantOne CFS
+
+<section>
+
+  > [Introduction](cfs/01-getting-started)
+  > Learn about key concepts and system requirements for CFS. 
+
+  > [Installation](cfs/01-getting-started)
+  > Learn how to install CFS Master and create your first CFS tenant.
+
+  > [Configuration](cfs/02-configuration)
+  >Learn how to configure identity providers, applications, and smart links. 
+
+  > [Deployment](cfs/04-deployment)
+  > Learn the best practices approaches for deploying CFS.
+
+  > [Troubleshooting](cfs/05-troubleshooting)
+  > Learn how to use the CFS Log Analyzer. 
+
+</section>
 
 </tabpanel>
 
@@ -186,27 +206,6 @@ A rich set of HTTP-based API's have been developed on top of LDAP, to provide br
   > [Javadocs](/javadoc/allclasses-frame)
   > The API documentation applicable for customizing interception scripts in RadiantOne FID and transformation scripts in RadiantOne Global Synchronization.
   
-</section>
-
-## RadiantOne CFS
-
-<section>
-
-  > [Introduction](cfs/01-getting-started)
-  > Learn about key concepts and system requirements for CFS. 
-
-  > [Installation](cfs/01-getting-started)
-  > Learn how to install CFS Master and create your first CFS tenant.
-
-  > [Configuration](cfs/02-configuration)
-  >Learn how to configure identity providers, applications, and smart links. 
-
-  > [Deployment](cfs/04-deployment)
-  > Learn the best practices approaches for deploying CFS.
-
-  > [Troubleshooting](cfs/05-troubleshooting)
-  > Learn how to use the CFS Log Analyzer. 
-
 </section>
 
 </tabpanel>
