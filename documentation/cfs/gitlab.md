@@ -6,7 +6,7 @@ description: CFS
 GitLab
 ======
 
-Return to [all applications](../docs/configuration/applications.html).
+Return to [all applications](03-configuration#applications).
 
 Create the application
 ----------------------
@@ -14,7 +14,7 @@ Create the application
 *   Log in as Tenant Administrator.
 *   Navigate to Applications | Gallery.
 *   Look for the application **GitLab**
-*   Click the button **Configure**.
+*   Click **Configure**.
 
 ![](media/gitlab-configure.png)
 

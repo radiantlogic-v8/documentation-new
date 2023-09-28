@@ -6,7 +6,7 @@ description: CFS
 Salesforce
 ==========
 
-Return to [all applications](../docs/configuration/applications.html).
+Return to [all applications](03-configuration#applications).
 
 Create the application
 ----------------------
@@ -86,11 +86,11 @@ The **Certificate** tab is used to define the certificate used by CFS to build t
 Configure Salesforce
 --------------------
 
-*   Login into your Salesforce account at [https://login.salesforce.com/](https://login.salesforce.com/)
+*   Log into your Salesforce account at [https://login.salesforce.com/](https://login.salesforce.com/)
 *   Navigate to Administration Setup, Security Controls, Single Sign-On Setting
 *   If Federated Single Sign-On Using SAML is not activated, you must activate it. Then, click New to create a new SAML 2.0 identity provider.
 
-![](../assets/images/applications/salesforce/1-new.png)
+![](media/1-new.png)
 
 *   Enter a **name** for your identity provider.
 *   Leave the **API Name** as it is.

@@ -6,7 +6,7 @@ description: CFS
 Google Apps
 ===========
 
-Return to [all applications](../docs/configuration/applications.html).
+Return to [all applications](03-configuration#applications).
 
 Create the application
 ----------------------
@@ -102,4 +102,4 @@ You need to be super-administrator on the domain you want to configure to use CF
 *   The checkbox **Use a domain specific issuer** is not relevant: you can leave it unchecked.
 *   The **Network masks** options allows you to restrict the use of CFS, so you can provide a value that meets your needs, or leave it blank (the default)
 
-![](../assets/images/applications/googleapps/3-sso.png)
+![](media/3-sso.png)

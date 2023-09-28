@@ -6,7 +6,7 @@ description: CFS
 DocuSign - Demo
 ===============
 
-Return to [all applications](../docs/configuration/applications.html).
+Return to [all applications](03-configuration#applications).
 
 Create the application
 ----------------------
@@ -16,7 +16,7 @@ Create the application
 *   Look for the application **DocuSign - Demo**
 *   Click **Configure**.
 
-![](../assets/images/applications/docusign-demo/configure.png)
+![](media/docusign-demo-configure.png)
 
 Configuration in CFS
 --------------------
@@ -26,7 +26,7 @@ Configuration in CFS
 In the **General** tab you can define the general information of the application.
 
 *   Enable the application.
-*   Provide a name that will be displayed on the end user portal.
+*   Provide a name that is displayed on the end user portal.
 *   You can change the logo of the application.
 *   The Group set is used to group the applications on the end user portal.
 *   Set the application minimum [Level Of Assurance](01-getting-started/concept#level-of-assurance).

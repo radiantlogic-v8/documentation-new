@@ -6,7 +6,7 @@ description: CFS
 Cisco WebEx
 ===========
 
-Return to [all applications](02-configuration#application).
+Return to [all applications](03-configuration#applications).
 
 Create the application
 ----------------------
@@ -14,7 +14,7 @@ Create the application
 *   Log in as Tenant Administrator.
 *   Navigate to Applications | Gallery.
 *   Look for the application **Cisco WebEx**
-*   Click the button **Configure**.
+*   Click **Configure**.
 
 ![](media/ciscowebex-configure.png)
 
@@ -84,8 +84,8 @@ The **Certificate** tab is used to define the certificate used by CFS to build t
 Configure Cisco WebEx
 ---------------------
 
-Login into your WebEx administrator account and navigate to the Site Administration page. Select SSO Configuration from the menu on the left. On the SSO Configuration page and select the federation protocol **SAML 2.0**. Then, click the **Import SAML Metadata** and import the metadata file from the General tab. All the fields should be automatically populated.
+Log into your WebEx administrator account and navigate to the Site Administration page. Select SSO Configuration from the menu on the left. On the SSO Configuration page and select the federation protocol **SAML 2.0**. Then, click the **Import SAML Metadata** and import the metadata file from the General tab. All the fields should be automatically populated.
 
-![](../assets/images/applications/ciscowebex/1-configuration.png)
+![](media/1-configuration.png)
 
 *   You can select Auto Account Creation and Auto Account Update if you want to enable provisioning. If you decide to do so, you will need to use extra claims for the configuration of WebEx application in the [Mappings](#mappings) tab.

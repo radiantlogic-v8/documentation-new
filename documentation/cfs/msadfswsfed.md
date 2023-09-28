@@ -6,7 +6,7 @@ description: CFS
 Microsoft AD FS as WS-Federation
 ================================
 
-Return to [all applications](../docs/configuration/applications.html).
+Return to [all applications](03-configuration#applications).
 
 Create the application
 ----------------------

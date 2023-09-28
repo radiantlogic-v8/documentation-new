@@ -6,17 +6,17 @@ description: CFS
 Box
 ===
 
-Return to [all applications](02-configuration#application).
+Return to [all applications](03-configuration#applications).
 
 Create the application
 ----------------------
 
-*   Login as Tenant Administrator.
+*   Log in as Tenant Administrator.
 *   Navigate to Applications | Gallery.
 *   Look for the application **Box**
-*   Click the button **Configure**.
+*   Click **Configure**.
 
-![](../assets/images/applications/box/configure.png)
+![](media/box-configure.png)
 
 Configuration in CFS
 --------------------

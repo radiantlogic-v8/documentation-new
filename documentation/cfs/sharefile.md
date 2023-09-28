@@ -6,7 +6,7 @@ description: CFS
 ShareFile
 =========
 
-Return to [all applications](../docs/configuration/applications.html).
+Return to [all applications](03-configuration#applications).
 
 Create the application
 ----------------------
@@ -84,7 +84,7 @@ The **Certificate** tab is used to define the certificate used by CFS to build t
 Configure ShareFile
 -------------------
 
-Login into your ShareFile administrator account, click on the link **Admin** in the top menu and select **Configure Single Sign-On**.
+Log into your ShareFile administrator account, click the **Admin** link in the top menu and select **Configure Single Sign-On**.
 
 ![](media/1-menu.png)
 

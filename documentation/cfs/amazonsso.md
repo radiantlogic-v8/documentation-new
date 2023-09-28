@@ -5,7 +5,7 @@ description: CFS
 
 # AWS SSO
 
-Return to [all applications](02-configuration#application).
+Return to [all applications](03-configuration#applications).
 
 ## Create the application
 
@@ -84,7 +84,7 @@ The **Certificate** tab is used to define the certificate used by CFS to build t
 
 -   Log into your AWS SSO console at [https://console.aws.amazon.com/singlesignon/home](https://console.aws.amazon.com/singlesignon/home).
 -   In the Recommended Setup Steps section, click Option 1: Choose your identity source.
--   In the Identity Source section, click on 'Change' next to the Identy Source entry.
+-   In the Identity Source section, click 'Change' next to the Identy Source entry.
 
 ![](media/1-identity-source.png)
 
@@ -102,13 +102,13 @@ The **Certificate** tab is used to define the certificate used by CFS to build t
     
     ![](media/4-identity-provider-metadata.png)
     
--   Click on **Next: Review**
+-   Click **Next: Review**
     
 -   If prompted to Review and Confirm, do so by typing _ACCEPT_ in the screen that appears.
     
     ![](media/5-review-and-confirm.png)
     
-*   Click on **Change Identity Source** in the bottom left corner of the screen.
+*   Click **Change Identity Source** in the bottom left corner of the screen.
     
 *   If everythings is successful, the following screen should show. If not, you will need to reconfigure the identity provider.
     

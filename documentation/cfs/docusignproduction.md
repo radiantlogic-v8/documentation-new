@@ -6,7 +6,7 @@ description: CFS
 DocuSign - Production
 =====================
 
-Return to [all applications](02-configuration#applications).
+Return to [all applications](03-configuration#applications).
 
 Create the application
 ----------------------

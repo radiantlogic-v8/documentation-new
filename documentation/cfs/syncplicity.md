@@ -6,15 +6,15 @@ description: CFS
 Syncplicity
 ===========
 
-Return to [all applications](../docs/configuration/applications.html).
+Return to [all applications](03-configuration#applications).
 
 Create the application
 ----------------------
 
-*   Login as Tenant Administrator.
+*   Log in as Tenant Administrator.
 *   Navigate to Applications | Gallery.
 *   Look for the application **Syncplicity**
-*   Click the button **Configure**.
+*   Click **Configure**.
 
 ![](media/syncplicity-configure.png)
 

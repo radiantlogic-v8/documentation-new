@@ -6,7 +6,7 @@ description: CFS
 Microsoft SharePoint 2010
 =========================
 
-Return to [all applications](../docs/configuration/applications.html).
+Return to [all applications](03-configuration#applications).
 
 Create the application
 ----------------------
@@ -89,8 +89,8 @@ Configuring SharePoint
 
 It is assumed a web application/site does not currently exist in SharePoint. If it does, skip this section.
 
-*   Open the SharePoint Central Administration Console, login with your admin user and click on "Application Management".
-*   Below the "Web Applications" section, click on "Manage Web Applications.
+*   Open the SharePoint Central Administration Console, log in with your admin user and click  "Application Management".
+*   Below the "Web Applications" section, click "Manage Web Applications.
 *   Click the New Button.
 
 ![](media/sharepoint2010-1-new.png)
@@ -108,7 +108,7 @@ It is assumed a web application/site does not currently exist in SharePoint. If 
 *   In the Application Pool section, you can choose to "Create new application pool" and choose the "Predefined" option for the security account. Select the Network Service predefined option.
 *   Leave the default values for the Database Name and Authentication, Failover Server, Search Server, Service Application Connections, and Customer Experience Improvement Program sections.
 *   Click OK to create the new site.
-*   Since this is a new site, you will also need to setup a Site Collection. In the Application Management section, click on Create Site Collections.
+*   Since this is a new site, you will also need to setup a Site Collection. In the Application Management section, click Create Site Collections.
 
 ![](media/3-create.png)
 
@@ -137,10 +137,10 @@ Use the SharePoint 2010 Management Shell available in the Start menu of the Shar
 
 After CFS has been configured as a trusted token issuer, as described in the previous section, the SharePoint site can be configured to use it. The steps below describe how to configure a SharePoint Web Application to use CFS as the Trusted Identity Provider.
 
-*   Login to the SharePoint 2010 Central Administration Console and edit the site created in the previous section.
-*   In the Application Management section, click on Manage Web Applications.
-*   Select your site and click on "Authentication Providers".
-*   Click on the Zone that uses Claims Based Authentication.
+*   Log into the SharePoint 2010 Central Administration Console and edit the site created in the previous section.
+*   In the Application Management section, click Manage Web Applications.
+*   Select your site and click "Authentication Providers".
+*   Click the Zone that uses Claims Based Authentication.
 *   In the Claims Authentication Types section, you should have a new Trusted Identity Provider to select from (from the commands issued in the Management Shell described above). Check this Trusted Identity Provider (e.g. CFS) and click Save.
 
 ![](media/7-trusted-idp.png)
@@ -157,7 +157,7 @@ After the SharePoint Web Application has been configured to use CFS as the authe
 
 ![](media/9-add-users.png)
 
-*   Click on the icon to search for users and groups.
+*   Click the icon to search for users and groups.
 *   In this example, members of the FID Site Visitors will be based on the value of `cn=PAContractors,o=spgroups` or `cn=PASales,o=spgroups` coming in the role claim. Therefore, the search in People Picker will be based on these values. The Role claim below CFS (the trusted IdP) and the corresponding value is selected. Note that there is no ACTUAL search to data sources behind the scenes performed here. You have to know specifically what claims value you are expecting and WHAT claim will arrive in to properly set the permission.
 
 ![](media/10-site-permissions.png) ![](media/11-site-permissions.png)
@@ -171,10 +171,10 @@ Disabling Windows Authentication
 
 Now that the site is configured to trust CFS as the Identity Provider and permissions have been set, you can disable the Windows Authentication option for the site. This will allow for a better user experience by not having them choose between Windows Authentication and CFS when they first reach the SharePoint site (which they would have to if you have both Windows Authentication and a Trusted Identity Provider configured for authentication types of the site).
 
-*   Login to the SharePoint 2010 Central Administration Console.
-*   In the Application Management section, click on Manage Web Applications.
-*   Select your site and click on "Authentication Providers".
-*   Click on the Zone that uses Claims Based Authentication.
+*   Log into the SharePoint 2010 Central Administration Console.
+*   In the Application Management section, click Manage Web Applications.
+*   Select your site and click "Authentication Providers".
+*   Click the Zone that uses Claims Based Authentication.
 *   In the Claims Authentication Types section, uncheck the Enable Windows Authentication and click Save.
 
 ![](media/13-disable-windows-auth.png)

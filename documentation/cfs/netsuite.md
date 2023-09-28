@@ -6,7 +6,7 @@ description: CFS
 NetSuite
 ========
 
-Return to [all applications](../docs/configuration/applications.html).
+Return to [all applications](03-configuration#applications).
 
 Create the application
 ----------------------
@@ -84,7 +84,7 @@ The **Certificate** tab is used to define the certificate used by CFS to build t
 Get the Account Id
 ------------------
 
-*   Login into your NetSuite account.
+*   Log into your NetSuite account.
 *   Navigate to Setup | Integration | Web Services Preferences.
 *   Get the **Account ID**.
 

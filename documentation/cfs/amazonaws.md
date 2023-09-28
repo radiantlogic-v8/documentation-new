@@ -5,14 +5,14 @@ description: CFS
 
 # Amazon AWS
 
-Return to [all applications](02-configuration#application).
+Return to [all applications](03-configuration#applications).
 
 ## Create the application
 
 -   Log in as Tenant Administrator.
 -   Navigate to Applications | Gallery.
 -   Look for the application **Amazon AWS**
--   Click the button **Configure**.
+-   Click **Configure**.
 
 ![](media/amazon-aws-configure.png)
 
@@ -85,16 +85,16 @@ Configure Amazon AWS
 -   In the Identity Providers section, click the button **Create Provider**.
 -   Choose the Provider Type **SAML**.
 
-![](../assets/images/applications/amazonaws/1-provider-type.png)
+![](media/1-provider-type.png)
 
 -   In the CFS configuration for the application, click the link **Metadata File** and save the content of the page in a text file on your computer.
--   Click the button **Choose File** and upload the metadata file you've just saved.
+-   Click **Choose File** and upload the metadata file you've just saved.
 
 ![](media/2-import-metadata.png)
 
 -   Click Next Step.
 -   Click Create.
--   Click on the identity provider you just created to get the ARN value. Copy the Provider ARN value (you will later combine this value with the role ARN and use it in the AWS application configuration in the CFS Tenant Admin Dashboard).
+-   Click the identity provider you just created to get the ARN value. Copy the Provider ARN value (you will later combine this value with the role ARN and use it in the AWS application configuration in the CFS Tenant Admin Dashboard).
 -   In the Roles section, click the button **Create New Role**.
 -   Enter a role name (e.g. User).
 
@@ -112,7 +112,7 @@ Configure Amazon AWS
 -   Click Next Step on the Verify Role Trust screen.
 -   The next step is to set up the actual permissions users in this role will have. You will need to select the policy that is appropriate for your users and company. Click Select next to your choice, and then on the next page choose Next Step.
 -   Click Create Role.
--   In the Roles section, click on the role you just created.
+-   In the Roles section, click the role you just created.
 -   You should see your identity provider as a trusted entity at the bottom of your role summary.
 -   In the summary details, copy the Role ARN value (you will combine this value with the identity provider ARN and use it in the AWS application configuration in the CFS Tenant Admin Dashboard).
 
