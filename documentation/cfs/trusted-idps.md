@@ -31,7 +31,7 @@ Configuration
 *   If you have it, enter the Metadata URL provided by AD FS.
 *   Enter the EndPoint URL for AD FS.
 *   Click the Choose button next to "Change the Certificate" and navigate to the certificate containing the public key corresponding to the certificate installed in AD FS. CFS only needs the public key in order to check the signature of the token received from AD FS.
-*   Select a [Level of Assurance (LOA)](../docs/getting-started/concepts.html#level-of-assurance) from the drop-down menu. When a user authenticates, they get assigned a Level of Assurance that indicates and enforces which applications they are authorized by CFS to access. A user can be authorized to access an application if the LOA associated with the identity provider/authentication method they authenticated to CFS with is equivalent to or more secure than the level assigned to the application. This setting indicates that when a user authenticates to CFS using AD FS, they can access any application that has an LOA set to Some or Little. Users cannot access any application that has an LOA set to High or VeryHigh (see figure below).
+*   Select a [Level of Assurance (LOA)](02-getting-started#level-of-assurance) from the drop-down menu. When a user authenticates, they get assigned a Level of Assurance that indicates and enforces which applications they are authorized by CFS to access. A user can be authorized to access an application if the LOA associated with the identity provider/authentication method they authenticated to CFS with is equivalent to or more secure than the level assigned to the application. This setting indicates that when a user authenticates to CFS using AD FS, they can access any application that has an LOA set to Some or Little. Users cannot access any application that has an LOA set to High or VeryHigh (see figure below).
 
 ![](media/adfs-2.png)
 
@@ -40,7 +40,7 @@ Mappings
 
 You can change the claims rules which are the mappings that define what information CFS should except to receive from the trusted identity provider.
 
-The default mapping indicate the claim that contain the user’s unique identifier. This claim value is used to identify the user that authenticated through AD FS in the CFS identity store. You can edit the default mapping, or add more claims rules, by clicking on "New Mapping". To remove claims rules, click on "Delete". For details on defining claims mappings with the wizard or manually, please see the [Tenant Admin Guide](../docs/user-roles/tenant-admin.html).
+The default mapping indicate the claim that contain the user’s unique identifier. This claim value is used to identify the user that authenticated through AD FS in the CFS identity store. You can edit the default mapping, or add more claims rules, by clicking on "New Mapping". To remove claims rules, click "Delete". For details on defining claims mappings with the wizard or manually, please see the [Tenant Admin Guide](04-user-roles#tenant-administrator).
 
 > **NOTE:** Trusted Identity Provider Authentication Systems are pre-configured with default mappings. You only need to configure claims rules if the default mappings don’t match your requirements.
 
@@ -81,7 +81,7 @@ Configuration
 *   If you have it, enter the Metadata URL provided by OpenAM.
 *   Enter the EndPoint URL for OpenAM.
 *   Click the Choose button next to "Change the Certificate" and navigate to the certificate containing the public key corresponding to the certificate installed in OpenAM. CFS only needs the public key in order to check the signature of the token received from OpenAM.
-*   Select a [Level of Assurance (LOA)](../docs/getting-started/concepts.html#level-of-assurance) from the drop-down menu. When a user authenticates, they get assigned a LOA that indicates and enforces which applications they are authorized by CFS to access. A user can be authorized to access an application if the LOA associated with the identity provider/authentication method they authenticated to CFS with is equivalent to or more secure than the level assigned to the application. This setting indicates that when a user authenticates to CFS using OpenAM, they can access any application that has an LOA set to Some or Little. Users cannot access any application that has an LOA set to High or VeryHigh (see figure below).
+*   Select a [Level of Assurance (LOA)](02-getting-started#level-of-assurance) from the drop-down menu. When a user authenticates, they get assigned a LOA that indicates and enforces which applications they are authorized by CFS to access. A user can be authorized to access an application if the LOA associated with the identity provider/authentication method they authenticated to CFS with is equivalent to or more secure than the level assigned to the application. This setting indicates that when a user authenticates to CFS using OpenAM, they can access any application that has an LOA set to Some or Little. Users cannot access any application that has an LOA set to High or VeryHigh (see figure below).
 
 ![](media/openam-2.png)
 
@@ -90,7 +90,7 @@ Mappings
 
 You can change the claims rules which are the mappings that define what information CFS should except to receive from the trusted identity provider.
 
-The default mapping indicate the claim that contain the user’s unique identifier. This claim value is used to identify the user that authenticated through OpenAM in the CFS identity store. You can edit the default mapping, or add more claims rules, by clicking on "New Mapping". To remove claims rules, click on "Delete". For details on defining claims mappings with the wizard or manually, please see the [Tenant Admin Guide](../docs/user-roles/tenant-admin.html).
+The default mapping indicate the claim that contain the user’s unique identifier. This claim value is used to identify the user that authenticated through OpenAM in the CFS identity store. You can edit the default mapping, or add more claims rules, by clicking on "New Mapping". To remove claims rules, click on "Delete". For details on defining claims mappings with the wizard or manually, please see the [Tenant Admin Guide](04-user-roles#tenant-administrator).
 
 >[!note] Trusted Identity Provider Authentication Systems are pre-configured with default mappings. You only need to configure claims rules if the default mappings don’t match your requirements.
 
@@ -104,11 +104,11 @@ In OpenAM, configure a Relying Party Trust for CFS. Check the OpenAM documentati
 RSA SecurID
 ===========
 
->[!note] Using RSA SecurID with the RTC is **deprecated**. RadiantOne Trust Connector version 3.7.2 is the last version that provides the RSA component. Please refer to [Login / Password documentation](fba.html#rsa-securid) documentation in order to use RSA SecurID.
+>[!note] Using RSA SecurID with the RTC is **deprecated**. RadiantOne Trust Connector version 3.7.2 is the last version that provides the RSA component. Please refer to [Login / Password documentation](login-password#rsa-securid) documentation in order to use RSA SecurID.
 > 
 > RSA SecurID is an authentication system which provides two-factor authentication for a user to a network resource. RadiantOne CFS provides two ways to authenticate users with RSA SecurID.
 
-CFS integrates with RSA SecurID using a custom RTC and an RSA Authentication Agent. Please refer to the [RadiantOne Trust Connector documentation](../docs/getting-started/rtc.html) to install the RTC. See the RSA documentation to install the RSA Web Agent on the machine where RTC is installed. Follow this documentation to configure it.
+CFS integrates with RSA SecurID using a custom RTC and an RSA Authentication Agent. Please refer to the [RadiantOne Trust Connector documentation](02-getting-started#radiant-trust-connectors-rtc) to install the RTC. See the RSA documentation to install the RSA Web Agent on the machine where RTC is installed. Follow this documentation to configure it.
 
 Configure RSA Web Agent
 -----------------------
@@ -116,7 +116,7 @@ Configure RSA Web Agent
 *   Open the IIS Manager Console, expand the Application Pools, right-click on the **RadiantOne Trust Connector** 's application pool and click the Advanced Settings menu item.
 *   In the General section. choose **Integrated** in the Managed Pipeline Mode field.
 *   In the Process Model section and choose **LocalSystem** in the Identity field.
-*   Click the OK button.
+*   Click OK.
 
 ![](media/rsa-4.png)
 

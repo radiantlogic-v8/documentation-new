@@ -69,7 +69,7 @@ The **Access** node contains the settings for who can access the System Dashboar
 
 ### Redirection
 
-The **Redirection** node contains the settings to bypass the automatic redirection to the RTCs based on the user agent of the web browser. For example, a Linux machine or a smartphone don't have a kerberos token to provide for authentication so we might want to create rules that will prevent some web browser from being redirected to the RTC (if any).
+The **Redirection** node contains the settings to bypass the automatic redirection to the RTCs based on the user agent of the web browser. For example, a Linux machine or a smartphone don't have a kerberos token to provide for authentication so we might want to create rules that prevent some web browser from being redirected to the RTC (if any).
 
 -   Bypass all the following rules - check this option if you want to ignore the rules and let any web browser to access the RTC (if any).
 -   Click "New Rule" to add a new rule.
@@ -79,7 +79,7 @@ The **Redirection** node contains the settings to bypass the automatic redirecti
 
 ## Tenants
 
-In the Tenants section, the **All Tenants** node displays a list of all configured tenants. You can edit the parameters of the tenant by clicking on the _Edit_ button. If you need to update the FID schema used by this tenant, click _Schema_. To configure the self-registration for the tenant, click the _Registration_ button. You can also delete the tenant by clicking the _Delete_ button. Note that deleting a tenant from this interface does not delete the configuration in FID but only disables the tenant. If you want to definitely remove the tenant from FID, you can use the [PowerShell cmdlet](03-configuration#tenants): `Remove-CfsTenant`.
+In the Tenants section, the **All Tenants** node displays a list of all configured tenants. You can edit the parameters of the tenant by clicking the _Edit_ button. If you need to update the FID schema used by this tenant, click _Schema_. To configure the self-registration for the tenant, click **Registration**. You can also delete the tenant by clicking **Delete**. Note that deleting a tenant from this interface does not delete the configuration in FID but only disables the tenant. If you want to definitely remove the tenant from FID, you can use the [PowerShell cmdlet](03-configuration#tenants): `Remove-CfsTenant`.
 
 ### New Tenant
 
@@ -103,7 +103,7 @@ The **Schema** tab allows you to define the following:
 
 ![](media/sysadmin-8.png)
 
-On the following screen, you must enter the email address of the user that plays the role of the Tenant Administrator. This user must exist in the identity store and have a valid email address. This user will be added to the CFS system group _Tenant Administrators_.
+On the following screen, you must enter the email address of the user that plays the role of the Tenant Administrator. This user must exist in the identity store and have a valid email address. This user is added to the CFS system group _Tenant Administrators_.
 
 ![](media/sysadmin-9.png)
 
@@ -134,11 +134,11 @@ To configure the attributes allowed for self-registration (remember the Tenant A
 > To enable support for self-registered users, please see the [Tenant Administrator Guide](#tenant-administrator).
 
 1.  Under the Tenants node, click **All Tenants**.
-2.  Click the Registration button next to the tenant to be configured. The **Registration Attributes** page is displayed. ![](media/sysadmin-10.png)
+2.  Click **Registration** next to the tenant to be configured. The **Registration Attributes** page is displayed. ![](media/sysadmin-10.png)
 3.  To add a registration attribute, click the red **'+'** sign at the top right corner of the Attributes table. The Add a new Attribute window opens. ![](media/sysadmin-11.png)
 4.  Enter the name of the FID attribute. A list of relevant FID attributes populates as you type.
 5.  Select a type from the pull-down menu. Options include _constant_, _input_, and _expression_.
-6.  Enter a value in the field that populates when you selected the type. A constant is a static value applied to all self-registered users. An input will be a value the user must enter during self-registration. An expression indicates how a value is computed for the self-registered user.
+6.  Enter a value in the field that populates when you selected the type. A constant is a static value applied to all self-registered users. An input is a value the user must enter during self-registration. An expression indicates how a value is computed for the self-registered user.
 7.  Click OK. The Registration Attributes page displays your new registration attribute.
 8.  Click Save.
 
@@ -192,7 +192,7 @@ In the **Web Gallery** node of the Themes section, the CFS System Administrator 
 
 ![](media/sysadmin-12.png)
 
-Installed themes are shown on the **Available** node. These themes are available for tenants to use for their portals. The **Update all Themes** button will look on the web gallery if there is any update for the templates installed.
+Installed themes are shown on the **Available** node. These themes are available for tenants to use for their portals. The **Update all Themes** button looks on the web gallery if there is any update for the templates installed.
 
 ![](media/sysadmin-13.png)
 
@@ -202,11 +202,11 @@ The **Upload** node allows you to upload a .zip theme file. Those files are prov
 
 ### Applications
 
-In the Applications section, the **Web Gallery** node contains all possible configuration templates. The **Download all the templates** button will download and install automatically all the templates available on the web gallery.
+In the Applications section, the **Web Gallery** node contains all possible configuration templates. The **Download all the templates** button downloads and installs automatically all the templates available on the web gallery.
 
 ![](media/sysadmin-16.png)
 
-If an application is installed, it appears in the **Available** node and means that tenants are allowed to configure it for use in their portal. If support for an application should be removed, click **Delete** next to the application in the list shown in the **Available** node. The **Update Templates** button will look on the web gallery if there is any update for the templates installed.
+If an application is installed, it appears in the **Available** node and means that tenants are allowed to configure it for use in their portal. If support for an application should be removed, click **Delete** next to the application in the list shown in the **Available** node. The **Update Templates** button looks on the web gallery if there is any update for the templates installed.
 
 ![](media/sysadmin-15.png)
 
@@ -224,7 +224,7 @@ The CFS tenant administrator can configure the groups, users, identity providers
 
 ### Dashboard
 
-In the Dashboard, Global View section, the tenant administrator will see a list of all applications configured for the portal and their status: enabled or disabled.
+In the Dashboard, Global View section, the tenant administrator sees a list of all applications configured for the portal and their status: enabled or disabled.
 
 ![](media/dashboard-1.png)
 
@@ -240,7 +240,7 @@ On the **Authentication** tab, you can define the lifespan of the cookie created
 
 ![](media/settings-general-1.png)
 
-On the **Self-Registration** tab, you can define the policy for allowing new users to register themselves for portal access. If this behavior is desired, click the "Allow" option until a green checkmark is displayed in the User self-registration section. All self-registered users are stored in the identity store below the indicated "Users Target OU". If a tenant administrator wants to change the location of self-registered users, click the "Change Target OU" button. Locations defined in the Organization Units section of the dashboard are shown to select from. The location for the self-registered users must be a location below the global "People DN" defined for the tenant in the CFS System Admin Dashboard. This location/target OU in the identity store must allow insertions, otherwise creation of user accounts fails. The attributes required for self registration are defined for the tenant by the system administrator. Refer to the [System Administration Guide](system-admin.html#self-registration) for more information.
+On the **Self-Registration** tab, you can define the policy for allowing new users to register themselves for portal access. If this behavior is desired, click the "Allow" option until a green checkmark is displayed in the User self-registration section. All self-registered users are stored in the identity store below the indicated "Users Target OU". If a tenant administrator wants to change the location of self-registered users, click **Change Target OU**. Locations defined in the Organization Units section of the dashboard are shown to select from. The location for the self-registered users must be a location below the global "People DN" defined for the tenant in the CFS System Admin Dashboard. This location/target OU in the identity store must allow insertions, otherwise creation of user accounts fails. The attributes required for self registration are defined for the tenant by the system administrator. Refer to the [System Administration Guide](04-user-roles#self-registration) for more information.
 
 ![](media/settings-general-2.png)
 
@@ -268,7 +268,7 @@ CFS supports [Twilio](https://www.twillio.com) as a messaging service for delive
 
 ### Challenge Questions
 
-On the "Challenge Questions" node, you can define which questions a user must answer correctly in order to reset their password. Some default questions are listed and if you want to create more, click the "New Challenge Question" button. The number of questions a user must answer correctly is defined on the [General Settings](#general-settings) node. After this is defined, the user must log in to their portal account and go to the Security section. Locate the Challenge Questions and click Edit. Click the New Question button to provide answers to the desired challenge questions. This enables the user to be able to reset their forgotten password from the portal login screen. It is important to note that even if a user is required to answer a certain number of questions, they are only be prompted to answer one question properly in order to reset their password from the portal login screen. CFS decides which is the one question (from the total number of challenge questions configured) that the user must answer successfully. If a user has not defined answers for the required number of challenge questions, when they choose the "Forgot your Password?" link from the portal login screen, they are automatically emailed a new password value as opposed to being able to reset the password value themselves.
+On the "Challenge Questions" node, you can define which questions a user must answer correctly in order to reset their password. Some default questions are listed and if you want to create more, click the "New Challenge Question" button. The number of questions a user must answer correctly is defined on the [General Settings](#general-settings) node. After this is defined, the user must log in to their portal account and go to the Security section. Locate the Challenge Questions and click Edit. Click **New Question** to provide answers to the desired challenge questions. This enables the user to be able to reset their forgotten password from the portal login screen. It is important to note that even if a user is required to answer a certain number of questions, they are only be prompted to answer one question properly in order to reset their password from the portal login screen. CFS decides which is the one question (from the total number of challenge questions configured) that the user must answer successfully. If a user has not defined answers for the required number of challenge questions, when they choose the "Forgot your Password?" link from the portal login screen, they are automatically emailed a new password value as opposed to being able to reset the password value themselves.
 
 ![](media/settings-challenge-questions.png)
 
@@ -293,7 +293,7 @@ Profile attributes are shown for portal users when they access their "My Profile
 
 From here you can change the attribute display name shown in the portal ("Name" column) and the corresponding attribute in the identity store ("Attribute" column). You can indicate if the attribute is public (allows users other than the owner to view it when using the search feature), read only (does not allow this attribute to be edited by the user), and define a data type (to assign a syntax for the displayed value). Data types available are string, photo, email and phone.
 
-To add a new profile attribute, click the "Add Attribute" button. Enter the attribute name as it exists in the identity store schema and the display name you want shown in the portal. Indicate if the attribute is public and/or read only and click OK. Select a Data Type from the drop-down list (there is not one set by default).
+To add a new profile attribute, click **Add Attribute**. Enter the attribute name as it exists in the identity store schema and the display name you want shown in the portal. Indicate if the attribute is public and/or read only and click OK. Select a Data Type from the drop-down list (there is not one set by default).
 
 ![](media/settings-new-attribute.png)
 
@@ -347,7 +347,7 @@ Possible actions on an account: ![](media/organization-users-actions.png)
 -   **Lock / Unlock account** - Lock or unlock the user's account and send an email.
 -   **Set YubiKey** - Set the user's YubiKey.
 
-To create a new user, click "New User". Then, select the desired location/organization unit and provide the required attributes (e.g. email address, first name and last name...). These attributes are defined in the [System Administration Guide](system-admin.html#self-registration). Then click the "Save" button to create the new account. An email is sent to the user with the password.
+To create a new user, click "New User". Then, select the desired location/organization unit and provide the required attributes (e.g. email address, first name and last name...). These attributes are defined in the [System Administration Guide](04-user-roles#self-registration). Then click the "Save" button to create the new account. An email is sent to the user with the password.
 
 ### Groups
 
@@ -373,13 +373,13 @@ The portal user accounts are stored in the identity store. The organization unit
 
 ### Authentication
 
-A tenant administrator configures the authentication methods they want to support for their portal in the Authentication section. There are five types of authentication systems available and one or more can be activated. For more details on how to configure each identity provider, please refer the [Identity Providers section](../configuration/identity-providers.html).
+A tenant administrator configures the authentication methods they want to support for their portal in the Authentication section. There are five types of authentication systems available and one or more can be activated. For more details on how to configure each identity provider, please refer the [Identity Providers section](03-configuration#identity-providers).
 
 ### Applications
 
 ### Configured
 
-For more details on each application, please refer to the [Applications guide](../configuration/applications.html). You can use the "Gallery" to choose what application you want to configure using a template. If your system administrator has provided you with an application packages (.zip file), you can click the button "Upload the custom package from Radiant Logic" and select the file you have.
+For more details on each application, please refer to the [Applications guide](03-configuration#applications). You can use the "Gallery" to choose what application you want to configure using a template. If your system administrator has provided you with an application packages (.zip file), you can click **Upload the custom package from Radiant Logic** and select the file you have.
 
 ![](media/apps-upload.png)
 
@@ -428,7 +428,7 @@ Click "Configure" next to a template to create an application using this templat
 
 For an introduction to Circle of Trust, see the [Concepts](02-getting-started#concepts) section of this guide.
 
-Based on the location of the user, CFS will add a new claim to the user session that can be used to restrict access to sensitive applications.
+Based on the location of the user, CFS adds a new claim to the user session that can be used to restrict access to sensitive applications.
 
 >[!note] The location of the user is determined by the IP address and / or the DNS resolution. If your CFS servers are protected by a proxy, you are probably using the [X-Forwarded-For](https://en.wikipedia.org/wiki/X-Forwarded-For) HTTP header field to provide to the server the real address of the user. CFS is now capable of detecting this field to find the Circle Of Trust rule.
 
@@ -436,13 +436,13 @@ Based on the location of the user, CFS will add a new claim to the user session 
 
 The "Attribute Name" is the name of the claim that is stored in the session. You can use this name as an "attribute" when creating a filter for an application.
 
-To create a new CoT rule, click the "Add a new rule" button.
+To create a new CoT rule, click **Add a new rule**.
 
 -   Enter a name for this rule.
 -   Enter a set of IP addresses, IP Ranges or DNS.
 -   Enter the value that is used to create the new claim in the user session.
--   Press OK to create the rule.
--   Press Save to save your configuration.
+-   Click OK to create the rule.
+-   Click Save to save your configuration.
 
 ![](media/apps-cot-new.png)
 
@@ -466,9 +466,9 @@ To specify the attribute you want to send to the application when they are reque
 
 A helpdesk user is defined as someone who may perform one or more of the following activities:
 
-*   Manage the [users](tenant-admin.html#users) of the tenant.
-*   Manage the [groups](tenant-admin.html#groups) of the tenant.
-*   Manage the [organization](tenant-admin.html#organization-units) units of the tenant.
+*   Manage the [users](04-user-roles#users) of the tenant.
+*   Manage the [groups](04-user-roles#groups) of the tenant.
+*   Manage the [organization](04-user-roles#organization-units) units of the tenant.
 
 # Portal User
 
@@ -517,7 +517,7 @@ Then, simply click the button **Accept** or **Deny**.
 
 ![](media/portal-user-7.png)
 
-A confirmation email will be sent to the user requesting the access to confirm your decision.
+A confirmation email is sent to the user requesting the access to confirm your decision.
 
 >[!note] The SMTP must be configured for CFS to be able to send emails.
 
@@ -705,7 +705,7 @@ To add/modify your profile picture, click **Choose** button next to **Change Pho
 
 ![](media/portal-user-30.png)
 
-Browse to the photo to upload and click Open. Then, click **Save** button. The next page will show your profile with the new information.
+Browse to the photo to upload and click Open. Then, click **Save**. The next page shows your profile with the new information.
 
 ![](media/portal-user-31.png)
 
@@ -715,6 +715,6 @@ From any page of the portal, there is a search box in the upper right corner. Yo
 
 ![](media/portal-user-32.png)
 
-The search result will return the attributes configured by the tenant administrator. In this example, the user’s email, telephone number and photo are returned.
+The search result returns the attributes configured by the tenant administrator. In this example, the user’s email, telephone number and photo are returned.
 
 ![](media/portal-user-33.png)

@@ -66,8 +66,8 @@ Name | Description | Link
 ![](media/openam.png) <br> [OpenAM](openam) | OpenAM is an open source access management, entitlements and federation server platform. | [NetSuite](https://www.forgerock.com/openam.html)
 ![](media/salesforce.png) <br> [Salesforce](salesforce) | Salesforce's main web-based CRM software is available for management of sales projections and orders, marketing plans, knowledge management, service and support, partner relationships, analytics and customer application development. Each is designed for the unique needs of different industries. | [Salesforce](https://www.salesforce.com)
 ![](media/salesforce.png) <br> [Salesforce with Provisioning](salesforce-prov) | Salesforce's main web-based CRM software is available for management of sales projections and orders, marketing plans, knowledge management, service and support, partner relationships, analytics and customer application development. Each is designed for the unique needs of different industries. | [Salesforce](https://www.salesforce.com)
-![](media/saml2generic.png)<br> [SAML 2 Generic](../../applications/saml2-generic.html) | SAML 2 Generic application. | [Radiant Logic](https://www.radiantlogic.com)
-![](media/servicenow.png) <br> [ServiceNow](../../applications/servicenow.html) | ServiceNow is a platform-as-a-service provider of enterprise service management software. | [ServiceNow](https://www.servicenow.com)
+![](media/saml2generic.png)<br> [SAML 2 Generic](saml2-generic) | SAML 2 Generic application. | [Radiant Logic](https://www.radiantlogic.com)
+![](media/servicenow.png) <br> [ServiceNow](servicenow.md) | ServiceNow is a platform-as-a-service provider of enterprise service management software. | [ServiceNow](https://www.servicenow.com)
 ![](media/sharefile.png)<br> [ShareFile](sharefile) | Citrix ShareFile is an enterprise follow-me data solution that enables IT to deliver a robust data sharing and sync service that meets the mobility and collaboration needs of users and the data security requirements of the enterprise. By making follow-me data a seamless and intuitive part of every user's day, ShareFile enables optimal productivity for today's highly mobile, anywhere, any-device workforce. | [Citrix](https://www.sharefile.com)
 ![](media/microsoftsharepoint2010.png) <br> [Microsoft SharePoint 2010](sharepoint2010) | Microsoft SharePoint 2010 makes it easier for people to work together. Using SharePoint 2010, your people can set up Web sites to share information with others, manage documents from start to finish, and publish reports to help everyone make better decisions. | [Microsoft](https://sharepoint.microsoft.com)
 ![](media/microsoftsharepoint2013.png) <br> [Microsoft SharePoint 2013](sharepoint2013) | Microsoft SharePoint 2013 makes it easier for people to work together. Using SharePoint 2013, your people can set up Web sites to share information with others, manage documents from start to finish, and publish reports to help everyone make better decisions. | [Microsoft](https://sharepoint.microsoft.com)
@@ -285,7 +285,7 @@ There are two parts to the configuration in CFS. One is the configuration of the
 
 ### Application
 
-In the Tenant Administration Dashboard, navigate to the Applications section and select OpenID Connect. Click the New OpenID Connect Application button.
+In the Tenant Administration Dashboard, navigate to the Applications section and select OpenID Connect. Click **New OpenID Connect Application**.
 
 1.  Enter a unique name for the OpenID Connect application.
 2.  Enter a description.
@@ -298,7 +298,7 @@ In the Tenant Administration Dashboard, navigate to the Applications section and
 
 ### Mappings (Scopes)
 
-OpenID Connect "scopes" can be thought of as predefined sets of claims/assertions. To define the attributes associated with the scopes, from the Tenant Administration Dashboard, navigate to Applications and select OpenID Connect. Click the Mappings button.
+OpenID Connect "scopes" can be thought of as predefined sets of claims/assertions. To define the attributes associated with the scopes, from the Tenant Administration Dashboard, navigate to Applications and select OpenID Connect. Click **Mappings**.
 
 >[!note] All OpenID Connect Applications share the same mappings but may request different scopes. For example, some applications my request the profile scope whereas other may only request the email scope.
 
@@ -347,7 +347,7 @@ The "groups" scope is the equivalent to requesting a special groups assertion, w
 CFS supports configuring custom claims. These custom claims are returned as part of the **profile** scope. If a custom claim is **disabled**, it is **not** returned in either the `id_token` or from the `/userinfo` endpoint. Custom claims, like all other scopes, can only be managed by tenant administrators. To add a custom claim:
 
 1.  From the _Administration_ tab navigate to _Applications > OpenID Connect_
-2.  In the top right, click on _\+ Add Custom Profile Scope Claim_
+2.  In the top right, click _\+ Add Custom Profile Scope Claim_
     
     ![](media/openidconnect-5.png)
     

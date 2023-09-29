@@ -337,7 +337,7 @@ Lastly, select the Schema tab. This defines what the users, groups, and some att
 
 ![](media/first-tenant13.png)
 
-The first time you configure a Tenant and click the Save button, you are asked for the email address of the Tenant Administrator. Enter Aaron Medler's email address and click the "Check!" button to make sure that you have entered it correctly. Then click Save.
+The first time you configure a Tenant and click Save, you are asked for the email address of the Tenant Administrator. Enter Aaron Medler's email address and click "Check!" to make sure that you have entered it correctly. Then click Save.
 
 ![](media/first-tenant14.png)
 
@@ -560,7 +560,7 @@ The identity providers (AKA: Authentication Systems) configured in CFS need only
 
 # Radiant Trust Connectors (RTC)
 
-When you install a RTC, because it is installed on IIS Web Server, and because we use https to communicate with the RTC, the installer generates a self-signed certificate and installs it in IIS. This certificate should be replaced with a “legit” CA-issued certificate. This certificate contains the private key. When you request a certificate from a CA, it is important to note that the subject of the certificate should be the FQDN of the machine where the it is used (e.g. s-se14-ad.seradiant.com). To check the certificate used by IIS where the RTC is installed, go into IIS Manager, select the root of IIS and on the right, double-click on "Server Certificates" (screen shots below based on Windows Server 2012 OS).
+When you install a RTC, because it is installed on IIS Web Server, and because we use https to communicate with the RTC, the installer generates a self-signed certificate and installs it in IIS. This certificate should be replaced with a “legit” CA-issued certificate. This certificate contains the private key. When you request a certificate from a CA, it is important to note that the subject of the certificate should be the FQDN of the machine where the it is used (e.g. s-se14-ad.seradiant.com). To check the certificate used by IIS where the RTC is installed, go into IIS Manager, select the root of IIS and on the right, double-click "Server Certificates" (screen shots below based on Windows Server 2012 OS).
 
 ![](media/getting-started-certificates-4.png)
 

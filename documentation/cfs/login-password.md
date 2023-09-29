@@ -33,7 +33,7 @@ You can configure RSA SecurID to be embedded into the Login / Password form.
 *   Enter the authenticaton agent name that is used with the authentication API. Please refer ot the [RSA documentation](https://community.rsa.com/docs/DOC-76818) linked above for how to configure the agent.
 *   Enter the FID attribute that correponds to your users' User ID in RSA.
 *   Enter a text to help your users provide the correct information in the form.
-*   Every authentication method is associated with a [Level of Assurance (LOA)](02-getting-started/#level-of-assurance). This level can be used to enforce access permissions for applications. To indicate the LOA a person is associated with when they login with a login / password, select the appropriate value from the "Level of Assurance" drop-down list.
+*   Every authentication method is associated with a [Level of Assurance (LOA)](02-getting-started#level-of-assurance). This level can be used to enforce access permissions for applications. To indicate the LOA a person is associated with when they login with a login / password, select the appropriate value from the "Level of Assurance" drop-down list.
 
 ![](media/fba-3.png)
 
@@ -75,7 +75,7 @@ RadiantOne CFS supports the external Two-Step Authentication (One Time Password)
     *   [https://api4.yubico.com/wsapi/2.0/verify](https://api4.yubico.com/wsapi/2.0/verify)
     *   [https://api5.yubico.com/wsapi/2.0/verify](https://api5.yubico.com/wsapi/2.0/verify)
     *   **Note:** If you specify more than one server. All the servers are contacted and the reponse from the first server to answer is considered.
-*   If you need to use a Web Proxy to contact the Yubico server, click on the checkbox **Does CFS needs to use the Web Proxy to call this URL?**
+*   If you need to use a Web Proxy to contact the Yubico server, click the checkbox **Does CFS needs to use the Web Proxy to call this URL?**
 *   The **Text description** is the text that appears on the login page to indicate your end users how to provide the one time password.
 *   Get the **Yubico Api Key** and **Yubico Api Secret** on your own Yubico server or on [YubiCloud](https://upgrade.yubico.com/getapikey)
 *   Select the **Level of Assurance** associated with that Identity Provider.
@@ -91,7 +91,7 @@ Once you enable the YubiKeys for the users, they are prompted on the login page 
 Passthrough
 -----------
 
-You can indicate which claims are stored, for later use (these can be passed through and sent to applications/relying parties if needed). These claims can be defined as a constant value or something returned from the specific authentication method. Click on the New Passthrough button and then click Edit to define the claim with either the wizard or manually. When using the wizard, the "Input" function/option will indicate the possible claims (if any) that can come from the authentication method. To delete configured passthrough claims, click the delete button.
+You can indicate which claims are stored, for later use (these can be passed through and sent to applications/relying parties if needed). These claims can be defined as a constant value or something returned from the specific authentication method. Click the New Passthrough button and then click Edit to define the claim with either the wizard or manually. When using the wizard, the "Input" function/option will indicate the possible claims (if any) that can come from the authentication method. To delete configured passthrough claims, click the delete button.
 
 ![](media/fba-7.png)
 
@@ -186,7 +186,7 @@ In this case, the entry present in FID has `description` with the value `1234567
 Passthrough
 -----------
 
-You can indicate which claims are stored, for later use (these can be passed through and sent to applications/relying parties if needed). These claims can be defined as a constant value or something returned from the specific authentication method. Click on the New Passthrough button and then click Edit to define the claim with either the wizard or manually. When using the wizard, the "Input" function/option will indicate the possible claims (if any) that can come from the authentication method. To delete configured passthrough claims, click the delete button.
+You can indicate which claims are stored, for later use (these can be passed through and sent to applications/relying parties if needed). These claims can be defined as a constant value or something returned from the specific authentication method. Click **New Passthrough** and then click Edit to define the claim with either the wizard or manually. When using the wizard, the "Input" function/option will indicate the possible claims (if any) that can come from the authentication method. To delete configured passthrough claims, click **Delete**.
 
 ![](media/certificate-3.png)
 
@@ -197,8 +197,9 @@ Click "Save" to save your configuration. Here is the result on the login page.
 RadiantOne Trust Connector
 ==========================
 
-> RadiantOne Trust Connector (RTC) is an authentication system which provides Windows integrated authentication (Active Directory).  
-> First, you must [install the RTC](02-getting-started#radiant-trust-connectors-rtc).
+RadiantOne Trust Connector (RTC) is an authentication system which provides Windows integrated authentication (Active Directory).  
+
+First, you must [install the RTC](02-getting-started#radiant-trust-connectors-rtc).
 
 Configure a RadiantOne Trust Connector
 --------------------------------------
@@ -235,13 +236,13 @@ First, in the **Configuration** tab, enter the list of Active Directory domains 
 
 ![](media/rtc-22.png)
 
-In the **Mappings** tab, make sure the Attribute corresponds to the attribute available in FID. The incoming claim will have a value that looks like `DOMAIN\samAccountName` and the default transformation will extract the `samAccountName`.
+In the **Mappings** tab, make sure the Attribute corresponds to the attribute available in FID. The incoming claim has a value that looks like `DOMAIN\samAccountName` and the default transformation will extract the `samAccountName`.
 
 ![](media/rtc-23.png)
 
-Make sure you have enabled the configuration and press the "Save" button.
+Make sure you have enabled the configuration and click "Save".
 
->[!note] The RadiantOne Trust Connectors are only working from a CFS Master. The CFS Proxy will not try to redirect the users to an RTC.
+>[!note] The RadiantOne Trust Connectors are only working from a CFS Master. The CFS Proxy does not try to redirect the users to an RTC.
 
 Update with Metadata
 --------------------
