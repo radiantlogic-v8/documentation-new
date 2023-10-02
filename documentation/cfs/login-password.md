@@ -135,7 +135,7 @@ Configuration
          Value name: ClientAuthTrustMode,
          Value type: REG_DWORD, Value data: 2 (HEX)
     
-    ![](.media/certificate-7.png)
+    ![].media/certificate-7.png)
     
 5.  Restart IIS once step 4 is completed
     
@@ -208,7 +208,7 @@ Make sure you have installed the RTC in each Active Directory Domains you want t
 
 ![](media/rtc-15.png)
 
-If you want to create the RTC manually then click the button "New Active Directory Connector". Otherwise, click the button "Have a metadata file?" on top of the screen. If the CFS machine can contact the RTC machine over https (port 443), you can click the button "URL". Use the "Content" option if the RTC machine is not accessible from the CFS machine.
+If you want to create the RTC manually then click **New Active Directory Connector**. Otherwise, click **Have a metadata file?** on top of the screen. If the CFS machine can contact the RTC machine over https (port 443), you can click **URL**. Use the "Content" option if the RTC machine is not accessible from the CFS machine.
 
 ![](media/rtc-16.png)
 
@@ -247,7 +247,7 @@ Make sure you have enabled the configuration and click "Save".
 Update with Metadata
 --------------------
 
-If you have configured the RTC with a Metadata URL, you can update the parameters automatically to load a new certificate. If you have not, simply update your RTC with the address of the Metadata file and save the configuration.
+If you have configured the RTC with a Metadata URL, you can update the parameters automatically to load a new certificate. If you have not, update your RTC with the address of the Metadata file and save the configuration.
 
 On the Authentication | Active Directory page, select the RTC you want to update with the metadata, click the "Actions" button and select **Update from Metadata**. This action will download the new metadata file and extract the endpoint and certificate.
 

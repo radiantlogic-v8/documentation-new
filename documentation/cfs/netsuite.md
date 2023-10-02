@@ -102,9 +102,9 @@ Configure NetSuite
 
 ![](media/netsuite-2-feature.png)
 
-*   In the CFS configuration for the application, click the link **Metadata File** and save the content of the page in a text file on your computer.
+*   In the CFS configuration for the application, click **Metadata File** and save the content of the page in a text file on your computer.
 *   Back to NetSuite, navigate to Setup | Integration | SAML Single Sign-On.
 *   In the Set Up Identity Provider, upload the metadata file you've just saved and click the Submit button.
-*   Now, users with the Role “SAML Single Sign-on” will be able to use CFS to log in to NetSuite.
+*   Now, users with the Role “SAML Single Sign-on” can use CFS to log in to NetSuite.
 
 ![](media/netsuite-3-metadata.png)

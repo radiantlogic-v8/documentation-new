@@ -119,7 +119,7 @@ The following are some examples of URLs and their double-encoded URL equivalent:
 
 URL -- > Double-Encoded URL [https://company.sharepoint.com](https://company.sharepoint.com) -- > https%253A%252F%252Fcompany%252Esharepoint%252Ecom [https://company.sharepoint.com/search](https://company.sharepoint.com/search) -- > https%253A%252F%252Fcompany%252Esharepoint%252Ecom%252Fsearch [https://company-10.sharepoint.com/sites/finance](https://company-10.sharepoint.com/sites/finance) -- > https%253A%252F%252Fcompany-10%252Esharepoint%252Ecom%252Fsites%252Ffinance
 
--   To complete the Smart Link, simply append the double encoded string to the base URL that was previously created. The end result is a Smart Link that looks something like:
+-   To complete the Smart Link, append the double encoded string to the base URL that was previously created. The end result is a Smart Link that looks something like:
 
 `[https://federation.domain.com/adfs/ls/?wa=wsignin1.0&wtrealm=urn:federation:Microsoft](https://federation.domain.com/adfs/ls/?wa=wsignin1.0&wtrealm=urn:federation:Microsoft) Online&wctx=MEST%3D0%26LoginOptions%3D1%26wa%3Dwsignin1%252E0%26rpsnv%3D2% 26ct%3D1348618157%26rver%3D6%252E1%252E6206%252E0%26wp%3DMBI%26wreply%3D https%253A%252F%252Fcompany%252Esharepoint%252Ecom`
 
@@ -190,7 +190,7 @@ The following OIDC flows are supported:
     -   token
     -   id\_token
 
->[!warning] the implicit flow is less secure since access token and/or ID tokens are returned directly from CFS to the browser. As a result, the code flow is encouraged and the most secure.
+>[!warning] The implicit flow is less secure since access token and/or ID tokens are returned directly from CFS to the browser. As a result, the code flow is encouraged and the most secure.
 
 ## Tokens
 
@@ -443,9 +443,9 @@ If the ID token is invalid, CFS displays the following page.
 
 ![](media/openidconnect-9.png)
 
-The the `id_token_hint` parameter is not passed, CFS displays the following page.
+If the `id_token_hint` parameter is not passed, CFS displays the following page.
 
-![](media/openidconnect-10.png)
+![](media/openidconnect-9.png)
 
 An example end session request is as follows.
 

@@ -82,12 +82,12 @@ Configure Amazon AWS
 --------------------
 
 -   Log into your Amazon AWS console at [https://console.aws.amazon.com/iam/home#providers](https://console.aws.amazon.com/iam/home#providers)
--   In the Identity Providers section, click the button **Create Provider**.
+-   In the Identity Providers section, click **Create Provider**.
 -   Choose the Provider Type **SAML**.
 
 ![](media/1-provider-type.png)
 
--   In the CFS configuration for the application, click the link **Metadata File** and save the content of the page in a text file on your computer.
+-   In the CFS configuration for the application, click **Metadata File** and save the content of the page in a text file on your computer.
 -   Click **Choose File** and upload the metadata file you've just saved.
 
 ![](media/2-import-metadata.png)
@@ -95,7 +95,7 @@ Configure Amazon AWS
 -   Click Next Step.
 -   Click Create.
 -   Click the identity provider you just created to get the ARN value. Copy the Provider ARN value (you will later combine this value with the role ARN and use it in the AWS application configuration in the CFS Tenant Admin Dashboard).
--   In the Roles section, click the button **Create New Role**.
+-   In the Roles section, click **Create New Role**.
 -   Enter a role name (e.g. User).
 
 ![](media/3-rolename.png)

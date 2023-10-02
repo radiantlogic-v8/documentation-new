@@ -92,7 +92,7 @@ The **Certificate** tab is used to define the certificate used by CFS to build t
     
     ![](media/2-choose-identity-source.png)
     
--   In the CFS configuration settings for the application, under the _General_ tab, click the link **Metadata File**, and save the content in a text file on your computer.
+-   In the CFS configuration settings for the application, under the _General_ tab, click **Metadata File**, and save the content in a text file on your computer.
     
 -   Back on the AWS SSO console, under the _Service provider metadata_ section, click the **Show individual metadata values**, and copy the appropriate values into the _parameters_ section of the CFS application configuration page. Note that the AWS SSO Sign-in URL is not needed in the parameters section.
     

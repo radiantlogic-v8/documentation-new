@@ -121,7 +121,7 @@ Navigate back to the System web site for CFS and, in the Tenants section, click 
 
 ![](media/password-policy-2.png)
 
-In the dropdown list Password Policy, select the new policy you have just created in your FID. The following field **Password Policy Description** is a text used displayed to indicate password strength requirements. e.g. Length, number of digits, special characters.
+In the drop-down list Password Policy, select the new policy you have just created in your FID. The following field **Password Policy Description** is a text used displayed to indicate password strength requirements. e.g. Length, number of digits, special characters.
 
 ![](media/password-policy-3.png)
 
@@ -156,7 +156,7 @@ The expressions for the computation of attribute values can use the following fu
 
 #### Computation script
 
-Computation scripts are written in C# and must contain the function `public string Compute(IDictionary<string, string> inputs)` The variable `inputs` is a dictionary that contains the list of inputs provided by the end user.
+Computation scripts are written in C# and must contain the function `public string Compute(IDictionary<string, string> inputs)`. The variable `inputs` is a dictionary that contains the list of inputs provided by the end user.
 
     public string Compute(IDictionary<string, string> inputs)
     {
@@ -297,7 +297,7 @@ To add a new profile attribute, click **Add Attribute**. Enter the attribute nam
 
 ![](media/settings-new-attribute.png)
 
-If you have this attribute `skills` in your FID like on this picture.
+If you have this attribute `skills` in RadiantOne like on this picture.
 
 ![](media/settings-new-attribute-fid.png)
 
@@ -315,7 +315,7 @@ The Customize section allows you to personalize the look and feel of the portal 
 -   Disclaimer - _Optional_ You may want to add a disclaimer at the bottom of the page to inform the guests about your company policies...
 -   CSS - The CSS tab allows you to completely customize the look of the login page to fit your company colors.
 
-The Presentation section allows you to organize the position of the different identity providers you might want to use on your login page. Simply drag and drop the different section on the page and click **Save**.
+The Presentation section allows you to organize the position of the different identity providers you might want to use on your login page. Drag and drop the different section on the page and click **Save**.
 
 ### Web Portal
 
@@ -347,7 +347,7 @@ Possible actions on an account: ![](media/organization-users-actions.png)
 -   **Lock / Unlock account** - Lock or unlock the user's account and send an email.
 -   **Set YubiKey** - Set the user's YubiKey.
 
-To create a new user, click "New User". Then, select the desired location/organization unit and provide the required attributes (e.g. email address, first name and last name...). These attributes are defined in the [System Administration Guide](04-user-roles#self-registration). Then click the "Save" button to create the new account. An email is sent to the user with the password.
+To create a new user, click "New User". Then, select the desired location/organization unit and provide the required attributes (e.g. email address, first name and last name...). These attributes are defined in the [System Administration Guide](04-user-roles#self-registration). Then click **Save** to create the new account. An email is sent to the user with the password.
 
 ### Groups
 
@@ -355,19 +355,19 @@ Groups are leveraged for access permissions. They define the administration perm
 
 >[!note] The CFS Sytem groups cannot be deleted but members can be added or removed.
 
-To add members to a group, click the "+" button next to the group you want to manage. Click the "Add Member" button. Enter the name of a user to search for in the top right and click the "Search" button. Check the desired members and click the "Add to the group" button.
+To add members to a group, click the "+" button next to the group you want to manage. Click **Add Member**. Enter the name of a user to search for in the top right and click **Search**. Check the desired members and click **Add to the group**.
 
 ![](media/organization-groups-add-member.png)
 
 To remove a member from a group, click the red "trash" button next to the member you want to remove.
 
-To create a new group, click "New Group". Provide the group name and description (optional). You can also provide the full DN of the owner of the group. Click "Save" to create the group.
+To create a new group, click "New Group". Provide the group name and description (optional). You can also provide the full DN of the owner of the group. Click **Save** to create the group.
 
 ![](media/organization-groups-new-group.png)
 
 ### Organization Units
 
-The portal user accounts are stored in the identity store. The organization units are the locations/containers where the actual accounts are stored. You can add new organization units from the Organization Units section. Select the parent of the new OU and enter a value for the "Name" property and click "Save".
+The portal user accounts are stored in the identity store. The organization units are the locations/containers where the actual accounts are stored. You can add new organization units from the Organization Units section. Select the parent of the new OU and enter a value for the "Name" property and click **Save**.
 
 ![](media/organization-ou.png)
 
@@ -393,25 +393,25 @@ For example, the default tab in the portal is titled: Applications. This is wher
 
 #### Access Rules
 
-By default, an application has no restriction on the group the user is member of. You can specify the list of group of users who have access to your application by unchecking the option "Allow All Users" and click the red "+" button and selecting a group. These groups allow member having access to the application (unless further security layer like LOA or COT or Filter blocks the access).
+By default, an application has no restriction on the group the user is member of. You can specify the list of group of users who have access to your application by unchecking the option **Allow All Users**, clicking the red "+" button, and selecting a group. These groups allow member having access to the application (unless further security layer like LOA or COT or Filter blocks the access).
 
-Also, when creating a new application, CFS automatically creates a group associated and all Access Requests go in this group. Click the "Application Group" link to manage this group.
+Also, when creating a new application, CFS automatically creates a group associated and all Access Requests go in this group. Click the **Application Group** link to manage this group.
 
 ![](media/apps-access-rules.png)
 
 #### Filter
 
-A user can be authorized to access an application based on certain attributes in their profile which are stored in the identity store, come from the pass-through rules in each identity provider or the Circle of Trust rules. This criteria is defined on the Filter tab. Define a filter that dictates which criteria are required for a user to be qualified to access this application. Any user whose profile attributes do not match the indicated criteria is not authorized to access the application. In the example shown below, only users that have an "l" attribute with a value of "novato" and the attribte "Building" (CoT rules) with the value "buildinga" will be authorized by CFS to access this application.
+A user can be authorized to access an application based on certain attributes in their profile which are stored in the identity store, come from the pass-through rules in each identity provider or the Circle of Trust rules. This criteria is defined on the Filter tab. Define a filter that dictates which criteria are required for a user to be qualified to access this application. Any user whose profile attributes do not match the indicated criteria is not authorized to access the application. In the example shown below, only users that have an "l" attribute with a value of "novato" and the attribte "Building" (CoT rules) with the value "buildinga" are authorized by CFS to access this application.
 
 ![](media/apps-filter.png)
 
 #### Certificate
 
-CFS generates a certificate for each new tenant. This certificate is used by default for each application of the tenant. It means, all the applications of the same tenant use the same certificate (unless changed using the following guide). To change the certificate used by application, open the tab "Certificate" in the application configuration and check the option "Use a dedicated certificate".
+CFS generates a certificate for each new tenant. This certificate is used by default for each application of the tenant. It means, all the applications of the same tenant use the same certificate (unless changed using the following guide). To change the certificate used by application, open the "Certificate" tab in the application configuration and check the option "Use a dedicated certificate".
 
 ![](media/apps-certificate.png)
 
-You now have two options offered to you.
+You now have two options.
 
 -   Upload a certificate private and public key - If you upload a "full" certificate, you must provide the password that is used to sign the tokens. This option stores the certificate (private and public keys) in the FID.
 -   Upload a certificate public key - This option stores only the public key of the certificate in the FID. This is the most secure option because, in order to sign the tokens, each CFS machine looks into the Windows Certificate Vault of the computer in order to get the certificate private key.
@@ -422,7 +422,7 @@ The "Gallery" section contains all the application templates made available by t
 
 ![](media/apps-gallery.png)
 
-Click "Configure" next to a template to create an application using this template.
+Click **Configure** next to a template to create an application using this template.
 
 ### Circle of Trust
 
@@ -450,15 +450,15 @@ To create a new CoT rule, click **Add a new rule**.
 
 To learn about OpenID Connect, please visit [https://openid.net/connect/](https://openid.net/connect/). CFS can be an identity provider using the protocols OAuth 2 and OpenID Connect.
 
-To create a new OpenID Connect application, click the button "New OpenID Connect Application". Then provide all the information regarding your application.
+To create a new OpenID Connect application, click **New OpenID Connect Application**. Then provide all the information regarding your application.
 
-![](.media/apps-openid-new.png)
+![](media/apps-openid-new.png)
 
 At the bottom of the page, get the application key and application secret and use them inside your application to authenticate against CFS.
 
 ![](media/apps-openid.png)
 
-To specify the attribute you want to send to the application when they are requesting user's OAuth tokens, click the button "Mappings" and, for each scope, enter the name of the FID attribute you want to use for the specific attribute.
+To specify the attribute you want to send to the application when they are requesting user's OAuth tokens, click **Mappings** and, for each scope, enter the name of the FID attribute you want to use for the specific attribute.
 
 ![](media/apps-openid-mappings.png)
 
@@ -476,7 +476,7 @@ A helpdesk user is defined as someone who may perform one or more of the followi
 
 A user that does not have an account in the identity store can self-register at the portal login screen (if this function is enabled by the tenant administrator).
 
-On the login page, click the link "Register today".
+On the login page, click **Register today**.
 
 ![](media/portal-user-1.png)
 
@@ -493,7 +493,7 @@ Enter the required information on the form. If required, select your challenge q
 To access the **applications portal**, the user must be logged in. Only applications the user is authorized by CFS to access are displayed. Click the icon corresponding to the application you want to access. The user is automatically logged into the application.
 
 -   If you think you should have access to an application that is not shown, contact your tenant administrator.
--   The application under the title _Application not available at your current level of assurance_ are not available until you log in with a more secure authentication system.
+-   The applications under the title _Application not available at your current level of assurance_ are not available until you log in with a more secure authentication system.
 
 ![](media/portal-user-3.png)
 
@@ -503,7 +503,7 @@ During RP-initiated SSO (when a user navigates directly to an application as opp
 
 ![](media/portal-user-4.png)
 
-Simply click **Yes** and an email is sent to the application owner to request access to this application. When the owner grants you the access you receive a confirmation email, and then you can access this application (as long as you comply the other security levels).
+Click **Yes** and an email is sent to the application owner to request access to this application. When the owner grants you the access you receive a confirmation email, and then you can access this application (as long as you comply the other security levels).
 
 ![](media/portal-user-5.png)
 
@@ -513,7 +513,7 @@ As the owner of an application, when a user request access to it, you receive an
 
 ![](media/portal-user-6.png)
 
-Then, simply click the button **Accept** or **Deny**.
+Then, click **Accept** or **Deny**.
 
 ![](media/portal-user-7.png)
 
@@ -521,13 +521,13 @@ A confirmation email is sent to the user requesting the access to confirm your d
 
 >[!note] The SMTP must be configured for CFS to be able to send emails.
 
-##User Settings
+## User Settings
 
 ### Password Reset
 
 #### Changing Your Password
 
-Log in on your CFS account and navigate to the **Settings** page and select **Password - Change your password**.
+Log into your CFS account and navigate to the **Settings** page and select **Password - Change your password**.
 
 ![](media/portal-user-8.png)
 
@@ -569,7 +569,7 @@ Log in on your CFS account and navigate to the **Settings** page and select **Ch
 
 ![](media/portal-user-16.png)
 
-Click the link **Add a new question**. Select your Challenge Question and enter an answer.
+Click **Add a new question**. Select your Challenge Question and enter an answer.
 
 ![](media/portal-user-17.png)
 

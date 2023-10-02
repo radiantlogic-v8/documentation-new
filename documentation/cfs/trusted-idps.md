@@ -140,8 +140,8 @@ CFS Configuration
 
 ![](media/rsa-5.png)
 
-*   If you want to create the Idp manually then click the button "New Trusted Identity Provider".
-*   Otherwise, click the button "Have a metadata file?" on top of the screen. If the CFS machine can contact the RTC machine over https (port 443), you can click the button "URL". Use the "Content" option if the RTC machine is not accessible from the CFS machine.
+*   If you want to create the Idp manually then click **New Trusted Identity Provider**.
+*   Otherwise, click **Have a metadata file?** on top of the screen. If the CFS machine can contact the RTC machine over https (port 443), you can click **URL**. Use the "Content" option if the RTC machine is not accessible from the CFS machine.
 
 ![](media/rsa-6.png)
 

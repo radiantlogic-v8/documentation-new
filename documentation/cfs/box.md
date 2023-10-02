@@ -84,4 +84,4 @@ The **Certificate** tab is used to define the certificate used by CFS to build t
 Configure Box
 -------------
 
-On the tab **General** of the CFS configuration for the application, click the link **Metadata File** and provide the content of this file to the Box administrator.
+On the tab **General** of the CFS configuration for the application, click **Metadata File** and provide the content of this file to the Box administrator.

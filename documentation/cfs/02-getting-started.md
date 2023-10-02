@@ -199,7 +199,7 @@ Now you know the basic concepts of federation, follow the steps.
 
 The RadiantOne CFS and Radiant Trust Connector (RTC) install files are available via an FTP site.
 
-> **Contact** support@radiantlogic.com for access information.
+>[!note] Contact support@radiantlogic.com for access information.
 
 ## FID LDAPs Certificate
 
@@ -207,10 +207,12 @@ Installing the FID Certificate on the CFS Server allows CFS to communicate with 
 
 1.  On the **FID Server**, navigate to `%RLI_HOME%/vds_server/conf` and copy the file `rli.cer` on the desktop of the **CFS Master** machine. 
    
-   ![](media/fid-cert-1.png)
+    ![](media/fid-cert-1.png)
 
-1.  Right click that certificate and select "Install Certificate".
+1.  Right-click that certificate and select "Install Certificate".
+
 1.  Change the Store Location to the "Local Machine" radio button and select "Next". (You need Administrator credentials to complete this step.)
+
 1.  Select the "Place all certificates in the following store" radio button and then select "Browse...". 
    
     ![](media/fid-cert-2.png)
@@ -224,32 +226,32 @@ Installing the FID Certificate on the CFS Server allows CFS to communicate with 
 The CFS installer automatically installs all the required components (including the monitoring console), makes the necessary configurations, and creates a new web site in IIS. Please follow the following steps to install CFS Master.
 
 1.  Log in to the Windows Server machine where you want to install CFS. You do not require Administrator privileges, but Administrator credentials are required to complete the installation CFS process.
-1.  Double click the executable `Radiant Logic, Inc. - Cloud Federation Service - <version #>.exe` downloaded from the FTP site. The CFS installer launches.
-1.  Click the **I agree to the license terms and conditions** check box and click Install. 
+2.  Double click the executable `Radiant Logic, Inc. - Cloud Federation Service - <version #>.exe` downloaded from the FTP site. The CFS installer launches.
+3.  Click the **I agree to the license terms and conditions** check box and click Install. 
    
    ![](media/master-1.png)
 
-1.  When asked if you want to allow CFS to make changes to the computer, click Yes. If prompted, enter an administrator password. 
+4.  When asked if you want to allow CFS to make changes to the computer, click Yes. If prompted, enter an administrator password. 
    
    ![](media/master-2.png)
 
-1.  The setup then configures your machine with all the required features and components (Microsoft IIS, ASP.NET...). ![](media/master-3.png)
+5.  The setup then configures your machine with all the required features and components (Microsoft IIS, ASP.NET...). ![](media/master-3.png)
 
-1.  On the **Welcome to Cloud Federation Service** screen, click Next. ![](media/master-4.png)
+6.  On the **Welcome to Cloud Federation Service** screen, click Next. ![](media/master-4.png)
 
-1.  On the **Select the features you want to install** screen, you can choose the CFS features (or components) to install or not.
+7.  On the **Select the features you want to install** screen, you can choose the CFS features (or components) to install or not.
     1.  The System Dashboard web site allows you to configure the tenants, packages (applications and themes) and other CFS features. You should install this feature at least once in your IIS Web Farm. ![](media/master-5.png)
     2.  If you do not want to install this feature, click on the name and select **Entire feature will be unavailable**.
-    3.  The CFS Proxy Web API is the web site that CFS Proxy use as a backend. You can either install all the components on the same machine or install this CFS Proxy Web API on a separate machine for better performance. ![](.media/master-6.png)
-1.  On the **Federated Identity Service Configuration** you have to enter the information to use to connect to FID. ![](media/master-7.png)
+    3.  The CFS Proxy Web API is the web site that CFS Proxy use as a backend. You can either install all the components on the same machine or install this CFS Proxy Web API on a separate machine for better performance. ![](media/master-6.png)
+8.  On the **Federated Identity Service Configuration** you have to enter the information to use to connect to FID. ![](media/master-7.png)
     1.  This is the connection to the FID that CFS points to for authenticating users, retrieving attributes and store its configuration. Since CFS only connects to FID over SSL (and the FQDN of the FID machine is the subject in the self-generated certificate), you must enter the FQDN for the host. To make sure you have the correct address for your FID, open the SSL certificate and use the issuer property for the host.
     2.  The FID SSL certificate must be trusted on the CFS machine (in the Computer certificate store, Trusted Root Certificates).
     3.  If the certificate is not trusted on your server, it should open itself for you to put it in your certificate store. ![](media/master-8.png)
     4.  To update the FID Certificate used for the SSL communications, please refer to the FID documentation.
-1.  On the **Ready to install Cloud Federation Service** click Install. ![](media/master-9.png)
-1.   The install should take a few minutes. ![](media/master-10.png)
-1.   Once the install is complete, click Finish. ![](media/master-11.png)
-10.  If an error happened during the installation, a link should display on the next screen to see the logs. ![](media/master-12.png)
+9.  On the **Ready to install Cloud Federation Service** click Install. ![](media/master-9.png)
+10.   The install should take a few minutes. ![](media/master-10.png)
+11.   Once the install is complete, click Finish. ![](media/master-11.png)
+12.  If an error happened during the installation, a link should display on the next screen to see the logs. ![](media/master-12.png)
 
 ## Uninstalling CFS Master
 
@@ -266,7 +268,8 @@ The CFS installer automatically installs all the required components (including 
 4.  The setup has successfuly uninstalled the RTC. 
    
     ![](media/uninstall-3.png)
-    
+
+
 
 ## Next Steps
 
@@ -333,7 +336,7 @@ Now that your Admin and Helpdesk groups are created, you can go back to your CFS
 
 ![](media/first-tenant12.png)
 
-Lastly, select the Schema tab. This defines what the users, groups, and some attributes are that CFS should look for in this tenant when requesting information from the FID. By default, it uses a traditional LDAP schema with inetOrgPerson as the User Object Class and groupOfUniqueNames as the Group Object Class. Our users in our People DN do not have a displayName attribute populated, though, so we will change the value in the Display Name field to cn. When this tab is completed, select **Save** at the bottom of the pane.
+Lastly, select the Schema tab. This defines what the users, groups, and some attributes are that CFS should look for in this tenant when requesting information from the FID. By default, it uses a traditional LDAP schema with inetOrgPerson as the User Object Class and groupOfUniqueNames as the Group Object Class. Our users in our People DN do not have a displayName attribute populated, though, so we will change the value in the Display Name field to cn. When this tab is completed, click **Save** at the bottom of the pane.
 
 ![](media/first-tenant13.png)
 
@@ -526,7 +529,7 @@ Best practices for certificates suggest that you should use a certificate for on
 -   At least one for each IIS website endpoint (or use a wildcard certificate) as they are accessed over HTTPS. These certificates must be setup in IIS and the subject of the certificate must be the fully qualified domain name of the endpoint:
 -   For example you can have one for CFS: [https://cfs.radiantlogic.com](https://cfs.radiantlogic.com) and you can have one for the RTC on the local domain: [https://rtc.radiantlogic.com](https://rtc.radiantlogic.com). In this case you need two SSL certificate, one for each URL, or a wildcard certificate ( [https://\*.radiantlogic.com](https://*.radiantlogic.com) ) which is a little bit more expensive, but easier to use for more complex scenarios.
 -   For applications/relying parties there are two options. For each tenant created in CFS, a certificate is auto-generated. This certificate can be used by all applications configured for the tenant (they would all share this same one). Or you can decide to not use this general default one and have one dedicated certificate for each trusted application/relying party (e.g. SharePoint, Salesforce…etc.). Whether you use the default, shared certificate or apply your own dedicated certificate, CFS uses the full certificate to build the signature of the token. CFS sends the signed token to the application (via a re-direct through the browser) and because the application has the same certificate (but only the public key) it can validate the incoming message has really come from CFS.
--   One for each trusted authentication system/identity provider (e.g. Azure, RSA, ADFS…etc.). CFS needs only the public key certificate because it simply checks the signature of the token that is sent by the Identity Provider.
+-   One for each trusted authentication system/identity provider (e.g. Azure, RSA, ADFS…etc.). CFS needs only the public key certificate because it checks the signature of the token that is sent by the Identity Provider.
 -   One for each application RTC (you need one RTC per Active Directory domain/forest). RTC uses the full certificate to build the signature of the token. RTC sends the signed token to CFS (via a re-direct through the client browser) and because CFS has the same certificate (but only the public key) it can validate the incoming message has really come from the RTC.
 -   If you are deploying CFS Proxy, the IIS server (where the CFS proxy is installed) has an SSL certificate. Also, the CFS proxy machine must trust the SSL certificates used by all the CFS sites that it is sitting in front of.
 
@@ -554,7 +557,7 @@ Generally it is best practice to have a dedicated certificate for each applicati
 
 ## Authentication Systems
 
-The identity providers (AKA: Authentication Systems) configured in CFS need only the public key configured because CFS simply checks the signature of the token that is sent by the Identity Provider.
+The identity providers (AKA: Authentication Systems) configured in CFS need only the public key configured because CFS checks the signature of the token that is sent by the Identity Provider.
 
 ![](media/getting-started-certificates-3.png)
 
