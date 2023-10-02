@@ -44,6 +44,9 @@ Harness your identity data with intelligent integration to drive better business
   > [Operations](operations-guide/01-overview)  
   > Learn how to maintain the product once it is deployed. Topics include the management of clusters, persistent cache, and Directory stores.
 
+  > [Command Line Configuration](command-line-configuration-guide/01-introduction)
+  > Learn how to configure RadiantOne from a command line interface. 
+
   > [Release Notes](release-notes/v740-release-notes)
   > Review the release notes to learn more about what fixes and improvements have been made for each patch release.
 
