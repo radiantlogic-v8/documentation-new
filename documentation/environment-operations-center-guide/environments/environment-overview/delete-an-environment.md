@@ -7,19 +7,19 @@ description: Learn how to delete an environment in Environment Operations Center
 
 This guide outlines the required steps to delete an environment while on the *Environments* home screen in Environment Operations Center. For information on deleting an environment from its detailed view, see the [delete an environment from its detailed view](../environment-details/delete-environment.md) guide.
 
-[!note] Only non-production environments can be deleted by users. To delete a production environment, please contact Radiant Logic.
+> **NOTE:** Only non-production environments can be deleted by users. To delete a production environment, please contact Radiant Logic.
 
 ## Select the environment
 
-From the *Environments* home screen, locate the environment you would like to delete from the list of environments. Select the ellipsis (**...**) located within the environment's row to expand the **Options** dropdown menu. From the **Options** menu, select **Delete** to open the delete environment confirmation dialog.
+From the *Environments* home screen, locate the environment you would like to delete from the list of environments. Go the specific environment and  on the right top corner, select the ellipsis **(**...**)**, to expand the options available and select **DELETE** from the list.
 
 ![image description](images/option-delete.png)
 
 ## Delete environment
 
-[!note] Deleting an environment is a permanent action and cannot be undone once submitted.
+> **NOTE:** Deleting an environment is a permanent action and cannot be undone once submitted.
 
-To delete the selected environment, enter the name of the environment in the space provided and select the **Delete** button. 
+To delete the selected environment, enter the name of the environment in the space provided and select the **Delete** button.
 
 ![image description](images/confirm-delete.png)
 
@@ -34,8 +34,6 @@ If you would like to keep the environment and exit out of the confirmation dialo
 ## Confirmation
 
 After selecting **Delete** in the confirmation dialog you will return to the *Environments* home screen. Here, you'll receive a confirmation message that the environment was successfully deleted and the environment will be removed from the environments list.
-
-![image description](images/delete-success.png)
 
 If the environment could not be deleted, you will receive an error notification indicating that the attempt to delete the environment failed. The environment will still be listed on the *Environments* home screen.
 

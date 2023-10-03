@@ -37,21 +37,21 @@ A refresh button is located in the upper right corner of the *Environments* scre
 
 ## Environment details
 
-To access further details about an environment, select the name of the environment you wish to view. 
+To access further details about an environment, select the name of the environment you wish to view.
 
 ![image description](images/env-details.png)
 
 This brings you to the environment's *Overview* screen, where you can view further information about a given environment, such as node status or connections, and perform monitoring and updating actions.
 
-[!note] To learn more about the environment *Overview* features, review the [environment details](environments/environment-details/environment-details-ui.md) guide.
+> **NOTE:** To learn more about the environment *Overview* features, review the [environment details](environments/environment-details/environment-details-ui.md) guide.
 
 ![image description](images/detailed-view.png)
-  
+
 ## Environment type
 
 The environment **Type** is listed below the environment name and indicates whether the environment is configured as a "Production or "Non-production" environment. "Production" environments are for production purposes, and "Non-production" environments are for development and testing.
 
-[!note] The number of production and non-production environments available will differ depending on your organization's selected tier. Please contact your RadiantOne account representative to adjust your tier if you require additional environments.
+> **NOTE:** The number of production and non-production environments available will differ depending on your organization's selected tier. Please contact your RadiantOne account representative to adjust your tier if you require additional environments.
 
 ![image description](images/env-type.png)
 
@@ -78,7 +78,7 @@ The **Creation Date** indicates the date and time when the environment was creat
 
 ## Environment version
 
-**Version** indicates the current version of the environment. The version number is set by the environment administrator during environment setup. If the environment version number no longer matches the current available version of Environment Operations Center, an "Update Now" notification is displayed next to the version number prompting you to update the environment. 
+**Version** indicates the current version of the environment. The version number is set by the environment administrator during environment setup. If the environment version number no longer matches the current available version of Environment Operations Center, an "Update Now" notification is displayed next to the version number prompting you to update the environment.
 
 To learn more about updating an environment, review the [update an environment](update-an-environment.md) guide.
 
