@@ -34,11 +34,6 @@ This chapter provides step-by-step configuration details for the RadiantOne Univ
 [Chapter 6 - Virtual Views based on an Aggregation of Multiple Types of Backends](06-virtual-views-based-on-aggregation)
 This chapter provides step-by-step configuration details for virtualizing many different types of backends (e.g. LDAP, JDBC) below a common root naming context.
 
-<!-->
-[Chapter 7 – Virtual Views for DSML or SPML Backends](07-virtual-vews-for-dsml-or-spml-backends)
-This chapter provides step-by-step configuration details for virtualizing DSML or SPML accessible backend data sources.
--->
-
 [Chapter 7 – Virtual Views of Cloud Applications](08-virtual-views-of-cloud-directories-or-services)
 This chapter provides step-by-step configuration details for virtualizing cloud applications and directories like Salesforce, Azure AD, Google directory, PingOne Directory, and SailPoint IdentityIQ.
 
