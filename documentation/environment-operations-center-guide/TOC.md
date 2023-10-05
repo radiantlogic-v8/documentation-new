@@ -8,7 +8,7 @@ description: Environment operations center guide
 - [Overview](overview.md)
 - [Environments](#)
   - [Environment overview](#)
-    - [Environments overview](environments/environment-overview/environments-overview.md)
+    - [Environments overview](environments/environment-overview/environments)
     - [Create an environment](environments/environment-overview/create-an-environment.md)
     - [Update an environment](environments/environment-overview/update-an-environment.md)
     - [Delete an environment](environments/environment-overview/delete-an-environment.md)
