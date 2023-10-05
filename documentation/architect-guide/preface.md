@@ -28,8 +28,8 @@ This manual is written with the assumption that the reader is familiar with the 
 
 This guide is broken down into the following chapters:
 
-[RadiantOne Federated Identity Engine (FID)](radiantone-federated-identity-engine.md)
-<br>The first chapter of this guide describes the RadiantOne Federated Identity product. In particular, it covers the different layers involved in a directory design and how each work alongside one another.
+[RadiantOne Integration](radiantone-federated-identity-engine.md)
+<br>The first chapter of this guide describes the RadiantOne identity source integration capabilities. In particular, it covers the different layers involved in a directory design and how each work alongside one another.
 
 [Concepts](concepts.md)
 <br>This chapter develops the concept of “identity union” in addition to concepts for handling issues such as authentication and authorization when facing an identity aggregation/integration challenge.
