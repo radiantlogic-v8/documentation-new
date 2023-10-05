@@ -3,7 +3,7 @@ title: Architect Guide
 description: Learn how the concepts of union, authentication and authorization are key in understanding how the RadiantOne platform helps create the identity data fabric used to solve the challenges of having multiple, distributed identity silos.
 ---
 
-# Chapter 2 – Concepts
+# Concepts
 
 Three main concepts are developed in this section: Union, Authentication and Authorization. An understanding of these concepts is critical for designing a federated identity service.
 
@@ -137,5 +137,5 @@ In more complex scenarios where a common identifier doesn’t exist, correlation
 
 RadiantOne System Administration Guide (following sections)
 
-- Joins
-- Groups
+- [Joins](virtual-view-design.md#joins)
+- [Groups](virtual-view-design.md#groups-based-authorization)
