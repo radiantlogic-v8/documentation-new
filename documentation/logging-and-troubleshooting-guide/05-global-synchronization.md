@@ -3,13 +3,13 @@ title: Logging and Troubleshooting Guide
 description: Logging and Troubleshooting Guide
 ---
 
-# Chapter 4: Global Synchronization
+# Chapter 4: Synchronization
 
-The components described in this section are applicable to RadiantOne Global Synchronization module. The high-level diagram below depicts the components involved. 
+The components described in this section are applicable to the RadiantOne Synchronization capability. The high-level diagram below depicts the components involved. 
 
 ![An image showing ](Media/Image5.1.jpg)
 
-Figure 5.1: Global Sync Architecture
+Figure 5.1: Sync Architecture
 
 If the virtual view of the source is configured in persistent cache, the default HDAP trigger method is used to detect and publish the change (detailed in 1b in the diagram). If the virtual view of the source is not configured in persistent cache, the capture connector detects changes directly on the source. In this case, the agent manages the connector (detailed in 1a in the diagram).
 
