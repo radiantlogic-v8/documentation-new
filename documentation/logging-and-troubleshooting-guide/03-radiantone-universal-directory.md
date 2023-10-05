@@ -213,7 +213,7 @@ Queries to certain internal naming contexts can happen frequently resulting in a
 -	cn=clustermonitor – various statistics and availability of cluster nodes are retrieved by querying cn=clustermonitor.
 	cn=replicationjournal – inter-cluster replication queries the cn=replicationjournal.
 
-## RadiantOne FID Persistent Cache with Real-time Refresh
+## RadiantOne Persistent Cache with Real-time Refresh
 
 The logs associated with persistent cache with real-time refresh are described in this section. The high-level diagram below depicts the components involved.
 
