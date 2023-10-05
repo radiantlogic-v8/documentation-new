@@ -7,7 +7,7 @@ description: Learn how to update your account settings and manage your API token
 
 Custom alerts can be created in Environment Operations Center to help your teams monitor the health and operations of your environments. Once created, alerts are sent to your specified communication channels to keep you up to date on important changes, potential issues, or errors. This guide outlines the steps to create and manage alerts in Environment Operations Center.
 
-[!note] An integration channel to receive the alert must be created prior to setting up the alert. For details on adding communication channel integrations, see the [integrations](../integrations/manage-integrations.md) guide.
+> **NOTE** An integration channel to receive the alert must be created prior to setting up the alert. For details on adding communication channel integrations, see the [integrations](../integrations/manage-integrations.md) guide.
 
 ## Getting started
 
@@ -15,7 +15,7 @@ Navigate to the *Alerts* tab in the *Admin* section of environment operations ce
 
 ![image description](images/alerts-tab.png)
 
-All existing alerts are listed on the *Alerts* tab including the alert name, notification channel, when it was last updated, and the severity of the alert.
+All existing alerts are listed on the *Alerts* tab including the alert name, description, environment name, notification channel, when it was last updated, and the severity of the alert.
 
 ![image description](images/alert-details.png)
 
@@ -46,7 +46,7 @@ In the *Alert metrics* section of the *New Alert* dialog, enter the required inf
 
 To add a new alert metric, select **New**. This displays the required fields to create the alert.
 
-![image description](images/new.png)
+![image description](images/first-alert.png)
 
 Under *Metric*, select the specific environment component to provide alerts for. To set the metric, select the downward arrow to expand the dropdown list. Select a component to monitor from the list.
 
@@ -74,23 +74,13 @@ Once you have completed all required fields, select the checkmark to add the ale
 
 ### Add multiple alert metrics
 
-More than one alert metric can be set for the selected environment(s). After you have saved a newly created alert metric, select **New** to create an additional alert. 
+More than one alert metric can be set for the selected environment(s). After you have saved a newly created alert metric, select **New** to create an additional alert.
 
-![image description](images/additional-metric.png)
+![image description](images/new.png)
 
 Follow the steps outlined above to complete the required alert metric details. You can continue adding as many metrics as are needed to help your team monitor the selected environment(s).
 
 ![image description](images/metric-fields.png)
-
-## Test alert
-
-It is recommended to test alerts before saving, to ensure the assigned communication channel receives the alert message. To test an alert, select **Test Alert** after you have completed all required fields in the *New Alert* dialog.
-
-![image description](images/test-alert.png)
-
-You will receive notification that the test alert was successfully sent your selected channel. Verify in you your external communication channel that the alert was received.
-
-![image description](images/test-sent.png)
 
 ### Save alert
 
@@ -119,12 +109,8 @@ This opens the *Edit Alert* dialog which contains the same sections and fields a
 To edit a specific alert metric in the *Alert metrics* section, select the **Options** (**...**) menu associated with the alert metric. Select **Edit** to enable editing for all of the alert metric fields. Alternatively, you can select **Delete** to delete the alert metric.
 
 ![image description](images/metric-options.png)
-
-Once you have updated the necessary fields, select **Test Alert** to ensure your specified notification channel receives the alert.
-
-![image description](images/test-edit.png)
-
-Once you have confirmed the specified communication channel received the test alert, select **Save** to save the updated alert.
+![image description](images/metric-edit.png)
+Once you have confirmed, select **Save** to save the updated alert.
 
 ![image description](images/save-edit.png)
 

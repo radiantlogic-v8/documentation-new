@@ -13,7 +13,9 @@ All Env Ops Center users can access the **Admin** screen, but view and edit perm
 
 To navigate to the *Admin* screen, select **Admin** (![image description](images/icon-admin.png)) located at the bottom of the left navigation.
 
-![image description](../images/admin.png)
+![image description](images/admin.png)
+
+![image description](images/admin2.png)
 
 ## Top navigation
 
@@ -23,6 +25,7 @@ A navigation bar is located at the top of the *Admin* home screen and is visible
 - Alerts
 - Integration
 - Activity Log
+- Settings
 
 ![image description](images/top-nav.png)
 
@@ -32,7 +35,7 @@ The *Users* tab allows you to manage all users within your Environment Operation
 
 For details on managing Environment Operation Center users, including their roles and permissions, see the [user management](...) guide.
 
-![image description](images/user-tab.png)
+![image description](images/users-tab.png)
 
 ### Alerts
 
@@ -55,6 +58,12 @@ For details on managing integrations, see the [managing integrations](integratio
 The *Activity Log* provides an overview of all create, update, and delete activities performed for all environments, including the action, environment, date and time stamp of the activity, and the user who performed the activity.
 
 ![image description](images/activity-log-tab.png)
+
+### Settings
+
+The **settings** provides options to setup release channels and also automatic/manual update checks for the channel
+
+![image description](images/settings-tab.png)
 
 ## Next steps
 

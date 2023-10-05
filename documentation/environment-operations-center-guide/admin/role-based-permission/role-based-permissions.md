@@ -1,6 +1,6 @@
 ---
 title: Role-based Permissions
-description: Learn about the three roles supported in Environment Operations Center - Tenant Administrator, Environment Administrator, and Environment User. 
+description: Learn about the three roles supported in Environment Operations Center - Tenant Administrator, Environment Administrator, and Environment User.
 ---
 # Role-based Permissions
 
@@ -31,8 +31,8 @@ From the Env Ops Center home page, the Environment Administrator can view and ac
 
 ## Environment user
 
-An Environment User is granted permission to only view the environments they have been assigned to, they have no access to edit the environments. Certain administrative functions are hidden, such as editing other users or updating environment authentication. 
-  
+An Environment User is granted permission to only view the environments they have been assigned to, they have no access to edit the environments. Certain administrative functions are hidden, such as editing other users or updating environment authentication.
+
 From the Env Ops Center home page, the Environment User can view all of the environments they have been assigned to. An Environment User cannot perform operations on the environment and the  **Delete** button is disabled in the **Options** (**...**) drop down menu.
 
 ![image description](images/env-user.png)

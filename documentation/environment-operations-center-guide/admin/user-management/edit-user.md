@@ -17,7 +17,7 @@ To edit a user from the **Options** (**...**) menu, select **Edit** from the **O
 
 ![image description](images/edit-users-options.png)
 
-This opens the *Edit User* screen where you can update the details and role assignments of a user. 
+This opens the *Edit User* screen where you can update the details and role assignments of a user.
 
 ![image description](images/edit-user-tab.png)
 
@@ -53,7 +53,7 @@ From the **Options** (**...**) dropdown, select **Deactivate**.
 
 ![image description](images/edit-deactivate.png)
 
-You will receive a message requesting confirmation that you would like to deactivate the user. Select **Confirm** to continue and deactivate the user.
+You will receive a message confirming deactivation of the user.
 
 ![image description](images/edit-deactivate-confirmation.png)
 
@@ -69,7 +69,7 @@ To update a user's status from the *Edit User* screen, adjust the *Status* toggl
 
 After selecting save, you will return to the *Users* tab where the user status will update accordingly to the status you selected.
 
-![image description](images/edit-inactive-status.png)
+![image description](images/edit-inactive-status2.png)
 
 ## Update role details
 
