@@ -3,7 +3,7 @@ title: Architect Guide
 description: Learn how to leverage the RadiantOne platform for aggregating, integrating and unifying identities so that applications and services have a single policy information point for identification and authorization of users. Challenges with integrating multiple identity silos, most often untrusted Active Directory domains, are most commonly seen across businesses going through mergers and acquisitions or divestitures.
 ---
 
-# RadiantOne Federated Identity
+# RadiantOne Integration
 
 ## Overview
 
@@ -25,11 +25,11 @@ In addition to having many data sources and huge volumes of overlapping entries,
 
 Enterprises must work to preserve their investments in the existing data infrastructure while gathering information from multiple repositories to present a clear, single access point of identity information for requesting applications. They must integrate identity information swiftly and securely, all while translating the information through different languages and protocols. The RadiantOne platform includes all the capabilities necessary to inventory existing data sources, and offer model-driven, unique views to the varying needs of each individual application.
 
-**The RadiantOne Platform**
+**The RadiantOne Identity Data Platform**
 
 The solution is the RadiantOne Platform that acts as a hub capable of delivering the data from all your identity silos to each application in the way it understands. Building the hub requires a set of features that are complex to manage without a guided process. RadiantOne offers a set of tools which walk the user through implementing best practice of these advanced features.
 
-![RadiantOne Federated Identity Hub/Service](Media/Image1.2.jpg)
+![RadiantOne Identity Data Platform](Media/Image1.2.jpg)
 
 Figure 2: RadiantOne Federated Identity Hub/Service
 
