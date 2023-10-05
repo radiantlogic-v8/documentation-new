@@ -1,8 +1,8 @@
-# Chapter 3: RadiantOne Universal Directory and Federated Identity Service
+# RadiantOne Directory and Integration
 
 The main log file for troubleshooting the RadiantOne service is vds_server.log.
 
-This chapter describes the RadiantOne Universal Directory and Federated Identity Service logs.
+This chapter describes the RadiantOne Directory and Integration logs.
 
 <!-->
 
@@ -255,7 +255,7 @@ The sync engine log sync_engine.log on the RadiantOne node where the sync engine
 
 ## HDAP Trigger
 
-When virtual views are created on RadiantOne Universal Directory (HDAP) stores or persistent cache, and those views are configured for persistent cache, the change capture connector type defaults to HDAP Trigger. This is an internal mechanism that automatically refreshes persistent caches that are built on top of other persistent caches or RadiantOne Universal Directory (HDAP) stores. When the RadiantOne VDS Sync Engine is configured for DEBUG log level, the HDAP trigger activity is logged into the sync_engine.log
+When virtual views are created on RadiantOne Directory (HDAP) stores or persistent cache, and those views are configured for persistent cache, the change capture connector type defaults to HDAP Trigger. This is an internal mechanism that automatically refreshes persistent caches that are built on top of other persistent caches or RadiantOne Directory (HDAP) stores. When the RadiantOne VDS Sync Engine is configured for DEBUG log level, the HDAP trigger activity is logged into the sync_engine.log
 
 You can set the log level from Main Control Panel > Settings > Logs > Log Settings as shown below.
 
