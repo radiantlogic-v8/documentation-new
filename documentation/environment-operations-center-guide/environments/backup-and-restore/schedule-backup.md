@@ -9,25 +9,35 @@ This guide provides an overview of the steps required to schedule automated back
 
 ## Getting started
 
+By default the backup schduled option is set to disabled
+
+![image description](images/backup-default-disabled.png)
+
 From the *Backups* tab, select the gear icon (![image description](images/gear-icon.png)) to navigate to the *Backup Settings* screen.
 
-![image description](images/backup-button.png)
+![image description](images/backup-schdeule-button-new.png)
 
 The *Backup Settings* view contains all of the fields required to create a scheduled backup.
 
-![image description](images/backup-settings.png)
+![image description](images/backup-schedule-page.png)
 
 ## Backup settings
 
-To create a scheduled backup, you must complete the sections outlined on the *Backup Settings* screen. This includes "Data retention policy" and "Schedule".
+To create a scheduled backup, you must complete the sections outlined on the *Backup Settings* screen. This includes "Data retention policy", "Automatic Backups" and "Schedule".
+
+### Automatic Backups
+
+The **Automatic Backups** section provides toggle options to enable/disable the automatic backups
+
+![image description](images/auto-backup-enable-new.png)
 
 ### Data retention policy
 
 The data retention policy specifies when to delete previously created backups. To set the retention period for your scheduled backups, select a time period from the dropdown menu.
 
-Scheduled backups can be stored for 30, 60, or 90 days, or the the maximum retention period of 6 months. 
+Scheduled backups can be stored for 10, 20, 30 or 60 days.
 
-![image description](images/retention-period.png)
+![image description](images/backup-retention-policy-new.png)
 
 ### Schedule
 
@@ -35,13 +45,19 @@ In the "Schedule" section you will set the frequency, period, and start time for
 
 To set the frequency, select the dropdown menu and select a frequency from the list. A backup can be scheduled to run daily, weekly, or monthly.
 
-![image description](images/backup-frequency.png)
+![image description](images/backup-schedule-new.png)
 
-To set the backup period, select the dropdown menu and select a number of days from the list. 
+To set the backup either daily, weekly or monthly select the options from the drop-own menu
+
+![image description](images/backup-daily-weekly.png)
+
+To set the backup period, select the dropdown menu and select a number of days from the list.
 
 ![image description](images/backup-period.png)
 
 To set the backup start date, select the dropdown menu and select a week day from the list.
+
+> **NOTE:** Backup day option is available only when Monthly is choosen for frequency
 
 ![images description](images/backup-day.png)
 

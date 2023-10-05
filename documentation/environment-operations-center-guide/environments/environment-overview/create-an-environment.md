@@ -7,7 +7,7 @@ description: Learn how to create a new environment in Environment Operations Cen
 
 This guide provides an overview of the steps required to create a new environment in Environment Operations Center.
 
-An environment is where a RadiantOne product lives. Each environment is completely isolated and contains endpoints to access different applications. Each instance of Env Ops Center has a predefined number of production and non-production environments that can be created for production, development, quality assurance, and staging purposes. 
+An environment is where a RadiantOne product lives. Each environment is completely isolated and contains endpoints to access different applications. Each instance of Env Ops Center has a predefined number of production and non-production environments that can be created for production, development, quality assurance, and staging purposes.
 
 The number of each type of environment available depends on the tier selected during the initial configuration of your Env Ops Center instance. If you would like to adjust the number of production or non-production environments, please contact your Radiant account manager.
 
@@ -39,7 +39,7 @@ Start by selecting the required **Environment Type** and **Environment Tier**.
 
 To set the **Environment Type**, use the radio buttons to select either **Non-production**, for development and testing, or **Production**, for production purposes.
 
-![image description](images/create-env-type.png) 
+![image description](images/create-env-type.png)
 
 A status bar located just below the environment types indicates how many of your available production and non-production environments have been used. If your organization has already configured the maximum number of environments available in your tier, the environment type and associated radio button will be greyed out.
 
@@ -69,9 +69,9 @@ To set the Environment **Version**, select the version drop down to display all 
 
 #### Password
 
-Select a password by either entering your chosen password in the space provided, or by selecting the **Generate** button to have a password automatically generated for you. 
+Select a password by either entering your chosen password in the space provided, or by selecting the **Generate** button to have a password automatically generated for you.
 
-[!note] Passwords must be a minimum of 12 characters, contain at least 1 special character, contain lower and upper case letters, and contain at least 1 number.
+> **NOTE:** Passwords must be a minimum of 12 characters, contain at least 1 special character, contain lower and upper case letters, and contain at least 1 number.
 
 Depending on the complexity and strength of your password, you will receive a notification that your password is "Weak", "Fair", "Good", or "Strong". It is recommended that you adjust the password until you receive a "Strong" rating. Adjust your password accordingly to ensure you have entered a strong password before proceeding to the confirmation step.
 
@@ -87,7 +87,7 @@ To reveal your original or confirmation password, select the eye icon (![image d
 
 Completing the steps outlined in the **Environment Type** and **Environment Details** sections are all that is required to set up your new environment. Once both sections are complete, select **Create** to create the new environment.
 
-[!note] If you would like to upload a configuration file from an external environment, proceed to the Advanced Setup section.
+> **NOTE:** If you would like to upload a configuration file from an external environment, proceed to the Advanced Setup section.
 
 ![image description](images/create.png)
 
@@ -127,7 +127,7 @@ To delete the file and return to the file upload screen, select the trash can ic
 
 If the file upload is not successful, the configuration upload box displays with a red dashed outline and an error message appears just below. Review your file type to ensure you have selected the correct configuration file for upload and try again.
 
-## New environment confirmation 
+## New environment confirmation
 
 After saving the New Environment details form, you return to the *Environments* home screen. A confirmation message appears noting that your environment is being created and that the process can take up to 1 hour. The status of your new environment shows as "Creating". Select **Dismiss** to close the confirmation message.
 

@@ -7,7 +7,7 @@ description: Learn how to delete a user in Environment Operations Center.
 
 This guide outlines the required steps to delete a user in Environment Operations Center.
 
-[!warning] Deleting a user is a permanent operation and cannot be undone.
+> **Warning!!** Deleting a user is a permanent operation and cannot be undone.
 
 If you would prefer to deactivate a user, see the [edit a user](edit-user.md) guide for details on deactivating a user's account.
 
@@ -33,11 +33,9 @@ To keep the user and exit out of the *Delete User* dialog, select **Keep The Use
 
 ## Confirmation
 
-If the user is successfully deleted, you will receive a confirmation message, the user will no longer be listed on the *Users* tab, and their account will no longer be active.
+- If the user is successfully deleted, you will receive a confirmation message, the user will no longer be listed on the *Users* tab, and their account will no longer be active.
 
-![image description](images/delete-success.png)
-
-If the user cannot be successfully delete you will receive and error message notifying you the user could not be deleted. The user will still be listed on the *Users* tab and their account will remain active.
+- If the user cannot be successfully delete you will receive and error message notifying you the user could not be deleted. The user will still be listed on the *Users* tab and their account will remain active.
 
 ## Next steps
 

@@ -1,7 +1,7 @@
 ---
 keywords:
 title: Update and Monitor Environment Nodes
-description: Learn how to adjust the number of nodes in a RadiantOne cluster and to monitor the status details of a specific node. 
+description: Learn how to adjust the number of nodes in a RadiantOne cluster and to monitor the status details of a specific node.
 ---
 # Update and Monitor Environment Nodes
 
@@ -17,9 +17,18 @@ In the *Adjust Environment Scale* dialog, use the provided slider to increase or
 
 ![image description](images/adjust-scale.png)
 
+Confirm your selection to scale the environment
+
+![image description](images/scale-confirmation.png)
+
+After the confirmation, messages appear on the overview screen, notifying that the environment scale is in process
+
+![image description](images/after-scale-confirmation.png)
+
+
 The number of nodes in the environment will increase or decrease accordingly.
 
-![image description](images/reduced-nodes.png)
+![image description](images/increased-nodes-new.png)
 
 ## View node details
 
@@ -62,7 +71,7 @@ Select **Close** to exit the node details dialog.
 
 Alternatively, the log files of a node can be accessed by selecting **View Logs** from the associated **Options** (**menu**).
 
-[!note] For further details on reviewing logs, see the [environment logs](../logging/environment-logs.md) guide.
+> **NOTE:** For further details on reviewing logs, see the [environment logs](../logging/environment-logs.md) guide.
 
 ![image description](images/options-view-logs.png)
 

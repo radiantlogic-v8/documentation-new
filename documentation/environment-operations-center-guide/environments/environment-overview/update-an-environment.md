@@ -7,49 +7,59 @@ description: Learn how to manually update the RadiantOne version running in an e
 
 When version updates are available for environments in your Environment Operations Center instance, you will receive an *Update Now* notification. You can update your environments from the *Environments* home screen or you can update a specific environment from its *Overview* screen. This guide outlines the steps required to update your environments from the *Environments* home screen. For details on updating an individual environment from its detailed view, review the environment details guide on [updating an environment](../environment-details/update-environment.md)
 
-[!note] Before getting started, make sure you have your current version of Environment Operations Center and the required number of FID nodes to display for each environment that requires updating.
+> **NOTE:** Before getting started, make sure you have your current version of Environment Operations Center and the required number of FID nodes to display for each environment that requires updating.
 
 ## Managing environment updates
 
-When an environment requires updating, an **Update Available** message appears next to the environment's version number.
+When an environment requires updating, an **Update** message appears next to the environment's version number.
 
 ![image description](images/update-alert.png)
 
 ### Begin update
 
-There are two ways to begin the environment update workflow from the home screen, either from the **Options** menu (**...**) or by selecting the **Update Available** message.
+Begin the environment update workflow from the home screen, by selecting the **Update** message. This will then take you to the designated environment page and the **UPDATE** option will be avaiable next to the **VERSION** number. This will also open the **Update Environment** dialog box.
 
-To update using the **Options** menu, locate the environment you would like to update and select the corresponding ellipsis (**...**) to display the environment's **Options** menu. From the menu, select **Update** to open the **Update Environment** dialog box.
-
-![image description](images/options-update.png)
-
-Alternatively, you can locate the environment you would like to update and directly select the **Update Available** message located next to the environment's version number. This will also open the **Update Environment** dialog box.
+![image description](images/update-alert.png)
 
 ![image description](images/select-update.png)
+
+Clicking on **UPDATE** will open the **Update Environment** dialog box.
+
+![image description](images/update-env-dialog.png)
+
+Alternatively, you can locate the environment you would like to update and directly select the **UPDATE** message located next to the environment's version number, which will again open the **Update Environment** dialog box.
 
 ### Update version number
 
 Once you have started the environment update workflow, a dialog box appears containing the field required to update the environment version. To update your environment, select the next available version number that is ahead of your current environment version. Your currently installed version number is displayed just above the dropdown menu for reference.
 
-[!note] Environment versions can only be increased incrementally. You cannot select a version that is more than one level ahead of your current version. 
+> **NOTE:** Environment versions can only be increased incrementally. You cannot select a version that is more than one level ahead of your current version.
 
 ![image description](images/select-version.png)
 
-Once you have set the correct version number, select **Update** to begin updating the environment.To quit the update and return to the main *Environments* screen, select **Cancel**.
+Once you have set the correct version number, click on **Update** and click on **UPDATE** in the next dialog, to begin updating the environment.To quit the update and return to the main *Environments* screen, select **Cancel**.
 
 ![image description](images/update.png)
 
+![image description](images/confirm-update.png)
+
 ### Environment update confirmation
 
-After selecting **Update** you will return to the main *Environments* screen. The status of the environment being updated will display as "Updating". A confirmation message will appear indicating that the environment is updating and the process can take up to 1 hour.
+After selecting **Update** you will return to the main *Environments* screen. The status of the environment being updated will display as "Updating". A confirmation message will appear indicating that the environment is updating both on the envrionement overview as well as on the envrionments page.
 
 ![image description](images/updating.png)
 
+![image description](images/updating-env-message.png)
+
 If the environment updates successfully, you will receive a success notification and the environment's status will change to "Operational".
 
-If the environment update is unsuccessful, you will receive an error notification and the environment's status will change to "Update Failed".
+
 
 ![image description](images/update-success.png)
+
+![image description](images/update-success-operational.png)
+
+If the environment update is unsuccessful, you will receive an error notification and the environment's status will change to "**Update Failed**".
 
 ## Previous updates
 

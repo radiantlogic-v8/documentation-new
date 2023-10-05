@@ -23,16 +23,16 @@ This brings you to the environment's *Overview* screen that displays a summary o
 A navigation bar is located at the top of the *Overview* screen and is visible from all tabs in the environment details view. The top navigation allows you to access several monitoring and updating tools through the following tabs:
 
 - Overview
-- Logs 
+- Logs
 - Backups
-- Configuration
+- Alerts
 - Activity Log
 
 ![image description](images/top-nav.png)
 
 ### Logs
 
-The *Log* tab allows you to view an environment's log details, imported from Elastic.
+The *Log* tab allows you to view an environment's log details.
 
 For further details on reviewing environment logs, see the [Environment Logs](../logging/environment-logs.md) guide.
 
@@ -48,7 +48,7 @@ For information on managing your environment backups, refer to the [backup and r
 
 ### Alerts
 
-The *Alerts* tab provides an overview of all alerts that have been triggered for the environment including the alert message, the channel the alert was sent to, date, and status. 
+The *Alerts* tab provides an overview of all alerts that have been triggered for the environment including the alert message, the channel the alert was sent to, date, and status.
 
 For details on creating environment alerts, see the [alert management](../../admin/alert-management/alert-management-overview.md) guide.
 
@@ -100,13 +100,13 @@ The environment status will change depending on the state of the environment. St
 
 ### Version
 
-If the environment version is out of date, an "Update Now" message appears next to the version number. 
+If the environment version is out of date, an "Update Now" message appears next to the version number.
 
 For details on updating the environment, review the [update environment](update-environment.md) guide.
 
 ![image description](images/update-env.png)
 
-You can view the environment's version history by selecting the **View Version History** button in the lower right corner of the *Environment Details* box. 
+You can view the environment's version history by selecting the **View Version History** button in the lower right corner of the *Environment Details* box.
 
 See the guide on [version history](version-history.md) for further details on reviewing and restoring an environment's previous versions.
 
@@ -134,7 +134,7 @@ CPU, memory, and disk are all displayed as color-coded percentages to indicate t
 
 ![image description](images/overview-health-indicators.png)
 
-An expandable **Options** (**...**) menu is available for each node. Selecting the **Options** dropdown menu displays the options to **View Details** or **View Logs** for the selected node. 
+An expandable **Options** (**...**) menu is available for each node. Selecting the **Options** dropdown menu displays the options to **View Details** or **View Logs** for the selected node.
 
 For further details on reviewing nodes details, see the [node details](node-details.md) guide.
 

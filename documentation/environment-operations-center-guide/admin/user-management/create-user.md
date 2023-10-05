@@ -11,11 +11,11 @@ This guide outlines the required steps to create new users and assign roles in E
 
 Select **Admin** from the left navigation to access the *Admin* home screen and *Users* tab.
 
-To create a new user, select the **Create User** button on the *Users* tab.
+To create a new user, select the **New User** button on the *Users* tab.
 
 ![image description](images/create-button.png)
 
-The *Create User* form contains all of the required input fields to create a new user. Within the form you will provide the user's details and assign their role and environments. All fields must be completed in both sections to create a new user.
+The *New User* form contains all of the required input fields to create a new user. Within the form you will provide the user's details and assign their role and environments. All fields must be completed in both sections to create a new user.
 
 ![image description](images/create-user.png)
 
@@ -33,7 +33,7 @@ Once you have completed the *User Details* section, you can proceed to the *Role
 
 ## Role details
 
-In the *Role Details* section you can assign roles and environments to the user. A user can be assigned to more than one role, but can only hold one role per environment. For example, a user may be assigned Tenant Administrator to environments "A" and "B", and also be assigned as an Environment User for environments "C" and "D". The user holds two different roles, but the environment assignments for each role are unique. 
+In the *Role Details* section you can assign roles and environments to the user. A user can be assigned to more than one role, but can only hold one role per environment. For example, a user may be assigned Tenant Administrator to environments "A" and "B", and also be assigned as an Environment User for environments "C" and "D". The user holds two different roles, but the environment assignments for each role are unique.
 
 See the [role based permission](../role-based-permission/role-based-permissions.md) guide for further details on role definitions and permission details.
 

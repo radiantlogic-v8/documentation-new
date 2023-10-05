@@ -11,7 +11,7 @@ This guide provides an overview of the steps required to create environment back
 
 To begin creating a manual backup of an environment, select the **Backup** button.
 
-![image description](images/create-backup.png)
+![image description](images/backups-schedule-button-new.png)
 
 ## Backup details
 
@@ -23,9 +23,13 @@ Once you have completed the name field, select **Save** to create the backup.
 
 ## Backup confirmation
 
-While the backup is being created, you will return to the main *Backups* tab and a "Creating Backup" message is displayed below the name of the new backup.
+While the backup is being created, you will return to the main *Backups* tab and a **"Creating Backup"** message is displayed below the name of the new backup.
 
-![image description](images/backup-creating.png)
+![image description](images/backup-success.png)
+
+After the backup process is initiated, you can see a **"Creating environment backup"** message on the overview screen of the environment
+
+![image description](images/backup-success-message.png)
 
 If the backup was successfully created, you will receive a confirmation message and the new backup will be visible in the list of backups on the main *Backups* screen. Select **Dismiss** to close the message.
 

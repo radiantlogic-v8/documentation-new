@@ -11,39 +11,39 @@ You can create and restore backups of your environments in Environment Operation
 
 To navigate to the *Backups* tab for a specific environment, select **Backups** from the top navigation in the environment's detailed view.
 
-![image description](images/select-backups.png)
+![image description](images/select-backup-new.png)
 
 This brings you to the *Backups* view that provides a chronological overview of all backups that have been performed on the environment.
 
-![image description](images/backups-tab.png)
+![image description](images/backup-button.png)
 
 ## Review backups
 
 From the *Backups* tab, you can review all backups that have been performed on the environment. For each backup, the backup name, creation date, and version are listed.
 
-![image description](images/backups-details.png)
+![image description](images/backup-column-new.png)
 
 If you have set a scheduled backup for the environment, a "Scheduled" notification appears at the top of the workspace indicating the frequency and time of the scheduled backup.
 
 For more information on scheduling environment backups, see the [schedule backups](schedule-backup.md) guide.
 
-![image description](images/backups-schedule.png)
+![image description](images/backup-schdeule-button-new.png)
 
 ## Manage backups
 
-You can create backups manually by selecting **Backup** or schedule an automated backup workflow by selecting the gear icon. 
+You can create backups manually by selecting **Backup** or schedule an automated backup workflow by selecting the gear icon.
 
 For details on creating manual environment backups, see the [create a backup](create-backup.md) guide. For details on scheduling automated environment backups, see the [schedule a backup](schedule-backup.md) guide.
 
 ![image description](images/backup-button.png)
 
-Each backup has an **Options** (**...**) menu that allows you to either **Download** or **Restore** a backup. Selecting **Download** will download the configuration file of that backup to your system.
+Each backup has an **Options** (**...**) menu that allows you to either **Download** a backup or **Delete** the backup. Selecting **Download** will download the configuration file of that backup to your system. Selecting **Delete** will permanently delete the backup.
 
-![image description](images/backups-options.png)
+![image description](images/backup-options.png)
 
-The workflow to restore a backup can also be initiated by selecting the **Restore** button. For more information on restoring backups, see the [restore a backup](restore-backup.md) guide.
+<!-- The workflow to restore a backup can also be initiated by selecting the **Restore** button. For more information on restoring backups, see the [restore a backup](restore-backup.md) guide.
 
-![image description](images/restore-button.png)
+![image description](images/restore-button.png) -->
 
 ## Read-only mode
 
