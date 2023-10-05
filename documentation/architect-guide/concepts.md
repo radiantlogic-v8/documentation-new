@@ -137,5 +137,5 @@ In more complex scenarios where a common identifier doesn’t exist, correlation
 
 RadiantOne System Administration Guide (following sections)
 
-- [Joins](virtual-view-design.md#joins)
-- [Groups](virtual-view-design.md#groups-based-authorization)
+- [Joins](sys-admin-guide-rebuild/02-concepts/#joins)
+- [Groups](sys-admin-guide-rebuild/02-concepts/#groups-based-authorization)
