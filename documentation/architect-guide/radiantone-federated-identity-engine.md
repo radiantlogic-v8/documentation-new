@@ -75,7 +75,7 @@ The logical model is based on three primary layers.
 
 **Application Layer**
 
-The application layer is the interface between applications and the RadiantOne Platform. Applications query RadiantOne using LDAP, SCIMv2 or REST and expect standard directory responses in return. The applications are not aware of the complexity or number of data sources they are receiving data from. To them, RadiantOne represents the single data source where all of the information they require resides. For claims-aware applications, RadiantOne CFS (or any federated identity provider) handles the different authentication methods and the token translation. RadiantOne is used as the information point to identify users and retrieve profile attributes to augment claims. For more details RadiantOne CFS, please see [RadiantOne CFS Guide](/documentation/cfs/01-getting-started).
+The application layer is the interface between applications and the RadiantOne Platform. Applications query RadiantOne using LDAP, SCIMv2 or REST and expect standard directory responses in return. The applications are not aware of the complexity or number of data sources they are receiving data from. To them, RadiantOne represents the single data source where all of the information they require resides. For claims-aware applications, RadiantOne CFS (or any federated identity provider) handles the different authentication methods and the token translation. RadiantOne is used as the information point to identify users and retrieve profile attributes to augment claims. For more details on RadiantOne CFS, please see [RadiantOne CFS Guide](/documentation/cfs/01-getting-started).
 
 **RadiantOne Platform**
 
