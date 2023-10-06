@@ -14,4 +14,3 @@ description: Hardening Guide
 
 - [Recommendations for Monitoring](05-recommendations-for-monitoring.md)
 
-- [Enabling PBE](05-enabling-pbe)
