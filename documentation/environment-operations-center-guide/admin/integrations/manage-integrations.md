@@ -33,7 +33,7 @@ The required configuration details will differ depending on the type of configur
 
 If the integration is successfully created, you will receive a confirmation message and the integration will be added to the list of integrations on the *Integrations* tab.
 
-> [!info] For the integration to become active, you will need to configure the applicable alerts to send to the channel. See the [alert management](../alert-management/alert-management-overview.md) guide to learn how to set up alerts to send via the integration.
+> [!note] For the integration to become active, you will need to configure the applicable alerts to send to the channel. See the [alert management](../alert-management/alert-management-overview.md) guide to learn how to set up alerts to send via the integration.
 
 ![image description](images/success.png)
 
