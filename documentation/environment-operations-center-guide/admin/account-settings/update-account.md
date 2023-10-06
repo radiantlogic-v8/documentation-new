@@ -21,7 +21,7 @@ From the *Account Settings* screen you can update your user details including yo
 
 To update your first or last name, enter your information in the spaces provided and select **Save** to update.
 
-> **NOTE** Only administrators can update email addresses. Please contact your administrator if you need to change the email associated with your Env Ops Center account.
+> [!note] Only administrators can update email addresses. Please contact your administrator if you need to change the email associated with your Env Ops Center account.
 
 ![image description](images/account-details.png)
 
@@ -41,12 +41,12 @@ To create a new API token, set the API expiration by selecting one of the **Expi
 
 A unique API token will populate in the *API token* input field and the creation and expiration dates will display below the token. Copy the token immediately and store in a save place.
 
-> **WARNNING!!** Once you leave the page, you can no longer view or copy the API token. Ensure you copy the token before saving.
+> [!warning] Once you leave the page, you can no longer view or copy the API token. Ensure you copy the token before saving.
 
 ![image description](images/created-copy.png)
 
 You will receive a warning when your API token is close to expiring. A warning is displayed in your *Account Settings* next to the *Expiration Date* dropdown.
-> **WARNNING!!** API token expiry cannot be extended. Once a token has expired, a new token must be generated.
+> [!warning] API token expiry cannot be extended. Once a token has expired, a new token must be generated.
 
 ### Delete an API token
 
@@ -54,7 +54,7 @@ Only one API token can be created at a time. If you need to create a new API tok
 
 You can delete the API token by selecting the trash bin icon (![image description](images/icon-delete.png)) located next to the *API Token* input field.
 
-> **WARNNING!!** Deleting an API token is a permanent action and cannot be undone.
+> [!warning] Deleting an API token is a permanent action and cannot be undone.
 
 ![image description](images/delete-token.png)
 
