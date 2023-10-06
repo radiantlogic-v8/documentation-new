@@ -13,3 +13,5 @@ description: Hardening Guide
 - [Recommendations For Securing Data In Transit - SSL/TLS Settings](04-recommendations-for-securing-data-in-transit-ssl-tls-settings.md)
 
 - [Recommendations for Monitoring](05-recommendations-for-monitoring.md)
+
+- [Enabling PBE](05-enabling-pbe)
