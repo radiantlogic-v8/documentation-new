@@ -8,3 +8,4 @@ description: Hardening Guide
 - [Client Access Limits and Regulations](02-client-access-limits-and-regulations.md)
 - [Recommendations For Securing Data at Rest](03-securing-data-at-rest.md)
 - [Recommendations For Securing Data In Transit - SSL/TLS Settings](04-securing-data-in-transit.md)
+- [Enabling PBE](05-enabling-pbe)
