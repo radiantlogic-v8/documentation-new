@@ -1,8 +1,10 @@
-# Enabling PBE
+# Migrating to a PBE-enabled Environment
 
-RadiantOne generates a random master key by default to use for encrypting information in configuration files. This section describes the process of exporting your existing configuration, installing RadiantOne with PBE enabled, and importing your RadiantOne configuration from your existing deployment.
+RadiantOne generates a random master key by default to use for encrypting information in configuration files. You can migrate from the default encryption process to using a more secure PBE method by following the guidance below.
 
-The configuration can be exported from one machine/cluster and imported into another. The [export](#exporting-the-existing-environment) needs to happen on only one node in a cluster (as all nodes share the same config) and needs to be [imported](#importing-the-existing-configuration) on only one node in the cluster of the target environment.
+The migration process of involves exporting your existing configuration, installing RadiantOne with PBE enabled, and importing the configuration from your existing deployment.
+
+The RadiantOne configuration can be exported from one machine/cluster and imported into another. The [export](#exporting-the-existing-environment) needs to happen on only one node in a cluster (as all nodes share the same config) and needs to be [imported](#importing-the-existing-configuration) on only one node in the cluster of the target environment.
 
 ## Exporting the Existing Environment
 
@@ -26,7 +28,7 @@ C:\r1\migration\radiantone-migration-tool-2.1.7/migrate.bat export /home/ec2-use
 
 To use Password-based encryption (PBE) to generate the key, you must use a silent install and indicate vds.security.pbe.enabled=true in the \vds\install\install.properties file before using Instance Manager to install RadiantOne. Refer to the RadiantOne Installation Guide for more information.
 
-## RadiantOne Services
+## Importing Configuration into the PBE-enabled Environment
 
 All RadiantOne services EXCEPT ZooKeeper must be stopped on the target machine prior to importing. If you have deployed RadiantOne in a cluster, only the services on the machine you are importing into need to be stopped. ZooKeeper servers in the ensemble must be running prior to importing.
 
@@ -34,37 +36,27 @@ Run <RLI_HOME>/bin/advanced/stop_servers.bat (use stop_serers.sh on Linux) on al
 
 Run <RLI_HOME>/bin/runZookeeper.bat (use runzookeeper.sh on Linux) on all RadiantOne cluster nodes. ZooKeeper on all nodes must be running.
 
-## Specifying RLI_HOME
+### Specifying RLI_HOME
 
-If you do not have an RLI_HOME system environment variable set, you must pass the location where you have RadiantOne installed when you run the Migration Utility.
+If you do not have an RLI_HOME system environment variable set, you must pass the location where you have RadiantOne installed when you run the Migration Utility. An example of importing configuration on Linux where RadiantOne is installed in /home/r1user/radiantone/vds, can be seen below. 
 
-1. In Windows, select Start > Settings > Control Panel > System > About > Advanced System Settings > Environment Variables. 
+ ./migrate.sh /home/r1user/radiantone/vds import test2.zip cross-environment
 
-1. Select New under System Variables. 
+### Performing the Import
 
-1. The variable name is RLI_HOME.
+Copy the export file to the target PBE-enabled machine and with the [RadiantOne services stopped](#radiantone-services) (all except for ZooKeeper), run the import command. A Windows example of the command is shown below.
 
-1. Enter a variable value (i.e. /home/ec2user/radiantone/vds)
+C:\r1\migration\radiantone-migration-tool-2.1.7\migrate.bat import C\tmp\exportfromnopbe.zip cross-environment
 
-1. Click OK. Click OK to close the Environment Variables window. Click OK to close the System Properties window.
+### Post-import Tasks
 
-## Importing the Existing Configuration
+After the import process finishes, two additional tasks must be completed on the target environment.
 
-Copy the export file to the target machine and with the [RadiantOne services stopped](#radiantone-services) (all except for ZooKeeper), from a command prompt, run the import command (assuming you saved the exported file to C:/tmp on the target machine).
-
-Import the exported file from the source environment which has been copied to the PBE environment as shown in the following example.
-
-C:\r1\migration\radiantone-migration-tool-2.1.7/migrate.bat import /home/ec2-user/exportfromnopbe.zip cross-environment
-
-## Post-import Tasks
-
-After the import process finishes, two additional tastks must be completed on the target environment.
-
-### Restarting RadiantOne
+#### Restarting RadiantOne
 
 Restart the RadiantOne service on all cluster nodes.
 
-### Re-initializing a Persistent Cache
+#### Re-initializing a Persistent Cache
 
 Persistent cache should be re-initialized during off-peak hours, or during scheduled downtime, since it is a CPU-intensive process and during the initialization queries are delegated to the backend data sources which might not be able to handle the load.
 
