@@ -2,7 +2,7 @@
 
 RadiantOne generates a random master key by default to use for encrypting information in configuration files. You can migrate from the default encryption process to using a more secure PBE method by following the guidance below.
 
-The migration process of involves exporting your existing configuration, installing RadiantOne with PBE enabled, and importing the configuration from your existing deployment.
+The migration process involves exporting your existing configuration, installing RadiantOne with PBE enabled, and importing the configuration from your existing deployment.
 
 The RadiantOne configuration can be exported from one machine/cluster and imported into another. The [export](#exporting-the-existing-environment) needs to happen on only one node in a cluster (as all nodes share the same config) and needs to be [imported](#importing-the-existing-configuration) on only one node in the cluster of the target environment.
 
