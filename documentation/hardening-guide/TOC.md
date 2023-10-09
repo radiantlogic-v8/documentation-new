@@ -12,4 +12,4 @@ description: Hardening Guide
 
 - [Recommendations For Securing Data In Transit - SSL/TLS Settings](04-recommendations-for-securing-data-in-transit-ssl-tls-settings.md)
 
-- [Enable FIPS Mode](05-enable-fips-mode.md)
+- [Migrating to a PBE-enabled Environment](05-enable-fips-mode.md)
