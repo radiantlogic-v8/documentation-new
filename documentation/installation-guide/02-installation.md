@@ -258,7 +258,7 @@ To install the first node:
 
     The following image depicts the install-sample.properties file for the first node in a cluster. For details about properties files for follower nodes, see the Using a Manually Edited Properties File on Follower Nodes section.
 
-    >[!warning] Do not use underscores in the Hostname or Cluster Name.
+    >[!warning] Do not use underscores in the Hostname or Cluster Name. <br> <br> It is recommended that you edit the properties file in a text editor such as Notepad or Notepad++. Adding carriage returns in other text editors may result in properties being misread during the installation process.
 
     ![An image showing ](Media/Image2.17.jpg)
 
