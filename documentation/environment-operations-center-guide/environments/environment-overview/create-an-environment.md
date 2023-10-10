@@ -71,7 +71,7 @@ To set the Environment **Version**, select the version drop down to display all 
 
 Select a password by either entering your chosen password in the space provided, or by selecting the **Generate** button to have a password automatically generated for you.
 
-> **NOTE:** Passwords must be a minimum of 12 characters, contain at least 1 special character, contain lower and upper case letters, and contain at least 1 number.
+> [!note] Passwords must be a minimum of 12 characters, contain at least 1 special character, contain lower and upper case letters, and contain at least 1 number.
 
 Depending on the complexity and strength of your password, you will receive a notification that your password is "Weak", "Fair", "Good", or "Strong". It is recommended that you adjust the password until you receive a "Strong" rating. Adjust your password accordingly to ensure you have entered a strong password before proceeding to the confirmation step.
 
@@ -87,7 +87,7 @@ To reveal your original or confirmation password, select the eye icon (![image d
 
 Completing the steps outlined in the **Environment Type** and **Environment Details** sections are all that is required to set up your new environment. Once both sections are complete, select **Create** to create the new environment.
 
-> **NOTE:** If you would like to upload a configuration file from an external environment, proceed to the Advanced Setup section.
+> [!note] If you would like to upload a configuration file from an external environment, proceed to the Advanced Setup section.
 
 ![image description](images/create.png)
 
