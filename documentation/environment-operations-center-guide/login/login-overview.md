@@ -23,7 +23,7 @@ Environment Operations Center provides three different Single Sign On options to
 - The rights and the access to rest of team members can be provided by the initial user.
 
 
-> **NOTE** User should be added by admin and provided with necessary access, before logging in.
+> [!note] The user should be added by an admin and provided with necessary access, before logging in.
 
 ### Sign In with Google
 
