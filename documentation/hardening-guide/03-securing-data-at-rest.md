@@ -35,9 +35,7 @@ Settings Tab > Security section > Access Control. Click root on the right and se
 configured access control described as “grant read access to anyone”. Then click on the Delete button.
 
 >[!warning]
->If you delete the default read access, this does not delete read access to the RootDSE for RadiantOne. If you want to remove public access to the RootDSE, check the Enable RootDSE ACI option after you delete the default global read access. This denies access to the RootDSE to everyone except cn=directory manager. You can also add a new ACI that dictates RootDSE access. Below is an example of allowing public access to the RootDSE:** <br> (target="ldap:///")(targetscope="base")(targetattr="*")(version 3.0; acl
-"RootDSE accessible to public"; allow (read,search,compare)
-userdn="ldap:///anyone";)**
+>If you delete the default read access, this does not delete read access to the RootDSE for RadiantOne. If you want to remove public access to the RootDSE, check the Enable RootDSE ACI option after you delete the default global read access. This denies access to the RootDSE to everyone except cn=directory manager. You can also add a new ACI that dictates RootDSE access. Below is an example of allowing public access to the RootDSE: <br> (target="ldap:///")(targetscope="base")(targetattr="*")(version 3.0; acl "RootDSE accessible to public"; allow (read,search,compare) userdn="ldap:///anyone";)
 
 Although there is not an absolute requirement, it is generally recommended to define all your
 access controls at the root level so you can come back to this single level and see all configured access controls across the entire RadiantOne namespace. When you define the actual ACI at the root level, you can set the Target DN to only the applicable branch in the namespace you want to protect.
