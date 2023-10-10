@@ -76,7 +76,7 @@ refresh.
 
 On the PCache Monitoring Tab, a list of cache refresh topologies appears on the left.
 
-![real-time refresh](Media/Imagerealtimerefresh.jpg) is the symbol for a real-time refresh.
+![real-time refresh](Media/ImageRealTimeRefresh.jpg) is the symbol for a real-time refresh.
 
 ![periodic refresh](Media/ImagePeriodicRefresh.jpg) is the symbol for a periodic refresh.
 
