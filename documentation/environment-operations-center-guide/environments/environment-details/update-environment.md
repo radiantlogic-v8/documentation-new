@@ -7,7 +7,7 @@ description: Learn how to manually update the RadiantOne version running in an e
 
 When version updates are applied to your Environment Operations Center instance, your environments are not updated automatically. There are two ways that you can manually update the version of individual environments: From the *Environments* home screen or the *Overview* screen of the environment that you wish to update. This guide outlines the steps required to update an environment from its *Overview* screen. For details on updating an environment from the *Environments* home screen, review the overview guide on [updating an environment](../environment-overview/update-an-environment.md).
 
-> **NOTE:** Before getting started, make sure you know the current version of Environment Operations Center and the required number of FID nodes to display for each environment that requires updating.
+> [!note] Before getting started, make sure you know the current version of Environment Operations Center and the required number of RadiantOne nodes to display for each environment that requires updating.
 
 ## Managing environment updates
 
@@ -31,7 +31,7 @@ Alternatively, you can select the **Update Now** message located next to the env
 
 The *Update Environment* dialog box contains a **Version** dropdown field to update the environment version. To update your version number, select the correct number from the **Version** drop down menu. Your currently installed version number is displayed just above the dropdown menu for reference.
 
-> **NOTE:** Environment versions can only be updated incrementally. You must select the version number that immediately succeeds your current environment version.
+> [!note] Environment versions can only be updated incrementally. You must select the version number that immediately succeeds your current environment version.
 
 ![image description](images/select-version.png)
 
