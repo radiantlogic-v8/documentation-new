@@ -39,4 +39,4 @@ Figure 9: Real Time Cache Refresh
 
 ## Related Material
 
-- RadiantOne Deployment and Tuning Guide.
+- [RadiantOne Deployment and Tuning Guide](/documentation/deployment-and-tuning-guide/00-preface
