@@ -74,4 +74,4 @@ A message appears on the Environment Details Panel that says **Deleting environm
 
 ![image description](images/delete-rest.png)
 
-> **NOTE** If the status of the endpoint does not change and the enabling message still sppears, refresh the envrionments page.
+> If the status of the endpoint does not change and the enabling message still sppears, refresh the envrionments page.

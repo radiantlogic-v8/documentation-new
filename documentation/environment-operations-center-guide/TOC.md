@@ -7,6 +7,8 @@ description: Environment operations center guide
 
 - [Overview](overview.md)
 - [Environments](#)
+  - [Login](#)
+    - [Login Page](login/login-overview.md)
   - [Environment overview](#)
     - [Environments overview](environments/environment-overview/environments)
     - [Create an environment](environments/environment-overview/create-an-environment.md)
@@ -17,6 +19,7 @@ description: Environment operations center guide
     - [Update an environment from its detailed view](environments/environment-details/update-environment.md)
     - [Delete an environment from its detailed view](environments/environment-details/delete-environment.md)
     - [Monitor node health of an environment](environments/environment-details/node-details.md)
+    - [Enable/Disable Endpoints](environments/environment-details/endpoints-overview.md)
   - [Backup and restore](#)
     - [Backup overview](environments/backup-and-restore/backup-restore-overview.md)
     - [Create an environment backup](environments/backup-and-restore/create-backup.md)
