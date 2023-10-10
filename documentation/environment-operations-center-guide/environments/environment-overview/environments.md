@@ -43,7 +43,7 @@ To access further details about an environment, select the name of the environme
 
 This brings you to the environment's *Overview* screen, where you can view further information about a given environment, such as node status or connections, and perform monitoring and updating actions.
 
-> **NOTE:** To learn more about the environment *Overview* features, review the [environment details](environments/environment-details/environment-details-ui.md) guide.
+> [!note] To learn more about the environment *Overview* features, review the [environment details](environments/environment-details/environment-details-ui.md) guide.
 
 ![image description](images/detailed-view.png)
 
@@ -51,7 +51,7 @@ This brings you to the environment's *Overview* screen, where you can view furth
 
 The environment **Type** is listed below the environment name and indicates whether the environment is configured as a "Production or "Non-production" environment. "Production" environments are for production purposes, and "Non-production" environments are for development and testing.
 
-> **NOTE:** The number of production and non-production environments available will differ depending on your organization's selected tier. Please contact your RadiantOne account representative to adjust your tier if you require additional environments.
+> [!note] The number of production and non-production environments available will differ depending on your organization's selected tier. Please contact your RadiantOne account representative to adjust your tier if you require additional environments.
 
 ![image description](images/env-type.png)
 
