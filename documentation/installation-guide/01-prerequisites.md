@@ -132,6 +132,4 @@ Technical support can be reached using any of the following options:
 
 - E-mail: support@radiantlogic.com
 - Website: https://support.radiantlogic.com
-- Phone: 415-209-6800
-- Toll-Free Phone: 1-877-727-6442
-- Fax: 415-798-5697
+
