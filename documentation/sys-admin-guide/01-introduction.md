@@ -74,7 +74,7 @@ Message	 | Cause | Solution
 
 >[!note] If you are logged into the Main Control Panel and your password is set to expire soon due to a [password policy](06-security#password-policies), the Main Control Panel displays the following warning. 
 
-![password expiring soon](media/password-expiring-soon.png)
+![password expiring soon](Media/password-expiring-soon.png)
 
 ### Logging in with PIV Card/Smart Card/Certificate
 
