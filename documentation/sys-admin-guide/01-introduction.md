@@ -72,6 +72,10 @@ Message	 | Cause | Solution
 "Authentication failed. Reason [LDAP: error code 49 - Password has expired.]" [A Reset Password link is displayed.] | Password expiry.	 | Click the Reset Password link.
 “Authentication failed. Reason: [LDAP: error code 19 - The password failure limit has been reached and the account is locked. Please retry later or contact the system administrator to reset the password.]” | The account is locked. | Retry later or contact the system administrator to reset the password.
 
+>[!note] If you are logged into the Main Control Panel and your password is set to expire soon due to a [password policy](06-security#password-policies), the Main Control Panel displays the following warning. 
+
+![password expiring soon](media/password-expiring-soon.png)
+
 ### Logging in with PIV Card/Smart Card/Certificate
 
 You can log in using a PIV Card/Smart Card/Certificate as an alternative to using username and password. To support this functionality, login with the default super user account and configure the following.
