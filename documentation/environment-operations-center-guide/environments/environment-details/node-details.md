@@ -71,7 +71,7 @@ Select **Close** to exit the node details dialog.
 
 Alternatively, the log files of a node can be accessed by selecting **View Logs** from the associated **Options** (**menu**).
 
-> **NOTE:** For further details on reviewing logs, see the [environment logs](../logging/environment-logs.md) guide.
+> [!note] For further details on reviewing logs, see the [environment logs](../logging/environment-logs.md) guide.
 
 ![image description](images/options-view-logs.png)
 
