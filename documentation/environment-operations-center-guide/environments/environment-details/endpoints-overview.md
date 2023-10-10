@@ -1,7 +1,7 @@
 ---
 keywords:
 title: Enable/Disable Endpoints in an Environment from its Detailed View
-description: Learn how to enable/dsiable endpoints of environments in Environment Operations Center.
+description: Learn how to enable/disable endpoints of environments in Environment Operations Center.
 ---
 
 
@@ -11,7 +11,7 @@ There are three major endpoints provided through EOC and can be disbaled / enabl
 
 ![image description](images/endpoints.png)
 
-> **NOTE** Enabling/Disabling endpoints should be done one endpoint at a time.
+> [!note]Enabling/Disabling endpoints should be done one endpoint at a time.
 
 ## Control Panel
 
