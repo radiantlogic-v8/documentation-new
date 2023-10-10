@@ -11,9 +11,9 @@ description: Installation Guide
 
 To activate RadiantOne, copy your license file into <RLI_HOME>/vds_server or enter it during installation. If you have not received the license file, please contact Radiant Logic, Inc at support@radiantlogic.com.
 
-If you are using an evaluation or subscription-based license, the Main Control Panel displays the license’s expiration date and time. Default evaluation licenses expire after 30 days. If your evaluation license expires, you can renew it by contacting Radiant Logic, Inc.
+If you are using an evaluation or subscription-based license, the Main Control Panel displays the license’s expiration date and time. Default evaluation licenses expire after 14 days. If your evaluation license expires, you can renew it by contacting Radiant Logic, Inc.
 
->**Note – if you already have a license.lic file and are installing the RadiantOne platform on a new machine, during the installation, choose the Skip this Step option on the license page. After the installation, copy your existing license.lic file in <RLI_HOME>/vds_server.**
+> [!note] if you already have a license.lic file and are installing the RadiantOne platform on a new machine, during the installation, choose the Skip this Step option on the license page. After the installation, copy your existing license.lic file in <RLI_HOME>/vds_server.
 
 ### Cloud Installation
 
