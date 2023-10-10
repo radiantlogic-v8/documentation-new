@@ -32,7 +32,7 @@ The LDAPS is disabled by default, and can be enabled by using toggle button.
 
 ![image description](images/ldaps.png)
 
-When the endpoint is enabled, the toggle turns green and a message appears on the **Environment Details** panel thats says **Enabling environment LDAPS endpoint**
+When the endpoint is enabled, the toggle turns green and a message appears on the **Environment Details** panel that indicates: **Enabling environment LDAPS endpoint**
 
 
 ![image description](images/enable-ldaps.png)
@@ -58,7 +58,7 @@ The REST endpoint is disabled by default, and can be enabled by using toggle but
 
 ![image description](images/rest.png)
 
-When the endpoint is enabled, the toggle turns green and a message appears on the **Environment Details** panel thats says **Enabling environment REST endpoint**
+When the endpoint is enabled, the toggle turns green and a message appears on the **Environment Details** panel that indicates: **Enabling environment REST endpoint**
 
 ![image description](images/enable-rest.png)
 
