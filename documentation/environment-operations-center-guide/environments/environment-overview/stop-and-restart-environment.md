@@ -8,7 +8,7 @@ description: Learn how to stop an environment in Environment Operations Center.
 This guide outlines the required steps to stop an environment while on the *Environments* home screen in Environment Operations Center.
 <!-- For information on deleting an environment from its detailed view, see the [delete an environment from its detailed view](../environment-details/delete-environment.md) guide. -->
 
-> **NOTE:** Only non-production environments can be stopped by users. To stop a production environment, please contact Radiant Logic.
+> [!note] Only non-production environments can be stopped by users. To stop a production environment, please contact Radiant Logic.
 
 ## Select the environment
 
@@ -18,7 +18,7 @@ From the *Environments* home screen, locate the environment you would like to st
 
 From the list of options elect **STOP** to stop the environment
 
-> **NOTE** WHen an environment is stopped, no data is lost. And the environment can be started back to state before stop.
+> [!note] When an environment is stopped, no data is lost. The environment can be started back to the state before it was stopped.
 
 ![image description](images/power-icon-stop.png)
 
@@ -37,7 +37,7 @@ When the environment is successfully stopped, the status on the overview page ch
 
 ## Start environment
 
-> **NOTE:** Starting an environment is only available when a environment is created and stopped.
+> [!note] Starting an environment is only available when a environment is created and stopped.
 
 To start the selected environment, on the overview page, right top corner, click on the power icon
 
@@ -55,7 +55,7 @@ A message appears on the environment overview screen, **Starting environment**
 
 ![image description](images/starting-env.png)
 
-> **NOTE** The environment **START** process may take up to 10 minutes.
+> [!note] The environment **START** process may take up to 10 minutes.
 
 ## Confirmation
 
