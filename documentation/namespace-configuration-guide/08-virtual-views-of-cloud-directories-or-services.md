@@ -948,7 +948,7 @@ Figure 8.52: SailPoint Virtual View
  
 Figure 8. 43: SailPoint Attributes Available in the Virtual View
 
-1.	Click ![An image showing ](Media/Save3.jpg). 
+1.	Click ![An image showing ](Media/save3.jpg). 
 1.	Mount this virtual view below a naming context, from the [Main Control Panel > Directory Namespace tab](06-virtual-views-based-on-aggregation#mounting-virtual-views-created-with-context-builder). 
 1.	To test the virtual view, go to the Main Control Panel -> Directory Browser tab and navigate below the naming context where you mounted the virtual view. Your SailPoint users are shown.
 
