@@ -325,78 +325,50 @@ RadiantOne supports both the legacy Azure Active Directory Graph API and the Mic
 >Since the Azure Active Directory Graph API will soon be deprecated by Microsoft, it is advised to use the mgraph custom data source.
 
 1.	On the Main Control Panel > Settings tab > Server Backend section, go to Custom Data Sources.
-
-2.	On the right, click either the *graphapi* or *mgraph* data source and click Edit.
+1.	On the right, click either the *graphapi* or *mgraph* data source and click Edit.
 
 ![An image showing ](Media/Image8.22.jpg) 
 
 Figure 8.22: Azure AD Custom Data Source
 
-3.	Select the username property and click **Edit**.
-
-4.	Enter the value of the Azure AD Application ID.
-
-5.	(Optional) If you are connecting to Azure AD with a certificate instead of a client secret, complete steps 5-14. Otherwise, skip to step 15. Click Add and create a property named “clientid”.
-
-6.	Enter the Azure AD Application ID for the clientid property value and click **OK**.
-
-7.	Click **Add** and create a property named auth_cert_password.
-
-8.	Enter the value of your certificate password for the auth_cert_password property and click **OK**.
-
-9.	Click **Add** and create a property named auth_cert_path.
-
-10.	Enter the value of your certificate path for the auth_cert_path property and click **OK**.
-
-11.	Click **Add** and create a property named auth_tenant.
-
-12.	Enter the value of your azure AD tenant for the auth_tenant property and click **OK**.
-
-13.	Click **Add** and create a property named auth_type.
-
-14.	Enter the value access_token_with_certificate and click OK.
-
-15.	(Optional) If you are using a client secret instead of a certificate, select the password property and click Edit.
-
-16.	(Optional) If you are using a client secret instead of a certificate, enter the secret key associated with your Azure AD application. 
-
-17.	Select the URL property and click Edit. Enter the URL for your Azure AD tenant (if using graphapi, this would look like: `https://graph.windows.net/<your _tenant_name>`. If using mgraph, this would look like: https://graph.microsoft.com/beta).
-
-18.	Click **OK**.
-
-19.	Select the oauthURL property and click **Edit**. 
-
-20.	Enter the URL for your Azure AD tenant token endpoint (if using graphapi, this would look like: `https://login.microsoftonline.com/<your _tenant_name>/oauth2/token`. If using mgraph, this would look like: `https://login.microsoftonline.com/<your _tenant_name>/oauth2/v2.0/token`).
-
-21.	Click **OK**.
-
-22.	Select the active property and click **Edit**.
-
-23.	Enter true to activate the data source.
-
-24.	Click **OK**.
-
-25.	If your company requires API calls to be made through a Web Proxy Server, add a property named “proxy” with a value that points to the proxy server and port (e.g. rli.vip.proxy.com:9090). If SSL is required, add a property named “proxyssl” with a value of true. 
+1.	Select the username property and click **Edit**.
+1.	Enter the value of the Azure AD Application ID.
+1.	(Optional) If you are connecting to Azure AD with a certificate instead of a client secret, complete steps 5-14. Otherwise, skip to step 15. Click Add and create a property named “clientid”.
+1.	Enter the Azure AD Application ID for the clientid property value and click **OK**.
+1.	Click **Add** and create a property named auth_cert_password.
+1.	Enter the value of your certificate password for the auth_cert_password property and click **OK**.
+1.	Click **Add** and create a property named auth_cert_path.
+1.	Enter the value of your certificate path for the auth_cert_path property and click **OK**.
+1.	Click **Add** and create a property named auth_tenant.
+1.	Enter the value of your azure AD tenant for the auth_tenant property and click **OK**.
+1.	Click **Add** and create a property named auth_type.
+1.	Enter the value access_token_with_certificate and click OK.
+1.	(Optional) If you are using a client secret instead of a certificate, select the password property and click Edit.
+1.	(Optional) If you are using a client secret instead of a certificate, enter the secret key associated with your Azure AD application. 
+1.	Select the URL property and click Edit. Enter the URL for your Azure AD tenant (if using graphapi, this would look like: `https://graph.windows.net/<your _tenant_name>`. If using mgraph, this would look like: https://graph.microsoft.com/beta).
+1.	Click **OK**.
+1.	Select the oauthURL property and click **Edit**. 
+1.	Enter the URL for your Azure AD tenant token endpoint (if using graphapi, this would look like: `https://login.microsoftonline.com/<your _tenant_name>/oauth2/token`. If using mgraph, this would look like: `https://login.microsoftonline.com/<your _tenant_name>/oauth2/v2.0/token`).
+1.	Click **OK**.
+1.	Select the active property and click **Edit**.
+1.	Enter true to activate the data source.
+1.	Click **OK**.
+1.	If your company requires API calls to be made through a Web Proxy Server, add a property named “proxy” with a value that points to the proxy server and port (e.g. rli.vip.proxy.com:9090). If SSL is required, add a property named “proxyssl” with a value of true. 
 
 >[!note] 
 >If SSL is used, ensure RadiantOne trusts the public certificate for the proxy server. To manually trust the certificate, import it the RadiantOne Client Certificate Truststore from the Main Control Panel > Settings > Security > Client Certificate Truststore.
 
-26.	Click **OK**.
-
-27.	(If using the mgraph custom data source) Select the scope property and click Edit. If the scope doesn’t exist, click Add to create it.
-
-28.	The scope property value should be: https://graph.microsoft.us/.default for U.S. Government tenants (and https://graph.microsoft.com/.default for non-government tenants).
-
-29.	Click **OK**.
-
-30.	(If using the mgraph custom data source and Azure AD contains large volumes of users and/or groups; ~50K+ users) add two new properties: **max_retries_on_error** and **retry_interval_on_error**. These properties dictate the behavior of error recovery when initializing persistent cache on the virtual view of the Azure AD backend. Max_retries_on_error defines the number of retries when an error is encountered. This must be a positive, numeric value. After the maximum retries is exhausted, the exception is logged and the persistent cache initialization is stopped. If this property is not present, or contains an invalid value, no retry logic is used. Retry_interval_on_error indicates the amount of time to wait before the next retry. This value is in milliseconds. If this property is not present, or contains an invalid value, a default value of 10000 ms (10 seconds) is used.
+1.	Click **OK**.
+1.	(If using the mgraph custom data source) Select the scope property and click Edit. If the scope doesn’t exist, click Add to create it.
+1.	The scope property value should be: https://graph.microsoft.us/.default for U.S. Government tenants (and https://graph.microsoft.com/.default for non-government tenants).
+1.	Click **OK**.
+1.	(If using the mgraph custom data source and Azure AD contains large volumes of users and/or groups; ~50K+ users) add two new properties: **max_retries_on_error** and **retry_interval_on_error**. These properties dictate the behavior of error recovery when initializing persistent cache on the virtual view of the Azure AD backend. Max_retries_on_error defines the number of retries when an error is encountered. This must be a positive, numeric value. After the maximum retries is exhausted, the exception is logged and the persistent cache initialization is stopped. If this property is not present, or contains an invalid value, no retry logic is used. Retry_interval_on_error indicates the amount of time to wait before the next retry. This value is in milliseconds. If this property is not present, or contains an invalid value, a default value of 10000 ms (10 seconds) is used.
 
 >[!warning] 
 >After you successfully initialize the persistent cache, edit the mgraph custom data source and delete the max_retries_on_error and retry_interval_on_error properties so they don’t interfere with the persistent cache connector refresh logic which enforces similar properties.
 
-31.	If you are going to virtualize Azure AD Groups, see Working with Azure AD Groups and you might need to add more properties to the graphapi data source described in these steps.
-
-32.	Click **Save**. At this point, if you are using the graphapi custom data source, the default Azure view located at dv=graphapi,o=cloudservices,o=vds should return your data. If you are using the mgraph custom data source, you must create a new Root Naming Context on the Directory Namespace tab and mount the mgraph.dvx (default virtual view) in order to see the data.
+1.	If you are going to virtualize Azure AD Groups, see Working with Azure AD Groups and you might need to add more properties to the graphapi data source described in these steps.
+1.	Click **Save**. At this point, if you are using the graphapi custom data source, the default Azure view located at dv=graphapi,o=cloudservices,o=vds should return your data. If you are using the mgraph custom data source, you must create a new Root Naming Context on the Directory Namespace tab and mount the mgraph.dvx (default virtual view) in order to see the data.
 
 >[!note] 
 >If you are using Azure Active Directory B2C, you can use the graphapib2c custom data source instead.
