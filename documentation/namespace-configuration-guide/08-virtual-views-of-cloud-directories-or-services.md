@@ -208,29 +208,24 @@ Figure 8.14: Sample Run Time Virtual View from Salesforce
 As an alternative to using SCIM, RadiantOne includes a JDBC driver to virtualize Salesforce. This section describes the configuration.
 
 1.	On the Main Control Panel -> Settings tab -> Server Backend section, go to DB Data Sources.
-
-2.	On the right, click on radiantsalesforce and click **Edit**.
+1.	On the right, click on radiantsalesforce and click **Edit**.
  
 ![An image showing ](Media/Image8.15.jpg)
 
 Figure 8.15: Salesforce Custom Data Source
 
-3.	Enter your Salesforce user email in the User property.
-
-4.	Enter your Salesforce user’s password (which is your password appended with the [security token](#getting-a-security-token-from-salesforce) you received from Salesforce) in the Password property.
-
-5.	If you are connecting to a production instance of Salesforce, the URL value should be: jdbc:salesforce:
+1.	Enter your Salesforce user email in the User property.
+1.	Enter your Salesforce user’s password (which is your password appended with the [security token](#getting-a-security-token-from-salesforce) you received from Salesforce) in the Password property.
+1.	If you are connecting to a production instance of Salesforce, the URL value should be: jdbc:salesforce:
 If you are connecting to a sanbox/dev instance of Salesforce, the URL value should be: 
 
 `jdbc:salesforce:<sandboxURL>`
 
 e.g. jdbc:salesforce:https://test.salesforce.com/services/Soap/u/30.0
 
-6.	Click Save. At this point, the default Salesforce view located at dv=salesforce,o=cloudservices,o=vds should return your data (contacts and accounts are the objects defined in the view).
-
-7.	To view the schema associated with the radiantsalesforce data source, go to the Context Builder tab, Schema Manager sub-tab and open the schema named salesforce. The objects that can be virtualized from Salesforce are described in this file.
-
-8.	To create a new virtual view, use the Context Builder tab > View Designer sub-tab. For details on using View Designer, see the RadiantOne Context Builder Guide.
+1.	Click Save. At this point, the default Salesforce view located at dv=salesforce,o=cloudservices,o=vds should return your data (contacts and accounts are the objects defined in the view).
+1.	To view the schema associated with the radiantsalesforce data source, go to the Context Builder tab, Schema Manager sub-tab and open the schema named salesforce. The objects that can be virtualized from Salesforce are described in this file.
+1.	To create a new virtual view, use the Context Builder tab > View Designer sub-tab. For details on using View Designer, see the RadiantOne Context Builder Guide.
 
 #### Getting a Security Token from Salesforce
 
