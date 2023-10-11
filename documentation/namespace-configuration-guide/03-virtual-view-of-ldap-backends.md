@@ -69,42 +69,34 @@ If your directory service is running in a network that is not accessible from th
 Automatic host discovery can be used when connecting to underlying Active Directory servers using DNS lookups.
 
 >[!warning] 
->If you plan to use persistent cache with real-time/connector-based refresh for your virtual view of Active Directory, do not use host discovery since the native Active Directory capture connector requires the FQDN of the primary and failover servers defined in the data source, in combination with the replication vector to perform failover. If you do not plan on caching your virtual view and/or you plan on using a periodic refresh strategy, then using host discovery is fine.**
+>If you plan to use persistent cache with real-time/connector-based refresh for your virtual view of Active Directory, do not use host discovery since the native Active Directory capture connector requires the FQDN of the primary and failover servers defined in the data source, in combination with the replication vector to perform failover. If you do not plan on caching your virtual view and/or you plan on using a periodic refresh strategy, then using host discovery is fine.
 
 The LDAP services reached are the ones published in the DNS service record. If the LDAP service is not published, it cannot be reached (the service is defined by a host AND port in the SRV record). Some examples are shown below (0 means highest priority level)
 
-```
 _ldap._tcp.example.com.    SRV 1 100 389 ldap.example.net
 _ldap._tcp.example.com.    SRV 0 100 636 ldap.example.net
-```
 
 DNS lookups leverage the domain specified in the host parameter. When the specific domain is set in the host parameter, the BaseDN value can be omitted. To use this functionality, the host option should specify the domain name you are interested in and optionally a port (if you are looking for a specific service on a specific port). If you do specify a port, then RadiantOne tries to get the first LDAP service it finds that is listening on that specific port (no matter what order of that particular service in the srv record). Additionally, if you enter a port and there is no LDAP service available on that port, RadiantOne uses the first LDAP service returned from the srv record.
 
 >[!note] 
->If there are multiple LDAP services available in the SRV record, RadiantOne uses the first five as “main/primary” and “failover” servers. RadiantOne uses these to automatically failover if the primary LDAP is down. Do not manually specify failover servers in the data source.
+>The number of LDAP services available in the SRV record that RadiantOne uses as the “main/primary” and “failover” servers is indicated by the Active Dir. SRV Record Limit properety that is configured in Main Control Panel > Settings > Server Backend > Connection Pooling/Other section. RadiantOne uses these servers to automatically failover if the primary LDAP is down. Do not manually specify failover servers in the data source.
 
 Below are some examples of the syntax.
 
-Example 1 - Host specified with port set to 0 (a value of zero means no port is indicated). This uses the novato.radiantlogic.com domain and returns the first server found as there is no specific port mentioned.
+**Example 1** - Host specified with port set to 0 (a value of zero means no port is indicated). This uses the novato.radiantlogic.com domain and returns the first server found as there is no specific port mentioned.
 
-```
 host:[domain:novato.radiantlogic.com] 
 port:0
-```
 
-Example 2 - This example tries to get the 'global catalog' ldap service (the one listening on port 3268).
+**Example 2** - This example tries to get the 'global catalog' ldap service (the one listening on port 3268).
 
-```
 host:[domain:radiantlogic.com]
 port:  3268
-```
 
-Example 3 - This example tries to get an SSL connection to the LDAP server (on port 636).
+**Example 3** - This example tries to get an SSL connection to the LDAP server (on port 636).
 
-```
 host:  [domain:na.radiantlogic.com]
 port:  636
-```
 
 ### Host 
 Server name or IP address. If you want to use host discovery, you can enter the Active Directory domain here (fully qualified domain name in [ ] like the examples shown above). 
@@ -159,7 +151,6 @@ The example below explains what happens when a service account credential define
 
 Data Source for Server 1 in this example is:
 
-```
 Hostname: Server1
 Port:1389
 Base DN: o=airius,dc=server1
@@ -171,7 +162,6 @@ Port: 389
 Base DN: dc=server2
 Bind DN (service account): cn=superuser,dc=partners,dc=airius,dc=com,dc=server2
 Bind Password: password2
-```
 
 **Example 1: No Pass Thru Authorization**
 <br>If user: “cn=joe,dc=partners,dc=airius,dc=com,dc=server2,ou=global,o=vds” binds successfully to RadiantOne and accesses the dc=server2,ou=global,o=vds branch (the same backend server that processed the bind request), then his access rights to the data are determined by the service account user credentials in the backend server (“cn=superuser,dc=partners,dc=airius,dc=com,dc=server2”).
@@ -193,30 +183,24 @@ Figure 3.5: Sample Proxy Configuration
 
 Data Source for Server 1 in this example is:
 
-```
 Hostname: Server1
 Port: 1389
 Base DN: ou=People,o=airius,dc=server1
 Pass Thru Authorization: Enabled 
-```
 
 Another Proxy Configuration for Server 1 (with a different Base DN) is:
 
-```
 Hostname: Server 1
 Port: 1389 
 Base DN: ou=temps,o=airius,dc=server1
 Pass Thru Authorization: Enabled
-```
 
 Data Source for Server 2 in this example is:
 
-```
 Hostname: Server 2
 Port: 389 
 Base DN: dc=server2
 Pass Thru Authorization: Enabled
-```
 
 If no service account credentials (Bind DN/Bind password) are configured in the data source, and Pass Thru Authorization is enabled on the proxy view, then the user that binds successfully has access rights that are defined for them in the directory where they have been authenticated. This is known as impersonation. RadiantOne impersonates this user when performing operations on the underlying server.
 
@@ -236,25 +220,21 @@ Figure 3.6: Sample Proxy Configuration
 
 Data Source for Server 1 in this example is:
 
-```
 Hostname: Server1
 Port:1389
 Base DN: o=airius,dc=server1
 Bind DN (service account): cn=specialuser,ou=people,o=airius,dc=server1
 Bind Password: password 
 Pass Thru Authorization defined on the proxy view defined: Enabled
-```
 
 Data Source for Server 2 in this example is:
 
-```
 Hostname: Server 2
 Port: 389 
 Base DN: dc=server2
 Bind DN (service account): cn=superuser,dc=partners,dc=airius,dc=com,dc=server2
 Bind Password: password2
 Pass Thru Authorization defined on the proxy view defined: Enabled
-```
 
 If a service account (Bind DN/Bind Password) is specified in the data source and the Pass Thru Authorization feature is enabled on the proxy view, then, as in the previous sample, a user that successfully binds has the access rights that have been defined for them in the corresponding server (impersonation). 
 
