@@ -3,7 +3,7 @@ title: Global Identity Viewer
 description: Learn how to navigate and use the Global Identity Viewer to browse and search identities and groups, manage display templates, manage edit templates, define basic queries, define advanced queries, and configure reports.
 ---
 
-#  Global Identity Viewer
+#  Using Global Identity Viewer
 
 After the configuration outlined in Chapter 2 is completed, the Global Identity Viewer can be used. Any user that is a member of RadiantOne Directory Administrator, Global ID Viewer Design, Global ID Viewer Write or Read Only roles can log into the Global Identity Viewer Console and access the Global Identity Viewer. For details on the RadiantOne delegated admin roles, see the RadiantOne System Administration Guide.
 
