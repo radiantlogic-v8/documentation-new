@@ -184,10 +184,10 @@ A rich set of HTTP-based API's have been developed on top of LDAP, to provide br
 
 <section>
   
-  > [Docker](/getting_started/docker)  
+  > [Docker](getting_started/docker)  
   > Learn how to automate your deployment of RadiantOne in your cloud using Docker containers.
   
-  > [Kubernetes](/getting_started/kubernetes)  
+  > [Kubernetes](getting_started/kubernetes)  
   > Learn how to automate your deployment of RadiantOne using Kubernetes orchestration. 
   
    
@@ -197,7 +197,7 @@ A rich set of HTTP-based API's have been developed on top of LDAP, to provide br
 
 <section>
   
-  > [API Specification](/command-line-configuration-guide/01-introduction)
+  > [API Specification](command-line-configuration-guide/01-introduction)
   > Learn how to configure RadiantOne from command line.
   
 </section>
@@ -206,7 +206,7 @@ A rich set of HTTP-based API's have been developed on top of LDAP, to provide br
 
 <section>
   
-  > [Javadocs](/javadoc/allclasses-frame)
+  > [Javadocs](javadoc/allclasses-frame)
   > The API documentation applicable for customizing interception scripts in RadiantOne FID and transformation scripts in RadiantOne Global Synchronization.
   
 </section>
