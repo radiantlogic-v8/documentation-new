@@ -40,6 +40,8 @@ https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=resource-t
 
 This command exports the resource and its dependencies.
 
+>[!warning] This command does not export wizard artifacts (such as the XML files), except for  Global Identity Builder project artifacts.
+
 **Usage:**
 <br>`resource-export -name <name> [-instance <instance>] [-path <path>] [-skip <name>]`
 
@@ -68,6 +70,8 @@ https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=resource-e
 ### resource-import
 
 This command imports the resource and its dependencies.
+
+>[!warning] This command does not import wizard artifacts (such as the XML files), except for  Global Identity Builder project artifacts.
 
 **Usage:**
 <br>`resource-import -path <path> [-apply] [-instance <instance>][-interactive] [-overwrite] [-skip <name>] [-skipregex <skipregex>]`
