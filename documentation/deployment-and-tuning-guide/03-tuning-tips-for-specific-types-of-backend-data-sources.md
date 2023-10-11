@@ -229,7 +229,7 @@ Default is 0 (no timeout). This is the maximum number of seconds RadiantOne FID 
 
 **Write Operation Timeout**
 
-The default is 0 (no timeout). This is the maximum number of seconds RadiantOne FID waits to receive a response from to the backend LDAP server for a write operation. After this time, RadiantOne FID drops the request and attempts to send the request again. After two failed attempts to get a response back, RadiantOne FID returns an error to the client.
+The default is 0 (no timeout). This is the maximum number of seconds RadiantOne FID waits to receive a response from to the backend LDAP server for write operations and bind operations. After this time, RadiantOne FID drops the request and attempts to send the request again. After two failed attempts to get a response back, RadiantOne FID returns an error to the client.
 
 **Idle Timeout**
 
@@ -420,7 +420,7 @@ Default is 0 (no timeout). This is the maximum number of seconds RadiantOne FID 
 
 **Write Operation Timeout**
 
-The default is 0 (no timeout). This is the maximum number of seconds RadiantOne FID waits to receive a response from to the backend LDAP server for a write operation. After this time, RadiantOne FID drops the request and attempts to send the request again. After two failed attempts to get a response back, RadiantOne FID returns an error to the client.
+The default is 0 (no timeout). This is the maximum number of seconds RadiantOne FID waits to receive a response from to the backend LDAP server for write operations and bind operations. After this time, RadiantOne FID drops the request and attempts to send the request again. After two failed attempts to get a response back, RadiantOne FID returns an error to the client.
 
 **Idle Timeout**
 
