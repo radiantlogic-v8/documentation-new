@@ -3,7 +3,7 @@ title: Namespace Configuration Guide
 description: Namespace Configuration Guide
 ---
 
-# Chapter 6: Virtual Views based on an Aggregation of Multiple Types of Backends
+# Virtual Views based on an Aggregation of Multiple Types of Backends
 
 If your goal is to create a virtual view which aggregates multiple types of backends (combination of directories, database, web services…etc.), use the Virtual Tree type of option when creating the Root Naming Context.
 
