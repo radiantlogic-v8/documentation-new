@@ -755,12 +755,11 @@ Interception scripts can be configured at a [global level](03-front-end-settings
 
 1.	After the script has been enabled from the Main Control Panel click Save in the upper right corner and apply the changes to the server. 
 
-2.	To edit <naming_context>.java, click Edit Script. When finished editing, click Save.  
-<br>If you are using a global Interception, the script is: globalIntercept.java
+1.	To edit <naming_context>.java, click Edit Script. When finished editing, click Save.  If you are using a global Interception, the script is: globalIntercept.java
 
-3.	Rebuild the intercept.jar file by clicking **Build Interception Jar**. 
+1.	Rebuild the intercept.jar file by clicking **Build Interception Jar**. 
 
-4.	Restart the RadiantOne service. If RadiantOne is deployed in a cluster, you must restart the service on all nodes. Your script logic should now be invoked for the operations you have enabled.
+1.	Restart the RadiantOne service. If RadiantOne is deployed in a cluster, you must restart the service on all nodes. Your script logic should now be invoked for the operations you have enabled.
 
 For samples of interception scripts, please see the Radiant Logic Knowledge Base at: https://support.radiantlogic.com
 
