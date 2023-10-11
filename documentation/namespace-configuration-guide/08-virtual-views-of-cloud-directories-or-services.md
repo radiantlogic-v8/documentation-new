@@ -857,28 +857,23 @@ For RadiantOne to support OAuth authentication in the SCIM requests to SailPoint
 >The steps below provide general guidance and may not reflect the latest SailPoint interface. For more detailed configuration steps, refer to the SailPoint documentation.
 
 1.	Log into the SailPoint Admin Console as an administrator.
-
-2.	Go to Global Settings.
+1.	Go to Global Settings.
 
 ![An image showing ](Media/Image8.47.jpg)
 
 Figure 8.47: SailPoint Global Settings
 
-3.	Click API Authentication
+1.	Click API Authentication
 
 ![An image showing ](Media/Image8.48.jpg)
 
 Figure 8.48: SailPoint API Authentication
 
-4.	Click **Create**.
-
-5.	Enter a unique Client Name.
-
-6.	Select the proxy user to associate with the client.
-
-7.	Click Save.
-
-8.	Take note of the Client Id and the Secret (click ![An image showing ](Media/client-button.jpg) to reveal the secret).
+1.	Click **Create**.
+1.	Enter a unique Client Name.
+1.	Select the proxy user to associate with the client.
+1.	Click Save.
+1.	Take note of the Client Id and the Secret (click ![An image showing ](Media/client-button.jpg) to reveal the secret).
 
 ![An image showing ](Media/Image8.49.jpg)
 
@@ -918,59 +913,44 @@ Figure 8.50: Sample Client ID Value
 The Context Builder can be used to extract the metadata/schema from SailPoint and build a virtual view. 
 
 1.	Go to the Main Control Panel > Context Builder tab > Schema Manager sub-tab.
-
-2.	Click ![An image showing ](Media/plus-sign.jpg).
-
-3.	Select the SCIM v2.0 option and click **Next**.
-
-4.	Select the data source associated with SailPoint from the drop-down list and click **Next**.
+1.	Click ![An image showing ](Media/plus-sign.jpg).
+1.	Select the SCIM v2.0 option and click **Next**.
+1.	Select the data source associated with SailPoint from the drop-down list and click **Next**.
 
 ![An image showing ](Media/Image8.51.jpg)
  
 Figure 8.51: SCIM v2 Schema Extraction
 
-5.	Select the objects to extract and click Next. You can select all objects at this step because the virtual view definition can be customized to include only desired objects and attributes.
-
-6.	Enter a file name for the schema and click Create Schema. The extracted schema opens in Schema Manager. Expand below each object to see the corresponding attributes.
-
-7.	From the Context Builder tab > View Designer sub-tab, click ![An image showing ](Media/plus-sign.jpg).
-
-8.	Enter a name for the virtual view.
-
-9.	Click Select to choose the file containing the SailPoint schema on the Custom tab and click **OK***. 
+1.	Select the objects to extract and click Next. You can select all objects at this step because the virtual view definition can be customized to include only desired objects and attributes.
+1.	Enter a file name for the schema and click Create Schema. The extracted schema opens in Schema Manager. Expand below each object to see the corresponding attributes.
+1.	From the Context Builder tab > View Designer sub-tab, click ![An image showing ](Media/plus-sign.jpg).
+1.	Enter a name for the virtual view.
+1.	Click Select to choose the file containing the SailPoint schema on the Custom tab and click **OK***. 
 
 >[!note]
 >The virtual view definition can be customized as needed. The steps in this guide create a basic virtual view.
 
-10.	Click **OK** to create the view.
-
-11.	Select the file name in the tree view on the left and click **New Label** on the right.
-
-12.	Enter object for the Level Type and user for the value.
-
-13.	Click **OK**.
-
-14.	Select the object=user node in the tree view on the left and choose New Content on the right.
-
-15.	Select the Users object and click **OK**.
+1.	Click **OK** to create the view.
+1.	Select the file name in the tree view on the left and click **New Label** on the right.
+1.	Enter object for the Level Type and user for the value.
+1.	Click **OK**.
+1.	Select the object=user node in the tree view on the left and choose New Content on the right.
+1.	Select the Users object and click **OK**.
 
 ![An image showing ](Media/Image8.52.jpg)
  
 Figure 8.52: SailPoint Virtual View
 
-16.	For the selected users content node, click the Attributes tab.
-
-17.	Click ![An image showing ](Media/right-arrow3.jpg) to expose all available attributes in the virtual view.
+1.	For the selected users content node, click the Attributes tab.
+1.	Click ![An image showing ](Media/right-arrow3.jpg) to expose all available attributes in the virtual view.
 
 ![An image showing ](Media/Image8.53.jpg)
  
 Figure 8. 43: SailPoint Attributes Available in the Virtual View
 
-18.	Click ![An image showing ](Media/Save3.jpg). 
-
-19.	Mount this virtual view below a naming context, from the [Main Control Panel > Directory Namespace tab](06-virtual-views-based-on-aggregation#mounting-virtual-views-created-with-context-builder). 
-
-20.	To test the virtual view, go to the Main Control Panel -> Directory Browser tab and navigate below the naming context where you mounted the virtual view. Your SailPoint users are shown.
+1.	Click ![An image showing ](Media/Save3.jpg). 
+1.	Mount this virtual view below a naming context, from the [Main Control Panel > Directory Namespace tab](06-virtual-views-based-on-aggregation#mounting-virtual-views-created-with-context-builder). 
+1.	To test the virtual view, go to the Main Control Panel -> Directory Browser tab and navigate below the naming context where you mounted the virtual view. Your SailPoint users are shown.
 
 ![An image showing ](Media/Image8.54.jpg)
 
@@ -1086,29 +1066,23 @@ Figure 8.58: Page Size Property for SCIM Backend
 RadiantOne includes a default SCIM virtual view that can be used to virtualize PingOne Directory (<RLI_HOME>\vds_server\dvx\scimclient.dvx). The default data source associated with this virtual view is named scimclient. If you cloned the default scimclient custom data source to work with PingOne in the previous section, you can edit the default scimclient virtual view to use your custom data source.
 
 1.	Go to the Main Control Panel > Context Builder tab > Schema Manager sub-tab.
-
-2.	Click ![An image showing ](Media/open-button.jpg).
-
-3.	On the Custom Schemas tab, select the scimclient.orx and click Open.
-
-4.	On the tree view on the left, right-click on scimclient and choose Edit Connection String.
-
-5.	Click Edit to select the appropriate custom data source.
+1.	Click ![An image showing ](Media/open-button.jpg).
+1.	On the Custom Schemas tab, select the scimclient.orx and click Open.
+1.	On the tree view on the left, right-click on scimclient and choose Edit Connection String.
+1.	Click Edit to select the appropriate custom data source.
 
 ![An image showing ](Media/Image8.59.jpg)
  
 Figure 8.59: Custom Data Source Associated with Virtual View
 
-6.	Click **OK**. 
-
-7.	Click ![An image showing ](Media/save2.jpg).
+1.	Click **OK**. 
+1.	Click ![An image showing ](Media/save2.jpg).
 
 >[!warning] 
 >You can create a new virtual view instead of using the scimclient.dvx default one described in this section. However, you must first open scimclient.orx in Context Builder and Edit the Connection String to point to your appropriate custom data source. Otherwise, it continues to use the default custom data source named scimclient.
 
-8.	Mount this virtual view below a root naming context, from the [Main Control Panel > Directory Namespace tab](06-virtual-views-based-on-aggregation#mounting-virtual-views-created-with-context-builder). 
-
-9.	To test the virtual view, go to the Main Control Panel -> Directory Browser tab and navigate below the naming context where you mounted the virtual view. Your PingOne user accounts are shown.
+1.	Mount this virtual view below a root naming context, from the [Main Control Panel > Directory Namespace tab](06-virtual-views-based-on-aggregation#mounting-virtual-views-created-with-context-builder). 
+1.	To test the virtual view, go to the Main Control Panel -> Directory Browser tab and navigate below the naming context where you mounted the virtual view. Your PingOne user accounts are shown.
 
 ![An image showing ](Media/Image8.60.jpg)
  
