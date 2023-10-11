@@ -82,14 +82,14 @@ Condition – a set of one or more expressions that comprise a rule. Conditions 
 >[!note]
 >Binary attributes (i.e. `jpegPhoto`) and non-indexed attributes (i.e. `Description`) are intentionally omitted from the Global Profile Attribute drop-down list.
 
-3. Choose an operator to condition the expression.
-4. Choose an identity source attribute from the drop-down list (noted in blue) to complete the expression.
-5. To add more criteria in the condition, select **Add Expression**.
+1. Choose an operator to condition the expression.
+1. Choose an identity source attribute from the drop-down list (noted in blue) to complete the expression.
+1. To add more criteria in the condition, select **Add Expression**.
 
 >[!note]
 >To remove an expression, select ![remove icon](../media/image33.png).
 
-6. To add a new condition, select **Add Condition**.
+1. To add a new condition, select **Add Condition**.
 
 You can change the main operator for the condition/nested condition from the top drop-down list. The options are **AND**, **OR**, **NOT**.
 
@@ -103,10 +103,10 @@ The example correlation rule shown below indicates that a source identity is lin
 
 ![Example Correlation Rule](../media/image37.png)
 
-7. To add a rule, select **Add Correlation Rule**. Rules are processed in the order in which they appear.
-8. Select **Save Rules**.
-9. (Optional) [Define attribute priority](define-attribute-priority.md) if you have global profile attributes whose value can come from multiple identity sources.
-10. [Upload](upload.md) the identity source into the global profile. Otherwise, [add new identity sources](#identity-sources) to the project.
+1. To add a rule, select **Add Correlation Rule**. Rules are processed in the order in which they appear.
+1. Select **Save Rules**.
+1. (Optional) [Define attribute priority](define-attribute-priority.md) if you have global profile attributes whose value can come from multiple identity sources.
+1. [Upload](upload.md) the identity source into the global profile. Otherwise, [add new identity sources](#identity-sources) to the project.
 
 To return to the correlation rules, on the project page, select ![pencil icon](../media/image28.png) next to the identity source and choose **Correlation Rules**.
 
