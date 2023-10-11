@@ -3,7 +3,7 @@ title: Namespace Configuration Guide
 description: Namespace Configuration Guide
 ---
 
-# Chapter 2: Directory Namespace design
+# Directory Namespace design
 
 The virtual namespace is managed from the Main Control Panel > Directory Namespace tab. 
 
