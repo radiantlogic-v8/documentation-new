@@ -788,11 +788,19 @@ Figure 8: Target Attributes Operator
 
 The access rule can apply to “all” attributes or choose the “custom” option and click **Select** to narrow the list.
 
-For example, if you wanted an access control to apply to all attributes except for “aci”, you can use the (!=) operator, and click Select to choose the aci attribute. This results in a rule indicating the following for targetattr: (targetattr!="aci"). You would see this syntax if you chose to manually edit (by clicking **Manual Edit**) the rule after it was created. An example is shown below.
+By default, the root ACI prevents only the target attribute aci from being returned. This default ACI is shown below.
 
 ![Manual Edit of ACI](Media/Image6.5.jpg)
 
 Figure 9: Manual Edit of ACI
+
+To improve security, if you want to also prevent userpassword from being returned, you can do so as shown in the following example ACI. 
+
+(targetattr != "aci || userPassword")(target = "ldap:///")(targetscope = "subtree")(version 3.0;acl "grant read access to anyone";allow (read,compare,search) (userdn = "ldap:///anyone");)
+
+If you do not want to return the userPassword attribute for anyone other than self, you can do so as shown in the following example ACI. 
+
+(targetattr = "userPassword")(target = "ldap:///")(targetscope = "subtree")(version 3.0;acl "Allow Access to userPassword to self";allow (all) (userdn = "ldap:///self");)
 
 ### Authentication Context
 
