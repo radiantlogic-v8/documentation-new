@@ -1269,9 +1269,7 @@ Figure 17: Example Nested Group
 
 A client can issue a search leveraging the matching rule OID to retrieve all groups Adan_Funston is a member of with the following search filter.
 
-```
 (uniqueMember:1.2.840.113556.1.4.1941:=uid=Adan_Funston,ou=Accounting,o=companydirectory)
-```
 
 A search request to RadiantOne with the above filter would return Sales and All Users as shown in the example client below.
 
