@@ -38,6 +38,8 @@ In the following example, a request is made to display the resource dependency t
 
 This command exports the resource and its dependencies.
 
+>[!warning] This command does not export wizard artifacts (such as the XML files), except for  Global Identity Builder project artifacts.
+
 **Usage:**
 <br>`resource-export -name <name> [-instance <instance>] [-path <path>] [-skip <name>]`
 
@@ -64,6 +66,8 @@ In the following example, a request is made to export the resource so_hr_o_examp
 ### resource-import
 
 This command imports the resource and its dependencies.
+
+>[!warning] This command does not import wizard artifacts (such as the XML files), except for  Global Identity Builder project artifacts.
 
 **Usage:**
 <br>`resource-import -path <path> [-apply] [-instance <instance>][-interactive] [-overwrite] [-skip <name>] [-skipregex <skipregex>]`
