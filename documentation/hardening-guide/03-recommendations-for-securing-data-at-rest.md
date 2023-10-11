@@ -3,7 +3,7 @@ title: Hardening Guide
 description: Hardening Guide
 ---
 
-# Chapter 3: Recommendations for Securing Data at Rest
+# Recommendations for Securing Data at Rest
 
 ## Delete Global Read Access and Assign Finer-Grained Access Controls
 
@@ -31,7 +31,15 @@ By default, all users have read access to all naming contexts in RadiantOne for 
 
 This default access control can be removed from the Main Control Panel ->
 Settings Tab > Security section > Access Control. Click root on the right and select the
-configured access control described as “grant read access to anyone”. Then click on the Delete button.
+configured access control described as “grant read access to anyone”. Then click **Delete**.
+
+If you choose not to delete the grant access to anyone control, it is recommended for security reasons that you ensure that userpassword is not returned. You can do so as shown in the following example ACI. 
+
+(targetattr != "aci || userPassword")(target = "ldap:///")(targetscope = "subtree")(version 3.0;acl "grant read access to anyone";allow (read,compare,search) (userdn = "ldap:///anyone");)
+
+If you do not want to return the userPassword attribute for anyone other than self, you can do so as shown in the following example ACI. 
+
+(targetattr = "userPassword")(target = "ldap:///")(targetscope = "subtree")(version 3.0;acl "Allow Access to userPassword to self";allow (all) (userdn = "ldap:///self");)
 
 >[!warning] 
 >If you delete the default read access, this does not delete read access to the RootDSE for RadiantOne. If you want to remove public access to the RootDSE, check the Enable RootDSE ACI option after you delete the default global read access. This denies access to the RootDSE to everyone except cn=directory manager. You can also add a new ACI that
