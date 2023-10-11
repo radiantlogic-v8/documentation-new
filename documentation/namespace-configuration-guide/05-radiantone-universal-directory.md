@@ -622,26 +622,19 @@ To add dynamic members with the assistance of a wizard, follow the steps below.
 
 1.	Select a dynamic group and click the Manage Group option on the Directory Browser tab. The Manage Group window opens.
 
-2.	Click **Edit Dynamic Members**. 
+1.	Click **Edit Dynamic Members**. 
 
 >[!note] 
 >The Edit Dynamic Members option displays only if the group contains the groupOfUrls object class.
 
-3.	Click **Add Member(s)**.
-
-4.	Enter a base DN (starting point in the RadiantOne namespace) or click ![An image showing ](Media/expand-tree-button.jpg) to navigate to the location of the users. 
-
-5.	Select the scope of search needed to find the users. 
-
-6.	Finally, enter the filter that qualifies the users or groups as members of the specific group. 
-
-7.	Click **Confirm**. 
-
-8.	Click **Close** to exit the Dynamic Members screen. 
-
-9.	Once the memberURL is defined, you can enter optional return attributes separated by a comma instead of the default which is to return all attributes. If the user or group entries are large, you may want to only return the attribute that contains the user DN for example (dn, distinguishedName…etc.). To do so, select the memberURL attribute and choose Modify Attribute > Edit. 
-
-10.	In the LDAP URL, replace. 1.1 with a comma separated list of attributes to return and click OK.
+1.	Click **Add Member(s)**.
+1.	Enter a base DN (starting point in the RadiantOne namespace) or click ![An image showing ](Media/expand-tree-button.jpg) to navigate to the location of the users. 
+1.	Select the scope of search needed to find the users. 
+1.	Finally, enter the filter that qualifies the users or groups as members of the specific group. 
+1.	Click **Confirm**. 
+1.	Click **Close** to exit the Dynamic Members screen. 
+1.	Once the memberURL is defined, you can enter optional return attributes separated by a comma instead of the default which is to return all attributes. If the user or group entries are large, you may want to only return the attribute that contains the user DN for example (dn, distinguishedName…etc.). To do so, select the memberURL attribute and choose Modify Attribute > Edit. 
+1.	In the LDAP URL, replace. 1.1 with a comma separated list of attributes to return and click OK.
 
 ![An image showing ](Media/Image5.23.jpg)
  
@@ -704,25 +697,19 @@ Searching for multi-valued attributes (generally members) in a group may result 
 An example of how to perform a Range Retrieval search in RadiantOne is described below:
 
 1.	With the RadiantOne service started, click the Main Control Panel > Directory Browser tab. 
-
-2.	Click the ![An image showing ](Media/magnifying-glass-button.jpg) icon. 
-
-3.	Enter a DN in the Search DN field. 
-
-4.	Specify an object class. 
-
-5.	Select a scope. Searches with a lower limit other than 0 must have a scope of “base”. 
-
-6.	Click “Show Advanced Search”. 
-
-7.	In the Return Attributes field, enter your range in the following syntax. 
+1.	Click the ![An image showing ](Media/magnifying-glass-button.jpg) icon. 
+1.	Enter a DN in the Search DN field. 
+1.	Specify an object class. 
+1.	Select a scope. Searches with a lower limit other than 0 must have a scope of “base”. 
+1.	Click “Show Advanced Search”. 
+1.	In the Return Attributes field, enter your range in the following syntax. 
 
 `<member> or <uniquemember>;range=<lowerlimit>-<upperlimit>`
 
 >[!note] 
 >For more information on lower and upper limits, see the [Range Limits](#range-limits) section. Refer to the [Examples](#base-search-with-the-dereferencing-flag-set-to-search) section for example searches.
 
-8.	Click **Search**. 
+1.	Click **Search**. 
 
 ##### Range Limits
 
