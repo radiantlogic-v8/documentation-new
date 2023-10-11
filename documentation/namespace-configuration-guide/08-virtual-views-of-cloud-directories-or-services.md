@@ -251,41 +251,32 @@ If you have not already created an application in Azure AD, you must do so prior
 >The steps below provide general guidance and may not reflect the latest Microsoft Azure AD interface. For more detailed configuration steps, refer to the Microsoft Azure Active Directory documentation.
 
 1.	In the Microsoft Azure portal associated with your Azure AD, click on Manage -> App Registrations and then the New Registration button.
-
-2.	Provide a name for the application.
-
-3.	Select the option for “Accounts in this organizational directory only” for the Supported Account Types.
-
-4.	You do not need to provide a Redirect URI.
-
-5.	Click **Register**. The registered app is displayed. Take note of the Application ID.
+1.	Provide a name for the application.
+1.	Select the option for “Accounts in this organizational directory only” for the Supported Account Types.
+1.	You do not need to provide a Redirect URI.
+1.	Click **Register**. The registered app is displayed. Take note of the Application ID.
 
 ![An image showing ](Media/Image8.16.jpg)
 
 Figure 8.16: Azure AD Application
 
-6.	Click the application to access the specific settings.
-7.	Navigate to Certificates & Secrets.
-
-8.	In the Client Secret Section, click **New Client Secret**.
+1.	Click the application to access the specific settings.
+1.	Navigate to Certificates & Secrets.
+1.	In the Client Secret Section, click **New Client Secret**.
 
 >[!note] 
 >If you configured a certificate to use instead of a client secret, you will reference the certificate in the RadiantOne configuration instead and can skip this step and steps 9-10 below.
 
-9.	Enter a description, expiration and click **Add** .
-
-10.	Take note of the secret key value displayed.
-
-11.	Navigate to API Permissions and click Add a Permission.
-
-12.	RadiantOne supports both the legacy Azure Active Directory Graph API and the Microsoft Graph API. If you use the default graphapi custom data source in RadiantOne, it uses the legacy Azure Active Directory Graph API. If you use the default mgraph [custom data source](#configure-a-radiantone-scim-data-source) in RadiantOne, it uses the Microsoft Graph API. On the Microsoft API tab, be sure to select permission for the applicable API, based on what custom data source you are going to use.
+1.	Enter a description, expiration and click **Add** .
+1.	Take note of the secret key value displayed.
+1.	Navigate to API Permissions and click Add a Permission.
+1.	RadiantOne supports both the legacy Azure Active Directory Graph API and the Microsoft Graph API. If you use the default graphapi custom data source in RadiantOne, it uses the legacy Azure Active Directory Graph API. If you use the default mgraph [custom data source](#configure-a-radiantone-scim-data-source) in RadiantOne, it uses the Microsoft Graph API. On the Microsoft API tab, be sure to select permission for the applicable API, based on what custom data source you are going to use.
 
 >[!note] 
 >Azure Active Directory Graph is in the legacy API section. Since support for the Azure Active Directory Graph API will soon be deprecated, it is recommended you use the RadiantOne mgraph custom data source and the Microsoft Graph API.
 
-13.	Select Application permissions for the Type.
-
-14.	Enable Directory.Read.All for read-only access. If you want read/write access to the data, enable the Directory.ReadWrite.All access.
+1.	Select Application permissions for the Type.
+1.	Enable Directory.Read.All for read-only access. If you want read/write access to the data, enable the Directory.ReadWrite.All access.
 
 >[!note] 
 >If you need to be able to delete groups, you must also have the Group.ReadWrite.All permission.
@@ -294,11 +285,9 @@ Figure 8.16: Azure AD Application
  
 Figure 8.17: Azure AD Application Permissions
 
-15.	Click **Add Permissions**.
-
-16.	In the Configured Permissions section, click Grant Admin Consent.
-
-17.	Click Yes.
+1.	Click **Add Permissions**.
+1.	In the Configured Permissions section, click Grant Admin Consent.
+1.	Click Yes.
 
 >[!note] 
 >It might take a few minutes for the permissions to take effect. If you change the permissions after you have started testing with RadiantOne, you should restart the RadiantOne service to force the new permissions to take effect.
