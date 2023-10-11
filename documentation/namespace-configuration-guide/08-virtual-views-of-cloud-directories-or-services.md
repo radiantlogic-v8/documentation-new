@@ -10,7 +10,7 @@ description: Namespace Configuration Guide
 Cloud services like Salesforce, Google Directory, Azure AD (which stores identities that access services like Office 365), among others can be virtualized in RadiantOne and a default virtual view mounted at o=cloudservices,o=vds can be seen as an example. If you update the default data sources associated with this view, it should return your data. The following list includes the default data sources that you can edit to point to your service. 
 
 >[!note] 
->The default data sources mentioned below can be used as samples of virtualizing data sources reachable via an API. To configure new custom data sources, see the RadiantOne Context Builder Guide.
+>The default data sources mentioned below can be used as samples of virtualizing data sources reachable via an API. To configure new custom data sources, see the [RadiantOne Context Builder Guide](/documentation/context-builder-guide/introduction).
 
 Cloud Directory or Service	| RadiantOne Data Source
 -|-
@@ -25,7 +25,7 @@ SharePoint Online in Office 365	| Edit sharepointonline Custom Data Source to vi
 [Okta Universal Directory](#okta-universal-directory) | Edit oktaclient Custom Data Source.<br> <br> The sample virtual view is oktaclient.dvx and can be viewed in Context Builder, View Designer perspective. <br> <br> The virtual view is not mounted in the virtual namespace by default, but can be by creating a new naming context in the Main Control Panel > Directory Namespace tab.
 [SailPoint Identity IQ](#sailpoint-iiq) | Edit scimclient2 Custom Data Source (or clone it to create one specific for SailPoint).<br> <br> Edit scimclient2.orx schema file in Context Builder to modify it as needed for SailPoint. Create a virtual view based on the modified scimclient2.orx file.
 
-To connect to a new cloud service and create a virtual view, see the RadiantOne Context Builder Guide section on Custom Data Sources. 
+To connect to a new cloud service and create a virtual view, see the [RadiantOne Context Builder Guide](/documentation/context-builder-guide/schema-manager) section on Custom Data Sources. 
 
 More details about virtualizing [Salesforce](#salesforce), [Azure AD](#azure-active-directory), [Google Directory](#google-directory), [Okta Universal Directory](#okta-universal-directory), [SailPoint IdentityIQ](#sailpoint-iiq) and [PingOne Directory](#pingone-directory) by leveraging the sample default custom data sources can be found in this chapter.
 
@@ -225,7 +225,7 @@ e.g. jdbc:salesforce:https://test.salesforce.com/services/Soap/u/30.0
 
 1.	Click Save. At this point, the default Salesforce view located at dv=salesforce,o=cloudservices,o=vds should return your data (contacts and accounts are the objects defined in the view).
 1.	To view the schema associated with the radiantsalesforce data source, go to the Context Builder tab, Schema Manager sub-tab and open the schema named salesforce. The objects that can be virtualized from Salesforce are described in this file.
-1.	To create a new virtual view, use the Context Builder tab > View Designer sub-tab. For details on using View Designer, see the RadiantOne Context Builder Guide.
+1.	To create a new virtual view, use the Context Builder tab > View Designer sub-tab. For details on using View Designer, see the [RadiantOne Context Builder Guide](/documentation/context-builder-guide/view-designer).
 
 #### Getting a Security Token from Salesforce
 
@@ -502,7 +502,7 @@ To work with multiple Azure AD tenants, you can clone the default graphapi or mg
 
 ### Azure AD Schema
 
-A schema file contains the metadata leveraged by RadiantOne to create virtual views of a data source. The default graphapi custom data source is associated with a schema file named graphapi.orx. The default mgraph custom data source is associated with a schema file named mgraph.orx. These files can be opened and modified in the Schema Manager sub-tab on the Main Control Panel -> Context Builder tab. For details on this tool, see the RadiantOne Context Builder Guide.
+A schema file contains the metadata leveraged by RadiantOne to create virtual views of a data source. The default graphapi custom data source is associated with a schema file named graphapi.orx. The default mgraph custom data source is associated with a schema file named mgraph.orx. These files can be opened and modified in the Schema Manager sub-tab on the Main Control Panel -> Context Builder tab. For details on this tool, see the [RadiantOne Context Builder Guide](/documentation/context-builder-guide/introduction).
 
 The default objects defined in the schema are Contacts, Devices, Groups and Users. 
 
@@ -562,7 +562,7 @@ If you’ve modified the graphapi.orx or mgraph.orx schema files to support exte
 
 1.	Save the virtual view. The run time view mounted at dv=graphapi,o=cloudservices,o=vds should now return the extension attributes. If you are using the mgraph.dvx file, you can create a New Root Naming Context in the Main Control Panel > Directory Namespace tab and mount the mgraph.dvx file there. 
 
-To create a new virtual view, load the graphapi.orx or mgraph.orx schema file in View Designer and define the new view. For details on using View Designer, see the RadiantOne Context Builder Guide.
+To create a new virtual view, load the graphapi.orx or mgraph.orx schema file in View Designer and define the new view. For details on using View Designer, see the [RadiantOne Context Builder Guide](/documentation/context-builder-guide/view-designer).
 
 #### Virtualizing Surname/SN Attribute
 
@@ -699,7 +699,7 @@ Figure 8.39: New Root Naming Context
 18.	Click **Ok** to complete the wizard and **OK** again to exit the confirmation.
 
 >[!note] 
->To view the schema associated with the googledirectory data source and default virtual view, go to the Main Control Panel > Context Builder tab > Schema Manager sub-tab and open the schema named googledirectory. The objects that can be virtualized from Google are described in this file. To create a new virtual view, use the View Designer sub-tab on the Context Builder tab and load the googledirectory.orx file. For details on using View Designer, see the RadiantOne Context Builder Guide.
+>To view the schema associated with the googledirectory data source and default virtual view, go to the Main Control Panel > Context Builder tab > Schema Manager sub-tab and open the schema named googledirectory. The objects that can be virtualized from Google are described in this file. To create a new virtual view, use the View Designer sub-tab on the Context Builder tab and load the googledirectory.orx file. For details on using View Designer, see the [RadiantOne Context Builder Guide](/documentation/context-builder-guide/view-designer).
 
 You can browse the runtime virtual view from the Main Control Panel > Directory Browser tab. An example is shown below.
 
@@ -1128,7 +1128,7 @@ Figure 8.60: Sample Run Time Virtual View from PingOne Directory
 This section describes how to virtualize AWS Cognito users and groups in RadiantOne using a default virtual view. Views created from AWS Cognito data sources are read-only, and binds are not supported. LDAP filters are also not supported. This means that when RadiantOne receives queries that contain filters from clients, those filters are not forwarded to AWS Cognito for processing. 
 
 >[!note]
->To support LDAP filters, create a view of AWS Cognito and configure it for a persistent cache with periodic refresh. For information on creating your own views, refer to the Context Builder Guide. For information on configuring persistent cache with periodic refresh, refer to the Deployment and Tuning Guide.
+>To support LDAP filters, create a view of AWS Cognito and configure it for a persistent cache with periodic refresh. For information on creating your own views, refer to the [RadiantOne Context Builder Guide](/documentation/context-builder-guide/introduction). For information on configuring persistent cache with periodic refresh, refer to the Deployment and Tuning Guide.
 
 To virtualize AWS cognito users and groups: 
 
