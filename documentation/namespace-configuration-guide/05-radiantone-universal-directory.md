@@ -3,7 +3,7 @@ title: Namespace Configuration Guide
 description: Namespace Configuration Guide
 ---
 
-# Chapter 5: RadiantOne Universal Directory
+# RadiantOne Universal Directory
 
 The RadiantOne platform offers the Universal Directory as a scalable storage that can be used to store any entries. After the root naming context is created, the local store can be populated from an LDIF file from the Main Control Panel > Directory Namespace tab or manually from the Main Control Panel > Directory Browser Tab.
 
