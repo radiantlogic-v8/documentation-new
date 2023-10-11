@@ -114,4 +114,4 @@ For each Identity Source:
 >[!warning]
 >If your identity sources contain LDAP dynamic groups or nested groups, you should consider using RadiantOne to automatically compute the membership (for example, evaluate dynamic groups, and un-nest groups) prior to starting your Global Identity Builder project. Otherwise, when you view the group information from the Global Identity Viewer, they will contain the exact values from the sources (for example, Sales group has the following members `ldap:///ou=users,o=directory??one?(department=Sales)` instead of the actual members of the Sales group). For details on this process, please see [address group membership challenges](address-group-challenges/ldap-dynamic-groups.md).
 
-For details on the Global Identity Viewer, please see the RadiantOne Global Identity Viewer Guide.
+For details on the Global Identity Viewer, please see the [RadiantOne Global Identity Viewer Guide](/documentation/global-identity-viewer-guide/01-introduction).
