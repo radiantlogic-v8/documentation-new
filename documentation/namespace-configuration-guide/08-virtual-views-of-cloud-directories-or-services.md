@@ -59,13 +59,10 @@ In order for RadiantOne to virtualize Salesforce via SCIM, it must authenticate 
 
 Figure 8. 1: Creating a Salesforce Connected App
 
-2.	Enter a name for the application, email to associate with the application and check the option to Enable OAuth Settings.
-
-3.	Enter a CallBack URL. RadiantOne doesn’t use this so the value doesn’t really matter. You can use: https://www.radiantlogic.com
-
-4.	Select the OAuth scopes that are applicable and click ![An image showing ](Media/right-arrow-button.jpg) to add them.
-
-5.	Leave all other defaults and click **Save**.
+1.	Enter a name for the application, email to associate with the application and check the option to Enable OAuth Settings.
+1.	Enter a CallBack URL. RadiantOne doesn’t use this so the value doesn’t really matter. You can use: https://www.radiantlogic.com
+1.	Select the OAuth scopes that are applicable and click ![An image showing ](Media/right-arrow-button.jpg) to add them.
+1.	Leave all other defaults and click **Save**.
 
 ![An image showing ](Media/Image8.2.jpg)
 
@@ -74,11 +71,9 @@ Figure 8.2: Configuring Salesforce Connected App
 >[!warning] 
 >Allow up to 10 minutes before using the connected app.
 
-6.	After clicking save, you are warned about the 10-minute wait time. Click **Continue**.
-
-7.	Take note of the Consumer Key shown on the summary page. You need this value to configure RadiantOne.
-
-8.	On the summary page, next to “Consumer Secret”, click “Click to Reveal” and take note of the value. You need this value to configure RadiantOne.
+1.	After clicking save, you are warned about the 10-minute wait time. Click **Continue**.
+1.	Take note of the Consumer Key shown on the summary page. You need this value to configure RadiantOne.
+1.	On the summary page, next to “Consumer Secret”, click “Click to Reveal” and take note of the value. You need this value to configure RadiantOne.
 
 ![An image showing ](Media/Image8.3.jpg)
 
@@ -98,31 +93,22 @@ Figure 8.4: Viewing Consumer Key and Secret for Connected App
 >[!note] 
 >If you are already using the scimclient custom data source to virtualize a SCIM backend, click the Clone button to make a copy that you can work with for Salesforce to avoid impacting your existing configuration.
 
-2.	Click **Add**.
-
-3.	Enter oauthurl for the Name property and provide a value of https://login.salesforce.com/services/oauth2/token which is the Salesforce Token Endpoint. 
-
-4.	Click **OK**.
-
-5.	Click **Add**.
-
-6.	Enter oauthclientid for the Name property and provide the [Consumer Key](#create-a-salesforce-connected-application) value associated with your Salesforce Application. 
+1.	Click **Add**.
+1.	Enter oauthurl for the Name property and provide a value of https://login.salesforce.com/services/oauth2/token which is the Salesforce Token Endpoint. 
+1.	Click **OK**.
+1.	Click **Add**.
+1.	Enter oauthclientid for the Name property and provide the [Consumer Key](#create-a-salesforce-connected-application) value associated with your Salesforce Application. 
 
 ![An image showing ](Media/Image8.5.jpg)
 
 Figure 8.5: Sample Consumer Key Value
 
-7.	Click **OK**.
-
-8.	Click **Add**.
-
-9.	Enter oauthclientsecret for the Name property and provide the [Consumer Secret](#create-a-salesforce-connected-application) value associated with your Salesforce Application.
-
-10.	Click **OK**. 
-
-11.	Select the url property and click Edit.
-
-12.	Enter the value matching your Salesforce SCIM service. The syntax is: https://<your_SCIMservice_url>/services/scim/v1
+1.	Click **OK**.
+1.	Click **Add**.
+1.	Enter oauthclientsecret for the Name property and provide the [Consumer Secret](#create-a-salesforce-connected-application) value associated with your Salesforce Application.
+1.	Click **OK**. 
+1.	Select the url property and click Edit.
+1.	Enter the value matching your Salesforce SCIM service. The syntax is: https://<your_SCIMservice_url>/services/scim/v1
 
 ![An image showing ](Media/Image8.6.jpg)
 
@@ -134,33 +120,23 @@ This URL should contain the same address you see when you are logged into Salesf
 
 Figure 8.7: Salesforce SCIM URL
 
-13.	Click **OK**. 
-
-14.	Select the username property and click **Edit**.
-
-15.	Enter your Salesforce username (email).
-
-16.	Click **OK**.
-
-17.	Select the password property and click Edit.
-
-18.	Enter the password (which is your password appended with the [security token](#getting-a-security-token-from-salesforce) you received from Salesforce) associated with your Salesforce user name.
-
-19.	Click **OK**.
-
-20.	Click **Save**.
+1.	Click **OK**. 
+1.	Select the username property and click **Edit**.
+1.	Enter your Salesforce username (email).
+1.	Click **OK**.
+1.	Select the password property and click Edit.
+1.	Enter the password (which is your password appended with the [security token](#getting-a-security-token-from-salesforce) you received from Salesforce) associated with your Salesforce user name.
+1.	Click **OK**.
+1.	Click **Save**.
 
 #### Configure a RadiantOne Virtual View
 
 RadiantOne includes a default SCIM schema file that can be modified to meet the needs of Salesforce. This section describes how to modify the default SCIM schema template and create a basic virtual view from Salesforce.
 
 1.	Go to the Main Control Panel > Context Builder.
-
-2.	Choose File > Open > Schema.
-
-3.	Select the scimclient.orx and click OK.
-
-4.	The SCIM schema information is going to be modified slightly for Salesforce, so save the file with a new name to avoid working with the default template. Click ![An image showing ](Media/save-button.jpg) and enter the new name (e.g. salesforcescimclient) and click OK.
+1.	Choose File > Open > Schema.
+1.	Select the scimclient.orx and click OK.
+1.	The SCIM schema information is going to be modified slightly for Salesforce, so save the file with a new name to avoid working with the default template. Click ![An image showing ](Media/save-button.jpg) and enter the new name (e.g. salesforcescimclient) and click OK.
 
 >[!note] 
 >The default data source associated with scimclient.orx is scimclient. if you cloned the default scimclient custom data source to work with Salesforce, right-click on the file name and choose Edit Connection String.  
@@ -169,42 +145,36 @@ RadiantOne includes a default SCIM schema file that can be modified to meet the 
 
 Figure 8.8: The Edit Connection String Option
 
-Click “Edit” to select the appropriate custom data source. 
+1. Click “Edit” to select the appropriate custom data source. 
 
 ![An image showing ](Media/Image8.9.jpg)
 
 Figure 8.9: Click Edit to select the appropriate custom data source
  
-5.	Expand the file name > Objects > Tables and right-click on Users.
-
-6.	Choose Edit Primary Key(s).
+1.	Expand the file name > Objects > Tables and right-click on Users.
+1.	Choose Edit Primary Key(s).
  
 ![An image showing ](Media/Image8.10.jpg)
 
 Figure 8.10: Editing Primary Key for SCIM Schema
 
-7.	Select the id attribute from the attributes list and use ![An image showing ](Media/right-arrow2.jpg) to move it to the column on the right.
-
-8.	Select the username attribute from the column on the right and use ![An image showing ](Media/left-arrow.jpg) to move it to the attributes column on the left.
+1.	Select the id attribute from the attributes list and use ![An image showing ](Media/right-arrow2.jpg) to move it to the column on the right.
+1.	Select the username attribute from the column on the right and use ![An image showing ](Media/left-arrow.jpg) to move it to the attributes column on the left.
  
 ![An image showing ](Media/Image8.11.jpg)
 
 Figure 8.11: Setting Primary Key
 
-9.	Click **Apply**.
-
-10.	Click ![An image showing ](Media/save2.jpg).
+1.	Click **Apply**.
+1.	Click ![An image showing ](Media/save2.jpg).
 
 >[!warning] 
 >To virtualize group objects, define the primary key as ‘id’ just like you did above for the users object. Only Users and Group objects are in the schema definition by default. To virtualize other objects via SCIM, you must first create the object (Right-click on Tables -> Add New Object) and add the attribute 'id' and define it as the primary key, just like you did above for the users object.
 
-11.	Click the View Designer tab.
-
-12.	Click ![An image showing ](Media/plus-sign.jpg).
-
-13.	Enter a name for the virtual view.
-
-14.	Click “Select” and browse to the salesforcescimclient file on the Custom Schemas tab and click OK.
+1.	Click the View Designer tab.
+1.	Click ![An image showing ](Media/plus-sign.jpg).
+1.	Enter a name for the virtual view.
+1.	Click “Select” and browse to the salesforcescimclient file on the Custom Schemas tab and click OK.
 
 >[!note] 
 >The virtual view definition can be customized as needed. The steps in this guide create a basic virtual view of users.
@@ -213,29 +183,21 @@ Figure 8.11: Setting Primary Key
 
 Figure 8.12: Creating a Virtual View from Salesforce
 
-15.	Select the salesforcescimclient node on the left and choose New Label on the right.
-
-16.	Enter “object” for the Level type and “user” for the value.
-
-17.	Click **OK**.
-
-18.	Click object=user in the tree on the left and choose New Content on the right.
-
-19.	Select the Users object and click **OK**.
+1.	Select the salesforcescimclient node on the left and choose New Label on the right.
+1.	Enter “object” for the Level type and “user” for the value.
+1.	Click **OK**.
+1.	Click object=user in the tree on the left and choose New Content on the right.
+1.	Select the Users object and click **OK**.
  
 ![An image showing ](Media/Image8.13.jpg)
 
 Figure 8.13: Salesforce Virtual View
 
-20.	For the selected users content node, click the Attributes tab.
-
-21.	Click ![An image showing ](Media/right-arrow3.jpg) to expose all available attributes in the virtual view.
-
-22.	Click ![An image showing ](Media/save3.jpg). Keep the same name (e.g. salesforcescimclient).
-
-23.	To mount this virtual view in the RadiantOne namespace, do so from the [Main Control Panel](06-virtual-views-based-on-aggregation#mounting-virtual-views-created-with-context-builder) -> Directory Namespace tab. 
-
-24.	To test the virtual view, go to the Main Control Panel -> Directory Browser tab and navigate below the naming context where you mounted the view in step 23. Your Salesforce user accounts are shown.
+1.	For the selected users content node, click the Attributes tab.
+1.	Click ![An image showing ](Media/right-arrow3.jpg) to expose all available attributes in the virtual view.
+1.	Click ![An image showing ](Media/save3.jpg). Keep the same name (e.g. salesforcescimclient).
+1.	To mount this virtual view in the RadiantOne namespace, do so from the [Main Control Panel](06-virtual-views-based-on-aggregation#mounting-virtual-views-created-with-context-builder) -> Directory Namespace tab. 
+1.	To test the virtual view, go to the Main Control Panel -> Directory Browser tab and navigate below the naming context where you mounted the view in step 23. Your Salesforce user accounts are shown.
 
 ![An image showing ](Media/Image8.14.jpg)
 
