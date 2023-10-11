@@ -9,7 +9,7 @@ The RadiantOne platform offers the Universal Directory as a scalable storage tha
 
 Once a Universal Directory naming context is created, a properties tab is available for managing the configuration. To access the properties tab, select the node representing the Universal Directory storage below the Root Naming Contexts section on the Main Control Panel > Directory Namespace Tab.
 
-Properties – This tab lists the settings:<!-- [storage location](#storage-location),--> [schema checking](#schema-checking), [normalizing attribute names](#normalize-attribute-names), [indexed attributes](#indexed-attributes), [non-indexed](#non-indexed-attributes) attributes, [sorted attributes](#sorted-attributes), [encrypted attributes](#encrypted-attributes-for-data-at-rest), [inter-cluster replication](#inter-cluster-replication), and support for [full text search](#support-for-full-text-search). There are also buttons for saving, [initializing](#initializing-radiantone-universal-directory-stores), [exporting], [re-building the index](#rebuilding-indexes), [backing up](#backing-up-a-radiantone-universal-directory-store), [restoring](#restoring-a-radiantone-universal-directory-store), and [deleting the local storage](#deleting-a-radiantone-universal-directory-store) (must be de-activated to delete).
+Properties – This tab lists the settings:<!-- [storage location](#storage-location),--> [schema checking](#schema-checking), [normalizing attribute names](#normalize-attribute-names), [indexed attributes](#indexed-attributes), [non-indexed](#non-indexed-attributes) attributes, [sorted attributes](#sorted-attributes), [encrypted attributes](#encrypted-attributes-for-data-at-rest), [inter-cluster replication](#inter-cluster-replication), and support for [full text search](#support-for-full-text-search). There are also buttons for saving, [initializing](#initializing-radiantone-universal-directory-stores), [exporting](#exporting-radiantone-universal-directory-stores), [re-building the index](#rebuilding-indexes), [backing up](#backing-up-a-radiantone-universal-directory-store), [restoring](#restoring-a-radiantone-universal-directory-store), and [deleting the local storage](#deleting-a-radiantone-universal-directory-store) (must be de-activated to delete).
 
 >[!warning] 
 >Although persistent cache leverages the Universal Directory as a storage, the functionality and configuration can vary slightly. For steps on configuring persistent cache and details on applicable properties, see the RadiantOne Deployment and Tuning Guide as this chapter is related to Universal Directory stores only.
@@ -321,18 +321,16 @@ Stores can be exported into an LDIF file from the Main Control Panel, Directory 
 >If exporting to an LDIFZ file, a security key must be configured for RadiantOne. Any target stores where you want to import this LDIFZ file must use the same LDIFZ security key value. For steps on defining key generation or changing the encryption security key, see the RadiantOne System Administration Guide.
 
 1.	From the Main Control Panel, Directory Namespace tab, select the branch in the virtual namespace where you want to export entries.
-
-2.	On the right side, click Export. 
-
-3.	Enter a file name and select an extension type (.ldif or .ldifz). If you want the exported file to be zipped and encrypted, select the .ldifz option from the drop-down list. In order to support exporting to an encrypted file, a security key must be configured for RadiantOne. Any target RadiantOne Universal Directory stores where you want to import this LDIFZ file must use the same LDIFZ security key value. For steps on defining key generation or changing the encryption security key, see the RadiantOne System Administration Guide.
+1.	On the right side, click Export. 
+1.	Enter a file name and select an extension type (.ldif or .ldifz). If you want the exported file to be zipped and encrypted, select the .ldifz option from the drop-down list. In order to support exporting to an encrypted file, a security key must be configured for RadiantOne. Any target RadiantOne Universal Directory stores where you want to import this LDIFZ file must use the same LDIFZ security key value. For steps on defining key generation or changing the encryption security key, see the RadiantOne System Administration Guide.
 
 ![An image showing ](Media/Image5.5.jpg)
  
 Figure 5.5: LDIF Export Configuration
 
-4. If this exported file is going to be used to initialize another RadiantOne Universal Directory store for replication, check the option to Export for Replication. Otherwise, leave this option unchecked. All entries in the RadiantOne Universal Directory store are exported with this option. 
+1. If this exported file is going to be used to initialize another RadiantOne Universal Directory store for replication, check the option to Export for Replication. Otherwise, leave this option unchecked. All entries in the RadiantOne Universal Directory store are exported with this option. 
 
-5.	Click Download.
+1.	Click Download.
 
 ### Rebuilding Indexes
 
@@ -570,13 +568,11 @@ Figure 5.21: Dynamic Object/Entry Example
 
 To update the time-to-live for an entry, you can use the “refresh” extended operation as outlined in RFC 2589. The refresh operation is sent by a client to RadiantOne, to indicate that the dynamic directory entry is still accurate and valuable. The client sends a periodic refresh request and if the server receives the request within the timeout period, the lifetime of the dynamic entry can be extended. Below is an example of using the LDAP extended operation command line utility to change the entryTTL to 900 seconds.
 
-```
 ldapexop -v -h "fidserver" -p 2389 -D"cn=Directory Manager" -w password refresh "uid=tempuser2,o=companydirectory" 900
 
 ldap_initialize( ldap://fidserver:2389 )
 newttl=900
 Result: Success (0)
-```
 
 ### Managing Group Entries
 
@@ -775,9 +771,7 @@ In the following example, a search is performed on all group member attributes.
 
 The Return Attributes value for this example is as follows.
 
-```
 member;range=0-*
-```
 
 ![An image showing ](Media/Image5.23.jpg)
 
@@ -787,10 +781,8 @@ Figure 5.23: Full-range Search Example
 
 This search retrieves the second through eleventh values. The following search parameters are used in this example.
 
-```
 Scope: Base
 Return attributes: member;range=1-10
-```
 
 ![An image showing ](Media/Image5.24.jpg)
 
@@ -800,9 +792,7 @@ Figure 5.24: Mid-range Search Example
 
 The following search retrieves the first through 5001st values. The Return Attributes value for this example is the following. 
 
-```
 member;range=0-5000
-```
 
 ![An image showing ](Media/Image5.25.jpg)
 
@@ -818,9 +808,7 @@ The following example is used to describe the ability to search group membership
 
 User Ada Rule (identified with a DN of uid=Ada_Rule,ou=Administration,o=companydirectory) is a member of a group named WebUsers. The WebUsers group is a member of a group named Intern. The Intern group is a member of a group named AllUsers. Ada is implicitly a member of WebUsers, Intern and AllUsers. To query RadiantOne for a list of all groups Ada is a member of, the following filter leveraging the LDAP_MATCHING_RULE_IN_CHAIN OID can be used:
 
-```
 (uniquemember:1.2.840.113556.1.4.1941:=uid=Ada_Rule,ou=Administration,o=companydirectory)
-```
 
 An example query using the RadiantOne LDAP Browser is shown below.
 
@@ -946,7 +934,6 @@ derefAliases=3 <br>(equivalent to using -a always in an ldapsearch command)	| De
 
 The following two entries, described in LDIF format, are used to explain how alias entries work.
 
-```
 dn: uid=Adan_Caudy,ou=Management,o=companydirectory
 uid: Adan_Caudy
 sn: Caudy
@@ -957,7 +944,6 @@ objectclass: alias
 objectclass: extensibleobject
 uid: President
 aliasedobjectname: uid=Adan_Caudy,ou=Management,o=companydirectory
-```
 
 Based on the two entries above, the uid=President entry is an alias for the uid=Adan_Caudy user. The example searches below describe how RadiantOne handles searches on the alias entry.
 
@@ -967,7 +953,6 @@ ldapsearch -p 2389 -h r1fidserver -D "cn=directory manager" -w password -b "uid=
 
 In this example, RadiantOne automatically dereferences the alias entry and returns the entry it points to. In this example, the search dereferences “uid=president,o=companydirectory”, which is an alias entry, and returns uid=Adan_Caudy,ou=Mangement,o=companydirectory as shown below.
 
-```
 version: 1
 dn: uid=Adan_Caudy,ou=Management,o=companydirectory
 employeeType: Intern
@@ -991,7 +976,6 @@ creatorsName: cn=directory manager
 employeeNumber: 6937
 l: Eureka
 sn: Caudy
-```
 
 ###### Base Search with the Dereferencing Flag set to search
 
@@ -999,7 +983,6 @@ ldapsearch -p 2389 -h r1fidserver -D "cn=directory manager" -w password -b "uid=
 
 In this example, RadiantOne returns the entry without dereferencing it. The uid=President,o=companydirectory entry is returned.
 
-```
 version: 1
 dn: uid=President,o=companydirectory
 entrydn: uid=President,o=companydirectory
@@ -1012,7 +995,6 @@ modifiersName: cn=directory manager
 creatorsName: cn=directory manager
 createTimestamp: 20180511202539.737Z
 aliasedObjectName: uid=Adan_Caudy,ou=Management,o=companydirectory
-```
 
 ###### Base Search with the Dereferencing Flag set to _always_
 
@@ -1020,7 +1002,6 @@ ldapsearch -p 2389 -h r1fidserver -D "cn=directory manager" -w password -b "uid=
 
 In this example, RadiantOne automatically dereferences the alias entry and returns the entry it points to. In this example, the search dereferences “uid=president,o=companydirectory”, which is an alias entry, and returns uid=Adan_Caudy,ou=Mangement,o=companydirectory as shown below.
 
-```
 version: 1
 dn: uid=Adan_Caudy,ou=Management,o=companydirectory
 employeeType: Intern
@@ -1044,7 +1025,6 @@ creatorsName: cn=directory manager
 employeeNumber: 6937
 l: Eureka
 sn: Caudy
-```
 
 ### Searching for Number of Subordinates
 
