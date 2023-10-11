@@ -284,11 +284,11 @@ The primary source is a virtual view of either an LDAP Backend, Database Backend
 6.	Select the object class that will condition the primary entries to be the source of the join.
 
 7.	Choose whether you want the default data store or custom settings.
-<br> **Default** – if this is chosen, RadiantOne stores the extension attributes below the cn=extendedxjoin naming context. This is a hidden naming context and is not seen from the LDAP clients. Hidden naming contexts are prefixed with the keyword hiddenContexts in the rootdse.ldif file. 
+<br> **Default** – if this is chosen, RadiantOne stores the extension attributes below the cn=extendedxjoin naming context. This is a hidden naming context and is not seen from the LDAP clients. Hidden naming contexts are prefixed with the keyword hiddenContexts in the rootdse.ldif file.
 
-    The entries are created automatically and the extension attributes are added, update and deleted based on client requests. The only parameters to configure when using the default settings are the object class you want associated with the extension attributes, and the attribute names.
+The entries are created automatically and the extension attributes are added, update and deleted based on client requests. The only parameters to configure when using the default settings are the object class you want associated with the extension attributes, and the attribute names.
 
-    **Custom** – if this is chosen, RadiantOne stores the extension attributes in the location of your choice. The location must first exist (create it if you haven’t already) in the virtual namespace. RadiantOne manages the creation of the entries and attributes as well as all modifications to these entries. The parameters you must configure are; the base DN (the location in the virtual namespace where you want to store the extension attributes), the object class to associate the extension attributes with, and how to comprise the RDN attribute (name and attribute from the primary object to populate the target RDN with).
+**Custom** – if this is chosen, RadiantOne stores the extension attributes in the location of your choice. The location must first exist (create it if you haven’t already) in the virtual namespace. RadiantOne manages the creation of the entries and attributes as well as all modifications to these entries. The parameters you must configure are; the base DN (the location in the virtual namespace where you want to store the extension attributes), the object class to associate the extension attributes with, and how to comprise the RDN attribute (name and attribute from the primary object to populate the target RDN with).
 
 >[!warning] 
 >If your chosen location in the virtual namespace is configured as something other than a RadiantOne Universal Directory store, then the underlying backend must be capable of storing the extension attributes. For example, if the backend is a database table, then columns representing the extension attributes must exist. If the backend is an LDAP directory, the extension attributes should be defined in the schema (if schema checking is enforced) and the object class that is associated with the extension attributes should be set during the configuration steps described below.
@@ -320,9 +320,9 @@ The primary source is a virtual view of either an LDAP Backend, Database Backend
 4.	Choose the Extended type of join and click Next.
 
 5.	Choose whether you want the default data store settings or custom.
-<br>Default – if this is chosen, RadiantOne stores the extension attributes below the cn=extendedxjoin naming context. This is a hidden naming context and is not seen from the LDAP clients. Hidden naming contexts are prefixed with the keyword hiddenContexts in the rootdse.ldif file. 
+<br>Default – if this is chosen, RadiantOne stores the extension attributes below the cn=extendedxjoin naming context. This is a hidden naming context and is not seen from the LDAP clients. Hidden naming contexts are prefixed with the keyword hiddenContexts in the rootdse.ldif file.
 
-  The entries are created automatically and the extension attributes are added, update and deleted based on client requests. The only parameters to configure when using the default settings are the objectclass you want associated with the extension attributes, and the attribute names.
+The entries are created automatically and the extension attributes are added, update and deleted based on client requests. The only parameters to configure when using the default settings are the objectclass you want associated with the extension attributes, and the attribute names.
 
   **Custom** – if this is chosen, RadiantOne stores the extension attributes in the location of your choice. The location must first exist (create it if you haven’t already) in the RadiantOne namespace. RadiantOne manages the creation of the entries and attributes as well as all modifications to these entries. The parameters you must configure are; the base DN (the location in the virtual namespace where you want to store the extension attributes), the object class to associate the extension attributes with, and how to comprise the RDN attribute (name and attribute from the primary object to populate the target RDN with).
 
@@ -443,11 +443,10 @@ LDAP://[VDS]/xid=@[uid],cn=config?newattr1,newattr2?base?(objectclass=*)##EXTEND
 
 **Example 4 – Multiple Join Conditions**
 
-To manually add more than one join condition, separate each LDAP URL with a semicolon (if you go through the wizard to set up multiple join conditions, then they are automatically separated with a semicolon).
+To manually add more than one join condition, separate each LDAP URL with a semicolon (if you go through the wizard to set up multiple join conditions, then they are automatically separated with a semicolon). An example of multiple join conditions separated with a semicolon is shown below.
 
-```
 LDAP://[VDS]/dv=activedirectory,o=vds?sAMAccountName,objectclass,cn?one?(employeeID=@[employeeNumber:VARCHAR(255)]);LDAP://[VDS]/dv=oracle,o=vds?EMPNO,ENAME?one?(EMPNO=@[employeeNumber:VARCHAR(255)])
-```
+
 
 ### Attribute Properties
 
@@ -547,9 +546,7 @@ If the filter in the client search involves attribute(s) that come from the prim
 
 If you require the attributes from the secondary sources to be [Searchable](#searchable) (used in a filter from a client search), you must specify them as such. If the filter received in the search contains any attributes that are defined as searchable from a secondary source, then RadiantOne does not pre-filter against the primary source for those attributes. The join is first performed (all entries are joined), and then the filter is applied on the result. For example, let’s say you have a backend pointing to a Sun Directory and you want to join with a virtual view of Active Directory. The following join condition could be defined:
 
-```
 LDAP://[VDS]/dv=activedirectory,o=vds?sAMAccountName,objectclass,cn:1152?one?(employeeID=@[employeeNumber:VARCHAR(255)])
-```
 
 Since cn is requested in the join condition (as searchable, NOT updateable, and NORMAL priority, dictated by the numeric value), RadiantOne knows that it should apply the filter received from the client after first joining the entries. The Sun entries are joined with the Active Directory entries (where employeeNumber=employeeID) and then the filter requested by the client is applied on the result. Obviously, performance is slower if you want attributes from joined sources to be searchable (because of the requirement to first join all entries).
 
@@ -581,9 +578,7 @@ If the Process Joins and Computed Attributes Only when Necessary optimization is
 
 If you would prefer RadiantOne return partial entries, then you must specifically indicate this in the external join condition. [Manually edit the join condition](#deactivating-a-join) and add the following:
 
-```
 ##ALLOW_PARTIAL_ENTRY=yes
-```
 
 If partial entries has been allowed, and the client issued a base search, they receive LDAP error code 0 (no error) along with the partial entry (whatever information RadiantOne was able to retrieve from available sources). Each returned entry contains an additional attribute of vsyspartialentry=true. If the client issued a one level or subtree search, they receive LDAP error code 9 along with the partial entry (whatever information RadiantOne was able to retrieve from available sources) and an error message from the secondary backend that was unavailable. Each returned entry contains an additional attribute of vsyspartialentry=true.
 
@@ -648,95 +643,65 @@ There are three options available to assist in the configuration of a computed a
 
 **avg(this.attributeName)** – Computes the average from the specified attribute values. The attribute name in this example is uid.
 
-```
 Example: avg(this.uid) values[1,2,3] returns 2
-```
 
 **firstValue(this.attributeName)** – Selects the first value from the specified attribute values. The attribute name in this example is uid.
 
-```
 Example: firstValue(this.uid) values[1,2,3] returns 1
-```
 
 **lastValue(this.attributeName)** - Select last value from attribute values.
 
-```
 Example: lastValue(this.uid) values[1,2,3] returns 3
-```
 
 **left(attribute,separ)** - Leftmost characters of the specified attribute before the separator string are returned.
 
-```
 Example: left("me@mydomain.com","@") returns "me"
-```
 
 **left(attribute,size)** - Leftmost characters (up to the amount specified in the size) of the specified attribute are returned.
 
-```
 Example: left("123456789",5) returns "12345"
-```
 
 **lookup(dataSourceID,baseDN,scope,filter,attrName,sizelimit)** - Executes an LDAP search/lookup and returns the value(s) found. The following is a sub-tree search to find the mail attribute for user with uid=me. VDS is the data source name/ID.
 
-```
 Example: lookup("[VDS]","o=mycompany",2,"(uid=me)","mail",1)
-```
 
 **lower(attribute)** - Converts all of the characters in the specified attribute to lower case.
 
-```
 Example: upper("abCD") returns "abcd" 
-```
 
 **max(this.attributName)** – Returns the maximum value from the specified attribute values. The attribute name in this example is uid.
 
-```
 Example: max(this.uid) values[1,2,3] returns 3
-```
 
 **min(this.attributeName)** – Returns the minimum value from the specified attribute values. The attribute name in this example is uid.
 
-```
-<br> Example: min(this.uid) values[1,2,3] returns 1
-```
+Example: min(this.uid) values[1,2,3] returns 1
 
 **parent(dnAttribute)** - Returns the parent DN of a given dnAttribute.
 
-```
 Example: parent(dn), assuming the dn value is "uid=me,ou=myorg,o=mycompany", the function returns "ou=myorg,o=mycompany for the computed attribute value.
-```
 
 **rdn(dnAttribute)** - Returns the RDN part of a given dnAttribute.
 
-```
 Example: rdn(dn), assuming the dn value is "uid=me,ou=myorg,o=mycompany", the function returns "uid=me" for the computed attribute value.
-```
 
 **rdnval(dnAttribute)** – Returns the value of the RDN for a given dnAttribute.
 
-```
 Example: rdnval("uid=me") returns "me" for the computed attribute value.
-```
 
 **remapDN(originalDNattribute,dnTemplate)** – Re-maps the original DN attribute based on a template. DN template is a representation of pattern to apply and it may contain a placeholder of %rdn and/or %dn. %rdn is the rdn value of the original DN. %dn is the value of original DN.
 
-```
 Example: remapDN(memberOf,"cn=%rdn,dc=my_groups") - %rdn is replaced with the rdn value extracted from the memberof attribute. 
 
 Example: remapDN(uniqueMember,"%dn,dc=my_users") adds a suffix of “dc=my_users” to the original dn.
-```
 
 **remapDN(originalDNattribute,oldSuffix,newSuffix)** – Changes the old suffix in the originalDNattribute to the newSuffix. Based on the example below, if a uniqueMember value was “uid=lcallahan,o=mycompany”, the computed attribute value would be “uid=lcallahan,dc=mycorp”.
 
-```
 Example: remapDN(uniqueMember,"o=mycompany","dc=mycomp") 
-```
 
 **remapDN(attr2remap,dataSourceID,externalBaseDN,scope,externalIdAttr)** – Extracts the RDN value from the `<attr2remap>` attribute and does a lookup in a data source where `<externaldAttr>=<attr2remap>`. Based on the example below, if a uniqueMember value was “uid=lcallahan,o=mycompany”, and the DN resulting from the lookup where sAMAccountName=lcallahan (in the vds data source, one level below o=proxy), was cn=lcallahan,dc=addomain1,dc=com, the computed attribute value would be “cn=lcallahan,dc=addomain1,dc=com”.
 
-```
 Example: remapDN("uniqueMember","vds","o=proxy",1,"samAccountName")
-```
 
 >[!note] 
 >This is not compatible with other functions meaning you can’t take the result of this function and pass it as a parameter to another function.
@@ -745,46 +710,31 @@ Example: remapDN("uniqueMember","vds","o=proxy",1,"samAccountName")
 
 Replaces the value of the attribute based on matching values in the given dictionary file.
 
-```
 Example: replaceFromDictionary("BOB","firstname.dat",null) returns "ROBERT" (this mapping was dictated by the contents of the firstname.dat file).
-```
 
 **right(attribute,separ)** - Rightmost characters of Attribute (after separ) are returned. 
 
-```
 Example: right("me@mydomain.com","@") returns "mydomain.com" for the computed attribute value.
-```
 
 **right(attribute,size)** - Rightmost characters of Attribute (number of characters is specified in the size) are returned.
 
-```
 Example: right("123456789",5) returns "56789" 
-```
 
 **sortAsc(this.attributeName)** - Sorts the specified attribute values into ascending order.
 
-```
 Example: sortAsc(this.uid), assuming values of uid are [1,3,2] returns [1,2,3] 
-```
 
 **sortDesc(this.attributeName)** - Sorts the specified attribute values into descending order.
 
-```
 Example: sortDesc(this.uid), assuming values of uid are [1,3,2] returns [3,2,1] 
-```
-
 
 **sum(this.attributeName)** - Computes total sum from attribute values.
 
-```
 Example: sum(this.uid), assuming values of uid are [1,2,3] returns 6 
-```
 
 **upper(attributename)** - Converts all of the characters in the value of attribute to upper case.
 
-```
 Example: upper("abCD") returns "ABCD" 
-```
 
 For detailed steps based on the type of primary source you are configuring, please see the Namespace Configuration Guide.
 
