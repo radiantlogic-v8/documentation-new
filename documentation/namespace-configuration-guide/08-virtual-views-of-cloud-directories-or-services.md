@@ -606,45 +606,38 @@ If you only want to support client requests with filters using (surname=<last_na
 To virtualize Google Directory, a Service Account on the domain must be set to enable the connection. 
 
 1.	Go to the developer console and log in as an administrator.
-<br> Developer console - https://console.developers.google.com/project
-<br> Admin console - https://admin.google.com or https://admin.google.com/<your-domain>/AdminHome
+Developer console - https://console.developers.google.com/project
+Admin console - https://admin.google.com or https://admin.google.com/<your-domain>/AdminHome
 
-2.	Create a new project. 
-
-3.	Click the new project and accept the default id if requested.
-
-4.	On the left tab, go to “APIs & auth” > APIs and enable the “Admin SDK” API and make sure it displays in the list of enabled APIs and the status is ON.
-
-5.	Go to “APIs & auth” > credentials. 
-
-6.	In OAuth, create a new client ID and select the type “Service Account” and validate it by clicking “Create Client ID”.
+1.	Create a new project. 
+1.	Click the new project and accept the default id if requested.
+1.	On the left tab, go to “APIs & auth” > APIs and enable the “Admin SDK” API and make sure it displays in the list of enabled APIs and the status is ON.
+1.	Go to “APIs & auth” > credentials. 
+1.	In OAuth, create a new client ID and select the type “Service Account” and validate it by clicking “Create Client ID”.
 
 ![An image showing ](Media/Image8.35.jpg)
 
 Figure 8.35: Google Service Account
 
-7.	Verify that the service account appears in API Project -> Permissions.
+1.	Verify that the service account appears in API Project -> Permissions.
 
 >[!warning] 
 >Take note of the client ID (<numbers-numbers&letters>.apps.googleusercontent.com) and the email address (`<same>@developer.gserviceaccount.com`) attached to the service account created, as you will need them later. Also notice that your browser just downloaded the P12 certificate that is needed to authenticate the Service account.
 
-8.	Go to the Admin console and log in as an administrator for your domain. 
-
-9.	Go to Security (if it does not appear on the dashboard/homepage, click “More controls” at the bottom).
-
-10.	In Security, click API reference and check “Enable API access”.
+1.	Go to the Admin console and log in as an administrator for your domain. 
+1.	Go to Security (if it does not appear on the dashboard/homepage, click “More controls” at the bottom).
+1.	In Security, click API reference and check “Enable API access”.
 
 ![An image showing ](Media/Image8.36.jpg)
 
 Figure 8.36: Enabling Google API Access
 
-11.	In Security, click “show more” then “Advanced settings” then “Manage API client access”. Here you can authorize the service account with different scopes that constrain its access to data. 
-
-12.	In client name, fill in the client ID of the service account, and in the API scopes textbox fill in the following scopes as is:
+1.	In Security, click “show more” then “Advanced settings” then “Manage API client access”. Here you can authorize the service account with different scopes that constrain its access to data. 
+1.	In client name, fill in the client ID of the service account, and in the API scopes textbox fill in the following scopes as is:
 
 https://www.googleapis.com/auth/admin.directory.user,https://www.googleapis.com/auth/admin.directory.group,https://www.googleapis.com/auth/admin.directory.orgunit,https://www.googleapis.com/auth/admin.directory.device.mobile,https://www.googleapis.com/auth/admin.directory.device.chromeos
 
-13.	Click “Authorize”. The service account is now entitled to view and manage all Directory data.
+1.	Click “Authorize”. The service account is now entitled to view and manage all Directory data.
 
 ![An image showing ](Media/Image8.37.jpg)
 
