@@ -3,7 +3,7 @@ title: Namespace Configuration Guide
 description: Namespace Configuration Guide
 ---
 
-# Chapter 4: Virtual Views of Database (JDBC/ODBC-accessible) Backends
+# Virtual Views of Database (JDBC/ODBC-accessible) Backends
 
 Virtual views can be configured for database backends and are associated with a specific root naming context. A root naming context is the very top node of a virtual directory view and RadiantOne can respond to many different root naming contexts. This section describes how to create and manage root naming contexts for databases. 
 
