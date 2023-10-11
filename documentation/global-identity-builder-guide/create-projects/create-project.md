@@ -17,9 +17,9 @@ When you first launch the Global Identity Builder tool, there are no projects de
     >[!note]
     >If you have already created projects, they are accessible on this page. To create a new project, select **New Project**.
 
-2. Define the [project properties](project-properties.md) and select **Save Changes**.
-3. Add [identity sources](identity-sources.md) to your project and select **Save Changes**.
-4. Select [Upload/Sync](upload.md) to upload identities into the global profile.
+1. Define the [project properties](project-properties.md) and select **Save Changes**.
+1. Add [identity sources](identity-sources.md) to your project and select **Save Changes**.
+1. Select [Upload/Sync](upload.md) to upload identities into the global profile.
 
 After a project has been created, common issues may arise that require manual interventions to resolve. These interventions are described in the following sections:
 
