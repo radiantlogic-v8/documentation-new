@@ -911,7 +911,6 @@ Any user that can bind to RadiantOne can potentially administrator the server if
 
 These functions are dictated by the following values of the vdPrivilege attribute in the group entry: 
 
-```
 - config-read
 - config-write
 - services-restart
@@ -932,7 +931,6 @@ These functions are dictated by the following values of the vdPrivilege attribut
 - globalidviewer-read
 - globalidviewer-write
 - globalidviewer-designer
-```
 
 The group entry is located in the RadiantOne namespace at:
 cn=directory administrators,ou=globalgroups,cn=config
@@ -947,13 +945,11 @@ cn=directory administrators,ou=globalgroups,cn=config
 
 These functions are dictated by the following values of the vdPrivilege attribute in the group entry: 
 
-```
 - config-read
 - instance-read
 - naming-context-read
 - data-source-read
 - globalidviewer-read
-```
 
 The group entry is located in the RadiantOne namespace at:
 cn=readonly,ou=globalgroups,cn=config
@@ -973,7 +969,6 @@ cn=readonly,ou=globalgroups,cn=config
 
 These functions are dictated by the following values of the vdPrivilege attribute in the group entry:
 
-```
 - config-read
 - config-write
 - services-restart
@@ -986,7 +981,6 @@ These functions are dictated by the following values of the vdPrivilege attribut
 - data-store-write
 - tasks-admin
 - ics-admin
-```
 
 The group entry is located in the RadiantOne namespace at:
 cn=namespaceadmin,ou=globalgroups,cn=config
@@ -1002,7 +996,6 @@ cn=namespaceadmin,ou=globalgroups,cn=config
 
 These functions are dictated by the following values of the vdPrivilege attribute in the group entry:
 
-```
 - config-read
 - config-write
 - services-restart
@@ -1011,12 +1004,11 @@ These functions are dictated by the following values of the vdPrivilege attribut
 - data-store-write
 - tasks-admin
 - naming-context-read
-```
 
 The group entry is located in the RadiantOne namespace at:
 cn=operator,ou=globalgroups,cn=config
 
-``Schema Administrator Role` – Members of this group can perform the following operations:
+`Schema Administrator Role` – Members of this group can perform the following operations:
 
 -	Read RadiantOne configuration 
 -	Create, update or delete schema objects (objectclasses or attributes)
@@ -1026,12 +1018,10 @@ cn=operator,ou=globalgroups,cn=config
 
 These functions are dictated by the following values of the vdPrivilege attribute in the group entry:
 
-```
 - config-read
 - update-schema
 - data-source-read
 - data-source-write
-```
 
 The group entry is located in the RadiantOne namespace at:
 cn=schemaadmin,ou=globalgroups,cn=config
@@ -1044,12 +1034,10 @@ cn=schemaadmin,ou=globalgroups,cn=config
 
 These functions are dictated by the following values of the vdPrivilege attribute in the group entry: 
 
-```
 - config-read
 - acl-read
 - acl-write 
 - naming-context-read
-```
 
 The group entry is located in the RadiantOne namespace at:
 cn=aciadmin,ou=globalgroups,cn=config
@@ -1062,7 +1050,6 @@ cn=aciadmin,ou=globalgroups,cn=config
 
 These functions are dictated by the following values of the vdPrivilege attribute in the group entry:
 
-```
 - config-read
 - config-write
 - naming-context-read
@@ -1073,7 +1060,6 @@ These functions are dictated by the following values of the vdPrivilege attribut
 - globalidviewer-read
 - globalidviewer-write
 - globalidviewer-designer
-```
 
 The group entry is located in the RadiantOne namespace at:
 cn=icsadmin,ou=globalgroups,cn=config
@@ -1085,10 +1071,8 @@ cn=icsadmin,ou=globalgroups,cn=config
 
 These functions are dictated by the following values of the vdPrivilege attribute in the group entry:
 
-```
 - config-read
 - ics-operator
-```
 
 The group entry is located in the RadiantOne namespace at:
 cn=icsoperator,ou=globalgroups,cn=config
@@ -1098,10 +1082,7 @@ cn=icsoperator,ou=globalgroups,cn=config
 As mentioned above, the groups used for delegated administration are Directory Administrator, Namespace Administrator, Operator, Read Only, Schema Administrator, ICS Administrator, ICS Operator and ACI Administrator. These roles can be assigned to static members or dynamic members. Both are described below. Any user that is assigned to one of the delegated administration roles can login to the Control Panels and manage certain server settings based on the privileges (vdPrivilege attribute) assigned to the role. 
 
 >[!note] 
->Remember that you might require a [User ID to DN Mapping](03-front-end-settings#user-to-dn-mapping) configuration depending on the ID that users log in with (their full DN versus just an ID).
-
->[!note]
->Delegated administrators do not have default permissions to manage virtual entries in the directory. If this is required, assign the proper [access controls](06-security#access-control) for the delegated admin groups.
+>Remember that you might require a [User ID to DN Mapping](03-front-end-settings#user-to-dn-mapping) configuration depending on the ID that users log in with (their full DN versus just an ID). Also, delegated administrators do not have default permissions to manage virtual entries in the directory. If this is required, assign the proper [access controls](06-security#access-control) for the delegated admin groups.
 
 #### Managing Explicit Members
 
@@ -1285,7 +1266,8 @@ Figure 22: Example of Assigning an Existing Group to the Directory Administrator
 1.	Locate the “roleName” property and set the value to the RDN/attribute name containing the group name (e.g. “roleName” : “cn”,).
 
 1.	Locate the “roleSearch” property and if the group objectclass stores the members in the uniqueMember attribute, set the value to: "(uniqueMember:1.2.840.113556.1.4.1941:={0})",
-<br> If the group objectclass stores the members in the member attribute, set the value to "(member:1.2.840.113556.1.4.1941:={0})",
+
+If the group objectclass stores the members in the member attribute, set the value to "(member:1.2.840.113556.1.4.1941:={0})",
 
 1.	Click **Save**.
 
