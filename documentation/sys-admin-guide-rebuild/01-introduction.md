@@ -3,7 +3,7 @@ title: System Administration Guide
 description: System Administration Guide
 ---
 
-# System Administration Guide Introduction
+# Introduction
 
 Prior to diving into this guide, it is recommended that you read the [RadiantOne Architect Guide](/documentation/architect-guide/preface) for a high-level overview of the capabilities of the RadiantOne Platform. This guide introduces concepts in addition to step-by-step instructions to configure and administrate the RadiantOne.
 
@@ -187,7 +187,7 @@ Figure 4: OIDC Authorization Code Flow
 Detailed steps:
 
 1.	The RadiantOne Admin navigates his browser to the RadiantOne Main Control Panel and clicks “Login with OpenID Connect”.
-=
+
 2.	The browser redirects the user to the OIDC Provider’s authorization endpoint with the necessary parameters (ClientID, redirect URI, scope).
 
 3.	The RadiantOne Admin will authenticate to OIDC server (if not already authenticated) and the OIDC server prompts the user for authorization: Control Panel wants to access info (scopes) about you. Do you Authorize this?
@@ -204,12 +204,7 @@ Detailed steps:
 
 To enable support for OIDC authentication:
 
-1.	Have your client ID and secret associated with the Control Panel application configured in your OIDC server ready. The Redirect URL configured for the web application should point to the URL associated with the Main Control Panel.
-
-```
-https://cp.federated-identity.com/main/j_spring_openid_security_check
-
-```
+1.	Have your client ID and secret associated with the Control Panel application configured in your OIDC server ready. The Redirect URL configured for the web application should point to the URL associated with the Main Control Panel. Example: https://cp.federated-identity.com/main/j_spring_openid_security_check
 
 2.	Log into the Main Control Panel.
 
@@ -259,20 +254,19 @@ The Main Control Panel login page contains a basic username and password text bo
 
 1.	Log in to the Main Control Panel as a member of the Directory Administrators role.
 
-2.	Go to the Zookeeper tab (requires [Expert mode](01-introduction#expert-mode)).
+1.	Go to the Zookeeper tab (requires [Expert mode](01-introduction#expert-mode)).
 
-3.	Navigate to `radiantone/<version>/<clusterName>/config/vds_server.conf`.
+1.	Navigate to `radiantone/<version>/<clusterName>/config/vds_server.conf`.
 
-4.	On the right, click **Edit Mode**.
+1.	On the right, click **Edit Mode**.
 
 >[!warning] 
 >Each property (corresponding to a line) must end in a comma (,) except for the last property in the configuration.
 
-5.	Add (or edit) the motdHtml tag containing the message to display on the login page.
+1.	Add (or edit) the motdHtml tag containing the message to display on the login page.
 
-```
 "motdHtml": "This is my custom message. Please login with your RadiantOne Administrator account.",
-```
+
 
 6.	Click **Save**.
 
@@ -285,9 +279,7 @@ Figure 7: Custom Message on Login Page
 
 If you would like the message to be prefixed with a “Warning” icon and be in bold font, go back to the Zookeeper tab and add or edit the "motdWarning" tag with a value of true. An example is shown below.
 
-```
 "motdWarning": true,
-```
 
 ![Custom Message on Login Page with Warning Label and Bold Font](Media/Image3.27.jpg)
 
@@ -295,9 +287,8 @@ Figure 8: Custom Message on Login Page with Warning Label and Bold Font
 
 If you would like the custom message and “Warning” icon to display as a popup window, go back to the Zookeeper tab, and add or edit the “motdPopup” tag with a value of true. An example is shown below.
 
-```
 "motdPopup" : true,
-```
+
 
 ![Custom Message Popup Window](Media/Image3.28.jpg)
 
@@ -1119,9 +1110,9 @@ As mentioned above, the groups used for delegated administration are Directory A
 
 1.	Log into the Main Control Panel as the super user and click on the Directory Browser tab.
 
-2.	Navigate below ou=globalgroups,cn=config node to locate all of the groups.
+1.	Navigate below ou=globalgroups,cn=config node to locate all of the groups.
 
-3.	Select the group you want to manage and click ![manage group button](Media/manage-group-button.jpg) (Manage Group). From here you can remove users from groups and search for new users (located anywhere in the virtual namespace) to add to groups.
+1.	Select the group you want to manage and click ![manage group button](Media/manage-group-button.jpg) (Manage Group). From here you can remove users from groups and search for new users (located anywhere in the virtual namespace) to add to groups.
 
 ![manage group members](Media/Image3.1.jpg)
  
@@ -1136,53 +1127,53 @@ Figure 15: Manage Group Members
 
 1.	Log into the Main Control Panel as the super user and click on the Directory Browser tab. 
 
-2.	Navigate below ou=globalgroups,cn=config node to locate all of the groups. 
+1.	Navigate below ou=globalgroups,cn=config node to locate all of the groups. 
 
-3.	Select the group you want to manage and on the right side, select the objectclass attribute.
+1.	Select the group you want to manage and on the right side, select the objectclass attribute.
 
-4.	Choose Modify Attribute > Add Value.
+1.	Choose Modify Attribute > Add Value.
 
-5.	Enter a new value of groupOfURLS and click **OK**.
+1.	Enter a new value of groupOfURLS and click **OK**.
 
-6.	Select the group entry and click ![manage group button](Media/manage-group-button.jpg) (Manage Group).
+1.	Select the group entry and click ![manage group button](Media/manage-group-button.jpg) (Manage Group).
 
-7.	Click **Edit Dynamic Members**. From here you can manage the criteria for dynamic members.
+1.	Click **Edit Dynamic Members**. From here you can manage the criteria for dynamic members.
 
 ![manage group window](Media/Image3.2.jpg)
 
 Figure 16: Manage Group Window
 
-8.	Click **Add Member(s)**.
+1.	Click **Add Member(s)**.
 
-9.	Enter the base DN where users/potential group members are located, or click ![base dn button](Media/basedn.jpg) to navigate to this location.
+1.	Enter the base DN where users/potential group members are located, or click ![base dn button](Media/basedn.jpg) to navigate to this location.
 
-10.	Select the scope associated with the base DN to locate potential members.
+1.	Select the scope associated with the base DN to locate potential members.
 
-11.	Enter an LDAP filter that qualifies group members (e.g. l=Casper, meaning all users that have a location of Casper would be a member of the group).
+1.	Enter an LDAP filter that qualifies group members (e.g. l=Casper, meaning all users that have a location of Casper would be a member of the group).
 
-12.	Click **Confirm**.
+1.	Click **Confirm**.
 
-13.	Either add more members, or click **Close** to close the window.
+1.	Either add more members, or click **Close** to close the window.
 
-14.	After the configuration, the group entry has a memberURL attribute that contains the criteria for group members.
+1.	After the configuration, the group entry has a memberURL attribute that contains the criteria for group members.
 
-15.	Now, configure RadiantOne to translate the dynamic group criteria into static members by setting Special Attributes Handling for Dynamic Groups. Navigate to the Main Control Panel > Settings tab.
+1.	Now, configure RadiantOne to translate the dynamic group criteria into static members by setting Special Attributes Handling for Dynamic Groups. Navigate to the Main Control Panel > Settings tab.
 
-16.	Switch the Control Panel to [Expert Mode](01-introduction#expert-mode).
+1.	Switch the Control Panel to [Expert Mode](01-introduction#expert-mode).
 
-17.	After the browser reloads, navigate to the Settings tab > Interception > Special Attributes Handling.
+1.	After the browser reloads, navigate to the Settings tab > Interception > Special Attributes Handling.
 
-18.	In the Dynamic Group section click **Add**.
+1.	In the Dynamic Group section click **Add**.
 
-19.	Click **Choose** and either navigate to the exact dynamic group entry or the parent node where all of your dynamic groups are located. For example, if you wanted all of the delegated admin groups to be dynamic, you can select the cn=config branch in the RadiantOne namespace like shown in the screen below.
+1.	Click **Choose** and either navigate to the exact dynamic group entry or the parent node where all of your dynamic groups are located. For example, if you wanted all of the delegated admin groups to be dynamic, you can select the cn=config branch in the RadiantOne namespace like shown in the screen below.
 
-20.	Click **OK**.
+1.	Click **OK**.
 
 ![Dynamic Group Setting](Media/Image3.3.jpg)
 
 Figure 17: Dynamic Group Setting
 
-21.	Set the member attribute to either member or uniqueMember (to match your membership attribute) and click Save in the upper right.
+1.	Set the member attribute to either member or uniqueMember (to match your membership attribute) and click Save in the upper right.
 
 Any user that is dynamically assigned to a delegated admin group can log in to the Control Panel and administer the server based on the role they are associated with.
 
@@ -1252,29 +1243,29 @@ To configure groups and users for delegated administration, follow the steps bel
 
 1.	The groups and users that you want to use for delegated administration must all be located under the same root naming context. Either import your groups and users into a RadiantOne Universal Directory store (e.g. import an LDIF file), or create a virtual view of groups and users and configure it as persistent cache. For assistance on creating RadiantOne Universal Directory stores, see the [RadiantOne Namespace Configuration Guide](/documentation/namespace-configuration-guide/01-introduction). For assistance on configuring persistent cache, see the [RadiantOne Deployment and Tuning Guide](/documentation/deployment-and-tuning-guide/00-preface).
 
-2.	(Optional) If your groups and users are in persistent cache, go to the Main Control Panel > Directory Namespace > Cache node and select your cache branch. On the Properties tab on the right, enter vdPrivilege in the Extension Attributes list and click Save.
+1.	(Optional) If your groups and users are in persistent cache, go to the Main Control Panel > Directory Namespace > Cache node and select your cache branch. On the Properties tab on the right, enter vdPrivilege in the Extension Attributes list and click Save.
 
 ![Entering vdPrivilege in the Extension Attributes Field](Media/Image3.5.jpg)
 
 Figure 19: Entering vdPrivilege in the Extension Attributes Field
 
-3.	Navigate to the Main Control Panel > Directory Browser tab.
+1.	Navigate to the Main Control Panel > Directory Browser tab.
 
-4.	Navigate to the group location and select the group that you want to be associated with a delegated administrator role. Click **Add Attribute** and enter the name vdPrivilege and enter a value associated with the [delegated admin role](#delegated-administration-roles).
+1.	Navigate to the group location and select the group that you want to be associated with a delegated administrator role. Click **Add Attribute** and enter the name vdPrivilege and enter a value associated with the [delegated admin role](#delegated-administration-roles).
 
 ![Modify Attribute > Add Value](Media/Image3.6.jpg)
 
 Image 20: Modify Attribute > Add Value
  
-5.	Select the vdPrivilege attribute and click **Modify Attribute > Add Value**.
+1.	Select the vdPrivilege attribute and click **Modify Attribute > Add Value**.
 
 ![Adding the vdPrilvilege Attribute](Media/Image3.7.jpg)
 
 Image 21: Adding the vdPrilvilege Attribute
 
-6.	Add a required value for the role. The required values and corresponding roles are described in [Delegated Administration Roles](#delegated-administration-roles).
+1.	Add a required value for the role. The required values and corresponding roles are described in [Delegated Administration Roles](#delegated-administration-roles).
 
-7.	In the Add Value window, click ![An image showing ](Media/add-value-button.jpg) to add another value. Repeat this step to add all required values as outlined in [Delegated Administration Roles](#delegated-administration-roles). Click **Confirm** after all values have been added. In the example below, a group named Management has been assigned the privileges required for the Directory Administrator role.
+1.	In the Add Value window, click ![An image showing ](Media/add-value-button.jpg) to add another value. Repeat this step to add all required values as outlined in [Delegated Administration Roles](#delegated-administration-roles). Click **Confirm** after all values have been added. In the example below, a group named Management has been assigned the privileges required for the Directory Administrator role.
 
 ![An image showing ](Media/Image3.8.jpg)
  
@@ -1283,22 +1274,22 @@ Figure 22: Example of Assigning an Existing Group to the Directory Administrator
 >[!note] 
 >Delegated administrators do not have default permissions to manage virtual entries in the directory. If this is required, assign the proper [access controls](06-security#access-control) for the delegated admin groups.
 
-8.	Go to the Main Control Panel > Zookeeper tab (requires [Expert Mode](01-introduction#expert-mode)).
+1.	Go to the Main Control Panel > Zookeeper tab (requires [Expert Mode](01-introduction#expert-mode)).
 
-9.	Navigate to `/radiantone/<version>/<clusterName>/config/vds_server.conf`.
+1.	Navigate to `/radiantone/<version>/<clusterName>/config/vds_server.conf`.
 
-10.	Click **Edit Mode**.
+1.	Click **Edit Mode**.
 
-11.	Locate the “roleBase” property and set the value to the root naming context where your users and groups are located (e.g. “roleBase” : “o=companydirectory”,).
+1.	Locate the “roleBase” property and set the value to the root naming context where your users and groups are located (e.g. “roleBase” : “o=companydirectory”,).
 
-12.	Locate the “roleName” property and set the value to the RDN/attribute name containing the group name (e.g. “roleName” : “cn”,).
+1.	Locate the “roleName” property and set the value to the RDN/attribute name containing the group name (e.g. “roleName” : “cn”,).
 
-13.	Locate the “roleSearch” property and if the group objectclass stores the members in the uniqueMember attribute, set the value to: "(uniqueMember:1.2.840.113556.1.4.1941:={0})",
+1.	Locate the “roleSearch” property and if the group objectclass stores the members in the uniqueMember attribute, set the value to: "(uniqueMember:1.2.840.113556.1.4.1941:={0})",
 <br> If the group objectclass stores the members in the member attribute, set the value to "(member:1.2.840.113556.1.4.1941:={0})",
 
-14.	Click **Save**.
+1.	Click **Save**.
 
-15.	To test, logout of the Control Panel and login with a user that is a member of one of your existing groups. Make sure the user can perform the activities associated with their role as outlined in [Delegated Administration Roles](#delegated-administration-roles). Remember, you must either use the full user DN as the login name, or define the proper User to DN mapping rules to allow the user to login with just an “ID”.
+1.	To test, logout of the Control Panel and login with a user that is a member of one of your existing groups. Make sure the user can perform the activities associated with their role as outlined in [Delegated Administration Roles](#delegated-administration-roles). Remember, you must either use the full user DN as the login name, or define the proper User to DN mapping rules to allow the user to login with just an “ID”.
 
 ![An image showing ](Media/Image3.9.jpg)
  
