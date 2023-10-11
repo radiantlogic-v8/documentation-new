@@ -93,12 +93,12 @@ Possible ways to resolve a conflicted identity are:
 >[!warning]
 >This approach should only be done when [real-time persistent cache refresh](manage-persistent-cache/overview.md) is not running. When you reset a data source, the identities are removed from the global profile. If the identity is the last reference in the global profile (there are no other users linked to it) it is deleted and the unique identifier (VUID) assigned to the identity is removed. In this case, identities that are uploaded again from the same data source are assigned a new global identifier.
 
-2. Change the attribute mappings that populates the login attribute from one (or more) of the identity sources. Then re-upload the identity sources.  
+1. Change the attribute mappings that populates the login attribute from one (or more) of the identity sources. Then re-upload the identity sources.  
 
 >[!note]
 >This approach should only be done if when [real-time persistent cache refresh](manage-persistent-cache/overview.md) is not running.
 
-3. Change the data in the identity source so the login attribute pushed to the global profile has a unique value.
+1. Change the data in the identity source so the login attribute pushed to the global profile has a unique value.
 
 >[!note]
 >If the [real-time persistent cache refresh](manage-persistent-cache/overview.md) is running, the connectors should detect and propagate the change to the global profile. If real-time persistent cache refresh is not running, re-upload this source to the global profile.
