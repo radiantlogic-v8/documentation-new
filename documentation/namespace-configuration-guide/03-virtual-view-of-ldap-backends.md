@@ -3,7 +3,7 @@ title: Namespace Configuration Guide
 description: Namespace Configuration Guide
 ---
 
-# Chapter 3: Virtual Views of LDAP Backends
+# Virtual Views of LDAP Backends
 
 Virtual views can be configured for LDAP directories and are associated with a specific root naming context. A root naming context is the very top node of a virtual directory tree and RadiantOne can respond to many different root naming contexts. This section describes how to create root naming contexts for LDAP directory backend data sources. 
 
