@@ -102,17 +102,17 @@ For database backend objects, RadiantOne provides a default LDAP object class na
 If you want to map the database objects to a new/different object class:
 
 1.	From the Main Control Panel > Directory Namespace Tab, select the database object node below Root Naming Contexts. 
-2.	On the right side, select the Advanced Settings tab. 
-3.	Click on the Change button next to Object Class Mapping. 
-4.	Select the schema containing the object class you want to map to from the LDAP Schema drop down list. 
-5.	Select the object class to map to from the LDAP Object Class drop down list.
+1.	On the right side, select the Advanced Settings tab. 
+1.	Click on the Change button next to Object Class Mapping. 
+1.	Select the schema containing the object class you want to map to from the LDAP Schema drop down list. 
+1.	Select the object class to map to from the LDAP Object Class drop down list.
 If the object class inherits from multiple classes, the classes are displayed with a # as the separator. 
 
 ![An image showing ](Media/Image4.4.jpg)
  
 Figure 4.4: Mapping Object Classes
 
-6.	Click **Save** and then **Yes** to apply the changes to the server.
+1.	Click **Save** and then **Yes** to apply the changes to the server.
 
 ### Case Sensitivity for Searches
 
@@ -261,21 +261,21 @@ To deactivate a computed attribute:
 
 1.	From the Main Control Panel > Directory Namespace Tab, select the node representing the LDAP backend below Root Naming Contexts. 
 
-2.	On the right side, select the Objects Tab. 
+1.	On the right side, select the Objects Tab. 
 
-3.	In your Primary Objects list, select the one that contains the computed attribute(s) that you need to deactivate.
+1.	In your Primary Objects list, select the one that contains the computed attribute(s) that you need to deactivate.
 
-4.	Click **Edit** next to Define Computed Attributes. 
+1.	Click **Edit** next to Define Computed Attributes. 
 
-5.	Uncheck the “Active” checkbox next to the computed attributes that you want to deactivate.
+1.	Uncheck the “Active” checkbox next to the computed attributes that you want to deactivate.
 
 ![An image showing ](Media/Image4.9.jpg)
  
 Figure 4.9: Computed Attributes Example with One Deactivated
 
-6.	Click **OK**.
+1.	Click **OK**.
 
-7.	Click **Save**.
+1.	Click **Save**.
 
 ### Bind Order
 
@@ -326,8 +326,8 @@ For complete details and steps, please see Joins in the Concepts section of the 
 ### Handling Multi-Valued Attributes from a Database
 
 If a database table you are virtualizing contains an attribute that stores a list of values, RadiantOne can return this attribute as multi-valued in the virtual entries. The database attribute must contain values separated by a space then the pound sign (#), then a space before the next value. See the sample database table below as an example:
-** Database Table:**
 
+**Database Table:**
 Name | Mail	| Title
 -|-|-
 Harold Carter| hcarter@rli.com # harold@yahoo.com | HR Mgr # HR Associate
