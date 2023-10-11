@@ -29,25 +29,18 @@ If you configure the LDAP backend directly at the Root Naming Context, it is the
 >If you would like to build your virtual view using the Directory Tree Wizard, refer to the RadiantOne Identity Service Wizards Guide.
 
 1.	First, data sources for each backend must be defined. From the Main Control Panel > Settings tab, expand below the Server Backend node and go to the LDAP Data Sources section. Click on the **Add** button to define LDAP or Active Directory data sources.
-
-2.	In the Main Control Panel -> Directory Namespace Tab, click the ![An image showing ](Media/plus-sign.jpg) button. 
-
-3.	Enter the new root name and choose the LDAP Backend option.
-
-4.	Click **Next**.
-
-5.	Select a data source from the drop-down list and click the **Test Connection** button.
-
-6.	Click **OK** to exit the confirmation.
-
-7.	Enter the Remote Base DN or click the **Browse** button, select a base DN and then click **OK**.
-
-8.	Click **OK** when finished and a new naming context matching the mapped base DN parameter is created for RadiantOne. When LDAP clients access this naming context, the contents from the remote base DN branch will be returned.
+1.	In the Main Control Panel -> Directory Namespace Tab, click the ![An image showing ](Media/plus-sign.jpg) button. 
+1.	Enter the new root name and choose the LDAP Backend option.
+1.	Click **Next**.
+1.	Select a data source from the drop-down list and click the **Test Connection** button.
+1.	Click **OK** to exit the confirmation.
+1.	Enter the Remote Base DN or click the **Browse** button, select a base DN and then click **OK**.
+1.	Click **OK** when finished and a new naming context matching the mapped base DN parameter is created for RadiantOne. When LDAP clients access this naming context, the contents from the remote base DN branch will be returned.
 
 >[!note] 
 >For every virtual view of an LDAP backend you create, a file containing the schema definition is created. The schema file is stored on the file system at <RLI_HOME>\vds_server\lod\<normalized root naming context where the view is mounted>.orx. An LDIF formatted file containing the schema is also saved in the lod folder (with the same name as the .orx file) and is used to retrieve object class and attribute definitions if the metadata is used to extend the RadiantOne LDAP schema. For details on extending the RadiantOne LDAP schema, see the RadiantOne System Administration Guide.
 
-9.	If you need to modify the LDAP backend configuration, select the appropriate node below Root Naming Contexts and modify the settings on the right side. Click **Save** when finished.
+1.	If you need to modify the LDAP backend configuration, select the appropriate node below Root Naming Contexts and modify the settings on the right side. Click **Save** when finished.
 
 ![An image showing ](Media/Image3.2.jpg)
  
