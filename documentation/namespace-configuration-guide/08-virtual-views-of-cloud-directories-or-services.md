@@ -828,35 +828,26 @@ RadiantOne can virtualize the SailPoint Identity IQ database via SCIM. The confi
 >[!note] 
 >If you are already using the scimclient2 custom data source to virtualize a SCIM backend, click the Clone button to make a copy that you can work with for SailPoint to avoid impacting your existing configuration.
 
-2.	Click **Advanced Edit**.
-
-3.	Select the url property and click **Edit**.
-
-4.	Enter the value matching your SailPoint SCIM service. The syntax is: `http://<SailPointServer>:<port>/identityiq/scim/v2`
-
-5.	Click **OK**. 
-
-6.	Select the username property and click **Edit**.
-
-7.	Enter your SailPoint username (e.g. spadmin).
-
-8.	Click **OK**.
-
-9.	Select the password property and click **Edit**.
-
-10.	Enter the password associated with your SailPoint user name.
-
-11.	Click **OK**.
+1.	Click **Advanced Edit**.
+1.	Select the url property and click **Edit**.
+1.	Enter the value matching your SailPoint SCIM service. The syntax is: `http://<SailPointServer>:<port>/identityiq/scim/v2`
+1.	Click **OK**. 
+1.	Select the username property and click **Edit**.
+1.	Enter your SailPoint username (e.g. spadmin).
+1.	Click **OK**.
+1.	Select the password property and click **Edit**.
+1.	Enter the password associated with your SailPoint user name.
+1.	Click **OK**.
 
 >[!note] 
 >If OAuth is used for authentication, you do not need the username and password properties. Configure the oauthurl, oauthclientid, and oauthclientsecret properties instead. This is described in [OAuth Authentication](#oauth-authentication).
 
-12.	Select the replaceonupdate property (add if it doesn’t exist). Set the value to true. This is required because the SailPoint SCIM interface doesn’t support standard update (PATCH) operations and requires a replace operation (PUT) instead. 
+1.	Select the replaceonupdate property (add if it doesn’t exist). Set the value to true. This is required because the SailPoint SCIM interface doesn’t support standard update (PATCH) operations and requires a replace operation (PUT) instead. 
 
 >[!note] 
 >For SCIM servers that do not support PATCH operations, FID sends a PUT request to the SCIM Server, which replaces the entry.
 
-13.	Click **Save**.
+1.	Click **Save**.
 
 #### OAuth Authentication
 
