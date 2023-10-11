@@ -401,55 +401,40 @@ Figure 8.25: Group Members Returned with ObjectID in the DN
 To add the memberoid property:
 
 1.	Navigate to the Main Control Panel > Settings > Server Backend > Custom Data Sources.
-
-2.	Select graphapi and click **Edit**.
-
-3.	Click **Add**.
-
-4.	Enter memberoid as the property name.
-
-5.	Enter true for the value.
-
-6.	Click **OK**.
+1.	Select graphapi and click **Edit**.
+1.	Click **Add**.
+1.	Enter memberoid as the property name.
+1.	Enter true for the value.
+1.	Click **OK**.
 
 ![An image showing ](Media/Image8.26.jpg)
 
 Figure 8.26: Adding Memberoid Property
 
-7.	Click **Save**.
+1.	Click **Save**.
+1.	Since the group members are returned with their ObjectID (comprising the DN), you must make sure the corresponding virtual view of Azure AD users is also based on ObjectID. The default graphapi.orx schema and graphapi.dvx virtual view are based on userPrincipalName not ObjectID. To change the default schema, open graphapi.orx in Main Control Panel > Context Builder tab > Schema Manager sub-tab (it is listed on the Custom Schemas tab). 
 
-8.	Since the group members are returned with their ObjectID (comprising the DN), you must make sure the corresponding virtual view of Azure AD users is also based on ObjectID. The default graphapi.orx schema and graphapi.dvx virtual view are based on userPrincipalName not ObjectID. To change the default schema, open graphapi.orx in Main Control Panel > Context Builder tab > Schema Manager sub-tab (it is listed on the Custom Schemas tab). 
-
-9.	Right-click on the Users object and choose Edit Primary Key. 
-
-10.	Define the Objectid attribute as the primary key and remove userPrincipalName. 
+1.	Right-click on the Users object and choose Edit Primary Key. 
+1.	Define the Objectid attribute as the primary key and remove userPrincipalName. 
 
 ![An image showing ](Media/Image8.27.jpg)
 
 Figure 8.27: Modifying Primary Key for Users Object
 
-11.	Click **Apply**. 
-
-12.	Save the schema. 
-
-13.	Open graphapi.dvx in Main Control Panel > Context Builder tab > View Designer sub-tab. 
-
-14.	In the tree view on the left, below graphapi, expand Object=Users and select the users content node. 
-
-15.	Click **Delete** to remove this old definition. 
-
-16.	In the tree view on the left, below graphapi, click Object=Users and choose **New Content** on the right. 
-
-17.	Select Users and click **OK**. 
-
-18.	On the Attributes tab for this node, use ![An image showing ](Media/right-arrow2.jpg) to define specific attributes as part of the view, or click ![An image showing ](Media/right-arrow3.jpg) to define all attributes.
+1.	Click **Apply**. 
+1.	Save the schema. 
+1.	Open graphapi.dvx in Main Control Panel > Context Builder tab > View Designer sub-tab. 
+1.	In the tree view on the left, below graphapi, expand Object=Users and select the users content node. 
+1.	Click **Delete** to remove this old definition. 
+1.	In the tree view on the left, below graphapi, click Object=Users and choose **New Content** on the right. 
+1.	Select Users and click **OK**. 
+1.	On the Attributes tab for this node, use ![An image showing ](Media/right-arrow2.jpg) to define specific attributes as part of the view, or click ![An image showing ](Media/right-arrow3.jpg) to define all attributes.
 
 >[!warning] 
 >If you do not require directReports, ownedDevices, registeredDevices or other backlink attributes to be returned, avoid defining them in the virtual view. This will avoid costly lookups to return these attributes and greatly improve performance. If you need to support searches on surname, be sure to add “sn” as the Virtual Name as outlined in Virtualizing Surname/SN Attribute.
 
-19.	Click ![An image showing ](Media/save3.jpg) to save the virtual view.
-
-20.	From the Main Control Panel > Directory Browser, expand the virtual view (e.g. o=vds > o=cloudservices > dv=graphapi > object=users) and ensure the user DN is returned with the Object ID. This matches how they are returned in the group membership.
+1.	Click ![An image showing ](Media/save3.jpg) to save the virtual view.
+1.	From the Main Control Panel > Directory Browser, expand the virtual view (e.g. o=vds > o=cloudservices > dv=graphapi > object=users) and ensure the user DN is returned with the Object ID. This matches how they are returned in the group membership.
 
 ![An image showing ](Media/Image8.28.jpg)
 
@@ -468,26 +453,20 @@ If you only need the basic group information without the members, on queries con
 To add the ignoremember property:
 
 1.	Navigate to the Main Control Panel > Settings > Server Backend > Custom Data Sources.
-
-2.	Select graphapi and click Edit.
-
-3.	Click **Add**.
-
-4.	Enter ignoremember as the property name.
-
-5.	Enter true for the value.
-
-6.	Click **OK**.
+1.	Select graphapi and click Edit.
+1.	Click **Add**.
+1.	Enter ignoremember as the property name.
+1.	Enter true for the value.
+1.	Click **OK**.
 
 ![An image showing ](Media/Image8.29.jpg)
 
 Figure 8.29: Adding Ignoremember Property
 
-7.	Click **Save**.
+1.	Click **Save**.
 
 In the example shown below, group entries are returned without members. Note that a basic LDAP command line query is used. Using the Main Control Panel -> Directory Browser tab can be confusing because the “click” on the group entry (when browsing) is actually doing a base search, in which case the members are always returned.
 
-```
 C:\SunResourceKit>ldapsearch -h doc-e1win1 -p 2389 -D "cn=directory manager" -w secretsecret -b "object=groups,dv=graphapi,o=cloudservices,o=vds" -s one (displayName=Sales)
 
 version: 1
@@ -505,7 +484,7 @@ securityenabled: true
 objecttype: Group
 description: The group has access to Salesforce
 mailenabled: false
-```
+
 
 #### Working with Multiple Azure AD Tenants
 
@@ -547,16 +526,14 @@ Figure 8.31: Copying the appId value
 Once you have the appId, follow the steps below.
 
 1.	On the Main Control Panel > Context Builder > Schema Manager sub-tab, right-click on the Fields level below the object and choose **Add New Attribute**.
-
-2.	Enter the extension attribute full name using the appId value with the hyphens removed (e.g. extension_41ebd369484d4088bab5c9077f9e13a7_skypeId) with an alias for the friendly attribute name (e.g. skypeId).
+1.	Enter the extension attribute full name using the appId value with the hyphens removed (e.g. extension_41ebd369484d4088bab5c9077f9e13a7_skypeId) with an alias for the friendly attribute name (e.g. skypeId).
 
 ![An image showing ](Media/Image8.32.jpg)
 
 Figure 8.32: Example Extension Attribute
 
-3.	Click **Add**.
-
-4.	Click **Save**.
+1.	Click **Add**.
+1.	Click **Save**.
 
 >[!warning] 
 >The case used in Azure AD to create the extension attribute must match the case used when adding the extension attribute to the schema. In the example above, the “I” in skypeId is in uppercase. Therefore, when adding the extension attribute to the graphapi schema, make sure to follow this case-sensitive syntax.
@@ -575,19 +552,15 @@ Figure 8.33: Mgraph Virtual View
 If you’ve modified the graphapi.orx or mgraph.orx schema files to support extension attributes or if you want to limit the Azure AD attributes returned in the virtual view, you can modify the graphapi.dvx/mgraph.dvx files accordingly. 
 
 1.	On Main Control Panel > Context Builder tab > View Designer sub-tab, choose File > Open > View. 
-
-2.	Select graphapi.dvx or mgraph.dvx and click **OK**. 
-
-3.	In the Tree View, expand below the object you’ve added extension attributes for. 
-
-4.	Select the content node associated with the object.
-
-5.	On the Attributes tab, select the extension attribute from the source attribute list (on the left) and use the ![An image showing ](Media/right-arrow2.jpg) button and move it to the published attribute list (on the right). 
+1.	Select graphapi.dvx or mgraph.dvx and click **OK**. 
+1.	In the Tree View, expand below the object you’ve added extension attributes for. 
+1.	Select the content node associated with the object.
+1.	On the Attributes tab, select the extension attribute from the source attribute list (on the left) and use the ![An image showing ](Media/right-arrow2.jpg) button and move it to the published attribute list (on the right). 
 
 >[!warning] 
 >If you do not require directReports, ownedDevices, registeredDevices or other backlink attributes to be returned, avoid defining them in the virtual view. This will avoid costly lookups to return these attributes and greatly improve performance.
 
-6.	Save the virtual view. The run time view mounted at dv=graphapi,o=cloudservices,o=vds should now return the extension attributes. If you are using the mgraph.dvx file, you can create a New Root Naming Context in the Main Control Panel > Directory Namespace tab and mount the mgraph.dvx file there. 
+1.	Save the virtual view. The run time view mounted at dv=graphapi,o=cloudservices,o=vds should now return the extension attributes. If you are using the mgraph.dvx file, you can create a New Root Naming Context in the Main Control Panel > Directory Namespace tab and mount the mgraph.dvx file there. 
 
 To create a new virtual view, load the graphapi.orx or mgraph.orx schema file in View Designer and define the new view. For details on using View Designer, see the RadiantOne Context Builder Guide.
 
@@ -595,9 +568,7 @@ To create a new virtual view, load the graphapi.orx or mgraph.orx schema file in
 
 The Azure AD schema uses the attribute “surname” to store a user’s last name. The RadiantOne default LDAP schema includes the following attribute type definition for “sn”:
 
-```
 attributeTypes: ( 2.5.4.4 NAME ( 'sn' 'surName' ) DESC 'Standard LDAP attribute type' SUP name SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'RFC 2256' )
-```
 
 This schema definition can cause problems if clients issue searches for the Azure AD view using a filter of (surname=<last_name>) because RadiantOne automatically translates this into a filter of (sn=<last_name>) when it queries Azure AD. Since the attribute in Azure AD is “surname” and not “sn”, the expected entry is not returned. To avoid this, you can either configure a mapping in the virtual view to map surname to sn, or edit the RadiantOne FID schema and remove the surname mapping from the sn attribute. 
 
@@ -607,16 +578,11 @@ This schema definition can cause problems if clients issue searches for the Azur
 To configure a mapping for the surname attribute:
 
 1.	On the Main Control Panel > Context Builder tab > View Designer sub-tab, click ![An image showing ](Media/open-button.jpg). 
-
-2.	Select graphapi.dvx or mgraph.dvx and click OK. 
-
-3.	Select the “users” content node (below object=users if using the graphapi.dvx file, or the “user” content node below Category=Users if using mgraph.dvx file) in the Tree View.
-
-4.	Choose the Attributes tab. 
-
-5.	Enter sn in the Virtual Name column for the surname attribute.
-
-6.	Save the virtual view.
+1.	Select graphapi.dvx or mgraph.dvx and click OK. 
+1.	Select the “users” content node (below object=users if using the graphapi.dvx file, or the “user” content node below Category=Users if using mgraph.dvx file) in the Tree View.
+1.	Choose the Attributes tab. 
+1.	Enter sn in the Virtual Name column for the surname attribute.
+1.	Save the virtual view.
  
 ![An image showing ](Media/Image8.34.jpg)
 
