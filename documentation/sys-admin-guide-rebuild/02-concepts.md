@@ -736,7 +736,7 @@ Example: sum(this.uid), assuming values of uid are [1,2,3] returns 6
 
 Example: upper("abCD") returns "ABCD" 
 
-For detailed steps based on the type of primary source you are configuring, please see the Namespace Configuration Guide.
+For detailed steps based on the type of primary source you are configuring, please see the [RadiantOne Namespace Configuration Guide](/documentation/namespace-configuration-guide/01-introduction).
 
 ## Interception Scripts
 
