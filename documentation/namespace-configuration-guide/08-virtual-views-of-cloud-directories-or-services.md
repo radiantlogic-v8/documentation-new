@@ -3,7 +3,7 @@ title: Namespace Configuration Guide
 description: Namespace Configuration Guide
 ---
 
-# Chapter 7: Virtual Views of Cloud Directories and Services
+# Virtual Views of Cloud Directories and Services
 
 ## Introduction
 
