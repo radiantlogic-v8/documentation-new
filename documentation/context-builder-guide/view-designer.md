@@ -886,22 +886,14 @@ Figure 56: Sample RadiantOne Entries Based on Database Objects
 Using the example above, the following steps describe how to build a flat virtual view from a database schema. It is assumed that the database schema has already been extracted, and all needed relationships are defined. If you need assistance extracting a database schema, please see [Schema Manager](schema-manager.md). 
 
 1.	On the View Designer tab, click ![new view definition](Media/Imagenewviewdefinition.jpg) and enter a virtual view name. If a view with the same name already exists, it is overwritten.
-
-2.	Click the Select button to choose a schema. Select the database schema file from the Database Schemas tab and click OK. Click OK again.
-
-3.	On the left side, select the top and click the New Content button on the right. 
-
-4.	Expand below the root node and select the primary object (the People table in this example) and click OK. 
-
-5.	On the Node Properties -> Attributes sub-tab, attributes from the People table can be selected to comprise the virtual entry (like EMPID, FNAME, LNAME, and PHONE in this example). 
-
-6.	Click the Add button next to the table drop-down list. 
-
-7.	All objects that have a relationship to the People table are accessible from here. 
-
-8.	Select the secondary table (the Suppliers table in this example) and click OK. 
-
-9.	Click the Add button next to the table drop-down list selecting the Projects table this time. Click OK.
+1.	Click the Select button to choose a schema. Select the database schema file from the Database Schemas tab and click OK. Click OK again.
+1.	On the left side, select the top and click the New Content button on the right. 
+1.	Expand below the root node and select the primary object (the People table in this example) and click OK. 
+1.	On the Node Properties -> Attributes sub-tab, attributes from the People table can be selected to comprise the virtual entry (like EMPID, FNAME, LNAME, and PHONE in this example). 
+1.	Click the Add button next to the table drop-down list. 
+1.	All objects that have a relationship to the People table are accessible from here. 
+1.	Select the secondary table (the Suppliers table in this example) and click OK. 
+1.	Click the Add button next to the table drop-down list selecting the Projects table this time. Click OK.
 
 All joined tables should appear in the drop-down list on the Attributes tab. Attributes from any of the tables can comprise the virtual entry. Select the table in the drop-down list and move the attribute that you want in the virtual entry into the column list on the right (using the ![right arrow ](Media/ImageRightArrow.jpg) button). 
 
@@ -909,9 +901,9 @@ All joined tables should appear in the drop-down list on the Attributes tab. Att
  
 Figure 57: Database Tables for the Join
 
-10.	In the screen shot below, the EMPID, FNAME, LNAME, and Phone attribute are mapped from the People table. The ProjectName and ProjectMGR are mapped from the Projects table and the SupplierName is mapped from the Suppliers table. 
+In the screen shot below, the EMPID, FNAME, LNAME, and Phone attribute are mapped from the People table. The ProjectName and ProjectMGR are mapped from the Projects table and the SupplierName is mapped from the Suppliers table. 
 
-11.	Save the virtual view. Below is an example of the Runtime Preview.
+1.	Save the virtual view. Below is an example of the Runtime Preview.
 
 ![Runtime Preview Example ](Media/Image4.58.jpg)
 
