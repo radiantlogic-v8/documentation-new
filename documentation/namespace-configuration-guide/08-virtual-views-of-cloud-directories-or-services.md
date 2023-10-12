@@ -413,7 +413,6 @@ Figure 8.26: Adding Memberoid Property
 
 1.	Click **Save**.
 1.	Since the group members are returned with their ObjectID (comprising the DN), you must make sure the corresponding virtual view of Azure AD users is also based on ObjectID. The default graphapi.orx schema and graphapi.dvx virtual view are based on userPrincipalName not ObjectID. To change the default schema, open graphapi.orx in Main Control Panel > Context Builder tab > Schema Manager sub-tab (it is listed on the Custom Schemas tab). 
-
 1.	Right-click on the Users object and choose Edit Primary Key. 
 1.	Define the Objectid attribute as the primary key and remove userPrincipalName. 
 
@@ -655,48 +654,33 @@ RadiantOne includes a custom data source defined for Google Directory. This defa
 <br>service_account_p12_certificate: the full path on the server to the p12 certificate file. 
 
 1.	On the Main Control Panel > Settings tab > Server Backend section, go to Custom Data Sources.
-
-2.	On the right, click on googledirectory and click **Edit**.
+1.	On the right, click on googledirectory and click **Edit**.
 
 ![An image showing ](Media/Image8.38.jpg)
 
 Figure 8.38: Google Directory Custom Data Source
 
-3.	Select the domain property and click **Edit**.
-
-4.	Enter your domain name in the Domain parameter.
-
-5.	Select the service_account_p12_certificate property and click **Edit**.
-
-6.	Enter the full path to your certificate, including your certificate name and click OK.
-
-7.	In the Custom Properties, select the service_account_user property and click **Edit**.
-
-8.	Enter the value of the user account associated with the super admin role in your Google Directory and click **OK**.
-
-9.	In the Custom Properties, select the service_account_email property and click **Edit**.
-
-10.	Enter the value of the email account associated with your service account in the Google Directory and click **OK**. 
-
-11.	Click **Save**. 
-
-12.	A default virtual view named googledirectory.dvx is included with RadiantOne. This virtual view is associated with the googledirectory data source. Mount this virtual view in your RadiantOne namespace to view the data from your Google Directory. To mount the view, go to the Main Control Panel -> Directory Namespace tab.
-
-13.	Although the googledirectory virtual view can be mounted at any available label in the namespace, this guide describes how to mount the view below a new root naming context. On the Directory Namespace tab, click **New Naming Context**.
-
-14.	Enter a new root naming context (e.g. o=googledirectory) and select the Virtual Tree option.
+1.	Select the domain property and click **Edit**.
+1.	Enter your domain name in the Domain parameter.
+1.	Select the service_account_p12_certificate property and click **Edit**.
+1.	Enter the full path to your certificate, including your certificate name and click OK.
+1.	In the Custom Properties, select the service_account_user property and click **Edit**.
+1.	Enter the value of the user account associated with the super admin role in your Google Directory and click **OK**.
+1.	In the Custom Properties, select the service_account_email property and click **Edit**.
+1.	Enter the value of the email account associated with your service account in the Google Directory and click **OK**. 
+1.	Click **Save**. 
+1.	A default virtual view named googledirectory.dvx is included with RadiantOne. This virtual view is associated with the googledirectory data source. Mount this virtual view in your RadiantOne namespace to view the data from your Google Directory. To mount the view, go to the Main Control Panel -> Directory Namespace tab.
+1.	Although the googledirectory virtual view can be mounted at any available label in the namespace, this guide describes how to mount the view below a new root naming context. On the Directory Namespace tab, click **New Naming Context**.
+1.	Enter a new root naming context (e.g. o=googledirectory) and select the Virtual Tree option.
 
 ![An image showing ](Media/Image8.39.jpg)
 
 Figure 8.39: New Root Naming Context
 
-15.	Click **Next**.
-
-16.	Choose the option to Use an Existing View (.dvx) and click **Browse** to select the googledirectory.dvx file.
-
-17.	Click **OK**.
-
-18.	Click **Ok** to complete the wizard and **OK** again to exit the confirmation.
+1.	Click **Next**.
+1.	Choose the option to Use an Existing View (.dvx) and click **Browse** to select the googledirectory.dvx file.
+1.	Click **OK**.
+1.	Click **Ok** to complete the wizard and **OK** again to exit the confirmation.
 
 >[!note] 
 >To view the schema associated with the googledirectory data source and default virtual view, go to the Main Control Panel > Context Builder tab > Schema Manager sub-tab and open the schema named googledirectory. The objects that can be virtualized from Google are described in this file. To create a new virtual view, use the View Designer sub-tab on the Context Builder tab and load the googledirectory.orx file. For details on using View Designer, see the [RadiantOne Context Builder Guide](/documentation/context-builder-guide/view-designer).
