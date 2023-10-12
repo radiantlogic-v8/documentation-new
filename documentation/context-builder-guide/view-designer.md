@@ -30,7 +30,7 @@ Each of these is described in more details below.
 
 The Global Catalog is a virtual view named rootdv.dvx that aggregates other virtual views. The global catalog virtual view is mounted below the o=vds root naming context in the RadiantOne namespace. In other words, when you add a virtual view into the global catalog you will see it as a branch below the o=vds root naming context in the RadiantOne namespace. 
 
-All virtual views (.dvx files) can be aggregated in the Global Catalog; however, this is not a requirement. You can mount your virtual views under new root naming contexts that you define. First, setup the new root naming context and then mount your virtual view (.dvx file) below it. Creating new root naming contexts and mounting virtual views are done in the Main Control Panel > Directory Namespace tab. For detailed steps, please see the RadiantOne Namespace Configuration Guide. 
+All virtual views (.dvx files) can be aggregated in the Global Catalog; however, this is not a requirement. You can mount your virtual views under new root naming contexts that you define. First, setup the new root naming context and then mount your virtual view (.dvx file) below it. Creating new root naming contexts and mounting virtual views are done in the Main Control Panel > Directory Namespace tab. For detailed steps, please see the [RadiantOne Namespace Configuration Guide](/documentation/namespace-configuration-guide/06-virtual-views-based-on-aggregation). 
 
 If you want to mount your virtual view below the default o=vds root naming context, open your view in the View Designer and click the Add to Global Catalog button on the toolbar.
 
@@ -194,21 +194,15 @@ Figure 16: Example Linking Two Existing Views
 
 In the linked view shown above, the sub-branch (view named EntitlementView) can be conditioned by setting a linking attribute. In this example, all identities are associated with entitlements, so the entitlements attribute in the identity can be established as the linking attribute to the idlink attribute of the entitlement view. By adding a condition to the link based on the entitlements attribute, the subtree shown at runtime is dependent upon the entitlements associated with parent identity. However, since the value of the entitlements attribute in the parent identity is multi-valued, the link condition must be manually altered to include a special syntax. If the link parameter is associated with a child node from an LDAP backend, the syntax to handle a multi-valued parent attribute is: 
 
-```
 <childobject.attribute>~=@[<parentattribute>:<datatype>] 
-```
 
 An example value is:
 
-```
 vdentitlements.idlink~=@[entitlements:VARCHAR(255)] 
-```
 
 If the link parameter is associated with a child node from a database backend, the syntax to handle a multi-valued parent attribute is: 
 
-```
 <childobject.attribute> IN (@[<parentattribute>:<datatype>]) 
-```
 
 An example value is: 
 
@@ -705,7 +699,7 @@ There are three main types of virtual views you can build from LDAP backends.
 -	Virtualize the whole directory tree (based on existing relationships). 
 
 >[!warning] 
->If you want to keep the entire existing tree structure intact and expose it in the RadiantOne namespace, it is recommended that you configure an LDAP backend from the Main Control Panel > Directory Namespace instead of using Context Builder which is typically for building virtual views that reflect a new directory hierarchy than the one that exists. For details on configuring LDAP backends from the Main Control Panel, please see the RadiantOne Namespace Configuration Guide.
+>If you want to keep the entire existing tree structure intact and expose it in the RadiantOne namespace, it is recommended that you configure an LDAP backend from the Main Control Panel > Directory Namespace instead of using Context Builder which is typically for building virtual views that reflect a new directory hierarchy than the one that exists. For details on configuring LDAP backends from the Main Control Panel, please see the [RadiantOne Namespace Configuration Guide](/documentation/namespace-configuration-guide/03-virtual-view-of-ldap-backends).
 
 -	Flat virtual directory views.
 -	New hierarchical virtual view based on attributes available in an object class.
