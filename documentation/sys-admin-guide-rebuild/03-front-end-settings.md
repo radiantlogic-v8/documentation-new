@@ -53,7 +53,7 @@ If you update the Directory Manager username, the LDAP entry in the RadiantOne n
 
 #### Directory Manager Password
 
-The directory administrator (cn=directory manager) password is set during the install of RadiantOne and can be updated in Control Panel. You must know the current password in order to update the password. To change this password, from the Main Control Panel > Settings Tab > Administration section, click “Change the password” link. Enter the old (current) password and the new value. Confirm the new value and click **Save** in the upper right corner.
+The directory administrator (e.g. cn=directory manager) password is set during the install of RadiantOne and can be updated in Control Panel. You must know the current password to update the password. To change this password, from the Main Control Panel > Settings Tab > Administration section, click “Change the password” link. Enter the old (current) password and the new value. Confirm the new value and click **Save** in the upper right corner.
 
 >[!warning] 
 >If you change the password and you are currently logged into the Control Panel as the directory administrator, you must close the Control Panel and re-open it logging in with the new password.
@@ -67,7 +67,7 @@ You can also change the directory administrator’s password via LDAP. The DN re
 
 An example of the syntax used in the command is shown below, assuming the LDIF file described above is named ChangePassword.ldif. You must bind as the cn=directory manager with the current password in order to update the password with this LDAP command.
 
-ldapmodify.exe -D "cn=Directory Manager,ou=RootUsers,cn=config" -w password -h localhost -p 2389 -f c:\radiantone\ChangePassword.ldif
+ldapmodify.exe -D "cn=Directory Manager,ou=RootUsers,cn=config" -w currentpassword -h localhost -p 2389 -f c:\radiantone\ChangePassword.ldif
 
 >[!note] 
 >The RadiantOne service may be running when this command is executed.
