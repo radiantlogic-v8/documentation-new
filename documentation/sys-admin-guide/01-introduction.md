@@ -331,6 +331,18 @@ In the Search Expression example shown below, the values of the family_name, giv
 
 Figure 15: Search Expression Builder
 
+To disable support for OIDC authentication:
+
+1. Log into the Main Control Panel. 
+
+1. Navigate to Settings > Security > OIDC Provider Configuration.
+
+1. Click the Enabled toggle from on to off. 
+
+![](media/disable-oidc.png)
+
+1. Click **Save**.
+
 ### Auto-Logout
 
 After 30 minutes of inactivity, a user is automatically logged out.
