@@ -74,14 +74,13 @@ ldapmodify.exe -D "cn=Directory Manager,ou=RootUsers,cn=config" -w currentpasswo
 
 You can also change the directory administrator's password via REST (ADAP API). The following commands can be issued from a Linux client that is able to connect to the RadiantOne service's REST endpoint.
 1. Set the following:
-<br>   
-`REST_ENDPOINT="https://localhost:9101"`
-<br>`BIND_DN="cn=Directory Manager"`
-<br>`BIND_USER_DN="cn=Directory Manager,ou=rootusers,cn=config"`
-<br>`CURRENT_PASSWORD="MySuperSecretPassw0rd2"`
-<br>`NEW_PASSWORD="MySuperSecretPassw0rd3"`
-<br>`BASE64_USERNAME_PASSWORD=$(echo -n $BIND_DN:$CURRENT_PASSWORD | base64)`
-
+<br>REST_ENDPOINT="https://localhost:9101"
+<br>BIND_DN="cn=Directory Manager"
+<br>BIND_USER_DN="cn=Directory Manager,ou=rootusers,cn=config"
+<br>CURRENT_PASSWORD="MySuperSecretPassw0rd2"
+<br>NEW_PASSWORD="MySuperSecretPassw0rd3"
+<br>BASE64_USERNAME_PASSWORD=$(echo -n $BIND_DN:$CURRENT_PASSWORD | base64)
+<br>
 2. Run the following curl command:
 <br>
 curl -k --location --request PATCH "$REST_ENDPOINT/adap/$BIND_USER_DN" \
