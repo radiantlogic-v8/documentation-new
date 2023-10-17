@@ -81,7 +81,7 @@ CURRENT_PASSWORD="MySuperSecretPassw0rd2"
 NEW_PASSWORD="MySuperSecretPassw0rd3"
 BASE64_USERNAME_PASSWORD=$(echo -n $BIND_DN:$CURRENT_PASSWORD | base64)
 
-2. Run the following curl command: 
+3. Run the following curl command: 
 curl -k --location --request PATCH "$REST_ENDPOINT/adap/$BIND_USER_DN" \
 --header "Content-Type: application/json" \
 --header "Authorization: Basic $BASE64_USERNAME_PASSWORD" \
