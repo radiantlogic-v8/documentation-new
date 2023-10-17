@@ -339,7 +339,7 @@ To disable support for OIDC authentication:
 
 1. Click the Enabled toggle from on to off. 
 
-![](media/disable-oidc.png)
+![](Media/disable-oidc.png)
 
 1. Click **Save**.
 
