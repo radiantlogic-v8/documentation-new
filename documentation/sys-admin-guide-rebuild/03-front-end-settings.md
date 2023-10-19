@@ -84,23 +84,25 @@ REST_ENDPOINT="https://localhost:9101"
 
 1. Run the following curl command:
 <br>
-
 `curl -k --location --request PATCH "$REST_ENDPOINT/adap/$BIND_USER_DN" \`
 <br>`--header "Content-Type: application/json" \`
 <br>`--header "Authorization: Basic $BASE64_USERNAME_PASSWORD" \`
-<br>`--data '{`
-   <br> `"params": {`
-      <br>  `"mods": [`
-        <br>    `{`
-         <br>       `"attribute": "userPassword",`
-         <br>       `"type": "REPLACE",`
-          <br>      `"values": [`
-           <br>         `"'$NEW_PASSWORD'"`
-           <br>     `]`            
-          <br>  `}`
-       <br> `]`
-   <br> `}`
-<br>`}'`
+<br>`--data`
+```json
+'{
+   "params": {
+      "mods": [
+       {
+         "attribute": "userPassword",
+         "type": "REPLACE",
+          "values": [
+           "'$NEW_PASSWORD'"
+           ]            
+          }
+       ]
+   }
+}'
+```
 
 <br>
 If the command in successful, an HTTP status of 200 is returned: 
