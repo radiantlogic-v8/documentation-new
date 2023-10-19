@@ -101,7 +101,7 @@ Harness your identity data with intelligent integration to drive better business
 <section>
    
   > [Introduction](global-sync-guide/introduction)  
-  > Learn about RadiantOne  Synchronization including detailed architecture, key concepts and common use cases for the tool.
+  > Learn about RadiantOne Synchronization including detailed architecture, key concepts and common use cases for the tool.
   
   > [Installation](environment-operations-center-guide/environments/environment-overview/create-an-environment)  
   > Learn how to use the Environments Operations Center to create environments and install the RadiantOne Identity Data Platform which includes Synchronization. 
@@ -129,7 +129,7 @@ Harness your identity data with intelligent integration to drive better business
 
 ## Data Management APIs
 
-A rich set of HTTP-based API's have been developed on top of LDAP, to provide broader access to the Universal directory, using modern protocols, such as SCIM, SPML and other web services API's, are described in this section
+A rich set of HTTP-based API's have been developed on top of LDAP, to provide broader access to the RadiantOne service. 
 
 <section>
   
@@ -145,8 +145,8 @@ A rich set of HTTP-based API's have been developed on top of LDAP, to provide br
 
 <section>
   
-  > [API Specification](developer)
-  > Coming soon
+  > [API Specification]
+  > COMING SOON!
   
 </section>
 
@@ -156,7 +156,7 @@ A rich set of HTTP-based API's have been developed on top of LDAP, to provide br
 <section>
   
   > [Javadocs](javadoc/allclasses-frame)
-  > The API documentation applicable for customizing interception scripts in RadiantOne FID and transformation scripts in RadiantOne Global Synchronization.
+  > The API documentation applicable for customizing interception scripts and transformation scripts.
   
 </section>
 
