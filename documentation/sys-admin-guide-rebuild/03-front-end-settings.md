@@ -84,7 +84,8 @@ REST_ENDPOINT="https://localhost:9101"
 
 2. Run the following curl command:
 <br>
-```curl -k --location --request PATCH "$REST_ENDPOINT/adap/$BIND_USER_DN" \
+```
+curl -k --location --request PATCH "$REST_ENDPOINT/adap/$BIND_USER_DN" \
 --header "Content-Type: application/json" \
 --header "Authorization: Basic $BASE64_USERNAME_PASSWORD" \
 --data '{
@@ -99,9 +100,10 @@ REST_ENDPOINT="https://localhost:9101"
             }
         ]
     }
-}'```
+}'
+```
 
-
+<br>
 If the command in successful, an HTTP status of 200 is returned: 
 {"httpStatus":200}
 
