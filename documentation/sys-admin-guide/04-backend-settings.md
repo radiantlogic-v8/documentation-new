@@ -467,6 +467,8 @@ Figure 14: Sample Custom DSML/SPML Data Source
 
 This section provides general details about virtualizing SCIM data sources. Details about virtualizing some common SCIM-specific data sources like SailPoint can be found in the [RadiantOne Namespace Configuration Guide](/namespace-configuration-guide/01-introduction). For SCIM v2 accessible services, you can define the data source backend from the Main Control Panel.
 
+>[!warning] If you want to use SSL for this connection, you must import the RadiantOne public certificate into the backend server's truststore. The default RadiantOne public key is rli.cer, located in <RLI_HOME>/vds_server/conf.
+
 To virtualize a SCIM backend: 
 
 1.	In the Main Control Panel, go to the Settings Tab -> Server Backend section -> Custom Data Sources sub-section.
