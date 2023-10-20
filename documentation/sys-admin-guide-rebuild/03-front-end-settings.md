@@ -82,10 +82,10 @@ REST_ENDPOINT="https://localhost:9101"
 <br>BASE64_USERNAME_PASSWORD=$(echo -n $BIND_DN:$CURRENT_PASSWORD | base64)<br>
 
 2. Run the following curl command:
-<br> curl -k --location --request PATCH "$REST_ENDPOINT/adap/$BIND_USER_DN" \
-<br>--header "Content-Type: application/json" \
-<br>--header "Authorization: Basic $BASE64_USERNAME_PASSWORD" \
-<br>--data
+curl -k --location --request PATCH "$REST_ENDPOINT/adap/$BIND_USER_DN" \<br> 
+--header "Content-Type: application/json" \<br>
+--header "Authorization: Basic $BASE64_USERNAME_PASSWORD" \<br>
+--data
 ```
 '{
    "params": {
