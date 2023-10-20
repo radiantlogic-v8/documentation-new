@@ -82,9 +82,44 @@ You can also change the directory administrator’s password via LDAP. The DN re
 
 An example of the syntax used in the command is shown below, assuming the LDIF file described above is named ChangePassword.ldif.
 
-`ldapmodify.exe -D "cn=Directory Manager,ou=RootUsers,cn=config" -w password -h localhost -p 2389 -f c:\radiantone\ChangePassword.ldif`
+ldapmodify.exe -D "cn=Directory Manager,ou=RootUsers,cn=config" -w currentpassword -h localhost -p 2389 -f c:\radiantone\ChangePassword.ldif
 
 >[!note] The RadiantOne service may be running when this command is executed.
+
+You can also change the directory administrator's password via REST (ADAP API). The following commands can be issued from a Linux client that is able to connect to the RadiantOne service's REST endpoint.
+1. Set the following on the Linux client:
+```
+REST_ENDPOINT="https://localhost:9101"
+BIND_DN="cn=Directory Manager"
+BIND_USER_DN="cn=Directory Manager,ou=rootusers,cn=config"
+CURRENT_PASSWORD="MySuperSecretPassw0rd2"
+NEW_PASSWORD="MySuperSecretPassw0rd3"
+BASE64_USERNAME_PASSWORD=$(echo -n $BIND_DN:$CURRENT_PASSWORD | base64)
+```
+
+1. Run the following curl command on the Linux client:
+```
+curl -k --location --request PATCH "$REST_ENDPOINT/adap/$BIND_USER_DN" \
+--header "Content-Type: application/json" \
+--header "Authorization: Basic $BASE64_USERNAME_PASSWORD" \
+--data '{
+   "params": {
+      "mods": [
+       {
+         "attribute": "userPassword",
+         "type": "REPLACE",
+          "values": [
+           "'$NEW_PASSWORD'"
+           ]            
+          }
+       ]
+   }
+}'
+```
+
+<br>
+If the command in successful, an HTTP status of 200 is returned: 
+{"httpStatus":200}
 
 #### Allowed IP Addresses
 
