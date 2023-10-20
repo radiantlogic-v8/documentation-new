@@ -707,11 +707,11 @@ Example 2: A configured LDAP data source named ad203 has the following username 
 
 The following LDIF formatted file (named ldapmodify_update_datasource_username.ldif) is created to update the username and password:
 
-dn: id=ad203,cn=metads
-<br> changetype: modify
-<br> replace: username
-<br> username: CN=Logan Oliver,OU=Users,OU=Europe,DC=na,DC=radiantlogic,DC=com
--
+`dn: id=ad203,cn=metads`
+<br> `changetype: modify`
+<br> `replace: username`
+<br> `username: CN=Logan Oliver,OU=Users,OU=Europe,DC=na,DC=radiantlogic,DC=com`
+
 <br> replace: password
 <br> password: Radiant1
 
