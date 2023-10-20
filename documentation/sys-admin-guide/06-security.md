@@ -344,15 +344,13 @@ Figure 7: RadiantOne as a Kerberized Service
 
 Kerberos can be used for authentication to RadiantOne (acting as a Kerberized Service) as long as the client resides within the same domain or trusted domain forest as the RadiantOne service (and the RadiantOne machine must be in the same Kerberos realm/domain, or at least within the same forest as Active Directory). For authentication amongst un-trusted/different domains, the NTLM protocol is triggered instead. For details on configuring cross-domain authentication for RadiantOne, please see the section on [NTLM](#ntlm). To continue with configuring Kerberos for access to RadiantOne in Microsoft domains, follow the steps below. For details on MIT Kerberos support, see [Support for MIT Kerberos](#support-for-mit-kerberos).
 
->[!note] All machines (client, domain controller…etc.) must be in sync in terms of clock (time/date settings). Also, if you have deployed RadiantOne in a cluster, the service account created in the KDC can use the server name of the load balancer that is configured in front of the RadiantOne cluster nodes. <br> To use a generic or common account for multiple RadiantOne cluster nodes, you need to set the SPN on the account matching the FQDN of the host that requests the kerberos ticket. There is no need to create individual accounts for each RadiantOne node/host. Refer to the account using the UPN in the RadiantOne configuration. <br> The account can have multiple SPNs. An example is shown below.
-
->**sAMAccountName: svc-vdsadmin
-UPN: ldap/vds.example.net@example.net**
-
->**SPN: ldap/host1.example.net
-        <br> ldap/vds.example.net
-        <br> ldap/host2.example.net
-        <br> ldap/host3.example.net**
+>[!note] All machines (client, domain controller…etc.) must be in sync in terms of clock (time/date settings). Also, if you have deployed RadiantOne in a cluster, the service account created in the KDC can use the server name of the load balancer that is configured in front of the RadiantOne cluster nodes. <br> To use a generic or common account for multiple RadiantOne cluster nodes, you need to set the SPN on the account matching the FQDN of the host that requests the kerberos ticket. There is no need to create individual accounts for each RadiantOne node/host. Refer to the account using the UPN in the RadiantOne configuration. <br> The account can have multiple SPNs. An example is shown below.<br>
+sAMAccountName: svc-vdsadmin
+<br>UPN: ldap/vds.example.net@example.net
+<br>SPN: ldap/host1.example.net
+<br>ldap/vds.example.net
+<br>ldap/host2.example.net
+<br>ldap/host3.example.net
 
 #### Configuring RadiantOne as a Kerberized Service
 
