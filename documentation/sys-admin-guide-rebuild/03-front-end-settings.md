@@ -81,13 +81,12 @@ REST_ENDPOINT="https://localhost:9101"
 <br>NEW_PASSWORD="MySuperSecretPassw0rd3"
 <br>BASE64_USERNAME_PASSWORD=$(echo -n $BIND_DN:$CURRENT_PASSWORD | base64)<br>
 
-2. Run the following curl command:
-curl -k --location --request PATCH "$REST_ENDPOINT/adap/$BIND_USER_DN" \<br> 
---header "Content-Type: application/json" \<br>
---header "Authorization: Basic $BASE64_USERNAME_PASSWORD" \<br>
---data
+2. Run the following curl command on the Linux client:
 ```
-'{
+curl -k --location --request PATCH "$REST_ENDPOINT/adap/$BIND_USER_DN" \
+--header "Content-Type: application/json" \
+--header "Authorization: Basic $BASE64_USERNAME_PASSWORD" \
+--data '{
    "params": {
       "mods": [
        {
