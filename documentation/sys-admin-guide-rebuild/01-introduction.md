@@ -1327,7 +1327,7 @@ RadiantOne does not allow access to its files via operating system user interfac
 
 >[!note] Files at the RLI_HOME level cannot be modified with File Manager. 
 
-![](media/file-manager-navigation.png)
+![](Media/file-manager-navigation.png)
 Figure 25: File Manager Navigation Menu
 
 To navigate within File Manager, click a folder in the main File Manager pane, or click a link the navigation bar at the top of the File Manager. To go up one folder, click the up-arrow button. 
@@ -1377,11 +1377,11 @@ To build jar files:
 
 1. In File Manager, browse to RLI_HOME/vds_server/custom or any folder within. In the menu bar beneath torhe navigation bar, the Build drop-down menu displays. 
 
-    ![](media/file-manager-build.png)
+    ![](Media/file-manager-build.png)
    Figure 26: File Manager's Build Menu
 
 1. From the Build drop-down menu, select an option.
 
-![](media/build-jar.png)
+![](Media/build-jar.png)
 Figure 27: Building a Jar File
 
