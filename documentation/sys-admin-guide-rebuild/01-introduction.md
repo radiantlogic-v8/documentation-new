@@ -1321,4 +1321,67 @@ When other users log into the Control Panel, there is a message prompting the us
  
 Figure 24: Message Displayed for Locked Configuration
 
+## File Manager
+
+RadiantOne does not allow access to its files via operating system user interfaces. The File Manager option allows you to view, upload, and download files that reside under the RLI_HOME directory. It also allows you to build jar files. To access the File Manager, in the Main Control Panel, go to Settings > Configuration > File Manager. The default location displayed is RLI_HOME.
+
+>[!note] Files at the RLI_HOME level cannot be modified with File Manager. 
+
+![](media/file-manager-navigation.png)
+Figure 25: File Manager Navigation Menu
+
+To navigate within File Manager, click a folder in the main File Manager pane, or click a link the navigation bar at the top of the File Manager. To go up one folder, click the up-arrow button. 
+
+Some files types are hidden from view in File Manager. These file types include the following.
+
+- .cer
+- .keystore
+- .truststore
+
+### Uploading Files
+
+Uploads can be made anywhere within the <RLI_HOME>, except within <RLI_HOME> itself.
+
+To upload a file, click **Upload Files**. In the File Upload window, navigate to the file to be uploaded, select the file, and click **Open**.
+
+### Actions Drop-down Menu
+
+The Actions drop-down menu allows perform the following functions. 
+
+- Download files
+- Delete files
+- Open a selection
+- Clear a selection
+
+#### Downloading Files
+
+To download a file in File Manager, navigate in File Manager to the file's location. From the Actions drop-down menu, select Download Files.
+
+#### Deleting Files
+
+The Delete Files option allows you to delete one file at a time. To delete a file in File Manager, navigate to the file's location. From the Actions drop-down menu, selct Delete Files. The file is downloaded to the location indicated by your web browser. 
+
+#### Open Selection
+
+Some files, such as text, LDIF, XML, and jar files are viewable in File Manager. To view a file in File Manager, navigate to the file's location. From the Actions drop-down menu, select Open Selection. 
+
+>[!note] Files such as .class files are not openable in File Manager. 
+
+### Building Jar Files
+
+The File Manager allows you to build jar files. 
+
+To build jar files:
+
+1. In the Main Control Panel, click Settings > Configuration > File Manager. 
+
+1. In File Manager, browse to RLI_HOME/vds_server/custom or any folder within. In the menu bar beneath torhe navigation bar, the Build drop-down menu displays. 
+
+    ![](media/file-manager-build.png)
+   Figure 26: File Manager's Build Menu
+
+1. From the Build drop-down menu, select an option.
+
+![](media/build-jar.png)
+Figure 27: Building a Jar File
 
