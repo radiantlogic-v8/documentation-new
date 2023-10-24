@@ -58,7 +58,7 @@ To configure DB Changelog connector:
 ![DB Changelog Connector Configuration](../../media/image24.png)
 
 7. Select **Save**.
-8. A message is displayed that asks if you want to apply the scripts to configure the log table immediately or not.
+8. A message is displayed that asks if you want to apply the scripts to configure the log table immediately or not. You can also download the scripts to the local machine. 
     ![Configuration to Apply SQL Script Automatically or Not](../../media/image26.png)
 9. To apply now, select **OK**. Otherwise, select **NO**.
 
