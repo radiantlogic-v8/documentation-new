@@ -83,7 +83,7 @@ NEW_PASSWORD="MySuperSecretPassw0rd3"
 BASE64_USERNAME_PASSWORD=$(echo -n $BIND_DN:$CURRENT_PASSWORD | base64)
 ```
 
-1. Run the following curl command on the Linux client:
+10. Run the following curl command on the Linux client:
 ```
 curl -k --location --request PATCH "$REST_ENDPOINT/adap/$BIND_USER_DN" \
 --header "Content-Type: application/json" \
@@ -104,7 +104,7 @@ curl -k --location --request PATCH "$REST_ENDPOINT/adap/$BIND_USER_DN" \
 ```
 
 <br>
-If the command in successful, an HTTP status of 200 is returned: 
+If the command is successful, an HTTP status of 200 is returned: 
 {"httpStatus":200}
 
 <!--
