@@ -83,7 +83,7 @@ NEW_PASSWORD="MySuperSecretPassw0rd3"
 BASE64_USERNAME_PASSWORD=$(echo -n $BIND_DN:$CURRENT_PASSWORD | base64)
 ```
 
-10. Run the following curl command on the Linux client:
+2. Run the following curl command on the Linux client:
 ```
 curl -k --location --request PATCH "$REST_ENDPOINT/adap/$BIND_USER_DN" \
 --header "Content-Type: application/json" \
