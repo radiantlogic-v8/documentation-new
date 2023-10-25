@@ -164,7 +164,7 @@ As you migrate from a development environment to QA and finally to production, t
 
 13.	(Optional) If Global Identity Builder is used, perform an upload of identities into the global profile and configure persistent cache. See [RadiantOne Global Identity Builder Guide](/global-identity-builder-guide/introduction).
 
-14.	(Optional) Enabling FIPS Mode. See [RadiantOne FIPS Mode Guide](/radiantone-fips-mode-guide/01-overview).
+14.	(Optional) Enabling FIPS Mode. See [Enabling FIPS Mode](/hardening-guide/04-securing-data-in-transit/#enable-fips-mode).
 
 15.	(Optional) Configure multiple instances of RadiantOne.
 
