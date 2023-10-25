@@ -167,7 +167,7 @@ In the following example, a request is made to delete a certificate from the Rad
 
 ## fips-mode-enable
 
-This command enables FIPS mode. For details on FIPS mode, see the [RadiantOne FIPS Mode Guide](/radiantone-fips-mode-guide/01-overview).
+This command enables FIPS mode. For details on FIPS mode, see the [Enabling FIPS Mode](/hardening-guide/04-securing-data-in-transit/#enable-fips-mode).
 
 >[!note] This command must be run on all nodes.
 
