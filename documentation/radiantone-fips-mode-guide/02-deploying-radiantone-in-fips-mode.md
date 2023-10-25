@@ -50,9 +50,8 @@ Import command completed:  1 entries successfully imported, 0 entries failed or 
 
 The configurations to check and update if needed are the SSL/TLS protocols allowed, the vdsha LDAP data source is configured to use the SSL port, and all internal connections are configured to use SSL.
 
-1.	When FIPS mode is enabled, RadiantOne only supports the following SSL/TLS protocols: TLS v1, TLS v1.1, TLS v1.2, and TLS v1.3. The supported protocols can be seen from Main Control Panel > Settings tab > Security > SSL. Click the Change button next to Enabled SSL Protocols.
-
-    ![An image showing ](Media/Image2.2.jpg)
+1.	When FIPS mode is enabled, RadiantOne only supports TLS v1.2. The supported protocols can be seen from Main Control Panel > Settings tab > Security > SSL. Click the Change button next to Enabled SSL Protocols.
+ 
  
 2.	One of the elements of hardening the RadiantOne service, is to set the vdsha LDAP data source to use SSL. From the Main Control Panel > Settings tab > Server backend > LDAP Data Sources. Select the vdsha data source and click Edit. Enable the SSL checkbox on the right and set the SSL port. Click Save.
  
