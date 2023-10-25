@@ -255,7 +255,7 @@ When RadiantOne is enabled for FIPS mode, the keystore type is automatically con
 
 ![An image showing ](Media/Image2.1.jpg)
  
-## Converting a Server Certificate to BCFKS
+### Converting a Server Certificate to BCFKS
 
 When RadiantOne is enabled for FIPS mode, the keystore type is automatically converted to BCFKS. Therefore, the example provided in this section is solely informational.
 
@@ -271,7 +271,7 @@ Output of the command:
 Entry for alias rli successfully imported.
 Import command completed:  1 entries successfully imported, 0 entries failed or cancelled`
 
-## Allowed SSL/TLS Protocols
+### Allowed SSL/TLS Protocols
 
 The configurations to check and update if needed are the SSL/TLS protocols allowed, the vdsha LDAP data source is configured to use the SSL port, and all internal connections are configured to use SSL.
 
@@ -286,7 +286,7 @@ The configurations to check and update if needed are the SSL/TLS protocols allow
 
 ![An image showing ](Media/Image2.4.jpg)
  
-## Allowed Cipher Suites
+### Allowed Cipher Suites
 
 The cipher suites allowed in FIPS mode can be seen from Main Control Panel > Settings tab > Security > SSL. Click the Change button next to Supported Cipher Suites.
 
@@ -332,7 +332,7 @@ The cipher suites allowed in FIPS mode can be seen from Main Control Panel > Set
 - TLS_RSA_WITH_AES_256_CBC_SHA256
 - TLS_RSA_WITH_AES_256_GCM_SHA384
 
-## Allowed Password Hash/Encryption
+### Allowed Password Hash/Encryption
 
 When RadiantOne is in FIPS mode, the password hash/encryption options allowed for password policies are reduced to: PBKDF2AD, Salted SHA-256, Salted SHA-384 and Salted SHA-512
 
@@ -342,7 +342,7 @@ Password policies can be seen from the Main Control Panel > Settings tab > Secur
  
 If existing entries contain passwords that use a non-compliant FIPS hash, or if user entries are imported entries into a RadiantOne Universal Directory (HDAP) store via an LDIF file and contain hashed passwords using a non-compliant FIPS hash, these passwords remain stored with the existing hash until they are updated. Once FIPS mode is enabled, updated passwords are stored in the selected FIPS-compliant hash. Authentication of users is not impacted. 
 
-## Allowed Universal Directory (HDAP) Attribute Encryption and LDIF File Encryption Ciphers
+### Allowed Universal Directory (HDAP) Attribute Encryption and LDIF File Encryption Ciphers
 
 When RadiantOne is in FIPS mode, the cipher available for attribute encryption and/or LDIF file encryption is limited to AES256. The supported ciphers can be seen from Main Control Panel -> Settings tab -> Security -> Attribute Encryption.
  
@@ -350,7 +350,7 @@ When RadiantOne is in FIPS mode, the cipher available for attribute encryption a
 
 You must define an attribute encryption key and LDIFZ encryption key to properly secure data-at-rest.
 
-### RadiantOne Universal Directory (HDAP) Attribute Encryption
+#### RadiantOne Universal Directory (HDAP) Attribute Encryption
 
 Attribute encryption protects sensitive data while it is stored in RadiantOne. Attribute encryption allows you to specify that certain attributes of an entry are stored in an encrypted format. This prevents data from being readable while stored in Universal Directory (HDAP) stores, persistent cache, backup files, and exported LDIF files.
 
@@ -386,7 +386,7 @@ Attributes listed in the Encrypted Attributes property are added to the Non-inde
 
 For more information about accessing encrypted attributes and changing the encryption key, see the RadiantOne System Administration Guide.
 
-### LDIF File Encryption
+#### LDIF File Encryption
 
 Use the LDIFZ format when exporting RadiantOne Universal Directory stores (HDAP) stores to produce a zipped and encrypted LDIF file. This prevents data from being readable while stored in exported LDIF files.
 
