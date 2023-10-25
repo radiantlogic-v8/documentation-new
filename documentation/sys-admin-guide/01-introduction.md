@@ -772,7 +772,7 @@ A server certificate used by RadiantOne uniquely identifies it to clients for es
 
 ### Replacing the Default Self-Signed Certificate
 
-During the RadiantOne installation, a default self-signed certificate is generated for RadiantOne. This self-signed certificate can be replaced with one assigned by a Certificate Authority (CA). Follow the steps below corresponding to your certificate type. If you require a certificate and RadiantOne configuration that is FIPS 140-2 compliant, skip the steps in this section and see the [RadiantOne FIPS Mode Guide](/radiantone-fips-mode-guide/01-overview).
+During the RadiantOne installation, a default self-signed certificate is generated for RadiantOne. This self-signed certificate can be replaced with one assigned by a Certificate Authority (CA). Follow the steps below corresponding to your certificate type. If you require a certificate and RadiantOne configuration that is FIPS 140-2 compliant, skip the steps in this section and see the [Enabling FIPS Mode](/hardening-guide/04-securing-data-in-transit/#enable-fips-mode).
 
 >[!warning]
 >If RadiantOne is deployed in a cluster, and each node has their own server certificate, the following steps must be performed on each node independently.
