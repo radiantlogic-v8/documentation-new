@@ -18,14 +18,14 @@ Harness your identity data with intelligent integration to drive better business
 
 <section>
   
-  > [Introduction](environment-operations-center-guide/overview)  
+  > [Introduction]()  
   > Radiant Logic’s fully managed, RadiantOne SaaS offering is built to deploy quickly and streamline configuration, maintenance, and upgrades.
   
   > [Environment Operations Center](environment-operations-center-guide/environments/environment-overview/environments)  
   > Learn how to use the Environment Operations Center as a centralized control plane to manage all RadiantOne environments.
 
   > [Main Control Panel]()  
-  > Learn how to install, configure and use Secure Data Connectors as a secure way for cloud environments to selectively access on-premise identity data sources.
+  > .
 
   > [Installation]()
   > 
@@ -60,8 +60,8 @@ Harness your identity data with intelligent integration to drive better business
   >[Managing Entries]()
   > 
   
-  > [Tuning](deployment-and-tuning-guide/00-preface)  
-  > Learn the best practices approaches for deploying and tuning RadiantOne Directory.
+  > [Tuning]()  
+  > .
   
   > [Operational Attributes](operational-attributes-guide/01-overview)  
   > Learn about the operational attributes used by RadiantOne Directory to handle functionality for authorization enforcement, password policies, replication...etc.
@@ -96,26 +96,14 @@ Harness your identity data with intelligent integration to drive better business
 
 <section>
    
-  > [Introduction](global-sync-guide/introduction)  
-  > Learn about RadiantOne  Synchronization including detailed architecture, key concepts and common use cases for the tool.
+  > [Concepts]()  
+  > . 
   
-  > [Installation](environment-operations-center-guide/environments/environment-overview/create-an-environment)  
-  > Learn how to use the Environments Operations Center to create environments and install the RadiantOne Identity Data Platform which includes Synchronization. 
+  > [Configuration]()  
+  > . 
   
-  > [Configuration](global-sync-guide/introduction)  
-  > Learn how to configure synchronization pipelines and create transformation logic using a combination of scripting, attribute mappings and advanced rules. 
-  
-  > [Connector Properties](connector-properties-guide/overview)  
-  > Learn how to configure change capture connectors for detecting and processing changes from data sources. 
-  
-  > [Deployment & Tuning](global-sync-guide/deployment)  
-  > Learn the best practices approaches for deploying and tuning RadiantOne Synchronization.
-  
-  > [Troubleshooting](logging-and-troubleshooting-guide/05-global-synchronization)  
-  > Learn about the structure and contents of the log files associated with RadiantOne Synchronization.
-  
-  > [Monitoring](monitoring-and-reporting-guide/01-monitoring)  
-  > Learn how to monitor RadiantOne Synchronization and configure alerts for concerning activities.
+  > [Tuning]()  
+  > . 
   
 </section>
 </section>
