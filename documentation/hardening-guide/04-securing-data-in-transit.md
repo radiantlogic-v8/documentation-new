@@ -238,7 +238,7 @@ RadiantOne includes a FIPS-certified cryptographic module. The certification can
 
 Securing data-in-transit addresses communication between clients and the RadiantOne service as depicted in the diagram below and is addressed by SSL/TLS. Securing data-at-rest addresses how attributes (e.g. user passwords and other sensitive attributes) are encrypted when stored in the RadiantOne Universal Directory (HDAP) storage. These two layers are highlighted in the diagram below and both leverage the FIPS-certified Radiant Logic Cryptographic Module for Java.
 
-![An image showing ](Media/Image1.1.jpg)
+![An image showing ](Media/FIPSImage1.1.jpg)
  
 Figure 1: Data in Transit and Data at Rest
 
@@ -268,7 +268,7 @@ Restart Jetty and the RadiantOne service. If deployed in a cluster, restart thes
 
 When RadiantOne is enabled for FIPS mode, the keystore type is automatically converted to BCFKS. This can be seen in the Server Control Panel -> Settings tab: Server Certificate Key Store and Server Certificate Key Type should indicate the path to the keystore and BCFKS respectively.
 
-![An image showing ](Media/Image2.1.jpg)
+![An image showing ](Media/FIPSImage2.1.jpg)
  
 ### Converting a Server Certificate to BCFKS
 
@@ -295,11 +295,11 @@ The configurations to check and update if needed are the SSL/TLS protocols allow
  
 2.	One of the elements of hardening the RadiantOne service, is to set the vdsha LDAP data source to use SSL. From the Main Control Panel > Settings tab > Server backend > LDAP Data Sources. Select the vdsha data source and click Edit. Enable the SSL checkbox on the right and set the SSL port. Click Save.
  
-    ![An image showing ](Media/Image2.3.jpg)
+    ![An image showing ](Media/FIPSImage2.3.jpg)
 
 3.	One of the elements of hardening the RadiantOne service is to ensure that all Internal Connections are configured to use SSL. From the Main Control Panel -> Settings tab -> Server Backend -> Internal Connections, ensure the Use SSL option is enabled. Click Save.
 
-![An image showing ](Media/Image2.4.jpg)
+![An image showing ](Media/FIPSImage2.4.jpg)
  
 ### Allowed Cipher Suites
 
@@ -353,7 +353,7 @@ When RadiantOne is in FIPS mode, the password hash/encryption options allowed fo
 
 Password policies can be seen from the Main Control Panel > Settings tab > Security > Password Policies.
 
-![An image showing ](Media/Image2.5.jpg)
+![An image showing ](Media/FIPSImage2.5.jpg)
  
 If existing entries contain passwords that use a non-compliant FIPS hash, or if user entries are imported entries into a RadiantOne Universal Directory (HDAP) store via an LDIF file and contain hashed passwords using a non-compliant FIPS hash, these passwords remain stored with the existing hash until they are updated. Once FIPS mode is enabled, updated passwords are stored in the selected FIPS-compliant hash. Authentication of users is not impacted. 
 
@@ -361,7 +361,7 @@ If existing entries contain passwords that use a non-compliant FIPS hash, or if 
 
 When RadiantOne is in FIPS mode, the cipher available for attribute encryption and/or LDIF file encryption is limited to AES256. The supported ciphers can be seen from Main Control Panel -> Settings tab -> Security -> Attribute Encryption.
  
-![An image showing ](Media/Image2.6.jpg)
+![An image showing ](Media/FIPSImage2.6.jpg)
 
 You must define an attribute encryption key and LDIFZ encryption key to properly secure data-at-rest.
 
@@ -421,12 +421,12 @@ To define the criteria used to generate an encryption key:
 
 In FIPS-mode, LDIFZ files should be used for persistent cache initialization (for the file that gets generated as the first step of the initialization process). Make sure the option to “Use .ldifz…” is selected during the initialization process.
 
-![An image showing ](Media/Image2.7.jpg)
+![An image showing ](Media/FIPSImage2.7.jpg)
  
 In FIPS-mode, LDIFZ files should be used when exporting RadiantOne Universal Directory (HDAP) or persistent cache. Select .ldifz from the drop-down list next to the Export File Name property.
  
-![An image showing ](Media/Image2.8.jpg)
-![An image showing ](Media/Image2.9.jpg)
+![An image showing ](Media/FIPSImage2.8.jpg)
+![An image showing ](Media/FIPSImage2.9.jpg)
 
 ## Disabling FIPS-Mode
 
