@@ -339,6 +339,9 @@ The migration process involves exporting your existing configuration, installing
 
 The RadiantOne configuration can be exported from one machine/cluster and imported into another. The [export](#exporting-the-existing-environment) needs to happen on only one node in a cluster (as all nodes share the same config) and needs to be [imported](#importing-the-existing-configuration) on only one node in the cluster of the target environment.
 
+>[!note] Ensure you have the latest patch applied before migrating to a PBE-enabled environment: v7.3.30 or v7.4.8.
+
+
 ### Exporting the Existing Environment
 
 This section describes exporting the contents of the existing environment configuration. The RadiantOne configuration is stored in various files which makes the task of manual migration a painful and error-prone process. The Migration Utility automates the process of moving the configuration files from one RadiantOne machine/cluster to another. 
