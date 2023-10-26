@@ -11,7 +11,7 @@ An attribute found in the rootDSE (<RLI_HOME>\vds_server\conf\rootdse.ldif) that
 
 ## supportedControl
 
-An attribute found in the rootDSE (<RLI_HOME>\vds_server\conf\rootdse.ldif) that indicates the LDAP controls and extensions that RadiantOne supports. The values could be any combination of the following:
+An attribute found in the rootDSE (<RLI_HOME>\vds_server\conf\rootdse.ldif) that indicates the LDAP controls and extensions that RadiantOne supports. Some of the default LDAP controls and features are explicitly mentioned in the roodse.ldif file while some are determined during startup by the RadiantOne service and returned automatically when clients request the rootDSE of the service (an LDAP search request with a empty base DN). The values could be any combination of the following:
 
 -	Subtree Delete Control - 1.2.840.113556.1.4.805
 
