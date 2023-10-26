@@ -122,7 +122,7 @@ If the command is successful, an HTTP status of 200 is returned:
 {"httpStatus":200}
 
 An example of using Postman as a REST client to update the cn=directory manager password is shown below.
-1. Add an Authorization header that contains Basic with the base 64 encoded value for cn=directory manager:currentpassword. E.g. Basic Y249RGlyZWN0b3J5IE1hbmFnZXI6bmV3cGFzc3dvcmQxMjM=
+1. Add an Authorization header that contains Basic with the base 64 encoded value for cn=directory manager:currentpassword. E.g. <br>Basic Y249RGlyZWN0b3J5IE1hbmFnZXI6bmV3cGFzc3dvcmQxMjM=
 2. Issue a PATCH operation with `http://RESTENDPOINT:8089/adap/cn=Directory Manager,ou=RootUsers,cn=config` with the following body:
 
 ```
