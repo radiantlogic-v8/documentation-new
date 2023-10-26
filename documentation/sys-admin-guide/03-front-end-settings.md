@@ -87,7 +87,7 @@ ldapmodify.exe -D "cn=Directory Manager,ou=RootUsers,cn=config" -w currentpasswo
 >[!note] The RadiantOne service may be running when this command is executed.
 
 You can also change the directory administrator's password via REST (ADAP API). The following commands can be issued from a Linux client that is able to connect to the RadiantOne service's REST endpoint.
-1. Set the following on the Linux client:
+Set the following on the Linux client:
 ```
 REST_ENDPOINT="https://localhost:9101"
 BIND_DN="cn=Directory Manager"
@@ -97,7 +97,7 @@ NEW_PASSWORD="MySuperSecretPassw0rd3"
 BASE64_USERNAME_PASSWORD=$(echo -n $BIND_DN:$CURRENT_PASSWORD | base64)
 ```
 
-10. Run the following curl command on the Linux client:
+Run the following curl command on the Linux client:
 ```
 curl -k --location --request PATCH "$REST_ENDPOINT/adap/$BIND_USER_DN" \
 --header "Content-Type: application/json" \
@@ -120,6 +120,25 @@ curl -k --location --request PATCH "$REST_ENDPOINT/adap/$BIND_USER_DN" \
 <br>
 If the command is successful, an HTTP status of 200 is returned: 
 {"httpStatus":200}
+
+An example of using Postman as a REST client to update the cn=directory manager password is shown below.
+1. Add an Authorization header that contains Basic with the base 64 encoded value for cn=directory manager:currentpassword. E.g. Basic Y249RGlyZWN0b3J5IE1hbmFnZXI6bmV3cGFzc3dvcmQxMjM=
+2. Issue a PATCH operation with http://RESTENDPOINT:8090/adap/cn=Directory Manager,ou=RootUsers,cn=config with the following body:
+
+```
+{
+    "params": {
+        "mods": [
+            {
+                "attribute": "userPassword",
+                "type": "REPLACE",
+                "values": ["newpassword"]
+            }
+        ]
+    }
+}
+```
+
 
 #### Allowed IP Addresses
 
