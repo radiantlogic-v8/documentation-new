@@ -244,7 +244,7 @@ Out of the available protocols, not in the disabled list, you can limit which on
 
 If you want to support one of the less secure protocols, edit the java.security file and remove the protocol from the jdk.tls.disabledAlgorithms value. Then, make sure it is enabled in RadiantOne. Restart RadiantOne on all nodes. If a protocol is enabled in RadiantOne, but in the list of disabled algorithms in the java.security file, it will not be supported at runtime for SSL communication.
 
->[!note] Only enable the SSL protocols that comply withour company’s security policy.
+>[!note] Only enable the SSL protocols that comply with your company’s security policy.
 
 ### Enable STARTTLS
 
@@ -976,7 +976,7 @@ If you need to change the encryption security key, follow the steps below.
 
 11.	On the right, add required attributes to the encrypted attributes list.
 
-12.	Click **Sav**e.
+12.	Click **Save**.
 
 13.	Click **Re-build Index**.
 
