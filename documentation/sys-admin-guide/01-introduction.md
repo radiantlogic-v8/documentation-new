@@ -76,6 +76,11 @@ Message	 | Cause | Solution
 
 ![password expiring soon](Media/password-expiring-soon.png)
 
+### Last Login Time
+The time the user last logged into the Control Panel is displayed above the "Logged in as..." information shown in the top right.
+
+![Last Login Time](Media/lastloginv74.jpg)
+
 ### Logging in with PIV Card/Smart Card/Certificate
 
 You can log in using a PIV Card/Smart Card/Certificate as an alternative to using username and password. To support this functionality, login with the default super user account and configure the following.
