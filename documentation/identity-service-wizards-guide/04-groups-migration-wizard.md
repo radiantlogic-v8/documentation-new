@@ -3,7 +3,7 @@ title: Identity Service Wizards
 description: Identity Service Wizards
 ---
 
-# Chapter 4: Groups Migration Wizard
+# Groups Migration Wizard
 
 Existing group membership references user DNs, the naming of which are based on the structure of the LDAP directory. When you model a new directory namespace with virtualization, the user DNs will change. The four steps in the Group Migration Wizard assist with the effort of translating the existing group membership to match the new namespace.
 
