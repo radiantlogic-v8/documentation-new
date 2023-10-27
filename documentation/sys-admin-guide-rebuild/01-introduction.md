@@ -93,6 +93,11 @@ Message	 | Cause | Solution
 "Authentication failed. Reason [LDAP: error code 49 - Password has expired.]" [A Reset Password link is displayed.] | Password expiry.	 | Click the Reset Password link.
 “Authentication failed. Reason: [LDAP: error code 19 - The password failure limit has been reached and the account is locked. Please retry later or contact the system administrator to reset the password.]” | The account is locked. | Retry later or contact the system administrator to reset the password.
 
+### Last Login Time
+The time the user last logged into the Control Panel is displayed above the "Logged in as..." information shown in the top right.
+
+![Last Login Time](Media/lastlogin.jpg)
+
 <!--
 
 ### Logging in with PIV Card/Smart Card/Certificate
