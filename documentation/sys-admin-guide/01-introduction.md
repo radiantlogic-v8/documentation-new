@@ -77,7 +77,7 @@ Message	 | Cause | Solution
 ![password expiring soon](Media/password-expiring-soon.png)
 
 ### Last Login Time
-The time the user last logged into the Control Panel is displayed above the "Logged in as..." information shown in the top right.
+The time the user last logged into the Control Panel is displayed next to the "Logged in as..." information shown in the top right.
 
 ![Last Login Time](Media/lastloginv74.jpg)
 
