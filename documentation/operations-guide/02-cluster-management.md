@@ -33,7 +33,7 @@ To configure an email notification related to a license key expiration:
     - messageBody: the body of the email message
     - numberOfDaysBeforeExpiration: when to start sending emails before license expiration
     - licenseCheckIntervalDays: how frequently to check for when the license is going to expire.
-    - licenseExpirationMessageRecipient: who to send the email notification to. Only one address is supported.
+    - licenseExpirationMessageRecipient: who to send the email notification to. Only one email address is supported.
     - licenseExpirationMessageSender: the email address from which to send the notification.
 7. Click Save on the Zookeeper tab.
 
