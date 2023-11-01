@@ -68,6 +68,20 @@ By default, the vds_server.log file rolls over once it reaches 100MB in size. Ch
 
 By default, 20 log files are kept (oldest ones are deleted to maintain a maximum of 20). You can change this value in the How Many Files to Keep in Archive setting. The archived files are named vds_server-<yyyy-MM-dd_HH-mm-ss>.log.zip and can be downloaded from Server Control Panel > Log Viewer. <!-- The default instance name is vds_server, so the path would be: <RLI_HOME>/vds_server/logs/.
 
+### Log Failure Notification
+The RadiantOne service can send an alert email if logging fails for the vds_server.log. Enable the notification process from Main Control Panel > Settings > Log > Log Settings > Log Failure Notification section.
+1. Check to **Enable Notifications**.
+2. Enter the **SMTP Server URL**.
+3. Enter the **SMTP port**.
+4. **Username** to connect to the SMTP server.
+5. **Password associated with the username entered in step 4. Used to connect to the SMTP server.
+6. Enter the subject of the email message in the **Message Subject** property.
+7. Enter the body of the email message in the **Message Body** property.
+8. Enter the email address to send the alert to, in the **Message Recipient** property.
+9. Enter the email address from which the alert should be sent, in the **Message Sender** property.
+10. Enter a number of minutes to indicate how long to wait before sending a subsequent alert email, in the **Minimum Interval Between Emails**
+11. Click Save.
+
 ## RadiantOne Access Log 
 
 The vds_server_access.log contains less information than vds_server.log and is used more for auditing. Access logging is configured from the Main Control Panel > Settings tab > Logs > Access Logs section.
