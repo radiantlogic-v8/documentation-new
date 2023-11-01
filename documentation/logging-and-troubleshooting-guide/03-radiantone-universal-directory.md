@@ -105,7 +105,7 @@ The RadiantOne service can send an alert email if logging fails for the vds_serv
 7. Enter the body of the email message in the **Message Body** property.
 8. Enter the email address to send the alert to, in the **Message Recipient** property.
 9. Enter the email address from which the alert should be sent, in the **Message Sender** property.
-10. Enter a number of minutes to indicate how long to wait before sending a subsequent alert email, in the **Minimum Interval Between Emails**
+10. Enter a number of minutes to indicate how long to wait before sending a subsequent alert email, in the **Minimum Interval Between Emails**.
 11. Click **Save**.
 
 ## RadiantOne Access Log 
