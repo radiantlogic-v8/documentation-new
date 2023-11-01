@@ -1844,6 +1844,15 @@ Items to keep in mind:
 -	Multiple password policies configured with sub tree subject, should not be configured for the same location. If multiple policies impact the same branch, the policy defined at the lowest point (deepest DN) is enforced.
 -	If you define multiple custom password policies associated with groups (as the Subject), they should not have the same precedence if they share members.
 
+### Password Policy Associated with Control Panel Delegated Administrator Roles
+The default delegated administrator roles and users associated with the RadiantOne Control Panel are located in the cn=config naming context. To define a custom password policy for users associated with these roles, select the sub-tree subject and enter cn=config for the location (or any location where the users are located). An example is shown below where the passwords for the delegated administrator accounts expire after 5 days.
+![Custom Password Policy Example](Media/customPwdPolicy.jpg)
+
+>[!note] - if you want a custom password policies to be associated with a specific delegated administrator role, select the "group" subject in the password policy, and click **Choose** to navigate to the group entry that is associated with the role.
+
+
+
+
 ## Password Changes
 
 ![Password Changes Options](Media/Image3.106.jpg)
@@ -1883,7 +1892,7 @@ This value is stored in the pwdMinAge attribute of the cn=Password Policy entry.
 
 This value is stored in the pwdInHistory attribute of the cn=Password Policy entry. It holds the maximum number of used passwords to store in the pwdHistory attribute. If this attribute is not present, or if the value is 0, used passwords are not stored in the pwdHistory attribute and the value may be reused.
 
-Password Expiration
+## Password Expiration
 
 ![Password Expiration Options](Media/Image3.107.jpg)
  
@@ -1930,7 +1939,7 @@ These are known as grace logins. The value of this parameter is stored in the pw
 
 During the grace login attempts, bind requests are processed. However, the subsequent operation after the bind must be a modifyRequest to change the password. Otherwise, an error message is returned indicating “You must change your password before submitting any other requests”.
 
-#### Password Content
+## Password Content
 
 The following are the password content options.
 -	Password minimum length
@@ -2041,7 +2050,7 @@ To enable this feature:
 
 4.	Click **Save**.
 
-### Account Activity and Lockout
+## Account Activity and Lockout
 
 Accounts may be automatically locked under two circumstances:
 
@@ -2085,33 +2094,33 @@ This value is stored in the pwdFailureCountInterval attribute of the cn=Password
 
 If a user’s account is locked, it can become unlocked by resetting the user’s password. Any user (other than the locked out user) that has the proper permissions (ACI’s) can reset the user’s password. If the lockout policy has a duration period, the account is automatically unlocked after the duration has passed.
 
-### Operational Password Attributes Stored in User Entries
+## Operational Password Attributes Stored in User Entries
 
 >[!warning] Since these attributes are defined as operational attributes, they do not appear in the user entries unless specifically requested in the search from the client.
 
-#### pwdHistory
+### pwdHistory
 
 Stores the previous values used for passwords to prevent users from re-using previous passwords. The number of passwords that are stored is determined by the value set in the pwdInHistory attribute of the Password Policy.
 
-#### pwdChangedTime
+### pwdChangedTime
 
 A Generalized Time attribute containing the time the password was last changed.
 
-#### pwdLastLogonTime
+### pwdLastLogonTime
 
 Stores the user’s last successful login time (bind) if the “Keep track of the user’s last successful logon time” is enabled.
 
-#### pwdAccountLockedTime
+### pwdAccountLockedTime
 
 A Generalized Time attribute containing the time at which the account was locked. If the account is not locked, this attribute is not present.
 
 If the maximum consecutive login failures (pwdMaxFailure) have been reached during a certain period of time (pwdFailureCountInterval), the user entry will have the operational attribute of: pwdAccountLockedTime and it will contain the time the account became locked.
 
-#### passwordExpWarned
+### passwordExpWarned
 
 A Generalized Time attribute containing the time at which the password expiration warning was first sent to the client.
 
-#### pwdFailureTime
+### pwdFailureTime
 
 A multi-valued Generalized Time attribute containing the times of previous consecutive login failures. If the last login was successful, this attribute is not present. The number of values will be no more than the value defined in Number of Login Failures for the password policy.
 
@@ -2124,15 +2133,15 @@ If the last login was successful, this attribute is not present.
 >[!note]
 >Once the Reset Failure count has passed, the values of the pwdFailureTime attribute are updated during the next unsuccessful login attempt and the values are removed if the next login is successful.
 
-#### pwdGraceUseTime
+### pwdGraceUseTime
 
 A multi-valued Generalized Time attribute containing the times of the previous grace logins.
 
-#### pwdPolicySubentry
+### pwdPolicySubentry
 
 An attribute that contains the DN of the password policy associated with the user. RadiantOne does not write to this attribute or allow password policies to be defined on individual users from the Main Control Panel. However, if the entry was imported from another directory, this attribute could have a value that dictates which password policy affects the user. If the value matches a policy defined in RadiantOne, this policy is enforced for the user. If the value does not match a policy defined in RadiantOne it is ignored and other configured policies below cn=Password Policy,cn=config are checked. If multiple policies affect the user, the one with the highest priority (based on precedence level) is enforced.
 
-#### pwdReset
+### pwdReset
 
 A Boolean attribute containing the value TRUE if the password has been reset and must be changed by the user. If a user’s password is set/reset by the RadiantOne super user (e.g. cn=directory manager), a member of the cn=directory administrators group (cn=directory administrators,ou=globalgroups,cn=config), or the user himself, this does not trigger pwdReset set to TRUE. Only when a user’s password is set/reset by other users (e.g. helpdesk) is the pwdReset set to TRUE. When the affected user logs in with the new password for the first time, they are not allowed to perform operations until they reset their password. For example, if the user attempts a search, RadiantOne responds with error code 53 and a message indicating “You must change your password before submitting any other requests”. After the user updates their password, pwdReset is removed from their entry.
 
