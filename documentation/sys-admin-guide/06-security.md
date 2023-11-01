@@ -2124,7 +2124,7 @@ A Generalized Time attribute containing the time at which the password expiratio
 
 A multi-valued Generalized Time attribute containing the times of previous consecutive login failures. If the last login was successful, this attribute is not present. The number of values will be no more than the value defined in Number of Login Failures for the password policy.
 
-![Number of Login Failures](Media/Image..jpg)
+![Number of Login Failures](Media/Image3.109.jpg)
 
 Figure 54: Number of Login Failures
  
