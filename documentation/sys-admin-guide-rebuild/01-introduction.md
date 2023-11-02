@@ -90,7 +90,7 @@ The Main Control Panel displays a message when authentication fails. The table b
 Message	 | Cause | Solution
 -|-|-
 “Authentication failed. Reason: Access is denied.” | Incorrect login ID or incorrect password. | Verify the login ID and password and try again.
-"Authentication failed. Reason [LDAP: error code 49 - Password has expired.]" [A Reset Password link is displayed.] | Password expiry.	 | Click the Reset Password link.
+"Authentication failed. Reason [LDAP: error code 49 - Password has expired.]" [A Reset Password link is displayed.] | Password has expired. | If the client application supports password reset capabilities, the user can reset their password. <br>The Main Control Panel supports resetting expired passwords. The user can click the *Reset Password* link in the message displayed on the Main Control Panel to set a new password. If the [password policy](06-security#password-policy-associated-with-control-panel-delegated-administrator-roles) associated with the user requires the current password to set a new password, the user is prompted to enter their current password along with the new password. 
 “Authentication failed. Reason: [LDAP: error code 19 - The password failure limit has been reached and the account is locked. Please retry later or contact the system administrator to reset the password.]” | The account is locked. | Retry later or contact the system administrator to reset the password.
 
 ### Last Login Time
