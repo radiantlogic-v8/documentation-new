@@ -764,9 +764,3 @@ After the first phase, RadiantOne prepares the LDIF file to initialize the cache
 ![An image showing ](Media/Image3.80.jpg)
 
 Figure 20: Persistent Cache Initialization Location
-
-## Kerberos Profiles
-
-A Kerberos profile file defines the realm, domain and KDC information. These profiles are used by RadiantOne when it acts as a client a backend Active Directory. For configuration details, please see [Kerberos](06-security#kerberos).
-
->[!note] This section is accessible only in [Expert Mode](01-introduction#expert-mode).
