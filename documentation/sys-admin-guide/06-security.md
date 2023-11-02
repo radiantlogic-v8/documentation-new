@@ -1596,7 +1596,7 @@ Figure 39: Example Group
 
 The screen below shows the Sales group containing the All Users group as a member.
 
-![Example Nested Group](Media/Image3.114.jpg)
+![Example Nested Group](Media/ImageNestedGroup.jpg)
  
 Figure 40: Example Nested Group
 
