@@ -1786,7 +1786,7 @@ There is a default password policy that is enforced at a global level for all Ra
 >[!note]
 >If a given user entry is affected by both a global and local policy, the local policy takes precedence. For more details, see [Password Policy Precedence](#password-policy-precedence). To enable password policy enforcement for a persistent cache branch, check the Enable Password Policy Enforcement option on the cache settings. For more details on persistent cache, see the [RadiantOne Deployment and Tuning Guide](/deployment-and-tuning-guide/00-preface).
 
-### Default Password Policy
+#### Default Password Policy
 
 In the ‘Choose a Password Policy’ drop-down menu, the default password policy is named Default Policy. Choose this option to edit the components of the global default policy.
 
@@ -1794,7 +1794,7 @@ In the ‘Choose a Password Policy’ drop-down menu, the default password polic
  
 Figure 48: Password Policy Scope
 
-### Custom Password Policy
+#### Custom Password Policy
 
 To create a custom password policy, next to the ‘Choose a Password Policy’ drop-down, click **New**. Enter a policy name applicable to the intended usage and click **OK**.
 
