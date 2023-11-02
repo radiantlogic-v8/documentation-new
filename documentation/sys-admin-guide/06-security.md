@@ -1601,9 +1601,9 @@ The screen below shows the Sales group containing the All Users group as a membe
 Figure 40: Example Nested Group
 
 A client can issue a search leveraging the matching rule OID to retrieve all groups Adan_Funston is a member of with the following search filter.
-
-`(uniqueMember:1.2.840.113556.1.4.1941:=uid=Adan_Funston,ou=Accounting,o=companydirectory)`
-
+```
+(uniqueMember:1.2.840.113556.1.4.1941:=uid=Adan_Funston,ou=Accounting,o=companydirectory)
+```
 A search request to RadiantOne with the above filter would return Sales and All Users as shown in the example client below.
 
 ![Search Filter using Matching Rule OID](Media/Image3.115.jpg)
@@ -1848,7 +1848,7 @@ Items to keep in mind:
 The default delegated administrator roles and users associated with the RadiantOne Control Panel are located in the cn=config naming context. To define a custom password policy for users associated with these roles, select the sub-tree subject and enter cn=config for the location (or any location where the users are located). An example is shown below where the passwords for the delegated administrator accounts expire after 5 days.
 ![Custom Password Policy Example](Media/customPwdPolicy.jpg)
 
->[!note] - if you want a custom password policies to be associated with a specific delegated administrator role, select the "group" subject in the password policy, and click **Choose** to navigate to the group entry that is associated with the role.
+>[!note] If you want a custom password policies to be associated with a specific delegated administrator role, select the "group" subject in the password policy, and click **Choose** to navigate to the group entry that is associated with the role.
 
 
 
