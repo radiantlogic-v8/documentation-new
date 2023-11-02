@@ -1147,7 +1147,7 @@ Items to keep in mind:
 
 ### Password Policy Associated with Control Panel Delegated Administrator Roles
 The default delegated administrator roles and users associated with the RadiantOne Control Panel are located in the cn=config naming context. To define a custom password policy for users associated with these roles, select the sub-tree subject and enter cn=config for the location (or any location where the users are located). An example is shown below where the passwords for the delegated administrator accounts expire after 5 days.
-![Custom Password Policy Example](Media/customPwdPolicy.jpg)
+![Custom Password Policy Example](Media/customPwdPolicyv8.jpg)
 
 >[!note] If you want a custom password policies to be associated with a specific delegated administrator role, select the "group" subject in the password policy, and click **Choose** to navigate to the group entry that is associated with the role.
 
