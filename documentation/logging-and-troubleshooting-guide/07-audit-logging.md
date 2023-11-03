@@ -15,7 +15,7 @@ To enable audit logging:
 
 3. Set audit.logging.enabled=**true**.
 
-4. If you want to enable logging delta changes, set foraudit.logging.diff.enabled=**true**.
+4. If you want to enable logging delta changes, set audit.logging.diff.enabled=**true**.
 
 5. If you want to enable logging for the vdsconfig utility, set vdsconfig.logging.enabled=**true**.
 
