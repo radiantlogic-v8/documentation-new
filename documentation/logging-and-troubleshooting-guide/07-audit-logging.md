@@ -26,10 +26,9 @@ To enable audit logging:
     Figure 1: Features.properties settings
 
 7. Restart the Control Panel.
+8. Restart the RadiantOne service.
 
-    >[!warning] If RadiantOne is deployed in a cluster, restart FID on all nodes. 
-
-8. Restart other RadiantOne processes.
+>[!warning] If RadiantOne is deployed in a cluster, restart the services on all nodes. 
 
 To disable the ability to turn off audit logging:
 
