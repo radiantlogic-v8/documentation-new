@@ -40,3 +40,9 @@ To disable the ability to turn off audit logging:
 
 1. Save features.properties.
 
+1. Restart the Control Panel.
+
+1. Restart the RadiantOne service.
+
+  >[!warning] If RadiantOne is deployed in a cluster, restart the services on all nodes. 
+
