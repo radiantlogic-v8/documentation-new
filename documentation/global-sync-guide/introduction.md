@@ -1,15 +1,18 @@
 ---
-title: Global Sync module introduction
-description: Global Sync module introduction
+title: Synchronization introduction
+description: Synchronization introduction
 ---
 
-# Global Sync Introduction
+# Synchronization Introduction
 
-Global Synchronization is an advanced set of tools for synchronization and identity management. This module allows you to synchronize objects distributed across disparate data sources (directories, databases or applications): a change in an object in one source, at the attribute level, or for the whole object can be reflected into many other connected objects. Using a publisher/subscriber approach, any object can publish events (creation, deletion or modification for the whole object, or any attributes of this object) and propagate them to subscriber objects. User-defined attribute mappings and transformations can be applied during synchronization.
+RadiantOne Synchronization is an advanced set of tools for synchronization and identity management. This feature allows you to synchronize objects distributed across disparate data sources (directories, databases or applications): a change in an object in one source, at the attribute level, or for the whole object can be reflected into many other connected objects. Using a publisher/subscriber approach, any object can publish events (creation, deletion or modification for the whole object, or any attributes of this object) and propagate them to subscriber objects. User-defined attribute mappings and transformations can be applied during synchronization.
+
+>[!note] 
+>If you have a RadiantOne license that entitles you to use synchronization, you will see a Global Sync tab in the Main Control Panel. Otherwise the tab doesn't show. 
 
 ## Architecture
 
-The Global Synchronization architecture is comprised of Agents, Queues, Sync Engine, Attribute mappings and transformation scripts.
+The Synchronization architecture is comprised of Agents, Queues, Sync Engine, Attribute mappings and transformation scripts.
 
 Agents manage Connectors which are components used to interface with the data sources. Changes flow to and from the Connectors asynchronously in the form of messages. This process leverages queues to temporarily store messages as they flow through the synchronization pipeline. The attribute mappings and/or transformation scripts are processed by the Sync Engine prior to the events being sent to the target endpoints.
 
