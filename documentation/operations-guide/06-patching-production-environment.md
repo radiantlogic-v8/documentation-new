@@ -73,21 +73,18 @@ This scenario assumes you currently have a RadiantOne cluster deployed, each nod
 This scenario assumes you currently have a RadiantOne cluster deployed with one cluster license for all nodes in the cluster. The following are the replacement steps whether the license key has expired or not.
 
 1. On one RadiantOne node, open the <RLI_HOME>/vds_server/license.lic file in a text editor and replace the entire key value with your new cluster license key and save the file. The key value should start with {rlib}. Make sure there are no extra leading or trailing spaces. Save the license.lic file. Make sure no extra extensions (e.g. .txt) have been added to the file.
-
-2. Restart the RadiantOne servcie on the node. The new license key value gets registered in ZooKeeper once the service is restarted. Confirm that the RadiantOne service has restarted before continuing to step 3.
-
+1. Restart the RadiantOne servcie on the node. The new license key value gets registered in ZooKeeper once the service is restarted. Confirm that the RadiantOne service has restarted before continuing to step 3.
  >[!warning] If you are running RadiantOne v7.4.8(+), all cluster nodes update their local license file automatically with the updated license file on the first cluster node that is updated (and restarted). Therefore, you can skip step 3 below.
 
-3. Repeat steps 1-2 on each RadiantOne cluster node. Use the same cluster license value for all RadiantOne nodes.
+1. Repeat steps 1-2 on each RadiantOne cluster node. Use the same cluster license value for all RadiantOne nodes.
 
 ### Replacing Single Node License Keys with New Cluster License Key
 
 This scenario assumes you currently have a RadiantOne cluster deployed, each node in the cluster has its own unique license key, and you want to replace the single node license keys with a cluster license key. The following are the replacement steps whether the license key has expired or not.
 
 1. On one RadiantOne node, open the <RLI_HOME>/vds_server/license.lic file in a text editor and replace the entire key value with your new cluster license key and save the file. The key value should start with {rlib}. Make sure there are no extra leading or trailing spaces. Save the license.lic file. Make sure no extra extensions (e.g. .txt) have been added to the file.
-
-2. Restart the RadiantOne service on the node. The new license key value gets registered in ZooKeeper once the service is restarted. Confirm that the RadiantOne service has restarted before continuing to step 3.
+1. Restart the RadiantOne service on the node. The new license key value gets registered in ZooKeeper once the service is restarted. Confirm that the RadiantOne service has restarted before continuing to step 3.
 
  >[!warning] If you are running RadiantOne v7.4.8(+), all cluster nodes update their local license file automatically with the updated license file on the first cluster node that is updated (and restarted). Therefore, you can skip step 3 below.
 
-3. Repeat steps 1-2 on each RadiantOne cluster node. Use the same cluster license value for all RadiantOne nodes.
+1. Repeat steps 1-2 on each RadiantOne cluster node. Use the same cluster license value for all RadiantOne nodes.
