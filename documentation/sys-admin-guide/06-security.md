@@ -1440,10 +1440,14 @@ A subject is whom the access control rule applies to. The subject types that can
 -	Public – anyone connected to the directory is considered public. This also includes anonymous users.
 -	Self – applicable to the user whose authenticated DN matches the DN of the entry that is being accessed.
 -	Authenticated – applicable to any user who successfully authenticates.
+- Group Owner - applicable to the owner, manager, or role of the group.  You can define the target, scope, attributes and permissions using the Control Panel and then select this ACI and click **Manual Edit** to refine the subject for this complex scenario. See below for an example:
+<br>(targetattr="*")(target="ldap:///o=My Company?manager,owner,role")(targetscope = "subtree")(version 3.0;acl "Group owner access only";allow (all)(userdn = "ldap:///self");)
+<br>The above ACI will dictate that:  if the binding user is the "manager", or the "owner", or bearing the "role" of the targeted entity, then the binding user has the access to targeted entry;  otherwise, the access is denied.
+
+The above ACI will dictate that:  if the binding user is the "manager", or the "owner", or bearing the "role" of the targeted entity, then the binding user has the access to it;  otherwise, the access is denied.
 -	Parent – applicable to the entry only if their bind DN is the parent of the targeted entry. For example, to allow users to modify any child entries of their bind DN, create the following ACI on the dv=address book,o=vds node:
 (targetattr = "*")(target = "ldap:///dv=address book,o=vds")(targetscope = "subtree")(version 3.0;acl "myaci";allow (write) (userdn = "ldap:///parent");)
 -	IP Address – applicable to a specific client IP address. 
-
 You can indicate that a client connection must originate from a single IP address or a range of addresses. Both IPv4 and IPv6 addresses are supported and you can indicate a range of IP addresses using “/”. A mix of IPv4 and IPv6 can also be used. See below for examples:
 
 **Single IPv4 address**
@@ -1488,33 +1492,26 @@ To define access controls:
 >Access rights can be defined by any user who is a member of the ACI Administrators group or the Directory Administrators group. For details on all administrative groups available for RadiantOne, please see [Delegated Administration of RadiantOne](01-introduction#delegated-administration-of-radiantone).
 
 1.	From the Main Control Panel > Settings Tab > Security section > Access Control sub-section, select the Enable ACI checkbox on the right side in the Authorization section and click **Save**.
-
-2.	In the Access Control section, select root.
+1.	In the Access Control section, select root.
 
     >[!note] Although there is not an absolute requirement, it is generally recommended to define all your access controls at the root level so you can come back to this single level and see all configured access controls across the entire virtual namespace.
 
-3.	Click **Add**. The Edit ACI pane is displayed.
+1.	Click **Add**. The Edit ACI pane is displayed.
 
     >[!note] The Target Scope pull-down menu value defaults to subtree, and the Target Attributes value defaults to All.
 
-4.	Enter an ACI description.
-
-5.	Click **Choose** to navigate to the target DN.
-
-6.	In the Target Scope drop-down list, select base, onelevel or subtree.
-
-7.	In the Target Filter, enter an applicable LDAP filter to narrow the entries affected by the access control rule. This step is optional.
-
-8.	For the Target Attributes, select either “equal to” (=) or “not equal to” (!=) from the drop-down list. Then choose to either have the access rule apply to “all” or “custom”. If custom is selected, click SELECT to narrow the list.
+1.	Enter an ACI description.
+1.	Click **Choose** to navigate to the target DN.
+1.	In the Target Scope drop-down list, select base, onelevel or subtree.
+1.	In the Target Filter, enter an applicable LDAP filter to narrow the entries affected by the access control rule. This step is optional.
+1.	For the Target Attributes, select either “equal to” (=) or “not equal to” (!=) from the drop-down list. Then choose to either have the access rule apply to “all” or “custom”. If custom is selected, click SELECT to narrow the list.
 
     If you choose custom, and your attribute doesn’t appear in the list, you must update the RadiantOne LDAP schema appropriately before setting the ACI. For details on this, please see [Extending RadiantOne LDAP Schema](radiantone-ldap-schema#extending-the-radiantone-ldap-schema). After the schema has been updated, go back to the Settings tab > Security section > Access Controls sub-section and follow the steps mentioned above to add the custom attribute list.
 
-9.	In the Permissions section, select either to allow or deny. 
-10.	Select the [operations](06-security#operations) that you want allowed or denied.
-
-11.	In the Authentication Context section, configure bind rules as needed.
-
-12.	In the Apply to section, select the [subjects](06-security#subjects) that will be allowed or denied access. 
+1.	In the Permissions section, select either to allow or deny. 
+1.	Select the [operations](06-security#operations) that you want allowed or denied.
+1.	In the Authentication Context section, configure bind rules as needed.
+1.	In the Apply to section, select the [subjects](06-security#subjects) that will be allowed or denied access. 
 
     To assign users, groups or users associated in a specific tree/branch, click **LDAP SEARCH**. 
 
@@ -1528,7 +1525,7 @@ To define access controls:
 
     To assign permissions associated with the parent, click **ALLOW PARENT**.
 
-13.	Click **Save** when finished.
+1.	Click **Save** when finished.
 
 # Access Control
 
