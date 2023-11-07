@@ -6,6 +6,8 @@ description: Get a quick introduction to the Context Builder tool for creating m
 # Introduction
 
 This document provides step-by-step instructions on using the Context Builder.
+>[!note] 
+>If you have a RadiantOne license that entitles you to use the Context Builder, you will see a Context Builder tab in the Main Control Panel. Otherwise the tab doesn't show. 
 
 The Context Builder is used to extract metadata from backend sources and model virtual directory views. The views can be flat or hierarchical and comprised of an aggregation of many views. This provides greater flexibility for view design than creating simple proxy views from the Main Control Panel > Directory Namespace tab. 
 
