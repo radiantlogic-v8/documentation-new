@@ -1440,9 +1440,11 @@ A subject is whom the access control rule applies to. The subject types that can
 -	Public – anyone connected to the directory is considered public. This also includes anonymous users.
 -	Self – applicable to the user whose authenticated DN matches the DN of the entry that is being accessed.
 -	Authenticated – applicable to any user who successfully authenticates.
-- Group Owner - applicable to the owner, manager, or role of the group.  You can define the target, scope, attributes and permissions using the Control Panel and then select this ACI and click **Manual Edit** to refine the subject for this complex scenario. See below for an example:
-<br>(targetattr="*")(target="ldap:///o=My Company?manager,owner,role")(targetscope = "subtree")(version 3.0;acl "Group owner access only";allow (all)(userdn = "ldap:///self");)
-<br>The above ACI will dictate that:  if the binding user is the "manager", or the "owner", or bearing the "role" of the targeted entity, then the binding user has the access to targeted entry;  otherwise, the access is denied.
+- Group Owner - applicable to the owner, manager, or role of the group.  You can define the target, scope, attributes and permissions using the Control Panel and then select this ACI and click **Manual Edit** to refine the subject for this complex scenario. See below for an example:<br>
+
+(targetattr="*")(target="ldap:///o=My Company?manager,owner,role")(targetscope = "subtree")(version 3.0;acl "Group owner access only";allow (all)(userdn = "ldap:///self");)<br>
+
+The above ACI will dictate that:  if the binding user is the "manager", or the "owner", or bearing the "role" of the targeted entity, then the binding user has the access to targeted entry;  otherwise, the access is denied.
 
 The above ACI will dictate that:  if the binding user is the "manager", or the "owner", or bearing the "role" of the targeted entity, then the binding user has the access to it;  otherwise, the access is denied.
 -	Parent – applicable to the entry only if their bind DN is the parent of the targeted entry. For example, to allow users to modify any child entries of their bind DN, create the following ACI on the dv=address book,o=vds node:
