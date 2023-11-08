@@ -111,6 +111,9 @@ Harness your identity data with intelligent integration to drive better business
   
   > [Monitoring & Reporting](monitoring-and-reporting-guide/01-monitoring)  
   > Learn how to monitor the directory, configure alerts for concerning activities, and access the default reports (Access, Audit and Group Audit).
+ 
+  > [ACI Migration](aci-migration-guide/01-monitoring)  
+  > Learn how to migrate ACIs from legacy LDAP directories like OpenDJ, Novell eDirectory, IBM Tivoli Directory and SunOne (Oracle ODSEE) to the RadiantOne Directory.
   
 </section>
 
