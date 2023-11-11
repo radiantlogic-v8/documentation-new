@@ -25,7 +25,7 @@ To manage the Approvers group:
 
 >[!warning]
 >If you want the approver to receive an email alert when they have pending approvals, the user account must have a valid email address (mail attribute).
-1.	Click the Confirm button. The member is displayed in the cn=approvers group.  
-1.	Click Confirm again to commit the change. 
+10.	Click the Confirm button. The member is displayed in the cn=approvers group.  
+11.	Click Confirm again to commit the change. 
   
 ![Members of the Approvers Group](../media/approversgroup.jpg)
