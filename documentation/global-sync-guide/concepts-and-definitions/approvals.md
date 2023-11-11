@@ -29,3 +29,13 @@ To manage the Approvers group:
 11.	Click Confirm again to commit the change. 
   
 ![Members of the Approvers Group](../media/approversgroup.jpg)
+
+## Email Notifications
+
+To enable email alerts for approvers, SMTP must be configured. 
+1. Navigate to the RadiantOne Main Control Panel > Settings tab > Monitoring > Email Alerts Settings.
+2. Enter your SMTP settings (host, port, user, password, from email and to email) in the Email Alerts (SMTP Settings) section.
+3. Click **Save**.
+4. If you would like to test your settings, click **Send Test Email**. 
+
+![Email Alert Configuration](../media/emailalerts.jpg)
