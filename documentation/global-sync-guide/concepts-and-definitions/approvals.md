@@ -19,7 +19,9 @@ To manage the Approvers group:
 1.	Click the **Expand Tree** button. The RadiantOne namespace displays on the right. 
 1.	In the namespace, navigate to the location for the user that you want to approve entry modifications. In this example, the location cn=config,ou=globalusers is selected.  
 1.	Click the **Find Now** button.  
-1.	Select the entry you want to approve entry modifications and click the **Move selected entry down** button. In this example, uid=icsadmin,ou=globalusers,cn=config is selected.    
+1.	Select the entry you want to approve entry modifications and click the **Move selected entry down** button. In this example, uid=icsadmin,ou=globalusers,cn=config is selected.
+![Find Users](../media/findusers.jpg)
+
 >[!warning]
 >If you want the approver to receive an email alert when they have pending approvals, the user account must have a valid email address (mail attribute).
 1.	Click the Confirm button. The member is displayed in the cn=approvers group.  
