@@ -14,6 +14,7 @@ description: RadiantOne Global Synchronization guide
   - [Agents and connectors](concepts-and-definitions/agents-and-connectors.md)
   - [Queues](concepts-and-definitions/queues.md)
   - [Password synchronization](concepts-and-definitions/password-synchronization.md)
+  - [Approvals](concepts-and-definitions/approvals.md)
 - [Configuration](#)
   - [Overview](configuration/overview.md)
   - [Data sources](configuration/data-sources.md)
