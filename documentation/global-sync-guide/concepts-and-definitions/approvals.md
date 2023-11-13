@@ -62,7 +62,7 @@ http://radiantoneserver:7070/portal/login
 The applications currently available in this portal are *Approvals* and *Global Identity Viewer*. A brief description of each application is provided below. 
 
 ### Performing Approvals 
-For synchronization pipelines that use rules-based transformation, you can configure source events to require an extra manual approval step prior to the change being sent to target systems. The “Require Approval” option is used for this purpose and dictates that certain events must be approved by a specified set of users before they are applied to target systems. When a change associated with a rule that requires approval is detected in a source, the instance is published into the approvals queue and awaits action. Approvers use the Approvals application to accept or reject events.
+When a change associated with a rule that requires approval is detected in a source, the instance is published into the approvals queue and awaits action. Approvers use the Approvals application to accept or reject events.
 
 Approvers log into the Insights, Reports and Administration Portal and click the Approvals icon.
 ![Approvals](../media/approvals.jpg)
