@@ -15,7 +15,9 @@ For example:
 
 `https://cp-rliqa.dc.federated-identity.com/portal`
 
->[!note]The endpoint for Control Panel can be located in the Environment Details section in Environment Operations Center. ![Global Identity Viewer endpoint](Media/endpoint.png)
+>[!note]The endpoint for Control Panel is be located in the Environment Details section in Environment Operations Center.
+
+![Global Identity Viewer endpoint](Media/endpoint.png)
 
 Enter your credentials and click Login.
 
