@@ -11,7 +11,7 @@ Rules are configured in the RULES section of the selected RULE SET. A Rule is co
 
 To automatically configure rules for insert, update and delete events, select ![Plus symbol](../../media/image77.png). One rule is configured for each event and each rule has one condition based on the corresponding event type. You can edit an auto configured rule by selecting it and selecting the **Edit** button.
 
-To create a new rule:
+## Creating Rules
 
 1. Edit the Rule Set and select the **Rules** section.
 1. Select ![Plus symbol](../../media/image78.png)
@@ -28,7 +28,7 @@ To create a new rule:
 1. Select **Save**.
 1. Create another [rule set](overview.md) for every source object class you want to detect changes on.
 
-To Configure Approvers:
+## Configuring Approvers
 The Require Approvals option is located on the **BASIC INFORMATION** tab.
 1. Enable the Require Approvals checkbox.
 2. Click ![Approval Config](../../media/editapprovals.jpg).
