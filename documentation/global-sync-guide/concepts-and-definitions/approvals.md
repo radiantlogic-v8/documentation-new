@@ -59,6 +59,23 @@ The applications currently available in this portal are *Approvals* and *Global 
 ### Performing Approvals 
 For synchronization pipelines that use rules-based transformation, you can configure source events to require an extra manual approval step prior to the change being sent to target systems. The “Require Approval” option is used for this purpose and dictates that certain events must be approved by a specified set of users before they are applied to target systems. When a change associated with a rule that requires approval is detected in a source, the instance is published into the approvals queue and awaits action. Approvers use the Approvals application to accept or reject events.
 
+Approvers log into the Insights, Reports and Administration Portal and click the Approvals icon.
+![Approvals](../media/approvals.jpg)
+
+The pending events assigned to the approver are displayed.
+
+![Approval Decisions](../media/decisions.jpg)
+
+The user must approve or reject the event. This can be done using the ![reject](../media/reject.jpg) to reject an event or the ![accept](../media/accept.jpg) to accept an event. <br>
+Check boxes in the column on the far left can also be used. If you check the box in the column header, options include “Select Current Page”, “Select Everything”, “Unselect Current Page”, and “Unselect Everything”. Then select an option from the Select Bulk Action drop-down menu (*Approve All* or *Reject All*).
+
+>[!note] 
+>To fetch additional pending modifications, click the **Refresh** button.
+
+After acting on all events, click **Submit** and then **Yes** to confirm the updates. 
+
+Approved events are processed by the sync engine and applied to the target.
+
 ### Global Identity Viewer 
 RadiantOne includes an easy-to-use, web-based application named the Global Identity Viewer that facilitates searching for identities and/or groups across all data sources that have been integrated in a Global Identity Builder project. When a query returns an identity, a list of tabs display for the selected user based on how many identity sources the user has an account in. If the identity is found in the global profile list, the attributes corresponding to this account display on the Global Profile tab. The names of the other tabs indicate the identity source’s “friendly name” as configured in the Global Identity Builder project. When a tab is selected, the identity attributes and group membership associated with the user’s account in that particular identity source are displayed. In the diagram below, a user identified as Brian Carmen has an account in the RadiantOne global profile store, and accounts in identity sources named adpartnerdomain, ldap, and azuread. The example shows the adpartnerdomain tab selected and Brian’s attributes from that particular data source returned. 
 For more details on the Global Identity Viewer, see the RadiantOne Global Identity Viewer Guide. 
