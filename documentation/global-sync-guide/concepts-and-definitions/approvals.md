@@ -38,6 +38,9 @@ To enable email alerts for approvers, SMTP must be configured.
 3. Click **Save**.
 4. If you would like to test your settings, click **Send Test Email**. 
 
+>[!note]
+>For security and audit purposes, it is not advised to connect to your mail server anonymously (leaving user and password >properties blank in the Email Alert Settings). 
+
 ![Email Alert Configuration](../media/emailalerts.jpg)
 
 ## Insights, Reports and Administration Portal
@@ -48,6 +51,7 @@ To access the portal, navigate in a web browser as follows and enter your login 
 http://radiantoneserver:7070/portal/login 
 >[!note] 
 >You can access the portal on any RadiantOne cluster node.
+
 ![Insights, Reports and Administration Portal](../media/portallogin.jpg)
 
 The applications currently available in this portal are *Approvals* and *Global Identity Viewer*. A brief description of each application is provided below. 
