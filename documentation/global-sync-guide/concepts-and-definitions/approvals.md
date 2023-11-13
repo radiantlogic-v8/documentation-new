@@ -77,7 +77,7 @@ Check boxes in the column on the far left can also be used. If you check the box
 >[!note] 
 >To fetch additional pending modifications, click the **Refresh** button.
 
-After acting on all events, click **Submit** and then **Yes** to confirm the updates. 
+After acting on all events, click **Submit Changes** and then **Yes** to confirm the updates. 
 
 Approved events are processed by the sync engine and applied to the target.
 
