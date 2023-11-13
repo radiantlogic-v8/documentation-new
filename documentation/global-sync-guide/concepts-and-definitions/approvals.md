@@ -40,7 +40,7 @@ To enable email alerts for approvers, SMTP must be configured.
 
 ![Email Alert Configuration](../media/emailalerts.jpg)
 
-## Performing Approvals
+## Insights, Reports and Administration Portal
 
 The RadiantOne Insights, Reports and Administration portal is designed for power users and administrators that are in charge of identity management tasks such as approving synchronization events (e.g. creation of new accounts in target systems) or auditing group memberships.
 
@@ -48,12 +48,11 @@ To access the portal, navigate in a web browser as follows and enter your login 
 http://radiantoneserver:7070/portal/login 
 >[!note] 
 >You can access the portal on any RadiantOne cluster node.
->
->![Insights, Reports and Administration Portal](../media/portallogin.jpg)
+![Insights, Reports and Administration Portal](../media/portallogin.jpg)
 
 The applications currently available in this portal are Approvals and Global Identity Viewer. A brief description of each application is provided below. 
 
-### Approvals 
+### Performing Approvals 
 For synchronization pipelines that use Rules-based transformation, you can configure source events to require an extra manual approval step prior to the change being sent to target systems. The “Require Approval” option is used for this purpose and dictates that certain events must be approved by a specified set of users before they are applied to target systems. When a change associated with a rule that requires approval is detected in a source, the instance is published into the approvals queue and awaits action until the change has either been approved or rejected. Any user assigned to the Approvals role must log into the Insights, Reports and Administration portal and access the Approvals application to act on the event before it expires. If the change is approved, it is processed, removed from the queue and published to the target(s). If it is rejected, the change is aborted and the message is deleted from the queue. 
 
 ### Global Identity Viewer 
