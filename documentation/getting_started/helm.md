@@ -81,9 +81,12 @@ helm install --namespace=<name space> <release name> radiantone/fid \
 --set zk.connectionString="zk.dev:2181" \
 --set zk.ruok="http://zk.dev:8080/commands/ruok" \
 --set fid.license="<FID cluster license>" \
---set fid.rootPassword="test1234"
+--set fid.rootPassword="test1234" \
+--set env.INSTALL_SAMPLES=true
 ```
-Note: Curly brackets in the liense must be escaped ```--set fid.license="\{rlib\}xxx"```
+Note: Curly brackets in the liense must be escaped ```--set fid.license="\{rlib\}xxx"```.<br> If you want to install samples, use 
+`--set env.INSTALL_SAMPLES=true`
+
 * List FID releases
 ```
 helm list --namespace=<name space>
