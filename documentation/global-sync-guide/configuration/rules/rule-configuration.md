@@ -18,7 +18,7 @@ To automatically configure rules for insert, update and delete events, select ![
 1. Enter a Rule name.
 1. (Optional) Enter a Description.
 1. Configure the [identity linkage](identity-linkage.md) in the Identity Linkage property.
-1. If source events associated with this rule should be manually approved before being syncrhonized to the target, check to enable *Require Approvals* and click ![Approval Config](../../media/editapprovals.jpg). 
+1. If source events associated with this rule should be manually approved before being syncrhonized to the target, check to enable *Require Approvals* and click ![Approval Config](../../media/editapprovals.jpg) and [Configure Approvers](/#configuring-approvers).
 1. If you have selected the option to manually define the target DN in [Advanced options](../advanced-options.md#target-dn-generation), select the variable that contains the target DN. If you have the target DN generation set to Automatic in Advanced Option, you do not see the Target DN Variable in the Basic Information section.
 1. Select the **Event Type** that should invoke the rule from the **Target Event Type** drop-down list.
 1. Select the [CONDITIONS](conditions.md) section to define the conditions.
