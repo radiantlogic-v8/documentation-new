@@ -35,7 +35,7 @@ The Require Approvals option is located on the **BASIC INFORMATION** tab.
 3. Click ![Plus symbol](../../media/image78.png).
 4. Select one or more members of the [Approvers group](../../concepts-and-definitions/approvals/#approvers) and click ADD. If you select more than one approver, all must approve the action before it expires.
 5. Enter a length of time to indicate how long a message should be queued awaiting action (approval or rejection) before it is deleted from the queue. This can be in either minutes or days.
-6. Enter a meaningful description and select a source attribute to display in the [*Approvals* portal](../../concepts-and-definitions/approvals/#performing-approvals) to help provide context for the approver about the synchronization event. 
+6. Enter a meaningful description and select a source attribute to display in the [*Approvals* experience](../../concepts-and-definitions/approvals/#performing-approvals) to help provide context for the approver about the synchronization event. 
 
 ![Approval Config](../../media/editapprovalsux.jpg).
 
