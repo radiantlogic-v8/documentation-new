@@ -151,4 +151,4 @@ Hard Drive: 50 GB of disk space, SSD. The required minimum data transfer rate is
 
 Software
 
-Operating Systems: Windows Server 2012 R2, Windows Server 2016, Windows Server 2019, Windows Server Core, Red Hat Enterprise Linux versions 5,6,7,8+, Fedora v24+, CentOS v7+, SUSE Linux Enterprise v11+, Ubuntu 16+
+Operating Systems: Windows Server 2012 R2, Windows Server 2016, Windows Server 2019, Windows Server Core, Windows Server 2022, Red Hat Enterprise Linux versions 5,6,7,8+, Fedora v24+, CentOS v7+, SUSE Linux Enterprise v11+, Ubuntu 16+
