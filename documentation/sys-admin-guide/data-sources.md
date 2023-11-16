@@ -1,3 +1,8 @@
+---
+title: Data Sources
+description: Details about Data Sources and their Respective Properties.
+---
+
 # Data Sources
 
 A data source in RadiantOne represents the connection to a backend. Data sources can be managed from the Main Control Panel > Settings Tab > Server Backend section. Configuring connections to all backends from a central location simplifies the management task when changes to the backend are required. For more details on data sources, please see [Concepts](concepts).
