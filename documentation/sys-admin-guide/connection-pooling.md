@@ -1,3 +1,8 @@
+---
+title: Connection Pooling
+description: Details about connection pooling settings.
+---
+
 # Connection Pooling/Other
 
 >[!note] This section is accessible only in [Expert Mode](01-introduction#expert-mode).
