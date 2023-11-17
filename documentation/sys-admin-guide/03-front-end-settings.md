@@ -3,27 +3,17 @@ title: System Administration Guide
 description: System Administration Guide
 ---
 
-# Front End Settings
-
-From the Settings Tab, you can manage the majority of RadiantOne settings. All settings found on this tab are detailed in this section.
-
-Cluster settings are stored in ZooKeeper. These can be viewed/edited from the Zookeeper tab in the Main Control Panel (navigate to radiantone > `<version> > <cluster_name> > config > vds_server.conf` and click **Edit Mode** in the upper right corner). Or, these settings can be viewed/edited with ZooInspector. ZooInspector can be started with: <RLI_HOME>\apps\zookeeper\contrib\ZooInspector\run.cmd (or run.sh on UNIX platforms). In ZooInspector, click on ![zooinspector button](Media/zooinspector-button.jpg) to connect to the ZooKeeper instance. For more details on ZooKeeper, please see the [RadiantOne Architect Guide](/architect-guide/preface).
-
-![ZooInspector](Media/Image3.37.jpg)
- 
-Figure 1: ZooInspector
-
-## Server Front End
+# Server Front End
 
 These settings are related to how clients access RadiantOne and can be managed from the Main Control Panel > Settings tab > Server Front End section. 
  
-### Administration
+## Administration
 
 ![Administration Section](Media/Image3.38.jpg)
  
 Figure 2: Administration Section
 
-#### LDAP Port
+### LDAP Port
 
 The LDAP port that the RadiantOne service listens on. By default, this value is set to 2389 (this can be set during the RadiantOne install). A couple of things to keep in mind if you plan on changing the port are: on Windows platforms, you can use any available port less than 65355 and on UNIX platforms you must have admin/root privileges to start the RadiantOne service on any port less than 1024 (because these are considered "privileged").
 
@@ -32,7 +22,7 @@ The LDAP port that the RadiantOne service listens on. By default, this value is 
 
 The RadiantOne service can also listen on an [SSL port](06-security#ssl-settings), [HTTP port](#web-services-http-port) (to process DSML, SPML, SCIM or REST requests) or a [SQL port](03-front-end-settings#sql).
 
-#### Directory Manager User
+### Directory Manager User
 
 The directory manager (cn=directory manager by default) is the super user for the directory and this account is defined during the RadiantOne install.
 
@@ -58,7 +48,7 @@ To configure the Directory Manager username:
 
 If you update the Directory Manager username, the LDAP entry in the RadiantOne namespace is located at: cn=Directory Manager,ou=RootUsers,cn=config is updated with a seeAlso attribute that contains the value of the new username. This allows the new username to be used to log into the Main Control Panel.
 
-#### Directory Manager Password
+### Directory Manager Password
 
 The directory administrator (cn=directory manager) password is set during the install of RadiantOne and can be changed here. To change this password, from the Main Control Panel > Settings Tab > Administration section, click “Change the password” link. Enter the old (current) password and the new value. Confirm the new value and click **Save** in the upper right corner.
 
@@ -141,7 +131,7 @@ An example of using Postman as a REST client to update the cn=directory manager 
 ```
 ![REST PATCH Example](Media/restbodyexamplev74.jpg)
 
-#### Allowed IP Addresses
+### Allowed IP Addresses
 
 To prevent the unwarranted use of the directory administrator (super user) account, you can set specific IP addresses from where the directory administrator account can connect to the RadiantOne service from. This value can be a single IP address or a list of IP addresses separated by a comma. The IP address syntax can also support a range of IP addresses.
 
@@ -160,17 +150,17 @@ Example set for a range of IPv6 addresses:
 
 Restart Jetty (server hosting the Control Panel) and the RadiantOne service (on all nodes if running in a cluster) after making changes to this property.
 
-#### Special Users Group DN
+### Special Users Group DN
 
 This parameter can be set to the DN of any special group you want that is defined in the virtual namespace. The special users group is checked for enforcing access regulation (if access restrictions are set). To manage this value, from the Main Control Panel > Settings Tab > Administration section, locate the Special Users Group DN parameter. Enter the value of a valid group DN located in the virtual namespace.
 
 For details on how this group is related to access restrictions, see the section titled [Access Regulation](06-security#access-regulation).
 
-#### Administrators Group DN
+### Administrators Group DN
 
 This parameter can be set to the DN of the Administrators group defined in the virtual namespace. The administrators group is checked for authorization purposes as members of this group do not have limits or password policy enforced for them. To manage this value, from the Main Control Panel > Settings Tab > Administration section, locate the Administrators Group DN parameter. Enter the value of a valid group DN located in the virtual namespace.
 
-#### Admin HTTP Service
+### Admin HTTP Service
 
 The RadiantOne service Admin HTTP Service ports are used internally for:
 
@@ -185,7 +175,7 @@ You can disable the HTTP port by setting the value to zero. This leaves access o
 
 >[!note] This setting is accessible only in [Expert Mode](01-introduction#expert-mode).
 
-#### Internal Banner Configuration
+### Internal Banner Configuration
 
 A custom message can be added to the banner of RadiantOne User Interface pages. This includes the Main Control Panel, the Server Control Panel, the login page, the logout landing page, and the Insights, Reports, and Administration Console.
 
@@ -211,7 +201,7 @@ To add a custom message:
 
 ![banner message](Media/banner-message.jpg)
 
-#### Message of the Day Configuration
+### Message of the Day Configuration
 
 The Main Control Panel login page contains a basic username and password text box. To add a custom message on the login page, follow the steps below.
 
@@ -287,7 +277,7 @@ This section describes each control or feature and how to enable it if needed.
  
 Figure 3: Supported Controls Section
 
-#### Paged Results Control
+### Paged Results Control
 
 The Paged Results Control allows an LDAP client to retrieve the results of a query in chunks (to control the rate at which search results are returned from the RadiantOne service). This feature can be useful when the client has limited resources and may not be able to process the entire result set from a given LDAP query. The client should specify the page size (number of entries per chunk) during the initial query. For more details on this control, please refer to the LDAP RFC 2696. This control can be enabled/disabled from the Main Control Panel > Settings Tab > Server Front End section > Supported Controls sub-section. Check the Enable paged results box and click Save. Restart the RadiantOne service. If you have a cluster deployed, restart the service on all nodes.
 
@@ -327,7 +317,7 @@ Sample vds_server_access.log content:
 
 2006-09-27 09:21:53,562 INFO  <== conn=9 op=40 SearchResult {resultCode=0, matchedDN=null, errorMessage=null} LDAPControl {1.2.840.113556.1.4.319 true} **### nEntries=40 ###**
 
-#### VLV and Server Side Sort Controls
+### VLV and Server Side Sort Controls
 
 The Virtual List Views (VLV) control works in conjunction with the Server Side Sort Control, and allows a client to request that the RadiantOne service only return a subset of a large sorted dataset. By default, RadiantOne does not order its results because doing so is often a waste of the server's time since there may not be a need for ordering. However, when the VLV control is enabled, it works in conjunction with a server-side sort control. This ensures that the subset of values returned to the client are in order and the consecutive subsets follow that order continuously so there are no overlapping entries.
 
@@ -335,7 +325,7 @@ By using the VLV control, the client can retrieve results more quickly and is no
 
 This control can be enabled/disabled from the Main Control Panel > Settings Tab > Server Front End section > Supported Controls sub-section. Check the Enable VLV/Sort option and click Save. Restart the RadiantOne service. If you have a cluster deployed, restart the service on all nodes.
 
-#### Configure a Sorted Attributes List
+### Configure a Sorted Attributes List
 
 A sorted attributes list is required at the level of the RadiantOne Universal Directory store or Persistent Cache configuration for the service to enforce the VLV/sort control on the branch. 
 
@@ -359,7 +349,7 @@ The flowchart shown below depicts the behavior of RadiantOne for applying the VL
  
 Figure 5: Flowchart Depicting Behavior for Supporting VLV Control
 
-#### Persistent Search Control
+### Persistent Search Control
 
 Using the Persistent Search Control is one of the recommended approaches for other processes to detect changes that have happened to RadiantOne entries. The [changelog](09-logs#changelog) is the other method that can be used.
 
@@ -369,7 +359,7 @@ If you enable the persistent search control, an LDAP client can receive notifica
 
 >[!note] The changelog number associated with the changed entries (logged into cn=changelog) is also returned in the persistent search response.
 
-#### Proxied Authorization Control
+### Proxied Authorization Control
 
 This control can be enabled/disabled from the Main Control Panel > Settings Tab > Server Front End section > Supported Controls sub-section. Check the Enable Proxy Authorization box and click Save. Restart the RadiantOne service. If you have a cluster deployed, restart the service on all nodes.
 
@@ -377,7 +367,7 @@ Authorization for RadiantOne data is checked based on the user who authenticated
 
 >[!warning] To allow the RadiantOne super user (e.g. cn=directory manager) to impersonate other users, you must enable the “[Allow Directory Manager to Impersonate Other Users](06-security#allow-directory-manager-to-impersonate-other-users)” option. In this special scenario, access controls defining the “proxy” permission is not required. However, the Proxy Authorization Control must be enabled.
 
-#### Subtree Delete Control
+### Subtree Delete Control
 
 By default, only leaf nodes (nodes without child entries) can be deleted. If you need to delete an entire subtree, you must pass the subtree delete control (1.2.840.113556.1.4.805) in the request.
 
@@ -425,7 +415,7 @@ Delete request passing the subtree delete control:
 
 `2017-10-03 10:40:40,654 INFO  SessionHandler:3152 - <== conn[SSL/TLS]=1886 op=17 MsgID=17 DeleteResponse {resultCode=0, matchedDN=null, errorMessage=null} ### etime=70 ###`
 
-#### Password Policy Control 
+### Password Policy Control 
 
 The Password Policy Control is enabled by default and allows a client to request information about the current password policy information for a user entry. Specify the Password Policy Control in the LDAP request in the following ways:
 
@@ -443,7 +433,7 @@ The Password Policy Control is enabled by default and allows a client to request
 <br> `#      Warning Type:  None`
 <br> `# An error occurred while attempting to create a connection pool to communicate with the directory server:  LDAPException(resultCode=19 (constraint violation), errorMessage='Reason: 775 - Account locked : The password failure limit has been reached and the account is locked. Please retry later or contact the system administrator to reset the password.', diagnosticMessage='Reason: 775 - Account locked : The password failure limit has been reached and the account is locked. Please retry later or contact the system administrator to reset the password.', responseControls={PasswordPolicyResponseControl(errorType='account locked', isCritical=false)}, ldapSDKVersion=4.0.1, revision='26090')`
 
-#### Modify Increment Extension Feature
+### Modify Increment Extension Feature
 
 RadiantOne supports the modify-increment extension feature as outlined in RFC 4525 by default. This is advertised in the rootDSE in the supportedFeature attribute with a value of 1.3.6.1.1.14.
 
@@ -460,7 +450,7 @@ An example of an ldapmodify request for incrementing the uidNumber by a value of
 <br> increment: uidNumber
 <br> uidNumber: 1`
 
-#### All Operational Attributes Extension Feature
+### All Operational Attributes Extension Feature
 
 RadiantOne supports the All Operational Attributes extension feature as outlined in [RFC 3673](https://www.rfc-editor.org/rfc/rfc3673) by default. This is advertised in the rootDSE to support searching for all operational attributes. 
 
@@ -468,13 +458,13 @@ Using the + character in your comma-separated list of return attributes, this ex
 
 >[!note] Search results may not include all requested attributes if precluded by access controls.
 
-#### Absolute True and False Filters
+### Absolute True and False Filters
 
 This extension is intended to allow a more direct mapping between DAP and LDAP as needed to implement DAP-to-LDAP gateways. Clients can verify the support of this feature by accessing the RadiantOne RootDSE and verifying OID 1.3.6.1.4.1.4203.1.5.3 is advertised.
 
 This extension allows clients to use “and” and “or” filters with zero filter elements. An “and” filter consisting of an empty set of filters evaluates to true. This filter is represented by the string “(&)”. An “or” filter consisting of an empty set of filters evaluates to false. This filter is represented by the string “(|)”.
 
-#### Authorization Identity Control
+### Authorization Identity Control
 
 Authorization Identity Control is a mechanism that allows a client to retrieve the authorization identity established in a bind operation. This is useful when certificates-based authentication is used. Also, some SASL authentication mechanisms may not involve explicitly providing a DN, or may result in an authorization identity which is different from the authentication identity provided by the client.
 
@@ -499,7 +489,7 @@ The bind response from RadiantOne contains the identity assumed by the client. I
 
 BindResponse {resultCode=0, matchedDN=null, errorMessage=null} AuthorizationIdentityResponseControl {2.16.840.1.113730.3.4.15 false authzID=dn:uid=Aaron_Medler,ou=Accounting,o=companydirectory} ### etime=3 ###
 
-#### Who Am I Extended Operation
+### Who Am I Extended Operation
 
 The "Who am I?" extended operation, as outlined in [RFC 4532](https://www.rfc-editor.org/rfc/rfc4532), provides a mechanism for a client to request the authorization identity associated with the bound connection. Using this extended operation obtains the authorization identity associated with the user or application entity after the bind has established integrity and data confidentiality protections. This approach provides greater flexibility than the [Authorization Identity Control](#authorization-identity-control) because it can be requested at any time, not just during a bind operation. In addition, this extended operation can be augmented with a Proxied Authorization Control to determine the authorization identity that the server associated with the identity asserted in the [Proxied Authorization Control](#proxied-authorization-control).
 RadiantOne advertises support for the “Who Am I” extended operation in the rootDSE. A client that requests the rootDSE sees the 1.3.6.1.4.1.4203.1.11.3 OID value returned as a supported control.
@@ -520,17 +510,17 @@ Below is an example of a RadiantOne response to a “Who Am I” extended operat
 
 `2018-05-25 08:20:45,246 INFO  SessionHandler:3498 - <== conn=477 op=2 MsgID=2 ExtendedResponse {resultCode=0, matchedDN=null, errorMessage=null, OID='1.3.6.1.4.1.4203.1.11.3', value='dn:uid=Aaron_Medler,ou=Accounting,o=companydirectory'} ### etime=0 ###`
 
-#### Dynamic Entries Extension
+### Dynamic Entries Extension
 
 The RadiantOne Universal Directory supports temporary entries using the dynamicObject auxiliary object class as specified in [RFC 2589](https://www.rfc-editor.org/rfc/rfc2589). These entries are associated with a time to live attribute and once expired, the entry is automatically removed from the directory. For details on this extension, see the [RadiantOne Namespace Configuration Guide](/namespace-configuration-guide/01-introduction).
 
-### Attributes Handling
+## Attributes Handling
 
 ![Attributes Handling Section](Media/Image3.45.jpg)
  
 Figure 9: Attributes Handling Section
 
-#### Hide Operational Attributes
+### Hide Operational Attributes
 
 Check the Hide Operational Attributes option on the Main Control Panel > Settings tab > Server Front End > Attributes Handling section if you do not want LDAP clients to have access to operational attributes (stored in a RadiantOne Universal Directory store) such as: createTimestamp, modifiersName, modifyTimestamp, creatorsName…etc. If you choose to hide operational attributes, LDAP clients must specifically request the operational attribute they want during the search request, otherwise it is not returned.
 
@@ -538,26 +528,26 @@ Check the Hide Operational Attributes option on the Main Control Panel > Setting
 
 Uncheck the Hide Operational Attributes option if LDAP clients are allowed to view the attributes.
 
-#### Operational Attributes Excluded from Being Hidden
+### Operational Attributes Excluded from Being Hidden
 
 If checked, the Hide Operational Attributes option hides all operational attributes from non-root users and users that are not a member of the cn=Directory Administrators group. To accommodate third-party integrations that rely on certain operational attributes, without requiring the service account to have Directory Administrator privileges, you can indicate a list of operational attributes that should not be hidden. Indicate them in the Exclude Operational Attributes From Being Hidden field. Separate attribute names with a single space. 
 
-#### Attributes Not Displayed in Logs
+### Attributes Not Displayed in Logs
 
 This property allows you to control which attribute values are not printed in clear in the RadiantOne logs. If you do not want certain attribute values printed in clear in the logs, you can indicate them here. Each attribute name should be separated with a single space. Any attribute indicated here has a value of ***** printed in the logs instead of the value in clear.
 
-#### Binary Attributes
+### Binary Attributes
 
 Sometimes, LDAP directory schema definitions do not define certain attributes as binary even though the value of these attributes is binary. An example of this is the objectGUID attribute in Microsoft Active Directory. If the LDAP backend schema definition does not properly define the attribute type as binary, RadiantOne does not translate the value properly when returning it to an LDAP client. To ensure RadiantOne translates the value as binary, you must list the attribute name in the Binary Attributes parameter (space separated list). This parameter is global and applies to any backend LDAP that RadiantOne is accessing. The binary attributes can be defined from the Main Control Panel > Settings tab > Server Front End > Attributes Handling section. As long as the attribute name is listed, RadiantOne returns the value to a client as binary even if the backend LDAP server doesn’t define it as such.
 
 >[!note]
 >If a binary attribute should be searchable, define the attribute in the RadiantOne LDAP schema with a friendly name indicating it as binary. Below is an example for the certificateRevocationList attribute: attributeTypes: ( 2.5.4.39 NAME ( 'certificateRevocationList;binary' 'certificateRevocationList' ) DESC 'Standard LDAP attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.5 X-ORIGIN 'RFC 2256’ )
 
-#### Excluded Attributes from Active Directory
+### Excluded Attributes from Active Directory
 
 This parameter is for Active Directory backends and is used for excluding specific attributes from being returned from the backend. Certain “system” attributes (e.g. dscorepropagationdata) returned from Active Directory (even for non-admin users) can cause problems for building persistent cache because the data type is not handled properly, and these attributes need to be added to the RadiantOne LDAP schema for the local storage to handle them in the cache. Also, these attributes cause problems for the change capture connector needed for real-time persistent cache refresh to work properly. Attributes that are not required by RadiantOne client applications, should be added to this list to ensure they are not returned in the view from Active Directory. By default, the AD attributes that are excluded are ds*, acs*, ms* and frs* (* is a wildcard meaning that any attributes with those prefixes are excluded). Any attributes that you do not want returned from the backend Active Directory can be added to the Excluded Attributes property. This value is defined from the Main Control Panel > Settings tab > Server Front End > Attributes Handling section. Make sure a space separates the attributes listed. Click **Save** when finished.
 
-#### Multi-Valued Database Attributes
+### Multi-Valued Database Attributes
 
 The Multi-Valued Database Attributes setting can be managed from the Main Control Panel > Settings tab > Server Front End > Attributes Handling section. This parameter allows for special processing of a database attribute that contains a multi-value. The database attribute must contain values separated by a space then the pound sign (#), then a space before the next value. For example, assume the following table existed inside a database:
 
@@ -588,7 +578,7 @@ Entry returned by RadiantOne if NO Multi-Valued Attributes Set:
 <br> `mail = hcarter@rli.com # harold@yahoo.com`
 <br> `title = HR Admin # HR # HR MGR`
 
-#### Keyword Attributes for Context Search
+### Keyword Attributes for Context Search
 
 The attributes that you want to be searchable from the sample RadiantOne client applications (e.g. Context Browser) must be defined in the Keyword Search Attributes. This parameter is located in the Main Control Panel > Settings tab > Server Front End > Attributes Handling section and should contain a comma separated list of attribute names that you want RadiantOne to use to locate the contexts relevant to the keyword searched from the Context Browser. 
 
@@ -596,13 +586,13 @@ The value that is searched from Context Browser results in a search against all 
 
 For more information on Context Browser, please see the RadiantOne Context Browser Guide.
 
-### Duplicate Identity Handling
+## Duplicate Identity Handling
 
 ![Duplicate Identity Handling Section](Media/Image3.46.jpg)
 
 Figure 10: Duplicate Identity Handling Section
 
-#### Duplicate DN Removal
+### Duplicate DN Removal
 
 During the identification phase (finding the person in the directory tree) of the authentication process, it is important that a search for a specific, unique user account only returns one entry.
 
@@ -634,7 +624,7 @@ The one entry returned with attributes from the first source the user was found 
  
 Figure 15: Result of Duplicate DN Removal
 
-#### Duplicate Identity Removal Rules
+### Duplicate Identity Removal Rules
 
 >[!note]
 >In general, it is usually recommended that you use the Global Identity Builder to build your view if you know you have overlapping entries that require correlation/disambiguation.
@@ -674,7 +664,7 @@ This is ideal for handling authentication requests (to ensure only one entry is 
 >[!warning]
 >If your use case requires identity correlation to address user overlap, and a complete identity profile is needed for authorization, you should review the capabilities of the Global Identity Builder as opposed to trying to use Duplicate Identity Removal.
 
-### Memory Cache
+## Memory Cache
 
 RadiantOne supports two types of memory cache: Query and Entry. For complete details on both, please see the [RadiantOne Deployment and Tuning Guide](/deployment-and-tuning-guide/00-preface).
 
@@ -684,7 +674,7 @@ Memory cache can be configured from the Main Control Panel > Settings Tab > Serv
 
 Figure 21: Memory Cache Settings
 
-#### Entry Cache
+### Entry Cache
 
 >[!note]
 >This setting is accessible only in [Expert Mode](01-introduction#expert-mode).
@@ -710,7 +700,7 @@ To define an entry cache:
 
 For complete details on how entry memory cache works, please see the [RadiantOne Deployment and Tuning Guide](/deployment-and-tuning-guide/00-preface).
 
-#### Query Cache
+### Query Cache
 
 >[!note]
 >This setting is accessible only in [Expert Mode](01-introduction#expert-mode).
@@ -736,7 +726,7 @@ To define a query cache:
 
 For complete details on how query memory cache works, please see the [RadiantOne Deployment and Tuning Guide](/deployment-and-tuning-guide/00-preface). 
 
-### Other Access Protocols
+## Other Access Protocols
 
 In addition to supporting LDAP operations, RadiantOne can also be accessed via SQL (JDBC), SPML, DSML, REST and SAML. The configuration for these additional services is located on the Settings tab, Server Front End Section, Other Protocols sub-section.
 
@@ -744,7 +734,7 @@ In addition to supporting LDAP operations, RadiantOne can also be accessed via S
 
 Figure 22: Other Protocols Section
 
-#### SQL
+### SQL
 
 The Virtual Relational Server (VRS) allows for SQL clients to query the RadiantOne service. Details on how to enable the SQL interface can be found in this section. For complete details on the SQL interface, please see the RadiantOne VRS Guide.
 
@@ -763,7 +753,7 @@ To enable SQL access:
 >[!warning]
 >If you need to change the port, first stop the RadiantOne service, change the port for the database server and save the new configuration. Then, Restart the RadiantOne service and it should listen on the new port. If RadiantOne is deployed in a cluster, restart the service on all nodes.
 
-#### Web Services (HTTP) Port
+### Web Services (HTTP) Port
 
 The HTTP interface is enabled by default. These are the ports the RadiantOne service accepts web service requests (SCIM, ADAP, DSML, SPML) on. For details on accessing the RadiantOne Web Services, please see the RadiantOne Web Services API Guide. 
 
@@ -773,13 +763,13 @@ If you would only like to support encrypted traffic over HTTPS, just set the sta
 
 Restart the RadiantOne service if changes are made to these settings. If RadiantOne is deployed in a cluster, the service on all nodes must be restarted.
 
-#### DSML, SPML, SCIM, REST (ADAP), SAML
+### DSML, SPML, SCIM, REST (ADAP), SAML
 
 SCIM settings are configured in the Server Front End > SCIM section. 
 
 For details on configuring and accessing RadiantOne via DSML, SPML, SCIM, and REST, please see the RadiantOne Web Services API Guide. 
 
-### Advanced Settings
+## Advanced Settings
 
 >[!note]
 >The settings in this section are accessible only in [Expert Mode](01-introduction#expert-mode).
@@ -788,19 +778,19 @@ For details on configuring and accessing RadiantOne via DSML, SPML, SCIM, and RE
 
 Figure 23: Advanced Section
 
-#### Run as Windows Service
+### Run as Windows Service
 
 If the RadiantOne service has been installed as a Windows Service, this option should be checked. If you uninstall the Windows Service, you must uncheck this option to ensure that the RadiantOne service can be started from the Control Panel > Dashboard tab.
 
-#### Windows Directory
+### Windows Directory
 
 This is the location of the Windows file folder on the server RadiantOne is installed on. This parameter appears only if RadiantOne is installed on a Windows operating system.
 
-#### ODBC Path
+### ODBC Path
 
 This is the location of the ODBC drivers available to use any database that can be defined using DSN such as MS Access. This parameter appears only if RadiantOne is installed on a Windows operating system.
 
-#### Multi Home Settings
+### Multi Home Settings
 
 When a machine that hosts RadiantOne has multiple IP addresses, the RadiantOne service (by default) listens to all IP address available for that machine (this includes localhost and 127.0.0.1). It is now possible to set a property to restrict and listen to only a specific IP address (or a specific DNS server name). The Server Name setting on the Main Control Panel > Settings tab > Server Front End section > Administration sub-section specifies the server name (or IP address).
 
@@ -819,11 +809,11 @@ Check this option to restrict access for the secured SSL socket/port to the Host
 >[!warning]
 >“Localhost” is available only if it is set as the host name on the Server Control Panel > Settings tab > Server Name property. If it is set as the server name, the RadiantOne service is accessible ONLY by using a server name of localhost.
 
-#### RootDSE
+### RootDSE
 
 Directory Servers provide information about themselves to clients through the rootDSE. It contains information about the server in the form of attributes, some of which are multi-valued. The rootDSE may contain information about the vendor, the naming contexts the server supports, the LDAP controls the server supports, the supported SASL mechanisms, schema location, and other information. The contents of the rootDSE generally determine the sequence and format of requests clients issue to the server.
 
-##### Search the RootDSE
+**Search the RootDSE**
 
 The RadiantOne rootDSE is located at <RLI_HOME>\vds_server\conf\rootdse.ldif and is the default content returned to clients when they request a base search against the rootDSE (an LDAP search request with an empty base DN). Some clients search directories using a blank base DN as a method to search across multiple root naming contexts with a specific filter. For RadiantOne to support this capability, manually add the root naming contexts to the globalSearchIncludedNamings property in the vds_server.conf settings in ZooKeeper. This can be done from the Main Control Panel > ZooKeeper tab (requires [Expert Mode](01-introduction#expert-mode)). Navigate to /radiantone/v1/cluster/config/vds_server.conf and click **Edit Mode**. Locate the globalSearchIncludedNamings property and enter a comma separated list of root naming contexts that you want RadiantOne to search against in situations where a client performs one-level or subtree searches with a blank/empty base DN and passes a search filter. Below is an example of configuring two different naming contexts (e.g. o=companydirectory and dc=example,dc=com).
 
@@ -831,7 +821,7 @@ The RadiantOne rootDSE is located at <RLI_HOME>\vds_server\conf\rootdse.ldif and
 
 RadiantOne searches across the naming contexts listed in this property when a client issues a one-level or subtree search with an empty/blank base DN. If the client issues a base search, only the contents of the rootDSE are returned.
 
-##### Custom RootDSE
+**Custom RootDSE**
 
 Depending on the backends that are integrated into the RadiantOne platform, it might be appropriate for RadiantOne to reply with different rootDSE content. This feature should be used with caution and is generally only pertinent if RadiantOne is configured as a proxy to a backend directory (e.g. Active Directory). This proxy view can be "merged/extended" with branches from other directories if needed, but the main/primary directory hierarchy being virtualized must remain the same and conform to the desired rootDSE to return. This is important because as mentioned, the contents of the rootDSE often dictates subsequent requests the client issues to RadiantOne. Therefore, any supported controls, mechanisms, schema locations...etc. must match and be supported by the backend so the subsequent client requests are routed/handled properly.
 
@@ -844,310 +834,3 @@ To configure the rules that RadiantOne should abide by when responding to rootDS
 Figure 24: Custom RootDSE Settings
 
 Enter the IP address of the client (or a range or IP addresses like 127.0.0.1,10.11.12.1/139) and indicate which RootDSE definition RadiantOne should respond with. This can be configured with a specific path and LDIF file name, or with a RadiantOne data source name. If a data source name is used, RadiantOne connects to the backend indicated in the data source configuration and requests its rootDSE content to return to the client.
-
-# Interception
-
-The idea behind interception is that it allows you to customize and override the default processing of RadiantOne. In most cases, this is accomplished with interception scripts. However, there are also some built-in configuration capabilities that allow you to customize the behavior of RadiantOne within invoking a script. This section introduces Global Interception Scripts, User to DN Mapping and Search Filter Mapping Rules.
-
->[!note]
->This section is accessible only in [Expert Mode](01-introduction#expert-mode).
-
-## Global Interception
-
-For specific details, please see [Interception Scripts](concepts#interception-scripts) in the Concepts section. This section describes how to enable interception scripts at a global level (which are applicable to the entire RadiantOne namespace – all naming contexts).
-
-To enable global interception:
-
-1.	From the Main Control Panel > Settings Tab > Interception section > Global Interception sub section.
-
-2.	On the right side, enable the operations you want to intercept. Save the settings and then you can edit the script. The script file is located at <RLI_HOME>\vds_server\custom\src\com\rli\scripts\intercept\globalIntercept.java
-
-![An image showing ](Media/Image3.119.jpg)
- 
-Figure 1: Global Interception Settings
-
-3.	After your script has been customized, save the file and then rebuild the intercept.jar with ANT. On the RadiantOne machine, rebuild the fidsync.jar with ANT using the following syntax:
-
-`C:\radiantone\vds\vds_server\custom>c:\radiantone\vds\ant\bin\ant.bat buildjars`
-
-4.	Restart the RadiantOne service. Your script logic is now invoked for the operations you have enabled.
-
-## Global External Joins	
-
-A global join applies to all entries contained in any root naming context. Joins that you want to be global to RadiantOne can be configured using the Join Wizard accessed from the Global Join sub-tab. This wizard helps you configure the syntax.
-
-For complete details on the usage and configuration of joins, please see the section titled [Joins](02-concepts#joins).
-
-To configure a global join:
-
-1.	From the Main Control Panel, go to the Settings tab > Interception section > Global External Joins.
-
-2.	Click **Add**. The Join Wizard opens.
-
-3.	Select Regular and click **Next**.
-
-4.	Select an Object Class associated with the entries from the primary object that you want to join.
-
-5.	Select the attribute you want to base the join condition on from the Join Attribute drop-down menu. Click Next.
-
-6.	Select the data source that represents the location that contains the secondary objects you want to join with. This can be either RadiantOne or another LDAP server that has been defined as a [data source](02-concepts#data-source). If using RadiantOne as the secondary join source, select vds as the data source. If you want to join to some other LDAP, you must first configure the [data source](02-concepts#data-source) and then it appears in the drop-down list to select during this step. 
-
-7.	Click **Browse** to locate the Base DN or enter the location yourself.
-
-8.	Specify the scope of search to perform to find the entries to join with. The drop-down options are base, one, 
-or sub.
-
-9.	Select the specific object class associated with the secondary entries you want to join with in the Object Class parameter from the drop-down list. For information on schema extension, please see [Extending RadiantOne LDAP Schema](07-directory-schema#extending-the-radiantone-ldap-schema).
-
-10.	Select the attribute from the secondary object that you want to base the join condition on from the Join Attribute drop-down menu. The value of this attribute should match the value of the primary source join attribute that you set in step above. The Join Condition parameter displays the attribute matching criteria for the join.
-
-11.	Click **Next**.
-
-1312.	Decide if you would like all the possible attributes returned from the secondary object or if you would like to list the attributes to return. If you choose to list the attributes, click Add and enter the name of the attribute (or select from the drop-down list). You also can provide a virtual/mapped name (this is optional and is the name of the attribute that appears in the virtual entry). Click **OK** and repeat this process for each attribute you would like returned from the secondary object. Click **Next**.
-
-13.	Enter a unique name for this join profile and click **Finish**.
-
-14.	Click **Save**.
-
-## User to DN Mapping
-
-Typically, an LDAP client performs authentication first by searching RadiantOne for a specific user (based on configuration of the client to search for a specific attribute like cn, sAMAccountName, uid…etc.), and then issues a bind with the user DN returned in the search. These two steps are referred to as identification and credential checking respectively.
-
-If this functionality is not implemented at the client level, RadiantOne can be configured to perform the identification step with user ID to DN mappings. This configuration describes how RadiantOne should find the user DN based on the ID that was received in the bind request.
-
-Let’s look at the following examples to describe the difference.
-
-In the diagrams below, the client is configured to search for the user account and then issue the bind.
-
-![An image showing ](Media/Image3.120.jpg)
-
-Figure 2: Identification Step of Authentication
-
-![An image showing ](Media/Image3.121.jpg)
- 
-Figure 3: Credentials Checking Step of Authentication
-
-If the client application is not configured (or cannot be configured) to issue a search and then bind, RadiantOne can be configured to perform the search (to find the DN). This is accomplished using User ID to DN mappings.
-
-![An image showing ](Media/Image3.122.jpg)
- 
-Figure 4: Authentication Process based on User ID to DN Mapping
-
-### Manage Global User to DN Mapping
-
-This location is just for configuring a global user ID to DN mapping. If you are configuring a mapping for [Kerberos](06-security#kerberos), [NTLM](06-security#ntlm), or [MD5](06-security#md5), the configuration is set in those sections located on the Main Control Panel > Settings Tab > Security section > Authentication Methods.
-
-There are three different ways to determine the DN from the user ID (using regular expression syntax). Each is described below.
-
--	Setting a specific User ID to DN. In this example, if lcallahan were received in the authentication request, RadiantOne would base the authentication on the DN: cn=laura Callahan,cn=users,dc=mycompany,dc=com
-
-`    lcallahan (the user ID) -> (maps to) cn= laura Callahan, cn=users,dc=mycompany,dc=com`
-
--	Specify a DN Suffix, replacing the $1 value with the User ID.
-
-`(.+) -> uid=$1,ou=people,ou=ssl,dc=com` 
-<br> `(.+) represents the value coming in to RadiantOne. If it received a User ID of lcallahan, the DN used to issue the Bind to the underlying directory would be: uid=lcallahan,ou=people,ou=ssl,dc=com.`
-
--	Specify a Base DN, scope of the search, and a search filter to search for the user based on the User ID received in the bind request.
-
-`(.+) -> dc=domain1,dc=com??sub?(sAMAccountName=$1)`
-
-If RadiantOne received a User ID of lcallahan, it would issue a search like:
-
-`dc=domain1,dc=com??sub?(sAMAccountName=lcallahan)`
-
-Then, a bind request is issued with the user DN that is returned.
-
-For options 2 and 3 described above, multiple variables can be used (not just 1 as described in the examples). Let’s look at an example mapping that uses multiple variables:
-
-`(.+)@(.+).(.+).com -> ou=$2,dc=$3,dc=com??sub?(&(uid=$1)(dc=$3))`
-
-If RadiantOne received a user ID like laura_callahan@ny.radiant.com, the search that would be issued would look like:
-
-`ou=ny,dc=radiant,dc=com??sub?(&(uid=laura_callahan)(dc=radiant))`
-
-RadiantOne uses the DN returned in the search result to issue the Bind request to the backend directory.
-
-### Processing Multiple Mapping Rules
-
-Many User to DN Mapping rules can be configured. They are processed by RadiantOne in the order they appear.
-
-If a single User ID is found with the first mapping rule, then no other rules are evaluated. If the credential is correct, the user is authenticated (by the underlying directory). If the credentials are not correct, the authentication fails. If the authentication fails, no other DN mapping rules are executed. Only if the user is not found using the first DN mapping rule or if multiple users are returned based on the first rule causing ambiguity, will the other rules be evaluated. 
-
-For example, if Laura Callahan, with a login of laura_callahan, is in two sources and there are two DN Mapping rules configured:
-
-`dc=domain1,dc=com??sub?(sAMAccountName=$1)
-uid=$1,ou=people,ou=ssl,dc=com`
-
-The first DN Mapping rule is evaluated (dc=domain1,dc=com??sub?(sAMAccountName=laura_callahan)
-
-If Laura Callahan’s account is found from the search, a BIND request is issued using her DN. If the credentials don’t match what are in the underlying directory, the authentication fails. The second DN mapping rule is NOT evaluated. Only when the first DN mapping rule fails to find a user, or if multiple users are returned by the first rule (causing ambiguity), will the other DN mapping rules be used. If no other rules are defined, the authentication fails.
-
-## Search Filter Mapping Rules
-
-As an alternative to writing an interception script for modifying an incoming query search filter, you can configure search filter mapping rules. This allows you to translate an incoming search filter into an alternative filter. The translation is based on regular expression syntax and configurable from the Main Control Panel > Settings Tab > Interception section > Search Filter Mapping Rules sub-section. These mapping rules are invoked at a global level meaning that no matter what naming context/base DN a client indicates in their search request, these filter mapping/translation rules are applied.
-
-The general syntax is to define incoming filter criterion that you want to intercept and then what you want to replace it with. Since an incoming LDAP filter can be quite complex and involve many attribute conditions, you could have a variable to translate each of these filter components. However, the filter pattern syntax indicated in the configuration always starts with a (.*) and end with a (.*). This indicates that everything in the filter prior to and every part of the filter after the components you want to translate should remain the same. For example, an incoming LDAP filter could be something like: (&(objectclass=user)(l=Novato)(title=Sales Manager)). Let’s assume you want to translate filters like this into (&(objectclass=user)(city=Novato)(title=Sales Manager)). Therefore, the incoming filter pattern would look something like this: (.*)\(l=(.+)\)(.*) meaning that every part of the filter before the component using the l attribute and every part of the filter after the component using the l attribute should remain the same, and the “l” component should be translated into “city”.
-
-Below are some examples of search filter mappings.
-
-For this example, if an LDAP search filter contains “city”, it is replaced by a search for the attribute “l”. Using regular expression, define that any filter with the pattern (.*)\(city=(.*) should be replaced by $1(l=$2), as shown below.
-
-![Sample Search Filter Mapping](Media/Image3.123.jpg)
- 
-Figure 5: Sample Search Filter Mapping
-
-If RadiantOne receives a request containing a filter of (city=Los Angeles), all entries with l=Los Angeles are returned. This is shown in the example below.
-
-![Sample Result of Search Filter Mapping](Media/Image3.124.jpg)
- 
-Figure 6: Sample Result of Search Filter Mapping
-
-The (.*) before and after city in the filter pattern ensures all information before and after city in the incoming LDAP filter is not translated. For example, if the incoming filter is something like (&(city=Los Angeles)(employeeType=Manager)), while the filter component for city is replaced by “l”, the search for employeeType=Manager is not translated. Therefore, the search filter is processed as: (&(l=Los Angeles)(employeeType=Manager)). An example is shown below.
-
-![Sample Search Filter Mapping Result](Media/Image3.125.jpg)
- 
-Figure 7: Sample Search Filter Mapping Result
-
-The search filter mapping rules can also be used to replace more than one attribute condition in a single search. For example, assume you want all searches for city and title to be replaced by location (“l”) and employeetype, therefore, the filter pattern could be  defined as: (.*)\(city=(.+)\)\(title=(.+)\)(.*) and the replacement pattern as $1(&(l=$2)(employeetype=$3))$4
-
-![Sample Search Filter Mapping](Media/Image3.126.jpg)
- 
-Figure 8: Sample Search Filter Mapping
-
-Now, as a runtime example, all searches containing a filter for (&(city=Los Angeles)(title=Manager)) will return a list of entries with l=Los Angeles and employeetype=Manager and this can be seen in the screen below.
-
-![Sample Search Filter Mapping Result](Media/Image3.127.jpg)
- 
-Figure 9: Sample Search Filter Mapping Result
-
-The translation rule isn’t limited to a one-to-one attribute mapping. You can also leverage a lookup based on the incoming filter to determine what the filter should be translated into. In the following example, a lookup will be performed against the vds data source (as indicated by the [vds] part of the LDAP URL used in the replacement pattern) on the o=companydirectory branch for entries containing an attribute of `postalCode=<the value of the zipcode received in the incoming filter>`. The “l” attribute for this entry is returned and passed in the filter for processing instead of the value of the zipcode. The incoming filter and replacement patterns are shown below:
-
-Incoming Filter: (.*)\(zipcode=(.+)\)(.*)
-
-Replacement: $1(l=`ldap://[vds]/o=companydirectory?ou?sub?(postalcode=$2)`)$3
-
->[!warning] In the replacement syntax, the LDAP URL is enclosed in backticks/grave accents (generally located below the tilde character on keyboards), not to be mistaken for single quotes.
-
-![Sample Search Filter Mapping with Lookup](Media/Image3.128.jpg)
- 
-Figure 10: Sample Search Filter Mapping with Lookup
-
-According to the filter pattern in this example, if the incoming filter included (zipcode=94949), it would be translated into a filter of l=Novato (lookup in vds data source where postalcode=94949 and returning the l attribute for this entry). Therefore, in this example, all entries with l=Novato are returned by the search and a sample can be seen below.
-
-![Sample Search Filter Mapping Result](Media/Image3.129.jpg)
- 
-Figure 11: Sample Search Filter Mapping Result
-
-## Redirections
-
-By default, RadiantOne handles operations against a naming context associated with a Universal Directory (HDAP) store locally. However, in certain deployment scenarios (e.g. for performance or multi cluster deployments), not all stores should receive all types of operations. For each naming context representing a Universal Directory store, you can dictate whether write and bind operations should be redirected to another RadiantOne server. 
-
-First, all RadiantOne servers must be defined as data sources in the Main Control Panel > Settings Tab > Server Backend section. Then, from the Settings Tab > Interception section > Redirections sub-section, select the naming context where you would like to redirect operations on the right side.
-
-If you want to redirect write operations to another RadiantOne cluster, select a branch and click **EDIT**. In the “Redirect Write Operations (Add, Modify, Delete) To” drop-down list, select the data source representing the location where you want the writes to be sent.
-
-For redirected writes, you also have the option to define the local write mode. This functionality requires Inter-Cluster replication to be enabled on the Universal Directory store. For details on Inter-Cluster replication, please see the [RadiantOne Deployment and Tuning Guide](/deployment-and-tuning-guide/00-preface). The options are as follow:
-
--	Write locally after reading from redirected source (default behavior).
-
-    The write request is redirected and if it is successful the local store is written to after reading from the remote source. This functionality requires Inter-Cluster replication to be enabled on the Universal Directory store.
-
--	No local write.
-<br>The write request is redirected to the remote data source. There is no immediate update made to the local store. This functionality requires Inter-Cluster replication to be enabled on the Universal Directory store.
-
--	Write locally based on the request.
-<br>The write request is redirected and if it is successful the local store is also written to immediately. This functionality requires Inter-Cluster replication to be enabled on the Universal Directory store.
-
-In all the above cases, the local entry is also updated later through inter-cluster replication.
-
-You may also condition the write redirection based on attributes received in the modify request. Modifications to certain attributes, generally operational ones like pwdAccountLockedTime, pwdFailureTime…etc, should be handled locally and not redirected. List these conditional attributes (comma separated) in the Attributes Preventing Redirection on Write Operations property. Write operations are not redirected if any of the attributes defined in this property are present in the request.
-
-If you want to redirect bind operations to another RadiantOne server, select a branch and click Edit. In the ‘Redirect Bind Operations To’ drop-down list, select the data source to direct bind operations to.
-
-When you are finished, click **Save** in the top right corner.
-
-For more examples of using redirects, please see the [RadiantOne Deployment and Tuning Guide](/deployment-and-tuning-guide/00-preface).
-
-![An image showing ](Media/Image3.141.jpg)
-
-Figure 12: Operations Redirection Setting
-
-## Custom Authentication Providers
-
-RadiantOne includes a framework for calling custom authentication services like RSA SecurID and Yubicloud. This allows standard LDAP applications to benefit from stronger, multi-factor security without requiring any changes to their authentication logic. Users of the application can log in with their existing ID and password + tokencode/One Time Password (OTP). RadiantOne translates the standard LDAP authentication (bind) request into a validation of the user’s password to the authoritative source (whether that is local in RadiantOne namespace or some other authoritative backend) and a call to your specialized authentication service like RSA SecurID (or others) to validate the rest of the credentials. The custom authentication service may provide validation for the entire credentials (e.g. user’s password plus additional tokencode/pin/OTP) or just a portion of the credentials (e.g. just validate the tokencode/pin).
-
->[!note]
->Logic for Custom Authentication Providers is invoked like an interception script. As such, any global interception scripts defined in RadiantOne are executed before custom authentication providers.
-
-RadiantOne includes sample scripts for RSA SecurID and Yubikey. For details on this configuration and how to test, please see the Custom Authentication Providers Guide.
-
-### Configuring Custom Authentication Providers
-
-Many different custom authentication providers can be defined, each configured for a specific naming context/branch in the RadiantOne namespace where you want this logic to be invoked.
-
->[!warning]
->RadiantOne includes code to call Yubicloud (yubikeys) or RSA SecurID. All other MFA solutions require customization. These customizations are typically implemented by the Radiant Logic Solution Integrator team via professional services. If the 2nd factor is a form of code/one-time password that can be appended to the password in the bind (by the client app) and RadiantOne can call a service to validate the code, then we should be able to support it. If you are interested in integrating with an MFA solution, contact your Radiant Logic Account Representative to discuss the use case.
-
-The following configuration steps should be considered when defining a custom authentication provider. An example script named RsaRestAuthenticator.java is included in RadiantOne at <RLI_HOME>\vds_server\custom\src\com\rli\scripts\customobjects\rsa. 
-
-1.	Using Java, define a class that implements com.rli.web.http.service.twofactor.UserDefinedAuthenticator to pass the parameters for leveraging your external authentication service. 
-
-2.	The input parameters are:
-    -	bindDN property, which always has the DN of the user sent in the bind request to RadiantOne.
-    -	userID property, which has the ID of the user in the RadiantOne namespace as a result of the DN to ID setting in the [Custom Authentication Provider](#custom-authentication-providers). If the attribute does not exist in the virtual entry, or if the attribute is empty, the value passed to the script is blank.
-    -	password property, which contains the full password is always passed.
-    -	property PROP_PASSWORDXTRACT is the result of the regular expression defined for the password in the Custom Authentication Provider. If nothing is defined in the [Custom Authentication Provider](#custom-authentication-providers), this is blank.
-    -	property PROP_TOKENXTRACT is the result of the regular expression defined for the pincode in the Custom Authentication Provider. If nothing is defined in the [Custom Authentication Provider](#custom-authentication-providers), this is blank.
-
-3.	Save the script and rebuild the customobjects.jar file with ANT. An example using ANT is shown below.
-
-C:\radiantone\vds\vds_server\custom>c:\radiantone\vds\ant\bin\ant.bat buildjars
-
-4.	Restart the RadiantOne service. If deployed in a cluster, restart the service on all nodes.
-
-5.	Define a custom data source from the Main Control Panel > Settings tab > Server Backend section > Custom Data Sources with the required properties to connect to your authentication service.
-
-6.	In Custom Data Sources, on the right, click **ADD**.
-
-7.	Enter a unique data source name.
-
-8.	In the Custom Properties section, click **Add**.
-
-9.	Enter the property name and value required to connect to your external authentication service and click **OK**.
-
-10.	Repeat steps 7-8 to add all required properties to connect to your external authentication service. One of the properties should be named classname and contain a value of the classname generated by your Java script created in step 1.
-
-11.	Click **Save**.
-
-12.	Navigate to the Main Control Panel > Settings tab > Interception section > Custom Authentication Providers.
-
-13.	On the right, click **ADD**.
-
-14.	Enter a unique name for the custom authentication provider.
-
-15.	Enter the location/naming context in the virtual tree where the custom authentication should be invoked in the Base DN property.
-
-16.	Using regular expression syntax, enter the criteria to extract the password part from the password value received in the LDAP bind request. This is optional and you may choose to do the parsing and handling of the password logic directly in the script instead.
-
-17.	Using regular expression syntax, enter the criteria to extract the PIN/passcode part from the password value received in the LDAP bind request. This is optional and you may choose to do the parsing and handling of the password logic directly in the script instead.
-
-18.	The DN to ID property is used by RadiantOne to lookup the user’s local entry and retrieve the attribute to identify the user in the external authentication service. In the DN to ID property, enter the attribute name in the virtual entry that stores the value of the user that uniquely identifies them in the external authentication service. In the example below, rsaid is the value entered in the DN to ID property. This means that the value of the rsaid in the user’s virtual entry is used to delegate the credentials checking to the external authentication service. 
-
-    ![Example Custom Authentication Provider](Media/Image3.142.jpg)
- 
-    Figure 23: Example Custom Authentication Provider
-
-    Continuing with this scenario, in the example shown below, the unique ID of johnny_appleseed is sent to the external authentication service when the user identified by a DN of uid=Aaron_Medler,ou=Accounting,o=companydirectory authenticates to RadiantOne.
-
-    ![Example Describing the Usage of the DN to ID Property](Media/Image3.143.jpg)
-
-    Figure 24: Example Describing the Usage of the DN to ID Property
-
-19.	In the Data Source Name property, enter the name of the custom data source you defined which contains the connection criteria for the custom authentication service. This was defined in steps 4-10 above.
-
-20.	Select the EXTERNAL_REQUIRED mode. The EXTERNAL_IGNORE mode can be used to disable the call to the custom authenticator, in which case RadiantOne processes the bind request using the default behavior.
-
-21.	Click **Save**.
-
-22.	Restart the RadiantOne service. If a cluster is deployed, restart the service on all nodes.
