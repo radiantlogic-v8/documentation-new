@@ -3,7 +3,7 @@ title: Custom Data Sources
 description: Details about how to configure custom data sources.
 ---
 
-# Custom Data Sources
+## Custom Data Sources Introduction
 
 A custom data source is defined as something that cannot be accessed directly using JDBC/ODBC or LDAP. To access these types of data sources, you need to configure what is known as a custom object. RadiantOne includes a few default custom objects representing data sources you can virtualize. These data sources are for the following applications: Google Apps, Azure AD, Okta Universal Directory, any SCIM v1 source, any SCIM v2 source, Workday, Concur, Epic, SharePoint Users and Profile, and SharePoint Online Profile. To use these objects in virtual views, you just need to update the connection properties to point to your own application instances. For more details on leveraging these custom data sources in virtual views, please see the [RadiantOne Namespace Configuration Guide](/namespace-configuration-guide/01-introduction).
 
