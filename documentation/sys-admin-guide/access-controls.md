@@ -1,3 +1,8 @@
+---
+title: Access Controls
+description: Details about how to configure access controls for authorization.
+---
+
 # Access Controls
 
 The settings found in the Main Control Panel > Settings Tab > Security section > Access Control sub-section are for defining access permissions for the virtual namespace. There is a section for configuring access controls, and there is a section for global authorization settings.
