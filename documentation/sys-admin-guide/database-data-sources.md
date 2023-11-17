@@ -1,6 +1,6 @@
 ---
 title: Database Data Sources
-description: Details about where to configure database data sources.
+description: Details about how to configure database data sources.
 ---
 
 # Database Data Sources
