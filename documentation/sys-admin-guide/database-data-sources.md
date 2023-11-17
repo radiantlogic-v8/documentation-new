@@ -3,7 +3,7 @@ title: Database Data Sources
 description: Details about how to configure database data sources.
 ---
 
-# Database Data Sources
+## Database Data Sources Introduction
 
 A database data source represents a connection to a SQL/JDBC-accessible backend.
 
