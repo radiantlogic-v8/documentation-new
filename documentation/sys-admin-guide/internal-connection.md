@@ -3,7 +3,7 @@ title: Internal Connections
 description: Internal Connections
 ---
 
-# Internal Connections
+## Managing Internal Connections
 
 These settings define how RadiantOne accesses itself (internally) as a client. This can happen in some cases where interception scripts or joins are used. 
 
