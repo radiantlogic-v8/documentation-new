@@ -13,6 +13,7 @@ description: System Administration Guide
     - [Database Data Sources](database-data-sources.md)
     - [Custom Data Sources](custom-data-sources.md)
   - [Internal Connection](internal-connection.md)  
+- [Interception](interception.md)
 - [Creating Virtual Views](05-creating-virtual-views.md)
 - [Security](06-security.md)
 - [Directory Schema](07-directory-schema.md)
