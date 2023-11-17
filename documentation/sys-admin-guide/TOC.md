@@ -15,7 +15,7 @@ description: System Administration Guide
   - [Internal Connection](internal-connection.md)  
 - [Interception](interception.md)
 - [Creating Virtual Views](05-creating-virtual-views.md)
-- [Security](06-security.md)
+- [Security](#)
   - [SSL/TLS Settings](06-security.md)
   - [Authentication Methods](authentication-methods.md)
   - [Password Policies](password-policies.md)
