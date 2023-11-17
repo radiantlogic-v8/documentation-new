@@ -1,6 +1,6 @@
 ---
 title: Data Sources
-description: Details about Data Sources and their Respective Properties.
+description: Details about where to configure data sources.
 ---
 
 # Data Sources
