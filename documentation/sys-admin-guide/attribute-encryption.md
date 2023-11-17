@@ -1,3 +1,8 @@
+---
+title: Attribute Encryption
+description: Details about how to configure attribute encryption and LDIF file encryption.
+---
+
 ## RadiantOne Directory Attribute Encryption
 
 Attribute encryption prevents data from being readable while stored in a RadiantOne Directory store, any temporary replication stores/attributes (cn=changelog, cn=replicationjournal, cn=localjournal), backup files, and exported LDIF files (must use the LDIFZ file extension). Attribute values are encrypted before they are stored in the Universal Directory store, and decrypted before being returned to the client, as long as the client is authorized to read the attribute (based on ACLs defined in RadiantOne), is connected to RadiantOne via SSL, and is not a member of the special group (e.g. [cn=ClearAttributesOnly,cn=globalgroups,cn=config)](#clear-attributes-only-group).
