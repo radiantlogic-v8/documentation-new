@@ -184,39 +184,6 @@ To configure support for mutual authentication to ADAP, follow the steps below.
 
 ### OpenID Connect Token Authentication
 
-The RadiantOne REST (ADAP) interface supports token authentication. An OIDC token provider is recommended and described later on in this section. However, RadiantOne also includes a proprietary token mechanism that can be used if you don't have an OIDC provider. To generate a proprietary token, pass the userDN and password in the Authorization header in a GET request to the following endpoint: `https://r1server:8090/adap?bind=token`
-
-Field | Value
--|-
-URL Syntax | http://localhost:8089/adap?bind=token
-Method | Get
-Header Name | Authorization
-Header Value | Basic `<base64 value dn:password>`
-
-Table 2: Generating a proprietary token
-
-![header-for-token-authentication](Media/header-for-token-authentication.jpg)
-
-Figure 8: Header used for Token Authentication 
-
-The REST client displays the token value like in the example shown below. 
-
-![token-issued](Media/token-issued.jpg)
-
-Figure 9: The REST client displays the issued token 
-
-Record the token value and use it in the authorization header field (instead of user name and password) for subsequent ADAP requests. An example is shown in the table below.
-
-Field | Value
--|-
-URL Syntax | (Varies by operation. Refer to the corresponding section in this guide for information.) 
-Method | (Varies by operation. Refer to the corresponding section in this guide for information.) 
-Header Name | Authorization
-Header Value | Token `<token>`
-Example Header Value | Token b85935a32dae4303ab17d985ad88cc34
-
-Table 3: OpenID Connect token authentication
-
 The RadiantOne REST (ADAP) interface supports OpenID Connect token-based authentication. This option provides the security of sending user login credentials to the authentication server, not the application (ADAP). OpenID Connect token authentication allows you to send your username and password just once and then pass the token in the request to ADAP. However, the user cannot use the token authentication to request a new token. Multiple requests can be performed during a [token’s lifetime](#token-lifetime).
  
 A high-level diagram of the different components is shown below. Postman is used as a simple client to illustrate the flow.
@@ -225,27 +192,45 @@ A high-level diagram of the different components is shown below. Postman is used
  
 Figure 10: OpenID Connect Token Authentication
 
-### Authorization Server Configuration
+### Open ID Connect Configuration
 
-The application’s parameters must be configured on the authorization server that will issue the OpenID Connect tokens. The application in this context is the ADAP service. Configure an application for the ADAP service in your OIDC server and note the client ID and secret that are generated for it.
+The application’s parameters must be configured on the authorization server that will issue the OpenID Connect tokens. The application in this context is the ADAP service. Configure an application for the ADAP service in your OIDC server and note the client ID and secret that are generated for it. Once you have the client ID and secret, the following configuration can be performed on the Main Control Panel. 
 
-##### RadiantOne Configuration
+>[!warning] The processes described in this section are not hardened against security risks. For more information on hardening RadiantOne, refer to the [RadiantOne Hardening Guide](/hardening-guide/00-preface). 
 
-The client/application settings configured in the previous section must be added to the RadiantOne configuration for ADAP to use. The following configuration can be performed on the Main Control Panel. 
+The RadiantOne ADAP (or SCIM) service queries the RadiantOne service using proxy authorization.
 
-1.	In the Main Control Panel, click the Zookeeper tab (requires [Expert Mode](01-overview#expert-mode)).
+**To configure proxy authorization:**
 
-2.	Browse to `radiantone/<version>/<cluster_name>/config/vds_server.conf`.
+1. In the Main Control Panel, navigate to Settings > Server Front End > Supported Controls.
 
-3.	Click **Edit Mode**. 
+1. Enable Proxy Authorization and click Save.
 
-4.	Set the value for “oidcClientId” to the value recorded in the Client ID field in the previous section.
+1. Navigate to Settings > Security > Access Control.
 
-5.	Set the value for “oidcDiscoveryUrl” to the URL of the OpenID Connect Server.
+1. Enable the “Allow Directory Manager to impersonate other users” option and click Save.
 
-6.	Set the value for “oidcClientSecret” to the client secret that was recorded in the previous section. 
+**To add an OIDC token validator:**
 
-7.	Set the value for "oidcIdAttr" to “sub” (or some other claim based on the scopes configured for the client). This attribute indicates what information/claims ("sub" indicates Subject) in the token (based on scopes requested) can be used to identify the relevant account in the RadiantOne namespace for enforcing authorization on subsequent requests for this connection. The value of this attribute is used as input for the User to DN mapping configured later in the steps below. The standard claims associated with the scopes are shown in the table below.
+1. In the Main Control Panel, navigate to Settings > Security > External Token Validators. 
+
+1. Click **Add**. The New ADAP External Token Validator page displays.
+
+![The New ADAP External Token Validator Page](Media/externaltokenvalidatorpage.jpg)
+
+Figure 24: The New ADAP External Token Validator Page
+
+1. Name the external token validator.
+
+1. Toggle the Enable switch to On. 
+
+1. Select an OIDC provider from the drop-down menu. 
+
+1. Paste the Metadata URI from your OIDC authorization server into the Discovery URL field. 
+
+1. Click Discover. The JSON Web Key Set URI auto-populates.
+
+1. Enter the scope claim name.
 
 Scope	| Claims
 -|-
@@ -257,108 +242,33 @@ Openid	| sub, auth_time, acr
 
 Table 4: Standard Claims per Scope
 
-8.	Click the Save button on the ZooKeeper tab. 
+1. Use the Expected Audience from your OIDC client to populate the Expected Audience field. 
 
-9.	Click OK.
+1. Other values can be obtained from the decoded access token. See the [Getting An Access Token](#getting-an-access-token) section for more information.  
 
-  ![Configuring the OIDC parameters in RadiantOne](Media/Image5.11.jpg)
+![Configuring an ADAP External Token Validator](Media/configuringtokenvalidator.jpg)
 
-  Figure 11: Configuring the OIDC parameters in RadiantOne
+Figure 25: Configuring an ADAP External Token Validator
 
-10.	(Optional) If you plan on using Proxy Authorization, go to Main Control Panel > Settings > Server Front End > Supported Controls. Check the option to enable the Proxy Authorization Control and click Save.
-
-11.	(Optional) If you plan on using Proxy Authorization, go to the Main Control Panel > Settings > Security > Access Controls and define the access control instructions for the proxy users. See the RadiantOne System Administration guide for assistance.
-
-12.	To configure mapping rules to associate the token identity to an identity in the RadiantOne namespace (for enforcing authorization), go to the Main Control Panel > Settings > Interception > User to DN Mapping.
-
-13.	Click Add and define the rule(s) that will translate the identity from the OpenID Connect token to the identity in the RadiantOne namespace. For example, if a user authenticates to the OpenID connect server (to request a token) as Aaron_Medler, this value is issued as the identifier subject in the token and must be translated into an identity DN in the RadiantOne namespace when requests are sent. Assuming “Aaron_Medler” is the value in the uid attribute and this account is located in the o=companydirectory naming context, the mapping rule shown below would be needed to translate “Aaron_Melder” into the identity represented as: “uid=Aaron_Medler,ou=Accounting,o=companydirectory”
+1. To configure mapping rules to associate the token identity to an identity in the RadiantOne namespace (for enforcing authorization), Click Edit next to Claims to FID User Mapping. The OIDC to FID User Mappings page displays.
+1.	Click Add and define the rule(s) that will translate the identity from the OpenID Connect token to the identity in the RadiantOne namespace. You can do this with either a search expression or a simple DN expression.  For example, if a user authenticates to the OpenID connect server (to request a token) as Aaron_Medler, this value is issued as the identifier subject in the token and must be translated into an identity DN in the RadiantOne namespace when requests are sent. Assuming “Aaron_Medler” is the value in the uid attribute and this account is located in the o=companydirectory naming context, the mapping rule shown below would be needed to translate “Aaron_Melder” into the identity represented as: “uid=Aaron_Medler,ou=Accounting,o=companydirectory”
 
   ![Example User to DN Mapping](Media/Image5.12.jpg)
 
   Figure 12: Example User to DN Mapping
 
-14.	Click Save.
+1. Click OK. Click OK again to close the OIDC to FID User Mappings window.
 
-##### Obtaining an OpenID Connect Token
+1. Click Save. 
 
-In the context of this guide, Postman is the REST client that will issue calls to ADAP. Obtain an OpenID Connect Token for Postman from your OIDC provider. Use the token value in a header configured in your Postman client as follows. 
- 
-Field	| Value
--|-
-URL Syntax	| `http://<RadiantOneServer>:8089/adap/<baseDN>`
-Method	| Get
-Header Name	| Authorization
-Header Value	| Token <token>
-Example URL	| http://localhost:8089/adap/o=companydirectory
+Map a uniquely identifying attribute to a corresponding claim value in the token (refer to the [Getting An Access Token](#getting-an-access-token) section for more information). In the following image, the attribute **mail** is mapped to the claim value **email**.
 
-Table 5: Passing an OpenID Connect Token in a Header
+>[!note] In some cases, creating a new attribute may be required.
 
-![Passing an OpenID Connect Token in a Header](Media/Image5.15.jpg)
+![search expression builder](Media/searchexpressionbuilder.jpg)
 
-Figure 13: Passing an OpenID Connect Token in a Header
+Figure 27: The Search Expression Builder
 
-If successful, the operation displays results similar to the following. 
-
-![Successful REST Operation using OpenID Connect Token](Media/Image5.16.jpg)
- 
-Figure 14: Successful REST Operation using OpenID Connect Token
-
-### Token Lifetime
-
-By default the token lifetime is set to 10 hours. To configure the token timeout:
-
-1.	Go to the Main Control Panel > Settings tab > Server Front End > Other Protocols section.
-
-2.	In the REST/ADAP sectoin (requires [Expert Mode](01-overview#expert-mode)), edit the value in the Token Timeout field.
-
-3.	Click Save.
-
-4.	Restart the RadiantOne service. If deployed in a cluster, restart the service on all nodes.
-
-![Editing the Token Timeout value](Media/Image5.17.jpg)
- 
-Figure 15: Editing the Token Timeout value
-
-When an expired or unrecognized token is used, the Response section displays the message “Authentication failed: Unknown token”.
-
-![Error Related to Unrecognized or Expired Token](Media/Image5.18.jpg)
- 
-Figure 16: Error Related to Unrecognized or Expired Token
-
-### Examples
-
-The examples below describe how to issue REST queries for search, insert, update, and delete operations.
-
-#### Search 
-
-In this section, a search is performed using the REST client parameters and values shown in the table below. 
-
-Field	| Value
--|-
-URL Syntax	| `http://localhost:8089/adap/<baseDN>`
-Example URL	 | http://localhost:8089/adap/o=companydirectory
-Method	| Get
-Header Name	| Authorization
-Header Value	| Basic `<base64 value dn:password>`
-
-Table 6: Search Operation
-
-![Search Operation](Media/Image5.19.jpg)
-
-Figure 17: Search Operation
-
->[!note]
->Depending on the parameters you define for the search, the loading time for your search results may be significantly longer than the loading times of other operations. A search’s initial loading time may be reduced by performing a paged search. See the PageSize section. <br> The search example shown in the table above displays a total of 10,011 results returned, as shown below.**
-
-![Example Search Results](Media/Image5.20.jpg)
- 
-Figure 18: Example Search Results
-
-## ADAP External Token Validators
-
-External token validators allow applications to use an access token to call an API on behalf of itself. The API then responds with the requested data. This section assumes that your OIDC provider is already set up.
-
->[!warning] The processes described in this section are not hardened against security risks. For more information on hardening RadiantOne, refer to the [RadiantOne Hardening Guide](/hardening-guide/00-preface). 
 
 ### Getting an Access Token
 
@@ -390,94 +300,9 @@ Figure 22: Configuring an access token in Postman
 
 Figure 23: The Token Details section in Postman
  
-1. Copy this token and decode it for the values needed by the FID server. You can do this at https://jwt.io/.
+1. Copy this token and decode it for the values needed by the RadiantOne service. You can do this at https://jwt.io/. This can help with search expression logic to configure the Claims to FID user mapping.
 
-1. Keep the decoded token. Several values contained within are required for mapping attributes. 
-
-### FID Configuration
-
-This section describes configuring proxy authorization, configuring an ADAP external token validator, and attribute mapping.
-
-**Configuring Proxy Authorization**
-
-The RadiantOne ADAP (or SCIM) service queries the RadiantOne FID LDAP service using proxy authorization.
-
-To configure proxy authorization: 
-
-1. In the Main Control Panel, navigate to Settings > Server Front End > Supported Controls.
-
-1. Enable Proxy Authorization and click Save.
-
-1. Navigate to Settings > Security > Access Control.
-
-1. Enable the “Allow Directory Manager to impersonate other users” option and click Save.
-
-**Configuring ADAP External Token Validator**
-
-To add an external token validator:
-
-1. In the Main Control Panel, navigate to Settings > Security > External Token Validators. 
-
-1. Click **Add**. The New ADAP External Token Validator page displays.
-
-![The New ADAP External Token Validator Page](Media/externaltokenvalidatorpage.jpg)
-
-Figure 24: The New ADAP External Token Validator Page
-
-1. Name the external token validator.
-
-1. Toggle the Enable switch to On. 
-
-1. Select an OIDC provider from the drop-down menu. 
-
-1. Paste the Metadata URI from your OIDC authorization server into the Discovery URL field. 
-
-1. Click Discover. The JSON Web Key Set URI auto-populates. 
-
-1. Use the Expected Audience from your OIDC client to populate the Expected Audience field. 
-
-1. Other values can be obtained from the decoded access token. See the [Getting An Access Token](#getting-an-access-token) section for more information.  
-
-![Configuring an ADAP External Token Validator](Media/configuringtokenvalidator.jpg)
-
-Figure 25: Configuring an ADAP External Token Validator
-
-1. Click Edit next to Claims to FID User Mapping. The OIDC to FID User Mappings page displays.
-
-1. Click Add. 
-
-1. Define either a search expression or a simple DN Expression. In this example, a search expression is defined as shown below. 
-
-![Editing OIDC to FID User Mapping](Media/editingmapping.jpg)
-
-Figure 26: Editing OIDC to FID User Mapping
-
-1. Click OK. Click OK again to close the OIDC to FID User Mappings window.
-
-1. Click Save. 
-
-**Attribute Mapping**
-
-Map a uniquely identifying attribute to a corresponding claim value in the token (refer to the [Getting An Access Token](#getting-an-access-token) section for more information). In the following image, the attribute **mail** is mapped to the claim value **email**.
-
->[!note] In some cases, creating a new attribute may be required.
-
-![search expression builder](Media/searchexpressionbuilder.jpg)
-
-Figure 27: The Search Expression Builder
-
-### Completing the Request with Postman
-
-To complete the request with Postman:
-
-1. Request a new access token (see [Getting An Access Token](#getting-an-access-token)). 
-1. Click Use Token. This inserts an Authorization header that inserts your bearer token. 
-
-![Requesting a new access token](Media/requestnewaccesstoken.jpg)
-
-Figure 28: Requesting a new access token
-
-1. Send the bearer token to the FID ADAP. In this example, a basic ADAP search is performed. 
+1. Send the bearer token in the REST request to the RadiantOne service. In this example, a basic ADAP search is performed. 
 
 Field |	Value
 -|-
@@ -489,7 +314,57 @@ Method	|Get
 
 Figure 29: Sending the bearer token to RadiantOne
 
-##### Optional Search Parameters
+
+
+### OIDC Token Lifetime
+
+By default the token lifetime is set to 10 hours. To configure the token timeout:
+
+1.	Go to the Main Control Panel > Settings tab > Server Front End > Other Protocols section.
+
+2.	In the REST/ADAP sectoin (requires [Expert Mode](01-overview#expert-mode)), edit the value in the Token Timeout field.
+
+3.	Click Save.
+
+4.	Restart the RadiantOne service. If deployed in a cluster, restart the service on all nodes.
+
+![Editing the Token Timeout value](Media/Image5.17.jpg)
+ 
+Figure 15: Editing the Token Timeout value
+
+When an expired or unrecognized token is used, the Response section displays the message “Authentication failed: Unknown token”.
+
+![Error Related to Unrecognized or Expired Token](Media/Image5.18.jpg)
+ 
+Figure 16: Error Related to Unrecognized or Expired Token
+
+### Example: Search 
+
+In this section, a search is performed using the REST client parameters and values shown in the table below. 
+
+Field	| Value
+-|-
+URL Syntax	| `http://localhost:8089/adap/<baseDN>`
+Example URL	 | http://localhost:8089/adap/o=companydirectory
+Method	| Get
+Header Name	| Authorization
+Header Value	| Basic `<base64 value dn:password>`
+
+Table 6: Search Operation
+
+![Search Operation](Media/Image5.19.jpg)
+
+Figure 17: Search Operation
+
+>[!note]
+>Depending on the parameters you define for the search, the loading time for your search results may be significantly longer than the loading times of other operations. A search’s initial loading time may be reduced by performing a paged search. See the PageSize section. <br> The search example shown in the table above displays a total of 10,011 results returned, as shown below.**
+
+![Example Search Results](Media/Image5.20.jpg)
+ 
+Figure 18: Example Search Results
+
+
+### Optional Search Parameters
 
 You can use the following search parameters: filter, attributes, scope, startIndex, count, sizelimit, paging, context, context filter, return mode, special character encoding, and derefAliases. The & sign is the parameter delimiter in the URL. These options are described in this section.
 
@@ -497,7 +372,7 @@ You can use the following search parameters: filter, attributes, scope, startInd
 <br>LDAP Filter	            ->     Corrected URL
 <br>(&(objectclass=*)(cn=a*))  ->  (%26(objectclass=*)(cn=a*))
 
-##### Filter 
+**Filter** 
 
 The filter option allows you to search for entries with a specific attribute value. The value defined for this option is translated into an LDAP filter when the query is issued to the RadiantOne LDAP service. In the following example, a search is performed for records with the value Manager for the employeeType attribute within o=companydirectory. 
 
@@ -529,7 +404,7 @@ Header Value	| Basic `<base64 value dn:password>`
 
 Table 8: Search Operation Returning ObjectClass and CN
 
-##### Scope
+**Scope**
 
 This option defines how many levels beneath the base DN to search for entries. The value defined for this option is translated into the scope for the LDAP query issued to the RadiantOne service. The options include the following.
 
@@ -549,7 +424,7 @@ Header Value	| Basic `<base64 value dn:password>`
 
 Table 9: Search Operation with Scope Parameter
 
-##### StartIndex (Paging Results)
+**StartIndex (Paging Results)**
 
 This option defines the number used for the paged search, and indicates the first entry to return from all the matched entries. This option should be used in conjunction with the ‘count’ option described in the next section. StartIndex dictates the behavior at the client level and is not passed to the RadiantOne service in the LDAP query.
  
@@ -564,7 +439,7 @@ Header Value	| Basic `<base64 value dn:password>`
 
 Table 10: Search Operation using StartIndex Parameter
 
-##### Count
+**Count**
 
 This option should be passed with StartIndex (described above) and defines the number of successive entries displayed in a paged search, starting with the one previously defined using the StartIndex search parameter. Count dictates the behavior at the client level and is not passed to the RadiantOne service in the LDAP query.
 
@@ -599,7 +474,7 @@ Table 12: Total Results Descriptions
 
 The “count” value represents the number of results actually returned in the response and was set when “count=2” was added to the URL in the example above. Otherwise, the count value would have been equal to the total number of entries returned without the use of paging. 
 
-##### SizeLimit
+**SizeLimit**
 
 SizeLimit indicates the maximum number of entries to request from the RadiantOne service. The value defined for this option is translated into the sizelimit property passed in the LDAP query to RadiantOne. The default sizelimit is set at 1000, meaning that only 1000 entries will be returned by the RadiantOne LDAP sevice for a request. If the REST client is expecting all entries, sizelimit should be set to 0.
 
@@ -621,7 +496,7 @@ Header Value	| Basic `<base64 value dn:password>`
 
 Table 13: Search Operation using SizeLimit Parameter
 
-###### Paging
+**Paging**
 
 The PageSize option indicates paging via the Paged Results Control should be passed in the query to the RadiantOne LDAP service. The PageSize value entered when passing the initial search defines the number of entries displayed per page. This reduces the initial loading time and memory requirement when performing a search, making this option especially useful when the total search result count is high. 
 
@@ -702,7 +577,7 @@ The absolute number of paged searches that can be supported by the RadiantOne se
 
 Figure 24: Max Concurrent Paged Searches
 
-##### Context
+**Context**
 
 The context option allows you to display a hierarchical view of an entry’s ancestor(s) when performing a search. By adding “context=true” to the URL of a standard REST search operation, you activate this context search option. Optional search parameters that can be used in conjunction with a context search include filter, scope, and sizelimit. 
 
@@ -722,7 +597,7 @@ Figure 25: Performing a Context Search
 
 In the figure above, starting at the bottom, the bottom box contains the uid that matches the search criteria defined in the URL. The next box up contains the parent entry that uid=Aaron Medler belongs to, ou=Accounting. The top box contains the top entry, o=companydirectory. 
 
-##### Context Filter
+**Context Filter**
 
 The context filter option allows you to pass a filtered search to the REST interface, which returns only the entries that match each of the search criteria filters. Wildcards can be used in the filters, as shown in the Example URL field below. The optional search parameters ‘attributes’ and ‘context’ can also be used with this search option. You can define the scope of each context filter search as follows.
 
@@ -744,7 +619,7 @@ Table 19: Search Operation using Context Filter
  
 Figure 26: Example Search Result Leveraging Context Filter
 
-##### Return Mode
+**Return Mode**
 
 This option allows you to parse search results so they can be more easily interpreted by applications. By adding “?returnMode=array” to the URL of a standard search operation, you activate this option. With this option, attribute values are arranged in an array, regardless of the quantity of attribute values. Without this option, attribute values are arranged in an array only if there are two or more attribute values. 
 
@@ -758,7 +633,7 @@ Header Value	| Basic `<base64 value dn:password>`
 
 Table 20: Return Mode
 
-##### Special Character Encoding
+**Special Character Encoding**
 
 To pass an LDAP filter in the request, or any filter that contains special characters, encode the characters as outlined in the table below.
 
@@ -776,7 +651,7 @@ An example LDAP filter of:
 (|(cn=Lisa Grady)(sAMAccountName=Lisa Grady)(uid=Lisa Grady)) 
 <br> Would need converted to: <br> (%7C(cn%3DLisa%20Grady)(sAMAccountName%3DLisa%20Grady)(uid%3DLisa%20Grady))
 
-##### Dereferencing Alias Entries
+**Dereferencing Alias Entries**
 
 RadiantOne Universal Directory stores supports alias entries as defined in RFC 22521. Alias entries point to/reference another entry in the directory. The attribute containing the location of the target entry (DN) is aliasedObjectName and the object class associated with these entries is alias. When a client requests an alias entry, they can indicate if they want the alias dereferenced or not. The indicators are outlined in the table below.
 
@@ -809,7 +684,7 @@ When a client requests derefAliases=3, RadiantOne automatically dereferences the
  
 Figure 24: Example Result Dereferencing Aliases
 
-##### Display LDAP server’s root naming contexts
+**Display LDAP server’s root naming contexts**
 
 To display a list of the LDAP server’s root naming contexts, pass rootdse as part of the URL.
 
@@ -828,7 +703,7 @@ An example of the list displayed by this command is shown below.
  
 Figure 26: Example Search Returning Root Naming Contexts
 
-#### Add
+### Example: Add
 
 In this section, a new entry is added to RadiantOne using the parameters shown in the table below. The value in the Request Body field contains the information for the entry to be added. 
 
@@ -875,7 +750,7 @@ If unsuccessful, the Response section displays the message “{"httpStatus":400}
  
 Figure 30: Add Failure Response Example
 
-#### Replace (PUT)
+### Example: Replace (PUT)
 
 In this section, an existing entry is replaced using the parameters shown in the table below.
 
@@ -898,11 +773,11 @@ Figure 31: Example PUT Request
 
 If successful, the Response section displays the message “{"httpStatus":200}”. 
 
-#### Modify (PATCH)
+### Example: Modify (PATCH)
 
 This section explains how to add, delete, and replace an entry’s attributes and includes many examples.
 
-##### Add and Replace Attributes 
+**Add and Replace Attributes**
 
 In the first example, an attribute is added to a user entry identified as “uid=alice,cn=config”, and another is replaced using the parameters shown in the table below.
 
@@ -923,7 +798,7 @@ Figure 32: Example PATCH Request
 
 If successful, the Response section displays the message “{"httpStatus":200}”. 
 
-##### Delete Attribute Value
+**Delete Attribute Value**
 
 In this example an attribute (e.g. email) containing a specified value (e.g. alice@radiantlogic.com) is deleted by using the parameters shown in the table below. 
 
@@ -955,7 +830,7 @@ Table 30: REST Operation to Delete an Attribute Value
 
 If successful, the Response section displays the message “{"httpStatus":200}”.
 
-##### Delete Attribute
+**Delete Attribute**
 
 In this example, an attribute is deleted, regardless of its attribute values, using the parameters shown in the table below. This is an example of removing all values for the email attribute. 
 
@@ -987,7 +862,7 @@ Table 31: REST Operation to Delete an Attribute
 
 If successful, the Response section displays the message “{"httpStatus":200}”.
 
-##### Add Group Member
+**Add Group Member**
 
 In this example, a group entry identified as “cn=operator,ou=globalgroups,cn=config” is updated to add a member identified as “uid=Adalberto_Flecha,ou=Accounting,o=companydirectory”. 
 
@@ -1024,7 +899,7 @@ Figure 33: Example PATCH Request – Add Group Members
 
 If successful, the Response section displays the message “{"httpStatus":200}”.
 
-##### Replace Group Members
+**Replace Group Members**
 
 In this example, a group entry’s members are replaced by a new member.
 
@@ -1061,7 +936,7 @@ Figure 34: Example PATCH Request – Replace Group Members
 
 If successful, the Response section displays the message “{"httpStatus":200}”.
 
-#### Modify RDN
+### Example: Modify RDN
 
 This section explains how to modify the RDN of an entry using the parameters shown in the table below.
 
@@ -1081,7 +956,7 @@ Figure 35: Example PATCH – Modify RDN
 
 If successful, the Response section displays the message “{"httpStatus":200}”. 
 
-#### Move
+### Example: Move
 
 This section explains how to move the entry "uid=Adalberto_Flecha,ou=Accounting,o=companydirectory" to "ou=Administration,o=companydirectory", keeping the same RDN name.
 
@@ -1102,7 +977,7 @@ Figure 36: Example PATCH – Move Entry
 
 If successful, the Response section displays the message “{"httpStatus":200}”. 
 
-#### Delete 
+### Example: Delete 
 
 This section explains how to delete an entry in RadiantOne using the parameters shown in the table below. “baseDN” is the DN of the targeted entry. 
 
@@ -1122,7 +997,7 @@ Figure 37: Example DELETE Request
 
 If successful, the Response section displays the message “{"httpStatus":200}”. 
 
-#### Deleting a Node and Its Sub-Nodes
+### Example: Deleting a Node and Its Sub-Nodes
 
 This section explains how to delete a node and its sub-nodes. When attempting to perform a standard deletion on a node that contains sub-nodes, the operation fails because of those sub-nodes. The Response section displays the message “Entry not deleted”. 
 
@@ -1148,7 +1023,7 @@ Figure 39: Deleing a Node Containing Sub-nodes
 
 >[!note] The “deletetree=true” parameter does not delete root naming contexts.
 
-#### Performing Bulk Operations
+### Example: Performing Bulk Operations
 
 Performing large quantities of REST requests may affect your network’s workload. This section explains how to perform bulk operations, which bundle multiple operations into one REST request, reducing your network’s workload. In the example below, the following are performed inside of one operation:
 
@@ -1197,41 +1072,7 @@ Figure 40: Sample Response from Bulk Operations
 
 In the image above, starting at the top, in the top box, the addition of a new entry to the directory is confirmed. In the second box, the replacement of an existing directory entry is confirmed. In the third box, the modification of an entry’s attribute is confirmed. In the fourth box, the deletion of an entry is confirmed.
 
-##### Delete Nodes and Their Sub-Nodes
-
-This section explains how to delete nodes and their sub-nodes. When attempting to perform a standard deletion on a node that contains sub-nodes, the operation fails because of those sub-nodes. The value in the Example Request Body field below contains the information needed to delete the nodes. 
-
-<table>
-<tr>
-<td>Field	Value
-<tr>
-<td>URL Syntax
-<td>http://localhost:8089/adap/bulk
-<tr>
-<td>Method	
-<td>Post
-<tr>
-<td>Header Name	
-<td>Authorization
-<tr>
-<td>Header Value	
-<td>Basic `<base64 value dn:password>`
-<tr>
-<td>Example Request Body
-<td> { "params": [ { "method": "DELETE", "dn": "ou=Human Resources,o=companydirectory",  "deletetree": true }, { "method": "DELETE", "dn": "ou=Information Technology,o=companydirectory", "deletetree": false }, { "method": "DELETE", "dn": "ou=Inventory,o=companydirectory", "deletetree": true } ] }
-</table>
-
-Table 39: REST Bulk Operation to Delete Nodes and Their Sub-nodes
-
-![Sample Response from Bulk Deletion of Nodes and thier sub-nodes](Media/bulk-delete-nodes.jpg)
- 
-Figure 41: Sample Response from Bulk Deletion of Nodes and Their Sub-Nodes
-
-In the image above, starting at the top, in the top box, the deletion of this node is confirmed. In the second box, this node was not deleted because deletetree it had a value of false in the body of the request. In the third box, the deletion of this node is confirmed.
-
->[!note] The “deletetree=true” parameter does not delete root naming contexts.
-
-#### Working with Complex Attributes
+### Example: Working with Complex Attributes
 
 Complex attributes are those that contain one or more sub-attributes. With the REST interface, you can search for and modify “complex” attributes. Complex attributes are not compatible with bulk operations.
 
@@ -1249,7 +1090,7 @@ This section explains how to perform the following operations.
 
 [Modify multiple complex attributes in an operation](#modify-multiple-complex-attributes-in-an-operation)
 
-##### Search for Complex Attributes
+**Search for Complex Attributes**
 
 The complex attribute search allows you to indicate which attributes you want returned in the search result. Separate attribute names with a comma in the URL. The value defined for this option is translated into requested attributes in the LDAP query issued to RadiantOne. The example shown below expects the attribute address and its sub-attributes returned for each entry.
 
@@ -1287,7 +1128,7 @@ An example complex attribute search result is shown in the image below.
  
 Figure 43: Complex Attribute Search Result with Specified Sub-attributes
 
-##### Add an Entry with Complex Attributes
+**Add an Entry with Complex Attributes**
 
 In this section, an entry with complex attributes is added using the parameters shown in the table below. The value in the Example Request Body field contains the information for the entry to be added. The “phone” attribute contains the sub-attributes “type” and “value”, and the “address” attribute contains the sub-attributes “state”, “country”, and “streetNumber”.
 
@@ -1318,7 +1159,7 @@ Table 42: Adding an entry with complex attributes
  
 Figure 44: Adding an entry with complex attributes
 
-##### Add Complex Attributes to an Existing Entry
+**Add Complex Attributes to an Existing Entry**
 
 In this section, complex attributes are added to an existing user entry using the parameters shown in the table below. The value in the Example Request Body field contains the information for the attributes to be added to the entry. 
 
@@ -1350,7 +1191,7 @@ Table 43: Adding Complex Attributes to an Existing Entry
 
 If you attempt to add an attribute that has an already existing, identical value, the REST client displays LDAP code 20 (the provided attribute contains a value that would result in duplicate value in the entry). If this happens, the entire request is ignored by the REST client. 
 
-##### Replace an Entry’s Complex Attributes
+**Replace an Entry’s Complex Attributes**
 
 In this section, new attributes are added to an existing user entry using the parameters shown in the table below. The value in the Example Request Body field contains the information for the attributes to be added to the entry. 
 
@@ -1379,7 +1220,7 @@ In this section, new attributes are added to an existing user entry using the pa
 
 Table 44: Replacing an Entry’s Complex Attributes
 
-##### Delete an Entry’s Complex Attributes
+**Delete an Entry’s Complex Attributes**
 
 In this section, sub-attributes are deleted from an existing entry using the parameters shown in the table below. The value in the Example Request Body field contains the information for the sub-attributes to be deleted from the entry. 
 
@@ -1435,7 +1276,7 @@ In the following example, all values for the attribute “address” are deleted
 
 Table 46: Deleting Sub-attributes
 
-##### Modify Multiple Complex Attributes in an Operation
+**Modify Multiple Complex Attributes in an Operation**
 
 In this section, the sub-attributes “streetNumber” and “country” are added to an existing user entry and sub-attributes “type”, “value”, and “brand” are replaced using the parameters shown in the table below. The value in the Example Request Body field contains the information for the attributes to be modified in the entry. 
 
