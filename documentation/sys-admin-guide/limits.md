@@ -1,3 +1,8 @@
+---
+title: Limits
+description: Details about how to configure limits.
+---
+
 ## Limits Introduction
 
 The settings found in the Main Control Panel -> Settings Tab -> Limits section are related to enforcing search size limits and activity quotas. These settings prevent against Denial of Service (DoS) attacks towards RadiantOne. 
