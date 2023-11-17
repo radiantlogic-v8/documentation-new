@@ -799,7 +799,7 @@ The user DN returned from the search is used by RadiantOne to identify the user 
 
 For more details, please see [Processing Multiple Mapping Rules](interception#processing-multiple-mapping-rules).
 
-## Global Authentication Strength
+### Global Authentication Strength
 
 The Global Authentication Strength parameter is used to specify that a client must bind to RadiantOne by using a specific authentication method. The parameter is configured on the Main Control Panel > Settings Tab > Security section > Authentication Methods. The values are as follows:
 
@@ -1280,7 +1280,7 @@ To export a certificate:
 
 # Limits
 
-The settings found in the Main Control Panel -> Settings Tab -> Limits section are related to enforcing search size limits and activity quotas. These settings prevent against Denial of Service (DoS) attacks towards RadiantOne. Remember to save any changes you make to limits.
+The settings found in the Main Control Panel -> Settings Tab -> Limits section are related to enforcing search size limits and activity quotas. These settings prevent against Denial of Service (DoS) attacks towards RadiantOne. 
 
 >[!warning] Changing any property in the Limits section requires a restart of the RadiantOne service to take effect. If RadiantOne is deployed in a cluster, restart the service on all nodes.
 
@@ -1295,8 +1295,6 @@ Figure 55: Global Limits Section
 ### Maximum Connections
 
 The maximum number of client connections the server can accept concurrently (connecting at the exact same time).
-
-#### Manually Closing a Client Connection
 
 A connection can be manually closed by issuing an LDAP search to RadiantOne with the connection ID. The connection ID can be viewed from the Server Control Panel > Usage & Activity tab > Connections & Operations. The connection ID can also be retrieved with a one level search to RadiantOne below cn=monitor. The cn=connection-`<ID>` entries are associated with the current connections. A base search on one of these entries, returns an attribute named connectionID. This attribute contains the identifier for the connection and is what should be used to manually close the connection.
 
