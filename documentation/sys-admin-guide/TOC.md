@@ -16,6 +16,7 @@ description: System Administration Guide
 - [Interception](interception.md)
 - [Creating Virtual Views](05-creating-virtual-views.md)
 - [Security](06-security.md)
+  - [Password Policies](password-policies.md)
   - [Access Controls](access-controls.md)
 - [Directory Schema](07-directory-schema.md)
 - [Directory Browser Tab](08-directory-browser-tab.md)
