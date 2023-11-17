@@ -1,3 +1,7 @@
+---
+title: Interception
+description: Details about how to intercept and override the default behavior of RadiantOne.
+---
 
 # Interception
 
