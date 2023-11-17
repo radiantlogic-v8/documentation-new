@@ -7,22 +7,22 @@ description: Details about how to configure LDAP data sources.
 
 An LDAP data source represents a connection to an LDAP/JNDI-accessible backend.
 
->[!warning] When configuring data sources for Active Directory backends, always enable the Paged Results Control option.
+>[!warning]
+>When configuring data sources for Active Directory backends, always enable the Paged Results Control option.
 
 To add an LDAP data source:
 1.	From the Main Control Panel > Settings Tab > Server Backend section > LDAP Data Sources sub-section, click **Add**.
+1.	Enter a unique data source name along with the connection information to reach your backend server. Also select the type of LDAP Data Source (VDS/OpenDJ/SunOne/Active Directory/Novell/Other LDAP).
+
+>[!warning]
+>Do not use spaces, commas, brackets or parenthesis, colons, or the word “domain” in the data source name and do not use special characters in the Base DN value.
+
+1.	Click **Test Connection** to validate the values entered above.
+1.	Click **Save** to apply the changes to the server.
 
 ![Adding a New LDAP Data Source](Media/Image3.63.jpg)
 
 Figure 3: Adding a New LDAP Data Source
-
-2.	Enter a unique data source name along with the connection information to reach your backend server. Also select the type of LDAP Data Source (VDS/OpenDJ/SunOne/Active Directory/Novell/Other LDAP).
-
->[!warning] Do not use spaces, commas, brackets or parenthesis, colons, or the word “domain” in the data source name and do not use special characters in the Base DN value.
-
-3.	Click **Test Connection** to validate the values entered above.
-
-4.	Click **Save** to apply the changes to the server.
 
 ## LDAP Data Source Advanced Settings
 
