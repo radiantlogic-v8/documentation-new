@@ -1,3 +1,8 @@
+---
+title: Authentication Methods
+description: Details about the authentication methods supported in RadiantOne.
+---
+
 ## Authentication Methods
 
 >[!note] This section is accessible only in [Expert Mode](01-introduction#expert-mode).
