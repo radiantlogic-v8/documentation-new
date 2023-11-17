@@ -18,6 +18,7 @@ description: System Administration Guide
 - [Security](06-security.md)
   - [Password Policies](password-policies.md)
   - [Access Controls](access-controls.md)
+  - [Attribute Encryption](attribute-encryption.md)
   - [Limits](limits.md)
 - [Directory Schema](07-directory-schema.md)
 - [Directory Browser Tab](08-directory-browser-tab.md)
