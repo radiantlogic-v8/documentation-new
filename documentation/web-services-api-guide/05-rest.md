@@ -216,9 +216,9 @@ The RadiantOne ADAP (or SCIM) service queries the RadiantOne service using proxy
 
 1. Click **Add**. The New ADAP External Token Validator page displays.
 
-![The New ADAP External Token Validator Page](Media/externaltokenvalidatorpage.jpg)
+![External Token Validator](Media/externaltokenvalidatorpage.jpg)
 
-Figure 24: The New ADAP External Token Validator Page
+Figure 24: External Token Validator
 
 1. Name the external token validator.
 
