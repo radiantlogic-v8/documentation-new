@@ -3,7 +3,7 @@ title: Interception
 description: Details about how to intercept and override the default behavior of RadiantOne.
 ---
 
-# Interception
+## Interception Introduction
 
 The idea behind interception capabilities is that it allows you to customize and override the default processing of RadiantOne. In most cases, this is accomplished with interception scripts. However, there are also some built-in configuration capabilities that allow you to customize the behavior of RadiantOne within invoking a script. This section introduces Global Interception Scripts, User to DN Mapping, Search Filter Mapping Rules and Special Attributes Handling.
 
