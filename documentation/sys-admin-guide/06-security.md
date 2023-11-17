@@ -22,6 +22,65 @@ By default the SSL port is set to 636 and this is defined during the installatio
 
 For steps to disable access on the non-ssl ports, please see the [RadiantOne Hardening Guide](/hardening-guide/00-preface).
 
+### Supported Cipher Suites
+
+To view the cipher strength levels enabled by default in RadiantOne, go to the Main Control Panel > Settings Tab > Security section > SSL sub-section and click **Change** next to Supported Cipher Suites. The ciphers that are checked are enabled. To change the enabled ciphers, check/uncheck the desired values.
+
+After changing the cipher levels, save your changes and restart the RadiantOne service.
+
+For details on installing stronger cipher suites, see the [RadiantOne Hardening Guide](/hardening-guide/00-preface).
+
+### Enabled SSL Protocols
+
+The default SSL/TLS protocol options are SSLv2Hello, SSL v3, TLSv1, TLSv1.1 TLSv1.2 and TLS v1.3. Some of the less secure protocols in this list are disabled by default in the <RLI_HOME>/jdk/jre/lib/security/java.security file, noted in the jdk.tls.disabledAlgorithms property.
+
+Out of the available protocols, not in the disabled list, you can limit which ones you want RadiantOne to support. You can limit the protocols from the Main Control Panel > Settings Tab > Security section > SSL sub-section. Click **Change** next to Enabled SSL Protocols. Select the protocols to support and click **OK**. Restart the RadiantOne service on all nodes.
+
+If you want to support one of the less secure protocols, edit the java.security file and remove the protocol from the jdk.tls.disabledAlgorithms value. Then, make sure it is enabled in RadiantOne. Restart RadiantOne on all nodes. If a protocol is enabled in RadiantOne, but in the list of disabled algorithms in the java.security file, it will not be supported at runtime for SSL communication.
+
+>[!note] Only enable the SSL protocols that comply with your company’s security policy.
+
+### Enable STARTTLS
+
+Start TLS allows clients to request a secure channel to RadiantOne at any time without having to establish a new connection on a different port. For example, a client can process an LDAP search operation on a normal connection and then, without closing the connection, request a secure layer over the same connection with StartTLS for the use of changing passwords or viewing encrypted attributes. After finishing the use of the secure channel, the client can switch back to the non-secure channel on the same connection. The flexibility offered by the Start TLS extension allows for the secure LDAPS channel to be turned on and off on demand.
+
+To enable Start TLS for clients to access RadiantOne:
+
+1. Go to the Main Control Panel > Settings Tab > Security section > SSL sub-section.
+
+2. Check the Enable SSL option and then check the Enable Start TLS option. 
+
+3. Save the changes. 
+
+4. Restart the RadiantOne service.
+
+>[!warning] When using Start TLS, the default server certificate included with the RadiantOne installation does not work. You must generate a new certificate (either self-signed or requested from a Certificate Authority) that contains the proper machine and domain name of the RadiantOne machine. Also, the host name specified from the client should match the value in the certificate. If you try to use the default self-signed certificate included with the RadiantOne installation, the following error message (‘xxxxx’ being your server name) is returned: javax.net.ssl.SSLPeerUnverifiedException: hostname of the server 'xxxxx' does not match the hostname in the server's certificate.
+
+### Debug SSL
+
+SSL is enabled by default, but SSL logging is disabled by default. When SSL logging is enabled, SSL events have an entry in vds_server.log. This log file is located in <RLI_HOME>\vds_server\logs. SSL events are logged at INFO level, so log settings for VDS – Server must be at least at INFO level. 
+
+>[!note] For more information on log levels, refer to the [RadiantOne Logging and Troubleshooting Guide](/logging-and-troubleshooting-guide/01-overview).
+
+To enable SSL logging:
+
+1. From the Main Control Panel, click Settings > Logs > Log Settings.
+
+2. From the Log Settings to Configure drop-down menu, select VDS – Server. 
+
+3. Verify that the Log Level drop-down menu is set to one of the following: INFO, DEBUG, or TRACE. 
+
+4. If you change the log level, click **Save**. 
+
+5. Click **Security -> SSL**.
+
+6. In the SSL section, check the Debug SSL box. 
+
+7. Click **Save**.
+
+8. On the Main Control Panel’s Dashboard tab, restart the RadiantOne service. 
+
+
 ## Certificate-based Authentication: Support for Mutual Authentication
 
 A certificate is an electronic document that identifies an entity which can be an individual, a server, a company, or some other entity. The certificate also associates the entity with a public key.
@@ -208,64 +267,6 @@ To change the Key Store password (which by default is changeit):
 2. Enter the old password, new password, and confirm the new password. Click **OK**.
 
 3. Save **Save** in the upper right corner.
-
-### Supported Cipher Suites
-
-To view the cipher strength levels enabled by default in RadiantOne, go to the Main Control Panel > Settings Tab > Security section > SSL sub-section and click **Change** next to Supported Cipher Suites. The ciphers that are checked are enabled. To change the enabled ciphers, check/uncheck the desired values.
-
-After changing the cipher levels, save your changes and restart the RadiantOne service.
-
-For details on installing stronger cipher suites, see the [RadiantOne Hardening Guide](/hardening-guide/00-preface).
-
-### Enabled SSL Protocols
-
-The default SSL/TLS protocol options are SSLv2Hello, SSL v3, TLSv1, TLSv1.1 TLSv1.2 and TLS v1.3. Some of the less secure protocols in this list are disabled by default in the <RLI_HOME>/jdk/jre/lib/security/java.security file, noted in the jdk.tls.disabledAlgorithms property.
-
-Out of the available protocols, not in the disabled list, you can limit which ones you want RadiantOne to support. You can limit the protocols from the Main Control Panel > Settings Tab > Security section > SSL sub-section. Click **Change** next to Enabled SSL Protocols. Select the protocols to support and click **OK**. Restart the RadiantOne service on all nodes.
-
-If you want to support one of the less secure protocols, edit the java.security file and remove the protocol from the jdk.tls.disabledAlgorithms value. Then, make sure it is enabled in RadiantOne. Restart RadiantOne on all nodes. If a protocol is enabled in RadiantOne, but in the list of disabled algorithms in the java.security file, it will not be supported at runtime for SSL communication.
-
->[!note] Only enable the SSL protocols that comply with your company’s security policy.
-
-### Enable STARTTLS
-
-Start TLS allows clients to request a secure channel to RadiantOne at any time without having to establish a new connection on a different port. For example, a client can process an LDAP search operation on a normal connection and then, without closing the connection, request a secure layer over the same connection with StartTLS for the use of changing passwords or viewing encrypted attributes. After finishing the use of the secure channel, the client can switch back to the non-secure channel on the same connection. The flexibility offered by the Start TLS extension allows for the secure LDAPS channel to be turned on and off on demand.
-
-To enable Start TLS for clients to access RadiantOne:
-
-1. Go to the Main Control Panel > Settings Tab > Security section > SSL sub-section.
-
-2. Check the Enable SSL option and then check the Enable Start TLS option. 
-
-3. Save the changes. 
-
-4. Restart the RadiantOne service.
-
->[!warning] When using Start TLS, the default server certificate included with the RadiantOne installation does not work. You must generate a new certificate (either self-signed or requested from a Certificate Authority) that contains the proper machine and domain name of the RadiantOne machine. Also, the host name specified from the client should match the value in the certificate. If you try to use the default self-signed certificate included with the RadiantOne installation, the following error message (‘xxxxx’ being your server name) is returned: javax.net.ssl.SSLPeerUnverifiedException: hostname of the server 'xxxxx' does not match the hostname in the server's certificate.
-
-### Debug SSL
-
-SSL is enabled by default, but SSL logging is disabled by default. When SSL logging is enabled, SSL events have an entry in vds_server.log. This log file is located in <RLI_HOME>\vds_server\logs. SSL events are logged at INFO level, so log settings for VDS – Server must be at least at INFO level. 
-
->[!note] For more information on log levels, refer to the [RadiantOne Logging and Troubleshooting Guide](/logging-and-troubleshooting-guide/01-overview).
-
-To enable SSL logging:
-
-1. From the Main Control Panel, click Settings > Logs > Log Settings.
-
-2. From the Log Settings to Configure drop-down menu, select VDS – Server. 
-
-3. Verify that the Log Level drop-down menu is set to one of the following: INFO, DEBUG, or TRACE. 
-
-4. If you change the log level, click **Save**. 
-
-5. Click **Security -> SSL**.
-
-6. In the SSL section, check the Debug SSL box. 
-
-7. Click **Save**.
-
-8. On the Main Control Panel’s Dashboard tab, restart the RadiantOne service. 
 
 ### Certificate Revocation List
 
