@@ -1,9 +1,9 @@
 ---
-title: Web Services API Guide
-description: Web Services API Guide
+title: RESTFul Web Service
+description:Details about the RESTFul Web Service interface to RadiantOne (ADAP)
 ---
 
-# REST (ADAP)
+## REST (ADAP) Introduction
 
 The REST interface supports all LDAP operations and the ability to navigate the directory tree. Wrapping these operations and the progressive disclosure capabilities that exist in LDAP directories into a REST interface opens it up to the web. The REST API in RadiantOne is referred to as ADAP (Adaptive Directory Access Protocol).
 
@@ -33,7 +33,7 @@ This section describes how to perform the following functions:
 
 >[!note] The examples shown in this section use the Advanced Rest Client Google Chrome app.
 
-# Accessing the RadiantOne RESTFul Web Service
+## Accessing the RadiantOne RESTFul Web Service
 
 You can access the RadiantOne RESTFul Web Service using the following URL syntax: 
 
@@ -80,11 +80,11 @@ Ensure the proxy authorization control is enabled for the RadantOne service and 
 
 >[!warning] To allow the super user (e.g. cn=directory manager) to impersonate other users, you must enable the “Allow Directory Manager to Impersonate Other Users” option. For more information on this setting, please see the RadiantOne System Administration Guide.
 
-### Authentication
+## Authentication
 
 This section discusses password authentication and token authentication.
 
-#### Basic Password Authentication
+### Basic Password Authentication
 
 All REST operations require a header which is used to bind to the LDAP server. If this header is not populated, it uses anonymous access. 
 
@@ -128,7 +128,7 @@ Figure 5: Connection Failed
 
 Unless otherwise stated, this document assumes the use of password authentication. 
 
-#### Always Authenticate - Avoid Connection Pooling
+### Always Authenticate - Avoid Connection Pooling
 
 By default, the REST/ADAP service leverages connection pooling when connecting to the RadiantOne service. To require a new authentication (bind) for every connection to RadiantOne, and not use connection pooling, the Always Authenticate option must be enabled in the REST/ADAP configuration. If Always Authenticate is enabled, there is a single bind to the RadiantOne service for every bind to ADAP and a single bind to with every search to ADAP. 
 
@@ -148,7 +148,7 @@ Figure 6: Enabling the Always Authenticate Option
 
 4.	Restart the RadiantOne service. If deployed in a cluster, restart the service on all nodes.
 
-#### Mutual Authentication – Certificate-based Authentication
+### Mutual Authentication – Certificate-based Authentication
 
 For normal SSL communications, where the only requirement is that the client trusts the server, no additional configuration is necessary (as long as both entities trust each other). For mutual authentication, where there is a reciprocal trust relationship between the client and the server, the client must generate a certificate containing his identity and private key in his keystore. The client must also make a version of the certificate containing his identity and public key, which RadiantOne must store in its truststore. In turn, the client needs to trust the server; this is accomplished by importing the server's CA certificate into the client truststore.
 
@@ -182,9 +182,9 @@ To configure support for mutual authentication to ADAP, follow the steps below.
 
 10.	Click Save and restart the RadiantOne service. If RadiantOne is deployed in a cluster, restart the service on all nodes.
 
-#### OpenID Connect Token Authentication
+### OpenID Connect Token Authentication
 
-The RadiantOne REST (ADAP) interface supports token authentication. An OIDC token is recommended and described later on in this section. However, RadiantOne also includes a proprietary token mechanism that can be used if you don't have an OIDC provider. To generate a proprietary token, pass the userDN and password in the Authorization header in a GET request to the following endpoint: `https://r1server:8090/adap?bind=token`
+The RadiantOne REST (ADAP) interface supports token authentication. An OIDC token provider is recommended and described later on in this section. However, RadiantOne also includes a proprietary token mechanism that can be used if you don't have an OIDC provider. To generate a proprietary token, pass the userDN and password in the Authorization header in a GET request to the following endpoint: `https://r1server:8090/adap?bind=token`
 
 Field | Value
 -|-
@@ -225,7 +225,7 @@ A high-level diagram of the different components is shown below. Postman is used
  
 Figure 10: OpenID Connect Token Authentication
 
-##### Authorization Server Configuration
+### Authorization Server Configuration
 
 The application’s parameters must be configured on the authorization server that will issue the OpenID Connect tokens. The application in this context is the ADAP service. Configure an application for the ADAP service in your OIDC server and note the client ID and secret that are generated for it.
 
@@ -353,6 +353,141 @@ Figure 17: Search Operation
 ![Example Search Results](Media/Image5.20.jpg)
  
 Figure 18: Example Search Results
+
+## ADAP External Token Validators
+
+External token validators allow applications to use an access token to call an API on behalf of itself. The API then responds with the requested data. This section assumes that your OIDC provider is already set up.
+
+>[!warning] The processes described in this section are not hardened against security risks. For more information on hardening RadiantOne, refer to the [RadiantOne Hardening Guide](/hardening-guide/00-preface). 
+
+### Getting an Access Token
+
+This section describes using the Postman REST client to obtain an access token. 
+
+1. Start a new request. 
+1. Click the Auth tab.
+1. From the Type drop down menu, select OAuth 2.0. The Current Token section displays. 
+
+![Type drop-down menu](Media/typemenu.jpg)
+
+Figure 21: The Type drop-down menu
+ 
+1. In the Configure New Token section, enter the Client ID and client secret.
+
+    >[!note] These values were created during the OIDC provider configuration process. 
+
+1. Provide the access token URL. 
+
+    >[!note] This value can be found using the using the metadata URL from the Authorization Server. 
+
+![Configuring an access token in Postman](Media/configuringtoken.jpg)
+
+Figure 22: Configuring an access token in Postman
+
+1. Click Get New Access Token. The new access token's details are displayed. 
+
+![token details](Media/tokendetails.jpg)
+
+Figure 23: The Token Details section in Postman
+ 
+1. Copy this token and decode it for the values needed by the FID server. You can do this at https://jwt.io/.
+
+1. Keep the decoded token. Several values contained within are required for mapping attributes. 
+
+### FID Configuration
+
+This section describes configuring proxy authorization, configuring an ADAP external token validator, and attribute mapping.
+
+**Configuring Proxy Authorization**
+
+The RadiantOne ADAP (or SCIM) service queries the RadiantOne FID LDAP service using proxy authorization.
+
+To configure proxy authorization: 
+
+1. In the Main Control Panel, navigate to Settings > Server Front End > Supported Controls.
+
+1. Enable Proxy Authorization and click Save.
+
+1. Navigate to Settings > Security > Access Control.
+
+1. Enable the “Allow Directory Manager to impersonate other users” option and click Save.
+
+**Configuring ADAP External Token Validator**
+
+To add an external token validator:
+
+1. In the Main Control Panel, navigate to Settings > Security > External Token Validators. 
+
+1. Click **Add**. The New ADAP External Token Validator page displays.
+
+![The New ADAP External Token Validator Page](Media/externaltokenvalidatorpage.jpg)
+
+Figure 24: The New ADAP External Token Validator Page
+
+1. Name the external token validator.
+
+1. Toggle the Enable switch to On. 
+
+1. Select an OIDC provider from the drop-down menu. 
+
+1. Paste the Metadata URI from your OIDC authorization server into the Discovery URL field. 
+
+1. Click Discover. The JSON Web Key Set URI auto-populates. 
+
+1. Use the Expected Audience from your OIDC client to populate the Expected Audience field. 
+
+1. Other values can be obtained from the decoded access token. See the [Getting An Access Token](#getting-an-access-token) section for more information.  
+
+![Configuring an ADAP External Token Validator](Media/configuringtokenvalidator.jpg)
+
+Figure 25: Configuring an ADAP External Token Validator
+
+1. Click Edit next to Claims to FID User Mapping. The OIDC to FID User Mappings page displays.
+
+1. Click Add. 
+
+1. Define either a search expression or a simple DN Expression. In this example, a search expression is defined as shown below. 
+
+![Editing OIDC to FID User Mapping](Media/editingmapping.jpg)
+
+Figure 26: Editing OIDC to FID User Mapping
+
+1. Click OK. Click OK again to close the OIDC to FID User Mappings window.
+
+1. Click Save. 
+
+**Attribute Mapping**
+
+Map a uniquely identifying attribute to a corresponding claim value in the token (refer to the [Getting An Access Token](#getting-an-access-token) section for more information). In the following image, the attribute **mail** is mapped to the claim value **email**.
+
+>[!note] In some cases, creating a new attribute may be required.
+
+![search expression builder](Media/searchexpressionbuilder.jpg)
+
+Figure 27: The Search Expression Builder
+
+### Completing the Request with Postman
+
+To complete the request with Postman:
+
+1. Request a new access token (see [Getting An Access Token](#getting-an-access-token)). 
+1. Click Use Token. This inserts an Authorization header that inserts your bearer token. 
+
+![Requesting a new access token](Media/requestnewaccesstoken.jpg)
+
+Figure 28: Requesting a new access token
+
+1. Send the bearer token to the FID ADAP. In this example, a basic ADAP search is performed. 
+
+Field |	Value
+-|-
+URL Syntax	|http://`<ip:port>`/adap/<baseDN>
+Example URL |http://54.219.166.170:8089/adap/o=companydirectory
+Method	|Get
+
+![Sending the bearer token to RadiantOne](Media/Image..jpg)
+
+Figure 29: Sending the bearer token to RadiantOne
 
 ##### Optional Search Parameters
 
