@@ -43,7 +43,7 @@ In environments where an existing identity provider is deployed and needs to tru
 
 Name | Description | Link
 -|-|-
-![](media/amazonaws.png) <br> [Amazon AWS](/amazonaws.md)|Amazon Web Services (AWS) is a collection of remote computing services (also called web services) that together make up a cloud computing platform, offered over the Internet by Amazon.com. | [Amazon](https://aws.amazon.com)
+![](media/amazonaws.png) <br> [Amazon AWS](/amazonaws)|Amazon Web Services (AWS) is a collection of remote computing services (also called web services) that together make up a cloud computing platform, offered over the Internet by Amazon.com. | [Amazon](https://aws.amazon.com)
 ![](media/awssso.png) <br> [Amazon Single Sign-On](../../applications/amazonsso.md)| AWS Single Sign-On (AWS SSO) is a cloud service that allows you to grant your users access to AWS resources, such as Amazon EC2 instances, across multiple AWS accounts. | [Amazon](https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html)
 ![](media/box.png) <br> [Box](../../applications/box.md) | Box is the single, secure solution for content access, sharing and collaboration. Connect Box to other business applications using preexisting integrations, add functionality by adding Box Apps to your deployment or incorporate Box into your infrastructure through SSO integrations.| [Box](https://www.box.com)
 ![](media/ciscowebex.png) <br> [Cisco WebEx](../../applications/ciscowebex.md) | Collaborate with colleagues across your organization, or halfway across the planet. Meet online and share files, information, and expertise. WebEx solutions increase productivity and keep you connected. | [Citrix](https://www.webex.com) 
