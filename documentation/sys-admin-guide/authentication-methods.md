@@ -490,7 +490,7 @@ The user DN returned from the search is used by RadiantOne to identify the user 
 
 For more details, please see [Processing Multiple Mapping Rules](interception#processing-multiple-mapping-rules).
 
-### Global Authentication Strength
+## Global Authentication Strength
 
 The Global Authentication Strength parameter is used to specify that a client must bind to RadiantOne by using a specific authentication method. The parameter is configured on the Main Control Panel > Settings Tab > Security section > Authentication Methods. The values are as follows:
 
