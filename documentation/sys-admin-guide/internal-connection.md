@@ -27,7 +27,7 @@ By default, RadiantOne attempts to chase referrals that have been configured in 
 
 If you enable the Paged Results Control option, RadiantOne (as a client to itself) requests the result of a query in chunks (to control the rate at which search results are returned). After enabling the Paged Results Control, indicate the page size you want to use. Click **Save** to apply the changes to the server.
 
-This functionality can be useful when RadiantOne (as a client to itself) has limited resources and may not be able to process the entire result set from a given LDAP query. Verify that support for the [Paged Results Control](#paged-result-controls) is enabled RadiantOne to use this option for the internal connection.
+This functionality can be useful when RadiantOne (as a client to itself) has limited resources and may not be able to process the entire result set from a given LDAP query. Verify that support for the [Paged Results Control](/03-front-end-settings#paged-results-control) is enabled RadiantOne to use this option for the internal connection.
 
 ## Idle Timeout
 
