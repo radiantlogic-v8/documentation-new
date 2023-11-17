@@ -7,5 +7,5 @@ description: Web Services API Guide
 - [DSML](02-dsml.md)
 - [SPML](03-spml.md)
 - [SCIM](04-scim.md)
-- [REST (ADAP)](05-rest.md)
+- [REST](05-rest.md)
 - [SAML Attribute Service](06-saml-attribute-service.md)
