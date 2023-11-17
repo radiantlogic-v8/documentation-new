@@ -1,3 +1,8 @@
+---
+title: LDAP Data Sources
+description: Details about how to configure LDAP data sources.
+---
+
 # LDAP Data Sources
 
 An LDAP data source represents a connection to an LDAP/JNDI-accessible backend.
