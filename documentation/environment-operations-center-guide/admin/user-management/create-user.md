@@ -11,6 +11,8 @@ This guide outlines the required steps to create new users and assign roles in E
 
 Select **Admin** from the left navigation to access the *Admin* home screen and *Users* tab.
 
+![image description](images/admin-section.png)
+
 To create a new user, select the **New User** button on the *Users* tab.
 
 ![image description](images/create-button.png)
@@ -21,7 +23,8 @@ The *New User* form contains all of the required input fields to create a new us
 
 ## User details
 
-In the *User Details* section you must provide the new user's first name, last name, and email in the corresponding fields. Set the user's status by adjusting the *Status* toggle to "Active".
+In the *User Details* section you must provide the new user's first name, last name, email, activate if you want the user to be a local user, an email for notifications, and set the status to active/inactive in the corresponding fields.
+Set the user's status by adjusting the *Status* toggle to "Active".
 
 ![image description](images/create-user-details.png)
 
@@ -29,7 +32,13 @@ All the fields in the *User Details* section are required and must be completed 
 
 ![image description](images/create-save-disabled.png)
 
-Once you have completed the *User Details* section, you can proceed to the *Role Details* section to assign the user a role and one or more environments.
+Once you have completed the *User Details* section, you can proceed to the *Role* and *Role Details* section to assign the user a role and one or more environments.
+
+## Roles
+
+An user can assume two roles, either a **TENANT ADMIN** or an **ENVIRONMENT CREATOR**. These roles can be enabled/disabled using the toggle buttons
+
+![image description](images/roles.png)
 
 ## Role details
 
