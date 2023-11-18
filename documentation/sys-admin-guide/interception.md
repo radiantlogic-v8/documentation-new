@@ -52,8 +52,7 @@ To configure a global join:
 
 7.	Click **Browse** to locate the Base DN or enter the location yourself.
 
-8.	Specify the scope of search to perform to find the entries to join with. The drop-down options are base, one, 
-or sub.
+8.	Specify the scope of search to perform to find the entries to join with. The drop-down options are base, one, or sub.
 
 9.	Select the specific object class associated with the secondary entries you want to join with in the Object Class parameter from the drop-down list. For information on schema extension, please see [Extending RadiantOne LDAP Schema](07-directory-schema#extending-the-radiantone-ldap-schema).
 
