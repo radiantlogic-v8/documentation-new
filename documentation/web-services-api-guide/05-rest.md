@@ -310,7 +310,7 @@ URL Syntax	|http://`<ip:port>`/adap/<baseDN>
 Example URL |http://54.219.166.170:8089/adap/o=companydirectory
 Method	|Get
 
-![Sending the bearer token to RadiantOne](Media/Image..jpg)
+![Sending the bearer token to RadiantOne](Media/bearertoken.jpg)
 
 Figure 29: Sending the bearer token to RadiantOne
 
