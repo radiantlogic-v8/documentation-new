@@ -1,6 +1,6 @@
 ---
 title: RESTFul Web Service
-description:Details about the RESTFul Web Service interface to RadiantOne (ADAP)
+description: Details about the RESTFul Web Service interface to RadiantOne (ADAP)
 ---
 
 ## REST (ADAP) Introduction
