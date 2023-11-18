@@ -338,7 +338,7 @@ When an expired or unrecognized token is used, the Response section displays the
  
 Figure 16: Error Related to Unrecognized or Expired Token
 
-### Example: Search 
+## Search Example
 
 In this section, a search is performed using the REST client parameters and values shown in the table below. 
 
@@ -364,7 +364,7 @@ Figure 17: Search Operation
 Figure 18: Example Search Results
 
 
-### Optional Search Parameters
+## Optional Search Parameters
 
 You can use the following search parameters: filter, attributes, scope, startIndex, count, sizelimit, paging, context, context filter, return mode, special character encoding, and derefAliases. The & sign is the parameter delimiter in the URL. These options are described in this section.
 
@@ -372,7 +372,7 @@ You can use the following search parameters: filter, attributes, scope, startInd
 <br>LDAP Filter	            ->     Corrected URL
 <br>(&(objectclass=*)(cn=a*))  ->  (%26(objectclass=*)(cn=a*))
 
-**Filter** 
+### Filter
 
 The filter option allows you to search for entries with a specific attribute value. The value defined for this option is translated into an LDAP filter when the query is issued to the RadiantOne LDAP service. In the following example, a search is performed for records with the value Manager for the employeeType attribute within o=companydirectory. 
 
@@ -404,7 +404,7 @@ Header Value	| Basic `<base64 value dn:password>`
 
 Table 8: Search Operation Returning ObjectClass and CN
 
-**Scope**
+### Scope
 
 This option defines how many levels beneath the base DN to search for entries. The value defined for this option is translated into the scope for the LDAP query issued to the RadiantOne service. The options include the following.
 
@@ -424,7 +424,7 @@ Header Value	| Basic `<base64 value dn:password>`
 
 Table 9: Search Operation with Scope Parameter
 
-**StartIndex (Paging Results)**
+### StartIndex (Paging Results)
 
 This option defines the number used for the paged search, and indicates the first entry to return from all the matched entries. This option should be used in conjunction with the ‘count’ option described in the next section. StartIndex dictates the behavior at the client level and is not passed to the RadiantOne service in the LDAP query.
  
@@ -439,7 +439,7 @@ Header Value	| Basic `<base64 value dn:password>`
 
 Table 10: Search Operation using StartIndex Parameter
 
-**Count**
+### Count
 
 This option should be passed with StartIndex (described above) and defines the number of successive entries displayed in a paged search, starting with the one previously defined using the StartIndex search parameter. Count dictates the behavior at the client level and is not passed to the RadiantOne service in the LDAP query.
 
@@ -474,7 +474,7 @@ Table 12: Total Results Descriptions
 
 The “count” value represents the number of results actually returned in the response and was set when “count=2” was added to the URL in the example above. Otherwise, the count value would have been equal to the total number of entries returned without the use of paging. 
 
-**SizeLimit**
+### SizeLimit
 
 SizeLimit indicates the maximum number of entries to request from the RadiantOne service. The value defined for this option is translated into the sizelimit property passed in the LDAP query to RadiantOne. The default sizelimit is set at 1000, meaning that only 1000 entries will be returned by the RadiantOne LDAP sevice for a request. If the REST client is expecting all entries, sizelimit should be set to 0.
 
@@ -496,7 +496,7 @@ Header Value	| Basic `<base64 value dn:password>`
 
 Table 13: Search Operation using SizeLimit Parameter
 
-**Paging**
+### Paging
 
 The PageSize option indicates paging via the Paged Results Control should be passed in the query to the RadiantOne LDAP service. The PageSize value entered when passing the initial search defines the number of entries displayed per page. This reduces the initial loading time and memory requirement when performing a search, making this option especially useful when the total search result count is high. 
 
@@ -577,7 +577,7 @@ The absolute number of paged searches that can be supported by the RadiantOne se
 
 Figure 24: Max Concurrent Paged Searches
 
-**Context**
+### Context
 
 The context option allows you to display a hierarchical view of an entry’s ancestor(s) when performing a search. By adding “context=true” to the URL of a standard REST search operation, you activate this context search option. Optional search parameters that can be used in conjunction with a context search include filter, scope, and sizelimit. 
 
@@ -597,7 +597,7 @@ Figure 25: Performing a Context Search
 
 In the figure above, starting at the bottom, the bottom box contains the uid that matches the search criteria defined in the URL. The next box up contains the parent entry that uid=Aaron Medler belongs to, ou=Accounting. The top box contains the top entry, o=companydirectory. 
 
-**Context Filter**
+### Context Filter
 
 The context filter option allows you to pass a filtered search to the REST interface, which returns only the entries that match each of the search criteria filters. Wildcards can be used in the filters, as shown in the Example URL field below. The optional search parameters ‘attributes’ and ‘context’ can also be used with this search option. You can define the scope of each context filter search as follows.
 
@@ -619,7 +619,7 @@ Table 19: Search Operation using Context Filter
  
 Figure 26: Example Search Result Leveraging Context Filter
 
-**Return Mode**
+### Return Mode
 
 This option allows you to parse search results so they can be more easily interpreted by applications. By adding “?returnMode=array” to the URL of a standard search operation, you activate this option. With this option, attribute values are arranged in an array, regardless of the quantity of attribute values. Without this option, attribute values are arranged in an array only if there are two or more attribute values. 
 
@@ -633,7 +633,7 @@ Header Value	| Basic `<base64 value dn:password>`
 
 Table 20: Return Mode
 
-**Special Character Encoding**
+### Special Character Encoding
 
 To pass an LDAP filter in the request, or any filter that contains special characters, encode the characters as outlined in the table below.
 
@@ -651,7 +651,7 @@ An example LDAP filter of:
 (|(cn=Lisa Grady)(sAMAccountName=Lisa Grady)(uid=Lisa Grady)) 
 <br> Would need converted to: <br> (%7C(cn%3DLisa%20Grady)(sAMAccountName%3DLisa%20Grady)(uid%3DLisa%20Grady))
 
-**Dereferencing Alias Entries**
+### Dereferencing Alias Entries
 
 RadiantOne Universal Directory stores supports alias entries as defined in RFC 22521. Alias entries point to/reference another entry in the directory. The attribute containing the location of the target entry (DN) is aliasedObjectName and the object class associated with these entries is alias. When a client requests an alias entry, they can indicate if they want the alias dereferenced or not. The indicators are outlined in the table below.
 
@@ -684,7 +684,7 @@ When a client requests derefAliases=3, RadiantOne automatically dereferences the
  
 Figure 24: Example Result Dereferencing Aliases
 
-**Display LDAP server’s root naming contexts**
+### Display LDAP server’s root naming contexts
 
 To display a list of the LDAP server’s root naming contexts, pass rootdse as part of the URL.
 
@@ -703,7 +703,7 @@ An example of the list displayed by this command is shown below.
  
 Figure 26: Example Search Returning Root Naming Contexts
 
-### Example: Add
+## Add Example
 
 In this section, a new entry is added to RadiantOne using the parameters shown in the table below. The value in the Request Body field contains the information for the entry to be added. 
 
@@ -750,7 +750,7 @@ If unsuccessful, the Response section displays the message “{"httpStatus":400}
  
 Figure 30: Add Failure Response Example
 
-### Example: Replace (PUT)
+## Replace (PUT) Example
 
 In this section, an existing entry is replaced using the parameters shown in the table below.
 
@@ -773,11 +773,11 @@ Figure 31: Example PUT Request
 
 If successful, the Response section displays the message “{"httpStatus":200}”. 
 
-### Example: Modify (PATCH)
+## Modify (PATCH) Example
 
 This section explains how to add, delete, and replace an entry’s attributes and includes many examples.
 
-**Add and Replace Attributes**
+### Add and Replace Attributes
 
 In the first example, an attribute is added to a user entry identified as “uid=alice,cn=config”, and another is replaced using the parameters shown in the table below.
 
@@ -798,7 +798,7 @@ Figure 32: Example PATCH Request
 
 If successful, the Response section displays the message “{"httpStatus":200}”. 
 
-**Delete Attribute Value**
+### Delete Attribute Value
 
 In this example an attribute (e.g. email) containing a specified value (e.g. alice@radiantlogic.com) is deleted by using the parameters shown in the table below. 
 
@@ -830,7 +830,7 @@ Table 30: REST Operation to Delete an Attribute Value
 
 If successful, the Response section displays the message “{"httpStatus":200}”.
 
-**Delete Attribute**
+### Delete Attribute
 
 In this example, an attribute is deleted, regardless of its attribute values, using the parameters shown in the table below. This is an example of removing all values for the email attribute. 
 
@@ -862,7 +862,7 @@ Table 31: REST Operation to Delete an Attribute
 
 If successful, the Response section displays the message “{"httpStatus":200}”.
 
-**Add Group Member**
+### Add Group Member
 
 In this example, a group entry identified as “cn=operator,ou=globalgroups,cn=config” is updated to add a member identified as “uid=Adalberto_Flecha,ou=Accounting,o=companydirectory”. 
 
@@ -899,7 +899,7 @@ Figure 33: Example PATCH Request – Add Group Members
 
 If successful, the Response section displays the message “{"httpStatus":200}”.
 
-**Replace Group Members**
+### Replace Group Members
 
 In this example, a group entry’s members are replaced by a new member.
 
@@ -936,7 +936,7 @@ Figure 34: Example PATCH Request – Replace Group Members
 
 If successful, the Response section displays the message “{"httpStatus":200}”.
 
-### Example: Modify RDN
+## Modify RDN Example
 
 This section explains how to modify the RDN of an entry using the parameters shown in the table below.
 
@@ -956,7 +956,7 @@ Figure 35: Example PATCH – Modify RDN
 
 If successful, the Response section displays the message “{"httpStatus":200}”. 
 
-### Example: Move
+## Move Example
 
 This section explains how to move the entry "uid=Adalberto_Flecha,ou=Accounting,o=companydirectory" to "ou=Administration,o=companydirectory", keeping the same RDN name.
 
@@ -977,7 +977,7 @@ Figure 36: Example PATCH – Move Entry
 
 If successful, the Response section displays the message “{"httpStatus":200}”. 
 
-### Example: Delete 
+## Delete Example
 
 This section explains how to delete an entry in RadiantOne using the parameters shown in the table below. “baseDN” is the DN of the targeted entry. 
 
@@ -997,7 +997,7 @@ Figure 37: Example DELETE Request
 
 If successful, the Response section displays the message “{"httpStatus":200}”. 
 
-### Example: Deleting a Node and Its Sub-Nodes
+## Deleting a Node and Its Sub-Nodes Example
 
 This section explains how to delete a node and its sub-nodes. When attempting to perform a standard deletion on a node that contains sub-nodes, the operation fails because of those sub-nodes. The Response section displays the message “Entry not deleted”. 
 
@@ -1023,7 +1023,7 @@ Figure 39: Deleing a Node Containing Sub-nodes
 
 >[!note] The “deletetree=true” parameter does not delete root naming contexts.
 
-### Example: Performing Bulk Operations
+## Performing Bulk Operations Example
 
 Performing large quantities of REST requests may affect your network’s workload. This section explains how to perform bulk operations, which bundle multiple operations into one REST request, reducing your network’s workload. In the example below, the following are performed inside of one operation:
 
@@ -1072,7 +1072,7 @@ Figure 40: Sample Response from Bulk Operations
 
 In the image above, starting at the top, in the top box, the addition of a new entry to the directory is confirmed. In the second box, the replacement of an existing directory entry is confirmed. In the third box, the modification of an entry’s attribute is confirmed. In the fourth box, the deletion of an entry is confirmed.
 
-### Example: Working with Complex Attributes
+## Working with Complex Attributes Example
 
 Complex attributes are those that contain one or more sub-attributes. With the REST interface, you can search for and modify “complex” attributes. Complex attributes are not compatible with bulk operations.
 
@@ -1090,7 +1090,7 @@ This section explains how to perform the following operations.
 
 [Modify multiple complex attributes in an operation](#modify-multiple-complex-attributes-in-an-operation)
 
-**Search for Complex Attributes**
+### Search for Complex Attributes
 
 The complex attribute search allows you to indicate which attributes you want returned in the search result. Separate attribute names with a comma in the URL. The value defined for this option is translated into requested attributes in the LDAP query issued to RadiantOne. The example shown below expects the attribute address and its sub-attributes returned for each entry.
 
@@ -1128,7 +1128,7 @@ An example complex attribute search result is shown in the image below.
  
 Figure 43: Complex Attribute Search Result with Specified Sub-attributes
 
-**Add an Entry with Complex Attributes**
+### Add an Entry with Complex Attributes
 
 In this section, an entry with complex attributes is added using the parameters shown in the table below. The value in the Example Request Body field contains the information for the entry to be added. The “phone” attribute contains the sub-attributes “type” and “value”, and the “address” attribute contains the sub-attributes “state”, “country”, and “streetNumber”.
 
@@ -1159,7 +1159,7 @@ Table 42: Adding an entry with complex attributes
  
 Figure 44: Adding an entry with complex attributes
 
-**Add Complex Attributes to an Existing Entry**
+### Add Complex Attributes to an Existing Entry
 
 In this section, complex attributes are added to an existing user entry using the parameters shown in the table below. The value in the Example Request Body field contains the information for the attributes to be added to the entry. 
 
@@ -1191,7 +1191,7 @@ Table 43: Adding Complex Attributes to an Existing Entry
 
 If you attempt to add an attribute that has an already existing, identical value, the REST client displays LDAP code 20 (the provided attribute contains a value that would result in duplicate value in the entry). If this happens, the entire request is ignored by the REST client. 
 
-**Replace an Entry’s Complex Attributes**
+### Replace an Entry’s Complex Attributes
 
 In this section, new attributes are added to an existing user entry using the parameters shown in the table below. The value in the Example Request Body field contains the information for the attributes to be added to the entry. 
 
@@ -1220,7 +1220,7 @@ In this section, new attributes are added to an existing user entry using the pa
 
 Table 44: Replacing an Entry’s Complex Attributes
 
-**Delete an Entry’s Complex Attributes**
+### Delete an Entry’s Complex Attributes
 
 In this section, sub-attributes are deleted from an existing entry using the parameters shown in the table below. The value in the Example Request Body field contains the information for the sub-attributes to be deleted from the entry. 
 
@@ -1276,7 +1276,7 @@ In the following example, all values for the attribute “address” are deleted
 
 Table 46: Deleting Sub-attributes
 
-**Modify Multiple Complex Attributes in an Operation**
+### Modify Multiple Complex Attributes in an Operation
 
 In this section, the sub-attributes “streetNumber” and “country” are added to an existing user entry and sub-attributes “type”, “value”, and “brand” are replaced using the parameters shown in the table below. The value in the Example Request Body field contains the information for the attributes to be modified in the entry. 
 
