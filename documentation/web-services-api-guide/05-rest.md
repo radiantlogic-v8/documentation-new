@@ -80,11 +80,7 @@ Ensure the proxy authorization control is enabled for the RadantOne service and 
 
 >[!warning] To allow the super user (e.g. cn=directory manager) to impersonate other users, you must enable the “Allow Directory Manager to Impersonate Other Users” option. For more information on this setting, please see the RadiantOne System Administration Guide.
 
-## Authentication
-
-This section discusses password authentication and token authentication.
-
-### Basic Password Authentication
+## Basic Password Authentication
 
 All REST operations require a header which is used to bind to the LDAP server. If this header is not populated, it uses anonymous access. 
 
@@ -128,7 +124,7 @@ Figure 5: Connection Failed
 
 Unless otherwise stated, this document assumes the use of password authentication. 
 
-### Always Authenticate - Avoid Connection Pooling
+## Always Authenticate - Avoid Connection Pooling
 
 By default, the REST/ADAP service leverages connection pooling when connecting to the RadiantOne service. To require a new authentication (bind) for every connection to RadiantOne, and not use connection pooling, the Always Authenticate option must be enabled in the REST/ADAP configuration. If Always Authenticate is enabled, there is a single bind to the RadiantOne service for every bind to ADAP and a single bind to with every search to ADAP. 
 
@@ -148,7 +144,7 @@ Figure 6: Enabling the Always Authenticate Option
 
 4.	Restart the RadiantOne service. If deployed in a cluster, restart the service on all nodes.
 
-### Mutual Authentication – Certificate-based Authentication
+## Mutual Authentication – Certificate-based Authentication
 
 For normal SSL communications, where the only requirement is that the client trusts the server, no additional configuration is necessary (as long as both entities trust each other). For mutual authentication, where there is a reciprocal trust relationship between the client and the server, the client must generate a certificate containing his identity and private key in his keystore. The client must also make a version of the certificate containing his identity and public key, which RadiantOne must store in its truststore. In turn, the client needs to trust the server; this is accomplished by importing the server's CA certificate into the client truststore.
 
@@ -182,7 +178,7 @@ To configure support for mutual authentication to ADAP, follow the steps below.
 
 10.	Click Save and restart the RadiantOne service. If RadiantOne is deployed in a cluster, restart the service on all nodes.
 
-### OpenID Connect Token Authentication
+## OpenID Connect Token Authentication
 
 The RadiantOne REST (ADAP) interface supports OpenID Connect token-based authentication. This option provides the security of sending user login credentials to the authentication server, not the application (ADAP). OpenID Connect token authentication allows you to send your username and password just once and then pass the token in the request to ADAP. However, the user cannot use the token authentication to request a new token. Multiple requests can be performed during a [token’s lifetime](#token-lifetime).
  
@@ -261,7 +257,7 @@ Figure 25: Configuring an ADAP External Token Validator
 
 1. Click Save. 
 
-Map a uniquely identifying attribute to a corresponding claim value in the token (refer to the [Getting An Access Token](#getting-an-access-token) section for more information). In the following image, the attribute **mail** is mapped to the claim value **email**.
+As an alternative to simple DN mapping, you can use a more advanced mapping that leverages a search in the RadiantOne namespace to map a uniquely identifying attribute to a corresponding claim value in the token. In the following image, the attribute **mail** is mapped to the claim value **email**.
 
 >[!note] In some cases, creating a new attribute may be required.
 
