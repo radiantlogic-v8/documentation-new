@@ -135,15 +135,15 @@ To enable the Always Authenticate option:
 
 1.	Go to the Main Control Panel > Settings tab > Server Front End > Other Protocols section. 
 
-2.	In the REST/ADAP section (requires [Expert Mode](01-overview#expert-mode)), check the ‘Always Authenticate’ checkbox.
+1.	In the REST/ADAP section (requires [Expert Mode](01-overview#expert-mode)), check the ‘Always Authenticate’ checkbox.
 
-![Enabling the Always Authenticate Option](Media/Image5.6.jpg)
+![Enabling the Always Authenticate Option](Media/restsettings.jpg)
 
 Figure 6: Enabling the Always Authenticate Option
 
-3.	Click Save. 
+1.	Click Save. 
 
-4.	Restart the RadiantOne service. If deployed in a cluster, restart the service on all nodes.
+1.	Restart the RadiantOne service. If deployed in a cluster, restart the service on all nodes.
 
 ## Mutual Authentication – Certificate-based Authentication
 
