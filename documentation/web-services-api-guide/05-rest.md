@@ -78,7 +78,7 @@ Figure 2: Proxy Header for Proxy Authorization
 
 Ensure the proxy authorization control is enabled for the RadantOne service and access controls have been defined to indicate who is allowed to impersonate who. For more information on enabling the proxy authorization control and defining access controls, please see the RadiantOne System Administration Guide.
 
->[!warning] To allow the super user (e.g. cn=directory manager) to impersonate other users, you must enable the “Allow Directory Manager to Impersonate Other Users” option. For more information on this setting, please see the 
+>[!warning] To allow the super user (e.g. cn=directory manager) to impersonate other users, you must enable the “Allow Directory Manager to Impersonate Other Users” option. For more information on this setting, please see 
 [Access Controls](/sys-admin-guide/access-controls/#allow-directory-manager-to-impersonate-other-users).
 
 ## Basic Password Authentication
