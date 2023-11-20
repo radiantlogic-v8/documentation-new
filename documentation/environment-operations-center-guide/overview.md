@@ -108,7 +108,7 @@ For details on managing data connections, see the [secure data connectors](../se
 
 From the *Admin* section you can perform various administrative actions in Environment Operations Center. Select **Admin** to navigate to the *Admin* home screen.
 
-For further details on operations available in the *Admin* section, see the [admin overview](admin/admin-overview.md) guide.
+For further details on operations available in the *Admin* section, see the [admin overview](environment-operations-center-guide/admin/admin-overview.md) guide.
 
 ![image description](images/admin.png)
 
