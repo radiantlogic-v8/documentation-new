@@ -45,14 +45,14 @@ When a REST client performs an operation, it displays one or more codes in its R
 
 HTTP Status #	| Description	| Next Step
 -|-|-
-200	| Operation successful.	| For searches, no action necessary. For other operations, refresh the RadiantOne namespace to view the modification. <br> Note - For bind requests where the user’s password is near expiration, the response includes the time (in seconds) until the password expires (secUntilPwdExp value). This is only relevant if the RadiantOne password policy applicable for the user has been configured to support password expiration.
+200	| Operation successful	| For searches, no action necessary. For other operations, refresh the RadiantOne namespace to view the modification. <br> Note - For bind requests where the user’s password is near expiration, the response includes the time (in seconds) until the password expires (secUntilPwdExp value). This is only relevant if the RadiantOne password policy applicable for the user has been configured to support password expiration.
 302	| Found Request Headers	| This code is issued on a node that receives a paging request but did not generate the cookie related to paged results. This node redirects the request to the node that generated the cookie. No action is required. (Applicable to multi-node clusters only.)
-400	| Bad Request (operation unsuccessful). | ADAP validates parameter syntax in the URL (including case sensitivity) and returns this code when invalid syntax is detected (review entire Response section for more information).
-500	| Server error. | Send the exception message along with the <RLI_HOME>/vds_server/logs/vds_server.log to Radiant Logic customer support.
+400	| Bad Request (operation unsuccessful) | ADAP validates parameter syntax in the URL (including case sensitivity) and returns this code when invalid syntax is detected (review entire Response section for more information).
+500	| Server error | Send the exception message along with the <RLI_HOME>/vds_server/logs/vds_server.log to Radiant Logic customer support.
 
 ### Maximum Requests
 
-This is the number of threads the REST/ADAP interface uses for handling client requests. In other words, this option defines the number of requests REST/ADAP can handle. The default value is 100.
+This is the number of threads the REST/ADAP interface uses for handling client requests. This option defines the number of requests REST/ADAP can handle. The default value is 100.
 
 To set the maximum threads value:
 
@@ -76,7 +76,7 @@ Authorization is enforced by the RadiantOne service based on the user who authen
 
 Figure 2: Proxy Header for Proxy Authorization
 
-Ensure the proxy authorization control is enabled for the RadantOne service and access controls have been defined to indicate who is allowed to impersonate who. For more information on enabling the proxy authorization control and defining access controls, please see the RadiantOne System Administration Guide.
+Ensure the proxy authorization control is enabled for the RadantOne service and access controls have been defined to indicate who is allowed to impersonate who. For more information on enabling the proxy authorization control and defining access controls, please see the [Access Controls](/sys-admin-guide/access-controls).
 
 >[!warning] To allow the super user (e.g. cn=directory manager) to impersonate other users, you must enable the “Allow Directory Manager to Impersonate Other Users” option. For more information on this setting, please see 
 [Access Controls](/sys-admin-guide/access-controls/#allow-directory-manager-to-impersonate-other-users).
@@ -227,6 +227,8 @@ Figure 24: External Token Validator
 
 1. Click Discover. The JSON Web Key Set URI auto-populates.
 
+1. Use the Expected Audience from your OIDC client to populate the Expected Audience field. 
+
 1. Enter the scope claim name.
 
 Scope	| Claims
@@ -238,14 +240,6 @@ Phone	| phone_number, phone_number_verified
 Openid	| sub, auth_time, acr
 
 Table 4: Standard Claims per Scope
-
-1. Use the Expected Audience from your OIDC client to populate the Expected Audience field. 
-
-1. Other values can be obtained from the decoded access token. See the [Getting An Access Token](#getting-an-access-token) section for more information.  
-
-![Configuring an ADAP External Token Validator](Media/configuringtokenvalidator.jpg)
-
-Figure 25: Configuring an ADAP External Token Validator
 
 1. To configure mapping rules to associate the token identity to an identity in the RadiantOne namespace (for enforcing authorization), Click Edit next to Claims to FID User Mapping. The OIDC to FID User Mappings page displays.
 1.	Click Add and define the rule(s) that will translate the identity from the OpenID Connect token to the identity in the RadiantOne namespace. You can do this with either a search expression or a simple DN expression.  For example, if a user authenticates to the OpenID connect server (to request a token) as Aaron_Medler, this value is issued as the identifier subject in the token and must be translated into an identity DN in the RadiantOne namespace when requests are sent. Assuming “Aaron_Medler” is the value in the uid attribute and this account is located in the o=companydirectory naming context, the mapping rule shown below would be needed to translate “Aaron_Melder” into the identity represented as: “uid=Aaron_Medler,ou=Accounting,o=companydirectory”
@@ -297,21 +291,13 @@ Figure 22: Configuring an access token in Postman
 
 Figure 23: The Token Details section in Postman
  
-1. Copy this token and decode it for the values needed by the RadiantOne service. You can do this at https://jwt.io/. This can help with search expression logic to configure the Claims to FID user mapping.
+1. Copy this token and decode it for the values needed by the RadiantOne service. You can do this at https://jwt.io/. This can help with search expression logic to configure the Claims to FID user mapping if needed.
 
 1. Send the bearer token in the REST request to the RadiantOne service. In this example, a basic ADAP search is performed. 
-
-Field |	Value
--|-
-URL Syntax	|http://`<ip:port>`/adap/<baseDN>
-Example URL |http://54.219.166.170:8089/adap/o=companydirectory
-Method	|Get
 
 ![Sending the bearer token to RadiantOne](Media/bearertoken.jpg)
 
 Figure 29: Sending the bearer token to RadiantOne
-
-
 
 ### OIDC Token Lifetime
 
