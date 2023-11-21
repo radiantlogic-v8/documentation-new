@@ -894,7 +894,7 @@ If you have modified the metadata as described in Extend Virtual View with New O
 
 7.	To expose all Okta attributes in the virtual view, click the ![An image showing ](Media/right-arrow3.jpg) button.
 
-8.	If you’ve added custom attributes for groups, In the virtual view definition, navigate to oktaclient > object=groups.
+8.	If you’ve added custom attributes for groups, In the virtual view definition, navigate to okta2 > object=groups.
 
 9.	Select the groups content node.
 
