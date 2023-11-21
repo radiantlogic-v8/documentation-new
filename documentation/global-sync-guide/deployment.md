@@ -135,7 +135,7 @@ This section describes exporting a topology from the source environment.
 
 2. Run the resource-export command as shown in the following example. The value for the -name command argument is the topology's destination naming context. The value for the -path command argument is the file path where the zip file is created.
 
-    https://<<rli_server_name>>:8090/adap/util?action=vdsconfig&commandname=resource-export&name=<name>&path=<path>
+    https://<<rli_server_name>>:8090/adap/util?action=vdsconfig&commandname=resource-export&name=<name>&path=<<path>>
 
     i.e.
 
@@ -161,7 +161,7 @@ To import the topology:
 
 1. Run resource-import as shown in the following example. The value for the -path command argument is the full file path.
 
-    https://localhost:8090/adap/util?action=vdsconfig&commandname=resource-import&path=<`path`>&apply
+    https://localhost:8090/adap/util?action=vdsconfig&commandname=resource-import&path=<<`path`>>&apply
 
     i.e. 
 
