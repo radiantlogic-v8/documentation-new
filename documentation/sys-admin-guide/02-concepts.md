@@ -742,7 +742,8 @@ For samples of interception scripts, please see the Radiant Logic Knowledge Base
 Only registered customers have access to the Knowledge Base. 
 
 >[!warning]
->If errors result from interception scripts, error code 1 is always returned by the script. To override this default behavior, and customize/return error codes based on >the script logic, set useInterceptionErrorCodeOnViews to true using the following command:
+>If errors result from interception scripts, error code 1 is always returned by the script. To override this default behavior, and customize/return error codes based on
+>the script logic, set useInterceptionErrorCodeOnViews to true using the following command:
 >```
 >https://radiantoneservice:8090/adap/util?action=vdsconfig&commandname=set-property&name=useInterceptionErrorCodeOnViews&value=true
 >```
