@@ -87,7 +87,7 @@ All REST operations require a header which is used to bind to the LDAP server. I
 
 The header must be named “authorization” and the header value is derived by concatenating: Basic base64(dn:password). Use a `<space>` between Basic and the encoded value. 
 
-You can use any base64 encoder to get this value. For example, the base64 encoded value for cn=directory manager and password of secretsecret would be the following. 
+You can use any base64 encoder to get this value. For example, the base64 encoded value for cn=directory manager and password of secretsecret (cn=directory manager:secretsecret) would be the following. 
 
 Y249ZGlyZWN0b3J5IG1hbmFnZXI6c2VjcmV0c2VjcmV0
 
@@ -107,7 +107,7 @@ Field	| Value
 URL Syntax | http://`<RadiantOneServer>`:8089/adap?bind=simpleBind
 Method	| Get
 Header Name	| Authorization
-Header Value	| Basic `<base64 value dn:password>`
+Header Value	| Basic `<base64EncodedValue for <dn>:<password>>`
 Example Header Value	| Basic Y249ZGlyZWN0b3J5IG1hbmFnZXI6c2VjcmV0c2VjcmV0
 
 Table 1: A Simple Bind to the RadiantOne REST Service
