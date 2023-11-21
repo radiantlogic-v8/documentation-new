@@ -116,3 +116,75 @@ After the number of retries is exhausted, the message is written into the queue 
 To replay failed messages from the dead letter queue, use the Main Control Panel > Global Sync tab. Select the topology and select **Configure** next to the pipeline. Select the **Queue** section on the left and locate the Failed Messages section. Select the **Resend** button next to the failed message that you want to be resent.
 
 ![Manually Replaying Failed Messages](media/image99.png)
+
+# Migrating Global Sync Topologies
+
+This section describes the process of migrating a global sync topology from a source environment to a target environment using a command line tool, vdsconfig.bat, which is located in <RLI_HOME>/bin on Windows (vdsconfig.sh in $RLI_HOME/bin on Linux).
+
+## Exporting the Topology
+
+This section describes exporting a topology from the source environment.
+
+1. Run the resource-traverse command as shown in the following example. The value for the -name command argument is the topology's destination naming context. 
+
+    https://<<rli_server_name>>:8090/adap/util?action=vdsconfig&commandname=resource-traverse&name=<<name>>
+
+    i.e.
+
+    https://localhost:8090/adap/util?action=vdsconfig&commandname=resource-traverse&name=dc=adtohdap
+
+2. Run the resource-export command as shown in the following example. The value for the -name command argument is the topology's destination naming context. The value for the -path command argument is the file path where the zip file is created.
+
+    https://<<rli_server_name>>:8090/adap/util?action=vdsconfig&commandname=resource-export&name=<<name>>&path=<<path>>
+
+    i.e.
+
+    https://localhost:8090/adap/util?action=vdsconfig&commandname=resource-export&name=dc=adtohdap&path=c:/temp
+
+3. In the Main Control Panel, navigate to the Global Sync tab.
+
+4. Select the topology from the list of topologies on the left.
+
+5. Click Configure next to the pipleline on the right.
+
+6. Click the Transformation component. 
+
+7. Note the value in the Transformation Type drop-down menu. 
+
+    ![transformation type](media/transformation-type.png)
+
+## Importing the Topology
+
+This section describes how to import a global sync topology in the target environment.
+
+To import the topology:
+
+1. Run resource-import as shown in the following example. The value for the -path command argument is the full file path.
+
+    https://localhost:8090/adap/util?action=vdsconfig&commandname=resource-import&path=<<`path`>>&apply
+
+    i.e. 
+
+    https://localhost:8090/adap/util?action=vdsconfig&commandname=resource-import&path=c:/temp/dc_adtohdap.zip&apply
+
+2. Restart RadiantOne. 
+
+    >[!warning] For rules-based transformation types, import rules to the new environment at <RLI_HOME>\vds_server\conf\sync\rules.
+
+3. Log into the Main Control Panel, and navigate to the Global Sync tab.
+
+4. Select the topology from the list of topologies on the left.
+
+5. Click Configure next to the pipleline on the right.
+
+6. Reconfigure the transformation and click Save.
+
+    >[!warning] For script and script-and-mapping transformation types, click the Transformation component. From the Transformation Type drop-down menu and select **Script** or **Script and Mapping**. In the Transformation Script section, click **Edit**, and modify the script as required. For mappings transformation types, continue to the next step in the instructions.
+
+7. Select the Apply component.
+
+8. Click the Upload tab. 
+
+9. Click **Start**.
+
+    ![](media/upload-start.png)
