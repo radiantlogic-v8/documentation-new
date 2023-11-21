@@ -21,7 +21,7 @@ Workday	| Edit workdayhr Custom Data Source. Script to call the Workday API loca
 Any service accessible via SCIM v1 | Edit scimclient Custom Data Source.<br> <br> The sample virtual view is scimclient.dvx and can be viewed in Context Builder, View Designer perspective. <br> <br> The virtual view is mounted at dv=scimclient,o=cloudservices,o=vds for client access.
 Any service accessible via SCIM v2	| Edit scimclient2 Custom Data Source.<br> <br> The sample virtual view is scimclient2.dvx and can be viewed in Context Builder, View Designer perspective. <br> <br> The virtual view is not mounted in the virtual namespace by default, but can be by creating a new naming context in the Main Control Panel -> Directory Namespace tab.
 SharePoint Online in Office 365	| Edit sharepointonline Custom Data Source to virtualize identities in the User Profile Database.<br> <br> The sample virtual view is sharepointonline.dvx and can be viewed in Context Builder, View Designer perspective. <br> <br> The virtual view is mounted at dv=sharepointonline,o=cloudservices,o=vds for client access.<br> <br> To virtualize a User Profile Database in SharePoint on-premise, use the sharepoint Custom Data Source.<br> <br> The sample virtual view is sharepoint.dvx and can be viewed in Context Builder, View Designer perspective. <br> <br> The virtual view is mounted at dv=sharepoint,o=cloudservices,o=vds for client access.
-[Okta Universal Directory](#okta-universal-directory) | Edit oktaclient Custom Data Source.<br> <br> The sample virtual view is oktaclient.dvx and can be viewed in Context Builder, View Designer perspective. <br> <br> The virtual view is not mounted in the virtual namespace by default, but can be by creating a new naming context in the Main Control Panel > Directory Namespace tab.
+[Okta Universal Directory](#okta-universal-directory) | Edit oktaclient Custom Data Source.<br> <br> The sample virtual view is okta2.dvx and can be viewed in Context Builder, View Designer perspective. <br> <br> The virtual view is not mounted in the virtual namespace by default, but can be by creating a new naming context in the Main Control Panel > Directory Namespace tab.
 [SailPoint Identity IQ](#sailpoint-iiq) | Edit scimclient2 Custom Data Source (or clone it to create one specific for SailPoint).<br> <br> Edit scimclient2.orx schema file in Context Builder to modify it as needed for SailPoint. Create a virtual view based on the modified scimclient2.orx file.
 
 To connect to a new cloud service and create a virtual view, see the RadiantOne Context Builder Guide section on Custom Data Sources. 
@@ -796,7 +796,7 @@ Figure 40: Sample Virtual View of Google Directory
 
 ## Okta Universal Directory
 
-RadiantOne includes a default virtual view for Okta located at <RLI_HOME>/vds_server/dvx/oktaclient.dvx. You can use the default view by configuring the connection to your Okta directory as described in the [Configure RadiantOne Custom Data Source](#configure-radiantone-custom-data-source) section and mounting it in the [RadiantOne namespace](#configure-a-radiantone-virtual-view). If you have custom attributes configured in your Okta directory that you would like to include in the virtual view, you can customize the virtual view with the steps outlined in [Extend Virtual View with New Okta Attributes](#optional-extend-virtual-view-with-new-okta-attributes), and [Modify the Virtual View](#optional-modify-the-virtual-view).
+RadiantOne includes a default virtual view for Okta located at <RLI_HOME>/vds_server/dvx/okta2.dvx. You can use the default view by configuring the connection to your Okta directory as described in the [Configure RadiantOne Custom Data Source](#configure-radiantone-custom-data-source-1) section and mounting it in the RadiantOne Namespace. If you have custom attributes configured in your Okta directory that you would like to include in the virtual view, you can customize the virtual view with the steps outlined in [Extend Virtual View with New Okta Attributes](#optional-extend-virtual-view-with-new-okta-attributes), and [Modify the Virtual View](#optional-modify-the-virtual-view).
 
 The virtual view can be aggregated and/or joined with virtual views from other identities silos; however this extended configuration is out of the scope of this document.
 
@@ -804,39 +804,39 @@ The virtual view can be aggregated and/or joined with virtual views from other i
 
 1.	Navigate to the Main Control Panel > Settings tab > Server Backend section > Custom Data Sources > oktaclient 
 
-2.	On the top, click **Edit**. 
+1.	On the top, click **Edit**. 
 
-3.	In the Custom Properties section, select the url property and click **Edit**.
+1.	In the Custom Properties section, select the url property and click **Edit**.
 
-4.	Enter the url required to connect to your Okta Rest service and click **OK**.
+1.	Enter the url required to connect to your Okta Rest service and click **OK**.
 
-5.	In the Custom Properties section, select the apikey property and click **Edit**.
+1.	In the Custom Properties section, select the apikey property and click **Edit**.
 
-6.	Enter the apikey obtained from your Okta Admin and click **OK**. 
+1.	Enter the apikey obtained from your Okta Admin and click **OK**. 
 
-7.	(Optional) If you have enabled the Advanced Search option in Okta, you can leverage it by creating a new property named “usesearch”. Click ADD and create a property named usesearch with a value of true like in the example shown below.  
+1.	(Optional) If you have enabled the Advanced Search option in Okta, you can leverage it by creating a new property named “usesearch”. Click ADD and create a property named usesearch with a value of true like in the example shown below.  
 
     ![An image showing ](Media/Image8.41.jpg)
 
     Figure 41: Creating the usesearch property
 
-8.	Click **OK**.
+1.	Click **OK**.
 
-9.	(Optional) If your company requires API calls to be made through a Web Proxy Server, click ADD and create a property named “proxy” with a value that points to the proxy server and port (e.g. rli.vip.proxy.com:9090).
+1.	(Optional) If your company requires API calls to be made through a Web Proxy Server, click ADD and create a property named “proxy” with a value that points to the proxy server and port (e.g. rli.vip.proxy.com:9090).
 
-10.	Click **OK**.
+1.	Click **OK**.
 
-11.	(Optional) If you configured a “proxy” property and indicated the Web Proxy Server and port, and SSL is required, click **ADD** and create a property named “proxyssl” with a value of true.
+1.	(Optional) If you configured a “proxy” property and indicated the Web Proxy Server and port, and SSL is required, click **ADD** and create a property named “proxyssl” with a value of true.
 
-12.	Click **OK**.
+1.	Click **OK**.
 
-13.	Click **Save**.
+1.	Click **Save**.
 
     ![An image showing ](Media/Image8.42.jpg)
 
     Figure 8.42: Okta Custom Data Source Configuration
  
-14.	From the Main Control Panel -> Directory Browser tab, navigate to the location where you’ve [mounted your virtual view](#optional-modify-the-virtual-view) (oktaclient.dvx). 
+1.	From the Main Control Panel -> Directory Browser tab, navigate to the location where you’ve [mounted your virtual view](#optional-modify-the-virtual-view) (okta2.dvx). 
 
 ![An image showing ](Media/Image8.43.jpg)
 
@@ -850,9 +850,9 @@ Virtual views are based on a metadata configuration file containing default attr
 
 2.	Click ![An image showing ](Media/open2.jpg).
 
-3.	On the Custom Schemas tab, select oktaclient. Click Open. The oktaclient.orx file opens.
+3.	On the Custom Schemas tab, select okta2. Click Open. The okta2.orx file opens.
 
-4.	To add a new attribute for users in the schema, expand the branches under oktaclient > Objects > Tables > users > Fields. For groups, expand the branches under oktaclient > Objects > Tables > groups > Fields.
+4.	To add a new attribute for users in the schema, expand the branches under okta2 > Objects > Tables > users > Fields. For groups, expand the branches under okta2 > Objects > Tables > groups > Fields.
 
 5.	Right click on Fields and select Add New Attribute.
 
@@ -880,7 +880,7 @@ If you have modified the metadata as described in Extend Virtual View with New O
 
 2.	Click ![An image showing ](Media/open-button.jpg).
 
-3.	Select okatclient and click **OK**.
+3.	Select okta2 and click **OK**.
 
 4.	In the virtual view definition, expand below object=users and select the users content level.
 
