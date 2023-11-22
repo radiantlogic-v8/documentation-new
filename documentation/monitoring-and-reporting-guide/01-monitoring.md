@@ -328,14 +328,14 @@ The following example command shows how to monitor a database backend every 15 m
 <RLI_HOME>/bin/monitoring.bat -d datasource-status -p datasourceId:sqlserver -p
 propertyId:status -t equals -g value:false -i 900
 
-#### Disk Space
+### Disk Space
 
 The following example command shows how to monitor the available disk space every 15 minutes (900 seconds) on the machine where RadiantOne is installed and trigger an alert when the disk space usage reaches above 90% of the available amount (meaning only 10% of the available disk space is left):
 
 <RLI_HOME>/bin/monitoring.bat -d node-monitor -p propertyId:diskPercent -t above -g
 threshold:90 -i 900
 
-#### Data Source Backends
+### Data Source Backends
 
 You can use the <RLI_HOME>/vds/advanced/checkDataSources.bat (.sh on Unix) script to check the status of all data sources (or only the ones listed in the command) and prints their status either to the console or a specified file. The status is either “OK” (indicating that nothing was found to be wrong with accessing the data source) or “FAILED [specific error]” (indicating that is something wrong with accessing the data source). Execute the command with? to find out more about the command. Below are the possible parameters:
 
