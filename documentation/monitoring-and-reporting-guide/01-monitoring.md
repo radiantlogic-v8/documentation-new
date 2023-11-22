@@ -356,9 +356,8 @@ Example contents of the mystatus.log file:
 - advworks[JDBC]=OK
 - rli_client_db_datasource[JDBC]=OK
 
-### Monitoring Real-time Persistent Cache Refresh and Global Sync Components
 
-#### Monitoring Global Sync from the Control Panel
+### Monitoring Global Sync from the Control Panel
 
 From the Main Control Panel -> Global Sync tab, you can select a topology and monitor the
 activities of the capture, transform and apply processes associated with each pipeline.
@@ -388,7 +387,7 @@ deleting them or manually resending them.
 
 Figure 1. 37 : Queue Monitoring – Resending Failed Messages
 
-#### Monitoring Real-time Persistent Cache Refresh from the Control Panel
+### Monitoring Real-time Persistent Cache Refresh from the Control Panel
 
 From the Main Control Panel -> PCache Monitoring tab, you can select a real-time persistent cache refresh configuration and monitor the activities of the capture and apply processes.
 
@@ -396,7 +395,7 @@ From the Main Control Panel -> PCache Monitoring tab, you can select a real-time
 
 Figure 1. 38 : Persistent Cache Refresh Monitoring
 
-#### Monitoring Real-time Persistent Cache Refresh and Global Sync Components from Command Line
+### Monitoring Real-time Persistent Cache Refresh and Global Sync Components from Command Line
 
 You can use the <RLI_HOME>/bin/monitoring.bat (monitoring.sh on Unix) to monitor real-time persistent cache refresh and global synchronization components from command line. This script must run on the same machine as the services you want to monitor. If triggers are configured, the default alert is a file alert: <RLI_HOME>/logs/alerts.log. Alerts associated with the monitoring command are configured on the Main Control Panel -> ZooKeeper tab (requires [Expert Mode](#expert-mode)). Navigate to /radiantone/v1/cluster/config/logging/log4j2-monitoring-command.json and click EDIT MODE on the right.
 
@@ -407,7 +406,7 @@ The monitoring script offers a set of data collectors that retrieve information 
 Run the monitoring script with the pipeline command to get a list of possible values for the
 properties that can be passed in the command.
 
-##### Real-time Persistent Cache Refresh
+**Real-time Persistent Cache Refresh**
 
 A high-level real-time persistent cache refresh architecture is shown below.
 
@@ -435,7 +434,7 @@ Pipeline properties for real-time persistent cache refresh processes are describ
 - The PIPELINE componentType has the following property: pipelineState, which indicates if the persistent cache refresh process is started. PipelineState can have one of the following values: RUNNING, SUSPENDED, UPLOADING, ERROR, DEPLOYING, WAITING_FOR_AGENT
 - The PROCESSOR componentType has the following properties: processorCounter, processorHostname, processorQueueSize. The processor component logic is built into the Sync Engine shown in Figure 1.30 and is responsible for processing events from the queues. ProcessorCounter is the number of events processed from the queue. ProcessorHostname is the machine name where this process is running. ProcessorQueueSize is the number of entries in the queue waiting to be processed.ProcessorQueueSize is a good candidate to configure custom alertsfor. If this number is growing, and the pipeline is fully  started, it is an indicator that events are being processed too slow. This could be due to errors while applying events, or just slow machine hardware or network.
 
-##### Global Synchronization
+**Global Synchronization**
 
 A high-level Global Synchronization architecture is shown below.
 
