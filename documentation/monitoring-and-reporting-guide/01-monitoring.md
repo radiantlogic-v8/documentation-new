@@ -29,7 +29,7 @@ The Main Control Panel provides a view of RadiantOne nodes deployed. When Radian
 
 If RadiantOne is deployed in a classic active/active or active/passive architecture, the Intranode Health section is irrelevant and only one node is shown in the Overview section.
 
-The Replication Monitoring tab is relevant if inter-cluster replication is deployed or if you have RadiantOne deployed in an active/active or active/passive architecture and are replicating HDAP stores across them.
+The Replication Monitoring tab is relevant if inter-cluster replication is deployed or if you have RadiantOne deployed in an active/active or active/passive architecture and are replicating RadiantOne Directory stores across them.
 
 ### Dashboard Tab
 
