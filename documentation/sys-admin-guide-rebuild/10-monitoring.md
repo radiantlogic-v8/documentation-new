@@ -87,14 +87,14 @@ Figure 4: File Alert Settings
 
 ## Email Alert Settings
 
-If you would like to receive email alerts for certain monitored activities, enter your SMTP settings (host, port, user, password, from email and to email) in the Email Alerts (SMTP Settings) section. Click Save when finished. If you would like to test your settings, click on Send Test Email. 
+If you would like to receive email alerts for certain monitored activities, enter your SMTP settings (host, port, user, password, from email and to email) in the Email Alerts (SMTP Settings) section. If you do not use SSL and enter the SSL port, StartTLS using TLS v1.3 is used. Click Save when finished. If you would like to test your settings, click on Send Test Email. 
 
 ![Email Alert Settings](Media/Image3.146.jpg)
 
 Figure 5: Email Alert Settings
 
 >[!note] 
->For security and audit purposes, it is not advised to connect to your mail server anonymously (leaving user and password properties blank in the Email Alert Settings).**
+>For security and audit purposes, it is not advised to connect to your mail server anonymously (leaving user and password properties blank in the Email Alert Settings).
 
 ## Custom Alerts
 
