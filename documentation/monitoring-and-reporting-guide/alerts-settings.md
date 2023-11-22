@@ -3,63 +3,80 @@ title: Alerts
 description: Configuring Standard and Custom Alerts in RadiantOne
 ---
 
-## Alerts Overview
+## Alerts
 
 Alerts associated with activities monitored from the Control Panels are configured from the Main Control Panel > Settings tab > Monitoring section and are tied to the Task Scheduler which must be running. The status of the Task Scheduler can be seen on the Tasks tab in the Server Control Panel associated with the current leader node.
 
 >[!warning] For alerts that leverage data collectors, it is important to note that some properties within data collectors require the RadiantOne service to be running to get status information. If you have configured custom alerts that use properties in a data collector that require the RadiantOne service to be running, andthe service stops, no alerts are sent. Be mindful of this when using data collectors in custom alerts.
 
-RadiantOne offers standard alerts and custom alerts. Standard alerts cover the recommended minimum monitoring for the RadiantOne components and are pre-configured by default. Custom alerts allow you to define monitoring rules for all aspects of RadiantOne not addressed by a standard alert. Custom alerts are highly specialized and require services from Radiant Logic to setup. Please contact support@radiantlogic.com for details.
+RadiantOne offers standard alerts and custom alerts. Standard alerts cover the recommended
+minimum monitoring for the RadiantOne components and are pre-configured by default. Custom
+alerts allow you to define monitoring rules for all aspects of RadiantOne not addressed by a
+standard alert. Custom alerts are highly specialized and require services from Radiant Logic to setup. Please contact support@radiantlogic.com for details.
 
-## Standard Alerts
+### Standard Alerts
 
 For standard alerts, the default alert output is a file, but you can easily add email alerts to the configuration. When these alerts are activated, they are also displayed on the Main Control Panel’s Dashboard tab.
 
 This section describes the aspects addressed by standard alerts.
 
-### RadiantOne Service Memory Usage
+**RadiantOne Service Memory Usage**
 
 A [file alert](#file-alert-settings), when the RadiantOne service’s memory usage reaches 90%, is enabled by default.
 These settings can be changed from the Main Control Panel > Settings tab > Monitoring section > Standard Alerts. To change the memory threshold, slide the bar in the Memory section to the needed amount. Define the interval to check the memory (default is 120 seconds).
 The default alert output is File Alert, but if SMTP settings are configured in the Monitoring > Email Alert Settings section you can also use the Email Alert output. Click the Save button when you are finished making changes.
 
-### Connections to RadiantOne
+**Connections to RadiantOne**
 
 A [file alert](#file-alert-settings), when the number of connections to RadiantOne reaches 800 is enabled by default.
-These settings can be changed from the Main Control Panel -> Settings tab -> Monitoring section -> Standard Alerts. To change the connection threshold, slide the bar in the
-Connections section to the needed amount. Define the interval to check the connections (default is 120 seconds). The default alert output is File Alert, but if SMTP settings are configured in the Monitoring -> Email Alert Settings section you can also use the Email Alert output. Click the Save button when you are finished making changes.
+These settings can be changed from the Main Control Panel -> Settings tab -> Monitoring
+section -> Standard Alerts. To change the connection threshold, slide the bar in the
+Connections section to the needed amount. Define the interval to check the connections (default
+is 120 seconds). The default alert output is File Alert, but if SMTP settings are configured in the
+Monitoring -> Email Alert Settings section you can also use the Email Alert output. Click the
+Save button when you are finished making changes.
 
-### Data Source Availability
+**Data Source Availability**
 
-An alert can be triggered when the availability of a backend data source changes. If the data source has failover servers configured, the alert would only be triggered if all servers were unavailable (alert would be in a triggered state), or in a scenario where all servers were unavailable and then one or more of the servers comes back online (an alert would be issued indicating the availability is back to normal). The setting can be changed from the Main Control Panel > Settings tab > Monitoring section > Standard Alerts. Define the interval to check the data source availability (default is 120 seconds). The default alert output is File Alert, but if SMTP settings are configured in the Monitoring -> Email Alert Settings section you can also use the Email Alert output. To enable alerts for data source availability, check the “Alert when a data source is disconnected” option and select the Data Sources to Monitor from the drop-down list. Click Save  when you are finished.
+An alert can be triggered when the availability of a backend data source changes. If the data
+source has failover servers configured, the alert would only be triggered if all servers were
+unavailable (alert would be in a triggered state), or in a scenario where all servers were
+unavailable and then one or more of the servers comes back online (an alert would be issued
+indicating the availability is back to normal). The setting can be changed from the Main Control
+Panel > Settings tab > Monitoring section > Standard Alerts. Define the interval to check the data source availability (default is 120 seconds). The default alert output is File Alert, but if SMTP settings are configured in the Monitoring -> Email Alert Settings section you can also use the Email Alert output. To enable alerts for data source availability, check the “Alert when a data source is disconnected” option and select the Data Sources to Monitor from the drop-down list. Click Save  when you are finished.
 
-### Disk Usage
 
-A file alert, when the disk usage on the RadiantOne machine reaches 90% of max capacity, is enabled by default. These settings can be changed from the Main Control Panel > Settings tab > Monitoring section > Standard Alerts. To change the disk usage, enter a threshold. Define the interval to check the data usage (default is 120 seconds). The default alert output is File Alert, but if SMTP settings are configured in the Monitoring > Email Alert Settings section you can also use the Email Alert output. Click the Save button when you are finished.
+**Disk Usage**
+
+A file alert, when the disk usage on the RadiantOne machine reaches 90% of max capacity, is
+enabled by default. These settings can be changed from the Main Control Panel > Settings tab > Monitoring section > Standard Alerts. To change the disk usage, enter a threshold. Define the interval to check the data usage (default is 120 seconds). The default alert output is File Alert, but if SMTP settings are configured in the Monitoring > Email Alert Settings section you can also use the Email Alert output. Click the Save button when you are finished.
 
 >[!warning] Closely monitoring disk space usage is extremely critical. If disk space is full, the RadiantOne service shuts down automatically.
 
-### Disk Latency
+**Disk Latency**
 
 A file alert, when the disk latency on the RadiantOne machine reaches 100ms, is enabled by default. These settings can be changed from the Main Control Panel > Settings tab > Monitoring section > Standard Alerts. To change the disk latency, enter a threshold (in milliseconds). Define the interval to check the disk latency (default is 120 seconds). The default alert output is File Alert, but if SMTP settings are configured in the Monitoring -> Email Alert Settings section you can also check the Email Alert output. Click the Save button when you are finished making changes.
 
-### Processing Load on RadiantOne
+**Processing Load on RadiantOne**
 
 Alerts based on RadiantOne processing load are pre-configured, but not enabled by default. If you would like to receive an alert when the RadiantOne processing queues reach a certain threshold, from the Main Control Panel > Settings tab > Monitoring section > Standard Alerts, slide the bars for processing queues and internal queues to the threshold amount. Check the “Enable processing queues alerts” option. Click Save when you are finished.
 
-## Custom Alerts
+**Custom Alerts**
 
-Custom alerts allow you to define monitoring rules for all aspects of RadiantOne not addressed by a standard alert. The RadiantOne aspects that can be used in custom alerts are described in [data collectors](/data-collectors/#data-collectors). Custom alerts are highly specialized and generally require services from Radiant Logic to setup. Please contact support@radiantlogic.com for details. When these alerts are activated, they are also displayed on the Main Control Panel’s Dashboard tab.
+Custom alerts allow you to define monitoring rules for all aspects of RadiantOne not addressed by a standard alert. The RadiantOne aspects that can be used in custom alerts are described in [data collectors](#data-collectors). Custom alerts are highly specialized and generally require services from Radiant Logic to setup. Please contact support@radiantlogic.com for details. When these alerts are activated, they are also displayed on the Main Control Panel’s Dashboard tab.
 
 All custom alerts defined appear on the Main Control Panel > Settings tab > Monitoring section > Custom Alerts section.
 
 The “Enabled” column/status indicates if the alert is active.
 
-### RadiantOne Service Availability
+**RadiantOne Service Availability**
 
-The RadiantOne service should be monitored. A default custom alert named “VDS Running Check” is configured to monitor the state of the service. If RadiantOne is deployed in a cluster, the state of the service on all nodes is monitored. To view the alert, navigate to the Main Control Panel > Settings Tab > Monitoring > Custom Alerts (requires [Expert Mode](#expert-mode)). Select the “VDS Running Check” alert and click Edit.
+The RadiantOne service should be monitored. A default custom alert named “VDS Running
+Check” is configured to monitor the state of the service. If RadiantOne is deployed in a cluster,
+the state of the service on all nodes is monitored. To view the alert, navigate to the Main Control Panel > Settings Tab > Monitoring > Custom Alerts (requires [Expert Mode](#expert-mode)). Select the “VDS
+Running Check” alert and click Edit.
 
-This custom alert leverages the isVdsRunning property of the [node-monitor](/data-collector/#node-monitor) data collector to
+This custom alert leverages the isVdsRunning property of the [node-monitor](#node-monitor) data collector to
 trigger a [file alert](#file-alert-settings) if the RadiantOne service is not equal to true. If the value of the isVdsRunning
 property is false or N/A, an alert is triggered.
 
@@ -67,9 +84,11 @@ property is false or N/A, an alert is triggered.
 
 Figure 1.15 : Default Alert for the RadiantOne Service Availability
 
-If you have RadiantOne deployed in a cluster, you can monitor each service independently to have more granularity of alerts. For example, if one service stops in a cluster, the default “VDS Running Check” alert will be triggered. If another RadiantOne service in the cluster stops, no new alert is sent since the status is currently in a triggered state. Only when the RadiantOne service on all nodes is running again is a new alert sent to indicate the status of the services is back to normal. To be alerted about each RadiantOne service status change independently, configure custom alerts for each node. To do this, create a custom alert for each node, conditioning the alert by nodeId and/or hostname. The examples shown in the following screens describe a three-node cluster. The node IDs are used in the filters conditioning each custom alert.
+If you have RadiantOne deployed in a cluster, you can monitor each service independently to
+have more granularity of alerts. For example, if one service stops in a cluster, the default “VDS Running Check” alert will be triggered. If another RadiantOne service in the cluster stops, no new alert is sent since the status is currently in a triggered state. Only when the RadiantOne service on all nodes is running again is a new alert sent to indicate the status of the services is back to normal. To be alerted about each RadiantOne service status change independently, configure custom alerts for each node. To do this, create a custom alert for each node, conditioning the alert by nodeId and/or hostname. The examples shown in the following screens describe a three-node cluster. The node IDs are used in the filters conditioning each custom alert.
 
-Three custom alerts (shown below) can be used to monitor the RadiantOne service status on each cluster node. The isVdsRunning property name is case sensitive.
+Three custom alerts (shown below) can be used to monitor the RadiantOne service status on
+each cluster node. The isVdsRunning property name is case sensitive.
 
 ![An image showing ](Media/Image1.16.jpg)
 
@@ -142,11 +161,12 @@ Alert ID: ac726962-e75d- 4737 - 895a-79aeb887abbd`
 
 Whereas the default “VDS Running Check” alert would not send a new alert in this condition because based on the status of all conditions in the alert configuration, it is still considered “triggered” and the state hasn’t changed.
 
-### Persistent Cache Periodic Refresh Failure
+**Persistent Cache Periodic Refresh Failure**
 
-To send an alert in the event of a persistent cache periodic refresh failure, configure a custom alert.
+To send an alert in the event of a persistent cache periodic refresh failure, configure a custom
+alert.
 
-1. Navigate to the Main Control Panel (of the current leader node if you have a cluster deployment) > Settings tab > Monitoring > Custom Alerts (requires [Expert Mode](/01-monitoring/#expert-mode)).
+1. Navigate to the Main Control Panel (of the current leader node if you have a cluster deployment) > Settings tab > Monitoring > Custom Alerts (requires [Expert Mode](#expert-mode)).
 2. Select Custom from the Template drop-down menu.
 3. Select event-log from the Monitoring Source drop-down menu.
 4. Click Add Filter in the Event Type column, enter PCACHE for the value and click Add.
@@ -170,14 +190,14 @@ Figure 1. 19 : Configure Trigger for Custom Alert
 When triggered, this alert displays on the Main Control Panel's Dashboard tab under Active Alerts as "ALERT: <alert_name>” and triggers a [file alert](#file-alert-settings). If SMTP settings are configured, [email alerts](#email-alert-settings) can be triggered as well by adding EmailAlert to the Alert Output setting (click save if you
 modify the alert output).
 
-### ZooKeeper Write Failure
+**ZooKeeper Write Failure**
 
 The ZooKeeper Write Check alert is enabled by default. This custom alert can be configured
 from the Main Control Panel (of the current leader node if you have a cluster deployment) > Settings Tab > Monitoring > Custom Alerts (requires [Expert Mode](#expert-mode)). Select the ZooKeeper Write Check alert and click Edit.
 
 This custom alert triggers a [file alert](#file-alert-settings) if clients cannot write to ZooKeeper. If SMTP settings are configured, [email alerts](#email-alert-settings) can be triggered as well by adding EmailAlert to the Alert Output setting (click Save if you modify the alert output).
 
-### Global Synchronization Capture Connector Stopped
+**Global Synchronization Capture Connector Stopped**
 
 To send an alert in the event of a global synchronization capture connector state change (e.g. a connector state changes from RUNNING to STOPPED), configure a custom alert.
 
@@ -200,9 +220,10 @@ Figure 1. 21 : Custom Alert on Capture Connector
 
 When triggered, this alert displays on the Main Control Panel's Dashboard tab under  Active Alerts as "ALERT: <alert_name>” and triggers a [file alert](#file-alert-settings). If SMTP settings are configured, [email alerts](#email-alert-settings) can be triggered as well by adding EmailAlert to the Alert Output setting (click save if you modify alert output).
 
-### Global Synchronization Queue Size
+**Global Synchronization Queue Size**
 
-To send an alert in the event of a global synchronization queue growing, configure a custom alert.
+To send an alert in the event of a global synchronization queue growing, configure a custom
+alert.
 
 1. Navigate to the Main Control Panel (of the current leader node if you have a cluster deployment) > Settings tab > Monitoring > Custom Alerts (requires [Expert Mode](#expert-mode)).
 2. Select Custom from the Template drop-down menu.
@@ -227,9 +248,10 @@ To send an alert in the event of a global synchronization queue growing, configu
 
 12. When triggered, this alert displays on the Main Control Panel's Dashboard tab under Active Alerts as "ALERT: <alert_name>” and triggers a [file alert](#file-alert-settings). If SMTP settings are configured, [email alerts](#email-alert-settings) can be triggered as well by adding EmailAlert to the Alert Output setting (click save if you modify alert output).
 
-### Configuration Changes
+**Configuration Changes**
 
-To configure alerts when configuration changes are made from the Main Control Panel > Settings tab or using the command line configuration utility (vdsconfig), configure the following custom alert.
+To configure alerts when configuration changes are made from the Main Control Panel > Settings tab or using the command line configuration utility (vdsconfig), configure the following
+custom alert.
 
 1. Navigate to the Main Control Panel (of the current leader node if you have a cluster deployment) > Settings tab > Monitoring > Custom Alerts (requires [Expert Mode](#expert-mode)).
 2. Click Add.
@@ -246,7 +268,7 @@ To configure alerts when configuration changes are made from the Main Control Pa
 8. Click Save.
 9. When triggered, this alert displays on the Main Control Panel's Dashboard tab under Active Alerts as "ALERT: <alert_name>” and triggers a [file alert](#file-alert-settings). If SMTP settings are configured, [email alerts](#email-alert-settings) can be triggered as well by adding EmailAlert to the Alert Output setting (click save if you modify alert output).
 
-### File Descriptor Availability (Linux Only)
+**File Descriptor Availability (Linux Only)**
 
 A file descriptor is an integer that uniquely represents an opened file. To ensure that the number of file descriptors in use does not reach the maximum file descriptor limit, configure a custom alert as follows.
 
@@ -267,7 +289,7 @@ A file descriptor is an integer that uniquely represents an opened file. To ensu
 10. Click Save.
 
 
-## Email Alert Settings
+### Email Alert Settings
 
 If you would like to receive email alerts, configure the SMTP settings on the Main Control Panel (associated with the leader node if deployed in a cluster) > Settings Tab > Monitoring section > Email Alerts Settings.  If SSL is not used, StartTLS with TLS v1.3 is used.
 
@@ -316,7 +338,7 @@ To enable email alerts for custom alerts, enter a value of EmailAlert for the Al
 
 Figure 1.33 : Custom Alert Output
 
-### Customizing the Email Message
+#### Customizing the Email Message
 
 By default, email alerts send an HTML-formatted email with the following pattern:
 
@@ -380,7 +402,7 @@ Alert Disk Usage above 90% TRIGGERED at 2015- 11 - 10 14:50:25
 
 ------------------------------------
 
-## File Alert Settings
+### File Alert Settings
 
 File output is used for all pre-configured standard alerts. The alerts are logged in a CSV
 formatted file located at <RLI_HOME>/logs/alerts.log.
@@ -392,3 +414,44 @@ To change the alert file location and/or the archive location, expand the Advanc
 ![An image showing ](Media/Image1.34.jpg)
 
 Figure 1. 34 : File Alerts Settings
+
+### Invoke Custom Actions
+
+To invoke actions other than generating a file or sending an email, you can create a custom script that is invoked when an alert is triggered.
+
+To enable an alert script:
+
+1. In the Main Control Panel go to Settings → Monitoring → Standard Alerts.
+2. Expand the Advanced section.
+3. In the Alert Script field, enter the pathname to your script file (.bat file on Windows, .sh on Unix systems).
+
+    ![An image showing enabling an alert script ](Media/Image1.5.jpg)
+
+    Figure 1.5: Enabling an Alert Script from the Main Control Panel
+
+4. Click Save.
+
+To generate additional alert information, you can append your custom script mentioned above with the following four arguments.
+
+
+| Argument | Description | Examples |
+|----------|-------------|---------------------|
+| 1 | Category | - “default_connections” <br> - “default_data_sources” <br> - "<node ID>" (for custom alerts)
+| 2 | Status | - True=threshold exceeded. <br> - False=value below threshold. | 
+| 3 | Name | - “connections in use...” <br> - “disk usage above...” <br> - “CPU usage above threshold” | 
+| 4 | Registered value | This argument displays the registered value only if the associated alert is triggered. | 
+
+To modify your custom script to output these alert descriptions:
+
+1. Open your custom script in a text editor such as Notepad.
+2. Append the script. The following example (Windows systems) calls for all four arguments and generates a text file called “alerts”.
+
+`echo %1 %2 %3 %4 >>C:\radiantone\vds\alerts.txt`
+
+3. Save the file.
+4. Navigate in the file system to the file location and open the file. An example is shown below.
+
+![An image showing example alert descriptions ](Media/Image1.6.jpg)
+
+Figure 1.6 : Example Alert Descriptions
+

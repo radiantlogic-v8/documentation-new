@@ -155,44 +155,6 @@ To manage alerts:
 5. File alerts are enabled by default. If SMTP settings are configured in the Monitoring -> Email Alert Settings section you can also use the Email Alert output.
 6. Click Save.
 
-To invoke actions other than generating a file or sending an email, you can create a custom script that is invoked when an alert is triggered.
-
-To enable an alert script:
-
-1. In the Main Control Panel go to Settings → Monitoring → Standard Alerts.
-2. Expand the Advanced section.
-3. In the Alert Script field, enter the pathname to your script file (.bat file on Windows, .sh on Unix systems).
-
-    ![An image showing enabling an alert script ](Media/Image1.5.jpg)
-
-    Figure 1.5: Enabling an Alert Script from the Main Control Panel
-
-4. Click Save.
-
-To generate additional alert information, you can append your custom script mentioned above with the following four arguments.
-
-
-| Argument | Description | Examples |
-|----------|-------------|---------------------|
-| 1 | Category | - “default_connections” <br> - “default_data_sources” <br> - "<node ID>" (for custom alerts)
-| 2 | Status | - True=threshold exceeded. <br> - False=value below threshold. | 
-| 3 | Name | - “connections in use...” <br> - “disk usage above...” <br> - “CPU usage above threshold” | 
-| 4 | Registered value | This argument displays the registered value only if the associated alert is triggered. | 
-
-To modify your custom script to output these alert descriptions:
-
-1. Open your custom script in a text editor such as Notepad.
-2. Append the script. The following example (Windows systems) calls for all four arguments and generates a text file called “alerts”.
-
-`echo %1 %2 %3 %4 >>C:\radiantone\vds\alerts.txt`
-
-3. Save the file.
-4. Navigate in the file system to the file location and open the file. An example is shown below.
-
-![An image showing example alert descriptions ](Media/Image1.6.jpg)
-
-Figure 1.6 : Example Alert Descriptions
-
 ### Connections and Operations
 
 The Server Control Panel > Usage & Activity Tab > Usage Summary section, displays the total number of connections made to the server (since startup), and the total number of operations (since startup). The average per minute for each is calculated and displayed.
