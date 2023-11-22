@@ -808,11 +808,11 @@ The virtual view can be aggregated and/or joined with virtual views from other i
 
 1.	In the Custom Properties section, select the url property and click **Edit**.
 
-1.	Enter the url required to connect to your Okta Rest service and click **OK**.
+1.	Enter the url required to connect to your Okta Rest service (e.g. https://myco.oktapreview.com/) and click **OK**.
 
-1.	In the Custom Properties section, select the apikey property and click **Edit**.
+1.	In the Custom Properties section, select the apitoken property and click **Edit**.
 
-1.	Enter the apikey obtained from your Okta Admin and click **OK**. 
+1.	Enter the apitoken obtained from your Okta Admin and click **OK**. 
 
 1.	(Optional) If you have enabled the Advanced Search option in Okta, you can leverage it by creating a new property named “usesearch”. Click ADD and create a property named usesearch with a value of true like in the example shown below.  
 
