@@ -143,7 +143,7 @@ Control Panel > Settings tab > Monitoring > Standard Alerts.
 
 To manage alerts:
 
-1. In the Main Control Panel go to Settings Tab -> Monitoring section → Standard Alerts sub-section.
+1. In the Main Control Panel go to Settings Tab > Monitoring section > Standard Alerts sub-section.
 2. Define the memory threshold in the Memory section.
 3. Define the connection threshold in the Connections section.
 4. Define the disk space and disk latency thresholds in the Disk Alerts section.
