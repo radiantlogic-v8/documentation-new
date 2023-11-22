@@ -1,6 +1,6 @@
 ---
-title: Monitoring and Reporting
-description: Monitoring and Reporting
+title: Monitoring
+description: Monitoring Options in RadiantOne
 ---
 
 ## Monitoring
@@ -1021,7 +1021,7 @@ Figure 1.52: Enabling CSV Log
 
 For details on the columns in the CSV file, please see the [RadiantOne Logging and Troubleshooting Guide](/logging-and-troubleshooting-guide/01-overview).
 
-#### RadiantOne Activity – Read Changes from a Database Table
+### RadiantOne Activity – Read Changes from a Database Table
 
 The RadiantOne service logs all access to data in the vds_server_access.log by default as long as the server log level is set to a minimum of ACCESS. This includes who accessed the data, when (day and time) and what operations they performed. This information can also be logged into a database which allows for third-party reporting tools to easily create meaningful charts and graphs for compliance analysis. Logging to a database requires the [CSV log format output](#radiantone-activity--checkparse-access-log-csv-format-output)
 enabled and running the Log2DB utility.
@@ -1037,11 +1037,11 @@ running, launch the Log2DB utility which is in charge of reading the CSV content
 
 Details about configuring and starting the Log2DB utility and the database columns (describing the log contents) can be found in the [RadiantOne Logging and Troubleshooting Guide](/logging-and-troubleshooting-guide/01-overview).
 
-#### Check/Parse Alert File (CSV Format) Output or Emails Generated from Alerts enabled in Main Control Panel 
+### Check/Parse Alert File (CSV Format) Output or Emails Generated from Alerts enabled in Main Control Panel 
 
-Output options and configuration are described in [Alerts](#alerts).
+Output options and configuration are described in [Alerts](/alerts-settings/#alerts).
 
-#### Legacy Monitoring Scripts
+### Legacy Monitoring Scripts
 
 [Monitoring.bat](#monitoring-and-alerts-from-the-command-line) (monitoring.sh on Unix), consolidates the monitoring abilities of the legacy scripts: memoryMonitoring, ldapBackendMonitoring, connectionMonitoring, dbBackendMonitoring, checkDataSources, and diskSpaceMonitoring.
 
@@ -1051,7 +1051,7 @@ These scripts must run on the same machine as the RadiantOne service. Each is de
 
 >[!warning] When deploying RadiantOne in a cluster, the scripts must run on each cluster node that you want to monitor.
 
-##### Memory Monitor
+**Memory Monitor**
 
 The memoryMonitoring script is used to monitor the RadiantOne service memory usage.
 Execute the command with? to find out more about the command. Below are the possible
@@ -1101,7 +1101,7 @@ Main Control Panel, since the SMTP settings are not specified in the command.
 This example command polls RadiantOne every 60 seconds and sends an email if the memory
 usage goes over 75% of the JVM allocated memory and when the memory usage goes back to normal.
 
-##### Connection Monitor
+**Connection Monitor**
 
 The connectionMonitoring script is used to monitor if the number of active connections to the RadiantOne exceeds the defined threshold. Execute the command with? to find out more about the command. Below are the possible parameters:
 
@@ -1151,7 +1151,7 @@ the Main Control Panel, since the SMTP settings are not specified in the command
 
 This example command polls RadiantOne every 60 seconds and sends an email if the number of connections goes over 75% of the maximum number of connections allowed to the RadiantOne instance and when the number of connections goes back under the threshold.
 
-##### RadiantOne LDAP Service and LDAP Backend Data Source Monitor
+**RadiantOne LDAP Service and LDAP Backend Data Source Monitor**
 
 The ldapBackendMonitoring script monitors availability of the RadiantOne LDAP service, or one
 of the configured LDAP backends. Execute the command with? to find out more about the
@@ -1200,7 +1200,7 @@ settings are not specified in the command.
 This example command polls the RadiantOne service every 60 seconds and sends an email if it
 is down.
 
-##### Backend Database Data Source Monitor
+**Backend Database Data Source Monitor**
 
 The dbBackendMonitoring script is used to monitor if one of the configured database backends
 are available or not. Execute the command with? to find out more about the command. Below
@@ -1238,7 +1238,7 @@ assumes that there are two database data sources that you want to monitor (oracl
 
 <RLI_HOME>/bin/advanced/dbBackendMonitoring.sh -d oracle,sql -i 60
 
-##### Data Source (Backends) Status
+**Data Source (Backends) Status**
 
 The checkDataSources script is used to check the status of all data sources (or only the ones
 listed in the command) and prints their status either to the console or a specified file. The status
@@ -1255,7 +1255,7 @@ There is an example of using this script below. The following command checks the
 
 <RLI_HOME>/bin/advanced/checkdatasources.sh -l sunone, ad, oracle, sql_server -o mystatus.log
 
-##### Disk Space Monitor
+**Disk Space Monitor**
 
 The diskSpaceMonitoring script is used to monitor the disk space by checking the available disk
 space at every poll interval for a specific threshold. Once the threshold is reached the process
