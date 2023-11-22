@@ -306,7 +306,7 @@ To change the number of entries displayed below each branch in the directory tre
 
 To export entries to an LDIF file, click ![export ldif](Media/export-ldif.jpg). The possible properties are described below.
 
-Exporting entries to an LDIF file requires enabling [Proxy Authorization](03-front-end-settings#proxied-authorization-control) for users other than the [RadiantOne super user](01-introduction#delegated-administration-roles). The exported entries contain only the attributes that applicable ACIs allow the user to read. Refer to [Security and Access Controls](06-security#security-and-access-controls) for more information.
+Exporting entries to an LDIF file requires enabling [Proxy Authorization](03-front-end-settings#proxied-authorization-control) for users other than the [RadiantOne super user](01-introduction#delegated-administration-roles). The exported entries contain only the attributes that applicable ACIs allow the user to read. Refer to [Security and Access Controls](access-controls) for more information.
 
 **Location** – select “To a Local File” to download to the local client. The destination of the LDIF file is dictated by the client’s browser settings. Select “To a File on the Server” to download to <RLI_HOME>/vds_server/ldif/export.
 
