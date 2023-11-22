@@ -1,15 +1,12 @@
 ---
-title: Monitoring and Reporting Guide
-description: Monitoring and Reporting Guide
+title: Auditing and Reporting
+description: Auditing and Reporting
 ---
 
-# Auditing and Reporting
+## Auditing and Reporting Overview
 
-Reports are a key tool for monitoring the health of the RadiantOne service and should be
-generated frequently to understand the performance and load on the server and audit the
-activity (who is doing what and when). RadiantOne includes three default types of basic reports:
-Access, Audit and Group Audit. This section describes the report settings, content of these
-reports, and recommendations on report usage.
+Reports are a key tool for monitoring the health of the RadiantOne service and should be generated frequently to understand the performance and load on the server and audit the
+activity (who is doing what and when). RadiantOne includes three default types of basic reports: Access, Audit and Group Audit. This section describes the report settings, content of these reports, and recommendations on report usage.
 
 ## Recommendations for Auditing and Reporting
 
