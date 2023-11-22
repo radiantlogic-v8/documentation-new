@@ -195,10 +195,10 @@ For each current connection, the following properties are returned.
 - opCount - the total number of operations the RadiantOne node has processed for the
 connection.
 
->[!note] The opCount for certain connections, used for internal operations, returns a value that is higher than the combined total of opCountAdd, opCountAbandon, opCountBind, opCountModify, opCountModifyDn, opCountCompare, and opCountDelete.
+>[!note] The opCount for certain connections, used for internal operations, returns a value that is higher than the combined total of opCountAdd, opCountAbandon, opCountBind, >opCountModify, opCountModifyDn, opCountCompare, and opCountDelete.
+
 - opCountAbandon – number of abandon operations performed on this connection.
 - opCountAdd – number of add operations performed on this connection.
-
 - opCountBind – number of bind operations performed on this connection.
 - opCountCompare – number of compare operations performed on this connection.
 - opCountDelete – number of delete operations performed on this connection.
@@ -381,7 +381,7 @@ on each cluster node. If you pass a nodeId in the request, the information retur
 - vrs_status – status of the RadiantOne service’s JDBC port. A value of ON means the RadiantOne service is listening on the JDBC port. A value of OFF indicates the RadiantOne service is not listening on the JDBC port. This property does NOT require the RadiantOne service to be running to return information.
 - zk_status – status of the ZooKeeper on the node. A value of ON means ZooKeeper is running on the node. A value of OFF indicates ZooKeeper is not running on the node. This property does NOT require the RadiantOne service to be running to returninformation.
 
-#### Orchestrator-agent-job
+### Orchestrator-agent-job
 
 The orchestrator-agent-job data collector returns information about the agents currently deployed in RadiantOne and their type. This data collector doesn't use traditional propertyId's.
 Instead, it outputs the agent ID as the propertyId and its type as the value.
@@ -440,4 +440,3 @@ The server-event data collector returns the last 15 entries (not lines) in the s
 (<RLI_HOME>/vds_server/logs/vds_events.log).
 
 >[!note] This data collector requires the RadiantOne service to be running to return information.
-
