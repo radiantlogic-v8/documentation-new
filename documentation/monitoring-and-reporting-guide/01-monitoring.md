@@ -1026,7 +1026,7 @@ The server-event data collector returns the last 15 entries (not lines) in the s
 
 ### Email Alert Settings
 
-If you would like to receive email alerts, configure the SMTP settings on the Main Control Panel (associated with the leader node if deployed in a cluster) > Settings Tab > Monitoring section > Email Alerts Settings.
+If you would like to receive email alerts, configure the SMTP settings on the Main Control Panel (associated with the leader node if deployed in a cluster) > Settings Tab > Monitoring section > Email Alerts Settings.  If SSL is not used, StartTLS with TLS v1.3 is used.
 
 ![An image showing ](Media/Image1.29.jpg)
 
