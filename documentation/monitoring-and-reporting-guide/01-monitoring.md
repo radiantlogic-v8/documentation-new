@@ -3,7 +3,7 @@ title: Monitoring
 description: Monitoring Options in RadiantOne
 ---
 
-## Monitoring
+## Monitoring Overview
 
 Monitoring is one of the most important aspects of maintaining the health of RadiantOne. It is highly recommended that you monitor the RadiantOne components on a regular basis using the methods and utilities discussed in this guide.
 
