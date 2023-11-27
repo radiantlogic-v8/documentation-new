@@ -115,6 +115,46 @@ In any event, to address scenarios like this, a push replication mode can be use
 
 If push mode replication is enabled, the clusters that are participating in replication can be viewed in the table in the Push Mode Replication section. The table lists, for each store, the clusters involved in replication. The source cluster, target cluster and connectivity status between them is shown.
 
+### Global Sync Tab
+
+From the Main Control Panel > Global Sync tab, you can select a topology and monitor the
+activities of the capture, transform and apply processes associated with each pipeline.
+
+![An image showing ](Media/Image1.35.jpg)
+
+Figure 1. 35 : Global Sync Monitoring
+
+All topologies are listed on the left. Select a topology to view the sync pipelines. For each
+running pipeline, a list of entries processed by the Capture, Transform and Apply components
+are shown. For the Transform component, you see a number queued (messages in the queue
+waiting to be processed) and a number processed (entries transformed).
+
+From the Global Sync tab, you can stop the synchronization flows with **Stop**. Clicking stop, pauses the synchronization for all pipelines associated with the topology. Click **Start** to start synchronization for all pipelines. To resume synchronization for a specific pipeline, click CONFIGURE next to the apply, select the Apply component and click Start.
+
+![An image showing ](Media/Image1.36.jpg)
+
+Figure 1. 36 : Resume Synchronization for a Specific Pipeline
+
+Click **Configure** next to a pipeline to access the queue monitoring, alert settings, and logs
+associated with the synchronization. In the Queue section, you can view the number of
+messages processed, the current queue size, and some processing statistics (rate per sec and
+peak processing times). You can also manage messages that failed to be applied by either
+deleting them or manually resending them.
+
+![An image showing ](Media/Image1.37.jpg)
+
+Figure 1. 37 : Queue Monitoring – Resending Failed Messages
+
+### Persistent Cache Refresh (PCache Monitoring tab)
+
+From the Main Control Panel > PCache Monitoring tab, you can select a real-time persistent cache refresh configuration and monitor the activities of the capture and apply processes.
+
+![An image showing ](Media/Image1.38.jpg)
+
+Figure 1. 38 : Persistent Cache Refresh Monitoring
+
+
+
 ## Monitoring from the Server Control Panels
 
 The items that can be monitored from the Server Control Panels are described in this section.
@@ -261,7 +301,7 @@ Server Control Panel -> Usage & Activity tab -> Network Latency section.
 
 Figure 1.14: Monitoring Network Latency Between RadiantOne Nodes
 
-## Monitoring and Alerts from the Command Line
+## Monitoring and Alerts for the RadiantOne Service from the Command Line
 
 A command-line script can monitor the status of the following items:
 
@@ -357,45 +397,7 @@ Example contents of the mystatus.log file:
 - rli_client_db_datasource[JDBC]=OK
 
 
-### Monitoring Global Sync from the Control Panel
-
-From the Main Control Panel > Global Sync tab, you can select a topology and monitor the
-activities of the capture, transform and apply processes associated with each pipeline.
-
-![An image showing ](Media/Image1.35.jpg)
-
-Figure 1. 35 : Global Sync Monitoring
-
-All topologies are listed on the left. Select a topology to view the sync pipelines. For each
-running pipeline, a list of entries processed by the Capture, Transform and Apply components
-are shown. For the Transform component, you see a number queued (messages in the queue
-waiting to be processed) and a number processed (entries transformed).
-
-From the Global Sync tab, you can stop the synchronization flows with **Stop**. Clicking stop, pauses the synchronization for all pipelines associated with the topology. Click **Start** to start synchronization for all pipelines. To resume synchronization for a specific pipeline, click CONFIGURE next to the apply, select the Apply component and click Start.
-
-![An image showing ](Media/Image1.36.jpg)
-
-Figure 1. 36 : Resume Synchronization for a Specific Pipeline
-
-Click **Configure** next to a pipeline to access the queue monitoring, alert settings, and logs
-associated with the synchronization. In the Queue section, you can view the number of
-messages processed, the current queue size, and some processing statistics (rate per sec and
-peak processing times). You can also manage messages that failed to be applied by either
-deleting them or manually resending them.
-
-![An image showing ](Media/Image1.37.jpg)
-
-Figure 1. 37 : Queue Monitoring – Resending Failed Messages
-
-### Monitoring Real-time Persistent Cache Refresh from the Control Panel
-
-From the Main Control Panel > PCache Monitoring tab, you can select a real-time persistent cache refresh configuration and monitor the activities of the capture and apply processes.
-
-![An image showing ](Media/Image1.38.jpg)
-
-Figure 1. 38 : Persistent Cache Refresh Monitoring
-
-### Monitoring Real-time Persistent Cache Refresh and Global Sync Components from Command Line
+## Monitoring Real-time Persistent Cache Refresh and Global Sync Components from Command Line
 
 You can use the <RLI_HOME>/bin/monitoring.bat (monitoring.sh on Unix) to monitor real-time persistent cache refresh and global synchronization components from command line. This script must run on the same machine as the services you want to monitor. If triggers are configured, the default alert is a file alert: <RLI_HOME>/logs/alerts.log. Alerts associated with the monitoring command are configured on the Main Control Panel -> ZooKeeper tab (requires [Expert Mode](#expert-mode)). Navigate to /radiantone/v1/cluster/config/logging/log4j2-monitoring-command.json and click EDIT MODE on the right.
 
@@ -406,7 +408,7 @@ The monitoring script offers a set of data collectors that retrieve information 
 Run the monitoring script with the pipeline command to get a list of possible values for the
 properties that can be passed in the command.
 
-**Real-time Persistent Cache Refresh**
+### Real-time Persistent Cache Refresh
 
 A high-level real-time persistent cache refresh architecture is shown below.
 
@@ -430,7 +432,7 @@ Pipeline properties for real-time persistent cache refresh processes are describ
 - The PIPELINE componentType has the following property: pipelineState, which indicates if the persistent cache refresh process is started. PipelineState can have one of the following values: RUNNING, SUSPENDED, UPLOADING, ERROR, DEPLOYING, WAITING_FOR_AGENT
 - The PROCESSOR componentType has the following properties: processorCounter, processorHostname, processorQueueSize. The processor component logic is built into the Sync Engine shown in Figure 1.30 and is responsible for processing events from the queues. ProcessorCounter is the number of events processed from the queue. ProcessorHostname is the machine name where this process is running. ProcessorQueueSize is the number of entries in the queue waiting to be processed.ProcessorQueueSize is a good candidate to configure custom alertsfor. If this number is growing, and the pipeline is fully  started, it is an indicator that events are being processed too slow. This could be due to errors while applying events, or just slow machine hardware or network.
 
-**Global Synchronization**
+### Global Synchronization
 
 A high-level Global Synchronization architecture is shown below.
 
