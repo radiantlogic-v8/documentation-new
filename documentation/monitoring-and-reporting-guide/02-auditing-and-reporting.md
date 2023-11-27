@@ -197,7 +197,7 @@ Per operation type you can indicate certain error codes to include in the report
 
 ### Audit Report Settings
 
-The audit report settings are located on the Main Control Panel -> Settings Tab > Reporting section > Audit Report sub-section. The default configuration file for the audit report properties is: <RLI_HOME>/config/log2db/AuditConfig.properties. This properties file contains the information about what to include in the Audit Report and the settings are described below.
+The audit report settings are located on the Main Control Panel > Settings Tab > Reporting section > Audit Report sub-section. The default configuration file for the audit report properties is: <RLI_HOME>/config/log2db/AuditConfig.properties. This properties file contains the information about what to include in the Audit Report and the settings are described below.
 
 Logo for Report
 
@@ -249,7 +249,7 @@ To generate the access log report:
 6. To generate a report that aggregates statistics from all nodes in your RadiantOne clusterinto a single report, check the Global Report box.
 7. To generate a report for a single node, indicate the server name in the Server Name field.
 >[!warning]
->If RadiantOne is deployed in a cluster, the default behavior of the Access Report generator is to create a report for each node. Values entered in the >Server Name field override checking the Global Report Box.
+>If RadiantOne is deployed in a cluster, the default behavior of the Access Report generator is to create a report for each node. Values entered in the Server Name field override checking the Global Report Box.
 
 8. You can specify a session ID if needed.
 
