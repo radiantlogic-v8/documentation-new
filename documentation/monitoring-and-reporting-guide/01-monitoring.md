@@ -516,8 +516,7 @@ defined for RadiantOne:
 For details on the operations allowed for each user, please see the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction).
 
 When any user that is a member of one of the above delegated administration groups saves changes in the Main or Server Control Panel, this activity is logged into:
-<RLI_HOME>/vds_server/logs/jetty/web_access.log. This is a CSV formatted log file with the delimiter being <TAB>. To configure the log output for the Control Panel, navigate to the Main
-Control Panel > Settings tab > Logs > Log Settings section.
+<RLI_HOME>/vds_server/logs/jetty/web_access.log. This is a CSV formatted log file with the delimiter being TAB. To configure the log output for the Control Panel, navigate to the Main Control Panel > Settings tab > Logs > Log Settings section.
 
 Select Control Panel – Access from the Log Settings to Configure drop-down list. Define the log level, rollover size and number of files to keep archived.
 
@@ -858,67 +857,8 @@ are never timed out.
 
 *Current_Num_Of_Pools*: Number of JDBC connections in the pool that are currently connected.
 
-### Manually Resetting Connection and Memory Peak
 
-RadiantOne supports special LDAP commands to reset the memory and connection peaks
-without requiring the server to be restarted.
-
-To reset these values, any LDAP client can be used. The examples below use an ldapsearch command line tool.
-
-To reset the connection peak you can use the following (assuming RadiantOne is listening on
-LDAP port 2389 and the super user password is “password”):
-
-#ldapsearch -h host -p 2389 -D "cn=directory manager" -w "password" –b
-"action=resetconnectionpeak" (objectclass=*)
-
-To reset the memory peak, you can use the following (assuming RadiantOne is listening on
-LDAP port 2389 and the super 
-user password is “password”):
-
-#ldapsearch -h host -p 2389 -D "cn=directory manager" -w "password" –b
-"action=resetmempeak" (objectclass=*)
-
->[!warning] If you manually reset the connection peak, the Server Control Panel > Dashboard tab associated with the node you’ve reset does not reflect the current connection peak. This value on the Server Control Panel dashboard only refreshes every 24 hours.
-
-### Manually Resetting Connection Operation Statistics
-
-RadiantOne supports a special LDAP command to reset the operation statistics for connections without requiring the server to be restarted.
-
-To reset the operations statistics for connections, any LDAP client can be used. The example below uses an ldapsearch command line tool.
-
-To reset the number of operations (opAbandon, opAdd, opBind, opCompare, opCount, opDelete, opModify, opModifyDn, and opSearch) for all current connections (assuming RadiantOne is listening on LDAP port 2389 and the super user password is “password”):
-
-#ldapsearch -h host -p 2389 -D "cn=directory manager" -w "password" -b
-“action=resetconncounters" (objectclass=*)
-
-### Manually Resetting Operation Statistics for a given Naming Context without Restarting the RadiantOne Service 
-
-RadiantOne supports a special LDAP command to reset the operation statistics for a given naming context without requiring the server to be restarted.
-
-To reset the operations statistics for a given naming context, any LDAP client can be used. The example below uses an ldapsearch command line tool.
-
-To reset the number of operations (compare, bind, modify, modrdn, delete, add and search) for a naming context of o=ad203 (assuming RadiantOne is listening on LDAP port 2389 and the super user password is “password”):
-
-#ldapsearch -h host -p 2389 -D "cn=directory manager" -w "password" -b
-"action=resetnamingctxcounters,o=ad203,cn=namings,cn=monitor" (objectclass=*)
-
-### Manually Resetting Connection Pools without Restarting the RadiantOne Service
-
-RadiantOne supports a special LDAP command to reset the connection pools without requiring the server to be restarted.
-
-To reset the connection pools, any LDAP client can be used. The example below uses an
-ldapsearch command line tool to clear the LDAP connection pool.
-
-#ldapsearch -h host -p 2389 -D "cn=directory manager" -w "password" -b
-“action=clearldappool" (objectclass=*)
-
-The example below uses an ldapsearch command line tool to clear the Database (JDBC)
-connection pool.
-
-#ldapsearch -h host -p 2389 -D "cn=directory manager" -w "password" -b
-“action=clearjdbcpool" (objectclass=*)
-
-## RadiantOne Service Status and Responsiveness – Heartbeat Check
+### RadiantOne Service Status and Responsiveness – Heartbeat Check
 
 To check if the RadiantOne service is up and responding, it is recommended to issue a periodic
 LDAP search request against cn=config. In the request, bind with any user that has permissions
@@ -932,7 +872,7 @@ the RadiantOne install.
 When RadiantOne runs as a service on Windows platforms, you can also use System Center Operations Manager (SCOM) to monitor it. On LINUX platforms, Nagios (or some other daemon
 service monitor) can be used.
 
-## RadiantOne Logs and Error Messages to Monitor
+### RadiantOne Logs and Error Messages to Monitor
 
 The most important logs and error messages to monitor for RadiantOne are:
 
@@ -972,7 +912,7 @@ not writable any more.
 
 RadiantOne logging is configured from the Main Control Panel -> ZooKeeper tab (requires [Expert Mode](#expert-mode)). Navigate to /radiantone/<version>/<cluster_name>/config/logging/log4j2-vds.json and click EDIT MODE on the right.
 
-## Periodic Persistent Cache Refresh Threshold Failures
+### Periodic Persistent Cache Refresh Threshold Failures
 
 To monitor periodic persistent cache refresh failures due to thresholds being reached, monitor
 the <RLI_HOME>\vds_server\logs\periodiccache.log for keywords: “Threshold reached”
@@ -987,7 +927,7 @@ java.lang.Exception: Threshold reached with 85% difference for adds.
 
 In the example above, a periodic persistent cache refresh is configured on the o=sql naming context.
 
-## ZooKeeper Status – Heartbeat Check
+### ZooKeeper Status – Heartbeat Check
 
 To check if ZooKeeper is up, it is recommended to check that ports 2181 (this is the ZooKeeper
 connection string defined during install and is the port for the cluster), 2888 (communication port
@@ -997,7 +937,7 @@ running ZooKeeper in an ensemble). If more than a port check is desired, third-p
 support JMX can be used. Contact Radiant Logic Support (support@radiantlogic.com) to
 discuss this option.
 
-## ZooKeeper Logs and Error Messages to Monitor
+### ZooKeeper Logs and Error Messages to Monitor
 
 The most important log to monitor for ZooKeeper is
 <RLI_HOME>/logs/zookeeper/zookeeper.log. The following are critical error messages to monitor in this log:
@@ -1007,7 +947,7 @@ The most important log to monitor for ZooKeeper is
 - Could not add appenderMBean for [null]
 - Unexpected exception causing shutdown while sock still open
 
-## RadiantOne Activity – Check/Parse Access Log (CSV Format) Output
+### RadiantOne Activity – Check/Parse Access Log (CSV Format) Output
 
 CSV logging is enabled in the Main Control Panel > Settings tab > Log > Access Logs settings. On the right, check the CSV option in Output format and click Save.
 
@@ -1017,7 +957,7 @@ Figure 1.52: Enabling CSV Log
 
 For details on the columns in the CSV file, please see the [RadiantOne Logging and Troubleshooting Guide](/logging-and-troubleshooting-guide/01-overview).
 
-## RadiantOne Activity – Read Changes from a Database Table
+### RadiantOne Activity – Read Changes from a Database Table
 
 The RadiantOne service logs all access to data in the vds_server_access.log by default as long as the server log level is set to a minimum of ACCESS. This includes who accessed the data, when (day and time) and what operations they performed. This information can also be logged into a database which allows for third-party reporting tools to easily create meaningful charts and graphs for compliance analysis. Logging to a database requires the [CSV log format output](#radiantone-activity--checkparse-access-log-csv-format-output)
 enabled and running the Log2DB utility.
@@ -1033,11 +973,11 @@ running, launch the Log2DB utility which is in charge of reading the CSV content
 
 Details about configuring and starting the Log2DB utility and the database columns (describing the log contents) can be found in the [RadiantOne Logging and Troubleshooting Guide](/logging-and-troubleshooting-guide/01-overview).
 
-## Check/Parse Alert File (CSV Format) Output or Emails Generated from Alerts enabled in Main Control Panel 
+### Check/Parse Alert File (CSV Format) Output or Emails Generated from Alerts enabled in Main Control Panel 
 
 Output options and configuration are described in [Alerts](/alerts-settings/#alerts).
 
-## Legacy Monitoring Scripts
+### Legacy Monitoring Scripts
 
 [Monitoring.bat](#monitoring-and-alerts-from-the-command-line) (monitoring.sh on Unix), consolidates the monitoring abilities of the legacy scripts: memoryMonitoring, ldapBackendMonitoring, connectionMonitoring, dbBackendMonitoring, checkDataSources, and diskSpaceMonitoring.
 
@@ -1047,7 +987,7 @@ These scripts must run on the same machine as the RadiantOne service. Each is de
 
 >[!warning] When deploying RadiantOne in a cluster, the scripts must run on each cluster node that you want to monitor.
 
-### Memory Monitor
+**Memory Monitor**
 
 The memoryMonitoring script is used to monitor the RadiantOne service memory usage.
 Execute the command with? to find out more about the command. Below are the possible
@@ -1097,7 +1037,7 @@ Main Control Panel, since the SMTP settings are not specified in the command.
 This example command polls RadiantOne every 60 seconds and sends an email if the memory
 usage goes over 75% of the JVM allocated memory and when the memory usage goes back to normal.
 
-### Connection Monitor
+**Connection Monitor**
 
 The connectionMonitoring script is used to monitor if the number of active connections to the RadiantOne exceeds the defined threshold. Execute the command with? to find out more about the command. Below are the possible parameters:
 
@@ -1147,7 +1087,7 @@ the Main Control Panel, since the SMTP settings are not specified in the command
 
 This example command polls RadiantOne every 60 seconds and sends an email if the number of connections goes over 75% of the maximum number of connections allowed to the RadiantOne instance and when the number of connections goes back under the threshold.
 
-### RadiantOne LDAP Service and LDAP Backend Data Source Monitor
+**RadiantOne LDAP Service and LDAP Backend Data Source Monitor**
 
 The ldapBackendMonitoring script monitors availability of the RadiantOne LDAP service, or one
 of the configured LDAP backends. Execute the command with? to find out more about the
@@ -1196,7 +1136,7 @@ settings are not specified in the command.
 This example command polls the RadiantOne service every 60 seconds and sends an email if it
 is down.
 
-### Backend Database Data Source Monitor
+**Backend Database Data Source Monitor**
 
 The dbBackendMonitoring script is used to monitor if one of the configured database backends
 are available or not. Execute the command with? to find out more about the command. Below
@@ -1234,7 +1174,7 @@ assumes that there are two database data sources that you want to monitor (oracl
 
 <RLI_HOME>/bin/advanced/dbBackendMonitoring.sh -d oracle,sql -i 60
 
-### Data Source (Backends) Status
+**Data Source (Backends) Status**
 
 The checkDataSources script is used to check the status of all data sources (or only the ones
 listed in the command) and prints their status either to the console or a specified file. The status
@@ -1251,7 +1191,7 @@ There is an example of using this script below. The following command checks the
 
 <RLI_HOME>/bin/advanced/checkdatasources.sh -l sunone, ad, oracle, sql_server -o mystatus.log
 
-### Disk Space Monitor
+**Disk Space Monitor**
 
 The diskSpaceMonitoring script is used to monitor the disk space by checking the available disk
 space at every poll interval for a specific threshold. Once the threshold is reached the process
@@ -1294,3 +1234,58 @@ disk, archive more frequently...etc.). To keep track of the statistics, run the 
 <RLI_HOME>/bin/advanced/diskspaceMonitoring.bat -i 600 -t 90 > diskspacestats.txt
 
 Once disk space usage has been assessed, kill the diskspaceMonitoring script and relaunch again without redirecting output to a file. At this time, you can also increase the checking interval.
+
+## Manually Resetting Connection and Memory Peak
+
+RadiantOne supports special LDAP commands to reset the memory and connection peaks without requiring the server to be restarted.
+
+To reset these values, any LDAP client can be used. The examples below use an ldapsearch command line tool.
+
+To reset the connection peak you can use the following (assuming RadiantOne is listening on
+LDAP port 2389 and the super user password is “password”):
+
+#ldapsearch -h host -p 2389 -D "cn=directory manager" -w "password" –b "action=resetconnectionpeak" (objectclass=*)
+
+To reset the memory peak, you can use the following (assuming RadiantOne is listening on LDAP port 2389 and the super user password is “password”):
+
+#ldapsearch -h host -p 2389 -D "cn=directory manager" -w "password" –b "action=resetmempeak" (objectclass=*)
+
+>[!warning] If you manually reset the connection peak, the Server Control Panel > Dashboard tab associated with the node you’ve reset does not reflect the current connection peak. This value on the Server Control Panel dashboard only refreshes every 24 hours.
+
+## Manually Resetting Connection Operation Statistics
+
+RadiantOne supports a special LDAP command to reset the operation statistics for connections without requiring the server to be restarted.
+
+To reset the operations statistics for connections, any LDAP client can be used. The example below uses an ldapsearch command line tool.
+
+To reset the number of operations (opAbandon, opAdd, opBind, opCompare, opCount, opDelete, opModify, opModifyDn, and opSearch) for all current connections (assuming RadiantOne is listening on LDAP port 2389 and the super user password is “password”):
+
+#ldapsearch -h host -p 2389 -D "cn=directory manager" -w "password" -b
+“action=resetconncounters" (objectclass=*)
+
+## Manually Resetting Operation Statistics for a given Naming Context without Restarting the RadiantOne Service 
+
+RadiantOne supports a special LDAP command to reset the operation statistics for a given naming context without requiring the server to be restarted.
+
+To reset the operations statistics for a given naming context, any LDAP client can be used. The example below uses an ldapsearch command line tool.
+
+To reset the number of operations (compare, bind, modify, modrdn, delete, add and search) for a naming context of o=ad203 (assuming RadiantOne is listening on LDAP port 2389 and the super user password is “password”):
+
+#ldapsearch -h host -p 2389 -D "cn=directory manager" -w "password" -b
+"action=resetnamingctxcounters,o=ad203,cn=namings,cn=monitor" (objectclass=*)
+
+## Manually Resetting Connection Pools without Restarting the RadiantOne Service
+
+RadiantOne supports a special LDAP command to reset the connection pools without requiring the server to be restarted.
+
+To reset the connection pools, any LDAP client can be used. The example below uses an
+ldapsearch command line tool to clear the LDAP connection pool.
+
+#ldapsearch -h host -p 2389 -D "cn=directory manager" -w "password" -b
+“action=clearldappool" (objectclass=*)
+
+The example below uses an ldapsearch command line tool to clear the Database (JDBC)
+connection pool.
+
+#ldapsearch -h host -p 2389 -D "cn=directory manager" -w "password" -b
+“action=clearjdbcpool" (objectclass=*)
