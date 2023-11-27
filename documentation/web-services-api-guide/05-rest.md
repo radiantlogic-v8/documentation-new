@@ -1287,4 +1287,3 @@ In this section, the sub-attributes “streetNumber” and “country” are add
 </table>
 
 Table 47: Modifying Multiple Complex Attributes in an Operation
-
