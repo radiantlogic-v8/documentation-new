@@ -110,7 +110,7 @@ contents.
 <br>Enter the appropriate create table syntax for the type of database you want to use. If you want to create the table on your own, then you can leave this parameter blank.
 
 >[!warning]
->By default, the FILTER field in the table only allows 255 characters. If you are expecting client queries containing filters longer than 255 characters, >edit the length accordingly in the create table statement and recreate the log table. Otherwise, any request from clients containing a filter longer than >255 characters is not logged into the database table by RadiantOne.
+>By default, the FILTER field in the table only allows 255 characters. If you are expecting client queries containing filters longer than 255 characters, edit the length accordingly in the create table statement and recreate the log table. Otherwise, any request from clients containing a filter longer than 255 characters is not logged into the database table by RadiantOne.
 
 - Testing the Connection
 <br>Click the Test Connection button to verify the connection to the database is working.
