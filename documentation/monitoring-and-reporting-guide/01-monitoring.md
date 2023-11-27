@@ -9,8 +9,8 @@ Monitoring is one of the most important aspects of maintaining the health of Rad
 
 The RadiantOne components can be monitored from both the Main and Server Control Panels and command line scripts, in addition to using third party tools.
 
-The key services to monitor are RadiantOne and ZooKeeper. There are default monitoring and alerts for these services. For RadiantOne, see [RadiantOne Availability](/alert-settings/#radiantone-service-availability). For ZooKeeper, see
-[ZooKeeper Write Failure](/alert-settings/#zookeeper-write-failure).
+The key services to monitor are RadiantOne and ZooKeeper. There are default monitoring and alerts for these services. For RadiantOne, see [RadiantOne Availability](monitoring-and-reporting-guide/alert-settings/#radiantone-service-availability). For ZooKeeper, see
+[ZooKeeper Write Failure](monitoring-and-reporting-guide/alert-settings/#zookeeper-write-failure).
 
 ## Expert Mode
 
