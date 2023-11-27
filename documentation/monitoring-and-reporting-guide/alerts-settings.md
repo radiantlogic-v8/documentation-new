@@ -76,7 +76,7 @@ Check” is configured to monitor the state of the service. If RadiantOne is dep
 the state of the service on all nodes is monitored. To view the alert, navigate to the Main Control Panel > Settings Tab > Monitoring > Custom Alerts (requires [Expert Mode](#expert-mode)). Select the “VDS
 Running Check” alert and click Edit.
 
-This custom alert leverages the isVdsRunning property of the [node-monitor](#node-monitor) data collector to
+This custom alert leverages the isVdsRunning property of the [node-monitor](monitoring-and-reporting-guide/data-collectors/#node-monitor) data collector to
 trigger a [file alert](#file-alert-settings) if the RadiantOne service is not equal to true. If the value of the isVdsRunning
 property is false or N/A, an alert is triggered.
 
