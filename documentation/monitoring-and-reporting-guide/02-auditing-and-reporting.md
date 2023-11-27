@@ -87,7 +87,7 @@ The reports are built on top of the capability of RadiantOne to store the access
 
 ### Log2DB Settings
 
-The database that houses the table which contains the RadiantOne access log content may be in any database server you choose. The default settings leverage a Derby database that is included with RadiantOne. These settings are described below and are located on the Main Control Panel > Settings Tab > Reporting section > [Log2DB Settings](#log2db-settings) sub-section.
+The database that houses the table which contains the RadiantOne access log content may be in any database server you choose. The default settings leverage a Derby database that is included with RadiantOne. These settings are described below and are located on the Main Control Panel > Settings Tab > Reporting section > Log2DB Settings sub-section.
 
 >[!warning]
 >If you plan on using the RadiantOne [default report generation](#generating-reports), then the log2db database must be Microsoft SQL Server, Oracle, Derby >or PostgreSQL.
