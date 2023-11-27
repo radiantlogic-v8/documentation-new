@@ -324,13 +324,13 @@ To generate the audit report:
 2. If needed, customize the parameters and click Save.
 3. Click on the Generate Report button. The Generate Audit Report window opens.
 4. You can specify a location for the reports to be stored in the Output Location field. The default location for generated reports is <RLI_HOME>\reporting-birt\reports. Alternatively, you can specify a network share path.
-5. Indicate a time period the report should include (start and end dates and times)
+5. Indicate a time period the report should include (start and end dates and times).
 6. To generate a report that aggregate statistics from all nodes in your RadiantOne cluster
     into a single report, check the Global Report box.
 7. To generate a report for a single node, indicate the server name in the Server Name field.
 
 >[!warning]
->If RadiantOne is deployed in a cluster, the default behavior of the Audit Report generator is to create a report for each node. The values entered in the >Server Name field override checking the Global Report box.
+>If RadiantOne is deployed in a cluster, the default behavior of the Audit Report generator is to create a report for each node. The values entered in the Server Name field override checking the Global Report box.
 
 8. You can specify a session ID if needed.
 
