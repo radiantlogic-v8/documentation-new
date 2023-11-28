@@ -708,7 +708,7 @@ The following body example can be used to update a user containing enterprise ex
     }
    }
 ```
-Table 11: SCIM PUT Query to Updated A User with Enterprise Extension Attributes
+Table 11: SCIM PUT Query to Update A User with Enterprise Extension Attributes
 
 The PUT request from a Postman client is shown below.
 
