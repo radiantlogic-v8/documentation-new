@@ -11,8 +11,6 @@ Any user that is a member of the RadiantOne Directory Administrator role, ICS Ad
 
 >[!note]
 >Images displayed in this guide are meant to describe expected behavior of features in RadiantOne. Your results may vary from those shown in this guide as data sets are subject to change at any time.
-
->[!note]
 >The Identity Data Analysis tool is not compatible with Compatibility View in Microsoft Internet Explorer 11.
 
 ## Working with Datasets
