@@ -8,7 +8,7 @@ description: Deployment and Tuning Guide
 - [Tuning Tips for Caching](#)
   - [Overview](02-tuning-tips-for-caching-in-radiantone.md)
   - [Memory Cache](memory-cache.md)
-  - [Persistent Cache)(persistent-cache.md)
+  - [Persistent Cache](persistent-cache.md)
 - [Tuning Tips for Virtual Views](03-tuning-tips-for-specific-types-of-backend-data-sources.md)
 - [Tuning Tips for RadiantOne Directory](04-tuning-tips-radiantone-universal-directory.md)
 - [Testing RadiantOne Performance](05-testing-radiantone-performance.md)
