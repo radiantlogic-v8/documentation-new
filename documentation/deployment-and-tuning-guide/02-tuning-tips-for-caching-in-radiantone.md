@@ -7,7 +7,7 @@ description: Learn how to tune RadiantOne performance by configuring persistent 
 
 This chapter provides guidelines on how to effectively use caching for optimal performance. The first part covers the different categories and levels of cache along with a quick review of the different use cases that justify a cache deployment. The second part provides details and describes the advantages and trade-off between “in-memory” and “persistent” cache. Finally, a description of cache refresh methods is reviewed. This is an essential and often overlooked aspect of cache management.
 
-Persistent caching is only associated with the RadiantOne Federated Identity module and is irrelevant for [RadiantOne Universal Directory](04-tuning-tips-radiantone-universal-directory.md).
+Persistent caching is only associated with the RadiantOne Federated Identity module and is irrelevant for [RadiantOne Directory](04-tuning-tips-radiantone-universal-directory.md).
 
 ## When and why do you need a cache?
 
