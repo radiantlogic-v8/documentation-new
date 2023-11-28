@@ -487,11 +487,11 @@ The base64 encoded value of this would be: Y249ZGlyZWN0b3J5IG1hbmFnZXI6c2VjcmV0c
 Resulting in a header of: 
 `<header key="authorization" value="Basic Y249ZGlyZWN0b3J5IG1hbmFnZXI6c2VjcmV0c2VjcmV0"/>`
 
-### Examples
+## Examples
 
 Below are some example SCIM requests using a Postman client.
 
-#### Insert User
+### Insert User
 The following example creates an entry for a user named Barbara Jensen in one of the default RadiantOne Universal Directory stores located at o=companydirectory.
 
 The resource type configuration and attribute mappings used in this example are shown below.
@@ -582,7 +582,7 @@ Based on the New Entry DN Expression in the Resource Type configuration describe
  
 Figure 12: Sample Entry Created with a SCIM POST Operation
 
-#### Insert User with Enterprise Extension Attributes
+### Insert User with Enterprise Extension Attributes
 
 The following SCIM POST query example describes how to create a user entry that contains enterprise extension attributes like employeeNumber, division, and department. This example is based on the configuration described in the [Insert Entry](#insert-user) example above.
 
@@ -645,7 +645,7 @@ Based on the New Entry DN Expression in the Resource Type configuration describe
  
 Figure 14: Sample Entry Created with a SCIM POST Operation
 
-#### Update (PATCH) User
+### Update (PATCH) User
 
 The following example updates an entry for a user named Barbara Jensen in one of the default RadiantOne Universal Directory stores located at o=companydirectory.
 
@@ -715,7 +715,7 @@ Based on the PATCH request described above, the entry uid=bjensen@example.com,o=
 
 Figure 18: Sample Entry Updated with a SCIM PATCH Operation
 
-#### Update (PUT) User with Enterprise Extension Attributes
+### Update (PUT) User with Enterprise Extension Attributes
 
 The following SCIM PUT query example describes how to update a user entry that contains enterprise extension attributes like employeeNumber, division, and department. This example is based on the configuration described in the [Insert Entry](#insert-user) example above.
 
@@ -780,7 +780,7 @@ Based on the PUT request described above, the entry uid=bjensen@example.com,o=co
  
 Figure 20: Sample Entry Updated with a SCIM PUT Operation
  
-#### Get Entry
+### Get Entry
 
 The following SCIM GET query example describes how to retrieve the entry that was created in the [Insert Entry](#insert-user) example above.
 
@@ -800,7 +800,7 @@ The GET request from a Postman client is shown below.
  
 Figure 21: SCIM GET Query Example
 
-#### Delete Entry
+### Delete Entry
 
 The following SCIM DELETE query example describes how to delete the entry that was created in the [Insert Entry](#insert-user) example above.
 
