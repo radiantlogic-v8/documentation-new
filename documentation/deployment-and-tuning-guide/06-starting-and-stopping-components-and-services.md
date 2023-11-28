@@ -10,6 +10,8 @@ This chapter describes how to start and stop the RadiantOne service and the web 
 ## RadiantOne Service
 
 You can restart the RadiantOne service from the [Environment Operations Center](/environment-operations-center-guide/environments/environment-details/environment-overview/). Select the environment and use the options shown when clicking on ![An image showing ](Media/power-icon.jpg) to start/stop/restart the service.
+
+
 ![An image showing ](Media/restart-service.jpg)
 
 ## Global Synchronization
