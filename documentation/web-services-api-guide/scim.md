@@ -653,8 +653,8 @@ Based on the above configuration, the following is a sample SCIM PATCH query to 
 <td>Field	
 <td>Value
 <tr>
-<td>URL 
-<td>Syntax `http://< RadiantOneService>:8089/scim2/v2/< ResourceType>/< DN>`
+<td>URL Syntax
+<td>`http://< RadiantOneService>:8089/scim2/v2/< ResourceType>/< DN>`
 <tr>
 <td>Example URL	
 <td>http://localhost:8089/scim2/v2/companydirectory/uid=bjensen@example.com,o=companydirectory
