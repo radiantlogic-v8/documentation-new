@@ -68,32 +68,15 @@ By definition, a federated identity layer does not own any specialized back-end 
 
 However in most cases (e.g. when databases and/or Web Services are involved and volume is significant), a back-end caching mechanism is a requirement. A complete federated identity layer needs to offer different levels of cache with different cache refresh implementation strategies matching different use cases. 
 
-There are essentially two forms of cache:
--	In-memory cache
-
--	Disk-based cache also called “persistent cache”
-
-Each of these caching mechanisms can be refreshed using different methods. 
-
-Cache refresh strategies can be divided into two main categories:
-
--	Polling the changes either periodically or based or an expiration of a “time-to-live“ value assigned to a cache entry
--	Detecting the change events directly at the sources (triggers or other methods)
+**RadiantOne Caching Options**
 
 RadiantOne offers different caching options to accommodate a variety of deployment needs.
--	Memory Cache (Entry Cache and Query Cache)
+-	Memory Cache (Entry Cache and Query Cache). 
+-	Disk-based Persistent Cache
 
--	Persistent Cache
-
-The diagram below provides a general “rule of thumb” as to what type of cache to implement. 
-
-* Low volatility during the life of the cache (the time to live).
-
-** Repetitive Queries – a query having exactly the same syntax (same user, same filter, same ACL).
-
-*** Low Volume – The size of the cache as measured by (Nb entries * entry size * 2.5) cannot exceed the amount of memory allocated for cache.
-
-For persistent cache, there is no limitation in terms of number of entries since everything is stored on disk. When fully indexed, the persistent cache provides performance levels comparable to the fastest “classic” LDAP directory.
+Cache refresh strategies can be divided into two main categories:
+-	Polling the changes either periodically or based or an expiration of a “time-to-live“ value assigned to a cache entry
+-	Detecting the change events directly at the sources (triggers or other methods)
 
 ### Memory Cache
 
