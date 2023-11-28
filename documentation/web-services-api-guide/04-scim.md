@@ -608,6 +608,9 @@ The following SCIM POST query example describes how to create a user entry that 
 <tr>
 <td>Body	
 <td><pre>
+</table>
+ 
+The following body example can be used to insert a user containing enterprise extension attributes:
 ```
  {
     "schemas": [
@@ -633,7 +636,7 @@ The following SCIM POST query example describes how to create a user entry that 
     }
 }
 ```
-</table>
+
  
 Table 9: SCIM POST Query to Insert A User with Enterprise Extension Attributes
 
@@ -686,8 +689,11 @@ Based on the above configuration, the following is a sample SCIM PATCH query to 
 <td>Header Value	
 <td>Basic Y249ZGlyZWN0b3J5IG1hbmFnZXI6c2VjcmV0c2VjcmV0
 <tr>
-<td>Body	
-<td> <pre>{
+</table>
+
+The following body example can be used to update a user:
+```
+{
   "schemas": [
     "urn:ietf:params:scim:api:messages:2.0:PatchOp"
   ],
@@ -703,8 +709,7 @@ Based on the above configuration, the following is a sample SCIM PATCH query to 
     }
   ]
 }
-</table>
-
+```
 Table 10: SCIM PATCH Query to Update A User
  
 ![PATCH Query to SCIMv2 API of RadiantOne](Media/Image4.17.jpg)
@@ -743,9 +748,12 @@ The following SCIM PUT query example describes how to update a user entry that c
 <td>Header Value	
 <td>Basic Y249ZGlyZWN0b3J5IG1hbmFnZXI6c2VjcmV0c2VjcmV0
 <tr>
-<td>Body
-<td><pre>  {
-    "schemas": [        "urn:scim:schemas:core:2.0:User","urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"       
+</table>
+The following body example can be used to update a user containing enterprise extension attributes:
+
+```
+{
+    "schemas": ["urn:scim:schemas:core:2.0:User","urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"       
     ],    
     "userName": "bjensen@example.com",
     "name": {
@@ -766,8 +774,7 @@ The following SCIM PUT query example describes how to update a user entry that c
         "department": "Hobby"
     }
    }
-</table>
-
+```
 Table 11: SCIM PUT Query to Updated A User with Enterprise Extension Attributes
 
 The PUT request from a Postman client is shown below.
