@@ -27,7 +27,7 @@ If consumers of the RadiantOne service are experiencing problems (time-consuming
 
 It is typically recommended to monitor the health of the RadiantOne service over a one week period at least once a month. Pay close attention to the configured access log rotation schedule to ensure no log content is missed (if applicable for your reports). The access log can be configured to roll over based on a configured size.
 
-At the end of the reporting period, you can generate the Access Report from the Environment Operations Center.
+At the end of the reporting period, you can generate the Access Report from the [Environment Operations Center](/environment-operations-center-guide/reporting/reporting-overview/).
 
 
 ### Auditing RadiantOne Client Activity
@@ -36,4 +36,4 @@ It is typically recommended to audit RadiantOne client activity over a one-week 
 
 Pay close attention to the configured access log rotation schedule to ensure no log content is missed (if applicable for your reports). The access log may be configured to roll over based on a configured size.
 
-You can generate the Audit Report from the Environment Operations Center.
+You can generate the Audit Report from the [Environment Operations Center](/environment-operations-center-guide/reporting/reporting-overview/).
