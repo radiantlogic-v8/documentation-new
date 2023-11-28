@@ -12,11 +12,11 @@ The RadiantOne platform offers an LDAP v3 compliant storage that can be used to 
 
 ## Indexed Attributes
 
-Verify that all attributes that are searchable (used in a filter or requested) from LDAP clients are listed in the Index parameter for the local storage. This can be verified from the Main Control Panel -> Directory Namespace tab. Select the RadiantOne Directory store below the Root Naming Contexts node. The indexed attributes are shown on the right side, Properties tab. If the list is empty, all attributes are indexed by default (except for binary attributes and any attribute listed in the Non Indexed Attributes parameter). Otherwise enter a comma separated list of attribute names. If the VLV/Sort control is enabled for RadiantOne, you can indicate a list of attributes to maintain a special index for in the Sorted Attributes property.
+Verify that all attributes that are searchable (used in a filter or requested) from LDAP clients are listed in the Index parameter for the local storage. This can be verified from the Main Control Panel > Directory Namespace tab. Select the RadiantOne Directory store below the Root Naming Contexts node. The indexed attributes are shown on the right side, Properties tab. If the list is empty, all attributes are indexed by default (except for binary attributes and any attribute listed in the Non Indexed Attributes parameter). Otherwise enter a comma separated list of attribute names. If the VLV/Sort control is enabled for RadiantOne, you can indicate a list of attributes to maintain a special index for in the Sorted Attributes property.
 
 ![An image showing ](Media/Image4.1.jpg)
  
-Figure 4.1: RadiantOne Universal Directory Index Lists
+Figure 4.1: RadiantOne Directory Index Lists
 
 ### Non-Indexed Attributes
 
