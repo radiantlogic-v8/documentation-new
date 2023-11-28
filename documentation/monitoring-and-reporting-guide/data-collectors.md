@@ -415,7 +415,54 @@ The pipeline data collector is for retrieving information about real-time persis
 
 >[!note] This data collector requires the RadiantOne service to be running to return information.
 
-For details on properties returned for pipelines associated with real-time persistent cache refreshes, see Real-time Persistent Cache Refresh. For details on properties returned for pipelines associated with global synchronization, see Global Synchronization.
+**Real-time Persistent Cache Refresh**
+
+A high-level real-time persistent cache refresh architecture is shown below.
+
+![An image showing ](Media/Image1.39.jpg)
+
+Figure 1.39 : Real-time Persistent Cache Refresh Architecture
+
+Pipeline properties for real-time persistent cache refresh processes are described below.
+
+- SourceDn and targetDn values are the same, and indicate the DN in the RadiantOne namespace that is configured for real-time persistent cache refresh.
+- The pipelineId is the identifier associated with the real-time persistent cache refresh.
+- The pipelineType value is: PCACHE
+- The componentType has one of the following values: APPLY, CAPTURE, PIPELINE, PROCESSOR.
+- The CAPTURE componentType, related to step 1 in Figure 1.30, has the following properties (propertyId): captureCounter, captureHostname, captureMetaDn, captureState, captureType.
+<br> *captureCounter* - indicates the number of changed entries published by the connector.
+<br> *captureHostname* - indicates the identifier of the machine where the agent process is running. The agent oversees managing the connector states.
+<br> *captureMetaDn* - is an identifier for the virtual node that the connector listens for changes on.
+<br> *captureState* - is the status of the capture connector. The captureState can have one of the following values: RUNNING, DEPLOYING, STOPPED, ERROR, WAITING_FOR_AGENT.
+<br> *captureType* - indicates the method used to capture changes. The captureType can have one of the following values: CHANGELOG, AD_DIRSYNC, AD_USN, AD_HYBRID, DB_TIMESTAMP, DB_COUNTER, DB_TRIGGER, SCIM2, SCIM1, GRAPHAPI, MGRAPH, OKTA, KAFKA, KAFKA_GG, PERSISTENT_SEARCH.
+- The APPLY componentType, related to step 4 in Figure 1.30, has the following property: appliedCounter. This indicates the number of changes processed to apply to the persistent cache.
+- The PIPELINE componentType has the following property: pipelineState, which indicates if the persistent cache refresh process is started. PipelineState can have one of the following values: RUNNING, SUSPENDED, UPLOADING, ERROR, DEPLOYING, WAITING_FOR_AGENT
+- The PROCESSOR componentType has the following properties: processorCounter, processorHostname, processorQueueSize. The processor component logic is built into the Sync Engine shown in Figure 1.30 and is responsible for processing events from the queues. ProcessorCounter is the number of events processed from the queue. ProcessorHostname is the machine name where this process is running. ProcessorQueueSize is the number of entries in the queue waiting to be processed.ProcessorQueueSize is a good candidate to configure custom alertsfor. If this number is growing, and the pipeline is fully  started, it is an indicator that events are being processed too slow. This could be due to errors while applying events, or just slow machine hardware or network.
+
+**Global Synchronization**
+
+A high-level Global Synchronization architecture is shown below.
+
+![An image showing ](Media/Image1.40.jpg)
+
+Figure 1. 40 : Global Synchronization Architecture
+
+Pipeline properties for global synchronization processes are described below.
+
+- SourceDn is the DN in the RadiantOne namespace associated with the data source where changes are captured.
+- TargetDn is the DN in the RadiantOne namespace associated with the destination data source where changes are to be applied.
+- The pipelineId is the identifier associated with the synchronization pipeline.
+- The pipelineType value is: SYNC
+- The componentType has one of the following values: APPLY, CAPTURE, PIPELINE, PROCESSOR.
+- The CAPTURE componentType, related to step 1 in Figure 1.31, has the following properties (propertyId): captureCounter, captureHostname, captureMetaDn, captureState, captureType.
+<br> *captureCounter* - indicates the number of changed entries published by the connector.
+<br> *captureHostname* - indicates the identifier of the machine where the agent process is running. The agent oversees managing the connector states.
+<br> *captureMetaDn* - is an identifier for the virtual node that the connector listens for changes on.
+<br> *captureState* - is the status of the capture connector. The captureState can have one of the following values: RUNNING, DEPLOYING, STOPPED, ERROR, WAITING_FOR_AGENT
+<br> *captureType* - indicates the method used to capture changes. The captureType can have one of the following values: CHANGELOG, AD_DIRSYNC, AD_USN, AD_HYBRID, DB_TIMESTAMP, DB_COUNTER, DB_TRIGGER, SCIM2, SCIM1, GRAPHAPI, MGRAPH, OKTA, KAFKA, KAFKA_GG, PERSISTENT_SEARCH
+- The APPLY componentType, related to step 4 in Figure 1.31, has the following property (propertyId): appliedCounter. This indicates the number of changes applied on the target.
+- The PIPELINE componentType has the following property (propertyId): pipelineState, which indicates if the synchronization process is started. PipelineState can have one of the following values: RUNNING, SUSPENDED, UPLOADING, ERROR, DEPLOYING, WAITING_FOR_AGENT
+- The PROCESSOR componentType, has the following properties (propertyId): processorCounter, processorHostname, processorQueueSize. The processor component logic is built into the Sync Engine shown in Figure 1.31 and is responsible for processing events from the queues. ProcessorCounter is the number of events processed from the queue. ProcessorHostname is the machine name where this process is running. ProcessorQueueSize is the number of entries in the queue waiting to be processed. ProcessorQueueSize is a good candidate to configure custom alerts for. If this number is growing, and the pipeline is fully started, it is an indicator that events are being processed too slow. This could be due to errors while applying events, or just slow machine hardware or network.
 
 ### Process-info
 
