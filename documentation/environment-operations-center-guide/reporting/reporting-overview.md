@@ -7,7 +7,7 @@ description: Learn about the environment reporting options available Environment
 
 From the *Reporting* screen, you can generate various reports to assist in monitoring performance and operations within your environments. This guide provides an overview of the *Reporting* section in Environment Operations Center, including its features and how to generate reports. 
 
-[!note] Reports should be generated frequently to maintain a clear understanding of performance, load, configuration updates, and user activity.
+>[!note] Reports should be generated frequently to maintain a clear understanding of performance, load, configuration updates, and user activity.
 
 ## Getting started
 
