@@ -1,9 +1,9 @@
 ---
-title: Web Services API Guide
-description: Web Services API Guide
+title: SCIM API
+description: SCIM v2 API to the RadiantOne Service
 ---
 
-# SCIM
+# SCIM Overview
 
 The System for Cross-domain Identity Management (SCIM) specification automates user identity management between identity domains. This chapter describes the configuration of the RadiantOne SCIM service. The RadiantOne service supports SCIMv2.
 
@@ -67,9 +67,7 @@ A SCIM schema designates attribute characteristics such as their mutability, typ
 
 To query the SCIM schema (core, extension and custom) in the RadiantOne service, a SCIM client can use: `http://<RadiantOneService>:8089/scim2/v2/Schemas`
 
-### Default Core Schemas
-
-#### Group
+### Group Default Core Schema
 
 To view the default Group SCIM schema, go to the Main Control Panel > Settings Tab > Server Front End > SCIM. On the Schemas tab, click Group. The default attributes are outlined in the table below.
 
@@ -80,7 +78,7 @@ members	| complex | A list of members of the Group.
 
 Table 1: SCIM Attributes Associated with the Default Group Schema
 
-#### User
+### User Default Core Schema
 
 To view the default User SCIM schema, go to the Main Control Panel > Settings Tab > Server Front End > SCIM. On the Schemas tab, click User. The default attributes are outlined in the table below.
 
@@ -110,7 +108,7 @@ x509Certificates | complex | A list of certificates issued to the User.
 
 Table 2: SCIM Attributes Associated with the Default User Schema
 
-#### Enterprise User
+### Enterprise User Default Core Schema
 
 To view the default Enterprise User SCIM schema, go to the Main Control Panel > Settings Tab > Server Front End > SCIM. On the Schemas tab, click User. The default attributes are outlined in the table below.
 
@@ -125,7 +123,7 @@ organization | string | Identifies the name of an organization.
 
 Table 3: SCIM Attributes Associated with the Default Enterprise User Schema
 
-### Creating Schemas
+## Creating Schemas
 
 If the default SCIM schemas do not meet your needs, you can create a new one.
 
@@ -143,7 +141,7 @@ To add a new schema:
 
 6.	Click Save. 
 
-#### Custom SCIM Attributes
+### Custom SCIM Attributes
 
 Custom SCIM attributes can be created for new schemas or when editing existing custom schemas. 
 
@@ -212,7 +210,7 @@ To create SCIM attributes:
 
 13.	Repeat steps 3-12 to add all attributes.
 
-##### Attribute Types
+### SCIM Attribute Types
 
 Type | Description
 -|-
@@ -227,7 +225,7 @@ Complex	| A singular or multi-valued attribute whose value is a composition of o
 
 Table 4: Attribute Types
      
-##### Attribute Mutability 
+### SCIM Attribute Mutability 
 
 Each custom attribute has a mutability property that dictates how the RadiantOne service handles the attribute when processing operations. The possible values (and meaning) for the mutability property are summarized in the table below.
 
@@ -240,7 +238,7 @@ writeOnly | The attribute MAY be updated at any time. Attribute values SHALL NOT
 
 Table 5: Attribute Mutability
 
-##### Attribute Returned Characteristics
+### SCIM Attribute Returned Characteristics
 
 Each attribute has a characteristic regarding the behavior of how it is returned to clients. The possible values (and meaning) for the Returned property are summarized in the table below.
 
@@ -253,7 +251,7 @@ request	 | The attribute is returned in response to any PUT, POST, or PATCH oper
 
 Table 6: Attribute Returned Characteristics
 
-### Importing Schemas
+## Importing Schemas
 
 If you have an existing schema definition (JSON-formatted), you can import this into the RadiantOne configuration.
 To import a schema:
@@ -268,7 +266,7 @@ To import a schema:
 
 5.	Click **Import**. 
 
-### Deleting Schemas
+## Deleting Schemas
 
 To delete a schema:
 1.	From the Main Control Panel, click the Settings Tab > Server Front End section > SCIM sub-section.
@@ -295,7 +293,7 @@ The Base DN configured for the resource type dictates what root naming context t
 
 Resource types are linked to a core SCIM schema and an optional set of extension schemas. Attribute mappings (between attributes in the virtual view to SCIM) can be applied across one or more SCIM schemas and a single virtual attribute can be mapped to more than one SCIM attribute. 
 
-### Creating Resource Types
+## Creating Resource Types
 
 To add a new resource type:
 
@@ -343,7 +341,7 @@ To add a new resource type:
 
 >[!note]To view a list of resource types configured in RadiantOne, use: `http://<RadiantOneService>:8089/scim2/v2/resourcetypes`
 
-#### Template-based Attribute Mapping
+### Template-based Attribute Mapping
 
 To use a pre-defined template for attribute mapping, click the **Load Template** button.
 
@@ -362,14 +360,14 @@ Figure 6: Selecting a Template
 >[!note]
 >to remove a mapping, click the ![An image showing ](Media/x-button.jpg) button in the LDAP Attribute column in the table on the right.
 
-#### Manual Attribute Mapping
+### Manual Attribute Mapping
 
 To manually define an attribute mapping, select an attribute in the table on the left. In the table on the right, click the corresponding SCIM attribute, and click the ![An image showing ](Media/x-button.jpg) button. Repeat this process for all attributes to be mapped.
 
 >[!note]
 >to remove a mapping, click the ![An image showing ](Media/x-button.jpg) button in the LDAP Attribute column in the table on the right.
 
-##### Mapping Complex Attributes
+**Mapping Complex Attributes**
 
 A complex attribute is a singular or multi-valued attribute whose value is a composition of one or more simple attributes (sub-attributes). A complex attribute may be mapped, or its sub-attributes may be mapped, but not both. To manually map a complex attribute, select an attribute in the table on the left. In the table on the right, click the corresponding SCIM attribute, and click the ![An image showing ](Media/curvy-arrows.jpg) button.
 
@@ -397,7 +395,7 @@ To map a complex attribute’s sub-attribute(s):
 
 To collapse a complex attribute, click ![An image showing ](Media/minus-sign.jpg) next to the topmost sub-attribute.
 
-### Importing Resource Types
+## Importing Resource Types
 
 If you have an existing resource type definition (JSON-formatted), you can import this into the RadiantOne configuration.
 
@@ -410,7 +408,7 @@ To import a resource type:
 
 4.	Click the Import button.
 
-### Deleting Resource Types
+## Deleting Resource Types
 
 To delete a resource:
 
@@ -526,9 +524,11 @@ Based on the above configuration, the following is a sample SCIM POST query to c
 <td>Header Value	
 <td>Basic Y249ZGlyZWN0b3J5IG1hbmFnZXI6c2VjcmV0c2VjcmV0
 <tr>
-<td> Body 
-<td>
-<pre> {
+</table>
+
+The following body example can be used to insert a user:
+ ```
+ {
   "schemas": [
     "urn:ietf:params:scim:schemas:core:2.0:User"
   ],
@@ -568,7 +568,7 @@ Based on the above configuration, the following is a sample SCIM POST query to c
     }
   ]
   }
-</table>
+```
 
 Table 8: SCIM Post Query to Create A User
 
