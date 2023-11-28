@@ -22,40 +22,29 @@ The configuration is saved in: <RLI_HOME>/vds_server/conf/scim2. This folder con
 To configure SCIM access to RadiantOne entries you can use the Quick Start option to automatically define a SCIM schema and resource type that matches the objects and attributes associated with your entries, or you can define your own SCIM schema and resource type. This example describes the Quick Start steps. See Creating Schemas and Creating Resource Types for steps on customizing your own.
 
 1.	Create a virtual view of your identity sources. There are many methods to create virtual views using RadiantOne. If you need assistance, see the RadiantOne Namespace Configuration Guide, Context Builder Guide, and the Identity Service Wizards Guide. If your identities are in a RadiantOne Universal Directory instead of a virtual view, make sure you know what object class they are associated with.
-
-2.	If using a virtual view, make sure it is mounted below a Root Naming Context in the RadiantOne namespace. If you need assistance, see the RadiantOne Namespace Configuration Guide.
-
-3.	If the identities are associated with custom object classes or attributes (not currently defined in the RadiantOne schema), extend the RadiantOne schema with the objects and attributes. If you need assistance, see Chapter 4 in the RadiantOne System Administration Guide. 
-
-4.	Go to the Main Control Panel > Settings Tab > Server Front End > SCIM.
-
-5.	In the SCIM Configuration, click **Quick Start**.
-
-6.	Enter a unique name in the Name property. This is used as the name for the Resource Type.
-
-7.	For the Endpoint, enter an endpoint identifier. This comprises the URL a SCIM client uses to access the entries.
-
-8.	For the Base DN, click Browse and select the root naming context in the RadiantOne namespace where your virtual view is mounted.
-
-9.	For the Primary Object Class, select the object class associated with the identities in the virtual view from the drop-down list. If you do not see your object class here, extend the RadiantOne schema prior to using this Quick Start. See Chapter 4 in the RadiantOne System Administration Guide. 
-
-10.	Click Save. An example is shown below.
+1.	If using a virtual view, make sure it is mounted below a Root Naming Context in the RadiantOne namespace. If you need assistance, see the RadiantOne Namespace Configuration Guide.
+1.	If the identities are associated with custom object classes or attributes (not currently defined in the RadiantOne schema), extend the RadiantOne schema with the objects and attributes. If you need assistance, see Chapter 4 in the RadiantOne System Administration Guide. 
+1.	Go to the Main Control Panel > Settings Tab > Server Front End > SCIM.
+1.	In the SCIM Configuration, click **Quick Start**.
+1.	Enter a unique name in the Name property. This is used as the name for the Resource Type.
+1.	For the Endpoint, enter an endpoint identifier. This comprises the URL a SCIM client uses to access the entries.
+1.	For the Base DN, click Browse and select the root naming context in the RadiantOne namespace where your virtual view is mounted.
+1.	For the Primary Object Class, select the object class associated with the identities in the virtual view from the drop-down list. If you do not see your object class here, extend the RadiantOne schema prior to using this Quick Start. See Chapter 4 in the RadiantOne System Administration Guide. 
+1.	Click Save. An example is shown below.
 
   ![An image showing ](Media/Image4.2.jpg)
  
   Figure 4.2: SCIM Quick Start
 
-11.	To view the attribute mappings that were auto-generated, select the Resource Types tab.
-
-12.	Select the resource type name you configured and click the MAPPINGS tab.  An example is shown below.
+1.	To view the attribute mappings that were auto-generated, select the Resource Types tab.
+1.	Select the resource type name you configured and click the MAPPINGS tab.  An example is shown below.
  
   ![An image showing ](Media/Image4.3.jpg)
 
   Figure 4.3: Example of Auto-generated Attribute Mappings
 
-13.	Click the Preview tab and select the Resource Type from the drop-down list. 
-
-14.	Click Send. The entries in the RadiantOne service are returned as SCIM entries.
+1.	Click the Preview tab and select the Resource Type from the drop-down list. 
+1.	Click Send. The entries in the RadiantOne service are returned as SCIM entries.
 
 ![An image showing ](Media/Image4.4.jpg)
  
@@ -366,13 +355,13 @@ To manually define an attribute mapping, select an attribute in the table on the
 A complex attribute is a singular or multi-valued attribute whose value is a composition of one or more simple attributes (sub-attributes). A complex attribute may be mapped, or its sub-attributes may be mapped, but not both. To manually map a complex attribute, select an attribute in the table on the left. In the table on the right, click the corresponding SCIM attribute, and click the ![An image showing ](Media/curvy-arrows.jpg) button. 
 To map a complex attribute’s sub-attribute(s): 
 1.	Select an attribute in the table on the left. 
-2.	In the table on the right, click Plus-sign next to the complex SCIM attribute. The complex attribute is hidden, and its sub-attributes are displayed. 
+1.	In the table on the right, click Plus-sign next to the complex SCIM attribute. The complex attribute is hidden, and its sub-attributes are displayed. 
 
 ![An image showing ](Media/Image4.7.jpg)
  
 Figure 4.7: Expanding a Complex Attribute
 
-3.	In the table on the right, click the corresponding SCIM sub-attribute, and click the ![An image showing ](Media/curvy-arrows.jpg) button.
+1.	In the table on the right, click the corresponding SCIM sub-attribute, and click the ![An image showing ](Media/curvy-arrows.jpg) button.
 
 >[!note] 
 >Mapping a complex attribute overrides any of its existing sub-attribute mappings and vice versa.
@@ -383,7 +372,7 @@ In the following example, the sub-attributes of the complex attribute Office are
  
 Figure 8: Mapping Sub-attributes
 
-4.	Click Save. 
+1.	Click Save. 
 
 To collapse a complex attribute, click ![An image showing ](Media/minus-sign.jpg) next to the topmost sub-attribute.
 
@@ -489,7 +478,7 @@ Based on the above configuration, the following is a sample SCIM POST query to c
 
 Field	| Value
 -|-
-URL Syntax	| `http://< RadiantOneServer>:8089/scim2/v2/< ResourceType>/< DN>`
+URL Syntax	|  `http://< RadiantOneServer>:8089/scim2/v2/< ResourceType>`
 Example URL	| http://localhost:8089/scim2/v2/companydirectory
 Method	| Post
 Header Name	| Authorization
@@ -556,7 +545,7 @@ The following SCIM POST query example describes how to create a user entry that 
 
 Field	| Value
 -|-
-URL Syntax	| `http://< RadiantOneServer>:8089/scim2/v2/< ResourceType>`
+URL Syntax	|  `http://< RadiantOneServer>:8089/scim2/v2/< ResourceType>`
 Example URL	| http://localhost:8089/scim2/v2/companydirectory
 Method	| Post
 Header Name	| Authorization
@@ -622,7 +611,7 @@ Based on the above configuration, the following is a sample SCIM PATCH query to 
 
 Field	| Value
 -|-
-URL Syntax	| `http://< RadiantOneServer>:8089/scim2/v2/< ResourceType>/< DN>`
+URL Syntax	|  `http://< RadiantOneServer>:8089/scim2/v2/< ResourceType>/< DN>`
 Example URL	| http://localhost:8089/scim2/v2/companydirectory/uid=bjensen@example.com,o=companydirectory
 Method	| Patch
 Header Name	| Authorization
@@ -669,7 +658,7 @@ The following SCIM PUT query example describes how to update a user entry that c
 
 Field	| Value
 -|-
-URL Syntax	| `http://< RadiantOneServer>:8089/scim2/v2/< ResourceType>/< DN>`
+URL Syntax	|  `http://< RadiantOneServer>:8089/scim2/v2/< ResourceType>/< DN>`
 Example URL	| http://localhost:8089/scim2/v2/companydirectory/uid=bjensen@example.com,o=companydirectory
 Method	| Put
 Header Name	| Authorization
