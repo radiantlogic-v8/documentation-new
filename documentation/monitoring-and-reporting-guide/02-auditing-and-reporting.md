@@ -6,7 +6,8 @@ description: Auditing and Reporting
 ## Auditing and Reporting Overview
 
 Reports are a key tool for monitoring the health of the RadiantOne service and should be
-generated frequently to understand the performance and load on the server and audit the activity (who is doing what and when). RadiantOne includes three default types of basic reports: Access, Audit and Group Audit. Details on these reports can be found in the Environment Operations Center Guide.
+generated frequently to understand the performance and load on the server and audit the activity (who is doing what and when). RadiantOne includes three default types of basic reports: Access, Audit and Group Audit. Details on these reports can be found in the 
+[Environment Operations Center](/environment-operations-center-guide/reporting/reporting-overview/).
 
 ## Recommendations for Auditing and Reporting
 
