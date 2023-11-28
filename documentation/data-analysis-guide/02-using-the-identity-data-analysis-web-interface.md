@@ -3,7 +3,7 @@ title: Identity Data Analysis
 description: Learn how to use the Data Analysis tool to analyze data sets and understand the data analysis results for Entry Statistics, Value Statistics, and Correlation Candidates. 
 ---
 
-# Chapter 2: Using the Identity Data Analysis Tool
+## Using the Identity Data Analysis Tool
 
 The Identity Data Analysis web tool is accessible from the RadiantOne Main Control Panel > Wizards tab. 
 
