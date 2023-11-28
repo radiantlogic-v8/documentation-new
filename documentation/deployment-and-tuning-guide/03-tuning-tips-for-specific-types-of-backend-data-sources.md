@@ -206,7 +206,7 @@ If enableLdapServerTimeLimit is set to true, RadiantOne FID uses the time limit 
 
 JNDI connection pooling to a backend LDAP source is enabled by default.
 
-To change the maximum connections to maintain in the pool, the idle timeout, or connection timeout, simply change the setting from the Main Control Panel > Settings tab >S erver Backend section > Connection Pooling sub-section (requires [Expert Mode](00-preface#expert-mode)).
+To change the maximum connections to maintain in the pool, the idle timeout, or connection timeout, simply change the setting from the Main Control Panel > Settings tab > Server Backend section > Connection Pooling sub-section (requires [Expert Mode](00-preface#expert-mode)).
 
 *Pool Size*
 
