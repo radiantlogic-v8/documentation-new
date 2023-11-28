@@ -1,6 +1,6 @@
 ---
 title: Deployment and Tuning Guide
-description: Learn how to stop and start RadiantOne FID and Global Synchronization using the Control Panel.
+description: Learn how to stop and start the RadiantOne service.
 ---
 
 # Starting and Stopping Components and Services
@@ -9,7 +9,8 @@ This chapter describes how to start and stop the RadiantOne service and the web 
 
 ## RadiantOne Service
 
-You can restart the RadiantOne service from the Main Control Panel > Dashboard tab. You can also restart the RadiantOne service from the Environment Operations Center. For details, see the Environment Operations Center Guide.
+You can restart the RadiantOne service from the [Environment Operations Center](/environment-operations-center-guide/environments/environment-details/environment-overview/). Select the environment and use the options shown when clicking on ![An image showing ](Media/power-icon.jpg) to start/stop/restart the service.
+![An image showing ](Media/restart-service.jpg)
 
 ## Global Synchronization
 
