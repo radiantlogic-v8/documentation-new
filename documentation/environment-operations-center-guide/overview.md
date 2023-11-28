@@ -5,13 +5,13 @@ description: Get a quick introduction to the Environment Operations Center inclu
 ---
 # Getting Started
 
-Environment Operations Center allows you to control your RadiantOne implementation in a cloud environment. It provides all of the required tools to create, manage, and monitor your RadiantOne environments. 
+Environment Operations Center allows you to control your RadiantOne implementation in a cloud environment. It provides all of the required tools to create, manage, and monitor your RadiantOne environments.
 
 This guide provides an overview of the Environment Operations Center home screen and how to navigate the application user interface.
 
 ## Overview
 
-After logging in to the Environment Operations Center, the *Overview* screen appears. This is the Env Ops Center home screen and provides access to Radiant Logic supporting documentation. This screen also provides a high-level overview of your environments. 
+After logging in to the Environment Operations Center, the *Overview* screen appears. This is the Env Ops Center home screen and provides access to Radiant Logic supporting documentation. This screen also provides a high-level overview of your environments.
 
 A navigation bar is located to the left and is visible from all screens within Environment Operation Center. You can access your account settings by selecting the avatar in the upper right corner, also visible from all screens in the application.
 
@@ -27,38 +27,13 @@ To access supporting documentation from within Environment Operations Center, se
 
 The *Environments* section on the *Overview* screen allows you to quickly preview your available environments and sort the previews by status.
 
-![image description](images/env-section.png)
-
-Each environment preview contains the environment name, type, status, number of nodes, and version number.
+Each preview contains the Operational, Warning, Critical and Offline statuses of the applications
 
 ![image description](images/env-card.png)
 
-The environments displayed differ depending on your assigned role in Environment Operations Center. The Tenant Administrator environment preview displays all of your organization's environments. Environment Administrators and Environment Users will only be able to preview the environments assigned to them.
+The application/environments data displayed differ depending on your assigned role in Environment Operations Center. The Tenant Administrator environment preview displays all of your organization's environments. Environment Administrators and Environment Users will only be able to preview the environments assigned to them.
 
 For further details on role-based permissions, see the [role-based permissions](../admin/role-based-permission/role-based-permissions.md) guide.
-
-#### Filter environments
-
-A status count displays how many environments have a status of "Critical", "Warning", and "Operational".
-
-![image description](images/env-status-cards.png)
-
-To filter the displayed environments by status, select a status card. For example, selecting "Critical" will update the *Environments* section to only display environments with "Outage" statuses.
-
-![image description](images/filter-status.png)
-
-#### Manage environments
-
-Each environment preview contains an **Options** (**...**) menu that allows you to access further details about the environment or delete it. Dropdown menu options include:
-
-- View Details: Navigate to the detailed screen of the environment to view additional information.
-- Adjust Scale: Increase or decrease the number of nodes in the environment.
-- View Logs: Navigate to the logs tab for the environment.
-- Delete: Begin the workflow to delete the environment.
-
-To learn more about each of these actions, review the [environment details](../environments/environment-details/environment-overview.md) overview, the [logs](../environments/logging/environment-logs.md) guide, or the guide to [delete an environment](../environments/environment-details/delete-environment.md).
-
-![image description](images/env-options.png)
 
 ## Left navigation
 
@@ -108,13 +83,13 @@ For details on managing data connections, see the [secure data connectors](../se
 
 From the *Admin* section you can perform various administrative actions in Environment Operations Center. Select **Admin** to navigate to the *Admin* home screen.
 
-For further details on operations available in the *Admin* section, see the [admin overview](/environment-operations-center-guide/admin/admin-overview.md) guide.
+For further details on operations available in the *Admin* section, see the [admin overview](../admin/admin-overview.md) guide.
 
 ![image description](images/admin.png)
 
 ## Account settings
 
-A user avatar is always located in the upper right corner of the Env Ops Center user interface. Select the avatar to expand your account dropdown menu. 
+A user avatar is always located in the upper right corner of the Env Ops Center user interface. Select the avatar to expand your account dropdown menu.
 
 ![image description](images/profile-icon.png)
 

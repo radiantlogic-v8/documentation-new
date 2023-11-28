@@ -23,7 +23,8 @@ Begin the environment update workflow from the home screen, by selecting the **U
 
 ![image description](images/select-update.png)
 
-Clicking on **UPDATE** will open the **Update Environment** dialog box.
+Clicking on **UPDATE** from environments page, will open the detailed overview page for the selected environment.
+In the detailed overview for the environment page, you can see the current version and an **UPDATE** option beside it.
 
 ![image description](images/update-env-dialog.png)
 
@@ -51,13 +52,16 @@ After selecting **Update** you will return to the main *Environments* screen. Th
 
 ![image description](images/updating-env-message.png)
 
+When the application is updating, the status of application under the environment, in environments page shows up as offline
+
+![image description](images/offline-when-updating.png)
+
 If the environment updates successfully, you will receive a success notification and the environment's status will change to "Operational".
-
-
 
 ![image description](images/update-success.png)
 
 ![image description](images/update-success-operational.png)
+
 
 If the environment update is unsuccessful, you will receive an error notification and the environment's status will change to "**Update Failed**".
 
@@ -68,8 +72,6 @@ You can view updates previously applied to an environment from the *Version Hist
 ### View previous updates
 
 To navigate to an environment's details section, select the environment name from the *Environments* home screen.
-
-![image description](images/view-env-details.png)
 
 This brings you to the environment *Overview* screen. From here, select **View Version History** in the *Environment Details* section to open the *Version History* dialog.
 

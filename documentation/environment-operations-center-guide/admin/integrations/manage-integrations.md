@@ -9,7 +9,7 @@ External communication channels can be integrated with Environment Operations Ce
 
 ## Getting started
 
-The *Integrations* tab provides an overview of existing integrations and lists the label, integration type, and channel for each integration. 
+The *Integrations* tab provides an overview of existing integrations and lists the label, integration type, and channel for each integration.
 
 ![image description](images/home.png)
 
@@ -44,8 +44,6 @@ Each integration listed on the *Integrations* tab has an **Options** (**...**) d
 ![image description](images/edit.png)
 
 The workflow to edit an integration is the same as the *New Integration* workflow. You can select a new integration type and add the required configuration details. Alternatively, you can keep the same integration type and proceed to adjust the configuration details.
-
-Select **Create** to update the integration (**confirming with RL if there will be a separate edit integration dialog and a different name for the button**).
 
 [!note] When updating an integration, ensure any alerts that have been created for the channel are also updated with the correct channel information. See the [alert management](../alert-management/alert-management-overview.md) documentation for details on editing alerts.
 

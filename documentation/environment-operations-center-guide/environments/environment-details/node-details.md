@@ -9,19 +9,27 @@ This guide outlines the required steps adjust the number of nodes in an environm
 
 ## Adjust number of nodes
 
-To set the number of FID nodes contained in an environment, select the **Options** (**...**) menu and select **Scale**.
+To set the number of FID nodes contained in an environment, select the  **Scale** option under "Application Details"
 
 ![image description](images/select-scale.png)
 
 In the *Adjust Environment Scale* dialog, use the provided slider to increase or decrease the quantity. Alternatively, you can select either the minus (**-**) or plus (**+**) sign on either side of the slider to increase or decrease the number of FID nodes to display.
 
+By default the scale reflects the number of nodes at the current state.
+
+![image description](images/default-scale.png)
+
+Adjust the scale to required number of nodes
+
 ![image description](images/adjust-scale.png)
 
-Confirm your selection to scale the environment
+Confirm your selection to scale the environment, by clicking **UPDATE**
 
 ![image description](images/scale-confirmation.png)
 
 After the confirmation, messages appear on the overview screen, notifying that the environment scale is in process
+
+![image description](images/scale-confirmation-message.png)
 
 ![image description](images/after-scale-confirmation.png)
 
@@ -38,7 +46,7 @@ You can select the node name to open the node details dialog.
 
 ![image details](images/select-node-name.png)
 
-Alternatively, you can select the **Options** (**...**) menu located in the node row to expand the dropdown menu. From the **Options** menu select **View Details** to open the the node details dialog.
+Alternatively, you can select the **Options** (**...**) menu located in the node row to expand the dropdown menu. From the **Options** menu select **View Node Details** to open the the node details dialog.
 
 ![image details](images/options-view-details.png)
 
