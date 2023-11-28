@@ -1,6 +1,6 @@
 ---
-title: Web Services API Guide
-description: Web Services API Guide
+title: SCIM API
+description: SCIM v2 API to the RadiantOne Service
 ---
 
 ## SCIM Overview
