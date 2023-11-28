@@ -1,17 +1,22 @@
-## Persistent Cache
+---
+title: Persistent Cache
+description: Persistent Cache
+---
+
+## Persistent Cache Oveview
 
 Persistent cache is the cache image stored on disk. With persistent cache, the RadiantOne service can offer a guaranteed level of performance because the underlying data source(s) do not need to be queried and once the server starts, the cache is ready without having to “prime” with an initial set of queries. Also, you do not need to worry about how quickly the underlying data source can respond. What is unique about the persistent cache is if the RadiantOne service receives an update for information that is stored in the cache, the underlying data source(s) receives the update, and the persistent cache is refreshed automatically. In addition, you have the option of configuring real-time cache refreshes which automatically update the persistent cache image when data changes directly on the backend sources. For more details, please see [Refreshing the Persistent Cache](#options-for-refreshing-the-persistent-cache).
 
 >[!warning] 
 >If you plan on caching (either entry memory cache or persistent cache) the branch in the tree that maps to an LDAP backend, you must list the operational attributes you want to be in the cache as “always requested”. Otherwise, the entry stored in cache would not have these attributes and clients accessing these entries may need them.
 
-### Disk Space Requirements
+## Persistent Cache Disk Space Requirements
 
 Initialization of a persistent cache happens in two phases. The first phase is to create an LDIF formatted file of the cache contents (if you already have an LDIF file, you have the option to use this existing file as opposed to generating a new one). The second phase is to initialize the cache with the LDIF file. After the first phase, RadiantOne prepares the LDIF file to initialize the cache. Therefore, you need to consider at least these two LDIF files and the amount of disk space to store the entries in cache. 
 
 Best practice would be to take four times the size of the LDIF file generated to determine the disk space that is required to initialize the persistent cache. For example, lab tests have shown 50 million entries (1KB or less in size) generates an LDIF file approximately 50 GB in size. So total disk space recommended to create the persistent cache for this example would be 200 GB.
 
-### Initializing Persistent Cache
+## Initializing Persistent Cache
 
 Persistent cache should be initialized during off-peak hours, or during scheduled downtime, since it is a CPU-intensive process and during the initialization queries are delegated to the backend data sources which might not be able to handle the load.
 
@@ -50,7 +55,7 @@ Once the security key has been defined, check the option to “Use .ldifz (zippe
 
 Figure 2.4: Using LDIFZ File to Initialize Persistent Cache
 
-### Options for Refreshing the Persistent Cache
+## Options for Refreshing the Persistent Cache
 
 There are four categories of events that can invoke a persistent cache refresh. They are:
 
@@ -62,7 +67,7 @@ There are four categories of events that can invoke a persistent cache refresh. 
 
 Each is described below.
 
-**Changes Occurring Through RadiantOne**
+### Changes Occurring Through RadiantOne
 
 If RadiantOne receives an update for an entry that is stored in a persistent cache, the following operations occur:
 
@@ -74,7 +79,7 @@ If RadiantOne receives an update for an entry that is stored in a persistent cac
 
 -	The modified entry is available in the persistent cache.
 
-**Real Time Cache Refresh Based on Changes Occurring Directly on the Backend Source(s)**
+### Real Time Cache Refresh Based on Changes Occurring Directly on the Backend Source(s)
 
 When a change happens in the underlying source, connectors capture the change and send it to update the persistent cache. The connectors are managed by agents built into RadiantOne and changes flow through a message queue for guaranteed message delivery. The real-time refresh process is outlined below. 
 
@@ -86,7 +91,7 @@ Persistent Cache Refresh Agents are started automatically once a persistent cach
 
 This type of refresh is described as “Real-time” in the Main Control Panel > Directory Namespace > Cache settings > Cache Branch > Refresh Settings tab (on the right). This is the recommended approach if a real-time refresh is needed.
 
-**Periodic Refresh**
+### Periodic Refresh
 
 In certain cases, if you know the data in the backends does not change frequently (e.g. once a day), you may not care about refreshing the persistent cache immediately when a change is detected in the underlying data source. In this case, a periodic refresh can be used.
 
@@ -111,7 +116,7 @@ The periodic persistent cache refresh activity is logged into periodiccache.log.
 
 The rebuild process can be very taxing on your backends, and each time a new image is built you are putting stress on the data sources. This type of cache refresh deployment works well when the data doesn’t change too frequently and the volume of data is relatively small. 
 
-### Configuring Persistent Cache with Periodic Refresh
+## Configuring Persistent Cache with Periodic Refresh
 
 Review the section on [periodically refreshing the cache](#periodic-refresh) to ensure the persistent cache is updated to match your needs. If you plan on refreshing the cache image periodically on a defined schedule, this would be the appropriate cache configuration option. This type of caching option leverages the internal RadiantOne Universal Directory storage for the cache image.
 
@@ -152,7 +157,7 @@ After you choose to either generate or re-use an LDIF file, click Finish and cac
 
 After the persistent cache is initialized, queries are handled locally by the RadiantOne service and no longer be sent to the backend data source(s). For information about properties associated with persistent cache, please see [Persistent Cache Properties](#persistent-cache-properties).
 
-**Periodic Refresh CRON Expression**
+### Periodic Refresh CRON Expression
 
 If periodic refresh is enabled, you must define the refresh interval in this property. For example, if you want the persistent cache refreshed every day at 12:00 PM, the CRON expression is: 
 0 0 12 1/1 * ? *
@@ -162,7 +167,7 @@ Click **Assist** if you need help defining the CRON expression.
  
 Figure 2.7: CRON Expression Editor
 
-**Delete Validation Threshold**
+### Delete Validation Threshold
 
 For details on how the periodic persistent cache refresh process works, see [Periodic Refresh](#periodic-refresh).
 
@@ -172,7 +177,7 @@ To define a granular threshold for delete operations, indicate the percentage in
 
 If a validation threshold is configured, the threshold is checked.
 
-**Add Validation Threshold**
+### Add Validation Threshold
 
 For details on how the periodic persistent cache refresh process works, see [Periodic Refresh](#periodic-refresh).
 
@@ -180,7 +185,7 @@ You can define a threshold to validate the generated LDIF file/image prior to Ra
 
 To define a granular threshold for add operations, indicate the percentage in the Add Validation Threshold. For example, if Add Validation Threshold contains a value of 50, it means if the generated LDIF image contains 50% more entries than the current cache image, the periodic persistent cache refresh is aborted for the current refresh cycle.
 
-### Configuring Persistent Cache with Real-Time Refresh 
+## Configuring Persistent Cache with Real-Time Refresh 
 
 If you plan on automatically refreshing the persistent cache as changes happen on the backend data sources, this would be the recommended cache configuration option. This type of caching option leverages the RadiantOne Universal Directory storage for the cache image. 
 
