@@ -629,7 +629,7 @@ Based on the New Entry DN Expression in the Resource Type configuration describe
  
 Figure 14: Sample Entry Created with a SCIM POST Operation
 
-#### Update (PATCH) User
+### Update (PATCH) User
 
 The following example updates an entry for a user named Barbara Jensen in one of the default RadiantOne Universal Directory stores located at o=companydirectory.
 
