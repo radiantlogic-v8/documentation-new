@@ -3,13 +3,13 @@ title: Deployment and Tuning Guide
 description: Learn how to tune RadiantOne performance by configuring persistent cache. Topics include initializing the persistent cache, using paging, and supporting zipped and encrypted ldif files. Options and configuration details for refreshing persistent cache are also discussed. 
 ---
 
-# Tuning Tips for Caching in the RadiantOne Federated Identity Service
+## Tuning Tips for Caching
 
 This chapter provides guidelines on how to effectively use caching for optimal performance. The first part covers the different categories and levels of cache along with a quick review of the different use cases that justify a cache deployment. The second part provides details and describes the advantages and trade-off between “in-memory” and “persistent” cache. Finally, a description of cache refresh methods is reviewed. This is an essential and often overlooked aspect of cache management.
 
-Persistent caching is only associated with the RadiantOne Federated Identity module and is irrelevant for [RadiantOne Universal Directory](04-tuning-tips-radiantone-universal-directory.md).
+Persistent caching is only associated with the RadiantOne Federated Identity module and is irrelevant for [RadiantOne Directory](04-tuning-tips-radiantone-universal-directory.md).
 
-## When and why do you need a cache with RadiantOne FID?
+## When and why do you need a cache?
 
 There are many cases where RadiantOne is leveraged more for its flexibility rather than its pure speed. However, in most critical operations such as identification, authentication, and authorization, it needs to provide guaranteed fast access to information. In fact, in many cases RadiantOne needs to provide read operations that are faster than what can be delivered by the underlying sources. What is meant by “fast”, is a level of performance that is at least 3 to 5 times what can be derived from standard relational databases (RDBMS) – as an example. 
 
@@ -29,28 +29,28 @@ To better understand the different aspects of performance and cache for RadiantO
 
 The performance of the RadiantOne service depends on a front-end layer that shares most of the logic of an LDAP server and as such can leverage the same optimization strategies. However, performance also depends even more on the back–end layer, which really represents the virtualization. This is where the secret for performance and scalability resides and, where a solid and scalable caching mechanism is indispensable.
 
-###Front-end performance
+## Front-end performance
 
 The RadiantOne front-end shares most of the layers of a “classic” LDAP directory and the same “potential” bottlenecks. They are essentially at: 
 -	The TCP/IP server (and client) connections 
 
 -	The first level of query parsing
 
-#### TCP/IP Connections and Connection Pooling
+### TCP/IP Connections and Connection Pooling
 
 The first bottleneck is common to any TCP/IP based server and not specific to LDAP servers. Even if a server could set aside resources (memory and handles) for an arbitrarily large number of connections, what the server can really support (the effective number of concurrent connections) is dictated by the underlying hardware platform, bandwidth and operating system. Once this level is reached, no matter how powerful the underlying hardware is (in terms of processing throughput), the server is idle and waiting for the establishment of the connections. In this case the only possible optimization at the TCP layer would be by using specific hardware such as TCP offload engines, more bandwidth, better routers and/or scaling out by load balancing.
 
 The latency of a TCP/IP client connection is another point to consider in the terms of performance. The latency of a TCP/IP client connection, compared to the speed of the processor is extremely high. As a result, multiple connections and disconnections hamper the apparent throughput of any directory server. (An easy way to verify this fact is to run the “search rate” utility (as described in [Chapter 5](05-testing-radiantone-performance.md)) against any LDAP directory with or without keeping the connection open after each search). With multiple connections/disconnections the search rate of a server drops to a quarter or a third of the normal throughput. At the same time the CPU of the server shows a lot of idle cycles. Most of the time is spent waiting for the establishment or re-establishment of the client TCP/IP connection. Since the RadiantOne service must connect to many distributed sources, it acts as a client to many TCP/IP servers, and so the cumulated latencies could be quite high. The solution to this problem consists in pooling the different connections by class of connected servers to reuse existing connections as much as possible. It is essentially a form of cache for an already open structure needed for a connection. Therefore, support for connection pooling is an important feature for RadiantOne in dynamic access mode (without caching any data at the level of the server). For details on connection pooling, please see [Chapter 3](03-tuning-tips-for-specific-types-of-backend-data-sources.md).
 
-#### First Level of Query Parsing
+### First Level of Query Parsing
 
 The second issue is the overhead generated by the parsing of incoming queries. Although a lot less expensive than TCP/IP overhead, the parsing time is not negligible. To optimize, RadiantOne couples a query cache with an entry cache. The idea is that by caching a frequently issued query and its result set (entry cache), significant server time can be saved. This strategy works well when information is not too volatile. The cache is equipped with a LRU (least recently used) eviction policy and TTL (time-to-live) marker for both queries and entries. 
 
 However, query cache and entry cache are not the panacea to addressing performance issues. Query cache is relatively blind and based essentially on syntax and not semantics: two queries yielding equivalent results but using a slightly different syntax are represented twice in the cache. Another limitation is the size of these caches. As volume increases, many factors start to negate the value of the approach. The cache refresh strategy is more complex, and latency in case of failure and cold restart (the cache needs to be re-populated before providing its performance boost) can be stumbling blocks. For these reasons, these categories of caches in RadiantOne are used essentially as a performance enhancer rather than the base for server speed. If correctly sized, such a cache brings a 15 to 30% performance boost to a server (unless the whole dataset is quite small and could fit entirely in memory). The next section explains that the key to scalability and sustainable performance for a directory with significant volume rests upon its indexing strategy for entries and access paths.
 
-### Back-end Performance
+## Back-end Performance
 
-**The “Secret” of LDAP Directory Speed**
+### The “Secret” of LDAP Directory Speed
 
 The beginning of this chapter referred to the speed of a directory being primarily focused on reads. So, how fast is fast? Between 1500 to 2000 queries per second/per GHZ/per processor (Pentium IV class machine on a Windows Server or Linux) for LDAP (Sun or Netscape 4.x to 5.x) versus 150 to 300 queries per second for a RDBMS (Oracle, DB2, or SQL Server) for a standard entry search with fully indexed queries. The size of an entry for these performance numbers is about 512 bytes, and the number of entries in the LDAP directory was 2 million. These numbers reflect a search operation for identification purposes (login). This performance is quite stable, even if the volume of entries goes up to 80 to 100 million entries. However, the size of an entry is a factor in terms of performance. At 2 KB or more per entry the search rate starts to drop quickly.
 
@@ -58,7 +58,7 @@ The performance secret of an LDAP server when it comes to read and search operat
 
 Due to their relative simplicity, LDAP directories fully benefit from the classic advantages of B+ tree indexing. Searching for an entry based on a fully indexed attribute can be delivered in a guaranteed time and scale quite well. Even without page caching, a B+ tree index can retrieve an indexed attribute (in the worst case) in no more than log N disk accesses, N being the number of entries. This simple and robust structure explains the performance and stability of LDAP directories when it comes to read even with a significant number of entries (100 million entries or more). More importantly, this level of speed can be guaranteed even with a relatively modest amount of main memory, again one of the strong points for B+Trees. However, the story in terms of writes is not as good. Writing is an expensive operation, which does not scale well when the volume of entries increases. If this constraint is added, the fact that an LDAP directory must maintain many indexes (ideally as many as potentially “searchable” attributes), you can see that the number of updates is the key factor that limits the scalability of a classic directory. As is well documented, a directory is optimized for read with a modest amount of writes.
 
-**The Different Caching Strategies**
+### The Different Caching Strategies
 
 Where are the bottlenecks for the RadiantOne service? As described in this chapter, when it comes to the front-end layer read/search speed, RadiantOne is comparable to a classic directory. The optimizations at this level are also similar. The target is essentially to optimize the TCP/IP connections and to re-use the previous queries and corresponding results sets (Query cache and entry cache - see previous sections) when and where possible.
 
@@ -80,11 +80,23 @@ Cache refresh strategies can be divided into two main categories:
 -	Polling the changes either periodically or based or an expiration of a “time-to-live“ value assigned to a cache entry
 -	Detecting the change events directly at the sources (triggers or other methods)
 
-#### Memory Cache
+RadiantOne offers different caching options to accommodate a variety of deployment needs.
+-	Memory Cache (Entry Cache and Query Cache). Best for:
+* Low volatility during the life of the cache (the time to live).
+
+** Repetitive Queries – a query having exactly the same syntax (same user, same filter, same ACL).
+
+*** Low Volume – The size of the cache as measured by (Nb entries * entry size * 2.5) cannot exceed the amount of memory allocated for cache.
+
+-	Persistent Cache
+For persistent cache, there is no limitation in terms of number of entries since everything is stored on disk. When fully indexed, the persistent cache provides performance levels comparable to the fastest “classic” LDAP directory.
+
+
+**Memory Cache**
 
 In this approach, cached entries are stored solely in memory. In terms of implementation, this approach has the advantage of simplicity. However in practice, this solution may present many potential issues depending on the use case. In most cases, memory cache works when the volume of entries and the complexity of the queries are modest. However, with sizeable volume (and often the flexibility of a federated identity service tends to yield many use cases which quickly add an increased demand in terms of memory) and the variable latencies and volatility (update rates) of the virtualized data sources, it is difficult to guarantee the performance of a memory cache solution. The greatest risks with a memory cache result when the query pattern is not predictable and the data set volume exceeds the size of memory. Furthermore, some categories of directory views are not good candidates for caching because the operation can never guarantee that all possible observable results are retrieved at the right time. If the volatility of the underlying data store is high, and the volume of data is significant, then a memory cache with a time-to-live refresh strategy alone is very difficult to put in place and will not guarantee an accurate “image” or will generate excessive refresh volume negating the advantages of the cache. As a result, providing guaranteed performance is difficult if not impossible. Moreover, as volume increases or when queries needed to build the virtual image are more complex, the latency incurred by accessing the underlying sources just to rebuild the memory cache after a cold restart becomes more and more problematic. As a consequence, memory cache provides performance improvements only in very specific cases. Memory cache needs to be considered more like a partial/incremental improvement boost rather than a complete solution to guaranteed performance.
 
-### Persistent Cache
+**Persistent Cache**
 
 In this approach, images of the virtual entries are stored in the local RadiantOne Universal Directory. This approach allows for fast recovery in case of failure. The whole virtual tree could be cached this way and a large volume of entries can be supported (hundreds of millions entries - essentially no practical limit if combined with partitioning and clusters). 
 
@@ -103,197 +115,22 @@ Figure 2.1: Cache implementation diagram
 >[!note] 
 >For persistent cache, there is no limitation in terms of number of entries since everything is stored on disk. When fully indexed, the persistent cache provides performance levels comparable to the fastest “classic” LDAP directory and even better performance when it comes to modify operations.
 
-## Cache
 
-RadiantOne offers different caching options to accommodate a variety of deployment needs.
--	Memory Cache (Entry Cache and Query Cache)
 
--	Persistent Cache
-
-The diagram below provides a general “rule of thumb” as to what type of cache to implement. 
-
-* Low volatility during the life of the cache (the time to live).
-
-** Repetitive Queries – a query having exactly the same syntax (same user, same filter, same ACL).
-
-*** Low Volume – The size of the cache as measured by (Nb entries * entry size * 2.5) cannot exceed the amount of memory allocated for cache.
-
-For persistent cache, there is no limitation in terms of number of entries since everything is stored on disk. When fully indexed, the persistent cache provides performance levels comparable to the fastest “classic” LDAP directory.
-
-### Memory Cache
-
-A memory cache (requires [Expert Mode](00-preface#expert-mode)) can be configured for any virtual directory view and there are two different types of memory caching available: [Entry Memory Cache](#configuring-entry-memory-cache) and [Query Memory Cache](#configuring-query-cache). They can be used together or individually. 
-
->[!warning] 
->If you plan on using both entry and query cache on the same view/branch, be aware that the query cache is searched first.
-
-#### Configuring Entry Memory Cache
-
-This model of caching leverages two types of memory: Main and Virtual. Main memory is the real memory where a certain number of most recently used entries reside. Virtual memory is memory on disk where all entries that exceed the amount allowed in the main memory reside. The swapping of entries from Virtual to Main memory (and vice versa) is managed by RadiantOne.
-
-First, enable the Entry Memory Cache. In the Main Control Panel > Settings Tab > Server Front End section > Memory Cache sub-section (requires [Expert Mode](00-preface#expert-mode)), on the right side, check the Entry Cache box. Click Save in the top right corner.
-
->[!warning] 
->If you plan on caching (either entry memory cache or persistent cache) the branch in the tree that maps to an LDAP backend, you must list the operational attributes you want to be in the cache as “always requested”. Otherwise, the entry stored in cache would not have these attributes and clients accessing these entries may need them. For details on how to define attributes as “always requested” please see the RadiantOne System Administration Guide.
-
-Entry cache is for caching every entry (a unique DN) of the specified tree. This kind of cache works well on trees where the volatility (update rate) is low (the likelihood of this data changing during the lifetime of this cache is low). This type of cache is optimized for and should only be used for finding specific entries (e.g. finding user entries during the “identification” phase of authentication) based on unique attributes that have been indexed in the cache setting, and base searches. The attributes you choose to index for the cache are very important because the value needs to be unique across all entries in the cache. For example, if you index the uid attribute, then all entries in the cache must have a unique uid (and be able to be retrieved from the cache based on this value). On the other hand, an attribute like postalcode would not be a good attribute to index (and search for entries based on) because more than one entry could have the same value for postalcode.
- 	
->[!warning]
->The DN attribute is indexed by default. DNs are unique for each entry which is the reason why base searches can be optimized with the entry cache.
-
-For example, to populate/pre-fill the entry cache with unique user entries, you can preload with a query like:
-
-```
-ldapsearch -h localhost -p 2389 -D “uid=myuser,ou=people,dc=vds” -w secret -b “ou=people,dc=vds” -s sub (uid=*)
-```
-
-With this type of LDAP search, all entries (containing uid) are stored in the entry memory cache. Therefore, if a client then searched for:
-
-```
-ldapsearch -h localhost -p 2389 -D “uid=myuser,ou=people,dc=vds” -w secret -b “ou=people,dc=vds” -s sub (uid=lcallahan)
-```
-
-The entry could be retrieved from the entry cache and the underlying source would not need to be accessed.
-
-Also, since all DNs in an LDAP tree are unique, base searches can benefit from entry cache. Continuing with the example above, if a client performed a base search on uid=lcallahan,ou=people,dc=vds, the entry could be retrieved from the entry cache.
-
->[!warning]
->Entry Memory Cache works for BASE searches on entries as well as on One Level and Sub Tree searches. However, for One Level and Sub Tree searches, whether the entry is returned from cache depends on whether the filter is "qualified" or not. Qualified means that the attribute in the filter is one that is indexed in your cache. Remember, only UNIQUE attributes can be indexed in your cache. You could index something like cn, which is fine if it is unique across all your entries. You cannot however index something like objectclass as more than one entry could be of the same objectclass.
-
-For example, if your entry cache settings indexed the cn attribute, a search like the following (using the ldapsearch command line utility) doesn’t qualify to return the entry from entry cache even though it may be in the cache:
-
-```
-ldapsearch -h localhost -p 2389 -D "cn=directory manager" -w secret -b "cn=Laura Callahan,ou=Active Directory,dc=demo" -s sub (objectclass=*)
-```
-
-However, both of the following searches WOULD return the entry from the memory cache (because one uses a subtree search requesting a filter based on the indexed attribute, and one is a base search):
-
-```
-ldapsearch -h localhost -p 2389 -D "cn=directory manager" -w secret -b "cn=Laura Callahan,ou=Active Directory,dc=demo" -s sub "(cn=Laura Callahan)"
-
-ldapsearch -h localhost -p 2389 -D "cn=directory manager" -w secret -b "cn=Laura Callahan,ou=Active Directory,dc=demo" -s base "(objectclass=*)"
-```
-
-To configure an entry memory cache, follow the steps below (requires [Expert Mode](00-preface#expert-mode)).
-1.	On the Main Control Panel > Settings Tab > Server Front End section > Memory Cache sub-section, on the right side click Add in the Entry Cache section.
-2.	Select a starting point location in the virtual tree. All entries queried below this point are cached. The maximum number of entries allowed in the main memory is specified in the Number of Cache Entries parameter.
-3.	Enter values for the Number of Cache Entries, Time to Live, Indexed attributes, and include/exclude filters. Details about these settings can be found below.
-
-![An image showing ](Media/Image2.2.jpg)
- 
-Figure 2.2: Entry Cache Settings
-
-**Time to Live**
-
-The amount of time that entries should remain in cache. After the time has been reached, the entry is removed from the cache. The next request for the entry is sent to the underlying data store(s). The result of the request is then stored in the memory cache again. This value is specified in minutes. The default value for this parameter is 60 (1 hour).
-
-**Indexes**
-
-Enter the attribute names in the cache that should be indexed. The values need to be separated with a comma. The attribute names must represent unique values for all entries across the entire cache. You must only index attributes that have unique values, otherwise the response from the cache can be unpredictable. For example, if you indexed the postalCode attribute, your first request with a filter of (postalCode=94947) may return 50 entries (because the query would be issued to and returned from the underlying source). However, your second request would only return 1 entry (because RadiantOne expects to find only one unique entry in the cache that matches a postalCode=94947, and this is typically the last entry that was added to the cache). If this functionality does not meet your needs, you should review the query cache and persistent cache options.
-
-**Include Filter**
-
-Enter a valid LDAP filter here that defines the entries that should be included in the cache. Only entries that match this filter are cached. 
-
-As an alternative approach, you can indicate what entries to exclude by using the Exclude filter described below.
-
-**Exclude Filter**
-
-Enter a valid LDAP filter here that defines the entries that should be excluded from the cache. All entries that match this filter are not cached. 
-
-As an alternative approach, you can indicate what entries to include by using the Include filter described above.
-
-**Number of Cached Entries**
-
-The total number of entries kept in main memory. The entry cache can expand beyond the main memory and the entries are swapped as needed. The default value for this parameter is 5000. This means that up to 5000 most recently used entries are put in the main memory cache. As the number of entries exceeds 5000, they are stored as virtual memory (memory on disk) and swapped as needed. The default value of 5000 is usually sufficient.
-
-##### Memory Size Requirements
-
-###### For Entries
-
-As a rule of thumb, you should take the average size of one of your entries and multiply by the number of entries you want to store in main memory. Then multiply this total number (the size for all entries) by 2.5. This gives you the amount of main memory you should allocate to store the entries.
-
-##### For Indexes
-
->[!note] 
->This value is the total number of pages for each indexed attribute. The default size is 1000 pages. Which means there are, at most, 1000 index pages for each attribute you have indexed.
-
-For each indexed attribute, the amount of memory consumed per page is calculated by taking the average size of an indexed value x 3 x 64.
-
-You should keep in mind that dn is always indexed (although it doesn’t appear in the index list). Therefore, the dn attribute by itself consumes the following (assuming the dn is an average of 200 bytes in size):
-
-200 x 3 x 64 = 38,400 bytes (approximately 39 KB per index page)
-
-The default of 1000 index pages, consumes about (1000 x 39 KB) 39 MB in memory for the dn attribute.
-
-Now, calculate the amount for each attribute you have indexed and add it to the 39 MB.
-
-For example, if you index the attribute uid, and the average uid is 20 characters, you would have 20x3x64 = 3840 byes (approximately 4 KB per index page).
-
-With 1000 index pages (1000 x 4 KB), about 4 MB in memory is consumed for the uid attribute.
-
-If you have 10 attributes indexed (all on average of 20 characters), the total consumption of memory would be about 40 MB + 39 MB (for the dn attribute) for a total of 79 MB.
-
-### Total Memory Size Requirements
-
-Add entry memory cache requirements and index memory cache requirements together to get the total memory size required for your cache.
-
-### Configuring Query Cache
-
-Query cache is sensitive to syntax. To benefit from the query cache, it must be the exact same query (from the same person, ACI, asking for the same information). This type of caching is good for repetitive queries (of the same nature).
-
-Query cache is only applicable on naming contexts that are not configured as persistent cache.
-
-First, enable the Query Memory Cache (requires [Expert Mode](00-preface#expert-mode)).
-
-1.	On the Main Control Panel > Settings Tab > Front End section > Memory Cache sub-section, on the right side, check the box in the Query Cache section.
-
-2.	Click **Add** in the Query Cache section.
-
-3.	Select a starting point location in the RadiantOne namespace. All queries below this point are cached. 
-
-4.	Enter a Time to Live (in minutes). This is the amount of time that entries should remain in cache. After the time has been reached, the entry is removed from the cache. The next request for the entry is sent to the underlying data store(s). The result of the request is then stored in the memory cache again. This value is specified in minutes. The default is 60 (1 hour).
-
-5.	Click **OK**.
-
-6.	Click **Save** (located in the top right hand corner) to save your settings.
-
->[!warning] 
->The user and ACI information are also part of the query. This is why it was mentioned above that the query cache is sensitive to syntax. If User A issues a query, and then User B issued a query asking for the exact same information, this would count as two queries in the Query Cache.
-
-#### Populating the Memory Cache
-
-##### Entry Cache
-The entry memory cache is filled as the RadiantOne service receives queries. The first time the server receives a request for an entry, the underlying data store(s) is queried and the entry is returned. The entry is stored in the entry memory cache. The entry remains in cache for the time specified in the Time to Live setting.
-
-##### Query Cache
-
-The query memory cache is filled as the RadiantOne service receives queries. The first time the server receives a request, the query is added to the query memory cache, and the underlying data store(s) is queried to retrieve the entries. The entries resulting from the query are also stored in the cache.
-
-#### Refreshing the Memory Cache
-
-A time-to-live parameter can be set for both the entry cache and the query cache. The time starts when the entry/query is added into memory. Once the time-to-live value is reached, the entry/query is removed from the cache. The next time a query is received for the entry, RadiantOne issues a query to the underlying store(s), retrieves the latest value and the entry is stored in the entry memory cache and/or the query memory cache again.
-
-You also have the option to flush the entire memory cache from the Main Control Panel > Settings Tab > Server Front End section > Memory Cache section (requires [Expert Mode](00-preface#expert-mode)). On the right side, click on the “Flush All” button next to the type of cache you are interested in clearing.
-
-![An image showing ](Media/Image2.3.jpg)
- 
-Figure 2.3: Memory Cache Settings
-
-### Persistent Cache
+## Persistent Cache
 
 Persistent cache is the cache image stored on disk. With persistent cache, the RadiantOne service can offer a guaranteed level of performance because the underlying data source(s) do not need to be queried and once the server starts, the cache is ready without having to “prime” with an initial set of queries. Also, you do not need to worry about how quickly the underlying data source can respond. What is unique about the persistent cache is if the RadiantOne service receives an update for information that is stored in the cache, the underlying data source(s) receives the update, and the persistent cache is refreshed automatically. In addition, you have the option of configuring real-time cache refreshes which automatically update the persistent cache image when data changes directly on the backend sources. For more details, please see [Refreshing the Persistent Cache](#options-for-refreshing-the-persistent-cache).
 
 >[!warning] 
 >If you plan on caching (either entry memory cache or persistent cache) the branch in the tree that maps to an LDAP backend, you must list the operational attributes you want to be in the cache as “always requested”. Otherwise, the entry stored in cache would not have these attributes and clients accessing these entries may need them.
 
-#### Disk Space Requirements
+### Disk Space Requirements
 
 Initialization of a persistent cache happens in two phases. The first phase is to create an LDIF formatted file of the cache contents (if you already have an LDIF file, you have the option to use this existing file as opposed to generating a new one). The second phase is to initialize the cache with the LDIF file. After the first phase, RadiantOne prepares the LDIF file to initialize the cache. Therefore, you need to consider at least these two LDIF files and the amount of disk space to store the entries in cache. 
 
 Best practice would be to take four times the size of the LDIF file generated to determine the disk space that is required to initialize the persistent cache. For example, lab tests have shown 50 million entries (1KB or less in size) generates an LDIF file approximately 50 GB in size. So total disk space recommended to create the persistent cache for this example would be 200 GB.
 
-#### Initializing Persistent Cache
+### Initializing Persistent Cache
 
 Persistent cache should be initialized during off-peak hours, or during scheduled downtime, since it is a CPU-intensive process and during the initialization queries are delegated to the backend data sources which might not be able to handle the load.
 
@@ -302,7 +139,7 @@ When initializing persistent cache, two settings you should take into considerat
 >[!warning] 
 >If you are using real-time refresh, make sure the cache refresh components are stopped before re-initializing or re-indexing a persistent cache.
 
-##### Using Paging
+### Using Paging
 
 Depending on the complexity of the virtual view, building the persistent cache image can take some time. Since the internal connections used by RadiantOne to build the persistent cache image are subject to the Idle Connection Timeout server setting, the cache initialization process might fail due to the connection being automatically closed by the server. To avoid cache initialization problems, it is recommended to use paging for internal connections. To use paging:
 
@@ -318,7 +155,7 @@ Depending on the complexity of the virtual view, building the persistent cache i
 
 6.	Click **Save**.
 
-##### Supporting Zipped and Encrypted LDIF Files
+### Supporting Zipped and Encrypted LDIF Files
 
 If you are initializing persistent cache using an existing LDIFZ file, the security key used in RadiantOne (for attribute encryption) where the file was exported must be the same security key value used on the RadiantOne server that you are trying to import the file into.
 
@@ -332,7 +169,7 @@ Once the security key has been defined, check the option to “Use .ldifz (zippe
 
 Figure 2.4: Using LDIFZ File to Initialize Persistent Cache
 
-#### Options for Refreshing the Persistent Cache
+### Options for Refreshing the Persistent Cache
 
 There are four categories of events that can invoke a persistent cache refresh. They are:
 
@@ -344,7 +181,7 @@ There are four categories of events that can invoke a persistent cache refresh. 
 
 Each is described below.
 
-##### Changes Occurring Through RadiantOne
+**Changes Occurring Through RadiantOne**
 
 If RadiantOne receives an update for an entry that is stored in a persistent cache, the following operations occur:
 
@@ -356,7 +193,7 @@ If RadiantOne receives an update for an entry that is stored in a persistent cac
 
 -	The modified entry is available in the persistent cache.
 
-#### Real Time Cache Refresh Based on Changes Occurring Directly on the Backend Source(s)
+**Real Time Cache Refresh Based on Changes Occurring Directly on the Backend Source(s)**
 
 When a change happens in the underlying source, connectors capture the change and send it to update the persistent cache. The connectors are managed by agents built into RadiantOne and changes flow through a message queue for guaranteed message delivery. The real-time refresh process is outlined below. 
 
@@ -368,7 +205,7 @@ Persistent Cache Refresh Agents are started automatically once a persistent cach
 
 This type of refresh is described as “Real-time” in the Main Control Panel > Directory Namespace > Cache settings > Cache Branch > Refresh Settings tab (on the right). This is the recommended approach if a real-time refresh is needed.
 
-##### Periodic Refresh
+**Periodic Refresh**
 
 In certain cases, if you know the data in the backends does not change frequently (e.g. once a day), you may not care about refreshing the persistent cache immediately when a change is detected in the underlying data source. In this case, a periodic refresh can be used.
 
@@ -393,7 +230,7 @@ The periodic persistent cache refresh activity is logged into periodiccache.log.
 
 The rebuild process can be very taxing on your backends, and each time a new image is built you are putting stress on the data sources. This type of cache refresh deployment works well when the data doesn’t change too frequently and the volume of data is relatively small. 
 
-#### Configuring Persistent Cache with Periodic Refresh
+### Configuring Persistent Cache with Periodic Refresh
 
 Review the section on [periodically refreshing the cache](#periodic-refresh) to ensure the persistent cache is updated to match your needs. If you plan on refreshing the cache image periodically on a defined schedule, this would be the appropriate cache configuration option. This type of caching option leverages the internal RadiantOne Universal Directory storage for the cache image.
 
@@ -420,11 +257,11 @@ To configure persistent cache with Periodic refresh
 
 There are two options for initializing the persistent cache: Creating a new LDIF file or initializing from an existing LDIF file. Each is described below.
 
-#### Create an LDIF from a Snapshot
+*Create an LDIF from a Snapshot*
 
 If this is the first time you’ve initialized the persistent cache, then you should choose this option. An LDIF formatted file is generated from the virtual view and then imported into the local RadiantOne Universal Directory store.
 
-**Initialize from an Existing LDIF File**
+*Initialize from an Existing LDIF File*
 
 If you’ve initialized the persistent cache before and the LDIF file was created successfully from the backend source(s) (and the data from the backend(s) has not changed since the generation of the LDIF file), then you can choose to use that existing file. The persisting of the cache occurs in two phases. The first phase generates an LDIF file with the data returned from the queries to the underlying data source(s). The second phase imports the LDIF file into the local RadiantOne Universal Directory store. If there is a failure during the second phase, and you must re-initialize the persistent cache, you have the option to choose the LDIF file (that was already built during the first phase) instead of having to re-generate it (as long as the LDIF file generated successfully). You can click browse and navigate to the location of the LDIF. The LDIF files generated are in <RLI_HOME>\<instance_name>\ldif\import.
 
@@ -434,7 +271,7 @@ After you choose to either generate or re-use an LDIF file, click Finish and cac
 
 After the persistent cache is initialized, queries are handled locally by the RadiantOne service and no longer be sent to the backend data source(s). For information about properties associated with persistent cache, please see [Persistent Cache Properties](#persistent-cache-properties).
 
-##### Periodic Refresh CRON Expression
+**Periodic Refresh CRON Expression**
 
 If periodic refresh is enabled, you must define the refresh interval in this property. For example, if you want the persistent cache refreshed every day at 12:00 PM, the CRON expression is: 
 0 0 12 1/1 * ? *
@@ -444,7 +281,7 @@ Click **Assist** if you need help defining the CRON expression.
  
 Figure 2.7: CRON Expression Editor
 
-##### Delete Validation Threshold
+**Delete Validation Threshold**
 
 For details on how the periodic persistent cache refresh process works, see [Periodic Refresh](#periodic-refresh).
 
@@ -454,7 +291,7 @@ To define a granular threshold for delete operations, indicate the percentage in
 
 If a validation threshold is configured, the threshold is checked.
 
-##### Add Validation Threshold
+**Add Validation Threshold**
 
 For details on how the periodic persistent cache refresh process works, see [Periodic Refresh](#periodic-refresh).
 
@@ -462,7 +299,7 @@ You can define a threshold to validate the generated LDIF file/image prior to Ra
 
 To define a granular threshold for add operations, indicate the percentage in the Add Validation Threshold. For example, if Add Validation Threshold contains a value of 50, it means if the generated LDIF image contains 50% more entries than the current cache image, the periodic persistent cache refresh is aborted for the current refresh cycle.
 
-#### Configuring Persistent Cache with Real-Time Refresh 
+### Configuring Persistent Cache with Real-Time Refresh 
 
 If you plan on automatically refreshing the persistent cache as changes happen on the backend data sources, this would be the recommended cache configuration option. This type of caching option leverages the RadiantOne Universal Directory storage for the cache image. 
 
@@ -506,11 +343,11 @@ Figure 2.8: Caching secondary views message
 
 There are two options for initializing a persistent cache. Each is described below.
 
-**Create an LDIF File**
+*Create an LDIF File*
 
 If this is the first time you’ve initialized the persistent cache, choose this option. An LDIF formatted file is generated from the virtual view and then imported into the cache.
 
-**Using an Existing LDIF **
+*Using an Existing LDIF*
 
 If you’ve initialized the persistent cache before and the LDIF file was created successfully from the backend source(s) (and the data from the backend(s) has not changed since the generation of the LDIF file), then you can choose this option to use that existing file. The persisting of the cache occurs in two phases. The first phase generates an LDIF file with the data returned from the queries to the underlying data source(s). The second phase imports the LDIF file into the local RadiantOne Universal Directory store. If there is a failure during the second phase, and you must re-initialize the persistent cache, you have the option to choose the LDIF file (that was already built during the first phase) instead of having to re-generate it (as long as the LDIF file generated successfully). You can click browse and navigate to the location of the LDIF. The LDIF files generated are in `<RLI_HOME>\<vds_server>\ldif\import`.
 
@@ -520,14 +357,14 @@ If you have a large data set and generated multiple LDIF files for the purpose o
 
 10. The view(s) is now in the persistent cache. Queries are handled locally by RadiantOne and are no longer sent to the backend data source(s). Real-time cache refresh has been configured. For information about properties associated with persistent cache, please see [Persistent Cache Properties](#persistent-cache-properties).
 
-##### Configuring Source Connectors
+### Configuring Source Connectors Overview
 
 Configuring connectors involves deciding how you want to detect changes from your backend(s). By default, all [directory connectors](#directory-connectors) and [custom connectors](#custom-connectors) (only custom connectors included in the RadiantOne install) are configured and started immediately without further configuration. For databases, configure the connector to use the desired change detection mechanism. 
 
 >[!warning] 
 >All connectors leverage the connection pooling settings defined from the Main Control Panel > Settings tab. In other words, the connector opens a connection to the data source to pick up changes and keeps the connection open so when the next interval passes a new connection does not need to be created.
 
-### Database Connectors
+### Configuring Source Database Connectors
 
 For database backends (JDBC-accessible), the change detection options are:
 
@@ -552,7 +389,7 @@ For database backends (JDBC-accessible), the change detection options are:
     >[!warning] 
     >If none of these options are useable with your database, use a periodic cache refresh instead of real-time.
 
-###### DB Changelog
+**DB Changelog**
 
 RadiantOne can generate the SQL scripts which create the configuration needed to support the DB Changelog Connector. The scripts can be generated in the Main Control Panel. The following scripts are generated. 
 
