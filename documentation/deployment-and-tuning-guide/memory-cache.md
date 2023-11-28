@@ -1,11 +1,16 @@
-### Memory Cache
+---
+title: Memory Cache
+description: Memory Cache
+---
+
+## Memory Cache Overview
 
 A memory cache (requires [Expert Mode](00-preface#expert-mode)) can be configured for any virtual directory view and there are two different types of memory caching available: [Entry Memory Cache](#configuring-entry-memory-cache) and [Query Memory Cache](#configuring-query-cache). They can be used together or individually. 
 
 >[!warning] 
 >If you plan on using both entry and query cache on the same view/branch, be aware that the query cache is searched first.
 
-#### Configuring Entry Memory Cache
+### Configuring Entry Memory Cache
 
 This model of caching leverages two types of memory: Main and Virtual. Main memory is the real memory where a certain number of most recently used entries reside. Virtual memory is memory on disk where all entries that exceed the amount allowed in the main memory reside. The swapping of entries from Virtual to Main memory (and vice versa) is managed by RadiantOne.
 
