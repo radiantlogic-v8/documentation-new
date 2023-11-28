@@ -29,8 +29,6 @@ To access the *Edit User* screen by directly selecting the user, select the user
 
 This brings you to the *Environment Access* tab in a detailed overview of the user. This view lists all the environments and associated roles assigned to the user. From the *Environment Access* tab, select the **Edit User** button to open the *Edit User* screen.
 
-> **(RL QUESTION: Do the other tabs need to be documented as well (VPN, DevSpace, Tokens)??)**
-
 ![image description](images/edit-select-edituser.png)
 
 ## Update user details

@@ -66,7 +66,7 @@ To edit the *Role Details* section after you have set the assignment, select the
 
 ![image description](images/create-options.png)
 
-Once you have completed the *User Details* and *Role Details* sections, select **Save** to create the new user. They will receive an email notification at the email address associated with their user account confirming their role has been created (**confirming with RL**).
+Once you have completed the *User Details* and *Role Details* sections, select **Save** to create the new user. They will receive an email notification at the email address associated with their user account confirming their user creation and the link to the EOC.
 
 ![image description](images/create-save.png)
 
@@ -86,7 +86,8 @@ After completing the *Create User* form and selecting **Save**, you will be dire
 
 ![image description](images/create-success.png)
 
-If an error occurs and the user is not successfully created... (**following up with RL**).
+If an error occurs and the user is not successfully created, please double check the email address provided for any case sensitivities.
+If the error in creating an user still persisits, conatct Radiant logic Support for assistance.
 
 **image of error message**
 
