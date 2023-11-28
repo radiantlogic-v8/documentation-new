@@ -80,13 +80,28 @@ Cache refresh strategies can be divided into two main categories:
 -	Polling the changes either periodically or based or an expiration of a “time-to-live“ value assigned to a cache entry
 -	Detecting the change events directly at the sources (triggers or other methods)
 
+RadiantOne offers different caching options to accommodate a variety of deployment needs.
+-	Memory Cache (Entry Cache and Query Cache)
+
+-	Persistent Cache
+
+The diagram below provides a general “rule of thumb” as to what type of cache to implement. 
+
+* Low volatility during the life of the cache (the time to live).
+
+** Repetitive Queries – a query having exactly the same syntax (same user, same filter, same ACL).
+
+*** Low Volume – The size of the cache as measured by (Nb entries * entry size * 2.5) cannot exceed the amount of memory allocated for cache.
+
+For persistent cache, there is no limitation in terms of number of entries since everything is stored on disk. When fully indexed, the persistent cache provides performance levels comparable to the fastest “classic” LDAP directory.
+
 ### Memory Cache
 
 In this approach, cached entries are stored solely in memory. In terms of implementation, this approach has the advantage of simplicity. However in practice, this solution may present many potential issues depending on the use case. In most cases, memory cache works when the volume of entries and the complexity of the queries are modest. However, with sizeable volume (and often the flexibility of a federated identity service tends to yield many use cases which quickly add an increased demand in terms of memory) and the variable latencies and volatility (update rates) of the virtualized data sources, it is difficult to guarantee the performance of a memory cache solution. The greatest risks with a memory cache result when the query pattern is not predictable and the data set volume exceeds the size of memory. Furthermore, some categories of directory views are not good candidates for caching because the operation can never guarantee that all possible observable results are retrieved at the right time. If the volatility of the underlying data store is high, and the volume of data is significant, then a memory cache with a time-to-live refresh strategy alone is very difficult to put in place and will not guarantee an accurate “image” or will generate excessive refresh volume negating the advantages of the cache. As a result, providing guaranteed performance is difficult if not impossible. Moreover, as volume increases or when queries needed to build the virtual image are more complex, the latency incurred by accessing the underlying sources just to rebuild the memory cache after a cold restart becomes more and more problematic. As a consequence, memory cache provides performance improvements only in very specific cases. Memory cache needs to be considered more like a partial/incremental improvement boost rather than a complete solution to guaranteed performance.
 
 ### Persistent Cache
 
-In this approach, images of the virtual entries are stored in the local RadiantOne Universal Directory. This approach allows for fast recovery in case of failure. The whole virtual tree could be cached this way and a large volume of entries can be supported (hundreds of millions entries - essentially no practical limit if combined with partitioning and clusters). 
+In this approach, images of the virtual entries are stored in the local RadiantOne Directory. This approach allows for fast recovery in case of failure. The whole virtual tree could be cached this way and a large volume of entries can be supported (hundreds of millions entries - essentially no practical limit if combined with partitioning and clusters). 
 
 The challenge then becomes how to access this disk cache selectively at the level of each entry and at the same speed than the fastest classic LDAP server. The answer is pretty straightforward even if its implementation is not: build a persistent cache, which is a full LDAP V3 server. All the advantages described for the classic LDAP directory speed apply here. The persistent cache becomes the equivalent of what in the RDBMS world we would call a “materialized” view of a complex directory tree stored in an LDAP format and transparently refreshed by polling or pushing events (triggers or logs) at the level of the data sources. In fact, the complexity here resides essentially in the cache refresh mechanism. The good news is that by leveraging good abstraction and representation (data modeling and metadata) of the different data sources, a completely automated solution is possible. One can say that in this case, a bit paradoxically, good abstraction and virtualization ends up into an always “synchronized” and persistent directory view. The major difference though with classic synchronization resides in the simplicity and the ease of deployment. Virtualization and good data modeling yield an automated solution where transformation, reconciliation, joins, caching, and synchronization is totally transparent to the RadiantOne administrator and reduced to a fairly simple configuration. 
 
@@ -103,20 +118,6 @@ Figure 2.1: Cache implementation diagram
 >[!note] 
 >For persistent cache, there is no limitation in terms of number of entries since everything is stored on disk. When fully indexed, the persistent cache provides performance levels comparable to the fastest “classic” LDAP directory and even better performance when it comes to modify operations.
 
-## Cache
 
-RadiantOne offers different caching options to accommodate a variety of deployment needs.
--	Memory Cache (Entry Cache and Query Cache)
 
--	Persistent Cache
-
-The diagram below provides a general “rule of thumb” as to what type of cache to implement. 
-
-* Low volatility during the life of the cache (the time to live).
-
-** Repetitive Queries – a query having exactly the same syntax (same user, same filter, same ACL).
-
-*** Low Volume – The size of the cache as measured by (Nb entries * entry size * 2.5) cannot exceed the amount of memory allocated for cache.
-
-For persistent cache, there is no limitation in terms of number of entries since everything is stored on disk. When fully indexed, the persistent cache provides performance levels comparable to the fastest “classic” LDAP directory.
 
