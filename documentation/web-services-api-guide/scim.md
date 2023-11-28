@@ -493,7 +493,7 @@ Based on the above configuration, the following is a sample SCIM POST query to c
 <td>Value
 <tr>
 <td>URL Syntax	
-<td>`http://<RadiantOneService>:8089/scim2/v2/<ResourceType>`
+<td>`http://< RadiantOneService>:8089/scim2/v2/< ResourceType>`
 <tr>
 <td>Example URL	
 <td>	http://localhost:8089/scim2/v2/companydirectory
@@ -574,7 +574,7 @@ The following SCIM POST query example describes how to create a user entry that 
 <td>Value
 <tr>
 <td>URL Syntax	
-<td>`http://<RadiantOneServer>:8089/scim2/v2/<ResourceType>`
+<td>`http://< RadiantOneServer>:8089/scim2/v2/< ResourceType>`
 <tr>
 <td>Example URL	
 <td> http://localhost:8089/scim2/v2/companydirectory
@@ -654,7 +654,7 @@ Based on the above configuration, the following is a sample SCIM PATCH query to 
 <td>Value
 <tr>
 <td>URL 
-<td>Syntax `http://<RadiantOneService>:8089/scim2/v2/<ResourceType>/<DN>`
+<td>Syntax `http://< RadiantOneService>:8089/scim2/v2/< ResourceType>/< DN>`
 <tr>
 <td>Example URL	
 <td>http://localhost:8089/scim2/v2/companydirectory/uid=bjensen@example.com,o=companydirectory
@@ -714,7 +714,7 @@ The following SCIM PUT query example describes how to update a user entry that c
 <td>Field	Value
 <tr>
 <td>URL Syntax	
-<td>`http://<RadiantOneServer>:8089/scim2/v2/< ResourceType>/<DN>`
+<td>`http://< RadiantOneServer>:8089/scim2/v2/< ResourceType>/< DN>`
 <tr>
 <td>Example URL	
 <td>http://localhost:8089/scim2/v2/companydirectory/uid=bjensen@example.com,o=companydirectory
@@ -776,7 +776,7 @@ The following SCIM GET query example describes how to retrieve the entry that wa
 
 Field	| Value
 -|-
-URL Syntax	| `http://<RadiantOneServer>:8089/scim2/v2/< ResourceType>/< DN>`
+URL Syntax	| `http://< RadiantOneServer>:8089/scim2/v2/< ResourceType>/< DN>`
 Example URL	| http://localhost:8089/scim2/v2/companydirectory/uid=bjensen@example.com,o=companydirectory
 Method	| Get
 Header Name	| Authorization
@@ -796,7 +796,7 @@ The following SCIM DELETE query example describes how to delete the entry that w
 
 Field	| Value
 -|-
-URL Syntax	| `http://<RadiantOneServer>:8089/scim2/v2/< ResourceType>/< DN>`
+URL Syntax	| `http://< RadiantOneServer>:8089/scim2/v2/< ResourceType>/< DN>`
 Example URL	| http://localhost:8089/scim2/v2/companydirectory/uid=bjensen@example.com,o=companydirectory
 Method	| Delete
 Header Name	| Authorization
