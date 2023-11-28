@@ -606,8 +606,6 @@ The following SCIM POST query example describes how to create a user entry that 
 <td>Header Value	
 <td> Basic Y249ZGlyZWN0b3J5IG1hbmFnZXI6c2VjcmV0c2VjcmV0
 <tr>
-<td>Body	
-<td><pre>
 </table>
  
 The following body example can be used to insert a user containing enterprise extension attributes:
