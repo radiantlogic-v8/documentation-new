@@ -487,27 +487,13 @@ Figure 4.10: Sample Attribute Mappings
 
 Based on the above configuration, the following is a sample SCIM POST query to create a user.
 
-<table>
-<tr>
-<td>Field	
-<td>Value
-<tr>
-<td>URL Syntax	
-<td>`http://< RadiantOneService>:8089/scim2/v2/< ResourceType>`
-<tr>
-<td>Example URL	
-<td>	http://localhost:8089/scim2/v2/companydirectory
-<tr>
-<td> Method	
-<td> Post
-<tr>
-<td>Header Name	
-<td>Authorization
-<tr>
-<td>Header Value	
-<td>Basic Y249ZGlyZWN0b3J5IG1hbmFnZXI6c2VjcmV0c2VjcmV0
-<tr>
-</table>
+Field	| Value
+-|-
+URL Syntax	| `http://< RadiantOneServer>:8089/scim2/v2/< ResourceType>/< DN>`
+Example URL	| http://localhost:8089/scim2/v2/companydirectory
+Method	| Post
+Header Name	| Authorization
+Header Value	| Basic Y249ZGlyZWN0b3J5IG1hbmFnZXI6c2VjcmV0c2VjcmV0
 
 The following body example can be used to insert a user:
 ```
@@ -568,27 +554,13 @@ Figure 4.12: Sample Entry Created with a SCIM POST Operation
 
 The following SCIM POST query example describes how to create a user entry that contains enterprise extension attributes like employeeNumber, division, and department. This example is based on the configuration described in the [Insert Entry](#insert-user) example above.
 
-<table>
-<tr>
-<td>Field	
-<td>Value
-<tr>
-<td>URL Syntax	
-<td>`http://< RadiantOneServer>:8089/scim2/v2/< ResourceType>`
-<tr>
-<td>Example URL	
-<td> http://localhost:8089/scim2/v2/companydirectory
-<tr>
-<td>Method	
-<td>Post
-<tr>
-<td>Header Name	
-<td>Authorization
-<tr>
-<td>Header Value	
-<td> Basic Y249ZGlyZWN0b3J5IG1hbmFnZXI6c2VjcmV0c2VjcmV0
-<tr>
-</table>                                                                                       
+Field	| Value
+-|-
+URL Syntax	| `http://< RadiantOneServer>:8089/scim2/v2/< ResourceType>`
+Example URL	| http://localhost:8089/scim2/v2/companydirectory
+Method	| Post
+Header Name	| Authorization
+Header Value	| Basic Y249ZGlyZWN0b3J5IG1hbmFnZXI6c2VjcmV0c2VjcmV0
 
 The following body example can be used to insert a user containing enterprise extension attributes:
  ```
@@ -648,27 +620,13 @@ Figure 16: Sample Attribute Mappings
 
 Based on the above configuration, the following is a sample SCIM PATCH query to update a user.
 
-<table>
-<tr>
-<td>Field	
-<td>Value
-<tr>
-<td>URL Syntax
-<td>`http://< RadiantOneService>:8089/scim2/v2/< ResourceType>/< DN>`
-<tr>
-<td>Example URL	
-<td>http://localhost:8089/scim2/v2/companydirectory/uid=bjensen@example.com,o=companydirectory
-<tr>
-<td>Method	
-<td>PATCH
-<tr>
-<td>Header Name	
-<td>Authorization
-<tr>
-<td>Header Value	
-<td>Basic Y249ZGlyZWN0b3J5IG1hbmFnZXI6c2VjcmV0c2VjcmV0
-<tr>
-</table>
+Field	| Value
+-|-
+URL Syntax	| `http://< RadiantOneServer>:8089/scim2/v2/< ResourceType>/< DN>`
+Example URL	| http://localhost:8089/scim2/v2/companydirectory/uid=bjensen@example.com,o=companydirectory
+Method	| Patch
+Header Name	| Authorization
+Header Value	| Basic Y249ZGlyZWN0b3J5IG1hbmFnZXI6c2VjcmV0c2VjcmV0
 
 The following body example can be used to update a user:
 ```
@@ -709,26 +667,13 @@ The following SCIM PUT query example describes how to update a user entry that c
 >[!note] 
 >For PUT requests, only attributes that are mapped for the resource type are replaced in the entry. If the body of the request contains an attribute that is not mapped, it is ignored by the RadiantOne service. If the body of the request does not contain an attribute that has a mapping, the value is removed (set to NULL) in the entry in RadiantOne. This behavior does not apply to the objectclass attribute.
 
-<table>
-<tr>
-<td>Field	Value
-<tr>
-<td>URL Syntax	
-<td>`http://< RadiantOneServer>:8089/scim2/v2/< ResourceType>/< DN>`
-<tr>
-<td>Example URL	
-<td>http://localhost:8089/scim2/v2/companydirectory/uid=bjensen@example.com,o=companydirectory
-<tr>
-<td>Method	
-<td>Put
-<tr>
-<td>Header Name	
-<td>Authorization
-<tr>
-<td>Header Value	
-<td>Basic Y249ZGlyZWN0b3J5IG1hbmFnZXI6c2VjcmV0c2VjcmV0
-<tr>
-</table>
+Field	| Value
+-|-
+URL Syntax	| `http://< RadiantOneServer>:8089/scim2/v2/< ResourceType>/< DN>`
+Example URL	| http://localhost:8089/scim2/v2/companydirectory/uid=bjensen@example.com,o=companydirectory
+Method	| Put
+Header Name	| Authorization
+Header Value	| Basic Y249ZGlyZWN0b3J5IG1hbmFnZXI6c2VjcmV0c2VjcmV0
 
 The following body example can be used to update a user containing enterprise extension attributes:
 ```
