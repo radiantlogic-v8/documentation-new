@@ -3,13 +3,14 @@ title: Deployment and Tuning Guide
 description: Learn about a common, basic deployment architecture and how to configure inter-cluster replication.
 ---
 
-# Deployment Architecture
+## Overview
 
 Deployment options will be discussed with your Radiant Logic Account Representative and a Solution Consultant.  This chapter provides high-level details about the most common deployment architecture.
 
-For details on creating environments and installing RadiantOne, see the Environment Operations Center Guide.
+For details on creating environments and installing RadiantOne, see the [Environment Operations Center](/environment-operations-center-guide/environments/environment-overview/environments/).
 
-For details on integrating with on-premise data sources through a Secure Data Connector, see the Secure Data Connector Deployment Guide.
+
+For details on integrating with on-premise data sources through a Secure Data Connector, see the [Secure Data Connector Deployment Guide](/environment-operations-center-guide/secure-data-connectors/data-connectors-overview/).
 
 ## Basic Architecture
 
@@ -19,10 +20,10 @@ A basic architecture for a production deployment of the RadiantOne platform cons
  
 Figure 7.1: Basic Deployment Architecture
 
-Once the primary and DR environments are created, configure RadiantOne in the primary environment. Then, use the migration tool to export the configuration and import it into the DR environment. Finally, configure inter-cluster replication for all RadiantOne Universal Directory stores that need to be kept in sync across both environments.
+Once the primary and DR environments are created, configure RadiantOne in the primary environment. Then, use the migration tool to export the configuration and import it into the DR environment. Finally, configure inter-cluster replication for all RadiantOne Directory stores that need to be kept in sync across both environments.
 
 >[!note]
->Configuration changes are not automatically synchronized across cluster. These must be manually migrated. See the Migration Utility Guide for details.
+>Configuration changes are not automatically synchronized across cluster. These must be manually migrated. 
 
 If the data sources integrated in the RadiantOne platform are accessible in the cloud, no extra components are needed. If the data sources are deployed on-premises or inside a different network than the SaaS service, use a Secure Data Connector. These options are depicted in the diagram below. See the Secure Data Connector Deployment Guide for details.
 
@@ -33,9 +34,9 @@ If the data sources integrated in the RadiantOne platform are accessible in the 
  
 Figure 7.2: Replication Flow within a Cluster
 
-### Inter-cluster Replication for Universal Directory Stores
+### Inter-cluster Replication for RadiantOne Directory Stores
 
-After RadiantOne is configured in each environment, configure inter-cluster replication for all applicable Universal Directory stores.
+After RadiantOne is configured in each environment, configure inter-cluster replication for all applicable directory stores.
 
 >[!warning]
 >When installing multiple clusters, use different cluster names. Inter-cluster replication relies on the names to identify replication events.  
@@ -67,15 +68,15 @@ Figure 7. 18: Configuration of Multi-Master Replication
 
 To modify the replicationjournal data source, launch the Main Control Panel associated with the server and login as the super user (e.g. cn=directory manager). From the Settings Tab-> Server Backend section -> LDAP Data Sources sub-section, click the replicationjournal data source and click Edit. Modify the hostname and port to point to the replicationjournal running in site one. The base DN should be cn=replicationjournal.
 
-#### Configure the Universal Directory Store in Each Cluster
+**Configure the RadiantOne Directory Store in Each Cluster**
 
-The same naming context and Universal Directory store must be configured in each cluster. If the store did not exist prior to the initial migration/cloning of the additional clusters, you must define the store in each cluster with the steps below.
+The same naming context and directory store must be configured in each cluster. If the store did not exist prior to the initial migration/cloning of the additional clusters, you must define the store in each cluster with the steps below.
 
-To create a new Universal Directory store:
+To create a new Directory store:
 
 To modify the replicationjournal data source, launch the Main Control Panel associated with the server and login as the super user (e.g. cn=directory manager). From the Settings Tab-> Server Backend section -> LDAP Data Sources sub-section, click the replicationjournal data source and click Edit. Modify the hostname and port to point to the replicationjournal running in site one. The base DN should be cn=replicationjournal.
 
-#### Configure the Universal Directory Store in Each Cluster
+**Configure the Directory Store in Each Cluster**
 
 The same naming context and Universal Directory store must be configured in each cluster. If the store did not exist prior to the initial migration/cloning of the additional clusters, you must define the store in each cluster with the steps below.
 
@@ -93,7 +94,7 @@ To create a new Universal Directory store:
 
 6.	Repeat these steps on one node in each RadiantOne cluster/environment.
 
-### Initialize the Replicas
+**Initialize the Replicas**
 
 Before enabling replication, all replicas must have the same initial image: either an empty store or an initialized store based on the export of the Universal Directory store at the primary data center. When you export the store on the primary data center, you must have the option “Export for Replication” checked to ensure the uuid attribute is properly included in the export and handled during the import into the replica cluster.
 
@@ -111,7 +112,7 @@ To initialize a replica:
 
 6.	Repeat these steps on all other RadiantOne clusters in the needed environments.
 
-### Enable Inter-cluster Replication
+**Enable Inter-cluster Replication**
 
 After the Universal Directory stores are initialized in each cluster, inter-cluster replication must be enabled. 
 
