@@ -58,63 +58,14 @@ A description of the properties is shown below.
 
 ### Cluster-latency
 
-The cluster-latency data collector returns information about the current network latency and peak network latency both on the local node and between cluster nodes. The results indicate the current and peak network latency between all nodes. The format of the result is as follows:
-
-```
-{
-
-source-cloud-ID1 : {
-
-target-cloud-ID1 : {
-
-currentLatency : status,
-
-peakLatency: status,
-
-},
-
-target-cloud-ID2 : {...},
-
-},
-
-source-cloud-ID2 : { ... }
-
-}
-
-```
+The cluster-latency data collector returns information about the current network latency and peak network latency both on the local node and between cluster nodes. The results indicate the current and peak network latency between all nodes. 
 
 - currentLatency– current network latency (in milliseconds). This property requires an FID to be running in order to return information.
 - peakLatency – peak network latency (in milliseconds), since the RadiantOne service started. This property does NOT require a RadiantOne service to be running to return information.
 
 ### Cluster-LDAP
 
-The cluster-ldap data collector returns information about the current LDAP/LDAPS connectivity between RadiantOne cluster nodes. The results indicate the LDAP connectivity between all nodes and include the status of the local connectivity. The format of the result is as follows:
-
-```
-{
-
-source-cloud-ID1 : {
-
-target-cloud-ID1 : {
-
-ldap-property : status,
-
-ldaps-property: status,
-
-errors: {
-
-}
-
-},
-
-target-cloud-ID2 : {...},
-
-},
-
-source-cloud-ID2 : { ... }
-
-}
-```
+The cluster-ldap data collector returns information about the current LDAP/LDAPS connectivity between RadiantOne cluster nodes. The results indicate the LDAP connectivity between all nodes and include the status of the local connectivity. 
 
 - errors – if the RadiantOne LDAP service is running and there are problems connecting to the LDAP/LDAPS ports an error message is returned. Note – if the RadiantOne LDAP service isn’t running, the value of ldap/ldaps is NA and there is no error message. This property requires a RadiantOne service to be running to return information.
 - ldap – a value of true indicates the ldap port of the RadiantOne service can be accessed successfully. A value of NA indicates connectivity to the LDAP port is unsuccessful because the RadiantOne LDAP service isn’t running. A value of false indicates the RadiantOne service is running but a connection on the LDAP port cannot be established. This property requires a RadiantOne service to be running to return information.
@@ -122,34 +73,7 @@ source-cloud-ID2 : { ... }
 
 ### Cluster-zk
 
-The cluster-zk data collector returns information about the current ZooKeeper connectivity, both on the local node and between cluster nodes. The results indicate the ZooKeeper connectivity between all nodes and include the status of the local connectivity. The format of the result is as follows:
-
-```
-{
-
-source-cloud-ID1 : {
-
-target-cloud-ID1 : {
-
-canRead-property : status,
-
-canWrite-property: status,
-
-errors: {
-
-}
-
-},
-
-target-cloud-ID2 : {...},
-
-},
-
-source-cloud-ID2 : { ... }
-
-}
-
-```
+The cluster-zk data collector returns information about the current ZooKeeper connectivity, both on the local node and between cluster nodes. The results indicate the ZooKeeper connectivity between all nodes and include the status of the local connectivity. 
 
 - canRead – a value of OK indicates the read access to ZooKeeper is successful. This property does NOT require a RadiantOne LDAP service to be running to return information.
 - canWrite – a value of OK indicates the write access to ZooKeeper is successful. This property does NOT require a RadiantOne LDAP service to be running to return information.
