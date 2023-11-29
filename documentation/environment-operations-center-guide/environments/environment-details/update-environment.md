@@ -11,59 +11,61 @@ When version updates are applied to your Environment Operations Center instance,
 
 ## Managing environment updates
 
-When an environment requires updating, an **Update** message appears next to the environment version number under "Environment Details".
+When an environment requires updating, an **Update** message appears next to the environment version number under "Application Details" and also under the selected environment in environments page.
 
-![image description](images/update-now.png)
+![image description](images/update-alert.png)
 
 ### Begin update
 
-There are two ways to begin the environment update workflow from the *Overview* screen, either from the **Options** menu (**...**) or by selecting the **Update** message.
+Update can be initiated either from the "Environments" poage or the "Overview"(under Application Details) page.
 
-To update using the **Options** menu, select the ellipsis (**...**) located next to the **Monitor Environment** button to display the environment's **Options** menu. From the dropdown menu, select **Update** to open the *Update Environment* dialog box.
-
-![image description](images/options-update.png)
-
-Alternatively, you can select the **Update Now** message located next to the environment's version number. This will also open the *Update Environment* dialog box.
-
-![image description](images/update-now.png)
+Clicking on **Update** in environment page, takes you to the ovierview page.
 
 ### Update version number
 
-The *Update Environment* dialog box contains a **Version** dropdown field to update the environment version. To update your version number, select the correct number from the **Version** drop down menu. Your currently installed version number is displayed just above the dropdown menu for reference.
+The **Update** dialog box contains a **Version** dropdown field to update the environment version. To update your version number, select the correct number from the **Version** drop down menu. Your currently installed version number is displayed just above the dropdown menu for reference.
 
 > [!note] Environment versions can only be updated incrementally. You must select the version number that immediately succeeds your current environment version.
 
 ![image description](images/select-version.png)
 
-Once you have selected the correct version number, select **Update** to begin updating the environment.
+Once you have selected the correct version number, select **Update** to go to the confirmation dialog box. Click on **Update** to begin updating the environment.
+
+![image description](images/update.png)
 
 To quit the update and return to the environment *Overview* screen, select **Cancel**.
 
-![image description](images/select-update.png)
+![image description](images/select-version.png)
 
 ### Environment update confirmation
 
-After selecting **Update** you will return to the *Overview* screen. An updating confirmation message displays notifying you that the update is in progress and could take up to 1 hour.
+After selecting **Update** you will return to the *Overview* screen. An updating confirmation message displays notifying you that the update is in progress and could take up to 10 minutes.
 
-While the environment is updating its status will display as "Updating", the **Update Now** message will no longer be visible, and the **Options** (**...**) menu will be greyed out and unable to be selected.
+![image description](images/updating-env-message.png)
+
+While the environment is updating its status will display as "Updating application version", the **Update** message will no longer be visible.
 
 ![image description](images/updating.png)
 
 If the environment updates successfully, you will receive a success notification and the environment status will change to "Operational".
 
-![image description](images/updated.png)
+![image description](images/update-success.png)
+
+After the update of environment version is successful, the environment status changes to operational
+
+![image description](images/update-success-operational.png)
 
 If the environment update is unsuccessful, you will receive an error notification and the environment status will change to "Update Failed". Select **Dismiss** to close the notification and proceed to retry updating the environment.
 
 ## View version history
 
-To view updates previously applied to an environment, select **View Version History** located in the *Environment Details* section.
+To view updates previously applied to an environment, select **View Version History** located in the *Application Details* section.
 
 ![image description](images/view-version-history.png)
 
 The *Version History* dialog lists all updates applied to the environment by their version number in chronological order. Each update also has a time and date stamp for when the update was applied and lists the user who performed the update.
 
-![image description](images/version-history-details.png)
+![image description](images/version-history.png)
 
 ## Next steps
 
