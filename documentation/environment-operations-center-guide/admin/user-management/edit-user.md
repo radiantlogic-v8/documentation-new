@@ -55,7 +55,7 @@ You will receive a message confirming deactivation of the user.
 
 ![image description](images/edit-deactivate-confirmation.png)
 
-The user's status changes from "Active" to "Inactive"
+The user's status changes from "Active" to "Inactive".
 
 ![image description](images/edit-inactive-status.png)
 
