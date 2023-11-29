@@ -13,22 +13,23 @@ Select **Admin** from the left navigation to access the *Admin* home screen and 
 
 ![image description](images/admin-section.png)
 
-To create a new user, select the **New User** button on the *Users* tab.
+To create a new user, click **New User** on the *Users* tab.
 
 ![image description](images/create-button.png)
 
-The *New User* form contains all of the required input fields to create a new user. Within the form you will provide the user's details and assign their role and environments. All fields must be completed in both sections to create a new user.
+The *New User* page contains all of the required input fields to create a new user. Provide the user's details and assign their role and environments. All fields must be completed in both sections to create a new user.
 
 ![image description](images/create-user.png)
 
 ## User details
 
-In the *User Details* section you must provide the new user's first name, last name, email, activate if you want the user to be a local user, an email for notifications, and set the status to active/inactive in the corresponding fields.
+In the *User Details* section you must provide the new user's first name, last name, email, indicate if you want the user to be a local user, enter an email for notifications, and set the status to active/inactive in the corresponding fields.
+
 Set the user's status by adjusting the *Status* toggle to "Active".
 
 ![image description](images/create-user-details.png)
 
-All the fields in the *User Details* section are required and must be completed to submit the form. If a field is missing information, you will not be able to select the **Save** button. Hovering over the **Save** button will display a reminder that the form must be complete to create the user.
+All the fields in the *User Details* section are required and must be completed to submit the form. If a field is missing information, you cannot click **Save**. Hovering over the **Save** button displays a reminder that the form must be complete to create the user.
 
 ![image description](images/create-save-disabled.png)
 
@@ -36,7 +37,7 @@ Once you have completed the *User Details* section, you can proceed to the *Role
 
 ## Roles
 
-An user can assume two roles, either a **TENANT ADMIN** or an **ENVIRONMENT CREATOR**. These roles can be enabled/disabled using the toggle buttons
+An user can assume two roles, either a **TENANT ADMIN** or an **ENVIRONMENT CREATOR**. These roles can be enabled/disabled using the toggle buttons.
 
 ![image description](images/roles.png)
 
@@ -54,7 +55,7 @@ To assign an environment, select the *Environment* field to expand the environme
 
 ![image description](images/create-env.png)
 
-A user can be assigned to multiple environments for their given role. Continue selecting environments from the dropdown list until you have assigned all required environments to the user. Select the arrow (arrow icon) in the *Environment* field to close the dropdown list. (**confirming dropdown multi-selection functionality**).
+A user can be assigned to multiple environments for their given role. Continue selecting environments from the dropdown list until you have assigned all required environments to the user. Select the arrow (arrow icon) in the *Environment* field to close the drop-down list. (**confirming dropdown multi-selection functionality**).
 
 ![image description](images/create-multiple-envs.png)
 
@@ -62,11 +63,11 @@ Once you have completed the *Role* and *Environment* fields, select the checkmar
 
 ![image description](images/create-select-checkmark.png)
 
-To edit the *Role Details* section after you have set the assignment, select the **Options** (**...**) button located next to the user's role and environment assignment. This will expand a dropdown menu listing the options to **Edit** or **Delete** the role and environment assignment.
+To edit the *Role Details* section after you have set the assignment, select **Options** (**...**) located next to the user's role and environment assignment. This expands a drop-down menu listing the options to **Edit** or **Delete** the role and environment assignment.
 
 ![image description](images/create-options.png)
 
-Once you have completed the *User Details* and *Role Details* sections, select **Save** to create the new user. They will receive an email notification at the email address associated with their user account confirming their user creation and the link to the EOC.
+Once you have completed the *User Details* and *Role Details* sections, select **Save** to create the new user. The user receives an email notification at the email address associated with their user account confirming their user creation and the link to the EOC.
 
 ![image description](images/create-save.png)
 
@@ -82,13 +83,13 @@ If you wish to return to the *Create User* form to continue creating the new use
 
 ## Confirmation
 
-After completing the *Create User* form and selecting **Save**, you will be directed to the *Users* tab where you will receive a success message indicating the user has been successfully created and they will appear in the list of users. The new user will receive a confirmation email notification at the specified address containing their new account information and login details.
+After completing the *Create User* form and selecting **Save**, you are directed to the *Users* tab where a success message indicates that the user has been successfully created and will appear in the list of users. The new user receives a confirmation email notification at the specified address containing their new account information and login details.
 
 ![image description](images/create-success.png)
 
 If an error occurs and the user is not successfully created, please double check the email address provided for any case sensitivities.
-If the error in creating an user still persisits, conatct Radiant logic Support for assistance.
 
+If the error in creating an user still persisits, conatct Radiant logic Support for assistance.
 
 ## Next Steps
 
