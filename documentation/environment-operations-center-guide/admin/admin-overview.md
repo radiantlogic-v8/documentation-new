@@ -1,7 +1,7 @@
 ---
 keywords:
 title: Admin Overview
-description: Learn more about the administrative functions than can be performed in the Environment Operations Center. This includes how you can access tabs to manage your account settings, Environment Operation Center users, environment alerts and integrations, and monitor cluster health.
+description: Learn more about the administrative functions that can be performed in the Environment Operations Center. This includes how you can access tabs to manage your account settings, Environment Operation Center users, environment alerts and integrations, and monitor cluster health.
 ---
 # Admin Overview
 

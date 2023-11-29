@@ -15,7 +15,7 @@ From the *Users* tab in the *Admin* section of Environment Operations Center, th
 
 To edit a user from the **Options** (**...**) menu, select **Edit** from the **Options** (**...**) dropdown menu associated with the user.
 
-![image description](images/edit-users-options.png)
+![image description](images/edit-user-options.png)
 
 This opens the *Edit User* screen where you can update the details and role assignments of a user.
 
@@ -28,8 +28,6 @@ To access the *Edit User* screen by directly selecting the user, select the user
 ![image description](images/edit-select-username.png)
 
 This brings you to the *Environment Access* tab in a detailed overview of the user. This view lists all the environments and associated roles assigned to the user. From the *Environment Access* tab, select the **Edit User** button to open the *Edit User* screen.
-
-> **(RL QUESTION: Do the other tabs need to be documented as well (VPN, DevSpace, Tokens)??)**
 
 ![image description](images/edit-select-edituser.png)
 
@@ -126,6 +124,31 @@ You can review the role and environment assignments for a user from the *Environ
 The *Environment Access* tab of a user lists the environments they have been assigned to and their role associated with a specific environment. Review this list to ensure all role and environment assignments reflect your updates.
 
 ![image description](images/edit-review-details.png)
+
+
+### Reset MFA Token
+
+To reset the MFA token associated with an user, go to the options menu for that user and click on the  **Reset MFA token** . This resets the MFA token for that user and the MFA status changes from "ENABLED" to "NOT SET"
+
+![image description](images/reset-mfa-button.png)
+
+A message box appears on the top right corner of the EOC page, saying the MFA reset has been successful
+
+The "MFA STATUS" for the user changes to "NOT SET"
+
+![image description](images/mfa-not-set.png)
+
+### Reset User Password
+
+To reset the password for an user, from the options menu of the user, click on the **Reset Password**. Clicking on the "Reset Password" will open a new pop up asking you confim the reset of password for that user. To confirm click on reset password.
+
+![image description](images/reset-password.png)
+
+![image description](images/reset-password-conf.png)
+
+After a successful reset of the password, a message appears confirming the password reset for the selected user.
+
+![image description](images/reset-password-conf-message.png)
 
 ## Next steps
 
