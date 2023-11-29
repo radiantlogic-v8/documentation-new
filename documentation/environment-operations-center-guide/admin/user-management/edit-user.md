@@ -13,7 +13,7 @@ From the *Users* tab in the *Admin* section of Environment Operations Center, th
 
 ### Edit from options menu
 
-To edit a user from the **Options** (**...**) menu, select **Edit** from the **Options** (**...**) dropdown menu associated with the user.
+To edit a user from the **Options** (**...**) menu, select **Edit** from the **Options** (**...**) drop-down menu associated with the user.
 
 ![image description](images/edit-user-options.png)
 
@@ -27,7 +27,7 @@ To access the *Edit User* screen by directly selecting the user, select the user
 
 ![image description](images/edit-select-username.png)
 
-This brings you to the *Environment Access* tab in a detailed overview of the user. This view lists all the environments and associated roles assigned to the user. From the *Environment Access* tab, select the **Edit User** button to open the *Edit User* screen.
+This brings you to the *Environment Access* tab in a detailed overview of the user. This view lists all the environments and associated roles assigned to the user. From the *Environment Access* tab, click **Edit User** to open the *Edit User* screen.
 
 ![image description](images/edit-select-edituser.png)
 
@@ -47,7 +47,7 @@ To update a user's status from the *Users* tab, select the **Options** (**...**)
 
 ![image description](images/edit-option-menu.png)
 
-From the **Options** (**...**) dropdown, select **Deactivate**.
+From the **Options** (**...**) drop-down, select **Deactivate**.
 
 ![image description](images/edit-deactivate.png)
 
@@ -55,7 +55,7 @@ You will receive a message confirming deactivation of the user.
 
 ![image description](images/edit-deactivate-confirmation.png)
 
-The user's status will change from "Active" to "Inactive"
+The user's status changes from "Active" to "Inactive"
 
 ![image description](images/edit-inactive-status.png)
 
@@ -65,19 +65,19 @@ To update a user's status from the *Edit User* screen, adjust the *Status* toggl
 
 ![image description](images/edit-user-inactive.png)
 
-After selecting save, you will return to the *Users* tab where the user status will update accordingly to the status you selected.
+After selecting save, the *Users* tab indicates that the user status has been updated accordingly to the status you selected.
 
 ![image description](images/edit-inactive-status2.png)
 
 ## Update role details
 
-To update the role or environment assignments of a user, from the *Edit User* screen select the **Options** (**...**) menu next to the role and environment pairing to be edited. Select **Edit** from the dropdown to enable editing for the role and environment fields.
+To update the role or environment assignments of a user, from the *Edit User* screen select the **Options** (**...**) menu next to the role and environment pairing to be edited. Select **Edit** from the drop-down to enable editing for the role and environment fields.
 
 ![image description](images/edit-roledetails.png)
 
 ### Update user role
 
-To update the user role, select the down arrow located in the *Role* field to expand the dropdown menu.
+To update the user role, select the down arrow located in the *Role* field to expand the drop-down menu.
 
 ![image description](images/edit-role-arrow.png)
 
@@ -95,11 +95,11 @@ Select **Save** to update the user role.
 
 ### Update environment assignments
 
-To update environment assignments for a user, select the down arrow located in the *Environment* field to expand the dropdown menu.
+To update environment assignments for a user, select the down arrow located in the *Environment* field to expand the drop-down menu.
 
 ![image description](images/edit-env-arrow.png)
 
-To add new environments, select the environments from the dropdown menu. Multiple environments can be assigned to a user for a given role. After you have selected all of the required environment assignments, select the upward arrow in the *Environment* field to close the dropdown.
+To add new environments, select the environments from the drop-down menu. Multiple environments can be assigned to a user for a given role. After you have selected all of the required environment assignments, select the upward arrow in the *Environment* field to close the drop-down.
 
 ![image description](images/edit-select-envs.png)
 
@@ -128,25 +128,25 @@ The *Environment Access* tab of a user lists the environments they have been ass
 
 ### Reset MFA Token
 
-To reset the MFA token associated with an user, go to the options menu for that user and click on the  **Reset MFA token** . This resets the MFA token for that user and the MFA status changes from "ENABLED" to "NOT SET"
+To reset the MFA token associated with an user, go to the options menu for that user and click on the  **Reset MFA token** . This resets the MFA token for that user and the MFA status changes from "ENABLED" to "NOT SET".
 
 ![image description](images/reset-mfa-button.png)
 
-A message box appears on the top right corner of the EOC page, saying the MFA reset has been successful
+A message box appears on the top right corner of the EOC page, saying the MFA reset has been successful.
 
-The "MFA STATUS" for the user changes to "NOT SET"
+The "MFA STATUS" for the user changes to "NOT SET".
 
 ![image description](images/mfa-not-set.png)
 
 ### Reset User Password
 
-To reset the password for an user, from the options menu of the user, click on the **Reset Password**. Clicking on the "Reset Password" will open a new pop up asking you confim the reset of password for that user. To confirm click on reset password.
+To reset the password for an user, from the options menu of the user, click **Reset Password**. A pop up asks you confim the reset of password for that user. To confirm, click **Reset password**.
 
 ![image description](images/reset-password.png)
 
 ![image description](images/reset-password-conf.png)
 
-After a successful reset of the password, a message appears confirming the password reset for the selected user.
+After a successful reset of the password, a message confirms the password reset for the selected user.
 
 ![image description](images/reset-password-conf-message.png)
 
