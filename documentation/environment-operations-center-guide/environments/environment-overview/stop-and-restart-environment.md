@@ -12,7 +12,7 @@ This guide outlines the required steps to stop an environment while on the *Envi
 
 ## Select the environment
 
-From the *Environments* home screen, locate the environment you would like to stop from the list of environments. Go the specific environment and  on the right top corner, clic on the power icon
+From the *Environments* home screen, locate the environment you would like to stop from the list of environments. Go the specific environment and  on the right top corner, click on the power icon
 
 ![image description](images/power-icon.png)
 
@@ -30,10 +30,15 @@ On the environment overview page, you can see a message **Stopping environment**
 
 ![image description](images/stopping-env-message.png)
 
+![image description](images/stopping-application.png)
 
 When the environment is successfully stopped, the status on the overview page changes to **OFFLINE**
 
 ![image description](images/offline.png)
+
+![image description](images/offline1.png)
+
+![image description](images/offline2.png)
 
 ## Start environment
 
@@ -41,7 +46,7 @@ When the environment is successfully stopped, the status on the overview page ch
 
 To start the selected environment, on the overview page, right top corner, click on the power icon
 
-![image description](images/power-icon.png)
+![image description](images/power-icon2.png)
 
 From the options under power, select the **Start**
 
@@ -55,6 +60,10 @@ A message appears on the environment overview screen, **Starting environment**
 
 ![image description](images/starting-env.png)
 
+![image description](images/starting-env1.png)
+
+![image description](images/starting-env2.png)
+
 > [!note] The environment **START** process may take up to 10 minutes.
 
 ## Confirmation
@@ -63,3 +72,5 @@ After a successful, restart of the environment, status of the environment turns 
 
 
 ![image description](images/operational-message.png)
+
+![image description](images/operational-message1.png)

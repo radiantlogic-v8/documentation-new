@@ -47,13 +47,19 @@ description: Environment operations center guide
   - [Account settings](#)
     - [Accounts settings](admin/account-settings/update-account.md)
   - [Integrations](#)
-    - [Manage integrations](admin/integrations/manage-integrations.md)  
+    - [Manage integrations](admin/integrations/manage-integrations.md)
+  - [Authentication](#)
+    - [Authentication overview](admin/authentication/authentication-overview.md)
+    - [Add an identity provider](admin/authentication/add-identity-provider.md)
+    - [Manage identity authentication providers](admin/authentication/manage-identity-providers.md)
   - [User management](#)
     - [Create a user](admin/user-management/create-user.md)
     - [Edit a user](admin/user-management/edit-user.md)
     - [Delete a user](admin/user-management/delete-user.md)
   - [Role based permissions](#)
     - [Role-based permissions](admin/role-based-permission/role-based-permissions.md)
-  
+  - [Backups](#)
+    - [Admin backups overview](admin/backups/backups-overview.md)
+    - [Recover a deleted environment backup](admin/backups/recover-backups.md)
 
 
