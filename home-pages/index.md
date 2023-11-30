@@ -55,7 +55,7 @@ Harness your identity data with intelligent integration to drive better business
   > Learn how to migrate your existing RadiantOne configuration from a development/QA environment to a production environment.
 
   > [Applying Patches](migration-utility/applying-patch)
-  > Learn how to patch your RadiantOne v7.4 service.
+  > Learn how to patch your RadiantOne v7.4 service. This covers applying patches, not upgrading to a new major version.
 
 </section>
 
