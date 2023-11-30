@@ -10,7 +10,7 @@ A memory cache (requires [Expert Mode](00-preface#expert-mode)) can be configure
 >[!warning] 
 >If you plan on using both entry and query cache on the same view/branch, be aware that the query cache is searched first.
 
-### Configuring Entry Memory Cache
+## Configuring Entry Memory Cache
 
 This model of caching leverages two types of memory: Main and Virtual. Main memory is the real memory where a certain number of most recently used entries reside. Virtual memory is memory on disk where all entries that exceed the amount allowed in the main memory reside. The swapping of entries from Virtual to Main memory (and vice versa) is managed by RadiantOne.
 
@@ -90,13 +90,13 @@ As an alternative approach, you can indicate what entries to include by using th
 
 The total number of entries kept in main memory. The entry cache can expand beyond the main memory and the entries are swapped as needed. The default value for this parameter is 5000. This means that up to 5000 most recently used entries are put in the main memory cache. As the number of entries exceeds 5000, they are stored as virtual memory (memory on disk) and swapped as needed. The default value of 5000 is usually sufficient.
 
-##### Memory Size Requirements
+### Memory Size Requirements
 
-###### For Entries
+**For Entries**
 
 As a rule of thumb, you should take the average size of one of your entries and multiply by the number of entries you want to store in main memory. Then multiply this total number (the size for all entries) by 2.5. This gives you the amount of main memory you should allocate to store the entries.
 
-##### For Indexes
+**For Indexes**
 
 >[!note] 
 >This value is the total number of pages for each indexed attribute. The default size is 1000 pages. Which means there are, at most, 1000 index pages for each attribute you have indexed.
@@ -121,7 +121,7 @@ If you have 10 attributes indexed (all on average of 20 characters), the total c
 
 Add entry memory cache requirements and index memory cache requirements together to get the total memory size required for your cache.
 
-### Configuring Query Cache
+## Configuring Query Cache
 
 Query cache is sensitive to syntax. To benefit from the query cache, it must be the exact same query (from the same person, ACI, asking for the same information). This type of caching is good for repetitive queries (of the same nature).
 
@@ -144,16 +144,16 @@ First, enable the Query Memory Cache (requires [Expert Mode](00-preface#expert-m
 >[!warning] 
 >The user and ACI information are also part of the query. This is why it was mentioned above that the query cache is sensitive to syntax. If User A issues a query, and then User B issued a query asking for the exact same information, this would count as two queries in the Query Cache.
 
-#### Populating the Memory Cache
+## Populating the Memory Cache
 
-##### Entry Cache
+### Entry Cache
 The entry memory cache is filled as the RadiantOne service receives queries. The first time the server receives a request for an entry, the underlying data store(s) is queried and the entry is returned. The entry is stored in the entry memory cache. The entry remains in cache for the time specified in the Time to Live setting.
 
-##### Query Cache
+### Query Cache
 
 The query memory cache is filled as the RadiantOne service receives queries. The first time the server receives a request, the query is added to the query memory cache, and the underlying data store(s) is queried to retrieve the entries. The entries resulting from the query are also stored in the cache.
 
-#### Refreshing the Memory Cache
+## Refreshing the Memory Cache
 
 A time-to-live parameter can be set for both the entry cache and the query cache. The time starts when the entry/query is added into memory. Once the time-to-live value is reached, the entry/query is removed from the cache. The next time a query is received for the entry, RadiantOne issues a query to the underlying store(s), retrieves the latest value and the entry is stored in the entry memory cache and/or the query memory cache again.
 
