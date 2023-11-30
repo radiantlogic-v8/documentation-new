@@ -15,7 +15,7 @@ These release notes contain the following sections:
 
 [Supported Platforms](#supported-platforms)
 
-[Bugs](#Bug-fixes)
+[Bug Fixes](#Bug-fixes)
 
 [Known Issues/Important Notes](#known-issuesimportant-notes)
 
