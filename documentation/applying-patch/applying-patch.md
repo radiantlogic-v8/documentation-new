@@ -59,7 +59,7 @@ Apply the RadiantOne patch with either the web installer, or from command line.
 
 1. Click Update on the Summary screen to start the patching process.
 
-![An image showing ](Media/update-file.jpg)
+![An image showing ](Media/start-update.jpg)
  
 1. Once the updater completes on the node click Exit and close the web browser. 
 
