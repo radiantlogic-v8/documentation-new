@@ -49,7 +49,7 @@ Apply the RadiantOne patch with either the web installer, or from command line.
 
 1. Navigate to your RadiantOne installation /bin folder (e.g. C:\radiantone\vds\bin). Run setup.bat (.sh on Linux). If on Windows, right-click and Run As Administrator. This launches the Web Installation process. 
 
-1. Click Choose and navigate to the location where you copied the .zip (.tar.gz) file associated with the new RadiantOne version and click OK.
+1. Click Choose File and navigate to the location where you copied the .zip (.tar.gz) file associated with the new RadiantOne version and click OK.
 
 ![An image showing ](Media/update-file.jpg)
 
