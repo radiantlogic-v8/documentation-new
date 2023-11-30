@@ -1,3 +1,8 @@
+---
+title: Applying Patches to RadiantOne v7.4
+description: Applying Patches to RadiantOne v7.4
+---
+
 ## Overview
 
 This guide describes how to apply the RadiantOne patch for v7.4.X. These steps only apply to updating your existing RadiantOne v7.4 version with a new minor release/patch of RadiantOne v7.4.X.  These steps are not relevant for major upgrades (i.e. upgrading from v7.2 or v7.3). 
@@ -15,14 +20,14 @@ After you create an account, log in and navigate to: /update_installers/7.4/<ver
 
 Linux: 
 File names: 
-radiantone_<version>_update_linux_64.tar.gz 
-rli-zookeeper-external-jdk<javaVersion>-zk<version>-linux_64.tar.gz (applicable if you are using external ZooKeeper and a Java update is associated with this patch release – check release notes to see if a JDK update is associated with the patch). 
+`radiantone_<version>_update_linux_64.tar.gz `
+`rli-zookeeper-external-jdk<javaVersion>-zk<version>-linux_64.tar.gz` (applicable if you are using external ZooKeeper and a Java update is associated with this patch release – check release notes to see if a JDK update is associated with the patch). 
  
 
 Windows: 
 File names: 
-radiantone_<version>_update_windows_64.zip 
-rli-zookeeper-external-jdk<javaVersion>-zk<version>-windows_64.zip (applicable if you are using external ZooKeeper and a Java update is associated with this patch release – check release notes to see if a JDK update is associated with the patch). 
+`radiantone_<version>_update_windows_64.zip` 
+`rli-zookeeper-external-jdk<javaVersion>-zk<version>-windows_64.zip` (applicable if you are using external ZooKeeper and a Java update is associated with this patch release – check release notes to see if a JDK update is associated with the patch). 
 
 ## Applying the Update 
 
