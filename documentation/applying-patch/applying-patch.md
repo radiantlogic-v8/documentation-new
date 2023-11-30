@@ -35,13 +35,13 @@ This guide assumes you are performing an in-place update, meaning you are applyi
 - Make sure you have backed up your <RadiantOne_Installation> folder.
 - (Optional) to gracefully scale down, drain any open connections for your load balancer to the RadiantOne node you are updating. See your vendor documentation for configuring connection draining for your load balancer.
 - Close any open RadiantOne applications.
-- Stop any running services. All possible (default) service names are as follows. Some might not be applicable to your deployment.
+- Stop any running services. All possible (default) service names are as follows. Some might not be applicable to your deployment.<br>
   ZooKeeper
-  RadiantOne DB Access Logger
-  RadiantOne FID (vds_server)
-  RadiantOne FID Management Console (vds_server) 
-
-Process Explorer (on Windows) can be used to check the handles on the RadiantOne JVM executables to confirm all applications are stopped. Search for handles on "java" and you can see every process that has a handle on a java process. For Linux, you can use something like ps aux | grep "java" to get a list of Java processes.  
+  <br>RadiantOne DB Access Logger
+  <br>RadiantOne FID (vds_server)
+  <br>RadiantOne FID Management Console (vds_server)
+  <br>
+  Process Explorer (on Windows) can be used to check the handles on the RadiantOne JVM executables to confirm all applications are stopped. Search for handles on "java" and you can see every process that has a handle on a java process. For Linux, you can use something like ps aux | grep "java" to get a list of Java processes.  
 
 Apply the RadiantOne patch with either the web installer, or from command line. 
 
