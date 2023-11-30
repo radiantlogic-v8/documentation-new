@@ -5,7 +5,7 @@ description: Learn how to adjust the number of nodes in a RadiantOne cluster and
 ---
 # Update and Monitor Environment Nodes
 
-This guide outlines the required steps adjust the number of nodes in an environment and to monitor the status details of a specific node. The *Overview* tab provides a high-level view of all FID node statuses for quick monitoring of cluster health. Each individual node has a detailed view that provides further information on the status and health of a given node.
+This guide describes how to adjust the number of nodes in an environment and to monitor the status details of a specific node. The *Overview* tab provides a high-level view of all FID node statuses for quick monitoring of cluster health. Each individual node has a detailed view that provides further information on the status and health of a given node.
 
 ## Adjust number of nodes
 
@@ -13,28 +13,23 @@ To set the number of FID nodes contained in an environment, select the  **Scale*
 
 ![image description](images/select-scale.png)
 
-In the *Adjust Environment Scale* dialog, use the provided slider to increase or decrease the quantity. Alternatively, you can select either the minus (**-**) or plus (**+**) sign on either side of the slider to increase or decrease the number of FID nodes to display.
+In the *Adjust Environment Scale* dialog, use the slider to increase or decrease the quantity. Alternatively, you can select either the minus (**-**) or plus (**+**) sign on either side of the slider to increase or decrease the number of FID nodes to display.
 
-By default the scale reflects the number of nodes at the current state.
-
-![image description](images/default-scale.png)
-
-Adjust the scale to required number of nodes
+By default the scale reflects the number of nodes at the current state. Adjust the scale to required number of nodes.
 
 ![image description](images/adjust-scale.png)
 
-Confirm your selection to scale the environment, by clicking **UPDATE**
+Click **UPDATE** to confirm your selection.
 
 ![image description](images/scale-confirmation.png)
 
-After the confirmation, messages appear on the overview screen, notifying that the environment scale is in process
+A message indicates that the environment scale is in process.
 
 ![image description](images/scale-confirmation-message.png)
 
 ![image description](images/after-scale-confirmation.png)
 
-
-The number of nodes in the environment will increase or decrease accordingly.
+The number of nodes in the environment increases or decreases accordingly.
 
 ![image description](images/increased-nodes-new.png)
 
@@ -46,7 +41,7 @@ You can select the node name to open the node details dialog.
 
 ![image details](images/select-node-name.png)
 
-Alternatively, you can select the **Options** (**...**) menu located in the node row to expand the dropdown menu. From the **Options** menu select **View Node Details** to open the the node details dialog.
+Alternatively, you can select the **Options** (**...**) menu located in the node row to expand the drop-down menu. From the **Options** menu select **View Node Details** to open the the node details dialog.
 
 ![image details](images/options-view-details.png)
 
@@ -69,7 +64,7 @@ The FID node details dialog provides the following information for the selected 
 
 ## View node logs
 
-Each node has associated log files that contain further information about the node's health and status alerts. The log files for a specific node can be accessed from the node details dialog or from the **Options** (**...**) dropdown of a node.
+Each node has associated log files that contain further information about the node's health and status alerts. The log files for a specific node can be accessed from the node details dialog or from the **Options** (**...**) drop-down of a node.
 
 To access log files from a node's details dialog, select **View Logs** in the dialog.
 
