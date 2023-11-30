@@ -18,34 +18,28 @@ The RadiantOne files are located at: https://radiantlogicinc246.sharefile.com/i/
 
 After you create an account, log in and navigate to: `/update_installers/7.4/<version_to_update_to>`. Copy the applicable file to all of your RadiantOne nodes. 
 
-Linux: 
-File names: 
+Linux:<br>
 `radiantone_<version>_update_linux_64.tar.gz `
-`rli-zookeeper-external-jdk<javaVersion>-zk<version>-linux_64.tar.gz` (applicable if you are using external ZooKeeper and a Java update is associated with this patch release – check release notes to see if a JDK update is associated with the patch). 
+<br>`rli-zookeeper-external-jdk<javaVersion>-zk<version>-linux_64.tar.gz` (applicable if you are using external ZooKeeper and a Java update is associated with this patch release – check release notes to see if a JDK update is associated with the patch). 
  
 
-Windows: 
-File names: 
+Windows:<br> 
 `radiantone_<version>_update_windows_64.zip` 
-`rli-zookeeper-external-jdk<javaVersion>-zk<version>-windows_64.zip` (applicable if you are using external ZooKeeper and a Java update is associated with this patch release – check release notes to see if a JDK update is associated with the patch). 
+<br>`rli-zookeeper-external-jdk<javaVersion>-zk<version>-windows_64.zip` (applicable if you are using external ZooKeeper and a Java update is associated with this patch release – check release notes to see if a JDK update is associated with the patch). 
 
-## Applying the Update 
+## Preparing for the Update 
 
 This guide assumes you are performing an in-place update, meaning you are applying the patch on your existing active machines as opposed to having a new, clean environment. If you have a blue-green deployment, where you have an extra set of machines to install and test the patch, make sure it is running the same RadiantOne version as the active environment. Then, if needed, migrate over the current configuration from the active environment (using <RLI_HOME>\apps\migration\migrate.bat/.sh). Finally, run the update in the test environment using the procedure below. After all tests pass, switch your load balancer to direct traffic to the updated environment. 
 
-For cluster deployments, update all RadiantOne FID follower and follower-only nodes first. Update the RadiantOne FID leader node last. After the node is patched, it is important to ensure that all needed services are back up and running prior to patching the next node.  
-
-Make sure you have backed up your <RadiantOne_Installation> folder. 
-
-(Optional) to gracefully scale down, drain any open connections for your load balancer to the RadiantOne node you are updating. See your vendor documentation for configuring connection draining for your load balancer. 
-
-Close any open RadiantOne applications. 
-
-Stop any running services. All possible (default) service names are as follows. Some might not be applicable to your deployment. 
-ZooKeeper  
-RadiantOne DB Access Logger  
-RadiantOne FID (vds_server)  
-RadiantOne FID Management Console (vds_server) 
+- For cluster deployments, update all RadiantOne FID follower and follower-only nodes first. Update the RadiantOne FID leader node last. After the node is patched, it is important to ensure that all needed services are back up and running prior to patching the next node.
+- Make sure you have backed up your <RadiantOne_Installation> folder.
+- (Optional) to gracefully scale down, drain any open connections for your load balancer to the RadiantOne node you are updating. See your vendor documentation for configuring connection draining for your load balancer.
+- Close any open RadiantOne applications.
+- Stop any running services. All possible (default) service names are as follows. Some might not be applicable to your deployment.
+  ZooKeeper
+  RadiantOne DB Access Logger
+  RadiantOne FID (vds_server)
+  RadiantOne FID Management Console (vds_server) 
 
 Process Explorer (on Windows) can be used to check the handles on the RadiantOne JVM executables to confirm all applications are stopped. Search for handles on "java" and you can see every process that has a handle on a java process. For Linux, you can use something like ps aux | grep "java" to get a list of Java processes.  
 
