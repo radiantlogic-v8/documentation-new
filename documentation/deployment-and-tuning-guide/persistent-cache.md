@@ -510,9 +510,9 @@ The Active Directory hybrid capture connector uses a combination of the uSNChang
 
 When the connector restarts, uSNChanged detection catches the entries that have been modified or deleted while the connector was stopped. The LDAP search uses the last processed uSNChanged number to catch up. After the connector processes all entries, it requests a new cookie from Active Directory (not from the cursor) and switches to DirSync change detection. 
 
-### RadiantOne Universal Directory Stores
+### RadiantOne Directory Stores
 
-If you are using a persistent cache on a proxy view of a local RadiantOne Universal Directory store, or a nested persistent cache view (a cached view used in another cached view), the connector type is noted as HDAP (trigger) automatically and cannot be changed. This is a special trigger mechanism that publishes changes directly into the queue to invoke the persistent cache refresh. 
+If you are using a persistent cache on a proxy view of a local RadiantOne Directory store, or a nested persistent cache view (a cached view used in another cached view), the connector type is noted as HDAP (trigger) automatically and cannot be changed. This is a special trigger mechanism that publishes changes directly into the queue to invoke the persistent cache refresh. 
 
 ![An image showing ](Media/Image2.19.jpg)
  
@@ -599,7 +599,7 @@ Custom connectors don’t have built-in failover logic. The web service target m
 
 ## Connector Properties
 
-The following properties are for real-time persistent cache refresh connectors. Not all properties are applicable for every type of backend. The description indicates the type of backend the property is used for.
+The following properties are for real-time persistent cache refresh capture connectors. Not all properties are applicable for every type of backend. The description indicates the type of backend the property is used for.
 
 Property | Description
 -|-
