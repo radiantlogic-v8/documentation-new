@@ -49,11 +49,17 @@ Apply the RadiantOne patch with either the web installer, or from command line.
 
 1. Navigate to your RadiantOne installation /bin folder (e.g. C:\radiantone\vds\bin). Run setup.bat (.sh on Linux). If on Windows, right-click and Run As Administrator. This launches the Web Installation process. 
 
-1. Click Choose and navigate to the location where you copied the .zip (.tar.gz) file associated with the new RadiantOne version and click OK. 
+1. Click Choose and navigate to the location where you copied the .zip (.tar.gz) file associated with the new RadiantOne version and click OK.
 
-1. Click Next to confirm the file signature has been validated. 
+![An image showing ](Media/update-file.jpg)
 
-1. Click Update on the Summary screen to start the patching process. 
+1. Click Next to confirm the file signature has been validated.
+
+![An image showing ](Media/signature-validation.jpg)
+
+1. Click Update on the Summary screen to start the patching process.
+
+![An image showing ](Media/update-file.jpg)
  
 1. Once the updater completes on the node click Exit and close the web browser. 
 
@@ -61,7 +67,7 @@ Apply the RadiantOne patch with either the web installer, or from command line.
  
 >[!warning] – If you are running the RadiantOne service and/or the Jetty server (which hosts the Control Panel) as services, restart them manually (or you can restart the machine and they will restart automatically in this scenario). 
 
-1.After the updater is run on all nodes, make any additional updates recommended by Radiant Logic. 
+1. After the updater is run on all nodes, make any additional updates recommended by Radiant Logic. 
 
 1. All certificates that you imported in the default Java trust store (<RLI_HOME>\jdk\jre\lib\security\cacerts) must be re-imported. You can import them into the RadiantOne Client Trust Store instead of the default Java one, which allows them to be shared across cluster nodes. For details on the RadiantOne client trust store, see the System Administration Guide. 
 
