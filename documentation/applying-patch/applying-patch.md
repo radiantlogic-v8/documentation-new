@@ -5,7 +5,7 @@ description: Applying Patches to RadiantOne v7.4
 
 ## Overview
 
-This guide describes how to apply the RadiantOne patch for v7.4.X. These steps only apply to updating your existing RadiantOne v7.4 version with a new minor release/patch of RadiantOne v7.4.X.  These steps are not relevant for major upgrades (i.e. upgrading from v7.2 or v7.3). 
+This guide describes how to apply a patch for RadiantOne v7.4.X. These steps only apply to updating your existing RadiantOne v7.4 version with a new minor release/patch of RadiantOne v7.4.X.  These steps are not relevant for major upgrades (i.e. upgrading from v7.2 or v7.3). 
 
 ## Preparing for the Patch 
 Once you have stopped all RadiantOne services, make a backup copy of your entire <RLI_HOME> folder. 
@@ -16,7 +16,7 @@ If you have deployed an external ZooKeeper ensemble, make a backup copy of the e
 
 The RadiantOne files are located at: https://radiantlogicinc246.sharefile.com/i/i1bc2de34c6e42bba  
 
-After you create an account, log in and navigate to: /update_installers/7.4/<version_to_update_to>. Copy the applicable file to all of your RadiantOne nodes. 
+After you create an account, log in and navigate to: `/update_installers/7.4/<version_to_update_to>`. Copy the applicable file to all of your RadiantOne nodes. 
 
 Linux: 
 File names: 
