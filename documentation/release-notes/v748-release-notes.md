@@ -48,16 +48,16 @@ These release notes contain the following sections:
 
 -	[VSTS45718]: Improvement to not all negative numbers for the port value in the Main Control Panel > Settings > Logs > Log Settings > Logging Failure Notification settings. 
 
--	[VSTS45724]: Updated the naming conventions used for naming contexts and virtual views.
+-	[VSTS45724]: Updated the naming conventions used for naming contexts and virtual views.<br>
   Merged Backend --> LDAP Proxy View (Merged Backend)
- 	Global Profile View --> Model Driven View (Global Profile View)
- 	LDAP Backend --> LDAP Proxy View
- 	Virtual Tree --> Model Driven View
- 	Virtual Tree (Reserved) --> Model Driven View
- 	Reserved Universal Directory (HDAP) --> Directory (Reserved)
- 	Universal Directory (HDAP) --> Directory
- 	HDAP Store Shard Controller  -->  Directory (Store Shard Controller)
- 	HDAP Store Shard --> Directory (Store Shard) 
+ 	<br>Global Profile View --> Model Driven View (Global Profile View)
+ 	<br>LDAP Backend --> LDAP Proxy View
+ 	<br>Virtual Tree --> Model Driven View
+ 	<br>Virtual Tree (Reserved) --> Model Driven View
+ 	<br>Reserved Universal Directory (HDAP) --> Directory (Reserved)
+ 	<br>Universal Directory (HDAP) --> Directory
+ 	<br>HDAP Store Shard Controller  -->  Directory (Store Shard Controller)
+ 	<br>HDAP Store Shard --> Directory (Store Shard) 
 
 -	[VSTS45764,46065]: Added value obfuscation for passwords in the global sync logs. 
 
