@@ -185,7 +185,7 @@ You can define a threshold to validate the generated LDIF file/image prior to Ra
 
 To define a granular threshold for add operations, indicate the percentage in the Add Validation Threshold. For example, if Add Validation Threshold contains a value of 50, it means if the generated LDIF image contains 50% more entries than the current cache image, the periodic persistent cache refresh is aborted for the current refresh cycle.
 
-## Configuring Persistent Cache with Real-Time Refresh 
+## Configuring Persistent Cache with Real-Time Refresh
 
 If you plan on automatically refreshing the persistent cache as changes happen on the backend data sources, this would be the recommended cache configuration option. This type of caching option leverages the RadiantOne Universal Directory storage for the cache image. 
 
@@ -243,14 +243,14 @@ If you have a large data set and generated multiple LDIF files for the purpose o
 
 10. The view(s) is now in the persistent cache. Queries are handled locally by RadiantOne and are no longer sent to the backend data source(s). Real-time cache refresh has been configured. For information about properties associated with persistent cache, please see [Persistent Cache Properties](#persistent-cache-properties).
 
-### Configuring Source Connectors Overview
+## Configuring Source Connectors Overview
 
 Configuring connectors involves deciding how you want to detect changes from your backend(s). By default, all [directory connectors](#directory-connectors) and [custom connectors](#custom-connectors) (only custom connectors included in the RadiantOne install) are configured and started immediately without further configuration. For databases, configure the connector to use the desired change detection mechanism. 
 
 >[!warning] 
 >All connectors leverage the connection pooling settings defined from the Main Control Panel > Settings tab. In other words, the connector opens a connection to the data source to pick up changes and keeps the connection open so when the next interval passes a new connection does not need to be created.
 
-### Configuring Source Database Connectors
+## Configuring Source Database Connectors
 
 For database backends (JDBC-accessible), the change detection options are:
 
@@ -275,7 +275,7 @@ For database backends (JDBC-accessible), the change detection options are:
     >[!warning] 
     >If none of these options are useable with your database, use a periodic cache refresh instead of real-time.
 
-**DB Changelog**
+### DB Changelog
 
 RadiantOne can generate the SQL scripts which create the configuration needed to support the DB Changelog Connector. The scripts can be generated in the Main Control Panel. The following scripts are generated. 
 
@@ -289,7 +289,7 @@ RadiantOne can generate the SQL scripts which create the configuration needed to
 - drop_user.sql - Drops the log table user and schema. 
 <br> Note: for some databases the file is empty.
 
-##### Connector Configuration
+**Connector Configuration**
 
 This section describes generating and executing the scripts in the Main Control Panel. The following steps assume the database backend has a changelog table that contains changed records that need to be updated in the persistent cache. The changelog table must have two key columns named RLICHANGETYPE and RLICHANGEID. RLICHANGETYPE must indicate insert, update or delete, dictating what type of change was made to the record. RLICHANGEID must be a sequence-based, auto-incremented INTEGER that contains a unique value for each record. The DB Changelog connector uses RLICHANGEID to maintain a cursor to keep track of processed changes.
 
@@ -339,7 +339,7 @@ Figure 2.10: The Execute DB Configure and Deconfigure buttons
 >[!warning] 
 >If you make changes to the DB Changelog Connector configuration, restart the connector on the PCache Monitoring tab. Select the icon representing the database backend and click Stop. Then click Start to restart it.
 
-##### Log Table Name Syntax
+**Log Table Name Syntax**
 
 Proper syntax for the Log Table Name must include both the schema name and the table name separated with a period. Values for this property may contain quote marks as required by the database. In most cases, the double quote mark (“) is used, but some databases use a single quote (‘) or back quote (`). The following examples explain the property’s syntax and usage.
 
@@ -378,7 +378,7 @@ Example 3:
 "Rli_con"."Test_log"
 ```
 
-###### DB Timestamp
+### DB Timestamp
 
 The following steps assume your backend database table has a primary key defined and contains a timestamp column. The timestamp column name is required for configuring the connector. The timestamp column database types supported are described in the [Database Connectors](#database-connectors) section.
 
@@ -386,61 +386,48 @@ The following steps assume your backend database table has a primary key defined
 >This connector type does not detect delete operations. If you need to detect delete operations from the database, you should choose a different connector type.
 
 1. From the Main Control Panel > Directory Namespace Tab, select the configured persistent cache branch below the Cache node.
-
-2. On the right side, select the Refresh Settings tab.
-
-3. When the Real-time refresh type is selected, the connectors appear in a table below. Select a connector and click **Configure**.
-
-4. Select DB Timestamp from the Connector Type drop-down list.
-
-5. Indicate the column name in the database table that contains the timestamp. An example is shown below.
+1. On the right side, select the Refresh Settings tab.
+1. When the Real-time refresh type is selected, the connectors appear in a table below. Select a connector and click **Configure**.
+1. Select DB Timestamp from the Connector Type drop-down list.
+1. Indicate the column name in the database table that contains the timestamp. An example is shown below.
 
 ![An image showing ](Media/Image2.11.jpg)
  
 Figure 2.11: DB Timestamp Connector Configuration
 
-6. Click **OK**.
-
-7. After all connectors are configured, click **Save**.
-8. The connectors are started automatically once they are configured.
-
-9. Go to Main Control Panel > PCache Monitoring tab to configure connector properties and manage and monitor the persistent cache refresh process.
+1. Click **OK**.
+1. After all connectors are configured, click **Save**.
+1. The connectors are started automatically once they are configured.
+1. Go to Main Control Panel > PCache Monitoring tab to configure connector properties and manage and monitor the persistent cache refresh process.
 
 >[!warning] 
 >If you need to make changes to the timestamp column name, manually restart the connector and reset the cursor. This can be done from the PCache Monitoring tab. Select the icon representing the database backend and click Stop. Then click Start to restart it. Then click Reset Cursor.
  	
-###### DB Counter
+### DB Counter
 
 The following steps assume your database backend table contains an indexed column that contains a sequence-based value that is automatically maintained and modified for each record that is added, updated or deleted. The DB Counter connector uses this column to maintain a cursor to keep track of processed changes. The counter column database types supported are described in the [Database Connectors](#database-connectors) section.
 
 1. From the Main Control Panel > Directory Namespace Tab, select the configured persistent cache branch below the Cache node.
-
-2. On the right side, select the Refresh Settings tab.
-
-3. When the Real-time refresh type is selected, the connectors appear in a table below. Select a connector and click **Configure**.
-
-4. Select DB Counter from the Connector Type drop-down list.
-
-5. Enter a value in the Change Type Column field. This value should be the database table column that contains the information about the type of change (insert, update or delete). If the column doesn’t have a value, an update operation is assumed.
-
-6. Enter the column name in the database table that contains the counter. An example is shown below.
+1. On the right side, select the Refresh Settings tab.
+1. When the Real-time refresh type is selected, the connectors appear in a table below. Select a connector and click **Configure**.
+1. Select DB Counter from the Connector Type drop-down list.
+1. Enter a value in the Change Type Column field. This value should be the database table column that contains the information about the type of change (insert, update or delete). If the column doesn’t have a value, an update operation is assumed.
+1. Enter the column name in the database table that contains the counter. An example is shown below.
 
 ![An image showing ](Media/Image2.12.jpg)
  
 Figure 2.12: DB Counter Connector Configuration
 
-7. Click **OK**.
-
-8. After all connectors are configured, click **Save**.
-
-9. The connectors are started automatically once they are configured.
+1. Click **OK**.
+1. After all connectors are configured, click **Save**.
+1. The connectors are started automatically once they are configured.
 
 10. Go to Main Control Panel > PCache Monitoring tab to configure connector properties and manage and monitor the persistent cache refresh process.
 
 >[!warning] 
 >If you need to make changes to the Counter Column name, manually restart the connector and reset the cursor. This can be done from the PCache Monitoring tab. Select the icon representing the database backend and click Stop. Then click Start to restart it. Then click Reset Cursor.
 
-###### Database Connector Failover
+### Database Connector Failover
 
 This section describes the failover mechanism for the database connectors.
 
@@ -455,7 +442,7 @@ Figure 2.14: Configuring Failover Servers for the Backend Database
 
 If a connection cannot be made to the primary server, the connector tries to connect to the failover server configured in the data source. If a connection to both the primary and failover servers fails, the retry count goes up. The connector repeats this process until the value configured in [Max Retries on Connection Error](#max-retries-on-connection-error-for-database-connectors) is reached. There is no automatic failback, meaning once the primary server is back online, the connector doesn’t automatically go back to it.
 
-###### Re-configuring Database Connectors
+### Re-configuring Database Connectors
 
 By re-configuring the connector, you can change the connector type.
 
@@ -469,14 +456,14 @@ Figure 2.15: Editing DB Changelog Connector Configuration
 
 To change the detection mechanism from DB Changelog to another method, select the type from the Connector Type drop-down menu. Enter values as needed for the properties specific to the new connector type and click Next. Click Next in the confirmation window to confirm that you want the connector reconfigured. Click Next to confirm that the connector has been reconfigured. Click Finish.
 
-###### Directory Connectors
+## Configuring Source Directory Connectors
 
 For directory backends (LDAP-accessible including RadiantOne Universal Directory and Active Directory), the default connectors are configured and started automatically. Go to Main Control Panel > PCache Monitoring tab to configure connector properties and manage and monitor the persistent cache refresh process.
 
 >[!warning] 
 >If you are using a persistent cache on a proxy view of a local RadiantOne Universal Directory store, or a nested persistent cache view (a cached view used in another cached view), the connector type is noted as HDAP Trigger. This is a special trigger mechanism that publishes the changes directly into the queue to automatically invoke the refresh to all associated persistent cache layers. This change detection mechanism doesn’t require a connector process (or agents). If a RadiantOne service is virtualizing an external (non-local) RadiantOne Universal Directory store, and a persistent cache is configured for the view, this is considered an “LDAP backend” and the refresh connector can be configured for either changelog or persistent search (whatever is enabled/supported on the remote RadiantOne server) as described below.
 
-###### LDAP Directories
+### LDAP Directories
 
 For LDAP backends that support both Changelog and Persistent Search, you can configure the connector from the Main Control Panel -> Directory Namespace Tab. Navigate below the Cache node and select the persistent cache branch configured for auto-refresh. On the right side, select the Refresh Settings tab. Select the connector you want to configure and choose Configure. Choose either the LDAP option (for Changelog) or Persistent Search and click OK.
 
@@ -488,7 +475,7 @@ Figure 2.16: LDAP Directory Connector Types
 
 **Persistent Search** - Any LDAP directory that offers a persistent search mechanism can use the Persistent Search connector type. Novell eDirectory is an example of an LDAP source that supports persistent search. Others include Red Hat Directory, IBM TDS, RadiantOne Universal Directory and CA Directory. The connector issues a persistent search and gets notified by the directory server when information changes. If the connector is shut down (either deliberately or due to failure), the delete operations that occurred in the directory are lost. Once the connector is back online there is no way to detect the delete operations that occurred while it was down. The only exception to this is for IBM TDS directories. It stores deleted entries and the capture connector is able to read them, and based on timestamp, determine if the change occurred while the connector was offline.
 
-###### Active Directory
+### Active Directory
 
 There are three change detection mechanisms: USNChanged, DirSync and Hybrid. If you are virtualizing and detecting changes from a Global Catalog, then you must use the USNChanged changed connector because the DirSync and Hybrid connectors cannot detect change events on sub-domains.
 
@@ -498,7 +485,7 @@ The flowchart below helps to decide which change detection mechanism to use.
 
 Figure 2.17: Selecting a Active Directory Change Detection Mechanism
 
-**The Active Directory DirSync** capture connector retrieves changes that occur to entries by passing a cookie that identifies the directory state at the time of the previous DirSync search. The first time the DirSync capture connector is started, it stores a cookie in a cursor file. At the next polling interval, the connector performs a DirSync search to detect changes by sending the current cookie. To use the DirSync control, the Bind DN connecting to the directory must have the DS-Replication-Get-Changes extended right, which can be enabled with the “Replicating Directory Changes” permission, on the root of the partition being monitored. By default, this right is assigned to the Administrator and LocalSystem accounts on domain controllers.
+**The Active Directory DirSync** - the capture connector retrieves changes that occur to entries by passing a cookie that identifies the directory state at the time of the previous DirSync search. The first time the DirSync capture connector is started, it stores a cookie in a cursor file. At the next polling interval, the connector performs a DirSync search to detect changes by sending the current cookie. To use the DirSync control, the Bind DN connecting to the directory must have the DS-Replication-Get-Changes extended right, which can be enabled with the “Replicating Directory Changes” permission, on the root of the partition being monitored. By default, this right is assigned to the Administrator and LocalSystem accounts on domain controllers.
 
 >[!warning] 
 >To detect delete events, the service account used by RadiantOne to connect to the backend Active Directory (configured in the connection string of the RadiantOne data source) must have permissions to search the tombstone objects. Usually, a member of the Administrators group is sufficient. However, some Active Directory servers may require a member of the Domain Admins group. Check with your Active Directory administrator to determine the appropriate credentials required.
@@ -523,7 +510,7 @@ The Active Directory hybrid capture connector uses a combination of the uSNChang
 
 When the connector restarts, uSNChanged detection catches the entries that have been modified or deleted while the connector was stopped. The LDAP search uses the last processed uSNChanged number to catch up. After the connector processes all entries, it requests a new cookie from Active Directory (not from the cursor) and switches to DirSync change detection. 
 
-**RadiantOne Universal Directory Stores**
+### RadiantOne Universal Directory Stores
 
 If you are using a persistent cache on a proxy view of a local RadiantOne Universal Directory store, or a nested persistent cache view (a cached view used in another cached view), the connector type is noted as HDAP (trigger) automatically and cannot be changed. This is a special trigger mechanism that publishes changes directly into the queue to invoke the persistent cache refresh. 
 
@@ -537,7 +524,7 @@ Figure 2.19: HDAP Trigger Connector Type
  
 Figure 2.19: Connector Properties
 
-**Directory Connector Failover**
+### Directory Connector Failover
 
 This section describes the failover mechanism for the LDAP, Persistent Search and Active Directory connectors.
  	
@@ -592,7 +579,7 @@ For the AD Hybrid connector, the failover process starts when the number of exce
 
 After the connector processes all entries, it requests a new cookie from Active Directory and switches to DirSync change detection.
 
-###### Custom Connectors
+## Configuring Source Custom Connectors
 
 The following custom data sources support Real-time persistent cache refresh. For all other custom data sources, use a [periodic cache refresh](#periodic-refresh). 
 
@@ -610,7 +597,7 @@ Figure 2.22: Custom Connector Properties
 
 Custom connectors don’t have built-in failover logic. The web service target must handle failover and this is typically achieved with a web server/HTTP load balancer.
 
-###### Connector Properties
+## Connector Properties
 
 The following properties are for real-time persistent cache refresh connectors. Not all properties are applicable for every type of backend. The description indicates the type of backend the property is used for.
 
@@ -633,21 +620,21 @@ Skip catch-up process (true/false) | If this option is set to false, when the co
 Switch to Primary Server (in Polling Intervals)	| This option, working in conjunction with the Polling Interval property, allows you to configure how often, if at all, the connector attempts to switch back to the primary server after failover. To configure the connector to attempt to switch to the primary server, set Switch to Primary Server to a value of 4 or greater. You can set the value to less than 4, but attempting to connect back to the primary server can be time consuming and therefore not recommended to do frequently. For example, if this value is set to 1, the connector makes an attempt every polling interval. If the Switch to Primary Server value is 3, the connector makes an attempt every third polling interval. <br> To disable attempts to reconnect to the primary server, set this value to zero. This is the default value. <br> Changes made to this property’s value while the connector is running are immediately taken into account. When the connector starts or restarts and the property value is 1 or higher, the connector attempts to switch to the primary server immediately. <br> This property is applicable to the LDAP changelog connectors only.
 Failover Algorithm [1-4] | This option is relevant for the LDAP changelog connector type.<br> When a failover happens, the changelog capture connector attempts to find a new cursor. Since this process is inexact, and changenumber sequence can vary across some replica servers, some events may be replayed or lost. The changelog connector maintains a cursor that indicates information related to the last change processed by the connector along with information about possible replica servers in case failover is needed. During failover, the connector searches the changelog of the replica servers and determines minimum and maximum changenumbers across them. Assume that the last processed changenumber stored by the connector is 100 and there are 2 replica servers defined for the backend. During failover, the connector determines the current changenumbers for each of the replicas by searching their changelogs. Assume that replica 1 has changenumber 99 and replica 2 has changenumber 97. When the connector needs to failover, it must decide whether to start processing changes using changenumber 100 (its current last processed change), 97 (changenumber from replica 2), or 99 (changenumber from replica 1). <br> The Failover Algorithm property allows you to determine how the cursor value gets set during failover, and ultimately determine the quantity of events that are replayed. The property supports values between 1 and 4. The meaning of each is outlined in the table below. <br> ![An image showing ](Media/failover-algorithm.jpg)
  
-###### Resetting Connector Cursor – Detect New Only
+## Resetting Connector Cursor – Detect New Only
 
 Capture connectors use a cursor to maintain information about the last processed changes. This allows the connectors to capture only changes that have happened since the last time they checked for changes. When the real-time persistent cache refresh connectors start, they automatically attempt to capture all changes that have happened since the last time they checked. If the real-time persistent cache refresh process has been stopped for an extended period of time, you might not want them to attempt to capture all changes since the last time they checked. In this case, you can reset the cursor for the connector. From the Main Control Panel > PCache Monitoring tab, select the real-time refresh topology and the topology displays. Click the icon representing the capture connector and the Runtime details are displayed on the right. Click **Reset Cursor** to clear the cursor value and trigger the connector to behave as if it is the first time connecting to the source to collect changes.
 
-#### Persistent Cache Properties
+## Persistent Cache Properties
 
 Once a persistent cache is configured, properties can be managed from the Main Control Panel > Directory Namespace tab > Cache node. Select the configured persistent cache branch and the properties are available on the right.
 
-##### Non-indexed Attributes
+### Non-indexed Attributes
 
 If the Indexed Attributes list is empty, all attributes are indexed by default (except binary ones). Also, the following “internal” ones won’t be indexed either: "creatorsName", "createTimestamp", "modifiersName", "modifyTimestamp", "cacheCreatorsName", "cacheCreateTimestamp", "cacheModifiersName", "cacheModifyTimestamp", "uuid", "vdsSyncState", "vdsSyncHist", "ds-sync-generation-id", "ds-sync-state", "ds-sync-hist", "vdsSyncCursor", "entryUUID", "userpassword”. Any additional attributes that you do not want indexed should be added to the Non Indexed Attributes list on the Properties tab for the selected persistent cache branch.
 
 If you change the non-indexed attributes, you must re-build the index. You can do this from the Properties tab by clicking **Re-build Index**.
 
-##### Sorted Attributes
+### Sorted Attributes
 
 This is a comma-separated list of attributes to be used in association with Virtual List Views (VLV) or sort control configured for RadiantOne. These sorted indexes are managed internally in the persistent cache and kept optimized for sorting. They are required if you need to sort the search result or to execute a VLV query on the persistent cache branch.
 
@@ -655,7 +642,7 @@ If you need to support VLV, the VLV/Sort control must be enabled in RadiantOne. 
 
 If you change the sorted attributes, you must re-build the index. You can do this from the Properties tab by clicking **Re-build Index**.
 
-##### Encrypted Attributes
+### Encrypted Attributes
 
 Attribute encryption protects sensitive data while it is stored in RadiantOne. You can specify that certain attributes of an entry are stored in an encrypted format. This prevents data from being readable while stored in persistent cache, backup files, and exported LDIF files. Attribute values are encrypted before they are stored in persistent cache, and decrypted before being returned to the client, as long as the client is authorized to read the attribute (based on ACLs defined in RadiantOne), is connected to the RadiantOne service via SSL, and not a member of the special group containing members not allowed to get these attributes (e.g. cn=ClearAttributesOnly,cn=globalgroups,cn=config). For details on this special group, please see the RadiantOne System Administration Guide.
 
@@ -664,7 +651,7 @@ Attribute encryption protects sensitive data while it is stored in RadiantOne. Y
 
 On the Properties Tab for the selected persistent cache, enter a comma-separated list of attributes to store encrypted in the Encrypted Attributes property. Attributes listed in the Encrypted Attributes property are added to the Non-indexed attribute list by default. This means these attributes are not searchable by default. Indexing encrypted attributes is generally not advised as the index itself is less secure than the attribute stored in the persistent cache. However, if you must be able to search on the encrypted attribute value, it must be indexed. Only “exact match/equality” index is supported for encrypted attributes. To make an encrypted attribute searchable, remove the attribute from the list of nonindexed attributes and then click **Re-build Index**.
 
-##### Extension Attributes
+### Extension Attributes
 
 Extension Attributes are new attributes (meaning these attributes don’t exist anywhere yet) that are associated with a cached virtual entry. This is primarily used to accommodate the storage of application-specific attributes that you want to store locally as opposed to the backend(s) you are virtualizing. Extension attributes should be used as an alternative to Extended Joins in scenarios where the virtual view is stored in persistent cache and then needs replicated out to RadiantOne Universal Directory stores in other clusters.
 
@@ -680,7 +667,7 @@ Extension Attributes are replicated to other clusters in deployment scenarios wh
 
 When using extension attributes for cached virtual views of LDAP directory backends, you must configure invariant attribute(s). See the following section for more details.
 
-##### Invariant Attributes
+### Invariant Attributes
 
 To guarantee extension attributes are linked to their respective underlying entries and moved properly should modRDN/modDN events occur in the backend source, invariant attribute(s) must be defined. The invariant attribute is the unique identifier in the backend directory. Below are some invariant attributes used in common LDAP directories.
 
@@ -700,16 +687,16 @@ For the example shown below, the persistent cached view is from an Active Direct
  
 Figure 2.24: Invariant Attribute for Persistent Cache
 
-##### Inter-cluster Replication
+### Inter-cluster Replication
 
-This option should be enabled if you want to support replication between this persistent cache branch and a RadiantOne Universal Directory store in a different cluster. 
+This option should be enabled if you want to support replication between this persistent cache branch and a RadiantOne Directory store in a different cluster. 
 
 If inter-cluster replication is enabled, a replication journal is used to store changes that happen on the persistent cache branch. The replication journal is associated with the default LDAP data source defined as replicationjournal and root naming context named cn=replicationjournal. The RadiantOne leader node in the cluster associated with the persistent cache, publishes changes into the replication journal. The RadiantOne leader nodes in all other clusters (that are configured for inter-cluster replication) pick up changes from the replication journal to update their local replica. Persistent caches usually only publish changes into the replication journal (for other RadiantOne Universal Directory replicas in other clusters). There are some cases where persistent cache can accept changes from other clusters.
 
 >[!warning] 
 >Changes that haven’t been picked up from the replicationjournal for 3 days are automatically purged.
 
-##### Accept Changes from Replicas
+### Accept Changes from Replicas
 
 For limited use cases where the only type of modify operations that client applications perform is updates to existing entries (no adds or deletes), the persistent cache can subscribe to these events. If the persistent cache should process attribute updates from RadiantOne Universal Directory replicas in other clusters, enable the Accept Changes from Replicas option and list the acceptable attributes in the Updateable Attributes from Replicas property.
 
@@ -719,7 +706,7 @@ For limited use cases where the only type of modify operations that client appli
 >[!warning] 
 >This is an advanced setting, consult with a Radiant Logic Solution Architect to get assistance on the needed architecture and usage.
 
-##### Updateable Attributes from Replicas
+### Updateable Attributes from Replicas
 
 A comma-separated list of attribute names that the persistent cache should accept changes for. Only changes made to these attributes are processed by the persistent cache. All other changes published in the replication journal from the RadiantOne Universal Directory replicas are ignored by the persistent cache. If an updateable attribute is associated with an extension attribute in the persistent cache, the attribute update is handled locally. If an updateable attribute is sourced from a backend data source, the update is forwarded to the appropriate backend and the cache image is refreshed after the backend update is successful. If the backend update fails, the current persistent cache image is considered the reference and is published to the replication journal to override the images in the RadiantOne Universal Directory replicas in all other clusters.
 
@@ -729,7 +716,7 @@ A comma-separated list of attribute names that the persistent cache should accep
 >[!warning]
 >This is an advanced setting, consult with a Radiant Logic Solution Architect to get assistance on the needed architecture and usage.
 
-##### Use Cache for Authentication
+### Use Cache for Authentication
 
 The default behavior of the RadiantOne service for processing bind requests for users located in a persistent cache branch is to delegate the credentials checking to the authoritative backend source. If the password in the backend is encrypted using one of the algorithms supported by RadiantOne, and the passwords are stored in the cache, you can configure the service to authenticate the user locally against the password in cache instead of delegating the credentials checking to the backend. To enable this behavior, check the Use Cache for Authentication option on the configured cache branch. This option is not applicable in scenarios where the passwords are not stored in the persistent cache. For an example use case where this option could be applicable, please see [Authoritative Backends Inaccessible by All Sites](07-deployment-architecture#backends-inaccessible-by-all-sites).
 
@@ -755,11 +742,11 @@ Password update via a Modify Request sent to RadiantOne	| No | The password is u
 Password update via a Modify Request sent to RadiantOne	| Yes | The password update is sent to the backend. If the password update fails in the backend, the password in the persistent cache is not updated. If the password update succeeds in the backend, the password is updated in the persistent cache. 
 Password is updated directly in the backend (outside of RadiantOne) | N/A | Through the persistent cache refresh process, the password is updated in the persistent cache. If the account was locked in the persistent cache due to a password policy enforced at the cache layer, it will be unlocked by the cache refresh process after a successful password update in the backend. Password strength defined in the persistent cache password policy is not enforced since the password change originated from the backend.
 
-##### Active
+### Active
 
 Check the Active option if you want to Activate this naming context. Uncheck the Active option to deactivate the cache. If a persistent cache is deactivated, RadiantOne issues queries to the backend(s) when processing client requests.
 
-##### Full-text Search
+### Full-text Search
 
 Persistent cache branches can support full text searches. This offers additional flexibility for clients as they can search data in the RadiantOne namespace based on text (character) data. These types of searches are no longer linked to specific attributes as the characters requested could be found in any attribute value. An entry is returned if any attribute in the entry contains the character string(s) requested by the client.
 
@@ -769,7 +756,7 @@ The part of the filter that contains the piece related to the full text search c
 
 If you want the persistent cache to support full text searches, check the Full-Text Search option and click **Save**. If you add the support for full text searches, click **Re-build Index**.
 
-##### Optimize Linked Attributes
+### Optimize Linked Attributes
 Linked attributes are attributes that allow relationships between objects. A typical example would be isMemberOf/uniqueMember for user/groups objects. A group has members (uniqueMember attribute) which is the forward link relationship. Those members have an isMemberOf attribute which is the back link (to the group entry) relationship. Other examples of linked attributes are:
 
 ```
@@ -805,7 +792,7 @@ Figure 2.29: Back Link Attribute Name in Special Attribute Handling
 >[!warning] 
 >If a persistent cache has optimizations associated with it, deactivating it will interfere with queries associated with the linked attributes and they will not return properly. If you no longer need a cache, delete it instead of deactivating it.
 
-#### Persistent Cache Universally Unique Identifier (UUID)
+### Persistent Cache Universally Unique Identifier (UUID)
 
 The Universally Unique Identifier (UUID) attribute is a reserved, internal attribute that is assigned to each entry and can guarantee uniqueness across space and time.
 
@@ -821,9 +808,9 @@ When exporting a persistent cache store to an LDIF file, you have the option to 
  
 Figure 2.30: Export Persistent Cache
 
-#### Managing the Persistent Cache
+## Managing the Persistent Cache
 
-##### Re-initializing a Persistent Cache 
+### Re-initializing a Persistent Cache 
 
 Persistent cache should be re-initialized during off-peak hours, or during scheduled downtime, since it is a CPU-intensive process and during the initialization queries are delegated to the backend data sources which might not be able to handle the load.
 
@@ -843,11 +830,11 @@ Cache refresh connectors do not need to be stopped to re-initialize the persiste
 
 7.	Re-enable Inter-cluster Replication that was deactivated in step 1.
 
-##### Re-building Index
+### Re-building Index
 
 If the cache has already been initialized, and the attribute list for sorted indexes changes (new attributes need to be indexed or removed from the index), you must rebuild the index. From the Main Control Panel -> Directory Namespace Tab, select the persistent cache branch below the Cache node. On the Properties tab on the right side, click the Re-build Index button.
 
-##### Exporting the Cache
+### Exporting the Cache
 
 Exporting the cache generates an LDIF formatted file from the cache contents. This can be useful if you want to replicate this cache image across multiple RadiantOne clusters. To export the cached branch, from the Main Control Panel -> Directory Namespace Tab, select the persistent cache branch below the Cache node. On the Properties Tab on the right side, click the Export button. Enter a name, select a type of file (LDIF or LDIFZ which is a zipped and encrypted file) and click **OK**. If you want to use this LDIF file to initialize a cache or Universal Directory store in another cluster, use the Main Control Panel > Settings Tab > Configuration > File Manager to browse to <RLI_HOME>/vds_server/ldif/export to download the file. Then, connect to the Main Control Panel in the target environment where you want to use the LDIF file and use the Settings Tab > Configuration > File Manager to navigate to <RLI_HOME>/vds_server/ldif/import to upload the LDIF file. When you initialize the cache in the target environment, browse to this location to locate the file to use for initialization.
 
@@ -858,7 +845,7 @@ Exporting the cache generates an LDIF formatted file from the cache contents. Th
 
 Figure 2.31: Exporting an LDIFZ file
  
-##### Testing Persistent Cache Refresh Process
+### Testing Persistent Cache Refresh Process
 
 To test the persistent cache refresh process, use an LDAP command line utility like the one described below. If the connectors are running, suspend them from the Main Control Panel > PCache Monitoring tab.
 
@@ -898,7 +885,7 @@ Modify the above command to match your requirement. Keep the following in mind.
 
 To test, first modify the information in the underlying source. The persistent cache should not reflect any change. Next, execute the ldapsearch command mentioned above. Now, the persistent cache should reflect the new entry. Be sure to check all log files if the persistent cache did not get refreshed properly.
 
-##### Logging Persistent Cache Refreshes
+### Logging Persistent Cache Refreshes
 
 If the change log has been enabled for RadiantOne, then all changes affecting the persistent cache are logged there. Otherwise, all activity to the persistent cache is logged into a branch in the RadiantOne namespace with a root suffix of cn=cacherefreshlog. This branch only stores changes that affect persistent cache branches.
 
@@ -930,7 +917,7 @@ Entries remain in the cn=cacherefreshlog for a default of 3 days. This is config
 
 Typically, if the changelog has been enabled then error log level is used for the persistent cache refresh log. For more information, please see Persistent Cache Log Setting in the RadiantOne System Administration Guide.
 
-##### Detecting Persistent Cache Update Errors
+### Detecting Persistent Cache Update Errors
 
 If an entry in the persistent cache fails to be updated, the entry in the cache refresh log is tagged with a status attribute of 2.
 
@@ -947,6 +934,6 @@ ldapsearch -h 10.11.12.91 -p 2389 -D "cn=directory manager" -w "secret" -b "acti
 >[!warning] 
 >If there are many failed entries in the persistent cache refresh log, meaning that the cache image is significantly different than the backends, it might be more efficient to reinitialize the persistent cache as opposed to trying to fix the failed updates one at a time.
 
-##### Deleting the Persistent Cache
+### Deleting the Persistent Cache
 
 To delete a persistent cache branch, uncheck the Active checkbox (on the Properties tab for the cached branch), then click Save to apply the changes to the server. Then click **Delete**.
