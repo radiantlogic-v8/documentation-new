@@ -11,11 +11,11 @@ There are three major endpoints provided through EOC and can be disbaled / enabl
 
 ![image description](images/endpoints.png)
 
-> [!note]Enabling/Disabling endpoints should be done one endpoint at a time.
+> [!note] Enabling/Disabling endpoints should be done one endpoint at a time.
 
 ## Control Panel
 
-The **CONTROL PANEL** endpoints provides access to the Main Control Panel of FID and is enabled by default after the environment is created.
+The **CONTROL PANEL** endpoint provides access to the Main Control Panel of FID and is enabled by default after the environment is created.
 
 ![image description](images/cp-endpoint.png)
 
@@ -31,24 +31,21 @@ The LDAPS is disabled by default, and can be enabled by using toggle button.
 
 ![image description](images/ldaps.png)
 
-When the endpoint is enabled, a confirmation message appears the toggle turns green and a message appears on the **Environment Details** panel that indicates: **Enabling environment LDAPS endpoint**.
+When the endpoint is enabled, a confirmation message appears, the toggle turns green, and a message appears on the **Environment Details** panel that indicates "Enabling environment LDAPS endpoint".
 
 ![image description](images/enable-ldaps-confirmation-init.png)
-
 
 ![image description](images/enable-ldaps.png)
 
 The endpoint enabling process takes about 5-10 minutes for an endpoint to be successfully enabled.
 
-
 ![image description](images/enable-ldaps-confirmation.png)
-
 
 ### Disabling LDAPS
 
 To disable the LDAPS endpoint, toggle the LDAPS endpoint (which is green).
 
-A message appears on the Environment Details Panel that says **Deleting environment LDAPS endpoint**.
+A message appears on the Environment Details Panel that says, "Deleting environment LDAPS endpoint".
 
 ![image description](images/delete-ldaps-conf.png)
 
@@ -59,11 +56,12 @@ A message appears on the Environment Details Panel that says **Deleting environm
 ## REST
 
 The **REST** endpoint provides API access to the fid.
+
 The REST endpoint is disabled by default, and can be enabled by using toggle button.
 
 ![image description](images/rest.png)
 
-When the endpoint is enabled, the toggle turns green and a message appears on the **Environment Details** panel that indicates: **Enabling environment REST endpoint**.
+When the endpoint is enabled, the toggle turns green and a message appears on the **Environment Details** panel that indicates "Enabling environment REST endpoint".
 
 ![image description](images/enable-rest-conf-init.png)
 
@@ -77,7 +75,7 @@ The endpoint enabling process takes about 5-10 minutes for an endpoint to be suc
 
 To disable the REST endpoint, toggle the LDAPS endpoint (which is green).
 
-A message appears on the Environment Details Panel that says **Deleting environment REST endpoint**.
+A message appears on the Environment Details Panel that says, "Deleting environment REST endpoint".
 
 ![image description](images/delete-rest.png)
 
