@@ -5,7 +5,7 @@ description: Web Services API Guide
 
 # Overview
 
-In addition to handling LDAP and SQL requests for data stored in RadiantOne Universal Directory stores or Persistent Cache, the RadiantOne service can also respond to SCIM (System for Cross-domain Identity Management), and REST requests via HTTP/SOAP queries.
+In addition to handling LDAP queries for data stored in RadiantOne Directory stores or Persistent Cache, the RadiantOne service can also respond to SCIMv2 (System for Cross-domain Identity Management), and REST requests via HTTP/SOAP queries.
 
 Since RadiantOne supports the standard LDAP v3 protocol and operations, and this API is well documented by the industry, this guide focuses solely on the Web Services APIs available.
 
