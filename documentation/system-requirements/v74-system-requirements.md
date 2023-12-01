@@ -3,8 +3,6 @@ title: System Requirements
 description: System Requirements
 ---
 
-July 12, 2022
-
 This document describes the supported backend data sources and the recommended minimum system requirements for installing RadiantOne v7.4.X.
 
 For detailed memory requirements for specific configurations, please see the [RadiantOne Hardware Sizing Guide](/hardware-sizing-guide/01-introduction).
