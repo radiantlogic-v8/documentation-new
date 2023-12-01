@@ -17,19 +17,19 @@ When an environment requires updating, an **Update** message appears next to the
 
 ### Begin update
 
-Update can be initiated either from the "Environments" poage or the "Overview"(under Application Details) page.
+Update can be initiated either from the "Environments" page or the "Overview"(under Application Details) page.
 
 Clicking on **Update** in environment page, takes you to the ovierview page.
 
 ### Update version number
 
-The **Update** dialog box contains a **Version** dropdown field to update the environment version. To update your version number, select the correct number from the **Version** drop down menu. Your currently installed version number is displayed just above the dropdown menu for reference.
+The *Update* dialog box contains a **Version** drop-down field to update the environment version. To update your version number, select the correct number from the **Version** drop-down menu. Your currently installed version number is displayed just above the dropdown menu for reference.
 
 > [!note] Environment versions can only be updated incrementally. You must select the version number that immediately succeeds your current environment version.
 
 ![image description](images/select-version.png)
 
-Once you have selected the correct version number, select **Update** to go to the confirmation dialog box. Click on **Update** to begin updating the environment.
+Once you have selected the correct version number, select **Update** to go to the confirmation dialog box. Click **Update** to begin updating the environment.
 
 ![image description](images/update.png)
 
@@ -39,23 +39,23 @@ To quit the update and return to the environment *Overview* screen, select **Can
 
 ### Environment update confirmation
 
-After selecting **Update** you will return to the *Overview* screen. An updating confirmation message displays notifying you that the update is in progress and could take up to 10 minutes.
+After selecting **Update** the *Overview* screen is displayed. A message displays notifying you that the update is in progress and could take up to 10 minutes.
 
 ![image description](images/updating-env-message.png)
 
-While the environment is updating its status will display as "Updating application version", the **Update** message will no longer be visible.
+While the environment is updating, its status displays as "Updating application version".
 
 ![image description](images/updating.png)
 
-If the environment updates successfully, you will receive a success notification and the environment status will change to "Operational".
+If the environment updates successfully, the environment status changes to "Operational".
 
 ![image description](images/update-success.png)
 
-After the update of environment version is successful, the environment status changes to operational
+After the update of environment version is successful, the environment status changes to operational.
 
 ![image description](images/update-success-operational.png)
 
-If the environment update is unsuccessful, you will receive an error notification and the environment status will change to "Update Failed". Select **Dismiss** to close the notification and proceed to retry updating the environment.
+If the environment update is unsuccessful, the environment status changes to "Update Failed". Select **Dismiss** to close the notification and retry updating the environment.
 
 ## View version history
 
