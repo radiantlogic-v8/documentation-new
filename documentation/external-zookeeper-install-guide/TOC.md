@@ -1,6 +1,6 @@
 ---
-title: Zookeeper Install Guide
-description: Zookeeper Install Guide
+title: External Zookeeper Install Guide
+description: Installing an External Zookeeper Ensemble
 ---
 
 - [Introduction](01-introduction.md)
