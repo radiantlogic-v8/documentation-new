@@ -346,15 +346,9 @@ If no match is detected, a drop-down menu allows you to select one of the follow
  
 Figure 6: Selecting a Template
 
->[!note]
->to remove a mapping, click the ![An image showing ](Media/x-button.jpg) button in the LDAP Attribute column in the table on the right.
-
 ### Manual Attribute Mapping
 
-To manually define an attribute mapping, select an attribute in the table on the left. In the table on the right, click the corresponding SCIM attribute, and click the ![An image showing ](Media/x-button.jpg) button. Repeat this process for all attributes to be mapped.
-
->[!note]
->to remove a mapping, click the ![An image showing ](Media/x-button.jpg) button in the LDAP Attribute column in the table on the right.
+To manually define an attribute mapping, select an attribute in the table on the left. In the table on the right, click the corresponding SCIM attribute, and click the ![An image showing ](Media/curvy-arrows.jpg) button. Repeat this process for all attributes to be mapped.
 
 **Mapping Complex Attributes**
 
