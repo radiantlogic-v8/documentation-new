@@ -13,7 +13,7 @@ The number of each type of environment available depends on the tier selected du
 
 ## Getting Started
 
-You will need to have the following before setting up your new environment:
+Before setting up your environment, you need the following:
 
 - Your environment tier.
 - The version number that corresponds with your instance.
@@ -23,13 +23,13 @@ The new environment setup requires you to define the environment type, details, 
 
 ## New environment set up
 
-To create a new environment, select the **New Environment** button on the *Environments* home screen or from the **Overview** home screen.
+To create a new environment, select **New Environment** on the *Environments* home screen or from the *Overview* home screen.
 
 ![image description](images/create-new.png)
 
 ![image description](images/overview-create.png)
 
-This takes you to the *New Environment* form that contains all the input fields for the information required to create a new environment. The following sections outline how to complete these required fields.
+This takes you to the *New Environment* page that contains all the input fields for the information required to create a new environment. The following sections outline how to complete these required fields.
 
 ![image description](images/new-env-dialog.png)
 
@@ -95,9 +95,9 @@ To reveal your original or confirmation password, select the eye icon (![image d
 
 #### Create the new environment
 
-Completing the steps outlined in the **Environment Type** and **Application Details** sections are all that is required to set up your new environment. Once both sections are complete, select **Create** to create the new environment.
+Completing the steps outlined in the *Environment Type* and *Application Details* sections are all that is required to set up your new environment. Once both sections are complete, select **Create** to create the new environment.
 
-> If you would like to upload a configuration file from an external environment, proceed to the Advanced Setup section.
+> If you would like to upload a configuration file from an external environment, proceed to the *Advanced Setup* section.
 
 ### Advanced Setup
 
@@ -105,7 +105,7 @@ An optional advanced setup is available if you would like to upload a configurat
 
 ![image description](images/advanced-setup.png)
 
-The **Install Samples** option will import sample data. See the [quick start](../../../quick-start-guide/02-understanding-default-configuration-and-samples.md) guide for further details about sample data.
+The **Install Samples** option imports sample data. See the [quick start](../../../quick-start-guide/02-understanding-default-configuration-and-samples.md) guide for further details about sample data.
 
 
 #### Custom Configuration
@@ -114,9 +114,9 @@ To import a configuration file, select the configuration ZIP file to upload. You
 
 ![image description](images/choose-file.png)
 
-While your file is uploading, an **Uploading** message will appear in the file upload box, along with a progress bar. You can cancel the file upload while it is in progress by selecting the **X** located in the progress bar box.
+While your file is uploading, an **Uploading** message displays in the file upload box, along with a progress bar. You can cancel the file upload while it is in progress by selecting the **X** located in the progress bar box.
 
-Once your configuration file has successfully loaded, the file name will appear in place of the file upload box. Select **Create** to create the new environment.
+Once your configuration file has successfully loaded, the file name displays in place of the file upload box. Select **Create** to create the new environment.
 
 ![image description](images/config-uploaded.png)
 
@@ -134,7 +134,7 @@ After saving the New Environment details form, you return to the *Environments* 
 
 ![image description](images/creating2.png)
 
-Once the environment has been successfully created, the environment's status will switch from "Creating" to "Operational".
+Once the environment has been successfully created, the environment's status changes to "Operational".
 
 ![image description](images/operational.png)
 
@@ -142,11 +142,11 @@ Once the environment has been successfully created, the environment's status wil
 
 ### Form submission failure
 
-If there is an issue with the form submission, you will receive an error message that the new environment creation failed and the new environment will no longer be visible in the environment list on the *Environments* home screen. Select **Dismiss** to close the error message and proceed to restart the workflow to create a new environment.
+If there is an issue with the form submission, an error message states that the new environment creation failed and the new environment will no longer be visible in the environment list on the *Environments* home screen. Select **Dismiss** to close the error message and proceed to restart the workflow to create a new environment.
 
 ### Failure to create new environment
 
-If there is an error and the environment cannot be created, the environment status will switch from "Creating" to "Creation Failed".
+If there is an error and the environment cannot be created, the environment status changes to "Creation Failed".
 
 Select the ellipsis (**...**) in line with the environment to display a list of options. Options include:
 
