@@ -65,7 +65,7 @@ Apply the RadiantOne patch with either the web installer, or from command line.
 
 1. Start the RadiantOne service and ZooKeeper on this node (you can check status from the Cluster tab in Control Panel).
  
->[!warning] – If you are running the RadiantOne service and/or the Jetty server (which hosts the Control Panel) as services, restart them manually (or you can restart the machine and they will restart automatically in this scenario). 
+>[!warning] If you are running the RadiantOne service and/or the Jetty server (which hosts the Control Panel) as services, restart them manually (or you can restart the machine and they will restart automatically in this scenario). 
 
 1. After the updater is run on all nodes, make any additional updates recommended by Radiant Logic. 
 
