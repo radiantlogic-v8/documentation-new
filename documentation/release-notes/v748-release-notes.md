@@ -101,7 +101,7 @@ RadiantOne is supported on the following 64-bit platforms:
 
 -	Oracle Enterprise Linux 7/8/9
 
-For specific hardware requirements of each, please see: https://developer.radiantlogic.com/idm/v7.4/system-requirements/v74-system-requirements/ 
+For specific hardware requirements of each, please see: [https://developer.radiantlogic.com/idm/v7.4/system-requirements/v74-system-requirements/](https://developer.radiantlogic.com/idm/v7.4/system-requirements/v74-system-requirements/)
 
 ## Security Vulnerability Fixes
 -	[VSTS45162] Upgraded jackson-databind-2.13.2.2.jar to 2.14 to remediate potential vulnerabilities. 
