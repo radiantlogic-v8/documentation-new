@@ -1,6 +1,6 @@
 ---
 title: Limits
-description: Details about how to configure limits.
+description: Details about how to configure limits
 ---
 
 ## Limits Introduction
