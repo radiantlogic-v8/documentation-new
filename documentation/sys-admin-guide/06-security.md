@@ -1,6 +1,6 @@
 ---
 title: SSL/TLS Settings
-description: Learn how to manage SSL/TLS settings and certificates
+description: Learn how to manage SSL/TLS settings and certificates.
 ---
 
 ## SSL Settings
