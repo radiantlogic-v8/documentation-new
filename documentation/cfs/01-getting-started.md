@@ -515,7 +515,7 @@ To add a certificate to use with an RTC:
 
 Now you have installed and configure RadiantOne RTC, you can follow the guide.
 
--   Configure the different [Certificates](certificates.html).
+-   Configure the different [Certificates](#certificates).
 
 
 # Certificates
