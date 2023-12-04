@@ -9,6 +9,6 @@ description: Installation Guide
 - [Uninstalling RadiantOne](04-uninstalling-radiantone)
 - [RadiantOne External Zookeeper Installation](#)
   - [Introduction](zk-introduction.md)
-  - [Configuring External Zookeeper](zk-configuring-external-zookeeper.md)
+  - [Configuring External Zookeeper](zk-configuring-external-zookeeper-ensemble.md)
   - [Installing RadiantOne](zk-installing-radiantone.md)
   - [Testing External Zookeeper](zk-testing-a-zookeeper-cluster.md)
