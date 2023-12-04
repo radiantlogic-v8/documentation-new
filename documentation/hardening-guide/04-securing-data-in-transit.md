@@ -215,7 +215,7 @@ Although you can configure the SSL ciphers and protocols enabled in RadiantOne, 
 If you are deploying RadiantOne in a cluster, all nodes must be able to communicate with each other. This is required for block replication (replicating data in RadiantOne Universal Directory stores and Persistent Cache) which uses HTTP/HTTPS and redirecting write operations to the leader node which uses LDAP/LDAPS. To force the usage of SSL communication between cluster nodes, choose the Always use SSL option from the Main Control Panel > Settings Tab > Security section > SSL sub-section.
 
 >[!note]
->Forcing the use of SSL slows down the communication speed between nodes.**
+>Forcing the use of SSL slows down the communication speed between nodes.
 
 ## Configure SSL/TLS for Backend Connections
 
