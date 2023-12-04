@@ -228,7 +228,7 @@ In the Dashboard, Global View section, the tenant administrator will see a list 
 
 ![](media/dashboard-1.png)
 
-The Certificates section, wil display a list of all certificates used throughout the configuration. From this screen, it is also possible to download the public key of each certificate. For details on certificates and how they are used by CFS, please see [Certificates](../getting-started/certificates.html).
+The Certificates section, wil display a list of all certificates used throughout the configuration. From this screen, it is also possible to download the public key of each certificate. For details on certificates and how they are used by CFS, please see [Certificates](01-getting-started#certificates).
 
 ![](media/dashboard-2.png)
 
