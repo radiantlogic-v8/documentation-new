@@ -15,9 +15,9 @@ Other advantages of having a ZooKeeper ensemble separate from the RadiantOne nod
 - This de-coupled (single service per server) architecture is better for running in container technologies like Docker, simplifying deployment.
 - Easier to troubleshoot problems and there is one less point of failure per machine.
 
-For details on installing RadiantOne in a Dev/QA environment see the RadiantOne Installation Guide.
+For details on installing RadiantOne in a Dev/QA environment see [These Installation Steps](02-installation).
 
-For details on installing RadiantOne in a production environment, start with the steps in this guide to setup the external ZooKeeper ensemble. Then, refer to the RadiantOne installation guide on how to point to an external ZooKeeper ensemble.
+For details on installing RadiantOne in a production environment, setup the [External ZooKeeper Ensemble](zk-configuring-external-zookeeper-ensemble). Then, refer to [RadiantOne Installation](zk-installing-radiantone) on how to point to an external ZooKeeper ensemble.
 
 The installers are available at: https://radiantlogicinc246.sharefile.com/d-s7661e751505c433cb66f12d1c471de5c 
 Create an account to login. Once logged in, navigate to: `/Installers/<RadiantOne_MainVersion>/<RadiantOne_PatchVersion>/rli-zookeeper-external<version> file applicable for your operating system>`
