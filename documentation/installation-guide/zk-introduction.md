@@ -19,4 +19,5 @@ For details on installing RadiantOne in a Dev/QA environment see the RadiantOne 
 
 For details on installing RadiantOne in a production environment, start with the steps in this guide to setup the external ZooKeeper ensemble. Then, refer to the RadiantOne installation guide on how to point to an external ZooKeeper ensemble.
 
-The installers are available via an ftp site. Contact support@radiantlogic.com for access information.
+The installers are available at: https://radiantlogicinc246.sharefile.com/d-s7661e751505c433cb66f12d1c471de5c 
+Create an account to login. Once logged in, navigate to: `/Installers/<RadiantOne_MainVersion>/<RadiantOne_PatchVersion>/rli-zookeeper-external<version> file applicable for your operating system>`
