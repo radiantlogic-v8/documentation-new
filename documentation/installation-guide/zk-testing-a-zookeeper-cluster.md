@@ -3,7 +3,7 @@ title: ZooKeeper Install Guide
 description: ZooKeeper Install Guide
 ---
 
-# Testing a ZooKeeper Cluster
+## Testing a ZooKeeper Cluster
 
 Once the Zookeeper ensemble and RadiantOne FID nodes are installed, you can test access to the ZooKeeper cluster.
 
@@ -38,14 +38,11 @@ In the following image, two Zookeeper nodes have gone offline. If the ZooKeeper 
 
 Figure 3: A Cluster Check with Two Nodes Offline
 
-### Configuring ZooKeeper to Startup as a Service
+## Configuring ZooKeeper to Startup as a Service
 
 Use the native operating system utilities (Task Scheduler or Linux Daemons) to configure the ZooKeeper service on each node in the ensemble so that it starts up automatically after reboot.
 
 The script to start ZooKeeper is <ZooKeeper_HOME>\bin\start_zookeeper.bat/.sh.
 
-Scripts to install ZooKeeper as a service can be found here:
-
-https://dl.radiantlogic.com/Global/Installers/<RadiantOne_Version>/ScriptsToInstallZKService.zip
-
-If you need credentials for accessing the download site, contact support@radiantlogic.com.
+Scripts to install ZooKeeper as a service can be found here: https://radiantlogicinc246.sharefile.com/d-s7661e751505c433cb66f12d1c471de5c 
+Create an account to login. Once logged in, navigate to: `/Installers/<RadiantOne_MainVersion>/<RadiantOne_PatchVersion>/ScriptsToInstallZKService`
