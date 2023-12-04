@@ -17,7 +17,7 @@ Other advantages of having a ZooKeeper ensemble separate from the RadiantOne nod
 
 For details on installing RadiantOne in a Dev/QA environment see [Installation](02-installation).
 
-For details on installing RadiantOne in a production environment, start with the steps in this guide to setup the external ZooKeeper ensemble. Then, refer to [Installation](02-installation) on how to point to an external ZooKeeper ensemble.
+For details on installing RadiantOne in a production environment, start with the steps to [Setup the external ZooKeeper ensemble](zk-configuring-external-zookeeper-ensemble). Then, refer to [Installating RadiantOne](zk-installing-radiantone) on how to point to an external ZooKeeper ensemble.
 
 The installers are available via an ftp site. Contact support@radiantlogic.com for access information.
 
