@@ -5,30 +5,30 @@ description: Learn how to manually update the RadiantOne version running in an e
 ---
 # Update an Environment
 
-When version updates are available for environments in your Environment Operations Center instance, you will receive an *Update Now* notification. You can update your environments from the *Environments* home screen or you can update a specific environment from its *Overview* screen. This guide outlines the steps required to update your environments from the *Environments* home screen. For details on updating an individual environment from its detailed view, review the environment details guide on [updating an environment](../environment-details/update-environment.md)
+When version updates are available for environments in your Environment Operations Center instance, you will receive an *Update Now* notification. You can update your environments from the *Environments* home screen or you can update a specific environment from its *Overview* screen. This guide outlines the steps required to update your environments from the *Environments* home screen. For details on updating an individual environment from its detailed view, review the environment details guide on [updating an environment](../environment-details/update-environment.md).
 
 > [!note] Before getting started, make sure you have your current version of Environment Operations Center and the required number of RadiantOne nodes to display for each environment that requires updating.
 
 ## Managing environment updates
 
-When an environment requires updating, an **Update** message appears next to the environment's version number.
+When an environment requires updating, an **Update** message displays next to the environment's version number.
 
 ![image description](images/update-alert.png)
 
 ### Begin update
 
-Begin the environment update workflow from the home screen, by selecting the **Update** message. This will then take you to the designated environment page and the **UPDATE** option will be avaiable next to the **VERSION** number. This will also open the **Update Environment** dialog box.
+Begin the environment update workflow from the home screen by selecting the **Update** message. The designated environment page displays, and the **UPDATE** option is avaiable next to the **VERSION** number. This also opens the **Update Environment** dialog box.
 
 ![image description](images/update-alert.png)
 
 ![image description](images/select-update.png)
 
-Clicking on **UPDATE** from environments page, will open the detailed overview page for the selected environment.
+Clicking on **UPDATE** from environments page opens the detailed overview page for the selected environment.
 In the detailed overview for the environment page, you can see the current version and an **UPDATE** option beside it.
 
 ![image description](images/update-env-dialog.png)
 
-Alternatively, you can locate the environment you would like to update and directly select the **UPDATE** message located next to the environment's version number, which will again open the **Update Environment** dialog box.
+Alternatively, you can locate the environment you would like to update and directly select the **UPDATE** message located next to the environment's version number, which again opens the **Update Environment** dialog box.
 
 ### Update version number
 
@@ -38,7 +38,7 @@ Once you have started the environment update workflow, a dialog box appears cont
 
 ![image description](images/select-version.png)
 
-Once you have set the correct version number, click on **Update** and click on **UPDATE** in the next dialog, to begin updating the environment.To quit the update and return to the main *Environments* screen, select **Cancel**.
+Once you have set the correct version number, click **Update*. In the next dialog, click **UPDATE**. To quit the update and return to the main *Environments* screen, select **Cancel**.
 
 ![image description](images/update.png)
 
@@ -46,24 +46,23 @@ Once you have set the correct version number, click on **Update** and click on *
 
 ### Environment update confirmation
 
-After selecting **Update** you will return to the main *Environments* screen. The status of the environment being updated will display as "Updating". A confirmation message will appear indicating that the environment is updating both on the envrionement overview as well as on the envrionments page.
+After selecting **Update**, the main *Environments* page displays. The status of the environment being updated displays as "Updating". A confirmation message displays, indicating that the environment is updating both on the envrionement overview as well as on the envrionments page.
 
 ![image description](images/updating.png)
 
 ![image description](images/updating-env-message.png)
 
-When the application is updating, the status of application under the environment, in environments page shows up as offline
+When the application is updating, the status of application under the environment, in environments page shows up as offline.
 
 ![image description](images/offline-when-updating.png)
 
-If the environment updates successfully, you will receive a success notification and the environment's status will change to "Operational".
+If the environment updates successfully, a success notification displays, and the environment's status changes to "Operational".
 
 ![image description](images/update-success.png)
 
 ![image description](images/update-success-operational.png)
 
-
-If the environment update is unsuccessful, you will receive an error notification and the environment's status will change to "**Update Failed**".
+If an environment update is unsuccessful, an error notification displays, and the environment's status changes to "**Update Failed**".
 
 ## Previous updates
 
@@ -77,7 +76,7 @@ This brings you to the environment *Overview* screen. From here, select **View V
 
 ![image description](images/view-version-history.png)
 
-The *Version History* dialog will display a chronological list of all previous updates including the version number, the date the update was applied, and the user who applied the update.
+The *Version History* dialog displays a chronological list of all previous updates including the version number, the date the update was applied, and the user who applied the update.
 
 ![image description](images/version-history.png)
 
