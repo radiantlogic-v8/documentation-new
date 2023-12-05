@@ -14,7 +14,7 @@ Environment Operations Center provides three different Single Sign On options to
 - **Sign in with GitHub**.
 - **Sign in with Microsoft**.
 
-Environment Operations Center also provides an option to login using an email and password
+Environment Operations Center also provides an option to login using an email and password.
 
 ![image description](images/login-page.png)
 
