@@ -7,7 +7,7 @@ description: ZooKeeper Install Guide
 
 For HA a minimum of three Zookeeper nodes is required.
 
-![An image showing ](Media/Image2.1.jpg)
+![An image showing ](Media/ZKImage2.1.jpg)
 
 Figure 1: RadiantOne Cluster with External Zookeeper Ensemble
 
@@ -19,7 +19,7 @@ To configure the first ZooKeeper server:
 
    >[!note] The screen shot below is a general reference and the file name indicated is not the latest zip file name. For Windows deployments, use the rli-zookeeper-external-`<version>`-windows_64.zip file. For Linux deployments, use the rli-zookeeper-external-`<version>`-linux_64.tar.gz file.
 
-    ![An image showing ](Media/Image2.2.jpg)
+    ![An image showing ](Media/ZKImage2.2.jpg)
 
     Figure 2: Extracting the Compressed Zookeeper File
 
@@ -27,7 +27,7 @@ To configure the first ZooKeeper server:
 1. Open the folder rli-zookeeper-external.
 1. Open the file setup.properties in a text editor. In this example, the file is opened using Notepad++.
 
-    ![An image showing ](Media/Image2.3.jpg)
+    ![An image showing ](Media/ZKImage2.3.jpg)
 
     Figure 3: Opening setup.properties
 
@@ -52,21 +52,21 @@ To configure the first ZooKeeper server:
 
 9. Save setup.properties. In this example, the file is configured as follows for the first node in the cluster:
 
-    ![An image showing ](Media/Image2.4.jpg)
+    ![An image showing ](Media/ZKImage2.4.jpg)
 
     Figure 4: The setup.properties File On the First Zookeeper Node
 
 10. In a Command Processor window, navigate to C:\rli-zookeeper-external.
 11. Run configure.bat. The configuration detects the additional nodes.
 
-    ![An image showing ](Media/Image2.5.jpg)
+    ![An image showing ](Media/ZKImage2.5.jpg)
 
     Figure 5: Configuring Zookeeper
 
 12. In the command processor, navigate to C:\rli-zookeeper-external\bin.
 13. Run start_zookeeper.bat. Text similar to the following displays.
 
-    ![An image showing ](Media/Image2.6.jpg)
+    ![An image showing ](Media/ZKImage2.6.jpg)
 
     Figure 6: Starting ZooKeeper
 
@@ -80,7 +80,7 @@ Once the first Zookeeper node is configured, you are ready to configure addition
  
     >[!warning] Note that the zk.id value for this node is set to 2.
 
-    ![An image showing ](Media/Image2.7.jpg)
+    ![An image showing ](Media/ZKImage2.7.jpg)
 
     Figure 7: The setup.properties File on the Second Zookeeper Node
 
@@ -88,7 +88,7 @@ Once the first Zookeeper node is configured, you are ready to configure addition
 
     >[!warning] Note that the zk.id value for this node is set to 3.
 
-![An image showing ](Media/Image2.8.jpg)
+![An image showing ](Media/ZKImage2.8.jpg)
 
 Figure 8: The setup.properties File on the Third Zookeeper Node
 
