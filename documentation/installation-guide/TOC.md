@@ -12,3 +12,4 @@ description: Installation Guide
   - [Configuring External Zookeeper](zk-configuring-external-zookeeper-ensemble.md)
   - [Installing RadiantOne](zk-installing-radiantone.md)
   - [Testing External Zookeeper](zk-testing-a-zookeeper-cluster.md)
+  - [Configuring Zookeeper to start as a Service](/zk-testing-a-zookeeper-cluster/configuring-zookeeper-to-startup-as-a-service)
