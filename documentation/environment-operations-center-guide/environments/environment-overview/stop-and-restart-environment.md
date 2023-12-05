@@ -44,7 +44,7 @@ When the environment is successfully stopped, the status on the overview page ch
 
 > [!note] Starting an environment is only available when a environment is created and stopped.
 
-To start the selected environment, on the *Overview* page, right top corner, click the power icon.
+To start the selected environment, click the power icon in the upper-right corner of the *Overview* page.
 
 ![image description](images/power-icon2.png)
 
@@ -52,7 +52,7 @@ From the options under power, click **Start**.
 
 ![image description](images/start.png)
 
-A message prompts you to confirm the **Start Environment**. Click **Confirm** to start the environment or to go back, click **Cancel**.
+A message prompts you to confirm the **Start Environment**. Click **Confirm** to start the environment, or to go back click **Cancel**.
 
 ![image description](images/start-confirm.png)
 
