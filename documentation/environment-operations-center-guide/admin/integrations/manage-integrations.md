@@ -27,7 +27,7 @@ Select an **Integration Type** from the available channels listed and select **N
 
 ### Configuration Details
 
-The required configuration details will differ depending on the type of configuration selected. Complete the required configuration fields and select **Create** to finish setting up the new integration.
+The required configuration details differ depending on the type of configuration selected. Complete the required configuration fields and select **Create** to finish setting up the new integration.
 
 ![image description](images/config.png)
 
@@ -49,7 +49,7 @@ The workflow to edit an integration is the same as the *New Integration* workflo
 
 ![image description](images/edit-config.png)
 
-If the integration successfully updates, you will receive a confirmation message and the details will update on the *Integrations* tab.
+If the integration successfully updates, a confirmation message displays, and the details are updated on the *Integrations* tab.
 
 ![image description](images/edited.png)
 
@@ -59,15 +59,15 @@ To delete an integration, select **Delete** from the the **Options** (**...**) m
 
 ![image description](images/delete.png)
 
-A message will display to confirm that you would like to delete the selected integration. Select **Delete** to delete the integration.
+A message displays, asking you to confirm that you would like to delete the selected integration. Select **Delete** to delete the integration.
 
 ![image description](images/confirm-delete.png)
 
-The integration will be removed from the *Integrations* tab and alerts will no longer be sent to the communication channel.
+The integration is removed from the *Integrations* tab, and alerts are no longer sent to the communication channel.
 
 ![image description](images/deleted.png)
 
 ## Next steps
 
-You should now have an understanding of the steps to add integrations to receive Env Ops Center alerts in external channels. To learn how to create alerts to send to the configured channels, see the [alert management](../alert-management/alert-management-overview.md) guide.
+You should now have an understanding of the steps to add integrations to receive Environment Operations Center alerts in external channels. To learn how to create alerts to send to the configured channels, see the [alert management](../alert-management/alert-management-overview.md) guide.
 
