@@ -11,7 +11,7 @@ This guide provides an overview of the Environment Operations Center home screen
 
 ## Overview
 
-After logging in to the Environment Operations Center, the *Overview* screen appears. This is the Env Ops Center home screen and provides access to Radiant Logic supporting documentation. This screen also provides a high-level overview of your environments.
+After logging in to the Environment Operations Center, the *Overview* page displays. This is the Environment Operations Center home screen. It provides access to Radiant Logic supporting documentation. This screen also provides a high-level overview of your environments.
 
 A navigation bar is located to the left and is visible from all screens within Environment Operation Center. You can access your account settings by selecting the avatar in the upper right corner, also visible from all screens in the application.
 
@@ -89,11 +89,11 @@ For further details on operations available in the *Admin* section, see the [adm
 
 ## Account settings
 
-A user avatar is always located in the upper right corner of the Env Ops Center user interface. Select the avatar to expand your account dropdown menu.
+A user avatar is always located in the upper right corner of the Environment Operations Center user interface. Select the avatar to expand your account dropdown menu.
 
 ![image description](images/profile-icon.png)
 
-The dropdown displays your name, email, and permissions associated with the account. From the dropdown menu you can navigate to your **Account Settings**, access the **Help** center, or **Logout** of Env Ops Center.
+The drop-down displays your name, email, and permissions associated with the account. From the dropdown menu you can navigate to your **Account Settings**, access the **Help** center, or **Logout** of Environment Operations Center.
 
 For information on managing your account settings, see the [account settings](../admin/account-settings/update-account.md) guide.
 
