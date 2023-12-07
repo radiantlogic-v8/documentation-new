@@ -22,9 +22,6 @@ For a highly available architecture, the underlying Kubernetes cluster should su
 
 3. Have a RadiantOne configuration exported from a Linux Dev/QA environment. After installing RadiantOne in the Kubernetes cluster, you can import the configuration and make any needed configuration updates from the RadiantOne Main Control Panel or from command line using the vdsconfig utility.
 
-### Manifest Files
-Download the StatefulSet manifests: configmap.yaml, fid-aws.yaml and zk-aws.yaml, on the machine where you will manage the Kubernetes cluster from. Contact Radiant Logic at support@radiantlogic.com for access to these files.
-
 ### Sizing a Kubernetes Cluster
 
 Sizing a Kubernetes cluster depends on several factors, including:
