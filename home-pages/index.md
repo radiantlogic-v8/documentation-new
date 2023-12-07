@@ -12,100 +12,157 @@ description: Knowledge homepage
 <tabpanels>
   <tabpanel>
 
-# Welcome to RadiantOne Identity Data Management
+# Welcome to RadiantOne Identity Data Management!
 
 Harness your identity data with intelligent integration to drive better business outcomes, improve security and compliance posture, increase speed-to-market, and more. Browse below to learn more about the capabilities and components that comprise Identity Data Management and link to the user guides to help get you started.
 
+## INTRODUCTION
+
 <section>
   
-  > [Introduction]()  
-  > Radiant Logic’s fully managed, RadiantOne SaaS offering is built to deploy quickly and streamline configuration, maintenance, and upgrades.
+  > [Architecture](introduction/architecture-overview)  
+  > Learn about the components and capabilities that comprise the RadiantOne Identity Data Management architecture. 
   
-  > [Environment Operations Center](environment-operations-center-guide/environments/environment-overview/environments)  
-  > Learn how to use the Environment Operations Center as a centralized control plane to manage all RadiantOne environments.
+  > [Admin Tools](introduction/admin-tools-overview)  
+  > Learn about the two main administration tools used in Identity Data Management: The Environment Operations Center and the Main Control Panel.
+  
+  > [Concepts](introduction/concepts)  
+  > Learn the concepts related to configuring Identity Data Management.
+  
+  
+</section>
 
-  > [Main Control Panel]()  
-  > .
 
-  > [Installation]()
-  > 
-
-  > [Security]()
-  > 
-
-  > [Tuning]()
-  > 
-
-  > [Monitoring]()
-  > 
-
-  > [Reporting]()
-  > 
-
-  > [Maintenance]()
-  >
-
-  > [Troubleshooting]()
-  >
-
- </section>
-
-## RadiantOne Directory
+## INSTALLATION and INITIAL SETUP
 
 <section>
    
-  > [Configuration](namespace-configuration-guide/05-radiantone-universal-directory)  
-  > Learn how to create Directory stores and manage all configuration properties related to indexing, attribute encryption, and replication.
-
-  >[Managing Entries]()
-  > 
+  > [Deployment Options](installation/deployment-options)  
+  > Learn about subscribing to Identity Data Management as SaaS and options for deployment as a self-managed platform.
   
-  > [Tuning]()  
-  > .
+  > [Configuring Environment Operations Center](installation/configure-eoc)  
+  > Learn how to log into the Environment Operations Center and perform the initial configuration required for delegated administration.
   
-  > [Operational Attributes](operational-attributes-guide/01-overview)  
-  > Learn about the operational attributes used by RadiantOne Directory to handle functionality for authorization enforcement, password policies, replication...etc.
+  > [Creating Environments](installation/create-environments)  
+  > Learn how to create environments and install Identity Data Management.
   
-  > [Directory Schema]()  
-  >
-
-  >[Directory Browser]()
-  >
-  
+  > [Configuring Secure Data Connectors](installation/configure-sdc)  
+  > Learn how to configure secure data connectors for integrating with identity sources in your on-premises or provide cloud networks.
+      
 </section>
 
-## RadiantOne Integration
-
-<section>
-  
-  > [Concepts]()
-  >
-  
-  > [Connect Data Sources]()
-  >
-
-  > [Configure Identity Data Views]()
-  >
-
-  > [Tuning]()
-  >
-
-</section>
-
-## RadiantOne Synchronization
+## CONFIGURATION
 
 <section>
    
-  > [Concepts]()  
-  > . 
+  > [Data Sources](configuration/data-sources/data-sources)  
+  > Learn how to use the Data Catalog to connect to and extract identity source metadata. This is the first step to creating views.
   
-  > [Configuration]()  
-  > . 
+  > [Identity Views](configuration/identity-views/identity-views)  
+  > Learn how to create views that are comprised of attributes from one or more identity data sources. 
   
-  > [Tuning]()  
-  > . 
+  > [Directory Stores](configuration/directory-stores/directory-stores)  
+  > Learn how to configure RadiantOne Directory stores. 
+  
+  > [Synchronization](configuration/synchronization/synchronization-concepts)  
+  > Learn how to configure synchronization to keep identity data accurate and up-to-date across silos. 
+  
+  > [Global Settings](configuration/global-settings/global-settings)  
+  > Learn about configuring joins, interception scripts, client protocols and more.
+  
+  > [Security](configuration/security/security)  
+  > Learn about securing Identity Data Management with access controls, password policies, attribute encryption and more.
+    
+</section>
+
+## DEPLOYMENT
+
+<section>
+   
+  > [Architectures](deployment/deployment-topics)  
+  > Learn about basic production architectures.
+  
+  > [Migrating to Production](deployment/deployment-topics/migrating-configuration)  
+  > Learn how to migrate configuration from a testing environment to production. 
+  
+  > [Managing Services](deployment/deployment-topics/managing-services)  
+  > Learn how stop, start and restart the service. 
+     
+</section>
+
+## TUNING
+
+<section>
+   
+  > [Limits](tuning/tuning-limits)  
+  > Learn about using limits to tune the Identity Data Management service.
+  
+  > [Identity Views](tuning/optimize-views)  
+  > Learn how to optimize identity views including how to configure and manage persistent cache. 
+  
+  > [Directory Stores](tuning/directory-stores)  
+  > Learn about tuning properties for Directory Stores. 
+     
+</section>
+
+## MONITORING AND ALERTS
+
+<section>
+   
+  > [Monitoring in Control Panel](monitoring-and-alerts/monitoring-and-alerts/monitoring-in-control-panel)  
+  > Learn about Monitoring capabilities built into the Control Panel.
+  
+  > [Monitoring in Environment Operations Center](monitoring-and-alerts/monitoring-and-alerts/monitoring-in-eoc)  
+  > Learn about Monitoring capabilities built into the Environment Operations Center. 
+  
+  > [Alerts](monitoring-and-alerts/monitoring-and-alerts/configuring-alerts)  
+  > Learn how to configure integrations to support alerts triggered by monitored activities. 
+     
+</section>
+
+## TROUBLESHOOTING
+
+<section>
+   
+  > [Managing Log Levels](troubleshooting/troubleshooting/managing-log-levels)  
+  > Learn how to manage log levels.
+  
+  > [Understanding Logs](troubleshooting/troubleshooting/understanding-logs)   
+  > Understanding log contents to assist with troubleshooting. 
   
 </section>
+
+## REPORTING
+
+<section>
+   
+  > [Creating Reports](reporting/reporting)  
+  > Learn about basic reporting capabilities in RadiantOne Identity Data Management.
+  
+</section>
+
+
+## MAINTENANCE
+
+<section>
+   
+  > [Applying Patches](maintenance/applying-patches)  
+  > Learn how to apply patches to an environment to update the version of RadiantOne Identity Data Management.
+  
+  > [Performing Backups](maintenance/managing-environments/performing-backups)  
+  > Learn how to backup environments. 
+  
+  > [Scaling Nodes](maintenance/scaling-nodes)  
+  > Learn how to scale the number of nodes in an environment. 
+
+  > [Restarting Environments](maintenance/managing-environments/restarting-environments)  
+  > Learn how to restart environments. 
+     
+  > [Deleting Environments](maintenance/managing-environments/deleting-environments)  
+  > Learn how to delete environments. 
+
+</section>
+
 </section>
 </tabpanel>
 
@@ -113,7 +170,7 @@ Harness your identity data with intelligent integration to drive better business
 
 ## Data Management APIs
 
-A rich set of HTTP-based API's have been developed on top of LDAP, to provide broader access to the Universal directory, using modern protocols, such as SCIM, SPML and other web services API's, are described in this section
+A rich set of HTTP-based API's have been developed on top of LDAP, to provide broader access to the RadiantOne service. 
 
 <section>
   
@@ -129,8 +186,7 @@ A rich set of HTTP-based API's have been developed on top of LDAP, to provide br
 
 <section>
   
-  > [API Specification](developer)
-  > Coming soon
+  > COMING SOON!
   
 </section>
 
@@ -140,7 +196,7 @@ A rich set of HTTP-based API's have been developed on top of LDAP, to provide br
 <section>
   
   > [Javadocs](javadoc/allclasses-frame)
-  > The API documentation applicable for customizing interception scripts in RadiantOne FID and transformation scripts in RadiantOne Global Synchronization.
+  > The API documentation applicable for customizing interception scripts and transformation scripts.
   
 </section>
 
