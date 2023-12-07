@@ -27,7 +27,7 @@ An identity source is a data source such as Active Directory, Oracle database, O
 
 ## Identity Source Browser
 
-The Identity Source Browser is accessible after an identity source is configured and is an interface where you can search for users directly in the source. Select ![magnifying glass icon](media/image6.png) to launch the identity browser for a given source.
+The Identity Source Browser is accessible after an identity source is configured and is an interface where you can search for users directly in the source. Select ![magnifying glass icon](../Media/image6.png) to launch the identity browser for a given source.
 
 ![Identity Source Browser](../Media/image7.png)
 
@@ -44,7 +44,7 @@ The Global Profile Browser is accessible after identity sources have been upload
 
 From the main project configuration, select **Identities Browser**.
 
-![Accessing Identities Browser in a Global Identity Builder Project](media/image9.png)
+![Accessing Identities Browser in a Global Identity Builder Project](../Media/image9.png)
 
 ## Unresolved identity
 
@@ -75,7 +75,7 @@ The RadiantOne service can send the client bind request (credentials checking) t
 
 Attribute priority/precedence can be defined when a global profile attribute is populated from multiple identity sources. The default priority level set for all attributes is **normal**. This means, when a global profile attribute is populated from multiple identity sources, all unique values are returned in the global profile entry. For example, assume the following use case where two identity sources contain an overlapping user account and both identity sources are configured to publish the title attribute into the global profile. By default, the global profile title attribute contains the value from both identity sources. If the value of the title attribute was the same in both sources, the global profile title would just have one value. In the example depicted below, each identity source has a different value for title, so the global profile title attribute is multi-valued and has both values.
 
-![Global Profile Title Attribute Populated from Two Identity Sources](media/image10.png)
+![Global Profile Title Attribute Populated from Two Identity Sources](../Media/image10.png)
 
 You can assign different priority levels for identity sources. In which case the highest priority, non-empty identity source attribute values will be used for the global profile attribute. The priority levels are:
 
@@ -98,7 +98,7 @@ An example of a global profile entry and the correlation process can be found in
 
 RadiantOne includes an easy-to-use, web-based application named the Global Identity Viewer that facilitates searching for identities and/or groups across all data sources that have been integrated in the Global Identity Builder project. When a query returns an identity, a list of tabs display for the selected user based on how many identity sources the user has an account in. If the identity is found in the global profile list, the attributes corresponding to this account display on the Global Profile tab. The names of the other tabs indicate the identity source's "friendly name" as configured in the Global Identity Builder project. When a tab is selected, the identity attributes and group membership associated with the user's account in that particular identity source are displayed. In the diagram below, a user identified as Brian Carmen has an account in the RadiantOne global profile store, and accounts in identity sources named `adpartnerdomain`, `ldap`, and `azuread`. The example shows the `adpartnerdomain` tab selected and Brian's attributes from that particular data source returned.
 
-![High Level Diagram for Global Identity Builder and Global Identity Viewer](media/image11.png)
+![High Level Diagram for Global Identity Builder and Global Identity Viewer](../Media/image11.png)
 
 In order to automate the configuration of the Global Identity Viewer, some properties must be defined in your Global Identity Builder project. These aspects are outlined below.
 
