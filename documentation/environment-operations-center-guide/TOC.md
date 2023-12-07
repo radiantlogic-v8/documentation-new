@@ -24,7 +24,6 @@ description: Environment operations center guide
     - [Backup overview](environments/backup-and-restore/backup-restore-overview.md)
     - [Create an environment backup](environments/backup-and-restore/create-backup.md)
     - [Schedule automated environment backups](environments/backup-and-restore/schedule-backup.md)
-    - [Restore an environment from a backup](environments/backup-and-restore/restore-backup.md)
   - [Logging](#)
     - [Environment logs](environments/logging/environment-logs.md)
 - [Reporting](#)
