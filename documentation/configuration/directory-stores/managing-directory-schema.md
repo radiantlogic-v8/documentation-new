@@ -21,7 +21,7 @@ You can extend the schema in three different ways. Each is summarized below and 
 
 The LDIF file should be properly named, formatted, and uploaded using Control Panel > Setup > Directory Namespace > Directory Schema.
 
-![Extend Schema from LDIF File](Media/ldif-files.jpg)
+![Extend Schema from LDIF File](../Media/ldif-files.jpg)
 
 **Figure 1: Extending Directory Schema with LDIF Files**
 
@@ -34,7 +34,7 @@ The name of the LDIF file should be ldapschema_<any 2 digit number greater than 
 
 The metadata from any backend that is virtualized by RadiantOne is maintained in a file with an .orx extension. All .orx files are shown in the Control Panel > Setup > Directory Namespace > Directory Schema > EXTEND FROM ORX section. If you extracted a new schema in Data Catalog, and it does not appear in the list, click **Refresh**. To add the object classes and attributes contained in a file to the RadiantOne Directory schema, click **+** next to the schema name. This lists the schema file in the table on the right. After all schema files have been added click **Generate**.
 
-![ORX Files Available for Extending RadiantOne Directory Schema](Media/orx-schemas.jpg)
+![ORX Files Available for Extending RadiantOne Directory Schema](../Media/orx-schemas.jpg)
 
 **Figure 2: Metadata Files Available for Extending Directory Schema**
 
@@ -43,12 +43,12 @@ The object classes and attributes contained in the select files are added to the
 >[!note] 
 >If you have already added object classes and attributes from some .orx files, then they automatically published in the table on the right. If you want them removed from the RadiantOne directory schema, click the delete icon next to the schema name.
 
-![Remove ORX Schema From Directory Schema](Media/delete-orx-schemas.jpg)
+![Remove ORX Schema From Directory Schema](../Media/delete-orx-schemas.jpg)
 ## Extending the RadiantOne Schema with New Objects and Attributes from the Main Control Panel
 
 Object classes and attributes can be manually defined from the Control Panel > Setup > Directory Namespace > Directory Schema > LDAP Schema section.
 
-![Manually Defining New Object Classes and Attributes](Media/ldap-schema.jpg)
+![Manually Defining New Object Classes and Attributes](../Media/ldap-schema.jpg)
 
 **Figure 3: Manually Defining New Object Classes and Attributes**
 
@@ -75,6 +75,6 @@ Object classes and attributes can be manually defined from the Control Panel > S
 
 The subschemaSubentry attribute is an operational attribute that is returned by RadiantOne for every entry in the directory when it is specifically requested. The value of the subschemaSubentry attribute is the DN of the entry that contains schema information for this entry. An example of an LDAP search with subschemaSubentry requested is shown below.
 
-![Requesting subschemaSubentry](Media/Image4.3.jpg)
+![Requesting subschemaSubentry](../Media/Image4.3.jpg)
 
 **Figure 4: Requesting subschemaSubentry**
