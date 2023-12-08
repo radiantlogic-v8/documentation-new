@@ -5,7 +5,7 @@ description: Learn how to manage RadiantOne Directory Properties.
 
 ## Overview
 
-The settings described appear on the Properties tab for the selected Directory store in the Control Panel > Setup > Directory Namespace > Namespace Design.
+The settings described below appear on the Properties tab for the selected Directory store in the Control Panel > Setup > Directory Namespace > Namespace Design.
 
 ## Naming Context
 The external suffix used by clients to access this branch in the RadiantOne namespace. 
