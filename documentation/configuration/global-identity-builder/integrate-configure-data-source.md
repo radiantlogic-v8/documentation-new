@@ -16,9 +16,9 @@ The Azure application APPLICATION ID and PASSWORD KEY are required to configure 
 
 1. On the Main Control Panel > Settings tab > Server Backend section, go to Custom Data Sources.
 1. On the right, select **mgraph** and select **Clone**.
-1. Enter a data source name and select **Clone**. Select **OK** to exit the confirmation. In this example, the data source is named `azureadglobalrlitenant`.
+1. Enter a data source name and select **Clone**. Select **OK** to exit the confirmation. In this example, the data source is named `azureadglobalrlitenant`.<br>
     ![Azure AD Custom Data Source](../Media/image102.png)
-1. Choose the new data source (for example `azureadglobalrlitenant`) and select **Edit**.
+1. Choose the new data source (for example `azureadglobalrlitenant`) and select **Edit**.<br>
     ![Editing Custom Data Source](../Media/image103.png)
 1. Choose the `username` property and select **Edit**.
 1. Enter the value of the Azure AD Application ID and select **OK**.
