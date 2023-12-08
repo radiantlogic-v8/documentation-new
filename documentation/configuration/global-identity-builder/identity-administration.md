@@ -23,13 +23,13 @@ To manually unlink an identity in the global profile, use the global profile ide
 
 On the main project page, select **Identities Browser**.
 
-![Global Profile Identity Browser](media/image9.png)
+![Global Profile Identity Browser](../Media/image9.png)
 
 Search for and choose the identity to unlink.
 
 A list of data sources the user is from is displayed. Select **Unlink** for the identity you want to remove. The unlinked identity goes into the list of [unresolved](concepts.md#unresolved-identity).
 
-![Unlinking Global Profile Identities](media/image59.png)
+![Unlinking Global Profile Identities](../Media/image59.png)
 
 If the user is not linked to any other identities in the global profile, selecting **Unlink** removes them from the global profile and adds them to the list of [unresolved](concepts.md#unresolved-identity).
 
@@ -37,38 +37,38 @@ If the user is not linked to any other identities in the global profile, selecti
 
 An unresolved identity is one that either did not match a global profile identity, or matched more than one identity in the global profile based on the correlation rules defined for the identity source.
 
-You can view unresolved identities per identity source. From the main project page, select ![magnifying glass icon](media/image60.png) next to the identity source.
+You can view unresolved identities per identity source. From the main project page, select ![magnifying glass icon](../Media/image60.png) next to the identity source.
 
-![Identity Source Browser](media/image61.png)
+![Identity Source Browser](../Media/image61.png)
 
 From the drop-down list, choose **Unresolved** to just view the identities that were flagged as unresolved in this source.
 
-![Viewing Unresolved Identities](media/image62.png)
+![Viewing Unresolved Identities](../Media/image62.png)
 
 For each unresolved identity, you can view the source attributes, their current status in the global profile (Correlation Status tab), and if there are any correlation rules that would match them to a global profile identity (Rules Matches tab). You can also search the global profile to find an identity to link the user to (Link Manually tab).
 
-![Example Unresolved Identity](media/image63.png)
+![Example Unresolved Identity](../Media/image63.png)
 
 ## Add unresolved identities into the global profile
 
-Any [unresolved](concepts.md#unresolved-identity) identity can be manually added to the global profile as a new entry, or linked to an existing global profile entry from the source identity browser. You can view unresolved identities per identity source. From the main project page, select ![magnifying glass icon](media/image60.png) next to the identity source.
+Any [unresolved](concepts.md#unresolved-identity) identity can be manually added to the global profile as a new entry, or linked to an existing global profile entry from the source identity browser. You can view unresolved identities per identity source. From the main project page, select ![magnifying glass icon](../Media/image60.png) next to the identity source.
 
 >[!warning]
 >Once identities are linked in the global profile, they remain linked forever unless the identity is deleted from a data source or an administrator [manually unlinks](#identity-unlinking) them.
 
-![Identity Source Browser](media/image61.png)
+![Identity Source Browser](../Media/image61.png)
 
 From the drop-down list, select **Unresolved** to just view the identities that were flagged as unresolved in this source. Choose an unresolved identity and you can manually add the identity into the global profile by selecting **Add to Global Profile** on the **Correlation Status** tab.
 
-![Manually Adding and Unresolved Identity into the Global Profile List](media/image64.png)
+![Manually Adding and Unresolved Identity into the Global Profile List](../Media/image64.png)
 
 If you want to manually link the identity to an existing global profile identity, select the **Link Manually** tab and enter search criteria to locate the global profile user. The results from the global profile are returned and you can link the source identity to this profile by selecting **Link**.
 
-![Manually Linking a Source Identity to a Global Profile Identity](media/image66.png)
+![Manually Linking a Source Identity to a Global Profile Identity](../Media/image66.png)
 
 If the unresolved user matches multiple global profile users based on correlation rules, the Rules Matches tab displays which global profile users are a potential match. You can link the source identity to a profile by selecting **Link**.
 
-![Manually Linking a Source Identity to a Global Profile Identity](media/image67.png)
+![Manually Linking a Source Identity to a Global Profile Identity](../Media/image67.png)
 
 ## Login Conflict analysis
 
@@ -76,11 +76,11 @@ A login attribute is one that an application uses to uniquely identify a user th
 
 To view all identities with a login conflict, go to the Main Project configuration and select **Edit** > **Login Analysis**. If you disabled the **Automatic Logic Attribute Analysis** in the project properties, you must run the **Login Analysis** from here.
 
-![Login Analysis](media/image68.png)
+![Login Analysis](../Media/image68.png)
 
 In the example below, a user (`Levi Lee`) in the global profile, has a login conflict (`mail` has been designated as the login attribute) with another global profile entry (`Larry Lee`).
 
-![Example of a Global Profile User with Login Conflict – Duplicate Value](media/image69.png)
+![Example of a Global Profile User with Login Conflict – Duplicate Value](../Media/image69.png)
 
 As another example, a user (`Harrison Barnes`) in the global profile, has a login conflict (`mail` has been designated as the login attribute) because he has no value for his email address.
 
@@ -107,7 +107,7 @@ Possible ways to resolve a conflicted identity are:
 
 The attributes designated as the Login Attributes in the project configuration is analyzed during uploads. When the [real-time persistent cache refresh](manage-persistent-cache/overview.md) process is running, the login analysis is performed for every insert, update and delete operation that is applied to the global profile.
 
-![Login Attribute Configuration](media/image71.png)
+![Login Attribute Configuration](../Media/image71.png)
 
 During the design phase of your project (while [real-time persistent cache refresh](manage-persistent-cache/overview.md) is not running), if you have already uploaded identities into the global profile and decide to change the login attribute (to some other attribute already existing in the global profile), you can re-launch the login analysis without having to re-upload the data. To manually launch the login analysis, go to the Main Project configuration and select **Configure** > **Login Analysis**.
 
