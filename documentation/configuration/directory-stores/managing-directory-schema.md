@@ -23,8 +23,6 @@ The LDIF file should be properly named, formatted, and uploaded using Control Pa
 
 ![Extend Schema from LDIF File](../Media/ldif-files.jpg)
 
-**Figure 1: Extending Directory Schema with LDIF Files**
-
 The name of the LDIF file should be ldapschema_<any 2 digit number greater than the existing file names>.ldif. For example, the following schema files already exist by default: ldapschema_00.ldif, ldapschema_01.ldif, and ldapschema_05.ldif, so a new schema file could be ldapschema_03.ldif (any unused 2 digit number could be used).	
 
 >[!warning] 
@@ -36,23 +34,21 @@ The metadata from any backend that is virtualized by RadiantOne is maintained in
 
 ![ORX Files Available for Extending RadiantOne Directory Schema](../Media/orx-schemas.jpg)
 
-**Figure 2: Metadata Files Available for Extending Directory Schema**
-
 The object classes and attributes contained in the select files are added to the RadiantOne schema and can be viewed from the Control Panel > Setup > Directory Namespace > Directory Schema > LDAP Schema section.
 
 >[!note] 
 >If you have already added object classes and attributes from some .orx files, then they automatically published in the table on the right. If you want them removed from the RadiantOne directory schema, click the delete icon next to the schema name.
 
-![Remove ORX Schema From Directory Schema](../Media/delete-orx-schemas.jpg)
+![Remove ORX Schema From Directory Schema](../Media/delete-orx-schema.jpg)
+
+
 ## Extending the RadiantOne Schema with New Objects and Attributes from the Main Control Panel
 
 Object classes and attributes can be manually defined from the Control Panel > Setup > Directory Namespace > Directory Schema > LDAP Schema section.
 
 ![Manually Defining New Object Classes and Attributes](../Media/ldap-schema.jpg)
 
-**Figure 3: Manually Defining New Object Classes and Attributes**
-
-### Create New Object Class
+### Create Object Class
 
 1.	Go to the Control Panel > Setup > Directory Namespace > Directory Schema > LDAP Schema section.
 2.  Select the OBJECT CLASSES sub-section.
@@ -61,7 +57,17 @@ Object classes and attributes can be manually defined from the Control Panel > S
 5.	Enter a name for the object class, parent/super class (if it inherits from an existing object class), and OID (optional). Using the **+ATTRIBUTE** buttons, declare which attributes are required and which are optional.
 6.	Click **OK** to add the new object class to the RadiantOne Directory schema.
 
-### Create New Attribute
+### Delete Object Class
+
+1.  Go to the Control Panel > Setup > Directory Namespace > Directory Schema > LDAP Schema section.
+2.  Select the OBJECT CLASSES sub-section.
+3.	Select the object class to be deleted in the list.
+4.	Click **DELETE**
+5.	Click **DELETE** to confirm the removal. Click **CANCEL** to keep to the object class.
+
+![Requesting subschemaSubentry](../Media/delete-objectclass.jpg)
+
+### Create Attribute
 
 1.	Go to the Control Panel > Setup > Directory Namespace > Directory Schema > LDAP Schema section.
 2.	Select the ATTRIBUTES sub-section.
@@ -71,10 +77,19 @@ Object classes and attributes can be manually defined from the Control Panel > S
 6.	Check whether the attribute allows multi-values.
 7.	Click **ADD** to add the new attribute to the RadiantOne Directory schema.
 
+### Delete Attribute
+
+1.	Go to the Control Panel > Setup > Directory Namespace > Directory Schema > LDAP Schema section.
+2.	Select the ATTRIBUTES sub-section.
+3.	Expand the User-defined attributes section.
+4.	Locate the attribute to be removed in the table.
+5.	Click the delete icon inline with the attribute.
+6.	Click **DELETE** to confirm the removal. Click **CANCEL** to keep the attribute.
+
+![Requesting subschemaSubentry](../Media/delete-attribute.jpg)
+
 ## Requesting the Schema Associated with Entries - subschemaSubentry
 
 The subschemaSubentry attribute is an operational attribute that is returned by RadiantOne for every entry in the directory when it is specifically requested. The value of the subschemaSubentry attribute is the DN of the entry that contains schema information for this entry. An example of an LDAP search with subschemaSubentry requested is shown below.
 
 ![Requesting subschemaSubentry](../Media/Image4.3.jpg)
-
-**Figure 4: Requesting subschemaSubentry**
