@@ -17,9 +17,9 @@ The Azure application APPLICATION ID and PASSWORD KEY are required to configure 
 1. On the Main Control Panel > Settings tab > Server Backend section, go to Custom Data Sources.
 1. On the right, select **mgraph** and select **Clone**.
 1. Enter a data source name and select **Clone**. Select **OK** to exit the confirmation. In this example, the data source is named `azureadglobalrlitenant`.
-    ![Azure AD Custom Data Source](media/image102.png)
+    ![Azure AD Custom Data Source](../Media/image102.png)
 1. Choose the new data source (for example `azureadglobalrlitenant`) and select **Edit**.
-    ![Editing Custom Data Source](media/image103.png)
+    ![Editing Custom Data Source](../Media/image103.png)
 1. Choose the `username` property and select **Edit**.
 1. Enter the value of the Azure AD Application ID and select **OK**.
 1. Choose the `password` property and select **Edit**.
@@ -36,23 +36,23 @@ RadiantOne includes a default virtual view for Azure AD. Edit this virtual view 
 1. Launch **RadiantOne Context Builder** and select the **View Designer** perspective.
 1. Choose **File** > **Open** > **View**.
 1. Choose the **mgraph** view and select **OK**.
-    ![Default mgraph Virtual View](media/image106.png)
+    ![Default mgraph Virtual View](../Media/image106.png)
 1. Choose **File** > **Save As** and enter a file name (for example `azureadglobalrlitenant`).
 1. Select **OK**.
 1. On the Tree View tab, right-click on the view name and select **Edit Connection String**.
 1. Select **Edit**.
 1. Choose the custom data source created in the previous section and select **OK**.
-    ![Editing Data Source Associated with Virtual View](media/image108.png)
+    ![Editing Data Source Associated with Virtual View](../Media/image108.png)
 1. Select **OK** to exit the connection string dialog.
 1. Since contacts and devices are not needed for this use case, on the **Tree View** tab, right-click on **Category=contacts** and choose **Delete**. Select **Yes**, to confirm.
 1. On the **Tree View** tab, right-click on **Category=devices** and choose **Delete**. Select **Yes**, to confirm.
 1. The default group object class need remapped to a common name because the group settings allowed by the Global Identity Builder are currently, `group`, `groupOfNames` and `groupOfUniqueNames`. On the **Tree View** tab, expand **category=groups** and select **group**.
-    ![Tree View Tab](media/image111.png)
+    ![Tree View Tab](../Media/image111.png)
 1. Select the **Properties** tab and locate the Object Class.
 1. Select **Edit** next to Object Class.
 1. From the drop-down list, choose **group** and select **OK**.
-    ![Group Object Class Mapping](media/image113.png)
-1. Select ![floppy disk icon](media/image114.png) to save the view.
+    ![Group Object Class Mapping](../Media/image113.png)
+1. Select ![floppy disk icon](../Media/image114.png) to save the view.
 1. In the **RadiantOne Main Control Panel**, go to the **Directory Namespace** tab.
 1. Select **New Naming Context**.
 1. Enter a naming context (for example `o=azuread`) and select the **Virtual Tree** type.
@@ -60,7 +60,7 @@ RadiantOne includes a default virtual view for Azure AD. Edit this virtual view 
 1. Choose the **Use an existing view (.dvx)** option and select **Browse**.
 1. Choose the virtual view created in Context Builder (saved in step 1. above) and select **OK**.
 1. Select **OK** and then **OK** again to exit the confirmation.
-1. Select the **Main Control Panel** > **Directory Browser** tab and select ![monitor symbol](media/image118.png) to re-load the tree.
+1. Select the **Main Control Panel** > **Directory Browser** tab and select ![monitor symbol](../Media/image118.png) to re-load the tree.
 1. Navigate to the root naming context created in step 21. Expand the tree and verify your Azure AD user and groups are returned.
 
 ## Configure persistent cache
@@ -81,7 +81,7 @@ After configuring a persistent cache, add it as an an identity source. This will
 
 1. Select **Add Identity Source** to add an identity source to a project.
 2. Enter the required [properties](create-projects/identity-sources.md).
-    ![Identity Source Example](media/image123.png)
+    ![Identity Source Example](../Media/image123.png)
 3. Select **Save changes**.
 4. Configure [attribute mappings](create-projects/identity-sources.md#attribute-mappings).
 5. Select **Save Mappings**.
