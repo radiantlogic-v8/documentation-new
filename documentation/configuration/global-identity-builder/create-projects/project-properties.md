@@ -7,7 +7,7 @@ description: Global Identity Builder project properties
 
 Each Global Identity Builder project is associated with a set of properties. The properties are described in this section and an example is shown in the following screen:
 
-![Sample Project Properties](../media/image14.png)
+![Sample Project Properties](../../Media/image14.png)
 
 ## Project name
 
@@ -50,7 +50,7 @@ The attribute listed here conditions the searches performed against the global p
 
 ## Custom attributes
 
-To add an attribute to the global profile view that does not exist as part of the RadiantOne LDAP schema definition for the global profile object class or additional object class(es), select **Add Custom Attribute**. Underscores and spaces are not allowed in attribute names. All custom attributes are displayed in the Attribute Preview list on the right. To remove a custom attribute, select ![red x icon](../media/image16.png) next to the attribute in the Attributes Preview list. Custom attributes are defined as type Directory String, which offers flexibility to store a variety of values. The data type is not configurable.
+To add an attribute to the global profile view that does not exist as part of the RadiantOne LDAP schema definition for the global profile object class or additional object class(es), select **Add Custom Attribute**. Underscores and spaces are not allowed in attribute names. All custom attributes are displayed in the Attribute Preview list on the right. To remove a custom attribute, select ![red x icon](../../Media/image16.png) next to the attribute in the Attributes Preview list. Custom attributes are defined as type Directory String, which offers flexibility to store a variety of values. The data type is not configurable.
 
 >[!warning]
 >Custom attributes are not officially declared as part of the RadiantOne LDAP schema and therefore not tied to a specific object class. If a clients queries the RadiantOne LDAP schema, custom attribute definitions are not returned. If clients need a custom attribute, they must know the exact name and request it explicitly (custom attributes are also returned when all attributes are requested).
