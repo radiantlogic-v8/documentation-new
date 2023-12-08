@@ -24,7 +24,7 @@ In the diagram below, the LDAP directory contains a dynamic group named `HR`. In
 1.  On the **Attributes** tab on the right side, select **ADD**.
 1.  Enter `memberURL` for the **Name** and **Virtual Name** properties.
 1.  Check the **DN Remapping** option.
-1.  Select **OK**.
+1.  Select **OK**.<br>
     ![Defining `memberURL` Attribute for DN Remapping](../../Media/image129.png)
 1.  Select **Save** in the upper right.
 1.  Configure the virtual view for persistent cache. From the **Main Control Panel** > **Directory Namespace** tab, select the **Cache** node.
