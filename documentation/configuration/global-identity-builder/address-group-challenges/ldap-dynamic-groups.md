@@ -9,14 +9,14 @@ If a source used in the Global Identity Builder contains identities that are ass
 
 In the diagram below, the LDAP directory contains a dynamic group named `HR`. In the virtual view, the dynamic group members are evaluated the cached as a standard group.
 
-![Dynamic Group Example](../media/image127.png)
+![Dynamic Group Example](../../Media/image127.png)
 
 1. Configure a virtual view to the directory backend that contains the dynamic groups. This can be a simple proxy view. Use Suffix Branch Inclusion or Exclusion to return the desired branches. If you need help with creating a proxy view or defining suffix branch inclusion/exclusions, see the RadiantOne Namespace Configuration Guide.
 1. From the **Main Control Panel** > **Settings Tab** > **Interception** section > **Special Attributes Handling** sub-section, locate the **Dynamic Groups** section on the right side.
 1. Choose either `member` or `uniquemember` from the **Member Attribute** drop-down list. This will determine the attribute name that will contain the members of the dynamic groups.
 1. Select the **Add** button.
 1. Select **Choose** to browse to the container where all dynamic groups are located. If only a few groups are dynamic, you can select and add them individually. An example of adding a single group named Dynamic is shown in the figure below.
-    ![Dynamic Group Configuration](../media/image128.png)
+    ![Dynamic Group Configuration](../../Media/image128.png)
 1. Check the option to **Enable Caching**.
 1. Select **OK**.
 1. Select **Save** in the top right.
@@ -25,7 +25,7 @@ In the diagram below, the LDAP directory contains a dynamic group named `HR`. In
 1.  Enter `memberURL` for the **Name** and **Virtual Name** properties.
 1.  Check the **DN Remapping** option.
 1.  Select **OK**.
-    ![Defining `memberURL` Attribute for DN Remapping](../media/image129.png)
+    ![Defining `memberURL` Attribute for DN Remapping](../../Media/image129.png)
 1.  Select **Save** in the upper right.
 1.  Configure the virtual view for persistent cache. From the **Main Control Panel** > **Directory Namespace** tab, select the **Cache** node.
 1.  Select **Browse** to navigate to the naming context you want to cache.
