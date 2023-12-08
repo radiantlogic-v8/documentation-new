@@ -10,7 +10,7 @@ After creating a Global Identity Builder project, sometimes [project properties]
 To re-configure an existing project's properties:
 
 1. From the Main Control Panel > PCache Monitoring tab, choose the process related to your Global Identity Builder project.
-1. When the topology loads, select **Tools** > **Stop p-cache refresh**.
+1. When the topology loads, select **Tools** > **Stop p-cache refresh**.<br>
     ![Stopping Persistent Cache Refresh](../../Media/image73.png)
 1. On the Wizards tab, select the **Global Identity Builder**.
 1. On the **Identity Correlation Projects** page, select the **Configure** button next to the project you want to update.
