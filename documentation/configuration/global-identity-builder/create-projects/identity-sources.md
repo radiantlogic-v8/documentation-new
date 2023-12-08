@@ -41,7 +41,7 @@ Any attributes needed in [correlation rules](#correlation-rules), or that you wa
 
 - 1-1 mapping – this method allows you to map a single source attribute to a single target global profile attribute. Select an identity source attribute, a target global profile attribute and select **Map**.
 - Auto Mapping – this is a quick method to automatically map source attributes to target global profile attributes with the same name. Select **Auto** to apply an automatic mapping.
-- Function – this method allows you to apply a function to compute a value for the target global profile attribute. Choose a target global profile attribute and select **Computed**. You can choose an attribute from the **Insert Attribute** drop-down list and select **Insert** to add it to the expression. You can choose a function from the **Insert Function** drop-down list and select **Insert** to add it to the expression. Modify the expression to meet your needs and select **Validate**. Select **OK** to save and go back to the **Attribute Mapping** screen. The example shown below extracts the leftmost characters (based on the @) in the source entry's mail attribute to populate the global profile `description` attribute.
+- Function – this method allows you to apply a function to compute a value for the target global profile attribute. Choose a target global profile attribute and select **Computed**. You can choose an attribute from the **Insert Attribute** drop-down list and select **Insert** to add it to the expression. You can choose a function from the **Insert Function** drop-down list and select **Insert** to add it to the expression. Modify the expression to meet your needs and select **Validate**. Select **OK** to save and go back to the **Attribute Mapping** screen. The example shown below extracts the leftmost characters (based on the @) in the source entry's mail attribute to populate the global profile `description` attribute.<br>
     ![Example Computed Attribute](../../Media/image24.png)
 - Constant – this method allows you to map a target global profile attribute to a constant value. Choose a target global profile attribute and select **Computed**. Enter your value in the **Insert Constant** textbox and select **Insert**. If are you finished, select **Validate**. Otherwise you can add a source attribute, or use a function in your computation. Select **OK** to save and go back to the **Attribute Mapping** screen.
     ![Example of Using a Constant](../../Media/image25.png)
@@ -108,6 +108,6 @@ The example correlation rule shown below indicates that a source identity is lin
 9. (Optional) [Define attribute priority](define-attribute-priority.md) if you have global profile attributes whose value can come from multiple identity sources.
 10. [Upload](upload.md) the identity source into the global profile. Otherwise, [add new identity sources](#identity-sources) to the project.
 
-To return to the correlation rules, on the project page, select ![pencil icon](../media/image28.png) next to the identity source and choose **Correlation Rules**.
+To return to the correlation rules, on the project page, select ![pencil icon](../../Media/image28.png) next to the identity source and choose **Correlation Rules**.
 
 ![Editing Correlation Rules](../../Media/image39.png)
