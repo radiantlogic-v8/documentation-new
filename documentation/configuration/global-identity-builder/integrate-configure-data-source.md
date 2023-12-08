@@ -35,7 +35,7 @@ RadiantOne includes a default virtual view for Azure AD. Edit this virtual view 
 
 1. Launch **RadiantOne Context Builder** and select the **View Designer** perspective.
 1. Choose **File** > **Open** > **View**.
-1. Choose the **mgraph** view and select **OK**.
+1. Choose the **mgraph** view and select **OK**.<br>
     ![Default mgraph Virtual View](../Media/image106.png)
 1. Choose **File** > **Save As** and enter a file name (for example `azureadglobalrlitenant`).
 1. Select **OK**.
@@ -50,7 +50,7 @@ RadiantOne includes a default virtual view for Azure AD. Edit this virtual view 
     ![Tree View Tab](../Media/image111.png)
 1. Select the **Properties** tab and locate the Object Class.
 1. Select **Edit** next to Object Class.
-1. From the drop-down list, choose **group** and select **OK**.
+1. From the drop-down list, choose **group** and select **OK**.<br>
     ![Group Object Class Mapping](../Media/image113.png)
 1. Select ![floppy disk icon](../Media/image114.png) to save the view.
 1. In the **RadiantOne Main Control Panel**, go to the **Directory Namespace** tab.
