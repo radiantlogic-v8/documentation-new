@@ -30,7 +30,7 @@ The name of the LDIF file should be ldapschema_<any 2 digit number greater than 
 
 ## Extending the Schema with Objects and Attributes from Existing Identity Sources
 
-The metadata from any backend that is virtualized by RadiantOne is maintained in a file with an .orx extension. All .orx files are shown in the Control Panel > Setup > Directory Namespace > Directory Schema > EXTEND FROM ORX section. If you extracted a new schema in Data Catalog, and it does not appear in the list, click **Refresh**. To add the object classes and attributes contained in a file to the RadiantOne Directory schema, click **+** next to the schema name. This lists the schema file in the table on the right. After all schema files have been added click **Generate**.
+The metadata from any backend that is virtualized by RadiantOne is maintained in a file with an .orx extension. All .orx files are shown in the Control Panel > Setup > Directory Namespace > Directory Schema > EXTEND FROM ORX section. If you extracted a new schema in Data Catalog, and it does not appear in the list, click **REFRESH**. To add the object classes and attributes contained in a file to the RadiantOne Directory schema, click **+** next to the schema name. This lists the schema file in the table on the right. After all schema files have been added click **GENERATE**.
 
 ![ORX Files Available for Extending RadiantOne Directory Schema](../Media/orx-schemas.jpg)
 
