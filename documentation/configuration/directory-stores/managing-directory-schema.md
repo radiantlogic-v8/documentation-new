@@ -22,6 +22,7 @@ You can extend the schema in three different ways. Each is summarized below and 
 The LDIF file should be properly named, formatted, and uploaded using Control Panel > Setup > Directory Namespace > Directory Schema.
 
 ![Extend Schema from LDIF File](Media/ldif-files.jpg)
+
 **Figure 1: Extending Directory Schema with LDIF Files**
 
 The name of the LDIF file should be ldapschema_<any 2 digit number greater than the existing file names>.ldif. For example, the following schema files already exist by default: ldapschema_00.ldif, ldapschema_01.ldif, and ldapschema_05.ldif, so a new schema file could be ldapschema_03.ldif (any unused 2 digit number could be used).	
