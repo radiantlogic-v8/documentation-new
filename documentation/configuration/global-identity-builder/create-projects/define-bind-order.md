@@ -11,13 +11,13 @@ From the main project page, select **Edit** > **Authentication**.
 
 All identity sources configured in the project are displayed in a table. Check the Enabled option for identity sources that can be used for authentication and use the up/down arrows to indicate the order.
 
-![Defining Bind Order](../media/image53.png)
+![Defining Bind Order](../../Media/image53.png)
 
 ## Test authentication
 
 On the right side of the bind order section, you can test authentication for an identity in the global profile. Search for a user in the global profile and enter the password in the **Bind Password** property. Select **Test Authentication**. If the credentials-checking fails, you get a **Global Profile Authentication Failed** message like shown below.
 
-![Testing Authentication](../media/image54.png)
+![Testing Authentication](../../Media/image54.png)
 
 Otherwise, for successful authentications you would see: **Global Profile Authentication Successful!**.
 
