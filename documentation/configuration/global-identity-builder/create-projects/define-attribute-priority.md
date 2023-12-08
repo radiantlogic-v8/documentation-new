@@ -12,11 +12,11 @@ If a Global Identity Builder project has multiple identity sources that publish 
 
 From the main project page, select **Edit** > **Attribute Priority**.
 
-![Attribute Priority Option](../media/image40.png)
+![Attribute Priority Option](../../Media/image40.png)
 
 Each attribute that is mapped from multiple sources is displayed in the table. Choose the attribute and the priority setting as shown on the right.
 
-![Defining Attribute Priority](../media/image41.png)
+![Defining Attribute Priority](../../Media/image41.png)
 
 In the Priority drop-down list, choose a priority level for the identity source. If all sources have the same priority, and the attribute values in each source are unique, the global profile attribute will be multi-valued, containing all source values. Otherwise, the attribute is only populated from the identity source configured with the highest priority. If the attribute does not have a value in the identity source configured with the highest priority, the global profile attribute is populated from the identity source configured for the next highest priority.
 
