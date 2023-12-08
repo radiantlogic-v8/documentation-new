@@ -43,7 +43,7 @@ During the upload, correlation rules are evaluated and source identities are eit
 >[!warning]
 >Upload order is very important. Consider your correlation rules and identity source data to determine the best upload order. If you modify the upload order during a bulk upload, the modification is implemented in the next upload. For more details, see the [previous section](#upload).
 
-To download the log file for the bulk upload task, select the ![download icon](../media/image47.png) button. Your internet browser settings determine the download location. The file name syntax is as follows.
+To download the log file for the bulk upload task, select the ![download icon](../../Media/image47.png) button. Your internet browser settings determine the download location. The file name syntax is as follows.
 
 `task.Upload_IdentitySource_{PROJECT_NAME}.ALL_SOURCES.log.`
 
