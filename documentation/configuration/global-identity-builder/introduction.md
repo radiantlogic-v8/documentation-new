@@ -13,15 +13,15 @@ The diagrams below provide a summary/review of data sources containing duplicate
 
 In the first scenario, the data sources have no overlap of identities. In this scenario the benefits of union would still be important for identity management since a single unique index/list is still required for applications to identify a user for authentication. However, the design effort is a bit easier as no correlation logic is required. An aggregation of sources A, B, and C is sufficient, so the primary design consideration in this case is what hierarchy applications are expecting and to build this namespace accordingly.
 
-![Data Sources with No Overlapping Identities](./media/image2.png)
+![Data Sources with No Overlapping Identities](../Media/image2.png)
 
 In cases where there starts to be user overlap (as seen in Sources A and B in the diagram below), the configuration starts to require correlation. In this scenario, an aggregation of users from sources A, B and C is required in addition to correlation for the overlapping users in sources A and B. The design considerations now involve correlation logic in addition to where you want the unique list of users to appear in the virtual namespace.
 
-![Data Sources with No Overlapping Identities](./media/image3.png)
+![Data Sources with No Overlapping Identities](../Media/image3.png)
 
 In scenarios where the number of data sources increases, the amount of overlapping identities varies (as depicted in the diagram below), and the logic required to correlate identities becomes complex with the possible need of cascading rules to determine correlation, the RadiantOne Identity Data Analysis tool analyzes the quality of data in the backends, helping you determine which attributes would be the best candidates for correlation rules. The data analysis tool generates a report for each of your data sources. These reports give you a glimpse of your existing data and provide insight on the quality of your data and what is available for you to use for correlation logic.
 
-![Complex Identity Integration Scenario](./media/image4.png)
+![Complex Identity Integration Scenario](../Media/image4.png)
 
 It is recommended that you use the Data Analysis tool on your data prior to using the Global Identity Builder tool.
 
@@ -50,7 +50,7 @@ Examples include the following:
 - `http://vdservername:7070/main/login`
 - `http://10.11.12.10:7070/main/login`
 
-![The RadiantOne Main Control Panel Login Page](./media/image5.png)
+![The RadiantOne Main Control Panel Login Page](../Media/image5.png)
 
 Enter your credentials and select **Login**. Go to the Wizards tab and select **Global Identity Builder**.
 
