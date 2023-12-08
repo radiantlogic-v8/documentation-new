@@ -7,7 +7,7 @@ description: Global Identity Builder identity sources
 
 After you have defined the properties for a Global Identity Builder project, select **Add Identity Source** to add an identity source to the project. For each identity source, you must define the following properties. An example is shown in the following screen:
 
-![Sample Identity Source](../media/image18.png)
+![Sample Identity Source](../../Media/image18.png)
 
 - **Data source**: The data source configured in RadiantOne. This property is required.
 - **Name**: A unique name to identify the data source in the project. Use alphanumeric and underscore characters only. This property is required.
@@ -42,19 +42,19 @@ Any attributes needed in [correlation rules](#correlation-rules), or that you wa
 - 1-1 mapping – this method allows you to map a single source attribute to a single target global profile attribute. Select an identity source attribute, a target global profile attribute and select **Map**.
 - Auto Mapping – this is a quick method to automatically map source attributes to target global profile attributes with the same name. Select **Auto** to apply an automatic mapping.
 - Function – this method allows you to apply a function to compute a value for the target global profile attribute. Choose a target global profile attribute and select **Computed**. You can choose an attribute from the **Insert Attribute** drop-down list and select **Insert** to add it to the expression. You can choose a function from the **Insert Function** drop-down list and select **Insert** to add it to the expression. Modify the expression to meet your needs and select **Validate**. Select **OK** to save and go back to the **Attribute Mapping** screen. The example shown below extracts the leftmost characters (based on the @) in the source entry's mail attribute to populate the global profile `description` attribute.
-    ![Example Computed Attribute](../media/image24.png)
+    ![Example Computed Attribute](../../Media/image24.png)
 - Constant – this method allows you to map a target global profile attribute to a constant value. Choose a target global profile attribute and select **Computed**. Enter your value in the **Insert Constant** textbox and select **Insert**. If are you finished, select **Validate**. Otherwise you can add a source attribute, or use a function in your computation. Select **OK** to save and go back to the **Attribute Mapping** screen.
-    ![Example of Using a Constant](../media/image25.png)
+    ![Example of Using a Constant](../../Media/image25.png)
 
 After all mappings have been defined, you can test the mappings for a given source identity on the right side. Enter a user to search for and the source attributes and corresponding global profile attributes are displayed. The example shown below is for a source identity of `djacobs`.
 
-![Testing Attribute Mappings](../media/image26.png)
+![Testing Attribute Mappings](../../Media/image26.png)
 
 When you are finished configuring and testing attribute mappings, select **Save Mappings**. The next step is defining [correlation rules](#correlation-rules).
 
-To return to the attribute mappings, on the project page, select ![pencil icon](../media/image28.png) next to the identity source and choose Mappings.
+To return to the attribute mappings, on the project page, select ![pencil icon](../../Media/image28.png) next to the identity source and choose Mappings.
 
-![Edit Attribute Mappings](../media/image29.png)
+![Edit Attribute Mappings](../../Media/image29.png)
 
 ## Correlation rules
 
@@ -70,7 +70,7 @@ When adding identity sources to the project, if there are potential overlapping 
 
 Expression – an expression is a criteria based on a global profile attribute matching an identity source attribute in some manner. This can be **equals**, **contains**, **starts with**, **ends with**, **present**, **greater than**, **greater than or equal to**, **less than**, or **less than or equal to**. Each correlation rule can have one or more expressions and they are grouped by a global operator of **AND**, **OR**, or **NOT**. An example is shown below where the rule has one condition containing two expressions that must both evaluate to **true** (since they are grouped as an **AND** operation) in order for a source identity to match a global profile identity. In this case, if the `mail` attribute in a global profile identity matches the `mail` attribute in a source identity **AND** the `employeeNumber` of the global profile identity matches the `employeeID` of the source identity, then these two identities are considered the same physical person and linked in the global profile.
 
-![Example Correlation Rule](../media/image30.png)
+![Example Correlation Rule](../../Media/image30.png)
 
 Condition – a set of one or more expressions that comprise a rule. Conditions can be nested.
 
@@ -87,7 +87,7 @@ Condition – a set of one or more expressions that comprise a rule. Conditions 
 5. To add more criteria in the condition, select **Add Expression**.
 
 >[!note]
->To remove an expression, select ![remove icon](../media/image33.png).
+>To remove an expression, select ![remove icon](../../Media/image33.png).
 
 6. To add a new condition, select **Add Condition**.
 
@@ -101,7 +101,7 @@ The example correlation rule shown below indicates that a source identity is lin
 >[!note]
 >At the bottom of the correlation rule, you get a glimpse of the LDAP filter (generated based on the conditions) that will be applied against the global profile to determine if the condition results in a match.
 
-![Example Correlation Rule](../media/image37.png)
+![Example Correlation Rule](../../Media/image37.png)
 
 7. To add a rule, select **Add Correlation Rule**. Rules are processed in the order in which they appear.
 8. Select **Save Rules**.
@@ -110,4 +110,4 @@ The example correlation rule shown below indicates that a source identity is lin
 
 To return to the correlation rules, on the project page, select ![pencil icon](../media/image28.png) next to the identity source and choose **Correlation Rules**.
 
-![Editing Correlation Rules](../media/image39.png)
+![Editing Correlation Rules](../../Media/image39.png)
