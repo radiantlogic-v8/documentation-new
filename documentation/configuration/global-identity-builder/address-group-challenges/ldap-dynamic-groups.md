@@ -15,7 +15,7 @@ In the diagram below, the LDAP directory contains a dynamic group named `HR`. In
 1. From the **Main Control Panel** > **Settings Tab** > **Interception** section > **Special Attributes Handling** sub-section, locate the **Dynamic Groups** section on the right side.
 1. Choose either `member` or `uniquemember` from the **Member Attribute** drop-down list. This will determine the attribute name that will contain the members of the dynamic groups.
 1. Select the **Add** button.
-1. Select **Choose** to browse to the container where all dynamic groups are located. If only a few groups are dynamic, you can select and add them individually. An example of adding a single group named Dynamic is shown in the figure below.
+1. Select **Choose** to browse to the container where all dynamic groups are located. If only a few groups are dynamic, you can select and add them individually. An example of adding a single group named Dynamic is shown in the figure below.<br>
     ![Dynamic Group Configuration](../../Media/image128.png)
 1. Check the option to **Enable Caching**.
 1. Select **OK**.
