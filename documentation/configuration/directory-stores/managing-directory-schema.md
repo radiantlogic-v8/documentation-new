@@ -65,7 +65,7 @@ Object classes and attributes can be manually defined from the Control Panel > S
 4.	Click **DELETE**
 5.	Click **DELETE** to confirm the removal. Click **CANCEL** to keep to the object class.
 
-![Requesting subschemaSubentry](../Media/delete-objectclass.jpg)
+![Delete Object Class](../Media/delete-objectclass.jpg)
 
 ### Create Attribute
 
@@ -86,7 +86,7 @@ Object classes and attributes can be manually defined from the Control Panel > S
 5.	Click the delete icon inline with the attribute.
 6.	Click **DELETE** to confirm the removal. Click **CANCEL** to keep the attribute.
 
-![Requesting subschemaSubentry](../Media/delete-attribute.jpg)
+![Delete Attribute](../Media/delete-attribute.jpg)
 
 ## Requesting the Schema Associated with Entries - subschemaSubentry
 
