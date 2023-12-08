@@ -84,7 +84,7 @@ In the example below, a user (`Levi Lee`) in the global profile, has a login con
 
 As another example, a user (`Harrison Barnes`) in the global profile, has a login conflict (`mail` has been designated as the login attribute) because he has no value for his email address.
 
-![Example of a Global Profile User with Login Conflict – Empty Value](media/image70.png)
+![Example of a Global Profile User with Login Conflict – Empty Value](../Media/image70.png)
 
 Possible ways to resolve a conflicted identity are:
 
