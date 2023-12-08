@@ -9,11 +9,11 @@ If a source used in the Global Identity Builder project contains identities that
 
 Configure a virtual view to the directory backend that contains the nested groups. This can be a simple proxy view. Use **Suffix Branch Inclusion** or **Exclusion** to return the desired branches. If you need help with creating a proxy view or defining suffix branch inclusion/exclusions, see the RadiantOne Namespace Configuration Guide.
 
-![Sample Proxy View to Active Directory Backend](../media/image131.png)
+![Sample Proxy View to Active Directory Backend](../../Media/image131.png)
 
 User `Sally Smith`, shown below, is a member of the following groups (as indicated by her `memberOf` attribute): `Managers`, `Accounting Managers`, `Accounting`.
 
-![Sample Active Directory User](../media/image132.png)
+![Sample Active Directory User](../../Media/image132.png)
 
 The `Accounting` group is a member of the `All Users` group, but this does not show up in Sally's `memberOf` attribute by default because it is a nested group.
 
@@ -30,14 +30,14 @@ To un-nest the groups:
 1. Select **OK**.
 2. Select **Save**.
 On the **Objects** tab, the `actualmemberOf` attribute is noted as computed.
-    ![Attributes Associated with Virtual Entries](../media/image137.png)
+    ![Attributes Associated with Virtual Entries](../../Media/image137.png)
 1.   Since the `actualmemberOf` calculation will be used internally, it can be hidden from the final result. Choose `actualmemberof` and select **Edit Attribute**.
 2.   Check the **Hidden in Result** option and select **OK**.
-    ![Hiding an Attribute in Virtual Entries](../media/image139.png)
+    ![Hiding an Attribute in Virtual Entries](../../Media/image139.png)
 3.  A new computed attribute is defined to return the remapped group DNs so they properly match the virtual namespace. Select **Edit** next to **Define Computed Attributes**.
 4.  Select **Add**.
 5.  Enter `memberOf` for the computed attribute name. This computed attribute leverages the previously defined one to remap the group DNs in the `actualmemberOf` attribute to match the naming in RadiantOne namespace. In this example, a simple suffix replacement is sufficient, so the `remapDN` function can be used:
-    ![Function Parameters](../media/image140.png)
+    ![Function Parameters](../../Media/image140.png)
 
 After entering the parameters, the following expression is generated based on a source suffix of `"dc=separtners,dc=com"` and a virtual suffix of `"o=adpartnerproxy"`:
 
@@ -45,21 +45,21 @@ After entering the parameters, the following expression is generated based on a 
 
 An example of the two computed attributes is shown below.
 
-![Computed Attributes](../media/image141.png)
+![Computed Attributes](../../Media/image141.png)
 
 Since RadiantOne is computing the `memberOf` attribute, the actual one returned from the backend Active Directory can be assigned a lower priority.
 
 15. Choose **memberOf** and select **Edit Attribute**.
-    ![List of Attributes Associated with Virtual Entries](../media/image142.png)
+    ![List of Attributes Associated with Virtual Entries](../../Media/image142.png)
 
 16. To avoid returning the same groups multiple times, with both their virtual DN and real DN, assign a `Highest` priority to the computed value and a `Lowest` priority to the primary value. This ensures only the computed value is returned.
-    ![Attribute Properties](../media/image143.png)
+    ![Attribute Properties](../../Media/image143.png)
 
 17. Select **OK**.
 
 18. Select **Save**.
 The virtual view now returns an un-nested list of groups for the user's `memberOf` attribute.
-    ![Sample Virtual View Returning Un-nested Groups in the User Entry](../media/image144.png)
+    ![Sample Virtual View Returning Un-nested Groups in the User Entry](../../Media/image144.png)
 19. From the **Main Control Panel** > **Directory Namespace** tab, select the **Cache** node.
 
 20. Select **Browse** to navigate to the naming context you want to cache.
@@ -75,4 +75,4 @@ The virtual view now returns an un-nested list of groups for the user's `memberO
 25. From the **RadiantOne Main Control Panel** > **Wizards tab**, select the **Global Identity Builder**.
 
 26. Add **RadiantOne** as an [identity source](../create-projects/identity-sources.md). Remember to provide a meaningful data source name so you can identify the actual underlying data source. The [Base DN](../create-projects/identity-sources.md#base-dn) should point to the persistent cached view of the actual backend data source. An example is shown below.
-    ![Sample Identity Source Pointing to RadiantOne](../media/image145.png)
+    ![Sample Identity Source Pointing to RadiantOne](../../Media/image145.png)
