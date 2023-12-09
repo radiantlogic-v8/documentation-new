@@ -24,10 +24,8 @@ To import an LDIF file:
 1.	On the Properties tab, click **INITIALIZE**. 
 1.	Choose to either *Upload an LDIF file* and browse to the file, or *Select a file on the server* to display a list of files to choose from.
 1.	Click **OK**.
-
 >[!warning] 
 >If using an LDIFZ file, the security key used on the RadiantOne node where the file was exported must be the same security key value used on the RadiantOne node that you are trying to import the file into. For steps on defining key generation or changing the encryption security key, see the [Attribute Encryption](/managing-properties).
-
 1.	The initialization process is performed as a task. The Tasks Monitor window displays at the bottom of the screen. Click **DISMISS** to exit the window. To view the task details, you can click **MANAGE TASKS**, or you can click **VIEW LOG** and then select the LOGS tab, which is helpful in case there are errors.
 
 ![An image showing ](../Media/init-directory.jpg)
