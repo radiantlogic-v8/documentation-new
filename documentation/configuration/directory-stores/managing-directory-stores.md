@@ -6,11 +6,11 @@ description: Learn how to manage RadiantOne Directory stores.
 ## Overview
 
 Topics related to managing directory stores include the following:
-- how to intialize directory stores from LDIF files.
-- how to manually manage entries from the Directory Browser.
-- how to backup and restore.
-- how to reindex.
-- how to export directory stores.
+- How to intialize directory stores from LDIF files.
+- How to manually manage entries from the Directory Browser.
+- How to backup and restore.
+- How to reindex.
+- How to export directory stores.
 
 ## Initializing Directory Stores
 
@@ -182,7 +182,7 @@ When you export the store on the main cluster, make sure the “Export for Repli
  
 Figure 5.16: Export for Replication
 
-###### Changing Excluded Attributes
+### Changing Excluded Attributes
 
 Adding and removing attributes from the Replication Excluded Attributes list takes effect immediately after saving the configuration change. To keep all clusters consistent, you should temporarily suspend replication if you need to make changes to the Replication Excluded Attributes list. The steps are outlined below.
 
@@ -253,7 +253,7 @@ To create new entries, select the parent location in the tree above where you wa
 >[!warning] 
 >Creating/Modifying entries on the Directory Browser tab is not just for local Universal Directory stores. If a backend other than a local store is mounted under the naming context where you are creating/modifying entries, the backend source is modified accordingly. For example, if you are modifying a branch that represents an LDAP backend and you create a new user entry, that operation is sent to the backend (assuming the credentials stored in the connection string/data source to the backend has the appropriate rights to create users).
 
-#### New Entry
+**New Entry**
 
 To create entries based on an object class other than group, organizationalUnit, inetOrgPerson, or user, choose the New Entry option. When you select the “New Entry” option, you are shown a drop-down list with all object classes available in the RadiantOne LDAP schema. Select the object class that the entry should belong to. After the object class is selected, enter the RDN in the space provided, and then enter values for the attributes below (all required attributes must have values – required attributes are noted with a “yes” in the “Required?” column). Type the value after clicking in the Value column. 
  
@@ -261,7 +261,7 @@ To create entries based on an object class other than group, organizationalUnit,
 
 Figure 5.19: Creating a New Entry
 
-#### New Group
+**New Group**
 
 When creating a new group, you are able to select from the following list of object classes: group, groupOfNames, groupOfUniqueNames, groupOfUrls. More than one object class may be selected. 
 
@@ -272,19 +272,19 @@ When creating a new group, you are able to select from the following list of obj
  
 Figure 5.20: Creating a New Group Entry
 
-#### New OrganizationalUnit
+**New OrganizationalUnit**
 
 If you choose to create a new organizationalUnit, the entry is associated with the organizationalUnit object class. 
 
-#### New Active Directory User
+**New Active Directory User**
 
 This is only relevant if the underlying source is Active Directory. This is a special template for Active Directory due to the specific attributes that are required to be set during the creation of an account. When creating a new Active Directory user, an SSL connection is required if a password is entered for the account. If you do not want to set a password during the account creation, check the Account is Disabled option.
 
-#### New inetOrgPerson
+**New inetOrgPerson**
 
 If you choose to create a new user, the entry is associated with the inetOrgperson object class. 
 
-#### New Dynamic Object – Entry that has an Expiration
+**New Dynamic Object – Entry that has an Expiration**
 
 RadiantOne Universal Directory supports temporary entries using the dynamicObject auxiliary object class as specified in [RFC 2589](https://www.rfc-editor.org/rfc/rfc2589). These entries are associated with a time to live attribute and once expired, the entry is automatically removed from the directory. The attribute that determines the expiration is named entryTTL and has a value in seconds. The minimum entryTTL value supported is 900 seconds. If there is no value specified for entryTTL when the entry is created, a default of 86400 (24 hours) is used.
 
@@ -327,11 +327,7 @@ Result: Success (0)
 
 Groups stored in a Universal Directory store may contain members from any branch in the RadiantOne namespace (not just limited to the local store where the group is defined). The easiest way to manage group membership is from the Main Control Panel -> Directory Browser tab. Select the desired group and click ![An image showing ](Media/manage-group-button.jpg).
 
-#### Adding Members
-
-Members can be either “explicit” or “dynamic”. Each option is described in this section.
-
-##### Explicit Members
+**Adding Explicit Members**
 
 To add explicit members, follow the steps below.
 
@@ -357,7 +353,7 @@ Figure 5.22: Example of adding three members
  
 8.	Click Close to exit the Members screen. 
 
-##### Dynamic Members
+**Dynamic Members**
 
 Dynamic group members are different than explicit group members because instead of specifying a user DN in the group membership attributes (either the member or uniqueMember attributes), you need to specify the LDAP URL containing the filter to find the group members in an attribute named memberURL. The syntax for the memberURL value is as follows:
 
@@ -401,7 +397,7 @@ To add dynamic members with the assistance of a wizard, follow the steps below.
  
 Figure 5.23: memberURL Criteria for Dynamic Group
 
-### Manually Adding Dynamic Members
+**Manually Adding Dynamic Members**
 
 An option to manage dynamic group members is to manually add the groupOfUrls objectclass and memberURL to the group entry. Follow the steps below.
 
@@ -426,7 +422,7 @@ The notion of dynamic group membership is discussed in the Concepts section of t
 
 For more information on LDAP dynamic groups, please see Groups in the [RadiantOne System Administration Guide](/documentation/sys-admin-guide-rebuild/02-concepts).
 
-#### Removing Members
+**Removing Members**
 
 To remove explicit group members, from the Main Control Panel > Directory Browser Tab, select the group entry and click ![An image showing ](Media/manage-group-button.jpg). If the group is a dynamic group that has both static and dynamic members, there is an option to edit “explicit” members and one to edit “dynamic” members. If there are no dynamic members, the list of unique members is displayed. Click Remove Member(s), select the member(s) and click Confirm Remove Member(s). If there are dynamic members, click the Edit Dynamic Members option first to reach the screen to remove members. If the group has many members, you can type a value in the filter box on the top right to reduce the entries shown.
 
@@ -435,7 +431,7 @@ To remove dynamic members, select the group entry and click ![An image showing ]
 >[!note] 
 >Only groups that are of objectclass type groupOfUrls can have dynamic members. If the group you are managing does not have this object class, then the Dynamic Members option is not shown.
 
-#### Modifying Group Attributes
+**Modifying Group Attributes**
 
 All group attributes that allow modifications can be changed from the Main Control Panel -> Directory Browser tab. 
 
@@ -451,7 +447,7 @@ To add a value to a multi-valued attribute, select the attribute and choose Modi
 
 To delete a value from a multi-valued attribute, select the attribute and value you want to remove and choose Modify Attribute > Delete Value and click **Confirm**.
 
-#### Searching Using Range Retrieval
+### Searching Using Range Retrieval
 
 Searching for multi-valued attributes (generally members) in a group may result in the retrieval of many returned values. To define the range of returned attribute values, use the Range option. This feature can be used with any object class (e.g. group, groupOfUniqueNames) and any attribute (e.g. member, uniqueMember). Both RadiantOne Universal Directory stores and RadiantOne FID persistent cache support range searches. 
 
@@ -472,15 +468,15 @@ An example of how to perform a Range Retrieval search in RadiantOne is described
 
 1.	Click **Search**. 
 
-##### Range Limits
+**Range Limits**
 
 Range retrieval involves requesting either a limited or unlimited number of attribute values in your search. In the RadiantOne Main Control Panel’s Directory Browser search function, the range is specified in the Return Attributes field. This section describes the lower and upper range limits. 
 
-**Lower Range Limit**
+*Lower Range Limit*
 
 The range’s lower limit must be expressed as a numerical value and must not exceed the number of members in the group. If the lower limit is greater than 0, the search scope must be “Base”. If the lower limit is greater than 0, and the search scope is “One Level” or “Subtree”, an error occurs. 
 
-**Upper Range Limit**
+*Upper Range Limit*
 
 The upper limit can be expressed by a numerical value, or, to express a limitless upper limit, use the asterisk [*]. If the upper limit is expressed as a numerical value, it must exceed the lower limit. RadiantOne has no server size limit on range retrieval searches. Be aware that searches with large ranges might affect client performance. 
 
@@ -534,11 +530,11 @@ member;range=0-5000
 
 Figure 5.25: Large-range Search Example
 
-#### Nested Groups
+### Nested Groups
 
 RadiantOne Universal Directory supports nested groups, where groups can be members of other groups. To enable support for nested groups, navigate to the Main Control Panel > Settings tab > Security > Access Controls. Check the option to “Enable Nested Groups”.
  
-##### Searching for Group Members using LDAP_MATCHING_RULE_IN_CHAIN
+**Searching for Group Members using LDAP_MATCHING_RULE_IN_CHAIN**
 
 The following example is used to describe the ability to search group membership for a user that is a member of a nested group.
 
