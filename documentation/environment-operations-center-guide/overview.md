@@ -51,7 +51,7 @@ To navigate to the *Overview* screen, select either **Overview** or the Radiant 
 
 The main *Environments* screen provides an overview of all the environments you have access to. Select **Environments** to navigate to the *Environments* overview.
 
-To learn more about the *Environments* section, see the [environments overview](environments/environment-overview/environments-overview.md) guide.
+To learn more about the *Environments* section, see the [environments overview](environments/environment-overview/environments.md) guide.
 
 ![image description](images/environments.png)
 
