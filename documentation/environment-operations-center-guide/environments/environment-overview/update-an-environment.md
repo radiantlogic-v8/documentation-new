@@ -84,7 +84,7 @@ The *Version History* dialog displays a chronological list of all previous updat
 
 To be able to revert to a previous environment update, you must have first created a backup of the environment after it was updated. For details on creating environment backups, see the [create a backup](../backup-and-restore/create-backup.md) guide.
 
-To revert to a previous update, follow the same steps to restore an environment backup. Ensure the version number of the back up matches the version number that you would like to restore the environment to. For details on restoring an environment from a backup, see the [restore a backup](../backup-and-restore/restore-backup.md) guide.
+To revert to a previous update, follow the same steps to restore an environment backup. Ensure the version number of the back up matches the version number that you would like to restore the environment to.
 
 ## Next steps
 
