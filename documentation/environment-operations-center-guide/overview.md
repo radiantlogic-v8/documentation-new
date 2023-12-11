@@ -59,7 +59,7 @@ To learn more about the *Environments* section, see the [environments overview](
 
 The *Reporting* section allows you to run and review various reports for your environments. Select **Reporting** to navigate to the *Reporting* screen.
 
-To learn how to create reports, see the [reporting](../reporting/reporting-overview.md) guide.
+To learn how to create reports, see the [reporting](reporting/reporting-overview.md) guide.
 
 ![image description](images/reporting.png)
 
