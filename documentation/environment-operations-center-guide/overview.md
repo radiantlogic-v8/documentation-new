@@ -33,7 +33,7 @@ Each preview contains the Operational, Warning, Critical and Offline statuses of
 
 The application/environments data displayed differ depending on your assigned role in Environment Operations Center. The Tenant Administrator environment preview displays all of your organization's environments. Environment Administrators and Environment Users will only be able to preview the environments assigned to them.
 
-For further details on role-based permissions, see the [role-based permissions](../admin/role-based-permission/role-based-permissions.md) guide.
+For further details on role-based permissions, see the [role-based permissions](admin/role-based-permission/role-based-permissions.md) guide.
 
 ## Left navigation
 
@@ -51,7 +51,7 @@ To navigate to the *Overview* screen, select either **Overview** or the Radiant 
 
 The main *Environments* screen provides an overview of all the environments you have access to. Select **Environments** to navigate to the *Environments* overview.
 
-To learn more about the *Environments* section, see the [environments overview](../environments/environment-overview/environments-overview.md) guide.
+To learn more about the *Environments* section, see the [environments overview](environments/environment-overview/environments-overview.md) guide.
 
 ![image description](images/environments.png)
 
@@ -67,7 +67,7 @@ To learn how to create reports, see the [reporting](../reporting/reporting-overv
 
 The *Monitoring* section provides interactive dashboards where you can review the operating status of various server components for each environment. Select **Monitoring** to navigate to the *Monitoring* section of Environment Operations Center.
 
-For details on monitoring server components, see the [monitoring](../monitoring/monitoring-overview.md) guide.
+For details on monitoring server components, see the [monitoring](monitoring/monitoring-overview.md) guide.
 
 ![image description](images/monitoring.png)
 
@@ -75,7 +75,7 @@ For details on monitoring server components, see the [monitoring](../monitoring/
 
 You can manage connections to on-premise data connectors in the *Secure Data Connectors* section. Select **Secure Data Connectors** to navigate to the *Secure Data Connectors* screen.
 
-For details on managing data connections, see the [secure data connectors](../secure-data-connectors/data-connectors-overview.md) guide.
+For details on managing data connections, see the [secure data connectors](secure-data-connectors/data-connectors-overview.md) guide.
 
 ![image description](images/secure-data-connectors.png)
 
@@ -83,7 +83,7 @@ For details on managing data connections, see the [secure data connectors](../se
 
 From the *Admin* section you can perform various administrative actions in Environment Operations Center. Select **Admin** to navigate to the *Admin* home screen.
 
-For further details on operations available in the *Admin* section, see the [admin overview](../admin/admin-overview.md) guide.
+For further details on operations available in the *Admin* section, see the [admin overview](admin/admin-overview.md) guide.
 
 ![image description](images/admin.png)
 
@@ -95,10 +95,10 @@ A user avatar is always located in the upper right corner of the Environment Ope
 
 The drop-down displays your name, email, and permissions associated with the account. From the dropdown menu you can navigate to your **Account Settings**, access the **Help** center, or **Logout** of Environment Operations Center.
 
-For information on managing your account settings, see the [account settings](../admin/account-settings/update-account.md) guide.
+For information on managing your account settings, see the [account settings](admin/account-settings/update-account.md) guide.
 
 ![image description](images/account-menu.png)
 
 ## Next steps
 
-After reading this guide you should have an understanding of the *Overview* screen components and how to navigate the Environment Operations Center user interface. For more information on environments, see the [environments overview](../environments/environment-overview/environments.md) guide. To learn how to create an environment, see the [create an environment](../environments/environment-overview/create-an-environment.md) guide.
+After reading this guide you should have an understanding of the *Overview* screen components and how to navigate the Environment Operations Center user interface. For more information on environments, see the [environments overview](../environments/environment-overview/environments.md) guide. To learn how to create an environment, see the [create an environment](environments/environment-overview/create-an-environment.md) guide.
