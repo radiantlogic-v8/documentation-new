@@ -315,7 +315,7 @@ By default the token lifetime is set to 10 hours. To configure the token timeout
 
 1.	Go to the Main Control Panel > Settings tab > Server Front End > Other Protocols section.
 
-2.	In the REST/ADAP sectoin (requires [Expert Mode](overview#expert-mode)), edit the value in the Token Timeout field.
+2.	In the REST/ADAP section (requires [Expert Mode](overview#expert-mode)), edit the value in the Token Timeout field.
 
 3.	Click Save.
 
