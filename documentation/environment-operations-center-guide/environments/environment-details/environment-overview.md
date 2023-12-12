@@ -6,7 +6,7 @@ description: Get a quick introduction to navigating environments in Environment 
 
 # Environment Details
 
-Each environment has a detailed view where you can see further information about the environment, monitor its status, and perform various operations on the environment. This guide outlines the detailed view of an environment as seen in the environment *Overview* screen. For an overview of the *Environments* screen that lists all available environments, see the [environments overview guide](../environment-overview/environments-overview.md).
+Each environment has a detailed view where you can see further information about the environment, monitor its status, and perform various operations on the environment. This guide outlines the detailed view of an environment as seen in the environment *Overview* screen. For an overview of the *Environments* screen that lists all available environments, see the [environments overview guide](../environment-overview/environments.md).
 
 ## Getting started
 
@@ -90,7 +90,7 @@ The *Environment Details* section outlines the environment name, scale, type, st
 
 ### Status
 
-The environment status will change depending on the state of the environment. Statuses include:
+The environment status changes depending on the state of the environment. Statuses include:
 
 - Operational: The environment is fully operational with 100% of services running.
 - Warning: There are services down. This can range from 10%-90% of services.
@@ -108,7 +108,7 @@ For details on updating the environment, review the [update environment](update-
 
 You can view the environment's version history by selecting the **View Version History** button in the lower right corner of the *Environment Details* box.
 
-See the guide on [version history](version-history.md) for further details on reviewing and restoring an environment's previous versions.
+See the guide on [version history](update-environment#view-version-history) for further details on reviewing and restoring an environment's previous versions.
 
 ![image description](images/view-version-hist.png)
 
