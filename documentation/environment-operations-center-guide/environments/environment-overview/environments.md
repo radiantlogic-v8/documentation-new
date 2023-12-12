@@ -98,7 +98,7 @@ To learn more about adjusting the number of nodes in an environment, see the [up
 
 To view a list of operations that can be performed on a given environment, select the ellipsis (**...**) in the environment row or card to expand the **Options** menu. Options include:
 
-- **View Details**: takes you to an environment's *Overview* screen where you can view further details about the environment. To learn more about the environment *Overview*, review the [environment overview guide](../environment-details#environment-details).
+- **View Details**: takes you to an environment's *Overview* screen where you can view further details about the environment. To learn more about the environment *Overview*, review the [environment overview guide](../environment-details/environment-overview#environment-details).
 - **View logs**: takes you to an environment's *Logs* screen where you can view log files for a given date range. To learn how to review logs, visit the environment details [logs](../environment-details/environment-overview#logs) guide.
 - **Delete**: opens the dialog to being the workflow to delete an environment. For information on deleting an environment, review the [Delete an Environment](delete-an-environment.md) guide.
 
