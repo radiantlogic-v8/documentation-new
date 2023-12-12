@@ -53,8 +53,5 @@ description: Environment operations center guide
     - [Delete a user](admin/user-management/delete-user.md)
   - [Role based permissions](#)
     - [Role-based permissions](admin/role-based-permission/role-based-permissions.md)
-  - [Backups](#)
-    - [Admin backups overview](admin/backups/backups-overview.md)
-    - [Recover a deleted environment backup](admin/backups/recover-backups.md)
-
+  
 
