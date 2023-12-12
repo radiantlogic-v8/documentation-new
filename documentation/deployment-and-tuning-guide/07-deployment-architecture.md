@@ -286,13 +286,22 @@ Often, the memory requirements of the RadiantOne service are larger in productio
 >It is recommended to keep the maximum memory (-Xmx) under 32 GB to ensure the JVM uses compressed OOPs as a performance enhancement. If this is exceeded, the pointers switch to ordinary object pointers which grow in size, are more CPU-intensive and less efficient. Also, -Xms and -Xmx should be set to the same value to help avoid the performance-costly process of garbage collection from happening too frequently.<BR>For RadiantOne deployments involving only Universal Directory stores, you can set maximum memory limits to leave more machine memory available for the store. A -Xmx of 2 GB allocated to the RadiantOne process is often enough to support a Universal Directory store containing 10 million entries.
 
 **On Windows Platforms**
-If you run the RadiantOne service as a Windows Service or from the Main Control Panel (Dashboard tab), increase the JVM size in the %RLI_HOME%/bin/VDSServer.config file. To define a minimum memory size, edit or insert a line containing the -Xms setting. The following example sets the minimum to 1 GB.
+If you run the RadiantOne service as a Windows Service or from the Main Control Panel (Dashboard tab):
+
+If you are using RadiantOne v7.4.7 or earlier increase the JVM size in the %RLI_HOME%/bin/VDSServer.config file. To define a minimum memory size, edit or insert a line containing the -Xms setting. The following example sets the minimum to 1 GB.
 
 `vmparam –Xms1024m`
 
 To define a maximum memory size, edit or insert a line containing the -Xmx setting. The following example sets the maximum to 2 GB.
 
 `vmparam –Xmx2048m`
+
+If you are using RadiantOne v7.4.8+, set the JVM size in %RLI_HOME%/radiantone/vds/bin/windows.service/fid-server-service-install.bat before installing the Windows service (if you already have the service installed, use fid-server-service-uninstall.bat to remove it first). Add the following lines indicating a minimum (JvmMs) and maximum (JvmMx) value like shown below.
+```
+--JvmMs=4096^
+--JvmMx=32768^
+++JvmOptions="-XX:HeapDumpPath=%RLIHOME%\%INSTANCENAME%\logs\GC"^
+```
 
 **On Linux Platforms**
 
