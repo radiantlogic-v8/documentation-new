@@ -571,13 +571,13 @@ Figure 23: The Token Details section in Postman
 
 6. Keep the decoded token. Several values contained within are required for mapping attributes. 
 
-### FID Configuration
+### RadiantOne Configuration
 
 This section describes configuring proxy authorization, configuring an ADAP external token validator, and attribute mapping.
 
 #### Configuring Proxy Authorization
 
-The RadiantOne ADAP (or SCIM) service queries the RadiantOne FID LDAP service using proxy authorization.
+The RadiantOne ADAP (or SCIM) service queries the RadiantOne LDAP service using proxy authorization.
 
 To configure proxy authorization: 
 
@@ -605,9 +605,9 @@ Figure 24: The New ADAP External Token Validator Page
 
 1. Toggle the Enable switch to On. 
 
-1. Select an OIDC provider from the drop-down menu. 
+1. Select an OIDC provider from the drop-down menu (if applicable, to assist with populating the Directory URL syntax). Otherwise, skip this step and enter your own Discovery URL. 
 
-1. Paste the Metadata URI from your OIDC authorization server into the Discovery URL field. 
+1. If the Discovery URL is not loaded automatically, paste the Metadata URI from your OIDC authorization server into the Discovery URL field. 
 
 1. Click Discover. The JSON Web Key Set URI auto-populates. 
 
