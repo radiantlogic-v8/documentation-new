@@ -152,4 +152,4 @@ After a successful reset of the password, a message confirms the password reset 
 
 ## Next steps
 
-After reading this guide you should have an understanding of the steps required to edit an existing Environment Operations Center user, including their user details, status, role, and assigned environments. To learn how to delete a user, review the [delete a user](...) guide.
+After reading this guide you should have an understanding of the steps required to edit an existing Environment Operations Center user, including their user details, status, role, and assigned environments. To learn how to delete a user, review the [delete a user](delete-user.md) guide.
