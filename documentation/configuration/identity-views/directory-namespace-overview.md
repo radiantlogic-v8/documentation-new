@@ -31,18 +31,18 @@ Icon	| Meaning
 ![Plus symbol](../Media/virtual-tree-no-cache-refresh.jpg) | An identity view created using a model-driven approach that has been configured for persistent cache and initialized, but no refresh type is configured.
 ![Plus symbol](../Media/virtual-tree-cache-periodic-refresh.jpg) | An identity view created using a model-driven approach that has been configured for persistent cache and initialized, and has been configured with a periodic refresh type.
 ![Plus symbol](../Media/virtual-tree-cache-realtime-refresh.jpg) | An identity view created using a model-driven approach that has been configured for persistent cache and initialized, and has been configured with a real-time refresh type.
-![Plus symbol](../Media/label-with-link.jpg) | need description
-![Plus symbol](../Media/label-with-link-no-cache-init.jpg) | need description
-![Plus symbol](../Media/label-no-cache-init.jpg) | need description
-![Plus symbol](../Media/label-cache-no-refresh.jpg) | need description
-![Plus symbol](../Media/label-cache-periodic-refresh.jpg) | need description
-![Plus symbol](../Media/label-cache-realtime-refresh.jpg) | need description
-![Plus symbol](../Media/container-link.jpg) | need description
-![Plus symbol](../Media/container-link-no-cache-init.jpg) | need description
-![Plus symbol](../Media/container-cache-no-refresh.jpg) | need description
-![Plus symbol](../Media/container-cache-periodic-refresh.jpg) | need description
-![Plus symbol](../Media/container-cache-realtime-refresh.jpg) | need description
-![Plus symbol](../Media/content-no-cache-init.jpg) | need description
-![Plus symbol](../Media/content-no-cache-refresh.jpg) | need description
-![Plus symbol](../Media/content-cache-periodic-refresh.jpg) | need description
-![Plus symbol](../Media/content-cache-realtime-refresh.jpg) | need description
+![Plus symbol](../Media/label-with-link.jpg) | A label node in an identity view that has child nodes where at least one child node has a backend or view mounted.
+![Plus symbol](../Media/label-with-link-no-cache-init.jpg) | A label node in an identity view that has child nodes where at least one child node has a backend or view mounted that has been configured for persistent cache, but the cache has not been initialized. This may also represent a configuration where a persistent cache is defined and initialized but the view is deactivated.
+![Plus symbol](../Media/label-no-cache-init.jpg) | A label node in an identity view that has child nodes, one of which has been configured for persistent cache but not yet initialized. This may also represent a configuration where a persistent cache is defined and initialized but the view is deactivated.
+![Plus symbol](../Media/label-cache-no-refresh.jpg) | A label node in an identity view that has child nodes, one of which has been configured for persistent cache but no refresh type is configured.
+![Plus symbol](../Media/label-cache-periodic-refresh.jpg) | A label node in an identity view that has child nodes, one of which has been configured for persistent cache with a periodic refresh type.
+![Plus symbol](../Media/label-cache-realtime-refresh.jpg) | A label node in an identity view that has child nodes, one of which has been configured for persistent cache with a real-time refresh type.
+![Plus symbol](../Media/container-link.jpg) | A container node in an identity view that has a link mounted below it.
+![Plus symbol](../Media/container-link-no-cache-init.jpg) | A container node in an identity view that has a link mounted below it and has been configured for persistent cache but not yet initialized. This may also represent a configuration where a persistent cache is defined and initialized but the view is deactivated.
+![Plus symbol](../Media/container-cache-no-refresh.jpg) | A container node in an identity view that is configured for persistent cache but no refresh type is configured.
+![Plus symbol](../Media/container-cache-periodic-refresh.jpg) | A container node in an identity view that is configured for persistent cache with a periodic refresh type.
+![Plus symbol](../Media/container-cache-realtime-refresh.jpg) | A container node in an identity view that is configured for persistent cache with a real-time refresh type.
+![Plus symbol](../Media/content-no-cache-init.jpg) | A content node in an identity view that is configured for persistent cache, but not yet initialized. This may also represent a configuration where a persistent cache is defined and initialized but the view is deactivated.
+![Plus symbol](../Media/content-no-cache-refresh.jpg) | A content node in an identity view that is configured for persistent cache but no refresh type is configured.
+![Plus symbol](../Media/content-cache-periodic-refresh.jpg) | A content node in an identity view that is configured for persistent cache with a periodic refresh type.
+![Plus symbol](../Media/content-cache-realtime-refresh.jpg) | A content node in an identity view that is configured for persistent cache with a real-time refresh type.
