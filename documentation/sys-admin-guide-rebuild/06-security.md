@@ -62,8 +62,6 @@ If you do not want RadiantOne to request a client certificate at all, check the 
 
 If the client certificate is not signed by a known certificate authority, it must be added in the [RadiantOne client truststore](#client-certificate-trust-store-cluster-level-trust-store).
 
-
-
 #### Requiring Certificate-based Authentication
 
 If you want to require certificate-based authentication:
@@ -315,7 +313,7 @@ To define the criteria used to generate an encryption key:
 
 ![An image showing ](Media/Image3.116.jpg)
  
-Figure 4: Attribute Encryption Key
+Figure 2: Attribute Encryption Key
 
 4.	If you selected a cipher suite in the previous step, enter a security key. This value is used to auto-generate an encryption key. If you plan on deploying multiple clusters that will participate in inter cluster replication for encrypted attributes, take note of the value you enter here as you must use it when configuring the security key in the other clusters.
 
@@ -484,8 +482,7 @@ If you need to change the LDIFZ encryption security key, follow the steps below.
 
 The Secure LDIF Export option allows you to enforce the use of the encrypted LDIFZ format when exporting entries from the Directory Browser tab. With this setting enabled, using the unencrypted LDIF format for exports is not supported.
 
->[!note] 
->Enabling secure LDIF exports requires first defining an LDIFZ encryption key. See the [Changing an Encryption Key](#changing-an-encryption-key) section for more information.
+>[!note] Enabling secure LDIF exports requires first defining an LDIFZ encryption key. See the [Changing an Encryption Key](#changing-an-encryption-key) section for more information.
 
 To enable the secure LDIF export option:
 
@@ -547,7 +544,7 @@ This section describes using the Postman REST client to obtain an access token.
 
 ![Type drop-down menu](Media/typemenu.jpg)
 
-Figure 21: The Type drop-down menu
+Figure 3: The Type drop-down menu
  
 2. In the Configure New Token section, enter the Client ID and client secret.
 
@@ -559,13 +556,13 @@ Figure 21: The Type drop-down menu
 
 ![Configuring an access token in Postman](Media/configuringtoken.jpg)
 
-Figure 22: Configuring an access token in Postman
+Figure 4: Configuring an access token in Postman
 
 4. Click Get New Access Token. The new access token's details are displayed. 
 
 ![token details](Media/tokendetails.jpg)
 
-Figure 23: The Token Details section in Postman
+Figure 5: The Token Details section in Postman
  
 5. Copy this token and decode it for the values needed by the FID server. You can do this at https://jwt.io/.
 
@@ -599,7 +596,7 @@ To add an external token validator:
 
 ![The New ADAP External Token Validator Page](Media/externaltokenvalidatorpage.jpg)
 
-Figure 24: The New ADAP External Token Validator Page
+Figure 6: The New ADAP External Token Validator Page
 
 1. Name the external token validator.
 
@@ -617,7 +614,7 @@ Figure 24: The New ADAP External Token Validator Page
 
 ![Configuring an ADAP External Token Validator](Media/configuringtokenvalidator.jpg)
 
-Figure 25: Configuring an ADAP External Token Validator
+Figure 7: Configuring an ADAP External Token Validator
 
 1. Click Edit next to Claims to FID User Mapping. The OIDC to FID User Mappings page displays.
 
@@ -627,7 +624,7 @@ Figure 25: Configuring an ADAP External Token Validator
 
 ![Editing OIDC to FID User Mapping](Media/editingmapping.jpg)
 
-Figure 26: Editing OIDC to FID User Mapping
+Figure 8: Editing OIDC to FID User Mapping
 
 1. Click OK. Click OK again to close the OIDC to FID User Mappings window.
 
@@ -641,7 +638,7 @@ Map a uniquely identifying attribute to a corresponding claim value in the token
 
 ![search expression builder](Media/searchexpressionbuilder.jpg)
 
-Figure 27: The Search Expression Builder
+Figure 9: The Search Expression Builder
 
 ### Completing the Request with Postman
 
@@ -652,7 +649,7 @@ To complete the request with Postman:
 
 ![Requesting a new access token](Media/requestnewaccesstoken.jpg)
 
-Figure 28: Requesting a new access token
+Figure 10: Requesting a new access token
 
 1. Send the bearer token to the FID ADAP. In this example, a basic ADAP search is performed. 
 
@@ -664,7 +661,7 @@ Method	|Get
 
 ![Sending the bearer token to RadiantOne](Media/sending-bearer-token.png)
 
-Figure 29: Sending the bearer token to RadiantOne
+Figure 11: Sending the bearer token to RadiantOne
 
 ## DoS Filter
 
@@ -764,7 +761,7 @@ To create this example, from the Main Control Panel > Settings Tab > Security se
 
 ![Setting Access Controls](Media/Image6.1.jpg)
 
-Figure 5: Setting Access Controls
+Figure 12: Setting Access Controls
 
 ### Scope
 
@@ -772,11 +769,11 @@ The scope of an access control rule can be entry level (base), one level or subt
 
 ![Example of Entry Level Access Control](Media/Image6.2.jpg)
  
-Figure 6: Example of Entry Level Access Control
+Figure 13: Example of Entry Level Access Control
 
 ![Example of Sub Tree Level Access Control](Media/Image6.3.jpg)
  
-Figure 7: Example of Sub Tree Level Access Control
+Figure 14: Example of Sub Tree Level Access Control
 
 ### Target Attributes
 
@@ -784,7 +781,7 @@ The rule can indicate “equal to” (=) or “not equal to” (!=). Select the 
 
 ![Target Attributes Operator](Media/Image6.4.jpg)
 
-Figure 8: Target Attributes Operator
+Figure 15: Target Attributes Operator
 
 The access rule can apply to “all” attributes or choose the “custom” option and click **Select** to narrow the list.
 
@@ -792,7 +789,7 @@ By default, the root ACI prevents only the target attribute aci from being retur
 
 ![Manual Edit of ACI](Media/Image6.5.jpg)
 
-Figure 9: Manual Edit of ACI
+Figure 16: Manual Edit of ACI
 
 To improve security, if you want to also prevent userpassword from being returned, you can do so as shown in the following example ACI. 
 
@@ -844,7 +841,7 @@ If no access permissions have been defined, the default behavior is to grant rea
 
 ![Default Global ACI Setting](Media/Image6.6.jpg)
  
-Figure 11: Default Global ACI Setting
+Figure 17: Default Global ACI Setting
 
 #### Type
 
@@ -852,7 +849,7 @@ You can explicitly allow or deny access permissions by selecting the applicable 
 
 ![Permission Type](Media/Image6.7.jpg)
  
-Figure 12: Permission Type
+Figure 18: Permission Type
 
 #### Operations
 
@@ -960,15 +957,13 @@ The ACI evaluation rules that RadiantOne follows are:
 
 If both lists are empty, access is denied.
 
->[!warning] 
->To troubleshoot/trace ACI evaluation decisions, [RadiantOne server log level](09-logs#log-settings) must be set to DEBUG. When DEBUG level is set, the evaluation rules can be seen in vds_server.log. This log can be viewed and downloaded from Server Control Panel > Log Viewer.
+>[!warning] To troubleshoot/trace ACI evaluation decisions, [RadiantOne server log level](09-logs#log-settings) must be set to DEBUG. When DEBUG level is set, the evaluation rules can be seen in vds_server.log. This log can be viewed and downloaded from Server Control Panel > Log Viewer.
 
 ## Setting Access Controls
 
 To define access controls:
 
->[!warning] 
->Access rights can be defined by any user who is a member of the ACI Administrators group or the Directory Administrators group. For details on all administrative groups available for RadiantOne, please see [Delegated Administration of RadiantOne](01-introduction#delegated-administration-of-radiantone).
+>[!warning] Access rights can be defined by any user who is a member of the ACI Administrators group or the Directory Administrators group. For details on all administrative groups available for RadiantOne, please see [Delegated Administration of RadiantOne](01-introduction#delegated-administration-of-radiantone).
 
 1.	From the Main Control Panel > Settings Tab > Security section > Access Control sub-section, select the Enable ACI checkbox on the right side in the Authorization section and click **Save**.
 
@@ -1060,7 +1055,7 @@ When using a RadiantOne Universal Directory store or persistent cache (with pass
 
 ![Password Policies](Media/Image3.102.jpg)
  
-Figure 47: Password Policies
+Figure 19: Password Policies
 
 ## Privileged Password Policy Group
 
@@ -1097,7 +1092,7 @@ In the ‘Choose a Password Policy’ drop-down menu, the default password polic
 
 ![Password Policy Scope](Media/Image3.103.jpg)
  
-Figure 48: Password Policy Scope
+Figure 20: Password Policy Scope
 
 #### Custom Password Policy
 
@@ -1113,7 +1108,7 @@ An example of a custom password policy is shown below. It is applicable to all u
 
 ![Example Custom Password Policy Applicable to a Group](Media/Image3.104.jpg)
  
-Figure 49: Example Custom Password Policy Applicable to a Group
+Figure 21: Example Custom Password Policy Applicable to a Group
 
 An example of a custom password policy applicable to all users below a specific container is shown below. This custom policy is enforced for all users in a RadiantOne Universal Directory store located below o=local.
 
@@ -1159,7 +1154,7 @@ The default delegated administrator roles and users associated with the RadiantO
 
 ![Password Changes Options](Media/Image3.106.jpg)
  
-Figure 51: Password Changes Options
+Figure 22: Password Changes Options
 
 ### User must change password after reset
 
@@ -1198,7 +1193,7 @@ This value is stored in the pwdInHistory attribute of the cn=Password Policy ent
 
 ![Password Expiration Options](Media/Image3.107.jpg)
  
-Figure 52: Password Expiration Options
+Figure 23: Password Expiration Options
  
 ### Password never expires
 
@@ -1257,7 +1252,7 @@ Each of these properties is described below.
  
 ![Password Content and Account Lockout Options](Media/Image3.108.jpg)
 
-Figure 53: Password Content and Account Lockout Options
+Figure 24: Password Content and Account Lockout Options
 
 ### Enabled
 
@@ -1428,7 +1423,7 @@ A multi-valued Generalized Time attribute containing the times of previous conse
 
 ![Number of Login Failures](Media/Image3.109.jpg)
 
-Figure 54: Number of Login Failures
+Figure 25: Number of Login Failures
  
 If the last login was successful, this attribute is not present.
 
@@ -1479,7 +1474,7 @@ The following parameters are configured from the Main Control Panel > Settings T
 
 ![An image showing ](Media/Image3.117.jpg)
 
-Figure 13: Global Limits Section
+Figure 26: Global Limits Section
  
 ### Maximum Connections
 
@@ -1612,7 +1607,7 @@ The settings found in the Main Control Panel > Settings Tab > Security section >
 
 ![Access Controls](Media/Image3.110.jpg)
  
-Figure 14: Access Controls
+Figure 27: Access Controls
 
 For details on RadiantOne Access Controls and how to define them, please see [Security and Access Controls](06-security#security-and-access-controls).
 
@@ -1649,7 +1644,7 @@ If you enable Bind Requires SSL or StartTLS, to avoid problems when using the Ma
 
 ![Internal Connection Settings](Media/Image3.111.jpg)
  
-Figure 15: Internal Connection Settings
+Figure 28: Internal Connection Settings
 
 ### Bind Requires Password
 
@@ -1675,13 +1670,13 @@ As a simple example, assume there is a group named All Users and that this group
 
 ![Example Group](Media/Image3.113.jpg)
  
-Figure 16: Example Group
+Figure 29: Example Group
 
 The screen below shows the Sales group containing the All Users group as a member.
 
 ![Example Nested Group](Media/Image3.114.jpg)
  
-Figure 17: Example Nested Group
+Figure 30: Example Nested Group
 
 A client can issue a search leveraging the matching rule OID to retrieve all groups Adan_Funston is a member of with the following search filter.
 
@@ -1691,7 +1686,7 @@ A search request to RadiantOne with the above filter would return Sales and All 
 
 ![Search Filter using Matching Rule OID](Media/Image3.115.jpg)
  
-Figure 18: Search Filter using Matching Rule OID
+Figure 31: Search Filter using Matching Rule OID
 
 >[!warning] 
 >Queries requesting an intersecting set of multiple memberships like in the following filter are not supported.**
