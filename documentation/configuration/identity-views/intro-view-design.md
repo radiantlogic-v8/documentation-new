@@ -34,7 +34,7 @@ If there is identity overlap, then correlation logic must be defined. Correlatio
 
 An LDAP Directory, Active Directory and an HR database contain different information about users. Some users are in both sources, and some are not. For this example, focusing on a single overlapping user, it is known that you can identify common users across LDAP and Active Directory by comparing uid to sAMAccountName. You can identify common users across Active Directory and the HR database by comparing employeeID to EID. This example is depicted in the diagram below where the order of upload to create the global profile list is LDAP directory, then Active Directory, followed by the HR database. The upload order is important for correlation rules. See the [RadiantOne Global Identity Builder Guide](/global-identity-builder-guide/introduction) for details.
 
-![Example of Correlation](Media/Image3.1.jpg)
+![Example of Correlation](../Media/Image3.1.jpg)
 
 Figure 1: Example of Correlation
 
