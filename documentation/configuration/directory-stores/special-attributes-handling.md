@@ -5,7 +5,13 @@ description: Learn how to manage special attributes handling for RadiantOne Dire
 
 ## Overview
 
-Info.
+The Special Attributes Handling options allow you to perform the following functions: 
+
+-	Configure the automatic relationship management between linked attributes (only applicable to RadiantOne Directory stores and persistent cache)
+-	Configure Referential Integrity (only applicable to RadiantOne Directory stores and persistent cache)
+-	Configure Dynamic Groups
+-	Configure Attribute Uniqueness (only applicable to RadiantOne Directory stores)
+-	Configure unnesting of nested groups
 
 ## Attribute Uniqueness
 Attribute Uniqueness enforcement is applicable to RadiantOne Directory stores only.
@@ -66,7 +72,7 @@ If the utility returns the result, “Attribute Uniqueness check result false”
 <br> `Done in 12ms`
 
 ## Linked Attributes
-The Linked Attributes setting is only compatible with entries located in RadiantOne Universal Directory stores or persistent cache.
+The Linked Attributes setting is only compatible with entries located in RadiantOne Directory stores or persistent cache.
 
 Linked attributes are attributes that allow relationships between objects. A typical example would be isMemberOf/uniqueMember for user/groups objects. A group has members (uniqueMember attribute) which is the forward link relationship. Those members have an isMemberOf attribute which is the back link (to the group entry) relationship. Other examples of linked attributes are:
 
@@ -178,7 +184,7 @@ Referential integrity is not enabled by default. To enable and configure it, fol
 ## Dynamic Group
 For dynamic groups, the membership is determined by search criteria using an LDAP URL as opposed to being maintained explicitly in a list. For example, suppose that you want a Sales group to contain every employee that has a title of Sales Manager. To do this, you create a dynamic group named Sales associated with the groupOfURLs objectclass. Then, instead of statically assigning member DNs as unique members (in the member or uniqueMember attribute), you define a memberURL attribute that contains the LDAP URL and criteria (seach base, scope and filter) to be used for determining members of the group. 
 
-Dynamic groups are not enabled by default. Therefore, any groups in RadiantOne associated with the groupOfURLs objectclass will have their memberURL returned directly to clients as is. This group could be in a Universal Directory store, or virtualized from some LDAP backend. 
+Dynamic groups are not enabled by default. Therefore, any groups in RadiantOne associated with the groupOfURLs objectclass will have their memberURL returned directly to clients as is. This group could be in a RadiantOne Directory store, or virtualized from some LDAP backend. 
 
 To enable support for dynamic groups, follow the steps below.
 
