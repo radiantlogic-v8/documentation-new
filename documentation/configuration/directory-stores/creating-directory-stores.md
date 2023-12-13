@@ -6,14 +6,16 @@ description: Learn how to create RadiantOne Directory stores.
 ## Overview
 
 
-To create RadiantOne Universal Directory store:
+To create a RadiantOne Directory store:
 
-1.	On the Main Control Panel > Directory Namespace Tab click the ![An image showing ](Media/plus-sign.jpg) button.
+1.	On the Control Panel > Setup > Directory Namespace > Namespace Design click ![An image showing ](Media/new-naming-context.jpg).
 
-2.	Enter the new naming context and select the RadiantOne Universal Directory (HDAP) Store option. Click **Next**.
+2.	Enter the new naming context label and click **SAVE**.
 
-3.	Click **OK**.
+3.	Click ![An image showing ](Media/mount-backend.jpg).
 
-4.	Click **OK** to exit the confirmation.
+4.	Choose the **RadiantOne Directory** type and click **SELECT**.
+5.	Choose to activate the store or not (it can be activated later after it has been initialized).
+6.	Click **MOUNT**.
 
-The new naming context appears in the list of root naming contexts. Populate the local store by importing an LDIF file or manually adding entries on the Directory Browser Tab. 
+The new naming context appears in the list of root naming contexts. Populate the directory by importing an LDIF file or manually adding entries using the Directory Browser. 
