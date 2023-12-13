@@ -9,7 +9,7 @@ The Special Attributes Handling options allow you to perform the following funct
 
 -	Configure the automatic relationship management between linked attributes (only applicable to RadiantOne Directory stores and persistent cache)
 -	Configure Referential Integrity (only applicable to RadiantOne Directory stores and persistent cache)
--	Configure Dynamic Groups
+-	Configure Dynamic Groups (only applicable to groups that are associated with groupOfURLs object class)
 -	Configure Attribute Uniqueness (only applicable to RadiantOne Directory stores)
 -	Configure unnesting of nested groups (not applicable to RadiantOne Directory stores)
 
