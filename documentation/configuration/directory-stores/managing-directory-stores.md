@@ -82,14 +82,12 @@ Stores can be exported into an LDIF file from the Control Panel > Setup > Direct
 >[!warning] 
 >If exporting to an LDIFZ file, a security key must be configured for RadiantOne. Any target stores where you want to import this LDIFZ file must use the same LDIFZ security key value. For steps on defining key generation or changing the encryption security key, see [LDIF File Encryption](managing-properties).
 
-1.	From the Control Panel > Setup > Directory Namespace > Namespace Design select the node where the directory store is mounted. 
-1.	On the right side, click **EXPORT**. 
-1.	Enter a file name and select an extension type (.ldif or .ldifz). If you want the exported file to be zipped and encrypted, select the .ldifz option from the drop-down list. In order to support exporting to an encrypted file, a security key must be configured for RadiantOne. Any target RadiantOne directory stores where you want to import this LDIFZ file must use the same LDIFZ security key value. For steps on defining key generation or changing the encryption security key, see the [LDIF File Encryption](managing-properties).
-
-![An image showing the Export option](Media/Image5.5.jpg)
- 
-1. If this exported file is going to be used to initialize another RadiantOne directory store for replication, check the option to Export for Replication. Otherwise, leave this option unchecked. All entries in the RadiantOne directory store are exported with this option.
-1.	Click **DOWNLOAD FILE**.
+1.	 From the Control Panel > Setup > Directory Namespace > Namespace Design select the node where the directory store is mounted. 
+1.	 On the right side, click **EXPORT**. 
+1.	 Enter a file name and select an extension type (.ldif or .ldifz). If you want the exported file to be zipped and encrypted, select the .ldifz option from the drop-down list. In order to support exporting to an encrypted file, a security key must be configured for RadiantOne. Any target RadiantOne directory stores where you want to import this LDIFZ file must use the same LDIFZ security key value. For steps on defining key generation or changing the encryption security key, see the [LDIF File Encryption](managing-properties).
+![An image showing the Export option](Media/export-universal-directory-store.jpg)
+1.  If this exported file is going to be used to initialize another RadiantOne directory store for replication, check the option to Export for Replication. Otherwise, leave this option unchecked. All entries in the RadiantOne directory store are exported with this option.
+1.	 Click **DOWNLOAD FILE**.
 
 ## Rebuilding Indexes
 
