@@ -29,7 +29,7 @@ If you configure the LDAP backend directly at the Root Naming Context, it is the
 
 1.	First, data sources for each backend must be defined. From the Control Panel > Setup > Data Catalog > Data Sources, click ![An image showing ](Media/new-source.jpg). Use the Active Directory, Generic LDAP, Open DJ or RadiantOne directory template to define data sources.
 
-2.	In the  Control Panel > Setup> Directory Namespace > Namespace Design, click ![An image showing ](Media/root-naming-context.jpg). 
+2.	In the  Control Panel > Setup> Directory Namespace > Namespace Design, click ![An image showing ](Media/new-naming-context.jpg). 
 
 3.	Enter the new root naming context and click **SAVE**.
 
