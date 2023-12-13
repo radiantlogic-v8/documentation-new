@@ -25,7 +25,7 @@ Figure 3.1: Example LDAP Backend
 
 ## Configuration
 
-If you configure the LDAP backend directly at the Root Naming Context, it is the only backend that can be defined for this specific naming context. If you want to comprise the tree from many different backends, choose the Virtual Tree option for the type of naming context instead of LDAP Backend.
+If you configure the LDAP backend directly at the Root Naming Context, it is the only backend that can be mounted at this specific naming context. If you want to comprise the identity view from many different backends, choose the Virtual Tree option for the type of backend to mount instead of LDAP.
 
 1.	First, data sources for each backend must be defined. From the Control Panel > Setup > Data Catalog > Data Sources, click ![An image showing ](Media/new-source.jpg). Use the Active Directory, Generic LDAP, Open DJ or RadiantOne directory template to define data sources.
 
