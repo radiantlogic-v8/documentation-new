@@ -1,6 +1,6 @@
 ---
 title: RadiantOne Directory Stores
-description: Introduction to RadiantOne Directory stores. 
+description: Introduction to RadiantOne Directory stores and how to create them. 
 ---
 
 ## Overview
@@ -13,3 +13,17 @@ INSERT IMAGE
 
 >[!warning] 
 >Although persistent cache leverages the RadiantOne Directory as a storage, the functionality and configuration can vary slightly. For steps on configuring persistent cache and details on applicable properties, see [Tuning](../../tuning/persistent-cache).
+
+## Creating Directory Stores
+
+1.	On the Control Panel > Setup > Directory Namespace > Namespace Design click ![An image showing ](Media/new-naming-context.jpg).
+
+2.	Enter the new naming context label and click **SAVE**.
+
+3.	Click ![An image showing ](Media/mount-backend.jpg).
+
+4.	Choose the **RadiantOne Directory** type and click **SELECT**.
+5.	Choose to activate the store or not (it can be activated later after it has been initialized).
+6.	Click **MOUNT**.
+
+The new naming context appears in the list of root naming contexts. Populate the directory by importing an LDIF file or manually adding entries using the Directory Browser. 
