@@ -159,7 +159,7 @@ The Enterprise Directory phone numbers are for work phone numbers, and the HR Da
 
 Figure 11: Join Example Showing Common Attributes Returned as Multi-Valued
 
-Joins and attribute authority are configured in some of the [Identity Service Wizards](getting-started-with-radiantone.md#identity-service-wizards), but can also be defined/modified in the Main Control Panel. For detailed configuration steps, please see the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction).
+Joins and attribute authority are configured in the Control Panel > Setup > Directory Namespace > Namespace Design. 
 
 ### Model-Driven View Design
 
