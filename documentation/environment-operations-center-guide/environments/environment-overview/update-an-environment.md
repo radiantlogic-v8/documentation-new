@@ -88,8 +88,7 @@ To revert to a previous update, follow the same steps to restore an environment 
 
 ## Next steps
 
-After reading this guide you should have an understanding of the steps required to update an environment. To learn how to import a configuration file to an existing environment, review the guide on [importing a configuration file](import-configuration-file.md).
-
+After reading this guide you should have an understanding of the steps required to update an environment.
 
 
 
