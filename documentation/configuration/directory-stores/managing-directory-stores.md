@@ -677,7 +677,7 @@ aliasedobjectname: uid=Adan_Caudy,ou=Management,o=companydirectory
 
 Based on the two entries above, the uid=President entry is an alias for the uid=Adan_Caudy user. The example searches below describe how RadiantOne handles searches on the alias entry.
 
-###### Base Search with the Dereferencing Flag set to find
+**Base Search with the Dereferencing Flag set to find**
 
 ldapsearch -p 2389 -h r1fidserver -D "cn=directory manager" -w password -b "uid=president,o=companydirectory" -a find -s base "objectclass=*"
 
@@ -707,7 +707,7 @@ employeeNumber: 6937
 l: Eureka
 sn: Caudy
 
-###### Base Search with the Dereferencing Flag set to search
+**Base Search with the Dereferencing Flag set to search**
 
 ldapsearch -p 2389 -h r1fidserver -D "cn=directory manager" -w password -b "uid=president,o=companydirectory" -a search -s base "objectclass=*"
 
@@ -726,7 +726,7 @@ creatorsName: cn=directory manager
 createTimestamp: 20180511202539.737Z
 aliasedObjectName: uid=Adan_Caudy,ou=Management,o=companydirectory
 
-###### Base Search with the Dereferencing Flag set to _always_
+**Base Search with the Dereferencing Flag set to always**
 
 ldapsearch -p 2389 -h r1fidserver -D "cn=directory manager" -w password -b "uid=president,o=companydirectory" -a always -s base "objectclass=*"
 
