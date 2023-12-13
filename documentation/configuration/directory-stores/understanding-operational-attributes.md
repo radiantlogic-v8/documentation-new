@@ -140,7 +140,7 @@ A multi-valued attribute that stores information about the configured access con
 
 -	“acl” indicates a unique name of the access permission.
 
--	The permission (allow or deny) for which kind of operations: read, compare, add, delete, search, write, proxy, move. These values correspond to the operations defined for the access control. If Read, Search, Add, Delete, Compare, Write, and Self Write are enabled, you will see “All” in the value. For example, assuming every operations is selected, you see (all,proxy,import,export) in the aci attribute value.
+-	The permission (allow or deny) for which kind of operations: read, compare, add, delete, search, write, proxy, move. These values correspond to the operations defined for the access control. If Read, Search, Add, Delete, Compare, Write, Self Write, Proxy, and Move are enabled, you will see “All” in the value. For example, assuming every operations is selected, you see (all,proxy) in the aci attribute value (this can be seen in the manual edit mode in the Control Panel).
 
 ![An image showing ](Media/aci-permissions.jpg)
  
