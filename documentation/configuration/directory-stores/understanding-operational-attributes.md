@@ -142,7 +142,7 @@ A multi-valued attribute that stores information about the configured access con
 
 -	The permission (allow or deny) for which kind of operations: read, compare, add, delete, search, write, proxy, import, export. These values correspond to the operations defined for the access control. If Read, Search, Add, Delete, Compare, Write, and Self Write are enabled, you will see “All” in the value. For example, assuming every operations is selected, you see (all,proxy,import,export) in the aci attribute value.
 
-![An image showing ](Media/Image3.1.jpg)
+![An image showing ](Media/aci-permissions.jpg)
  
 -	“groupdn” indicates the subject the access control is applicable for.
 
