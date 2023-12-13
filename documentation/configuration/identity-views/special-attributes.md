@@ -12,4 +12,4 @@ The Special Attributes Handling options allow you to perform the following funct
 -	Configure Attribute Uniqueness (only applicable to RadiantOne Directory stores)
 -	Configure unnesting of nested groups
 
-For details, see [Special Attributes Handling](INSERT LINK TO CONTENT)
+For details, see [Special Attributes Handling](/directory-stores/special-attributes-handling)
