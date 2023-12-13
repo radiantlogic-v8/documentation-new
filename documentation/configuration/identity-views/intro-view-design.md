@@ -277,7 +277,7 @@ Figure 21: Context-driven Virtual View Model and Runtime Preview
 Another example of a relationship-driven hierarchy is one that uses a recursive relationship. In a human resources database, an employees table could have a recursive relationship with itself.
 Therefore, you could build an organization hierarchy virtual view depicting the different levels of management. An example is shown in the figure below.
 
-![Recursive Relationship-driven Hierarchy Example](../Media/Image3.22.jpg)
+![Recursive Relationship-driven Hierarchy Example](Media/Image3.22.jpg)
 
 Figure 22: Recursive Relationship-driven Hierarchy Example
 
