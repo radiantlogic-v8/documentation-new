@@ -9,7 +9,7 @@ This guide outlines the steps to review logs for a specific environment. Log fil
 
 Environment Operations Center is connected to Elastic and displays the Elastic monitoring user interface directly within the Env Ops Center logging tab. This allows you to review environment logs directly in Env Ops Center without having to navigate away from the application.
 
-[!note] For further details on specific log types and the data they provide, see the RadiantOne [logging and troubleshooting](../../../logging-and-troubleshooting-guide/01-overview.md) guide.
+>[!note] For further details on specific log types and the data they provide, see the RadiantOne [logging and troubleshooting](../../../logging-and-troubleshooting-guide/01-overview.md) guide.
 
 ## Getting started
 
