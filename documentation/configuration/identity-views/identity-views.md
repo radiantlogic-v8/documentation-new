@@ -5,7 +5,7 @@ description: Learn how to create views that are comprised of attributes from one
 
 ## Creating Identity Views
 
-### LDAP Proxy Views
+## LDAP Proxy Views
 
 Identity views can be configured for LDAP directories and are associated with a specific root naming context. A root naming context is the very top node of a virtual directory tree and RadiantOne can respond to many different root naming contexts. This section describes how to create root naming contexts for LDAP directory backend data sources. 
 
@@ -23,7 +23,7 @@ After the virtual view of the LDAP backend has been configured, a series of tabs
  
 Figure 3.1: Example LDAP Backend
 
-## Configuration
+### Configuration
 
 If you configure the LDAP backend directly at the Root Naming Context, it is the only backend that can be mounted at this specific naming context. If you want to comprise the identity view from many different backends, choose the Virtual Tree option for the type of backend to mount instead of LDAP.
 
@@ -50,10 +50,6 @@ If you configure the LDAP backend directly at the Root Naming Context, it is the
 Figure 3.2: Modifying an LDAP Backend Configuration
 
 LDAP Backends can also be configured at any label node in a virtual directory tree naming context. For details on this, please see [Virtual Views based on Multiple Types of Backends](03-virtual-view-of-ldap-backends).
-
-## LDAP Backend Parameters and Settings
-
-The parameters applicable for LDAP backends are as follows (only some of these parameters are available when you go through the Directory Tree Wizard. After you exit the Wizard, click on the LDAP Backend node below Root Naming Contexts and you have all these parameters available on the tabs on the right side):
 
 ### Host discovery
 
@@ -90,7 +86,7 @@ Example 3 - This example tries to get an SSL connection to the LDAP server (on p
 
 Server name or IP address. If you want to use host discovery, you can enter the Active Directory domain here (fully qualified domain name in [ ] like the examples shown above). 
 
-#### Failover Servers
+### Failover Servers
 
 You can list replica servers in the Failover LDAP Servers section. The only properties to indicate are server/host, port and if the port is for SSL. The same bind DN and password listed in the primary server are used to connect to the failover servers. If a connection to a backend fails, RadiantOne tries to connect to the primary server again. After two failures, RadiantOne connects to the failover servers in the order they are listed.
 
@@ -104,7 +100,7 @@ Port that the server is listening on. If you want to use host discovery, you can
 
 Service account user DN. This user is used by RadiantOne to create connections to the backend LDAP directory. 
 
-### Bind password	
+### Bind password*
 
 The password for the user specified in the Bind DN parameter.
 
@@ -228,11 +224,11 @@ If user “cn=joe,dc=partners,dc=airius,dc=com,dc=server2,ou=global,o=vds” suc
 A control is additional information that can be included in an LDAP request or response. RadiantOne can play the role of both an LDAP server and an LDAP client to other backend directories. To understand controls supported by RadiantOne as an LDAP server, see the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction)
 . RadiantOne’s handling of LDAP controls as a client to a backend directory is described in this section.
 
-#### VLV/Sort
+**VLV/Sort**
 
 If a client searches and passes the VLV control against a branch that is associated with an LDAP directory backend (not a persistent cache or a Universal Directory store), RadiantOne forwards the search request along with the included control to the backend LDAP server. In this case, it is the responsibility of the backend LDAP server to implement the VLV control. RadiantOne returns any controls received from the LDAP backend to the client.
 
-#### Paged Results
+**Paged Results**
 
 If the backend LDAP directory supports the paged results control, RadiantOne can request that the results from the backend be returned in pages. The support for paging is enabled, and the page size is set, at the level of the LDAP data source definition.
 
@@ -240,19 +236,19 @@ If the backend LDAP directory supports the paged results control, RadiantOne can
 
 Figure 7: Paged Results Control for an LDAP Backend
 
-#### Controls Passed from Client Requests
+**Controls Passed from Client Requests**
 
 All LDAP controls that RadiantOne receives from clients during LDAP modify, modifyDN, add, or delete requests are forwarded to the backend LDAP directory. An example would be a client sending a modify request for a user’s password to RadiantOne along with LDAP Control 1.2.840.113556.1.4.2239. RadiantOne would send the password update to the backend directory along with the LDAP control. The backend directory is the enforcement point for the control. RadiantOne responds to the client with all information returned from the backend directory.
 
-#### Pre-Read Attributes
+**Pre-Read Attributes**
 
 This control indicates that all modify, modify DN, and delete requests should include the pre-read control to retrieve the specified attribute’s value(s) as they appear immediately before the operation has been processed. Pre-read controls may be used to obtain replaced or deleted values of modified attributes or a copy of the entry being deleted. The backend directory is the enforcement point for the control. RadiantOne responds to the client with all information returned from the backend directory.
 
-#### Post-Read Attributes
+**Post-Read Attributes**
 
 This control indicates that all add, modify, and modify DN requests should include the post-read control to retrieve the specified attribute’s value(s) as they appear immediately after the operation has been processed. Post-read controls may be used to obtain values of operational attributes, such as the “entryUUID” and “modifyTimestamp” attributes, updated by the server as part of the update operation. The backend directory is the enforcement point for the control. RadiantOne responds to the client with all information returned from the backend directory.
 
-#### Proxy Authorization
+**Proxy Authorization**
 
 When RadiantOne acts as a client and connects to a backend directory, certain credentials are used (e.g. the Bind DN and Bind Password configured in the data source connection string). These credentials determine what operations are allowed and it is the backend directory which enforces authorization for this user. Some directories support the Proxy Authorization control allowing a client to switch the user ID, for authorization purposes, without having to re-authenticate with a new connection. If the backend directory supports the Proxied Authorization control, and there is the need to base authorization on a different user than the one who authenticated, you can enable the Proxy Authorization checkbox. With this approach, RadiantOne can use certain credentials (e.g. the Bind DN and Bind Password configured in the data source connection string) when connecting to the backend directory and pass the needed control along with the user DN of the person they want to represent for authorization in the requests. The backend directory checks the proxy authorization rules that have been configured to make sure the service account RadiantOne used to connect with is allowed to represent the person passed in the request. If so, the service account is allowed to perform any operations the person it is impersonating would be allowed to do. Again, for this functionality to work, the Proxy Authorization control must be supported by the backend directory and proxy authorization rules must be properly defined in the backend directory. A high-level diagram detailing the behavior is shown below.
 
@@ -265,7 +261,6 @@ Figure 8: Proxy Authorization
 If proxy impersonation rules are defined at the level of the LDAP data source associated with the proxy virtual view, you can check the Role Mapped Access option to enable them. If the Role Mapped Access option is not checked, any impersonation rules defined for the LDAP backend data source associated with the selected proxy view are not used. 
 
 For details on defining proxy impersonation rules for LDAP data sources, please see the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction)
-. 
 
 A high-level diagram detailing the behavior is shown below.
 
@@ -368,7 +363,7 @@ If the dedicated connection option is enabled, RadiantOne does not use the conne
 
 >[!note] Dedicated connections are best used in cases where there are only a few clients accessing RadiantOne but generate a lot of traffic. Clients must handle the opening and closing of connections efficiently (e.g. don’t leave open connections idle for long periods of time).
 
-### Schema Enforcement Policy
+**Schema Enforcement Policy**
 
 The schema enforcement policy option allows you to choose how you want the proxy to behave when adding entries that may not match the schema of the backend directory (i.e. having an attribute that is not part of the object class).
 
@@ -534,8 +529,7 @@ The default size limit is set to 100 meaning only 100 containers below the Remot
 
 ### Interception Scripts
 
-For specific details, please see Interception Scripts in the Concepts section of the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction)
-. This section describes how to enable interception scripts for an LDAP backend.
+For specific details, please see Interception Scripts in the Concepts section of the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction). This section describes how to enable interception scripts for an LDAP backend.
 
 1.	From the Main Control Panel > Directory Namespace Tab, select the LDAP backend node below Root Naming Contexts. 
 
@@ -545,8 +539,7 @@ For specific details, please see Interception Scripts in the Concepts section of
 
 4.	Click **Save** in the upper right corner and then **Yes** to apply the changes to the server.
 
-5.	Lastly, follow the steps defined in the Interception Scripts section of Concepts of the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction)
-.
+5.	Lastly, follow the steps defined in the Interception Scripts section of Concepts of the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction).
 
 ### Include and Exclude Search Filters
 
@@ -588,8 +581,7 @@ The use of inclusion and exclusion filters can improve performance and efficienc
 
 ### Computed Attributes
 
-For specific details, please see Computed Attributes in the Concepts section of the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction)
-. This section describes how to configure computed attributes for an LDAP backend.
+For specific details, please see Computed Attributes in the Concepts section of the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction). This section describes how to configure computed attributes for an LDAP backend.
 
 To create computed attributes:
 
@@ -623,10 +615,9 @@ The computed attribute should appear in the list of attributes for the virtual o
 
 If you would like to see a list of only computed attributes for the virtual object, select the “Computed” option in the Display drop-down list. 
 
-For more details, please see Computed Attributes in the Concepts section of the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction)
-.
+For more details, please see Computed Attributes in the Concepts section of the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction).
 
-#### Deactivate Computed Attributes
+**Deactivate Computed Attributes**
 
 If you have defined multiple computed attributes, it can be helpful to deactivate some for testing or if you (temporarily) don’t need them anymore. 
 
