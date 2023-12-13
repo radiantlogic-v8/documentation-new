@@ -19,7 +19,7 @@ After the virtual view of the LDAP backend has been configured, a series of tabs
 
 -	Objects – This tab is for managing [joins](#joins) and other tasks associated with joining such as handling overlapping attributes, [custom bind order](#bind-order) and defining [computed attributes](#computed-attributes).
 
-![An image showing ](Media/Image3.1.jpg)
+![An image showing ](Media/ldap-backend-example.jpg)
  
 Figure 3.1: Example LDAP Backend
 
