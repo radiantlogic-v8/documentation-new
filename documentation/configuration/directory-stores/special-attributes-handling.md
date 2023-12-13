@@ -11,7 +11,7 @@ The Special Attributes Handling options allow you to perform the following funct
 -	Configure Referential Integrity (only applicable to RadiantOne Directory stores and persistent cache)
 -	Configure Dynamic Groups
 -	Configure Attribute Uniqueness (only applicable to RadiantOne Directory stores)
--	Configure unnesting of nested groups
+-	Configure unnesting of nested groups (not applicable to RadiantOne Directory stores)
 
 ## Attribute Uniqueness
 Attribute Uniqueness enforcement is applicable to RadiantOne Directory stores only.
@@ -249,11 +249,8 @@ If you require the group members to be cached as static group entries, check the
 
 Figure 20: Cache Setting for Group Members
 
-## Attribute Uniqueness
-This is only supported for [RadiantOne directory stores](LINK TO CONTENT)
-
 ## Unnest Groups
-Some directory vendors, like Microsoft Active Directory, support nested groups where groups can be members of other groups. For clients that are unable to process nested groups, RadiantOne can flatten them and return all members in a single response. The unnest groups setting is applicable to proxy views or model-driven views (designed in Context Builder) that have been configured for persistent cache. Flattening nested groups adds processing overhead to RadiantOne, so persistent cache is required for optimal performance, and you must configure the unnest groups setting before initializing the persistent cache. The unnest group setting is not applicable to Universal Directory stores.
+Some directory vendors, like Microsoft Active Directory, support nested groups where groups can be members of other groups. For clients that are unable to process nested groups, RadiantOne can flatten them and return all members in a single response. The unnest groups setting is applicable to proxy views or model-driven views (designed in Context Builder) that have been configured for persistent cache. Flattening nested groups adds processing overhead to RadiantOne, so persistent cache is required for optimal performance, and you must configure the unnest groups setting before initializing the persistent cache. The unnest group setting is not applicable to RadiantOne Directory stores.
 
 >[!note]
 >Using a computed attribute in the virtual view to unnest groups is an alternative to using the unnest groups setting. However, the computed attribute approach does not support circular groups (GroupA is a member of GroupB and Group B is a member of GroupA) whereas the unnest groups setting does.
