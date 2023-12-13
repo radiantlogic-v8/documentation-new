@@ -28,7 +28,7 @@ To import an LDIF file:
 >If using an LDIFZ file, the security key used on the RadiantOne node where the file was exported must be the same security key value used on the RadiantOne node that you are trying to import the file into. For steps on defining key generation or changing the encryption security key, see the [Attribute Encryption](/managing-properties).
 1.	The initialization process is performed as a task. The Tasks Monitor window displays at the bottom of the screen. Click **DISMISS** to exit the window. To view the task details, you can click **MANAGE TASKS**, or you can click **VIEW LOG** and then select the LOGS tab, which is helpful in case there are errors.
 
-![An image showing ](../Media/init-directory.jpg)
+![An image showing ](Media/init-directory.jpg)
 
 If you have a large data set and generated multiple LDIF files for the purpose of initializing the local store (each containing a subset of what you want to store), name the files with a suffix of “_2”, “_3”…etc. For example, let’s say the initial LDIF file (containing the first subset of data you want to import) is named init.ldif. After this file has been imported, the process tries to find init_2.ldif, then init_3.ldif…etc. Make sure all files are located in the same place so the initialization process can find them.
 
@@ -39,11 +39,11 @@ If you have a large data set and generated multiple LDIF files for the purpose o
 
 For every entry inserted into a RadiantOne directory store, an entryDN operational attribute is generated. This attribute contains a normalized form of the entry’s DN. This attribute is indexed by default and can be used in search filters. An example of a user entry inserted into a RadiantOne Directory store from the Control Panel > Manage > Directory Browser is shown below. The entryDN attribute that was auto-generated is highlighted.
 
-![An image showing ](../Media/Image5.1.jpg)
+![An image showing ](Media/Image5.1.jpg)
  
 Extensible match filters are supported on entryDN. An example of a search request for the user entry shown above that leverages the entrydn attribute is shown below. The filter used in this example is: (ou:dn:=Users) and is equivalent to requesting entries that have ou=Users somewhere in their entryDN.
 
-![An image showing ](../Media/Image5.2.jpg)
+![An image showing ](Media/Image5.2.jpg)
  
 An example of a more complex filter on entryDN is shown below and is equivalent to requesting entries associated with the objectclass named “person” that have ou=Accounting or ou=Management somewhere in their entryDN: <br>
 `(&(objectclass=person)(|(ou:dn:=accounting)(ou:dn:=Management)))`
@@ -86,7 +86,7 @@ Stores can be exported into an LDIF file from the Control Panel > Setup > Direct
 1.	On the right side, click **EXPORT**. 
 1.	Enter a file name and select an extension type (.ldif or .ldifz). If you want the exported file to be zipped and encrypted, select the .ldifz option from the drop-down list. In order to support exporting to an encrypted file, a security key must be configured for RadiantOne. Any target RadiantOne directory stores where you want to import this LDIFZ file must use the same LDIFZ security key value. For steps on defining key generation or changing the encryption security key, see the [LDIF File Encryption](managing-properties).
 
-![An image showing the Export option](../Media/Image5.5.jpg)
+![An image showing the Export option](Media/Image5.5.jpg)
  
 1. If this exported file is going to be used to initialize another RadiantOne directory store for replication, check the option to Export for Replication. Otherwise, leave this option unchecked. All entries in the RadiantOne directory store are exported with this option.
 1.	Click **DOWNLOAD FILE**.
@@ -124,7 +124,7 @@ Inter Cluster replication in RadiantOne leverages a publish-and-subscribe archit
 
 A data source named replicationjournal is included in the RadiantOne install and plays the role of the journal. This data source points to the default cn=replicationjournal naming context installed with RadiantOne and should not be deleted or deactivated. You can decide to have the journal running on one of the clusters that is participating in replication, or run a separate cluster whose only role is to house the central journal. Having the journal housed in a Universal Directory (HDAP) store deployed in a cluster ensures high availability of this repository. The replicationjournal data source should indicate a primary server/node in the cluster and the failover servers should point to the other cluster nodes.
 
-![An image showing ](../Media/Image5.12.jpg)
+![An image showing ](Media/Image5.12.jpg)
  
 Figure 5.12: The Journal Leveraged for Inter Cluster Replication
 
@@ -132,7 +132,7 @@ To configure inter-cluster replication, follow the steps below.
 
 1.	The replicationjournal data source for all clusters must be configured to point to the same journal. For example, if there are three clusters (1, 2, and 3) and cluster 1 is where the journal is located, the replicationjournal data source in clusters 2 and 3 must point to the cn=replicationjournal naming context in Cluster 1. All nodes running in Cluster 1 should be defined in the data source: one of them as the primary server and the others as failover.
 
-![An image showing ](../Media/Image5.13.jpg)
+![An image showing ](Media/Image5.13.jpg)
  
 Figure 5.13: Configuration of Multi-Master Replication
 
