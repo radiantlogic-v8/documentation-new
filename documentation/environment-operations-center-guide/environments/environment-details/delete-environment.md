@@ -35,4 +35,4 @@ If the environment could not be deleted, you will return to the environment *Ove
 
 ## Next steps
 
-After reading this guide you should have an understanding of the steps required to delete an existing environment. If you would prefer to update the environment, please refer to the guide on [updating an environment](update-an-environment.md).
+After reading this guide you should have an understanding of the steps required to delete an existing environment. If you would prefer to update the environment, please refer to the guide on [updating an environment](update-environment.md).
