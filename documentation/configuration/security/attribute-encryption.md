@@ -129,7 +129,7 @@ If you need to change the encryption security key, follow the steps below.
 
 7.	Go to the Control Panel > Manage > Security > Attribute Encryption.
 
-8.	Click ![Manage Group](Media/edit-encryption-key.jpg) next to Security Key. This option is only available if you removed encrypted attributes and rebuilt the index for all applicable stores.
+8.	Click ![Edit Encryption Key](Media/edit-encryption-key.jpg) next to Security Key. This option is only available if you removed encrypted attributes and rebuilt the index for all applicable stores.
 
 9.	Go to the Control Panel > Setup > Directory Namespace > Namespace Design.
 
@@ -163,7 +163,7 @@ If you need to change the LDIFZ encryption security key, follow the steps below.
 
 1.	Go to the Control Panel > Manage > Security > Attribute Encryption.
 
-2.	Click ![Manage Group](Media/edit-encryption-key.jpg) next to Security Key.
+2.	Click ![Edit Encryption Key](Media/edit-encryption-key.jpg) next to Security Key.
 
 3.	Select the cipher and enter a security key.
 
