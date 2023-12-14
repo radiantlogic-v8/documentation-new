@@ -288,7 +288,7 @@ Often, the memory requirements of the RadiantOne service are larger in productio
 **On Windows Platforms**
 If you run the RadiantOne service as a Windows Service or from the Main Control Panel (Dashboard tab):
 
-If you are using RadiantOne v7.4.7 or earlier increase the JVM size in the %RLI_HOME%/bin/VDSServer.config file. To define a minimum memory size, edit or insert a line containing the -Xms setting. The following example sets the minimum to 1 GB.
+If you are using RadiantOne v7.4.6 or earlier increase the JVM size in the %RLI_HOME%/bin/VDSServer.config file. To define a minimum memory size, edit or insert a line containing the -Xms setting. The following example sets the minimum to 1 GB.
 
 `vmparam –Xms1024m`
 
@@ -296,7 +296,7 @@ To define a maximum memory size, edit or insert a line containing the -Xmx setti
 
 `vmparam –Xmx2048m`
 
-If you are using RadiantOne v7.4.8+, set the JVM size in %RLI_HOME%/radiantone/vds/bin/windows.service/fid-server-service-install.bat before installing the Windows service (if you already have the service installed, use fid-server-service-uninstall.bat to remove it first). Add the following lines indicating a minimum (JvmMs) and maximum (JvmMx) value like shown below.
+If you are using RadiantOne v7.4.7+, set the JVM size in %RLI_HOME%/radiantone/vds/bin/windows.service/fid-server-service-install.bat before installing the Windows service (if you already have the service installed, use fid-server-service-uninstall.bat to remove it first). Add the following lines indicating a minimum (JvmMs) and maximum (JvmMx) value like shown below.
 ```
 --JvmMs=4096^
 --JvmMx=32768^
