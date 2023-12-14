@@ -34,7 +34,7 @@ The metadata from any backend that is virtualized by RadiantOne is maintained in
 
 ![ORX Files Available for Extending RadiantOne Directory Schema](Media/orx-schemas.jpg)
 
-The object classes and attributes contained in the select files are added to the RadiantOne schema and can be viewed from the Control Panel > Setup > Directory Namespace > Directory Schema > LDAP Schema section.
+The object classes and attributes contained in the selected files are added to the RadiantOne schema and can be viewed from the Control Panel > Setup > Directory Namespace > Directory Schema > LDAP Schema sub-section.
 
 >[!note] 
 >If you have already added object classes and attributes from some .orx files, then they automatically published in the table on the right. If you want them removed from the RadiantOne directory schema, click the delete icon next to the schema name.
