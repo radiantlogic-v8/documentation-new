@@ -14,7 +14,7 @@ This section focuses on configuring the connector type. For details on the behav
 Once you have determined the connector type you want to use, select the Capture section in the pipeline to display the configuration options.
 
 >[!note]
->Connectors associated with the RadiantOne Universal Directory (HDAP) stores or persistent caches are automatically configured when the stores are used as sources in a pipeline.
+>Connectors associated with RadiantOne Directory stores or persistent caches are automatically configured when the stores are used as sources in a pipeline.
 
 ![Unconfigured Capture Connector](../../media/image23.png)
 
