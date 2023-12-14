@@ -5,6 +5,10 @@ description: Learn how to create views that are comprised of attributes from one
 
 ## Creating Identity Views
 
+There are two main design approaches to creating identity views.
+ 1. Using an LDAP proxy approach, where the identity view deployed in RadiantOne represent an exact hierarchy (or specific sub-branch) of an existing LDAP directory data source. With this view design approach you are limited to the exact hierarchical structure of the existing directory store backend.
+ 2. Using a model-driven approach, where the identity view deployed in RadiantOne can be designed based on the metadata extracted from existing identity sources. With this view design approach you have infinite flexibility and can create relatively flat views, or very complex hierarchies.
+
 ## LDAP Proxy Views Overview
 
 Identity views can be configured for LDAP directories and are associated with a specific root naming context. A root naming context is the very top level in the RadiantOne namespace, and you can have many different root naming contexts. This section describes how to create root naming contexts for mounting identity views from LDAP directory backend data sources. 
