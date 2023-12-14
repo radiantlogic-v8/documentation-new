@@ -121,7 +121,7 @@ A notification will display in the command line that confirms a connection has b
 
 ![image description](images/linux-run-client.png)
 
-Once the client is running, you can can setup a connection with the on-premise backend. For details on setting up a connection, see the [server backend](../../sys-admin-guide/04-backend-settings) guide.
+Once the client is running, you can can setup a connection with the on-premise backend. For details on setting up a connection, see the [server backend](/sys-admin-guide-rebuild/04-backend-settings) guide.
 
 ### Deploy as a daemon on Linux
 
