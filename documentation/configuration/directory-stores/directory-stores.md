@@ -26,4 +26,4 @@ INSERT IMAGE
 5.	Choose to activate the store or not (it can be activated later after it has been initialized).
 6.	Click **MOUNT**.
 
-The new naming context appears in the list of root naming contexts. Populate the directory by importing an LDIF file or manually adding entries using the Directory Browser. 
+The new naming context appears in the list of root naming contexts. Populate the directory by importing an LDIF file or manually adding entries using the Directory Browser. See [Initializing Directory Stores](managing-directory-stores) for more information.
