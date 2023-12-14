@@ -58,13 +58,13 @@ In order for RadiantOne to virtualize Salesforce via SCIM, it must authenticate 
 
     Figure 1: Creating a Salesforce Connected App
 
-2.	Enter a name for the application, email to associate with the application and check the option to Enable OAuth Settings.
+1.	Enter a name for the application, email to associate with the application and check the option to Enable OAuth Settings.
 
-3.	Enter a CallBack URL. RadiantOne doesn’t use this so the value doesn’t really matter. You can use: https://www.radiantlogic.com
+1.	Enter a CallBack URL. RadiantOne doesn’t use this so the value doesn’t really matter. You can use: https://www.radiantlogic.com
 
-4.	Select the OAuth scopes that are applicable and click ![An image showing ](Media/right-arrow-button.jpg) to add them.
+1.	Select the OAuth scopes that are applicable and click ![An image showing ](Media/right-arrow-button.jpg) to add them.
 
-5.	Leave all other defaults and click **Save**.
+1.	Leave all other defaults and click **Save**.
 
     ![An image showing ](Media/Image8.2.jpg)
 
@@ -72,11 +72,11 @@ In order for RadiantOne to virtualize Salesforce via SCIM, it must authenticate 
 
     >[!warning] Allow up to 10 minutes before using the connected app.
 
-6.	After clicking save, you are warned about the 10-minute wait time. Click **Continue**.
+1.	After clicking save, you are warned about the 10-minute wait time. Click **Continue**.
 
-7.	Take note of the Consumer Key shown on the summary page. You need this value to configure RadiantOne.
+1.	Take note of the Consumer Key shown on the summary page. You need this value to configure RadiantOne.
 
-8.	On the summary page, next to “Consumer Secret”, click “Click to Reveal” and take note of the value. You need this value to configure RadiantOne.
+1.	On the summary page, next to “Consumer Secret”, click “Click to Reveal” and take note of the value. You need this value to configure RadiantOne.
 
 ![An image showing ](Media/Image8.3.jpg)
 
@@ -94,31 +94,31 @@ Figure 4: Viewing Consumer Key and Secret for Connected App
 
     >[!note] If you are already using the scimclient custom data source to virtualize a SCIM backend, click the Clone button to make a copy that you can work with for Salesforce to avoid impacting your existing configuration.
 
-2.	Click **Add**.
+1.	Click **Add**.
 
-3.	Enter oauthurl for the Name property and provide a value of https://login.salesforce.com/services/oauth2/token which is the Salesforce Token Endpoint. 
+1.	Enter oauthurl for the Name property and provide a value of https://login.salesforce.com/services/oauth2/token which is the Salesforce Token Endpoint. 
 
-4.	Click **OK**.
+1.	Click **OK**.
 
-5.	Click **Add**.
+1.	Click **Add**.
 
-6.	Enter oauthclientid for the Name property and provide the [Consumer Key](#create-a-salesforce-connected-application) value associated with your Salesforce Application. 
+1.	Enter oauthclientid for the Name property and provide the [Consumer Key](#create-a-salesforce-connected-application) value associated with your Salesforce Application. 
 
     ![An image showing ](Media/Image8.5.jpg)
 
     Figure 8.5: Sample Consumer Key Value
 
-7.	Click **OK**.
+1.	Click **OK**.
 
-8.	Click **Add**.
+1.	Click **Add**.
 
-9.	Enter oauthclientsecret for the Name property and provide the [Consumer Secret](#create-a-salesforce-connected-application) value associated with your Salesforce Application.
+1.	Enter oauthclientsecret for the Name property and provide the [Consumer Secret](#create-a-salesforce-connected-application) value associated with your Salesforce Application.
 
-10.	Click **OK**. 
+1.	Click **OK**. 
 
-11.	Select the url property and click Edit.
+1.	Select the url property and click Edit.
 
-12.	Enter the value matching your Salesforce SCIM service. The syntax is: 
+1.	Enter the value matching your Salesforce SCIM service. The syntax is: 
 
     https://`<your_SCIMservice_url>`/services/scim/v1
 
@@ -132,21 +132,21 @@ Figure 4: Viewing Consumer Key and Secret for Connected App
 
     Figure 8.7: Salesforce SCIM URL
 
-13.	Click **OK**. 
+1.	Click **OK**. 
 
-14.	Select the username property and click **Edit**.
+1.	Select the username property and click **Edit**.
 
-15.	Enter your Salesforce username (email).
+1.	Enter your Salesforce username (email).
 
-16.	Click **OK**.
+1.	Click **OK**.
 
-17.	Select the password property and click Edit.
+1.	Select the password property and click Edit.
 
-18.	Enter the password (which is your password appended with the [security token](#getting-a-security-token-from-salesforce) you received from Salesforce) associated with your Salesforce user name.
+1.	Enter the password (which is your password appended with the [security token](#getting-a-security-token-from-salesforce) you received from Salesforce) associated with your Salesforce user name.
 
-19.	Click **OK**.
+1.	Click **OK**.
 
-20.	Click **Save**.
+1.	Click **Save**.
 
 #### Configure a RadiantOne Virtual View
 
@@ -240,29 +240,24 @@ Figure 14: Sample Run Time Virtual View from Salesforce
 As an alternative to using SCIM, RadiantOne includes a JDBC driver to virtualize Salesforce. This section describes the configuration.
 
 1.	On the Main Control Panel > Settings tab > Server Backend section, go to DB Data Sources.
-
-2.	On the right, click on radiantsalesforce and click **Edit**.
+1.	On the right, click on radiantsalesforce and click **Edit**.
 
     ![An image showing ](Media/Image8.15.jpg)
 
     Figure 8.15: Salesforce Custom Data Source
 
-3.	Enter your Salesforce user email in the User property.
-
-4.	Enter your Salesforce user’s password (which is your password appended with the [security token](#getting-a-security-token-from-salesforce) you received from Salesforce) in the Password property.
-
-5.	If you are connecting to a production instance of Salesforce, the URL value should be: jdbc:salesforce:
+1.	Enter your Salesforce user email in the User property.
+1.	Enter your Salesforce user’s password (which is your password appended with the [security token](#getting-a-security-token-from-salesforce) you received from Salesforce) in the Password property.
+1.	If you are connecting to a production instance of Salesforce, the URL value should be: jdbc:salesforce:
 If you are connecting to a sanbox/dev instance of Salesforce, the URL value should be: 
 
     jdbc:salesforce:<sandboxURL>
 
     e.g. `jdbc:salesforce:https://test.salesforce.com/services/Soap/u/30.0`
 
-6.	Click **Save**. At this point, the default Salesforce view located at dv=salesforce,o=cloudservices,o=vds should return your data (contacts and accounts are the objects defined in the view).
-
-7.	To view the schema associated with the radiantsalesforce data source, go to the Context Builder tab, Schema Manager sub-tab and open the schema named salesforce. The objects that can be virtualized from Salesforce are described in this file.
-
-8.	To create a new virtual view, use the Context Builder tab > View Designer sub-tab. For details on using View Designer, see the [RadiantOne Context Builder Guide](/context-builder-guide/introduction.md).
+1.	Click **Save**. At this point, the default Salesforce view located at dv=salesforce,o=cloudservices,o=vds should return your data (contacts and accounts are the objects defined in the view).
+1.	To view the schema associated with the radiantsalesforce data source, go to the Context Builder tab, Schema Manager sub-tab and open the schema named salesforce. The objects that can be virtualized from Salesforce are described in this file.
+1.	To create a new virtual view, use the Context Builder tab > View Designer sub-tab. For details on using View Designer, see the [RadiantOne Context Builder Guide](/context-builder-guide/introduction.md).
 
 #### Getting a Security Token from Salesforce
 
