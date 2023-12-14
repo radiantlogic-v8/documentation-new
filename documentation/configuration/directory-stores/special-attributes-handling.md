@@ -54,6 +54,7 @@ If the utility returns the result, “Attribute Uniqueness check successful”, 
 
 In the following example command, the attributes givenName and facsimiletelephonenumber are analyzed.
 
+**THESE NEED FIXED TO NOT REFERENCE A FILE PATH**
 `c:\radiantone\vds\bin\advanced>ldif-utils.bat AttrUniqueness -f c:\globaldirectory.ldif -u givenname,facsimiletelephonenumber`
 
 If the utility returns the result, “Attribute Uniqueness check result false”, entries sharing the same value for at least one analyzed attribute were detected. In this example, the utility returns the following at the end of completion of the command.
