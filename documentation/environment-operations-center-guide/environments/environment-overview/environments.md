@@ -45,7 +45,7 @@ To access further details about an environment, select the name of the environme
 
 This brings you to the environment's *Overview* screen, where you can view further information about a given environment, such as node status or connections, and perform monitoring and updating actions.
 
-> To learn more about the environment *Overview* features, review the [environment details](environments/environment-details#environment-details) guide.
+> To learn more about the environment *Overview* features, review the [environment details](../environments/environment-details#environment-details) guide.
 
 ![image description](images/detailed-view.png)
 
