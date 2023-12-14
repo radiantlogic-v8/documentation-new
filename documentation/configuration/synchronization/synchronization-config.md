@@ -16,7 +16,7 @@ Once you have determined the connector type you want to use, select the Capture 
 >[!note]
 >Connectors associated with RadiantOne Directory stores or persistent caches are automatically configured when the stores are used as sources in a pipeline.
 
-![Unconfigured Capture Connector](../../media/image23.png)
+![Unconfigured Capture Connector](Media/image23.png)
 
 ### Database (JDBC-accessible) 
 For database backends (JDBC-accessible), the connector change detection options are:
@@ -81,11 +81,11 @@ To configure DB Changelog connector:
 >[!warning]
 >Change the value for this property only if you are creating the log table manually and the capture connector does not calculate the log table name correctly. Be sure to use the [correct syntax](#log-table-name-syntax) if you change the value.
 
-![DB Changelog Connector Configuration](../../media/image24.png)
+![DB Changelog Connector Configuration](Media/image24.png)
 
 7. Select **Save**.
 8. A message is displayed that asks if you want to apply the scripts to configure the log table immediately or not. You can also download the scripts to the local machine. 
-    ![Configuration to Apply SQL Script Automatically or Not](../../media/image26.png)
+    ![Configuration to Apply SQL Script Automatically or Not](Media/image26.png)
 9. To apply now, select **OK**. Otherwise, select **NO**.
 
 >[!note]
@@ -144,7 +144,7 @@ The following steps assume your backend database table has a primary key defined
 1. Select a Capture component and the configuration displays.
 1. Select **DB Timestamp** from the **Connector Type** drop-down list.
 1. Indicate the column name in the database table that contains the timestamp. An example is shown below.
-    ![DB Timestamp Connector Configuration](../../media/image27.png)
+    ![DB Timestamp Connector Configuration](Media/image27.png)
 1. Select **Save**.
 1. You can configure connector properties in the Advanced Properties section.
 1. After the capture connector is configured, configure the transformation.
@@ -166,7 +166,7 @@ The following steps assume your database backend table contains an indexed colum
 1. You can configure connector properties in the Advanced Properties section.
 1. After the capture connector is configured, configure the transformation in the pipeline.
 
-![DB Counter Connector Configuration](../../media/image32.png)
+![DB Counter Connector Configuration](Media/image32.png)
 
 >[!warning]
 >If you need to make changes to the Counter Column name, you must manually restart the connector and reset the cursor. The pipeline can be stopped on the Global Sync tab when the topology is selected on the left. Then select **Configure** next to the pipeline. In the configuration screen, select the Capture section. Change the counter column name and select **Save**. In the bottom left of the Capture configuration screen, select **Reset Cursor**. Go back to the Global Sync topologies page and select **Start** to start the pipeline components.
@@ -180,7 +180,7 @@ This section describes the failover mechanism for the database connectors.
 
 The database connectors leverage the failover server that has been configured for the data source. When you configure a data source for your backend database, select a failover database server from the drop-down list. The failover server must be configured as a RadiantOne data source. See the screen shot below for how to indicate a failover server for the Data Sources from the Main Control Panel.
 
- ![Configuring Failover Servers for the Backend Database](../../media/image33.png)
+ ![Configuring Failover Servers for the Backend Database](Media/image33.png)
 
 If a connection cannot be made to the primary server, the connector tries to connect to the failover server configured in the data source. If a connection to both the primary and failover servers fails, the retry count goes up. The connector repeats this process until the value configured in "Max Retries on Connection Error" is reached. There is no automatic failback, meaning once the primary server is back online, the connector does not automatically go back to it.
 
@@ -191,7 +191,7 @@ For LDAP backends that support both Changelog and Persistent Search, you can con
 
 Choose either the **LDAP** option (for Changelog) or **Persistent Search** and **Save**.
 
-![LDAP Directory Connector Types](../../media/image35.png)
+![LDAP Directory Connector Types](Media/image35.png)
 
 ### Changelog
 
@@ -207,7 +207,7 @@ There are three change detection mechanisms: USNChanged, DirSync and Hybrid. If 
 
 The flowchart below helps to decide which change detection mechanism to use.
 
-![Change detection mechanism flowchart](../../media/image36.png)
+![Change detection mechanism flowchart](Media/image36.png)
 
 ### DirSync
 
@@ -237,7 +237,7 @@ When the connector restarts, uSNChanged detection catches the entries that have 
 
 If you are using the RadiantOne Universal Directory (HDAP store), a persistent cache on a proxy view of a local HDAP store, or a nested persistent cache view (a cached view used in another cached view), the connector type is noted as HDAP trigger automatically and cannot be changed. This is a special trigger mechanism that publishes changes directly into the queue to invoke the synchronization as opposed to requiring a connector component to detect the change.
 
-![HDAP Trigger Connector Type](../../media/image37.png)
+![HDAP Trigger Connector Type](Media/image37.png)
 
 ## Directory connector failover
 
@@ -248,7 +248,7 @@ This section describes the failover mechanism for the LDAP (changelog), Persiste
 
 The directory connectors leverage the failover servers that have been configured for the data source. When you configure a data source for your backend directory, you need to indicate the list of failover servers in order of priority. When the connector fails over, it uses the failover servers in the order they are listed. See the screen shot below for how to indicate a failover server for the Data Sources from the Main Control Panel.
 
- ![Configuring Failover Servers for the Backend Directory](../../media/image38.png)
+ ![Configuring Failover Servers for the Backend Directory](Media/image38.png)
 
 If a connection cannot be made to the primary server and the maximum number of retry attempts has been exhausted, the connector connects to the failover servers in the order they are listed. There is no automatic failback, meaning once the primary server is back online, the connector does not automatically go back to it.
 
