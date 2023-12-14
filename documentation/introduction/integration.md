@@ -3,7 +3,7 @@ title: Introduction to the Architecture
 description: Learn about the components and capabilities that comprise the RadiantOne Identity Data Management architecture.
 ---
 
-## Architecture
+## Integration Architecture
 
 ![RadiantOne Logical Architecture](Media/Image1.3.jpg)
 
