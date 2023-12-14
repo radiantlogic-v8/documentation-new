@@ -104,8 +104,8 @@ It is highly recommended to have logs from sdc-client to go into a mounted drive
 
 Replace `/path/on/host` with an actual path on your host machine where you want to store the logs.
 
-Once the client is running, you can can setup a connection with the on-premise backend. For details on setting up a connection, see the [server backend](../../sys-admin-guide/server-backend.md) guide.
+Once the client is running, you can can setup a connection with the on-premise backend. For details on setting up a connection, see the [server backend](/sys-admin-guide-rebuild/04-backend-settings) guide.
 
 ## Next steps
 
-After reading this guide, you should now have an understanding of the steps required to configure proxy information to successfully run a secure data connector client on a Windows, Linux, or Docker system. To learn how to establish a connection with the on-premise backend, see the control panel [server backend](../../sys-admin-guide/server-backend.md) guide. For details on updating and monitoring the secure data connector client, see the [manage the secure data connector client](manage-sdc-client.md) guide.
+After reading this guide, you should now have an understanding of the steps required to configure proxy information to successfully run a secure data connector client on a Windows, Linux, or Docker system. To learn how to establish a connection with the on-premise backend, see the control panel [server backend](/sys-admin-guide-rebuild/04-backend-settings) guide. For details on updating and monitoring the secure data connector client, see the [manage the secure data connector client](manage-sdc-client.md) guide.
