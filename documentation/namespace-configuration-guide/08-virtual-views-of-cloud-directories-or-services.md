@@ -258,7 +258,7 @@ If you are connecting to a sanbox/dev instance of Salesforce, the URL value shou
 
     e.g. `jdbc:salesforce:https://test.salesforce.com/services/Soap/u/30.0`
 
-6.	Click ![An image showing ](Media/save4.jpg). At this point, the default Salesforce view located at dv=salesforce,o=cloudservices,o=vds should return your data (contacts and accounts are the objects defined in the view).
+6.	Click **Save**. At this point, the default Salesforce view located at dv=salesforce,o=cloudservices,o=vds should return your data (contacts and accounts are the objects defined in the view).
 
 7.	To view the schema associated with the radiantsalesforce data source, go to the Context Builder tab, Schema Manager sub-tab and open the schema named salesforce. The objects that can be virtualized from Salesforce are described in this file.
 
