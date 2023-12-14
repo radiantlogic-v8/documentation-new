@@ -129,19 +129,20 @@ If you need to change the encryption security key, follow the steps below.
 
 7.	Go to the Control Panel > Manage > Security > Attribute Encryption.
 
-8.	Click ![Edit Encryption Key](Media/edit-encryption-key.jpg) next to Security Key. This option is only available if you removed encrypted attributes and rebuilt the index for all applicable stores.
+8.	Click Edit next to Security Key. This option is only available if you removed encrypted attributes and rebuilt the index for all applicable stores.
+   ![Edit Encryption Key](Media/edit-encryption-key.jpg)
 
-9.	Go to the Control Panel > Setup > Directory Namespace > Namespace Design.
+10.	Go to the Control Panel > Setup > Directory Namespace > Namespace Design.
 
-10.	Select the naming context representing the RadiantOne Directory store.
+11.	Select the naming context representing the RadiantOne Directory store.
 
-11.	On the right, add required attributes to the encrypted attributes list (remember to press ENTER on the keyboard after each).
+12.	On the right, add required attributes to the encrypted attributes list (remember to press ENTER on the keyboard after each).
 
-12.	Click **SAVE**.
+13.	Click **SAVE**.
 
-13.	Click **RE-BUILDE INDEX**.
+14.	Click **RE-BUILDE INDEX**.
 
-14.	Repeat steps 9-13 for all stores that require encrypted attributes.
+15.	Repeat steps 9-13 for all stores that require encrypted attributes.
 
 ## LDIF File Encryption
 
@@ -163,11 +164,12 @@ If you need to change the LDIFZ encryption security key, follow the steps below.
 
 1.	Go to the Control Panel > Manage > Security > Attribute Encryption.
 
-2.	Click ![Edit Encryption Key](Media/edit-encryption-key.jpg) next to Security Key.
+2.	Click Edit next to Security Key.
+![Edit Encryption Key](Media/edit-encryption-key.jpg)
 
-3.	Select the cipher and enter a security key.
+4.	Select the cipher and enter a security key.
 
-4.	Click **SAVE**.
+5.	Click **SAVE**.
 
 >[!note] 
 >LDIFZ files generated with the old encryption key are no longer usable.
