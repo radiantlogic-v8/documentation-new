@@ -90,7 +90,7 @@ This attribute contains the name of the user which created the entry.
 
 ### entrydn
 
-For every entry inserted into a RadiantOne Universal Directory (HDAP) store, an entryDN operational attribute is generated. This attribute contains a normalized form of the entry’s DN. This attribute is indexed by default and can be used in search filters.
+For every entry inserted into a RadiantOne Directory (HDAP) store, an entryDN operational attribute is generated. This attribute contains a normalized form of the entry’s DN. This attribute is indexed by default and can be used in search filters.
 
 ### nsAccountlock
 
@@ -106,11 +106,11 @@ This attribute contains the date and time that the entry was most recently modif
 
 ### hasSubordinates
 
-To search for entries in a RadiantOne Universal Directory store (or persistent cache) that have child entries, use the hasSubordinates attribute in your filter. The value is either true (for entries that have subordinates) or false (for entries that don’t have subordinates). Entries returned when using a search filter of (hasSubordinates=false) are leaf entries because they currently have no subordinates/child nodes.
+To search for entries in a RadiantOne Directory store (or persistent cache) that have child entries, use the hasSubordinates attribute in your filter. The value is either true (for entries that have subordinates) or false (for entries that don’t have subordinates). Entries returned when using a search filter of (hasSubordinates=false) are leaf entries because they currently have no subordinates/child nodes.
 
 ### numSubordinates
 
-To search for the number of subordinates an entry in a RadiantOne Universal Directory store contains, use the numSubordinates attribute in your filter. This indicates how many immediate subordinates an entry has. Entries returned when using a search filter of (numSubordinates=0) are leaf entries because they currently have no subordinates/child nodes. You can also leverage “greater than” or “less than” in your filter. A filter of (numSubordinate>=5) would return only entries that have 5 or more subordinates.
+To search for the number of subordinates an entry in a RadiantOne Directory store contains, use the numSubordinates attribute in your filter. This indicates how many immediate subordinates an entry has. Entries returned when using a search filter of (numSubordinates=0) are leaf entries because they currently have no subordinates/child nodes. You can also leverage “greater than” or “less than” in your filter. A filter of (numSubordinate>=5) would return only entries that have 5 or more subordinates.
 
 ### uuid
 
@@ -122,7 +122,7 @@ The value of the subschemaSubentry attribute is the DN of the entry that contain
 
 ### isMemberOf
 
-isMemberOf is an operational attribute that automatically maintains the relationships between groups and user entries. A user’s group memberships are available in the isMemberOf/memberOf attribute and updated automatically if a user is added or removed from a group. A user can be a member of a nested group, dynamic group, or standard static group. The isMemberOf/memberOf attribute can either be computed dynamically when it is explicitly requested or pre-computed at indexing time of the RadiantOne Universal Directory store if the “Optimize MemberOf” option is enabled. 
+isMemberOf is an operational attribute that automatically maintains the relationships between groups and user entries. A user’s group memberships are available in the isMemberOf/memberOf attribute and updated automatically if a user is added or removed from a group. A user can be a member of a nested group, dynamic group, or standard static group. The isMemberOf/memberOf attribute can either be computed dynamically when it is explicitly requested or pre-computed at indexing time of the RadiantOne Directory store if the “Optimize MemberOf” option is enabled. 
 
 ## Authorization Enforcement
 
