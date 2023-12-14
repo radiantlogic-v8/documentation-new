@@ -35,7 +35,7 @@ If you configure the LDAP backend directly at the Root Naming Context, it is the
 
 9.	If you need to modify the LDAP backend configuration, select the appropriate node below Root Naming Contexts and modify the settings on the right side. Click **SAVE** when finished.
 
-![An image showing ](Media/Image3.2.jpg)
+![An image showing ](Media/proxy-backend-properties.jpg)
  
 Figure 3.2: Modifying an LDAP Backend Configuration
 
