@@ -19,7 +19,7 @@ To define the criteria used to generate an encryption key:
 
 1. 	Navigate to Control Panel > Manage > Security > Attribute Encryption.
 1.	 In the RadiantOne Directory Attribute Encryption Key section select the desired cipher from the drop-down list or select [AWSKMS](#using-amazon-web-services-aws-with-a-customer-master-key-cmk) if you want to use your own Customer Master Key (CMK) in Amazon Web Services (AWS) Key Management Service (KMS) and have configured the necessary settings in ZooKeeper. 
-![An image showing ](Media/Image3.116.jpg)
+![An image showing ](Media/awskms-cypher.jpg)
 Figure 2: Attribute Encryption Key
 1. 	If you selected a cipher suite in the previous step, enter a security key. This value is used to auto-generate an encryption key. If you plan on deploying multiple clusters that will participate in inter-cluster replication for encrypted attributes, take note of the value you enter here as you must use it when configuring the security key in the other clusters.
 1. 	Click **SAVE**.
