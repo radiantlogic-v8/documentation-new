@@ -33,7 +33,7 @@ A navigation bar is located at the top of the *Admin* home screen and is visible
 
 The *Users* tab allows you to manage all users within your Environment Operation Center instance. From here you can view a user's name, email address, and status.
 
-For details on managing Environment Operation Center users, including their roles and permissions, see the [user management](create-user.md) guide.
+For details on managing Environment Operation Center users, including their roles and permissions, see the [user management](user-management/create-user.md) guide.
 
 ![image description](images/users-tab.png)
 
