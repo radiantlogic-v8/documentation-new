@@ -90,7 +90,7 @@ Port that the server is listening on. If you want to use host discovery, you can
 
 Service account user DN. This user is used by RadiantOne to create connections to the backend LDAP directory. 
 
-### Bind password*
+### Bind password
 
 The password for the user specified in the Bind DN parameter.
 
