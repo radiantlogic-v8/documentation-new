@@ -188,10 +188,33 @@ To enable the secure LDIF export option:
 
 This feature works with the LDIFZ Encryption option as outlined in the table below.
 
--|-|-|-
-LDIFZ Encryption Key	| Secure LDIF Export | Available Export Formats | Available Export Formats
-undefined | disabled | 🗹	| ⌧
-undefined | enabled | N/A because you can’t enable Secure LDIF if the LDIFZ encryption key is not defined. | N/A because you can’t enable Secure LDIF if the LDIFZ encryption key is not defined.
-defined | disabled | 🗹	| 🗹
-defined | enabled | ⌧	| 🗹
+<table>
+<tr>
+<td>LDIFZ Encryption Key	
+<td>Secure LDIF Export	
+<td>Available Export Formats:		
+<br>LDIF	 
+<td>Available Export Formats: 
+<br>LDIFZ </p>
+<tr>
+<td> undefined	
+<td>Disabled	
+<td>🗹	
+<td>⌧</p>
+<tr>
+<td>undefined
+<td>Enabled	
+<td> N/A because you can’t enable Secure LDIF if the LDIFZ encryption key is not defined.	
+<td>N/A because you can’t enable Secure LDIF if the LDIFZ encryption key is not defined.
+<tr>
+<td>defined	
+<td>Disabled	
+<td> 🗹	
+<td>🗹
+<tr>
+<td>defined
+<td> Enabled	
+<td> ⌧	
+<td>🗹
+</table>
 
