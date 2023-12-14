@@ -33,7 +33,7 @@ A navigation bar is located at the top of the *Admin* home screen and is visible
 
 The *Users* tab allows you to manage all users within your Environment Operation Center instance. From here you can view a user's name, email address, and status.
 
-For details on managing Environment Operation Center users, including their roles and permissions, see the [user management](/user-management/create-user) guide.
+For details on managing Environment Operation Center users, including their roles and permissions, see the [user management](create-user.md) guide.
 
 ![image description](images/users-tab.png)
 
@@ -41,7 +41,7 @@ For details on managing Environment Operation Center users, including their role
 
 From the *Alerts* tab you can monitor and create alerts for your environments. The main *Alerts* screen displays all of your current alerts including their associated environment, notification channel, a time and date stamp of the last update to the alert, and the severity status.
 
-For more information on alert management, see the [alert management](/alert-management/alert-management-overview) guide.
+For more information on alert management, see the [alert management](/alert-management-overview) guide.
 
 ![image description](images/alerts-tab.png)
 
