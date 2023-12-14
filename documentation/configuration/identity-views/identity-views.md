@@ -5,27 +5,13 @@ description: Learn how to create views that are comprised of attributes from one
 
 ## Creating Identity Views
 
-## LDAP Proxy Views
+## LDAP Proxy Views Overview
 
-Identity views can be configured for LDAP directories and are associated with a specific root naming context. A root naming context is the very top node of a virtual directory tree and RadiantOne can respond to many different root naming contexts. This section describes how to create root naming contexts for LDAP directory backend data sources. 
-
-After the virtual view of the LDAP backend has been configured, a series of tabs are available for managing the configuration. To access the tabs, select the node representing the LDAP backend below Root Naming Contexts on the Main Control Panel > Directory Namespace tab.
-
--	Proxy Backend – Used for managing general information such as, [object class mapping](#object-class-mapping), [branch exclusion](#suffix-branch-exclusion), schema enforcement and [post filtering](#post-processing-exclusion-filter).
-
--	Proxy Advanced – Used for managing [interception scripts](#interception-scripts), [optimizations](#optimizations) in processing, and [pre-filters](#pre-processing-filter).
-
--	Attributes – This tab is used for managing attributes from the LDAP backend. This includes [attribute](#attribute-mapping) and [DN mapping](#dn-remapping), and declaring attributes as [always requested](#always-requested-attributes).
-
--	Objects – This tab is for managing [joins](#joins) and other tasks associated with joining such as handling overlapping attributes, [custom bind order](#bind-order) and defining [computed attributes](#computed-attributes).
-
-![An image showing ](Media/ldap-backend-example.jpg)
- 
-Figure 3.1: Example LDAP Backend
+Identity views can be configured for LDAP directories and are associated with a specific root naming context. A root naming context is the very top level in the RadiantOne namespace, and you can have many different root naming contexts. This section describes how to create root naming contexts for mounting identity views from LDAP directory backend data sources. 
 
 ### Configuration
 
-If you configure the LDAP backend directly at the Root Naming Context, it is the only backend that can be mounted at this specific naming context. If you want to comprise the identity view from many different backends, choose the Virtual Tree option for the type of backend to mount instead of LDAP.
+If you configure the LDAP backend directly at the Root Naming Context, it is the only backend that can be mounted at this specific naming context. If you want to comprise the identity view from many different backends, choose the Virtual Tree option for the type of backend to mount instead of LDAP. The virtual tree option allows you to define child nodes using labels and then you can mount different backends at each label level.
 
 1.	First, data sources for each backend must be defined. From the Control Panel > Setup > Data Catalog > Data Sources, click ![An image showing ](Media/new-source.jpg). Use the Active Directory, Generic LDAP, Open DJ or RadiantOne directory template to define data sources.
 
@@ -721,6 +707,9 @@ This attribute can be used in computed attributes by using the getactualDN() fun
 Figure 32: Using ActualDN in a Computed Attribute
 
 
-### Model-driven Views
+## Model-driven Identity Views
+Creating model-driven identity views requires the use of the metadata extracted from backend sources. The views can be flat or hierarchical and comprised of an aggregation of many views. This provides greater flexibility for view design than creating simple LDAP proxy views.
+
+In order to create model-driven identity views, 
 
 
