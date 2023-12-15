@@ -41,7 +41,7 @@ For details on managing Environment Operation Center users, including their role
 
 From the *Alerts* tab you can monitor and create alerts for your environments. The main *Alerts* screen displays all of your current alerts including their associated environment, notification channel, a time and date stamp of the last update to the alert, and the severity status.
 
-For more information on alert management, see the [alert management](/alert-management/alert-management-overview) guide.
+For more information on alert management, see the [alert management](../alert-management/alert-management-overview) guide.
 
 ![image description](images/alerts-tab.png)
 
