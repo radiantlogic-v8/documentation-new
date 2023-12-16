@@ -77,4 +77,4 @@ If the scheduled backup could not be created, you will receive an error message 
 
 ## Next steps
 
-After reading this guide you should have an understanding of the steps required to schedule automated environment backups. To learn how to restore an environment to a previously backed up version, review the guide on [restoring an environment backup](create-backup#advanced-setup).
+After reading this guide you should have an understanding of the steps required to schedule automated environment backups. To learn how to restore an environment to a previously backed up version, review the guide on [restoring an environment backup](environment-overview/create-an-environment#advanced-setup).
