@@ -19,7 +19,7 @@ Agents manage Connectors which are components used to interface with the data so
 See the figure below for a high-level architecture of the synchronization process.
 
 <a name="global-synchronization-architecture-figure"></a>
-![A flow chart depicting the high-level architecture of the synchronization process](./media/image2.png)
+![A flow chart depicting the high-level architecture of the synchronization process](Media/sync-arch.png)
 
 
 ## Pipelines
