@@ -15,7 +15,7 @@ The following concepts are important to understand for configuring and managing 
 - [Approvals](#approvals)
 
 ## Data Source
-A data source represents the connection to a backend which plays the role of either a source or target endpoint for synchronization. 
+A data source represents the connection to a backend which plays the role of either a source or target endpoint for synchronization. Data Sources are configured from the Control Panel > Setup > Data Catalog > Data Sources. 
 
 ## Connector 
 Agents manage connectors which includes deploying, stopping/suspending and starting them as needed.
