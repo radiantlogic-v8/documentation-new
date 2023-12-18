@@ -11,13 +11,14 @@ Rules are configured in the RULES section of the selected RULE SET. A Rule is co
 
 To automatically configure rules for insert, update and delete events, select ![Plus symbol](../../media/image77.png). One rule is configured for each event and each rule has one condition based on the corresponding event type. You can edit an auto configured rule by selecting it and selecting the **Edit** button.
 
-To create a new rule:
+## Creating Rules
 
 1. Edit the Rule Set and select the **Rules** section.
 1. Select ![Plus symbol](../../media/image78.png)
 1. Enter a Rule name.
 1. (Optional) Enter a Description.
 1. Configure the [identity linkage](identity-linkage.md) in the Identity Linkage property.
+1. If source events associated with this rule should be manually approved before being synchronized to the target, check to enable *Require Approvals*, click ![Approval Config](../../media/editapprovals.jpg) and [Configure Approvers](#configuring-approvers).
 1. If you have selected the option to manually define the target DN in [Advanced options](../advanced-options.md#target-dn-generation), select the variable that contains the target DN. If you have the target DN generation set to Automatic in Advanced Option, you do not see the Target DN Variable in the Basic Information section.
 1. Select the **Event Type** that should invoke the rule from the **Target Event Type** drop-down list.
 1. Select the [CONDITIONS](conditions.md) section to define the conditions.
