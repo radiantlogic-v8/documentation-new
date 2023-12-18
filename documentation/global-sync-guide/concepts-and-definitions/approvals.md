@@ -56,7 +56,7 @@ http://radiantoneserver:7070/portal/login
 >[!note] 
 >You can access the portal on any RadiantOne cluster node. User to DN mapping must be properly configured so that the approver can login with their user ID and not require their full DN.
 
-![Insights, Reports and Administration Portal](../media/portallogin.jpg)
+![Insights, Reports and Administration Portal](../media/portal-login.jpg)
 
 The applications currently available in this portal are *Approvals* and *Global Identity Viewer*. A brief description of each application is provided below. 
 
