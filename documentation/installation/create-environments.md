@@ -157,4 +157,10 @@ Select the ellipsis (**...**) in line with the environment to display a list of 
 
 ## Accessing the Main Control Panel
 
-Here is where to find the endpoint to access the Control Panel.
+The **CONTROL PANEL** endpoint provides access to the Main Control Panel of FID and is enabled by default after the environment is created.
+
+![image description](images/cp-endpoint.png)
+
+The URL can be clicked directly and new window opens with control panel sign in page or the URL can be copy pasted into a browser.
+
+![image description](images/cp-login-page.png)
