@@ -142,7 +142,7 @@ For specific hardware requirements of each, please see: [https://developer.radia
 
 -	[VSTS45713]: Fixed an issue where the ACI with a deny rule in the target filter was not working properly. 
 
--	[VSTS45716] Fixed an issue with vdsconfig command line tool revealing passwords for certain commands. 
+-	[VSTS45716] Fixed an issue with logging output related to vdsconfig commands. 
 
 -	[VSTS45742]: Fixed an issue that was clearing the Main Control Panel > Settings > Server Front End > Advanced > "Run as a Windows service" checkbox on service restarts. 
 
