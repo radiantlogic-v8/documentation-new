@@ -6,7 +6,7 @@ description: Learn the concepts related to configuring synchronization.
 ## Concepts Overview
 The following concepts are important to understand for configuring and managing synchronization:
 - [Data Source](#data-source)
-- [Connector](#connector)
+- [Capture Connector](#capture-connector)
 - [Queue](#queue)
 - [Sync Engine](#sync-engine)
 - [Transformation](#transformation)
@@ -17,7 +17,7 @@ The following concepts are important to understand for configuring and managing 
 ## Data Source
 A data source represents the connection to a backend which plays the role of either a source or target endpoint for synchronization. Data Sources are configured from the Control Panel > Setup > Data Catalog > Data Sources. 
 
-## Connector 
+## Capture Connector 
 Agents manage connectors which includes deploying, stopping/suspending and starting them as needed.
 
 A connector is a component that captures changes from data sources. Capture connectors are configured as part of the pipeline configuration process. Capture connectors associated with the RadiantOne Universal Directory (HDAP) stores or persistent caches are automatically configured when the stores are used as a source in a pipeline. Capture connectors for all other data sources require configuration. Capture connectors are configured from the Main Control Panel > Global Sync tab. Select a topology on the left and then select **Configure** next to the pipeline.
@@ -35,6 +35,10 @@ RadiantOne Global Sync relies on queues for guaranteed delivery of messages. Que
 Messages remain in the queue until they are either picked up by the sync engine, or the message time-to-live has been reached (default of 3 days). Message time-to-live is configured in the "Changelog and Replicationjournal Max Age" property from the Main Control Panel > Settings > Logs > Changelog.
 
 ![Message Time-to-live Enforced by the Global Sync Queues](../media/image19.png)
+
+## Apply connector
+
+The apply connector applies changes to the destination object(s). Once the transformation component is successfully configured, the Apply connector automatically starts. There is no configuration of the apply connector. The apply process leverages the [virtualization of the target](../introduction.md#architecture) as depicted in [this figure](../introduction.md#global-synchronization-architecture-figure), meaning that all changes are sent to the RadiantOne service, directed to the branch in the namespace where the virtual view of the target has been mounted.
 
 ## Sync Engine 
 The Sync Engine processes the transformations and sends the changed entries to the destination.
