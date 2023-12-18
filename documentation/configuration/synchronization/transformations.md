@@ -315,7 +315,7 @@ To automatically configure rules for insert, update and delete events, select ![
 1. Select **Save**.
 1. Create another [rule set](overview.md) for every source object class you want to detect changes on.
 
-### Configuring Approvers
+### Configuring Approvals
 The Require Approvals option is located on the **BASIC INFORMATION** tab.
 1. Enable the Require Approvals checkbox.
 2. Click ![Edit Approvals](../../media/editapprovals.jpg).
@@ -325,6 +325,65 @@ The Require Approvals option is located on the **BASIC INFORMATION** tab.
 6. Enter a meaningful description and select a source attribute to display in the [*Approvals* experience](../../concepts-and-definitions/approvals/#performing-approvals) to help provide context for the approver about the synchronization event. 
 
 ![Approval Config](../../media/editapprovalsux.jpg).
+
+**Approvers**
+
+Any user located in the RadiantOne virtual namespace that is a member of the *Approvers* group can be an approver. In the following example, the ICS Admin user is made an approver.  
+To manage the Approvers group: 
+1.	In the Main Control Panel, go to the **Directory Browser** tab.  
+1.	Expand cn=config,ou=globalgroups. 
+1.	Select cn=approvers. 
+1.	Click the **Manage Group** button. The Manage Group window displays. 
+1.	Click the **Add Member(s)** button.  
+1.	Click the **Expand Tree** button. The RadiantOne namespace displays on the right. 
+1.	In the namespace, navigate to the location of the user that you want to approve events. In this example, the location cn=config,ou=globalusers is selected.  
+1.	Click the **Find Now** button.  
+1.	Select the entry you want to approve events and click the **Move selected entry down** button. In this example, uid=icsadmin,ou=globalusers,cn=config is selected. <br>![Find Users](../media/findusers.jpg)
+1.	Click the **Confirm** button. The member is displayed in the cn=approvers group.  
+1.	Click **Confirm** again to commit the change. 
+
+![Members of the Approvers Group](../media/approversgroup.jpg)
+
+>[!warning]
+>If you want the approver to receive an email alert when they have pending approvals, the user account must have a valid email address (mail attribute).
+
+
+**Approver Email Notifications**
+
+To enable email alerts for approvers, SMTP must be configured. 
+1. Navigate to the RadiantOne Main Control Panel > Settings tab > Monitoring > Email Alerts Settings.
+2. Enter your SMTP settings (host, port, user, password, from email and to email) in the Email Alerts (SMTP Settings) section.
+3. Click **Save**.
+4. If you would like to test your settings, click **Send Test Email**. 
+
+>[!note]
+>For security and audit purposes, it is not advised to connect to your mail server anonymously (leaving user and password >properties blank in the Email Alert Settings). 
+
+![Email Alert Configuration](../media/emailalerts.jpg) 
+
+**Performing Approvals** 
+When a change associated with a rule that requires approval is detected in a source, the instance is published into the approvals queue and awaits action. Approvers use the Approvals application to accept or reject events.
+
+Approvers log into the Insights, Reports and Administration Portal and click the Approvals icon.
+![Approvals](../media/approvals.jpg)
+
+The pending events assigned to the approver are displayed.
+
+![Approval Decisions](../media/decisions.jpg)
+
+The user must approve or reject the event. This can be done using the ![reject](../media/reject.jpg) to reject an event or the ![accept](../media/accept.jpg) to accept an event. <br>
+Check boxes in the column on the far left can also be used. If you check the box in the column header, options include “Select Current Page”, “Select Everything”, “Unselect Current Page”, and “Unselect Everything”. Then select an option from the Select Bulk Action drop-down menu (*Approve All* or *Reject All*).
+
+>[!note] 
+>To fetch additional pending modifications, click the **Refresh** button.
+
+After acting on all events, click **Submit Changes** and then **Yes** to confirm the updates. 
+
+Approved events are processed by the sync engine and applied to the target.
+
+**Approval Audit Log**
+The actions taken by approvers is logged. Logging is enabled by default and the log file is: `<RLI_HOME>/logs/approvals_audit.log`
+
 
 ### Configuring Advanced Options
 
@@ -360,60 +419,3 @@ To assist with troubleshooting, it can be helpful to log the transformed XML Mes
 
 `\vds_server\logs\sync_engine\sync_engine.log` on the RadiantOne node where the sync engine processor that is assigned for the pipeline is running. If RadiantOne is deployed in a cluster, a sync engine processor can be running on one or more nodes and the pipeline processing is distributed across them. Use the Global Sync tab to download the corresponding sync_engine.log file by selecting the topology and selecting **Configure** next to the pipeline. Select the **Apply** component and in the **Log Viewer** section, select **Download**. You can also view and download the sync_enginer.log from Environment Operations Center.
 
-### Approvers
-
-Any user located in the RadiantOne virtual namespace that is a member of the *Approvers* group can be an approver. In the following example, the ICS Admin user is made an approver.  
-To manage the Approvers group: 
-1.	In the Main Control Panel, go to the **Directory Browser** tab.  
-1.	Expand cn=config,ou=globalgroups. 
-1.	Select cn=approvers. 
-1.	Click the **Manage Group** button. The Manage Group window displays. 
-1.	Click the **Add Member(s)** button.  
-1.	Click the **Expand Tree** button. The RadiantOne namespace displays on the right. 
-1.	In the namespace, navigate to the location of the user that you want to approve events. In this example, the location cn=config,ou=globalusers is selected.  
-1.	Click the **Find Now** button.  
-1.	Select the entry you want to approve events and click the **Move selected entry down** button. In this example, uid=icsadmin,ou=globalusers,cn=config is selected. <br>![Find Users](../media/findusers.jpg)
-1.	Click the **Confirm** button. The member is displayed in the cn=approvers group.  
-1.	Click **Confirm** again to commit the change. 
-
-![Members of the Approvers Group](../media/approversgroup.jpg)
-
->[!warning]
->If you want the approver to receive an email alert when they have pending approvals, the user account must have a valid email address (mail attribute).
-
-
-### Approver Email Notifications
-
-To enable email alerts for approvers, SMTP must be configured. 
-1. Navigate to the RadiantOne Main Control Panel > Settings tab > Monitoring > Email Alerts Settings.
-2. Enter your SMTP settings (host, port, user, password, from email and to email) in the Email Alerts (SMTP Settings) section.
-3. Click **Save**.
-4. If you would like to test your settings, click **Send Test Email**. 
-
->[!note]
->For security and audit purposes, it is not advised to connect to your mail server anonymously (leaving user and password >properties blank in the Email Alert Settings). 
-
-![Email Alert Configuration](../media/emailalerts.jpg) 
-
-### Performing Approvals 
-When a change associated with a rule that requires approval is detected in a source, the instance is published into the approvals queue and awaits action. Approvers use the Approvals application to accept or reject events.
-
-Approvers log into the Insights, Reports and Administration Portal and click the Approvals icon.
-![Approvals](../media/approvals.jpg)
-
-The pending events assigned to the approver are displayed.
-
-![Approval Decisions](../media/decisions.jpg)
-
-The user must approve or reject the event. This can be done using the ![reject](../media/reject.jpg) to reject an event or the ![accept](../media/accept.jpg) to accept an event. <br>
-Check boxes in the column on the far left can also be used. If you check the box in the column header, options include “Select Current Page”, “Select Everything”, “Unselect Current Page”, and “Unselect Everything”. Then select an option from the Select Bulk Action drop-down menu (*Approve All* or *Reject All*).
-
->[!note] 
->To fetch additional pending modifications, click the **Refresh** button.
-
-After acting on all events, click **Submit Changes** and then **Yes** to confirm the updates. 
-
-Approved events are processed by the sync engine and applied to the target.
-
-**Approval Audit Log**
-The actions taken by approvers is logged. Logging is enabled by default and the log file is: `<RLI_HOME>/logs/approvals_audit.log`
