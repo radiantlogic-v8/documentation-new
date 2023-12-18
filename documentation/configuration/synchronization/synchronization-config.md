@@ -29,6 +29,6 @@ The high-level steps to configure synchronization are the following:
 - [Extend RadiantOne LDAP schema](synchronization-topologies.md#extend-radiantone-ldap-schema) with any missing object class definitions (associated with the objects to be synchronized).
 - [Create topologies](synchronization-topologies.md#create-topologies) – graphical representation of the synchronization flows.
 - Configure Pipelines – [capture connector](capture-connector/capture-connector-configuration.md), [transformation](transformation/transformation-configuration.md) and [apply connector](rules/overview.md).
-- [Configure Queue Time to Live](synchroniation-concepts/queue-time-to-live)
+- [Configure Queue Time to Live](synchronization-concepts.md#queue)
   
 
