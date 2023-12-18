@@ -51,10 +51,10 @@ To enable email alerts for approvers, SMTP must be configured.
 
 The RadiantOne Insights, Reports and Administration portal is designed for power users and administrators that are in charge of identity management tasks such as approving synchronization events (e.g. creation of new accounts in target systems) or auditing group memberships.
 
-To access the portal, navigate in a web browser as follows (replacing *radiantoneserver* with your actual server name) and enter your login credentials. <br> 
-http://radiantoneserver:7070/portal/login 
+To access the portal, navigate in a web browser to your Control Panel endpoint appended with /portal and enter your login credentials. <br> 
+e.g. https://cp-rli-qa.dc.federated-identity.com/portal/ 
 >[!note] 
->You can access the portal on any RadiantOne cluster node. User to DN mapping must be properly configured so that the approver can login with their user ID and not require their full DN.
+>User to DN mapping must be properly configured so that the approver can login with their user ID and not require their full DN.
 
 ![Insights, Reports and Administration Portal](../media/portal-login.jpg)
 
