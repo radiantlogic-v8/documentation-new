@@ -21,20 +21,14 @@ See the figure below for a high-level architecture of the synchronization proces
 <a name="global-synchronization-architecture-figure"></a>
 ![A flow chart depicting the high-level architecture of the synchronization process](Media/sync-arch.png)
 
+### Configuration
+The high-level steps to configure synchronization are the following:
 
-## Pipelines
-Pipelines are automatically created when topologies are configured. There are two prerequisite steps for configuring synchronization topologies: mount the objects you want to synchronize in the RadiantOne directory namespace and extend the RadiantOne LDAP schema with any new/custom object definitions. These steps are described below. After these steps are finished, you can create topologies.
-
-### Mount virtual views of objects
-
-All synchronization source and target endpoints must be represented in the RadiantOne namespace, meaning that virtual views containing all source and target objects should be mounted below a root naming context. The virtual views can be created using the Control Panel > Setup > Directory Namespace > Namespace Design.
-
->[!warning]
->Make sure primary keys/unique identifiers are defined for all objects that will play a role in synchronization. You can manage the attributes defined for objects using Control Panel > Setup > Data Catalog > Data Sources > Schema tab.
-
-### Extend RadiantOne LDAP schema 
-
-After virtual views have been mounted into the RadiantOne directory namespace, extend the LDAP schema with all needed object definitions that are not currently included. The object definitions are used in attribute mappings for synchronization. The RadiantOne LDAP schema can be extended from Control Panel > Setup > Directory Namespace > Directory Schema > Extend from ORX tab. Select the schemas associated the objects in your identity views and click **+**  to move the schema into the column on the right. Then click **GENERATE**. You can verify the objects defined in the RadiantOne LDAP schema from the Control Panel > Setup > Directory Namespace > Directory Schema > LDAP Schema tab.
+- [Data sources](data-sources.md) - connections for the servers that you want to sync data from/to.
+- [Configure virtual views](synchronization-topologies.md#mount-virtual-views-of-objects) of data sources that you want to sync data from/to.
+- [Extend RadiantOne LDAP schema](synchronization-topologies.md#extend-radiantone-ldap-schema) with any missing object class definitions (associated with the objects to be synchronized).
+- [Create topologies](synchronization-topologies.md#create-topologies) – graphical representation of the synchronization flows.
+- Configure Pipelines – [capture connector](capture-connector/capture-connector-configuration.md), [transformation](transformation/transformation-configuration.md) and [apply connector](rules/overview.md).
 
 ## Queue Time to Live
   
