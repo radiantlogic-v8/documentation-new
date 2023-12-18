@@ -31,7 +31,7 @@ Using a script for transformation allows for complex logic to be applied before 
 1. You can edit and test the script in the window provided. Basic validation is checked when using the script window.
 1. After the script compiles successfully, select **Save**. Scripts are saved at: `\vds_server\custom\src\com\rli\scripts\fidsync\{PIPELINE_NAME}` and can be viewed or downloaded from Main Control Panel > Settings > Configuration > File Manager.
 
-## Leverage existing Java classes
+### Leverage existing Java classes
 
 To leverage existing classes in your transformation scripts, perform the following:
 
@@ -40,7 +40,7 @@ To leverage existing classes in your transformation scripts, perform the followi
     - Example of importing the class in your transformation script:
     - `import com.rli.connectors.changeevent.ChangeOperation;`
 
-## Custom logging in the transformation script
+### Custom logging in the transformation script
 
 The add your own log statements into the script, use the following:
 
@@ -49,7 +49,7 @@ The add your own log statements into the script, use the following:
 >[!note]
 >The message is logged into `/vds_server/logs/sync_engine/sync_engine.log`. You can view and download the sync_engine log from Environment Operations Center.
 
-## Test the script
+### Test the script
 
 When your script has been modified, you can test it by emulating changes from the source.
 
@@ -94,7 +94,7 @@ Attribute mapping can be accomplished with any combination of the following: map
 1. Repeat steps 8-16 for each target attribute you want to define.
 1. Repeat steps 1-17 to create all mappings for the synchronization pipeline (e.g. mappings for all object types).
 
-## Destination DN
+### Destination DN
 
 The Destination DN expression is used generate the DN for the entry in the destination and is based on one or more attributes from the source event. As an example, if the destination in a sync pipeline was the `object=SUPPLIERS,o=hrdatabase` view shown in the screen below, the Destination DN syntax could look like: `SUPPLIERS=${employeeNumber},object=SUPPLIERS,o=hrdatabase` where `${employeeNumber}` indicates the employeeNumber attribute value from the source event is used to comprise the RDN (e.g. `SUPPLIERS=1234,object=SUPPLIERS,o=hrdatabase`). When processing insert and update events with attribute mappings, a lookup is performed in the destination based on the Destination DN expression, to see if the entry exists. If the entry does not exist, it is inserted. If it does exist, the entry is updated.
 
@@ -118,7 +118,7 @@ DN expressions support a mix of constant (string) characters and attribute subst
 | Function Substitution<br>The result of a function call on the attributes of a source event can be used with the function substitution notation:<br>`${functionName(attributeName1,attributeName2, …}` | Source Event:   `{ eventID: uid=jsmith,ou=Sales,o=SuperCompany, firstName: John, lastName: Smith }`<br>DN Expression: `cn=${uppercase(firstName)},ou=People,o=MyOrg`<br>Result: `cn=JOHN,ou=People,o=MyOrg` |
 | RDN Substitution<br>Insert portions (one or more RDN components) of the source event DN using the following formats are supported:<br>`${rdn[index]}`<br>`${rdn[startIndex:endIndex]}`<br>`${rdn[startIndex:]}`<br>`${rdn[:endIndex}]`<br>`${rdn_value[index]}`<br>`${rdn_value[startIndex:endIndex]}`<br>`${rdn_value[startIndex:]}`<br>`${rdn_value[:endIndex]}` | Source Event:   `{ eventID: uid=jsmith,ou=Sales,o=SuperCompany, firstName: John, lastName: Doe }`<br>DN Expression: `${rdn[1]},ou=People,o=MyOrg<br>Result: uid=jsmith,ou=People,o=MyOrg`<br><br>Source Event:   `{ eventID: uid=jsmith,ou=Sales,o=SuperCompany, firstName: John, lastName: Doe }`<br>DN Expression: `${rdn[-1]},ou=People,o=MyOrg`<br>Result: `o=SuperCompany,ou=People,o=MyOrg`<br><br>Source Event:   `{ eventID: uid=jsmith,ou=Sales,c=USA,o=SuperCompany, firstName: John, lastName: Doe }`<br>DN Expression: `${rdn[2:3]},ou=People,o=MyOrg<br>Result: ou=Sales,c=USA,ou=People,o=MyOrg`<br><br>Source Event:   `{ eventID: uid=jsmith,ou=Sales,c=USA,o=SuperCompany, firstName: John, lastName: Doe }`<br>DN Expression: `${rdn[2:]},ou=People,o=MyOrg<br>Result: ou=Sales,c=USA,o=SuperCompany,ou=People,o=MyOrg`<br><br>Source Event:   `{ eventID: uid=jsmith,ou=Sales,c=USA,o=SuperCompany, firstName: John, lastName: Doe }`<br>DN Expression: `${rdn[:2]},ou=People,o=MyOrg<br>Result: uid=jsmith,ou=Sales,ou=People,o=MyOrg`<br><br>Source Event:   `{ eventID: uid=jsmith,ou=Sales,o=SuperCompany, firstName: John, lastName: Doe }`<br>DN Expression: `displayName=${rdn_value[1]},ou=People,o=MyOr` |
 
-## Source event filter
+### Source event filter
 
 The source event filter is applied on each change event to determine if the attribute mappings are processed. If an entry passes the filter, the attribute mappings are evaluated.
 
@@ -144,7 +144,7 @@ To accept the filter, select ![OK](../../media/image48.png)
 
 You can also use the Add Condition button to add a nested condition.
 
-## Conditional filter
+### Conditional filter
 
 The conditional filter is applied on each source attribute of the change event to determine if the target attribute mapping gets applied. A conditional filter can be comprised of one or more conditions each of which is comprised of one or more expressions.
 
@@ -173,13 +173,13 @@ Based on the two attribute mappings for the employeeType destination attribute d
 
 ![Multiple Mappings for Same Target Attribute](../../media/image53.png)
 
-## Auto Map
+### Auto Map
 
 The **Auto Map** option is a quick way to auto-generate attribute mappings between the source and destination objects when they share common attribute names. The AUTO MAP option configures attribute mappings for each attribute defined in the source object and maps them to target attributes of the same name. After selecting **AUTO MAP**, delete mappings for attributes that you do not want to synchronize by selecting the **X** next to the Source Value.
 
 ![Removing an Attribute Mapping](../../media/image55.png)
 
-## Edit attribute mapping
+### Edit attribute mapping
 
 To edit an attribute mapping:
 
@@ -191,7 +191,7 @@ To edit an attribute mapping:
 1. Select the attribute mapping in the list and select **Edit**.
 1. When edits are finished, select **Save**.
 
-## Test attribute mapping
+### Test attribute mapping
 
 Test the attribute mappings by entering values for the source attributes.
 
@@ -209,7 +209,7 @@ Test the attribute mappings by entering values for the source attributes.
 1. The results of the Attribute Mappings are shown in the Output section.
 1. When you are finished testing the mappings, select **CLOSE** to go back to the "Configure Pipeline" screen.
 
-## Standard functions available 
+### Standard functions available 
 
 The default functions available for use are described in the table below.
 
@@ -249,7 +249,7 @@ The default functions available for use are described in the table below.
 
 Available Functions
 
-## User defined functions
+### User defined functions
 
 User-defined functions can be created and configured from the Add Mapping Function window.
 
@@ -273,8 +273,60 @@ User-defined functions can be created and configured from the Add Mapping Functi
 
 
 ## Rules-based
+Rules are packaged as a set and are associated with a single source entry object class. You will create a rule set for every source object class that you want to detect changes on.
 
-### Advanced options configuration
+Rules offer a default event-based template that allows for configuring conditions and actions for determining synchronization logic. This offers more customization for synchronization logic than simple attribute mappings without having to write code. If you choose to use Rules, a separate configuration for attribute mappings and scripts are not used.
+
+### Creating Rule Sets:
+
+1. On the Main Control Panel > Global Sync tab, select the topology on the left.
+1. Select **Configure** next to the pipeline on the right.
+1. Select the Transformation component and choose **Rules-based Transformation** from the **Transformation Type** drop-down list.
+1. Select the button to create a new Rule Set.
+1. In the Basic Information section, enter a unique name to identify the rule set (e.g RulesUserSync).
+1. Select the object class associated with the entries in the source that you want to detect changes on from the **Source ObjectClass** drop-down list.
+1. Select the object class associated with the entries in the target that you want changes applied to from the **Target ObjectClass** drop-down list.
+1. (Optional) enter a description.
+    ![Rule Definition](../../media/image70.png)
+1. (Optional) if you need to define variables to use in conditions, select the [RULE VARIABLES](variable-configuration.md) section and configure them.
+1. Select the [RULES](rule-configuration.md) section to configure the Rules for transformation.
+1. (Optional) to configure advanced options like Target Object RDN and DN generation, rules processing order and others, select the [ADVANCED OPTIONS](identity-linkage.md) section.
+1. Select **Save**.
+
+### Creating Rules
+Rules are packaged as a set that is associated with a single source object class and single target object class. If you want to synchronize source objects that are associated with different object classes (e.g. User and Group), then you need to configure multiple rule sets, one for each object class.
+
+Rules are configured in the RULES section of the selected RULE SET. A Rule is comprised of one or more conditions and one or more actions. When the conditions are met, the actions are executed.
+
+To automatically configure rules for insert, update and delete events, select ![Plus symbol](../../media/image77.png). One rule is configured for each event and each rule has one condition based on the corresponding event type. You can edit an auto configured rule by selecting it and selecting the **Edit** button.
+
+1. Edit the Rule Set and select the **Rules** section.
+1. Select ![Plus symbol](../../media/image78.png)
+1. Enter a Rule name.
+1. (Optional) Enter a Description.
+1. Configure the [identity linkage](identity-linkage.md) in the Identity Linkage property.
+1. If source events associated with this rule should be manually approved before being synchronized to the target, check to enable *Require Approvals*, click ![Approval Config](../../media/editapprovals.jpg) and [Configure Approvers](#configuring-approvers).
+1. If you have selected the option to manually define the target DN in [Advanced options](../advanced-options.md#target-dn-generation), select the variable that contains the target DN. If you have the target DN generation set to Automatic in Advanced Option, you do not see the Target DN Variable in the Basic Information section.
+1. Select the **Event Type** that should invoke the rule from the **Target Event Type** drop-down list.
+1. Select the [CONDITIONS](conditions.md) section to define the conditions.
+1. Select the [ACTIONS](actions.md) section to define the actions.
+1. Select **OK**.
+1. Repeat steps 1-10 to create rules for other source event types.
+1. Select **Save**.
+1. Create another [rule set](overview.md) for every source object class you want to detect changes on.
+
+### Configuring Approvers
+The Require Approvals option is located on the **BASIC INFORMATION** tab.
+1. Enable the Require Approvals checkbox.
+2. Click ![Edit Approvals](../../media/editapprovals.jpg).
+3. Click ![Plus symbol](../../media/image78.png).
+4. Select one or more members of the [Approvers group](../../concepts-and-definitions/approvals/#approvers) and click ADD. If you select more than one approver, all must approve the action before it expires.
+5. Enter a length of time to indicate how long a message should be queued awaiting action (approval or rejection) before it is deleted from the queue. This can be in either minutes or days.
+6. Enter a meaningful description and select a source attribute to display in the [*Approvals* experience](../../concepts-and-definitions/approvals/#performing-approvals) to help provide context for the approver about the synchronization event. 
+
+![Approval Config](../../media/editapprovalsux.jpg).
+
+### Configuring Advanced Options
 
 Advanced options are configured on the ADVANCED OPTIONS section.
 
