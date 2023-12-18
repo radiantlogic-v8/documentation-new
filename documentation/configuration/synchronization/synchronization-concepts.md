@@ -8,6 +8,7 @@ The following concepts are important to understand for configuring and managing 
 - [Data Source](#data-source)
 - [Capture Connector](#capture-connector)
 - [Queue](#queue)
+- [Apply Connector](#apply-connector)
 - [Sync Engine](#sync-engine)
 - [Transformation](#transformation)
 - [Topology](#topology)
