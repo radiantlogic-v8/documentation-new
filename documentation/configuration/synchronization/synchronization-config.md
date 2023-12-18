@@ -7,7 +7,7 @@ description: Learn how to configure synchronization.
 
 RadiantOne Synchronization is an advanced set of tools for synchronization and identity management. This component allows you to synchronize objects distributed across disparate data sources (directories, databases or applications): a change in an object in one source, at the attribute level, or for the whole object can be reflected into many other connected objects. Using a publisher/subscriber approach, any object can publish events (creation, deletion or modification for the whole object, or any attributes of this object) and propagate them to subscriber objects. User-defined attribute mappings and transformations can be applied during synchronization.
 
-### Architecture
+## Architecture
 
 The synchronization architecture is comprised of Agents, Queues, Sync Engine, Attribute mappings and transformation scripts.
 
@@ -21,7 +21,7 @@ See the figure below for a high-level architecture of the synchronization proces
 <a name="global-synchronization-architecture-figure"></a>
 ![A flow chart depicting the high-level architecture of the synchronization process](Media/sync-arch.png)
 
-### Configuration
+## Configuration
 The high-level steps to configure synchronization are the following:
 
 - [Data sources](data-sources.md) - connections for the servers that you want to sync data from/to.
@@ -29,7 +29,6 @@ The high-level steps to configure synchronization are the following:
 - [Extend RadiantOne LDAP schema](synchronization-topologies.md#extend-radiantone-ldap-schema) with any missing object class definitions (associated with the objects to be synchronized).
 - [Create topologies](synchronization-topologies.md#create-topologies) – graphical representation of the synchronization flows.
 - Configure Pipelines – [capture connector](capture-connector/capture-connector-configuration.md), [transformation](transformation/transformation-configuration.md) and [apply connector](rules/overview.md).
-
-## Queue Time to Live
+- [Configure Queue Time to Live](synchroniation-concepts/queue-time-to-live)
   
 
