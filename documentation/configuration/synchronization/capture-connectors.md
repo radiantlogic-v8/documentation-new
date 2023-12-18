@@ -1,3 +1,8 @@
+---
+title: Configure Capture Connectors
+description: Learn how to configure capture connectors for detecting events in identity sources.
+---
+
 ## Capture Connectors Overview
 
 The capture connector configuration dictates the process for detecting changes on the source objects. The type of data source determines which capture methods are available.
