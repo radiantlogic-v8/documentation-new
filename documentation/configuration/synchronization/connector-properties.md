@@ -28,6 +28,35 @@ A high-level architecture is shown below.
 
 ![A flow chart of high level architecture](media/image1.png)
 
+### Reset connector cursor – detect new changes only
+
+Capture connectors use a cursor to maintain information about the last processed change. This allows the connectors to capture only changes that have happened since the last time they processed changes. When the capture connectors start, they automatically attempt to capture all changes that have happened since the last time they checked. If the synchronization process has been stopped for an extended period, you might not want them to capture all missed changes. In this case, you can reset the cursor for the connector. You can reset the cursor from command line or from the Classic Control Panel > Synhronization tab. Each option is described below.
+
+**Synhronization tab**
+
+On the Classic Control Panel > Synchronization tab, choose the topology on the left. Select **Configure** next to the pipeline on the right. Choose the **Capture** component and select **Reset Cursor** shown below the properties. An example is shown below.
+
+![The Reset Cursor option in the Global Sync tab of the Main Control Panel](media/image2.png)
+
+**Manually update connector cursor**
+
+Each connector stores a cursor to maintain information about the last processed change. In some cases, you may need to edit the cursor value to force the connector to pick up some missed changes (during a disaster recovery scenario where you will start synchronization in another data center), or skip some changes in cases like where [non-sequential change IDs](database-timestamp-connector.md#force-sequential-counters) were detected. Connector configuration is stored in a RadiantOne Directory store mounted at the `cn=registry` naming context.
+
+>[!note]
+>Editing the cursor is supported for connectors that store a number or timestamp value. The AD DirSync and Hybrid connectors use a cookie for a cursor value that you would not know how to set.
+
+1. Stop the capture connector by suspending the pipeline. You can do this from the Main Control Panel > Global Sync tab, or using the vdsconfig command line utility, `change-pipeline-state` command.
+1. Connect to RadiantOne with an administrator that has permissions to modify entries in `cn=registry` and browse to the configuration for your capture connector: `cn=cursor,{PIPELINE_ID},cn=registry`
+1. Edit the cursor attribute and enter the value to indicate the point from which the connector should capture changes from. An example for a database changelog connector is shown below.
+    ![Example of Database Changelog Connector Cursor Settings](media/image3.png)
+2. Resume the pipeline which redeploys/starts the connector. You can do this from the Main Control Panel > Global Sync tab.
+
+### Message size
+
+Each message published by the connector contains one changed entry. Multiple changed entries are not packaged into a single message. The [requested attributes](configure-connector-types-and-properties.md#request-all-attributes) configured for the connector dictate the contents of the message and as a result, the message size.
+
+To learn more about connectors, please read the document that describes the the high-level process of [configuring connector types and properties](configure-connector-types-and-properties.md) that are used by all connectors.
+
 ## Database Changelog 
 When a database object is configured as a publisher, triggers are installed on the object and document all changes to a log table. This object name has the syntax `{TABLE_NAME}_LOG`. In the log table, two predefined column names are required: `RLICHANGEID` and `RLICHANGETYPE`. `RLICHANGEID` uniquely identifies one row in the change log table, and `RLICHANGETYPE` identifies the operation (insert, update, delete, abort). The database connector queries the log table to check for changes based on the polling interval.
 
