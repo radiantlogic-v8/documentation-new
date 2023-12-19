@@ -11,7 +11,7 @@ ODSEE, IBM Tivoli Directory, and RadiantOne v6 ACI into ACI compatible with Radi
 ACI in OpenDJ, SunOne/Oracle ODSEE and RadiantOne v6 formats are migrated using the
 migration tool, aciUtils.bat (.sh on Unix systems). IBM Tivoli Directory ACIs are migrated using
 the migration tool ibmAciMigration.bat (.sh on Unix systems). Both tools are located at
-<RLI_HOME>\bin\advanced
+<RLI_HOME>\bin\advanced.
 
 ## How the Manual is Organized
 
