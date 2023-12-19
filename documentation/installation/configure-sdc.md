@@ -13,92 +13,64 @@ How to add/edit/delete SDC groups.
 
 ## Managing Secure Data Connectors
 
-Environment Operations Center allows you to control your RadiantOne implementation in a cloud environment. It provides all of the required tools to create, manage, and monitor your RadiantOne environments.
+Secure data connectors can be managed from the *Secure Data Connectors* screen. From here, you can edit, enable or disable, and delete connectors. This guide outlines the steps to manage data connectors.
 
-This guide provides an overview of the Environment Operations Center home screen and how to navigate the application user interface.
+## Getting started
 
-After logging in to the Environment Operations Center, the *Overview* page displays. This is the Environment Operations Center home screen. It provides access to Radiant Logic supporting documentation. This screen also provides a high-level overview of your environments.
+All of the operations to manage secure data connectors are available in the **Options** (**...**) dropdown for each connector. To begin managing a connector, select the **Options** (**...**) menu of the specific connector you wish to modify.
 
-A navigation bar is located to the left and is visible from all screens within Environment Operation Center. You can access your account settings by selecting the avatar in the upper right corner, also visible from all screens in the application.
+![image description](images/options.png)
 
-### Documentation
+## Edit a data connector
 
-The Radiant Logic documentation suite contains guides and resources to help your work in RadiantOne and Environment Operations Center.
+The name and description of a data connector can be updated. To edit connector details, select **Edit** from the associated **Options** (**...**) dropdown.
 
-To access supporting documentation from within Environment Operations Center, select **Access Documentation**.
+![image description](images/select-edit.png)
 
-![image description](images/documentation-link.png)
+This enables the **Data Connector** row editable. In the provided name and description fields, update the connector details as needed. Select :white_check_mark: to update the connector details.
 
-### Environments preview
+The connectors list will display updated  details for the updated *Secure Data Connector*.
 
-The *Environments* section on the *Overview* screen allows you to quickly preview your available environments and sort the previews by status.
+![image description](images/update-info.png)
 
-Each preview contains the Operational, Warning, Critical and Offline statuses of the applications.
+## Enable or disable a connector
 
-![image description](images/env-card.png)
+To disable a data connector, select **Pause** from the **Options** (**...**) dropdown.
 
-The application/environments data displayed differ depending on your assigned role in Environment Operations Center. The Tenant Administrator environment preview displays all of your organization's environments. Environment Administrators and Environment Users will only be able to preview the environments assigned to them.
+![image description](images/disable.png)
 
-For further details on role-based permissions, see the [role-based permissions](admin/role-based-permission/role-based-permissions.md) guide.
+The connector status will update to "Paused" and all associated connections will be disabled.
 
-## Left navigation
+![image description](images/paused.png)
 
-The left navigation contains links to various screens, providing access Environment Operation Center features.
+To reactivate a data connector, select **Start** from the **Options** (**...**) dropdown.
 
-![image description](images/left-nav.png)
+![image description](images/enable.png)
 
-### Overview
+The connector status will update to "Active" and all associated connections will be enabled.
 
-To navigate to the *Overview* screen, select either **Overview** or the Radiant Logic logo.
+![image description](images/active.png)
 
-![image description](images/overview.png)
+## Restart a data connector
 
-### Environments
+To restart a data connector, select **Restart** from the **Options** (**...**) dropdown.
 
-The main *Environments* screen provides an overview of all the environments you have access to. Select **Environments** to navigate to the *Environments* overview.
+The connector will completely stop and get started. This action is similar to starting a data connector for the first time, which does pulling all latest configurations, stops, and starts all the required processes.
 
-To learn more about the *Environments* section, see the [environments overview](environments/environment-overview/environments.md) guide.
+![image description](images/restart.png)
 
-![image description](images/environments.png)
+## Delete a data connector
 
-### Reporting
+To delete a data connector, select **Delete** from the **Options** (**...**) dropdown.
 
-The *Reporting* section allows you to run and review various reports for your environments. Select **Reporting** to navigate to the *Reporting* screen.
+[!warning] Deleting a data connector is a permanent action and cannot be undone.
 
-To learn how to create reports, see the [reporting](reporting/reporting-overview.md) guide.
+![image description](images/delete.png)
 
-![image description](images/reporting.png)
+A confirmation dialog will appear asking you to confirm that you would like to delete the selected data connector. Select **Delete** to proceed and delete the connector.
 
-### Monitoring
+If you would like to keep the connector, select **Cancel** to exit out of the workflow to delete the connector.
 
-The *Monitoring* section provides interactive dashboards where you can review the operating status of various server components for each environment. Select **Monitoring** to navigate to the *Monitoring* section of Environment Operations Center.
+![image description](images/confirm-delete.png)
 
-For details on monitoring server components, see the [monitoring](monitoring/monitoring-overview.md) guide.
-
-![image description](images/monitoring.png)
-
-### Secure data connectors
-
-You can manage connections to on-premise data connectors in the *Secure Data Connectors* section. Select **Secure Data Connectors** to navigate to the *Secure Data Connectors* screen.
-
-For details on managing data connections, see the [secure data connectors](secure-data-connectors/data-connectors-overview.md) guide.
-
-![image description](images/secure-data-connectors.png)
-
-### Admin
-
-From the *Admin* section you can perform various administrative actions in Environment Operations Center. Select **Admin** to navigate to the *Admin* home screen. For further details on operations available in the *Admin* section, see the [admin overview](admin/admin-overview.md) guide.
-
-![image description](images/admin.png)
-
-## Account settings
-
-A user avatar is always located in the upper right corner of the Environment Operations Center user interface. Select the avatar to expand your account dropdown menu.
-
-![image description](images/profile-icon.png)
-
-The drop-down displays your name, email, and permissions associated with the account. From the dropdown menu you can navigate to your **Account Settings**, access the **Help** center, or **Logout** of Environment Operations Center.
-
-For information on managing your account settings, see the [account settings](admin/account-settings/update-account.md) guide.
-
-![image description](images/account-menu.png)
+If the connector is successfully deleted, you will receive a confirmation message on the *Secure Data Connectors* home screen and the connector will no longer be available in the lits of connectors.
