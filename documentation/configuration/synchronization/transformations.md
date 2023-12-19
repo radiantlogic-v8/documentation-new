@@ -505,7 +505,7 @@ To assist with troubleshooting, it can be helpful to log the transformed XML Mes
 
 `\vds_server\logs\sync_engine\sync_engine.log` on the RadiantOne node where the sync engine processor that is assigned for the pipeline is running. If RadiantOne is deployed in a cluster, a sync engine processor can be running on one or more nodes and the pipeline processing is distributed across them. Use the Global Sync tab to download the corresponding sync_engine.log file by selecting the topology and selecting **Configure** next to the pipeline. Select the **Apply** component and in the **Log Viewer** section, select **Download**. You can also view and download the sync_enginer.log from Environment Operations Center.
 
-## Testing rules
+### Testing rules
 
 You can test your rules by emulating changes from the source.
 
