@@ -3,6 +3,31 @@ title: Connector Properties
 description: Learn about capture connector properties. 
 ---
 
+## Overview
+RadiantOne includes capture connectors for databases and directories. A connector is an adapter for one catalog/object per data source that can be configured to listen for changes. Some examples are:
+
+- A SQL Server connector for database/catalog PUBS
+- An Oracle connector for database owner SCOTT
+- An LDAP connector for the inetOrgPerson object class in the schema
+
+For databases, there are three capture connector types: Counter, Changelog (Triggers-based), or Timestamp.
+
+For LDAP directories, there are two connector type options: LDAP (changelog), or Persistent Search.
+
+For Active Directory, there are three connector type options: AD USNChanged, AD DirSync, and AD Hybrid. 
+
+Capture connectors are used for synchronization and have three main functions.
+
+1. Query data sources and collect changed entries.
+2. Filter unneeded events.
+3. Publish changed entries with the required information (requested attributes).
+
+Capture connectors publish change messages to queues. A sync engine receives notification when messages are in a queue, applies transformation to the message (based on attribute mappings and or scripting) and sends the transformed message to the destination.
+
+A high-level architecture is shown below.
+
+![A flow chart of high level architecture](media/image1.png)
+
 ## Database Changelog 
 When a database object is configured as a publisher, triggers are installed on the object and document all changes to a log table. This object name has the syntax `{TABLE_NAME}_LOG`. In the log table, two predefined column names are required: `RLICHANGEID` and `RLICHANGETYPE`. `RLICHANGEID` uniquely identifies one row in the change log table, and `RLICHANGETYPE` identifies the operation (insert, update, delete, abort). The database connector queries the log table to check for changes based on the polling interval.
 
