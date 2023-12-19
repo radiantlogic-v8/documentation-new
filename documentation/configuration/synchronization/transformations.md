@@ -470,6 +470,16 @@ Approved events are processed by the sync engine and applied to the target.
 **Approval Audit Log**
 The actions taken by approvers is logged. Logging is enabled by default and the log file is: `<RLI_HOME>/logs/approvals_audit.log`
 
+### Configuring Identity linkage
+
+Identity linkage is used to match the target identity to the source identity. The attribute that is used in the identity linkage must uniquely identify the account in both the source and target. To configure the identity linkage:
+
+1. For a selected rule, choose the **BASIC INFORMATION** tab.
+1. Select the **Edit** button next to Identity Linkage.
+1. The target attribute used for the identity linkage is configured in the Target Object RDN property of the [Advanced options](../advanced-options.md#target-object-rdn) for the Rule Set. You cannot change the target attribute on the identity linkage configuration page.
+1. In the **Type** drop-down list, choose **Constant**, **Source Attribute**, or **Function** to indicate how you want the target attribute populated. The **Constant** option allows you to enter a static value. The **Source Attribute** option lets you select a source attribute to base the target attribute value on. The [Function](../transformation/attribute-mappings.md#standard-functions-available) option lets you compute the target attribute value based on a function.
+1. Select **OK**.
+
 
 ### Configuring Advanced Options
 
@@ -504,6 +514,106 @@ To assist with troubleshooting, it can be helpful to log the local variables. Ch
 To assist with troubleshooting, it can be helpful to log the transformed XML Message. Check the Log transformed XML messages option to have the message logged in:
 
 `\vds_server\logs\sync_engine\sync_engine.log` on the RadiantOne node where the sync engine processor that is assigned for the pipeline is running. If RadiantOne is deployed in a cluster, a sync engine processor can be running on one or more nodes and the pipeline processing is distributed across them. Use the Global Sync tab to download the corresponding sync_engine.log file by selecting the topology and selecting **Configure** next to the pipeline. Select the **Apply** component and in the **Log Viewer** section, select **Download**. You can also view and download the sync_enginer.log from Environment Operations Center.
+
+### Configuring Conditions
+
+Conditions dictate the circumstances that invoke the actions associated with the rule. When conditions are met, the actions are processed.
+
+To create conditions:
+
+1. Edit the rule and select the **CONDITIONS** section.
+1. Select **Start Condition**.
+1. If you only need a single condition, select **Condition Node** and choose the condition type: [Source Attribute condition](#configure-source-attribute-condition), [Source Event condition](#configure-source-event-condition), [Attribute Event condition](#configure-attribute-event-condition), or [Rule Variable condition](#configure-rule-variable-condition-based-on-an-existing-rule-variable). If you need multiple conditions, select either `AND` Condition or `OR` Condition and then select ![Plus symbol](../../media/image80.png) to add a condition node or another (nested) `AND` Condition or (nested) `OR` Condition. Once you add a new condition node, you configure the expression.
+1. Select **OK**.
+
+**Configure Source Attribute condition**
+
+The Source Attribute condition type allows you to define a condition based on the value of a source attribute.
+
+1. In the New Condition window, select **Source Attribute Condition** from the **Condition Type** drop-down list.
+1. Select the source attribute from the **Source Attribute** drop-down list.
+1. Select operator (e.g. `equals`, `not equals`, `greater than`, etc.) to use from the **Operator** drop-down list.
+1. Depending on the operator chosen, you may have a Compare with: Constant Value setting where you can enter the value to compare with the source attribute.
+1. Depending on the operator chosen, you may have a Comparison Type property where you can choose how to handle the case of the attributes in the value (e.g. ignore case, numeric, regex, etc.).
+1. Select **OK**.
+1. After all conditions are added, select the **ACTIONS** section in the Rule Builder.
+
+**Configure Source Event condition**
+
+The Source Event condition type allows you to define a condition based on the when a specific type of event has occurred on the source entry.
+
+1. In the New Condition window, select **Source Event Condition** from the **Condition Type** drop-down list
+1. Select either **equals** or **not equals** to compare the event from the **Assert Equality** drop-down list.
+1. Select the type of event from the **Event Type** drop-down list (e.g. **Inserted Entry**, **Updated Entry**, etc.).
+1. Select **OK**.
+1. After all conditions are added, select the **ACTIONS** section in the Rule Builder.
+
+**Configure Attribute Event condition**
+
+The Attribute Event condition type allows you to configure a condition for when a specific type of event has occurred on the source attribute.
+
+1. In the **New Condition** window, select **Attribute Event Condition** from the **Condition Type** drop-down list
+1. Select the type of event from the **Change Event** drop-down list (e.g. **Value was added**, **Value was deleted**, etc.).
+1. Select the attribute that the change event is to be checked for.
+1. Select **OK**.
+1. After all conditions are added, select the **ACTIONS** section in the Rule Builder.
+
+**Configure Rule Variable condition based on an existing rule variable**
+
+The Rule Variable condition type allows you to populate the rule variable when an existing rule variable contains a specific value based on a comparison operation and criteria.
+
+1. In the New Condition window, select **Rule Variable Condition** from the **Condition Type** drop-down list.
+1. Select the existing variable from the **Rule Variable** drop-down list.
+1. Select the operator to compare the existing variable value from the Operator drop-down list (e.g. **equals**, **not equals**, **starts with**, etc.).
+1. Enter the value to use for comparison in the Compare With: Constant Value property.
+1. Choose the Comparison Type (e.g. ignore case).
+1. Select **OK**.
+
+### Configuring Actions
+
+Actions are processed when conditions are met. There are three types of actions that can be used: **Abort**, **Apply Target Attribute Mapping**, and **Custom Code/Function**. Select one of these options from the **Action Type** drop-down list, configure any required settings and select **Insert**.
+
+**Abort transformation**
+
+If the Abort Action is chosen, the transformation is aborted and no action is taken on the target.
+
+**Configure target attribute mappings**
+
+If **Target Attribute Mappings Action** is chosen, you can use an existing mapping file, or create a new set of mappings. When you select **Target Attribute Mappings Action**, the window where you configure the mappings shows at the bottom of the RULES section after you select **OK**.
+
+Attribute mapping can be accomplished with any combination of the following: default mapping method, mapping to a variable (source attribute or local variable), using a custom condition, setting an alternate (default) value, or defining advanced mapping leveraging IF,THEN,ELSE conditions.
+
+To map attributes:
+
+1. Use the ![Less than and greater than symbols](../../media/image81.png) on the bottom right of the attribute table to page through and find the attribute you want to map.
+1. In the **Operation Type** drop-down list, select the operation to perform on the target attribute (e.g. **Replace Value(s)**, **Add Value(s)**, etc.).
+1. Select ![Plus symbol](../../media/image82.png) next to the input value and select how to populate the target attribute value. You can use a **Constant**, **Attribute** (source attribute or variable), or a **Function**. If you choose **Constant**, enter the value to set. If you choose **Attribute**, select the source attribute or variable from the drop-down list. If you choose **Function**, select the [function](../transformation/attribute-mappings.md#standard-functions-available) and follow the guidance to define the value.
+1. (Optional) you can define an [Input Condition](#configure-input-conditions-for-target-attributes) by selecting ![Pencil symbol](../../media/image83.png). Select **Insert** after defining the input condition.
+
+>[!note]
+>If you use an input condition that uses an alternative value, select ![Plus symbol](../../media/image84.png) in the Alternate Values section and choose how to populate the value (e.g. **Constant**, **Attribute** or **Function**).
+
+5. Repeat steps 1-4 in this section to map all needed attributes.
+6. Select **Insert** to close the Rule Builder.
+7. Select **Save**.
+
+**Configure input conditions for target attributes**
+
+The default is "None" meaning that no special checking of the input value(s) is performed prior to setting it for the target attribute. Depending on the type of target system you are synchronizing to, you may need to treat null or empty values differently. You may also want to set a default value if the input value(s) is null or empty. The options are described in the following table.
+
+| Value(s) Checking Option | Description |
+|---|---|
+| None | Default mode. No special checking of the input value(s) is performed prior to setting it for the target attribute. |
+| Set value(s) only if not null, else use alternate value(s) | If the input value(s) is null, set the target attribute to the Alternate Value (if defined). If no Alternate Value is defined, nothing is set.<br>If the input value(s) is not null, set the target attribute to the value from the input value(s). |
+| Set value(s) only if not empty, else use alternate value(s) | If the input value(s) is empty, set the target attribute to the Alternate Value (if defined). If no Alternate value is defined, nothing is set.<br>If the input value(s) is not empty, set the target attribute to the value from the input value(s). |
+| Delete attribute if value(s) are empty or null | If the input value(s) is empty or null, delete the attribute in the target. This sets a NULL value (for a database target) or an empty value (for a directory target). |
+| Delete attribute if value(s) are empty. | If the input value(s) is empty, delete the attribute in the target. This option allows you to differentiate between empty and null. |
+| Set value(s) if custom condition matches, else use alternate value(s) | If the input value(s) matches a custom condition, set the target attribute to the input value(s).<br>If the input value(s) does not match the custom condition, set the target attribute to the Alternate Value(s). If no Alternate Value is defined, nothing is set.<br>To define the custom conditions, select **START CONDITION** and select **Condition Node** if you only need one condition, or `AND` Condition or `OR` Condition if you need multiple conditions which can be nested. The condition types that can be used are described in the [Variable configuration](variable-configuration.md).<br>![Edit Conditional Values example](../../media/image85.png) |
+
+**Configure custom code/function**
+
+If the **Custom Function Action** is chosen, you can create a new function for your transformation script, or call an existing custom function. If you have existing custom functions, the names appear in the drop-down list for you to choose from. After you select **OK**, select **OK** again and then select **Save**. Then select ![Less than and greater than symbols](../../media/image86.png) on the **Rule Set** page to edit the transformation script. Locate your custom function to edit the code in the web editor. You can use an [IDE like Eclipse](../script.md#use-a-java-ide-to-customize-scripts) instead of the web editor if you prefer.
+
 
 ### Testing rules
 
