@@ -3,7 +3,7 @@ title: Creating Environments
 description: Learn how to create environments.
 ---
 
-## Overview
+# Overview
 
 This guide provides an overview of the steps required to create a new environment in Environment Operations Center.
 
@@ -44,13 +44,11 @@ To set the **Environment Type**, use the radio buttons to select either **Non-pr
 
 ![image description](images/create-env-type.png)
 
-
 #### Environment Tier
 
 To set the **Environment Tier**, select the tier that suits your organization's Env Ops Center subscription.
 
 ![image description](images/env-tier.png)
-
 
 #### Environment name
 
@@ -107,7 +105,6 @@ An optional advanced setup is available if you would like to upload a configurat
 ![image description](images/advanced-setup.png)
 
 The **Install Samples** option imports sample data. See the [quick start](../../../quick-start-guide/02-understanding-default-configuration-and-samples.md) guide for further details about sample data.
-
 
 #### Custom Configuration
 
