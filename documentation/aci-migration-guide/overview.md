@@ -1,6 +1,6 @@
 ---
 title: ACI Migration Guide
-description: ACI Migration Guide
+description: ACI Migration Guide.
 ---
 
 # Overview
