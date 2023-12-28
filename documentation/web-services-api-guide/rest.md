@@ -186,7 +186,15 @@ To configure support for mutual authentication to ADAP, follow the steps below.
 
 ## OpenID Connect Token Authentication
 
-The RadiantOne REST (ADAP) interface supports token authentication. An OIDC token is recommended and described later on in this section. However, RadiantOne also includes a proprietary token mechanism that can be used if you don't have an OIDC provider. To generate a proprietary token, pass the userDN and password in the Authorization header in a GET request to the following endpoint: `https://r1server:8090/adap?bind=token`
+The RadiantOne REST (ADAP) interface supports OpenID Connect token-based authentication. This option provides the security of sending user login credentials to the authentication server, not the application (ADAP). OpenID Connect token authentication allows you to send your username and password just once and then pass the token in the request to ADAP. However, the user cannot use the token authentication to request a new token. Multiple requests can be performed during a [token’s lifetime](#token-lifetime).
+ 
+A high-level diagram of the different components is shown below. Postman is used as a simple client to illustrate the flow.
+
+![An image showing ](Media/openid-connect-token-authentication.jpg)
+
+Figure 9: OpenID Connect Token Authentication
+
+An OIDC token is recommended and described later on in this section. However, RadiantOne also includes a proprietary token mechanism that can be used if you don't have an OIDC provider. To generate a proprietary token, pass the userDN and password in the Authorization header in a GET request to the following endpoint: `https://r1server:8090/adap?bind=token`
 
 Field | Value
 -|-
@@ -218,14 +226,6 @@ Header Value | Token `<token>`
 Example Header Value | Token b85935a32dae4303ab17d985ad88cc34
 
 Table 3: OpenID Connect token authentication
-
-The RadiantOne REST (ADAP) interface supports OpenID Connect token-based authentication. This option provides the security of sending user login credentials to the authentication server, not the application (ADAP). OpenID Connect token authentication allows you to send your username and password just once and then pass the token in the request to ADAP. However, the user cannot use the token authentication to request a new token. Multiple requests can be performed during a [token’s lifetime](#token-lifetime).
- 
-A high-level diagram of the different components is shown below. Postman is used as a simple client to illustrate the flow.
-
-![An image showing ](Media/openid-connect-token-authentication.jpg)
-
-Figure 9: OpenID Connect Token Authentication
 
 ### Authorization Server Configuration
 
