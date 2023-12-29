@@ -289,21 +289,12 @@ Openid	| sub, auth_time, acr
 
 Figure 7: Configuring an ADAP External Token Validator
 
-1.  Click Edit next to Claims to FID User Mapping. The OIDC to FID User Mappings page displays. Map a uniquely identifying attribute to a corresponding claim value in the token (refer to the [Getting An Access Token](#getting-an-access-token) section for more information). In the following image, the attribute **mail** is mapped to the claim value **email**.
+1.  Click Edit next to Claims to FID User Mapping. The OIDC to FID User Mappings page displays.
+1.  Click Add. Use either a Simple DN Expression or a Search Expression to map a uniquely identifying attribute to a corresponding claim value in the token (refer to the [Getting An Access Token](#getting-an-access-token) section for more information). In the following image, a Search Expression is used to map the attribute **mail** to the claim value **email**.
 
 >[!note] In some cases, creating a new attribute may be required.
 
 ![search expression builder](Media/searchexpressionbuilder.jpg)
-
-Figure 9: The Search Expression Builder
-
-1.  Click Add. 
-
-1.  Define either a search expression or a simple DN Expression. In this example, a search expression is defined as shown below. 
-
-![Editing OIDC to FID User Mapping](Media/editingmapping.jpg)
-
-Figure 8: Editing OIDC to FID User Mapping
 
 1.  Click OK.
    
