@@ -323,10 +323,6 @@ Header Name	| Authorization
 Header Value	| Bearer `<token>`
 Example URL	| http://localhost:8089/adap/o=companydirectory
 
-![Sending the bearer token to RadiantOne](Media/sending-bearer-token.png)
-
-Figure 11: Sending the bearer token to RadiantOne
-
 If successful, the operation displays results similar to the following. 
 
 ![Successful REST Operation using OpenID Connect Token](Media/Image5.16.jpg)
