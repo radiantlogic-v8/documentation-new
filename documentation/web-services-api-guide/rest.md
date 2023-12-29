@@ -228,12 +228,10 @@ Figure 4: Configuring an access token in Postman
 
 Figure 5: The Token Details section in Postman
  
-5. Copy this token and decode it for the values needed by the FID server. You can do this at https://jwt.io/.
-
-6. Keep the decoded token. Several values contained within are required for mapping attributes. 
+5. Copy this token and decode it for the values needed for configuring a mapping between the token contents and a unique identity in the RadiantOne namespace. You can do this at https://jwt.io/. 
 
 ### RadiantOne Configuration
-This section describes configuring proxy authorization, configuring an ADAP external token validator, and attribute mapping.
+This section describes configuring proxy authorization, configuring an ADAP external token validator, and Claims to FID User Mapping.
 
 **Configuring Proxy Authorization**
 
