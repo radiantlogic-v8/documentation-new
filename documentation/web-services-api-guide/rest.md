@@ -247,7 +247,7 @@ To configure proxy authorization:
 
 1. Enable the “Allow Directory Manager to impersonate other users” option and click Save.
 
-**Configuring ADAP External Token Validator**
+**Configuring External Token Validators**
 
 To add an external token validator:
 
