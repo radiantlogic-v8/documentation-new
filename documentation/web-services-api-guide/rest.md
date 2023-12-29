@@ -186,7 +186,7 @@ To configure support for mutual authentication to ADAP, follow the steps below.
 
 ## OpenID Connect Token Authentication
 
-The RadiantOne REST (ADAP) interface supports OpenID Connect token-based authentication. This option provides the security of sending user login credentials to the authentication server, not the application (ADAP). OpenID Connect token authentication allows you to send your username and password just once and then pass the token in the request to ADAP. However, the user cannot use the token authentication to request a new token. Multiple requests can be performed during a [token’s lifetime](#token-lifetime).
+The RadiantOne REST (ADAP) interface supports OpenID Connect token-based authentication. This option provides the security of sending user login credentials to the authentication server, not the application (ADAP). OpenID Connect token authentication allows you to send your username and password just once and then pass the token in the request to ADAP. However, the user cannot use the token authentication to request a new token. Multiple requests can be performed during a token’s lifetime.
  
 A high-level diagram of the different components is shown below. Postman is used as a simple client to illustrate the flow.
 
