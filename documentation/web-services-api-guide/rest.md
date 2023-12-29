@@ -269,7 +269,7 @@ Figure 6: The New ADAP External Token Validator Page
 
 1.  Click Discover. The JSON Web Key Set URI auto-populates. 
 
-1.  Use the Expected Audience from your OIDC client to populate the Expected Audience field.
+1.  Use the Expected Audience from your OIDC provider configuration to populate the Expected Audience field.
 
 1.  Enter the expected Scope.This property determines what information/claims ("sub" indicates Subject) in the token (based on scopes requested) can be used to identify the relevant account in the RadiantOne namespace for enforcing authorization on subsequent requests for this connection. The value of this attribute is used as input for the *Claims to FID User Mapping* configured later in the steps below. The standard claims associated with the scopes are shown in the table below.
 
