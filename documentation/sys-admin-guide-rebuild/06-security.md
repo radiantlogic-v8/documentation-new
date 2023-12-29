@@ -528,7 +528,7 @@ This feature works with the LDIFZ Encryption option as outlined in the table bel
 
 ## External Token Validators
 
-External token validators allow applications to use an access token to call an API on behalf of itself. The API then responds with the requested data. For details on configuring external token validators, see [OIDC Token Authentication](web-services-api-guide/rest/#openid-connect-token-authentication)
+External token validators allow applications to use an access token to call an API on behalf of itself. The API then responds with the requested data. For details on configuring external token validators, see [OIDC Token Authentication](/documentation/web-services-api-guide/rest).
 
 ## DoS Filter
 
