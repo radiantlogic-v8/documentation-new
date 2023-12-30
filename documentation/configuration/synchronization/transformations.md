@@ -15,7 +15,7 @@ To configure the transformation:
 1. On the right, select **Configure** on the pipeline.
 1. Select the Transformation component and choose the Transformation Type; Mappings, Script, or Script and Mappings. Depending on the type selected, new sections are displayed.
 
-![Unconfigured Transformation Component](../../media/image39.png)
+![Unconfigured Transformation Component](/Media/image39.png)
 
 
 ## Script
