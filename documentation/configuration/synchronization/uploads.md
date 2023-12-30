@@ -15,4 +15,4 @@ If the target/destination needs populated with entries before starting synchroni
 1. Select the **Apply** component.
 1. Select **START** next to **Upload**. Once the upload is finished, the synchronization components are automatically started.
 
-![Start an Upload](./media/image89.png)
+![Start an Upload](./Media/image89.png)
