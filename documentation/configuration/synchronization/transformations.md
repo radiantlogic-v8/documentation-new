@@ -15,7 +15,7 @@ To configure the transformation:
 1. On the right, select **Configure** on the pipeline.
 1. Select the Transformation component and choose the Transformation Type; Mappings, Script, or Script and Mappings. Depending on the type selected, new sections are displayed.
 
-![Unconfigured Transformation Component](/Media/image39.png)
+![Unconfigured Transformation Component](./Media/image39.png)
 
 
 ## Script
@@ -61,7 +61,7 @@ When your script has been modified, you can test it by emulating changes from th
 1. Select the source event type (e.g. `INSERT`, `UPDATE`, `DELETE`) to test.
 1. Enter an Event ID. This is a DN that matches the location in the RadiantOne namespace for the source entries. (e.g. `uid=Aaron_Medler,ou=Accounting,o=companydirectory` assuming `o=companydirectory` is the source naming context in RadiantOne).
 1. Add source attribute names and values. Attribute names are in the left column and corresponding value in the right column. Select in the cell, type the value and select **Enter**. Attribute types can be simple or complex. The definitions for "simple" and "complex" are based on SCIM (<http://www.simplecloud.info/specs/draft-scim-core-schema-01.html>). Use the red X button next to the attribute to remove it from the test.
-    ![Example - Entering Attributes for Testing Script](../media/image68.png)
+    ![Example - Entering Attributes for Testing Script](./Media/image68.png)
 1. Select **Test**
 1. The results of the script logic are shown in the Output section.
 1. When you are finished testing the mappings, select **CLOSE** to go back to the "Configure Pipeline" screen.
@@ -98,11 +98,11 @@ Attribute mapping can be accomplished with any combination of the following: map
 
 The Destination DN expression is used generate the DN for the entry in the destination and is based on one or more attributes from the source event. As an example, if the destination in a sync pipeline was the `object=SUPPLIERS,o=hrdatabase` view shown in the screen below, the Destination DN syntax could look like: `SUPPLIERS=${employeeNumber},object=SUPPLIERS,o=hrdatabase` where `${employeeNumber}` indicates the employeeNumber attribute value from the source event is used to comprise the RDN (e.g. `SUPPLIERS=1234,object=SUPPLIERS,o=hrdatabase`). When processing insert and update events with attribute mappings, a lookup is performed in the destination based on the Destination DN expression, to see if the entry exists. If the entry does not exist, it is inserted. If it does exist, the entry is updated.
 
-![Example of Sync Destination](../../media/image41.png)
+![Example of Sync Destination](./Media/image41.png)
 
 The corresponding Destination DN Expression to match the example described above is shown below.
 
-![Example Destination DN Expression](../../media/image42.png)
+![Example Destination DN Expression](./Media/image42.png)
 
 As an alternative to using a specific source attribute in the DN expression, you can use the source entry's RDN value to compute the target DN with the following syntax:
 
@@ -126,21 +126,21 @@ A source event filter can be comprised of one or more conditions each of which i
 
 The filter window is blank by default and assumes a single expression will be used. An expression is based on a source attribute that can be conditioned (e.g. `equals`, `not equals`) on a value. Select a source attribute from the drop-down list, choose the condition and then enter a value. Based on the example below, only entries that have department=Sales are sent to the attribute mapping phase.
 
-![Source Event Filter Example](../../media/image43.png)
+![Source Event Filter Example](./Media/image43.png)
 
 To configure a condition with multiple expressions or multiple conditions, start the filter by choosing **and** or **or** from the drop-down list.
 
-![Categorize the Expressions with an Operator](../../media/image44.png)
+![Categorize the Expressions with an Operator](./media/image44.png)
 
 After the first expression is configured, select **Add Expression** and a new line is added to the configuration. In the example below, only entries that have department=Sales AND title that starts with "Solution" are sent to the attribute mapping phase.
 
-![Example Condition with Two Expressions](../../media/image45.png)
+![Example Condition with Two Expressions](./Media/image45.png)
 
-To remove an expression, select ![No entry symbol](../../media/image46.png)
+To remove an expression, select ![No entry symbol](./Media/image46.png)
 
-To remove the entire filter, select ![Clear Filter](../../media/image47.png)
+To remove the entire filter, select ![Clear Filter](./Media/image47.png)
 
-To accept the filter, select ![OK](../../media/image48.png)
+To accept the filter, select ![OK](./Media/image48.png)
 
 You can also use the Add Condition button to add a nested condition.
 
@@ -155,29 +155,29 @@ An expression is based on a source attribute that can be conditioned (e.g. `equa
 >[!note]
 >The values are not case-sensitive.
 
-![Conditional Filter Example](../../media/image49.png)
-![Conditional Filter Example](../../media/image50.png)
+![Conditional Filter Example](./Media/image49.png)
+![Conditional Filter Example](./Media/image50.png)
 
 The conditional filter can be based on one or more source attributes. To create a filter with one condition containing two expressions, select **Add Condition** and then select **Add Expression**. Define each expression. In the example below, the destination attribute named `employeeType` is populated with the value in the `employeeType` source attribute only if the source `employeeType` attribute starts with `Temp` and the source `l` attribute `equals` `Seattle`. If the source entry does not pass this filter, the `employeeType` target attribute is not populated with this attribute mapping.
 
-![Conditional Filter Example with Two Expressions](../../media/image51.png)
+![Conditional Filter Example with Two Expressions](./Media/image51.png)
 
 A single destination attribute can have more than one mapping configuration, each with a conditional filter. In the example below, the destination attribute named `employeeType` is populated with the value in the description source attribute only if the source `departmentNumber` equals `50`.
 
-![Conditional Filter Example](../../media/image52.png)
+![Conditional Filter Example](./Media/image52.png)
 
 Based on the two attribute mappings for the employeeType destination attribute described above, the value can come from either the source `employeeType` or description attributes. The conditional filters determine which mappings are applied, if any.
 
 >[!note]
 >When a target attribute has two different mappings, only one mapping is applied, the first one where the conditional filter evaluates `true`.
 
-![Multiple Mappings for Same Target Attribute](../../media/image53.png)
+![Multiple Mappings for Same Target Attribute](./Media/image53.png)
 
 ### Auto Map
 
 The **Auto Map** option is a quick way to auto-generate attribute mappings between the source and destination objects when they share common attribute names. The AUTO MAP option configures attribute mappings for each attribute defined in the source object and maps them to target attributes of the same name. After selecting **AUTO MAP**, delete mappings for attributes that you do not want to synchronize by selecting the **X** next to the Source Value.
 
-![Removing an Attribute Mapping](../../media/image55.png)
+![Removing an Attribute Mapping](./Media/image55.png)
 
 ### Edit attribute mapping
 
@@ -200,11 +200,11 @@ Test the attribute mappings by entering values for the source attributes.
 1. Select the Transformation component.
 1. Expand below the Mappings section at the bottom.
 1. Select **TEST**.
-    ![Test Attribute Mappings](../../media/image57.png)
+    ![Test Attribute Mappings](./Media/image57.png)
 1. Select the source event type (e.g. **Insert**, **Update**, **Delete**) to test.
 1. Enter an Event ID. This is a DN that matches the location in the RadiantOne namespace for the source entries. (e.g. `uid=Aaron_Medler,ou=Accounting,o=companydirectory` assuming `o=companydirectory` is the source naming context in RadiantOne).
 1. Add source attribute names and values. Attribute names are in the left column and corresponding value in the right column. Click in the cell, type the value and select **Enter**. Attribute types can be simple or complex. The definitions for "simple" and "complex" are based on SCIM (<http://www.simplecloud.info/specs/draft-scim-core-schema-01.html>). Use the red X button next to the attribute to remove it from the test.
-    ![Example - Entering Simple Attributes for Testing](../../media/image58.png)
+    ![Example - Entering Simple Attributes for Testing](./Media/image58.png)
 1. Select **TEST**.
 1. The results of the Attribute Mappings are shown in the Output section.
 1. When you are finished testing the mappings, select **CLOSE** to go back to the "Configure Pipeline" screen.
@@ -253,22 +253,22 @@ Available Functions
 
 User-defined functions can be created and configured from the Add Mapping Function window.
 
-1. Select ![Plus symbol](../../media/image59.png) next to User-Defined Function.   
-![User-Defined Function](../../media/image60.png)
+1. Select ![Plus symbol](./Media/image59.png) next to User-Defined Function.   
+![User-Defined Function](./Media/image60.png)
 1. Enter a function name.
 1. (Optional) Enter a Description.
-1. Select ![Plus symbol](../../media/image59.png) to add parameters as needed.
+1. Select ![Plus symbol](./Media/image59.png) to add parameters as needed.
 1. Select **Add**.
 1. To use the function, select it in the User-Defined Function section and select **Next**.
 1. Define values for the parameters of the function and select **OK**.
 1. Click **OK** to exit the function configuration.
 1. Click **OK** when you are done with the mappings.
 1. Click **Save** to save the rules and go back to the Rule Set table.
-1. Click ![Plus symbol](../../media/image87.png) to edit the transformation code.
+1. Click ![Plus symbol](./Media/image87.png) to edit the transformation code.
 1. From the classes drop-down list, select: com.rli.scripts.fidsync.pipelineName.UserDefinedFunctions
-![User-Defined Function Class](../../media/image100.png)
+![User-Defined Function Class](./Media/image100.png)
 1. Locate your user-defined function in the code and customize it accordingly.
-![User-Defined Function Class](../../media/image101.png)
+![User-Defined Function Class](./Media/image101.png)
 1. Click **Save** to recompile the jar file.
 
 
@@ -287,7 +287,7 @@ Rules offer a default event-based template that allows for configuring condition
 1. Select the object class associated with the entries in the source that you want to detect changes on from the **Source ObjectClass** drop-down list.
 1. Select the object class associated with the entries in the target that you want changes applied to from the **Target ObjectClass** drop-down list.
 1. (Optional) enter a description.
-    ![Rule Definition](../../media/image70.png)
+    ![Rule Definition](./Media/image70.png)
 1. (Optional) if you need to define variables to use in conditions, select the [RULE VARIABLES](variable-configuration.md) section and configure them.
 1. Select the [RULES](rule-configuration.md) section to configure the Rules for transformation.
 1. (Optional) to configure advanced options like Target Object RDN and DN generation, rules processing order and others, select the [ADVANCED OPTIONS](identity-linkage.md) section.
@@ -302,13 +302,13 @@ A variable can be defined to store a temporary value and used in a rule conditio
 >[!note]
 >If you configure multiple values for a rule variable, it could be returned as a multi valued attribute (if all sources contribute a value). In the example below, the variable named `VarDetails` can be multi-valued with one value coming from the source `carLicense` attribute and one coming from source `employeeNumber`.
 
-![Edit Rule Variable example](../../media/image71.png)
+![Edit Rule Variable example](./Media/image71.png)
 
 1. In the Rule Variables section, select the button to create a new variable.
 1. Enter a variable name.
-1. (Optional) To add a constant value for the variable, select![Plus symbol](../../media/image72.png) next to Values, select the **Constant** option from the drop-down list and enter the value. Select **OK** and **OK** again to close the Edit Rule Variable window.
-1. (Optional) A value of a variable can come from another variable. This can be a source attribute value or from another variable that has been defined. Select ![Plus symbol](../../media/image72.png) next to Values, select the **Attribute** option from the drop-down list and then select the source attribute, or variable name from the drop-down list on the right. Select **OK** and **OK** again to close the Edit Rule Variable window.
-1. (Optional) To apply a function on a source attribute and store the computed value in a variable, select![Plus symbol](../../media/image72.png) next to Values and select the **Function** option from the drop-down list. Select the **Edit** button, [select a function](../transformation/attribute-mappings.md#standard-functions-available) from the available list and select **Next**. The configuration screen and options vary depending on the function selected. After the function is configured, select **OK** and **OK** again to close the Edit Rule Variable window.
+1. (Optional) To add a constant value for the variable, select![Plus symbol](./Media/image72.png) next to Values, select the **Constant** option from the drop-down list and enter the value. Select **OK** and **OK** again to close the Edit Rule Variable window.
+1. (Optional) A value of a variable can come from another variable. This can be a source attribute value or from another variable that has been defined. Select ![Plus symbol](./Media/image72.png) next to Values, select the **Attribute** option from the drop-down list and then select the source attribute, or variable name from the drop-down list on the right. Select **OK** and **OK** again to close the Edit Rule Variable window.
+1. (Optional) To apply a function on a source attribute and store the computed value in a variable, select![Plus symbol](./Media/image72.png) next to Values and select the **Function** option from the drop-down list. Select the **Edit** button, [select a function](../transformation/attribute-mappings.md#standard-functions-available) from the available list and select **Next**. The configuration screen and options vary depending on the function selected. After the function is configured, select **OK** and **OK** again to close the Edit Rule Variable window.
 1. (Optional) To [configure conditions](#configure-rule-variable-conditions) that dictate how and when the rule variable is populated, select **Start Condition**.
 1. Variables can be used when defining rule conditions by selecting the **Rule Variable Condition** from the **Condition Type** drop-down list. After all variables are defined, select the [RULES](rule-configuration.md) section.
 
@@ -322,9 +322,9 @@ You can configure one or more conditions that dictate the context in which the v
 1. If you selected `Condition Node` in the previous step, choose the **Condition Type** from the drop-down list. For a description of condition types, see [Variables](../../concepts-and-definitions/sync-engine-and-transformation.md#variables). Based on the condition type selected, different settings are configurable. Your conditions can be a combination of different condition types. See [Configure Source Attribute condition](#configure-source-attribute-condition), [Configure Source Event condition](#configure-source-event-condition), [Configure Attribute Event condition](#configure-attribute-event-condition), and [Configure Rule Variable condition](#configure-rule-variable-condition-based-on-an-existing-rule-variable) for details.
 
 >[!note]
->If you need another condition after selecting `Condition Node` (for one condition), select **Add Parent Condition** and choose either `AND` Condition or `OR` Condition. Then select ![Plus symbol](../../media/image75.png) to add the new condition node (`AND` Condition or `OR` condition can be selected if you need nesting).
+>If you need another condition after selecting `Condition Node` (for one condition), select **Add Parent Condition** and choose either `AND` Condition or `OR` Condition. Then select ![Plus symbol](./Media/image75.png) to add the new condition node (`AND` Condition or `OR` condition can be selected if you need nesting).
 
-5. If you selected `AND` Condition or `OR` Condition in step three, select ![Plus symbol](../../media/image76.png) and choose **Condition Node** (`AND` Condition or `OR` Condition can also be selected if you want nested conditions) and choose the **Condition Type** from the drop-down list. For a description of condition types, see [Variables (../../concepts-and-definitions/sync-engine-and-transformation.md#variables). Based on the condition type selected, different settings are configurable. Your conditions can be a combination of different condition types. See [Configure Source Attribute condition](#configure-source-attribute-condition), [Configure Source Event condition](#configure-source-event-condition), [Configure Attribute Event condition](#configure-attribute-event-condition), and [Configure Rule Variable condition](#configure-rule-variable-condition-based-on-an-existing-rule-variable) for details.
+5. If you selected `AND` Condition or `OR` Condition in step three, select ![Plus symbol](./Media/image76.png) and choose **Condition Node** (`AND` Condition or `OR` Condition can also be selected if you want nested conditions) and choose the **Condition Type** from the drop-down list. For a description of condition types, see [Variables (../../concepts-and-definitions/sync-engine-and-transformation.md#variables). Based on the condition type selected, different settings are configurable. Your conditions can be a combination of different condition types. See [Configure Source Attribute condition](#configure-source-attribute-condition), [Configure Source Event condition](#configure-source-event-condition), [Configure Attribute Event condition](#configure-attribute-event-condition), and [Configure Rule Variable condition](#configure-rule-variable-condition-based-on-an-existing-rule-variable) for details.
 6. Select **OK** to close the Edit Rule Variable window.
 7. After all variables are defined, select the [RULES](rule-configuration.md) section.
 
@@ -384,14 +384,14 @@ Rules are packaged as a set that is associated with a single source object class
 
 Rules are configured in the RULES section of the selected RULE SET. A Rule is comprised of one or more conditions and one or more actions. When the conditions are met, the actions are executed.
 
-To automatically configure rules for insert, update and delete events, select ![Plus symbol](../../media/image77.png). One rule is configured for each event and each rule has one condition based on the corresponding event type. You can edit an auto configured rule by selecting it and selecting the **Edit** button.
+To automatically configure rules for insert, update and delete events, select ![Plus symbol](./Media/image77.png). One rule is configured for each event and each rule has one condition based on the corresponding event type. You can edit an auto configured rule by selecting it and selecting the **Edit** button.
 
 1. Edit the Rule Set and select the **Rules** section.
-1. Select ![Plus symbol](../../media/image78.png)
+1. Select ![Plus symbol](./Media/image78.png)
 1. Enter a Rule name.
 1. (Optional) Enter a Description.
 1. Configure the [identity linkage](identity-linkage.md) in the Identity Linkage property.
-1. If source events associated with this rule should be manually approved before being synchronized to the target, check to enable *Require Approvals*, click ![Approval Config](../../media/editapprovals.jpg) and [Configure Approvers](#configuring-approvers).
+1. If source events associated with this rule should be manually approved before being synchronized to the target, check to enable *Require Approvals*, click ![Approval Config](./Media/editapprovals.jpg) and [Configure Approvers](#configuring-approvers).
 1. If you have selected the option to manually define the target DN in [Advanced options](../advanced-options.md#target-dn-generation), select the variable that contains the target DN. If you have the target DN generation set to Automatic in Advanced Option, you do not see the Target DN Variable in the Basic Information section.
 1. Select the **Event Type** that should invoke the rule from the **Target Event Type** drop-down list.
 1. Select the [CONDITIONS](conditions.md) section to define the conditions.
@@ -404,13 +404,13 @@ To automatically configure rules for insert, update and delete events, select ![
 ### Configuring Approvals
 The Require Approvals option is located on the **BASIC INFORMATION** tab.
 1. Enable the Require Approvals checkbox.
-2. Click ![Edit Approvals](../../media/editapprovals.jpg).
-3. Click ![Plus symbol](../../media/image78.png).
+2. Click ![Edit Approvals](./Media/editapprovals.jpg).
+3. Click ![Plus symbol](./Media/image78.png).
 4. Select one or more members of the [Approvers group](../../concepts-and-definitions/approvals/#approvers) and click ADD. If you select more than one approver, all must approve the action before it expires.
 5. Enter a length of time to indicate how long a message should be queued awaiting action (approval or rejection) before it is deleted from the queue. This can be in either minutes or days.
 6. Enter a meaningful description and select a source attribute to display in the [*Approvals* experience](../../concepts-and-definitions/approvals/#performing-approvals) to help provide context for the approver about the synchronization event. 
 
-![Approval Config](../../media/editapprovalsux.jpg).
+![Approval Config](./Media/editapprovalsux.jpg).
 
 **Approvers**
 
@@ -424,11 +424,11 @@ To manage the Approvers group:
 1.	Click the **Expand Tree** button. The RadiantOne namespace displays on the right. 
 1.	In the namespace, navigate to the location of the user that you want to approve events. In this example, the location cn=config,ou=globalusers is selected.  
 1.	Click the **Find Now** button.  
-1.	Select the entry you want to approve events and click the **Move selected entry down** button. In this example, uid=icsadmin,ou=globalusers,cn=config is selected. <br>![Find Users](../media/findusers.jpg)
+1.	Select the entry you want to approve events and click the **Move selected entry down** button. In this example, uid=icsadmin,ou=globalusers,cn=config is selected. <br>![Find Users](./Media/findusers.jpg)
 1.	Click the **Confirm** button. The member is displayed in the cn=approvers group.  
 1.	Click **Confirm** again to commit the change. 
 
-![Members of the Approvers Group](../media/approversgroup.jpg)
+![Members of the Approvers Group](./Media/approversgroup.jpg)
 
 >[!warning]
 >If you want the approver to receive an email alert when they have pending approvals, the user account must have a valid email address (mail attribute).
@@ -445,19 +445,19 @@ To enable email alerts for approvers, SMTP must be configured.
 >[!note]
 >For security and audit purposes, it is not advised to connect to your mail server anonymously (leaving user and password >properties blank in the Email Alert Settings). 
 
-![Email Alert Configuration](../media/emailalerts.jpg) 
+![Email Alert Configuration](./Media/emailalerts.jpg) 
 
 **Performing Approvals** 
 When a change associated with a rule that requires approval is detected in a source, the instance is published into the approvals queue and awaits action. Approvers use the Approvals application to accept or reject events.
 
 Approvers log into the Insights, Reports and Administration Portal and click the Approvals icon.
-![Approvals](../media/approvals.jpg)
+![Approvals](./Media/approvals.jpg)
 
 The pending events assigned to the approver are displayed.
 
-![Approval Decisions](../media/decisions.jpg)
+![Approval Decisions](./Media/decisions.jpg)
 
-The user must approve or reject the event. This can be done using the ![reject](../media/reject.jpg) to reject an event or the ![accept](../media/accept.jpg) to accept an event. <br>
+The user must approve or reject the event. This can be done using the ![reject](./Media/reject.jpg) to reject an event or the ![accept](./Media/accept.jpg) to accept an event. <br>
 Check boxes in the column on the far left can also be used. If you check the box in the column header, options include “Select Current Page”, “Select Everything”, “Unselect Current Page”, and “Unselect Everything”. Then select an option from the Select Bulk Action drop-down menu (*Approve All* or *Reject All*).
 
 >[!note] 
@@ -523,7 +523,7 @@ To create conditions:
 
 1. Edit the rule and select the **CONDITIONS** section.
 1. Select **Start Condition**.
-1. If you only need a single condition, select **Condition Node** and choose the condition type: [Source Attribute condition](#configure-source-attribute-condition), [Source Event condition](#configure-source-event-condition), [Attribute Event condition](#configure-attribute-event-condition), or [Rule Variable condition](#configure-rule-variable-condition-based-on-an-existing-rule-variable). If you need multiple conditions, select either `AND` Condition or `OR` Condition and then select ![Plus symbol](../../media/image80.png) to add a condition node or another (nested) `AND` Condition or (nested) `OR` Condition. Once you add a new condition node, you configure the expression.
+1. If you only need a single condition, select **Condition Node** and choose the condition type: [Source Attribute condition](#configure-source-attribute-condition), [Source Event condition](#configure-source-event-condition), [Attribute Event condition](#configure-attribute-event-condition), or [Rule Variable condition](#configure-rule-variable-condition-based-on-an-existing-rule-variable). If you need multiple conditions, select either `AND` Condition or `OR` Condition and then select ![Plus symbol](./Media/image80.png) to add a condition node or another (nested) `AND` Condition or (nested) `OR` Condition. Once you add a new condition node, you configure the expression.
 1. Select **OK**.
 
 **Configure Source Attribute condition**
@@ -585,13 +585,13 @@ Attribute mapping can be accomplished with any combination of the following: def
 
 To map attributes:
 
-1. Use the ![Less than and greater than symbols](../../media/image81.png) on the bottom right of the attribute table to page through and find the attribute you want to map.
+1. Use the ![Less than and greater than symbols](./Media/image81.png) on the bottom right of the attribute table to page through and find the attribute you want to map.
 1. In the **Operation Type** drop-down list, select the operation to perform on the target attribute (e.g. **Replace Value(s)**, **Add Value(s)**, etc.).
-1. Select ![Plus symbol](../../media/image82.png) next to the input value and select how to populate the target attribute value. You can use a **Constant**, **Attribute** (source attribute or variable), or a **Function**. If you choose **Constant**, enter the value to set. If you choose **Attribute**, select the source attribute or variable from the drop-down list. If you choose **Function**, select the [function](../transformation/attribute-mappings.md#standard-functions-available) and follow the guidance to define the value.
-1. (Optional) you can define an [Input Condition](#configure-input-conditions-for-target-attributes) by selecting ![Pencil symbol](../../media/image83.png). Select **Insert** after defining the input condition.
+1. Select ![Plus symbol](./Media/image82.png) next to the input value and select how to populate the target attribute value. You can use a **Constant**, **Attribute** (source attribute or variable), or a **Function**. If you choose **Constant**, enter the value to set. If you choose **Attribute**, select the source attribute or variable from the drop-down list. If you choose **Function**, select the [function](../transformation/attribute-mappings.md#standard-functions-available) and follow the guidance to define the value.
+1. (Optional) you can define an [Input Condition](#configure-input-conditions-for-target-attributes) by selecting ![Pencil symbol](./Media/image83.png). Select **Insert** after defining the input condition.
 
 >[!note]
->If you use an input condition that uses an alternative value, select ![Plus symbol](../../media/image84.png) in the Alternate Values section and choose how to populate the value (e.g. **Constant**, **Attribute** or **Function**).
+>If you use an input condition that uses an alternative value, select ![Plus symbol](./Media/image84.png) in the Alternate Values section and choose how to populate the value (e.g. **Constant**, **Attribute** or **Function**).
 
 5. Repeat steps 1-4 in this section to map all needed attributes.
 6. Select **Insert** to close the Rule Builder.
@@ -608,11 +608,11 @@ The default is "None" meaning that no special checking of the input value(s) is 
 | Set value(s) only if not empty, else use alternate value(s) | If the input value(s) is empty, set the target attribute to the Alternate Value (if defined). If no Alternate value is defined, nothing is set.<br>If the input value(s) is not empty, set the target attribute to the value from the input value(s). |
 | Delete attribute if value(s) are empty or null | If the input value(s) is empty or null, delete the attribute in the target. This sets a NULL value (for a database target) or an empty value (for a directory target). |
 | Delete attribute if value(s) are empty. | If the input value(s) is empty, delete the attribute in the target. This option allows you to differentiate between empty and null. |
-| Set value(s) if custom condition matches, else use alternate value(s) | If the input value(s) matches a custom condition, set the target attribute to the input value(s).<br>If the input value(s) does not match the custom condition, set the target attribute to the Alternate Value(s). If no Alternate Value is defined, nothing is set.<br>To define the custom conditions, select **START CONDITION** and select **Condition Node** if you only need one condition, or `AND` Condition or `OR` Condition if you need multiple conditions which can be nested. The condition types that can be used are described in the [Variable configuration](variable-configuration.md).<br>![Edit Conditional Values example](../../media/image85.png) |
+| Set value(s) if custom condition matches, else use alternate value(s) | If the input value(s) matches a custom condition, set the target attribute to the input value(s).<br>If the input value(s) does not match the custom condition, set the target attribute to the Alternate Value(s). If no Alternate Value is defined, nothing is set.<br>To define the custom conditions, select **START CONDITION** and select **Condition Node** if you only need one condition, or `AND` Condition or `OR` Condition if you need multiple conditions which can be nested. The condition types that can be used are described in the [Variable configuration](variable-configuration.md).<br>![Edit Conditional Values example](./Media/image85.png) |
 
 **Configure custom code/function**
 
-If the **Custom Function Action** is chosen, you can create a new function for your transformation script, or call an existing custom function. If you have existing custom functions, the names appear in the drop-down list for you to choose from. After you select **OK**, select **OK** again and then select **Save**. Then select ![Less than and greater than symbols](../../media/image86.png) on the **Rule Set** page to edit the transformation script. Locate your custom function to edit the code in the web editor. You can use an [IDE like Eclipse](../script.md#use-a-java-ide-to-customize-scripts) instead of the web editor if you prefer.
+If the **Custom Function Action** is chosen, you can create a new function for your transformation script, or call an existing custom function. If you have existing custom functions, the names appear in the drop-down list for you to choose from. After you select **OK**, select **OK** again and then select **Save**. Then select ![Less than and greater than symbols](./Media/image86.png) on the **Rule Set** page to edit the transformation script. Locate your custom function to edit the code in the web editor. You can use an [IDE like Eclipse](../script.md#use-a-java-ide-to-customize-scripts) instead of the web editor if you prefer.
 
 
 ### Testing rules
@@ -622,12 +622,12 @@ You can test your rules by emulating changes from the source.
 1. On the Main Control Panel > Global Sync tab, select the topology on the left.
 1. Select **Configure** next to the pipeline on the right.
 1. Select the **Transformation** component and choose **Rules-based Transformation** from the **Transformation Type** drop-down list.
-1. Expand the **Rules** section that appears below the **Transformation Type** and select ![Less than and greater than symbols](../../media/image87.png).
+1. Expand the **Rules** section that appears below the **Transformation Type** and select ![Less than and greater than symbols](./Media/image87.png).
 1. Select **Test** in the top right corner.
 1. Select the source event type (e.g. **Insert**, **Update**, **Delete**) to test.
 1. Enter an Event ID. This is a DN that matches the location in the RadiantOne namespace for the source entries. (e.g. `uid=Aaron_Medler,ou=Accounting,o=companydirectory` assuming `o=companydirectory` is the source naming context in RadiantOne).
 1. Add source attribute names and values. Attribute names are in the left column and corresponding value in the right column. Select in the cell, type the value and select **Enter**. Attribute types can be simple or complex. The definitions for "simple" and "complex" are based on SCIM (<http://www.simplecloud.info/specs/draft-scim-core-schema-01.html>). Use the red **X** button next to the attribute to remove it from the test.
-    ![Example - Entering Attributes for Testing Script](../../media/image68.png)
+    ![Example - Entering Attributes for Testing Script](./Media/image68.png)
 1. Select **Test**.
 1. The results of the script logic are shown in the Output section.
 1. When you are finished testing the mappings, select **CLOSE** to go back to the "Configure Pipeline" screen.
