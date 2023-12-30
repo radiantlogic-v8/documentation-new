@@ -130,7 +130,7 @@ The filter window is blank by default and assumes a single expression will be us
 
 To configure a condition with multiple expressions or multiple conditions, start the filter by choosing **and** or **or** from the drop-down list.
 
-![Categorize the Expressions with an Operator](./media/image44.png)
+![Categorize the Expressions with an Operator](./Media/image44.png)
 
 After the first expression is configured, select **Add Expression** and a new line is added to the configuration. In the example below, only entries that have department=Sales AND title that starts with "Solution" are sent to the attribute mapping phase.
 
