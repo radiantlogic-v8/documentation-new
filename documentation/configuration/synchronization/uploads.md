@@ -9,7 +9,7 @@ If the target/destination needs populated with entries before starting synchroni
 
 ## Upload from the Control Panel
 
-1. Go to the Main Control Panel > Global Sync Tab.
+1. Go to the Classic Control Panel > Synchronization Tab.
 1. Select the desired topology from the list of topologies on the left.
 1. Select **Configure** next to the pipeline on the right.
 1. Select the **Apply** component.
