@@ -76,24 +76,40 @@ For LDAP backends, RadiantOne attempts to connect to failover servers only if th
 1.  Click **CREATE**. The new data source appears in the list of configured sources and is briefly noted with a *new* tag next to it.
    
 ### Updating Data Sources
-To update a data source, navigate to Control Panel > SETUP > Data Catalog > Data Sources. Select the configured data source in the list
+To update a data source, navigate to Control Panel > SETUP > Data Catalog > Data Sources. Click the data source name in the list of configured sources. The connection properties displays. Update the properties and click **SAVE**.
 
 ### Deleting Data Sources
 To delete a data source, navigate to Control Panel > SETUP > Data Catalog > Data Sources. Select the configured data source in the list, click the inline trash can icon and click **DELETE** to confirm. Otherwise, click **KEEP DATA SOURCE** to not delete.
 
-![An image showing deleting data source](../Media/delete-data-source.jpg).
+![An image showing deleting data source](../Media/delete-data-source.jpg)
 
 ### Cloning Data Sources
 Cloning a data source allows you to make a copy of the connection information and provide a new name for the data source. To clone a data source, navigate to Control Panel > SETUP > Data Catalog > Data Sources. Select the configured data source in the list and click the clone icon.
 
-![An image showing cloning data source](../Media/clone-data-source.jpg).
+![An image showing cloning data source](../Media/clone-data-source.jpg)
 
 Enter a data source name and click the checkmark inline with the cloned data source.
 
-![An image showing cloning data source](../Media/confirm-clone.jpg).
+![An image showing how to confirm a cloned data source name](../Media/confirm-clone.jpg)
 
 ### Importing Data Sources
+If you have existing data sources defined (exported from another RadiantOne configuration) and you would like to import those, navigate to the Control Panel > SETUP > Data Catalog > Data Sources, click **...** and choose Import. Either browse to the file containing the data source definitions that you have exported from another RadiantOne server or drag-and-drop the file into the window and click **CLOSE** after the import.
+
+![An image showing import data sources screen](../Media/import-data-source.jpg)
+
+>[!note] 
+>To override existing data sources containing the same names as ones from the import file, toggle the **OVERRIDE DUPLICATE DATA SOURCES** option on. 
+
 ### Exporting Data Sources
+To export data sources, navigate to the Control Panel > SETUP > Data Catalog > Data Sources, click **...** and choose Export.
+
+![An image showing export data sources screen](../Media/export-data-source.jpg)
+
+Select the data sources to include in the export and click **EXPORT**
+
+![An image showing export data sources screen](../Media/selected-data-sources.jpg)
+
+WHERE DO THE EXPORTED FILES GO???
 
 ## Managing Templates
 
