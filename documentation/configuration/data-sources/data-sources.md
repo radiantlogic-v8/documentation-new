@@ -122,6 +122,6 @@ WHERE DO THE EXPORTED FILES GO???
 ### Deleting Templates
 
 ## Managing Schemas
-### Extracting Schemas
-### Comparing Schemas
-### Modifying Schemas
+Each data source can be associated with one or more schema files. The first schema file extracted for a data source is considered the default one. For LDAP data sources, the default schema is automatically extracted when the data source is defined.
+
+For details, see [Managing Schemas](/schemas.md).
