@@ -72,7 +72,7 @@ To set the maximum threads value:
 
 Authorization is enforced by the RadiantOne service based on the user who authenticated. The authorization ID (DN) is linked to the authenticated ID (DN) for the same connection. If the Proxy Authorization Control is enabled, the client can switch the user ID for authorization purposes, without having to re-authenticate with a new connection. To use proxy authorization in the REST/ADAP request, define a header named Proxy which contains the value of the user ID (DN) for which authorization should be enforced. An example is shown below where requests are performed on behalf of the user identified by: uid=Adalberto_Flecha,ou=Accounting,o=companydirectory
 
-![An image showing ](/Media/Image5.2.jpg)
+![An image showing ](./Media/Image5.2.jpg)
 
 Figure 2: Proxy Header for Proxy Authorization
 
