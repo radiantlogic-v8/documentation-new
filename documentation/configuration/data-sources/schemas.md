@@ -8,7 +8,7 @@ A schema file in RadiantOne Identity Data Management contains the metadata perta
 
 Schemas are managed from Control Panel > SETUP > Data Catalog > Data Sources > Selected data source > SCHEMA tab.
 
-It is important to understand that RadiantOne publishes an LDAP schema for client's to query using a base DN of cn=schema. Some clients leverage this information to integrate with the service, while others do not. This schema likely differs from the schemas of the identity data sources (backends). Therefore, if you have client applications that rely on metadata published in the RadiantOne LDAP schema, ensure that you either [Map the Backend Metadata](#mapping-metadata) to LDAP objects and attributes in the RadiantOne LDAP schema, or [Extend the RadiantOne LDAP Schema](#Include-in-RadiantOne-LDAP-Schema) with the metadata from the schema files associated with the backends.
+It is important to understand that RadiantOne publishes an LDAP schema for client's to query using a base DN of cn=schema. Some clients leverage this information to integrate with the service, while others do not. This schema likely differs from the schemas of the identity data sources (backends). Therefore, if you have client applications that rely on metadata published in the RadiantOne LDAP schema, ensure that you either [Map the Backend Metadata](#mapping-metadata) to objects and attributes in the RadiantOne LDAP schema, or [Extend the RadiantOne LDAP Schema](#Include-in-RadiantOne-LDAP-Schema) with the metadata from the schema files associated with the backends.
 
 ## Concepts
 The following concepts are important to understand for managing schemas in RadiantOne Identity Data Management.
