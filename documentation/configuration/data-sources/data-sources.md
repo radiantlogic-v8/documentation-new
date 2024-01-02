@@ -93,7 +93,11 @@ Enter a data source name and click the checkmark inline with the cloned data sou
 ![An image showing how to confirm a cloned data source name](../Media/confirm-clone.jpg)
 
 ### Importing Data Sources
-If you have existing data sources defined (exported from another RadiantOne configuration) and you would like to import those, navigate to the Control Panel > SETUP > Data Catalog > Data Sources, click **...** and choose Import. Either browse to the file containing the data source definitions that you have exported from another RadiantOne server or drag-and-drop the file into the window and click **CLOSE** after the import.
+If you have existing data sources defined (exported from another RadiantOne configuration) and you would like to import those, navigate to the Control Panel > SETUP > Data Catalog > Data Sources, click **...** and choose Import. 
+
+![An image showing import data sources screen](../Media/import-export-menu.jpg)
+
+Either browse to the file containing the data source definitions that you have exported from another RadiantOne server or drag-and-drop the file into the window and click **CLOSE** after the import.
 
 ![An image showing import data sources screen](../Media/import-data-source.jpg)
 
