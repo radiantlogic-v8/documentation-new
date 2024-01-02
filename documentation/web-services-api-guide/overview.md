@@ -9,15 +9,12 @@ In addition to handling LDAP queries for data stored in RadiantOne Directory sto
 
 Since RadiantOne supports the standard LDAP v3 protocol and operations, and this API is well documented by the industry, this guide focuses solely on the Web Services APIs available.
 
-The HTTPS endpoint for SCIMv2 and REST queries is enabled by default. 
-
-![Other Protocols Section](Media/Image1.1a.jpg)
- 
-Figure 1: Other Protocols Section
+The HTTPS web services endpoint is disabled by default. Enable the endpoint from Environment Operations Center > Environments > Selected Environment > Application Endpoints > REST. This is the endpoint for both SCIMv2 and REST (ADAP) queries.
+![An image showing ](./Media/endpoints.jpg)
 
 ## Disabling Protocols
 
-You can disable any web service protocols that are not used by clients from the Web Services section. Click in the Disabled Protocols property to reveal a drop-down list of options. 
+Even if the HTTPS web service endpoint is enabled, you can disable any web service protocols that are not used by clients from the Main Control Panel > Settings > Server Frontend > Other Protocols > Web Services section. Click in the Disabled Protocols property to reveal a drop-down list of options. 
 
 >[!note] The LDAP option is legacy (replaced by ADAP) and includes the following endpoints: /ldap/html, /ldap/xml/ ldap/json/ and /vcs.
 
