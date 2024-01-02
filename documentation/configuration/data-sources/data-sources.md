@@ -6,7 +6,9 @@ description: Learn how to use the Data Catalog to connect to and extract identit
 ## Overview
 
 The first step in configuring RadiantOne Identity Data Management is defining connections to all identity data sources. This can be done from Control Panel > SETUP > Data Catalog > Data Sources.
+
 Each data source is associated with a template that defines how to connect and integrate the identity data source. Default templates are included for LDAP, Active Directory, Oracle, SQL Server, Maria DB, MySQL, Apache Derby and others.  Custom templates can be created for those that don't have a default template, as long as they offer a JDBC-driver and/or API that supports the needed operations (e.g authenticate, create, read, update, delete, and ideally a change detection mechanism).
+
 After an identity data source is defined, a schema can be extracted. A schema represents the metadata for all identity objects contained in the data source. Schemas can be managed in the Data Catalog > Data Sources > Selected data source > SCHEMA section. This metadata is used to define identity views that are then accessed by clients that query the RadiantOne service. Identity views can be managed from Control Panel > SETUP > Directory Namespace > Namespace Design.
 
 ## Managing Data Sources
@@ -29,14 +31,15 @@ Status	| Toggled to either OFFLINE (indicates the identity source is not availab
 
 1.  Enter the Connection details. These properties vary depending on the type of identity source.
 For LDAP Data Sources:
+
 PROPERTY	| DESCRIPTION
 -|-
 Host	| Unique name representing the identity source backend. Do not use spaces, commas, brackets or parenthesis, colons, or the word “domain”.
-Port	| Auto-populated, non-editable. Based on the template.
-SSL	|  The Secure Data Connector group used to establish a connection to an identity data source in a different network, like one running in an on-prem data center.
-Bind DN	| Details about the identity source backend.
-Bind Password	| Toggled to either OFFLINE (indicates the identity source is not available and should not be accessed by the RadiantOne service) or ACTIVE (indicates the identity source is available and can be accessed by the RadiantOne service).
-Base DN	|  Do not use special characters in the Base DN value.
+Port	| A numeric value indicating the port number the LDAP service is listening on.
+SSL	|  Toggled ON if SSL/TLS should be used in the connection to the backend. Enter the SSL port in the Port property. Toggled OFF if SSL/TLS should not be used. Enter the non-SSL port in the Port property.
+Bind DN	| Service account credentials that the RadiantOne service should use to connect to the backend. Enter a full user DN.
+Bind Password	| Credentials associated with the account indicated in the Bind DN property.
+Base DN	|  Enter the Remote Base DN or click the **folder** button, select a base DN and then click **OK**. Do not use special characters in the Base DN value.
 
 For Database Data Sources:
 PROPERTY	| DESCRIPTION
