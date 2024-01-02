@@ -56,7 +56,7 @@ This is the number of threads the REST/ADAP interface uses for handling client r
 
 To set the maximum threads value:
 
-1.	From the RadiantOne Main Control Panel, go to the Settings tab > Server Front End section > Other Protocols sub-section. 
+1.	From the Classic Control Panel, go to the Settings tab > Server Front End section > Other Protocols sub-section. 
 
 2.	On the right side, under the REST/ADAP header, enter a value in the Max Thread field. 
 
@@ -134,7 +134,7 @@ When Always Authenticate is not enabled (which is the default), connection pooli
 
 To enable the Always Authenticate option:
 
-1.	Go to the Main Control Panel > Settings tab > Server Front End > Other Protocols section. 
+1.	Go to the Classic Control Panel > Settings tab > Server Front End > Other Protocols section. 
 
 2.	In the REST/ADAP section (requires [Expert Mode](01-overview#expert-mode)), check the ‘Always Authenticate’ checkbox.
 
@@ -163,7 +163,7 @@ The RadiantOne ADAP service receives the client connection request (via HTTPS) a
 
 To configure support for mutual authentication to ADAP, follow the steps below.
 
-1.	Log into the Main Control Panel as a member of the Directory Administrators group.
+1.	Log into the Classic Control Panel as a member of the Directory Administrators group.
 
 2.	Go to the Settings tab > Server Front End > Supported Controls and verify Enable Proxy Authorization is checked. If not, enable it and click Save.
 
@@ -239,20 +239,17 @@ The RadiantOne ADAP service queries the RadiantOne LDAP service using proxy auth
 
 To configure proxy authorization: 
 
-1. In the Main Control Panel, navigate to Settings > Server Front End > Supported Controls.
-
-1. Enable Proxy Authorization and click Save.
-
-1. Navigate to Settings > Security > Access Control.
-
-1. Enable the “Allow Directory Manager to impersonate other users” option and click Save.
+1.  In the RadiantOne Control Panel, switch to the Classic Control Panel from the logged in Account menu in the upper right.
+1.  In the Classic Control Panel, navigate to Settings > Server Front End > Supported Controls.
+1.  Enable Proxy Authorization and click Save.
+1.  Navigate to Settings > Security > Access Control.
+1.  Enable the “Allow Directory Manager to impersonate other users” option and click Save.
 
 **Configuring External Token Validators**
 
 To add an external token validator:
 
-1.  In the Main Control Panel, navigate to Settings > Security > External Token Validators. 
-
+1.  In the Classic Control Panel, navigate to Settings > Security > External Token Validators. 
 1.  Click **Add**. The New ADAP External Token Validator page displays.
 
 ![The New ADAP External Token Validator Page](Media/externaltokenvalidatorpage.jpg)
@@ -260,17 +257,11 @@ To add an external token validator:
 Figure 6: The New ADAP External Token Validator Page
 
 1.  Name the external token validator.
-
 1.  Toggle the Enable switch to On. 
-
 1.  Select an OIDC provider from the drop-down menu (if applicable, to assist with populating the Discovery URL syntax). Otherwise, skip this step and enter your own Discovery URL. 
-
 1.  If the Discovery URL is not loaded automatically, paste the Metadata URI from your OIDC authorization server into the Discovery URL field. 
-
 1.  Click Discover. The JSON Web Key Set URI auto-populates. 
-
 1.  Use the Expected Audience from your OIDC provider configuration to populate the Expected Audience field.
-
 1.  Enter the expected Scope.This property determines what information/claims ("sub" indicates Subject) in the token (based on scopes requested) can be used to identify the relevant account in the RadiantOne namespace for enforcing authorization on subsequent requests for this connection. The value of this attribute is used as input for the *Claims to FID User Mapping* configured later in the steps below. The standard claims associated with the scopes are shown in the table below.
 
 Scope	| Claims
@@ -296,10 +287,8 @@ Figure 7: Configuring an ADAP External Token Validator
 
 ![search expression builder](Media/searchexpressionbuilder.jpg)
 
-1.  Click OK.
-   
+1.  Click OK.   
 1.  Click OK again to close the *OIDC to FID User Mappings* window.
-
 1.  Click Save. 
 
 ### Querying RadiantOne REST API (ADAP) with a Token
@@ -333,7 +322,7 @@ Figure 13: Successful REST Operation using OpenID Connect Token
 
 By default the token lifetime is set to 10 hours. To configure the token timeout:
 
-1.	Go to the Main Control Panel > Settings tab > Server Front End > Other Protocols section.
+1.	Go to the Classic Control Panel > Settings tab > Server Front End > Other Protocols section.
 
 2.	In the REST/ADAP section (requires [Expert Mode](overview#expert-mode)), edit the value in the Token Timeout field.
 
@@ -519,13 +508,13 @@ The PageSize option indicates paging via the Paged Results Control should be pas
 
 For REST access, the paging functionality leverages a session cookie which is linked to the original LDAP connection. Since this requires the same connection/session to work properly, paging through the REST interface does not work against a RadiantOne cluster deployment because subsequent requests could be directed to a RadiantOne node that is not associated with the original session cookie. If paging is required for cluster deployments, it is recommended to use source address affinity persistence in your load balancer.
 
->[!note] To use this option, paged results must be enabled in RadiantOne. To enable paged results, go to the Main Control Panel > Settings tab > Server Front End > Supported Controls. Check the ‘Enable paged results’ checkbox, and click Save. 
+>[!note] To use this option, paged results must be enabled in RadiantOne. To enable paged results, go to the Classic Control Panel > Settings tab > Server Front End > Supported Controls. Check the ‘Enable paged results’ checkbox, and click Save. 
 
 ![Enabling Paged Results](Media/Image5.23.jpg)
  
 Figure 20: Enabling Paged Results
 
->[!note] In multi-node clusters, an HTTP Status 302 is issued on a node that receives a paging request but did not generate the cookie related to paged results. This node redirects the request to the node that generated the cookie. No action is required. The cookie timeout can be configured in RadiantOne. To configure this timeout, go to the Main Control Panel > Settings > Server Front End > Other Protocols (requires [Expert Mode](overview#expert-mode)). Expand the REST/ADAP section. Enter a value in the Cookie Timeout field in seconds (the default is 60). Click Save.
+>[!note] In multi-node clusters, an HTTP Status 302 is issued on a node that receives a paging request but did not generate the cookie related to paged results. This node redirects the request to the node that generated the cookie. No action is required. The cookie timeout can be configured in RadiantOne. To configure this timeout, go to the Classic Control Panel > Settings > Server Front End > Other Protocols (requires [Expert Mode](overview#expert-mode)). Expand the REST/ADAP section. Enter a value in the Cookie Timeout field in seconds (the default is 60). Click Save.
 
 ![Configuring Cookie Timeout](Media/Image5.24.jpg)
  
