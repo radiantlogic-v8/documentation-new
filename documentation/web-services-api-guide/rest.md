@@ -96,7 +96,7 @@ Y249ZGlyZWN0b3J5IG1hbmFnZXI6c2VjcmV0c2VjcmV0
 Resulting in a header of: 
 <br> `<header key="authorization" value="Basic Y249ZGlyZWN0b3J5IG1hbmFnZXI6c2VjcmV0c2VjcmV0"/>`
 
-![An image showing ](/Media/Image5.3.jpg)
+![An image showing ](./Media/Image5.3.jpg)
 
 Figure 3: Header used for Basic Authentication
 
@@ -114,13 +114,13 @@ Table 1: A Simple Bind to the RadiantOne REST Service
 
 An authentication attempt with the above parameters results in the message {“httpStatus”:200}.  This means the credentials check was successful.
 
-![An image showing ](/Media/Image5.4.jpg)
+![An image showing ](./Media/Image5.4.jpg)
  
 Figure 4: Connection Successful
 
 An unsuccessful authentication attempt may result in the status ”401: Unauthorized”.
 
-![An image showing ](/Media/Image5.5.jpg)
+![An image showing ](./Media/Image5.5.jpg)
  
 Figure 5: Connection Failed
 
@@ -138,7 +138,7 @@ To enable the Always Authenticate option:
 
 2.	In the REST/ADAP section (requires [Expert Mode](01-overview#expert-mode)), check the ‘Always Authenticate’ checkbox.
 
-  ![An image showing ](Media/Image5.6.jpg)
+  ![An image showing ](./Media/Image5.6.jpg)
 
   Figure 6: Enabling the Always Authenticate Option
 
@@ -155,7 +155,7 @@ For normal SSL communications, where the only requirement is that the client tru
 >[!note] 
 >Certificate-based authentication (mutual authentication) requires the use of SSL (HTTPS) for the communication between the client and RadiantOne REST/ADAP service.
 
-![An image showing ](Media/Image5.7.jpg)
+![An image showing ](./Media/Image5.7.jpg)
 
 Figure 7: Mutual Authentication
 
