@@ -38,9 +38,9 @@ Some settings in the Control Panel are accessible only in Expert Mode. To switch
 
 You can access the welcome page by opening a browser and typing the following URL. 
 
-`http[s]://host[:port]`
+`http[s]://endpoint`
 
-i.e. http://localhost:8089
+i.e. https://cp-rliqa.dc.federated-identity.com/main/app/settings/web_services
 
 This displays the welcome screen and shows the supported services.
 
