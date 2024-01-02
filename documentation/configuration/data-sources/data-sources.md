@@ -88,7 +88,7 @@ Cloning a data source allows you to make a copy of the connection information an
 
 ![An image showing cloning data source](../Media/clone-data-source.jpg)
 
-Enter a data source name and click the checkmark inline with the cloned data source.
+Enter a data source name and click the checkmark inline with the cloned data source to save it. Click **X* to delete the clone instead of saving it.
 
 ![An image showing how to confirm a cloned data source name](../Media/confirm-clone.jpg)
 
