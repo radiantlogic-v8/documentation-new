@@ -3,7 +3,15 @@ title: Introduction to Schemas
 description: Learn how to manage schemas.
 ---
 
+## Overview
+A schema file in RadiantOne Identity Data Management contains the metadata pertaining to objects in identity data sources. This metadata is the basis for configuring identity views. Each identity data source must have at least one schema file. Schema files have a .orx file extension.
+
+Schemas are managed from Control Panel > SETUP > Data Catalog > Data Sources > Selected data source > SCHEMA tab.
+
+It is important to understand that RadiantOne publishes an LDAP schema for client's to query using a base DN of cn=schema. Some clients leverage this information to integrate with the service, while others do not. This schema likely differs from the schemas of the identity data sources (backends). Therefore, if you have client applications that rely on metadata published in the RadiantOne LDAP schema, ensure that you either [Map the Backend Metadata](#mapping-metadata) to LDAP objects and attributes in the RadiantOne LDAP schema, or [Extend the RadiantOne LDAP Schema](#Include-in-RadiantOne-LDAP-Schema) with the metadata from the backends.
+
 ## Concepts
+The following concepts are important to understand for managing schemas in RadiantOne Identity Data Management.
 
 ### Primary Key 
 In a well-designed relational database, every table has a column, or combination of columns, known as the primary key of the table. These values uniquely identify each row in the table. Occasionally you will find tables that were created in the database, but the uniquely identifying column(s) were not documented in the system catalog as the primary key. Declaring implicit primary keys is one of the database refining processes you perform using Schema Manager. 
@@ -55,7 +63,7 @@ A recursive relationship is an object related to itself. For example, an employe
 
 ### LDAP-Accessible Backend 
 
-Examples of LDAP-accessible backends are Sun Java Directory, Microsoft Active Directory, IBM Tivoli Directory, eDirectory, Red Hat Directory, and OpenLDAP. The LDAP data source must be created before completing the schema extraction steps below. See the RadiantOne System Administration Guide for details on creating LDAP data sources.
+Examples of LDAP-accessible backends are Sun Java Directory, Microsoft Active Directory, IBM Tivoli Directory, eDirectory, Red Hat Directory, and OpenLDAP. The LDAP data source must be created before completing the schema extraction steps below. See [Data Sources](/data-sources.md) for details about creating data sources.
 
 1.	In the Schema Manager click Create (Plus sign).
 
@@ -111,7 +119,7 @@ Any data source that supports a JDBC driver can be extracted using the Schema Ma
 
 Figure 3.10: RadiantOne Salesforce JDBC Driver
 
-The database data source must be created before completing the schema extraction steps below. See the RadiantOne System Administration Guide for details on creating database data sources.
+The database data source must be created before completing the schema extraction steps below. See [Data Sources](/data-sources.md) for details about creating data sources.
 1.	In the Schema Manager click the Create button (Plus sign).
 2.	Select the Database option and Click Next. 
 3.	Select a data source and click Next. 
@@ -137,7 +145,7 @@ You can view/modify this schema by opening the .orx file in the Schema Manager t
 
 ### SCIMv2 Backends
 
-The SCIMv2 data source must be created before completing the schema extraction steps below. See the RadiantOne System Administration Guide for details on creating SCIMv2 data sources.
+The SCIMv2 data source must be created before completing the schema extraction steps below. See [Data Sources](/data-sources.md) for details about creating data sources.
 
 1.	In the Schema Manager click Create (Plus sign).
 2.	Select the SCIMv2.0 option and click OK. 
@@ -177,7 +185,7 @@ Once the metadata has been captured, the next step is to improve it in a way tha
 >[!note] 
 >Changes made in the schema settings do not affect the underlying schema.
 
-Primary keys that are implicit, but not declared in the data dictionary, are not included in objects and relationships file (.orx) unless you declare them. 
+Primary keys that are implicit, but not declared in the data dictionary, are not included in schema files unless you declare them. 
 
 >[!warning] 
 >All objects you want to create virtual views from must have a primary key defined, and any attribute that you declare as the primary key in the Schema Manager must be unique for all entries in your table.
@@ -516,3 +524,5 @@ To delete a schema file:
 Figure 3.36: Deleting Schema Files
 
 ### Comparing Schema Files
+
+### Include in RadiantOne LDAP Schema
