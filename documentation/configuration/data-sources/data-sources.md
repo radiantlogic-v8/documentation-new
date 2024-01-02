@@ -30,6 +30,7 @@ Description	| Details about the identity source backend.
 Status	| Toggled to either OFFLINE (indicates the identity source is not available and should not be accessed by the RadiantOne service) or ACTIVE (indicates the identity source is available and can be accessed by the RadiantOne service).
 
 1.  Enter the Connection details. These properties vary depending on the type of identity source.
+
 For LDAP Data Sources:
 
 PROPERTY	| DESCRIPTION
@@ -42,13 +43,13 @@ Bind Password	| Credentials associated with the account indicated in the Bind DN
 Base DN	|  Enter the Remote Base DN or click the **folder** button, select a base DN and then click **OK**. Do not use special characters in the Base DN value.
 
 For Database Data Sources:
+
 PROPERTY	| DESCRIPTION
 -|-
-Host	| Unique name representing the identity source backend.
-Port	| Auto-populated, non-editable. Based on the template.
-SSL	|  The Secure Data Connector group used to establish a connection to an identity data source in a different network, like one running in an on-prem data center.
-Bind DN	| Details about the identity source backend.
-Bind Password	| Toggled to either OFFLINE (indicates the identity source is not available and should not be accessed by the RadiantOne service) or ACTIVE (indicates the identity source is availa
+Driver Class Name	| Auto-populated, non-editable. Based on the template.
+Driver URL	| Enter the URL to connect to the Database server.
+User 	| Service account name that the RadiantOne service should use to connect to the backend.
+Password	| Credentials associated with the account indicated in the User property.
 
 For Custom Data Sources:
 PROPERTY	| DESCRIPTION
