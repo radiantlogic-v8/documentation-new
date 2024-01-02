@@ -23,7 +23,7 @@ To create a data source:
 
 PROPERTY	| DESCRIPTION
 -|-
-Data Source Name	| Unique name representing the identity source backend.
+Data Source Name	| Unique name representing the identity source backend. Do not use spaces, commas, brackets or parenthesis, colons, or the word “domain”.
 Data Source Type	| Auto-populated, non-editable. Based on the template.
 Secure Data Connector	|  The Secure Data Connector group used to establish a connection to an identity data source in a different network, like one running in an on-prem data center.
 Description	| Details about the identity source backend.
@@ -34,7 +34,7 @@ For LDAP Data Sources:
 
 PROPERTY	| DESCRIPTION
 -|-
-Host	| Unique name representing the identity source backend. Do not use spaces, commas, brackets or parenthesis, colons, or the word “domain”.
+Host	| Fully-qualified server name or IP address for the identity source.
 Port	| A numeric value indicating the port number the LDAP service is listening on.
 SSL	|  Toggled ON if SSL/TLS should be used in the connection to the backend. Enter the SSL port in the Port property. Toggled OFF if SSL/TLS should not be used. Enter the non-SSL port in the Port property.
 Bind DN	| Service account credentials that the RadiantOne service should use to connect to the backend. Enter a full user DN.
