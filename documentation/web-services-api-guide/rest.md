@@ -72,7 +72,7 @@ To set the maximum threads value:
 
 Authorization is enforced by the RadiantOne service based on the user who authenticated. The authorization ID (DN) is linked to the authenticated ID (DN) for the same connection. If the Proxy Authorization Control is enabled, the client can switch the user ID for authorization purposes, without having to re-authenticate with a new connection. To use proxy authorization in the REST/ADAP request, define a header named Proxy which contains the value of the user ID (DN) for which authorization should be enforced. An example is shown below where requests are performed on behalf of the user identified by: uid=Adalberto_Flecha,ou=Accounting,o=companydirectory
 
-![An image showing ](Media/Image5.2.jpg)
+![An image showing ](/Media/Image5.2.jpg)
 
 Figure 2: Proxy Header for Proxy Authorization
 
@@ -96,7 +96,7 @@ Y249ZGlyZWN0b3J5IG1hbmFnZXI6c2VjcmV0c2VjcmV0
 Resulting in a header of: 
 <br> `<header key="authorization" value="Basic Y249ZGlyZWN0b3J5IG1hbmFnZXI6c2VjcmV0c2VjcmV0"/>`
 
-![An image showing ](Media/Image5.3.jpg)
+![An image showing ](/Media/Image5.3.jpg)
 
 Figure 3: Header used for Basic Authentication
 
@@ -114,13 +114,13 @@ Table 1: A Simple Bind to the RadiantOne REST Service
 
 An authentication attempt with the above parameters results in the message {“httpStatus”:200}.  This means the credentials check was successful.
 
-![An image showing ](Media/Image5.4.jpg)
+![An image showing ](/Media/Image5.4.jpg)
  
 Figure 4: Connection Successful
 
 An unsuccessful authentication attempt may result in the status ”401: Unauthorized”.
 
-![An image showing ](Media/Image5.5.jpg)
+![An image showing ](/Media/Image5.5.jpg)
  
 Figure 5: Connection Failed
 
@@ -263,7 +263,7 @@ Figure 6: The New ADAP External Token Validator Page
 
 1.  Toggle the Enable switch to On. 
 
-1.  Select an OIDC provider from the drop-down menu (if applicable, to assist with populating the Directory URL syntax). Otherwise, skip this step and enter your own Discovery URL. 
+1.  Select an OIDC provider from the drop-down menu (if applicable, to assist with populating the Discovery URL syntax). Otherwise, skip this step and enter your own Discovery URL. 
 
 1.  If the Discovery URL is not loaded automatically, paste the Metadata URI from your OIDC authorization server into the Discovery URL field. 
 
