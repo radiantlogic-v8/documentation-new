@@ -252,25 +252,15 @@ To configure proxy authorization:
 To add an external token validator:
 
 1.  In the Main Control Panel, navigate to Settings > Security > External Token Validators. 
-
 1.  Click **Add**. The New ADAP External Token Validator page displays.
-
 ![The New ADAP External Token Validator Page](Media/externaltokenvalidatorpage.jpg)
-
 Figure 6: The New ADAP External Token Validator Page
-
 1.  Name the external token validator.
-
 1.  Toggle the Enable switch to On. 
-
-1.  Select an OIDC provider from the drop-down menu (if applicable, to assist with populating the Directory URL syntax). Otherwise, skip this step and enter your own Discovery URL. 
-
+1.  Select an OIDC provider from the drop-down menu (if applicable, to assist with populating the Discovery URL syntax). Otherwise, skip this step and enter your own Discovery URL. 
 1.  If the Discovery URL is not loaded automatically, paste the Metadata URI from your OIDC authorization server into the Discovery URL field. 
-
 1.  Click Discover. The JSON Web Key Set URI auto-populates. 
-
 1.  Use the Expected Audience from your OIDC provider configuration to populate the Expected Audience field.
-
 1.  Enter the expected Scope.This property determines what information/claims ("sub" indicates Subject) in the token (based on scopes requested) can be used to identify the relevant account in the RadiantOne namespace for enforcing authorization on subsequent requests for this connection. The value of this attribute is used as input for the *Claims to FID User Mapping* configured later in the steps below. The standard claims associated with the scopes are shown in the table below.
 
 Scope	| Claims
@@ -297,9 +287,7 @@ Figure 7: Configuring an ADAP External Token Validator
 ![search expression builder](Media/searchexpressionbuilder.jpg)
 
 1.  Click OK.
-   
 1.  Click OK again to close the *OIDC to FID User Mappings* window.
-
 1.  Click Save. 
 
 ### Querying RadiantOne REST API (ADAP) with a Token
