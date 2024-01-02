@@ -25,14 +25,14 @@ Some settings in the Classic Control Panel are accessible only in Expert Mode. T
 
 You can access the welcome page by opening a browser and typing the following URL. 
 
-`http[s]://host[:port]`
+`http[s]://endpoint`
 
-i.e. http://localhost:8089
+i.e. https://cp-rliqa.dc.federated-identity.com/main/app/settings/web_services
 
 This displays the welcome screen and shows the supported services.
 
->[!note] In order for the SCIM examples shown below to work properly, SCIM resource types must be created in RadiantOne. Go to the Main Control Panel > Settings Tab > Server Front End section > SCIM sub-section. On the Resource Types tab, create a new resource type named Users and another named Groups. Save the configuration. See [SCIM](scim.md) for more information on configuring SCIM resource types. 
+>[!note] In order for the SCIM examples shown below to work properly, SCIM resource types must be created in RadiantOne. Go to the Classic Control Panel > Settings Tab > Server Front End section > SCIM sub-section. On the Resource Types tab, create a new resource type named Users and another named Groups. Save the configuration. See [SCIM](scim.md) for more information on configuring SCIM resource types. 
 
-![An image showing ](Media/Image1.3.jpg)
+![An image showing ](Media/Image1.3.jpg) UPDATE THIS SCREENSHOT!!!!!!
  
 Figure 3: RadiantOne Web Services Welcome Page
