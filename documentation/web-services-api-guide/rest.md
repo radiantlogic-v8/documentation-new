@@ -190,7 +190,7 @@ The RadiantOne REST (ADAP) interface supports OpenID Connect token-based authent
  
 A high-level diagram of the different components is shown below. Postman is used as a simple client to illustrate the flow.
 
-![An image showing ](Media/openid-connect-token-authentication.jpg)
+![An image showing ](./Media/openid-connect-token-authentication.jpg)
 
 Figure 9: OpenID Connect Token Authentication
 
@@ -206,7 +206,7 @@ This section describes using the Postman REST client to obtain an access token.
 
 1. From the Type drop down menu, select OAuth 2.0. The Current Token section displays. 
 
-![Type drop-down menu](Media/typemenu.jpg)
+![Type drop-down menu](./Media/typemenu.jpg)
 
 Figure 3: The Type drop-down menu
  
@@ -218,13 +218,13 @@ Figure 3: The Type drop-down menu
 
     >[!note] This value can be found using the using the metadata URL from the Authorization Server. 
 
-![Configuring an access token in Postman](Media/configuringtoken.jpg)
+![Configuring an access token in Postman](./Media/configuringtoken.jpg)
 
 Figure 4: Configuring an access token in Postman
 
 4. Click Get New Access Token. The new access token's details are displayed. 
 
-![token details](Media/tokendetails.jpg)
+![token details](./Media/tokendetails.jpg)
 
 Figure 5: The Token Details section in Postman
  
