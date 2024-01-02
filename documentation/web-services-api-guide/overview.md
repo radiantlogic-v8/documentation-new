@@ -9,7 +9,7 @@ In addition to handling LDAP requests for data stored in RadiantOne Directory st
 
 Since RadiantOne supports the standard LDAP v3 protocol and operations, and this API is well documented by the industry, this guide focuses solely on the Web Services APIs available.
 
-The HTTPS endpoint is disabled by default. Enable the endpoint from Environment Operations Center > Environments > Selected Environment > Endpoints > REST.
+The HTTPS endpoint is disabled by default. Enable the endpoint from Environment Operations Center > Environments > Selected Environment > Application Endpoints > REST. This is the endpoint for both SCIMv2 and REST (ADAP) queries.
 ![An image showing ](./Media/endpoints.jpg)
 
 
