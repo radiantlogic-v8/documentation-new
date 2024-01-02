@@ -503,7 +503,7 @@ Figure 3.34: Merge Schema Option
 
 7.	Save the schema file. 
 
-### Deleting Schema Files 
+## Deleting Schema Files 
 
 Schema files (.orx files) should be deleted using the Context Builder. It is not recommended to manually remove files from the file system. 
 
@@ -523,6 +523,6 @@ To delete a schema file:
 
 Figure 3.36: Deleting Schema Files
 
-### Comparing Schema Files
+## Comparing Schema Files
 
-### Include in RadiantOne LDAP Schema
+## Include in RadiantOne LDAP Schema
