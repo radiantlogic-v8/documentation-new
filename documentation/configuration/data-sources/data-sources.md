@@ -17,7 +17,7 @@ Data sources are managed from Control Panel > SETUP > Data Catalog > Data Source
 ### Creating Data Sources
 To create a data source:
 1.  Navigate to Control Panel > SETUP > Data Catalog > Data Sources.
-1.  Click ![An image showing](./Media/newsource.jpg).
+1.  Click ![An image showing](../Media/newsource.jpg).
 1.  Select a template associated with the identity data source type from the list. Use the Search field to quickly find a template name, or click on LDAP, DATABASE or OTHER tabs to narrow down the template choices by type. JDBC-accessible source templaes are located on the DATABASE tab. LDAP-accessible data source templates are located on the LDAP tab. Custom data source templates are located on the OTHER tab.
 1.  Enter the basic details about the identity data source.
 
