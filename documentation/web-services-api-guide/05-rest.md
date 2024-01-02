@@ -182,23 +182,58 @@ To configure support for mutual authentication to ADAP, follow the steps below.
 
 ## OpenID Connect Token Authentication
 
-The RadiantOne REST (ADAP) interface supports OpenID Connect token-based authentication. This option provides the security of sending user login credentials to the authentication server, not the application (ADAP). OpenID Connect token authentication allows you to send your username and password just once and then pass the token in the request to ADAP. However, the user cannot use the token authentication to request a new token. Multiple requests can be performed during a [token’s lifetime](#token-lifetime).
+The RadiantOne REST (ADAP) interface supports OpenID Connect token-based authentication. This option provides the security of sending user login credentials to the authentication server, not the application (ADAP). OpenID Connect token authentication allows you to send your username and password just once and then pass the token in the request to ADAP. However, the user cannot use the token authentication to request a new token. Multiple requests can be performed during a token’s lifetime.
  
 A high-level diagram of the different components is shown below. Postman is used as a simple client to illustrate the flow.
 
-![openid-connect-token-authentication](Media/openid-connect-token-authentication.jpg)
+![An image showing ](Media/openid-connect-token-authentication.jpg)
+
+Figure 9: OpenID Connect Token Authentication
+
+External token validators allow applications to use an access token to call an API on behalf of itself. The API then responds with the requested data. This section assumes that your OIDC provider is already set up and that you know your client ID and secret to test getting a token.
+
+### Getting an Access Token
+
+This section describes using the Postman REST client to obtain an access token. 
+
+1. Start a new request. 
+
+1. Click the Auth tab.
+
+1. From the Type drop down menu, select OAuth 2.0. The Current Token section displays. 
+
+![Type drop-down menu](Media/typemenu.jpg)
+
+Figure 3: The Type drop-down menu
  
-Figure 10: OpenID Connect Token Authentication
+2. In the Configure New Token section, enter the Client ID and client secret.
 
-### Open ID Connect Configuration
+    >[!note] These values were created during the OIDC provider configuration process. 
 
-The application’s parameters must be configured on the authorization server that will issue the OpenID Connect tokens. The application in this context is the ADAP service. Configure an application for the ADAP service in your OIDC server and note the client ID and secret that are generated for it. Once you have the client ID and secret, the following configuration can be performed on the Main Control Panel. 
+3. Provide the access token URL. 
 
->[!warning] The processes described in this section are not hardened against security risks. For more information on hardening RadiantOne, refer to the [RadiantOne Hardening Guide](/hardening-guide/00-preface). 
+    >[!note] This value can be found using the using the metadata URL from the Authorization Server. 
 
-The RadiantOne ADAP (or SCIM) service queries the RadiantOne service using proxy authorization.
+![Configuring an access token in Postman](Media/configuringtoken.jpg)
 
-**To configure proxy authorization:**
+Figure 4: Configuring an access token in Postman
+
+4. Click Get New Access Token. The new access token's details are displayed. 
+
+![token details](Media/tokendetails.jpg)
+
+Figure 5: The Token Details section in Postman
+ 
+5. Copy this token and decode it for the values needed for configuring a mapping between the token contents and a unique identity in the RadiantOne namespace. You can do this at https://jwt.io/. 
+
+### RadiantOne Configuration
+This section describes configuring proxy authorization, configuring an ADAP external token validator, and Claims to FID User Mapping.
+
+**Configuring Proxy Authorization**
+
+The RadiantOne ADAP service queries the RadiantOne LDAP service using proxy authorization.
+
+To configure proxy authorization: 
 
 1. In the Main Control Panel, navigate to Settings > Server Front End > Supported Controls.
 
@@ -208,29 +243,21 @@ The RadiantOne ADAP (or SCIM) service queries the RadiantOne service using proxy
 
 1. Enable the “Allow Directory Manager to impersonate other users” option and click Save.
 
-**To add an OIDC token validator:**
+**Configuring External Token Validators**
 
-1. In the Main Control Panel, navigate to Settings > Security > External Token Validators. 
+To add an external token validator:
 
-1. Click **Add**. The New ADAP External Token Validator page displays.
-
-![External Token Validator](Media/externaltokenvalidatorpage.jpg)
-
-Figure 24: External Token Validator
-
-1. Name the external token validator.
-
-1. Toggle the Enable switch to On. 
-
-1. Select an OIDC provider from the drop-down menu. 
-
-1. Paste the Metadata URI from your OIDC authorization server into the Discovery URL field. 
-
-1. Click Discover. The JSON Web Key Set URI auto-populates.
-
-1. Use the Expected Audience from your OIDC client to populate the Expected Audience field. 
-
-1. Enter the scope claim name.
+1.  In the Main Control Panel, navigate to Settings > Security > External Token Validators. 
+1.  Click **Add**. The New ADAP External Token Validator page displays.
+![The New ADAP External Token Validator Page](Media/externaltokenvalidatorpage.jpg)
+Figure 6: The New ADAP External Token Validator Page
+1.  Name the external token validator.
+1.  Toggle the Enable switch to On. 
+1.  Select an OIDC provider from the drop-down menu (if applicable, to assist with populating the Discovery URL syntax). Otherwise, skip this step and enter your own Discovery URL. 
+1.  If the Discovery URL is not loaded automatically, paste the Metadata URI from your OIDC authorization server into the Discovery URL field. 
+1.  Click Discover. The JSON Web Key Set URI auto-populates. 
+1.  Use the Expected Audience from your OIDC provider configuration to populate the Expected Audience field.
+1.  Enter the expected Scope.This property determines what information/claims ("sub" indicates Subject) in the token (based on scopes requested) can be used to identify the relevant account in the RadiantOne namespace for enforcing authorization on subsequent requests for this connection. The value of this attribute is used as input for the *Claims to FID User Mapping* configured later in the steps below. The standard claims associated with the scopes are shown in the table below.
 
 Scope	| Claims
 -|-
@@ -240,65 +267,51 @@ Profile	| name, family_name, given_name, middle_name, nickname, preferred_userna
 Phone	| phone_number, phone_number_verified
 Openid	| sub, auth_time, acr
 
-Table 4: Standard Claims per Scope
+  Table 4: Standard Claims per Scope
 
-1. To configure mapping rules to associate the token identity to an identity in the RadiantOne namespace (for enforcing authorization), Click Edit next to Claims to FID User Mapping. The OIDC to FID User Mappings page displays.
-1.	Click Add and define the rule(s) that will translate the identity from the OpenID Connect token to the identity in the RadiantOne namespace. You can do this with either a search expression or a simple DN expression.  For example, if a user authenticates to the OpenID connect server (to request a token) as Aaron_Medler, this value is issued as the identifier subject in the token and must be translated into an identity DN in the RadiantOne namespace when requests are sent. Assuming “Aaron_Medler” is the value in the uid attribute and this account is located in the o=companydirectory naming context, the mapping rule shown below would be needed to translate “Aaron_Melder” into the identity represented as: “uid=Aaron_Medler,ou=Accounting,o=companydirectory”
+1.  Other values can be obtained from the decoded access token. See the [Getting An Access Token](#getting-an-access-token) section for more information.  
 
-  ![Example User to DN Mapping](Media/Image5.12.jpg)
+![Configuring an ADAP External Token Validator](Media/configuringtokenvalidator.jpg)
 
-  Figure 12: Example User to DN Mapping
+Figure 7: Configuring an ADAP External Token Validator
 
-1. Click OK. Click OK again to close the OIDC to FID User Mappings window.
-
-1. Click Save. 
-
-As an alternative to simple DN mapping, you can use a more advanced mapping that leverages a search in the RadiantOne namespace to map a uniquely identifying attribute to a corresponding claim value in the token. In the following image, the attribute **mail** is mapped to the claim value **email**.
+1.  Click Edit next to Claims to FID User Mapping. The OIDC to FID User Mappings page displays.
+1.  Click Add. Use either a Simple DN Expression or a Search Expression to map a uniquely identifying attribute to a corresponding claim value in the token (refer to the [Getting An Access Token](#getting-an-access-token) section for more information). In the following image, a Search Expression is used to map the attribute **mail** to the claim value **email**.
 
 >[!note] In some cases, creating a new attribute may be required.
 
 ![search expression builder](Media/searchexpressionbuilder.jpg)
 
-Figure 27: The Search Expression Builder
+1.  Click OK.
+1.  Click OK again to close the *OIDC to FID User Mappings* window.
+1.  Click Save. 
 
+### Querying RadiantOne REST API (ADAP) with a Token
 
-### Getting an Access Token
+In this example, Postman is the REST client that will issue calls to ADAP. Obtain an OpenID Connect Token for Postman from your OIDC provider. Use the token value in a header configured in a Postman client as follows.
 
-This section describes using the Postman REST client to obtain an access token. 
+1. Request a new access token (see [Getting An Access Token](#getting-an-access-token)). 
+1. Click *Use Token*. This inserts an Authorization header that inserts your bearer token. 
 
-1. Start a new request. 
-1. Click the Auth tab.
-1. From the Type drop down menu, select OAuth 2.0. The Current Token section displays. 
+![Requesting a new access token](Media/requestnewaccesstoken.jpg)
 
-![Type drop-down menu](Media/typemenu.jpg)
+Figure 10: Requesting a new access token
 
-Figure 21: The Type drop-down menu
+1. Send the bearer token to the REST (ADAP) endpoint. In this example, a basic search is performed. 
+
+Field	| Value
+-|-
+URL Syntax	| `http://<RadiantOneServer>:8089/adap/<baseDN>`
+Method	| Get
+Header Name	| Authorization
+Header Value	| Bearer `<token>`
+Example URL	| http://localhost:8089/adap/o=companydirectory
+
+If successful, the operation displays results similar to the following. 
+
+![Successful REST Operation using OpenID Connect Token](Media/Image5.16.jpg)
  
-1. In the Configure New Token section, enter the Client ID and client secret.
-
-    >[!note] These values were created during the OIDC provider configuration process. 
-
-1. Provide the access token URL. 
-
-    >[!note] This value can be found using the using the metadata URL from the Authorization Server. 
-
-![Configuring an access token in Postman](Media/configuringtoken.jpg)
-
-Figure 22: Configuring an access token in Postman
-
-1. Click Get New Access Token. The new access token's details are displayed. 
-
-![token details](Media/tokendetails.jpg)
-
-Figure 23: The Token Details section in Postman
- 
-1. Copy this token and decode it for the values needed by the RadiantOne service. You can do this at https://jwt.io/. This can help with search expression logic to configure the Claims to FID user mapping if needed.
-
-1. Send the bearer token in the REST request to the RadiantOne service. In this example, a basic ADAP search is performed. 
-
-![Sending the bearer token to RadiantOne](Media/bearertoken.jpg)
-
-Figure 29: Sending the bearer token to RadiantOne
+Figure 13: Successful REST Operation using OpenID Connect Token
 
 ### OIDC Token Lifetime
 
