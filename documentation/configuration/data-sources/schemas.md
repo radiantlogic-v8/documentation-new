@@ -21,21 +21,21 @@ In a well-designed relational database, every table has a column, or combination
 
 In a directory, there is a notion of a “unique identifier” which is an attribute in each entry that uniquely identifies it from the sibling entries. This is not something that is explicitly documented in the directory schema; therefore, you must declare the primary key for the object class in the schema file. Typically, the unique identifier in the directory comprises the RDN. For example, if a user DN associated with the *person* object class were: uid=lcallahan,dc=ldap,dc=com, the unique identifier for the person object class would be the uid attribute.
 
-The yellow key next to the attribute in the Fields list denotes it as the primary key for the object (see screen shot below). If no primary key is defined, you can use the right-click menu to edit/define one. For more information see [Declaring Primary Keys](#declaring-primary-keys). 
+The yellow key next to the name in the attributes list denotes it as the primary key for the object (see screen shot below). If no primary key is defined, you can use the right-click menu to edit/define one. For more information see [Declaring Primary Keys](#declaring-primary-keys). 
  
-![An image showing ](Media/Image3.1.jpg)
+![An image showing ](../Media/ldap-pk.jpg)
 
 Figure 3.1: Primary Key of the Object is Shown with a Yellow Key Icon
 
 ### Display Name 
 
-With Schema Manager, you can create a RDN Attribute and Value Name, or alias/display name, for a Primary Key. This allows the user browsing the directory to be shown more useful information. For example, if the Primary Key of a Customer table is CustID with an integer attribute type, then a list of numbers is displayed in the virtual view at run time. Chances are, the person who created the database is the only one for whom those numbers mean anything. Therefore, a display name could be created using the customer’s first name and last name. Instead of the user seeing a number, they now see a more meaningful customer name. The display name is a combination of the primary key and one or more attributes. Because it is comprised of the Primary Key, an RDN Attribute and Value Name is always unique and can qualify as a candidate key. For more information, see [Declaring RDN Attribute Name and Value](#declaring-rdn-attribute-name-and-value). 
+You can create a RDN Attribute and Value Name, or alias/display name, for a Primary Key. This allows the consumer browsing the directory to be shown more useful information. For example, if the Primary Key of a Customer table is CustID with an integer attribute type, then a list of numbers is displayed in the identity view at run time. Chances are, the person who created the database is the only one for whom those numbers mean anything. Therefore, a display name could be created using the customer’s first name and last name. Instead of the consumer of the identity view seeing a number, they now see a more meaningful customer name. The display name is a combination of the primary key and one or more attributes. Because it is comprised of the Primary Key, an RDN Attribute and Value Name is always unique and can qualify as a candidate key. For more information, see [Declaring RDN Attribute Name and Value](#declaring-rdn-attribute-name-and-value). 
 
 ### Derived View 
 
-Derived views result from queries to a base object. These views are built by promoting one of the attributes of the base object to the entity level. Once the view is created, it is added into the schema and this new relationship can be used to create more detailed, flexible views of information. 
+Derived views result from queries to a base object. These views are built by promoting one of the attributes of the base object to the entity level. Once the view is created, it is added into the schema file and this new relationship can be used to create more detailed, flexible views of information. 
 
-For example, let’s say your database includes a table that lists Customers and related attributes, including Country. You need a list of all countries in which you have customers. Derived views allow you to create a view that lists all applicable countries. Derived views contain summary data. For example, in the Customers.Countries derived view shown below all occurrences of one country are combined into one record. 
+For example, let’s say your database includes a table that lists Customers and related attributes, including Country. You can create a list of all countries in which you have customers. Derived views allow you to create a view that lists all applicable countries. Derived views contain summary data. For example, in the Customers.Countries derived view shown below all occurrences of one country are combined into one record. 
 
 ![An image showing ](Media/Image3.2.jpg)
 
