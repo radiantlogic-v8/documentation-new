@@ -8,18 +8,18 @@ A schema file in RadiantOne Identity Data Management contains the metadata perta
 
 Schemas are managed from Control Panel > SETUP > Data Catalog > Data Sources > Selected data source > SCHEMA tab.
 
-It is important to understand that RadiantOne publishes an LDAP schema for client's to query using a base DN of cn=schema. Some clients leverage this information to integrate with the service, while others do not. This schema likely differs from the schemas of the identity data sources (backends). Therefore, if you have client applications that rely on metadata published in the RadiantOne LDAP schema, ensure that you either [Map the Backend Metadata](#mapping-metadata) to objects and attributes in the RadiantOne LDAP schema, or [Extend the RadiantOne LDAP Schema](#Include-in-RadiantOne-LDAP-Schema) with the metadata from the schema files associated with the backends.
+It is important to understand that RadiantOne publishes an LDAP schema for clients to query using a base DN of cn=schema. Some clients leverage this information to integrate with the service, while others do not. This schema likely differs from the schemas of the identity data sources (backends). Therefore, if you have client applications that rely on metadata published in the RadiantOne LDAP schema, ensure that you either [Map the Backend Metadata](#mapping-metadata) to objects and attributes in the RadiantOne LDAP schema, or [Extend the RadiantOne LDAP Schema](#Include-in-RadiantOne-LDAP-Schema) with the metadata from the schema files associated with the backends.
 
 ## Concepts
 The following concepts are important to understand for managing schemas in RadiantOne Identity Data Management.
 
 ### Primary Key 
-In a well-designed relational database, every table has a column, or combination of columns, known as the primary key of the table. These values uniquely identify each row in the table. Occasionally you will find tables that were created in the database, but the uniquely identifying column(s) were not documented in the system catalog as the primary key. Declaring implicit primary keys is one of the database refining processes you perform using Schema Manager. 
+In a well-designed relational database, every table has a column, or combination of columns, known as the primary key of the table. These values uniquely identify each row in the table. Occasionally you will find tables that were created in the database, but the uniquely identifying column(s) were not documented in the system catalog as the primary key. Declaring implicit primary keys is one of the schema refining processes you perform in the Data Catalog. 
 
 >[!warning] 
->All objects you want to virtualize must have a primary key defined, and any attribute that you declare as the primary key in the Schema Manager must be unique for all entries in your table.
+>All objects you want to virtualize in an identity view must have a primary key defined, and any attribute that you declare as the primary key in the schema file must be unique for all entries in your database source table.
 
-In a directory, there is a notion of a “unique identifier” which is an attribute in each entry that uniquely identifies it from the sibling entries. This is not something that is explicitly documented in the directory schema; therefore, you must declare the primary key for the object class in the Schema Manager. Typically, the unique identifier in the directory comprises the RDN. For example, if a user DN were: uid=lcallahan,dc=ldap,dc=com, the unique identifier for the person objectclass would be uid.
+In a directory, there is a notion of a “unique identifier” which is an attribute in each entry that uniquely identifies it from the sibling entries. This is not something that is explicitly documented in the directory schema; therefore, you must declare the primary key for the object class in the schema file. Typically, the unique identifier in the directory comprises the RDN. For example, if a user DN associated with the *person* object class were: uid=lcallahan,dc=ldap,dc=com, the unique identifier for the person object class would be the uid attribute.
 
 The yellow key next to the attribute in the Fields list denotes it as the primary key for the object (see screen shot below). If no primary key is defined, you can use the right-click menu to edit/define one. For more information see [Declaring Primary Keys](#declaring-primary-keys). 
  
