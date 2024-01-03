@@ -60,6 +60,9 @@ To evaluate missing relationships in the Schema Manager, you need a working know
 A recursive relationship is an object related to itself. For example, an employee may be managed by another employee. Therefore, an Employee table would have a recursive relationship with itself. Please see [Declaring Recursive Relationships](#declaring-recursive-relationships) to see how this can be accomplished with the Schema Manager. 
 
 ## Extracting Schemas
+Each identity data source must have at least one schema file associated with it. For LDAP data sources, a schema is extracted when the data source is defined. For all other data sources, the schema must be extracted. If you select a data source that does not have any schemas, a notice appears and prompts the user to extract the schema.
+
+![An image showing No Schemas Found Message ](../Media/no-schema.jpg)
 
 ### LDAP-Accessible Backend 
 
