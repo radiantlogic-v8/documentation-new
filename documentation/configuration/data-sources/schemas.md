@@ -37,7 +37,7 @@ Derived views result from queries to a base object. These views are built by pro
 
 For example, let’s say your database includes a table that lists Customers and related attributes, including Country. You can create a list of all countries in which you have customers. Derived views allow you to create a view that lists all applicable countries. Derived views contain summary data. For example, in the Customers.Countries derived view shown below all occurrences of one country are combined into one record. 
 
-![An image showing ](Media/Image3.2.jpg)
+![An image showing ](../Media/Image3.2.jpg)
 
 Figure 3.2: Base Table and the Derived View on Country
 
@@ -51,9 +51,9 @@ For more information on derived views, see [Creating Derived Views](#creating-de
 
 ### Relationships 
 
-If relationships exist in a database and are not explicitly declared in the system catalog, then the schema extraction process does not capture them. Some relationships are created implicitly (exist in the application, but are not recorded within the database dictionary). This is fine if you do not need to build a virtual view based on the relationships. On the other hand, if you want to use the existing relationships to build virtual views, then you must establish the relationships in the Schema Manager. 
+If relationships exist in a database and are not explicitly declared in the system catalog, then the schema extraction process does not capture them. Some relationships are created implicitly (exist in the application, but are not recorded within the database dictionary). This is fine if you do not need to build a virtual view based on the relationships. On the other hand, if you want to use the existing relationships to build virtual views, then you must define the relationships in the schema file. 
 
-To evaluate missing relationships in the Schema Manager, you need a working knowledge of the underlying database application on which the schema is based. Once you have determined which relationships are missing, you can declare them by using the Define Relationships option from the right-click menu available when an object is selected. For more information, see [Declaring Implicit Relationships](#declaring-implicit-relationships). 
+To evaluate missing relationships in the schema file, you need a working knowledge of the underlying database application on which the schema is based. Once you have determined which relationships are missing, you can declare them by using the Define Relationships option from the right-click menu available when an object is selected. For more information, see [Declaring Implicit Relationships](#declaring-implicit-relationships). 
 
 ### Recursive Relationships 
 
@@ -64,30 +64,26 @@ Each identity data source must have at least one schema file associated with it.
 
 ![An image showing No Schemas Found Message ](../Media/no-schema.jpg)
 
+Schemas can also be extracted using the **...** > Extract New Schema option.
+
+![An image showing No Schemas Found Message ](../Media/extract-new-schema.jpg)
+
 ### LDAP-Accessible Backend 
 
 Examples of LDAP-accessible backends are Sun Java Directory, Microsoft Active Directory, IBM Tivoli Directory, eDirectory, Red Hat Directory, and OpenLDAP. The LDAP data source must be created before completing the schema extraction steps below. See [Data Sources](/data-sources.md) for details about creating data sources.
 
 1. In the Control Panel > SETUP > Data Catalog > Data Sources > Selected Data Source > SCHEMA Tab, click **...** > Extract New Schema.
 
-2.	Enter a schema file name.
+2.	Enter a schema file name and click **OK**.
 
-3.	Select a data source and click Get DNs. Select the DN that contains the identities needed for your use case and click OK.
-
-4.	Click Next.
-
-5.	Select the object classes to be extracted and click Next. 
-
-![An image showing ](Media/Image3.7.jpg)
+![An image showing ](../Media/Image3.7.jpg)
 
 Figure 3.7: Extract LDAP Schema Wizard
-
-6.	Enter a name for the file and click Create Schema. A schema file is generated and contains the metadata about the selected objects. This schema file is stored on the file system at <RLI_HOME>\vds_server\lod\<schema name>.orx. An LDIF formatted file containing the schema is also saved in the lod folder (with the same name as the .orx file) and is used to retrieve object class and attribute definitions if the metadata is used to extend the RadiantOne LDAP schema. For details on extending the schema, see the RadiantOne System Administration Guide.
 
 >[!warning] 
 >DO NOT USE HYPHENS (-) IN FILE NAMES. 
 
-You can view and modify this schema by opening the .orx file in the Schema Manager tab. Any changes made do not affect the underlying schema.
+You can view/modify this schema by selecting if from the drop-down list. Any changes made (such as attribute name remapping), do not affect the underlying schema. 
 
 **Handling Auxiliary Object Classes from LDAP Backends** 
 
