@@ -701,7 +701,8 @@ To configure replication across sites, follow the steps below.
     
     Figure 7.24: Option to Redirect Binds to the Cache Refresh Site
 
-    >[!note] If the ‘[Use Cache for Authentication](02-tuning-tips-for-caching-in-radiantone#use-cache-for-authentication)’ option is enabled for the persistent cache in the primary (cache refresh) site, the passwords are stored in the cache and authentication is handled locally by RadiantOne as opposed to being delegated to the backend. In this scenario, the passwords are replicated to the Universal Directory stores located on all other sites. This allows the Universal Directory stores on these sites to handle bind operations locally and not require a bind redirect to the primary (cache) site.
+>[!note]
+>If the ‘[Use Cache for Authentication](02-tuning-tips-for-caching-in-radiantone#use-cache-for-authentication)’ option is enabled for the persistent cache in the primary (cache refresh) site, the passwords are stored in the cache and authentication is handled locally by RadiantOne as opposed to being delegated to the backend. In this scenario, the passwords are replicated to the Universal Directory stores located on all other sites. This allows the Universal Directory stores on these sites to handle bind operations locally and not require a bind redirect to the primary (cache) site.
 
 14.	On the leader node of the primary/main (cache refresh) site, configure the persistent cache to support Inter-Cluster Replication. Go to the Main Control Panel -> Directory Namespace Tab. Expand the Cache node and select the applicable persistent cache. On the Properties tab on the right, check the box for Inter-cluster replication. Click **Save**.
 
