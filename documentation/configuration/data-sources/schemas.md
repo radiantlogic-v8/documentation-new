@@ -43,7 +43,7 @@ Figure 3.2: Base Table and the Derived View on Country
 
 You can create derived views by using the right-click menu on the object that contains the attribute you want to create a derived view from. 
 
- ![An image showing ](Media/Image3.3.jpg)
+ ![An image showing ](../Media/derived-view-option.jpg)
 
 Figure 3. 3: Define Derived Views
 
