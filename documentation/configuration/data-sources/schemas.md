@@ -177,7 +177,7 @@ To declare and modify the primary keys:
 
 1. 	To remove the column(s) from the key(s) list, choose the column(s) and click the left arrow button. 
 
-![An image showing ](..Media/set-primary-keys.jpg)
+![An image showing ](../Media/set-primary-keys.jpg)
  
 1. 	Click **OK** when finished. The key(s) you selected are now declared as the primary key. 
 
@@ -185,11 +185,11 @@ To declare and modify the primary keys:
 Once the metadata has been captured, the next step is to improve it in a way that best serves your needs. This may involve declaring implicit relationships.
 
 >[!note] 
->Changes made in the schema settings do not affect the underlying schema.
+>Changes made in the schema file do not affect the underlying schema.
 
-Sometimes a database schema does not contain all relationships that can exist between objects. The Schema Manager cannot capture these implicit relationships that are known by the programmers but not declared in the database data dictionary. You should declare any relationships you will need for your virtual views. 
+Sometimes a database schema does not contain all relationships that can exist between objects. The schema extraction process cannot capture these implicit relationships that are known by the programmers but not declared in the database data dictionary. You should declare any relationships you will need for your virtual views. 
 
-The Schema Manager provides the information and resources to help you identify, and then declare any relationships and primary keys that are not explicit in the database definition. The declaration process is a critical step as it affects the quality of the virtual views that are created using the View Designer tool. Any undeclared relationships or primary keys result in a meaningless path, directly affecting the quality or availability of information displayed in the virtual views.
+The declaration process is a critical step as it affects the quality of the virtual views that are created. Any undeclared relationships or primary keys result in a meaningless path, directly affecting the quality or availability of information displayed in the virtual views.
 
 The Relationships dialog box requires source and destination tables (or views). When setting relationships, it does not matter which entity is the source and which is the destination. 
 
@@ -201,13 +201,14 @@ To set a relationship between two objects:
 
 ![An image showing ](Media/Image3.15.jpg)
 
-Figure 3.15: Relationships Dialog Box
-
-2.	Select the destination object that has a relationship with the source object. 
-3.	Choose the column(s) from the source and the matching column in the destination and then click 
+2.	Select the Relationship Type. Choose *Regular* for relationships across unique objects and *Recursive* for an object that has a relationship with itself.
+3. Select an object from the Source Object drop-down list.
+4. Select the attribute from the Source Attribute drop-down list that contains the value to be used to relate to the secondary object.
+5.	Select the destination object that has a relationship with the source object from the Related Object drop-down list. 
+6.	Choose the attribute from the Related Attribute drop-down list that contains the value to be used to relate to the source object. 
 ![An image showing ](Media/definerelationships.jpg).
 
-4.	Click Apply when finished to establish the relationship. The relationships are created and appear at the bottom of the list of relationships. 
+7.	Click **OK**. The relationships are created and appear at the bottom of the list of relationships in the schema file.
 
 ### Declaring Recursive Relationships 
 Once the metadata has been captured, the next step is to improve it in a way that best serves your needs. This may involve declaring recursive relationships.
