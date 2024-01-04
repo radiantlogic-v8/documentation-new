@@ -171,13 +171,13 @@ To declare and modify the primary keys:
 
 1.	 Right-click on the desired object and choose Edit Primary Key. 
 
-    ![An image showing ](../Media/edit-primary-key.jpg)
+![An image showing ](../Media/edit-primary-key.jpg)
 
 1.	 Choose the column(s) from the Attributes List that you want to use as the primary key and click the right arrow button. 
 
 1. 	To remove the column(s) from the key(s) list, choose the column(s) and click the left arrow button. 
 
-    ![An image showing ](..Media/set-primary-keys.jpg)
+![An image showing ](..Media/set-primary-keys.jpg)
  
 1. 	Click **OK** when finished. The key(s) you selected are now declared as the primary key. 
 
