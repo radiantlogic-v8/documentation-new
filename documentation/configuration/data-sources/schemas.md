@@ -25,7 +25,6 @@ The yellow key next to the name in the attributes list denotes it as the primary
  
 ![An image showing ](../Media/ldap-pk.jpg)
 
-Figure 3.1: Primary Key of the Object is Shown with a Yellow Key Icon
 
 ### Display Name 
 
@@ -39,13 +38,9 @@ For example, let’s say your database includes a table that lists Customers and
 
 ![An image showing ](../Media/Image3.2.jpg)
 
-Figure 3.2: Base Table and the Derived View on Country
-
 You can create derived views by using the right-click menu on the object that contains the attribute you want to create a derived view from. 
 
- ![An image showing ](../Media/derived-view-option.jpg)
-
-Figure 3. 3: Define Derived Views
+![An image showing ](../Media/derived-view-option.jpg)
 
 For more information on derived views, see [Creating Derived Views](#creating-derived-views). 
 
@@ -78,8 +73,6 @@ Examples of LDAP-accessible backends are Sun Java Directory, Microsoft Active Di
 
 ![An image showing ](../Media/Image3.7.jpg)
 
-Figure 3.7: Extract LDAP Schema Wizard
-
 >[!warning] 
 >DO NOT USE HYPHENS (-) IN FILE NAMES. 
 
@@ -87,26 +80,26 @@ You can view/modify this schema by selecting if from the drop-down list. Any cha
 
 **Handling Auxiliary Object Classes from LDAP Backends** 
 
-Sometimes, an LDAP entry in a directory is comprised of more than one object class where the object classes do not necessarily inherit from each other. This is referred to as an auxiliary class. For example, a person entry in the directory can be a part of an object class such as inetOrgPerson and also contain attributes from a custom object class like rliuser (this is the auxiliary class). During the schema extraction, since the object classes do not inherit from each other, they are displayed as two separate objects each having their own list of attributes. To retrieve the proper information from the directory in the virtual view, you must merge the objects together in the Schema Manager. 
+Sometimes, an LDAP entry in a directory is comprised of more than one object class where the object classes do not necessarily inherit from each other. This is referred to as an auxiliary class. For example, a person entry in the directory can be a part of an object class such as inetOrgPerson and also contain attributes from a custom object class like rliuser (this is the auxiliary class). During the schema extraction, since the object classes do not inherit from each other, they are displayed as two separate objects each having their own list of attributes. To retrieve the proper information from the directory in the virtual view, you must merge the objects together in the schema file. 
 
 To merge object classes together: 
 
-1.	Right-click on the structured object class in the list and select Merge Objects. 
+1.	 Right-click on the structured object class in the list and select Merge Objects. 
 
-2.	Select the auxiliary object class from the list that you would like to merge with (RLIUser for example) and click OK.
+2.  Enter an object name for the merged object to be created.
+  
+3.	 Select the auxiliary object class from the list that you would like to merge with (RLIUser for example).
 
-3.	Enter a unique name for the merged object and click OK. 
+4.	Click **OK**. 
 
-4.	A new object is created below the Views branch and contains all attributes from both object classes. The virtual view can be created from this merged object and the virtual entries can contain attributes from either of the object classes. 
+![An image showing ](../Media/define-merged-object.jpg)
 
-![An image showing ](Media/Image3.8.jpg)
-
-Figure 3.8: Merging LDAP Object Classes
+A new object is created below the Views branch and contains all attributes from both object classes. A virtual view can be created from this merged object and the entries can contain attributes from either of the object classes. 
 
 >[!warning] 
 >The direction in which you merge the objects is significant because the ‘base’ object (the structured object class) is used in the filter for the query that is sent to the backend directory. You can see this in the View Designer, Attributes tab for the node in the view definition that is built from the merged object. This can be seen in the screen shot below. Note that the attributes defined for this virtual node come from both the structured objectclass inetorgperson (uid, cn, displayName) and the auxiliary objectclass, RLIUser (rliuserattribute2, rliuserattribute3).
 
-![An image showing ](Media/Image3.9.jpg)
+![An image showing ](../Media/example-merged-object.jpg)
 
 Figure 3.9: Sample Virtual View Built from Merged Object Class
 
