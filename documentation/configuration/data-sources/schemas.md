@@ -116,35 +116,25 @@ Figure 3.9: Sample Virtual View Built from Merged Object Class
 
 ### JDBC-Accessible Database Backend 
 
-Any data source that supports a JDBC driver can be extracted using the Schema Manager. Examples of JDBC-accessible backends are Microsoft SQL Server, Oracle, DB2, and Sybase. RadiantOne also includes a JDBC driver for accessing Salesforce. The driver name is radiantsalesforce and it appears in the Description drop-down list when extracting a database schema. 
-
-![An image showing ](Media/Image3.10.jpg)
-
-Figure 3.10: RadiantOne Salesforce JDBC Driver
+Examples of JDBC-accessible backends are Microsoft SQL Server, Oracle, DB2, and Sybase. 
 
 The database data source must be created before completing the schema extraction steps below. See [Data Sources](/data-sources.md) for details about creating data sources.
-1.	In the Schema Manager click the Create button (Plus sign).
-2.	Select the Database option and Click Next. 
-3.	Select a data source and click Next. 
-4.	Include Schema Name and User Authentication Information if needed. You can limit the types of objects to be returned by selecting tables, views, system tables, or synonyms. If you would like all types of objects returned, then select all options. If you only want a subset of the selected objects returned, then you can enter a pattern for the Table Pattern parameter using the “%” for a wildcard character. For example, if you want to return only tables that start with “N”, then for the Table Pattern you can enter N%.
-
->[!note] 
->The ANSI standard syntax for naming relational database tables is catalog.schema.table. Therefore, if you are authenticating as a user who has access to multiple different schemas, and want to narrow the search, you can enter in the specific schema name.
-
-5.	Click Next to proceed and select the desired Tables and Views from the list.
+1.	In the Control Panel > SETUP > Data Catalog > Data Sources > Selected Data Source > SCHEMA Tab, click **...** > Extract New Schema.
+2.	Enter a schema file name.
+3. The ANSI standard syntax for naming relational database tables is catalog.schema.table. Therefore, if you are authenticating as a user who has access to multiple different schemas, and want to narrow the search, you can enter in the specific schema name in the Database Schema property.
+4.	Limit the types of objects to be returned by selecting tables, views, system tables, or synonyms. If you would like all types of objects returned, then select all options. If you only want a subset of the selected objects returned, then you can enter a pattern for the Table Pattern parameter using the “%” for a wildcard character. For example, if you want to return only tables that start with “N”, then for the Table Pattern you can enter N%.
+5.	Click **NEXT** to proceed and select the desired Tables and Views from the list.
  
-![An image showing ](Media/Image3.11.jpg)
+![An image showing ](../Media/Image3.11.jpg)
 
 Figure 3.11: Sample Table and View List 
 
-6.	Click Next, then enter the name of the new .orx file. 
+6.	Click **EXTRACT**. This creates the schema file.
 
     >[!note] 
     >DO NOT USE HYPHENS (-) IN FILE NAMES.
 
-7.	Click Create Schema to start the database schema extraction process. This generates the schema (orx) file, an XML representation of the schema. 
-
-You can view/modify this schema by opening the .orx file in the Schema Manager tab. Any changes made (such as declaring primary keys or creating relationships), do not affect the underlying schema. 
+You can view/modify this schema by selecting if from the drop-down list. Any changes made (such as declaring primary keys or creating relationships), do not affect the underlying schema. 
 
 ### SCIMv2 Backends
 
