@@ -35,7 +35,7 @@ For LDAP Data Sources:
 
 PROPERTY	| DESCRIPTION
 -|-
-Host	| Fully-qualified server name or IP address for the identity source.
+Host	| Fully-qualified server name or IP address for the identity source. For Active Directory sources, if you want to use host discovery, you can enter the Active Directory domain here surrounded by [ ].
 Port	| A numeric value indicating the port number the LDAP service is listening on.
 SSL	|  Toggled ON if SSL/TLS should be used in the connection to the backend. Enter the SSL port in the Port property. Toggled OFF if SSL/TLS should not be used. Enter the non-SSL port in the Port property.
 Bind DN	| Service account credentials that the RadiantOne service should use to connect to the backend. Enter a full user DN.
@@ -74,6 +74,37 @@ For LDAP backends, RadiantOne attempts to connect to failover servers only if th
 >[!note] Not all custom data sources support test connection, meaning this may return a connection error even if all properties have been configured successfully.
 
 1.  Click **CREATE**. The new data source appears in the list of configured sources and is briefly noted with a *new* tag next to it.
+
+**Host Discovery**
+Automatic host discovery can be used when connecting to underlying Active Directory servers using DNS lookups.
+
+>[!warning] if you plan to use persistent cache with real-time/connector-based refresh for your virtual view of Active Directory, do not use host discovery since the native Active Directory capture connector requires the FQDN of the primary and failover servers defined in the data source, in combination with the replication vector to perform failover. If you do not plan on caching your virtual view and/or you plan on using a periodic refresh strategy, then using host discovery is fine.
+
+The LDAP services reached are the ones published in the DNS service record. If the LDAP service is not published, it cannot be reached (the service is defined by a host AND port in the SRV record). Some examples are shown below (0 means highest priority level)
+
+_ldap._tcp.example.com. SRV 1 100 389 ldap.example.net
+_ldap._tcp.example.com. SRV 0 100 636 ldap.example.net
+
+DNS lookups leverage the domain specified in the host parameter. When the specific domain is set in the host parameter, the BaseDN value can be omitted. To use this functionality, the host option should specify the domain name you are interested in and optionally a port (if you are looking for a specific service on a specific port). If you do specify a port, then RadiantOne tries to get the first LDAP service it finds that is listening on that specific port (no matter what order of that particular service in the srv record). Additionally, if you enter a port and there is no LDAP service available on that port, RadiantOne uses the first LDAP service returned from the srv record.
+
+>[!note] The number of LDAP services available in the SRV record that RadiantOne uses as the “main/primary” and “failover” servers is indicated by the Active Dir. SRV Record Limit properety that is configured in Classic Control Panel > Settings > Server Backend > Connection Pooling/Other section. RadiantOne uses these servers to automatically failover if the primary LDAP is down. Do not manually specify failover servers in the data source.
+
+Below are some examples of the syntax.
+
+Example 1 - Host specified with port set to 0 (a value of zero means no port is indicated). This uses the novato.radiantlogic.com domain and returns the first server found as there is no specific port mentioned.
+
+`host:[domain:novato.radiantlogic.com] 
+port:0`
+
+Example 2 - This example tries to get the 'global catalog' ldap service (the one listening on port 3268).
+
+`host:[domain:radiantlogic.com]
+port: 3268`
+
+Example 3 - This example tries to get an SSL connection to the LDAP server (on port 636).
+
+`host: [domain:na.radiantlogic.com] port: 636`
+
    
 ### Updating Data Sources
 To update a data source, navigate to Control Panel > SETUP > Data Catalog > Data Sources. Click the data source name in the list of configured sources. The connection properties displays. Update the properties and click **SAVE**.
