@@ -68,9 +68,9 @@ Each identity data source must have at least one schema file associated with it.
 
 Examples of LDAP-accessible backends are Sun Java Directory, Microsoft Active Directory, IBM Tivoli Directory, eDirectory, Red Hat Directory, and OpenLDAP. The LDAP data source must be created before completing the schema extraction steps below. See [Data Sources](/data-sources.md) for details about creating data sources.
 
-1.	In the Schema Manager click Create (Plus sign).
+1. In the Control Panel > SETUP > Data Catalog > Data Sources > Selected Data Source > SCHEMA Tab, click **...** > Extract New Schema.
 
-2.	Choose the LDAP option and click Next. 
+2.	Enter a schema file name.
 
 3.	Select a data source and click Get DNs. Select the DN that contains the identities needed for your use case and click OK.
 
@@ -129,7 +129,7 @@ The database data source must be created before completing the schema extraction
 
 Figure 3.11: Sample Table and View List 
 
-6.	Click **EXTRACT**. This creates the schema file.
+6.	Click **EXTRACT**. This creates the schema file and adds it into the drop-down list next to *Schema Name*.
 
     >[!note] 
     >DO NOT USE HYPHENS (-) IN FILE NAMES.
