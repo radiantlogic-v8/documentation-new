@@ -97,11 +97,10 @@ To merge object classes together:
 A new object is created below the Views branch and contains all attributes from both object classes. A virtual view can be created from this merged object and the entries can contain attributes from either of the object classes. 
 
 >[!warning] 
->The direction in which you merge the objects is significant because the ‘base’ object (the structured object class) is used in the filter for the query that is sent to the backend directory. You can see this in the View Designer, Attributes tab for the node in the view definition that is built from the merged object. This can be seen in the screen shot below. Note that the attributes defined for this virtual node come from both the structured objectclass inetorgperson (uid, cn, displayName) and the auxiliary objectclass, RLIUser (rliuserattribute2, rliuserattribute3).
+>The direction in which you merge the objects is significant because the ‘base’ object (the structured object class) is used in the filter for the query that is sent to the backend directory. Note that the attributes defined for this merged object come from both the structured objectclass inetorgperson (uid, cn, displayName) and the auxiliary objectclass, RLIUser (rliuserattribute2, rliuserattribute3).
 
 ![An image showing ](../Media/example-merged-object.jpg)
 
-Figure 3.9: Sample Virtual View Built from Merged Object Class
 
 ### JDBC-Accessible Database Backend 
 
@@ -116,8 +115,6 @@ The database data source must be created before completing the schema extraction
  
 ![An image showing ](../Media/Image3.11.jpg)
 
-Figure 3.11: Sample Table and View List 
-
 6.	Click **EXTRACT**. This creates the schema file and adds it into the drop-down list next to *Schema Name*.
 
     >[!note] 
@@ -129,18 +126,15 @@ You can view/modify this schema by selecting if from the drop-down list. Any cha
 
 The SCIMv2 data source must be created before completing the schema extraction steps below. See [Data Sources](/data-sources.md) for details about creating data sources.
 
-1.	In the Schema Manager click Create (Plus sign).
-2.	Select the SCIMv2.0 option and click OK. 
-3.	Select a SCIM data source from the drop-down list and click Next. 
-4.	Select the SCIM resource types from the list and click Next.
+1.	 In the Control Panel > SETUP > Data Catalog > Data Sources > Selected Data Source > SCHEMA Tab, click **...** > Extract New Schema.
+1.	 Enter a schema file name.
+1.	 Click **NEXT** to proceed and select the desired SCIM resource types.
 
-![An image showing ](Media/Image3.12.jpg)
- 
-Figure 3.12: SCIM Schema Objects
+    ![An image showing ](Media/Image3.12.jpg)
 
-5.	Enter a schema file name and click Create Schema. This generates the schema (orx) file, an XML representation of the schema. 
+1.	 Click **EXTRACT**. This creates the schema file and adds it into the drop-down list next to *Schema Name*. 
 
-You can view/modify this schema by opening the .orx file in the Schema Manager tab. 
+You can view/modify this schema by selecting if from the drop-down list. Any changes made do not affect the underlying schema.
 
 ### Custom Backends
 
@@ -148,7 +142,7 @@ You can view/modify this schema by opening the .orx file in the Schema Manager t
 ## Managing Schemas
 ### Displaying Objects and Relationships 
 
-When you open a schema (orx) file, the Schema Manager displays the objects in alphabetical order. Objects are tables and views (for databases), or object classes (for LDAP directories). As you select an object, information about that object appears on the right side.
+When you select a schema (orx) file next to the *Schema Name* drop-down list, the objects are displayed in alphabetical order. Objects are tables and views (for databases), or object classes (for LDAP directories). As you select an object, information about that object appears on the right side.
 
 >[!note] 
 >If you select the Fields (for database objects) or Attributes (for LDAP objects) node (below a specific object) the Nullable column on the right side indicates which attributes are required. Attributes that have a ‘false’ value in the Nullable column are required. Attributes that have a ‘true’ value are optional. This is important to know if you want to insert users into the backend. Make sure that all required attributes are populated for the new entry or else the insert operation will fail in the underlying source.
@@ -159,7 +153,6 @@ The figure shown below displays all tables, views and relationships from the sam
  
 ![An image showing ](Media/Image3.5.jpg)
 
-Figure 3.5: Schema Manager View of Objects and Relationships
 
 ### Declaring Primary Keys 
 Once the metadata has been captured, the next step is to improve it in a way that best serves your needs. This may involve declaring primary keys.
@@ -170,26 +163,23 @@ Once the metadata has been captured, the next step is to improve it in a way tha
 Primary keys that are implicit, but not declared in the data dictionary, are not included in schema files unless you declare them. 
 
 >[!warning] 
->All objects you want to create virtual views from must have a primary key defined, and any attribute that you declare as the primary key in the Schema Manager must be unique for all entries in your table.
+>All objects you want to create virtual views from must have a primary key defined, and any attribute that you declare as the primary key in the schema file must be unique for all entries in your table.
 
 For directory schemas, declare the attribute that uniquely identifies each entry as the primary key. 
+
 To declare and modify the primary keys: 
 
-1.	Right-click on the desired object and choose Edit Primary Key. 
+1.	 Right-click on the desired object and choose Edit Primary Key. 
 
-![An image showing ](Media/Image3.13.jpg)
+    ![An image showing ](../Media/edit-primary-key.jpg)
 
-Figure 3.13: Editing the Primary Key
+1.	 Choose the column(s) from the Attributes List that you want to use as the primary key and click the right arrow button. 
 
-2.	Choose the column(s) from the Attributes List that you want to use as the primary key and click the right arrow button. 
+1. 	To remove the column(s) from the key(s) list, choose the column(s) and click the left arrow button. 
 
-3.	To remove the column(s) from the key(s) list, choose the column(s) and click the left arrow button. 
-
-![An image showing ](Media/Image3.14.jpg)
+    ![An image showing ](..Media/set-primary-keys.jpg)
  
-Figure 3.14: Primary Key Dialog Box
-
-4.	Click Apply when finished. The key(s) you selected are now declared as the primary key. 
+1. 	Click **OK** when finished. The key(s) you selected are now declared as the primary key. 
 
 ### Declaring Implicit Relationships
 Once the metadata has been captured, the next step is to improve it in a way that best serves your needs. This may involve declaring implicit relationships.
