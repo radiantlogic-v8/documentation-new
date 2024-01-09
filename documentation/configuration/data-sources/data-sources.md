@@ -145,7 +145,7 @@ Select the data sources to include in the export and click **EXPORT**
 
 ![An image showing export data sources screen](../Media/selected-data-sources.jpg)
 
-WHERE DO THE EXPORTED FILES GO???
+Your internet browser settings determine the download location. The download file is named fid-datasources-export.json.
 
 ## Managing Templates
 Each identity data source is associated with a template. The template indicates all properties required to connect to the data source. RadiantOne includes some default templates and new templates can be created for JDBC-accessible databases and other data sources than can be queried through a web services API.
