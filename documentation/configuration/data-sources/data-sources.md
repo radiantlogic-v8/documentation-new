@@ -97,12 +97,11 @@ Verify SSL Certificate Hostname	| This setting is only applicable if SSL is used
 
 For LDAP backends, RadiantOne attempts to connect to failover servers only if there is an error in connection to the primary server (it attempts to connect twice) or if the SSL certificate for the backend server is expired.
 
->[!note] 
->If your data source is Active Directory and you are using Host Discovery in your data source settings, there is no need to define failover server. RadiantOne automatically leverages the first five LDAP servers listed in the SRV record as primary/failover servers. 
+   >[!note] If your data source is Active Directory and you are using Host Discovery in your data source settings, there is no need to define failover server. RadiantOne automatically leverages the first five LDAP servers listed in the SRV record as primary/failover servers. 
 
 1.  Click **TEST CONNECTION**.
 
->[!note] Not all custom data sources support test connection, meaning this may return a connection error even if all properties have been configured successfully.
+   >[!note] Not all custom data sources support test connection, meaning this may return a connection error even if all   properties have been configured successfully.
 
 1.  Click **CREATE**. The new data source appears in the list of configured sources and is briefly noted with a *new* tag next to it.
 
