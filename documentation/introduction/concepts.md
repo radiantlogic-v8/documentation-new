@@ -47,9 +47,9 @@ If you have existing data sources defined ([exported](#to-export-data-sources) f
 
 ### To Export Data Sources
 
-If you have existing data sources defined in a RadiantOne server and you would like to re-use them for another RadiantOne server, from the Main Control Panel > Settings Tab > Server Backend click on the sub-section representing the types of data sources you want to export (LDAP Data Sources, Database Data Sources or Custom Data Sources). On the right side, click **Export**. Select the data sources you want to export, indicate a file name and location and click **OK**.
+If you have existing data sources defined in a RadiantOne server and you would like to re-use them for another RadiantOne server, from the Main Control Panel > Data Catalog > Data Sources, click **...** in the upper-right corner and select **Export**). Select the data sources you want to export, indicate a file name and location and click **Export**.
 
-![exporting data sources](Media/Image2.2.jpg)
+![exporting data sources](Media/exporting-data-sources.png)
 
 Figure 2: Exporting Data Sources
 
