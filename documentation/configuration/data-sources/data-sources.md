@@ -84,7 +84,6 @@ Password	| Credentials associated with the account indicated in the User propert
 **For Custom Data Sources:**
 The property names can vary and are dictated by the template.
 
-
 1.  Configure applicable properties in the Advanced section (only applicable for LDAP data sources).
 
 PROPERTY	| DESCRIPTION
