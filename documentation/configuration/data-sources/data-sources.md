@@ -21,13 +21,13 @@ To create a data source:
 1.  Select a template associated with the identity data source type from the list. Use the Search field to quickly find a template name, or click on LDAP, DATABASE or OTHER tabs to narrow down the template choices by type. JDBC-accessible source templaes are located on the DATABASE tab. LDAP-accessible data source templates are located on the LDAP tab. Custom data source templates are located on the OTHER tab.
 1.  Enter the basic details about the identity data source.
 
-PROPERTY	| DESCRIPTION
--|-
-Data Source Name	| Unique name representing the identity source backend. Do not use spaces, commas, brackets or parenthesis, colons, or the word “domain”.
-Data Source Type	| Auto-populated, non-editable. Based on the template.
-Secure Data Connector	|  The Secure Data Connector group used to establish a connection to an identity data source in a different network, like one running in an on-prem data center.
-Description	| Details about the identity source backend.
-Status	| Toggled to either OFFLINE (indicates the identity source is not available and should not be accessed by the RadiantOne service) or ACTIVE (indicates the identity source is available and can be accessed by the RadiantOne service).
+   PROPERTY	| DESCRIPTION
+   -|-
+   Data Source Name	| Unique name representing the identity source backend. Do not use spaces, commas, brackets or parenthesis, colons, or the word “domain”.
+   Data Source Type	| Auto-populated, non-editable. Based on the template.
+   Secure Data Connector	|  The Secure Data Connector group used to establish a connection to an identity data source in a different network, like one running in an on-prem data center.
+   Description	| Details about the identity source backend.
+   Status	| Toggled to either OFFLINE (indicates the identity source is not available and should not be accessed by the RadiantOne service) or ACTIVE (indicates the identity source is available and can be accessed by the RadiantOne service).
 
 1.  Enter the Connection details. These properties vary depending on the type of identity source.
 
