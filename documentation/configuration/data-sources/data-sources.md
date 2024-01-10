@@ -95,7 +95,7 @@ Verify SSL Certificate Hostname	| This setting is only applicable if SSL is used
 
 1.  Configure Failover servers. For database backends, select the configured database data source that contains the failover server connection details. For LDAP backends, click **NEW** and enter the host, port and SSL option to connect to the failover server. For LDAP backends, you can configure as many LDAP failover servers as needed.
 
-For LDAP backends, RadiantOne attempts to connect to failover servers only if there is an error in connection to the primary server (it attempts to connect twice) or if the SSL certificate for the backend server is expired.
+   For LDAP backends, RadiantOne attempts to connect to failover servers only if there is an error in connection to the primary server (it attempts to connect twice) or if the SSL certificate for the backend server is expired.
 
    >[!note] If your data source is Active Directory and you are using Host Discovery in your data source settings, there is no need to define failover server. RadiantOne automatically leverages the first five LDAP servers listed in the SRV record as primary/failover servers. 
 
@@ -104,7 +104,6 @@ For LDAP backends, RadiantOne attempts to connect to failover servers only if th
    >[!note] Not all custom data sources support test connection, meaning this may return a connection error even if all   properties have been configured successfully.
 
 1.  Click **CREATE**. The new data source appears in the list of configured sources and is briefly noted with a *new* tag next to it.
-
    
 ### Updating Data Sources
 To update a data source, navigate to Control Panel > SETUP > Data Catalog > Data Sources. Click the data source name in the list of configured sources. The connection properties displays. Update the properties and click **SAVE**.
