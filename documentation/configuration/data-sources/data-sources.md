@@ -23,11 +23,11 @@ To create a data source:
 
    PROPERTY	| DESCRIPTION
    -|-
-   Data Source Name	| Unique name representing the identity source backend. Do not use spaces, commas, brackets or parenthesis, colons, or the word “domain”.
+   Data Source Name	| Unique name representing the identity source backend. Do not use spaces, commas, brackets or          parenthesis, colons, or the word “domain”.
    Data Source Type	| Auto-populated, non-editable. Based on the template.
-   Secure Data Connector	|  The Secure Data Connector group used to establish a connection to an identity data source in a different network, like one running in an on-prem data center.
+   Secure Data Connector	|  The Secure Data Connector group used to establish a connection to an identity data source       in a different network, like one running in an on-prem data center.
    Description	| Details about the identity source backend.
-   Status	| Toggled to either OFFLINE (indicates the identity source is not available and should not be accessed by the RadiantOne service) or ACTIVE (indicates the identity source is available and can be accessed by the RadiantOne service).
+   Status	| Toggled to either OFFLINE (indicates the identity source is not available and should not be accessed by the    RadiantOne service) or ACTIVE (indicates the identity source is available and can be accessed by the RadiantOne          service).
 
 1.  Enter the Connection details. These properties vary depending on the type of identity source.
 
