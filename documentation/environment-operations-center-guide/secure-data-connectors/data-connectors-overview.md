@@ -30,8 +30,6 @@ The *Secure Data Connector* home screen provides an overview of all your organiz
 The list of data connectors is organized by group. Each group has a set of RadiantOne environments that are allowed to use the data connectors belonging to that group.
 Each group contains a list of data connectors and their associated information (name, description, status). You can expand/collapse each group to show or hide the associated data connectors.
 
-![image description](images/connector-info-bar.png)
-
 ![image description](images/connector-info-expanded.png)
 
 ### Adding a New Data Connector
