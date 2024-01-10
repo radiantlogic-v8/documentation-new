@@ -612,9 +612,9 @@ The default is "None" meaning that no special checking of the input value(s) is 
 
 **Configure custom code/function**
 
-If the **Custom Function Action** is chosen, you can create a new function for your transformation script, or call an existing custom function. If you have existing custom functions, the names appear in the drop-down list for you to choose from. After you select **OK**, select **OK** again and then select **Save**. Then select ![Less than and greater than symbols](./Media/image86.png) on the **Rule Set** page to edit the transformation script. Locate your custom function to edit the code in the web editor. You can use an [IDE like Eclipse](../script.md#use-a-java-ide-to-customize-scripts) instead of the web editor if you prefer.
+If the **Custom Function Action** is chosen, you can create a new function for your transformation script, or call an existing custom function. If you have existing custom functions, the names appear in the drop-down list for you to choose from. After you select **OK**, select **OK** again and then select **Save**. Then select ![Less than and greater than symbols](./Media/image87.png) on the **Rule Set** page to edit the transformation script. Locate your custom function to edit the code in the web editor. You can use an [IDE like Eclipse](../script.md#use-a-java-ide-to-customize-scripts) instead of the web editor if you prefer.
 
- >[!warning] If you choose to delete the custom function action in a rule, the code for this is no longer called at runtime. However, the custom function code does remain in the transformation script. You must  manually remove the custom function from the transformation script if you don't want it there. Select ![Less than and greater than symbols](./Media/image86.png) on the **Rule Set** page to edit the transformation script.
+ >[!warning] If you choose to delete the custom function action in a rule, the code for this is no longer called at runtime. However, the custom function code does remain in the transformation script. You must  manually remove the custom function from the transformation script if you don't want it there. Select ![Less than and greater than symbols](./Media/image87.png) on the **Rule Set** page to edit the transformation script.
 
 ### Testing rules
 
