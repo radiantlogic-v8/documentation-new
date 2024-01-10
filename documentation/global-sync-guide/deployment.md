@@ -119,7 +119,7 @@ To replay failed messages from the dead letter queue, use the Main Control Panel
 
 ## Migrating Global Sync Topologies
 
-This section describes the process of migrating a global sync topology from a source environment to a target environment using a command line tool, vdsconfig.bat, which is located in <RLI_HOME>/bin on Windows (vdsconfig.sh in $RLI_HOME/bin on Linux).
+This section describes the process of migrating a global sync topology from a source environment to a target environment using the resource-traverse, resource-export and resource-import commands.
 
 ### Exporting the Topology
 
