@@ -16,7 +16,7 @@ description: Knowledge homepage
 
 Harness your identity data with intelligent integration to drive better business outcomes, improve security and compliance posture, increase speed-to-market, and more. Browse below to learn more about the capabilities and components that comprise Identity Data Management and link to the user guides to help get you started.
 
-## INTRODUCTION
+## Introduction
 
 <section>
   
@@ -33,7 +33,7 @@ Harness your identity data with intelligent integration to drive better business
 </section>
 
 
-## INSTALLATION and INITIAL SETUP
+## Installation and Initial Setup
 
 <section>
    
@@ -51,7 +51,7 @@ Harness your identity data with intelligent integration to drive better business
       
 </section>
 
-## CONFIGURATION
+## Configuration
 
 <section>
    
@@ -75,7 +75,7 @@ Harness your identity data with intelligent integration to drive better business
     
 </section>
 
-## DEPLOYMENT
+## Deployment
 
 <section>
    
@@ -90,7 +90,7 @@ Harness your identity data with intelligent integration to drive better business
      
 </section>
 
-## TUNING
+## Tuning
 
 <section>
    
@@ -105,7 +105,7 @@ Harness your identity data with intelligent integration to drive better business
      
 </section>
 
-## MONITORING AND ALERTS
+## Monitoring and Alerts
 
 <section>
    
@@ -120,7 +120,7 @@ Harness your identity data with intelligent integration to drive better business
      
 </section>
 
-## TROUBLESHOOTING
+## Troubleshooting
 
 <section>
    
@@ -132,7 +132,7 @@ Harness your identity data with intelligent integration to drive better business
   
 </section>
 
-## REPORTING
+## Reporting
 
 <section>
    
@@ -142,12 +142,12 @@ Harness your identity data with intelligent integration to drive better business
 </section>
 
 
-## MAINTENANCE
+## Maintenance
 
 <section>
    
   > [Applying Patches](maintenance/applying-patches)  
-  > Learn how to apply patches to an environment to update the version of RadiantOne Identity Data Management.
+  > Learn how to apply patches to an environment to update the version of RadiantOne Identity Data Management and Secure Data Connectors.
   
   > [Performing Backups](maintenance/managing-environments/performing-backups)  
   > Learn how to backup environments. 
