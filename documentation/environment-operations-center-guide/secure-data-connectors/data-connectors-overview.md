@@ -87,7 +87,6 @@ All of the on-premise or cloud connections made to the data connector are listed
 | Server Name/IP | The IP of the on-prem or cloud data source that has been connected. |
 | Server Port | The port of the on-prem or cloud data source where the connection was made. |
 | Status | Indicates if the connection is "Connected" or "Disconnected". |
-| Last Updated Time | The date and time when the data source status was last updated. |
 
 ![image description](images/connections.png)
 
