@@ -74,7 +74,7 @@ The password for the user specified in the Bind DN parameter.
 
 Pass thru authorization is for determining which account RadiantOne uses to connect to a backend directory and ultimately how access rights (authorization) is enforced. A high-level diagram detailing the behavior is shown below.
 
-![An image showing ](Media/Image3.3.jpg)
+![An image showing ](Media/pass-thru-authz-decision.jpg)
 
 Figure 3: Pass Thru Authorization
  
@@ -82,7 +82,7 @@ This functionality is best described with examples. The following three examples
 
 >[!warning] This feature (and the description below) is for AUTHORIZATION.
 
-![An image showing ](Media/Image3.4.jpg)
+![An image showing ](Media/ex-proxy-1.jpg)
  
 Figure 4: Sample Proxy Configuration
 
@@ -120,7 +120,7 @@ With this configuration approach, any user that successfully binds (anywhere in 
 **Example 2: Using Pass Thru Authorization**
 <br>The three LDAP proxy definitions shown in the diagram below are used to explain the Pass Thru Authorization feature.
 
-![An image showing ](Media/Image3.5.jpg)
+![An image showing ](Media/ex-proxy-2.jpg)
  
 Figure 5: Sample Proxy Configuration
 
@@ -157,7 +157,7 @@ However, if Aaron accesses the dc=server2,ou=global,o=vds branch, he is only all
 
 The two LDAP proxy definitions shown in the diagram below are used to explain the Pass Thru Authorization feature when there is also a service account Bind DN specified in the data source configuration.
 
-![An image showing ](Media/Image3.6.jpg)
+![An image showing ](Media/ex-proxy-3.jpg)
  
 Figure 6: Sample Proxy Configuration
 
@@ -187,8 +187,7 @@ If user “cn=joe,dc=partners,dc=airius,dc=com,dc=server2,ou=global,o=vds” suc
 
 ### LDAP Controls
 
-A control is additional information that can be included in an LDAP request or response. RadiantOne can play the role of both an LDAP server and an LDAP client to other backend directories. To understand controls supported by RadiantOne as an LDAP server, see the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction)
-. RadiantOne’s handling of LDAP controls as a client to a backend directory is described in this section.
+A control is additional information that can be included in an LDAP request or response. RadiantOne can play the role of both an LDAP server and an LDAP client to other backend directories. To understand controls supported by RadiantOne as an LDAP server, see the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction). RadiantOne’s handling of LDAP controls as a client to a backend directory is described in this section.
 
 **VLV/Sort**
 
@@ -218,7 +217,7 @@ This control indicates that all add, modify, and modify DN requests should inclu
 
 When RadiantOne acts as a client and connects to a backend directory, certain credentials are used (e.g. the Bind DN and Bind Password configured in the data source connection string). These credentials determine what operations are allowed and it is the backend directory which enforces authorization for this user. Some directories support the Proxy Authorization control allowing a client to switch the user ID, for authorization purposes, without having to re-authenticate with a new connection. If the backend directory supports the Proxied Authorization control, and there is the need to base authorization on a different user than the one who authenticated, you can enable the Proxy Authorization checkbox. With this approach, RadiantOne can use certain credentials (e.g. the Bind DN and Bind Password configured in the data source connection string) when connecting to the backend directory and pass the needed control along with the user DN of the person they want to represent for authorization in the requests. The backend directory checks the proxy authorization rules that have been configured to make sure the service account RadiantOne used to connect with is allowed to represent the person passed in the request. If so, the service account is allowed to perform any operations the person it is impersonating would be allowed to do. Again, for this functionality to work, the Proxy Authorization control must be supported by the backend directory and proxy authorization rules must be properly defined in the backend directory. A high-level diagram detailing the behavior is shown below.
 
-![An image showing ](Media/Image3.8.jpg)
+![An image showing ](Media/proxy-authz-decision.jpg)
 
 Figure 8: Proxy Authorization
  
@@ -230,7 +229,7 @@ For details on defining proxy impersonation rules for LDAP data sources, please 
 
 A high-level diagram detailing the behavior is shown below.
 
-![An image showing ](Media/Image3.9.jpg)
+![An image showing ](Media/role-mapped-decision.jpg)
 
 Figure 9: Role-mapped Access
  
