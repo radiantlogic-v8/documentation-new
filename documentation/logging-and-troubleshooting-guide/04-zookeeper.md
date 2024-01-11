@@ -5,8 +5,11 @@ description: Logging and Troubleshooting
 
 # ZooKeeper
 
-The log location for ZooKeeper is: <RLI_HOME>\logs\zookeeper. 
-Zookeeper.log contains internal server details regarding the operations performed by Zookeeper. The max file size is 100MB and this is configurable in <RLI_HOME>/config/logging/log4j2-zookeeper-server.json.
+Log file name: Zookeeper-<N>.log contains internal server details regarding the operations performed by Zookeeper. 
+
+The log location for ZooKeeper (deployed internal/local to the RadiantOne nodes) is: <RLI_HOME>\logs\zookeeper. The rollover logs are also located at this location. Rollover file size (default of 100MB) and location are configured in: <RLI_HOME>/config/logging/log4j2-zookeeper-server.json.
+
+The log location for external ZooKeeper ensemble logs is: <rli-zookeeper-external_install-path>\zookeeper\logs. The rollover logs are located in C:\rli-zookeeper-external\bin\logs\ for Windows deployments and rli-zookeeper-external/logs/ on Linux deployments. Rollover file size and location are configured in: <rli-zookeeper-external>/zookeeper/conf/log4j2.xml.
 
 ## Read Only Mode
 
