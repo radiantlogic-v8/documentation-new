@@ -252,7 +252,7 @@ The value here is determined from the hierarchy built in the first step. This is
 
 This setting allows for automatic re-mapping of attributes of DN syntax type. This functionality is primarily useful for existing groups/members in an LDAP backend. When an LDAP backend is configured, you have the option to return the group members “real” DNs (as they exist in the backend directory), or to re-map them to the DN for the RadiantOne namespace. For example, the figure below depicts a proxy view that has been defined for a backend LDAP directory. The routing happens at the ou=SunOne,ou=RemoteDirectories,o=vds level in the RadiantOne namespace.
 
-![An image showing ](Media/Image3.11.jpg)
+![An image showing ](Media/dn-remapping.jpg)
 
 Figure 11: LDAP Backend Attributes Defined with DN Remapping
 
@@ -270,7 +270,7 @@ Figure 13: Configuration to Re-Map the UniqueMember Attribute
 
 RadiantOne re-maps the uniqueMember attribute values into the proper DN for the location in the RadiantOne namespace. In the figure below, the HR Managers group (from the backend LDAP server) contains unique members whose DN’s have been remapped to their DN’s in the RadiantOne namespace (containing a suffix of “ou=RemoteDirectories,o=vds”). 
 
-![An image showing ](Media/Image3.14.jpg)
+![An image showing ](Media/dn-remapping-uniquemember.jpg)
 
 Figure 14: Result of Re-Mapping the UniqueMember Attribute
 
