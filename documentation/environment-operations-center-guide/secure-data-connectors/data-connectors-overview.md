@@ -38,14 +38,14 @@ Before you can add new data connectors, you must first add a **group**. This can
 
 ![image description](images/new-group.png)
 
-After creating a group, you can add a new data connector by clicking the "..." button on the selected group and selecting ***Add Data Connector*** from the drop-down menu.
+After creating a group, you can add a new data connector by clicking the "..." button on the selected group and selecting ***Add Data Connector***.
 
 ![image description](images/add-data-connector.png)
 For more details on adding a new data connector, please refer to the [Add a Data Connector](add-data-connector.md) guide.
 
 ### Manage Data Connectors
 
-Each data connector has an **Options** (**"..."**) drop-down menu that allows you to manage the connector. For more details on managing data connectors, please refer to the [Manage Data Connectors](manage-data-connectors.md) guide.
+Each data connector has an **Options** (**"..."**) menu that allows you to manage the connector. For more details on managing data connectors, please refer to the [Manage Data Connectors](manage-data-connectors.md) guide.
 
 ![image description](images/options.png)
 
