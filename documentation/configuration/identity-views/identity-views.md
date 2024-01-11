@@ -17,11 +17,11 @@ For more details, see [Global Identity Builder](/global-identity-builder/introdu
 
 ## LDAP Proxy Views Overview
 
-Identity views can be configured for LDAP directories and are associated with a specific root naming context. A root naming context is the very top level in the RadiantOne namespace, and you can have many different root naming contexts. This section describes how to create root naming contexts for mounting identity views from LDAP directory backend data sources. 
+Identity views can be created from LDAP directories and associated with a specific root naming context. A root naming context is the very top level in the RadiantOne namespace, and you can have many different root naming contexts. This section describes how to create root naming contexts for mounting identity views from LDAP directory backend data sources. 
 
 ### Configuration
 
-If you configure the LDAP backend directly at the Root Naming Context, it is the only backend that can be mounted at this specific naming context. If you want to comprise the identity view from many different backends, choose the Virtual Tree option for the type of backend to mount instead of LDAP. The virtual tree option allows you to define child nodes using labels and then you can mount different backends at each label level.
+If you configure an LDAP proxy view directly at the Root Naming Context, it is the only backend that can be mounted at this specific naming context. If you want to comprise the identity view from many different backends, choose the Virtual Tree option for the type of backend to mount instead of LDAP. The virtual tree option allows you to define child nodes using labels and then you can mount different backends at each label level.
 
 1.	First, data sources for each backend must be defined. From the Control Panel > Setup > Data Catalog > Data Sources, click ![An image showing ](Media/new-source.jpg). Use the Active Directory, Generic LDAP, Open DJ or RadiantOne directory template to define data sources.
 
@@ -45,7 +45,7 @@ If you configure the LDAP backend directly at the Root Naming Context, it is the
  
 Figure 3.2: Modifying an LDAP Backend Configuration
 
-LDAP Backends can also be configured at any label node in a virtual directory tree naming context. For details on this, please see [Virtual Views based on Multiple Types of Backends](03-virtual-view-of-ldap-backends).
+LDAP Backends can also be configured at any label node in a naming context. For details on this, please see [Virtual Views based on Multiple Types of Backends](03-virtual-view-of-ldap-backends).
 
 
 ### Host 
