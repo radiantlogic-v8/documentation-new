@@ -197,7 +197,7 @@ If a client searches and passes the VLV control against a branch that is associa
 
 If the backend LDAP directory supports the paged results control, RadiantOne can request that the results from the backend be returned in pages. The support for paging is enabled, and the page size is set, at the level of the LDAP data source definition.
 
-![An image showing ](Media/Image3.7.jpg)
+![An image showing ](Media/paged-results-source.jpg)
 
 Figure 7: Paged Results Control for an LDAP Backend
 
