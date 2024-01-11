@@ -221,23 +221,11 @@ When RadiantOne acts as a client and connects to a backend directory, certain cr
 
 Figure 8: Proxy Authorization
  
-### Role Mapped Access
-
-If proxy impersonation rules are defined at the level of the LDAP data source associated with the proxy virtual view, you can check the Role Mapped Access option to enable them. If the Role Mapped Access option is not checked, any impersonation rules defined for the LDAP backend data source associated with the selected proxy view are not used. 
-
-For details on defining proxy impersonation rules for LDAP data sources, please see the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction)
-
-A high-level diagram detailing the behavior is shown below.
-
-![An image showing ](Media/role-mapped-decision.jpg)
-
-Figure 9: Role-mapped Access
- 
 ### Remote Base DN
 
 The Remote Base DN is the starting point to search from in the backend directory. This is set when you create the data source and can be changed later if needed by selecting the root naming context node representing the virtual view associated with the backend. On the right side, select the Proxy Backend tab. Either enter the base DN, or click the **Browse** button to select the location in the backend directory tree.
 
-![An image showing ](Media/Image3.10.jpg)
+![An image showing ](Media/remote-base-dn.jpg)
 
 Figure 10: Proxy Backend Settings
 
