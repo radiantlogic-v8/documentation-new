@@ -680,6 +680,70 @@ This attribute can be used in computed attributes by using the getactualDN() fun
 
 Figure 32: Using ActualDN in a Computed Attribute
 
+### Virtualizing Active Directory User Passwords
+If you want to include user passwords in your identity view from Active Directory, so that you can have the passwords stored in persistent cache to bind locally instead of delegating the bind to the backend Active Directory, use the getADpassword() function in a computed attribute.
+
+For virtual views from an Active Directory backend, passwords associated with the user entries are not a part of the view by default. When a user associated with this virtual view authenticates to RadiantOne, the credentials checking is delegated to the backend Active Directory. This is the behavior whether the virtual view is configured for persistent cache or not because RadiantOne does not have access to the Active Directory passwords. If you have the virtual view configured for persistent cache and you want RadiantOne to validate the passwords locally as opposed to delegating this to the backend Active Directory, you must cache the passwords from Active Directory. A computed attribute is required to get the hashed password to store in the persistent cache. Once the passwords are cached, you can use the Use Cache for Authentication option.  
+
+To cache user passwords, the virtual view of Active Directory needs a computed attribute named userPassword that is based on the function named getADPassword(). RadiantOne considers this computed attribute as the user’s password and the value of the computed attribute contains the user’s Active Directory password (encrypted as PBKDF2AD).  
+
+>[!warning] - If you plan on using the persistent cache as a source image for synchronizing entries to a target Active Directory and you want to synchronize passwords, you must use the function named getADPasswordMD4() instead of getADPassword(). This is to ensure the password format can be handled properly by the target Active Directory.  
+
+To validate credentials, RadiantOne compares the value of the user’s cached userPassword attribute to the value that comes in the bind request. If it matches, the authentication is successful. If it doesn’t match, the authentication is unsuccessful. If the local authentication is unsuccessful, and you have the Delegate on Failure option checked, RadiantOne delegates the credentials checking to the backend Active Directory. The backend Active Directory is responsible in determining if the authentication is successful. 
+
+>[!note] – The ability to get and cache passwords is supported for Active Directory 2008 R2(+) backends. Also, RadiantOne must be deployed on a Windows OS. All Windows updates should be applied to both the machine hosting RadiantOne and the backend Active Directory machine. The credentials configured in the Active Directory data source for RadiantOne must have the following permissions: 
+
+Domain Level: 
+
+Read, Replicating Directory Changes, Replicating Directory Changes All, Replicating Directory Changes in Filtered Set. 
+
+Ou Level: 
+
+Read all properties. 
+
+To leverage the Active Directory native replication mechanism to get the password, Microsoft recommends the following firewall ports are opened between the Active Directory server and the RadiantOne machine. Check with your Active Directory administrator to confirm these ports. 
+
+ 
+  PORTS	| PURPOSE
+   -|-
+   TCP 135	| RPC
+   TCP 139	| NetBIOS 
+   TCP and UDP 389	|  LDAP    *This could be used by RadiantOne to get the user information. Some other port may be used. 
+   TCP and UDP 445	| SMB over IP 
+   TCP and UDP 464  | Kerberos change/set password 
+   TCP 636  | LDAPS      *This could be used by RadiantOne to get the user information. Some other port may be used. 
+   TCP 3268 and TCP 3269   | Global Catalog non SSL and SSL      *This could be used by RadiantOne to get the user information. Some other port may be used. 
+   TCP 49152 through 65535    | Dynamic ports. 
+
+
+An example of a proxy view to an Active Directory backend, and the required steps to cache the user passwords associated with this view, are shown below. 
+
+1. Select the configured proxy view on the Main Control Panel -> Directory Namespace tab.
+2. Select the Attributes tab on the right.
+3. Click Add
+4. Select unicodePwd from the Name drop-down list.
+5. Enter a virtual name of userPassword.
+6. Click OK.
+7. Click Save.
+
+
+Define a computed attribute named userPassword with the value based on the getADPassword() function. An example for a proxy view to an Active Directory backend is shown below. 
+
+1. Select the configured proxy view on the Main Control Panel -> Directory Namespace tab.
+2. Select the Objects tab on the right.
+3. In the Primary Objects section, click Add.
+4. Choose the User object class and click OK.
+5. Click Edit next to “Define Computed Attributes”.
+6. Click Add.
+7. Enter a value of userPassword as the Attribute Name.
+8. Click the Function button.
+9. Select the getADPassword() function and click OK.
+10. Click Validate.
+11. Click OK.
+12. Click OK to exit the computed attributes window. 
+
+
+>[!note] – If your proxy view is using a Merged Tree configuration to merge another Active Directory view into the primary proxy view, you must have the userPassword computed attribute configured in both the primary proxy view and the merged view for passwords to be retrieved properly from both Active Directory backends. 
 
 ## Model-driven Identity Views
 Creating model-driven identity views requires the use of the metadata extracted from backend sources. The views can be flat or hierarchical and comprised of an aggregation of many views. This provides greater flexibility for view design than creating simple LDAP proxy views.
