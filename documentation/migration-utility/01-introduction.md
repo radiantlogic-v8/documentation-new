@@ -5,7 +5,9 @@ description: Migration Utility
 
 # Introduction
 
-The migration tool is for RadiantOne v7.4 and serves two purposes.
+Version 2.1 of the migration tool is for RadiantOne v7.4 and serves two purposes.
+
+ >[!warning] Do not use earlier versions of the Migration Utility with v7.4.
 
 1. First time migration of configuration from a lower (e.g. dev/QA) environment to a higher (e.g. production) environment.
 
