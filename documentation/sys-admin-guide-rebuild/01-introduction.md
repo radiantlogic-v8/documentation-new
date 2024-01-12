@@ -70,8 +70,6 @@ The Control Panels utilize a web server that is installed with RadiantOne. The e
 
 ![The Main Control Panel Login Page](Media/login-page.png)
 
-Figure 1: Main Control Panel Login Page
-
 <!--
 
 >[!warning] 
@@ -143,7 +141,6 @@ registeredID | [8]
 
 ![Client Certificate DN Mapping](Media/Image3.11.jpg)
  
-Figure 2: Client Certificate DN Mapping
 
 9.	Click **OK** to exit the Client Principal Mapping window.
 
@@ -156,7 +153,7 @@ Figure 2: Client Certificate DN Mapping
 
 ![Security Message in Browser Due to Untrusted Certificate of the Control Panel](Media/Image3.12.jpg)
 
-Figure 3: Security Message in Browser Due to Untrusted Certificate of the Control Panel
+
 
 13.	The Control Panel will request a certificate from the browser, so the browser will prompt the user with a list of loaded/trusted certificates. The user selects/confirms their certificate. An example is shown below.
 
@@ -178,8 +175,6 @@ Figure 4: User Selects Certificate Associated with PIV Card
 The RadiantOne Main Control Panel also supports OpenID Connect (OIDC) token-based authentication. This option provides the security of sending user login credentials to the authentication server (the Identity Provider), not the application (Control Panel, the Relying Party). OpenID Connect token authentication allows you to send your username and password just once, to the Identity Provider (IDP) and then pass the token in the request to the Main Control Panel. When OIDC is configured in RadiantOne, the Main Control Panel login screen displays:
 
 ![Login with Open ID Connect](Media/Image3.22.jpg)
-
-Figure 12: Login with Open ID Connect
 
 The administrator must click the Login with OpenID Connect option to login with an OpenID Connect token.
 
@@ -259,8 +254,6 @@ To disable support for OIDC authentication:
 
 	![](Media/disable-oidc.png)
 
-Figure 7: Disabling OIDC authentication support
-
 1. Click **Save**.
 
 ### Auto-Logout
@@ -294,7 +287,6 @@ An example of the custom message on the login page is shown below.
 
 ![Custom Message on Login Page](Media/Image3.26.jpg)
 
-Figure 7: Custom Message on Login Page
 
 If you would like the message to be prefixed with a “Warning” icon and be in bold font, go back to the Zookeeper tab and add or edit the "motdWarning" tag with a value of true. An example is shown below.
 
@@ -302,7 +294,6 @@ If you would like the message to be prefixed with a “Warning” icon and be in
 
 ![Custom Message on Login Page with Warning Label and Bold Font](Media/Image3.27.jpg)
 
-Figure 8: Custom Message on Login Page with Warning Label and Bold Font
 
 If you would like the custom message and “Warning” icon to display as a popup window, go back to the Zookeeper tab, and add or edit the “motdPopup” tag with a value of true. An example is shown below.
 
@@ -311,7 +302,6 @@ If you would like the custom message and “Warning” icon to display as a popu
 
 ![Custom Message Popup Window](Media/Image3.28.jpg)
 
-Figure 9: Custom Message Popup Window
 
 ## Using the Main Control Panel
 
@@ -342,13 +332,11 @@ A series of graphs are displayed on the Dashboard tab and allow for monitoring a
 
 ![Graphs Related to a Specific RadiantOne Node](Media/Image3.167.jpg)
 
-Figure 10: Graphs Related to a Specific RadiantOne Node
 
 In the upper right, you can indicate the time range the graphs should display. To indicate a time period of longer than 12 hours, choose the Custom option.
 
 ![Graph Range](Media/Image3.168.jpg)
  
-Figure 11: Graph Range
 
 >[!warning] 
 >It is generally not recommended to expand the graph range beyond a 12-hour period since it causes a large amount of HTTP and LDAP requests to RadiantOne that is proportional in quantity to the length of the time period requested. For example, a 12-hour period generates ~100 requests.
@@ -363,7 +351,6 @@ Specific product details associated with the node are shown in the Server Inform
 
 ![Server Information](Media/Image3.169.jpg)
  
-Figure 2: Server Information
 
 **Server Name** – Indicates the machine name where RadiantOne is installed.
 
@@ -404,8 +391,6 @@ Figure 2: Server Information
 From the Connections & Ops section you can view the current usage summary in terms of connections and operations to RadiantOne.
 
 ![Server Connections and Operations](Media/Image3.170.jpg)
- 
-Figure 3: Server Connections and Operations
 
 In the Usage Summary section, you see connection usage since startup and average per minute. You all see operations since startup and average per minute.
 
@@ -419,21 +404,17 @@ Statistics for the stores can be viewed from the Universal Directory Status sect
 
 ![Tables to Display](Media/Image3.171.jpg)
  
-Figure 4: Tables to Display
 
 For each store, you see total number of entries, index size, search operations per second and write operations per second.
 
 ![RadiantOne Universal Directory Stores](Media/Image3.172.jpg)
  
-Figure 5: RadiantOne Universal Directory Stores
 
 ### Data Source Status
 
 In the Data Source Status you can see the status of all data sources defined in RadiantOne. A green dot in the Status column indicates that the data source is configured properly and running. A red dot in the Status column indicates that something is wrong with the data source configuration and RadiantOne cannot currently access it. There is a corresponding error message that states the main problem. If the error is due to incorrect connection information, update the data source on the Main Control Panel > Settings Tab > Server Backend section. Once the error has been corrected click on the refresh icon next to “Data Source Status” and the data source information refreshes to reflect your changes.
 
 ![Data Source Status](Media/Image3.173.jpg)
-
-Figure 6: Data Source Status
 
 The status values are on, off, offline, and unavailable. The following table describes each status. 
 
@@ -453,8 +434,6 @@ The graphs in the Network Latency section display the network latency between no
 
 ![Network Latency Graphs](Media/Image3.174.jpg)
  
-Figure 7: Network Latency Graphs
-
 <!-- 
 
 ## Settings Tab
@@ -545,8 +524,6 @@ Enter key password for <rli>
 
 ![SSL Server Certificate for RadiantOne](Media/Image3.175.jpg)
 
-Figure 9: SSL Server Certificate for RadiantOne
-
 6.	Next, you can download the Root Certificate from the Microsoft CA. From a web browser, access the certificate server.
 http://< IP address>/certsrv
 
@@ -554,16 +531,12 @@ http://< IP address>/certsrv
 
 ![Certificates Services Console](Media/Image3.176.jpg)
  
-Figure 10: Certificates Services Console
-
 8.	Select the certificate from the list and choose the encoding method DER.
 
 9.	Click **Download CA certificate**.
 
 ![Downloading a Root CA Certificate](Media/Image3.177.jpg)
  
-Figure 11: Downloading a Root CA Certificate
-
 10.	Click **Save** to save the certificate file.
 
 11.	Navigate to <RLI_HOME>/<instance_name>/conf and save the certificate as certca.cer.
@@ -604,14 +577,10 @@ http://<IP address>/certsrv
 
 ![An image showing ](Media/Image3.178.jpg)
 
-Figure 12: Requesting a Certificate
-
 18.	Choose Submit a certificate request by using a base-64-encoded CMC or PKCS #10 file, or submit a renewal request by using a base-64-encoded PKCS #7 file.
 
 ![Advanced Certificate Request](Media/Image3.179.jpg)
  
-Figure 13: Advanced Certificate Request
-
 19.	Paste the entire contents from the certificate request file that was generated previously.
 
 20.	From the Certificate Template drop-down list, select Web Server.
@@ -620,16 +589,12 @@ Figure 13: Advanced Certificate Request
 
 ![Submitting the Certificate Request](Media/Image3.180.jpg)
  
-Figure 14: Submitting the Certificate Request
-
 22.	Choose the DER encoded option.
 
 23.	Click **Download Certificate**.
 
  ![Downloading the Certificate](Media/Image3.181.jpg)
  
-Figure 15: Downloading the Certificate
-
 24.	Click **Save**.
 
 25.	Navigate to <RLI_HOME>/<instance_name>/conf and name the file vds.cer.
@@ -786,8 +751,6 @@ From the Server Control Panel > Tasks tab, you can start and stop the scheduler 
 
 ![Tasks Tab](Media/Image3.182.jpg)
  
-Figure 8: Tasks Tab
-
 The following operations are considered tasks and generate an event in the Task Scheduler when they occur: 
 -	Initializing a persistent cache 
 -	Initializing a RadiantOne Universal Directory (HDAP) store 
@@ -802,8 +765,6 @@ Task Scheduler parameters can be modified by clicking **Config** in the Task Sch
 
 ![Task Scheduler Configuration](Media/Image3.183.jpg)
  
-Figure 9: Task Scheduler Configuration
-
 By default, each task executes in its own dedicated JVM. If the option “Dedicated JVM” is not checked in the specific task configuration, then the task executes inside the JVM of the scheduler. Users can customize the default JVM parameters to allow more memory, or change the performance settings. Users can customize the default JVM parameters to allow more memory to the virtual machine, or change the performance settings. However, tuning the JVM of the task scheduler is less important than tuning the dedicated JVM for the individual task. For a full list of possible behavioral and performance options, please see the link below.
 
 http://www.oracle.com/technetwork/java/javase/tech/vmoptions-jsp-140102.html
@@ -816,8 +777,6 @@ When operations are added as tasks, they appear in the Task List section, with i
 
 ![Sample Task List](Media/Image3.184.jpg)
  
-Figure 10: Sample Task List
-
 To edit an existing task, click the pencil icon. The Task Configuration menu displays all task components. The name and status are shown, but cannot be changed. To make the task non-recurring (the task no longer repeats) uncheck the “Recurrent” box, the task runs one final time and then the status automatically changes to “Finished.” The execution interval (the frequency at which the task is executed) can be modified by changing the hours, minutes, and second boxes.
 
 By default, all tasks run in their own dedicated JVM and the memory allocated for the task automatically expands up to ¼ of the total machine memory. For example, if the machine where RadiantOne is installed has 16 GB of RAM, the task memory expands up to 4 GB to process a task. If you prefer, you can define a max Java heap size in the JVM parameters instead of leveraging this default expansion. Other custom settings can be entered in the JVM Parameters as well. For a full list of possible behavioral and performance options, please see the link below.
@@ -830,8 +789,6 @@ Users must click “Update Task” before closing out of the task configuration 
 
 ![Task Configuration](Media/tasks-configuration.jpg)
  
-Figure 11: Task Configuration
-
 <!--
 
 ### Custom Tasks
@@ -887,8 +844,6 @@ jvmargs	 | Only applicable if newjvm=true. This property can be used to customiz
 
 ![Task Scheduler and Tasks](Media/Image3.185.jpg)
 
-Figure 20: Task Scheduler and Tasks
-
 >[!note] logs related to tasks are located in <RLI_HOME>/vds_server/logs/scheduler/task.<task_name>.log**
 
 --> 
@@ -904,16 +859,12 @@ Select the log from the Log File drop-down list. You can also set a filter to li
 
 ![Log Viewer](Media/Image3.186.jpg)
  
-Figure 12: Log Viewer
-
 To download a log file, select it from the Log File drop-down list and click `Download`. The log file is downloaded to your web browser's default download location.
 
 To include a log's rollover files in the download, select the log from the Log File drop-down menu. Click the drop-down menu beside Download and select `Download from All with Rollovers`. A compressed file is downloaded to your web browser's default download location.
 
 ![download all](Media/download-all.jpg)
  
-Figure 13: Downloading a Log File and Its Rollover Files
-
 For complete details on logs and troubleshooting, please see the [RadiantOne Logging and Troubleshooting Guide](/documentation/logging-and-troubleshooting-guide/01-overview).
 
 # Administration and Configuration
@@ -1116,11 +1067,7 @@ As mentioned above, the groups used for delegated administration are Directory A
 
 ![manage group members](Media/Image3.1.jpg)
  
-Figure 14: Manage Group Members
-
 #### Managing Dynamic Members
-
-Figure 15: Manage Group Members
 
 >[!warning] 
 >It is generally advised to assign only local (in a RadiantOne Universal Directory store) user accounts to delegated admin roles. Although you can assign any user in the RadiantOne namespace to a delegated admin role, use caution with this approach because if the backend isn’t accessible, then the user login to the Control Panel will fail and the user will not be able to administer RadiantOne. Also, performance can be degraded because RadiantOne must delegate the bind (authentication) to the backend instead of processing it locally.
@@ -1140,8 +1087,6 @@ Figure 15: Manage Group Members
 1.	Click **Edit Dynamic Members**. From here you can manage the criteria for dynamic members.
 
 ![manage group window](Media/Image3.2.jpg)
-
-Figure 16: Manage Group Window
 
 1.	Click **Add Member(s)**.
 
@@ -1170,8 +1115,6 @@ Figure 16: Manage Group Window
 1.	Click **OK**.
 
 ![Dynamic Group Setting](Media/Image3.3.jpg)
-
-Figure 17: Dynamic Group Setting
 
 1.	Set the member attribute to either member or uniqueMember (to match your membership attribute) and click Save in the upper right.
 
@@ -1230,8 +1173,6 @@ The reason you can login with just the user ID as opposed to the full DN is beca
 
 ![Default User ID to DN Mapping Rule](Media/Image3.4.jpg)
  
-Figure 18: Default User ID to DN Mapping Rule
-
 ### Leveraging Existing Groups for Delegated Administration
 
 As an alternative to using the [default delegated admin groups](#delegated-administration-of-radiantone) for enforcing authorization in the Control Panels, you can leverage your existing groups for these roles. Your groups and members must be in either a RadiantOne Universal Directory store, or persistent cache. If you choose to use your own existing groups and users, the [default delegated admin users](#delegated-administration-roles) will not be able to log into the Control Panel.
@@ -1246,8 +1187,6 @@ To configure groups and users for delegated administration, follow the steps bel
 1.	(Optional) If your groups and users are in persistent cache, go to the Main Control Panel > Directory Namespace > Cache node and select your cache branch. On the Properties tab on the right, enter vdPrivilege in the Extension Attributes list and click Save.
 
 ![Entering vdPrivilege in the Extension Attributes Field](Media/Image3.5.jpg)
-
-Figure 19: Entering vdPrivilege in the Extension Attributes Field
 
 1.	Navigate to the Main Control Panel > Directory Browser tab.
 
@@ -1269,8 +1208,6 @@ Image 21: Adding the vdPrilvilege Attribute
 
 ![An image showing ](Media/Image3.8.jpg)
  
-Figure 22: Example of Assigning an Existing Group to the Directory Administrator Role
-
 >[!note] 
 >Delegated administrators do not have default permissions to manage virtual entries in the directory. If this is required, assign the proper [access controls](06-security#access-control) for the delegated admin groups.
 
@@ -1294,8 +1231,6 @@ If the group objectclass stores the members in the member attribute, set the val
 
 ![An image showing ](Media/Image3.9.jpg)
  
-Figure 23: Example of User Login with Full DN
-
 #### Delegated Administration Roles
 
 The roles and corresponding required permissions are described in the table below.
@@ -1324,8 +1259,6 @@ When other users log into the Control Panel, there is a message prompting the us
 
 ![Message Displayed for Locked Configuration](Media/Image3.149.jpg)
  
-Figure 24: Message Displayed for Locked Configuration
-
 ## File Manager
 
 RadiantOne does not allow access to its files via operating system user interfaces. The File Manager option allows you to view, upload, and download files that reside under the RLI_HOME directory. It also allows you to build jar files. To access the File Manager, in the Main Control Panel, go to Settings > Configuration > File Manager. The default location displayed is RLI_HOME.
@@ -1333,8 +1266,6 @@ RadiantOne does not allow access to its files via operating system user interfac
 >[!note] Files at the RLI_HOME level cannot be modified with File Manager. 
 
 ![](Media/file-manager-navigation.png)
-
-Figure 25: File Manager Navigation Menu
 
 To navigate within File Manager, click a folder in the main File Manager pane, or click a link the navigation bar at the top of the File Manager. To go up one folder, click the up-arrow button. 
 
@@ -1385,11 +1316,7 @@ To build jar files:
 
     ![](Media/file-manager-build.png)
 
-   Figure 26: File Manager's Build Menu
-
 1. From the Build drop-down menu, select an option.
 
 ![](Media/build-jar.png)
-
-Figure 27: Building a Jar File
 
