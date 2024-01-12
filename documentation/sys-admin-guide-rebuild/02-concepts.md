@@ -25,7 +25,6 @@ A data source in RadiantOne represents the connection to a backend. This could b
 
 ![managing data sources](Media/Image2.1.jpg)
  
-Figure 1: Managing Data Sources
 
 >[!warning] 
 >Two LDAP data sources named vdsha and replicationjournal are included by default. These data sources contain connections to all RadiantOne nodes in a given cluster. One node is defined as the primary server and all others as failover servers. The vdsha data source is used internally by many operations including persistent cache refreshes. The replicationjournal data source is used internally for inter-cluster replication. These data sources should not be deleted or have their status changed to “offline”.
@@ -50,7 +49,6 @@ If you have existing data sources defined in a RadiantOne server and you would l
 
 ![exporting data sources](Media/Image2.2.jpg)
 
-Figure 2: Exporting Data Sources
 
 You can then upload the export file to the desired RadiantOne server and use the [Import](#to-import-data-sources) option to import the data sources.
 
@@ -63,7 +61,6 @@ You can download existing data sources. This might be usefule if, for example, R
 
 ![exporting data sources](Media/Image2.2.jpg)
 
-Figure 3: Downloading Data Sources
 
 ## Secure Data Connector
 
@@ -86,19 +83,16 @@ In the first scenario, the data sources have no overlap of identities. In this s
 
 ![data sources with no overlapping identities](Media/Image2.3.jpg)
 
-Figure 4: Data Sources with no Overlapping Identities
 
 In cases where there starts to be user overlap (as seen in Sources A and B in the diagram below), the configuration starts to require correlation. In this scenario, an aggregation of users from sources A, B and C is required in addition to correlation for the overlapping users in sources A and B. The design considerations now involve correlation logic in addition to where you want the unique list of users to appear in the virtual namespace.
 
 ![data sources with some lovel of overlapping identities](Media/Image2.4.jpg)
 
-Figure 5: Data Sources with Some Level of Overlapping Identities
 
 In scenarios where the number of data sources increases, the amount of overlapping identities varies (as depicted in the diagram below), and the logic required to correlate identities becomes complex with the possible need of cascading rules to determine correlation, RadiantOne can create the union of identities which is the basis for supporting authentication and authorization and the foundation for the RadiantOne Identity Data Platform.
 
 ![complex identity integration scenario](Media/Image2.5.jpg)
 
-Figure 6: Complex Identity Integration Scenario
 
 ## Identity Correlation
 
@@ -118,7 +112,6 @@ A Regular Join is defined as adding existing attribute(s) from another data sour
 
 ![regular join example](Media/Image2.6.jpg)
 
-Figure 7: Regular Join Example
 
 #### Configuring a Regular Join
 
@@ -251,7 +244,6 @@ To deactivate a join, uncheck the join’s Active box in the Join Profiles secti
 
 ![marking a join as active/inactive](Media/Image2.7.jpg)
 
-Figure 8: Marking a Join as Active/Inactive
 
 ### Extended Join
 
@@ -261,7 +253,6 @@ The diagram below depicts an extended join. AuthzCode, lastLogon, and pwdreset a
 
 ![extended join example](Media/Image2.8.jpg)
 
-Figure 9: Extended Join Example
 
 #### Configuring an Extended Join
 
@@ -365,7 +356,6 @@ To deactivate a join, uncheck the join’s Active box in the Join Profiles secti
 
 ![marking a join as active/inactive](Media/Image2.9.jpg)
 
-Figure 10: Marking a Join as Active/Inactive
 
 ### Join Syntax
 
@@ -473,7 +463,6 @@ In addition to setting priority, you can also specify whether the attributes ret
 
 ![Attribute properties](Media/Image2.10.jpg)
 
-Figure 11: Attribute Properties (Hidden, Searchable, Updateable, Priority/Weight)
 
 #### Hidden
 
@@ -560,7 +549,6 @@ In a Left Join, all entries from the primary source are returned in the result a
 
 ![left join example](Media/Image2.11.jpg)
 
-Figure 12: Left Join Example
 
 #### Inner Join
 
@@ -568,7 +556,6 @@ In an Inner Join, the primary entries (from the starting point for the join) are
 
 ![inner join example](Media/Image2.12.jpg)
 
-Figure 13: Inner Join Example
 
 #### Behavior if a Secondary Source is Unavailable
 
@@ -591,7 +578,6 @@ Please see the diagram below for more details on the [join behavior](#join-behav
 
 ![Join Behavior Diagram](Media/Image2.13.jpg)
 
-Figure 14: Join Behavior Diagram
 
 >[!warning] 
 >If the joined virtual view is stored in persistent cache, during refresh operations, all backends must be available for the persistent cache to be refreshed. If one of the backends is not available when RadiantOne attempts to rebuild the entry and update the cache (resulting in error code 1 or 9 returned), the cache is not updated and the failed entry is logged in cn=cacherefreshlog. In addition, do not set the ALLOW_PARTIAL_ENTRY property to YES if you plan on caching the joined view as the whole entry must be in the cache and during refresh scenarios you don’t want a partial entry to end up in the cache.
@@ -604,7 +590,6 @@ After the join is configured, you can set the bind order (the backends to check 
 
 ![bind order example](Media/Image2.14.jpg)
 
-Figure 15: Bind Order Example
 
 For specific configuration details, please see the RadiantOne Namespace Configuration Guide.
 
@@ -623,7 +608,6 @@ To use a computed attribute to base a join on, click **Add Computed Attribute** 
 
 ![Computed Attribute Example to use as Join Criteria](Media/Image2.15.jpg)
 
-Figure 15: Computed Attribute Example to use as Join Criteria
 
 If you do not need to create a join based on a computed attribute, you can define them by clicking **Change** next to Define Computed Attribute on the Objects tab (for database backends, this is located at the bottom of the Object tab).
 
@@ -631,7 +615,6 @@ The diagram below depicts a computed attribute example where the value is compri
 
 ![Computed Attribute Example](Media/Image2.16.jpg)
 
-Figure 16: Computed Attribute Example
 
 There are three options available to assist in the configuration of a computed attribute. Any combination of these can be used to define the computed attribute.
 
@@ -798,11 +781,9 @@ The differences between static and dynamic groups are depicted in the diagrams b
 
 ![example of static group](Media/Image2.21.jpg)
 
-Figure 17: Example of Static Group
 
 ![Example of Traditional LDAP Dynamic Groups](Media/Image2.22.jpg)
  
-Figure 18: Example of Traditional LDAP Dynamic Groups
 
 ### Groups Supported by RadiantOne
 
@@ -813,7 +794,6 @@ RadiantOne can be configured for both static and dynamic LDAP groups (as they ar
 
 ![User-Defined Groups with Dynamic Members](Media/Image2.23.jpg)
  
-Figure 19: User-Defined Groups with Dynamic Members
 
 Static group members are specific user DNs explicitly listed as members for the group entry. Static group members can be any user DN in the virtual directory tree which means they can come from any backend source.
 
@@ -825,7 +805,6 @@ A main key capability of RadiantOne is metadata/schema extraction. To virtualize
 
 ![Metadata/Schema Discovery and View Definition Global Process](Media/Image2.25.jpg)
  
-Figure 20: Metadata/Schema Discovery and View Definition Global Process
 
 The schema extraction process can be launched from the Main Control Panel > Context Builder tab > Schema Manager sub-tab.
 
@@ -837,7 +816,6 @@ After the federated namespace has been built, an application can query RadiantOn
 
 ![Example of a Federated Namespace](Media/Image2.26.jpg)
  
-Figure 21: Example of a Federated Namespace
 
 ### Authentication – Client Issues the Bind DN
 
@@ -847,21 +825,17 @@ In the example below, the backend source is an LDAP directory that is mounted in
  
 ![Identification Step](Media/Image2.27.jpg)
 
-Figure 22: Identification Step
 
 ![Credentials Checking Step](Media/Image2.28.jpg)
  
-Figure 23: Credentials Checking Step
 
 If the underlying source does not understand an LDAP bind operation (i.e. a relational database), RadiantOne can be customized to encrypt the password that was passed from the client using the appropriate algorithm and then compare that value with the value stored in the database (the attribute that has been mapped to userPassword) to decide whether the bind succeeds or fails. This encryption is performed via an interception script. As mentioned before, the entire authentication process happens in two steps: Identification and Credentials Checking. They are depicted below.
 
 ![Identification Step](Media/Image2.29.jpg)
  
-Figure 24: Identification Step
 
 ![Credentials Checking](Media/Image2.30.jpg)
  
-Figure 25: Credentials Checking
 
 A template for the interception script is provided and can be customized to use the needed encryption algorithm. 
 
@@ -873,6 +847,3 @@ If a client application only sends a user ID to RadiantOne, and is not configure
 >The Identification and Credentials Checking steps still happen, however, they are both performed by RadiantOne (first find the user, then Bind to check credentials).
 
 ![Entire Authentication Process using User ID to DN Mapping Rules](Media/Image2.31.jpg)
- 
-Figure 26: Entire Authentication Process using User ID to DN Mapping Rules
- 
