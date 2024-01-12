@@ -60,9 +60,9 @@ Once you have completed entering the required fields for new data connector, sel
 
 ![image description](images/save-connector.png)
 
-If the data connector is successfully created, it will appear in the list of available data connectors under the *Group*.
+If the data connector is successfully created, it appears in the list of available data connectors under the *Group*.
 
-The *Status* of the new data connector will display as "UNREGISTERED". A connection needs to be established between a new data connector and the on-prem or cloud network for the connector to become "Active". For details on deploying the secure data connector client, see the [deploy a secure data connector client](deploy-sdc-client.md) guide.
+The *Status* of the new data connector displays as "UNREGISTERED". A connection needs to be established between a new data connector and the on-prem or cloud network for the connector to become "Active". For details on deploying the secure data connector client, see the [deploy a secure data connector client](deploy-sdc-client.md) guide.
 
 ![image description](images/new-connector-created.png)
 
