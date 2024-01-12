@@ -25,7 +25,7 @@ To map attributes:
 1. (Optional) you can define an [Input Condition](#configure-input-conditions-for-target-attributes) by selecting ![Pencil symbol](../../media/image83.png). Select **Insert** after defining the input condition.
 
 >[!note]
->If you use an input condition that uses an alternative value, select ![Plus symbol](../../media/image84.png) in the Alternate Values section and choose how to populate the value (e.g. **Constant**, **Attribute** or **Function**).
+>If you use an input condition that uses an alternative value, select (+) in the Alternate Values section and choose how to populate the value (e.g. **Constant**, **Attribute** or **Function**).
 
 5. Repeat steps 1-4 in this section to map all needed attributes.
 6. Select **Insert** to close the Rule Builder.
@@ -48,4 +48,4 @@ The default is "None" meaning that no special checking of the input value(s) is 
 
 If the **Custom Function Action** is chosen, you can create a new function for your transformation script, or call an existing custom function. If you have existing custom functions, the names appear in the drop-down list for you to choose from. After you select **OK**, select **OK** again and then select **Save**. Then select ![Less than and greater than symbols](../../media/image86.png) on the **Rule Set** page to edit the transformation script. Locate your custom function to edit the code in the web editor. You can use an [IDE like Eclipse](../script.md#use-a-java-ide-to-customize-scripts) instead of the web editor if you prefer.
 
- >[!warning] If you choose to delete the custom function action in a rule, the code for this is no longer called at runtime. However, the custom function code does remain in the transformation script. You must  manually remove the custom function from the transformation script if you don't want it there. Select ![Less than and greater than symbols](../../media/image86.png) on the **Rule Set** page to edit the transformation script.
+ >[!warning] If you choose to delete the custom function action in a rule, the code for this is no longer called at runtime. However, the custom function code does remain in the transformation script. You must  manually remove the custom function from the transformation script if you don't want it there. Select [<>] on the **Rule Set** page to edit the transformation script.
