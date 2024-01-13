@@ -126,6 +126,9 @@ The SCIMv2 data source must be created before completing the schema extraction s
 
 1.	 In the Control Panel > SETUP > Data Catalog > Data Sources > Selected Data Source > SCHEMA Tab, click **...** > Extract New Schema.
 1.	 Enter a schema file name.
+
+      >[!note] DO NOT USE HYPHENS (-) IN FILE NAMES.
+      
 1.	 Click **NEXT** to proceed and select the desired SCIM resource types.
 
     ![An image showing ](Media/Image3.12.jpg)
@@ -136,6 +139,21 @@ You can view/modify this schema by selecting if from the drop-down list. Any cha
 
 ### Custom Backends
 
+The custom data source must be created before completing the steps below. See [Data Sources](/data-sources.md) for details about creating data sources. The schemas associated with custom sources cannot be extracted. You must manually define the objects and attributes matching the custom data source API after providing a schema name. Every object (e.g. user) that stores identity data must be defined.
+
+1.	 In the Control Panel > SETUP > Data Catalog > Data Sources > Selected Data Source > SCHEMA Tab, click **...** > Extract New Schema.
+1.	 Enter a schema file name. An empty schema file opens.
+
+      >[!note] DO NOT USE HYPHENS (-) IN FILE NAMES.
+1.  Expand Objects.
+1.  Right-click on *Tables* and choose **Add New Object**.
+
+1.  Enter an object name and an (optional) LDAP object class to associate with it.
+1.  Click OK.
+1.  Repeat steps 3-6 to add all objects. 
+1.  Expand below *Tables* to see the new object. Right-click on the table and choose **Add New Attribute**.
+2.  Repeat step 8 to add all attributes.
+   
 
 ## Managing Schemas
 ### Displaying Objects and Relationships 
