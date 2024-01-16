@@ -98,7 +98,7 @@ This log file provides details about the state of capture connectors (e.g. start
 2021-12-14T08:26:22,853 INFO  com.rli.cragents.orchestrator.client.e:80 - [SyncWorker-agent_W-RLI21-LGRADY_fid_sd_agent__real_time_PID_2472] Connector started for o_activedirectory_sync_ou_testing_o_companydirectory_pipeline_o_activedirectory.
 ```
 
-The log level is controlled by the setting in Main Control Panel -> Settings tab -> Logs -> Log Settings. Select the Sync Agents – Agents option.
+The log level is controlled by the setting in Classic Control Panel -> Settings tab -> Logs -> Log Settings. Select the Sync Agents – Agents option.
 
 ![An image showing ](Media/Image5.3.jpg)
  
@@ -128,7 +128,7 @@ Figure 5.6: Connector Log Level
 
 **Sync Engine (Transformation and Apply)**
 
-The Sync Engine processes the transformations and sends the changes to the destination. These activities are logged in sync_engine.log on the RadiantOne node where the sync engine processor that is assigned for the pipeline is running. You can view and download sync_engine.log from the Server Control Panel > Log Viewer.  or you can use the Main Control Panel > Global Sync tab by selecting the topology and clicking Configure next to the pipeline. Select the Apply component and in the Log Viewer section, click Download.
+The Sync Engine processes the transformations and sends the changes to the destination. These activities are logged in sync_engine.log on the RadiantOne node where the sync engine processor that is assigned for the pipeline is running. You can view and download sync_engine.log from the Server Control Panel > Log Viewer.  You can also use the Classic Control Panel > Synchronization tab by selecting the topology and clicking Configure next to the pipeline. Select the Apply component and in the Log Viewer section, click Download.
 
 An example of transformation and apply activities that you can find in this log are shown below. Important information is highlighted in <span style="color:red">red</span>.
 
