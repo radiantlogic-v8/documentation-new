@@ -58,17 +58,18 @@ To configure proxy authorization:
 
 1. Enable Proxy Authorization and click **SAVE**.
 
-    ![Configuring an access token in Postman](Media/proxy-authz-control.jpg)
+    ![Configuring Proxy Authz Control](Media/proxy-authz-control.jpg)
 
-1. Navigate to Control Panel > SECURITY > Access Contorls > GENERAL.
+1. Navigate to Control Panel > SECURITY > Access Controls > GENERAL.
 
 1. Enable the “Allow Directory Manager to impersonate other users” option and click **SAVE**.
 
-    ![Configuring an access token in Postman](Media/allow-dirmgr-impersonation.jpg)
+    ![Configuring Directory Mgr Impersonation](Media/allow-dirmgr-impersonation.jpg)
 
 **Configuring External Token Validators**
 
-To add an external token validator:
+To add an external token validator, switch to Classic Control Panel from the logged in user icon drop-down in the upper right corner:
+  ![The New ADAP External Token Validator Page](Media/classic-cp.jpg)
 
 1.  In the Classic Control Panel, navigate to Settings > Security > External Token Validators. 
 1.  Click **Add**. The New ADAP External Token Validator page displays.
