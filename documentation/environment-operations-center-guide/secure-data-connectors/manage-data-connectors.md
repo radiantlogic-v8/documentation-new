@@ -9,13 +9,13 @@ Secure data connectors can be managed from the *Secure Data Connectors* screen. 
 
 ## Getting started
 
-All of the operations to manage secure data connectors are available in the **Options** (**...**) dropdown for each connector. To begin managing a connector, select the **Options** (**...**) menu of the specific connector you wish to modify.
+All of the operations to manage secure data connectors are available in the **Options** (**...**) menu for each connector. To begin managing a connector, select the **Options** (**...**) menu of the specific connector you wish to modify.
 
 ![image description](images/options.png)
 
 ## Edit a data connector
 
-The name and description of a data connector can be updated. To edit connector details, select **Edit** from the associated **Options** (**...**) dropdown.
+The name and description of a data connector can be updated. To edit connector details, select **Edit** from the associated **Options** (**...**) menu.
 
 ![image description](images/select-edit.png)
 
@@ -27,7 +27,7 @@ The connectors list will display updated  details for the updated *Secure Data C
 
 ## Enable or disable a connector
 
-To disable a data connector, select **Pause** from the **Options** (**...**) dropdown.
+To disable a data connector, select **Pause** from the **Options** (**...**) menu.
 
 ![image description](images/disable.png)
 
@@ -35,7 +35,7 @@ The connector status will update to "Paused" and all associated connections will
 
 ![image description](images/paused.png)
 
-To reactivate a data connector, select **Start** from the **Options** (**...**) dropdown.
+To reactivate a data connector, select **Start** from the **Options** (**...**) menu.
 
 ![image description](images/enable.png)
 
@@ -45,7 +45,7 @@ The connector status will update to "Active" and all associated connections will
 
 ## Restart a data connector
 
-To restart a data connector, select **Restart** from the **Options** (**...**) dropdown.
+To restart a data connector, select **Restart** from the **Options** (**...**) menu.
 
 The connector will completely stop and get started. This action is similar to starting a data connector for the first time, which does pulling all latest configurations, stops, and starts all the required processes.
 
@@ -53,7 +53,7 @@ The connector will completely stop and get started. This action is similar to st
 
 ## Delete a data connector
 
-To delete a data connector, select **Delete** from the **Options** (**...**) dropdown.
+To delete a data connector, select **Delete** from the **Options** (**...**) menu.
 
 [!warning] Deleting a data connector is a permanent action and cannot be undone.
 
