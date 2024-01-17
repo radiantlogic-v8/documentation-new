@@ -139,13 +139,13 @@ If successful, the operation displays results similar to the following.
 
 By default the token lifetime is set to 10 hours. To configure the token timeout:
 
-1.	Go to the Main Control Panel > Settings tab > Server Front End > Other Protocols section.
+1.	Go to Classic Control Panel > Settings tab > Server Front End > Other Protocols section.
 
 2.	In the REST/ADAP section (requires [Expert Mode](overview#expert-mode)), edit the value in the Token Timeout field.
 
 3.	Click Save.
 
-4.	Restart the RadiantOne service. If deployed in a cluster, restart the service on all nodes.
+4.	Restart the RadiantOne service from the Environment Operations Center. If deployed in a cluster, restart the service on all nodes.
 
   ![Editing the Token Timeout value](Media/token-timeout.jpg)
  
