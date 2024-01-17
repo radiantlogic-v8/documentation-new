@@ -50,26 +50,30 @@ This section describes configuring proxy authorization, configuring an ADAP exte
 
 **Configuring Proxy Authorization**
 
-The RadiantOne ADAP service queries the RadiantOne LDAP service using proxy authorization.
+The RadiantOne REST (ADAP) service queries the RadiantOne LDAP service using proxy authorization.
 
 To configure proxy authorization: 
 
-1. In the Main Control Panel, navigate to Settings > Server Front End > Supported Controls.
+1. Navigate to Control Panel > GLOBAL SETTINGS > Client Protocols > LDAP.
 
-1. Enable Proxy Authorization and click Save.
+1. Enable Proxy Authorization and click **SAVE**.
 
-1. Navigate to Settings > Security > Access Control.
+    ![Configuring an access token in Postman](Media/proxy-authz-control.jpg)
 
-1. Enable the “Allow Directory Manager to impersonate other users” option and click Save.
+1. Navigate to Control Panel > SECURITY > Access Contorls > GENERAL.
+
+1. Enable the “Allow Directory Manager to impersonate other users” option and click **SAVE**.
+
+    ![Configuring an access token in Postman](Media/allow-dirmgr-impersonation.jpg)
 
 **Configuring External Token Validators**
 
 To add an external token validator:
 
-1.  In the Main Control Panel, navigate to Settings > Security > External Token Validators. 
+1.  In the Classic Control Panel, navigate to Settings > Security > External Token Validators. 
 1.  Click **Add**. The New ADAP External Token Validator page displays.
 
-![The New ADAP External Token Validator Page](Media/externaltokenvalidatorpage.jpg)
+    ![The New ADAP External Token Validator Page](Media/externaltokenvalidatorpage.jpg)
 
 1.  Name the external token validator.
 1.  Toggle the Enable switch to On. 
@@ -90,16 +94,16 @@ Openid	| sub, auth_time, acr
   
 1.  Other values can be obtained from the decoded access token. See the [Getting An Access Token](#getting-an-access-token) section for more information.  
 
-![Configuring an ADAP External Token Validator](Media/configuringtokenvalidator.jpg)
+    ![Configuring an ADAP External Token Validator](Media/configuringtokenvalidator.jpg)
 
 
 
 1.  Click Edit next to Claims to FID User Mapping. The OIDC to FID User Mappings page displays.
 1.  Click Add. Use either a Simple DN Expression or a Search Expression to map a uniquely identifying attribute to a corresponding claim value in the token (refer to the [Getting An Access Token](#getting-an-access-token) section for more information). In the following image, a Search Expression is used to map the attribute **mail** to the claim value **email**.
 
->[!note] In some cases, creating a new attribute may be required.
+    >[!note] In some cases, creating a new attribute may be required.
 
-![search expression builder](Media/searchexpressionbuilder.jpg)
+    ![search expression builder](Media/searchexpressionbuilder.jpg)
 
 1.  Click OK.
 1.  Click OK again to close the *OIDC to FID User Mappings* window.
@@ -112,7 +116,7 @@ In this example, Postman is the REST client that will issue calls to ADAP. Obtai
 1. Request a new access token (see [Getting An Access Token](#getting-an-access-token)). 
 1. Click *Use Token*. This inserts an Authorization header that inserts your bearer token. 
 
-![Requesting a new access token](Media/requestnewaccesstoken.jpg)
+    ![Requesting a new access token](Media/requestnewaccesstoken.jpg)
 
 
 
@@ -128,7 +132,7 @@ Example URL	| http://localhost:8089/adap/o=companydirectory
 
 If successful, the operation displays results similar to the following. 
 
-![Successful REST Operation using OpenID Connect Token](Media/successful-query.jpg)
+    ![Successful REST Operation using OpenID Connect Token](Media/successful-query.jpg)
  
 **Token Lifetime**
 
