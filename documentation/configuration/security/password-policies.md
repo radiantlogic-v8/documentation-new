@@ -17,11 +17,11 @@ Password policies are configured from Classic Control Panel > Settings tab > Sec
 
 To allow users to bypass password policies, you can add them to the PrivilegedPasswordPolicyGroup group. This group can be useful, for example, if you want a helpdesk user to reset a user’s password. The password policies are not checked, so this user can set a password that does not meet the password content criteria, could be in history, etc.
 
->[!warning] In addition to PrivilegedPasswordPolicyGroup group members, password policies also do NOT apply to the RadiantOne super user account (cn=directory manager for example) or any member of the cn=directory administrators,ou=globalgroups,cn=config group (or the specific Directory Administrators group you have set on the Main Control Panel > Settings Tab > Server Front End > Administration sub-section).
+>[!warning] In addition to PrivilegedPasswordPolicyGroup group members, password policies also do NOT apply to the RadiantOne super user account (cn=directory manager for example) or any member of the cn=directory administrators,ou=globalgroups,cn=config group (or the specific Directory Administrators group you have set on Control Panel > Administration > DIRECTORY MANAGER SETTINGS > Special Group > ADMINISTRATORS GROUPS DN).
 
 To assign users to the Privileged Password Policy Group:
 
-1.	In the Main Control Panel, click the Directory Browser tab.
+1.	In the Control Panel > MANAGE > Directory Browser.
 
 2.	Expand cn=config and ou=globalgroups.
 
@@ -30,6 +30,8 @@ To assign users to the Privileged Password Policy Group:
 4.	On the right, click **Manage Group**.
 
 5.	Add privileged accounts to this group.
+
+![Privileged Group](Media/priv-group.jpg)
 
 ## Password Policy Configuration
 
