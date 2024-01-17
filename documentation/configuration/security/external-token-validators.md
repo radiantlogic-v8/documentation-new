@@ -68,7 +68,7 @@ To configure proxy authorization:
 
 **Configuring External Token Validators**
 
-To add an external token validator, switch to Classic Control Panel from the logged in user icon drop-down in the upper right corner:
+To add an external token validator, open Classic Control Panel from the logged in user icon drop-down in the upper right corner:
   ![The New ADAP External Token Validator Page](Media/classic-cp.jpg)
 
 1.  In the Classic Control Panel, navigate to Settings > Security > External Token Validators. 
