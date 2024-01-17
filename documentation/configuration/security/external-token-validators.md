@@ -68,8 +68,9 @@ To add an external token validator:
 
 1.  In the Main Control Panel, navigate to Settings > Security > External Token Validators. 
 1.  Click **Add**. The New ADAP External Token Validator page displays.
+
 ![The New ADAP External Token Validator Page](Media/externaltokenvalidatorpage.jpg)
-Figure 6: The New ADAP External Token Validator Page
+
 1.  Name the external token validator.
 1.  Toggle the Enable switch to On. 
 1.  Select an OIDC provider from the drop-down menu (if applicable, to assist with populating the Discovery URL syntax). Otherwise, skip this step and enter your own Discovery URL. 
