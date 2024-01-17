@@ -62,7 +62,7 @@ To configure proxy authorization:
 
 1. Navigate to Control Panel > SECURITY > Access Controls > GENERAL.
 
-1. Enable the “Allow Directory Manager to impersonate other users” option and click **SAVE**.
+1. Enable the “ALLOW DIRECTORY MANGAER TO IMPERSONATE OTHER USERS” option and click **SAVE**.
 
     ![Configuring Directory Mgr Impersonation](Media/allow-dirmgr-impersonation.jpg)
 
