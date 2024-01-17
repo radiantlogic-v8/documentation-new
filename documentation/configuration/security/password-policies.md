@@ -7,7 +7,7 @@ description: Learn how to configure password policies.
 
 When using a RadiantOne Directory store or persistent cache (with password policy enforcement enabled), you can establish password policies for managing things such as password length, quality, reset frequency, lockout…etc. Password policies are only enforced for RadiantOne Directory stores and persistent caches (that contain the user passwords and have enabled the enforcement of password policies) not any other kind of backend configuration (proxies, databases…etc.).
 
-![Password Policies](Media/Image3.102.jpg)
+![Password Policies](Media/default-policy.jpg)
  
 Figure 19: Password Policies
 
