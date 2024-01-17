@@ -128,7 +128,7 @@ Example URL	| http://localhost:8089/adap/o=companydirectory
 
 If successful, the operation displays results similar to the following. 
 
-![Successful REST Operation using OpenID Connect Token](Media/Image5.16.jpg)
+![Successful REST Operation using OpenID Connect Token](Media/successful-query.jpg)
  
 **Token Lifetime**
 
@@ -142,10 +142,10 @@ By default the token lifetime is set to 10 hours. To configure the token timeout
 
 4.	Restart the RadiantOne service. If deployed in a cluster, restart the service on all nodes.
 
-  ![Editing the Token Timeout value](Media/Image5.17.jpg)
+  ![Editing the Token Timeout value](Media/token-timeout.jpg)
  
 
 When an expired or unrecognized token is used, the Response section displays the message “Authentication failed: Unknown token”.
 
-![Error Related to Unrecognized or Expired Token](Media/Image5.18.jpg)
+![Error Related to Unrecognized or Expired Token](Media/unsuccessful-query.jpg)
  
