@@ -8,7 +8,7 @@ description: Learn how to configure Access Controls.
 When RadiantOne receives a request, it uses the user in the bind operation, and the access control instructions (ACIs) defined in order to allow or deny access to directory information. The server can allow or deny permissions such as read, write, search, or compare. 
 
 >[!warning] 
->ACI are not enforced for the [RadiantOne super user](03-front-end-settings-tab#directory-manager-user) (e.g. cn=directory manager).
+>ACI are not enforced for the RadiantOne super user, cn=directory manager.
 
 With ACI, you can control access to targets such as:
 -	the entire virtual namespace
