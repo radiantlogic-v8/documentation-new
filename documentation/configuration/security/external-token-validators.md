@@ -133,7 +133,7 @@ Example URL	| http://localhost:8089/adap/o=companydirectory
 
 If successful, the operation displays results similar to the following. 
 
-    ![Successful REST Operation using OpenID Connect Token](Media/successful-query.jpg)
+![Successful REST Operation using OpenID Connect Token](Media/successful-query.jpg)
  
 **Token Lifetime**
 
