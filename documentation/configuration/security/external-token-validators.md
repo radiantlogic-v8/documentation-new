@@ -84,13 +84,13 @@ To add an external token validator, open Classic Control Panel from the logged i
 1.  Use the Expected Audience from your OIDC provider configuration to populate the Expected Audience field.
 1.  Enter the expected Scope.This property determines what information/claims ("sub" indicates Subject) in the token (based on scopes requested) can be used to identify the relevant account in the RadiantOne namespace for enforcing authorization on subsequent requests for this connection. The value of this attribute is used as input for the *Claims to FID User Mapping* configured later in the steps below. The standard claims associated with the scopes are shown in the table below.
 
-Scope	| Claims
--|-
-Email	| email, email_verified
-Address	| address
-Profile	| name, family_name, given_name, middle_name, nickname, preferred_username, profile, picture, website, gender, birthdate, zoneinfo, locale, updated_at
-Phone	| phone_number, phone_number_verified
-Openid	| sub, auth_time, acr
+    Scope	| Claims
+    -|-
+    Email	| email, email_verified
+    Address	| address
+    Profile	| name, family_name, given_name, middle_name, nickname, preferred_username, profile, picture, website, gender, birthdate, zoneinfo, locale, updated_at
+    Phone	| phone_number, phone_number_verified
+    Openid	| sub, auth_time, acr
 
   
 1.  Other values can be obtained from the decoded access token. See the [Getting An Access Token](#getting-an-access-token) section for more information.  
