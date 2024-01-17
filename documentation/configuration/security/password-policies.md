@@ -50,7 +50,6 @@ In the ‘Choose a Password Policy’ drop-down menu, the default password polic
 
 ![Password Policy Scope](Media/choose-policy.jpg)
  
-Figure 20: Password Policy Scope
 
 #### Custom Password Policy
 
