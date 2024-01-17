@@ -9,7 +9,7 @@ When using a RadiantOne Directory store or persistent cache (with password polic
 
 ![Password Policies](Media/default-policy.jpg)
  
-Figure 19: Password Policies
+Password policies are configured from Classic Control Panel > Settings tab > Security > Password Policies.
 
 ## Privileged Password Policy Group
 
@@ -31,7 +31,7 @@ To assign users to the Privileged Password Policy Group:
 
 ## Password Policy Configuration
 
-From the Main Control Panel > Settings Tab > Security section > Password Policies sub-section, you can configure the following:
+From the Classic Control Panel > Settings Tab > Security > Password Policies, you can configure the following:
 
 ### Password Policy Scope
 
@@ -62,7 +62,7 @@ An example of a custom password policy is shown below. It is applicable to all u
 
 ![Example Custom Password Policy Applicable to a Group](Media/special-user-policy.jpg)
  
-Figure 21: Example Custom Password Policy Applicable to a Group
+
 
 An example of a custom password policy applicable to all users below a specific container is shown below. This custom policy is enforced for all users in a RadiantOne Directory store located below o=local.
 
@@ -70,7 +70,7 @@ An example of a custom password policy applicable to all users below a specific 
 
 ![An image showing ](Media/local-policy.jpg)
  
-Figure 50: Example Custom Password Policy Applicable to a Sub Tree
+
 
 ### Password Policy Precedence
 
@@ -108,7 +108,7 @@ The default delegated administrator roles and users associated with the RadiantO
 
 ![Password Changes Options](Media/password-change.jpg)
  
-Figure 22: Password Changes Options
+
 
 ### User must change password after reset
 
@@ -147,7 +147,7 @@ This value is stored in the pwdInHistory attribute of the cn=Password Policy ent
 
 ![Password Expiration Options](Media/password-expiration.jpg)
  
-Figure 23: Password Expiration Options
+
  
 ### Password never expires
 
@@ -206,7 +206,7 @@ Each of these properties is described below.
  
 ![Password Content and Account Lockout Options](Media/password-content.jpg)
 
-Figure 24: Password Content and Account Lockout Options
+
 
 ### Enabled
 
@@ -377,7 +377,6 @@ A multi-valued Generalized Time attribute containing the times of previous conse
 
 ![Number of Login Failures](Media/login-failures.jpg)
 
-Figure 25: Number of Login Failures
  
 If the last login was successful, this attribute is not present.
 
