@@ -44,7 +44,7 @@ There is a default password policy that is enforced at a global level for all Ra
 
 In the ‘Choose a Password Policy’ drop-down menu, the default password policy is named Default Policy. Choose this option to edit the components of the global default policy.
 
-![Password Policy Scope](Media/Image3.103.jpg)
+![Password Policy Scope](Media/choose-policy.jpg)
  
 Figure 20: Password Policy Scope
 
@@ -60,7 +60,7 @@ An example of a custom password policy is shown below. It is applicable to all u
 
 >[!note] If you define multiple custom password policies associated with groups (as the Subject), they should not have the same precedence if they share members. If a user is affected by multiple group-based policies, the one with the highest precedence (lowest numeric value in the precedence setting) is enforced.
 
-![Example Custom Password Policy Applicable to a Group](Media/Image3.104.jpg)
+![Example Custom Password Policy Applicable to a Group](Media/special-user-policy.jpg)
  
 Figure 21: Example Custom Password Policy Applicable to a Group
 
@@ -68,7 +68,7 @@ An example of a custom password policy applicable to all users below a specific 
 
 >[!note] Precedence level is not configurable for policies defined on a sub tree. Multiple password policies configured with sub tree subject, should not be configured for the same location. If multiple policies impact the same branch, the policy defined at the lowest point is enforced.
 
-![An image showing ](Media/Image3.105.jpg)
+![An image showing ](Media/local-policy.jpg)
  
 Figure 50: Example Custom Password Policy Applicable to a Sub Tree
 
@@ -106,7 +106,7 @@ The default delegated administrator roles and users associated with the RadiantO
 
 ## Password Changes
 
-![Password Changes Options](Media/Image3.106.jpg)
+![Password Changes Options](Media/password-change.jpg)
  
 Figure 22: Password Changes Options
 
@@ -145,7 +145,7 @@ This value is stored in the pwdInHistory attribute of the cn=Password Policy ent
 
 ## Password Expiration
 
-![Password Expiration Options](Media/Image3.107.jpg)
+![Password Expiration Options](Media/password-expiration.jpg)
  
 Figure 23: Password Expiration Options
  
@@ -204,7 +204,7 @@ If more complex password content is required, the Password Strength Rule can be 
 
 Each of these properties is described below.
  
-![Password Content and Account Lockout Options](Media/Image3.108.jpg)
+![Password Content and Account Lockout Options](Media/password-content.jpg)
 
 Figure 24: Password Content and Account Lockout Options
 
@@ -375,7 +375,7 @@ A Generalized Time attribute containing the time at which the password expiratio
 
 A multi-valued Generalized Time attribute containing the times of previous consecutive login failures. If the last login was successful, this attribute is not present. The number of values will be no more than the value defined in Number of Login Failures for the password policy.
 
-![Number of Login Failures](Media/Image3.109.jpg)
+![Number of Login Failures](Media/login-failures.jpg)
 
 Figure 25: Number of Login Failures
  
