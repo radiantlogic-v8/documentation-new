@@ -24,26 +24,26 @@ This section describes using the Postman REST client to obtain an access token.
 
 1. From the Type drop down menu, select OAuth 2.0. The Current Token section displays. 
 
-![Type drop-down menu](Media/typemenu.jpg)
+    ![Type drop-down menu](Media/typemenu.jpg)
 
  
-2. In the Configure New Token section, enter the Client ID and client secret.
+1. In the Configure New Token section, enter the Client ID and client secret.
 
     >[!note] These values were created during the OIDC provider configuration process. 
 
-3. Provide the access token URL. 
+1. Provide the access token URL. 
 
     >[!note] This value can be found using the using the metadata URL from the Authorization Server. 
 
-![Configuring an access token in Postman](Media/configuringtoken.jpg)
+    ![Configuring an access token in Postman](Media/configuringtoken.jpg)
 
 
-4. Click Get New Access Token. The new access token's details are displayed. 
+1. Click Get New Access Token. The new access token's details are displayed. 
 
-![token details](Media/tokendetails.jpg)
+    ![token details](Media/tokendetails.jpg)
 
  
-5. Copy this token and decode it for the values needed for configuring a mapping between the token contents and a unique identity in the RadiantOne namespace. You can do this at https://jwt.io/. 
+1. Copy this token and decode it for the values needed for configuring a mapping between the token contents and a unique identity in the RadiantOne namespace. You can do this at https://jwt.io/. 
 
 ### RadiantOne Configuration
 This section describes configuring proxy authorization, configuring an ADAP external token validator, and Claims to FID User Mapping.
