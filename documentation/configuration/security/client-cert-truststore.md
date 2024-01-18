@@ -20,27 +20,23 @@ To view a certificate, select the certificate in the list and click **View**. Va
 ### Adding Client Certificates
 
 To add a certificate:
-1.	Click **Import**.
+1.	Click **IMPORT**.
 2.	Enter a short, unique name (alias) for the certificate.
 3.	Browse to the location of the client certificate file and click **OK**.
-4.	Click **Save** in the upper right corner.
+
+
 
 ### Deleting Client Certificates
 
 To delete a certificate:
 
-1.	Select the desired certificate and click **Delete**.
-2.	Click **Yes** to confirm the deletion.
-3.	Click **OK** to exit the confirmation.
-4.	Click **Save** in the upper right corner.
+1.	Select the desired certificate and click the inline trashcan icon
+2.	Click **DELETE** to confirm the deletion.
+
 
 ### Exporting Client Certificates
 
 To export a certificate:
 
-1.	Select the desired certificate and click **Export**.
-2.	Enter a location to export the file to.
-3.	Enter a name for the exported file.
-4.	Click **OK** to export the certificate to a file.
-5.	Click **OK** to exit the confirmation.
-6.	Click **Save** in the upper right corner.
+1.	Select the desired certificate and click the inline **View Certificate** option.
+2.	Click **EXPORT**. The exported file is automatically downloaded to the default location based on the Internet browser settings.
