@@ -102,7 +102,7 @@ To add a user to the Clear Attributes Only group:
 
 3.	Select cn=ClearAttributesOnly.
 
-4.	On the right, click ![Manage Group](Media/manage-group-button.jpg) (Manage Group).
+4.	On the right, click ![Manage Group](Media/manage-group.jpg) (Manage Group).
 
 5.	From here you can add users to the group.
 
@@ -111,13 +111,13 @@ To add a user to the Clear Attributes Only group:
 
 ### Updating Encrypted Attributes
 
-To update encrypted attributes, the client must connect to RadiantOne via SSL and be authorized (via ACLs) to read and update the attribute and not be in the special [Clear Attributes Only Group](#clear-attributes-only-group). When editing entries from the Control Panel > Manage > Directory Browser > selected RadiantOne Directory store, the attributes defined as encrypted are shown in clear as long as the user connected to the Control Panel is authorized to read those attributes and is not a member of the blacklisted group. In this case, the connected user can also update the encrypted attribute if permissions allow for it.
+To update encrypted attributes, the client must connect to RadiantOne via SSL and be authorized (via ACLs) to read and update the attribute and not be in the special [Clear Attributes Only Group](#clear-attributes-only-group). When editing entries from the Control Panel > MANAGE > Directory Browser > selected RadiantOne Directory store, the attributes defined as encrypted are shown in clear as long as the user connected to the Control Panel is authorized to read those attributes and is not a member of the blacklisted group. In this case, the connected user can also update the encrypted attribute if permissions allow for it.
 
 ### Changing an Encryption Key
 
 If you need to change the encryption security key, follow the steps below.
 
-1.	Go to the Control Panel > Setup > Directory Namespace > Namespace Design.
+1.	Go to the Control Panel > SETUP > Directory Namespace > Namespace Design.
 
 2.	Select the naming context representing the RadiantOne Directory store.
 
@@ -129,12 +129,12 @@ If you need to change the encryption security key, follow the steps below.
 
 6.	Repeat steps 1-5 for each store that has encrypted attributes.
 
-7.	Go to the Control Panel > Manage > Security > Attribute Encryption.
+7.	Go to the Control Panel > MANAGE > Security > Attribute Encryption.
 
 8.	Click Edit next to Security Key. This option is only available if you removed encrypted attributes and rebuilt the index for all applicable stores.
    ![Edit Encryption Key](Media/edit-encryption-key.jpg)
 
-10.	Go to the Control Panel > Setup > Directory Namespace > Namespace Design.
+10.	Go to the Control Panel > SETUP > Directory Namespace > Namespace Design.
 
 11.	Select the naming context representing the RadiantOne Directory store.
 
@@ -154,7 +154,7 @@ Using the LDIFZ format when exporting entries produces a zipped and encrypted LD
 
 To define the criteria used to generate an encryption key:
 
-1. 	Navigate to Control Panel > Manage > Security > Attribute Encryption.
+1. 	Navigate to Control Panel > MANAGE > Security > Attribute Encryption.
 
 2.	 In the LDIFZ Encryption Key section, select the desired cipher from the drop-down list or select [AWSKMS](#using-amazon-web-services-aws-with-a-customer-master-key-cmk) if you want to use your own Customer Master Key (CMK) in Amazon Web Services (AWS) Key Management Service (KMS) and have configured the necessary settings in ZooKeeper. 
 
@@ -164,7 +164,7 @@ To define the criteria used to generate an encryption key:
 
 If you need to change the LDIFZ encryption security key, follow the steps below.
 
-1.	Go to the Control Panel > Manage > Security > Attribute Encryption.
+1.	Go to the Control Panel > MANAGE > Security > Attribute Encryption.
 
 2.	Click Edit next to Security Key.
 ![Edit Encryption Key](Media/edit-encryption-key.jpg)
@@ -184,7 +184,7 @@ The Secure LDIF Export option allows you to enforce the use of the encrypted LDI
 
 To enable the secure LDIF export option:
 
-1.	Go to the Control Panel > Manage > Security > Attribute Encryption.
+1.	Go to the Control Panel > MANAGE > Security > Attribute Encryption.
 
 2.	Navigate to the Secure LDIF Export section and click the toggle to Enable it.
 
