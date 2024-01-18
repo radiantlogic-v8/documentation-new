@@ -22,7 +22,7 @@ To view a certificate, select the certificate in the list and click the inline *
 To add a certificate:
 1.	Click **IMPORT**.
 2.	Enter a short, unique name (alias) for the certificate.
-3.	Browse to the location of the client certificate file and click **OK**.
+3.	Browse to the location of the client certificate file and click **OK**. The certificate is imported into the client certificate truststore and is shared across all RadiantOne nodes. 
 
 ![Import Certificate](Media/import-cert.jpg)
 
@@ -31,7 +31,7 @@ To add a certificate:
 To delete a certificate:
 
 1.	Select the desired certificate and click the inline trashcan icon
-2.	Click **DELETE** to confirm the deletion.
+2.	Click **DELETE** to confirm the deletion. The certificate is deleted from the client certificate truststore
 
 ![Delete Certificate](Media/delete-cert.jpg)
 
