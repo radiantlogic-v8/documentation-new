@@ -11,11 +11,11 @@ Client certificates can be added to the Client Certificate Truststore at any tim
 
 Manage client certificates into the truststore from the Control Panel > GLOBAL SETTINGS > Client Certificate. Certificates can be viewed, imported, exported or deleted from here.
 
-
-
 ## Viewing Client Certificates
 
 To view a certificate, select the certificate in the list and click **View**. Valuable information about the certificate is shown (who issued the certificate, who the certificate was issued to, when the certificate is set to expire, status…etc.).
+
+![View Certificate](Media/view-cert.jpg)
 
 ### Adding Client Certificates
 
@@ -24,7 +24,7 @@ To add a certificate:
 2.	Enter a short, unique name (alias) for the certificate.
 3.	Browse to the location of the client certificate file and click **OK**.
 
-
+![Import Certificate](Media/import-cert.jpg)
 
 ### Deleting Client Certificates
 
@@ -33,6 +33,7 @@ To delete a certificate:
 1.	Select the desired certificate and click the inline trashcan icon
 2.	Click **DELETE** to confirm the deletion.
 
+![Delete Certificate](Media/delete-cert.jpg)
 
 ### Exporting Client Certificates
 
@@ -40,3 +41,5 @@ To export a certificate:
 
 1.	Select the desired certificate and click the inline **View Certificate** option.
 2.	Click **EXPORT**. The exported file is automatically downloaded to the default location based on the Internet browser settings.
+
+![View Certificate](Media/export-cert.jpg)
