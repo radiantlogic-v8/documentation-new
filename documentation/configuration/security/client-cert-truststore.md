@@ -7,9 +7,11 @@ description: Learn how to manage certificates in the client certificate truststo
 
 The certificates in the Client Certificate Trust Store are used by RadiantOne to connect via SSL to underlying data sources. Therefore, the appropriate client (public key) certificate (associated with the server certificate of the backend) needs imported into the Client Certificate Trust Store (unless they are signed by a trusted/known Certificate Authority).
 
-Client certificates can be added to the Client Certificate Truststore at any time without needing to restart the RadiantOne service. All RadiantOne cluster nodes share the contents of the Client Certificate Truststore.
+Client certificates can be added to the Client Certificate Truststore at any time without needing to restart the RadiantOne service. All RadiantOne cluster nodes in the same environment, share the contents of the Client Certificate Truststore.
 
-Import client certificates into the truststore from the Main Control Panel > Settings Tab > Security section > Client Certificate Truststore. Certificates can be viewed, imported, exported or deleted from here.
+Manage client certificates into the truststore from the Control Panel > GLOBAL SETTINGS > Client Certificate. Certificates can be viewed, imported, exported or deleted from here.
+
+
 
 ## Viewing Client Certificates
 
