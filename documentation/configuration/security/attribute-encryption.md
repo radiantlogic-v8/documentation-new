@@ -102,7 +102,7 @@ To add a user to the Clear Attributes Only group:
 
 3.	Select cn=ClearAttributesOnly.
 
-4.	On the right, click ![Manage Group](Media/manage-group.jpg) (Manage Group).
+4.	On the top right, click ![Manage Group](Media/manage-group.jpg).
 
 5.	From here you can add users to the group.
 
