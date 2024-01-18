@@ -17,7 +17,7 @@ There are two items to configure.
 
 To define the criteria used to generate an encryption key:
 
-1. 	Navigate to Control Panel > Manage > Security > Attribute Encryption.
+1. 	Navigate to Control Panel > MANAGE > Security > Attribute Encryption.
 1. 	In the RadiantOne Directory Attribute Encryption Key section select the desired cipher from the drop-down list or select [AWSKMS](#using-amazon-web-services-aws-with-a-customer-master-key-cmk) if you want to use your own Customer Master Key (CMK) in Amazon Web Services (AWS) Key Management Service (KMS) and have configured the necessary settings in ZooKeeper.
 
       ![An image showing ](Media/awskms-cipher.jpg)
@@ -37,9 +37,9 @@ Instead of using the default key generation, you have the option to use a custom
 
 1.	Log into your AWS account to create your CMK (Customer Master Key).
 
-2.	With your CMK information, log into Control Panel and go to the ZooKeeper tab.
+2.	With your CMK information, log into Classic Control Panel and go to the ZooKeeper tab.
 
-3.	On the ZooKeeper tab, navigate to /radiantone/v2/doccluster/config/vds_server.conf, click Edit Mode, and locate the following properties:
+3.	On the ZooKeeper tab, navigate to /radiantone/<version>/<clustername>/config/vds_server.conf, click Edit Mode, and locate the following properties:
 
 ```
   "awsAccessKeyId" : null,
@@ -106,8 +106,6 @@ To add a user to the Clear Attributes Only group:
 
 5.	From here you can add users to the group.
 
->[!note] 
->To change the default group, on the Main Control Panel, go to the Zookeeper tab (requires [Expert Mode](01-introduction#expert-mode)). Expand radiantone > `<version>` > `<clustername>` > config and select vds_server.conf. Modify the value for "encryptedAttributeBlacklistGroupDn" to the full DN that points to the group entry to which the exclusion behavior should apply.
 
 ### Updating Encrypted Attributes
 
@@ -142,9 +140,9 @@ If you need to change the encryption security key, follow the steps below.
 
 13.	Click **SAVE**.
 
-14.	Click **RE-BUILDE INDEX**.
+14.	Click **RE-BUILD INDEX**.
 
-15.	Repeat steps 9-13 for all stores that require encrypted attributes.
+15.	Repeat steps 9-14 for all stores that require encrypted attributes.
 
 ## LDIF File Encryption
 
@@ -166,12 +164,12 @@ If you need to change the LDIFZ encryption security key, follow the steps below.
 
 1.	Go to the Control Panel > MANAGE > Security > Attribute Encryption.
 
-2.	Click Edit next to Security Key.
-![Edit Encryption Key](Media/edit-encryption-key.jpg)
+1.	Click Edit next to Security Key.
+      ![Edit Encryption Key](Media/edit-encryption-key.jpg)
 
-4.	Select the cipher and enter a security key.
+1.	Select the cipher and enter a security key.
 
-5.	Click **SAVE**.
+1.	Click **SAVE**.
 
 >[!note] 
 >LDIFZ files generated with the old encryption key are no longer usable.
