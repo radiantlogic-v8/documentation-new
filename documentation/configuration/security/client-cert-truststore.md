@@ -17,7 +17,7 @@ To view a certificate, select the certificate in the list and click the inline *
 
 ![View Certificate](Media/view-cert.jpg)
 
-### Adding Client Certificates
+## Adding Client Certificates
 
 To add a certificate:
 1.	Click **IMPORT**.
@@ -26,7 +26,7 @@ To add a certificate:
 
 ![Import Certificate](Media/import-cert.jpg)
 
-### Deleting Client Certificates
+## Deleting Client Certificates
 
 To delete a certificate:
 
@@ -35,7 +35,7 @@ To delete a certificate:
 
 ![Delete Certificate](Media/delete-cert.jpg)
 
-### Exporting Client Certificates
+## Exporting Client Certificates
 
 To export a certificate:
 
