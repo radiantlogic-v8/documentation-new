@@ -72,7 +72,7 @@ These release notes contain the following sections:
 
 - [VMR-668]: Fixed an issue where Control Panel > Settings > OIDC Provider Configuration was using the wrong discovery URL. 
 
-- [VMR-670]: Fixed an issue so that an invalid data source Secure Data Connector group message is now updated and imported data sources from CLI works with data sources exported in different PBE environment.  
+- [VMR-670]: Fixed an issue with importing data sources that were exported in different PBE environment.  
 
 ## Known Issues
 
