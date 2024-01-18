@@ -1,6 +1,6 @@
 ---
-title: Command Line Configuration Guide
-description: Command Line Configuration Guide
+title: REST API Configuration Guide
+description: REST API Configuration Guide
 ---
 
 - [Introduction](introduction.md)
