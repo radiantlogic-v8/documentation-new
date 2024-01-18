@@ -13,7 +13,7 @@ Manage client certificates into the truststore from the Control Panel > GLOBAL S
 
 ## Viewing Client Certificates
 
-To view a certificate, select the certificate in the list and click **View**. Valuable information about the certificate is shown (who issued the certificate, who the certificate was issued to, when the certificate is set to expire, status…etc.).
+To view a certificate, select the certificate in the list and click the inline **View Certificate** option. Valuable information about the certificate is shown (who issued the certificate, who the certificate was issued to, when the certificate is set to expire, status…etc.).
 
 ![View Certificate](Media/view-cert.jpg)
 
