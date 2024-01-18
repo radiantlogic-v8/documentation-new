@@ -27,6 +27,9 @@ Harness your identity data with intelligent integration to drive better business
   > [Secure Data Connectors](environment-operations-center-guide/secure-data-connectors/data-connectors-overview)  
   > Learn how to install, configure and use Secure Data Connectors as a secure way for cloud environments to selectively access on-premise identity data sources.
 
+  > [REST API Configuration](command-line-configuration-guide/introduction)  
+  > Learn about the configuration commands that are supported with the RadiantOne REST API.
+
   > [Release Notes](release-notes/iddm-8-0-0)  
   > Learn about improvements and bug fixes for RadiantOne Identity Data Management and Environment Operations Center.
 
