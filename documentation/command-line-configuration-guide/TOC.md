@@ -4,7 +4,6 @@ description: REST API Configuration Guide
 ---
 
 - [Introduction](introduction.md)
-- [General Commands](general-commands.md)
 - [Global Configuration Commands](global-configuration-commands.md)
 - [Node Configuration Commands](node-configuration-commands.md)
 - [Data Source Commands](data-source-commands.md)
