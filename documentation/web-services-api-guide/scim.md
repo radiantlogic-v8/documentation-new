@@ -9,11 +9,16 @@ The System for Cross-domain Identity Management (SCIM) specification automates u
 
 ## Configuration
 
-For the RadiantOne service to support SCIM queries from clients, a SCIM schema and resource type are required. To access the SCIM configuration in the Main Control Panel, go to Settings Tab > Server Front End > SCIM. The SCIM Configuration page contains three sub tabs: Schemas, Resource Types, and Preview. 
+For the RadiantOne service to support SCIM queries from clients, a SCIM schema and resource type are required. The SCIM configuration is accessed in the Classic Control Panel. 
+
+### Classic Control Panel
+Open Classic Control Panel from the logged in user icon drop-down in the upper right corner:
+
+![An image showing ](Media/classic-cp.jpg)
+
+In the Classic Control Panel, go to Settings Tab > Server Front End > SCIM. The SCIM Configuration page contains three sub tabs: Schemas, Resource Types, and Preview. 
  
 ![An image showing ](Media/Image4.1.jpg)
-
-Figure 1: SCIM Configuration
 
 The configuration is saved in: <RLI_HOME>/vds_server/conf/scim2. This folder contains three sub-folders: resources, schemas, and templates. The resources folder contains all resource type definitions, each defined in a JSON-formatted file. The schemas folder contains a definition for attributes, each defined in a JSON-formatted file. The templates folder contains predefined attribute mappings.
 
@@ -21,13 +26,11 @@ The configuration is saved in: <RLI_HOME>/vds_server/conf/scim2. This folder con
 
 To configure SCIM access to RadiantOne entries you can use the Quick Start option to automatically define a SCIM schema and resource type that matches the objects and attributes associated with your entries, or you can define your own SCIM schema and resource type. This example describes the Quick Start steps. See Creating Schemas and Creating Resource Types for steps on customizing your own.
 
-1.	Create a virtual view of your identity sources. There are many methods to create virtual views using RadiantOne. If you need assistance, see the RadiantOne Namespace Configuration Guide, Context Builder Guide, and the Identity Service Wizards Guide. If your identities are in a RadiantOne Universal Directory instead of a virtual view, make sure you know what object class they are associated with.
+1.	Create a virtual view of your identity sources. If your identities are in a RadiantOne Directory instead of a virtual view, make sure you know what object class they are associated with.
 
-2.	If using a virtual view, make sure it is mounted below a Root Naming Context in the RadiantOne namespace. If you need assistance, see the RadiantOne Namespace Configuration Guide.
-
-3.	If the identities are associated with custom object classes or attributes (not currently defined in the RadiantOne schema), extend the RadiantOne schema with the objects and attributes. If you need assistance, see Chapter 4 in the RadiantOne System Administration Guide. 
-
-4.	Go to the Main Control Panel > Settings Tab > Server Front End > SCIM.
+2.	If the identities are associated with custom object classes or attributes (not currently defined in the RadiantOne schema), extend the RadiantOne schema with the objects and attributes.
+   
+3.	Go to the [Classic Control Panel](#classic-control-panel) > Settings Tab > Server Front End > SCIM.
 
 5.	In the SCIM Configuration, click **Quick Start**.
 
@@ -37,21 +40,19 @@ To configure SCIM access to RadiantOne entries you can use the Quick Start optio
 
 8.	For the Base DN, click Browse and select the root naming context in the RadiantOne namespace where your virtual view is mounted.
 
-9.	For the Primary Object Class, select the object class associated with the identities in the virtual view from the drop-down list. If you do not see your object class here, extend the RadiantOne schema prior to using this Quick Start. See Chapter 4 in the RadiantOne System Administration Guide. 
+9.	For the Primary Object Class, select the object class associated with the identities in the virtual view from the drop-down list. If you do not see your object class here, extend the RadiantOne schema prior to using this Quick Start.  
 
 10.	Click Save. An example is shown below.
 
   ![An image showing ](Media/Image4.2.jpg)
  
-  Figure 4.2: SCIM Quick Start
-
+ 
 11.	To view the attribute mappings that were auto-generated, select the Resource Types tab.
 
 12.	Select the resource type name you configured and click the MAPPINGS tab.  An example is shown below.
  
   ![An image showing ](Media/Image4.3.jpg)
 
-  Figure 4.3: Example of Auto-generated Attribute Mappings
 
 13.	Click the Preview tab and select the Resource Type from the drop-down list. 
 
@@ -59,28 +60,24 @@ To configure SCIM access to RadiantOne entries you can use the Quick Start optio
 
 ![An image showing ](Media/Image4.4.jpg)
  
-Figure 4.4: SCIM Preview Tab
 
 ## SCIM Schemas
 
-A SCIM schema designates attribute characteristics such as their mutability, type, and other features. The core SCIM schemas: User, Group, and Enterprise User Extensions are supported and configured by default in RadiantOne. Custom schemas are also supported. SCIM schemas are managed from the Main Control Panel > Settings Tab > Server Front End > SCIM section -> Schemas tab on the right.
+A SCIM schema designates attribute characteristics such as their mutability, type, and other features. The core SCIM schemas: User, Group, and Enterprise User Extensions are supported and configured by default in RadiantOne. Custom schemas are also supported. SCIM schemas are managed from the [Classic Control Panel](#classic-control-panel) > Settings Tab > Server Front End > SCIM section -> Schemas tab on the right.
 
-To query the SCIM schema (core, extension and custom) in the RadiantOne service, a SCIM client can use: `http://<RadiantOneService>:8089/scim2/v2/Schemas`
+To query the SCIM schema (core, extension and custom) in the RadiantOne service, a SCIM client can use: `http://<RadiantOneServiceEndpoint>/scim2/v2/Schemas`
 
-### Default Core Schemas
+### Group - Default Core Schema
 
-#### Group
-
-To view the default Group SCIM schema, go to the Main Control Panel -> Settings Tab -> Server Front End -> SCIM. On the Schemas tab, click Group. The default attributes are outlined in the table below.
+To view the default Group SCIM schema, go to the [Classic Control Panel](#classic-control-panel) > Settings Tab > Server Front End -> SCIM. On the Schemas tab, click Group. The default attributes are outlined in the table below.
 
 Name | Type | Description
 -|-|-
 displayName | string | A human-readable name for the Group. REQUIRED.
 members	| complex | A list of members of the Group.
 
-Table 4.1: SCIM Attributes Associated with the Default Group Schema
 
-#### User
+### User
 
 To view the default User SCIM schema, go to the Main Control Panel > Settings Tab > Server Front End > SCIM. On the Schemas tab, click User. The default attributes are outlined in the table below.
 
@@ -108,11 +105,10 @@ userName | string | Unique identifier for the User, typically used by the user t
 userType | string | Used to identify the relationship between the organization and the user. Typical values used might be 'Contractor', 'Employee', 'Intern', 'Temp', 'External', and 'Unknown', but any value may be used.
 x509Certificates | complex | A list of certificates issued to the User.
 
-Table 4.2: SCIM Attributes Associated with the Default User Schema
 
-#### Enterprise User
+### Enterprise User
 
-To view the default Enterprise User SCIM schema, go to the Main Control Panel > Settings Tab > Server Front End > SCIM. On the Schemas tab, click User. The default attributes are outlined in the table below.
+To view the default Enterprise User SCIM schema, go to the [Classic Control Panel](#classic-control-panel) > Settings Tab > Server Front End > SCIM. On the Schemas tab, click User. The default attributes are outlined in the table below.
 
 Name | Type | Description
 -|-|-
@@ -125,13 +121,13 @@ organization | string | Identifies the name of an organization.
 
 Table 4.3: SCIM Attributes Associated with the Default Enterprise User Schema
 
-### Creating Schemas
+## Creating Schemas
 
 If the default SCIM schemas do not meet your needs, you can create a new one.
 
 To add a new schema:
 
-1.	From the Main Control Panel, click the Settings Tab > Server Front End section > SCIM sub-section.
+1.	From the [Classic Control Panel](#classic-control-panel), click the Settings Tab > Server Front End section > SCIM sub-section.
 
 2.	Click the New Schema button.
 
@@ -143,7 +139,7 @@ To add a new schema:
 
 6.	Click Save. 
 
-#### Custom SCIM Attributes
+## Custom SCIM Attributes
 
 Custom SCIM attributes can be created for new schemas or when editing existing custom schemas. 
 
@@ -183,7 +179,7 @@ Complex attribute – an attribute that contains one or more simple attributes a
 
 To create SCIM attributes:
 
-1.	From the Main Control Panel, click the Settings Tab > Server Front End > SCIM > Schemas tab on the right.
+1.	From the [Classic Control Panel](#classic-control-panel), click the Settings Tab > Server Front End > SCIM > Schemas tab on the right.
 
 2.	On the Schemas tab, either create a new schema or click and existing schema.
 
@@ -209,7 +205,7 @@ To create SCIM attributes:
 
 13.	Repeat steps 3-12 to add all attributes.
 
-##### Attribute Types
+### Attribute Types
 
 Type | Description
 -|-
@@ -222,9 +218,8 @@ DateTime | This attribute value must be encoded as a valid xsd:dateTime and must
 Reference | A URI for a resource.
 Complex	| A singular or multi-valued attribute whose value is a composition of one or more simple attributes. A complex attribute must not contain sub-attributes that have sub-attributes.
 
-Table 4.4: Attribute Types
      
-##### Attribute Mutability 
+### Attribute Mutability 
 
 Each custom attribute has a mutability property that dictates how the RadiantOne service handles the attribute when processing operations. The possible values (and meaning) for the mutability property are summarized in the table below.
 
@@ -235,9 +230,7 @@ readWrite | The attribute MAY be updated and read at any time. This is the defau
 immutable | The attribute MAY be defined at resource creation (e.g. POST) or at record replacement via a request (e.g. a PUT).  The attribute SHALL NOT be updated.
 writeOnly | The attribute MAY be updated at any time. Attribute values SHALL NOT be returned (e.g. because the value is a stored hash). Note: An attribute with a mutability of "writeOnly" usually also has a returned setting of "never".
 
-Table 5: Attribute Mutability
-
-##### Attribute Returned Characteristics
+### Attribute Returned Characteristics
 
 Each attribute has a characteristic regarding the behavior of how it is returned to clients. The possible values (and meaning) for the Returned property are summarized in the table below.
 
@@ -248,14 +241,12 @@ never | The attribute is never returned. This attribute may be used in a search 
 by-default | The attribute is returned by default in all SCIM responses where attribute values are returned.  If the GET request "attributes" parameter is specified, attribute values are only returned if the attribute is named in the "attributes" parameter. This is the default value.
 request	 | The attribute is returned in response to any PUT, POST, or PATCH operations if the attribute was specified by the client (for example, the attribute was modified).  The attribute is returned in a SCIM query operation only if specified in the "attributes" parameter.
 
-Table 4.6: Attribute Returned Characteristics
-
-### Importing Schemas
+## Importing Schemas
 
 If you have an existing schema definition (JSON-formatted), you can import this into the RadiantOne configuration.
 To import a schema:
 
-1.	From the Main Control Panel, click the Settings Tab > Server Front End section > SCIM sub-section.
+1.	From the [Classic Control Panel](#classic-control-panel), click the Settings Tab > Server Front End section > SCIM sub-section.
 
 2.	Click the Import Schema button. 
 
@@ -265,10 +256,10 @@ To import a schema:
 
 5.	Click the Import button. 
 
-### Deleting Schemas
+## Deleting Schemas
 
 To delete a schema:
-1.	From the Main Control Panel, click the Settings Tab > Server Front End section > SCIM sub-section.
+1.	From the [Classic Control Panel](#classic-control-panel), click the Settings Tab > Server Front End section > SCIM sub-section.
 
 2.	Click the checkbox of the schema to be deleted. 
 
@@ -277,14 +268,14 @@ To delete a schema:
 4.	In the confirmation window, click Confirm. 
 
 >[!note] 
->If you delete the JSON-formatted schema files directly on the file system, the RadiantOne service must be restarted for changes to take effect. If RadiantOne is deployed in a cluster, restart the service on all nodes.
+>If you delete the JSON-formatted schema files directly on the file system, the RadiantOne service must be restarted for changes to take effect. Restart the RadiantOne service from your Environment Operations Center.
 
 ## SCIM Resource Types
 
-SCIM resource types are managed from the Main Control Panel > Settings Tab > Server Front End > SCIM section > Resource Types tab on the right.
+SCIM resource types are managed from the [Classic Control Panel](#classic-control-panel) > Settings Tab > Server Front End > SCIM section > Resource Types tab on the right.
 
 >[!note]
->To view a list of resource types configured in RadiantOne, use: `http://<RadiantOneService>:8089/scim2/v2/resourcetypes`
+>To view a list of resource types configured in RadiantOne, use: `http://<RadiantOneServiceEndpoint>/scim2/v2/resourcetypes`
 
 A SCIM resource type is a collection of SCIM attributes identified by one or more SCIM schemas. Resource types are associated with specific base DNs in the RadiantOne namespace. For example, the “Users” resource type could be associated with o=companydirectory. This means that resource type “Users” cannot be associated with any other base DN. If you want to associate a resource type to multiple base DNs/views, you must aggregate them under a common root naming context and associate the resource type with the root naming context level.
 
