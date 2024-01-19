@@ -14,9 +14,6 @@ This guide is broken down into the following chapters:
 [Introduction](introduction.md)
 <br>This chapter offers a quick introduction to this guide in addition to how the manual is organized and how to contact Radiant Logic technical support.
 
-[General Commands](general-commands.md)
-<br>This chapter introduces the help and execfile commands.
-
 [Global Configuration Commands](global-configuration-commands.md)
 <br>This chapter explains how to display and set RadiantOne global configuration property values.
 
