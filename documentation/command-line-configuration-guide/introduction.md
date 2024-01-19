@@ -91,27 +91,12 @@ Results are returned in the response. A successful operation’s response contai
 
 Examples of ADAP requests follow the descriptions of the commands that support it in this guide.
 
-## Configuring ADAP Response Format
+## ADAP Response Format
 
-By default, ADAP responses are formatted as shown below.
+ADAP responses are formatted as shown below.
 
 ![default ADAP response formatting](Media/Image1.1.jpg)
 
-ADAP responses can be formatted as JSON, as shown below.
-
-![JSON-formatting ADAP responses ](Media/Image1.2.jpg)
-
-To format responses as shown above, set the RLI_CLI_FORMAT environment variable to JSON. Refer to the [Configuring Command Output Format](#configuring-command-output-format) section for more information. In the command, pass the outputmode argument with a value of JSON. An example is shown below.
-
-```
-GET http://localhost:8089/adap/util?action=vdsconfig&commandname=list-properties&outputmode=json
-```
-
-The following command categories do not currently support JSON formatting.
-
-- Monitoring Alerts Configuration – these commands are a subset of the commands covered in [Monitoring and Alert Settings Commands](monitoring-and-alert-settings-commands.md).
-- [Migration Commands](migration-commands.md)
-- [Security Commands](security-commands.md)
 
 ### Basic Password Authentication
 
@@ -130,6 +115,7 @@ Header value: Basic <username>:<password>
 Ex: Basic cn=directory manager:password
 ```
 The username:password value can be passed base64 encoded.
+Ex: Basic Y249ZGlyZWN0b3J5IG1hbmFnZXI6cGFzc3dvcmQ=
 
 ## Expert Mode
 
