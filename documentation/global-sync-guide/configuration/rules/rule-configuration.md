@@ -21,12 +21,25 @@ To automatically configure rules for insert, update and delete events, select ![
 1. If source events associated with this rule should be manually approved before being synchronized to the target, check to enable *Require Approvals*, click ![Approval Config](../../media/editapprovals.jpg) and [Configure Approvers](#configuring-approvers).
 1. If you have selected the option to manually define the target DN in [Advanced options](../advanced-options.md#target-dn-generation), select the variable that contains the target DN. If you have the target DN generation set to Automatic in Advanced Option, you do not see the Target DN Variable in the Basic Information section.
 1. Select the **Event Type** that should invoke the rule from the **Target Event Type** drop-down list.
+1. Uncheck [Adaptive Mode](#adaptive-mode) if you don't want to use it. 
 1. Select the [CONDITIONS](conditions.md) section to define the conditions.
 1. Select the [ACTIONS](actions.md) section to define the actions.
 1. Select **OK**.
 1. Repeat steps 1-10 to create rules for other source event types.
 1. Select **Save**.
 1. Create another [rule set](overview.md) for every source object class you want to detect changes on.
+
+### Adaptive Mode
+Adaptive mode is enabled for rules by default.
+Adaptive mode attempts to intelligently apply changes to a target by first performing a lookup to see if the entry exists. Based on this, it automatically determines the best way to handle the event: update an existing entry or insert a new entry.
+
+Adaptive mode may change the type of operation performed on multi-valued attribute and how the modification is performed (add, replace or delete values) when the target is an LDAP directory. If you need to control the LDAP operation type for multi-valued attributes in the target, don't use adaptive mode.
+
+Source Event Type | Default Behavior (non-Adaptive Mode) | Adaptive Mode
+Insert  New Entry | Insert the new entry into the destination without checking to first see if the entry already exists. If the entry already exists, the connector will return an error. |Lookup to see if the entry exists: if it doesn’t, insert it. If the entry does exist, select whether you want to update it or do nothing. With this option, if the entry exists, you can indicate if you want to insert the entry only if the attribute values have been modified. 
+Update Existing Entry | Update the entry into the destination without checking to first see if the entry already exists. If the entry does not exist, the connector will return an error. | Lookup to see if the entry exists: if it exists, update it. With this option you can indicate if you want to update the entry only if the attribute values have been modified.  
+If the entry does not exist, select whether you want to insert the entry or do nothing.  
+Delete Existing Entry | Try to delete the entry in the destination, if it doesn’t exist, an error is returned by the connector. | Perform a lookup to see if the entry exists in the destination. If it exists, delete the entry. If it doesn’t exist, do nothing. 
 
 ## Configuring Approvers
 The Require Approvals option is located on the **BASIC INFORMATION** tab.
