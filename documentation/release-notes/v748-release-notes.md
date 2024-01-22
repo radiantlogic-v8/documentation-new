@@ -150,7 +150,7 @@ For specific hardware requirements of each, please see: [https://developer.radia
 
 -	[VSTS45772]: Fixed the task log refresh behavior in the Main Control Panel > Directory Namespace > [activity that launches a task] > Task Monitor window so that the logs are correctly tailing and it does not take the user back to the top every time it refreshes.  
 
--	[VSTS45786]: Fixed an issue with the "Attributes not displayed in logs for security purposes" not functioning properly for all logs. 
+-	[VSTS45786]: Fixed an issue with the "Attributes not displayed in logs for security purposes" not functioning properly for all logs. The setting was not enforced properly for Search Requests when the attribute (indicated in that property) was used in a Search FILTER. For example, if a client requested a filter of (department=Sales) in a search request, and the department attribute was listed in the attributes to NOT display in the logs, the attribute value was being shown in clear in the vds_server_access.log whereas the value of the attribute should have been shown in the log replaced by * like this (department=**********).
 
 -	[VSTS45799]: Fixed an issue where the Main Control Panel > Replication Monitoring tab table did not allow the user to expand store names with commas in them.  
 
