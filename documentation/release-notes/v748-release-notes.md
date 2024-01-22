@@ -17,7 +17,7 @@ These release notes contain the following sections:
 
 [Security Vulnerability Fixes](#security-vulnerability-fixes)
 
-[Bug Fixes](#Bug-fixes)
+[Bug Fixes](#bug-fixes)
 
 [Known Issues/Important Notes](#known-issuesimportant-notes)
 
