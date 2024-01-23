@@ -14,3 +14,5 @@ description: Installing RadiantOne Identity Data Management
     - [Viewing Activity Logs](configure-eoc/viewing-activity-logs)
 - [Creating Environments](create-environments.md)
 - [Configuring Secure Data Connectors](configure-sdc.md)
+- [Configuring Secure Data Connector Clients](configure-sdc-client.md)
+- [Configuring Secure Data Connector Service](configure-sdc-service.md)
