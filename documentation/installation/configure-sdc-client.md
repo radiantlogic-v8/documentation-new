@@ -1,11 +1,11 @@
 ---
-title: Configure 
-description:  
+title: Configure Secure Data Connector Client to run in Proxy environment. Deploy the Secure Data Connector Client.
+description: Configure the secure data connector client to run in proxy environment. Learn how to deploy the Secure Data Connector client in your on-premise or private cloud environment.
 ---
 
 # Run the Secure Data Connector Client under Proxy Network Setup
 
-Once a secure data connector has been created in Environment Operations Center, the client must be deployed on your local system before you can establish a connection. The default guideline on system requirements and steps to deploy a data connector client on a Windows, Linux, or Docker system are available in [deploy a secure data connector client](deploy-sdc-client.md) guide.
+Once a secure data connector has been created in Environment Operations Center, the client must be deployed on your local system before you can establish a connection. The default guideline on system requirements and steps to deploy a data connector client on a Windows, Linux, or Docker system are available in [deploy a secure data connector client](#system-requirements) guide.
 
 This guide covers the **additional steps** needed for running the client in a proxy network setup.
 
@@ -111,8 +111,7 @@ Once the client is running, you can can setup a connection with the on-premise b
 
 Once a secure data connector has been created in Environment Operations Center, the client must be deployed on your local system before you can establish a connection. This guide outlines the system requirements and steps to deploy a data connector client on a Windows, Linux, or Docker system.
 
-> [!note]
-> You must create a secure data connector endpoint in Env Ops Center before deploying on the client side. For details on how to create a secure data connector in Env Ops Center, see the [add a data connector](add-data-connector.md) guide.
+> [!note] You must create a secure data connector endpoint in Env Ops Center before deploying on the client side. For details on how to create a secure data connector in Env Ops Center, see the [add a data connector](add-data-connector.md) guide.
 
 ## System requirements
 
