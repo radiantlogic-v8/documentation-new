@@ -9,11 +9,11 @@ Once a secure data connector has been created in Environment Operations Center, 
 
 This guide covers the **additional steps** needed for running the client in a proxy network setup.
 
-[!note] You must create a secure data connector endpoint in Env Ops Center before deploying on the client side. For details on how to create a secure data connector in Env Ops Center, see the [add a data connector](add-data-connector.md) guide.
+[!note] You must create a secure data connector endpoint in Env Ops Center before deploying on the client side. For details on how to create a secure data connector in Env Ops Center, see the [add a data connector](configure-sdc-service#adding-a-new-data-connector) guide.
 
 ## Proxy Configuration for Windows
 
-To have secure data connector client run on a Windows system, refer the section ***Deploy on Windows*** in [deploy a secure data connector client](deploy-sdc-client.md) guide.
+To have secure data connector client run on a Windows system, refer the section ***Deploy on Windows*** in [deploy a secure data connector client](#deploy-the-secure-data-connector-client) guide.
 
 There are two options you can configure the proxy connection. First option is to open the *appsettings.Production.json* file and locate the proxy section, and fill in the values for respective keys.
 
