@@ -40,11 +40,11 @@ The values for these variables can be of following formats:
 
 ![image description](images/win-proxy-env-variables.png)
 
-Once you have the proxy configuration setup, go back to *Deploy on Windows* section in [deploy a secure data connector client](deploy-sdc-client.md) guide and follow the next steps.
+Once you have the proxy configuration setup, go back to *Deploy on Windows* section in [deploy a secure data connector client](#deploy-the-secure-data-connector-client) guide and follow the next steps.
 
 ## Proxy Configuration for Linux
 
-To have secure data connector client run on a Linux system, refer the section ***Deploy on Linux*** in [deploy a secure data connector client](deploy-sdc-client.md) guide.
+To have secure data connector client run on a Linux system, refer the section ***Deploy on Linux*** in [deploy a secure data connector client](#deploy-the-secure-data-connector-client) guide.
 
 There are two options you can configure the proxy connection. First option is to open the *appsettings.Production.json* file and locate the proxy section, and fill in the values for respective keys.
 
@@ -73,11 +73,11 @@ The value is set using the command:
 
 	export https_proxy=http://linux1:test@a92.168.8.3.3128
 
-Once you have the proxy configuration setup, go back to *Deploy on Linux* section in [deploy a secure data connector client](deploy-sdc-client.md) guide and follow the next steps.
+Once you have the proxy configuration setup, go back to *Deploy on Linux* section in [deploy a secure data connector client](#deploy-the-secure-data-connector-client) guide and follow the next steps.
 
 ## Proxy Configuration for Docker
 
-To have secure data connector client run on a Linux system, refer the section ***Deploy on Docker*** in [deploy a secure data connector client](deploy-sdc-client.md) guide.
+To have secure data connector client run on a Linux system, refer the section ***Deploy on Docker*** in [deploy a secure data connector client](#deploy-the-secure-data-connector-client) guide.
 
 There are two options to configure the proxy for Docker. First option is to set the proxy configuration at each containers by passing values for the environment variables while running the docker command.
 
@@ -111,7 +111,7 @@ Once the client is running, you can can setup a connection with the on-premise b
 
 Once a secure data connector has been created in Environment Operations Center, the client must be deployed on your local system before you can establish a connection. This guide outlines the system requirements and steps to deploy a data connector client on a Windows, Linux, or Docker system.
 
-> [!note] You must create a secure data connector endpoint in Env Ops Center before deploying on the client side. For details on how to create a secure data connector in Env Ops Center, see the [add a data connector](add-data-connector.md) guide.
+> [!note] You must create a secure data connector endpoint in Env Ops Center before deploying on the client side. For details on how to create a secure data connector in Env Ops Center, see the [add a data connector](configure-sdc-service#adding-a-new-data-connector) guide.
 
 ## System requirements
 
@@ -167,7 +167,7 @@ Open the *appsettings.Production.json* file and locate the `"AgentToken"` field.
 
 ![image description](images/appsettings-token.png)
 
-If the client to be run on a network where proxy is setup, see the *Proxy Configuration for Windows* section in [run the secure data connector client under proxy network setup](deploy-sdc-client-in-proxy.md) guide. Once you have the proxy settings updated following instructions in [proxy configuration](deploy-sdc-client-in-proxy.md) guide, continue to the next steps.
+If the client to be run on a network where proxy is setup, see the *Proxy Configuration for Windows* section in [run the secure data connector client under proxy network setup](deploy-sdc-client-in-proxy.md) guide. Once you have the proxy settings updated following instructions in [proxy configuration](#run-the-secure-data-connector-client-under-proxy-network-setup) guide, continue to the next steps.
 
 Launch the *RadiantLogic.OnPremisesAgentClient.Agent.exe* file. A notification will display in the command line that confirms a connection has been established between the agent and server.
 
@@ -209,7 +209,7 @@ Open the *appsettings.Production.json* file using an editor and locate the `"Age
 
 ![image description](images/linux-vi-appsettingsjson-file.png)
 
-If the client to be run on a network where proxy is setup, see the *Proxy Configuration for Linux* section in [run the secure data connector client under proxy network setup](deploy-sdc-client-in-proxy.md) guide.  Once you have the proxy settings updated following instructions in [proxy configuration](deploy-sdc-client-in-proxy.md) guide, continue to the next steps.
+If the client to be run on a network where proxy is setup, see the *Proxy Configuration for Linux* section in [run the secure data connector client under proxy network setup](configure-sdc-client.md) guide.  Once you have the proxy settings updated following instructions in [proxy configuration](#run-the-secure-data-connector-client-under-proxy-network-setup) guide, continue to the next steps.
 
 Open the command line and navigate to the directory that contains the unzipped *sdc-linux.zip* files. From the directory, run the following command to give execute permissions for inlets-pro and RadiantLogic.OnPremisesAgentClient.Agent:
     
@@ -241,7 +241,7 @@ Determine which init system your Linux distribution uses. Common init systems in
 
 **Create a Systemd Service File:**
 
-Create a .service file in the /etc/systemd/system/ directory. This file will define the configuration for our application daemon. Replace **‘your-app-name’** with an appropriate name for SDC Client:
+Create a .service file in the /etc/systemd/system/ directory. This file defines the configuration for our application daemon. Replace **‘your-app-name’** with an appropriate name for SDC Client:
 
     sudo nano /etc/systemd/system/your-app-name.service
 
@@ -386,7 +386,7 @@ It is highly recommended to have logs from sdc-client to go into a mounted drive
 
 Replace `/path/on/host` with an actual path on your host machine where you want to store the logs.
 
-If the client to be run on a network where proxy is setup, see the *Proxy Configuration for Docker* section in [run the secure data connector client under proxy network setup](deploy-sdc-client-in-proxy.md) guide.
+If the client to be run on a network where proxy is setup, see [Proxy Configuration for Docker](#proxy-configuration-for-docker).
 
 The `radiantone/sdc-client` is the latest image of the secure data connector client container located in the Radiant Logic Docker Hub repository.
 
