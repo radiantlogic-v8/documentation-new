@@ -165,7 +165,10 @@ Harness your identity data with intelligent integration to drive better business
   > Learn the best practices approaches for deploying CFS.
 
   > [Troubleshooting](cfs/05-troubleshooting)
-  > Learn how to use the CFS Log Analyzer. 
+  > Learn how to use the CFS Log Analyzer.
+
+  > [Release Notes](cfs/release-notes)
+  > Learn how to use the CFS Log Analyzer.
 
 </section>
 
