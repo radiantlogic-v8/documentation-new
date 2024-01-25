@@ -110,7 +110,7 @@ Copy the new token from the *Data Connector Registration* dialog in the data con
 
 ![image description](images/docker-token.png)
 
-Follow the steps outlined in the [deploy a secure data connector client](deploy-sdc-client.md) guide for your system type to deploy the client as a fresh installation.
+Follow the steps outlined in the [deploy a secure data connector client](configure-sdc-client#deploy-the-secure-data-connector-client) guide for your system type to deploy the client as a fresh installation.
 
 Once the new client deployment is complete, delete the old client.
 
