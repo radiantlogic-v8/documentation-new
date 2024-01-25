@@ -167,7 +167,7 @@ Harness your identity data with intelligent integration to drive better business
   > [Troubleshooting](cfs/05-troubleshooting)
   > Learn how to use the CFS Log Analyzer.
 
-  > [Release Notes](cfs/release-notes)
+  > [Release Notes](cfs/release-notes/v315-release-notes)
   > Review the release notes to learn more about what fixes and improvements have been made for each patch release.
 
 </section>
