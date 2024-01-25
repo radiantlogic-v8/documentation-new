@@ -148,22 +148,26 @@ If you are running RadiantOne on a multi-processor machine, performance and effi
 >[!warning]
 >This parameter does not affect the actual number of physical processors that get used. However, it improves RadiantOne’s utilization of the available processors.
 
-A better indicator for performance is the number of threads allocated for each processing queue. For each processing queue, the maximum number of concurrent worker threads is 4 by default. This value can be seen/changed in the [Max Concurrent Working Threads](#max-concurrent-working-threads) parameter.
+A better indicator for performance is the number of threads allocated for each processing queue. This value can be seen/changed in the [Max Concurrent Working Threads](#max-concurrent-working-threads) parameter.
 
 After making changes, click Save. The RadiantOne service must be restarted for the changes to take effect. If deployed in a cluster, restart it on all nodes.
 
 ### Max Concurrent Working Threads
 
-This is the number of threads RadiantOne uses for handling client requests. If there are backends involved (e.g. proxy views without persistent cache), then you must also consider how the backend handles the level of concurrency you define here as well because requests made to RadiantOne may directly result in concurrent requests sent to the backend(s).
-The default value is 16, which means 16 worker threads allocated per processing queue defined in the Number of Processing Queues property. This property can be changed from the Main Control Panel > Settings Tab > Limits section > Custom Limits sub-section (requires [Expert Mode](00-preface#expert-mode)). The default amount is sufficient for most deployments and generally should not be modified unless recommended by Radiant Logic. You might be able to increase this number if:
+This is the maximum number of threads RadiantOne uses for handling client requests. If there are backends involved (e.g. identity views without persistent cache), then you must also consider how the backend handles the level of concurrency you define here as well because requests made to RadiantOne may directly result in concurrent requests sent to the backend(s).
+
+The **minimum** number of concurrent working threads is assigned during installation. This is 16, which means 16 worker threads allocated per processing queue defined in the Number of Processing Queues setting. The Max Concurrent Working Threads setting indicates the maximum number of worker threads (as a precaution to avoid out-of-memory isses), the actual number of active threads is completely dynamic and fluctuates according to the traffic and level of concurrency.
+
+The Max Concurrent Working Threads can be changed from the Main Control Panel > Settings Tab > Limits section > Custom Limits sub-section (requires [Expert Mode](00-preface#expert-mode)). The default amount is sufficient for most deployments and generally should not be modified unless recommended by Radiant Logic. You might be able to increase this number if:
 
 -	You are using a multiprocessor system - Multiprocessor systems can support larger thread pools than single processor systems. See the Number of Processors parameter above.
 
 -	Clients connecting to RadiantOne perform many time-consuming operations simultaneously (like complex searches or updates).
 
 -	RadiantOne needs to support many simultaneous client connections.
-
-It is difficult to provide an exact formula for determining the optimal number of maximum concurrent working threads to set because it depends on the machine and environment where RadiantOne is running. Generally, the value for concurrent working threads should not be modified unless recommended by Radiant Logic. If it is modified, you must verify the value you set with testing. Incrementally change the value and retest. In the test results, you should start to see performance peak and then a decrease. The peak in the curve should represent the optimal setting.
+  
+It is difficult to provide an exact formula for determining the optimal number of maximum concurrent working threads to set because it depends on the machine and environment where RadiantOne is running, the types of identity views (in persistent cache or not), and the number of RadiantOne directory stores deployed. Generally, the value for concurrent working threads should not be modified unless recommended by Radiant Logic. If it is modified, you must verify the value you set with testing. Incrementally change the value and retest. In the test results, you should start to see performance peak and then a decrease. The peak in the curve should represent the optimal setting.  I/O bound deployments (identity views not configured for persistent cache) sometimes require a higher Max Concurrent Worker Thread amount when the memory allows it and if the concurrency level requires it.
+For CPU bound deployments (RadiantOne Directory stores or identity views stored in persistent cache), the default defined during installation (matching the number of cores) is the best approach and generally should not be changed.
 
 ### Max Pending Connection Requests
 
