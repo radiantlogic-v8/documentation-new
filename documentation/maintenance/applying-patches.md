@@ -103,7 +103,7 @@ To update a secure data connector client on Docker, stop the Docker image and th
 
 ### Rolling update
 
-Installing a rolling update allows the client to continue running with no downtime during the update. To install a rolling update, create a new data connector in Environment Operations Center (see the [add a data connector](configure-sdc-client.md) guide) within the same group as the client you would like to update. 
+Installing a rolling update allows the client to continue running with no downtime during the update. To install a rolling update, create a new data connector in Environment Operations Center (see the [add a data connector](configure-sdc-client#adding-a-new-data-connector) guide) within the same group as the client you would like to update. 
 
 
 Copy the new token from the *Data Connector Registration* dialog in the data connector details section.
