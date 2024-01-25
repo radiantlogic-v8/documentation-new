@@ -39,7 +39,7 @@ CFS v3.15 supports RadiantOne FID v7.1.14 and later, with the following exceptio
 **Improvements**
 
 -	[VSTS40091]: Added support for “groups” scope in OIDC.
--       [VSTS40299]: Added support for including custom attributes for OIDC Claims in ID tokens.
+- [VSTS40299]: Added support for including custom attributes for OIDC Claims in ID tokens.
 -	[VSTS40311]: Added support for Proof Key for Code Exchange (PKCE) code flow in OIDC.
 -	[VSTS40939]: Added support for RSA MFA during SP-initiated SSO from OIDC applications.
 
