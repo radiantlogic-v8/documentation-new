@@ -9,3 +9,4 @@ description: CFS
 - [User Roles](04-user-roles.md)
 - [Deployment](05-deployment.md)
 - [Troubleshooting](06-troubleshooting.md)
+- [Release Notes](release-notes/v315-release-notes)
