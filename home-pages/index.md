@@ -168,7 +168,7 @@ Harness your identity data with intelligent integration to drive better business
   > Learn how to use the CFS Log Analyzer.
 
   > [Release Notes](cfs/release-notes)
-  > Learn how to use the CFS Log Analyzer.
+  > Review the release notes to learn more about what fixes and improvements have been made for each patch release.
 
 </section>
 
