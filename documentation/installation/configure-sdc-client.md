@@ -133,7 +133,7 @@ To locate these dependencies in Env Ops Center, select the connector name to ope
 
 ![image description](images/connector-view-details.png)
 
-In the *Data Connector Info* section the connector status will display as "Unregistered" and there will be no available connections. 
+In the *Data Connector Info* section the connector status displays as "Unregistered", and there are no available connections. 
 
 Next to the status in the *Data Connector Info* section select **Register**.
 ![image description](images/connector-register.png)
@@ -142,7 +142,7 @@ For Windows or Linux systems, select the applicable card to download the binary.
 
 ![image description](images/download-binary.png)
 
-A confirmation message will display once the binary has successfully downloaded.
+A confirmation message displays once the binary has successfully downloaded.
 
 ![image description](images/binary-success.png)
 
@@ -169,7 +169,7 @@ Open the *appsettings.Production.json* file and locate the `"AgentToken"` field.
 
 If the client to be run on a network where proxy is setup, see the *Proxy Configuration for Windows* section in [run the secure data connector client under proxy network setup](deploy-sdc-client-in-proxy.md) guide. Once you have the proxy settings updated following instructions in [proxy configuration](#run-the-secure-data-connector-client-under-proxy-network-setup) guide, continue to the next steps.
 
-Launch the *RadiantLogic.OnPremisesAgentClient.Agent.exe* file. A notification will display in the command line that confirms a connection has been established between the agent and server.
+Launch the *RadiantLogic.OnPremisesAgentClient.Agent.exe* file. A notification displays in the command line that confirms a connection has been established between the agent and server.
 
 ![image description](images/windows-success.png)
 
@@ -220,7 +220,7 @@ Then launch the secure data connector client using this command:
 
     ./RadiantLogic.OnPremisesAgentClient.Agent
 
-A notification will display in the command line that confirms a connection has been established between the agent and server.
+A notification displays in the command line that confirms a connection has been established between the agent and server.
 
 ![image description](images/linux-run-client.png)
 
