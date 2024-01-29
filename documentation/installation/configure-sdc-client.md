@@ -81,9 +81,9 @@ To have secure data connector client run on a Linux system, refer the section **
 
 There are two options to configure the proxy for Docker. First option is to set the proxy configuration at each containers by passing values for the environment variables while running the docker command.
 
-	docker run -e "ServerHubConfiguration__AgentToken=[access_token]" -e "ServerHubConfiguration__Proxy__Url=http://192.168.8.3:3128" -e "ServerHubConfiguration__Proxy__UserName=ProxyUs3r" -e "ServerHubConfiguration__Proxy__Password=$Pa$$word!" -e HTTP_PROXY="http://ProxyUs3r:$Pa$$word!@192.168.8.3:3128" -e HTTPS_PROXY="http://ProxyUs3r:$Pa$$word!@192.168.8.3:3128" radiantone/sdc-client:latest
+docker run -e "ServerHubConfiguration__AgentToken=[access_token]" -e "ServerHubConfiguration__Proxy__Url=http://192.168.8.3:3128" -e "ServerHubConfiguration__Proxy__UserName=ProxyUs3r" -e "ServerHubConfiguration__Proxy__Password=$Pa$$word!" -e HTTP_PROXY="http://ProxyUs3r:$Pa$$word!@192.168.8.3:3128" -e HTTPS_PROXY="http://ProxyUs3r:$Pa$$word!@192.168.8.3:3128" radiantone/sdc-client:latest
 
-The second option is to set the proxy configuration at the docker engine as shown below:
+The second option is to set the proxy configuration at the docker engine as shown below.
 
 ![image description](images/proxy-docker-engine.png)
 
