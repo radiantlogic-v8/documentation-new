@@ -58,7 +58,7 @@ Before you can add new data connectors, you must first add a **group**. This can
 
 In a **new row**, enter the group name and select one or multiple environments from the list of available environments in the provided group and environment fields.
 
-[!note] Group and Environment are required fields and must be entered to create the group.
+>[!note] Group and Environment are required fields and must be entered to create the group.
 
 | Group Info | Description |
 | ------------------- | ----------- |
