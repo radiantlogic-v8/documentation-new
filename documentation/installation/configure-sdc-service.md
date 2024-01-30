@@ -81,7 +81,7 @@ Now that **group** being created, the next step is to add a new data connector. 
 
 In the *New Data Connector* row, enter the data connector information in the provided name and description fields.
 
-[!note] Name is a required field and must be entered to create the connector.
+>[!note] Name is a required field and must be entered to create the connector.
 
 | Data Connector Info | Description |
 | ------------------- | ----------- |
