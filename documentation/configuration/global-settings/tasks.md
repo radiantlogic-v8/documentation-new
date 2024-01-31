@@ -7,7 +7,7 @@ description: Learn how to manage tasks.
 
 When you perform various actions in the tools or wizards, a notification appears alerting you that the task has been defined and added to the scheduler. These tasks can be viewed and updated in the Control Panel > MANAGE > Tasks. You can define a task as re-occurring in addition to setting the execution interval. You can also configure the JVM parameters for tasks that run inside their own dedicated JVM.
 
-![Managing Tasks](/Media/tasks.jpg)
+![Managing Tasks](../Media/tasks.jpg)
  
 The following operations are considered tasks and generate an event in the Task Scheduler when they occur: 
 -	Initializing a persistent cache 
@@ -32,7 +32,7 @@ You can specify the number of days that completed tasks are kept on the task lis
 When actions are processed as tasks, they appear in the Task List section, with information about the task displayed. The task list can be filtered by: All, Scheduled, Not Scheduled, or Terminated using the *Filter By* drop-down list. 
 Tasks can be managed with the inline buttons for: *Task Details*, *Edit Task*, and *Start Task*. 
 
-![Sample Task List](/Media/task-list.jpg)
+![Sample Task List](../Media/task-list.jpg)
  
 ### Task Details
 
@@ -50,7 +50,7 @@ If the “Dedicated JVM” option is unchecked, the task runs inside the JVM of 
 
 Users must click “Update Task” before closing out of the task configuration screen to save the changes.
 
-![Task Configuration](/Media/tasks-configuration.jpg)
+![Task Configuration](../Media/tasks-configuration.jpg)
 
 ### Running Tasks
 
