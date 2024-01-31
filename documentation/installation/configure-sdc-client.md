@@ -167,7 +167,7 @@ Open the *appsettings.Production.json* file and locate the `"AgentToken"` field.
 
 ![image description](images/appsettings-token.png)
 
-If the client to be run on a network where proxy is setup, see the *Proxy Configuration for Windows* section in [run the secure data connector client under proxy network setup](deploy-sdc-client-in-proxy.md) guide. Once you have the proxy settings updated following instructions in [proxy configuration](#run-the-secure-data-connector-client-under-proxy-network-setup) guide, continue to the next steps.
+If the client to be run on a network where proxy is setup, see the [Proxy Configuration for Windows](#proxy-configuration-for-windows) section. Once you have the proxy settings updated following instructions in [proxy configuration](#run-the-secure-data-connector-client-under-proxy-network-setup) guide, continue to the next steps.
 
 Launch the *RadiantLogic.OnPremisesAgentClient.Agent.exe* file. A notification displays in the command line that confirms a connection has been established between the agent and server.
 
