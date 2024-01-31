@@ -29,7 +29,7 @@ In a text editor, enter the path on your RadiantOne server containing the bootst
 
 ![producer.properties](media/producer-properties.jpg)
 
-Figure 1: Producer.properties text file for unencrypted anonymous connections
+Producer.properties text file for unencrypted anonymous connections
 
 ### Configuring the Properties File for Encryption and Authentication
 
@@ -39,7 +39,7 @@ In this example, PLAIN SASL is used to specify a username and password for authe
 
 ![producer.properties file for encryption](media/producer-properties-encryption.jpg)
 
-Figure 2: Producer.properties text file for a Kafka broker requiring encryption and authentication
+Producer.properties text file for a Kafka broker requiring encryption and authentication
 
 >[!note] Once you start using your Kafka producer to publish to a Kafka topic in a Global Sync topology, any changes you make to the producer.properties file require that you restart the RadiantOne FID service.
 
@@ -63,14 +63,14 @@ To configure the producer data source:
 
   	|Property Name | Value|
     -|-
-	Classname| KafkaApplyChangeEvent.java (this is built into the product)
+	Classname| com.rli.scripts.customobjects.KafkaApplyChangeEvent
 	producer.properties.file | (the location of the properties file, i.e. $RLI_HOME/vds_server/custom/producer.properties).
 	Topic name |(the name of the topic to which you wish to publish)
 	Messageformat | (the name of the changeEventConvertor, such as GoldenGateJSONConvertor)
 
     ![kafka producer](media/kafka-producer.jpg)
 
-    Figure 3: Configuring the Kafka Producer Properties File
+    Configuring the Kafka Producer Properties File
 
 1. Click Save. 
 
@@ -112,7 +112,7 @@ Based on the JSON messages you expect to process with your Kafka connector, you 
 
     ![](media/add-new-object.jpg)
 
-    Figure 4: Adding a new table
+    Adding a new table
 
 1.	Name the table and enter an LDAP Object Class name. In this example, the table is named **worker**. Click OK. 
 
@@ -126,7 +126,7 @@ Based on the JSON messages you expect to process with your Kafka connector, you 
 
     ![kafka schema](media/kakfa-schema.jpg)
 
-    Figure 5: Kafka Schema
+    Kafka Schema
 
 1.	Click **Save**.
 
@@ -150,13 +150,13 @@ In this section, a new naming context representing the incoming Kafka Consumer i
 
     ![new view definition](media/new-view-definition.jpg)
 
-    Figure 6: New View Definition
+    New View Definition
 
 1.	Make any updates you need for the RDN and Attribute settings.
 
     ![view with attributes](media/view-with-attributes.jpg)
 
-    Figure : New View with Attributes
+    New View with Attributes
 
 1.	Click Save. 
 
@@ -199,7 +199,7 @@ If you’re configuring Global Sync to act as both a consumer and producer with 
 
     ![new topology](media/kafka-example.jpg)
 
-    Figure 7: Capture connector properties using Kafkaexample changeConvertor
+    Capture connector properties using Kafkaexample changeConvertor
 
 >[!note] The minimum requirement for the Kafka Consumer Properties field is the bootstrap.servers property specifying your Kafka broker and port number. The example shown above is for an unencrypted session without authentication. If your Kafka broker requires encryption and/or authentication, additional properties can be added to the field in a comma-separated list. For example, the same parameters shown in the example above for the producer.properties file would be entered as the following  string. <br> bootstrap.servers=kafka.mycompany.com:9094,sasl.mechanism=PLAIN,
 security.protocol=SASL_SSL,ssl.truststore.location=/radiantone/vds/vds_server/custom/truststore.jks,sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="accountname" password="password";
@@ -214,7 +214,7 @@ security.protocol=SASL_SSL,ssl.truststore.location=/radiantone/vds/vds_server/cu
 
     ![sample mappings](media/sample-mappings.jpg)
 
-    Figure 8: Sample Mappings
+    Sample Mappings
 
 1. 	Click the Apply tile and start your pipeline. 
 
@@ -230,7 +230,7 @@ Global Sync uses the settings you configured for your kafkaproducer data source 
 
 1.	Click **Configure**. 
 
-    >[!note]Assuming you are using an HDAP source, nothing is required to be configured on the Capture tile.
+    >[!note] Assuming you are using an HDAP source, nothing is required to be configured on the Capture tile.
 
 1.	Click the Transformation tile and configure your mappings.
 
