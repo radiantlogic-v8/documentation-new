@@ -304,7 +304,7 @@ The Authorization Identity Control (--reportAuthzID) may be submitted in a bind 
 ![Authorization Identity Control](../Media/Image3.43.jpg)
 
 
->[!warning] The Authorization Identity Control is allowed for use in conjunction with LDAP bind operations only and therefore cannot be used after the client has authenticated. To obtain the authorization identity at any time after the bind has completed, use the “[Who Am I](#who-am-i-extended-operation)” extended operation.
+>[!warning] The Authorization Identity Control is allowed for use in conjunction with LDAP bind operations only and therefore cannot be used after the client has authenticated. To obtain the authorization identity at any time after the bind has completed, use the *Who Am I* extended operation.
 
 In the following example, the authorization identity control is requested by sending --reportAuthzID in the request.
 
@@ -321,7 +321,7 @@ BindResponse {resultCode=0, matchedDN=null, errorMessage=null} AuthorizationIden
 
 **Who Am I Extended Operation**
 
-The "Who am I?" extended operation, as outlined in [RFC 4532](https://www.rfc-editor.org/rfc/rfc4532), provides a mechanism for a client to request the authorization identity associated with the bound connection. Using this extended operation obtains the authorization identity associated with the user or application entity after the bind has established integrity and data confidentiality protections. This approach provides greater flexibility than the [Authorization Identity Control](#authorization-identity-control) because it can be requested at any time, not just during a bind operation. In addition, this extended operation can be augmented with a Proxied Authorization Control to determine the authorization identity that the server associated with the identity asserted in the [Proxied Authorization Control](#proxied-authorization-control).
+The "Who am I?" extended operation, as outlined in [RFC 4532](https://www.rfc-editor.org/rfc/rfc4532), provides a mechanism for a client to request the authorization identity associated with the bound connection. Using this extended operation obtains the authorization identity associated with the user or application entity after the bind has established integrity and data confidentiality protections. This approach provides greater flexibility than the *Authorization Identity Control* because it can be requested at any time, not just during a bind operation. In addition, this extended operation can be augmented with a Proxied Authorization Control to determine the authorization identity that the server associated with the identity asserted in the *Proxied Authorization Control*.
 RadiantOne advertises support for the “Who Am I” extended operation in the rootDSE. A client that requests the rootDSE sees the 1.3.6.1.4.1.4203.1.11.3 OID value returned as a supported control.
 
 ![Who Am I extended request support](../Media/Image3.44.jpg)
