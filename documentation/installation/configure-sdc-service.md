@@ -100,7 +100,7 @@ The *Status* of the new data connector displays as "UNREGISTERED". A connection 
 
 ### Manage Data Connectors
 
-Each data connector has an **Options** (**"..."**) menu that allows you to manage the connector. For more details on managing data connectors, please refer to the [Manage Data Connectors](manage-data-connectors.md) guide.
+Each data connector has an **Options** (**"..."**) menu that allows you to manage the connector. For more details on managing data connectors, please refer to the [Manage Data Connectors](configure-sdc.md) guide.
 
 ![image description](images/options.png)
 
