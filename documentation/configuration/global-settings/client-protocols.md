@@ -7,8 +7,12 @@ description: Learn about the client protocols supported to query RadiantOne.
 
 RadiantOne Identity Data Management supports client operations via LDAP, SCIMv2 and REST. Details about these client protocols and their configuration are described below.
 
+Settings related to client protocols are configured from the Control Panel > GLOBAL SETTINGS > Client Protocols.
+
 ## LDAP
 RadiantOne Identity Data Management supports LDAPv3 as documented in [RFC 2251](http://www.faqs.org/rfcs/rfc2251.html) as a client protocol for querying the service.
+
+Settings related to the LDAP client protocol are configured from the Control Panel > GLOBAL SETTINGS > Client Protocols > LDAP.
 
 ### User to DN Mapping
 Typically, an LDAP client performs authentication first by searching the RadiantOne namespace for a specific user (based on configuration of the client to search for a specific attribute like cn, sAMAccountName, uid…etc.), and then issues a bind with the user DN returned in the search. These two steps are referred to as identification and credential checking respectively.
@@ -19,20 +23,17 @@ Let’s look at the following examples to describe the difference.
 
 In the diagrams below, the client is configured to search for the user account and then issue the bind.
 
-![An image showing ](Media/Image3.120.jpg)
+![An image showing ](Media/identification.jpg)
 
-Figure 2: Identification Step of Authentication
+Once the user is identified, the full DN is issued in the Bind Request.
 
-![An image showing ](Media/Image3.121.jpg)
+![An image showing ](Media/authorization.jpg)
  
-Figure 3: Credentials Checking Step of Authentication
 
 If the client application is not configured (or cannot be configured) to issue a search and then bind, RadiantOne can be configured to perform the search (to find the DN). This is accomplished using User ID to DN mappings.
 
-![An image showing ](Media/Image3.122.jpg)
+![An image showing ](Media/userid-to-dn.jpg)
  
-Figure 4: Authentication Process based on User ID to DN Mapping
-
 There are three different ways to determine the DN from the user ID (using regular expression syntax). Each is described below.
 
 -	Setting a specific User ID to DN. In this example, if lcallahan were received in the authentication request, RadiantOne would base the authentication on the DN: cn=laura Callahan,cn=users,dc=mycompany,dc=com
@@ -115,23 +116,20 @@ The Paged Results, VLV, Server Side Sort, Persistent Search and Proxy Authorizat
 
 This section describes each control or feature and how to enable it if needed.
 
-![Supported Controls Section](Media/Image3.39.jpg)
+![Supported Controls Section](Media/supported-protocols.jpg)
  
-Figure 3: Supported Controls Section
 
 **Paged Results Control**
 
-The Paged Results Control allows an LDAP client to retrieve the results of a query in chunks (to control the rate at which search results are returned from the RadiantOne service). This feature can be useful when the client has limited resources and may not be able to process the entire result set from a given LDAP query. The client should specify the page size (number of entries per chunk) during the initial query. For more details on this control, please refer to the LDAP RFC 2696. This control can be enabled/disabled from the Main Control Panel > Settings Tab > Server Front End section > Supported Controls sub-section. Check the Enable paged results box and click Save. Restart the RadiantOne service. If you have a cluster deployed, restart the service on all nodes.
+The Paged Results Control allows an LDAP client to retrieve the results of a query in chunks (to control the rate at which search results are returned from the RadiantOne service). This feature can be useful when the client has limited resources and may not be able to process the entire result set from a given LDAP query. The client should specify the page size (number of entries per chunk) during the initial query. For more details on this control, please refer to the LDAP RFC 2696. This control can be enabled/disabled from the Control Panel > GLOBAL SETTINGS > Client Protocols > LDAP > Supported Controls sub-section. Check the Enable paged results box and click Save. Restart the RadiantOne service. If you have a cluster deployed, restart the service on all nodes.
 
 The LDAP control ID is 1.2.840.113556.1.4.319. If you query the RadiantOne service using an empty base DN (starting point), you should see a supportedControl attribute with the value of 1.2.840.113556.1.4.319.
 
 Below is an example of an LDAP client issuing a query to RadiantOne using paging.
 
-![Client Accessing RadiantOne using Paging](Media/Image3.40.jpg)
+![Client Accessing RadiantOne using Paging](Media/paging-request.jpg)
  
-Figure 4: Client Accessing RadiantOne using Paging
-
-In the <RLI_HOME>/<instance_name>/logs/vds_server_access.log you should see multiple search requests returning a maximum number of entries specified in the page size from the client (a minimum log level of ACCESS must be set for RadiantOne server log). In the screen shot above, a total of 5,040 entries were returned to the client.
+In the vds_server_access.log you should see multiple search requests returning a maximum number of entries specified in the page size from the client (a minimum log level of ACCESS must be set for RadiantOne server log). In the screen shot above, a total of 5,040 entries were returned to the client.
 
 Sample vds_server_access.log content:
 
@@ -165,7 +163,7 @@ The Virtual List Views (VLV) control works in conjunction with the Server Side S
 
 By using the VLV control, the client can retrieve results more quickly and is not required to store too many search results at a time. This is more efficient and prevents the client from being overwhelmed with too many entries that it may not be able to handle.
 
-This control can be enabled/disabled from the Main Control Panel > Settings Tab > Server Front End section > Supported Controls sub-section. Check the Enable VLV/Sort option and click Save. Restart the RadiantOne service. If you have a cluster deployed, restart the service on all nodes.
+This control can be enabled/disabled from the Control Panel > GLOBAL SETTINGS > Client Protocols > LDAP > Server Front End section > Supported Controls sub-section. Check the Enable VLV/Sort option and click Save. Restart the RadiantOne service. If you have a cluster deployed, restart the service on all nodes.
 
 *Configure a Sorted Attributes List*
 
@@ -187,7 +185,7 @@ If the VLV control has not been enabled at all, but a client issues it in the se
 
 The flowchart shown below depicts the behavior of RadiantOne for applying the VLV control.
 
-![Behavior for Supporting VLV Control](Media/Image3.41.jpg)
+![Behavior for Supporting VLV Control](Media/vlv-control.jpg)
  
 Figure 5: Flowchart Depicting Behavior for Supporting VLV Control
 
@@ -195,7 +193,7 @@ Figure 5: Flowchart Depicting Behavior for Supporting VLV Control
 
 Using the Persistent Search Control is one of the recommended approaches for other processes to detect changes that have happened to RadiantOne entries. The [changelog](09-logs#changelog) is the other method that can be used.
 
-This control can be enabled/disabled from the Main Control Panel > Settings Tab > Server Front End section > Supported Controls sub-section. Check the Persistent Search option and click Save. Restart the RadiantOne service. If you have a cluster deployed, restart the service on all nodes.
+This control can be enabled/disabled from the Control Panel > GLOBAL SETTINGS > Client Protocols > LDAP > Supported Controls sub-section. Check the Persistent Search option and click Save. Restart the RadiantOne service. If you have a cluster deployed, restart the service on all nodes.
 
 If you enable the persistent search control, an LDAP client can receive notifications of changes that occur in the RadiantOne namespace. When a persistent search is requested, RadiantOne keeps the search operation going so clients can receive changed entries (and additional information about the changes that occurred). 
 
@@ -203,7 +201,7 @@ If you enable the persistent search control, an LDAP client can receive notifica
 
 **Proxied Authorization Control**
 
-This control can be enabled/disabled from the Main Control Panel > Settings Tab > Server Front End section > Supported Controls sub-section. Check the Enable Proxy Authorization box and click Save. Restart the RadiantOne service. If you have a cluster deployed, restart the service on all nodes.
+This control can be enabled/disabled from the configured from the Control Panel > GLOBAL SETTINGS > Client Protocols > LDAP > Supported Controls sub-section. Check the Enable Proxy Authorization box and click Save. Restart the RadiantOne service. If you have a cluster deployed, restart the service on all nodes.
 
 Authorization for RadiantOne data is checked based on the user who authenticated. The authorization ID (DN) is linked to the authenticated ID (DN) for the same connection. With the proxy authorization control enabled, the client can switch the user ID (for authorization purposes) without having to re-authenticate with a new connection. After the Proxy Authorization control is enabled from here, the configuration (who is allowed to impersonate whom) is defined as access controls from the Settings tab > Security section > Access Control sub-section. For more details on the configuration, please see [Operations](06-security#operations).
 
@@ -215,29 +213,21 @@ By default, only leaf nodes (nodes without child entries) can be deleted. If you
 
 By default, only the RadiantOne super user (e.g. cn=directory manager) is allowed to issue delete requests with the subtree delete control. To configure access controls to allow other non-admin/super user accounts to perform sub-tree deletes, follow the steps below.
 
-1.	Go to the Main Control Panel > Settings tab > Security > Access Control.
+1.	Go to the Control Panel > MANAGE > Security > Access Control.
 
-2.	Click **Add**.
+2.	Click **Manual Edit Mode** at the top.
 
-3.	Enter an ACI Description (e.g. treedelete). 
+3. Enter the following (update the userdn value to the DN of the user that you want to allow to use the subtree delete control):
 
-4.	Click **Save.**
+(targetcontrol = "1.2.840.113556.1.4.805") (version 3.0; acl "Tree delete control access"; allow(read) userdn="ldap:///uid=Aaron_Medler,ou=Accounting,o=companydirectory";).
 
-5.	Select the new ACI from the list of ACIs for root and click **Manual Edit**.
+    ![Manually editing the ACI](Media/manual-edit.jpg)
 
-6.	Overwrite the aci definition with the following (update the userdn value to the DN of the user that you want to allow to use the subtree delete control):
+      >[!note] To allow anyone to perform a subtree delete request, use a value of “ldap:///anyone” for the userdn as shown in the example below.<br> (targetcontrol = "1.2.840.113556.1.4.805") (version 3.0; acl "Anonymous tree delete control access"; allow(read) userdn ="ldap:///anyone";).
 
-    (targetcontrol = "1.2.840.113556.1.4.805") (version 3.0; acl "Tree delete control access"; allow(read) userdn="ldap:///uid=Aaron_Medler,ou=Accounting,o=companydirectory";).
+4.	Click **CREATE**.
 
-    ![Manually editing the ACI](Media/Image3.42.jpg)
-
-    Figure 6: Manually editing the ACI
-
-    >[!note] To allow anyone to perform a subtree delete request, use a value of “ldap:///anyone” for the userdn as shown in the example below.<br> (targetcontrol = "1.2.840.113556.1.4.805") (version 3.0; acl "Anonymous tree delete control access"; allow(read) userdn ="ldap:///anyone";).
-
-7.	Click **Save**.
-
-    If the target DN is associated with a RadiantOne Universal Directory (HDAP) store, then RadiantOne processes the subtree delete control. If the target DN is a proxy view to a backend directory, RadiantOne request with the subtree delete control is delegated to the backend for processing.
+    If the target DN is associated with a RadiantOne Directory store, then RadiantOne processes the subtree delete control. If the target DN is a proxy view to a backend directory, RadiantOne request with the subtree delete control is delegated to the backend for processing.
 
     For example, there are two delete requests shown below (snippets from vds_server.log). The first delete request shows the scenario where the sub tree delete control isn’t passed and the delete fails (with error code 66) and the other shows where the control (1.2.840.113556.1.4.805) is passed and the delete is successful.
 
