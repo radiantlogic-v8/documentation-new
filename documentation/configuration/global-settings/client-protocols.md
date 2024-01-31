@@ -116,7 +116,7 @@ The Paged Results, VLV, Server Side Sort, Persistent Search and Proxy Authorizat
 
 This section describes each control or feature and how to enable it if needed.
 
-![Supported Controls Section](../Media/supported-protocols.jpg)
+![Supported Controls Section](../Media/supported-controls.jpg)
  
 
 **Paged Results Control**
