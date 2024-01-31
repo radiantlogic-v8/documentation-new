@@ -32,7 +32,7 @@ Once the user is identified, the full DN is issued in the Bind Request.
 
 If the client application is not configured (or cannot be configured) to issue a search and then bind, RadiantOne can be configured to perform the search (to find the DN). This is accomplished using User ID to DN mappings.
 
-![An image showing ](Media/userid-to-dn.jpg)
+![An image showing ](../Media/userid-to-dn.jpg)
  
 There are three different ways to determine the DN from the user ID (using regular expression syntax). Each is described below.
 
@@ -116,7 +116,7 @@ The Paged Results, VLV, Server Side Sort, Persistent Search and Proxy Authorizat
 
 This section describes each control or feature and how to enable it if needed.
 
-![Supported Controls Section](Media/supported-protocols.jpg)
+![Supported Controls Section](../Media/supported-protocols.jpg)
  
 
 **Paged Results Control**
@@ -127,7 +127,7 @@ The LDAP control ID is 1.2.840.113556.1.4.319. If you query the RadiantOne servi
 
 Below is an example of an LDAP client issuing a query to RadiantOne using paging.
 
-![Client Accessing RadiantOne using Paging](Media/paging-request.jpg)
+![Client Accessing RadiantOne using Paging](../Media/paging-request.jpg)
  
 In the vds_server_access.log you should see multiple search requests returning a maximum number of entries specified in the page size from the client (a minimum log level of ACCESS must be set for RadiantOne server log). In the screen shot above, a total of 5,040 entries were returned to the client.
 
@@ -185,7 +185,7 @@ If the VLV control has not been enabled at all, but a client issues it in the se
 
 The flowchart shown below depicts the behavior of RadiantOne for applying the VLV control.
 
-![Behavior for Supporting VLV Control](Media/vlv-control.jpg)
+![Behavior for Supporting VLV Control](../Media/vlv-control.jpg)
  
 Figure 5: Flowchart Depicting Behavior for Supporting VLV Control
 
@@ -302,7 +302,7 @@ Authorization Identity Control is a mechanism that allows a client to retrieve t
 
 The Authorization Identity Control (--reportAuthzID) may be submitted in a bind request only. The authorization identity request control has an object identifier of "2.16.840.1.113730.3.4.16" and does not have a value. RadiantOne advertises support for the Authorization Identity Control in the rootDSE. A client that requests the rootDSE sees this value returned as a supported control.
 
-![Authorization Identity Control](Media/Image3.43.jpg)
+![Authorization Identity Control](../Media/Image3.43.jpg)
 
 Image 7: Authorization Identity Control
 
