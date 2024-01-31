@@ -12,3 +12,6 @@ description: Introduction to RadiantOne Identity Data Management
     - [Environment Operations Center](admin-tools-overview/overview)
     - [Main Control Panel](admin-tools-overview/overview)
 - [Concepts](concepts.md)
+- [Samples](samples.md)
+    -   [Default Naming Contexts](samples/default-naming-context)
+    -   [Default Data Sources](samples/default-data-sources)
