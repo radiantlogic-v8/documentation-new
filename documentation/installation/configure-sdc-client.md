@@ -200,7 +200,7 @@ Following all the above steps, your sdc-client should be registered to run as a 
 
 ## Deploy on Linux
 
-To deploy the secure data connector client on a Linux system, first unzip the *sdc-windows.zip* file into a directory on the client system. Next, locate the following files:
+To deploy the secure data connector client on a Linux system, first unzip the *sdc-linux.zip* file into a directory on the client system. Next, locate the following files:
 
 - *appsettings.Production.json*
 - *RadiantLogic.OnPremisesAgentClient.Agent.exe*
