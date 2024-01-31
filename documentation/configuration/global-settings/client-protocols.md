@@ -354,7 +354,7 @@ Below is an example of a RadiantOne response to a “Who Am I” extended operat
 
 
 ## SCIMv2
-**LINK TO SCIMv2 PAGE**
+[RadiantOne SCIM API](../../web-services-api-guide/scim)
 
 ## REST
-**LINK TO REST PAGE**
+[RadiantOne REST API](../../web-services-api-guide/rest)
