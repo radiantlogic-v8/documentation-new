@@ -187,7 +187,6 @@ The flowchart shown below depicts the behavior of RadiantOne for applying the VL
 
 ![Behavior for Supporting VLV Control](../Media/vlv-control.jpg)
  
-Figure 5: Flowchart Depicting Behavior for Supporting VLV Control
 
 **Persistent Search Control**
 
@@ -304,7 +303,6 @@ The Authorization Identity Control (--reportAuthzID) may be submitted in a bind 
 
 ![Authorization Identity Control](../Media/Image3.43.jpg)
 
-Image 7: Authorization Identity Control
 
 >[!warning] The Authorization Identity Control is allowed for use in conjunction with LDAP bind operations only and therefore cannot be used after the client has authenticated. To obtain the authorization identity at any time after the bind has completed, use the “[Who Am I](#who-am-i-extended-operation)” extended operation.
 
@@ -328,7 +326,6 @@ RadiantOne advertises support for the “Who Am I” extended operation in the r
 
 ![Who Am I extended request support](../Media/Image3.44.jpg)
 
-Figure 8: Who Am I extended request support
 
 In the following example, a whoami extended request is performed.
 
