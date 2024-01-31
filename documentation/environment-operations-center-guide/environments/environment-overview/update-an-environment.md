@@ -93,7 +93,7 @@ Choose the **Change Password** option from the "..." menu.
 
 ![image description](images/change-password-option.jpg)
 
-Enter the new password and confirm the value. You can click *Generate* to autogenerate a password as an alternative to entering your own value. If you choose to auto-generate a value, remember to click the *Copy to Clipboard* icon to share the new value with your RadiantOne Adminstrator.
+Enter the new password, confirm the value and click **Apply Password**. You can click *Generate* to autogenerate a password as an alternative to entering your own value. If you choose to auto-generate a value, remember to click the *Copy to Clipboard* icon to share the new value with your RadiantOne Adminstrator.
 
 ![image description](images/change-password.jpg)
 
