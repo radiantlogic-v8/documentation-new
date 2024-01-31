@@ -12,7 +12,7 @@ When you perform various actions in the tools or wizards, a notification appears
 The following operations are considered tasks and generate an event in the Task Scheduler when they occur: 
 -	Initializing a persistent cache 
 -	Initializing a RadiantOne Directory store 
--	Re-indexing a cache
+-	Re-indexing a persistent cache
 -	Exporting entries to an LDIF file
 -	Importing entries from an LDIF file
 -	Login Analysis (initiated from the Global Identity Builder)
