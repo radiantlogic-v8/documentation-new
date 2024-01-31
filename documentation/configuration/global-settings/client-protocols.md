@@ -23,11 +23,11 @@ Let’s look at the following examples to describe the difference.
 
 In the diagrams below, the client is configured to search for the user account and then issue the bind.
 
-![An image showing ](Media/identification.jpg)
+![An image showing ](./Media/identification.jpg)
 
 Once the user is identified, the full DN is issued in the Bind Request.
 
-![An image showing ](Media/authorization.jpg)
+![An image showing ](./Media/authorization.jpg)
  
 
 If the client application is not configured (or cannot be configured) to issue a search and then bind, RadiantOne can be configured to perform the search (to find the DN). This is accomplished using User ID to DN mappings.
