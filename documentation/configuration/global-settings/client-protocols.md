@@ -190,7 +190,7 @@ The flowchart shown below depicts the behavior of RadiantOne for applying the VL
 
 **Persistent Search Control**
 
-Using the Persistent Search Control is one of the recommended approaches for other processes to detect changes that have happened to RadiantOne entries. The [changelog](09-logs#changelog) is the other method that can be used.
+Using the Persistent Search Control is one of the recommended approaches for other processes to detect changes that have happened to RadiantOne entries. The changelog is the other method that can be used.
 
 This control can be enabled/disabled from the Control Panel > GLOBAL SETTINGS > Client Protocols > LDAP > Supported Controls sub-section. Check the Persistent Search option and click Save. Restart the RadiantOne service. If you have a cluster deployed, restart the service on all nodes.
 
@@ -202,9 +202,9 @@ If you enable the persistent search control, an LDAP client can receive notifica
 
 This control can be enabled/disabled from the configured from the Control Panel > GLOBAL SETTINGS > Client Protocols > LDAP > Supported Controls sub-section. Check the Enable Proxy Authorization box and click Save. Restart the RadiantOne service. If you have a cluster deployed, restart the service on all nodes.
 
-Authorization for RadiantOne data is checked based on the user who authenticated. The authorization ID (DN) is linked to the authenticated ID (DN) for the same connection. With the proxy authorization control enabled, the client can switch the user ID (for authorization purposes) without having to re-authenticate with a new connection. After the Proxy Authorization control is enabled from here, the configuration (who is allowed to impersonate whom) is defined as access controls from the Settings tab > Security section > Access Control sub-section. For more details on the configuration, please see [Operations](06-security#operations).
+Authorization for RadiantOne data is checked based on the user who authenticated. The authorization ID (DN) is linked to the authenticated ID (DN) for the same connection. With the proxy authorization control enabled, the client can switch the user ID (for authorization purposes) without having to re-authenticate with a new connection. After the Proxy Authorization control is enabled from here, the configuration (who is allowed to impersonate whom) is defined as access controls from the Control Panel > MANAGE > Security > Access Control (create an ACI with the *Proxy* permission). 
 
->[!warning] To allow the RadiantOne super user (e.g. cn=directory manager) to impersonate other users, you must enable the “[Allow Directory Manager to Impersonate Other Users](06-security#allow-directory-manager-to-impersonate-other-users)” option. In this special scenario, access controls defining the “proxy” permission is not required. However, the Proxy Authorization Control must be enabled.
+>[!warning] To allow the RadiantOne super user (e.g. cn=directory manager) to impersonate other users, you must enable the *Allow Directory Manager to Impersonate Other Users* setting in Control Panel > MANAGE > Security > Access Control > GENERAL tab. In this special scenario, access controls defining the “proxy” permission is not required. However, the Proxy Authorization Control must be enabled.
 
 **Subtree Delete Control**
 
@@ -220,7 +220,7 @@ By default, only the RadiantOne super user (e.g. cn=directory manager) is allowe
 
 (targetcontrol = "1.2.840.113556.1.4.805") (version 3.0; acl "Tree delete control access"; allow(read) userdn="ldap:///uid=Aaron_Medler,ou=Accounting,o=companydirectory";).
 
-    ![Manually editing the ACI](Media/manual-edit.jpg)
+    ![Manually editing the ACI](../Media/manual-edit.jpg)
 
       >[!note] To allow anyone to perform a subtree delete request, use a value of “ldap:///anyone” for the userdn as shown in the example below.<br> (targetcontrol = "1.2.840.113556.1.4.805") (version 3.0; acl "Anonymous tree delete control access"; allow(read) userdn ="ldap:///anyone";).
 
