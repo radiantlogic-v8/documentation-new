@@ -53,7 +53,7 @@ For a Docker container, copy the docker command located in the *Docker* section 
 
 ## Deploy on Windows
 
-To deploy the secure data connector client on a Windows system, first unzip the *sdc-windows-<`version`>.zip* file into a directory on the client system. Next, locate the following files:
+To deploy the secure data connector client on a Windows system, first unzip the *sdc-windows-(version).zip* file into a directory on the client system. Next, locate the following files:
 
 - *appsettings.Production.json*
 - *RadiantLogic.OnPremisesAgentClient.Agent.exe*
