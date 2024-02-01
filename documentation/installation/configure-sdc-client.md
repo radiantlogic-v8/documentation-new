@@ -9,7 +9,7 @@ Once a secure data connector has been created in Environment Operations Center, 
 
 This guide covers the **additional steps** needed for running the client in a proxy network setup.
 
-[!note] You must create a secure data connector endpoint in Env Ops Center before deploying on the client side. For details on how to create a secure data connector in Env Ops Center, see the [add a data connector](configure-sdc-service#adding-a-new-data-connector) guide.
+>[!note] You must create a secure data connector endpoint in Env Ops Center before deploying on the client side. For details on how to create a secure data connector in Env Ops Center, see the [add a data connector](configure-sdc-service#adding-a-new-data-connector) guide.
 
 ## Proxy Configuration for Windows
 
@@ -156,7 +156,7 @@ For a Docker container, copy the docker command located in the *Docker* section 
 
 ## Deploy on Windows
 
-To deploy the secure data connector client on a Windows system, first unzip the *sdc-windows-.zip* file into a directory on the client system. Next, locate the following files:
+To deploy the secure data connector client on a Windows system, first unzip the *sdc-windows-(version).zip* file into a directory on the client system. Next, locate the following files:
 
 - *appsettings.Production.json*
 - *RadiantLogic.OnPremisesAgentClient.Agent.exe*
@@ -200,10 +200,10 @@ Following all the above steps, your sdc-client should be registered to run as a 
 
 ## Deploy on Linux
 
-To deploy the secure data connector client on a Linux system, first unzip the *sdc-linux.zip* file into a directory on the client system. Next, locate the following files:
+To deploy the secure data connector client on a Linux system, first unzip the *sdc-linux-(version).zip* file into a directory on the client system. Next, locate the following files:
 
 - *appsettings.Production.json*
-- *RadiantLogic.OnPremisesAgentClient.Agent.exe*
+- *RadiantLogic.OnPremisesAgentClient.Agent*
 
 Open the *appsettings.Production.json* file using an editor and locate the `"AgentToken"` field. Enter the token copied from the *Data Connector Registration* dialog in Env Ops Center into the `"AgentToken"` field.
 
