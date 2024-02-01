@@ -53,7 +53,7 @@ For a Docker container, copy the docker command located in the *Docker* section 
 
 ## Deploy on Windows
 
-To deploy the secure data connector client on a Windows system, first unzip the *sdc-windows-.zip* file into a directory on the client system. Next, locate the following files:
+To deploy the secure data connector client on a Windows system, first unzip the *sdc-windows-<`version`>.zip* file into a directory on the client system. Next, locate the following files:
 
 - *appsettings.Production.json*
 - *RadiantLogic.OnPremisesAgentClient.Agent.exe*
@@ -66,7 +66,7 @@ Open the *appsettings.Production.json* file and locate the `"AgentToken"` field.
 
 If the client to be run on a network where proxy is setup, see the *Proxy Configuration for Windows* section in [run the secure data connector client under proxy network setup](deploy-sdc-client-in-proxy.md) guide. Once you have the proxy settings updated following instructions in [proxy configuration](deploy-sdc-client-in-proxy.md) guide, continue to the next steps.
 
-Launch the *RadiantLogic.OnPremisesAgentClient.Agent.exe* file. A notification will display in the command line that confirms a connection has been established between the agent and server.
+Launch the *RadiantLogic.OnPremisesAgentClient.Agent.exe* file. A notification displays in the command line that confirms a connection has been established between the agent and server.
 
 ![image description](images/windows-success.png)
 
@@ -97,10 +97,10 @@ Following all the above steps, your sdc-client should be registered to run as a 
 
 ## Deploy on Linux
 
-To deploy the secure data connector client on a Linux system, first unzip the *sdc-linux.zip* file into a directory on the client system. Next, locate the following files:
+To deploy the secure data connector client on a Linux system, first unzip the *sdc-linux-<`version`>.zip* file into a directory on the client system. Next, locate the following files:
 
 - *appsettings.Production.json*
-- *RadiantLogic.OnPremisesAgentClient.Agent.exe*
+- *RadiantLogic.OnPremisesAgentClient.Agent*
 
 Open the *appsettings.Production.json* file using an editor and locate the `"AgentToken"` field. Enter the token copied from the *Data Connector Registration* dialog in Env Ops Center into the `"AgentToken"` field.
 
