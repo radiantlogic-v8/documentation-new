@@ -12,3 +12,4 @@ description: v7.4 Release Notes
 - [v7.4.6 Release Notes](v746-release-notes.md)
 - [v7.4.7 Release Notes](v747-release-notes.md)
 - [v7.4.8 Release Notes](v748-release-notes.md)
+- [v7.4.9 Release Notes](v749-release-notes.md)
