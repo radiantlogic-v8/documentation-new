@@ -7,6 +7,8 @@ description: Applying Patches to RadiantOne v7.4
 
 This guide describes how to apply a patch for RadiantOne v7.4.X. These steps only apply to updating your existing RadiantOne v7.4 version with a new minor release/patch of RadiantOne v7.4.X.  These steps are not relevant for major upgrades (i.e. upgrading from v7.2 or v7.3). 
 
+>[!warning] [There is a known issue with using the web UX to update from v7.4.8 to v7.4.9](https://support.radiantlogic.com/hc/en-us/articles/23259692147604-Known-Issue-Updating-from-v7-4-8-to-v7-4-9). Please either use the command line method to apply the update, or follow the instructions published in the Radiant Logic Support Knowledge base.
+
 ## Preparing for the Patch 
 Once you have stopped all RadiantOne services, make a backup copy of your entire <RLI_HOME> folder. 
 
