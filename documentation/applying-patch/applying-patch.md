@@ -92,8 +92,9 @@ Apply the RadiantOne patch with either the web installer, or from command line.
 1. From command line, navigate to your RadiantOne installation /bin folder (e.g. C:\radiantone\vds\bin).  
 
 1. Run the following command to apply the patch: 
+```
 setup.[bat|sh] --mode update --file <full path to the 7.4 archive> 
- 
+```
 For example: 
 `C:\radiantone\vds\bin>setup.bat --mode update --file C:\Users\lgrad\Downloads\radiantone_7.4.8_update_windows_64.zip`
 
