@@ -117,11 +117,12 @@ To disable support for OIDC authentication:
 Roles-based access controls is used to enforce privileges for Control Panel. Any user that can authenticate to RadiantOne can administrator the service if they belong to the proper group that is associated with one of the delegated administrator roles. RadiantOne includes default delegated admin roles that users can be assigned to. Custom delegated admin roles can also be defined. 
 Roles & permissions are managed from Control Panel > Admin > Roles & Permissions.
 
+Describe classification of permissions. Describe how permissions can be defined per data source.
+
 ### Default Delegated Admin Roles
 The default delegated admin roles can be viewed from Control Panel > Admin > Roles & Permissions. The default roles cannot be edited. However, you can use the default role definition as a basis for defining a new custom role by choosing the default role from the list when prompted to *Clone Permissions* during new role creation.
 
-**Directory Administrator**
-Members assigned this role can perform all operations (all operations that the other default roles can perform) in addition to being able to update username and password properties for data sources via an LDAP modify command.
+**Directory Administrator:**  Members assigned this role can perform all operations (all operations that the other default roles can perform) in addition to being able to update username and password properties for data sources via an LDAP modify command.
 
 Control Panel Config	| Permissions
 -|-
@@ -138,8 +139,7 @@ ADMIN > Directory Manager Settings | View & Edit
 ADMIN > Control Panel Config | View & Edit
 ADMIN > Access Tokens | View & Edit
 
-**Namespace Administrator**
-Members assigned this role are responsible for managing the RadiantOne namespace. The namespace is managed from Control Panel > SETUP > Directory Namespace > Namespace Design.
+**Namespace Administrator:**  Members assigned this role are responsible for managing the RadiantOne namespace. The namespace is managed from Control Panel > SETUP > Directory Namespace > Namespace Design.
 The responsibilities include:
 -  Creating new naming contexts and mounting backends
 -  Configuring and managing identity views
@@ -162,8 +162,7 @@ ADMIN > Control Panel Config | View Only
 ADMIN > Access Tokens | View Only
 
 
-**Schema Administrator**
-Members assigned this role are responsible for managing the RadiantOne LDAP schema. The schema is managed from Control Panel > SETUP > Directory Namespace > Directory Schema.
+**Schema Administrator:**  Members assigned this role are responsible for managing the RadiantOne LDAP schema. The schema is managed from Control Panel > SETUP > Directory Namespace > Directory Schema.
 The responsibilities include:
 - Creating new LDAP object classes and attributes
 - Extending the RadiantOne LDAP schema with objects and attributes from data source (backend) schemas.
@@ -185,8 +184,7 @@ ADMIN > Control Panel Config | View Only
 ADMIN > Access Tokens | View Only
  
 
-**Security Administrator**
-Members assigned this role are responsible for managing access controls, password policies, and attribute encryption. 
+**Security Administrator:**  Members assigned this role are responsible for managing access controls, password policies, and attribute encryption. 
 Access controls are managed from Control Panel > MANAGE > Security > Access Controls.
 The responsibilities include:
 - Creating and managing access controls
@@ -211,8 +209,7 @@ ADMIN > Access Tokens | View & Edit
 
 **Operator**
 
-**Read Only**
-Members assigned this role can only view configurations. They are not allowed to edit anything.
+**Read Only:**  Members assigned this role can only view configurations. They are not allowed to edit anything.
 
 Control Panel Config	| Permissions
 -|-
@@ -230,6 +227,13 @@ ADMIN > Control Panel Config | View Only
 ADMIN > Access Tokens | View Only
 
 ### Creating Roles 
+Custom roles can be created from Control Panel > Admin > Roles & Permissions.
+1. Click **ADD ROLE**.
+2. Enter the role name.
+3. (Optional) select an existing role to quickly clone/assign similar permissions to the new role.
+4. Click **OK**.
+5. Go through each set of permissions and assign the proper privilege: None, View Only, or View & Edit.
+6. Click **SAVE**.
 
 
 ## Customizing the Interface 
