@@ -28,7 +28,9 @@ Harness your identity data with intelligent integration to drive better business
   
   > [Concepts](introduction/concepts)  
   > Learn the concepts related to configuring Identity Data Management.
-  
+
+  > [Sample Data](introduction/samples)
+  > Learn about the sample naming contexts and data sources that are included in RadiantOne. 
   
 </section>
 
