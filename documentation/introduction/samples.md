@@ -7,7 +7,7 @@ description: Understanding Default Configuration and Samples
 
 This guide describes default naming contexts and default data sources.
 
->[!note] For more information on installing the samples described in this guide, refer to the guide on [creating environments](installation/create-environments.md)
+>[!note] For more information on installing the samples described in this guide, refer to the guide on [creating environments](installation/create-environments.md).
 
 ## Default Naming Contexts
 
