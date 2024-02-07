@@ -68,7 +68,7 @@ To configure the producer data source:
 	Topic name |(the name of the topic to which you wish to publish)
 	Messageformat | (the name of the changeEventConvertor, such as GoldenGateJSONConvertor)
 
-    ![kafka producer](media/kafka-producer.jpg)
+    ![kafka producer](media/kafka-producer.png)
 
     Configuring the Kafka Producer Properties File
 
