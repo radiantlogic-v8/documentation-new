@@ -7,6 +7,8 @@ description: Understanding Default Configuration and Samples
 
 This guide describes default naming contexts and default data sources.
 
+>[!note] For more information on installing the samples described in this guide, refer to the guide on [creating environments](installation/create-environments.md)
+
 ## Default Naming Contexts
 
 This section describes all the default root naming contexts included with RadiantOne. The naming contexts can be viewed/managed from the Main Control Panel > Directory Namespace tab and the data (run-time) can be seen from the Directory Browser tab. If a naming context is safe to delete, it is indicated in the description below.
