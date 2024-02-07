@@ -124,6 +124,7 @@ System requirements:
 - Processor: 1 GHz
 - RAM 512 MB
 - Minimum disc space (64-bit): 4.5 GB
+- Operation System: Windows Server 2016 Datacenter, Windows Server 2019 Datacenter, Windows Server 2022 Datacenter, AWS Linux 2, Ubuntu 20.04.6 LTS, Red Hat Enterprise Linux 8.8, and Debian GNU/Linux 12.
 
 ## Getting started
 
