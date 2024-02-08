@@ -154,7 +154,6 @@ The custom data source must be created before completing the steps below. See [D
 1.  Expand below *Tables* to see the new object. Right-click on the table and choose **Add New Attribute**.
 2.  Repeat step 8 to add all attributes.
    
-
 ## Managing Schemas
 ### Displaying Objects and Relationships 
 
@@ -173,13 +172,11 @@ The figure shown below displays all tables, views and relationships from the sam
 ### Declaring Primary Keys 
 Once the metadata has been captured, the next step is to improve it in a way that best serves your needs. This may involve declaring primary keys.
 
->[!note] 
->Changes made in the schema settings do not affect the underlying schema.
+>[!note] Changes made in the schema settings do not affect the underlying schema.
 
 Primary keys that are implicit, but not declared in the data dictionary, are not included in schema files unless you declare them. 
 
->[!warning] 
->All objects you want to create virtual views from must have a primary key defined, and any attribute that you declare as the primary key in the schema file must be unique for all entries in your table.
+>[!warning] All objects you want to create virtual views from must have a primary key defined, and any attribute that you declare as the primary key in the schema file must be unique for all entries in your table.
 
 For directory schemas, declare the attribute that uniquely identifies each entry as the primary key. 
 
@@ -209,8 +206,7 @@ The declaration process is a critical step as it affects the quality of the virt
 
 The Relationships dialog box requires source and destination tables (or views). When setting relationships, it does not matter which entity is the source and which is the destination. 
 
->[!note] 
->Declaring implicit relationships relates to database schemas only.
+>[!note] Declaring implicit relationships relates to database schemas only.
 
 To set a relationship between two objects: 
 1.	Right-click on the desired object and choose the Define Relationships option. The Relationships dialog box appears. 
@@ -229,8 +225,7 @@ To set a relationship between two objects:
 ### Declaring Recursive Relationships 
 Once the metadata has been captured, the next step is to improve it in a way that best serves your needs. This may involve declaring recursive relationships.
 
->[!note] 
->Changes made in the schema settings do not affect the underlying schema.
+>[!note] Changes made in the schema settings do not affect the underlying schema.
 
 If a table has a relationship to itself, the Schema Manager can be used to establish this recursive relationship. 
 
@@ -240,12 +235,12 @@ To create a recursive relationship:
 
 ![An image showing ](Media/Image3.16.jpg)
 
-Figure 3.16: Define Recursive Relationship
+Define Recursive Relationship
 2.	Select the foreign key and enter the number of recursions possible (the depth level).
 
 ![An image showing ](Media/Image3.17.jpg)
 
-Figure 3.17: Select Foreign Key and Enter Depth Level 
+Select Foreign Key and Enter Depth Level 
 
 3.	Click Define when finished.
 
@@ -253,20 +248,18 @@ You should now see new views created corresponding to the depth level entered, a
 
 ![An image showing ](Media/Image3.18.jpg)
 
-Figure 3.18: Example Relationships in a Database Schema
+Example Relationships in a Database Schema
 
 Once the recursive relationship is described in the schema file, a hierarchical virtual directory view can be created. For details on how to build virtual views, please see [View Designer](view-designer.md). 
 
->[!note] 
->If you do not know the depth of recursion, there is a way to build a virtual view without first defining the recursive relationships in the Schema Manager. For detailed steps, please see the article titled Building a Hierarchical Virtual View Based on Recursive Relationships in a Database in the RadiantOne Knowledge Base at: https://support.radiantlogic.com
+>[!note] If you do not know the depth of recursion, there is a way to build a virtual view without first defining the recursive relationships in the Schema Manager. For detailed steps, please see the article titled Building a Hierarchical Virtual View Based on Recursive Relationships in a Database in the RadiantOne Knowledge Base at: https://support.radiantlogic.com
 
 You will need a user ID and password for accessing the knowledge base. If you do not have one, please contact Radiant Logic at support@radiantlogic.com.
 
 ### Creating Synonyms 
 Once the metadata has been captured, the next step is to improve it in a way that best serves your needs. This may involve declaring synonyms. 
 
->[!note] 
->Changes made in the schema settings do not affect the underlying schema.
+>[!note] Changes made in the schema settings do not affect the underlying schema.
 
 For flexibility in modeling virtual views, you can create a synonym from any object in the schema. A synonym is a complete replica of the object with a new name. 
 
@@ -276,24 +269,23 @@ To create a synonym for an object:
 
 ![An image showing ](Media/Image3.19.jpg)
 
-Figure 3.19: Define Synonym
+Define Synonym
 
 2.	Enter a name for the Synonym when prompted. 
 
->[!note] 
->Synonyms may NOT have the same name as an existing object in the schema.
+>[!note] Synonyms may NOT have the same name as an existing object in the schema.
 
 ![An image showing ](Media/Image3.20.jpg)
 
-Figure 3.20: Enter Name for the Synonym
+Enter Name for the Synonym
 
 The new object appears under the list of Views. This new object does not change the underlying schema but can be used when building virtual views. For details on building custom virtual views, please see [View Designer](view-designer.md). 
 
-### Declaring RDN Attribute Name and Value 
+### Declaring RDN Attribute Name and Value
+
 Once the metadata has been captured, the next step is to improve it in a way that best serves your needs. This may involve defining RDN attribute name and values. 
 
->[!note] 
->Changes made in the schema settings do not affect the underlying schema.
+>[!note] Changes made in the schema settings do not affect the underlying schema.
 
 RDN Attribute Name and Display Columns are a combination of the primary key and at least one other attribute. You can also declare RDN Attribute Name and Display Columns using the View Designer, see Declaring an RDN Attribute Name and Value for more details.
 
@@ -307,10 +299,9 @@ To declare or Modify RDN Attribute Name and Value:
 
 ![An image showing ](Media/Image3.21.jpg)
 
-Figure 3.21: RDN Attribute Name and Value Dialog Box
+RDN Attribute Name and Value Dialog Box
 
->[!warning] 
->The attributes that you select as the display attribute(s) should not allow NULL values.
+>[!warning] The attributes that you select as the display attribute(s) should not allow NULL values.
 
 To remove attribute(s) from the RDN Display Attribute(s) list, choose the column(s) and click the left arrow button. 
 
@@ -320,7 +311,7 @@ For example, if you set the RDN attribute name for the Employee table to equal N
 
 ![An image showing ](Media/Image3.22.jpg)
  
-Figure 3.22: RDN Name and Value when Building a Virtual View
+RDN Name and Value when Building a Virtual View
 
 ### Removing Objects, Attributes or Relationships from the Schema 
 
@@ -330,12 +321,11 @@ Unwanted tables, views, attributes, or relationships can be removed from the sch
 
 Objects in a database schema are tables or views. Objects in an LDAP schema are object classes. Right-click on the desired object and choose Delete. 
 
->[!note] 
->If any of the objects are involved in a relationship, the corresponding relationship must be removed first.
+>[!note] If any of the objects are involved in a relationship, the corresponding relationship must be removed first.
 
 ![An image showing ](Media/Image3.23.jpg)
 
-Figure 3.23: Deleting Objects
+Deleting Objects
 
 **Removing Attributes**
 
@@ -343,7 +333,7 @@ Some attributes can be removed from objects. Primary keys and attributes involve
 
 ![An image showing ](Media/Image3.24.jpg)
  
-Figure 3.24: Deleting Attributes
+Deleting Attributes
 
 **Removing Relationships**
 
@@ -351,7 +341,7 @@ To remove a relationship, right-click on the desired relationship and choose Del
  
 ![An image showing ](Media/Image3.25.jpg)
  
-Figure 3.25: Deleting Relationships
+Deleting Relationships
 
 ### Creating Derived Views
 
@@ -366,7 +356,7 @@ To create a derived view, follow the steps below.
 
 ![An image showing ](Media/Image3.26.jpg)
 
-Figure 3.26: Define Derived View Dialog Box
+Define Derived View Dialog Box
 
 The new derived view object appears in the list of views in the Schema Manager tab. This new object can be used when building virtual views in the [View Designer](view-designer.md). 
 
@@ -383,34 +373,38 @@ In the example shown below, the LDAP object class generated by default is vdAPPC
 
 ![An image showing ](Media/Image3.27.jpg)
 
-Figure 3.27: Default Object Class Generated
+Default Object Class Generated
 
 For LDAP backends, the object class(es) from the schema definition is the default value shown in the Schema Manager. The # sign is used to separate the class hierarchy. The default attribute names also match the underlying schema definition. 
 
 ![An image showing ](Media/Image3.28.jpg)
 
-Figure 3.28: Default Object Class for LDAP Object 
+Default Object Class for LDAP Object 
 
 The default object class can be changed if needed. Database and LDAP objects can be mapped to an existing object class definition or you can manually enter your own custom one.
 
 ### Mapping Database Objects to LDAP Object Classes and Attributes
 
 1.	Open the database schema containing the objects you want to map in the Schema Manager tab. 
+
 2.	Right-click on the database object you want to map and choose Object Mapping. 
 
 ![An image showing ](Media/Image3.29.jpg)
 
-Figure 3.29: Change Mapping for Objects
+Change Mapping for Objects
 
 3.	Select the object class from the drop-down list that you want mapped to the database object. 
+
 4.	When mapping database columns to LDAP attributes, you can apply a [default mapping](#applying-the-default-mapping), map each attribute individually based on the object class definition selected in step 3, or manually enter your own mapped attribute name. To map to an existing LDAP attribute, select the corresponding LDAP attribute from the drop-down list. The attribute list is based on the definition of the LDAP object class selected in step 3. In the example shown in the screen shot below, inetOrgPerson has been selected and two attributes have been mapped to LDAP attributes of the inetOrgPerson class. 
 
 ![An image showing ](Media/Image3.30.jpg)
 
-Figure 3.30: Mapping to an Existing LDAP Object Class
+Mapping to an Existing LDAP Object Class
 
 5.	If you prefer to enter your own custom object class name, you can type it in the LDAP Object Class parameter. 
+
 6.	If you prefer to enter your own custom attribute names, type them in the LDAP attribute parameter next to the database attribute name.
+
 7.	Click OK when finished. 
 
 ### Mapping LDAP Objects to New Object Classes and Attributes
@@ -435,21 +429,25 @@ To map LDAP object classes and attribute to other LDAP object classes and attrib
 
 The default attribute mapping is defined in a schema file named defaultmapping.orx.
 1.	On the Schema Manager tab, open defaultmapping.orx. This file is located on the LDAP Schemas tab.
+
 2.	Expand the object named DefaultMapping.
+
 3.	Expand the Fields section to see a list of source attribute names. 
+
 4.	To view the default LDAP attribute mapping, right-click on the attribute name and choose Edit Attribute. The alias defined for the attribute is the LDAP attribute name that is used in the default mapping. In the example shown below, any source schema that contains an attribute named LastName would have this attribute mapped to sn if the Default Mapping option was used.
  
 ![An image showing ](Media/Image3.31.jpg)
 
-Figure 3.31: Alias is the Default LDAP Attribute Mapping
+Alias is the Default LDAP Attribute Mapping
 
 5.	To view all default mappings, right-click on Fields and choose Attribute Mapping.
 
 ![An image showing ](Media/Image3.32.jpg)
 
-Figure 3.32: Default Attribute Mappings
+Default Attribute Mappings
 
 6.	To define a new attribute mapping, right-click on Fields and choose Add New Attribute. 
+
 7.	Enter the source attribute name and the LDAP attribute mapping in the alias property. The example shown below defines a mapping for attributes named “City” to be mapped to the LDAP “l” attribute.
 
 ![An image showing ](Media/Image3.33.jpg)
@@ -482,7 +480,7 @@ To merge schema files:
 
 ![An image showing ](Media/Image3.34.jpg)
 
-Figure 3.34: Merge Schema Option
+Merge Schema Option
 
 4.	Browse to the schema file that you extracted/saved in step 1 above. 
 
@@ -510,7 +508,7 @@ To delete a schema file:
 
 ![An image showing ](Media/Image3.36.jpg)
 
-Figure 3.36: Deleting Schema Files
+Deleting Schema Files
 
 ## Comparing Schema Files
 
