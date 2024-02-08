@@ -17,7 +17,7 @@ When an application requires updating, an **Update** message displays next to th
 
 ### Begin update
 
-Begin the application update workflow from the home screen by selecting the **Update** message. The designated environment page displays, and the **UPDATE** option is avaiable next to the **VERSION** number. This also opens the **Update Environment** dialog box.
+Begin the application update workflow from the home screen by selecting the **Update** message. The designated environment page displays, and the **UPDATE** option is available next to the **VERSION** number. This also opens the **Update Environment** dialog box.
 
 ![image description](images/update-alert.png)
 
