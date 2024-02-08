@@ -23,7 +23,7 @@ Begin the application update workflow from the home screen by selecting the **Up
 
 ![image description](images/select-update.png)
 
-Clicking on **UPDATE** from environments page opens the detailed overview page for the selected environment.
+Clicking on **UPDATE** from the Environments page opens the detailed overview page for the selected environment.
 In the detailed overview for the environment page, you can see the current version and an **UPDATE** option beside it.
 
 ![image description](images/update-env-dialog.png)
