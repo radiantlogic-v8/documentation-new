@@ -38,7 +38,7 @@ Once you have started the environment update workflow, a dialog box appears cont
 
 ![image description](images/select-version.png)
 
-Once you have set the correct version number, click **Update*. In the next dialog, click **UPDATE**. To quit the update and return to the main *Environments* screen, select **Cancel**.
+Once you have set the correct version number, click **Update**. In the next dialog, click **UPDATE**.  The update process typically takes around 10 minutes. To quit the update and return to the main *Environments* screen, select **Cancel**.
 
 ![image description](images/update.png)
 
