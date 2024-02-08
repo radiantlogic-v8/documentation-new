@@ -13,6 +13,8 @@ These release notes contain the following sections:
 
 [Improvements](#improvements)
 
+[Security Vulnerabilty Fixes](#security-vulnerability-fixes)
+
 [Bug Fixes](#bug-fixes)
 
 [Known Issues](#known-issues)
@@ -41,6 +43,21 @@ These release notes contain the following sections:
 
 - [VMR-667]: Improvement to prevent multiple failovers with the same host, port and Secure Data Connector group. 
 
+- [VMR-719]: Added support to automatically sync directory store backup files across RadiantOne cluster nodes. 
+
+## Security Vulnerability Fixes
+
+- [VMR-558]: Upgraded Jetty libraries to 94.4.53 and included new transitive dependency (util-ajax) for vulnerability remediation. 
+
+- [VMR-559]: Updated aws java-sdk libraries from version 1.11.38 to version 1.12.261 for vulnerability remediation. 
+
+- [VMR-562]: Updated guava library version from 20.0 to 24.11-jre and added missing guava dependency (failureaccess:1.0.1) for guava:32.0.0-jre for vulnerability remediation. 
+
+- [VMR-568]: Updaated not-yet-commons-ssl package from 0.3.9 to 0.3.17 to address vulnerability CVE-2014-3604. 
+
+- [VMR-591 & VMR-592]: Updated the Apache commons-httpclient library for vulnerability remediation detailed in CVE-2012-5783 and Improper Certificate Validation. 
+
+- [VMR-593]: Updated opensaml version to 2.6.6 for vulnerability remediation. 
 
 ## Bug Fixes
 
@@ -72,7 +89,11 @@ These release notes contain the following sections:
 
 - [VMR-668]: Fixed an issue where Control Panel > Settings > OIDC Provider Configuration was using the wrong discovery URL. 
 
-- [VMR-670]: Fixed an issue with importing data sources that were exported in a different PBE environment.  
+- [VMR-670]: Fixed an issue with importing data sources that were exported in a different PBE environment.
+
+- [VMR-717]: Fixed an issue where LDIF files managed through File Manager were not being properly synchronized across RadiantOne cluster nodes.  
+
+- [VMR-742]: Fixed an issue with delete requests in the Control Panel causing delete schema operations to not work on follower nodes. 
 
 ## Known Issues
 
