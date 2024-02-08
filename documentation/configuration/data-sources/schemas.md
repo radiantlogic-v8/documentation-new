@@ -125,18 +125,15 @@ You can view/modify this schema by selecting if from the drop-down list. Any cha
 
 The SCIMv2 data source must be created before completing the schema extraction steps below. See [Data Sources](/data-sources.md) for details about creating data sources.
 
-1.	 In the Control Panel > SETUP > Data Catalog > Data Sources > Selected Data Source > SCHEMA Tab, click **...** > Extract New Schema.
-1.	 Enter a schema file name.
+1.	 In the Control Panel > SETUP > Data Catalog > Data Sources > Selected Data Source > SCHEMA Tab.
+
+1.	 In the upper-right corner, click **...** > Extract New Schema.
+
+1.	 Enter a schema file name and click OK. This creates the schema file and adds it into the drop-down list next to *Schema Name*.
 
       >[!note] DO NOT USE HYPHENS (-) IN FILE NAMES.
       
-1.	 Click **NEXT** to proceed and select the desired SCIM resource types.
-
-    ![An image showing ](Media/Image3.12.jpg)
-
-1.	 Click **EXTRACT**. This creates the schema file and adds it into the drop-down list next to *Schema Name*. 
-
-You can view/modify this schema by selecting if from the drop-down list. Any changes made do not affect the underlying schema.
+You can view/modify this schema by selecting it from the drop-down list. Any changes made do not affect the underlying schema.
 
 ### Custom Backends
 
