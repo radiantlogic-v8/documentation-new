@@ -7,4 +7,4 @@ description: Getting started TOC Description
 - [Kubernetes](kubernetes.md)
 - [Helm](helm.md)
 - [Terraform](terraform.md)
-- [Sizing](sizing.md)
+
