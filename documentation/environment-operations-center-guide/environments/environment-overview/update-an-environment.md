@@ -15,7 +15,7 @@ When an application requires updating, an **Update** message displays next to th
 
 ![image description](images/update-alert.png)
 
-### Begin update
+### Launch update
 
 Begin the application update workflow from the home screen by selecting the **Update** message. The designated environment page displays, and the **UPDATE** option is available next to the **VERSION** number. This also opens the **Update Environment** dialog box.
 
@@ -30,7 +30,7 @@ In the detailed overview for the environment page, you can see the current versi
 
 Alternatively, you can locate the environment you would like to update and directly select the **UPDATE** message located next to the environment's version number, which again opens the **Update Environment** dialog box.
 
-### Update version number
+### Select version number
 
 Once you have started the environment update workflow, a dialog box appears containing the field required to update the environment version. To update your environment, select the next available version number that is ahead of your current environment version. Your currently installed version number is displayed just above the dropdown menu for reference.
 
