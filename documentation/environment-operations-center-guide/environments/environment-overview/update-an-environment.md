@@ -3,9 +3,9 @@ keywords:
 title: Update an Environment
 description: Learn how to manually update the RadiantOne version running in an environment.
 ---
-# Update an Environment
+# Update an Application in an Environment
 
-When version updates are available for an application running in an environment in your Environment Operations Center instance, you will receive an *Update Now* notification. You can update your application from the *Environments* home screen or you can update a specific environment from its *Overview* screen. This guide outlines the steps required to update your environments from the *Environments* home screen. For details on updating an individual environment from its detailed view, review the environment details guide on [updating an environment](../environment-details/update-environment.md).
+When version updates are available for an application running in an environment in your Environment Operations Center instance, you will see an *Update* notification. You can update your application from the *Environments* home screen or you can update a specific environment from its *Overview* screen. This guide outlines the steps required to update your environments from the *Environments* home screen. For details on updating an individual environment from its detailed view, review the environment details guide on [updating an environment](../environment-details/update-environment.md).
 
 > [!note] Before getting started, make sure you have your current version of Environment Operations Center and the required number of RadiantOne nodes to display for each environment that requires updating.
 
