@@ -492,23 +492,23 @@ Merge Schema Option
 
 ## Deleting Schema Files 
 
-Schema files (.orx files) should be deleted using the Context Builder. It is not recommended to manually remove files from the file system. 
+Schema files should be deleted from the Control Panel. 
 
 To delete a schema file: 
 
-1.	Open the schema file on the Schema Manager tab.
+1. In the Control Panel, navigate to SETUP > Data Catalog > Data Sources. 
 
-2.	Click the delete button on the toolbar. 
+2. Select a data source. 
 
-3.	Select the schema file you want to delete.
+3. Click the data source's Schema tab.
 
-4.	Click OK. 
-
-5.	Click OK again to confirm the deletion. 
+4.	From the Options menu ("..."), select *Delete Schema*. 
 
 ![An image showing ](Media/Image3.36.jpg)
 
 Deleting Schema Files
+
+5.	Click *Delete* to confirm the deletion. 
 
 ## Comparing Schema Files
 
