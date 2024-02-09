@@ -99,7 +99,7 @@ For these requirements in Amazon Web Services (AWS), a c5.2xlarge type (8 CPU / 
 
 To determine the base number of nodes required, divide the number of pods by 3 to determine your minimum cluster size. Further, you must ensure that you add definitions for cluster horizontal auto-scaling so the cluster scales in or out as needed.
 
-### Sizing For RadiantOne
+**Sizing For RadiantOne**
 
 For production deployment running RadiantOne as a 3 Node cluster, it is recommended to run one pod per node. This can be achieve in couple of ways.
 
