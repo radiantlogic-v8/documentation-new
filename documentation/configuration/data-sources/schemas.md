@@ -96,11 +96,9 @@ To merge object classes together:
 
 A new object is created below the Views branch and contains all attributes from both object classes. A virtual view can be created from this merged object and the entries can contain attributes from either of the object classes. 
 
->[!warning] 
->The direction in which you merge the objects is significant because the ‘base’ object (the structured object class) is used in the filter for the query that is sent to the backend directory. Note that the attributes defined for this merged object come from both the structured objectclass inetorgperson (uid, cn, displayName) and the auxiliary objectclass, RLIUser (rliuserattribute2, rliuserattribute3).
+>[!warning] The direction in which you merge the objects is significant because the ‘base’ object (the structured object class) is used in the filter for the query that is sent to the backend directory. Note that the attributes defined for this merged object come from both the structured objectclass inetorgperson (uid, cn, displayName) and the auxiliary objectclass, RLIUser (rliuserattribute2, rliuserattribute3).
 
 ![An image showing ](../Media/example-merged-object.jpg)
-
 
 ### JDBC-Accessible Database Backend 
 
