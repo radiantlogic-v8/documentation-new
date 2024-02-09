@@ -104,7 +104,7 @@ Examples of JDBC-accessible backends are Microsoft SQL Server, Oracle, DB2, and 
 
 The database data source must be created before completing the schema extraction steps below. See [Data Sources](/data-sources.md) for details about creating data sources.
 1.	In the Control Panel > SETUP > Data Catalog > Data Sources > Selected Data Source > SCHEMA Tab, click **...** > Extract New Schema.
-2.	Enter a schema file name.
+2.	Enter a schema file name and click **OK**.
     >[!note] DO NOT USE HYPHENS (-) IN FILE NAMES.
  
 3. The ANSI standard syntax for naming relational database tables is catalog.schema.table. Therefore, if you are authenticating as a user who has access to multiple different schemas, and want to narrow the search, you can enter in the specific schema name in the Database Schema property.
