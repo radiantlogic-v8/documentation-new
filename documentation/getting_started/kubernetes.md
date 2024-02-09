@@ -80,7 +80,7 @@ More system overhead to manage all of the nodes.
 
 Possible under-utilization as the nodes might be too small to add additional services.
 
-### Guidance
+### Guidance for Production Deployments
 
 For production deployments where high availability is paramount, creating a cluster with more nodes running fewer pods per node is preferable to ensure the health of your deployed service.
 
