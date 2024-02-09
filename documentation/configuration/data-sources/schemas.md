@@ -17,15 +17,13 @@ The following concepts are important to understand for managing schemas in Radia
 ### Primary Key 
 In a well-designed relational database, every table has a column, or combination of columns, known as the primary key of the table. These values uniquely identify each row in the table. Occasionally you will find tables that were created in the database, but the uniquely identifying column(s) were not documented in the system catalog as the primary key. Declaring implicit primary keys is one of the schema refining processes you perform in the Data Catalog. 
 
->[!warning] 
->All objects you want to virtualize in an identity view must have a primary key defined, and any attribute that you declare as the primary key in the schema file must be unique for all entries in your database source table.
+>[!warning] All objects you want to virtualize in an identity view must have a primary key defined, and any attribute that you declare as the primary key in the schema file must be unique for all entries in your database source table.
 
 In a directory, there is a notion of a “unique identifier” which is an attribute in each entry that uniquely identifies it from the sibling entries. This is not something that is explicitly documented in the directory schema; therefore, you must declare the primary key for the object class in the schema file. Typically, the unique identifier in the directory comprises the RDN. For example, if a user DN associated with the *person* object class were: uid=lcallahan,dc=ldap,dc=com, the unique identifier for the person object class would be the uid attribute.
 
 The yellow key next to the name in the attributes list denotes it as the primary key for the object (see screen shot below). If no primary key is defined, you can use the right-click menu to edit/define one. For more information see [Declaring Primary Keys](#declaring-primary-keys). 
  
 ![An image showing ](../Media/ldap-pk.jpg)
-
 
 ### Display Name 
 
@@ -70,13 +68,13 @@ Examples of LDAP-accessible backends are Sun Java Directory, Microsoft Active Di
 
 1. In the Control Panel > SETUP > Data Catalog > Data Sources > Selected Data Source > SCHEMA Tab, click **...** > Extract New Schema.
 
-2.	Enter a schema file name and click **OK**.
+1.	Enter a schema file name and click **OK**.
 
 ![An image showing ](../Media/extract-new-schema.png)
 
 >[!warning] DO NOT USE HYPHENS (-) IN FILE NAMES. 
 
-You can view/modify this schema by selecting if from the drop-down list. Any changes made (such as attribute name remapping), do not affect the underlying schema. 
+1. You can view/modify this schema by selecting if from the drop-down list. Any changes made (such as attribute name remapping), do not affect the underlying schema. 
 
 **Handling Auxiliary Object Classes from LDAP Backends** 
 
