@@ -140,9 +140,10 @@ You can view/modify this schema by selecting it from the drop-down list. Any cha
 The custom data source must be created before completing the steps below. See [Data Sources](/data-sources.md) for details about creating data sources. The schemas associated with custom sources cannot be extracted. You must manually define the objects and attributes matching the custom data source API after providing a schema name. Every object (e.g. user) that stores identity data must be defined.
 
 1.	 In the Control Panel > SETUP > Data Catalog > Data Sources > Selected Data Source > SCHEMA Tab, click **...** > Extract New Schema.
-1.	 Enter a schema file name. An empty schema file opens.
+1.	 Enter a schema file name. Click OK.
 
       >[!note] DO NOT USE HYPHENS (-) IN FILE NAMES.
+
 1.  Expand Objects.
 1.  Right-click on *Tables* and choose **Add New Object**.
 
