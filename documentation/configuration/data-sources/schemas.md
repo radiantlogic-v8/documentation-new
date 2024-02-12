@@ -235,9 +235,7 @@ Define Recursive Relationship
 
 ![An image showing ](Media/Image3.17.jpg)
 
-Select Foreign Key and Enter Depth Level 
-
-3.	Click Define when finished.
+3.	Click OK.
 
 You should now see new views created corresponding to the depth level entered, and new relationships between these objects.
 
@@ -251,7 +249,8 @@ Once the recursive relationship is described in the schema file, a hierarchical 
 
 You will need a user ID and password for accessing the knowledge base. If you do not have one, please contact Radiant Logic at support@radiantlogic.com.
 
-### Creating Synonyms 
+### Creating Synonyms
+
 Once the metadata has been captured, the next step is to improve it in a way that best serves your needs. This may involve declaring synonyms. 
 
 >[!note] Changes made in the schema settings do not affect the underlying schema.
