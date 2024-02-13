@@ -342,9 +342,9 @@ Derived views are created from a base table and consist of one attribute that co
 See [Derived View](#derived-view) in the Schema Manager basic terms for more information. 
 
 To create a derived view, follow the steps below. 
-1.	Right-click on a table or view, select the Define Derived Views option. 
+1.	Right-click on a table or view and select **Define Derived View**. 
 2.	Select the appropriate object from the drop-down list. 
-3.	Select the column you want to use and click Define.
+3.	Select the column you want to use and click **OK**.
 
 ![An image showing ](Media/Image3.26.jpg)
 
