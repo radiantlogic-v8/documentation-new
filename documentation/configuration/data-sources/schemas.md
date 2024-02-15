@@ -221,11 +221,13 @@ To set a relationship between two objects:
 4. Select the attribute from the Source Attribute drop-down list that contains the value to be used to relate to the secondary object.
 5.	Select the destination object that has a relationship with the source object from the Related Object drop-down list. 
 6.	Choose the attribute from the Related Attribute drop-down list that contains the value to be used to relate to the source object. 
-![An image showing ](Media/definerelationships.jpg).
+
+![An image showing ](Media/definerelationships.jpg)
 
 7.	Click **OK**. The relationships are created and appear at the bottom of the list of relationships in the schema file.
 
-### Declaring Recursive Relationships 
+### Declaring Recursive Relationships
+
 Once the metadata has been captured, the next step is to improve it in a way that best serves your needs. This may involve declaring recursive relationships.
 
 >[!note] Changes made in the schema settings do not affect the underlying schema.
