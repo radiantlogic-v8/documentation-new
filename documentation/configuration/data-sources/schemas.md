@@ -12,9 +12,11 @@ Schemas are managed from Control Panel > SETUP > Data Catalog > Data Sources > S
 It is important to understand that RadiantOne publishes an LDAP schema for clients to query using a base DN of cn=schema. Some clients leverage this information to integrate with the service, while others do not. This schema likely differs from the schemas of the identity data sources (backends). Therefore, if you have client applications that rely on metadata published in the RadiantOne LDAP schema, ensure that you either [Map the Backend Metadata](#mapping-metadata) to objects and attributes in the RadiantOne LDAP schema, or [Extend the RadiantOne LDAP Schema](#Include-in-RadiantOne-LDAP-Schema) with the metadata from the schema files associated with the backends.
 
 ## Concepts
+
 The following concepts are important to understand for managing schemas in RadiantOne Identity Data Management.
 
-### Primary Key 
+### Primary Key
+
 In a well-designed relational database, every table has a column, or combination of columns, known as the primary key of the table. These values uniquely identify each row in the table. Occasionally you will find tables that were created in the database, but the uniquely identifying column(s) were not documented in the system catalog as the primary key. Declaring implicit primary keys is one of the schema refining processes you perform in the Data Catalog. 
 
 >[!warning] All objects you want to virtualize in an identity view must have a primary key defined, and any attribute that you declare as the primary key in the schema file must be unique for all entries in your database source table.
@@ -104,16 +106,19 @@ Examples of JDBC-accessible backends are Microsoft SQL Server, Oracle, DB2, and 
 
 The database data source must be created before completing the schema extraction steps below. See [Data Sources](/data-sources.md) for details about creating data sources.
 1.	In the Control Panel > SETUP > Data Catalog > Data Sources > Selected Data Source > SCHEMA Tab, click **...** > Extract New Schema.
-2.	Enter a schema file name and click **OK**.
+
+1.	Enter a schema file name and click **OK**.
     >[!note] DO NOT USE HYPHENS (-) IN FILE NAMES.
  
-3. The ANSI standard syntax for naming relational database tables is catalog.schema.table. Therefore, if you are authenticating as a user who has access to multiple different schemas, and want to narrow the search, you can enter in the specific schema name in the Database Schema property.
-4.	Limit the types of objects to be returned by selecting tables, views, system tables, or synonyms. If you would like all types of objects returned, then select all options. If you only want a subset of the selected objects returned, then you can enter a pattern for the Table Pattern parameter using the “%” for a wildcard character. For example, if you want to return only tables that start with “N”, then for the Table Pattern you can enter N%.
-5.	Click **NEXT** to proceed and select the desired Tables and Views from the list.
+1. The ANSI standard syntax for naming relational database tables is catalog.schema.table. Therefore, if you are authenticating as a user who has access to multiple different schemas, and want to narrow the search, you can enter in the specific schema name in the Database Schema property.
+
+1.	Limit the types of objects to be returned by selecting tables, views, system tables, or synonyms. If you would like all types of objects returned, then select all options. If you only want a subset of the selected objects returned, then you can enter a pattern for the Table Pattern parameter using the “%” for a wildcard character. For example, if you want to return only tables that start with “N”, then for the Table Pattern you can enter N%.
+
+1.	Click **NEXT** to proceed and select the desired Tables and Views from the list.
  
 ![An image showing ](../Media/Image3.11.jpg)
 
-6.	Click **EXTRACT**. This creates the schema file and adds it into the drop-down list next to *Schema Name*.
+1.	Click **EXTRACT**. This creates the schema file and adds it into the drop-down list next to *Schema Name*.
 
 You can view/modify this schema by selecting if from the drop-down list. Any changes made (such as declaring primary keys or creating relationships), do not affect the underlying schema. 
 
@@ -150,6 +155,7 @@ The custom data source must be created before completing the steps below. See [D
 2.  Repeat step 8 to add all attributes.
    
 ## Managing Schemas
+
 ### Displaying Objects and Relationships 
 
 When you select a schema file next to the *Schema Name* drop-down list, the objects are displayed in alphabetical order. Objects are tables and views (for databases), or object classes (for LDAP directories). As you select an object, information about that object appears on the right side.
@@ -164,7 +170,8 @@ The figure shown below displays all tables, views and relationships from the sam
 ![An image showing ](Media/Image3.5.jpg)
 
 
-### Declaring Primary Keys 
+### Declaring Primary Keys
+
 Once the metadata has been captured, the next step is to improve it in a way that best serves your needs. This may involve declaring primary keys.
 
 >[!note] Changes made in the schema settings do not affect the underlying schema.
@@ -190,10 +197,10 @@ To declare and modify the primary keys:
 1. 	Click **OK** when finished. The key(s) you selected are now declared as the primary key. 
 
 ### Declaring Implicit Relationships
+
 Once the metadata has been captured, the next step is to improve it in a way that best serves your needs. This may involve declaring implicit relationships.
 
->[!note] 
->Changes made in the schema file do not affect the underlying schema.
+>[!note] Changes made in the schema file do not affect the underlying schema.
 
 Sometimes a database schema does not contain all relationships that can exist between objects. The schema extraction process cannot capture these implicit relationships that are known by the programmers but not declared in the database data dictionary. You should declare any relationships you will need for your virtual views. 
 
@@ -203,7 +210,8 @@ The Relationships dialog box requires source and destination tables (or views). 
 
 >[!note] Declaring implicit relationships relates to database schemas only.
 
-To set a relationship between two objects: 
+To set a relationship between two objects:
+
 1.	Right-click on the desired object and choose the Define Relationships option. The Relationships dialog box appears. 
 
 ![An image showing ](Media/Image3.15.jpg)
@@ -230,7 +238,6 @@ To create a recursive relationship:
 
 ![An image showing ](Media/Image3.16.jpg)
 
-Define Recursive Relationship
 2.	Select the foreign key and enter the number of recursions possible (the depth level).
 
 ![An image showing ](Media/Image3.17.jpg)
@@ -240,8 +247,6 @@ Define Recursive Relationship
 You should now see new views created corresponding to the depth level entered, and new relationships between these objects.
 
 ![An image showing ](Media/Image3.18.jpg)
-
-Example Relationships in a Database Schema
 
 Once the recursive relationship is described in the schema file, a hierarchical virtual directory view can be created. For details on how to build virtual views, please see [View Designer](view-designer.md). 
 
@@ -261,15 +266,11 @@ To create a synonym for an object:
 
 ![An image showing ](Media/Image3.19.jpg)
 
-Define Synonym
-
 2.	Enter a name for the Synonym when prompted. 
 
 >[!note] Synonyms may NOT have the same name as an existing object in the schema.
 
 ![An image showing ](Media/Image3.20.jpg)
-
-Enter Name for the Synonym
 
 The new object appears under the list of Views. This new object does not change the underlying schema but can be used when building virtual views. For details on building custom virtual views, please see [View Designer](view-designer.md). 
 
@@ -291,8 +292,6 @@ To declare or Modify RDN Attribute Name and Value:
 
 ![An image showing ](Media/Image3.21.jpg)
 
-RDN Attribute Name and Value Dialog Box
-
 >[!warning] The attributes that you select as the display attribute(s) should not allow NULL values.
 
 To remove attribute(s) from the RDN Display Attribute(s) list, choose the column(s) and click the left arrow button. 
@@ -303,8 +302,6 @@ For example, if you set the RDN attribute name for the Employee table to equal N
 
 ![An image showing ](Media/Image3.22.jpg)
  
-RDN Name and Value when Building a Virtual View
-
 ### Removing Objects, Attributes or Relationships from the Schema 
 
 Unwanted tables, views, attributes, or relationships can be removed from the schema. Remember to save the schema after making any changes. 
@@ -325,16 +322,12 @@ Some attributes can be removed from objects. Primary keys and attributes involve
 
 ![An image showing ](Media/Image3.24.jpg)
  
-Deleting Attributes
-
 **Removing Relationships**
 
 To remove a relationship, right-click on the desired relationship and choose Delete. 
  
 ![An image showing ](Media/Image3.25.jpg)
  
-Deleting Relationships
-
 ### Creating Derived Views
 
 Derived views are created from a base table and consist of one attribute that contains normalized data, such as a single column table for countries, postal codes, city names, etc. Derived views are objects that are added to the schema file to allow for more flexibility when creating virtual views. 
@@ -348,12 +341,9 @@ To create a derived view, follow the steps below.
 
 ![An image showing ](Media/Image3.26.jpg)
 
-Define Derived View Dialog Box
-
 The new derived view object appears in the list of views in the Schema Manager tab. This new object can be used when building virtual views in the [View Designer](view-designer.md). 
 
->[!note] 
->A derived view may NOT be created from the same attribute twice.
+>[!note] A derived view may NOT be created from the same attribute twice.
 
 ### Mapping Metadata 
 
@@ -365,13 +355,9 @@ In the example shown below, the LDAP object class generated by default is vdAPPC
 
 ![An image showing ](Media/Image3.27.jpg)
 
-Default Object Class Generated
-
 For LDAP backends, the object class(es) from the schema definition is the default value shown in the Schema Manager. The # sign is used to separate the class hierarchy. The default attribute names also match the underlying schema definition. 
 
 ![An image showing ](Media/Image3.28.jpg)
-
-Default Object Class for LDAP Object 
 
 The default object class can be changed if needed. Database and LDAP objects can be mapped to an existing object class definition or you can manually enter your own custom one.
 
@@ -383,15 +369,11 @@ The default object class can be changed if needed. Database and LDAP objects can
 
 ![An image showing ](Media/Image3.29.jpg)
 
-Change Mapping for Objects
-
 3.	Select the object class from the drop-down list that you want mapped to the database object. 
 
 4.	When mapping database columns to LDAP attributes, you can apply a [default mapping](#applying-the-default-mapping), map each attribute individually based on the object class definition selected in step 3, or manually enter your own mapped attribute name. To map to an existing LDAP attribute, select the corresponding LDAP attribute from the drop-down list. The attribute list is based on the definition of the LDAP object class selected in step 3. In the example shown in the screen shot below, inetOrgPerson has been selected and two attributes have been mapped to LDAP attributes of the inetOrgPerson class. 
 
 ![An image showing ](Media/Image3.30.jpg)
-
-Mapping to an Existing LDAP Object Class
 
 5.	If you prefer to enter your own custom object class name, you can type it in the LDAP Object Class parameter. 
 
@@ -417,49 +399,6 @@ To map LDAP object classes and attribute to other LDAP object classes and attrib
 
 7.	Click OK when finished. 
 
-### Applying the default mapping
-
-The default attribute mapping is defined in a schema file named defaultmapping.
-1.	On the Schema Manager tab, open defaultmapping. This file is located on the LDAP Schemas tab.
-
-2.	Expand the object named DefaultMapping.
-
-3.	Expand the Fields section to see a list of source attribute names. 
-
-4.	To view the default LDAP attribute mapping, right-click on the attribute name and choose Edit Attribute. The alias defined for the attribute is the LDAP attribute name that is used in the default mapping. In the example shown below, any source schema that contains an attribute named LastName would have this attribute mapped to sn if the Default Mapping option was used.
- 
-![An image showing ](Media/Image3.31.jpg)
-
-Alias is the Default LDAP Attribute Mapping
-
-5.	To view all default mappings, right-click on Fields and choose Attribute Mapping.
-
-![An image showing ](Media/Image3.32.jpg)
-
-Default Attribute Mappings
-
-6.	To define a new attribute mapping, right-click on Fields and choose Add New Attribute. 
-
-7.	Enter the source attribute name and the LDAP attribute mapping in the alias property. The example shown below defines a mapping for attributes named “City” to be mapped to the LDAP “l” attribute.
-
-![An image showing ](Media/Image3.33.jpg)
- 
-Figure 3.33: Add Default LDAP Attribute Mapping
-
-8.	To apply the default mapping, open the source schema file on the Schema Manager tab. 
-
-9.	Right-click on the Fields node below the database object containing the attributes you want to map and choose Object Mapping.
-
-10.	In the Map to LDAP Object Class window, click Apply Default Mappings. This establishes the attribute mapping based on a pre-defined list in the defaultmapping schema file. 
-
-11.	For attributes that are not mapped by the default mapping, you can choose an attribute from the drop-down list which is populated with the attributes available from the LDAP object class that the object is currently mapped to.
-
-12.	Click OK when finished. 
-
-13.	Save the schema file.
-
-Mappings configured in schema files do not impact the underlying data source schema.
-
 ### Merging Schema Files
 
 Merging schema files is helpful if you have extracted and enhanced (declared keys, relationships, mapping…etc.) a very large schema and you need to bring in new objects from that same server. You can extract just these new objects and merge them with the existing schema. This saves time over having to extract and enhance the entire schema again. 
@@ -471,8 +410,6 @@ To merge schema files:
 3.	Right-click at the top node of the schema and choose Merge with Other Schema. 
 
 ![An image showing ](Media/Image3.34.jpg)
-
-Merge Schema Option
 
 4.	Browse to the schema file that you extracted/saved in step 1 above. 
 
@@ -497,8 +434,6 @@ To delete a schema file:
 4.	From the Options menu ("..."), select *Delete Schema*. 
 
 ![An image showing ](Media/Image3.36.jpg)
-
-Deleting Schema Files
 
 5.	Click *Delete* to confirm the deletion. 
 
