@@ -314,8 +314,6 @@ Objects in a database schema are tables or views. Objects in an LDAP schema are 
 
 ![An image showing ](Media/Image3.23.jpg)
 
-Deleting Objects
-
 **Removing Attributes**
 
 Some attributes can be removed from objects. Primary keys and attributes involved in relationships cannot be removed. Right-click on the attribute you want to remove and choose Delete. 
