@@ -449,6 +449,14 @@ To compare schema files:
 
 1. Click the data source's Schema tab.
 
-1. 
+1. From the Options menu ("..."), select **Compare Schema**. The Schema Differences Detected window displays. 
+
+1. Expand the Tables, Views, and Relationships nodes. Red highlighted items indicate what is not in the current schema but is in the selected schema. Green highlighted items indicate what is in the current schema and not in the selected schema.
+
+ ![An image showing ](Media/Image3.34.jpg)
+
+1. Select items in the selected schema that you want to merge into the current backend schema and click **Merge Selected Differences**.
+
+>[!note] To save differences a a new schema, click **Save As New Schema**. 
 
 ## Include in RadiantOne LDAP Schema
