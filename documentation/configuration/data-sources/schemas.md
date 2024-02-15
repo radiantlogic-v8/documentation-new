@@ -371,7 +371,7 @@ The default object class can be changed if needed. Database and LDAP objects can
 
 3.	Select the object class from the drop-down list that you want mapped to the database object. 
 
-4.	When mapping database columns to LDAP attributes, you can apply a [default mapping](#applying-the-default-mapping), map each attribute individually based on the object class definition selected in step 3, or manually enter your own mapped attribute name. To map to an existing LDAP attribute, select the corresponding LDAP attribute from the drop-down list. The attribute list is based on the definition of the LDAP object class selected in step 3. In the example shown in the screen shot below, inetOrgPerson has been selected and two attributes have been mapped to LDAP attributes of the inetOrgPerson class. 
+4.	When mapping database columns to LDAP attributes, you can map each attribute individually based on the object class definition selected in step 3 or manually enter your own mapped attribute name. To map to an existing LDAP attribute, select the corresponding LDAP attribute from the drop-down list. The attribute list is based on the definition of the LDAP object class selected in step 3. In the example shown in the screen shot below, inetOrgPerson has been selected and two attributes have been mapped to LDAP attributes of the inetOrgPerson class. 
 
 ![An image showing ](Media/Image3.30.jpg)
 
