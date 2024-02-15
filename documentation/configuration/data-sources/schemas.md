@@ -439,4 +439,16 @@ To delete a schema file:
 
 ## Comparing Schema Files
 
+This option allows you to view the differences between two schema files. You can choose to update the selected schema file with the differences or save a new schema file. 
+
+To compare schema files:
+
+1. In the Control Panel, navigate to SETUP > Data Catalog > Data Sources. 
+
+1. Select a data source. 
+
+1. Click the data source's Schema tab.
+
+1. 
+
 ## Include in RadiantOne LDAP Schema
