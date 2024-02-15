@@ -72,9 +72,9 @@ Examples of LDAP-accessible backends are Sun Java Directory, Microsoft Active Di
 
 1.	Enter a schema file name and click **OK**.
 
- ![An image showing ](../Media/extract-new-schema.png)
+   ![An image showing ](../Media/extract-new-schema.png)
 
- >[!warning] DO NOT USE HYPHENS (-) IN FILE NAMES. 
+   >[!warning] DO NOT USE HYPHENS (-) IN FILE NAMES. 
 
 1. You can view/modify this schema by selecting if from the drop-down list. Any changes made (such as attribute name remapping), do not affect the underlying schema. 
 
