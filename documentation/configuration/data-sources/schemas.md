@@ -389,13 +389,13 @@ To map LDAP object classes and attribute to other LDAP object classes and attrib
 
 3.	Select the object class from the drop-down list that you want to map to. 
 
-4.	When mapping attributes, you can apply a [default mapping](#applying-the-default-mapping), map each attribute individually based on the object class definition selected in step 2, or manually enter your own mapped attribute name. To map to an existing LDAP attribute, select the corresponding LDAP attribute from the drop-down list. The attribute list is based on the definition of the LDAP object class selected in step 2. In the example shown in the screen shot below, inetOrgPerson has been selected and two attributes have been mapped to LDAP attributes of the inetOrgPerson class.
+4.	When mapping attributes, map each attribute individually based on the object class definition selected in step 2 or manually enter your own mapped attribute name. To map to an existing LDAP attribute, select the corresponding LDAP attribute from the drop-down list. The attribute list is based on the definition of the LDAP object class selected in step 2. In the example shown in the screen shot below, inetOrgPerson has been selected and two attributes have been mapped to LDAP attributes of the inetOrgPerson class.
 
 5.	If you prefer to enter your own custom object class name, you can type it in the LDAP Object Class parameter. 
 
 6.	If you prefer to enter your own custom attribute names, type them in the LDAP attribute parameter next to the source attribute name.
 
-7.	Click OK when finished. 
+7.	Click **OK** when finished. 
 
 ### Merging Schema Files
 
