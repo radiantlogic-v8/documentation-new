@@ -17,9 +17,9 @@ From the *Monitoring* screen, you can review the status and health of various Ra
 
 ## Getting started
 
-To navigate to the *Monitoring* screen, select **Monitoring** (![image description](images/monitoring-icon.png)) from the left navigation.
+To navigate to the *Monitoring* screen, select **Monitoring** (![image description](Images/monitoring-icon.png)) from the left navigation.
 
-![image description](images/select-monitoring.png)
+![image description](Images/select-monitoring.png)
 
 ## Monitor an environment
 
@@ -27,19 +27,19 @@ To generate monitoring metrics, an environment and at least one node must be sel
 
 To set the environment, select an environment from the **Environment** dropdown.
 
-![image description](images/select-env.png)
+![image description](Images/select-env.png)
 
 Select at least one node from the **Node** dropdown. 
 
-![image description](images/select-node.png)
+![image description](Images/select-node.png)
 
 If you would like to monitor more than one node, continue selecting all required nodes and then collapse the **Node** dropdown. The monitoring dashboard will update to display the component metrics for all nodes selected.
 
-![image description](images/multiple-nodes.png)
+![image description](Images/multiple-nodes.png)
 
 To remove a node, select the "X" associated with the node name.
 
-![image description](images/remove-node.png)
+![image description](Images/remove-node.png)
 
 ### Filter data by time range
 
@@ -47,7 +47,7 @@ You can filter monitoring data by time range, allowing you to narrow down the ta
 
 To filter by time, select a range from the **Time Range** dropdown.
 
-![image description](images/select-timerange.png)
+![image description](Images/select-timerange.png)
 
 ## Monitoring components
 
