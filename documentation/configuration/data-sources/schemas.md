@@ -184,7 +184,7 @@ For directory schemas, declare the attribute that uniquely identifies each entry
 
 To declare and modify the primary keys: 
 
-1.	 Right-click on the desired object and choose Edit Primary Key. 
+1.	 Right-click on the desired object and choose **Edit Primary Key(s)**. 
 
 ![An image showing ](../Media/edit-primary-key.jpg)
 
