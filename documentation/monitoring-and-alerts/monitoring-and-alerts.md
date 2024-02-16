@@ -15,13 +15,11 @@ From the *Monitoring* screen, you can review the status and health of various Ra
 
 [!warning] Monitoring is a crucial step in maintaining the health of RadiantOne and it is recommended that you monitor these components on a regular basis.
 
-## Getting started
-
 To navigate to the *Monitoring* screen, select **Monitoring** (![image description](Images/monitoring-icon.png)) from the left navigation.
 
 ![image description](Images/select-monitoring.png)
 
-## Monitor an environment
+### Monitor an environment
 
 To generate monitoring metrics, an environment and at least one node must be selected.
 
@@ -41,7 +39,7 @@ To remove a node, select the "X" associated with the node name.
 
 ![image description](Images/remove-node.png)
 
-### Filter data by time range
+#### Filter data by time range
 
 You can filter monitoring data by time range, allowing you to narrow down the targeted data to a specific time frame.
 
@@ -49,7 +47,7 @@ To filter by time, select a range from the **Time Range** dropdown.
 
 ![image description](Images/select-timerange.png)
 
-## Monitoring components
+### Monitoring components
 
 The monitoring dashboard displays several node component metrics, allowing you to monitor the health of RadiantOne servers.
 
@@ -72,10 +70,5 @@ Component metrics displayed include:
 | RAM Usage | A line graph that charts RAM usage over time. |
 
 ![image description](Images/monitoring-components.png)
-
-## Next steps
-
-After reading this guide you should have an understanding of how to generate metrics to monitor environment nodes. For details on reviewing RadiantOne operation and activity reports, see the [reporting](../reporting/reporting-overview.md) guide.
-
 
 ## Configuring Alerts
