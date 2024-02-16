@@ -71,7 +71,7 @@ Component metrics displayed include:
 | CPU Usage | A line graph that charts CPU usage over time. |
 | RAM Usage | A line graph that charts RAM usage over time. |
 
-![image description](images/monitoring-components.png)
+![image description](Images/monitoring-components.png)
 
 ## Next steps
 
