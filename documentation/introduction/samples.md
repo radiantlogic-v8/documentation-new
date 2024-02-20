@@ -16,7 +16,7 @@ This section describes all the default root naming contexts included with Radian
 The sample naming contexts are as follows.
 
 - o=vds
-<br> This naming context contains many sample virtual views mounted below it. This naming context may be hidden (by specifying it as a hidden context in the rootdse.ldif file for the RadiantOne service) but should not be deleted.
+<br> NOTE - NEEDS TO BE UPDATED This naming context contains many sample virtual views mounted below it. This naming context may be hidden (by specifying it as a hidden context in the rootdse.ldif file for the RadiantOne service) but should not be deleted.
 
 - o=companydirectory
 <br> This is a sample local RadiantOne Universal Directory store. The data is stored in this RadiantOne Universal Directory can be managed from the Directory Browser tab in the Main Control Panel. This naming context is used in the RadiantOne training materials. If you do not plan on using the RadiantOne Tutorials (for training) then this entire naming context may be deleted (de-activate it before removing the naming context).
