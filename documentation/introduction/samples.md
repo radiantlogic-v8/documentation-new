@@ -40,13 +40,13 @@ After deleting the naming context, you can also delete the underlying identity v
 >[!note] Although the ou=AllProfiles naming context is associated with the "default" schema file, this schema file should not be deleted if you delete the ou=AllProfiles naming context as it is used by other RadiantOne internal components.
 
 - cn=replicationjournal
-<br> This naming context is used for inter-cluster replication. This naming context may be hidden (by specifying it as a hidden context in the rootdse.ldif file for RadiantOne) but should not be deleted.
+<br>  NOTE - NEEDS TO BE UPDATED This naming context is used for inter-cluster replication. This naming context may be hidden (by specifying it as a hidden context in the rootdse.ldif file for RadiantOne) but should not be deleted.
 
 -  cn=extendedxjoin
-<br> This naming context is used when the default store setting is configured for an extended join. This naming context may be hidden (by specifying it as a hidden context in the rootdse.ldif file for RadiantOne) but should not be deleted.
+<br>  NOTE - NEEDS TO BE UPDATED This naming context is used when the default store setting is configured for an extended join. This naming context may be hidden (by specifying it as a hidden context in the rootdse.ldif file for RadiantOne) but should not be deleted.
 
 - cn=config
-<br> This naming context stores certain global configuration information for RadiantOne. This naming context may be hidden (by specifying it as a hidden context in the rootdse.ldif file for RadiantOne) but should not be deleted.
+<br>  NOTE - NEEDS TO BE UPDATED This naming context stores certain global configuration information for RadiantOne. This naming context may be hidden (by specifying it as a hidden context in the rootdse.ldif file for RadiantOne) but should not be deleted.
 
 - cn=changelog
 <br> This naming context stores a list of changes made to RadiantOne. Clients can leverage this for detecting changes that happen in the RadiantOne namespace. This naming context should not be deleted.
@@ -55,13 +55,13 @@ After deleting the naming context, you can also delete the underlying identity v
 <br> This naming context stores a list of changes made during persistent cache refresh. This naming context should not be deleted.
 
 - cn=registry
-<br> This naming context is used internally by RadiantOne to store configuration information for the Global Sync Module and the Global Identity Builder. This naming context may be hidden (by specifying it as a hidden context in the rootdse.ldif file for RadiantOne) but should not be deleted.
+<br>  NOTE - NEEDS TO BE UPDATED This naming context is used internally by RadiantOne to store configuration information for the Global Sync Module and the Global Identity Builder. This naming context may be hidden (by specifying it as a hidden context in the rootdse.ldif file for RadiantOne) but should not be deleted.
 
 - cn=system-registry
-<br> This naming context is used internally by RadiantOne to store ADAP session tokens. This naming context may be hidden (by specifying it as a hidden context in the rootdse.ldif file for RadiantOne) but should not be deleted.
+<br> NOTE - NEEDS TO BE UPDATED This naming context is used internally by RadiantOne to store ADAP session tokens. This naming context may be hidden (by specifying it as a hidden context in the rootdse.ldif file for RadiantOne) but should not be deleted.
 
 - dv=globalprofiles
-<br> This naming context is created and used by the Global Identity Builder and Global Identity Viewer applications. This naming context may be hidden (by specifying it as a hidden context in the rootdse.ldif file for RadiantOne) but should not be deleted.
+<br> NOTE - NEEDS TO BE UPDATED This naming context is created and used by the Global Identity Builder and Global Identity Viewer applications. This naming context may be hidden (by specifying it as a hidden context in the rootdse.ldif file for RadiantOne) but should not be deleted.
 
 NOTE - NEEDS TO BE UPDATED All files related to the naming contexts detailed above are located in <RLI_HOME>/vds_server/dvx. Schema files associated with these naming contexts are located in <RLI_HOME>/vds_server/org and <RLI_HOME>/vds_server/lod.
 
