@@ -36,7 +36,7 @@ An LDAP Directory, Active Directory and an HR database contain different informa
 
 ![Example of Correlation](Media/Image3.1.jpg)
 
-Figure 1: Example of Correlation
+
 
 **Bind Order**
 
@@ -44,7 +44,7 @@ As discussed above, if there is identity overlap, correlation rules must be defi
 
 ![Bind Order Example](Media/Image3.2.jpg)
 
-Figure 2: Bind Order Example
+
 
 **Object and Attribute Mapping**
 
@@ -55,7 +55,7 @@ search the underlying source appropriately.
 
 ![Object Class Mapping Example](Media/Image3.3.jpg)
 
-Figure 3: Object Class Mapping Example
+
 
 ### For Authorization
 
@@ -71,7 +71,7 @@ One of the main design considerations for groups-based authorization is to analy
 
 ![Object Class and Attribute Mapping for Groups](Media/Image3.4.jpg)
 
-Figure 4: Object Class and Attribute Mapping for Groups
+
 
 **Aggregation of Existing Groups**
 
@@ -83,13 +83,13 @@ DN Auto-Remapping – to translate the real DN’s contained within the group ob
 
 ![Auto Re-mapping of DN Example](Media/Image3.5.jpg)
 
-Figure 5: Auto Re-mapping of DN Example
+
 
 For locating existing groups in backend directories, it is important to understand the base DN configuration for the data source. The base DN is the parameter that contains the starting point in the underlying directory where RadiantOne FID starts searching from. For example, let’s say the underlying directory structure looked like the following tree.
 
 ![Sample Backend Directory Structure](Media/Image3.6.jpg)
 
-Figure 6: Sample Backend Directory Structure
+
 
 If the base DN parameter were set to a value of ou=people,dc=ad,dc=domain, and a search for a particular group came into RadiantOne FID, the group would not be found. This is the
 because RadiantOne FID searches the underlying directory tree for the group at ou=people,dc=ad,dc=domain and there are no groups located here. In order for RadiantOne FID to be able to retrieve the group entry from the underlying directory, the base DN would have to be configured to point to dc=ad,dc=domain.
@@ -108,7 +108,7 @@ User-defined group names are explicitly listed for the group entry. A user-defin
 
 ![Group Names Pre-defined with Dynamic Members Example](Media/Image3.7.jpg)
 
-Figure 7: Group Names Pre-defined with Dynamic Members Example
+
 
 Static group members are specific user DNs explicitly listed as members for the group entry. Any user DN in the virtual directory can be assigned to a user-defined group. Static group members can be any user DN in the virtual directory tree which means they can come from any backend source.
 
@@ -122,7 +122,7 @@ Below is a high-level diagram depicting a join across three data sources for a c
 
 ![Join Sample](Media/Image3.9.jpg)
 
-Figure 9: Join Sample
+
 
 **Handling Overlapping Attributes**
 
@@ -151,13 +151,13 @@ The Enterprise Directory’s phone attributes are known to be out of date and un
 
 ![Join Example Using Attribute Authority](Media/Image3.10.jpg)
 
-Figure 10: Join Example Using Attribute Authority
+
 
 The Enterprise Directory phone numbers are for work phone numbers, and the HR Database tracks home phone numbers. Aaron’s unified identity could show both, either as a multi-valued attribute (as depicted in the diagram below), or by showing each phone number as a separate attribute (each having a different name – one could be mapped/returned by RadiantOne FID as Work Phone while the other could be Home Phone).
 
 ![Join Example Showing Common Attributes Returned as Multi-Valued](Media/Image3.11.jpg)
 
-Figure 11: Join Example Showing Common Attributes Returned as Multi-Valued
+
 
 Joins and attribute authority are configured in the Control Panel > Setup > Directory Namespace > Namespace Design. 
 
@@ -193,14 +193,13 @@ Flat virtual views are based on an object class in the LDAP Backend. For example
 
 ![Sample LDAP Hierarchy](Media/Image3.12.jpg)
 
-Figure 12: Sample LDAP Hierarchy
+
 
 The hierarchy shown above can be flattened out in a virtual view based on the object class associated with the users (e.g. inetOrgPerson). The sample flat virtual view structure is shown in the figure below.
 
 ![Sample Flat Virtual View Built from an Existing LDAP Hierarchy](Media/Image3.13.jpg)
 
-Figure 13: Sample Flat Virtual View Built from an Existing LDAP Hierarchy (depicted in the figure
-above)
+
 
 When building a flat virtual view, use content objects. For details on content objects, please see the [RadiantOne Context Builder Guide](/context-builder-guide/introduction).
 
@@ -214,25 +213,25 @@ The hierarchy shown below is an example of an LDAP directory tree and three deta
 
 ![Example LDAP Entries](Media/Image3.14.jpg)
 
-Figure 14: Example LDAP Entries
+
 
 The first step in building a virtual view is to extract the schema information using Schema Manager. The schema from the LDAP hierarchy shown in the figure above is shown in the screen shot below.
 
 ![LDAP Schema Extracted with Schema Manager](Media/Image3.15.jpg)
 
-Figure 15: LDAP Schema Extracted with Schema Manager
+
 
 The next step is to load the schema into the Hierarchy Builder utility and follow the wizard to model your virtual view. The screen shot in the figure below depicts this process. In this example, the hierarchical virtual view is based on country, followed by state, followed by city and finally the users who fit into the context (LDAP attributes were renamed for a user-friendly display).
 
 ![Hierarchy Builder Using Metadata](Media/Image3.16.jpg)
 
-Figure 16: Hierarchy Builder Using Metadata
+
 
 Virtual views built in the hierarchy builder can be viewed and modified on the Main Control Panel > Context Builder tab > View Designer sub-tab.
 
 ![Virtual View Created with Hierarchy Builder Utility](Media/Image3.17.jpg)
 
-Figure 17: Virtual View Created with Hierarchy Builder Utility
+
 
 Hierarchical views use both container and content objects. For details on container and content objects, please see the [RadiantOne Context Builder Guide](/context-builder-guide/introduction).
 
@@ -246,13 +245,13 @@ Flat virtual views are based on a database table (or a combination of tables if 
 
 ![Sample Database Schema](Media/Image3.18.jpg)
 
-Figure 18: Sample Database Schema
+
 
 The information available in the related database objects can be used to build the virtual directory entries. The RadiantOne entries shown below reflect a virtual view based on the database schema/data shown above. Notice that the entries include attributes from all tables.
 
 ![Sample RadiantOne Entries Based on Database Objects](Media/Image3.19.jpg)
 
-Figure 19: Sample RadiantOne Entries Based on Database Objects
+
 
 As described in this section, related database tables can be joined to create the virtual entries.
 
@@ -266,20 +265,20 @@ The following diagram illustrates a relationship-driven hierarchy built from a d
 
 ![Relationship-driven Hierarchy Example](Media/Image3.20.jpg)
 
-Figure 20: Relationship-driven Hierarchy Example
+
 
 The screen shot below depicts both the model of the virtual view and the runtime tree shown in the View Designer perspective.
 
 ![Context-driven Virtual View Model and Runtime Preview](Media/Image3.21.jpg)
 
-Figure 21: Context-driven Virtual View Model and Runtime Preview
+
 
 Another example of a relationship-driven hierarchy is one that uses a recursive relationship. In a human resources database, an employees table could have a recursive relationship with itself.
 Therefore, you could build an organization hierarchy virtual view depicting the different levels of management. An example is shown in the figure below.
 
 ![Recursive Relationship-driven Hierarchy Example](Media/Image3.22.jpg)
 
-Figure 22: Recursive Relationship-driven Hierarchy Example
+
 
 Virtual views based on recursive relationships are built with container and optionally content objects. For details on building context-based virtual hierarchies, please see [View Designer in the Context Builder Guide](/context-builder-guide/view-designer).
 
@@ -300,17 +299,17 @@ Regular Join – extend entries with existing attributes from multiple data sour
 
 ![Regular Join Example](Media/Image3.23.jpg)
 
-Figure 23: Regular Join Example
+
 
 Extended Join – extend entries with attributes that do not currently exist. These attributes may be required to accommodate specific client application logic (i.e. storage of application-specific attributes) and/or computed (created on-the-fly based on pre-defined logic). Each is portrayed in the architectures below.
 
 ![Extended Join to Store Application-Specific Attributes](Media/Image3.24.jpg)
 
-Figure 24: Extended Join to Store Application-Specific Attributes
+
 
 ![Extending Entries with Computed Attributes](Media/Image3.25.jpg)
 
-Figure 25: Extending Entries with Computed Attributes
+
 
 In addition to the two different categories of joins, RadiantOne also offers two different join types: left and inner. Each type is discussed in more details below.
 
@@ -320,7 +319,7 @@ In a left join, all entries from the primary source are returned in the result a
 
 ![Left Join Example](Media/Image3.26.jpg)
 
-Figure 26: Left Join Example
+
 
 **Inner Join**
 
@@ -328,7 +327,7 @@ In an inner join, the primary entries (the starting point for the join) are join
 
 ![Inner Join Example](Media/Image3.27.jpg)
 
-Figure 27: Inner Join Example
+
 
 ### Handling Overlapping Attributes
 
@@ -349,7 +348,7 @@ In the example shown below, three data sources are used. One data source is an L
 
 ![Three Example Data Sources](Media/Image3.28.jpg)
 
-Figure 28: Three Example Data Sources
+
 
 Let’s assume the desired virtual view is one that aggregates people (employees, partners and customers) into one complete list to be used for authentication.
 
@@ -357,13 +356,13 @@ First, three virtual views (one from each source) are created. This is depicted 
 
 ![Three Example Virtual Views](Media/Image3.29.jpg)
 
-Figure 29: Three Example Virtual Views
+
 
 Finally, links are used to aggregate the virtual views into one common tree. The virtual view will consist of employees from Active Directory, partners from an LDAP directory, and customers from a database. Both the virtual view model (the link is indicated with a blue arrow in the model view) and the runtime view are depicted below.
 
 ![Example Virtual View Using Links to Aggregate Objects from Different Data Sources](Media/Image3.30.jpg)
 
-Figure 30: Example Virtual View Using Links to Aggregate Objects from Different Data Sources
+
 
 This example described virtual views comprised of content objects and links. For more information, please see [View Designer in the Context Builder Guide](/context-builder-guide/view-designer).
 
@@ -373,22 +372,22 @@ To build hierarchical virtual views based on relationships that span across data
 
 ![Two Sample Databases](Media/Image3.31.jpg)
 
-Figure 31: Two Sample Databases
+
 
 Let’s assume the desired hierarchy should represent projects, followed by the department associated with the project, followed by the location of the employee, and finally the employees working on the project. Since the information is maintained in two separate databases, a virtual view can be built from each. This is depicted in the diagram below. One view is built for projects while the other is a view of employees based on departments and location.
 
 ![Two Example Virtual View Models](Media/Image3.32.jpg)
 
-Figure 32: Two Example Virtual View Models
+
 
 A link (noted with the blue arrow in the virtual view model below) is used to aggregate the virtual views into the required hierarchy. This is depicted in the diagram below.
 
 ![Example Link to an Existing View](Media/Image3.33.jpg)
 
-Figure 33: Example Link to an Existing View
+
 
 In the linked view shown in the figure below, the subbranch (view named EmpByDeptView) can be conditioned by setting a linking attribute. In this example, all projects are associated with a department. Since the department object has a relationship with projects (the project ID is available in the department entry), the project ID can be used as the link parameter to condition the subtree. By adding a condition to the link based on the project ID attribute, the subtree shown at runtime is dependent upon the project (the parent node). This is shown in the figure below.
 
 ![Using Links with a Parameter to Condition the Subtree](Media/Image3.34.jpg)
 
-Figure 34: Using Links with a Parameter to Condition the Subtree
+
