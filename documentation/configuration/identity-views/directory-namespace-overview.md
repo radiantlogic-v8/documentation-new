@@ -9,7 +9,7 @@ Each naming context visible on the Control Panel > SETUP > Directory Namespace >
 
 Icon	| Meaning
 -|-
-![Plus symbol](Media/root-naming-context.jpg)	| A Root Naming Context.
+![All Root Naming Contexts](Media/root-naming-context.jpg)	| Very top configuration node in the Directory Namespace. All Root Naming Contexts appear below this.
 ![Reserved RadiantOne Directory Store](Media/reserved-r1-directory.jpg)	| A Reserved RadiantOne Directory Store.
 ![RadiantOne Directory Store](Media/r1-directory-store.jpg)	| A RadiantOne Directory Store.
 ![LDAP Proxy View](Media/ldap-backend-proxy.jpg)	| An identity view from an LDAP Backend created using a proxy approach.
