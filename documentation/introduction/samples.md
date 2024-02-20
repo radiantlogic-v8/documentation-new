@@ -25,9 +25,7 @@ The sample naming contexts are as follows.
 <br> NOTE - NEEDS TO BE UPDATED This is a sample of an LDAP proxy. The backend LDAP in this example is the RadiantOne Universal Directory local store that matches the o=companydirectory setting mentioned above. A proxy can point to any LDAP server. This is not a critical naming context and it may be deleted if needed (de-activate it before removing the naming context). Deleting the naming context also deletes the underlying .dvx and .orx files o_companyprofiles.dvx and o_companyprofiles.orx.
 
 - o=examples
-<br> NOTE - NEEDS TO BE UPDATED This is a sample of a virtual view from a database backend. The database used here is Apache Derby and is included in the RadiantOne installation. This is not a critical naming context and it may be deleted if needed (de-activate it before removing the naming context. You need to deactivate and delete the child node prior to removing the root naming context). After deleting the naming context, you can also delete the underlying .dvx and .orx files: <RLI_HOME>/vds_server/dvx/o_examples.dvx,
-NOTE - NEEDS TO BE UPDATED <RLI_HOME>/vds_server/dvx/ou_hr_o_examples.dvx, and
-NOTE - NEEDS TO BE UPDATED <RLI_HOME>/vds_server/org/ou_hr_o_examples.orx.
+<br> NOTE - NEEDS TO BE UPDATED This is a sample of a virtual view from a database backend. The database used here is Apache Derby and is included in the RadiantOne installation. This is not a critical naming context and it may be deleted if needed (de-activate it before removing the naming context. You need to deactivate and delete the child node prior to removing the root naming context). After deleting the naming context, you can also delete the underlying schema, ou_hr_o_examples, and identity view files: o_examples.dvx and ou_hr_o_examples.dvx.
 
 >[!warning] Before you can view the data in the sample o=examples naming context, you must start the Derby database server.
 
