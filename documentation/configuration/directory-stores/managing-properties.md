@@ -12,7 +12,7 @@ The external suffix used by clients to access this branch in the RadiantOne name
 
 ## Schema Checking
 
-Check the Enable Schema Checking option if you want Schema Checking enabled.
+Toggle on the **Enable Schema Checking** option if you want Schema Checking enabled.
 
 Enabling schema checking means whenever entries or attributes are added or modified for this naming context, RadiantOne Directory checks them to ensure that:
 
@@ -22,15 +22,15 @@ Enabling schema checking means whenever entries or attributes are added or modif
 
 -	Only attributes allowed by the object class are contained in the entry 
 
-Schema checking occurs when populating the directory from the Main Control Panel > Directory Browser Tab, or when using an LDIF file. Schema checking does not enforce the validity of values against their syntax.
+Schema checking occurs when populating the directory from the Control Panel > Manage > Directory Browser, or when using an LDIF file. Schema checking does not enforce the validity of values against their syntax.
 
 ## Add Superior Objectclasses
 
-This option is to dictate whether, when creating an entry or adding an 'objectClass' value to an entry, all superclasses of the named classes will be implicitly added as well if not already present. By default, this option is not enabled. This means that when an entry is created, or an objectclass value is added to an existing entry, only the object classes explicitly listed in the request are included in the final objectclass attribute value. If this option in enabled, RadiantOne automatically adds associated superclasses (based on the LDAP schema definition) to the final objectclass attribute value if they are not already present. 
+This option is to dictate whether, when creating an entry or adding an 'objectClass' value to an entry, all superclasses of the named classes will be implicitly added as well if not already present. By default, this option is not enabled. This means that when an entry is created, or an objectclass value is added to an existing entry, only the object classes explicitly listed in the request are included in the final objectclass attribute value. If this option in enabled, RadiantOne automatically adds associated superclasses (based on the LDAP schema definition) to the final objectclass attribute value if they are not already present. Toggle on the **Add Superior Objectclasses** option if you want to enable this behavior.
 
 ## Normalize Attribute Names
 
-This option is for determining the case that is used for attribute names of an entry. If this option is enabled, all attribute names entered during an insert of an entry conform to the same case as defined in the RadiantOne LDAP schema. The attribute name is stored in the same case as defined in the schema. If the attribute is not defined in the RadiantOne LDAP schema then the attribute name is stored as all lower case. 
+This option is for determining the case that is used for attribute names of an entry. If this option is enabled, all attribute names entered during an insert of an entry conform to the same case as defined in the RadiantOne LDAP schema. The attribute name is stored in the same case as defined in the schema. If the attribute is not defined in the RadiantOne LDAP schema then the attribute name is stored as all lower case. Toggle on the **Normalize Attribute Names** option if you want to enable this behavior.
 
 If this option is not enabled, then the attributes are stored in the entry with the same case as used in the insert request.
 
@@ -38,7 +38,7 @@ This option is to improve the performance of initializing the local store when p
 
 ## Indexed Attributes
 
-This property lists the attributes that should be indexed (separated by a comma). Attributes in this list support client search filters that use presence, equality, approximate, substring, matching rule, and browsing indexes. By default, all attributes are indexed (except for binary attributes and a few “internal” attributes defined in the Non Indexed Attributes property). If the Indexed Attributes setting is empty, this means all attributes are indexed. If you do not want all attributes indexed, define a comma separated list of attributes to index in this setting. If you indicate a list of attributes and later add attributes to index, you must remember to re-build the index. To do so, select the naming context below Root Naming Contexts on the Directory Namespace tab and on the Properties tab on the right side, click **Re-build Index**. 
+This property lists the attributes that should be indexed. Attributes in this list support client search filters that use presence, equality, approximate, substring, matching rule, and browsing indexes. By default, all attributes are indexed (except for binary attributes and a few “internal” attributes defined in the Non Indexed Attributes property). If the Indexed Attributes setting is empty, this means all attributes are indexed. If you do not want all attributes indexed, define a list of attributes to index in this setting by entering the attribute name and pressing the "Enter" key on your keyboard after each. If you indicate a list of attributes and later add attributes to index, you must remember to re-build the index. To do so, select the naming context on Control Panel > Setup > Directory Namespace > Namespace Design and on the Properties tab on the right side, click **RE-BUILD INDEX**. 
 
 >[!note] 
 >Although the underlying Lucene engine enforces a size limit of 32K characters for indexed attributes, we generally advise not indexing attributes containing more than 4K characters. To ignore these attributes, add them to the Non-indexed Attributes list and Re-build the Index (click Re-build Index).
