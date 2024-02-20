@@ -283,8 +283,6 @@ After your installation has completed, open your web browser. In the address bar
 
 >[!note] Select "Continue to this website (not recommended)". The reason this appears is because CFS is hosted on Microsoft's IIS Web Server and installs a self-signed certificate during installation that is not trusted by your machine. There are instructions on how to correct this in the [Microsoft IIS](04-deployment#change-the-ssl-certificate) section.
 
-## Installation Wizard
-
 The Global Administration Page will take some time to load for the first time, but when it does, it should look something like this.
 
 ![](media/first-tenant2.png)
