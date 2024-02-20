@@ -43,7 +43,7 @@ If you configure an LDAP proxy view directly at the Root Naming Context, it is t
 
 ![An image showing ](Media/proxy-backend-properties.jpg)
  
-Figure 3.2: Modifying an LDAP Backend Configuration
+
 
 LDAP Backends can also be configured at any label node in a naming context. For details on this, please see [Virtual Views based on Multiple Types of Backends](03-virtual-view-of-ldap-backends).
 
@@ -76,7 +76,7 @@ Pass thru authorization is for determining which account RadiantOne uses to conn
 
 ![An image showing ](Media/pass-thru-authz-decision.jpg)
 
-Figure 3: Pass Thru Authorization
+
  
 This functionality is best described with examples. The following three examples/diagrams detail the different configurations possible.
 
@@ -84,7 +84,7 @@ This functionality is best described with examples. The following three examples
 
 ![An image showing ](Media/ex-proxy-1.jpg)
  
-Figure 4: Sample Proxy Configuration
+
 
 In the diagram above, there are two different proxy views configured in RadiantOne. One for an Enterprise Directory mounted in the virtual namespace below dc=server1people,ou=global,o=vds. The other one is for a Partner Directory and is mounted in the virtual namespace below dc=server2,ou=global,o=vds.
 
@@ -122,7 +122,7 @@ With this configuration approach, any user that successfully binds (anywhere in 
 
 ![An image showing ](Media/ex-proxy-2.jpg)
  
-Figure 5: Sample Proxy Configuration
+
 
 Data Source for Server 1 in this example is:
 
@@ -159,7 +159,6 @@ The two LDAP proxy definitions shown in the diagram below are used to explain th
 
 ![An image showing ](Media/ex-proxy-3.jpg)
  
-Figure 6: Sample Proxy Configuration
 
 Data Source for Server 1 in this example is:
 
@@ -219,7 +218,7 @@ When RadiantOne acts as a client and connects to a backend directory, certain cr
 
 ![An image showing ](Media/proxy-authz-decision.jpg)
 
-Figure 8: Proxy Authorization
+
  
 ### Remote Base DN
 
@@ -227,7 +226,7 @@ The Remote Base DN is the starting point to search from in the backend directory
 
 ![An image showing ](Media/remote-base-dn.jpg)
 
-Figure 10: Proxy Backend Settings
+
 
 All entries below the remote base DN a
 re displayed when clients navigate below the mapped base DN location in the RadiantOne namespace.
@@ -242,25 +241,25 @@ This setting allows for automatic re-mapping of attributes of DN syntax type. Th
 
 ![An image showing ](Media/dn-remapping.jpg)
 
-Figure 11: LDAP Backend Attributes Defined with DN Remapping
+
 
 For the selected LDAP Backend, click on the **Attributes** tab. If there are no attributes defined with DN Remapping in this list, then all attributes that have the DN syntax data type will be returned with the DN that exists in the backend LDAP directory. For example, the figure below shows the HR Managers group members, and you can see that they contain the real DN (for the uniqueMember attributes) that exists in the backend LDAP because there is no DN Remapping defined for the uniquemember attribute (i.e “uid=LCallahan,ou=People,dc=toshiba,dc=com”).
 
 ![An image showing ](Media/Image3.12.jpg) 
 
-Figure 12: Sample of Actual DN (non-remapped) Returned for Uniquemember
+
 
 Now, if you enter a specific attribute name that contains a DN value that you want to re-map for the RadiantOne namespace, then the DN suffix for this namespace is returned for that attribute. In the figure below, you can see that the uniqueMember attribute has been specified for the DN Remapping.
 
 ![An image showing ](Media/Image3.13.jpg)
 
-Figure 13: Configuration to Re-Map the UniqueMember Attribute
+
 
 RadiantOne re-maps the uniqueMember attribute values into the proper DN for the location in the RadiantOne namespace. In the figure below, the HR Managers group (from the backend LDAP server) contains unique members whose DN’s have been remapped to their DN’s in the RadiantOne namespace (containing a suffix of “ou=RemoteDirectories,o=vds”). 
 
 ![An image showing ](Media/dn-remapping-uniquemember.jpg)
 
-Figure 14: Result of Re-Mapping the UniqueMember Attribute
+
 
 This auto re-mapping capability is useful for two main purposes:
 
@@ -282,7 +281,7 @@ To specify these requested attributes, from the Main Control Panel > Directory N
 
 ![An image showing ](Media/Image3.15.jpg)
 
-Figure 15: Defining Attribute as Always Requested
+
 
 Attributes that have a checkmark in the Always Requested column are always requested by RadiantOne (in addition to all, or only attributes requested in the query – depending on which option you have selected in the Attribute Handling section). 
 
@@ -310,7 +309,7 @@ If [Proxy Authorization](#proxy-authorization) and [Role Mapped Access](#role-ma
 
  ![An image showing ](Media/Image3.16.jpg)
 
-Figure 16: Dedicated Connection Setting
+
 
 If the dedicated connection option is enabled, RadiantOne does not use the connection pool and the connection to the underlying LDAP directory is closed when the client disconnects from RadiantOne. If dedicated connections are not used, and a client disconnects from RadiantOne, the connection to the underlying LDAP server can still remain in the connection pool (until the configured timeout parameter is reached, which then removes the connection from the pool).
 
@@ -358,7 +357,7 @@ In the example below, the inetOrgPerson object class is set to map to User.
 
 ![An image showing ](Media/Image3.17.jpg)
 
-Figure 17: Example of Setting up Objectclass Mapping
+
 
 This means that all inetOrgPerson entries from the underlying source are returned with objectclass=user (as depicted in the screen shot below).
 
@@ -386,7 +385,7 @@ To define a pre-processing filter:
 
 ![An image showing ](Media/Image3.19.jpg)
 
-Figure 19: Pre-Processing Filter Settings
+
 
 ### Post-processing exclusion filter
 
@@ -426,7 +425,7 @@ The screen shot below shows a mapping established between uid and sAMAccountName
 
 ![An image showing ](Media/Image3.20.jpg)
  
-Figure 20: Example of Attribute Mapping
+
 
 This means that all entries from the underlying source containing a uid attribute be returned with it mapped as sAMAccountName (as depicted in the screen shot below).
 
@@ -450,13 +449,13 @@ Click on **ADD** and select the branch you would like to exclude from the virtua
 
 ![An image showing ](Media/Image3.22.jpg)
  
-Figure 22: Suffix Branch Exclusion Settings
+
 
 You can exclude as many branches as you want. The image below depicts three branches configured for exclusion. These branches will not appear in the virtual tree. [Suffix (branch) Inclusion](#suffix-branch-inclusion) can be used as an alternative to the Exclusion setting.
 
 ![An image showing ](Media/Image3.23.jpg)
  
-Figure 23: Multiple Branches can be Excluded from the Virtual View
+
 
 The default size limit is set to 100 meaning only 100 containers below the Remote Base DN are visible to select for exclusion. Increase the size limit if you need to display more branches and click **Refresh Tree**. You can also enter a result filter to dynamically reduce the branches to the ones you want to exclude.
 
@@ -470,13 +469,13 @@ Click **ADD** and select the branch you would like to include in the virtual tre
 
 ![An image showing ](Media/Image3.24.jpg)
  
-Figure 24: Suffix Branch Inclusion Settings
+
 
 You can include as many branches as you want. The screen shot below depicts three branches configured for inclusion. These branches will appear in the virtual tree. [Suffix (branch) Exclusion](#suffix-branch-exclusion) can be used as an alternative to the Inclusion setting.
 
 ![An image showing ](Media/Image3.25.jpg)
  
-Figure 25: Multiple Branches can be Included in the Virtual View
+
 
 The default size limit is set to 100 meaning only 100 containers below the Remote Base DN are visible to select for exclusion. Increase the size limit if you need to display more branches and click **Refresh Tree**. You can also enter a result filter to dynamically reduce the branches to the ones you want to exclude.
 
@@ -508,11 +507,11 @@ Typically you would specify one or the other (inclusion filters or exclusion fil
 
 ![An image showing ](Media/Image3.26.jpg)
  
-Figure 26: Sample Inclusion Filter for LDAP Backend 1
+
 
 ![An image showing ](Media/Image3.27.jpg)
  
-Figure 27: Sample Inclusion Search Filter LDAP Backend 2
+
 
 In the examples shown above, different inclusion filters have been set for two different LDAP backend configurations. The sample configured for LDAP backend 1 dictates that it only receives subtree queries that have a filter of (`mail=<something>@radiantlogic.com`). The * in the filter indicates any value. Therefore, if the filter is searching for an email address of someone with a suffix of @radiantlogic.com, then LDAP Backend 1 receives the query.
 
@@ -524,11 +523,11 @@ Subtree queries that contain a filter of department=marketing are not sent to LD
 
 ![An image showing ](Media/Image3.28.jpg)
  
-Figure 28: Sample Exclusion Filter set for LDAP Backend 1
+
 
 ![An image showing ](Media/Image3.29.jpg)
  
-Figure 29: Sample Exclusion Filter Set for LDAP Backend 2
+
 
 The use of inclusion and exclusion filters can improve performance and efficiency because only relevant queries are routed to the appropriate remote servers.
 
@@ -588,7 +587,7 @@ To deactivate a computed attribute:
 
 ![An image showing ](Media/Image3.30.jpg)
  
-Figure 30: Computed Attributes Example with One Deactivated
+
 
 6.	Click **OK**.
 
@@ -665,13 +664,13 @@ If you want to use the actualdn attribute in computed attributes, the actualdn a
 
 ![An image showing ](Media/Image3.31.jpg)
  
-Figure 31: Configuring ActualDN Attribute as Always Requested
+
 
 This attribute can be used in computed attributes by using the getactualDN() function. 
  
 ![An image showing ](Media/Image3.32.jpg)
 
-Figure 32: Using ActualDN in a Computed Attribute
+
 
 ### Virtualizing Active Directory User Passwords
 If you want to include user passwords in your identity view from Active Directory, so that you can have the passwords stored in persistent cache to bind locally instead of delegating the bind to the backend Active Directory, use the getADpassword() function in a computed attribute.
