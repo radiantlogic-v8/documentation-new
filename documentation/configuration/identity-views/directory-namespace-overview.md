@@ -10,16 +10,16 @@ Each naming context visible on the Control Panel > SETUP > Directory Namespace >
 Icon	| Meaning
 -|-
 ![Plus symbol](Media/root-naming-context.jpg)	| A Root Naming Context.
-![Plus symbol](Media/reserved-r1-directory.jpg)	| A Reserved RadiantOne Directory Store.
-![Plus symbol](Media/r1-directory-store.jpg)	| A RadiantOne Directory Store.
-![Plus symbol](Media/ldap-backend-proxy.jpg)	| An identity view from an LDAP Backend created using a proxy approach.
-![Plus symbol](Media/link.jpg)	| An identity view that contains a link to another identity view.
-![Plus symbol](Media/virtual-tree.jpg) | An identity view created using a model-driven approach.
-![Plus symbol](Media/label.jpg) | A label node in an identity view.
-![Plus symbol](Media/container.jpg) | A container node in an identity view.
-![Plus symbol](Media/content.jpg) | A content node in an identity view.
-![Plus symbol](Media/cache-proxy.jpg) | An identity view from an LDAP Backend created using a proxy approach that has a persistent cache defined. Click on this node and navigate to the CACHE tab to see what refresh strategy is configured.
-![Plus symbol](Media/ldap-backend-merged.jpg) | An identity view from an LDAP Backend created using a proxy approach that has a merge define to another ldap proxy view.
+![Reserved RadiantOne Directory Store](Media/reserved-r1-directory.jpg)	| A Reserved RadiantOne Directory Store.
+![RadiantOne Directory Store](Media/r1-directory-store.jpg)	| A RadiantOne Directory Store.
+![LDAP Proxy View](Media/ldap-backend-proxy.jpg)	| An identity view from an LDAP Backend created using a proxy approach.
+![Link](Media/link.jpg)	| An identity view that contains a link to another identity view.
+![Model Driven View](Media/virtual-tree.jpg) | An identity view created using a model-driven approach.
+![Label Node](Media/label.jpg) | A label node in an identity view.
+![Container Node](Media/container.jpg) | A container node in an identity view.
+![Content Node](Media/content.jpg) | A content node in an identity view.
+![Cached LDAP Proxy View](Media/cache-proxy.jpg) | An identity view from an LDAP Backend created using a proxy approach that has a persistent cache defined. Click on this node and navigate to the CACHE tab to see what refresh strategy is configured.
+![Merged LDAP Proxy View](Media/ldap-backend-merged.jpg) | An identity view from an LDAP Backend created using a proxy approach that has a merge defined to another ldap proxy view.
 ![Plus symbol](Media/link-no-cache-init.jpg) | A node in an identity view that has a link to another view and a persistent cache has been configured but not initialized. This may also represent an identity view that has a link to another view and has a persistent cache defined and initialized but the view is deactivated.
 ![Plus symbol](Media/link-no-cache-refresh.jpg) | A node in an identity view that has a link to another view and a persistent cache has been configured but no refresh type has been configured.
 ![Plus symbol](Media/link-cache-periodic-refresh.jpg) | A node in an identity view that has a link to another view and a persistent cache has been configured with a periodic refresh type.
@@ -28,15 +28,7 @@ Icon	| Meaning
 ![Plus symbol](Media/label-with-link.jpg) | A label node in an identity view that has child nodes where at least one child node has a backend or view mounted.
 ![Plus symbol](Media/label-with-link-no-cache-init.jpg) | A label node in an identity view that has child nodes where at least one child node has a backend or view mounted that has been configured for persistent cache, but the cache has not been initialized. This may also represent a configuration where a persistent cache is defined and initialized but the view is deactivated.
 ![Plus symbol](Media/label-no-cache-init.jpg) | A label node in an identity view that has child nodes, one of which has been configured for persistent cache but not yet initialized. This may also represent a configuration where a persistent cache is defined and initialized but the view is deactivated.
-![Plus symbol](Media/label-cache-no-refresh.jpg) | A label node in an identity view that has child nodes, one of which has been configured for persistent cache but no refresh type is configured.
-![Plus symbol](Media/label-cache-periodic-refresh.jpg) | A label node in an identity view that has child nodes, one of which has been configured for persistent cache with a periodic refresh type.
-![Plus symbol](Media/label-cache-realtime-refresh.jpg) | A label node in an identity view that has child nodes, one of which has been configured for persistent cache with a real-time refresh type.
 ![Plus symbol](Media/container-link.jpg) | A container node in an identity view that has a link mounted below it.
 ![Plus symbol](Media/container-link-no-cache-init.jpg) | A container node in an identity view that has a link mounted below it and has been configured for persistent cache but not yet initialized. This may also represent a configuration where a persistent cache is defined and initialized but the view is deactivated.
 ![Plus symbol](Media/container-cache-no-refresh.jpg) | A container node in an identity view that is configured for persistent cache but no refresh type is configured.
-![Plus symbol](Media/container-cache-periodic-refresh.jpg) | A container node in an identity view that is configured for persistent cache with a periodic refresh type.
-![Plus symbol](Media/container-cache-realtime-refresh.jpg) | A container node in an identity view that is configured for persistent cache with a real-time refresh type.
 ![Plus symbol](Media/content-no-cache-init.jpg) | A content node in an identity view that is configured for persistent cache, but not yet initialized. This may also represent a configuration where a persistent cache is defined and initialized but the view is deactivated.
-![Plus symbol](Media/content-no-cache-refresh.jpg) | A content node in an identity view that is configured for persistent cache but no refresh type is configured.
-![Plus symbol](Media/content-cache-periodic-refresh.jpg) | A content node in an identity view that is configured for persistent cache with a periodic refresh type.
-![Plus symbol](Media/content-cache-realtime-refresh.jpg) | A content node in an identity view that is configured for persistent cache with a real-time refresh type.
