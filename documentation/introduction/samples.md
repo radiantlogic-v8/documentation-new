@@ -25,21 +25,19 @@ The sample naming contexts are as follows.
 <br> This is a sample of an LDAP proxy. The backend LDAP in this example is the RadiantOne Universal Directory local store that matches the o=companydirectory setting mentioned above. A proxy can point to any LDAP server. This is not a critical naming context and it may be deleted if needed (de-activate it before removing the naming context). Deleting the naming context also deletes the underlying identity view file and schema file. Both files are named o_companyprofiles.
 
 - o=examples
-<br> NOTE - NEEDS TO BE UPDATED This is a sample of a virtual view from a database backend. The database used here is Apache Derby and is included in the RadiantOne installation. This is not a critical naming context and it may be deleted if needed (de-activate it before removing the naming context. You need to deactivate and delete the child node prior to removing the root naming context). After deleting the naming context, you can also delete the underlying schema, ou_hr_o_examples, and identity view files: o_examples.dvx and ou_hr_o_examples.dvx.
+<br>  NOTE - NEEDS TO BE UPDATED This is a sample of a virtual view from a database backend. The database used here is Apache Derby and is included in the RadiantOne installation. This is not a critical naming context and it may be deleted if needed (de-activate it before removing the naming context. You need to deactivate and delete the child node prior to removing the root naming context). After deleting the naming context, you can also delete the underlying schema, ou_hr_o_examples, and identity view files: o_examples.dvx and ou_hr_o_examples.dvx.
 
 >[!warning] Before you can view the data in the sample o=examples naming context, you must start the Derby database server.
 
->[!warning]On Windows → execute %RLI_HOME%\bin\DerbyServer.exe
+>[!warning] NOTE - NEEDS TO BE UPDATED On Windows → execute %RLI_HOME%\bin\DerbyServer.exe
 
->[!warning]On UNIX platforms → $RLI_HOME/bin/runDerbyServer.sh
+>[!warning] NOTE - NEEDS TO BE UPDATED On UNIX platforms → $RLI_HOME/bin/runDerbyServer.sh
 
 - ou=AllProfiles
 <br> This naming context is used by the legacy ID-Connect client web application and has three levels mounted below it. There are two nodes pointing to local RadiantOne Universal Directory stores (ou=ad_sample and ou=localvds) and one virtual view containing definitions to dynamically build groups (ou=VirtualGroups). If you do not plan on using the legacy ID-Connect application then this entire naming context may be deleted (de-activate each node first before removing the naming context).
-NOTE - NEEDS TO BE UPDATED After deleting the naming context, you can also delete the underlying .dvx files:
-NOTE - NEEDS TO BE UPDATED <br> <RLI_HOME>/vds_server/dvx/o_allprofiles.dvx
-NOTE - NEEDS TO BE UPDATED <br> <RLI_HOME>/vds_server/dvx/virtualgroups.dvx.
+After deleting the naming context, you can also delete the underlying identity view files o_allprofiles and virtualgroups.
 
->[!note] Although the ou=AllProfiles naming context is associated with the default.orx, this schema file should not be deleted if you delete the ou=AllProfiles naming context as it is used by other RadiantOne internal components.
+>[!note] Although the ou=AllProfiles naming context is associated with the "default" schema file, this schema file should not be deleted if you delete the ou=AllProfiles naming context as it is used by other RadiantOne internal components.
 
 - cn=replicationjournal
 <br> This naming context is used for inter-cluster replication. This naming context may be hidden (by specifying it as a hidden context in the rootdse.ldif file for RadiantOne) but should not be deleted.
