@@ -20,7 +20,6 @@ Icon	| Meaning
 ![Content Node](Media/content.jpg) | A content node in an identity view.
 ![Cached LDAP Proxy View](Media/cache-proxy.jpg) | An identity view from an LDAP Backend created using a proxy approach that has a persistent cache defined. Click on this node and navigate to the CACHE tab to see what refresh strategy is configured.
 ![Merged LDAP Proxy View](Media/ldap-backend-merged.jpg) | An identity view from an LDAP Backend created using a proxy approach that has a merge defined to another ldap proxy view.
-![Cached Link](Media/link-no-cache-init.jpg) | A node in an identity view that has a link to another view and a persistent cache has been configured but not initialized. This may also represent an identity view that has a link to another view and has a persistent cache defined and initialized but the view is deactivated.
-![Plus symbol](Media/cache-virtualtree.jpg) | An identity view created using a model-driven approach that has been configured for persistent cache. Click on this node and navigate to the CACHE tab to see what sublevels are cached and the applicable refresh strategy.
-![Plus symbol](Media/label-with-link.jpg) | A label node in an identity view that has child nodes where at least one child node has a backend or view mounted.
-![Plus symbol](Media/container-link.jpg) | A container node in an identity view that has a link mounted below it.
+![Cached Virtual Tree](Media/cache-virtualtree.jpg) | An identity view created using a model-driven approach that has been configured for persistent cache. Click on this node and navigate to the CACHE tab to see what sublevels are cached and the applicable refresh strategy.
+![Label with Link Below](Media/label-with-link.jpg) | A label node in an identity view that has child nodes where at least one child node has a backend or view mounted.
+![Container with Link Below](Media/container-link.jpg) | A container node in an identity view that has a link mounted below it.
