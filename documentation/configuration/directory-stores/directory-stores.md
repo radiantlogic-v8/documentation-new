@@ -5,7 +5,7 @@ description: Introduction to RadiantOne Directory stores and how to create them.
 
 ## Overview
 
-RadiantOne Identity Data Management offers a scalable directory storage that can be used to store any entries. After the root naming context is created, the local store can be populated from an LDIF file or using the Control Panel > Manage > Directory Browser.
+RadiantOne Identity Data Management offers a scalable directory storage that can be used to store any entries. After the root naming context is created, and a RadiantOne Directory backend is mounted, the local store can be populated from an LDIF file or using the Control Panel > Manage > Directory Browser.
 
 Once a directory store is mounted at a naming context, a properties tab is available for managing the configuration. To access the properties tab, select the node representing the directory storage below the Root Naming Contexts section on the Control Panel > Setup > Directory Namespace > Namespace Design.
 
