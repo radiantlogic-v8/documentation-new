@@ -1,6 +1,6 @@
 ---
 title: Introduction to Directory Namespace
-description: Learn about the meaning of different icons used in the Directory Namespace. 
+description: General introduction to namespace design and directory schema. Also learn about the meaning of different icons used in the Directory Namespace. 
 ---
 
 ## Overview
