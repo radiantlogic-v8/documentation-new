@@ -96,7 +96,7 @@ To reveal your original or confirmation password, select the eye icon (![image d
 
 Completing the steps outlined in the *Environment Type* and *Application Details* sections are all that is required to set up your new environment. Once both sections are complete, select **Create** to create the new environment.
 
-> If you would like to upload a configuration file from an external environment, proceed to the *Advanced Setup* section.
+>[!note] If you would like to upload a configuration file from an external environment, proceed to the *Advanced Setup* section.
 
 ### Advanced Setup
 
