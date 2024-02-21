@@ -37,3 +37,5 @@ Icon	| Meaning
 ![Container with Link Below](Media/container-link.jpg) | A container node in an identity view that has a link mounted below it.
 
 ## Directory Schema
+Applications can request the directory schema by issuing a search with a base DN of *cn=schema*. The object classes and attributes defined in the schema are managed from the Control Panel > Setup > Directory Namespace > Directory Schema section. 
+For details, see [Managing Directory Schema](../directory-stores/managing-directory-schema).
