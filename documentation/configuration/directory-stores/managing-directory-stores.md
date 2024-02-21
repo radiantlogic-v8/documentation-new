@@ -21,8 +21,8 @@ Directory stores can be initialized with LDIF files. The Control Panel supports 
 To import an LDIF file:
 
 1.	On the Control Panel > Setup > Directory Namespace > Namespace Design, select the node where the directory store is mounted below Root Naming Contexts.
-1.	On the Properties tab, click **INITIALIZE**. 
-1.	Choose to either *Upload an LDIF file* and browse to the file, or *Select a file on the server* to display a list of files to choose from.
+1.	On the Properties tab, click ![Initialize Button ](Media/initialize-button.jpg). 
+1.	Choose to either *Upload file* and browse to the file, or *Select file on the server* to display a list of files to choose from.
 1.	Click **OK**.
 >[!warning] 
 >If using an LDIFZ file, the security key used on the RadiantOne node where the file was exported must be the same security key value used on the RadiantOne node that you are trying to import the file into. For steps on defining key generation or changing the encryption security key, see the [Attribute Encryption](/security/attribute-encryption).
