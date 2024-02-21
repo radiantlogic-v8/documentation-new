@@ -9,7 +9,7 @@ RadiantOne Identity Data Management offers a scalable directory storage that can
 
 Once a directory store is mounted at a naming context, a properties tab is available for managing the configuration. To access the properties tab, select the node representing the directory storage below the Root Naming Contexts section on the Control Panel > Setup > Directory Namespace > Namespace Design.
 
-![RadiantOne Directory Properties](./Media/r1-dir-properties.jpg).
+![RadiantOne Directory Properties](./Media/r1-dir-properties.jpg)
 
 >[!warning] 
 >Although persistent cache leverages the RadiantOne Directory as a storage, the functionality and configuration can vary slightly. For steps on configuring persistent cache and details on applicable properties, see [Tuning](../../tuning/persistent-cache).
