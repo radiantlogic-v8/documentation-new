@@ -92,4 +92,8 @@ Object classes and attributes can be manually defined from the Control Panel > S
 
 The subschemaSubentry attribute is an operational attribute that is returned by RadiantOne for every entry in the directory when it is specifically requested. The value of the subschemaSubentry attribute is the DN of the entry that contains schema information for this entry. An example of an LDAP search with subschemaSubentry requested is shown below.
 
-![Requesting subschemaSubentry](Media/subschemasubentry.jpg)
+![Requesting subschemaSubentry](Media/search-subschemasubentry.jpg)
+
+An example of the search result for a selected entry is shown below.
+
+![Returning subschemaSubentry](Media/subschemasubentry.jpg)
