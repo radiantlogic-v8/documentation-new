@@ -13,7 +13,7 @@ If the applications that are consuming the RadiantOne service are expecting a na
 
 To design an identity view that aggregates multiple data sources, create a new naming context and mount a series of label levels until you achieve the desired hierarchy. Then, mount backends at the needed labels. Once you mount a backend at a label, you cannot mount other backends at the same label level. You must define other label levels in order to mount additional backends. The options available at each level in the identity view are based on how you've defined the parent node.
 
-![Directory Namespace Mounting Options](../Media/dir-namespace-mounting.jpg)
+![Directory Namespace Mounting Options](/Media/dir-namespace-mounting.jpg)
 
 ### Icon Overview
 
