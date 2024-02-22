@@ -115,25 +115,25 @@ To delete a RadiantOne directory store, first de-activate it (uncheck the Active
 
 ## Managing RadiantOne Directory Entries
 
-On the Control Panel > Manage > Directory Browser you can see the entire directory structure instantiated with the directory entries. There could be nodes for RadiantOne Directory stores, LDAP Proxy views, and any other Root Naming Contexts that have been configured in the Control Panel > Setup > Directory Namespace > Namespace Design. If you do not see your new naming context after navigating to the Directory Browser, click the ![Reconnect Button](Media/reconnect-button.jpg).
+On the Control Panel > Manage > Directory Browser you can see the entire directory structure instantiated with the directory entries. There could be nodes for RadiantOne Directory stores, LDAP Proxy views, and any other Root Naming Contexts that have been configured in the Control Panel > Setup > Directory Namespace > Namespace Design. If you do not see your new naming context after navigating to the Directory Browser, click ![Reconnect Button](Media/reconnect-button.jpg).
 
 ### Creating New Entries
 
 >[!warning] 
 >The user you are logged into the Control Panel as must have rights to create users.
 
-To create new entries, select the parent location in the tree above where you want the entry created and click ![An image showing ](Media/add-new-entry-button.jpg). Select New Entry, New inetOrgPerson, New Active Directory User New OrganizationalUnit, or New Group. The sections below describe these default options including the object classes that are used. If you want to create entries using different types of object classes than the ones mentioned here, then choose the New Entry option and select the desired object class from the drop-down list. Only object classes available in the RadiantOne LDAP schema are shown here. If the desired object class is not shown, extend the RadiantOne LDAP schema first and then come back to this screen to add your entry. See the [RadiantOne System Administration Guide](/documentation/sys-admin-guide-rebuild/01-introduction) for steps on extending the RadiantOne LDAP schema.
+To create new entries, right-click on the parent location in the tree above where you want the entry created and select New > Entry, inetOrgPerson, Active Directory User, OrganizationalUnit, Group, or Active Directory Group. The sections below describe these default options including the object classes that are used. If you want to create entries using different types of object classes than the ones mentioned here, then choose the New Entry option and select the desired object class from the *Available Object Classes* list. Only object classes available in the RadiantOne LDAP schema are shown here. If the desired object class is not shown, extend the RadiantOne LDAP schema first and then come back to this screen to add your entry. See [Managing the RadiantOne Schema](/managing-directory-schema) for steps on extending the RadiantOne LDAP schema.
 
 >[!warning] 
->Creating/Modifying entries on the Directory Browser tab is not just for local Universal Directory stores. If a backend other than a local store is mounted under the naming context where you are creating/modifying entries, the backend source is modified accordingly. For example, if you are modifying a branch that represents an LDAP backend and you create a new user entry, that operation is sent to the backend (assuming the credentials stored in the connection string/data source to the backend has the appropriate rights to create users).
+>Creating/Modifying entries on the Directory Browser tab is not just for RadiantOne Directory stores. If a backend other than a RadiantOne Directory is mounted under the naming context where you are creating/modifying entries, the backend source is modified accordingly. For example, if you are modifying a branch that represents an LDAP backend and you create a new user entry, that operation is sent to the backend (assuming the credentials stored in the connection string/data source to the backend has the appropriate rights to create users).
 
 **New Entry**
 
-To create entries based on an object class other than group, organizationalUnit, inetOrgPerson, or user, choose the New Entry option. When you select the “New Entry” option, you are shown a drop-down list with all object classes available in the RadiantOne LDAP schema. Select the object class that the entry should belong to. After the object class is selected, enter the RDN in the space provided, and then enter values for the attributes below (all required attributes must have values – required attributes are noted with a “yes” in the “Required?” column). Type the value after clicking in the Value column. 
+To create entries based on an object class other than groupOfUniqueNames, group, organizationalUnit, inetOrgPerson, or user, choose the New > Entry option. When this option is selected, a list of object classes available in the RadiantOne LDAP schema is shown. Select the object class(es) that the entry should belong to and use the -> to move it to the list on the right. After the object classes are selected, click **NEXT**. Enter the RDN in the space provided, and then enter values for the attributes below. All required attributes must have values. Required attributes associated with all of the selected object classes are noted. For each required attribute, click +ADD VALUE, enter the value for the attribute and click the ![Checkmark](Media/checkmark.jpg) inline with the attribute. 
  
-![An image showing ](Media/Image5.19.jpg)
+![Add Attribute Value](Media/add-attribute-value.jpg)
 
-Figure 5.19: Creating a New Entry
+To add more non-required attributes, click ![Add Attribute](Media/add-attribute.jpg). Select an attribute from the drop-down list, or manually enter a name. Enter a value for the attribute and click the ![Checkmark](Media/checkmark.jpg) inline to apply it. Click **CREATE** to insert the entry.
 
 **New Group**
 
