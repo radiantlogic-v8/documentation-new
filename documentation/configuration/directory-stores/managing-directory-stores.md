@@ -84,26 +84,26 @@ Stores can be exported into an LDIF file from the Control Panel > Setup > Direct
 1.	 On the Properties tab, click ![Export Button](Media/export-dir-button.jpg). 
 1.	 Enter a file name and select an extension type (.ldif or .ldifz). If you want the exported file to be zipped and encrypted, select the .ldifz option from the drop-down list. In order to support exporting to an encrypted file, a security key must be configured for RadiantOne. Any target RadiantOne directory stores where you want to import this LDIFZ file must use the same LDIFZ security key value. For steps on defining key generation or changing the encryption security key, see the [LDIF File Encryption](managing-properties).
 
-![An image showing the Export option](Media/export-universal-directory-store.jpg)
+	 ![An image showing the Export option](Media/export-universal-directory-store.jpg)
 
 1.  If this exported file is going to be used to initialize another RadiantOne directory store for replication, check the option to Export for Replication. Otherwise, leave this option unchecked. All entries in the RadiantOne directory store are exported with this option.
 1.	 Click **DOWNLOAD FILE**.
 
 ## Rebuilding Indexes
 
-If the Indexed Attributes or Sorted Attributes properties are changed, click the **RE-BUILD INDEX** button on the Properties Tab for the selected RadiantOne directory store. 
+If the Indexed Attributes or Sorted Attributes properties are changed, click the ![Re-build Index Button](Media/rebuild-index-button.jpg) button on the Properties Tab for the selected RadiantOne directory store. 
 
 Rebuilding an index should not happen very frequently. It is a time-consuming process, and should be performed during a scheduled maintenance window. During the rebuild of the index, the RadiantOne directory store is not accessible. When the indexing is complete, the store is active again and the follower/follower-only nodes (if any) get the data from the leader node to update their local copy.
 
 ## Backing up a Directory Store
 
-To back up a RadiantOne directory store, click **Backup** on the Properties Tab.
+To back up a RadiantOne directory store, click ![Backup Button](Media/backup-button.jpg) on the Properties Tab.
 
 To download a copy of the backed up directory store, click **DOWNLOAD .ZIP**. The compressed file is located in your web browser's default download location. 
 
 ## Restoring a Directory Store
 
-To restore a RadiantOne directory store from a previous backed up image, click Restore on the Properties Tab for the selected store. Select a date associated with the backup point you would like to restore in the default directory, or upload an existing .zip file containing the image to restore. The RadiantOne directory store is deactivated and is inaccessible by clients during the restore operation.
+To restore a RadiantOne directory store from a previous backed up image, click ![Restore Button](Media/restore-button.jpg) on the Properties Tab for the selected store. Select a date associated with the backup point you would like to restore in the default directory, or upload an existing .zip file containing the image to restore. The RadiantOne directory store is deactivated and is inaccessible by clients during the restore operation.
 
 ## Interception Scripts
 
@@ -111,7 +111,7 @@ Only a global interception script is supported for RadiantOne directory stores. 
 
 ## Deleting a Directory Store
 
-To delete a RadiantOne directory store, first de-activate it (uncheck the Active checkbox) and click **SAVE**. Then, click the **DELETE** button on the Properties Tab for the selected store.
+To delete a RadiantOne directory store, first de-activate it (uncheck the Active checkbox) and click **SAVE**. Then, click the ![Delete Button](Media/delete-button.jpg) button on the Properties Tab for the selected store.
 
 ## Inter Cluster Replication
 
