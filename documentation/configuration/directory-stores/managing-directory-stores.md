@@ -151,11 +151,15 @@ To create entries based on an object class other than groupOfUniqueNames, group,
 When creating a new group, you are able to select from the following list of object classes: group, groupOfNames, groupOfUniqueNames, groupOfUrls. More than one object class may be selected. 
 
 >[!note] 
->If you want the group to be a dynamic group, you must choose the groupOfUrls object class.
+>If you want the group to be a dynamic group, toggle on the *Dynamic Group* option.
 
-![An image showing ](Media/Image5.20.jpg)
+![New Group](Media/new-group.jpg)
  
-Figure 5.20: Creating a New Group Entry
+1. Enter a Group Name.
+2. Enter a description (optional).
+3. Toggle the Dynamic Group option on (optional).
+4. Select the object class to associate with the group entry.
+5. Click **CREATE**.
 
 **New OrganizationalUnit**
 
