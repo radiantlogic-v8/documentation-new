@@ -113,9 +113,9 @@ Only a global interception script is supported for RadiantOne directory stores. 
 
 To delete a RadiantOne directory store, first de-activate it (uncheck the Active checkbox) and click **SAVE**. Then, click the ![Delete Button](Media/delete-button.jpg) button on the Properties Tab for the selected store.
 
-## Managing Universal Directory Entries
+## Managing RadiantOne Directory Entries
 
-On the Main Control Panel > Directory Browser tab of the leader node, you can see the entire directory structure instantiated with the directory entries. There could be nodes for Universal Directory stores, virtual directory trees, the change log (if enabled stores all changes made to local storage or virtual entries), and other default configuration below cn=config. If you do not see your new naming context after clicking on the Directory Browser tab, click the ![An image showing ](Media/reconnect-button.jpg) button at the top.
+On the Control Panel > Manage > Directory Browser you can see the entire directory structure instantiated with the directory entries. There could be nodes for RadiantOne Directory stores, LDAP Proxy views, and any other Root Naming Contexts that have been configured in the Control Panel > Setup > Directory Namespace > Namespace Design. If you do not see your new naming context after navigating to the Directory Browser, click the ![Reconnect Button](Media/reconnect-button.jpg).
 
 ### Creating New Entries
 
