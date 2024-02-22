@@ -63,8 +63,6 @@ After deleting the naming context, you can also delete the underlying identity v
 - dv=globalprofiles
 <br> NOTE - NEEDS TO BE UPDATED This naming context is created and used by the Global Identity Builder and Global Identity Viewer applications. This naming context may be hidden (by specifying it as a hidden context in the rootdse.ldif file for RadiantOne) but should not be deleted.
 
-NOTE - NEEDS TO BE UPDATED All files related to the naming contexts detailed above are located in <RLI_HOME>/vds_server/dvx. Schema files associated with these naming contexts are located in <RLI_HOME>/vds_server/org and <RLI_HOME>/vds_server/lod.
-
 ## Default Data Sources
 
 ### LDAP
