@@ -328,7 +328,7 @@ Searching for multi-valued attributes (generally members) in a group may result 
 An example of how to perform a Range Retrieval search in RadiantOne is described below:
 
 1.	Navigate to the Main Control Panel > Manage > Directory Browser. 
-1.	Click the **+SEARCH** button. If you already have other saved searches, the button shows a **+**.
+1.	Click the **+SEARCH** button. If you already have other saved searches, the button shows as a **+**.
 	![Multi-valued Attribute Expanded](Media/dirbrowser-search.jpg)
 1.	Enter a Name to represent the (saved) search criteria. 
 1.	Either enter the Base DN to indicate where to search from, or click ![Browse](Media/browse.jpg) to browse the RadiantOne namespace to select a location. 
