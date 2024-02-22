@@ -202,7 +202,7 @@ The temporary entry can be seen from the Directory Browser in the example below.
 
 ![Temporary Entry](Media/tempuser.jpg)
  
-To update the time-to-live for an entry, you can use the “refresh” extended operation as outlined in RFC 2589. The refresh operation is sent by a client to RadiantOne, to indicate that the dynamic directory entry is still accurate and valuable. The client sends a periodic refresh request and if the server receives the request within the timeout period, the lifetime of the dynamic entry can be extended. Below is an example of using the LDAP extended operation command line utility to change the entryTTL to 900 seconds.
+To update the time-to-live for an entry, you can use the “refresh” extended operation as outlined in [RFC 2589](https://www.rfc-editor.org/rfc/rfc2589). The refresh operation is sent by a client to RadiantOne, to indicate that the dynamic directory entry is still accurate and valuable. The client sends a periodic refresh request and if the server receives the request within the timeout period, the lifetime of the dynamic entry can be extended. Below is an example of using the LDAP extended operation command line utility to change the entryTTL to 900 seconds.
 
 ldapexop -v -h "radiantoneserver" -p 2389 -D"cn=Directory Manager" -w password refresh "uid=tempuser2,ou=Sales,o=RadiantOne Directory" 900
 
@@ -218,21 +218,20 @@ Groups stored in a RadiantOne directory may contain members from any branch in t
 
 To add explicit members, follow the steps below.
 
-1.	Select a group and click the Manage Group option on the Directory Browser tab.
+1.	Select a group and click the Manage Group option on the Directory Browser.
 
-2.	If the group is a dynamic group (contains the groupOfUrls object class), the Manage Group window displays an Edit Dynamic Members option and an Edit Explicit Members option. Click the Edit Explicit Members option. If the group is not a dynamic group, the member list displays.
+2.	If the group is a dynamic group (contains the groupOfUrls object class), the Manage Group window displays a Dynamic Members tab and an Explicit Members tab. Click the Explicit Members tab. If the group is not a dynamic group, only the Explicit Members tab appears.
 
-3.	In the Members window, click the Add Members button. The Find Users and Groups window opens.
+3.	On the Explicit Members tab, select either Groups or Users from the Find drop-down menu.
+4.	Either enter the Base DN to indicate where to search for members, or click ![Browse ](Media/browse.jpg) to browse the RadiantOne namespace to select a location. 
 
-4.	Select either Groups or Users from the Find drop-down menu and then click ![An image showing ](Media/expand-tree-button.jpg) to select a starting point in the RadiantOne namespace to look for groups/users.
-
-5.	To limit the search criteria, enter a value in the Keywords field before clicking Find Now. If “Users” was selected from the Find menu in the previous step, the value must match a uid, sn, sAMAccountName, or cn value. If “Groups” was selected in the previous step, the value must match the cn value.
+5.	To limit the search criteria, enter a value in the Keywords field before clicking **SEARCH**. If “Users” was selected from the Find menu in the previous step, the value must match a uid, sn, sAMAccountName, or cn value. If “Groups” was selected in the previous step, the value must match the cn value.
 
 The objectclass for the user must be inetOrgPerson, user, person, or organizationalPerson (for the search to return them as a user entry). For groups, the objectclass must be group, groupOfNames or groupOfUniqueNames.
 
-6.	Select the user or group you want to add and click ![An image showing ](Media/down-arrow-button.jpg). To select all users returned from the search result, click ![An image showing ](Media/double-down-arrows.jpg).
+6.	Select the user or group you want to add and click ![Plus Sign](Media/plus-sign.jpg) inline next to the entry. To select all entries returned from the search, click ![Add All](Media/add-all-button.jpg).
 
-7.	Click Confirm. New members to be added are highlighted in a different color than current members. An example of adding three members is shown below.
+7.	Click **SAVE**. 
 
 ![An image showing ](Media/Image5.22.jpg)
 
