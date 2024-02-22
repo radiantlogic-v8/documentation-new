@@ -212,7 +212,7 @@ Result: Success (0)
 
 ### Managing Group Entries
 
-Groups stored in a RadiantOne directory may contain members from any branch in the RadiantOne namespace (not just limited to the same directory store where the group is defined). The easiest way to manage group membership is from the Control Panel > Manage > Directory Browser. Select the desired group (use the search if needed) and click: ![An image showing ](Media/new-manage-group-button.jpg)
+Groups stored in a RadiantOne directory may contain members from any branch in the RadiantOne namespace (not just limited to the same directory store where the group is defined). The easiest way to manage group membership is from the Control Panel > Manage > Directory Browser. Select the desired group (use the search if needed) and click: ![Manage Group](Media/new-manage-group-button.jpg)
 
 **Adding Explicit Members**
 
@@ -233,15 +233,10 @@ The objectclass for the user must be inetOrgPerson, user, person, or organizatio
 
 7.	Click **SAVE**. 
 
-![An image showing ](Media/Image5.22.jpg)
-
-Figure 5.22: Example of adding three members
- 
-8.	Click Close to exit the Members screen. 
 
 **Dynamic Members**
 
-Dynamic group members are different than explicit group members because instead of specifying a user DN in the group membership attributes (either the member or uniqueMember attributes), you need to specify the LDAP URL containing the filter to find the group members in an attribute named memberURL. The syntax for the memberURL value is as follows:
+Dynamic group members are different than explicit group members because instead of specifying a user DN in the group membership attributes (typically either the member or uniqueMember attributes), you need to specify the LDAP URL containing the filter to find the group members in an attribute named memberURL. The syntax for the memberURL value is as follows:
 
 ```
 <base_dn>?[attrs]?[sub|one|base]?<filter>
@@ -261,77 +256,70 @@ For example, if all users that have departmentNumber=0332 should be members of a
 
 -	memberURL = ou=People,ou=Sun,o=vds??one?(departmentNumber=0332)
 
-To add dynamic members with the assistance of a wizard, follow the steps below.
+To add dynamic members in Contorl Panel > Manage > Directory Browser, follow the steps below.
 
-1.	Select a dynamic group and click the Manage Group option on the Directory Browser tab. The Manage Group window opens.
+1.	Select a dyanmic group and click the **Manage Group** option on the Directory Browser
 
-1.	Click **Edit Dynamic Members**. 
+1.	Click the Dynamic Members tab. 
 
 >[!note] 
->The Edit Dynamic Members option displays only if the group contains the groupOfUrls object class.
+>The Dynamic Members tab displays only if the group contains the groupOfUrls object class.
 
-1.	Click **Add Member(s)**.
-1.	Enter a base DN (starting point in the RadiantOne namespace) or click ![An image showing ](Media/expand-tree-button.jpg) to navigate to the location of the users. 
+1.	Either enter the Base DN to indicate where to search for members, or click ![Browse](Media/browse.jpg) to browse the RadiantOne namespace to select a location.
 1.	Select the scope of search needed to find the users. 
 1.	Finally, enter the filter that qualifies the users or groups as members of the specific group. 
-1.	Click **Confirm**. 
-1.	Click **Close** to exit the Dynamic Members screen. 
-1.	Once the memberURL is defined, you can enter optional return attributes separated by a comma instead of the default which is to return all attributes. If the user or group entries are large, you may want to only return the attribute that contains the user DN for example (dn, distinguishedName…etc.). To do so, select the memberURL attribute and choose Modify Attribute > Edit. 
-1.	In the LDAP URL, replace. 1.1 with a comma separated list of attributes to return and click OK.
-
-![An image showing ](Media/Image5.23.jpg)
- 
-Figure 5.23: memberURL Criteria for Dynamic Group
+1.	Click **ADD MEMBERSHIP RULE**. 
+1.	Click **SAVE**. 
 
 **Manually Adding Dynamic Members**
 
 An option to manage dynamic group members is to manually add the groupOfUrls objectclass and memberURL to the group entry. Follow the steps below.
 
-1.	Navigate to the group in the Main Control Panel > Directory Browser Tab.
+1.	Navigate to the group in the Control Panel > Manage > Directory Browser.
 
-2.	Select the group entry and on the right side, select the objectclass attribute.
+2.	With the group entry selected, on the right side, click the ![Add Value](Media/add-value-option.jpg) inline with the objectclass attribute.
 
-3.	Choose Modify Attribute > Add Value.
+3.	Enter groupOfURLs for the new object class and click the ![Checkmark](Media/checkmark.jpg) to confirm.
 
-4.	Enter groupOfURLs for the new object class and click Confirm.
+4.	To add members, with the group selected in the tree, click ![Add Attribute](Media/add-attribute-button.jpg) on the right side.
 
-5.	To add members, with the group selected in the tree, click **Add Attribute** on the right side.
+5.	In the attribute drop-down list, enter *memberURL*. 
 
-6.	In the attribute drop-down list, select memberURL. 
-
-7.	Enter the memberURL using the syntax mentioned above. Click Confirm and the group entry is updated accordingly.
+6.	Enter the memberURL using the syntax mentioned above. Click the ![Checkmark](Media/checkmark.jpg) to confirm.
+7.	Click **CREATE** to add the attribute.
 
 >[!note] 
->Groups stored in RadiantOne Universal Directory can contain both explicit members and dynamic members. If RadiantOne is the enforcement point for authorization it first checks to see if the user is an explicit member of the group(s). Then, dynamic group membership is evaluated.
+>Groups stored in a RadiantOne Directory can contain both explicit members and dynamic members. If RadiantOne is the enforcement point for authorization it first checks to see if the user is an explicit member of the group(s). Then, dynamic group membership is evaluated.
 
-The notion of dynamic group membership is discussed in the Concepts section of the [RadiantOne System Administration Guide](/documentation/sys-admin-guide-rebuild/02-concepts). It is worth mentioning again, that if the client application is the enforcement point for authorization, then the logic to perform the extra search to the directory to find the group members (based on the memberUrl value of the group entry) must be implemented in the client application code. If the application does not support LDAP dynamic groups, then RadiantOne can be configured to dynamically build the group membership on-the-fly and make all groups managed by RadiantOne appear to have static (explicit) group members.
-
-For more information on LDAP dynamic groups, please see Groups in the [RadiantOne System Administration Guide](/documentation/sys-admin-guide-rebuild/02-concepts).
+If the client application is the enforcement point for authorization, then the logic to perform the extra search to the directory to find the group members (based on the memberUrl value of the group entry) must be implemented in the client application code. If the application does not support LDAP dynamic groups, then RadiantOne can be configured to dynamically build the group membership on-the-fly and make all groups managed by RadiantOne appear to have static (explicit) group members using [Special Attributes Handling](/special-attributes-handling).
 
 **Removing Members**
 
-To remove explicit group members, from the Main Control Panel > Directory Browser Tab, select the group entry and click ![An image showing ](Media/manage-group-button.jpg). If the group is a dynamic group that has both static and dynamic members, there is an option to edit “explicit” members and one to edit “dynamic” members. If there are no dynamic members, the list of unique members is displayed. Click Remove Member(s), select the member(s) and click Confirm Remove Member(s). If there are dynamic members, click the Edit Dynamic Members option first to reach the screen to remove members. If the group has many members, you can type a value in the filter box on the top right to reduce the entries shown.
-
-To remove dynamic members, select the group entry and click ![An image showing ](Media/manage-group-button.jpg). Click **Edit Dynamic Members**. Click **Remove Member(s)**, select the LDAP URL representing the members to remove and click **Confirm Remove Member(s)**. Click **Close**. 
+To remove explicit group members, from the Control Panel > Manage > Directory Browser, select the group entry and click ![Manage Group](Media/new-manage-group-button.jpg). If the group is a dynamic group that has both explicit and dynamic members, there is a tab to manage *Explicit* members and one to manage *Dynamic* members. If there are no dynamic members, the list of explicit members is displayed. Select the trashcan icon ![Remove Member](Media/new-remove-member.jpg) inline with the member to remove them and click **SAVE**. If there are dynamic members, select the *Dynamic Members* tab and locate the current membership rules. Use the trashcan icon inline with the rule to delete it and click **SAVE**.
 
 >[!note] 
->Only groups that are of objectclass type groupOfUrls can have dynamic members. If the group you are managing does not have this object class, then the Dynamic Members option is not shown.
+>Only groups that are of object class type groupOfUrls can have dynamic members. If the group you are managing does not have this object class, then the Dynamic Members option is not shown.
 
 **Modifying Group Attributes**
 
-All group attributes that allow modifications can be changed from the Main Control Panel -> Directory Browser tab. 
+All group attributes that allow modifications can be changed from the Control Panel > Manage > Directory Browser. 
 
-1.	Select the group entry in the tree and then on the right side, click the attribute you want to update.
+1.	Select the group entry in the tree and then on the right side, click the ![Pencil](Media/pencil.jpg) icon inline with the attribute you want to update.
 
-2.	Click **Modify Attribute** > **Edit**. 
+2.	Enter the new value.
 
-3.	Enter the new value.
+3.	Click the ![Checkmark](Media/checkmark.jpg) icon inline with the attribute to confirm.
 
-4.	Click **Confirm**.
+To add a value to a multi-valued attribute, click the ![Plus Sign](Media/plus-sign.jpg) inline with the attribute name. Add the value and click the ![Checkmark](Media/checkmark.jpg) to confirm.
 
-To add a value to a multi-valued attribute, select the attribute and choose Modify Attribute > Add Value. 
+To delete a value from a multi-valued attribute, select the attribute and click the trashcan icon inline with the value you want to remove. Click **DELETE** to confirm. Note that multi-valued attributes appear collapsed in the attribute list.
 
-To delete a value from a multi-valued attribute, select the attribute and value you want to remove and choose Modify Attribute > Delete Value and click **Confirm**.
+![Multi-valued Attribute Collapsed](Media/multi-valued-attribute-nonexpanded.jpg)
+
+Click the ">" to expand the attribute to locate the value to delete. 
+
+![Multi-valued Attribute Expanded](Media/multi-valued-attribute-expanded.jpg)
+
 
 ### Searching Using Range Retrieval
 
