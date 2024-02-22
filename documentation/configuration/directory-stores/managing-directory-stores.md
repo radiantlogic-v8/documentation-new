@@ -129,11 +129,22 @@ To create new entries, right-click on the parent location in the tree above wher
 
 **New Entry**
 
-To create entries based on an object class other than groupOfUniqueNames, group, organizationalUnit, inetOrgPerson, or user, choose the New > Entry option. When this option is selected, a list of object classes available in the RadiantOne LDAP schema is shown. Select the object class(es) that the entry should belong to and use the -> to move it to the list on the right. After the object classes are selected, click **NEXT**. Enter the RDN in the space provided, and then enter values for the attributes below. All required attributes must have values. Required attributes associated with all of the selected object classes are noted. For each required attribute, click +ADD VALUE, enter the value for the attribute and click the ![Checkmark](Media/checkmark.jpg) inline with the attribute. 
- 
-![Add Attribute Value](Media/add-attribute-value.jpg)
+To create entries based on an object class other than groupOfUniqueNames, group, organizationalUnit, inetOrgPerson, or user:
+1. Choose the New > Entry option. When this option is selected, a list of object classes available in the RadiantOne LDAP schema is shown.
+1. Select the object class(es) that the entry should belong to and use the -> to move it to the list on the right.
+1. After the object classes are selected, click **NEXT**.
+1. Enter the RDN in the space provided, and then enter values for the attributes below.
+1. All required attributes must have values. Required attributes associated with all of the selected object classes are noted. For each required attribute, click +ADD VALUE, enter the value for the attribute and click the ![Checkmark](Media/checkmark.jpg) inline with the attribute and then click **CONFIRM**.
 
-To add more non-required attributes, click ![Add Attribute](Media/add-attribute.jpg). Select an attribute from the drop-down list, or manually enter a name. Enter a value for the attribute and click the ![Checkmark](Media/checkmark.jpg) inline to apply it. Click **CREATE** to insert the entry.
+ ![Add Attribute Value](Media/add-attribute-value.jpg)
+
+1. To add more non-required attributes, click ![Add Attribute](Media/add-attribute-button.jpg).
+1. Select an attribute from the drop-down list, or manually enter a name.
+1. Enter a value for the attribute and click the ![Checkmark](Media/checkmark.jpg) inline to apply it.
+1. Click **CONFIRM**.
+1. To add more values for a multi-valued attribute, click the ![Add value](Media/add-value-option.jpg) inline with the attribute. Enter the additional value and click the ![Checkmark](Media/checkmark.jpg) inline to apply it.
+1. After all attribute values have been added, click **CREATE** to insert the entry.
+
 
 **New Group**
 
