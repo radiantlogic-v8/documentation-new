@@ -159,7 +159,7 @@ When creating a new group, you are able to select from the following list of obj
 2. Enter a description (optional).
 3. Toggle the Dynamic Group option on (optional).
 4. Select the object class to associate with the group entry.
-5. Click **CREATE**.
+5. Click **CREATE** to insert the entry.
 
 **New OrganizationalUnit**
 
@@ -171,11 +171,11 @@ This is only relevant if the underlying source is Active Directory. This is a sp
 
 **New inetOrgPerson**
 
-If you choose to create a new user, the entry is associated with the inetOrgperson object class. 
+If you choose to create New > inetOrgPerson, the entry is associated with the inetOrgperson object class. 
 
 **New Dynamic Object – Entry that has an Expiration**
 
-RadiantOne Universal Directory supports temporary entries using the dynamicObject auxiliary object class as specified in [RFC 2589](https://www.rfc-editor.org/rfc/rfc2589). These entries are associated with a time to live attribute and once expired, the entry is automatically removed from the directory. The attribute that determines the expiration is named entryTTL and has a value in seconds. The minimum entryTTL value supported is 900 seconds. If there is no value specified for entryTTL when the entry is created, a default of 86400 (24 hours) is used.
+The RadiantOne Directory supports temporary entries using the dynamicObject auxiliary object class as specified in [RFC 2589](https://www.rfc-editor.org/rfc/rfc2589). These entries are associated with a time to live attribute and once expired, the entry is automatically removed from the directory. The attribute that determines the expiration is named entryTTL and has a value in seconds. The minimum entryTTL value supported is 900 seconds. If there is no value specified for entryTTL when the entry is created, a default of 86400 (24 hours) is used.
 
 Dynamic objects have the following conditions:
 
