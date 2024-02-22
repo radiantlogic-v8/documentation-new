@@ -33,7 +33,7 @@ To import an LDIF file:
 If you have a large data set and generated multiple LDIF files for the purpose of initializing the local store (each containing a subset of what you want to store), name the files with a suffix of “_2”, “_3”…etc. For example, let’s say the initial LDIF file (containing the first subset of data you want to import) is named init.ldif. After this file has been imported, the process tries to find init_2.ldif, then init_3.ldif…etc. Make sure all files are located in the same place so the initialization process can find them.
 
 >[!warning] 
->Deactivate any inter-cluster replication on the RadiantOne directory store prior to re-initializing them. To do so, navigate to the node where the RadiantOne Directory store is mounted from the Control Panel > Setup > Directory Namespace > Namespace Design. On the right side, uncheck “Inter-cluster Replication”, then click **SAVE**. 
+>Deactivate any inter-cluster replication on the RadiantOne directory store prior to re-initializing them. To do so, navigate to the node where the RadiantOne Directory store is mounted from the Control Panel > Setup > Directory Namespace > Namespace Design. On the Properties tab, uncheck “Inter-cluster Replication”, then click **SAVE**. 
 
 ### EntryDN
 
