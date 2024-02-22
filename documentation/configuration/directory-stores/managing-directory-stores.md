@@ -212,7 +212,7 @@ Result: Success (0)
 
 ### Managing Group Entries
 
-Groups stored in a RadiantOne directory may contain members from any branch in the RadiantOne namespace (not just limited to the same directory store where the group is defined). The easiest way to manage group membership is from the Control Panel > Manage > Directory Browser. Select the desired group (use the search if needed) and click ![An image showing ](Media/new-manage-group-button.jpg).
+Groups stored in a RadiantOne directory may contain members from any branch in the RadiantOne namespace (not just limited to the same directory store where the group is defined). The easiest way to manage group membership is from the Control Panel > Manage > Directory Browser. Select the desired group (use the search if needed) and click: ![An image showing ](Media/new-manage-group-button.jpg)
 
 **Adding Explicit Members**
 
