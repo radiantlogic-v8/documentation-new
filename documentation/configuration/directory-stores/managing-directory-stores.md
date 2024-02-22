@@ -334,7 +334,7 @@ An example of how to perform a Range Retrieval search in RadiantOne is described
 1.	Either enter the Base DN to indicate where to search from, or click ![Browse](Media/browse.jpg) to browse the RadiantOne namespace to select a location. 
 1.	Select a scope from the drop-down list. Searches with a lower limit other than 0 must have a scope of “base”. 
 1.	In the Return Attributes field, enter your range in the following syntax: `<member> or <uniquemember>;range=<lowerlimit>-<upperlimit>`
-	>[!note] For more information on lower and upper limits, see the **Range Limits** section below. Refer to the [Examples](#base-search-with-the-dereferencing-flag-set-to-search) section for example searches.
+	>[!note] For more information on lower and upper limits, see the **Range Limits** and **Examples** sections below.
 
 1.	Click **SAVE**, this runs the query.
 
