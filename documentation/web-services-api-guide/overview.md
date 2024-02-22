@@ -35,4 +35,3 @@ This displays the welcome screen and shows the supported services.
 
 ![An image showing ](Media/Image1.3.jpg) UPDATE THIS SCREENSHOT!!!!!!
  
-Figure 3: RadiantOne Web Services Welcome Page
