@@ -225,7 +225,7 @@ To add explicit members, follow the steps below.
 3.	On the Explicit Members tab, select either Groups or Users from the Find drop-down menu.
 4.	Either enter the Base DN to indicate where to search for members, or click ![Browse ](Media/browse.jpg) to browse the RadiantOne namespace to select a location. 
 
-5.	To limit the search criteria, enter a value in the Keywords field before clicking **SEARCH**. If “Users” was selected from the Find menu in the previous step, the value must match a uid, sn, sAMAccountName, or cn value. If “Groups” was selected in the previous step, the value must match the cn value.
+5.	To limit the search criteria, enter a value in the Keywords field before clicking **SEARCH**. If *Users* was selected from the Find menu in the previous step, the value must match a uid, sn, sAMAccountName, or cn value. If *Groups* was selected in the previous step, the value must match the cn value.
 
 The objectclass for the user must be inetOrgPerson, user, person, or organizationalPerson (for the search to return them as a user entry). For groups, the objectclass must be group, groupOfNames or groupOfUniqueNames.
 
