@@ -295,7 +295,7 @@ If the client application is the enforcement point for authorization, then the l
 
 **Removing Members**
 
-To remove explicit group members, from the Control Panel > Manage > Directory Browser, select the group entry and click ![Manage Group](Media/new-manage-group-button.jpg). If the group is a dynamic group that has both explicit and dynamic members, there is a tab to manage *Explicit* members and one to manage *Dynamic* members. If there are no dynamic members, the list of explicit members is displayed. Select the trashcan icon ![Remove Member](Media/new-remove-member.jpg) inline with the member to remove them and click **SAVE**. If there are dynamic members, select the *Dynamic Members* tab and locate the current membership rules. Use the trashcan icon inline with the rule to delete it and click **SAVE**.
+To remove explicit group members, from the Control Panel > Manage > Directory Browser, select the group entry and click ![Manage Group](Media/new-manage-group-button.jpg). If the group is a dynamic group that has both explicit and dynamic members, there is a tab to manage *Explicit* members and one to manage *Dynamic* members. If there are no dynamic members, the list of explicit members is displayed. Select the trashcan icon ![Remove Member](Media/remove-member.jpg) inline with the member to remove them and click **SAVE**. If there are dynamic members, select the *Dynamic Members* tab and locate the current membership rules. Use the trashcan icon inline with the rule to delete it and click **SAVE**.
 
 >[!note] 
 >Only groups that are of object class type groupOfUrls can have dynamic members. If the group you are managing does not have this object class, then the Dynamic Members option is not shown.
@@ -323,28 +323,24 @@ Click the ">" to expand the attribute to locate the value to delete.
 
 ### Searching Using Range Retrieval
 
-Searching for multi-valued attributes (generally members) in a group may result in the retrieval of many returned values. To define the range of returned attribute values, use the Range option. This feature can be used with any object class (e.g. group, groupOfUniqueNames) and any attribute (e.g. member, uniqueMember). Both RadiantOne Universal Directory stores and RadiantOne FID persistent cache support range searches. 
+Searching for multi-valued attributes (generally members) in a group may result in the retrieval of many returned values. To define the range of returned attribute values, use the Range option. This feature can be used with any object class (e.g. group, groupOfUniqueNames) and any attribute (e.g. member, uniqueMember). Both RadiantOne Directory stores and Identity Views stored in persistent cache support range searches. 
 
 An example of how to perform a Range Retrieval search in RadiantOne is described below:
 
-1.	With the RadiantOne service started, click the Main Control Panel > Directory Browser tab. 
-1.	Click the ![An image showing ](Media/magnifying-glass-button.jpg) icon. 
-1.	Enter a DN in the Search DN field. 
-1.	Specify an object class. 
-1.	Select a scope. Searches with a lower limit other than 0 must have a scope of “base”. 
-1.	Click “Show Advanced Search”. 
-1.	In the Return Attributes field, enter your range in the following syntax. 
+1.	Navigate to the Main Control Panel > Manage > Directory Browser. 
+1.	Click the **+SEARCH** button. If you already have other saved searches, the button shows a **+**.
+	![Multi-valued Attribute Expanded](Media/dirbrowser-search.jpg)
+1.	Enter a Name to represent the (saved) search criteria. 
+1.	Either enter the Base DN to indicate where to search from, or click ![Browse](Media/browse.jpg) to browse the RadiantOne namespace to select a location. 
+1.	Select a scope from the drop-down list. Searches with a lower limit other than 0 must have a scope of “base”. 
+1.	In the Return Attributes field, enter your range in the following syntax: `<member> or <uniquemember>;range=<lowerlimit>-<upperlimit>`
+	>[!note] For more information on lower and upper limits, see the **Range Limits** section below. Refer to the [Examples](#base-search-with-the-dereferencing-flag-set-to-search) section for example searches.
 
-`<member> or <uniquemember>;range=<lowerlimit>-<upperlimit>`
-
->[!note] 
->For more information on lower and upper limits, see the [Range Limits](#range-limits) section. Refer to the [Examples](#base-search-with-the-dereferencing-flag-set-to-search) section for example searches.
-
-1.	Click **Search**. 
+1.	Click **SAVE**, this runs the query.
 
 **Range Limits**
 
-Range retrieval involves requesting either a limited or unlimited number of attribute values in your search. In the RadiantOne Main Control Panel’s Directory Browser search function, the range is specified in the Return Attributes field. This section describes the lower and upper range limits. 
+Range retrieval involves requesting either a limited or unlimited number of attribute values in your search. In the RadiantOne Control Panel’s Directory Browser search function, the range is specified in the Return Attributes field. This section describes the lower and upper range limits. 
 
 *Lower Range Limit*
 
@@ -364,11 +360,7 @@ range=0-* | Retrieves all attribute values.
 range=1-10	| Retrieves the second through eleventh values. 
 range=0-5000 | Retrieves the first through 5001st values. 
 
-**Examples**
-
-Below are some example range searches. 
-
-**Full-range Search**
+**Full-range Search Example**
 
 In the following example, a search is performed on all group member attributes. 
 
