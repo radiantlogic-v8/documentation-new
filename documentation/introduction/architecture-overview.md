@@ -13,8 +13,6 @@ New identity data acquired through mergers and acquisitions quickly adds to the 
 
 ![Identity Sources Tightly Coupled to Applications](Media/Image1.1.jpg)
 
-Figure 1: Identity Sources Tightly Coupled to Applications
-
 When identity sources contain overlapping identities, not only does the integration effort become more complex, but the need for joining data from multiple heterogeneous sources is required.
 
 More joining means more queries to underlying data sources, which consumes power and results in slower performance. Situations like this make a persistent cache invaluable for reaching the required performance.
@@ -28,8 +26,6 @@ Enterprises must work to preserve their investments in the existing data infrast
 The solution is the RadiantOne Identity Data Management service that acts as a hub capable of delivering the data from all your identity silos to each application in the way it understands. Building the hub requires a set of features that are complex to manage without a guided process. RadiantOne offers a set of tools which walk the user through implementing best practice of these advanced features.
 
 ![RadiantOne Identity Data Management](Media/Image1.2.jpg)
-
-Figure 2: RadiantOne Identity Data Management
 
 Identity Data Management aggregates, integrates, and translates data from across the identity infrastructure, into a single access point for applications. Through virtualization and join, RadiantOne seamlessly builds global profiles by extracting the schemas from each local data source and builds the new view (in a flat or hierarchical form) where identities and attributes are remapped and virtualized. 
 
