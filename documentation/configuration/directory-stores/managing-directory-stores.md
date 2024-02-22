@@ -64,9 +64,7 @@ When exporting a RadiantOne directory store to an LDIF file, you have the option
  
 If you only need to replicate a sub-branch instead of the whole RadiantOne directory store, you can use the Export option ![An image showing ](Media/export-button.jpg) on the Control Panel > Manage > Directory Browser when you have the sub-branch selected.
 
-
-**NEEDS NEW SCREEN SHOT**
-![An image showing ](Media/Image5.4.jpg)
+![Export LDIF](Media/export-ldif.jpg)
  
 
 ## Number of Supported Clauses in Search Filters
