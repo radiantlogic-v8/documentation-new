@@ -21,7 +21,7 @@ Directory stores can be initialized with LDIF files. The Control Panel supports 
 To import an LDIF file:
 
 1.	On the Control Panel > Setup > Directory Namespace > Namespace Design, select the node where the directory store is mounted below Root Naming Contexts.
-1.	On the Properties tab, click ![Initialize Button ](Media/initialize-button.jpg). 
+1.	On the Properties tab, click: ![Initialize Button ](Media/initialize-button.jpg) 
 1.	Choose to either *Upload file* and browse to the file, or *Select file on the server* to display a list of files to choose from.
 1.	Click **OK**.
 
@@ -171,7 +171,7 @@ This is only relevant if the underlying source is Active Directory. This is a sp
 
 **New inetOrgPerson**
 
-If you choose to create New > inetOrgPerson, the entry is associated with the inetOrgperson object class. 
+If you choose to create New > inetOrgPerson, the entry is associated with the inetOrgPerson object class. A list of commonly populated attributes is shown in the input form. To include more, use the click ![Add Attribute](Media/add-attribute-button.jpg) once the entry is created.
 
 **New Dynamic Object – Entry that has an Expiration**
 
@@ -185,10 +185,10 @@ Dynamic objects have the following conditions:
 
 -	Dynamic objects that are containers cannot have static child objects.
 
-There is no GUI way to create Dynamic Objects so it is common to use an LDAP command line utility. Below is an example of an LDIF file that contains a dynamic entry to create followed by an ldapmodify command to create the entry:
+There is no template in the Control Panel to create Dynamic Objects so it is common to use an LDAP command line utility. Below is an example of an LDIF file that contains a dynamic entry to create followed by an ldapmodify command to create the entry:
 
 ```
-dn: uid=tempuser2,o=companydirectory
+dn: uid=tempuser2,ou=Sales,o=RadiantOne Directory
 changetype: add
 objectclass: user
 objectclass: dynamicObject
@@ -198,23 +198,21 @@ entryTtl: 1000
 
 C:\SunResourceKit>ldapmodify -h fidserver -p 2389 -D "cn=directory manager" -w password -f addtempuser2.ldif
 
-The temporary entry can be seen from the Main Control Panel in the example below. This entry will exist for 1000 seconds and then be deleted automatically.
+The temporary entry can be seen from the Directory Browser in the example below. This entry will exist for 1000 seconds and then be deleted automatically.
 
-![An image showing ](Media/Image5.21.jpg)
+![Temporary Entry](Media/tempuser.jpg)
  
-Figure 5.21: Dynamic Object/Entry Example
-
 To update the time-to-live for an entry, you can use the “refresh” extended operation as outlined in RFC 2589. The refresh operation is sent by a client to RadiantOne, to indicate that the dynamic directory entry is still accurate and valuable. The client sends a periodic refresh request and if the server receives the request within the timeout period, the lifetime of the dynamic entry can be extended. Below is an example of using the LDAP extended operation command line utility to change the entryTTL to 900 seconds.
 
-ldapexop -v -h "fidserver" -p 2389 -D"cn=Directory Manager" -w password refresh "uid=tempuser2,o=companydirectory" 900
+ldapexop -v -h "radiantoneserver" -p 2389 -D"cn=Directory Manager" -w password refresh "uid=tempuser2,ou=Sales,o=RadiantOne Directory" 900
 
-ldap_initialize( ldap://fidserver:2389 )
+ldap_initialize( ldap://radiantoneserver:2389 )
 newttl=900
 Result: Success (0)
 
 ### Managing Group Entries
 
-Groups stored in a Universal Directory store may contain members from any branch in the RadiantOne namespace (not just limited to the local store where the group is defined). The easiest way to manage group membership is from the Main Control Panel -> Directory Browser tab. Select the desired group and click ![An image showing ](Media/manage-group-button.jpg).
+Groups stored in a RadiantOne directory may contain members from any branch in the RadiantOne namespace (not just limited to the same directory store where the group is defined). The easiest way to manage group membership is from the Control Panel > Manage > Directory Browser. Select the desired group (use the search if needed) and click ![An image showing ](Media/new-manage-group-button.jpg).
 
 **Adding Explicit Members**
 
