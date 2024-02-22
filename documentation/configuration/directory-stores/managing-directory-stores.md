@@ -218,7 +218,7 @@ Groups stored in a RadiantOne directory may contain members from any branch in t
 
 To add explicit members, follow the steps below.
 
-1.	Select a group and click the Manage Group option on the Directory Browser.
+1.	Select a group and click the **Manage Group** option on the Directory Browser.
 
 2.	If the group is a dynamic group (contains the groupOfUrls object class), the Manage Group window displays a Dynamic Members tab and an Explicit Members tab. Click the Explicit Members tab. If the group is not a dynamic group, only the Explicit Members tab appears.
 
