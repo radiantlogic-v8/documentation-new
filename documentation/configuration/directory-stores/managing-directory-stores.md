@@ -134,9 +134,9 @@ To create entries based on an object class other than groupOfUniqueNames, group,
 1. Select the object class(es) that the entry should belong to and use the -> to move it to the list on the right.
 1. After the object classes are selected, click **NEXT**.
 1. Enter the RDN in the space provided, and then enter values for the attributes below.
-1. All required attributes must have values. Required attributes associated with all of the selected object classes are noted. For each required attribute, click +ADD VALUE, enter the value for the attribute and click the ![Checkmark](Media/checkmark.jpg) inline with the attribute and then click **CONFIRM**.
+1. All required attributes should have values. Required attributes associated with all of the selected object classes are noted. For each required attribute, click +ADD VALUE, enter the value for the attribute and click the ![Checkmark](Media/checkmark.jpg) inline with the attribute and then click **CONFIRM**.
 
- ![Add Attribute Value](Media/add-attribute-value.jpg)
+  ![Add Attribute Value](Media/add-attribute-value.jpg)
 
 1. To add more non-required attributes, click ![Add Attribute](Media/add-attribute-button.jpg).
 1. Select an attribute from the drop-down list, or manually enter a name.
