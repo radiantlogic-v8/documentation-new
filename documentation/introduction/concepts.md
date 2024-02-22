@@ -111,7 +111,7 @@ Configuration Steps for LDAP and DSML Backends
 
 5.	Select the attribute you want to base the join condition on from the Join Attribute drop-down menu.
 
-  If you would like to create an attribute based on existing attributes of the primary object to base your join condition on, click ** Add Computed Attributes**. This allows you to build a new attribute based on the attributes available in the primary object. This new attribute can then be used to base your join condition on. This computed attribute name is prefixed with “vsysa” and is used only to condition the join. It is not returned as part of the virtual entry even if a client were to specifically request it.
+  If you would like to create an attribute based on existing attributes of the primary object to base your join condition on, click **Add Computed Attributes**. This allows you to build a new attribute based on the attributes available in the primary object. This new attribute can then be used to base your join condition on. This computed attribute name is prefixed with “vsysa” and is used only to condition the join. It is not returned as part of the virtual entry even if a client were to specifically request it.
 
   For more information, please see [Computed Attributes](#computed-attributes).
 
