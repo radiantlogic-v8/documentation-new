@@ -256,14 +256,12 @@ For example, if all users that have departmentNumber=0332 should be members of a
 
 -	memberURL = ou=People,ou=Sun,o=vds??one?(departmentNumber=0332)
 
-To add dynamic members in Contorl Panel > Manage > Directory Browser, follow the steps below.
+To add dynamic members in Control Panel > Manage > Directory Browser, follow the steps below.
 
 1.	Select a dyanmic group and click the **Manage Group** option on the Directory Browser
 
-1.	Click the Dynamic Members tab. 
-
->[!note] 
->The Dynamic Members tab displays only if the group contains the groupOfUrls object class.
+1.	Click the Dynamic Members tab.
+	>[!note] The Dynamic Members tab displays only if the group contains the groupOfUrls object class.
 
 1.	Either enter the Base DN to indicate where to search for members, or click ![Browse](Media/browse.jpg) to browse the RadiantOne namespace to select a location.
 1.	Select the scope of search needed to find the users. 
@@ -398,7 +396,7 @@ Figure 5.25: Large-range Search Example
 
 ### Nested Groups
 
-RadiantOne Universal Directory supports nested groups, where groups can be members of other groups. To enable support for nested groups, navigate to the Main Control Panel > Settings tab > Security > Access Controls. Check the option to “Enable Nested Groups”.
+RadiantOne Directory supports nested groups, where groups can be members of other groups. To enable support for nested groups, navigate to the Control Panel > Manage > Security > Access Controls > General tab. Toggle on the “Enable Nested Groups” and click **SAVE**.
  
 **Searching for Group Members using LDAP_MATCHING_RULE_IN_CHAIN**
 
