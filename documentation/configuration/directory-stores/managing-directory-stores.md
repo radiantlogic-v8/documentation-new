@@ -417,7 +417,7 @@ If a Linked Attribute configuration has been configured for isMemberOf on the na
 
 An example of the Optimize Linked Attributes setting is shown below.
 
-![Optimize Linked Attributes](optimize-linked-attributes.jpg)
+![Optimize Linked Attributes](Media/optimize-linked-attributes.jpg)
 
 An example query using the Control Panel > Manage > Directory Browser is shown below.
 
