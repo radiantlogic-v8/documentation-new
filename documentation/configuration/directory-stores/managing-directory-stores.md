@@ -402,17 +402,16 @@ RadiantOne Directory supports nested groups, where groups can be members of othe
 
 The following example is used to describe the ability to search group membership for a user that is a member of a nested group.
 
-User Ada Rule (identified with a DN of uid=Ada_Rule,ou=Administration,o=companydirectory) is a member of a group named WebUsers. The WebUsers group is a member of a group named Intern. The Intern group is a member of a group named AllUsers. Ada is implicitly a member of WebUsers, Intern and AllUsers. To query RadiantOne for a list of all groups Ada is a member of, the following filter leveraging the LDAP_MATCHING_RULE_IN_CHAIN OID can be used:
+User Ada Rule (identified with a DN of uid=Ada_Rule,ou=Administration,o=RadiantOne Directory) is a member of a group named WebUsers. The WebUsers group is a member of a group named Intern. The Intern group is a member of a group named AllUsers. Ada is implicitly a member of WebUsers, Intern and AllUsers. To query RadiantOne for a list of all groups Ada is a member of, the following filter leveraging the LDAP_MATCHING_RULE_IN_CHAIN OID can be used:
 
-(uniquemember:1.2.840.113556.1.4.1941:=uid=Ada_Rule,ou=Administration,o=companydirectory)
+(uniquemember:1.2.840.113556.1.4.1941:=uid=Ada_Rule,ou=Administration,o=RadiantOne Directory)
 
-An example query using the RadiantOne LDAP Browser is shown below.
+An example query using the Control Panel > Manage > Directory Browser is shown below.
 
-![An image showing ](Media/Image5.26.jpg)
+![An image showing ](Media/nested-groups-search.jpg)
  
-Figure 5.26: Sample Search Request Leveraging LDAP_MATCHING_RULE_IN_CHAIN
 
-If a Linked Attribute configuration has been configured for isMemberOf on the naming context, and “Optimize Linked Attribute” is enabled on the Universal Directory store, a filter requesting the ismemberOf attribute using the LDAP_MATCHING_RULE_IN_CHAIN OID is also supported. An example is shown below.
+If a Linked Attribute configuration has been configured for isMemberOf on the naming context, and “Optimize Linked Attribute” is enabled on the RadiantOne Directory store, a filter requesting the ismemberOf attribute using the LDAP_MATCHING_RULE_IN_CHAIN OID is also supported. An example is shown below.
 
 ![An image showing ](Media/Image5.27.jpg)
 
