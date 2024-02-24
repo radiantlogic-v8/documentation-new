@@ -408,19 +408,18 @@ User Ada Rule (identified with a DN of uid=Ada_Rule,ou=Administration,o=RadiantO
 
 An example query using the Control Panel > Manage > Directory Browser is shown below.
 
-![An image showing ](Media/nested-groups-search.jpg)
+![Nested Groups Search](Media/nested-groups-search.jpg)
  
 
-If a Linked Attribute configuration has been configured for isMemberOf on the naming context, and “Optimize Linked Attribute” is enabled on the RadiantOne Directory store, a filter requesting the ismemberOf attribute using the LDAP_MATCHING_RULE_IN_CHAIN OID is also supported. An example is shown below.
+If a Linked Attribute configuration has been configured for isMemberOf on the naming context, and “Optimize Linked Attribute” is enabled on the RadiantOne Directory store, a filter requesting the ismemberOf attribute using the LDAP_MATCHING_RULE_IN_CHAIN OID is also supported. An example of the Linked Attributes setting is shown below.
 
-![An image showing ](Media/Image5.27.jpg)
+![Linked Attributes](Media/linked-attributes.jpg)
 
-Figure 5.27: Linked Attribute Settings
+An example of the Optimize Linked Attributes setting is shown below.
 
-![An image showing ](Media/Image5.28.jpg)
+![An image showing ](optimize-linked-attributes.jpg)
 
-Figure 5.28: Optimize Linked Attribute Setting
-An example query using the RadiantOne LDAP Browser is shown below.
+An example query using the Control Panel > Manage > Directory Browser is shown below.
 
 ![An image showing ](Media/Image5.29.jpg)
 
