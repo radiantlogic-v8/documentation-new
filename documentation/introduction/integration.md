@@ -7,8 +7,6 @@ description: Learn about the components and capabilities that comprise the Radia
 
 ![RadiantOne Logical Architecture](Media/Image1.3.jpg)
 
-Figure 3: RadiantOne Logical Architecture
-
 The logical model is based on three primary layers.
 
 **Application Layer**
@@ -47,7 +45,6 @@ Identity data sources accessible by RadiantOne are:
 
 ![Access to Backends](Media/Image1.4.jpg)
 
-Figure 4: Access to Backends
 
 
 
