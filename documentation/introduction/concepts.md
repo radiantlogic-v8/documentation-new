@@ -26,14 +26,13 @@ A data source in RadiantOne represents the connection to a backend. This could b
  
 >[!warning] Two LDAP data sources named vdsha and replicationjournal are included by default. These data sources contain connections to all RadiantOne nodes in a given cluster. One node is defined as the primary server and all others as failover servers. The vdsha data source is used internally by many operations including persistent cache refreshes. The replicationjournal data source is used internally for inter-cluster replication. These data sources should not be deleted or have their status changed to “offline”.
 
-Configuring connections to all backends from a central location simplifies the management task when changes to the backend are required. For details on managing data sources (add, edit, and delete), please see [Data Sources](/04-backend-settings/#data-sources).
+Configuring connections to all backends from a central location simplifies the management task when changes to the backend are required. For details on managing data sources (add, edit, and delete), please see [Data Sources](#data-sources).
 
 Data sources are used when configuring virtual views from database backends, LDAP backends, and joins. 
 
 LDAP data sources defined for RadiantOne are contained in <RLI_HOME>/vds_server/datasources/ldap.xml. Database data sources are contained in <RLI_HOME>/vds_server/datasources/database.xml, and custom data sources are contained in <RLI_HOME>/vds_server/datasources/custom.xml.
 
->[!warning]
->One of the main purposes of having a data source defining the connection is to isolate the connection string from the metadata files (.dvx and .orx). It is strongly recommended that you use generic data source names that can remain (be relevant) as you migrate from a development to production environment where you only need to change the connection information. In addition, there are reserved characters that should not be used in data source names which are spaces, commas, brackets or parenthesis, colons, and the word “domain”.
+>[!warning] One of the main purposes of having a data source defining the connection is to isolate the connection string from the metadata files (.dvx and .orx). It is strongly recommended that you use generic data source names that can remain (be relevant) as you migrate from a development to production environment where you only need to change the connection information. In addition, there are reserved characters that should not be used in data source names which are spaces, commas, brackets or parenthesis, colons, and the word “domain”.
 
 ### To Import Data Sources
 
