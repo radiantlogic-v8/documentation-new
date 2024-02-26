@@ -427,54 +427,59 @@ Figure 5.29: Sample Search Request Leveraging LDAP_MATCHING_RULE_IN_CHAIN
 
 ### Managing User Entries
 
-User entries can be managed from the Main Control Panel > Directory Browser tab or any client that issues standard LDAP or SCIM requests The RadiantOne Restful Web Service (ADAP) interface can also be used to manage accounts.
+User entries can be managed from the Control Panel > Manage > Directory Browser or any client that issues standard LDAP or SCIM requests to the RadiantOne Restful Web Service (ADAP) interface can also be used to manage accounts.
 
-#### Disabling User Accounts
+**Disabling User Accounts**
 
 Disabled accounts are inactive. The user is not able to authenticate (bind) to the directory anymore. To disable an account, add an attribute named nsAccountLock with a value of true to the user entry. To enable the account, set nsAccountLock to false.
 
-1.	Administrators can disable an account from the Main Control Panel > Directory Browser tab. Navigate to the Universal Directory store and select the user entry. On the right side, click **Add Attribute**.
+1.	Administrators can disable an account from the Control Panel > Manage > Directory Browser. Navigate to the RadiantOne Directory store and select the user entry. On the right side, click **+ADD ATTRIBUTE**.
 
-2.	Type in nsAccountLock and press Enter on your keyboard.
+2.	Type in nsAccountLock for the attribute name.
 
-![An image showing ](Media/Image5.30.jpg)
+3.	Enter a value of *true* and click ![Checkmark](Media/checkmark.jpg).
 
-Figure 5.30: Adding nsAccountLock to a User Entry
-
-3.	Enter a value of true and click Confirm. 
-
-![An image showing ](Media/Image5.31.jpg)
+ ![Locked User Entry](Media/locked-account.jpg)
  
-Figure 5.31: Disabling a User Account
+4. Click **CREATE**.
 
 The account is now disabled. If this user tries to authenticate to the directory, the server responds with: [LDAP: error code 53 - Account inactivated. Contact system administrator to activate this account].
 
-A disabled account in RadiantOne Universal Directory appears in the Main Control Panel > Directory Browser tab with a red X next to the entry. ![An image showing ](Media/x-next-to-entry.jpg)
-
-#### Enabling User Accounts
+**Enabling User Accounts**
 
 If an account is disabled because the nsAccountLock attribute is set to true, simply set the value to false to enable the account.
 
 If an account is locked by the RadiantOne server, due to a password policy violation (e.g. too many invalid login attempts), it can become unlocked by resetting the user’s password. Any user (other than the locked-out user) that has the proper permissions (ACI’s) can reset the user’s password. If the lockout policy has a duration period, the account is automatically unlocked after the duration has passed.
 
-#### Modifying Attributes
+**Modifying Attributes**
 
 Attributes can be updated, added or deleted.
 
 >[!warning] 
->The user you are logged into the Main Control Panel as must have rights to modify users.
+>The user you are logged into the Control Panel as must have rights (defined as access controls) to modify users.
 
-##### Updating Attributes
+*Updating Attributes*
 
-To update attributes, select the user in the tree and on the right side, select the attribute you want to change. Click the Modify Attribute > Edit option and provide the new value. To add a value to a multi-valued attribute, select the attribute and choose Modify Attribute > Add Value. To delete a value from a multi-valued attribute, select the attribute value you want to remove and choose Modify Attribute > Delete Value.
+To update attributes:
+1. Select the user that you want to update the attributes for in the directory tree.
+2. Click the ![Pencil](Media/pencil.jpg) icon inline with the attribute you want to update.
+3. Update the value and click ![Checkmark](Media/checkmark.jpg).
+4. (Optional) To add a value to a multi-valued attribute, click the ![Plus Sign](Media/plus-sign.jpg) inline with the attribute name.
+5. Add the value and click the ![Checkmark](Media/checkmark.jpg) to confirm.
+6. (Optional) To delete a value from a multi-valued attribute, select the attribute and click the trashcan icon inline with the value you want to remove. Click **DELETE** to confirm. Note that multi-valued attributes appear collapsed in the attribute list. Click the ">" to expand the attribute to locate the value to delete. 
 
-##### Adding Attributes
+*Adding Attributes*
 
-To add attributes, select the user in the tree and on the right side, click **Add Attribute**. Enter an attribute name or select the attribute from the drop-down list and provide a value. Click **Confirm**.
+To add attributes, select the user in the directory tree and on the right side, click **+ADD ATTRIBUTE**. Enter an attribute name or select the attribute from the drop-down list and provide a value. Click ![Checkmark](Media/checkmark.jpg) and then click **CREATE**.
 
-##### Deleting Attributes
+*Modifying RDN*
+Changing the RDN of an entry is a special operation. To change the RDN attribute value, select the user in the directory tree and on the right side, click: ![Rename](Media/rename-entry.jpg). Enter the RDN (name and value) and click **SAVE**. Click **REFRESH ENTRY** to see the updated RDN attribute.
 
-To delete attributes, select the user in the tree and on the right side, select the attribute you want to remove then click **Delete Attribute**.
+![Rename](Media/rename-example.jpg)
+
+*Deleting Attributes*
+
+To delete attributes, select the user in the directory tree and on the right side, click the ![Trashcan](Media/trashcan.jpg) incon inline with the attribute you want to delete. Click **DELETE** to confirm.
 
 ##### Editing Photo Attributes
 If an attribute is of binary type, select the attribute and choose Modify Attribute > Edit. This brings up the binary editor. Browse to the new file and click **Confirm**.
@@ -483,38 +488,32 @@ If an attribute is of binary type, select the attribute and choose Modify Attrib
  
 Figure 5.32: Binary Attribute Editor
 
-##### Resetting Passwords
+*Resetting Passwords*
 
-RadiantOne Universal Directory uses the userPassword attribute to store passwords.
+The RadiantOne Directory uses the *userPassword* attribute to store passwords for user entries associated with the inetOrgPerson object class.
+To reset a user’s password, select the user entry in the directory tree and on the right, click the ![Pencil](Media/pencil.jpg) icon inline with the userPassword attribute. Enter a new password and click the ![Checkmark](Media/checkmark.jpg).  
 
-To reset a user’s password, select the user entry in the tree and on the right, select the userPassword attribute. Click **Modify Attribute** > **Edit**. Change the value and click **OK**.
+*Moving Entries*
 
-#### Moving Entries
-
-To move a user entry from one container to another within the same root naming context representing the same backend data source, select the entry and click the Move Entry (![An image showing ](Media/move-entry.jpg)) button. Browse to the location where you want the entry moved to and click **OK**. Click **OK** to confirm the move.
+To move a user entry from one container to another within the same root naming context representing the same backend data source, select the entry and click the Move Entry (![Move Entry](Media/move-entry.jpg)) option. 
+Either enter the DN or browse to the location where you want the entry moved to and click **SAVE**.
 
 >[!warning] 
->Entries can only be moved to/from containers below the same naming context representing the same backend data source.
+>Entries can only be moved to/from containers below the same naming context representing the same backend data source. In the example shown below, the entry is moved from ou=Management to the ou=Inventory container.
 
-![An image showing ](Media/Image5.33.jpg)
+![Move Entry Example](Media/move-entry-example.jpg)
 
-Figure 5.33: Move Entry
+### Setting Access Permissions
 
-#### Setting Access Permissions
-
-For information on setting access permissions, please see the [RadiantOne System Administration Guide](/documentation/sys-admin-guide-rebuild/06-security).
+For information on setting access permissions, please see: [Access Controls](../security/access-controls)
 
 ### Deleting Entries
 
-From the Main Control Panel > Directory Namespace tab, select the entry in the tree and click ![An image showing ](Media/delete-button.jpg). Click Confirm to accept the deletion. If the entry being deleted is a container with child entries, you are prompted a second time to confirm the deletion of the sub-tree.
-
-![An image showing ](Media/Image5.34.jpg)
-
-Figure 5.34: Delete Tree Confirmation
+From the Control Panel > Manage > Directory Browser, select the entry in the directory tree and click ![Delete Entry](Media/delete-entry.jpg). Click **DELETE** to accept the deletion. If the entry being deleted is a container with child entries, the entire subtree is removed.
 
 ### Alias Entries
 
-RadiantOne Universal Directory supports alias entries as defined in RFC 22521. Alias entries point to/reference another entry in the directory. The attribute containing the location of the target entry (DN) is aliasedObjectName and the object class associated with these entries is alias. When a client requests an alias entry, they can indicate if they want the alias dereferenced or not. The indicators are outlined in the table below.
+The RadiantOne Directory supports alias entries as defined in RFC 22521. Alias entries point to/reference another entry in the directory. The attribute containing the location of the target entry (DN) is aliasedObjectName and the object class associated with these entries is alias. When a client requests an alias entry, they can indicate if they want the alias dereferenced or not. The indicators are outlined in the table below.
 
 >[!warning] 
 >Dereferencing alias entries is only supported on base-level searches. One-level and subtree searches are not supported at this time.
