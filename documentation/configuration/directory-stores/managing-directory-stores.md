@@ -142,7 +142,7 @@ To create entries based on an object class other than groupOfUniqueNames, group,
 1. Select an attribute from the drop-down list, or manually enter a name.
 1. Enter a value for the attribute and click the ![Checkmark](Media/checkmark.jpg) inline to apply it.
 1. Click **CONFIRM**.
-1. To add more values for a multi-valued attribute, click the ![Add value](Media/add-value-option.jpg) inline with the attribute. Enter the additional value and click the ![Checkmark](Media/checkmark.jpg) inline to apply it.
+1. To add more values for a multi-valued attribute, click the ![Plus Sign](Media/plus-sign.jpg) inline with the attribute. Enter the additional value and click the ![Checkmark](Media/checkmark.jpg) inline to apply it.
 1. After all attribute values have been added, click **CREATE** to insert the entry.
 
 
