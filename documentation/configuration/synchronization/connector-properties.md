@@ -36,7 +36,7 @@ Capture connectors use a cursor to maintain information about the last processed
 
 On the Classic Control Panel > Synchronization tab, choose the topology on the left. Select **Configure** next to the pipeline on the right. Choose the **Capture** component and select **Reset Cursor** shown below the properties. An example is shown below.
 
-![The Reset Cursor option in the Global Sync tab of the Main Control Panel](Media/image2.png)
+![The Reset Cursor option in the Global Sync tab of the Main Control Panel](Media/reset-cursor.png)
 
 **Manually update connector cursor**
 
