@@ -104,7 +104,7 @@ It is highly recommended to have logs from sdc-client to go into a mounted drive
 
 Replace `/path/on/host` with an actual path on your host machine where you want to store the logs.
 
-Once the client is running, you can can setup a connection with the on-premise backend. For details on setting up a connection, see the [server backend](configuration/data-sources/data-sources) guide.
+Once the client is running, you can can setup a connection with the on-premise backend. For details on setting up a connection, see the [server backend](configuration/data-sources.md) guide.
 
 
 # Deploy the Secure Data Connector Client
