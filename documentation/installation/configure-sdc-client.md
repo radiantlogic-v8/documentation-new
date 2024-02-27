@@ -174,7 +174,7 @@ Launch the *RadiantLogic.OnPremisesAgentClient.Agent.exe* file. A notification d
 
 ![image description](images/windows-success.png)
 
-Once the client is running, you can can setup a connection with the on-premise backend. For details on setting up a connection, see the [server backend](configuration/data-sources/data-sources) guide.
+Once the client is running, you can can setup a connection with the on-premise backend. For details on setting up a connection, see the [server backend](configuration/data-sources.md) guide.
 
 ### Deploy as a service on Windows
 
@@ -225,7 +225,7 @@ A notification displays in the command line that confirms a connection has been 
 
 ![image description](images/linux-run-client.png)
 
-Once the client is running, you can can setup a connection with the on-premise backend. For details on setting up a connection, see the [server backend](configuration/data-sources/data-sources) guide.
+Once the client is running, you can can setup a connection with the on-premise backend. For details on setting up a connection, see the [server backend](configuration/data-sources.md) guide.
 
 ### Deploy as a daemon on Linux
 
@@ -393,4 +393,4 @@ The `radiantone/sdc-client` is the latest image of the secure data connector cli
 
 ![image description](images/docker-command-line.png)
 
-Once the client is running, you can can setup a connection with the on-premise backend. For details on setting up a connection, see the [server backend](configuration/data-sources/data-sources) guide.
+Once the client is running, you can can setup a connection with the on-premise backend. For details on setting up a connection, see the [server backend](configuration/data-sources.md) guide.
