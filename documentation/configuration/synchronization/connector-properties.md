@@ -40,7 +40,7 @@ On the Classic Control Panel > Synchronization tab, choose the topology on the l
 
 **Manually update connector cursor**
 
-Each connector stores a cursor to maintain information about the last processed change. In some cases, you may need to edit the cursor value to force the connector to pick up some missed changes (during a disaster recovery scenario where you will start synchronization in another data center), or skip some changes in cases like where [non-sequential change IDs](database-timestamp-connector.md#force-sequential-counters) were detected. Connector configuration is stored in a RadiantOne Directory store mounted at the `cn=registry` naming context.
+Each connector stores a cursor to maintain information about the last processed change. In some cases, you may need to edit the cursor value to force the connector to pick up some missed changes (during a disaster recovery scenario where you will start synchronization in another data center), or skip some changes in cases like where [non-sequential change IDs](#force-sequential-counters) were detected. Connector configuration is stored in a RadiantOne Directory store mounted at the `cn=registry` naming context.
 
 >[!note]
 >Editing the cursor is supported for connectors that store a number or timestamp value. The AD DirSync and Hybrid connectors use a cookie for a cursor value that you would not know how to set.
