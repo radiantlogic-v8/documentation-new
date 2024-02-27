@@ -696,7 +696,7 @@ To exclude attributes in changelog searches:
 
 3.	Add users and/or groups that you do not want to have access to the “changes” attribute for certain attributes.  
 
-5.	On the Zookeeper tab, expand `radiantone/v2/<clustername>/config`. 
+5.	On the Zookeeper tab, expand `radiantone/<version>/<clustername>/config`. 
 
 6.	Select vds_server.conf. 
 
@@ -735,12 +735,12 @@ For the RadiantOne service to maintain efficiency and performance (as well as sa
 
 Records older than the maximum age are deleted automatically. Old change log numbers (from deleted records) do not get re-used.
 
-This parameter is set in the Main Control Panel > Settings Tab > Logs section > Changelog sub-section. The default value is 3 days which means records are automatically deleted after 3 days.
+This parameter is set in the Classic Control Panel > Settings Tab > Logs section > Changelog sub-section. The default value is 3 days which means records are automatically deleted after 3 days.
 
 ### Persistent Search Control
-Using the Persistent Search Control is one of the recommended approaches for other processes to detect changes that have happened to RadiantOne entries. The [changelog](09-logs#changelog) is the other method that can be used.
+Using the Persistent Search Control is one of the recommended approaches for other processes to detect changes that have happened to RadiantOne entries. 
 
-This control can be enabled/disabled from the Main Control Panel > Settings Tab > Server Front End section > Supported Controls sub-section. Check the Persistent Search option and click Save. Restart the RadiantOne service. If you have a cluster deployed, restart the service on all nodes.
+This control can be enabled/disabled from the Control Panel > Global Settings > Client Protocols > LDAP. Enable the Persistent Search option and click **SAVE**. Restart the RadiantOne service on all nodes.
 
 If you enable the persistent search control, an LDAP client can receive notifications of changes that occur in the RadiantOne namespace. When a persistent search is requested, RadiantOne keeps the search operation going so clients can receive changed entries (and additional information about the changes that occurred). 
 
