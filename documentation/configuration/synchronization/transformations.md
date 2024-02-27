@@ -6,7 +6,7 @@ description: Learn how to configure transformation logic.
 ## Transformations Overview
 The transformation configuration contains the logic to translate a change in a source to an operation in the destination. The transformation can consist of attribute mappings and/or script logic. When deciding if the transformation configuration should use attribute mappings and/or scripting, keep the following in mind.
 
-- When attribute mappings are used, the default behavior for processing insert and update source events is to translate the event into either an insert or update on the target. The [Destination DN](attribute-mappings.md#destination-dn) expression is used to find the target entry (lookup to see if the entry exists, to determine if an insert or update is needed). If the entry exists in the target and an insert event is detected in the source, the entry in the target is updated. If an update event happens in the source, and the entry does not exist in the target, it is inserted. If you do not want this default behavior, use a transformation script and customize the logic instead of using attribute mappings.
+- When attribute mappings are used, the default behavior for processing insert and update source events is to translate the event into either an insert or update on the target. The [Destination DN](#destination-dn) expression is used to find the target entry (lookup to see if the entry exists, to determine if an insert or update is needed). If the entry exists in the target and an insert event is detected in the source, the entry in the target is updated. If an update event happens in the source, and the entry does not exist in the target, it is inserted. If you do not want this default behavior, use a transformation script and customize the logic instead of using attribute mappings.
 - Delete events are processed as deletes in the destination. If you need to translate a delete event into an update event (e.g. set `isActive=false`), then use a transformation script and customize the logic instead of using attribute mappings.
 
 To configure the transformation:
@@ -15,11 +15,11 @@ To configure the transformation:
 1. On the right, select **Configure** on the pipeline.
 1. Select the Transformation component and choose the Transformation Type; Mappings, Script, or Script and Mappings. Depending on the type selected, new sections are displayed.
 
-![Unconfigured Transformation Component](./Media/image39.png)
+![Unconfigured Transformation Component](/Media/image39.png)
 
 
 ## Script
-Using a script for transformation allows for complex logic to be applied before sending changes to the destination. If you choose to use a script only, without attribute mappings, the transformation gets all change events sent by the capture connector. The script logic must filter out events that you do not want to process. If you use attribute mappings in conjunction with a script, a [source event filter](transformation/attribute-mappings.md#source-event-filter) can be configured in the mappings to dictate which captured events to process.
+Using a script for transformation allows for complex logic to be applied before sending changes to the destination. If you choose to use a script only, without attribute mappings, the transformation gets all change events sent by the capture connector. The script logic must filter out events that you do not want to process. If you use attribute mappings in conjunction with a script, a [source event filter](#source-event-filter) can be configured in the mappings to dictate which captured events to process.
 
 >[!note]
 >If you use both script and attribute mappings, the attribute mappings are applied first.
