@@ -36,7 +36,7 @@ Capture connectors use a cursor to maintain information about the last processed
 
 On the Classic Control Panel > Synchronization tab, choose the topology on the left. Select **Configure** next to the pipeline on the right. Choose the **Capture** component and select **Reset Cursor** shown below the properties. An example is shown below.
 
-![The Reset Cursor option in the Global Sync tab of the Main Control Panel](media/image2.png)
+![The Reset Cursor option in the Global Sync tab of the Main Control Panel](Media/image2.png)
 
 **Manually update connector cursor**
 
@@ -48,7 +48,7 @@ Each connector stores a cursor to maintain information about the last processed 
 1. Stop the capture connector by suspending the pipeline. You can do this from the Main Control Panel > Global Sync tab, or using the vdsconfig command line utility, `change-pipeline-state` command.
 1. Connect to RadiantOne with an administrator that has permissions to modify entries in `cn=registry` and browse to the configuration for your capture connector: `cn=cursor,{PIPELINE_ID},cn=registry`
 1. Edit the cursor attribute and enter the value to indicate the point from which the connector should capture changes from. An example for a database changelog connector is shown below.
-    ![Example of Database Changelog Connector Cursor Settings](media/image3.png)
+    ![Example of Database Changelog Connector Cursor Settings](Media/image3.png)
 2. Resume the pipeline which redeploys/starts the connector. You can do this from the Main Control Panel > Global Sync tab.
 
 ### Message size
@@ -67,7 +67,7 @@ The `RLI_CON` user (configurable) is the default owner of the log table. This sp
 
 To detect changes using Changelog (triggers), set the connector type in the pipeline configuration by choosing the **Capture** component. In the Core Properties section, select DB Changelog from the drop-down list.
 
-![The drop-down list for Connector Type with DB Changelog selected, in the Core Properties section of Configure Pipeline](media/image16.png)
+![The drop-down list for Connector Type with DB Changelog selected, in the Core Properties section of Configure Pipeline](Media/image16.png)
 
 After the DB Changelog connector type has been selected and configured, you can configure the properties in the Core Properties, Advanced Properties, and [Event Content](configure-connector-types-and-properties.md#event-contents) sections at the bottom. For properties common to all connectors, see [Configure capture connector types and properties](configure-connector-types-and-properties.md#common-properties-for-all-connectors).
 
@@ -87,7 +87,7 @@ The name of the database table where changes to database entries are logged. You
 
 When you save the connector type configuration, you are prompted to execute the scripts on the database server. An example is shown below.
 
-![A prompt to execute DB Changelog configure scripts with **No** and **OK** buttons](media/image17.png)
+![A prompt to execute DB Changelog configure scripts with **No** and **OK** buttons](Media/image17.png)
 
 If you choose **OK** to execute the DB Changelog scripts, `SELECT`, `INSERT`, `UPDATE`, and `DELETE` access are granted for PUBLIC to the LOG table. Check with your database administrator if you need to restrict access rights on the log table. You can select the **NO** option and the generated script can be reviewed, modified if needed, and run on the database by a DBA. Click the Download button to download the sql scripts.
 
@@ -134,7 +134,7 @@ The counter connector supports database integer data types; more specifically, t
 
 To detect changes using the Database Counter connector, set the connector type in the pipeline configuration by choosing the **Capture** component. In the Core Properties section, select **DB Counter** from the drop-down list.
 
-![The drop-down list for Connector Type with **DB Counter** selected, in the Core Properties section of Configure Pipeline](media/image20.png)
+![The drop-down list for Connector Type with **DB Counter** selected, in the Core Properties section of Configure Pipeline](Media/image20.png)
 
 After the Database Counter connector type has been selected and configured, configure the properties in the Core Properties, Advanced Properties, and [Event Content](configure-connector-types-and-properties.md#event-contents) sections at the bottom. For properties common to all connectors, see [Configure capture connector types and properties](configure-connector-types-and-properties.md#common-properties-for-all-connectors).
 
@@ -146,7 +146,7 @@ In the Core Properties section, enter a column name in the Change Type Column pr
 
 In the Core Properties section, enter a column name in the Counter Column property. This value is the database table column name that contains the value that auto-increments when the row changes.
 
-![The Counter Column property value in the Core Properties section, which has been set as `CHANGECOUNTER`](media/image21.png)
+![The Counter Column property value in the Core Properties section, which has been set as `CHANGECOUNTER`](Media/image21.png)
 
 ### SQL Filter
 
@@ -204,7 +204,7 @@ This connector type can be used for detecting changes in Oracle, SQL Server, MyS
 
 To detect changes using a timestamp, set the connector type in the pipeline configuration by choosing the **Capture** component. In the Core Properties section, select DB Timestamp from the drop-down list.
 
-![The drop-down list for Connector Type with **DB Timestamp** selected, in the Core Properties section of Configure Pipeline](media/image18.png)
+![The drop-down list for Connector Type with **DB Timestamp** selected, in the Core Properties section of Configure Pipeline](Media/image18.png)
 
 After the DB Timestamp connector type has been selected, configure the properties in the Core Properties, Advanced Properties, and [Event Contents](configure-connector-types-and-properties.md#event-contents) sections. For properties common to all connectors, see [Configure capture connector types and properties](configure-connector-types-and-properties.md#common-properties-for-all-connectors).
 
@@ -217,7 +217,7 @@ In the Core Properties section, set the Timestamp Column. The value of this prop
 
 If an invalid column name is configured, the connector stops.
 
-![The Timestamp Column property value in the Core Properties section, which has been set as `CHANGETIME`](media/image19.png)
+![The Timestamp Column property value in the Core Properties section, which has been set as `CHANGETIME`](Media/image19.png)
 
 ### Processing Delay
 
@@ -282,7 +282,7 @@ Any LDAP directory that offers a persistent search mechanism can use the Persist
 
 Set the connector type in the pipeline configuration by choosing the **Capture** component. In the Core Properties section, select the connector type from the drop-down list.
 
-![The drop-down list for Connector Type with **LDAP** selected, in the Core Properties section of Configure Pipeline](media/image8.png)
+![The drop-down list for Connector Type with **LDAP** selected, in the Core Properties section of Configure Pipeline](Media/image8.png)
 
 After selecting the Connector Type, configure the connector properties. For properties common to all connectors, see [Configure capture connector types and properties](configure-connector-types-and-properties.md#common-properties-for-all-connectors). The general properties for LDAP connectors are configured in the Core Properties section. Properties related to filtering of events are configured in the Event Filtering section. Properties related to the contents of the messages published by the connector are configured in the [Event Content](configure-connector-types-and-properties.md#event-contents) section. All other properties are configured in the Advanced Properties section. [Polling interval](configure-connector-types-and-properties.md#polling-interval)is not required for the LDAP Persistent Search connector. For properties that determine how the connector filters events that are not needed, configure the LDAP Filter, Included Branches and Excluded Branches in the Event Filtering section. These properties are described below.
 
@@ -305,7 +305,7 @@ If the captured change type is not delete (e.g. insert, update, move, etc.), and
 
 To further condition the entries that are published, you can indicate one or more branches to exclude. In the Excluded Branches property, enter one or more suffixes associated with entries that should not be published by the connector. Select **Enter** after each suffix. An example is shown below.
 
-![Two suffixes entered in the Excluded Branches property](media/image9.png)
+![Two suffixes entered in the Excluded Branches property](Media/image9.png)
 
 If the changed entry DN contains a suffix that matches the excluded branches value, or is a change in the exact entry that is listed (e.g. `ou=dept1,ou=com`), this entry is not published by the connector. Otherwise, the entry is published. This can avoid publishing unwanted information.
 
@@ -318,7 +318,7 @@ If a change is made to this property while the connector is running, the new val
 
 To further condition the entries that are published, you can indicate one or more branches to include. In the Included Branches property, enter one or more suffixes associated with entries that should be published by the connector. Select **Enter** after each suffix. An example is shown below.
 
-![Two suffixes entered in the Included Branches property](media/image10.png)
+![Two suffixes entered in the Included Branches property](Media/image10.png)
 
 If the changed entry DN contains a suffix that matches the included branches value, or is a change in the exact entry that is listed (e.g. `ou=dept1,ou=com`), this entry is published by the connector. Otherwise, the entry is not published. This can avoid publishing unwanted
 information.
@@ -342,7 +342,7 @@ To disable attempts to reconnect to the primary server, set this value to `zero`
 
 Changes made to this property's value while the connector is running are immediately taken into account. When the connector starts or restarts and the property value is `1` or higher, the connector attempts to switch to the primary server immediately.
 
-![The **Switch to Primary Server (in polling intervals)** property with a value set to `0`](media/image11.png)
+![The **Switch to Primary Server (in polling intervals)** property with a value set to `0`](Media/image11.png)
 
 ### Failover Algorithm
 
@@ -352,7 +352,7 @@ When a failover happens, the changelog capture connector attempts to find a new 
 
 The Failover Algorithm property allows you to determine how the cursor value gets set during failover, and ultimately determine the quantity of events that are replayed. The property supports values between `1` and `4`. The meaning of each is outlined in the table below.
 
-![The **Failover Algorithm** property with a value set to `1`](media/image12.png)
+![The **Failover Algorithm** property with a value set to `1`](Media/image12.png)
 
 | Value | Function | Set this value if... |
 |---|---|---|
@@ -369,7 +369,7 @@ There are three types of Active Directory connectors: USNChanged, DirSync and Hy
 
 The decision tree below can help guide you on the Active Directory connector type to use.
 
-![A decision tree that can guide you on the Active Directory connector type to use](media/image13.png)
+![A decision tree that can guide you on the Active Directory connector type to use](Media/image13.png)
 
 **Active Directory USNChanged connector**
 
@@ -467,7 +467,7 @@ If the captured change type is not delete (e.g. insert, update, move, etc.), and
 
 This is used for event filtering. To further condition the entries that are published, you can indicate one or more branches to exclude. In the Excluded Branches property, enter one or more suffixes associated with entries that should not be published by the connector. Select **Enter** after each suffix. An example is shown below.
 
-![Two suffixes entered in the Excluded Branches property](media/image9.png)
+![Two suffixes entered in the Excluded Branches property](Media/image9.png)
 
 If the changed entry DN contains a suffix that matches the excluded branches value, or is a change in the exact entry that is listed (e.g. `ou=dept1,ou=com`), this entry is not published by the connector. Otherwise, the entry is published. This can avoid publishing unwanted information.
 
@@ -480,7 +480,7 @@ If a change is made to this property while the connector is running, the new val
 
 This is used for event filtering. To further condition the entries that are published, you can indicate one or more branches to include. In the Included Branches property, enter one or more suffixes associated with entries that should be published by the connector. Select **Enter** after each suffix. An example is shown below.
 
-![Two suffixes entered in the Included Branches property](media/image10.png)
+![Two suffixes entered in the Included Branches property](Media/image10.png)
 
 If the changed entry DN contains a suffix that matches the included branches value, or is a change in the exact entry that is listed (e.g. `ou=dept1,ou=com`), this entry is published by the connector. Otherwise, the entry is not published. This can avoid publishing unwanted information.
 
