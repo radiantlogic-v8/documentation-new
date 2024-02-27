@@ -275,9 +275,9 @@ An option to manage dynamic group members is to manually add the groupOfUrls obj
 
 1.	Navigate to the group in the Control Panel > Manage > Directory Browser.
 
-2.	With the group entry selected, on the right side, click the ![Add Value](Media/add-value-option.jpg) inline with the objectclass attribute.
+2.	With the group entry selected, on the right side, click the ![Plus Sign](Media/plus-sign.jpg) inline with the objectclass attribute.
 
-3.	Enter groupOfURLs for the new object class and click the ![Checkmark](Media/checkmark.jpg) to confirm.
+3.	Enter *groupOfURLs* for the new object class and click the ![Checkmark](Media/checkmark.jpg) to confirm.
 
 4.	To add members, with the group selected in the tree, click ![Add Attribute](Media/add-attribute-button.jpg) on the right side.
 
