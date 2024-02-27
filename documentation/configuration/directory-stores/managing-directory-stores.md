@@ -652,7 +652,7 @@ Changes to entries can be detected based on changelog (listening for change on t
 ### Changelog
 The changelog is one of the recommended approaches for other processes to detect changes that have happened to RadiantOne entries. 
 
-The Changelog can be enabled from the Classic Control Panel > Settings Tab > Logs section > Changelog sub-section. 
+The Changelog settings can be managed from the Classic Control Panel > Settings Tab > Logs section > Changelog sub-section. 
 To switch to Classic Control Panel, use the menu options for the logged in user in the upper right.
 
 If enabled, the change log stores all modifications made to any entry in the RadiantOne namespace including entries that are stored in persistent cache. The contents of the change log can be viewed below the cn=changelog suffix in the directory. This suffix is indicated in the RadiantOne rootDSE changelog attribute. The rootDSE also contains the firstchangenumber and lastchangenumber attributes. This information can be used by clients as a cursor to track changes. Access the rootDSE by querying the RadiantOne service with an empty/blank Base DN.
