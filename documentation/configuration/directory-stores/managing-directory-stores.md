@@ -715,7 +715,7 @@ To exclude attributes in changelog searches:
 11.	Click **OK** to close the Save Node button. 
 
 When a member of the group searches the changelog, the specified attributes are not included in the “changes” attribute. An example is shown below that compares 
- a search with no excluded attributes (left0 and on with attributes excluded (right). 
+ a search with no excluded attributes (left) and one with attributes excluded (right). 
 
 ![cn=config Searches with No Excluded Attributes (left) and with Attributes Excluded (right)](Media/Image3.144.jpg)
 
