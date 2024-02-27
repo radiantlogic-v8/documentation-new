@@ -669,7 +669,7 @@ Each entry in the changelog is comprised of the following attributes:
 -	targetDN - DN of the entry that changed.
 -	timestampms –used by RadiantOne internally for changelog isolation per naming context.
 
-For more details on these operational attributes, see the [Operational Attributes](...
+For more details on these operational attributes, see: [Operational Attributes](/understanding-operational-attributes)
 
 ### Disabling Changelog for Certain Naming Contexts 
 
