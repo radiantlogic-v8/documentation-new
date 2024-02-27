@@ -104,7 +104,7 @@ An optional advanced setup is available if you would like to upload a configurat
 
 ![image description](images/advanced-setup.png)
 
-The **Install Samples** option imports sample data. See [Sample Data](/introduction/samples.md) for further details about sample data.
+The **Install Samples** option imports sample data. See [Sample Data](../introduction/samples.md) for further details about sample data.
 
 #### Custom Configuration
 
