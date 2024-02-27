@@ -26,7 +26,7 @@ Capture connectors publish change messages to queues. A sync engine receives not
 
 A high-level architecture is shown below.
 
-![A flow chart of high level architecture](media/image1.png)
+![A flow chart of high level architecture](media/architecture.png)
 
 ### Reset connector cursor – detect new changes only
 
