@@ -470,16 +470,27 @@ To update attributes:
 
 *Adding Attributes*
 
-To add attributes, select the user in the directory tree and on the right side, click **+ADD ATTRIBUTE**. Enter an attribute name or select the attribute from the drop-down list and provide a value. Click ![Checkmark](Media/checkmark.jpg) and then click **CREATE**.
+To add attributes:
+1. Select the user in the directory tree.
+2. On the right side, click **+ADD ATTRIBUTE**.
+3. Enter an attribute name or select the attribute from the drop-down list and provide a value.
+4. Click ![Checkmark](Media/checkmark.jpg) and then click **CREATE**.
 
 *Modifying RDN*
-Changing the RDN of an entry is a special operation. To change the RDN attribute value, select the user in the directory tree and on the right side, click: ![Rename](Media/rename-entry.jpg). Enter the RDN (name and value) and click **SAVE**. Click **REFRESH ENTRY** to see the updated RDN attribute.
+Changing the RDN of an entry is a special operation. To change the RDN attribute value:
+1. Select the user in the directory tree.
+2. On the right side, click: ![Rename](Media/rename-entry.jpg).
+3. Enter the RDN (name and value) and click **SAVE**.
+4. Click **REFRESH ENTRY** to see the updated RDN attribute.
 
 ![Rename](Media/rename-example.jpg)
 
 *Deleting Attributes*
 
-To delete attributes, select the user in the directory tree and on the right side, click the ![Trashcan](Media/trashcan.jpg) incon inline with the attribute you want to delete. Click **DELETE** to confirm.
+To delete attributes:
+1. Select the user in the directory tree.
+2. On the right side, click the ![Trashcan](Media/trashcan.jpg) incon inline with the attribute you want to delete.
+3. Click **DELETE** to confirm.
 
 ##### Editing Photo Attributes
 If an attribute is of binary type, select the attribute and choose Modify Attribute > Edit. This brings up the binary editor. Browse to the new file and click **Confirm**.
@@ -491,12 +502,17 @@ Figure 5.32: Binary Attribute Editor
 *Resetting Passwords*
 
 The RadiantOne Directory uses the *userPassword* attribute to store passwords for user entries associated with the inetOrgPerson object class.
-To reset a user’s password, select the user entry in the directory tree and on the right, click the ![Pencil](Media/pencil.jpg) icon inline with the userPassword attribute. Enter a new password and click the ![Checkmark](Media/checkmark.jpg).  
+To reset a user’s password:
+1. Select the user entry in the directory tree.
+2. On the right, click the ![Pencil](Media/pencil.jpg) icon inline with the userPassword attribute.
+3. Enter a new password and click the ![Checkmark](Media/checkmark.jpg).  
 
 *Moving Entries*
 
-To move a user entry from one container to another within the same root naming context representing the same backend data source, select the entry and click the Move Entry (![Move Entry](Media/move-entry.jpg)) option. 
-Either enter the DN or browse to the location where you want the entry moved to and click **SAVE**.
+To move a user entry from one container to another within the same root naming context representing the same backend data source:
+1. Select the user entry in the diretory tree.
+2. Click the Move Entry (![Move Entry](Media/move-entry.jpg)) option.
+3. Either enter the DN or browse to the location where you want the entry moved to and click **SAVE**.
 
 >[!warning] 
 >Entries can only be moved to/from containers below the same naming context representing the same backend data source. In the example shown below, the entry is moved from ou=Management to the ou=Inventory container.
@@ -513,7 +529,7 @@ From the Control Panel > Manage > Directory Browser, select the entry in the dir
 
 ### Alias Entries
 
-The RadiantOne Directory supports alias entries as defined in RFC 22521. Alias entries point to/reference another entry in the directory. The attribute containing the location of the target entry (DN) is aliasedObjectName and the object class associated with these entries is alias. When a client requests an alias entry, they can indicate if they want the alias dereferenced or not. The indicators are outlined in the table below.
+The RadiantOne Directory supports alias entries as defined in [RFC 4512](https://www.rfc-editor.org/rfc/rfc4512). Alias entries point to/reference another entry in the directory. The attribute containing the location of the target entry (DN) is aliasedObjectName and the object class associated with these entries is alias. When a client requests an alias entry, they can indicate if they want the alias dereferenced or not. The indicators are outlined in the table below.
 
 >[!warning] 
 >Dereferencing alias entries is only supported on base-level searches. One-level and subtree searches are not supported at this time.
@@ -629,6 +645,105 @@ Numsubordinates is an operational attribute and is only returned in searches whe
  
 Figure 5.35: Sample Search Requesting numSubordinates Attribute
 
-## Detecting Changes in RadiantOne Universal Directory
+## Detecting Changes in RadiantOne Directory
 
-Changes to entries can be detected based on changelog (listening for change on the cn=changelog naming context) or using the Persistent Search Control. For details on these change detection mechanisms, please see the [RadiantOne System Administration Guide](/documentation/sys-admin-guide-rebuild/03-front-end-settings/#persistent-search-control). 
+Changes to entries can be detected based on changelog (listening for change on the cn=changelog naming context) or using the Persistent Search Control.
+
+### Changelog
+The changelog is one of the recommended approaches for other processes to detect changes that have happened to RadiantOne entries. 
+
+The Changelog can be enabled from the Classic Control Panel > Settings Tab > Logs section > Changelog sub-section. 
+To switch to Classic Control Panel, use the menu options for the logged in user in the upper right.
+
+If enabled, the change log stores all modifications made to any entry in the RadiantOne namespace including entries that are stored in persistent cache. The contents of the change log can be viewed below the cn=changelog suffix in the directory. This suffix is indicated in the RadiantOne rootDSE changelog attribute. The rootDSE also contains the firstchangenumber and lastchangenumber attributes. This information can be used by clients as a cursor to track changes. Access the rootDSE by querying the RadiantOne service with an empty/blank Base DN.
+
+Each entry in the changelog is comprised of the following attributes:
+
+-	changeNumber – number that uniquely identifies an entry
+-	changes – LDIF formatted value that describes the changes made to the entry.
+-	changeTime – time of the change.
+-	changeType – type of change: add, modify, delete
+-	entrydn – DN of the entry that changed.
+-	objectClass – all entries are associated with top and changelogEntry object classes.
+-	targetContextId – used internally by RadiantOne for isolation per naming context.
+-	targetDN - DN of the entry that changed.
+-	timestampms –used by RadiantOne internally for changelog isolation per naming context.
+
+For more details on these operational attributes, see the [Operational Attributes](...
+
+### Disabling Changelog for Certain Naming Contexts 
+
+Changes to entries in certain naming contexts representing specific RadiantOne Directory stores or local persistent cache, are not applicable to logging into changelog (e.g. cn=replicationjournal, cn=config…etc.). Other naming contexts that represent backend directories (proxy views to these directories) might not require changelog either. Therefore, these naming contexts can have this function disabled. The list of disabled naming contexts is configured from the Classic Control Panel > Settings Tab > Logs section > Changelog sub-section. Uncheck the Changelog box to disable the naming context.
+
+>[!warning] 
+>In most cases, this setting should not be touched. Only naming contexts representing RadiantOne Directory stores, persistent cache, or proxy views are shown in the list. Disabling changelog for certain naming contexts should only be done when advised by Radiant Logic.
+
+### Automatic Backup of Changelog
+
+Whenever the RadiantOne service starts, the changelog storage is checked to see if there are enough change numbers left for use (a total of 2 billion numbers are allocated for use). If there is less than 10% of the 2 billion numbers left, the existing records are automatically be rolled over into the corresponding backup storage and the change number will start over at number 1. 
+
+While the RadiantOne service running, once the change log number reaches 90% capacity (90% of the allocated 2 billion numbers are used), the following warning message will appear in the RadiantOne log "!!! 90% change numbers have been used! The VDS should be restarted to prevent any possible exhaust of change number and loss of change records." When this message appears, the RadiantOne service should be restarted. If it is not restarted and the entire 2 billion allocated numbers are used, changes are no longer logged into the changelog.
+
+### Excluded Change Log Attributes
+
+When entries are changed, the change log reports the attributes under its "changes" attribute. This may pose a security risk if sensitive attributes have been changed, and the change log is searchable by outside applications such as sync connectors. To eliminate this risk, the Excluded Change Log Attributes option allows you to exclude selected attributes from members of the “ChangelogAllowedAttributesOnly” group. Though these attributes are logged in the change log, they are not returned for these group members when performing a search on the change log. 
+
+To exclude attributes in changelog searches:
+
+1.	In the Control Panel > Manage > Directory Browser expand cn=config and ou=groups. 
+
+2.	Select cn=ChangelogAllowedAttributesOnly. 
+
+3.	Add users and/or groups that you do not want to have access to the “changes” attribute for certain attributes.  
+
+5.	On the Zookeeper tab, expand `radiantone/v2/<clustername>/config`. 
+
+6.	Select vds_server.conf. 
+
+7.	In the pane on the right, find changelogExcludedAttributes. 
+
+8.	Click **Edit Mode**. 
+
+9.	In the brackets, enter attributes to be excluded in a comma-separated list. Wrap each attribute in double quotes. For example:
+
+```
+["mail", "l", "homePhone"],
+```
+
+10.	Click **Save**. 
+
+11.	Click **OK** to close the Save Node button. 
+
+When a member of the group searches the changelog, the specified attributes are not included in the “changes” attribute. An example is shown below that compares 
+ a search with no excluded attributes (left0 and on with attributes excluded (right). 
+
+![cn=config Searches with No Excluded Attributes (left) and with Attributes Excluded (right)](Media/Image3.144.jpg)
+
+### Changelog and Replication Journal Max Age
+
+For the RadiantOne service to maintain efficiency and performance (as well as save disk space), you should set a maximum age for changelog entries. The maximum age parameter specifies the number of days an entry stays in storage for the following event stores.
+-	cn=changelog
+-	cn=cacherefreshlog
+-	cn=replicationjournal
+
+  >[!note] 
+  >Maximum age also applies to the vdsSyncHist attribute maintained at the level of entries involved in inter-cluster replication. This attribute is multi-valued and continues to grow until the RadiantOne service scans the values and removes ones that are older than the maximum age. RadiantOne scans the values only when the entry is modified. For entries that aren’t updated often, vdsSyncHist will potentially contain values that are older than the maximum age.**
+-	cn=localjournal
+-	cn=tombstone
+-	stores below cn=queue 
+-	stores below cn=dlqueue
+
+Records older than the maximum age are deleted automatically. Old change log numbers (from deleted records) do not get re-used.
+
+This parameter is set in the Main Control Panel > Settings Tab > Logs section > Changelog sub-section. The default value is 3 days which means records are automatically deleted after 3 days.
+
+### Persistent Search Control
+Using the Persistent Search Control is one of the recommended approaches for other processes to detect changes that have happened to RadiantOne entries. The [changelog](09-logs#changelog) is the other method that can be used.
+
+This control can be enabled/disabled from the Main Control Panel > Settings Tab > Server Front End section > Supported Controls sub-section. Check the Persistent Search option and click Save. Restart the RadiantOne service. If you have a cluster deployed, restart the service on all nodes.
+
+If you enable the persistent search control, an LDAP client can receive notifications of changes that occur in the RadiantOne namespace. When a persistent search is requested, RadiantOne keeps the search operation going so clients can receive changed entries (and additional information about the changes that occurred). 
+
+>[!note] 
+>The changelog number associated with the changed entries (logged into cn=changelog) is also returned in the persistent search response.
+
