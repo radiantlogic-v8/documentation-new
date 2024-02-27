@@ -133,8 +133,7 @@ U.S. Government URLs:
 The templates install self-signed SSL/TLS certificates based on the internal server name that AWS assigns to each node. You can update the environment with CA-signed certificates after the install.
 
 26.  Enter the HTTPS port for the RadiantOne service to accept client requests on. This is also the HTTPS port configured in the Elastic Load Balancer. All client requests go through the Elastic Load Balancer on the HTTPS port (or LDAPS port mentioned in the previous step). The non-SSL HTTP port is not configurable in the template and defaults to 8089. There is no external access allowed to the RadiantOne service on the non-SSL HTTP port.
-27.  In the Directory Manager field, enter the administrator account name (e.g. cn=directory
-    manager).
+27.  In the Directory Manager field, enter the administrator account name (e.g. cn=directory manager).
 28.  Enter a password to use for the Directory Manager account. This value can be changed after the install.
 29.  Enter your unique RadiantOne license key for each cluster node. Each node must have its own license key unless you received a cluster-based license key. If you have a  cluster-based license key, the same license key can be used for all cluster nodes. Check with your Radiant Logic representative if you are not sure what kind of license you received.
 
