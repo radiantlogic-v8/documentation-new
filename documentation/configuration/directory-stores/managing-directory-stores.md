@@ -525,7 +525,9 @@ For information on setting access permissions, please see: [Access Controls](../
 
 ### Deleting Entries
 
-From the Control Panel > Manage > Directory Browser, select the entry in the directory tree and click ![Delete Entry](Media/delete-entry.jpg). Click **DELETE** to accept the deletion. If the entry being deleted is a container with child entries, the entire subtree is removed.
+From the Control Panel > Manage > Directory Browser, select the entry in the directory tree and click ...> Delete.
+![Delete Entry](Media/delete-entry.jpg). 
+Click **DELETE** to accept the deletion. If the entry being deleted is a container with child entries, the entire subtree is removed.
 
 ### Alias Entries
 
