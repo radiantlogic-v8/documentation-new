@@ -56,93 +56,68 @@ The back link attribute is returned only when explicitly requested by a client u
 To configure rules for linked attributes, following the steps below:
 
 1.	On the Control Panel > Setup > Directory Namespace > Namespace Design, select the RadiantOne Directory below the Root Naming Contexts.
+1.  On the right side, click the SPECIAL ATTRIBUTES tab and locate the Linked Attributes section (expand it if it is collapsed).
+    ![Special Attributes Handling](Media/linked-attributes-section.jpg)
+   
+1.  Click **+LINKED ATTRIBUTES**.
+1.	Select a back link attribute name from the drop-down list. If you don’t find the attribute that matches your needs, manually enter the attribute name. This dictates which attribute name RadiantOne returns the back link attribute value as and is generally either memberOf or isMemberOf (for group/user linked attributes).
+1.  Click **SELECT** next to the Target Base DN field. The *Select base DN* window is displayed.
+1.	Choose a base DN containing the entries (e.g. users) for which the back link attributes should be managed. In the example below, o=companydirectory is selected.
 
-    ![Special Attributes Handling](Media/Image3.130.jpg)
- 
-2. On the right side, click the SPECIAL ATTRIBUTES tab and locate the Linked Attributes section.
+    >[!warning] If your users and groups are in RadiantOne Directory stores, and you plan on enabling the [Optimize Linked Attribute setting](/managing-properties) and must support nested groups, only one user location per RadiantOne Directory store is supported. For example, having a user location configured for ou=Accounting,o=companydirectory and ou=Sales,o=companydirectory (both in the same o=companydirectory store) is not supported. In this case, you should configure a single user location as o=companydirectory as a shared parent for both user containers. 
 
-3.  Click **+LINKED ATTRIBUTES**.
-4.	Select a back link attribute name from the drop-down list. If you don’t find the attribute that matches your needs, manually enter the attribute name. This dictates which attribute name RadiantOne returns the back link attribute value as and is generally either memberOf or isMemberOf (for group/user linked attributes).
+    ![Linked Attribute](Media/add-linked-attribute-mapping.jpg)
+     
+1.	Click **SELECT**. 
 
-5.  Enter or select the back link attribute name.
-6.	Click **SELECT** next to the Target Base DN field. The *Select base DN* window is displayed.
+1.	Under Source Base DNs, click **SELECT**. The Choose your base DN windows is displayed.
 
-7.	Select a base DN containing the entries (e.g. users) for which the back link attributes should be managed. In the example below, ou=allprofiles is selected.
+1.	Select a base DN containing the entries (e.g. groups) applicable for the objects (containing the forward link) matching what was defined in step 5 above and click **SELECT**. 
 
-    >[!warning] If your users and groups are in RadiantOne Directory stores, and you plan on enabling the [Optimize Linked Attribute setting](/managing-properties) and must support nested groups, only one user location per RadiantOne Directory store is supported. For example, having a user location configured for ou=Accounting,o=RadiantOne Directory and ou=Sales,o=RadiantOne Directory (both in the same o=RadiantOne Directory store) is not supported. In this case, you should configure a single user location as o=RadiantOne Directory as a shared parent for both user containers. 
+1.	In the source object class list, verify the list includes the class associated with your entries (e.g. groups). Add any missing object classes.
 
-    ![An image showing ](Media/Image3.131.jpg)
- 
-    
-8.	Click **OK**. You are returned to the Add Linked Attribute Mapping window.
+1.	If the Source Base DNs location is for group objects, and the groups can be nested (contain members that are groups), check the option to *Enable Nested Relationships*.
 
-9.	Under Source Base DNs, click **Add**. The Choose your base DN windows is displayed.
+1.	Click **ADD**. The configuration is displayed in the Linked Attributes section.
 
-10.	Select a base DN containing the entries (e.g. groups) applicable for the objects (containing the forward link) matching what was defined in step 5 above and click **OK**. In the example below, ou=allprofiles is selected.
+1.	Click **SAVE**.
 
-11.	In the source object class list, verify the list includes the class associated with your entries (e.g. groups). Add any missing object classes.
+To test your results, you can use the Control Panel > Manage > Directory Browser. Click **+SEARCH**. Enter a name to save the search (e.g. LinkedAttributes). Enter or select your DN containing users. Choose *Subtree* as the scope from the drop-down list. You can enter a filter to look for a specific user (using the freeform/manual mode, or click **+NEW CONDITION**). In the Return Attributes field enter isMemberOf (assuming this is the back link attribute name configured for returning the groups). Click **SAVE** and then **TEST QUERY**. 
 
-12.	If the Source Base DNs location is for group objects, and the groups can be nested (contain members that are groups), check the option to Enable Nested Relationships.
+![Linked Attribute](Media/search-linked-attribute.jpg)
 
-13.	Click **OK**. The configuration is displayed in the Linked Attributes section.
-
-    ![An image showing ](Media/image1.132.jpg)
- 
-    Figure 14: Linked Attributes Configuration Rules
-
-14.	Click **Save** in the upper right corner.
-
-15.	To view the results of the example used in this section, on the Directory Browser Tab, and expand the ou=allprofiles and then example the ou=ad_sample node.
-
-16.	Select a user under ou=ad_sample (e.g. cn=Aggie_Newcombe) and select Search ![An image showing ](Media/search-button.jpg). The Search window is displayed.
-
-17.	In the Return Attributes field enter ismemberof (assuming this is the back link attribute name configured for returning the groups).
-
-18.	Select the Subtree option for Scope.
-
-19.	Click **Search**. 
-
-20.	In the Directory Tree View pane, click the user value. The results are displayed as shown below.
-
-![An image showing ](Media/Image3.133.jpg)
- 
-Figure 15: Example of isMemberOf Calculation
-
-The user Aggie Newcombe is currently a member of groups named Global, Inside Sales and Sales as referenced by the values of the isMemberOf attribute returned for her entry. If she were removed from one of these groups, or added to a new group located below ou=allprofiles, her isMemberOf attribute would reflect this automatically.
+The user in your filter should be returned. Select this entry and the attributes should display. The back link attribute (e.g. isMemberOf) should indicate the groups the use is a member of.
 
 ## Referential Integrity
 Referential integrity is the process of automatically maintaining consistent relationships among certain entries. This mechanism ensures that any references to an entry are updated whenever that entry is removed or altered. If it is configured, during every LDAP add, modify, delete, and rename operation, RadiantOne updates all necessary DN references (all other entries that refer to that entry). For example, if you remove a user's entry from the directory, and the user is a member of a group, the server also removes the user from the group. If referential integrity is not enabled, the user remains a member of the group until manually removed. Historically, referential integrity is primarily used to ensure that attributes with a distinguished name syntax (especially group membership attributes like member and uniqueMember) are properly maintained in the event of delete or modify DN operations. For a delete operation, any references to the target entry are removed. For modify DN operations, any references to the target entry are renamed accordingly.
 
+Referential integrity is only supported for RadiantOne Directory stores and persistent cache. This means that the users and groups locations configured must point to a RadiantOne Directory store or persistent cache.
 The following referential integrity rules are supported by RadiantOne:
 
 -	Disabled
 Referential integrity is not enforced for the specified Base DN.
 -	Enabled
-Referential integrity applies to the member, uniquemember and manager attributes by default. Add any attribute that is of type DN syntax as needed (comma-separated if you need to list many attributes). Some examples are: owner and managedBy.
-![An image showing ](Media/Image3.134.jpg)
-
-If referential integrity is enabled, and you want RadiantOne to ensure any values entered for member/uniquemember, or attribute in this list, references a valid DN in the Directory Information Tree (DIT), check the “Validate User Exists in DIT” checkbox. If this option is selected, and a value does not reference a valid Distinguished Name (DN) that is part of the current DIT, the modify operation will fail. Error code 19 will be returned indicating a referential integrity violation.
-
-Referential integrity is only supported for RadiantOne Directory stores and persistent cache. This means that the users and groups locations configured must point to a RadiantOne Directory store or persistent cache.
+Referential integrity applies to the member, uniquemember and manager attributes by default. Add any attribute that is of type DN syntax as needed. Enter the attribue name and press "Enter" on the keyboard for each value. Some examples are: owner and managedBy.
+![Referential Integrity](Media/referential-integrity.jpg)
 
 >[!warning]
 >If you cache entries from a directory backend that maintains referential integrity, and use a native change type for detecting changes for cache refresh (e.g. Changelog, Active Directory, DirSync), you must list all backlink attributes that need refreshed in the cache when a change is detected on the main object. For example, to update the directReports attribute in the persistent cache when a change is detected on a user entry, list the manager attribute in the List of Referential Integrity Attributes property. Some common related attributes typically found in Active Directory are listed below (this list is not exhaustive):<BR> member/memberOf <BR> manager/directReports <BR> owner/ownerBL <BR>  altRecipient/altRecipientBL <BR>    dLMemRejectPerms/dLMemSubmitPermsBL <BR>  publicDelegates/publicDelegatesBL
 
 Referential integrity is not enabled by default. To enable and configure it, following the steps below.
 
-1.	From the Main Control Panel > Settings Tab > Interception section > Special Attributes Handling sub-section, locate the Referential Integrity section on the right side.
+1.	On the Control Panel > Setup > Directory Namespace > Namespace Design, select the RadiantOne Directory below the Root Naming Contexts.
+1.  On the right side, click the SPECIAL ATTRIBUTES tab and locate the Referential Integrity section (expand it if it is collapsed).
+1.	Click **+REFERENTIAL INTEGRITY**.
+1.	In the Users Location section, select or enter the Base DN location containing the possible members associated with the groups you define in the next step. The users must be in a RadiantOne Directory store or persistent cache. If a user is moved or deleted from this location, all groups referencing this user entry are updated accordingly (the value is updated or deleted). Click **SELECT**.
+1.	Click **+NEW** in the Groups Location.
+1.  Enter or browse to the Groups Location.
+1.  Click the ![Checkmark](Media/checkmark.jpg) inline with the groups location. Add more groups locations if needed.
 
-2.	Click **Add**.
-
-3.	In the Groups Location section, click **Add**.
-
-4.	Navigate to the container where group entries are located and click **OK**. Referential integrity is enforced for any group below this location. The groups must be in a RadiantOne Directory store or persistent cache.
-
-5.	In the Users Location section, click **Choose** and navigate to the location containing the possible members associated with the groups you defined in the previous step. The users must be in a RadiantOne Directory store or persistent cache. If a user is moved or deleted from this location, all groups referencing this user entry are updated accordingly (the value is updated or deleted). Click **OK**.
-
-6.	Select the applicable referential integrity rule (based on the descriptions above) and click **OK**.
-
-7.	Click **Save** in the top right.
+1.	Select if the applicable referential integrity rule should be Enabled or Disabled (based on the descriptions above).
+1.	Enter attributes to maintain referential integrity for. Enter the attribute name and press "Enter" on the keyboard after each value.
+1.  If referential integrity is enabled, and you want RadiantOne to ensure any values entered for member/uniquemember, or attribute in this list, references a valid DN in the Directory Information Tree (DIT), check the “Validate User Exists in DIT” checkbox. If this option is selected, and a value does not reference a valid Distinguished Name (DN) that is part of the current DIT, the modify operation will fail. Error code 19 will be returned indicating a referential integrity violation.
+1.	Click **ADD**.
+1.	Click **SAVE**.
 
 ## Dynamic Group
 For dynamic groups, the membership is determined by search criteria using an LDAP URL as opposed to being maintained explicitly in a list. For example, suppose that you want a Sales group to contain every employee that has a title of Sales Manager. To do this, you create a dynamic group named Sales associated with the groupOfURLs objectclass. Then, instead of statically assigning member DNs as unique members (in the member or uniqueMember attribute), you define a memberURL attribute that contains the LDAP URL and criteria (seach base, scope and filter) to be used for determining members of the group. 
