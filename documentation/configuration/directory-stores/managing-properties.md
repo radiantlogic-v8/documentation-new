@@ -268,7 +268,7 @@ Adding and removing attributes from the *Replication Excluded Attributes* list t
 
 1.	From the Control Panel > Manage > Directory Namespace > Namespace Design select the RadiantOne Directory below Root Naming Contexts.
 1.	On the PROPERTIES tab on the right, click **EDIT** next to the *Replication Excluded Attributes* property.
-1.	Click the option to "pause" inter-cluster replication prior to changing the excluded attributes list.
+1.	Click the link to "pause replication" prior to changing the excluded attributes list.
 	![Pausing Inter-cluster Replication](Media/pause-replication.jpg)
   	
 1.	With inter-cluster replication paused, enter the attribute name(s) and press "Enter" on the keyboard after each.
@@ -290,6 +290,26 @@ An example of configuring two sub-trees for replication would be:
 “replicationSubtreeDomains” : [“ou=Accounting,o=companydirectory”, “ou=Sales,o=companydirectory”],
 
 
-## Operations Redirection
+### Push Mode Replication
 
-In certain deployment scenarios, RadiantOne Directory stores should not process all types of operations. By default, RadiantOne directs all operations to the local store. However, in certain circumstances (e.g. deployments across multiple sites/data centers) you may want to direct write and/or bind operations to another RadiantOne server. For details on redirections, please see the [RadiantOne System Administration Guide](/documentation/sys-admin-guide-rebuild/01-introduction).
+To address a very small subset of use cases, namely where a global load balancer directs client traffic across data centers/sites, where the inter-cluster replication architecture might be too slow, you have the option to enable an additional, more real-time replication mode where changes can be pushed directly to intended targets. For example, an update made by a client to one data center might not be replicated to other data centers in time for the client to immediately read the change, if the read request it sent to a different data center than where the update was. This is depicted in the diagram below.
+
+![An image showing ](Media/Image7.20.jpg)
+
+This is generally not a best practice distribution policy when working with distributed systems. Load balancing is best deployed across multiple nodes within the same site/data center.
+
+In any event, to address scenarios like this, a push replication mode is available to directly send the changes to intended targets. The targets must be other RadiantOne Directory stores. The LDAP data source definition could represent all nodes in the target cluster by indicating one as the primary and the rest of the nodes as failover, or it could point to a load balancer which in turn is configured to distribute requests across the cluster nodes.
+
+Pushing replication events can make the changes available in other data centers faster than waiting for the publish/subscribe method. There are two modes to push events: default and ensured push mode. The default push mode is a broadcast of the changes to the configured targets. There is no waiting for acknowledgement that the targets can be reached prior to returning the modify response to the client. The server that receives the write operation pushes the change to all configured targets, updates its local store, writes the change to the replication journal and responds to the client with a modify response. With the ensured push mode, the server sends the changes to the configured targets and waits for an acknowledgement about whether the target(s) could be reached or not. Enabling this mode provides a certain level of assurance that the target(s) have received the changes without any guarantee that they were actually able to update their replica. However, this can reduce the throughput of the RadiantOne service because it does not respond to the client’s modify request until it gets an acknowledgment from all configured targets. If a target server is not responding with an acknowledgement, the “Write Operation Timeout” configured for LDAP connection pooling indicates at what point RadiantOne should stop waiting for the acknowledgment and update its own image, publish the change to the replication journal and send a modify response back to the client.
+
+>[!note]
+>The intended targets receive the changes from the replication journal whether the changes were successfully replicated with push mode.
+
+To enable push mode:
+1.	Select the RadiantOne Directory on the Control Panel > Setup > Directory Namespace > Namespace Design.
+2.	On the PROPERTIES tab, locate the Replication section.
+3.	Click **CONFIGURE PUSH MODE** next to the *INTER-CLUSTER REPLICATION* setting.
+4.	Select the LDAP data source configured for the RadiantOne Directory where you want to push replication events to.
+5.	(Optional) enable the Ensure Push Mode option if you to wait for acknowledgement of replication events before sending the response back to the client.
+6.	Click OK.
+7.	Click **SAVE**.
