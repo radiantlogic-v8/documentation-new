@@ -311,5 +311,5 @@ To enable push mode:
 3.	Click **CONFIGURE PUSH MODE** next to the *INTER-CLUSTER REPLICATION* setting.
 4.	Select the LDAP data source configured for the RadiantOne Directory where you want to push replication events to.
 5.	(Optional) enable the Ensure Push Mode option if you to wait for acknowledgement of replication events before sending the response back to the client.
-6.	Click OK.
+6.	Click **OK**.
 7.	Click **SAVE**.
