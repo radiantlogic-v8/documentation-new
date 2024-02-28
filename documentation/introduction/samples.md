@@ -10,7 +10,7 @@ This guide describes default naming contexts and default data sources.
 >[!note] For more information on installing the samples described in this guide, refer to the guide on [creating environments](installation/create-environments.md).
 
 >[!note] Some of the files mentioned in this guide are edited using the Control Panel's File Manager option. To edit files in File Mananger:
-In the upper-left corner of the Control Panel, click [classic-control-panel](Media/profile-icon.png) and select Open Classic Control Panel. 
+In the upper-left corner of the Control Panel, click [classic-control-panel](media/profile-icon.png) and select Open Classic Control Panel. 
 Click Open. The classic control panel launches in a new browser tab. 
 In the classic Control Panel, navigate to Settings > Configuration > File Manager.
 
@@ -21,7 +21,7 @@ This section describes all the default root naming contexts included with Radian
 The sample naming contexts are as follows.
 
 - o=vds
-<br> NOTE - NEEDS TO BE UPDATED This naming context contains many sample virtual views mounted below it. This naming context may be hidden (by specifying it as a hidden context in the rootdse.ldif file for the RadiantOne service) but should not be deleted.
+<br> This naming context contains many sample virtual views mounted below it. This naming context may be hidden (by specifying it as a hidden context in the rootdse.ldif file for the RadiantOne service) but should not be deleted.  
 
 - o=companydirectory
 <br> This is a sample local RadiantOne Universal Directory store. The data is stored in this RadiantOne Universal Directory can be managed from the Directory Browser tab in the Main Control Panel. This naming context is used in the RadiantOne training materials. If you do not plan on using the RadiantOne Tutorials (for training) then this entire naming context may be deleted (de-activate it before removing the naming context).
@@ -45,13 +45,13 @@ After deleting the naming context, you can also delete the underlying identity v
 >[!note] Although the ou=AllProfiles naming context is associated with the "default" schema file, this schema file should not be deleted if you delete the ou=AllProfiles naming context as it is used by other RadiantOne internal components.
 
 - cn=replicationjournal
-<br>  NOTE - NEEDS TO BE UPDATED This naming context is used for inter-cluster replication. This naming context may be hidden (by specifying it as a hidden context in the rootdse.ldif file for RadiantOne) but should not be deleted.
+<br> This naming context is used for inter-cluster replication. This naming context may be hidden (by specifying it as a hidden context in the rootdse.ldif file for RadiantOne) but should not be deleted.
 
 -  cn=extendedxjoin
-<br>  NOTE - NEEDS TO BE UPDATED This naming context is used when the default store setting is configured for an extended join. This naming context may be hidden (by specifying it as a hidden context in the rootdse.ldif file for RadiantOne) but should not be deleted.
+<br> This naming context is used when the default store setting is configured for an extended join. This naming context may be hidden (by specifying it as a hidden context in the rootdse.ldif file for RadiantOne) but should not be deleted.
 
 - cn=config
-<br>  NOTE - NEEDS TO BE UPDATED This naming context stores certain global configuration information for RadiantOne. This naming context may be hidden (by specifying it as a hidden context in the rootdse.ldif file for RadiantOne) but should not be deleted.
+<br> This naming context stores certain global configuration information for RadiantOne. This naming context may be hidden (by specifying it as a hidden context in the rootdse.ldif file for RadiantOne) but should not be deleted.
 
 - cn=changelog
 <br> This naming context stores a list of changes made to RadiantOne. Clients can leverage this for detecting changes that happen in the RadiantOne namespace. This naming context should not be deleted.
@@ -60,13 +60,13 @@ After deleting the naming context, you can also delete the underlying identity v
 <br> This naming context stores a list of changes made during persistent cache refresh. This naming context should not be deleted.
 
 - cn=registry
-<br>  NOTE - NEEDS TO BE UPDATED This naming context is used internally by RadiantOne to store configuration information for the Global Sync Module and the Global Identity Builder. This naming context may be hidden (by specifying it as a hidden context in the rootdse.ldif file for RadiantOne) but should not be deleted.
+<br> This naming context is used internally by RadiantOne to store configuration information for the Global Sync Module and the Global Identity Builder. This naming context may be hidden (by specifying it as a hidden context in the rootdse.ldif file for RadiantOne) but should not be deleted.
 
 - cn=system-registry
-<br> NOTE - NEEDS TO BE UPDATED This naming context is used internally by RadiantOne to store ADAP session tokens. This naming context may be hidden (by specifying it as a hidden context in the rootdse.ldif file for RadiantOne) but should not be deleted.
+<br> This naming context is used internally by RadiantOne to store ADAP session tokens. This naming context may be hidden (by specifying it as a hidden context in the rootdse.ldif file for RadiantOne) but should not be deleted.
 
 - dv=globalprofiles
-<br> NOTE - NEEDS TO BE UPDATED This naming context is created and used by the Global Identity Builder and Global Identity Viewer applications. This naming context may be hidden (by specifying it as a hidden context in the rootdse.ldif file for RadiantOne) but should not be deleted.
+<br> This naming context is created and used by the Global Identity Builder and Global Identity Viewer applications. This naming context may be hidden (by specifying it as a hidden context in the rootdse.ldif file for RadiantOne) but should not be deleted.
 
 ### Default Data Sources
 
@@ -103,7 +103,6 @@ NOTE - NEEDS TO BE UPDATED - googledirectory – for creating virtual views from
 
 - mgraph - for creating virtual views from Azure AD. This uses the Microsoft Graph API.
 - epic – for creating virtual views from Epic data (Employees, Patients and Providers). This calls the Epic API and database. LDAP authenticate, move and modrdn operations are not supported for virtual views created from this data source. The Provider information is retrieved from the database directly as there is no API available. This information is read-only. This data source requires customization by Radiant Logic to use.
- 
   
    The Patient information does not support add or delete operations. Modify operations are only supported for address, name, email and phone attributes.
 
