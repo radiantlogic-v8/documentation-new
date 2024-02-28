@@ -51,59 +51,58 @@ Linked attributes are attributes that allow relationships between objects. A typ
 
 The most common back link/forward link relationship is between group and user objects. A list of groups a user is a member of can be automatically calculated by RadiantOne and returned in the membership attribute of the user entry. The default attribute name for the back link attribute is isMemberOf. However, you can configure any attribute name (e.g. memberOf) you want. 
 
-The back link attribute is returned only when explicitly requested by a client unless the back link location and forward link location are stored in a RadiantOne Directory store or Persistent Cache and the Optimize Linked Attribute option is enabled, in which case the back link attribute is always returned even when not requested (unless [Hide Operational Attributes](/understanding-operational-attributes) is enabled). Also, if the groups returned in the backlink attribute (isMemberOf/memberOf) can be members of other groups (nested groups) and you want to un-nest/flatten these groups (return all the groups in isMemberOf/memberOf), you must check the option to [Enable Nested Groups](06-security#enable-nested-groups) on the Main Control Panel > Settings tab > Security section > Access Control sub-section. Users can also be members of dynamic groups (indicated in the criteria of the memberURL attribute of the group entry).
+The back link attribute is returned only when explicitly requested by a client unless the back link location and forward link location are stored in a RadiantOne Directory store or Persistent Cache and the Optimize Linked Attribute option is enabled, in which case the back link attribute is always returned even when not requested (unless [Hide Operational Attributes](/understanding-operational-attributes) is enabled). Also, if the groups returned in the backlink attribute (isMemberOf/memberOf) can be members of other groups (nested groups) and you want to un-nest/flatten these groups (return all the groups in isMemberOf/memberOf), you must toggle on the Enable Nested Groups option on the Control Panel > Manage > Security > Access Control > General tab. Users can also be members of dynamic groups (indicated in the criteria of the memberURL attribute of the group entry).
 
 To configure rules for linked attributes, following the steps below:
 
-1.	On the Main Control Panel, click Settings > Interception > Special Attributes Handling.
+1.	On the Control Panel > Setup > Directory Namespace > Namespace Design, select the RadiantOne Directory below the Root Naming Contexts.
 
     ![Special Attributes Handling](Media/Image3.130.jpg)
  
-    Figure 12: Special Attributes Handling
+2. On the right side, click the SPECIAL ATTRIBUTES tab and locate the Linked Attributes section.
 
-2.	Under the Linked Attributes section, click **Add**. The Configure Mapping window is displayed.
+3.  Click **+LINKED ATTRIBUTES**.
+4.	Select a back link attribute name from the drop-down list. If you don’t find the attribute that matches your needs, manually enter the attribute name. This dictates which attribute name RadiantOne returns the back link attribute value as and is generally either memberOf or isMemberOf (for group/user linked attributes).
 
-3.	Select a back link attribute name from the drop-down list. If you don’t find the attribute that matches your needs, manually enter the attribute name. This dictates which attribute name RadiantOne returns the back link attribute value as and is generally either memberOf or isMemberOf (for group/user linked attributes).
+5.  Enter or select the back link attribute name.
+6.	Click **SELECT** next to the Target Base DN field. The *Select base DN* window is displayed.
 
-4.	Click **Choose** next to the Target Base DN field. The Choose your base DN window is displayed.
+7.	Select a base DN containing the entries (e.g. users) for which the back link attributes should be managed. In the example below, ou=allprofiles is selected.
 
-5.	Select a base DN containing the entries (e.g. users) for which the back link attributes should be managed. In the example below, ou=allprofiles is selected.
-
-    >[!warning] If your users and groups are in RadiantOne Directory stores, and you plan on enabling the Optimize Linked Attribute setting and must support nested groups, only one user location per RadiantOne Directory store is supported. For example, having a user location configured for ou=people1,dc=myhdap and ou=people2,dc=myhdap (both in the same dc=myhdap store) is not supported. In this case, you should configure a single user location as dc=myhdap as a shared parent for both user containers. For information about the Optimize Linked Attribute function for RadiantOne Directory stores, see the Namespace Configuration Guide. For information about the Optimize Linked Attribute function for persistent cache stores, see the [RadiantOne Deployment and Tuning Guide](/deployment-and-tuning-guide/00-preface).
+    >[!warning] If your users and groups are in RadiantOne Directory stores, and you plan on enabling the [Optimize Linked Attribute setting](/managing-properties) and must support nested groups, only one user location per RadiantOne Directory store is supported. For example, having a user location configured for ou=Accounting,o=RadiantOne Directory and ou=Sales,o=RadiantOne Directory (both in the same o=RadiantOne Directory store) is not supported. In this case, you should configure a single user location as o=RadiantOne Directory as a shared parent for both user containers. 
 
     ![An image showing ](Media/Image3.131.jpg)
  
-    Figure 13: Selecting a Location for Users
+    
+8.	Click **OK**. You are returned to the Add Linked Attribute Mapping window.
 
-6.	Click **OK**. You are returned to the Add Linked Attribute Mapping window.
+9.	Under Source Base DNs, click **Add**. The Choose your base DN windows is displayed.
 
-7.	Under Source Base DNs, click **Add**. The Choose your base DN windows is displayed.
+10.	Select a base DN containing the entries (e.g. groups) applicable for the objects (containing the forward link) matching what was defined in step 5 above and click **OK**. In the example below, ou=allprofiles is selected.
 
-8.	Select a base DN containing the entries (e.g. groups) applicable for the objects (containing the forward link) matching what was defined in step 5 above and click **OK**. In the example below, ou=allprofiles is selected.
+11.	In the source object class list, verify the list includes the class associated with your entries (e.g. groups). Add any missing object classes.
 
-9.	In the source object class list, verify the list includes the class associated with your entries (e.g. groups). Add any missing object classes.
+12.	If the Source Base DNs location is for group objects, and the groups can be nested (contain members that are groups), check the option to Enable Nested Relationships.
 
-10.	If the Source Base DNs location is for group objects, and the groups can be nested (contain members that are groups), check the option to Enable Nested Relationships.
-
-11.	Click **OK**. The configuration is displayed in the Linked Attributes section.
+13.	Click **OK**. The configuration is displayed in the Linked Attributes section.
 
     ![An image showing ](Media/image1.132.jpg)
  
     Figure 14: Linked Attributes Configuration Rules
 
-12.	Click **Save** in the upper right corner.
+14.	Click **Save** in the upper right corner.
 
-13.	To view the results of the example used in this section, on the Directory Browser Tab, and expand the ou=allprofiles and then example the ou=ad_sample node.
+15.	To view the results of the example used in this section, on the Directory Browser Tab, and expand the ou=allprofiles and then example the ou=ad_sample node.
 
-14.	Select a user under ou=ad_sample (e.g. cn=Aggie_Newcombe) and select Search ![An image showing ](Media/search-button.jpg). The Search window is displayed.
+16.	Select a user under ou=ad_sample (e.g. cn=Aggie_Newcombe) and select Search ![An image showing ](Media/search-button.jpg). The Search window is displayed.
 
-15.	In the Return Attributes field enter ismemberof (assuming this is the back link attribute name configured for returning the groups).
+17.	In the Return Attributes field enter ismemberof (assuming this is the back link attribute name configured for returning the groups).
 
-16.	Select the Subtree option for Scope.
+18.	Select the Subtree option for Scope.
 
-17.	Click **Search**. 
+19.	Click **Search**. 
 
-18.	In the Directory Tree View pane, click the user value. The results are displayed as shown below.
+20.	In the Directory Tree View pane, click the user value. The results are displayed as shown below.
 
 ![An image showing ](Media/Image3.133.jpg)
  
