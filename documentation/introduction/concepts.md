@@ -26,7 +26,7 @@ A data source in RadiantOne represents the connection to a backend. This could b
  
 >[!warning] Two LDAP data sources named vdsha and replicationjournal are included by default. These data sources contain connections to all RadiantOne nodes in a given cluster. One node is defined as the primary server and all others as failover servers. The vdsha data source is used internally by many operations including persistent cache refreshes. The replicationjournal data source is used internally for inter-cluster replication. These data sources should not be deleted or have their status changed to “offline”.
 
-Configuring connections to all backends from a central location simplifies the management task when changes to the backend are required. For details on managing data sources (add, edit, and delete), please see [Data Sources](#data-sources).
+Configuring connections to all backends from a central location simplifies the management task when changes to the backend are required. For details on managing data sources (add, edit, and delete), please see [Data Sources](../configuration/data-sources.md).
 
 Data sources are used when configuring virtual views from database backends, LDAP backends, and joins. 
 
@@ -38,8 +38,7 @@ LDAP data sources defined for RadiantOne are contained in <RLI_HOME>/vds_server/
 
 If you have existing data sources defined ([exported](#to-export-data-sources) from another instance of RadiantOne) and you would like to import those, from the Main Control Panel > Settings Tab > Server Backend section click on the sub-section representing the types of data sources you want to import (LDAP Data Sources, Database Data Sources or Custom Data Sources). On the right side, click **Import**. Browse to the XML file containing the data source definitions that you have exported from another RadiantOne server and click **OK**. 
 
->[!warning]
->If a data source in the import file has the same name as an existing data source, the existing data source is overwritten by the one you are importing.
+>[!warning] If a data source in the import file has the same name as an existing data source, the existing data source is overwritten by the one you are importing.
 
 ### To Export Data Sources
 
@@ -49,8 +48,7 @@ If you have existing data sources defined in a RadiantOne server and you would l
 
 You can then copy the export file to the desired RadiantOne server and use the [Import](#to-import-data-sources) option to import the data sources.
 
->[!warning]
->The following default data sources are included with RadiantOne: vdsha (points to the RadiantOne nodes in the cluster), advworks, derbyorders, derbysales, examples, northwind, log2db, and vdapdb (points to the local Derby database server), and replicationjournal (points to a local RadiantOne Universal Directory store and is used for inter-cluster replication). Therefore, be aware that when you import one of these data sources on the target RadiantOne server, the data sources with the same name are overwritten. For this reason, it is recommended that you do not export these data sources.
+>[!warning] The following default data sources are included with RadiantOne: vdsha (points to the RadiantOne nodes in the cluster), advworks, derbyorders, derbysales, examples, northwind, log2db, and vdapdb (points to the local Derby database server), and replicationjournal (points to a local RadiantOne Universal Directory store and is used for inter-cluster replication). Therefore, be aware that when you import one of these data sources on the target RadiantOne server, the data sources with the same name are overwritten. For this reason, it is recommended that you do not export these data sources.
 
 ## Union
 
@@ -80,7 +78,7 @@ Identity overlap means a same user exists in more than one data source. If there
 
 To correlate identities, a logical rule must exist for each data source so that a combination of attributes (eventually transformed) will yield a match for common users. For each source, different attributes can be used to generate the correlation logic. 
 
-To build a virtual view that correlates identities, use the Global Identity Builder. See the [RadiantOne Global Identity Builder Guide](/global-identity-builder-guide/introduction) for details.
+To build a virtual view that correlates identities, use the Global Identity Builder. See the [RadiantOne Global Identity Builder Guide](../configuration/global-identity-builder/introduction.md) for details.
 
 ## Joins
 
