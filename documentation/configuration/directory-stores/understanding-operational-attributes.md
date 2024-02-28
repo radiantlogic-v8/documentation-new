@@ -19,9 +19,13 @@ Check the Hide Operational Attributes option on the Classic Control Panel > Sett
 
 Uncheck the Hide Operational Attributes option if LDAP clients are allowed to view the attributes.
 
+To switch to Classic Control Panel, use the menu options for the logged in user in the upper right.
+
+![Classic Control Panel](Media/classic-cp.jpg)
+
 ### Operational Attributes Excluded from Being Hidden
 
-If checked, the Hide Operational Attributes option hides all operational attributes from non-root users and users that are not a member of the cn=Directory Administrators group. To accommodate third-party integrations that rely on certain operational attributes, without requiring the service account to have Directory Administrator privileges, you can indicate a list of operational attributes that should not be hidden. Indicate them in the Exclude Operational Attributes From Being Hidden field. Separate attribute names with a single space. 
+If checked, the Hide Operational Attributes option hides all operational attributes from non-root users and users that are not a member of the cn=Directory Administrators group. To accommodate third-party integrations that rely on certain operational attributes, without requiring the service account to have Directory Administrator privileges, you can indicate a list of operational attributes that should not be hidden. Indicate them in the Exclude Operational Attributes From Being Hidden field on the Classic Control Panel > Settings tab > Server Front End > Attributes Handling section. Separate attribute names with a single space. 
 
 ## General Operational Attributes
 
