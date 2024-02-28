@@ -269,8 +269,7 @@ Adding and removing attributes from the *Replication Excluded Attributes* list t
 1.	From the Control Panel > Manage > Directory Namespace > Namespace Design select the RadiantOne Directory below Root Naming Contexts.
 1.	On the PROPERTIES tab on the right, click **EDIT** next to the *Replication Excluded Attributes* property.
 1.	Click the option to "pause" inter-cluster replication prior to changing the excluded attributes list.
-
-   ![Pausing Inter-cluster Replication](Media/pause-replication.jpg)
+	![Pausing Inter-cluster Replication](Media/pause-replication.jpg)
   	
 1.	With inter-cluster replication paused, enter the attribute name(s) and press "Enter" on the keyboard after each.
 1.	Click **SAVE CHANGES** after all excluded attribute names have been entered.
