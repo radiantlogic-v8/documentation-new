@@ -70,7 +70,7 @@ To configure rules for linked attributes, following the steps below:
      
 1.	Click **SELECT**. 
 
-1.	Under Source Base DNs, click **SELECT**. The Choose your base DN windows is displayed.
+1.	Under Source Base DNs, click **SELECT**. The *Select base DN* windows is displayed.
 
 1.	Select a base DN containing the entries (e.g. groups) applicable for the objects (containing the forward link) matching what was defined in step 5 above and click **SELECT**. 
 
