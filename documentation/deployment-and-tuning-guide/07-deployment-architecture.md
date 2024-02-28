@@ -582,7 +582,7 @@ To enable replication for a Universal Directory store:
 
 ##### Push Mode Replication
 
-To address a very small subset of use cases, namely where a global load balancer directs client traffic across data centers/sites, where the inter-cluster replication architecture might be too slow, you have the option to enable an additional, more real-time replication mode where changes can be pushed directly to intended targets. For example, an update made by a client to one data center might not be replicated to other data centers in time for the client to immediately read the change, if the read request it sent to a different data center than where the update was. This is depicted in the diagram below.
+To address a very small subset of use cases, namely where a global load balancer directs client traffic across data centers/sites, where the inter-cluster replication architecture might be too slow, you have the option to enable an additional, more real-time replication mode where changes can be pushed directly to intended targets. For example, an update made by a client to one data center might not be replicated to other data centers in time for the client to immediately read the change, if the read request is sent to a different data center than where the update was. This is depicted in the diagram below.
 
 ![An image showing ](Media/Image7.20.jpg)
 
