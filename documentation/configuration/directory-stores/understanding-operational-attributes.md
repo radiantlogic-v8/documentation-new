@@ -11,6 +11,18 @@ An example schema entry is shown below for the createTimestamp attribute.
 
 attributeTypes: ( 2.5.18.1 NAME 'createTimestamp' DESC 'Standard LDAP attribute type' EQUALITY generalizedTimeMatch ORDERING generalizedTimeOrderingMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.24 SINGLE-VALUE NO-USER-MODIFICATION USAGE directoryOperation X-ORIGIN 'RFC 2252' )
 
+### Hide Operational Attributes
+
+Check the Hide Operational Attributes option on the Classic Control Panel > Settings tab > Server Front End > Attributes Handling section if you do not want LDAP clients to have access to operational attributes (stored in a RadiantOne Directory store) such as: createTimestamp, modifiersName, modifyTimestamp, creatorsName…etc. If you choose to hide operational attributes, LDAP clients must specifically request the operational attribute they want during the search request, otherwise it is not returned.
+
+>[!note] Operational attributes are not hidden from the root user (e.g. cn=Directory Manager) or members of the cn=Directory Administrators group.
+
+Uncheck the Hide Operational Attributes option if LDAP clients are allowed to view the attributes.
+
+### Operational Attributes Excluded from Being Hidden
+
+If checked, the Hide Operational Attributes option hides all operational attributes from non-root users and users that are not a member of the cn=Directory Administrators group. To accommodate third-party integrations that rely on certain operational attributes, without requiring the service account to have Directory Administrator privileges, you can indicate a list of operational attributes that should not be hidden. Indicate them in the Exclude Operational Attributes From Being Hidden field. Separate attribute names with a single space. 
+
 ## General Operational Attributes
 
 ### vendorversion
