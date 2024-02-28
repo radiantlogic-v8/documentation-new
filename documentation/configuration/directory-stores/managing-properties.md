@@ -224,16 +224,11 @@ A data source named replicationjournal is included with RadiantOne and plays the
 To configure inter-cluster replication, follow the steps below.
 
 1.	The replicationjournal data source for all clusters must be configured to point to the same journal. For example, if there are three clusters (1, 2, and 3) and cluster 1 is where the journal is located, the replicationjournal data source in clusters 2 and 3 must point to the cn=replicationjournal naming context in Cluster 1. All nodes running in Cluster 1 should be defined in the data source: one of them as the primary server and the others as failover.
-
-![Replication Journal](Media/replication-journal.jpg)
- 
->[!note] 
->All clusters that participate in the inter cluster replication topology must have unique cluster names to be uniquely identified.
+	![Replication Journal](Media/replication-journal.jpg)
+	>[!note] All clusters that participate in the inter cluster replication topology must have unique cluster names to be uniquely identified.
 
 1.	To modify the replicationjournal data source in clusters 2 and 3, access the Control Panel of that cluster/environment as a user that is authorized to manage data sources. From the Control Panel > Setup > Data Catalog > Data Sources, click on the replicationjournal data source. Modify the host and port in the *Connection* section to point to the replicationjournal running in cluster 1. The base DN should be cn=replicationjournal (this will be the default if the setting is empty). All nodes running in the cluster housing the journal should be defined in the data source: one of them as the primary server and the others as failover. Edit the Failover LDAP Servers section in the data source.
-
->[!warning] 
->Make sure the port used in the replicationjournal settings can be accessed from all clusters and that firewall rules do not prevent the cluster from reading and writing into the central journal.
+	>[!warning] Make sure the port used in the replicationjournal settings can be accessed from all clusters and that firewall rules do not prevent the cluster from reading and writing into the central journal.
 
 1.	The same naming context and RadiantOne Directory store to be replicated must be configured in each cluster/environment. To create a new RadiantOne Directory store, go to the Control Panel > Setup > Directory Namespace > Namespace Design and click: ![New Naming Context](Media/new-naming-context.jpg)
 
