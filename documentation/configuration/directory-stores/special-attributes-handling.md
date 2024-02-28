@@ -66,7 +66,7 @@ To configure rules for linked attributes, following the steps below:
 
     >[!warning] If your users and groups are in RadiantOne Directory stores, and you plan on enabling the [Optimize Linked Attribute setting](/managing-properties) and must support nested groups, only one user location per RadiantOne Directory store is supported. For example, having a user location configured for ou=Accounting,o=companydirectory and ou=Sales,o=companydirectory (both in the same o=companydirectory store) is not supported. In this case, you should configure a single user location as o=companydirectory as a shared parent for both user containers. 
 
-    ![Linked Attribute](Media/add-linked-attribute-mapping.jpg)
+    ![Linked Attribute](Media/add-linked-attr-mapping.jpg)
      
 1.	Click **SELECT**. 
 
