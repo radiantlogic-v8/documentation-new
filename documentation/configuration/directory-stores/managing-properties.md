@@ -97,7 +97,7 @@ To add a user to the Clear Attributes Only group:
 5.	From here you can add users to the group.
 
 >[!note] 
->To change the default group, on the Classic Control Panel, go to the Zookeeper tab (requires [Expert Mode](01-introduction#expert-mode)). Expand radiantone > `<version>` > `<clustername>` > config and select vds_server.conf. Modify the value for "encryptedAttributeBlacklistGroupDn" to the full DN that points to the group entry to which the exclusion behavior should apply.
+>To change the default group, on the Classic Control Panel, go to the Zookeeper tab (requires Expert Mode and Directory Administrator role). Expand radiantone > `<version>` > `<clustername>` > config and select vds_server.conf. Modify the value for "encryptedAttributeBlacklistGroupDn" to the full DN that points to the group entry to which the exclusion behavior should apply.
 
 
 ### Updating Encrypted Attributes
