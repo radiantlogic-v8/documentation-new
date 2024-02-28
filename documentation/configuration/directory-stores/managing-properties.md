@@ -277,11 +277,10 @@ Adding and removing attributes from the *Replication Excluded Attributes* list t
 
 ### Subtree Replication
 
-With subtree replication, you can indicate which containers/sub-branches should be replicated. To export the sub-branches to initialize replicas, use the Main Control Panel > Directory Browser tab. Select the container/sub-branch that should be replicated and use ![An image showing ](Media/export-button.jpg) to export. Check the option to Export for Replication to ensure the UUID attribute is included in the export. Copy this exported LDIF file to the replica server and use it to initialize the Universal Directory store.
+With subtree replication, you can indicate which containers/sub-branches should be replicated. To export the sub-branches to initialize replicas, use the Control Panel > Manage > Directory Browser. Select the container/sub-branch that should be replicated and use ![An image showing ](Media/export-button.jpg) to export. Check the option to Export for Replication to ensure the UUID attribute is included in the export. Select Local (download) for the Export Location. Use the downloaded LDIF file on the replica server to initialize the RadiantOne Directory store.
 
-![An image showing ](Media/Image5.18.jpg)
+![An image showing ](Media/subtree-replication.jpg)
 
-Figure 5.18: Export to LDIF for a Specific Sub-branch (e.g. ou=Accounting)
 
 The replication sub-trees must be defined in a comma-separated list in the “replicationSubtreeDomains” property located in ZooKeeper at: /radiantone/<version>/<cluster_name>/config/namings/<root_naming_context>
 
