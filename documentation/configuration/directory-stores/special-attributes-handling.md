@@ -98,6 +98,7 @@ The following referential integrity rules are supported by RadiantOne:
 Referential integrity is not enforced for the specified Base DN.
 -	Enabled
 Referential integrity applies to the member, uniquemember and manager attributes by default. Add any attribute that is of type DN syntax as needed. Enter the attribue name and press "Enter" on the keyboard for each value. Some examples are: owner and managedBy.
+
 ![Referential Integrity](Media/referential-integrity.jpg)
 
 >[!warning]
