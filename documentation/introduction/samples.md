@@ -9,7 +9,12 @@ This guide describes default naming contexts and default data sources.
 
 >[!note] For more information on installing the samples described in this guide, refer to the guide on [creating environments](installation/create-environments.md).
 
-## Default Naming Contexts
+>[!note] Some of the files mentioned in this guide are edited using the Control Panel's File Manager option. To edit files in File Mananger:
+In the upper-left corner of the Control Panel, click (/Media/classic-control-panel.png) and select Open Classic Control Panel. 
+Click Open. The classic control panel launches in a new browser tab. 
+In the classic Control Panel, navigate to Settings > Configuration > File Manager.
+
+### Default Naming Contexts
 
 This section describes all the default root naming contexts included with RadiantOne. The naming contexts can be viewed/managed from the Main Control Panel > Directory Namespace tab and the data (run-time) can be seen from the Directory Browser tab. If a naming context is safe to delete, it is indicated in the description below.
 
@@ -63,9 +68,9 @@ After deleting the naming context, you can also delete the underlying identity v
 - dv=globalprofiles
 <br> NOTE - NEEDS TO BE UPDATED This naming context is created and used by the Global Identity Builder and Global Identity Viewer applications. This naming context may be hidden (by specifying it as a hidden context in the rootdse.ldif file for RadiantOne) but should not be deleted.
 
-## Default Data Sources
+### Default Data Sources
 
-### LDAP
+#### LDAP
 
 An LDAP data source named vdsha is included by default. This data source contains connections to all RadiantOne nodes in a given cluster. One node is defined as the primary server and all others as failover servers. This data source is used internally by many operations including persistent cache refreshes and should not be deleted or have its status changed to “offline”.
 
@@ -73,13 +78,13 @@ An LDAP data source named replicationjournal is included by default. This data s
 
 >[!warning] If you change the super user/directory administrator password after installing RadiantOne, you must manually edit both the vdsha and replicationjournal LDAP data sources to update the password here as well. Changes to the data sources are performed from the Main Control Panel > Settings Tab > Server Backend section > LDAP Data Sources.
 
-### Database
+#### Database
 
 There are nine default database data sources defined for the Derby databases installed with RadiantOne (advworks, derbyorders, derbysales, examples, log2db, multistore, northwind, rx500 and vdapdb). These databases support the [sample virtual views](#default-naming-contexts) mounted below o=examples and o=vds.
 
 The default radiantsalesforce database data source supports a sample virtual view of Salesforce mounted at dv=salesforce,o=cloudservices,o=vds. This data source can be modified to point to any Salesforce instance to quickly test bringing in Salesforce identities into the virtual namespace. For steps on editing the radiantsalesforce data source, see the RadiantOne Namespace Configuration Guide.
 
-### Custom
+#### Custom
 
 NOTE - NEEDS TO BE UPDATED Custom data sources are accessible via a Java API, or web service including REST or SCIM. Each custom data source is associated with a Java script that includes the needed API calls. There are twenty custom data sources included in RadiantOne. Some of the installed custom data sources are associated with code that is externalized and can be viewed. These are noted below. All others are associated with code that is packaged and maintained by Radiant Logic (in <RLI_HOME>/lib/custom-objects-1.0-SNAPSHOT.jar) and not editable externally.
 
