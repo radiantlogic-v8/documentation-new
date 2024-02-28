@@ -46,50 +46,77 @@ This property lists the attributes that should be indexed. Attributes in this li
 
 ## Non Indexed Attributes
 
-If the Indexed Attributes list is empty, all attributes (except binary ones and the description attribute) are indexed by default. Also, the following “internal” ones are not indexed either: “pwdLastLogonTime”, "creatorsName", "createTimestamp", "modifiersName", "modifyTimestamp", "cacheCreatorsName", "cacheCreateTimestamp", "cacheModifiersName", "cacheModifyTimestamp", "uuid", "vdsSyncState", "vdsSyncHist", "ds-sync-generation-id", "ds-sync-state", "ds-sync-hist", "vdsSyncCursor", "entryUUID", "userpassword”. Any additional attributes that you do not want indexed should be added to the Non Indexed Attributes list on the Properties tab for the selected RadiantOne Directory store. This parameter is an alternative to listing all the attributes you want to index in the Indexed Attributes parameter.
+If the Indexed Attributes list is empty, all attributes (except binary ones and the description attribute) are indexed by default. Also, the following *internal* ones are not indexed either: “pwdLastLogonTime”, "creatorsName", "createTimestamp", "modifiersName", "modifyTimestamp", "cacheCreatorsName", "cacheCreateTimestamp", "cacheModifiersName", "cacheModifyTimestamp", "uuid", "vdsSyncState", "vdsSyncHist", "ds-sync-generation-id", "ds-sync-state", "ds-sync-hist", "vdsSyncCursor", "entryUUID", "userpassword”. Any additional attributes that you do not want indexed should be added to the Non-Indexed Attributes list on the Properties tab for the selected RadiantOne Directory store. Define a list of attributes in this setting by entering the attribute name and pressing the "Enter" key on your keyboard after each. This parameter is an alternative to listing all the attributes you want to index in the Indexed Attributes parameter.
 
-If you change the non indexed attributes, you must re-build the index. You can do this from the Properties tab by clicking **Re-build Index**.
+If you change the non indexed attributes, you must re-build the index. You can do this from the Properties tab by clicking **RE-BUILD INDEX**.
 
 >[!warning] 
->If possible, add attributes that must be modified frequently to the non-indexed attribute list to improve update performance of RadiantOne Directory. Attributes that don’t need to be used in searches are good candidates for the non-indexed attribute list. Limit the number of configured non-indexed attributes to further improve update performance.
+>If possible, add attributes that must be modified frequently to the non-indexed attribute list to improve update performance of the RadiantOne Directory. Attributes that don’t need to be used in searches are good candidates for the non-indexed attribute list. Limit the number of configured non-indexed attributes to further improve update performance.
 
 ## Sorted Attributes
 
-Defined on the Properties Tab for the selected RadiantOne Directory, this is a comma-separated list of attributes to be used in association with Virtual List Views (VLV) or sort control configured for RadiantOne. These sorted indexes are managed internally in the store and kept optimized for sorting. They are required if you need to sort the search result or to execute a VLV query on the RadiantOne Directory.
+Defined on the Properties Tab for the selected RadiantOne Directory, this is a list of attributes to be used in association with Virtual List Views (VLV) or sort control configured for RadiantOne. Define a list of attributes to sort in this setting by entering the attribute name and pressing the "Enter" key on your keyboard after each. These sorted indexes are managed internally in the store and kept optimized for sorting. They are required if you need to sort the search result or to execute a VLV query on the RadiantOne Directory.
 
-If you need to support VLV, the VLV/Sort control must be enabled in RadiantOne. For details on this control, please see the [RadiantOne System Administration Guide](/documentation/sys-admin-guide-rebuild/01-introduction).
+If you need to support VLV, the VLV/Sort control must be enabled in RadiantOne. You can enable this from Control Panel > Global Settings > Client Protocols > LDAP. Toggle the VLV/Sort control on in the Supported Controls section and click **SAVE**.
 
-If you change the sorted attributes, re-build the index. You can do this from the Properties tab by clicking **Re-build Index**.
+If you change the sorted attributes, re-build the index. You can do this from the Properties tab by clicking **RE-BUILD INDEX**.
 
 ## Encrypted Attributes for Data at Rest
 
-Attribute encryption protects sensitive data while it is stored in RadiantOne Directory. You can specify that certain attributes of an entry are stored in an encrypted format. This prevents data from being readable while stored, in any temporary replication stores/attributes (cn=changelog, cn=replicationjournal, cn=localjournal), in backup files, and exported in [LDIF files](#importing-changes-from-an-ldif-file) (must use the LDIFZ file extension). Attribute values are encrypted before they are stored in RadiantOne Directory, and decrypted before being returned to the client, as long as the client is authorized to read the attribute (based on ACLs defined in RadiantOne), is connected to RadiantOne via SSL, and is not a member of the special blacklisted group (e.g. cn=ClearAttributesOnly,cn=globalgroups,cn=config). For more information about the blacklisted group, see the [RadiantOne System Administration Guide](/documentation/sys-admin-guide-rebuild/01-introduction).
+Attribute encryption protects sensitive data while it is stored in the RadiantOne Directory. You can specify that certain attributes of an entry are stored in an encrypted format. This prevents data from being readable while stored, in any temporary replication stores/attributes (cn=changelog, cn=replicationjournal, cn=localjournal), in backup files, and exported in LDIF files (must use the LDIFZ file extension). Attribute values are encrypted before they are stored in the RadiantOne Directory, and decrypted before being returned to the client, as long as the client is authorized to read the attribute (based on ACLs defined in RadiantOne), is connected to RadiantOne via SSL, and is not a member of the special restricted group (e.g. cn=ClearAttributesOnly,cn=globalgroups,cn=config). 
 
 >[!warning] 
->Define a security encryption key from the Main Control Panel -> Settings Tab -> Security section -> Attribute Encryption prior to configuring encrypted attributes. For steps on defining key generation, changing the encryption security key, or using an HSM like Amazon Web Services KMS as the master security key storage, see the [RadiantOne System Administration Guide](/documentation/sys-admin-guide-rebuild/01-introduction).
+>Define a security encryption key from the Control Panel > Manage > Security > Attribute Encryption prior to configuring encrypted attributes. For steps on defining key generation, changing the encryption security key, or using an HSM like Amazon Web Services KMS as the master security key storage, see the [Attribute Encryption](/documentation/configuration/security/attribute-encryption).
 
-Defined on the Properties Tab for the selected RadiantOne Directory, this is a comma-separated list of attributes to store encrypted. Attributes listed in the Encrypted Attributes property are added to the Non-indexed attribute list by default. This means these attributes are not searchable by default. Indexing encrypted attributes is generally not advised as the index itself is less secure than the attribute stored in RadiantOne Directory, because the index is not salted. However, if you must be able to search on the encrypted attribute value, it must be indexed. Only “exact match/equality” index is supported for encrypted attributes. To make an encrypted attribute searchable, remove the attribute from the list of nonindexed attributes, save the configuration and then click **Re-build Index**.
+Defined on the Properties Tab for the selected RadiantOne Directory, this is a list of attributes to store encrypted. Define a list of attributes to encrypt in this setting by entering the attribute name and pressing the "Enter" key on your keyboard after each. Attributes listed in the Encrypted Attributes property are added to the Non-indexed attribute list by default. This means these attributes are not searchable by default. Indexing encrypted attributes is generally not advised as the index itself is less secure than the attribute stored in RadiantOne Directory, because the index is not salted. However, if you must be able to search on the encrypted attribute value, it must be indexed. Only “exact match/equality” index is supported for encrypted attributes. To make an encrypted attribute searchable, remove the attribute from the list of nonindexed attributes, save the configuration and then click **RE-BUILD INDEX**.
 
 >[!warning] 
->To prevent the sensitive attribute values from being logged in clear in RadiantOne logs, make sure you add them to the Attributes Not Displayed in Logs property on the Main Control Panel > Settings tab > Server Front End > Attributes Handling. Each attribute name should be separated with a single space. Any attribute indicated here has a value of ***** printed in the RadiantOne logs instead of the value in clear.
+>To prevent the sensitive attribute values from being logged in clear in RadiantOne logs, make sure you add them to the Attributes Not Displayed in Logs property on the Classic Control Panel > Settings tab > Server Front End > Attributes Handling. Each attribute name should be separated with a single space. Any attribute indicated here has a value of ***** printed in the RadiantOne logs instead of the value in clear.
+
+### Clear Attributes Only Group
+
+To apply a deny-by-exception policy to encrypted attributes, you can add users to the ClearAttributesOnly group. Members of this group cannot get encrypted attributes in clear, even if ACLs dictate they can read the encrypted attribute(s) and they are connecting to RadiantOne via SSL.
+
+The table below summarizes the behavior of this special group when a user is connected to RadiantOne via SSL.
+
+Is user a member of the special group?	| Attributes In DIT	| Values in “changes” attribute In Changelog
+-|-|-
+No		| Clear text	| Clear text
+Yes		| Not displayed	| Encrypted
+
+To add a user to the Clear Attributes Only group:
+
+1.	Navigate to the Control Panel > Manage > Directory Browser.
+
+2.	Expand the cn=config naming context and then expand ou=globalgroups.
+
+3.	Select cn=ClearAttributesOnly.
+
+4.	On the right, click: ![Manage Group](Media/manage-group.jpg)
+
+5.	From here you can add users to the group.
+
+>[!note] 
+>To change the default group, on the Classic Control Panel, go to the Zookeeper tab (requires [Expert Mode](01-introduction#expert-mode)). Expand radiantone > `<version>` > `<clustername>` > config and select vds_server.conf. Modify the value for "encryptedAttributeBlacklistGroupDn" to the full DN that points to the group entry to which the exclusion behavior should apply.
+
 
 ### Updating Encrypted Attributes
 
-In order to update encrypted attributes, the client must connect to RadiantOne via SSL, be authorized (via ACLs) to read and update the attribute, and not be a member of the special blacklisted group (e.g. cn=ClearAttributesOnly,cn=Global Groups,cn=config). For more information about the blacklisted group, see the [RadiantOne System Administration Guide](/documentation/sys-admin-guide-rebuild/01-introduction). When editing entries from the Main Control Panel > Directory Browser tab > selected RadiantOne Directory store, encrypted attributes appear as encrypted because this operation is not connected to RadiantOne via SSL. If you are connected to the Control Panel via SSL, then the Directory Browser tab connects to the RadiantOne service via SSL and the attributes defined as encrypted are shown in clear as long as the user you’ve connected to the Main Control Panel is authorized to read those attributes. In this case, the connected user can also update the encrypted attribute if permissions allow for it. For details on connecting to the Control Panel via SSL, see the [RadiantOne System Administration Guide](/documentation/sys-admin-guide-rebuild/01-introduction).
+In order to update encrypted attributes, the client must connect to RadiantOne via SSL, be authorized (via ACLs) to read and update the attribute, and not be a member of the special restricted group (e.g. cn=ClearAttributesOnly,cn=Global Groups,cn=config) described above.  When editing entries from the  Control Panel > Manage > Directory Browser > selected RadiantOne Directory store, encrypted attributes appear as encrypted because this operation is not connected to RadiantOne via SSL. If you are connected to the Control Panel via SSL, then the Directory Browser tab connects to the RadiantOne service via SSL and the attributes defined as encrypted are shown in clear as long as the user you’ve connected to the Control Panel is authorized to read those attributes. In this case, the connected user can also update the encrypted attribute if permissions allow for it. 
 
 ### Removing Attribute Encryption
 
 If you need to remove attribute encryption, follow the steps below.
 
-1.	Go to the Main Control Panel > Directory Namespace tab.
+1.	Go to the Control Panel > Setup > Directory Namespace > Namespace Design.
 
 2.	Select the naming context representing the RadiantOne Directory.
 
-3.	On the right, remove all values from the encrypted attributes list.
+3.	On the right, remove all values from the encrypted attributes list by clicking on the little *x* by the attribute name.
 
-4.	Click **Save**.
+4.	Click **SAVE**.
 
-5.	Click **Re-build Index**.
+5.	Click **RE-BUILD INDEX**.
 
 ## Support for Full Text Search
 
@@ -129,11 +156,11 @@ When using the NEAR operator, the indicated texts must be in the same attribute 
 
 When you search for A NEAR B, RadiantOne looks at all the entries with an attribute value containing A and B where B and A have a maximum of 2 words in between.
 
-If you want to support full text searches, check the Full-Text Search option on the Properties tab for the selected RadiantOne Directory and click Save. If you add the support for full text searches, remember to re-build the index. To do so, select the naming context below Root Naming Contexts on the Directory Namespace tab and on the right side, click **Re-build Index**.
+If you want to support full text searches, toggle the Full-Text Search option on the Properties tab for the selected RadiantOne Directory and click **SAVE**. Click **RE-BUILD INDEX**.
 
 ## Active
 
-Check the Active option if you want to activate this naming context. Uncheck the Active option to deactivate the node. Only active nodes are accessible in RadiantOne and returned when querying the rootDSE.
+Toggle the Active option on if you want to activate this naming context. Toggle the Active option off to deactivate the naming context. Only active naming contexts are accessible in RadiantOne and returned when querying the rootDSE.
 
 
 ## Optimize Linked Attribute
@@ -149,18 +176,18 @@ manager/directReports
 <br>publicDelegates/publicDelegatesBL
 <br>owner/ownerBL
 
-The most common back link/forward link relationship is between group and user objects. A list of groups a user is a member of can be automatically calculated by RadiantOne and returned in the membership attribute of the user entry. The default attribute name in the user entry for the group membership is isMemberOf. However, you can configure any attribute name (e.g. memberOf) you want. This is configured on the Main Control Panel, click Settings > Interception > Special Attributes Handling, Linked Attribute section.
+The most common back link/forward link relationship is between group and user objects. A list of groups a user is a member of can be automatically calculated by RadiantOne and returned in the membership attribute of the user entry. The default attribute name in the user entry for the group membership is isMemberOf. However, you can configure any attribute name (e.g. memberOf) you want. This is configured on the Control Panel > Setup > Directory Namespace > Namespace Design. Select the Root Naming Context where you want the Linked Attributes to be configured and click the **SPECIAL ATTRIBUTES** tab. Define the configuration in the Linked Attribute section.
 
 >[!note] 
->When the Optimize Linked Attribute setting is enabled, the backlink attribute is always returned to clients even when not requested unless Hide Operational Attributes is enabled in RadiantOne (in which case isMemberOf is only returned when a client explicitly requests it). For details on the Hide Operational Attributes setting, please see the [RadiantOne System Administration Guide](/documentation/sys-admin-guide-rebuild/01-introduction).
+>When the Optimize Linked Attribute setting is enabled, the backlink attribute is always returned to clients even when not requested unless Hide Operational Attributes is enabled in RadiantOne (in which case isMemberOf is only returned when a client explicitly requests it). The Hide Operational Attributes is configured from Classic Control Panel > Settings tab > Server Front End > Attributes Handling.
 
 If the back link attribute location and forward link attribute location in the Linked Attributes setting is a RadiantOne Directory, the computation of the references can be optimized in order to return client requests for the back link attribute(s) at high speed. To enable this optimization, follow the steps below.
 
 It is assumed you have configured the Linked Attribute Special Attributes Handling. If you have not, please do so prior to continuing with the steps below.
 
-1.	Select the Optimize Linked Attribute option on the Properties tab for the selected RadiantOne Directory on the Main Control Panel -> Directory Namespace tab.
-2.	Click **Save**.
-3.	Click **Re-build Index**.
+1.	Select the Optimize Linked Attribute option on the Properties tab for the selected RadiantOne Directory on the Control Panel > Setup > Directory Namespace > Namespace Design.
+2.	Click **SAVE**.
+3.	Click **RE-BUILD INDEX**.
 
 >[!warning] 
 >If your users and groups are in a RadiantOne Directory, and you enable the Optimize Linked Attribute setting, and must support nested groups, only one Target Base DN location and Source Base DN location per RadiantOne Directory store is supported. For example, in the Linked Attribute Special Attribute Handling, having a Target Base DN location configured for ou=people1,dc=myhdap and ou=people2,dc=myhdap (both in the same dc=myhdap store) is not supported. In this case, you should configure a single location as dc=myhdap as a shared parent for both containers.
@@ -171,7 +198,7 @@ When Optimize Linked Attributes is enabled, the Enable Changelog option is avail
 
 This option should only be enabled if downstream applications are leveraging the changelog to detect changes in the RadiantOne service and need access to entries that have had their back link attribute (e.g. memberOf, isMemberOf) updated by RadiantOne. If this option is not enabled, and the back link attribute is the only change on an entry, it is not published into cn=changelog.
 
-The most common linked objects are groups and users. Use caution when enabling this option because modifications that add or update dynamic (memberURL attribute) or static group members can result in changing memberOf/isMemberOf for many users, causing many time-consuming writes into the changelog. Also, all RadiantOne changelog connectors (e.g. Global Sync connectors and/or persistent cache refresh connectors), and downstream applications leveraging the changelog for capturing changes, will have to process many potentially irrelevant changes. Enabling this option forces the RadiantOne service to update the linked entries (e.g. groups and users) asynchronously, allowing the client that issued the group modification request to get a response immediately after the group membership is updated without waiting for the backlink attribute in all related objects to be updated. This can avoid a modification timeout getting returned to the client that issued the modify request, but can result in transactional integrity because all related objects haven’t necessarily been updated when the modify response is returned. For example, if a client application queries a user entry to get isMemberOf during this period (could be as much as a few seconds), there is a risk that they receive outdated information because the backlink attribute hasn’t been updated yet. Also, the asynchronous processing results in higher CPU usage on the RadiantOne node while it is processing the modifications on objects containing the forward link and back link attributes, which could trigger monitoring alerts if configured thresholds are reached. 
+The most common linked objects are groups and users. Use caution when enabling this option because modifications that add or update dynamic (memberURL attribute) or static group members can result in changing memberOf/isMemberOf for many users, causing many time-consuming writes into the changelog. Also, all RadiantOne changelog connectors (e.g. Sync connectors and/or persistent cache refresh connectors), and downstream applications leveraging the changelog for capturing changes, will have to process many potentially irrelevant changes. Enabling this option forces the RadiantOne service to update the linked entries (e.g. groups and users) asynchronously, allowing the client that issued the group modification request to get a response immediately after the group membership is updated without waiting for the backlink attribute in all related objects to be updated. This can avoid a modification timeout getting returned to the client that issued the modify request, but can result in transactional integrity because all related objects haven’t necessarily been updated when the modify response is returned. For example, if a client application queries a user entry to get isMemberOf during this period (could be as much as a few seconds), there is a risk that they receive outdated information because the backlink attribute hasn’t been updated yet. Also, the asynchronous processing results in higher CPU usage on the RadiantOne node while it is processing the modifications on objects containing the forward link and back link attributes, which could trigger monitoring alerts if configured thresholds are reached. 
 
 ### Async Indexing
 
@@ -190,106 +217,69 @@ Inter Cluster replication in RadiantOne leverages a publish-and-subscribe archit
 >[!note] 
 >On startup, a RadiantOne node first applies any missed change events from the replication journal. After these changes have been applied it is able to serve as an active node in the cluster.
 
-A data source named replicationjournal is included in the RadiantOne install and plays the role of the journal. This data source points to the default cn=replicationjournal naming context installed with RadiantOne and should not be deleted or deactivated. You can decide to have the journal running on one of the clusters that is participating in replication, or run a separate cluster whose only role is to house the central journal. Having the journal housed in a Universal Directory (HDAP) store deployed in a cluster ensures high availability of this repository. The replicationjournal data source should indicate a primary server/node in the cluster and the failover servers should point to the other cluster nodes.
+A data source named replicationjournal is included with RadiantOne and plays the role of the journal. This data source points to the default cn=replicationjournal naming context installed with RadiantOne and should not be deleted or deactivated. You can decide to have the journal running on one of the clusters that is participating in replication, or run a separate cluster whose only role is to house the central journal. Having the journal housed in a RadiantOne Directory store deployed in a cluster ensures high availability of this repository. The replicationjournal data source should indicate a primary server/node in the cluster and the failover servers should point to the other cluster nodes.
 
-![An image showing ](Media/Image5.12.jpg)
+![Replication Journal](Media/replication-journal-datasource.jpg)
  
-Figure 5.12: The Journal Leveraged for Inter Cluster Replication
-
 To configure inter-cluster replication, follow the steps below.
 
 1.	The replicationjournal data source for all clusters must be configured to point to the same journal. For example, if there are three clusters (1, 2, and 3) and cluster 1 is where the journal is located, the replicationjournal data source in clusters 2 and 3 must point to the cn=replicationjournal naming context in Cluster 1. All nodes running in Cluster 1 should be defined in the data source: one of them as the primary server and the others as failover.
 
-![An image showing ](Media/Image5.13.jpg)
+![Replication Journal](Media/replication-journal.jpg)
  
-Figure 5.13: Configuration of Multi-Master Replication
-
 >[!note] 
 >All clusters that participate in the inter cluster replication topology must have unique cluster names to be uniquely identified.
 
-1.	To modify the replicationjournal data source in clusters 2 and 3, launch the Main Control Panel associated with the leader node of that cluster and login as the RadiantOne Directory manager. From the Settings Tab-> Server Backend section -> LDAP Data Sources sub-section, click on the replicationjournal data source and click **Edit**. Modify the hostname and port to point to the replicationjournal running in cluster 1. The base DN should be cn=replicationjournal. All nodes running in the cluster housing the journal should be defined in the data source: one of them as the primary server and the others as failover.
+1.	To modify the replicationjournal data source in clusters 2 and 3, access the Control Panel of that cluster/environment as a user that is authorized to manage data sources. From the Control Panel > Setup > Data Catalog > Data Sources, click on the replicationjournal data source. Modify the host and port in the *Connection* section to point to the replicationjournal running in cluster 1. The base DN should be cn=replicationjournal (this will be the default if the setting is empty). All nodes running in the cluster housing the journal should be defined in the data source: one of them as the primary server and the others as failover. Edit the Failover LDAP Servers section in the data source.
 
 >[!warning] 
 >Make sure the port used in the replicationjournal settings can be accessed from all clusters and that firewall rules do not prevent the cluster from reading and writing into the central journal.
 
-1.	The same naming context and RadiantOne Universal Directory store to be replicated must be configured in each cluster. To create a new Universal Directory store, go to the leader node’s Main Control Panel > Directory Namespace tab and click ![An image showing ](Media/plus-sign.jpg). Remember, configuration changes in a cluster are shared across all cluster nodes. Therefore, you only need to configure the Universal Directory store on one node.
+1.	The same naming context and RadiantOne Directory store to be replicated must be configured in each cluster/environment. To create a new RadiantOne Directory store, go to the Control Panel > Setup > Directory Namespace > Namespace Design and click: ![New Naming Context](Media/new-naming-context.jpg)
 
-1.	Enter the new naming context (e.g. dc=replication) and select the Universal Directory (HDAP) Store option. 
-1.	Click Next.
-1.	Click OK.
-1.	Repeat these steps on the leader node within each cluster.
+1.	Enter the new naming context (e.g. dc=replication) and click **CONFIRM**. 
+1.	Select the naming context and click: ![Mount Backend](Media/mount-backend.jpg).
+1.	Choose the RadiantOne Directory option and click **SELECT**.
+1.	Click **MOUNT**.
+1.	Repeat these steps on one node within each cluster/environment.
 1.	Before enabling replication, all replicas must have the same initial image: either an empty store or an initialized store. 
-1.	To initialize a store, go to the leader node of a given cluster. To determine the leader node of a cluster, go to the Main Control Panel -> Dashboard tab and check the details associated with each node. On the Main Control Panel for the leader node, go to the Directory Namespace tab. Select the naming context representing the Universal Directory store. 
-1.	In the properties tab on the right, click on the initialize button at the bottom of the screen and choose a location for the LDIF to initialize your store with. 
-1.	Click OK and the initialization is launched as a Task which can be viewed from the Server Control Panel associated with the leader node > Tasks tab. Once the task completes, the store is initialized. As the initialization is performed on the leader node, all follower/follower-only nodes are also initialized automatically.
-1.	(Optional) If you want to [exclude certain attributes from replication](#changing-excluded-attributes), enter a comma-separated list of attributes in “Replication Excluded Attributes” property. Then, you can click “Export” to generate an LDIF file (make sure you have “Export for Replication” enabled), that excludes these attributes. This LDIF file can be used to initialize replicas in other clusters. 
-1.	After the Universal Directory stores are initialized in each cluster, inter-cluster replication must be enabled. Remember, configuration changes in a cluster are shared across all cluster nodes. Therefore, you only need to enable the replication on one node.
-1.	To enable inter-cluster replication for a specific Universal Directory store, go to the Main Control Panel > Directory Namespace Tab on the leader node and select the Universal Directory store below the Root Naming Contexts section. 
+1.	To initialize a store, go to Control Panel > Setup > Directory Namespace > Namespace Design for one of the clusters/environments. Select the naming context representing the RadiantOne Directory store. 
+1.	In the properties tab on the right, click on the **INITIALIZE** button and choose a location for the LDIF to initialize your store with. 
+1.	Click **OK** and the initialization is launched as a Task which can be viewed from the Control Panel > Manage > Tasks. Once the task completes, the store is initialized. 
+1.	(Optional) If you want to exclude certain attributes from replication, click **EDIT** next to the *Replication Excluded Attributes* property. If inter-cluster replication is configured, click the option to "pause" it prior to changing the excluded attributes list. With inter-cluster replication paused, enter the attribute name(s) and press "Enter" on the keyboard after each. Click **SAVE CHANGES** after all excluded attribute names have been entered. Then, click **EXPORT** on the PROPERTIES tab to generate an LDIF file (make sure you have “Export for Replication” enabled), that excludes these attributes. This LDIF file can be used to initialize replicas in other clusters. 
+1.	After the RadiantOne Directory stores are initialized in each cluster, inter-cluster replication must be enabled. 
+1.	To enable inter-cluster replication for a specific RadiantOne Directory store, go to the Control Panel > Setup > Directory Namespace > Namespace Design and select the RadiantOne Directory store below the Root Naming Contexts section. 
 1.	On the Properties tab on the right, check the box for Inter-cluster Replication as shown in the screen below.
-1.	Click **Save**.
+1.	Click **SAVE**.
  
-![An image showing ](Media/Image5.14.jpg)
+![Inter-cluster Replication](Media/intercluster-replication.jpg)
 
-Figure 5.14: Enabling Universal Directory Store for Inter-Cluster Replication
 
 ### Fractional Replication
 
 With fractional replication, you can indicate that certain attributes should be excluded from replication. This allows you to control which data is distributed and reduce the replication bandwidth by excluding attributes like photo, jpegPhoto and audio.
 
-Fractional replication can be enabled per Universal Directory naming context by indicating a comma-separated list of attributes to exclude from replication in the Replication Excluded Attributes list. This property is available on the Properties tab of a selected store naming context. Click the Edit button next to the property to configure the comma-separated list of attributes. You must configure this excluded attribute list (same list of attributes) in every cluster participating in inter-cluster replication. Therefore, you should plan and configure the excluded attributes list prior to starting inter-cluster replication. If you need to make changes to the excluded attributes list, see [Changing Excluded Attributes](#changing-excluded-attributes).
+Fractional replication can be enabled per RadiantOne Directory naming context by indicating a list of attributes to exclude from replication in the *Replication Excluded Attributes* list. This property is available on the PROPERTIES tab of a selected store naming context. Click the **EDIT** button next to the property to configure the list of attributes. You must configure this excluded attribute list (same list of attributes) in every cluster participating in inter-cluster replication. Therefore, you should plan and configure the excluded attributes list prior to starting inter-cluster replication. 
 
-![An image showing ](Media/Image5.15.jpg)
+![Fractional Replication](Media/fractional-replication.jpg)
  
-Figure 5.15: Replication Excluded Attributes
+When you export the store on the main cluster, make sure the “Export for Replication” checkbox is enabled. This ensures the excluded attributes are not included in the exported LDIF file and will not be included when the replicas are initialized. Click the **DOWNLOAD FILE** option to use this file to initialize other replicas.
 
-When you export the store on the main cluster, make sure the “Export for Replication” checkbox is enabled. This ensures the excluded attributes are not included in the exported LDIF file and will not be included when the replicas are initialized.
-
-![An image showing ](Media/Image5.16.jpg)
- 
-Figure 5.16: Export for Replication
+![An image showing ](Media/export-for-replication.jpg)
 
 ### Changing Excluded Attributes
 
-Adding and removing attributes from the Replication Excluded Attributes list takes effect immediately after saving the configuration change. To keep all clusters consistent, you should temporarily suspend replication if you need to make changes to the Replication Excluded Attributes list. The steps are outlined below.
+Adding and removing attributes from the *Replication Excluded Attributes* list takes effect immediately after saving the configuration change. To keep all clusters consistent, you should temporarily suspend replication if you need to make changes to the Replication Excluded Attributes list. The steps are outlined below.
 
-1.	Log into the Main Control Panel.
+1.	From the Control Panel > Manage > Directory Namespace > Namespace Design select the RadiantOne Directory below Root Naming Contexts.
+1.	On the PROPERTIES tab on the right, click **EDIT** next to the *Replication Excluded Attributes* property.
+1.	Click the option to "pause" inter-cluster replication prior to changing the excluded attributes list.
 
-2.	Navigate to the ZooKeeper tab (requires [Expert Mode](01-introduction#expert-mode)).
-
-3.	Navigate to `/radiantone/<zk_version>/<clustername>/config/namings/<namingcontext_being_replicated>`.
-4.	Click **Edit Mode**.
-
-5.	Set the replicationInSuspendMode property to true (as shown below).
-
-![An image showing ](Media/Image5.17.jpg)
- 
-Figure 5.17: Location of Configuration to Suspend Inter-cluster Replication
-
-6.	Click **Save**.
-
-7.	Repeat steps 1-6 for each cluster involved in inter-cluster replication.
-
-8.	Navigate to the Main Control Panel > Directory Namespace tab.
-
-9.	Select the Universal Directory store naming context below Root Naming Contexts.
-
-10.	On the Properties tab, for the selected store, click Edit next to Replication Excluded Attributes.
-
-11.	Enter a comma-separated list of attributes to exclude from replication and click Save Changes.
-
-12.	Click **Save**.
-
-13.	Repeat steps 8-12 in each cluster playing a role in inter-cluster replication.
-
-14.	Navigate to the Main Control Panel -> ZooKeeper tab.
-
-15.	Navigate to `/radiantone/<zk_version>/<clustername>/config/namings/<namingcontext_being_replicated>`.
-
-16.	Click **Edit Mode**.
-
-17.	Set the replicationInSuspendMode property to false (to restart inter-cluster replication).
-
-18.	Repeat step 17 in each cluster playing a role in inter-cluster replication.
+   ![Pausing Inter-cluster Replication](Media/pause-replication.jpg)
+  	
+1.	With inter-cluster replication paused, enter the attribute name(s) and press "Enter" on the keyboard after each.
+1.	Click **SAVE CHANGES** after all excluded attribute names have been entered.
+1.	Repeat these steps for each cluster involved in inter-cluster replication.
 
 ### Subtree Replication
 
