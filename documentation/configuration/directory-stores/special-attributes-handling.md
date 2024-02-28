@@ -7,11 +7,11 @@ description: Learn how to manage special attributes handling for RadiantOne Dire
 
 The Special Attributes Handling options allow you to perform the following functions: 
 
--	Configure the automatic relationship management between linked attributes (only applicable to RadiantOne Directory stores and persistent cache)
--	Configure Referential Integrity (only applicable to RadiantOne Directory stores and persistent cache)
+-	Configure the automatic relationship management between linked attributes
+-	Configure Referential Integrity
 -	Configure Dynamic Groups (only applicable to groups that are associated with groupOfURLs object class)
--	Configure Attribute Uniqueness (only applicable to RadiantOne Directory stores)
--	Configure unnesting of nested groups (not applicable to RadiantOne Directory stores)
+-	Configure Attribute Uniqueness 
+-	Configure unnesting of nested groups 
 
 ## Attribute Uniqueness
 Attribute Uniqueness enforcement is applicable to RadiantOne Directory stores only.
@@ -20,57 +20,20 @@ Certain attribute values (e.g. uid) should be unique across a given container or
 
 Attribute uniqueness is not enabled by default. To define which attributes require unique values, follow the steps below.
 
-1.	From the Main Control Panel > Settings tab > Interception section > Special Attributes Handling sub-section, locate the Attribute Uniqueness section on the right.
+1.	From the Control Panel > Manage > Directory Namespace > Namespace Design, select the RadiantOne Directory below Root Naming Contexts.
+2.	On the right side, click the SPECIAL ATTRIBUTES tab and locate the Attribute Uniqueness section.
 
-2.	In the Attribute Uniqueness section, click **Add** and enter the Base DN (location of a RadiantOne Directory store) for which attribute uniqueness should be enforced. All entries below this point require unique values for the attributes indicated in the next step.
+3.	In the Attribute Uniqueness section, click **+ATTRIBUTE UNIQUENESS**.
+4.	Click **+NEW** and select the Base DN (location of a RadiantOne Directory store) for which attribute uniqueness should be enforced. All entries below this point require unique values for the attributes indicated in the next step.
 
-3.	Enter a list of comma-separated attributes that should contain unique values. In the example shown in the screen below, the attributes uid and mail must be unique across all entries located below o=local.
+5.  Click **SELECT**
+6.	Enter a list of attribute names that should contain unique values. Press the "Enter" key on the keyboard after each attribute name. In the example shown in the screen below, the attributes uid and mail must be unique across all entries located below o=local.
 
-    ![An image showing ](Media/Image3.140.jpg)
+    ![Attribute Uniqueness](Media/attribute-uniqueness.jpg)
 
-    Figure 21: Attribute Uniqueness Example
-
-4.	Click **Save** in the upper right corner.
+7.	Click **SAVE**.
 
 Repeat these steps to configure attribute uniqueness checking for additional containers/branches.
-
-### Testing Attribute Uniqueness
-
-To test attribute uniqueness, you must have an LDIF file containing all entries you want to check attribute uniqueness for.
-
-To verify uniqueness of attribute values in an LDIF, you can use the Attribute Uniqueness function of the <RLI_HOME>/bin/advanced/ldif-utils utility. Once you have an LDIF file containing entries, pass the file name, path, and the name(s) of the attribute(s) to be verified. The usage is shown below. 
-
-`ldif-utils AttrUniqueness -f <ldif file path> -u <list of (comma-separated) attributes>`
-
-An example command analyzing values for the attributes givenName and telephonenumber is shown below. 
-
-`c:\radiantone\vds\bin\advanced>ldif-utils.bat AttrUniqueness -f c:\globaldirectory.ldif -u givenname,telephonenumber`
-
-If the utility returns the result, “Attribute Uniqueness check successful”, the values for the analyzed attribute(s) are unique. In this example, the utility returns the following at the end of completion of the command. 
-
-`Checking attribute uniqueness...`
-<br> `Attribute Uniqueness check successful.`
-<br> `Done in 9ms`
-
-In the following example command, the attributes givenName and facsimiletelephonenumber are analyzed.
-
-**THESE NEED FIXED TO NOT REFERENCE A FILE PATH**
-`c:\radiantone\vds\bin\advanced>ldif-utils.bat AttrUniqueness -f c:\globaldirectory.ldif -u givenname,facsimiletelephonenumber`
-
-If the utility returns the result, “Attribute Uniqueness check result false”, entries sharing the same value for at least one analyzed attribute were detected. In this example, the utility returns the following at the end of completion of the command.
-
-`Checking attribute uniqueness...`
-<br> `Attribute Uniqueness check result false. Entries with duplicates:`
-<br> `uid=bgreene,ou=users,o=globaldirectory`
-<br> `uid=cbaldwin,ou=users,o=globaldirectory`
-<br> `uid=fhostetler,ou=users,o=globaldirectory`
-<br> `uid=jhiggins,ou=users,o=globaldirectory`
-<br> `uid=kchung,ou=users,o=globaldirectory`
-<br> `uid=mhue,ou=users,o=globaldirectory`
-<br> `uid=mpoole,ou=users,o=globaldirectory`
-<br> `uid=owright,ou=users,o=globaldirectory`
-<br> `uid=ytanaka,ou=users,o=globaldirectory`
-<br> `Done in 12ms`
 
 ## Linked Attributes
 The Linked Attributes setting is only compatible with entries located in RadiantOne Directory stores or persistent cache.
