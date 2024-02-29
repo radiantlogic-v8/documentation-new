@@ -13,10 +13,6 @@ If you are using an evaluation or subscription-based license, the Main Control P
 
 >[!note] If you already have a license.lic file and are installing the RadiantOne platform on a new machine, during the installation, choose the Skip this Step option on the license page. After the installation, copy your existing license.lic file in <RLI_HOME>/vds_server.
 
-## Cloud Installation
-
-If you plan to install RadiantOne in your cloud data center, on either Amazon Web Services or Azure, please see the [RadiantOne AWS Cloud Installation Guide](/aws-cloud-installation-guide/overview) or the [RadiantOne Azure Cloud Installation Guide](/azure-cloud-installation-guide/overview).
-
 ## Minimum System Requirements
 
 ### Windows 64-bit Platforms
