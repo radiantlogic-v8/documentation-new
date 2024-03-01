@@ -245,7 +245,7 @@ An ingress controller can be used to expose the LDAPS and HTTPS service to the o
 Deploy RadiantOne on Kubernetes using HELM.
 Helm must be installed to use the charts. Please refer to [Helm's documentation](https://helm.sh/docs/) to get started.
 
-### TL;DR
+**TL;DR**
 
 ```
 helm repo add radiantone https://radiantlogic-devops.github.io/helm
@@ -272,14 +272,15 @@ To see the charts in the radiantone repository, run the following command:
 helm search repo radiantone
 ```
 
-### Charts
-Prerequisites
+### Charts Prerequisites
+
 - Kubernetes 1.18+
 - Helm 3
 
 
-**Install RadiantOne FID version 7.4 (latest) using helm --set values**
+### Install RadiantOne FID
 
+**Install version 7.4 (latest) using helm --set values**
 To install the helm chart, run the following command:
 
 ```
@@ -296,7 +297,7 @@ helm upgrade --install --namespace=<name space> <release name> radiantone/fid \
 Image tag 7.4 contains the latest patch release (7.4.7)
 
 
-**Install RadiantOne FID version 7.4 (latest) using helm values file.**
+**Install version 7.4 (latest) using helm values file.**
 
 Create a file with these contents and save it as fid_values.yaml
 
@@ -320,7 +321,7 @@ Run the following command:
 helm upgrade --install --namespace=<name space> <release name> radiantone/fid --values fid_values.yaml
 ```
 
-**Install RadiantOne FID version 7.4 (latest) using Argo CD**
+**Install version 7.4 (latest) using Argo CD**
 
 This example application demonstrates how an OTS (off-the-shelf) helm chart can be retrieved and pinned to a specific helm sem version from an upstream helm repository, and customized using a custom values.yaml in the private git repository.
 
@@ -370,35 +371,35 @@ fid:
 ```
 
 
-**List FID Releases**
+### List RadiantOne Releases
 
 ```
 helm list --namespace=<name space>
 ```
 
-**Test FID Release**
+### Test RadiantOne Release
 
 ```
 helm test <release name> --namespace=<name space>
 ```
 
-**Upgrade FID Release**
+### Upgrade RadiantOne
 
->[!note] Upgrade can only be performed to a higher version. Upgrade from 7.3.x to 7.4.x is not supported.
+>[!note] Upgrades can only be performed to a higher patch release of the same main version. For example, upgrades from 7.3.x to 7.4.x is not supported.
 
-*Using --set values - set image.tag value:*
-
-```
-helm upgrade --install --namespace=<name space> <release name> radiantone/fid --set image.tag=7.4.8 --reuse-values
-```
-
-*Using --set values -set image.tab value:*
+**Using --set values - set image.tag value:**
 
 ```
 helm upgrade --install --namespace=<name space> <release name> radiantone/fid --set image.tag=7.4.8 --reuse-values
 ```
 
-*Using values file - update the values file with the newer version tag*
+**Using --set values -set image.tab value:**
+
+```
+helm upgrade --install --namespace=<name space> <release name> radiantone/fid --set image.tag=7.4.8 --reuse-values
+```
+
+**Using values file - update the values file with the newer version tag**
 
 ```
 image:
@@ -419,7 +420,7 @@ helm upgrade --install --namespace=<name space> <release name> radiantone/fid --
 ```
 
 
-**Delete FID**
+### Uninstall RadiantOne
 
 Use the following command:
 
@@ -429,7 +430,7 @@ helm uninstall --namespace=<name space> <release name>
 
 >[!note] This does not delete the persistent volumes.
 
-**Remove Helm Repo**
+### Remove Helm Repo
 
 ```
 helm repo remove radiantone
