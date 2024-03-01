@@ -278,7 +278,7 @@ helm search repo radiantone
 - Helm 3
 
 
-### Install RadiantOne FID
+### Install RadiantOne
 
 **Install version 7.4 (latest) using helm --set values**
 To install the helm chart, run the following command:
