@@ -23,9 +23,9 @@ Attribute uniqueness is not enabled by default. To define which attributes requi
 2.	On the right, click the SPECIAL ATTRIBUTES tab and locate the Attribute Uniqueness section.
 
 3.	In the Attribute Uniqueness section, click **+ATTRIBUTE UNIQUENESS**.
-4.	Click **+NEW** and select the Base DN for which attribute uniqueness should be enforced. All entries below this point require unique values for the attributes indicated in the next step.
+4.	Click **+NEW** and select the Base DN for which attribute uniqueness should be enforced. All entries below this point require unique values for the attributes indicated in step 6 below.
 
-5.  Click **SELECT**
+5.  Click **SELECT**.
 6.	Enter a list of attribute names that should contain unique values. Press the "Enter" key on the keyboard after each attribute name. In the example shown in the screen below, the attributes uid and mail must be unique across all entries located below o=RadiantOne Directory.
 
     ![Attribute Uniqueness](Media/attribute-uniqueness.jpg)
