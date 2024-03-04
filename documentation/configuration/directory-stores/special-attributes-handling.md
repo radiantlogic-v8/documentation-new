@@ -123,14 +123,14 @@ Referential integrity is not enabled by default. To enable and configure it, fol
 ## Dynamic Group
 For dynamic groups, the membership is determined by search criteria using an LDAP URL as opposed to being maintained explicitly in a list. For example, suppose that you want a Sales group to contain every employee that has a title of Sales Manager. To do this, you create a dynamic group named Sales associated with the groupOfURLs objectclass. Then, instead of explicitly assigning member DNs as unique members (in the member or uniqueMember attribute), you define a memberURL attribute that contains the LDAP URL and criteria (seach base, scope and filter) to be used for determining members of the group. 
 
-Dynamic groups are not enabled by default. Therefore, any groups in RadiantOne associated with the groupOfURLs objectclass will have their memberURL returned directly to clients as is. This group could be in a RadiantOne Directory store, or virtualized from some LDAP backend. 
+Dynamic groups are not enabled by default. Therefore, any groups in RadiantOne associated with the groupOfURLs objectclass will have their memberURL returned directly to clients as is. 
 
 To enable support for automatically translating dynamic groups into static groups, follow the steps below.
 
 1.	On the Control Panel > Setup > Directory Namespace > Namespace Design, select the RadiantOne Directory below the Root Naming Contexts.
 1.  On the right, click the SPECIAL ATTRIBUTES tab and locate the Dynamic Groups section (expand it if it is collapsed).
 1.	Select either member or uniquemember from the Member Attribute drop-down list. This will determine the attribute name that will contain the members of the dynamic groups.
-1.	Click **+Dynamic Group**.
+1.	Click **+DYNAMIC GROUP**.
 1.	Click browse and select either a specific dynamic group or the container where all dynamic groups are located and then click **ADD**.
 
     Below is an example of a dynamic group indicating a memberURL of: ldap:///ou=Accounting,o=RadiantOne Directory??sub?(&(objectclass=*)(l=San Mateo)) and how this would be configured respectively.
