@@ -699,21 +699,23 @@ When entries are changed, the change log reports the attributes under its "chang
 
 To exclude attributes in changelog searches:
 
-1.	In the Control Panel > Manage > Directory Browser expand cn=config and ou=groups. 
+1.	In the Control Panel > Manage > Directory Browser expand cn=config and ou=globalgroups. 
 
 2.	Select cn=ChangelogAllowedAttributesOnly. 
 
-3.	Add users and/or groups that you do not want to have access to the “changes” attribute for certain attributes.  
+3.	On the right, click **MANAGE GROUP** to add explicit users and/or groups that you do not want to have access to the “changes” attribute for certain attributes.  
 
-5.	On the Zookeeper tab, expand `radiantone/<version>/<clustername>/config`. 
+5.	Click **SAVE** to exit the Manage Group window.
+6.	In the logged in user menu (top right), click Open Classic Control Panel. Login as a user that is associated with the Directory Administrator role.
+7.	On the Zookeeper tab, expand `radiantone/<version>/<clustername>/config`. 
 
-6.	Select vds_server.conf. 
+8.	Select vds_server.conf. 
 
-7.	In the pane on the right, find changelogExcludedAttributes. 
+9.	In the pane on the right, find changelogExcludedAttributes. 
 
-8.	Click **Edit Mode**. 
+10.	Click **Edit Mode**. 
 
-9.	In the brackets, enter attributes to be excluded in a comma-separated list. Wrap each attribute in double quotes. For example:
+11.	In the brackets, enter attributes to be excluded in a comma-separated list. Wrap each attribute in double quotes. For example:
 
 ```
 ["mail", "l", "homePhone"],
