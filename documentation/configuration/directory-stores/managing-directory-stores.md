@@ -297,7 +297,7 @@ If the client application is the enforcement point for authorization, then the l
 
 **Removing Members**
 
-To remove explicit group members, from the Control Panel > Manage > Directory Browser, select the group entry and click ![Manage Group](Media/new-manage-group-button.jpg). If the group is a dynamic group that has both explicit and dynamic members, there is a tab to manage *Explicit* members and one to manage *Dynamic* members. If there are no dynamic members, the list of explicit members is displayed. Select the trashcan icon ![Remove Member](Media/remove-member.jpg) inline with the member to remove them and click **SAVE**. If there are dynamic members, select the *Dynamic Members* tab and locate the current membership rules. Use the trashcan icon inline with the rule to delete it and click **SAVE**.
+To remove explicit group members, from the Control Panel > Manage > Directory Browser, select the group entry and click ![Manage Group](Media/new-manage-group-button.jpg). If the group is a dynamic group that has both explicit and dynamic members, there is a tab to manage *Explicit* members and one to manage *Dynamic* members. If there are no dynamic members, the list of explicit members is displayed. Select the trashcan icon ![Remove Member](Media/remove-member.jpg) inline with the member to remove them and click **SAVE**. If there are dynamic members, select the *Dynamic Members* tab and locate the current membership rules. Use the ![Trashcan](Media/trashcan.jpg) icon inline with the rule to delete it and click **SAVE**.
 
 >[!note] 
 >Only groups that are of object class type groupOfUrls can have dynamic members. If the group you are managing does not have this object class, then the Dynamic Members option is not shown.
@@ -314,7 +314,7 @@ All group attributes that allow modifications can be changed from the Control Pa
 
 To add a value to a multi-valued attribute, click the ![Plus Sign](Media/plus-sign.jpg) inline with the attribute name. Add the value and click the ![Checkmark](Media/checkmark.jpg) to confirm.
 
-To delete a value from a multi-valued attribute, select the attribute and click the trashcan icon inline with the value you want to remove. Click **DELETE** to confirm. Note that multi-valued attributes appear collapsed in the attribute list.
+To delete a value from a multi-valued attribute, select the attribute and click the ![Trashcan](Media/trashcan.jpg) icon inline with the value you want to remove. Click **DELETE** to confirm. Note that multi-valued attributes appear collapsed in the attribute list.
 
 ![Multi-valued Attribute Collapsed](Media/multi-valued-attribute-nonexpanded.jpg)
 
@@ -470,7 +470,7 @@ To update attributes:
 3. Update the value and click ![Checkmark](Media/checkmark.jpg).
 4. (Optional) To add a value to a multi-valued attribute, click the ![Plus Sign](Media/plus-sign.jpg) inline with the attribute name.
 5. Add the value and click the ![Checkmark](Media/checkmark.jpg) to confirm.
-6. (Optional) To delete a value from a multi-valued attribute, select the attribute and click the trashcan icon inline with the value you want to remove. Click **DELETE** to confirm. Note that multi-valued attributes appear collapsed in the attribute list. Click the ">" to expand the attribute to locate the value to delete. 
+6. (Optional) To delete a value from a multi-valued attribute, select the attribute and click the ![Trashcan](Media/trashcan.jpg) icon inline with the value you want to remove. Click **DELETE** to confirm. Note that multi-valued attributes appear collapsed in the attribute list. Click the ">" to expand the attribute to locate the value to delete. 
 
 *Adding Attributes*
 
