@@ -28,14 +28,17 @@ To switch to Classic Control Panel, use the menu options for the logged in user 
 If checked, the Hide Operational Attributes option hides all operational attributes from non-root users and users that are not a member of the cn=Directory Administrators group. To accommodate third-party integrations that rely on certain operational attributes, without requiring the service account to have Directory Administrator privileges, you can indicate a list of operational attributes that should not be hidden. Indicate them in the Exclude Operational Attributes From Being Hidden field on the Classic Control Panel > Settings tab > Server Front End > Attributes Handling section. Separate attribute names with a single space. 
 
 ## General Operational Attributes
+Many of the operational attributes described below are returned when accessing the rootDSE of the RadiantOne service. To query the rootDSE, using any LDAP client, access the RadiantOne service w/o passing a value for Base DN. You can also view the rootDSE from Control Panel > Manage > Directory Browser by selecting the very top node in the tree as shown below.
+
+![RootDSE](Media/rootdse-access.jpg)
 
 ### vendorversion
 
-An attribute found in the rootDSE (<RLI_HOME>\vds_server\conf\rootdse.ldif) that indicates the RadiantOne version/release. An example would be RadiantOne 7.2. This is only updated with each major release, not each patch release.
+An attribute found in the rootDSE that indicates the RadiantOne version/release. An example would be: RadiantOne v7.4.10.r61358-02232024-2215 
 
 ### supportedControl
 
-An attribute found in the rootDSE (<RLI_HOME>\vds_server\conf\rootdse.ldif) that indicates the LDAP controls and extensions that RadiantOne supports. Some of the default LDAP controls and features are explicitly mentioned in the roodse.ldif file while some are determined during startup by the RadiantOne service and returned automatically when clients request the rootDSE of the service (an LDAP search request with a empty base DN). The values could be any combination of the following:
+An attribute found in the rootDSE that indicates the LDAP controls and extensions that RadiantOne supports. Some of the default LDAP controls and features are explicitly mentioned in the roodse.ldif file while some are determined during startup by the RadiantOne service and returned automatically when clients request the rootDSE of the service (an LDAP search request with a empty base DN). The values could be any combination of the following:
 
 -	Subtree Delete Control - 1.2.840.113556.1.4.805
 
@@ -69,23 +72,23 @@ An attribute found in the rootDSE (<RLI_HOME>\vds_server\conf\rootdse.ldif) that
 
 ### changelog
 
-An attribute found in the rootDSE (<RLI_HOME>\vds_server\conf\rootdse.ldif) that indicates the location in RadiantOne where changes that have occurred in the directory are logged. This allows clients to query this location to learn about these changes. 
+An attribute found in the rootDSE that indicates the location in RadiantOne where changes that have occurred in the directory are logged. This allows clients to query this location to learn about these changes. 
 
 ### serverType
 
-An attribute found in the rootDSE (<RLI_HOME>\vds_server\conf\rootdse.ldif) that indicates the type of server. For RadiantOne, the value is VDS.
+An attribute found in the rootDSE that indicates the type of server. For RadiantOne, the value is VDS.
 
 ### namingContexts
 
-An attribute found in the rootDSE (<RLI_HOME>\vds_server\conf\rootdse.ldif) that indicates the naming contexts which the server contains. This attribute allows a client to choose suitable base objects for searching when it contacts the server.
+An attribute found in the rootDSE that indicates the naming contexts which the server contains. This attribute allows a client to choose suitable base objects for searching when it contacts the server.
 
 ### supportedldapversion
 
-An attribute found in the rootDSE (<RLI_HOME>\vds_server\conf\rootdse.ldif) that indicates which protocol version of LDAP RadiantOne supports. It has values of 2 and 3.
+An attribute found in the rootDSE that indicates which protocol version of LDAP RadiantOne supports. It has values of 2 and 3.
 
 ### supportedSASLMechanisms
 
-An attribute found in the rootDSE (<RLI_HOME>\vds_server\conf\rootdse.ldif) that indicates the names of the supported SASL mechanisms which RadiantOne supports. The values could be any combination of the following:
+An attribute found in the rootDSE that indicates the names of the supported SASL mechanisms which RadiantOne supports. The values could be any combination of the following:
 
 <br>EXTERNAL
 <br>DIGEST-MD5
@@ -94,7 +97,7 @@ An attribute found in the rootDSE (<RLI_HOME>\vds_server\conf\rootdse.ldif) that
 
 ### vendorname
 
-An attribute found in the rootDSE (<RLI_HOME>\vds_server\conf\rootdse.ldif) that indicates the name of the LDAP server implementer. It has a value of Radiant Logic, Inc.
+An attribute found in the rootDSE that indicates the name of the vendor for the LDAP server implementation. It has a value of Radiant Logic, Inc.
 
 ### createTimestamp
 
@@ -106,7 +109,7 @@ This attribute contains the name of the user which created the entry.
 
 ### entrydn
 
-For every entry inserted into a RadiantOne Directory (HDAP) store, an entryDN operational attribute is generated. This attribute contains a normalized form of the entry’s DN. This attribute is indexed by default and can be used in search filters.
+For every entry inserted into a RadiantOne Directory store, an entryDN operational attribute is generated. This attribute contains a normalized form of the entry’s DN. This attribute is indexed by default and can be used in search filters.
 
 ### nsAccountlock
 
@@ -170,7 +173,7 @@ A single-valued attribute that indicates the location/target DN that an access c
 
 ### vdPrivilege
 
-An attribute used by RadiantOne Control Panel to enforce authorization for users associated with the delegated administration groups.
+An attribute used by RadiantOne Classic Control Panel to enforce authorization for users associated with the delegated administration groups.
 
 ## Password Policy Operational Attributes
 
@@ -202,7 +205,7 @@ A multi-valued Generalized Time attribute containing the times of the previous g
 
 ### pwdPolicySubentry 
 
-An attribute that contains the DN of the password policy associated with the user. RadiantOne does not write to this attribute or allow password policies to be defined on individual users from the Main Control Panel. However, if the entry was imported from another directory, this attribute could have a value that dictates which password policy affects the user. If the value matches a policy defined in RadiantOne, this policy is enforced for the user. If the value does not match a policy defined in RadiantOne it is ignored and other configured policies below cn=Password Policy,cn=config are checked. If multiple policies affect the user, the one with the highest priority (based on precedence level) is enforced.
+An attribute that contains the DN of the password policy associated with the user. RadiantOne does not write to this attribute or allow password policies to be defined on individual users from the Control Panel. However, if the entry was imported from another directory, this attribute could have a value that dictates which password policy affects the user. If the value matches a policy defined in RadiantOne, this policy is enforced for the user. If the value does not match a policy defined in RadiantOne it is ignored and other configured policies below cn=Password Policy,cn=config are checked. If multiple policies affect the user, the one with the highest priority (based on precedence level) is enforced.
 
 ### pwdReset
 
@@ -266,7 +269,7 @@ This attribute uniquely identifies an entry in the changelog and is automaticall
 
 ### firstChangeNumber 
 
-This attribute contains the first changelog number. This attribute is part of the rootdse entry (<RLI_HOME>\vds_server\conf\rootdse.ldif). This attribute is also in the cn=changelog entry and cn=replicationjournal entry and is used internally by RadiantOne for cluster consistency and cursor positioning during startup or when switching leadership.
+This attribute contains the first changelog number. This attribute is part of the rootdse entry. This attribute is also in the cn=changelog entry and cn=replicationjournal entry and is used internally by RadiantOne for cluster consistency and cursor positioning during startup or when switching leadership.
 
 ### lastChangeNumber
 
@@ -288,4 +291,4 @@ Keeps track of the cursor which is the last record applied on this replica.
 
 Keeps track of the historical information (attribute changes) within the entry. Whenever an attribute's value is changed, the information indicating who/when/what is logged inside the vdsSyncHist attribute to be used for replication conflict resolution.
 
->[!note] The maximum age defined for the changelog at Control Panel > Global Settings > Tuning > Changelog also applies to the vdsSyncHist attribute maintained at the level of entries involved in inter-cluster replication. This attribute is multi-valued and continues to grow until the RadiantOne service scans the values and removes ones that are older than the maximum age. RadiantOne scans the values only when the entry is modified. For entries that aren’t updated often, vdsSyncHist will potentially contain values that are older than the maximum age.
+>[!note] The maximum age defined for the changelog at Classic Control Panel > Settings tab > Logs > Changelog also applies to the vdsSyncHist attribute maintained at the level of entries involved in inter-cluster replication. This attribute is multi-valued and continues to grow until the RadiantOne service scans the values and removes ones that are older than the maximum age. RadiantOne scans the values only when the entry is modified. For entries that aren’t updated often, vdsSyncHist will potentially contain values that are older than the maximum age.
