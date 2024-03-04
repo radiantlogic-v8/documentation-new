@@ -64,7 +64,7 @@ To configure rules for linked attributes, following the steps below:
 1.  Click **SELECT** next to the Target Base DN field. The *Select base DN* window is displayed.
 1.	Choose a base DN containing the entries (e.g. users) for which the back link attributes should be managed. In the example below, o=companydirectory is selected.
 
-    >[!warning] If your users and groups are in RadiantOne Directory stores, and you plan on enabling the [Optimize Linked Attribute setting](/managing-properties) and must support nested groups, only one user location per RadiantOne Directory store is supported. For example, having a user location configured for ou=Accounting,o=companydirectory and ou=Sales,o=companydirectory (both in the same o=companydirectory store) is not supported. In this case, you should configure a single user location as o=companydirectory as a shared parent for both user containers. 
+    >[!warning] When your users and groups are in RadiantOne Directory stores, and you plan on enabling the [Optimize Linked Attribute setting](/managing-properties) and must support nested groups, only one user location per RadiantOne Directory store is supported. For example, having a user location configured for ou=Accounting,o=companydirectory and ou=Sales,o=companydirectory (both in the same o=companydirectory store) is not supported. In this case, you should configure a single user location as o=companydirectory as a shared parent for both user containers. 
 
     ![Linked Attribute](Media/add-linked-attr-mapping.jpg)
      
@@ -100,9 +100,6 @@ Referential integrity is not enforced for the specified Base DN.
 Referential integrity applies to the member, uniquemember and manager attributes by default. Add any attribute that is of type DN syntax as needed. Enter the attribue name and press "Enter" on the keyboard for each value. Some examples are: owner and managedBy.
 
 ![Referential Integrity](Media/referential-integrity.jpg)
-
->[!warning]
->If you cache entries from a directory backend that maintains referential integrity, and use a native change type for detecting changes for cache refresh (e.g. Changelog, Active Directory, DirSync), you must list all backlink attributes that need refreshed in the cache when a change is detected on the main object. For example, to update the directReports attribute in the persistent cache when a change is detected on a user entry, list the manager attribute in the List of Referential Integrity Attributes property. Some common related attributes typically found in Active Directory are listed below (this list is not exhaustive):<BR> member/memberOf <BR> manager/directReports <BR> owner/ownerBL <BR>  altRecipient/altRecipientBL <BR>    dLMemRejectPerms/dLMemSubmitPermsBL <BR>  publicDelegates/publicDelegatesBL
 
 Referential integrity is not enabled by default. To enable and configure it, following the steps below.
 
