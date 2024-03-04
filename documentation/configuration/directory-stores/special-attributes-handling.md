@@ -133,6 +133,7 @@ To enable support for automatically translating dynamic groups into static group
 	The Dynamic Group Configuration is shown below.
 	![Dynamic Group Configuration](Media/dynamic-group-config.jpg)
  
+1.	The option to "Store explicit members in cache" is not applicable for RadiantOne Directory stores. So this option can be ignored.
 1.	Repeat steps 4 and 5 to add all dynamic groups. 
 
 1.	Click **SAVE**.
