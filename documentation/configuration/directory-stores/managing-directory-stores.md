@@ -72,7 +72,7 @@ If you only need to replicate a sub-branch instead of the whole RadiantOne direc
 By default, the RadiantOne directory supports a maximum of 1024 clauses in search filters. To increase the maximum number of clauses supported, edit the maxClausesLimit property setting from the Classic Control Panel.
 1. Open Classic Control Panel and login as a member of the Directory Administrator role.
 2. Click the ZooKeeper tab.
-3. Navigate to /radiantone/<version>/<clusterName>/config/vds_server.conf.
+3. Navigate to `/radiantone/<version>/<clusterName>/config/vds_server.conf`.
 4. Click **Edit Mode**.
 5. Set the value for maxClausesLimit. (e.g. "maxClausesLimit" : 2000, )
 6. Click **Save**. The RadiantOne service does not need to be restarted after modifying this value.
