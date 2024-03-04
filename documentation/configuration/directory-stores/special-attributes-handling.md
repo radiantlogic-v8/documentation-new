@@ -90,17 +90,7 @@ The user in your filter should be returned. Select this entry and the attributes
 ## Referential Integrity
 Referential integrity is the process of automatically maintaining consistent relationships among certain entries. This mechanism ensures that any references to an entry are updated whenever that entry is removed or altered. If it is configured, during every LDAP add, modify, delete, and rename operation, RadiantOne updates all necessary DN references (all other entries that refer to that entry). For example, if you remove a user's entry from the directory, and the user is a member of a group, the server also removes the user from the group. If referential integrity is not enabled, the user remains a member of the group until manually removed. Historically, referential integrity is primarily used to ensure that attributes with a distinguished name syntax (especially group membership attributes like member and uniqueMember) are properly maintained in the event of delete or modify DN operations. For a delete operation, any references to the target entry are removed. For modify DN operations, any references to the target entry are renamed accordingly.
 
-Referential integrity is only supported for RadiantOne Directory stores and persistent cache. This means that the users and groups locations configured must point to a RadiantOne Directory store or persistent cache.
-The following referential integrity rules are supported by RadiantOne:
-
--	Disabled
-Referential integrity is not enforced for the specified Base DN.
--	Enabled
-Referential integrity applies to the member, uniquemember and manager attributes by default. Add any attribute that is of type DN syntax as needed. Enter the attribue name and press "Enter" on the keyboard for each value. Some examples are: owner and managedBy.
-
-![Referential Integrity](Media/referential-integrity.jpg)
-
-Referential integrity is not enabled by default. To enable and configure it, following the steps below.
+Referential integrity is not enabled by default. To enable and configure it, follow the steps below.
 
 1.	On the Control Panel > Setup > Directory Namespace > Namespace Design, select the RadiantOne Directory below the Root Naming Contexts.
 1.  On the right, click the SPECIAL ATTRIBUTES tab and locate the Referential Integrity section (expand it if it is collapsed).
@@ -110,7 +100,11 @@ Referential integrity is not enabled by default. To enable and configure it, fol
 1.  Enter or browse to the Groups Location.
 1.  Click the ![Checkmark](Media/checkmark.jpg) inline with the groups location. Add more groups locations if needed.
 
-1.	Select if the applicable referential integrity rule should be Enabled or Disabled (based on the descriptions above).
+1.	Select if the applicable referential integrity rule should be Enabled or Disabled.
+	-	Disabled: Referential integrity is not enforced for the specified Base DN.
+   	-	Enabled: Referential integrity applies to the member, uniquemember and manager attributes by default. Add any attribute that is of type DN syntax as needed. Enter the attribue name and press "Enter" on the keyboard for each value. Some examples are: owner and managedBy.
+    	![Referential Integrity](Media/referential-integrity.jpg)
+
 1.	Enter attributes to maintain referential integrity for. Enter the attribute name and press "Enter" on the keyboard after each value.
 1.  If referential integrity is enabled, and you want RadiantOne to ensure any values entered for member/uniquemember, or attribute in this list, references a valid DN in the Directory Information Tree (DIT), check the “Validate User Exists in DIT” checkbox. If this option is selected, and a value does not reference a valid Distinguished Name (DN) that is part of the current DIT, the modify operation will fail. Error code 19 will be returned indicating a referential integrity violation.
 1.	Click **ADD**.
