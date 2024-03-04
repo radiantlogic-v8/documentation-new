@@ -138,19 +138,8 @@ The Dynamic Group Configuration is shown below.
 
     ![Dynamic Group Configuration](Media/dynamic-group-config.jpg)
  
-1.	Repeat steps 3 and 4 to add all dynamic groups. 
+1.	Repeat steps 4 and 5 to add all dynamic groups. 
 
-1.	Click **Save** in the top right.
-
-1.	(Optional) If the group configured in step 5 above is in a proxy view of an LDAP backend (as opposed to located in a RadiantOne Directory store), you must enable DN Remapping for the memberURL attribute. From the Directory Namespace tab, select the node where the proxy is mounted below the Root Naming Contexts section. On the ADVANCED SETTINGS tab, locate the *Global Attributes Handling* section. 
-
-1.	Click **+ADD**.
-1.	Enter memberURL for the Name and Virtual Name properties.
-1.	Check the DN Remapping option.
-1.	Click **ADD**.
-
-    ![DN Remapping](Media/dn-remapping.jpg)
-  	
 1.	Click **SAVE**.
 
 For groups defined in this section, RadiantOne automatically evaluates and computes the list of members based on the memberURL attribute indicated in the group. The group named “Dynamic” configured above would be returned by RadiantOne as a virtual static group like shown below (with the member list computed automatically based on the criteria indicated in the memberURL attribute). 
