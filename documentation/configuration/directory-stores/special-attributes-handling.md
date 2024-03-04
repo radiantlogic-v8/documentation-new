@@ -7,11 +7,10 @@ description: Learn how to manage special attributes handling for RadiantOne Dire
 
 The Special Attributes Handling options allow you to perform the following functions: 
 
+-	Configure Attribute Uniqueness
 -	Configure the automatic relationship management between linked attributes
 -	Configure Referential Integrity
 -	Configure Dynamic Groups (only applicable to groups that are associated with groupOfURLs object class)
--	Configure Attribute Uniqueness 
--	Configure unnesting of nested groups 
 
 ## Attribute Uniqueness
 Attribute Uniqueness enforcement is applicable to RadiantOne Directory stores only.
@@ -144,40 +143,3 @@ For groups defined in this section, RadiantOne automatically evaluates and compu
 
 
 >[!note] To avoid returning duplicate entries, when a dynamic group is queried in RadiantOne, if both member and memberURL are requested, the memberURL attribute is not returned.
-
-### Caching Dynamic Groups
-
-If the dynamic groups are from a proxy view of an LDAP backend you can choose to cache the group entries. If the dynamic groups are in a RadiantOne Directory store, you cannot cache them since persistent cache is not applicable for RadiantOne Directory stores. 
-
-The default and recommended behavior of RadiantOne for cached dynamic groups is to only cache the group entry with the memberURL attribute not computed. Based on requests from clients, RadiantOne computes the memberURL to return a static list of members as needed. 
-
-If you require the group members to be cached as static group entries, check the Enable Caching option when you define the Dynamic Group in Special Attributes Handling. Enabling this setting means that the static groups are stored in the persistent cache (members are evaluated and cached in the member attribute) and refreshed as needed with either a periodic refresh or a real-time refresh. If caching is not enabled, the dynamic groups are stored in the cache, and the evaluation of membership to compute the static group is performed when the group is requested. 
-
->[!note]
->if the location of the dynamic group is already configured for persistent cache when you select to Enable Caching in the dynamic group setting, you must reindex the persistent cache to ensure the group members are also in the cache.
-
-![Cache Setting for Group Members](Media/Image3.139.jpg)
-
-Figure 20: Cache Setting for Group Members
-
-## Unnest Groups
-Some directory vendors, like Microsoft Active Directory, support nested groups where groups can be members of other groups. For clients that are unable to process nested groups, RadiantOne can flatten them and return all members in a single response. The unnest groups setting is applicable to proxy views or model-driven views (designed in Context Builder) that have been configured for persistent cache. Flattening nested groups adds processing overhead to RadiantOne, so persistent cache is required for optimal performance, and you must configure the unnest groups setting before initializing the persistent cache. The unnest group setting is not applicable to RadiantOne Directory stores.
-
->[!note]
->Using a computed attribute in the virtual view to unnest groups is an alternative to using the unnest groups setting. However, the computed attribute approach does not support circular groups (GroupA is a member of GroupB and Group B is a member of GroupA) whereas the unnest groups setting does.
-
-The unnest groups setting is not enabled by default. To define a naming context that contains nested groups that RadiantOne should automatically flatten for client queries, follow the steps below.
-
-1.	From the Main Control Panel > Settings tab > Interception section > Special Attributes Handling sub-section, locate the Unnest Groups section on the right.
-
-2.	Click **Add**.
-
-3.	Click **Add** and select the naming context that contains the nested groups.
-
-4.	Click **OK**.
-
-5.	Click **OK** to close the configuration window.
-
-6.	Click **Save**.
-
-7.	Configure the persistent cache for the virtual view containing the nested groups. For help with configuring persistent cache, see the [RadiantOne Deployment and Tuning Guide](/deployment-and-tuning-guide/00-preface).
