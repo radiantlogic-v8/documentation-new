@@ -648,11 +648,13 @@ sn: Caudy
 
 To search for the number of subordinates an entry contains, use the numSubordinates attribute in your filter. This indicates how many immediate subordinates an entry has. Entries returned when using a search filter of (numSubordinates=0) are leaf entries because they currently have no subordinates/child nodes. You can also leverage “greater than” or “less than” in your filter. A filter of (numSubordinate>=5) would return only entries that have 5 or more subordinates.
 
-Numsubordinates is an operational attribute and is only returned in searches when it is specifically requested. An example search is shown below.
+Numsubordinates is an operational attribute and is only returned in searches when it is specifically requested. An example search from Control Panel > Manage > Directory Browser is shown below.
 
-![An image showing ](Media/Image5.35.jpg)
+![Numsubordinates Search Example](Media/numsubordinates-query.jpg)
  
-Figure 5.35: Sample Search Requesting numSubordinates Attribute
+The numsubordinates attribute is returned when an entry is selected in the search result.
+
+![Numsubordinates Search Result](Media/numsubordinates.jpg)
 
 ## Detecting Changes in RadiantOne Directory
 
