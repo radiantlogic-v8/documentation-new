@@ -481,6 +481,7 @@ To add attributes:
 4. Click ![Checkmark](Media/checkmark.jpg) and then click **CREATE**.
 
 *Modifying RDN*
+
 Changing the RDN of an entry is a special operation. To change the RDN attribute value:
 1. Select the user in the directory tree.
 2. On the right side, click: ![Rename](Media/rename-entry.jpg).
