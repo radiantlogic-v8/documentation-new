@@ -129,14 +129,10 @@ To enable support for automatically translating dynamic groups into static group
 1.	Select either member or uniquemember from the Member Attribute drop-down list. This will determine the attribute name that will contain the members of the dynamic groups.
 1.	Click **+DYNAMIC GROUP**.
 1.	Click browse and select either a specific dynamic group or the container where all dynamic groups are located and then click **ADD**.
-
-    Below is an example of a dynamic group indicating a memberURL of: ldap:///ou=Accounting,o=RadiantOne Directory??sub?(&(objectclass=*)(l=San Mateo)) and how this would be configured respectively.
-
-    ![Dynamic Group Example](Media/dynamic-group-example.jpg)
-
-The Dynamic Group Configuration is shown below.
-
-    ![Dynamic Group Configuration](Media/dynamic-group-config.jpg)
+	Below is an example of a dynamic group indicating a memberURL of: ldap:///ou=Accounting,o=RadiantOne Directory??sub?(&(objectclass=*)(l=San Mateo)) and how this would be configured respectively.
+	![Dynamic Group Example](Media/dynamic-group-example.jpg)
+	The Dynamic Group Configuration is shown below.
+	![Dynamic Group Configuration](Media/dynamic-group-config.jpg)
  
 1.	Repeat steps 4 and 5 to add all dynamic groups. 
 
