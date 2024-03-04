@@ -21,7 +21,7 @@ Certain attribute values (e.g. uid) should be unique across a given container or
 Attribute uniqueness is not enabled by default. To define which attributes require unique values, follow the steps below.
 
 1.	From the Control Panel > Manage > Directory Namespace > Namespace Design, select the RadiantOne Directory below Root Naming Contexts.
-2.	On the right side, click the SPECIAL ATTRIBUTES tab and locate the Attribute Uniqueness section.
+2.	On the right, click the SPECIAL ATTRIBUTES tab and locate the Attribute Uniqueness section.
 
 3.	In the Attribute Uniqueness section, click **+ATTRIBUTE UNIQUENESS**.
 4.	Click **+NEW** and select the Base DN (location of a RadiantOne Directory store) for which attribute uniqueness should be enforced. All entries below this point require unique values for the attributes indicated in the next step.
@@ -56,7 +56,7 @@ The back link attribute is returned only when explicitly requested by a client u
 To configure rules for linked attributes, following the steps below:
 
 1.	On the Control Panel > Setup > Directory Namespace > Namespace Design, select the RadiantOne Directory below the Root Naming Contexts.
-1.  On the right side, click the SPECIAL ATTRIBUTES tab and locate the Linked Attributes section (expand it if it is collapsed).
+1.  On the right, click the SPECIAL ATTRIBUTES tab and locate the Linked Attributes section (expand it if it is collapsed).
     ![Special Attributes Handling](Media/linked-attributes-section.jpg)
    
 1.  Click **+LINKED ATTRIBUTES**.
@@ -107,9 +107,9 @@ Referential integrity applies to the member, uniquemember and manager attributes
 Referential integrity is not enabled by default. To enable and configure it, following the steps below.
 
 1.	On the Control Panel > Setup > Directory Namespace > Namespace Design, select the RadiantOne Directory below the Root Naming Contexts.
-1.  On the right side, click the SPECIAL ATTRIBUTES tab and locate the Referential Integrity section (expand it if it is collapsed).
+1.  On the right, click the SPECIAL ATTRIBUTES tab and locate the Referential Integrity section (expand it if it is collapsed).
 1.	Click **+REFERENTIAL INTEGRITY**.
-1.	In the Users Location section, select or enter the Base DN location containing the possible members associated with the groups you define in the next step. The users must be in a RadiantOne Directory store or persistent cache. If a user is moved or deleted from this location, all groups referencing this user entry are updated accordingly (the value is updated or deleted). Click **SELECT**.
+1.	In the Users Location section, select or enter the Base DN location containing the possible members associated with the groups you define in the next step. The users must be located somewhere at or below the root naming context where you are configuring this setting. If a user is moved or deleted from this location, all groups referencing this user entry are updated accordingly (the value is updated or deleted). Click **SELECT**.
 1.	Click **+NEW** in the Groups Location.
 1.  Enter or browse to the Groups Location.
 1.  Click the ![Checkmark](Media/checkmark.jpg) inline with the groups location. Add more groups locations if needed.
@@ -128,47 +128,38 @@ Dynamic groups are not enabled by default. Therefore, any groups in RadiantOne a
 To enable support for automatically translating dynamic groups into static groups, follow the steps below.
 
 1.	On the Control Panel > Setup > Directory Namespace > Namespace Design, select the RadiantOne Directory below the Root Naming Contexts.
-1.  On the right side, click the SPECIAL ATTRIBUTES tab and locate the Dynamic Groups section (expand it if it is collapsed).
+1.  On the right, click the SPECIAL ATTRIBUTES tab and locate the Dynamic Groups section (expand it if it is collapsed).
 1.	Select either member or uniquemember from the Member Attribute drop-down list. This will determine the attribute name that will contain the members of the dynamic groups.
-1.	Click **Add**.
+1.	Click **+Dynamic Group**.
+1.	Click browse and select either a specific dynamic group or the container where all dynamic groups are located and then click **ADD**.
 
-4.	Browse to the exact group entry that you like RadiantOne to automatically evaluate members for and click OK. To configure this logic for multiple groups located in the same container, just enter an LDAP URL that encompasses all groups instead of browsing to the exact group entry. E.g. ldap:///cn=config??sub?(objectClass=groupOfURLs) could be used to indicate all dynamic groups located below cn=config. If you are not knowledgeable about LDAP URL syntax, just browse to the container/parent node where all dynamic groups are located and the LDAP URL is automatically calculated for you.
+    Below is an example of a dynamic group indicating a memberURL of: ldap:///ou=Accounting,o=RadiantOne Directory??sub?(&(objectclass=*)(l=San Mateo)) and how this would be configured respectively.
 
-    Below is an example of a dynamic group indicating a memberURL of: ldap:///ou=ad_sample,ou=allprofiles??sub?(&(objectclass=*)(l=San Mateo)) and how this would be configured respectively.
+    ![Dynamic Group Example](Media/dynamic-group-example.jpg)
 
-    ![An image showing ](Media/Image3.135.jpg)
+The Dynamic Group Configuration is shown below.
+
+    ![Dynamic Group Configuration](Media/dynamic-group-config.jpg)
  
-    Figure 16: Dynamic Group Example
+1.	Repeat steps 3 and 4 to add all dynamic groups. 
 
-    ![An image showing ](Media/Image3.136.jpg)
- 
-    Figure 17: Dynamic Group Configuration
+1.	Click **Save** in the top right.
 
-5.	Repeat steps 3 and 4 to add all dynamic groups. 
+1.	(Optional) If the group configured in step 5 above is in a proxy view of an LDAP backend (as opposed to located in a RadiantOne Directory store), you must enable DN Remapping for the memberURL attribute. From the Directory Namespace tab, select the node where the proxy is mounted below the Root Naming Contexts section. On the ADVANCED SETTINGS tab, locate the *Global Attributes Handling* section. 
 
-6.	Click **Save** in the top right.
+1.	Click **+ADD**.
+1.	Enter memberURL for the Name and Virtual Name properties.
+1.	Check the DN Remapping option.
+1.	Click **ADD**.
 
-7.	If the group configured in step 4 above is in a proxy view of an LDAP backend (as opposed to located in an HDAP store), you must configure DN Remapping for the memberURL attribute. From the Directory Namespace tab, select the node where the proxy is mounted below the Root Naming Contexts section.
-
-8.	On the Attributes tab on the right side, click **ADD**.
-
-9.	Enter memberURL for the Name and Virtual Name properties.
-
-10.	Check the DN Remapping option.
-
-11.	Click **OK**.
-
-    ![An image showing ](Media/Image3.137.jpg)
-
-    Figure 18: Defining memberURL Attribute for DN Remapping
-
-12.	Click **Save** in the upper right.
+    ![DN Remapping](Media/dn-remapping.jpg)
+  	
+1.	Click **SAVE**.
 
 For groups defined in this section, RadiantOne automatically evaluates and computes the list of members based on the memberURL attribute indicated in the group. The group named “Dynamic” configured above would be returned by RadiantOne as a virtual static group like shown below (with the member list computed automatically based on the criteria indicated in the memberURL attribute). 
 
-![Example - Dynamic Group Translated into Virtual Static Group](Media/Image3.138.jpg)
+![Dynamic Group Translated into Virtual Static Group](Media/dynamic-to-static.jpg)
 
-Figure 19: Example - Dynamic Group Translated into Virtual Static Group
 
 >[!note] To avoid returning duplicate entries, when a dynamic group is queried in RadiantOne, if both member and memberURL are requested, the memberURL attribute is not returned.
 
