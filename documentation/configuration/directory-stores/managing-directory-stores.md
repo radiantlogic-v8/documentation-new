@@ -494,7 +494,7 @@ Changing the RDN of an entry is a special operation. To change the RDN attribute
 
 To delete attributes:
 1. Select the user in the directory tree.
-2. On the right side, click the ![Trashcan](Media/trashcan.jpg) incon inline with the attribute you want to delete.
+2. On the right side, click the ![Trashcan](Media/trashcan.jpg) incon inline with the attribute you want to delete. If the attribute has multiple values, expand the attribute to display each value individually and then click the ![Trashcan](Media/trashcan.jpg) for the value to be removed.
 3. Click **DELETE** to confirm.
 
 ##### Editing Photo Attributes
@@ -531,7 +531,9 @@ For information on setting access permissions, please see: [Access Controls](../
 ### Deleting Entries
 
 From the Control Panel > Manage > Directory Browser, select the entry in the directory tree and click ...> Delete.
+
 ![Delete Entry](Media/delete-entry.jpg). 
+
 Click **DELETE** to accept the deletion. If the entry being deleted is a container with child entries, the entire subtree is removed.
 
 ### Alias Entries
