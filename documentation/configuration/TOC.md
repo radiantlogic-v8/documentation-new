@@ -44,7 +44,7 @@ description: Configuring RadiantOne Identity Data Management
   - [Creating Directory Stores](directory-stores/directory-stores.md)
   - [Managing Properties](directory-stores/managing-properties.md)
   - [Special Attributes Handling](directory-stores/special-attributes-handling.md)
-  - [Using Directory Browser](directory-stores/using-directory-browser.md)
+  - [Managing Entries from Directory Browser](directory-stores/managing-directory-stores#managing-radiantone-directory-entries)
   - [Managing Directory Stores](directory-stores/managing-directory-stores.md)
   - [Understanding Operational Attributes](directory-stores/understanding-operational-attributes.md)
   - [Managing Directory Schema](directory-stores/managing-directory-schema.md)
