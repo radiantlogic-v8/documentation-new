@@ -15,12 +15,12 @@ For more details, see [Indexed Attributes](/documentation/configuration/director
 ## Non-indexed Attributes
 If the Indexed Attributes list is empty, all attributes (except binary ones and the description attribute) are indexed by default. Also, the following *internal* ones are not indexed either: “pwdLastLogonTime”, "creatorsName", "createTimestamp", "modifiersName", "modifyTimestamp", "cacheCreatorsName", "cacheCreateTimestamp", "cacheModifiersName", "cacheModifyTimestamp", "uuid", "vdsSyncState", "vdsSyncHist", "ds-sync-generation-id", "ds-sync-state", "ds-sync-hist", "vdsSyncCursor", "entryUUID", "userpassword”. Any additional attributes that you do not want indexed should be added to the Non-Indexed Attributes list on the Properties tab for the selected RadiantOne Directory store.
 
-For more details, see [Indexed Attributes](/documentation/configuration/directory-stores/managing-properties#indexed-attributes)
+For more details, see [Non-indexed Attributes](/documentation/configuration/directory-stores/managing-properties#indexed-attributes)
 
 ## Sorted Attributes
 This is a list of attributes to be used in association with Virtual List Views (VLV) or sort control. These sorted indexes are managed internally in the store and kept optimized for sorting. They are required if you need to sort the search result or to execute a VLV query on the RadiantOne Directory.
 
-For more details, see [Indexed Attributes](/documentation/configuration/directory-stores/managing-properties#sorted-attributes)
+For more details, see [Sorted Attributes](/documentation/configuration/directory-stores/managing-properties#sorted-attributes)
 
 ## Optimize Linked Attributes
 
@@ -28,4 +28,4 @@ Linked attributes are attributes that allow relationships between objects. A typ
 
 If the back link attribute location and forward link attribute location in the Linked Attributes setting is a RadiantOne Directory, the computation of the references can be optimized in order to return client requests for the back link attribute(s) at high speed. This optimization has to be manually enabled and has sub-settings that dictate whether entries that have had their back link attribute are logged into the changelog, and if RadiantOne should update the linked entries asynchronously, allowing the client that issued the group modification request to get a response immediately after the group membership (object containing the forward link attribute) is updated without waiting for the back link attribute in all related objects to be updated.
 
-For more details, see [Indexed Attributes](/documentation/configuration/directory-stores/managing-properties#optimize-linked-attribute)
+For more details, see [Optimize Linked Attributes](/documentation/configuration/directory-stores/managing-properties#optimize-linked-attribute)
