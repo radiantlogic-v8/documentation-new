@@ -63,7 +63,7 @@ To configure rules for linked attributes, following the steps below:
 1.  Click **SELECT** next to the Target Base DN field. The *Select base DN* window is displayed.
 1.	Choose a base DN containing the entries (e.g. users) for which the back link attributes should be managed. In the example below, o=companydirectory is selected.
 
-    >[!warning] When your users and groups are in RadiantOne Directory stores, and you plan on enabling the [Optimize Linked Attribute setting](./managing-properties) and must support nested groups, only one user location per RadiantOne Directory store is supported. For example, having a user location configured for ou=Accounting,o=companydirectory and ou=Sales,o=companydirectory (both in the same o=companydirectory store) is not supported. In this case, you should configure a single user location as o=companydirectory as a shared parent for both user containers. 
+    >[!warning] When your users and groups are in RadiantOne Directory stores, and you plan on enabling the [Optimize Linked Attribute setting](./managing-properties#optimize-linked-attribute) and must support nested groups, only one user location per RadiantOne Directory store is supported. For example, having a user location configured for ou=Accounting,o=companydirectory and ou=Sales,o=companydirectory (both in the same o=companydirectory store) is not supported. In this case, you should configure a single user location as o=companydirectory as a shared parent for both user containers. 
 
     ![Linked Attribute](Media/add-linked-attr-mapping.jpg)
      
