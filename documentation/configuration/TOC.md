@@ -41,7 +41,7 @@ description: Configuring RadiantOne Identity Data Management
     - [Multiple containers](global-identity-builder/address-group-challenges/multiple-containers.md)
   - [Extend the global profile view](global-identity-builder/global-profile-view.md)
 - [Directory Stores](#)
-  - [Creating Directory Stores](directory-stores/creating-directory-stores.md)
+  - [Creating Directory Stores](directory-stores/directory-stores.md)
   - [Managing Properties](directory-stores/managing-properties.md)
   - [Special Attributes Handling](directory-stores/special-attributes-handling.md)
   - [Using Directory Browser](directory-stores/using-directory-browser.md)
