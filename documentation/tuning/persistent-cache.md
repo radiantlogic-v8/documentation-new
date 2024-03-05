@@ -25,14 +25,21 @@ Active
 ## Managing Cache Properties
 ### Full-text Search
 ### Authentication
+
 **Use Cache for Authentication**
+
 **Local Bind Only**
+
 **Delegate on Failure**
+
 **Enable Password Policy Enforcement**
+
 **Password Writeback**
 
 ### Optimize Linked Attributes
+
 **Enable Changelog**
+
 **Async Indexing**
 
 ### Non-indexed Attributes
@@ -42,7 +49,9 @@ Active
 ### Invariant Attribute
 
 ### Inter-cluster Replication
+
 **Replication Excluded Attributes**
+
 **Accept Changes from Replicas**
 
 
