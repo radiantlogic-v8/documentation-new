@@ -111,7 +111,7 @@ To restore a RadiantOne directory store from a previous backed up image, click !
 
 ## Interception Scripts
 
-Only a global interception script is supported for RadiantOne directory stores. For details on global interception, see the [Global Interception](../documentation/global-settings/global-interception).
+Only a global interception script is supported for RadiantOne directory stores. For details on global interception, see the [Global Interception](../configuration/global-settings/global-interception).
 
 ## Deleting a Directory Store
 
