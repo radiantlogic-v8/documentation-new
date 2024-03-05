@@ -111,7 +111,7 @@ To restore a RadiantOne directory store from a previous backed up image, click !
 
 ## Interception Scripts
 
-Only a global interception script is supported for RadiantOne directory stores. For details on global interception, see the [Global Interception](../configuration/global-settings/global-interception).
+Only a global interception script is supported for RadiantOne directory stores. For details on global interception, see the [Global Interception](../global-settings/global-interception).
 
 ## Deleting a Directory Store
 
@@ -126,7 +126,7 @@ On the Control Panel > Manage > Directory Browser you can see the entire directo
 >[!warning] 
 >The user you are logged into the Control Panel as must have rights to create users.
 
-To create new entries, right-click on the parent location in the tree above where you want the entry created and select New > Entry, inetOrgPerson, Active Directory User, OrganizationalUnit, Group, or Active Directory Group. The sections below describe these default options including the object classes that are used. If you want to create entries using different types of object classes than the ones mentioned here, then choose the New Entry option and select the desired object class from the *Available Object Classes* list. Only object classes available in the RadiantOne LDAP schema are shown here. If the desired object class is not shown, extend the RadiantOne LDAP schema first and then come back to this screen to add your entry. See [Managing the RadiantOne Schema](/managing-directory-schema) for steps on extending the RadiantOne LDAP schema.
+To create new entries, right-click on the parent location in the tree above where you want the entry created and select New > Entry, inetOrgPerson, Active Directory User, OrganizationalUnit, Group, or Active Directory Group. The sections below describe these default options including the object classes that are used. If you want to create entries using different types of object classes than the ones mentioned here, then choose the New Entry option and select the desired object class from the *Available Object Classes* list. Only object classes available in the RadiantOne LDAP schema are shown here. If the desired object class is not shown, extend the RadiantOne LDAP schema first and then come back to this screen to add your entry. See [Managing the RadiantOne Schema](./managing-directory-schema) for steps on extending the RadiantOne LDAP schema.
 
 >[!warning] 
 >Creating/Modifying entries on the Directory Browser tab is not just for RadiantOne Directory stores. If a backend other than a RadiantOne Directory is mounted under the naming context where you are creating/modifying entries, the backend source is modified accordingly. For example, if you are modifying a branch that represents an LDAP backend and you create a new user entry, that operation is sent to the backend (assuming the credentials stored in the connection string/data source to the backend has the appropriate rights to create users).
@@ -293,7 +293,7 @@ An option to manage dynamic group members is to manually add the groupOfUrls obj
 >[!note] 
 >Groups stored in a RadiantOne Directory can contain both explicit members and dynamic members. If RadiantOne is the enforcement point for authorization it first checks to see if the user is an explicit member of the group(s). Then, dynamic group membership is evaluated.
 
-If the client application is the enforcement point for authorization, then the logic to perform the extra search to the directory to find the group members (based on the memberUrl value of the group entry) must be implemented in the client application code. If the application does not support LDAP dynamic groups, then RadiantOne can be configured to dynamically build the group membership on-the-fly and make all groups managed by RadiantOne appear to have static (explicit) group members using [Special Attributes Handling](/special-attributes-handling).
+If the client application is the enforcement point for authorization, then the logic to perform the extra search to the directory to find the group members (based on the memberUrl value of the group entry) must be implemented in the client application code. If the application does not support LDAP dynamic groups, then RadiantOne can be configured to dynamically build the group membership on-the-fly and make all groups managed by RadiantOne appear to have static (explicit) group members using [Special Attributes Handling](./special-attributes-handling).
 
 **Removing Members**
 
