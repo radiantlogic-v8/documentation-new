@@ -82,7 +82,7 @@ By default, the RadiantOne directory supports a maximum of 1024 clauses in searc
 Stores can be exported into an LDIF file from the Control Panel > Setup > Directory Namespace > Namespace Design. 
 
 >[!warning] 
->If exporting to an LDIFZ file, a security key must be configured for RadiantOne. Any target stores where you want to import this LDIFZ file must use the same LDIFZ security key value. For steps on defining key generation or changing the encryption security key, see [LDIF File Encryption](managing-properties).
+>If exporting to an LDIFZ file, a security key must be configured for RadiantOne. Any target stores where you want to import this LDIFZ file must use the same LDIFZ security key value. For steps on defining key generation or changing the encryption security key, see [LDIF File Encryption](../security/attribute-encryption#ldif-file-encryptions).
 
 1.	 From the Control Panel > Setup > Directory Namespace > Namespace Design select the node where the directory store is mounted. 
 1.	 On the Properties tab, click ![Export Button](Media/export-dir-button.jpg). 
@@ -111,7 +111,7 @@ To restore a RadiantOne directory store from a previous backed up image, click !
 
 ## Interception Scripts
 
-Only a global interception script is supported for RadiantOne directory stores. For details on global interception, see the [Global Interception](/global-settings/global-interception).
+Only a global interception script is supported for RadiantOne directory stores. For details on global interception, see the [Global Interception](../documentation/global-settings/global-interception).
 
 ## Deleting a Directory Store
 
