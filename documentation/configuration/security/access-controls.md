@@ -109,21 +109,19 @@ Select the days of the week and enter time ranges which the access control instr
 
 ### Permissions
 
-If no access permissions have been defined, the default behavior is to grant read access to all attributes except “aci” to everyone. This default is set on the Main Control Panel > Settings Tab > Security section > Access Control sub-section. Select the “root” node. Click **Edit** or **Manual Edit** to view/edit it.
+If no access permissions have been defined, the default behavior is to grant read access to all attributes except “aci” to everyone. This default is set on the Control Panel > Manage > Security > Access Control. Select the “root” node. Click ![Pencil](Media/pencil.jpg) inline with the "grant read access to anyone" ACL.
 
 ![Default Global ACI Setting](Media/Image6.6.jpg)
  
-
-
-#### Type
+**Type**
 
 You can explicitly allow or deny access permissions by selecting the applicable option from the drop-down.
 
-![Permission Type](Media/Image6.7.jpg)
+![Permission Type](Media/perm-type.jpg)
  
 
 
-#### Operations
+**Operations**
 
 The specific operations a user can perform on directory data are defined below. You can allow or deny all operations, or you can assign one or more of the following:
 
