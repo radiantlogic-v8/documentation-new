@@ -135,7 +135,7 @@ To update encrypted attributes, the client must connect to RadiantOne via SSL an
 
 If you need to change the encryption security key, follow the steps below.
 
-1.	Go to the Control Panel > SETUP > Directory Namespace > Namespace Design.
+1.	Go to the Control Panel > Setup> Directory Namespace > Namespace Design.
 
 2.	Select the naming context representing the RadiantOne Directory store.
 
@@ -147,12 +147,12 @@ If you need to change the encryption security key, follow the steps below.
 
 6.	Repeat steps 1-5 for each store that has encrypted attributes.
 
-7.	Go to the Control Panel > MANAGE > Security > Attribute Encryption.
+7.	Go to the Control Panel > Manage > Security > Attribute Encryption.
 
 8.	Click Edit next to Security Key. This option is only available if you removed encrypted attributes and rebuilt the index for all applicable stores.
    ![Edit Encryption Key](Media/edit-encryption-key.jpg)
 
-10.	Go to the Control Panel > SETUP > Directory Namespace > Namespace Design.
+10.	Go to the Control Panel > Setup > Directory Namespace > Namespace Design.
 
 11.	Select the naming context representing the RadiantOne Directory store.
 
