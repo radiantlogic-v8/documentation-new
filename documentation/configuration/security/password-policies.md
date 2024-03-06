@@ -38,7 +38,11 @@ To assign users to the Privileged Password Policy Group:
 
 ## Password Policy Configuration
 
-From the Classic Control Panel > Settings Tab > Security > Password Policies, you can configure the following:
+To configure password policies, use the Classic Control Panel > Settings Tab > Security > Password Policies section.
+
+To switch to Classic Control Panel, use the menu options for the logged in user in the upper right.
+
+![Classic Control Panel](Media/classic-cp.jpg)
 
 ### Password Policy Scope
 
