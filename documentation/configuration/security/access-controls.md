@@ -22,7 +22,7 @@ You can define access to the following subjects:
 -	all users who belong to a specific group
 -	all users of the directory
 
-Access controls are set from the Main Control Panel > Settings Tab > Security section > Access Control sub-section. 
+Access controls are managed from the Control Panel > Manage > Security > Access Control. 
 
 The general ACI syntax is as follows:
 
@@ -34,7 +34,7 @@ The following default ACIs are defined:
 -	All users have read access to the directory for search, compare, and read operations.
 
 >[!warning] 
->If you delete the default read access, this does not delete read access to the RootDSE for RadiantOne. If you want to remove access to the RootDSE, check the ![An image showing ](Media/enable-root-dse.jpg) option after you delete the default global read access. This denies access to the RootDSE to everyone except cn=directory manager. You can also add a new ACI that dictates RootDSE access. Below is an example of allowing public access to the RootDSE: 
+>If you delete the default read access, this does not delete read access to the RootDSE for RadiantOne. If you want to remove access to the RootDSE, check the ![Enable ROOTDSE ACI](Media/enable-rootdse-aci.jpg) option on the GENERAL tab after you delete the default global read access. This denies access to the RootDSE to everyone except cn=directory manager. You can also add a new ACI that dictates RootDSE access. Below is an example of allowing public access to the RootDSE using *Manual Edit Mode*: 
 <br>(target="ldap:///")(targetscope="base")(targetattr="*")(version 3.0; acl "RootDSE accessible to public"; allow (read,search,compare) userdn="ldap:///anyone";)
 
 -	Users in the group cn=directory administrators,ou=globalgroups,cn=config have full access to the RadiantOne configuration as it is equivalent to cn=directory manager access. However, unlike cn=directory manager, users in this Directory Administrators group are subject to ACIs when accessing data in the RadiantOne namespace.
@@ -52,20 +52,17 @@ Each access control instruction has a description which explains the context of 
 The location is the target where the access control is to be applied and is a distinguished name.
 
 >[!warning] 
->It is recommended that you set access permissions at the root of your tree. When setting the target, you can navigate to the specific branch that you want to protect.
-
-When setting access controls on a sub-branch, you do not see which access controls have been set up at the parent nodes in the tree. This increases the chance that you may have conflicting access controls defined. Defining access controls at the root helps prevent creating conflicting access rules.
+>It is recommended that you set access permissions at the root of your tree. When setting the target, you can navigate to the specific branch that you want to protect. When setting access controls on a sub-branch, you do not see which access controls have been set up at the parent nodes in the tree. This increases the chance that you may have conflicting access controls defined. Defining access controls at the root helps prevent creating conflicting access rules.
 
 ### Target Filter
 
-You can also add an LDAP filter condition on the target resource (location) to protect.
+You can add an LDAP filter condition on the target resource (location) to protect.
 
 For example, you can define the target resource as: all the entries under dv=address book,o=vds that have the attribute securitylevel set to 'secret'. 
 
-To create this example, from the Main Control Panel > Settings Tab > Security section -> Access Control sub-section, browse to the dv=address book,o=vds branch and click **Add**. 
+To create this example, from the Control Panel > Manage > Security > Access Control, browse to the dv=address book,o=vds branch and click **+ADD ACI**. 
 
-![Setting Access Controls](Media/Image6.1.jpg)
-
+![Setting Access Controls](Media/target-filter.jpg)
 
 
 ### Scope
@@ -84,33 +81,31 @@ The scope of an access control rule can be entry level (base), one level or subt
 
 The rule can indicate “equal to” (=) or “not equal to” (!=). Select the desired condition in the drop-down list. 
 
-![Target Attributes Operator](Media/Image6.4.jpg)
+![Target Attributes Operator](Media/target-attr.jpg)
 
 
+The access rule can apply to “all” attributes or choose the “custom” option and click **SELECT** to narrow the list.
 
-The access rule can apply to “all” attributes or choose the “custom” option and click **Select** to narrow the list.
+By default, the root ACI prevents only the target attribute *aci* from being returned. This default ACI is shown below.
 
-By default, the root ACI prevents only the target attribute aci from being returned. This default ACI is shown below.
-
-![Manual Edit of ACI](Media/Image6.5.jpg)
-
+![Manual Edit of ACI](Media/root-acl-manual-edit.jpg)
 
 
-To improve security, if you want to also prevent userpassword from being returned, you can do so as shown in the following example ACI. 
+To improve security, if you want to also prevent userpassword from being returned, you can do so as shown in the following example ACI. Click **+ADD ACI** on the ACCESS CONTROL tab and then switch to MANUAL EDIT MODE.
+
+![Manual Edit Mode](Media/manual-edit-mode.jpg)
 
 (targetattr != "aci || userPassword")(target = "ldap:///")(targetscope = "subtree")(version 3.0;acl "grant read access to anyone";allow (read,compare,search) (userdn = "ldap:///anyone");)
 
-If you do not want to return the userPassword attribute for anyone other than self, you can do so as shown in the following example ACI. 
+If you do not want to return the userPassword attribute for anyone other than self, you can do so as shown in the following example ACI. Click **+ADD ACI** on the ACCESS CONTROL tab and then switch to MANUAL EDIT MODE.
 
 (targetattr = "userPassword")(target = "ldap:///")(targetscope = "subtree")(version 3.0;acl "Allow Access to userPassword to self";allow (all) (userdn = "ldap:///self");)
 
 ### Authentication Context
 
-The Authentication Context section offers a variety of settings related to bind rules that can be used for defining the access control instruction. These include the days and times of the week during which the identity is allowed to authenticate and location from which the identity must bind (IP or DNS addresses).
+The Authentication Context section offers settings related to days and times of the week during which the identity is allowed to access data.
 
-#### Days and Times
-
-Indicate the days and times during the week which the access control instruction is applicable. Select a week day and then enter a time range. Click ![add button](Media/add-button.jpg) to add the time range. Multiple time ranges per day are supported.
+Select the days of the week and enter time ranges which the access control instruction is applicable. Click ![add button](Media/add-button.jpg) to add the time range. Multiple time ranges per day are supported.
 
 ### Permissions
 
