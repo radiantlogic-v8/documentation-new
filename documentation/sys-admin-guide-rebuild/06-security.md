@@ -667,7 +667,7 @@ If you do not want to return the userPassword attribute for anyone other than se
 
 ### Authentication Context
 
-The Authentication Context section offers a variety of settings related to bind rules that can be used for defining the access control instruction. These include the days and times of the week during which the identity is allowed to authenticate and location from which the identity must bind (IP or DNS addresses).
+The Authentication Context section offers settings related to the days and times of the week during which the identity is allowed to access data.
 
 <!--
 
@@ -696,8 +696,6 @@ Level 4 indicates certificate-based (mutual) authentication is required to acces
 Select the assurance level from the drop-down list and select an operator. You can use Equals (=), Not Equal To (!=), Greater Than (>), Greater Than or Equal To (>=), Less Than (<), or Less Than or Equal To (<=).
 
 -->
-
-#### Days and Times
 
 Indicate the days and times during the week which the access control instruction is applicable. Select a week day and then enter a time range. Click ![add button](Media/add-button.jpg) to add the time range. Multiple time ranges per day are supported.
 
