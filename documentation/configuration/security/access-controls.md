@@ -105,13 +105,13 @@ If you do not want to return the userPassword attribute for anyone other than se
 
 The Authentication Context section offers settings related to days and times of the week during which the identity is allowed to access data.
 
-Select the days of the week and enter time ranges which the access control instruction is applicable. Click ![add button](Media/add-button.jpg) to add the time range. Multiple time ranges per day are supported.
+Select the days of the week and enter time ranges which the access control instruction is applicable. Click ![add button](Media/time-range-acl.jpg) to add the time range. Multiple time ranges per day are supported.
 
 ### Permissions
 
 If no access permissions have been defined, the default behavior is to grant read access to all attributes except “aci” to everyone. This default is set on the Control Panel > Manage > Security > Access Control. Select the “root” node. Click ![Pencil](Media/pencil.jpg) inline with the "grant read access to anyone" ACL.
 
-![Default Global ACI Setting](Media/Image6.6.jpg)
+![Default Global ACI Setting](Media/root-acl.jpg)
  
 **Type**
 
