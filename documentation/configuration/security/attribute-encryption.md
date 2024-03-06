@@ -68,12 +68,32 @@ Instead of using the default key generation, you have the option to use a custom
 
 No attributes are encrypted by default. To configure a list of attributes to encrypt:
 
-1.	Navigate to the RadiantOne Directory store (or configured persistent cache branch) on the Control Panel > Setup > Directory Namespace > Namespace Design. 
-2.	In the Encrypted Attributes property, enter an attribute name and press ENTER on the keyboard. Repeat this process for all attributes that should have their values stored encrypted.
+1.	Navigate to the RadiantOne Directory store on the Control Panel > Setup > Directory Namespace > Namespace Design. 
+2.	On the PROPERTIES tab, in the Encrypted Attributes property, enter an attribute name and press ENTER on the keyboard. Repeat this process for all attributes that should have their values stored encrypted.
 3.	Click **SAVE**.
-4.	Click **RE-BUILD INDEX** (if your configuration is a RadiantOne Directory Store) or **INITIALIZE** to reinitialize the cache (if your configuration is a Persistent Cache).
+4.	Click **RE-BUILD INDEX**. 
 
-Attributes listed in the Encrypted Attributes property are added to the Non-indexed attribute list by default. This means these attributes are not searchable by default. Indexing encrypted attributes is generally not advised as the index itself is less secure than the attribute stored in RadiantOne Directory/persistent cache. However, if you must be able to search on the encrypted attribute value, it must be indexed. Only “exact match/equality” index is supported for encrypted attributes. To make an encrypted attribute searchable, remove the attribute from the list of nonindexed attributes and then click **RE-BUILD INDEX** or **INITIALIZE** (to reinitialize) if the branch is a persistent cache.
+Attributes listed in the Encrypted Attributes property are added to the Non-indexed attribute list by default. This means these attributes are not searchable by default. Indexing encrypted attributes is generally not advised as the index itself is less secure than the attribute stored in RadiantOne Directory. However, if you must be able to search on the encrypted attribute value, it must be indexed. Only “exact match/equality” index is supported for encrypted attributes. To make an encrypted attribute searchable, remove the attribute from the list of nonindexed attributes and then click **RE-BUILD INDEX**.
+
+## Attributes to Encrypt for a Persistent Cached Identity View
+No attributes are encrypted by default. To configure a list of attributes to encrypt:
+
+1.	Navigate to the Control Panel > Setup > Directory Namespace > Namespace Design.
+1.	Select the root naming context that contains a persistent cached identity view and click the CACHE tab.
+1.	Click ... inline with the cached identity view and choose Edit.
+
+      ![Cache Edit Option](Media/cache-edit-option.jpg)
+  	
+1.	Click ![Manage](Media/cache-manage.jpg) and expand the Attributes Handling section.
+1.	In the Encrypted Attributes property, enter an attribute name and press ENTER on the keyboard. Repeat this process for all attributes that should have their values stored encrypted.
+1.	Click **SAVE**.
+1.	Click ![Initialize](Media/initialize-cache.jpg).
+1.	Click the **RE-INITIALIZE CACHE** link.
+1.	Select what LDIF file to use and click **DONE**. 
+
+      ![Re-initialize Cache](Media/reinit-cache.jpg)
+
+Attributes listed in the Encrypted Attributes property are added to the Non-indexed attribute list by default. This means these attributes are not searchable by default. Indexing encrypted attributes is generally not advised as the index itself is less secure than the attribute stored in persistent cache. However, if you must be able to search on the encrypted attribute value, it must be indexed. Only “exact match/equality” index is supported for encrypted attributes. To make an encrypted attribute searchable, remove the attribute from the list of nonindexed attributes and then click reinitialize the cache.
 
 ## Accessing Encrypted Attributes
 
