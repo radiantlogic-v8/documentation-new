@@ -540,7 +540,7 @@ To enable DoS filtering:
 
 1. In the Main Control Panel, navigate to Settings > Security > DoS Filter. The DoS Filter page is displayed. 
  
-1. Make changes to the following settings as required. 
+1. Make changes to the following settings as required and click **Save**. 
 
  - Click Enable DoS Filter.
  - Max Requests per Second per Connection – The maximum number of requests from a connection per second. Requests above this limit will be delayed for processing and eventually dropped if they continue to accumulate. The default value is 25.
@@ -563,7 +563,6 @@ To enable DoS filtering:
 
  - HTTP Response Code – When the DoS filter cancels the processing of a request, it sends back an HTTP response code. Use this setting to change that code. The default value is 430. 
 
-1. Click Save.
 
 ## Security and Access Controls
 
