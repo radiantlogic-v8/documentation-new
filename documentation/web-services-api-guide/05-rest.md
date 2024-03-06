@@ -291,11 +291,8 @@ Figure 7: Configuring an ADAP External Token Validator
 In this example, Postman is the REST client that will issue calls to ADAP. Obtain an OpenID Connect Token for Postman from your OIDC provider. Use the token value in a header configured in a Postman client as follows.
 
 1. Request a new access token (see [Getting An Access Token](#getting-an-access-token)). 
-1. Click *Use Token*. This inserts an Authorization header that inserts your bearer token. 
-
-![Requesting a new access token](Media/requestnewaccesstoken.jpg)
-
-Figure 10: Requesting a new access token
+1. Click *Use Token*. This inserts an Authorization header that inserts your bearer token.
+ ![Using Token in Authorization Header](Media/insertaccesstoken.jpg)
 
 1. Send the bearer token to the REST (ADAP) endpoint. In this example, a basic search is performed. 
 
