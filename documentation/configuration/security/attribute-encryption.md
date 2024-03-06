@@ -39,7 +39,7 @@ Instead of using the default key generation, you have the option to use a custom
 
 2.	With your CMK information, log into Classic Control Panel and go to the ZooKeeper tab.
 
-3.	On the ZooKeeper tab, navigate to /radiantone/<version>/<clustername>/config/vds_server.conf, click Edit Mode, and locate the following properties:
+3.	On the ZooKeeper tab, navigate to `/radiantone/<version>/<clustername>/config/vds_server.conf`, click Edit Mode, and locate the following properties:
 
 ```
   "awsAccessKeyId" : null,
