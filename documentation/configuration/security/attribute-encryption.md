@@ -64,7 +64,7 @@ Instead of using the default key generation, you have the option to use a custom
 
 11.	Define the attributes to encrypt as outlined in the next section.
 
-## Attributes to Encrypt in Directory Stores
+## Attributes to Encrypt in RadiantOne Directory Stores
 
 No attributes are encrypted by default. To configure a list of attributes to encrypt:
 
