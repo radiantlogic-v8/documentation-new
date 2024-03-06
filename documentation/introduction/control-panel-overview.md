@@ -92,13 +92,9 @@ In the Simple DN Expression example shown below, the RadiantOne user is identifi
 
 ![DN Expression Builder](Media/Image3.24.jpg)
 
-Figure 5: DN Expression Builder
-
 In the Search Expression example shown below, the values of the family_name, given_name, and email claims from the token are used to condition a sub-tree search in RadiantOne, starting at the dc=mydomain naming context to locate the identity.
 
 ![Search Expression Builder](Media/Image3.25.jpg)
-
-Figure 6: Search Expression Builder
 
 To disable support for OIDC authentication:
 
