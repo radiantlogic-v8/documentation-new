@@ -66,7 +66,7 @@ To create this example, from the Main Control Panel > Settings Tab > Security se
 
 ![Setting Access Controls](Media/Image6.1.jpg)
 
-Figure 12: Setting Access Controls
+
 
 ### Scope
 
@@ -74,11 +74,11 @@ The scope of an access control rule can be entry level (base), one level or subt
 
 ![Example of Entry Level Access Control](Media/Image6.2.jpg)
  
-Figure 13: Example of Entry Level Access Control
+
 
 ![Example of Sub Tree Level Access Control](Media/Image6.3.jpg)
  
-Figure 14: Example of Sub Tree Level Access Control
+
 
 ### Target Attributes
 
@@ -86,7 +86,7 @@ The rule can indicate “equal to” (=) or “not equal to” (!=). Select the 
 
 ![Target Attributes Operator](Media/Image6.4.jpg)
 
-Figure 15: Target Attributes Operator
+
 
 The access rule can apply to “all” attributes or choose the “custom” option and click **Select** to narrow the list.
 
@@ -94,7 +94,7 @@ By default, the root ACI prevents only the target attribute aci from being retur
 
 ![Manual Edit of ACI](Media/Image6.5.jpg)
 
-Figure 16: Manual Edit of ACI
+
 
 To improve security, if you want to also prevent userpassword from being returned, you can do so as shown in the following example ACI. 
 
@@ -108,34 +108,6 @@ If you do not want to return the userPassword attribute for anyone other than se
 
 The Authentication Context section offers a variety of settings related to bind rules that can be used for defining the access control instruction. These include the days and times of the week during which the identity is allowed to authenticate and location from which the identity must bind (IP or DNS addresses).
 
-<!--
-
-#### Level of Assurance
-
-A Level of Assurance, as defined by the ISO/IEC 29115 Standard, describes the degree of confidence in the process leading up to and including an authentication. It provides assurance that the entity claiming a particular identity, is the entity to which that identity was assigned. There are 5 levels of assurance used by RadiantOne to enforce access controls to data. The default level is no enforcement of assurance (Level 0). You can use this level when there is minimum risk associated with the authentication strength used to access the RadiantOne data. 
-
-Level 1 indicates an authentication method of basic credentials (username+password) is required to access the data. At this level, there is little confidence in the asserted identity's validity. You can use this level when there is low risk associated with the authentication strength used to access the RadiantOne data. 
-
-Level 2 indicates an authentication method of Kerberos (leveraging GSSAPI) is required to access the data. At this level, there is some confidence in the asserted identity's validity. You can use this level when there is moderate risk associated with the authentication strength used to access the RadiantOne data.
-
->[!warning] 
->Ensure you have RadiantOne configured properly as a [Kerberos LDAP service](security#kerberos).
-
-Level 3 indicates multi-factor authentication (e.g. RSA SecurID token code, Yubikey) is required to access the data. At this level, there is high confidence in the asserted identity's validity. You can use this level when there is high risk associated with the authentication strength used to access the RadiantOne data. 
-
-
->[!warning] 
->Ensure you have RadiantOne configured properly with a [Custom Authentication Provider](interception#custom-authentication-providers).
-
-Level 4 indicates certificate-based (mutual) authentication is required to access the data. There is very high confidence in an asserted identity of the entity. This is the highest level of authentication assurance and should be used when there is very high risk associated with accessing the data.
-
->[!warning] 
->Ensure you have RadiantOne configured properly for [Mutual Authentication](server-backend#mutual-authentication).
-
-Select the assurance level from the drop-down list and select an operator. You can use Equals (=), Not Equal To (!=), Greater Than (>), Greater Than or Equal To (>=), Less Than (<), or Less Than or Equal To (<=).
-
--->
-
 #### Days and Times
 
 Indicate the days and times during the week which the access control instruction is applicable. Select a week day and then enter a time range. Click ![add button](Media/add-button.jpg) to add the time range. Multiple time ranges per day are supported.
@@ -146,7 +118,7 @@ If no access permissions have been defined, the default behavior is to grant rea
 
 ![Default Global ACI Setting](Media/Image6.6.jpg)
  
-Figure 17: Default Global ACI Setting
+
 
 #### Type
 
@@ -154,7 +126,7 @@ You can explicitly allow or deny access permissions by selecting the applicable 
 
 ![Permission Type](Media/Image6.7.jpg)
  
-Figure 18: Permission Type
+
 
 #### Operations
 
@@ -224,27 +196,6 @@ The above ACI will dictate that: if the binding user is the "manager", or the "o
 -	Parent – applicable to the entry only if their bind DN is the parent of the targeted entry. For example, to allow users to modify any child entries of their bind DN, create the following ACI on the dv=address book,o=vds node:
 (targetattr = "*")(target = "ldap:///dv=address book,o=vds")(targetscope = "subtree")(version 3.0;acl "myaci";allow (write) (userdn = "ldap:///parent");)
 
-<!--
-
-You can indicate that a client connection must originate from a single IP address or a range of addresses. Both IPv4 and IPv6 addresses are supported and you can indicate a range of IP addresses using “/”. A mix of IPv4 and IPv6 can also be used. See below for examples:
-
-**Single IPv4 address**
-<br>10.11.12.129
-
-**Single IPv6 address**
-<br>fe80::b010:e554:f9d5:dec0%10
-**Range of IPv4 addresses (use the “/”) like:**
-<br>10.11.12.0/24 which represents the given IPv4 address and its associated routing prefix 10.11.12.0, or equivalently, its subnet mask 255.255.255.0, which has 24 leading 1-bits. This covers the range between 10.11.12.0 to 10.11.12.255.	
-**Range of IPv6 addresses:**
-<br>2001:db8::/32 which covers the range between 2001:db8:0:0:0:0:0:0 to 2001:db8:ffff:ffff:ffff:ffff:ffff:ffff
-
-For IPv6 addresses, use the syntax defined by RFC 2373. For example, 0:0:0:0:0:0:13.1.68.3 which can also be expressed as ::13.1.68.3 are both valid forms of IPv6 addresses. An address with a subnet prefix length can also be used (e.g. 12AB::CD30:0:0:0:0/60). Wildcards cannot be used in IPv6 addresses.
-
->[!note] 
-
-To use DNS addresses, manually edit the ACI after saving it by clicking **Manually Edit**. Use the keyword dns and enter the fully qualified DNS domain name. Use an operator of either “equal to” (=) or “not equal to” (!=). Wildcards are supported in the DNS address.
-
--->
 
 ## ACI Evaluation Rules
 
