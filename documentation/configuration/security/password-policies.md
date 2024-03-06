@@ -309,7 +309,7 @@ The Enable Dictionary Check option is comparable to the Strong Password Check pl
 
 To enable this feature:
 
-1.	From Main Control Panel, navigate to the Settings tab >Security > Password policies section.
+1.	From Classic Control Panel, navigate to the Settings tab >Security > Password policies section.
 
 2.	Locate the Password Content section and check the option to Enable Dictionary Check. This value is stored in the pwdEnableDictionary attribute of the cn=Password Policy entry and has a value of True or False.
 
@@ -407,7 +407,7 @@ A multi-valued Generalized Time attribute containing the times of the previous g
 
 ### pwdPolicySubentry
 
-An attribute that contains the DN of the password policy associated with the user. RadiantOne does not write to this attribute or allow password policies to be defined on individual users from the Main Control Panel. However, if the entry was imported from another directory, this attribute could have a value that dictates which password policy affects the user. If the value matches a policy defined in RadiantOne, this policy is enforced for the user. If the value does not match a policy defined in RadiantOne it is ignored and other configured policies below cn=Password Policy,cn=config are checked. If multiple policies affect the user, the one with the highest priority (based on precedence level) is enforced.
+An attribute that contains the DN of the password policy associated with the user. RadiantOne does not write to this attribute or allow password policies to be defined on individual users from the Classic Control Panel. However, if the entry was imported from another directory, this attribute could have a value that dictates which password policy affects the user. If the value matches a policy defined in RadiantOne, this policy is enforced for the user. If the value does not match a policy defined in RadiantOne it is ignored and other configured policies below cn=Password Policy,cn=config are checked. If multiple policies affect the user, the one with the highest priority (based on precedence level) is enforced.
 
 ### pwdReset
 
