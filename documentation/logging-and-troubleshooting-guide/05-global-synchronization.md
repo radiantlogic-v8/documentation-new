@@ -27,7 +27,7 @@ The log level is controlled by the setting in Main Control Panel -> Settings tab
 
 ## Connectors
 
-Capture connectors log activity to <piplelineId>\connector.log on the RadiantOne node where the sync agent is running. You can view and download this log file from the Server Control Panel > Log Viewer.
+Capture connectors log activity to `<piplelineId>\connector.log` on the RadiantOne node where the sync agent is running. You can view and download this log file from the Server Control Panel > Log Viewer.
  
 1.	The log level is defined per connector with the setting in Main Control Panel > Global Sync tab. 
 
