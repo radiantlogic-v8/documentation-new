@@ -510,14 +510,14 @@ To switch to Classic Control Panel, use the menu options for the logged in user 
 
 The following settings must be managed from the RadiantOne Classic Control Panel:
 -	Synchronization: Classic Control Panel > Synchronization tab <br> See [Synchronization](../configuration/synchronization/synchronization-concepts) for details. 
--	Password Policies​: Classic Control Panel > Settings > Security > Password Policies
--	SCIM config (frontend): ​Classic Control Panel > Settings > Server Front End  > SCIM
--	REST config (frontend)​: Classic Control Panel > Settings > Server Front End > Other Protocols
+-	Password Policies​: Classic Control Panel > Settings > Security > Password Policies <br> See [Password Policies](../configuration/security/password-policies) for details. 
+-	SCIM config (frontend): ​Classic Control Panel > Settings > Server Front End  > SCIM <br> See [SCIM](../web-services-api-guide/scim) for details. 
+-	REST config (frontend)​: Classic Control Panel > Settings > Server Front End > Other Protocols <br> See [REST](../web-services-api-guide/rest) for details. 
 -	External Token Validators​: Classic Control Panel > Settings > Security > External Token Validators
--	Limits​: Classic Control Panel > Settings > Limits
+-	Limits​: Classic Control Panel > Settings > Limits <br> See [Limits](../tuning/tuning-limits) for details. 
 -	Attribute Handling​: Classic Control Panel > Settings > Server Front End > Attributes Handling
--	Changelog Settings​: Classic Control Panel > Settings > Logs > Changelog
--	Log Settings​: Classic Control Panel > Settings > Logs > Log Settings
+-	Changelog Settings​: Classic Control Panel > Settings > Logs > Changelog 
+-	Log Settings​: Classic Control Panel > Settings > Logs > Log Settings <br> See [Log Settings](../troubleshooting/troubleshooting) for details. 
 -	Control Panel customizations (lock, color theme, session timeout, max users, banner, custom message on login screen)​: ​Classic Control Panel > Settings > Server Front End > Administration
 -	PCache Refresh Monitoring: Classic Control Panel > PCache Monitoring tab
 -	Intercluster Replication Monitoring: Classic Control Panel > Replication Monitoring tab
