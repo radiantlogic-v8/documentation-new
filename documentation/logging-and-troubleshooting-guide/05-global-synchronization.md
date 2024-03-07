@@ -38,7 +38,7 @@ Capture connectors log activity to `<piplelineId>\connector.log` on the RadiantO
  
 
 1.	Locate the Log Level property and select the level from the drop-down list.
-1.	![Connector Log Level](Media/Image5.6.jpg)
+	![Connector Log Level](Media/Image5.6.jpg)
  
 1.	Click **Save**.
 
