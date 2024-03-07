@@ -509,7 +509,7 @@ To switch to Classic Control Panel, use the menu options for the logged in user 
 ![Classic Control Panel](Media/classic-cp.jpg)
 
 The following settings must be managed from the RadiantOne Classic Control Panel:
--	Synchronization: Classic Control Panel > Synchronization tab  See [Synchronization](../synchronization/synchronization-concepts) for details. 
+-	Synchronization: Classic Control Panel > Synchronization tab <br> See [Synchronization](../configuration/synchronization/synchronization-concepts) for details. 
 -	Password Policies​: Classic Control Panel > Settings > Security > Password Policies
 -	SCIM config (frontend): ​Classic Control Panel > Settings > Server Front End  > SCIM
 -	REST config (frontend)​: Classic Control Panel > Settings > Server Front End > Other Protocols
