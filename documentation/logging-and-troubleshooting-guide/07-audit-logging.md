@@ -31,7 +31,7 @@ Configuration commands issued via the RadiantOne Control Panel, vdsconfig utilit
 
 ## Disable the Ability to Turn Off Audit Logging
 
-1. In the file system, navigate to <RLI_HOME>/config/advanced.
+1. In the file system, navigate to `<RLI_HOME>/config/advanced`.
 
 1. In a file editor such as Notepad, open features.properties.
 
