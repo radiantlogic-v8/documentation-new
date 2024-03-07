@@ -240,7 +240,7 @@ To define access controls:
 1.	In the Target Scope drop-down list, select base, onelevel or subtree.
 1.	For the Target Attributes, select either “equal to” (=) or “not equal to” (!=) from the drop-down list. Then choose to either have the access rule apply to “all” or “custom”. If custom is selected, click **SELECT** to narrow the list.
 
-    If you choose custom, and your attribute doesn’t appear in the list, you must update the RadiantOne LDAP schema appropriately before setting the ACI. For details on this, please see [Extending RadiantOne LDAP Schema](../configuration/directory-stores/managing-directory-schema). After the schema has been updated, go back to the Control Panel > Manage > Security > Access Control > ACCESS CONTROL tab and follow the steps mentioned above to add the custom attribute list.
+    If you choose custom, and your attribute doesn’t appear in the list, you must update the RadiantOne LDAP schema appropriately before setting the ACI. For details on this, please see [Extending RadiantOne LDAP Schema](../directory-stores/managing-directory-schema). After the schema has been updated, go back to the Control Panel > Manage > Security > Access Control > ACCESS CONTROL tab and follow the steps mentioned above to add the custom attribute list.
 
 1. In the Target Filter, enter an applicable LDAP filter to narrow the entries affected by the access control rule. This step is optional.
 1.	In the Permissions section, select the *Type* either to allow or deny. 
