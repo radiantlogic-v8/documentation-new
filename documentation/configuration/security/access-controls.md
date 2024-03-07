@@ -58,7 +58,7 @@ The location is the target where the access control is to be applied and is a di
 
 You can add an LDAP filter condition on the target resource (location) to protect.
 
-For example, you can define the target resource as: all the entries under dv=address book,o=vds that have the attribute securitylevel set to 'secret'. 
+For example, you can define the target resource as: all the entries under dv=address book,o=vds that have the attribute securitylevel set to *secret*. 
 
 To create this example, from the Control Panel > Manage > Security > Access Control, browse to the dv=address book,o=vds branch and click **+ADD ACI**. 
 
