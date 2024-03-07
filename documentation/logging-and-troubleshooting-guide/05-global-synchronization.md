@@ -3,7 +3,7 @@ title: Logging and Troubleshooting Guide
 description: Logging and Troubleshooting Guide
 ---
 
-# Chapter 4: Synchronization
+# Synchronization
 
 The components described in this section are applicable to the RadiantOne Synchronization capability. The high-level diagram below depicts the components involved. 
 
