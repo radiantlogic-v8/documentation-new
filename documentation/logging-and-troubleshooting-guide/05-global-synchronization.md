@@ -31,7 +31,7 @@ The log level is controlled by the setting in Main Control Panel -> Settings tab
  
 Figure 3: Sync Agents Log Settings
 
-Connectors
+## Connectors
 
 Capture connectors log activity to: <RLI_HOME>\logs\sync_agents\<pipelineId>\connector.log on the RadiantOne node where the sync agent is running. Run <RLI_HOME>/bin/monitoring.bat (.sh on Linux) -d pipeline to locate your sync process and the value of the “captureHostname” propertyId value indicates the machine where the connector.log is located. An example is shown below.
 
@@ -57,7 +57,7 @@ Figure 4: Capture Connector Log Example
 
 5.	Click **Save**.
 
-Sync Engine (Transformation and Apply)
+## Sync Engine (Transformation and Apply)
 
 The Sync Engine processes the transformations and sends the changes to the destination. These activities are logged in: <RLI_HOME>\vds_server\logs\sync_engine\sync_engine.log on the RadiantOne node where the sync engine processor that is assigned for the pipeline is running. If RadiantOne is deployed in a cluster, a sync engine processor can be running on one or more nodes and the pipeline processing is distributed across them. Check for the <RLI_HOME>\vds_server\logs\sync_engine\sync_engine.log on each cluster node to find the correct log file. Or you can use the Main Control Panel -> Global Sync tab to download the corresponding sync_engine.log file by selecting the topology and clicking Configure next to the pipeline. Select the Apply component and in the Log Viewer section, click the Download button.
 
