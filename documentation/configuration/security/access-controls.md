@@ -226,7 +226,7 @@ If both lists are empty, access is denied.
 
 To define access controls:
 
->[!warning] Access rights can be defined by any user who is a member of the ACI Administrators or the Directory Administrators default groups or any user assigned to a role that allows it. For details on all default administrative groups available for RadiantOne and how to define new roles, please see [Delegated Administration of RadiantOne](../introduction/control-panel-overview#authorization).
+>[!warning] Access rights can be defined by any user who is a member of the ACI Administrators or the Directory Administrators default groups or any user assigned to a role that allows it. For details on all default administrative groups available for RadiantOne and how to define new roles, please see [Delegated Administration of RadiantOne](../control-panel-overview#authorization).
 
 1.	From the Control Panel > Manage > Security > Access Control > GENERAL tab, toggle the ENABLE ACI option on and click **SAVE**.
 
