@@ -218,7 +218,7 @@ The ACI evaluation rules that RadiantOne follows are:
 
 If both lists are empty, access is denied.
 
->[!warning] To troubleshoot/trace ACI evaluation decisions, [RadiantOne server log level](../documentation/troubleshooting/troubleshooting#managing-log-levels) must be set to DEBUG. When DEBUG level is set, the evaluation rules can be seen in vds_server.log. This log can be viewed from the Environment Operations Center > Environments > `<Selected Environment>` > LOGS.
+>[!warning] To troubleshoot/trace ACI evaluation decisions, [RadiantOne server log level](../../troubleshooting/troubleshooting#managing-log-levels) must be set to DEBUG. When DEBUG level is set, the evaluation rules can be seen in vds_server.log. This log can be viewed from the Environment Operations Center > Environments > `<Selected Environment>` > LOGS.
 
 ![EOC Environment Logs](Media/eoc-env-logs.jpg)
 
