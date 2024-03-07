@@ -218,7 +218,7 @@ The ACI evaluation rules that RadiantOne follows are:
 
 If both lists are empty, access is denied.
 
->[!warning] To troubleshoot/trace ACI evaluation decisions, [RadiantOne server log level](../../troubleshooting/troubleshooting#managing-log-levels) must be set to DEBUG. When DEBUG level is set, the evaluation rules can be seen in vds_server.log. This log can be viewed from the Environment Operations Center > Environments > `<Selected Environment>` > LOGS.
+>[!warning] To troubleshoot/trace ACI evaluation decisions, [RadiantOne server log level](../documentation/troubleshooting/troubleshooting#managing-log-levels) must be set to DEBUG. When DEBUG level is set, the evaluation rules can be seen in vds_server.log. This log can be viewed from the Environment Operations Center > Environments > `<Selected Environment>` > LOGS.
 
 ![EOC Environment Logs](Media/eoc-env-logs.jpg)
 
@@ -226,7 +226,7 @@ If both lists are empty, access is denied.
 
 To define access controls:
 
->[!warning] Access rights can be defined by any user who is a member of the ACI Administrators or the Directory Administrators default groups or any user assigned to a role that allows it. For details on all default administrative groups available for RadiantOne and how to define new roles, please see [Delegated Administration of RadiantOne](../../introduction/control-panel-overview#authorization).
+>[!warning] Access rights can be defined by any user who is a member of the ACI Administrators or the Directory Administrators default groups or any user assigned to a role that allows it. For details on all default administrative groups available for RadiantOne and how to define new roles, please see [Delegated Administration of RadiantOne](../documentation/introduction/control-panel-overview#authorization).
 
 1.	From the Control Panel > Manage > Security > Access Control > GENERAL tab, toggle the ENABLE ACI option on and click **SAVE**.
 
@@ -240,7 +240,7 @@ To define access controls:
 1.	In the Target Scope drop-down list, select base, onelevel or subtree.
 1.	For the Target Attributes, select either “equal to” (=) or “not equal to” (!=) from the drop-down list. Then choose to either have the access rule apply to “all” or “custom”. If custom is selected, click **SELECT** to narrow the list.
 
-    If you choose custom, and your attribute doesn’t appear in the list, you must update the RadiantOne LDAP schema appropriately before setting the ACI. For details on this, please see [Extending RadiantOne LDAP Schema](../directory-stores/managing-directory-schem). After the schema has been updated, go back to the Control Panel > Manage > Security > Access Control > ACCESS CONTROL tab and follow the steps mentioned above to add the custom attribute list.
+    If you choose custom, and your attribute doesn’t appear in the list, you must update the RadiantOne LDAP schema appropriately before setting the ACI. For details on this, please see [Extending RadiantOne LDAP Schema](../configuration/directory-stores/managing-directory-schema). After the schema has been updated, go back to the Control Panel > Manage > Security > Access Control > ACCESS CONTROL tab and follow the steps mentioned above to add the custom attribute list.
 
 1. In the Target Filter, enter an applicable LDAP filter to narrow the entries affected by the access control rule. This step is optional.
 1.	In the Permissions section, select the *Type* either to allow or deny. 
