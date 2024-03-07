@@ -60,7 +60,7 @@ You can add an LDAP filter condition on the target resource (location) to protec
 
 For example, you can define the target resource as: all the entries under dv=address book,o=vds that have the attribute securitylevel set to *secret*. 
 
-To create this example, from the Control Panel > Manage > Security > Access Control, browse to the dv=address book,o=vds branch and click **+ADD ACI**. 
+To create this example, from the Control Panel > Manage > Security > Access Control and click **+ADD ACI**. Browse to select the dv=address book,o=vds branch and enter the target filter. An example is shown below. 
 
 ![Setting Access Controls](Media/target-filter.jpg)
 
@@ -130,9 +130,9 @@ The specific operations a user can perform on directory data are defined below. 
 
 *All*
 
-Indicates that the subject has the following rights to the targeted entry: read, write, search, delete, compare, and selfwrite. The All access right does not give the following rights to the target entry: proxy.
+Indicates that the subject has the following rights to the targeted entry: read, write, search, delete, compare, and selfwrite. The All access right does not give *proxy* permissions.
 
-Example of syntax when all operations are selected:
+Example of the syntax to indicate *all*:
 
 ```
 (targetattr = "homePhone")(target = "ldap:///dv=address book,o=vds")(targetfilter = "(securitylevel=secret)")(targetscope = "subtree")(version 3.0;acl "myaci";allow (all) (userdn = "ldap:///all");)
@@ -184,17 +184,22 @@ A subject is whom the access control rule applies to. The subject types that can
 >It is recommended to define access controls on subjects that are located in a RadiantOne Directory store or persistent cache. This prevents possible performance or network issues involved with RadiantOne connecting to a backend directory in order to enforce authorization. If your ACI’s require subjects that are located in backend directories, make sure that the backend is configured for high availability and that the [RadiantOne data source](../configuration/data-sources/data-sources) is configured with the failover servers appropriately.
 
 -	Users – applicable to any specific user(s).
--	Groups – applicable to a group of users. If the group is a nested group in a RadiantOne Directory, enable Main Control Panel > Settings > Security > Access Control > [Enable Nested Groups](06-security#enable-nested-groups) and configure [Linked Attribute](05-creating-virtual-views#linked-attributes) settings from Main Control Panel > Settings > Interception > Special Attributes Handling.
+-	Groups – applicable to a group of users. If the group is a nested group in a RadiantOne Directory, navigate to Control Panel > Manage > Security > Access Control > GENERAL tab and toggle on: ENABLE NESTED GROUPS and configure [Linked Attributes](../configuration/directory-stores/special-attributes-handling).
 -	Tree Branch - Applicable to the DN specified as part of the subject and all entries below it in the virtual directory tree. The defined access permissions apply to any user found in the tree branch you choose.
--	Group Owner - applicable to the owner, manager, or role of the group. You can define the target, scope, attributes and permissions using the Control Panel and then select this ACI and click Manual Edit to refine the subject for this complex scenario. See below for an example:<br>
-(targetattr="*")(target="ldap:///o=My Company?manager,owner,role")(targetscope = "subtree")(version 3.0;acl "Group owner access only";allow (all)(userdn = "ldap:///self");)<br>
+-	Group Owner - applicable to the owner, manager, or role of the group. You can also define the target, scope, attributes and permissions using the *Manual Edit Mode* to refine the subject for this complex scenario. See below for an example:<br>
+```
+(targetattr="*")(target="ldap:///o=My Company?manager,owner,role")(targetscope = "subtree")(version 3.0;acl "Group owner access only";allow (all)(userdn = "ldap:///self");)
+```
+<br>
 The above ACI will dictate that: if the binding user is the "manager", or the "owner", or bearing the "role" of the targeted entity, then the binding user has the access to targeted entry; otherwise, the access is denied.<br>
 
 -	Public – anyone connected to the directory is considered public. This also includes anonymous users.
 -	Self – applicable to the user whose authenticated DN matches the DN of the entry that is being accessed.
 -	Authenticated – applicable to any user who successfully authenticates.
--	Parent – applicable to the entry only if their bind DN is the parent of the targeted entry. For example, to allow users to modify any child entries of their bind DN, create the following ACI on the dv=address book,o=vds node:
+-	Parent – applicable to the entry only if their bind DN is the parent of the targeted entry. For example, to allow users to modify any child entries of their bind DN, create the following ACI using *Manual Edit Mode* on the dv=address book,o=vds node:
+```
 (targetattr = "*")(target = "ldap:///dv=address book,o=vds")(targetscope = "subtree")(version 3.0;acl "myaci";allow (write) (userdn = "ldap:///parent");)
+```
 
 
 ## ACI Evaluation Rules
@@ -213,7 +218,7 @@ The ACI evaluation rules that RadiantOne follows are:
 
 If both lists are empty, access is denied.
 
->[!warning] To troubleshoot/trace ACI evaluation decisions, [RadiantOne server log level](09-logs#log-settings) must be set to DEBUG. When DEBUG level is set, the evaluation rules can be seen in vds_server.log. This log can be viewed and downloaded from Server Control Panel > Log Viewer.
+>[!warning] To troubleshoot/trace ACI evaluation decisions, [RadiantOne server log level](09-logs#log-settings) must be set to DEBUG. When DEBUG level is set, the evaluation rules can be seen in vds_server.log. This log can be viewed from the Environment Operations Center.
 
 ## Setting Access Controls
 
