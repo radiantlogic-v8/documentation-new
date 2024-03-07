@@ -7,9 +7,8 @@ description: Logging and Troubleshooting Guide
 
 The components described in this section are applicable to the RadiantOne Synchronization capability. The high-level diagram below depicts the components involved. 
 
-![An image showing ](Media/Image5.1.jpg)
+![Sync Architecture](Media/Image5.1.jpg)
 
-Figure 5.1: Sync Architecture
 
 If the virtual view of the source is configured in persistent cache, the default HDAP trigger method is used to detect and publish the change (detailed in 1b in the diagram). If the virtual view of the source is not configured in persistent cache, the capture connector detects changes directly on the source. In this case, the agent manages the connector (detailed in 1a in the diagram).
 
@@ -25,9 +24,8 @@ This log file provides details about the state of capture connectors (e.g. start
 
 The log level is controlled by the setting in Main Control Panel -> Settings tab -> Logs -> Log Settings. Select the Sync Agents – Agents option.
 
-![An image showing ](Media/Image5.3.jpg)
+![Agent Log Settings](Media/Image5.3.jpg)
  
-Figure 5.3: Sync Agents Log Settings
 
 ## Connectors
 
@@ -35,21 +33,16 @@ Capture connectors log activity to <piplelineId>\connector.log on the RadiantOne
  
 1.	The log level is defined per connector with the setting in Main Control Panel > Global Sync tab. 
 
-2.	Select the topology and click Configure next to the relevant pipeline. 
+1.	Select the topology and click Configure next to the relevant pipeline. 
 
-3.	Click the Capture component and expand the Advanced Properties section.
-
-![An image showing ](Media/Image5.5.jpg)
+1.	Click the Capture component and expand the Advanced Properties section.
+	![Capture Connector Properties](Media/Image5.5.jpg)
  
-Figure 5.5: Capture Connector Properties
 
-4.	Locate the Log Level property and select the level from the drop-down list.
-
-![An image showing ](Media/Image5.6.jpg)
+1.	Locate the Log Level property and select the level from the drop-down list.
+1.	![Connector Log Level](Media/Image5.6.jpg)
  
-Figure 5.6: Connector Log Level
-
-5.	Click **Save**.
+1.	Click **Save**.
 
 ## Sync Engine (Transformation and Apply)
 
