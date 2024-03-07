@@ -95,11 +95,15 @@ To improve security, if you want to also prevent userpassword from being returne
 
 ![Manual Edit Mode](Media/manual-edit-mode.jpg)
 
+```
 (targetattr != "aci || userPassword")(target = "ldap:///")(targetscope = "subtree")(version 3.0;acl "grant read access to anyone";allow (read,compare,search) (userdn = "ldap:///anyone");)
+```
 
 If you do not want to return the userPassword attribute for anyone other than self, you can do so as shown in the following example ACI. Click **+ADD ACI** on the ACCESS CONTROL tab and then switch to MANUAL EDIT MODE.
 
+```
 (targetattr = "userPassword")(target = "ldap:///")(targetscope = "subtree")(version 3.0;acl "Allow Access to userPassword to self";allow (all) (userdn = "ldap:///self");)
+```
 
 ### Authentication Context
 
@@ -124,59 +128,63 @@ You can explicitly allow or deny access permissions by selecting the applicable 
 
 The specific operations a user can perform on directory data are defined below. You can allow or deny all operations, or you can assign one or more of the following:
 
-**All**
+*All*
 
 Indicates that the subject has the following rights to the targeted entry: read, write, search, delete, compare, and selfwrite. The All access right does not give the following rights to the target entry: proxy.
 
 Example of syntax when all operations are selected:
 
+```
 (targetattr = "homePhone")(target = "ldap:///dv=address book,o=vds")(targetfilter = "(securitylevel=secret)")(targetscope = "subtree")(version 3.0;acl "myaci";allow (all) (userdn = "ldap:///all");)
+```
 
-**Read**
+*Read*
 
 Indicates whether users can read the directory entries and the attributes of entries specified in the ACI. This permission applies only to the search operation. 
 
-**Search**
+*Search*
 
 Indicates whether users can search on the targets specified in the ACI. This permission applies only to the search operation. The Search right is checked once, and after the search is allowed or denied, it is not checked again. If the search is allowed, the read right is then applied to each entry to be returned as a result of the search and to each attribute of each entry.
 
-**Add**
+*Add*
 
 Indicates whether users can create entries.
 
-**Delete**
+*Delete*
 
 Indicates whether users can delete entries.
 
-**Compare**
+*Compare*
 
 Indicates whether users can compare data they supply in the request with data stored in the directory. With compare rights, the directory returns a success or failure message in response to an inquiry, but the user cannot see the value of the entry or attribute. 
 
-**Write**
+*Write*
 
 Indicates whether users can modify an entry by adding, modifying, or deleting attributes. This permission applies to the modify and modRDN operations.
 
-**Self Write**
+*Self Write*
 
 Indicates whether users can add or delete their own DN in an attribute of the target group entry. The syntax of this attribute must be a distinguished name. This right is used only for group management. Self write works with proxy authorization: it grants the right to add or delete the proxy DN from the group entry (not the DN of the user from the Bind operation).
 
-**Proxy**
+*Proxy*
 
 Authorization for RadiantOne data is checked based on the user who authenticated. The authorization ID (DN) is linked to the authenticated ID (DN) for the same connection. With the proxy authorization control enabled, the client can switch the user ID (for authorization purposes) without having to re-authenticate with a new connection.
 
 If there is the need to base authorization on a different user than the one who authenticated, you can use the proxy authorization control. This is primarily useful in environments where an application must authenticate many users and doesn’t want to maintain an open connection to RadiantOne for each of them. With this approach, the application can authenticate the user, and after, impersonate that user for authorization purposes. The application can use its own service account when connecting to RadiantOne and pass the needed control along with the user DN of the person they want to represent for authorization in their requests. RadiantOne then checks the proxy authorization rules that have been configured in access controls to make sure the service account is allowed to represent the person passed in their request. If so, the service account is allowed to perform any operations the person they are impersonating would be allowed to do.
 
-The proxy option indicates whether the subject can access the target with the rights of another entry. You can grant proxy access using the DN of any user in the directory except the special cn=directory manager user. In addition, you cannot grant proxy rights to the cn=directory manager user. If the branch you are protecting with access controls is a local LDAP/HDAP store, then this requires the [Proxy Authorization control](03-front-end-settings#proxied-authorization-control) enabled for RadiantOne.
+The proxy option indicates whether the subject can access the target with the rights of another entry. You can grant proxy access using the DN of any user in the directory except the special cn=directory manager user. In addition, you cannot grant proxy rights to the cn=directory manager user. If the branch you are protecting with access controls is a RadiantOne Directory store, then this requires the Proxy Authorization control enabled for RadiantOne. Enable this from Control Panel > Global Settings > Client Protocols > LDAP.
+
+![Proxy Authorization Control](Media/proxy-auth-control.jpg)
 
 ### Subjects
 
 A subject is whom the access control rule applies to. The subject types that can be associated with access control rules are described below:
 
 >[!warning] 
->It is recommended to define access controls on subjects that are located in a RadiantOne Universal Directory (HDAP) store or persistent cache. This prevents possible performance or network issues involved with RadiantOne connecting to a backend directory in order to enforce authorization. If your ACI’s require subjects that are located in backend directories, make sure that the backend is configured for high availability and that the [RadiantOne data source](02-concepts#data-source) is configured with the failover servers appropriately.
+>It is recommended to define access controls on subjects that are located in a RadiantOne Directory store or persistent cache. This prevents possible performance or network issues involved with RadiantOne connecting to a backend directory in order to enforce authorization. If your ACI’s require subjects that are located in backend directories, make sure that the backend is configured for high availability and that the [RadiantOne data source](../configuration/data-sources/data-sources) is configured with the failover servers appropriately.
 
 -	Users – applicable to any specific user(s).
--	Groups – applicable to a group of users. If the group is a nested group in HDAP, enable Main Control Panel > Settings > Security > Access Control > [Enable Nested Groups](06-security#enable-nested-groups) and configure [Linked Attribute](05-creating-virtual-views#linked-attributes) settings from Main Control Panel > Settings > Interception > Special Attributes Handling.
+-	Groups – applicable to a group of users. If the group is a nested group in a RadiantOne Directory, enable Main Control Panel > Settings > Security > Access Control > [Enable Nested Groups](06-security#enable-nested-groups) and configure [Linked Attribute](05-creating-virtual-views#linked-attributes) settings from Main Control Panel > Settings > Interception > Special Attributes Handling.
 -	Tree Branch - Applicable to the DN specified as part of the subject and all entries below it in the virtual directory tree. The defined access permissions apply to any user found in the tree branch you choose.
 -	Group Owner - applicable to the owner, manager, or role of the group. You can define the target, scope, attributes and permissions using the Control Panel and then select this ACI and click Manual Edit to refine the subject for this complex scenario. See below for an example:<br>
 (targetattr="*")(target="ldap:///o=My Company?manager,owner,role")(targetscope = "subtree")(version 3.0;acl "Group owner access only";allow (all)(userdn = "ldap:///self");)<br>
