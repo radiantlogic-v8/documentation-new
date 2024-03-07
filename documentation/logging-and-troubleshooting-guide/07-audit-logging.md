@@ -3,11 +3,11 @@ title: Logging and Troubleshooting
 description: Logging and Troubleshooting
 ---
 
-# Audit Logging
+## Audit Logging Overview
 
 Configuration commands issued via the RadiantOne Control Panel, vdsconfig utility, and ADAP can be logged. The types of configuration commands detailed in the audit log include schema, view, and ZooKeeper configuration changes. Audit.log is located in <RLI_HOME>/vds_server/logs. This feature is supported in v7.4.5(+).
 
-To enable audit logging:
+## Enable Audit Logging
 
 1. In the file system, navigate to <RLI_HOME>/config/advanced. 
 
@@ -30,7 +30,7 @@ To enable audit logging:
 
 >[!warning] If RadiantOne is deployed in a cluster, restart the services on all nodes. 
 
-To disable the ability to turn off audit logging:
+## Disable the Ability to Turn Off Audit Logging
 
 1. In the file system, navigate to <RLI_HOME>/config/advanced.
 
