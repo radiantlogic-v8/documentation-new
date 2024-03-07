@@ -3,7 +3,7 @@ title: Logging and Troubleshooting Guide
 description: Logging and Troubleshooting Guide
 ---
 
-# Chapter 5: Task Scheduler and Tasks
+# Task Scheduler and Tasks
 
 The Task Scheduler schedules tasks. Activities that are processed as tasks are: 
 
