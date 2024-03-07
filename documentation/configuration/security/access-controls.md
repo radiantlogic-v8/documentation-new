@@ -218,54 +218,45 @@ The ACI evaluation rules that RadiantOne follows are:
 
 If both lists are empty, access is denied.
 
->[!warning] To troubleshoot/trace ACI evaluation decisions, [RadiantOne server log level](09-logs#log-settings) must be set to DEBUG. When DEBUG level is set, the evaluation rules can be seen in vds_server.log. This log can be viewed from the Environment Operations Center.
+>[!warning] To troubleshoot/trace ACI evaluation decisions, [RadiantOne server log level](../../troubleshooting/troubleshooting#managing-log-levels) must be set to DEBUG. When DEBUG level is set, the evaluation rules can be seen in vds_server.log. This log can be viewed from the Environment Operations Center.
 
 ## Setting Access Controls
 
 To define access controls:
 
->[!warning] Access rights can be defined by any user who is a member of the ACI Administrators group or the Directory Administrators group. For details on all administrative groups available for RadiantOne, please see [Delegated Administration of RadiantOne](01-introduction#delegated-administration-of-radiantone).
+>[!warning] Access rights can be defined by any user who is a member of the ACI Administrators or the Directory Administrators default groups or any user assigned to a role that allows it. For details on all default administrative groups available for RadiantOne and how to define new roles, please see [Delegated Administration of RadiantOne](../../introduction/control-panel-overview#authorization).
 
-1.	From the Main Control Panel > Settings Tab > Security section > Access Control sub-section, select the Enable ACI checkbox on the right side in the Authorization section and click **Save**.
+1.	From the Control Panel > Manage > Security > Access Control > GENERAL tab, toggle the ENABLE ACI option on and click **SAVE**.
 
-2.	In the Access Control section, select root.
+1.	From the Control Panel > Manage > Security > Access Control > ACCESS CONTROL tab, select the Root.
+	>[!note] Although there is not an absolute requirement, it is generally recommended to define all your access controls at the root level so you can come back to this single level and see all configured access controls across the entire virtual namespace.
 
->[!note] 
->Although there is not an absolute requirement, it is generally recommended to define all your access controls at the root level so you can come back to this single level and see all configured access controls across the entire virtual namespace.
+1.	Click **+ ADD ACI**. The Edit ACI pane is displayed.
 
-3.	Click **Add**. The Edit ACI pane is displayed.
+1.	Click ![Browse](Media/browse.jpg) to navigate to the target DN.
+1.	Enter an ACI description.
+1.	In the Target Scope drop-down list, select base, onelevel or subtree.
+1.	For the Target Attributes, select either “equal to” (=) or “not equal to” (!=) from the drop-down list. Then choose to either have the access rule apply to “all” or “custom”. If custom is selected, click **SELECT** to narrow the list.
 
->[!note] 
->The Target Scope pull-down menu value defaults to subtree, and the Target Attributes value defaults to All.
+    If you choose custom, and your attribute doesn’t appear in the list, you must update the RadiantOne LDAP schema appropriately before setting the ACI. For details on this, please see [Extending RadiantOne LDAP Schema](../directory-stores/managing-directory-schem). After the schema has been updated, go back to the Control Panel > Manage > Security > Access Control > ACCESS CONTROL tab and follow the steps mentioned above to add the custom attribute list.
 
-4.	Enter an ACI description.
+1. In the Target Filter, enter an applicable LDAP filter to narrow the entries affected by the access control rule. This step is optional.
+1.	In the Permissions section, select the *Type* either to allow or deny. 
 
-5.	Click **Choose** to navigate to the target DN.
+1.	Select the operations that you want allowed or denied.
 
-6.	In the Target Scope drop-down list, select base, onelevel or subtree.
+1.	In the *Authentication Context* section, configure a schedule as needed.
 
-7.	In the Target Filter, enter an applicable LDAP filter to narrow the entries affected by the access control rule. This step is optional.
+1.	In the *Apply To* section, select the subjects that will be allowed or denied access. 
 
-8.	For the Target Attributes, select either “equal to” (=) or “not equal to” (!=) from the drop-down list. Then choose to either have the access rule apply to “all” or “custom”. If custom is selected, click SELECT to narrow the list.
+    To assign users, groups or users associated in a specific tree/branch, click **+ NEW** next to **SPECIFIC USERS**. Enter the base DN, scope and filter to locate users, groups and or tree branches to apply the access control to. Click **OK** when finished.
 
-    If you choose custom, and your attribute doesn’t appear in the list, you must update the RadiantOne LDAP schema appropriately before setting the ACI. For details on this, please see [Extending RadiantOne LDAP Schema](07-directory-schema#extending-the-radiantone-ldap-schema). After the schema has been updated, go back to the Settings tab > Security section > Access Controls sub-section and follow the steps mentioned above to add the custom attribute list.
+    To assign public, toggle the **ALLOW PUBLIC** option on.
 
-9.	In the Permissions section, select either to allow or deny. 
+    To assign self, toggle the **ALLOW SELF** option on.
 
-10.	Select the [operations](06-security#operations) that you want allowed or denied.
+    To assign all authenticated users, toggle the **ALLOW AUTHENTICATED** option on.
 
-11.	In the Authentication Context section, configure bind rules as needed.
+    To assign permissions associated with the parent, toggle the **ALLOW PARENT** option on.
 
-12.	In the Apply to section, select the [subjects](06-security#subjects) that will be allowed or denied access. 
-
-    To assign users, groups or users associated in a specific tree/branch, click **LDAP SEARCH**. 
-
-    To assign public, click **ALLOW PUBLIC**.
-
-    To assign self, click **ALLOW SELF**.
-
-    To assign all authenticated users, click **ALLOW AUTHENTICATED**.
-
-    To assign permissions associated with the parent, click **ALLOW PARENT**.
-
-13.	Click **Save** when finished.
+1.	Click **SAVE** when finished.
