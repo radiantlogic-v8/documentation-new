@@ -42,7 +42,7 @@ To configure an access token for calling the RadiantOne REST API:
 
 ![Access Token for REST API](Media/rest-api-token.jpg)
 
-The RadiantOne REST API also support OIDC tokens that can be validated with an [External Toekn Validator]
+The RadiantOne REST API also supports OIDC tokens that can be validated with an [External Token Validator](./external-token-validators). 
 
 ## Using an Access Token
 
