@@ -233,7 +233,9 @@ Custom roles can be created from Control Panel > Admin > Roles & Permissions tab
 
 ### Permissions
 The permissions available for creating custom roles in the new Control Panel are not applicable to the Classic Control Panel. 
+
 **Classic Control Panel**
+
 Classic Control Panel has the following admins and groups by default:
 
 Default administrative user | Group membership 
@@ -264,6 +266,7 @@ Role	| Required Permissions (Value of vdPrivilege)
 <span style="color:lightblue">Global ID Viewer Write</span> <br> Members of this group can log into the Global Identity Viewer and perform the following operations: <br> View entries & attributes <br> Perform searches <br> Export search results <br> Modify attribute values <br> For details on the Global Identity Viewer, see the [RadiantOne Global Identity Viewer Guide](/documentation/global-identity-viewer-guide/01-introduction)	| <span style="color:lightblue"> config-read <br> globalidviewer-write
 
 **New Control Panel**
+
 For the new Control Panel, each class of permissions matches a section in the left navigation menu.
 
 ![Roles and Permissions](Media/roles-and-perms1.jpg)
