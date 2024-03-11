@@ -223,7 +223,7 @@ ADMIN > Control Panel Config | View Only
 ADMIN > Access Tokens | View Only
 
 ### Creating Roles 
-Custom roles can be created from Control Panel > Admin > Roles & Permissions tab.
+Custom roles can be created from Control Panel > Admin > Roles & Permissions tab. 
 1. Click **ADD ROLE**.
 2. Enter the role name.
 3. (Optional) select an existing role to quickly clone/assign similar permissions to the new role.
@@ -232,7 +232,7 @@ Custom roles can be created from Control Panel > Admin > Roles & Permissions tab
 6. Click **SAVE**.
 
 ### Permissions
-The permissions available for creating custom roles in the new Control Panel are not applicable to the Classic Control Panel. 
+The permissions available for creating custom roles in the new Control Panel are not applicable to the Classic Control Panel. However, custom roles can be associated with a Classic Control Panel role to allow administrators the needed access to both the new and Classic Control Panels.
 
 **Classic Control Panel**
 
@@ -279,8 +279,7 @@ For the new Control Panel, each class of permissions matches a section in the le
 - TASKS: Various actions (e.g. initializing a RadiantOne directory) are launched as tasks. Use this to assign permissions for admins that can manage tasks (e.g. change JVM settings, modify task schedules, delete tasks...etc.).
 - GLOBAL SETTINGS: Assign permissions to configuration for LDAP access (supported directory controls and user to DN mapping), and the client certificate truststore (to manage client certificates for SSL/TLS communications.
 - ADMINISTRATION: Assign access to user management, roles & permissions, directory manager settings, control panel configuration, access tokens and entry statistics.
-- CLASSIC CONTROL PANEL: enable or disable access to the Classic Control Panel and indicate what role (identified by group membership) should be enforced in the Classic Control Panel.
-
+- CLASSIC CONTROL PANEL: enable or disable access to the Classic Control Panel and indicate what role (identified by group membership) should be enforced in the Classic Control Panel. This is to allow administrators the needed access to both the new and Classic Control Panels.
 
 
 ## Customizing the Interface 
