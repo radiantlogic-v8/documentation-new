@@ -6,7 +6,7 @@ description: Learn how to create access tokens.
 ## Overview
 Access tokens are used to authorize requests to a RadiantOne API. A token is issued for a specific API which can be the Configuration API to manage the RadiantOne service or one of the APIs used to manage the data accessible in the RadiantOne platform. Data management APIs supported are SCIMv2 or the native RESTful Web Service once known as ADAP. Access tokens are secrets and should be treated like passwords. 
 
-Access tokens have a validity period that is specified when they are generated. The expiration can be indicated with a specific calendar date, or based on a specific number of days from the time it is generated. Expired tokens can't be used again.
+Access tokens have a validity period that is specified when they are generated. The expiration can be indicated with a calendar date, or based on a specific number of days from the time it is generated. Expired tokens can't be used again.
 
 ## Configuration API
 To configure an access token for calling the RadiantOne configuration API:
