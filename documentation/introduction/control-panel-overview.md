@@ -289,14 +289,14 @@ For the new Control Panel, each class of permissions matches a section in the le
 ![Roles and Permissions](Media/roles-and-perms1.jpg)
 ![Roles and Permissions](Media/roles-and-perms2.jpg)
 
-- DATA CATALOG: Assign permissions to configure and manage data sources with the ability to set specific permission overrides for specific data sources. For example, you can assign a set of users permissions to manage and use a specific set of data sources.  The data sources must be defined prior to assigning permisssions.
-- DIRECTORY NAMESPACE: Assign permissions to namespace design (where identity views are created from) and directory schema (where the LDAP directory schema is managed).
-- DIRECTORY BROWSER: Assign permissions to the Directory Brower where entries in the RadiantOne namespace can be managed.
-- SECURITY: Assign permissions to configure attribute encryption and access controls.
-- TASKS: Various actions (e.g. initializing a RadiantOne directory) are launched as tasks. Use this to assign permissions for admins that can manage tasks (e.g. change JVM settings, modify task schedules, delete tasks...etc.).
-- GLOBAL SETTINGS: Assign permissions to configuration for LDAP access (supported directory controls and user to DN mapping), and the client certificate truststore (to manage client certificates for SSL/TLS communications.
-- ADMINISTRATION: Assign access to user management, roles & permissions, directory manager settings, control panel configuration, access tokens and entry statistics.
-- CLASSIC CONTROL PANEL: enable or disable access to the Classic Control Panel and indicate what role (identified by group membership) should be enforced in the Classic Control Panel. This is to allow administrators the needed access to both the new and Classic Control Panels.
+- **DATA CATALOG**: Assign permissions to configure and manage data sources with the ability to set specific permission overrides for specific data sources. For example, you can assign a set of users permissions to manage and use a specific set of data sources.  The data sources must be defined prior to assigning permisssions.
+- **DIRECTORY NAMESPACE**: Assign permissions to namespace design (where identity views are created from) and directory schema (where the LDAP directory schema is managed).
+- **DIRECTORY BROWSER**: Assign permissions to the Directory Brower where entries in the RadiantOne namespace can be managed.
+- **SECURITY**: Assign permissions to configure attribute encryption and access controls.
+- **TASKS**: Various actions (e.g. initializing a RadiantOne directory) are launched as tasks. Use this to assign permissions for admins that can manage tasks (e.g. change JVM settings, modify task schedules, delete tasks...etc.).
+- **GLOBAL SETTINGS**: Assign permissions to configuration for LDAP access (supported directory controls and user to DN mapping), and the client certificate truststore (to manage client certificates for SSL/TLS communications.
+- **ADMINISTRATION**: Assign access to user management, roles & permissions, directory manager settings, control panel configuration, access tokens and entry statistics.
+- **CLASSIC CONTROL PANEL**: enable or disable access to the Classic Control Panel and indicate what role (identified by group membership) should be enforced in the Classic Control Panel. This is to allow administrators the needed access to both the new and Classic Control Panels.
 
 
 ## Customizing the Interface 
