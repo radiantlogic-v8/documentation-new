@@ -139,6 +139,7 @@ ADMIN > Access Tokens | View & Edit
 The responsibilities include:
 -  Creating new naming contexts and mounting backends
 -  Configuring and managing identity views
+-  Configuring and managing persistent cache
 -  Creating and managing RadiantOne directory stores
 -  Creating and managing synchronization pipelines 
 
