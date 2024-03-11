@@ -604,7 +604,7 @@ With subtree replication, you can indicate which containers/sub-branches should 
 
 Figure 18: Export to LDIF for a Specific Sub-branch (e.g. ou=Accounting)
 
-The replication sub-trees must be defined in a comma-separated list in the “replicationSubtreeDomains” property located in ZooKeeper at: /radiantone/<version>/<cluster_name>/config/namings/<root_naming_context>
+The replication sub-trees must be defined in a comma-separated list in the “replicationSubtreeDomains” property located in ZooKeeper at: `/radiantone/<version>/<cluster_name>/config/namings/<root_naming_context>`
 
 An example of configuring two sub-trees for replication would be:
 
