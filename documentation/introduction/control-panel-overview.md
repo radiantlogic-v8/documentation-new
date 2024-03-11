@@ -124,16 +124,19 @@ Control Panel Config	| Permissions
 -|-
 SETUP > Data Catalog > Data Sources | View & Edit
 SETUP > Data Catalog > Template Management | View & Edit
-SETUP > Directory Namespace | View & Edit
+SETUP > Directory Namespace > Namespace Design | View & Edit
+SETUP > Directory Namespace > Directory Schema | View & Edit
 MANAGE > Directory Browser | View & Edit
 MANAGE > Tasks | View & Edit
-MANAGE > Security | View & Edit
+MANAGE > Security > Attribute Encryption | View & Edit
+MANAGE > Security > Access Control | View & Edit
 GLOBAL SETTINGS | View & Edit
 ADMIN > User Management | View & Edit
 ADMIN > Roles & Permissions | View & Edit
 ADMIN > Directory Manager Settings | View & Edit
 ADMIN > Control Panel Config | View & Edit
 ADMIN > Access Tokens | View & Edit
+ADMIN > Entry Statistics | View & Edit
 ACCESS CLASSIC CONTROL PANEL | Impersonate Role defined for cn=directory administrators,ou=globalgroups,cn=config
 
 **Namespace Administrator:**  Members assigned this role are responsible for managing the RadiantOne namespace. The namespace is managed from Control Panel > Setup > Directory Namespace > Namespace Design.
@@ -148,16 +151,19 @@ Control Panel Config	| Permissions
 -|-
 SETUP > Data Catalog > Data Sources | View & Edit
 SETUP > Data Catalog > Template Management | View & Edit
-SETUP > Directory Namespace | View & Edit
+SETUP > Directory Namespace > Namespace Design | View & Edit
+SETUP > Directory Namespace > Directory Schema | View & Edit
 MANAGE > Directory Browser | View & Edit
 MANAGE > Tasks | View & Edit
-MANAGE > Security | View Only
+MANAGE > Security > Attribute Encryption | View Only
+MANAGE > Security > Access Control | View Only
 GLOBAL SETTINGS | View Only
 ADMIN > User Management | View Only
 ADMIN > Roles & Permissions | View Only
 ADMIN > Directory Manager Settings | View Only
 ADMIN > Control Panel Config | View Only
 ADMIN > Access Tokens | View Only
+ADMIN > Entry Statistics | View Only
 ACCESS CLASSIC CONTROL PANEL | Impersonate Role defined for cn=namespaceadmin,ou=globalgroups,cn=config
 
 **Schema Administrator:**  Members assigned this role are responsible for managing the RadiantOne LDAP schema. The schema is managed from Control Panel > Setup > Directory Namespace > Directory Schema.
@@ -170,16 +176,19 @@ Control Panel Config	| Permissions
 -|-
 SETUP > Data Catalog > Data Sources | View & Edit
 SETUP > Data Catalog > Template Management | View & Edit
-SETUP > Directory Namespace | View & Edit
+SETUP > Directory Namespace > Namespace Design | View & Edit
+SETUP > Directory Namespace > Directory Schema | View & Edit
 MANAGE > Directory Browser | View Only
 MANAGE > Tasks | View Only
-MANAGE > Security | View Only
+MANAGE > Security > Attribute Encryption | View Only
+MANAGE > Security > Access Control | View Only
 GLOBAL SETTINGS | View Only
 ADMIN > User Management | View Only
 ADMIN > Roles & Permissions | View Only
 ADMIN > Directory Manager Settings | View Only
 ADMIN > Control Panel Config | View Only
 ADMIN > Access Tokens | View Only
+ADMIN > Entry Statistics | View Only
 ACCESS CLASSIC CONTROL PANEL | Impersonate Role defined for cn=schemaadmin,ou=globalgroups,cn=config
 
 **Security Administrator:**  Members assigned this role are responsible for managing access controls, password policies, and attribute encryption. 
@@ -194,16 +203,19 @@ Control Panel Config	| Permissions
 -|-
 SETUP > Data Catalog > Data Sources | View Only
 SETUP > Data Catalog > Template Management | View Only
-SETUP > Directory Namespace | View Only
+SETUP > Directory Namespace > Namespace Design | View Only
+SETUP > Directory Namespace > Directory Schema | View Only
 MANAGE > Directory Browser | View Only
 MANAGE > Tasks | View Only
-MANAGE > Security | View & Edit
+MANAGE > Security > Attribute Encryption | View & Edit
+MANAGE > Security > Access Control | View & Edit
 GLOBAL SETTINGS | View Only
 ADMIN > User Management | View Only
 ADMIN > Roles & Permissions | View Only
 ADMIN > Directory Manager Settings | View Only
 ADMIN > Control Panel Config | View Only
 ADMIN > Access Tokens | View & Edit
+ADMIN > Entry Statistics | View Only
 ACCESS CLASSIC CONTROL PANEL | Impersonate Role defined for cn=aciadmin,ou=globalgroups,cn=config
 
 **Read Only:**  Members assigned this role can only view configurations. They are not allowed to edit anything.
@@ -212,16 +224,19 @@ Control Panel Config	| Permissions
 -|-
 SETUP > Data Catalog > Data Sources | View Only
 SETUP > Data Catalog > Template Management | View  Only
-SETUP > Directory Namespace | View  Only
+SETUP > Directory Namespace > Namespace Design | View  Only
+SETUP > Directory Namespace > Directory Schema | View  Only
 MANAGE > Directory Browser | View Only
 MANAGE > Tasks | View Only
-MANAGE > Security | View Only
+MANAGE > Security > Attribute Encryption | View Only
+MANAGE > Security > Access Control | View Only
 GLOBAL SETTINGS | View Only
 ADMIN > User Management | View Only
 ADMIN > Roles & Permissions | View Only
 ADMIN > Directory Manager Settings | View Only
 ADMIN > Control Panel Config | View Only
 ADMIN > Access Tokens | View Only
+ADMIN > Entry Statistics | View Only
 ACCESS CLASSIC CONTROL PANEL | Impersonate Role defined for cn=readonly,ou=globalgroups,cn=config
 
 ### Creating Roles 
