@@ -1373,7 +1373,7 @@ When exporting a persistent cache store to an LDIF file, you have the option to 
  
 Figure 2.30: Export Persistent Cache
 
-### Re-initializing a Persistent Cache 
+## Re-initializing a Persistent Cache 
 
 Persistent cache should be re-initialized during off-peak hours, or during scheduled downtime, since it is a CPU-intensive process and during the initialization queries are delegated to the backend data sources which might not be able to handle the load.
 
@@ -1393,11 +1393,11 @@ Cache refresh connectors do not need to be stopped to re-initialize the persiste
 
 7.	Re-enable Inter-cluster Replication that was deactivated in step 1.
 
-### Re-building Index
+## Re-building Index
 
 If the cache has already been initialized, and the attribute list for sorted indexes changes (new attributes need to be indexed or removed from the index), you must rebuild the index. From the Main Control Panel -> Directory Namespace Tab, select the persistent cache branch below the Cache node. On the Properties tab on the right side, click the Re-build Index button.
 
-### Exporting the Cache
+## Exporting the Cache
 
 Exporting the cache generates an LDIF formatted file from the cache contents. This can be useful if you want to replicate this cache image across multiple RadiantOne clusters. To export the cached branch, from the Main Control Panel -> Directory Namespace Tab, select the persistent cache branch below the Cache node. On the Properties Tab on the right side, click the Export button. Enter a name, select a type of file (LDIF or LDIFZ which is a zipped and encrypted file) and click **OK**.
 
@@ -1408,7 +1408,7 @@ Exporting the cache generates an LDIF formatted file from the cache contents. Th
 
 Figure 2.31: Exporting an LDIFZ file
  
-### Testing Persistent Cache Refresh Process
+## Testing Persistent Cache Refresh Process
 
 To test the persistent cache refresh process, use an LDAP command line utility like the one described below. If the connectors are running, suspend them from the Main Control Panel > PCache Monitoring tab.
 
@@ -1444,7 +1444,7 @@ Modify the above command to match your requirement.  Keep the following in mind.
 
 To test, first modify the information in the underlying source. The persistent cache should not reflect any change. Next, execute the ldapsearch command mentioned above. Now, the persistent cache should reflect the new entry. Be sure to check all log files if the persistent cache did not get refreshed properly.
 
-### Starting/Stopping Real-time Refresh Agents
+## Starting/Stopping Real-time Refresh Agents
 
 Generally, the real-time persistent cache refresh agents are started automatically by RadiantOne when needed. However, the following commands can be used to manually start and stop the refresh agents.
 
@@ -1458,7 +1458,7 @@ Generally, the real-time persistent cache refresh agents are started automatical
 >[!note]
 >You can use <RLI_HOME>/bin/vdsconfig.bat list-agents to list the running agents.
 
-### Logging Persistent Cache Refreshes
+## Logging Persistent Cache Refreshes
 
 If the change log has been enabled for RadiantOne, then all changes affecting the persistent cache are logged there. Otherwise, all activity to the persistent cache is logged into a branch in the RadiantOne namespace with a root suffix of cn=cacherefreshlog. This branch only stores changes that affect persistent cache branches.
 
@@ -1493,7 +1493,7 @@ Entries remain in the cn=cacherefreshlog for a default of 3 days. This is config
 
 Typically, if the changelog has been enabled then error log level is used for the persistent cache refresh log. For more information, please see Persistent Cache Log Setting in the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction).
 
-### Detecting Persistent Cache Update Errors
+## Detecting Persistent Cache Update Errors
 
 If an entry in the persistent cache fails to be updated, the entry in the cache refresh log is tagged with a status attribute of 2.
 
@@ -1510,11 +1510,11 @@ ldapsearch -h 10.11.12.91 -p 2389 -D "cn=directory manager" -w "secret" -b "acti
 >[!warning]
 >If there are many failed entries in the persistent cache refresh log, meaning that the cache image is significantly different than the backends, it might be more efficient to reinitialize the persistent cache as opposed to trying to fix the failed updates one at a time.
 
-### Deleting the Persistent Cache
+## Deleting the Persistent Cache
 
 To delete a persistent cache branch, uncheck the Active checkbox (on the Properties tab for the cached branch), then click Save to apply the changes to the server. Then click **Delete**.
 
-### Tuning the Persistent Cache Initialization
+## Tuning the Persistent Cache Initialization
 
 Initialization of a persistent cache happens in two phases. The first phase is to create an LDIF formatted file of the cache contents (if you already have an LDIF file, you have the option to use this existing file as opposed to generating a new one). If you choose to generate a new LDIF file during the initialization wizard, you can indicate a file location for it to be generated. The second phase is to initialize the cache with the LDIF file. 
 
