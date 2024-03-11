@@ -265,7 +265,7 @@ Initialization of a persistent cache happens in two phases. The first phase is t
 
 Best practice would be to take four times the size of the LDIF file generated to determine the disk space that is required to initialize the persistent cache. For example, lab tests have shown 50 million entries (1KB or less in size) generates an LDIF file approximately 50 GB in size. So total disk space recommended to create the persistent cache for this example would be 200 GB. See the [RadiantOne Hardware Sizing Guide](/hardware-sizing-guide/01-introduction) for general recommendations on disk space.
 
-## Data Statistics
+### Data Statistics
 
 To get statistics about the entries in your view, you can use the LDIFStatistics function of the <RLI_HOME>/bin/advanced/ldif-utils utility. Once you have an LDIF file containing your entries, pass the file name and path to the utility. 
 
@@ -424,7 +424,7 @@ Once the security key has been defined, check the option to “Use .ldifz (zippe
 
 Figure 2.4: Using LDIFZ File to Initialize Persistent Cache
 
-### Options for Refreshing the Persistent Cache
+## Options for Refreshing the Persistent Cache
 
 There are four categories of events that can invoke a persistent cache refresh. They are:
 
