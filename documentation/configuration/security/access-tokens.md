@@ -14,7 +14,7 @@ To configure an access token for calling the RadiantOne configuration API:
 2. Click **+ GENERATE ACCESS TOKEN**.
 3. Enter a token name.
 4. Select *Configuration API* from the drop-down list.
-5. Choose a (delegated admin) role to associate with the token. This role will dictate the settings the token is allowed to configure.
+5. Choose a (delegated admin) role to associate with the token. This role will dictate the RadiantOne settings the token is allowed to configure.
 6. Define the token expiration as either a specifc number of days (e.g. 60, 90, 180, 365), or select a specific date that it should expire.
 7. Click **CREATE**.
 
