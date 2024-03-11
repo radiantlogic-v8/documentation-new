@@ -110,7 +110,7 @@ To disable support for OIDC authentication:
 
    
 ## Authorization 
-Roles-based access controls is used to enforce privileges for Control Panel. Any user that can authenticate to RadiantOne can administrator the service if they belong to the proper group that is associated with one of the delegated administrator roles. RadiantOne includes default delegated admin roles that users can be assigned to. Custom delegated admin roles can also be defined. 
+Roles-based access controls are used to enforce privileges for Control Panel. Any user that can authenticate to RadiantOne can administrator the service if they belong to the proper group that is associated with one of the delegated administrator roles. RadiantOne includes default delegated admin roles that users can be assigned to. Custom delegated admin roles can also be defined. 
 Roles & permissions are managed from Control Panel > Admin > Roles & Permissions.
 
 Describe classification of permissions. Describe how permissions can be defined per data source.
@@ -135,7 +135,7 @@ ADMIN > Directory Manager Settings | View & Edit
 ADMIN > Control Panel Config | View & Edit
 ADMIN > Access Tokens | View & Edit
 
-**Namespace Administrator:**  Members assigned this role are responsible for managing the RadiantOne namespace. The namespace is managed from Control Panel > SETUP > Directory Namespace > Namespace Design.
+**Namespace Administrator:**  Members assigned this role are responsible for managing the RadiantOne namespace. The namespace is managed from Control Panel > Setup > Directory Namespace > Namespace Design.
 The responsibilities include:
 -  Creating new naming contexts and mounting backends
 -  Configuring and managing identity views
@@ -158,7 +158,7 @@ ADMIN > Control Panel Config | View Only
 ADMIN > Access Tokens | View Only
 
 
-**Schema Administrator:**  Members assigned this role are responsible for managing the RadiantOne LDAP schema. The schema is managed from Control Panel > SETUP > Directory Namespace > Directory Schema.
+**Schema Administrator:**  Members assigned this role are responsible for managing the RadiantOne LDAP schema. The schema is managed from Control Panel > Setup > Directory Namespace > Directory Schema.
 The responsibilities include:
 - Creating new LDAP object classes and attributes
 - Extending the RadiantOne LDAP schema with objects and attributes from data source (backend) schemas.
@@ -181,7 +181,7 @@ ADMIN > Access Tokens | View Only
  
 
 **Security Administrator:**  Members assigned this role are responsible for managing access controls, password policies, and attribute encryption. 
-Access controls are managed from Control Panel > MANAGE > Security > Access Controls.
+Access controls are managed from Control Panel > Manage > Security > Access Controls.
 The responsibilities include:
 - Creating and managing access controls
 - Creating and managing password policies
@@ -198,7 +198,7 @@ MANAGE > Tasks | View Only
 MANAGE > Security | View & Edit
 GLOBAL SETTINGS | View Only
 ADMIN > User Management | View Only
-ADMIN > Roles & Permissions | View Only??????
+ADMIN > Roles & Permissions | View Only
 ADMIN > Directory Manager Settings | View Only
 ADMIN > Control Panel Config | View Only
 ADMIN > Access Tokens | View & Edit
@@ -223,7 +223,7 @@ ADMIN > Control Panel Config | View Only
 ADMIN > Access Tokens | View Only
 
 ### Creating Roles 
-Custom roles can be created from Control Panel > Admin > Roles & Permissions.
+Custom roles can be created from Control Panel > Admin > Roles & Permissions tab.
 1. Click **ADD ROLE**.
 2. Enter the role name.
 3. (Optional) select an existing role to quickly clone/assign similar permissions to the new role.
@@ -231,12 +231,84 @@ Custom roles can be created from Control Panel > Admin > Roles & Permissions.
 5. Go through each set of permissions and assign the proper privilege: None, View Only, or View & Edit.
 6. Click **SAVE**.
 
+### Permissions
+The permissions available for creating custom roles in the new Control Panel are not applicable to the Classic Control Panel. 
+**Classic Control Panel**
+Classic Control Panel has the following admins and groups by default:
+
+Default administrative user | Group membership 
+-|-
+uid=aciadmin,ou=globalusers,cn=config | Member of the ACI Administrator Group.
+uid=namespaceadmin,ou=globalusers,cn=config | Member of the Namespace Administrator Group.
+uid=operator,ou=globalusers,cn=config | Member of the Operator Group.
+uid=schemaadmin,ou=globalusers,cn=config | Member of the Schema Administrator Group.
+uid=superadmin,ou=globalusers,cn=config | Member of the Directory Administrator Group.
+uid=icsadmin,ou=globalusers,cn=config | Member of the ICS Administrator Group.
+uid=icsoperator,ou=globalusers,cn=config | Member of the ICS Operator Group.
+uid=readonly,ou=globalusers,cn=config | Member of the Read Only Group.
+
+The roles and corresponding required permissions are described in the table below.
+
+Role	| Required Permissions (Value of vdPrivilege)
+-|-
+<span style="color:lightblue">Directory Administrator</span> <br> Members of this group can perform all operations (all operations that the other groups defined below can perform) in addition to:<br>Change privileges for the delegated roles<br>Access the Global Sync Tab <br>Update username and password properties for data sources via LDAP modify command | <span style="color:lightblue">config-read <br>config-write <br>services-restart <br> services-shutdown <br>update-schema <br>instance-read <br>instance-write <br>acl-read <br>acl-write <br>naming-context-read <br>naming-context-write <br>data-source-read <br>data-source-write <br>data-store-read <br>data-store-write <br>ics-admin <br>tasks-admin <br>globalidviewer-read <br>globalidviewer-write </span>
+<span style="color:lightblue">Read Only</span> <br> Members of this group can read the RadiantOne configuration, read settings for any configured instances, read naming context configurations, read configured data sources, and view synchronization topologies on the Global Sync Tab. Members can also log into the RadiantOne Global Identity Viewer Console and use the Global Identity Viewer to search for identities and groups. | <span style="color:lightblue">config-read <br>instance-read <br>naming-context-read <br>data-source-read <br>globalidviewer-read </span>
+<span style="color:lightblue">Namespace Administrator</span> <br> Members of this group can perform the following operations:<br> Read RadiantOne configuration<br> Access Wizards tab in Main Control Panel<br> Restart the RadiantOne service from Main Control Panel<br> Create, update, or delete naming contexts<br> Create, update, or delete backend mappings<br> Create, update, and manage persistent cache <br> Create, update, or delete data sources<br> Create, update, or delete RadiantOne Universal Directory stores<br> Update RadiantOne LDAP schema<br> Launch tasks	| <span style="color:lightblue">config-readconfig-write <br>services-restart<br>update-schema <br>naming-context-read<br>naming-context-write <br>data-source-read <br> data-store-read <br> data-store-write <br> tasks-admin <br> ics-admin
+<span style="color:lightblue">Operator</span> <br> Members of this group can perform the following operations: <br> Read RadiantOne configuration <br> Create, update, or delete RadiantOne Universal Directory (HDAP) Stores <br> Restart the RadiantOne service from the Main Control Panel <br> Stop the RadiantOne service from the Main Control Panel <br> Launch Tasks | <span style="color:lightblue">config-read <br> config-write <br> services-restart <br> services-shutdown <br> data-store-read <br> data-store-write <br> tasks-admin <br> naming-context-read</span>
+<span style="color:lightblue">Schema Administrator </span> <br> Members of this group can perform the following operations: <br> Read RadiantOne configuration <br> Create, update or delete schema objects (objectclasses or attributes <br> Extend RadiantOne LDAP schema with objects and attributes from orx files <br> Create, update or delete data sources | <span style="color:lightblue">config-read <br> update-schema <br> data-source-read <br> data-source-write </span>
+<span style="color:lightblue">ACI Administrator</span> <br> Members of this group can perform the following operations: <br> Read RadiantOne configuration <br> Create, update and delete access controls | <span style="color:lightblue">config-read <br> acl-read <br> acl-write <br> naming-context-read </span>
+<span style="color:lightblue">ICS Administrator</span> <br> Members of this group can perform the following operations: <br> Read RadiantOne configuration <br> Access Wizards tab in Main Control Panel <br> Perform all operations from the Global Sync Tab <br> Log into the RadiantOne Global Identity Viewer | <span style="color:lightblue">config-read <br> config-write <br> naming-context-read <br> data-source-read <br> ics-admin <br> ics-workflow-approve <br> tasks-admin <br> globalidviewer-read <br> globalidviewer-write <br> globalidviewer-designer</span>
+<span style="color:lightblue">ICS Operator</span> <br> Members of this group can perform the following operations: <br> Read RadiantOne configuration <br> Access the Global Sync tab and read topologies <br> Log into the RadiantOne Global Identity Viewer | <span style="color:lightblue">config-read <br> ics-operator
+<span style="color:lightblue">Global ID Viewer Design</span> <br> Members of this group can log into the Global Identity Viewer and perform the following operations: <br> View entries & attributes <br> Perform searches <br> Edit & delete templates <br> Create, edit and delete queries <br> Export search results <br> Modify attribute values <br> Configure and schedule reports <br> For details on the Global Identity Viewer, see the [RadiantOne Global Identity Viewer Guide](/documentation/global-identity-viewer-guide/01-introduction)
+ | <span style="color:lightblue"> config-read <br> config-write <br> globalidviewer-designer <br> tasks-admin
+<span style="color:lightblue">Global ID Viewer Write</span> <br> Members of this group can log into the Global Identity Viewer and perform the following operations: <br> View entries & attributes <br> Perform searches <br> Export search results <br> Modify attribute values <br> For details on the Global Identity Viewer, see the [RadiantOne Global Identity Viewer Guide](/documentation/global-identity-viewer-guide/01-introduction)	| <span style="color:lightblue"> config-read <br> globalidviewer-write
+
+**New Control Panel**
+For the new Control Panel, each class of permissions matches a section in the left navigation menu.
+
+![Roles and Permissions](Media/roles-and-perms1.jpg)
+![Roles and Permissions](Media/roles-and-perms2.jpg)
+
+- DATA CATALOG: Assign permissions to configure and manage data sources with the ability to set specific permission overrides for specific data sources.
+- DIRECTORY NAMESPACE: Assign permissions to namespace design (where identity views are created from) and directory schema (where the LDAP directory schema is managed).
+- DIRECTORY BROWSER: Assign permissions to the Directory Brower where entries in the RadiantOne namespace can be managed.
+- SECURITY: Assign permissions to configure attribute encryption and access controls.
+- TASKS: Various actions (e.g. initializing a RadiantOne directory) are launched as tasks. Use this to assign permissions for admins that can manage tasks (e.g. change JVM settings, modify task schedules, delete tasks...etc.).
+- GLOBAL SETTINGS: Assign permissions to configuration for LDAP access (supported directory controls and user to DN mapping), and the client certificate truststore (to manage client certificates for SSL/TLS communications.
+- ADMINISTRATION: Assign access to user management, roles & permissions, directory manager settings, control panel configuration, access tokens and entry statistics.
+- CLASSIC CONTROL PANEL: enable or disable access to the Classic Control Panel and indicate what role (identified by group membership) should be enforced in the Classic Control Panel.
+
+
 
 ## Customizing the Interface 
+The following settings are currently only applicable to the Classic Control Panel.
+Access Classic Control Panel 
 
 ### Color theme 
 
 ### Message of the Day 
+The Classic Control Panel login page contains a basic username and password text box. To add a custom message on the login page, follow the steps below.
+
+1.	Log in to the Classic Control Panel as a member of the Directory Administrators role.
+
+1.	Go to the Settings tab > Server Front End > Administration.
+1.	In the *Message of the Day Configuration*, enter the message contents.
+1.	Enter a message title (will display if a popup window is used).
+1.	(Optional) check the box to enable a "Warning" icon if you want the message to be prefixed with a "Warning".
+1.	(Optional) check the box to enable a "Popup" message that displays the message title and contents that the user must explicitly acknowledge and close. 
+1.	Click **Save**.
+1.	Log out of the Classic Control Panel to be returned to the login screen. 
+
+An example of the custom message on the login page is shown below.
+
+![Custom Message on Login Page](Media/Image3.26.jpg)
+
+
+![Custom Message on Login Page with Warning Label and Bold Font](Media/Image3.27.jpg)
+
+
+![Custom Message Popup Window](Media/Image3.28.jpg)
+
 
 ### Banner 
 
