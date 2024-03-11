@@ -134,6 +134,7 @@ ADMIN > Roles & Permissions | View & Edit
 ADMIN > Directory Manager Settings | View & Edit
 ADMIN > Control Panel Config | View & Edit
 ADMIN > Access Tokens | View & Edit
+ACCESS CLASSIC CONTROL PANEL | Impersonate Role defined for cn=directory administrators,ou=globalgroups,cn=config
 
 **Namespace Administrator:**  Members assigned this role are responsible for managing the RadiantOne namespace. The namespace is managed from Control Panel > Setup > Directory Namespace > Namespace Design.
 The responsibilities include:
@@ -157,7 +158,7 @@ ADMIN > Roles & Permissions | View Only
 ADMIN > Directory Manager Settings | View Only
 ADMIN > Control Panel Config | View Only
 ADMIN > Access Tokens | View Only
-
+ACCESS CLASSIC CONTROL PANEL | Impersonate Role defined for cn=namespaceadmin,ou=globalgroups,cn=config
 
 **Schema Administrator:**  Members assigned this role are responsible for managing the RadiantOne LDAP schema. The schema is managed from Control Panel > Setup > Directory Namespace > Directory Schema.
 The responsibilities include:
@@ -179,7 +180,7 @@ ADMIN > Roles & Permissions | View Only
 ADMIN > Directory Manager Settings | View Only
 ADMIN > Control Panel Config | View Only
 ADMIN > Access Tokens | View Only
- 
+ACCESS CLASSIC CONTROL PANEL | Impersonate Role defined for cn=schemaadmin,ou=globalgroups,cn=config
 
 **Security Administrator:**  Members assigned this role are responsible for managing access controls, password policies, and attribute encryption. 
 Access controls are managed from Control Panel > Manage > Security > Access Controls.
@@ -203,8 +204,7 @@ ADMIN > Roles & Permissions | View Only
 ADMIN > Directory Manager Settings | View Only
 ADMIN > Control Panel Config | View Only
 ADMIN > Access Tokens | View & Edit
-
-**Operator**
+ACCESS CLASSIC CONTROL PANEL | Impersonate Role defined for cn=aciadmin,ou=globalgroups,cn=config
 
 **Read Only:**  Members assigned this role can only view configurations. They are not allowed to edit anything.
 
@@ -222,6 +222,7 @@ ADMIN > Roles & Permissions | View Only
 ADMIN > Directory Manager Settings | View Only
 ADMIN > Control Panel Config | View Only
 ADMIN > Access Tokens | View Only
+ACCESS CLASSIC CONTROL PANEL | Impersonate Role defined for cn=readonly,ou=globalgroups,cn=config
 
 ### Creating Roles 
 Custom roles can be created from Control Panel > Admin > Roles & Permissions tab. 
@@ -273,7 +274,7 @@ For the new Control Panel, each class of permissions matches a section in the le
 ![Roles and Permissions](Media/roles-and-perms1.jpg)
 ![Roles and Permissions](Media/roles-and-perms2.jpg)
 
-- DATA CATALOG: Assign permissions to configure and manage data sources with the ability to set specific permission overrides for specific data sources.
+- DATA CATALOG: Assign permissions to configure and manage data sources with the ability to set specific permission overrides for specific data sources. For example, you can assign a set of users permissions to manage and use a specific set of data sources.  The data sources must be defined prior to assigning permisssions.
 - DIRECTORY NAMESPACE: Assign permissions to namespace design (where identity views are created from) and directory schema (where the LDAP directory schema is managed).
 - DIRECTORY BROWSER: Assign permissions to the Directory Brower where entries in the RadiantOne namespace can be managed.
 - SECURITY: Assign permissions to configure attribute encryption and access controls.
@@ -285,7 +286,7 @@ For the new Control Panel, each class of permissions matches a section in the le
 
 ## Customizing the Interface 
 The following settings are currently only applicable to the Classic Control Panel.
-Access Classic Control Panel 
+Access the Classic Control Panel 
 
 ### Color theme 
 
