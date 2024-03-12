@@ -96,17 +96,17 @@ To enable support for OIDC authentication:
 
 11.	In the OIDC to FID User Mappings window, click `Add`.
 
-12.	There are two options for identifying the RadiantOne admin user. If the RadiantOne user can be identified by using values/claims from the token to comprise the DN, use the Simple DN Expression Builder. If the RadiantOne user can be identified by performing a lookup in RadiantOne based on values from the token, use the Search Expression Builder.
+12.	There are two options for identifying the RadiantOne admin user. If the RadiantOne user can be identified by using values/claims from the token to comprise the DN, use the Simple DN Mapping. If the RadiantOne user can be identified by performing a lookup in RadiantOne based on values from the token, use the Advanced DN Mapping.
 
-13.	Click `Save`.
+13.	Click **SAVE**.
 
-Examples of configuring the Simple DN Expression and the Search Expression are shown below.
+Examples of configuring the Simple DN Mapping and an Advanced DN Mapping are shown below.
 
-In the Simple DN Expression example shown below, the RadiantOne user is identified by using the given_name and family_name claims from the token to compute the DN.
+In the Simple DN Mapping example shown below, the RadiantOne user is identified by using the given_name and family_name claims from the token to compute the DN.
 
 ![DN Expression Builder](Media/Image3.24.jpg)
 
-In the Search Expression example shown below, the values of the family_name, given_name, and email claims from the token are used to condition a sub-tree search in RadiantOne, starting at the dc=mydomain naming context to locate the identity.
+In the Advanced DN Mapping example shown below, the values of the family_name, given_name, and email claims from the token are used to condition a sub-tree search in RadiantOne, starting at the dc=mydomain naming context to locate the identity.
 
 ![Search Expression Builder](Media/Image3.25.jpg)
 
