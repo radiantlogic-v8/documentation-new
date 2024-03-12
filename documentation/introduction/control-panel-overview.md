@@ -438,14 +438,21 @@ Managing Entries (CRUD on users and groups)
 
 **Tasks**
 
+[Manage Tasks](/documentation/configuration/global-settings/tasks) from here.
+
 **Security**  
 
 *Attribute Encryption*
 
+[Manage Attribute Encryption](/documentation/configuration/security/attribute-encryption) from here.
+
 *Password Policies* 
+
+[Manage Password Policies](/documentation/configuration/security/password-policies) from Classic Control Panel.
 
 *Access Controls* 
 
+[Manage Access Controls](/documentation/configuration/security/access-controls) from here.
 
 ### Global settings
 
