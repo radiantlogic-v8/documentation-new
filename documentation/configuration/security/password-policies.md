@@ -24,7 +24,7 @@ To allow users to bypass password policies, you can add them to the PrivilegedPa
 
 To assign users to the Privileged Password Policy Group:
 
-1.	In the Control Panel > MANAGE > Directory Browser.
+1.	In the Control Panel > Manage > Directory Browser.
 
 2.	Expand cn=config and ou=globalgroups.
 
