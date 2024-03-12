@@ -12,7 +12,6 @@ The Control Panels utilize a web server that is installed with RadiantOne. The e
 
 ![The Control Panel Login Page](Media/login-page.jpg)
 
-For more details, see [Configuration Required in Classic Control Panel](#switch-to-classic-control-panel)
 
 ### Classic Control Panel
 To switch to Classic Control Panel, use the menu options for the logged in user in the upper right.
@@ -20,6 +19,8 @@ To switch to Classic Control Panel, use the menu options for the logged in user 
 ![Classic Control Panel](Media/classic-cp.jpg)
 
 The currently logged in user must have permissions to [access the Classic Control Panel](#permissions).
+
+For more details, see [Configuration Required in Classic Control Panel](#switch-to-classic-control-panel)
 
 ## Authentication 
 
