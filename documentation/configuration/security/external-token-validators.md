@@ -54,7 +54,7 @@ The RadiantOne REST (ADAP) service queries the RadiantOne LDAP service using pro
 
 To configure proxy authorization: 
 
-1. Navigate to Control Panel > GLOBAL SETTINGS > Client Protocols > LDAP.
+1. Navigate to Control Panel > Global Settings > Client Protocols > LDAP.
 
 1. Enable Proxy Authorization and click **SAVE**.
 
