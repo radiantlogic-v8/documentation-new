@@ -127,7 +127,7 @@ To disable support for OIDC authentication:
 Roles-based access controls are used to enforce privileges for Control Panel. Any user that can authenticate to RadiantOne can administrator the service if they belong to the proper group that is associated with one of the delegated administrator roles. RadiantOne includes default delegated admin roles that users can be assigned to. Custom delegated admin roles can also be defined. 
 Roles & permissions are managed from Control Panel > Admin > Roles & Permissions.
 
-Describe classification of permissions. Describe how permissions can be defined per data source.
+Assigning roles to users is done from Control Panel > Admin > User Management tab.
 
 ### Default Delegated Admin Roles
 The default delegated admin roles can be viewed from Control Panel > Admin > Roles & Permissions. The default roles cannot be edited. However, you can use the default role definition as a basis for defining a new custom role by choosing the default role from the list when prompted to *Clone Permissions* during new role creation.
