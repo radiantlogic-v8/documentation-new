@@ -368,6 +368,29 @@ An example of a custom message using the "Popup" on the login page is shown belo
 
 
 ### Banner 
+A custom message can be added to the banner of RadiantOne User Interface pages. This includes the Classic Control Panel, the Server Control Panel, the login page, and the logout landing page.
+
+To add a custom message:
+
+1. Log into the Classic Control Panel as a member of the Directory Administrators role. 
+
+2. Navigate to Settings > Administration > Internal Banner Configuration section. 
+
+3. Enter the message to appear in the banner in the Banner Text field. 
+
+4. Specify a color in the Banner Background Color field. You can indicate the color by name or by hex color code.
+
+    >[!note] If you enter a hex color code, include the "#" character here. If the color specified is not recognized, it defaults to gray. 
+
+5. Specify the banner's text color. You can indicate the color by name or by hex color code.
+
+    >[!note] If you enter a hex color code, include the "#" character here. If the color specified is not recognized, it defaults to gray. 
+
+    ![internal banner configuration](Media/internal-banner-config.jpg)
+
+6. Click **Save**. The next time the Classic Control Panel is opened (or the browser tab is refreshed), the custom banner message is displayed. 
+
+![banner message](Media/banner-message.jpg)
 
 ## Navigating the Control Panel 
 
