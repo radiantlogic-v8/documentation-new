@@ -371,11 +371,24 @@ An example of the custom message on the login page is shown below.
 
 **Directory Namespace**
 
+The RadiantOne namespace can be comprised of many different root naming contexts. Each one can represent a different type of backend configuration. This might be a RadiantOne Directory store, or an identity view created from a data source (LDAP, database, or custom).  The configuration of the namespace is managed in the Namespace Design section.  The LDAP schema for RadiantOne is configured in the Directory Schema section.
+
 *Namespace Design*
+
+The RadiantOne namespace is managed from here. Create and manage RadiantOne Directory stores, identity views, and persistent cache from here. For details, see: [Managing Directory Stores](/documentation/configuration/directory-stores/managing-directory-stores) and [Managing Identity Views](/documentation/configuration/identity-views/intro-view-design).
 
 *Directory Schema*
 
+The RadiantOne LDAP directory schema is managed from here. For details, see: [Managing Directory Schema](/documentation/configuration/directory-stores/managing-directory-schema).
+
 *Global Identity Builder*
+
+The [Global Identity Builder](/documentation/configuration/global-identity-builder/concepts) is only access in the Classic Control Panel.
+To switch to Classic Control Panel, use the menu options for the logged in user in the upper right.
+
+![Classic Control Panel](Media/classic-cp.jpg)
+
+The currently logged in user must have permissions to [access the Classic Control Panel](#permissions).
 
 ### Manage 
 
