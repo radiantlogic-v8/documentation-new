@@ -26,6 +26,7 @@ The following configurations are currently only accessible from the Classic Cont
 -	Control Panel customizations (lock, color theme, session timeout, max users, banner, custom message on login screen)​
 -	PCache Refresh Monitoring Tab​
 -	Intercluster Replication Monitoring Tab​
+-	File Manager
 -	Zookeeper tab 
 
 To switch to Classic Control Panel, use the menu options for the logged in user in the upper right.
