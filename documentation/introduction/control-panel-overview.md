@@ -309,7 +309,29 @@ For the new Control Panel, each class of permissions matches a section in the le
 - **ADMINISTRATION**: Assign access to user management, roles & permissions, directory manager settings, control panel configuration, access tokens and entry statistics.
 - **CLASSIC CONTROL PANEL**: enable or disable access to the Classic Control Panel and indicate what role (identified by group membership) should be enforced in the Classic Control Panel. This is to allow administrators the needed access to both the new and Classic Control Panels.
 
+### Assigning Users to Roles
+Admin users can be assigned to roles from Control Panel > Admin > User Management tab.
+Either search for a user to manage their roles, or click **CREATE USER** to create a new user and assign their roles during the creation.
 
+**Creating Users**
+1. From Control Panel > Admin > User Management tab, click **CREATE USER**.
+2. Enter a username.
+3. Enter a passwod.
+4. Confirm the password.
+5. Enter a first name.
+6. Enter a last name.
+7. Enter an email address.
+8. Toggle the status to either active or inactive. Inactive users are not allowed to log into Control Panel.
+9. To assign roles, select a role from the drop-down list and click **+ASSIGN ROLE**. Repeat this step until all roles are selected.
+10. Click **CREATE**.
+
+**Assigning Roles to Existing Users**
+1. From Control Panel > Admin > User Management tab, search for a user and click on the username to select it.
+2. Locate the *Assign Roles* section.
+3. Select a role from the drop-down list and click **+ASSIGN ROLE**. Repeat this step until all roles are selected.
+4. Click **SAVE**
+    
+ 
 ## Customizing the Interface 
 The following settings are currently only applicable to the **Classic Control Panel**.
 
@@ -318,6 +340,7 @@ To switch to Classic Control Panel, use the menu options for the logged in user 
 ![Classic Control Panel](Media/classic-cp.jpg)
 
 ### Color theme 
+The Classic Control Panel can have a custom color theme.
 
 ### Message of the Day 
 The Classic Control Panel login page contains a basic username and password text box. To add a custom message on the login page, follow the steps below.
@@ -423,7 +446,7 @@ LDAP, SCIM, REST
 *Directory Manager Account*
 The directory manager (cn=directory manager by default) is the super user for the directory and this account is defined during the RadiantOne install. For details on defining this account, see the Environment Operations Center Guide.
 
-The super user is the only user that can log into the Control Panel while RadiantOne is not running. When you log into the Control Panel with this user, you can perform any of the operations described in [Delegation Administration](#default-delegated-admin-roles). Also, access permissions and password policies do not apply for this user. This safety measure prevents someone from accidentally denying the rights needed to access and manage the server. Access to this super user account should be limited. If you require many directory managers, add these as members to the [Directory Administrator Role](01-introduction.md#delegated-administration-roles) instead of having them all use the single super user account.
+The super user is the only user that can log into the Control Panel while RadiantOne is not running. When you log into the Control Panel with this user, you can perform any of the operations described in [Delegated Administration](#default-delegated-admin-roles). Also, access permissions and password policies do not apply for this user. This safety measure prevents someone from accidentally denying the rights needed to access and manage the server. Access to this super user account should be limited. If you require many directory managers, add these as members to the [Directory Administrator Role](#default-delegated-admin-roles) instead of having them all use the single super user account.
 
 The RadiantOne super user account is associated with an LDAP entry in the RadiantOne namespace located at: cn=Directory Manager,ou=RootUsers,cn=config. Cn=Directory Manager,ou=RootUsers,cn=config is authorized the same as cn=Directory Manager. 
 
@@ -527,97 +550,19 @@ An example of using Postman as a REST client to update the cn=directory manager 
 This parameter can be set to the DN of the Administrators group defined in the virtual namespace. The administrators group is checked for authorization purposes as members of this group do not have limits or password policy enforced for them. To manage this value, from the Main Control Panel > Settings Tab > Administration section, locate the Administrators Group DN parameter. Enter the value of a valid group DN located in the virtual namespace.
 
 **User Management**
+[Manage delegated admin users](#assigning-users-to-roles) from here.
 
 **Roles & Permissions** 
+[Manage default and custom roles](#default-delegated-admin-roles) from here.
 
 **Control Panel Configuration**  
-The Control Panel supports SSO with your corporate Identity Provider using OpenID Connect (OIDC) token-based authentication. This option provides the security of sending user login credentials to the authentication server (the Identity Provider), not the application (Control Panel, the Relying Party). OpenID Connect token authentication allows you to send your username and password just once, to the Identity Provider (IDP) and then pass the token in the request to the Main Control Panel. When OIDC is configured in RadiantOne, the Main Control Panel login screen displays:
-
-![Login with Open ID Connect](Media/Image3.22.jpg)
-
-The administrator must click the Login with OpenID Connect option to login with an OpenID Connect token.
-
-The high-level flow is shown below.
-
-![An image showing ](Media/Image3.23.jpg)
-
-Figure 4: OIDC Authorization Code Flow
-
-Detailed steps:
-
-1.	The RadiantOne Admin navigates his browser to the RadiantOne Main Control Panel and clicks “Login with OpenID Connect”.
-
-2.	The browser redirects the user to the OIDC Provider’s authorization endpoint with the necessary parameters (ClientID, redirect URI, scope).
-
-3.	The RadiantOne Admin will authenticate to OIDC server (if not already authenticated) and the OIDC server prompts the user for authorization: Control Panel wants to access info (scopes) about you. Do you Authorize this?
-
-4.	Admin user gives consent.
-
-5.	OIDC server gives Control Panel an Authorization code.
-
-6.	The Control Panel sends the OIDC server the authorization code and requests an ID token.
-
-7.	OIDC Server sends the ID token to Control Panel.
-
-8.	Control Panel uses the information in the token along with the OIDC to FID User Mapping rules to locate the user in the FID namespace to enforce permissions based on what delegated admin role the user is a member of – which dictates what the admin is allowed to do within the Control Panel.
-
-To enable support for OIDC authentication:
-
-1.	Have your client ID and secret associated with the Control Panel application configured in your OIDC server ready. The Redirect URL configured for the web application should point to the URL associated with the Main Control Panel. Example: https://cp.federated-identity.com/main/j_spring_openid_security_check
-
-2.	Log into the Main Control Panel.
-
-3.	Navigate to Settings > Security > OIDC Provider Configuration.
-
-4.	Select an OIDC Provider from the drop-down list. If you are using your own provider, select the Custom option.
-
-5.	Click Discover. The Authorization Endpoint URL and Token Endpoint URL should auto-populate. If you configure a custom provider, you can enter the needed Authorization Endpoint URL and Token Endpoint URL. In OpenID Connect the authorization endpoint handles authentication and authorization of a user. In the OpenID Connect Authorization Code Flow, the token endpoint is used by a client to obtain an ID token, access token, and refresh token.
-
-6.	Enter the Client ID associated with the Control Panel application configured in the OIDC provider.
-
-7.	Enter the Client Secret associated with the Control Panel configured in the OIDC provider.
-
-8.	Select the Client Authentication Method corresponding to how the Control Panel client has been configured in the OIDC Server. There are two options available: CLIENT_SECRET_POST and CLIENT_SECRET_BASIC.
-
-9.	Click the value for Requested Scopes to display a list of possible choices: openid, email, profile. Openid is required. You can add more if needed as long as they match the configuration of the client in the OIDC server.
-
-10.	Click Edit next to OIDC to FID User Mapping. This configuration determines the logic to link the user that logs into the Control Panel with an Open ID Connect token with an identity in the RadiantOne namespace. This process determines which identity is used to enforce authorization within the Main Control Panel. The user mappings must result in a single user. If no user is found or if more than one user is found, the login fails. The RadiantOne user that is linked to the authentication token must be a member of a RadiantOne [Delegated Administrative group](01-introduction#delegated-administration-roles). 
-
-11.	In the OIDC to FID User Mappings window, click `Add`.
-
-12.	There are two options for identifying the RadiantOne admin user. If the RadiantOne user can be identified by using values/claims from the token to comprise the DN, use the Simple DN Expression Builder. If the RadiantOne user can be identified by performing a lookup in RadiantOne based on values from the token, use the Search Expression Builder.
-
-13.	Click `Save`.
-
-Examples of configuring the Simple DN Expression and the Search Expression are shown below.
-
-In the Simple DN Expression example shown below, the RadiantOne user is identified by using the given_name and family_name claims from the token to compute the DN.
-
-![DN Expression Builder](Media/Image3.24.jpg)
-
-Figure 5: DN Expression Builder
-
-In the Search Expression example shown below, the values of the family_name, given_name, and email claims from the token are used to condition a sub-tree search in RadiantOne, starting at the dc=mydomain naming context to locate the identity.
-
-![Search Expression Builder](Media/Image3.25.jpg)
-
-Figure 6: Search Expression Builder
-
-To disable support for OIDC authentication:
-
-1. Log into the Main Control Panel. 
-
-1. Navigate to Settings > Security > OIDC Provider Configuration.
-
-1. Click the Enabled toggle from on to off. 
-
-	![](Media/disable-oidc.png)
-
-1. Click **Save**.
+[Manage the OIDC Provider Configuration to support SSO into Control Panel](#oidc=token) from here.
 
 **Access Tokens** 
+[Manage Access Tokens](documentation/configuration/security/access-tokens) from here.
 
 **Entry Statistics**
+[Run Entry Statistics Reports]() from here.
 
 ### Switch to Classic Control Panel 
 Some settings must be managed using the RadiantOne Classic Control Panel.
