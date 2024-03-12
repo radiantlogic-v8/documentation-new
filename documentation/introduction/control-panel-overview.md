@@ -12,23 +12,9 @@ The Control Panels utilize a web server that is installed with RadiantOne. The e
 
 ![The Control Panel Login Page](Media/login-page.jpg)
 
-### Classic Control Panel
-The following configurations are currently only accessible from the Classic Control Panel. 
--	Synchronization (previously known as Global Sync)​
--	Password Policies​
--	SCIM config (frontend)​
--	REST config (frontend)​
--	External Token Validators​
--	Limits​
--	Attribute Handling​
--	Changelog Settings​
--	Log Settings​
--	Control Panel customizations (lock, color theme, session timeout, max users, banner, custom message on login screen)​
--	PCache Refresh Monitoring Tab​
--	Intercluster Replication Monitoring Tab​
--	File Manager
--	Zookeeper tab 
+For more details, see [Configuration Required in Classic Control Panel](#switch-to-classic-control-panel)
 
+### Classic Control Panel
 To switch to Classic Control Panel, use the menu options for the logged in user in the upper right.
 
 ![Classic Control Panel](Media/classic-cp.jpg)
@@ -59,7 +45,7 @@ Support for MFA logins, you must integrate with an OIDC provider that offers MFA
 ### OIDC Token 
 The RadiantOne Control Panel supports SSO with your corporate Identity Provider using OpenID Connect (OIDC) token-based authentication. This option provides the security of sending user login credentials to the authentication server (the Identity Provider), not the application (Control Panel, the Relying Party). OpenID Connect token authentication allows you to send your username and password just once, to the Identity Provider (IDP), have MFA validated (if enabled and supported by the Identity Provider), and then pass the token in the request to the Control Panel. When OIDC is configured in RadiantOne, the Control Panel login screen displays:
 
-![Login with Open ID Connect](Media/Image3.22.jpg)
+![Login with Open ID Connect](Media/login-corp-sso.jpg)
 
 The administrator must click the "Login with Corporate SSO" option to login with an OpenID Connect token.
 
@@ -70,11 +56,11 @@ The high-level flow is shown below.
 
 Detailed steps:
 
-1.	The RadiantOne Admin navigates his browser to the RadiantOne Main Control Panel and clicks “Login with OpenID Connect”.
+1.	The RadiantOne Admin navigates his browser to the RadiantOne Control Panel and clicks “Login with Corporate SSO”.
 
 2.	The browser redirects the user to the OIDC Provider’s authorization endpoint with the necessary parameters (ClientID, redirect URI, scope).
 
-3.	The RadiantOne Admin will authenticate to OIDC server (if not already authenticated) and the OIDC server prompts the user for authorization: Control Panel wants to access info (scopes) about you. Do you Authorize this?
+3.	The RadiantOne Admin authenticates to the OIDC server (if not already authenticated) and the OIDC server prompts the user for authorization: Control Panel wants to access info (scopes) about you. Do you Authorize this?
 
 4.	Admin user gives consent.
 
@@ -84,19 +70,19 @@ Detailed steps:
 
 7.	OIDC Server sends the ID token to Control Panel.
 
-8.	Control Panel uses the information in the token along with the OIDC to FID User Mapping rules to locate the user in the FID namespace to enforce permissions based on what delegated admin role the user is a member of – which dictates what the admin is allowed to do within the Control Panel.
+8.	Control Panel uses the information in the token along with the *Claims to User DN Mapping rules* to locate the user in the RadiantOne namespace to enforce permissions based on what delegated admin role the user is a member of – which dictates what the admin is allowed to do within the Control Panel.
 
 To enable support for OIDC authentication:
 
-1.	Have your client ID and secret associated with the Control Panel application configured in your OIDC server ready. The Redirect URL configured for the web application should point to the URL associated with the Main Control Panel. Example: https://cp.federated-identity.com/main/j_spring_openid_security_check
+1.	Have your client ID and secret associated with the Control Panel application configured in your OIDC server ready. The Redirect URL configured for the web application should point to the URL associated with the Control Panel. Example: https://cp.federated-identity.com/main/j_spring_openid_security_check
 
-2.	Log into the Main Control Panel.
+2.	Log into the Control Panel.
 
-3.	Navigate to Settings > Security > OIDC Provider Configuration.
+3.	Navigate to Admin > Control Panel Configuration tab.
 
 4.	Select an OIDC Provider from the drop-down list. If you are using your own provider, select the Custom option.
 
-5.	Click Discover. The Authorization Endpoint URL and Token Endpoint URL should auto-populate. If you configure a custom provider, you can enter the needed Authorization Endpoint URL and Token Endpoint URL. In OpenID Connect the authorization endpoint handles authentication and authorization of a user. In the OpenID Connect Authorization Code Flow, the token endpoint is used by a client to obtain an ID token, access token, and refresh token.
+5.	Click "Discover Endpoint URLs". The Authorization Endpoint URL and Token Endpoint URL should auto-populate. If you configure a custom provider, you can enter the needed Authorization Endpoint URL and Token Endpoint URL. In OpenID Connect the authorization endpoint handles authentication and authorization of a user. In the OpenID Connect Authorization Code Flow, the token endpoint is used by a client to obtain an ID token, access token, and refresh token.
 
 6.	Enter the Client ID associated with the Control Panel application configured in the OIDC provider.
 
@@ -104,9 +90,9 @@ To enable support for OIDC authentication:
 
 8.	Select the Client Authentication Method corresponding to how the Control Panel client has been configured in the OIDC Server. There are two options available: CLIENT_SECRET_POST and CLIENT_SECRET_BASIC.
 
-9.	Click the value for Requested Scopes to display a list of possible choices: openid, email, profile. Openid is required. You can add more if needed as long as they match the configuration of the client in the OIDC server.
+9.	Select a value for Requested Scopes to display a list of possible choices: openid, email, profile..etc. Openid is required. You can add more if needed as long as they match the configuration of the client in the OIDC server. Click **ADD SCOPE** to add the selected scope to the configuration.
 
-10.	Click Edit next to OIDC to FID User Mapping. This configuration determines the logic to link the user that logs into the Control Panel with an Open ID Connect token with an identity in the RadiantOne namespace. This process determines which identity is used to enforce authorization within the Main Control Panel. The user mappings must result in a single user. If no user is found or if more than one user is found, the login fails. The RadiantOne user that is linked to the authentication token must be a member of a RadiantOne [Delegated Administrative group](01-introduction#delegated-administration-roles). 
+10.	Click **ADD MAPPING** next to *DN Mapping Expression*. This configuration determines the logic to link the user that logs into the Control Panel with an Open ID Connect token with an identity in the RadiantOne namespace. This process determines which identity is used to enforce authorization within the Control Panel. The user mappings must result in a single user. If no user is found or if more than one user is found, the login fails. The RadiantOne user that is linked to the authentication token must be a member of a RadiantOne [Delegated Administrative group](01-introduction#delegated-administration-roles). 
 
 11.	In the OIDC to FID User Mappings window, click `Add`.
 
@@ -440,9 +426,9 @@ LDAP, SCIM, REST
 *Directory Manager Account*
 The directory manager (cn=directory manager by default) is the super user for the directory and this account is defined during the RadiantOne install. For details on defining this account, see the Environment Operations Center Guide.
 
-The super user is the only user that can login to the Main Control Panel while RadiantOne is not running. When you log into the Main Control Panel with this user, you can perform any of the operations described in [Delegation Administration](01-introduction.md#delegated-administration-of-radiantone). Also, access permissions and password policies do not apply for this user. This safety measure prevents someone from accidentally denying the rights needed to access and manage the server. Access to this super user account should be limited. If you require many directory managers, add these as members to the [Directory Administrator Role](01-introduction.md#delegated-administration-roles) instead of having them all use the single super user account.
+The super user is the only user that can log into the Control Panel while RadiantOne is not running. When you log into the Control Panel with this user, you can perform any of the operations described in [Delegation Administration](#default-delegated-admin-roles). Also, access permissions and password policies do not apply for this user. This safety measure prevents someone from accidentally denying the rights needed to access and manage the server. Access to this super user account should be limited. If you require many directory managers, add these as members to the [Directory Administrator Role](01-introduction.md#delegated-administration-roles) instead of having them all use the single super user account.
 
-The RadiantOne super user account is associated with an LDAP entry in the RadiantOne namespace located at: cn=Directory Manager,ou=RootUsers,cn=config. Cn=Directory Manager,ou=RootUsers,cn=config is authorized the same as cn=Directory Manager. If you want to log into the Main Control Panel with a [PIV Card/Certificate](01-introduction#logging-in-with-piv-cardsmart-cardcertificate) as the super user, you can store the certificate in the entry at this location.
+The RadiantOne super user account is associated with an LDAP entry in the RadiantOne namespace located at: cn=Directory Manager,ou=RootUsers,cn=config. Cn=Directory Manager,ou=RootUsers,cn=config is authorized the same as cn=Directory Manager. 
 
 To configure the Directory Manager username:
 
@@ -643,8 +629,8 @@ To switch to Classic Control Panel, use the menu options for the logged in user 
 ![Classic Control Panel](Media/classic-cp.jpg)
 
 The following settings must be managed from the RadiantOne Classic Control Panel:
--	Synchronization: Classic Control Panel > Synchronization tab <br> See [Synchronization](../configuration/synchronization/synchronization-concepts) for details. 
--	Password Policies​: Classic Control Panel > Settings > Security > Password Policies <br> See [Password Policies](../configuration/security/password-policies) for details. 
+-	Synchronization: Classic Control Panel > Synchronization tab <br> See [Synchronization](/documentation/configuration/synchronization/synchronization-concepts) for details. 
+-	Password Policies​: Classic Control Panel > Settings > Security > Password Policies <br> See [Password Policies](/documentation/configuration/security/password-policies) for details. 
 -	SCIM config (frontend): ​Classic Control Panel > Settings > Server Front End  > SCIM <br> See [SCIM](../web-services-api-guide/scim) for details. 
 -	REST config (frontend)​: Classic Control Panel > Settings > Server Front End > Other Protocols <br> See [REST](../web-services-api-guide/rest) for details. 
 -	External Token Validators​: Classic Control Panel > Settings > Security > External Token Validators
@@ -655,4 +641,5 @@ The following settings must be managed from the RadiantOne Classic Control Panel
 -	Control Panel customizations (lock, color theme, session timeout, max users, banner, custom message on login screen)​: ​Classic Control Panel > Settings > Server Front End > Administration
 -	PCache Refresh Monitoring: Classic Control Panel > PCache Monitoring tab
 -	Intercluster Replication Monitoring: Classic Control Panel > Replication Monitoring tab
+-	File Manager: Classic Control Panel > Settings > Configuration > File Manager
 -	Zookeeper: Classic Control Panel > ZooKeeper tab
