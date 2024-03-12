@@ -1312,7 +1312,7 @@ To build jar files:
 
 1. In the Main Control Panel, click Settings > Configuration > File Manager. 
 
-1. In File Manager, browse to RLI_HOME/vds_server/custom or any folder within. In the menu bar beneath torhe navigation bar, the Build drop-down menu displays. 
+1. In File Manager, browse to RLI_HOME/vds_server/custom or any folder within. In the menu bar beneath the navigation bar, the Build drop-down menu displays. 
 
     ![](Media/file-manager-build.png)
 
