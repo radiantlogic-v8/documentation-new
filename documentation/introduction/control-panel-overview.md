@@ -3,6 +3,10 @@ title: Introduction to the Control Panel
 description: Learn how to navigate the Control Panel.
 ---
 
+## Overview
+The Control Panel is a web-based interface that administrators use to configure and manage RadiantOne Identity Data Management.
+RadiantOne also offers a configuration API that can be called programmatically with an [Access Token](/documentation/configuration/security/access-tokens).
+
 ## Accessing the Control Panels
 The Control Panels utilize a web server that is installed with RadiantOne. The endpoint to access the Control Panel is defined when you create an environment in the Environment Operations Center. For details on creating environments and locating the Control Panel endpoint, see [Create Environments](/documentation/installation/create-environments).
 
@@ -33,9 +37,9 @@ The currently logged in user must have permissions to [access the Classic Contro
 ## Authentication 
 
 ### Username and Password 
-Log in using the directory administrator (cn=directory manager) as the user with the password you set during the install of RadiantOne. Once logged in, the Directory Administrator should navigate in the Control Panel to the ADMIN section and define other users needed to administer RadiantOne. A user can either use their full DN (if known), or their user ID. However, to login with just a user ID, you must configure a [user ID to DN Mapping](03-front-end-settings#user-to-dn-mapping).
+Log in using the directory administrator (cn=directory manager) as the user with the password you set during the install of RadiantOne. Once logged in, the Directory Administrator should navigate in the Control Panel to the ADMIN section and define other users needed to administer RadiantOne. A user can either use their full DN (if known), or their user ID. However, to login with just a user ID, you must configure a [user ID to DN Mapping](/documentation/configuration/global-settings/client-protocols).
 
-The Main Control Panel displays a message when authentication fails. The table below lists the possible error messages. 
+The Control Panel displays a message when authentication fails. The table below lists the possible error messages. 
 
 Message	 | Cause | Solution
 -|-|-
@@ -49,9 +53,10 @@ The time the user last logged into the Control Panel is displayed above the "Log
 ![Last Login Time](Media/lastlogin.jpg)
 
 ### MFA 
+Support for MFA logins, you must integrate with an OIDC provider that offers MFA. The MFA checking is handled by the OIDC provider. See the OIDC token configuraton below.
 
 ### OIDC Token 
-The RadiantOne Main Control Panel also supports SSO with your corporate Identity Provider using OpenID Connect (OIDC) token-based authentication. This option provides the security of sending user login credentials to the authentication server (the Identity Provider), not the application (Control Panel, the Relying Party). OpenID Connect token authentication allows you to send your username and password just once, to the Identity Provider (IDP) and then pass the token in the request to the Main Control Panel. When OIDC is configured in RadiantOne, the Main Control Panel login screen displays:
+The RadiantOne Control Panel supports SSO with your corporate Identity Provider using OpenID Connect (OIDC) token-based authentication. This option provides the security of sending user login credentials to the authentication server (the Identity Provider), not the application (Control Panel, the Relying Party). OpenID Connect token authentication allows you to send your username and password just once, to the Identity Provider (IDP), have MFA validated (if enabled and supported by the Identity Provider, and then pass the token in the request to the Control Panel. When OIDC is configured in RadiantOne, the Control Panel login screen displays:
 
 ![Login with Open ID Connect](Media/Image3.22.jpg)
 
