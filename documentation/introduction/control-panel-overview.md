@@ -118,7 +118,7 @@ To disable support for OIDC authentication:
 
 1. Click the Enabled toggle from on to off for the OpenID Connect Provider. 
 
-	![OIDC Provider Toggle](Media/oidc-toggle.png)
+	![OIDC Provider Toggle](Media/oidc-toggle.jpg)
 
 1. Click **SAVE**.
 
