@@ -57,11 +57,11 @@ The time the user last logged into the Control Panel is displayed above the "Log
 Support for MFA logins, you must integrate with an OIDC provider that offers MFA. The MFA checking is handled by the OIDC provider. See the OIDC token configuraton below.
 
 ### OIDC Token 
-The RadiantOne Control Panel supports SSO with your corporate Identity Provider using OpenID Connect (OIDC) token-based authentication. This option provides the security of sending user login credentials to the authentication server (the Identity Provider), not the application (Control Panel, the Relying Party). OpenID Connect token authentication allows you to send your username and password just once, to the Identity Provider (IDP), have MFA validated (if enabled and supported by the Identity Provider, and then pass the token in the request to the Control Panel. When OIDC is configured in RadiantOne, the Control Panel login screen displays:
+The RadiantOne Control Panel supports SSO with your corporate Identity Provider using OpenID Connect (OIDC) token-based authentication. This option provides the security of sending user login credentials to the authentication server (the Identity Provider), not the application (Control Panel, the Relying Party). OpenID Connect token authentication allows you to send your username and password just once, to the Identity Provider (IDP), have MFA validated (if enabled and supported by the Identity Provider), and then pass the token in the request to the Control Panel. When OIDC is configured in RadiantOne, the Control Panel login screen displays:
 
 ![Login with Open ID Connect](Media/Image3.22.jpg)
 
-The administrator must click the Login with OpenID Connect option to login with an OpenID Connect token.
+The administrator must click the "Login with Corporate SSO" option to login with an OpenID Connect token.
 
 The high-level flow is shown below.
 
