@@ -332,7 +332,7 @@ Either search for a user to manage their roles, or click **CREATE USER** to crea
 4. Click **SAVE**
     
  
-## Customizing the Interface 
+## Customizing the Classic Control Panel 
 The following settings are currently only applicable to the **Classic Control Panel**.
 
 To switch to Classic Control Panel, use the menu options for the logged in user in the upper right.
@@ -569,6 +569,69 @@ This parameter can be set to the DN of the Administrators group defined in the v
 
 [Run Entry Statistics Reports](/documentation/reporting/reporting#entry-statistics-report) from here.
 
+### File Manager
+
+File Manager is only accessible in the Classic Control Panel.
+
+RadiantOne does not allow access to its files via operating system user interfaces. The File Manager option allows you to view, upload, and download files that reside under the RLI_HOME directory. It also allows you to build jar files. To access the File Manager, in the Classic Control Panel, go to Settings > Configuration > File Manager. The default location displayed is RLI_HOME.
+
+>[!note] Files at the RLI_HOME level cannot be modified with File Manager. 
+
+![File Manager Navigation](Media/file-manager-navigation.png)
+
+To navigate within File Manager, click a folder in the main File Manager pane, or click a link the navigation bar at the top of the File Manager. To go up one folder, click the up-arrow button. 
+
+Some files types are hidden from view in File Manager. These file types include the following.
+
+- .cer
+- .keystore
+- .truststore
+
+**Uploading Files**
+
+Uploads can be made anywhere within the <RLI_HOME>, except within <RLI_HOME> itself.
+
+To upload a file, click **Upload Files**. In the File Upload window, navigate to the file to be uploaded, select the file, and click **Open**.
+
+**Actions Drop-down Menu**
+
+The Actions drop-down menu allows perform the following functions. 
+
+- Download files
+- Delete files
+- Open a selection
+- Clear a selection
+
+**Downloading Files**
+
+To download a file in File Manager, navigate in File Manager to the file's location. From the Actions drop-down menu, select Download Files.
+
+**Deleting Files**
+
+The Delete Files option allows you to delete one file at a time. To delete a file in File Manager, navigate to the file's location. From the Actions drop-down menu, selct Delete Files. The file is downloaded to the location indicated by your web browser. 
+
+**Open Selection**
+
+Some files, such as text, LDIF, XML, and jar files are viewable in File Manager. To view a file in File Manager, navigate to the file's location. From the Actions drop-down menu, select Open Selection. 
+
+>[!note] Files such as .class files are not openable in File Manager. 
+
+**Building Jar Files**
+
+The File Manager allows you to build jar files. 
+
+To build jar files:
+
+1. In the Classic Control Panel, click Settings > Configuration > File Manager. 
+
+1. In File Manager, browse to RLI_HOME/vds_server/custom or any folder within. In the menu bar beneath the navigation bar, the Build drop-down menu displays. 
+
+    ![Build Drop-down Menu](Media/file-manager-build.png)
+
+1. From the Build drop-down menu, select an option.
+
+![File Manager Options](Media/build-jar.png)
+
 ### Switch to Classic Control Panel 
 Some settings must be managed using the RadiantOne Classic Control Panel.
 To switch to Classic Control Panel, use the menu options for the logged in user in the upper right.
@@ -588,5 +651,5 @@ The following settings must be managed from the RadiantOne Classic Control Panel
 -	Control Panel customizations (lock, color theme, session timeout, max users, banner, custom message on login screen)​: ​Classic Control Panel > Settings > Server Front End > Administration
 -	PCache Refresh Monitoring: Classic Control Panel > PCache Monitoring tab
 -	Intercluster Replication Monitoring: Classic Control Panel > Replication Monitoring tab
--	File Manager: Classic Control Panel > Settings > Configuration > File Manager
+-	File Manager: Classic Control Panel > Settings > Configuration > File Manager <br> See [File Manager](#file-manager) for details.
 -	Zookeeper: Classic Control Panel > ZooKeeper tab
