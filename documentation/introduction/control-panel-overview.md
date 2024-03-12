@@ -104,23 +104,23 @@ Examples of configuring the Simple DN Mapping and an Advanced DN Mapping are sho
 
 In the Simple DN Mapping example shown below, the RadiantOne user is identified by using the given_name and family_name claims from the token to compute the DN.
 
-![DN Expression Builder](Media/Image3.24.jpg)
+![DN Expression Builder](Media/simple-dn-mapping.jpg)
 
 In the Advanced DN Mapping example shown below, the values of the family_name, given_name, and email claims from the token are used to condition a sub-tree search in RadiantOne, starting at the dc=mydomain naming context to locate the identity.
 
-![Search Expression Builder](Media/Image3.25.jpg)
+![Search Expression Builder](Media/adv-dn-mapping.jpg)
 
 To disable support for OIDC authentication:
 
-1. Log into the Main Control Panel. 
+1. Log into the Control Panel. 
 
-1. Navigate to Settings > Security > OIDC Provider Configuration.
+1. Navigate to Admin > Control Panel Configuration tab.
 
-1. Click the Enabled toggle from on to off. 
+1. Click the Enabled toggle from on to off for the OpenID Connect Provider. 
 
-	![](Media/disable-oidc.png)
+	![OIDC Provider Toggle](Media/oidc-toggle.png)
 
-1. Click **Save**.
+1. Click **SAVE**.
 
    
 ## Authorization 
