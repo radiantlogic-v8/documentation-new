@@ -322,7 +322,7 @@ For the new Control Panel, each class of permissions matches a section in the le
 
 
 ## Customizing the Interface 
-The following settings are currently only applicable to the Classic Control Panel.
+The following settings are currently only applicable to the **Classic Control Panel**.
 
 To switch to Classic Control Panel, use the menu options for the logged in user in the upper right.
 
@@ -333,15 +333,14 @@ To switch to Classic Control Panel, use the menu options for the logged in user 
 ### Message of the Day 
 The Classic Control Panel login page contains a basic username and password text box. To add a custom message on the login page, follow the steps below.
 
-1.	Log in to the Classic Control Panel as a member of the Directory Administrators role.
-
+1.	Switch to the Classic Control Panel as a member of the Directory Administrators role.
 1.	Go to the Settings tab > Server Front End > Administration.
 1.	In the *Message of the Day Configuration*, enter the message contents.
 1.	Enter a message title (will display if a popup window is used).
 1.	(Optional) check the box to enable a "Warning" icon if you want the message to be prefixed with a "Warning".
 1.	(Optional) check the box to enable a "Popup" message that displays the message title and contents that the user must explicitly acknowledge and close. 
 1.	Click **Save**.
-1.	Log out of the Classic Control Panel to be returned to the login screen. 
+1.	Log out of the Classic Control Panel to be returned to the login screen to view the custom message.
 
 An example of the custom message on the login page is shown below.
 
