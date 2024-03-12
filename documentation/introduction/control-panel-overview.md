@@ -47,7 +47,7 @@ The RadiantOne Control Panel supports SSO with your corporate Identity Provider 
 
 ![Login with Open ID Connect](Media/login-corp-sso.jpg)
 
-The administrator must click the "Login with Corporate SSO" option to login with an OpenID Connect token.
+The administrator must click the "Log in with Corporate SSO" option to login with an OpenID Connect token.
 
 The high-level flow is shown below.
 
