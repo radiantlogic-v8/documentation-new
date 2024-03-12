@@ -5,7 +5,7 @@ description: Learn about securing Identity Data Management with access controls,
 
 ## Overview
 
-The RadiantOne platforms offers a variety of methods to ensure a secure service that has been hardened against threats can be deployed. These methods include:
+The RadiantOne platform offers a variety of methods to ensure a secure service that has been hardened against threats can be deployed. These methods include:
 -  Access Controls
 -  Access Tokens
 -  Attribute Encryption
