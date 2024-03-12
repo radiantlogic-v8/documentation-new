@@ -4,7 +4,7 @@ description: Learn how to navigate the Control Panel.
 ---
 
 ## Overview
-The Control Panel is a web-based interface that administrators use to configure and manage RadiantOne Identity Data Management.
+The Control Panel is a web-based interface that administrators use to configure and manage the RadiantOne Identity Data Management product.
 RadiantOne also offers a configuration API that can be called programmatically with an [Access Token](/documentation/configuration/security/access-tokens).
 
 ## Accessing the Control Panels
