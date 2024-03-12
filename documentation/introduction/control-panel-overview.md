@@ -354,13 +354,15 @@ The Classic Control Panel login page contains a basic username and password text
 1.	Click **Save**.
 1.	Log out of the Classic Control Panel to be returned to the login screen to view the custom message.
 
-An example of the custom message on the login page is shown below.
+An example of a custom message on the login page is shown below.
 
 ![Custom Message on Login Page](Media/Image3.26.jpg)
 
+An example of a custom message using the "Warning" icon on the login page is shown below.
 
 ![Custom Message on Login Page with Warning Label and Bold Font](Media/Image3.27.jpg)
 
+An example of a custom message using the "Popup" on the login page is shown below.
 
 ![Custom Message Popup Window](Media/Image3.28.jpg)
 
