@@ -3,10 +3,32 @@ title: Introduction to the Control Panel
 description: Learn how to navigate the Control Panel.
 ---
 
-## Accessing the Control Panel
-The Control Panels utilize a web server that is installed with RadiantOne. The endpoint to access the Control Panel is defined when you create an environment in the Environment Operations Center. For details on creating environments and locating the Control Panel endpoint, see the [RadiantOne Environment Operations Center Guide](/documentation/environment-operations-center-guide/overview).
+## Accessing the Control Panels
+The Control Panels utilize a web server that is installed with RadiantOne. The endpoint to access the Control Panel is defined when you create an environment in the Environment Operations Center. For details on creating environments and locating the Control Panel endpoint, see [Create Environments](/documentation/installation/create-environments).
 
-![The Main Control Panel Login Page](Media/login-page.png)
+![The Control Panel Login Page](Media/login-page.png)
+
+### Classic Control Panel
+The following configurations are currently only accessible from the Classic Control Panel. 
+-	Synchronization (previously known as Global Sync)​
+-	Password Policies​
+-	SCIM config (frontend)​
+-	REST config (frontend)​
+-	External Token Validators​
+-	Limits​
+-	Attribute Handling​
+-	Changelog Settings​
+-	Log Settings​
+-	Control Panel customizations (lock, color theme, session timeout, max users, banner, custom message on login screen)​
+-	PCache Refresh Monitoring Tab​
+-	Intercluster Replication Monitoring Tab​
+-	Zookeeper tab (not enabled by default – only accessible with a feature flag)​
+
+To switch to Classic Control Panel, use the menu options for the logged in user in the upper right.
+
+![Classic Control Panel](Media/classic-cp.jpg)
+
+The currently logged in user must have permissions to [access the Classic Control Panel](#permissions).
 
 ## Authentication 
 
@@ -301,7 +323,10 @@ For the new Control Panel, each class of permissions matches a section in the le
 
 ## Customizing the Interface 
 The following settings are currently only applicable to the Classic Control Panel.
-Access the Classic Control Panel 
+
+To switch to Classic Control Panel, use the menu options for the logged in user in the upper right.
+
+![Classic Control Panel](Media/classic-cp.jpg)
 
 ### Color theme 
 
