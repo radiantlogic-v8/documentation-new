@@ -5,29 +5,29 @@ description: Learn how to use the Data Catalog to connect to and extract identit
 
 ## Overview
 
-The first step in configuring RadiantOne Identity Data Management is defining connections to all identity data sources. This can be done from Control Panel > SETUP > Data Catalog > Data Sources.
+The first step in configuring RadiantOne Identity Data Management is defining connections to all identity data sources. This can be done from Control Panel > Setup > Data Catalog > Data Sources.
 
 Each data source is associated with a template that defines how to connect and integrate the identity data source. Default templates are included for LDAP, Active Directory, Oracle, SQL Server, Maria DB, MySQL, Apache Derby and others.  Custom templates can be created for those that don't have a default template, as long as they offer a JDBC-driver and/or API that supports the needed operations (e.g authenticate, create, read, update, delete, and ideally a change detection mechanism).
 
-After an identity data source is defined, a schema can be extracted. A schema represents the metadata for all identity objects contained in the data source. Schemas can be managed in the Data Catalog > Data Sources > Selected data source > SCHEMA section. This metadata is used to define identity views that are then accessed by clients that query the RadiantOne service. Identity views can be managed from Control Panel > SETUP > Directory Namespace > Namespace Design.
+After an identity data source is defined, a schema can be extracted. A schema represents the metadata for all identity objects contained in the data source. Schemas can be managed in the Data Catalog > Data Sources > Selected data source > SCHEMA tab. This metadata is used to define identity views that are then accessed by clients that query the RadiantOne service. Identity views can be managed from Control Panel > Setup > Directory Namespace > Namespace Design.
 
 ## Managing Data Sources
-Data sources are managed from Control Panel > SETUP > Data Catalog > Data Sources.
+Data sources are managed from Control Panel > Setup > Data Catalog > Data Sources.
 
 ### Creating Data Sources
 To create a data source:
-1.  Navigate to Control Panel > SETUP > Data Catalog > Data Sources.
+1.  Navigate to Control Panel > Setup > Data Catalog > Data Sources.
 1.  Click ![An image showing](../Media/newsource.jpg).
 1.  Select a template associated with the identity data source type from the list. Use the Search field to quickly find a template name, or click on LDAP, DATABASE or OTHER tabs to narrow down the template choices by type. JDBC-accessible source templaes are located on the DATABASE tab. LDAP-accessible data source templates are located on the LDAP tab. Custom data source templates are located on the OTHER tab.
 1.  Enter the basic details about the identity data source.
 
    PROPERTY	| DESCRIPTION
    -|-
-   Data Source Name	| Unique name representing the identity source backend. Do not use spaces, commas, brackets or          parenthesis, colons, or the word “domain”.
+   Data Source Name	| Unique name representing the identity source backend. Do not use spaces, commas, brackets or parenthesis, colons, or the word “domain”.
    Data Source Type	| Auto-populated, non-editable. Based on the template.
-   Secure Data Connector	|  The Secure Data Connector group used to establish a connection to an identity data source       in a different network, like one running in an on-prem data center.
+   Secure Data Connector	|  The Secure Data Connector group used to establish a connection to an identity data source in a different network, like one running in an on-prem data center.
    Description	| Details about the identity source backend.
-   Status | Toggled to either OFFLINE (indicates the identity source is not available and should not be accessed by the      RadiantOne service) or ACTIVE (indicates the identity source is available and can be accessed by the RadiantOne           service).
+   Status | Toggled to either OFFLINE (indicates the identity source is not available and should not be accessed by the RadiantOne service) or ACTIVE (indicates the identity source is available and can be accessed by the RadiantOne service).
 
 1.  Enter the Connection details. These properties vary depending on the type of identity source.
 
@@ -105,24 +105,24 @@ Verify SSL Certificate Hostname	| This setting is only applicable if SSL is used
 1.  Click **CREATE**. The new data source appears in the list of configured sources and is briefly noted with a *new* tag next to it.
    
 ### Updating Data Sources
-To update a data source, navigate to Control Panel > SETUP > Data Catalog > Data Sources. Click the data source name in the list of configured sources. The connection properties displays. Update the properties and click **SAVE**.
+To update a data source, navigate to Control Panel > Setup > Data Catalog > Data Sources. Click the data source name in the list of configured sources. The connection properties displays. Update the properties and click **SAVE**.
 
 ### Deleting Data Sources
-To delete a data source, navigate to Control Panel > SETUP > Data Catalog > Data Sources. Select the configured data source in the list, click the inline trash can icon and click **DELETE** to confirm. Otherwise, click **KEEP DATA SOURCE** to not delete.
+To delete a data source, navigate to Control Panel > Setup > Data Catalog > Data Sources. Select the configured data source in the list, click the inline trash can icon and click **DELETE** to confirm. Otherwise, click **KEEP DATA SOURCE** to not delete.
 
 ![An image showing deleting data source](../Media/delete-data-source.jpg)
 
 ### Cloning Data Sources
-Cloning a data source allows you to make a copy of the connection information and provide a new name for the data source. To clone a data source, navigate to Control Panel > SETUP > Data Catalog > Data Sources. Select the configured data source in the list and click the clone icon.
+Cloning a data source allows you to make a copy of the connection information and provide a new name for the data source. To clone a data source, navigate to Control Panel > Setup > Data Catalog > Data Sources. Select the configured data source in the list and click the clone icon.
 
-![An image showing cloning data source](../Media/clone-data-source.jpg)
+![Cloning a data source](../Media/clone-data-source.jpg)
 
 Enter a data source name and click the checkmark inline with the cloned data source to save it. Click **X* to delete the clone instead of saving it.
 
-![An image showing how to confirm a cloned data source name](../Media/confirm-clone.jpg)
+![Confirm a cloned data source name](../Media/confirm-clone.jpg)
 
 ### Importing Data Sources
-If you have existing data sources defined (exported from another RadiantOne configuration) and you would like to import those, navigate to the Control Panel > SETUP > Data Catalog > Data Sources, click **...** and choose Import. 
+If you have existing data sources defined (exported from another RadiantOne configuration) and you would like to import those, navigate to the Control Panel > Setup > Data Catalog > Data Sources, click **...** and choose Import. 
 
 ![An image showing import data sources screen](../Media/import-export-menu.jpg)
 
@@ -134,31 +134,31 @@ Either browse to the file containing the data source definitions that you have e
 >To override existing data sources containing the same names as ones from the import file, toggle the **OVERRIDE DUPLICATE DATA SOURCES** option on. 
 
 ### Exporting Data Sources
-To export data sources, navigate to the Control Panel > SETUP > Data Catalog > Data Sources, click **...** and choose Export.
+To export data sources, navigate to the Control Panel > Setup > Data Catalog > Data Sources, click **...** and choose Export.
 
-![An image showing export data sources screen](../Media/export-data-source.jpg)
+![Export Data Sources Option](../Media/export-data-source.jpg)
 
 Select the data sources to include in the export and click **EXPORT**
 
-![An image showing export data sources screen](../Media/selected-data-sources.jpg)
+![Exporting Data Sources](../Media/selected-data-sources.jpg)
 
 Your internet browser settings determine the download location. The download file is named fid-datasources-export.json.
 
 ## Managing Templates
 Each identity data source is associated with a template. The template indicates all properties required to connect to the data source. RadiantOne includes some default templates and new templates can be created for JDBC-accessible databases and other data sources than can be queried through a web services API.
 
-Templates can be managed from Control Panel > SETUP > Data Catalog > Template Management.
+Templates can be managed from Control Panel > Setup > Data Catalog > Template Management.
 
-![An image showing Template Management](../Media/template-mgmt.jpg)
+![Template Management](../Media/template-mgmt.jpg)
 
 
 ### Creating Templates
 ### Updating Templates
-All user-defined templates can be updated from Control Panel > SETUP > Data Catalog > Template Management. Default templates associated with JDBC-accessible types of data sources can also be updated from here (e.g. to update jdbc drivers).
+All user-defined templates can be updated from Control Panel > Setup > Data Catalog > Template Management. Default templates associated with JDBC-accessible types of data sources can also be updated from here (e.g. to update jdbc drivers).
 
 Select the template and use drawer that appears on the right to update properties. Click **SAVE**.
 
-![An image showing Template Management](../Media/update-template.jpg)
+![Updating Templates](../Media/update-template.jpg)
 
 ### Deleting Templates
 
@@ -167,6 +167,6 @@ Select the template and use drawer that appears on the right to update propertie
 ### Importing Templates
 
 ## Managing Schemas
-Each data source can be associated with one or more schema files. The first schema file extracted for a data source is considered the default one. For LDAP data sources, the default schema is automatically extracted when the data source is defined.
+Each data source can be associated with one or more schema files. The first schema file extracted for a data source is considered the default one. For LDAP data sources, the default schema is automatically extracted when the data source is defined. For JDBC-accessible and SCIMv2 accessible data sources, you must manually extract the schema so you can selectively choose the objects that are required for creating identity views. For custom data sources, you must manually create the schema in RadiantOne.
 
 For details, see [Managing Schemas](/schemas.md).
