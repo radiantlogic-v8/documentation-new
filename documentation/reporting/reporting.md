@@ -23,7 +23,7 @@ For purposes of entry counting, the following definitions are used:
 
 The entries stored in Directory Stores or persistent cache, or returned in views, contribute to the total entry count. Note that this is not necessarily equivalent to the total number of entries in the actual data source (backend), as depicted in the diagram below. 
 
-![Identity View Example for Entry Stats](/Media/entry-stat-example.jpg)
+![Identity View Example for Entry Stats](Media/entry-stat-example.jpg)
 
 ### Creating an Entry Statistics Report
 
@@ -66,7 +66,7 @@ The table in the report contains the following columns: DN, TYPE, ENTRIES, ACCOU
 
 Entry statistics reports can be exported to a CSV file using the *Download Report* option.
 
-![Download Report](/Media/download-report.jpg)
+![Download Report](Media/download-report.jpg)
 
 
 You can share your report with Radiant Logic if you want more details on how your total number of entries was calculated.
