@@ -1273,7 +1273,6 @@ globalidviewer-read | Log into the RadiantOne Global Identity Viewer
 globalidviewer-write | Can modify attribute values in the Global Identity Viewer
 ics-admin | Stop and start pipelines on the Sync Tab
 ics-operator | Access the Synchronization tab and read topologies
-	Log into the Global Identity Viewer Console and access all applications
 ics-workflow-approve | Access the Approvals Application in the RadiantOne Insights, Reports and Administration Console
 instance-read | Read settings for any configured instances
 instance-write | Modify settings for any configured instances
