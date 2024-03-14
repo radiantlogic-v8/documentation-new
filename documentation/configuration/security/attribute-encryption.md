@@ -20,9 +20,6 @@ To define the criteria used to generate an encryption key:
 1. 	Navigate to Control Panel > Manage > Security > Attribute Encryption.
 1. 	In the RadiantOne Directory Attribute Encryption Key section select the desired cipher from the drop-down list or select [AWSKMS](#using-amazon-web-services-aws-with-a-customer-master-key-cmk) if you want to use your own Customer Master Key (CMK) in Amazon Web Services (AWS) Key Management Service (KMS). If you choose AWSKMS, and you also choose this option for LDIFZ encryption, they will share the properties configured in the AWSKMS section.
 
-      ![An image showing ](Media/awskms-cipher.jpg)
-
-
 1. 	If you selected a cipher suite in the previous step, enter a security key. This value is used to auto-generate an encryption key. If you plan on deploying multiple clusters that will participate in inter-cluster replication for encrypted attributes, take note of the value you enter here as you must use it when configuring the security key in the other clusters.
 1. 	Click **SAVE**.
 
@@ -40,7 +37,7 @@ Instead of using the default key generation, you have the option to use a custom
 1.	With your CMK information, select the AWSKMS option in Control Panel > Manage > Security > Attribute Encryption for the *RadiantOne Directory Attribute Encryption Key* and/or the *LDIFZ Encryption Key*.
 1.	When AWSKMS is selected another section appears where you can enter your key details.
 
-         ![An image showing ](Media/awskms-cipher.jpg)
+         ![AWS KMS Settings](Media/aws-kms.jpg)
 
 
 
