@@ -881,26 +881,29 @@ Any user that can bind to RadiantOne can potentially administrator the server if
 
 These functions are dictated by the following values of the vdPrivilege attribute in the group entry: 
 
+- acl-read
+- acl-write
+- admin-write
+- config-lock
 - config-read
 - config-write
-- services-restart
-- services-shutdown
-- update-schema
-- instance-read
-- instance-write
-- acl-read
-- acl-write 
-- naming-context-read
-- naming-context-write
 - data-source-read
 - data-source-write
 - data-store-read
 - data-store-write
-- ics-admin
-- tasks-admin
 - globalidviewer-read
 - globalidviewer-write
 - globalidviewer-designer
+- ics-admin
+- logs-read
+- naming-context-read
+- naming-context-write
+- security-write
+- services-restart
+- services-shutdown
+- tasks-admin
+- update-schema
+
 
 The group entry is located in the RadiantOne namespace at:
 cn=directory administrators,ou=globalgroups,cn=config
