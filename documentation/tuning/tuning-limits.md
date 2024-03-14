@@ -6,6 +6,11 @@ description: Learn about using limits to tune the Identity Data Management servi
 ## Overview
 The settings found in the Classic Control Panel > Settings Tab > Limits section are related to enforcing search size limits and activity quotas. These settings prevent against Denial of Service (DoS) attacks towards RadiantOne. 
 
+To switch to Classic Control Panel, use the menu options for the logged in user in the upper right.
+
+![Classic Control Panel](Media/classic-cp.jpg)
+
+
 >[!warning]
 >Changing any property in the Limits section requires a restart of the RadiantOne service to take effect. You can restart the service in your environment from Environment Operations Center.
 
