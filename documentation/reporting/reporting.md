@@ -7,7 +7,9 @@ description: Learn about basic reporting capabilities in RadiantOne Identity Dat
 
 This is the overview.
 
-## Creating Reports
+## Access Reports
+
+Access reports 
 
 ## Entry Statistics Report
 
