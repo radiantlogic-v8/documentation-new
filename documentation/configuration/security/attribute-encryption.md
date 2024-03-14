@@ -17,8 +17,8 @@ There are two items to configure.
 
 To define the criteria used to generate an encryption key:
 
-1. 	Navigate to Control Panel > MANAGE > Security > Attribute Encryption.
-1. 	In the RadiantOne Directory Attribute Encryption Key section select the desired cipher from the drop-down list or select [AWSKMS](#using-amazon-web-services-aws-with-a-customer-master-key-cmk) if you want to use your own Customer Master Key (CMK) in Amazon Web Services (AWS) Key Management Service (KMS) and have configured the necessary settings in ZooKeeper.
+1. 	Navigate to Control Panel > Manage > Security > Attribute Encryption.
+1. 	In the RadiantOne Directory Attribute Encryption Key section select the desired cipher from the drop-down list or select [AWSKMS](#using-amazon-web-services-aws-with-a-customer-master-key-cmk) if you want to use your own Customer Master Key (CMK) in Amazon Web Services (AWS) Key Management Service (KMS). If you choose AWSKMS, and you also choose this option for LDIFZ encryption, they will share the properties configured in the AWSKMS section.
 
       ![An image showing ](Media/awskms-cipher.jpg)
 
@@ -37,32 +37,23 @@ Instead of using the default key generation, you have the option to use a custom
 
 1.	Log into your AWS account to create your CMK (Customer Master Key).
 
-2.	With your CMK information, log into Classic Control Panel and go to the ZooKeeper tab.
+1.	With your CMK information, select the AWSKMS option in Control Panel > Manage > Security > Attribute Encryption for the *RadiantOne Directory Attribute Encryption Key* and/or the *LDIFZ Encryption Key*.
+1.	When AWSKMS is selected another section appears where you can enter your key details.
 
-3.	On the ZooKeeper tab, navigate to `/radiantone/<version>/<clustername>/config/vds_server.conf`, click Edit Mode, and locate the following properties:
+         ![An image showing ](Media/awskms-cipher.jpg)
 
-```
-  "awsAccessKeyId" : null,
-  "awsSecretAccessKey" : null,
-  "awsKmsCMKRegion" : null,
-  "awsKmsCMKAlias" : null,
-```
 
-4.	For the “awsAccessKeyId” property, overwrite the null value with your AWS Access Key ID.
 
-5.	For the “awsSecretAccessKey” property, overwrite the null value with your AWS Access Key Secret.
+1.	For the ACCESS KEY ID property, overwrite the null value with your AWS Access Key ID.
 
-6.	For “awsKmsCMKRegion” property, overwrite the null value with your AWS region (e.g. "us-east-2").
+1.	For the ACCESS KEY SECRET property, overwrite the null value with your AWS Access Key Secret.
 
-7.	For “awsKmsCMKAlias” property, overwrite the null value with (e.g. "alias/My_Master_Key”).
+1.	For the CMK REGION property, overwrite the null value with your AWS region (e.g. "us-east-2").
 
-8.	Click **SAVE**.
+1.	For the CMK ALIAS property, overwrite the null value with (e.g. "alias/My_Master_Key”).
 
-9.	Navigate to Control Panel > Manage > Security > Attribute Encryption.
-
-10.	In the RadiantOne Directory Attribute Encryption Key section select the AWSKMS option from the drop-down list and click **SAVE**.
-
-11.	Define the attributes to encrypt as outlined in the next section.
+1.	Click **SAVE**.
+1.	If you are using the key for RadiantOne Directory attribute encryption, define the attributes to encrypt as outlined in the next section.
 
 ## Attributes to Encrypt in RadiantOne Directory Stores
 
