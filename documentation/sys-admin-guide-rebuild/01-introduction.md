@@ -1252,6 +1252,44 @@ Role	| Required Permissions (Value of vdPrivilege)
  | <span style="color:lightblue"> config-read <br> config-write <br> globalidviewer-designer <br> tasks-admin
 <span style="color:lightblue">Global ID Viewer Write</span> <br> Members of this group can log into the Global Identity Viewer and perform the following operations: <br> View entries & attributes <br> Perform searches <br> Export search results <br> Modify attribute values <br> For details on the Global Identity Viewer, see the [RadiantOne Global Identity Viewer Guide](/documentation/global-identity-viewer-guide/01-introduction)	| <span style="color:lightblue"> config-read <br> globalidviewer-write
 
+#### Delegated Administration Permissions
+
+The permissions and corresponding required vdPrivilege values are described in the table below. 
+
+vdPrivilege Value | Permission
+-|-
+acl-read | View access controls
+acl-write | Create, update and delete access controls
+admin-write | Modifying within Settings -> Server Front End -> Administration
+config-lock | Managing Main Control Panel -> Settings -> Configuration -> Configuration Lock
+config-read | Read RadiantOne configuration
+config-write | Write access to RadiantOne configuration
+data-source-read | Read configured data sources
+data-source-write | Create, update, and delete data sources
+data-store-read | View RadiantOne Universal Directory stores
+data-store-write | Create, update, or delete RadiantOne Universal Directory stores
+globalidviewer-designer | Edit and delete templates and queries in the Global Identity Viewer
+globalidviewer-read | Log into the RadiantOne Global Identity Viewer
+globalidviewer-write | Can modify attribute values in the Global Identity Viewer
+ics-admin | Stop and start pipelines on the Sync Tab
+ics-operator | Access the Synchronization tab and read topologies
+	Log into the Global Identity Viewer Console and access all applications
+ics-workflow-approve | Access the Approvals Application in the RadiantOne Insights, Reports and Administration Console
+instance-read | Read settings for any configured instances
+instance-write | Modify settings for any configured instances
+logs-read | Reading Server Control Panel's Log Viewer tab
+naming-context-read | Read naming context configurations
+naming-context-write | Create, update, or delete naming contexts
+security-write | Modifying the following:
+	- Settings -> Security -> SSL -> Save Certificate Keystore Password
+    - Settings -> Security -> Authentication Methods -> Save Kerberos Password
+    - Settings -> Configuration -> Application Server Settings -> Save App Server Password
+    - Server Control Panel -> Settings -> Save
+services-restart | Restart the RadiantOne service from Main Control Panel
+services-shutdown | Stop the RadiantOne service from the Main Control Panel
+tasks-admin | Launch tasks
+update-schema | Extend RadiantOne LDAP schema with objects and attributes from orx files
+
 ## Configuration Lock
 
 The RadiantOne super user account (e.g. cn=directory manager) and members of the cn=directory administrators group (cn=directory administrators,ou=globalgroups,cn=config) can enable a lock on all configuration changes. This ensures that no changes are being made while the configuration is being backed up and/or migrated. To lock the configuration, navigate to Main Control Panel > Settings > Configuration > Configuration Lock. Toggle the Configuration Changes property to the Locked position. Click **Save**.
