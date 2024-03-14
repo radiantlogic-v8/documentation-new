@@ -37,7 +37,8 @@ Instead of using the default key generation, you have the option to use a custom
 1.	With your CMK information, select the AWSKMS option in Control Panel > Manage > Security > Attribute Encryption for the *RadiantOne Directory Attribute Encryption Key* and/or the *LDIFZ Encryption Key*.
 1.	When AWSKMS is selected another section appears where you can enter your key details.
 
-         ![AWS KMS Settings](Media/aws-kms.jpg)
+
+  	![AWS KMS Settings](Media/aws-kms.jpg)
 
 
 
