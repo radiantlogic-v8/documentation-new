@@ -1280,10 +1280,10 @@ logs-read | Reading Server Control Panel's Log Viewer tab
 naming-context-read | Read naming context configurations
 naming-context-write | Create, update, or delete naming contexts
 security-write | Modifying the following:
-	- Settings -> Security -> SSL -> Save Certificate Keystore Password
-    - Settings -> Security -> Authentication Methods -> Save Kerberos Password
-    - Settings -> Configuration -> Application Server Settings -> Save App Server Password
-    - Server Control Panel -> Settings -> Save
+- Settings -> Security -> SSL -> Save Certificate Keystore Password
+- Settings -> Security -> Authentication Methods -> Save Kerberos Password
+- Settings -> Configuration -> Application Server Settings -> Save App Server Password
+- Server Control Panel -> Settings -> Save
 services-restart | Restart the RadiantOne service from Main Control Panel
 services-shutdown | Stop the RadiantOne service from the Main Control Panel
 tasks-admin | Launch tasks
