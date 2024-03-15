@@ -891,9 +891,9 @@ These functions are dictated by the following values of the vdPrivilege attribut
 - data-source-write
 - data-store-read
 - data-store-write
+- globalidviewer-designer
 - globalidviewer-read
 - globalidviewer-write
-- globalidviewer-designer
 - ics-admin
 - logs-read
 - naming-context-read
@@ -1236,7 +1236,7 @@ If the group objectclass stores the members in the member attribute, set the val
  
 #### Delegated Administration Roles
 
-The roles and corresponding required permissions are described in the table below. For descriptions of each permission, see [Delegated Administration Permissions](#delegated-administration-permissions)
+The roles and corresponding required permissions are described in the table below. 
 
 Role	| Required Permissions (Value of vdPrivilege)
 -|-
