@@ -158,7 +158,7 @@ Harness your identity data with intelligent integration to drive better business
   > [Installation](cfs/01-getting-started)
   > Learn how to install CFS Master and create your first CFS tenant.
 
-  > [Configuration](cfs/02-configuration)
+  > [Configuration](cfs/03-configuration)
   >Learn how to configure identity providers, applications, and smart links. 
 
   > [Deployment](cfs/04-deployment)
