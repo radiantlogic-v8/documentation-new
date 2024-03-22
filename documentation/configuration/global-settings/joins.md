@@ -5,9 +5,16 @@ description: Learn how to configure joins.
 
 ## Overview
 
-Info.
+Objects from any sources in the RadiantOne namespace can be joined. With joins, you can extend the LDAP entries with attributes coming from another data source, or new application-specific attributes (required by applications, but don’t exist yet). This section assists you in finding the location to configure the join for your virtual view associated with an LDAP backend data source.
 
-#### Configuring a Regular Join
+This guide describes the following. 
+
+- [Configuring a Regular Join](#configuring-a-regular-join)
+- [Configuring an Extended Join](#configuring-an-extended-join)
+- [Bind Order](#bind-order)
+- [Computed Attributes](#computed-attributes)
+
+## Configuring a Regular Join
 
 The primary source for regular joins is a virtual view of either an LDAP Backend, Database Backend (a specific object in the database), a web service backend, or you can even set up the join at a global level (to apply to all entries in the RadiantOne namespace).
 
@@ -129,20 +136,19 @@ If you make any changes to the join condition, remember to click **Save** in the
 
 If you are familiar with the [syntax](#deactivating-a-join), you can click **Edit Manually** at the bottom of the Attributes tab in the Edit window. 
 
-#### Deactivating a Join
+## Deactivating a Join
 
 To deactivate a join, uncheck the join’s Active box in the Join Profiles section on the Objects tab and click Save. To reactivate the join, check the join’s Active box and click Save.
 
 ![marking a join as active/inactive](Media/Image2.7.jpg)
 
-
-#### Configuring an Extended Join
+## Configuring an Extended Join
 
 The primary source is a virtual view of either an LDAP Backend, Database Backend (a specific object in the database), or a web service backend.
 
 >[!warning] Deleting an extended join does not remove the entries in the extension storage. If you want the extension entries removed, you must do it manually.
 
-#### Configuration Steps for LDAP Backends
+### Configuration Steps for LDAP Backends
 
 1.	From the Main Control Panel -> Directory Namespace tab, navigate to the primary/main source below Root Naming Contexts.
 
@@ -180,7 +186,7 @@ The primary source is a virtual view of either an LDAP Backend, Database Backend
 
 15.	Click **Save**. Click **OK** to confirm saving changes to the server.
 
-#### Configuration Steps for Database Backends
+### Configuration Steps for Database Backends
 
 1.	From the Main Control Panel > Directory Namespace tab, navigate to the primary/main source below Root Naming Contexts.
 
@@ -229,7 +235,7 @@ If you make any changes to the join, click **Save** in the top right corner and 
 
 If you are familiar with the [syntax](#join-syntax), you can click **Edit Manually** at the bottom of the Attribute tab in the Edit window. 
 
-#### Deactivating a Join
+## Deactivating a Join
 
 To deactivate a join, uncheck the join’s Active box in the Join Profiles section on the Objects tab and click **Save**. To reactivate the join, check the join’s Active box and click **Save**.
 
