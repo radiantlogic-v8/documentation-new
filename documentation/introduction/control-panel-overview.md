@@ -549,27 +549,17 @@ Let’s look at an example of duplicate DN’s being returned for the same perso
 
 ![Virtual View Aggregating Two Data Sources](Media/Image3.47.jpg)
  
-Figure 10: Virtual View Aggregating Two Data Sources
-
 ![Same user ID Exists in Multiple Data Sources that have been Aggregated by RadiantOne](Media/Image3.48.jpg)
  
-Figure 11: Same user ID Exists in Multiple Data Sources that have been Aggregated by RadiantOne
-
 If Laura Callahan in Active Directory is in fact the same Laura Callahan as in Sun, you can enable Duplicate DN Removal to consolidate the two accounts. The screen shots below show the Duplicate DN Removal option enabled and the new result for the search.
 
 ![Duplicate DN Removal Setting](Media/Image3.49.jpg)
  
-Figure 12: Duplicate DN Removal Setting
-
 ![Search Result after Enabling Duplicate DN Removal](Media/Image3.50.jpg)
- 
-Figure 13: Search Result after Enabling Duplicate DN Removal
 
 The one entry returned with attributes from the first source the user was found in (Active Directory in this example).
 
 ![Result of Duplicate DN Removal](Media/Image3.51.jpg)
- 
-Figure 14: Result of Duplicate DN Removal
 
 <ins>Duplicate Identity Removal Rules</ins>
 
@@ -579,24 +569,16 @@ Figure 14: Result of Duplicate DN Removal
 In cases where RadiantOne is aggregating common user identities from multiple data sources, you have the option to configure it to remove any duplicate users (from search responses) if it finds there is a common attribute/identifier (across the data sources you have aggregated). It can also be used as a way for RadiantOne to eliminate ambiguity by returning only one unique entry. Let’s take two sources as an example. Source 1 is Active Directory and source 2 is a Sun directory. Both sources have been aggregated into the virtual namespace below a naming context of dc=demo and as the two following screens show, Laura Callahan exists in both.
 
 ![Virtual Entry from Active Directory Backend](Media/Image3.52.jpg)
- 
-Figure 15: Virtual Entry from Active Directory Backend
 
 ![Virtual Entry from Sun Directory Backend](Media/Image3.53.jpg)
- 
-Figure 16: Virtual Entry from Sun Directory Backend
 
 The unique Identifier between the examples above is employeeID (employeeNumber in Sun has been mapped to employeeID to provide a common attribute between Sun and Active Directory). Therefore, a subtree search for employeeID=8 below dc=demo would return two people in this example.
 
 ![Two Entries are Returned based on Filter of EmployeeID=8](Media/Image3.54.jpg)
- 
-Figure 17: Two Entries are Returned based on Filter of EmployeeID=8
 
 Now, if Duplicate Identity Removal rules are configured, RadiantOne returns only the first entry that it finds (in this case, the one from Active Directory). Multiple duplicate identity rules can be configured (each branch in the RadiantOne namespace may have a duplicate identity removal rule). In addition, multiple attributes may be used to determine a duplicate identity. For example, you can set uid,employeeid and this means if an entry has the same uid and employeeid then it is the same person. Make sure to list the attributes you want to use to determine a duplicate identity with a comma separating each attribute name. Remember to save your settings after defining the rules.
 
 ![Duplicate Identity Removal Settings](Media/Image3.55.jpg)
-
-Figure 18: Duplicate Identity Removal Settings
 
 >[!warning] 
 >The identity attribute selected, must satisfy the following requirements: 
@@ -604,12 +586,9 @@ Figure 18: Duplicate Identity Removal Settings
 
 ![One Entry for Laura is Returned with Duplicate Identity Removal Rules Enabled](Media/Image3.56.jpg)
 
-Figure 19: One Entry for Laura is Returned with Duplicate Identity Removal Rules Enabled
-
 This is ideal for handling authentication requests (to ensure only one entry is returned to base authentication on). However, for authorization purposes, if a user exists in more than one source, only attributes from the first source are returned. If you need a complete profile of attributes coming from all the user’s accounts, then you need to configure joins to all branches in the virtual tree where the user may have an account. This join condition can be based on the identity attribute (or any other attribute that can be used to uniquely identify the person in the other branch). As a result, searches for the user still return only one entry. Without a join configured across these virtual views, only attributes from the first source the user was found in would be returned. For details on joining, please see [Joins](../introduction/concepts#joins) in the Concepts section.
 
->[!warning] 
->If your use case requires identity correlation to address user overlap, and a complete identity profile is needed for authorization, you should review the capabilities of the [Global Identity Builder](/documentation/configuration/global-identity-builder/introduction) as opposed to trying to use Duplicate Identity Removal.
+>[!warning] If your use case requires identity correlation to address user overlap, and a complete identity profile is needed for authorization, you should review the capabilities of the [Global Identity Builder](/documentation/configuration/global-identity-builder/introduction) as opposed to trying to use Duplicate Identity Removal.
 
 *Changelog*
 
