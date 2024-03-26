@@ -432,7 +432,7 @@ The currently logged in user must have permissions to [access the Classic Contro
 
 **Directory Browser**
 
-Entries can be managed from the [Directory Browser](../directory-stores/managing-directory-stores#managing-radiantone-directory-entries).
+Entries can be managed from the [Directory Browser](../configuration/directory-stores/managing-directory-stores#managing-radiantone-directory-entries).
 
 **Tasks**
 
