@@ -99,6 +99,28 @@ The diagram below depicts an extended join. AuthzCode, lastLogon, and pwdreset a
 
 ![extended join example](Media/Image2.8.jpg)
 
+## Bind Order
+
+If you have configured joins between multiple sources, RadiantOne can send the bind request (credential checking) to many backends (any that play a role in the join). If you are not using joins, then bind order is irrelevant.
+
+After the join is configured, you can set the bind order (the backends to check in a particular order). The diagram below depicts an example. The database is configured with bind order 1. Therefore, RadiantOne attempts the bind there first. If the bind fails against the database, the LDAP directory receives the bind request (as per the configuration). If the bind were to fail again, Active Directory would receive the bind request. If all sources fail, the client receives a bind failure error from RadiantOne.
+
+![extended join example](Media/bind-order.jpg)
+
+## Computed Attributes 
+
+If the entries in virtual view should include attributes that are derived from existing attributes, you can use Computed Attributes. Computed attributes can be based on attributes from the primary object, secondary objects (from joins), and/or previously computed attributes.
+
+If you need to create a computed attribute from a previously computed attribute, that attribute must appear first in the list in the Computed Attributes window.
+
+The diagram below depicts a computed attribute named login that can be computed based on the attributes givenName, sn, and uid.
+
+![extended join example](Media/computed-attributes1.jpg)
+
+The diagram below depicts a computed attribute example where the value is comprised of attributes coming from both the primary and secondary objects.
+
+![extended join example](Media/computed-attributes2.jpg)
+
 ## Interception Scripts
 
 Interception scripts are written in Java and used to override the default behavior of RadiantOne to implement functionality to meet your needs. Examples of functionality you can introduce are:
