@@ -5,8 +5,8 @@ description: Configuring RadiantOne Identity Data Management
 
 - [Data Sources](#)
   - [Managing Data Sources](data-sources/data-sources.md)
-  - [Managing Templates](data-sources/data-sources/managing-templates)
-  - [Managing Schemas](data-sources/managing-schemas.md)
+  - [Managing Templates](data-sources/managing-templates)
+  - [Managing Schemas](data-sources/schemas.md)
 - [Identity Views](#)
   - [Directory Namespace](#)
     - [Introduction](identity-views/intro-view-design.md)
