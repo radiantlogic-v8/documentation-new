@@ -11,7 +11,7 @@ description: Installing RadiantOne Identity Data Management
     - [Managing Admins](configure-eoc#managing-admins)
     - [Managing Account Settings](configure-eoc#managing-account-settings)
     - [Managing Integrations for Alerts](configure-eoc#managing-integrations-for-alerts)
-    - [Viewing Activity Logs](configure-eoc/viewing-activity-logs)
+    - [Viewing Activity Logs](configure-eoc#viewing-activity-logs)
 - [Creating Environments](create-environments.md)
 - [Configuring Secure Data Connectors](configure-sdc.md)
 - [Configuring Secure Data Connector Clients](configure-sdc-client.md)
