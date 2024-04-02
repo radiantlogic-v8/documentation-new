@@ -24,7 +24,7 @@ description: RadiantOne Global Identity Builder guide
   - [Overview](link-groups/overview.md)
   - [Create a root naming context](link-groups/naming-context.md)
   - [Define computed group membership](link-groups/computed-group-membership.md)
-  - [Remapped group membership](link-groups/remapped-group-membership.md)
+  - [Remapped group membership](link-groups/computed-group-membership#remapped-group-membership)
 - [Integrate and configure a custom data source](integrate-configure-data-source.md)
 - [Address group membership challenges](#)
   - [LDAP dynamic groups](address-group-challenges/ldap-dynamic-groups.md)
