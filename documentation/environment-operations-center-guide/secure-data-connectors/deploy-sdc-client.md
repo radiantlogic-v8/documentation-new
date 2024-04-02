@@ -120,7 +120,7 @@ Then launch the secure data connector client using this command:
 
 A notification will display in the command line that confirms a connection has been established between the agent and server.
 
-![image description](images/linux-run-client.png)
+![image description](images/linux-run-client.PNG)
 
 Once the client is running, you can can setup a connection with the on-premise backend. For details on setting up a connection, see the [server backend](/sys-admin-guide-rebuild/04-backend-settings) guide.
 
