@@ -746,7 +746,7 @@ When designing your identity views and namespace, you can use different kinds of
 
 Each of these is described in more details below. 
 
-### Container 
+**Container**
 
 A container object is a node that can have descendants. A container can include other containers or content objects.
 
@@ -754,7 +754,7 @@ You can think of a container as a directory similar to a “directory inside a f
 
 For more information, see [Working with Container Objects](#working-with-container-objects). 
 
-### Label 
+**Label** 
 
 A label node is a container object whose default attribute is a text label. The name of the label is defined during the creation and can be updated on the Properties tab. Other attributes can be defined for labels on the Primary Object tab. 
 
@@ -780,7 +780,7 @@ You can create an unlimited number of labels, depending on how many categories o
 
 For more information, see [Working with Labels](#working-with-labels). 
 
-### Content
+**Content**
 
 A Content Object is a node that has no descendants. It is a “leaf” or “terminal” node in the view.
 
@@ -788,13 +788,13 @@ A content node represents an object in a virtual view. When you create a content
 
 For more information, see [Working with Content Objects](#working-with-content-objects). 
 
-### Link 
+**Link**
 
 Links are a special kind of node that allows you to point to a specific sub tree defined in an existing virtual view (.dvx file) or a new sub tree that you design on-the-fly based on objects from other schemas. Using this mechanism in conjunction with a label (although a label is not necessary) you can aggregate information from different schemas (simple objects or whole sub trees). Links allow you to transparently navigate from schema to schema in an ad hoc way. 
 
 There are two different types of links: Standard and Merge. Each is described in more details below. 
 
-#### Standard Link 
+*Standard Link* 
 
 A standard link offers a simple way to aggregate virtual views. Each view file has a top node named with the following syntax: `dv=<file name>`. When aggregating virtual views using standard links, the “dv” label level remains and becomes part of the naming in the hierarchy. 
 
@@ -816,11 +816,11 @@ Finally, standard links are used to aggregate the views. This is represented in 
 
 Figure 8: Virtual View Model and Runtime Tree using Standard Links
 
-#### Merge Link 
+*Merge Link* 
 
-A merge link offers more flexibility than a standard link because the “dv” label level is suppressed (making the tree simpler for browsing). In addition, with merge links, a link parameter can be configured to condition the subtree based on the parent view. Details on the link parameter can be found below. 
+A merge link offers more flexibility than a standard link because the “dv” label level is suppressed (making the tree simpler for browsing). In addition, with merge links, a link parameter can be configured to condition the subtree based on the parent view. 
 
-##### Link Parameter 
+<u>Link Parameter</u> 
 
 Merge links can have a parameter that conditions the subtree based on an attribute of the parent object. This is optional but offers flexibility by allowing you to build a context-driven virtual view that navigates across multiple data sources.
 
