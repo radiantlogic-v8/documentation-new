@@ -818,15 +818,11 @@ Figure 8: Virtual View Model and Runtime Tree using Standard Links
 
 *Merge Link* 
 
-A merge link offers more flexibility than a standard link because the “dv” label level is suppressed (making the tree simpler for browsing). In addition, with merge links, a link parameter can be configured to condition the subtree based on the parent view. 
-
-<u>Link Parameter</u> 
-
-Merge links can have a parameter that conditions the subtree based on an attribute of the parent object. This is optional but offers flexibility by allowing you to build a context-driven virtual view that navigates across multiple data sources.
+A merge link offers more flexibility than a standard link because the “dv” label level is suppressed (making the tree simpler for browsing). In addition, with merge links, a link parameter can be configured to condition the subtree based on the parent view. This is optional but offers flexibility by allowing you to build a context-driven virtual view that navigates across multiple data sources.
 
 A link parameter is based on a unique key of the parent entry. The value of this key must match an attribute in the view to be mounted. Two examples are used to describe the benefits of using a merge link with a parameter. One example is based on the attribute in the parent object being single-valued and the other example is based on a multi-valued attribute.
 
-##### Linking on a Single-Valued Attribute
+#### Linking on a Single-Valued Attribute
 
 The following diagram depicts two databases. One database maintains project information while the other database stores employee information including department and location. 
 
@@ -868,7 +864,7 @@ Figure 13: Example – Using Merge Links with a Parameter to Condition the Subtr
 
 Based on the examples shown above, a link parameter is required for the virtual view to represent the proper context of showing projects per department.
 
-##### Linking on a Multi-Valued Attribute
+#### Linking on a Multi-Valued Attribute
 
 In the previous example, the link condition was based on a single-valued attribute in the parent entry. This is the primary use case for a link parameter. However, if the attribute in the parent entry contains multiple values you can use it to configure the link parameter.
 
@@ -919,7 +915,7 @@ An example depicting the model of the virtual view and the runtime view leveragi
 
 Figure 17: Example – Using Links with a Parameter to Condition the Subtree
 
-##### Merge Links without a Link Parameter
+#### Merge Links without a Link Parameter
 
 This section describes a scenario where linking is used to aggregate objects from different schemas where a link parameter is not needed. In this example, three data sources are used. One data source is an LDAP directory storing partner information. One data source is Active Directory storing employee information. The third data source is a database storing customer information. Each data source is depicted below with objects representing their schemas. 
 
