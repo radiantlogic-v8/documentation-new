@@ -24,7 +24,7 @@ Harness your identity data with intelligent integration to drive better business
   > Learn about the components and capabilities that comprise the RadiantOne Identity Data Management architecture. 
   
   > [Admin Tools](introduction/admin-tools-overview)  
-  > Learn about the two main administration tools used in Identity Data Management: The Environment Operations Center and the Main Control Panel.
+  > Learn about the two main administration tools used in Identity Data Management: The Environment Operations Center and the Main Control Panel.  The Environment Operations Center is only available with SaaS deployments.
   
   > [Concepts](introduction/concepts)  
   > Learn the concepts related to configuring Identity Data Management.
