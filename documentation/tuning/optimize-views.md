@@ -9,7 +9,6 @@ This is the overview.
 
 ## Views from Database Backends
 
-## Optimizations
 For certain configurations/use cases, there are two parameters that may be enabled to improve processing/performance. They are located on the Main Control Panel > Directory Namespace Tab. Navigate below the Root Naming Context section and select the node representing the virtual view to your backend. On the right side, select the Advanced Settings tab. Each optimization is described below.
 
 **Removing UPPER**
