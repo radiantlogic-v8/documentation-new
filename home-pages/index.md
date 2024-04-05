@@ -35,21 +35,15 @@ Harness your identity data with intelligent integration to drive better business
 </section>
 
 
-## Installation and Initial Setup
+## Installation
 
 <section>
    
-  > [Deployment Options](installation/deployment-options)  
-  > Learn about subscribing to Identity Data Management as SaaS and options for deployment as a self-managed platform.
+  > [SaaS](installation/deployment-options/SaaS)  
+  > Learn about how to install Identity Data Management in your SaaS tenant.
   
-  > [Configuring Environment Operations Center](installation/configure-eoc)  
-  > Learn how to log into the Environment Operations Center and perform the initial configuration required for delegated administration.
-  
-  > [Creating Environments](installation/create-environments)  
-  > Learn how to create environments and install Identity Data Management.
-  
-  > [Configuring Secure Data Connectors](installation/configure-sdc)  
-  > Learn how to configure secure data connectors for integrating with identity sources in your on-premises or provide cloud networks.
+  > [Self-managed Deployment](installation/deployment-options/self-managed)  
+  > Learn how to deploy Identity Data Management using Helm charts in your own Kubernetes cluster.
       
 </section>
 
