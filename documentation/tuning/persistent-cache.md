@@ -16,45 +16,6 @@ Initialization of a persistent cache happens in two phases. The first phase is t
 
 Best practice would be to take four times the size of the LDIF file generated to determine the disk space that is required to initialize the persistent cache. For example, lab tests have shown 50 million entries (1KB or less in size) generates an LDIF file approximately 50 GB in size. So total disk space recommended to create the persistent cache for this example would be 200 GB.
 
-## Initializing Persistent Cache
-
-Persistent cache should be initialized during off-peak hours, or during scheduled downtime, since it is a CPU-intensive process and during the initialization queries are delegated to the backend data sources which might not be able to handle the load.
-
-When initializing persistent cache, two settings you should take into consideration are paging and initializing cache from an encrypted file. These options are described in this section.
-
->[!warning] 
->If you are using real-time refresh, make sure the cache refresh components are stopped before re-initializing or re-indexing a persistent cache.
-
-### Using Paging
-
-Depending on the complexity of the virtual view, building the persistent cache image can take some time. Since the internal connections used by RadiantOne to build the persistent cache image are subject to the Idle Connection Timeout server setting, the cache initialization process might fail due to the connection being automatically closed by the server. To avoid cache initialization problems, it is recommended to use paging for internal connections. To use paging:
-
-1.	Navigate to the Main Control Panel > Settings tab > Server Front End > Supported Controls.
-
-2.	On the right, check the option to Enable Paged Results.
-
-3.	Click **Save**.
-
-4.	Navigate to the Main Control Panel > Settings tab > Server Backend > Internal Connections (requires [Expert Mode](00-preface#expert-mode)).
-
-5.	On the right, check the option for Paged Results Control, page size: 1000.
-
-6.	Click **Save**.
-
-### Supporting Zipped and Encrypted LDIF Files
-
-If you are initializing persistent cache using an existing LDIFZ file, the security key used in RadiantOne (for attribute encryption) where the file was exported must be the same security key value used on the RadiantOne server that you are trying to import the file into.
-
-If you are creating a new LDIF file to initialize the persistent cache, you have the option to use an LDIFZ file which is a zipped and encrypted file format. This ensures that the data to be cached is not stored in clear in files required for the initialization process.
-
-To use this option, you must have an LDIFZ encryption key configured. The security key is defined from the Main Control Panel > Settings Tab > Security > Attribute Encryption section.
-
-Once the security key has been defined, check the option to “Use .ldifz (zipped and secure format).
-
-![An image showing ](Media/Image2.4.jpg)
-
-Figure 2.4: Using LDIFZ File to Initialize Persistent Cache
-
 ## Options for Refreshing the Persistent Cache
 
 There are four categories of events that can invoke a persistent cache refresh. They are:
@@ -246,6 +207,41 @@ You can define a threshold to validate the generated LDIF file/image prior to Ra
 To define a granular threshold for add operations, indicate the percentage in the Add Validation Threshold. For example, if Add Validation Threshold contains a value of 50, it means if the generated LDIF image contains 50% more entries than the current cache image, the periodic persistent cache refresh is aborted for the current refresh cycle.
 
 ## Managing Cache
+
+Persistent cache should be initialized during off-peak hours, or during scheduled downtime, since it is a CPU-intensive process and during the initialization queries are delegated to the backend data sources which might not be able to handle the load.
+
+When initializing persistent cache, two settings you should take into consideration are paging and initializing cache from an encrypted file. These options are described in this section.
+
+>[!warning] 
+>If you are using real-time refresh, make sure the cache refresh components are stopped before re-initializing or re-indexing a persistent cache.
+
+### Using Paging
+
+Depending on the complexity of the virtual view, building the persistent cache image can take some time. Since the internal connections used by RadiantOne to build the persistent cache image are subject to the Idle Connection Timeout server setting, the cache initialization process might fail due to the connection being automatically closed by the server. To avoid cache initialization problems, it is recommended to use paging for internal connections. To use paging:
+
+1.	Navigate to the Main Control Panel > Settings tab > Server Front End > Supported Controls.
+
+2.	On the right, check the option to Enable Paged Results.
+
+3.	Click **Save**.
+
+4.	Navigate to the Main Control Panel > Settings tab > Server Backend > Internal Connections (requires [Expert Mode](00-preface#expert-mode)).
+
+5.	On the right, check the option for Paged Results Control, page size: 1000.
+
+6.	Click **Save**.
+
+### Supporting Zipped and Encrypted LDIF Files
+
+If you are initializing persistent cache using an existing LDIFZ file, the security key used in RadiantOne (for attribute encryption) where the file was exported must be the same security key value used on the RadiantOne server that you are trying to import the file into.
+
+If you are creating a new LDIF file to initialize the persistent cache, you have the option to use an LDIFZ file which is a zipped and encrypted file format. This ensures that the data to be cached is not stored in clear in files required for the initialization process.
+
+To use this option, you must have an LDIFZ encryption key configured. The security key is defined from the Main Control Panel > Settings Tab > Security > Attribute Encryption section.
+
+Once the security key has been defined, check the option to “Use .ldifz (zipped and secure format).
+
+![An image showing ](Media/Image2.4.jpg)
 
 ### Enable/Disable
 Active
