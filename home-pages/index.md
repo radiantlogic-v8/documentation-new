@@ -47,7 +47,7 @@ Harness your identity data with intelligent integration to drive better business
       
 </section>
 
-## Configuration
+## Configuration and Administration
 
 <section>
    
