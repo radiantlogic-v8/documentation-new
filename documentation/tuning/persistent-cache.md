@@ -70,6 +70,73 @@ If you have a large data set and generated multiple LDIF files for the purpose o
 
 ## Configuring Periodic Refresh
 
+Review the section on [periodically refreshing the cache](#periodic-refresh) to ensure the persistent cache is updated to match your needs. If you plan on refreshing the cache image periodically on a defined schedule, this would be the appropriate cache configuration option. This type of caching option leverages the internal RadiantOne Universal Directory storage for the cache image.
+
+To configure persistent cache with Periodic refresh
+1.	On the Directory Namespace tab of the Main Control Panel, click the Cache node.
+
+2.	On the right side, browse to the branch in the RadiantOne namespace that you would like to store in persistent cache and click **OK**.
+
+3.	Click **Create Persistent Cache**. The configuration process begins. Once it completes, click **OK** to exit the window.
+
+4.	Click the **Refresh Settings** tab.
+
+5.	Select the Periodic Refresh option.
+
+6.	Enter the [CRON expression](#periodic-refresh-cron-expression) to define the refresh interval.
+
+7.	(Optional) Define a [Delete Validation Threshold](#delete-validation-threshold).
+
+8.	(Optional) Define an [Add Validation Threshold](#add-validation-threshold).
+
+9.	Click **Save**.
+
+10.	Click **Initialize** to start the initialization process.
+
+There are two options for initializing the persistent cache: Creating a new LDIF file or initializing from an existing LDIF file. Each is described below.
+
+*Create an LDIF from a Snapshot*
+
+If this is the first time you’ve initialized the persistent cache, then you should choose this option. An LDIF formatted file is generated from the virtual view and then imported into the local RadiantOne Universal Directory store.
+
+*Initialize from an Existing LDIF File*
+
+If you’ve initialized the persistent cache before and the LDIF file was created successfully from the backend source(s) (and the data from the backend(s) has not changed since the generation of the LDIF file), then you can choose to use that existing file. The persisting of the cache occurs in two phases. The first phase generates an LDIF file with the data returned from the queries to the underlying data source(s). The second phase imports the LDIF file into the local RadiantOne Universal Directory store. If there is a failure during the second phase, and you must re-initialize the persistent cache, you have the option to choose the LDIF file (that was already built during the first phase) instead of having to re-generate it (as long as the LDIF file generated successfully). You can click browse and navigate to the location of the LDIF. The LDIF files generated are in <RLI_HOME>\<instance_name>\ldif\import.
+
+If you have a large data set and generated multiple LDIF files for the purpose of initializing the persistent cache (each containing a subset of what you want to cache), name the files with a suffix of “_2”, “_3”…etc. For example, let’s say the initial LDIF file (containing the first subset of data you want to import) is named cacheinit.ldif. After this file has been imported, the process attempts to find cacheinit_2.ldif, then cacheinit_3.ldif…etc. Make sure all files are located in the same place so the initialization process can find them.
+
+After you choose to either generate or re-use an LDIF file, click Finish and cache initialization begins. Cache initialization is launched as a task and can be viewed and managed from the Tasks Tab in the Server Control Panel associated with the RadiantOne leader node. Therefore, you do not need to wait for the initialization to finish before exiting the initialization window.
+
+After the persistent cache is initialized, queries are handled locally by the RadiantOne service and no longer be sent to the backend data source(s). For information about properties associated with persistent cache, please see [Persistent Cache Properties](#persistent-cache-properties).
+
+### Periodic Refresh CRON Expression
+
+If periodic refresh is enabled, you must define the refresh interval in this property. For example, if you want the persistent cache refreshed every day at 12:00 PM, the CRON expression is: 
+0 0 12 1/1 * ? *
+Click **Assist** if you need help defining the CRON expression.
+
+![An image showing ](Media/Image2.7.jpg)
+ 
+Figure 2.7: CRON Expression Editor
+
+### Delete Validation Threshold
+
+For details on how the periodic persistent cache refresh process works, see [Periodic Refresh](#periodic-refresh).
+
+You can define a threshold to validate the generated LDIF file/image prior to RadiantOne executing the cache refresh process. The threshold is a percentage of the total entries.
+
+To define a granular threshold for delete operations, indicate the percentage in the Delete Validation Threshold. For example, if Delete Validation Threshold contains a value of 50, it means if the generated LDIF image contains at least 50% fewer entries than the current cache image, the periodic persistent cache refresh is aborted for the current refresh cycle.
+
+If a validation threshold is configured, the threshold is checked.
+
+### Add Validation Threshold
+
+For details on how the periodic persistent cache refresh process works, see [Periodic Refresh](#periodic-refresh).
+
+You can define a threshold to validate the generated LDIF file/image prior to RadiantOne executing the cache refresh process. The threshold is a percentage of the total entries.
+
+To define a granular threshold for add operations, indicate the percentage in the Add Validation Threshold. For example, if Add Validation Threshold contains a value of 50, it means if the generated LDIF image contains 50% more entries than the current cache image, the periodic persistent cache refresh is aborted for the current refresh cycle.
+
 ## Managing Cache
 
 ### Enable/Disable
