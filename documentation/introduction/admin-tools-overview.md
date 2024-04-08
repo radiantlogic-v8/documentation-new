@@ -32,7 +32,7 @@ The Directory Administrator credentials for Control Panel are defined when the e
 
 ![An image showing ](Media/CPLogin.jpg)
 
-The Directory Administrator can create other admin accounts and roles as needed from the Control Panel > Admin section. Users can login with a [username and password](control-panel-overview.md), an [Access Token](../security/access-tokens.md), or a [corporate SSO provider](UPDATE LINK TO CONTENT) can be configured.
+The Directory Administrator can create other admin accounts and roles as needed from the Control Panel > Admin section. Users can login with a [username and password](control-panel-overview.md), an [Access Token](../security/access-tokens.md), or a [corporate SSO provider](control-panel-overview#oidc-token) can be configured.
 
 
 ![An image showing ](Media/usermanagement.jpg)
