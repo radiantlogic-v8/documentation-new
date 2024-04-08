@@ -17,6 +17,6 @@ To enable global interception:
 
 1. Click: ![Edit Script](Media/edit-script-button.jpg)
    
-1. After your script has been customized, save the file and then rebuild the intercept.jar by clicking: ![Build Intercept Jar](Media/build-interception-button.jpg) 
+1. After your script has been customized, save the file and then rebuild the intercept.jar by clicking: ![Build Intercept Jar](Media/build-interception-button.jpg) at the bottom of the ADVANCED SETTINGS tab.
 
-1.	Restart the RadiantOne service. The can be done in your environment in Environment Operations Center. After restart, the global interception script logic is invoked for the enabled operations.
+1.	Restart the RadiantOne service. This can be done in your environment in Environment Operations Center. After restart, the global interception script logic is invoked for the enabled operations.
