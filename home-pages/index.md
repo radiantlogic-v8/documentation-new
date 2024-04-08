@@ -142,6 +142,9 @@ Harness your identity data with intelligent integration to drive better business
 
 <section>
    
+  > [Release Notes](maintenance/release-notes/iddm-8-1-0)  
+  > Release notes contain important information about new features, improvements and bug fixes for RadiantOne Identity Data Management.
+
   > [Applying Patches](maintenance/applying-patches)  
   > Learn how to apply patches to an environment to update the version of RadiantOne Identity Data Management and Secure Data Connectors.
   
