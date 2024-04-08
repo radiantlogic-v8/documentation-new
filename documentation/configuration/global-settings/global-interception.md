@@ -5,20 +5,18 @@ description: Learn how to configure global interception scripts.
 
 ## Overview
 
-For information on Interception scripts, please see [Interception Scripts](/introduction/concepts#interception-scripts). The following steps describe how to enable interception scripts at a global level (which are applicable to the entire RadiantOne namespace – all naming contexts).
+For information on Interception scripts, please see [Interception Scripts](../identity-views/view-interception). The following steps describe how to enable interception scripts at a global level (which are applicable to the entire RadiantOne namespace – all naming contexts).
 
-To enable global interception: **UPDATE THESE STEPS**
+To enable global interception:
 
-1.	From the Main Control Panel > Settings Tab > Interception section > Global Interception sub section.
+1.	From the Control Panel > Setup > Directory Namespace > Namespace Design, select the top node named: Root Naming Contexts.
 
-2.	On the right side, enable the operations you want to intercept. Save the settings and then you can edit the script. The script file is located at <RLI_HOME>\vds_server\custom\src\com\rli\scripts\intercept\globalIntercept.java
+1.	On the right side, select the ADVANCED SETTINGS tab.
+1.	Enable the operations you want to intercept and click **SAVE**.
 
-![An image showing ](Media/Image3.119.jpg)
- 
-Figure 1: Global Interception Settings
+ ![Global Interception Script](Media/global-interception.jpg)
 
-3.	After your script has been customized, save the file and then rebuild the intercept.jar with ANT. On the RadiantOne machine, rebuild the fidsync.jar with ANT using the following syntax:
+1. Click: ![Edit Script](Media/edit-script-button.jpg)
+1 After your script has been customized, save the file and then rebuild the intercept.jar by clicking: ![Build Intercept Jar](Media/build-interception-button.jpg) 
 
-`C:\radiantone\vds\vds_server\custom>c:\radiantone\vds\ant\bin\ant.bat buildjars`
-
-4.	Restart the RadiantOne service. Your script logic is now invoked for the operations you have enabled.
+1.	Restart the RadiantOne service. The can be done in your environment in Environment Operations Center. After restart, the global interception script logic is invoked for the enabled operations.
