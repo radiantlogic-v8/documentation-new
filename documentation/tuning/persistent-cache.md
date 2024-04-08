@@ -439,7 +439,9 @@ If inter-cluster replication is enabled, a replication journal is used to store 
 
 **Replication Excluded Attributes**
 
+Before enabling replication, all replicas must have the same initial image: either an empty store or an initialized store based on the export of the Universal Directory store at the primary data center. When you export the store on the primary data center, you must have the option “Export for Replication” checked. If you want to use fractional replication, make sure you set the excluded attributes (that you don’t want replicated) in the “Replication Excluded Attributes” property. When you export the store from the primary data center, the LDIF file will not have the excluded attributes in it.
 
+If you want to exclude certain attributes from replication, enter a comma-separated list of attributes in “Replication Excluded Attributes” property. Then, you can click “Export” to generate an LDIF file (make sure you have “Export for Replication” enabled), that excludes these attributes. This LDIF file can be used to initialize replicas in other clusters.
 
 **Accept Changes from Replicas**
 
