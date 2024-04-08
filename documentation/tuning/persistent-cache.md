@@ -443,5 +443,11 @@ If inter-cluster replication is enabled, a replication journal is used to store 
 
 **Accept Changes from Replicas**
 
+For limited use cases where the only type of modify operations that client applications perform is updates to existing entries (no adds or deletes), the persistent cache can subscribe to these events. If the persistent cache should process attribute updates from RadiantOne Universal Directory replicas in other clusters, enable the Accept Changes from Replicas option and list the acceptable attributes in the Updateable Attributes from Replicas property.
 
+>[!warning] 
+>Persistent Cache stores can only accept modification operations from RadiantOne Universal Directory replicas. Add and delete operations are currently not supported. Therefore, proper ACLs should be configured for the RadiantOne Universal Directory replicas to prevent the addition and deletion of entries.
+
+>[!warning] 
+>This is an advanced setting, consult with a Radiant Logic Solution Architect to get assistance on the needed architecture and usage.
 
