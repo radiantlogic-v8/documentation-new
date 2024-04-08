@@ -386,12 +386,60 @@ If you need to support VLV, the VLV/Sort control must be enabled in RadiantOne. 
 If you change the sorted attributes, you must re-build the index. You can do this from the Properties tab by clicking **Re-build Index**.
 
 ### Encrypted Attributes
+
+Attribute encryption protects sensitive data while it is stored in RadiantOne. You can specify that certain attributes of an entry are stored in an encrypted format. This prevents data from being readable while stored in persistent cache, backup files, and exported LDIF files. Attribute values are encrypted before they are stored in persistent cache, and decrypted before being returned to the client, as long as the client is authorized to read the attribute (based on ACLs defined in RadiantOne), is connected to the RadiantOne service via SSL, and not a member of the special group containing members not allowed to get these attributes (e.g. cn=ClearAttributesOnly,cn=globalgroups,cn=config). For details on this special group, please see the RadiantOne System Administration Guide.
+
+>[!warning] 
+>Define a security encryption key from the Main Control Panel > Settings Tab > Security section > Attribute Encryption prior to configuring encrypted attributes. For steps on defining key generation, see the RadiantOne System Administration Guide.
+
+On the Properties Tab for the selected persistent cache, enter a comma-separated list of attributes to store encrypted in the Encrypted Attributes property. Attributes listed in the Encrypted Attributes property are added to the Non-indexed attribute list by default. This means these attributes are not searchable by default. Indexing encrypted attributes is generally not advised as the index itself is less secure than the attribute stored in the persistent cache. However, if you must be able to search on the encrypted attribute value, it must be indexed. Only “exact match/equality” index is supported for encrypted attributes. To make an encrypted attribute searchable, remove the attribute from the list of nonindexed attributes and then click **Re-build Index**.
+
+
 ### Extension Attributes
+
+Extension Attributes are new attributes (meaning these attributes don’t exist anywhere yet) that are associated with a cached virtual entry. This is primarily used to accommodate the storage of application-specific attributes that you want to store locally as opposed to the backend(s) you are virtualizing. Extension attributes should be used as an alternative to Extended Joins in scenarios where the virtual view is stored in persistent cache and then needs replicated out to RadiantOne Universal Directory stores in other clusters.
+
+Extension attributes are stored locally and RadiantOne handles the lifecycle of these attributes accordingly. Once a persistent cache is defined, list the attribute names (comma-separated) in the Extension Attributes property. The attribute names must be unique and not overlap with attributes coming from and being cached from existing backends. The example below has an extension attribute named lastLogin. Applications can write to this attribute and RadiantOne handles the write locally without delegating anything to the backend. 
+
+![An image showing ](Media/Image2.23.jpg)
+
+For consistency of the RadiantOne LDAP schema, define the extension attributes as part of the schema, generally associated with an auxiliary object class. For details on extending the schema, see the RadiantOne System Administration Guide.
+
+Extension Attributes are replicated to other clusters in deployment scenarios where inter-cluster replication is enabled and a replica of a persistent cache is maintained as a RadiantOne Universal Directory store in the target cluster(s).
+
+When using extension attributes for cached virtual views of LDAP directory backends, you must configure invariant attribute(s). See the following section for more details.
+
 ### Invariant Attribute
+
+To guarantee extension attributes are linked to their respective underlying entries and moved properly should modRDN/modDN events occur in the backend source, invariant attribute(s) must be defined. The invariant attribute is the unique identifier in the backend directory. Below are some invariant attributes used in common LDAP directories.
+
+-	objectGUID (Active Directory)
+
+-	entryUUID (Oracle Unified Directory, OpenDJ, unboundID) 
+
+-	nsUniqueID (Sun/ODSEE)
+
+-	ibm-entryUUID (IBM)
+
+-	UUID (RadiantOne Universal Directory)
+
+For the example shown below, the persistent cached view is from an Active Directory backend. RadiantOne manages the lifecycle of the attribute named lastLogin and this attribute is stored directly in the cache. The invariant attribute is set to objectGUID which is the unique identifier for the users in the backend Active Directory. If the entry in the backend is moved, the invariant attribute ensures RadiantOne handles the move of the associated cached extension attributes properly.
+
+![An image showing ](Media/Image2.24.jpg)
 
 ### Inter-cluster Replication
 
+This option should be enabled if you want to support replication between this persistent cache branch and a RadiantOne Directory store in a different cluster. 
+
+If inter-cluster replication is enabled, a replication journal is used to store changes that happen on the persistent cache branch. The replication journal is associated with the default LDAP data source defined as replicationjournal and root naming context named cn=replicationjournal. The RadiantOne leader node in the cluster associated with the persistent cache, publishes changes into the replication journal. The RadiantOne leader nodes in all other clusters (that are configured for inter-cluster replication) pick up changes from the replication journal to update their local replica. Persistent caches usually only publish changes into the replication journal (for other RadiantOne Universal Directory replicas in other clusters). There are some cases where persistent cache can accept changes from other clusters.
+
+>[!warning] 
+>Changes that haven’t been picked up from the replicationjournal for 3 days are automatically purged.
+
+
 **Replication Excluded Attributes**
+
+
 
 **Accept Changes from Replicas**
 
