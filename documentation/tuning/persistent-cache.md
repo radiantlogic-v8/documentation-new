@@ -372,7 +372,19 @@ If async indexing is not used, all objects containing either a forward link or b
 
 
 ### Non-indexed Attributes
+
+If possible, add attributes that must be modified frequently (e.g. pwdLastLogonTime) to the non-indexed attributes list to improve update performance. Attributes that don’t need to be used in searches are good candidates for the non-indexed attribute list. Limit the number of configured non-indexed attributes to further improve update performance.
+
+The userPassword, description and pwdLastLogonTime attributes are in the non-indexed list by default along with some other operational attributes.
+
 ### Sorted Attributes
+
+This is a comma-separated list of attributes to be used in association with Virtual List Views (VLV) or sort control configured for RadiantOne. These sorted indexes are managed internally in the persistent cache and kept optimized for sorting. They are required if you need to sort the search result or to execute a VLV query on the persistent cache branch.
+
+If you need to support VLV, the VLV/Sort control must be enabled in RadiantOne. For details on this control, please see the RadiantOne System Administration Guide.
+
+If you change the sorted attributes, you must re-build the index. You can do this from the Properties tab by clicking **Re-build Index**.
+
 ### Encrypted Attributes
 ### Extension Attributes
 ### Invariant Attribute
