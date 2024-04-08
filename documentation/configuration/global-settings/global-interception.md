@@ -13,8 +13,7 @@ To enable global interception:
 
 1.	On the right side, select the ADVANCED SETTINGS tab.
 1.	Enable the operations you want to intercept and click **SAVE**.
-
- ![Global Interception Script](Media/global-interception.jpg)
+	 ![Global Interception Script](Media/global-interception.jpg)
 
 1. Click: ![Edit Script](Media/edit-script-button.jpg)
 1 After your script has been customized, save the file and then rebuild the intercept.jar by clicking: ![Build Intercept Jar](Media/build-interception-button.jpg) 
