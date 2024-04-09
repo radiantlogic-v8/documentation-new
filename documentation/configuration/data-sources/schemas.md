@@ -157,6 +157,8 @@ The custom data source must be created before completing the steps below. See [D
    
 ## Managing Schemas
 
+This section describes displaying objects and relationships as well as declaring primary keys. 
+
 ### Displaying Objects and Relationships 
 
 When you select a schema file next to the *Schema Name* drop-down list, the objects are displayed in alphabetical order. Objects are tables and views (for databases), or object classes (for LDAP directories). As you select an object, information about that object appears on the right side.
@@ -469,7 +471,7 @@ The default schema is contained in two LDIF files. They are, ldapschema_00.ldif 
 
 You can extend the schema in three different ways. Each is summarized below and further described in its own section after. 
 -	Uploading an LDIF file that contains the new object classes and attributes in Main Control Panel > Settings > Configuration > File Manager. This file should be named ldapschema_<2 digit number greater than the existing file names>.ldif. After restarting the RadiantOne service, the new schema information is loaded into the server.
--	Extending the Schema with Objects and Attributes Contained in .orx files.
+-	Extending the Schema with Objects and Attributes Contained in schema files.
 -	Creating new object classes and attributes in the Main Control Panel.
 
 ### Extending RadiantOne Schema with Objects and Attributes from an LDIF File
@@ -482,19 +484,19 @@ The name of the LDIF file should be ldapschema_<any 2 digit number greater than 
 
 >[!warning] If an object class or attribute is defined in multiple ldapschema files numbered between ldapschema_00.ldif and ldapschema_49.ldif, the ldapschema file with the largest number will override the definition in lower numbered files. For example, if an object class named domain is defined in both ldapschema_01.ldif and ldapschema_10.ldif, the definition from ldapschema_10.ldif is used.
 
->[!warning] The ldapschema_50.ldif is a special file generated from .orx schema definitions. If an object class or attribute is defined in multiple ldapschema files numbered between ldapschema_50.ldif and ldapschema_98.ldif, the ldapschema file with the largest number will override the definition in the lower numbered files but will not override any definition in files numbered between ldapschema_00.ldif through ldapschema_49.ldif. For example, ldapschema_90.ldif would override ldapschema_50.ldif, but would not override a definition in ldapschema_48.ldif.
+>[!warning] The ldapschema_50.ldif is a special file generated from schema definitions. If an object class or attribute is defined in multiple ldapschema files numbered between ldapschema_50.ldif and ldapschema_98.ldif, the ldapschema file with the largest number will override the definition in the lower numbered files but will not override any definition in files numbered between ldapschema_00.ldif through ldapschema_49.ldif. For example, ldapschema_90.ldif would override ldapschema_50.ldif, but would not override a definition in ldapschema_48.ldif.
 
 >[!warning] The ldapschema_99.ldif overrides all previous definitions in ldapschema_00-98.ldif.
 
-## Extending the RadiantOne Schema with Objects and Attributes Contained in .orx Files
+## Extending the RadiantOne Schema with Objects and Attributes Contained in Schema Files
 
-The metadata from any backend that is virtualized by RadiantOne is maintained in a file with a .orx extension. All .orx files are shown in the Main Control Panel > Settings Tab > Configuration section, when the ORX Schema node is selected. If you extracted a new schema, and it does not appear in the list, click **Refresh List**. To add the object classes and attributes contained in a file to the RadiantOne LDAP schema, check the Publish in Server Schema option next to the proper .orx file. After all schema files have been selected, click **Generate LDAP Schema**.
+The metadata from any backend that is virtualized by RadiantOne is maintained in a schema file. All schema files are shown in the Control Panel > SETUP > Data Catalog > Data Sources > Selected data source > SCHEMA tab. If you extracted a new schema, and it does not appear in the list, click **Refresh List**. To add the object classes and attributes contained in a file to the RadiantOne LDAP schema, check the Publish in Server Schema option next to the proper schema file. After all schema files have been selected, click **Generate LDAP Schema**.
 
-![ORX Files Available for Extending RadiantOne LDAP Schema](Media/Image3.187.jpg)
+![Schema Files Available for Extending RadiantOne LDAP Schema](Media/Image3.187.jpg)
 
 The object classes and attributes contained in the select files are added to the RadiantOne LDAP schema and can be viewed from the Main Control Panel > Settings Tab > Configuration section, LDAP Schema node.
 
->[!note] If you have already added object classes and attributes from some .orx files, then they automatically have a check mark in the Publish in Server Schema column. If you want them removed from the RadiantOne LDAP schema, uncheck them before clicking Generate LDAP Schema.
+>[!note] If you have already added object classes and attributes from some schema files, then they automatically have a check mark in the Publish in Server Schema column. If you want them removed from the RadiantOne LDAP schema, uncheck them before clicking Generate LDAP Schema.
 
 ## Extending the RadiantOne Schema with New Objects and Attributes from the Main Control Panel
 
