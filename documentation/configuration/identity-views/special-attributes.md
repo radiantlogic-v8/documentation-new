@@ -39,62 +39,36 @@ The back link attribute is returned only when explicitly requested by a client u
 
 To configure rules for linked attributes, following the steps below:
 
-1.	On the Main Control Panel, click Settings > Interception > Special Attributes Handling.
+1.	On the Control Panel > Setup > Directory Namespace > Namespace Design, select the RadiantOne Directory below the Root Naming Contexts.
+1.  On the right, click the SPECIAL ATTRIBUTES tab and locate the Linked Attributes section (expand it if it is collapsed).
+    ![Special Attributes Handling](Media/linked-attributes-section.jpg)
+   
+1.  Click **+LINKED ATTRIBUTES**.
+1.	Select a back link attribute name from the drop-down list. If you don’t find the attribute that matches your needs, manually enter the attribute name. This dictates which attribute name RadiantOne returns the back link attribute value as and is generally either memberOf or isMemberOf (for group/user linked attributes).
+1.  Click **SELECT** next to the Target Base DN field. The *Select base DN* window is displayed.
+1.	Choose a base DN containing the entries (e.g. users) for which the back link attributes should be managed. In the example below, o=companydirectory is selected. 
 
-![Special Attributes Handling](Media/Image3.130.jpg)
- 
-Figure 2: Special Attributes Handling
+    ![Linked Attribute](Media/add-linked-attr-mapping.jpg)
+     
+1.	Click **SELECT**. 
 
-2.	Under the Linked Attributes section, click **Add**. The Configure Mapping window is displayed.
+1.	Under Source Base DNs, click **SELECT**. The *Select base DN* windows is displayed.
 
-3.	Select a back link attribute name from the drop-down list. If you don’t find the attribute that matches your needs, manually enter the attribute name. This dictates which attribute name RadiantOne returns the back link attribute value as and is generally either memberOf or isMemberOf (for group/user linked attributes).
+1.	Select a base DN containing the entries (e.g. groups) applicable for the objects (containing the forward link) matching what was defined in step 5 above and click **SELECT**. 
 
-4.	Click **Choose** next to the Target Base DN field. The Choose your base DN window is displayed.
+1.	In the source object class list, verify the list includes the class associated with your entries (e.g. groups). Add any missing object classes.
 
-5.	Select a base DN containing the entries (e.g. users) for which the back link attributes should be managed. In the example below, ou=allprofiles is selected.
+1.	If the Source Base DNs location is for group objects, and the groups can be nested (contain members that are groups), check the option to *Enable Nested Relationships*.
 
->[!warning] 
->If your users and groups are in RadiantOne Universal Directory stores, and you plan on enabling the Optimize Linked Attribute setting and must support nested groups, only one user location per Universal Directory store is supported. For example, having a user location configured for ou=people1,dc=myhdap and ou=people2,dc=myhdap (both in the same dc=myhdap store) is not supported. In this case, you should configure a single user location as dc=myhdap as a shared parent for both user containers. For information about the Optimize Linked Attribute function for Universal Directory stores, see the Namespace Configuration Guide. For information about the Optimize Linked Attribute function for persistent cache stores, see the Deployment and Tuning Guide.
+1.	Click **ADD**. The configuration is displayed in the Linked Attributes section.
 
-![An image showing ](Media/Image3.131.jpg)
- 
-Figure 3: Selecting a Location for Users
+1.	Click **SAVE**.
 
-6.	Click **OK**. You are returned to the Add Linked Attribute Mapping window.
+To test your results, you can use the Control Panel > Manage > Directory Browser. Click **+SEARCH**. Enter a name to save the search (e.g. LinkedAttributes). Enter or select your DN containing users. Choose *Subtree* as the scope from the drop-down list. You can enter a filter to look for a specific user (using the freeform/manual mode, or click **+NEW CONDITION**). In the Return Attributes field enter isMemberOf (assuming this is the back link attribute name configured for returning the groups). Click **SAVE** and then **TEST QUERY**. 
 
-7.	Under Source Base DNs, click **Add**. The Choose your base DN windows is displayed.
+![Linked Attribute](Media/search-linked-attribute.jpg)
 
-8.	Select a base DN containing the entries (e.g. groups) applicable for the objects (containing the forward link) matching what was defined in step 5 above and click **OK**. In the example below, ou=allprofiles is selected.
-
-9.	In the source object class list, verify the list includes the class associated with your entries (e.g. groups). Add any missing object classes.
-
-10.	If the Source Base DNs location is for group objects, and the groups can be nested (contain members that are groups), check the option to Enable Nested Relationships.
-
-11.	Click **OK**. The configuration is displayed in the Linked Attributes section.
-
-![An image showing ](Media/Image3.132.jpg)
- 
-Figure 4: Linked Attributes Configuration Rules
-
-12.	Click **Save** in the upper right corner.
-
-13.	To view the results of the example used in this section, on the Directory Browser Tab, and expand the ou=allprofiles and then example the ou=ad_sample node.
-
-14.	Select a user under ou=ad_sample (e.g. cn=Aggie_Newcombe) and select Search ![An image showing ](Media/search-button.jpg). The Search window is displayed.
-
-15.	In the Return Attributes field enter ismemberof (assuming this is the back link attribute name configured for returning the groups).
-
-16.	Select the Subtree option for Scope.
-
-17.	Click **Search**. 
-
-18.	In the Directory Tree View pane, click the user value. The results are displayed as shown below.
-
-![An image showing ](Media/Image3.133.jpg)
- 
-Figure 5: Example of isMemberOf Calculation
-
-The user Aggie Newcombe is currently a member of groups named Global, Inside Sales and Sales as referenced by the values of the isMemberOf attribute returned for her entry. If she were removed from one of these groups, or added to a new group located below ou=allprofiles, her isMemberOf attribute would reflect this automatically.
+The user in your filter should be returned. Select this entry and the attributes should display. The back link attribute (e.g. isMemberOf) should indicate the groups the use is a member of.
  
 ### Referential Integrity
 
