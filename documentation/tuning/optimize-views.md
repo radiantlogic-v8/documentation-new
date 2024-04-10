@@ -259,3 +259,4 @@ The default is 0 (no timeout). This is the maximum number of seconds RadiantOne 
 Default is 5. This is the maximum number of minutes to keep an idle connection in the pool. Setting this value to “0” means the opened connection stays in the pool forever.
 
 ## Views from Custom Backends
+The best way to optimize queries against custom backends is to define a persistent cache for the identity view. This stores the entries locally in the RadiantOne cache and avoids the potential performance-costly calls to web services APIs. Most custom backends only support a periodic persistent cache refresh type. 
