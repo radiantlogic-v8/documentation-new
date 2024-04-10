@@ -137,16 +137,6 @@ This setting is per database connection.
 LDAP backends are any source accessed via LDAP. This includes Sun Java Directory, IBM Directory Server, and Active Directory among others.
 
 
-### Process Joins and Computed Attributes only when necessary
-
-The default behavior of RadiantOne is to process associated joins and build computed attributes whenever a virtual object is reached from a query regardless of whether the attributes requested come from a secondary source or computation. 
-
-If you enable this option, RadiantOne does not perform joins or computations if a client requests or searches for attributes from a primary object only. If a client requests or searches for attributes from secondary objects or computed attributes, then RadiantOne processes the join(s) and computations accordingly. For more details on this behavior, please see the Join Behavior Diagram in the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction).
-
-Use caution when enabling this option if you have interception scripts defined on these objects, or access controls based on filters are being used (both of which may require other attributes returned from secondary sources or computations regardless of whether the client requested or searched for them).
-
->[!warning] Do not enable this option if a memory entry cache is used (as the whole virtual entry is needed for the cache).
-
 ### Disable Referral Chasing
 
 By default, RadiantOne does not attempt to chase referrals that have been configured in the underlying LDAP server.
