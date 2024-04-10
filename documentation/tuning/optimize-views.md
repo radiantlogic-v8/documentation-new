@@ -11,7 +11,48 @@ Depending on the data source type that an identity view is built from, different
 
 For certain configurations/use cases, there are two parameters that may be enabled to improve processing/performance. They are located on the Control Panel > Setup > Directory Namespace > Namespace Design. Navigate below the Root Naming Context section and select the node representing your database backend. On the right side, select the ADVANCED SETTINGS tab. Each optimization is described below.
 
-**Removing UPPER**
+### Case Sensitivity for Searches
+
+There are three options available for handling case sensitive databases. These options are related to how RadiantOne FID generates the query to send to the database. These options are available on the Main Control Panel -> Directory Namespace Tab. Select the container/content node in a virtual view below Root Naming Contexts and on the right side, select the Advanced Settings tab. 
+
+1.	As Is
+
+	If your database is not case sensitive, then you should choose the As Is option. With this option, RadiantOne FID forwards the search filter to the backend in the exact case it was received in the request from the client. This is the default option.
+
+	If your database is case sensitive and you choose this option, the case received in the filter from the client search request must match the case used in the database or else the entry will not be found.
+	For example, if a database attribute named FIRSTNAME had a value of Nancy, and RadiantOne FID received a search request with a filter of (firstname=nancy), the entry would not be returned. The client must use a filter of (firstname=Nancy) in order for the entry to be properly returned from the database.
+
+2.	Ignore Case
+
+	If your database is case sensitive and you are not sure how the values are stored (mixed case, all upper, all lower…etc.), then you should choose the Ignore Case option. With this option, RadiantOne FID generates the SQL query so that both the filter that was received in the client request and the values from the backend are converted into uppercase before the search filter can be validated. For example, if a client sent a request with a filter of (firstname=Nancy), RadiantOne FID would generate the following where clause based on the filter received in the client request.
+
+	WHERE (UPPER(APP.EMPLOYEES.FIRSTNAME)=UPPER('Nancy'))
+	The case used in the filter from the client is irrelevant and everything is converted into uppercase.
+	This option offers the least performance, so it should only be used when absolutely required. If the database is case sensitive and the values are stored in uppercase, you should use the Translate Values to Uppercase option (see #3 below) as it is more efficient.
+
+3.	Translate Values to Uppercase
+
+	If your database is case sensitive and you know the values are stored in uppercase, you should choose the Translate Values to Uppercase option. With this option, RadiantOne FID translates the search filter value into uppercase before sending it to the backend database. This option is more efficient than the Ignore Case option mentioned above.
+
+### Modify the Exposed Attributes
+
+To improve the performance of the view, you should only expose the required attributes. The default behavior of RadiantOne FID is to request all attributes from the underlying source (no matter what specific attributes a client may have requested). Having unnecessary attributes in the output can slow down the performance of the query (because it makes the query string much longer). On the Main Control Panel -> Directory Namespace tab, select the container/content node in the virtual view below Root Naming Contexts and on the right side, select the Attributes tab. Only list the attributes on the Attributes tab that you want RadiantOne FID to request from the backend (delete all others).
+
+![An image showing ](Media/Image3.1.jpg)
+ 
+Figure 3.1: Modifying the attributes in the View Definition
+
+### Index Attributes Used in Joins
+
+If joins are configured, verify that all attributes conditioning the join are indexed in the underlying sources. In the example shown below, the join is based on employeeID in the source matches employeeNumber in the target. This means employeeID should be indexed in the source and employeeNumber should be indexed in the target.
+ 
+![An image showing ](Media/Image3.2.jpg)
+
+Figure 3.2: Join Profile
+
+Depending on your specific use case and virtual view, two other optimizations are possible. These are configured on the Main Control Panel > Directory Namespace Tab. Select the container/content node in the virtual view below Root Naming Contexts and on the right side, select the Advanced Settings tab. Both options are described below.
+
+### Removing UPPER
 
 Since some databases are case sensitive, RadiantOne transforms primary key attribute values to upper case when generating the where clause. This is only applicable when the database key is a character data type. “UPPER” is generated automatically for the following databases: Oracle, SQL MX, Sybase, Interbase, and DB2. If you do not want UPPER to be used (because your database is NOT case sensitive), you can navigate to ADVANCED SETTINGS tab > Configuration Paramters and click **EDIT**. Select the BASE PARMETERS tab and edit the Base Search and Update parameters accordingly.
 
@@ -40,7 +81,7 @@ If you are not able to remove the UPPER then you should consider using cache at 
 
 The Update parameter allows you to remove UPPER (that is generated by default) for updates to the database. The UPPER is generated when the primary key of the database object is a character data type. The UPPER is used to generate the where clause based on the primary key to locate the entry to update. If your database is not case sensitive, then you can remove the UPPER that is generated in the update parameter and the performance of the query is improved.
 
-**Request Attributes Only When Necessary**
+### Request Attributes Only When Necessary
 
 Requesting BLOB attributes can significantly decrease performance. When this option is enabled, RadiantOne requests binary/BLOB attributes from the backend only if they are specifically requested by the client. 
 
@@ -49,7 +90,7 @@ Use caution when enabling this parameter if an interception script is defined (w
 >[!warning] 
 >Do not enable this option if a memory entry cache is used (as the whole virtual entry is needed, including the BLOBs).
 
-**Process Joins and Computed Attributes Only When Necessary**
+### Process Joins and Computed Attributes Only When Necessary
 
 The default behavior of RadiantOne is to process associated joins and build computed attributes whenever an object in an identity view is reached from a query regardless of whether the attributes requested come from a secondary source or computation.
 
@@ -58,7 +99,36 @@ If you enable this option, RadiantOne does not perform joins or computations if 
 Use caution when enabling this option if you have interception scripts defined on these objects, or access controls based on filters are being used (both of which may require other attributes returned from secondary sources or computations regardless of whether or not the client requested or searched for them). 
 
 >[!warning] 
->Do not enable this option if a memory entry cache is used (as the whole virtual entry is needed for the cache). 
+>Do not enable this option if a memory entry cache is used (as the whole virtual entry is needed for the cache).
+
+### Connection Pooling
+
+Connection pooling improves performance because a connection to the underlying source does not need to be created every time data needs to be retrieved.
+
+Connection pooling for database sources is automatically enabled by default and the settings can be modified in the Main Control Panel > Settings tab > Server Backend section, under the Connection Pooling sub section (requires [Expert Mode](00-preface#expert-mode)).
+
+![An image showing ](Media/Image3.3.jpg)
+ 
+Figure 3.3: Connection Pooling Settings
+
+The possible settings are described in more details below.
+
+*Pool Size*
+
+The maximum number of connections that are held in the pool for each JDBC data source. The default is 20.
+
+*Idle Timeout*
+
+This is the maximum number of minutes to keep an idle connection in the pool. The default is 15. Setting this value to “0” means the opened connection stays in the pool forever.
+
+*Prepared Statement Cache*
+
+RadiantOne uses parameterized SQL statements and maintains a cache of the most used SQL prepared statements. The default is 50. This improves performance by reducing the number of times the database SQL engine parses and prepares SQL. 
+
+This setting is per database connection.
+
+>[!warning] 
+>Use caution when changing this default value as not all databases have the same limits on the number of 'active' prepared statements allowed.
 
 ## Views from LDAP Backends
 
