@@ -45,4 +45,3 @@ To export a certificate:
 1.	To export a certificate, select the ![View](Media/view-client-cert.jpg) button inline with the certificate you want to view.
 2.	Click the **EXPORT** button. The certificate is automatically downloaded to the client machine.
 
-![Export Certificate](Media/view-client-cert.jpg)
