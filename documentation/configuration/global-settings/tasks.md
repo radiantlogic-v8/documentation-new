@@ -21,7 +21,7 @@ The following operations are considered tasks and generate an event in the Task 
 
 Task Scheduler parameters can be modified in the *Configuration Settings* in the Task Scheduler section. 
 
-By default, each task executes in its own dedicated JVM. If the option “Dedicated JVM” is not checked in the specific task configuration, then the task executes inside the JVM of the scheduler. Users can customize the default JVM parameters to allow more memory, or change the performance settings. However, tuning the JVM of the task scheduler is less important than tuning the dedicated JVM for the individual task. For a full list of possible behavioral and performance options, please see the link below.
+By default, each task executes in its own dedicated JVM. If the option “Dedicated JVM” is not toggled on in the specific task configuration, then the task executes inside the JVM of the scheduler. Users can customize the default JVM parameters to allow more memory, or change the performance settings. However, tuning the JVM of the task scheduler is less important than tuning the dedicated JVM for the individual task. For a full list of possible behavioral and performance options, please see the link below.
 
 http://www.oracle.com/technetwork/java/javase/tech/vmoptions-jsp-140102.html
 
