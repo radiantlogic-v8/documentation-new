@@ -141,17 +141,17 @@ If you need to change the encryption security key, follow the steps below.
 8.	Click Edit next to Security Key. This option is only available if you removed encrypted attributes and rebuilt the index for all applicable stores.
    ![Edit Encryption Key](Media/edit-encryption-key.jpg)
 
-10.	Go to the Control Panel > Setup > Directory Namespace > Namespace Design.
+9.	Go to the Control Panel > Setup > Directory Namespace > Namespace Design.
 
-11.	Select the naming context representing the RadiantOne Directory store.
+10.	Select the naming context representing the RadiantOne Directory store.
 
-12.	On the right, add required attributes to the encrypted attributes list (remember to press ENTER on the keyboard after each).
+11.	On the right, add required attributes to the encrypted attributes list (remember to press ENTER on the keyboard after each).
 
-13.	Click **SAVE**.
+12.	Click **SAVE**.
 
-14.	Click **RE-BUILD INDEX**.
+13.	Click **RE-BUILD INDEX**.
 
-15.	Repeat steps 9-14 for all stores that require encrypted attributes.
+14.	Repeat steps 9-13 for all stores that require encrypted attributes.
 
 ## LDIF File Encryption
 
