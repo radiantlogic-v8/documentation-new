@@ -10,6 +10,8 @@ Access tokens have a validity period that is specified when they are generated. 
 
 Access tokens are managed from the Control Panel > Admin > ACCESS TOKENS tab.
 
+To delete an access token, click the trashcan icon inline with the token to be removed.
+
 ![Access Tokens](Media/access-tokens.jpg)
 
 
