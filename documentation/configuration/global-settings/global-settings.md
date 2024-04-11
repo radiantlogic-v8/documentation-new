@@ -27,7 +27,7 @@ For details, see: [Client Protocols](client-protocols.md)
 
 The certificates in the Client Certificate trust store are used by RadiantOne to connect via SSL to underlying data sources. Therefore, the appropriate client (public key) certificate (associated with the server certificate of the backend) needs imported into the Client Certificate trust store (unless they are signed by a trusted/known Certificate Authority).
 
-For details, see: [Client Certificates](client-certificates.md)
+For details, see: [Client Certificates](../security/client-cert-truststore)
 
 ## Tasks
 
