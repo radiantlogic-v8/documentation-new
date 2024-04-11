@@ -40,15 +40,15 @@ Task Details displays two tabs showing the PROPERTIES and LOGS. The task log can
 
 ### Editing Tasks
 
-To edit a task, click the pencil icon. The Task Configuration menu displays all task components. The name and status are shown, but cannot be changed. To make the task non-recurring (the task no longer repeats) uncheck the “Recurrent” box, the task runs one final time and then the status automatically changes to “Finished.” The execution interval (the frequency at which the task is executed) can be modified by changing the hours, minutes, and second boxes.
+To edit a task, click the pencil icon. The Task Configuration menu displays all task components. The name and status are shown, but cannot be changed. To make the task non-recurring (the task no longer repeats) toggle off the *SCHEDULE* option, the task runs one final time and then the status automatically changes to “Finished”. The execution interval (the frequency at which the task is executed) can be modified by changing the hours, minutes, and second boxes.
 
 By default, all tasks run in their own dedicated JVM and the memory allocated for the task automatically expands up to ¼ of the total machine memory. For example, if the machine where RadiantOne is installed has 16 GB of RAM, the task memory expands up to 4 GB to process a task. If you prefer, you can define a max Java heap size in the JVM parameters instead of leveraging this default expansion. Other custom settings can be entered in the JVM Parameters as well. For a full list of possible behavioral and performance options, please see the link below.
 
 http://www.oracle.com/technetwork/java/javase/tech/vmoptions-jsp-140102.html
 
-If the “Dedicated JVM” option is unchecked, the task runs inside the JVM of the Task Scheduler.
+If “Dedicated JVM” is toggled off, the task runs inside the JVM of the Task Scheduler. If it is toggled on, the task runs inside its own JVM and you can specify JVM parameters.
 
-Users must click “Update Task” before closing out of the task configuration screen to save the changes.
+Click **SAVE** before closing out of the task configuration screen to save the changes.
 
 ![Task Configuration](../Media/tasks-configuration.jpg)
 
