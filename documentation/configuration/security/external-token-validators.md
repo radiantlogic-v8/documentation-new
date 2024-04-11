@@ -14,7 +14,7 @@ A high-level diagram of the different components is shown below. Postman is used
 
 External token validators allow applications to use an access token to call an API on behalf of itself. The API then responds with the requested data. This section assumes that your OIDC provider is already set up and that you know your client ID and secret to test getting a token.
 
-### Getting an Access Token
+### Getting an Access Token from an External Token Validator
 
 This section describes using the Postman REST client to obtain an access token. 
 
