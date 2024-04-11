@@ -93,7 +93,7 @@ To add an external token validator, open Classic Control Panel from the logged i
     Openid	| sub, auth_time, acr
 
   
-1.  Other values can be obtained from the decoded access token. See the [Getting An Access Token](#getting-an-access-token) section for more information.  
+1.  Other values can be obtained from the decoded access token. See the [Getting An Access Token](#getting-an-access-token-from-an-External-Token-Validator) section for more information.  
 
     ![Configuring an ADAP External Token Validator](Media/configuringtokenvalidator.jpg)
 
