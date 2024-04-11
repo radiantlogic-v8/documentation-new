@@ -4,7 +4,7 @@ description: Learn basic tuning aspects for Identity Data Management
 ---
 
 - [Limits](#)
-  - [Basic](tuning-limits/basic-limits)
+  - [Global](tuning-limits/global-limits)
   - [Custom](tuning-limits/custom-limits)
   - [Access Regulation](tuning-limits/access-regulation)  
 - [Identity Views](#)
