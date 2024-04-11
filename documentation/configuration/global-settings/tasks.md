@@ -50,7 +50,7 @@ If “Dedicated JVM” is toggled off, the task runs inside the JVM of the Task 
 
 Click **SAVE** before closing out of the task configuration screen to save the changes.
 
-![Task Configuration](../global-settings/Media/task-config.jpg)
+![Task Configuration](Media/task-config.jpg)
 
 ### Running Tasks
 
