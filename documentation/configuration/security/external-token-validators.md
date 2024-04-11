@@ -145,7 +145,7 @@ By default the token lifetime is set to 10 hours. To configure the token timeout
 
 3.	Click Save.
 
-4.	Restart the RadiantOne service from the Environment Operations Center. If deployed in a cluster, restart the service on all nodes.
+4.	Restart the RadiantOne service from the Environment Operations Center. In Environment Operations Center, navigate to Environments > <Environment_Name> > Overview tab and restart the Identity Data Management service from here. This performs a rolling restart and all nodes are restarted.
 
   ![Editing the Token Timeout value](Media/token-timeout.jpg)
  
