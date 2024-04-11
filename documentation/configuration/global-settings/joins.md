@@ -20,7 +20,7 @@ This guide describes the following.
 To configure a global join:
 
 
-1. To switch to Classic Control Panel, use the menu options for the logged in user in the upper right.
+1. Global joins are configured from Classic Control Panel. To switch to Classic Control Panel, use the menu options for the logged in user in the upper right.
 
    ![Classic Control Panel](Media/classic-cp.jpg)
 
