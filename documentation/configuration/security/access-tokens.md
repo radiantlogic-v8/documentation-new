@@ -8,6 +8,11 @@ Access tokens are used to authorize requests to a RadiantOne API. A token is iss
 
 Access tokens have a validity period that is specified when they are generated. The expiration can be indicated with a calendar date, or based on a specific number of days from the time it is generated. Expired tokens can't be used again.
 
+Access tokens are managed from the Control Panel > Admin > ACCESS TOKENS tab.
+
+![Access Tokens](Media/access-tokens.jpg)
+
+
 ## Configuration API
 To configure an access token for calling the RadiantOne configuration API:
 1. Navigate to Control Panel > Admin > ACCESS TOKENS tab.
