@@ -100,7 +100,7 @@ To add an external token validator, open Classic Control Panel from the logged i
 
 
 1.  Click Edit next to Claims to FID User Mapping. The OIDC to FID User Mappings page displays.
-1.  Click Add. Use either a Simple DN Expression or a Search Expression to map a uniquely identifying attribute to a corresponding claim value in the token (refer to the [Getting An Access Token](#getting-an-access-token) section for more information). In the following image, a Search Expression is used to map the attribute **mail** to the claim value **email**.
+1.  Click Add. Use either a Simple DN Expression or a Search Expression to map a uniquely identifying attribute to a corresponding claim value in the token (refer to the [Getting An Access Token](#getting-an-access-token-from-an-External-Token-Validator) section for more information). In the following image, a Search Expression is used to map the attribute **mail** to the claim value **email**.
 
     >[!note] In some cases, creating a new attribute may be required.
 
@@ -114,7 +114,7 @@ To add an external token validator, open Classic Control Panel from the logged i
 
 In this example, Postman is the REST client that will issue calls to ADAP. Obtain an OpenID Connect Token for Postman from your OIDC provider. Use the token value in a header configured in a Postman client as follows.
 
-1. Request a new access token (see [Getting An Access Token](#getting-an-access-token)). 
+1. Request a new access token (see [Getting An Access Token](#getting-an-access-token-from-an-External-Token-Validator)). 
 1. Click *Use Token*. This inserts an Authorization header that inserts your bearer token. 
 
     ![Requesting a new access token](Media/requestnewaccesstoken.jpg)
