@@ -12,7 +12,7 @@ A global join is a universal join condition that applies to all Root Naming Cont
 
 ![Classic Control Panel](Media/classic-cp.jpg)
 
-For details, see: [Global Joins](joins#configuring-a-global-join)
+For details, see: [Global Joins](../identity-view/joins#configuring-a-global-join)
 
 ## Global Interception Script
 
