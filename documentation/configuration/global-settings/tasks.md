@@ -5,7 +5,7 @@ description: Learn how to manage tasks.
 
 ## Overview
 
-When you perform various actions in the tools or wizards, a notification appears alerting you that the task has been defined and added to the scheduler. These tasks can be viewed and updated in the Control Panel > Manage > Tasks. You can define a task as re-occurring in addition to setting the execution interval. You can also configure the JVM parameters for tasks that run inside their own dedicated JVM.
+When you perform various actions in the tools or wizards, a notification appears alerting you that the task has been defined and added to the scheduler. These tasks can be viewed and updated in the Control Panel > Manage > Tasks. You can define a task as re-occurring (scheduled) in addition to setting the execution interval. You can also configure the JVM parameters for tasks that run inside their own dedicated JVM.
 
 ![Managing Tasks](../Media/tasks.jpg)
  
