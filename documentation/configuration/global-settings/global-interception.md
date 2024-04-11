@@ -5,7 +5,7 @@ description: Learn how to configure global interception scripts.
 
 ## Overview
 
-For information on Interception scripts, please see [Interception Scripts](../identity-views/view-interception). The following steps describe how to enable interception scripts at a global level (which are applicable to the entire RadiantOne namespace – all naming contexts).
+For information on Interception scripts, please see [Interception Scripts](../identity-views/view-interception). The following steps describe how to enable an interception script at a global level (which are applicable to the entire RadiantOne namespace – all naming contexts).
 
 To enable global interception:
 
