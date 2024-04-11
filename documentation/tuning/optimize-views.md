@@ -40,7 +40,7 @@ There are three options available for handling case sensitive databases. These o
 
 To improve the performance of the view, you should only expose the required attributes. The default behavior of RadiantOne FID is to request all attributes from the underlying source (no matter what specific attributes a client may have requested). Having unnecessary attributes in the output can slow down the performance of the query (because it makes the query string much longer). On the Main Control Panel -> Directory Namespace tab, select the container/content node in the virtual view below Root Naming Contexts and on the right side, select the Attributes tab. Only list the attributes on the Attributes tab that you want RadiantOne FID to request from the backend (delete all others).
 
-![An image showing ](Media/Image3.1.jpg)
+![Modifying the attributes in the View Definition](Media/Image3.1.jpg)
  
 Figure 3.1: Modifying the attributes in the View Definition
 
@@ -48,9 +48,7 @@ Figure 3.1: Modifying the attributes in the View Definition
 
 If joins are configured, verify that all attributes conditioning the join are indexed in the underlying sources. In the example shown below, the join is based on employeeID in the source matches employeeNumber in the target. This means employeeID should be indexed in the source and employeeNumber should be indexed in the target.
  
-![An image showing ](Media/Image3.2.jpg)
-
-Figure 3.2: Join Profile
+![Join Profile](Media/Image3.2.jpg)
 
 Depending on your specific use case and virtual view, two other optimizations are possible. These are configured on the Main Control Panel > Directory Namespace Tab. Select the container/content node in the virtual view below Root Naming Contexts and on the right side, select the Advanced Settings tab. Both options are described below.
 
@@ -174,10 +172,8 @@ If joins are configured, verify that all attributes conditioning the join are in
 
 Depending on your specific use case and virtual view, two other optimizations are possible. These are configured on the Main Control Panel > Directory Namespace Tab. Select the virtual view below the Root Naming Contexts node. On the right side, select the Advanced Proxy tab. Both options are described below.
 
-![An image showing ](Media/Image3.5.jpg)
+![Optimizations for LDAP Backend](Media/Image3.5.jpg)
  
-Figure 3.5: Optimizations for LDAP Backends
-
 ### Limit Attributes Requested from the LDAP Backend
 
 Whenever RadiantOne FID queries a backend LDAP, the default behavior is to ask for all attributes (although ONLY the attributes requested in the query are returned to the client). This default behavior is for the following reasons:
