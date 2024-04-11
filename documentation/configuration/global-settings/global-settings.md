@@ -22,7 +22,9 @@ For details, see: [Global Interception Script](global-interception.md)
 
 ## Client Protocols
 
+RadiantOne Identity Data Management supports client operations via LDAP, SCIMv2 and REST. 
 
+For details, see: [Client Protocols](client-protocols.md)
 
 ## Client Certificates
 
