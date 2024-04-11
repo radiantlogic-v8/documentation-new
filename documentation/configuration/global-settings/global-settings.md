@@ -22,7 +22,13 @@ For details, see: [Global Interception Script](global-interception.md)
 
 ## Client Protocols
 
+
+
 ## Client Certificates
+
+The certificates in the Client Certificate trust store are used by RadiantOne to connect via SSL to underlying data sources. Therefore, the appropriate client (public key) certificate (associated with the server certificate of the backend) needs imported into the Client Certificate trust store (unless they are signed by a trusted/known Certificate Authority).
+
+For details, see: [Client Certificates](client-certificates.md)
 
 ## Tasks
 
