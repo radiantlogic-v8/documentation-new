@@ -9,6 +9,8 @@ A global join is a universal join condition that applies to all Root Naming Cont
 
 ![Classic Control Panel](Media/classic-cp.jpg)
 
+For details, see: [Global Joins](joins/#global-joins)
+
 A global interception script is a "hook" that applies to all Root Naming Contexts configured in the RadiantOne service. If you have the need to extend all identity views with the same interception script capabilities, a global interception is more efficient than configuring an interception script at the identity view levels. 
 
 
