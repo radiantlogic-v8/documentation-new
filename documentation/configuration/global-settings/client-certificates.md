@@ -33,7 +33,7 @@ To add a certificate:
 To delete a certificate:
 
 1.	Click the trashcan inline with the certificate to be removed.
-  ![Delete Cert](Media/delete-client-cert.jpg).
+  ![Delete Cert](Media/delete-client-cert.jpg)
   
 2.	Click **DELETE**.
 
