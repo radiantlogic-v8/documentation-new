@@ -145,9 +145,7 @@ These release notes contain the following sections:
  
 ## Known Issues
 
-Links to SDC client documentation in the Environment Operations Center interface do not work. Reference the following links for the documentation:
-
-[SDC Client Docs](../environment-operations-center-guide/secure-data-connectors/deploy-sdc-client)
+Links to SDC client documentation in the Environment Operations Center interface do not work. Reference the following links for the documentation: [SDC Client Docs](../environment-operations-center-guide/secure-data-connectors/deploy-sdc-client)
 
 For known issues reported after the release, please see the Radiant Logic Knowledge Base: 
 
