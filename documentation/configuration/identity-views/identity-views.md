@@ -271,7 +271,7 @@ This auto re-mapping capability is useful for two main purposes:
 <br>Enter the whole attribute value in the search filter (i.e. uniqueMember=uid=Cbrady,ou=people,ou=SunOne,ou=RemoteDirectories,o=vds) 
 <br>Only use the wild card character (*) in the filter up to the point of the new suffix (i.e. uniqueMember=uid=Cbrady,ou=*) or (uniqueMember=uid=*)
 
-If your virtual view does not keep the existing backend hierarchy (for example if you don’t map direct to a backend LDAP), then you can use the Groups Migration Wizard to auto-translate the member DNs to the new virtual namespace. For details on the Groups Migration Wizard, please see the [RadiantOne Identity Service Wizards Guide](/identity-service-wizards-guide/01-overview).
+If your virtual view does not keep the existing backend hierarchy (for example if you don’t map direct to a backend LDAP), then you can use a computed attribute function to auto-translate the member DNs to the new virtual namespace. The functions available for computed attributes for this purpose are: DNremapLookup, DNremapLookupForeign, and DNremapLookupUnnest.
 
 ### Always Requested Attributes
 
