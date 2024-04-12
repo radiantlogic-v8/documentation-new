@@ -701,9 +701,7 @@ Lastly a persistent cache on the virtual view can be configured and initialized.
 ## Model-driven Identity Views
 Creating model-driven identity views requires the use of the metadata extracted from backend sources. The views can be flat or hierarchical and comprised of an aggregation of many views. This provides greater flexibility for view design than creating simple LDAP proxy views.
 
-In order to create model-driven identity views, the data sources configured in RadiantOne [Data Catalog](/data-sources/schemas) must have their schemas extracted. The schemas contain the metadata that is used for creating model-driven identity views.
-
-### Concepts 
+In order to create model-driven identity views, the data sources configured in RadiantOne [Data Catalog](/data-sources/schemas) must have their schemas extracted. The schemas contain the metadata that is used for creating model-driven identity views. Container and content nodes types in identity views are created from objects in the metadata.
 
 When designing your identity views and namespace, you can use different kinds of node types to build your model. 
 -	Container
@@ -713,7 +711,7 @@ When designing your identity views and namespace, you can use different kinds of
 
 Each of these is described in more details below. 
 
-**Container**
+### Container
 
 A container object is a node that can have descendants. A container can include other containers or content objects.
 
@@ -721,7 +719,7 @@ You can think of a container as a directory similar to a “directory inside a f
 
 For more information, see [Working with Container Objects](#working-with-container-objects). 
 
-**Label** 
+### Label
 
 A label node is a container object whose default attribute is a text label. The name of the label is defined during the creation and can be updated on the Properties tab. Other attributes can be defined for labels on the Primary Object tab. 
 
@@ -733,13 +731,10 @@ For instance, if you have the following configuration in your view definition, a
 
 ![Example View Without a Label](Media/Image4.4.jpg)
 
-Figure 4: Example View Without a Label
-
 Now, if the model of the tree were changed and a label were introduced (see the new design below), you still get Product Y below Customer X. The key of Customer X is passed through the label to condition products (to only show products purchased by Customer X). 
 
 ![Example View Using a Label to Organize the Tree](Media/Image4.5.jpg)
 
-Figure 5: Example View Using a Label to Organize the Tree 
 
 When you want to categorize a collection of data from objects or resulting from combined objects (through joins), you can use labels to categorize these sub-levels of information. For each label, you are saying that this sub-level of information will reside under this category.
 
@@ -747,7 +742,7 @@ You can create an unlimited number of labels, depending on how many categories o
 
 For more information, see [Working with Labels](#working-with-labels). 
 
-**Content**
+### Content
 
 A Content Object is a node that has no descendants. It is a “leaf” or “terminal” node in the view.
 
@@ -755,7 +750,7 @@ A content node represents an object in a virtual view. When you create a content
 
 For more information, see [Working with Content Objects](#working-with-content-objects). 
 
-**Link**
+### Link
 
 Links are a special kind of node that allows you to point to a specific sub tree defined in an existing virtual view (.dvx file) or a new sub tree that you design on-the-fly based on objects from other schemas. Using this mechanism in conjunction with a label (although a label is not necessary) you can aggregate information from different schemas (simple objects or whole sub trees). Links allow you to transparently navigate from schema to schema in an ad hoc way. 
 
@@ -769,19 +764,16 @@ Let’s take a look at an example. Assume there are three data sources: a databa
 
 ![Example Data Sources](Media/Image4.6.jpg)
 
-Figure 6: Example Data Sources
 
 Next, a virtual view from each is configured. This is represented by the three views shown below. 
 
 ![Virtual Views from Each Source](Media/Image4.7.jpg)
 
-Figure 7: Virtual Views from Each Source
 
 Finally, standard links are used to aggregate the views. This is represented in the virtual view model shown in the screen shot below. The runtime preview shows what the populated view looks like. Notice that the “dv” level comprises the runtime view. 
 
 ![An image showing ](Media/Image4.8.jpg)
 
-Figure 8: Virtual View Model and Runtime Tree using Standard Links
 
 *Merge Link* 
 
@@ -789,25 +781,19 @@ A merge link offers more flexibility than a standard link because the “dv” l
 
 A link parameter is based on a unique key of the parent entry. The value of this key must match an attribute in the view to be mounted. Two examples are used to describe the benefits of using a merge link with a parameter. One example is based on the attribute in the parent object being single-valued and the other example is based on a multi-valued attribute.
 
-#### Linking on a Single-Valued Attribute
-
-The following diagram depicts two databases. One database maintains project information while the other database stores employee information including department and location. 
+The following diagram depicts two databases and will be used to describe how to link identity views based on a single-valued attribute. One database maintains project information while the other database stores employee information including department and location. 
 
 ![Two Sample Databases](Media/Image4.9.jpg)
-
-Figure 9: Two Sample Databases 
-
-Let’s assume the desired virtual hierarchy should represent projects, followed by the department associated with the project, followed by the location of the employee, and finally the employees working on the project. Since the information is maintained in two separate databases, a virtual view can be built from each. This is depicted in the diagram below. One view is built for projects while the other is a view of employees based on departments and location.
+ 
+Let’s assume the desired identity view should represent projects, followed by the department associated with the project, followed by the location of the employee, and finally the employees working on the project. Since the information is maintained in two separate databases, a virtual view can be built from each. This is depicted in the diagram below. One view is built for projects while the other is a view of employees based on departments and location.
 
 ![Two Example Virtual Views](Media/Image4.10.jpg)
 
-Figure 10: Two Example Virtual Views 
 
 A merge link (noted with the blue arrow) is used to aggregate the virtual views. This is depicted in the diagram below. 
 
 ![Example Linking Two Existing Views](Media/Image4.11.jpg)
 
-Figure 11: Example Linking Two Existing Views
 
 In the linked view shown above, the sub-branch (view named EmpByDeptView) can be conditioned by setting a linking attribute. In this example, all projects are associated with a department (there is a one-to-one relationship based on the project ID), so the project ID can be established as the linking attribute. By adding a condition to the link based on the project ID attribute, the subtree shown at runtime is dependent upon the project (the parent node). The link parameter syntax is: 
 `<childobject.attribute>=@[<parentobject_attribute>:<datatype>]`
@@ -815,11 +801,10 @@ In the linked view shown above, the sub-branch (view named EmpByDeptView) can be
 An example value is: 
 APP.EMP.PROJECTID=(@[projectid:INTEGER])
 
-Without this link condition, all departments would be shown below each project and the hierarchy would not make sense. The difference between using a link parameter and not using one are shown in the following two figures. 
+Without this link condition, all departments would be shown below each project and the hierarchy would not make sense. The difference between using a link parameter and not using one are shown in the following two figures. The first uses a merge link with no parameter. The second one uses a merge link with a parameter to condition the subtree.
 
 ![Example – Using Merge Links with No Parameter](Media/Image4.12.jpg)
  
-Figure 12: Example – Using Merge Links with No Parameter
 
 As the figure above shows, the subtree is not conditioned by the parent object which is why all departments are shown below each project. This does not accurately depict the context needed. The ideal virtual view would show each project and then below each project show the department working on that project followed by location and employees accordingly. 
 
@@ -827,11 +812,8 @@ Since the department object has a relationship with projects (the project ID is 
  
 ![Example – Using Merge Links with a Parameter to Condition the Subtree](Media/Image4.13.jpg)
 
-Figure 13: Example – Using Merge Links with a Parameter to Condition the Subtree
 
-Based on the examples shown above, a link parameter is required for the virtual view to represent the proper context of showing projects per department.
-
-#### Linking on a Multi-Valued Attribute
+Based on the examples shown above, a link parameter is required for the identity view to represent the proper context of showing projects per department.
 
 In the previous example, the link condition was based on a single-valued attribute in the parent entry. This is the primary use case for a link parameter. However, if the attribute in the parent entry contains multiple values you can use it to configure the link parameter.
 
@@ -842,20 +824,13 @@ The example in this section describes using a multi-valued attribute in the pare
 
 ![Example – Source Entries](Media/Image4.14.jpg)
 
-Figure 14: Example – Source Entries
+Let’s assume the desired virtual view should represent identities followed by a list of entitlements associated with the identities. Since the information is maintained in two separate objects, an identity view can be built from each. This is depicted in the diagram below. One view is built for identities while the other is a view of entitlements. 
 
-Let’s assume the desired virtual view should represent identities followed by a list of entitlements associated with the identities. Since the information is maintained in two separate objects, a virtual view can be built from each. This is depicted in the diagram below. One view is built for identities while the other is a view of entitlements. 
+![Two Example Virtual Views](Media/Image4.15.jpg)
 
-![Two Example Virtual Views 
-](Media/Image4.15.jpg)
-
-Figure 15: Two Example Virtual Views 
-
-A merge link (noted with the blue arrow) is used to aggregate the virtual views. This is depicted in the diagram below. 
+A merge link (noted with the blue arrow) is used to aggregate the identity views. This is depicted in the diagram below. 
 
 ![Example Linking Two Existing Views](Media/Image4.16.jpg)
-
-Figure 16: Example Linking Two Existing Views
 
 In the linked view shown above, the sub-branch (view named EntitlementView) can be conditioned by setting a linking attribute. In this example, all identities are associated with entitlements, so the entitlements attribute in the identity can be established as the linking attribute to the idlink attribute of the entitlement view. By adding a condition to the link based on the entitlements attribute, the subtree shown at runtime is dependent upon the entitlements associated with parent identity. However, since the value of the entitlements attribute in the parent identity is multi-valued, the link condition must be manually altered to include a special syntax. If the link parameter is associated with a child node from an LDAP backend, the syntax to handle a multi-valued parent attribute is: 
 
@@ -876,33 +851,28 @@ APP.IDENTITY.IDLINK IN (@[entitlements:VARCHAR(255)]
 >[!warning] 
 >For child nodes from database backends, make sure in the link parameter value there is a `<space>` between the “IN” and the following open parenthesis. Also, performance can be negatively impacted because the “IN” operator does not benefit from prepared statements.
  
-An example depicting the model of the virtual view and the runtime view leveraging the link parameter between the two virtual views described in this section is shown below. 
+An example depicting the model of the identity view and the runtime view leveraging the link parameter between the two virtual views described in this section is shown below. 
 
 ![Example – Using Links with a Parameter to Condition the Subtree](Media/Image4.17.jpg)
 
-Figure 17: Example – Using Links with a Parameter to Condition the Subtree
 
-#### Merge Links without a Link Parameter
+### Merge Links without a Link Parameter
 
 This section describes a scenario where linking is used to aggregate objects from different schemas where a link parameter is not needed. In this example, three data sources are used. One data source is an LDAP directory storing partner information. One data source is Active Directory storing employee information. The third data source is a database storing customer information. Each data source is depicted below with objects representing their schemas. 
 
 ![Three Example Data Sources](Media/Image4.18.jpg)
 
-Figure 18: Three Example Data Sources
+In this example, the desired identity view is one that aggregates people (employees, partners and customers) into one complete list to be used for authentication. 
 
-In this example, the desired virtual view is one that aggregates people (employees, partners and customers) into one complete list to be used for authentication. 
-
-First, three virtual views (one from each source) are created. This is depicted in the figure below. 
+First, three identity views (one from each source) are created. This is depicted in the figure below. 
 
 ![Three Example Virtual Views](Media/Image4.19.jpg)
 
-Figure 19: Three Example Virtual Views
 
 Finally, links are used to aggregate the virtual views into one common hierarchy. The virtual view will consist of employees from Active Directory, partners from an LDAP directory, and customers from a database. Both the virtual view model and the runtime view are depicted below.
 
 ![Example Virtual View using Merge Links with No Parameters](Media/Image4.20.jpg)
 
-Figure 20: Example Virtual View using Merge Links with No Parameters
 
 This example described how links can be used to aggregate a list of people from three different data sources. Since there is no overlap of users in this scenario, using merge links is a simple way to create a union of all user accounts across three different data sources. Since the subtrees linked do not need to be conditioned by a parent attribute, a link parameter was not required to achieve the desired result. 
 
@@ -911,30 +881,14 @@ This example described how links can be used to aggregate a list of people from 
 
 Configuration steps for using links can be found in the [Working with Links](#working-with-links) section.
 
-## Using the View Designer 
+## Creating a Root Naming Context to Manage Unmounted Identity Views 
 
-The View Designer sub-tab is located on Context Builder tab in the Main Control Panel.
+The new Control Panel does not have Context Builder. Therefore, only identity views that have been mounted somewhere below a root naming context are editable. Any identity views imported from older versions of RadiantOne that were not mounted cannot be edited until they are mounted. 
+Create a new Root Naming Context from Control Panel > Manage > Directory Namespace > Namespace Design and then mount a label below the naming context for each identity view you want to mount. 
 
-When you open a .dvx file here, the name of the virtual view appears on the tab and the model of the virtual view is shown.
+Once all labels are created, use the “MOUNT BACKEND” button at each label level and choose the Virtual Tree type, selecting the identity view (.dvx file) to mount: one identity view per label. 
 
-As you select a node in the view definition, the Node Properties and the Runtime Preview tabs appear on the right. To configure the node, use the options available on the Node Properties tab. To populate the model with data and see what the entries look like to a client, you can click the Runtime Preview tab 
-View Designer commands can be accessed in any of the following ways:
-
-### Toolbar
-
-The toolbar contains the View Designer buttons that can be used in designing the model of the virtual tree.
- 
-![View Designer Toolbar](Media/Image4.21.jpg)
-
-Figure 21: View Designer Toolbar
-
--	New View Definition ![An image showing ](Media/Imagenewviewdefinition.jpg) 
--	Open DVX File ![An image showing ](Media/Imageopendvx.jpg)
--	Save ![An image showing ](Media/ImageSave.jpg)
--	Save As ![An image showing ](Media/ImageSaveAs.jpg)
--	Add to Global Catalog ![An image showing ](Media/ImageGlobalCatalog.jpg)
--	Hierarchy Builder ![An image showing ](Media/ImageHierarchyBuilder.jpg)
--	Delete ![An image showing ](Media/ImageDelete.jpg)
+This will allow you to edit the identity view configuration using the PROPERTIES, ADVANCED SETTINGS and OBJECT BUILDER tabs. 
 
 ### Node Properties tab
 
@@ -996,13 +950,6 @@ The Object tab is available when you select Content or Container nodes. Objects 
 
 Figure 26: Object Tab
 
-### Runtime Preview tab
-
-The Runtime Preview tab is used for quickly viewing the contents of the virtual view to make sure the data looks as you expect. The view definition is the model of the virtual view and the runtime preview shows what the model will look like to an LDAP client.
-
-![Runtime Preview Tab](Media/Image4.27.jpg)
-
-Figure 27: Runtime Preview Tab
 
 ## The View Designer Process
 
