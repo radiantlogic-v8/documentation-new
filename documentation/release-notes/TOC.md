@@ -6,5 +6,6 @@ description: RadiantOne Identity Data Management v8.0 and Environment Operations
 - [RadiantOne Identity Data Management](#)
   - [v8.0.0](iddm-8-0-0.md)
   - [v8.0.1](iddm-8-0-1.md)
+  - [v8.0.2](iddm-8-0-2.md)
 - [Environment Operations Center](#)
   - [v1.0.0](eoc-1-0-0.md)
