@@ -161,9 +161,9 @@ Using the LDIFZ format when exporting entries produces a zipped and encrypted LD
 
 To define the criteria used to generate an encryption key:
 
-1. 	Navigate to Control Panel > MANAGE > Security > Attribute Encryption.
+1. 	Navigate to Control Panel > Manage > Security > Attribute Encryption.
 
-2.	 In the LDIFZ Encryption Key section, select the desired cipher from the drop-down list or select [AWSKMS](#using-amazon-web-services-aws-with-a-customer-master-key-cmk) if you want to use your own Customer Master Key (CMK) in Amazon Web Services (AWS) Key Management Service (KMS) and have configured the necessary settings in ZooKeeper. 
+2.	 In the LDIFZ Encryption Key section, select the desired cipher from the drop-down list or select [AWSKMS](#using-amazon-web-services-aws-with-a-customer-master-key-cmk) if you want to use your own Customer Master Key (CMK) in Amazon Web Services (AWS) Key Management Service (KMS). If you choose AWSKMS, and you also choose this option for Attribute Encryption Key, they will share the properties configured in the AWSKMS section.
 
 3.	 If you selected a cipher suite in the previous step, enter a security key. This value is used to auto-generate an encryption key. If you plan on deploying multiple clusters that will participate in inter-cluster replication and you are going to initialize RadiantOne Directory stores from an exported LDIFZ file, take note of the value you enter here as you must use it when configuring the LDIFZ cipher and security key in the other clusters.
 
@@ -171,7 +171,7 @@ To define the criteria used to generate an encryption key:
 
 If you need to change the LDIFZ encryption security key, follow the steps below.
 
-1.	Go to the Control Panel > MANAGE > Security > Attribute Encryption.
+1.	Go to the Control Panel > Manage > Security > Attribute Encryption.
 
 1.	Click Edit next to Security Key.
       ![Edit Encryption Key](Media/edit-encryption-key.jpg)
