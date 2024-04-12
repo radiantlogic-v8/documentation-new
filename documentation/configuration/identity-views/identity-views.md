@@ -501,52 +501,8 @@ By default, all attributes available for the LDAP objects are present in the vir
 
 To only see the attributes that are visible in the virtual entry, check the Visible Only checkbox at the top of the table. All attributes marked as hidden do not show in the list.
 
-
- 
-
-
 The default size limit is set to 100 meaning only 100 containers below the Remote Base DN are visible to select for exclusion. Increase the size limit if you need to display more branches and click **Refresh Tree**. You can also enter a result filter to dynamically reduce the branches to the ones you want to exclude.
 
-
-
-
-### Include and Exclude Search Filters
-
-Multiple different LDAP backends can be configured below the same root naming context. Therefore, client applications can perform searches from the root which could result in querying numerous backend directories. Sometimes, this can affect performance. In order to have more control over which LDAP queries get sent to which LDAP backends, RadiantOne offers inclusion and exclusion search filters. 
-
-From the Main Control Panel > Directory Namespace Tab, select the LDAP backend node below Root Naming Contexts. On the right side, click on the **Proxy Advanced** tab to set these filters.
-
-**Inclusion Filters**: Allow you to specify which filters are allowed to be sent to the backend LDAP directory.
-
-**Exclusion Filters**: Allow you to specify which filters are not allowed to be sent to the backend LDAP directory.
-
-Typically you would specify one or the other (inclusion filters or exclusion filters). The filter can be in the form of any valid LDAP filter. Also, different filters can apply on different search scopes (base, one level, or subtree).
-
-![An image showing ](Media/Image3.26.jpg)
- 
-
-
-![An image showing ](Media/Image3.27.jpg)
- 
-
-
-In the examples shown above, different inclusion filters have been set for two different LDAP backend configurations. The sample configured for LDAP backend 1 dictates that it only receives subtree queries that have a filter of (`mail=<something>@radiantlogic.com`). The * in the filter indicates any value. Therefore, if the filter is searching for an email address of someone with a suffix of @radiantlogic.com, then LDAP Backend 1 receives the query.
-
-The sample configured for LDAP backend 2 dictates that it only receives subtree queries when the filter is searching for an email address of someone with a suffix of @testserver.com.
-
-On the other hand, exclusion filters allow you to specify which queries to not send to the backend LDAP server. In the figures below, subtree queries that contain a filter of department=sales are not sent to the LDAP backend 1.
-
-Subtree queries that contain a filter of department=marketing are not sent to LDAP backend 2.
-
-![An image showing ](Media/Image3.28.jpg)
- 
-
-
-![An image showing ](Media/Image3.29.jpg)
- 
-
-
-The use of inclusion and exclusion filters can improve performance and efficiency because only relevant queries are routed to the appropriate remote servers.
 
 ### Computed Attributes
 
