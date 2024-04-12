@@ -106,13 +106,13 @@ The schema enforcement policy option allows you to choose how you want the proxy
 
 Select one of the three following options. 
 
-    -	Pass-through: All attributes in the operation are sent to the backend regardless of whether they match the backend schema. This is the default mode.
+*Pass-through*: All attributes in the operation are sent to the backend regardless of whether they match the backend schema. This is the default mode.
 
     >[!note] Modifications may fail at the backend if this option is selected and the entry to be added violates the backend schema definition.
 
-    - Filter: Attributes in the operation that do not match the backend schema are removed before being passed to the backend layer.
+*Filter*: Attributes in the operation that do not match the backend schema are removed before being passed to the backend layer.
 
-    - Strict: RadiantOne adds objectclass=extensibleObject to the entry before passing the operation to the backend directory. This ensures the operation succeeds without an object class violation.
+*Strict*: RadiantOne adds objectclass=extensibleObject to the entry before passing the operation to the backend directory. This ensures the operation succeeds without an object class violation.
 
 
 ### Dedicated Connection
