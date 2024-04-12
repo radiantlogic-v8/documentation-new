@@ -104,6 +104,72 @@ List the log files:
 
 From here, you can open the logs files to access further details on the client activity.
 
+## Regenerating SDC Registration Tokens
+
+A secure data connector's token has lifetime of up to one year. This section describes how to regenerate a secure data connector's token and update the application configuration.
+
+### Regenerating the Token
+
+To regenerate the token:
+
+1. Select **Secure Data Connectors** from the left navigation bar. 
+
+1. Navigate to your Secure Data Connector's Data Connector Info page.
+
+    ![image1](media/image1.png)
+
+1. Click **Regenerate Token**. 
+
+1. Select an expiration for the token.
+
+    ![image1](media/image2.png)
+
+1. Click **Generate**.
+
+1. Copy the generated token.
+
+    ![image1](media/image3.png)
+
+### Updating the Application Configuration
+
+On Windows:
+
+    1. Stop the client if it is already running as a standalone application or as a windows service. 
+
+    1. Open appsettings.Production.json using an editor. 
+    
+    1. In the **AgentToken** field, enter the token value copied in [Regenerating the Token](#regenerating-the-token). 
+
+On Linux:
+
+    1. Stop the client if it is already running as a standalone application or as a daemon.
+
+    1. Open appsettings.Production.json using an editor. 
+    
+    1. In the **AgentToken** field, enter the token value copied in [Regenerating the Token](#regenerating-the-token).
+
+On Docker:
+
+    1. Stop and remove the container if it is already running.
+
+    1. Start the container with the token copied in [Regenerating the Token](#regenerating-the-token) as a value to the environment variable ServerHubConfiguration_AgentToken. 
+
+    docker run -v /path/on/host:/app/logs -e "ServerHubConfiguration_AgentToken=[regenerated_token]" radiantone/sdc-client
+
+### Performing a Rolling update
+
+To minimize the risk of interruptions to the connections, it is recommended that you perform a rolling update.
+
+**Case 1:**
+
+If two or more SDC client instances are running on this environment under the same group, serving the same set of data sources connections, follow the instructions in [Regenerating the Token](#regenerating-the-token) and [Updating the Application Configuration](#updating-the-client-configuration) on the client where the token is expired or nearing expiration.
+
+**Case 2:**
+
+If there is only one SDC client instance is running, it is recommended that you create a new SDC client. This ensures no disruptions to existing connections. Refer to [Deploy the Secure Data Connector Client](deploy-sdc-client.md) for more information.
+
+>[!note] Remove the old instance which is about to expire.
+
 ## Next steps
 
 You should now have an understanding of how to update, troubleshoot, and monitor the secure data connector client. For details on deploying the secure data connector client, see the [deploy a secure data connector client](deploy-sdc-client.md) guide. For details on managing data connectors in Env Ops Center, see the [manage data connectors](manage-data-connectors.md) guide.
