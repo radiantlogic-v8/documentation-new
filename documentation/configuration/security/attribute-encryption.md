@@ -18,7 +18,7 @@ There are two items to configure.
 To define the criteria used to generate an encryption key:
 
 1. 	Navigate to Control Panel > Manage > Security > Attribute Encryption.
-1. 	In the RadiantOne Directory Attribute Encryption Key section select the desired cipher from the drop-down list or select [AWSKMS](#using-amazon-web-services-aws-with-a-customer-master-key-cmk) if you want to use your own Customer Master Key (CMK) in Amazon Web Services (AWS) Key Management Service (KMS). If you choose AWSKMS, and you also choose this option for LDIFZ encryption, they will share the properties configured in the AWSKMS section.
+1. 	In the RadiantOne Directory Attribute Encryption Key section select the desired cipher from the drop-down list or select [AWSKMS](#using-amazon-web-services-aws-with-a-customer-master-key-cmk) if you want to use your own Customer Master Key (CMK) in Amazon Web Services (AWS) Key Management Service (KMS). If you choose AWSKMS, and you also choose this option for LDIFZ encryption, they will share the properties configured in the AWS KMS Properties section. The AWS KMS Properties section displays once the AWSKMS option is chosen in either the Attribute Encryption Key Generation section or the LDIFZ Encryption Key section.
 
 1. 	If you selected a cipher suite in the previous step, enter a security key. This value is used to auto-generate an encryption key. If you plan on deploying multiple clusters that will participate in inter-cluster replication for encrypted attributes, take note of the value you enter here as you must use it when configuring the security key in the other clusters.
 1. 	Click **SAVE**.
@@ -141,7 +141,7 @@ If you need to change the encryption security key, follow the steps below.
 8.	Click Edit next to Security Key. This option is only available if you removed encrypted attributes and rebuilt the index for all applicable stores.
    ![Edit Encryption Key](Media/edit-encryption-key.jpg)
 
-9.  Change the cipher and/or security key and click  ![Update Encryption Key](Media/checkmark.jpg)
+9.  Change the cipher and/or security key and click  ![Update Encryption Key](Media/checkmark.jpg).
 10. Click **SAVE**.
 11.	Go to the Control Panel > Setup > Directory Namespace > Namespace Design.
 
@@ -165,7 +165,7 @@ To define the criteria used to generate an encryption key:
 
 1. 	Navigate to Control Panel > Manage > Security > Attribute Encryption.
 
-2.	 In the LDIFZ Encryption Key section, select the desired cipher from the drop-down list or select [AWSKMS](#using-amazon-web-services-aws-with-a-customer-master-key-cmk) if you want to use your own Customer Master Key (CMK) in Amazon Web Services (AWS) Key Management Service (KMS). If you choose AWSKMS, and you also choose this option for Attribute Encryption Key, they will share the properties configured in the AWSKMS section.
+2.	 In the LDIFZ Encryption Key section, select the desired cipher from the drop-down list or select [AWSKMS](#using-amazon-web-services-aws-with-a-customer-master-key-cmk) if you want to use your own Customer Master Key (CMK) in Amazon Web Services (AWS) Key Management Service (KMS). If you choose AWSKMS, and you also choose this option for RadiantOne Directory Attribute Encryption Key, they will share the properties configured in the AWS KMS Properties section. The AWS KMS Properties section displays once the AWSKMS option is chosen in either the Attribute Encryption Key Generation section or the LDIFZ Encryption Key section.
 
 3.	 If you selected a cipher suite in the previous step, enter a security key. This value is used to auto-generate an encryption key. If you plan on deploying multiple clusters that will participate in inter-cluster replication and you are going to initialize RadiantOne Directory stores from an exported LDIFZ file, take note of the value you enter here as you must use it when configuring the LDIFZ cipher and security key in the other clusters.
 
@@ -179,7 +179,7 @@ If you need to change the LDIFZ encryption security key, follow the steps below.
    
       ![Edit Encryption Key](Media/edit-encryption-key.jpg)
 
-1.	Change the cipher and/or security key and click  ![Update Encryption Key](Media/checkmark.jpg)
+1.	Change the cipher and/or security key and click ![Update Encryption Key](Media/checkmark.jpg).
 1.	Click **SAVE**.
 
 >[!note] 
@@ -187,13 +187,13 @@ If you need to change the LDIFZ encryption security key, follow the steps below.
 
 ### Requiring LDIFZ for Exports
 
-The Secure LDIF Export option allows you to enforce the use of the encrypted LDIFZ format when exporting entries from the Directory Browser tab. With this setting enabled, using the unencrypted LDIF format for exports is not supported.
+The Secure LDIF Export option allows you to enforce the use of the encrypted LDIFZ format when exporting entries from Manage > Directory Browser. With this setting enabled, using the unencrypted LDIF format for exports is not supported.
 
 >[!note] Enabling secure LDIF exports requires first defining an LDIFZ encryption key.
 
 To enable the secure LDIF export option:
 
-1.	Go to the Control Panel > MANAGE > Security > Attribute Encryption.
+1.	Go to the Control Panel > Manage > Security > Attribute Encryption.
 
 2.	Navigate to the Secure LDIF Export section and click the toggle to Enable it.
 
