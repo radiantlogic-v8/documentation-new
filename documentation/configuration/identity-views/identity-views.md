@@ -26,7 +26,7 @@ Identity views can be created from LDAP directories and associated with a specif
 
 ### Configuration
 
-If you configure an LDAP proxy view directly at the Root Naming Context, it is the only backend that can be mounted at this specific naming context. If you want to comprise the identity view from many different backends, choose the Virtual Tree option for the type of backend to mount instead of LDAP. The virtual tree option allows you to define child nodes using labels and then you can mount different backends at each label level.
+If you configure an LDAP proxy view by mounting an LDAP backend directly at the Root Naming Context, it is the only backend that can be mounted at this specific naming context. If you want to comprise the identity view from many different backends, add new labels below the root naming context. Use labels to layout the hierarchy that you want and then mount backends at the corresponding labels.
 
 1.	First, data sources for each backend must be defined. From the Control Panel > Setup > Data Catalog > Data Sources, click ![An image showing ](Media/new-source.jpg). Use the Active Directory, Generic LDAP, Open DJ or RadiantOne directory template to define data sources.
 
@@ -42,14 +42,12 @@ If you configure an LDAP proxy view directly at the Root Naming Context, it is t
 
 8.	Click **MOUNT**.
 
->[!note] For every virtual view of an LDAP backend you create, a file containing the schema definition is created. The schema file is stored on the file system at <RLI_HOME>\vds_server\lod\<normalized root naming context where the view is mounted>.orx. An LDIF formatted file containing the schema is also saved in the lod folder (with the same name as the .orx file) and is used to retrieve object class and attribute definitions if the metadata is used to extend the RadiantOne LDAP schema. For details see [RadiantOne LDAP schema](../directory-stores/managing-directory-schema).
-
 9.	To modify the LDAP proxy view, select the appropriate node below Root Naming Contexts and modify the settings on the right side. Click **SAVE** when finished.
 
 ![An image showing ](Media/proxy-backend-properties.jpg)
  
 
-LDAP Backends can also be configured at any label node in a naming context. 
+LDAP Backends can also be mounted at any label node that doesn't already have something mounted at it in a naming context. 
 
 ## LDAP Proxy View Properties
 
