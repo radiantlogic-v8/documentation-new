@@ -145,6 +145,12 @@ These release notes contain the following sections:
  
 ## Known Issues
 
+Links to SDC client documentation in the Environment Operations Center interface do not work. Reference the following links for the documentation:
+
+To deploy on Windows: https://developer.radiantlogic.com/idm/v8.0/environment-operations-center-guide/secure-data-connectors/deploy-sdc-client/#deploy-on-windows
+
+To deploy on Linux: https://developer.radiantlogic.com/idm/v8.0/environment-operations-center-guide/secure-data-connectors/deploy-sdc-client/#deploy-on-linux
+
 For known issues reported after the release, please see the Radiant Logic Knowledge Base: 
 
 https://support.radiantlogic.com/hc/en-us/categories/4412501931540-Known-Issues
