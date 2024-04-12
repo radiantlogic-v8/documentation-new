@@ -9,7 +9,7 @@ A directory tree is organized in a hierarchy, so that entries in a directory can
 
 When designing your directory tree, it is usually recommended that you adopt a relatively simple naming structure. Obviously, the naming structure should be dependent upon what the application that is consuming the data expects to see. Therefore, the approach you should take when creating your tree (either using one of the RadiantOne Wizards or on your own) is to define the simplest tree that meets your application’s needs.
 
-The following sections discuss different design  onsiderations for creating your namespace.
+The following sections discuss different design considerations for creating your namespace.
 
 ## Design Considerations
 
@@ -17,7 +17,7 @@ The main design considerations can be categorized by the two different security 
 
 ### Staging Backend Data
 
-If the identity data sources you plan on integrating with RadiantOne are anything other than LDAP directories or Active Directories, the recommended approach is to first create a basic virtual view that has no specific attribute mappings, computed attributes, joins...etc. and then configure the virtual view with persistent cache and the desired refresh strategy. This is the process to stage the backend data in persistent cache. Then, as a second step, create a virtual view using the cache image as the data source. The parent virtual view should be what is configured with the attribute mappings, computed attributes, joins...etc. This data staging and virtual view layering methodology works well for RDBMS and custom backend data source (e.g. Azure AD, Okta, Salesforce...etc.) that are not as performant as directories for search queries. Keep this in mind as you read through the general view design sections below.
+If the identity data sources you plan on integrating with RadiantOne are anything other than LDAP directories or Active Directories, the recommended approach is to first create a basic virtual view that has no specific attribute mappings, computed attributes, joins...etc. and then configure the virtual view with persistent cache and the desired refresh strategy. This is the process to stage the backend data in persistent cache. Then, as a second step, create a virtual view using the cache image as the data source. The virtual view created from the cache should be what is configured with the attribute mappings, computed attributes, joins...etc. This data staging and virtual view layering methodology works well for RDBMS and custom backend data source (e.g. Azure AD, Okta, Salesforce...etc.) that are not as performant as directories for search queries. Keep this in mind as you read through the general view design sections below.
 
 >[!note]
 >You can also stage Active Directory and LDAP backends in persistent cache, if these backends are unreliable, or performance needs to be optimized.
@@ -40,7 +40,7 @@ An LDAP Directory, Active Directory and an HR database contain different informa
 
 **Bind Order**
 
-As discussed above, if there is identity overlap, correlation rules must be defined. After, RadiantOne generates a unique list of users in addition to maintaining the reference link (location) to all the sources the identity is located in. With this information, RadiantOne can perform credentials checking against the data sources of your choice in a pre-defined order. The diagram below depicts an example. The database is configured with bind order 1. Therefore, RadiantOne attempts the bind there first. If the bind fails against the database, the LDAP directory receives the bind request (as per the configuration). If the bind were to fail again, Active Directory would receive the bind request. If all sources fail, the client receives a bind failure error from RadiantOne FID.
+If there is identity overlap across data sources, correlation rules must be defined. After, RadiantOne generates a unique list of users in addition to maintaining the reference link (location) to all the sources the identity is located in. With this information, RadiantOne can perform credentials checking against the data sources of your choice in a pre-defined order. The diagram below depicts an example. The database is configured with bind order 1. Therefore, RadiantOne attempts the bind there first. If the bind fails against the database, the LDAP directory receives the bind request (as per the configuration). If the bind were to fail again, Active Directory would receive the bind request. If all sources fail, the client receives a bind failure error from RadiantOne FID.
 
 ![Bind Order Example](Media/Image3.2.jpg)
 
@@ -50,8 +50,7 @@ As discussed above, if there is identity overlap, correlation rules must be defi
 
 Providing schema compatibility between the application and data source has been a source of pain for any enterprise working with large sets of data on one side, and providing support for new applications on the other. RadiantOne addresses these issues by taking existing schemas (from multiple sources), and mapping them into a common schema which is delivered to the application in a format it understands and expects. Objects and attributes mapping is a key component for addressing the challenges of authentication and authorization.
 
-After connections have been established to the underlying data sources, the next design decision is to map the objects and attributes to a common schema. As mentioned previously, the only way applications can search across the RadiantOne namespace for user accounts contained in a variety of different underlying systems is if all the underlying schemas are mapped to a global schema. This way, an application can search for users based on one common identifier (uid for example), and find the account no matter what the actual underlying source uses as the identifier. RadiantOne FID is responsible for translating the request to
-search the underlying source appropriately.
+After connections have been established to the underlying data sources, the next design decision is to map the objects and attributes to a common schema. As mentioned previously, the only way applications can search across the RadiantOne namespace for user accounts contained in a variety of different underlying systems is if all the underlying schemas are mapped to a global schema. This way, an application can search for users based on one common identifier (uid for example), and find the account no matter what the actual underlying source uses as the identifier. The RadiantOne service is responsible for translating the request to search the underlying source appropriately.
 
 ![Object Class Mapping Example](Media/Image3.3.jpg)
 
@@ -67,7 +66,7 @@ There are two approaches for integrating groups into the RadiantOne namespace: A
 
 **Objects and Attribute Mapping for Groups**
 
-One of the main design considerations for groups-based authorization is to analyze what object class and attributes applications are expecting for locating group entries in the virtual directory. Some applications can be configured to search for groups that match a number of different possible object classes (group, groupOfUniqueNames...etc.) and membership attributes (member, uniqueMember...etc.). Others may expect a very specific object class and attributes. Therefore, you must define a mapping between the group object class and attribute that exists in the underlying directory and the ones your application expects to find. RadiantOne FID is responsible for translating the request to search the underlying source appropriately.
+One of the main design considerations for groups-based authorization is to analyze what object class and attributes applications are expecting for locating group entries in the virtual directory. Some applications can be configured to search for groups that match a number of different possible object classes (group, groupOfUniqueNames...etc.) and membership attributes (member, uniqueMember...etc.). Others may expect a very specific object class and attributes. Therefore, you must define a mapping between the group object class and attribute that exists in the underlying directory and the ones your application expects to find. The RadiantOne service is responsible for translating the request to search the underlying source appropriately.
 
 ![Object Class and Attribute Mapping for Groups](Media/Image3.4.jpg)
 
@@ -85,38 +84,32 @@ DN Auto-Remapping – to translate the real DN’s contained within the group ob
 
 
 
-For locating existing groups in backend directories, it is important to understand the base DN configuration for the data source. The base DN is the parameter that contains the starting point in the underlying directory where RadiantOne FID starts searching from. For example, let’s say the underlying directory structure looked like the following tree.
+For locating existing groups in backend directories, it is important to understand the base DN configuration for the data source. The base DN is the parameter that contains the starting point in the underlying directory where the RadiantOne service starts searching from. For example, let’s say the underlying directory structure looked like the following tree.
 
 ![Sample Backend Directory Structure](Media/Image3.6.jpg)
 
 
 
-If the base DN parameter were set to a value of ou=people,dc=ad,dc=domain, and a search for a particular group came into RadiantOne FID, the group would not be found. This is the
-because RadiantOne FID searches the underlying directory tree for the group at ou=people,dc=ad,dc=domain and there are no groups located here. In order for RadiantOne FID to be able to retrieve the group entry from the underlying directory, the base DN would have to be configured to point to dc=ad,dc=domain.
+If the base DN parameter were set to a value of ou=people,dc=ad,dc=domain, and a search for a particular group came into the RadiantOne service, the group would not be found. This is the because the RadiantOne service searches the underlying directory tree for the group at ou=people,dc=ad,dc=domain and there are no groups located here. In order for the RadiantOne service to be able to retrieve the group entry from the underlying directory, the base DN would have to be configured to point to dc=ad,dc=domain.
 
-Therefore, a design consideration you need to be aware of is where your base DN parameter points to in the data source configuration. If during the initial configuration of the data source, you did not set the base DN to an appropriate location, you can easily change the data source definition in the Main Control Panel > Settings Tab > Server Backend section.
+Therefore, a design consideration you need to be aware of is where your base DN parameter points to in the data source configuration. If during the initial configuration of the data source, you did not set the base DN to an appropriate location, you can easily change the data source definition in the Control Panel > Setup > Data Catalog > Data Sources.
 
-**Virtual Groups**
-
-For added flexibility, RadiantOne FID is able to generate groups dynamically. This means that both group names and members can be created on-the-fly based on certain criteria. For defining group names, there are two options: setting a user-defined name or auto-generating the group names based on a user attribute.
-
-With user-defined group names, the members may be either listed explicitly or generated dynamically based on an LDAP filter. With auto-generated group names, both the group names and the members are generated dynamically. More information about each option is described below.
 
 **User-Defined Groups**
 
-User-defined group names are explicitly listed for the group entry. A user-defined group may be named anything and have members that are either explicitly defined or dynamically created based on a specific rule. The diagram below depicts an example of user-defined groups with dynamic members. In the example, group members are built dynamically based on the department attribute in the user entries. If a user’s department were to change, they would automatically be reflected as a member of the new group in the virtual directory. For simplicity, only the member ID is shown in the RadiantOne entry whereas in reality the full user DN is returned (as an LDAP client expects) when these groups are requested.
+For added flexibility, the RadiantOne service is able to generate group members dynamically. A user-defined group may be named anything and have members that are either explicitly defined or dynamically created based on a specific rule. The diagram below depicts an example of user-defined groups with dynamic members. In the example, group members are built dynamically based on the department attribute in the user entries. If a user’s department were to change, they would automatically be reflected as a member of the new group. For simplicity, only the member ID is shown below in the RadiantOne entry whereas in reality the full user DN is returned (as an LDAP client expects) when these groups are requested.
 
 ![Group Names Pre-defined with Dynamic Members Example](Media/Image3.7.jpg)
 
 
 
-Static group members are specific user DNs explicitly listed as members for the group entry. Any user DN in the virtual directory can be assigned to a user-defined group. Static group members can be any user DN in the virtual directory tree which means they can come from any backend source.
+Static group members are specific user DNs explicitly listed as members for the group entry. Any user DN in the RadiantOne namespace can be assigned to a user-defined group.
 
 Dynamic group members are assigned to groups based on rules defined for specific attributes. The attribute values determine which group the member is associated with. First, determine the starting point in the RadiantOne namespace to locate the possible group members. Then, decide which attribute(s) of these entries should be used to determine which group they belong to. For example, if all user entries that contain a department attribute value of “Sales” or “Sales Associate” should be a member of the Sales group, then the LDAP filter used in the rule would look like: (|(departmentNumber=Sales)(departmentNumber=Sales Associate)). Any valid LDAP filter can be used to create the rule for populating group membership.
 
 **Attributes-Based Authorization**
 
-The term dynamic join means that RadiantOne FID performs the aggregation of attributes from common identities on-the-fly as applications request a particular entry. Each time an application requests a user entry, RadiantOne FID performs the join. This ensures that the most up-to-date information is retrieved in real-time from the authoritative source. If this real-time join does not meet your performance requirements, then a RadiantOne FID cache may be used. More details on caching can be found in the [High Availability and Performance](06-high-availability-and-performance.md) chapter in this guide.
+The term dynamic join means that the RadiantOne service performs the aggregation of attributes from common identities on-the-fly as applications request a particular entry. Each time an application requests a user entry, the RadiantOne service performs the join. This ensures that the most up-to-date information is retrieved in real-time from the authoritative source. If this real-time join does not meet your performance requirements, then a persistent cache may be used. More details on caching can be found in: [Tuning](../tuning/persistent-cache)
 
 Below is a high-level diagram depicting a join across three data sources for a common user.
 
@@ -138,28 +131,26 @@ E.g. join between an Active Directory and Sun Java Directory would yield two dif
 
 These options are described in more detail in the example below.
 
-If a unique identifier exists (or can be defined based on a logical rule) to relate identities from one data source to another, then RadiantOne can easily join the corresponding entries together and return one complete identity. For instance, if a company uses an employee identification number in both its enterprise directory and its HR database, RadiantOne can match the value from each to form an aggregated entry with the attributes from both.
+If a unique identifier exists (or can be defined based on a logical rule) to relate identities from one data source to another, then the RadiantOne service can easily join the corresponding entries together and return one complete identity. For instance, if a company uses an employee identification number in both its enterprise directory and its HR database, RadiantOne can match the value from each to form an aggregated entry with the attributes from both.
 
 >[!note]
->If a single unique identifier does not exist across the sources, the [Global Identity Builder](getting-started-with-radiantone.md#global-identity-builder) can be used to define correlation rules and create a common identifier that RadiantOne FID can use for the join.
+>If a single unique identifier does not exist across the sources, the [Global Identity Builder](../global-identity-builder/introduction) can be used to define correlation rules and create a common identifier that the RadiantOne service can use for the join.
 
 In the example shown below, there is an Enterprise Directory and an HR database, which each contain some information about Aaron Wilson. There is an employee ID number which is found in both sources. RadiantOne uses this attribute’s value to form the join between the two underlying data sources to make a single identity with information from both.
 
-Notice that the phone number stored in the HR database is different than the phone number in the Enterprise Directory. Some analysis is needed to determine how RadiantOne FID should comprise the joined entry. Some possibilities include:
+Notice that the phone number stored in the HR database is different than the phone number in the Enterprise Directory. Some analysis is needed to determine how the RadiantOne service should comprise the joined entry. Some possibilities include:
 
 The Enterprise Directory’s phone attributes are known to be out of date and unreliable. Aaron’s unified identity should only use the HR Database’s phone number. In this case, the join can be configured to return the HR database phone number as authoritative. An example of this is shown in the diagram below.
 
 ![Join Example Using Attribute Authority](Media/Image3.10.jpg)
 
 
-
-The Enterprise Directory phone numbers are for work phone numbers, and the HR Database tracks home phone numbers. Aaron’s unified identity could show both, either as a multi-valued attribute (as depicted in the diagram below), or by showing each phone number as a separate attribute (each having a different name – one could be mapped/returned by RadiantOne FID as Work Phone while the other could be Home Phone).
+The Enterprise Directory phone numbers are for work phone numbers, and the HR Database tracks home phone numbers. Aaron’s unified identity could show both, either as a multi-valued attribute (as depicted in the diagram below), or by showing each phone number as a separate attribute (each having a different name – one could be mapped/returned by the RadiantOne service as Work Phone while the other could be Home Phone).
 
 ![Join Example Showing Common Attributes Returned as Multi-Valued](Media/Image3.11.jpg)
 
 
-
-Joins and attribute authority are configured in the Control Panel > Setup > Directory Namespace > Namespace Design. 
+Joins and attribute authority are configured in the Control Panel > Setup > Directory Namespace > Namespace Design > Object Builder tab. 
 
 ### Model-Driven View Design
 
@@ -174,14 +165,13 @@ Again, these are dependent upon the clients that consume the RadiantOne service.
 
 After analyzing the needs of the applications that consume the RadiantOne service, the next thing is to determine where the data that is required to build the virtual views resides. Is the information inside a database (one table? multiple tables?), inside a directory (one or many containers?), inside custom data sources (reachable as a web service?), or does not exist yet (need to build attributes on-the-fly or store new attributes required by the application).
 
-After the primary analysis of your environment and the requirements of client applications, metadata (attributes and relationships) discovery and enhancement (data mapping and
-analysis) are the next steps.
+After the primary analysis of your environment and the requirements of client applications, metadata (attributes and relationships) discovery and enhancement (data mapping and analysis) are the next steps.
 
 Once all data source schemas have been extracted, staged in persistent cache (if needed) and enhanced, you are ready to begin building the views that applications will consume.
 
-RadiantOne offers many tools to create virtual views. They can be built using the Main Control Panel -> Directory Namespace tab or [Identity Service Wizards](getting-started-with-radiantone.md#identity-service-wizards) (accessible on the Main Control Panel > Wizards tab) or the Main Control Panel > Context Builder tab. For complete details on Context Builder, please see the [RadiantOne Context Builder Guide](/context-builder-guide/introduction).
+Identity views are created using Control Panel > Setup > Directory Namespace > Namespace Design.
 
-The sections below introduce possible types of virtual views you can build from LDAP and database backends. Building virtual views with objects from many different heterogeneous backends is also discussed.
+The sections below introduce possible types of identity views you can build from LDAP and database backends. Building virtual views with objects from many different heterogeneous backends is also discussed.
 
 ### Virtual Views from LDAP Backends
 
@@ -189,7 +179,7 @@ An LDAP backend is any LDAP-accessible directory. This includes, but is not limi
 
 **Flatten Existing LDAP Hierarchies**
 
-Flat virtual views are based on an object class in the LDAP Backend. For example, if an existing LDAP directory tree is hierarchical and user entries are spread across many branches, the virtual view can contain the complete list of users consolidated into one flat list. All entries associated with the configured class are displayed in the virtual view at runtime no matter where the entry exists in the actual LDAP backend. For example, the diagram below depicts an existing LDAP tree. User entries are spread across multiple branches.
+Flat identity views are based on an object class in the LDAP Backend. For example, if an existing LDAP directory tree is hierarchical and user entries are spread across many branches, the virtual view can contain the complete list of users consolidated into one flat list. All entries associated with the configured class are displayed in the identitymview at runtime no matter where the entry exists in the actual LDAP backend. For example, the diagram below depicts an existing LDAP tree. User entries are spread across multiple branches.
 
 ![Sample LDAP Hierarchy](Media/Image3.12.jpg)
 
@@ -198,7 +188,6 @@ Flat virtual views are based on an object class in the LDAP Backend. For example
 The hierarchy shown above can be flattened out in a virtual view based on the object class associated with the users (e.g. inetOrgPerson). The sample flat virtual view structure is shown in the figure below.
 
 ![Sample Flat Virtual View Built from an Existing LDAP Hierarchy](Media/Image3.13.jpg)
-
 
 
 When building a flat virtual view, use content objects. For details on content objects, please see the [RadiantOne Context Builder Guide](/context-builder-guide/introduction).
