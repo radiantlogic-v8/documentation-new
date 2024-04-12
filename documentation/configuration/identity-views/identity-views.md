@@ -15,6 +15,11 @@ A special type of identity view that leverages the model-driven design approach 
 
 For more details, see [Global Identity Builder](../global-identity-builder/introduction).
 
+Every Root Naming Context configured in the RadiantOne namespace can be active or inactive.
+There is a toggle to indicate whether the naming context is active or not. Toggle it off to deactivate the naming context. Only active naming contexts are accessible in RadiantOne by clients.
+
+![Active Toggle](Media/active-toggle.jpg)
+
 ## LDAP Proxy Views Overview
 
 Identity views can be created from LDAP directories and associated with a specific root naming context. A root naming context is the very top level in the RadiantOne namespace, and you can have many different root naming contexts. This section describes how to create root naming contexts for mounting identity views from LDAP directory backend data sources. 
@@ -39,35 +44,96 @@ If you configure an LDAP proxy view directly at the Root Naming Context, it is t
 
 >[!note] For every virtual view of an LDAP backend you create, a file containing the schema definition is created. The schema file is stored on the file system at <RLI_HOME>\vds_server\lod\<normalized root naming context where the view is mounted>.orx. An LDIF formatted file containing the schema is also saved in the lod folder (with the same name as the .orx file) and is used to retrieve object class and attribute definitions if the metadata is used to extend the RadiantOne LDAP schema. For details see [RadiantOne LDAP schema](../directory-stores/managing-directory-schema).
 
-9.	If you need to modify the LDAP backend configuration, select the appropriate node below Root Naming Contexts and modify the settings on the right side. Click **SAVE** when finished.
+9.	To modify the LDAP proxy view, select the appropriate node below Root Naming Contexts and modify the settings on the right side. Click **SAVE** when finished.
 
 ![An image showing ](Media/proxy-backend-properties.jpg)
  
 
 LDAP Backends can also be configured at any label node in a naming context. 
 
+## LDAP Proxy View Properties
 
-### Host 
+These settings are found on the PROPERTIES tab.
 
-Server name or IP address.
+### Type
 
-### Failover Servers
+Indicates the type of identity view. LDAP Backend is the value for LDAP proxy views. This value is read-only for informational purposes.
 
-You can list replica servers in the Failover LDAP Servers section. The only properties to indicate are server/host, port and if the port is for SSL. The same bind DN and password listed in the primary server are used to connect to the failover servers. If a connection to a backend fails, RadiantOne tries to connect to the primary server again. After two failures, RadiantOne connects to the failover servers in the order they are listed.
+### Naming Context
 
->[!note] At DEBUG log level, the following comments are shown in the <RLI_HOME>/vds_server/logs/vds_server.log indicating that RadiantOne has exhausted connection attempts and is switching to a failover server. <br> After several tries (2), new resource could not be acquired: Cannot assign requested address. <br> <br> Followed by: <br> Error connecting to: ldap://<primary_server>/, switching to failover backend: ldap://<failover_server>
+Indicates the naming context in the RadiantOne namespace where the identity view is mounted. This value is determined when you mount the LDAP backend based on the naming context where you've chosen to mount the view and is read-only from here.
+
+### Remote Base DN
+
+The Remote Base DN is the starting point to search from in the backend directory. This is set when you create the data source and can be changed later from here by either entering the base DN, or clicking the ![Browse Button](Media/folder-icon.jpg) button to select the location in the backend directory tree.
+
+![An image showing ](Media/remote-base-dn.jpg)
+
+All entries below the remote base DN are displayed when clients navigate below the naming context in the RadiantOne namespace.
+
+### Data Source
+
+The RadiantOne data source associated with the LDAP directory backend that is mounted for this identity view. The data source can be changed by clicking the drop-down menu and selecting a new data source.
+
+### Host
+
+Server name or IP address. This is read-only from here. To modify the value, go to Control Panel > Setup > Data Catalog > Data Sources and edit the data source from this list.
 
 ### Port
 
-Port that the server is listening on. 
+Port that the server is listening on. This is read-only from here. To modify the value, go to Control Panel > Setup > Data Catalog > Data Sources and edit the data source from this list.
 
 ### Bind DN
 
-Service account user DN. This user is used by RadiantOne to create connections to the backend LDAP directory. 
+Service account user DN. This user is used by RadiantOne to create connections to the backend LDAP directory.
+This is read-only from here. To modify the value, go to Control Panel > Setup > Data Catalog > Data Sources and edit the data source from this list.
 
-### Bind password
+### SSL
 
-The password for the user specified in the Bind DN parameter.
+Indicates if the SSL port is configured in the data source. This is read-only from here. To modify the value, go to Control Panel > Setup > Data Catalog > Data Sources and edit the data source from this list.
+
+### Referral Chasing
+
+Indicates if referral chasing is configured in the data source. This is read-only from here. To modify the value, go to Control Panel > Setup > Data Catalog > Data Sources and edit the data source from this list.
+
+### Paged Results Control
+
+Indicates if the Paged Results Control is configured in the data source. This is read-only from here. To modify the setting and value, go to Control Panel > Setup > Data Catalog > Data Sources and edit the data source from this list.
+
+### Schema Enforcement Policy
+
+The schema enforcement policy option allows you to choose how you want the proxy to behave when adding entries that may not match the schema of the backend directory (i.e. having an attribute that is not part of the object class).
+
+Select one of the three following options. 
+
+    -	Pass-through: All attributes in the operation are sent to the backend regardless of whether they match the backend schema. This is the default mode.
+
+    >[!note] Modifications may fail at the backend if this option is selected and the entry to be added violates the backend schema definition.
+
+    - Filter: Attributes in the operation that do not match the backend schema are removed before being passed to the backend layer.
+
+    - Strict: RadiantOne adds objectclass=extensibleObject to the entry before passing the operation to the backend directory. This ensures the operation succeeds without an object class violation.
+
+
+### Dedicated Connection
+
+By default, RadiantOne uses the service account configured in the data source and connection pooling for connecting to backend LDAP servers. Therefore, when clients access the RadiantOne service, it can re-use any open connections in the pool to connect to the underlying LDAP server. Then, authorization is enforced at the RadiantOne level based on access controls. This is best practice and the recommended approach.
+
+If [Proxy Authorization](#proxy-authorization) is insufficient to condition the connection to the backend, and you want the connection from the client to RadiantOne to determine the lifecycle of the connection to the underlying LDAP server, you can enable the dedicated connection option.
+
+ ![An image showing ](Media/Image3.16.jpg)
+
+
+If the dedicated connection option is enabled, RadiantOne does not use the connection pool and the connection to the underlying LDAP directory is closed when the client disconnects from RadiantOne. If dedicated connections are not used, and a client disconnects from RadiantOne, the connection to the underlying LDAP server can still remain in the connection pool (until the configured timeout parameter is reached, which then removes the connection from the pool).
+
+>[!note] Dedicated connections are best used in cases where there are only a few clients accessing the RadiantOne service but generate a lot of traffic. Clients must handle the opening and closing of connections efficiently (e.g. don’t leave open connections idle for long periods of time).
+
+### Proxy Authorization
+
+When the RadiantOne service acts as a client and connects to a backend directory, certain credentials are used (e.g. the Bind DN and Bind Password configured in the data source connection string). These credentials determine what operations are allowed and it is the backend directory which enforces authorization for this user. Some directories support the Proxy Authorization control allowing a client to switch the user ID, for authorization purposes, without having to re-authenticate with a new connection. If the backend directory supports the Proxied Authorization control, and there is the need to base authorization on a different user than the one who authenticated, you can enable the Proxy Authorization checkbox. With this approach, RadiantOne can use certain credentials (e.g. the Bind DN and Bind Password configured in the data source connection string) when connecting to the backend directory and pass the needed control along with the user DN of the person they want to represent for authorization in the requests. The backend directory checks the proxy authorization rules that have been configured to make sure the service account RadiantOne used to connect with is allowed to represent the person passed in the request. If so, the service account is allowed to perform any operations the person it is impersonating would be allowed to do. Again, for this functionality to work, the Proxy Authorization control must be supported by the backend directory and proxy authorization rules must be properly defined in the backend directory. A high-level diagram detailing the behavior is shown below.
+
+![An image showing ](Media/proxy-authz-decision.jpg)
+
 
 ### Pass Thru Authorization
 
@@ -75,8 +141,6 @@ Pass thru authorization is for determining which account RadiantOne uses to conn
 
 ![An image showing ](Media/pass-thru-authz-decision.jpg)
 
-
- 
 This functionality is best described with examples. The following three examples/diagrams detail the different configurations possible.
 
 >[!warning] This feature (and the description below) is for AUTHORIZATION.
@@ -211,28 +275,13 @@ This control indicates that all modify, modify DN, and delete requests should in
 
 This control indicates that all add, modify, and modify DN requests should include the post-read control to retrieve the specified attribute’s value(s) as they appear immediately after the operation has been processed. Post-read controls may be used to obtain values of operational attributes, such as the “entryUUID” and “modifyTimestamp” attributes, updated by the server as part of the update operation. The backend directory is the enforcement point for the control. RadiantOne responds to the client with all information returned from the backend directory.
 
-**Proxy Authorization**
 
-When RadiantOne acts as a client and connects to a backend directory, certain credentials are used (e.g. the Bind DN and Bind Password configured in the data source connection string). These credentials determine what operations are allowed and it is the backend directory which enforces authorization for this user. Some directories support the Proxy Authorization control allowing a client to switch the user ID, for authorization purposes, without having to re-authenticate with a new connection. If the backend directory supports the Proxied Authorization control, and there is the need to base authorization on a different user than the one who authenticated, you can enable the Proxy Authorization checkbox. With this approach, RadiantOne can use certain credentials (e.g. the Bind DN and Bind Password configured in the data source connection string) when connecting to the backend directory and pass the needed control along with the user DN of the person they want to represent for authorization in the requests. The backend directory checks the proxy authorization rules that have been configured to make sure the service account RadiantOne used to connect with is allowed to represent the person passed in the request. If so, the service account is allowed to perform any operations the person it is impersonating would be allowed to do. Again, for this functionality to work, the Proxy Authorization control must be supported by the backend directory and proxy authorization rules must be properly defined in the backend directory. A high-level diagram detailing the behavior is shown below.
 
-![An image showing ](Media/proxy-authz-decision.jpg)
 
 
  
-### Remote Base DN
-
-The Remote Base DN is the starting point to search from in the backend directory. This is set when you create the data source and can be changed later if needed by selecting the root naming context node representing the virtual view associated with the backend. On the right side, select the Proxy Backend tab. Either enter the base DN, or click the **Browse** button to select the location in the backend directory tree.
-
-![An image showing ](Media/remote-base-dn.jpg)
-
-
-
-All entries below the remote base DN a
-re displayed when clients navigate below the mapped base DN location in the RadiantOne namespace.
-
-### Mapped Base DN
-
-The value here is determined from the hierarchy built in the first step. This is the DN that clients access to retrieve the data from RadiantOne and is set when you create the data source.
+## LDAP Proxy View Advanced Settings
+These settings are found on the ADVANCED SETTINGS tab.
 
 ### DN Remapping
 
@@ -296,45 +345,8 @@ As another example: If the client requests ALL attributes in its query to Radian
 
 If you make any changes, click **Save** in the upper right corner and then click **Yes** to apply the changes to the server.
 
-### Active
-
-Check the Active option to activate the node. Uncheck the Active option to deactivate the node. Only active nodes are accessible in RadiantOne by clients.
-
-### Dedicated Connection
-
-By default, RadiantOne uses the service account configured in the data source and connection pooling for connecting to backend LDAP servers. Therefore, when clients access RadiantOne, it can re-use any open connections in the pool to connect to the underlying LDAP server. Then, authorization is enforced at the RadiantOne level based on access controls. This is best practice and the recommended approach.
-
-If [Proxy Authorization](#proxy-authorization) and [Role Mapped Access](#role-mapped-access) are insufficient to condition the connection to the backend, and you want the connection from the client to RadiantOne to determine the lifecycle of the connection to the underlying LDAP server, you can enable the dedicated connection option from the Main Control Panel > Directory Namespace tab. Select the desired node representing the LDAP backend below Root Naming Contexts, and on the right side, select the Proxy Backend tab.
-
- ![An image showing ](Media/Image3.16.jpg)
 
 
-
-If the dedicated connection option is enabled, RadiantOne does not use the connection pool and the connection to the underlying LDAP directory is closed when the client disconnects from RadiantOne. If dedicated connections are not used, and a client disconnects from RadiantOne, the connection to the underlying LDAP server can still remain in the connection pool (until the configured timeout parameter is reached, which then removes the connection from the pool).
-
->[!note] Dedicated connections are best used in cases where there are only a few clients accessing RadiantOne but generate a lot of traffic. Clients must handle the opening and closing of connections efficiently (e.g. don’t leave open connections idle for long periods of time).
-
-**Schema Enforcement Policy**
-
-The schema enforcement policy option allows you to choose how you want the proxy to behave when adding entries that may not match the schema of the backend directory (i.e. having an attribute that is not part of the object class).
-
-To define a schema enforcement policy:
-
-1.	From the Main Control Panel > Directory Namespace Tab, select a node representing the LDAP backend below the Root Naming Contexts node. 
-
-2.	On the right side, select the Proxy Backend tab and locate the Schema Enforcement Policy setting. 
-
-3.	Select one of the three following options. 
-
-    -	Pass-through: All attributes in the operation are sent to the backend regardless of whether they match the backend schema. This is the default mode.
-
-    >[!note] Modifications may fail at the backend if this option is selected and the entry to be added violates the backend schema definition.
-
-    - Filter: Attributes in the operation that do not match the backend schema are removed before being passed to the backend layer.
-
-    - Strict: RadiantOne adds objectclass=extensibleObject to the entry before passing the operation to the backend directory. This ensures the operation succeeds without an object class violation.
-
-4.	Click **Save** and **Yes** to apply the changes to the server.
 
 ### Object Class Mapping
 
