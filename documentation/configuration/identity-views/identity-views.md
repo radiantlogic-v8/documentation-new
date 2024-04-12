@@ -37,15 +37,14 @@ If you configure an LDAP proxy view directly at the Root Naming Context, it is t
 
 8.	Click **MOUNT**.
 
->[!note] For every virtual view of an LDAP backend you create, a file containing the schema definition is created. The schema file is stored on the file system at <RLI_HOME>\vds_server\lod\<normalized root naming context where the view is mounted>.orx. An LDIF formatted file containing the schema is also saved in the lod folder (with the same name as the .orx file) and is used to retrieve object class and attribute definitions if the metadata is used to extend the RadiantOne LDAP schema. For details see [RadiantOne LDAP schema](/directory-stores/managing-directory-schema).
+>[!note] For every virtual view of an LDAP backend you create, a file containing the schema definition is created. The schema file is stored on the file system at <RLI_HOME>\vds_server\lod\<normalized root naming context where the view is mounted>.orx. An LDIF formatted file containing the schema is also saved in the lod folder (with the same name as the .orx file) and is used to retrieve object class and attribute definitions if the metadata is used to extend the RadiantOne LDAP schema. For details see [RadiantOne LDAP schema](../directory-stores/managing-directory-schema).
 
 9.	If you need to modify the LDAP backend configuration, select the appropriate node below Root Naming Contexts and modify the settings on the right side. Click **SAVE** when finished.
 
 ![An image showing ](Media/proxy-backend-properties.jpg)
  
 
-
-LDAP Backends can also be configured at any label node in a naming context. For details on this, please see [Virtual Views based on Multiple Types of Backends](03-virtual-view-of-ldap-backends).
+LDAP Backends can also be configured at any label node in a naming context. 
 
 
 ### Host 
