@@ -253,12 +253,12 @@ To define access controls:
 
     To assign users, groups or users associated in a specific tree/branch, click **+ NEW** next to **SPECIFIC USERS**. Enter the base DN, scope and filter to locate users, groups and or tree branches to apply the access control to. Click **OK** when finished.
 
-    To assign public, toggle the **ALLOW PUBLIC** option on.
+    To assign public, toggle the **PUBLIC** option on.
 
-    To assign self, toggle the **ALLOW SELF** option on.
+    To assign self, toggle the **SELF** option on.
 
-    To assign all authenticated users, toggle the **ALLOW AUTHENTICATED** option on.
+    To assign all authenticated users, toggle the **AUTHENTICATED** option on.
 
-    To assign permissions associated with the parent, toggle the **ALLOW PARENT** option on.
+    To assign permissions associated with the parent, toggle the **PARENT** option on.
 
 1.	Click **SAVE** when finished.
