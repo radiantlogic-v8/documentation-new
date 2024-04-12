@@ -268,7 +268,7 @@ The passwords that are stored in a RadiantOne Directory store may be hashed usin
 - Salted SHA-1
 - Salted SHA-256
 - Salted SHA-384
-- Salted SHA-512.
+- Salted SHA-512
 
 >[!warning] PBKDF2AD is the required password encryption expected in Azure AD. Therefore, if your RadiantOne Directory store (or persistent cache) will be synchronized to Azure AD, and passwords are a part of the synchronization, use the PBKDF2AD encryption option to store passwords in the RadiantOne Directory.
 
