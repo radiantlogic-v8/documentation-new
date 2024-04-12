@@ -274,12 +274,139 @@ This control indicates that all modify, modify DN, and delete requests should in
 This control indicates that all add, modify, and modify DN requests should include the post-read control to retrieve the specified attribute’s value(s) as they appear immediately after the operation has been processed. Post-read controls may be used to obtain values of operational attributes, such as the “entryUUID” and “modifyTimestamp” attributes, updated by the server as part of the update operation. The backend directory is the enforcement point for the control. RadiantOne responds to the client with all information returned from the backend directory.
 
 
-
+### Merging Other LDAP Proxy Views
 
 
  
 ## LDAP Proxy View Advanced Settings
 These settings are found on the ADVANCED SETTINGS tab.
+
+### Interception Script
+For specific details, please see Interception Scripts in the Concepts section of the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction). This section describes how to enable interception scripts for an LDAP backend.
+
+1.	From the Main Control Panel > Directory Namespace Tab, select the LDAP backend node below Root Naming Contexts. 
+
+2.	On the right side, select the Proxy Advanced tab.
+
+3.	Enable the operations you want to customize by checking the box next to it. The Java script associated with this LDAP backend is displayed in the Source Location parameter. This is this script that you must customize and it is located at <RLI_HOME>/vds_server/custom/src/com/rli/scripts/intercept.
+
+4.	Click **Save** in the upper right corner and then **Yes** to apply the changes to the server.
+
+5.	Lastly, follow the steps defined in the Interception Scripts section of Concepts of the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction).
+
+
+### Optimizations
+	limit attribute requested from ldap backend
+	process joins/computed only when necessary
+	use client size limit
+
+### Object Class Mapping
+
+For applications to perform a global search in the RadiantOne namespace and be able to locate entries from many different types of underlying sources, the schemas must be mapped to a common naming. You must establish the common mapping based on the criteria a client application uses to search. For example, if a client application were to look for user entries based on a filter of (objectclass=User), you must make sure that all required objects match this class definition. 
+
+To map object classes:
+
+1.	From the Control Panel > Setup > Directory Namespace > Namespace Design, select the desired node representing the LDAP backend below Root Naming Contexts.
+
+2.	On the right side, select the ADVANCED SETTINGS tab.
+
+3. In the *Other Settings* section, locate the Object Class Mapping setting.
+   
+4. 	Click the **Edit** button next to Objectclass Mapping. A list of all objectclasses available in the underlying schema displays. 
+
+5.	Enter the object class in the Mapped Objectclass column and click **OK**.
+
+6.	Click **Save** in the upper right corner and click **Yes** to apply the changes to the server.
+
+In the example below, the inetOrgPerson object class is set to map to User.
+
+![An image showing ](Media/Image3.17.jpg)
+
+
+This means that all inetOrgPerson entries from the underlying source are returned with objectclass=user (as depicted in the screen shot below).
+
+![Result of Objectclass Mapping](Media/Image3.18.jpg) 
+ 
+### Pre-processing Filter
+
+Proxy identity views from LDAP backends can be conditioned by using a pre-processing filter. A pre-processing filter is any valid LDAP filter that you want to always be sent by RadiantOne when querying the backend LDAP server. The query filter that is sent to the backend is based on the client request that came into RadiantOne in addition to whatever you have set as a pre-processing filter. 
+
+To define a pre-processing filter:
+
+1.	From the Control Panel > Setup > Directory Namespace > Namespace Design, select the desired node representing the LDAP backend below Root Naming Contexts.
+
+2.	On the right side, select the ADVANCED SETTINGS tab.
+
+3.	In the *Other Settings* section, locate the Pre-Processing Filter setting. 
+
+4.	Click the ![Pencil Icon](Media/pencil-icon.jpg) icon.
+5.	Enter a valid LDAP filter or toggle on the ![Enable Assist Mode](Media/enable-assist-mode.jpg) to use an assistant form to generate the filter.
+
+    >[!note] As mentioned, the value set here is added to the filter requested from RadiantOne client when it issues the query to the backend.
+
+6.	Click **CONFIRM**.
+
+7.	Click **SAVE**.
+
+![An image showing ](Media/Image3.19.jpg)
+
+### Post-processing Filter
+
+Proxy identity views from LDAP backends can be conditioned by using a Post-processing  filter. After RadiantOne queries the backend and retrieves the results, this filter excludes certain entries from being returned to the client. 
+
+To define a post-processing filter:
+
+1.	From the Control Panel > Setup > Directory Namespace > Namespace Design, select the desired node representing the LDAP backend below Root Naming Contexts.
+
+2.	On the right side, select the ADVANCED SETTINGS tab.
+
+3.	In the *Other Settings* section, locate the Post-Processing Filter setting.
+
+4.	Click the ![Pencil Icon](Media/pencil-icon.jpg) icon.
+5.	Enter a valid LDAP filter or toggle on the ![Enable Assist Mode](Media/enable-assist-mode.jpg) to use an assistant form to generate the filter to indicate which entries you want excluded from the results prior to RadiantOne returning them to the client. 
+
+6.	Click **CONFIRM**.
+
+7.	Click **SAVE**.
+   
+### Suffix Branch Exclusion
+
+By default, once you establish a Remote Base DN (starting point to search from in the underlying directory) for the virtual view, all container levels from the backend are mounted in the virtual tree.
+
+If you want to exclude some branches/containers, you can specify them by clicking the **EDIT** button next to Suffix (branch) Exclusion parameter on the Proxy Backend tab.
+
+Click on **ADD** and select the branch you would like to exclude from the virtual tree. The example below shows how to exclude the ou=accounting,dc=na,dc=radiantlogic,dc=com branch.
+
+![An image showing ](Media/Image3.22.jpg)
+ 
+You can exclude as many branches as you want. The image below depicts three branches configured for exclusion. These branches will not appear in the virtual tree. [Suffix (branch) Inclusion](#suffix-branch-inclusion) can be used as an alternative to the Exclusion setting.
+
+![An image showing ](Media/Image3.23.jpg)
+
+### Suffix Branch Inclusion
+
+By default, once you establish a Remote Base DN (starting point to search from in the underlying directory) for the virtual view, all container levels from the backend are mounted in the virtual view.
+
+If you want to limit the branches/containers, you can indicate the ones you want by clicking the **EDIT** button next to Suffix (branch) Inclusion parameter on the Proxy Backend tab.
+
+Click **ADD** and select the branch you would like to include in the virtual tree. The example below shows how to include the ou=Advertising,dc=na,dc=radiantlogic,dc=com branch.
+
+![An image showing ](Media/Image3.24.jpg)
+ 
+You can include as many branches as you want. The screen shot below depicts three branches configured for inclusion. These branches will appear in the virtual tree. [Suffix (branch) Exclusion](#suffix-branch-exclusion) can be used as an alternative to the Inclusion setting.
+
+![An image showing ](Media/Image3.25.jpg)
+ 
+The default size limit is set to 100 meaning only 100 containers below the Remote Base DN are visible to select for exclusion. Increase the size limit if you need to display more branches and click **Refresh Tree**. You can also enter a result filter to dynamically reduce the branches to the ones you want to exclude.
+
+### Global Attributes handling
+- actual name
+-virtual name
+-DN remapping
+-always requested
+-hidden
+
+ADDING NEW ATTRIBUTES
 
 ### DN Remapping
 
@@ -287,19 +414,13 @@ This setting allows for automatic re-mapping of attributes of DN syntax type. Th
 
 ![An image showing ](Media/dn-remapping.jpg)
 
-
-
 For the selected LDAP Backend, click on the **Attributes** tab. If there are no attributes defined with DN Remapping in this list, then all attributes that have the DN syntax data type will be returned with the DN that exists in the backend LDAP directory. For example, the figure below shows the HR Managers group members, and you can see that they contain the real DN (for the uniqueMember attributes) that exists in the backend LDAP because there is no DN Remapping defined for the uniquemember attribute (i.e “uid=LCallahan,ou=People,dc=toshiba,dc=com”).
 
 ![An image showing ](Media/Image3.12.jpg) 
 
-
-
 Now, if you enter a specific attribute name that contains a DN value that you want to re-map for the RadiantOne namespace, then the DN suffix for this namespace is returned for that attribute. In the figure below, you can see that the uniqueMember attribute has been specified for the DN Remapping.
 
 ![An image showing ](Media/Image3.13.jpg)
-
-
 
 RadiantOne re-maps the uniqueMember attribute values into the proper DN for the location in the RadiantOne namespace. In the figure below, the HR Managers group (from the backend LDAP server) contains unique members whose DN’s have been remapped to their DN’s in the RadiantOne namespace (containing a suffix of “ou=RemoteDirectories,o=vds”). 
 
@@ -344,74 +465,6 @@ As another example: If the client requests ALL attributes in its query to Radian
 If you make any changes, click **Save** in the upper right corner and then click **Yes** to apply the changes to the server.
 
 
-
-
-### Object Class Mapping
-
-For applications to perform a global search in the RadiantOne namespace and be able to locate entries from many different types of underlying sources, the schemas must be mapped to a common naming. You must establish the common mapping based on the criteria a client application uses to search. For example, if a client application were to look for user entries based on a filter of (objectclass=User), you must make sure that all required objects match this class definition. 
-
-To map object classes:
-
-1.	From the Main Control Panel > Directory Namespace Tab, select the desired node representing the LDAP backend below Root Naming Contexts.
-
-2.	On the right side, select the Proxy Backend tab.
-
-3.	Click the **Edit** button next to Objectclass Mapping. A list of all objectclasses available in the underlying schema displays. 
-
-4.	Enter the object class in the Mapped Objectclass column and click **OK**.
-
-5.	Click **Save** in the upper right corner and click **Yes** to apply the changes to the server.
-
-In the example below, the inetOrgPerson object class is set to map to User.
-
-![An image showing ](Media/Image3.17.jpg)
-
-
-
-This means that all inetOrgPerson entries from the underlying source are returned with objectclass=user (as depicted in the screen shot below).
-
-![An image showing ](Media/Image3.18.jpg) 
- 
-Figure 18: Result of Objectclass Mapping
-
-### Pre-Processing Filter
-
-Proxy virtual views from LDAP backends can be conditioned by using a pre-processing filter. A pre-processing filter is any valid LDAP filter that you want to always be sent by RadiantOne when querying the backend LDAP server. The query filter that is sent to the backend is based on the client request that came into RadiantOne in addition to whatever you have set as a pre-processing filter. 
-
-To define a pre-processing filter:
-
-1.	From the Main Control Panel > Directory Namespace Tab, select the desired node representing the LDAP backend below the Root Naming Contexts node. 
-
-2.	On the right side, select the Proxy Backend tab and locate the Pre-Processing Filter setting. 
-
-3.	Enter a valid LDAP filter or select one from the drop-down list. 
-
-    >[!note] As mentioned, the value set here is added to the filter requested from RadiantOne client when it issues the query to the backend.
-
-4.	Click **Save** when finished and **Yes** to apply the changes to the server.
-
-5.	Click **OK** to exit the confirmation window.
-
-![An image showing ](Media/Image3.19.jpg)
-
-
-
-### Post-processing exclusion filter
-
-Proxy virtual views from LDAP backends can be conditioned by using a Post-processing exclusion filter. After RadiantOne queries the backend and retrieves the results, this filter excludes certain entries from being returned to the client. 
-
-To define a pre-processing filter:
-
-1.	From the Main Control Panel > Directory Namespace Tab, select the desired node representing the LDAP backend below the Root Naming Contexts node. 
-
-2.	On the right side, select the Proxy Backend tab and locate the Post-processing exclusion filter setting. 
-
-3.	Enter a valid LDAP filter to indicate which entries you want excluded from the results prior to RadiantOne returning them to the client. 
-
-4.	Click **Save** when finished and **Yes** to apply the changes to the server.
-
-5.	Click **OK** to exit the confirmation.
-
 ### Attribute Mapping
 
 As described in the object class mapping section, all underlying schemas must be mapped to a common schema to facilitate global searching. The process of mapping object classes was defined in the previous section. This section depicts how to setup attribute mappings.
@@ -448,59 +501,14 @@ By default, all attributes available for the LDAP objects are present in the vir
 
 To only see the attributes that are visible in the virtual entry, check the Visible Only checkbox at the top of the table. All attributes marked as hidden do not show in the list.
 
-### Suffix (branch) Exclusion
 
-By default, once you establish a Remote Base DN (starting point to search from in the underlying directory) for the virtual view, all container levels from the backend are mounted in the virtual tree.
-
-If you want to exclude some branches/containers, you can specify them by clicking the **EDIT** button next to Suffix (branch) Exclusion parameter on the Proxy Backend tab.
-
-Click on **ADD** and select the branch you would like to exclude from the virtual tree. The example below shows how to exclude the ou=accounting,dc=na,dc=radiantlogic,dc=com branch.
-
-![An image showing ](Media/Image3.22.jpg)
- 
-
-
-You can exclude as many branches as you want. The image below depicts three branches configured for exclusion. These branches will not appear in the virtual tree. [Suffix (branch) Inclusion](#suffix-branch-inclusion) can be used as an alternative to the Exclusion setting.
-
-![An image showing ](Media/Image3.23.jpg)
  
 
 
 The default size limit is set to 100 meaning only 100 containers below the Remote Base DN are visible to select for exclusion. Increase the size limit if you need to display more branches and click **Refresh Tree**. You can also enter a result filter to dynamically reduce the branches to the ones you want to exclude.
 
-### Suffix (branch) Inclusion
-
-By default, once you establish a Remote Base DN (starting point to search from in the underlying directory) for the virtual view, all container levels from the backend are mounted in the virtual view.
-
-If you want to limit the branches/containers, you can indicate the ones you want by clicking the **EDIT** button next to Suffix (branch) Inclusion parameter on the Proxy Backend tab.
-
-Click **ADD** and select the branch you would like to include in the virtual tree. The example below shows how to include the ou=Advertising,dc=na,dc=radiantlogic,dc=com branch.
-
-![An image showing ](Media/Image3.24.jpg)
- 
 
 
-You can include as many branches as you want. The screen shot below depicts three branches configured for inclusion. These branches will appear in the virtual tree. [Suffix (branch) Exclusion](#suffix-branch-exclusion) can be used as an alternative to the Inclusion setting.
-
-![An image showing ](Media/Image3.25.jpg)
- 
-
-
-The default size limit is set to 100 meaning only 100 containers below the Remote Base DN are visible to select for exclusion. Increase the size limit if you need to display more branches and click **Refresh Tree**. You can also enter a result filter to dynamically reduce the branches to the ones you want to exclude.
-
-### Interception Scripts
-
-For specific details, please see Interception Scripts in the Concepts section of the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction). This section describes how to enable interception scripts for an LDAP backend.
-
-1.	From the Main Control Panel > Directory Namespace Tab, select the LDAP backend node below Root Naming Contexts. 
-
-2.	On the right side, select the Proxy Advanced tab.
-
-3.	Enable the operations you want to customize by checking the box next to it. The Java script associated with this LDAP backend is displayed in the Source Location parameter. This is this script that you must customize and it is located at <RLI_HOME>/vds_server/custom/src/com/rli/scripts/intercept.
-
-4.	Click **Save** in the upper right corner and then **Yes** to apply the changes to the server.
-
-5.	Lastly, follow the steps defined in the Interception Scripts section of Concepts of the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction).
 
 ### Include and Exclude Search Filters
 
