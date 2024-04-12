@@ -174,6 +174,7 @@ If you need to change the LDIFZ encryption security key, follow the steps below.
 1.	Go to the Control Panel > Manage > Security > Attribute Encryption.
 
 1.	Click Edit next to Security Key.
+   
       ![Edit Encryption Key](Media/edit-encryption-key.jpg)
 
 1.	Select the cipher and enter a security key.
