@@ -286,7 +286,7 @@ To configure a merged backend:
 7. Click **ADD**.
 8. Click **SAVE**.
 
-When client queries reach the RadiantOne DN configured in step 6, the entries located in the merged backend at the lcoation configured in step 5 are returned. 
+When client queries reach the RadiantOne DN configured in step 6, the entries located in the merged backend at the location configured in step 5 are returned. 
 
  
 ## LDAP Proxy View Advanced Settings
