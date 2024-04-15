@@ -296,8 +296,8 @@ LDAP proxy view advanced settings are managed from the Control Panel > Setup > D
 
 Interception scripts allow for overriding default behavior of the RadiantOne service and can be invoked for pre-operations (prior to the RadiantOne service querying the backend identity sources, or post-operations (prior to the RadiantOne service returning results to clients).
 
-To invoke for pre-operations, use the: On Bind, On Modify, On Compare, On Search, On Add, On Delete, or On Special Operations options.
-To invoke for post-operations, use the: Search Result Entry Processing option.
+To invoke an interception script for pre-operations, use the: On Bind, On Modify, On Compare, On Search, On Add, On Delete, or On Special Operations options.
+To invoke an interception script for post-operations, use the: Search Result Entry Processing option.
 
 After enabling the desired options, customize the interception script logic, rebuild the intercept jar file and restart the RadiantOne service.
 
