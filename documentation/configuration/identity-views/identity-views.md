@@ -282,17 +282,15 @@ This control indicates that all add, modify, and modify DN requests should inclu
 LDAP proxy view advanced settings are managed from the Control Panel > Setup > Directory Namespace > Namespace Design. These settings are found on the ADVANCED SETTINGS tab for the naming context where the LDAP proxy view is mounted.
 
 ### Interception Script
-For specific details, please see Interception Scripts in the Concepts section of the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction). This section describes how to enable interception scripts for an LDAP backend.
 
-1.	From the Main Control Panel > Directory Namespace Tab, select the LDAP backend node below Root Naming Contexts. 
+Interception scripts allow for overriding default behavior of the RadiantOne service and can be invoked for pre-operations (prior to the RadiantOne service querying the backend identity sources, or post-operations (prior to the RadiantOne service returning results to clients).
 
-2.	On the right side, select the Proxy Advanced tab.
+To invoke for pre-operations, use the: On Bind, On Modify, On Compare, On Search, On Add, On Delete, or On Special Operations options.
+To invoke for post-operations, use the: Search Result Entry Processing option.
 
-3.	Enable the operations you want to customize by checking the box next to it. The Java script associated with this LDAP backend is displayed in the Source Location parameter. This is this script that you must customize and it is located at <RLI_HOME>/vds_server/custom/src/com/rli/scripts/intercept.
+After enabling the desired options, customize the interception script logic, rebuild the intercept jar file and restart the RadiantOne service.
 
-4.	Click **Save** in the upper right corner and then **Yes** to apply the changes to the server.
-
-5.	Lastly, follow the steps defined in the Interception Scripts section of Concepts of the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction).
+For complete details, see: [Interception Scripts](view-interception.md)
 
 
 ### Optimizations
