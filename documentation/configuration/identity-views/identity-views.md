@@ -106,7 +106,7 @@ Select one of the three following options.
 
 *Pass-through*: All attributes in the operation are sent to the backend regardless of whether they match the backend schema. This is the default mode.
 
-    >[!note] Modifications may fail at the backend if this option is selected and the entry to be added violates the backend schema definition.
+>[!note] Modifications may fail at the backend if this option is selected and the entry to be added violates the backend schema definition.
 
 *Filter*: Attributes in the operation that do not match the backend schema are removed before being passed to the backend layer.
 
