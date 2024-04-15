@@ -463,6 +463,5 @@ To compare schema files:
 >[!note] To save differences a a new schema, click **Save As New Schema**. 
 
 ## Include in RadiantOne LDAP Schema
-The schema details described in this section apply to the entire RadiantOne platform.
 
-The default schema is contained in two LDIF files. They are, ldapschema_00.ldif and ldapschema_01.ldif. Radiant Logic specific object classes and attributes found in these files are assigned identifiers (oid) prefixed with 1.3.6.1.4.1.40747.1.X for attributes and 1.3.6.1.4.1.40747.2.X for object classes.
+If you want to extend the schema with objects and attributes from the currently selected data source, toggle "Include in Server Schema" on. If this option is disabled, the objects and attributes are not included. The RadiantOne LDAP schema can be viewed and managed from Directory Namespace > Directory Schema.
