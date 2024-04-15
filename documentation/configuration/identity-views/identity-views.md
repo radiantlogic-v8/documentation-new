@@ -334,12 +334,9 @@ To map object classes:
 
 In the example below, the inetOrgPerson object class is set to map to User.
 
-![An image showing ](Media/Image3.17.jpg)
-
 
 This means that all inetOrgPerson entries from the underlying source are returned with objectclass=user (as depicted in the screen shot below).
 
-![Result of Objectclass Mapping](Media/Image3.18.jpg) 
  
 ### Pre-processing Filter
 
