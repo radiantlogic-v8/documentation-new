@@ -294,9 +294,14 @@ For complete details, see: [Interception Scripts](view-interception.md)
 
 
 ### Optimizations
-	limit attribute requested from ldap backend
-	process joins/computed only when necessary
-	use client size limit
+
+There are different options that can be used to optimize identity views from LDAP backends.
+The following options can be enabled from the ADVANCED SETTINGS tab. 
+- Limit attributes requested from the LDAP backend
+- Process joins and computed attributes only when necessary
+- Use client size limit value to query backend
+
+For details on these options and other ways to optimize the identity view, see: [Tuning](../../tuning/optimize-views)
 
 ### Object Class Mapping
 
