@@ -243,19 +243,17 @@ If user “cn=joe,dc=partners,dc=airius,dc=com,dc=server2,ou=global,o=vds” suc
 
 ### LDAP Controls
 
-A control is additional information that can be included in an LDAP request or response. RadiantOne can play the role of both an LDAP server and an LDAP client to other backend directories. To understand controls supported by RadiantOne as an LDAP server, see the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction). RadiantOne’s handling of LDAP controls as a client to a backend directory is described in this section.
+A control is additional information that can be included in an LDAP request or response. RadiantOne can play the role of both an LDAP server and an LDAP client to other backend directories. To understand controls supported by RadiantOne as an LDAP server, see the [Supported Controls](../global-settings/client-protocols#supported-controls). RadiantOne’s handling of LDAP controls as a client to a backend directory is described in this section.
 
 **VLV/Sort**
 
-If a client searches and passes the VLV control against a branch that is associated with an LDAP directory backend (not a persistent cache or a Universal Directory store), RadiantOne forwards the search request along with the included control to the backend LDAP server. In this case, it is the responsibility of the backend LDAP server to implement the VLV control. RadiantOne returns any controls received from the LDAP backend to the client.
+If a client searches and passes the VLV control against a branch that is associated with an LDAP directory backend (not a persistent cache or a RadiantOne Directory store), RadiantOne forwards the search request along with the included control to the backend LDAP server. In this case, it is the responsibility of the backend LDAP server to implement the VLV control. RadiantOne returns any controls received from the LDAP backend to the client.
 
 **Paged Results**
 
 If the backend LDAP directory supports the paged results control, RadiantOne can request that the results from the backend be returned in pages. The support for paging is enabled, and the page size is set, at the level of the LDAP data source definition.
 
 ![An image showing ](Media/paged-results-source.jpg)
-
-Figure 7: Paged Results Control for an LDAP Backend
 
 **Controls Passed from Client Requests**
 
