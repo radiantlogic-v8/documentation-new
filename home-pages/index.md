@@ -105,10 +105,10 @@ Harness your identity data with intelligent integration to drive better business
 
 <section>
    
-  > [Monitoring in Control Panel](monitoring-and-alerts/monitoring-and-alerts/monitoring-in-control-panel)  
+  > [Monitoring in Control Panel](monitoring-and-alerts/monitoring-and-alerts)  
   > Learn about Monitoring capabilities built into the Control Panel.
   
-  > [Monitoring in Environment Operations Center](monitoring-and-alerts/monitoring-and-alerts/monitoring-in-eoc)  
+  > [Monitoring in Environment Operations Center](monitoring-and-alerts/monitoring-and-alerts#monitoring-in-eoc)  
   > Learn about Monitoring capabilities built into the Environment Operations Center. 
   
   > [Alerts](monitoring-and-alerts/monitoring-and-alerts/configuring-alerts)  
