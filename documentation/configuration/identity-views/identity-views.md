@@ -384,7 +384,7 @@ By default, once you establish a Remote Base DN (starting point to search from i
 
 If you want to exclude some branches/containers, you can specify them in the Suffix Branch Exclusion property on the ADVANCED SETTINGS tab.
 
-Click on **ADD** and select the branch you would like to exclude from the identity view. The example below shows how to exclude the CN=Computers,DC=seradiant,DC=dom branch.
+Click **ADD** and select the branch you would like to exclude from the identity view. The example below shows how to exclude the CN=Computers,DC=seradiant,DC=dom branch.
 
 ![Suffix Branch Exclusion](Media/suffix-branch-exclusion.jpg)
  
@@ -406,7 +406,7 @@ You can include as many branches as you want. The screen shot below depicts thre
 
 ![Suffix Branch Inclusion, Multiple Branches ](Media/suffix-branch-inclusion-multiple.jpg)
  
-The default size limit is set to 100 meaning only 100 containers below the Remote Base DN are visible to select for exclusion. Increase the size limit if you need to display more branches and click **Refresh Tree**. You can also enter a result filter to dynamically reduce the branches to the ones you want to exclude.
+The default size limit is set to 40 meaning only 40 containers below the Remote Base DN are visible to select for exclusion/inclusion when you click **ADD**. Increase the size limit if you need to display more branches and click **Apply** in the *Advanced* section in the Select Base DN screen. You can also enter a result filter to dynamically reduce the branches to the ones you want to exclude/include.
 
 ### Global Attributes handling
 - actual name
