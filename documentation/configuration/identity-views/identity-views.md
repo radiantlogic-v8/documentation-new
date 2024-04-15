@@ -359,8 +359,6 @@ To define a pre-processing filter:
 
 7.	Click **SAVE**.
 
-![An image showing ](Media/Image3.19.jpg)
-
 ### Post-processing Filter
 
 Proxy identity views from LDAP backends can be conditioned by using a Post-processing  filter. After RadiantOne queries the backend and retrieves the results, this filter excludes certain entries from being returned to the client. 
@@ -382,31 +380,31 @@ To define a post-processing filter:
    
 ### Suffix Branch Exclusion
 
-By default, once you establish a Remote Base DN (starting point to search from in the underlying directory) for the virtual view, all container levels from the backend are mounted in the virtual tree.
+By default, once you establish a Remote Base DN (starting point to search from in the underlying directory) for the identity view, all container levels from the backend below this location are mounted in it.
 
-If you want to exclude some branches/containers, you can specify them by clicking the **EDIT** button next to Suffix (branch) Exclusion parameter on the Proxy Backend tab.
+If you want to exclude some branches/containers, you can specify them in the Suffix Branch Exclusion property on the ADVANCED SETTINGS tab.
 
-Click on **ADD** and select the branch you would like to exclude from the virtual tree. The example below shows how to exclude the ou=accounting,dc=na,dc=radiantlogic,dc=com branch.
+Click on **ADD** and select the branch you would like to exclude from the identity view. The example below shows how to exclude the CN=Computers,DC=seradiant,DC=dom branch.
 
-![An image showing ](Media/Image3.22.jpg)
+![Suffix Branch Exclusion](Media/suffix-branch-exclusion.jpg)
  
-You can exclude as many branches as you want. The image below depicts three branches configured for exclusion. These branches will not appear in the virtual tree. [Suffix (branch) Inclusion](#suffix-branch-inclusion) can be used as an alternative to the Exclusion setting.
+You can exclude as many branches as you want. The image below depicts three branches configured for exclusion. These branches will not appear in the identity view at runtime. [Suffix Branch Inclusion](#suffix-branch-inclusion) can be used as an alternative to the Exclusion setting.
 
-![An image showing ](Media/Image3.23.jpg)
+![Suffix Branch Exclusion, Multiple Branches](Media/suffix-branch-exclusion-multiple.jpg)
 
 ### Suffix Branch Inclusion
 
-By default, once you establish a Remote Base DN (starting point to search from in the underlying directory) for the virtual view, all container levels from the backend are mounted in the virtual view.
+By default, once you establish a Remote Base DN (starting point to search from in the underlying directory) for the identity view, all container levels from the backend below this location are mounted in it.
 
-If you want to limit the branches/containers, you can indicate the ones you want by clicking the **EDIT** button next to Suffix (branch) Inclusion parameter on the Proxy Backend tab.
+If you want to limit the branches/containers, you can specify them in the Suffix Branch Inclusion property on the ADVANCED SETTINGS tab.
 
-Click **ADD** and select the branch you would like to include in the virtual tree. The example below shows how to include the ou=Advertising,dc=na,dc=radiantlogic,dc=com branch.
+Click **ADD** and select the branch you would like to include in the identity view. The example below shows how to include the CN=Users,DC=seradiant,DC=dom branch.
 
-![An image showing ](Media/Image3.24.jpg)
+![Suffix Branch Inclusion](Media/suffix-branch-inclusion.jpg)
  
-You can include as many branches as you want. The screen shot below depicts three branches configured for inclusion. These branches will appear in the virtual tree. [Suffix (branch) Exclusion](#suffix-branch-exclusion) can be used as an alternative to the Inclusion setting.
+You can include as many branches as you want. The screen shot below depicts three branches configured for inclusion. These branches will appear in the identity view at runtime. [Suffix Branch Exclusion](#suffix-branch-exclusion) can be used as an alternative to the Inclusion setting.
 
-![An image showing ](Media/Image3.25.jpg)
+![Suffix Branch Inclusion, Multiple Branches ](Media/suffix-branch-inclusion-multiple.jpg)
  
 The default size limit is set to 100 meaning only 100 containers below the Remote Base DN are visible to select for exclusion. Increase the size limit if you need to display more branches and click **Refresh Tree**. You can also enter a result filter to dynamically reduce the branches to the ones you want to exclude.
 
