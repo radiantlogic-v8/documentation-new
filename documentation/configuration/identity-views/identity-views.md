@@ -253,7 +253,7 @@ If a client searches and passes the VLV control against a branch that is associa
 
 If the backend LDAP directory supports the paged results control, RadiantOne can request that the results from the backend be returned in pages. The support for paging is enabled, and the page size is set, at the level of the LDAP data source definition.
 
-![An image showing ](Media/paged-results-source.jpg)
+![Paged Results Property](Media/paged-results-source.jpg)
 
 **Controls Passed from Client Requests**
 
@@ -268,8 +268,25 @@ This control indicates that all modify, modify DN, and delete requests should in
 This control indicates that all add, modify, and modify DN requests should include the post-read control to retrieve the specified attribute’s value(s) as they appear immediately after the operation has been processed. Post-read controls may be used to obtain values of operational attributes, such as the “entryUUID” and “modifyTimestamp” attributes, updated by the server as part of the update operation. The backend directory is the enforcement point for the control. RadiantOne responds to the client with all information returned from the backend directory.
 
 
-### Merging Other LDAP Proxy Views
+### Merge Backend Configuration - Merging Other LDAP Proxy Views
 
+The Merge backend configuration section allows you to merge multiple directory data sources into a single RadiantOne identity view, while maintaining the underlying directory hierarchy. The Merge backend configuration is ideal for situations where applications expect to find information in an explicit hierarchy which already exists in a backend LDAP directory and there is a need to extend a part of this hierarchy with additional entries from other directory data sources.  The backend LDAP directory that contains entries to be merged must be configured as a RadiantOne data source before using the merge backend configuration. Use Control Panel > Setup > Data Catalog > Data Sources to configure data sources.
+
+>[!warning]
+>When merging backends with this configuration, the RadiantOne service does not perform identity correlation or joins. If the data sources being merged contain overlapping users (identified by the same DN after the merge) only the entry from the primary/main source are returned when browsing or searching against the view. If the overlapping users have an attribute in common, you can join the view with the other virtual view to return attributes from the secondary sources. Use the Object Builder tab to configure joins.
+
+To configure a merged backend:
+
+1. Select the LDAP Proxy View that represents the main directory backend hierarchy in the Control Panel > Setup > Directory Namespace > Namespace Design.
+2. Select the PROPERTIES tab on the right.
+3. Navigate to the bottom, section named Merge Backend Configuration and click: ![Add Merge Backend](Media/add-merge-backend-button.jpg)
+4. Select the data source that represents the directory backend containing the entries to be merged into the main LDAP proxy view from the Data Source drop-down list.
+5. Either manually enter the Remote Base DN, or click the [Browse Folder](Media/folder-icon.jpg) next to the Remote Base DN property to navigate to the container where the entries in the data source to be merged are located.
+6. Either manually enter the RadiantOne DN, or click the [Browse Folder](Media/folder-icon.jpg) next to the RadiantOne DN property to navigate to the location in the main LDAP Proxy view where you want the merged entries to appear.
+7. Click **ADD**.
+8. Click **SAVE**.
+
+When client queries reach the RadiantOne DN configured in step 6, the entries located in the merged backend at the lcoation configured in step 5 are returned. 
 
  
 ## LDAP Proxy View Advanced Settings
@@ -313,7 +330,7 @@ To map object classes:
 
 5.	Enter the object class in the Mapped Objectclass column and click **OK**.
 
-6.	Click **Save** in the upper right corner and click **Yes** to apply the changes to the server.
+6.	Click **SAVE**.
 
 In the example below, the inetOrgPerson object class is set to map to User.
 
