@@ -281,8 +281,8 @@ To configure a merged backend:
 2. Select the PROPERTIES tab on the right.
 3. Navigate to the bottom, section named Merge Backend Configuration and click: ![Add Merge Backend](Media/add-merge-backend-button.jpg)
 4. Select the data source that represents the directory backend containing the entries to be merged into the main LDAP proxy view from the Data Source drop-down list.
-5. Either manually enter the Remote Base DN, or click the [Browse Folder](Media/folder-icon.jpg) next to the Remote Base DN property to navigate to the container where the entries in the data source to be merged are located.
-6. Either manually enter the RadiantOne DN, or click the [Browse Folder](Media/folder-icon.jpg) next to the RadiantOne DN property to navigate to the location in the main LDAP Proxy view where you want the merged entries to appear.
+5. Either manually enter the Remote Base DN, or click the ![Browse Folder](Media/folder-icon.jpg) next to the Remote Base DN property to navigate to the container where the entries in the data source to be merged are located.
+6. Either manually enter the RadiantOne DN, or click the ![Browse Folder](Media/folder-icon.jpg) next to the RadiantOne DN property to navigate to the location in the main LDAP Proxy view where you want the merged entries to appear.
 7. Click **ADD**.
 8. Click **SAVE**.
 
