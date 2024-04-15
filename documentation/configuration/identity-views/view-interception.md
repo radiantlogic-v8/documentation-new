@@ -18,7 +18,7 @@ Interception scripts are written in Java and used to override the default behavi
 
 Interception scripts can be configured at a [global level](../global-settings/global-interception) (to apply to all root naming contexts configured for the RadiantOne namespace), or for a specific identity view/naming context only. 
 
-To enable an interception script:
+To enable an interception script for a specific identity view/naming context:
 
 1. From the Control Panel > Setup > Directory Namespace > Namespace Design, navigate to the identity view/node where the interception script should be invoked.
 1. On the right side, select the ADVANCED SETTINGS tab.
