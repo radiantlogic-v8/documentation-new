@@ -26,7 +26,7 @@ Identity views can be created from LDAP directories and associated with a specif
 
 ### Configuration
 
-If you configure an LDAP proxy view by mounting an LDAP backend directly at the Root Naming Context, it is the only backend that can be mounted at this specific naming context. If you want to comprise the identity view from many different backends, add new labels below the root naming context. Use labels to layout the hierarchy that you want and then mount backends at the corresponding labels.
+If you configure an LDAP proxy view by mounting an LDAP backend directly at the Root Naming Context, it is the only backend that can be mounted at this specific naming context. If you want to comprise the identity view from many different backends, add new labels below the root naming context. Use labels to layout the hierarchy that you want and then mount backends for the data sources that you want to aggregate at the corresponding labels.
 
 1.	First, data sources for each backend must be defined. From the Control Panel > Setup > Data Catalog > Data Sources, click ![An image showing ](Media/new-source.jpg). Use the Active Directory, Generic LDAP, Open DJ or RadiantOne directory template to define data sources.
 
