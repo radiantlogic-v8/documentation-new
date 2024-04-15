@@ -134,25 +134,25 @@ To regenerate the token:
 
 On Windows:
 
-    1. Stop the client if it is already running as a standalone application or as a windows service. 
+1. Stop the client if it is already running as a standalone application or as a windows service. 
 
-    1. Open appsettings.Production.json using an editor. 
+1. Open appsettings.Production.json using an editor. 
     
-    1. In the **AgentToken** field, enter the token value copied in [Regenerating the Token](#regenerating-the-token). 
+1. In the **AgentToken** field, enter the token value copied in [Regenerating the Token](#regenerating-the-token). 
 
 On Linux:
 
-    1. Stop the client if it is already running as a standalone application or as a daemon.
+1. Stop the client if it is already running as a standalone application or as a daemon.
 
-    1. Open appsettings.Production.json using an editor. 
+1. Open appsettings.Production.json using an editor. 
     
-    1. In the **AgentToken** field, enter the token value copied in [Regenerating the Token](#regenerating-the-token).
+1. In the **AgentToken** field, enter the token value copied in [Regenerating the Token](#regenerating-the-token).
 
 On Docker:
 
-    1. Stop and remove the container if it is already running.
+1. Stop and remove the container if it is already running.
 
-    1. Start the container with the token copied in [Regenerating the Token](#regenerating-the-token) as a value to the environment variable ServerHubConfiguration_AgentToken. 
+1. Start the container with the token copied in [Regenerating the Token](#regenerating-the-token) as a value to the environment variable ServerHubConfiguration_AgentToken. 
 
     docker run -v /path/on/host:/app/logs -e "ServerHubConfiguration_AgentToken=[regenerated_token]" radiantone/sdc-client
 
