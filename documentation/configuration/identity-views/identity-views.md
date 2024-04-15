@@ -118,10 +118,6 @@ Select one of the three following options.
 By default, RadiantOne uses the service account configured in the data source and connection pooling for connecting to backend LDAP servers. Therefore, when clients access the RadiantOne service, it can re-use any open connections in the pool to connect to the underlying LDAP server. Then, authorization is enforced at the RadiantOne level based on access controls. This is best practice and the recommended approach.
 
 If [Proxy Authorization](#proxy-authorization) is insufficient to condition the connection to the backend, and you want the connection from the client to RadiantOne to determine the lifecycle of the connection to the underlying LDAP server, you can enable the dedicated connection option.
-
- ![An image showing ](Media/Image3.16.jpg)
-
-
 If the dedicated connection option is enabled, RadiantOne does not use the connection pool and the connection to the underlying LDAP directory is closed when the client disconnects from RadiantOne. If dedicated connections are not used, and a client disconnects from RadiantOne, the connection to the underlying LDAP server can still remain in the connection pool (until the configured timeout parameter is reached, which then removes the connection from the pool).
 
 >[!note] Dedicated connections are best used in cases where there are only a few clients accessing the RadiantOne service but generate a lot of traffic. Clients must handle the opening and closing of connections efficiently (e.g. don’t leave open connections idle for long periods of time).
