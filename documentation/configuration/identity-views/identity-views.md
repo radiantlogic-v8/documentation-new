@@ -51,7 +51,7 @@ LDAP Backends can also be mounted at any label node that doesn't already have so
 
 ## LDAP Proxy View Properties
 
-These settings are found on the PROPERTIES tab.
+LDAP proxy view properties are managed from the Control Panel > Setup > Directory Namespace > Namespace Design. These settings are found on the PROPERTIES tab for the naming context where the LDAP proxy view is mounted.
 
 ### Type
 
@@ -279,7 +279,7 @@ This control indicates that all add, modify, and modify DN requests should inclu
 
  
 ## LDAP Proxy View Advanced Settings
-These settings are found on the ADVANCED SETTINGS tab.
+LDAP proxy view advanced settings are managed from the Control Panel > Setup > Directory Namespace > Namespace Design. These settings are found on the ADVANCED SETTINGS tab for the naming context where the LDAP proxy view is mounted.
 
 ### Interception Script
 For specific details, please see Interception Scripts in the Concepts section of the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction). This section describes how to enable interception scripts for an LDAP backend.
