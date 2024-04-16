@@ -11,4 +11,4 @@ This is the overview.
 
 ## Monitoring in EOC
 
-For information on monitoring in the EOC, refer to the [EOC Monitoring Guide](/../eoc/latest/monitoring-overview.md).
+For information on monitoring in the EOC, refer to the [EOC Monitoring Guide](/../../eoc/latest/monitoring/monitoring-overview).
