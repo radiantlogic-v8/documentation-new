@@ -403,6 +403,8 @@ You can exclude as many branches as you want. The image below depicts three bran
 
 ![Suffix Branch Exclusion, Multiple Branches](Media/suffix-branch-exclusion-multiple.jpg)
 
+In the browse window, the default size limit is set to 40 meaning only 40 containers below the Remote Base DN are visible to select for exclusion/inclusion when you click **ADD**. Increase the size limit if you need to display more branches and click **Apply** in the *Advanced* section in the Select Base DN screen. You can also enter a result filter to dynamically reduce the branches to the ones you want to exclude/include.
+
 ### Suffix Branch Inclusion
 
 By default, once you establish a Remote Base DN (starting point to search from in the underlying directory) for the identity view, all container levels from the backend below this location are mounted in it.
@@ -417,7 +419,7 @@ You can include as many branches as you want. The screen shot below depicts thre
 
 ![Suffix Branch Inclusion, Multiple Branches ](Media/suffix-branch-inclusion-multiple.jpg)
  
-The default size limit is set to 40 meaning only 40 containers below the Remote Base DN are visible to select for exclusion/inclusion when you click **ADD**. Increase the size limit if you need to display more branches and click **Apply** in the *Advanced* section in the Select Base DN screen. You can also enter a result filter to dynamically reduce the branches to the ones you want to exclude/include.
+In the browse window, the default size limit is set to 40 meaning only 40 containers below the Remote Base DN are visible to select for exclusion/inclusion when you click **ADD**. Increase the size limit if you need to display more branches and click **Apply** in the *Advanced* section in the Select Base DN screen. You can also enter a result filter to dynamically reduce the branches to the ones you want to exclude/include.
 
 ### Global Attributes Handling
 
@@ -526,25 +528,39 @@ As another example, if the client requests ALL attributes in its query to Radian
 
 **Hidden Attributes**
 
-By default, all attributes available for the LDAP objects are present in the virtual entries. To see a list of all attributes that are returned in the virtual entries, click on the **Objects** tab and locate the Virtual Attribute table (if you have no primary objects listed, you must add one first). If you do not want an attribute visible in the virtual entries, make sure a checkmark appears in the Hidden column next to that attribute. To hide an attribute, select it and click the **Edit** button. Check the Hidden in Result option and click **OK**. The checked attributes will not be visible in the virtual entries. 
+By default, all attributes available for all LDAP objects are present in the identity views. Configuring an attribute as hidden in Global Attributes Handling applies to all entries that contain the attribute, no matter which object class the entry is associated with. 
 
-To only see the attributes that are visible in the virtual entry, check the Visible Only checkbox at the top of the table. All attributes marked as hidden do not show in the list.
+To mark an attribute as hidden:
+1.	Go to the Control Panel > Directory Namespace > Namespace Design. Select the node where the LDAP Proxy View is mounted and go to ADVANCED SETTINGS tab > Global Attributes Handling section.
 
-The default size limit is set to 100 meaning only 100 containers below the Remote Base DN are visible to select for exclusion. Increase the size limit if you need to display more branches and click **Refresh Tree**. You can also enter a result filter to dynamically reduce the branches to the ones you want to exclude.
+2.	If an attribute you want to mark as hidden does not appear in the list, click on **ADD** and enter the Name (as it exists in the backend) or select it from the drop-down list.
+3. Check the *Hidden* checkbox.
+4.	Click **SAVE**.
+
+5.	If you already see the attribute you want to mark as hidden in the list, click the ![Pencil](Media/pencil.jpg) inline with the attribute. Check the *hidden* checkbox and click **SAVE**.
+6.	Click **SAVE** in the bottom right to save the page.
 
 >[!warning] this is NOT the approach you should take to prevent certain attributes from being returned to the client. Preventing attributes from being returned should be accomplished with ACL’s.
 
 **ActualDN**
 
-The DN of entries in the virtual namespace may differ from the actual DN from the backend. Therefore, for LDAP proxy views, a special virtual attribute named actualdn is returned by RadiantOne for each entry. The value contains the DN of the entry in the backend directory.
+The DN of entries in the RadiantOne namespace may differ from the actual DN from the backend. Therefore, for LDAP proxy views, a special virtual attribute named actualdn is returned by RadiantOne for each entry. The value contains the DN of the entry in the backend directory.
 
-If you want to use the actualdn attribute in computed attributes, the actualdn attribute must be configured as Always Requested in the virtual view. From the Main Control Panel -> Directory Namespace tab, select the naming context associated with your LDAP proxy view. On the right, select the Attributes tab and add the actualdn attribute as Always Requested. An example is shown below.
+If you want to use the actualdn attribute in computed attributes, the actualdn attribute must be configured as Always Requested in Global Attributes Handling. 
 
-![An image showing ](Media/Image3.31.jpg)
+To mark an attribute as hidden:
+1.	Go to the Control Panel > Directory Namespace > Namespace Design. Select the node where the LDAP Proxy View is mounted and go to ADVANCED SETTINGS tab > Global Attributes Handling section.
+
+2.	Click on **ADD** and enter *actualdn* for the Name.
+3. Check the *Always Requested* checkbox.
+4.	Click **SAVE**.
+6.	Click **SAVE** in the bottom right to save the page.
+   
+![Actualdn Global Attribute Handling](Media/add-actualdn.jpg)
  
-This attribute can be used in computed attributes by using the getactualDN() function. 
+This attribute can be used in computed attributes by using the getactualDN() function. Computed Attributes can be configured from the OBJECT BUILDER tab.
  
-![An image showing ](Media/Image3.32.jpg)
+![getActualDn Function](Media/get-actualdn-function.jpg)
 
 
 
