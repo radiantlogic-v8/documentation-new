@@ -419,16 +419,62 @@ You can include as many branches as you want. The screen shot below depicts thre
  
 The default size limit is set to 40 meaning only 40 containers below the Remote Base DN are visible to select for exclusion/inclusion when you click **ADD**. Increase the size limit if you need to display more branches and click **Apply** in the *Advanced* section in the Select Base DN screen. You can also enter a result filter to dynamically reduce the branches to the ones you want to exclude/include.
 
-### Global Attributes handling
-- actual name
--virtual name
--DN remapping
--always requested
--hidden
+### Global Attributes Handling
 
-ADDING NEW ATTRIBUTES
+The attributes and the properties related to how they are handled are shown in the table located on the ADVANCED SETTINGS tab, Global Attributes Handling section. The attributes configured here apply to entries associated with any object class in the backend LDAP directory. For example, if the attribute named *sAMAccountName* is remapped to *uid* in this section, this remapping would apply to any entry associated with any object class (e.g. user and group) that contains the *sAMAccountName* attribute.
 
-### DN Remapping
+The table of attributes includes the following information:
+- Actual Name: The attribute name as it exists in the schema from the backend LDAP directory.
+- Virtual Name: The remapping of the actual name that appears in the RadiantOne identity view.
+- DN Remapping: Indicates that for attributes of DN type syntax, remap the suffix of the DN automatically to match the naming context used in the RadiantOne namespace.
+- Always Requested: Indicates if the RadiantOne service should always explicitly request the attribute when querying the backend LDAP directory. These attributes are typically known as operational attributes and you must ask for them specifically by name in order for them to be returned in queries.
+- Hidden: Indicates that the attribute should not be returned in the identity view.
+
+The default list of configured attributes include: manager, secretary, directreports, seealso, memberof, uniquemember, and member. 
+
+To add more attributes:
+1. Click ![Add Button](Media/add-button.jpg).
+2. Either manually enter the attribute name, or choose one from the drop-down list.
+3. (Optional) Enter the virtual name that the attribute should be remapped to. This is the name of the attribute that is returned in the entries from the identity view.
+4. (Optional) Check the option to enable DN remapping. This is only applicable if the attribute selected in step 2 has a DN syntax.
+5. (Optional) Check the option to always request the attribute. This is only applicable if the attribute selected in step 2 is an operational attribute and the backend LDAP directory requires it be explicitly requested in queries.
+6. (Optional) Check the hidden option if the attribute should not be shown in the entries returned in this LDAP proxy identity view.
+7. Click **ADD**.
+8. Click **SAVE**.
+
+More details about Virtual Name (Attribute Mapping), DN Remapping, Always Requested, and Hidden are shown below.
+
+**Virtual Name - Attribute Mapping**
+
+As described in the object class mapping section, all underlying schemas must be mapped to a common schema to facilitate global searching. The process of mapping object classes was defined in the previous section. This section depicts how to setup attribute mappings.
+
+To set up attribute mappings:
+
+1.	On the Main Control Panel > Directory Namespace tab, select the desired node representing the LDAP backend below the Root Naming Contexts node. 
+
+2.	On the right side select the Attributes Tab. A list of requested/remapped attributes for this backend is displayed. 
+
+3.	If an attribute you want to map does not appear in the list, click on **Add** and enter the Name (as it exists in the backend), the Virtual Name (what you want the name to be in the virtual entry), whether it contains a [DN value that needs remapped](#dn-remapping) and if you want RadiantOne to [always request](#always-requested-attributes) it from the backend.
+
+4.	If you already see the attribute you want to map in the list, select it and click on **Edit**. Enter a value for Virtual Name and click **Ok**. This is the name of the attribute that appears for the entry in the virtual directory.
+
+5.	Click **Save** in the upper right corner and **Yes** to apply the changes to the server.
+
+6.	Click **OK** to exit the confirmation.
+
+The screen shot below shows a mapping established between uid and sAMAccountName.
+
+![An image showing ](Media/Image3.20.jpg)
+ 
+
+
+This means that all entries from the underlying source containing a uid attribute be returned with it mapped as sAMAccountName (as depicted in the screen shot below).
+
+![An image showing ](Media/Image3.21.jpg)
+ 
+Figure 21: Result of Attribute Mapping
+
+**DN Remapping**
 
 This setting allows for automatic re-mapping of attributes of DN syntax type. This functionality is primarily useful for existing groups/members in an LDAP backend. When an LDAP backend is configured, you have the option to return the group members “real” DNs (as they exist in the backend directory), or to re-map them to the DN for the RadiantOne namespace. For example, the figure below depicts a proxy view that has been defined for a backend LDAP directory. The routing happens at the ou=SunOne,ou=RemoteDirectories,o=vds level in the RadiantOne namespace.
 
@@ -460,15 +506,13 @@ This auto re-mapping capability is useful for two main purposes:
 
 If your virtual view does not keep the existing backend hierarchy (for example if you don’t map direct to a backend LDAP), then you can use a computed attribute function to auto-translate the member DNs to the new virtual namespace. The functions available for computed attributes for this purpose are: DNremapLookup, DNremapLookupForeign, and DNremapLookupUnnest.
 
-### Always Requested Attributes
+**Always Requested Attributes**
 
 In some cases, certain attributes are not returned by the LDAP backend even if RadiantOne requests all attributes. These attributes are typically known as operational attributes and you must ask for them specifically by name. If you would like RadiantOne to always request specific operational attributes (in addition to all, or the attributes requested by the client), you can set them as Always Requested.
 
 To specify these requested attributes, from the Main Control Panel > Directory Namespace Tab, select the LDAP backend below the Root Naming Contexts node and on the right side, select the Attributes tab. If the attribute you want to have RadiantOne always request is not in the list, click on the **Add** button. Enter the attribute name and select the Always Requested option. If the attribute appears in the list but the Always Requested column is not checked, select the attribute and click **Edit**. Check the Always Requested option and click **OK**.
 
 ![An image showing ](Media/Image3.15.jpg)
-
-
 
 Attributes that have a checkmark in the Always Requested column are always requested by RadiantOne (in addition to all, or only attributes requested in the query – depending on which option you have selected in the Attribute Handling section). 
 
@@ -485,35 +529,7 @@ As another example: If the client requests ALL attributes in its query to Radian
 If you make any changes, click **Save** in the upper right corner and then click **Yes** to apply the changes to the server.
 
 
-### Attribute Mapping
 
-As described in the object class mapping section, all underlying schemas must be mapped to a common schema to facilitate global searching. The process of mapping object classes was defined in the previous section. This section depicts how to setup attribute mappings.
-
-To set up attribute mappings:
-
-1.	On the Main Control Panel > Directory Namespace tab, select the desired node representing the LDAP backend below the Root Naming Contexts node. 
-
-2.	On the right side select the Attributes Tab. A list of requested/remapped attributes for this backend is displayed. 
-
-3.	If an attribute you want to map does not appear in the list, click on **Add** and enter the Name (as it exists in the backend), the Virtual Name (what you want the name to be in the virtual entry), whether it contains a [DN value that needs remapped](#dn-remapping) and if you want RadiantOne to [always request](#always-requested-attributes) it from the backend.
-
-4.	If you already see the attribute you want to map in the list, select it and click on **Edit**. Enter a value for Virtual Name and click **Ok**. This is the name of the attribute that appears for the entry in the virtual directory.
-
-5.	Click **Save** in the upper right corner and **Yes** to apply the changes to the server.
-
-6.	Click **OK** to exit the confirmation.
-
-The screen shot below shows a mapping established between uid and sAMAccountName.
-
-![An image showing ](Media/Image3.20.jpg)
- 
-
-
-This means that all entries from the underlying source containing a uid attribute be returned with it mapped as sAMAccountName (as depicted in the screen shot below).
-
-![An image showing ](Media/Image3.21.jpg)
- 
-Figure 21: Result of Attribute Mapping
 
 ### Hidden Attributes
 
@@ -524,93 +540,7 @@ To only see the attributes that are visible in the virtual entry, check the Visi
 The default size limit is set to 100 meaning only 100 containers below the Remote Base DN are visible to select for exclusion. Increase the size limit if you need to display more branches and click **Refresh Tree**. You can also enter a result filter to dynamically reduce the branches to the ones you want to exclude.
 
 
-### Computed Attributes
 
-For specific details, please see Computed Attributes in the Concepts section of the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction). This section describes how to configure computed attributes for an LDAP backend.
-
-To create computed attributes:
-
-1.	From the Main Control Panel > Directory Namespace Tab, select the node representing the LDAP backend below Root Naming Contexts. 
-
-2.	On the right side, select the Objects Tab.
-
-3.	Make sure the actual object class (not a remapped one) associated with your backend entries appears in the Primary Objects list. If not, click **Add** to add it. If you have more than one object class in your Primary Objects list, select the one you want to associate with the computed attribute.
-
-4.	Click the **Edit** button next to Define Computed Attributes. 
-
-5.	Click **Add**.
-
-6.	Enter the Computed Attribute name in the Name parameter.
-
-7.	Configure the needed expression to comprise the computed attribute. This is based on Java and if you are already familiar with the syntax, you can enter it directly for the value. 
-
-If you would like to build the attribute based on a constant and need assistance, click on the constant button and enter the value. 
-
-If you would like the computed attribute to be based on an existing attribute, click on the **Attribute** button for assistance (a list of all attributes available in the virtual object will display). 
-
-If you would like to use a function to build your computed attribute, click on the **Function** button for a list to display.
-
-8.	Click the **Validate** button to check the syntax of your expression. 
-
-9.	Once your expression compiles properly (no errors in the Compilation Results window), click **OK**. 
-
-10.	Click the **Save** button in the upper right corner and **Yes** to confirm the changes.
-
-The computed attribute should appear in the list of attributes for the virtual object (indicated by an orange square in the Origin column) and the value is populated based on your configured expression when RadiantOne returns virtual entries.
-
-If you would like to see a list of only computed attributes for the virtual object, select the “Computed” option in the Display drop-down list. 
-
-For more details, please see Computed Attributes in the Concepts section of the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction).
-
-**Deactivate Computed Attributes**
-
-If you have defined multiple computed attributes, it can be helpful to deactivate some for testing or if you (temporarily) don’t need them anymore. 
-
-To deactivate a computed attribute:
-
-1.	From the Main Control Panel > Directory Namespace Tab, select the node representing the LDAP backend below Root Naming Contexts. 
-
-2.	On the right side, select the Objects Tab. 
-
-3.	In your Primary Objects list, select the one that contains the computed attribute(s) that you need to deactivate.
-
-4.	Click the **Edit** button next to Define Computed Attributes. 
-
-5.	Uncheck the “Active” checkbox next to the computed attributes that you want to deactivate.
-
-![An image showing ](Media/Image3.30.jpg)
- 
-
-
-6.	Click **OK**.
-
-7.	Click **Save**.
-
-### Bind Order
-
-If you have configured joins between the selected LDAP object and other sources, RadiantOne can send the bind request (credential checking) to many backends. 
-
-To configure the bind order:
-
-1.	From the Main Control Panel > Directory Namespace Tab, select the node representing your LDAP backend below Root Naming Contexts. 
-
-2.	On the right side, select the Objects Tab.
-
-3.	Click the **Edit** button next to Define Bind Strategy at the bottom. The Edit Bind Strategy window displays a list of all sources (the primary along with any secondary sources you have joined with). 
-
-4.	Enable the source as a possible participant in the bind operation. 
-
-5.	Use the up and down arrow to determine the order RadiantOne should attempt the credential checking. RadiantOne attempts to verify the credentials against the first enabled source in the list. If it fails, then the next is tried and so forth. If all enabled sources have been tried without success, RadiantOne returns a bind failed error to the client.
-
-For more information on bind order and joining, please see the sections titled Bind Order and Joins in the Concepts section of the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction).
-
-### Joins
-
-Objects from any sources in the RadiantOne namespace can be joined. With joins, you can extend the LDAP entries with attributes coming from another data source, or new application-specific attributes (required by applications, but don’t exist yet). This section assists you in finding the location to configure the join for your virtual view associated with an LDAP backend data source.
-
-Joins are configured by first selecting the virtual view built from the primary source below Root Naming Contexts in the Main Control Panel > Directory Namespace Tab. On the right side, select the Objects tab, choose the primary object class (add it if it isn’t listed), and click **New** in the Join Profiles section. To deactivate a join, uncheck the join’s Active box in the Join Profiles section on the Objects tab and click **Save**. To reactivate the join, check the join’s Active box and click **Save**.
-
-For complete details, please see Joins in the Concepts section of the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction).
 
 ### Optimizations
 
@@ -709,6 +639,94 @@ Unnest Groups	| - | X
 
 
 ## LDAP Proxy View Object Builder
+
+### Computed Attributes
+
+For specific details, please see Computed Attributes in the Concepts section of the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction). This section describes how to configure computed attributes for an LDAP backend.
+
+To create computed attributes:
+
+1.	From the Main Control Panel > Directory Namespace Tab, select the node representing the LDAP backend below Root Naming Contexts. 
+
+2.	On the right side, select the Objects Tab.
+
+3.	Make sure the actual object class (not a remapped one) associated with your backend entries appears in the Primary Objects list. If not, click **Add** to add it. If you have more than one object class in your Primary Objects list, select the one you want to associate with the computed attribute.
+
+4.	Click the **Edit** button next to Define Computed Attributes. 
+
+5.	Click **Add**.
+
+6.	Enter the Computed Attribute name in the Name parameter.
+
+7.	Configure the needed expression to comprise the computed attribute. This is based on Java and if you are already familiar with the syntax, you can enter it directly for the value. 
+
+If you would like to build the attribute based on a constant and need assistance, click on the constant button and enter the value. 
+
+If you would like the computed attribute to be based on an existing attribute, click on the **Attribute** button for assistance (a list of all attributes available in the virtual object will display). 
+
+If you would like to use a function to build your computed attribute, click on the **Function** button for a list to display.
+
+8.	Click the **Validate** button to check the syntax of your expression. 
+
+9.	Once your expression compiles properly (no errors in the Compilation Results window), click **OK**. 
+
+10.	Click the **Save** button in the upper right corner and **Yes** to confirm the changes.
+
+The computed attribute should appear in the list of attributes for the virtual object (indicated by an orange square in the Origin column) and the value is populated based on your configured expression when RadiantOne returns virtual entries.
+
+If you would like to see a list of only computed attributes for the virtual object, select the “Computed” option in the Display drop-down list. 
+
+For more details, please see Computed Attributes in the Concepts section of the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction).
+
+**Deactivate Computed Attributes**
+
+If you have defined multiple computed attributes, it can be helpful to deactivate some for testing or if you (temporarily) don’t need them anymore. 
+
+To deactivate a computed attribute:
+
+1.	From the Main Control Panel > Directory Namespace Tab, select the node representing the LDAP backend below Root Naming Contexts. 
+
+2.	On the right side, select the Objects Tab. 
+
+3.	In your Primary Objects list, select the one that contains the computed attribute(s) that you need to deactivate.
+
+4.	Click the **Edit** button next to Define Computed Attributes. 
+
+5.	Uncheck the “Active” checkbox next to the computed attributes that you want to deactivate.
+
+![An image showing ](Media/Image3.30.jpg)
+ 
+
+
+6.	Click **OK**.
+
+7.	Click **Save**.
+
+### Bind Order
+
+If you have configured joins between the selected LDAP object and other sources, RadiantOne can send the bind request (credential checking) to many backends. 
+
+To configure the bind order:
+
+1.	From the Main Control Panel > Directory Namespace Tab, select the node representing your LDAP backend below Root Naming Contexts. 
+
+2.	On the right side, select the Objects Tab.
+
+3.	Click the **Edit** button next to Define Bind Strategy at the bottom. The Edit Bind Strategy window displays a list of all sources (the primary along with any secondary sources you have joined with). 
+
+4.	Enable the source as a possible participant in the bind operation. 
+
+5.	Use the up and down arrow to determine the order RadiantOne should attempt the credential checking. RadiantOne attempts to verify the credentials against the first enabled source in the list. If it fails, then the next is tried and so forth. If all enabled sources have been tried without success, RadiantOne returns a bind failed error to the client.
+
+For more information on bind order and joining, please see the sections titled Bind Order and Joins in the Concepts section of the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction).
+
+### Joins
+
+Objects from any sources in the RadiantOne namespace can be joined. With joins, you can extend the LDAP entries with attributes coming from another data source, or new application-specific attributes (required by applications, but don’t exist yet). This section assists you in finding the location to configure the join for your virtual view associated with an LDAP backend data source.
+
+Joins are configured by first selecting the virtual view built from the primary source below Root Naming Contexts in the Main Control Panel > Directory Namespace Tab. On the right side, select the Objects tab, choose the primary object class (add it if it isn’t listed), and click **New** in the Join Profiles section. To deactivate a join, uncheck the join’s Active box in the Join Profiles section on the Objects tab and click **Save**. To reactivate the join, check the join’s Active box and click **Save**.
+
+For complete details, please see Joins in the Concepts section of the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction).
 
 ## LDAP Proxy View Persistent Cache
 
