@@ -691,6 +691,10 @@ Define a computed attribute named userPassword with the value based on the getAD
 
 Lastly a persistent cache on the virtual view can be configured and initialized. Afterwards, check the option to Use Cache for Authentication. When this option is enabled, RadiantOne validates the credentials against the local cache as opposed to delegating the credentials checking to the backend Active Directory. 
 
+## LDAP Proxy View Special Attributes
 
+## LDAP Proxy View Object Builder
+
+## LDAP Proxy View Persistent Cache
 
 
