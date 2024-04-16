@@ -454,7 +454,7 @@ As described in the [object class mapping](#object-class-mapping) section, all u
 
 To set up global attribute mappings:
 
-1.	Go to the Control Panel > Directory Namespace > Namespace Design. Select the node where the LDAP Proxy View is mounted and go to ADVANCED SETTINGS tab > Global Attributes Handling section.
+1.	Go to the Control Panel > Directory Namespace > Namespace Design. Select the node where the LDAP Proxy View is mounted and go to theADVANCED SETTINGS tab > Global Attributes Handling section.
 
 2.	If an attribute you want to map does not appear in the list, click on **ADD** and enter the Name (as it exists in the backend) and the Virtual Name (what you want the attribute name to be in the identity view).
 3.	Click **SAVE**.
@@ -504,7 +504,7 @@ If your virtual view does not keep the existing backend hierarchy (for example i
 In some cases, certain attributes are not returned by the LDAP backend even if RadiantOne requests all attributes. These attributes are typically known as operational attributes and you must ask for them specifically by name. If you would like RadiantOne to always request specific operational attributes (in addition to all, or the attributes requested by the client), you can set them as Always Requested.
 
 To specify always requested attributes:
-1.	Go to the Control Panel > Directory Namespace > Namespace Design. Select the node where the LDAP Proxy View is mounted and go to ADVANCED SETTINGS tab > Global Attributes Handling section.
+1.	Go to the Control Panel > Directory Namespace > Namespace Design. Select the node where the LDAP Proxy View is mounted and go to the ADVANCED SETTINGS tab > Global Attributes Handling section.
 
 2.	If an attribute you want to map does not appear in the list, click on **ADD** and enter the Name (as it exists in the backend) and the Virtual Name (what you want the attribute name to be in the identity view).
 3. Check the *Always Requested* checkbox.
@@ -531,7 +531,7 @@ As another example, if the client requests ALL attributes in its query to Radian
 By default, all attributes available for all LDAP objects are present in the identity views. Configuring an attribute as hidden in Global Attributes Handling applies to all entries that contain the attribute, no matter which object class the entry is associated with. 
 
 To mark an attribute as hidden:
-1.	Go to the Control Panel > Directory Namespace > Namespace Design. Select the node where the LDAP Proxy View is mounted and go to ADVANCED SETTINGS tab > Global Attributes Handling section.
+1.	Go to the Control Panel > Directory Namespace > Namespace Design. Select the node where the LDAP Proxy View is mounted and go to the ADVANCED SETTINGS tab > Global Attributes Handling section.
 
 2.	If an attribute you want to mark as hidden does not appear in the list, click on **ADD** and enter the Name (as it exists in the backend) or select it from the drop-down list.
 3. Check the *Hidden* checkbox.
@@ -548,8 +548,8 @@ The DN of entries in the RadiantOne namespace may differ from the actual DN from
 
 If you want to use the actualdn attribute in computed attributes, the actualdn attribute must be configured as Always Requested in Global Attributes Handling. 
 
-To mark an attribute as hidden:
-1.	Go to the Control Panel > Directory Namespace > Namespace Design. Select the node where the LDAP Proxy View is mounted and go to ADVANCED SETTINGS tab > Global Attributes Handling section.
+To request the actual DN:
+1.	Go to the Control Panel > Directory Namespace > Namespace Design. Select the node where the LDAP Proxy View is mounted and go to the ADVANCED SETTINGS tab > Global Attributes Handling section.
 
 2.	Click on **ADD** and enter *actualdn* for the Name.
 3. Check the *Always Requested* checkbox.
@@ -565,9 +565,9 @@ This attribute can be used in computed attributes by using the getactualDN() fun
 
 
 ### Virtualizing Active Directory User Passwords
-If you want to include user passwords in your identity view from Active Directory, so that you can have the passwords stored in persistent cache to bind locally instead of delegating the bind to the backend Active Directory, use the getADpassword() function in a computed attribute.
+If you want to include existing user passwords in your identity view from Active Directory, so that you can have the passwords stored in persistent cache to bind locally instead of delegating the bind to the backend Active Directory, use the getADpassword() function in a computed attribute.
 
-For virtual views from an Active Directory backend, passwords associated with the user entries are not a part of the view by default. When a user associated with this virtual view authenticates to RadiantOne, the credentials checking is delegated to the backend Active Directory. This is the behavior whether the virtual view is configured for persistent cache or not because RadiantOne does not have access to the Active Directory passwords. If you have the virtual view configured for persistent cache and you want RadiantOne to validate the passwords locally as opposed to delegating this to the backend Active Directory, you must cache the passwords from Active Directory. A computed attribute is required to get the hashed password to store in the persistent cache. Once the passwords are cached, you can use the Use Cache for Authentication option.  
+For identity views from an Active Directory backend, passwords associated with the user entries are not a part of the view by default. When a user associated with this identity view authenticates to RadiantOne, the credentials checking is delegated to the backend Active Directory. This is the behavior whether the identity view is configured for persistent cache or not because RadiantOne does not have access to the Active Directory passwords. If you have the identity view configured for persistent cache and you want RadiantOne to validate the passwords locally as opposed to delegating this to the backend Active Directory, you must cache the passwords from Active Directory. A computed attribute is required to get the hashed password to store in the persistent cache. Once the passwords are cached, you can use the Use Cache for Authentication option.  
 
 To cache user passwords, the virtual view of Active Directory needs a computed attribute named userPassword that is based on the function named getADPassword(). RadiantOne considers this computed attribute as the user’s password and the value of the computed attribute contains the user’s Active Directory password (encrypted as PBKDF2AD).  
 
@@ -592,34 +592,41 @@ To leverage the Active Directory native replication mechanism to get the passwor
    TCP 49152 through 65535    | Dynamic ports. 
 
 
-An example of a proxy view to an Active Directory backend, and the required steps to cache the user passwords associated with this view, are shown below. 
+An example of an LDAP proxy view to an Active Directory backend, and the required steps to cache the user passwords associated with this view, are shown below. 
 
-1. Select the configured proxy view on the Main Control Panel -> Directory Namespace tab.
-2. Select the Attributes tab on the right.
-3. Click Add
-4. Select unicodePwd from the Name drop-down list.
-5. Enter a virtual name of userPassword.
-6. Click OK.
-7. Click Save.
-
+1.	Go to the Control Panel > Directory Namespace > Namespace Design. Select the node where the LDAP Proxy View is mounted and go to the ADVANCED SETTINGS tab > Global Attributes Handling section.
+2.	Click on **ADD** and select unicodePwd from the Name drop-down list.
+3.	Enter a virtual name of *userPassword*.
+4.	Click **SAVE**.
+5.	Click **SAVE** in the bottom right to save the page.
 
 Define a computed attribute named userPassword with the value based on the getADPassword() function. An example for a proxy view to an Active Directory backend is shown below. 
 
-1. Select the configured proxy view on the Main Control Panel -> Directory Namespace tab.
-2. Select the Objects tab on the right.
-3. In the Primary Objects section, click Add.
-4. Choose the User object class and click OK.
-5. Click Edit next to “Define Computed Attributes”.
-6. Click Add.
-7. Enter a value of userPassword as the Attribute Name.
-8. Click the Function button.
-9. Select the getADPassword() function and click OK.
-10. Click Validate.
-11. Click OK.
-12. Click OK to exit the computed attributes window. 
+1. Go to the Control Panel > Directory Namespace > Namespace Design. Select the node where the LDAP Proxy View is mounted and go to the OBJECT BUILDER tab.
+1. Click: ![Add Primary Object](Media/add-primary-object.jpg)
+1. Locate the *User* object in the list on the top and click ![Plus Sign](Media/plus.jpg). This moves it to the list on the bottom.
+1. Click **DONE*. This adds the selected primary objects onto the design canvas.
+1. Click the icon for the computed attributes on the design canvas. This opens the computed attributes configuration panel.
+
+    ![Computed Attributes](Media/design-canvas-computed.jpg)
+   
+1. Click **+ADD** in the computed attributes panel.
+
+    ![Computed Attributes Panel](Media/computed-attr-panel.jpg)
+   
+1. Enter a value of *userPassword* as the Attribute Name.
+1. Click the ![Function Button](Media/function-button-computed.jpg) button.
+1. Select the getADPassword() function and click **NEXT**.
+1. Click **DONE**.
+
+   ![GetADPassword Function](Media/getadpassword-function.jpg)
+   
+1. Click **VALIDATE** to make sure the expression compiles without errors.
+1. Click **DONE**.
+1. Click **SAVE**. 
 
 
->[!note] – If your proxy view is using a Merged Tree configuration to merge another Active Directory view into the primary proxy view, you must have the userPassword computed attribute configured in both the primary proxy view and the merged view for passwords to be retrieved properly from both Active Directory backends.
+>[!note] – If your LDAP proxy view is using a Merged Tree configuration to merge another Active Directory view into the primary proxy view, you must have the userPassword computed attribute configured in both the primary proxy view and the merged view for passwords to be retrieved properly from both Active Directory backends.
 
 Lastly a persistent cache on the virtual view can be configured and initialized. Afterwards, check the option to Use Cache for Authentication. When this option is enabled, RadiantOne validates the credentials against the local cache as opposed to delegating the credentials checking to the backend Active Directory. 
 
