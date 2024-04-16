@@ -421,7 +421,9 @@ The default size limit is set to 40 meaning only 40 containers below the Remote 
 
 ### Global Attributes Handling
 
-The attributes and the properties related to how they are handled are shown in the table located on the ADVANCED SETTINGS tab, Global Attributes Handling section. The attributes configured here apply to entries associated with any object class in the backend LDAP directory. For example, if the attribute named *sAMAccountName* is remapped to *uid* in this section, this remapping would apply to any entry associated with any object class (e.g. user and group) that contains the *sAMAccountName* attribute.
+Global attribute handling applies to entries associated with any object class in the backend LDAP directory that are included in the LDAP proxy identity view.
+
+The attributes and the properties related to how they are handled are shown in the table located on the Control Panel > Directory Namespace > Namespace Design. Select the node where the LDAP Proxy View is mounted and go to ADVANCED SETTINGS tab > Global Attributes Handling section. The attributes configured here apply to entries associated with any object class in the backend LDAP directory. For example, if the attribute named *sAMAccountName* is remapped to *uid* in this section, this remapping would apply to any entry associated with any object class (e.g. user and group) that contains the *sAMAccountName* attribute.
 
 The table of attributes includes the following information:
 - Actual Name: The attribute name as it exists in the schema from the backend LDAP directory.
@@ -446,33 +448,27 @@ More details about Virtual Name (Attribute Mapping), DN Remapping, Always Reques
 
 **Virtual Name - Attribute Mapping**
 
-As described in the object class mapping section, all underlying schemas must be mapped to a common schema to facilitate global searching. The process of mapping object classes was defined in the previous section. This section depicts how to setup attribute mappings.
+As described in the [object class mapping](#object-class-mapping) section, all underlying schemas can be mapped to a common schema to facilitate global searching. This section describes how to setup attribute mappings that apply to any entry associated with any object class in the backend LDAP directory that are included in the LDAP proxy identity view.
 
-To set up attribute mappings:
+To set up global attribute mappings:
 
-1.	On the Main Control Panel > Directory Namespace tab, select the desired node representing the LDAP backend below the Root Naming Contexts node. 
+1.	Go to the Control Panel > Directory Namespace > Namespace Design. Select the node where the LDAP Proxy View is mounted and go to ADVANCED SETTINGS tab > Global Attributes Handling section.
 
-2.	On the right side select the Attributes Tab. A list of requested/remapped attributes for this backend is displayed. 
+2.	If an attribute you want to map does not appear in the list, click on **ADD** and enter the Name (as it exists in the backend), the Virtual Name (what you want the name to be in the virtual entry), whether it contains a DN value that needs remapped, if you want RadiantOne to always request it from the backend, and if the attribute should be hidden and not returned in the identity view.
+3.	Click **SAVE**.
 
-3.	If an attribute you want to map does not appear in the list, click on **Add** and enter the Name (as it exists in the backend), the Virtual Name (what you want the name to be in the virtual entry), whether it contains a [DN value that needs remapped](#dn-remapping) and if you want RadiantOne to [always request](#always-requested-attributes) it from the backend.
-
-4.	If you already see the attribute you want to map in the list, select it and click on **Edit**. Enter a value for Virtual Name and click **Ok**. This is the name of the attribute that appears for the entry in the virtual directory.
-
-5.	Click **Save** in the upper right corner and **Yes** to apply the changes to the server.
-
-6.	Click **OK** to exit the confirmation.
+4.	If you already see the attribute you want to map in the list, click the ![Pencil](Media/pencil.jpg) inline with the attribute. Enter a value for Virtual Name and click **SAVE**.
+5.	Click **SAVE** in the bottom right to save the page.
 
 The screen shot below shows a mapping established between uid and sAMAccountName.
 
-![An image showing ](Media/Image3.20.jpg)
+![Attribute Mapping](Media/attribute-mapping.jpg)
  
-
 
 This means that all entries from the underlying source containing a uid attribute be returned with it mapped as sAMAccountName (as depicted in the screen shot below).
 
-![An image showing ](Media/Image3.21.jpg)
+![Attribute Mapping Example](Media/attribute-mapping-runtime.jpg)
  
-Figure 21: Result of Attribute Mapping
 
 **DN Remapping**
 
@@ -528,10 +524,7 @@ As another example: If the client requests ALL attributes in its query to Radian
 
 If you make any changes, click **Save** in the upper right corner and then click **Yes** to apply the changes to the server.
 
-
-
-
-### Hidden Attributes
+**Hidden Attributes**
 
 By default, all attributes available for the LDAP objects are present in the virtual entries. To see a list of all attributes that are returned in the virtual entries, click on the **Objects** tab and locate the Virtual Attribute table (if you have no primary objects listed, you must add one first). If you do not want an attribute visible in the virtual entries, make sure a checkmark appears in the Hidden column next to that attribute. To hide an attribute, select it and click the **Edit** button. Check the Hidden in Result option and click **OK**. The checked attributes will not be visible in the virtual entries. 
 
@@ -540,13 +533,7 @@ To only see the attributes that are visible in the virtual entry, check the Visi
 The default size limit is set to 100 meaning only 100 containers below the Remote Base DN are visible to select for exclusion. Increase the size limit if you need to display more branches and click **Refresh Tree**. You can also enter a result filter to dynamically reduce the branches to the ones you want to exclude.
 
 
-
-
-### Optimizations
-
-For certain use cases, there are three parameters that may be enabled to improve processing/performance. They are located on the Main Control Panel > Directory Namespace Tab. Navigate below the Root Naming Context section and select the node representing the virtual view to your backend. On the right side, select the Proxy Advanced tab and locate the Optimizations section. For details on optimizing identity views, see the [Tuning Guide](../tuning/optimize-views.md).
-
-### ActualDN
+**ActualDN**
 
 The DN of entries in the virtual namespace may differ from the actual DN from the backend. Therefore, for LDAP proxy views, a special virtual attribute named actualdn is returned by RadiantOne for each entry. The value contains the DN of the entry in the backend directory.
 
@@ -554,8 +541,6 @@ If you want to use the actualdn attribute in computed attributes, the actualdn a
 
 ![An image showing ](Media/Image3.31.jpg)
  
-
-
 This attribute can be used in computed attributes by using the getactualDN() function. 
  
 ![An image showing ](Media/Image3.32.jpg)
