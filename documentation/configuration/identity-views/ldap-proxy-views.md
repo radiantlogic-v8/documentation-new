@@ -675,13 +675,14 @@ To delete primary objects, choose *Manage Primary Object* from the Primary Objec
 ![Delete Primary Object](Media/delete-primary-object.jpg)
 
 ### Computed Attributes
-## Computed Attributes
 
-If you would like your virtual entries to include attributes that are derived from existing attributes, or set to a constant value, you can use Computed Attributes. Computed attributes can be based on attributes from the primary object, secondary objects, and/or previously computed attributes, or can contain a constant value. 
+If you would like your RadiantOne entries to include attributes that are derived from existing attributes, or set to a constant value, you can use Computed Attributes. Computed attributes can be based on attributes from the primary object, secondary objects, and/or previously computed attributes, or can contain a constant value.  Computed attributes are managed from the Control Panel > Directory Namespace > Namespace Design. Select the node where the LDAP Proxy View is mounted and go to the OBJECT BUILDER tab. Click ![Computed Attributes Icon](Media/computed-attr-icon.jpg) on the canvas to open the Computed Attributes configuration panel.
 
-If you create a computed attribute from a binary attribute, use the getBinary(attribute) function to get the binary value. If you do not use this function, the computed attribute will have the value in the form of {base64Binary}xxxx. Also, the computed attribute name should be defined in the list of [binary attributes](03-front-end-settings-tab#binary-attributes) in order for RadiantOne to handle it properly.
+If you create a computed attribute from a binary attribute, use the getBinary(attribute) function to get the binary value. If you do not use this function, the computed attribute will have the value in the form of {base64Binary}xxxx. Also, the computed attribute name should be defined in the list of binary attributes in order for RadiantOne to handle it properly. This list is configured from the Classic Control Panel > Settings tab > Server Front End > Attributes Handling > Attributes considered as binary for backend operations. To switch to Classic Control Panel, use the menu options for the logged in user in the upper right.
 
-Creating multiple computed attributes with the same name is not allowed. If you need to create a computed attribute from a previously computed attribute, that attribute must appear in the virtual object list first. All attributes of the virtual object can be seen on the Objects tab.
+![Classic Control Panel](Media/classic-cp.jpg)
+
+Creating multiple computed attributes with the same name is not allowed. If you need to create a computed attribute from a previously computed attribute, that attribute must appear in the configured computed attributes list first. 
 
 >[!warning]
 >Attributes from the primary source have a blue square icon in the Origin column. Attributes from secondary sources have a green square icon in the Origin column. Computed Attributes have a red square icon in the Origin column.
@@ -875,7 +876,9 @@ Objects from any sources in the RadiantOne namespace can be joined. With joins, 
 
 Joins are configured by first selecting the virtual view built from the primary source below Root Naming Contexts in the Main Control Panel > Directory Namespace Tab. On the right side, select the Objects tab, choose the primary object class (add it if it isn’t listed), and click **New** in the Join Profiles section. To deactivate a join, uncheck the join’s Active box in the Join Profiles section on the Objects tab and click **Save**. To reactivate the join, check the join’s Active box and click **Save**.
 
-For complete details, please see Joins in the Concepts section of the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction).
+When you configure joins across multiple objects, you should also consider configuring Bind Order and Attribute Priority for overlapping attributes.
+
+For complete details on configuring joins, bind order and attribute priority, please see: [Joins](joins.md) 
 
 ## LDAP Proxy View Persistent Cache
 
