@@ -16,6 +16,16 @@ The Special Attributes Handling options allow you to perform the following funct
 -	Configure Dynamic Groups
 -	Configure unnesting of nested groups
 
+The types of special attributes that are supported vary depending on the type of identity view. If the special attribute is not supported, you do not see it on the SPECIAL ATTRIBUTES tab for the selected identity view.
+
+Special Attribute	| Uncached Identity Views from LDAP Backends | Persistent Cached Identity Views
+-|-|-
+Linked Attributes	| X | X
+Referential Integrity	| - | X
+Dynamic Groups	| X | X
+Attribute Uniqueness	| - | X
+Unnest Groups	| - | X
+
 ### Linked Attributes
 
 The Linked Attributes setting is only compatible with entries located in RadiantOne Universal Directory stores or persistent cache.
