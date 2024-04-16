@@ -675,7 +675,138 @@ To delete primary objects, choose *Manage Primary Object* from the Primary Objec
 ![Delete Primary Object](Media/delete-primary-object.jpg)
 
 ### Computed Attributes
+## Computed Attributes
 
+If you would like your virtual entries to include attributes that are derived from existing attributes, or set to a constant value, you can use Computed Attributes. Computed attributes can be based on attributes from the primary object, secondary objects, and/or previously computed attributes, or can contain a constant value. 
+
+If you create a computed attribute from a binary attribute, use the getBinary(attribute) function to get the binary value. If you do not use this function, the computed attribute will have the value in the form of {base64Binary}xxxx. Also, the computed attribute name should be defined in the list of [binary attributes](03-front-end-settings-tab#binary-attributes) in order for RadiantOne to handle it properly.
+
+Creating multiple computed attributes with the same name is not allowed. If you need to create a computed attribute from a previously computed attribute, that attribute must appear in the virtual object list first. All attributes of the virtual object can be seen on the Objects tab.
+
+>[!warning]
+>Attributes from the primary source have a blue square icon in the Origin column. Attributes from secondary sources have a green square icon in the Origin column. Computed Attributes have a red square icon in the Origin column.
+
+To use a computed attribute to base a join on, click **Add Computed Attribute** during step 2 of the join configuration. The diagram below depicts a computed attribute named login that can be used in a join condition.
+
+![Computed Attribute Example to use as Join Criteria](Media/Image2.15.jpg)
+
+If you do not need to create a join based on a computed attribute, you can define them by clicking **Change** next to Define Computed Attribute on the Objects tab (for database backends, this is located at the bottom of the Object tab).
+
+The diagram below depicts a computed attribute example where the value is comprised of attributes coming from both the primary object and a secondary object.
+
+![Computed Attribute Example](Media/Image2.16.jpg)
+
+There are three options available to assist in the configuration of a computed attribute. Any combination of these can be used to define the computed attribute.
+
+-	Constant – enter a value that you want to be returned for the attribute.
+
+-	Attribute – select an existing attribute to base the computed attribute value on.
+
+-	Function – a list of the most common functions that are available for creating the computed attribute value are described briefly below.
+
+**avg(this.attributeName)** – Computes the average from the specified attribute values. The attribute name in this example is uid.
+
+`Example: avg(this.uid) values[1,2,3] returns 2`
+
+**firstValue(this.attributeName)** – Selects the first value from the specified attribute values. The attribute name in this example is uid.
+
+`Example: firstValue(this.uid) values[1,2,3] returns 1`
+
+**lastValue(this.attributeName)** - Select last value from attribute values.
+
+`Example: lastValue(this.uid) values[1,2,3] returns 3`
+
+**left(attribute,separ)** - Leftmost characters of the specified attribute before the separator string are returned.
+
+`Example: left("me@mydomain.com","@") returns "me"`
+
+**left(attribute,size)** - Leftmost characters (up to the amount specified in the size) of the specified attribute are returned.
+
+`Example: left("123456789",5) returns "12345"`
+
+**lookup(dataSourceID,baseDN,scope,filter,attrName,sizelimit)** - Executes an LDAP search/lookup and returns the value(s) found. The following is a sub-tree search to find the mail attribute for user with uid=me. VDS is the data source name/ID.
+
+`Example: lookup("[VDS]","o=mycompany",2,"(uid=me)","mail",1)`
+
+**lower(attribute)** - Converts all of the characters in the specified attribute to lower case.
+
+`Example: upper("abCD") returns "abcd" `
+
+**max(this.attributName)** – Returns the maximum value from the specified attribute values. The attribute name in this example is uid.
+
+`Example: max(this.uid) values[1,2,3] returns 3`
+
+**min(this.attributeName)** – Returns the minimum value from the specified attribute values. The attribute name in this example is uid.
+
+`Example: min(this.uid) values[1,2,3] returns 1`
+
+**parent(dnAttribute)** - Returns the parent DN of a given dnAttribute.
+
+`Example: parent(dn), assuming the dn value is "uid=me,ou=myorg,o=mycompany", the function returns "ou=myorg,o=mycompany for the computed attribute value.`
+
+**rdn(dnAttribute)** - Returns the RDN part of a given dnAttribute.
+
+`Example: rdn(dn), assuming the dn value is "uid=me,ou=myorg,o=mycompany", the function returns "uid=me" for the computed attribute value.`
+
+**rdnval(dnAttribute)** – Returns the value of the RDN for a given dnAttribute.
+
+`Example: rdnval("uid=me") returns "me" for the computed attribute value.`
+
+**remapDN(originalDNattribute,dnTemplate)** – Re-maps the original DN attribute based on a template. DN template is a representation of pattern to apply and it may contain a placeholder of %rdn and/or %dn. %rdn is the rdn value of the original DN. %dn is the value of original DN.
+
+`Example: remapDN(memberOf,"cn=%rdn,dc=my_groups") - %rdn is replaced with the rdn value extracted from the memberof attribute. `
+
+`Example: remapDN(uniqueMember,"%dn,dc=my_users") adds a suffix of “dc=my_users” to the original dn.`
+
+**remapDN(originalDNattribute,oldSuffix,newSuffix)** – Changes the old suffix in the originalDNattribute to the newSuffix. Based on the example below, if a uniqueMember value was “uid=lcallahan,o=mycompany”, the computed attribute value would be “uid=lcallahan,dc=mycorp”.
+
+`Example: remapDN(uniqueMember,"o=mycompany","dc=mycomp") `
+
+**remapDN(attr2remap,dataSourceID,externalBaseDN,scope,externalIdAttr)** – Extracts the RDN value from the <attr2remap> attribute and does a lookup in a data source where <externaldAttr>=<attr2remap>. Based on the example below, if a uniqueMember value was “uid=lcallahan,o=mycompany”, and the DN resulting from the lookup where sAMAccountName=lcallahan (in the vds data source, one level below o=proxy), was cn=lcallahan,dc=addomain1,dc=com, the computed attribute value would be “cn=lcallahan,dc=addomain1,dc=com”.
+
+
+`Example: remapDN("uniqueMember","vds","o=proxy",1,"samAccountName")`
+
+>[!note]
+>This is not compatible with other functions meaning you can’t take the result of this function and pass it as a parameter to another function.
+
+**replaceFromDictionary(attribute,normalizedFileName,defaultValue)** – Normalizes an attribute value based on a mapping described in a file. Some sample dictionary files are located here: <RLI_HOME>/ontology/normalization
+
+Replaces the value of the attribute based on matching values in the given dictionary file.
+
+`Example: replaceFromDictionary("BOB","firstname.dat",null) returns "ROBERT" (this mapping was dictated by the contents of the firstname.dat file).`
+
+**right(attribute,separ)** - Rightmost characters of Attribute (after separ) are returned. 
+
+`Example: right("me@mydomain.com","@") returns "mydomain.com" for the computed attribute value.`
+
+**right(attribute,size)** - Rightmost characters of Attribute (number of characters is specified in the size) are returned.
+
+`Example: right("123456789",5) returns "56789" `
+
+**sortAsc(this.attributeName)** - Sorts the specified attribute values into ascending order.
+
+`Example: sortAsc(this.uid), assuming values of uid are [1,3,2] returns [1,2,3] `
+
+**sortDesc(this.attributeName)** - Sorts the specified attribute values into descending order.
+
+`Example: sortDesc(this.uid), assuming values of uid are [1,3,2] returns [3,2,1] `
+
+**sum(this.attributeName)** - Computes total sum from attribute values.
+
+`Example: sum(this.uid), assuming values of uid are [1,2,3] returns 6 `
+
+**upper(attributename)** - Converts all of the characters in the value of attribute to upper case.
+
+`Example: upper("abCD") returns "ABCD" `
+
+For detailed steps based on the type of primary source you are configuring, please see the Namespace Configuration Guide.
+
+
+
+
+
+---OLD CONTENT---
 For specific details, please see Computed Attributes in the Concepts section of the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction). This section describes how to configure computed attributes for an LDAP backend.
 
 To create computed attributes:
@@ -736,23 +867,7 @@ To deactivate a computed attribute:
 
 7.	Click **Save**.
 
-### Bind Order
 
-If you have configured joins between the selected LDAP object and other sources, RadiantOne can send the bind request (credential checking) to many backends. 
-
-To configure the bind order:
-
-1.	From the Main Control Panel > Directory Namespace Tab, select the node representing your LDAP backend below Root Naming Contexts. 
-
-2.	On the right side, select the Objects Tab.
-
-3.	Click the **Edit** button next to Define Bind Strategy at the bottom. The Edit Bind Strategy window displays a list of all sources (the primary along with any secondary sources you have joined with). 
-
-4.	Enable the source as a possible participant in the bind operation. 
-
-5.	Use the up and down arrow to determine the order RadiantOne should attempt the credential checking. RadiantOne attempts to verify the credentials against the first enabled source in the list. If it fails, then the next is tried and so forth. If all enabled sources have been tried without success, RadiantOne returns a bind failed error to the client.
-
-For more information on bind order and joining, please see the sections titled Bind Order and Joins in the Concepts section of the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction).
 
 ### Joins
 
