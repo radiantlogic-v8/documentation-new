@@ -788,48 +788,30 @@ Replaces the value of the attribute based on matching values in the given dictio
 
 `Example: upper("abCD") returns "ABCD" `
 
-For detailed steps based on the type of primary source you are configuring, please see the Namespace Configuration Guide.
-
-
-
-
-
----OLD CONTENT---
-For specific details, please see Computed Attributes in the Concepts section of the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction). This section describes how to configure computed attributes for an LDAP backend.
-
 To create computed attributes:
 
-1.	From the Main Control Panel > Directory Namespace Tab, select the node representing the LDAP backend below Root Naming Contexts. 
+1. Navigate to Control Panel > Directory Namespace > Namespace Design.
+2. Select the node where the LDAP Proxy View is mounted and go to the OBJECT BUILDER tab. Add a primary object (using the actual object class name, not a remapped one) that requires computed attributes if you haven't already done so.
+3. Click ![Computed Attributes Icon](Media/computed-attr-icon.jpg) on the canvas to open the Computed Attributes configuration panel.
 
-2.	On the right side, select the Objects Tab.
+4.	Click **+ADD**.
 
-3.	Make sure the actual object class (not a remapped one) associated with your backend entries appears in the Primary Objects list. If not, click **Add** to add it. If you have more than one object class in your Primary Objects list, select the one you want to associate with the computed attribute.
+5.	Enter the Computed Attribute name in the Name parameter.
 
-4.	Click the **Edit** button next to Define Computed Attributes. 
+6.	Configure the needed expression to comprise the computed attribute. This is based on Java and if you are already familiar with the syntax, you can enter it directly for the value. 
 
-5.	Click **Add**.
+If you would like to build the attribute based on a constant and need assistance, click on the **+CONSTANT** button and enter the value. Click **DONE**.
 
-6.	Enter the Computed Attribute name in the Name parameter.
+If you would like the computed attribute to be based on an existing attribute, click on the **+ATTRIBUTE** button for assistance (a list of all attributes available for the object will display). Select the attribute(s) and click **DONE**.
 
-7.	Configure the needed expression to comprise the computed attribute. This is based on Java and if you are already familiar with the syntax, you can enter it directly for the value. 
+If you would like to use a function to build your computed attribute, click on the **+FUNCTION** button which displays a list of available functions. Depending on the function selected, you may be prompted to provide additional information.
 
-If you would like to build the attribute based on a constant and need assistance, click on the constant button and enter the value. 
+7.	Click the **VALIDATE** button to check the syntax of your expression. 
 
-If you would like the computed attribute to be based on an existing attribute, click on the **Attribute** button for assistance (a list of all attributes available in the virtual object will display). 
+8.	Once your expression compiles properly (no errors in the Compilation Results window), click **DONE**. 
 
-If you would like to use a function to build your computed attribute, click on the **Function** button for a list to display.
+9.	Click **SAVE**.
 
-8.	Click the **Validate** button to check the syntax of your expression. 
-
-9.	Once your expression compiles properly (no errors in the Compilation Results window), click **OK**. 
-
-10.	Click the **Save** button in the upper right corner and **Yes** to confirm the changes.
-
-The computed attribute should appear in the list of attributes for the virtual object (indicated by an orange square in the Origin column) and the value is populated based on your configured expression when RadiantOne returns virtual entries.
-
-If you would like to see a list of only computed attributes for the virtual object, select the “Computed” option in the Display drop-down list. 
-
-For more details, please see Computed Attributes in the Concepts section of the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction).
 
 **Deactivate Computed Attributes**
 
@@ -837,31 +819,32 @@ If you have defined multiple computed attributes, it can be helpful to deactivat
 
 To deactivate a computed attribute:
 
-1.	From the Main Control Panel > Directory Namespace Tab, select the node representing the LDAP backend below Root Naming Contexts. 
-
-2.	On the right side, select the Objects Tab. 
-
-3.	In your Primary Objects list, select the one that contains the computed attribute(s) that you need to deactivate.
-
-4.	Click the **Edit** button next to Define Computed Attributes. 
-
-5.	Uncheck the “Active” checkbox next to the computed attributes that you want to deactivate.
-
-![An image showing ](Media/Image3.30.jpg)
+1. Navigate to Control Panel > Directory Namespace > Namespace Design.
+1. Select the node where the LDAP Proxy View is mounted and go to the OBJECT BUILDER tab. 
+1. Click ![Computed Attributes Icon](Media/computed-attr-icon.jpg) on the canvas to open the Computed Attributes configuration panel.
+1.	Uncheck the "Active" checkbox next to the computed attributes that you want to deactivate.
+   ![Deactivate Computed Attribute](Media/deactivate-computed.jpg)
  
+1.	Click **SAVE**.
 
+**Using User-defined Classes**
+To use external libraries in computed attributes:
 
-6.	Click **OK**.
+1. Navigate to Control Panel > Directory Namespace > Namespace Design.
+1. Select the node where the LDAP Proxy View is mounted and go to the OBJECT BUILDER tab. 
+1. Click ![Computed Attributes Icon](Media/computed-attr-icon.jpg) on the canvas to open the Computed Attributes configuration panel.
+1. Click **MANAGE** to add or remove libraries. Click "choose a file" to upload new libraries. Click the trashcan icon next to an existing library to remove it.
+1. After the library file has been uploaded, click **ADD** and enter the package/class name you want to be available to use for computed attributes.
 
-7.	Click **Save**.
-
-
+![User Defined Libraries](Media/user-defined-classes-computed.jpg)
 
 ### Joins
 
-Objects from any sources in the RadiantOne namespace can be joined. With joins, you can extend the LDAP entries with attributes coming from another data source, or new application-specific attributes (required by applications, but don’t exist yet). This section assists you in finding the location to configure the join for your virtual view associated with an LDAP backend data source.
+Objects from any sources in the RadiantOne namespace can be joined. With joins, you can extend the LDAP entries with attributes coming from another data source, or new application-specific attributes (required by applications, but don’t exist yet). Joins are configured from the Control Panel > Directory Namespace > Namespace Design. Select the node where the LDAP Proxy View is mounted and go to the OBJECT BUILDER tab. Add a primary object that requires joins if you haven't already done so. Then use **ADD COMPONENT** menu to define joins. 
 
-Joins are configured by first selecting the virtual view built from the primary source below Root Naming Contexts in the Main Control Panel > Directory Namespace Tab. On the right side, select the Objects tab, choose the primary object class (add it if it isn’t listed), and click **New** in the Join Profiles section. To deactivate a join, uncheck the join’s Active box in the Join Profiles section on the Objects tab and click **Save**. To reactivate the join, check the join’s Active box and click **Save**.
+To join with an object containing the attributes needed to extend the primary object with, choose the Add Component > Object on the canvas. Then use the Add Component > Join option to define the join condition. 
+
+To extend the primary object with new attributes that don't exist, choose the Add Component > Object Extension option to manually define the attribute names.
 
 When you configure joins across multiple objects, you should also consider configuring Bind Order and Attribute Priority for overlapping attributes.
 
