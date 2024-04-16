@@ -607,7 +607,7 @@ Define a computed attribute named userPassword with the value based on the getAD
 1. Go to the Control Panel > Directory Namespace > Namespace Design. Select the node where the LDAP Proxy View is mounted and go to the OBJECT BUILDER tab.
 1. Click: ![Add Primary Object](Media/add-primary-object.jpg)
 1. Locate the *User* object in the list on the top and click ![Plus Sign](Media/plus.jpg). This moves it to the list on the bottom.
-1. Click **DONE*. This adds the selected primary objects onto the design canvas.
+1. Click **DONE**. This adds the selected primary objects onto the design canvas.
 1. Click the icon for the computed attributes on the design canvas. This opens the computed attributes configuration panel.
 
     ![Computed Attributes](Media/design-canvas-computed.jpg)
@@ -630,7 +630,7 @@ Define a computed attribute named userPassword with the value based on the getAD
 
 >[!note] – If your LDAP proxy view is using a Merged Tree configuration to merge another Active Directory view into the primary proxy view, you must have the userPassword computed attribute configured in both the primary proxy view and the merged view for passwords to be retrieved properly from both Active Directory backends.
 
-Lastly a persistent cache on the virtual view can be configured and initialized. Afterwards, check the option to Use Cache for Authentication. When this option is enabled, RadiantOne validates the credentials against the local cache as opposed to delegating the credentials checking to the backend Active Directory. 
+Lastly a [persistent cache](#ldap-proxy-view-persistent-cache) can be configured and initialized for the identity view. Afterwards, check the option to Use Cache for Authentication. When this option is enabled, RadiantOne validates the credentials against the local cache as opposed to delegating the credentials checking to the backend Active Directory. 
 
 ## LDAP Proxy View Special Attributes
 
@@ -650,6 +650,29 @@ Unnest Groups	| - | X
 
 
 ## LDAP Proxy View Object Builder
+
+The Object Builder is used to customize how entries associated with a specific object class are joined, how attributes are remapped for specific object classes (which is more fine-grained than what can be configured in [global attributes handling](#global-attributes-handling)), defining attributes properties (e.g. updateable, searchable, hidden), and managing computed attributes.
+
+Access the Object Builder from the Control Panel > Directory Namespace > Namespace Design. Select the node where the LDAP Proxy View is mounted and go to the OBJECT BUILDER tab.
+
+When working with identity views created using an LDAP proxy approach, the first step is to select the primary object class to add to the canvas. This should be the object class associated with the entries you want to configure joins, attribute mappings, attribute properties, or computed attributes for. 
+
+1. Click: ![Add Primary Object](Media/add-primary-object.jpg)
+1. Locate the object(s) in the list on the top and click ![Plus Sign](Media/plus.jpg). This moves the selected objects to the list on the bottom.
+1. Click **DONE**. This adds the selected primary objects onto the design canvas.
+
+If you add multiple primary objects, they will each have their own canvas and you can toggle between the two using the Primary Object drop-down list.
+An example of adding both user and group object classes is shown below.
+
+![Add Multiple Primary Objects](Media/manage-primary-objects.jpg)
+
+Use the primary object list menu to toggle between the canvases.
+
+![Primary Object List](Media/primary-object-list.jpg)
+
+To delete primary objects, choose *Manage Primary Object* from the Primary Object drop-down list and click the trashcan icon next to the object class you want to remove from the list on the bottom. Click **DELETE** to remove and then click **DONE**.
+
+![Delete Primary Object](Media/delete-primary-object.jpg)
 
 ### Computed Attributes
 
