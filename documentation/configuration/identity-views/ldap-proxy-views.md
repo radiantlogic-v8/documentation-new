@@ -704,7 +704,7 @@ Special Attribute	| Uncached Identity Views from LDAP Backends | Persistent Cach
 Linked Attributes	| X | X
 Referential Integrity	| - | X
 Dynamic Groups	| X | X
-Attribute Uniqueness	| - | -
+Attribute Uniqueness	| - | X
 Unnest Groups	| - | X
 
 
