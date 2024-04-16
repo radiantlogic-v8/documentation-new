@@ -44,10 +44,20 @@ If you configure an LDAP proxy view by mounting an LDAP backend directly at the 
 
 9.	To modify the LDAP proxy view, select the appropriate node below Root Naming Contexts and modify the settings on the right side. Click **SAVE** when finished.
 
-![An image showing ](Media/proxy-backend-properties.jpg)
+![LPAP Proxy View](Media/proxy-backend-properties.jpg)
  
 
 LDAP Backends can also be mounted at any label node that doesn't already have something mounted at it in a naming context. 
+
+### Deleting LDAP Proxy Views
+
+To delete an LDAP Proxy View:
+
+1. Navigate to Control Panel > Setup > Directory Namespace > Namespace Design.
+2. Select the root naming context where the LDAP proxy view is mounted.
+3. On the PROPERTIES tab on the right, click the Delete button.
+
+![Delete Naming Context](Media/delete-root-naming.jpg)
 
 ## LDAP Proxy View Properties
 
