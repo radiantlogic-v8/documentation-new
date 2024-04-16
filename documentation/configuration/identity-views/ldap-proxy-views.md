@@ -472,7 +472,7 @@ This means that all entries from the underlying source containing a sAMAccountNa
 
 **DN Remapping**
 
-This setting allows for automatic re-mapping of attributes of DN syntax type. This functionality is primarily useful for existing groups/members in an LDAP backend. When an LDAP backend is configured, you have the option to return the group members “real” DNs (as they exist in the backend directory), or to re-map them to the DN for the RadiantOne namespace. For example, the figure below depicts a proxy view that has been defined for a backend LDAP directory. The routing happens at the o=Active Directory level in the RadiantOne namespace.
+This setting allows for automatic re-mapping of attributes of DN syntax type. This functionality is primarily useful for existing groups/members in an LDAP backend. Make sure your LDAP proxy view includes the containers where the groups and members are located in order for the automatic DN remapping to work. When an LDAP backend is configured, you have the option to return the group members “real” DNs (as they exist in the backend directory), or to re-map them to the DN for the RadiantOne namespace. For example, the figure below depicts a proxy view that has been defined for a backend LDAP directory. The routing happens at the o=Active Directory level in the RadiantOne namespace.
 
 ![DN Remapping Example](Media/dn-remapping.jpg)
 
