@@ -5,7 +5,7 @@ description: Learn how to configure joins.
 
 ## Overview
 
-Objects from any sources in the RadiantOne namespace can be joined. With joins, you can extend the LDAP entries with attributes coming from another data source, or new application-specific attributes (required by applications, but don’t exist yet). 
+Objects from any sources in the RadiantOne namespace can be joined. With joins, you can extend the primary entries with attributes coming from another data source, or new application-specific attributes (required by applications, but don’t exist yet). 
 
 This guide describes the following. 
 
@@ -19,144 +19,84 @@ This guide describes the following.
 
 To configure a global join:
 
-
 1. Global joins are configured from Classic Control Panel. To switch to Classic Control Panel, use the menu options for the logged in user in the upper right.
 
    ![Classic Control Panel](Media/classic-cp.jpg)
 
-3. From the Classic Control Panel, go to the Settings tab > Interception section > Global External Joins.
+1. From the Classic Control Panel, go to the Settings tab > Interception section > Global External Joins.
 
-4. Click **Add**. The Join Wizard opens.
+1. Click **Add**. The Join Wizard opens.
 
-5. Select Regular and click **Next**.
+1. Select Regular and click **Next**.
 
-6. Select an Object Class associated with the entries from the primary object that you want to join.
+1. Select an Object Class associated with the entries from the primary object that you want to join.
 
-7. Select the attribute you want to base the join condition on from the Join Attribute drop-down menu. Click **Next**.
+1. Select the attribute you want to base the join condition on from the Join Attribute drop-down menu. Click **Next**.
 
-8. Select the data source that represents the location that contains the secondary objects you want to join with. This can be either RadiantOne or another LDAP server that has been defined as a data source. If using RadiantOne as the secondary join source, select vds as the data source. If you want to join to some other LDAP, you must first configure the data source and then it appears in the drop-down list to select during this step.
+1. Select the data source that represents the location that contains the secondary objects you want to join with. This can be either RadiantOne or another LDAP server that has been defined as a data source. If using RadiantOne as the secondary join source, select vds as the data source. If you want to join to some other LDAP, you must first configure the data source and then it appears in the drop-down list to select during this step.
 
-9. Click Browse to locate the Base DN or enter the location yourself.
+1. Click Browse to locate the Base DN or enter the location yourself.
 
-10. Specify the scope of search to perform to find the entries to join with. The drop-down options are base, one, or sub.
+1. Specify the scope of search to perform to find the entries to join with. The drop-down options are base, one, or sub.
 
-11. Select the specific object class associated with the secondary entries you want to join with in the Object Class parameter from the drop-down list. For information on schema extension, please see Extending RadiantOne LDAP Schema.
+1. Select the specific object class associated with the secondary entries you want to join with in the Object Class parameter from the drop-down list. For information on schema extension, please see Extending RadiantOne LDAP Schema.
 
-12. Select the attribute from the secondary object that you want to base the join condition on from the Join Attribute drop-down menu. The value of this attribute should match the value of the primary source join attribute that you set in step above. The Join Condition parameter displays the attribute matching criteria for the join.
+1. Select the attribute from the secondary object that you want to base the join condition on from the Join Attribute drop-down menu. The value of this attribute should match the value of the primary source join attribute that you set in step above. The Join Condition parameter displays the attribute matching criteria for the join.
 
-13. Click Next.
+1. Click Next.
 
-14. Decide if you would like all the possible attributes returned from the secondary object or if you would like to list the attributes to return. If you choose to list the attributes, click **Add** and enter the name of the attribute (or select from the drop-down list). You also can provide a virtual/mapped name (this is optional and is the name of the attribute that appears in the virtual entry). Click **OK** and repeat this process for each attribute you would like returned from the secondary object. Click **Next**.
+1. Decide if you would like all the possible attributes returned from the secondary object or if you would like to list the attributes to return. If you choose to list the attributes, click **Add** and enter the name of the attribute (or select from the drop-down list). You also can provide a virtual/mapped name (this is optional and is the name of the attribute that appears in the virtual entry). Click **OK** and repeat this process for each attribute you would like returned from the secondary object. Click **Next**.
 
-15. Enter a unique name for this join profile and click **Finish**.
+1. Enter a unique name for this join profile and click **Finish**.
 
-16. Click **Save**.
+1. Click **Save**.
 
 ## Configuring a Regular Join
 
-The primary source for regular joins is a virtual view of either an LDAP Backend, Database Backend (a specific object in the database), a web service backend, or you can even set up the join at a global level (to apply to all entries in the RadiantOne namespace).
+Regular joins are configured from the Control Panel > Setup > Directory Namespace > Namespace Design. Select the location where the identity view is mounted below Root Naming Contexts and go to the OBJECT BUILDER tab on the right. The primary source for regular joins is an object in an identity view. If the identity view is created using an LDAP proxy approach, you must select the primary object class on the OBJECT BUILDER tab to start. If the primary object is based on a container or content type of nodes in the identity view, then the object is already known and will automatically appear on the canvas on the OBJECT BUILDER tab.
 
->[!warning] The only exception to the following steps is if you want the join configured at a global level (to apply to all virtual entries contained in any root naming context). In this case, the join is configured from the Main Control Panel > Settings Tab > Interception > Global Join. Click **Add** to configure a global level join.
+To configure a regular join:
 
-Configuration Steps for LDAP and DSML Backends
+1.	From the Control Panel > Setup > Directory Namespace > Namespace design, select the location of the node where you want to configure the join. 
 
-1.	From the Main Control Panel > Directory Namespace tab, navigate to the primary/main source below Root Naming Contexts. 
+1.	On the OBJECT BUILDER tab on the right, select the Object option from the **+ADD COMPONENT** drop-down menu.
 
-2.	On the Objects tab on the right side, click **Add** and select the object class that will condition the main entries to be the source of the join.
+  	![Add Component](Media/add-component.jpg)
 
-3.	Select an object class from the Primary Objects section and then click **New** in the Join Profiles section. 
+1.	To join with an object in an existing identity view mounted in the RadiantOne namespace, choose the *RadiantOne Namespace* option. To join with an object from a data source schema that does not have an identity view created from it, choose the *Secondary Data Source Schema* option.
 
-4.	Select the Regular type of join and click **Next**.
+1.	Click **NEXT**.
+1.	If you selected to join with an object in an existing identity view mounted in the RadiantOne namespace, manually enter the target base DN where the secondary entries are located, or click ![Browse](Media/folder.jpg) to select a location in the RadiantOne namespace. Select the object class associated with the secondary entries. Select a scope to locate the secondary entries below the target base dn. Select a Size Limit, this should typicaly be one (one entry in the primary source matches one entry in the secondary source). Click **SELECT** to add the object to the canvas.
+1. If you selected to join with an object from a data source schema, select the data source that contains the secondary object from the drop-down list. Select the schema associated with the data source that contains the object definition (click the *Extract Schema* link if you don't have a schema). Click **NEXT**. Select the object(s) in the schema and click **SELECT** to add the object to the canvas.
+1. After all secondary objects are on the canvas, select the Join option from the **+ADD COMPONENT** drop-down menu.
 
-5.	Select the attribute you want to base the join condition on from the Join Attribute drop-down menu.
+  	![Add Component - Join](Media/join-option.jpg)
+   
+1.	Select the secondary object from the drop-down list.
 
-  If you would like to create an attribute based on existing attributes of the primary object to base your join condition on, click **Add Computed Attributes**. This allows you to build a new attribute based on the attributes available in the primary object. This new attribute can then be used to base your join condition on. This computed attribute name is prefixed with “vsysa” and is used only to condition the join. It is not returned as part of the virtual entry even if a client were to specifically request it.
+     >[!note] The object associated with the primary object and cannot be changed. Even if you have defined an object class mapping, you see the base object class, not the remapped one.
 
-  For more information, please see [Computed Attributes](#computed-attributes).
+1.	Select the attribute from the primary object to base the join on from the *Primary Join Attribute* drop-down list.
+1.	Select the attribute from the secondary objedct to base the join on from the *Secondary Join Attribute* drop-down list.
+1.	The join condition displays and can be manually edited if needed. Click **NEXT**.
 
-  >[!note] The Object Class is set for the class associated with the primary object and cannot be changed. Even if you have defined an object class mapping, you see the base object class, not the remapped one.
+	  	![Join Profile](Media/join-profile.jpg)
+  	
+1.	Choose to either *Return all Attributes* from the secondary object, or choose the *Return Attributes Listed below* option and use the **+ATTRIBUTE** button to adjust the list of attributes accordingly.
+1.	Click **NEXT**.
+1. Enter a unique join ID and click **DONE**.
+1. Repeat these steps to add all join conditions. All secondary objects appear on the canvas. An example containing two secondary objects is shown below.
 
-6.	Click **Next**.
+   	![Canvas with Joins](Media/canvas-with-joins.jpg)
 
-7.	Select the location that contains the secondary objects you want to join with. This can be either a location in the RadiantOne namespace or another LDAP server that has been defined as a [data source](#data-source). If RadiantOne is used, select vds as the [data source](#data-source). If you want to join to some other LDAP, you must first configure the data source and then it appears in the drop-down list to select during this step. Click Browse to locate the Base DN or enter the location yourself.
+## Configuring Join Condition Based on Computed Attribute
 
-8.	Specify the scope of search you would like to perform to find the entries to join with. The drop-down options are base, one, or sub.
+If you would like to create an attribute based on existing attributes of the primary object to base your join condition on, click **Add Computed Attributes**. This allows you to build a new attribute based on the attributes available in the primary object. This new attribute can then be used to base your join condition on. This computed attribute name is prefixed with “vsysa” and is used only to condition the join. It is not returned as part of the virtual entry even if a client were to specifically request it.
 
-9.	Specify the size limit (the number of entries to return to join for each unique entry in the primary source). Typically, this should be one (one entry in the primary source matches one entry in the secondary source).
 
-10.	Select the specific object class associated with the secondary entries you want to join with from the drop-down list. If the target source is RadiantOne and the object class required for your secondary entries is not listed in the drop-down, you must first extend the RadiantOne LDAP schema. For information on schema extension, please see [Extending RadiantOne LDAP Schema](07-directory-schema#extending-the-radiantone-ldap-schema).
+## Editing Join Profiles
 
-11.	Select the attribute from the secondary object that you want to base the join condition on from the Join Attribute drop-down menu. The value of this attribute should match the value of the primary source join attribute that you set in steps above. The Join Condition parameter displays the attribute matching criteria for the join.
-
-12.	Click **Next**.
-
-13.	 If you would like all of the possible attributes returned from the secondary object, select the All attributes option. Otherwise, list the attributes to return.
-
-14.	If you choose to list the attributes, all attributes are listed by default. You can choose to remove the ones you don’t want by selecting them (you can select multiple at once), and clicking **Remove**.
-
-15.	If you accidently delete an attribute and need to add it back, click Add and select the attribute from the list. You can select multiple attributes at once using Ctrl + click.
-
-16.	You can provide a virtual/mapped name for any of the attributes as well by clicking in the Virtual Name column for the attribute and entering the mapped attribute name.
-
-17.	Click **Next**.
-
-18.	Enter a unique name for this join profile and click Finish.
-
-19.	Click **Save**. 
-
-20.	Click **Yes** to confirm changes to the server.
-
-21.	Click **OK** to exit the confirmation.
-
-**Configuration Steps for Database Backends**
-
-1.	From the Main Control Panel > Directory Namespace tab, navigate to the primary/main source below Root Naming Contexts. Select the primary database object below Root Naming Contexts (noted as a white or blue folder icon).
-
-2.	Select the Object tab and click New in the Join Profiles section. The Join Wizard opens.
-
-3.	Choose the Regular type of join and click **Next**.
-
-4.	Select the attribute from the primary database object that you want to base the join on in the Join Attribute drop-down menu. 
-
-If you would like to create an attribute based on existing attributes of the primary object to base your join condition on, click the Add Computed Attributes option. This allows you to build a new attribute based on the attributes available in the primary object. This new attribute can then be used to base your join condition on. For more information, please see [Computed Attributes](#computed-attributes).
-
-  >[!note] The Object Class will be set to the class for the primary object. You cannot change the object mapping from here. For more information on changing the object class associated with the database object, please see the [RadiantOne Namespace Configuration Guide](/namespace-configuration-guide/01-introduction).
-
-5.	Click **Next**.
-
-6.	Select the data source representing the target to join with from the drop-down menu.
-
-7.	Select the location that contains the objects you want to join with. You can click Browse to locate the Base DN or enter the location yourself.
-
-8.	Specify the scope of search you would like to perform on the secondary source to find the entries to join with. The drop-down options are base, one, or sub.
-
-9.	Specify the size limit (the number of entries to return to join for each unique entry in the primary source). Typically, this should be one (one entry in the primary source matches one entry in the secondary source).
-
-10.	Select the specific object class associated with the secondary entries you want to join with in the Object Class drop-down menu. If the target source is RadiantOne and the object class required for your secondary entries is not listed in the drop-down, you must first extend the RadiantOne LDAP schema. For information on schema extension, please see [Extending RadiantOne LDAP Schema](07-directory-schema#extending-the-radiantone-ldap-schema).
-
-11.	Select the attribute from the secondary object that you want to base the join condition on from the drop-down menu. The value of this attribute should match the value of the primary object join attribute that you set above. The Join Condition parameter displays the attribute matching criteria for the join.
-
-12.	Click Next.
-
-13.	If you would like all of the possible attributes returned from the secondary object, select the All attributes option. Otherwise, list the attributes to return.
-
-14.	If you choose to list the attributes, all attributes are listed by default. You can choose to remove the ones you don’t want by selecting them (you can select multiple at once), and clicking **Remove**.
-
-15.	If you accidently delete an attribute and need to add it back, click **Add** and select the attribute from the list. You can select multiple attributes at once using Ctrl + click.
-
-16.	You can provide a virtual/mapped name for any of the attributes as well by clicking in the Virtual Name column for the attribute and entering the mapped attribute name.
-
-17.	Click **Next**.
-
-18.	Enter a unique name for this join profile and click **Finish**.
-
-19.	Click **Save**. 
-
-20.	Click **Yes** to confirm changes to the server. 
-
-21.	Click **OK** to exit the confirmation.
-
-If you need to edit the join condition, select the join in the list of Join Profiles, click the **Edit** option and modify the relevant parameters.
+If you need to edit a join profile, select the join in the list of Join Profiles, click the **Edit** option and modify the relevant parameters.
 
 -	**Base DN** – The location in the directory containing the objects you would like to join with. This was set in step 7 above.
 
