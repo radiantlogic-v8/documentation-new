@@ -492,32 +492,36 @@ This auto re-mapping capability is useful for two main purposes:
 -	Manage group membership from an external application – when new users are added to these groups, the “real” DN is entered properly in the backend LDAP directory even though the members can be returned with their re-mapped DNs in RadiantOne.
 
 >[!warning] If RadiantOne is configured to re-map DN attributes, and you need to perform searches on these attributes, then your options for the search filter are as follows:
-<br>Enter the whole attribute value in the search filter (i.e. uniqueMember=uid=Cbrady,ou=people,ou=SunOne,ou=RemoteDirectories,o=vds) 
-<br>Only use the wild card character (*) in the filter up to the point of the new suffix (i.e. uniqueMember=uid=Cbrady,ou=*) or (uniqueMember=uid=*)
+<br>Enter the whole attribute value in the search filter (i.e. member=CN=Anna Gold,CN=Users,o=Active Directory) 
+<br>Only use the wild card character (*) in the filter up to the point of the new suffix (i.e. member=CN=Anna Gold,CN=Users,o=*) or (member=CN=*)
 
-If your virtual view does not keep the existing backend hierarchy (for example if you don’t map direct to a backend LDAP), then you can use a computed attribute function to auto-translate the member DNs to the new virtual namespace. The functions available for computed attributes for this purpose are: DNremapLookup, DNremapLookupForeign, and DNremapLookupUnnest.
+If your virtual view does not keep the existing backend hierarchy (for example if you use a model-drive view instead of an LDAP proxy view), then you can use a computed attribute function to auto-translate the member DNs to the RadiantOne namespace. The functions available for computed attributes for this purpose are: DNremapLookup, DNremapLookupForeign, and DNremapLookupUnnest.
 
 **Always Requested Attributes**
 
 In some cases, certain attributes are not returned by the LDAP backend even if RadiantOne requests all attributes. These attributes are typically known as operational attributes and you must ask for them specifically by name. If you would like RadiantOne to always request specific operational attributes (in addition to all, or the attributes requested by the client), you can set them as Always Requested.
 
-To specify these requested attributes, from the Main Control Panel > Directory Namespace Tab, select the LDAP backend below the Root Naming Contexts node and on the right side, select the Attributes tab. If the attribute you want to have RadiantOne always request is not in the list, click on the **Add** button. Enter the attribute name and select the Always Requested option. If the attribute appears in the list but the Always Requested column is not checked, select the attribute and click **Edit**. Check the Always Requested option and click **OK**.
+To specify always requested attributes:
+1.	Go to the Control Panel > Directory Namespace > Namespace Design. Select the node where the LDAP Proxy View is mounted and go to ADVANCED SETTINGS tab > Global Attributes Handling section.
 
-![An image showing ](Media/Image3.15.jpg)
+2.	If an attribute you want to map does not appear in the list, click on **ADD** and enter the Name (as it exists in the backend) and the Virtual Name (what you want the attribute name to be in the identity view).
+3. Check the *Always Requested* checkbox.
+4.	Click **SAVE**.
 
-Attributes that have a checkmark in the Always Requested column are always requested by RadiantOne (in addition to all, or only attributes requested in the query – depending on which option you have selected in the Attribute Handling section). 
+5.	If you already see the attribute you want to indicate as "always requested" in the list, click the ![Pencil](Media/pencil.jpg) inline with the attribute. Check the *Always Requested* checkbox and click **SAVE**.
+6.	Click **SAVE** in the bottom right to save the page.
+
+![Always Requested Example](Media/always-requested-example.jpg)
+
+Attributes that have a checkmark in the Always Requested column are always requested by RadiantOne (in addition to all, or only attributes requested in the query – depending on if you have the *Limit attributes requested from the LDAP backend* optimization enabled or not). 
 
 The client only receives the attributes it requests (and is allowed to see via ACL’s) even though RadiantOne may actually request more attributes from the backend LDAP server.
 
->[!warning] this is NOT the approach you should take to prevent certain attributes from being returned to the client. Preventing attributes from being returned should be accomplished with ACL’s.
-
 For example, if objectclass, cn, sAMAccountName, and employeeID are set as Always Requested attributes and a client requests the title attribute in the query to RadiantOne, it requests, title, objectclass, cn, sAMAccountName, and employeeID from the backend LDAP.
 
-As another example: If the client requests ALL attributes in its query to RadiantOne, it requests ALL attributes from the underlying LDAP in addition to any attributes set as Always Requested (again, because the use of (*) in an LDAP query does not return operational attributes – these must be specifically requested). 
+As another example, if the client requests ALL attributes in its query to RadiantOne, it requests ALL attributes from the underlying LDAP in addition to any attributes set as Always Requested (again, because the use of (*) in an LDAP query does not return operational attributes – these must be specifically requested). 
 
->[!warning] If you plan on caching (either entry memory cache or persistent cache) the branch in the RadiantOne namespace that maps to an LDAP backend, you must list the operational attributes you want to be in the cache as “always requested”. Otherwise, the entry stored in cache would not have these attributes and clients accessing these entries may need them.
-
-If you make any changes, click **Save** in the upper right corner and then click **Yes** to apply the changes to the server.
+>[!warning] If you plan on caching the branch in the RadiantOne namespace that maps to an LDAP backend, you must list the operational attributes you want to be in the cache as “always requested”. Otherwise, the entry stored in cache would not have these attributes and clients accessing these entries may need them.
 
 **Hidden Attributes**
 
@@ -527,6 +531,7 @@ To only see the attributes that are visible in the virtual entry, check the Visi
 
 The default size limit is set to 100 meaning only 100 containers below the Remote Base DN are visible to select for exclusion. Increase the size limit if you need to display more branches and click **Refresh Tree**. You can also enter a result filter to dynamically reduce the branches to the ones you want to exclude.
 
+>[!warning] this is NOT the approach you should take to prevent certain attributes from being returned to the client. Preventing attributes from being returned should be accomplished with ACL’s.
 
 **ActualDN**
 
