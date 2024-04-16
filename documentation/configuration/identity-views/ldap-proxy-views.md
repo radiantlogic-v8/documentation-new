@@ -511,6 +511,7 @@ To specify always requested attributes:
 5.	If you already see the attribute you want to indicate as "always requested" in the list, click the ![Pencil](Media/pencil.jpg) inline with the attribute. Check the *Always Requested* checkbox and click **SAVE**.
 6.	Click **SAVE** in the bottom right to save the page.
 
+An example of declaring the createTimestamp attribute as always requested is shown below.
 ![Always Requested Example](Media/always-requested-example.jpg)
 
 Attributes that have a checkmark in the Always Requested column are always requested by RadiantOne (in addition to all, or only attributes requested in the query – depending on if you have the *Limit attributes requested from the LDAP backend* optimization enabled or not). 
