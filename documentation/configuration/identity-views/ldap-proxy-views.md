@@ -676,26 +676,13 @@ To delete primary objects, choose *Manage Primary Object* from the Primary Objec
 
 ### Computed Attributes
 
-If you would like your RadiantOne entries to include attributes that are derived from existing attributes, or set to a constant value, you can use Computed Attributes. Computed attributes can be based on attributes from the primary object, secondary objects, and/or previously computed attributes, or can contain a constant value.  Computed attributes are managed from the Control Panel > Directory Namespace > Namespace Design. Select the node where the LDAP Proxy View is mounted and go to the OBJECT BUILDER tab. Click ![Computed Attributes Icon](Media/computed-attr-icon.jpg) on the canvas to open the Computed Attributes configuration panel.
+If you would like your RadiantOne entries to include attributes that are derived from existing attributes, or set to a constant value, you can use Computed Attributes. Computed attributes can be based on attributes from the primary object, secondary objects, and/or previously computed attributes, or can contain a constant value.  Computed attributes are managed from the Control Panel > Directory Namespace > Namespace Design. Select the node where the LDAP Proxy View is mounted and go to the OBJECT BUILDER tab. Add a primary object (as described above) that requires computed attributes if you haven't already done so.  Click ![Computed Attributes Icon](Media/computed-attr-icon.jpg) on the canvas to open the Computed Attributes configuration panel.
 
 If you create a computed attribute from a binary attribute, use the getBinary(attribute) function to get the binary value. If you do not use this function, the computed attribute will have the value in the form of {base64Binary}xxxx. Also, the computed attribute name should be defined in the list of binary attributes in order for RadiantOne to handle it properly. This list is configured from the Classic Control Panel > Settings tab > Server Front End > Attributes Handling > Attributes considered as binary for backend operations. To switch to Classic Control Panel, use the menu options for the logged in user in the upper right.
 
 ![Classic Control Panel](Media/classic-cp.jpg)
 
 Creating multiple computed attributes with the same name is not allowed. If you need to create a computed attribute from a previously computed attribute, that attribute must appear in the configured computed attributes list first. 
-
->[!warning]
->Attributes from the primary source have a blue square icon in the Origin column. Attributes from secondary sources have a green square icon in the Origin column. Computed Attributes have a red square icon in the Origin column.
-
-To use a computed attribute to base a join on, click **Add Computed Attribute** during step 2 of the join configuration. The diagram below depicts a computed attribute named login that can be used in a join condition.
-
-![Computed Attribute Example to use as Join Criteria](Media/Image2.15.jpg)
-
-If you do not need to create a join based on a computed attribute, you can define them by clicking **Change** next to Define Computed Attribute on the Objects tab (for database backends, this is located at the bottom of the Object tab).
-
-The diagram below depicts a computed attribute example where the value is comprised of attributes coming from both the primary object and a secondary object.
-
-![Computed Attribute Example](Media/Image2.16.jpg)
 
 There are three options available to assist in the configuration of a computed attribute. Any combination of these can be used to define the computed attribute.
 
