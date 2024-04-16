@@ -693,6 +693,21 @@ Lastly a persistent cache on the virtual view can be configured and initialized.
 
 ## LDAP Proxy View Special Attributes
 
+Certain attributes and entries require special handling due to how they must be computed and/or how they link related entries. This includes handling dynamic and/or nested groups, and relating entries based on backlink/forward link attributes. 
+
+For details see: [Special Attributes](special-attributes.md)
+
+For uncached LDAP proxy views, only Linked Attributes and Dynamic Groups are supported. If you configure LDAP proxy views for persistent cache, Referential Integrity and Unnest Groups are also available. The table below outlines the supported special attributes.
+
+Special Attribute	| Uncached Identity Views from LDAP Backends | Persistent Cached Identity Views
+-|-|-
+Linked Attributes	| X | X
+Referential Integrity	| - | X
+Dynamic Groups	| X | X
+Attribute Uniqueness	| - | -
+Unnest Groups	| - | X
+
+
 ## LDAP Proxy View Object Builder
 
 ## LDAP Proxy View Persistent Cache
