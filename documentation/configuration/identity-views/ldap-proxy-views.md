@@ -432,7 +432,7 @@ The table of attributes includes the following information:
 - Always Requested: Indicates if the RadiantOne service should always explicitly request the attribute when querying the backend LDAP directory. These attributes are typically known as operational attributes and you must ask for them specifically by name in order for them to be returned in queries.
 - Hidden: Indicates that the attribute should not be returned in the identity view.
 
-The default list of configured attributes include: manager, secretary, directreports, seealso, memberof, uniquemember, and member. 
+The default list of configured attributes includes: manager, secretary, directreports, seealso, memberof, uniquemember, and member. 
 
 To add more attributes:
 1. Click ![Add Button](Media/add-button.jpg).
@@ -472,7 +472,7 @@ This means that all entries from the underlying source containing a uid attribut
 
 **DN Remapping**
 
-This setting allows for automatic re-mapping of attributes of DN syntax type. This functionality is primarily useful for existing groups/members in an LDAP backend. When an LDAP backend is configured, you have the option to return the group members “real” DNs (as they exist in the backend directory), or to re-map them to the DN for the RadiantOne namespace. For example, the figure below depicts a proxy view that has been defined for a backend LDAP directory. The routing happens at the ou=SunOne,ou=RemoteDirectories,o=vds level in the RadiantOne namespace.
+This setting allows for automatic re-mapping of attributes of DN syntax type. This functionality is primarily useful for existing groups/members in an LDAP backend. When an LDAP backend is configured, you have the option to return the group members “real” DNs (as they exist in the backend directory), or to re-map them to the DN for the RadiantOne namespace. For example, the figure below depicts a proxy view that has been defined for a backend LDAP directory. The routing happens at the o=Active Directory level in the RadiantOne namespace.
 
 ![An image showing ](Media/dn-remapping.jpg)
 
