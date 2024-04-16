@@ -66,7 +66,7 @@ To configure a regular join:
 1.	To join with an object in an existing identity view mounted in the RadiantOne namespace, choose the *RadiantOne Namespace* option. To join with an object from a data source schema that does not have an identity view created from it, choose the *Secondary Data Source Schema* option.
 
 1.	Click **NEXT**.
-1.	If you selected to join with an object in an existing identity view mounted in the RadiantOne namespace, manually enter the target base DN where the secondary entries are located, or click ![Browse](Media/folder.jpg) to select a location in the RadiantOne namespace. Select the object class associated with the secondary entries. Select a scope to locate the secondary entries below the target base dn. Select a Size Limit, this should typicaly be one (one entry in the primary source matches one entry in the secondary source). Click **SELECT** to add the object to the canvas.
+1.	If you selected to join with an object in an existing identity view mounted in the RadiantOne namespace, manually enter the target base DN where the secondary entries are located, or click ![Browse](Media/folder.jpg) to select a location in the RadiantOne namespace. Select the object class associated with the secondary entries. Select a scope to locate the secondary entries below the target base dn. Select a Size Limit, this should typically be one (one entry in the primary source matches one entry in the secondary source). Click **SELECT** to add the object to the canvas.
 1. If you selected to join with an object from a data source schema, select the data source that contains the secondary object from the drop-down list. Select the schema associated with the data source that contains the object definition (click the *Extract Schema* link if you don't have a schema). Click **NEXT**. Select the object(s) in the schema and click **SELECT** to add the object to the canvas.
 1. After all secondary objects are on the canvas, select the Join option from the **+ADD COMPONENT** drop-down menu.
 
@@ -96,8 +96,10 @@ If you would like to create an attribute based on existing attributes of the pri
 
 ## Editing Join Profiles
 
-If you need to edit a join profile, select the join in the list of Join Profiles, click the **Edit** option and modify the relevant parameters.
+If you need to edit a join profile, click the ![Join Icon](Media/join-icon.jpg) on the canvas that connects to the secondary object. This opens the join configuration panel on the right. 
 
+ ![Edit Join Profile](Media/edit-join-profile.jpg)
+ 
 -	**Base DN** – The location in the directory containing the objects you would like to join with. This was set in step 7 above.
 
 -	**Scope** – the scope of search that should be performed to locate the entries to join with in the secondary source. This was set in step 8 above.
@@ -119,6 +121,8 @@ If you are familiar with the [syntax](#deactivating-a-join), you can click **Edi
 To deactivate a join, uncheck the join’s Active box in the Join Profiles section on the Objects tab and click Save. To reactivate the join, check the join’s Active box and click Save.
 
 ![marking a join as active/inactive](Media/Image2.7.jpg)
+
+## Deleting a Join
 
 ## Configuring an Extended Join
 
