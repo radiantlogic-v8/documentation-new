@@ -499,6 +499,19 @@ After the join is configured, you can set the bind order (the backends to check 
 
 ![bind order example](Media/Image2.14.jpg)
 
-For specific configuration details, please see the [RadiantOne Namespace Configuration Guide](/namespace-configuration-guide/01-introduction).
+If you have configured joins between the selected LDAP object and other sources, RadiantOne can send the bind request (credential checking) to many backends. 
+
+To configure the bind order:
+
+1.	From the Main Control Panel > Directory Namespace Tab, select the node representing your LDAP backend below Root Naming Contexts. 
+
+2.	On the right side, select the Objects Tab.
+
+3.	Click the **Edit** button next to Define Bind Strategy at the bottom. The Edit Bind Strategy window displays a list of all sources (the primary along with any secondary sources you have joined with). 
+
+4.	Enable the source as a possible participant in the bind operation. 
+
+5.	Use the up and down arrow to determine the order RadiantOne should attempt the credential checking. RadiantOne attempts to verify the credentials against the first enabled source in the list. If it fails, then the next is tried and so forth. If all enabled sources have been tried without success, RadiantOne returns a bind failed error to the client.
+
 
 ## Attribute Priority
