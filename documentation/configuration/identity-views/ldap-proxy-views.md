@@ -56,6 +56,7 @@ To delete an LDAP Proxy View:
 1. Navigate to Control Panel > Setup > Directory Namespace > Namespace Design.
 2. Select the root naming context where the LDAP proxy view is mounted.
 3. On the PROPERTIES tab on the right, click the Delete button.
+4. Click **DELETE** to confirm.
 
 ![Delete Naming Context](Media/delete-root-naming.jpg)
 
