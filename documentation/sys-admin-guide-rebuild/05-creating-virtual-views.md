@@ -33,7 +33,7 @@ The Special Attributes Handling options allow you to perform the following funct
 
 ### Linked Attributes
 
-The Linked Attributes setting is only compatible with entries located in RadiantOne Universal Directory stores or persistent cache.
+The Linked Attributes setting is only compatible with entries located in RadiantOne Universal Directory stores, LDAP Proxy Views, or persistent cached views.
 
 Linked attributes are attributes that allow relationships between objects. A typical example would be isMemberOf/uniqueMember for user/groups objects. A group has members (uniqueMember attribute) which is the forward link relationship. Those members have an isMemberOf attribute which is the back link (to the group entry) relationship. Other examples of linked attributes are:
 
