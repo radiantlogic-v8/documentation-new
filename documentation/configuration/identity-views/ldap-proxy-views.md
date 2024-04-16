@@ -454,7 +454,7 @@ To set up global attribute mappings:
 
 1.	Go to the Control Panel > Directory Namespace > Namespace Design. Select the node where the LDAP Proxy View is mounted and go to ADVANCED SETTINGS tab > Global Attributes Handling section.
 
-2.	If an attribute you want to map does not appear in the list, click on **ADD** and enter the Name (as it exists in the backend), the Virtual Name (what you want the name to be in the virtual entry), whether it contains a DN value that needs remapped, if you want RadiantOne to always request it from the backend, and if the attribute should be hidden and not returned in the identity view.
+2.	If an attribute you want to map does not appear in the list, click on **ADD** and enter the Name (as it exists in the backend) and the Virtual Name (what you want the attribute name to be in the identity view).
 3.	Click **SAVE**.
 
 4.	If you already see the attribute you want to map in the list, click the ![Pencil](Media/pencil.jpg) inline with the attribute. Enter a value for Virtual Name and click **SAVE**.
