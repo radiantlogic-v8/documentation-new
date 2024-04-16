@@ -575,7 +575,9 @@ To cache user passwords, the virtual view of Active Directory needs a computed a
 
 To validate credentials, RadiantOne compares the value of the user’s cached userPassword attribute to the value that comes in the bind request. If it matches, the authentication is successful. If it doesn’t match, the authentication is unsuccessful. If the local authentication is unsuccessful, and you have the Delegate on Failure option checked, RadiantOne delegates the credentials checking to the backend Active Directory. The backend Active Directory is responsible in determining if the authentication is successful. 
 
->[!note] – The ability to get and cache passwords is supported for Active Directory 2008 R2(+) backends. Also, the RadiantOne Secure Data Connector client must be deployed on a Windows OS. All Windows updates should be applied to both the machine hosting the Secure Data Connector and the backend Active Directory machine. The credentials configured in the Active Directory data source for RadiantOne must have the following permissions. Domain Level: Read, Replicating Directory Changes, Replicating Directory Changes All, Replicating Directory Changes in Filtered Set. <br> Ou Level: Read all properties. 
+>[!note] – The ability to get and cache passwords is supported for Active Directory 2008 R2(+) backends. Also, the RadiantOne Secure Data Connector client must be deployed on a Windows OS. All Windows updates should be applied to both the machine hosting the Secure Data Connector and the backend Active Directory machine. The credentials configured in the Active Directory data source for RadiantOne must have the following permissions.
+>Domain Level: Read, Replicating Directory Changes, Replicating Directory Changes All, Replicating Directory Changes in Filtered Set.
+>Ou Level: Read all properties. 
 
 To leverage the Active Directory native replication mechanism to get the password, Microsoft recommends the following firewall ports are opened between the Active Directory server and the machine where the RadiantOne Secure Data Connector are running. Check with your Active Directory administrator to confirm these ports. 
 
