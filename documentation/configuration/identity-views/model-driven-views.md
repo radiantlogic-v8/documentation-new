@@ -3,7 +3,7 @@ title: Creating Model-driven Identity Views
 description: Learn how to create views that are comprised of attributes from one or more identity data sources using a model-driven approach. 
 ---
 
-## Creating Identity Views
+## Overview - Creating Identity Views
 
 There are two main design approaches to creating identity views.
  1. Using an [LDAP proxy approach](ldap-proxy-views.md), where the identity view deployed in RadiantOne represents an exact hierarchy (or specific sub-branch) of an existing LDAP directory data source. With this view design approach you are limited to the exact hierarchical structure of the existing directory store backend. However, you can choose to include or exclude specific branches to limit the data in the identity view.
@@ -20,7 +20,7 @@ There is a toggle to indicate whether the naming context is active or not. Toggl
 
 ![Active Toggle](Media/active-toggle.jpg)
 
-## Model-driven Identity Views
+## Model-driven Identity Views Introduction
 Creating model-driven identity views requires the use of the metadata extracted from backend sources. The views can be flat or hierarchical and comprised of an aggregation of many views. This provides greater flexibility for view design than creating simple LDAP proxy views.
 
 In order to create model-driven identity views, the data sources configured in RadiantOne [Data Catalog](/data-sources/schemas) must have their schemas extracted. The schemas contain the metadata that is used for creating model-driven identity views. Container and content nodes types in identity views are created from objects in the metadata.
