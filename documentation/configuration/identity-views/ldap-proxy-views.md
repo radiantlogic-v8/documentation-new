@@ -492,8 +492,8 @@ This auto re-mapping capability is useful for two main purposes:
 -	Manage group membership from an external application – when new users are added to these groups, the “real” DN is entered properly in the backend LDAP directory even though the members can be returned with their re-mapped DNs in RadiantOne.
 
 >[!warning] If RadiantOne is configured to re-map DN attributes, and you need to perform searches on these attributes, then your options for the search filter are as follows:
-<br>Enter the whole attribute value in the search filter (i.e. member=CN=Anna Gold,CN=Users,o=Active Directory) 
-<br>Only use the wild card * character in the filter up to the point of the new suffix (i.e. member=CN=Anna Gold,CN=Users,o=*) or (member=CN=*)
+<br>Enter the whole attribute value in the search filter: ```(member=CN=Anna Gold,CN=Users,o=Active Directory)``` 
+<br>Only use the wild card * character in the filter up to the point of the new suffix: ```(member=CN=Anna Gold,CN=Users,o=*)``` or ```(member=CN=*)```
 
 If your virtual view does not keep the existing backend hierarchy (for example if you use a model-drive view instead of an LDAP proxy view), then you can use a computed attribute function to auto-translate the member DNs to the RadiantOne namespace. The functions available for computed attributes for this purpose are: DNremapLookup, DNremapLookupForeign, and DNremapLookupUnnest.
 
