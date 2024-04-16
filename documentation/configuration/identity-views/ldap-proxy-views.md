@@ -460,12 +460,12 @@ To set up global attribute mappings:
 4.	If you already see the attribute you want to map in the list, click the ![Pencil](Media/pencil.jpg) inline with the attribute. Enter a value for Virtual Name and click **SAVE**.
 5.	Click **SAVE** in the bottom right to save the page.
 
-The screen shot below shows a mapping established between uid and sAMAccountName.
+The screen shot below shows a mapping established between sAMAccountName and uid.
 
 ![Attribute Mapping](Media/attribute-mapping.jpg)
  
 
-This means that all entries from the underlying source containing a uid attribute be returned with it mapped as sAMAccountName (as depicted in the screen shot below).
+This means that all entries from the underlying source containing a sAMAccountName attribute be returned with it mapped as uid (as depicted in the screen shot below).
 
 ![Attribute Mapping Example](Media/attribute-mapping-runtime.jpg)
  
