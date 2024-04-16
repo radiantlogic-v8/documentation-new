@@ -664,7 +664,7 @@ When working with identity views created using an LDAP proxy approach, the first
 If you add multiple primary objects, they will each have their own canvas and you can toggle between the two using the Primary Object drop-down list.
 An example of adding both user and group object classes is shown below.
 
-![Add Multiple Primary Objects](Media/manage-primary-objects.jpg)
+![Add Multiple Primary Objects](Media/multiple-primary-objects.jpg)
 
 Use the primary object list menu to toggle between the canvases.
 
