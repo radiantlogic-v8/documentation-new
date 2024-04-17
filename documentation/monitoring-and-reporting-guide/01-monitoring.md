@@ -330,7 +330,7 @@ usage: < script > [-n < instance name >] -d < data collector key > [-p < data pr
 - g,--trigger-param < key:value > Trigger parameter (repeat the option for each parameter)
 - i,--interval <seconds> Sets the monitoring polling interval
 
-The possible data collector keys are described [here](#memory-and-connection-usage).
+The possible data collector keys are described [here](/data-collectors.md).
 
 List of available triggers:
 
