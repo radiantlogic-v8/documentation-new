@@ -87,7 +87,7 @@ To configure a regular join:
 1. Enter a unique join ID and click **DONE**.
 1. Repeat these steps to add all join conditions. All secondary objects appear on the canvas. An example containing two secondary objects is shown below.
 
-   	![Canvas with Joins](Media/canvas-with-joins.jpg)
+   	![Canvas with Joins](Media/canvs-with-joins.jpg)
 
 ## Configuring Join Condition Based on Computed Attribute
 
