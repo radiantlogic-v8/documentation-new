@@ -613,7 +613,7 @@ to some memory structures in RadiantOne.
 
 >[!warning] When deploying RadiantOne in a cluster, you will have to query the cn=monitor branch at each node (as the stats are specific per node).
 
-**Memory and Connection Usage**
+#### Memory and Connection Usage
 
 If you perform a base search on the cn=monitor node, the following “live” server information is
 available:
