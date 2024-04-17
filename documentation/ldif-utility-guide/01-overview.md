@@ -19,3 +19,4 @@ RadiantOne includes a command line utility that allows you to perform the follow
 
 This utility is named ldif-utils and is located in <RLI_HOME>/bin/advanced. 
 
+>[!warning] If LDIF-Utils needs to connect to the RadiantOne service via LDAPS or HTTPS, you must import the public key certificate into the trust store (unless it already trusts the CA who signed it). Refer to [PKCS12 Certificates](/sys-admin-guide/01-introduction#pkcs12-certificates) for more information.
