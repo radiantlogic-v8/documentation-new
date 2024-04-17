@@ -79,8 +79,8 @@ To configure a regular join:
 1.	Select the attribute from the primary object to base the join on from the *Primary Join Attribute* drop-down list.
 1.	Select the attribute from the secondary objedct to base the join on from the *Secondary Join Attribute* drop-down list.
 1.	The join condition displays and can be manually edited if needed. Click **NEXT**.
-
-	  	![Join Profile](Media/join-profile.jpg)
+   
+	![Join Profile](Media/join-profile.jpg)
   	
 1.	Choose to either *Return all Attributes* from the secondary object, or choose the *Return Attributes Listed below* option and use the **+ATTRIBUTE** button to adjust the list of attributes accordingly.
 1.	Click **NEXT**.
