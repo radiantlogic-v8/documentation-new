@@ -951,7 +951,7 @@ For PKCS12 types of certificates (.pfx or .p12), make sure the certificate is cr
 
 10.	Click **OK** to save the changes.
 
-    >[!warning] Any client that needs to connect to the RadiantOne service via LDAPS or HTTPS (for the web service interface) must import this public key certificate into their trust store (unless they already trust the CA who signed it).
+    >[!warning] Any client, including the LDIF-Utils utility, that needs to connect to the RadiantOne service via LDAPS or HTTPS (for the web service interface) must import this public key certificate into their trust store (unless they already trust the CA who signed it).
 
 11.	Save the changes.
 
