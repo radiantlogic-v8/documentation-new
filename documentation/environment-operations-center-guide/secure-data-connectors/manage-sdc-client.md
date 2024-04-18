@@ -138,7 +138,9 @@ On Windows:
 
 1. Open appsettings.Production.json using an editor. 
     
-1. In the **AgentToken** field, enter the token value copied in [Regenerating the Token](#regenerating-the-token). 
+1. In the **AgentToken** field, enter the token value copied in [Regenerating the Token](#regenerating-the-token).
+
+1. Restart the client.
 
 On Linux:
 
@@ -147,6 +149,8 @@ On Linux:
 1. Open appsettings.Production.json using an editor. 
     
 1. In the **AgentToken** field, enter the token value copied in [Regenerating the Token](#regenerating-the-token).
+
+1. Restart the client.
 
 On Docker:
 
