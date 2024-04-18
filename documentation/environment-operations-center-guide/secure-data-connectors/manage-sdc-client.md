@@ -104,7 +104,7 @@ List the log files:
 
 From here, you can open the logs files to access further details on the client activity.
 
-## Regenerating SDC Registration Tokens
+## SDC Token Expiration and Renewal
 
 A secure data connector's token has lifetime of up to one year. This section describes how to regenerate a secure data connector's token and update the application configuration.
 
