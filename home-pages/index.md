@@ -97,7 +97,7 @@ Harness your identity data with intelligent integration to drive better business
   > Learn how to optimize identity views including how to configure and manage persistent cache. 
   
   > [Directory Stores](tuning/directory-stores)  
-  > Learn about tuning properties for Directory Stores. 
+  > Learn about tuning properties for RadiantOne directory stores. 
      
 </section>
 
