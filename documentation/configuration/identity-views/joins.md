@@ -59,7 +59,7 @@ To configure a regular join:
 
 1.	From the Control Panel > Setup > Directory Namespace > Namespace design, select the location of the node where you want to configure the join. 
 
-1.	On the OBJECT BUILDER tab on the right, select the Object option from the **+ADD COMPONENT** drop-down menu.
+1.	On the OBJECT BUILDER tab on the right, select the Object option from the **+ADD COMPONENT** drop-down menu. If your main view is an LDAP proxy, you must click ADD PRIMARY OBJECT first before adding the secondary object(s).
 
   	![Add Component](Media/add-component.jpg)
 
@@ -74,7 +74,7 @@ To configure a regular join:
    
 1.	Select the secondary object from the drop-down list.
 
-     >[!note] The object associated with the primary object and cannot be changed. Even if you have defined an object class mapping, you see the base object class, not the remapped one.
+     >[!note] The object associated with the primary view cannot be changed. Even if you have defined an object class mapping, you see the base object class, not the remapped one.
 
 1.	Select the attribute from the primary object to base the join on from the *Primary Join Attribute* drop-down list.
 1.	Select the attribute from the secondary objedct to base the join on from the *Secondary Join Attribute* drop-down list.
@@ -91,7 +91,10 @@ To configure a regular join:
 
 ## Configuring Join Condition Based on Computed Attribute
 
-If you would like to create an attribute based on existing attributes of the primary object to base your join condition on, click **Add Computed Attributes**. This allows you to build a new attribute based on the attributes available in the primary object. This new attribute can then be used to base your join condition on. This computed attribute name is prefixed with “vsysa” and is used only to condition the join. It is not returned as part of the virtual entry even if a client were to specifically request it.
+If you would like to create an attribute based on existing attributes of the primary object to base your join condition on, click **Add Computed Attributes**. This allows you to build a new attribute based on the attributes available in the primary object. This new attribute can then be used to base your join condition on. This computed attribute name is prefixed with “vsysa” and is used only to condition the join. It is not returned as part of the v RadiantOne entry even if a client were to specifically request it.
+
+
+   	![Computed in Join](Media/add-computed-4join.jpg)
 
 
 ## Editing Join Profiles
@@ -99,7 +102,11 @@ If you would like to create an attribute based on existing attributes of the pri
 If you need to edit a join profile, click the ![Join Icon](Media/join-icon.jpg) on the canvas that connects to the secondary object. This opens the join configuration panel on the right. 
 
  ![Edit Join Profile](Media/edit-join-profile.jpg)
- 
+
+### Secondary Object 
+### Attributes
+### Computed Attributes for Joins
+### Advanced
 -	**Base DN** – The location in the directory containing the objects you would like to join with. This was set in step 7 above.
 
 -	**Scope** – the scope of search that should be performed to locate the entries to join with in the secondary source. This was set in step 8 above.
