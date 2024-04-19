@@ -638,7 +638,7 @@ Certain attributes and entries require special handling due to how they must be 
 
 For details see: [Special Attributes](special-attributes.md)
 
-For uncached LDAP proxy views, only Linked Attributes and Dynamic Groups are supported. If you configure LDAP proxy views for persistent cache, Referential Integrity and Unnest Groups are also available. The table below outlines the supported special attributes.
+For uncached LDAP proxy views, only Linked Attributes and Dynamic Groups are supported. If you configure LDAP proxy views for persistent cache, Referential Integrity, Attribute Uniqueness, and Unnest Groups are also available. The table below outlines the supported special attributes.
 
 Special Attribute	| Uncached Identity Views from LDAP Backends | Persistent Cached Identity Views
 -|-|-
