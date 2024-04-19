@@ -54,7 +54,7 @@ Harness your identity data with intelligent integration to drive better business
   > [Data Sources](configuration/data-sources/data-sources)  
   > Learn how to use the Data Catalog to connect to and extract identity source metadata. This is the first step to creating views.
   
-  > [Identity Views](configuration/identity-views/identity-views)  
+  > [Identity Views](configuration/identity-views/intro-view-design)  
   > Learn how to create views that are comprised of attributes from one or more identity data sources. 
   
   > [Directory Stores](configuration/directory-stores/directory-stores)  
