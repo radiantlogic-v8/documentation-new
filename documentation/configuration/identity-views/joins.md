@@ -93,8 +93,7 @@ To configure a regular join:
 
 If you would like to create an attribute based on existing attributes of the primary object to base your join condition on, click **Add Computed Attributes**. This allows you to build a new attribute based on the attributes available in the primary object. This new attribute can then be used to base your join condition on. This computed attribute name is prefixed with “vsysa” and is used only to condition the join. It is not returned as part of the v RadiantOne entry even if a client were to specifically request it.
 
-
-   	![Computed in Join](Media/add-computed-4join.jpg)
+![Computed in Join](Media/add-computed-4join.jpg)
 
 
 ## Editing Join Profiles
@@ -103,8 +102,18 @@ If you need to edit a join profile, click the ![Join Icon](Media/join-icon.jpg) 
 
  ![Edit Join Profile](Media/edit-join-profile.jpg)
 
+ When editing the join, you can modify the secondary object, the attributes retrieved from the secondary object, computed attributes used in the join, and more advanced settings related to the primary object and join type.
+
 ### Secondary Object 
+When editing a join profile, expand the 
+	data source
+	object class
+	target base dn
+	scope
+	join condition
+
 ### Attributes
+
 ### Computed Attributes for Joins
 ### Advanced
 -	**Base DN** – The location in the directory containing the objects you would like to join with. This was set in step 7 above.
