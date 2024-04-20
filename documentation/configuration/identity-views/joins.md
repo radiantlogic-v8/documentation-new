@@ -5,7 +5,7 @@ description: Learn how to configure joins.
 
 ## Overview
 
-Objects from any sources in the RadiantOne namespace can be joined. With joins, you can extend the primary entries with attributes coming from another data source, or new application-specific attributes (required by applications, but don’t exist yet). 
+Objects from any sources in the RadiantOne namespace can be joined if they have an attribue value in common. With joins, you can extend the primary entries with attributes coming from another data source, or new application-specific attributes (required by applications, but don’t exist yet). 
 
 This guide describes the following. 
 
@@ -102,35 +102,37 @@ If you need to edit a join profile, click the ![Join Icon](Media/join-icon.jpg) 
 
  ![Edit Join Profile](Media/edit-join-profile.jpg)
 
- When editing the join, you can modify the secondary object, the attributes retrieved from the secondary object, computed attributes used in the join, and more advanced settings related to the primary object and join type.
+When editing the join, you can modify the secondary object, the attributes retrieved from the secondary object, computed attributes used in the join, and more advanced settings related to the primary object and join type.
 
 ### Secondary Object 
-When editing a join profile, expand the 
-	data source
-	object class
-	target base dn
-	scope
-	join condition
+
+When editing a join profile, expand the Secondary Object section to locate the following:
+
+**Data Source** - this is a read-only value that indicates the data source name the secondary object is from.
+
+**Object Class** - this is a read-only value that indicates the object class associated with the secondary object.
+
+**Target Base DN** - this is the location in the RadiantOne namespace where the entries associated with the secondary object are located. When adding objects on the canvas, there are two options for where the objects come from: The RadiantOne Namespace or from a Secondary Data Source Schema. When the *RadiantOne Namespace* option is chosen, the user enters the target base DN. When the *Secondary Data Source Schema* option is chosen, an indentity view is automatically generated for the selected object(s) and mounted in the cn=staging default naming context. This location is the target base dn.
+
+**Scope** - this is the scope of search needed to locate the secondary entries below the Target Base DN.
+
+**Join Condition** - this is the attribute matching condition that dictates how the primary entries are linked to the secondary entries.
 
 ### Attributes
 
+When editing a join profile, expand the Attributes section to locate the list the attributes to manage the attributes returned from the secondary object. Click **MANAGE ATTRIBUTES** to add or remove attributes to return and/or reamp the attribute name.
+
 ### Computed Attributes for Joins
+
+When editing a join profile, expand the Computed Attributes for Joins section to manage the computed attribute that is used in the join condition.  Computed attributes defined for joins are shared across all join profiles configured on the canvas.
+
 ### Advanced
--	**Base DN** – The location in the directory containing the objects you would like to join with. This was set in step 7 above.
 
--	**Scope** – the scope of search that should be performed to locate the entries to join with in the secondary source. This was set in step 8 above.
+**Filter** – By default, the only filter criteria on primary entries to condition a join is the object class (e.g. objectclass=inetOrgPerson). You can add more criteria to condition the primary entries to join using the *Filter* setting. For example, if you only want to join entries that have a location of San Francisco, you could add (l=San Francisco) in the Filter setting.
 
--	**Join Condition** – the matching criteria used to identify the entries to join. This was set during step 4 and 11 above.
+**Size Limit** - This is the number of entries to return in the search for the secondary entries. For example, setting this value to 1 would dictate that only one entry matching the join criteria should be returned from the query to the secondary object (target base DN).
 
--	**Additional Filter** – By default, the only filter criteria to condition a join is the object class of the parent entry (e.g. objectclass=inetOrgPerson). You can add more criteria to condition the primary entries to join. For example, if you only want to join entries that have a location of San Francisco, you could add (l=San Francisco) in the Additional Filter parameter.
-
--	**Attributes to return from the secondary objects** – list of attributes to return from the secondary object.
-
--	**Computed Attributes** – if you are basing the join on a [computed attribute](#computed-attributes) and you want to change the join to use a different/new computed attribute or you want to edit/delete a previously created computed attribute, click **Computed Attributes**. Remember that if you choose to add a new computed attribute, this computed attribute name is prefixed with “vsysa” and is only used to condition the join. It is not returned as part of the virtual entry even if a client were to specifically request it. If you add a new computed attribute to base the join on, you must edit the join condition manually to use the new computed attribute.
-
-If you make any changes to the join condition, remember to click **Save** in the top right corner and click **OK** to apply the changes to the server.
-
-If you are familiar with the [syntax](#deactivating-a-join), you can click **Edit Manually** at the bottom of the Attributes tab in the Edit window. 
+**Join Type** - The join type is *Left* by default. With this join type, all entries from the primary source are returned. If the primary entry has a matching entry in a secondary source, those additional attributes comprise the RadiantOne entry. If *Inner* is chosen, it indicates that only primary entries that have a matching entry in a secondary source should be returned in the result. Primary entries that do not have a matching entry are not returned. 
 
 ## Deactivating a Join
 
@@ -235,92 +237,53 @@ If you are familiar with the [syntax](#join-syntax), you can click **Edit Manual
 
 ## Deactivating a Join
 
-To deactivate a join, uncheck the join’s Active box in the Join Profiles section on the Objects tab and click **Save**. To reactivate the join, check the join’s Active box and click **Save**.
+To deactivate a join, edit a join profile, by clicking the ![Join Icon](Media/join-icon.jpg) on the canvas that connects to the secondary object. This opens the join configuration panel on the right. Toggle the Active option to Offline.
 
-![marking a join as active/inactive](Media/Image2.9.jpg)
+![marking a join as active/inactive](Media/deactivate-join.jpg)
 
-### Join Syntax
+To activate the join, toggle the option to Active.
 
-Examples of the join syntax are shown below. If you need to edit the join condition manually, you must follow this syntax.
-
-**Example 1 – Regular Join**
-
-`LDAP://[VDS]/ou=people,o=myviews?sn:1,cn:1,mail:255,title?sub?(uid=@[CID]) ##JOINTYPE=INNER##SIZELIMIT=1##ALLOW_PARTIAL_ENTRY=yes`
-
--	The [VDS] shown here indicates the local RadiantOne service as the server containing the secondary objects you want to join.
-
--	The ou=people,o=myviews section specifies the branch (known as the Secondary Object Base DN) that contains the entries to join to the primary entries.
-
--	The attributes listed (sn, cn, mail, title) are the attributes to be returned from the secondary entries. The numeric value set after the attribute indicates the precedence level (0 being least authoritative, 255 being most authoritative…if no value is specified, an authority level of 128 is assumed). For more information, please see the section titled [Attribute Priority](#attribute-priority).
-
--	A sub level search scope is specified to find the secondary objects to join.
-
--	The join takes place when uid from the ou=people,o=myviews branch matches the CID attribute in the primary source.
-
--	##JOINTYPE=INNER is set to specify that only primary entries that have a matching entry in the joined source should be returned in the result. Primary entries that do not have a matching entry are not returned. The options for jointype are INNER and LEFT. With LEFT join type, all entries from the primary source are returned. If the primary entry has a matching entry in a secondary source(s), those additional attributes comprise the primary entry.
-
--	##SIZELIMIT=1 is set to specify only one entry should be returned from the secondary object (for each entry in the primary source). In this case, it is assumed that only one entry should be returned from the ou=people,o=myviews branch (for each entry in the primary source).
-
->[!note] If no sizelimit is specified, the default used is 1000.
-
--	##ALLOW_PARTIAL_ENTRY=yes. This is to specify the behavior of RadiantOne if this secondary source is unavailable and it is not able to join. If this is present in the join condition, RadiantOne returns a partial entry to the client. For more details, see [Behavior if a Secondary Source is Unavailable](#behavior-if-a-secondary-source-is-unavailable).
-
->[!note]
->DO NOT use the ALLOW_PARTIAL_ENTRY=YES property if you plan on caching the joined view as the whole entry must be in the cache and during refresh scenarios you don’t want a partial entry to end up in the cache.
-
-**Example 2 – Regular Join**
-
-`LDAP://198.123.123.444:389/dc=anotherldap,dc=com?sub?(&(sn=@[LASTNAME])(givenname=@[FIRSTNAME]))##USERID=cn=directorymanager##PASSWORD=secret##SIZELIMIT=1`
-
--	The IP address shown here indicates the server that you want to join to (also known as the Secondary Source).
-
--	The dc=anotherldap,dc=com section specifies the branch (base dn) in that server that contains the secondary objects to be joined.
-
--	Since no attributes are listed, all attributes from the secondary object are returned by default.
-
--	A sub level search scope is specified to find the secondary objects to join.
-
--	The join takes place when sn matches LASTNAME and givenName matches FIRSTNAME from the dc=anotherldap,dc=com branch.
-
--	##USERID specifies the user to connect to the secondary source (198.123.123.444)
-
--	##PASSWORD specifies the password for the user mentioned above.
-
--	##SIZELIMIT=1 is set to specify only one entry should be returned from the secondary object (for each entry in the primary source). In this case, it is assumed that only one entry should be returned from the dc=anotherldap,dc=com branch (for each entry in the primary source).
-
->[!note]
->If no sizelimit is specified, the default used is 1000.
-
-**Example 3 – Extended Join**
-
-`LDAP://[VDS]/xid=@[uid],cn=config?newattr1,newattr2?base?(objectclass=*)##EXTENDED=extensibleObject`
-
--	The [VDS] shown here indicates the local RadiantOne service contains the secondary objects you want to join with.
-
--	Xid=@[uid] is the RDN of the extension entry. The @[uid] part is substituted with the uid value from the primary entry. This is the unique identifier between the primary entry and the extension entry and used by RadiantOne for the join. The cn=config suffix after the RDN makes up the entire DN for the extension entry.
-
--	Newattr1 and newattr2 are the extension attributes that will be stored in the RadiantOne Universal Directory store. 
-
--	A base search scope is specified to find the extension entries to join.
-
--	(objectclass=*) is part of the primary source filter meaning that only entries that match this filter is extended with the extension attributes during the join.
-
--	##EXTENDED dictates that this is an extended type of join (as opposed to a regular join which would not have this keyword). The value of EXTENDED is the objectclass to associate the extension entries/attributes with.
-
-**Example 4 – Multiple Join Conditions**
-
-To manually add more than one join condition, separate each LDAP URL with a semicolon (if you go through the wizard to set up multiple join conditions, then they are automatically separated with a semicolon).
-
-`LDAP://[VDS]/dv=activedirectory,o=vds?sAMAccountName,objectclass,cn?one?(employeeID=@[employeeNumber:VARCHAR(255)]);LDAP://[VDS]/dv=oracle,o=vds?EMPNO,ENAME?one?(EMPNO=@[employeeNumber:VARCHAR(255)])`
-
-### Attribute Properties
+## Attribute Properties
 
 In a join configuration, attributes from each source can have certain characteristics assigned to them. These properties dictate attribute priority, visibility, searchability and updateability. 
 
 >[!warning]
 >The attribute properties described in this section are only applicable for dynamic, non-cached virtual views as they dictate how RadiantOne builds the joined view on-the-fly. Once a virtual view is in persistent cache, these characteristics are irrelevant.
 
-#### Attribute Priority
+### Hidden
+
+You can define an attribute as hidden because you need it for the join (it may be the attribute you are basing your join on), but you don’t want the value to be in the final joined virtual entry. 
+
+To define an attribute as hidden, from the Main Control Panel > Directory Namespace tab, select the view/object below the list of Root Naming Contexts. On the right side, select the Objects tab (for database backends, the Object tab) and in the Virtual Object attribute list, select the attribute you want to hide. Click **Edit Attribute** and check the Hidden in Result box. These attributes are not returned in the virtual entry.
+
+>[!warning] If you edit the join condition manually, and want to make an attribute returned from a secondary object hidden, add a value of 256 to the priority weight you have set. For example, if mail were an attribute returned from a join and you had it set with a priority value of 128 (NORMAL) and NON searchable, and NON updateable, then to make it hidden in the virtual entry, you would change the numeric value to be 1920 (128 + 512 + 1024 +256). Mail:1920 is how it would appear in the join condition if you were to edit the join manually.
+
+### Searchable
+
+You can define attributes as searchable or not.
+
+-	If an attribute from a secondary source is defined as searchable, and a client uses the attribute in a search filter, RadiantOne must attempt the join on all entries from the primary source and then apply the filter to see which ones match the client search filter. If attributes from secondary sources must be searchable, RadiantOne must go through every entry in the primary source and attempt to join it with a secondary object. After, the client search filter is applied to the result.
+
+-	If an attribute from a secondary source is defined as non-searchable, RadiantOne can apply the search filter on the primary entries (to narrow down the possible join candidates) and then only join those entries. The performance is better in this case because the join only needs to occur on a subset of the primary entries. 
+
+To define an attribute as searchable, from the Main Control Panel > Directory Namespace tab, select the view/object below the list of Root Naming Contexts. On the right side, choose the Objects tab (for database backends, choose the Object tab) and in the Virtual Object attribute list, select the attribute you want to be searchable. Click on Edit Attribute and check the Searchable box. If you do not want the attribute searchable, uncheck this option. When finished, click OK. Click Save in the top right corner and click OK to apply the changes to the server.
+
+>[!warning] If you edit the join condition manually, and want to make an attribute returned from a secondary object non-searchable, add a value of 512 to the priority weight you have set. For example, if mail were an attribute returned from a join and you had it set with a priority value of 128 (NORMAL) and updateable, then to make it non-searchable, you would change the numeric value to be 640 (128 + 512). Mail:640 is how it would appear in the join condition if you were to edit the join manually.
+
+### Updateable
+
+You can define attributes as updateable or not.
+
+-	If an attribute is updateable, clients may modify the value (remember just because they can doesn’t mean [access controls](access-control) will allow it).
+
+-	If an attribute is not updateable, clients cannot modify the value.
+
+To define an attribute as updateable, from the Main Control Panel -> Directory Namespace tab, select the view/object below the list of Root Naming Contexts. On the right side, choose the Objects tab (for database backends, choose the Object tab) and in the Virtual Object attribute list, select the attribute you want to be updateable. Click on Edit Attribute and check the Updateable box. If you do not want the attribute updateable, uncheck this option. When finished, click OK. Click Save in the top right corner and click OK to apply the changes to the server.
+
+>[!warning]
+>If you edit the join condition manually, and want to make an attribute returned from a secondary object not updateable, add a value of 1024 to the priority weight you have set. For example, if phone were an attribute returned from a join and you had it set with a priority value of 128 (NORMAL) and searchable, then to make it not updateable, you would change the numeric value to be 1152 (128 + 1024). Phone:1152 is how it would appear in the join condition if you were to edit the join manually. If you didn’t want the phone attribute to be searchable or updateable (and still have NORMAL priority), it would have a numeric value of 1664. (128 + 512 + 1024).
+
+## Attribute Priority
 
 The priority level is only needed when the attribute name returned from the secondary source is the same (or has been mapped to the same) as in the primary source. The default behavior of RadiantOne is to return a multi-valued attribute if a secondary object returns an attribute with the same name as the primary object (as long as the values are different). If you do not want the attribute to return as a multi-value, you can set a priority for the attributes. The default priority level set for all attributes is normal. From the interface, you would use the priority levels shown below. The corresponding numeric values are also shown and would only be used if you edit the condition manually.
 
@@ -338,54 +301,6 @@ In addition to setting priority, you can also specify whether the attributes ret
 
 ![Attribute properties](Media/Image2.10.jpg)
 
-#### Hidden
-
-You can define an attribute as hidden because you need it for the join (it may be the attribute you are basing your join on), but you don’t want the value to be in the final joined virtual entry. 
-
-To define an attribute as hidden, from the Main Control Panel > Directory Namespace tab, select the view/object below the list of Root Naming Contexts. On the right side, select the Objects tab (for database backends, the Object tab) and in the Virtual Object attribute list, select the attribute you want to hide. Click **Edit Attribute** and check the Hidden in Result box. These attributes are not returned in the virtual entry.
-
->[!warning] If you edit the join condition manually, and want to make an attribute returned from a secondary object hidden, add a value of 256 to the priority weight you have set. For example, if mail were an attribute returned from a join and you had it set with a priority value of 128 (NORMAL) and NON searchable, and NON updateable, then to make it hidden in the virtual entry, you would change the numeric value to be 1920 (128 + 512 + 1024 +256). Mail:1920 is how it would appear in the join condition if you were to edit the join manually.
-
-#### Searchable
-
-You can define attributes as searchable or not.
-
--	If an attribute from a secondary source is defined as searchable, and a client uses the attribute in a search filter, RadiantOne must attempt the join on all entries from the primary source and then apply the filter to see which ones match the client search filter. If attributes from secondary sources must be searchable, RadiantOne must go through every entry in the primary source and attempt to join it with a secondary object. After, the client search filter is applied to the result.
-
--	If an attribute from a secondary source is defined as non-searchable, RadiantOne can apply the search filter on the primary entries (to narrow down the possible join candidates) and then only join those entries. The performance is better in this case because the join only needs to occur on a subset of the primary entries. 
-
-To define an attribute as searchable, from the Main Control Panel > Directory Namespace tab, select the view/object below the list of Root Naming Contexts. On the right side, choose the Objects tab (for database backends, choose the Object tab) and in the Virtual Object attribute list, select the attribute you want to be searchable. Click on Edit Attribute and check the Searchable box. If you do not want the attribute searchable, uncheck this option. When finished, click OK. Click Save in the top right corner and click OK to apply the changes to the server.
-
->[!warning] If you edit the join condition manually, and want to make an attribute returned from a secondary object non-searchable, add a value of 512 to the priority weight you have set. For example, if mail were an attribute returned from a join and you had it set with a priority value of 128 (NORMAL) and updateable, then to make it non-searchable, you would change the numeric value to be 640 (128 + 512). Mail:640 is how it would appear in the join condition if you were to edit the join manually.
-
-#### Updateable
-
-You can define attributes as updateable or not.
-
--	If an attribute is updateable, clients may modify the value (remember just because they can doesn’t mean [access controls](access-control) will allow it).
-
--	If an attribute is not updateable, clients cannot modify the value.
-
-To define an attribute as updateable, from the Main Control Panel -> Directory Namespace tab, select the view/object below the list of Root Naming Contexts. On the right side, choose the Objects tab (for database backends, choose the Object tab) and in the Virtual Object attribute list, select the attribute you want to be updateable. Click on Edit Attribute and check the Updateable box. If you do not want the attribute updateable, uncheck this option. When finished, click OK. Click Save in the top right corner and click OK to apply the changes to the server.
-
->[!warning]
->If you edit the join condition manually, and want to make an attribute returned from a secondary object not updateable, add a value of 1024 to the priority weight you have set. For example, if phone were an attribute returned from a join and you had it set with a priority value of 128 (NORMAL) and searchable, then to make it not updateable, you would change the numeric value to be 1152 (128 + 1024). Phone:1152 is how it would appear in the join condition if you were to edit the join manually. If you didn’t want the phone attribute to be searchable or updateable (and still have NORMAL priority), it would have a numeric value of 1664. (128 + 512 + 1024).
-
-#### Numeric Values Corresponding to Attribute Properties
-
-The following table indicates the numeric values for each attribute property.
-
-Property	| Numeric Value
--|-
-Lowest Priority	| 1
-Low Priority	| 64
-Normal Priority	| 128
-High Priority	| 192
-Highest Priority	| 255
-Hidden	| 256
-NOT Searchable | 512
-NOT Updateable	| 1024
-
 Only one priority level is assigned per attribute per source. Whereas a combination of hidden, searchable, and updateable can be assigned per attribute per source. Below are some examples.
 
 Attribute mail coming from a join/secondary source that is searchable, updateable, NORMAL priority and NOT hidden = 128 
@@ -396,12 +311,12 @@ Attribute mail coming from a join/secondary source that is searchable, NOT updat
 
 Attribute mail coming from a join/secondary source that is NOT searchable, updateable, HIGH priority and hidden = 960      (192+512+256=960)
 
-### How the Join is Performed
+## How the Join is Performed
 
 >[!warning]
 >If the “Limit Attributes Requested from the LDAP Backend” optimization is enabled for a proxy to an LDAP backend, in addition to a join, the attribute(s) from the primary LDAP source that the join(s) are based on should be listed as “always requested” on the Attributes Tab. Otherwise, RadiantOne may not get the attribute(s) from the primary backend that are required to perform the join and the join cannot be done. For more information on limiting attributes requested from the LDAP backend, please see the [RadiantOne Namespace Configuration Guide](/namespace-configuration-guide/01-introduction).
 
-#### Pre-filtering on the Primary Source
+### Pre-filtering on the Primary Source
 
 If the filter in the client search involves attribute(s) that come from the primary (main) source only, RadiantOne pre-filters (applying that filter to the primary entries to reduce the number of entries that are required to join). If the filter in the client search involves attributes that can come from secondary (joined) sources and those attributes(s) are marked as searchable, then RadiantOne cannot pre-filter on those attributes and must join everything first and then apply the filter on the joined result. RadiantOne knows if attributes used in the filter could come from secondary sources if the attribute(s) are specifically requested in the join condition, or if *  is used in the join condition to return everything from the joined source.
 
@@ -415,19 +330,19 @@ However, if a filter also contains an attribute that is only defined in the prim
 
 For example, using the join condition defined above, if RadiantOne receives a filter like: (&(mail=lcallahan@rli.com)(cn=laura callahan)), it first searches the Sun Java Directory for entries matching mail=lcallahan@rli.com (because mail is not defined as an attribute to return from Active Directory). Then it joins the entries that were returned with the corresponding entries in Active Directory. Finally, RadiantOne applies the original filter on the joined entries and the ones that match are returned to the client. The result sent back to the client depends on whether your join configuration is set for a Left or Inner join. Each is described below.
 
-#### Left Join
+### Left Join
 
 In a Left Join, all entries from the primary source are returned in the result and if they have a matching entry in a secondary source(s), those additional attributes comprise the main entry. If an entry in the primary source does not have a matching entry in a secondary source it is still a possible candidate to be returned to the client (if it matches the original filter in the client request).
 
 ![left join example](Media/Image2.11.jpg)
 
-#### Inner Join
+### Inner Join
 
 In an Inner Join, the primary entries (from the starting point for the join) are joined with matching secondary entries. Only entries that can be joined (the intersection) are possible candidates to be returned to the client (if it matches the original filter in the client request). The entry(s) that are returned will be comprised of attributes from the primary object and any secondary objects that were joined.
 
 ![inner join example](Media/Image2.12.jpg)
 
-#### Behavior if a Secondary Source is Unavailable
+### Behavior if a Secondary Source is Unavailable
 
 The behavior of RadiantOne in cases where one or more of the secondary sources is unavailable depends on if the Process Joins and Computed Attributes Only when Necessary optimization is enabled or not. For more information on this setting, please see the [RadiantOne Namespace Configuration Guide](/namespace-configuration-guide/01-introduction).
 
@@ -444,7 +359,7 @@ If partial entries has been allowed, and the client issued a base search, they r
 
 Please see the diagram below for more details on the [join behavior](#join-behavior-diagram).
  
-#### Join Behavior Diagram
+### Join Behavior Diagram
 
 ![Join Behavior Diagram](Media/Image2.13.jpg)
 
@@ -472,6 +387,3 @@ To configure the bind order:
 4.	Enable the source as a possible participant in the bind operation. 
 
 5.	Use the up and down arrow to determine the order RadiantOne should attempt the credential checking. RadiantOne attempts to verify the credentials against the first enabled source in the list. If it fails, then the next is tried and so forth. If all enabled sources have been tried without success, RadiantOne returns a bind failed error to the client.
-
-
-## Attribute Priority
