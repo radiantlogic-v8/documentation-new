@@ -91,7 +91,7 @@ To configure a regular join:
 
 ## Configuring Join Condition Based on Computed Attribute
 
-If you would like to create an attribute based on existing attributes of the primary object to base your join condition on, click **Add Computed Attributes**. This allows you to build a new attribute based on the attributes available in the primary object. This new attribute can then be used to base your join condition on. This computed attribute name is prefixed with “vsysa” and is used only to condition the join. It is not returned as part of the v RadiantOne entry even if a client were to specifically request it.
+If you would like to create an attribute based on existing attributes of the primary object to base your join condition on, click **Add Computed Attributes**. This allows you to build a new attribute based on the attributes available in the primary object. This new attribute can then be used to base your join condition on. This computed attribute name is prefixed with “vsysa” and is used only to condition the join. It is not returned as part of the RadiantOne entry even if a client were to specifically request it.
 
 ![Computed in Join](Media/add-computed-4join.jpg)
 
@@ -102,7 +102,7 @@ If you need to edit a join profile, click the ![Join Icon](Media/join-icon.jpg) 
 
  ![Edit Join Profile](Media/edit-join-profile.jpg)
 
-When editing the join, you can modify the secondary object, the attributes retrieved from the secondary object, computed attributes used in the join, and more advanced settings related to the primary object and join type.
+When editing the join, you can modify the secondary object, the attributes retrieved from the secondary object, computed attributes used in the join, and more advanced settings related to the primary object and join type. Joins can also be deactivated and/or deleted from the join configuration panel.
 
 ### Secondary Object 
 
@@ -134,13 +134,13 @@ When editing a join profile, expand the Computed Attributes for Joins section to
 
 **Join Type** - The join type is *Left* by default. With this join type, all entries from the primary source are returned. If the primary entry has a matching entry in a secondary source, those additional attributes comprise the RadiantOne entry. If *Inner* is chosen, it indicates that only primary entries that have a matching entry in a secondary source should be returned in the result. Primary entries that do not have a matching entry are not returned. 
 
-## Deactivating a Join
-
-To deactivate a join, uncheck the join’s Active box in the Join Profiles section on the Objects tab and click Save. To reactivate the join, check the join’s Active box and click Save.
-
-![marking a join as active/inactive](Media/Image2.7.jpg)
 
 ## Deleting a Join
+
+To delete a join, edit a join profile by clicking the ![Join Icon](Media/join-icon.jpg) on the canvas that connects to the secondary object. This opens the join configuration panel on the right. Click the delete button. Click **DELETE** to confirm.
+
+ ![Delete Join](Media/delete-join.jpg)
+
 
 ## Configuring an Extended Join
 
@@ -237,7 +237,7 @@ If you are familiar with the [syntax](#join-syntax), you can click **Edit Manual
 
 ## Deactivating a Join
 
-To deactivate a join, edit a join profile, by clicking the ![Join Icon](Media/join-icon.jpg) on the canvas that connects to the secondary object. This opens the join configuration panel on the right. Toggle the Active option to Offline.
+To deactivate a join, edit a join profile by clicking the ![Join Icon](Media/join-icon.jpg) on the canvas that connects to the secondary object. This opens the join configuration panel on the right. Toggle the Active option to Offline.
 
 ![marking a join as active/inactive](Media/deactivate-join.jpg)
 
