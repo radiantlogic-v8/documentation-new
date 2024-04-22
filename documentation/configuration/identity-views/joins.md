@@ -89,14 +89,14 @@ To configure a regular join:
 
    	![Canvas with Joins](Media/canvs-with-joins.jpg)
 
-## Configuring Join Condition Based on Computed Attribute
+### Configuring Join Condition Based on Computed Attribute
 
 If you would like to create an attribute based on existing attributes of the primary object to base your join condition on, click **Add Computed Attributes**. This allows you to build a new attribute based on the attributes available in the primary object. This new attribute can then be used to base your join condition on. This computed attribute name is prefixed with “vsysa” and is used only to condition the join. It is not returned as part of the RadiantOne entry even if a client were to specifically request it.
 
 ![Computed in Join](Media/add-computed-4join.jpg)
 
 
-## Editing Join Profiles
+### Editing Join Profiles
 
 If you need to edit a join profile, click the ![Join Icon](Media/join-icon.jpg) on the canvas that connects to the secondary object. This opens the join configuration panel on the right. 
 
@@ -104,153 +104,45 @@ If you need to edit a join profile, click the ![Join Icon](Media/join-icon.jpg) 
 
 When editing the join, you can modify the secondary object, the attributes retrieved from the secondary object, computed attributes used in the join, and more advanced settings related to the primary object and join type. Joins can also be deactivated and/or deleted from the join configuration panel.
 
-### Secondary Object 
+**Secondary Object** 
 
 When editing a join profile, expand the Secondary Object section to locate the following:
 
-**Data Source** - this is a read-only value that indicates the data source name the secondary object is from.
+*Data Source* - this is a read-only value that indicates the data source name the secondary object is from.
 
-**Object Class** - this is a read-only value that indicates the object class associated with the secondary object.
+*Object Class* - this is a read-only value that indicates the object class associated with the secondary object.
 
-**Target Base DN** - this is the location in the RadiantOne namespace where the entries associated with the secondary object are located. When adding objects on the canvas, there are two options for where the objects come from: The RadiantOne Namespace or from a Secondary Data Source Schema. When the *RadiantOne Namespace* option is chosen, the user enters the target base DN. When the *Secondary Data Source Schema* option is chosen, an indentity view is automatically generated for the selected object(s) and mounted in the cn=staging default naming context. This location is the target base dn.
+*Target Base DN* - this is the location in the RadiantOne namespace where the entries associated with the secondary object are located. When adding objects on the canvas, there are two options for where the objects come from: The RadiantOne Namespace or from a Secondary Data Source Schema. When the *RadiantOne Namespace* option is chosen, the user enters the target base DN. When the *Secondary Data Source Schema* option is chosen, an indentity view is automatically generated for the selected object(s) and mounted in the cn=staging default naming context. This location is the target base dn.
 
-**Scope** - this is the scope of search needed to locate the secondary entries below the Target Base DN.
+*Scope* - this is the scope of search needed to locate the secondary entries below the Target Base DN.
 
-**Join Condition** - this is the attribute matching condition that dictates how the primary entries are linked to the secondary entries.
+*Join Condition* - this is the attribute matching condition that dictates how the primary entries are linked to the secondary entries.
 
-### Attributes
+**Attributes**
 
 When editing a join profile, expand the Attributes section to locate the list the attributes to manage the attributes returned from the secondary object. Click **MANAGE ATTRIBUTES** to add or remove attributes to return and/or reamp the attribute name.
 
-### Computed Attributes for Joins
+**Computed Attributes for Joins**
 
 When editing a join profile, expand the Computed Attributes for Joins section to manage the computed attribute that is used in the join condition.  Computed attributes defined for joins are shared across all join profiles configured on the canvas.
 
-### Advanced
+**Advanced**
 
-**Filter** – By default, the only filter criteria on primary entries to condition a join is the object class (e.g. objectclass=inetOrgPerson). You can add more criteria to condition the primary entries to join using the *Filter* setting. For example, if you only want to join entries that have a location of San Francisco, you could add (l=San Francisco) in the Filter setting.
+*Filter* – By default, the only filter criteria on primary entries to condition a join is the object class (e.g. objectclass=inetOrgPerson). You can add more criteria to condition the primary entries to join using the *Filter* setting. For example, if you only want to join entries that have a location of San Francisco, you could add (l=San Francisco) in the Filter setting.
 
-**Size Limit** - This is the number of entries to return in the search for the secondary entries. For example, setting this value to 1 would dictate that only one entry matching the join criteria should be returned from the query to the secondary object (target base DN).
+*Size Limit* - This is the number of entries to return in the search for the secondary entries. For example, setting this value to 1 would dictate that only one entry matching the join criteria should be returned from the query to the secondary object (target base DN).
 
-**Join Type** - The join type is *Left* by default. With this join type, all entries from the primary source are returned. If the primary entry has a matching entry in a secondary source, those additional attributes comprise the RadiantOne entry. If *Inner* is chosen, it indicates that only primary entries that have a matching entry in a secondary source should be returned in the result. Primary entries that do not have a matching entry are not returned. 
-
-
-## Deleting a Join
-
-To delete a join, edit a join profile by clicking the ![Join Icon](Media/join-icon.jpg) on the canvas that connects to the secondary object. This opens the join configuration panel on the right. Click the delete button. Click **DELETE** to confirm.
-
- ![Delete Join](Media/delete-join.jpg)
+*Join Type* - The join type is *Left* by default. With this join type, all entries from the primary source are returned. If the primary entry has a matching entry in a secondary source, those additional attributes comprise the RadiantOne entry. If *Inner* is chosen, it indicates that only primary entries that have a matching entry in a secondary source should be returned in the result. Primary entries that do not have a matching entry are not returned. 
 
 
-## Configuring an Extended Join
-
-The primary source is a virtual view of either an LDAP Backend, Database Backend (a specific object in the database), or a web service backend.
-
->[!warning] Deleting an extended join does not remove the entries in the extension storage. If you want the extension entries removed, you must do it manually.
-
-### Configuration Steps for LDAP Backends
-
-1.	From the Main Control Panel -> Directory Namespace tab, navigate to the primary/main source below Root Naming Contexts.
-
-2.	On the Objects tab on the right side, click Add and select the object class that will condition the primary entries to be the source of the join.
-3.	Click **Save**.
-
-4.	Select an object class from the Primary Objects section, and then locate the Join Profiles section. Click **New**. The Join Wizard opens.
-
-5.	Select the Extended type of join and click **Next**.
-
-6.	Select the object class that will condition the primary entries to be the source of the join.
-
-7.	Choose whether you want the default data store or custom settings.
-<br> **Default** – if this is chosen, RadiantOne stores the extension attributes below the cn=extendedxjoin naming context. This is a hidden naming context and is not seen from the LDAP clients. Hidden naming contexts are prefixed with the keyword hiddenContexts in the rootdse.ldif file. 
-
-  The entries are created automatically and the extension attributes are added, update and deleted based on client requests. The only parameters to configure when using the default settings are the object class you want associated with the extension attributes, and the attribute names.
-
-  **Custom** – if this is chosen, RadiantOne stores the extension attributes in the location of your choice. The location must first exist (create it if you haven’t already) in the virtual namespace. RadiantOne manages the creation of the entries and attributes as well as all modifications to these entries. The parameters you must configure are; the base DN (the location in the virtual namespace where you want to store the extension attributes), the object class to associate the extension attributes with, and how to comprise the RDN attribute (name and attribute from the primary object to populate the target RDN with).
-
-  >[!warning] If your chosen location in the virtual namespace is configured as something other than a RadiantOne Universal Directory store, then the underlying backend must be capable of storing the extension attributes. For example, if the backend is a database table, then columns representing the extension attributes must exist. If the backend is an LDAP directory, the extension attributes should be defined in the schema (if schema checking is enforced) and the object class that is associated with the extension attributes should be set during the configuration steps described below.
-
-8.	The Base DN parameter is relevant only when Custom data store settings has been selected in step 4. The Base DN is the location in the virtual namespace where you want the extension entries/attributes stored.
-
-9.	Enter the object class that is associated with the extension attributes in the Object Class parameter of the Secondary section. The default object class that is used is extensibleObject.
-
-10.	As mentioned above, the RDN setting is only relevant when Custom data store settings have been selected in step 4. This is how the RDN value for the extension entries is set. Enter an RDN name (or leave xid which is the default), and select the attribute that you want to populate the RDN with.
-
-11.	Click **Next**.
-
-12.	Click **Add** to set the extension attribute name. Add as many extension attributes as you need.
-
-13.	When finished, click **Next**.
-
-14.	Enter a unique name for configuration and click Finish to exit the wizard.
-
-15.	Click **Save**. Click **OK** to confirm saving changes to the server.
-
-### Configuration Steps for Database Backends
-
-1.	From the Main Control Panel > Directory Namespace tab, navigate to the primary/main source below Root Naming Contexts.
-
-2.	Select the primary database object selected below Root Naming Contexts (noted as a white or blue folder icon).
-
-3.	Select the Object tab and click New in the Join Profiles section. The Join Wizard opens.
-
-4.	Choose the Extended type of join and click Next.
-
-5.	Choose whether you want the default data store settings or custom.
-<br>Default – if this is chosen, RadiantOne stores the extension attributes below the cn=extendedxjoin naming context. This is a hidden naming context and is not seen from the LDAP clients. Hidden naming contexts are prefixed with the keyword hiddenContexts in the rootdse.ldif file. 
-
-  The entries are created automatically and the extension attributes are added, update and deleted based on client requests. The only parameters to configure when using the default settings are the objectclass you want associated with the extension attributes, and the attribute names.
-
-  **Custom** – if this is chosen, RadiantOne stores the extension attributes in the location of your choice. The location must first exist (create it if you haven’t already) in the RadiantOne namespace. RadiantOne manages the creation of the entries and attributes as well as all modifications to these entries. The parameters you must configure are; the base DN (the location in the virtual namespace where you want to store the extension attributes), the object class to associate the extension attributes with, and how to comprise the RDN attribute (name and attribute from the primary object to populate the target RDN with).
-
->[!warning] If your chosen location in the RadiantOne namespace is configured as something other than a local RadiantOne Universal Directory store, then the underlying backend must be capable of storing the extension attributes. For example, if the backend is a database table, then columns representing the extension attributes must exist. If the backend is an LDAP directory, the extension attributes should be defined in the schema (if schema checking is enforced) and the object class that is associated with the extension attributes should be set during the configuration steps described below.
-
-6.	The Base DN parameter is only relevant when Custom data store settings have been selected in step 6. The Base DN is the location in the RadiantOne namespace where you want the extension entries/attributes stored. 
-
-7.	Enter the object class that is associated with the extension attributes in the Object Class parameter of the Secondary section. The default object class that will be used is extensibleObject.
-
-8.	As mentioned above, the RDN setting is only relevant when Custom data store settings have been selected in step 6. This is how the RDN value for the extension entries will be set. Enter an RDN name (or leave xid which is the default), and select the attribute that you want to populate the RDN with.
-
-9.	Click **Next**.
-
-10.	Click **Add** to set the extension attribute name. Add as many extension attributes as you need.
-
-11.	When finished, click **Next**.
-
-12.	Enter a unique name for configuration and click **Finish** to exit the wizard.
-
-13.	Click **Save**. Click **OK** to confirm saving changes to the server.
-
-If you need to modify the join condition, select the corresponding join profile and click **Edit**.
-
--	If the default data store settings are used, then nothing can be changed in the Secondary Object section. If custom data store settings are used, then you can change the Base DN (location in RadiantOne to store the extension entries).
-
--	Additional Filter – By default, the only filter criteria to condition a join is the object class of the parent entry (e.g. objectclass=inetOrgPerson). You can add more criteria to condition the primary entries to join. For example, if you only want to join entries that have a location of San Francisco, you could add (l=San Francisco) in the Additional Filter parameter.
-
--	Extended Object Class – this is the objectclass associated with the extension attributes.
-
--	Extension Attributes to join to the primary objects – list of attributes to return. 
-
-If you make any changes to the join, click **Save** in the top right corner and click **OK** to apply the changes to the server.
-
-If you are familiar with the [syntax](#join-syntax), you can click **Edit Manually** at the bottom of the Attribute tab in the Edit window. 
-
-## Deactivating a Join
-
-To deactivate a join, edit a join profile by clicking the ![Join Icon](Media/join-icon.jpg) on the canvas that connects to the secondary object. This opens the join configuration panel on the right. Toggle the Active option to Offline.
-
-![marking a join as active/inactive](Media/deactivate-join.jpg)
-
-To activate the join, toggle the option to Active.
-
-## Attribute Properties
+### Attribute Properties
 
 In a join configuration, attributes from each source can have certain characteristics assigned to them. These properties dictate attribute priority, visibility, searchability and updateability. 
 
 >[!warning]
 >The attribute properties described in this section are only applicable for dynamic, non-cached virtual views as they dictate how RadiantOne builds the joined view on-the-fly. Once a virtual view is in persistent cache, these characteristics are irrelevant.
 
-### Hidden
+**Hidden**
 
 You can define an attribute as hidden because you need it for the join (it may be the attribute you are basing your join on), but you don’t want the value to be in the final joined virtual entry. 
 
@@ -258,7 +150,7 @@ To define an attribute as hidden, from the Main Control Panel > Directory Namesp
 
 >[!warning] If you edit the join condition manually, and want to make an attribute returned from a secondary object hidden, add a value of 256 to the priority weight you have set. For example, if mail were an attribute returned from a join and you had it set with a priority value of 128 (NORMAL) and NON searchable, and NON updateable, then to make it hidden in the virtual entry, you would change the numeric value to be 1920 (128 + 512 + 1024 +256). Mail:1920 is how it would appear in the join condition if you were to edit the join manually.
 
-### Searchable
+**Searchable**
 
 You can define attributes as searchable or not.
 
@@ -270,7 +162,7 @@ To define an attribute as searchable, from the Main Control Panel > Directory Na
 
 >[!warning] If you edit the join condition manually, and want to make an attribute returned from a secondary object non-searchable, add a value of 512 to the priority weight you have set. For example, if mail were an attribute returned from a join and you had it set with a priority value of 128 (NORMAL) and updateable, then to make it non-searchable, you would change the numeric value to be 640 (128 + 512). Mail:640 is how it would appear in the join condition if you were to edit the join manually.
 
-### Updateable
+**Updateable**
 
 You can define attributes as updateable or not.
 
@@ -283,7 +175,7 @@ To define an attribute as updateable, from the Main Control Panel -> Directory N
 >[!warning]
 >If you edit the join condition manually, and want to make an attribute returned from a secondary object not updateable, add a value of 1024 to the priority weight you have set. For example, if phone were an attribute returned from a join and you had it set with a priority value of 128 (NORMAL) and searchable, then to make it not updateable, you would change the numeric value to be 1152 (128 + 1024). Phone:1152 is how it would appear in the join condition if you were to edit the join manually. If you didn’t want the phone attribute to be searchable or updateable (and still have NORMAL priority), it would have a numeric value of 1664. (128 + 512 + 1024).
 
-## Attribute Priority
+### Attribute Priority
 
 The priority level is only needed when the attribute name returned from the secondary source is the same (or has been mapped to the same) as in the primary source. The default behavior of RadiantOne is to return a multi-valued attribute if a secondary object returns an attribute with the same name as the primary object (as long as the values are different). If you do not want the attribute to return as a multi-value, you can set a priority for the attributes. The default priority level set for all attributes is normal. From the interface, you would use the priority levels shown below. The corresponding numeric values are also shown and would only be used if you edit the condition manually.
 
@@ -305,18 +197,40 @@ Only one priority level is assigned per attribute per source. Whereas a combinat
 
 Attribute mail coming from a join/secondary source that is searchable, updateable, NORMAL priority and NOT hidden = 128 
 
-Attribute mail coming from a join/secondary source that is NOT searchable, updateable, NORMAL priority and NOT hidden = 640         (128+512=640)
+Attribute mail coming from a join/secondary source that is NOT searchable, updateable, NORMAL priority and NOT hidden = 640 (128+512=640)
 
-Attribute mail coming from a join/secondary source that is searchable, NOT updateable, HIGHEST priority and NOT hidden = 1279      (255+1024=1279)
+Attribute mail coming from a join/secondary source that is searchable, NOT updateable, HIGHEST priority and NOT hidden = 1279 (255+1024=1279)
 
-Attribute mail coming from a join/secondary source that is NOT searchable, updateable, HIGH priority and hidden = 960      (192+512+256=960)
+Attribute mail coming from a join/secondary source that is NOT searchable, updateable, HIGH priority and hidden = 960  (192+512+256=960)
 
-## How the Join is Performed
+### Bind Order
+
+If you have configured joins between multiple sources, RadiantOne can send the bind request (credential checking) to many backends (any that play a role in the join). If you are not using joins, then bind order is irrelevant.
+
+After the join is configured, you can set the bind order (the backends to check in a particular order). The diagram below depicts an example. The database is configured with bind order 1. Therefore, RadiantOne attempts the bind there first. If the bind fails against the database, the LDAP directory receives the bind request (as per the configuration). If the bind were to fail again, Active Directory would receive the bind request. If all sources fail, the client receives a bind failure error from RadiantOne.
+
+![bind order example](Media/Image2.14.jpg)
+
+If you have configured joins between the selected LDAP object and other sources, RadiantOne can send the bind request (credential checking) to many backends. 
+
+To configure the bind order:
+
+1.	From the Main Control Panel > Directory Namespace Tab, select the node representing your LDAP backend below Root Naming Contexts. 
+
+2.	On the right side, select the Objects Tab.
+
+3.	Click the **Edit** button next to Define Bind Strategy at the bottom. The Edit Bind Strategy window displays a list of all sources (the primary along with any secondary sources you have joined with). 
+
+4.	Enable the source as a possible participant in the bind operation. 
+
+5.	Use the up and down arrow to determine the order RadiantOne should attempt the credential checking. RadiantOne attempts to verify the credentials against the first enabled source in the list. If it fails, then the next is tried and so forth. If all enabled sources have been tried without success, RadiantOne returns a bind failed error to the client.
+
+### How the Join is Performed
 
 >[!warning]
 >If the “Limit Attributes Requested from the LDAP Backend” optimization is enabled for a proxy to an LDAP backend, in addition to a join, the attribute(s) from the primary LDAP source that the join(s) are based on should be listed as “always requested” on the Attributes Tab. Otherwise, RadiantOne may not get the attribute(s) from the primary backend that are required to perform the join and the join cannot be done. For more information on limiting attributes requested from the LDAP backend, please see the [RadiantOne Namespace Configuration Guide](/namespace-configuration-guide/01-introduction).
 
-### Pre-filtering on the Primary Source
+**Pre-filtering on the Primary Source**
 
 If the filter in the client search involves attribute(s) that come from the primary (main) source only, RadiantOne pre-filters (applying that filter to the primary entries to reduce the number of entries that are required to join). If the filter in the client search involves attributes that can come from secondary (joined) sources and those attributes(s) are marked as searchable, then RadiantOne cannot pre-filter on those attributes and must join everything first and then apply the filter on the joined result. RadiantOne knows if attributes used in the filter could come from secondary sources if the attribute(s) are specifically requested in the join condition, or if *  is used in the join condition to return everything from the joined source.
 
@@ -330,19 +244,19 @@ However, if a filter also contains an attribute that is only defined in the prim
 
 For example, using the join condition defined above, if RadiantOne receives a filter like: (&(mail=lcallahan@rli.com)(cn=laura callahan)), it first searches the Sun Java Directory for entries matching mail=lcallahan@rli.com (because mail is not defined as an attribute to return from Active Directory). Then it joins the entries that were returned with the corresponding entries in Active Directory. Finally, RadiantOne applies the original filter on the joined entries and the ones that match are returned to the client. The result sent back to the client depends on whether your join configuration is set for a Left or Inner join. Each is described below.
 
-### Left Join
+**Left Join**
 
 In a Left Join, all entries from the primary source are returned in the result and if they have a matching entry in a secondary source(s), those additional attributes comprise the main entry. If an entry in the primary source does not have a matching entry in a secondary source it is still a possible candidate to be returned to the client (if it matches the original filter in the client request).
 
-![left join example](Media/Image2.11.jpg)
+![left join example](Media/left-join-example.jpg)
 
-### Inner Join
+**Inner Join**
 
 In an Inner Join, the primary entries (from the starting point for the join) are joined with matching secondary entries. Only entries that can be joined (the intersection) are possible candidates to be returned to the client (if it matches the original filter in the client request). The entry(s) that are returned will be comprised of attributes from the primary object and any secondary objects that were joined.
 
-![inner join example](Media/Image2.12.jpg)
+![inner join example](Media/inner-join-example.jpg)
 
-### Behavior if a Secondary Source is Unavailable
+**Behavior if a Secondary Source is Unavailable**
 
 The behavior of RadiantOne in cases where one or more of the secondary sources is unavailable depends on if the Process Joins and Computed Attributes Only when Necessary optimization is enabled or not. For more information on this setting, please see the [RadiantOne Namespace Configuration Guide](/namespace-configuration-guide/01-introduction).
 
@@ -366,24 +280,47 @@ Please see the diagram below for more details on the [join behavior](#join-behav
 >[!warning]
 >If the joined virtual view is stored in persistent cache, during refresh operations, all backends must be available for the persistent cache to be refreshed. If one of the backends is not available when RadiantOne attempts to rebuild the entry and update the cache (resulting in error code 1 or 9 returned), the cache is not updated and the failed entry is logged in cn=cacherefreshlog. In addition, do not set the ALLOW_PARTIAL_ENTRY property to YES if you plan on caching the joined view as the whole entry must be in the cache and during refresh scenarios you don’t want a partial entry to end up in the cache.
 
-## Bind Order
 
-If you have configured joins between multiple sources, RadiantOne can send the bind request (credential checking) to many backends (any that play a role in the join). If you are not using joins, then bind order is irrelevant.
+## Configuring an Extended Join
 
-After the join is configured, you can set the bind order (the backends to check in a particular order). The diagram below depicts an example. The database is configured with bind order 1. Therefore, RadiantOne attempts the bind there first. If the bind fails against the database, the LDAP directory receives the bind request (as per the configuration). If the bind were to fail again, Active Directory would receive the bind request. If all sources fail, the client receives a bind failure error from RadiantOne.
+An extended join is defined by adding new attributes (meaning these attributes don’t exist anywhere yet) to a primary entry. This is primarily used to accommodate the storage of application-specific attributes. In the case of an extended join, the RadiantOne service handles the creation and management of the new attributes. The new attributes are stored in the RadiantOne directory. The RadiantOne service joins the primary/main entries with these extended attributes as well as handles any modifications to these attributes accordingly (update, delete…etc.).
 
-![bind order example](Media/Image2.14.jpg)
+The diagram below depicts an extended join. AuthzCode, lastLogon, and pwdreset are the application-specific extension attributes that are stored in RadiantOne. RadiantOne manages the lifecycle (creation, modification, deletion) of these entries/attributes.
 
-If you have configured joins between the selected LDAP object and other sources, RadiantOne can send the bind request (credential checking) to many backends. 
+ ![Extended Join Example](Media/extended-join-example.jpg)
 
-To configure the bind order:
+Extended joins are configured from the Control Panel > Setup > Directory Namespace > Namespace Design. Select the location where the identity view is mounted below Root Naming Contexts and go to the OBJECT BUILDER tab on the right. The primary source for extended joins is an object in an identity view. If the identity view is created using an LDAP proxy approach, you must select the primary object class on the OBJECT BUILDER tab to start. If the primary object is based on a container or content type of nodes in the identity view, then the object is already known and will automatically appear on the canvas on the OBJECT BUILDER tab.
 
-1.	From the Main Control Panel > Directory Namespace Tab, select the node representing your LDAP backend below Root Naming Contexts. 
+To configure an extended join:
 
-2.	On the right side, select the Objects Tab.
+1.	From the Control Panel > Setup > Directory Namespace > Namespace design, select the location of the node where you want to configure the join. 
 
-3.	Click the **Edit** button next to Define Bind Strategy at the bottom. The Edit Bind Strategy window displays a list of all sources (the primary along with any secondary sources you have joined with). 
+1.	On the OBJECT BUILDER tab on the right, select the Object Extension option from the **+ADD COMPONENT** drop-down menu. If your main view is an LDAP proxy, you must click ADD PRIMARY OBJECT first before adding the secondary object(s).
 
-4.	Enable the source as a possible participant in the bind operation. 
+  	![Add Component](Media/object-extension.jpg)
 
-5.	Use the up and down arrow to determine the order RadiantOne should attempt the credential checking. RadiantOne attempts to verify the credentials against the first enabled source in the list. If it fails, then the next is tried and so forth. If all enabled sources have been tried without success, RadiantOne returns a bind failed error to the client.
+1.	The default object class to associate with the extension attributes is extensibleObject. You can select a different object class from teh drop down list.
+
+1.	Click **+ATTRIBUTE**.
+1.	Enter the extension attribute name and click ![Checkmark](Media/checkmark.jpg)
+1.	Repeat steps 4-5 to add all extension attributes.
+1.	Click **DONE**.
+1.	Click **SAVE** to save the canvas.
+ 
+
+### Deleting an Extended Join
+
+
+
+![Delete Extended Join](Media/delete-extension.jpg)
+
+>[!warning] Deleting an extended join does not remove the entries in the extension storage. If you want the extension entries removed, you must do it manually.
+
+## Deactivating a Join
+
+To deactivate a join, edit a join profile by clicking the ![Join Icon](Media/join-icon.jpg) on the canvas that connects to the secondary object. This opens the join configuration panel on the right. Toggle the Active option to Offline.
+
+![marking a join as active/inactive](Media/deactivate-join.jpg)
+
+To activate the join, toggle the option to Active.
+
