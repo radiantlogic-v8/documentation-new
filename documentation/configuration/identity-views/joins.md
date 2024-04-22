@@ -39,7 +39,7 @@ To configure a global join:
 
 1. Specify the scope of search to perform to find the entries to join with. The drop-down options are base, one, or sub.
 
-1. Select the specific object class associated with the secondary entries you want to join with in the Object Class parameter from the drop-down list. For information on schema extension, please see Extending RadiantOne LDAP Schema.
+1. Select the specific object class associated with the secondary entries you want to join with in the Object Class parameter from the drop-down list. For information on schema extension, please see: [Extending RadiantOne LDAP Schema](../directory-stores/managing-directory-schema)
 
 1. Select the attribute from the secondary object that you want to base the join condition on from the Join Attribute drop-down menu. The value of this attribute should match the value of the primary source join attribute that you set in step above. The Join Condition parameter displays the attribute matching criteria for the join.
 
@@ -324,7 +324,7 @@ To configure an extended join:
 
 ### Deleting an Extended Join
 
-
+To delete an extended join, click the extension object on the canvas. This opens the join configuration panel on the right. Click the **Delete** button.
 
 ![Delete Extended Join](Media/delete-extension.jpg)
 
