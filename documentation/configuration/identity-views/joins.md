@@ -280,6 +280,20 @@ Please see the diagram below for more details on the [join behavior](#join-behav
 >[!warning]
 >If the joined virtual view is stored in persistent cache, during refresh operations, all backends must be available for the persistent cache to be refreshed. If one of the backends is not available when RadiantOne attempts to rebuild the entry and update the cache (resulting in error code 1 or 9 returned), the cache is not updated and the failed entry is logged in cn=cacherefreshlog. In addition, do not set the ALLOW_PARTIAL_ENTRY property to YES if you plan on caching the joined view as the whole entry must be in the cache and during refresh scenarios you don’t want a partial entry to end up in the cache.
 
+### Deleting a Regular Join
+
+To delete a join, edit a join profile by clicking the ![Join Icon](Media/join-icon.jpg) on the canvas that connects to the secondary object. This opens the join configuration panel on the right. Click the **Delete** button.
+
+![marking a join as active/inactive](Media/delete-join.jpg)
+
+### Deactivating a Regular Join
+
+To deactivate a join, edit a join profile by clicking the ![Join Icon](Media/join-icon.jpg) on the canvas that connects to the secondary object. This opens the join configuration panel on the right. Toggle the Active option to Offline.
+
+![marking a join as active/inactive](Media/deactivate-join.jpg)
+
+To activate the join, toggle the option to Active.
+
 
 ## Configuring an Extended Join
 
@@ -316,11 +330,5 @@ To configure an extended join:
 
 >[!warning] Deleting an extended join does not remove the entries in the extension storage. If you want the extension entries removed, you must do it manually.
 
-## Deactivating a Join
 
-To deactivate a join, edit a join profile by clicking the ![Join Icon](Media/join-icon.jpg) on the canvas that connects to the secondary object. This opens the join configuration panel on the right. Toggle the Active option to Offline.
-
-![marking a join as active/inactive](Media/deactivate-join.jpg)
-
-To activate the join, toggle the option to Active.
 
