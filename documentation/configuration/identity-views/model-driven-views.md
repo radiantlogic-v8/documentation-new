@@ -23,7 +23,7 @@ There is a toggle to indicate whether the naming context is active or not. Toggl
 ## Model-driven Identity Views Introduction
 Creating model-driven identity views requires the use of the metadata extracted from backend sources. The views can be flat or hierarchical and comprised of an aggregation of many views. This provides greater flexibility for view design than creating simple LDAP proxy views.
 
-In order to create model-driven identity views, the data sources configured in RadiantOne [Data Catalog](/data-sources/schemas) must have their schemas extracted. The schemas contain the metadata that is used for creating model-driven identity views. Container and content nodes types in identity views are created from objects in the metadata.
+In order to create model-driven identity views, the data sources configured in RadiantOne [Data Catalog](../data-sources/schemas) must have their schemas extracted. The schemas contain the metadata that is used for creating model-driven identity views. Container and content nodes types in identity views are created from objects in the metadata.
 
 When designing your identity views and namespace, you can use different kinds of node types to build your model. 
 -	Container
