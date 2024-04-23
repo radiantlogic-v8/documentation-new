@@ -173,7 +173,7 @@ Identity views are created using Control Panel > Setup > Directory Namespace > N
 
 The sections below introduce possible types of identity views you can build from LDAP and database backends. Building virtual views with objects from many different heterogeneous backends is also discussed.
 
-### Virtual Views from LDAP Backends
+### Identity Views from LDAP Backends
 
 An LDAP backend is any LDAP-accessible directory. This includes, but is not limited to, Oracle Directory (formerly Sun Java Directory), Active Directory, Novell eDirectory, OpenLDAP, and IBM Tivoli Directory Server.
 
@@ -183,68 +183,33 @@ Flat identity views are based on an object class in the LDAP Backend. For exampl
 
 ![Sample LDAP Hierarchy](Media/Image3.12.jpg)
 
-
-
 The hierarchy shown above can be flattened out in a virtual view based on the object class associated with the users (e.g. inetOrgPerson). The sample flat virtual view structure is shown in the figure below.
 
 ![Sample Flat Virtual View Built from an Existing LDAP Hierarchy](Media/Image3.13.jpg)
 
 
-When building a flat virtual view, use content objects. For details on content objects, please see the [RadiantOne Context Builder Guide](/context-builder-guide/introduction).
+When building a flat virtual view, use content objects. For details on content objects, please see: [Model-driven Views](model-driven-views)
 
-**Context-Driven Hierarchies Based on Existing Metadata**
-
-The hierarchy builder utility assists you in modeling context-driven virtual views based on the existing metadata in your directory. This means that the hierarchy of the virtual view is based on attributes of an LDAP object class. Attributes from any object extracted with the Schema Manager can be used to build a virtual directory hierarchy (if all entries have a value for this attribute). This is an easy way to turn a relatively flat LDAP directory tree into a hierarchical structure.
-
-The following four figures provide an example of the process. For specific details on the configuration steps, see Hierarchy Builder in the [RadiantOne Context Builder Guide](/context-builder-guide/introduction).
-
-The hierarchy shown below is an example of an LDAP directory tree and three detailed user entries.
-
-![Example LDAP Entries](Media/Image3.14.jpg)
-
-
-
-The first step in building a virtual view is to extract the schema information using Schema Manager. The schema from the LDAP hierarchy shown in the figure above is shown in the screen shot below.
-
-![LDAP Schema Extracted with Schema Manager](Media/Image3.15.jpg)
-
-
-
-The next step is to load the schema into the Hierarchy Builder utility and follow the wizard to model your virtual view. The screen shot in the figure below depicts this process. In this example, the hierarchical virtual view is based on country, followed by state, followed by city and finally the users who fit into the context (LDAP attributes were renamed for a user-friendly display).
-
-![Hierarchy Builder Using Metadata](Media/Image3.16.jpg)
-
-
-
-Virtual views built in the hierarchy builder can be viewed and modified on the Main Control Panel > Context Builder tab > View Designer sub-tab.
-
-![Virtual View Created with Hierarchy Builder Utility](Media/Image3.17.jpg)
-
-
-
-Hierarchical views use both container and content objects. For details on container and content objects, please see the [RadiantOne Context Builder Guide](/context-builder-guide/introduction).
-
-### Virtual Views from JDBC Backends
+### Identity Views from JDBC Backends
 
 A database backend is any JDBC-accessible database. This includes, but is not limited to, Oracle, DB2, Sybase, and Microsoft SQL Server.
 
 **Flatten Existing Relational Databases**
 
-Flat virtual views are based on a database table (or a combination of tables if relationships are present). For example, if a virtual view were built from a database table, all records in the table could become an entry in RadiantOne. Attributes of the virtual entry could come from columns in the database table or any related table (according to the schema definition). The diagram below depicts an example database with three related tables.
+Flat virtual views are based on a database table (or a combination of tables if relationships are present). For example, if an identity view were built from a database table, all records in the table could become an entry in RadiantOne. Attributes of the entries could come from columns in the database table or any related table (according to the schema definition). The diagram below depicts an example database with three related tables.
 
 ![Sample Database Schema](Media/Image3.18.jpg)
 
 
 
-The information available in the related database objects can be used to build the virtual directory entries. The RadiantOne entries shown below reflect a virtual view based on the database schema/data shown above. Notice that the entries include attributes from all tables.
+The information available in the related database objects can be used to build the entries. The RadiantOne entries shown below reflect an identity view based on the database schema/data shown above. Notice that the entries include attributes from all tables.
 
 ![Sample RadiantOne Entries Based on Database Objects](Media/Image3.19.jpg)
 
 
+As described in this section, related database tables can be joined to create the entries in RadiantOne.
 
-As described in this section, related database tables can be joined to create the virtual entries.
-
-Flat virtual views are created with content objects. For details on content objects, please see [View Designer in the Context Builder Guide](/context-builder-guide/view-designer). For details on joining objects from the same database schema, please see the Joins section in the [RadiantOne Context Builder Guide](/context-builder-guide/concepts-and-utilities).
+Flat identity views are created with content objects. For details on content objects, please see: [Model-driven Views](model-driven-views). For details on joining objects from the same database schema, please see: [Joins](joins.md)
 
 **Context-Driven Hierarchies Based on Existing Metadata**
 
@@ -267,16 +232,14 @@ Therefore, you could build an organization hierarchy virtual view depicting the 
 
 ![Recursive Relationship-driven Hierarchy Example](Media/Image3.22.jpg)
 
+Identity views based on recursive relationships are built with container and optionally content objects. For details on building context-based hierarchies, please see: [Model-driven Views](model-driven-views.md).
 
+### Identity Views Combining Objects from Heterogeneous Sources
 
-Virtual views based on recursive relationships are built with container and optionally content objects. For details on building context-based virtual hierarchies, please see [View Designer in the Context Builder Guide](/context-builder-guide/view-designer).
+Identity views that are comprised of objects and attributes from multiple heterogeneous data sources are built using links and/or joins. Whenever a virtual view needs to contain information from more than one data source, the design options are:
 
-### Virtual Views Combining Objects from Heterogeneous Sources
-
-Virtual views that are comprised of objects and attributes from multiple heterogeneous data sources are built using links and/or joins. Whenever a virtual view needs to contain information from more than one data source, the design options are:
-
-- Extend the entries from the primary source with attributes from other sources that the same users exist in. This is accomplished using [joins](#joins).
-- Condition the virtual hierarchy based on a relationship (common key) between objects across data sources. This is accomplished using [links](#links).
+- Extend the entries from the primary source with attributes from other sources that the same users exist in. This is accomplished using [joins](joins.md).
+- Condition the identity view hierarchy based on a relationship (common key) between objects across data sources. This is accomplished using: [links](model-driven-views).
 
 ### Joins
 
@@ -287,7 +250,6 @@ With RadiantOne, there are two categories of joins:
 Regular Join – extend entries with existing attributes from multiple data sources. This is depicted in the figure below.
 
 ![Regular Join Example](Media/Image3.23.jpg)
-
 
 
 Extended Join – extend entries with attributes that do not currently exist. These attributes may be required to accommodate specific client application logic (i.e. storage of application-specific attributes) and/or computed (created on-the-fly based on pre-defined logic). Each is portrayed in the architectures below.
@@ -306,30 +268,28 @@ In addition to the two different categories of joins, RadiantOne also offers two
 
 In a left join, all entries from the primary source are returned in the result and if they have a matching entry in a secondary source(s), those additional attributes comprise the main entry. If an entry in the primary source does not have a matching entry in a joined source it is still a possible candidate to be returned to the client (if it matches the original filter in the client request).
 
-![Left Join Example](Media/Image3.26.jpg)
-
-
+![Left Join Example](Media/left-join-example.jpg)
 
 **Inner Join**
 
 In an inner join, the primary entries (the starting point for the join) are joined with matching secondary objects. Only entries that can be joined (the intersection) are possible candidates to be returned to the client (if it matches the original filter in the client request). The entry(s) that are returned will be comprised of attributes from the primary object and any joined secondary objects. This is shown in the diagram below.
 
-![Inner Join Example](Media/Image3.27.jpg)
+![Inner Join Example](Media/inner-join-example.jpg)
 
 
 
 ### Handling Overlapping Attributes
 
-When you start to join objects across different heterogeneous data sources, the possibility of overlapping attributes is high (the same attribute existing in more than one source). Reference Handling Overlapping Attributes for details on how to handle these scenarios.
+When you start to join objects across different heterogeneous data sources, the possibility of overlapping attributes is high (the same attribute existing in more than one source). You can either map overlapping attributes to unique names or define attribute priority. For details, see: [Joins](joins.md) 
 
 ### Links
 
-Links are used to build virtual views from objects across heterogeneous data sources.
+Links are used to build identity views from objects across heterogeneous data sources.
 
 Two primary uses of links are to:
 
 - Aggregate objects from different data sources into a flat list.
-- Build a hierarchical virtual view leveraging relationship that span across data sources.
+- Build a hierarchical view leveraging relationships that span across data sources.
 
 **Aggregate Objects into a Flat List**
 
@@ -338,26 +298,24 @@ In the example shown below, three data sources are used. One data source is an L
 ![Three Example Data Sources](Media/Image3.28.jpg)
 
 
+Let’s assume the desired identity view is one that aggregates people (employees, partners and customers) into one complete list to be used for authentication.
 
-Let’s assume the desired virtual view is one that aggregates people (employees, partners and customers) into one complete list to be used for authentication.
-
-First, three virtual views (one from each source) are created. This is depicted in the figure below.
+First, three identity views (one from each source) are created. This is depicted in the figure below.
 
 ![Three Example Virtual Views](Media/Image3.29.jpg)
 
 
 
-Finally, links are used to aggregate the virtual views into one common tree. The virtual view will consist of employees from Active Directory, partners from an LDAP directory, and customers from a database. Both the virtual view model (the link is indicated with a blue arrow in the model view) and the runtime view are depicted below.
+Finally, links are used to aggregate the identity views into one common root naming context. The identity view will consist of employees from Active Directory, partners from an LDAP directory, and customers from a database. Both the identity view model (the link is indicated with a blue arrow in the model view) and the runtime view are depicted below.
 
 ![Example Virtual View Using Links to Aggregate Objects from Different Data Sources](Media/Image3.30.jpg)
 
 
-
-This example described virtual views comprised of content objects and links. For more information, please see [View Designer in the Context Builder Guide](/context-builder-guide/view-designer).
+This example described virtual views comprised of content objects and links. For more information, please see [Model-driven Views](model-driven-views.md).
 
 **Build a Hierarchical View Leveraging Existing Relationships across Schemas**
 
-To build hierarchical virtual views based on relationships that span across data sources, a link with a special link parameter is required. The link parameter conditions the subtree based on an attribute of the parent object (typically the primary key, but could also be a candidate key). The value of this attribute must match an attribute in the tree to be mounted. An example is used to describe the benefit of using a link with a parameter. The following diagram depicts two databases. One database maintains project information while the other database stores employee information including department and location.
+To build hierarchical views based on relationships that span across data sources, a link with a special link parameter is required. The link parameter conditions the subtree based on an attribute of the parent object (typically the primary key, but could also be a candidate key). The value of this attribute must match an attribute in the tree to be mounted. An example is used to describe the benefit of using a link with a parameter. The following diagram depicts two databases. One database maintains project information while the other database stores employee information including department and location.
 
 ![Two Sample Databases](Media/Image3.31.jpg)
 
