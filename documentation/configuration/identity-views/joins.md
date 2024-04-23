@@ -7,7 +7,7 @@ description: Learn how to configure joins.
 
 Objects from any sources in the RadiantOne namespace can be joined if they have an attribue value in common. With joins, you can extend the primary entries with attributes coming from another data source, or new application-specific attributes (required by applications, but don’t exist yet). 
 
-This guide describes the following. 
+This page describes the following. 
 
 - [Configuring a Global Join](#configuring-a-global-join)
 - [Configuring a Regular Join](#configuring-a-regular-join)
