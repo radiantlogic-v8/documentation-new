@@ -68,7 +68,7 @@ To remove the lineage highlighting from the canvas, click the *X*: ![Remove Line
 
 *Add Component* - The Add Component drop-down allows you add objects to the canvas and add joins.
 
-*Moving Objects on Canvas* - to move the objects around on the canvas, either left-click the mouse on the canvas (NOT on any objects) and move the objects (they move around as a whole image), or you can use the +/-/[] buttons on the bottom left to zoom in/zoom out/fit to the window.
+*Moving Objects on Canvas* - to move the objects around on the canvas, either left-click the mouse on the canvas (NOT on any objects) and move the objects (they move around as a whole image), or you can use the +/-/[ ] buttons on the bottom left to zoom in/zoom out/fit to the window.
 
 ![Resizing Canvas](Media/canvas-adjustment.jpg)
 
