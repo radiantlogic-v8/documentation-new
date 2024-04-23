@@ -74,7 +74,7 @@ To remove the lineage highlighting from the canvas, click the *X*: ![Remove Line
 
 *Node Details* - Click on an object in the canvas to access the Node Details panel. You can delete secondary nodes from here. To remove primary object nodes (only applicable to LDAP proxy views), use: Primary Object > Manage Primary Object
 
-For details on joining objects see: [Joins](/joins.md)
+For details on joining objects see: [Joins](joins.md)
 
 ## Directory Schema
 Applications can request the directory schema by issuing a search with a base DN of *cn=schema*. The object classes and attributes defined in the schema are managed from the Control Panel > Setup > Directory Namespace > Directory Schema section. 
