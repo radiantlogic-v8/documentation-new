@@ -150,8 +150,6 @@ You can define an attribute as hidden because you need it for the join (it may b
 
 To define an attribute as hidden, locate the attribute in the final object output window and toggle the *Hidden* option on.
 
->[!warning] If you edit the join condition manually, and want to make an attribute returned from a secondary object hidden, add a value of 256 to the priority weight you have set. For example, if mail were an attribute returned from a join and you had it set with a priority value of 128 (NORMAL) and NON searchable, and NON updateable, then to make it hidden in the virtual entry, you would change the numeric value to be 1920 (128 + 512 + 1024 +256). Mail:1920 is how it would appear in the join condition if you were to edit the join manually.
-
 **Searchable**
 
 You can define attributes as searchable or not from the final object output window. Locate the attribute in the list and expand it to find the SEARCHABLE property.
@@ -162,8 +160,6 @@ You can define attributes as searchable or not from the final object output wind
 
 -	If an attribute from a secondary source is defined as non-searchable, RadiantOne can apply the search filter on the primary entries (to narrow down the possible join candidates) and then only join those entries. The performance is better in this case because the join only needs to occur on a subset of the primary entries. 
 
->[!warning] If you edit the join condition manually, and want to make an attribute returned from a secondary object non-searchable, add a value of 512 to the priority weight you have set. For example, if mail were an attribute returned from a join and you had it set with a priority value of 128 (NORMAL) and updateable, then to make it non-searchable, you would change the numeric value to be 640 (128 + 512). Mail:640 is how it would appear in the join condition if you were to edit the join manually.
-
 **Updateable**
 
 You can define attributes as updateable or not from the final object output window. Locate the attribute in the list and expand it to find the UPDATEABLE property.
@@ -172,35 +168,23 @@ You can define attributes as updateable or not from the final object output wind
 
 -	If an attribute is updateable, clients may modify the value (remember just because they can doesn’t mean [access controls](../security/access-controls) will allow it).
 
--	If an attribute is not updateable, clients cannot modify the value.
-
-
->[!warning]
->If you edit the join condition manually, and want to make an attribute returned from a secondary object not updateable, add a value of 1024 to the priority weight you have set. For example, if phone were an attribute returned from a join and you had it set with a priority value of 128 (NORMAL) and searchable, then to make it not updateable, you would change the numeric value to be 1152 (128 + 1024). Phone:1152 is how it would appear in the join condition if you were to edit the join manually. If you didn’t want the phone attribute to be searchable or updateable (and still have NORMAL priority), it would have a numeric value of 1664. (128 + 512 + 1024).
+-	If an attribute is not updateable, clients cannot modify the value, regardless of access controls.
 
 ### Attribute Priority
 
-The priority level is only needed when the attribute name returned from the secondary source is the same (or has been mapped to the same) as in the primary source. The default behavior of RadiantOne is to return a multi-valued attribute if a secondary object returns an attribute with the same name as the primary object (as long as the values are different). If you do not want the attribute to return as a multi-value, you can set a priority for the attributes. The default priority level set for all attributes is normal. From the interface, you would use the priority levels shown below. The corresponding numeric values are also shown and would only be used if you edit the condition manually.
+The priority level is only needed when the attribute name returned from the secondary source is the same (or has been mapped to the same) as in the primary source. The default behavior of RadiantOne is to return a multi-valued attribute if a secondary object returns an attribute with the same name as the primary object (as long as the values are different). If you do not want the attribute to return as a multi-value, you can set a priority for the attributes. The default priority level set for all attributes is normal. From the interface, you would use the priority levels shown below. 
 
  ![Attribute Priority](Media/attribute-priority.jpg)
 
-Priority Level – Numeric Value:
+Priority Level:
 
--	Lowest – 1
--	Low – 64
--	Normal – 128
--	High – 192 
--	Highest – 255
+-	Lowest
+-	Low
+-	Normal
+-	High 
+-	Highest
 
-Only one priority level is assigned per attribute per source. Whereas a combination of hidden, searchable, and updateable can be assigned per attribute per source. Below are some examples.
-
-Attribute mail coming from a join/secondary source that is searchable, updateable, NORMAL priority and NOT hidden = 128 
-
-Attribute mail coming from a join/secondary source that is NOT searchable, updateable, NORMAL priority and NOT hidden = 640 (128+512=640)
-
-Attribute mail coming from a join/secondary source that is searchable, NOT updateable, HIGHEST priority and NOT hidden = 1279 (255+1024=1279)
-
-Attribute mail coming from a join/secondary source that is NOT searchable, updateable, HIGH priority and hidden = 960  (192+512+256=960)
+Only one priority level is assigned per attribute per source. Whereas a combination of searchable and updateable can be assigned per attribute per source. 
 
 ### Bind Order
 
@@ -208,21 +192,17 @@ If you have configured joins between multiple sources, RadiantOne can send the b
 
 After the join is configured, you can set the bind order (the backends to check in a particular order). The diagram below depicts an example. The database is configured with bind order 1. Therefore, RadiantOne attempts the bind there first. If the bind fails against the database, the LDAP directory receives the bind request (as per the configuration). If the bind were to fail again, Active Directory would receive the bind request. If all sources fail, the client receives a bind failure error from RadiantOne.
 
-![bind order example](Media/Image2.14.jpg)
+![bind order example](Media/bind-order.jpg)
 
-If you have configured joins between the selected LDAP object and other sources, RadiantOne can send the bind request (credential checking) to many backends. 
+If you have configured joins between the selected LDAP object and other sources, RadiantOne can send the bind request (credential checking) to many backends in a pre-defined order. 
 
 To configure the bind order:
 
-1.	From the Main Control Panel > Directory Namespace Tab, select the node representing your LDAP backend below Root Naming Contexts. 
-
-2.	On the right side, select the Objects Tab.
-
-3.	Click the **Edit** button next to Define Bind Strategy at the bottom. The Edit Bind Strategy window displays a list of all sources (the primary along with any secondary sources you have joined with). 
-
-4.	Enable the source as a possible participant in the bind operation. 
-
-5.	Use the up and down arrow to determine the order RadiantOne should attempt the credential checking. RadiantOne attempts to verify the credentials against the first enabled source in the list. If it fails, then the next is tried and so forth. If all enabled sources have been tried without success, RadiantOne returns a bind failed error to the client.
+1.	From the Control Panel > Setup > Directory Namespace > Namespace Design, select the node where you have configured a join below Root Naming Contexts. 
+1.	On the OBJECT BUILDER tab on the right, click on the Final Object Output on the canvas. The Final Object Output drawer displays.
+1.	Expand the BIND ORDER section. A list of all sources displays in the table (the primary along with any secondary sources you have joined with). 
+1.	Enable the source as a possible participant in the bind operation. 
+1.	Use the ![drag and drop icon](Media/drag-and-drop.jpg) to determine the order RadiantOne should attempt the credential checking. RadiantOne attempts to verify the credentials against the first enabled source in the list. If it fails, then the next is tried and so forth. If all enabled sources have been tried without success, RadiantOne returns a bind failed error to the client.
 
 ### How the Join is Performed
 
@@ -255,29 +235,6 @@ In an Inner Join, the primary entries (from the starting point for the join) are
 
 ![inner join example](Media/inner-join-example.jpg)
 
-**Behavior if a Secondary Source is Unavailable**
-
-The behavior of RadiantOne in cases where one or more of the secondary sources is unavailable depends on if the Process Joins and Computed Attributes Only when Necessary optimization is enabled or not. For more information on this setting, please see: [Tuning](../tuning/optimize-views)
-
-If the Process Joins and Computed Attributes Only when Necessary optimization is enabled, and the filter coming in from the client request only involves attributes from the primary source, and the attributes requested are only from the primary (main) source, RadiantOne does not need to perform the join. If one of the secondary backend sources is down, RadiantOne does not know in this case because the optimization tells it to only join if necessary, and in this example, a join is not necessary. Therefore, RadiantOne does not know if a secondary backend is down or not. In this situation, the entry (with the specific attributes requested) is returned to the client. If the filter in the client request involves attributes that could come from a secondary source (and they are configured as searchable), or if the requested attributes from the client include attributes from secondary sources(s), the optimization is not possible and RadiantOne must join. In this case, the default behavior is to not return the entry at all. If the client issued a base search, they receive LDAP error code 32 along with the error message from the secondary backend that was unavailable. If the client issued a one level or subtree search, they receive error code 9 along with the error message from the secondary backend that failed.
-
-If you would prefer RadiantOne return partial entries, then you must specifically indicate this in the external join condition. [Manually edit the join condition](#deactivating-a-join) and add the following:
-
-`##ALLOW_PARTIAL_ENTRY=yes`
-
-If partial entries has been allowed, and the client issued a base search, they receive LDAP error code 0 (no error) along with the partial entry (whatever information RadiantOne was able to retrieve from available sources). Each returned entry contains an additional attribute of vsyspartialentry=true. If the client issued a one level or subtree search, they receive LDAP error code 9 along with the partial entry (whatever information RadiantOne was able to retrieve from available sources) and an error message from the secondary backend that was unavailable. Each returned entry contains an additional attribute of vsyspartialentry=true.
-
->[!note]
->DO NOT use the ALLOW_PARTIAL_ENTRY=YES property if you plan on caching the joined view as the whole entry must be in the cache and during refresh scenarios you don’t want a partial entry to end up in the cache.
-
-Please see the diagram below for more details on the [join behavior](#join-behavior-diagram).
- 
-### Join Behavior Diagram
-
-![Join Behavior Diagram](Media/Image2.13.jpg)
-
->[!warning]
->If the joined virtual view is stored in persistent cache, during refresh operations, all backends must be available for the persistent cache to be refreshed. If one of the backends is not available when RadiantOne attempts to rebuild the entry and update the cache (resulting in error code 1 or 9 returned), the cache is not updated and the failed entry is logged in cn=cacherefreshlog. In addition, do not set the ALLOW_PARTIAL_ENTRY property to YES if you plan on caching the joined view as the whole entry must be in the cache and during refresh scenarios you don’t want a partial entry to end up in the cache.
 
 ### Deleting a Regular Join
 
