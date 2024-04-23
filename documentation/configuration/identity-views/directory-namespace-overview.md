@@ -36,6 +36,46 @@ Icon	| Meaning
 ![Label with Link Below](Media/label-with-link.jpg) | A label node in an identity view that has child nodes where at least one child node has a backend or view mounted.
 ![Container with Link Below](Media/container-link.jpg) | A container node in an identity view that has a link mounted below it.
 
+### Introduction to the Object Builder
+
+The Object Builder is used to customize how entries associated with a specific object class are joined, how attributes are remapped for specific object classes, defining attributes properties (e.g. updateable, searchable, hidden), and managing computed attributes.
+
+Access the Object Builder from the Control Panel > Directory Namespace > Namespace Design. Select the node below Root Naming Contexts and go to the OBJECT BUILDER tab.
+
+*Canvas* - The main area of the Object Builder is the canvas. This is where objects that will comprise the final RadiantOne entries appear. 
+
+![Canvas](Media/entire-canvas.jpg)
+
+*View* - the view options are: COMPACT (default) and EXPANDED. The compact view doesn't display intermediate join result objects, whereas the expanded view does. You can also track attribute lineage in the expanded view.
+
+The following images depict the difference between compact view (shown first) and expanded view (the same canvas, shown in expanded view).
+
+![Compact View](Media/compact-view.jpg)
+
+![Compact View](Media/expanded-view.jpg)
+
+*Attribute Lineage* - Attribute lineage allows you to visualize how an attribute of the final object makes its way from source objects. Switch to expanded view and then click on an attribute in the final output object. The attribute lineage is highlighted allowing you to track the origin(s).
+
+![Compact View](Media/attribute-lineage.jpg)
+
+To remove the lineage highlighting from the canvas, click the *X*: ![Remove Lineage](Media/remove-lineage.jpg)
+
+*Search Attributes* - The "Search for an attribute" box on the top left allows you to locate an attribue in any object shown on the canvas. The search results are shown in blue text in the objects on the canvas. In the example shown below, the attribute "Gender" is entered and the search results are shown in blue in the objects identified as origin C and the final object output.
+
+![Compact View](Media/search-attribute.jpg)
+
+*Primary Object* - The Primary Object option is only shown for objects from LDAP proxy views. Use this menu to select a primary object from the source view and/or managing primary objects (add or remove) on the canvas.
+
+*Add Component* - The Add Component drop-down allows you add objects to the canvas and add joins.
+
+*Moving Objects on Canvas* - to move the objects around on the canvas, either left-click the mouse on the canvas (NOT on any objects) and move the objects (they move around as a whole image), or you can use the +/-/[] buttons on the bottom left to zoom in/zoom out/fit to the window.
+
+![Resizing Canvas](Media/canvas-adjustment.jpg)
+
+*Node Details* - Click on an object in the canvas to access the Node Details panel. You can delete secondary nodes from here. To remove primary object nodes (only applicable to LDAP proxy views), use: Primary Object > Manage Primary Object
+
+For details on joining objects see: [Joins](/joins.md)
+
 ## Directory Schema
 Applications can request the directory schema by issuing a search with a base DN of *cn=schema*. The object classes and attributes defined in the schema are managed from the Control Panel > Setup > Directory Namespace > Directory Schema section. 
 For details, see [Managing Directory Schema](../directory-stores/managing-directory-schema).
