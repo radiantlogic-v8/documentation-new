@@ -23,7 +23,7 @@ There is a toggle to indicate whether the naming context is active or not. Toggl
 ## Model-driven Identity Views Introduction
 Creating model-driven identity views requires the use of the metadata extracted from backend sources. The views can be flat or hierarchical and comprised of an aggregation of many views. This provides greater flexibility for view design than creating simple LDAP proxy views.
 
-In order to create model-driven identity views, the data sources configured in RadiantOne [Data Catalog](../data-sources/schemas) must have their schemas extracted. The schemas contain the metadata that is used for creating model-driven identity views. Container and content nodes types in identity views are created from objects in the metadata.
+In order to create model-driven identity views, the data sources configured in the RadiantOne [Data Catalog](../data-sources/schemas) must have their schemas extracted. The schemas contain the metadata that is used for creating model-driven identity views. Container and content nodes types in identity views are created from objects in the metadata.
 
 When designing your identity views and namespace, you can use different kinds of node types to build your model. 
 -	Container
@@ -39,7 +39,7 @@ A container object is a node that can have descendants. A container can include 
 
 You can think of a container as a directory similar to a “directory inside a file system”, where a directory can contain other directories or files. However, the comparison should stop there, because a container is an object represented in an identity view. When you create a container, you base it on an object that has been extracted/created from a data source and this information is used to populate the entries at run time. The container automatically inherits the primary key attribute of the underlying objects. You can also expose other attributes that belong to the underlying object into the RadiantOne entries. 
 
-For more information, see [Working with Container Objects](#working-with-container-objects). 
+For more information, see: [Working with Container Objects](#working-with-container-objects) 
 
 ### Label
 
@@ -62,25 +62,25 @@ When you want to categorize a collection of data from objects or resulting from 
 
 You can create an unlimited number of labels, depending on how many categories of information you need to define.
 
-For more information, see [Working with Labels](#working-with-labels). 
+For more information, see: [Working with Labels](#working-with-labels) 
 
 ### Content
 
 A Content Object is a node that has no descendants. It is a “leaf” or “terminal” node in the view.
 
-A content node represents an object in a virtual view. When you create a content node, you base it on an object that has been extracted/created in the Schema Manager and this information is used to populate the entries at run time. The content automatically inherits the primary key attribute of the underlying objects. You can also expose other attributes that belong to the underlying object in the entries. 
+A content node represents an object in an identity view.  When you create a content node, you base it on an object that has been extracted/created from a data source and this information is used to populate the entries at run time. The content automatically inherits the primary key attribute of the underlying objects. You can also expose other attributes that belong to the underlying object in the entries. 
 
-For more information, see [Working with Content Objects](#working-with-content-objects). 
+For more information, see: [Working with Content Objects](#working-with-content-objects) 
 
 ### Link
 
-Links are a special kind of node that allows you to point to a specific sub tree defined in an existing virtual view (.dvx file) or a new sub tree that you design on-the-fly based on objects from other schemas. Using this mechanism in conjunction with a label (although a label is not necessary) you can aggregate information from different schemas (simple objects or whole sub trees). Links allow you to transparently navigate from schema to schema in an ad hoc way. 
+Links are a special kind of node that allows you to point to a specific sub-tree defined in an existing virtual view (.dvx file) or a new sub-tree that you design on-the-fly based on objects from other schemas. Using this mechanism in conjunction with a label (although a label is not necessary) you can aggregate information from different schemas (simple objects or whole sub trees). Links allow you to transparently navigate from schema to schema in an ad hoc way. 
 
 There are two different types of links: Standard and Merge. Each is described in more details below. 
 
 *Standard Link* 
 
-A standard link offers a simple way to aggregate virtual views. Each view file has a top node named with the following syntax: `dv=<file name>`. When aggregating virtual views using standard links, the “dv” label level remains and becomes part of the naming in the hierarchy. 
+A standard link offers a simple way to aggregate identity views. Each view file has a top node named with the following syntax: `dv=<file name>`. When aggregating virtual views using standard links, the “dv” label level remains and becomes part of the naming in the hierarchy. 
 
 Let’s take a look at an example. Assume there are three data sources: a database, an Active Directory, and an LDAP directory. This is represented in the diagram below.
 
