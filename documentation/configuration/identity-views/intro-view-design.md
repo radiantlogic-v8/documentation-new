@@ -213,7 +213,7 @@ Flat identity views are created with content objects. For details on content obj
 
 **Context-Driven Hierarchies Based on Existing Metadata**
 
-Context-driven hierarchies, also known as directed knowledge graphs, use the relationships existing in the underlying schema to build the hierarchy. The relationship between the existing objects drives the structure. Relationship-driven hierarchies are composed of container objects, and optionally, content objects.
+Context-driven hierarchies use the relationships existing in the underlying schema to build the hierarchy. The relationship between the existing objects drives the structure. Relationship-driven hierarchies are composed of container objects, and optionally, content objects.
 
 The following diagram illustrates a relationship-driven hierarchy built from a database that stores customer and related order information.
 
