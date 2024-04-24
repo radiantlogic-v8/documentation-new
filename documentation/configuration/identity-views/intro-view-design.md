@@ -40,7 +40,7 @@ An LDAP Directory, Active Directory and an HR database contain different informa
 
 **Bind Order**
 
-If there is identity overlap across data sources, correlation rules must be defined. After, RadiantOne generates a unique list of users in addition to maintaining the reference link (location) to all the sources the identity is located in. With this information, RadiantOne can perform credentials checking against the data sources of your choice in a pre-defined order. The diagram below depicts an example. The database is configured with bind order 1. Therefore, RadiantOne attempts the bind there first. If the bind fails against the database, the LDAP directory receives the bind request (as per the configuration). If the bind were to fail again, Active Directory would receive the bind request. If all sources fail, the client receives a bind failure error from RadiantOne FID.
+If there is identity overlap across data sources, correlation rules must be defined. After, RadiantOne generates a unique list of users in addition to maintaining the reference link (location) to all the sources the identity is located in. With this information, RadiantOne can perform credentials checking against the data sources of your choice in a pre-defined order. The diagram below depicts an example. The database is configured with bind order 1. Therefore, RadiantOne attempts the bind there first. If the bind fails against the database, the LDAP directory receives the bind request (as per the configuration). If the bind were to fail again, Active Directory would receive the bind request. If all sources fail, the client receives a bind failure error from the RadiantOne service.
 
 ![Bind Order Example](Media/Image3.2.jpg)
 
@@ -127,7 +127,7 @@ E.g. join between an Active Directory and Sun Java Directory would yield two dif
 
 Have RadiantOne only return attributes in the joined entry that are declared as authoritative.
 
-E.g. join between an Active Directory and Sun Java Directory would yield two different values for phone number. Declare the phone number in Active Directory as authoritative. In the joined entry, RadiantOne FID would only return the phone number from Active Directory. In cases where there was no phone number in Active Directory, the one from Sun Java Directory could be returned (or decide to return nothing at all for phone number).
+E.g. join between an Active Directory and Sun Java Directory would yield two different values for phone number. Declare the phone number in Active Directory as authoritative. In the joined entry, RadiantOne would only return the phone number from Active Directory. In cases where there was no phone number in Active Directory, the one from Sun Java Directory could be returned (or decide to return nothing at all for phone number).
 
 These options are described in more detail in the example below.
 
