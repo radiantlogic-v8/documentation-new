@@ -283,10 +283,10 @@ Links are used to build identity views from objects across heterogeneous data so
 
 Two primary uses of links are to:
 
-- Aggregate objects from different data sources into a flat list.
+- Mount existing identity views (.dvx files) at a Root Naming Context or label in an identity view. These views can be migrated from some other environment.
 - Build a hierarchical view leveraging relationships that span across data sources.
 
-**Aggregate Objects into a Flat List**
+**Mount Existing Identity Views**
 
 In the example shown below, three data sources are used. One data source is an LDAP directory storing partner information. One data source is Active Directory storing employee information. The third data source is a database storing customer information. Each data source is depicted below with objects representing their schemas.
 
@@ -295,7 +295,7 @@ In the example shown below, three data sources are used. One data source is an L
 
 Let’s assume the desired identity view is one that aggregates people (employees, partners and customers) into one complete list to be used for authentication.
 
-First, three identity views (one from each source) are created. This is depicted in the figure below.
+First, three identity views (one from each source) must exist (e.g. imported from another environment). This is depicted in the figure below.
 
 ![Three Example Virtual Views](Media/Image3.29.jpg)
 
