@@ -252,17 +252,12 @@ Regular Join – extend entries with existing attributes from multiple data sour
 ![Regular Join Example](Media/Image3.23.jpg)
 
 
-Extended Join – extend entries with attributes that do not currently exist. These attributes may be required to accommodate specific client application logic (i.e. storage of application-specific attributes) and/or computed (created on-the-fly based on pre-defined logic). Each is portrayed in the architectures below.
+Extended Join – extend entries with attributes that do not currently exist. These attributes may be required to accommodate specific client application logic (i.e. storage of application-specific attributes). 
 
 ![Extended Join to Store Application-Specific Attributes](Media/Image3.24.jpg)
 
 
-
-![Extending Entries with Computed Attributes](Media/Image3.25.jpg)
-
-
-
-In addition to the two different categories of joins, RadiantOne also offers two different join types: left and inner. Each type is discussed in more details below.
+In addition to the two different categories of joins, RadiantOne also offers two different join types for regular joins: left and inner. Each type is discussed in more details below.
 
 **Left Join**
 
@@ -303,7 +298,6 @@ Let’s assume the desired identity view is one that aggregates people (employee
 First, three identity views (one from each source) are created. This is depicted in the figure below.
 
 ![Three Example Virtual Views](Media/Image3.29.jpg)
-
 
 
 Finally, links are used to aggregate the identity views into one common root naming context. The identity view will consist of employees from Active Directory, partners from an LDAP directory, and customers from a database. Both the identity view model (the link is indicated with a blue arrow in the model view) and the runtime view are depicted below.
