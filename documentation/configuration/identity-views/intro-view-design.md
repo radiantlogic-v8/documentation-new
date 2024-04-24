@@ -32,7 +32,7 @@ If there is no identity overlap, then a simple aggregation of all data sources i
 
 If there is identity overlap, then correlation logic must be defined. Correlation of identities can be expressed in the following simplified example.
 
-An LDAP Directory, Active Directory and an HR database contain different information about users. Some users are in both sources, and some are not. For this example, focusing on a single overlapping user, it is known that you can identify common users across LDAP and Active Directory by comparing uid to sAMAccountName. You can identify common users across Active Directory and the HR database by comparing employeeID to EID. This example is depicted in the diagram below where the order of upload to create the global profile list is LDAP directory, then Active Directory, followed by the HR database. The upload order is important for correlation rules. See the [RadiantOne Global Identity Builder Guide](/global-identity-builder-guide/introduction) for details.
+An LDAP Directory, Active Directory and an HR database contain different information about users. Some users are in both sources, and some are not. For this example, focusing on a single overlapping user, it is known that you can identify common users across LDAP and Active Directory by comparing uid to sAMAccountName. You can identify common users across Active Directory and the HR database by comparing employeeID to EID. This example is depicted in the diagram below where the order of upload to create the global profile list is LDAP directory, then Active Directory, followed by the HR database. The upload order is important for correlation rules. See the [RadiantOne Global Identity Builder Guide](../global-identity-builder-guide/introduction) for details.
 
 ![Example of Correlation](Media/Image3.1.jpg)
 
@@ -239,7 +239,7 @@ Identity views based on recursive relationships are built with container and opt
 Identity views that are comprised of objects and attributes from multiple heterogeneous data sources are built using links and/or joins. Whenever a virtual view needs to contain information from more than one data source, the design options are:
 
 - Extend the entries from the primary source with attributes from other sources that the same users exist in. This is accomplished using [joins](joins.md).
-- Condition the identity view hierarchy based on a relationship (common key) between objects across data sources. This is accomplished using: [links](model-driven-views).
+- Condition the identity view hierarchy based on a relationship (common key) between objects across data sources. This is accomplished using: [links](model-driven-views.md).
 
 ### Joins
 
