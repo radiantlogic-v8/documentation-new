@@ -300,9 +300,9 @@ First, three identity views (one from each source) must exist (e.g. imported fro
 ![Three Example Virtual Views](Media/Image3.29.jpg)
 
 
-Finally, links are used to aggregate the identity views into one common root naming context. The identity view will consist of employees from Active Directory, partners from an LDAP directory, and customers from a database. Both the identity view model (the link is indicated with a blue arrow in the model view) and the runtime view are depicted below.
+Finally, links are used to aggregate the identity views into one common root naming context. The identity view will consist of employees from Active Directory, partners from an LDAP directory, and customers from a database. Both the identity view model (the link is indicated with a blue arrow in the model view) and the runtime view (from Control Panel > Manage > Directory Browser) are depicted below.
 
-![Example Virtual View Using Links to Aggregate Objects from Different Data Sources](Media/Image3.30.jpg)
+![Example Virtual View Using Links to Aggregate Objects from Different Data Sources](Media/model-vs-runtime-example.jpg)
 
 
 This example described virtual views comprised of content objects and links. For more information, please see [Model-driven Views](model-driven-views.md).
