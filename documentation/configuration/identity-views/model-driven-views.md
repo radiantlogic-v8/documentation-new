@@ -92,10 +92,12 @@ Assume that each data source has an identity view created for it. This is repres
 ![Virtual Views from Each Source](Media/Image4.7.jpg)
 
 
-Finally, standard links are used to aggregate the views. This is represented in the virtual view model shown in the screen shot below. The runtime preview shows what the populated view looks like. Notice that the “dv” level comprises the runtime view. 
+Finally, standard links are used to aggregate the existing views. This is represented in the virtual view model shown in the screen shot below. The runtime preview shows what the populated view looks like. Notice that the “dv” level comprises the runtime view. 
 
 ![An image showing ](Media/Image4.8.jpg)
 
+>[!note]
+>This example described linking to existing identity views. If you don't already have existing identity views to aggregate together using links, you can use the Control Panel > Setup > Directory Namespace > Namespace Design to create your identity view using labels, containers and/or content nodes.
 
 *Merge Link* 
 
@@ -107,12 +109,12 @@ The following diagram depicts two databases and will be used to describe how to 
 
 ![Two Sample Databases](Media/Image4.9.jpg)
  
-Let’s assume the desired identity view should represent projects, followed by the department associated with the project, followed by the location of the employee, and finally the employees working on the project. Since the information is maintained in two separate databases, a virtual view can be built from each. This is depicted in the diagram below. One view is built for projects while the other is a view of employees based on departments and location.
+Let’s assume the desired identity view should represent projects, followed by the department associated with the project, followed by the location of the employee, and finally the employees working on the project. Since the information is maintained in two separate databases, an identity view can be built from each. This is depicted in the diagram below. One view is built for projects while the other is a view of employees based on departments and location.
 
 ![Two Example Virtual Views](Media/Image4.10.jpg)
 
 
-A merge link (noted with the blue arrow) is used to aggregate the virtual views. This is depicted in the diagram below. 
+A merge link (noted with the blue arrow) is used to aggregate the identity views. This is depicted in the diagram below. 
 
 ![Example Linking Two Existing Views](Media/Image4.11.jpg)
 
