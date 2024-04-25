@@ -121,11 +121,11 @@ Below is a high-level diagram depicting a join across three data sources for a c
 
 When you start to join objects across different heterogeneous data source, the possibility of overlapping attributes is high (the same attribute existing in more than one source). Therefore, a common design consideration is determining how you want to handle cases where the same attributes (same names) are found in multiple data sources. Options include:
 
-Have RadiantOne return multi-valued attributes when joining across data sources where attribute names are the same but the values are different.
+- Have RadiantOne return multi-valued attributes when joining across data sources where attribute names are the same but the values are different.
 
 E.g. join between an Active Directory and Sun Java Directory would yield two different values for phone number. In the joined entry, RadiantOne would return phone number as a multi-valued attribute containing the values from both Active Directory and Sun.
 
-Have RadiantOne only return attributes in the joined entry that are declared as authoritative.
+- Have RadiantOne only return attributes in the joined entry that are declared as authoritative.
 
 E.g. join between an Active Directory and Sun Java Directory would yield two different values for phone number. Declare the phone number in Active Directory as authoritative. In the joined entry, RadiantOne would only return the phone number from Active Directory. In cases where there was no phone number in Active Directory, the one from Sun Java Directory could be returned (or decide to return nothing at all for phone number).
 
@@ -209,7 +209,7 @@ The information available in the related database objects can be used to build t
 
 As described in this section, related database tables can be joined to create the entries in RadiantOne.
 
-Flat identity views are created with content objects. For details on content objects, please see: [Model-driven Views](model-driven-views). For details on joining objects from the same database schema, please see: [Joins](joins.md)
+Flat identity views are created with content objects. For details on content objects, please see: [Model-driven Views](model-driven-views.md). For details on joining objects from the same database schema, please see: [Joins](joins.md)
 
 **Context-Driven Hierarchies Based on Existing Metadata**
 
