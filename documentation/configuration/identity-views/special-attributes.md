@@ -51,7 +51,7 @@ To configure rules for linked attributes, following the steps below:
 
 1.	On the Control Panel > Setup > Directory Namespace > Namespace Design, select the RadiantOne Directory below the Root Naming Contexts.
 1.  On the right, click the SPECIAL ATTRIBUTES tab and locate the Linked Attributes section (expand it if it is collapsed).
-    ![Special Attributes Handling](Media/linked-attributes-section.jpg)
+    ![Special Attributes Handling](Media/special-attributes-linked.jpg)
    
 1.  Click **+LINKED ATTRIBUTES**.
 1.	Select a back link attribute name from the drop-down list. If you don’t find the attribute that matches your needs, manually enter the attribute name. This dictates which attribute name RadiantOne returns the back link attribute value as and is generally either memberOf or isMemberOf (for group/user linked attributes).
