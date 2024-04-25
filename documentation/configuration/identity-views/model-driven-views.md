@@ -21,7 +21,7 @@ There is a toggle to indicate whether the naming context is active or not. Toggl
 ![Active Toggle](Media/active-toggle.jpg)
 
 ## Model-driven Identity Views Introduction
-Creating model-driven identity views requires the use of the metadata extracted from backend sources. The views can be flat or hierarchical and comprised of an aggregation of many views. This provides greater flexibility for view design than creating simple LDAP proxy views.
+Creating model-driven identity views requires the use of the metadata (schema) extracted from backend sources. The views can be flat or hierarchical and comprised of an aggregation of many views. This provides greater flexibility for view design than creating simple LDAP proxy views.
 
 In order to create model-driven identity views, the data sources configured in the RadiantOne [Data Catalog](../data-sources/schemas) must have their schemas extracted. The schemas contain the metadata that is used for creating model-driven identity views. Container and content nodes types in identity views are created from objects in the metadata.
 
@@ -80,14 +80,14 @@ There are two different types of links: Standard and Merge. Each is described in
 
 *Standard Link* 
 
-A standard link offers a simple way to aggregate identity views. Each view file has a top node named with the following syntax: `dv=<file name>`. When aggregating identity views using standard links, the “dv” label level remains and becomes part of the naming in the hierarchy. 
+A standard link offers a simple way to aggregate existing identity views. Each view file has a top node named with the following syntax: `dv=<file name>`. When aggregating identity views using standard links, the “dv” label level remains and becomes part of the naming in the hierarchy. 
 
 Let’s take a look at an example. Assume there are three data sources: a database, an Active Directory, and an LDAP directory. This is represented in the diagram below.
 
 ![Example Data Sources](Media/Image4.6.jpg)
 
 
-Next, a virtual view from each is configured. This is represented by the three views shown below. 
+Assume that each data source has an identity view created for it. This is represented by the three views shown below. 
 
 ![Virtual Views from Each Source](Media/Image4.7.jpg)
 
@@ -128,7 +128,7 @@ Without this link condition, all departments would be shown below each project a
 ![Example – Using Merge Links with No Parameter](Media/Image4.12.jpg)
  
 
-As the figure above shows, the subtree is not conditioned by the parent object which is why all departments are shown below each project. This does not accurately depict the context needed. The ideal virtual view would show each project and then below each project show the department working on that project followed by location and employees accordingly. 
+As the figure above shows, the subtree is not conditioned by the parent object which is why all departments are shown below each project. This does not accurately depict the context needed. The ideal identity view would show each project and then below each project show the department working on that project followed by location and employees accordingly. 
 
 Since the department object has a relationship with projects (the project ID is available in the department entry), the project ID can be used as the link parameter to condition the subtree. This is shown in the figure below. 
  
