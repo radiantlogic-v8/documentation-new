@@ -305,7 +305,7 @@ Finally, links are used to aggregate the identity views into one common root nam
 ![Example Virtual View Using Links to Aggregate Objects from Different Data Sources](Media/model-vs-runtime-example.jpg)
 
 
-This example described virtual views comprised of content objects and links. For more information, please see [Model-driven Views](model-driven-views.md).
+This example described linking to existing identity views comprised of content objects and links. For more information, please see [Model-driven Views](model-driven-views.md).
 
 **Build a Hierarchical View Leveraging Existing Relationships across Schemas**
 
