@@ -12,7 +12,7 @@ Special attributes settings can be found on Control Panel > Setup > Directory Na
 The Special Attributes Handling options allow you to perform the following functions: 
 
 -	Configure the automatic relationship management between linked attributes
--	Configure Referential Integrity (only applicable to RadiantOne Directory stores and persistent cache)
+-	Configure Referential Integrity (only applicable to [RadiantOne Directory stores](../directory-stores/special-attributes-handling) and persistent cache)
 -	Configure Dynamic Groups
 -	Configure unnesting of nested groups
 
@@ -28,7 +28,7 @@ Unnest Groups	| - | X
 
 ### Linked Attributes
 
-The Linked Attributes setting is only compatible with entries located in RadiantOne Universal Directory stores or persistent cache.
+The Linked Attributes setting is only compatible with entries located in [RadiantOne Directory stores](../directory-stores/special-attributes-handling) or persistent cache.
 
 Linked attributes are attributes that allow relationships between objects. A typical example would be isMemberOf/uniqueMember for user/groups objects. A group has members (uniqueMember attribute) which is the forward link relationship. Those members have an isMemberOf attribute which is the back link (to the group entry) relationship. Other examples of linked attributes are:
 
