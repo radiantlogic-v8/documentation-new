@@ -134,7 +134,7 @@ As the figure above shows, the subtree is not conditioned by the parent object w
 
 Since the department object has a relationship with projects (the project ID is available in the department entry), the project ID can be used as the link parameter to condition the subtree. This is shown in the figure below. 
  
-![Example – Using Merge Links with a Parameter to Condition the Subtree](Media/Image4.13.jpg)
+![Example – Using Merge Links with a Parameter to Condition the Subtree](Media/model-vs-runtime-example3.jpg)
 
 
 Based on the examples shown above, a link parameter is required for the identity view to represent the proper context of showing projects per department.
