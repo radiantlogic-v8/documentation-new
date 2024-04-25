@@ -97,7 +97,7 @@ Therefore, a design consideration you need to be aware of is where your base DN 
 
 **User-Defined Groups**
 
-For added flexibility, the RadiantOne service is able to generate group members dynamically. A user-defined group may be named anything and have members that are either explicitly defined or dynamically created based on a specific rule. The diagram below depicts an example of user-defined groups with dynamic members. In the example, group members are built dynamically based on the department attribute in the user entries. If a user’s department were to change, they would automatically be reflected as a member of the new group. For simplicity, only the member ID is shown below in the RadiantOne entry whereas in reality the full user DN is returned (as an LDAP client expects) when these groups are requested.
+For added flexibility, the RadiantOne service is able to generate group members dynamically. A user-defined group may be named anything and have members that are either explicitly defined or dynamically computed based on a specific rule. The diagram below depicts an example of user-defined groups with dynamic members. In the example, group members are built dynamically based on the department attribute in the user entries. If a user’s department were to change, they would automatically be reflected as a member of the new group. For simplicity, only the member ID is shown below in the RadiantOne entry whereas in reality the full user DN is returned (as an LDAP client expects) when these groups are requested.
 
 ![Group Names Pre-defined with Dynamic Members Example](Media/Image3.7.jpg)
 
