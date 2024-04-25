@@ -305,7 +305,8 @@ Finally, links are used to aggregate the identity views into one common root nam
 ![Example Virtual View Using Links to Aggregate Objects from Different Data Sources](Media/model-vs-runtime-example.jpg)
 
 
-This example described linking to existing identity views comprised of content objects and links. For more information, please see [Model-driven Views](model-driven-views.md).
+>[!note]
+>This example described linking to existing identity views comprised of content objects and links. If you don't already have existing identity views to aggregate together using links, you can use the Control Panel > Setup > Directory Namespace > Namespace Design to create your identity view using labels, containers and/or content nodes. For details see: [Model-driven Views](model-driven-views.md)
 
 **Build a Hierarchical View Leveraging Existing Relationships across Schemas**
 
@@ -329,6 +330,8 @@ A link (noted with the blue arrow in the virtual view model below) is used to ag
 
 In the linked view shown in the figure below, the subbranch (view named EmpByDeptView) can be conditioned by setting a linking attribute. In this example, all projects are associated with a department. Since the department object has a relationship with projects (the project ID is available in the department entry), the project ID can be used as the link parameter to condition the subtree. By adding a condition to the link based on the project ID attribute, the subtree shown at runtime is dependent upon the project (the parent node). This is shown in the figure below.
 
-![Using Links with a Parameter to Condition the Subtree](Media/Image3.34.jpg)
+![Using Links with a Parameter to Condition the Subtree](Media/model-vs-runtime-example3.jpg)
 
 
+>[!note]
+>If you don't already have existing identity views to merge together using links, you can use the Control Panel > Setup > Directory Namespace > Namespace Design to create your identity view using labels, containers and/or content nodes. For details see: [Model-driven Views](model-driven-views.md)
