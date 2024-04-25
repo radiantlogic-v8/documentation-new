@@ -221,9 +221,9 @@ The following diagram illustrates a relationship-driven hierarchy built from a d
 
 
 
-The screen shot below depicts both the model of the virtual view and the runtime tree shown in the View Designer perspective.
+The screen shot below depicts both the model of the identity view and the runtime tree shown in the Control Panel > Manage > Directory Browser.
 
-![Context-driven Virtual View Model and Runtime Preview](Media/Image3.21.jpg)
+![Context-driven Identity View Model and Runtime Preview](Media/model-vs-runtime-example.jpg)
 
 
 
