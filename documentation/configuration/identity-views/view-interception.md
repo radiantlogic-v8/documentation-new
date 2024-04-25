@@ -22,7 +22,7 @@ To enable an interception script for a specific identity view/naming context:
 
 1. From the Control Panel > Setup > Directory Namespace > Namespace Design, navigate to the identity view/node where the interception script should be invoked.
 1. On the right side, select the ADVANCED SETTINGS tab.
-1. Enable the operations you want to intercept and click SAVE.
+1. Enable the operations you want to intercept and click **SAVE**.
 1. Click ... > Edit Script to customize the interception script.
 1. Edit the script and click **SAVE**.
 1.	Rebuild the intercept.jar file by clicking **Build Interception Jar**.
