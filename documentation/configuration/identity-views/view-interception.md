@@ -14,7 +14,7 @@ Interception scripts are written in Java and used to override the default behavi
 -	Processing/changing a result (post processing)
 
 >[!warning] 
->Interception scripts are powerful and offer a lot of flexibility. However, this logic is executed inside RadiantOne so caution should be taken to ensure no undesirable effects. It is highly recommended that you engage Radiant Logic Professional Services to write the interception script(s). If you choose to write your own script(s), the Radiant Logic support team might be unable to diagnose problems in a timely manner. This can result in additional consultation fees imposed on the customer related to the time required to assess and certify the script logic. This is beyond the scope of support and falls under Radiant Logic Professional Services.
+>Interception scripts are powerful and offer a lot of flexibility. However, this logic is executed inside the RadiantOne service, so caution should be taken to ensure no undesirable effects. It is highly recommended that you engage Radiant Logic Professional Services to write the interception script(s). If you choose to write your own script(s), the Radiant Logic support team might be unable to diagnose problems in a timely manner. This can result in additional consultation fees imposed on the customer related to the time required to assess and certify the script logic. This is beyond the scope of support and falls under Radiant Logic Professional Services.
 
 Interception scripts can be configured at a [global level](../global-settings/global-interception) (to apply to all root naming contexts configured for the RadiantOne namespace), or for a specific identity view/naming context only. 
 
