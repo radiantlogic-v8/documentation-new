@@ -259,6 +259,7 @@ To modify a label:
 1. Enter a value for the attribute and click ![Checkmark](Media/checkmark.jpg).
 1. Click **CONFIRM**.
 
+
 To delete a label:
 
 1.	On the Properties tab, click ![Delete Node](Media/delete-button.jpg).
