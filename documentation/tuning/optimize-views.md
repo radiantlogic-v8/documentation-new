@@ -228,6 +228,10 @@ If you want RadiantOne FID to utilize the time limit value it receives from the 
 
 If enableLdapServerTimeLimit is set to true, RadiantOne FID uses the time limit specified by the client instead of using timelimit=0 when querying the backend.
 
+### Max Requested Attributes
+
+If more than 30 attributes are configured to be returned for a container or content node (indicated on the Final Output Object on the canvas on the OBJECT BUILDER tab), RadiantOne optimizes the query by requesting * instead of requesting each attribute explicitly. If your identity view is required to include operational attributes (computed by the backend server when requested), and you have more than 30 attributes declared in the view definition, the default behavior to translate the query to use * can cause problems resulting in the operational attributes not being returned from the backend server because they are not explicitly requested. You can adjust the maximum number of attributes to determine the usage of the * translation in the Max Requested Attributes property. If this property is set to zero, all attributes specified in the Final Output Object on the canvas on the OBJECT BUILDER tab are requested.
+
 ### Connection Pooling
 
 JNDI connection pooling to a backend LDAP source is enabled by default.
