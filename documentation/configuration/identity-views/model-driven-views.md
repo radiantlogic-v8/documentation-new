@@ -240,7 +240,7 @@ To create a label:
 1.	Navigate to Control Panel > Setup > Directory Namespace > Namespace Design and select the node in the tree where you want to create a label below.
 2.	Use the **+NEW LEVEL** menu and choose *Label*.
 3.	Select or enter the RDN name (e.g. o, ou, cn) and enter the value for the label name. 
-4. Click **CONFIRM**.
+4. 	Click **CONFIRM**.
 
 To modify a label:
 
@@ -260,24 +260,36 @@ To modify a label:
 
 To delete a label:
 
-1.	On the Properties tab, click ![Delete Node](Media/delete-icon.jpg).
+1.	On the Properties tab, click ![Delete Node](Media/delete-button.jpg).
 2.	Click **DELETE** to confirm.
 
 ### Working with Content Objects 
 
-Use a Content object when you want to create flat views that do not contain sub-branches.
+Use a Content object when you want to create flat views that do not contain sub-branches. When you create a content node, you base it on an object that has been extracted/created from a data source and this information is used to populate the entries at run time.
 
 To create content objects:
 
-1.	Select a Label or Container node in the view definition. 
+1.	Navigate to Control Panel > Setup > Directory Namespace > Namespace Design and select the node in the tree where you want to create a content below. This node must be a Label or Container type. 
 
-2.	Click the **New Content** button on the right.
+1.	Use the **+NEW LEVEL** menu and select content.
+1.	Select the data source from the drop-down list. If you don't have a data source defined, use the [Data Catalog](../data-sources/data-sources) to define it.
+1.	Select the schema associated with the data source that contains the object to be used to define the content node. If you don't have a schema yet, click the *Extract Schema* link to define one.
+	
+ ![Extract Schema](Media/extract-schema-link.jpg) 
 
-3.	In the Select Path dialog box, navigate below root and select the object/object class that contains the information you want to populate this node. 
+1.	Click **NEXT**. 
 
-4.	Click OK. 
+1.	Select the object from the schema that contains the information you want the content node to be populated with. If the schema is associated with a JDBC-accessible source and the object has a relationship to the parent container node in the identity view where you mounting this content, toggle the *Related Objects Only* option on to narrow the scope of objects to only those that have a relationships with the parent container node.
+	
+ ![Related Objects Only](Media/related-objects-only.jpg)
 
-This places the new Content object under the selected Label or Container object in the view definition.
+ 1. (Optional) if the schema is associated with a JDBC-accessible source and the object name (or attributes in the object) used mixed case (e.g. EmpLoyees), check the option to *Quote Table Names* and/or *Quote Column Names* to ensure the generated SQL query is compatible with the database vendor.
+ 
+ ![Advanced Options for Quoting](Media/adv-options-quotes.jpg)
+
+1. Click **SELECT**.
+
+This places the new Content object under the selected Label or Container object in the view definition. Use the OBJECT BUILDER tab to customize the node.
 
 The name of the Content object appears on the Node Properties > RDN Settings tab. 
 
