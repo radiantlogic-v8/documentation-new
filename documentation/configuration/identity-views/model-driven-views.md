@@ -72,13 +72,13 @@ A content node represents an object in an identity view.  When you create a cont
 
 For more information, see: [Working with Content Objects](#working-with-content-objects) 
 
-### Link
+### Links
 
 Links are a special kind of node that allows you to point to a specific sub-tree defined in an existing identity view (.dvx file). Using this mechanism in conjunction with a label (although a label is not necessary) you can aggregate information from different schemas (simple objects or whole sub trees). Links allow you to transparently navigate from schema to schema in an ad hoc way. 
 
 There are two different types of links: Standard and Merge. Each is described in more details below. 
 
-*Standard Link* 
+### Standard Links 
 
 A standard link offers a simple way to aggregate existing identity views. Each view file has a top node named with the following syntax: `dv=<file name>`. When aggregating identity views using standard links, the “dv” label level remains and becomes part of the naming in the hierarchy. 
 
@@ -99,7 +99,7 @@ Finally, standard links are used to aggregate the existing views. This is repres
 >[!note]
 >This example described linking to existing identity views. If you don't already have existing identity views to aggregate together using links, you can use the Control Panel > Setup > Directory Namespace > Namespace Design to create your identity view using labels, containers and/or content nodes.
 
-*Merge Link* 
+### Merge Links
 
 A merge link offers more flexibility than a standard link because the “dv” label level is suppressed (making the tree simpler for browsing). In addition, with merge links, a link parameter can be configured to condition the subtree based on the parent view. This is optional but offers flexibility by allowing you to build a context-driven identity view that navigates across multiple data sources.
 
@@ -118,6 +118,7 @@ A merge link (noted with the blue arrow) is used to aggregate the identity views
 
 ![Example Linking Two Existing Views](Media/Image4.11.jpg)
 
+**Merge Links with a Link Parameter**
 
 In the linked view shown above, the sub-branch (view named EmpByDeptView) can be conditioned by setting a linking attribute. In this example, all projects are associated with a department (there is a one-to-one relationship based on the project ID), so the project ID can be established as the linking attribute. By adding a condition to the link based on the project ID attribute, the subtree shown at runtime is dependent upon the project (the parent node). The link parameter syntax is: 
 `<childobject.attribute>=@[<parentobject_attribute>:<datatype>]`
@@ -180,7 +181,7 @@ An example depicting the model of the identity view and the runtime view leverag
 ![Example – Using Links with a Parameter to Condition the Subtree](Media/Image4.17.jpg)
 
 
-### Merge Links without a Link Parameter
+**Merge Links without a Link Parameter**
 
 This section describes a scenario where linking is used to aggregate objects from different schemas where a link parameter is not needed. In this example, three data sources are used. One data source is an LDAP directory storing partner information. One data source is Active Directory storing employee information. The third data source is a database storing customer information. Each data source is depicted below with objects representing their schemas. 
 
