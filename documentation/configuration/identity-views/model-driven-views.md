@@ -21,7 +21,7 @@ There is a toggle to indicate whether the naming context is active or not. Toggl
 ![Active Toggle](Media/active-toggle.jpg)
 
 ## Model-driven Identity Views Introduction
-Creating model-driven identity views requires the use of the metadata (schema) extracted from backend sources. The views can be flat or hierarchical and comprised of an aggregation of many views. This provides greater flexibility for view design than creating simple LDAP proxy views.
+Creating model-driven identity views requires the use of the metadata (schema) extracted from backend sources. The views can be flat or hierarchical and comprised of an aggregation of many existing identity views that have been imported from other environments. This provides greater flexibility for view design than creating simple LDAP proxy views.
 
 In order to create model-driven identity views, the data sources configured in the RadiantOne [Data Catalog](../data-sources/schemas) must have their schemas extracted. The schemas contain the metadata that is used for creating model-driven identity views. Container and content nodes types in identity views are created from objects in the metadata.
 
@@ -45,7 +45,7 @@ For more information, see: [Working with Container Objects](#working-with-contai
 
 A label node is a container object whose default attribute is a text label. The name of the label is defined during the creation and can be updated on the Properties tab. Other attributes can be defined for labels on the Properties tab > Virtual Attributes section.
 
-Use labels when you want to separate different types of information for display. In this respect, a label acts as an ad hoc way to aggregate objects from the same schema. However, when combined with links, you can aggregate objects coming from different schemas as well. 
+Use labels when you want to separate different types of information for display. In this respect, a label acts as an ad hoc way to aggregate objects from the same schema or different data source schemas. When combined with links, you can aggregate objects coming from existing identity views as well. 
 
 When a label is used as an intermediate link between two objects, it acts as a “pass-through” for the underlying relationship. The label does not affect the value of the keys that are propagated from the parent to the descendant. The objects are still linked by the same relationships. 
 
@@ -214,95 +214,54 @@ Once all labels are created, use the “MOUNT BACKEND” button at each label le
 
 This will allow you to edit the identity view configuration using the PROPERTIES, ADVANCED SETTINGS and OBJECT BUILDER tabs. 
 
-### Node Properties tab
 
-As you select a node in the view definition, the Node Properties tab is activated. This tab includes all parameters needed to customize the virtual view. The parameters are spread across 2-4 sub-tabs (depending on the type of node) each of which is described below.
+## The View Design Process
 
-#### RDN Settings Tab
+Model-driven identity views are created in Control Panel > Setup > Directory Namespace > Namespace Design. The schemas that were extracted in the Control Panel > Setup > Data Catalog > Data Sources are used as the basis for creating model-driven identity views using labels, container and content nodes.
 
-The RDN Settings tab displays summary information about the node you have selected. If the node type is Content or Container, the RDN Settings tab has the RDN name and value, and type of node. For Container nodes, you also have buttons to add a label, content, container and link.
+### Creating Root Naming Contexts
 
-![Node Properties Tab for Containers](Media/Image4.22.jpg)
+Identity view creation starts with defining a root naming context.
 
-Figure 22: Node Properties Tab for Containers
+To create a root naming context.
 
-For details on creating an alias for the primary key, see [Declaring RDN Attribute Name and Value](#declaring-an-rdn-attribute-name-and-value).
-
-If the node type is a label, a Properties tab replaces the RDN Settings tab. On the Properties tab, you can view the RDN attribute name and value (neither are editable), You can change the object class by clicking the change button. There are also buttons to add a label, content, container and link. Use the delete button to remove the label.
-
-If the node type is a link, a Properties tab replaces the RDN Settings tab. On the Properties tab you can see the RDN Name, definition, type, object class, and connection string associated with the linked view. You also have buttons to add a label, content, container, and link, in addition to an option to edit the connection string for the linked view. There is also a button to delete the link.
-
-![Properties for a Link Node](Media/Image4.23.jpg)
-
-Figure 23: Properties for a Link Node
-
-#### Advanced Settings Tab
-
-The Advanced Settings tab is available when you select Content or Container nodes. From this tab you can configure Interception scripts and set optimizations for your virtual view. You can also customize how to handle case-sensitive databases and define SQL filters from here (this is irrelevant if the backend is an LDAP source).
-
-![Advanced Settings Tab](Media/Image4.24.jpg)
-
-Figure 24: Advanced Settings Tab
-
-#### Attributes Tab
-
-The Attributes tab is available when you select Content or Container nodes. 
-For Content and Container nodes, the Attributes tab allows you to select and modify (remap) the attributes from the primary source that you want the entries to be comprised of.
-
-![Attributes Tab](Media/Image4.25.jpg)
-
-Figure 25: Attributes Tab
-
-For procedures on defining output, see [Working with Container Objects](#working-with-container-objects) and [Working with Content Objects](#working-with-content-objects).
-
-For creating filters, see [Adding Filters to Condition Virtual Views](#adding-filters-to-condition-virtual-view-content).
-
-For combining tables, see [Joins](concepts-and-utilities.md#joins-between-objects-of-the-same-schemasource) (this is only relevant for database backends). 
-
-##### Re-mapping Attribute Names
-
-By setting a mapping for an attribute name, you are defining the name that appears in the virtual entries for this view. The value shown in the Virtual Name column is the name of the attribute in the virtual entries. If you would like to map an attribute to a different name, click in the Virtual Name column and set the name you would like to use. 
-
->[!note] 
->If the view you are modifying the attribute mapping for is joined to other virtual views, and the attribute you are changing the mapping for is configured to be returned in the joined view, you must update the external join condition in the joined view to reflect the newly mapped attribute name.
-
-##### Object Tab
-
-The Object tab is available when you select Content or Container nodes. Objects may consist of attributes from the primary object, secondary objects (from joins), or ones that are computed. From the Object tab, you can manage all attributes that will comprise the virtual entries, configure computed attributes, configure joins, and establish a bind order.
-
-![Object Tab](Media/Image4.26.jpg)
-
-Figure 26: Object Tab
-
-
-## The View Designer Process
-
-The View Designer is a modeling tool used to create virtual views. The schemas that were extracted with the Schema Manager tool are used as a basis to start designing the views. Many different views can be created and tested before committing to a design.
+1. Navigate to Control Panel > Setup > Directory Namespace > Namespace Design.
+2. Click: ![New Naming Context](Media/new-naming-context.jpg)
+3. Select or enter the RDN name (e.g. o, ou, cn) and enter the value. This is the name that applications use to query data from the identity view that is mounted here.
+4. Click **CONFIRM**.
+5. Use the **+NEW LEVEL** menu to add labels, containes, contents, or links.
 
 ### Working with Labels
 
-You can create labels below an existing label or container. Labels are used as a way to categorize the virtual view. Unlike containers and contents, labels are not populated from objects in an underlying source. Therefore, you can add any attributes you want to labels.
+You can create labels below an existing label or container. Labels are used as a way to categorize the identity view. Unlike containers and contents, labels are not populated from objects in an underlying source. Therefore, you can add any attributes you want to labels.
 
 To create a label:
 
-1.	Select a Label or Container object in the pane on the left.
-
-2.	Click the New Label button in the pane on the right.
-
-3.	Select or enter a “level type” (RDN name).
-
-4.	Enter a value for the type you selected in step 3.
-
-5.	Click OK.
+1.	Navigate to Control Panel > Setup > Directory Namespace > Namespace Design and select the node in the tree where you want to create a label below.
+2.	Use the **+NEW LEVEL** menu and choose *Label*.
+3.	Select or enter the RDN name (e.g. o, ou, cn) and enter the value for the label name. 
+4. Click **CONFIRM**.
 
 To modify a label:
 
-1.	On the Properties tab, you can change RDN name and value.
+1.	On the Properties tab, you can change RDN name and value in the *LABEL NAME* setting.
+	![Label Properties](Media/label-properties.jpg)
 
     >[!note] 
     >DO NOT name a label with “dv”. The dv syntax is reserved for RadiantOne and labels should not contain it.
+ 
+1. To modify the object class associated with the label node, click the drop-down list next to the Object Class setting and choose the object class. You can manually enter an object class name instead of selecting one from the list.
+1. To add more object classes to associate with the label node, click + next to the Object Class setting. Another drop-down list appears to allow you to select an object class or manually enter a new object class value.
+1. On the Properties tab > Virtual Attributes section, you can manage the attributes of the label. All attributes defined here are returned when a client requests label entries in the identity view.
+1. Expand the Virtual Attributes section and click **+NEW ATTRIBUTE**.
+1. Select or enter an attribute name and click **+NEW VALUE**.
+1. Enter a value for the attribute and click ![Checkmark](Media/checkmark.jpg).
+1. Click **CONFIRM**.
 
-2.	On the Primary Object tab, you can manage (add/delete) the attributes of the label. All attributes defined here are returned when a client requests label entries in the virtual view. 
+To delete a label:
+
+1.	On the Properties tab, click ![Delete Node](Media/delete-icon.jpg).
+2.	Click **DELETE** to confirm.
 
 ### Working with Content Objects 
 
@@ -486,3 +445,69 @@ Figure 33: Sample LDAP Filter
 6.	To edit a condition, select it and click Edit. 
 
 7.	To delete a condition, select it and click Delete.
+
+## Managing Nodes in Model-driven Identity Views
+
+
+
+
+### Properties tab
+
+As you select a node in the view definition, the Properties tab is activated. This tab includes parameters needed to customize the node in the identity view. The parameters are spread across 2-4 sub-tabs (depending on the type of node) each of which is described below.
+
+#### RDN Settings Tab
+
+The RDN Settings tab displays summary information about the node you have selected. If the node type is Content or Container, the RDN Settings tab has the RDN name and value, and type of node. For Container nodes, you also have buttons to add a label, content, container and link.
+
+![Node Properties Tab for Containers](Media/Image4.22.jpg)
+
+Figure 22: Node Properties Tab for Containers
+
+For details on creating an alias for the primary key, see [Declaring RDN Attribute Name and Value](#declaring-an-rdn-attribute-name-and-value).
+
+If the node type is a label, a Properties tab replaces the RDN Settings tab. On the Properties tab, you can view the RDN attribute name and value (neither are editable), You can change the object class by clicking the change button. There are also buttons to add a label, content, container and link. Use the delete button to remove the label.
+
+If the node type is a link, a Properties tab replaces the RDN Settings tab. On the Properties tab you can see the RDN Name, definition, type, object class, and connection string associated with the linked view. You also have buttons to add a label, content, container, and link, in addition to an option to edit the connection string for the linked view. There is also a button to delete the link.
+
+![Properties for a Link Node](Media/Image4.23.jpg)
+
+Figure 23: Properties for a Link Node
+
+#### Advanced Settings Tab
+
+The Advanced Settings tab is available when you select Content or Container nodes. From this tab you can configure Interception scripts and set optimizations for your virtual view. You can also customize how to handle case-sensitive databases and define SQL filters from here (this is irrelevant if the backend is an LDAP source).
+
+![Advanced Settings Tab](Media/Image4.24.jpg)
+
+Figure 24: Advanced Settings Tab
+
+#### Attributes Tab
+
+The Attributes tab is available when you select Content or Container nodes. 
+For Content and Container nodes, the Attributes tab allows you to select and modify (remap) the attributes from the primary source that you want the entries to be comprised of.
+
+![Attributes Tab](Media/Image4.25.jpg)
+
+Figure 25: Attributes Tab
+
+For procedures on defining output, see [Working with Container Objects](#working-with-container-objects) and [Working with Content Objects](#working-with-content-objects).
+
+For creating filters, see [Adding Filters to Condition Virtual Views](#adding-filters-to-condition-virtual-view-content).
+
+For combining tables, see [Joins](concepts-and-utilities.md#joins-between-objects-of-the-same-schemasource) (this is only relevant for database backends). 
+
+##### Re-mapping Attribute Names
+
+By setting a mapping for an attribute name, you are defining the name that appears in the virtual entries for this view. The value shown in the Virtual Name column is the name of the attribute in the virtual entries. If you would like to map an attribute to a different name, click in the Virtual Name column and set the name you would like to use. 
+
+>[!note] 
+>If the view you are modifying the attribute mapping for is joined to other virtual views, and the attribute you are changing the mapping for is configured to be returned in the joined view, you must update the external join condition in the joined view to reflect the newly mapped attribute name.
+
+##### Object Tab
+
+The Object tab is available when you select Content or Container nodes. Objects may consist of attributes from the primary object, secondary objects (from joins), or ones that are computed. From the Object tab, you can manage all attributes that will comprise the virtual entries, configure computed attributes, configure joins, and establish a bind order.
+
+![Object Tab](Media/Image4.26.jpg)
+
+Figure 26: Object Tab
+
