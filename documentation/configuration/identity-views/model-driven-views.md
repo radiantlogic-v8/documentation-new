@@ -271,7 +271,7 @@ Use a Content object when you want to create flat views that do not contain sub-
 
 To create content objects:
 
-1.	Navigate to Control Panel > Setup > Directory Namespace > Namespace Design and select the node in the tree where you want to create a content below. This node must be a Label or Container type. 
+1.	Navigate to Control Panel > Setup > Directory Namespace > Namespace Design and select the node in the tree where you want to create a content below. This node type must be a Label or Container, or you can mount a content level directly at a Root Naming Context. 
 
 1.	Use the **+NEW LEVEL** menu and select content.
 1.	Select the data source from the drop-down list. If you don't have a data source defined, use the [Data Catalog](../data-sources/data-sources) to define it.
