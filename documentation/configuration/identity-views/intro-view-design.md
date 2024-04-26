@@ -7,7 +7,7 @@ description: Learn about different design techniques for creating identity views
 
 A directory tree is organized in a hierarchy, so that entries in a directory can be referred to by their name relative to the structure of the tree. Within a tree, there is only one namespace for all the entries contained within. Thus, every element of the tree can be located by a distinguished name, one that is unique to that entry.
 
-When designing your directory tree, it is usually recommended that you adopt a relatively simple naming structure. Obviously, the naming structure should be dependent upon what the application that is consuming the data expects to see. Therefore, the approach you should take when creating your tree (either using one of the RadiantOne Wizards or on your own) is to define the simplest tree that meets your application’s needs.
+When designing your directory tree, it is usually recommended that you adopt a relatively simple naming structure. Obviously, the naming structure should be dependent upon what the application that is consuming the data expects to see. Therefore, the approach you should take when creating your namespace is to define the simplest identity view that meets your application’s needs.
 
 The following sections discuss different design considerations for creating your namespace.
 
