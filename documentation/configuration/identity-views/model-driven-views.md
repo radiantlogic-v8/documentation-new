@@ -366,64 +366,6 @@ A link parameter can be used to condition the subtree based on the primary key o
 
 At runtime, RadiantOne evaluates the link and builds the appropriate subtree conditioned based on the link parameter. 
 
-
-### Adding Filters to Condition Virtual View Content 
-
-Filters allow you to condition the node to only have entries that contain specific information. You can set the filter conditions at any Container or Content nodes.
-
-The interface for setting filters differs between LDAP and database backends. Each process is described in more details below. 
-
-To create filters for database backends: 
-
-1.	On the View Designer tab, select the Container or Content object and then choose the Advanced Settings tab. 
-
-2.	Click Assist next to SQL Filter. 
-
-3.	From the drop-down menu, select the attribute you want to work with.
-
-4.	Select an operator. The comparison operator default is "equal". The drop-down list includes all available comparison operators. 
-
-![Filter for SQL-accessible Backend Dialog Box](Media/Image4.30.jpg)
-
-Figure 30: Filter for SQL-accessible Backend Dialog Box
-
-5.	Enter a value in the blank field if applicable.
-6.	Using the Add Rule and Add Group buttons, repeat steps 2-4 for each attribute you want to use in the filter. 
-
-For example, in the following illustration, the query is for Service Managers in the United States. The inferred operation for the condition in this example is “AND”. This means that the result displays information where Title = Service Manager AND Country = United States. You can see an example of the Where Clause that is generated below the list of columns by clicking the Preview button.
-
-![Add Filter Dialog Box](Media/Image4.31.jpg)
-
-Figure 31: Add Filter Dialog Box
-
-7.	To enter an additional filter, click the Add Rule button. You can choose to either use an AND or OR condition. The example below uses an OR condition. For example, if “Operations Manager” were entered in the Condition 2 column for the Contact Title attribute, the results would include information where Contact Title = Service Manager OR Contact Title = Operations Manager AND Country = United States Therefore, all service and operation managers in the United States are included in the virtual view at runtime. 
-
-![Additional Condition for Filter](Media/Image4.32.jpg)
-
-Figure 32: Additional Condition for Filter
-
-8.	If more customization is required for the filter than is provided by this interface, then you can use the Additional Clause feature to manually create your own. For more information, please see the [Additional Clause](#additional-clause).
-
-To create filters for LDAP backends: 
-
-1.	On the View Designer tab, select the Container or Content object and then choose the Advanced Settings tab.
-
-2.	Click **Assist** next to LDAP Filter. 
-
-3.	Enter a valid LDAP filter in the LDAP Filter parameter. There is a built-in syntax checker to verify the LDAP filter you have entered. For assistance with building your filter you can use the buttons along the right side. For example, if your filter should contain an AND condition, click on the New AND Operator button and then click New Condition. Enter one of the conditions you would like to filter on and click OK. Click on Next Condition button again and enter the next condition. In the screen shot below, the virtual view is conditioned by only returning entries that have l=Novato and postalCode=94947. 
- 
-![Sample LDAP Filter](Media/Image4.33.jpg)
-
-Figure 33: Sample LDAP Filter
-
-4.	To add an OR operation, click the New OR Operator button. Then click **New Condition** to indicate what the OR operation should contain. 
-
-5.	To add a NOT operation, click the New NOT Operator button. Then click the New Condition button to indicate what the OR operation should contain. 
-
-6.	To edit a condition, select it and click Edit. 
-
-7.	To delete a condition, select it and click Delete.
-
 ## Managing Nodes in Model-driven Identity Views
 
 Nodes in model-driven identity views are comprised of labels, containers, contents and/or links.  Nodes can be managed from the the Control Panel > Setup > Directory Namespace > Namespace Design. Select the node in the tree and use the Properties, Advanced Settings, Special Attributes, and Object Builder tabs on the right.
@@ -479,6 +421,7 @@ As you select a node in the view definition, the Advanced tab is activated. This
 For container or content node types, you can configure interception scripts, enable optimizations and define other settings. Each of these is described below.
 
 **Interception Scripts**
+
 Interception scripts allow for overriding default behavior of the RadiantOne service and can be invoked for pre-operations (prior to the RadiantOne service querying the backend identity sources, or post-operations (prior to the RadiantOne service returning results to clients).
 
 To invoke an interception script for pre-operations, use the: On Bind, On Modify, On Compare, On Search, On Add, On Delete, or On Special Operations options.
