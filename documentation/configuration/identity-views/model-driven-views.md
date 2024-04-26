@@ -275,23 +275,20 @@ To create content objects:
 
 1.	Use the **+NEW LEVEL** menu and select content.
 1.	Select the data source from the drop-down list. If you don't have a data source defined, use the [Data Catalog](../data-sources/data-sources) to define it.
-1.	Select the schema associated with the data source that contains the object to be used to define the content node. If you don't have a schema yet, click the *Extract Schema* link to define one.
-	
- ![Extract Schema](Media/extract-schema-link.jpg) 
+1.	Select the schema associated with the data source that contains the object to be used to define the content node. If you don't have a schema yet, click the *Extract Schema* link to define one. For assistance see: [Schemas](../data-sources/schemas)
+	 ![Extract Schema](Media/extract-schema-link.jpg) 
 
 1.	Click **NEXT**. 
 
 1.	Select the object from the schema that contains the information you want the content node to be populated with. If the schema is associated with a JDBC-accessible source and the object has a relationship to the parent container node in the identity view where you mounting this content, toggle the *Related Objects Only* option on to narrow the scope of objects to only those that have a relationships with the parent container node.
-	
- ![Related Objects Only](Media/related-objects-only.jpg)
+	![Related Objects Only](Media/related-objects-only.jpg)
 
  1. (Optional) if the schema is associated with a JDBC-accessible source and the object name (or attributes in the object) used mixed case (e.g. EmpLoyees), check the option to *Quote Table Names* and/or *Quote Column Names* to ensure the generated SQL query is compatible with the database vendor.
- 
- ![Advanced Options for Quoting](Media/adv-options-quotes.jpg)
+  ![Advanced Options for Quoting](Media/adv-options-quotes.jpg)
 
 1. Click **SELECT**.
 
-This places the new Content object under the selected Label or Container object in the view definition. Use the OBJECT BUILDER tab to customize the node.
+This places the new Content object under the selected Label or Container object, or Root Naming Context in the view definition. Use the OBJECT BUILDER tab to customize the node.
 
 The name of the Content object appears on the Node Properties > RDN Settings tab. 
 
@@ -462,12 +459,55 @@ Figure 33: Sample LDAP Filter
 
 ## Managing Nodes in Model-driven Identity Views
 
-
-
+Nodes in model-driven identity views are comprised of labels, containers, contents and/or links.  Nodes can be managed from the the Control Panel > Setup > Directory Namespace > Namespace Design. Select the node in the tree and use the Properties, Advanced Settings, Special Attributes, and Object Builder tabs on the right.
 
 ### Properties tab
 
-As you select a node in the view definition, the Properties tab is activated. This tab includes parameters needed to customize the node in the identity view. The parameters are spread across 2-4 sub-tabs (depending on the type of node) each of which is described below.
+As you select a node in the view definition, the Properties tab is activated. This tab includes parameters needed to customize the node in the identity view. 
+
+For container or content node types, you can declare the RDN, view the primary key attribute, view the schema, view the node type and delete the node. Each of this is described below.
+
+**Declare the RDN**
+
+The RDN Name and Value can be defined in the *RDN* property. The RDN name defaults to the name of the object and can be updated on the Properties tab. 
+
+![Node RDN](Media/node-rdn.jpg)
+
+To edit which attributes comprise the RDN value:
+
+1. Click the ![Pencil](Media/pencil-icon.jpg)
+1. Select all attributes that should comprise the RDN and click **NEXT**.
+ ![Attributes for RDN](Media/select-rdn-attributes.jpg)
+   
+1. Arrange the order of the attributes in which they should appear in the value by clicking ![Drag and Drop](Media/drag-and-drop.jpg) and dragging the attribute up/down and click **SAVE**.
+
+![Attributes for RDN](Media/arrange-rdn-order.jpg)
+
+
+**View the Primary Key Attribute**
+
+The *PRIMARY KEY* property indicates the primary key/unique attribute associated with the object used to define the node. This value is determined by the schema that was extracted from the backend data source.
+
+**View the Schema**
+
+The *SCHEMA* Property indicates what schema file the object is created from. The name of the schema file is a hyperlink that when clicked, takes the user to the schema definition in the Control Panel > Setup > Data Catalog > Data Sources.
+
+**View the Node Type**
+
+The *TYPE* displayed is a read-only value that indicates the node type: Content, Container, Label
+
+**Delete Nodes**
+
+To delete nodes:
+
+1.	On the Properties tab for the selected node to be deleted, click ![Delete Node](Media/delete-button.jpg).
+2.	Click **DELETE** to confirm.
+
+### Advanced Settings
+
+### Special Attributes
+
+### Object Builder
 
 #### RDN Settings Tab
 
