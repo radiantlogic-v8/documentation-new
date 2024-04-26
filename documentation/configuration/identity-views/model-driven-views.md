@@ -288,26 +288,8 @@ To create content objects:
 
 1. Click **SELECT**.
 
-This places the new Content object under the selected Label or Container object, or Root Naming Context in the view definition. Use the OBJECT BUILDER tab to customize the node.
+This places the new Content object under the selected Label or Container object, or Root Naming Context in the view definition. Use the PROPERTIES, ADVANCED SETTINGS, SPECIAL ATTRIBUTES and OBJECT BUILDER tabs to customize the node. For details see: [Managing Nodes in Model-driven Identity Views](#managing-nodes-in-model-driven-identity-views)
 
-The name of the Content object appears on the Node Properties > RDN Settings tab. 
-
-To modify content objects:
-
-1.	In the View Definition, select the Content node and click the Attributes tab. The fields available in the object appear in the column list on the left.
-
-2.	Select the attribute that you want to expose in the virtual entries and use the ![right arrow](Media/ImageRightArrow.jpg) button to move it over to the column on the right.
-
-3.	To remove an attribute from the virtual entry definition, highlight the column name and click the ![red x](Media/ImageRedX.jpg) button.
-
-For more information on configuring content objects, please see the following sections:
--	Joins with objects from the same schema. 
--	Joins with heterogeneous objects (objects from other sources/schemas). 
--	Using filters to condition the entries that populate the content object. 
--	Search options for case-sensitive databases. 
--	Advanced Options. 
--	Interception scripts to customize operations performed against the content object. 
--	Performance optimizations. 
 
 ### Working with Container Objects 
 
@@ -384,21 +366,6 @@ A link parameter can be used to condition the subtree based on the primary key o
 
 At runtime, RadiantOne evaluates the link and builds the appropriate subtree conditioned based on the link parameter. 
 
-### Declaring an RDN Attribute Name and Value 
-
-You can create or modify an RDN attribute value in the View Designer tab. 
-
-To declare an RDN attribute value: 
-1.	In the View Definition, select the node and then click the Node Properties -> RDN Settings tab. 
-
-2.	The RDN name and value are displayed here. Click the Edit button to select the attribute(s) that should comprise the RDN value. The attribute(s) that you select is combined with the primary key to comprise the RDN value. 
-
-    >[!warning] 
-    >The column(s) that you select as the RDN attribute value should not allow NULL values.
-
-![Configuring RDN Name and Value](Media/Image4.29.jpg)
-
-Figure 29: Configuring RDN Name and Value
 
 ### Adding Filters to Condition Virtual View Content 
 
@@ -478,6 +445,9 @@ To edit which attributes comprise the RDN value:
 1. Click the ![Pencil](Media/pencil-icon.jpg)
 1. Select all attributes that should comprise the RDN and click **NEXT**.
  ![Attributes for RDN](Media/select-rdn-attributes.jpg)
+
+    >[!warning] 
+    >The column(s) that you select as the RDN attribute value should not allow NULL values.
    
 1. Arrange the order of the attributes in which they should appear in the value by clicking ![Drag and Drop](Media/drag-and-drop.jpg) and dragging the attribute up/down and click **SAVE**.
 
@@ -500,10 +470,98 @@ The *TYPE* displayed is a read-only value that indicates the node type: Content,
 
 To delete nodes:
 
-1.	On the Properties tab for the selected node to be deleted, click ![Delete Node](Media/delete-button.jpg).
+1.	On the Properties tab for the selected node to be deleted, click: ![Delete Node](Media/delete-button.jpg)
 2.	Click **DELETE** to confirm.
 
 ### Advanced Settings
+
+**Interception Scripts**
+Interception scripts allow for overriding default behavior of the RadiantOne service and can be invoked for pre-operations (prior to the RadiantOne service querying the backend identity sources, or post-operations (prior to the RadiantOne service returning results to clients).
+
+To invoke an interception script for pre-operations, use the: On Bind, On Modify, On Compare, On Search, On Add, On Delete, or On Special Operations options.
+To invoke an interception script for post-operations, use the: Search Result Entry Processing option.
+
+After enabling the desired options, customize the interception script logic, rebuild the intercept jar file and restart the RadiantOne service.
+
+For complete details, see: [Interception Scripts](view-interception.md)
+
+**Optimizations**
+
+The following options can be enabled from the ADVANCED SETTINGS tab > Optimizations section for model-driven identity views from database backends. 
+- Request Attributes Only When Necessary
+- Process joins and computed attributes only when necessary
+
+The following options can be enabled from the ADVANCED SETTINGS tab > Optimizations section for model-driven identity views from LDAP backends. 
+- Process join and computed attributes only when necessary
+- Max Requested Attributes
+
+For details on these options and other ways to optimize the identity view, see: [Tuning](../../tuning/optimize-views)
+
+**Other Settings**
+
+The following options can be managed from the ADVANCED SETTINGS tab > Other Settings section for model-driven identity views from database backends. 
+
+*Distinct*
+
+If you need to ensure you get unique records from the database table (to avoid duplicate rows in the result set), toggle the Distinct option on. This modifies the query request RadiantOne issues to the backend database to prevent duplicate rows from being returned.
+
+*Case Sensitivity for search*
+
+There are three options available for handling case sensitive databases. These options are related to how RadiantOne generates the query to send to the database. The options are As Is, Ignore Case and Translate Values to Uppercase. Each is described in details below.
+
+- As Is: If your database is not case sensitive, then you should choose the As Is option. With this option, RadiantOne forwards the search filter to the backend in the exact case it was received in the request from the client. This is the default option.
+
+If your database is case sensitive and you choose this option, the case received in the filter from the client search request must match the case used in the database or else the entry is not found.
+
+For example, if a database attribute named FIRSTNAME had a value of Nancy, and RadiantOne received a search request with a filter of (firstname=nancy), the entry is not returned. The client must use a filter of (firstname=Nancy) for the entry to be properly returned from the database.
+
+- Ignore Case: If your database is case sensitive and you are not sure how the values are stored (mixed case, all upper, all lower…etc.), then you should choose the Ignore Case option. With this option, RadiantOne generates the SQL query so that both the filter that was received in the client request and the values from the backend are converted into uppercase before the search filter can be validated. For example, if a client sent a request with a filter of (firstname=Nancy), RadiantOne would generate the following where clause based on the filter received in the client request.
+
+WHERE (UPPER(APP.EMPLOYEES.FIRSTNAME)=UPPER('Nancy'))
+
+The case used in the filter from the client is irrelevant and everything is converted into uppercase.
+
+This option offers the least performance, so it should only be used when absolutely required. If the database is case sensitive and the values are stored in uppercase, you should use the Translate Values to Uppercase option (see #3 below) as it is more efficient.
+
+- Translate Values to Uppercase: If your database is case sensitive and you know the values are stored in uppercase, you should choose the Translate Values to Uppercase option. With this option, RadiantOne translates the search filter value into uppercase before sending it to the backend database. This option is more efficient than the Ignore Case option mentioned above.
+
+*SQL Filter*
+
+If you want to condition the identity view of your database to only return a set of entries that match a certain criterion, you can enter a SQL Filter. An example of a filter would be ENAME=’s%’, which would only return entries that have an ENAME value that starts with “s” (the % is a wild card character).
+
+>[!note] - You must enter a valid SQL filter and use the actual database attribute names (as opposed to using any virtual names you have configured through > mapping). The SQL syntax you use in your filter must be compatible with the database brand/version you are accessing on the backend.
+
+To enter a SQL filter:
+
+1. Click ![Pencil](Media/pencil-icon.jpg).
+
+From the drop-down list, select the source attribute you want to filter on.
+
+Choose an operator (e.g. equals, begins with, ends with…etc.) from the drop-down list in the middle property.
+
+In the last property, enter the value that defines the condition.
+
+(Optional) To add more conditions to the filter, click Add Rule.
+
+(Optional) To remove conditions from the filter, click Delete next to the condition.
+
+Click OK.
+
+Click Save.
+
+An example filter is shown below where only entries that have CITY = Seattle and a TITLE that contains “Sales” are returned in the virtual view.
+
+**Object Class Mapping**
+
+**Configuration Parameters**
+
+The following options can be managed from the ADVANCED SETTINGS tab > Other Settings section for model-driven identity views from LDAP backends. 
+
+**LDAP Filter** 
+
+**Object Class Mapping**
+
+**Configuration Parameters**
 
 ### Special Attributes
 
@@ -564,4 +622,15 @@ The Object tab is available when you select Content or Container nodes. Objects 
 ![Object Tab](Media/Image4.26.jpg)
 
 Figure 26: Object Tab
+
+
+
+For more information on configuring content objects, please see the following sections:
+-	Joins with objects from the same schema. 
+-	Joins with heterogeneous objects (objects from other sources/schemas). 
+-	Using filters to condition the entries that populate the content object. 
+-	Search options for case-sensitive databases. 
+-	Advanced Options. 
+-	Interception scripts to customize operations performed against the content object. 
+-	Performance optimizations. 
 
