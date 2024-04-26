@@ -239,7 +239,7 @@ Identity views based on recursive relationships are built with container and opt
 Identity views that are comprised of objects and attributes from multiple heterogeneous data sources are built using links and/or joins. Whenever a virtual view needs to contain information from more than one data source, the design options are:
 
 - Extend the entries from the primary source with attributes from other sources that the same users exist in. This is accomplished using [joins](joins.md).
-- Condition the identity view hierarchy based on a relationship (common key) between objects across data sources. This is accomplished using: [links](model-driven-views.md).
+- Condition the identity view hierarchy based on a relationship (common key) between objects across data sources that already have an identity view created for them. This is accomplished using: [links](model-driven-views.md).
 
 ### Joins
 
@@ -279,12 +279,12 @@ When you start to join objects across different heterogeneous data sources, the 
 
 ### Links
 
-Links are used to build identity views from objects across heterogeneous data sources.
+Links are used to build identity views from objects across heterogeneous data sources. Links are used to mount exi
 
 Two primary uses of links are to:
 
 - Mount existing identity views (.dvx files) at a Root Naming Context or label in an identity view. These views can be migrated from some other environment.
-- Build a hierarchical view leveraging relationships that span across data sources.
+- Use existing identity views (.dvx files) to build a hierarchical view leveraging relationships that span across data sources.
 
 **Mount Existing Identity Views**
 
@@ -306,7 +306,7 @@ Finally, links are used to aggregate the identity views into one common root nam
 
 
 >[!note]
->This example described linking to existing identity views comprised of content objects and links. If you don't already have existing identity views to aggregate together using links, you can use the Control Panel > Setup > Directory Namespace > Namespace Design to create your identity view using labels, containers and/or content nodes. For details see: [Model-driven Views](model-driven-views.md)
+>This example described linking to existing identity views comprised of content objects and links. If you don't already have existing identity views to aggregate together using links, you can use the Control Panel > Setup > Directory Namespace > Namespace Design to create your identity view using labels. Then mount each backend data source below separate labels to aggregate them. For details see: [Model-driven Views](model-driven-views.md)
 
 **Build a Hierarchical View Leveraging Existing Relationships across Schemas**
 
@@ -316,13 +316,13 @@ To build hierarchical views based on relationships that span across data sources
 
 
 
-Let’s assume the desired hierarchy should represent projects, followed by the department associated with the project, followed by the location of the employee, and finally the employees working on the project. Since the information is maintained in two separate databases, a virtual view can be built from each. This is depicted in the diagram below. One view is built for projects while the other is a view of employees based on departments and location.
+Let’s assume the desired hierarchy should represent projects, followed by the department associated with the project, followed by the location of the employee, and finally the employees working on the project. Since the information is maintained in two separate databases, an identity view can be built from each. This is depicted in the diagram below. One view is built for projects while the other is a view of employees based on departments and location.
 
 ![Two Example Virtual View Models](Media/Image3.32.jpg)
 
 
 
-A link (noted with the blue arrow in the virtual view model below) is used to aggregate the virtual views into the required hierarchy. This is depicted in the diagram below.
+A link (noted with the blue arrow in the virtual view model below) is used to aggregate the existing identity views into the required hierarchy. This is depicted in the diagram below.
 
 ![Example Link to an Existing View](Media/Image3.33.jpg)
 
