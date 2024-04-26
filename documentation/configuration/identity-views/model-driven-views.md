@@ -432,7 +432,7 @@ Nodes in model-driven identity views are comprised of labels, containers, conten
 
 As you select a node in the view definition, the Properties tab is activated. This tab includes parameters needed to customize the node in the identity view. 
 
-For container or content node types, you can declare the RDN, view the primary key attribute, view the schema, view the node type and delete the node. Each of this is described below.
+For container or content node types, you can declare the RDN, view the primary key attribute, view the schema, view the node type and delete the node. Each of these is described below.
 
 **Declare the RDN**
 
@@ -474,6 +474,9 @@ To delete nodes:
 2.	Click **DELETE** to confirm.
 
 ### Advanced Settings
+As you select a node in the view definition, the Advanced tab is activated. This tab includes parameters needed to customize the node in the identity view.
+
+For container or content node types, you can configure interception scripts, enable optimizations and define other settings. Each of these is described below.
 
 **Interception Scripts**
 Interception scripts allow for overriding default behavior of the RadiantOne service and can be invoked for pre-operations (prior to the RadiantOne service querying the backend identity sources, or post-operations (prior to the RadiantOne service returning results to clients).
@@ -497,7 +500,7 @@ The following options can be enabled from the ADVANCED SETTINGS tab > Optimizati
 
 For details on these options and other ways to optimize the identity view, see: [Tuning](../../tuning/optimize-views)
 
-**Other Settings**
+**Other Settings for Database Backends**
 
 The following options can be managed from the ADVANCED SETTINGS tab > Other Settings section for model-driven identity views from database backends. 
 
@@ -531,76 +534,108 @@ If you want to condition the identity view of your database to only return a set
 
 >[!note] - You must enter a valid SQL filter and use the actual database attribute names (as opposed to using any virtual names you have configured through > mapping). The SQL syntax you use in your filter must be compatible with the database brand/version you are accessing on the backend.
 
-To enter a SQL filter:
+To enter a SQL filter: **STEPS TO BE UPDATED**
 
-1. Click ![Pencil](Media/pencil-icon.jpg).
-
-From the drop-down list, select the source attribute you want to filter on.
-
-Choose an operator (e.g. equals, begins with, ends with…etc.) from the drop-down list in the middle property.
-
-In the last property, enter the value that defines the condition.
-
-(Optional) To add more conditions to the filter, click Add Rule.
-
-(Optional) To remove conditions from the filter, click Delete next to the condition.
-
-Click OK.
-
-Click Save.
+1. Click ![Pencil](Media/pencil-icon.jpg) next to SQL Filter.
+2. From the drop-down list, select the source attribute you want to filter on.
+3. Choose an operator (e.g. equals, begins with, ends with…etc.) from the drop-down list in the middle property.
+4. In the last property, enter the value that defines the condition.
+5. (Optional) To add more conditions to the filter, click Add Rule.
+6. (Optional) To remove conditions from the filter, click Delete next to the condition.
+7. Click OK.
+8. Click Save.
 
 An example filter is shown below where only entries that have CITY = Seattle and a TITLE that contains “Sales” are returned in the virtual view.
 
-**Object Class Mapping**
+*Object Class Mapping*
 
-**Configuration Parameters**
+For database backend objects, RadiantOne provides a default LDAP object class name (based on the name of the database object). This is the object class that clients can base their query filter on to request data from a particular database object.
+
+If you want to map the database objects to a new/different object class:
+
+1. In the Other Settings section on the Advanced Settings tab, click the ![Pencil](Media/pencil-icon.jpg) next to Object Class Mapping.
+2. Select the LDAP schema that contains the object class you want to map to. This selection populates the Mapped Object Class List.
+3. Select the object class from the Mapped Object Class List, or manually enter the object class you to want to map to. If the object class inherits from multiple classes, the classes are displayed with a # as the separator.
+4. Click **SELECT**.
+5. Click **SAVE**.
+
+
+*Configuration Parameters*
+
+To configure Link Parameters, Base Parameters and configure calls for Stored Procedures, click **EDIT** in the Configuration Parameters section.
+
+- Link Parameters: are only relevant when the view definition has more than one level because this is the parameter that is used to link the entry to the parent. If there is only one level in the tree, this parameter is irrelevant. If RadiantOne has generated UPPER, you can remove it from here if needed. The UPPER is generated here for case sensitive databases. If your database is not case sensitive, then the UPPER can be removed (along with the corresponding set of parentheses). If your database is case sensitive, then you must make sure that the attribute that is indexed (and is used in the link parameter) uses UPPER case. Otherwise, performance of the virtual view is unpredictable.
+- Base Parameters: This parameter allows you to remove UPPER (that is generated by default) for base searches and updates. The UPPER is generated here for case sensitive databases. If your database is not case sensitive, then the UPPER can be removed. If your database is case sensitive, then you must make sure that the attribute that is indexed (and is used in the base parameter) uses the UPPER case. Otherwise, performance of the virtual view (during a base search) is unpredictable. Since some databases are case sensitive, RadiantOne transforms primary key attribute values to upper case before comparing. This is only applicable when the database key is a character data type. “UPPER” is generated automatically for the following databases: Oracle, SQL MX, MS SQL Server, Sybase, Interbase, and DB2. If you do not want UPPER to be used for searches and updates (because your database is not case sensitive), you can use the Base parameters to remove it. Below is an example of the parameter that is generated for a database (for the search). If the database is case sensitive and the CN attribute is indexed (and the index stores the value in upper case), then the UPPER generated on the left side of the “=” can be removed and performance is improved (also remove the leading and ending parentheses). 
+(UPPER(SCOTT.PEOPLE.CN)=UPPER(@@[cn : VARCHAR2(60)]))
+
+If you are not able to remove the UPPER then you should consider using cache at the level of RadiantOne to improve performance. RadiantOne queries the database the first time (the UPPER is used), the result is cached and future queries receive the information from cache.
+- Stored Procedures: Identity views created from database backends can call stored procedures instead of using the default functionality for handling inserts, updates, and deletes.  
+
+To configure calling a stored procedure:
+1. From the Stored Procedure tab, select Insert, Update, or Delete from the drop-down menu.
+2. Click **+STORED PROCEDURE**.
+3. (Optional) In the *Advanced Filters* section, specify a catalog and/or schema name and click **APPLY FILTERS**.
+4. Select a stored procedure and click **NEXT**.
+5. Select parameters from the drop-down menu and click **SAVE**.
+
+![note] - Once you have declared stored procedures for a database, the standard functionality for inserts, updates, and deletes is no longer used; only the stored procedures are called.
+
+**Other Settings for LDAP Backends**
 
 The following options can be managed from the ADVANCED SETTINGS tab > Other Settings section for model-driven identity views from LDAP backends. 
 
-**LDAP Filter** 
+*LDAP Filter* 
 
-**Object Class Mapping**
+If you want to condition the identity view of your LDAP directory to only return a set of entries that match a certain criterion, you can enter an LDAP Filter.
 
-**Configuration Parameters**
+1. Click the ![Pencil](Media/pencil-icon.jpg) next to LDAP Filter.
+2. Enter a valid LDAP filter in the box provided and click **CONFIRM**.
+3. To get assistance with generating the LDAP filter, toggle the **ENABLE ASSIST MODE** on. Use the **+NEW CONDITION** and/or **+NEW GROUP** to add criteria to the filter. The LDAP filter generated from the conditions and groups is shown at the top. Click **CONFIRM** to apply the filter.
+4. Click **SAVE**.
+
+![LDAP Filter Assist Mode](Media/ldap-filter-assist.jpg)
+
+*Object Class Mapping*
+
+For LDAP objects, RadiantOne leverages the LDAP object class associated with the backend by default. This is the object class that clients can base their query filter on to request data from the identity view.
+
+If you want to map the LDAP objects to a new/different object class:
+
+1. In the Other Settings section on the Advanced Settings tab, click the ![Pencil](Media/pencil-icon.jpg) next to Object Class Mapping.
+2. Select the LDAP schema that contains the object class you want to map to. This selection populates the Mapped Object Class List.
+3. Select the object class from the Mapped Object Class List, or manually enter the object class you to want to map to. If the object class inherits from multiple classes, the classes are displayed with a # as the separator.
+4. Click **SELECT**.
+5. Click **SAVE**.
+
+*Configuration Parameters*
+
+The Link Parameters and Base Parameters are irrelevant for container/content nodes created from LDAP backends.
+The Parent DN Settings tab allows you to customize the base DN from where to start searching from. This can be used in cases where each node in the identity view should populate from entries located in different containers in the backend LDAP directory data source, instead of conditioning all nodes by the base DN configured in the LDAP data source.
 
 ### Special Attributes
 
+Certain attributes and entries require special handling due to how they must be computed and/or how they link related entries. This includes handling dynamic and/or nested groups, and relating entries based on backlink/forward link attributes. 
+
+For details see: [Special Attributes](special-attributes.md)
+
+Configure model-driven identity views for persistent cache to support special attributes handling. The table below outlines the supported special attributes.
+
+Special Attribute	| Uncached Model-driven Identity Views  | Persistent Cached Model-driven Identity Views
+-|-|-
+Linked Attributes	| - | X
+Referential Integrity	| - | X
+Dynamic Groups	| - | X
+Attribute Uniqueness	| - | X
+Unnest Groups	| - | X
+
+
 ### Object Builder
 
-#### RDN Settings Tab
+For Content and Container nodes, the Object Builder tab allows you to select and modify (remap) the attributes from the primary source that you want the final entries to be comprised of.
 
-The RDN Settings tab displays summary information about the node you have selected. If the node type is Content or Container, the RDN Settings tab has the RDN name and value, and type of node. For Container nodes, you also have buttons to add a label, content, container and link.
+The Object Builder is used to customize how entries associated with specific objects are joined, how attributes are remapped, defining attributes properties (e.g. updateable, searchable, hidden), and managing computed attributes.
 
-![Node Properties Tab for Containers](Media/Image4.22.jpg)
-
-Figure 22: Node Properties Tab for Containers
-
-For details on creating an alias for the primary key, see [Declaring RDN Attribute Name and Value](#declaring-an-rdn-attribute-name-and-value).
-
-If the node type is a label, a Properties tab replaces the RDN Settings tab. On the Properties tab, you can view the RDN attribute name and value (neither are editable), You can change the object class by clicking the change button. There are also buttons to add a label, content, container and link. Use the delete button to remove the label.
-
-If the node type is a link, a Properties tab replaces the RDN Settings tab. On the Properties tab you can see the RDN Name, definition, type, object class, and connection string associated with the linked view. You also have buttons to add a label, content, container, and link, in addition to an option to edit the connection string for the linked view. There is also a button to delete the link.
-
-![Properties for a Link Node](Media/Image4.23.jpg)
-
-Figure 23: Properties for a Link Node
-
-#### Advanced Settings Tab
-
-The Advanced Settings tab is available when you select Content or Container nodes. From this tab you can configure Interception scripts and set optimizations for your virtual view. You can also customize how to handle case-sensitive databases and define SQL filters from here (this is irrelevant if the backend is an LDAP source).
-
-![Advanced Settings Tab](Media/Image4.24.jpg)
-
-Figure 24: Advanced Settings Tab
-
-#### Attributes Tab
-
-The Attributes tab is available when you select Content or Container nodes. 
-For Content and Container nodes, the Attributes tab allows you to select and modify (remap) the attributes from the primary source that you want the entries to be comprised of.
-
-![Attributes Tab](Media/Image4.25.jpg)
-
-Figure 25: Attributes Tab
+![Object Builder](Media/Image4.25.jpg)
 
 For procedures on defining output, see [Working with Container Objects](#working-with-container-objects) and [Working with Content Objects](#working-with-content-objects).
 
