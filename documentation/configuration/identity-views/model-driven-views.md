@@ -596,9 +596,45 @@ To define computed attributes:
 1. From Control Panel > Setup > Directory Namespace > Namespace Design, select the content or container node below Root Naming Contexts and choose the Object Builder tab. The object that the nodes is created from automatically appears on the canvas as a source. The default final output object is also shown on the canvas.
 2. To define computed attributes, click: ![Computed Attributes](Media/computed-attributes.jpg)
 3. Click **+ADD**.
-4. Enter the computed attribute name.
-5. (Optional) Expand an attribute to see its origins and for each origin, indicate if the attribute should be searchable and/or updateable. If an attribute has multiple origins, you can indicate an attribute priority level.
-6. Click **DONE**.
-7. Click **SAVE**.
+4. Enter the Computed Attribute name in the Name parameter.
+5. Configure the needed expression to comprise the computed attribute. This is based on Java and if you are already familiar with the syntax, you can enter it directly for the value. 
+
+If you would like to build the attribute based on a constant and need assistance, click on the **+CONSTANT** button and enter the value. Click **DONE**.
+
+If you would like the computed attribute to be based on an existing attribute, click on the **+ATTRIBUTE** button for assistance (a list of all attributes available for the object will display). Select the attribute(s) and click **DONE**.
+
+If you would like to use a function to build your computed attribute, click on the **+FUNCTION** button which displays a list of available functions. Depending on the function selected, you may be prompted to provide additional information.
+
+6.	Click the **VALIDATE** button to check the syntax of your expression. 
+
+7.	Once your expression compiles properly (no errors in the Compilation Results window), click **DONE**. 
+
+8.	Click **SAVE**.
+
+
+**Deactivate Computed Attributes**
+
+If you have defined multiple computed attributes, it can be helpful to deactivate some for testing or if you (temporarily) don’t need them anymore. 
+
+To deactivate a computed attribute:
+
+1. Navigate to Control Panel > Directory Namespace > Namespace Design.
+1. Select the node below Root Naming Contexts and go to the OBJECT BUILDER tab. 
+1. Click ![Computed Attributes Icon](Media/computed-attr-icon.jpg) on the canvas to open the Computed Attributes configuration panel.
+1.	Uncheck the "Active" checkbox next to the computed attributes that you want to deactivate.
+   ![Deactivate Computed Attribute](Media/deactivate-computed.jpg)
+ 
+1.	Click **SAVE**.
+
+**Using User-defined Classes**
+To use external libraries in computed attributes:
+
+1. Navigate to Control Panel > Directory Namespace > Namespace Design.
+1. Select the node below Root Naming Contexts and go to the OBJECT BUILDER tab. 
+1. Click ![Computed Attributes Icon](Media/computed-attr-icon.jpg) on the canvas to open the Computed Attributes configuration panel.
+1. Click **MANAGE** to add or remove libraries. Click "choose a file" to upload new libraries. Click the trashcan icon next to an existing library to remove it.
+1. After the library file has been uploaded, click **ADD** and enter the package/class name you want to be available to use for computed attributes.
+
+![User Defined Libraries](Media/user-defined-classes-computed.jpg)
 
 **Configuring Joins**
