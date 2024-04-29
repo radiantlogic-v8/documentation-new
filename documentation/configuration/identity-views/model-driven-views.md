@@ -562,33 +562,43 @@ For details see: [Special Attributes](special-attributes.md)
 
 For Content and Container nodes, the Object Builder tab allows you to select and modify (remap) the attributes from the primary source that you want the final entries to be comprised of.
 
-The Object Builder is used to customize how entries associated with specific objects are joined, how attributes are remapped, defining attributes properties (e.g. updateable, searchable, hidden), and managing computed attributes.  See [Object Builder](directory-namespace-overview#)
+The Object Builder is used to customize how entries associated with specific objects are joined, how attributes are remapped, defining attributes properties (e.g. updateable, searchable, hidden), and managing computed attributes.  See [Object Builder](directory-namespace-overview#introduction-to-the-object-buider) for an introduction.
 
-![Object Builder](Media/Image4.25.jpg)
+![Object Builder](Media/container-object-builder.jpg)
 
-##### Re-mapping Attribute Names
+**Defining Attributes to Comprise the Final Object**
 
-By setting a mapping for an attribute name, you are defining the name that appears in the virtual entries for this view. The value shown in the Virtual Name column is the name of the attribute in the virtual entries. If you would like to map an attribute to a different name, click in the Virtual Name column and set the name you would like to use. 
+To define and/or remap source attributes:
 
->[!note] 
->If the view you are modifying the attribute mapping for is joined to other virtual views, and the attribute you are changing the mapping for is configured to be returned in the joined view, you must update the external join condition in the joined view to reflect the newly mapped attribute name.
+1. From Control Panel > Setup > Directory Namespace > Namespace Design, select the content or container node below Root Naming Contexts and choose the Object Builder tab. The object that the nodes is created from automatically appears on the canvas as a source. The default final output object is also shown on the canvas.
+1. To publish source attributes in the final output object, click: ![Map and Filter](Media/map-and-filter.jpg)
+1. In the *Map and Filter Attributes* window, select the attributes that should comprise the final output object. By default, the source attribute names are used in the final output object.
+1. To remap the source attribute name, click the inline ![Pencil](Media/pencil-icon.jpg) icon. Edit the *Virtual Name* value and click the inline ![Checkmark](Media/checkmark.jpg) to confirm. In the example shown below, the source attribute named FIRSTNAME is returned as givenName in the final output object.
+ ![Edit Virtual Name](Media/edit-virtual-name.jpg)
+1. Click **DONE**.
+1. Click **SAVE**. 
 
-##### Object Tab
+**Managing Attributes of The Final Object**
 
-The Object tab is available when you select Content or Container nodes. Objects may consist of attributes from the primary object, secondary objects (from joins), or ones that are computed. From the Object tab, you can manage all attributes that will comprise the virtual entries, configure computed attributes, configure joins, and establish a bind order.
+To define attributes of the final object:
 
-![Object Tab](Media/Image4.26.jpg)
+1. From Control Panel > Setup > Directory Namespace > Namespace Design, select the content or container node below Root Naming Contexts and choose the Object Builder tab. The object that the nodes is created from automatically appears on the canvas as a source. The default final output object is also shown on the canvas.
+2. Click the ![Pencil](Media/pencil-icon.jpg) icon on the Final Object Output.
+3. (Optional) Use the *Hidden* toggle to mark an attribute as one that should not be in the final entry.
+4. (Optional) Expand an attribute to see its origins and for each origin, indicate if the attribute should be searchable and/or updateable. If an attribute has multiple origins, you can indicate an attribute priority level.
+5. Click **DONE**.
+6. Click **SAVE**.
 
-Figure 26: Object Tab
+**Defining Computed Attributes**
 
+To define computed attributes:
 
+1. From Control Panel > Setup > Directory Namespace > Namespace Design, select the content or container node below Root Naming Contexts and choose the Object Builder tab. The object that the nodes is created from automatically appears on the canvas as a source. The default final output object is also shown on the canvas.
+2. To define computed attributes, click: ![Computed Attributes](Media/computed-attributes.jpg)
+3. Click **+ADD**.
+4. Enter the computed attribute name.
+5. (Optional) Expand an attribute to see its origins and for each origin, indicate if the attribute should be searchable and/or updateable. If an attribute has multiple origins, you can indicate an attribute priority level.
+6. Click **DONE**.
+7. Click **SAVE**.
 
-For more information on configuring content objects, please see the following sections:
--	Joins with objects from the same schema. 
--	Joins with heterogeneous objects (objects from other sources/schemas). 
--	Using filters to condition the entries that populate the content object. 
--	Search options for case-sensitive databases. 
--	Advanced Options. 
--	Interception scripts to customize operations performed against the content object. 
--	Performance optimizations. 
-
+**Configuring Joins**
