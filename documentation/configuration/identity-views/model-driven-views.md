@@ -550,13 +550,13 @@ For details see: [Special Attributes](special-attributes.md)
 
 Configure model-driven identity views for persistent cache to support special attributes handling. The table below outlines the supported special attributes.
 
-Special Attribute	| Uncached Model-driven Identity Views  | Persistent Cached Model-driven Identity Views
+Special Attribute	| Uncached Model-driven Identity Views from LDAP Backends | Uncached Model-driven Identity Views from non-LDAP Backends  | Persistent Cached Model-driven Identity Views
 -|-|-
-Linked Attributes	| - | X
-Referential Integrity	| - | X
-Dynamic Groups	| - | X
-Attribute Uniqueness	| - | X
-Unnest Groups	| - | X
+Linked Attributes	| X | - | X
+Referential Integrity	| - | - | X
+Dynamic Groups	| X | - | X
+Attribute Uniqueness	| - | - | X
+Unnest Groups	| - | - | X
 
 
 ### Object Builder
