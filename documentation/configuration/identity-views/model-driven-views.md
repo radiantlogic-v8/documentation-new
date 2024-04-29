@@ -189,26 +189,26 @@ This section describes a scenario where linking is used to aggregate objects fro
 
 In this example, the desired identity view is one that aggregates people (employees, partners and customers) into one complete list to be used for authentication. 
 
-First, three identity views (one from each source) are created. This is depicted in the figure below. 
+Assume three identity views (one from each source) already exist and have been imported from another environment. This is depicted in the figure below. 
 
 ![Three Example Virtual Views](Media/Image4.19.jpg)
 
 
-Finally, links are used to aggregate the virtual views into one common hierarchy. The virtual view will consist of employees from Active Directory, partners from an LDAP directory, and customers from a database. Both the virtual view model and the runtime view are depicted below.
+Finally, merge links are used to aggregate the existing identity views into one common view. The identity view consists of employees from Active Directory, partners from an LDAP directory, and customers from a database. Both the model and the runtime view are depicted below.
 
-![Example Virtual View using Merge Links with No Parameters](Media/Image4.20.jpg)
+![Example Virtual View using Merge Links with No Parameters](Media/model-vs-runtime-example4.jpg)
 
 
-This example described how links can be used to aggregate a list of people from three different data sources. Since there is no overlap of users in this scenario, using merge links is a simple way to create a union of all user accounts across three different data sources. Since the subtrees linked do not need to be conditioned by a parent attribute, a link parameter was not required to achieve the desired result. 
+This example described how merge links can be used to aggregate a list of people from three different data sources. Since there is no overlap of users in this scenario, using merge links is a simple way to create a union of all user accounts across three different data sources. Since the subtrees linked do not need to be conditioned by a parent attribute, a link parameter was not required to achieve the desired result. 
 
 >[!note] 
->The intermediate virtual view names (EmployeeView, PartnerView and CustomerView respectively) are suppressed in the final runtime view because merge links were used.
+>The intermediate view names (EmployeeView, PartnerView and CustomerView respectively) are suppressed in the final runtime view because merge links were used.
 
 Configuration steps for using links can be found in the [Working with Links](#working-with-links) section.
 
 ## Creating a Root Naming Context to Manage Unmounted Identity Views 
 
-The new Control Panel does not have Context Builder. Therefore, only identity views that have been mounted somewhere below a root naming context are editable. Any identity views imported from older versions of RadiantOne that were not mounted cannot be edited until they are mounted. 
+The new Control Panel does not have the Context Builder tool. Therefore, only identity views that have been mounted somewhere below a root naming context are editable. Any identity views imported from other versions/environments of RadiantOne that were not mounted cannot be edited until they are mounted. 
 Create a new Root Naming Context from Control Panel > Manage > Directory Namespace > Namespace Design and then mount a label below the naming context for each identity view you want to mount. 
 
 Once all labels are created, use the “MOUNT BACKEND” button at each label level and choose the Virtual Tree type, selecting the identity view (.dvx file) to mount: one identity view per label. 
@@ -297,72 +297,59 @@ Use a Container object when you want to create hierarchical virtual views contai
 
 To create container objects:
 
-1.	Select a Label or Container object in the pane on the left. 
-2.	Click the **New Container** button in the pane on the right. 
-3.	Expand below the root node and select the desired object that contains the information you want to populate the node from. 
-4.	Click OK. 
+1.	Navigate to Control Panel > Setup > Directory Namespace > Namespace Design and select the node in the tree where you want to create a container below. This node type must be a Label or Container, or you can mount a container level directly at a Root Naming Context. 
 
-To modify container objects: 
+1.	Use the **+NEW LEVEL** menu and select container.
+1.	Select the data source from the drop-down list. If you don't have a data source defined, use the [Data Catalog](../data-sources/data-sources) to define it.
+1.	Select the schema associated with the data source that contains the object to be used to define the container node. If you don't have a schema yet, click the *Extract Schema* link to define one. For assistance see: [Schemas](../data-sources/schemas)
+	 ![Extract Schema](Media/extract-schema-link.jpg) 
 
-1.	In the View Definition, select the container node and click the Attributes tab. The attributes available in the object appear in the Column list on the left. 
-2.	Select the attribute that you want to expose in the virtual entries and use the ![An right arrow](Media/ImageRightArrow.jpg) button to move it over to the column on the right. 
-3.	To remove an attribute from the virtual entry definition, highlight the column name and click the ![red x](Media/ImageRedX.jpg) button. 
+1.	Click **NEXT**. 
 
-For more information on configuring container objects, please see the following sections: 
--	Joins with objects from the same schema. 
--	Joins with heterogeneous objects (objects from other sources/schemas). 
--	Using filters to condition the entries that populate the content object. 
--	Search options for case-sensitive databases. 
--	Advanced Options. 
--	Interception scripts to customize operations performed against the content object. 
--	Performance optimizations.
+1.	Select the object from the schema that contains the information you want the container node to be populated with. If the schema is associated with a JDBC-accessible source and the object has a relationship to the parent container node in the identity view where you mounting this content, toggle the *Related Objects Only* option on to narrow the scope of objects to only those that have a relationships with the parent container node.
+	![Related Objects Only](Media/related-objects-only.jpg)
+
+ 1. (Optional) if the schema is associated with a JDBC-accessible source and the object name (or attributes in the object) used mixed case (e.g. EmpLoyees), check the option to *Quote Table Names* and/or *Quote Column Names* to ensure the generated SQL query is compatible with the database vendor.
+  ![Advanced Options for Quoting](Media/adv-options-quotes.jpg)
+
+1. Click **SELECT**.
+
+This places the new Container object under the selected Label or Container object, or Root Naming Context in the view definition. Use the PROPERTIES, ADVANCED SETTINGS, SPECIAL ATTRIBUTES and OBJECT BUILDER tabs to customize the node. For details see: [Managing Nodes in Model-driven Identity Views](#managing-nodes-in-model-driven-identity-views)
+
 
 ### Working with Links 
 
-Use links when you want to build your virtual view with objects from different schemas. The link is a way to aggregate different virtual views into a common hierarchy/view.
+Use links when you want to build your identity view with existing identity views. The link is a way to aggregate different views into a common hierarchy/view.
 
-Labels can be used as a way to organize the tree before you configure a link (although adding labels is optional). If you like the idea of having a label to separate the two trees, you can enter a Label and then have a link below it. In the example below, the label Category=Orders has been created as a way to organize the “jump” to the order view. 
+Labels can be used as a way to organize the tree before you configure a link (although adding labels is optional). If you like the idea of having a label to separate the two views, you can enter a Label and then have a link below it. In the example below, the label Category=Orders has been created as a way to organize the “jump” to the order view. 
 
 ![Link Below a Label](Media/Image4.28.jpg)
 
-Figure 4.28: Link Below a Label
-
 To create a link: 
 
-1.	Have the virtual view you want to add the link to open in the View Designer tab. 
+1.	Have the existing identity view imported/accessible.
+2.	Navigate to Control Panel > Setup > Directory Namespace > Namespace Design and select the node in the tree where you want to mount the link at. This node type must be a Label, Container or you can mount an existing identity view directly at a Root Naming Context. 
 
-2.	Navigate to the parent node in the view definition (where you want the link below). Click the parent node and click the **New Link** button on the right. 
+3.	Use the **+NEW LEVEL** menu and select link. If you want to mount the existing identity view directly at the Root Naming Context, use the **MOUNT BACKEND** > Virtual Tree option.
 
-3.	Choose either **Standard Link** or **Merge Link**. 
+4.	Choose either **Standard Link** or **Merged Link**. 
 
-4.	If Standard Link is selected, choose the virtual view to link to.
+5.	Select the identity view to link to and click **CREATE**.
 
-5.	If Merge Link is selected, choose to either link to an existing virtual view (if you already have an existing virtual view that you want to mount in the view definition) or a new view (if you want to build your own sub tree based on objects from a different schema) and click Next. 
-
-6.	If you chose to link to an existing view, navigate to the existing virtual view, select it and click Finish. If you chose to link to a new view, enter a view name and select the schema file that contains the objects you want to use to build the sub tree. 
-
-7.	Click Finish. 
-
-8.	If you chose the Merge Link option and then selected to link to a new virtual view, you can begin to model the new view in the view definition (below the location where you have declared the link). The new view can be comprised of labels, containers or content as needed. 
-
-9.	If you have created a Merge Link, a link parameter can be set if required. See the section below for steps on creating a link parameter. 
+6.	If you have created a Merged Link, a link parameter can be set. See the section below for steps on creating a link parameter. 
 
 To create a link parameter: 
 
 A link parameter can be used to condition the subtree based on the primary key of the parent node. 
 
-1.	Select the merge link node in the view definition and choose the Node Properties -> Properties tab. 
+1.	Select the merged link node in the view definition and choose the Properties tab. 
 
-2.	Click Edit next to the Link Parameters. 
+1.	Click **EDIT** next to the Link Parameters. 
 
-3.	Navigate to the first node in the linked virtual view and select the attribute that matches the primary key of the parent node. 
+1.	Navigate to the first node in the linked virtual view and select the attribute that matches the primary key of the parent node.  If the link is based on a multi-valued attribute in the parent node, manually edit the link condition and update it based on the following guidance: If the link parameter is associated with a child node from an LDAP backend, the syntax to handle a multi-valued parent attribute is: <childobject.attribute>~=@[<parentattribute>:<datatype>] An example value is: vdentitlements.idlink~=@[entitlements:VARCHAR(255)]  If the link parameter is associated with a child node from a database backend, the syntax to handle a multi-valued parent attribute is: <childobject.attribute> IN (@[<parentattribute>:<datatype>]) An example value is: APP.IDENTITY.IDLINK IN (@[entitlements:VARCHAR(255)]
+	>[!warning] For child nodes from database backends, make sure in the link parameter value there is a `<space>` between the “IN” and the following open parenthesis. Also, performance can be negatively impacted because the “IN” operator does not benefit from prepared statements.
 
-4.	>[!note] 
->If the link attribute in the parent node is multi-valued, manually edit the link parameter condition as described in [Linking on a Multi-Valued Attribute](#linking-on-a-multi-valued-attribute). 
-
-5.	Click OK. 
-
-6.	Save the virtual view. 
+1.	Click **SAVE**. 
 
 At runtime, RadiantOne evaluates the link and builds the appropriate subtree conditioned based on the link parameter. 
 
