@@ -546,9 +546,7 @@ The Parent DN Settings tab allows you to customize the base DN from where to sta
 
 Certain attributes and entries require special handling due to how they must be computed and/or how they link related entries. This includes handling dynamic and/or nested groups, and relating entries based on backlink/forward link attributes. 
 
-For details see: [Special Attributes](special-attributes.md)
-
-Configure model-driven identity views for persistent cache to support special attributes handling. The table below outlines the supported special attributes.
+The table below outlines the supported special attributes.
 
 Special Attribute	| Uncached Model-driven Identity Views from LDAP Backends | Uncached Model-driven Identity Views from non-LDAP Backends  | Persistent Cached Model-driven Identity Views
 -|-|-|-
@@ -558,20 +556,15 @@ Dynamic Groups	| X | - | X
 Attribute Uniqueness	| - | - | X
 Unnest Groups	| - | - | X
 
+For details see: [Special Attributes](special-attributes.md)
 
 ### Object Builder
 
 For Content and Container nodes, the Object Builder tab allows you to select and modify (remap) the attributes from the primary source that you want the final entries to be comprised of.
 
-The Object Builder is used to customize how entries associated with specific objects are joined, how attributes are remapped, defining attributes properties (e.g. updateable, searchable, hidden), and managing computed attributes.
+The Object Builder is used to customize how entries associated with specific objects are joined, how attributes are remapped, defining attributes properties (e.g. updateable, searchable, hidden), and managing computed attributes.  See [Object Builder](directory-namespace-overview#)
 
 ![Object Builder](Media/Image4.25.jpg)
-
-For procedures on defining output, see [Working with Container Objects](#working-with-container-objects) and [Working with Content Objects](#working-with-content-objects).
-
-For creating filters, see [Adding Filters to Condition Virtual Views](#adding-filters-to-condition-virtual-view-content).
-
-For combining tables, see [Joins](concepts-and-utilities.md#joins-between-objects-of-the-same-schemasource) (this is only relevant for database backends). 
 
 ##### Re-mapping Attribute Names
 
