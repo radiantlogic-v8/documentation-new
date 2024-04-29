@@ -128,7 +128,7 @@ APP.EMP.PROJECTID=(@[projectid:INTEGER])
 
 Without this link condition, all departments would be shown below each project and the hierarchy would not make sense. The difference between using a link parameter and not using one are shown in the following two figures. The first uses a merge link with no parameter. The second one uses a merge link with a parameter to condition the subtree.
 
-![Example – Using Merge Links with No Parameter](Media/Image4.12.jpg)
+![Example – Using Merge Links with No Parameter](Media/model-vs-runtime-example-no-link.jpg)
  
 
 As the figure above shows, the subtree is not conditioned by the parent object which is why all departments are shown below each project. This does not accurately depict the context needed. The ideal identity view would show each project and then below each project show the department working on that project followed by location and employees accordingly. 
