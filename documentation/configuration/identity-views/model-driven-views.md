@@ -94,7 +94,7 @@ Assume that each data source has an identity view created for it. This is repres
 
 Finally, standard links are used to aggregate the existing views. This is represented in the virtual view model shown in the screen shot below. The runtime preview shows what the populated view looks like. Notice that the “dv” level comprises the runtime view. 
 
-![An image showing ](Media/Image4.8.jpg)
+![Example – Using Standard Links](Media/model-vs-runtime-example5.jpg)
 
 >[!note]
 >This example described linking to existing identity views. If you don't already have existing identity views to aggregate together using links, you can use the Control Panel > Setup > Directory Namespace > Namespace Design to create your identity view using labels, containers and/or content nodes.
