@@ -208,7 +208,7 @@ Configuration steps for using links can be found in the [Working with Links](#wo
 
 ## Creating a Root Naming Context to Manage Unmounted Identity Views 
 
-The new Control Panel does not have the Context Builder tool. Therefore, only identity views that have been mounted somewhere below a root naming context are editable. Any identity views imported from other versions/environments of RadiantOne that were not mounted cannot be edited until they are mounted. 
+The latest version of the Control Panel does not have the Context Builder tool. Therefore, only identity views that have been mounted somewhere below a root naming context are editable. Any identity views imported from other versions/environments of RadiantOne that were not mounted cannot be edited until they are mounted. 
 Create a new Root Naming Context from Control Panel > Manage > Directory Namespace > Namespace Design and then mount a label below the naming context for each identity view you want to mount. 
 
 Once all labels are created, use the “MOUNT BACKEND” button at each label level and choose the Virtual Tree type, selecting the identity view (.dvx file) to mount: one identity view per label. 
