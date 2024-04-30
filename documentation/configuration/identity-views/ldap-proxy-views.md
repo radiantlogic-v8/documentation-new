@@ -828,6 +828,7 @@ To deactivate a computed attribute:
 1.	Click **SAVE**.
 
 **Using User-defined Classes**
+
 To use external libraries in computed attributes:
 
 1. Navigate to Control Panel > Directory Namespace > Namespace Design.
