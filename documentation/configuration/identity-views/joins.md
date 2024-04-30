@@ -120,7 +120,7 @@ When editing a join profile, expand the Secondary Object section to locate the f
 
 **Attributes**
 
-When editing a join profile, expand the Attributes section to locate the list the attributes to manage the attributes returned from the secondary object. Click **MANAGE ATTRIBUTES** to add or remove attributes to return and/or reamp the attribute name.
+When editing a join profile, expand the Attributes section to locate the list the attributes to manage the attributes returned from the secondary object. Click **MANAGE ATTRIBUTES** to add or remove attributes to return and/or remap the attribute name.
 
 **Computed Attributes for Joins**
 
