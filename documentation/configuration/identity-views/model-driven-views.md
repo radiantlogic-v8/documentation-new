@@ -562,7 +562,7 @@ For details see: [Special Attributes](special-attributes.md)
 
 For Content and Container nodes, the Object Builder tab allows you to select and modify (remap) the attributes from the primary source that you want the final entries to be comprised of.
 
-The Object Builder is used to customize how entries associated with specific objects are joined, how attributes are remapped, defining attributes properties (e.g. updateable, searchable, hidden), and managing computed attributes.  See [Object Builder](directory-namespace-overview#introduction-to-the-object-buider) for an introduction.
+The Object Builder is used to customize how entries associated with specific objects are joined, how attributes are remapped, defining attributes properties (e.g. updateable, searchable, hidden), and managing computed attributes.  See [Object Builder](directory-namespace-overview#introduction-to-the-object-builder) for an introduction.
 
 ![Object Builder](Media/container-object-builder.jpg)
 
