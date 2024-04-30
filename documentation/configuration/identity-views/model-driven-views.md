@@ -638,3 +638,15 @@ To use external libraries in computed attributes:
 ![User Defined Libraries](Media/user-defined-classes-computed.jpg)
 
 **Configuring Joins**
+
+Objects from any sources in the RadiantOne namespace can be joined. With joins, you can extend the primary entries with attributes coming from another data source, or new application-specific attributes (required by applications, but don’t exist yet). Joins are configured from the Control Panel > Directory Namespace > Namespace Design. Select the node below Root Naming Contexts and go to the OBJECT BUILDER tab. Use **ADD COMPONENT** menu to define joins. 
+
+![Add Component Menu](Media/add-component.jpg)
+
+To join with an object containing the attributes needed to extend the primary object with, choose the Add Component > Object on the canvas. Then use the Add Component > Join option to define the join condition. 
+
+To extend the primary object with new attributes that don't exist, choose the Add Component > Object Extension option to manually define the attribute names.
+
+When you configure joins across multiple objects, you should also consider configuring Bind Order and Attribute Priority for overlapping attributes.
+
+For complete details on configuring joins, bind order and attribute priority, please see: [Joins](joins.md) 
