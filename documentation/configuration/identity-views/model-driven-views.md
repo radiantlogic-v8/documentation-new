@@ -89,7 +89,7 @@ Let’s take a look at an example. Assume there are three data sources: a databa
 
 Assume that each data source has an identity view created for it. This is represented by the three views shown below. 
 
-![Virtual Views from Each Source](Media/Image4.7.jpg)
+![Views from Each Source](Media/Image4.7.jpg)
 
 
 Finally, standard links are used to aggregate the existing views. This is represented in the virtual view model shown in the screen shot below. The runtime preview shows what the populated view looks like. Notice that the “dv” level comprises the runtime view. 
@@ -111,7 +111,7 @@ The following diagram depicts two databases and will be used to describe how to 
  
 Let’s assume the desired identity view should represent projects, followed by the department associated with the project, followed by the location of the employee, and finally the employees working on the project. Since the information is maintained in two separate databases, an identity view can be built from each. This is depicted in the diagram below. One view is built for projects while the other is a view of employees based on departments and location.
 
-![Two Example Virtual Views](Media/Image4.10.jpg)
+![Two Example Views](Media/Image4.10.jpg)
 
 
 A merge link (noted with the blue arrow) is used to aggregate the identity views. This is depicted in the diagram below. 
@@ -151,7 +151,7 @@ The example in this section describes using a multi-valued attribute in the pare
 
 Let’s assume the desired virtual view should represent identities followed by a list of entitlements associated with the identities. Since the information is maintained in two separate objects, an identity view can be built from each. This is depicted in the diagram below. One view is built for identities while the other is a view of entitlements. 
 
-![Two Example Virtual Views](Media/Image4.15.jpg)
+![Two Example Views](Media/Image4.15.jpg)
 
 A merge link (noted with the blue arrow) is used to aggregate the identity views. This is depicted in the diagram below. 
 
@@ -176,7 +176,7 @@ APP.IDENTITY.IDLINK IN (@[entitlements:VARCHAR(255)]
 >[!warning] 
 >For child nodes from database backends, make sure in the link parameter value there is a `<space>` between the “IN” and the following open parenthesis. Also, performance can be negatively impacted because the “IN” operator does not benefit from prepared statements.
  
-An example depicting the model of the identity view and the runtime view leveraging the link parameter between the two virtual views described in this section is shown below. 
+An example depicting the model of the identity view and the runtime view leveraging the link parameter between the two views described in this section is shown below. 
 
 ![Example – Using Links with a Parameter to Condition the Subtree](Media/Image4.17.jpg)
 
@@ -191,7 +191,7 @@ In this example, the desired identity view is one that aggregates people (employ
 
 Assume three identity views (one from each source) already exist and have been imported from another environment. This is depicted in the figure below. 
 
-![Three Example Virtual Views](Media/Image4.19.jpg)
+![Three Example Views](Media/Image4.19.jpg)
 
 
 Finally, merge links are used to aggregate the existing identity views into one common view. The identity view consists of employees from Active Directory, partners from an LDAP directory, and customers from a database. Both the model and the runtime view are depicted below.
@@ -293,7 +293,7 @@ This places the new Content object under the selected Label or Container object,
 
 ### Working with Container Objects 
 
-Use a Container object when you want to create hierarchical virtual views containing many sub-levels. 
+Use a Container object when you want to create hierarchical identity views containing many sub-levels. 
 
 To create container objects:
 
