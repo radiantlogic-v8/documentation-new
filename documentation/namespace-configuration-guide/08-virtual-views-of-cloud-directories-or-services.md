@@ -647,7 +647,7 @@ The Azure AD schema uses the attribute “surname” to store a user’s last na
 
 `attributeTypes: ( 2.5.4.4 NAME ( 'sn' 'surName' ) DESC 'Standard LDAP attribute type' SUP name SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'RFC 2256' )`
 
-This schema definition can cause problems if clients issue searches for the Azure AD view using a filter of (surname=<last_name>) because RadiantOne automatically translates this into a filter of (sn=<last_name>) when it queries Azure AD. Since the attribute in Azure AD is “surname” and not “sn”, the expected entry is not returned. To avoid this, you can either configure a mapping in the virtual view to map surname to sn, or edit the RadiantOne FID schema and remove the surname mapping from the sn attribute. 
+This schema definition can cause problems if clients issue searches or updates for the Azure AD view using a filter of (surname=<last_name>) because RadiantOne automatically translates this into a filter of (sn=<last_name>) when it queries Azure AD. Since the attribute in Azure AD is “surname” and not “sn”, the expected entry is not returned. To avoid this, you can either configure a mapping in the virtual view to map surname to sn, or edit the RadiantOne FID schema and remove the surname mapping from the sn attribute. 
 
 >[!note] An alias of “streetaddress” is defined for the street attribute, and can run into the same issues. Either remove the alias from the RadiantOne FID schema, or remap properly in the virtual view using the same process outlined for the surname attribute below.
 
