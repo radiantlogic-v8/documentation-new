@@ -330,6 +330,9 @@ If there is no disaster recovery site to leverage for restoring a cluster, you c
 You can restore your RadiantOne configuration in cases where you need to revert back to a
 previous time, or in case of corruption to critical files required for the service to function. The information in this section assumes you are restoring the configuration on the same machine from which the [export](#backing-up-configuration) was performed.
 
+>[!warning]
+>Restoring the configuration only covers the existing resources in the backup. Any new configuration in the environment is not touched during the restore process.
+
 To restore the configuration, you can use an [exported file](#backing-up-configuration) that was generated with the RadiantOne migration utility. Use the migration utility with the import option, reference the backup file and use the backup-restore argument.
 
 The example below assumes the file containing the backup of the RadiantOne configuration is C:\tmp\backupMay.zip and the RadiantOne Migration Utility has been installed at
