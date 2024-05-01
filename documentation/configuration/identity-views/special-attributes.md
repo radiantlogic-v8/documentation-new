@@ -33,24 +33,22 @@ The Linked Attributes setting is only compatible with entries located in identit
 
 Linked attributes are attributes that allow relationships between objects. A typical example would be isMemberOf/uniqueMember for user/groups objects. A group has members (uniqueMember attribute) which is the forward link relationship. Those members have an isMemberOf attribute which is the back link (to the group entry) relationship. Other examples of linked attributes are:
 
-```
-manager/directReports
-altRecipient/altRecipientBL
-dLMemRejectPerms/dLMemRejectPermsBL
-dLMemSubmitPerms/dLMemSubmitPermsBL
-msExchArchiveDatabaseLink/msExchArchiveDatabaseLinkBL
-msExchDelegateListLink/msExchDelegateListBL
-publicDelegates/publicDelegatesBL
-owner/ownerBL
-```
+- manager/directReports
+- altRecipient/altRecipientBL
+- dLMemRejectPerms/dLMemRejectPermsBL
+- dLMemSubmitPerms/dLMemSubmitPermsBL
+- msExchArchiveDatabaseLink/msExchArchiveDatabaseLinkBL
+- msExchDelegateListLink/msExchDelegateListBL
+- publicDelegates/publicDelegatesBL
+- owner/ownerBL
 
 The most common back link/forward link relationship is between group and user objects. A list of groups a user is a member of can be automatically calculated by RadiantOne and returned in the membership attribute of the user entry. The default attribute name for the back link attribute is isMemberOf. However, you can configure any attribute name (e.g. memberOf) you want. 
 
-The back link attribute is returned only when explicitly requested by a client unless the back link location and forward link location are stored in a RadiantOne Directory store or Persistent Cache and the Optimize Linked Attribute option is enabled, in which case the back link attribute is always returned even when not requested (unless [Hide Operational Attributes](03-front-end-settings#hide-operational-attributes) is enabled). Also, if the groups returned in the backlink attribute (isMemberOf/memberOf) can be members of other groups (nested groups) and you want to un-nest/flatten these groups (return all the groups in isMemberOf/memberOf), you must check the option to [Enable Nested Groups](06-security#enable-nested-groups) on the Main Control Panel > Settings tab > Security section > Access Control sub-section. Users can also be members of dynamic groups (indicated in the criteria of the memberURL attribute of the group entry).
+The back link attribute is returned only when explicitly requested by a client unless the back link location and forward link location are stored in a RadiantOne Directory store or Persistent Cache and the Optimize Linked Attribute option is enabled, in which case the back link attribute is always returned even when not requested (unless Hide Operational Attributes is enabled). Also, if the groups returned in the backlink attribute (isMemberOf/memberOf) can be members of other groups (nested groups) and you want to un-nest/flatten these groups (return all the groups in isMemberOf/memberOf), you must toggle the option to *Enable Nested Groups* in the Control Panel > Manage > Security > Access Controls, GENERAL tab. Users can also be members of dynamic groups (indicated in the criteria of the memberURL attribute of the group entry).
 
 To configure rules for linked attributes, following the steps below:
 
-1.	On the Control Panel > Setup > Directory Namespace > Namespace Design, select the RadiantOne Directory below the Root Naming Contexts.
+1.	On the Control Panel > Setup > Directory Namespace > Namespace Design, select the node below the Root Naming Contexts where the identity view is located.
 1.  On the right, click the SPECIAL ATTRIBUTES tab and locate the Linked Attributes section (expand it if it is collapsed).
     ![Special Attributes Handling](Media/special-attributes-linked.jpg)
    
@@ -108,19 +106,20 @@ Referential integrity is only supported for RadiantOne Directory stores and pers
 
 Referential integrity is not enabled by default. To enable and configure it, following the steps below.
 
-1.	From the Main Control Panel > Settings Tab > Interception section > Special Attributes Handling sub-section, locate the Referential Integrity section on the right side.
+1.	On the Control Panel > Setup > Directory Namespace > Namespace Design, select the node below the Root Naming Contexts where the identity view is located.
 
-2.	Click **Add**.
+2.	On the right, click the SPECIAL ATTRIBUTES tab and locate the Referential Integrity section (expand it if it is collapsed).
 
-3.	In the Groups Location section, click **Add**.
+3.  Click **+REFERENTIAL INTEGRITY**.
+4.	In the Groups Location section, click **Add**.
 
-4.	Navigate to the container where group entries are located and click **OK**. Referential integrity is enforced for any group below this location. The groups must be in a RadiantOne Directory store or persistent cache.
+5.	Navigate to the container where group entries are located and click **OK**. Referential integrity is enforced for any group below this location. The groups must be in a RadiantOne Directory store or persistent cache.
 
-5.	In the Users Location section, click **Choose** and navigate to the location containing the possible members associated with the groups you defined in the previous step. The users must be in a RadiantOne Directory store or persistent cache. If a user is moved or deleted from this location, all groups referencing this user entry are updated accordingly (the value is updated or deleted). Click **OK**.
+6.	In the Users Location section, click **Choose** and navigate to the location containing the possible members associated with the groups you defined in the previous step. The users must be in a RadiantOne Directory store or persistent cache. If a user is moved or deleted from this location, all groups referencing this user entry are updated accordingly (the value is updated or deleted). Click **OK**.
 
-6.	Select the applicable referential integrity rule (based on the descriptions above) and click **OK**.
+7.	Select the applicable referential integrity rule (based on the descriptions above) and click **OK**.
 
-7.	Click **Save** in the top right.
+8.	Click **Save** in the top right.
 
 ### Dynamic Groups
 
