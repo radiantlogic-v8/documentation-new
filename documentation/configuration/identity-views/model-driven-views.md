@@ -260,10 +260,13 @@ To modify a label:
 1. Click **CONFIRM**.
 
 
+
+
 To delete a label:
 
 1.	On the Properties tab, click ![Delete Node](Media/delete-button.jpg).
 2.	Click **DELETE** to confirm.
+
 
 ### Working with Content Objects 
 
