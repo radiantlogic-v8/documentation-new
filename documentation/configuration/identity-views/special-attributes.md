@@ -18,13 +18,13 @@ The Special Attributes Handling options allow you to perform the following funct
 
 The types of special attributes that are supported vary depending on the type of identity view. If the special attribute is not supported, you do not see it on the SPECIAL ATTRIBUTES tab for the selected identity view.
 
-Special Attribute	| Uncached Identity Views from LDAP Backends | Persistent Cached Identity Views
--|-|-
-Linked Attributes	| X | X
-Referential Integrity	| - | X
-Dynamic Groups	| X | X
-Attribute Uniqueness	| - | X
-Unnest Groups	| - | X
+Special Attribute	| Uncached Identity Views from LDAP Backends | Uncached Identity Views from non-LDAP Backends | Persistent Cached Identity Views
+-|-|-|-
+Linked Attributes	| X | - | X
+Referential Integrity	| - | - | X
+Dynamic Groups	| X | - | X
+Attribute Uniqueness	| - | - | X
+Unnest Groups	| - | - | X
 
 ### Linked Attributes
 
