@@ -28,7 +28,7 @@ Unnest Groups	| - | - | X
 
 ### Linked Attributes
 
-The Linked Attributes setting is only compatible with entries located in [RadiantOne Directory stores](../directory-stores/special-attributes-handling) or persistent cache.
+The Linked Attributes setting is only compatible with entries located in identity views from LDAP backends, [RadiantOne Directory stores](../directory-stores/special-attributes-handling) or persistent cached identity views.
 
 Linked attributes are attributes that allow relationships between objects. A typical example would be isMemberOf/uniqueMember for user/groups objects. A group has members (uniqueMember attribute) which is the forward link relationship. Those members have an isMemberOf attribute which is the back link (to the group entry) relationship. Other examples of linked attributes are:
 
