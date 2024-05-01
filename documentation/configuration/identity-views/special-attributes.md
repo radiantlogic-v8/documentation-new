@@ -12,8 +12,9 @@ Special attributes settings can be found on Control Panel > Setup > Directory Na
 The Special Attributes Handling options allow you to perform the following functions: 
 
 -	Configure the automatic relationship management between linked attributes
--	Configure Referential Integrity (only applicable to [RadiantOne Directory stores](../directory-stores/special-attributes-handling) and persistent cache)
+-	Configure Referential Integrity
 -	Configure Dynamic Groups
+-   Configure Attribute Uniqueness
 -	Configure unnesting of nested groups
 
 The types of special attributes that are supported vary depending on the type of identity view. If the special attribute is not supported, you do not see it on the SPECIAL ATTRIBUTES tab for the selected identity view.
