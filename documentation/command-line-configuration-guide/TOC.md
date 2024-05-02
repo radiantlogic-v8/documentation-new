@@ -17,7 +17,7 @@ description: Command Line Configuration Guide
 - [LDAP Schema Commands](12-ldap-schema-commands.md)
 - [Password Policy Commands](13-password-policy-commands.md)
 - [Log Settings Commands](14-log-settings-commands.md)
-- [Monotoring and Alerts Settings Commands](15-monitoring-and-alert-settings-commands.md)
+- [Monitoring and Alerts Settings Commands](15-monitoring-and-alert-settings-commands.md)
 - [Migration Commands](16-migration-commands.md)
 - [Security Commands](17-security-commands.md)
 - [ORX and DVX Commands](18-orx-and-dvx-commands.md)
