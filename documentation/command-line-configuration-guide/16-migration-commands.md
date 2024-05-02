@@ -38,7 +38,7 @@ In the following example, a request is made to display the resource dependency t
 
 This command exports the resource and its dependencies.
 
->[!warning] This command does not export wizard artifacts (such as the XML files), except for  Global Identity Builder project artifacts.
+>[!warning] This command does not export wizard artifacts (such as the XML files), except for  Global Identity Builder project artifacts. This command also does not export persistent cache configurations on naming contexts - it only exports the underlying non-cached configuration and you must reconfigure persistent cache again after importing into the target environment.
 
 **Usage:**
 <br>`resource-export -name <name> [-instance <instance>] [-path <path>] [-skip <name>]`
@@ -67,7 +67,7 @@ In the following example, a request is made to export the resource so_hr_o_examp
 
 This command imports the resource and its dependencies.
 
->[!warning] This command does not import wizard artifacts (such as the XML files), except for  Global Identity Builder project artifacts.
+>[!warning] This command does not import wizard artifacts (such as the XML files), except for  Global Identity Builder project artifacts. This command also does not import persistent cache configurations on naming contexts - it only imports the underlying non-cached configuration and you must reconfigure persistent cache again after importing into the target environment.
 
 **Usage:**
 <br>`resource-import -path <path> [-apply] [-instance <instance>][-interactive] [-overwrite] [-skip <name>] [-skipregex <skipregex>]`
