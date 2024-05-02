@@ -88,8 +88,8 @@ The following referential integrity rules are supported by RadiantOne:
 -	Disabled
 Referential integrity is not enforced for the specified Base DN.
 -	Enabled
-Referential integrity applies to the member, uniquemember and manager attributes by default. Add any attribute that is of type DN syntax as needed (comma-separated if you need to list many attributes). Some examples are: owner and managedBy.
-![An image showing ](Media/Image3.134.jpg)
+Referential integrity applies to the member, uniquemember and manager attributes by default. Add any attribute that is of type DN syntax as needed. Some examples are: owner and managedBy.
+![Referential Integrity Attributes](Media/ref-integrity.jpg)
 
 If referential integrity is enabled, and you want RadiantOne to ensure any values entered for member/uniquemember, or attribute in this list, references a valid DN in the Directory Information Tree (DIT), check the “Validate User Exists in DIT” checkbox. If this option is selected, and a value does not reference a valid Distinguished Name (DN) that is part of the current DIT, the modify operation will fail. Error code 19 will be returned indicating a referential integrity violation.
 
@@ -111,15 +111,13 @@ Referential integrity is not enabled by default. To enable and configure it, fol
 2.	On the right, click the SPECIAL ATTRIBUTES tab and locate the Referential Integrity section (expand it if it is collapsed).
 
 3.  Click **+REFERENTIAL INTEGRITY**.
-4.	In the Groups Location section, click **Add**.
-
-5.	Navigate to the container where group entries are located and click **OK**. Referential integrity is enforced for any group below this location. The groups must be in a RadiantOne Directory store or persistent cache.
-
-6.	In the Users Location section, click **Choose** and navigate to the location containing the possible members associated with the groups you defined in the previous step. The users must be in a RadiantOne Directory store or persistent cache. If a user is moved or deleted from this location, all groups referencing this user entry are updated accordingly (the value is updated or deleted). Click **OK**.
-
-7.	Select the applicable referential integrity rule (based on the descriptions above) and click **OK**.
-
-8.	Click **Save** in the top right.
+4.  For the Users Location section, either enter the location or click the [Folder](Media/folder-icon.jpg) to browse to the location.
+5.  In the Groups Location section, click **+NEW**.
+6.  Either enter the location or click the [Folder](Media/folder-icon.jpg) to browse to the location of the groups. Referential integrity is enforced for any group below this location. The groups must be in a RadiantOne Directory store or persistent cache.
+7.	Select the applicable referential integrity rule (enabled/disabled). If enabled, enter a list of attributes to enforce referential integrity for. The default attributes are: member, uniqueMember, and manager. You can remove these (click the "x" next to the attribute) and/or add more. To add more, enter the value and press "Enter" on the keyboard. 
+8. If you want RadiantOne to ensure any values entered for member/uniquemember, or attribute in this list, references a valid DN in the Directory Information Tree (DIT), check the “Validate User Exists in DIT” checkbox. If this option is selected, and a value does not reference a valid Distinguished Name (DN) that is part of the current DIT, the modify operation will fail. Error code 19 will be returned indicating a referential integrity violation.
+9.	Click **ADD**.
+10.	Click **SAVE**.
 
 ### Dynamic Groups
 
