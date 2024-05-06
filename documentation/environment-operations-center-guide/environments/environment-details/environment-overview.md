@@ -62,7 +62,7 @@ Under the *Activity Log*, you can view a list of all actions performed on an env
 
 ## Refresh Environment Details
 
-A refresh button is located next to **Monitor Environment**. Select **Refresh** to display the most up to date details for the environment.
+To display the most up-to-date details for the environment, click **Refresh**. 
 
 ![image description](images/refresh-env.png)
 
@@ -111,20 +111,6 @@ The *Application Endpoints* section lists all of the environment endpoints.
 ![image description](images/endpoints.png)
 
 ![image description](images/node-details.png)
-
-CPU, memory, and disk are all displayed as color-coded percentages to indicate their health.
-
-- Green: Indicates the component is operational.
-- Yellow: Indicates the component has a partial outage.
-- Red: Indicates a full outage.
-
-![image description](images/overview-health-indicators.png)
-
-An expandable **Options** (**...**) menu is available for each node. Selecting the **Options** dropdown menu displays the options to **View Details** or **View Logs** for the selected node.
-
-For further details on reviewing nodes details, see the [node details](node-details.md) guide.
-
-![image description](images/node-options.png)
 
 ## Next steps
 
