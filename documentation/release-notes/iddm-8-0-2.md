@@ -59,7 +59,9 @@ These release notes contain the following sections:
 
 - [VMR-771]: Upgraded org.apache.commons:commons-comopress jar to 1.26.0 to remediate potential vulnerabilities. 
 
-- [VMR-783]: Upgraded Spring libraries to 5.3.33 and Spring security to 5.7.12 to remediate potential vulnerabilities.   
+- [VMR-783]: Upgraded Spring libraries to 5.3.33 and Spring security to 5.7.12 to remediate potential vulnerabilities.
+  
+- [VMR-807]: Upgraded bouncy castle jars to address CVE-2024-30172 and CVE-2024-30171.
 
 ## Bug Fixes
 
