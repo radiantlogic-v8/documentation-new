@@ -60,14 +60,6 @@ Under the *Activity Log*, you can view a list of all actions performed on an env
 
 ![image description](images/activity-log.png)
 
-## Monitor environment
-
-A **Monitor Environment** button is located near the top of the *Overview* screen. Select **Monitor Environment** to navigate to the monitoring section with the current environment selected.
-
-For further details on monitoring environments, see the [monitoring](../../monitoring/monitoring-overview.md) guide.
-
-![image description](images/monitor-env.png)
-
 ## Refresh Environment Details
 
 A refresh button is located next to **Monitor Environment**. Select **Refresh** to display the most up to date details for the environment.
@@ -117,12 +109,6 @@ See the guide on [version history](update-environment#view-version-history) for 
 The *Application Endpoints* section lists all of the environment endpoints.
 
 ![image description](images/endpoints.png)
-
-## Node monitoring
-
-The lower section of the *Overview* page displays monitoring sections for the FID nodes of an environment. The status, CPU, memory, disk space, and number of connections are provided for each node.
-
-Node status will be listed as "Healthy", "Warning, or "Outage", indicating that the node is either operational, experiencing a partial outage, or experiencing a complete outage.
 
 ![image description](images/node-details.png)
 
