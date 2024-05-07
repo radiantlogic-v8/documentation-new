@@ -364,8 +364,8 @@ Alert ID: 00000000 - 0000 - 0000 - 0000 - 000000000002
 
 To customize the email message associated with email alerts:
 
-1. From the Zookeeper tab in the Main Control Panel navigate to
-    /radiantone/<version>/<clusterName>/config/logging/log4j2-scheduler.json.
+1. From the Zookeeper tab in the Main Control Panel navigate to:
+    `/radiantone/<version>/<clusterName>/config/logging/log4j2-scheduler.json`
 2. On the right, click Edit Mode.
 3. To customize the email subject, edit the alert.email.subject property and overwrite the
     default value.
