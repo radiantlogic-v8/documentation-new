@@ -298,8 +298,7 @@ Role	| Required Permissions (Value of vdPrivilege)
 
 For the new Control Panel, each class of permissions matches a section in the left navigation menu.
 
-![Roles and Permissions](Media/roles-and-perms1.jpg)
-![Roles and Permissions](Media/roles-and-perms2.jpg)
+![Roles and Permissions](Media/roles-and-perms.jpg)
 
 - **DATA CATALOG**: Assign permissions to configure and manage data sources with the ability to set specific permission overrides for specific data sources. For example, you can assign a set of users permissions to manage and use a specific set of data sources.  The data sources must be defined prior to assigning permisssions.
 - **DIRECTORY NAMESPACE**: Assign permissions to namespace design (where identity views are created from) and directory schema (where the LDAP directory schema is managed).
