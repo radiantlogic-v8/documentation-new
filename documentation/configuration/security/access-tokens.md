@@ -41,6 +41,8 @@ To configure an access token for calling the RadiantOne SCIMv2 API:
 
 ![Access Token for SCIMv2 API](Media/scim-api-token.jpg)
 
+For details on configuring SCIMv2 access to RadiantOne Identity Data Management, see: [SCIMv2](../../web-services-api-guide/scim)
+
 ## REST API
 To configure an access token for calling the RadiantOne REST API:
 1. Navigate to Control Panel > Admin > ACCESS TOKENS tab.
@@ -53,6 +55,8 @@ To configure an access token for calling the RadiantOne REST API:
 ![Access Token for REST API](Media/rest-api-token.jpg)
 
 The RadiantOne REST API also supports OIDC tokens that can be validated with an [External Token Validator](./external-token-validators). 
+
+For details on accessing RadiantOne Identity Data Management's REST interface, see: [REST](../../web-services-api-guide/rest)
 
 ## Using an Access Token
 
