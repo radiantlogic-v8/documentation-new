@@ -27,6 +27,9 @@ To configure an access token for calling the RadiantOne configuration API:
 
 ![Access Token for Configuration API](Media/config-api-token.jpg)
 
+>[!note] 
+>Only access tokens for the configuration API can be revoked. The revocation must be done with an API call. The account used to call the API must have [Revoke Access Tokens permission](../../introduction/control-panel-overview). 
+
 ## SCIMv2 API
 To configure an access token for calling the RadiantOne SCIMv2 API:
 1. Navigate to Control Panel > Admin > ACCESS TOKENS tab.
