@@ -9,6 +9,22 @@ This is the overview.
 
 ## Updating RadiantOne Identity Data Management
 
+### SaaS Deployments
+
+When an update is available, there is an *Update* option shown in Environment Operations Center for the Identity Data Management application.
+
+This can be see in the Environments (summary) section as shown below.  Click this link to start the update.
+
+![App Update](Media/env-update-environment.jpg)
+
+The update can also be started from the Environments > Overview section.  Click this link to start the update.
+
+![App Update](Media/env-update-environment.jpg)
+
+For more details, see: **LINK TO EOC DOCS**
+
+### Self-managed Deployments
+
 
 
 ## Updating Secure Data Connector Client
