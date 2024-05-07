@@ -5,4 +5,4 @@ description: RadiantOne IDDM Release Notes
 
 ## RadiantOne Identity Data Management Release Notes
 
-(v8.1.0)[iddm-8-0-1.md]
+[v8.1.0](iddm-8-0-1.md)
