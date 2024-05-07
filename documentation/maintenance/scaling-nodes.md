@@ -1,8 +1,12 @@
 ---
-title: Introduction to the Admin Tools
-description: Learn about the two main administration tools used in Identity Data Management - The Environment Operations Center and the Main Control Panel.
+title: Scaling Identity Data Management Nodes
+description: Learn how to Scale In/Out Identity Management Nodes.
 ---
 
 ## Overview
 
 This is the overview.
+
+## SaaS Deployment
+
+## Self-Managed Deployment
