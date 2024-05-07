@@ -37,37 +37,37 @@ Secure data connectors can be managed from the *Secure Data Connectors* screen. 
 
 All of the operations to manage secure data connectors are available in the **Options** (**...**) menu for each connector. To begin managing a connector, select the **Options** (**...**) menu of the specific connector you wish to modify.
 
-![image description](images/options.png)
+![image description](Media/options.png)
 
 #### Edit a data connector
 
 The name and description of a data connector can be updated. To edit connector details, select **Edit** from the associated **Options** (**...**) menu.
 
-![image description](images/select-edit.png)
+![image description](Media/select-edit.png)
 
 This enables editing of the **Data Connector** row. In the provided name and description fields, update the connector details as needed. Select :white_check_mark: to update the connector details.
 
 The connectors list displays updated details for the updated *Secure Data Connector*.
 
-![image description](images/update-info.png)
+![image description](Media/update-info.png)
 
 ## Enable or disable a connector
 
 To disable a data connector, select **Pause** from the **Options** (**...**) menu.
 
-![image description](images/disable.png)
+![image description](Media/disable.png)
 
 The connector status updates to "Paused" and all associated connections are disabled.
 
-![image description](images/paused.png)
+![image description](Media/paused.png)
 
 To reactivate a data connector, select **Start** from the **Options** (**...**) menu.
 
-![image description](images/enable.png)
+![image description](Media/enable.png)
 
 The connector status updates to "Active" and all associated connections are enabled.
 
-![image description](images/active.png)
+![image description](Media/active.png)
 
 #### Restart a data connector
 
@@ -75,7 +75,7 @@ To restart a data connector, select **Restart** from the **Options** (**...**) m
 
 The connector completely stops and starts. This action is similar to starting a data connector for the first time, which does pulling all latest configurations, stops, and starts all the required processes.
 
-![image description](images/restart.png)
+![image description](Media/restart.png)
 
 #### Delete a data connector
 
@@ -83,13 +83,13 @@ To delete a data connector, select **Delete** from the **Options** (**...**) men
 
 [!warning] Deleting a data connector is a permanent action and cannot be undone.
 
-![image description](images/delete.png)
+![image description](Media/delete.png)
 
 A confirmation dialog asks you to confirm that you would like to delete the selected data connector. Select **Delete** to proceed and delete the connector.
 
 If you would like to keep the connector, select **Cancel** to exit out of the workflow to delete the connector.
 
-![image description](images/confirm-delete.png)
+![image description](Media/confirm-delete.png)
 
 If the connector is successfully deleted, you receive a confirmation message on the *Secure Data Connectors* home screen and the connector is no longer available in the list of connectors.
 
@@ -124,7 +124,7 @@ Installing a rolling update allows the client to continue running with no downti
 
 Copy the new token from the *Data Connector Registration* dialog in the data connector details section.
 
-![image description](images/docker-token.png)
+![image description](Media/docker-token.png)
 
 Follow the steps outlined in the [deploy a secure data connector client](configure-sdc-client#deploy-the-secure-data-connector-client) guide for your system type to deploy the client as a fresh installation.
 
@@ -138,7 +138,7 @@ The following sections outline common errors that can occur while deploying or r
 
 The unique token associated with a new data connector in Env Ops Center can only be used to deploy one secure data connector client. If a data connector token is used to run more than one client, you receive a duplicate agent connection error in the client terminal.
 
-![image description](images/err-duplicate-connection.png)
+![image description](Media/err-duplicate-connection.png)
 
 To resolve the error, return to Env Ops Center an create a new secure data connector and use the unique token to deploy the client.
 
@@ -148,7 +148,7 @@ For details on creating a new data connector, see the [add a data connector](con
 
 The following control panel error may indicate that the secure data connector client has stopped running: "Connection failed: An error has occurred, please contact your administrator".
 
-![image description](images/test-connection-err.png)
+![image description](Media/test-connection-err.png)
 
 If you receive the above connection failure error, return to the secure data connector client and verify that it is running.
 
