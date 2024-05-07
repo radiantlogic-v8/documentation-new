@@ -373,12 +373,13 @@ To customize the email message associated with email alerts:
     alert.email.contentType.
 5. Enter a value of text/plain or text/html (to send HTML emails).
 6. To customize the email message, locate the property named: alert.email.pattern.
-7. Enter the pattern that dictates the email message. In addition to the regular log4j2 pattern elements, the following properties are available by using %X{property}: rli.alert.id - example "00000000- 0000 - 0000 - 0000 - 000000000002"
-    rli.alert.name - name of the monitoring alert (for example "Alert Disk Usage above 90%")
-    rli.alert.status - "TRIGGERED" or "BACK TO NORMAL"
-
+7. Enter the pattern that dictates the email message. In addition to the regular log4j2 pattern elements, the following properties are available by using %X{property}:
+   
 
 `rli.node.hostname`
+<br>`rli.alert.id - example "00000000- 0000 - 0000 - 0000 - 000000000002"`
+<br> `rli.alert.name - name of the monitoring alert (for example "Alert Disk Usage above 90%")`
+<br>`rli.alert.status - "TRIGGERED" or "BACK TO NORMAL"`
 <br>`rli.instance.name`
 <br>`rli.alert.data.table.cli - The data that has been polled in the form of a CLI table`
 <br>`rli.alert.data.table.html - The data that has been polled in the form of an HTML table (forHTML emails)`
@@ -387,8 +388,7 @@ To customize the email message associated with email alerts:
 <br>`rli.alert.trigger`
 <br>`rli.alert.trigger.id`
 <br>`rli.alert.trigger.<parameter>`
-<br>`rli.alert.data.<prop1>.<prop2>...<propn> - allows you to fetch any value in the collected
-data`
+<br>`rli.alert.data.<prop1>.<prop2>...<propn> - allows you to fetch any value in the collected data`
 
 The pattern can be as simple as:
 
