@@ -145,7 +145,7 @@ A rich set of HTTP-based API's have been developed on top of LDAP, to provide br
 
 <section>
   
-  > [API Specification](developer)
+  > [API Specification](api)
   > Coming soon
   
 </section>
