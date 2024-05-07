@@ -278,7 +278,7 @@ To create content objects:
 
 1.	Use the **+NEW LEVEL** menu and select content.
 1.	Select the data source from the drop-down list. If you don't have a data source defined, use the [Data Catalog](../data-sources/data-sources) to define it.
-1.	Select the schema associated with the data source that contains the object to be used to define the content node. If you don't have a schema yet, click the *Extract Schema* link to define one. For assistance see: [Schemas](../data-sources/schemas)
+1.	Select the schema associated with the data source that contains the object to be used to define the content node. If you don't have a schema yet, click the *Extract Schema* link to define one. Make sure your object has a "Primary Key" defined for it. For assistance see: [Schemas](../data-sources/schemas)
 	 ![Extract Schema](Media/extract-schema-link.jpg) 
 
 1.	Click **NEXT**. 
@@ -304,7 +304,7 @@ To create container objects:
 
 1.	Use the **+NEW LEVEL** menu and select container.
 1.	Select the data source from the drop-down list. If you don't have a data source defined, use the [Data Catalog](../data-sources/data-sources) to define it.
-1.	Select the schema associated with the data source that contains the object to be used to define the container node. If you don't have a schema yet, click the *Extract Schema* link to define one. For assistance see: [Schemas](../data-sources/schemas)
+1.	Select the schema associated with the data source that contains the object to be used to define the container node. If you don't have a schema yet, click the *Extract Schema* link to define one. Make sure your object has a "Primary Key" defined for it. For assistance see: [Schemas](../data-sources/schemas)
 	 ![Extract Schema](Media/extract-schema-link.jpg) 
 
 1.	Click **NEXT**. 
