@@ -281,7 +281,7 @@ Figure 8: Binary Attribute Editor
 To reset a user’s password, select the user entry in the tree and on the right, select the userPassword attribute. Click Modify Attribute > Edit. Change the value and click **OK**.
 
 >[!note]
->If the account is in a proxy virtual view to an Active Directory backend, you can reset the password using ![reset password](Media/reset-password.jpg) on the Main Control Panel > Directory Browser. The account must be associated with the “user” object class and the data source connection to the backend Active Directory requires SSL.
+>If the account is in a proxy virtual view to an Active Directory backend, you can reset the password using key icon on the Main Control Panel > Directory Browser. The account must be associated with the “user” object class and the data source connection to the backend Active Directory requires SSL.
 
 ## Modify RDN
 
