@@ -243,6 +243,7 @@ Figure 1. 28 : Location to View Cloud ID Associated with a Cluster Node on Main 
 For each cluster node, the following properties are returned.
 
 - activeConnections – number of current connections to the RadiantOne node. This property requires the RadiantOne service to be running to return information.
+- adapProcessingCount - the number of active requests that ADAP is currently processing at a given point in time.
 - committedVirtualMemorySize - amount of virtual memory that is guaranteed to be available to the running process in bytes, or -1 if this operation is not supported. This property does NOT require the RadiantOne service to be running to return information.
 - connectionMax – number of maximum connections currently configured for RadiantOne. This property does NOT require the RadiantOne service to be running in order to return information.
 - connectionPeak - greatest number of connections at one time to RadiantOne in a 24- hour timeframe. This property requires the RadiantOne service to be running in order to return information.
