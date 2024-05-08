@@ -283,6 +283,8 @@ To reset a user’s password, select the user entry in the tree and on the right
 >[!note]
 >If the account is in a proxy virtual view to an Active Directory backend, you can reset the password using key icon on the Main Control Panel > Directory Browser. The account must be associated with the “user” object class and the data source connection to the backend Active Directory requires SSL.
 
+If the entry is associated with the *user* objectclass, the key icon on the toolbar can also be used to reset the password.
+
 ## Modify RDN
 
 To modify the RDN value of the selected entry, click ![modify rdn](Media/modify-rdn.jpg). If the entry is not located in a RadiantOne Universal Directory store, the modify RDN request is sent to the authoritative backend and processed accordingly. If this operation fails, the error code from the backend is returned to the Directory Browser tab. If the entry is in a Universal Directory store, RadiantOne processes the modify RDN request directly.
