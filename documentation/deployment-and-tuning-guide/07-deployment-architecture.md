@@ -504,6 +504,11 @@ Figure 7.16: Configure Replication for Specific Subtrees
 
 A data source named replicationjournal is included in the RadiantOne install and plays the role of the journal. This data source points to the default cn=replicationjournal store installed with RadiantOne and should not be deleted or deactivated.
 
+The default *replicationjournal* LDAP data source and cn=replicationjournal naming context are associated with the default super user account (e.g. cn=Directory Administrator). This user allows access controls checking to be avoided for inter-cluster replication events. If you do not want the super user account associated with the replication journal data source (and inter-cluster replication events), you can set a different Bind DN/user account for the replicationjournal LDAP data source and add this user as a member of the Directory Replicators group. Members of this group have the privilege of by-passing ACI checking when used to establish the connection for inter-cluster replication.
+
+The group entry is located in the RadiantOne namespace at:
+cn=Directory Replicators,ou=globalgroups,cn=config
+
 ![An image showing ](Media/Image7.17.jpg)
  
 Figure 7.17: The Journal Leveraged by Multi-master Replication
