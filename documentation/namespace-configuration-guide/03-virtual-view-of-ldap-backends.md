@@ -39,7 +39,7 @@ If you configure the LDAP backend directly at the Root Naming Context, it is the
 
 6.	Click **OK** to exit the confirmation.
 
-7.	Enter the Remote Base DN or click the **Browse** button, select a base DN and then click **OK**.
+7.	Enter the Remote Base DN or click the **Browse** button, select a base DN and then click **OK**. The Remote Base DN can be left blank to accommodate requirements for special LDAP directory implementations like IBM Lotus Domino.
 
 8.	Click **OK** when finished and a new naming context matching the mapped base DN parameter is created for RadiantOne. When LDAP clients access this naming context, the contents from the remote base DN branch will be returned.
 
