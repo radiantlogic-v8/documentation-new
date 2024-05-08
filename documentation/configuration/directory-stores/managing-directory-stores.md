@@ -656,6 +656,90 @@ The numsubordinates attribute is returned when an entry is selected in the searc
 
 ![Numsubordinates Search Result](Media/numsubordinates.jpg)
 
+## Configuring Replication
+
+Within a single RadiantOne cluster/environment, all RadiantOne directory stores automatically replicate the data contained within the stores.  If you have deployed multiple environments containing the same RadiantOne directory stores and want the data replicated, configure inter-cluster replication.
+
+After RadiantOne is installed and configured in each environment, configure inter-cluster replication for all applicable directory stores.
+
+Each RadiantOne leader node in the cluster plays the role of a “writer” in the replication and publishes their changes into a journal. Each leader is also responsible for periodically checking the journal for changes that they need to apply locally. Should conflicting change events occur, a combination of timestamps and sequence numbers associated with the conflicting events are used to resolve the conflict.
+
+>[!note]
+>On startup, the RadiantOne service first applies any missed change events from the replication journal and only after these changes have been applied is it able to serve as an active server.
+
+A data source named replicationjournal is included in the RadiantOne install and plays the role of the journal. This data source points to the default cn=replicationjournal store installed with RadiantOne and should not be deleted or deactivated. 
+
+![An image showing ](Media/Image7.28.jpg)
+
+To configure multi-master replication for RadiantOne Directory stores:
+
+### Step 1 - Modify the replicationjournal Data Source
+
+For inter-cluster replication, the replicationjournal data source for all clusters must be configured to point to the same journal. For example, if there are three RadiantOne clusters, and the first cluster is where the journal is located, the replicationjournal data source in all other clusters must point to the cn=replicationjournal naming context in the first cluster.
+
+![Replication Journal Data Source](Media/replication-journal.jpg)
+
+To modify the replicationjournal data source, navigate to Control Panel > Setup > Data Catalog > Data Sources. Click on the replicationjournal data source. In the *Connection* section, modify the hostname and port to point to the replicationjournal running in environment one. The base DN should be cn=replicationjournal. If it is empty, this is the default.
+
+The default *replicationjournal* LDAP data source (and cn=replicationjournal naming context) are associated with the default super user account (e.g. cn=Directory Administrator). This user allows access controls checking to be avoided for inter-cluster replication events. If you do not want the super user account associated with the replication journal data source (and inter-cluster replication events), you can set a different Bind DN/user account for the replicationjournal LDAP data source and add this user as a member of the Directory Replicators group. Members of this group have the privilege of by-passing ACI checking when used to establish the connection for inter-cluster replication.
+
+The group entry is located in the RadiantOne namespace at:
+cn=Directory Replicators,ou=globalgroups,cn=config
+
+### Step 2 - Configure the RadiantOne Directory Store in Each Cluster/Environment
+
+The same naming context and directory store must be configured in each cluster/environment. If the store did not exist prior to the initial migration/cloning of the additional clusters, you must define the store in each cluster with the steps below.
+
+To create a new Directory store:
+
+1.	On the Control Panel > Setup > Directory Namespace > Namespace Design click ![An image showing ](Media/new-naming-context.jpg).
+
+2.	Enter the new naming context label and click **SAVE**.
+
+3.	Click ![Mount Backend](Media/mount-backend.jpg).
+
+4.	Choose the **RadiantOne Directory** type and click **SELECT**.
+5.	Choose to activate the store or not (it can be activated later after it has been initialized).
+6.	Click **MOUNT**. The new naming context appears in the list of root naming contexts.
+
+7.	Repeat these steps in each RadiantOne cluster/environment.
+
+
+### Step 3 - Initialize the Replicas
+
+Before enabling replication, all replicas must have the same initial image: either an empty store or an initialized store based on the export of the Directory store at the primary environment. When you export the store on the primary environment, you must have the option “Export for Replication” checked to ensure the uuid attribute is properly included in the export and handled during the import into the replica cluster. Also, click *DOWNLOAD FILE* in the export window to save a copy of the LDIF file that can be used to initialize other replicas/environments.
+
+![Export for Replication](Media/export-for-replication.jpg)
+
+To initialize a replica:
+
+1.	With the LDIF file exported from the primary environment, go to the RadiantOne target (replica) cluster's Control Panel > Setup > Directory Namespace > Namespace Design.
+2.	Select the root naming context that represents the RadiantOne Directory store.
+3.	In the Properties tab on the right, click **INITIALIZE**.
+4.	Choose the *Upload File* option.
+5. 	Click the ![Folder](Media/folder-icon.jpg) and browse to the LDIF file you downloaded from the primary environment.
+6.	Click **OK** and the initialization is launched as a Task which can be viewed from Control Panel > Manage > Tasks. Once the task completes, the store is initialized.
+7.	Repeat these steps on all other RadiantOne clusters/environments that will play a role in inter-cluster replication.
+
+### Step 4 - Enable Inter-cluster Replication
+
+After the Directory stores are initialized in each cluster, inter-cluster replication must be enabled. 
+
+To enable inter-cluster replication for a directory store:
+
+1.	On one of the RadiantOne clusters/environments, go to the Control Panel > Setup > Directory Namespace > Namespace Design and below the root naming context node click the naming context representing the directory store.
+
+1.	In the *Replication* section on the Properties tab on the right, check the box for Inter-cluster Replication as shown in the screenshot below.
+   ![Replication Section](Media/replication-section.jpg)
+
+1.	Click **SAVE**.
+
+1.	Repeat these steps on one RadiantOne node in each cluster/environment playing a role in inter-cluster replication.
+
+>[!note]
+>Monitor inter-cluster replication from Classic Control Panel > Replication Monitoring tab.
+
+
 ## Detecting Changes in RadiantOne Directory
 
 Changes to entries can be detected based on changelog (listening for change on the cn=changelog naming context) or using the Persistent Search Control.
