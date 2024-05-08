@@ -32,7 +32,7 @@ If the data sources integrated in the RadiantOne platform are accessible in the 
 
 ![An image showing ](Media/Image7.26.jpg)
  
-Figure 7.2: Site-to-Site VPN or VPC Peering
+Figure 7.2: Secure Data Connector for Accessing Data Sources in a Different Network
 
 ### Inter-cluster Replication for RadiantOne Directory Stores
 
@@ -43,7 +43,7 @@ After RadiantOne is configured in each environment, configure inter-cluster repl
 
 ![An image showing ](Media/Image7.27.jpg)
  
-Figure 7.3: Replication Flow within a Cluster (intra-cluster) and Across Cluster (inter-cluster
+Figure 7.3: Replication Flow within a Cluster (intra-cluster) and Across Cluster (inter-cluster)
 
 Each RadiantOne leader node in the cluster plays the role of a “writer” in the replication and publishes their changes into a journal. Each leader is also responsible for periodically checking the journal for changes that they need to apply locally. Should conflicting change events occur, a combination of timestamps and sequence numbers associated with the conflicting events are used to resolve the conflict.
 
