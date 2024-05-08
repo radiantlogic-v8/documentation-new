@@ -73,14 +73,6 @@ Figure 7. 18: Configuration of Multi-Master Replication
 
 To modify the replicationjournal data source, launch the Main Control Panel associated with the server and login as the super user (e.g. cn=directory manager). From the Settings Tab-> Server Backend section -> LDAP Data Sources sub-section, click the replicationjournal data source and click Edit. Modify the hostname and port to point to the replicationjournal running in site one. The base DN should be cn=replicationjournal.
 
-**Configure the RadiantOne Directory Store in Each Cluster**
-
-The same naming context and directory store must be configured in each cluster. If the store did not exist prior to the initial migration/cloning of the additional clusters, you must define the store in each cluster with the steps below.
-
-To create a new Directory store:
-
-To modify the replicationjournal data source, launch the Main Control Panel associated with the server and login as the super user (e.g. cn=directory manager). From the Settings Tab-> Server Backend section -> LDAP Data Sources sub-section, click the replicationjournal data source and click Edit. Modify the hostname and port to point to the replicationjournal running in site one. The base DN should be cn=replicationjournal.
-
 **Configure the Directory Store in Each Cluster**
 
 The same naming context and Universal Directory store must be configured in each cluster. If the store did not exist prior to the initial migration/cloning of the additional clusters, you must define the store in each cluster with the steps below.
