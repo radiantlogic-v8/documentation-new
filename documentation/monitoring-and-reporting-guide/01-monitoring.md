@@ -636,6 +636,7 @@ Connection number: 9
 
 - connectionCount - the total (cumulative) number of connections established to
 RadiantOne since last startup.
+- adapProcessingCount - the number of active requests that ADAP is currently processing at a given point in time.
 - connectionIdleTimeout – the value of the Idle Timeout property configured for
 RadiantOne.
 - connectionMax - the maximum concurrent connections allowed to RadiantOne.
