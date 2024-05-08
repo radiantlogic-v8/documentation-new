@@ -32,7 +32,7 @@ If the data sources integrated in the RadiantOne platform are accessible in the 
 
 ![An image showing ](Media/Image7.26.jpg)
  
-Figure 7.2: Replication Flow within a Cluster
+Figure 7.2: Replication Flow within a Cluster (intra-cluster) and Across Cluster (inter-cluster)
 
 ### Inter-cluster Replication for RadiantOne Directory Stores
 
