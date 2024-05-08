@@ -285,7 +285,7 @@ Figure 7: Configuring an ADAP External Token Validator
 
 >[!note] In some cases, creating a new attribute may be required.
 
-![search expression builder](Media/searchexpressionbuilder.jpg)
+![search expression builder](Media/search-expression.jpg)
 
 1.  Click OK.   
 1.  Click OK again to close the *OIDC to FID User Mappings* window.
