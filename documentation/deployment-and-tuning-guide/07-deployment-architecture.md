@@ -61,9 +61,9 @@ cn=Directory Replicators,ou=globalgroups,cn=config
  
 Figure 7.17: The Journal Leveraged by Multi-master Replication
 
-To configure multi-master replication for RadiantOne Universal Directory stores, follow the steps below.
+To configure multi-master replication for RadiantOne Directory stores, follow the steps below.
 
-Modify the replicationjournal Data Source
+**Modify the replicationjournal Data Source**
 
 For inter-cluster replication, the replicationjournal data source for all clusters must be configured to point to the same journal. For example, if there are three RadiantOne clusters, and the first cluster is where the journal is located, the replicationjournal data source in all other clusters must point to the cn=replicationjournal naming context in the first cluster.
 
