@@ -634,11 +634,9 @@ Connection number: 9
 <br>RadiantOne LDAP Port: 2389
 <br>Operation Count: 23
 
-- connectionCount - the total (cumulative) number of connections established to
-RadiantOne since last startup.
+- connectionCount - the total (cumulative) number of connections established to RadiantOne since last startup.
 - adapProcessingCount - the number of active requests that ADAP is currently processing at a given point in time.
-- connectionIdleTimeout – the value of the Idle Timeout property configured for
-RadiantOne.
+- connectionIdleTimeout – the value of the Idle Timeout property configured for RadiantOne.
 - connectionMax - the maximum concurrent connections allowed to RadiantOne.
 - connectionPeak - the peak number of concurrent connections to RadiantOne since last startup.
 - currentConnections - the live number of concurrent connections to RadiantOne (will never be more than connectionMax). This number increases or decreases depending on new connections coming into RadiantOne or existing connections being closed.
