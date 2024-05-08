@@ -664,14 +664,14 @@ After RadiantOne is installed and configured in each environment, configure inte
 
 Each RadiantOne leader node in the cluster plays the role of a “writer” in the replication and publishes their changes into a journal. Each leader is also responsible for periodically checking the journal for changes that they need to apply locally. Should conflicting change events occur, a combination of timestamps and sequence numbers associated with the conflicting events are used to resolve the conflict.
 
+![Inter-cluster Replication Diagram](Media/Image7.29.jpg)
+
 >[!note]
 >On startup, the RadiantOne service first applies any missed change events from the replication journal and only after these changes have been applied is it able to serve as an active server.
 
 A data source named replicationjournal is included in the RadiantOne install and plays the role of the journal. This data source points to the default cn=replicationjournal store installed with RadiantOne and should not be deleted or deactivated. 
 
-![An image showing ](Media/Image7.28.jpg)
-
-To configure multi-master replication for RadiantOne Directory stores:
+To configure inter-cluster replication for RadiantOne Directory stores follow the four steps outlined below.
 
 ### Step 1 - Modify the replicationjournal Data Source
 
