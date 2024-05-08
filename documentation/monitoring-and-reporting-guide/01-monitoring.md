@@ -796,6 +796,7 @@ JNDI connection pooling is leveraged for model-driven virtual views and join def
 directory backends.
 
 ![An image showing ](Media/Image1.49.jpg)
+
 Figure 1.49: Example of JNDI Connection Pool Activity
 
 *Current pool size (anonymous)*: Number of connections in the pool that are currently
