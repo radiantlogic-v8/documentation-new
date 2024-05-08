@@ -12,6 +12,10 @@ Persistent cache is the cache image stored on disk. With persistent cache, the R
 
 Initialization of a persistent cache happens in two phases. The first phase is to create an LDIF formatted file of the cache contents (if you already have an LDIF file, you have the option to use this existing file as opposed to generating a new one). The second phase is to initialize the cache with the LDIF file. After the first phase, RadiantOne prepares the LDIF file to initialize the cache. 
 
+Persistent cache is configured from the Root Naming Context where the identity view is mounted. If the Root Naming Context contains many sub-branches/containers, you can choose to cache some of them and not others. A summary of configured branches is shown on the CACHE tab for the selected naming context.
+
+
+
 ## Options for Refreshing the Persistent Cache
 
 There are four categories of events that can invoke a persistent cache refresh. They are:
@@ -44,7 +48,7 @@ When a change happens in the underlying source, connectors capture the change an
  
 Persistent Cache Refresh Agents are started automatically once a persistent cache with real-time refresh is configured. Agents can run on any type of RadiantOne cluster node (follower or leaders) and there is only one agent running at any given time in a RadiantOne cluster. The agent doesn't consume a lot of memory, and they are not CPU-intensive, so there is no point in running multiple processes to distribute connectors on multiple nodes. One agent is enough per cluster and makes things simpler.
 
-This type of refresh is described as “Real-time” in the Main Control Panel > Directory Namespace > Cache settings > Cache Branch > Refresh Settings tab (on the right). This is the recommended approach if a real-time refresh is needed.
+This type of refresh is described as “Real-time” in the Control Panel > Setup > Directory Namespace > Namespace Design. Select the Root Naming Context that contains the identity view/container to cache and click the CACHE tab.
 
 ### Periodic Refresh
 
