@@ -1357,6 +1357,25 @@ Figure 2.29: Back Link Attribute Name in Special Attribute Handling
 >[!warning]
 >If a persistent cache has optimizations associated with it, deactivating it will interfere with queries associated with the linked attributes and they will not return properly. If you no longer need a cache, delete it instead of deactivating it.
 
+**Async Modifications for Attributes**
+
+This is an optimization of the peristent cache refresh process.
+
+This is a list of attributes that should be processed asynchronously when modified by clients. The default attributes are *member* and *uniquemember*.
+This default setting means that a modifyRequest containing a list of modifications on the member or uniquemember attributes are processed asynchronously by the persistent cache. The RadiantOne service sends the modifications to the underlying backend but the service does not perform the persistent cache refresh operation during the transaction itself. Instead, the cache refresh is performed as soon as the change is detected in the backend. 
+This setting is enabled when the real-time persistent cache refresh is enabled and there are attributes listed in the Async Modifications for Attributes proeprty. 
+
+**Allow Similar Modification Operations Reduction**
+
+This is an optimization of the peristent cache refresh process because it reduces the number of incremental transactions sent to the backend and the persistent cache when modifications are received by clients. This optimization compacts concurrent, incremental, and similar modify requests (described below) into a single transaction which reduces the load and execution time per operation on both the backend and the persistent cache.
+
+-	Concurrent: modifications are processed concurrently through different connections.
+-	Incremental: only ADD or DELETE attribute values in the list of modifications.
+-	Similar: The modifications are done on the same entry and by the same user.
+
+>[!warning]
+>ProxiedAuthorizationControl is not supported, the optimization won't be performed if this control is passed in the request from the client. Inter-cluster replication is not supported, the optimization won't be performed if the persistent cache being modified is part of a replication topology.
+
 ### Persistent Cache Universally Unique Identifier (UUID)
 
 The Universally Unique Identifier (UUID) attribute is a reserved, internal attribute that is assigned to each entry and can guarantee uniqueness across space and time.
