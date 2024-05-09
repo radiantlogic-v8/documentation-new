@@ -169,9 +169,9 @@ When you select a schema file next to the *Schema Name* drop-down list, the obje
 
 Relationships between database objects are displayed below the relationships node. 
 
-The figure shown below displays all tables, views and relationships from the sample Northwind schema file installed with RadiantOne. Notice that the top level is the name of the file followed by a section named Objects. When the objects node is selected, the Properties tab on the right side displays important summary information. A blue icon designates Tables. A green icon designates Views, and Relationships are designated by the relationship icon (two connected tables). 
+The figure shown below displays all tables, views and relationships from an example schema. Notice that the top level is the name of the file followed by a section named Objects. When the objects node is selected, the Properties tab on the right side displays important summary information. A blue icon designates Tables. A green icon designates Views, and Relationships are designated by the relationship icon (a set of connected tables). 
  
-![An image showing ](Media/Image3.5.jpg)
+![Sample Schema Objects](Media/sample-schema.jpg)
 
 
 ### Declaring Primary Keys
