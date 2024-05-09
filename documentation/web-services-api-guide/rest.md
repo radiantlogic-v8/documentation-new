@@ -619,7 +619,13 @@ Figure 24: Example Search Result Leveraging Context Filter
 
 **Return Mode**
 
-This option allows you to parse search results so they can be more easily interpreted by applications. By adding “?returnMode=array” to the URL of a standard search operation, you activate this option. With this option, attribute values are arranged in an array, regardless of the quantity of attribute values. Without this option, attribute values are arranged in an array only if there are two or more attribute values. 
+This options controls how the JSON response is formatted when ADAP returns a search response. The options include the following. 
+
+  - array (attribute values are arranged in an array, regardless of the quantity of attribute values. Without this option, attribute values are arranged in an array only if there are two or more attribute values.)
+
+  - ldapschema (the RadiantOne server LDAP schema is checked for each attribute. If the attribute schema is single-valued, a JSON String is used. If the attribute schema is multi-valued, a JSON array is used.)
+
+  >[!note] If returnMode is not specified, default formatting is used; if there is a single value for an attribute, a JSON string is used. If there is more than one value for an attribute, a JSON array is used. The RadiantOne server LDAP schema is not used. 
 
 Field	| Value
 -|-
