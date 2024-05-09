@@ -288,9 +288,25 @@ There are three different supported CRL checking methods; dynamic, static and fa
 
 CRLDP and OCSP are used to determine certificate validity and revocation status. OCSP is checked first. If OCSP returns the certificate's status as unknown, then the CRLDP is used.
 
+The location of the OCSP responder is determined implicitly from the certificate being validated. To explicitly specify the location of the OCSP responder, set the following property using the vdsconfig utility on the RadiantOne instance.
+
+`C:\radiantone\vds\bin>vdsconfig set-property -name ocspResponderURL -value "http://ocsp.example.net:80"`
+
+This command can also be run through ADAP. For assistance with changing configuration through ADAP, see: [VDS Config Utility](../command-line-configuration-guide/01-introduction)
+ 
+This property is used when the Authority Information Access extension (defined in RFC 5280) is absent from the certificate or if you want to override the value in the certificate.
+
 **Failover**
 
 CRLDP and OCSP are used to determine certificate validity and revocation status (OCSP is checked first). If the checking fails to get the CRL from CRLDP and using OCSP, then it attempts to check the certificate’s status against the static CRL file(s) specified in the [CRL file/directory parameter](#crl-filedirectory). The CRL file(s) are loaded only once when the RadiantOne service starts.
+
+The location of the OCSP responder is determined implicitly from the certificate being validated. To explicitly specify the location of the OCSP responder, set the following property using the vdsconfig utility on the RadiantOne instance.
+
+`C:\radiantone\vds\bin>vdsconfig set-property -name ocspResponderURL -value "http://ocsp.example.net:80"`
+
+This command can also be run through ADAP. For assistance with changing configuration through ADAP, see: [VDS Config Utility](../command-line-configuration-guide/01-introduction)
+ 
+This property is used when the Authority Information Access extension (defined in RFC 5280) is absent from the certificate or if you want to override the value in the certificate.
 
 **Static**
 
