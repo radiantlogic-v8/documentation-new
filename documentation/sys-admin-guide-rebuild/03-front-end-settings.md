@@ -527,6 +527,14 @@ Below is an example of a RadiantOne response to a “Who Am I” extended operat
 
 The RadiantOne Universal Directory supports temporary entries using the dynamicObject auxiliary object class as specified in [RFC 2589](https://www.rfc-editor.org/rfc/rfc2589). These entries are associated with a time to live attribute and once expired, the entry is automatically removed from the directory. For details on this extension, see the RadiantOne Namespace Configuration Guide.
 
+### Suppressing Partial Results Error
+
+The Partial Results Error (error code 9) typically occurs because a backend directory that RadiantOne is querying returns referral objects as part of the query result and this response is passed back to the client that queried RadiantOne. Referral objects are pointers to other LDAP servers that might contain additional data related to the query. If you want the RadiantOne service to suppress this error code because clients cannot handle or ignore it properly, set the *allowPartialSearchResults* property to true using the RadiantOne REST API:
+
+`https://<rli_rest_endpoint>/adap/util?action=vdsconfig&commandname=set-property&name=allowPartialSearchResults&value=true`
+
+For assistance with changing configuration see: [RadiantOne REST Configuration API](../command-line-configuration-guide\01-introduction)
+
 ### Attributes Handling
 
 ![Attributes Handling Section](Media/Image3.45.jpg)
