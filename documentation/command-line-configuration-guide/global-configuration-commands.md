@@ -192,20 +192,15 @@ The credentials can be passed interactively in the command like shown in the exa
 
 `C:\radiantone\vds\bin>vdsconfig set-property -name directoryManagerPassword -value secret4444`
 
+Output:
+
 Using RLI home : C:\radiantone\vds
-
 Using Java home : C:\radiantone\vds\jdk\jre
-
 1 [ConnectionStateManager-0] WARN
-
 com.rli.zookeeper.ZooManagerConnectionStateListener - Curator connection state change: CONNECTED
-
 9 [ConnectionStateManager-0] WARN
-
 com.rli.zookeeper.ZooManagerConnectionStateListener - VDS-ZK connection state changed: CONNECTED
-
 10 [ConnectionStateManager-0] WARN com.rli.zookeeper.ZooManager - ZooManager connection state changed: CONNECTED
-
 Please enter the directory manager password and press [Enter]:
 
 Property 'directoryManagerPassword' has been modified.
