@@ -68,7 +68,7 @@ Schemas can also be extracted using the **...** > Extract New Schema option.
 
 Examples of LDAP-accessible backends are Sun Java Directory, Microsoft Active Directory, IBM Tivoli Directory, eDirectory, Red Hat Directory, and OpenLDAP. The LDAP data source must be created before completing the schema extraction steps below. See [Data Sources](/data-sources.md) for details about creating data sources.
 
-1. In the Control Panel > SETUP > Data Catalog > Data Sources > Selected Data Source > SCHEMA Tab, click **...** > Extract New Schema.
+1. In the Control Panel > Setup > Data Catalog > Data Sources > Selected Data Source > SCHEMA Tab, click **...** > Extract New Schema.
 
 1.	Enter a schema file name and click **OK**.
 
@@ -106,7 +106,7 @@ Examples of JDBC-accessible backends are Microsoft SQL Server, Oracle, DB2, and 
 
 The database data source must be created before completing the schema extraction steps below. See [Data Sources](../configuration/data-sources/data-sources) for details about creating data sources.
 
-1.	In the Control Panel > SETUP > Data Catalog > Data Sources > Selected Data Source > SCHEMA Tab, click **...** > Extract New Schema.
+1.	In the Control Panel > Setup > Data Catalog > Data Sources > Selected Data Source > SCHEMA Tab, click **...** > Extract New Schema.
 
 1.	Enter a schema file name and click **OK**.
     >[!note] DO NOT USE HYPHENS (-) IN FILE NAMES.
@@ -127,7 +127,7 @@ You can view/modify this schema by selecting if from the drop-down list. Any cha
 
 The SCIMv2 data source must be created before completing the schema extraction steps below. See [Data Sources](../configuration/data-sources/data-sources) for details about creating data sources.
 
-1.	 In the Control Panel > SETUP > Data Catalog > Data Sources > Selected Data Source > SCHEMA Tab.
+1.	 In the Control Panel > Setup > Data Catalog > Data Sources > Selected Data Source > SCHEMA Tab.
 
 1.	 In the upper-right corner, click **...** > Extract New Schema.
 
@@ -141,7 +141,7 @@ You can view/modify this schema by selecting it from the drop-down list. Any cha
 
 The custom data source must be created before completing the steps below. See [Data Sources](../configuration/data-sources/data-sources) for details about creating data sources. The schemas associated with custom sources cannot be extracted. You must manually define the objects and attributes matching the custom data source API after providing a schema name. Every object (e.g. user) that stores identity data must be defined.
 
-1.	 In the Control Panel > SETUP > Data Catalog > Data Sources > Selected Data Source > SCHEMA Tab, click **...** > Extract New Schema.
+1.	 In the Control Panel > Setup > Data Catalog > Data Sources > Selected Data Source > SCHEMA Tab, click **...** > Extract New Schema.
 1.	 Enter a schema file name. Click OK.
 
       >[!note] DO NOT USE HYPHENS (-) IN FILE NAMES.
@@ -428,7 +428,7 @@ Schema files should be deleted from the Control Panel.
 
 To delete a schema file: 
 
-1. In the Control Panel, navigate to SETUP > Data Catalog > Data Sources. 
+1. In the Control Panel, navigate to Setup > Data Catalog > Data Sources. 
 
 2. Select a data source. 
 
@@ -446,7 +446,7 @@ This option allows you to view the differences between two schema files. You can
 
 To compare schema files:
 
-1. In the Control Panel, navigate to SETUP > Data Catalog > Data Sources. 
+1. In the Control Panel, navigate to Setup > Data Catalog > Data Sources. 
 
 1. Select a data source. 
 
