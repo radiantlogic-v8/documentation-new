@@ -79,15 +79,11 @@ This guide is broken down into the following chapters:
 
 The syntax of the URL is as follows.
 
-```
-http://<RadiantOne_REST_Endpoint/adap/util?action=vdsconfig&commandname=<commandname>&<param>=<paramvalue>&<param>=<paramvalue>
-```
+`http://<RadiantOne_REST_Endpoint/adap/util?action=vdsconfig&commandname=<commandname>&<param>=<paramvalue>&<param>=<paramvalue>`
 
 Results are returned in the response. A successful operation’s response contains an exit code value of 0 and a “systemOut” message. An unsuccessful operation’s response contains an exit code of 1 and a system error message. If a required parameter is missing from the URL, the response returns the following error.
 
-```
-"SystemErr": "Parsing failed. Reason: Missing required option"
-```
+`"SystemErr": "Parsing failed. Reason: Missing required option"`
 
 Examples of ADAP requests follow the descriptions of the commands that support it in this guide.
 
