@@ -153,7 +153,8 @@ The custom data source must be created before completing the steps below. See [D
 1.  Click OK.
 1.  Repeat steps 3-6 to add all objects. 
 1.  Expand below *Tables* to see the new object. Right-click on the object and choose **Add New Attribute**.
-2.  Repeat step 8 to add all attributes.
+1.  Repeat step 8 to add all attributes.
+1.  Repeat steps 8 & 9 for all objects. 
    
 ## Managing Schemas
 
