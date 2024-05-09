@@ -194,17 +194,17 @@ The credentials can be passed interactively in the command like shown in the exa
 
 Output:
 
-Using RLI home : C:\radiantone\vds
-Using Java home : C:\radiantone\vds\jdk\jre
-1 [ConnectionStateManager-0] WARN
-com.rli.zookeeper.ZooManagerConnectionStateListener - Curator connection state change: CONNECTED
-9 [ConnectionStateManager-0] WARN
-com.rli.zookeeper.ZooManagerConnectionStateListener - VDS-ZK connection state changed: CONNECTED
-10 [ConnectionStateManager-0] WARN com.rli.zookeeper.ZooManager - ZooManager connection state changed: CONNECTED
-Please enter the directory manager password and press [Enter]:
+`Using RLI home : C:\radiantone\vds`
+`Using Java home : C:\radiantone\vds\jdk\jre`
+`1 [ConnectionStateManager-0] WARN`
+`com.rli.zookeeper.ZooManagerConnectionStateListener - Curator connection state change: CONNECTED`
+`9 [ConnectionStateManager-0] WARN`
+`com.rli.zookeeper.ZooManagerConnectionStateListener - VDS-ZK connection state changed: CONNECTED`
+`10 [ConnectionStateManager-0] WARN com.rli.zookeeper.ZooManager - ZooManager connection state changed: CONNECTED`
+`Please enter the directory manager password and press [Enter]:`
 
-Property 'directoryManagerPassword' has been modified.
-Configuration has been updated successfully.
+`Property 'directoryManagerPassword' has been modified.`
+`Configuration has been updated successfully.`
 
 
 If you do not want to pass the directory manager credentials interactively, you can save the password into a file and use the -pwdfile flag in the command. The -value property sets the new password and the directory manager credentials are passed in a file named pwd.txt in the example below.
