@@ -214,19 +214,16 @@ If you do not want to pass the directory manager credentials interactively, you 
 
 `C:\radiantone\vds\bin>vdsconfig set-property -name directoryManagerPassword -value secret4444 -pwdfile C:\pwd.txt`
 
-Using RLI home : C:\radiantone\vds
+Output:
 
-Using Java home : C:\radiantone\vds\jdk\jre
+`Using RLI home : C:\radiantone\vds`
+`Using Java home : C:\radiantone\vds\jdk\jre`
+`0 [ConnectionStateManager-0] WARN com.rli.zookeeper.ZooManagerConnectionStateListener - Curator connection state change: CONNECTED`
+`8 [ConnectionStateManager-0] WARN com.rli.zookeeper.ZooManagerConnectionStateListener - VDS-ZK connection state changed: CONNECTED`
+`8 [ConnectionStateManager-0] WARN com.rli.zookeeper.ZooManager - ZooManager connection state changed: CONNECTED`
 
-0 [ConnectionStateManager-0] WARN com.rli.zookeeper.ZooManagerConnectionStateListener - Curator connection state change: CONNECTED
-
-8 [ConnectionStateManager-0] WARN com.rli.zookeeper.ZooManagerConnectionStateListener - VDS-ZK connection state changed: CONNECTED
-
-8 [ConnectionStateManager-0] WARN com.rli.zookeeper.ZooManager - ZooManager connection state changed: CONNECTED
-
-Property 'directoryManagerPassword' has been modified.
-
-Configuration has been updated successfully.
+`Property 'directoryManagerPassword' has been modified.`
+`Configuration has been updated successfully.`
 
 
 If you do not want to pass the new value in the command, you can save the new password into a file and use file:::<path_to_file> in the command. The file contains the new password and the directory manager credentials are passed in a file named pwd.txt in the example below:
