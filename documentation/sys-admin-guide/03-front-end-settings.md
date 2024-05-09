@@ -522,7 +522,7 @@ The Partial Results Error (error code 9) typically occurs because a backend dire
 C:\radiantone\vds\bin>vdsconfig set-property -name allowPartialSearchResults -value true
 ```
 
-This command can also be run through ADAP. For assistance with changing configuration through ADAP, see: [VDS Config Utility](../command-line-configuration-guide\01-introduction)
+This command can also be run through ADAP. For assistance with changing configuration through ADAP, see: [VDS Config Utility](../command-line-configuration-guide/01-introduction)
 
 ## Attributes Handling
 
