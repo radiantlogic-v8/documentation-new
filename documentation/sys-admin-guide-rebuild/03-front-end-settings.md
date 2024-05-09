@@ -533,7 +533,7 @@ The Partial Results Error (error code 9) typically occurs because a backend dire
 
 `https://<rli_rest_endpoint>/adap/util?action=vdsconfig&commandname=set-property&name=allowPartialSearchResults&value=true`
 
-For assistance with changing configuration see: [RadiantOne REST Configuration API](../command-line-configuration-guide\01-introduction)
+For assistance with changing configuration see: [RadiantOne REST Configuration API](../command-line-configuration-guide/introduction)
 
 ### Attributes Handling
 
