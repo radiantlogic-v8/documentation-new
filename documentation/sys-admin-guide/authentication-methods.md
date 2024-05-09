@@ -21,7 +21,7 @@ Simple authentication consists of sending the LDAP server the fully qualified DN
 
 **SASL:**
 
-Clients that send an authentication request to RadiantOne using Kerberos (GSS-SPNEGO), NTLM (GSSAPI), MD5 (DIGEST-MD5) or Certificate (EXTERNAL) are leveraging one of the supported SASL mechanisms. The SASL EXTERNAL mechanism is supported by default, but you must configure the [Client Certificate to DN Mapping](#client-certificate-dn-mapping) so the RadiantOne service knows how to identify the user in the certificate to a user in the RadiantOne namespace. For details on these supported mechanisms, please see [Authentication Methods](#authentication-methods).
+Clients that send an authentication request to RadiantOne using Kerberos (GSS-SPNEGO), MD5 (DIGEST-MD5) or Certificate (EXTERNAL) are leveraging one of the supported SASL mechanisms. The SASL EXTERNAL mechanism is supported by default, but you must configure the [Client Certificate to DN Mapping](#client-certificate-dn-mapping) so the RadiantOne service knows how to identify the user in the certificate to a user in the RadiantOne namespace. For details on these supported mechanisms, please see [Authentication Methods](#authentication-methods).
 
 
 ## Kerberos
@@ -32,7 +32,7 @@ RadiantOne supports Kerberos v5, and can act as both a [Kerberos client](#kerber
  
 Figure 7: RadiantOne as a Kerberized Service
 
-Kerberos can be used for authentication to RadiantOne (acting as a Kerberized Service) as long as the client resides within the same domain or trusted domain forest as the RadiantOne service (and the RadiantOne machine must be in the same Kerberos realm/domain, or at least within the same forest as Active Directory). For authentication amongst un-trusted/different domains, the NTLM protocol is triggered instead. For details on configuring cross-domain authentication for RadiantOne, please see the section on [NTLM](#ntlm). To continue with configuring Kerberos for access to RadiantOne in Microsoft domains, follow the steps below. For details on MIT Kerberos support, see [Support for MIT Kerberos](#support-for-mit-kerberos).
+Kerberos can be used for authentication to RadiantOne (acting as a Kerberized Service) as long as the client resides within the same domain or trusted domain forest as the RadiantOne service (and the RadiantOne machine must be in the same Kerberos realm/domain, or at least within the same forest as Active Directory). To continue with configuring Kerberos for access to RadiantOne in Microsoft domains, follow the steps below. For details on MIT Kerberos support, see [Support for MIT Kerberos](#support-for-mit-kerberos).
 
 >[!note] All machines (client, domain controller…etc.) must be in sync in terms of clock (time/date settings). Also, if you have deployed RadiantOne in a cluster, the service account created in the KDC can use the server name of the load balancer that is configured in front of the RadiantOne cluster nodes. <br> To use a generic or common account for multiple RadiantOne cluster nodes, you need to set the SPN on the account matching the FQDN of the host that requests the kerberos ticket. There is no need to create individual accounts for each RadiantOne node/host. Refer to the account using the UPN in the RadiantOne configuration. The account can have multiple SPNs. An example is shown below.<br>
 sAMAccountName: svc-vdsadmin
@@ -319,126 +319,6 @@ Once the user is stored locally (or linked to an existing DN), they can be added
 ![An image showing ](Media/Image3.99.jpg)
 
 Figure 17: Location of Users who Successfully Authenticate using Kerberos
-
-## NTLM
-
-SASL binding via GSSAPI/GSS-SPNEGO will attempt to use Kerberos by default. You have the option to use NTLM in conjunction with Kerberos, or not at all (based on your company security policy). If used in conjunction with Kerberos, it applies as a backup protocol to be used if there is a problem with Kerberos authentication. If enabled, the NTLM protocol is used if one of the systems involved in authentication cannot use Kerberos authentication, is configured improperly, or if the client application does not provide sufficient information to use Kerberos. If NTLM is not enabled, and there is a problem with the Kerberos authentication, the bind (using GSSAPI/GSS-SPNEGO) to RadiantOne fails. Also, by using NTLM, RadiantOne is able to support cross-domain authentication. This means, that a user that is not logged into the same domain that RadiantOne is a member of (or a domain that is trusted by the RadiantOne domain) can still access RadiantOne and benefit from NTLM for authentication. RadiantOne supports NTLM v2.
-
-Like all challenge-response protocols, the password is not sent over the protocol but the challenge instead. Since NTLM relies on the domain controller to authenticate its users, RadiantOne needs to know on which domain controller the challenge is generated before sending the challenge back to the user. This information can typically be retrieved from user’s request. If the domain information is not passed, RadiantOne takes the default one to generate the challenge. The first domain listed in the NT Domain parameter is the default one. The diagram below depicts the architecture and process flows.
-
-![RadiantOne Support for NTLM Authentication](Media/Image3.100.jpg)
-
-Figure 18: RadiantOne Support for NTLM Authentication
-
-In the figure above, since the client is accessing RadiantOne from domain B and VDS has been “kerberized” in domain A (and domain A and B do not trust each other), Kerberos cannot be used for authentication. However, NTLM can. The NTLM authentication flow is as follows:
-
-1. Client binds to RadiantOne - The client sends an LDAP bind request to RadiantOne via GSSAPI/GSS-SPNEGO along with an NTLM Type 1 Message {e.g. NT_Domain=‘DOMAINB' Workstation='W-RLI06-MACHINE1' }
-
-2. RadiantOne requests an NTLM challenge message. RadiantOne requests an NTLM challenge from the required domain controller. RadiantOne knows which domain controller to send the request to because of the NT_Domain property that came in the bind request. If the NT_Domain property is not passed, RadiantOne uses the first one configured in the NT Domain property list.
-
-3. Domain controller responds with a challenge. The domain controller generates a challenge, and sends it to RadiantOne.
-
-4. RadiantOne sends the challenge message to client. The challenge message includes an LDAP bind response code 14 (SASL_BIND_IN_PROGRESS). This indicates the server requires the client to send a new bind request, with the same SASL mechanism, to continue the authentication process. 
-
-5. Client sends response message. The client then issues a new bind request via GSS-SPNEGO along with an NTLM Type 3 Message {e.g. Username='test5' NT_Domain=‘DOMAINB' }.
-
-6. RadiantOne requests domain controller validate the challenge and response. RadiantOne sends the username, the original challenge, and the response from the client computer to the domain controller. 
-
-7. Domain controller compares challenge and response to authenticate user. The domain controller obtains the password hash for the user, and then uses this hash to encrypt the original challenge. Next, the domain controller compares the encrypted challenge with the response from the client computer. If they match, the domain controller sends RadiantOne confirmation that the user is authenticated. Otherwise, user is not authenticated.
-
-8. RadiantOne sends bind response to the client. Assuming valid credentials, RadiantOne grants the client access.
-
-To enable NTLM:
-
-1. Go to the Main Control Panel > Settings Tab > Security section > Authentication Methods sub-section.
-
-2. Check the NTLM Authentication option.
-
-3. Each domain that should be supported needs to be configured in this list. The default domain is empty by default and must be configured. Therefore, select the default domain in the list and click **EDIT**.
-
-4. Enter the NT Domain, client principal suffix, Domain Controller IP Address, Domain Controller Host BIOS Name, RadiantOne Computer Account (in the domain), RadiantOne Computer Account Password, IP Range, and configure a client principal name mapping if applicable. An example of NTLM settings is shown below.
-
-![NTLM Domain Controller Configuration](Media/Image3.101.jpg)
-
-Figure 19: NTLM Domain Controller Configuration
-
-More details about the NT Domain Controller settings can be found below. After you have configured the default domain, click **ADD** to add any additional domains that are required.
-
->[!note]
->Changing any of these parameters requires a restart of the RadiantOne service. If RadiantOne is deployed in a cluster, restart the service on all nodes.
-
-**NT Domain**
-
-A unique domain name that a client may belong to (connecting to RadiantOne from). If the client is not connecting to RadiantOne from the same domain (or a trusted domain), then their domain must be configured otherwise they cannot connect to RadiantOne.
-
-**Client Principal Suffix**
-
-The “Kerberos style” realm that corresponds to the above NT domain. 
-
-**DC IP Address**
-
-Enter the IP address of the domain controller you configured in the NT Domain property.
-
-**DC Host BIOS Name**
-
-Enter the host name (NETBIOS name) of the machine hosting the NT Domain.
-
-**Computer Account**
-
-RadiantOne must have a service account (defined as a computer account) in the NT Domain. If the RadiantOne host machine joined an Active Directory (AD) domain, the domain controller should have already generated a Computer account for your host. It is under the node "CN=Computer, DC=`<domain>`" in AD. However, RadiantOne does not require a physical Computer account to run NTLMv2. It can be a service account but it must be defined under the "CN=Computers" container. To create a service/computer account in your NT Domain, from the Active Directory Users and Computers interface, right-click on the "CN=Computers" node. Choose 'New' and then click on 'Computer'. Follow the wizard to create a service computer account. 
-
-The Computer Account value you enter in the Main Control Panel must be in format of: `<computer_name>$@<domain>`
-e.g. `NTLMv2$@testad.com` 
-
-**Computer Account Password**
-
-The password for the RadiantOne service/computer account in the NT Domain should be entered here. Assigning or resetting the password for a computer account can be done with ADSIEdit. From the Active Directory domain controller machine, launch ADSIEdit (run adsiedit.msc). Browse to the Computer account, right click on it, and choose "Reset Password". The password can be entered here. Also update this password for the computer account password property in the Main Control Panel.
-
-**IP Range**
-
-This list defines the IP Addresses for the clients that are authenticated to this configured domain controller. IP Range is required for all configured domains except the default one.
-
-If the client can send the Domain information to RadiantOne in the Type 1 message, RadiantOne would be able to choose which domain controller to generate the corresponding challenge, which is embedded in the Type 2 message sent back to client. If the client is not able to indicate the Domain in the Type 1 message, RadiantOne references the IP ranges configured and determine the relevant domain. If based on the configured IP ranges (across all configured domains), RadiantOne cannot determine which domain to use, it uses the default one.
-
-**Client Principal Name Mapping**
-
-After authentication via NTLM, authorization (access permissions) must be determined. Client Principal Name Mapping can be used to set up a mapping between the user who authenticates using NTLM and a user DN. The DN is required to set access permissions and for RadiantOne to enforce authorization. If no client principal name mappings are configured (or the ones configured fail to link the username to a valid DN in the virtual tree), then RadiantOne allows [anonymous access](access-control#allow-anonymous-access) (you must make sure anonymous access is allowed). To configure the mapping, click **Change** next to the Client Principal Name Mapping parameter.
-
-There are three different ways to determine the DN from the user ID received in the LDAP bind (using regular expression syntax). Each is described below.
-
--	Setting a specific User ID to DN. In this example, if lcallahan were received in the authentication request, RadiantOne would base the authorization on the DN: cn=laura Callahan,cn=users,dc=mycompany,dc=com
-
-`lcallahan (the user ID) -> (maps to) cn= laura Callahan,cn=users,dc=mycompany,dc=com`
-
-- Specify a DN Suffix, replacing the $1 value with the User ID.
-
-`(.+) -> uid=$1,ou=people,ou=ssl,dc=com`
-
-`(.+) represents the value coming into RadiantOne from the bind operation. If RadiantOne received a User ID of lcallahan, then the DN it bases authorization on is: uid=lcallahan,ou=people,ou=ssl,dc=com.`
-
--	Specify a Base DN, scope of the search, and a search filter to search for the user based on the User ID received in the bind request.
-
-`(.+) -> dc=domain1,dc=com??sub?(sAMAccountName=$1)`
-
-If RadiantOne received a User ID of lcallahan from the bind request, it would issue a search like:
-
-`dc=domain1,dc=com??sub?(sAMAccountName=lcallahan)`
-
-The user DN returned from the search is used by RadiantOne to identify the user entry in the RadiantOne namespace and to base authorization decisions on.
-
-For options 2 and 3 described above, multiple variables can be used (not just 1 as described in the examples). Let’s take a look at an example mapping that uses multiple variables:
-
-`(.+)@(.+).(.+).com -> ou=$2,dc=$3,dc=com??sub?(&(uid=$1)(dc=$3))`
-
-If RadiantOne received a user ID like laura_callahan@ny.radiant.com, the search that would be issued would look like:
-
-`ou=ny,dc=radiant,dc=com??sub?(&(uid=laura_callahan)(dc=radiant))`
-
-The user DN returned from the search is used by RadiantOne to identity the user entry in the virtual namespace and to base authorization decisions on.
-
-For more details, please see [Processing Multiple Mapping Rules](interception#processing-multiple-mapping-rules).
-
-Changing any NTLM-related parameters requires a restart of RadiantOne. Click **Save** prior to restarting. If deployed in a cluster, restart the service on all nodes.
 
 ## MD5
 
