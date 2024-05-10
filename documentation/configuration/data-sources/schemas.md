@@ -70,11 +70,9 @@ Examples of LDAP-accessible backends are Sun Java Directory, Microsoft Active Di
 
 1. In the Control Panel > Setup > Data Catalog > Data Sources > Selected Data Source > SCHEMA Tab, click **...** > Extract New Schema.
 
-1.	Enter a schema file name and click **OK**.
+1.	Enter a schema file name (do not use hyphens) and click **OK**.
+	 ![An image showing ](../Media/extract-new-schema.png)
 
- ![An image showing ](../Media/extract-new-schema.png)
-
- >[!warning] DO NOT USE HYPHENS (-) IN FILE NAMES. 
 
 1. You can view/modify this schema by selecting if from the drop-down list. Any changes made (such as attribute name remapping), do not affect the underlying schema. 
 
@@ -189,7 +187,8 @@ For directory schemas, declare the attribute that uniquely identifies each entry
 To declare and modify the primary keys: 
 
 1.	 Right-click on the desired object and choose **Edit Primary Key(s)**.
-   ![An image showing ](../Media/edit-primary-key.jpg)
+   
+	 ![An image showing ](../Media/edit-primary-key.jpg)
 
 1.	 Choose the column(s) from the Attributes List that you want to use as the primary key and click the right arrow button. 
 
@@ -365,23 +364,29 @@ The default object class can be changed if needed. Database and LDAP objects can
 
 ### Mapping Database Objects to LDAP Object Classes and Attributes
 
-1.	Open the database schema containing the objects you want to map in the Schema Manager tab. 
+To map to LDAP object classes and/or attributes, open the database schema containing the objects you want to map in the Control Panel > Setup > Data Catalog > Data Sources > [Selected Data Source] > Schema tab. 
 
-2.	Right-click on the database object you want to map and choose Object Mapping. 
+**Mapping to LDAP Object Classes**
 
-![An image showing ](Media/Image3.29.jpg)
+1.	Select the database object you want to map and locate the LDAP Objectclass property on the right.
+1.	Click the [Pencil](Media/pencil-icon.jpg) icon inline with the LDAP Objectclass property.
+   ![LDAP Object Class Mapping](Media/oc-mapping-db.jpg)
 
-3.	Select the object class from the drop-down list that you want mapped to the database object. 
+1.	Select the object class from the drop-down list that you want mapped to the database object. If you prefer to enter your own custom object class name, you can type it in the LDAP Object Class property. 
 
-4.	When mapping database columns to LDAP attributes, you can map each attribute individually based on the object class definition selected in step 3 or manually enter your own mapped attribute name. To map to an existing LDAP attribute, select the corresponding LDAP attribute from the drop-down list. The attribute list is based on the definition of the LDAP object class selected in step 3. In the example shown in the screen shot below, inetOrgPerson has been selected and two attributes have been mapped to LDAP attributes of the inetOrgPerson class. 
+1.	Click the [Checkmark](Media/checkmark.jpg) inline with the LDAP Objectclass property.
+1. Click **SAVE**.	
 
-![An image showing ](Media/Image3.30.jpg)
+**Mapping to LDAP Attributes**
 
-5.	If you prefer to enter your own custom object class name, you can type it in the LDAP Object Class parameter. 
+1. Expand the database object you want to map the attributes for and select the *Attributes* node.
+1. Click the [Pencil](Media/pencil-icon.jpg) inline with the attribute you want to map.
+1. Use the Mapped Attribute Name column to define attribute mappings. If you have mapped the object to a (known) LDAP object class, the list of attributes shown in the drop-down list are populated from the schema definition.	If you prefer to enter your own custom attribute names, type them in the Mapped Attribute Name property next to the database attribute name.
 
-6.	If you prefer to enter your own custom attribute names, type them in the LDAP attribute parameter next to the database attribute name.
+1.	Click the [Checkmark](Media/checkmark.jpg) inline with the database attribute to save the mapping.
+1. Click **SAVE**.	
 
-7.	Click OK when finished. 
+![Mapping Database Attributes](Media/mapping-attributes.jpg)
 
 ### Mapping LDAP Objects to New Object Classes and Attributes
 
