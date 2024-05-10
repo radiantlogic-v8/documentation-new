@@ -369,21 +369,20 @@ To map to LDAP object classes and/or attributes, open the database schema contai
 **Mapping to LDAP Object Classes**
 
 1.	Select the database object you want to map and locate the LDAP Objectclass property on the right.
-1.	Click the [Pencil](Media/pencil-icon.jpg) icon inline with the LDAP Objectclass property.
+1.	Click the ![Pencil](Media/pencil-icon.jpg) icon inline with the LDAP Objectclass property.
    ![LDAP Object Class Mapping](Media/oc-mapping-db.jpg)
 
 1.	Select the object class from the drop-down list that you want mapped to the database object. If you prefer to enter your own custom object class name, you can type it in the LDAP Object Class property. 
 
-1.	Click the [Checkmark](Media/checkmark.jpg) inline with the LDAP Objectclass property.
+1.	Click the ![Checkmark](Media/checkmark.jpg) inline with the LDAP Objectclass property.
 1. Click **SAVE**.	
 
 **Mapping to LDAP Attributes**
 
 1. Expand the database object you want to map the attributes for and select the *Attributes* node.
-1. Click the [Pencil](Media/pencil-icon.jpg) inline with the attribute you want to map.
+1. Click the ![Pencil](Media/pencil-icon.jpg) inline with the attribute you want to map.
 1. Use the Mapped Attribute Name column to define attribute mappings. If you have mapped the object to a (known) LDAP object class, the list of attributes shown in the drop-down list are populated from the schema definition.	If you prefer to enter your own custom attribute names, type them in the Mapped Attribute Name property next to the database attribute name.
-
-1.	Click the [Checkmark](Media/checkmark.jpg) inline with the database attribute to save the mapping.
+1. Click the ![Checkmark](Media/checkmark.jpg) inline with the database attribute to save the mapping.
 1. Click **SAVE**.	
 
 ![Mapping Database Attributes](Media/mapping-attributes.jpg)
