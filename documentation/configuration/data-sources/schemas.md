@@ -47,7 +47,7 @@ For more information on derived views, see [Creating Derived Views](#creating-de
 
 ### Relationships 
 
-If relationships exist in a database and are not explicitly declared in the system catalog, then the schema extraction process does not capture them. Some relationships are created implicitly (exist in the application, but are not recorded within the database dictionary). This is fine if you do not need to build a virtual view based on the relationships. On the other hand, if you want to use the existing relationships to build virtual views, then you must define the relationships in the schema file. 
+If relationships exist in a database and are not explicitly declared in the system catalog, then the schema extraction process does not capture them. Some relationships are created implicitly (exist in the application, but are not recorded within the database dictionary). This is fine if you do not need to build an identity view based on the relationships. On the other hand, if you want to use the existing relationships to build identity views, then you must define the relationships in the schema file. 
 
 To evaluate missing relationships in the schema file, you need a working knowledge of the underlying database application on which the schema is based. Once you have determined which relationships are missing, you can declare them by using the Define Relationships option from the right-click menu available when an object is selected. For more information, see [Declaring Implicit Relationships](#declaring-implicit-relationships). 
 
@@ -78,7 +78,7 @@ Examples of LDAP-accessible backends are Sun Java Directory, Microsoft Active Di
 
 **Handling Auxiliary Object Classes from LDAP Backends** 
 
-Sometimes, an LDAP entry in a directory is comprised of more than one object class where the object classes do not necessarily inherit from each other. This is referred to as an auxiliary class. For example, a person entry in the directory can be a part of an object class such as inetOrgPerson and also contain attributes from a custom object class like rliuser (this is the auxiliary class). During the schema extraction, since the object classes do not inherit from each other, they are displayed as two separate objects each having their own list of attributes. To retrieve the proper information from the directory in the virtual view, you must merge the objects together in the schema file. 
+Sometimes, an LDAP entry in a directory is comprised of more than one object class where the object classes do not necessarily inherit from each other. This is referred to as an auxiliary class. For example, a person entry in the directory can be a part of an object class such as inetOrgPerson and also contain attributes from a custom object class like rliuser (this is the auxiliary class). During the schema extraction, since the object classes do not inherit from each other, they are displayed as two separate objects each having their own list of attributes. To retrieve the proper information from the directory in the identity view, you must merge the objects together in the schema file. 
 
 To merge object classes together: 
 
@@ -92,7 +92,7 @@ To merge object classes together:
 
 ![An image showing ](../Media/define-merged-object.jpg)
 
-A new object is created below the Views branch and contains all attributes from both object classes. A virtual view can be created from this merged object and the entries can contain attributes from either of the object classes. 
+A new object is created below the Views branch and contains all attributes from both object classes. An identity view can be created from this merged object and the entries can contain attributes from either of the object classes. 
 
 >[!warning] The direction in which you merge the objects is significant because the ‘base’ object (the structured object class) is used in the filter for the query that is sent to the backend directory. Note that the attributes defined for this merged object come from both the structured objectclass inetorgperson (uid, cn, displayName) and the auxiliary objectclass, RLIUser (rliuserattribute2, rliuserattribute3).
 
@@ -180,7 +180,7 @@ Once the metadata has been captured, the next step is to improve it in a way tha
 
 Primary keys that are implicit, but not declared in the data dictionary, are not included in schema files unless you declare them. 
 
->[!warning] All objects you want to create virtual views from must have a primary key defined, and any attribute that you declare as the primary key in the schema file must be unique for all entries in your table.
+>[!warning] All objects you want to create identity views from must have a primary key defined, and any attribute that you declare as the primary key in the schema file must be unique for all entries in your table.
 
 For directory schemas, declare the attribute that uniquely identifies each entry as the primary key. 
 
@@ -203,9 +203,9 @@ Once the metadata has been captured, the next step is to improve it in a way tha
 
 >[!note] Changes made in the schema file do not affect the underlying schema.
 
-Sometimes a database schema does not contain all relationships that can exist between objects. The schema extraction process cannot capture these implicit relationships that are known by the programmers but not declared in the database data dictionary. You should declare any relationships you will need for your virtual views. 
+Sometimes a database schema does not contain all relationships that can exist between objects. The schema extraction process cannot capture these implicit relationships that are known by the programmers but not declared in the database data dictionary. You should declare any relationships you will need for your identity views. 
 
-The declaration process is a critical step as it affects the quality of the virtual views that are created. Any undeclared relationships or primary keys result in a meaningless path, directly affecting the quality or availability of information displayed in the virtual views.
+The declaration process is a critical step as it affects the quality of the identity views that are created. Any undeclared relationships or primary keys result in a meaningless path, directly affecting the quality or availability of information displayed in the identity views.
 
 The Relationships dialog box requires source and destination tables (or views). When setting relationships, it does not matter which entity is the source and which is the destination. 
 
@@ -251,9 +251,9 @@ You should now see new views created corresponding to the depth level entered, a
 
 ![An image showing ](Media/Image3.18.jpg)
 
-Once the recursive relationship is described in the schema file, a hierarchical virtual directory view can be created. For details on how to build virtual views, please see [View Designer](view-designer.md). 
+Once the recursive relationship is described in the schema file, a hierarchical virtual directory view can be created. For details on how to build identity views, please see [View Designer](view-designer.md). 
 
->[!note] If you do not know the depth of recursion, there is a way to build a virtual view without first defining the recursive relationships in the Schema Manager. For detailed steps, please see the article titled Building a Hierarchical Virtual View Based on Recursive Relationships in a Database in the RadiantOne Knowledge Base at: https://support.radiantlogic.com. You will need a user ID and password for accessing the knowledge base. If you do not have one, please contact Radiant Logic at support@radiantlogic.com.
+>[!note] If you do not know the depth of recursion, there is a way to build an identity view without first defining the recursive relationships in the Schema Manager. For detailed steps, please see the article titled Building a Hierarchical Virtual View Based on Recursive Relationships in a Database in the RadiantOne Knowledge Base at: https://support.radiantlogic.com. You will need a user ID and password for accessing the knowledge base. If you do not have one, please contact Radiant Logic at support@radiantlogic.com.
 
 ### Creating Synonyms
 
@@ -261,7 +261,7 @@ Once the metadata has been captured, the next step is to improve it in a way tha
 
 >[!note] Changes made in the schema settings do not affect the underlying schema.
 
-For flexibility in modeling virtual views, you can create a synonym from any object in the schema. A synonym is a complete replica of the object with a new name. 
+For flexibility in modeling identity views, you can create a synonym from any object in the schema. A synonym is a complete replica of the object with a new name. 
 
 To create a synonym for an object: 
 
@@ -275,7 +275,7 @@ To create a synonym for an object:
 
 ![An image showing ](Media/Image3.20.jpg)
 
-The new object appears under the list of Views. This new object does not change the underlying schema but can be used when building virtual views. For details on building custom virtual views, please see [View Designer](view-designer.md). 
+The new object appears under the list of Views. This new object does not change the underlying schema but can be used when building identity views. For details on building identity views, please see [View Designer](view-designer.md). 
 
 ### Declaring RDN Attribute Name and Value
 
@@ -299,7 +299,7 @@ To declare or Modify RDN Attribute Name and Value:
 
 To remove attribute(s) from the RDN Display Attribute(s) list, choose the column(s) and click the left arrow button. 
 
-This RDN attribute name becomes the default name (for a container or content object) when the corresponding object is used to build a virtual view in the View Designer. 
+This RDN attribute name becomes the default name (for a container or content object) when the corresponding object is used to build an identity view in the View Designer. 
 
 For example, if you set the RDN attribute name for the Employee table to equal Name, then when you access the Employee table to create a container or content level in the View Designer, the default RDN attribute name for that specific level will be Name. The RDN will be Name = First Name Last Name {Employee Primary Key value}. An example of this is shown in the screen shot below. 
 
@@ -331,7 +331,7 @@ To remove a relationship, right-click on the desired relationship and choose Del
  
 ### Creating Derived Views
 
-Derived views are created from a base table and consist of one attribute that contains normalized data, such as a single column table for countries, postal codes, city names, etc. Derived views are objects that are added to the schema file to allow for more flexibility when creating virtual views. 
+Derived views are created from a base table and consist of one attribute that contains normalized data, such as a single column table for countries, postal codes, city names, etc. Derived views are objects that are added to the schema file to allow for more flexibility when creating identity views. 
 
 See [Derived View](#derived-view) in the Schema Manager basic terms for more information. 
 
