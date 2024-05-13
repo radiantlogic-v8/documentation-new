@@ -30,7 +30,10 @@ Harness your identity data with intelligent integration to drive better business
   > Learn the concepts related to configuring Identity Data Management.
 
   > [Sample Data](introduction/samples)
-  > Learn about the sample naming contexts and data sources that are included in RadiantOne. 
+  > Learn about the sample naming contexts and data sources that are included in RadiantOne.
+
+  > [Data Sources Supported](configuration/data-sources/data-sources-supported)
+  > Learn about the data sources supported in RadiantOne. 
   
 </section>
 
