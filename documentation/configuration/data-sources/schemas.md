@@ -114,8 +114,7 @@ The database data source must be created before completing the schema extraction
 1.	Limit the types of objects to be returned by selecting tables, views, system tables, or synonyms. If you would like all types of objects returned, then select all options. If you only want a subset of the selected objects returned, then you can enter a pattern for the Table Pattern parameter using the “%” for a wildcard character. For example, if you want to return only tables that start with “N”, then for the Table Pattern you can enter N%.
 
 1.	Click **NEXT** to proceed and select the desired Tables and Views from the list.
- 
-![An image showing ](../Media/Image3.11.jpg)
+	![An image showing ](../Media/Image3.11.jpg)
 
 1.	Click **EXTRACT**. This creates the schema file and adds it into the drop-down list next to *Schema Name*.
 
