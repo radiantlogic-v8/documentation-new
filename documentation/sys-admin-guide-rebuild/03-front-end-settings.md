@@ -258,6 +258,10 @@ RadiantOne supports the following LDAP controls.
 
 1.3.6.1.4.1.42.2.27.8.5.1 - Password policy control
 
+1.3.6.1.1.13.1 - LDAP pre-read
+
+1.3.6.1.1.13.2 - LDAP post-read
+
 RadiantOne supports the following LDAP features:
 
 1.3.6.1.1.14 – Modify-Increment Extension
