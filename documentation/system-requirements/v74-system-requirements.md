@@ -115,40 +115,32 @@ RadiantOne supports the following container platforms:
 
 ### RadiantOne Nodes
 
-Hardware
+**Hardware**
 
 Cluster nodes must be deployed on hardware that is configured for optimal redundancy and highly reliable connectivity between the cluster nodes/machines.
 
-Processor: Intel Pentium or AMD Opteron. Minimum dual core.
+-    Processor: Intel Pentium or AMD Opteron. Minimum dual core.
+-    Processor Speed: 2GHZ or higher
+-    Network Bandwidth: Minimum 1Gbps, low latency
+-    Memory: 16 GB minimum. For most production deployments, more than 16 GB of memory is required. For more details on sizing, see the [RadiantOne Hardware Sizing Guide](/hardware-sizing-guide/01-introduction).
+-    Hard Drive: 500 GB of disk space, SSD (the hard disk usage will vary depending on log types/levels that are enabled and the desired log history to maintain in addition to quantity of HDAP stores and Persistent Cache configurations). The recommended minimum data transfer rate is 150 MB/sec.
 
-Processor Speed: 2GHZ or higher
-
-Network Bandwidth: Minimum 1Gbps, low latency
-
-Memory: 16 GB minimum. For most production deployments, more than 16 GB of memory is required. For more details on sizing, see the [RadiantOne Hardware Sizing Guide](/hardware-sizing-guide/01-introduction).
-
-Hard Drive: 500 GB of disk space, SSD (the hard disk usage will vary depending on log types/levels that are enabled and the desired log history to maintain in addition to quantity of HDAP stores and Persistent Cache configurations). The recommended minimum data transfer rate is 150 MB/sec.
-
-Software
+**Software**
 
 Operating Systems: Windows Server 2012 R2, Windows Server 2016, Windows Server 2019, Windows Server Core, Windows Server 2022, Red Hat Enterprise Linux v5/v6/v7/v8+, Fedora v24+, CentOS v7+, SUSE Linux Enterprise v11+, Ubuntu 16+
 
 ### ZooKeeper Nodes:
 
-Hardware
+**Hardware**
 
 Cluster nodes must be deployed on hardware that is configured for optimal redundancy and highly reliable connectivity between the cluster nodes/machines. For production environments, it is recommended that the ZooKeeper nodes be installed separate from the RadiantOne FID nodes.
 
-Processor: Intel Pentium or AMD Opteron. Minimum dual core.
+-    Processor: Intel Pentium or AMD Opteron. Minimum dual core.
+-    Processor Speed: 2GHZ or higher
+-    Network Bandwidth: Minimum 1Gbps, low latency
+-    Memory: 8 GB minimum.
+-    Hard Drive: 50 GB of disk space, SSD. The required minimum data transfer rate is 100 MB/sec.
 
-Processor Speed: 2GHZ or higher
-
-Network Bandwidth: Minimum 1Gbps, low latency
-
-Memory: 8 GB minimum. 
-
-Hard Drive: 50 GB of disk space, SSD. The required minimum data transfer rate is 100 MB/sec.
-
-Software
+**Software**
 
 Operating Systems: Windows Server 2012 R2, Windows Server 2016, Windows Server 2019, Windows Server Core, Windows Server 2022, Red Hat Enterprise Linux versions 5,6,7,8+, Fedora v24+, CentOS v7+, SUSE Linux Enterprise v11+, Ubuntu 16+
