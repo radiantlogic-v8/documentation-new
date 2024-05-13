@@ -34,7 +34,7 @@ For detailed memory requirements for specific configurations, please see the [Ra
 - Terradata
 - Any JDBC/ODBC-accessible database
 
-The only JDBC drivers installed with RadiantOne are: JDBC-ODBC Bridge from Sun, Oracle (thin), Oracle oci, Microsoft SQL Server, HSQL, MySQL (supports MariaDB too), IBM DB2, Sybase, and Derby. For all other databases, you import your JDBC driver.
+The only JDBC drivers installed with RadiantOne are: JDBC-ODBC Bridge from Sun, Oracle (thin), Oracle oci, Microsoft SQL Server, HSQL, MySQL (supports MariaDB too), IBM DB2, Sybase, and Derby. For all other databases, import your own JDBC driver.
 
 ### Cloud Directory Services
 
