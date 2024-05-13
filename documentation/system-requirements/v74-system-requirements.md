@@ -7,7 +7,9 @@ This document describes the supported backend data sources and the recommended m
 
 For detailed memory requirements for specific configurations, please see the [RadiantOne Hardware Sizing Guide](/hardware-sizing-guide/01-introduction).
 
-## LDAP Directory Servers	
+## Supported Identity Data Sources
+
+### LDAP Directory Servers	
 
 - Microsoft Active Directory 2008, 2012, 2016, 2019, 2022
 - Active Directory Lightweight Directory Service (AD-LDS)
@@ -21,7 +23,7 @@ For detailed memory requirements for specific configurations, please see the [Ra
 - CA Directory r12.X
 - Any LDAP v3 Service
 
-## Database Servers	
+### Database Servers	
 
 - Oracle 8i, 9i, 10g, 11g, 12c
 - Microsoft SQL Server v2008, v2012, v2016, v2017
@@ -32,15 +34,14 @@ For detailed memory requirements for specific configurations, please see the [Ra
 - Terradata
 - Any JDBC/ODBC-accessible database
 
-## Cloud Directory Services
+### Cloud Directory Services
 
-- Azure AD
+- Entra ID (formerly Azure AD)
 - PingOne
 - Okta Universal Directory
 
-## Applications/Other
+### Applications/Other**
 
-- Applications**
 - SAP
 - Siebel v7.5+
 - Oracle Financials v12+
@@ -50,7 +51,7 @@ For detailed memory requirements for specific configurations, please see the [Ra
 - Workday
 - Concur
 - Any SCIM-accessible Service
-- Other**
+- Other
     - 	Web Services
     - 	RACF
     -	ACF2
@@ -58,13 +59,14 @@ For detailed memory requirements for specific configurations, please see the [Ra
     -	Java API
     -  	Microsoft NT Domain
 
-** Requires customization
+>[!warn] ** All of these require customization. Consult your Radiant Logic Account Representative for details.
 
-## Supported Client Access Protocols
+## System Requirements
+
+### Supported Client Access Protocols
 
 - LDAP
-- SQL (JDBC driver included with RadiantOne)
-- Web Services (DSML, SPML, SCIM, REST)
+- Web Services (SCIM, REST)
 
 ### DNS Settings
 
@@ -90,9 +92,9 @@ Any ports required to access backends: e.g. LDAP directories: 389, 636 (SSL), SQ
 
 For cluster deployments, an F5 load balancer (or similar LDAP-aware load balancer) is required to perform load balancing across the RadiantOne nodes (between the client applications and RadiantOne cluster nodes).
 
-### Supported Platforms
+## Supported Platforms
 
-#### Supported Virtualization & Container Platforms
+### Supported Virtualization & Container Platforms
 
 If RadiantOne will be running on a virtual machine, the minimum recommendations detailed in the platform specific sections (Windows Platforms and Linux Platforms) are what should be allocated for the virtual machine. It should be noted that these minimums may not be sufficient for a production environment.
 
@@ -111,7 +113,7 @@ RadiantOne supports the following container platforms:
 
 ** The design, installation, configuration, and testing of a Kubernetes deployment may require a Professional Services engagement with Radiant Logic. To discuss your Kubernetes deployment, recommendations, and best practices, contact your Radiant Logic Account representative.
 
-#### RadiantOne Nodes
+### RadiantOne Nodes
 
 Hardware
 
@@ -131,7 +133,7 @@ Software
 
 Operating Systems: Windows Server 2012 R2, Windows Server 2016, Windows Server 2019, Windows Server Core, Windows Server 2022, Red Hat Enterprise Linux v5/v6/v7/v8+, Fedora v24+, CentOS v7+, SUSE Linux Enterprise v11+, Ubuntu 16+
 
-#### ZooKeeper Nodes:
+### ZooKeeper Nodes:
 
 Hardware
 
