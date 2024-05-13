@@ -43,6 +43,10 @@ An attribute found in the rootDSE (<RLI_HOME>\vds_server\conf\rootdse.ldif) that
 
 -	Absolute True and False Filters as described in RFC 4526 - 1.3.6.1.4.1.4203.1.5.3
 
+-	LDAP pre-read - 1.3.6.1.1.13.1
+
+-	LDAP post-read - 1.3.6.1.1.13.2
+
 ## changelog
 
 An attribute found in the rootDSE (<RLI_HOME>\vds_server\conf\rootdse.ldif) that indicates the location in RadiantOne where changes that have occurred in the directory are logged. This allows clients to query this location to learn about these changes. 
