@@ -48,7 +48,7 @@ Harness your identity data with intelligent integration to drive better business
   > [Release Notes](release-notes/v740-release-notes)
   > Review the release notes to learn more about what fixes and improvements have been made for each patch release.
 
-  > [System Requirements](system-requirements/v74-system-requirements)
+  > [Data Sources Supported & System Requirements](system-requirements/v74-system-requirements)
   > Review the supported backend data sources and the recommended minimum system requirements for installing RadiantOne. 
 
   > [Migration Utility](migration-utility/01-introduction)
