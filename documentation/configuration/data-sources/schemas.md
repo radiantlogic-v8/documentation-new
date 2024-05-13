@@ -434,21 +434,22 @@ To merge schema files:
 
 ## Deleting Schema Files 
 
-Schema files should be deleted from the Control Panel. 
+Delete schema files from the Control Panel > Setup > Data Catalog > Data Sources > [Selected Data Source] > Schema tab.  
 
 To delete a schema file: 
 
 1. In the Control Panel, navigate to Setup > Data Catalog > Data Sources. 
 
-2. Select a data source. 
+1. Select a data source. 
 
-3. Click the data source's Schema tab.
+1. Click the data source's Schema tab.
 
-4.	From the Options menu ("..."), select *Delete Schema*. 
+1.	From the Options menu ("..."), select *Delete Schema*.
+   ![An image showing ](Media/Image3.36.jpg)
 
-![An image showing ](Media/Image3.36.jpg)
+1.	Click *Delete* to confirm the deletion. 
 
-5.	Click *Delete* to confirm the deletion. 
+>[!note] A list of identity views created from the schema is shown. These views can no longer be modified once the backend schema file is deleted. 
 
 ## Comparing Schema Files
 
