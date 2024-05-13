@@ -61,7 +61,7 @@ The only JDBC drivers installed with RadiantOne are: JDBC-ODBC Bridge from Sun, 
     -	Java API
     -  	Microsoft NT Domain
 
->[!warn] ** All of these require customization. Consult your Radiant Logic Account Representative for details.
+>[!warn] ** All of these require customization. Consult your Radiant Logic Account Representative and Solution Consultant for details.
 
 ## System Requirements
 
@@ -131,7 +131,7 @@ Cluster nodes must be deployed on hardware that is configured for optimal redund
 
 Operating Systems: Windows Server 2012 R2, Windows Server 2016, Windows Server 2019, Windows Server Core, Windows Server 2022, Red Hat Enterprise Linux v5/v6/v7/v8+, Fedora v24+, CentOS v7+, SUSE Linux Enterprise v11+, Ubuntu 16+
 
-### ZooKeeper Nodes:
+### ZooKeeper Nodes
 
 **Hardware**
 
