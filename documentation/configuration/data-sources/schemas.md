@@ -251,7 +251,7 @@ You should now see new views created corresponding to the depth level entered, a
 
 ![An image showing ](Media/Image3.18.jpg)
 
-Once the recursive relationship is described in the schema file, a hierarchical virtual directory view can be created. For details on how to build identity views, please see [View Designer](view-designer.md). 
+Once the recursive relationship is described in the schema file, a hierarchical [Identity View](../identity-views/intro-view-design) can be created. 
 
 >[!note] If you do not know the depth of recursion, there is a way to build an identity view without first defining the recursive relationships in the Schema Manager. For detailed steps, please see the article titled Building a Hierarchical Virtual View Based on Recursive Relationships in a Database in the RadiantOne Knowledge Base at: https://support.radiantlogic.com. You will need a user ID and password for accessing the knowledge base. If you do not have one, please contact Radiant Logic at support@radiantlogic.com.
 
@@ -275,7 +275,7 @@ To create a synonym for an object:
 
 ![An image showing ](Media/Image3.20.jpg)
 
-The new object appears under the list of Views. This new object does not change the underlying schema but can be used when building identity views. For details on building identity views, please see [View Designer](view-designer.md). 
+The new object appears under the list of Views. This new object does not change the underlying schema but can be used when building identity views. For details on building identity views, please see: [Identity Views](../identity-views/intro-view-design)
 
 ### Declaring RDN Attribute Name and Value
 
@@ -283,7 +283,7 @@ Once the metadata has been captured, the next step is to improve it in a way tha
 
 >[!note] Changes made in the schema settings do not affect the underlying schema.
 
-RDN Attribute Name and Display Columns are a combination of the primary key and at least one other attribute. You can also declare RDN Attribute Name and Display Columns using the View Designer, see Declaring an RDN Attribute Name and Value for more details.
+RDN Attribute Name and Display Columns are a combination of the primary key and at least one other attribute. You can also declare RDN Attribute Name and Display Columns in the [Identity Views](../identity-views/intro-view-design).
 
 To declare or Modify RDN Attribute Name and Value: 
 
@@ -299,9 +299,9 @@ To declare or Modify RDN Attribute Name and Value:
 
 To remove attribute(s) from the RDN Display Attribute(s) list, choose the column(s) and click the left arrow button. 
 
-This RDN attribute name becomes the default name (for a container or content object) when the corresponding object is used to build an identity view in the View Designer. 
+This RDN attribute name becomes the default name (for a container or content object) when the corresponding object is used to build an [Identity Views](../identity-views/intro-view-design).
 
-For example, if you set the RDN attribute name for the Employee table to equal Name, then when you access the Employee table to create a container or content level in the View Designer, the default RDN attribute name for that specific level will be Name. The RDN will be Name = First Name Last Name {Employee Primary Key value}. An example of this is shown in the screen shot below. 
+For example, if you set the RDN attribute name for the Employee table to equal Name, then when you access the Employee table to create a container or content level in the [Identity Views](../identity-views/intro-view-design), the default RDN attribute name for that specific level will be Name. The RDN will be Name = First Name Last Name {Employee Primary Key value}. An example of this is shown in the screen shot below. 
 
 ![An image showing ](Media/Image3.22.jpg)
  
@@ -342,9 +342,9 @@ To create a derived view, follow the steps below.
 
 ![An image showing ](Media/Image3.26.jpg)
 
-The new derived view object appears in the list of views in the Schema Manager tab. This new object can be used when building virtual views in the [View Designer](view-designer.md). 
+The new derived view object appears in the list of views in the schema. This new object can be used when building [Identity Views](../identity-views/intro-view-design).
 
->[!note] A derived view may NOT be created from the same attribute twice.
+>[!note] A derived view cannot be created from the same attribute twice.
 
 ### Mapping Metadata 
 
@@ -412,56 +412,17 @@ To map to LDAP object classes and/or attributes, open the LDAP schema containing
 
 ![Re-Mapping LDAP Attributes](Media/mapping-ldap-attr.jpg)
 
-### Merging Schema Files
+## Comparing Schemas
 
-Merging schema files is helpful if you have extracted and enhanced (declared keys, relationships, mapping…etc.) a very large schema and you need to bring in new objects from that same server. You can extract just these new objects and merge them with the existing schema. This saves time over having to extract and enhance the entire schema again. 
+This option allows you to view the differences between an extracted schema file and the current backend schema. You can choose to update the selected schema file with the differences or save a new schema file. Comparing and then merging changes is helpful if you have extracted and enhanced (declared keys, relationships, mapping…etc.) a very large schema and you need to bring in new objects from that same server. You can compare the selected schema file with the current backend schema and just merge in new objects/attributes with the existing schema. This saves time over having to extract and enhance the entire schema again. 
 
-To merge schema files:
-
-1.	Extract the new objects on the Schema Manager tab. 
-2.	Open the existing schema file in Schema Manager. 
-3.	Right-click at the top node of the schema and choose Merge with Other Schema. 
-
-![An image showing ](Media/Image3.34.jpg)
-
-4.	Browse to the schema file that you extracted/saved in step 1 above. 
-
-5.	Check the objects you want to merge with the schema. You can use Select All to save time if there are many. Click OK. 
-
-6.	The newly merged objects appear in the opened schema. 
-
-7.	Save the schema file. 
-
-## Deleting Schema Files 
-
-Delete schema files from the Control Panel > Setup > Data Catalog > Data Sources > [Selected Data Source] > Schema tab.  
-
-To delete a schema file: 
+To compare schemas:
 
 1. In the Control Panel, navigate to Setup > Data Catalog > Data Sources. 
 
 1. Select a data source. 
 
-1. Click the data source's Schema tab.
-
-1.	From the Options menu ("..."), select *Delete Schema*.
-   ![An image showing ](Media/Image3.36.jpg)
-
-1.	Click *Delete* to confirm the deletion. 
-
->[!note] A list of identity views created from the schema is shown. These views can no longer be modified once the backend schema file is deleted. 
-
-## Comparing Schema Files
-
-This option allows you to view the differences between two schema files. You can choose to update the selected schema file with the differences or save a new schema file. 
-
-To compare schema files:
-
-1. In the Control Panel, navigate to Setup > Data Catalog > Data Sources. 
-
-1. Select a data source. 
-
-1. Click the data source's Schema tab.
+1. Click the data source's Schema tab. Choose the schema file that you want compared against the current backend schema.
 
 1. From the Options menu ("..."), select **Compare Schema**. The Schema Differences Detected window displays. 
 
@@ -471,8 +432,8 @@ To compare schema files:
 
 1. Select items in the selected schema that you want to merge into the current backend schema and click **Merge Selected Differences**.
 
->[!note] To save differences a a new schema, click **Save As New Schema**. 
+>[!note] To save differences in a new schema, click **Save As New Schema**. The new schema file is added to the drop-down list for the associated data source.
 
 ## Include in RadiantOne LDAP Schema
 
-If you want to extend the schema with objects and attributes from the currently selected data source, toggle "Include in Server Schema" on. If this option is disabled, the objects and attributes are not included. The RadiantOne LDAP schema can be viewed and managed from Directory Namespace > Directory Schema.
+If you want to extend the RadiantOne LDAP schema with objects and attributes from the currently selected data source schema, toggle "Include in Server Schema" on. If this option is disabled, the objects and attributes are not included. The RadiantOne LDAP schema can be viewed and managed from Control Panel > Setup > Directory Namespace > Directory Schema.
