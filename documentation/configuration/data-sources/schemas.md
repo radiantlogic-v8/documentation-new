@@ -74,7 +74,7 @@ Examples of LDAP-accessible backends are Sun Java Directory, Microsoft Active Di
 	 ![An image showing ](../Media/extract-new-schema.png)
 
 
-1. You can view/modify this schema by selecting if from the drop-down list. Any changes made (such as attribute name remapping), do not affect the underlying schema. 
+1. You can view/modify this schema by selecting it from the drop-down list. Any changes made (such as attribute name remapping), do not affect the underlying schema. 
 
 **Handling Auxiliary Object Classes from LDAP Backends** 
 
@@ -119,7 +119,7 @@ The database data source must be created before completing the schema extraction
 
 1.	Click **EXTRACT**. This creates the schema file and adds it into the drop-down list next to *Schema Name*.
 
-You can view/modify this schema by selecting if from the drop-down list. Any changes made (such as declaring primary keys or creating relationships), do not affect the underlying schema. 
+You can view/modify this schema by selecting it from the drop-down list. Any changes made (such as declaring primary keys or creating relationships), do not affect the underlying schema. 
 
 ### SCIMv2 Backends
 
