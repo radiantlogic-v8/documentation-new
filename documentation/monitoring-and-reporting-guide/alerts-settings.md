@@ -275,7 +275,7 @@ If you would like to receive email alerts, configure the SMTP settings on the Ma
 
 Figure 11: Email Alert Settings
 
->[!note] To send alerts, leave the User and Password fields empty.
+>[!note] To send alerts without credentials, leave the User and Password fields empty.
 
 These properties are saved in Zookeeper at /radiantone/v1/cluster/config/monitoring.properties
 
