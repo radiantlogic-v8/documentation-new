@@ -212,19 +212,17 @@ The Relationships dialog box requires source and destination tables (or views). 
 
 To set a relationship between two objects:
 
-1.	Right-click on the desired object and choose the Define Relationships option. The Relationships dialog box appears. 
+1.	Right-click on the desired object and choose the Define Relationships option. The Relationships dialog box appears.
+	![An image showing ](Media/Image3.15.jpg)
 
-![An image showing ](Media/Image3.15.jpg)
+1.	Select the *Regular* relationship type.
+1. 	Select an object from the Source Object drop-down list.
+1. 	Select the attribute from the Source Attribute drop-down list that contains the value to be used to relate to the secondary object.
+1.	Select the destination object that has a relationship with the source object from the Related Object drop-down list. 
+1.	Choose the attribute from the Related Attribute drop-down list that contains the value to be used to relate to the source object.
+	![An image showing ](Media/definerelationships.jpg)
 
-2.	Select the Relationship Type. Choose *Regular* for relationships across unique objects and *Recursive* for an object that has a relationship with itself.
-3. Select an object from the Source Object drop-down list.
-4. Select the attribute from the Source Attribute drop-down list that contains the value to be used to relate to the secondary object.
-5.	Select the destination object that has a relationship with the source object from the Related Object drop-down list. 
-6.	Choose the attribute from the Related Attribute drop-down list that contains the value to be used to relate to the source object. 
-
-![An image showing ](Media/definerelationships.jpg)
-
-7.	Click **OK**. The relationships are created and appear at the bottom of the list of relationships in the schema file.
+1.	Click **OK**. The relationships are created and appear at the bottom of the list of relationships in the schema file.
 
 ### Declaring Recursive Relationships
 
@@ -236,7 +234,8 @@ If a table has a relationship to itself, you can create this recursive relations
 
 To create a recursive relationship: 
 
-1.	Right-click on the object that has a recursive relationship and select Define Recursive Relationship. 
+1.	Right-click on the object that has a recursive relationship and select Define Relationships.
+1.	Select the *Recursive* relationship type.
 
 ![An image showing ](Media/Image3.16.jpg)
 
@@ -244,15 +243,13 @@ To create a recursive relationship:
 
 ![An image showing ](Media/Image3.17.jpg)
 
-3.	Click OK.
+3.	Click **OK**.
 
 You should now see new views created corresponding to the depth level entered, and new relationships between these objects.
 
 ![An image showing ](Media/Image3.18.jpg)
 
 Once the recursive relationship is described in the schema file, a hierarchical [Identity View](../identity-views/intro-view-design) can be created. 
-
->[!note] If you do not know the depth of recursion, there is a way to build an identity view without first defining the recursive relationships in the schema. For detailed steps, please see the article titled Building a Hierarchical Virtual View Based on Recursive Relationships in a Database in the RadiantOne Knowledge Base at: https://support.radiantlogic.com. You will need a user ID and password for accessing the knowledge base. If you do not have one, please contact Radiant Logic at support@radiantlogic.com.
 
 ### Creating Synonyms
 
@@ -264,11 +261,10 @@ For flexibility in modeling identity views, you can create a synonym from any ob
 
 To create a synonym for an object: 
 
-1.	Right-click on the object and select Define Synonym.
+1.	Right-click on the object and select *Define Synonym*.
+	![An image showing ](Media/Image3.19.jpg)
 
-![An image showing ](Media/Image3.19.jpg)
-
-2.	Enter a name for the Synonym when prompted. 
+1.	Enter a name for the Synonym when prompted and click **OK**.
 
 >[!note] Synonyms may NOT have the same name as an existing object in the schema.
 
@@ -284,49 +280,52 @@ Once the metadata has been captured, the next step is to improve it in a way tha
 
 RDN Attribute Name and Display Columns are a combination of the primary key and at least one other attribute. You can also declare RDN Attribute Name and Display Columns in the [Identity Views](../identity-views/intro-view-design).
 
-To declare or Modify RDN Attribute Name and Value: 
+To declare or Modify RDN Attribute Name and/or Value in the schema file: 
 
 1.	Right-click on the desired table or view and choose the Edit RDN option. 
 
-2.	Enter an RDN Name (the value that comprises the DN) and select the attributes that you want to comprise the RDN value (remember that these attributes are used in addition to the primary key). 
+2.	Enter an RDN Attribute Name (the value that comprises the DN) and use the right arrow button to move the attribute(s) that you want to comprise the RDN value into the list on the right (remember that these attributes are used in addition to the primary key). 
 
-3.	Click Apply when finished. 
+3.	Use the ![Drag and Drop Icon](Media/drag-and-drop.jpg) icon to reorder the attributes they way you want them to appear at runtime.
+4.	Click **OK** when finished.
+5.	Click **SAVE** to save the schema file. 
 
-![An image showing ](Media/Image3.21.jpg)
+![Edit RDN](Media/edit-rdn.jpg)
 
 >[!warning] The attributes that you select as the display attribute(s) should not allow NULL values.
 
-To remove attribute(s) from the RDN Display Attribute(s) list, choose the column(s) and click the left arrow button. 
+To remove attribute(s) from the RDN Display Attribute(s) list, choose the attribute(s) from the list on the right and click the left arrow button. 
 
 This RDN attribute name becomes the default name (for a container or content object) when the corresponding object is used to build an [Identity Views](../identity-views/intro-view-design).
 
 For example, if you set the RDN attribute name for the Employee table to equal Name, then when you access the Employee table to create a container or content level in the [Identity Views](../identity-views/intro-view-design), the default RDN attribute name for that specific level will be Name. The RDN will be Name = First Name Last Name {Employee Primary Key value}. An example of this is shown in the screen shot below. 
 
-![An image showing ](Media/Image3.22.jpg)
+![Example of RDN](Media/sample-rdn.jpg)
  
 ### Removing Objects, Attributes or Relationships from the Schema 
 
 Unwanted tables, views, attributes, or relationships can be removed from the schema. Remember to save the schema after making any changes. 
+You can use the tables/attributes list shown on the left to remove items. Otherwise, 
 
 **Removing Objects**
 
-Objects in a database schema are tables or views. Objects in an LDAP schema are object classes. Right-click on the desired object and choose Delete. 
+Objects in a database schema are tables or views. Objects in an LDAP schema are object classes. Right-click on the desired object from the list on the left and choose *Delete*. Click **DELETE** to confirm. Click **SAVE** to save the schema file.
 
 >[!note] If any of the objects are involved in a relationship, the corresponding relationship must be removed first.
 
-![An image showing ](Media/Image3.23.jpg)
+![Delet Object](Media/delete-object.jpg)
 
 **Removing Attributes**
 
-Some attributes can be removed from objects. Primary keys and attributes involved in relationships cannot be removed. Right-click on the attribute you want to remove and choose Delete. 
+Some attributes can be removed from objects. Primary keys and attributes involved in relationships cannot be removed. Right-click on the attribute you want to remove and choose *Delete*. Click **DELETE** to confirm. Click **SAVE** to save the schema file.
 
-![An image showing ](Media/Image3.24.jpg)
+![Delete Attribute](Media/delete-attribute.jpg)
  
 **Removing Relationships**
 
-To remove a relationship, right-click on the desired relationship and choose Delete. 
+To remove a relationship, right-click on the desired relationship and choose *Delete*. Click **DELETE** to confirm. Click **SAVE** to save the schema file.
  
-![An image showing ](Media/Image3.25.jpg)
+![Delete Relationship](Media/delete-relationship.jpg)
  
 ### Creating Derived Views
 
