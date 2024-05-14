@@ -431,10 +431,9 @@ To compare schemas:
 1. From the Options menu ("..."), select **Compare Schema**. The Schema Differences Detected window displays. 
 
 1. Expand the Tables, Views, and Relationships nodes. Red highlighted items indicate what is not in the current schema but is in the selected schema. Green highlighted items indicate what is in the current schema and not in the selected schema.
+  ![Comparing Schemas](Media/compare-schema.jpg)
 
- ![Comparing Schemas](Media/compare-schema.jpg)
-
-1. Select items in the selected schema that you want to merge into the current backend schema and click **Merge Selected Differences**.
+1. Check *Accept Change* next to the items that you want to merge into the selected schema file and click **Merge Selected Differences**.
 
 >[!note] To save differences in a new schema, click **Save As New Schema**. The new schema file is added to the drop-down list for the associated data source.
 
