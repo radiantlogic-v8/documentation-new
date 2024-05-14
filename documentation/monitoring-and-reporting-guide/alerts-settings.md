@@ -81,7 +81,7 @@ property is false or N/A, an alert is triggered.
 
 ![An image showing the default alert for RadiantOne Service Availability](Media/Image1.15.jpg)
 
-Figure 1.15 : Default Alert for the RadiantOne Service Availability
+Figure 1: Default Alert for the RadiantOne Service Availability
 
 If you have RadiantOne deployed in a cluster, you can monitor each service independently to
 have more granularity of alerts. For example, if one service stops in a cluster, the default “VDS Running Check” alert will be triggered. If another RadiantOne service in the cluster stops, no new alert is sent since the status is currently in a triggered state. Only when the RadiantOne service on all nodes is running again is a new alert sent to indicate the status of the services is back to normal. To be alerted about each RadiantOne service status change independently, configure custom alerts for each node. To do this, create a custom alert for each node, conditioning the alert by nodeId and/or hostname. The examples shown in the following screens describe a three-node cluster. The node IDs are used in the filters conditioning each custom alert.
@@ -91,15 +91,15 @@ each cluster node. The isVdsRunning property name is case sensitive.
 
 ![An image showing ](Media/Image1.16.jpg)
 
-Figure 1. 16 : Custom Alert for RadiantOne Node 1
+Figure 2: Custom Alert for RadiantOne Node 1
 
 ![An image showing ](Media/Image1.17.jpg)
 
-Figure 1. 17 : Custom Alert for RadiantOne Node 2
+Figure 3: Custom Alert for RadiantOne Node 2
 
 ![An image showing ](Media/Image1.18.jpg)
 
-Figure 1.18 : Custom Alert for RadiantOne Node 3
+Figure 4: Custom Alert for RadiantOne Node 3
 
 ```
 If all RadiantOne services are stopped, the alerts.log would contain something like the following, related to the three custom alerts described above:
@@ -175,14 +175,14 @@ alert.
 
 ![An image showing configuring a trigger for a custom alert](Media/Image1.19.jpg)
 
-Figure 1. 19 : Configure Trigger for Custom Alert
+Figure 5: Configure Trigger for Custom Alert
 
 8. Click OK.
 9. If you want to only be alerted if the validation threshold has been exceeded, you can configure a Trigger with parameters above -1 like shown below instead of using (equals value WARN).
 
     ![An image showing configuring a trigger for custom alerts based on validation threshold](Media/Image1.20.jpg)
 
-    Figure 1. 20 : Configure Trigger for Custom Alert based on a Validation Threshold being Exceeded
+    Figure 6: Configure Trigger for Custom Alert based on a Validation Threshold being Exceeded
 
 10. Click Save.
 
@@ -215,7 +215,7 @@ To send an alert in the event of a global synchronization capture connector stat
 
 ![An image showing ](Media/Image1.21.jpg)
 
-Figure 1. 21 : Custom Alert on Capture Connector
+Figure 7: Custom Alert on Capture Connector
 
 When triggered, this alert displays on the Main Control Panel's Dashboard tab under  Active Alerts as "ALERT: <alert_name>” and triggers a [file alert](#file-alert-settings). If SMTP settings are configured, [email alerts](#email-alert-settings) can be triggered as well by adding EmailAlert to the Alert Output setting (click save if you modify alert output).
 
@@ -236,14 +236,14 @@ alert.
 
     ![An image showing configuring an alert trigger](Media/Image1.22.jpg)
 
-    Figure 1. 22 : Configuring Alert Trigger
+    Figure 8: Configuring Alert Trigger
 
 10. Enter an Alert Name.
 11. Click Save.
 
     ![An image showing a custom alert for monitoring global sync queue size](Media/Image1.23.jpg)
 
-    Figure 1. 23 : Custom Alert for Monitoring Global Sync Queue Size
+    Figure 9: Custom Alert for Monitoring Global Sync Queue Size
 
 12. When triggered, this alert displays on the Main Control Panel's Dashboard tab under Active Alerts as "ALERT: <alert_name>” and triggers a [file alert](#file-alert-settings). If SMTP settings are configured, [email alerts](#email-alert-settings) can be triggered as well by adding EmailAlert to the Alert Output setting (click save if you modify alert output).
 
@@ -261,26 +261,27 @@ custom alert.
 
     ![An image showing ](Media/Image1.24.jpg)
 
-    Figure 1. 24 : Setting Trigger Parameter (equals true)
+    Figure 10: Setting Trigger Parameter (equals true)
 
 7. Click OK.
 8. Click Save.
 9. When triggered, this alert displays on the Main Control Panel's Dashboard tab under Active Alerts as "ALERT: <alert_name>” and triggers a [file alert](#file-alert-settings). If SMTP settings are configured, [email alerts](#email-alert-settings) can be triggered as well by adding EmailAlert to the Alert Output setting (click save if you modify alert output).
 
-
 ## Email Alert Settings
 
-If you would like to receive email alerts, configure the SMTP settings on the Main Control Panel (associated with the leader node if deployed in a cluster) > Settings Tab > Monitoring section > Email Alerts Settings.  If SSL is not used, StartTLS with TLS v1.3 is used.
+If you would like to receive email alerts, configure the SMTP settings on the Main Control Panel (associated with the leader node if deployed in a cluster) > Settings Tab > Monitoring section > Email Alerts Settings. If SSL is not used, StartTLS with TLS v1.3 is used.
 
 ![An image showing ](Media/Image1.29.jpg)
 
-Figure 1. 29 : Email Alert Settings
+Figure 11: Email Alert Settings
+
+>[!note] To send alerts, leave the User and Password fields empty.
 
 These properties are saved in Zookeeper at /radiantone/v1/cluster/config/monitoring.properties
 
 ![An image showing ](Media/Image1.30.jpg)
 
-Figure 1. 30 : Email Settings in the Monitoring.properties
+Figure 12: Email Settings in the Monitoring.properties
 
 These settings can be reused in log4j logging configurations by using the following properties:
 
@@ -302,20 +303,20 @@ An example of using these properties in a log4j configuration is shown below for
 
 ![An image showing leveraging email alert settingsin Log4J](Media/Image1.31.jpg)
 
-Figure 1.31 : Example of Leveraging Email Alert Settings in Log4J Configurations
+Figure 13: Example of Leveraging Email Alert Settings in Log4J Configurations
 
 After SMTP settings are configured, to enable email alerts for standard alerts, check the Email
 Alert option and click Save.
 
 ![An image showing ](Media/Image1.32.jpg)
 
-Figure 1.32 : Standard Alert Output
+Figure 14: Standard Alert Output
 
 To enable email alerts for custom alerts, enter a value of EmailAlert for the Alert Output setting and click Save.
 
 ![An image showing ](Media/Image1.33.jpg)
 
-Figure 1.33 : Custom Alert Output
+Figure 15: Custom Alert Output
 
 ### Customizing the Email Message
 
@@ -390,5 +391,5 @@ The default rollover size for the alert file is 100MB. The default number of log
 
 ![An image showing ](Media/Image1.34.jpg)
 
-Figure 1. 34 : File Alerts Settings
+Figure 16: File Alerts Settings
 
