@@ -432,7 +432,7 @@ To compare schemas:
 
 1. Expand the Tables, Views, and Relationships nodes. Red highlighted items indicate what is not in the current schema but is in the selected schema. Green highlighted items indicate what is in the current schema and not in the selected schema.
 
- ![An image showing ](Media/Image3.34.jpg)
+ ![Comparing Schemas](Media/compare-schema.jpg)
 
 1. Select items in the selected schema that you want to merge into the current backend schema and click **Merge Selected Differences**.
 
