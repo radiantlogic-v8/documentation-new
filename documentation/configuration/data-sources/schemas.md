@@ -262,6 +262,7 @@ For flexibility in modeling identity views, you can create a synonym from any ob
 To create a synonym for an object: 
 
 1.	Right-click on the object and select *Define Synonym*.
+
 	![An image showing ](Media/Image3.19.jpg)
 
 1.	Enter a name for the Synonym when prompted and click **OK**.
