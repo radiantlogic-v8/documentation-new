@@ -306,7 +306,9 @@ For example, if you set the RDN attribute name for the Employee table to equal N
 ### Removing Objects, Attributes or Relationships from the Schema 
 
 Unwanted tables, views, attributes, or relationships can be removed from the schema. Remember to save the schema after making any changes. 
-You can use the tables/attributes list shown on the left to remove items. Otherwise, 
+You can use the tables/attributes list shown on the left to remove items. Attributes can also be removed by selecting the parent/container named "Attrbutes" in the list on the left and using the inline trashcan icon from the summary table of all attributes shown on the right.
+
+![Delete Attributes from Table](Media/delete-attribute-table.jpg)
 
 **Removing Objects**
 
@@ -314,7 +316,7 @@ Objects in a database schema are tables or views. Objects in an LDAP schema are 
 
 >[!note] If any of the objects are involved in a relationship, the corresponding relationship must be removed first.
 
-![Delet Object](Media/delete-object.jpg)
+![Delete Object](Media/delete-object.jpg)
 
 **Removing Attributes**
 
@@ -338,10 +340,13 @@ To create a derived view, follow the steps below.
 1.	Right-click on a table or view and select **Define Derived View**. 
 2.	Select the appropriate object from the drop-down list. 
 3.	Select the column you want to use and click **OK**.
+4.	Click **SAVE** to save the schem file.
 
-![An image showing ](Media/Image3.26.jpg)
+![Derived View](Media/derived-view.jpg)
 
 The new derived view object appears in the list of views in the schema. This new object can be used when building [Identity Views](../identity-views/intro-view-design).
+
+![Derived View Result](Media/derived-view-result.jpg)
 
 >[!note] A derived view cannot be created from the same attribute twice.
 
