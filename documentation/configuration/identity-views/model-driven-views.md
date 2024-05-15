@@ -270,7 +270,7 @@ To delete a label:
 
 Use a Content object when you want to create flat views that do not contain sub-branches. When you create a content node, you base it on an object that has been extracted/created from a data source and this information is used to populate the entries at run time.
 
->[!warn] When creating content nodes below container nodes, the object must come from the same schema as the parent container node.
+>[!warn] When creating content nodes below container nodes, the object chosen for the content level must come from the same schema as the parent container node.
 
 To create content objects:
 
