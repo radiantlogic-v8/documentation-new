@@ -260,8 +260,6 @@ To modify a label:
 1. Click **CONFIRM**.
 
 
-
-
 To delete a label:
 
 1.	On the Properties tab, click ![Delete Node](Media/delete-button.jpg).
@@ -271,6 +269,8 @@ To delete a label:
 ### Working with Content Objects 
 
 Use a Content object when you want to create flat views that do not contain sub-branches. When you create a content node, you base it on an object that has been extracted/created from a data source and this information is used to populate the entries at run time.
+
+>[!warn] When creating content nodes below container nodes, the object must come from the same schema as the parent container node.
 
 To create content objects:
 
