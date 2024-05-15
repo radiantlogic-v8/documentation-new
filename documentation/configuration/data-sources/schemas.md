@@ -236,18 +236,15 @@ To create a recursive relationship:
 
 1.	Right-click on the object that has a recursive relationship and select Define Relationships.
 1.	Select the *Recursive* relationship type.
+  
+	![Recursive Relationship](Media/recursive-relationship.jpg)
 
-![An image showing ](Media/Image3.16.jpg)
-
-2.	Select the foreign key and enter the number of recursions possible (the depth level).
-
-![An image showing ](Media/Image3.17.jpg)
-
-3.	Click **OK**.
+1.	Select the foreign key and enter the number of recursions possible (the depth level).
+1.	Click **OK**.
 
 You should now see new views created corresponding to the depth level entered, and new relationships between these objects.
 
-![An image showing ](Media/Image3.18.jpg)
+![Result of Defining a Recursive Relationship](Media/recursive-relationship-result.jpg)
 
 Once the recursive relationship is described in the schema file, a hierarchical [Identity View](../identity-views/intro-view-design) can be created. 
 
