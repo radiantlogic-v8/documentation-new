@@ -412,6 +412,16 @@ To map to LDAP object classes and/or attributes, open the LDAP schema containing
 
 ![Re-Mapping LDAP Attributes](Media/mapping-ldap-attr.jpg)
 
+### Linking Existing Schema Files to Data Sources
+
+If schema files have been imported from another RadiantOne environment, you can associate them with data sources configured in the target environment from Control Panel > Setup > Data Catalog > Data Sources. 
+
+1. Select the data source to associate the schema file with and click the SCHEMA tab.
+2. Click "..." > *Link to Existing Schema*.
+3. Select the schema file and click **LINK**. The linked schema shows in the drop-down list for the selected data source.
+
+![Link Existing Schema](Media/link-schema.jpg)
+
 ## Comparing Schemas
 
 This option allows you to view the differences between an extracted schema file and the current backend schema. You can choose to update the selected schema file with the differences or save a new schema file. Comparing and then merging changes is helpful if you have extracted and enhanced (declared keys, relationships, mapping…etc.) a very large schema and you need to bring in new objects from that same server. You can compare the selected schema file with the current backend schema and just merge in new objects/attributes with the existing schema. This saves time over having to extract and enhance the entire schema again. 
