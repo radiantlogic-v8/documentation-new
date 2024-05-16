@@ -114,7 +114,7 @@ default).
 **`- sortedindexattr (sortedindexattr)`**
 <br>The list of the attributes (comma-separated) to maintain a sorted index for.
 
-REST (ADAP) Example
+**REST (ADAP) Example**
 In the following example, a request is made to create a Universal Directory store mounted at o=hdap in the RadiantOne namespace.
 
 ```
@@ -361,37 +361,3 @@ com.rli.zookeeper.ZooManagerConnectionStateListener - VDS-ZK connection state ch
 9 [ConnectionStateManager-0] WARN com.rli.zookeeper.ZooManager - ZooManager connection state changed: CONNECTED
 The naming context has been successfully restored from its backup.
 ```
-
-## Converting Persistent Cache to a RadiantOne Universal Directory store
-
-For typical LDAP migration use cases where you are migrating from a legacy LDAP directory to the RadiantOne Universal Directory, you can have a persistent cache that is kept in sync with the backend LDAP directory with persistent cache refresh. Once you are ready to decommission the backend LDAP, you can convert the persistent cache into a RadiantOne Universal Directory store. The command to convert a persistent cache into a RadiantOne Universal Directory store is described in this section.
-
-#### convert-pcache-to-hdap
-
-Before converting a persistent cache to a RadiantOne Universal Directory store, the persistent cache refresh should be stopped. You can set the refresh method to “none” on the Main Control Panel -> Directory Namespace -> Cache -> `<cached branch>` -> Refresh Settings tab. Also, suspend inter-cluster replication if it is used by setting “replicationInSuspendMode” : true, in ZooKeeper at /radiantone/<zk_version>/<clustername>/config/namings/<namingcontext_being_replicated>
-
-After the persistent cache has been converted to a RadiantOne Universal Directory store, [rebuild the index](task-launch-commands#rebuilding-indexes-for-radiantone-universal-directory-stores) to remove any persistent cache operational attributes. If inter-cluster replication is used, enable it by setting “replicationInSuspendMode” : false, in ZooKeeper at /radiantone/<zk_version>/<clustername>/config/namings/<namingcontext_being_replicated>
-
-**Usage:**
-<br>`convert-pcache-to-hdap -namingcontext <namingcontext> [-instance <instance>]`
-
-**Command Arguments:**
-
-- namingcontext <namingcontext>
-<br>[required] The name of the persistent cache naming context to be converted to an HDAP store.
-
-- instance <instance>
-<br> The name of the RadiantOne instance. If this is not specified, the default instance named vds_server is used.
-
->[!note]
->Before the conversion, you are prompted to confirm the operation. Enter “y” to confirm, or “n” to discontinue. An example is shown below.
-
-```
-Conversion will remove the underlying virtual layer, both the pcache and its view/proxy will be replaced by a HDAP store. 
-Virtual Naming context list to be removed:
-o=db (VIEW)
-Would you like to continue? (y/n):
-```
-
->[!warning]
->The convert-pcache-to-hdap command is not supported through ADAP.
