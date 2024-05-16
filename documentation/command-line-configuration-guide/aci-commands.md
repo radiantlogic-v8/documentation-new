@@ -9,7 +9,7 @@ Access controls are managed from the Main Control Panel > Settings tab > Securit
 
 ![aci commands](Media/Image11.1.jpg)
 
-This chapter describes how to configure access controls using the <RLI_HOME>/bin/vdsconfig utility instead of the UI mentioned above.
+This chapter describes how to configure access controls using the REST API instead of the UI mentioned above.
 
 ## list-acis
 
