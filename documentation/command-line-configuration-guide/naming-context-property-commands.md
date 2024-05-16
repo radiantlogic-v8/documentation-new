@@ -5,7 +5,7 @@ description: Command Line Configuration Guide
 
 # Naming Context Property Commands
 
-This chapter explains how to display a list of accepted property names, and how to set, print, and remove the current value for a property. The commands can be issued using the <RLI_HOME>/bin/vdsconfig utility.
+This chapter explains how to display a list of accepted property names, and how to set, print, and remove the current value for a property. The commands can be issued using the REST API.
 
 ## list-prop
 
