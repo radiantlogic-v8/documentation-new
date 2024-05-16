@@ -66,9 +66,9 @@ The RadiantOne platform solves these challenges by leveraging data where it exis
 
 Many enterprises face similar technical complexities that can be solved seamlessly with the RadiantOne platform. It comes equipped with a complete tool set making it easy for administrators to configure and solve many of the most common use cases. RadiantOne was designed to address identity integration challenges that range from mapping disparate systems to a common schema, to streamlining identities in fragmented data silos by consolidating them into one central access point for Identity and Access Management (IAM), Identity Governance and Administration (IGA), and other solutions that require an identity integration platform. A diagram depicting common use cases is shown below.
 
-![RadiantOne Platform and Use Cases](Media/Image4.1.jpg)
+![RadiantOne Platform and Use Cases](Media/global-arch.jpg)
 
-Figure 1 : RadiantOne Platform and Use Cases
+
 
 ### Mergers and Acquisitions
 
@@ -78,9 +78,9 @@ Most enterprises have made large investments in their Active Directory infrastru
 
 The RadiantOne platform allows applications that expect a specific LDAP Directory schema to leverage existing Active Directory identity and group information. Applications can query RadiantOne with the schema they expect and RadiantOne properly translates the requests to make them compatible with Active Directory. With this approach, applications can leverage Active Directory information without requiring time-consuming changes and customizations.
 
-![Object Class and Attribute Mapping Example](Media/Image4.2.jpg)
+![Object Class and Attribute Mapping Example](Media/remap-objects.jpg)
 
-Figure 2 : Object Class and Attribute Mapping Example
+
 
 ### Active Directory Integration
 
@@ -102,23 +102,19 @@ These scenarios are detailed below.
 
 With RadiantOne, you can keep your existing AD forests and domains while still logically consolidating them into a single directory.
 
-![High Level Architecture Depicting Logical Consolidation of Multiple AD Forests and Domains](Media/Image4.3.jpg)
+![High Level Architecture Depicting Logical Consolidation of Multiple AD Forests and Domains](Media/aggregate-ad.jpg)
 
-Figure 3: High Level Architecture Depicting Logical Consolidation of Multiple AD Forests and Domains
 
 **Schema extensions to Active Directory**
 
 RadiantOne allows application-specific objects and attributes to reside in other sources while
 still providing a unified profile of the user.
 
-![Example Depicting a way to Avoid Schema Extensions in AD](Media/Image4.4.jpg)
+![Example Depicting a way to Avoid Schema Extensions in AD](Media/extended-join.jpg)
 
-Figure 4: Example Depicting a way to Avoid Schema Extensions in AD
 
 **Delegated Authentication to Active Directory**
 
 RadiantOne allows applications to leverage the existing ids and credentials by delegating the authentication requests to Active Directory.
 
-![Example Depicting Delegated Authentication to Active Directory](Media/Image4.5.jpg)
-
-Figure 5: Example Depicting Delegated Authentication to Active Directory
+![Example Depicting Delegated Authentication to Active Directory](Media/delegate-creds.jpg)
