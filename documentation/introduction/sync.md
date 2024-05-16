@@ -5,7 +5,15 @@ description: Learn about the components and capabilities that comprise the synch
 
 ## Synchronization
 
-## Global Synchronization
+RadiantOne Synchronization offers bi-directional synchronization across data sources that have been integrated into the RadiantOne platform.
+
+Connectors are used for synchronization and have three main functions.
+
+1. Query data sources and collect changed entries.
+2. Filter unneeded events.
+3. Publish changed entries with the required information (requested attributes).
+
+Synchronization flows are configured as a set of pipelines that dictate the source and target. 
 
 Global Synchronization pipelines can be started from the Main Control Panel > Global Syn tab. Select the topology from the list on the left. Click **RESUME** to start synchronization for all pipelines. 
 
