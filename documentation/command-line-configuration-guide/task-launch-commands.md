@@ -5,7 +5,7 @@ description: Command Line Configuration Guide
 
 # Task Launch Commands
 
-This chapter describes how to launch tasks to initialize a cache, initialize a RadiantOne Universal Directory (HDAP) store from LDIF file, import an LDIF file, export data from an LDAP data source to LDIF file, and rebuild an index for a Universal Directory store or persistent cache.
+This chapter describes how to launch tasks to initialize a cache, initialize a RadiantOne directory (HDAP) store from LDIF file, import an LDIF file, export data from an LDAP data source to LDIF file, and rebuild an index for a Universal Directory store or persistent cache.
 
 ## Initializing Persistent Cache
 
@@ -13,7 +13,7 @@ Persistent cache can be initialized and exported from the Main Control Panel, Di
 
 ![initializing persistent cache](Media/Image9.1.jpg)
 
-The following command can be used with the <RLI_HOME>/bin/vdsconfig utility instead of the UI mentioned above.
+The REST API can be used instead of the UI mentioned above.
 
 ### init-pcache
 
