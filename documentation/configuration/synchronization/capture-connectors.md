@@ -288,31 +288,3 @@ For the AD Hybrid connector, the failover process starts when the number of exce
 
 After the connector processes all entries, it requests a new cookie from Active Directory and switches to DirSync change detection.
 
-## Reset connector cursor – detect new changes only
-
-Capture connectors use a cursor to maintain information about the last processed change. This allows the connectors to capture only changes that have happened since the last time they processed changes. When the capture connectors start, they automatically attempt to capture all changes that have happened since the last time they checked. If the synchronization process has been stopped for an extended period, you might not want them to capture all missed changes. In this case, you can reset the cursor for the connector. You can reset the cursor from the Classic Control Panel > Synchronization tab, or you can manually set the cursor value.
-
-### Synchronization tab
-
-1. On the Classic Control Panel > Synchronization tab, choose the topology on the left.
-2. Select **Configure** next to the pipeline on the right.
-3. Choose the **Capture** component and select **Reset Cursor** shown below the properties. An example is shown below.
-
-![The Reset Cursor option in the Global Sync tab of the Main Control Panel](media/reset-cursor.png)
-
-## Manually update connector cursor
-
-Each connector stores a cursor to maintain information about the last processed change. In some cases, you may need to edit the cursor value to force the connector to pick up some missed changes (during a disaster recovery scenario where you will start synchronization in another data center), or skip some changes in cases like where [non-sequential change IDs](database-timestamp-connector.md#force-sequential-counters) were detected. Connector configuration is stored in a RadiantOne directory store mounted at the `cn=registry` naming context.
-
->[!note]
->Editing the cursor is supported for connectors that store a number or timestamp value. The AD DirSync and Hybrid connectors use a cookie for a cursor value that you would not know how to set.
-
-1. Stop the capture connector by suspending the pipeline. You can do this from the Classic Control Panel > Synchronization tab.
-1. Connect to RadiantOne with an administrator that has permissions to modify entries in `cn=registry` and browse to the configuration for your capture connector: `cn=cursor,{PIPELINE_ID},cn=registry`. You can use any LDAP client application to do this. 
-1. Edit the cursor attribute and enter the value to indicate the point from which the connector should capture changes from. An example for a database changelog connector is shown below.
-    ![Example of Database Changelog Connector Cursor Settings](media/image3.png)
-2. Resume the pipeline which redeploys/starts the connector. You can do this from the Classic Control Panel > Synchronization tab.
-
-
-
-
