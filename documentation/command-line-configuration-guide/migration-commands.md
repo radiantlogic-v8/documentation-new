@@ -7,7 +7,7 @@ description: Command Line Configuration Guide
 
 Migrating resources (e.g. root naming contexts, data sources, Global Identity Builder projects, virtual views, or schema files) from an existing development/QA environment to an existing production environment can be difficult because many resources are dependent upon other resources (virtual views are dependent upon data sources, schema files and often times even other virtual views). These resources usually need to be migrated together to ensure everything works properly in the target environment. This makes the migration process error prone.
 
-This chapter explains how to traverse, export, and import resources and their dependencies using commands.
+This chapter explains how to traverse, export, and import resources and their dependencies using the REST API.
 
 For more information, see the [RadiantOne Operations Guide](/documentation/operations-guide/01-overview).
 
