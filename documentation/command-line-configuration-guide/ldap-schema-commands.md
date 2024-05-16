@@ -5,11 +5,11 @@ description: Command Line Configuration Guide
 
 # LDAP Schema Commands
 
-The RadiantOne LDAP schema can be extended with objects and attributes defined in a schema/orx file from the Main Control Panel > Settings tab > Configuration section > ORX Schema and can also be managed from command line using the <RLI_HOME>/bin/vdsconfig utility.
+The RadiantOne LDAP schema can be extended with objects and attributes defined in a schema/orx file from the Main Control Panel > Settings tab > Configuration section > ORX Schema and can also be managed from REST API.
 
 ![LDAP Schema Commands ](Media/Image12.1.jpg)
 
-This chapter covers publishing and removing an ORX’s schema from the RadiantOne LDAP schema using commands instead of the GUI mentioned above.
+This chapter covers publishing and removing an ORX’s schema from the RadiantOne LDAP schema using commands through the REST API instead of the GUI mentioned above.
 
 ## add-orx-schema
 
