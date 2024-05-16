@@ -5,15 +5,13 @@ description: Command Line Configuration Guide
 
 # Object and Attribute Commands
 
-This chapter explains how to perform various object and attribute commands using <RLI_HOME>/bin/vdsconfig.
+This chapter explains how to perform various object and attribute commands using the REST API.
 
 ## LDAP Proxy Global Attributes
 
 Managing special properties (e.g. Always Requested, Virtual Attribute Name, Hidden, DN remapping) for attributes associated with primary LDAP backends (globally, meaning that the attributes could be associated with any object class in the backend) is done from the Main Control Panel > Directory Namespace tab > selected LDAP proxy view > Attributes tab.
 
 ![Attributes tab](Media/Image8.1.jpg)
-
-The following commands can be used instead of the UI mentioned above.
 
 ### list-ldap-attr
 
