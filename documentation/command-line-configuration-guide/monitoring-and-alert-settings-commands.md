@@ -5,7 +5,7 @@ description: Command Line Configuration Guide
 
 # Monitoring and Alert Settings Commands
 
-Monitoring and alert settings are managed from the Main Control Panel > Settings tab > Monitoring section and can also be managed from command line using the <RLI_HOME>/bin/vdsconfig utility.
+Monitoring and alert settings are managed from the Main Control Panel > Settings tab > Monitoring section and can also be managed using the REST API.
 
 ![Monitoring an Alert Settings Commands ](Media/Image15.1.jpg)
 
