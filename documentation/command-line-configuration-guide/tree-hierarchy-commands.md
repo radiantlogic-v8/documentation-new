@@ -5,7 +5,7 @@ description: Command Line Configuration Guide
 
 # Tree Hierarchy Commands
 
-This chapter explains how to manage node properties in a virtual tree using the <RLI_HOME>/bin/vdsconfig utility.
+This chapter explains how to manage node properties in a virtual tree using the REST API.
 
 After creating a new virtual tree type of naming context, you can create “sub-containers” with the new-label command. After the new label is created, you can mount different types of backends at these labels (using the [naming context commands](naming-context-commands.md)). An example is shown below.
 
