@@ -5,7 +5,7 @@ description: Command Line Configuration Guide
 
 # Naming Context Commands
 
-This chapter describes how to create persistent caches, naming contexts, proxy naming contexts, and backup images of RadiantOne Universal Directory (HDAP) stores. It also describes how to delete naming contexts and their caches. These commands can be set using <RLI_HOME>/bin/vdsconfig.
+This chapter describes how to create persistent caches, naming contexts, proxy naming contexts, and backup images of RadiantOne Universal Directory (HDAP) stores. It also describes how to delete naming contexts and their caches. These commands can be set using the REST API.
 
 ## Proxy Views and Universal Directory (HDAP) Stores
 
@@ -15,7 +15,7 @@ Proxy naming contexts and Universal Directory stores can be created and managed 
 
 ![proxy backend](Media/Image6.2.jpg)
 
-The following commands can be used instead of the UI mentioned above.
+The REST API can be used instead of the UI mentioned above.
 
 ### create-dbproxy
 
