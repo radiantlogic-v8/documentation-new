@@ -5,8 +5,7 @@ description: Command Line Configuration Guide
 
 # Converting LDIF Files to CSV
 
-This chapter describes how to convert an LDIF file into a CSV file using the
-<RLI_HOME>/bin/vdsconfig utility.
+This chapter describes how to convert an LDIF file into a CSV file using the REST API.
 
 ## ldif-to-csv
 
