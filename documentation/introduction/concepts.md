@@ -159,38 +159,6 @@ Only registered customers have access to the Knowledge Base.
 >[Command Line Configuration](/command-line-configuration-guide/01-introduction).
 
 
-### Using a Java IDE to Customize Scripts
-
-You can use our own Java IDE to customize scripts instead of using the Main Control Panel. Import the RadiantOne Custom project into your Java IDE. An example is described below using Eclipse IDE.
-
-1.	Install Eclipse IDE for Java developers.
-
-2.	Launch Eclipse and choose File > Import.
-
-  ![Option to Import Projects into Eclipse IDE](Media/Image2.17.jpg)
-
-3.	Expand the General folder, select Existing Projects into Workspace and click **Next**.
-
-  ![Option to Import Existing Projects into Workspace](Media/Image2.18.jpg)
-
-4.	Click **Browse** next to Select Root Directory and navigate to <RLI_HOME>/vds_server/custom.
-
-  ![Importing RadiantOne Custom Project](Media/Image2.19.jpg)
-
-5.	Click **Finish**.
-
-6.	Navigate below the Custom folder to src.com.rli.scripts.intercept. The scripts associated with the interceptions appears below. Double-click on the script to open it in the Eclipse IDE editor.
-
-  ![Example Global Intercept Script](Media/Image2.20.jpg)
-
-7.	Edit the script.
-
-8.	Save the script.
-
-9.	On the RadiantOne machine, rebuild the intercept.jar with ANT using the following syntax: C:\radiantone\vds\vds_server\custom>c:\radiantone\vds\ant\bin\ant.bat buildjars
-
-10.	Restart the RadiantOne service. If deployed in a cluster, restart it on all nodes.
-
 ## Groups
 
 Groups in an LDAP directory categorize sets of people who share common roles within an organization. They are primarily used to simplify the configuration of access permissions. Managing access permissions for all individuals on a per-user basis can be time-consuming and inefficient. Grouping users and assigning access permissions to the entire group is a better approach.
