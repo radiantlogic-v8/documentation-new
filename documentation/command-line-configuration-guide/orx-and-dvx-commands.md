@@ -9,7 +9,7 @@ Schema files containing metadata and mappings associated with backend data sourc
 
 ![Orx and dvx commands](Media/Image18.1.jpg)
 
-As an alternative, you can list the files, print the connection information associated with the files, test the connection to the data source associated with the files and change the data source name and/or base DN of an existing file using <RLI_HOME>/bin/vdsconfig and the following commands.
+As an alternative, you can list the files, print the connection information associated with the files, test the connection to the data source associated with the files and change the data source name and/or base DN of an existing file using the REST API.
 
 ## list-orx
 
