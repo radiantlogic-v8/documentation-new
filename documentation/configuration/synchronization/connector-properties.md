@@ -30,7 +30,7 @@ A high-level architecture is shown below.
 
 ### Reset connector cursor – detect new changes only
 
-Capture connectors use a cursor to maintain information about the last processed change. This allows the connectors to capture only changes that have happened since the last time they processed changes. When the capture connectors start, they automatically attempt to capture all changes that have happened since the last time they checked. If the synchronization process has been stopped for an extended period, you might not want them to capture all missed changes. In this case, you can reset the cursor for the connector. You can reset the cursor from command line or from the Classic Control Panel > Synhronization tab. Each option is described below.
+Capture connectors use a cursor to maintain information about the last processed change. This allows the connectors to capture only changes that have happened since the last time they processed changes. When the capture connectors start, they automatically attempt to capture all changes that have happened since the last time they checked. If the synchronization process has been stopped for an extended period, you might not want them to capture all missed changes. In this case, you can reset the cursor for the connector. You can reset the cursor from the Classic Control Panel > Synhronization tab, or manually define the cursor value.
 
 **Synhronization tab**
 
