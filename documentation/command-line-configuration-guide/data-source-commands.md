@@ -9,7 +9,7 @@ Data sources can be managed from the Main Control Panel > Settings tab > Server 
 
 ![data source commands ](Media/Image5.1.jpg)
 
-The following sections contain details on how to create and delete database and LDAP data sources. It also explains how to update and print data source information using <RLI_HOME>/bin/vdsconfig instead of using the tools mentioned above.
+The following sections contain details on how to create and delete database and LDAP data sources. It also explains how to update and print data source information using the REST API instead of the UI mentioned above.
 
 ## Listing, Getting and Deleting Data Sources
 
