@@ -118,8 +118,6 @@ NOTE - NEEDS TO BE UPDATED - googledirectory – for creating virtual views from
 
 - oktaclient – for creating virtual views and being able to authenticate users in Okta Universal Directory.
 
-NOTE - NEEDS TO BE UPDATED - remotefiles - beta for being able to virtualize file systems. Script can be viewed at <RLI_HOME>/vds_server/custom/src/com/rli/scripts/customobjects/FileSystem.java. **This data source requires customization by Radiant Logic to use.**
-
 - scimclient – for creating virtual views from SCIM v1 accessible data sources. See RadiantOne Context Builder Guide for details on virtualizing SCIMv1 backends.
 
 - scimclient2 – for creating virtual views from SCIM v2 accessible data sources. See RadiantOne Context Builder Guide for details on virtualizing SCIMv2 backends.
@@ -132,9 +130,7 @@ NOTE - NEEDS TO BE UPDATED - awscognito – for creating read-only virtual views
 
 ### JDBC Drivers
 
-The following JDBC drivers are installed with RadiantOne: JDBC-ODBC Bridge from Sun, Oracle (thin), Oracle oci, Microsoft SQL Server, HSQL, MariaDB, IBM DB2, Sybase, RadiantOne Salesforce, and Derby.
-
->[!warning] The MariaDB JDBC driver supports connecting to both MySQL and MariaDB databases.
+The following JDBC drivers are installed with RadiantOne: JDBC-ODBC Bridge from Sun, Oracle (thin), Oracle oci, Microsoft SQL Server, HSQL, MySQL (works for MariaDB also), IBM DB2, Sybase, RadiantOne Salesforce, and Derby.
 
 JDBC drivers are used during the creation of database data sources (the connection to the database backend). A list of drivers appears in the drop-down list box when you are defining a data source. Only the drivers that are listed above were actually installed with RadiantOne. The other driver names/syntaxes that appear in the drop-down list have been provided to save time. If you would like to use one of these drivers or to include a new JDBC driver, install the driver files in the <RLI_HOME>/lib/jdbc directory. Restart the RadiantOne service and any open tools. During the creation of the database data source, if your driver type is listed in the drop-down list, select it and the syntax for the driver class name and URL will be populated for you. Update the URL with the connection details for your database. If the drop-down list does not include your database driver type, you can leave this blank and manually type in the data source name, driver class name, driver URL, user and password.
 
