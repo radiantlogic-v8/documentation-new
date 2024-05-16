@@ -12,7 +12,7 @@ Attribute encryption cipher and key can be set from the Main Control Panel > Set
 
 ![security commands](Media/Image17.1.jpg)
 
-As an alternative, you can configure the cipher and key from command line using the <RLI_HOME>/bin/vdsconfig utility. Attribute encryption is only applicable to RadiantOne Universal Directory (HDAP) stores and persistent cache. Once you’ve defined the cipher and key, it cannot be changed if there are stores and/or persistent caches that use it. If you need to change the cipher/key, you must remove the existing attribute encryption. For details on how to do this, see the [RadiantOne Namespace Configuration Guide](/documentation/namespace-configuration-guide/01-introduction).
+As an alternative, you can configure the cipher and key using the REST API. Attribute encryption is only applicable to RadiantOne directory (HDAP) stores and persistent cache. Once you’ve defined the cipher and key, it cannot be changed if there are stores and/or persistent caches that use it. If you need to change the cipher/key, you must remove the existing attribute encryption. For details on how to do this, see the [RadiantOne Namespace Configuration Guide](/documentation/namespace-configuration-guide/01-introduction).
 
 Support for client certificate/PIV card authentication and client certificate DN Mapping is configured from Main Control Panel, Settings tab, Security section, SSL.
 
