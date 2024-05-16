@@ -188,7 +188,7 @@ A rich set of HTTP-based API's have been developed on top of LDAP, to provide br
 
 <section>
 
-  > [Web APIs](/api)  
+  > [API Developer Guide](/api)  
   > RadiantOne Identity Data Management Configuration API.
   
 </section>
