@@ -5,7 +5,7 @@ description: Command Line Configuration Guide
 
 # Search Commands
 
-Searches on the RadiantOne namespace can be performed on the Directory Browser tab in the Main Control Panel. This chapter describes how to perform an LDAP search on the RadiantOne namespace using the <RLI_HOME>/bin/vdsconfig utility instead of using the UI.
+Searches on the RadiantOne namespace can be performed on the Directory Browser tab in the Main Control Panel. This chapter describes how to perform an LDAP search on the RadiantOne namespace using the REST API instead of using the UI.
 
 ![Search Commands](Media/Image19.1.jpg)
 
