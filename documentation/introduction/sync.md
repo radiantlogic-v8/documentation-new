@@ -27,7 +27,7 @@ The high-level steps to configure synchronization are the following:
 - [Data sources](../configuration/data-sources/data-sources) - connections for the servers that you want to sync data from/to.
 - [Configure virtual views](../configuration/identity-views/intro-view-design) of data sources that you want to sync data from/to.
 - [Extend RadiantOne LDAP schema](../configuration/directory-stores/managing-directory-schema) with any missing object class definitions (associated with the objects to be synchronized).
-- [Create topologies](../configuration/data-sources/data-sources) – graphical representation of the synchronization flows.
+- [Create topologies](../configuration/synchronization/pipelines) – graphical representation of the synchronization flows.
 - Configure Pipelines – [capture connector](../configuration/synchronization/pipelines), and [transformation](../configuration/synchronization/transformations).
 - [Configure Queue Time to Live](../configuration/synchronization/synchronization-concepts).
 
