@@ -8,7 +8,7 @@ description: Understanding Default Configuration and Samples
 This guide describes default naming contexts and default data sources when samples are installed.
 When creating new environments and installing Identity Data Management in the Environment Operations Center, toggle the *INSTALL SAMPLES* option on to install the sample naming contexts and data sources described below.
 
-![Install Samples](Media/install-samples.png)
+![Install Samples](Media/install-samples.jpg)
 
 >[!note] Some of the files mentioned in this guide are edited using the Control Panel's File Manager option. To edit files in File Mananger:
 In the upper-left corner of the Control Panel, click ![classic-control-panel](Media/profile-icon.png) and select Open Classic Control Panel. 
