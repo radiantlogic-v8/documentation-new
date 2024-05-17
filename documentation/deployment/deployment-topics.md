@@ -40,8 +40,6 @@ After RadiantOne is configured in each environment, configure inter-cluster repl
 
 ![An image showing ](Media/Image7.27.jpg)
  
-Figure 7.3: Replication Flow within a Cluster (intra-cluster) and Across Cluster (inter-cluster)
-
 Each RadiantOne leader node in the cluster plays the role of a “writer” in the replication and publishes their changes into a journal. Each leader is also responsible for periodically checking the journal for changes that they need to apply locally. Should conflicting change events occur, a combination of timestamps and sequence numbers associated with the conflicting events are used to resolve the conflict.
 
 >[!note]
@@ -49,13 +47,13 @@ Each RadiantOne leader node in the cluster plays the role of a “writer” in t
 
 A data source named replicationjournal is included in the RadiantOne install and plays the role of the journal. This data source points to the default cn=replicationjournal store installed with RadiantOne and should not be deleted or deactivated. 
 
+![Replication Journal](Media/replication-journal.jpg)
+
 The default *replicationjournal* LDAP data source (and cn=replicationjournal naming context) are associated with the default super user account (e.g. cn=Directory Administrator). This user allows access controls checking to be avoided for inter-cluster replication events. If you do not want the super user account associated with the replication journal data source (and inter-cluster replication events), you can set a different Bind DN/user account for the replicationjournal LDAP data source and add this user as a member of the Directory Replicators group. Members of this group have the privilege of by-passing ACI checking when used to establish the connection for inter-cluster replication.
 
 The group entry is located in the RadiantOne namespace at:
 cn=Directory Replicators,ou=globalgroups,cn=config
 
-![Replication Journal](Media/replication-journal.jpg)
- 
 To configure multi-master replication for RadiantOne Directory stores, follow the steps below.
 
 **Modify the replicationjournal Data Source**
@@ -104,27 +102,25 @@ To initialize a replica:
 
 **Enable Inter-cluster Replication**
 
-After the Universal Directory stores are initialized in each cluster, inter-cluster replication must be enabled. 
+After the directory stores are initialized in each cluster, inter-cluster replication must be enabled. 
 
-To enable inter-cluster replication for a Universal Directory store:
+To enable inter-cluster replication for a directory store:
 
-1.	On one of the RadiantOne clusters, go to the Main Control Panel > Directory Namespace tab and below the root naming context node click the naming context representing the Universal Directory store.
+1.	Go to the Control Panel > Setup > Directory Namespace > Namespace Design and below the root naming contexts select the naming context representing the RadiantOne directory store.
 
-2.	On the Properties tab on the right, check the box for Inter-cluster Replication as shown in the screenshot below. 
+1.	On the Properties tab on the right, check the box for Inter-cluster Replication as shown in the screenshot below.
 
-![An image showing ](Media/Image7.30.jpg)
+ ![An image showing ](Media/intercluster-replication.jpg)
 
-Figure 7. 19: Enabling a Universal Directory Store for Inter-Cluster Replication
+1.	Click **SAVE**.
 
-3.	Click Save.
-
-4.	Repeat these steps on one RadiantOne node in each cluster.
+1.	Repeat these steps on one RadiantOne node in each cluster/environment.
 
 >[!note]
->Monitor inter-cluster replication from Main Control Panel > Replication Monitoring tab.
+>Monitor inter-cluster replication from Classic Control Panel > Replication Monitoring tab.
 
 >[!warning]
->It is recommended to NOT start the persistent cache refresh process on the primary cluster until you have the Universal Directory stores in the new cluster(s) properly setup (as exact replicas of the persistent cache). This ensures the stores will have the current image of the persistent cache from the primary cluster initially and no changes are logged into the replication journal yet for this “domain” (naming context).
+>If you are replicating a persistent cache store in one environment to a RadiantOne directory store in another environment, it is recommended to NOT start the persistent cache refresh process on the primary environment until you have the RadiantOne directory stores in the new cluster/environment properly setup (as exact replicas of the persistent cache). This ensures the stores will have the current image of the persistent cache from the primary cluster initially and no changes are logged into the replication journal yet for this “domain” (naming context).
 
 ## Migrating Configuration
 
