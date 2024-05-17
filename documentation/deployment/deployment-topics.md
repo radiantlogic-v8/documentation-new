@@ -62,7 +62,7 @@ For inter-cluster replication, the replicationjournal data source for all cluste
 
 ![Inter-cluster Replication](Media/Image7.29.jpg)
 
-To modify the replicationjournal data source, log into the Control Panel associated with the cluster and login as a directory administrator (e.g. superadmin). From the Data Catalog > Data Sources section, click the replicationjournal to edit it. Modify the hostname and port to point to the replicationjournal running in site one. The base DN should be cn=replicationjournal, but can be left empty (it will default to cn=replicationjournal).
+To modify the replicationjournal data source, go to the Control Panel associated with the cluster and login as a directory administrator (e.g. superadmin). From the Setup > Data Catalog > Data Sources section, click the replicationjournal to edit it. Modify the hostname and port to point to the replicationjournal running in site one. The base DN should be cn=replicationjournal, but can be left empty (it will default to cn=replicationjournal).
 
 **Configure the Directory Store in Each Cluster**
 
