@@ -108,16 +108,3 @@ C:\radiantone\vds\bin>vdsconfig.bat search-vds -dn "action=deltarefreshpcache,`<
 
 This search triggers a re-sync of the persistent cache image based on the current image of
 entries from the backends. Only entries that have changed are updated in the persistent cache.
-
-## Recovering from Persistent Cache Update Errors
-
-If an entry in the persistent cache fails to be updated, the entry in the cache refresh log is
-tagged with a status attribute of 2.
-
-An example of a failed cache refresh log entry can be seen in the figure below.
-
-![An image showing ](Media/FailedCacheRefresh.jpg)
-
-The fix-cacherefresh command in the vdsconfig utility (<RLI_HOME>/bin/vdsconfig) can be used to issue persistent cache refreshes for the failed entries. The command searches the cn=cacherefreshlog with a filter of (&(changenumber>=x)(status=y)) where the default changenumber is 0 and the default status=2 (to refresh only failed entries). You can change these default values when running the command if needed. The command then invokes an “action=synchronizecache” operation for each entry returned from the search which results in those entries being refreshed in the persistent cache.
-
-For more information on the vdsconfig utilty and the fix-cacherefresh command, see the RadiantOne Command Line Configuration Guide.
