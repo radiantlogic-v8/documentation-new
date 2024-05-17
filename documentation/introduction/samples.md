@@ -5,9 +5,10 @@ description: Understanding Default Configuration and Samples
 
 ## Overview
 
-This guide describes default naming contexts and default data sources.
+This guide describes default naming contexts and default data sources when samples are installed.
+When creating new environments and installing Identity Data Management in the Environment Operations Center, toggle the *INSTALL SAMPLES* option on to install the sample naming contexts and data sources described below.
 
->[!note] For more information on installing the samples described in this guide, refer to the guide on [creating environments](installation/create-environments.md).
+![Install Samples](Media/install-samples.png)
 
 >[!note] Some of the files mentioned in this guide are edited using the Control Panel's File Manager option. To edit files in File Mananger:
 In the upper-left corner of the Control Panel, click ![classic-control-panel](Media/profile-icon.png) and select Open Classic Control Panel. 
@@ -31,12 +32,6 @@ The sample naming contexts are as follows.
 
 - o=examples
 <br> This is a sample of a virtual view from a database backend. The database used here is Apache Derby and is included in the RadiantOne installation. This is not a critical naming context and it may be deleted if needed (de-activate it before removing the naming context. You need to deactivate and delete the child node prior to removing the root naming context). After deleting the naming context, you can also delete the underlying schema, ou_hr_o_examples, and identity view files o_examples and ou_hr_o_examples.
-
->[!warning] Before you can view the data in the sample o=examples naming context, you must start the Derby database server.
-
->[!warning] NOTE - NEEDS TO BE UPDATED On Windows → execute %RLI_HOME%\bin\DerbyServer.exe
-
->[!warning] NOTE - NEEDS TO BE UPDATED On UNIX platforms → $RLI_HOME/bin/runDerbyServer.sh
 
 - ou=AllProfiles
 <br> This naming context is used by the legacy ID-Connect client web application and has three levels mounted below it. There are two nodes pointing to local RadiantOne Universal Directory stores (ou=ad_sample and ou=localvds) and one virtual view containing definitions to dynamically build groups (ou=VirtualGroups). If you do not plan on using the legacy ID-Connect application then this entire naming context may be deleted (de-activate each node first before removing the naming context).
@@ -68,9 +63,8 @@ After deleting the naming context, you can also delete the underlying identity v
 - dv=globalprofiles
 <br> This naming context is created and used by the Global Identity Builder and Global Identity Viewer applications. This naming context may be hidden (by specifying it as a hidden context in the rootdse.ldif file for RadiantOne) but should not be deleted.
 
-### Default Data Sources
 
-#### LDAP
+### Default LDAP Data Sources
 
 An LDAP data source named vdsha is included by default. This data source contains connections to all RadiantOne nodes in a given cluster. One node is defined as the primary server and all others as failover servers. This data source is used internally by many operations including persistent cache refreshes and should not be deleted or have its status changed to “offline”.
 
@@ -78,13 +72,13 @@ An LDAP data source named replicationjournal is included by default. This data s
 
 >[!warning] If you change the super user/directory administrator password after installing RadiantOne, you must manually edit both the vdsha and replicationjournal LDAP data sources to update the password here as well. Changes to the data sources are performed from the Main Control Panel > Settings Tab > Server Backend section > LDAP Data Sources.
 
-#### Database
+### Default Database Data Sources
 
 There are nine default database data sources defined for the Derby databases installed with RadiantOne (advworks, derbyorders, derbysales, examples, log2db, multistore, northwind, rx500 and vdapdb). These databases support the [sample virtual views](#default-naming-contexts) mounted below o=examples and o=vds.
 
 The default radiantsalesforce database data source supports a sample virtual view of Salesforce mounted at dv=salesforce,o=cloudservices,o=vds. This data source can be modified to point to any Salesforce instance to quickly test bringing in Salesforce identities into the virtual namespace. For steps on editing the radiantsalesforce data source, see the RadiantOne Namespace Configuration Guide.
 
-#### Custom
+### Default Custom Data Sources
 
 NOTE - NEEDS TO BE UPDATED Custom data sources are accessible via a Java API, or web service including REST or SCIM. Each custom data source is associated with a Java script that includes the needed API calls. There are twenty custom data sources included in RadiantOne. Some of the installed custom data sources are associated with code that is externalized and can be viewed. These are noted below. All others are associated with code that is packaged and maintained by Radiant Logic (in <RLI_HOME>/lib/custom-objects-1.0-SNAPSHOT.jar) and not editable externally.
 
@@ -128,7 +122,7 @@ NOTE - NEEDS TO BE UPDATED - sharepointonline – for creating virtual views fro
 NOTE - NEEDS TO BE UPDATED - workdayhr – for creating virtual views from Workday. Scripts can be viewed at <RLI_HOME>/vds_server/custom/src/com/rli/scripts/customobjects/workday30. This data source is associated with <RLI_HOME>\vds_server\dvx\workdayhr.dvx and <RLI_HOME>\vds_server\org\workdayhr.orx. **This data source requires customization by Radiant Logic in order to use.**
 NOTE - NEEDS TO BE UPDATED - awscognito – for creating read-only virtual views of AWS Cognito user accounts. This data source is associated with <RLI_HOME>\vds_server\dvx\awscognito.dvx and <RLI_HOME>\vds_server\org\awscognito.orx. **This data source requires customization by Radiant Logic in order to use.**
 
-### JDBC Drivers
+### Default JDBC Drivers
 
 The following JDBC drivers are installed with RadiantOne: JDBC-ODBC Bridge from Sun, Oracle (thin), Oracle oci, Microsoft SQL Server, HSQL, MySQL (works for MariaDB also), IBM DB2, Sybase, RadiantOne Salesforce, and Derby.
 
