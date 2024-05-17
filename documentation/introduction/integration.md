@@ -37,7 +37,7 @@ For example, LDAP cannot be used (natively) to query information in a database. 
 
 When using RadiantOne with other directory services, it routes LDAP requests back to other directory sources, as well as performs translation of the directory request into one suitable for the local directory structure.
 
-Identity data sources accessible by RadiantOne are:
+[Identity data sources](../configuration/data-sources/data-sources-supported) accessible by RadiantOne are:
 
 - Directory services via LDAP/JNDI.
 - Databases via JDBC and ODBC.
