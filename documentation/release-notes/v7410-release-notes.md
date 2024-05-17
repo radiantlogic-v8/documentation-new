@@ -126,7 +126,8 @@ For specific hardware requirements of each, please see: [https://developer.radia
 -	[VSTS46737]: Fixed an issue that was preventing Audit reports from being generated.
 -	[vsts46746]: Fixed an issue with wizards not accessible on follower node's Main Control Panel if the RadiantOne service is stopped.
 -	[VSTS46751]; Fixed an issue where uploads in Global Sync were not working when the source of the pipeline was a persistent cached view. 
--	[VSTS46759]: Fixed an issue in global sync that was causing apply events with EventType.SKIP to throw an unnecessary exception during the apply phase. 
+-	[VSTS46759]: Fixed an issue in global sync that was causing apply events with EventType.SKIP to throw an unnecessary exception during the apply phase.
+-	[VSTS46776]: Fixed an issue that disabled vds_server.log logging when vdsconfig.logging was enabled and vdsconfig was called via ADAP requests.
 
 ## Known Issues/Important Notes
 
