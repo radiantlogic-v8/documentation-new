@@ -16,7 +16,7 @@ For details on integrating with on-premise data sources through a Secure Data Co
 
 A basic architecture for a production deployment of the RadiantOne platform consists of two or more environments. One primary cluster/environment and one for disaster recovery (which could be a client-consuming cluster as well, and not just reserved for DR).
 
-![An image showing ](Media/Image7.1.jpg)
+![Basic Production Architecture ](Media/Image7.1.jpg)
  
 Once the primary and DR environments are created, configure RadiantOne in the primary environment. Then, use the migration tool to export the configuration and import it into the DR environment. Finally, configure inter-cluster replication for all RadiantOne Directory stores that need to be kept in sync across both environments.
 
@@ -28,7 +28,7 @@ If the data sources integrated in the RadiantOne platform are accessible in the 
 >[!note]
 >Site-to-Site VPN or VPC Peering can be alternatives to using the Secure Data Connector. Speak with your Radiant Logic Solution Consultant about these options.
 
-![An image showing ](Media/Image7.26.jpg)
+![Secure Data Connector](Media/Image7.26.jpg)
 
 
 ### Inter-cluster Replication for RadiantOne Directory Stores
@@ -38,7 +38,7 @@ After RadiantOne is configured in each environment, configure inter-cluster repl
 >[!warning]
 >When installing multiple clusters, use different cluster names. Inter-cluster replication relies on the names to identify replication events.  
 
-![An image showing ](Media/Image7.27.jpg)
+![Inter-cluster Replication](Media/Image7.27.jpg)
  
 Each RadiantOne leader node in the cluster plays the role of a “writer” in the replication and publishes their changes into a journal. Each leader is also responsible for periodically checking the journal for changes that they need to apply locally. Should conflicting change events occur, a combination of timestamps and sequence numbers associated with the conflicting events are used to resolve the conflict.
 
@@ -60,7 +60,7 @@ To configure multi-master replication for RadiantOne Directory stores, follow th
 
 For inter-cluster replication, the replicationjournal data source for all clusters must be configured to point to the same journal. For example, if there are three RadiantOne clusters, and the first cluster is where the journal is located, the replicationjournal data source in all other clusters must point to the cn=replicationjournal naming context in the first cluster.
 
-![An image showing ](Media/Image7.29.jpg)
+![Inter-cluster Replication](Media/Image7.29.jpg)
 
 To modify the replicationjournal data source, log into the Control Panel associated with the cluster and login as a directory administrator (e.g. superadmin). From the Data Catalog > Data Sources section, click the replicationjournal to edit it. Modify the hostname and port to point to the replicationjournal running in site one. The base DN should be cn=replicationjournal, but can be left empty (it will default to cn=replicationjournal).
 
@@ -70,11 +70,11 @@ The same naming context and RadiantOne directory store must be configured in eac
 
 To create a new RadiantOne directory store:
 
-1.	On one of the RadiantOne nodes in one environment, go to the Control Panel > Setup > Directory Namespace > Namespace Design click ![An image showing ](Media/new-naming-context.jpg).
+1.	On one of the RadiantOne nodes in one environment, go to the Control Panel > Setup > Directory Namespace > Namespace Design click ![New Naming Context](Media/new-naming-context.jpg).
 
 2.	Enter the new naming context label and click **SAVE**.
 
-3.	Click ![An image showing ](Media/mount-backend.jpg).
+3.	Click ![Mount Backend](Media/mount-backend.jpg).
 
 4.	Choose the **RadiantOne Directory** type and click **SELECT**.
 5.	Choose to activate the store or not (it can be activated later after it has been initialized).
@@ -109,7 +109,7 @@ To enable inter-cluster replication for a directory store:
 
 1.	On the Properties tab on the right, check the box for Inter-cluster Replication as shown in the screenshot below.
 
- ![An image showing ](Media/intercluster-replication.jpg)
+ ![Inter-cluster Replication Option](Media/intercluster-replication.jpg)
 
 1.	Click **SAVE**.
 
