@@ -42,6 +42,12 @@ This log level is relevant only for the Radiant Logic development team to unders
 
 
 ### LDAP Client Activity
+To ensure optimal performance, the logging for RadiantOne should be reduced to the minimum level that meets your auditing needs for production environments. The log settings that should be considered are configured in the Classic Control Panel > Settings Tab > Logs section > Log Settings and Access Logs sub-sections. 
+
+In the Log Settings section, select VDS – Server from the drop-down list. The RadiantOne service log level is defined here. To turn off logging, set Log Level to OFF. The RadiantOne service does not need to be restarted when changing the log level unless you set it to OFF.
+
+![An image showing ](Media/Image1.2.jpg)
+ 
 
 ### SCIM Client Activity
 
