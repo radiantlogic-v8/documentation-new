@@ -5,8 +5,7 @@ description: Understanding Default Configuration and Samples
 
 ## Overview
 
-This guide describes default naming contexts and default data sources when samples are installed.
-When creating new environments and installing Identity Data Management in the Environment Operations Center, toggle the *INSTALL SAMPLES* option on to install the sample naming contexts and data sources described below.
+The default naming contexts and default data sources for the RadiantOne service are described below. If samples are installed, additional naming contexts and data sources are also installed. When creating new environments and installing Identity Data Management in the Environment Operations Center, toggle the *INSTALL SAMPLES* option on to install the sample naming contexts and data sources.
 
 ![Install Samples](Media/install-samples.jpg)
 
