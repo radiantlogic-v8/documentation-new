@@ -83,7 +83,7 @@ To create a new RadiantOne directory store:
 
 **Initialize the Replicas**
 
-Before enabling replication, all replicas must have the same initial image: either an empty store or an initialized store based on the export of the RadiantOne directory store at the primary data center. When you export the store on the primary data center, you must have the option “Export for Replication” checked to ensure the uuid attribute is properly included in the export and handled during the import into the replica cluster.  Download the file as you go through the export process.
+Before enabling replication, all replicas must have the same initial image: either an empty store or an initialized store based on the export of the RadiantOne directory store at the primary data center (if there is already data in the primary cluster). When you export the store on the primary data center, you must have the option “Export for Replication” checked to ensure the uuid attribute is properly included in the export and handled during the import into the replica cluster.  Download the file as you go through the export process.
 
 ![Export File for Replication](Media/export-file-for-replication.jpg)
 
@@ -108,8 +108,8 @@ To enable inter-cluster replication for a directory store:
 1.	Go to the Control Panel > Setup > Directory Namespace > Namespace Design and below the root naming contexts select the naming context representing the RadiantOne directory store.
 
 1.	On the Properties tab on the right, check the box for Inter-cluster Replication as shown in the screenshot below.
-
-  ![Inter-cluster Replication Option](Media/intercluster-replication.jpg)
+ 
+	  ![Inter-cluster Replication Option](Media/intercluster-replication.jpg)
 
 1.	Click **SAVE**.
 
