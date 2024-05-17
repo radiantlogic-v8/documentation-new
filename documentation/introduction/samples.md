@@ -10,7 +10,7 @@ This guide describes default naming contexts and default data sources.
 >[!note] For more information on installing the samples described in this guide, refer to the guide on [creating environments](installation/create-environments.md).
 
 >[!note] Some of the files mentioned in this guide are edited using the Control Panel's File Manager option. To edit files in File Mananger:
-In the upper-left corner of the Control Panel, click [classic-control-panel](Media/profile-icon.png) and select Open Classic Control Panel. 
+In the upper-left corner of the Control Panel, click ![classic-control-panel](Media/profile-icon.png) and select Open Classic Control Panel. 
 Click Open. The classic control panel launches in a new browser tab. 
 In the classic Control Panel, navigate to Settings > Configuration > File Manager.
 
