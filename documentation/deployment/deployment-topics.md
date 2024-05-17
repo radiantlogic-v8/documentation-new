@@ -18,8 +18,6 @@ A basic architecture for a production deployment of the RadiantOne platform cons
 
 ![An image showing ](Media/Image7.1.jpg)
  
-Figure 7.1: Basic Deployment Architecture
-
 Once the primary and DR environments are created, configure RadiantOne in the primary environment. Then, use the migration tool to export the configuration and import it into the DR environment. Finally, configure inter-cluster replication for all RadiantOne Directory stores that need to be kept in sync across both environments.
 
 >[!note]
@@ -31,8 +29,7 @@ If the data sources integrated in the RadiantOne platform are accessible in the 
 >Site-to-Site VPN or VPC Peering can be alternatives to using the Secure Data Connector. Speak with your Radiant Logic Solution Consultant about these options.
 
 ![An image showing ](Media/Image7.26.jpg)
- 
-Figure 7.2: Secure Data Connector for Accessing Data Sources in a Different Network
+
 
 ### Inter-cluster Replication for RadiantOne Directory Stores
 
@@ -57,10 +54,8 @@ The default *replicationjournal* LDAP data source (and cn=replicationjournal nam
 The group entry is located in the RadiantOne namespace at:
 cn=Directory Replicators,ou=globalgroups,cn=config
 
-![An image showing ](Media/Image7.28.jpg)
+![Replication Journal](Media/replication-journal.jpg)
  
-Figure 7.17: The Journal Leveraged by Multi-master Replication
-
 To configure multi-master replication for RadiantOne Directory stores, follow the steps below.
 
 **Modify the replicationjournal Data Source**
@@ -68,8 +63,6 @@ To configure multi-master replication for RadiantOne Directory stores, follow th
 For inter-cluster replication, the replicationjournal data source for all clusters must be configured to point to the same journal. For example, if there are three RadiantOne clusters, and the first cluster is where the journal is located, the replicationjournal data source in all other clusters must point to the cn=replicationjournal naming context in the first cluster.
 
 ![An image showing ](Media/Image7.29.jpg)
-
-Figure 7. 18: Configuration of Multi-Master Replication
 
 To modify the replicationjournal data source, launch the Main Control Panel associated with the server and login as the super user (e.g. cn=directory manager). From the Settings Tab-> Server Backend section -> LDAP Data Sources sub-section, click the replicationjournal data source and click Edit. Modify the hostname and port to point to the replicationjournal running in site one. The base DN should be cn=replicationjournal.
 
