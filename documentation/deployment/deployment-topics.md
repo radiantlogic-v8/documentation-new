@@ -109,7 +109,7 @@ To enable inter-cluster replication for a directory store:
 
 1.	On the Properties tab on the right, check the box for Inter-cluster Replication as shown in the screenshot below.
 
- ![Inter-cluster Replication Option](Media/intercluster-replication.jpg)
+  ![Inter-cluster Replication Option](Media/intercluster-replication.jpg)
 
 1.	Click **SAVE**.
 
