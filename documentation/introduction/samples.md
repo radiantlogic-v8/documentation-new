@@ -17,9 +17,9 @@ In the classic Control Panel, navigate to Settings > Configuration > File Manage
 
 ### Default Naming Contexts
 
-This section describes all the default root naming contexts included with RadiantOne. The naming contexts can be viewed/managed from the Main Control Panel > Directory Namespace tab and the data (run-time) can be seen from the Directory Browser tab. If a naming context is safe to delete, it is indicated in the description below.
+This section describes all the default root naming contexts included with RadiantOne. Some are part of samples (if installed) and some are required for the RadiantOne service. Some of the naming contexts can be viewed/managed from the Control Panel > Setup > Directory Namespace > Namespace Design and the data (run-time) can be seen from the Control Panel > Setup > Directory Browser. If a naming context is a sample and safe to delete, it is indicated in the description below.
 
-The sample naming contexts are as follows.
+The default and sample naming contexts are as follows.
 
 - o=vds
 <br> This naming context contains many sample virtual views mounted below it. This naming context may be hidden (by specifying it as a hidden context in the rootdse.ldif file for the RadiantOne service) but should not be deleted.  
