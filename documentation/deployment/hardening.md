@@ -4,9 +4,11 @@ description: Hardening the RadiantOne Service Against Security Threats
 ---
 
 ## Overview
+The document contains basic tips and general guidance on how to harden RadiantOne so that security risks are reduced as much as possible. This content is intended for administrators who are responsible for hardening RadiantOne against security threats and they must decide which items are applicable to their environment and corporate policies.
 
 ## Securing the RadiantOne Configuration and Administration
 
+The following topics provide general guidance about how to secure RadiantOne configuration and administration.
 
 ### Protect and Monitor Access to the Directory Manager Account
 
@@ -129,7 +131,7 @@ RadiantOne offers advanced password policy settings that can be a combination of
 
 For details on password policy properties, see the RadiantOne System Administration Guide.
 
-## Assign Appropriate Personnel to Delegated Administration Roles
+### Assign Appropriate Personnel to Delegated Administration Roles
 
 There are eight default delegated administration groups/roles available for managing the RadiantOne configuration. Only members of these groups can login to the Main Control Panel.
 
@@ -144,6 +146,8 @@ Log into the Control Panel using strong authentication methods like MFA and/or P
 
 
 ## Client Access Limits and Regulation
+
+The following topics provide general guidance about how to enforce client access limits and regulation.
 
 ### Global Access Limits
 
@@ -186,6 +190,8 @@ max operations per checking interval are set to 300, 30 and 10 respectively, dur
 For more details on configuring access regulation per user and/or per computer, please see the RadiantOne System Administration Guide.
 
 ## Recommendations for Securing Data at Rest
+
+The following topics provide general guidance about how to secure data at rest in RadiantOne.
 
 ### Delete Global Read Access and Assign Finer-Grained Access Controls
 
@@ -414,6 +420,8 @@ property.
 
 
 ## Recommendations for Securing Data in Transit - SSL/TLS Settings
+
+The following topics provide general guidance about how to secure data-in-transit in RadiantOne.
 
 By default, only SSL-enabled endpoints are accessible to the RadiantOne Service.
 
