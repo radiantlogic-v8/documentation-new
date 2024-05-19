@@ -86,11 +86,11 @@ clients, use an account with permissions to update this information in the backe
 defining the data source. It is always recommended to use least privilege accounts in the
 RadiantOne data source configurations.
 
-## Encrypt Attributes in RadiantOne Universal Directory Stores
+## Encrypt Attributes in RadiantOne Directory Stores
 
-Attribute encryption protects sensitive data while it is stored in RadiantOne Universal Directory
+Attribute encryption protects sensitive data while it is stored in RadiantOne Directory
 stores. You can specify that certain attributes of an entry are stored in an encrypted format. This
-prevents data from being readable while stored in the RadiantOne Universal Directory stores,
+prevents data from being readable while stored in the RadiantOne Directory stores,
 backup files, and exported LDIF files. Attribute values are encrypted before they are stored, and
 decrypted before being returned to the client, as long as the client is authorized to read the
 attribute (based on ACLs defined in RadiantOne), is connected to RadiantOne via SSL and not
@@ -106,7 +106,7 @@ For details on configuring attribute encryption, see the RadiantOne Namespace Co
 
 ## Use Zipped and Encrypted LDIF Files
 
-When exporting (or initializing) RadiantOne Universal Directory stores or persistent cache
+When exporting (or initializing) RadiantOne Directory stores or persistent cache
 stores, choose to use LDIFZ file types (which are zipped and encrypted) instead of classic LDIF
 files. LDIFZ files are encrypted using the security key defined in RadiantOne. For details on
 creating a security key, see the RadiantOne System Administration Guide.
@@ -114,7 +114,7 @@ creating a security key, see the RadiantOne System Administration Guide.
 You can use your own security key (Customer Master Key) for attribute encryption via AWS
 KMS. For details on using AWS KMS, see the RadiantOne System Administration Guide.
 
-For details on exporting Universal Directory stores using LDIFZ, see the RadiantOne
+For details on exporting RadiantOne Directory stores using LDIFZ, see the RadiantOne
 Namespace Configuration Guide. For details on exporting persistent cache stores using LDIFZ,
 see the RadiantOne Deployment and Tuning Guide.
 
@@ -166,11 +166,11 @@ Once FIPS-mode is enabled, go to the Main Control Panel -> Settings tab -> Secur
 
 ![An image showing the ](Media/Image3.2.jpg)
 
-### RadiantOne Universal Directory (HDAP) Stores Attribute Encryption
+### RadiantOne Directory (HDAP) Stores Attribute Encryption
 
 Attribute encryption protects sensitive data while it is stored in RadiantOne. Attribute encryption
 allows you to specify that certain attributes of an entry are stored in an encrypted format. This
-prevents data from being readable while stored in RadiantOne Universal Directory stores,
+prevents data from being readable while stored in RadiantOne Directory stores,
 persistent cache, backup files, and exported LDIF files.
 
 There are two items to configure. One is the criteria for the key generation used to
@@ -194,15 +194,15 @@ security key.
 
 No attributes are encrypted by default. To configure a list of attributes to encrypt:
 
-1. Navigate to the RadiantOne Universal Directory (HDAP) store (or configured persistent  cache branch) on the Main Control Panel > Directory Namespace tab.
+1. Navigate to the RadiantOne Directory (HDAP) store (or configured persistent  cache branch) on the Main Control Panel > Directory Namespace tab.
 2. Enter a comma-separated list of attribute names in the Encrypted Attributes property.
 3. Click Save.
-4. Click the Re-build Index button (if your configuration is an RadiantOne Universal Directory Store) or the Initialize button to reinitialize the cache (if your configuration is a Persistent Cache).
+4. Click the Re-build Index button (if your configuration is an RadiantOne Directory Store) or the Initialize button to reinitialize the cache (if your configuration is a Persistent Cache).
 
 Attributes listed in the Encrypted Attributes property are added to the Non-indexed attribute list
 by default. This means these attributes are not searchable by clients. Indexing encrypted
 attributes is generally not advised as the index itself is less secure than the attribute stored in
-Universal Directory stores/persistent cache. However, if you must be able to search on the
+RadiantOne Directory stores/persistent cache. However, if you must be able to search on the
 encrypted attribute value, it needs indexed. Only “exact match/equality” index is supported for
 encrypted attributes. To make an encrypted attribute searchable, remove the attribute from the
 list of nonindexed attributes and click the Re-build Index button or the Initialize button (to
@@ -213,7 +213,7 @@ see the RadiantOne System Administration Guide.
 
 ### LDIF File Encryption
 
-Using the LDIFZ format when exporting RadiantOne Universal Directory (HDAP) stores
+Using the LDIFZ format when exporting RadiantOne Directory (HDAP) stores
 produces a zipped and encrypted LDIF file. This prevents data from being readable while stored
 in exported LDIF files.
 
@@ -234,7 +234,7 @@ selected during the initialization process.
 
 ![An image showing the ](Media/Image3.3.jpg)
 
-In FIPS-mode, LDIFZ files should be used when exporting RadiantOne Universal Directory
+In FIPS-mode, LDIFZ files should be used when exporting RadiantOne Directory
 (HDAP) or persistent cache. Select .ldifz from the drop-down list next to the Export File Name
 property.
 
