@@ -314,34 +314,9 @@ There are two items to configure. One is the criteria for the key generation use
 
 ### LDIF File Encryption
 
-Using the LDIFZ format when exporting RadiantOne Directory (HDAP) stores
-produces a zipped and encrypted LDIF file. This prevents data from being readable while stored
-in exported LDIF files.
+Using the LDIFZ format when exporting RadiantOne Directory stores produces a zipped and encrypted LDIF file. This prevents data from being readable while stored in exported LDIF files.
 
-#### Key Generation
-
-To define the criteria used to generate an encryption key:
-
-1. Navigate to Main Control Panel > Settings Tab > Security section > Attribute Encryption sub-section.
-2. On the right, for LDIFZ Encryption Key, click Define Key Generation.
-3. Select the desired cipher from the drop-down list.
-4. Enter a security key. This value is used to auto-generate an encryption key. If you plan on deploying multiple clusters that will participate in inter-cluster replication and you are    going to initialize stores from an exported LDIFZ file, take note of the value you enter here as you must use it when configuring the LDIFZ cipher and security key in the other    clusters.
-
-#### Using LDIFZ
-
-In FIPS-mode, LDIFZ files should be used for persistent cache initialization (for the file that gets
-generated as the first step of the initialization process). Make sure the option to “Use .ldifz...” is
-selected during the initialization process.
-
-![An image showing the ](Media/Image3.3.jpg)
-
-In FIPS-mode, LDIFZ files should be used when exporting RadiantOne Directory
-(HDAP) or persistent cache. Select .ldifz from the drop-down list next to the Export File Name
-property.
-
-![An image showing the ](Media/Image3.4.jpg)
-
-![An image showing the ](Media/Image3.5.jpg)
+For LDIF file encryption, configure the criteria for the key generation and then when you export data to ldif, select the ldifz file extension. For details, see: [Attribute Encryption](../configuration/security/attribute-encryption)
 
 
 ## Recommendations for Securing Data in Transit - SSL/TLS Settings
