@@ -126,7 +126,7 @@ The RadiantOne service can send an alert email if logging fails for the vds_serv
 10. Enter a number of minutes to indicate how long to wait before sending a subsequent alert email, in the **Minimum Interval Between Emails**.
 11. Click **Save**.
 
-### RadiantOne Access Log 
+### RadiantOne LDAP Access Log 
 
 The vds_server_access.log contains less information than vds_server.log and is used more for auditing. Access logging is configured from the Main Control Panel > Settings tab > Logs > Access Logs section.
 
@@ -259,6 +259,68 @@ Queries to certain internal naming contexts can happen frequently resulting in a
 -	cn=clustermonitor: various statistics and availability of cluster nodes are retrieved by querying cn=clustermonitor.
 -	cn=replicationjournal: inter-cluster replication queries the cn=replicationjournal.
 
+
+### RadiantOne ADAP Access Log
+
+ADAP is the RESTFul Web Service included in RadiantOne. It allows REST-access to data managed in RadiantOne. ADAP access logging is configured from the Classic Control Panel > Settings tab > Logs > Log Settings section. Select the VDS – ADAP Access option from the Log Settings to Configure drop-down menu. 
+
+**Log Level** 
+
+Select a log level from the drop-down list in the Log Settings section.
+
+**Log Contents**
+ 
+The ADAP access log records the following.
+-	Simple binds
+
+-	Authorization (basic or token)
+
+-	Searches
+
+-	Operations including Post, Put, RDN Patch, and deletes
+
+-	Detailed error messages
+
+**Log Location**
+
+The adap_access.log file can be viewed and downloaded from Server Control Panel > Log Viewer tab.
+
+**Rollover Size**
+
+By default, the adap_access.log file rolls over once it reaches 100MB in size. Change this value if needed.
+
+**Log Archiving**
+
+By default, 10 files are kept in the archive. Change this value in the How Many Files to Keep in Archive setting. The archived files are named `adap_access-<N>.log` and can be viewed and downloaded from Server Control Panel > Log Viewer. 
+
+### SCIM Access Log
+
+The RadiantOne service supports SCIMv2. SCIM logging is configured from the Classic Control Panel > Settings tab > Logs > Logs Settings section. Select the VDS – SCIM option from the Log Settings to Configure drop-down menu. 
+
+**Log Level**
+
+Select a log level from the drop-down list in the Log Settings section. The default log level for this log is INFO. 
+
+**Log Contents**
+
+The SCIM log records the following. 
+
+-	Operations including post, put, patch, and deletes
+
+-	Internal processing related to servicing requests from SCIM clients
+
+**Log Location**
+
+The SCIM log file is scim.log. It can be viewed and downloaded from the Server Control Panel > Log Viewer. 
+
+**Rollover Size**
+
+By default, the scim.log file rolls over once it reaches 100MB in size. Change this value if needed. 
+
+**Log Archiving**
+
+By default, 20 files are kept in the archive. Change this value in the How Many Files to Keep in Archive setting. The archived files are named `scim-<yyyy-MM-dd_HH-mm-ss>.log.zip` and and can be downloaded from Server Control Panel > Log Viewer. 
+
 ## RadiantOne Persistent Cache with Real-time Refresh
 
 The logs associated with persistent cache with real-time refresh are described in this section. The high-level diagram below depicts the components involved.
@@ -342,83 +404,6 @@ By default, the periodiccache.log file rolls over once it reaches 10MB in size. 
 
 By default, 10 files are kept in the archive. Change this value in the How Many Files to Keep in Archive setting. The archived files are named `periodiccache-<N>.log` and can be viewed and downloaded form Server Control Panel > Log Viewer.
 
-## ADAP Access Log
-
-ADAP is the RESTFul Web Service included in RadiantOne. It allows REST-access to RadiantOne. ADAP access logging is configured from the Main Control Panel -> Settings tab -> Logs -> Log Settings section. Select the VDS – ADAP Access option from the Log Settings to Configure drop-down menu. 
-
-### Log Contents
- 
-The ADAP access log records the following.
--	Simple binds
-
--	Authorization (basic or token)
-
--	Searches
-
--	Operations including Post, Put, RDN Patch, and deletes
-
--	Detailed error messages
-
-#### Log Location
-
-The adap_access.log file can be viewed and downloaded from Server Control Panel > Log Viewer
-
-### Log Level 
-
-Select a log level from the drop-down list in the Log Settings section. For details on available log levels, see Chapter 1. The default log level for this log is OFF.
-
->[!warning] 
->To log Certificate Revocation error messages when accessing ADAP using mutual authentication, set the log level to DEBUG from the Main Control Panel > Zookeeper tab by navigating to `radiantone/v2/<cluster_name>/config/logging/log4j2-vds.json` and updating the “Loggers” section with the information shown below.
-
-```json
-"loggers" : {
-     "logger" : [
-      {
-       "name" : "org.eclipse.jetty",
-       "level" : "DEBUG"
-     }, {
-       "name" : "com.rli.zookeeper",
-       "level" : "INFO"
-     }, {
-
-```
-
-
-### Rollover Size
-
-By default, the adap_access.log file rolls over once it reaches 100MB in size. Change this value if needed.
-
-### Log Archiving
-
-By default, 10 files are kept in the archive. Change this value in the How Many Files to Keep in Archive setting. The archived files are named `adap_access-<N>.log` and can be viewed and downloaded from Server Control Panel > Log Viewer. 
-
-## SCIM Log
-
-The RadiantOne service supports SCIMv2. SCIM logging is configured from the Main Control Panel > Settings tab > Logs > Logs Settings section. Select the VDS – SCIM option from the Log Settings to Configure drop-down menu. 
-
-### Log Contents
-
-The SCIM log records the following. 
-
--	Operations including post, put, patch, and deletes
-
--	Internal processing related to servicing requests from SCIM clients
-
-### Log Location
-
-The SCIM log file is scim.log. It can be viewed and downloaded from the Server Control Panel > Log Viewer. 
-
-### Log Level
-
-Select a log level from the drop-down list in the Log Settings section. The default log level for this log is INFO. For details on available log levels, see [Chapter 1](01-overview). 
-
-### Rollover Size
-
-By default, the scim.log file rolls over once it reaches 100MB in size. Change this value if needed. 
-
-### Log Archiving
-
-By default, 20 files are kept in the archive. Change this value in the How Many Files to Keep in Archive setting. The archived files are named `scim-<yyyy-MM-dd_HH-mm-ss>.log.zip` and and can be downloaded from Server Control Panel > Log Viewer. 
 
 
 
