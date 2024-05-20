@@ -138,8 +138,6 @@ Once the environment has been successfully created, the environment's status cha
 
 ![image description](images/operational.png)
 
-![image description](images/operational2.png)
-
 ### Form submission failure
 
 If there is an issue with the form submission, an error message states that the new environment creation failed and the new environment will no longer be visible in the environment list on the *Environments* home screen. Select **Dismiss** to close the error message and proceed to restart the workflow to create a new environment.
