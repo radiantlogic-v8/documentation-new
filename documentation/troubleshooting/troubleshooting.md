@@ -156,15 +156,12 @@ The access log now displays bind DN information for Search Results for both succ
 
 The following example entry shows bind DN information for a successful bind. 
 
-```
-2020-11-10 16:26:04,896 |localhost~201110154406|<== conn=10 op=57 MsgID=57 SearchResult {resultCode=0, matchedDN=null, errorMessage=null} ### nEntries=1 ### bindDN="cn=Directory Manager" ### etime=0 ###
-```
+`2020-11-10 16:26:04,896 |localhost~201110154406|<== conn=10 op=57 MsgID=57 SearchResult {resultCode=0, matchedDN=null, errorMessage=null} ### nEntries=1 ### bindDN="cn=Directory Manager" ### etime=0 ###`
 
 The following example entry shows bind DN information for an unsuccessful bind attempt. 
 
-```
-2022-05-09 15:02:40,446 |localhost ~220509150108|<== conn=5 op=3 MsgID=3 BindResponse {resultCode=49, matchedDN=null, errorMessage=Reason: 52e - Invalid credentials} ### bindDN="cn=Marketing User,dc=hdap" ### etime=8 ###
-```
+`2022-05-09 15:02:40,446 |localhost ~220509150108|<== conn=5 op=3 MsgID=3 BindResponse {resultCode=49, matchedDN=null, errorMessage=Reason: 52e - Invalid credentials} ### bindDN="cn=Marketing User,dc=hdap" ### etime=8 ###
+`
 
 **Log Location**
 
