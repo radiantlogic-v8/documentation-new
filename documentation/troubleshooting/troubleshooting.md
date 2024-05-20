@@ -11,6 +11,8 @@ RadiantOne uses the log4J v2 API for logging. Although a variety of log files ar
 
 Logs can be viewed from Server Control Panel and Environment Operations Center.
 
+>[!warn] - Only SaaS deployments have access to Environment Operations Center. Self-managed deployments of RadiantOne do not.
+
 ### Control Panel
 
 Logs can be viewed and downloaded from Classic Control Panel > Server Control Panel > Log Viewer tab.
@@ -29,6 +31,8 @@ Logs can be viewed from the Environment Operations Center. Log into your Tenant 
 Select the environment where RadiantOne Identity Data Management is deployed and go to the Logs tab. Select the log from the drop-down list.
 
 ![EOC Logs](Media/eoc-logs.jpg)
+
+>[!warn] - Only SaaS deployments have access to Environment Operations Center. Self-managed deployments of RadiantOne do not.
 
 ## Managing Log Levels
 There are different levels of logging available for the components. The options are: Off, Fatal, Error, Warn, Info, Debug, and Trace.
