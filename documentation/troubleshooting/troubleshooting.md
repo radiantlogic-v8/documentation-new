@@ -335,7 +335,7 @@ The logs associated with persistent cache with real-time refresh are described i
 
 4.	The Sync Engine queries the backend(s) and updates the persistent cache view(s) accordingly.
 
-### Agent Logs
+### Agent Log
 
 The agent logs to agent_fid_sd_agent_real_time.log. This log can be viewed and downloaded from Server Control Panel > Log Viewer.
 
@@ -485,14 +485,14 @@ The Control Panel access log file contains the save operations performed by admi
 Web_access.log file can be viewed and downloaded from Server Control Panel > Log Viewer.
 
 
-### Synchronization
+## Synchronization
 The components described in this section are applicable to the RadiantOne Synchronization capability. The high-level diagram below depicts the components involved. 
 
-![An image showing ](Media/Image5.1.jpg)
+![Sync Architecture](Media/Image5.1.jpg)
 
-If the virtual view of the source is configured in persistent cache, the default HDAP trigger method is used to detect and publish the change (detailed in 1b in the diagram). If the virtual view of the source is not configured in persistent cache, the capture connector detects changes directly on the source. In this case, the agent manages the connector (detailed in 1a in the diagram).
+If the identity view of the source is configured in persistent cache, the default HDAP trigger method is used to detect and publish the change (detailed in 1b in the diagram). If the identity view of the source is not configured in persistent cache, the capture connector detects changes directly on the source. In this case, the agent manages the connector (detailed in 1a in the diagram).
 
-**Agent**
+### Agent Log
 
 The Agent manages the capture connectors. The agent log file agent_fid_sd_agent_real_time.log on the RadiantOne node where the sync agent is running. You can view and download this log file from the Server Control Panel > Log Viewer.
 
@@ -504,10 +504,10 @@ This log file provides details about the state of capture connectors (e.g. start
 
 The log level is controlled by the setting in Classic Control Panel -> Settings tab -> Logs -> Log Settings. Select the Sync Agents – Agents option.
 
-![An image showing ](Media/Image5.3.jpg)
+![Agent Log Level](Media/Image5.3.jpg)
 
 
-**Connectors**
+### Connector Logs
 
 Capture connectors log activity to <piplelineId>\connector.log on the RadiantOne node where the sync agent is running. You can view and download this log file from the Server Control Panel > Log Viewer.
  
@@ -525,7 +525,7 @@ Capture connectors log activity to <piplelineId>\connector.log on the RadiantOne
 
 1.	Click **Save**.
 
-**Sync Engine (Transformation and Apply)**
+### Sync Engine Logs (Transformation and Apply)
 
 The Sync Engine processes the transformations and sends the changes to the destination. These activities are logged in sync_engine.log on the RadiantOne node where the sync engine processor that is assigned for the pipeline is running. You can view and download sync_engine.log from the Server Control Panel > Log Viewer.  You can also use the Classic Control Panel > Synchronization tab by selecting the topology and clicking Configure next to the pipeline. Select the Apply component and in the Log Viewer section, click Download.
 
@@ -558,11 +558,12 @@ The Task Scheduler schedules tasks. Activities that are processed as tasks are:
 
 -	Login analysis (initiated from the Global Identity Builder)
 
--	Initializing a persistent cache or RadiantOne Universal Directory (HDAP) store
+-	Initializing a persistent cache or RadiantOne Directory store
 
--	Re-indexing a persistent cache or RadiantOne Universal Directory (HDAP) store
+-	Re-indexing a persistent cache or RadiantOne Directory store
 
 -	Default monitoring
+
 There are two aspects of logging described in this section: 
 
 -	The task scheduler itself 
@@ -571,15 +572,14 @@ There are two aspects of logging described in this section:
 
 ### Scheduler Server
 
-The task scheduler logging is configured from the Main Control Panel > Settings tab > Logs > Logs Settings section. Select the Scheduler – Scheduler Server option from the Log Settings to Configure drop-down menu.
+The task scheduler logging is configured from the Classic Control Panel > Settings tab > Logs > Logs Settings section. Select the Scheduler – Scheduler Server option from the Log Settings to Configure drop-down menu.
 
-![An image showing ](Media/Image6.1.jpg)
+![Scheduler Log Level](Media/Image6.1.jpg)
 
-Figure 6. 1: Main Control Panel, Task Scheduler Log Settings
 
 **Log Level**
 
-Select a log level from the drop-down list in the Log Settings section. For details on available log levels, see [Chapter 1](01-overview).
+Select a log level from the drop-down list in the Log Settings section. 
 
 **Rollover Size**
 
@@ -595,15 +595,13 @@ By default, 10 files are kept in the archive. Change this value in the How Many 
 
 ### Scheduled Tasks
 
-Logging for scheduled tasks is configured from the Main Control Panel > Settings tab > Logs > Logs Settings section. Select the Scheduler – Scheduler Tasks option from the Log Settings to Configure drop-down menu.
+Logging for scheduled tasks is configured from the Classic Control Panel > Settings tab > Logs > Logs Settings section. Select the Scheduler – Scheduler Tasks option from the Log Settings to Configure drop-down menu.
 
-![An image showing ](Media/Image6.2.jpg)
-
-Figure 6.2: Main Control Panel, Scheduled Tasks Log Settings
+![Scheduled Tasks Log Level](Media/Image6.2.jpg)
 
 **Log Level**
 
-Select a log level from the drop-down list in the Log Settings section. For details on available log levels, see [Chapter 1](01-overview).
+Select a log level from the drop-down list in the Log Settings section. 
 
 **Rollover Size**
 
