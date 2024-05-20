@@ -92,15 +92,16 @@ Server logging is configured from the Classic Control Panel > Settings tab > Log
 
 -	SCIMv2 requests and responses. The SCIMv2 incoming queries from clients are prefixed with ScimRequest for the requests and ScimResponse for the replies from RadiantOne. RadiantOne server log level of at least INFO is required to log the SCIMv2 requests.
 -	ACI evaluation decisions.  RadiantOne server log level must be set to DEBUG. When DEBUG level is set, the evaluation rules can be seen in vds_server.log. An example of ACI evaluation is shown below:
-2021-05-07T15:40:44,920 DEBUG com.rli.slapd.aci.generic.AciHandler:436 - 
-  [ACI EVAL] operation: 'SEARCH REQUEST'
-  [ACI EVAL]  targetDN: 'ou=Accounting,o=companydirectory'
-  [ACI EVAL]   subject: 'uid=Aaron_Medler,ou=Accounting,o=companydirectory'
-  [ACI EVAL] Aci candidates {2}:
-  [ACI EVAL] Aci candidate # 1 - '(targetattr = "*")(target = "ldap:///o=companydirectory")(targetscope = "subtree")(version 3.0;acl "myaci description";deny (all) (userdn = "ldap:///uid=Aaron_Medler,ou=Accounting,o=companydirectory");)'
-  [ACI EVAL] Aci candidate # 2 - '(targetattr!="aci")(version 3.0; acl "Grant read access to anyone"; allow (read,search,compare) userdn="ldap:///anyone";)'
-  [ACI EVAL] Aci evaluation result: --DENY-- 
-2021-05-07T15:40:44,921 DEBUG com.rli.slapd.server.nio.SessionHandler:2354 - [conn=50 op=2]  Entry discared by ACI
+
+`2021-05-07T15:40:44,920 DEBUG com.rli.slapd.aci.generic.AciHandler:436 - `
+`  [ACI EVAL] operation: 'SEARCH REQUEST'`
+`  [ACI EVAL]  targetDN: 'ou=Accounting,o=companydirectory'`
+`  [ACI EVAL]   subject: 'uid=Aaron_Medler,ou=Accounting,o=companydirectory'`
+`  [ACI EVAL] Aci candidates {2}:`
+`  [ACI EVAL] Aci candidate # 1 - '(targetattr = "*")(target = "ldap:///o=companydirectory")(targetscope = "subtree")(version 3.0;acl "myaci description";deny (all) (userdn = "ldap:///uid=Aaron_Medler,ou=Accounting,o=companydirectory");)'`
+`  [ACI EVAL] Aci candidate # 2 - '(targetattr!="aci")(version 3.0; acl "Grant read access to anyone"; allow (read,search,compare) userdn="ldap:///anyone";)'`
+`  [ACI EVAL] Aci evaluation result: --DENY-- `
+`2021-05-07T15:40:44,921 DEBUG com.rli.slapd.server.nio.SessionHandler:2354 - [conn=50 op=2]  Entry discared by ACI`
 
 **Log Level**
 
