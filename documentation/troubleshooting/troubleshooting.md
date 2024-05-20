@@ -293,7 +293,7 @@ By default, the adap_access.log file rolls over once it reaches 100MB in size. C
 
 By default, 10 files are kept in the archive. Change this value in the How Many Files to Keep in Archive setting. The archived files are named `adap_access-<N>.log` and can be viewed and downloaded from Server Control Panel > Log Viewer. 
 
-### SCIM Access Log
+### RadiantOne SCIM Access Log
 
 The RadiantOne service supports SCIMv2. SCIM logging is configured from the Classic Control Panel > Settings tab > Logs > Logs Settings section. Select the VDS – SCIM option from the Log Settings to Configure drop-down menu. 
 
