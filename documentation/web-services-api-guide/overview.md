@@ -17,7 +17,7 @@ The HTTPS web services endpoint is disabled by default. Enable the endpoint from
 
 Some settings in the Classic Control Panel are accessible only in Expert Mode. To switch to Expert Mode, click the Logged in as, (username) drop-down menu and select Expert Mode. 
 
-![An image showing ](Media/expert-mode.jpg)
+![Expert Mode](Media/expert-mode.jpg)
  
 >[!note] The Classic Control Panel saves the last mode (Expert or Standard) it was in when you log out and returns to this mode automatically when you log back in. The mode is saved on a per-role basis.
 
@@ -33,5 +33,6 @@ This displays the welcome screen and shows the supported services.
 
 >[!note] In order for the SCIM examples shown below to work properly, SCIM resource types must be created in RadiantOne. Go to the Classic Control Panel > Settings Tab > Server Front End section > SCIM sub-section. On the Resource Types tab, create a new resource type named Users and another named Groups. Save the configuration. See [SCIM](scim.md) for more information on configuring SCIM resource types. 
 
-![An image showing ](Media/Image1.3.jpg) UPDATE THIS SCREENSHOT!!!!!!
+![Web Services 1](Media/web-services1.jpg) 
+![Web Services 2](Media/web-services2.jpg) 
  
