@@ -32,7 +32,9 @@ Select the environment where RadiantOne Identity Data Management is deployed and
 
 ## Managing Log Levels
 There are different levels of logging available for the components. The options are: Off, Fatal, Error, Warn, Info, Debug, and Trace.
-Log levels are configured from Classic Control Panel > Settings > Logs > Log Settings.
+Log levels are configured from Classic Control Panel > Settings > Logs > Log Settings. To ensure optimal performance, the logging for RadiantOne should be reduced to the minimum level that meets your auditing needs for production environments.
+
+The RadiantOne service must be restarted if you set a log level to *OFF*.
 
 **Off**
 
@@ -128,7 +130,7 @@ The RadiantOne service can send an alert email if logging fails for the vds_serv
 
 ### RadiantOne LDAP Access Log 
 
-The vds_server_access.log contains less information than vds_server.log and is used more for auditing. Access logging is configured from the Main Control Panel > Settings tab > Logs > Access Logs section.
+The vds_server_access.log contains less information than vds_server.log and is used more for auditing. Access logging is configured from the Classic Control Panel > Settings tab > Logs > Access Logs section.
 
 **Log Output Format**
 
@@ -339,16 +341,16 @@ The logs associated with persistent cache with real-time refresh are described i
 
 The agent logs to agent_fid_sd_agent_real_time.log. This log can be viewed and downloaded from Server Control Panel > Log Viewer.
 
-The agent log level is controlled by the setting in Main Control Panel -> Settings tab -> Logs -> Log Settings. Select the Sync Agents – Agents option.
+The agent log level is controlled by the setting in Classic Control Panel -> Settings tab -> Logs -> Log Settings. Select the Sync Agents – Agents option.
 
 ![Sync Agent Log Settings](Media/Image3.4.jpg)
 
 
 ### Connector Logs
 
-The capture connector logs use the following syntax: `<naming_context>_<baseDN>_<data_source>\connector.log`. These logs can be viewed and downloaded from Server Control Panel > Log Viewer. They can also be viewed from the Main Control Panel > PCache Monitoring tab. 
+The capture connector logs use the following syntax: `<naming_context>_<baseDN>_<data_source>\connector.log`. These logs can be viewed and downloaded from Server Control Panel > Log Viewer. They can also be viewed from the Classic Control Panel > PCache Monitoring tab. 
 
-The log level is defined per connector with the setting in Main Control Panel -> PCache Monitoring tab. Select the connector on the topology and the configuration window displays. In the Configuration section, select the level from the Log Level drop-down list.
+The log level is defined per connector with the setting in Classic Control Panel -> PCache Monitoring tab. Select the connector on the topology and the configuration window displays. In the Configuration section, select the level from the Log Level drop-down list.
 
 ![Connector Log Level](Media/Image3.5.jpg)
 
@@ -404,82 +406,25 @@ By default, the periodiccache.log file rolls over once it reaches 10MB in size. 
 
 By default, 10 files are kept in the archive. Change this value in the How Many Files to Keep in Archive setting. The archived files are named `periodiccache-<N>.log` and can be viewed and downloaded form Server Control Panel > Log Viewer.
 
+## Classic Control Panel
 
+A Jetty web server hosts the Classic and Server Control Panels. There are two log files applicable to this component. The Server Log contains internal server activities and is generated the first time each day that Jetty is started. The Access Log contains the save operations performed by administrators.
 
-
-## Understanding Logs
-
-To ensure optimal performance, the logging for RadiantOne should be reduced to the minimum level that meets your auditing needs for production environments. The log settings that should be considered are configured in the Classic Control Panel > Settings Tab > Logs section > Log Settings and Access Logs sub-sections. 
-
-
-### LDAP Client Activity
-
-In the Classic Control Panel > Settings Tab > Logs section > Log Settings section, select VDS – Server from the drop-down list. The RadiantOne service log level, rollover size and how many files to keep archived are defined here. To turn off logging, set Log Level to OFF. The RadiantOne service does not need to be restarted when changing the log level unless you set it to OFF.
-
-![An image showing ](Media/Image1.2.jpg)
-
-
-
-### SCIM Client Activity
-
-In the Classic Control Panel > Settings Tab > Logs section > Log Settings section, select VDS – SCIM from the drop-down list. The RadiantOne SCIM acccess log level is defined here. To turn off logging, set Log Level to OFF. The RadiantOne service does not need to be restarted when changing the log level unless you set it to OFF.
-
-
-### Rest (ADAP) Client Activity
-
-
-
-### Control Panel
-There are two log files applicable to the Control Panel. 
-- The Server Log contains internal server activities and is generated the first time each day that the application hosting the Control Panel is started.
-- The Access Log contains the save operations performed by administrators.
-
-**Server Log**
+### Server Log
 
 The log file is web.log. 
 
 This file rolls over when it reaches 100M in size and 5 files are archived. These settings are configured from the Classic Control Panel > Settings tab > Logs > Log Settings section. Select Control Panel – Server from the Log Settings to Configure drop-down list. Define the log level, rollover size and number of files to keep archived.
 
-![An image showing ](Media/Image2.1.jpg)
-
-Web.log can be viewed from Environment Operations Center > Environments > Selected Environment > LOGS. 
-
-
-**Access Log**
-
-The Control Panel access log file contains the save operations performed by administrators. When any user that is a member of the delegated administration groups saves changes in the Control Panel, this activity is logged into the web_access log. This is a CSV formatted log file with the delimiter being <TAB>. These settings are configured from the Main Control Panel > Settings tab > Logs > Log Settings section. Select Control Panel – Access from the Log Settings to Configure drop-down list. Define the log level, rollover size and number of files to keep archived.
-
-![An image showing ](Media/Image2.2.jpg)
- 
-Figure 2: Main Control Panel Access Log Settings
-
-Web_access.log file can be viewed from Environment Operations Center > Environments > Selected Environment > LOGS. 
-
-
-### Environment Operations Center
-
-
-### Secure Data Connectors
-
-### Classic Control Panel
-
-A Jetty web server hosts the Classic and Server Control Panels. There are two log files applicable to this component. The Server Log contains internal server activities and is generated the first time each day that Jetty is started. The Access Log contains the save operations performed by administrators.
-
-**Server Log**
-
-The log file is web.log. 
-
-This file rolls over when it reaches 100M in size and 5 files are archived. These settings are configured from the Main Control Panel > Settings tab > Logs > Log Settings section. Select Control Panel – Server from the Log Settings to Configure drop-down list. Define the log level, rollover size and number of files to keep archived.
-
-![An image showing ](Media/Image2.1.jpg)
+![Server Log Level](Media/Image2.1.jpg)
 
 Web.log can be viewed and downloaded from Server Control Panel > Log Viewer. 
 
-**Access Log**
+### Access Log
 
-The Control Panel access log file contains the save operations performed by administrators. When any user that is a member of the delegated administration groups saves changes in the Main or Server Control Panels, this activity is logged into the web_access log. This is a CSV formatted log file with the delimiter being <TAB>. These settings are configured from the Main Control Panel > Settings tab > Logs > Log Settings section. Select Control Panel – Access from the Log Settings to Configure drop-down list. Define the log level, rollover size and number of files to keep archived.
+The Control Panel access log file contains the save operations performed by administrators. When any user that is a member of the delegated administration groups saves changes in the Classic or Server Control Panels, this activity is logged into the web_access log. This is a CSV formatted log file with the delimiter being <TAB>. These settings are configured from the Classic Control Panel > Settings tab > Logs > Log Settings section. Select Control Panel – Access from the Log Settings to Configure drop-down list. Define the log level, rollover size and number of files to keep archived.
 
-![An image showing ](Media/Image2.2.jpg)
+![Access Log Level](Media/Image2.2.jpg)
  
 
 Web_access.log file can be viewed and downloaded from Server Control Panel > Log Viewer.
@@ -511,7 +456,7 @@ The log level is controlled by the setting in Classic Control Panel -> Settings 
 
 Capture connectors log activity to <piplelineId>\connector.log on the RadiantOne node where the sync agent is running. You can view and download this log file from the Server Control Panel > Log Viewer.
  
-1.	The log level is defined per connector with the setting in Main Control Panel > Global Sync tab. 
+1.	The log level is defined per connector with the setting in Classic Control Panel > Synchronization tab. 
 
 1.	Select the topology and click Configure next to the relevant pipeline. 
 
@@ -614,3 +559,7 @@ The task log file is `task.<taskID>.log` and can be viewed and downloaded from t
 **Log Archiving**
 
 By default, 10 files are kept in the archive. Change this value in the How Many Files to Keep in Archive setting. The archived files are named `task.<taskID-<number>>.log` and can be viewed and downloaded from the Server Control Panel > Log Viewer. 
+
+## Secure Data Connector
+
+
