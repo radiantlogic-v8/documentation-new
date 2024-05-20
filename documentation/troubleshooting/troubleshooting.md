@@ -145,7 +145,7 @@ The output formats for the access log are text and CSV by default.
 
 **Bind DN Information in vds_server_access.log**
 
-By default, the Search Results in vds_server_access.log do not contain bind DN information. To enable bind DN information to be logged for search results in the access log set the enableAccessLoggingWithWhoDidThat to true.
+By default, the Search Results in vds_server_access.log do not contain bind DN information. To enable bind DN information to be logged for search results in the access log set the enableAccessLoggingWithWhoDidThat to true using the REST configuration API with the commande shown below.
 
 `https://<rli_rest_endpoint>/adap/util?action=vdsconfig&commandname=set-property&name=enableAccessLoggingWithWhoDidThat&value=true`
 
