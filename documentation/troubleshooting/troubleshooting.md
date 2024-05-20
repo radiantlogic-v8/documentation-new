@@ -94,13 +94,21 @@ Server logging is configured from the Classic Control Panel > Settings tab > Log
 -	ACI evaluation decisions.  RadiantOne server log level must be set to DEBUG. When DEBUG level is set, the evaluation rules can be seen in vds_server.log. An example of ACI evaluation is shown below:
 
 `2021-05-07T15:40:44,920 DEBUG com.rli.slapd.aci.generic.AciHandler:436 - `
+<br>
 `  [ACI EVAL] operation: 'SEARCH REQUEST'`
+<br>
 `  [ACI EVAL]  targetDN: 'ou=Accounting,o=companydirectory'`
+<br>
 `  [ACI EVAL]   subject: 'uid=Aaron_Medler,ou=Accounting,o=companydirectory'`
+<br>
 `  [ACI EVAL] Aci candidates {2}:`
+<br>
 `  [ACI EVAL] Aci candidate # 1 - '(targetattr = "*")(target = "ldap:///o=companydirectory")(targetscope = "subtree")(version 3.0;acl "myaci description";deny (all) (userdn = "ldap:///uid=Aaron_Medler,ou=Accounting,o=companydirectory");)'`
+<br>
 `  [ACI EVAL] Aci candidate # 2 - '(targetattr!="aci")(version 3.0; acl "Grant read access to anyone"; allow (read,search,compare) userdn="ldap:///anyone";)'`
+<br>
 `  [ACI EVAL] Aci evaluation result: --DENY-- `
+<br>
 `2021-05-07T15:40:44,921 DEBUG com.rli.slapd.server.nio.SessionHandler:2354 - [conn=50 op=2]  Entry discared by ACI`
 
 **Log Level**
