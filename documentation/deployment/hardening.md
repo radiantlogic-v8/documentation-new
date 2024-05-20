@@ -255,137 +255,62 @@ If Bind Requires Password is not enabled, and a bind request comes in with a val
 
 This setting can be enabled from Main Control Panel > Settings tab > Security section > Access Control. Check the Bind requires a password option.
 
-### Define Strong Password Policies
-
-RadiantOne offers advanced password policy settings to control everything from password strength, account locking and expiration, and grace logins. For more details, see [Configure Strong Password Policies](02-client-access-limits-and-regulations.md#configure-strong-password-policies).
-
 ### Use Multi-Factor Authentication
 
 Configure your corporate OIDC provider from Main Control Panel > Settings > Security > OIDC Provider Configuration. The OIDC provider should be configured to support the desired MFA vendor.
 
 ### Use Least Privilege Accounts for Backend Connections
 
-RadiantOne connects to backends using the credentials defined in the data sources. When
-defining data sources, use credentials associated with an account that has the needed
-permissions required by RadiantOne. For example, if the backend information exposed in the
-RadiantOne namespace is to be read-only, use credentials for a read-only account in the data
-source. If certain attributes exposed in the RadiantOne namespace must be updateable by
-clients, use an account with permissions to update this information in the backend when
-defining the data source. It is always recommended to use least privilege accounts in the
-RadiantOne data source configurations.
+RadiantOne connects to backends using the credentials defined in the data sources. When defining data sources, use credentials associated with an account that has the needed permissions required by RadiantOne. For example, if the backend information exposed in the RadiantOne namespace is to be read-only, use credentials for a read-only account in the data source. If certain attributes exposed in the RadiantOne namespace must be updateable by clients, use an account with permissions to update this information in the backend when defining the data source. It is always recommended to use least privilege accounts in the RadiantOne data source configurations.
 
 ### Encrypt Attributes in RadiantOne Directory Stores
 
-Attribute encryption protects sensitive data while it is stored in RadiantOne Directory
-stores. You can specify that certain attributes of an entry are stored in an encrypted format. This
-prevents data from being readable while stored in the RadiantOne Directory stores,
-backup files, and exported LDIF files. Attribute values are encrypted before they are stored, and
-decrypted before being returned to the client, as long as the client is authorized to read the
-attribute (based on ACLs defined in RadiantOne), is connected to RadiantOne via SSL and not
-a member of the special group containing members not allowed to get these attributes (e.g.
-cn=ClearAttributesOnly,cn=globalgroups,cn=config). For details on this special group, please
-see the RadiantOne System Administration Guide.
+Attribute encryption protects sensitive data while it is stored in RadiantOne Directory stores. You can specify that certain attributes of an entry are stored in an encrypted format. This prevents data from being readable while stored in the RadiantOne Directory stores,
+backup files, and exported LDIF files. Attribute values are encrypted before they are stored, and decrypted before being returned to the client, as long as the client is authorized to read the attribute (based on ACLs defined in RadiantOne), is connected to RadiantOne via SSL and not a member of the special group containing members not allowed to get these attributes (e.g. cn=ClearAttributesOnly,cn=globalgroups,cn=config). For details on this special group, please see the RadiantOne System Administration Guide.
 
-You can use your own security key (Customer Master Key) for attribute encryption via AWS
-KMS. For details on using AWS KMS, see the RadiantOne System Administration Guide.
+You can use your own security key (Customer Master Key) for attribute encryption via AWS KMS. For details on using AWS KMS, see the RadiantOne System Administration Guide.
 
 
 For details on configuring attribute encryption, see the RadiantOne Namespace Configuration Guide.
 
 ### Use Zipped and Encrypted LDIF Files
 
-When exporting (or initializing) RadiantOne Directory stores or persistent cache
-stores, choose to use LDIFZ file types (which are zipped and encrypted) instead of classic LDIF
-files. LDIFZ files are encrypted using the security key defined in RadiantOne. For details on
-creating a security key, see the RadiantOne System Administration Guide.
+When exporting (or initializing) RadiantOne Directory stores or persistent cache stores, choose to use LDIFZ file types (which are zipped and encrypted) instead of classic LDIF files. LDIFZ files are encrypted using the security key defined in RadiantOne. For details on creating a security key, see the RadiantOne System Administration Guide.
 
-You can use your own security key (Customer Master Key) for attribute encryption via AWS
-KMS. For details on using AWS KMS, see the RadiantOne System Administration Guide.
+You can use your own security key (Customer Master Key) for attribute encryption via AWS KMS. For details on using AWS KMS, see the RadiantOne System Administration Guide.
 
-For details on exporting RadiantOne Directory stores using LDIFZ, see the RadiantOne
-Namespace Configuration Guide. For details on exporting persistent cache stores using LDIFZ,
-see the RadiantOne Deployment and Tuning Guide.
+For details on exporting RadiantOne Directory stores using LDIFZ, see the RadiantOne Namespace Configuration Guide. For details on exporting persistent cache stores using LDIFZ, see the RadiantOne Deployment and Tuning Guide.
 
 ### Avoid Displaying Sensitive Attributes in Log Files
 
-Configure sensitive attributes in the Main Control Panel > Settings > Server Front End >
-Attribute Handling -> Attributes Not Displayed in Logs setting. This property allows you to
-control which attribute values are not printed in clear in the RadiantOne logs. If you do not want
-certain attribute values printed in clear in the logs, you can indicate them here. Each attribute
-name should be separated with a single space. Any attribute indicated here has a value of *****
-printed in the logs instead of the value in clear.
+Configure sensitive attributes in the Main Control Panel > Settings > Server Front End > Attribute Handling -> Attributes Not Displayed in Logs setting. This property allows you to control which attribute values are not printed in clear in the RadiantOne logs. If you do not want certain attribute values printed in clear in the logs, you can indicate them here. Each attribute
+name should be separated with a single space. Any attribute indicated here has a value of ***** printed in the logs instead of the value in clear.
 
 >[!warning] 
->If Interception Scripting is used, remove or comment out
-the following line from each method to avoid cleartext passwords being written
+>If Interception Scripting is used, remove or comment out the following line from each method to avoid cleartext passwords being written
 to log files: prop.list(System.out)
 
 ### Avoid Displaying Sensitive Changelog Attributes
 
-When entries change, the change log reports the attributes under its "changes" attribute. This
-may pose a security risk if sensitive attributes have been changed and the change log is
-searchable by outside applications such as sync connectors. To eliminate this risk, the Excluded
-Change Log Attributes option allows you to exclude selected attributes from members of the
+When entries change, the change log reports the attributes under its "changes" attribute. This may pose a security risk if sensitive attributes have been changed and the change log is searchable by outside applications such as sync connectors. To eliminate this risk, the Excluded Change Log Attributes option allows you to exclude selected attributes from members of the
 “ChangelogAllowedAttributesOnly” group. Though these attributes are logged in the change log,
-they are not returned for these group members when performing a search on the change log.
-For more information, refer to the RadiantOne System Administration Guide.
+they are not returned for these group members when performing a search on the change log. For more information, refer to the RadiantOne System Administration Guide.
 
 ### Secure Access to the Global Sync Queues
 
-For Global Sync deployments, the Agent and Sync Engine process read and/or write into the
-queues using the credentials configured in the RadiantOne data source named: vdsha
-
+For Global Sync deployments, the Agent and Sync Engine process read and/or write into the queues using the credentials configured in the RadiantOne data source named: vdsha
 You can view this data source configuration from Main Control Panel > Settings > Server Backend > LDAP Data Sources.
 
-For security reasons, the user account (Bind DN) you have configured in the vdsha data source
-should be the only one allowed to access the cn=queue and cn=dlqueue naming contexts.
+For security reasons, the user account (Bind DN) you have configured in the vdsha data source should be the only one allowed to access the cn=queue and cn=dlqueue naming contexts.
 
 Configure access controls for these root naming contexts from Main Control Panel > Settings > Security > Access Control. Access should only be allowed for the account configured in the vdsha data source. For details on configuring access controls, see the RadiantOne System Administration Guide.
 
 ### RadiantOne Directory (HDAP) Stores Attribute Encryption
 
-Attribute encryption protects sensitive data while it is stored in RadiantOne. Attribute encryption
-allows you to specify that certain attributes of an entry are stored in an encrypted format. This
-prevents data from being readable while stored in RadiantOne Directory stores,
-persistent cache, backup files, and exported LDIF files.
+Attribute encryption protects sensitive data while it is stored in RadiantOne. Attribute encryption allows you to specify that certain attributes of an entry are stored in an encrypted format. This prevents data from being readable while stored in RadiantOne Directory stores, persistent cache, backup files, and exported LDIF files.
 
-There are two items to configure. One is the criteria for the key generation used to
-encrypt/decrypt the attributes. Two is the list of attributes you want to encrypt.
+There are two items to configure. One is the criteria for the key generation used to encrypt/decrypt the attributes. Two is the list of attributes you want to encrypt. For details, see: [Attribute Encryption](../configuration/security/attribute-encryption)
 
-#### Key Generation
-
-To define the criteria used to generate an encryption key:
-
-1. Navigate to Main Control Panel > Settings Tab > Security section > Attribute Encryption sub-section.
-2. On the right, click Define Key Generation.
-3. Select the desired cipher from the drop-down list.
-4. Enter a security key. This value is used to auto-generate an encryption key. If you plan on deploying multiple clusters that will participate in inter-cluster replication for encrypted attributes, take note of the value you enter here as you must use it when configuring the security key in the other clusters.
-
-An encryption key is auto-generated based on the cipher and security key value provided. This
-key is used across nodes in a cluster to encrypt/decrypt the attributes configured for encryption.
-If inter-cluster replication is deployed, all clusters must be configured with the same cipher and
-security key.
-
-#### Attributes to Encrypt
-
-No attributes are encrypted by default. To configure a list of attributes to encrypt:
-
-1. Navigate to the RadiantOne Directory (HDAP) store (or configured persistent  cache branch) on the Main Control Panel > Directory Namespace tab.
-2. Enter a comma-separated list of attribute names in the Encrypted Attributes property.
-3. Click Save.
-4. Click the Re-build Index button (if your configuration is an RadiantOne Directory Store) or the Initialize button to reinitialize the cache (if your configuration is a Persistent Cache).
-
-Attributes listed in the Encrypted Attributes property are added to the Non-indexed attribute list
-by default. This means these attributes are not searchable by clients. Indexing encrypted
-attributes is generally not advised as the index itself is less secure than the attribute stored in
-RadiantOne Directory stores/persistent cache. However, if you must be able to search on the
-encrypted attribute value, it needs indexed. Only “exact match/equality” index is supported for
-encrypted attributes. To make an encrypted attribute searchable, remove the attribute from the
-list of nonindexed attributes and click the Re-build Index button or the Initialize button (to
-reinitialize) if the branch is a persistent cache.
-
-For more information about accessing encrypted attributes and changing the encryption key,
-see the RadiantOne System Administration Guide.
 
 ### LDIF File Encryption
 
