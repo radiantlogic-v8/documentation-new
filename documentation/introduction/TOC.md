@@ -11,7 +11,7 @@ description: Introduction to RadiantOne Identity Data Management
     - [Overview](admin-tools-overview.md)
     - [Environment Operations Center](admin-tools-overview/overview)
     - [Control Panel](control-panel-overview.md)
-    - [WCA Compliance](wca-compliance.md)
+    - [Accessibility](wca-compliance.md)
 - [Concepts](concepts.md)
 - [Samples](samples.md)
     -   [Default Naming Contexts](samples/default-naming-context)
