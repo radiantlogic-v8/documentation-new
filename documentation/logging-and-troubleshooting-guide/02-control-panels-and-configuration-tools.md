@@ -53,37 +53,3 @@ More fine-grained configuration log settings related to the Main and Server Cont
 ![An image showing ](Media/Image2.3.jpg)
  
 Figure 3: Log4J Settings Applicable to the Main and Server Control Panels
-
--->
-
-## Server Control Panel - Cluster Monitor
-
-A special storage mounted at cn=clustermonitor is used to store historical information about the RadiantOne service’s statistics including CPU usage, memory usage, disk space, disk latency, and connection usage. This historical information is used to populate the graphs shown on the Server Control Panel > Dashboard tab. An example is shown below.
-
-![An image showing ](Media/Image2.4.jpg)
- 
-Figure 4: Server Control Panel > Dashboard tab
-
-The cluster monitor store is configurable from Main Control Panel > Settings > Logs > Clustermonitor. You can enable/disable the store from here and indicate a max age for the entries to prevent the contents from growing too large.
-
->[!note] 
->If you disable the cluster monitor store, no graphs display on the Server Control Panel > Dashboard tab.
-
-![An image showing ](Media/Image2.5.jpg)
- 
-Figure 5: Cluster Monitor Log Settings
-
-## Context Builder
-
-For auditing purposes, contextbuilder_audit.log can be used. This log contains details about the files that were saved/created/deleted, the date/time the change occurred, and the current OS user that was using Context Builder.
-
-<!-->
-
-## VDSCONFIG Command Line Utility
-
-Configuration commands issued using the vdsconfig utility can be logged. To enable logging of configuration requests using vdsconfig, navigate to <RLI_HOME>/config/advanced and edit features.properties. Set vdsconfig.logging.enabled=true. Restart the RadiantOne service. If RadiantOne is deployed in a cluster, restart the service on all nodes. The log settings are configurable and initialized from <RLI_HOME>/config/logging/log4j2-vdsconfig.json
-
-The default audit log is <RLI_HOME>/logs/vdsconfig.log.
-
->[!warning] 
->If you want the admin name that issued the command logged, make sure you have enabled the setting to Require a UserID and Password to Execute Commands. For information about this setting, see the RadiantOne Command Line Configuration Guide.
