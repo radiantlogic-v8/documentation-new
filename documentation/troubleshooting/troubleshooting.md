@@ -273,16 +273,16 @@ The logs associated with persistent cache with real-time refresh are described i
 
 4.	The Sync Engine queries the backend(s) and updates the persistent cache view(s) accordingly.
 
-### Agent
+### Agent Logs
 
 The agent logs to agent_fid_sd_agent_real_time.log. This log can be viewed and downloaded from Server Control Panel > Log Viewer.
 
-The agent logs level is controlled by the setting in Main Control Panel -> Settings tab -> Logs -> Log Settings. Select the Sync Agents – Agents option.
+The agent log level is controlled by the setting in Main Control Panel -> Settings tab -> Logs -> Log Settings. Select the Sync Agents – Agents option.
 
 ![Sync Agent Log Settings](Media/Image3.4.jpg)
 
 
-### Connectors
+### Connector Logs
 
 The capture connector logs use the following syntax: `<naming_context>_<baseDN>_<data_source>\connector.log`. These logs can be viewed and downloaded from Server Control Panel > Log Viewer. They can also be viewed from the Main Control Panel > PCache Monitoring tab. 
 
@@ -291,17 +291,17 @@ The log level is defined per connector with the setting in Main Control Panel ->
 ![Connector Log Level](Media/Image3.5.jpg)
 
 
-### Sync Engine
+### Sync Engine Log
 
 The sync engine log sync_engine.log on the RadiantOne node where the sync engine processor that is assigned for the pipeline is running. If RadiantOne is deployed in a cluster, a sync engine processor can be running on one or more nodes and the pipeline processing is distributed across them. The sync_engine.log can be viewed and downloaded from the Server Control Panel > Log Viewer.
 
-## HDAP Trigger
+### HDAP Trigger Log
 
-When virtual views are created on RadiantOne Directory stores or persistent cache, and those views are configured for persistent cache, the change capture connector type defaults to HDAP Trigger. This is an internal mechanism that automatically refreshes persistent caches that are built on top of other persistent caches or RadiantOne Directory (HDAP) stores. When the RadiantOne Sync Engine is configured for DEBUG log level, the HDAP trigger activity is logged into the sync_engine.log
+When identity views are created on RadiantOne Directory stores or persistent cache, and those views are configured for persistent cache, the change capture connector type defaults to HDAP Trigger. This is an internal mechanism that automatically refreshes persistent caches that are built on top of other persistent caches or RadiantOne Directory (HDAP) stores. When the RadiantOne Sync Engine is configured for DEBUG log level, the HDAP trigger activity is logged into the sync_engine.log
 
 You can set the log level from Classic Control Panel > Settings > Logs > Log Settings as shown below.
 
-![An image showing ](Media/Image3.6.jpg)
+![Sync Engine Log Level](Media/Image3.6.jpg)
 
 ## RadiantOne Persistent Cache with Periodic Refresh
 
@@ -309,7 +309,7 @@ You can set the log level from Classic Control Panel > Settings > Logs > Log Set
 
 Periodic persistent cache refresh leverages a snapshot mechanism to detect changes in the backend data source(s). The “snapshot” is an LDIF formatted file that contains the entries from the backend. During a refresh cycle, a new LDIF file is generated from the backend and compared to the last snapshot to detect changes. 
 
-### Log
+### Periodic Refresh Log
 
 The log associated with persistent cache with periodic refresh is configured from the Classic Control Panel > Settings tab > Logs > Logs Settings section. Select the VDS – Persistent Cache Periodic Refresh option from the Log Settings to Configure drop-down menu.
 
