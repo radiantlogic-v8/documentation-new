@@ -88,8 +88,6 @@ Server logging is configured from the Classic Control Panel > Settings tab > Log
 
 -	Requests made to ZooKeeper.
 
--	Activities from the Context Builder tool.
-
 -	SCIMv2 requests and responses. The SCIMv2 incoming queries from clients are prefixed with ScimRequest for the requests and ScimResponse for the replies from RadiantOne. RadiantOne server log level of at least INFO is required to log the SCIMv2 requests.
 -	ACI evaluation decisions.  RadiantOne server log level must be set to DEBUG. When DEBUG level is set, the evaluation rules can be seen in vds_server.log. An example of ACI evaluation is shown below:
 
