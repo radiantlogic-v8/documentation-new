@@ -98,8 +98,6 @@ The components described in this section are applicable to the RadiantOne Synchr
 
 ![An image showing ](Media/Image5.1.jpg)
 
-Figure 5.1: Sync Architecture
-
 If the virtual view of the source is configured in persistent cache, the default HDAP trigger method is used to detect and publish the change (detailed in 1b in the diagram). If the virtual view of the source is not configured in persistent cache, the capture connector detects changes directly on the source. In this case, the agent manages the connector (detailed in 1a in the diagram).
 
 **Agent**
@@ -115,8 +113,7 @@ This log file provides details about the state of capture connectors (e.g. start
 The log level is controlled by the setting in Classic Control Panel -> Settings tab -> Logs -> Log Settings. Select the Sync Agents – Agents option.
 
 ![An image showing ](Media/Image5.3.jpg)
- 
-Figure 5.3: Sync Agents Log Settings
+
 
 **Connectors**
 
@@ -124,21 +121,17 @@ Capture connectors log activity to <piplelineId>\connector.log on the RadiantOne
  
 1.	The log level is defined per connector with the setting in Main Control Panel > Global Sync tab. 
 
-2.	Select the topology and click Configure next to the relevant pipeline. 
+1.	Select the topology and click Configure next to the relevant pipeline. 
 
-3.	Click the Capture component and expand the Advanced Properties section.
+1.	Click the Capture component and expand the Advanced Properties section.
+	![An image showing ](Media/Image5.5.jpg)
 
-![An image showing ](Media/Image5.5.jpg)
+
+1.	Locate the Log Level property and select the level from the drop-down list.
+	![An image showing ](Media/Image5.6.jpg)
  
-Figure 5.5: Capture Connector Properties
 
-4.	Locate the Log Level property and select the level from the drop-down list.
-
-![An image showing ](Media/Image5.6.jpg)
- 
-Figure 5.6: Connector Log Level
-
-5.	Click **Save**.
+1.	Click **Save**.
 
 **Sync Engine (Transformation and Apply)**
 
@@ -184,7 +177,7 @@ There are two aspects of logging described in this section:
 
 -	The tasks themselves
 
-## Scheduler Server
+### Scheduler Server
 
 The task scheduler logging is configured from the Main Control Panel > Settings tab > Logs > Logs Settings section. Select the Scheduler – Scheduler Server option from the Log Settings to Configure drop-down menu.
 
@@ -192,23 +185,23 @@ The task scheduler logging is configured from the Main Control Panel > Settings 
 
 Figure 6. 1: Main Control Panel, Task Scheduler Log Settings
 
-### Log Level
+**Log Level**
 
 Select a log level from the drop-down list in the Log Settings section. For details on available log levels, see [Chapter 1](01-overview).
 
-### Rollover Size
+**Rollover Size**
 
 By default, the task scheduler log file rolls over once it reaches 100MB in size. Change this value if needed.
 
-### Log Location
+**Log Location**
 
 The task scheduler log file is server.log and can be viewed and downloaded from Server Control Panel > Log Viewer. 
 
-### Log Archiving
+**Log Archiving**
 
 By default, 10 files are kept in the archive. Change this value in the How Many Files to Keep in Archive setting. The archived files are named `server-<number>.log` and can be viewed and downloaded from the Server Control Panel > Log Viewer.
 
-## Scheduled Tasks
+### Scheduled Tasks
 
 Logging for scheduled tasks is configured from the Main Control Panel > Settings tab > Logs > Logs Settings section. Select the Scheduler – Scheduler Tasks option from the Log Settings to Configure drop-down menu.
 
@@ -216,18 +209,18 @@ Logging for scheduled tasks is configured from the Main Control Panel > Settings
 
 Figure 6.2: Main Control Panel, Scheduled Tasks Log Settings
 
-### Log Level
+**Log Level**
 
 Select a log level from the drop-down list in the Log Settings section. For details on available log levels, see [Chapter 1](01-overview).
 
-### Rollover Size
+**Rollover Size**
 
 By default, the task log file rolls over once it reaches 100MB in size. Change this value if needed.
 
-### Log Location
+**Log Location**
 
 The task log file is `task.<taskID>.log` and can be viewed and downloaded from the Server Control Panel > Log Viewer.
 
-### Log Archiving
+**Log Archiving**
 
 By default, 10 files are kept in the archive. Change this value in the How Many Files to Keep in Archive setting. The archived files are named `task.<taskID-<number>>.log` and can be viewed and downloaded from the Server Control Panel > Log Viewer. 
