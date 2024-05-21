@@ -49,8 +49,6 @@ A message appears on the Environment Details Panel that says, "Deleting environm
 
 ![image description](images/delete-ldaps-conf.png)
 
-![image description](images/delete-ldaps.png)
-
 ![image description](images/delete-ldaps2.png)
 
 ## REST
