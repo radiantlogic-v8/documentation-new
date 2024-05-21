@@ -27,8 +27,6 @@ A message indicates that the environment scale is in process.
 
 ![image description](images/scale-confirmation-message.png)
 
-![image description](images/after-scale-confirmation.png)
-
 The number of nodes in the environment increases or decreases accordingly.
 
 ![image description](images/increased-nodes-new.png)
