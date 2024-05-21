@@ -63,8 +63,6 @@ When the endpoint is enabled, the toggle turns green and a message appears on th
 
 ![image description](images/enable-rest-conf-init.png)
 
-![image description](images/enable-rest.png)
-
 The endpoint enabling process takes about 5-10 minutes for an endpoint to be successfully enabled.
 
 ![image description](images/enable-rest-confirmation.png)
