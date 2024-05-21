@@ -5,13 +5,25 @@ description: Learn about basic monitoring and alert capabilities in RadiantOne I
 
 ## Overview
 
-Monitoring is one of the most important aspects of maintaining the health of RadiantOne. It is highly recommended that you monitor the RadiantOne components on a regular basis. The RadiantOne components can be monitored from both the Classic and Server Control Panels, in addition to using third party tools.
+Monitoring is one of the most important aspects of maintaining the health of RadiantOne. It is highly recommended that you monitor the RadiantOne components on a regular basis. The RadiantOne service can be monitored from Environment Operations Center (for SaaS deployments only), and the Classic and Server Control Panels, in addition to using third party tools.
 
 To switch to Classic Control Panel, use the menu options for the logged in user in the upper right.
 
 ![Classic Control Panel](Media/classic-cp.jpg)
 
 Once logged into the Classic Control Panel, click ![Server Control Panel](Media/server-cp.jpg) in the upper right to access the Server Control Panel.
+
+## Monitoring in Environment Operations Center
+
+In Environment Operations Center, navigate to the Monitoring section.
+1. Select the Environment to monitor from the **ENVIRONMENT** drop-down list.
+2. Select the Application to monitor from the **APPLICATION** drop-down list.
+3. Select the Dashboard to display from the **DASHBOARD** drop-down list.
+4. Select the RadiantOne node to monitor from the **NODE** drop-down list. If none are selected, the monitored stats for all nodes are shown.
+5. Select a time range from the **TIME RANGE** drop-down list.
+
+![EOC Monitoring](Media/eoc-monitoring.jpg)
+
 
 ## Monitoring in Classic Control Panel
 
