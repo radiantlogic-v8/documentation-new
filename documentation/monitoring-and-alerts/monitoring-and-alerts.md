@@ -5,7 +5,7 @@ description: Learn about basic monitoring and alert capabilities in RadiantOne I
 
 ## Overview
 
-Monitoring is one of the most important aspects of maintaining the health of RadiantOne. It is highly recommended that you monitor the RadiantOne components on a regular basis. The RadiantOne service can be monitored from Environment Operations Center (for SaaS deployments only), and the Classic and Server Control Panels, in addition to using third party tools.
+Monitoring is one of the most important aspects of maintaining the health of RadiantOne. It is highly recommended that you monitor the RadiantOne service on a regular basis. The RadiantOne service can be monitored from Environment Operations Center (for SaaS deployments only), and the Classic and Server Control Panels (for SaaS and Self-managed deployments), in addition to using third party tools.
 
 To switch to Classic Control Panel, use the menu options for the logged in user in the upper right.
 
