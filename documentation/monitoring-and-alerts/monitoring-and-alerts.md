@@ -27,7 +27,7 @@ In Environment Operations Center, navigate to the Monitoring section.
 
 ## Monitoring in Classic Control Panel
 
-The key services to monitor are RadiantOne and ZooKeeper. There are default monitoring and alerts for these services. 
+The key services to monitor are RadiantOne and ZooKeeper. There are default alerts configured for these services as well. 
 
 ### Expert Mode
 
