@@ -56,7 +56,7 @@ For each node, the Overview section displays the status of:
 
 ### Replication Monitoring Tab
 
-RadiantOne Directory stores across multiple sites/environments support multi-master replication. This type of replication is referred to as inter-cluster replication. The state of inter-cluster replication can be monitored from the Replication Monitoring Tab.
+RadiantOne Directory stores across multiple sites/environments support multi-master replication. This type of replication is referred to as inter-cluster replication. The state of inter-cluster replication can be monitored from the Classic Control Panel > Replication Monitoring Tab.
 
 The Replication Monitoring tab is relevant if inter-cluster replication is deployed.
 
