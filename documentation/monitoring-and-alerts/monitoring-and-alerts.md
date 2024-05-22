@@ -15,6 +15,8 @@ Once logged into the Classic Control Panel, click ![Server Control Panel](Media/
 
 ## Monitoring in Environment Operations Center
 
+>[!warn] - Only SaaS deployments have access to Environment Operations Center. Self-managed deployments of RadiantOne do not.
+
 In Environment Operations Center, navigate to the Monitoring section.
 1. Select the Environment to monitor from the **ENVIRONMENT** drop-down list.
 2. Select the Application to monitor from the **APPLICATION** drop-down list.
