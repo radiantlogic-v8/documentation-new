@@ -108,7 +108,7 @@ Click **Configure** next to a pipeline to access the queue monitoring, alert set
 
 ![Queue Monitoring](Media/queue-monitoring.jpg)
 
-### Persistent Caceh Refresh (PCache Monitoring tab)
+### Persistent Cache Refresh (PCache Monitoring tab)
 
 From the Classic Control Panel > PCache Monitoring tab, you can select a real-time persistent cache refresh configuration and monitor the activities of the capture and apply processes.
 
@@ -119,7 +119,7 @@ From the Classic Control Panel > PCache Monitoring tab, you can select a real-ti
 
 The items that can be monitored from the Server Control Panel are described in this section.
 
-Click the "Server Control Panel" link at the top of the Classic Control Panel to launch the Server Control Panel.
+Click the "Server Control Panel" link at the top-right of the Classic Control Panel to launch the Server Control Panel.
 
 ### CPU, Memory, Disk Space, Disk Latency and Connection Usage
 
