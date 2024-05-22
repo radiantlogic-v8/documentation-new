@@ -122,7 +122,7 @@ deleting them or manually resending them.
 
 Figure 1. 37 : Queue Monitoring **–** Resending Failed Messages
 
-### Persistent Caceh Refresh (PCache Monitoring tab)
+### Persistent Cache Refresh (PCache Monitoring tab)
 
 From the Main Control Panel > PCache Monitoring tab, you can select a real-time persistent
 cache refresh configuration and monitor the activities of the capture and apply processes.
