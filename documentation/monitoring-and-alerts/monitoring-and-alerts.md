@@ -48,7 +48,7 @@ For each node, the Overview section displays the status of:
 - Up time – how long the RadiantOne service has been running on the node.
 - Version of RadiantOne installed on the node
 
-![An image showing monitoring two RadiantOne cluster nodes ](Media/Image1.1.jpg)
+![An image showing monitoring two RadiantOne cluster nodes ](Media/dashboard-ccp.jpg)
 
 ### Replication Monitoring Tab
 
