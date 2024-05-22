@@ -95,13 +95,13 @@ If push mode replication is enabled, the clusters that are participating in repl
 
 From the Classic Control Panel > Synchronization tab, you can select a topology and monitor the activities of the capture, transform and apply processes associated with each pipeline.
 
-![Sync Monitoring ](Media/Image1.35.jpg)
+![Sync Monitoring ](Media/sync-monitoring.jpg)
 
 All topologies are listed on the left. Select a topology to view the sync pipelines. For each running pipeline, a list of entries processed by the Capture, Transform and Apply components are shown. For the Transform component, you see a number queued (messages in the queue waiting to be processed) and a number processed (entries transformed).
 
-From the Synchronization tab, you can stop the synchronization flows with **Stop**. Clicking stop, pauses the synchronization for all pipelines associated with the topology. Click **Start** to start synchronization for all pipelines. To resume synchronization for a specific pipeline, click CONFIGURE next to the apply, select the Apply component and click Start.
+From the Synchronization tab, you can stop the synchronization flows with **Stop**. Clicking stop, pauses the synchronization for all pipelines associated with the topology. Click **Start** to start synchronization for all pipelines. To resume synchronization for a specific pipeline, click CONFIGURE next to the pipeline, select the Apply component and click **Start**.
 
-![Start Sync for a Specific Pipeline](Media/Image1.36.jpg)
+![Start Sync for a Specific Pipeline](Media/start-conn-from-apply.jpg)
 
 
 Click **Configure** next to a pipeline to access the queue monitoring, alert settings, and logs associated with the synchronization. In the Queue section, you can view the number of messages processed, the current queue size, and some processing statistics (rate per sec and peak processing times). You can also manage messages that failed to be applied by either deleting them or manually resending them.
