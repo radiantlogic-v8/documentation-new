@@ -106,7 +106,7 @@ From the Synchronization tab, you can stop the synchronization flows with **Stop
 
 Click **Configure** next to a pipeline to access the queue monitoring, alert settings, and logs associated with the synchronization. In the Queue section, you can view the number of messages processed, the current queue size, and some processing statistics (rate per sec and peak processing times). You can also manage messages that failed to be applied by either deleting them or manually resending them.
 
-![Queue Monitoring](Media/Image1.37.jpg)
+![Queue Monitoring](Media/queue-monitoring.jpg)
 
 ### Persistent Caceh Refresh (PCache Monitoring tab)
 
