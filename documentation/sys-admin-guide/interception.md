@@ -12,7 +12,7 @@ The idea behind interception capabilities is that it allows you to customize and
 
 ## Global Interception Script
 
-For specific details, please see [Interception Scripts](concepts#interception-scripts) in the Concepts section. This section describes how to enable interception scripts at a global level (which are applicable to the entire RadiantOne namespace – all naming contexts).
+For specific details, please see [Interception Scripts](02-concepts#interception-scripts) in the Concepts section. This section describes how to enable interception scripts at a global level (which are applicable to the entire RadiantOne namespace – all naming contexts).
 
 To enable global interception:
 
