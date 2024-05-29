@@ -9,6 +9,7 @@ description: Environment operations center guide
 - [Environments](#)
   - [Login](#)
     - [Login Page](login/login-overview.md)
+    - [Microsoft SSO](login/microsoft-sso.md)
   - [Environment overview](#)
     - [Environments overview](environments/environment-overview/environments)
     - [Create an environment](environments/environment-overview/create-an-environment.md)
