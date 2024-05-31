@@ -28,6 +28,7 @@ In Environment Operations Center, navigate to the Monitoring section.
 
 ![EOC Monitoring](Media/eoc-monitoring.jpg)
 
+For more details, see [Monitoring and Reporting](/../../eoc/latest/monitoring/monitoring-overview).
 
 ## Monitoring in Classic Control Panel
 
