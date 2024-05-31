@@ -114,7 +114,6 @@ From the Classic Control Panel > PCache Monitoring tab, you can select a real-ti
 
 ![An image showing ](Media/Image1.38.jpg)
 
-
 ## Monitoring from the Server Control Panel
 
 The items that can be monitored from the Server Control Panel are described in this section.
@@ -125,8 +124,7 @@ Click the "Server Control Panel" link at the top-right of the Classic Control Pa
 
 From the Server Control Panel > Dashboard Tab, you can monitor the CPU, disk space and latency on the machine hosting RadiantOne, and the RadiantOne service memory and connections.
 
->[!warning] 
->To use this feature, enable the cluster monitor at Classic Control Panel > Settings > Logs > Clustermonitor.
+>[!warning] To use this feature, enable the cluster monitor at Classic Control Panel > Settings > Logs > Clustermonitor.
 
 ![An image showing monitoring resources from the server control panel ](Media/Image1.3.jpg)
 
@@ -144,7 +142,6 @@ To manage standard alerts for memory, connections, disk space or disk latency:
 
 1. File alerts are enabled by default. If SMTP settings are configured in the Monitoring > Email Alert Settings section you can also use the Email Alert output.
 1. Click **Save**.
-
 
 ### RadiantOne Directory Status
 
@@ -225,8 +222,7 @@ Server Control Panel -> Usage & Activity tab -> Network Latency section.
 
 ![An image showing monitoring network latency](Media/Image1.14.jpg)
 
-Figure 1. 14 : Monitoring Network Latency Between RadiantOne Nodes
-
+Figure 1.14: Monitoring Network Latency Between RadiantOne Nodes
 
 ### Control Panels - Delegated Administration Activity
 
