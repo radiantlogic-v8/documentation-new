@@ -7,8 +7,7 @@ description: Learn about basic production architectures, migrating configuration
 
 Deployment options will be discussed with your Radiant Logic Account Representative and a Solution Consultant.  This chapter provides high-level details about the most common deployment architecture.
 
-For details on creating environments and installing RadiantOne, see the [Environment Operations Center](/environment-operations-center-guide/environments/environment-overview/environments/).
-
+For details on creating environments and installing RadiantOne, see the [Environment Operations Center](/../../eoc/latest/environments/environment-overview/environments/).
 
 For details on integrating with on-premise data sources through a Secure Data Connector, see the [Secure Data Connector Deployment Guide](/environment-operations-center-guide/secure-data-connectors/data-connectors-overview/).
 
