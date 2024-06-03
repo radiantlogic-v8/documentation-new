@@ -27,10 +27,9 @@ Customer is responsible for deploying applications (IDDM and/or IDA), updating/u
 Requires Kubernetes knowledgeable staff to install and maintain the cluster. | - | X
 Customer owns and manages the Kubernetes infrastructure for the Applications. | - | X
 
-
 ## SaaS
 
-For SaaS deployments, RadiantOne Identity Data Management is installed by creating a new environment in [Environment Operations Center](LINK TO EOC DOC PAGE!).
+For SaaS deployments, RadiantOne Identity Data Management is installed by creating a new environment in [Environment Operations Center](/../../eoc/latest/environments/environment-overview/create-environments).
 
 ## Self-managed
 
