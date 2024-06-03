@@ -70,5 +70,9 @@ Entry statistics reports can be exported to a CSV file using the *Download Repor
 
 ![Download Report](Media/download-report.jpg)
 
+### Environment Operations Center Reports
+
+To generare Environment Operations Center reports, select Reports from the EOC navigation pane. For more details, see [Reporting Overview](/../../eoc/latest/reporting/reporting-overview).
+
 
 You can share your report with Radiant Logic if you want more details on how your total number of entries was calculated.
