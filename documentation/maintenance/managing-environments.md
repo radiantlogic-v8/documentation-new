@@ -13,6 +13,8 @@ Restarting environments is performed in the Environment Operations Center. In th
 
 ## Deleting Environments
 
+Deleting environments is performed in the Environment Operations Center. From the Environments home screen, locate the environment you would like to delete from the list of environments. Go the specific environment and on the right top corner, select the ellipsis (...), to expand the options available and select DELETE from the list. For more details, see [Delete an Environment](/../../eoc/latest/environment-overview/delete-an-environment)
+
 ## Performing Backups
 
 ### Manual
