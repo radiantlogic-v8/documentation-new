@@ -125,7 +125,7 @@ To enable inter-cluster replication for a directory store:
 
 ## Managing the State of the RadiantOne Service
 
-When deployed as SaaS, you can manage the state of the RadiantOne service from the [Environment Operations Center](/environment-operations-center-guide/environments/environment-details/environment-overview/). Select the environment and use the options shown when clicking on ![Power Options](Media/power-icon.jpg) to start/stop/restart the service.
+When deployed as SaaS, you can manage the state of the RadiantOne service from the [Environment Operations Center](/../../eoc/latest/environment-details/environment-overview). Select the environment and use the options shown when clicking on ![Power Options](Media/power-icon.jpg) to start/stop/restart the service.
 
 ![Restart Service](Media/restart-service.jpg)
 
