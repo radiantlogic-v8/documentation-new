@@ -62,6 +62,8 @@ These release notes contain the following sections:
 - [VMR-783]: Upgraded Spring libraries to 5.3.33 and Spring security to 5.7.12 to remediate potential vulnerabilities.
   
 - [VMR-807]: Upgraded bouncy castle jars to address CVE-2024-30172 and CVE-2024-30171.
+  
+- [VMR-839]: Upgraded Spring core libraries to 5.3.36 to address CVE-2024-22262.
 
 ## Bug Fixes
 
