@@ -54,8 +54,8 @@ To configure rules for linked attributes, following the steps below:
    
 1.  Click **+LINKED ATTRIBUTES**.
 1.	Select a back link attribute name from the drop-down list. If you don’t find the attribute that matches your needs, manually enter the attribute name. This dictates which attribute name RadiantOne returns the back link attribute value as and is generally either memberOf or isMemberOf (for group/user linked attributes).
-1.  Click **SELECT** next to the Target Base DN field. The *Select base DN* window is displayed.
-1.	Choose a base DN containing the entries (e.g. users) for which the back link attributes should be managed. In the example below, o=companydirectory is selected. 
+1.  Click **SELECT** next to the Target Base DN field. The *Select Base DN* window is displayed.
+1.	Choose a base DN containing the entries (e.g. users) for which the back link attributes should be managed. In the example below, o=companydirectory is selected. The target base DN is limited to a location at or below the root naming context that is selected in the tree on the left.
 
     ![Linked Attribute](Media/add-linked-attr-mapping.jpg)
      
@@ -63,7 +63,7 @@ To configure rules for linked attributes, following the steps below:
 
 1.	Under Source Base DNs, click **SELECT**. The *Select base DN* windows is displayed.
 
-1.	Select a base DN containing the entries (e.g. groups) applicable for the objects (containing the forward link) matching what was defined in step 5 above and click **SELECT**. 
+1.	Select a base DN containing the entries (e.g. groups) applicable for the objects (containing the forward link) matching what was defined in step 6 above and click **SELECT**. 
 
 1.	In the source object class list, verify the list includes the class associated with your entries (e.g. groups). Add any missing object classes.
 
