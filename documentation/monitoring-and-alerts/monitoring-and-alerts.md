@@ -13,6 +13,8 @@ To switch to Classic Control Panel, use the menu options for the logged in user 
 
 ![Classic Control Panel](Media/classic-cp.jpg)
 
+### Accessing Server Control Panel
+
 Once logged into the Classic Control Panel, click ![Server Control Panel](Media/server-cp.jpg) in the upper right to access the Server Control Panel.
 
 ## Monitoring in Environment Operations Center
