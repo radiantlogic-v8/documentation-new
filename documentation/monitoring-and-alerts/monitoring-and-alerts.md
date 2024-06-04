@@ -1,6 +1,6 @@
 ---
 title: Monitoring and Alerts
-description: Learn about basic monitoring and alert capabilities in RadiantOne Identity Data Management. Learn how to use the Monitoring section in Environment Operations Center to view metrics associated with specific environments and RadiantOne Nodes. Default monitored metrics include CPU Usage, RAM Usage, Disk space used, connection pool usage, operations count since startup broken down by operation type, and current number of live connections.
+description: Introduction to basic monitoring and alert capabilities in RadiantOne Identity Data Management. 
 ---
 
 ## Overview
