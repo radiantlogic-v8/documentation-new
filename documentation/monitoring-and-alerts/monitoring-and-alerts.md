@@ -146,8 +146,6 @@ The status of the RadiantOne service (data sources named vds and vdsha) and any 
 
 ![Data Source Status](Media/data-source-status.jpg)
 
-Figure 1.10 : Monitoring Data Sources from the Server Control Panel
-
 The status values are on, off, offline, and unavailable. The following table describes each status.
 
 
@@ -160,33 +158,6 @@ The status values are on, off, offline, and unavailable. The following table des
 
 If a data source has failover servers configured, the URL in the message indicates which server the status applies to.
 
-To configure alerts for data source availability:
-
-1. In the Main Control Panel go to Settings Tab > Monitoring section > Standard Alerts sub-section.
-2. In the Data Sources section, there is the option to enable/disable alerts when a data source is disconnected (unreachable).
-
-![An image showing configurating a data source](Media/Image1.11.jpg)
-
-Figure 1.11 : Configuring a Data Source Alert from the Main Control Panel
-
-3. Define the interval to check the data source availability. The default is 120 seconds.
-4. File alerts are enabled by default. If SMTP settings are configured in the Monitoring > Email Alert Settings section you can also use the Email Alert output.
-5. Click the field next to “Data sources to monitor:” and select a data source from the drop-down menu. The vds data source is selected by default and is used to monitor the RadiantOne service and alert when the service is stopped or started.
-
-![An image showing selecting a data source to monitor ](Media/Image1.12.jpg)
-
-Figure 1.12: Selecting a Data Source to Monitor
-
-6. Verify that the data source name is displayed in the “Data sources to monitor” field.
-7. Click Save.
-
-![An image showing a data source to monitor](Media/Image1.13.jpg)
-
-Figure 1.13: Example of a Data Source to Monitor
-
->[!note] 
->To disable alerts for a data source, click the X next to the data source name in the Data Source to monitor field, which removes it from the list.
-
 ### Network Latency
 
 The latency between RadiantOne nodes can be monitored from the Server Control Panel -> Usage & Activity tab -> Network Latency section.
@@ -194,19 +165,21 @@ The latency between RadiantOne nodes can be monitored from the Server Control Pa
 ![An image showing monitoring network latency](Media/Image1.14.jpg)
 
 
-## RadiantOne Logs and Error Messages to Monitor
+## Logs and Error Messages to Monitor
+
+### RadiantOne Directory Service
 
 The most important logs to monitor for RadiantOne are vds_server.log and vds_server_access.log. The log files can be viewed and downloaded from Server Control Panel > Log Viewer. For SaaS deployments, you can view logs from the Environment Operations Center > Environments > EnvironmentName > ApplicationName > LOGS.
 
 You can monitor these logs for the following errors.
 
-vds_server_access.log
+**vds_server_access.log**
 
 - SearchResult {resultCode=53
 - VDS_Server is shutting-down [Connection to ZooKeeper lost.]
 - !!! Server Busy -- Maxmium TCP/IP connection limit(1000) reached
 
-<RLI_HOME>/vds_server/logs/vds_server.log
+**vds_server.log**
 
 The following errors indicate the server is shutting down or unable to accept more connections.
 
@@ -238,8 +211,6 @@ not writable any more.
 
 To monitor periodic persistent cache refresh failures due to thresholds being reached, monitor
 the periodiccache.log for keywords: “Threshold reached”. 
-
-The periodiccache.log file can be viewed and downloaded from Server Control Panel > Log Viewer.
 
 For example, assume a 50% Add Threshold has been configured and during the next refresh cycle, there are 85% more entries in the backend than there are in the persistent cache image.
 This persistent cache refresh is aborted, and the following message can be found in the
