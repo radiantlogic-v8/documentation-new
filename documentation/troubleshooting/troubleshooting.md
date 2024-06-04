@@ -569,3 +569,25 @@ By default, 10 files are kept in the archive. Change this value in the How Many 
 ## Secure Data Connector
 
 >[!warn] - Only SaaS deployments have access to Secure Data Connectors. Self-managed deployments of RadiantOne do not.
+
+The following sections outline where to locate the data connector client logs on a Windows, Linux, or Docker system.
+
+### Review logs on Windows or Linux
+
+If the secure data connector client is running on a Windows or Linux system, navigate to the unzipped directory. The client logs are located in the "/Logs" file in the directory.
+
+### Review logs on a Docker container
+
+If the secure data connector client is running on a Docker container, open a terminal and connect to the docker container using the following command:
+
+`docker exec -it <container_name> bash`
+
+Navigate to the logs folder:
+
+`cd Logs`
+
+List the log files:
+
+`ls`
+
+From here, you can open the logs files to access further details on the client activity.
