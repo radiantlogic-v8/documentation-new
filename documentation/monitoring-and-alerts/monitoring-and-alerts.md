@@ -137,14 +137,14 @@ Store status (including number of entries, index size, revision, and search and 
 
 To filter the stores displayed, click on gear icon and then click Select Filters. Select the stores to display and click OK. Click OK to exit the settings.
 
-![RadiantOne Directory Store Filter](Media/Image1.8.jpg)
+![RadiantOne Directory Stores](Media/directory-status.jpg)
 
 
 ### Data Source Status
 
 The status of the RadiantOne service (data sources named vds and vdsha) and any backend can be monitored from the Server Control Panel > Usage & Activity Tab > Data Source Status section.
 
-![An image showing the ](Media/Image1.10.jpg)
+![Data Source Status](Media/data-source-status.jpg)
 
 Figure 1.10 : Monitoring Data Sources from the Server Control Panel
 
