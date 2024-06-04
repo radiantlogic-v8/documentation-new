@@ -161,11 +161,7 @@ definitive source for discrepant entries.
 <br>[optional] The default behavior is to save the LDIF files that sort and describe the entries that are discrepant between the two stores. If you do not want the LDIF files stored on the file system, pass -c false. If generated, these LDIF files are stored at <RLI_HOME>vds_server\ldif\export.
 
 **[-a <true/false>]**
-<br> [optional] To perform an analysis of the stores without applying changes, pass the -a false
-argument, or omit this argument from the command. After analysis, you can copy the relevant
-LDIF file to the corresponding cluster and manually import it to update the store. If you prefer to
-automatically apply the changes required to bring the stores back in sync, pass the - a true
-argument and the re-sync occurs.
+<br> [optional] To perform an analysis of the stores without applying changes, pass the -a false argument, or omit this argument from the command. After analysis, you can copy the relevant LDIF file to the corresponding cluster and manually import it to update the store. If you prefer to automatically apply the changes required to bring the stores back in sync, pass the -a true argument and the re-sync occurs.
 
 **[-m <ignoreCase>]**
-<br> [optional] To ignore case when detecting changes, pass the - i true argument, or omit this argument from the command. To detect case differences, pass the -i false argument.
+<br> [optional] To ignore case when detecting changes, pass the -m true argument, or omit this argument from the command. To detect case differences, pass the -m false argument.
