@@ -184,4 +184,4 @@ in RadiantOne prior to using the utility and you need one LDAP data source per c
 <br> [optional] To perform an analysis of the stores without applying changes, pass the -a false argument, or omit this argument from the command. After analysis, you can copy the relevant LDIF file to the corresponding cluster and manually import it to update the store. If you prefer to automatically apply the changes required to bring the stores back in sync, pass the - a true argument and the re-sync occurs.
 
 **[-m `<ignoreCase>`]**
-<br> [optional] To ignore case when detecting changes, pass the - i true argument, or omit this argument from the command. To detect case differences, pass the -i false argument.
+<br> [optional] To ignore case when detecting changes, pass the -m true argument, or omit this argument from the command. To detect case differences, pass the -m false argument.
