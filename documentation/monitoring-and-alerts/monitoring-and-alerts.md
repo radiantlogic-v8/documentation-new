@@ -129,12 +129,6 @@ From the Server Control Panel > Dashboard Tab, you can monitor the CPU, disk spa
 
 ![An image showing monitoring resources from the server control panel ](Media/Image1.3.jpg)
 
-## Alerts
-
-For SaaS deployments, alerts can be managed from the Environment Operations Center > Admin, ALERTS tab.
-
-For details, see: [Alerts](/../../eoc/latest/admin/alert-management/alert-management-overview)
-
 ### RadiantOne Directory Status
 
 Store status (including number of entries, index size, revision, and search and write operations) can be monitored from the Server Control Panel > Usage & Activity tab > Universal Directory Status section.
@@ -143,21 +137,6 @@ To filter the stores displayed, click on gear icon and then click Select Filters
 
 ![RadiantOne Directory Store Filter](Media/Image1.8.jpg)
 
-
-### Configuring RadiantOne Directory Alerts
-
-Alerts can be configured for RadiantOne Directory stores. To configure store alerts
-
-1. In the Main Control Panel go to Settings Tab > Monitoring section > Custom Alerts sub-section (requires [Expert Mode](#expert-mode)).
-2. Click Add.
-3. From the Template drop-down menu, select **Custom**.
-4. From the Monitoring Source drop-down menu, select hdap-store. The page refreshes and displays the store information in the table at the bottom.
-5. Configure other parameters as required.
-6. Click **Save**.
-
-![An image showing the ](Media/Image1.9.jpg)
-
-Figure 1.9 : Configuring a RadiantOne Directory Store Alert from the Main Control Panel
 
 ### Data Source Status
 
@@ -304,40 +283,9 @@ The most important log to monitor for ZooKeeper is zookeeper.log. This log file 
 - Could not add appenderMBean for [null]
 - Unexpected exception causing shutdown while sock still open
 
-<!--
+## Alerts
 
-### RadiantOne Activity – Check/Parse Access Log (CSV Format) Output
+For SaaS deployments, alerts can be managed from the Environment Operations Center > Admin, ALERTS tab.
 
-By default, CSV logging is enabled in the Main Control Panel > Settings tab > Log > Access Logs settings. On the right, check the CSV option in Output format and click Save.
+For details, see: [Alerts](/../../eoc/latest/admin/alert-management/alert-management-overview)
 
-![An image showing ](Media/Image1.52.jpg)
-
-Figure 1.52: Enabling CSV Log
-
-For details on the columns in the CSV file, please see the RadiantOne Logging and Troubleshooting Guide.
-
-### RadiantOne Activity – Read Changes from a Database Table
-
-The RadiantOne service logs all access to data in the vds_server_access.log by default as long as the server log level is set to a minimum of ACCESS. This includes who accessed the data, when (day and time) and what operations they performed. <!--This information can also be logged into a database which allows for third-party reporting tools to easily create meaningful charts and graphs for compliance analysis. Logging to a database requires the [CSV log format output](#radiantone-activity--checkparse-access-log-csv-format-output) enabled and running the Log2DB utility.
-
-The database that houses the table which contains the log contents can be in any database server you choose. These settings are located on the Main Control Panel > Settings Tab > Reporting section > Log2DB Settings sub-section. The database associated with the “Database
-Datasource” configured here must be running and accessible. To check which database this
-data source points to, navigate to the Main Control Panel -> Settings Tab -> Server Backend > DB Data Sources.
-
->[!note] 
->The default settings leverage a Derby database that is included with RadiantOne and can be started with <RLI_HOME>/bin/DerbyServer.exe.
-
-Once RadiantOne is configured to log to CSV and the database hosting the log contents is running, launch the Log2DB utility which is in charge of reading the CSV contents and writing into your database table (table name configured in the Log2db Settings).
-
->[!warning] If RadiantOne is deployed in a cluster, the Log2DB utility must be running on each node.
-
-Details about configuring and starting the Log2DB utility and the database columns (describing the log contents) can be found in the Logging and Troubleshooting Guide.
-
-
-### Check/Parse Alert File (CSV Format) Output or Emails Generated from Alerts enabled in Main Control Panel 
-
-Output options and configuration are described in [Alerts](/alerts-settings/#alerts).
-
-## Monitoring in EOC
-
-For information on monitoring in the EOC, refer to the [EOC Monitoring Guide](/../../eoc/latest/monitoring/monitoring-overview).
