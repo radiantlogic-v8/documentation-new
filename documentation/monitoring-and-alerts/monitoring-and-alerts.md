@@ -32,7 +32,7 @@ For more details, see [Monitoring and Reporting](/../../eoc/latest/monitoring/mo
 
 ## Monitoring in Classic Control Panel
 
-The key services to monitor are RadiantOne and ZooKeeper. There are default alerts configured for these services as well. 
+The key services to monitor are RadiantOne and ZooKeeper. 
 
 ### Expert Mode
 
@@ -131,18 +131,9 @@ From the Server Control Panel > Dashboard Tab, you can monitor the CPU, disk spa
 
 ## Alerts
 
-Alerts, both standard and custom, can be configured from the Classic Control Panel > Settings tab > Monitoring.
+For SaaS deployments, alerts can be managed from the Environment Operations Center > Admin, ALERTS tab.
 
-To manage standard alerts for memory, connections, disk space or disk latency:
-
-1. In the Classic Control Panel go to Settings > Monitoring > Standard Alerts sub-section.
-1. Define the memory threshold in the Memory section.
-1. Define the connection threshold in the Connections section.
-1. Define the disk space and disk latency thresholds in the Disk Alerts section.
- ![An image showing configuring standard alerts from the Classic Control panel ](Media/Image1.4.jpg)
-
-1. File alerts are enabled by default. If SMTP settings are configured in the Monitoring > Email Alert Settings section you can also use the Email Alert output.
-1. Click **Save**.
+For details, see: [Alerts](/../../eoc/latest/admin/alert-management/alert-management-overview)
 
 ### RadiantOne Directory Status
 
@@ -150,9 +141,8 @@ Store status (including number of entries, index size, revision, and search and 
 
 To filter the stores displayed, click on gear icon and then click Select Filters. Select the stores to display and click OK. Click OK to exit the settings.
 
-![An image showing the ](Media/Image1.8.jpg)
+![RadiantOne Directory Store Filter](Media/Image1.8.jpg)
 
-Figure 1.8 : Monitoring RadiantOne Universal Directory Stores from the Server Control Panel
 
 ### Configuring RadiantOne Directory Alerts
 
