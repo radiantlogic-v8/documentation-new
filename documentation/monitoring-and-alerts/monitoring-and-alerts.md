@@ -189,42 +189,16 @@ Figure 1.13: Example of a Data Source to Monitor
 
 ### Network Latency
 
-If deployed in a cluster, the latency between RadiantOne nodes can be monitored from the
-Server Control Panel -> Usage & Activity tab -> Network Latency section.
+The latency between RadiantOne nodes can be monitored from the Server Control Panel -> Usage & Activity tab -> Network Latency section.
 
 ![An image showing monitoring network latency](Media/Image1.14.jpg)
 
-Figure 1.14: Monitoring Network Latency Between RadiantOne Nodes
 
-### Control Panels - Delegated Administration Activity
+## RadiantOne Logs and Error Messages to Monitor
 
-Any user that can bind to RadiantOne can potentially administrator the server (if they belong to
-the proper group). A user can belong to multiple groups. The following administration groups are
-defined for RadiantOne:
+The most important logs to monitor for RadiantOne are vds_server.log and vds_server_access.log. The log files can be viewed and downloaded from Server Control Panel > Log Viewer. For SaaS deployments, you can view logs from the Environment Operations Center > Environments > EnvironmentName > ApplicationName > LOGS.
 
-- Directory Administrator Role
-- Read Only Role
-- Namespace Administrator Role
-- Operator Role
-- Schema Administrator Role
-- ACI Administrator Role
-- ICS Administrator Role
-- ICS Operator Role
-
-For details on the operations allowed for each user, please see the RadiantOne System Administration Guide.
-
-When any user that is a member of one of the above delegated administration groups saves changes in the Main or Server Control Panel, this activity is logged into: web_access.log. This is a CSV formatted log file with the delimiter being `<TAB>`. To configure the log output for the Control Panel, navigate to the Main
-Control Panel > Settings tab > Logs > Log Settings section. You can view and download web_access.log from Server Control Panel > Log Viewer.
-
-Select Control Panel – Access from the Log Settings to Configure drop-down list. Define the log level, rollover size and number of files to keep archived.
-
-![An image showing ](Media/Image1.42.jpg)
-
-Figure 1.42: Main Control Panel Access Log Settings
-
-### RadiantOne Logs and Error Messages to Monitor
-
-The most important logs to monitor for RadiantOne are vds_server.log and vds_server_access.log. The log files can be viewed and downloaded from Server Control Panel > Log Viewer: You can monitor these logs for the following errors.
+You can monitor these logs for the following errors.
 
 vds_server_access.log
 
