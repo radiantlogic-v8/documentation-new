@@ -36,4 +36,8 @@ Changes to the RadiantOne directory data are logged into the changelog (cn=chang
 
 To disable the changelog, navigate to the Classic Control Panel > Settings tab > Logs > Changelog. You can disable it globally (for all stores) or for a specific naming context.
 
+To switch to Classic Control Panel, use the menu options for the logged in user in the upper right.
+
+![Classic Control Panel](Media/classic-cp.jpg)
+
 For more details, see: [Changelog](/documentation/configuration/directory-stores/managing-directory-stores#changelog)
