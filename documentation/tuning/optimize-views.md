@@ -54,7 +54,7 @@ Depending on your specific use case and virtual view, two other optimizations ar
 
 ### Removing UPPER
 
-Since some databases are case sensitive, RadiantOne transforms primary key attribute values to upper case when generating the where clause. This is only applicable when the database key is a character data type. “UPPER” is generated automatically for the following databases: Oracle, SQL MX, Sybase, Interbase, and DB2. If you do not want UPPER to be used (because your database is NOT case sensitive), you can navigate to ADVANCED SETTINGS tab > Configuration Paramters and click **EDIT**. Select the BASE PARMETERS tab and edit the Base Search and Update parameters accordingly.
+Since some databases are case sensitive, RadiantOne transforms primary key attribute values to upper case when generating the where clause. This is only applicable when the database key is a character data type. “UPPER” is generated automatically for the following databases: Oracle, SQL Server, Sybase, Interbase, and DB2. If you do not want UPPER to be used (because your database is NOT case sensitive), you can navigate to ADVANCED SETTINGS tab > Configuration Paramters and click **EDIT**. Select the BASE PARMETERS tab and edit the Base Search and Update parameters accordingly.
 
 ![Configuration Parameters](Media/configuration-params.jpg).
 
