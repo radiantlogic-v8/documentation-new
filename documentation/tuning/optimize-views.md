@@ -133,9 +133,9 @@ LDAP backends are any source accessed via LDAP. This includes Sun Java Directory
 
 ### Disable Referral Chasing
 
-By default, RadiantOne does not attempt to chase referrals that have been configured in the underlying LDAP server.
+Disabling referral chasing is configured at the level of the LDAP data source in Control Panel > Setup > Data Catalog > Data Sources > [SelectedLDAPDataSource] > Advanced section.
 
-![An image showing ](Media/Image3.4.jpg)
+![Disable Referral Chasing](Media/disable-referrals.jpg)
  
 Chasing referrals can affect the overall performance because if the referral server is not responding (or responding slowly) the RadiantOne service could take a long time to respond to the client. For example, in the case of querying an underlying Active Directory (with a base DN starting at the root of Active Directory) you may get entries like the following returned:
 
