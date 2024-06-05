@@ -3,7 +3,7 @@ title: Troubleshooting
 description: Learn basic troubleshooting techniques for RadiantOne Identity Data Management
 ---
 
-- [Viewing Logs](troubleshooting.md#/viewing-logs)
+- [Viewing Logs](troubleshooting.md#viewing-logs)
   - [Control Panel](troubleshooting.md#control-panel)
   - [Environment Operations Center](troubleshooting.md#environment-operations-center)
     - [Secure Data Connectors](troubleshooting.md#secure-data-connectors)  
