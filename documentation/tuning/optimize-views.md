@@ -96,11 +96,21 @@ Use caution when enabling this option if you have interception scripts defined o
 
 Connection pooling improves performance because a connection to the underlying source does not need to be created every time data needs to be retrieved.
 
-Connection pooling for database sources is automatically enabled by default and the settings can be modified in the Classic Control Panel > Settings tab > Server Backend section, under the Connection Pooling sub section (requires [Expert Mode](00-preface#expert-mode)).
+Connection pooling for database sources is automatically enabled by default and the settings can be modified in the Classic Control Panel > Settings tab > Server Backend section, under the Connection Pooling sub section (requires Expert Mode).
 
 ![An image showing ](Media/Image3.3.jpg)
  
-The possible settings are described in more details below.
+
+To switch to Classic Control Panel, use the menu options for the logged in user in the upper right.
+
+![Classic Control Panel](Media/classic-cp.jpg)
+
+To switch Classic Control Panel into Expert Mode, click the "Logged in as:" and choose *Expert Mode*.
+
+![Expert Mode](Media/expert-mode.jpg)
+
+
+The Connection Pool settings are described below.
 
 *Pool Size*
 
