@@ -7,5 +7,5 @@ description: Learn how to apply patches, scales nodes (in/out), and manage envir
 - [Applying Patches](applying-patches.md)
 - [Scaling Nodes](scaling-nodes.md)
 - [Restarting Environments](managing-environments.md#restarting-environments)
-- [Deleting Environments](managing-environments#deleting-environments)
-- [Performing Backups](managing-environments#performing-backups)
+- [Deleting Environments](managing-environments.md#deleting-environments)
+- [Performing Backups](managing-environments.md#performing-backups)
