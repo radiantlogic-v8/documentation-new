@@ -38,7 +38,7 @@ Select the environment where RadiantOne Identity Data Management is deployed and
 
 The section describes managing data connectors and the secure data connector client.
 
-### Managing Data Connectors
+#### Managing Data Connectors
 
 Secure data connectors can be managed from the *Secure Data Connectors* screen. From here, you can edit, enable or disable, and delete connectors. This guide outlines the steps to manage data connectors.
 
@@ -100,7 +100,7 @@ If you would like to keep the connector, select **Cancel** to exit out of the wo
 
 If the connector is successfully deleted, you receive a confirmation message on the *Secure Data Connectors* home screen and the connector is no longer available in the list of connectors.
 
-### Manage the Secure Data Connector Client
+#### Manage the Secure Data Connector Client
 
 This guide outlines the steps to manage a secure data connector client, including updating, troubleshooting, and reviewing client logs.
 
@@ -137,6 +137,7 @@ Follow the steps outlined in the [deploy a secure data connector client](configu
 Once the new client deployment is complete, delete the old client.
 
 ## Managing Log Levels
+
 There are different levels of logging available for the components. The options are: Off, Fatal, Error, Warn, Info, Debug, and Trace.
 Log levels are configured from Classic Control Panel > Settings > Logs > Log Settings. To ensure optimal performance, the logging for RadiantOne should be reduced to the minimum level that meets your auditing needs for production environments.
 
