@@ -11,31 +11,55 @@ Learn how to edit, enable or disable, and delete Secure Data Connectors from Env
 
 Learn how to manage a Secure Data Connector client, including updating, troubleshooting, and reviewing client logs.
 
-## Updating RadiantOne Identity Data Management
+## Updating RadiantOne Identity Data Management - SaaS Deployments
 
-### SaaS Deployments
+### Preparing for the Patch
 
-When an update is available, there is an *Update* option shown in Environment Operations Center for the Identity Data Management application.
+Prior to updating RadiantOne Identity Data Management, ensure you have a recent environment backup.
 
-This can be see in the Environments (summary) section as shown below.  Click this link to start the update.
+1. In Environment Operations Center, navigate to Environments > [EnviromentName] > BACKUPS tab.
+1. If you do not have any recent backups, click **Backup**.
+  ![Create a Backup](Media/backup-env.jpg)
 
-![App Update](Media/env-update-environment.jpg)
+1. Enter a backup file name (there is a default auto-prefix) and click **SAVE**. This process takes a few minutes. Ensure the backup file shows in the list of backups before applying the RadiantOne Identity Data Management patch.
 
-The update can also be started from the Environments > Overview section.  Click this link to start the update.
+Sheduled backups can be enabled and configured by clicking the cog icon next to: Sheduled: [enabled/disabled]
 
-![App Update](Media/env-update-environment.jpg)
+![Scheduling Backups](Media/schedule-backups.jpg)
 
-For more details, see: **LINK TO EOC DOCS**
+### Applying the Patch
 
-### Self-managed Deployments
+1. In Environment Operations Center, navigate to Environments > [EnviromentName] > OVERVIEW tab.
+1. In the Application Details section, click **UPDATE** next to the *VERSION*.
+  ![Apply Patch](Media/apply-patch.jpg)
+
+1. Select the version to update to from the drop-down list and click **UPDATE**. This version must be greater than the version currently installed.
+1. Click **UPDATE** again to confirm. This is a rolling update of all RadiantOne Identity Data Management nodes which can take around 10 minutes to finish. 
 
 
+### Release Notes
 
-## Updating Secure Data Connector Client
+For the list of improvements and bug fixes related to the release, see: [Release Notes](../release-notes/iddm-8-0-0)
+
+### Known Issues 
+
+For known issues reported after the release, please see the Radiant Logic Knowledge Base: 
+
+https://support.radiantlogic.com/hc/en-us/categories/4412501931540-Known-Issues  
+
+
+### How to Report Problems and Provide Feedback 
+
+Feedback and problems can be reported from the Support Center/Knowledge Base accessible from: https://support.radiantlogic.com  
+
+If you do not have a user ID and password to access the site, please contact support@radiantlogic.com. 
+
+
+## Secure Data Connectors
 
 The section describes managing data connectors and the secure data connector client.
 
-### Manage Data Connectors
+### Managing Data Connectors
 
 Secure data connectors can be managed from the *Secure Data Connectors* screen. From here, you can edit, enable or disable, and delete connectors. This guide outlines the steps to manage data connectors.
 
@@ -43,7 +67,7 @@ All of the operations to manage secure data connectors are available in the **Op
 
 ![image description](Media/options.png)
 
-#### Edit a data connector
+**Edit a data connector**
 
 The name and description of a data connector can be updated. To edit connector details, select **Edit** from the associated **Options** (**...**) menu.
 
@@ -55,7 +79,7 @@ The connectors list displays updated details for the updated *Secure Data Connec
 
 ![image description](Media/update-info.png)
 
-## Enable or disable a connector
+**Enable or disable a connector**
 
 To disable a data connector, select **Pause** from the **Options** (**...**) menu.
 
@@ -73,7 +97,7 @@ The connector status updates to "Active" and all associated connections are enab
 
 ![image description](Media/active.png)
 
-#### Restart a data connector
+**Restart a data connector**
 
 To restart a data connector, select **Restart** from the **Options** (**...**) menu.
 
@@ -81,7 +105,7 @@ The connector completely stops and starts. This action is similar to starting a 
 
 ![image description](Media/restart.png)
 
-#### Delete a data connector
+**Delete a data connector**
 
 To delete a data connector, select **Delete** from the **Options** (**...**) menu.
 
@@ -101,11 +125,11 @@ If the connector is successfully deleted, you receive a confirmation message on 
 
 This guide outlines the steps to manage a secure data connector client, including updating, troubleshooting, and reviewing client logs.
 
-#### Update the secure data connector client
+**Update the secure data connector client**
 
 Client updates can be applied by stopping the client or as a rolling update. The following sections outline how to apply updates to Windows, Linux, or Docker systems, as well as how to apply rolling updates to avoid an interruption in service.
 
-##### Update on Windows or Linux
+*Update on Windows or Linux*
 
 The client must be stopped before applying an update. To stop the client, select **Ctrl + C** in the terminal window running the client.
 
@@ -117,11 +141,11 @@ If the update is being installed on a Linux system, run the following command:
 
 `dotnet run RadiantLogic.OnPremisesAgentClient.Agent.dll`
 
-##### Update on Docker
+*Update on Docker*
 
 To update a secure data connector client on Docker, stop the Docker image and then start it again with the latest tag. The client starts running again with the latest available version.
 
-### Rolling update
+**Rolling update**
 
 Installing a rolling update allows the client to continue running with no downtime during the update. To install a rolling update, create a new data connector in Environment Operations Center (see the [add a data connector](configure-sdc-client#adding-a-new-data-connector) guide) within the same group as the client you would like to update. 
 
