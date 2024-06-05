@@ -13,6 +13,9 @@ Database backends are any source accessed via JDBC or ODBC. This includes Oracle
 
 For certain configurations/use cases, there are different parameters that may be enabled to improve processing/performance. They are located on the Control Panel > Setup > Directory Namespace > Namespace Design. Navigate below the Root Naming Context section and select the node representing your database backend. On the right side, select the ADVANCED SETTINGS tab. Each optimization is described below.
 
+>[!note] 
+>Some optimization settings are only configurable in the Classic Control Panel and this is noted in the respective section.
+
 ### Case Sensitivity for Searches
 
 There are three options available for handling case sensitive databases. These options are related to how the RadiantOne service generates the query to send to the database. In the Control Panel > Setup > Directory Namespace > Namespace Design, select the container/content node in an identity view below Root Naming Contexts and on the right side, select the ADVANCED SETTINGS tab. 
@@ -47,8 +50,6 @@ To improve the performance of the view, you should only expose the required attr
 If joins are configured, verify that all attributes conditioning the join are indexed in the underlying sources. In the example shown below, the join is based on BusinessEntityID in the source matching BusinessEntityID in the target. This means BusinessEntityID should be indexed in the source and BusinessEntityID should be indexed in the target.
  
 ![Join Profile](Media/join.jpg)
-
-Depending on your specific use case and identity view, two other optimizations are possible. Both options are described below.
 
 ### Removing UPPER
 
@@ -130,6 +131,10 @@ This setting is per database connection.
 
 LDAP backends are any source accessed via LDAP. This includes Sun Java Directory, IBM Directory Server, and Active Directory among others.
 
+For certain configurations/use cases, there are different parameters that may be enabled to improve processing/performance. They are located on the Control Panel > Setup > Directory Namespace > Namespace Design. Navigate below the Root Naming Context section and select the node representing your LDAP backend. On the right side, select the ADVANCED SETTINGS tab. Each optimization is described below.
+
+>[!note] 
+>Some optimization settings are only configurable in the Classic Control Panel and this is noted in the respective section.
 
 ### Disable Referral Chasing
 
@@ -148,60 +153,66 @@ If the RadiantOne service attempts to “chase” these referrals, this can resu
 
 ### Excluded Attributes for Active Directory Backends
 
-This parameter is for Active Directory backends. It excludes specific attributes from being returned from the backend. Certain “system” attributes (e.g. dscorepropagationdata) returned from Active Directory (even for non-admin users) can cause problems for building persistent cache because the data type is not handled properly, and these attributes need to be added to the RadiantOne schema for the local HDAP storage to handle them in the cache. Also, these attributes cause problems for the change capture connector needed for real-time persistent cache refresh to work properly. Attributes that are not required by client applications, should be added to this list to ensure they are not returned in the view from Active Directory. By default, the AD attributes that are excluded are ds*, acs*, ms* and frs* (* is a wildcard meaning that any attributes with those prefixes are excluded). Any attributes that you do not want returned from the backend Active Directory can be added to the Attributes excluded from search results (support for Active Directory) list which is found on the Main Control Panel > Settings tab > Server Front End section > Attributes Handling sub-section. Make sure a space separates the attributes listed.
+This parameter is for Active Directory backends. It excludes specific attributes from being returned from the backend. Certain “system” attributes (e.g. dscorepropagationdata) returned from Active Directory (even for non-admin users) can cause problems for building persistent cache because the data type is not handled properly, and these attributes need to be added to the RadiantOne schema for the local storage to handle them in the cache. Also, these attributes cause problems for the change capture connector needed for real-time persistent cache refresh to work properly. Attributes that are not required by client applications, should be added to this list to ensure they are not returned in the view from Active Directory. By default, the AD attributes that are excluded are ds*, acs*, ms* and frs* (* is a wildcard meaning that any attributes with those prefixes are excluded). Any attributes that you do not want returned from the backend Active Directory can be added to the Attributes excluded from search results (support for Active Directory) list which is found on the Classic Control Panel > Settings tab > Server Front End section > Attributes Handling sub-section. Make sure a space separates the attributes listed.
 
-### Include & Exclude Filters
+To switch to Classic Control Panel, use the menu options for the logged in user in the upper right.
 
-Multiple different LDAP backends can be configured below the same root naming context. Therefore, client applications have the ability to perform searches from the root which could result in querying numerous backend directories. Sometimes, this can affect performance. In order to have more control over which LDAP queries get sent to which LDAP backends, RadiantOne offers inclusion and exclusion search filters.
+![Classic Control Panel](Media/classic-cp.jpg)
 
--	Inclusion Filters: Allow you to specify which filters are allowed to be sent to the backend LDAP directory.
-
--	Exclusion Filters: Allow you to specify which filters are not allowed to be sent to the backend LDAP directory.
-
-Typically you would specify one or the other (inclusion filters or exclusion filters). The filter can be in the form of any valid LDAP filter. Also, different filters can apply on different search scopes (base, one level, or subtree).	
 
 ### Index Attributes Used in Joins
 
 If joins are configured, verify that all attributes conditioning the join are indexed in the underlying sources.
 
-Depending on your specific use case and virtual view, two other optimizations are possible. These are configured on the Main Control Panel > Directory Namespace Tab. Select the virtual view below the Root Naming Contexts node. On the right side, select the Advanced Proxy tab. Both options are described below.
-
-![Optimizations for LDAP Backend](Media/Image3.5.jpg)
  
 ### Limit Attributes Requested from the LDAP Backend
 
-Whenever RadiantOne FID queries a backend LDAP, the default behavior is to ask for all attributes (although ONLY the attributes requested in the query are returned to the client). This default behavior is for the following reasons:
+The *Limit Attributes Requested from the LDAP Backend* option is located in Control Panel > Setup > Directory Namespace > Namespace Design > [SelectedIdentityView] > ADVANCED SETTINGS tab > Optimizations section.
+
+Whenever the RadiantOne service queries a backend LDAP directory, the default behavior is to ask for all attributes (although ONLY the attributes requested in the query are returned to the client). This default behavior is for the following reasons:
 
 -	Joins have been configured and the filter in the search request involves attributes from both the primary and secondary sources (i.e. the query filter contains conditions on both primary and secondary objects). 
 
--	Interception scripts that involve logic based on attributes from the backend. These attributes may not be specifically requested or searched for by the client. However, RadiantOne FID must retrieve them from the backend in order for the script logic to be valid.
+-	Interception scripts that involve logic based on attributes from the backend. These attributes may not be specifically requested or searched for by the client. However, the RadiantOne service must retrieve them from the backend in order for the script logic to be valid.
 
--	ACL checking. You can setup ACLs on attribute/values of an entry (i.e. mystatus=hidden), so RadiantOne FID may need the whole entry to check the authorization.
+-	ACL checking. You can setup ACLs on attribute/values of an entry (i.e. mystatus=hidden), so the RadiantOne service may need the whole entry to check the authorization.
 
 -	For entry caching. The entire entry needs to be in the entry cache.
 
-If your virtual view does not require any of the conditions mentioned above, you can enable this option for better performance. If this option is enabled, RadiantOne FID queries the backend server only for attributes requested from the client in addition to attributes set as 'Always Requested' on the Attributes tab.
+If your identity view does not require any of the conditions mentioned above, you can enable the *Limit Attributes Requested from the LDAP Backend* option for better performance.
+
+![Limit Requested Attributes](Media/optimizations-limit-attr.jpg)
+
+If this option is enabled, the RadiantOne service queries the backend server only for attributes requested from the client in addition to attributes set as 'Always Requested' on the ADVANCED SETTINGS Tab >  Global Attributes Handling section.
+
+![Global Attributes Handling](Media/global-attr-handling.jpg)
 
 ### Process Joins and Computed Attributes Only When Necessary
 
-The default behavior of RadiantOne FID is to process associated joins and build computed attributes whenever a virtual object is reached from a query regardless of whether the attributes requested come from a secondary source or computation.
+The *Process Joins and Computed Attributes Only When Necessary* option is located in Control Panel > Setup > Directory Namespace > Namespace Design > [SelectedIdentityView] > ADVANCED SETTINGS tab > Optimizations section.
 
-If you enable this option, RadiantOne FID does not perform joins or computations when a client requests or searches for attributes from a primary object only. If a client requests or searches for attributes from secondary objects or computed attributes, then RadiantOne FID processes the join(s) and computations accordingly. 
+The default behavior of the RadiantOne service is to process associated joins and build computed attributes whenever a entry in the namespace is reached from a query regardless of whether the attributes requested come from a secondary source or computation.
+
+If you enable the *Process Joins and Computed Attributes Only When Necessary* option, the RadiantOne service does not perform joins or computations when a client requests or searches for attributes from a primary object only. If a client requests or searches for attributes from secondary objects or computed attributes, then the RadiantOne service processes the join(s) and computations accordingly. 
+
+![Process Joins When Necessary](Media/optimizations-process-joins.jpg)
 
 Use caution when enabling this option if you have interception scripts defined on these objects, or access controls based on filters are being used (both of which may require other attributes returned from secondary sources or computations regardless of whether or not the client requested or searched for them). 
 
->[!warning] 
->Do not enable this option if a memory entry cache is used (as the whole virtual entry is needed for the cache).
 
 ### Use Client Size Limit Value to Query Backend 
 
-Whenever RadiantOne FID queries a backend LDAP, the default behavior is to ask for all entries (sizelimit=0) even if the client indicates a size limit. 
+The *Use Client Size Limit Value to Query Backend* option is located in Control Panel > Setup > Directory Namespace > Namespace Design > [SelectedIdentityView] > ADVANCED SETTINGS tab > Optimizations section.
 
-This default behavior is because the entries returned by the backend are possible candidates, but may not be retained for the final result that is sent to the client. For example, if an ACL has been defined in RadiantOne, not all entries from the backend may be authorized for the user (connected to FID) to access. Other cases are when joins or interception scripts are involved with the virtual view, these may also alter the entries that match the client’s search.
+Whenever the RadiantOne service queries a backend LDAP directory, the default behavior is to ask for all entries (sizelimit=0) even if the client indicates a size limit. 
 
-To limit the number of entries from the backend, using paging is the recommended approach. If the backend supports paging, RadiantOne FID will not get all the results at once, only one page at a time (page size indicated in the configuration). In this case, if RadiantOne FID has returned to the client the size limit required, it will not go to the next page.
+This default behavior is because the entries returned by the backend are possible candidates, but may not be retained for the final result that is sent to the client. For example, if an ACL has been defined in RadiantOne, not all entries from the backend may be authorized for the user (connected to the RadiantOne service) to access. Other cases are when joins or interception scripts are involved with the virtual view, these may also alter the entries that match the client’s search.
 
-If your virtual view does not require any of the conditions mentioned above (joins, interceptions, ACL), and using paging between RadiantOne FID and the backend is not possible, you can enable this option to limit the number of entries requested from the backend. If this option is enabled, RadiantOne FID uses the size limit specified by the client instead of using sizelimit=0 when querying the backend.
+To limit the number of entries from the backend, using paging is the recommended approach. If the backend supports paging, the RadiantOne service will not get all the results at once, only one page at a time (page size indicated in the configuration). In this case, if RadiantOne has returned to the client the size limit required, it will not go to the next page.
+
+If your identity view does not require any of the conditions mentioned above (joins, interceptions, ACL), and using paging between the RadiantOne service and the backend is not possible, you can enable the *Use Client Size Limit Value to Query Backend* option to limit the number of entries requested from the backend. If this option is enabled, the RadiantOne service uses the size limit specified by the client instead of using sizelimit=0 when querying the backend.
+
+![Use Client Size Limit](Media/optimizations-use-client-size.jpg)
 
 
 ### Use Client Time Limit Value to Query Backend
@@ -230,23 +241,33 @@ If more than 30 attributes are configured to be returned for a container or cont
 
 JNDI connection pooling to a backend LDAP source is enabled by default.
 
-To change the maximum connections to maintain in the pool, the idle timeout, or connection timeout, simply change the setting from the Main Control Panel > Settings tab > Server Backend section > Connection Pooling sub-section (requires [Expert Mode](00-preface#expert-mode)).
+To change the maximum connections to maintain in the pool, the idle timeout, or connection timeout, go to the Classic Control Panel > Settings tab > Server Backend section, under the Connection Pooling sub section (requires Expert Mode).
+
+To switch to Classic Control Panel, use the menu options for the logged in user in the upper right.
+
+![Classic Control Panel](Media/classic-cp.jpg)
+
+To switch Classic Control Panel into Expert Mode, click the "Logged in as:" and choose *Expert Mode*.
+
+![Expert Mode](Media/expert-mode.jpg)
+
+The Connection Pool settings are described below.
 
 *Pool Size*
 
-Default is 1000. This is the maximum number of concurrent connections by RadiantOne FID to each LDAP source. For example, if you have four LDAP sources and your maximum connections value is set to 200, then you could have up to a total of 800 LDAP connections maintained by RadiantOne FID.
+Default is 1000. This is the maximum number of concurrent connections by RadiantOne to each LDAP source. For example, if you have four LDAP sources and your maximum connections value is set to 200, then you could have up to a total of 800 LDAP connections maintained by RadiantOne.
 
 *Timeout*
 
-Default is 7. This is the maximum number of seconds RadiantOne FID waits while trying to establish a connection to the backend LDAP server. There are two attempts to create a connection (7 seconds per attempt).
+Default is 7. This is the maximum number of seconds the RadiantOne service waits while trying to establish a connection to the backend LDAP server. There are two attempts to create a connection (7 seconds per attempt).
 
 *Operation Timeout*
 
-Default is 0 (no timeout). This is the maximum number of seconds RadiantOne FID waits to receive a response from to the backend LDAP server. After this time, RadiantOne FID drops the request and tries to send the request again. After two failed attempts to get a response back, RadiantOne FID returns an error to the client.
+Default is 0 (no timeout). This is the maximum number of seconds the RadiantOne service waits to receive a response from to the backend LDAP server. After this time, RadiantOne drops the request and tries to send the request again. After two failed attempts to get a response back, the RadiantOne service returns an error to the client.
 
 *Write Operation Timeout*
 
-The default is 0 (no timeout). This is the maximum number of seconds RadiantOne FID waits to receive a response from to the backend LDAP server for write operations and bind operations. After this time, RadiantOne FID drops the request and attempts to send the request again. After two failed attempts to get a response back, RadiantOne FID returns an error to the client.
+The default is 0 (no timeout). This is the maximum number of seconds the RadiantOne service waits to receive a response from to the backend LDAP server for write operations and bind operations. After this time, RadiantOne drops the request and attempts to send the request again. After two failed attempts to get a response back, the RadiantOne service returns an error to the client.
 
 *Idle Timeout*
 
@@ -254,4 +275,4 @@ Default is 5. This is the maximum number of minutes to keep an idle connection i
 
 ## Views from Custom Backends
 
-If the identity data sources you plan on integrating with RadiantOne are anything other than LDAP directories or Active Directories, the recommended approach is to first create a basic virtual view that has no specific attribute mappings, computed attributes, joins...etc. and then configure the virtual view with persistent cache and the desired refresh strategy. This is the process to stage the backend data in persistent cache. Most custom backends only support a periodic persistent cache refresh type. Then, as a second step, create a virtual view using the cache image as the data source. This virtual view is where you would configure the attribute mappings, computed attributes, joins...etc. This data staging and virtual view layering methodology is essential for custom backend data source (e.g. Azure AD, Okta, Salesforce...etc.) that are not as performant as directories for search queries and even works well for RDBMS data sources.
+If the identity data sources you plan on integrating with RadiantOne are anything other than LDAP directories or Active Directories, the recommended approach is to first create a basic identity view that has no specific attribute mappings, computed attributes, joins...etc. and then configure the identity view with persistent cache and the desired refresh strategy. This is the process to stage the backend data in persistent cache. Most custom backends only support a periodic persistent cache refresh type. Then, as a second step, create an identity view using the cache image as the data source. This identity view is where you would configure the attribute mappings, computed attributes, joins...etc. This data staging and virtual view layering methodology is essential for custom backend data source (e.g. Azure AD, Okta, Salesforce...etc.) that are not as performant as directories for search queries and even works well for RDBMS data sources.
