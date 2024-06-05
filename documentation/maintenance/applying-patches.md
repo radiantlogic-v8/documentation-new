@@ -19,7 +19,7 @@ Prior to updating RadiantOne Identity Data Management, ensure you have a recent 
 
 1. In Environment Operations Center, navigate to Environments > [EnviromentName] > BACKUPS tab.
 1. If you do not have any recent backups, click **Backup**.
-  ![Create a Backup](Media/backup-env.jpg)
+ ![Create a Backup](Media/backup-env.jpg)
 
 1. Enter a backup file name (there is a default auto-prefix) and click **SAVE**. This process takes a few minutes. Ensure the backup file shows in the list of backups before applying the RadiantOne Identity Data Management patch.
 
@@ -31,8 +31,7 @@ Sheduled backups can be enabled and configured by clicking the cog icon next to:
 
 1. In Environment Operations Center, navigate to Environments > [EnviromentName] > OVERVIEW tab.
 1. In the Application Details section, click **UPDATE** next to the *VERSION*.
-  ![Apply Patch](Media/apply-patch.jpg)
-
+ ![Apply Patch](Media/apply-patch.jpg)
 1. Select the version to update to from the drop-down list and click **UPDATE**. This version must be greater than the version currently installed.
 1. Click **UPDATE** again to confirm. This is a rolling update of all RadiantOne Identity Data Management nodes which can take around 10 minutes to finish. 
 
