@@ -1,13 +1,11 @@
 ---
 title: Applying Patches
-description: Learn how to apply patches to an environment to update the version of RadiantOne Identity Data Management. Learn how to edit, enable or disable, and delete Secure Data Connectors from Environment Operations Center. Learn how to manage a Secure Data Connector client, including updating, troubleshooting, and reviewing client logs.
+description: Learn how to apply patches to an environment to update the version of RadiantOne Identity Data Management. Learn how to manage a Secure Data Connector client, including updating, troubleshooting, and reviewing client logs.
 ---
 
 ## Overview
 
 Learn how to apply patches to an environment to update the version of RadiantOne Identity Data Management. 
-
-Learn how to edit, enable or disable, and delete Secure Data Connectors from Environment Operations Center. 
 
 Learn how to manage a Secure Data Connector client, including updating, troubleshooting, and reviewing client logs.
 
