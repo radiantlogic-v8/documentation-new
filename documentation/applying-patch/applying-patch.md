@@ -32,6 +32,10 @@ Sheduled backups can be enabled and configured by clicking the cog icon next to:
 1. Click **UPDATE** again to confirm. This is a rolling update of all RadiantOne Identity Data Management nodes which can take around 10 minutes to finish. 
 
 
+## Release Notes
+
+For the list of improvements and bug fixes related to the release, see: [Release Notes](../release-notes/iddm-8-0-0)
+
 ## Known Issues 
 
 For known issues reported after the release, please see the Radiant Logic Knowledge Base: 
