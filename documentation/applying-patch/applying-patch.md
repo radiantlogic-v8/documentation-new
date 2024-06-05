@@ -6,10 +6,9 @@ description: Applying Patches to RadiantOne Identity Data Manamgent SaaS v8.0
 ## Overview
 
 This document describes how to apply a patch for RadiantOne v8.0.X.  
+Although patches are applied in a rolling fashion and the RadiantOne service is continuously available, the recommendation is apply updates during non-peak/off-hours.
 
 ## Preparing for the Patch
-
-Although patches are applied in a rolling fashion and the RadiantOne service is continuously available, the recommendation is apply updates during non-peak/off-hours.
 
 Prior to updating RadiantOne Identity Data Management, ensure you have a recent environment backup.
 
