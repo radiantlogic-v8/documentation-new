@@ -26,5 +26,8 @@ description: Learn basic troubleshooting techniques for RadiantOne Identity Data
   - [Access Log](troubleshooting.md#access-log)
 - [Synchronization](troubleshooting.md#synchronization)
 - [Agent Log](troubleshooting.md#agent-log)
-- 
+- [Connector Logs](troubleshooting.md#connector-logs)
+- [Sync Engine Logs](troubleshooting.md#sync-engine-logs)
+- [Secure Data Connector Client Logs](troubleshooting.md#secure-data-connector)
+- [Task Scheduler and Tasks](troubleshooting.md#task-scheduler-and-tasks)
 - [Understanding Logs](troubleshooting.md#understanding-logs)
