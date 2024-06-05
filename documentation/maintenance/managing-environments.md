@@ -37,6 +37,9 @@ Manually trigger an environment backup from Environment Operations Center.
 Schedule backups from Environment Operations Center.
 
 1. In Environment Operations Center, navigate to Environments > [EnviromentName] > BACKUPS tab.
-2. Scheduled backups can be enabled and configured by clicking the cog icon next to: Sheduled: [enabled/disabled]
+1. Scheduled backups can be enabled and configured by clicking the cog icon next to: Sheduled: [enabled/disabled]
+ ![Scheduling Backups](Media/schedule-backups.jpg)
 
-![Scheduling Backups](Media/schedule-backups.jpg)
+1. Toggle the *Automatic Backup* option on.
+1. Configure the Data Retention Policy and backup schedule.
+1. Click **SAVE**.
