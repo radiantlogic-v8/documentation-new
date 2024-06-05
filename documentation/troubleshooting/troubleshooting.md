@@ -34,7 +34,7 @@ Select the environment where RadiantOne Identity Data Management is deployed and
 
 >[!warn] - Only SaaS deployments have access to Environment Operations Center. Self-managed deployments of RadiantOne do not.
 
-## Secure Data Connectors
+#### Secure Data Connectors
 
 The section describes managing data connectors and the secure data connector client.
 
