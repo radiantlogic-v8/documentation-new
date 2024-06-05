@@ -18,7 +18,7 @@ Prior to updating RadiantOne Identity Data Management, ensure you have a recent 
 
 1. Enter a backup file name (there is a default auto-prefix) and click **SAVE**. This process takes a few minutes. Ensure the backup file shows in the list of backups before applying the RadiantOne Identity Data Management patch.
 
-Sheduled backups can be enabled and configured by clicking the cog icon next to: Sheduled: [enabled/disabled]
+Scheduled backups can be enabled and configured by clicking the cog icon next to: Sheduled: [enabled/disabled]
 
 ![Scheduling Backups](Media/schedule-backups.jpg)
 
