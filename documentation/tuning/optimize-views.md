@@ -98,9 +98,6 @@ Connection pooling improves performance because a connection to the underlying s
 
 Connection pooling for database sources is automatically enabled by default and the settings can be modified in the Classic Control Panel > Settings tab > Server Backend section, under the Connection Pooling sub section (requires Expert Mode).
 
-![An image showing ](Media/Image3.3.jpg)
- 
-
 To switch to Classic Control Panel, use the menu options for the logged in user in the upper right.
 
 ![Classic Control Panel](Media/classic-cp.jpg)
@@ -140,16 +137,14 @@ By default, RadiantOne does not attempt to chase referrals that have been config
 
 ![An image showing ](Media/Image3.4.jpg)
  
-Figure 3.4: Disabling Referral Chasing
-
-Chasing referrals can affect the overall performance because if the referral server is not responding (or responding slowly) RadiantOne FID could take a long time to respond to the client. For example, in the case of querying an underlying Active Directory (with a base DN starting at the root of Active Directory) you may get entries like the following returned:
+Chasing referrals can affect the overall performance because if the referral server is not responding (or responding slowly) the RadiantOne service could take a long time to respond to the client. For example, in the case of querying an underlying Active Directory (with a base DN starting at the root of Active Directory) you may get entries like the following returned:
 
 ```
 ldaps://ForestDnsZones.na.radiantlogic.com:636…
 ldaps://DomainDnsZones.na.radiantlogic.com:636…
 ```
 
-If RadiantOne FID attempts to “chase” these referrals, this can result in an extreme degradation in response times. Therefore, it is recommended that referral chasing is disabled, especially if you need to connect to Active Directory starting at the root of the tree.
+If the RadiantOne service attempts to “chase” these referrals, this can result in an extreme degradation in response times. Therefore, it is recommended that referral chasing is disabled, especially if you need to connect to Active Directory starting at the root of the tree.
 
 ### Excluded Attributes for Active Directory Backends
 
