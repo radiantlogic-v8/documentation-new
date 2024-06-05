@@ -15,18 +15,18 @@ For certain configurations/use cases, there are different parameters that may be
 
 ### Case Sensitivity for Searches
 
-There are three options available for handling case sensitive databases. These options are related to how RadiantOne FID generates the query to send to the database. These options are available on the Main Control Panel -> Directory Namespace Tab. Select the container/content node in a virtual view below Root Naming Contexts and on the right side, select the Advanced Settings tab. 
+There are three options available for handling case sensitive databases. These options are related to how the RadiantOne service generates the query to send to the database. In the Control Panel > Setup > Directory Namespace > Namespace Design, select the container/content node in an identity view below Root Naming Contexts and on the right side, select the ADVANCED SETTINGS tab. 
 
 1.	As Is
 
-	If your database is not case sensitive, then you should choose the As Is option. With this option, RadiantOne FID forwards the search filter to the backend in the exact case it was received in the request from the client. This is the default option.
+	If your database is not case sensitive, then you should choose the As Is option. With this option, the RadiantOne service forwards the search filter to the backend in the exact case it was received in the request from the client. This is the default option.
 
 	If your database is case sensitive and you choose this option, the case received in the filter from the client search request must match the case used in the database or else the entry will not be found.
-	For example, if a database attribute named FIRSTNAME had a value of Nancy, and RadiantOne FID received a search request with a filter of (firstname=nancy), the entry would not be returned. The client must use a filter of (firstname=Nancy) in order for the entry to be properly returned from the database.
+	For example, if a database attribute named FIRSTNAME had a value of Nancy, and the RadiantOne service received a search request with a filter of (firstname=nancy), the entry would not be returned. The client must use a filter of (firstname=Nancy) in order for the entry to be properly returned from the database.
 
 2.	Ignore Case
 
-	If your database is case sensitive and you are not sure how the values are stored (mixed case, all upper, all lower…etc.), then you should choose the Ignore Case option. With this option, RadiantOne FID generates the SQL query so that both the filter that was received in the client request and the values from the backend are converted into uppercase before the search filter can be validated. For example, if a client sent a request with a filter of (firstname=Nancy), RadiantOne FID would generate the following where clause based on the filter received in the client request.
+	If your database is case sensitive and you are not sure how the values are stored (mixed case, all upper, all lower…etc.), then you should choose the Ignore Case option. With this option, the RadiantOne service generates the SQL query so that both the filter that was received in the client request and the values from the backend are converted into uppercase before the search filter can be validated. For example, if a client sent a request with a filter of (firstname=Nancy), the RadiantOne service would generate the following where clause based on the filter received in the client request.
 
 	WHERE (UPPER(APP.EMPLOYEES.FIRSTNAME)=UPPER('Nancy'))
 	The case used in the filter from the client is irrelevant and everything is converted into uppercase.
@@ -34,23 +34,21 @@ There are three options available for handling case sensitive databases. These o
 
 3.	Translate Values to Uppercase
 
-	If your database is case sensitive and you know the values are stored in uppercase, you should choose the Translate Values to Uppercase option. With this option, RadiantOne FID translates the search filter value into uppercase before sending it to the backend database. This option is more efficient than the Ignore Case option mentioned above.
+	If your database is case sensitive and you know the values are stored in uppercase, you should choose the Translate Values to Uppercase option. With this option, the RadiantOne service translates the search filter value into uppercase before sending it to the backend database. This option is more efficient than the Ignore Case option mentioned above.
 
 ### Modify the Exposed Attributes
 
-To improve the performance of the view, you should only expose the required attributes. The default behavior of RadiantOne FID is to request all attributes from the underlying source (no matter what specific attributes a client may have requested). Having unnecessary attributes in the output can slow down the performance of the query (because it makes the query string much longer). On the Main Control Panel -> Directory Namespace tab, select the container/content node in the virtual view below Root Naming Contexts and on the right side, select the Attributes tab. Only list the attributes on the Attributes tab that you want RadiantOne FID to request from the backend (delete all others).
+To improve the performance of the view, you should only expose the required attributes. The default behavior of the RadiantOne service is to request all attributes from the underlying source (no matter what specific attributes a client may have requested). Having unnecessary attributes in the output can slow down the performance of the query (because it makes the query string much longer). In the Control Panel > Setup > Directory Namespace > Namespace Design, select the container/content node in the identity view below Root Naming Contexts and on the right side, select the OBJECT BUILDER tab. Click ![Map and Filter](Media/map-and-filter.jpg) and select only the attributes that are required for the identity view.
 
-![Modifying the attributes in the View Definition](Media/Image3.1.jpg)
+![Modifying the attributes in the View Definition](Media/filter-attributes.jpg)
  
-Figure 3.1: Modifying the attributes in the View Definition
-
 ### Index Attributes Used in Joins
 
 If joins are configured, verify that all attributes conditioning the join are indexed in the underlying sources. In the example shown below, the join is based on employeeID in the source matches employeeNumber in the target. This means employeeID should be indexed in the source and employeeNumber should be indexed in the target.
  
 ![Join Profile](Media/Image3.2.jpg)
 
-Depending on your specific use case and virtual view, two other optimizations are possible. These are configured on the Main Control Panel > Directory Namespace Tab. Select the container/content node in the virtual view below Root Naming Contexts and on the right side, select the Advanced Settings tab. Both options are described below.
+Depending on your specific use case and identity view, two other optimizations are possible. These are configured on the Main Control Panel > Directory Namespace Tab. Select the container/content node in the virtual view below Root Naming Contexts and on the right side, select the Advanced Settings tab. Both options are described below.
 
 ### Removing UPPER
 
