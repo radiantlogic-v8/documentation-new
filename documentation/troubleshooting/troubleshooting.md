@@ -34,6 +34,108 @@ Select the environment where RadiantOne Identity Data Management is deployed and
 
 >[!warn] - Only SaaS deployments have access to Environment Operations Center. Self-managed deployments of RadiantOne do not.
 
+## Secure Data Connectors
+
+The section describes managing data connectors and the secure data connector client.
+
+### Managing Data Connectors
+
+Secure data connectors can be managed from the *Secure Data Connectors* screen. From here, you can edit, enable or disable, and delete connectors. This guide outlines the steps to manage data connectors.
+
+All of the operations to manage secure data connectors are available in the **Options** (**...**) menu for each connector. To begin managing a connector, select the **Options** (**...**) menu of the specific connector you wish to modify.
+
+![image description](Media/options.png)
+
+**Edit a data connector**
+
+The name and description of a data connector can be updated. To edit connector details, select **Edit** from the associated **Options** (**...**) menu.
+
+![image description](Media/select-edit.png)
+
+This enables editing of the **Data Connector** row. In the provided name and description fields, update the connector details as needed. Select :white_check_mark: to update the connector details.
+
+The connectors list displays updated details for the updated *Secure Data Connector*.
+
+![image description](Media/update-info.png)
+
+**Enable or disable a connector**
+
+To disable a data connector, select **Pause** from the **Options** (**...**) menu.
+
+![image description](Media/disable.png)
+
+The connector status updates to "Paused" and all associated connections are disabled.
+
+![image description](Media/paused.png)
+
+To reactivate a data connector, select **Start** from the **Options** (**...**) menu.
+
+![image description](Media/enable.png)
+
+The connector status updates to "Active" and all associated connections are enabled.
+
+![image description](Media/active.png)
+
+**Restart a data connector**
+
+To restart a data connector, select **Restart** from the **Options** (**...**) menu.
+
+The connector completely stops and starts. This action is similar to starting a data connector for the first time, which does pulling all latest configurations, stops, and starts all the required processes.
+
+![image description](Media/restart.png)
+
+**Delete a data connector**
+
+To delete a data connector, select **Delete** from the **Options** (**...**) menu.
+
+[!warning] Deleting a data connector is a permanent action and cannot be undone.
+
+![image description](Media/delete.png)
+
+A confirmation dialog asks you to confirm that you would like to delete the selected data connector. Select **Delete** to proceed and delete the connector.
+
+If you would like to keep the connector, select **Cancel** to exit out of the workflow to delete the connector.
+
+![image description](Media/confirm-delete.png)
+
+If the connector is successfully deleted, you receive a confirmation message on the *Secure Data Connectors* home screen and the connector is no longer available in the list of connectors.
+
+### Manage the Secure Data Connector Client
+
+This guide outlines the steps to manage a secure data connector client, including updating, troubleshooting, and reviewing client logs.
+
+**Update the secure data connector client**
+
+Client updates can be applied by stopping the client or as a rolling update. The following sections outline how to apply updates to Windows, Linux, or Docker systems, as well as how to apply rolling updates to avoid an interruption in service.
+
+*Update on Windows or Linux*
+
+The client must be stopped before applying an update. To stop the client, select **Ctrl + C** in the terminal window running the client.
+
+To install the update, unzip the new client version in the same directory that contains the current client. Overwrite everything except for *appsettings.Production.json*, as this is the configuration file for the client.
+
+If the update is being installed on a Windows system, launch the *RaidantLogic.OnPremisesAgentClient.Agent.exe* file.
+
+If the update is being installed on a Linux system, run the following command:
+
+`dotnet run RadiantLogic.OnPremisesAgentClient.Agent.dll`
+
+*Update on Docker*
+
+To update a secure data connector client on Docker, stop the Docker image and then start it again with the latest tag. The client starts running again with the latest available version.
+
+**Rolling update**
+
+Installing a rolling update allows the client to continue running with no downtime during the update. To install a rolling update, create a new data connector in Environment Operations Center (see the [add a data connector](configure-sdc-client#adding-a-new-data-connector) guide) within the same group as the client you would like to update. 
+
+Copy the new token from the *Data Connector Registration* dialog in the data connector details section.
+
+![image description](Media/docker-token.png)
+
+Follow the steps outlined in the [deploy a secure data connector client](configure-sdc-client#deploy-the-secure-data-connector-client) guide for your system type to deploy the client as a fresh installation.
+
+Once the new client deployment is complete, delete the old client.
+
 ## Managing Log Levels
 There are different levels of logging available for the components. The options are: Off, Fatal, Error, Warn, Info, Debug, and Trace.
 Log levels are configured from Classic Control Panel > Settings > Logs > Log Settings. To ensure optimal performance, the logging for RadiantOne should be reduced to the minimum level that meets your auditing needs for production environments.
