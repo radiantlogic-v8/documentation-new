@@ -73,11 +73,24 @@ To configure rules for linked attributes, following the steps below:
 
 1.	Click **SAVE**.
 
-To test your results, you can use the Control Panel > Manage > Directory Browser. Click **+SEARCH**. Enter a name to save the search (e.g. LinkedAttributes). Enter or select your DN containing users. Choose *Subtree* as the scope from the drop-down list. You can enter a filter to look for a specific user (using the freeform/manual mode, or click **+NEW CONDITION**). In the Return Attributes field enter isMemberOf (assuming this is the back link attribute name configured for returning the groups). Click **SAVE** and then **TEST QUERY**. 
+**Testing Linked Attributes**
 
-![Linked Attribute](Media/search-linked-attribute.jpg)
+To test your results, you can use the Control Panel > Manage > Directory Browser. 
 
-The user in your filter should be returned. Select this entry and the attributes should display. The back link attribute (e.g. isMemberOf) should indicate the groups the use is a member of.
+1. Click **+SEARCH**.
+2. Enter a name to save the search (e.g. LinkedAttributes).
+3. Enter or select your DN containing users.
+4. Choose *Subtree* as the scope from the drop-down list.
+5. You can enter a filter to look for a specific user (using the freeform/manual mode, or click **+NEW CONDITION**).
+6. In the Return Attributes field enter isMemberOf (assuming this is the back link attribute name configured for returning the groups).
+7. Click **SAVE** and then **TEST QUERY**. 
+
+![Linked Attribute](Media/linked-attr-query.jpg)
+
+The user in your filter should be returned. Select this entry and the attributes should display. The back link attribute (e.g. isMemberOf) should indicate the groups the use is a member of as shown in the example below.
+
+![Linked Attribute Result](Media/linked-attr-result.jpg)
+
  
 ### Referential Integrity
 
