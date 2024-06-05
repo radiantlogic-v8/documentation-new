@@ -36,6 +36,9 @@ Harness your identity data with intelligent integration to drive better business
   > [Data Sources Supported](data-sources/data-sources-supported)  
   > Learn about identity data source backends supported in RadiantOne Identity Data Management.
 
+  > [Applying Patches](applying-patches/patches)  
+  > Learn about how to patch RadiantOne Identity Data Management.
+
 </section>
 
 ## RadiantOne Integration
