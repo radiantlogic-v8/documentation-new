@@ -21,12 +21,7 @@ Once logged into the Classic Control Panel, click ![Server Control Panel](Media/
 
 >[!warn] - Only SaaS deployments have access to Environment Operations Center. Self-managed deployments of RadiantOne do not.
 
-In Environment Operations Center, navigate to the Monitoring section.
-1. Select the Environment to monitor from the **ENVIRONMENT** drop-down list.
-2. Select the Application to monitor from the **APPLICATION** drop-down list.
-3. Select the Dashboard to display from the **DASHBOARD** drop-down list.
-4. Select the RadiantOne node to monitor from the **NODE** drop-down list. If none are selected, the monitored stats for all nodes are shown.
-5. Select a time range from the **TIME RANGE** drop-down list.
+In Environment Operations Center, navigate to the Monitoring section and select the environment, application, dashboard, RadiantOne node to monitor and time range.
 
 ![EOC Monitoring](Media/eoc-monitoring.jpg)
 
