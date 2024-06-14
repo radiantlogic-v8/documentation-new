@@ -94,7 +94,7 @@ Several aspects of RadiantOne are configured during installation. The basic inst
 
     ![An image showing ](Media/Image2.2.jpg)
 
-3. On the Setup Zookeeper Connection page, you are prompted to provide details about the ZooKeeper ensemble. If you are installing in a Dev/QA environment and configuring a new ZooKeeper ensemble which will run on the same machine as RadiantOne, click **Skip and use local ZK**.
+3. On the Setup Zookeeper Connection page, you are prompted to provide details about the ZooKeeper ensemble, including the ZooKeeper login, password, and ports. If you are installing in a Dev/QA environment and configuring a new ZooKeeper ensemble which will run on the same machine as RadiantOne, click **Skip and use local ZK**.
 
     Production environments typically require a connection to an existing, external ZooKeeper ensemble. If you use a load balancer in front of your ZooKeeper ensemble, enter the hostname of the load balancer in the ZooKeeper Hostname/IP field. If you do not use a load balancer, enter the hostname (or IP address) and port number of one of the machines in the Zookeeper ensemble in the ZooKeeper Hostname/IP field. In the following example, a load balancer is not used, so the hostname value would be 10.11.10.31, and the Zookeeper port number would be 2181. After entering the ZooKeeper ensemble connection string, click Next.
 
