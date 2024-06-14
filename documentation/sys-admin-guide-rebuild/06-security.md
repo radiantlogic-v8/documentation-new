@@ -1421,7 +1421,7 @@ If you are running RadiantOne on a multi-processor machine, performance and effi
 >[!warning] 
 >This parameter does not affect the actual number of processors that get used. However, it does improve the utilization of the available processors.
 
-A better indicator for performance is the number of threads allocated for each processing queue. For each processing queue, the maximum number of concurrent worker threads is 80 by default. This value can be seen/changed in the Max Concurrent Working Threads parameter. For more details, see the next section.
+A better indicator for performance is the number of threads allocated for each processing queue. This value can be seen/changed in the Max Concurrent Working Threads parameter. For more details, see the next section.
 
 After making changes, click **Save**. RadiantOne must be restarted for the changes to take effect. If deployed in a cluster, restart the service on all nodes.
 
