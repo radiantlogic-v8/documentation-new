@@ -784,39 +784,14 @@ If successful, the Response section displays the message â€œ{"httpStatus":200}â€
 
 In this example an attribute (e.g. email) containing a specified value (e.g. alice@radiantlogic.com) is deleted by using the parameters shown in the table below. 
 
-<table>
-<tr>
-<td>Field	
-<td>Value
-<tr>
-<td>URL Syntax	
-<td>http://localhost:8089/adap/`< baseDN>`
-<tr>
-<td>Example URL	
-<td>http://localhost:8089/adap/uid=alice,cn=config
-<tr>
-<td>Method	
-<td>Patch
-<tr>
-<td>Header Name	
-<td>Authorization
-<tr>
-<td>Header Value	
-<td>Basic <userDN>:<password>
-<tr>
-<td>Example Request Body	
-<td><pre>{
-    "params": {
-        "mods": [
-            {
-                "attribute": "email",
-                "type": "DELETE",
-                "values": [alice@radiantlogic.com]
-            }
-        ]
-    }
-}
-</table>
+Field	| Value
+-|-
+URL Syntax	| `http://localhost:8089/adap/<baseDN>`
+Example URL	| http://localhost:8089/adap/uid=alice,cn=config
+Method	| Patch
+Header Name	| Authorization
+Header Value	| Basic `<userDN>:<password>`
+Example Request Body	| { "params": {<br>"mods": [ { "attribute": "email", <br>"type": "DELETE", <br> "values": [alice@radiantlogic.com]} ]  } <br>}
 
 Table 28: REST Operation to Delete an Attribute Value
 
