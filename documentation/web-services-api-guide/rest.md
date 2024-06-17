@@ -720,16 +720,8 @@ Example URL	| http://localhost:8089/adap
 Method	| Post
 Header Name	| Authorization
 Header Value	| Basic `<userDN>:<password>`
-Example Request Body	| { "params" : { 
-"dn" : "uid=alice,cn=config", 
-"attributes" : { "objectClass" : [ "top", 
-"person", 
-"organizationalPerson", 
-"inetOrgPerson" ], 
-"cn" : "Alice Wonderland", 
-"sn" : "Wonderland", 
-"uid" : "alice" } } 
-}
+Example Request Body	| { "params" : { <br>"dn" : "uid=alice,cn=config", 
+"attributes" : { "objectClass" : [ "top", <br>"person", <br>"organizationalPerson", <br>"inetOrgPerson" ], <br>"cn" : "Alice Wonderland", <br>"sn" : "Wonderland", <br>"uid" : "alice" } } <br>}
 
 Table 25: Add Operation
 
