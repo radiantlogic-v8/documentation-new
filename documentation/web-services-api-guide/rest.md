@@ -712,25 +712,15 @@ Figure 26: Example Search Returning Root Naming Contexts
 
 In this section, a new entry is added to RadiantOne using the parameters shown in the table below. The value in the Request Body field contains the information for the entry to be added. 
 
-<table>
-<tr>
-<td>Field	
-<td> Value
-<tr>
-<td>URL	
-<td> http://localhost:8089/adap
-<tr>
-<td>Method	
-<td>Post
-<tr>
-<td>Header Name	
-<td> Authorization
-<tr>
-<td>Header Value	
-<td> Basic `<userDN>:<password>`
-<tr>
-<td>Example Request Body	
-<td> <pre>{ "params" : { 
+
+Field	| Value
+-|-
+URL Syntax | `http://localhost:8089/adap`
+Example URL	| http://localhost:8089/adap
+Method	| Post
+Header Name	| Authorization
+Header Value	| Basic `<userDN>:<password>`
+Example Request Body	| { "params" : { 
 "dn" : "uid=alice,cn=config", 
 "attributes" : { "objectClass" : [ "top", 
 "person", 
@@ -740,7 +730,6 @@ In this section, a new entry is added to RadiantOne using the parameters shown i
 "sn" : "Wonderland", 
 "uid" : "alice" } } 
 }
-</table>
 
 Table 25: Add Operation
 
