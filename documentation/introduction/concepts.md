@@ -8,6 +8,7 @@ description: Learn the concepts related to configuring Identity Data Management.
 The following are concepts that you should understand in order to configure and administer RadiantOne Identity Data Management. 
 
   - [Data Source](#data-source)
+  - [Secure Data Connector](#secure-data-connector)
   - [Union](#union)
   - [Identity Correlation](#identity-correlation)
   - [Joins](#joins)
@@ -49,6 +50,14 @@ If you have existing data sources defined in a RadiantOne server and you would l
 You can then copy the export file to the desired RadiantOne server and use the [Import](#to-import-data-sources) option to import the data sources.
 
 >[!warning] The following default data sources are included with RadiantOne: vdsha (points to the RadiantOne nodes in the cluster), advworks, derbyorders, derbysales, examples, northwind, log2db, and vdapdb (points to the local Derby database server), and replicationjournal (points to a local RadiantOne Universal Directory store and is used for inter-cluster replication). Therefore, be aware that when you import one of these data sources on the target RadiantOne server, the data sources with the same name are overwritten. For this reason, it is recommended that you do not export these data sources.
+
+## Secure Data Connector
+
+Secure Data Connectors are only applicable to RadiantOne deployed as SaaS. They are not offered for self-managed deployments.
+
+A secure data connector establishes a secure connection between your SaaS service and on-prem identity data sources. This allows RadiantOne to securely retrieve identity-related data from an on-prem environment or across different cloud environments. When you define a data source, the configuration process allows you to define how you connect to the data source. Connections to custom objects that connect to a REST API or web endpoint, for example, typically do not require a secure data connector. On-prem backends, on the other hand, typically require selecting a secure data connector.
+
+For details about Secure Data Connectors, see: [add a data connector]((/../../eoc/latest/secure-data-connector/configure-sdc).
 
 ## Union
 
