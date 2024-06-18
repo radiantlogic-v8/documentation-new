@@ -88,6 +88,8 @@ LDAP controls have a unique object identifier (OID) and notion of criticality. T
 
 RadiantOne supports the following LDAP controls.
 
+>[!warn] The Proxied Authorization Control and the Paged Results Controls are enabled by default and cannot be disabled from the Control Panel. If you require these to be disabled, use a client to call the RadiantOne config API directly.
+
 2.16.840.1.113730.3.4.18 – Proxied Authorization Control
 
 1.2.840.113556.1.4.805 – Subtree Delete Control
