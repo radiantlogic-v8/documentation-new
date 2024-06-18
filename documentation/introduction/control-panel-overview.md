@@ -407,7 +407,7 @@ Data Sources repesent connections to identity sources. For details see: [Managin
 Schemas contain the metadata extracted from data sources. This metadata is used to create identity views. For details see: [Managing Schemas](/documentation/configuration/data-sources/schemas)
 
 *Drivers and Templates*
-Drivers and templates are used to establish connections to identity sources. For details see: [Managing Drivers and Templates](/documentation/configuration/data-sources/data-sources-supported)
+Drivers and templates are used to establish connections to identity sources. For details see: [Managing Drivers and Templates](/documentation/configuration/data-sources#managing-templates)
 
 **Directory Namespace**
 
