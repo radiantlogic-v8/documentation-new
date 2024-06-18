@@ -20,7 +20,7 @@ To switch to Classic Control Panel, use the menu options for the logged in user 
 
 The currently logged in user must have permissions to [access the Classic Control Panel](#permissions).
 
-For more details, see [Configuration Required in Classic Control Panel](#switch-to-classic-control-panel)
+For more details, see [Configuration Changes that Require Classic Control Panel](#switch-to-classic-control-panel)
 
 ## Authentication 
 
