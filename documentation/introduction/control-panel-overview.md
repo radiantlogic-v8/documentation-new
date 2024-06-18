@@ -792,6 +792,10 @@ To switch to Classic Control Panel, use the menu options for the logged in user 
 
 ![Classic Control Panel](Media/classic-cp.jpg)
 
+To reach the Server Control Panel from within the Classic Control Panel, click the *Server Control Panel* link at the top right. The Server Control Panel can be used for some service monitoring dashboards and accessing log files.
+
+![Classic Control Panel](Media/server-cp.jpg)
+
 The following settings must be managed from the RadiantOne Classic Control Panel:
 -	Synchronization: Classic Control Panel > Synchronization tab <br> See [Synchronization](/documentation/configuration/synchronization/synchronization-concepts) for details. 
 -	Password Policies​: Classic Control Panel > Settings > Security > Password Policies <br> See [Password Policies](/documentation/configuration/security/password-policies) for details. 
