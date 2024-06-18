@@ -398,6 +398,8 @@ To add a custom message:
 
 ### Setup
 
+The setup section contains the Data Catalog where connections to identity sources are configured and Directory Namespace where identity views are defined.
+
 **Data Catalog**
 
 *Data Sources*
@@ -431,6 +433,8 @@ To switch to Classic Control Panel, use the menu options for the logged in user 
 The currently logged in user must have permissions to [access the Classic Control Panel](#permissions).
 
 ### Manage 
+
+The Manage section contains the Directory Browser where the runtime directory tree can be accessed, where tasks can be managed, and where security (e.g. access controls, attribute encryption...etc.) can be configured from.
 
 **Directory Browser**
 
