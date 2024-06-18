@@ -36,7 +36,7 @@ LDAP data sources defined for RadiantOne are contained in <RLI_HOME>/vds_server/
 
 ### To Import Data Sources
 
-If you have existing data sources defined ([exported](#to-export-data-sources) from another instance of RadiantOne) and you would like to import those, from the Main Control Panel > Settings Tab > Server Backend section click on the sub-section representing the types of data sources you want to import (LDAP Data Sources, Database Data Sources or Custom Data Sources). On the right side, click **Import**. Browse to the XML file containing the data source definitions that you have exported from another RadiantOne server and click **OK**. 
+If you have existing data sources defined ([exported](#to-export-data-sources) from another instance of RadiantOne) and you would like to import those, from the Main Control Panel > Settings Tab > Server Backend section click on the sub-section representing the types of data sources you want to import (LDAP Data Sources, Database Data Sources or Custom Data Sources). On the right side, click **Import**. Browse to the zip file containing the data source definitions that you have exported from another RadiantOne server and click **OK**. 
 
 >[!warning] If a data source in the import file has the same name as an existing data source, the existing data source is overwritten by the one you are importing.
 
