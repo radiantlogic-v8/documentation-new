@@ -57,7 +57,7 @@ Secure Data Connectors are only applicable to RadiantOne deployed as SaaS. They 
 
 A secure data connector establishes a secure connection between your SaaS service and on-prem identity data sources. This allows RadiantOne to securely retrieve identity-related data from an on-prem environment or across different cloud environments. When you define a data source, the configuration process allows you to define how you connect to the data source. Connections to custom objects that connect to a REST API or web endpoint, for example, typically do not require a secure data connector. On-prem backends, on the other hand, typically require selecting a secure data connector.
 
-For details about Secure Data Connectors, see: [add a data connector]((/../../eoc/latest/secure-data-connector/configure-sdc).
+For details about Secure Data Connectors, see: [add a data connector](/../../eoc/latest/secure-data-connector/configure-sdc).
 
 ## Union
 
