@@ -13,11 +13,11 @@ There are two tools that administrators use to manage RadiantOne Identity Data M
 
 The Environment Operations Center is used by administrators to install RadiantOne Identity Data Management. This is done during the environment creation. Once an environment is created, it can be monitored and managed (e.g. patched, backed-up, restarted, or stopped)
 
-![An image showing ](Media/eocLogin.jpg)
+![EOC Login](Media/eocLogin.jpg)
 
 When the tenant administrator logs into Environment Operations Center for the first time, they can configure other admin accounts for delegated administration. 
 
-![An image showing ](Media/eocAdmin.jpg)
+![EOC Admin](Media/eocAdmin.jpg)
 
 
 ## Control Panel
@@ -26,7 +26,7 @@ The RadiantOne Identity Data Management Control Panel is used by administrators 
 
 The endpoint to reach the Control Panel can be found by navigating to the environment details in the Environment Operations Center.
 
-![An image showing ](Media/eocCPEndpoint.jpg)
+![App Endpoint in EOC](Media/eoc-newcp-endpoint.jpg)
 
 The Directory Administrator credentials for Control Panel are defined when the environment is created. These credentials must be used to log into the Control Panel for the first time. 
 
