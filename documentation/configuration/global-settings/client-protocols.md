@@ -345,7 +345,7 @@ Below is an example of a RadiantOne response to a “Who Am I” extended operat
 
 **Dynamic Entries Extension**
 
-The RadiantOne Directory supports temporary entries using the dynamicObject auxiliary object class as specified in [RFC 2589](https://www.rfc-editor.org/rfc/rfc2589). These entries are associated with a time to live attribute and once expired, the entry is automatically removed from the directory. For details on creating entries using this extension, see: [Creating Dynamic Entries](../configuration/directory-stores/managing-directory-stores)
+The RadiantOne Directory supports temporary entries using the dynamicObject auxiliary object class as specified in [RFC 2589](https://www.rfc-editor.org/rfc/rfc2589). These entries are associated with a time to live attribute and once expired, the entry is automatically removed from the directory. For details on creating entries using this extension, see: [Creating Dynamic Entries](/configuration/directory-stores/managing-directory-stores)
 
 ## SCIMv2
 [RadiantOne SCIM API](../../web-services-api-guide/scim)
