@@ -403,12 +403,15 @@ The setup section contains the Data Catalog where connections to identity source
 **Data Catalog**
 
 *Data Sources*
+
 Data Sources repesent connections to identity sources. For details see: [Managing Data Sources](/documentation/configuration/data-sources/data-sources)
 
 *Schemas*
+
 Schemas contain the metadata extracted from data sources. This metadata is used to create identity views. For details see: [Managing Schemas](/documentation/configuration/data-sources/schemas)
 
 *Drivers and Templates*
+
 Drivers and templates are used to establish connections to identity sources. For details see: [Managing Drivers and Templates](/documentation/configuration/data-sources#managing-templates)
 
 **Directory Namespace**
@@ -434,7 +437,7 @@ The currently logged in user must have permissions to [access the Classic Contro
 
 ### Manage 
 
-The Manage section contains the Directory Browser where the runtime directory tree can be accessed, where tasks can be managed, and where security (e.g. access controls, attribute encryption...etc.) can be configured from.
+The Manage section contains the Directory Browser where the runtime directory tree can be accessed, a Tasks section where tasks can be managed, and a Security section where security (e.g. access controls, attribute encryption...etc.) can be configured from.
 
 **Directory Browser**
 
@@ -459,6 +462,8 @@ Entries can be managed from the [Directory Browser](../configuration/directory-s
 [Manage Access Controls](/documentation/configuration/security/access-controls) from here.
 
 ### Global settings
+
+The Global Settings section is where client access protocols (LDAP, SCIM, REST) are managed from. Client certificates for TLS communication are also managed here.  Token Validators, tuning limits and global attribute handling are also managed in this section.
 
 *Client Protocols*  
 
