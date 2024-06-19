@@ -1,6 +1,6 @@
 ---
-title: Introduction to the Control Panel
-description: Learn how to navigate the Control Panel.
+title: Introduction to the Control Panels
+description: Learn how to navigate the Control Panels.
 ---
 
 ## Overview
