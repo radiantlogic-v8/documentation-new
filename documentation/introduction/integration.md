@@ -1,6 +1,6 @@
 ---
-title: Understanding the different layers that comprise RadiantOne Identity Data Management
-description: Learn about the three layers that comprise the RadiantOne Identity Data Management product.
+title: Understanding the different layers that comprise the global architecture
+description: The logical model for RadiantOne Identity Data Management.
 ---
 
 ## Integration Architecture
