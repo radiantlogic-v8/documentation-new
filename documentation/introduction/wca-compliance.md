@@ -10,7 +10,7 @@ This document outlines compliance with the W3C standards for accessibility as it
 This guideline ensures there are text alternatives for any non-text content so that it can be changed into other forms that people might need, such as large print, braille, speech, symbols or simpler language.
 
 ### 1.1.1 Non-text Content – Level A
-RadiantOne provides symbol icons instead of text alternatives. An example is for indicating if the service is started. A green light indicates the service is available. A grey light indicates the service is not started.
+RadiantOne provides symbol icons instead of text alternatives. An example is for indicating if the service is started. A green light indicates the service is available. A red light indicates the service is not started.
 
 ![Lights Indicating Service Status](Media/service-lights.jpg)
  
