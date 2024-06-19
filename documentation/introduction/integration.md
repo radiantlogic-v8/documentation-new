@@ -1,6 +1,6 @@
 ---
-title: Introduction to the Architecture
-description: Learn about the components and capabilities that comprise the RadiantOne Identity Data Management architecture.
+title: Understanding the different layers that comprise RadiantOne Identity Data Management
+description: Learn about the three layers that comprise the RadiantOne Identity Data Management product.
 ---
 
 ## Integration Architecture
@@ -15,19 +15,20 @@ The application layer is the interface between applications and RadiantOne. Appl
 
 ### RadiantOne Identity Data Management
 
-The second layer of the logical architecture is the RadiantOne Identity Data Mangement product. This is the layer that transforms the existing data into the identity views that match the requests from the applications. Two of the most important aspects of this layer are the mapping/transformation capabilities and the flexibility of namespace design.
+The second layer of the logical architecture is the RadiantOne Identity Data Mangement product. This is the layer that transforms the existing data into the identity views that match the requests from the applications. Two of the most important aspects of this layer are the mapping/transformation capabilities and the flexibility of namespace design. This layer provides data handling services and facilitates the flow of data between the applications and the data sources.
 
-**Organization of the namespace**
+The organization of the namespace dictates:
 
-How identity views are created out of existing data silos.
+- How identity views are created out of existing data silos.
 
-How different identity views coming from the same or different data sources can be linked together to form a federated namespace.
+- How different identity views coming from the same or different data sources can be linked together to form a federated namespace.
 
-Common representation and first level of mapping existing data sources.
+The mapping and transformations configured in identity views dictates:
 
-How each data source is mapped into a common metadata representation.
+- Common representation and first level of mapping existing data sources.
 
-The layer provides data handling services and facilitates the flow of data between the application and the data sources.
+- How each data source is mapped into a common metadata representation.
+
 
 ### Data Sources Layer
 
