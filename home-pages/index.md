@@ -151,16 +151,16 @@ Harness your identity data with intelligent integration to drive better business
   > [Applying Patches](maintenance/applying-patches)  
   > Learn how to apply patches to an environment to update the version of RadiantOne Identity Data Management and Secure Data Connectors.
   
-  > [Performing Backups](maintenance/managing-environments/performing-backups)  
+  > [Performing Backups](maintenance/managing-environments#performing-backups)  
   > Learn how to backup environments. 
   
   > [Scaling Nodes](maintenance/scaling-nodes)  
   > Learn how to scale the number of nodes in an environment. 
 
-  > [Restarting Environments](maintenance/managing-environments/restarting-environments)  
+  > [Restarting Environments](maintenance/managing-environments#restarting-environments)  
   > Learn how to restart environments. 
      
-  > [Deleting Environments](maintenance/managing-environments/deleting-environments)  
+  > [Deleting Environments](maintenance/managing-environments#deleting-environments)  
   > Learn how to delete environments. 
 
 </section>
