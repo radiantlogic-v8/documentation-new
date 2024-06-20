@@ -42,7 +42,7 @@ Harness your identity data with intelligent integration to drive better business
 
 <section>
    
-  > [SaaS](installation/deployment-options/SaaS)  
+  > [SaaS](installation/deployment-options)  
   > Learn about how to install Identity Data Management in your SaaS tenant.
   
   > [Self-managed Deployment](installation/deployment-options/self-managed)  
