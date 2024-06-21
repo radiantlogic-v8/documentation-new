@@ -34,46 +34,6 @@ Select the environment where RadiantOne Identity Data Management is deployed and
 
 >[!warn] - Only SaaS deployments have access to Environment Operations Center. Self-managed deployments of RadiantOne do not.
 
-#### Secure Data Connectors
-
-The section describes managing data connectors and the secure data connector client.
-
-#### Manage the Secure Data Connector Client
-
-This guide outlines the steps to manage a secure data connector client, including updating, troubleshooting, and reviewing client logs.
-
-**Update the secure data connector client**
-
-Client updates can be applied by stopping the client or as a rolling update. The following sections outline how to apply updates to Windows, Linux, or Docker systems, as well as how to apply rolling updates to avoid an interruption in service.
-
-*Update on Windows or Linux*
-
-The client must be stopped before applying an update. To stop the client, select **Ctrl + C** in the terminal window running the client.
-
-To install the update, unzip the new client version in the same directory that contains the current client. Overwrite everything except for *appsettings.Production.json*, as this is the configuration file for the client.
-
-If the update is being installed on a Windows system, launch the *RaidantLogic.OnPremisesAgentClient.Agent.exe* file.
-
-If the update is being installed on a Linux system, run the following command:
-
-`dotnet run RadiantLogic.OnPremisesAgentClient.Agent.dll`
-
-*Update on Docker*
-
-To update a secure data connector client on Docker, stop the Docker image and then start it again with the latest tag. The client starts running again with the latest available version.
-
-**Rolling update**
-
-Installing a rolling update allows the client to continue running with no downtime during the update. To install a rolling update, create a new data connector in Environment Operations Center (see the [add a data connector](configure-sdc-client#adding-a-new-data-connector) guide) within the same group as the client you would like to update. 
-
-Copy the new token from the *Data Connector Registration* dialog in the data connector details section.
-
-![image description](Media/docker-token.png)
-
-Follow the steps outlined in the [deploy a secure data connector client](configure-sdc-client#deploy-the-secure-data-connector-client) guide for your system type to deploy the client as a fresh installation.
-
-Once the new client deployment is complete, delete the old client.
-
 ## Managing Log Levels
 
 There are different levels of logging available for the components. The options are: Off, Fatal, Error, Warn, Info, Debug, and Trace.
