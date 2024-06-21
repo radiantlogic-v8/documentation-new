@@ -11,4 +11,4 @@ description: Learn basic tuning aspects for Identity Data Management
   - [Optimize the Views](optimize-views.md)
   - [Persistent Cache](persistent-cache.md)
 - [Directory Stores](directory-stores.md)
-- [Logs](log-settings.md)
+- [Log Settings](log-settings.md)
