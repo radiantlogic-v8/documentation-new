@@ -124,7 +124,7 @@ On the Control Panel > Manage > Directory Browser you can see the entire directo
 ### Creating New Entries
 
 >[!warning] 
->The user you are logged into the Control Panel as must have rights to create users.
+>The user logged into the Control Panel must have rights to create users.
 
 To create new entries, right-click on the parent location in the tree above where you want the entry created and select New > Entry, inetOrgPerson, Active Directory User, OrganizationalUnit, Group, or Active Directory Group. The sections below describe these default options including the object classes that are used. If you want to create entries using different types of object classes than the ones mentioned here, then choose the New Entry option and select the desired object class from the *Available Object Classes* list. Only object classes available in the RadiantOne LDAP schema are shown here. If the desired object class is not shown, extend the RadiantOne LDAP schema first and then come back to this screen to add your entry. See [Managing the RadiantOne Schema](./managing-directory-schema) for steps on extending the RadiantOne LDAP schema.
 
