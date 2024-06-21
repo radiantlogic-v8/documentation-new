@@ -18,7 +18,7 @@ To switch to Classic Control Panel, use the menu options for the logged in user 
 
 The following parameters are configured from the Classic Control Panel > Settings Tab > Limits section > Global Limits sub-section.
 
-![Global Limits](Media/global-limits.jpg)
+![Global Limits](Media/global-limits-classic-cp.jpg)
 
  
 ### Maximum Connections
