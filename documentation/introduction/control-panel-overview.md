@@ -402,33 +402,22 @@ The setup section contains the Data Catalog where connections to identity source
 
 **Data Catalog**
 
-*Data Sources*
+*Data Sources* - Data Sources repesent connections to identity sources. For details see: [Managing Data Sources](/documentation/configuration/data-sources/data-sources)
 
-Data Sources repesent connections to identity sources. For details see: [Managing Data Sources](/documentation/configuration/data-sources/data-sources)
+*Schemas* - Schemas contain the metadata extracted from data sources. This metadata is used to create identity views. For details see: [Managing Schemas](/documentation/configuration/data-sources/schemas)
 
-*Schemas*
-
-Schemas contain the metadata extracted from data sources. This metadata is used to create identity views. For details see: [Managing Schemas](/documentation/configuration/data-sources/schemas)
-
-*Drivers and Templates*
-
-Drivers and templates are used to establish connections to identity sources. For details see: [Managing Drivers and Templates](/documentation/configuration/data-sources#managing-templates)
+*Drivers and Templates* - Drivers and templates are used to establish connections to identity sources. For details see: [Managing Drivers and Templates](/documentation/configuration/data-sources#managing-templates)
 
 **Directory Namespace**
 
 The RadiantOne namespace can be comprised of many different root naming contexts. Each one can represent a different type of backend configuration. This might be a RadiantOne Directory store, or an identity view created from a data source (LDAP, database, or custom).  The configuration of the namespace is managed in the Namespace Design section.  The LDAP schema for RadiantOne is configured in the Directory Schema section.
 
-*Namespace Design*
+*Namespace Design* - The RadiantOne namespace is managed from here. Create and manage RadiantOne Directory stores, identity views, and persistent cache from here. For details, see: [Managing Directory Stores](/documentation/configuration/directory-stores/managing-directory-stores) and [Managing Identity Views](/documentation/configuration/identity-views/intro-view-design).
 
-The RadiantOne namespace is managed from here. Create and manage RadiantOne Directory stores, identity views, and persistent cache from here. For details, see: [Managing Directory Stores](/documentation/configuration/directory-stores/managing-directory-stores) and [Managing Identity Views](/documentation/configuration/identity-views/intro-view-design).
+*Directory Schema* - The RadiantOne LDAP directory schema is managed from here. For details, see: [Managing Directory Schema](/documentation/configuration/directory-stores/managing-directory-schema).
 
-*Directory Schema*
+*Global Identity Builder* - The [Global Identity Builder](/documentation/configuration/global-identity-builder/concepts) is only access in the Classic Control Panel.
 
-The RadiantOne LDAP directory schema is managed from here. For details, see: [Managing Directory Schema](/documentation/configuration/directory-stores/managing-directory-schema).
-
-*Global Identity Builder*
-
-The [Global Identity Builder](/documentation/configuration/global-identity-builder/concepts) is only access in the Classic Control Panel.
 To switch to Classic Control Panel, use the menu options for the logged in user in the upper right.
 
 ![Classic Control Panel](Media/classic-cp.jpg)
@@ -449,41 +438,29 @@ Entries can be managed from the [Directory Browser](../configuration/directory-s
 
 **Security**  
 
-*Attribute Encryption*
+*Attribute Encryption* - [Manage Attribute Encryption](/documentation/configuration/security/attribute-encryption) from here.
 
-[Manage Attribute Encryption](/documentation/configuration/security/attribute-encryption) from here.
+*Password Policies* - [Manage Password Policies](/documentation/configuration/security/password-policies) from Classic Control Panel.
 
-*Password Policies* 
-
-[Manage Password Policies](/documentation/configuration/security/password-policies) from Classic Control Panel.
-
-*Access Controls* 
-
-[Manage Access Controls](/documentation/configuration/security/access-controls) from here.
+*Access Controls* - [Manage Access Controls](/documentation/configuration/security/access-controls) from here.
 
 ### Global settings
 
 The Global Settings section is where client access protocols (LDAP, SCIM, REST) are managed from. Client certificates for TLS communication are also managed here.  Token Validators, tuning limits and global attribute handling are also managed in this section.
 
-*Client Protocols*  
-
-Manage supported LDAP controls and user-to-DN mapping from the Control Panel > Global Settings > Client Protocols > [LDAP](/documentation/configuration/global-settings/client-protocols).
+*Client Protocols* - Manage supported LDAP controls and user-to-DN mapping from the Control Panel > Global Settings > Client Protocols > [LDAP](/documentation/configuration/global-settings/client-protocols).
 
 [Manage the SCIM interface](../web-services-api-guide/rest) from Classic Control Panel.
 
 [Manage the REST interface](../web-services-api-guide/rest) from Classic Control Panel.
 
-*Client Certificates*
+*Client Certificates* - Manage client certificates from the Control Panel > Global Settings > [Client Certificates](/documentation/configuration/global-settings/client-certificates).
 
-Manage client certificates from the Control Panel > Global Settings > [Client Certificates](/documentation/configuration/global-settings/client-certificates).
-
-*Token Validators* 
+*Token Validators* - 
 
 *Tuning* 
 
-*Attributes Handling*
-
-Manage attributes handling from Classic Control Panel > Settings > Server Front End > Attributes Handling
+*Attributes Handling* - Manage attributes handling from Classic Control Panel > Settings > Server Front End > Attributes Handling
 ![Attributes Handling Section](Media/Image3.45.jpg)
  
 <ins>Hide Operational Attributes</ins>
@@ -547,8 +524,7 @@ mail = hcarter@rli.com # harold@yahoo.com
 title = HR Admin # HR # HR MGR
 ```
 
-*Duplicates Handling*
-Manage duplicates handling from Classic Control Panel > Settings > Server Front End > Duplicates Handling.
+*Duplicates Handling* - Manage duplicates handling from Classic Control Panel > Settings > Server Front End > Duplicates Handling.
 
 <ins>Duplicate DN Removal</ins>
 
@@ -601,9 +577,9 @@ This is ideal for handling authentication requests (to ensure only one entry is 
 
 >[!warning] If your use case requires identity correlation to address user overlap, and a complete identity profile is needed for authorization, you should review the capabilities of the [Global Identity Builder](/documentation/configuration/global-identity-builder/introduction) as opposed to trying to use Duplicate Identity Removal.
 
-*Changelog*
+*Changelog* - The changelog is one of the recommended approaches for other processes to detect changes that have happened to RadiantOne entries. For details, please see: [Changelog](/documentation/tuning/log-settings#changelog)
 
-*Log Settings* 
+*Log Settings* - RadiantOne supports logging at different levels for different components. Logs for the different components are configured in the Classic Control Panel > Settings > Logs section. For details, please see: [Log Settings](/documentation/tuning/log-settings)
 
 ### Admin  
 
