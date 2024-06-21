@@ -37,7 +37,7 @@ These release notes contain the following sections:
 
 - Loading/refreshing on Directory Namespace > Namespace Design > *selected naming context* > Object Builder is sometimes slow.
 - Loading/refreshing on Data Catalog > Data Sources > *selected data source* > Schema is sometimes slow.
-- OIDC/SSO to the Control Panel isn't supported yet.
+- OIDC support for SSO into the Control Panel isn't supported yet.
 - Comparing differences between an extracted schema file and the current backend data source schemas in the Data Catalog isn't supported yet.
   
 For known issues reported after the release, please see the Radiant Logic Knowledge Base: 
