@@ -128,6 +128,7 @@ For specific hardware requirements of each, please see: [https://developer.radia
 -	[VSTS46751]; Fixed an issue where uploads in Global Sync were not working when the source of the pipeline was a persistent cached view. 
 -	[VSTS46759]: Fixed an issue in global sync that was causing apply events with EventType.SKIP to throw an unnecessary exception during the apply phase.
 -	[VSTS46776]: Fixed an issue that disabled vds_server.log logging when vdsconfig.logging was enabled and vdsconfig was called via ADAP requests.
+-	[VSTS46804]: Fixed errors during migrations for the logging configuration appenders related to losing connection to ZooKeeper.
 
 ## Known Issues/Important Notes
 
