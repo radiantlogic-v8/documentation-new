@@ -61,7 +61,7 @@ The unique token associated with a new data connector in Env Ops Center can only
 
 To resolve the error, return to Env Ops Center an create a new secure data connector and use the unique token to deploy the client.
 
-For details on creating a new data connector, see the [add a data connector](/../../eoc/latest/secure-data-connector/configure-sdc-client.md) guide. For details on deploying a secure data connector client, see the [deploy a secure data connector client](/../../eoc/latest/secure-data-connector/configure-sdc-client#deploy-the-secure-data-connector-client) guide.
+For details on creating a new data connector, see the [add a data connector](/../../eoc/latest/secure-data-connector/configure-sdc-client) guide. For details on deploying a secure data connector client, see the [deploy a secure data connector client](/../../eoc/latest/secure-data-connector/configure-sdc-client#deploy-the-secure-data-connector-client) guide.
 
 ##### Test connection error
 
