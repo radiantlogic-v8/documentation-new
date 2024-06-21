@@ -197,7 +197,7 @@ Values in the Duplicate Values column indicate the number of values that occur m
 
 Values in the Blank Values column indicate the number of blank (empty) values for the analyzed attribute. Before analysis, the value is trimmed (spaces deleted at the beginning and end of the value). The result for blank values in the analysis used in this section is 0, which means that no entries had blank values for the attributes analyzed.
 
-Below the pie chart, click the ![An image showing ](Media/down-arrow.jpg) button to the right of Distinct Values Biggest/Smallest Counts. 
+Below the pie chart, click the ![Down Arrow](Media/down-arrow.jpg) button to the right of Distinct Values Biggest/Smallest Counts. 
 
 ![Opening the Distinct Values Biggest/Smallest Counts Table](Media/Image2.14.jpg)
 
