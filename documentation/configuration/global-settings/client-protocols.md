@@ -349,6 +349,24 @@ Below is an example of a RadiantOne response to a “Who Am I” extended operat
 
 The RadiantOne Directory supports temporary entries using the dynamicObject auxiliary object class as specified in [RFC 2589](https://www.rfc-editor.org/rfc/rfc2589). These entries are associated with a time to live attribute and once expired, the entry is automatically removed from the directory. For details on creating entries using this extension, see: [Creating Dynamic Entries](/configuration/directory-stores/managing-directory-stores)
 
+### Authentication Methods
+
+**Simple LDAP Bind**
+<br>For accounts stored in a RadiantOne directory store, the following table lists the potential LDAP response codes returned during bind operations.
+
+Condition | Bind Response Error Code and Message
+-|-
+User Name and Password are Correct. Bind is successful.	 | Error code 0
+Valid User Name with Incorrect Password. Bind is unsuccessful. | Error code 49, Reason 52e - invalid credentials
+Invalid User Name/DN. Bind is unsuccessful. | Error code 49, Reason 525 – User not found
+Valid User Name with Expired Password. Bind is unsuccessful.| Error code 49, Reason 532 – Password expired. Password has expired. <br>Password Expired Response Control: 2.16.840.1.113730.3.4.4
+User Name and Password are Correct. Account is locked due to nsAccountLock attribute set to true. Bind is unsuccessful. |Error code 53, Reason 533 - Account disabled: Account inactivated. Contact system administrator to activate this account.
+Valid User Name with Incorrect Password. Account locked due to too many bind attempts with invalid password. Bind is unsuccessful. | Error code 19, Reason 775 – Account Locked: The password failure limit has been reached and the account is locked. Please retry later or contact the system administrator to reset the password.
+Valid User Name with no password. Bind might succeed; it depends on the “Bind Requires Password” setting. | If “Bind Requires Password” is enabled, error code 49, invalid credentials, is returned. If “Bind Requires Password” is not enabled, the user is authenticated as Anonymous.
+User Name and Password are Corrrect. Account is locked due to inactivity. Bind is unsuccessful.	| Error Code 50, Reason 775 – Account Locked. This account has been locked due to inactivity. Please contact the system administrator to reset the password.
+No User Name with no password. Bind is successful. | Error code 0. User is authenticated as Anonymous. <br>Even if “Bind Requires Password” is enabled, error code 0 is returned. User is authenticated as Anonymous.
+
+
 ## SCIMv2
 [RadiantOne SCIM API](../../web-services-api-guide/scim)
 
