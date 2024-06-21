@@ -207,7 +207,7 @@ The Distinct Values Biggest/Smallest Counts table displays.
 
 Review the Biggest Counts section (located below the Entry and Value statistics). This section lists the different values for the CITY attribute starting with the most-used value. A similar section named “Smallest Counts” lists the values for the attribute CITY starting with the least-used value.
 
-Below the Distinct Values Biggest/Smallest Counts section, click the  ![An image showing ](Media/Down-arrow.jpg) button to the right of Entries with the most values in `<attributename>` header. 
+Below the Distinct Values Biggest/Smallest Counts section, click the ![Down Arrow](Media/down-arrow.jpg) button to the right of Entries with the most values in `<attributename>` header. 
 
 >[!note]
 >This section displays for multi-value attributes only.
