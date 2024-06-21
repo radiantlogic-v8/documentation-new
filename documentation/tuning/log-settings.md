@@ -172,12 +172,12 @@ This is the number of milliseconds RadiantOne waits to receive a response from t
 
 This setting can be viewed and set through the RadiantOne REST API.  Use the get-property command to get the current value. Use the set-property command to update the value.
 
-To get the value:
+To get the value (update the hostname for your environment):
 ```
 https://rst-rlqa-usw2-env.dev01.radiantlogic.io/adap/util?action=vdsconfig&commandname=get-property&name=replicationReadTimeoutMS
 ```
 
-To set the value to 50ms:
+To set the value to 50ms (update the hostname for your environment):
 ```
 https://rst-rlqa-usw2-env.dev01.radiantlogic.io/adap/util?action=vdsconfig&commandname=set-property&name=replicationReadTimeoutMS&value=50
 ```
