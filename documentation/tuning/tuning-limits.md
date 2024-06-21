@@ -163,7 +163,7 @@ Connection pooling settings are managed in Classic Control Panel. To switch to C
 
 ![Classic Control Panel](Media/classic-cp.jpg)
 
-Once logged into Classic Control Panel, click the drop-down menu for the logged in user in the upper right and choose Export Mode.
+Once logged into Classic Control Panel, click the drop-down menu for the logged in user in the upper right and choose Expert Mode.
 
 Connection pooling for database and LDAP sources is enabled by default. The settings can be modified in the Classic Control Panel > Settings Tab > Server Backend section, Connection Pooling sub-section. 
 
