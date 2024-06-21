@@ -159,14 +159,17 @@ Tuning settings for backends includes connection pooling. For Active Directory b
 
 ### Connection Pooling Overview
 
->[!note] 
->This section is accessible only in [Expert Mode](01-introduction#expert-mode).
+Connection pooling settings are managed in Classic Control Panel. To switch to Classic Control Panel, use the menu options for the logged in user in the upper right.
 
-![Connection Pooling Settings](Media/Image3.61.jpg)
+![Classic Control Panel](Media/classic-cp.jpg)
 
-Connection pooling for database and LDAP sources is enabled by default. The settings can be modified in the Classic Control Panel > Settings Tab > Server Backend section, Connection Pooling sub-section. Connection pooling improves performance for identity views because a connection to the underlying source does not need to be created every time data needs to be retrieved.
+Once logged into Classic Control Panel, click the drop-down menu for the logged in user in the upper right and choose Export Mode.
 
-When RadiantOne receives a search for information (that is not stored locally, either in cache or a local Directory store), a connection to the underlying system is established. Since opening and closing a connection every time information must be retrieved from an underlying source can be time consuming, RadiantOne can pool the open connections and re-use them (thus saving the overhead involved in having to open/close a connection every time a backend needs to be accessed).
+Connection pooling for database and LDAP sources is enabled by default. The settings can be modified in the Classic Control Panel > Settings Tab > Server Backend section, Connection Pooling sub-section. 
+
+![Connection Pooling Settings](Media/conn-pooling-classic-cp.jpg)
+
+Connection pooling improves performance for identity views because a connection to the underlying source does not need to be created every time data needs to be retrieved. When RadiantOne receives a search for information (that is not stored locally, either in cache or a local Directory store), a connection to the underlying system is established. Since opening and closing a connection every time information must be retrieved from an underlying source can be time consuming, RadiantOne can pool the open connections and re-use them (thus saving the overhead involved in having to open/close a connection every time a backend needs to be accessed).
 
 The first time RadiantOne queries an underlying source, a connection is opened. When the operation is done, the open connection remains in the connection pool (for the specified timeout parameter that has been set). The next time RadiantOne receives a query for the same underlying source, an open connection is retrieved from the pool (instead of opening a new connection). If no connections are available in the pool, a new connection is opened. This process continues until the connection-poolsize parameter has been reached (the maximum number of open connections to keep in the pool). Once this happens (the max number of open connections has been reached and they are all in use), the client must wait until one of the used connections is finished before their query can be processed.
 
