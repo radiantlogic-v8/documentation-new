@@ -37,6 +37,10 @@ The Identity Data Analysis tool generates a report for each of your data sources
 
 The Identity Data Analysis tool is accessible from the Classic Control Panel > Wizards tab. 
 
+To switch to Classic Control Panel, use the menu options for the logged in user in the upper right.
+
+![Classic Control Panel](Media/classic-cp.jpg)
+
 >[!note]
 >Images displayed in this guide are meant to describe expected behavior of features in RadiantOne. Your results may vary from those shown in this guide as data sets are subject to change at any time.
 
