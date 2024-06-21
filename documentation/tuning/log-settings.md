@@ -8,7 +8,7 @@ description: Learn about log settings for the Identity Data Management service.
 
 RadiantOne supports logging at different levels for different components. Logs for the different components are configured in the Classic Control Panel > Settings > Logs section. RadiantOne access logs are configured in the Access Logs section and RadiantOne changelog is configured in the Changelog section. An introduction to these sections is below. 
 
-To switch to Classic Control Panel, use the menu options for the logged in user in the upper right.
+To switch to Classic Control Panel from the new Control Panel, use the menu options for the logged in user in the upper right.
 
 ![Classic Control Panel](Media/classic-cp.jpg)
 
