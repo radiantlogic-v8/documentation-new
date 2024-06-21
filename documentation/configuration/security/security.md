@@ -9,6 +9,7 @@ The RadiantOne platform offers a variety of methods to ensure a secure service t
 -  Access Controls
 -  Access Tokens
 -  Attribute Encryption
+-  SSL/TLS Communication to the RadiantOne Service.
 -  SSL/TLS Communication to backend Identity Data Sources
 -  Support for External OIDC Token Validators
 -  Password Policies
@@ -34,6 +35,14 @@ For RadiantOne Directory stores, a security key must be configured and the list 
 For LDIF file encryption, a security key must be configured and the LDIFZ file type must be selected when managing LDIF files for export or import.
 
 See [Managing Attribute Encryption](./attribute-encryption) for details.
+
+## SSL/TLS Communication to the RadiantOne Service
+
+You can enable the LDAPS endpoint in the Environment Operations Center.
+Expand your environment and click on the Identity Data Management application.
+In the Application Endpoints section, toggle on the LDAPS endpoint. This takes about 10 minutes to activate.
+
+![LDAPS Endpoint](Media/enable-ldaps-endpoint.jpg)
 
 
 ## Client Certificate Truststore
