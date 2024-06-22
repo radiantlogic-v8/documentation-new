@@ -677,5 +677,5 @@ For details on the different parameters for each type of backend, please see the
 
 -	[Database Backend Parameters and Settings](#Managing-Nodes-in-Model-driven-Identity-Views)
 
--	[RadiantOne Directory Parameters and Settings](../configuration/directory-stores/managing-properties)
+-	[RadiantOne Directory Parameters and Settings](../directory-stores/managing-properties)
 
