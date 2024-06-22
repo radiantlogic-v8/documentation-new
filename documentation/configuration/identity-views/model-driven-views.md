@@ -667,7 +667,7 @@ If your goal is to create an identity view which aggregates multiple types of ba
 5. Use the **+NEW LEVEL** menu to add labels. Add a label for each backend you want to mount.
 6. After all labels are defined, select the label and choose **MOUNT BACKEND**.
 7. Choose the type of backend to mount (e.g. RadiantOne Directory, LDAP, or Database) and click **SELECT**.
-8. Select the data source (if LDAP, or Database backends are used) and schema object (if Database backend is used) and click **MOUNT**.
+8. Select the data source (if LDAP, or Database backends are used) and schema object (if Database backend is used) and click **MOUNT**. Once a backend is mounted, the yellow folder icon (representing a label) is changed into the icon symbolizing the type of backend that is mounted there (e.g. purple triangle indicates a RadiantOne Directory). For details see [Icon Descriptions](./directory-namespace-overview).
 
 ![Naming Context for Aggregation](Media/aggregated-naming-context.jpg)
 
