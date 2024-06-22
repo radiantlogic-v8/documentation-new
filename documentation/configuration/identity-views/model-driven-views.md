@@ -653,3 +653,29 @@ To extend the primary object with new attributes that don't exist, choose the Ad
 When you configure joins across multiple objects, you should also consider configuring Bind Order and Attribute Priority for overlapping attributes.
 
 For complete details on configuring joins, bind order and attribute priority, please see: [Joins](joins.md) 
+
+
+
+## Creating a Root Naming Context that Aggregates Multiple Types of Identity Sources
+
+If your goal is to create an identity view which aggregates multiple types of backends (combination of directories, database, web services…etc.), you can use labels and mount each backend at the corresponding label.
+
+1. Navigate to Control Panel > Setup > Directory Namespace > Namespace Design.
+2. Click: ![New Naming Context](Media/new-naming-context.jpg)
+3. Select or enter the RDN name (e.g. o, ou, cn) and enter the value. This is the name that applications use to query data from the identity view that is mounted here.
+4. Click **CONFIRM**.
+5. Use the **+NEW LEVEL** menu to add labels. Add a label for each backend you want to mount.
+6. After all labels are defined, select the label and choose **MOUNT BACKEND**.
+7. Choose the type of backend to mount (e.g. RadiantOne Directory, LDAP, or Database) and click **SELECT**.
+8. Select the data source (if LDAP, or Database backends are used) and schema object (if Database backend is used) and click **MOUNT**.
+
+![Naming Context for Aggregation](Media/aggregated-naming-context.jpg)
+
+For details on the different parameters for each type of backend, please see the following sections:
+
+-	[LDAP Backend Parameters and Settings](#Managing-Nodes-in-Model-driven-Identity-Views)
+
+-	[Database Backend Parameters and Settings](#Managing-Nodes-in-Model-driven-Identity-Views)
+
+-	[RadiantOne Directory Parameters and Settings](../configuration/directory-stores/managing-properties)
+
