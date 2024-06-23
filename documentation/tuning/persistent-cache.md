@@ -18,7 +18,7 @@ Persistent cache is configured from the Root Naming Context where the identity v
 
 ## Options for Refreshing the Persistent Cache
 
-There are four categories of events that can invoke a persistent cache refresh. They are:
+There are three categories of events that can invoke a persistent cache refresh. They are:
 
 -	When changes occur through RadiantOne.
 
