@@ -66,6 +66,14 @@ During each refresh interval, the periodic persistent cache refresh is performed
 
 The periodic persistent cache refresh activity is logged into periodiccache.log. This file can be viewed and downloaded from Server Control Panel > Log Viewer. 
 
+To switch to Classic Control Panel, use the menu options for the logged in user in the upper right.
+
+![Classic Control Panel](Media/classic-cp.jpg)
+
+Once logged into the Classic Control Panel, click ![Server Control Panel](Media/server-cp.jpg) in the upper right.
+
+Go to the Log Viewer tab and select the log file from the drop-down list.
+
 The rebuild process can be very taxing on your backends, and each time a new image is built you are putting stress on the data sources. This type of cache refresh deployment works well when the data doesn’t change too frequently and the volume of data is relatively small.
 
 ## Configuring Persistent Cache with Real-Time Refresh
