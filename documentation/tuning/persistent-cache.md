@@ -180,7 +180,7 @@ If you’ve initialized the persistent cache before and the LDIF file was create
 
 After you choose to either generate or re-use an LDIF file, click **DONE** and cache initialization begins. Cache initialization is launched as a task and can be viewed from Manage > Tasks.
 
-After the persistent cache is initialized, queries are handled locally by the RadiantOne service and no longer be sent to the backend data source(s). For information about properties associated with persistent cache, please see [Persistent Cache Properties](./cache-connector-properties).
+After the persistent cache is initialized, queries are handled locally by the RadiantOne service and no longer be sent to the backend data source(s). For information about properties associated with persistent cache, please see [Persistent Cache Properties](#managing-cache-properties).
 
 ### Periodic Refresh CRON Expression
 
