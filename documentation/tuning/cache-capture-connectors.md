@@ -7,7 +7,7 @@ description: Learn how to configure capture connectors for detecting events in i
 
 The capture connector configuration dictates the process for detecting changes on the source objects. The type of data source determines which capture methods are available.
 
-This section focuses on configuring the connector type. For details on the behavior of and properties for database connectors (Timestamp, Counter, Changelog), LDAP connectors (changelog or persistent search), and Active Directory connectors (usnChanged or DirSync), please see the [Connector Properties Guide](./connector-properties).
+This section focuses on configuring the connector type. For details on the behavior of and properties for database connectors (Timestamp, Counter, Changelog), LDAP connectors (changelog or persistent search), and Active Directory connectors (usnChanged or DirSync), please see the [Connector Properties](./cache-connector-properties).
 
 Once you have determined the connector type you want to use, select the Capture section in the pipeline to display the configuration options.
 
