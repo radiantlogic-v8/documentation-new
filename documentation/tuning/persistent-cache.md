@@ -70,7 +70,9 @@ To switch to Classic Control Panel, use the menu options for the logged in user 
 
 ![Classic Control Panel](Media/classic-cp.jpg)
 
-Once logged into the Classic Control Panel, click ![Server Control Panel](Media/server-cp.jpg) in the upper right.
+Once logged into the Classic Control Panel, click the Server Control Panel link in the upper right.
+
+![Server Control Panel](Media/server-cp.jpg)
 
 Go to the Log Viewer tab and select the log file from the drop-down list.
 
