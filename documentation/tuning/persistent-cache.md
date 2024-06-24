@@ -15,7 +15,6 @@ Initialization of a persistent cache happens in two phases. The first phase is t
 Persistent cache is configured from the Root Naming Context where the identity view is mounted. If the Root Naming Context contains many sub-branches/containers, you can choose to cache some of them and not others. A summary of configured branches is shown on the CACHE tab for the selected naming context.
 
 
-
 ## Options for Refreshing the Persistent Cache
 
 There are three categories of events that can invoke a persistent cache refresh. They are:
@@ -54,67 +53,60 @@ This type of refresh is described as “Real-time” in the Control Panel > Setu
 
 In certain cases, if you know the data in the backends does not change frequently (e.g. once a day), you may not care about refreshing the persistent cache immediately when a change is detected in the underlying data source. In this case, a periodic refresh can be used.
 
-If you have built your view in either the Context Builder tab or Directory Namespace Tab, you can define the refresh interval after you’ve configured the persistent cache. The option to enable periodic refresh is on the Refresh Settings tab (on the right) for the selected persistent cache node. Once the periodic refresh is enabled, configure the interval using a CRON expression. Click the Assist button if you need help defining the CRON expression.
-
-![An image showing ](Media/Image2.6.jpg)
- 
-Figure 2.6: Periodic Cache Refresh Settings
-
 During each refresh interval, the periodic persistent cache refresh is performed based on the following high-level steps:
 
 1.	RadiantOne generates an LDIF formatted file from the virtual view (bypassing the cache).
 
 >[!warning] 
->If a backend data source is unreachable, RadiantOne attempts to re-connect one more time after waiting 5 seconds. The number of retries is dictated by the maxPeriodicRefreshRetryCount property defined in `/radiantone/<version>/<clusterName>/config/vds_server.conf` in ZooKeeper.
+>If a backend data source is unreachable, RadiantOne attempts to re-connect one more time after waiting 5 seconds. The number of retries is dictated by the *maxPeriodicRefreshRetryCount* property.
 
 2.	(Optional) If a [validation threshold](#add-validation-threshold) is defined, RadiantOne determines if the threshold defined has been exceeded. If it has, the persistent cache is not refreshed during this cycle.
 
 4.	RadiantOne compares the LDIF file generated in step 1 to the current cache image and applies changes to the cache immediately as it goes through the comparison.
 
-The periodic persistent cache refresh activity is logged into periodiccache.log. This file can be viewed and downloaded from Server Control Panel > Log Viewer. For details on this log, see the Logging and Troubleshooting Guide.
+The periodic persistent cache refresh activity is logged into periodiccache.log. This file can be viewed and downloaded from Server Control Panel > Log Viewer. 
 
 The rebuild process can be very taxing on your backends, and each time a new image is built you are putting stress on the data sources. This type of cache refresh deployment works well when the data doesn’t change too frequently and the volume of data is relatively small.
-## Configuring Real-time Refresh
 
 ## Configuring Persistent Cache with Real-Time Refresh
 
-If you plan on automatically refreshing the persistent cache as changes happen on the backend data sources, this would be the recommended cache configuration option. This type of caching option leverages the RadiantOne Universal Directory storage for the cache image. 
+If you plan on automatically refreshing the persistent cache as changes happen on the backend data sources, this would be the recommended cache configuration option. This type of caching option leverages the RadiantOne Directory for the cache image. 
 
 If you choose a real-time refresh strategy, there are two terms you need to become familiar with:
 
 - Cache Dependency – cache dependencies are all objects/views related to the view that is configured for persistent cache. A cache dependency is used by the cache refresh process to understand all the different objects/views that need to be updated based on changes to the backend sources.
 
-- Cache Refresh Topology – a cache refresh topology is a graphical representation of the flow of data needed to refresh the cache. The topology includes an object/icon that represents the source (the backend object where changes are detected from), the queue (the temporary storage of the message), and the cache destination. Cache refresh topologies can be seen from the Main Control Panel > PCache Monitoring tab.
+- Cache Refresh Topology – a cache refresh topology is a graphical representation of the flow of data needed to refresh the cache. The topology includes an object/icon that represents the source (the backend object where changes are detected from), the queue (the temporary storage of the message), and the cache destination. Cache refresh topologies can be seen from the Classic Control Panel > PCache Monitoring tab. To switch to Classic Control Panel, use the menu options for the logged in user in the upper right.
+
+![Classic Control Panel](Media/classic-cp.jpg)
+
 
 Cache dependencies and the refresh topology are generated automatically during the cache configuration process.
 
-If you have deployed multiple nodes in a cluster, to configure and initialize the persistent cache, you must be on the current RadiantOne leader node. To find out the leader status of the nodes, go to the Dashboard tab > Overview section in the Main Control Panel and locate the node with a yellow triangle icon. 
-
 To configure persistent cache with real-time refresh:
 
-1.	Go to the Directory Namespace Tab of the Main Control Panel associated with the current RadiantOne leader node.
+1.	Go to the Setup > Directory Namespace > Namespace Design.
 
-2.	Click the Cache node.
+2.	Select the root naming context that contains the identity view that requires cache.
 
-3.	On the right side, browse to the branch in the RadiantOne namespace that you would like to store in persistent cache and click **OK**.
+3.	On the right side, click the CACHE tab.
+4.	Click **+CREATE NEW CACHE**.
+5.	Browse to the branch in the RadiantOne namespace that you would like to store in persistent cache and click **CREATE**.
 
 >[!warning] 
 >For proxy views of LDAP backends, you must select the root level to start the cache from. Caching only a sub-container of a proxy view is not supported.
 
-4. Click Create Persistent Cache. The configuration process begins. Once it completes, click OK to exit the window.
+6. The configuration process begins. Once it completes, the manage cache refresh configuration displays.
 
-5. On the Refresh Settings tab, select the Real-time refresh option.
+7. On the Refresh Settings tab, select the Real-time refresh option. A table appears displaying the connectors related to the data sources that comprise the identity view.
 
 >[!warning] 
 >If your virtual view is joined with other virtual views you must cache the secondary views first. Otherwise, you are unable to configure the real-time refresh and will see the following message. A Diagnostic button is also shown and provides more details about which virtual views require caching.
 
-![An image showing ](Media/Image2.8.jpg)
- 	 
-Figure 2.8: Caching secondary views message
 
-6. Configure any needed connectors. Please see the section titled [Configuring Source Connectors](#configuring-source-connectors) for steps.
+8. Configure any needed connectors shown in the table. Please see the section titled [Configuring Source Connectors](#configuring-source-connectors) for steps.
 
-7. Click **Save**.
+9. Click **NEXT**.
 
 8. On the Refresh Settings tab, click Initialize to initialize the persistent cache.
 
