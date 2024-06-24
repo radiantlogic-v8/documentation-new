@@ -89,7 +89,7 @@ To configure persistent cache with real-time refresh:
 
 2.	Select the root naming context that contains the identity view that requires cache.
 
-3.	On the right side, click the CACHE tab.
+3.	On the right side, click the **CACHE** tab.
 4.	Click **+CREATE NEW CACHE**.
 5.	Browse to the branch in the RadiantOne namespace that you would like to store in persistent cache and click **CREATE**.
 
@@ -104,11 +104,11 @@ To configure persistent cache with real-time refresh:
 >If your virtual view is joined with other virtual views you must cache the secondary views first. Otherwise, you are unable to configure the real-time refresh and will see the following message. A Diagnostic button is also shown and provides more details about which virtual views require caching.
 
 
-8. Configure any needed connectors shown in the table. Please see the section titled [Configuring Source Connectors](#configuring-source-connectors) for steps.
+8. Configure any needed connectors shown in the table. See the section titled [Configuring Source Connectors](./cache-capture-connectors) for steps.
 
 9. Click **NEXT**.
 
-8. On the Refresh Settings tab, click Initialize to initialize the persistent cache.
+8. On the Initialize step, click **INITIALIZE** to initialize the persistent cache.
 
 There are two options for initializing a persistent cache. Each is described below.
 
@@ -120,37 +120,43 @@ If this is the first time you’ve initialized the persistent cache, choose this
 
 If you’ve initialized the persistent cache before and the LDIF file was created successfully from the backend source(s) (and the data from the backend(s) has not changed since the generation of the LDIF file), then you can choose this option to use that existing file. The persisting of the cache occurs in two phases. The first phase generates an LDIF file with the data returned from the queries to the underlying data source(s). The second phase imports the LDIF file into the local RadiantOne Universal Directory store. If there is a failure during the second phase, and you must re-initialize the persistent cache, you have the option to choose the LDIF file (that was already built during the first phase) instead of having to re-generate it (as long as the LDIF file generated successfully). You can click browse and navigate to the location of the LDIF. The LDIF files generated are in `<RLI_HOME>\<vds_server>\ldif\import`.
 
-If you have a large data set and generated multiple LDIF files for the purpose of initializing the persistent cache (each containing a subset of what you want to cache), name the files with a suffix of “_2”, “_3”…etc. For example, let’s say the initial LDIF file (containing the first subset of data you want to import) is named cacheinit.ldif. After this file has been imported, the process attempts to find cacheinit_2.ldif, then cacheinit_3.ldif…etc. Make sure all files are located in the same place so the initialization process can find them.
+9. Click **DONE**. The cache initialization process begins. The cache initialization is performed as a task and can be viewed and managed from the Manage > Tasks section. 
 
-9. Click **OK**. The cache initialization process begins. The cache initialization is performed as a task and can be viewed and managed from the Tasks Tab in the Server Control Panel associated with the RadiantOne leader node. Therefore, you do not need to wait for the initialization to finish before exiting the initialization window.
+10. Once the cache is initialized, click **NEXT** where you can manage properties.
 
-10. The view(s) is now in the persistent cache. Queries are handled locally by RadiantOne and are no longer sent to the backend data source(s). Real-time cache refresh has been configured. For information about properties associated with persistent cache, please see [Persistent Cache Properties](#persistent-cache-properties).
+The view(s) is now in the persistent cache. Queries are handled locally by RadiantOne and are no longer sent to the backend data source(s). Real-time cache refresh has been configured. For information about properties associated with persistent cache, please see [Persistent Cache Properties](./cache-connector-properties).
 
 
 ## Configuring Periodic Refresh
 
-Review the section on [periodically refreshing the cache](#periodic-refresh) to ensure the persistent cache is updated to match your needs. If you plan on refreshing the cache image periodically on a defined schedule, this would be the appropriate cache configuration option. This type of caching option leverages the internal RadiantOne Universal Directory storage for the cache image.
+Review the section on [periodically refreshing the cache](#periodic-refresh) to ensure the persistent cache is updated to match your needs. If you plan on refreshing the cache image periodically on a defined schedule, this would be the appropriate cache configuration option. 
 
-To configure persistent cache with Periodic refresh
-1.	On the Directory Namespace tab of the Main Control Panel, click the Cache node.
+To configure persistent cache with Periodic refresh:
 
-2.	On the right side, browse to the branch in the RadiantOne namespace that you would like to store in persistent cache and click **OK**.
+1.	Go to the Setup > Directory Namespace > Namespace Design.
 
-3.	Click **Create Persistent Cache**. The configuration process begins. Once it completes, click **OK** to exit the window.
+2.	Select the root naming context that contains the identity view that requires cache.
 
-4.	Click the **Refresh Settings** tab.
+3.	On the right side, click the **CACHE** tab.
+4.	Click **+CREATE NEW CACHE**.
+5.	Browse to the branch in the RadiantOne namespace that you would like to store in persistent cache and click **CREATE**.
 
-5.	Select the Periodic Refresh option.
+>[!warning] 
+>For proxy views of LDAP backends, you must select the root level to start the cache from. Caching only a sub-container of a proxy view is not supported.
 
-6.	Enter the [CRON expression](#periodic-refresh-cron-expression) to define the refresh interval.
+6. The configuration process begins. Once it completes, the manage cache refresh configuration displays.
+
+7. Select the *Periodic Refresh* option. 
+
+8.	Use the **FREEFORM** option to manually enter the CRON expression to define the refresh interval. Or, use the **ASSIST MODE** for help in generating the CRON expression.
 
 7.	(Optional) Define a [Delete Validation Threshold](#delete-validation-threshold).
 
 8.	(Optional) Define an [Add Validation Threshold](#add-validation-threshold).
 
-9.	Click **Save**.
+9.	Click **NEXT**.
 
-10.	Click **Initialize** to start the initialization process.
+10.	Click **INITIALIZE** to start the initialization process.
 
 There are two options for initializing the persistent cache: Creating a new LDIF file or initializing from an existing LDIF file. Each is described below.
 
@@ -160,19 +166,17 @@ If this is the first time you’ve initialized the persistent cache, then you sh
 
 *Initialize from an Existing LDIF File*
 
-If you’ve initialized the persistent cache before and the LDIF file was created successfully from the backend source(s) (and the data from the backend(s) has not changed since the generation of the LDIF file), then you can choose to use that existing file. The persisting of the cache occurs in two phases. The first phase generates an LDIF file with the data returned from the queries to the underlying data source(s). The second phase imports the LDIF file into the local RadiantOne Universal Directory store. If there is a failure during the second phase, and you must re-initialize the persistent cache, you have the option to choose the LDIF file (that was already built during the first phase) instead of having to re-generate it (as long as the LDIF file generated successfully). You can click browse and navigate to the location of the LDIF. The LDIF files generated are in <RLI_HOME>\<instance_name>\ldif\import.
+If you’ve initialized the persistent cache before and the LDIF file was created successfully from the backend source(s) (and the data from the backend(s) has not changed since the generation of the LDIF file), then you can choose to use that existing file. The persisting of the cache occurs in two phases. The first phase generates an LDIF file with the data returned from the queries to the underlying data source(s). The second phase imports the LDIF file into the local RadiantOne Directory. If there is a failure during the second phase, and you must re-initialize the persistent cache, you have the option to choose the LDIF file (that was already built during the first phase) instead of having to re-generate it (as long as the LDIF file generated successfully). You can click browse and select the LDIF file. 
 
-If you have a large data set and generated multiple LDIF files for the purpose of initializing the persistent cache (each containing a subset of what you want to cache), name the files with a suffix of “_2”, “_3”…etc. For example, let’s say the initial LDIF file (containing the first subset of data you want to import) is named cacheinit.ldif. After this file has been imported, the process attempts to find cacheinit_2.ldif, then cacheinit_3.ldif…etc. Make sure all files are located in the same place so the initialization process can find them.
+After you choose to either generate or re-use an LDIF file, click **DONE** and cache initialization begins. Cache initialization is launched as a task and can be viewed from Manage > Tasks.
 
-After you choose to either generate or re-use an LDIF file, click Finish and cache initialization begins. Cache initialization is launched as a task and can be viewed and managed from the Tasks Tab in the Server Control Panel associated with the RadiantOne leader node. Therefore, you do not need to wait for the initialization to finish before exiting the initialization window.
-
-After the persistent cache is initialized, queries are handled locally by the RadiantOne service and no longer be sent to the backend data source(s). For information about properties associated with persistent cache, please see [Persistent Cache Properties](#persistent-cache-properties).
+After the persistent cache is initialized, queries are handled locally by the RadiantOne service and no longer be sent to the backend data source(s). For information about properties associated with persistent cache, please see [Persistent Cache Properties](./cache-connector-properties).
 
 ### Periodic Refresh CRON Expression
 
 If periodic refresh is enabled, you must define the refresh interval in this property. For example, if you want the persistent cache refreshed every day at 12:00 PM, the CRON expression is: 
 0 0 12 1/1 * ? *
-Click **Assist** if you need help defining the CRON expression.
+Click **ASSIST MODE** if you need help defining the CRON expression.
 
 ![An image showing ](Media/Image2.7.jpg)
  
