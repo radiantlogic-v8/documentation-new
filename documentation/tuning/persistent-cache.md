@@ -334,7 +334,7 @@ Password is updated directly in the backend (outside of RadiantOne) | N/A | Thro
 -	Delegate on Failure – If this option is enabled and the user entry in cache has a password but the local checking fails, RadiantOne delegates the credentials checking to the backend. If the credentials checking fails against the backend, an unsuccessful bind response is returned to the client. If the credentials checking succeeds against the backend, a successful bind response is returned to the client.
 
 
-### Optimization
+### Optimizations
 
 **Optimize Linked Attributes**
 
@@ -372,20 +372,6 @@ It is assumed you have configured and initialized your persistent cache, and con
 >[!warning] 
 >If a persistent cache has optimizations associated with it, deactivating it will interfere with queries associated with the linked attributes and they will not return properly. If you no longer need a cache, delete it instead of deactivating it.
 
-### Persistent Cache Universally Unique Identifier (UUID)
-
-The Universally Unique Identifier (UUID) attribute is a reserved, internal attribute that is assigned to each entry and can guarantee uniqueness across space and time.
-
-When adding entries into a persistent cache (LDAP ADD operations) from an LDIF file, if there are UUID attributes they are ignored by RadiantOne during import. RadiantOne generates a unique value for each entry based on the specifications in RFC 4122. 
-
-When initializing with an LDIF file (LDIF INIT), if the entry has a UUID attribute, RadiantOne keeps it. If the entry does not have a UUID attribute, RadiantOne generates a unique value for each entry based on the specifications in RFC 4122.
-
-UUID is an operational attribute meaning that if a client wants this attribute, they must explicitly ask for it in the search request sent to RadiantOne.
-
-When exporting a persistent cache store to an LDIF file, you have the option to export the UUID attribute or not. The UUID attribute should be exported into LDIF if you plan on using this export to initialize a RadiantOne Directory store, a replica for inter-cluster replication. Otherwise, the UUID attribute generally should not be exported. To export a persistent cache store and include the UUID attributes, check the Export for Replication option in the export window.
-
-![Export UUID](Media/export-for-replication-cache.jpg)
-
 **Enable Changelog**
 
 When Optimize Linked Attributes is enabled, the Enable Changelog option is available. Check this option if you want the RadiantOne service to publish changes to the back link attribute into the cn=changelog. By default, the RadiantOne service doesn’t publish changes to operational back link attributes like isMemberOf into the cn=changelog.
@@ -405,14 +391,15 @@ If async indexing is not used, all objects containing either a forward link or b
 >[!note] 
 >For persistent cached branches, you should only consider enabling this option if client applications issue modification requests to the RadiantOne service for the cached branch. If the data is only modified directly on the backend, and this is the event that triggers the persistent cache refresh, async indexing is irrelevant and not used.
 
+### Attributes Handling
 
-### Non-indexed Attributes
+**Non-indexed Attributes**
 
 If possible, add attributes that must be modified frequently (e.g. pwdLastLogonTime) to the non-indexed attributes list to improve update performance. Attributes that don’t need to be used in searches are good candidates for the non-indexed attribute list. Limit the number of configured non-indexed attributes to further improve update performance.
 
 The userPassword, description and pwdLastLogonTime attributes are in the non-indexed list by default along with some other operational attributes.
 
-### Sorted Attributes
+**Sorted Attributes**
 
 This is a comma-separated list of attributes to be used in association with Virtual List Views (VLV) or sort control configured for RadiantOne. These sorted indexes are managed internally in the persistent cache and kept optimized for sorting. They are required if you need to sort the search result or to execute a VLV query on the persistent cache branch.
 
@@ -420,7 +407,7 @@ If you need to support VLV, the VLV/Sort control must be enabled in RadiantOne. 
 
 If you change the sorted attributes, you must re-build the index. You can do this from the Properties tab by clicking **Re-build Index**.
 
-### Encrypted Attributes
+**Encrypted Attributes**
 
 Attribute encryption protects sensitive data while it is stored in RadiantOne. You can specify that certain attributes of an entry are stored in an encrypted format. This prevents data from being readable while stored in persistent cache, backup files, and exported LDIF files. Attribute values are encrypted before they are stored in persistent cache, and decrypted before being returned to the client, as long as the client is authorized to read the attribute (based on ACLs defined in RadiantOne), is connected to the RadiantOne service via SSL, and not a member of the special group containing members not allowed to get these attributes (e.g. cn=ClearAttributesOnly,cn=globalgroups,cn=config). For details on this special group, please see the RadiantOne System Administration Guide.
 
@@ -430,7 +417,7 @@ Attribute encryption protects sensitive data while it is stored in RadiantOne. Y
 On the Properties Tab for the selected persistent cache, enter a comma-separated list of attributes to store encrypted in the Encrypted Attributes property. Attributes listed in the Encrypted Attributes property are added to the Non-indexed attribute list by default. This means these attributes are not searchable by default. Indexing encrypted attributes is generally not advised as the index itself is less secure than the attribute stored in the persistent cache. However, if you must be able to search on the encrypted attribute value, it must be indexed. Only “exact match/equality” index is supported for encrypted attributes. To make an encrypted attribute searchable, remove the attribute from the list of nonindexed attributes and then click **Re-build Index**.
 
 
-### Extension Attributes
+**Extension Attributes**
 
 Extension Attributes are new attributes (meaning these attributes don’t exist anywhere yet) that are associated with a cached virtual entry. This is primarily used to accommodate the storage of application-specific attributes that you want to store locally as opposed to the backend(s) you are virtualizing. Extension attributes should be used as an alternative to Extended Joins in scenarios where the virtual view is stored in persistent cache and then needs replicated out to RadiantOne Universal Directory stores in other clusters.
 
@@ -444,7 +431,7 @@ Extension Attributes are replicated to other clusters in deployment scenarios wh
 
 When using extension attributes for cached virtual views of LDAP directory backends, you must configure invariant attribute(s). See the following section for more details.
 
-### Invariant Attribute
+**Invariant Attributes**
 
 To guarantee extension attributes are linked to their respective underlying entries and moved properly should modRDN/modDN events occur in the backend source, invariant attribute(s) must be defined. The invariant attribute is the unique identifier in the backend directory. Below are some invariant attributes used in common LDAP directories.
 
@@ -462,7 +449,23 @@ For the example shown below, the persistent cached view is from an Active Direct
 
 ![An image showing ](Media/Image2.24.jpg)
 
-### Inter-cluster Replication
+### Other Persistent Cache Attributes
+
+**Persistent Cache Universally Unique Identifier (UUID)**
+
+The Universally Unique Identifier (UUID) attribute is a reserved, internal attribute that is assigned to each entry and can guarantee uniqueness across space and time.
+
+When adding entries into a persistent cache (LDAP ADD operations) from an LDIF file, if there are UUID attributes they are ignored by RadiantOne during import. RadiantOne generates a unique value for each entry based on the specifications in RFC 4122. 
+
+When initializing with an LDIF file (LDIF INIT), if the entry has a UUID attribute, RadiantOne keeps it. If the entry does not have a UUID attribute, RadiantOne generates a unique value for each entry based on the specifications in RFC 4122.
+
+UUID is an operational attribute meaning that if a client wants this attribute, they must explicitly ask for it in the search request sent to RadiantOne.
+
+When exporting a persistent cache store to an LDIF file, you have the option to export the UUID attribute or not. The UUID attribute should be exported into LDIF if you plan on using this export to initialize a RadiantOne Directory store, a replica for inter-cluster replication. Otherwise, the UUID attribute generally should not be exported. To export a persistent cache store and include the UUID attributes, check the Export for Replication option in the export window.
+
+![Export UUID](Media/export-for-replication-cache.jpg)
+
+### Replication
 
 This option should be enabled if you want to support replication between this persistent cache branch and a RadiantOne Directory store in a different cluster. 
 
