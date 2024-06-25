@@ -246,14 +246,25 @@ Once the security key has been defined, check the option to "Use .ldifz" (zipped
 ![Use LDIFZ](Media/use-ldifz.jpg)
 
 ### Enable/Disable
-Active
+
+**Disable**
+
+1. From the Control Panel > Setup > Directory Namespace > Namespace Design, select the root naming context that contains the cached branch.
+2. Select the **CACHE** tab.
+3. Click ... inline with the cache node and choose **Deactivate Cache**.
+
+**Enable**
+
+1. From the Control Panel > Setup > Directory Namespace > Namespace Design, select the root naming context that contains the cached branch.
+2. Select the **CACHE** tab.
+3. Click ... inline with the cache node and choose **Activate Cache**.
 
 ### Delete Cache
 
 1. From the Control Panel > Setup > Directory Namespace > Namespace Design, select the root naming context that contains the cached branch.
 2. Select the **CACHE** tab.
 3. Click ... inline with the cache node and choose Edit.
-4. In the Manage Properties section, click **Delete**.
+4. In the Manage Properties section, click **Delete Cache**.
 
 ![Delete Cache](Media/delete-cache.jpg)
 
