@@ -360,13 +360,14 @@ If the Target Base DN (back link attribute location) and the Source Base DN (for
 
 It is assumed you have configured and initialized your persistent cache, and configured the Linked Attributes in Special Attributes Handling. If you have not, please do so prior to continuing with the steps below.
 
-![An image showing ](Media/Image2.29.jpg)
+![Special Attributes Config](Media/special-attr-config.jpg)
 
-1. Select the Optimize Linked Attributes option on the Properties tab for the selected persistent cache branch on the Main Control Panel > Directory Namespace tab > Cache section. The defined linked attribute is added to the Extension Attributes List for the persistent cache.
+1. Expand the Optimization section and toggle on the option to *Optimize Linked Attributes*. The defined linked attribute is added to the Extension Attributes List for the persistent cache.
 
-2. Click **Save**. 
+2. Click **SAVE**. 
 
-3. You can either rebuild the index, or reinitialize the persistent cache. Click **Re-build Index** or **Initialize**. The back link attribute is always returned to clients even when not requested unless Hide Operational Attributes is enabled in RadiantOne (in which case it is only returned when a client explicitly requests it). For details on the Hide Operational Attributes setting, please see the RadiantOne System Administration Guide. 
+3. Either rebuild the index, or reinitialize the persistent cache. Click **Re-build Index** in the Manage Properties section, or **Re-initialize** from the 
+![Initialize/Reinitialize Section](Media/init-reinit-cache.jpg). The back link attribute is always returned to clients even when not requested unless Hide Operational Attributes is enabled in RadiantOne (in which case it is only returned when a client explicitly requests it). 
 
 >[!warning] 
 >If a persistent cache has optimizations associated with it, deactivating it will interfere with queries associated with the linked attributes and they will not return properly. If you no longer need a cache, delete it instead of deactivating it.
@@ -381,9 +382,9 @@ When initializing with an LDIF file (LDIF INIT), if the entry has a UUID attribu
 
 UUID is an operational attribute meaning that if a client wants this attribute, they must explicitly ask for it in the search request sent to RadiantOne.
 
-When exporting a persistent cache store to an LDIF file, you have the option to export the UUID attribute or not. The UUID attribute should be exported into LDIF if you plan on using this export to initialize a RadiantOne Universal Directory store, a replica for inter-cluster replication. Otherwise, the UUID attribute generally should not be exported. To export a persistent cache store and include the UUID attributes, check the Export for Replication option in the export window.
+When exporting a persistent cache store to an LDIF file, you have the option to export the UUID attribute or not. The UUID attribute should be exported into LDIF if you plan on using this export to initialize a RadiantOne Directory store, a replica for inter-cluster replication. Otherwise, the UUID attribute generally should not be exported. To export a persistent cache store and include the UUID attributes, check the Export for Replication option in the export window.
 
-![An image showing ](Media/Image2.30.jpg)
+![Export UUID](Media/export-for-replication-cache.jpg)
 
 **Enable Changelog**
 
