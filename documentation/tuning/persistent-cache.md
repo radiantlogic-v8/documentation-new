@@ -49,7 +49,7 @@ Persistent Cache Refresh Agents are started automatically once a persistent cach
 
 This type of refresh is described as “Real-time” in the Control Panel > Setup > Directory Namespace > Namespace Design. Select the Root Naming Context that contains the identity view/container to cache and click the CACHE tab.
 
-### Periodic Refresh
+**Periodic Refresh**
 
 In certain cases, if you know the data in the backends does not change frequently (e.g. once a day), you may not care about refreshing the persistent cache immediately when a change is detected in the underlying data source. In this case, a periodic refresh can be used.
 
@@ -78,7 +78,7 @@ Go to the Log Viewer tab and select the log file from the drop-down list.
 
 The rebuild process can be very taxing on your backends, and each time a new image is built you are putting stress on the data sources. This type of cache refresh deployment works well when the data doesn’t change too frequently and the volume of data is relatively small.
 
-## Real-Time Refresh
+**Real-Time Refresh**
 
 If you plan on automatically refreshing the persistent cache as changes happen on the backend data sources, this would be the recommended cache configuration option. This type of caching option leverages the RadiantOne Directory to store the cache image and change-capture connectors to detect events in the identity sources.
 
