@@ -486,7 +486,7 @@ In the Manage Properties section, expand the Replication section.
 
 This option should be enabled if you want to support replication between this persistent cache branch and a RadiantOne Directory store in a different cluster. 
 
-If inter-cluster replication is enabled, a replication journal is used to store changes that happen on the persistent cache branch. The replication journal is associated with the default LDAP data source defined as replicationjournal and root naming context named cn=replicationjournal. The RadiantOne leader node in the cluster associated with the persistent cache, publishes changes into the replication journal. The RadiantOne leader nodes in all other clusters (that are configured for inter-cluster replication) pick up changes from the replication journal to update their local replica. Persistent caches usually only publish changes into the replication journal (for other RadiantOne Universal Directory replicas in other clusters). There are some cases where persistent cache can accept changes from other clusters.
+If inter-cluster replication is enabled, a replication journal is used to store changes that happen on the persistent cache branch. The replication journal is associated with the default LDAP data source defined as replicationjournal and root naming context named cn=replicationjournal. The RadiantOne node in the cluster associated with the persistent cache, publishes changes into the replication journal. All other clusters (that are configured for inter-cluster replication) pick up changes from the replication journal to update their local replica. Persistent caches usually only publish changes into the replication journal (for other RadiantOne Directory replicas in other clusters). There are some cases where persistent cache can accept changes from other clusters.
 
 >[!warning] 
 >Changes that haven’t been picked up from the replicationjournal for 3 days are automatically purged.
@@ -494,16 +494,16 @@ If inter-cluster replication is enabled, a replication journal is used to store 
 
 **Replication Excluded Attributes**
 
-Before enabling replication, all replicas must have the same initial image: either an empty store or an initialized store based on the export of the Universal Directory store at the primary data center. When you export the store on the primary data center, you must have the option “Export for Replication” checked. If you want to use fractional replication, make sure you set the excluded attributes (that you don’t want replicated) in the “Replication Excluded Attributes” property. When you export the store from the primary data center, the LDIF file will not have the excluded attributes in it.
+Before enabling replication, all replicas must have the same initial image: either an empty store or an initialized store based on the export of the RadiantOne Directory store at the primary data center. When you export the store on the primary data center, you must have the option “Export for Replication” checked. If you want to use fractional replication, make sure you set the excluded attributes (that you don’t want replicated) in the “Replication Excluded Attributes” property. When you export the store from the primary data center, the LDIF file will not have the excluded attributes in it.
 
-If you want to exclude certain attributes from replication, enter a comma-separated list of attributes in “Replication Excluded Attributes” property. Then, you can click “Export” to generate an LDIF file (make sure you have “Export for Replication” enabled), that excludes these attributes. This LDIF file can be used to initialize replicas in other clusters.
+If you want to exclude certain attributes from replication, click *Edit* next to the “Replication Excluded Attributes” property and enter the list of attribute names. Then, you can click “Export” to generate an LDIF file (make sure you have “Export for Replication” enabled), that excludes these attributes. This LDIF file can be used to initialize replicas in other clusters.
 
 **Accept Changes from Replicas**
 
-For limited use cases where the only type of modify operations that client applications perform is updates to existing entries (no adds or deletes), the persistent cache can subscribe to these events. If the persistent cache should process attribute updates from RadiantOne Universal Directory replicas in other clusters, enable the Accept Changes from Replicas option and list the acceptable attributes in the Updateable Attributes from Replicas property.
+For limited use cases where the only type of modify operations that client applications perform is updates to existing entries (no adds or deletes), the persistent cache can subscribe to these events. If the persistent cache should process attribute updates from RadiantOne Directory replicas in other clusters, enable the *Accept Changes from Replicas* option and list the acceptable attributes in the Updateable Attributes from Replicas property.
 
 >[!warning] 
->Persistent Cache stores can only accept modification operations from RadiantOne Universal Directory replicas. Add and delete operations are currently not supported. Therefore, proper ACLs should be configured for the RadiantOne Universal Directory replicas to prevent the addition and deletion of entries.
+>Persistent Cache stores can only accept modification operations from RadiantOne Directory replicas. Add and delete operations are currently not supported. Therefore, proper ACLs should be configured for the RadiantOne Directory replicas to prevent the addition and deletion of entries.
 
 >[!warning] 
 >This is an advanced setting, consult with a Radiant Logic Solution Architect to get assistance on the needed architecture and usage.
