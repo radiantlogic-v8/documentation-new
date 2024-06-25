@@ -245,7 +245,7 @@ Once the security key has been defined, check the option to "Use .ldifz" (zipped
 
 ![Use LDIFZ](Media/use-ldifz.jpg)
 
-### Enable/Disable
+### Enable/Disable Cache
 
 **Disable**
 
