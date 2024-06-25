@@ -367,7 +367,7 @@ It is assumed you have configured and initialized your persistent cache, and con
 2. Click **SAVE**. 
 
 3. Either rebuild the index, or reinitialize the persistent cache. Click **Re-build Index** in the Manage Properties section, or **Re-initialize** from the 
-![Initialize/Reinitialize Section](Media/init-reinit-cache.jpg). The back link attribute is always returned to clients even when not requested unless Hide Operational Attributes is enabled in RadiantOne (in which case it is only returned when a client explicitly requests it). 
+![Initialize/Reinitialize Section](Media/init-reinit-cache.jpg) section. The back link attribute is always returned to clients even when not requested unless Hide Operational Attributes is enabled in RadiantOne (in which case it is only returned when a client explicitly requests it). 
 
 >[!warning] 
 >If a persistent cache has optimizations associated with it, deactivating it will interfere with queries associated with the linked attributes and they will not return properly. If you no longer need a cache, delete it instead of deactivating it.
