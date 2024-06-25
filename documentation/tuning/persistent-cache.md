@@ -440,7 +440,7 @@ Extension attributes are stored locally and RadiantOne handles the lifecycle of 
 
 ![Extension Attribute](Media/extension-attribute.jpg)
 
-For consistency of the RadiantOne LDAP schema, define the extension attributes as part of the schema, generally associated with an auxiliary object class. For details on extending the schema, see the RadiantOne System Administration Guide.
+For consistency of the RadiantOne LDAP schema, define the extension attributes as part of the schema, generally associated with an auxiliary object class. For details, see [Directory Schema](./configuration/directory-stores/managing-directory-schema)
 
 Extension Attributes are replicated to other clusters in deployment scenarios where inter-cluster replication is enabled and a replica of a persistent cache is maintained as a RadiantOne Universal Directory store in the target cluster(s).
 
