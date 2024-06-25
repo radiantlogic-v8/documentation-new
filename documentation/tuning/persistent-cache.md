@@ -334,7 +334,9 @@ Password is updated directly in the backend (outside of RadiantOne) | N/A | Thro
 -	Delegate on Failure – If this option is enabled and the user entry in cache has a password but the local checking fails, RadiantOne delegates the credentials checking to the backend. If the credentials checking fails against the backend, an unsuccessful bind response is returned to the client. If the credentials checking succeeds against the backend, a successful bind response is returned to the client.
 
 
-### Optimize Linked Attributes
+### Optimization
+
+**Optimize Linked Attributes**
 
 Linked attributes are attributes that allow relationships between objects. A typical example would be isMemberOf/uniqueMember for user/groups objects. A group has members (uniqueMember attribute) which is the forward link relationship. Those members have an isMemberOf attribute which is the back link (to the group entry) relationship. Other examples of linked attributes are:
 
@@ -349,7 +351,7 @@ publicDelegates/publicDelegatesBL
 owner/ownerBL
 ```
 
-The most common back link/forward link relationship is between group and user objects. A list of groups a user is a member of can be calculated automatically by RadiantOne and returned in the membership attribute of the user entry. The most common back link attributes are in the drop-down list. However, you can manually enter any attribute name you want. This is configured on the Main Control Panel, click Settings > Interception > Special Attributes Handling > Linked Attributes setting (on the right).
+The most common back link/forward link relationship is between group and user objects. A list of groups a user is a member of can be calculated automatically by RadiantOne and returned in the membership attribute of the user entry. The most common back link attributes are in the drop-down list. However, you can manually enter any attribute name you want. This is configured on the Control Panel > Setup > Directory Namespace > Namespace Design. Select the root naming context and click the **SPECIAL ATTRIBUTES** tab.
 
 If the Target Base DN (back link attribute location) and the Source Base DN (forward link attribute location) in the Linked Attributes setting is a persistent cached branch, the computation of the references can be optimized in order to return client requests for the back link attribute at high speed. To enable this optimization, follow the steps below.
 
@@ -359,8 +361,6 @@ If the Target Base DN (back link attribute location) and the Source Base DN (for
 It is assumed you have configured and initialized your persistent cache, and configured the Linked Attributes in Special Attributes Handling. If you have not, please do so prior to continuing with the steps below.
 
 ![An image showing ](Media/Image2.29.jpg)
-
-Figure 2.29: Back Link Attribute Name in Special Attribute Handling
 
 1. Select the Optimize Linked Attributes option on the Properties tab for the selected persistent cache branch on the Main Control Panel > Directory Namespace tab > Cache section. The defined linked attribute is added to the Extension Attributes List for the persistent cache.
 
