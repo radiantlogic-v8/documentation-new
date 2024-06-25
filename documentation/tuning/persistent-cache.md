@@ -137,13 +137,13 @@ If you’ve initialized the persistent cache before and the LDIF file was create
 The view(s) is now in the persistent cache. Queries are handled locally by RadiantOne and are no longer sent to the backend data source(s). Real-time cache refresh has been configured. For information about properties associated with persistent cache, please see [Persistent Cache Properties](#managing-cache-properties).
 
 
-## Configuring Periodic Refresh
+## Configuring Persistent Cache with Periodic Refresh
 
-Review the section on [periodically refreshing the cache](#periodic-refresh) to ensure the persistent cache is updated to match your needs. If you plan on refreshing the cache image periodically on a defined schedule, this would be the appropriate cache configuration option. 
+Review the section on [periodically refreshing the cache](#options-for-refreshing-the-persistent-cache) to ensure the persistent cache is updated to match your needs. If you plan on refreshing the cache image periodically on a defined schedule, this would be the appropriate cache configuration option. 
 
-To configure persistent cache with Periodic refresh:
+To configure persistent cache with periodic refresh:
 
-1.	Go to the Setup > Directory Namespace > Namespace Design.
+1.	From the Control Panel, go to Setup > Directory Namespace > Namespace Design.
 
 2.	Select the root naming context that contains the identity view that requires cache.
 
@@ -172,7 +172,7 @@ There are two options for initializing the persistent cache: Creating a new LDIF
 
 *Create an LDIF from a Snapshot*
 
-If this is the first time you’ve initialized the persistent cache, then you should choose this option. An LDIF formatted file is generated from the virtual view and then imported into the local RadiantOne Universal Directory store.
+If this is the first time you’ve initialized the persistent cache, then you should choose this option. An LDIF formatted file is generated from the virtual view and then imported into the local RadiantOne Directory store.
 
 *Initialize from an Existing LDIF File*
 
@@ -194,7 +194,7 @@ Click **ASSIST MODE** if you need help defining the CRON expression.
 
 ### Delete Validation Threshold
 
-For details on how the periodic persistent cache refresh process works, see [Periodic Refresh](#periodic-refresh).
+For details on how the periodic persistent cache refresh process works, see [Periodic Refresh](#options-for-refreshing-the-persistent-cache).
 
 You can define a threshold to validate the generated LDIF file/image prior to RadiantOne executing the cache refresh process. The threshold is a percentage of the total entries.
 
@@ -204,7 +204,7 @@ If a validation threshold is configured, the threshold is checked.
 
 ### Add Validation Threshold
 
-For details on how the periodic persistent cache refresh process works, see [Periodic Refresh](#periodic-refresh).
+For details on how the periodic persistent cache refresh process works, see [Periodic Refresh](#options-for-refreshing-the-persistent-cache).
 
 You can define a threshold to validate the generated LDIF file/image prior to RadiantOne executing the cache refresh process. The threshold is a percentage of the total entries.
 
@@ -221,19 +221,17 @@ When initializing persistent cache, two settings you should take into considerat
 
 ### Using Paging
 
-Depending on the complexity of the virtual view, building the persistent cache image can take some time. Since the internal connections used by RadiantOne to build the persistent cache image are subject to the Idle Connection Timeout server setting, the cache initialization process might fail due to the connection being automatically closed by the server. To avoid cache initialization problems, it is recommended to use paging for internal connections. To use paging:
+Depending on the complexity of the identity view, building the persistent cache image can take some time. Since the internal connections used by RadiantOne to build the persistent cache image are subject to the Idle Connection Timeout server setting, the cache initialization process might fail due to the connection being automatically closed by the server. To avoid cache initialization problems, it is recommended to use paging for internal connections. The Paged Results Control is enabled by default.
 
-1.	Navigate to the Main Control Panel > Settings tab > Server Front End > Supported Controls.
+To use paging:
 
-2.	On the right, check the option to Enable Paged Results.
+1.	Open the Classic Control Panel.
+2.	In the logged in as user menu (upper right), select Expert Mode.
+3.	Navigate to > Settings tab > Server Backend > Internal Connections.
+4.	On the right, check the option for Paged Results Control, page size: 1000.
+5.	Click **SAVE**.
 
-3.	Click **Save**.
-
-4.	Navigate to the Main Control Panel > Settings tab > Server Backend > Internal Connections (requires [Expert Mode](00-preface#expert-mode)).
-
-5.	On the right, check the option for Paged Results Control, page size: 1000.
-
-6.	Click **Save**.
+![Enabling Paged Results Control](Media/internal-paged-results.jpg)
 
 ### Supporting Zipped and Encrypted LDIF Files
 
@@ -241,22 +239,50 @@ If you are initializing persistent cache using an existing LDIFZ file, the secur
 
 If you are creating a new LDIF file to initialize the persistent cache, you have the option to use an LDIFZ file which is a zipped and encrypted file format. This ensures that the data to be cached is not stored in clear in files required for the initialization process.
 
-To use this option, you must have an LDIFZ encryption key configured. The security key is defined from the Main Control Panel > Settings Tab > Security > Attribute Encryption section.
+To use this option, you must have an LDIFZ encryption key configured. The security key is defined from the Control Panel > Manage > Security > Attribute Encryption.
 
-Once the security key has been defined, check the option to “Use .ldifz (zipped and secure format).
+Once the security key has been defined, check the option to "Use .ldifz" (zipped and secure format).
 
-![An image showing ](Media/Image2.4.jpg)
+![Use LDIFZ](Media/use-ldifz.jpg)
 
 ### Enable/Disable
 Active
 
 ### Delete Cache
 
+1. From the Control Panel > Setup > Directory Namespace > Namespace Design, select the root naming context that contains the cached branch.
+2. Select the **CACHE** tab.
+3. Click ... inline with the cache node and choose Edit.
+4. In the Manage Properties section, click **Delete**.
+
+![Delete Cache](Media/delete-cache.jpg)
+
 ### Rebuild Index
+
+1. From the Control Panel > Setup > Directory Namespace > Namespace Design, select the root naming context that contains the cached branch.
+2. Select the **CACHE** tab.
+3. Click ... inline with the cache node and choose Edit.
+4. In the Manage Properties section, click **Rebuild Index**.
+
+![Rebuild Index](Media/rebuild-index-cache.jpg)
 
 ### Export
 
+1. From the Control Panel > Setup > Directory Namespace > Namespace Design, select the root naming context that contains the cached branch.
+2. Select the **CACHE** tab.
+3. Click ... inline with the cache node and choose Edit.
+4. In the Manage Properties section, click **Export**.
+
+![Export Cache](Media/export-cache.jpg)
+
 ## Managing Cache Properties
+
+1. From the Control Panel > Setup > Directory Namespace > Namespace Design, select the root naming context that contains the cached branch.
+2. Select the **CACHE** tab.
+3. Click ... inline with the cache node and choose Edit.
+4. Click the Manage Properties section. This section is activated after the cache refresh type has been selected and the cache has been intialized.
+
+![Cache Properties](Media/cache-properties.jpg)
 
 ### Full-text Search
 
@@ -266,19 +292,19 @@ Clients issue full text searches similar to the way they issue LDAP searches. Th
 
 The part of the filter that contains the piece related to the full text search can also be combined with other “standard” LDAP operators. As an example, a filter could be something like (&(uid=sjones)(fulltext=”John Doe”)). This would return entries that contain a uid attribute with the value sjones AND any other attribute that contains the exact character string John Doe.
 
-If you want the persistent cache to support full text searches, check the Full-Text Search option and click **Save**. If you add the support for full text searches, click **Re-build Index**.
+If you want the persistent cache to support full text searches, toggle the Full-Text Search option on and click **SAVE**. If you add the support for full text searches, click **Rebuild Index**.
 
 ### Authentication
 
+In the Manage Properties section, expand the *Authentication* section.
+
 **Use Cache for Authentication**
 
-The default behavior of the RadiantOne service for processing bind requests for users located in a persistent cache branch is to delegate the credentials checking to the authoritative backend source. If the password in the backend is encrypted using one of the algorithms supported by RadiantOne, and the passwords are stored in the cache, you can configure the service to authenticate the user locally against the password in cache instead of delegating the credentials checking to the backend. To enable this behavior, check the Use Cache for Authentication option on the configured cache branch. This option is not applicable in scenarios where the passwords are not stored in the persistent cache. For an example use case where this option could be applicable, please see [Authoritative Backends Inaccessible by All Sites](07-deployment-architecture#backends-inaccessible-by-all-sites).
+The default behavior of the RadiantOne service for processing bind requests for users located in a persistent cache branch is to delegate the credentials checking to the authoritative backend source. If the password in the backend is encrypted using one of the algorithms supported by RadiantOne, and the passwords are stored in the cache, you can configure the service to authenticate the user locally against the password in cache instead of delegating the credentials checking to the backend. To enable this behavior, toggle the *Use Cache for Authentication* option on. This option is not applicable in scenarios where the passwords are not stored in the persistent cache.
 
-By default, if the Use Cache for Authentication option is enabled and the entry in persistent cache has a password, RadiantOne checks the password against the local value and the user is authenticated or not based on this comparison. If the entry in persistent cache doesn’t have a password, RadiantOne delegates the credentials checking to the backend data source. There are two options to override this default behavior: Local Bind Only or Delegate on Failure. 
+By default, if the *Use Cache for Authentication* option is enabled and the entry in persistent cache has a password, RadiantOne checks the password against the local value and the user is authenticated or not based on this comparison. If the entry in persistent cache doesn’t have a password, RadiantOne delegates the credentials checking to the backend data source. There are two options to override this default behavior: Local Bind Only or Delegate on Failure. 
 
-![An image showing ](Media/Image2.25.jpg)
-
-Figure 2.25: Authentication Options
+![Cache Authentication](Media/cache-authentication.jpg)
 
 Each option is described in more details below.
 
@@ -286,15 +312,13 @@ Each option is described in more details below.
 
 -	Local Bind Only – If this option is enabled and the user entry in cache either has no password or the bind fails, RadiantOne does not delegate the credentials checking to the backend. It determines if the user authentication fails based on the local comparison.
 
-**Delegate on Failure**
+If *Local Bind Only* is selected, there are two additional configuration options shown: Enable Password Policy Enforcement and Password Writeback.
 
--	Delegate on Failure – If this option is enabled and the user entry in cache has a password but the local checking fails, RadiantOne delegates the credentials checking to the backend. If the credentials checking fails against the backend, an unsuccessful bind response is returned to the client. If the credentials checking succeeds against the backend, a successful bind response is returned to the client.
+*Enable Password Policy Enforcement*
 
-**Enable Password Policy Enforcement**
+-	Enable Password Policy Enforcement - If you are storing user passwords in cache and you are using the cache for authentication, you can also choose to have RadiantOne enforce password policies (as opposed to delegating password checking to the backend directory and having it enforce password policies). Enable this option and then define the password policy to enforce in Classic Control Panel > Settings > Security > Password Policies. 
 
--	Enable Password Policy Enforcement - If you are storing user passwords in cache and you are using the cache for authentication, you can also choose to have RadiantOne enforce password policies (as opposed to delegating password checking to the backend directory and having it enforce password policies). Enable this option and then define the password policy to enforce. For details on password policies, see the RadiantOne System Administration Guide. 
-
-**Password Writeback**
+*Password Writeback*
 
 -	When you enable the password policy enforcement on a persistent cache, the userPassword attribute is automatically added to the Extension Attribute property and you have the option to enable Password Write Back. If Password Write Back is enabled, and a modify request for the password is sent to RadiantOne, it tries to update the password in the backend. In some circumstances, having two levels of password policies can result in inconsistencies between the cache image and the underlying backend(s). These circumstances are outlined in the table below.
 
@@ -303,6 +327,12 @@ Password Change Event | Password Writeback Enabled?	| Expected Behavior
 Password update via a Modify Request sent to RadiantOne	| No | The password is updated in the persistent cache if it complies with the persistent cache password policy. Otherwise the password update fails. <br> <br> The password update is not sent to the backend. If the update to the persistent cache succeeds, the password in the persistent cache will be different than the one in the backend.
 Password update via a Modify Request sent to RadiantOne	| Yes | The password update is sent to the backend. If the password update fails in the backend, the password in the persistent cache is not updated. If the password update succeeds in the backend, the password is updated in the persistent cache. 
 Password is updated directly in the backend (outside of RadiantOne) | N/A | Through the persistent cache refresh process, the password is updated in the persistent cache. If the account was locked in the persistent cache due to a password policy enforced at the cache layer, it will be unlocked by the cache refresh process after a successful password update in the backend. Password strength defined in the persistent cache password policy is not enforced since the password change originated from the backend.
+
+
+**Delegate on Failure**
+
+-	Delegate on Failure – If this option is enabled and the user entry in cache has a password but the local checking fails, RadiantOne delegates the credentials checking to the backend. If the credentials checking fails against the backend, an unsuccessful bind response is returned to the client. If the credentials checking succeeds against the backend, a successful bind response is returned to the client.
+
 
 ### Optimize Linked Attributes
 
