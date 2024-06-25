@@ -440,9 +440,9 @@ Extension attributes are stored locally and RadiantOne handles the lifecycle of 
 
 ![Extension Attribute](Media/extension-attribute.jpg)
 
-For consistency of the RadiantOne LDAP schema, define the extension attributes as part of the schema, generally associated with an auxiliary object class. For details, see [Directory Schema](../configuration/directory-stores/managing-directory-schema)
+For consistency of the RadiantOne LDAP schema, define the extension attributes as part of the schema, generally associated with an auxiliary object class. For details, see: [Directory Schema](../configuration/directory-stores/managing-directory-schema)
 
-Extension Attributes are replicated to other clusters in deployment scenarios where inter-cluster replication is enabled and a replica of a persistent cache is maintained as a RadiantOne Universal Directory store in the target cluster(s).
+Extension Attributes are replicated to other clusters in deployment scenarios where inter-cluster replication is enabled and a replica of a persistent cache is maintained as a RadiantOne Directory store in the target cluster(s).
 
 When using extension attributes for cached virtual views of LDAP directory backends, you must configure invariant attribute(s). See the following section for more details.
 
@@ -462,7 +462,7 @@ To guarantee extension attributes are linked to their respective underlying entr
 
 For the example shown below, the persistent cached view is from an Active Directory backend. RadiantOne manages the lifecycle of the attribute named lastLogin and this attribute is stored directly in the cache. The invariant attribute is set to objectGUID which is the unique identifier for the users in the backend Active Directory. If the entry in the backend is moved, the invariant attribute ensures RadiantOne handles the move of the associated cached extension attributes properly.
 
-![An image showing ](Media/Image2.24.jpg)
+![Invariant Attribute](Media/invariant-attribute.jpg)
 
 ### Other Persistent Cache Attributes
 
