@@ -446,9 +446,9 @@ Extension Attributes are replicated to other clusters in deployment scenarios wh
 
 When using extension attributes for cached virtual views of LDAP directory backends, you must configure invariant attribute(s). See the following section for more details.
 
-**Invariant Attributes**
+**Invariant Attribute**
 
-To guarantee extension attributes are linked to their respective underlying entries and moved properly should modRDN/modDN events occur in the backend source, invariant attribute(s) must be defined. The invariant attribute is the unique identifier in the backend directory. Below are some invariant attributes used in common LDAP directories.
+To guarantee extension attributes are linked to their respective underlying entries and moved properly should modRDN/modDN events occur in the backend source, an invariant attribute must be defined. The invariant attribute is the unique identifier in the backend directory. Below are some invariant attributes used in common LDAP directories.
 
 -	objectGUID (Active Directory)
 
