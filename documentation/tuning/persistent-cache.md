@@ -347,6 +347,8 @@ Password is updated directly in the backend (outside of RadiantOne) | N/A | Thro
 
 ### Optimizations
 
+In the Manage Properties section, expand the Optimizations section.
+
 **Optimize Linked Attributes**
 
 Linked attributes are attributes that allow relationships between objects. A typical example would be isMemberOf/uniqueMember for user/groups objects. A group has members (uniqueMember attribute) which is the forward link relationship. Those members have an isMemberOf attribute which is the back link (to the group entry) relationship. Other examples of linked attributes are:
@@ -403,6 +405,8 @@ If async indexing is not used, all objects containing either a forward link or b
 >For persistent cached branches, you should only consider enabling this option if client applications issue modification requests to the RadiantOne service for the cached branch. If the data is only modified directly on the backend, and this is the event that triggers the persistent cache refresh, async indexing is irrelevant and not used.
 
 ### Attributes Handling
+
+In the Manage Properties section, expand the Attributes Handling section.
 
 **Non-indexed Attributes**
 
@@ -477,6 +481,8 @@ When exporting a persistent cache store to an LDIF file, you have the option to 
 ![Export UUID](Media/export-for-replication-cache.jpg)
 
 ### Replication
+
+In the Manage Properties section, expand the Replication section.
 
 This option should be enabled if you want to support replication between this persistent cache branch and a RadiantOne Directory store in a different cluster. 
 
