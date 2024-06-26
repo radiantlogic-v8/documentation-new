@@ -62,7 +62,7 @@ description: Configuring RadiantOne Identity Data Management
 - [Global Settings](#)
   - [Global Interception Scripts](global-settings/global-interception.md)
   - [Client Protocols](global-settings/client-protocols.md)
-  - [Client Certificates](global-settings/client-protocols.md)
+  - [Client Certificates](../security/client-cert-truststore.md)
   - [Tasks](global-settings/tasks.md)
 - [Security](#)
   - [Access Controls](security/access-controls.md)
