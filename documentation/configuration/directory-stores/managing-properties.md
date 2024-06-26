@@ -41,8 +41,7 @@ This option is to improve the performance of initializing the local store when p
 This property lists the attributes that should be indexed. Attributes in this list support client search filters that use presence, equality, approximate, substring, matching rule, and browsing indexes. By default, all attributes are indexed (except for binary attributes and a few “internal” attributes defined in the Non Indexed Attributes property). If the Indexed Attributes setting is empty, this means all attributes are indexed. If you do not want all attributes indexed, define a list of attributes to index in this setting by entering the attribute name and pressing the "Enter" key on your keyboard after each. If you indicate a list of attributes and later add attributes to index, you must remember to re-build the index. To do so, select the naming context on Control Panel > Setup > Directory Namespace > Namespace Design and on the Properties tab on the right side, click **RE-BUILD INDEX**. 
 
 >[!note] 
->Although the underlying Lucene engine enforces a size limit of 32K characters for indexed attributes, we generally advise not indexing attributes containing more than 4K characters. To ignore these attributes, add them to the Non-indexed Attributes list and Re-build the Index (click Re-build Index).
-**Using OR conditions in filters containing non-indexed attributes is strongly discouraged since it requires a full scan and all entries fetched from disk.**
+>Although the underlying Lucene engine enforces a size limit of 32K characters for indexed attributes, we generally advise not indexing attributes containing more than 4K characters. To ignore these attributes, add them to the Non-indexed Attributes list and Re-build the Index (click Re-build Index). Using OR conditions in filters containing non-indexed attributes is strongly discouraged since it requires a full scan and all entries fetched from disk.
 
 ## Non Indexed Attributes
 
