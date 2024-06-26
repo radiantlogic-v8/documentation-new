@@ -16,7 +16,7 @@ The following system specifications are required to deploy the secure data conne
 
 System requirements:
 
-- ASP.NET core runtime must be installed on the machine or SDK (version 8 and above). The runtime is available on the [Microsoft .NET](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) page.
+- NET runtime must be installed on the machine or SDK (version 8 and above). The runtime is available on the [Microsoft .NET](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) page.
 - CPU: x-64 processor
 - Processor: 1 GHz
 - RAM 512 MB
