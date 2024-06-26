@@ -5,8 +5,6 @@ description: Learn about the deployment options for RadiantOne Identity Data Man
 
 ## Overview
 
-### Subscription Options
-
 The two forms of subscriptions available for RadiantOne Identity Data Management are: SaaS and Self-managed.
 For SaaS deployments, Radiant Logic own and manages the infrastructure where the Identity Data Management product is deployed. 
 Whereas for self-managed deployments, the customer owns and manages the infrastructure.
@@ -42,5 +40,5 @@ For SaaS deployments, RadiantOne Identity Data Management is installed by creati
 
 ## Self-managed
 
-For self-managed deployments, have your Kuberenetes cluster configured and then deploy RadiantOne Identity Data Management using Helm.
+For self-managed deployments, have your Kuberenetes cluster configured and then deploy RadiantOne Identity Data Management using Helm. Helm charts will be available in July 2024.
 
