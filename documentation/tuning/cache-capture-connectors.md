@@ -12,8 +12,8 @@ This section focuses on configuring the connector type. For details on the behav
 ## Database (JDBC-accessible) Connectors
 For database backends (JDBC-accessible), the connector change detection options are:
 
-- [Changelog](#db-changelog) – This connector type relies on a database table that contains all changes that have occurred on the base tables (that the RadiantOne identity view is built from). This typically involves having triggers on the base tables that write into the log/changelog table. However, an external process may be used instead of triggers. The connector picks up changes from the changelog table. If you need assistance with configuring triggers on the base tables and defining the changelog table, see [Create scripts to generate triggers and changelog table](#create-scripts-to-generate-triggers-and-changelog-table).
-- [Timestamp](#db-timestamp) – This connector type has been validated against Oracle, SQL Server, MySQL, MariaDB, PostgreSQL, and Apache Derby. The database table must have a primary key defined for it and an indexed column that contains a timestamp/date value. This value must be maintained and modified accordingly for each record that is updated. 
+- [Changelog](#database-changelog-connector) – This connector type relies on a database table that contains all changes that have occurred on the base tables (that the RadiantOne identity view is built from). This typically involves having triggers on the base tables that write into the log/changelog table. However, an external process may be used instead of triggers. The connector picks up changes from the changelog table. If you need assistance with configuring triggers on the base tables and defining the changelog table, see [Create scripts to generate triggers and changelog table](#create-scripts-to-generate-triggers-and-changelog-table).
+- [Timestamp](#database-timestamp-connector) – This connector type has been validated against Oracle, SQL Server, MySQL, MariaDB, PostgreSQL, and Apache Derby. The database table must have a primary key defined for it and an indexed column that contains a timestamp/date value. This value must be maintained and modified accordingly for each record that is updated. 
     
   For Oracle databases, the timestamp column type must be one of the following: `TIMESTAMP`, `DATE`, `TIMESTAMP WITH TIME ZONE`, `TIMESTAMP WITH LOCAL TIME ZONE1. 
     
@@ -26,7 +26,7 @@ For database backends (JDBC-accessible), the connector change detection options 
   For Derby databases, the timestamp column type must be: `TIMESTAMP`  
     
   The DB Timestamp connector leverages the timestamp column to determine which records have changed since the last polling interval. This connector type does not detect delete operations. If you have a need to detect and propagate delete operations from the database, you should choose a different connector type like DB Changelog or DB Counter.
-- [Counter](#db-counter) - This connector type is supported for any database table that has an indexed column that contains a sequence-based value that is automatically maintained and modified for each record that is added/updated. This column must be one of the following types: `BIGINT`, `DECIMAL`, `INTEGER`, or `NUMERIC`. If `DECIMAL` or `NUMERIC` are used, they should be declared without numbers after dot: `DECIMAL(6,0)` not as `DECIMAL(6,2)`. The DB Counter connector leverages this column to determine which records have changed since the last polling interval. This connector type can detect delete operations as long as the table has a dedicated "Change Type" column that indicates one of the following values: insert, update, delete. If the value is empty or something other than insert, update, or delete, an update operation is assumed.
+- [Counter](#database-counter-connector) - This connector type is supported for any database table that has an indexed column that contains a sequence-based value that is automatically maintained and modified for each record that is added/updated. This column must be one of the following types: `BIGINT`, `DECIMAL`, `INTEGER`, or `NUMERIC`. If `DECIMAL` or `NUMERIC` are used, they should be declared without numbers after dot: `DECIMAL(6,0)` not as `DECIMAL(6,2)`. The DB Counter connector leverages this column to determine which records have changed since the last polling interval. This connector type can detect delete operations as long as the table has a dedicated "Change Type" column that indicates one of the following values: insert, update, delete. If the value is empty or something other than insert, update, or delete, an update operation is assumed.
 
 ### Database Changelog Connector
 
@@ -48,22 +48,34 @@ To configure DB Changelog connector:
 >[!note]
 >These instructions assume you want to apply the SQL scripts immediately.
 
-1. From the Main Control Panel > Global Sync Tab, select the topology.
-1. On the right, select the sync pipeline to configure.
-1. Select a Capture component and the configuration displays.
+To configure the database changelog connector for real-time persistent cache refresh:
+
+1.	From the Control Panel, go to Setup > Directory Namespace > Namespace Design.
+
+1.	Select the root naming context that contains the identity view that is cached.
+
+1.	On the right side, click the **CACHE** tab.
+1.	If you haven't already created the cache, click **+CREATE NEW CACHE** and browse to the branch in the RadiantOne namespace that you would like to store in persistent cache and click **CREATE**. If you already have created the cache, click ... > Edit inline with the cached branch.
+1. Select *Real Time* for the refresh type. A table displays indicating which connectors require configuration.
+1. Click the [Pencil Icon](Media/pencil.jpg) inline with the connector to configure.
+ ![Refresh Types](Media/refresh-type.jpg)
+
 1. Select **DB Changelog** from the **Connector Type** drop-down list.
 1. Indicate the user name and password for the connector's dedicated credentials for connecting to the log table. If you do not have the user name and password, contact your DBA for the credentials.
-1. Enter the log table name using the proper syntax for your database (e.g. `{USER}.{TABLE}_LOG`).
+1. Enter the log table name using the proper syntax for your database (e.g. `{USER}.{TABLE}_LOG`) or accept the default.
+ ![DB Changelog Connector Configuration](Media/changelog-connector-props.jpg)
 
 >[!warning]
 >Change the value for this property only if you are creating the log table manually and the capture connector does not calculate the log table name correctly. Be sure to use the [correct syntax](#log-table-name-syntax) if you change the value.
 
-![DB Changelog Connector Configuration](Media/image24.png)
+1. Select **SAVE**.
+1. In the connecor table, click </> scripts.
+ ![SQL Scripts](Media/sql-scripts.jpg)
 
-7. Select **Save**.
-8. A message is displayed that asks if you want to apply the scripts to configure the log table immediately or not. You can also download the scripts to the local machine. 
-    ![Configuration to Apply SQL Script Automatically or Not](Media/image26.png)
-9. To apply now, select **OK**. Otherwise, select **NO**.
+1. A message is displayed that asks if you want to apply the scripts to configure the log table immediately or not. You can also download the scripts to the local machine. 
+    ![Configuration to Apply SQL Script Automatically or Not](Media/sql-script-options.jpg)
+   
+1. To apply now, select **Apply Now** and click **CLOSE**. Otherwise, select **Apply Later** and click
 
 >[!note]
 >Selecting **OK** creates and executes the SQL scripts on the database server. If you choose to apply later, the scripts are created but not executed. They must be run on the database manually. You can download the sql scripts from here or from Main Control Panel > Settings > Configuration > File Manager. Any DBA can configure the connector by selecting the **NO** option and running the scripts manually on the database server. For most databases, this is also sufficient to apply the configuration directly selecting the **OK** option. However, for Oracle databases, you must connect as either the SYS user or a non SYS user that has the SYSDBA role assigned to them. If you choose to use a non SYS user, you must use the syntax userid as sysdba for the user name in the connection. An example would be scott as sysdba.
