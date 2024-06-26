@@ -9,10 +9,10 @@ The default naming contexts and default data sources for the RadiantOne service 
 
 ![Install Samples](Media/install-samples.jpg)
 
->[!note] Some of the files mentioned in this guide are edited using the Control Panel's File Manager option. To edit files in File Mananger:
-In the upper-left corner of the Control Panel, click ![classic-control-panel](Media/profile-icon.png) and select Open Classic Control Panel. 
-Click Open. The classic control panel launches in a new browser tab. 
-In the classic Control Panel, navigate to Settings > Configuration > File Manager.
+Some of the files mentioned in this guide are edited using the Control Panel's File Manager option. To edit files in File Mananger:
+1. In the upper-left corner of the Control Panel, click ![classic-control-panel](Media/profile-icon.png) and select Open Classic Control Panel. 
+2. Click Open. The classic control panel launches in a new browser tab. 
+3. In the classic Control Panel, navigate to Settings > Configuration > File Manager.
 
 ## Default Naming Contexts
 
