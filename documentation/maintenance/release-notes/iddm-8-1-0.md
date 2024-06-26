@@ -39,6 +39,7 @@ These release notes contain the following sections:
 - Loading/refreshing on Data Catalog > Data Sources > *selected data source* > Schema is sometimes slow.
 - OIDC support for SSO into the Control Panel isn't supported yet.
 - Comparing differences between an extracted schema file and the current backend data source schemas in the Data Catalog isn't supported yet.
+- developer.radiantlogic.com site is in the process of having broken links and missing images fixed.
   
 For known issues reported after the release, please see the Radiant Logic Knowledge Base: 
 
