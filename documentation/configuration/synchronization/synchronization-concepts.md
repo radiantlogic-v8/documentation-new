@@ -71,7 +71,7 @@ The Rules-based Transformation option offers a default event-based template that
 
 Rules are packaged as a set and are associated with a single source entry object type/class. You will create a rule set for every source object class that you want to detect changes on. A rule categorizes a set of conditions in a source system and the set of actions that must be taken in a target system if the conditions are met. For each rule, conditions and actions are defined. Many rules can be defined for a transformation and the default behavior is to evaluate all rules in the order in which they are defined.
 
-![A diagram for rule configuration](../media/image11.png)
+![A diagram for rule configuration](Media/image11.png)
 
 See [Rules](../configuration/rules/overview.md) for configuration steps.
 
@@ -79,7 +79,7 @@ See [Rules](../configuration/rules/overview.md) for configuration steps.
 
 Rules consist of one or more conditions. A condition is an expression that involves a variable, an operator, and a value. Conditions are evaluated to determine if activity in the source should be propagated as action(s) to a target. If multiple conditions are defined, they are evaluated in order from top down. The main operator to apply to the entire set of conditions can be either an `AND` or an `OR`. Although you can have many nested conditions leveraging both `AND` or `OR` operations below the main operator. For example, the conditions shown in the screen below indicate a main `AND` operator even though the list of expressions involves nested `OR` conditions.
 
-![The "Conditions" tab in "Rule Builder" consisting of "OR" conditions nested inside a main "AND" operator](../media/image12.png)
+![The "Conditions" tab in "Rule Builder" consisting of "OR" conditions nested inside a main "AND" operator](Media/image12.png)
 
 The example conditions shown above would be evaluated as follows.
 
@@ -87,7 +87,7 @@ If a new entry is inserted into the source system, and if the department for the
 
 When defining a condition, the expression can be evaluated based on many different operators. The possible operators are shown below.
 
-![A list of 20 possible operators for expressions](../media/image13.png)
+![A list of 20 possible operators for expressions](Media/image13.png)
 
 **Variables**
 
@@ -97,19 +97,19 @@ You can also configure one or more conditions that dictate the context in which 
 
 - Source Attribute – a condition can be based on the value of a source attribute. Select a source attribute name (a list of attributes defined in the source schema is displayed for you to select from), enter a value of the attribute to condition the comparison, an operator (e.g. `equals`, `doesn't equal`, `is greater than`, etc.) and a comparison type (e.g. case-sensitive, ignore case, numeric, regular expression, or binary). The example Rule Variable below indicates that the variable named `VarAccountExpires` is set from the source attribute named `accountExpires` when the source attribute `employeeType` starts with a value of `"Temp"`.
 
-![The "Edit Rule Variable" GUI where the variable named VarAccountExpires is set from the source attribute named accountExpires when the source attribute employeeType starts with a value named Temp](../media/image14.png)
+![The "Edit Rule Variable" GUI where the variable named VarAccountExpires is set from the source attribute named accountExpires when the source attribute employeeType starts with a value named Temp](Media/image14.png)
 
 - Source Event – a source event is defined as an update to an entry, inserting a new entry, deleting an entry or moving an entry (`modRDN` operation in an LDAP directory). The condition can be defined as either `equals` or `not equals`. An example condition would be `Source Event` `equals` `New Entry`. The example Rule Variable below indicates that the variable named `VarAccountExpires` is set with a constant value of `"Expired"` when the entry in the source is deleted.
 
-![The variable named VarAccountExpires is set with a constant value of "Expired" when the entry in the source is deleted](../media/image15.png)
+![The variable named VarAccountExpires is set with a constant value of "Expired" when the entry in the source is deleted](Media/image15.png)
 
 - Source Attribute Event - a condition can be based on the type of event on a source attribute. To define a condition based on a source attribute event, you must select the type of event you are interested in ("Value(s) was added", "Value(s) was NOT added", "Value was deleted", "Value was NOT deleted", "Value(s) was replaced", "Value(s) was NOT replaced"), and a source attribute name (a list of attributes defined in the source schema is displayed for you to select from). The example Rule Variable below indicates that the variable named `VarAccountExpires` is set with a constant value of `"Expired"` when the value of the source `employeeType` attribute is replaced.
 
-![The "Edit Rule Variable" GUI where the variable named VarAccountExpires is set with a constant value of "Expired" when the value of the source employeeType attribute is replaced](../media/image16.png)
+![The "Edit Rule Variable" GUI where the variable named VarAccountExpires is set with a constant value of "Expired" when the value of the source employeeType attribute is replaced](Media/image16.png)
 
 - Rule Variable – a condition can be based on a value of another rule variable. Select a variable (a list of defined local variables is available for you to select from), enter a value of the local variable to condition the comparison, an operator (e.g. `equals`, `doesn't equal`, `is greater than`, etc.) and a comparison type (e.g. case-sensitive, ignore case, numeric, regular expression, or binary). The example Rule Variable below indicates that the variable named `VarAccountExpires` is set to a value of `"Active"` when the local variable named `variableemail` contains `"radiantlogic.com"`.
 
-![The "Edit Rule Variable" GUI where the variable named VarAccountExpires is set to a value of "Active" when the local variable named variableemail contains "radiantlogic.com"](../media/image17.png)
+![The "Edit Rule Variable" GUI where the variable named VarAccountExpires is set to a value of "Active" when the local variable named variableemail contains "radiantlogic.com"](Media/image17.png)
 
 **Actions**
 
@@ -127,11 +127,11 @@ The synchronization flow(s) in a topology are grouped and depicted as pipelines.
 
 An example of a topology with a single auto-generated pipeline is shown below:
 
-![An example of a topology with a single auto-generated pipeline](../media/image5.png)
+![An example of a topology with a single auto-generated pipeline](Media/image5.png)
 
 An example of a topology with multiple auto-generated pipelines is shown below:
 
-![An example of a topology with multiple auto-generated pipelines](../media/image6.png)
+![An example of a topology with multiple auto-generated pipelines](Media/image6.png)
 
 ### Pipeline ID
 
@@ -147,13 +147,13 @@ You can find the pipeline ID from the Main Control Panel > Global Sync tab.
 
 Select the topology and hover over the name property of the pipeline. An example is shown below.
 
-![A pipeline ID triggered by a hover](../media/image8.png)
+![A pipeline ID triggered by a hover](Media/image8.png)
 
 ## Approvals
 
 For synchronization pipelines that use rules-based transformation, you can configure source events to require an extra manual approval step prior to the change being sent to target systems. The “Require Approval” option is used for this purpose and dictates that certain events must be approved by a specified set of users before they are applied to target systems. When a change associated with a rule that requires approval is detected in a source, the instance is published into the approvals queue and awaits action. All users that are required to act on the event, must be assigned to the *Approvers* role and use the Approvals application to act on the event before it expires. If the change is approved, it is processed, removed from the queue and published to the target(s). If it is rejected, the change is aborted and the message is deleted from the queue. A high-level diagram of the process is shown below.
 
-![High Level Flow](../media/flow.jpg)
+![High Level Flow](Media/flow.jpg)
 
 >[!note] 
 >The approval queue is automatically created as needed.
