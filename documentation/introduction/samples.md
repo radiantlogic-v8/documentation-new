@@ -78,5 +78,3 @@ An LDAP data source named replicationjournal is included by default. This data s
 
 There are nine default database data sources defined for the Derby databases installed with RadiantOne (advworks, derbyorders, derbysales, examples, log2db, multistore, northwind, rx500 and vdapdb). These databases support the [sample virtual views](#default-naming-contexts) mounted below o=examples and o=vds.
 
-The default radiantsalesforce database data source supports a sample virtual view of Salesforce mounted at dv=salesforce,o=cloudservices,o=vds. This data source can be modified to point to any Salesforce instance to quickly test bringing in Salesforce identities into the virtual namespace. 
-
