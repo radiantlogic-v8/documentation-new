@@ -56,7 +56,7 @@ description: Configuring RadiantOne Identity Data Management
     - [Pipelines](synchronization/pipelines.md)
     - [Capture Connectors](synchronization/capture-connectors.md)
     - [Transformations](synchronization/transformations.md)
-    - [Queue Time to Live](synchronization/synchronization-config/queuettl)
+    - [Queue Time to Live](synchronization/synchronization-concepts.md#message-time-to-live)
   - [Connector Properties](synchronization/connector-properties.md)
   - [Uploads](synchronization/uploads.md)
 - [Global Settings](#)
