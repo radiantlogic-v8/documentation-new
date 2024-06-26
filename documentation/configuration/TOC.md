@@ -12,7 +12,7 @@ description: Configuring RadiantOne Identity Data Management
   - [Directory Namespace](#)
     - [Introduction](identity-views/intro-view-design.md)
     - [Joins](identity-views/joins.md)
-    - [Creating Identity Views](identity-views/identity-views.md)
+    - [Creating Identity Views](identity-views/intro-view-design.md)
     - [Special Attributes Handling](identity-views/special-attributes.md)
     - [Interception Scripts](identity-views/view-interception.md)
 - [Global Identity Builder](#)
