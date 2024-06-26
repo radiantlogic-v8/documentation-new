@@ -14,5 +14,5 @@ description: Introduction to RadiantOne Identity Data Management
     - [Accessibility](wca-compliance.md)
 - [Concepts](concepts.md)
 - [Samples](samples.md)
-    -   [Default Naming Contexts](samples/default-naming-context)
-    -   [Default Data Sources](samples/default-data-sources)
+    -   [Default Naming Contexts](samples#default-naming-context)
+    -   [Default Data Sources](samples#default-data-sources)
