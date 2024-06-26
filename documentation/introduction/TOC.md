@@ -9,7 +9,7 @@ description: Introduction to RadiantOne Identity Data Management
   - [Synchronization](sync.md)
 - [Admin Tools](#)
     - [Overview](admin-tools-overview.md)
-    - [Environment Operations Center](admin-tools-overview/overview)
+    - [Environment Operations Center](admin-tools-overview#environment-operations-center)
     - [Control Panel](control-panel-overview.md)
     - [Accessibility](wca-compliance.md)
 - [Concepts](concepts.md)
