@@ -52,7 +52,7 @@ description: Configuring RadiantOne Identity Data Management
   - [Managing Directory Schema](directory-stores/managing-directory-schema.md)
 - [Synchronization](#)
   - [Concepts](synchronization/synchronization-concepts.md)
-  - [Configuration](synchronization/synchronization-config.md)
+  - [Configuration](#)
     - [Pipelines](synchronization/pipelines.md)
     - [Capture Connectors](synchronization/capture-connectors.md)
     - [Transformations](synchronization/transformations.md)
