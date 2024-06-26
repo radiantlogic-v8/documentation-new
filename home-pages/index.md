@@ -45,8 +45,8 @@ Harness your identity data with intelligent integration to drive better business
   > [SaaS](installation/deployment-options)  
   > Learn about how to install Identity Data Management in your SaaS tenant.
   
-  > **Self-managed Deployment** 
-  > Learn how to deploy Identity Data Management using Helm charts in your own Kubernetes cluster.  COMING SOON!
+  > [Self-managed Deployment] 
+  > Learn how to deploy Identity Data Management using Helm charts in your own Kubernetes cluster.  **COMING SOON!**
       
 </section>
 
