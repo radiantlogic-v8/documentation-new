@@ -143,7 +143,9 @@ To configure the database timestamp connector for real-time persistent cache ref
 1. Select **DB Timestamp** from the **Connector Type** drop-down list.
 
 1. Indicate the column name in the database table that contains the timestamp. An example is shown below.
- ![DB Timestamp Connector Configuration](Media/db-timestamp.png)
+
+ ![DB Timestamp Connector Configuration](Media/db-timestamp.jpg)
+ 
 1. Define any other needed [Connector Properties](./cache-connector-properties).
 1. Select **SAVE**.
 1. You can configure connector properties in the Advanced Properties section.
