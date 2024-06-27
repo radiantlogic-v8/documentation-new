@@ -68,12 +68,13 @@ To configure the database changelog connector for real-time persistent cache ref
 >[!warning]
 >Change the value for this property only if you are creating the log table manually and the capture connector does not calculate the log table name correctly. Be sure to use the [correct syntax](#log-table-name-syntax) if you change the value.
 
+1. Define any other needed [Connector Properties](./cache-connector-properties).
 1. Select **SAVE**.
 1. In the connecor table, click </> scripts.
  ![SQL Scripts](Media/sql-scripts.jpg)
 
-1. A message is displayed that asks if you want to apply the scripts to configure the log table immediately or not. You can also download the scripts to the local machine. 
-    ![Configuration to Apply SQL Script Automatically or Not](Media/sql-script-options.jpg)
+1. A message is displayed that asks if you want to apply the scripts to configure the log table immediately or not. You can also download the scripts to the local machine.
+ ![Configuration to Apply SQL Script Automatically or Not](Media/sql-script-options.jpg)
    
 1. To apply now, select **Apply Now** and click **CLOSE**. Otherwise, select **Apply Later** and click
 
@@ -128,13 +129,24 @@ The following steps assume your backend database table has a primary key defined
 >[!warning]
 >This connector type does not detect delete operations. If you have a need to detect delete operations from the database, you should choose a different connector type.
 
-1. From the Main Control Panel > Global Sync Tab, select the topology on the left.
-1. On the right, select the sync pipeline to configure.
-1. Select a Capture component and the configuration displays.
+To configure the database timestamp connector for real-time persistent cache refresh:
+
+1.	From the Control Panel, go to Setup > Directory Namespace > Namespace Design.
+
+1.	Select the root naming context that contains the identity view that is cached.
+
+1.	On the right side, click the **CACHE** tab.
+1.	If you haven't already created the cache, click **+CREATE NEW CACHE** and browse to the branch in the RadiantOne namespace that you would like to store in persistent cache and click **CREATE**. If you already have created the cache, click ... > Edit inline with the cached branch.
+1. Select *Real Time* for the refresh type. A table displays indicating which connectors require configuration.
+1. Click the [Pencil Icon](Media/pencil.jpg) inline with the connector to configure.
+ ![Refresh Types](Media/refresh-type.jpg)
+
 1. Select **DB Timestamp** from the **Connector Type** drop-down list.
+
 1. Indicate the column name in the database table that contains the timestamp. An example is shown below.
-    ![DB Timestamp Connector Configuration](Media/image27.png)
-1. Select **Save**.
+ ![DB Timestamp Connector Configuration](Media/db-timestamp.png)
+1. Define any other needed [Connector Properties](./cache-connector-properties).
+1. Select **SAVE**.
 1. You can configure connector properties in the Advanced Properties section.
 1. After the capture connector is configured, configure the transformation.
 
