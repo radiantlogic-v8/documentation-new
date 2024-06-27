@@ -62,12 +62,9 @@ To configure the database changelog connector for real-time persistent cache ref
 
 1. Select **DB Changelog** from the **Connector Type** drop-down list.
 1. Indicate the user name and password for the connector's dedicated credentials for connecting to the log table. If you do not have the user name and password, contact your DBA for the credentials.
-1. Enter the log table name using the proper syntax for your database (e.g. `{USER}.{TABLE}_LOG`) or accept the default.
+1. Enter the log table name using the proper syntax for your database (e.g. `{USER}.{TABLE}_LOG`) or accept the default. Change the value for this property only if you are creating the log table manually and the capture connector does not calculate the log table name correctly. Be sure to use the [correct syntax](#log-table-name-syntax) if you change the value.
 
  ![DB Changelog Connector Configuration](Media/changelog-connector-props.jpg)
-
->[!warning]
->Change the value for this property only if you are creating the log table manually and the capture connector does not calculate the log table name correctly. Be sure to use the [correct syntax](#log-table-name-syntax) if you change the value.
 
 1. Define any other needed [Connector Properties](./cache-connector-properties).
 1. Select **SAVE**.
@@ -78,10 +75,10 @@ To configure the database changelog connector for real-time persistent cache ref
 1. A message is displayed that asks if you want to apply the scripts to configure the log table immediately or not. You can also download the scripts to the local machine.
  ![Configuration to Apply SQL Script Automatically or Not](Media/sql-script-options.jpg)
    
-1. To apply now, select **Apply Now** and click **CLOSE**. Otherwise, select **Apply Later** and click
+1. To apply now, select **Apply Now** and click **CLOSE**. Otherwise, select **Apply Later** and click **DOWNLOAD CONFIGURE SQL SCRIPTS**.    
 
 >[!note]
->Selecting **OK** creates and executes the SQL scripts on the database server. If you choose to apply later, the scripts are created but not executed. They must be run on the database manually. You can download the sql scripts from here or from Main Control Panel > Settings > Configuration > File Manager. Any DBA can configure the connector by selecting the **NO** option and running the scripts manually on the database server. For most databases, this is also sufficient to apply the configuration directly selecting the **OK** option. However, for Oracle databases, you must connect as either the SYS user or a non SYS user that has the SYSDBA role assigned to them. If you choose to use a non SYS user, you must use the syntax userid as sysdba for the user name in the connection. An example would be scott as sysdba.
+>Selecting **Apply Now** creates and executes the SQL scripts on the database server. For most databases, this is sufficient to apply the configuration directly. However, for Oracle databases, you must connect as either the SYS user or a non SYS user that has the SYSDBA role assigned to them. If you choose to use a non SYS user, you must use the syntax userid as sysdba for the user name in the connection. An example would be scott as sysdba.If you choose to apply later, the scripts are created but not executed. They must be run on the database manually. You can download the sql scripts from here or from Main Control Panel > Settings > Configuration > File Manager. Any DBA can configure the connector by selecting the **NO** option and running the scripts manually on the database server. 
 
 10. After the capture connector is configured, configure the transformation in the pipeline.
 
