@@ -71,9 +71,9 @@ To configure the database changelog connector for real-time persistent cache ref
 1. To apply now, select **Apply Now** and click **CLOSE**. Otherwise, select **Apply Later** and click **DOWNLOAD CONFIGURE SQL SCRIPTS**.    
 
 >[!note]
->Selecting **Apply Now** creates and executes the SQL scripts on the database server. For most databases, this is sufficient to apply the configuration directly. However, for Oracle databases, you must connect as either the SYS user or a non SYS user that has the SYSDBA role assigned to them. If you choose to use a non SYS user, you must use the syntax userid as sysdba for the user name in the connection. An example would be scott as sysdba.If you choose to apply later, the scripts are created but not executed. They must be run on the database manually. You can download the sql scripts from here or from Main Control Panel > Settings > Configuration > File Manager. Any DBA can configure the connector by selecting the **NO** option and running the scripts manually on the database server. 
+>Selecting **Apply Now** creates and executes the SQL scripts on the database server. For most databases, this is sufficient to apply the configuration directly. However, for Oracle databases, you must connect as either the SYS user or a non SYS user that has the SYSDBA role assigned to them. If you choose to use a non SYS user, you must use the syntax userid as sysdba for the user name in the connection. An example would be scott as sysdba. If you choose to **Apply Later**, the scripts are created but not executed. They must be downloaded and run on the database manually. 
 
-10. After the capture connector is configured, configure the transformation in the pipeline.
+1. Click **NEXT** to initialize the cache and once initialized, you can manage the cache store properties. 
 
 **Log table name syntax**
 
