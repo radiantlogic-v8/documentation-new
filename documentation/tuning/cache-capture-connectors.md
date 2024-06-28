@@ -180,7 +180,7 @@ This section describes the failover mechanism for the database connectors.
 >[!warning]
 >The backend servers must be configured for multi-master replication. Please check the vendor documentation for assistance with configuring replication for your backends.
 
-The database connectors leverage the failover server that has been configured for the data source. When you configure a data source for your backend database, select a failover database server from the drop-down list. The failover server must be configured as a RadiantOne data source. See the screen shot below for how to indicate a failover server for the Data Sources from the Control Panel > Setup > Data Catalog > Data Sources.
+The database connectors leverage the failover server that has been configured for the data source. When you configure a data source for your backend database, select a failover database server from the drop-down list. The failover server must be configured as a RadiantOne data source. See the screen shot below for how to indicate a failover server for the Data Sources from the Control Panel > Setup > Data Catalog > Data Sources > [selected data source] > Details tab > Failover section.
 
  ![Configuring Failover Servers for the Backend Database](Media/failover-db.jpg)
 
