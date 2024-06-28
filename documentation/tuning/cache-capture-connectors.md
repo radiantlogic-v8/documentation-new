@@ -182,7 +182,7 @@ This section describes the failover mechanism for the database connectors.
 
 The database connectors leverage the failover server that has been configured for the data source. When you configure a data source for your backend database, select a failover database server from the drop-down list. The failover server must be configured as a RadiantOne data source. See the screen shot below for how to indicate a failover server for the Data Sources from the Control Panel > Setup > Data Catalog > Data Sources.
 
- ![Configuring Failover Servers for the Backend Database](Media/image33.png)
+ ![Configuring Failover Servers for the Backend Database](Media/failover-db.jpg)
 
 If a connection cannot be made to the primary server, the connector tries to connect to the failover server configured in the data source. If a connection to both the primary and failover servers fails, the retry count goes up. The connector repeats this process until the value configured in "Max Retries on Connection Error" is reached. There is no automatic failback, meaning once the primary server is back online, the connector does not automatically go back to it.
 
