@@ -163,8 +163,7 @@ The following steps assume your database backend table contains an indexed colum
 1. Select **DB Counter** from the **Connector Type** drop-down list.
 
 1. Indicate the change type column and the counter column names in the database table that contains the counter. An example is shown below.
-
- ![DB Counter Connector Configuration](Media/db-counter-config.jpg)
+  ![DB Counter Connector Configuration](Media/db-counter-config.jpg)
  
 1. Define any other needed [Connector Properties](./cache-connector-properties).
 1. Select **SAVE**.
