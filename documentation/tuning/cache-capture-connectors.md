@@ -164,7 +164,7 @@ The following steps assume your database backend table contains an indexed colum
 
 1. Indicate the column name in the database table that contains the counter. An example is shown below.
 
- ![DB Counter Connector Configuration](Media/db-counter.jpg)
+ ![DB Counter Connector Configuration](Media/db-counter-config.jpg)
  
 1. Define any other needed [Connector Properties](./cache-connector-properties).
 1. Select **SAVE**.
@@ -173,7 +173,7 @@ The following steps assume your database backend table contains an indexed colum
 >[!warning]
 >If you need to make changes to the Counter Column name, you must manually restart the connector and reset the cursor.
 
-### Database connector failover
+### Database Connector Failover
 
 This section describes the failover mechanism for the database connectors.
 
