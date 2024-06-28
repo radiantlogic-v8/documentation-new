@@ -56,14 +56,12 @@ To configure the database changelog connector for real-time persistent cache ref
 1. Select **DB Changelog** from the **Connector Type** drop-down list.
 1. Indicate the user name and password for the connector's dedicated credentials for connecting to the log table. If you do not have the user name and password, contact your DBA for the credentials.
 1. Enter the log table name using the proper syntax for your database (e.g. `{USER}.{TABLE}_LOG`) or accept the default. Change the value for this property only if you are creating the log table manually and the capture connector does not calculate the log table name correctly. Be sure to use the correct syntax if you change the value.
-
- ![DB Changelog Connector Configuration](Media/changelog-connector-props.jpg)
+  ![DB Changelog Connector Configuration](Media/changelog-connector-props.jpg)
 
 1. Define any other needed [Connector Properties](./cache-connector-properties).
 1. Select **SAVE**.
 1. In the connector table, click </> scripts.
-
- ![SQL Scripts](Media/sql-scripts.jpg)
+  ![SQL Scripts](Media/sql-scripts.jpg)
 
 1. A message is displayed that asks if you want to apply the scripts to configure the log table immediately or not. You can also download the scripts to the local machine.
  ![Configuration to Apply SQL Script Automatically or Not](Media/sql-script-options.jpg)
