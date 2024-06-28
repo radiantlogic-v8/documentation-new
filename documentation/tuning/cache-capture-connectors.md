@@ -9,7 +9,7 @@ The capture connector configuration dictates the process for detecting changes o
 
 This section focuses on configuring the connector type. For details on the behavior of and properties for database connectors (Timestamp, Counter, Changelog), LDAP connectors (changelog or persistent search), and Active Directory connectors (usnChanged or DirSync), please see the [Connector Properties](./cache-connector-properties).
 
-## Database (JDBC-accessible) Connectors
+## Database Connectors
 For database backends (JDBC-accessible), the connector change detection options are:
 
 - [Changelog](#database-changelog-connector) – This connector type relies on a database table that contains all changes that have occurred on the base tables (that the RadiantOne identity view is built from). This typically involves having triggers on the base tables that write into the log/changelog table. However, an external process may be used instead of triggers. The connector picks up changes from the changelog table. 
@@ -50,12 +50,12 @@ To configure the database changelog connector for real-time persistent cache ref
 1.	On the right side, click the **CACHE** tab.
 1.	If you haven't already created the cache, click **+CREATE NEW CACHE** and browse to the branch in the RadiantOne namespace that you would like to store in persistent cache and click **CREATE**. If you already have created the cache, click ... > Edit inline with the cached branch.
 1. Select *Real Time* for the refresh type. A table displays indicating which connectors require configuration.
-1. Click the [Pencil Icon](Media/pencil.jpg) inline with the connector to configure.
+1. Click the ![Pencil Icon](Media/pencil.jpg) inline with the connector to configure.
  ![Refresh Types](Media/refresh-type.jpg)
 
 1. Select **DB Changelog** from the **Connector Type** drop-down list.
 1. Indicate the user name and password for the connector's dedicated credentials for connecting to the log table. If you do not have the user name and password, contact your DBA for the credentials.
-1. Enter the log table name using the proper syntax for your database (e.g. `{USER}.{TABLE}_LOG`) or accept the default. Change the value for this property only if you are creating the log table manually and the capture connector does not calculate the log table name correctly. Be sure to use the [correct syntax](#log-table-name-syntax) if you change the value.
+1. Enter the log table name using the proper syntax for your database (e.g. `{USER}.{TABLE}_LOG`) or accept the default. Change the value for this property only if you are creating the log table manually and the capture connector does not calculate the log table name correctly. Be sure to use the correct syntax if you change the value.
 
  ![DB Changelog Connector Configuration](Media/changelog-connector-props.jpg)
 
@@ -130,7 +130,7 @@ To configure the database timestamp connector for real-time persistent cache ref
 1.	On the right side, click the **CACHE** tab.
 1.	If you haven't already created the cache, click **+CREATE NEW CACHE** and browse to the branch in the RadiantOne namespace that you would like to store in persistent cache and click **CREATE**. If you already have created the cache, click ... > Edit inline with the cached branch.
 1. Select *Real Time* for the refresh type. A table displays indicating which connectors require configuration.
-1. Click the [Pencil Icon](Media/pencil.jpg) inline with the connector to configure.
+1. Click the ![Pencil Icon](Media/pencil.jpg) inline with the connector to configure.
  ![Refresh Types](Media/refresh-type.jpg)
 
 1. Select **DB Timestamp** from the **Connector Type** drop-down list.
@@ -141,30 +141,37 @@ To configure the database timestamp connector for real-time persistent cache ref
  
 1. Define any other needed [Connector Properties](./cache-connector-properties).
 1. Select **SAVE**.
-1. You can configure connector properties in the Advanced Properties section.
-1. After the capture connector is configured, configure the transformation.
+1. Click **NEXT** to initialize the cache and once initialized, you can manage the cache store properties. 
 
 >[!warning]
->If you need to make changes to the timestamp column name, you must manually restart the connector and reset the cursor. The pipeline can be stopped on the Global Sync tab when the topology is selected on the left. Then select **Configure** next to the pipeline. In the configuration screen, select the Capture section. Change the timestamp column name and select **Save**. In the bottom left of the Capture configuration screen, select **Reset Cursor**. Go back to the Global Sync topologies page and select **Start** to start the pipeline components.
+>If you need to make changes to the timestamp column name, you must manually restart the connector and reset the cursor. 
 
 ### Database Counter Connector
 
 The following steps assume your database backend table contains an indexed column that contains a sequence-based value that is automatically maintained and modified for each record that is added, updated or deleted. The DB Counter connector uses this column to maintain a cursor to keep track of processed changes. The counter column database types supported are described in the [Database connectors](#database-connectors) section.
 
-1. From the Main Control Panel > Global Sync Tab, select the topology on the left.
-1. On the right, select the sync pipeline to configure.
-1. Select the Capture component and the configuration displays.
-1. Select **DB Counter** from the **Connector Type** drop-down list.
-1. Enter a value in the Change Type Column field. This value should be the database table column that contains the information about the type of change (insert, update or delete). If the column does not have a value, an update operation is assumed.
-1. Enter the column name in the database table that contains the counter. An example is shown below.
-1. Select **Save**
-1. You can configure connector properties in the Advanced Properties section.
-1. After the capture connector is configured, configure the transformation in the pipeline.
+1.	From the Control Panel, go to Setup > Directory Namespace > Namespace Design.
 
-![DB Counter Connector Configuration](Media/image32.png)
+1.	Select the root naming context that contains the identity view that is cached.
+
+1.	On the right side, click the **CACHE** tab.
+1.	If you haven't already created the cache, click **+CREATE NEW CACHE** and browse to the branch in the RadiantOne namespace that you would like to store in persistent cache and click **CREATE**. If you already have created the cache, click ... > Edit inline with the cached branch.
+1. Select *Real Time* for the refresh type. A table displays indicating which connectors require configuration.
+1. Click the ![Pencil Icon](Media/pencil.jpg) inline with the connector to configure.
+ ![Refresh Types](Media/refresh-type.jpg)
+
+1. Select **DB Counter** from the **Connector Type** drop-down list.
+
+1. Indicate the column name in the database table that contains the counter. An example is shown below.
+
+ ![DB Counter Connector Configuration](Media/db-counter.jpg)
+ 
+1. Define any other needed [Connector Properties](./cache-connector-properties).
+1. Select **SAVE**.
+1. Click **NEXT** to initialize the cache and once initialized, you can manage the cache store properties. 
 
 >[!warning]
->If you need to make changes to the Counter Column name, you must manually restart the connector and reset the cursor. The pipeline can be stopped on the Global Sync tab when the topology is selected on the left. Then select **Configure** next to the pipeline. In the configuration screen, select the Capture section. Change the counter column name and select **Save**. In the bottom left of the Capture configuration screen, select **Reset Cursor**. Go back to the Global Sync topologies page and select **Start** to start the pipeline components.
+>If you need to make changes to the Counter Column name, you must manually restart the connector and reset the cursor.
 
 ### Database connector failover
 
@@ -173,7 +180,7 @@ This section describes the failover mechanism for the database connectors.
 >[!warning]
 >The backend servers must be configured for multi-master replication. Please check the vendor documentation for assistance with configuring replication for your backends.
 
-The database connectors leverage the failover server that has been configured for the data source. When you configure a data source for your backend database, select a failover database server from the drop-down list. The failover server must be configured as a RadiantOne data source. See the screen shot below for how to indicate a failover server for the Data Sources from the Main Control Panel.
+The database connectors leverage the failover server that has been configured for the data source. When you configure a data source for your backend database, select a failover database server from the drop-down list. The failover server must be configured as a RadiantOne data source. See the screen shot below for how to indicate a failover server for the Data Sources from the Control Panel > Setup > Data Catalog > Data Sources.
 
  ![Configuring Failover Servers for the Backend Database](Media/image33.png)
 
@@ -192,7 +199,7 @@ The connector leverages a changelog that has been enabled on the backend directo
 
 ### Persistent search
 
-Any LDAP directory that offers a persistent search mechanism can use the Persistent Search connector type. Novell eDirectory is an example of an LDAP source that supports persistent search. Others include Red Hat Directory, IBM TDS, CA Directory and RadiantOne Universal Directory. The connector issues a persistent search and gets notified by the directory server when information changes. If the connector is shut down (either deliberately or due to failure), the delete operations that occurred in the directory are lost. Once the connector is back online there is no way to detect the delete operations that occurred while it was down. The only exception to this is for IBM TDS directories. It stores deleted entries and the capture connector is able to read them, and based on timestamp, determine if the change occurred while the connector was offline.
+Any LDAP directory that offers a persistent search mechanism can use the Persistent Search connector type. Novell eDirectory is an example of an LDAP source that supports persistent search. Others include Red Hat Directory, IBM TDS, CA Directory and RadiantOne Directory. The connector issues a persistent search and gets notified by the directory server when information changes. If the connector is shut down (either deliberately or due to failure), the delete operations that occurred in the directory are lost. Once the connector is back online there is no way to detect the delete operations that occurred while it was down. The only exception to this is for IBM TDS directories. It stores deleted entries and the capture connector is able to read them, and based on timestamp, determine if the change occurred while the connector was offline.
 
 ## Active Directory Connectors
 
