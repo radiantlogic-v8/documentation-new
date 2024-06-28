@@ -50,7 +50,7 @@ To configure the database changelog connector for real-time persistent cache ref
 1.	On the right side, click the **CACHE** tab.
 1.	If you haven't already created the cache, click **+CREATE NEW CACHE** and browse to the branch in the RadiantOne namespace that you would like to store in persistent cache and click **CREATE**. If you already have created the cache, click ... > Edit inline with the cached branch.
 1. Select *Real Time* for the refresh type. A table displays indicating which connectors require configuration.
-1. Click the ![Pencil Icon](Media/pencil.jpg) inline with the connector to configure.
+1. Click the ![Pencil Icon](Media/pencil-icon.jpg) inline with the connector to configure.
  ![Refresh Types](Media/refresh-type.jpg)
 
 1. Select **DB Changelog** from the **Connector Type** drop-down list.
@@ -130,7 +130,7 @@ To configure the database timestamp connector for real-time persistent cache ref
 1.	On the right side, click the **CACHE** tab.
 1.	If you haven't already created the cache, click **+CREATE NEW CACHE** and browse to the branch in the RadiantOne namespace that you would like to store in persistent cache and click **CREATE**. If you already have created the cache, click ... > Edit inline with the cached branch.
 1. Select *Real Time* for the refresh type. A table displays indicating which connectors require configuration.
-1. Click the ![Pencil Icon](Media/pencil.jpg) inline with the connector to configure.
+1. Click the ![Pencil Icon](Media/pencil-icon.jpg) inline with the connector to configure.
  ![Refresh Types](Media/refresh-type.jpg)
 
 1. Select **DB Timestamp** from the **Connector Type** drop-down list.
@@ -157,7 +157,7 @@ The following steps assume your database backend table contains an indexed colum
 1.	On the right side, click the **CACHE** tab.
 1.	If you haven't already created the cache, click **+CREATE NEW CACHE** and browse to the branch in the RadiantOne namespace that you would like to store in persistent cache and click **CREATE**. If you already have created the cache, click ... > Edit inline with the cached branch.
 1. Select *Real Time* for the refresh type. A table displays indicating which connectors require configuration.
-1. Click the ![Pencil Icon](Media/pencil.jpg) inline with the connector to configure.
+1. Click the ![Pencil Icon](Media/pencil-icon.jpg) inline with the connector to configure.
  ![Refresh Types](Media/refresh-type.jpg)
 
 1. Select **DB Counter** from the **Connector Type** drop-down list.
