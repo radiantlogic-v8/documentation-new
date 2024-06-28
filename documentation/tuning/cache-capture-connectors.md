@@ -12,7 +12,7 @@ This section focuses on configuring the connector type. For details on the behav
 ## Database (JDBC-accessible) Connectors
 For database backends (JDBC-accessible), the connector change detection options are:
 
-- [Changelog](#database-changelog-connector) – This connector type relies on a database table that contains all changes that have occurred on the base tables (that the RadiantOne identity view is built from). This typically involves having triggers on the base tables that write into the log/changelog table. However, an external process may be used instead of triggers. The connector picks up changes from the changelog table. If you need assistance with configuring triggers on the base tables and defining the changelog table, see [Create scripts to generate triggers and changelog table](#create-scripts-to-generate-triggers-and-changelog-table).
+- [Changelog](#database-changelog-connector) – This connector type relies on a database table that contains all changes that have occurred on the base tables (that the RadiantOne identity view is built from). This typically involves having triggers on the base tables that write into the log/changelog table. However, an external process may be used instead of triggers. The connector picks up changes from the changelog table. 
 - [Timestamp](#database-timestamp-connector) – This connector type has been validated against Oracle, SQL Server, MySQL, MariaDB, PostgreSQL, and Apache Derby. The database table must have a primary key defined for it and an indexed column that contains a timestamp/date value. This value must be maintained and modified accordingly for each record that is updated. 
     
   For Oracle databases, the timestamp column type must be one of the following: `TIMESTAMP`, `DATE`, `TIMESTAMP WITH TIME ZONE`, `TIMESTAMP WITH LOCAL TIME ZONE1. 
@@ -30,7 +30,7 @@ For database backends (JDBC-accessible), the connector change detection options 
 
 ### Database Changelog Connector
 
-RadiantOne can generate the SQL scripts which create the configuration needed to support the DB Changelog Connector. The scripts can be generated in the Main Control Panel. The following scripts are generated and can be download from Main Control Panel > Settings > Configuration > File Manager.  The are located in the /work/sql folder.
+RadiantOne generates the SQL scripts which create the configuration needed to support the DB Changelog Connector. These scripts can be downloaded and applied by your database administrator or the connector configuration process can apply them directly.
 
 - create_user.sql - Creates the log table user and the log table schema.
 - create_capture.sql - Creates the log table and the triggers on the base table.
@@ -39,7 +39,7 @@ RadiantOne can generate the SQL scripts which create the configuration needed to
 - drop_user.sql - Drops the log table user and schem1. 
   Note: for some databases the file is empty.
 
-This section describes generating and executing the scripts in the Classic Control Panel > Synchronization tab. The following steps assume the database backend has a changelog table that contains changed records that need to be propagated to destinations. The changelog table must have two key columns named `RLICHANGETYPE` and `RLICHANGEID`. `RLICHANGETYPE` must indicate insert, update or delete, dictating what type of change was made to the record. `RLICHANGEID` must be a sequence-based, auto-incremented `INTEGER` that contains a unique value for each record. The DB Changelog connector uses `RLICHANGEID` to maintain a cursor to keep track of processed changes.
+This section describes generating and executing the scripts to configure the database changelog connector for real-time persistent cache refresh. The following steps assume the database backend has a changelog table that contains changed records that need to be propagated to destinations. The changelog table must have two key columns named `RLICHANGETYPE` and `RLICHANGEID`. `RLICHANGETYPE` must indicate insert, update or delete, dictating what type of change was made to the record. `RLICHANGEID` must be a sequence-based, auto-incremented `INTEGER` that contains a unique value for each record. The DB Changelog connector uses `RLICHANGEID` to maintain a cursor to keep track of processed changes.
 
 To configure the database changelog connector for real-time persistent cache refresh:
 
