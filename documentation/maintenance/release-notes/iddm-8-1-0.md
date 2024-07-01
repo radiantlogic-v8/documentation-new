@@ -35,7 +35,7 @@ These release notes contain the following sections:
  
 ## Known Issues
 
-- Loading/refreshing on Directory Namespace > Namespace Design > *selected naming context* > Object Builder is sometimes slow.
+- Loading/refreshing on Directory Namespace > Namespace Design > *selected naming context* > Object Builder is sometimes slow and the user is prompted to *SAVE* before exiting the tab even if they have recently saved.
 - Loading/refreshing on Data Catalog > Data Sources > *selected data source* > Schema is sometimes slow.
 - OIDC support for SSO into the Control Panel isn't supported yet.
 - Comparing differences between an extracted schema file and the current backend data source schemas in the Data Catalog isn't supported yet.
