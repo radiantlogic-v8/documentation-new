@@ -43,6 +43,7 @@ These release notes contain the following sections:
 - Admin section > Access Tokens to call the RadiantOne API aren't supported yet.
 - Upgrades to v8.1 from earlier versions of RadiantOne aren't supported yet.
 - Self-managed deployments of v8.1 using Helm charts is expected mid-July 2024.
+- AWSKMS is not supported yet in Security > Attribute Encryption.
   
 For known issues reported after the release, please see the Radiant Logic Knowledge Base: 
 
