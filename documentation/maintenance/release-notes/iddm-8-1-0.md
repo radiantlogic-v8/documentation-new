@@ -40,7 +40,7 @@ These release notes contain the following sections:
 - OIDC support for SSO into the Control Panel isn't supported yet.
 - Comparing differences between an extracted schema file and the current backend data source schemas in the Data Catalog isn't supported yet.
 - developer.radiantlogic.com site is in the process of having broken links and missing images fixed.
-- Admin section > Access Tokens to call the RadiantOne API aren't supported yet.
+- Admin section > Access Tokens to call the RadiantOne API has been temporarily hidden in the UI due to an issue that will be addressed in an upcoming patch.
 - Upgrades to v8.1 from earlier versions of RadiantOne aren't supported yet.
 - Self-managed deployments of v8.1 using Helm charts is expected mid-July 2024.
 - AWSKMS is not supported yet in Security > Attribute Encryption.
