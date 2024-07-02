@@ -396,6 +396,12 @@ To add a custom message:
 
 ### Dashboard 
 
+The Dashboard displays some quick links (editable), links to valuable Radiant Logic Marketing content like blogs, white papers and webinars, and a summary chart breakdown of how RadiantOne has been configured: number of data sources, caches, and naming contexts.
+
+You can also view and copy the version of RadiantOne in the upper-right.
+
+![Dashboard](Media/dashboard.jpg)
+
 ### Setup
 
 The setup section contains the Data Catalog where connections to identity sources are configured and Directory Namespace where identity views are defined.
