@@ -6,10 +6,12 @@ description: Learn about the two main administration tools used in Identity Data
 ## Overview
 
 There are two tools that administrators use to manage RadiantOne Identity Data Management.
-- The Environment Operations Center is used by administrators to create environments, access monitoring dashboards, scale resources, apply updates, schedule backups, and troubleshooting issues.
+- The Environment Operations Center is used by administrators to create environments, access monitoring dashboards, scale resources, apply updates, schedule backups, and troubleshooting issues. Environment Operations Center is only offered with SaaS deployments.
 - The Control Panel is used by administrators to configure identity views, directory stores, synchronization and global settings. The Identity Data Management environment must be created in the Environment Operations Center before administrators can access and use the Control Panel.
 
 ## Environment Operations Center
+
+Environment Operations Center is only available with SaaS deployments.
 
 The Environment Operations Center is used by administrators to install RadiantOne Identity Data Management. This is done during the environment creation. Once an environment is created, it can be monitored and managed (e.g. patched, backed-up, restarted, or stopped)
 
@@ -32,7 +34,7 @@ The Directory Administrator credentials for Control Panel are defined when the e
 
 ![An image showing ](Media/CPLogin.jpg)
 
-The Directory Administrator can create other admin accounts and roles as needed from the Control Panel > Admin section. Users can login with a [username and password](control-panel-overview.md), an [Access Token](../security/access-tokens.md), or a [corporate SSO provider](control-panel-overview#oidc-token) can be configured.
+The Directory Administrator can create other admin accounts and roles as needed from the Control Panel > Admin section. Users can login with a [username and password](control-panel-overview.md), an [Access Token](../configuration/security/access-tokens.md), or a [corporate SSO provider](control-panel-overview#oidc-token) can be configured.
 
 
 ![An image showing ](Media/usermanagement.jpg)
