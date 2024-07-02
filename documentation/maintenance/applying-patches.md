@@ -35,7 +35,7 @@ Sheduled backups can be enabled and configured by clicking the cog icon next to:
 
 ### Release Notes
 
-For the list of improvements and bug fixes related to the release, see: [Release Notes](../maintenance/release-notes/iddm-8-1-0)
+For the list of improvements and bug fixes related to the release, see: [Release Notes](../maintenance/release-notes/release-notes)
 
 ### Known Issues 
 
