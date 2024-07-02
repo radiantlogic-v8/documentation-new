@@ -44,7 +44,12 @@ These release notes contain the following sections:
 - Upgrades to v8.1 from earlier versions of RadiantOne aren't supported yet.
 - Self-managed deployments of v8.1 using Helm charts is expected mid-July 2024.
 - AWSKMS is not supported yet in Security > Attribute Encryption.
-  
+- Identity views that have joins must have the secondary views cached manually before caching the main view.
+- When mounting database backends, you are unable to add content nodes based on objects from the same schema.
+- Modification of encrypted attributes fails from the Directory Browser.
+- Importing LDIFZ files is not supported yet.
+- Extracting a large schema, occasionally results in timeouts in Data Catalog > Data Sources.
+
 For known issues reported after the release, please see the Radiant Logic Knowledge Base: 
 
 https://support.radiantlogic.com/hc/en-us/categories/4412501931540-Known-Issues
