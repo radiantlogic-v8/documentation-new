@@ -169,23 +169,23 @@ The Virtual List Views (VLV) control works in conjunction with the Server Side S
 
 By using the VLV control, the client can retrieve results more quickly and is not required to store too many search results at a time. This is more efficient and prevents the client from being overwhelmed with too many entries that it may not be able to handle.
 
-This control can be enabled/disabled from the Control Panel > GLOBAL SETTINGS > Client Protocols > LDAP > Server Front End section > Supported Controls sub-section. Check the Enable VLV/Sort option and click Save. Restart the RadiantOne service. If you have a cluster deployed, restart the service on all nodes.
+This control can be enabled/disabled from the Control Panel > Global Settings > Client Protocols > LDAP > Server Front End section > Supported Controls sub-section. Check the Enable VLV/Sort option and click Save. Restart the RadiantOne service. If you have a cluster deployed, restart the service on all nodes.
 
 *Configure a Sorted Attributes List*
 
-A sorted attributes list is required at the level of the RadiantOne Universal Directory store or Persistent Cache configuration for the service to enforce the VLV/sort control on the branch. 
+A sorted attributes list is required at the level of the RadiantOne Directory store or Persistent Cache configuration for the service to enforce the VLV/sort control on the branch. 
 
-1.	From the Main Control Panel > Directory Namespace tab, navigate to the naming context associated with a RadiantOne Universal Directory (HDAP) store or persistent cache (located below the Cache node).
+1.	From the Main Control Panel > Directory Namespace tab, navigate to the naming context associated with a RadiantOne Directory store or persistent cache (located below the Cache node).
 
 2.	In the Sorted Attributes list, enter a comma separated list of attribute names that should have a special, sorted index. Any attribute that the client requests the sorting be based on should be entered here. The value of this attribute must be unique across all entries in the selected branch. For example, if your client is going to be Microsoft Outlook, the attribute cn must be added to the Sorted Attribute list.
 
 3.	Click **Save** in the upper right corner. The RadiantOne service does not need to be restarted.
 
-If the VLV control has been enabled but a client searches (and passes the VLV control) in a branch that is not associated with a RadiantOne Universal Directory store or persistent cache, it performs one of the following:
+If the VLV control has been enabled but a client searches (and passes the VLV control) in a branch that is not associated with a RadiantOne Directory store or persistent cache, it performs one of the following:
 
 -	Forwards the search request along with the included control to the backend LDAP server (if the branch in the RadiantOne namespace is associated with an LDAP backend). In this case, it is the responsibility of the backend LDAP server to implement the VLV control. RadiantOne returns any controls received from the LDAP backend to the client.
 
--	Not use the VLV control at all (if the backend is associated with something other than an LDAP server or local Universal Directory store/persistent cache).
+-	Not use the VLV control at all (if the backend is associated with something other than an LDAP server or RadiantOne Directory store/persistent cache).
 
 If the VLV control has not been enabled at all, but a client issues it in the search request as a critical control, the RadiantOne service returns LDAP protocol error code 2.
 
@@ -198,7 +198,7 @@ The flowchart shown below depicts the behavior of RadiantOne for applying the VL
 
 Using the Persistent Search Control is one of the recommended approaches for other processes to detect changes that have happened to RadiantOne entries. The changelog is the other method that can be used.
 
-This control can be enabled/disabled from the Control Panel > GLOBAL SETTINGS > Client Protocols > LDAP > Supported Controls sub-section. Check the Persistent Search option and click Save. Restart the RadiantOne service. If you have a cluster deployed, restart the service on all nodes.
+This control can be enabled/disabled from the Control Panel > Global Settings > Client Protocols > LDAP > Supported Controls sub-section. Check the Persistent Search option and click Save. Restart the RadiantOne service. If you have a cluster deployed, restart the service on all nodes.
 
 If you enable the persistent search control, an LDAP client can receive notifications of changes that occur in the RadiantOne namespace. When a persistent search is requested, RadiantOne keeps the search operation going so clients can receive changed entries (and additional information about the changes that occurred). 
 
@@ -287,7 +287,7 @@ An example of an ldapmodify request for incrementing the uidNumber by a value of
 
 RadiantOne supports the All Operational Attributes extension feature as outlined in [RFC 3673](https://www.rfc-editor.org/rfc/rfc3673) by default. This is advertised in the rootDSE to support searching for all operational attributes. 
 
-Using the + character in your comma-separated list of return attributes, this extension allows LDAP searches of RadiantOne Universal Directory stores to return all operational attributes (except computed operational attributes, which must be specified by name). This feature can be useful when trying to determine which operational attributes exist in an entry.
+Using the + character in your comma-separated list of return attributes, this extension allows LDAP searches of RadiantOne Directory stores to return all operational attributes (except computed operational attributes, which must be specified by name). This feature can be useful when trying to determine which operational attributes exist in an entry.
 
 >[!note] Search results may not include all requested attributes if precluded by access controls.
 
