@@ -7,12 +7,12 @@ description: Learn about the client protocols supported to query RadiantOne.
 
 RadiantOne Identity Data Management supports client operations via LDAP, SCIMv2 and REST. Details about these client protocols and their configuration are described below.
 
-Settings related to client protocols are configured from the Control Panel > GLOBAL SETTINGS > Client Protocols.
+Settings related to client protocols are configured from the Control Panel > Global Settings > Client Protocols.
 
 ## LDAP
 RadiantOne Identity Data Management supports LDAPv3 as documented in [RFC 2251](http://www.faqs.org/rfcs/rfc2251.html) as a client protocol for querying the service.
 
-Settings related to the LDAP client protocol are configured from the Control Panel > GLOBAL SETTINGS > Client Protocols > LDAP.
+Settings related to the LDAP client protocol are configured from the Control Panel > Global Settings > Client Protocols > LDAP.
 
 ### User to DN Mapping
 Typically, an LDAP client performs authentication first by searching the RadiantOne namespace for a specific user (based on configuration of the client to search for a specific attribute like cn, sAMAccountName, uid…etc.), and then issues a bind with the user DN returned in the search. These two steps are referred to as identification and credential checking respectively.
