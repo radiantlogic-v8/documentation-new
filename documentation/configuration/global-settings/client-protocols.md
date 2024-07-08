@@ -220,17 +220,14 @@ By default, only the RadiantOne super user (e.g. cn=directory manager) is allowe
 
 1.	Go to the Control Panel > MANAGE > Security > Access Control.
 
-2.	Click **Manual Edit Mode** at the top.
+1.	Click **Manual Edit Mode** at the top.
 
-3. Enter the following (update the userdn value to the DN of the user that you want to allow to use the subtree delete control):
+1. Enter the following (update the userdn value to the DN of the user that you want to allow to use the subtree delete control):(targetcontrol = "1.2.840.113556.1.4.805") (version 3.0; acl "Tree delete control access"; allow(read) userdn="ldap:///uid=Aaron_Medler,ou=Accounting,o=companydirectory";).
+ ![Manually editing the ACI](../Media/manual-edit.jpg)
 
-(targetcontrol = "1.2.840.113556.1.4.805") (version 3.0; acl "Tree delete control access"; allow(read) userdn="ldap:///uid=Aaron_Medler,ou=Accounting,o=companydirectory";).
+>[!note] To allow anyone to perform a subtree delete request, use a value of “ldap:///anyone” for the userdn as shown in the example below.<br> (targetcontrol = "1.2.840.113556.1.4.805") (version 3.0; acl "Anonymous tree delete control access"; allow(read) userdn ="ldap:///anyone";).
 
-    ![Manually editing the ACI](../Media/manual-edit.jpg)
-
-      >[!note] To allow anyone to perform a subtree delete request, use a value of “ldap:///anyone” for the userdn as shown in the example below.<br> (targetcontrol = "1.2.840.113556.1.4.805") (version 3.0; acl "Anonymous tree delete control access"; allow(read) userdn ="ldap:///anyone";).
-
-4.	Click **CREATE**.
+1.	Click **CREATE**.
 
     If the target DN is associated with a RadiantOne Directory store, then RadiantOne processes the subtree delete control. If the target DN is a proxy view to a backend directory, RadiantOne request with the subtree delete control is delegated to the backend for processing.
 
