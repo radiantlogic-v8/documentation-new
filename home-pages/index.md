@@ -123,7 +123,7 @@ Harness your identity data with intelligent integration to drive better business
 
 <section>
    
-  > [Managing Log Levels](troubleshooting/troubleshootingm#managing-log-levels)  
+  > [Managing Log Levels](troubleshooting/troubleshooting#managing-log-levels)  
   > Learn how to manage log levels.
   
   > [Understanding Logs](troubleshooting/troubleshooting#understanding-logs)   
