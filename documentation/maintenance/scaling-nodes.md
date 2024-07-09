@@ -13,4 +13,5 @@ To set the number of RadiantOne nodes contained in an environment, in the EOC na
 
 ## Self-Managed Deployment
 
+The number of nodes to scale to is defined in the Helm Chart. Helm charts for self-managed deployments will be available in July 2024.
 
