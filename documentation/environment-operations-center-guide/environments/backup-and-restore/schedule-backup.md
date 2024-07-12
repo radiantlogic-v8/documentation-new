@@ -9,7 +9,7 @@ This guide provides an overview of the steps required to schedule automated back
 
 ## Getting started
 
-By default the backup schduled option is set to disabled
+By default the backup scheduled option is set to disabled
 
 ![image description](images/backup-default-disabled.png)
 
