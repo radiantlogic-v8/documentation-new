@@ -23,7 +23,7 @@ These release notes contain the following sections:
 
 ## Improvements
 
-- [INTERNAL]: Update migrations to support upgrading from v7.4 to v8.0.3.
+- [INTERNAL]: Update migrations to support upgrading from v7.4 to v8.0.3 as an interim path to upgrade to v8.1.0.
 
 ## Security Vulnerability Fixes
 
