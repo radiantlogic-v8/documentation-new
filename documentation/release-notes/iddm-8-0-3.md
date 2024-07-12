@@ -7,7 +7,7 @@ description: RadiantOne IDDM v8.0.3 Release Notes
 
 July 15, 2024
 
-This patch release is only needed to provide support for updating to v8.1.0. It contains no features or bug fixes otherwise.
+This patch release is only needed to provide support for updating from v7.4 to v8.1.0. It contains no features or bug fixes otherwise.
 
 These release notes contain the following sections:
 
