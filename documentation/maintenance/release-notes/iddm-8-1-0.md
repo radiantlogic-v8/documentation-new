@@ -49,6 +49,7 @@ These release notes contain the following sections:
 - Modification of encrypted attributes fails from the Directory Browser.
 - Importing LDIFZ files is not supported yet.
 - Extracting a large schema, occasionally results in timeouts in Data Catalog > Data Sources.
+- Issues exporting RadiantOne Directory stores from Directory Browser.
 
 For known issues reported after the release, please see the Radiant Logic Knowledge Base: 
 
