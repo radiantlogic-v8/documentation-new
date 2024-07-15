@@ -37,7 +37,10 @@ Harness your identity data with intelligent integration to drive better business
   > Learn about identity data source backends supported in RadiantOne Identity Data Management.
 
   > [Applying Patches](applying-patch/applying-patch)  
-  > Learn about how to patch RadiantOne Identity Data Management.
+  > Learn about how to patch RadiantOne Identity Data Management (e.g. v8.0.1 to v8.0.2).
+
+  > [Upgrades](upgrade-guides/upgrade-81)  
+  > Learn about how to upgrade RadiantOne Identity Data Management (e.g. 8.0.2 to v8.1.0).
 
 </section>
 
