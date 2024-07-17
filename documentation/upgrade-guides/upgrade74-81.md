@@ -142,7 +142,7 @@ An example of exporting configuration on Linux where RadiantOne is installed in 
 
 >[!warn] If performing the export on Windows, run the command line as Administrator (right-click on the .exe and choose Run as Administrator option).  
 
-1. Run the following command (modifying the version of the migration tool and the location of the export file to match your needs). 
+1. Run the following command (modifying the version of the migration tool and the location of the export file to match your needs).<br>
 C:\r1\migration\radiantone-migration-tool-2.1.10\migrate.bat export C:/tmp/export.zip 
 
 ## Steps to Perform for your SaaS Deployment in Environment Operations Center 
