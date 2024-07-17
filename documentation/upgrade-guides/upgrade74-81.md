@@ -74,7 +74,6 @@ To back up a persistent cache store:
 Icon	 | Cache Type
 -|-
 ![Periodic](Media/periodic-cache.jpg) | Persistent cache with periodic refresh 
-
 ![Realtime Cache](Media/realtime-cache.jpg) | Persistent cache with near real-time automated refresh 
 
 
