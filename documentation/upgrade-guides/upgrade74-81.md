@@ -67,15 +67,16 @@ Persistent caches must be re-initialized manually after migrating to SaaS. Even 
 
 To back up a persistent cache store:  
 
-1. On the Control Panel > Directory Namespace tab, expand below ![Cache Section](Media/cache-section.jpg). 
-
-1. Under the Cache node in the left pane, select a cache to back up. The two types of persistent cache are listed below.  
+The two types of persistent cache are listed below.  
 
 Icon	 | Cache Type
 -|-
 ![Periodic](Media/periodic-cache.jpg) | Persistent cache with periodic refresh 
 ![Realtime Cache](Media/realtime-cache.jpg) | Persistent cache with near real-time automated refresh 
 
+1. On the Control Panel > Directory Namespace tab, expand below ![Cache Section](Media/cache-section.jpg). 
+
+1. Under the Cache node in the left pane, select a cache to back up. 
 
 1. In the right pane, in the Properties tab, click Export. 
 
@@ -83,9 +84,8 @@ Icon	 | Cache Type
 
 1. Check the Export for Replication box (to ensure the UUID attribute remains with the entries).  
 
-1. Click OK. The Tasks Launched window opens. 
-
-![Task Monitor Log Window](Media/task-complete.jpg)
+1. Click OK. The Tasks Launched window opens.<br>
+ ![Task Monitor Log Window](Media/task-complete.jpg)
 
 1. Once the export finishes, click OK to close the Tasks Launched window. You are returned to the cache’s Properties tab.  
 
@@ -93,7 +93,6 @@ Icon	 | Cache Type
 
 1. Copy the LDIF files from <RLI_HOME>/vds_server/ldif/export to a safe place outside of the <RLI_HOME> location. 
 
- 
 
 ### Backup ACLs 
 
