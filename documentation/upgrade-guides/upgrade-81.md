@@ -74,7 +74,7 @@ The default list of delegated admin roles and the permissions that are equivalen
  
 **SCHEMAADMIN** 
 
-![schemaadmin role](Media/schemaadmin-admin-role.jpg) 
+![schemaadmin role](Media/schema-admin-role.jpg) 
  
 
 To properly assign new users to delegated admin roles, log into the Control Panel as the Directory Manager (configured when you create the environment in EOC) and go to ADMIN > USER MANAGEMENT.  Search for the delegated admin user account and assign the user to the new role.  
