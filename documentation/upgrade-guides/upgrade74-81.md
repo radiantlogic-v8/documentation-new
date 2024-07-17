@@ -201,7 +201,7 @@ Stop all persistent cache refreshes (if they are running) and deactivate the cac
 
 If you had Global Identity Builder projects in v7.4, you must re-upload in the Global Identity Builder project the identity sources in your SaaS environment. If the Global Identity Builder project has identity sources that are based on persistent cache, make sure these caches are reinitialized in SaaS before re-uploading the global profile. 
 
-To edit Global Identity Builder projects in SaaS, from the Control Panel switch to Classic Control Panel and navigate to the Wizards tab. 
+To edit Global Identity Builder projects in SaaS, from the Control Panel switch to Classic Control Panel and navigate to the Wizards tab. Launch the Global Identity Builder and re-upload your identities in your project. You need to go throught the cache configuration process mentioned in the previous section after the upload.
 
 ### Re-enable Inter-cluster Replication 
 
