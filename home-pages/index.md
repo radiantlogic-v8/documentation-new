@@ -57,6 +57,9 @@ Harness your identity data with intelligent integration to drive better business
   > [Applying Patches](applying-patch/applying-patch)
   > Learn how to patch your RadiantOne v7.4 service. This covers applying patches, not upgrading to a new major version.
 
+  > [Upgrades](upgrade-guides/upgrade74-81)
+  > Learn how to upgrade your RadiantOne v7.4 service to RadiantOne SaaS. This covers upgrading to a new major version.
+
 </section>
 
 ## RadiantOne Integration
