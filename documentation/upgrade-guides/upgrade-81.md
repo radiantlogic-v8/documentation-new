@@ -62,7 +62,7 @@ The default list of delegated admin roles and the permissions that are equivalen
 
 **NAMESPACEADMIN** 
 
-![namespaceadmin role](Media/namespaceadmin-admin-role.jpg) 
+![namespaceadmin role](Media/namespace-admin-role.jpg) 
 
 **OPERATOR** 
 
