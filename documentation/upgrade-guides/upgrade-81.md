@@ -89,11 +89,13 @@ To properly assign new users to delegated admin roles, log into the Control Pane
 
 The new Control Panel does not have Context Builder. Therefore, only identity views that have been mounted somewhere below a root naming context are editable. Any identity views that were not mounted cannot be edited until they are mounted.  Create a new Root Naming Context from Control Panel > Manage > Directory Namespace > Namespace Design and then mount a label below the naming context for each identity view you want to mount. 
 
-  
-
 Once all labels are created, use the “MOUNT BACKEND” button at each label level and choose the Virtual Tree type, selecting the identity view (.dvx file) to mount: one identity view per label. 
 
+![Staging Naming Context](Media/staging-location.jpg)   
+
 This will allow you to edit the identity view configuration using the PROPERTIES, ADVANCED SETTINGS and OBJECT BUILDER tabs. 
+
+![Edit Mounted Views](Media/edit-mounted-views.jpg)  
 
 ## How to Report Problems and Provide Feedback 
 
