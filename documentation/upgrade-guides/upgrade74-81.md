@@ -29,9 +29,8 @@ To back up naming contexts defined as RadiantOne Directory (HDAP) stores, perfor
 
 1. Check the Export for Replication box (to ensure the UUID attribute remains with the entries).  
 
-1. Click OK. The Tasks Launched window opens. 
-
- ![Task Monitor](Media/task-monitor.jpg) 
+1. Click OK. The Tasks Launched window opens.
+  ![Task Monitor](Media/task-monitor.jpg) 
 
 1. Once the export finishes, click OK to close the Tasks Launched window. You are returned to the store’s Properties tab.  
 
