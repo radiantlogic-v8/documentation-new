@@ -48,9 +48,8 @@ To disable inter-cluster replication:
 
 1. Select the cached naming context.  
 
-1. On the Properties tab, uncheck the Inter-cluster Replication. 
-
-![Inter-cluster Replication](Media/inter-cluster-replication.jpg)
+1. On the Properties tab, uncheck the Inter-cluster Replication.
+ ![Inter-cluster Replication](Media/inter-cluster-replication.jpg)
 
 1. Click Save. 
 
