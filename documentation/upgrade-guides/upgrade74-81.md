@@ -100,18 +100,15 @@ To back up ACLs:
 
 1. On the Control Panel > Directory Browser tab, right-click on the cn=config node. 
 
-1. Select LDIF -> Export to LDIF.    
+1. Select LDIF -> Export to LDIF.<br>
+ ![Export LDIF](Media/export-ldif.jpg)
 
-![Export LDIF](Media/export-ldif.jpg)
 
+1. Enter a file name for the ldif file (overwrite the default untitled) and click Confirm.<br>
+ ![Export File](Media/export-file.jpg)
 
-1. Enter a file name for the ldif file (overwrite the default untitled) and click Confirm.  
-
-![Export File](Media/export-file.jpg)
-
-1. An export task is launched in the background. To view the task, go to the Server Control Panel associated with the RadiantOne node you are exporting from > Tasks tab. Check the “Terminated” option to view all tasks. Confirm the task “Export To LDIF [config] has FINISHED successfully. 
-
-![Task List](Media/task-list.jpg)
+1. An export task is launched in the background. To view the task, go to the Server Control Panel associated with the RadiantOne node you are exporting from > Tasks tab. Check the “Terminated” option to view all tasks. Confirm the task “Export To LDIF [config] has FINISHED successfully.<br>
+ ![Task List](Media/task-list.jpg)
 
 1. Copy the LDIF files from <RLI_HOME>/vds_server/ldif/export to a safe place outside of the <RLI_HOME> location. 
 
@@ -135,7 +132,8 @@ An example of exporting configuration on Linux where RadiantOne is installed in 
 
  ./migrate.sh /home/r1user/radiantone/vds export test2.zip 
 
- 
+**Generating the Export**
+
 1. On the machine where you are exporting the configuration from, run <RLI_HOME>/bin/advanced/stop_servers.bat (.sh) to stop the RadiantOne services. 
 
 1. Run <RLI_HOME>\bin\runZooKeeper.bat (.sh) to start ZooKeeper. 
@@ -157,16 +155,12 @@ Use the Environment Operations Center to create an environment and install Radia
 
 >[!note] Production SaaS environments are created with 2-node RadiantOne clusters. If your RadiantOne cluster requires more nodes, you can manually scale up the application once it is deployed. 
 
-## Upgrade Process
+### Upgrade Process
 
 Once the SaaS environment is ready, navigate to the environment > OVERVIEW section. In the Application Details section click UPDATE and choose v8.0.3 (official) for the version. 
 
 After the update completes, navigate to the environment > OVERVIEW section. In the Application Details section click UPDATE and choose v8.1.0 (official) for the version. 
 
-
-## Next Steps
-
-Review the following sections for the next steps to using the v8.1 Control Panel.
 
 ### Create Secure Data Connector 
 
