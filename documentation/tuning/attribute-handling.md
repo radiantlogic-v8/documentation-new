@@ -1,7 +1,18 @@
-*Attributes Handling* - Manage attributes handling from Classic Control Panel > Settings > Server Front End > Attributes Handling
+---
+title: General Attribute and Entry Handling
+description: Learn about general attribute and duplicate entry handling to tune the Identity Data Management service.
+---
+
+## Overview
+
+Configuring general attributes handling and special settings for addressing duplicate entries are a couple of methods to consider for tuning Identity Data Management.
+
+## Attributes Handling
+
+Attributes Handling is managed from Classic Control Panel > Settings > Server Front End > Attributes Handling
 ![Attributes Handling Section](Media/Image3.45.jpg)
  
-<ins>Hide Operational Attributes</ins>
+### Hide Operational Attributes
 Check the Hide Operational Attributes option on the Classic Control Panel > Settings tab > Server Front End > Attributes Handling section if you do not want LDAP clients to have access to operational attributes (stored in a RadiantOne Directory store) such as: createTimestamp, modifiersName, modifyTimestamp, creatorsName…etc. If you choose to hide operational attributes, LDAP clients must specifically request the operational attribute they want during the search request, otherwise it is not returned.
 
 >[!note] 
@@ -9,25 +20,25 @@ Check the Hide Operational Attributes option on the Classic Control Panel > Sett
 
 Uncheck the Hide Operational Attributes option if LDAP clients are allowed to view the attributes.
 
-<ins>Operational Attributes Excluded from Being Hidden</ins>
+### Operational Attributes Excluded from Being Hidden
 If checked, the Hide Operational Attributes option hides all operational attributes from non-root users and users that are not a member of the cn=Directory Administrators group. To accommodate third-party integrations that rely on certain operational attributes, without requiring the service account to have Directory Administrator privileges, you can indicate a list of operational attributes that should not be hidden. Indicate them in the Exclude Operational Attributes From Being Hidden field. Separate attribute names with a single space. 
 
 <ins>Attributes Not Displayed in Logs</ins>
 
 This property allows you to control which attribute values are not printed in clear in the RadiantOne logs. If you do not want certain attribute values printed in clear in the logs, you can indicate them here. Each attribute name should be separated with a single space. Any attribute indicated here has a value of ***** printed in the logs instead of the value in clear.
 
-<ins>Binary Attributes</ins>
+### Binary Attributes
 
 Sometimes, LDAP directory schema definitions do not define certain attributes as binary even though the value of these attributes is binary. An example of this is the objectGUID attribute in Microsoft Active Directory. If the LDAP backend schema definition does not properly define the attribute type as binary, RadiantOne does not translate the value properly when returning it to an LDAP client. To ensure RadiantOne translates the value as binary, you must list the attribute name in the Binary Attributes parameter (space separated list). This parameter is global and applies to any backend LDAP that RadiantOne is accessing. The binary attributes can be defined from the Main Control Panel > Settings tab > Server Front End > Attributes Handling section. As long as the attribute name is listed, RadiantOne returns the value to a client as binary even if the backend LDAP server doesn’t define it as such.
 
 >[!note] 
 >If a binary attribute should be searchable, define the attribute in the RadiantOne LDAP schema with a friendly name indicating it as binary. Below is an example for the certificateRevocationList attribute: attributeTypes: ( 2.5.4.39 NAME ( 'certificateRevocationList;binary' 'certificateRevocationList' ) DESC 'Standard LDAP attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.5 X-ORIGIN 'RFC 2256’ )
 
-<ins>Excluded Attributes from Active Directory</ins>
+### Excluded Attributes from Active Directory
 
 This parameter is for Active Directory backends and is used for excluding specific attributes from being returned from the backend. Certain “system” attributes (e.g. dscorepropagationdata) returned from Active Directory (even for non-admin users) can cause problems for building persistent cache because the data type is not handled properly, and these attributes need to be added to the RadiantOne LDAP schema for the local storage to handle them in the cache. Also, these attributes cause problems for the change capture connector needed for real-time persistent cache refresh to work properly. Attributes that are not required by RadiantOne client applications, should be added to this list to ensure they are not returned in the view from Active Directory. By default, the AD attributes that are excluded are ds*, acs*, ms* and frs* (* is a wildcard meaning that any attributes with those prefixes are excluded). Any attributes that you do not want returned from the backend Active Directory can be added to the Excluded Attributes property. This value is defined from the Main Control Panel > Settings tab > Server Front End > Attributes Handling section. Make sure a space separates the attributes listed. Click **Save** when finished.
 
-<ins>Multi-Valued Database Attributes</ins>
+### Multi-Valued Database Attributes
 
 The Multi-Valued Database Attributes setting can be managed from the Main Control Panel > Settings tab > Server Front End > Attributes Handling section. This parameter allows for special processing of a database attribute that contains a multi-value. The database attribute must contain values separated by a space then the pound sign (#), then a space before the next value. For example, assume the following table existed inside a database:
 
@@ -62,9 +73,11 @@ mail = hcarter@rli.com # harold@yahoo.com
 title = HR Admin # HR # HR MGR
 ```
 
-*Duplicates Handling* - Manage duplicates handling from Classic Control Panel > Settings > Server Front End > Duplicates Handling.
+## Duplicate Entry Handling
 
-<ins>Duplicate DN Removal</ins>
+Manage duplicates handling from Classic Control Panel > Settings > Server Front End > Duplicates Handling.
+
+### Duplicate DN Removal
 
 During the identification phase (finding the person in the directory tree) of the authentication process, it is important that a search for a specific, unique user account only returns one entry.
 
@@ -86,7 +99,7 @@ The one entry returned with attributes from the first source the user was found 
 
 ![Result of Duplicate DN Removal](Media/Image3.51.jpg)
 
-<ins>Duplicate Identity Removal Rules</ins>
+### Duplicate Identity Removal Rules
 
 >[!note] 
 >In general, it is usually recommended that you use the [Global Identity Builder](/documentation/configuration/global-identity-builder/introduction) to build your view if you know you have overlapping entries that require correlation/disambiguation.
