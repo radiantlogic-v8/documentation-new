@@ -464,13 +464,23 @@ The Global Settings section is where client access protocols (LDAP, SCIM, REST) 
 
 *Token Validators* - 
 
-*Tuning* - Tuning topics include [Limits](/documentation/tuning/tuning-limits), [General Attributes Handline](), [Changelog Settings](/documentation/tuning/log-settings#changelog), [Log Settings](/documentation/tuning/log-settings) and [DoS Filter]()
+*Tuning* - Tuning topics include [Limits](/documentation/tuning/tuning-limits), [General Attributes Handline](/documentation/tuning/attribute-handling), [Changelog Settings](/documentation/tuning/log-settings#changelog), and [Log Settings](/documentation/tuning/log-settings).
 
 *Changelog* - The changelog is one of the recommended approaches for other processes to detect changes that have happened to RadiantOne entries. For details, please see: [Changelog](/documentation/tuning/log-settings#changelog)
 
 *Log Settings* - RadiantOne supports logging at different levels for different components. Logs for the different components are configured in the Classic Control Panel > Settings > Logs section. For details, please see: [Log Settings](/documentation/tuning/log-settings)
 
 ### Admin  
+
+The Admin section is used for managing admin users, delegated roles and permissions, directory manager settings, control panel configurations, access tokens and view entry statistics reports.
+
+**User Management**
+
+[Manage delegated admin users](#assigning-users-to-roles) from here.
+
+**Roles & Permissions** 
+
+[Manage default and custom roles](#default-delegated-admin-roles) from here.
 
 **Directory Admin Settings** 
 
@@ -580,13 +590,6 @@ This parameter can be set to the DN of the Administrators group defined in the v
 
 ![Directory Administrator Group DN](Media/special-group-dn.jpg)
 
-**User Management**
-
-[Manage delegated admin users](#assigning-users-to-roles) from here.
-
-**Roles & Permissions** 
-
-[Manage default and custom roles](#default-delegated-admin-roles) from here.
 
 **Control Panel Configuration**  
 
