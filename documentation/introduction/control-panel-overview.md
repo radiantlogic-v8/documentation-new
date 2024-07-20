@@ -462,7 +462,7 @@ The Global Settings section is where client access protocols (LDAP, SCIM, REST) 
 
 *Client Certificates* - Manage client certificates from the Control Panel > Global Settings > [Client Certificates](/documentation/configuration/global-settings/client-certificates).
 
-*Token Validators* - 
+*Token Validators* - External token validators allow applications to use an access token to call an API on behalf of itself. The API then responds with the requested data. For details on configuring external token validators, see: [External Token Validators](/documentation/configuration/security/external-token-validators).
 
 *Tuning* - Tuning topics include [Limits](/documentation/tuning/tuning-limits), [General Attributes Handline](/documentation/tuning/attribute-handling), [Changelog Settings](/documentation/tuning/log-settings#changelog), and [Log Settings](/documentation/tuning/log-settings).
 
