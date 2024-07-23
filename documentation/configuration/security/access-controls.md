@@ -277,7 +277,7 @@ If RadiantOne should allow anonymous access, then toggle the Allow Anonymous Acc
 
 ### Allow Directory Manager to Impersonate Other Users
 
-Proxy authorization allows the user that creates a connection to RadiantOne to impersonate/request access on behalf of another user. This allows authorization to be enforced for a user other than the one that creates the connection/binds to RadiantOne. By default, the RadiantOne super user (e.g. cn=directory manager) is allowed to impersonate other users. Toggle this off if you do not want the super user account to impersonate other users. Also, to allow impersonation, verify that the [Proxy Authorization Control](03-front-end-settings#proxied-authorization-control) is enabled because this is the control that allows clients to request access on behalf of another user.
+Proxy authorization allows the user that creates a connection to RadiantOne to impersonate/request access on behalf of another user. This allows authorization to be enforced for a user other than the one that creates the connection/binds to RadiantOne. By default, the RadiantOne super user (e.g. cn=directory manager) is allowed to impersonate other users. Toggle this off if you do not want the super user account to impersonate other users. Also, to allow impersonation, verify that the [Proxy Authorization Control](/documentation/configuration/global-settings/client-protocols#supported-controls) is enabled because this is the control that allows clients to request access on behalf of another user.
 
 ### Bind Requires Password
 
@@ -289,3 +289,7 @@ If you have groups stored in a RadiantOne Directory store and want to support gr
 
 >[!warning] 
 >Processing nested groups is not efficient and is not enabled by default. When nested groups are used in RadiantOne ACLs for access controls, many recursive searches are required. Large groups with a mix of many members including other groups as members can have poor performance. Use nested groups with caution and validate your use case with performance testing to ensure response times meet your needs.
+
+## Enable RootDSE ACI
+
+If you want to remove public access to the RootDSE, check the Enable RootDSE ACI option after you delete the default global read access ACI. This denies access to the RootDSE to everyone except cn=directory manager. 
