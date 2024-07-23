@@ -262,3 +262,30 @@ To define access controls:
     To assign permissions associated with the parent, toggle the **PARENT** option on.
 
 1.	Click **SAVE** when finished.
+
+## Authorization
+
+The settings found in the Control Panel > Manage > Security > Access Control > General tab are for global authorization settings. These settings dictate whether RadiantOne enforces defined access controls, allows anonymous access, allows the Directory Manager (super user) to impersonate other users, requires passwords for bind operations, if nested groups are supported and ACI are allowed on the RootDSE. Each setting is described in more details below.
+
+### Enable ACI
+
+The checking of ACIs by RadiantOne can be enabled or disabled by using the Enable ACI toggle. Toggle on to enable, off to disable. Toggled on is the default.
+
+### Allow Anonymous Access
+
+If RadiantOne should allow anonymous access, then toggle the Allow Anonymous Access option on. If RadiantOne should not allow anonymous access, toggle the option off. By default, anonymous access is not allowed. This is the default global access permission for anonymous users and is enforced before subsequent ACI rules. In other words, even if anonymous access were allowed as a general policy, subsequent ACI rules could prevent anonymous users from accessing any data. 
+
+### Allow Directory Manager to Impersonate Other Users
+
+Proxy authorization allows the user that creates a connection to RadiantOne to impersonate/request access on behalf of another user. This allows authorization to be enforced for a user other than the one that creates the connection/binds to RadiantOne. By default, the RadiantOne super user (e.g. cn=directory manager) is allowed to impersonate other users. Toggle this off if you do not want the super user account to impersonate other users. Also, to allow impersonation, verify that the [Proxy Authorization Control](03-front-end-settings#proxied-authorization-control) is enabled because this is the control that allows clients to request access on behalf of another user.
+
+### Bind Requires Password
+
+If a user binds to RadiantOne and does not provide a password, the default behavior is to treat it like an anonymous user. This may introduce security problems for the client application, or in certain cases where machines like printers may bind against RadiantOne, that do not verify that the client actually provided a password. If the Bind Requires Password setting is toggled on, and no password is specified in the bind request, RadiantOne tries to bind the specified user and return an invalid credential error to the client. If Bind Requires Password is not enabled, and a bind request comes in with a valid user DN and no password, it is considered an anonymous bind. Bind requires Password is active by default. 
+
+### Enable Nested Groups
+
+If you have groups stored in a RadiantOne Directory store and want to support groups as members, check the Enable Nested Groups option.
+
+>[!warning] 
+>Processing nested groups is not efficient and is not enabled by default. When nested groups are used in RadiantOne ACLs for access controls, many recursive searches are required. Large groups with a mix of many members including other groups as members can have poor performance. Use nested groups with caution and validate your use case with performance testing to ensure response times meet your needs.
