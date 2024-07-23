@@ -292,4 +292,4 @@ If you have groups stored in a RadiantOne Directory store and want to support gr
 
 ## Enable RootDSE ACI
 
-If you want to remove public access to the RootDSE, check the Enable RootDSE ACI option after you delete the default global read access ACI. This denies access to the RootDSE to everyone except cn=directory manager. 
+If you want to remove public access to the RootDSE, check the Enable RootDSE ACI option after you delete the default global read access ACI. This denies access to the RootDSE to everyone except the super user (e.g. cn=directory manager). 
