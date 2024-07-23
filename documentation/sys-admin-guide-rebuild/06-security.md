@@ -1469,19 +1469,9 @@ An authenticated user encompasses any client who successfully authenticates no m
 
 Special Users are anyone who successfully binds and is a member of the special user group defined on the Main Control Panel > Server Front End > Administration section. To enable checking for this category of users, check the Enable Access Checking option in the Special Users Group section in the Per User Category sub-section. Enter a number for the maximum bind operations that users in the Special Users Group are allowed to perform. Also enter a number for the maximum number of operations per checking interval they are allowed to issue. Any parameters that are set to 0 have no limits applied. The restrictions checking interval dictates the number of seconds the server should wait before determining if these thresholds are reached.
 
-# Access Control
-
-The settings found in the Main Control Panel > Settings Tab > Security section > Access Control sub-section are for defining access permissions for the virtual namespace. There is a section for configuring access controls, and there is a section for global authorization settings.
-
-![Access Controls](Media/Image3.110.jpg)
- 
-Figure 27: Access Controls
-
-For details on RadiantOne Access Controls and how to define them, please see [Security and Access Controls](06-security#security-and-access-controls).
-
 ## Authorization
 
-The settings configured in the Authorization section determine how RadiantOne handles authorization. These settings dictate whether RadiantOne enforces defined access controls, allows anonymous access, requires passwords for bind operations, and if nested groups are supported. Each setting is described in more details below.
+The settings found in the Main Control Panel > Settings Tab > Security section > Access Control > Authorization section are for global authorization settings. These settings dictate whether RadiantOne enforces defined access controls, allows anonymous access, requires passwords for bind operations, and if nested groups are supported. Each setting is described in more details below.
 
 ### Enable ACI
 
