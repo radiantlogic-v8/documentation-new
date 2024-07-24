@@ -87,7 +87,7 @@ To test your results, you can use the Control Panel > Manage > Directory Browser
 
 ![Linked Attribute](Media/linked-attr-query.jpg)
 
-The user in your filter should be returned. Select this entry and the attributes should display. The back link attribute (e.g. isMemberOf) should indicate the groups the use is a member of as shown in the example below.
+The user in your filter should be returned. Select this entry and the attributes should display. The back link attribute (e.g. isMemberOf) should indicate the groups the user is a member of as shown in the example below.
 
 ![Linked Attribute Result](Media/linked-attr-result.jpg)
 
