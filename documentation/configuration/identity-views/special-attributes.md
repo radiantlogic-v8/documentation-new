@@ -172,10 +172,7 @@ If the dynamic group configured above is in a proxy view of an LDAP backend (as 
 
 1.	Click **SAVE**.
 
-For groups defined in this section, RadiantOne automatically evaluates and computes the list of members based on the memberURL attribute indicated in the group. The group named “Dynamic” configured above would be returned by RadiantOne as a virtual static group like shown below (with the member list computed automatically based on the criteria indicated in the memberURL attribute). 
-
-![Example - Dynamic Group Translated into Virtual Static Group](Media/Image3.138.jpg)
-
+For groups defined in this section, RadiantOne automatically evaluates and computes the list of members based on the memberURL attribute indicated in the group. The group named “Dynamic” configured above would be returned by RadiantOne as a virtual static group with the member list computed automatically based on the criteria indicated in the memberURL attribute. 
 
 >[!note] 
 >To avoid returning duplicate entries, when a dynamic group is queried in RadiantOne, if both member and memberURL are requested, the memberURL attribute is not returned.
