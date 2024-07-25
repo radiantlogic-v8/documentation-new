@@ -140,39 +140,37 @@ Dynamic groups are not enabled by default. Therefore, any groups in RadiantOne a
 
 To enable support for dynamic groups, follow the steps below.
 
-1.	From the Main Control Panel > Settings Tab > Interception section > Special Attributes Handling sub-section, locate the Dynamic Groups section on the right side.
+1.	From the Control Panel > Setup > Directory Namespace > Namespace Design, select the root naming context where the identity view and/or RadiantOne Directory is mounted that contains the dynamic group.
+1.	Click the Special Attributes tab and expand the Dynamic Groups section.
 
-2.	Select either member or uniquemember from the Member Attribute drop-down list. This will determine the attribute name that will contain the members of the dynamic groups.
+1.	Click Select either member or uniquemember from the Member Attribute drop-down list. This will determine the attribute name that will contain the members of the dynamic groups.
+1.	Click **+DYNAMIC GROUP**.
 
-3.	Click **Add**.
-
-4.	Browse to the exact group entry that you like RadiantOne to automatically evaluate members for and click OK. To configure this logic for multiple groups located in the same container, just enter an LDAP URL that encompasses all groups instead of browsing to the exact group entry. E.g. ldap:///cn=config??sub?(objectClass=groupOfURLs) could be used to indicate all dynamic groups located below cn=config. If you are not knowledgeable about LDAP URL syntax, just browse to the container/parent node where all dynamic groups are located and the LDAP URL is automatically calculated for you.
-
-Below is an example of a dynamic group indicating a memberURL of: ldap:///ou=ad_sample,ou=allprofiles??sub?(&(objectclass=*)(l=San Mateo)) and how this would be configured respectively.
-
-![An image showing ](Media/Image3.135.jpg)
+1.	Click ![folder icon](Media/folder-icon.jpg) and browse to the exact group entry that you like RadiantOne to automatically evaluate members for and click **SELECT**. To configure this logic for multiple groups located in the same container, just enter an LDAP URL that encompasses all groups instead of browsing to the exact group entry. E.g. ldap:///cn=config??sub?(objectClass=groupOfURLs) could be used to indicate all dynamic groups located below cn=config. If you are not knowledgeable about LDAP URL syntax, just browse to the container/parent node where all dynamic groups are located and the LDAP URL is automatically calculated for you.
+1.	Click **ADD**. Below is an example of a dynamic group indicating a memberURL of: ldap:///o=companydirectory?1.1?base?(l=San Mateo) and how this would be configured respectively.
+	![Dynamic Group Example](Media/dynamic-group-ex.jpg)<br>
+	![Dynamic Group Config Example](Media/dynamic-group-config-ex.jpg)
  
 
-![An image showing ](Media/Image3.136.jpg)
- 
+1.	Repeat these steps to add all dynamic groups. 
 
-5.	Repeat steps 3 and 4 to add all dynamic groups. 
+1.	Click **SAVE**.
 
-6.	Click **Save** in the top right.
+If the dynamic group configured above is in a proxy view of an LDAP backend (as opposed to located in a RadiantOne Directory store), you must configure DN Remapping for the memberURL attribute.
 
-7.	If the group configured in step 4 above is in a proxy view of an LDAP backend (as opposed to located in an HDAP store), you must configure DN Remapping for the memberURL attribute. From the Directory Namespace tab, select the node where the proxy is mounted below the Root Naming Contexts section.
+1. From the Directory Namespace > Namespace Design, select the root naming context where the proxy is mounted.
 
-8.	On the Attributes tab on the right side, click **ADD**.
+1.	On the Advanced Settings tab on the right side, expand the *Global Attributes Handling* section.
 
-9.	Enter memberURL for the Name and Virtual Name properties.
+1.	Click **+ADD**.
+1.	Enter memberURL for the Name and Virtual Name properties.
 
-10.	Check the DN Remapping option.
+1.	Check the DN Remapping option.
 
-11.	Click **OK**.
+1.	Click **ADD**.
+	![Global Attributes Handling](Media/member-url-global-attr.jpg)
 
-![An image showing ](Media/Image3.137.jpg)
-
-12.	Click **Save** in the upper right.
+1.	Click **SAVE**.
 
 For groups defined in this section, RadiantOne automatically evaluates and computes the list of members based on the memberURL attribute indicated in the group. The group named “Dynamic” configured above would be returned by RadiantOne as a virtual static group like shown below (with the member list computed automatically based on the criteria indicated in the memberURL attribute). 
 
