@@ -314,7 +314,7 @@ The certificate is validated against a preloaded local CRL file (this can be man
 
 To select the CRL method, from the Main Control Panel got to the Settings tab > Security > SSL. Then, on the right side, once the Enable CRL option is checked, the CRL Method drop-down list is available. Select the desired method from this list. Click **Save** to apply your changes to the server.
 
-### OcspResponderURL
+#### OcspResponderURL
 
 If the certificate does not include a URI, enter the OCSP responder URL in this field. 
 
