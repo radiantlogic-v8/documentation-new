@@ -271,6 +271,8 @@ To define access controls:
 
     >[!note] Although there is not an absolute requirement, it is generally recommended to define all your access controls at the root level so you can come back to this single level and see all configured access controls across the entire virtual namespace.
 
+1. To set the maximum number of entries displayed under a branch, enter a value in the Size Limit field and click Refresh. This step is optional.
+
 1.	Click **Add**. The Edit ACI pane is displayed.
 
     >[!note] The Target Scope pull-down menu value defaults to subtree, and the Target Attributes value defaults to All.
