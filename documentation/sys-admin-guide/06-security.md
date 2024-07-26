@@ -314,6 +314,10 @@ The certificate is validated against a preloaded local CRL file (this can be man
 
 To select the CRL method, from the Main Control Panel got to the Settings tab > Security > SSL. Then, on the right side, once the Enable CRL option is checked, the CRL Method drop-down list is available. Select the desired method from this list. Click **Save** to apply your changes to the server.
 
+### OcspResponderURL
+
+If the certificate does not include a URI, enter the OCSP responder URL in this field. 
+
 ### CRL File/Directory
 
 If the static (or failover) CRL checking mechanism has been selected, the value of the Server Certificate Revocation List File parameter should point to the CRL file downloaded from the certificate authority. This can be a file containing multiple CRL files if needed. Client certificates can be validated against this list. 
