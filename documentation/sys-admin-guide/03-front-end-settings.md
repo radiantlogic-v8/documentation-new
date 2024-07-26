@@ -792,9 +792,11 @@ For details on configuring and accessing RadiantOne via DSML, SPML, SCIM, and RE
 
 Figure 23: Advanced Section
 
-### Run as Windows Service
+### Windows Settings
 
-If the RadiantOne service has been installed as a Windows Service, this option should be checked. If you uninstall the Windows Service, you must uncheck this option to ensure that the RadiantOne service can be started from the Control Panel > Dashboard tab.
+If the RadiantOne service is running independently in local mode, this section contains a link to documentation that describes how to configure it to run as a service. If Radiantone is running as a service, this section contains an option to disable the run-as-a-service setting. This should be done *after* the service is uninstalled by following the steps in the link this section. 
+
+>[!note] This section display on Windows systems only. 
 
 ### Windows Directory
 
