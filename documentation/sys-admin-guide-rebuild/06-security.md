@@ -831,35 +831,36 @@ To define access controls:
 
 1.	From the Main Control Panel > Settings Tab > Security section > Access Control sub-section, select the Enable ACI checkbox on the right side in the Authorization section and click **Save**.
 
-2.	In the Access Control section, select root.
+1.	In the Access Control section, select root.
 
 >[!note] 
 >Although there is not an absolute requirement, it is generally recommended to define all your access controls at the root level so you can come back to this single level and see all configured access controls across the entire virtual namespace.
 
-3.	Click **Add**. The Edit ACI pane is displayed.
+1. To set the maximum number of entries displayed under a branch, enter a value in the Size Limit field and click Refresh. This step is optional. 
 
->[!note] 
->The Target Scope pull-down menu value defaults to subtree, and the Target Attributes value defaults to All.
+1.	Click **Add**. The Edit ACI pane is displayed.
 
-4.	Enter an ACI description.
+>[!note] The Target Scope pull-down menu value defaults to subtree, and the Target Attributes value defaults to All.
 
-5.	Click **Choose** to navigate to the target DN.
+1.	Enter an ACI description.
 
-6.	In the Target Scope drop-down list, select base, onelevel or subtree.
+1.	Click **Choose** to navigate to the target DN.
 
-7.	In the Target Filter, enter an applicable LDAP filter to narrow the entries affected by the access control rule. This step is optional.
+1.	In the Target Scope drop-down list, select base, onelevel or subtree.
 
-8.	For the Target Attributes, select either “equal to” (=) or “not equal to” (!=) from the drop-down list. Then choose to either have the access rule apply to “all” or “custom”. If custom is selected, click SELECT to narrow the list.
+1.	In the Target Filter, enter an applicable LDAP filter to narrow the entries affected by the access control rule. This step is optional.
+
+1.	For the Target Attributes, select either “equal to” (=) or “not equal to” (!=) from the drop-down list. Then choose to either have the access rule apply to “all” or “custom”. If custom is selected, click SELECT to narrow the list.
 
     If you choose custom, and your attribute doesn’t appear in the list, you must update the RadiantOne LDAP schema appropriately before setting the ACI. For details on this, please see [Extending RadiantOne LDAP Schema](07-directory-schema#extending-the-radiantone-ldap-schema). After the schema has been updated, go back to the Settings tab > Security section > Access Controls sub-section and follow the steps mentioned above to add the custom attribute list.
 
-9.	In the Permissions section, select either to allow or deny. 
+1.	In the Permissions section, select either to allow or deny. 
 
-10.	Select the [operations](06-security#operations) that you want allowed or denied.
+1.	Select the [operations](06-security#operations) that you want allowed or denied.
 
-11.	In the Authentication Context section, configure bind rules as needed.
+1.	In the Authentication Context section, configure bind rules as needed.
 
-12.	In the Apply to section, select the [subjects](06-security#subjects) that will be allowed or denied access. 
+1.	In the Apply to section, select the [subjects](06-security#subjects) that will be allowed or denied access. 
 
     To assign users, groups or users associated in a specific tree/branch, click **LDAP SEARCH**. 
 
@@ -871,7 +872,7 @@ To define access controls:
 
     To assign permissions associated with the parent, click **ALLOW PARENT**.
 
-13.	Click **Save** when finished.
+1.	Click **Save** when finished.
 
 ## Client Certificate Trust Store (Cluster Level Trust Store)
 
