@@ -788,7 +788,7 @@ For details on configuring and accessing RadiantOne via DSML, SPML, SCIM, and RE
 >[!note]
 >The settings in this section are accessible only in [Expert Mode](01-introduction#expert-mode).
  
-![Advanced Section](Media/Image3.59.jpg)
+![Advanced Section](Media/front-end-settings-advanced.png)
 
 Figure 23: Advanced Section
 
