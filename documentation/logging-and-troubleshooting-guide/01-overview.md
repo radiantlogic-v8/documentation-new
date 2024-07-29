@@ -79,7 +79,7 @@ The items checked are outlined below.
 -	Disk Throughput - minimum 100MB/sec.
 -	Disk Space - minimum 20GB.
 -	DNS resolution - all hostnames must be resolvable.
--	Zookeeper network latency - maximum 15ms.
+-	Zookeeper network latency - maximum 15ms (50% score). The maximum latency provided by each test is the maximum latency acceptable to pass this test. Then, linear interpolation is used to find the corresponding score between 50% and 100%.
 -	Zookeeper read throughput - minimum 25MB/sec.
 -	Zookeeper write throughput - minimum 5MB/sec.
 -	Linux Open File Descriptors - minimum 48k.
