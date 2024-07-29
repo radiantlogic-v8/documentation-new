@@ -208,5 +208,5 @@ The unnest groups setting is not enabled by default. To define a naming context 
 4.	Expand the view definition and select the nested group.
 5.	Click **ADD**.
 6.	Click **SAVE**.
-7.	Configure the persistent cache for the identity view containing the nested groups from the Cache tab. 
+7.	Configure the ![persistent cache](../../tuning/persistent-cache) for the identity view containing the nested groups from the Cache tab. 
 
