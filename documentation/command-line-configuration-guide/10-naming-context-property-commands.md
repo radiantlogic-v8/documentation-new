@@ -154,11 +154,17 @@ This command prints the current value for a given property on the specified nami
 `- mergedn <mergedn>`
 <br>The remote base DN of the LDAP proxy merge tree. This argument should be used with the - mergedatasource argument when specifying an LDAP proxy merge tree.
 
-**REST (ADAP) Example**
+### Examples
+
+#### REST (ADAP) Example
 
 In the following example, a request is made to display the values for the dnAttributes property in an LDAP proxy.
 
 `https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=get-ctx-prop&namingcontext=o=ldapproxy &prop=dnattributes`
+
+In the following example, a request is made to get the inchangelog property on a cache.
+
+`vdsconfig.bat get-ctx-prop -namingcontext o=companyprofiles -prop inchangelog -cache`
 
 ## set-ctx-prop
 
@@ -200,6 +206,12 @@ This command sets the value for a given property on the specified naming context
 In the following example, a request is made to enable Proxy Authorization for an LDAP proxy view mounted at o=ldapproxy.
 
 `https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=set-ctx-prop&namingcontext=o=ldapproxy&prop=proxiedauthentication&value=true`
+
+#### Setting the Inchangelog Property on an LDAP Proxy
+
+In the following example, a request is made to set the inchangelog property on an LDAP proxy. 
+
+`vdsconfig.bat set-ctx-prop -namingcontext o=companyprofiles -prop inchangelog -value true`
 
 #### Full Text Searching
 
