@@ -316,7 +316,7 @@ To select the CRL method, from the Main Control Panel got to the Settings tab > 
 
 #### OcspResponderURL
 
-If the certificate does not include a URI, enter the OCSP responder URL in this field. 
+If the certificate does not include a URI, enter the OCSP responder URL in this field. If this field is populated, the specified OCSP responder is contacted to determine revocation status.
 
 ### CRL File/Directory
 
