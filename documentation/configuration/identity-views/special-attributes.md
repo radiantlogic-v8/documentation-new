@@ -185,8 +185,9 @@ The default and recommended behavior of RadiantOne for cached dynamic groups is 
 
 If you require the group members to be cached as static group entries, check the *Store explicit members in cache* option when you define the Dynamic Group. Enabling this setting means that the static groups are stored in the persistent cache (members are evaluated and cached in the member attribute) and refreshed as needed with either a periodic refresh or a real-time refresh. If caching is not enabled, the dynamic groups are stored in the cache, and the evaluation of membership to compute the static group is performed when the group is requested. 
 
->[!note] 
->If the location of the dynamic group is already configured for persistent cache when you select to *Store explicit members in cache* in the dynamic group setting, you must reindex the persistent cache to ensure the group members are also in the cache.
+>[!warning] The Enable Caching option in dynamic groups is disabled for dynamic group URLs pointing to branches that are not cached. 
+
+>[!note]  If the location of the dynamic group is already configured for persistent cache when you select to *Store explicit members in cache* in the dynamic group setting, you must reindex the persistent cache to ensure the group members are also in the cache.
 
 ![Cache Setting for Group Members](Media/store-members-in-cache.jpg)
 
