@@ -495,8 +495,7 @@ If you require the group members to be cached as static group entries, check the
 
 >[!warning] Enable caching option in dynamic groups is disabled for dynamic group URLs pointing to branches that are not cached. 
 
->[!note]
->if the location of the dynamic group is already configured for persistent cache when you select to Enable Caching in the dynamic group setting, you must reindex the persistent cache to ensure the group members are also in the cache.
+>[!note] If the location of the dynamic group is already configured for persistent cache when you select to Enable Caching in the dynamic group setting, you must reindex the persistent cache to ensure the group members are also in the cache.
 
 ![Cache Setting for Group Members](Media/Image3.139.jpg)
 
