@@ -342,6 +342,8 @@ If a user binds to RadiantOne and does not provide a password, the default behav
 
 If you have groups stored in a RadiantOne Universal Directory store and want to support groups as members, check the Enable Nested Groups option.
 
+>[!note] If [Linked Attributes](interception#linked-attributes) are not set, the member and the nested group must reside within the same naming context.
+
 >[!warning] Processing nested groups is not efficient and is not enabled by default. When nested groups are used in RadiantOne ACLs for access controls, many recursive searches are required. Large groups with a mix of many members including other groups as members can have poor performance. Use nested groups with caution and validate your use case with performance testing to ensure response times meet your needs.
 
 ### LDAP_MATCHING_RULE_IN_CHAIN
