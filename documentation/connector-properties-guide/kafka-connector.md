@@ -9,7 +9,7 @@ The RadiantOne Kafka capture connector leverages the Apache Kafka Consumer API t
 
 The Kafka capture and apply connectors are independent, meaning that they do not need to be deployed together. The source(s) and target(s) could be any combination of Kafka topics, LDAP-accessible data stores, JDBC-accessible data stores, or web-services (SCIM or REST accessible).
 
-This section assumes that you have Kafka installed and configured. Once you have installed and configured Kafka, follow the instructions in this section.
+This section assumes that you have access to an existing Kafka instance that you can connect to. Once you gain access, follow the instructions in this section.
 
 To sync between RadiantOne and Kafka topics, you need to configure the following. 
 
@@ -180,7 +180,7 @@ If you’re configuring Global Sync to act as both a consumer and producer with 
 
 ## Configuring Global Sync as a Kafka Consumer
 
-1.	In the Main Control Panel, navigate to the Global Sync tab. 
+1.	In the Main Control Panel, navigate to the Synchronization tab. 
 
 1.	Click ![new topology](media/new-topology.jpg).
 
