@@ -49,6 +49,17 @@ $ ulimit -n
 
 Confirm that ulimit -v and -u return unlimited to prevent problems with the amount of virtual address space that can be allocated.
 
+File descriptor limits can be set as follows.
+
+1. As root, open the system's /etc/security/limits.conf file.
+
+1. Add two lines that set the file descriptor limits.
+
+* hard nofile 65536
+* soft nofile 65536
+
+1. Save the file. 
+
 Also, set shell limits for the Max Number of Processes. These steps are described below.
 
 1.	As root, open the system's /etc/security/limits.conf file.
