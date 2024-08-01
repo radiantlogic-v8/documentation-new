@@ -149,17 +149,15 @@ C:\r1\migration\radiantone-migration-tool-2.1.10\migrate.bat export C:/tmp/expor
 
 Log into your Environment Operations Center. The credentials were sent to you during your onboarding process.
 
-Use the Environment Operations Center to create an environment and install RadiantOne Identity Data Management version v8.0.2 and import the configuration that was exported from the v7.4 machine using the CUSTOM CONFIGURATION option. For assistance see: [Creating Environments](https://developer.radiantlogic.com/eoc/latest/environments/environment-overview/create-environments/#advanced-setup)
+Use the Environment Operations Center to create an environment and install RadiantOne Identity Data Management version v8.0.3 and import the configuration that was exported from the v7.4 machine using the CUSTOM CONFIGURATION option. For assistance see: [Creating Environments](https://developer.radiantlogic.com/eoc/latest/environments/environment-overview/create-environments/#advanced-setup)
 
-![Install IDDM](Media/new-iddm-app.jpg)
+![Install IDDM](Media/new-iddm-app2.jpg)
 
 >[!note] Production SaaS environments are created with 2-node RadiantOne clusters. If your RadiantOne cluster requires more nodes, you can manually scale up the application once it is deployed. 
 
 ### Upgrade Process
 
-Once the SaaS environment is ready, navigate to the environment > OVERVIEW section. In the Application Details section click UPDATE and choose v8.0.3 (official) for the version. 
-
-After the update completes, navigate to the environment > OVERVIEW section. In the Application Details section click UPDATE and choose v8.1.0 (official) for the version. 
+Once the SaaS environment is ready, navigate to the environment > OVERVIEW section. In the Application Details section click UPDATE and choose v8.1.0 (official) for the version. 
 
 
 ### Create Secure Data Connector 
