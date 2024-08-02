@@ -152,6 +152,13 @@ If you have ZooKeeper deployed in an external ensemble, you must update it separ
 
  >[!warning] The truststore and keystore are created when ZooKeeper is restarted after the update. Therefore, if you want to use SSL/TLS access to ZooKeeper, ensure you have imported the required certificates. For steps, see the RadiantOne Hardening Guide. 
 
+## Updating Active Directory Password Capture
+
+The files to detect password changes in Active Directory were updated in v7.4.11. These files need to be manually updated in your RadiantOne install if you are running a version prior to v7.4.11 (base install before patching).
+
+Download the files from Sharefile along with the update installer from the: update_installers > 7.4 > 7.4.11 > ActiveDirectoryPasswordCapture folder and update your `<RLI_HOME>/bin/ad_pwd` folder with them (remove or overwrite these files with the ones from Sharefile).
+
+Install the .NET framework v4.8 and [VC++ distributable v14.38+](https://aka.ms/vs/17/release/vc_redist.x64.exe) on the RadiantOne machine.
 
 ## Known Issues 
 
