@@ -81,7 +81,7 @@ For specific hardware requirements of each, please see: [https://developer.radia
 
 ## Known Issues/Important Notes
 
--	Data sources exported using the "Export" button (in the Control Panel UI) in versions 7.4.8 and 7.4.9, 7.4.10 cannot be imported into other environments. If you need to migrate configurations, use the vdsconfig utility commands (resource-export, resource-import, export-datasource, import-datasource ). Starting in v7.4.11, data sources exported using the Control Panel can be imported into other environments. In v7.4.11 the vdsconfig command also supports an optional cross-environment flag for flexibility to differ between local backup of data sources and diff environment migration. 
+-	Related to item 46529, data sources exported using the "Export" button (in the Control Panel UI) in versions 7.4.8 and 7.4.9, 7.4.10 cannot be imported into other environments. If you need to migrate configurations, use the vdsconfig utility commands (resource-export, resource-import, export-datasource, import-datasource ). Starting in v7.4.11, data sources exported using the Control Panel can be imported into other environments. In v7.4.11 the vdsconfig command also supports an optional cross-environment flag for flexibility to differ between local backup of data sources and diff environment migration. 
 
 -	Related to item 46438, you need to manually update files in: <RLI_HOME>/bin/ad_pwd. These files are located in Sharefile in the same location as the v7.4.11 updater files. Also, the .NET framework 4.8 and VC++ distributable v14.38+ must be installed on the RadiantOne machine.   
 
