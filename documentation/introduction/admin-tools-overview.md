@@ -7,7 +7,7 @@ description: Learn about the two main administration tools used in Identity Data
 
 There are two tools that administrators use to manage RadiantOne Identity Data Management.
 - The Environment Operations Center is used by administrators to create environments, access monitoring dashboards, scale resources, apply updates, schedule backups, and troubleshooting issues. Environment Operations Center is only offered with SaaS deployments.
-- The Control Panel is used by administrators to configure identity views, directory stores, synchronization and global settings. The Identity Data Management environment must be created in the Environment Operations Center before administrators can access and use the Control Panel.
+- The Control Panel is used by administrators to configure identity views, directory stores, synchronization and global settings. For SaaS deployments, the Identity Data Management environment must be created in the Environment Operations Center before administrators can access and use the Control Panel.
 
 ## Environment Operations Center
 
