@@ -84,4 +84,9 @@ Templates are used to define data sources and each data source type requires a t
 
 ![New Data Source](Media/new-data-source.jpg)
 
-You can define new templates for JDBC-accessible sources and custom API-accessible sources from Control Panel > Setup > Data Catalog > Template Management.
+For database data sources, a JDBC driver is associated with each template. RadiantOne includes the following JDBC drivers associated with their respective template: Oracle (thin), Oracle oci, Microsoft SQL Server, HSQL, MySQL (supports MariaDB too), IBM DB2, Sybase, and Derby.
+
+You can define new templates for JDBC-accessible sources and custom API-accessible sources from Control Panel > Setup > Data Catalog > Template Management. Have the driver libraries files ready to upload during the template definition.
+
+![New JDBC Template](Media/new-jdbc-template.jpg)
+
