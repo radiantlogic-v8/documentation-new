@@ -80,7 +80,7 @@ There are nine default database data sources defined for the Derby databases ins
 
 ### Default Data Source Templates
 
-Templates are you used to define data sources and each data source type requires a template. RadiantOne includes default templates which can be used when creating data sources from Control Panel > Setup > Data Catalog > Data Sources.
+Templates are used to define data sources and each data source type requires a template. RadiantOne includes default templates which can be used when creating data sources from Control Panel > Setup > Data Catalog > Data Sources.
 
 ![New Data Source](Media/new-data-source.jpg)
 
