@@ -7,9 +7,9 @@ description: Learn the basics of restarting, deleting, and backing up environmen
 
 For SaaS deployments, use the Environment Operations Center to restart the RadiantOne service, delete environments and the applications running in them, and perform backups.
 
-## Restarting Environments
+## Restarting the RadiantOne Service
 
-Restarting environments is performed in the Environment Operations Center. In the EOC navigation pane, select Environments. On the Environments page, select an environment and an application. On the application page, click the Power button. For more details, see: [Starting Environments](/../../eoc/latest/environments/environment-overview/stop-and-start-environment)
+For SaaS deployments, restarting the RadiantOne Identity Data Management service is performed in the Environment Operations Center. In the EOC navigation pane, select Environments. On the Environments page, select an environment and an application. On the application page, click the Power button. For more details, see: [Starting Environments](/../../eoc/latest/environments/environment-overview/stop-and-start-environment)
 
 ## Deleting Environments
 
