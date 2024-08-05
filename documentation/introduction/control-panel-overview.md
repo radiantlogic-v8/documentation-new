@@ -691,4 +691,3 @@ The following settings must be managed from the RadiantOne Classic Control Panel
 -	PCache Refresh Monitoring: Classic Control Panel > PCache Monitoring tab
 -	Intercluster Replication Monitoring: Classic Control Panel > Replication Monitoring tab
 -	File Manager: Classic Control Panel > Settings > Configuration > File Manager <br> See [File Manager](#file-manager) for details.
--	Zookeeper: Classic Control Panel > ZooKeeper tab
