@@ -72,7 +72,7 @@ An LDAP data source named vdsha is included by default. This data source contain
 
 An LDAP data source named replicationjournal is included by default. This data source plays a role in inter-cluster replication and should not be deleted or have its status changed to “offline”.
 
->[!warning] If you change the super user/directory administrator password after installing RadiantOne, you must manually edit both the vdsha and replicationjournal LDAP data sources to update the password here as well. Changes to the data sources are performed from the Main Control Panel > Settings Tab > Server Backend section > LDAP Data Sources.
+>[!warning] If you change the super user/directory administrator password after installing RadiantOne, you must manually edit both the vdsha and replicationjournal LDAP data sources to update the password here as well. Changes to the data sources are performed from the Control Panel > Setup > Data Catalog > Data Sources.
 
 ### Default Database Data Sources
 
