@@ -78,3 +78,8 @@ An LDAP data source named replicationjournal is included by default. This data s
 
 There are nine default database data sources defined for the Derby databases installed with RadiantOne (advworks, derbyorders, derbysales, examples, log2db, multistore, northwind, rx500 and vdapdb). These databases support the [sample virtual views](#default-naming-contexts) mounted below o=examples and o=vds.
 
+### Default Data Source Templates
+
+Templates are you used to define data sources and each data source type requires a template. RadiantOne includes default templates which can be used when creating data sources from Control Panel > Setup > Data Catalog > Data Sources.
+
+You can define new templates for JDBC-accessible sources and custom API-accessible sources from Control Panel > Setup > Data Catalog > Template Management.
