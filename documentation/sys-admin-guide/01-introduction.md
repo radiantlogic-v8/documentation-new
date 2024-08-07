@@ -354,59 +354,7 @@ After 30 minutes of inactivity, a user is automatically logged out.
 
 ## Adding a Custom Message on the Login Page
 
-The Main Control Panel login page contains a basic username and password text box. To add a custom message on the login page, follow the steps below.
-
-1.	Log in to the Main Control Panel as a member of the Directory Administrators role.
-
-1.	Go to the Zookeeper tab (requires [Expert mode](01-introduction#expert-mode)).
-
-1. Make a backup of your Zookeeper configuration by clicking Export.
-
-    ![Making a backup of your Zookeeper configuration](Media/zookeeper-export.jpg)
-
-    Figure 16: Making a backup of your Zookeeper configuration
-
-1. Leave the default export settings and click OK.
-
-1. Click OK to exit the export window.
-
-1.	Navigate to radiantone/<version>/cluster/config/vds_server.conf.
-
-1.	On the right, click **Edit Mode**.
-
-    >[!warning]
-    >Each property (corresponding to a line) must end in a comma (,) except for the last property in the configuration.
-
-1. Add (or edit) the motdHtml tag containing the message to display on the login page.
-
-    `"motdHtml": "This is my custom message. Please login with your RadiantOne Administrator account.",`
-
-1. Add (or edit) the motdTitle tag containing the title for the message to display on the login page. Ensure your configuration line ends with a comma.
-
-1.	Click **Save**.
-
-1.	Log out of the Main Control Panel. 
-An example of the custom message on the login page is shown below.
-
-![Custom Message on Login Page](Media/Image3.26.jpg)
-
-Figure 16: Custom Message on Login Page
-
-If you would like the message to be prefixed with a “Warning” icon and be in bold font, go back to the Zookeeper tab and add or edit the "motdWarning" tag with a value of true. An example is shown below.
-
-`"motdWarning": true,`
-
-![Custom Message on Login Page with Warning Label and Bold Font](Media/Image3.27.jpg)
-
-Figure 17: Custom Message on Login Page with Warning Label and Bold Font
-
-If you would like the custom message and “Warning” icon to display as a popup window, go back to the Zookeeper tab, and add or edit the “motdPopup” tag with a value of true. An example is shown below.
-
-`"motdPopup" : true,`
-
-![Custom Message Popup Window](Media/Image3.28.jpg)
-
-Figure 18: Custom Message Popup Window
+The Main Control Panel login page contains a basic username and password text box. You can configure a [Custom Message](../03-front-end-settings.md#message-of-the-day-configuration) as well.
 
 ## Using the Main Control Panel
 
