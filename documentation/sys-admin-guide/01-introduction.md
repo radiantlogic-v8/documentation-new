@@ -354,7 +354,7 @@ After 30 minutes of inactivity, a user is automatically logged out.
 
 ## Adding a Custom Message on the Login Page
 
-The Main Control Panel login page contains a basic username and password text box. You can configure a [Custom Message](../03-front-end-settings.md#message-of-the-day-configuration) as well.
+The Main Control Panel login page contains a basic username and password text box. You can configure a [Custom Message](../sys-admin-guide/03-front-end-settings.md#message-of-the-day-configuration) as well.
 
 ## Using the Main Control Panel
 
