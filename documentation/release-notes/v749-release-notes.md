@@ -59,7 +59,7 @@ RadiantOne is supported on the following 64-bit platforms:
 
 -	Oracle Enterprise Linux 7/8/9
 
-For specific hardware requirements of each, please see: [https://developer.radiantlogic.com/idm/v7.4/system-requirements/v74-system-requirements/](https://developer.radiantlogic.com/idm/v7.4/system-requirements/v74-system-requirements/)
+For specific hardware requirements of each, please see: [https://developer.radiantlogic.com/idm/v7.4/system-requirements/v74-system-requirements/](/v7.4/system-requirements/v74-system-requirements/)
 
 ## Bug Fixes
 -	[VSTS44301]: Fixed an issue where when caching is enabled in the Dynamic Group Setting, the users who were added to the global groups dynamically were not able to authenticate. The Enable Caching option in Dynamic Groups is now disabled for Dynamic Group URLs pointing to branches that are not cached.  
