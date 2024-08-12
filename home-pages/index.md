@@ -181,7 +181,7 @@ Harness your identity data with intelligent integration to drive better business
 
 ## Data Management APIs 
 
-A rich set of HTTP-based API's have been developed on top of LDAP, to provide broader access to the Universal directory, using modern protocols, such as SCIM, SPML and other web services API's, are described in this section
+A rich set of HTTP-based API's have been developed on top of LDAP, to provide broader access to the RadiantOne directory using SCIMv2 or REST, are described in this section
 
 <section>
   
