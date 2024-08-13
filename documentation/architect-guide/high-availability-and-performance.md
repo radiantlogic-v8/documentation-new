@@ -47,9 +47,9 @@ Figure 3: Warning Indicating ZooKeeper Entered Read-only Mode
 
 To recover from ZooKeeper read-only mode, make sure ZooKeeper is restarted on over half of the cluster nodes. Once the quorum is reestablished, the RadiantOne cluster recovers automatically.
 
-## Universal Directory
+## RadiantOne Directory
 
-The Universal Directory component in RadiantOne is the highly scalable, performant storage. This storage can be used as a replacement for existing directories (e.g. for identity integration/virtualization projects that also require an element of directory consolidation or migration) and is leveraged by RadiantOne Federated Identity (FID) as the default persistent cache storage and the default store for housing attribute-specific (“extension” attributes)/shadow accounts. Each RadiantOne node in a cluster contains a replica of the Universal Directory (HDAP) store and the advantage of clustering here is that block/physical replication is handled automatically across them and is much faster than traditional LDAP multi-master replication.
+The directory component in RadiantOne is the highly scalable, performant storage. This storage can be used as a replacement for existing directories (e.g. for identity integration/virtualization projects that also require an element of directory consolidation or migration) and is leveraged by RadiantOne Federated Identity (FID) as the default persistent cache storage and the default store for housing attribute-specific (“extension” attributes)/shadow accounts. Each RadiantOne node in a cluster contains a replica of the Directory (formerly named HDAP) store and the advantage of clustering here is that block/physical replication is handled automatically across them and is much faster than traditional LDAP multi-master replication.
 
 ## Intra Cluster Block Replication
 
