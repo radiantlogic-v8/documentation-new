@@ -1,6 +1,6 @@
 ---
-title: Namespace Configuration Guide
-description: Namespace Configuration Guide
+title: Namespace Configuration
+description: Namespace Configuration
 ---
 
 # Virtual Views of Cloud Directories and Services
@@ -640,6 +640,12 @@ If you’ve modified the graphapi.orx or mgraph.orx schema files to support exte
 6.	Save the virtual view. The run time view mounted at dv=graphapi,o=cloudservices,o=vds should now return the extension attributes. If you are using the mgraph.dvx file, you can create a New Root Naming Context in the Main Control Panel > Directory Namespace tab and mount the mgraph.dvx file there. 
 
 To create a new virtual view, load the graphapi.orx or mgraph.orx schema file in View Designer and define the new view. For details on using View Designer, see the RadiantOne Context Builder Guide.
+
+#### Returning MemberOf for Users 
+
+Users have a memberOf attribute which is the back link to the group entry to which they are related.  The value of the memberOf attribute is comprised of the Group entry's GUID. The default mgraph.dvx virtual view also returns a friendly *memberOfDisplayName* attribute that contains the display name attribute of the group entry. Clients can use this value for a more friendly display of the groups the user is associated with.
+
+![memberOfDisplayName](Media/mgraph-linked-attr.jpg)
 
 #### Virtualizing Surname/SN Attribute
 
