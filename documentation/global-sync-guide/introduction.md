@@ -8,7 +8,7 @@ description: Synchronization introduction
 RadiantOne Synchronization is an advanced set of tools for synchronization and identity management. This feature allows you to synchronize objects distributed across disparate data sources (directories, databases or applications): a change in an object in one source, at the attribute level, or for the whole object can be reflected into many other connected objects. Using a publisher/subscriber approach, any object can publish events (creation, deletion or modification for the whole object, or any attributes of this object) and propagate them to subscriber objects. User-defined attribute mappings and transformations can be applied during synchronization.
 
 >[!note] 
->If you have a RadiantOne license that entitles you to use synchronization, you will see a Global Sync tab in the Main Control Panel. Otherwise the tab doesn't show. 
+>If you have a RadiantOne license that entitles you to use synchronization, you will see a Synchronization tab in the Main Control Panel. Otherwise the tab doesn't show. 
 
 ## Architecture
 
@@ -31,7 +31,7 @@ See the figure below for a high-level architecture of the synchronization proces
 This guide is broken down into the following chapters:
 
 [Concept and Definitions](concepts-and-definitions/terms-and-processes.md)
-This chapter introduces the main concepts that are essential to understand for configuring and administering Global Synchronization.
+This chapter introduces the main concepts that are essential to understand for configuring and administering synchronization.
 
 [Configuration](configuration/overview.md)
 This chapter describes how to configure synchronization.
