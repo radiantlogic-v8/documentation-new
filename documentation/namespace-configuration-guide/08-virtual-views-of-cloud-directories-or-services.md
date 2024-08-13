@@ -563,6 +563,12 @@ If you’ve modified the graphapi.orx or mgraph.orx schema files to support exte
 
 To create a new virtual view, load the graphapi.orx or mgraph.orx schema file in View Designer and define the new view. For details on using View Designer, see the [RadiantOne Context Builder Guide](/documentation/context-builder-guide/view-designer).
 
+#### Returning MemberOf for Users 
+
+Users have a memberOf attribute which is the back link to the group entry to which they are related.  The value of the memberOf attribute is comprised of the Group entry's GUID. The default mgraph.dvx virtual view also returns a friendly *memberOfDisplayName* attribute that contains the display name attribute of the group entry. Clients can use this value for a more friendly display of the groups the user is associated with.
+
+![memberOfDisplayName](Media/mgraph-linked-attr.jpg)
+
 #### Virtualizing Surname/SN Attribute
 
 The Azure AD schema uses the attribute “surname” to store a user’s last name. The RadiantOne default LDAP schema includes the following attribute type definition for “sn”:
