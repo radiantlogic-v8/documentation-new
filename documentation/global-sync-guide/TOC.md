@@ -1,9 +1,9 @@
 ---
-title: RadiantOne Global Synchronization guide
-description: RadiantOne Global Synchronization guide
+title: RadiantOne Synchronization guide
+description: RadiantOne Synchronization guide
 ---
 
-# RadiantOne Global Synchronization guide
+# RadiantOne Synchronization guide
 
 - [Introduction](introduction.md)
 - [Concepts and definitions](#)
