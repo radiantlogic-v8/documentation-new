@@ -410,6 +410,9 @@ Imports data sources from a given XML file.
 
 >[!warning] If a data source in the import file has the same name as an existing data source, the existing data source is overwritten by the one you are importing.
 
+`-- cross environment`
+<br>Indicates that resources will be imported in cross-environment mode.
+
 **REST (ADAP) Example**
 
 In the following example, a request is made to import data sources using an XML file.
@@ -440,6 +443,9 @@ Exports data sources to an XML file.
 `- overwrite`
 <br> This option is used to indicate that the export file should overwrite an existing file of the same
 name.
+
+`-- cross environment`
+<br>Indicates that resources will be exported in cross-environment mode.
 
 **REST (ADAP) Example**
 In the following example, a request is made to export a data source named ldap1.
