@@ -1,6 +1,6 @@
 ---
-title: Password Filter Guide
-description: Password Filter Guide
+title: Active Directory Password Filter
+description: Capturing Password Changes in Active Directory
 ---
 
 - [Overview](01-overview.md)
