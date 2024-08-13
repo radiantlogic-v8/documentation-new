@@ -33,9 +33,8 @@ This command displays the resource dependency tree. The results include any data
 
 In the following example, a request is made to display the resource dependency tree for a virtual view named contextcatalog.dvx.
 
-```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=resource-traverse&name=contextcatalog.dvx
-```
+`https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=resource-traverse&name=contextcatalog.dvx`
+
 ### resource-export
 
 This command exports the resource and its dependencies.
@@ -59,13 +58,14 @@ This command exports the resource and its dependencies.
 **`- skip <name>`**
 <br>The name of the resource to skip and exclude from the export.
 
+`-- cross environment`
+<br>Indicates that resources will be exported in cross-environment mode.
+
 **REST (ADAP) Example**
 
 In the following example, a request is made to export the resource so_hr_o_examples.dvx and its dependencies.
 
-```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=resource-export&name=so_hr_o_examples.dvx&path=C:\radiantone\vds\vds_server
-```
+`https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=resource-export&name=so_hr_o_examples.dvx&path=C:\radiantone\vds\vds_server`
 
 ### resource-import
 
@@ -104,10 +104,11 @@ This command imports the resource and its dependencies.
 Example: naming:^ou.* --> skips all naming contexts starting with the name ou
 Example: all:^test.* --> skips all resources starting with the name test.
 
+`-- cross environment`
+<br>Indicates that resources will be imported in cross-environment mode.
+
 **REST (ADAP) Example**
 
 In the following example, a request is made to import the resource so_hr_o_examples.dvx and its dependencies.
 
-```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=resource-import&path=c:/radiantone/vds/vds_server/contextcatalog_dvx.zip&apply=&skipregex=ds:^derby.*
-```
+`https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=resource-import&path=c:/radiantone/vds/vds_server/contextcatalog_dvx.zip&apply=&skipregex=ds:^derby.*`
