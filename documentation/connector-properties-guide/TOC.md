@@ -1,9 +1,9 @@
 ---
-title: RadiantOne connector properties guide
-description: RadiantOne connector properties guide
+title: RadiantOne Connector Properties
+description: RadiantOne Connector Properties
 ---
 
-# RadiantOne connector properties guide
+# Connector Properties
 
 - [Overview](overview.md)
 - [Configure capture connector types and properties](configure-connector-types-and-properties.md)
