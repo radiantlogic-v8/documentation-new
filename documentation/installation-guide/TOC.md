@@ -1,6 +1,6 @@
 ---
-title: Installation Guide
-description: Installation Guide
+title: Installation
+description: Installation
 ---
 
 - [Prerequisites](01-prerequisites)
