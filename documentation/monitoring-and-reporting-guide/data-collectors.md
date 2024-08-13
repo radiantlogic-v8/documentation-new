@@ -336,7 +336,7 @@ For each periodic refresh, the following properties are returned:
 
 ### Pipeline
 
-The pipeline data collector is for retrieving information about real-time persistent cache refresh and/or global synchronization processes
+The pipeline data collector is for retrieving information about real-time persistent cache refresh and/or synchronization processes
 
 >[!note] This data collector requires the RadiantOne service to be running to return information.
 
@@ -362,17 +362,17 @@ Pipeline properties for real-time persistent cache refresh processes are describ
 <br> *captureType* - indicates the method used to capture changes. The captureType can have one of the following values: CHANGELOG, AD_DIRSYNC, AD_USN, AD_HYBRID, DB_TIMESTAMP, DB_COUNTER, DB_TRIGGER, SCIM2, SCIM1, GRAPHAPI, MGRAPH, OKTA, KAFKA, KAFKA_GG, PERSISTENT_SEARCH.
 - The APPLY componentType, related to step 4 in Figure 1.30, has the following property: appliedCounter. This indicates the number of changes processed to apply to the persistent cache.
 - The PIPELINE componentType has the following property: pipelineState, which indicates if the persistent cache refresh process is started. PipelineState can have one of the following values: RUNNING, SUSPENDED, UPLOADING, ERROR, DEPLOYING, WAITING_FOR_AGENT
-- The PROCESSOR componentType has the following properties: processorCounter, processorHostname, processorQueueSize. The processor component logic is built into the Sync Engine shown in Figure 1.30 and is responsible for processing events from the queues. ProcessorCounter is the number of events processed from the queue. ProcessorHostname is the machine name where this process is running. ProcessorQueueSize is the number of entries in the queue waiting to be processed.ProcessorQueueSize is a good candidate to configure custom alertsfor. If this number is growing, and the pipeline is fully  started, it is an indicator that events are being processed too slow. This could be due to errors while applying events, or just slow machine hardware or network.
+- The PROCESSOR componentType has the following properties: processorCounter, processorHostname, processorQueueSize. The processor component logic is built into the Sync Engine shown in Figure 1.30 and is responsible for processing events from the queues. ProcessorCounter is the number of events processed from the queue. ProcessorHostname is the machine name where this process is running. ProcessorQueueSize is the number of entries in the queue waiting to be processed. ProcessorQueueSize is a good candidate to configure custom alertsfor. If this number is growing, and the pipeline is fully  started, it is an indicator that events are being processed too slow. This could be due to errors while applying events, or just slow machine hardware or network.
 
-**Global Synchronization**
+**Synchronization**
 
-A high-level Global Synchronization architecture is shown below.
+A high-level Synchronization architecture is shown below.
 
 ![An image showing ](Media/Image1.40.jpg)
 
-Figure 1. 40 : Global Synchronization Architecture
+Figure 1. 40 : Synchronization Architecture
 
-Pipeline properties for global synchronization processes are described below.
+Pipeline properties for synchronization processes are described below.
 
 - SourceDn is the DN in the RadiantOne namespace associated with the data source where changes are captured.
 - TargetDn is the DN in the RadiantOne namespace associated with the destination data source where changes are to be applied.
