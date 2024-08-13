@@ -1,6 +1,6 @@
 ---
-title: Web Services API Guide
-description: Web Services API Guide.
+title: Web Services APIs
+description: Web Services APIs
 ---
 
 - [Overview](01-overview.md)
