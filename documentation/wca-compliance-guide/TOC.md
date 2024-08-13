@@ -1,6 +1,6 @@
 ---
-title: WCA Compliance Guide
-description: WCA Compliance Guide
+title: WCA Compliance
+description: WCA Compliance
 ---
 
 - [Overview](01-overview.md)
