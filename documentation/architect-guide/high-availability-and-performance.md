@@ -7,7 +7,7 @@ description: Architect Guide
 
 The recommended approach to achieve high availability and fault tolerance is to deploy multiple RadiantOne nodes running in a cluster. Once the desired architecture is put in place, two additional layers must be addressed. These layers were introduced in the [Product Overview](radiantone-federated-identity-engine.md#overview) section in this guide and are known as the Application Layer and the Data Source Access Layer.
 
-The sections below provide a brief introduction to the different architecture components and vocabulary for cluster architectures. For complete configuration details on deploying these architectures, please see the [RadiantOne Deployment and Tuning Guide](/deployment-and-tuning-guide/00-preface).
+The sections below provide a brief introduction to the different architecture components and vocabulary for cluster architectures. For complete configuration details on deploying these architectures, please see: [Deployment Architectures](/deployment-and-tuning-guide/00-preface)
 
 ## Cluster Architectures
 
