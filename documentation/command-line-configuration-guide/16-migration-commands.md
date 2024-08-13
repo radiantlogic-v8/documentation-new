@@ -57,6 +57,9 @@ This command exports the resource and its dependencies.
 `- skip <name>`
 <br>The name of the resource to skip and exclude from the export.
 
+`-- cross environment`
+<br>Indicates that resources will be exported in cross-environment mode.
+
 **REST (ADAP) Example**
 
 In the following example, a request is made to export the resource so_hr_o_examples.dvx and its dependencies.
@@ -98,6 +101,9 @@ This command imports the resource and its dependencies.
 <br>A regular expression indicating which resources to skip. The format for the regex is: resourcetype: regex. Supported resource types are: naming, ds, orx, dvx, file, custom, all.
 Example: naming:^ou.* --> skips all naming contexts starting with the name ou
 Example: all:^test.* --> skips all resources starting with the name test.
+
+`-- cross environment`
+<br>Indicates that resources will be imported in cross-environment mode.
 
 **REST (ADAP) Example**
 
