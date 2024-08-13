@@ -1,6 +1,6 @@
 ---
-title: ACI Migration Guide
-description: ACI Migration Guide
+title: IBM Tivoli Directory ACI Migration
+description: IBM Tivoli Directory ACI Migration
 ---
 
 # IBM Tivoli Directory ACI Migration
