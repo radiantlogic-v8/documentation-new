@@ -177,15 +177,15 @@ The ZooKeeper Write Check alert is enabled by default. This custom alert can be 
 
 This custom alert triggers a [file alert](#file-alert-settings) if clients cannot write to ZooKeeper. If SMTP settings are configured, [email alerts](#email-alert-settings) can be triggered as well by adding EmailAlert to the Alert Output setting (click Save if you modify the alert output).
 
-### Global Synchronization Capture Connector Stopped
+### Synchronization Capture Connector Stopped
 
-To send an alert in the event of a global synchronization capture connector state change (e.g. a connector state changes from RUNNING to STOPPED), configure a custom alert.
+To send an alert in the event of a synchronization capture connector state change (e.g. a connector state changes from RUNNING to STOPPED), configure a custom alert.
 
 1. Navigate to the Main Control Panel (of the current leader node if you have a cluster deployment) > Settings tab > Monitoring > Custom Alerts (requires [Expert Mode](#expert-mode)).
 2. Select Custom from the Template drop-down menu.
 3. Select pipeline from the Monitoring Source drop-down menu.
-4. Click Add Filter in the sourceDn column. Enter the naming context corresponding to the source DN in your global sync topology and click Add.
-5. Click Add Filter in the targetDn column. Enter the naming context corresponding to the target DN in your global sync topology and click Add.
+4. Click Add Filter in the sourceDn column. Enter the naming context corresponding to the source DN in your sync topology and click Add.
+5. Click Add Filter in the targetDn column. Enter the naming context corresponding to the target DN in your sync topology and click Add.
 6. Click Add Filter in the pipelineType column. Enter SYNC for the value and click Add.
 7. Click Add Filter in the componentType column. Enter CAPTURE and click Add.
 8. Click Add Filter in the propertyId column. Enter captureState and click Add.
@@ -200,16 +200,16 @@ Figure 7: Custom Alert on Capture Connector
 
 When triggered, this alert displays on the Main Control Panel's Dashboard tab under  Active Alerts as "ALERT: <alert_name>” and triggers a [file alert](#file-alert-settings). If SMTP settings are configured, [email alerts](#email-alert-settings) can be triggered as well by adding EmailAlert to the Alert Output setting (click save if you modify alert output).
 
-### Global Synchronization Queue Size
+### Synchronization Queue Size
 
-To send an alert in the event of a global synchronization queue growing, configure a custom
+To send an alert in the event of a synchronization queue growing, configure a custom
 alert.
 
 1. Navigate to the Main Control Panel (of the current leader node if you have a cluster deployment) > Settings tab > Monitoring > Custom Alerts (requires [Expert Mode](#expert-mode)).
 2. Select Custom from the Template drop-down menu.
 3. Select pipeline from the Monitoring Source drop-down menu.
-4. Click Add Filter in the sourceDn column. Enter the naming context corresponding to the source DN in your global sync topology and click Add.
-5. Click Add Filter in the targetDn column. Enter the naming context corresponding to the target DN in your global sync topology and click Add.
+4. Click Add Filter in the sourceDn column. Enter the naming context corresponding to the source DN in your sync topology and click Add.
+5. Click Add Filter in the targetDn column. Enter the naming context corresponding to the target DN in your sync topology and click Add.
 6. Click Add Filter in the pipelineType column. Enter SYNC for the value and click Add.
 7. Click Add Filter in the propertyId column. Enter processorQueueSize and click Add.
 8. Click Configure Trigger in the Value column.
@@ -222,9 +222,9 @@ alert.
 10. Enter an Alert Name.
 11. Click Save.
 
-    ![An image showing a custom alert for monitoring global sync queue size](Media/Image1.23.jpg)
+    ![An image showing a custom alert for monitoring sync queue size](Media/Image1.23.jpg)
 
-    Figure 9: Custom Alert for Monitoring Global Sync Queue Size
+    Figure 9: Custom Alert for Monitoring Sync Queue Size
 
 12. When triggered, this alert displays on the Main Control Panel's Dashboard tab under Active Alerts as "ALERT: <alert_name>” and triggers a [file alert](#file-alert-settings). If SMTP settings are configured, [email alerts](#email-alert-settings) can be triggered as well by adding EmailAlert to the Alert Output setting (click save if you modify alert output).
 
