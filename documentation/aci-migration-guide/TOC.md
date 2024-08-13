@@ -1,6 +1,6 @@
 ---
-title: ACI Migration Guide
-description: ACI Migration Guide
+title: ACI Migration
+description: ACI Migration
 ---
 
 - [Overview](overview.md)
