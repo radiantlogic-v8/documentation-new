@@ -1,6 +1,6 @@
 ---
-title: Hardening Guide
-description: Hardening Guide
+title: Hardening the RadiantOne Service
+description: Hardening the RadiantOne Service from Security Threats
 ---
 
 - [Preface](00-preface.md)
