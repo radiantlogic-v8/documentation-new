@@ -25,7 +25,7 @@ See [Attribute mappings](../configuration/transformation/attribute-mappings.md) 
 
 ## Script
 
-When attribute mappings are insufficient to achieve your business logic, you can use Java scripting (or [Rules](#rules-based-transformation)). This is helpful when lookups or other complex logic is required and the capabilities of the attribute mappings and rules options are insufficient. The Main Control Panel > Global Sync tab provides an interface for configuring the script (with some support for basic syntax checking). If you prefer a [full Java development environment](../configuration/script.md#use-a-java-ide-to-customize-scripts), you can install something like Eclipse and import the RadiantOne Custom Project.
+When attribute mappings are insufficient to achieve your business logic, you can use Java scripting (or [Rules](#rules-based-transformation)). This is helpful when lookups or other complex logic is required and the capabilities of the attribute mappings and rules options are insufficient. The Main Control Panel > Synchronization tab provides an interface for configuring the script (with some support for basic syntax checking). If you prefer a [full Java development environment](../configuration/script.md#use-a-java-ide-to-customize-scripts), you can install something like Eclipse and import the RadiantOne Custom Project.
 
 See [Script](../configuration/script.md) for configuration steps.
 
