@@ -1,6 +1,6 @@
 ---
-title: Deployment and Tuning Guide
-description: Deployment and Tuning Guide
+title: Deployment and Tuning
+description: Deployment and Tuning
 ---
 
 - [Preface](00-preface.md)
