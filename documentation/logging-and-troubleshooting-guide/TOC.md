@@ -5,7 +5,7 @@ description: Logging and Troubleshooting
 
 - [Overview](01-overview.md)
 - [Control Panels and Configuration Tools](02-control-panels-and-configuration-tools.md)
-- [Radiant Directory and Federated Identity Service](03-radiantone-universal-directory.md)
+- [RadiantOne Directory and Federated Identity Service](03-radiantone-universal-directory.md)
 - [Zookeeper](04-zookeeper.md)
 - [Synchronization](05-global-synchronization.md)
 - [Task Scheduler and Tasks](06-task-scheduler-and-tasks.md)
