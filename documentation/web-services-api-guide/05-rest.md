@@ -310,27 +310,6 @@ If successful, the operation displays results similar to the following.
  
 Figure 13: Successful REST Operation using OpenID Connect Token
 
-### OIDC Token Lifetime
-
-By default the token lifetime is set to 10 hours. To configure the token timeout:
-
-1.	Go to the Main Control Panel > Settings tab > Server Front End > Other Protocols section.
-
-2.	In the REST/ADAP sectoin (requires [Expert Mode](01-overview#expert-mode)), edit the value in the Token Timeout field.
-
-3.	Click Save.
-
-4.	Restart the RadiantOne service. If deployed in a cluster, restart the service on all nodes.
-
-![Editing the Token Timeout value](Media/Image5.17.jpg)
- 
-Figure 15: Editing the Token Timeout value
-
-When an expired or unrecognized token is used, the Response section displays the message “Authentication failed: Unknown token”.
-
-![Error Related to Unrecognized or Expired Token](Media/Image5.18.jpg)
- 
-Figure 16: Error Related to Unrecognized or Expired Token
 
 ## Search Example
 
