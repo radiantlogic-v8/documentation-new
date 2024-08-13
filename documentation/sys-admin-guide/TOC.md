@@ -1,6 +1,6 @@
 ---
-title: System Administration Guide
-description: System Administration Guide
+title: System Administration
+description: System Administration
 ---
 
 - [Introduction](01-introduction.md)
