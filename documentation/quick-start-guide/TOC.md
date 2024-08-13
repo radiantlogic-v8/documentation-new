@@ -1,6 +1,6 @@
 ---
-title: Quick Start Guide
-description: Quick Start Guide
+title: Quick Start
+description: Quick Start
 ---
 
 - [Getting Started with RadiantOne](01-getting-started-with-radiantone.md)
