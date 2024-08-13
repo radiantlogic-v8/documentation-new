@@ -1,6 +1,6 @@
 ---
-title: Monitoring and Reporting Guide
-description: Monitoring and Reporting Guide
+title: Monitoring and Reporting
+description: Monitoring and Reporting
 ---
 
 - [Monitoring](01-monitoring.md)
