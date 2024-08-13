@@ -1,6 +1,6 @@
 ---
-title: Command Line Configuration Guide
-description: Command Line Configuration Guide
+title: Command Line Configuration
+description: Command Line Configuration
 ---
 
 - [Introduction](01-introduction.md)
@@ -23,5 +23,5 @@ description: Command Line Configuration Guide
 - [ORX and DVX Commands](18-orx-and-dvx-commands.md)
 - [Search Commands](19-search-commands.md)
 - [Real-time Persistent Cache Refresh Commands](20-real-time-persistent-cache-refresh-commands.md)
-- [Global Sync Commands](21-global-sync-commands.md)
+- [Synchronization Config Commands](21-global-sync-commands.md)
 - [Converting LDIF Files to CSV](22-converting-ldif-files-to-csv.md)
