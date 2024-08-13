@@ -1,6 +1,6 @@
 ---
-title: Hardware Sizing Guide
-description: Hardware Sizing Guide
+title: Hardware Sizing
+description: Hardware Sizing
 ---
 
 - [Introduction](01-introduction.md)
