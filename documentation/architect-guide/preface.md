@@ -12,7 +12,7 @@ The focus of this guide is to:
 - Introduce the different challenges that the RadiantOne platform addresses.
 - Introduce ways to architect the solution while taking into account specific security requirements for authentication and authorization.
 
-This guide is primarily for architects in charge of designing the solution to match the use case at hand. Although this document would be a valuable introduction for a RadiantOne administrator, it does not describe any step-by-step configuration details. This type of information is detailed in the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction) and [RadiantOne Namespace Configuration Guide](/namespace-configuration-guide/01-introduction).
+This guide is primarily for architects in charge of designing the solution to match the use case at hand. Although this document would be a valuable introduction for a RadiantOne administrator, it does not describe any step-by-step configuration details. This type of information is detailed in [Configuration](/sys-admin-guide/01-introduction) and [Namespace Design](/namespace-configuration-guide/01-introduction).
 
 References to other relevant RadiantOne documentation are included throughout this guide.
 
