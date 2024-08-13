@@ -1,6 +1,6 @@
 ---
-title: ACI Migration Guide
-description: ACI Migration Guide
+title: LDAP Directory ACI Migration
+description: LDAP Directory ACI Migration
 ---
 
 #  OpenDJ, SunOne/Oracle ODSEE, Novell eDirectory, and RadiantOne v6 ACI Migration
