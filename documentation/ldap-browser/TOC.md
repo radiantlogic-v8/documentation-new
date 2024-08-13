@@ -1,6 +1,6 @@
 ---
-title: LDAP Browser Guide
-description: LDAP Browser Guide
+title: LDAP Browser Client Tool
+description: LDAP Browser Client Tool
 ---
 
 - [Overview](01-overview.md)
