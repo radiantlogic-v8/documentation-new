@@ -12,11 +12,11 @@ SSL settings are applicable to clients connecting to the RadiantOne service via 
 Figure 1: SSL Settings
 ### Enable SSL
 
-SSL/TLS is enabled by default (TLS v1.0, v1.1 and v1.2 are supported), and during the installation of RadiantOne a self-signed default certificate is generated. For steps on replacing the self-signed certificate, see [Replacing the Default Self-Signed Certificate](01-introduction#replacing-the-default-self-signed-certificate).
+SSL/TLS is enabled by default and TLS v1.2 and v1.3 are supported. During the installation of RadiantOne a self-signed default certificate is generated. For steps on replacing the self-signed certificate, see [Replacing the Default Self-Signed Certificate](01-introduction#replacing-the-default-self-signed-certificate).
 
 By default the SSL port is set to 636 and this is defined during the installation of RadiantOne.
 
->[!warning] You must restart the RadiantOne service after changing any SSL-related settings. RadiantOne loads the server certificate when it is started, so in order for the newly added certificate to take effect, restart the server.
+>[!warning] You must restart the RadiantOne service and Jetty service (hosting the Control Panel) after changing any SSL-related settings. RadiantOne loads the server certificate when it is started, so in order for the newly added certificate to take effect, restart the server.
 
 ### Forbidding Access on the Non-SSL Port
 
@@ -24,15 +24,13 @@ For steps to disable access on the non-ssl ports, please see the [RadiantOne Har
 
 ### Supported Cipher Suites
 
-To view the cipher strength levels enabled by default in RadiantOne, go to the Main Control Panel > Settings Tab > Security section > SSL sub-section and click **Change** next to Supported Cipher Suites. The ciphers that are checked are enabled. To change the enabled ciphers, check/uncheck the desired values.
+To view the cipher strength levels enabled in RadiantOne, go to the Main Control Panel > Settings Tab > Security section > SSL sub-section and click **Change** next to Supported Cipher Suites. The ciphers that are checked are enabled. To change the enabled ciphers, check/uncheck the desired values.  The list of ciphers is conditioned by the SSL protocols enabled in RadiantOne (Enabled SSL Protocols as seen in the UI) which is dictated by the *jdk.tls.disabledAlgorithms* and *jdk.tls.legacyAlgorithms* in `<RLI_HOME>\jre\lib\security\java.security`. if you make any changes to the java.security file, restart the RadiantOne service and the Jetty service that hosts the Control Panel.
 
-After changing the cipher levels, save your changes and restart the RadiantOne service.
-
-For details on installing stronger cipher suites, see the [RadiantOne Hardening Guide](/hardening-guide/00-preface).
+After changing the Supported Cipher Suites in the interface, save your changes and restart the RadiantOne service and the Jetty service that hosts the Control Panel. If you modify the java.security file to adjust the supported SSL protocols, the cipher strength options seen in the UI change to match the enabled SSL protocols. Only enable ciphers that match your company security policy.
 
 ### Enabled SSL Protocols
 
-The default SSL/TLS protocol options are SSLv2Hello, SSL v3, TLSv1, TLSv1.1 TLSv1.2 and TLS v1.3. Some of the less secure protocols in this list are disabled by default in the <RLI_HOME>/jdk/jre/lib/security/java.security file, noted in the jdk.tls.disabledAlgorithms property.
+The SSL/TLS protocol options are SSLv2Hello, SSL v3, TLSv1, TLSv1.1 TLSv1.2 and TLS v1.3. Some of the less secure protocols in this list (SSL v3, TLSv1, TLSv1.1) are disabled by default in the <RLI_HOME>/jdk/jre/lib/security/java.security file, noted in the jdk.tls.disabledAlgorithms property.
 
 Out of the available protocols, not in the disabled list, you can limit which ones you want RadiantOne to support. You can limit the protocols from the Main Control Panel > Settings Tab > Security section > SSL sub-section. Click **Change** next to Enabled SSL Protocols. Select the protocols to support and click **OK**. Restart the RadiantOne service on all nodes.
 
