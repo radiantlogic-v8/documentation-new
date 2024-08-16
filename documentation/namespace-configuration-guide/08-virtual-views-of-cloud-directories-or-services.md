@@ -248,8 +248,8 @@ As an alternative to using SCIM, RadiantOne includes a JDBC driver to virtualize
 
 1.	Enter your Salesforce user email in the User property.
 1.	Enter your Salesforce user’s password (which is your password appended with the [security token](#getting-a-security-token-from-salesforce) you received from Salesforce) in the Password property.
-1.	If you are connecting to a production instance of Salesforce, the URL value should be: jdbc:salesforce:
-If you are connecting to a sandbox instance of Salesforce, the URL value should be:    *jdbc:salesforce:test* 
+1.	If you are connecting to a production instance of Salesforce, the URL value should be: *jdbc:salesforce:*
+If you are connecting to a sandbox instance of Salesforce, the following URL can be used:    *jdbc:salesforce:test* 
 
 If you are connecting to a custom salesforce domain, use `jdbc:salesforce:<domain>`, such as "jdbc:salesforce:mycompany" 
    
