@@ -216,13 +216,9 @@ Figure 8.15: Salesforce Custom Data Source
 
 1.	Enter your Salesforce user email in the User property.
 1.	Enter your Salesforce user’s password (which is your password appended with the [security token](#getting-a-security-token-from-salesforce) you received from Salesforce) in the Password property.
-1.	If you are connecting to a production instance of Salesforce, the URL value should be: jdbc:salesforce:
-If you are connecting to a sanbox/dev instance of Salesforce, the URL value should be: 
-
-`jdbc:salesforce:<sandboxURL>`
-
-e.g. jdbc:salesforce:https://test.salesforce.com/services/Soap/u/30.0
-
+1.	If you are connecting to a production instance of Salesforce, the URL value should be: *jdbc:salesforce:*
+If you are connecting to a sandbox instance of Salesforce, the following URL value can be used: *jdbc:salesforce:test* 
+If you are connecting to a custom salesforce domain, use `jdbc:salesforce:<domain>`, such as "jdbc:salesforce:mycompany".
 1.	Click Save. At this point, the default Salesforce view located at dv=salesforce,o=cloudservices,o=vds should return your data (contacts and accounts are the objects defined in the view).
 1.	To view the schema associated with the radiantsalesforce data source, go to the Context Builder tab, Schema Manager sub-tab and open the schema named salesforce. The objects that can be virtualized from Salesforce are described in this file.
 1.	To create a new virtual view, use the Context Builder tab > View Designer sub-tab. For details on using View Designer, see the [RadiantOne Context Builder Guide](/documentation/context-builder-guide/view-designer).
