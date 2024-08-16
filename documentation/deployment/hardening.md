@@ -325,21 +325,13 @@ The following topics provide general guidance about how to secure data-in-transi
 
 By default, only SSL-enabled endpoints are accessible to the RadiantOne Service.
 
-### Configure SSL Protocols Allowed for RadiantOne
+### View SSL Protocols Allowed for RadiantOne
 
-You can limit the SSL protocols supported in RadiantOne from the Main Control Panel > Settings Tab > Security section > SSL sub-section. Click **Change** next to Enabled SSL Protocols. Select the protocols to support and click OK. Restart the RadiantOne service on all nodes.
+You can view the SSL protocols supported in RadiantOne from the Classic Control Panel > Settings Tab > Security section > SSL sub-section. Click **View** next to Enabled SSL Protocols. 
 
->[!note] 
->Only enable the SSL protocols that comply with your company’s security policy.**
+### View Enabled Cipher Suites
 
-
-### Use Strong Cipher Suites and Disable Weak Ones
-
-1. Open the Main Control Panel.
-2. On the Settings Tab > Security section > SSL sub-section, click on the CHANGE button next to Supported Ciphers Suites. Enable only the desired cipher suites.
-3. Click SAVE.
-4. Restart the RadiantOne service. If deployed in a cluster, restart it on all nodes.
-
+You can view the supported cipher suites from the Classic Control Panel > Settings Tab > Security section > SSL sub-section. Click **View** next to Supported Ciphers Suites. 
 
 ### Advise Application Owners to use the Latest Java Patches
 
