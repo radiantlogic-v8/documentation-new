@@ -470,8 +470,12 @@ To update attributes:
 3. Update the value and click ![Checkmark](Media/checkmark.jpg).
 4. (Optional) To add a value to a multi-valued attribute, click the ![Plus Sign](Media/plus-sign.jpg) inline with the attribute name.
 5. Add the value and click the ![Checkmark](Media/checkmark.jpg) to confirm.
-6. (Optional) To delete a value from a multi-valued attribute, select the attribute and click the ![Trashcan](Media/trashcan.jpg) icon inline with the value you want to remove. Click **DELETE** to confirm. Note that multi-valued attributes appear collapsed in the attribute list. Click the ">" to expand the attribute to locate the value to delete. 
+6. (Optional) To delete a value from a multi-valued attribute, select the attribute and click the ![Trashcan](Media/trashcan.jpg) icon inline with the value you want to remove. Click **DELETE** to confirm. Note that multi-valued attributes appear collapsed in the attribute list. Click the ">" to expand the attribute to locate the value to delete.
 
+If an attribute is of binary type, click the ![Pencil](Media/pencil.jpg) icon inline with the attribute. Click the ![View Attribute Icon](Media/view-attr-icon.jpg) at the end of the value. Browse to the new file and click **SAVE**.
+
+![Edit Binary Attribute Like Photo](Media/edit-photo.jpg)
+ 
 *Adding Attributes*
 
 To add attributes:
@@ -496,13 +500,6 @@ To delete attributes:
 1. Select the user in the directory tree.
 2. On the right side, click the ![Trashcan](Media/trashcan.jpg) icon inline with the attribute you want to delete. If the attribute has multiple values, expand the attribute to display each value individually and then click the ![Trashcan](Media/trashcan.jpg) for the value to be removed.
 3. Click **DELETE** to confirm.
-
-##### Editing Photo Attributes
-If an attribute is of binary type, select the attribute and choose Modify Attribute > Edit. This brings up the binary editor. Browse to the new file and click **Confirm**.
-
-![An image showing ](Media/Image5.32.jpg)
- 
-Figure 5.32: Binary Attribute Editor
 
 *Resetting Passwords*
 
