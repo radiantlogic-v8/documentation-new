@@ -22,8 +22,6 @@ more details in the following sections.
 
 [Enable Inter Cluster Replication](#enable-inter-cluster-replication)
 
-[Disable Inter Cluster Replication](#disable-inter-cluster-replication)
-
 If the persistent cache is involved in-inter cluster replication, temporarily disable the replication prior to rebuilding the index.
 
 From the Main Control Panel > Directory Namespace tab > Cache node, select the cached branch. On the right, uncheck Inter-Cluster Replication. Click **Save**.
