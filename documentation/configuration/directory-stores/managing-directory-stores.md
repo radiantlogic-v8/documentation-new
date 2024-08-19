@@ -472,7 +472,7 @@ To update attributes:
 5. Add the value and click the ![Checkmark](Media/checkmark.jpg) to confirm.
 6. (Optional) To delete a value from a multi-valued attribute, select the attribute and click the ![Trashcan](Media/trashcan.jpg) icon inline with the value you want to remove. Click **DELETE** to confirm. Note that multi-valued attributes appear collapsed in the attribute list. Click the ">" to expand the attribute to locate the value to delete.
 
-If an attribute is of binary type, click the ![Pencil](Media/pencil.jpg) icon inline with the attribute. Click the ![View Attribute Icon](Media/view-attr-icon.jpg) at the end of the value. Browse to the new file and click **SAVE**.
+If an attribute is of binary type, click the ![Pencil](Media/pencil.jpg) icon inline with the attribute. Click the ![View Attribute Icon](Media/view-attr-icon.jpg) at the end of the value. Browse to the new file and click **SAVE**. If there is already a value for the attribute, click the ![Trashcan](Media/trashcan.jpg) to remove it prior to browsing to a new file. Click the ![Checkmark](Media/checkmark.jpg) to confirm.
 
 ![Edit Binary Attribute Like Photo](Media/edit-photo.jpg)
  
