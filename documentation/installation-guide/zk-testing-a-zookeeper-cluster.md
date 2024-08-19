@@ -22,13 +22,13 @@ If Zookeeper is functional on all nodes, “SUCCESS” messages similar to the f
 
 ![An image showing ](Media/ZKImage4.1.jpg)
 
-Figure 1: A Cluster Check with All Nodes Online
+
 
 In the following image, one Zookeeper node has gone offline. In this example, RadiantOne nodes are unable to connect to the Zookeeper node at 10.11.10.39.
 
 ![An image showing ](Media/ZKImage4.2.jpg)
 
-Figure 2: A Cluster Check with One Node Offline
+
 
 In the following image, two Zookeeper nodes have gone offline. If the ZooKeeper ensemble only had three nodes to begin with, the loss of two nodes puts the service in a non-functional state since the quorum has been lost. The RadiantOne nodes are impacted at this point and will enter into a read-only mode where they cannot accept configuration changes nor client write operations.
 
@@ -36,4 +36,4 @@ In the following image, two Zookeeper nodes have gone offline. If the ZooKeeper 
 
 ![An image showing ](Media/ZKImage4.3.jpg)
 
-Figure 3: A Cluster Check with Two Nodes Offline
+
