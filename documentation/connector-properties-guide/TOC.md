@@ -13,5 +13,5 @@ description: RadiantOne Connector Properties
 - [Database timestamp connector](database-timestamp-connector.md)
 - [Database Counter connector](database-counter-connector.md)
 - [Kafka Connectors](#)
-  - [Kafka Consumer](kafka-connectors/kafka-consumer.md)
-  - [Kafka Producer](kafka-connectors/kafka-producer.md)
+  - [Kafka Consumer](kafka-consumer.md)
+  - [Kafka Producer](kafka-producer.md)
