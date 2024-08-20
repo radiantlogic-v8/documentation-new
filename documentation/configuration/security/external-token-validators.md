@@ -97,7 +97,7 @@ To add an external token validator, open Classic Control Panel from the logged i
 
     ![Configuring an ADAP External Token Validator](Media/configuringtokenvalidator.jpg)
 
-
+1. (Optional) Enter a value for the *JSON Web Token Validation Clock Offset*. This is used during the validation of JWTs to account for slight differences in time between the issuer of the token and the recipient. This clock offset is measured in seconds and provides a buffer that can help prevent issues related to time discrepancies, especially around the token's iat (issued at), nbf (not before), and exp (expiration) claims.
 
 1.  Click Edit next to Claims to FID User Mapping. The OIDC to FID User Mappings page displays.
 1.  Click Add. Use either a Simple DN Expression or a Search Expression to map a uniquely identifying attribute to a corresponding claim value in the token (refer to the [Getting An Access Token](#getting-an-access-token-from-an-External-Token-Validator) section for more information). In the following image, a Search Expression is used to map the attribute **mail** to the claim value **email**.
