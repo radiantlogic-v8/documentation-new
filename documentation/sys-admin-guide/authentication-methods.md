@@ -21,7 +21,7 @@ Simple authentication consists of sending the LDAP server the fully qualified DN
 
 **SASL:**
 
-Clients that send an authentication request to RadiantOne using Kerberos (GSS-SPNEGO), MD5 (DIGEST-MD5) or Certificate (EXTERNAL) are leveraging one of the supported SASL mechanisms. The SASL EXTERNAL mechanism is supported by default, but you must configure the [Client Certificate to DN Mapping](/sys-admin-guide/06-security/#client-certificate-dn-mapping) so the RadiantOne service knows how to identify the user in the certificate to a user in the RadiantOne namespace. 
+Clients that send an authentication request to RadiantOne using Kerberos (GSS-SPNEGO), MD5 (DIGEST-MD5) or Certificate (EXTERNAL) are leveraging one of the supported SASL mechanisms. The SASL EXTERNAL mechanism is supported by default, but you must configure the [Client Certificate to DN Mapping](./06-security/#client-certificate-dn-mapping) so the RadiantOne service knows how to identify the user in the certificate to a user in the RadiantOne namespace. 
 
 
 ## Kerberos
