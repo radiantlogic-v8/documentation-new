@@ -93,6 +93,8 @@ o=companydirectory [NAMING] OK
 
 8. Perform any manual migration tasks applicable to your environment. Please see the Items Requiring Manual Migration section below for more details.
 
+>[!note] If you are migrating a sync topology, save the transformation and restart RadiantOne on the target machine. 
+
 ### Items Requiring Manual Migration
 
 After importing the configuration onto the production server, the following items should be
