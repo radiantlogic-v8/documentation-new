@@ -527,7 +527,7 @@ Below is an example of a RadiantOne response to a “Who Am I” extended operat
 
 The RadiantOne Universal Directory supports temporary entries using the dynamicObject auxiliary object class as specified in [RFC 2589](https://www.rfc-editor.org/rfc/rfc2589). These entries are associated with a time to live attribute and once expired, the entry is automatically removed from the directory. For details on this extension, see the RadiantOne Namespace Configuration Guide.
 
-### Suppressing Partial Results Error
+## Suppressing Partial Results Error
 
 The Partial Results Error (error code 9) typically occurs because a backend directory that RadiantOne is querying returns referral objects as part of the query result and this response is passed back to the client that queried RadiantOne. Referral objects are pointers to other LDAP servers that might contain additional data related to the query. If you want the RadiantOne service to suppress this error code because clients cannot handle or ignore it properly, set the *allowPartialSearchResults* property to true using the RadiantOne REST API:
 
@@ -535,13 +535,12 @@ The Partial Results Error (error code 9) typically occurs because a backend dire
 
 For assistance with changing configuration see: [RadiantOne REST Configuration API](../command-line-configuration-guide/introduction)
 
-### Attributes Handling
+## Attributes Handling
 
 ![Attributes Handling Section](Media/Image3.45.jpg)
  
-Figure 8: Attributes Handling Section
 
-#### Hide Operational Attributes
+### Hide Operational Attributes
 
 Check the Hide Operational Attributes option on the Main Control Panel > Settings tab > Server Front End > Attributes Handling section if you do not want LDAP clients to have access to operational attributes (stored in a RadiantOne Universal Directory store) such as: createTimestamp, modifiersName, modifyTimestamp, creatorsName…etc. If you choose to hide operational attributes, LDAP clients must specifically request the operational attribute they want during the search request, otherwise it is not returned.
 
@@ -550,26 +549,26 @@ Check the Hide Operational Attributes option on the Main Control Panel > Setting
 
 Uncheck the Hide Operational Attributes option if LDAP clients are allowed to view the attributes.
 
-#### Operational Attributes Excluded from Being Hidden
+### Operational Attributes Excluded from Being Hidden
 
 If checked, the Hide Operational Attributes option hides all operational attributes from non-root users and users that are not a member of the cn=Directory Administrators group. To accommodate third-party integrations that rely on certain operational attributes, without requiring the service account to have Directory Administrator privileges, you can indicate a list of operational attributes that should not be hidden. Indicate them in the Exclude Operational Attributes From Being Hidden field. Separate attribute names with a single space. 
 
-#### Attributes Not Displayed in Logs
+### Attributes Not Displayed in Logs
 
 This property allows you to control which attribute values are not printed in clear in the RadiantOne logs. If you do not want certain attribute values printed in clear in the logs, you can indicate them here. Each attribute name should be separated with a single space. Any attribute indicated here has a value of ***** printed in the logs instead of the value in clear.
 
-#### Binary Attributes
+### Binary Attributes
 
 Sometimes, LDAP directory schema definitions do not define certain attributes as binary even though the value of these attributes is binary. An example of this is the objectGUID attribute in Microsoft Active Directory. If the LDAP backend schema definition does not properly define the attribute type as binary, RadiantOne does not translate the value properly when returning it to an LDAP client. To ensure RadiantOne translates the value as binary, you must list the attribute name in the Binary Attributes parameter (space separated list). This parameter is global and applies to any backend LDAP that RadiantOne is accessing. The binary attributes can be defined from the Main Control Panel > Settings tab > Server Front End > Attributes Handling section. As long as the attribute name is listed, RadiantOne returns the value to a client as binary even if the backend LDAP server doesn’t define it as such.
 
 >[!note] 
 >If a binary attribute should be searchable, define the attribute in the RadiantOne LDAP schema with a friendly name indicating it as binary. Below is an example for the certificateRevocationList attribute: attributeTypes: ( 2.5.4.39 NAME ( 'certificateRevocationList;binary' 'certificateRevocationList' ) DESC 'Standard LDAP attribute type' SYNTAX 1.3.6.1.4.1.1466.115.121.1.5 X-ORIGIN 'RFC 2256’ )
 
-#### Excluded Attributes from Active Directory
+### Excluded Attributes from Active Directory
 
 This parameter is for Active Directory backends and is used for excluding specific attributes from being returned from the backend. Certain “system” attributes (e.g. dscorepropagationdata) returned from Active Directory (even for non-admin users) can cause problems for building persistent cache because the data type is not handled properly, and these attributes need to be added to the RadiantOne LDAP schema for the local storage to handle them in the cache. Also, these attributes cause problems for the change capture connector needed for real-time persistent cache refresh to work properly. Attributes that are not required by RadiantOne client applications, should be added to this list to ensure they are not returned in the view from Active Directory. By default, the AD attributes that are excluded are ds*, acs*, ms* and frs* (* is a wildcard meaning that any attributes with those prefixes are excluded). Any attributes that you do not want returned from the backend Active Directory can be added to the Excluded Attributes property. This value is defined from the Main Control Panel > Settings tab > Server Front End > Attributes Handling section. Make sure a space separates the attributes listed. Click **Save** when finished.
 
-#### Multi-Valued Database Attributes
+### Multi-Valued Database Attributes
 
 The Multi-Valued Database Attributes setting can be managed from the Main Control Panel > Settings tab > Server Front End > Attributes Handling section. This parameter allows for special processing of a database attribute that contains a multi-value. The database attribute must contain values separated by a space then the pound sign (#), then a space before the next value. For example, assume the following table existed inside a database:
 
@@ -604,7 +603,7 @@ mail = hcarter@rli.com # harold@yahoo.com
 title = HR Admin # HR # HR MGR
 ```
 
-#### Keyword Attributes for Context Search
+### Keyword Attributes for Context Search
 
 The attributes that you want to be searchable from the sample RadiantOne client applications (e.g. Context Browser) must be defined in the Keyword Search Attributes. This parameter is located in the Main Control Panel > Settings tab > Server Front End > Attributes Handling section and should contain a comma separated list of attribute names that you want RadiantOne to use to locate the contexts relevant to the keyword searched from the Context Browser. 
 
@@ -612,13 +611,13 @@ The value that is searched from Context Browser results in a search against all 
 
 For more information on Context Browser, please see the RadiantOne Context Browser Guide.
 
-### Duplicate Identity Handling
+## Duplicate Identity Handling
 
 ![Duplicate Identity Handling Section](Media/Image3.46.jpg)
 
 Figure 9: Duplicate Identity Handling Section
 
-#### Duplicate DN Removal
+### Duplicate DN Removal
 
 During the identification phase (finding the person in the directory tree) of the authentication process, it is important that a search for a specific, unique user account only returns one entry.
 
@@ -628,29 +627,21 @@ Let’s look at an example of duplicate DN’s being returned for the same perso
 
 ![Virtual View Aggregating Two Data Sources](Media/Image3.47.jpg)
  
-Figure 10: Virtual View Aggregating Two Data Sources
 
 ![Same user ID Exists in Multiple Data Sources that have been Aggregated by RadiantOne](Media/Image3.48.jpg)
  
-Figure 11: Same user ID Exists in Multiple Data Sources that have been Aggregated by RadiantOne
-
 If Laura Callahan in Active Directory is in fact the same Laura Callahan as in Sun, you can enable Duplicate DN Removal to consolidate the two accounts. The screen shots below show the Duplicate DN Removal option enabled and the new result for the search.
 
 ![Duplicate DN Removal Setting](Media/Image3.49.jpg)
  
-Figure 12: Duplicate DN Removal Setting
 
 ![Search Result after Enabling Duplicate DN Removal](Media/Image3.50.jpg)
  
-Figure 13: Search Result after Enabling Duplicate DN Removal
-
 The one entry returned with attributes from the first source the user was found in (Active Directory in this example).
 
 ![Result of Duplicate DN Removal](Media/Image3.51.jpg)
  
-Figure 14: Result of Duplicate DN Removal
-
-#### Duplicate Identity Removal Rules
+### Duplicate Identity Removal Rules
 
 >[!note] 
 >In general, it is usually recommended that you use the Global Identity Builder to build your view if you know you have overlapping entries that require correlation/disambiguation.
@@ -659,23 +650,18 @@ In cases where RadiantOne is aggregating common user identities from multiple da
 
 ![Virtual Entry from Active Directory Backend](Media/Image3.52.jpg)
  
-Figure 15: Virtual Entry from Active Directory Backend
 
 ![Virtual Entry from Sun Directory Backend](Media/Image3.53.jpg)
  
-Figure 16: Virtual Entry from Sun Directory Backend
-
 The unique Identifier between the examples above is employeeID (employeeNumber in Sun has been mapped to employeeID to provide a common attribute between Sun and Active Directory). Therefore, a subtree search for employeeID=8 below dc=demo would return two people in this example.
 
 ![Two Entries are Returned based on Filter of EmployeeID=8](Media/Image3.54.jpg)
  
-Figure 17: Two Entries are Returned based on Filter of EmployeeID=8
 
 Now, if Duplicate Identity Removal rules are configured, RadiantOne returns only the first entry that it finds (in this case, the one from Active Directory). Multiple duplicate identity rules can be configured (each branch in the RadiantOne namespace may have a duplicate identity removal rule). In addition, multiple attributes may be used to determine a duplicate identity. For example, you can set uid,employeeid and this means if an entry has the same uid and employeeid then it is the same person. Make sure to list the attributes you want to use to determine a duplicate identity with a comma separating each attribute name. Remember to save your settings after defining the rules.
 
 ![Duplicate Identity Removal Settings](Media/Image3.55.jpg)
 
-Figure 18: Duplicate Identity Removal Settings
 
 >[!warning] 
 >The identity attribute selected, must satisfy the following requirements: 
@@ -683,14 +669,12 @@ Figure 18: Duplicate Identity Removal Settings
 
 ![One Entry for Laura is Returned with Duplicate Identity Removal Rules Enabled](Media/Image3.56.jpg)
 
-Figure 19: One Entry for Laura is Returned with Duplicate Identity Removal Rules Enabled
-
 This is ideal for handling authentication requests (to ensure only one entry is returned to base authentication on). However, for authorization purposes, if a user exists in more than one source, only attributes from the first source are returned. If you need a complete profile of attributes coming from all the user’s accounts, then you need to configure joins to all branches in the virtual tree where the user may have an account. This join condition can be based on the identity attribute (or any other attribute that can be used to uniquely identify the person in the other branch). As a result, searches for the user still return only one entry. Without a join configured across these virtual views, only attributes from the first source the user was found in would be returned. For details on joining, please see [Joins](02-concepts#joins) in the Concepts section.
 
 >[!warning] 
 >If your use case requires identity correlation to address user overlap, and a complete identity profile is needed for authorization, you should review the capabilities of the Global Identity Builder as opposed to trying to use Duplicate Identity Removal.
 
-### Memory Cache
+## Memory Cache
 
 RadiantOne supports two types of memory cache: Query and Entry. For complete details on both, please see the RadiantOne Deployment and Tuning Guide.
 
@@ -698,9 +682,7 @@ Memory cache can be configured from the Main Control Panel > Settings Tab > Serv
 
 ![An image showing ](Media/Image3.57.jpg)
 
-Figure 20: Memory Cache Settings
-
-#### Entry Cache
+### Entry Cache
 
 >[!note] 
 >This setting is accessible only in [Expert Mode](01-introduction#expert-mode).
@@ -726,7 +708,7 @@ To define an entry cache:
 
 For complete details on how entry memory cache works, please see the RadiantOne Deployment and Tuning Guide.
 
-#### Query Cache
+### Query Cache
 
 >[!note] 
 >This setting is accessible only in [Expert Mode](01-introduction#expert-mode).
@@ -752,54 +734,31 @@ To define a query cache:
 
 For complete details on how query memory cache works, please see the RadiantOne Deployment and Tuning Guide. 
 
-### Other Access Protocols
+## Other Access Protocols
 
 In addition to supporting LDAP operations, RadiantOne can also be accessed via SPML, DSML, REST and SAML. The configuration for these additional services is located on the Settings tab, Server Front End Section, Other Protocols sub-section.
 
 ![Other Protocols Section](Media/Image3.58.jpg)
 
-Figure 21: Other Protocols Section
 
-<!--
-#### SQL
-
-The Virtual Relational Server (VRS) allows for SQL clients to query the RadiantOne service. Details on how to enable the SQL interface can be found in this section. For complete details on the SQL interface, please see the RadiantOne VRS Guide.
-
-To enable SQL access:
-
-1.	In the Main Control Panel go to the Settings tab > Server Front End section > Other Protocols sub-section.
-
-2.	Check the Enable VRS Server checkbox.
-
-3.	Enter a port, SSL port (optional) and set a maximum number of connections to allow to the server.
-
-4.	After enabling the server and setting the port(s), click **Save**.
-
-5.	Restart the RadiantOne service to start listening on the new VRS port. If deployed in a cluster, restart the service on all nodes.
-
->[!warning] 
->If you need to change the port, first stop the RadiantOne service, change the port for the database server and save the new configuration. Then, Restart the RadiantOne service and it should listen on the new port. If RadiantOne is deployed in a cluster, restart the service on all nodes.
-
--->
-
-#### Web Services (HTTP) Port
+### Web Services (HTTP) Port
 
 The HTTPS interface is enabled by default. The RadiantOne service accepts web service requests (SCIM, ADAP, DSML, SPML) on this endpoint. For details on accessing the RadiantOne Web Services, please see http://developer.radiantlogic.com/developer/.
 
-#### DSML, SPML, SCIM, REST (ADAP), SAML
+**DSML, SPML, SCIM, REST (ADAP), SAML**
 
 SCIM settings are configured in the Server Front End > SCIM section. 
 
 For details on configuring and accessing RadiantOne via DSML, SPML, SCIM, and REST, please see http://developer.radiantlogic.com/developer/. 
 
-# Interception
+## Interception
 
 The idea behind interception is that it allows you to customize and override the default processing of RadiantOne. In most cases, this is accomplished with interception scripts. However, there are also some built-in configuration capabilities that allow you to customize the behavior of RadiantOne within invoking a script. This section introduces Global Interception Scripts, User to DN Mapping and Search Filter Mapping Rules.
 
 >[!note] 
 >This section is accessible only in [Expert Mode](01-introduction#expert-mode).
 
-## Global Interception
+### Global Interception
 
 For specific details, please see [Interception Scripts](02-concepts#interception-scripts) in the Concepts section. This section describes how to enable interception scripts at a global level (which are applicable to the entire RadiantOne namespace – all naming contexts).
 
@@ -811,8 +770,6 @@ To enable global interception:
 
 ![An image showing ](Media/Image3.119.jpg)
  
-Figure 22: Global Interception Settings
-
 3.	After your script has been customized, save the file and then rebuild the intercept.jar
 
 4.	Restart the RadiantOne service. Your script logic is now invoked for the operations you have enabled.
@@ -866,17 +823,14 @@ In the diagrams below, the client is configured to search for the user account a
 
 ![An image showing ](Media/Image3.120.jpg)
 
-Figure 23: Identification Step of Authentication
 
 ![An image showing ](Media/Image3.121.jpg)
  
-Figure 24: Credentials Checking Step of Authentication
 
 If the client application is not configured (or cannot be configured) to issue a search and then bind, RadiantOne can be configured to perform the search (to find the DN). This is accomplished using User ID to DN mappings.
 
 ![An image showing ](Media/Image3.122.jpg)
  
-Figure 25: Authentication Process based on User ID to DN Mapping
 
 ### Manage Global User to DN Mapping
 
@@ -954,31 +908,25 @@ For this example, if an LDAP search filter contains “city”, it is replaced b
 
 ![Sample Search Filter Mapping](Media/Image3.123.jpg)
  
-Figure 26: Sample Search Filter Mapping
 
 If RadiantOne receives a request containing a filter of (city=Los Angeles), all entries with l=Los Angeles are returned. This is shown in the example below.
 
 ![Sample Result of Search Filter Mapping](Media/Image3.124.jpg)
  
-Figure 27: Sample Result of Search Filter Mapping
 
 The (.*) before and after city in the filter pattern ensures all information before and after city in the incoming LDAP filter is not translated. For example, if the incoming filter is something like (&(city=Los Angeles)(employeeType=Manager)), while the filter component for city is replaced by “l”, the search for employeeType=Manager is not translated. Therefore, the search filter is processed as: (&(l=Los Angeles)(employeeType=Manager)). An example is shown below.
 
 ![Sample Search Filter Mapping Result](Media/Image3.125.jpg)
  
-Figure 28: Sample Search Filter Mapping Result
-
 The search filter mapping rules can also be used to replace more than one attribute condition in a single search. For example, assume you want all searches for city and title to be replaced by location (“l”) and employeetype, therefore, the filter pattern could be defined as: (.*)\(city=(.+)\)\(title=(.+)\)(.*) and the replacement pattern as $1(&(l=$2)(employeetype=$3))$4
 
 ![Sample Search Filter Mapping](Media/Image3.126.jpg)
  
-Figure 29: Sample Search Filter Mapping
 
 Now, as a runtime example, all searches containing a filter for (&(city=Los Angeles)(title=Manager)) will return a list of entries with l=Los Angeles and employeetype=Manager and this can be seen in the screen below.
 
 ![Sample Search Filter Mapping Result](Media/Image3.127.jpg)
  
-Figure 30: Sample Search Filter Mapping Result
 
 The translation rule isn’t limited to a one-to-one attribute mapping. You can also leverage a lookup based on the incoming filter to determine what the filter should be translated into. In the following example, a lookup will be performed against the vds data source (as indicated by the [vds] part of the LDAP URL used in the replacement pattern) on the o=companydirectory branch for entries containing an attribute of `postalCode=<the value of the zipcode received in the incoming filter>`. The “l” attribute for this entry is returned and passed in the filter for processing instead of the value of the zipcode. The incoming filter and replacement patterns are shown below:
 
@@ -991,14 +939,10 @@ Replacement: $1(l=`ldap://[vds]/o=companydirectory?ou?sub?(postalcode=$2)`)$3
 
 ![Sample Search Filter Mapping with Lookup](Media/Image3.128.jpg)
  
-Figure 31: Sample Search Filter Mapping with Lookup
-
 According to the filter pattern in this example, if the incoming filter included (zipcode=94949), it would be translated into a filter of l=Novato (lookup in vds data source where postalcode=94949 and returning the l attribute for this entry). Therefore, in this example, all entries with l=Novato are returned by the search and a sample can be seen below.
 
 ![Sample Search Filter Mapping Result](Media/Image3.129.jpg)
  
-Figure 32: Sample Search Filter Mapping Result
-
 ## Redirections
 
 By default, RadiantOne handles operations against a naming context associated with a Universal Directory (HDAP) store locally. However, in certain deployment scenarios (e.g. for performance or multi cluster deployments), not all stores should receive all types of operations. For each naming context representing a Universal Directory store, you can dictate whether write and bind operations should be redirected to another RadiantOne server. 
@@ -1031,4 +975,3 @@ For more examples of using redirects, please see the RadiantOne Deployment and T
 
 ![An image showing ](Media/Image3.141.jpg)
 
-Figure 33: Operations Redirection Setting
