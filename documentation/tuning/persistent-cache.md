@@ -280,6 +280,21 @@ To backup a persistent cache:
 ![Delete Cache](Media/delete-cache.jpg)
 
 ### Rebuild Index
+Re-indexing a persistent cache is an operation that should not be needed frequently. Re-indexation is a time-consuming process and should only be done while the service is offline during a scheduled maintenance window. The store is inaccessible, and no other operations can be performed during the re-indexation. During the re-indexing, the persistent cache image is unable to service client requests. Therefore, RadiantOne bypasses the cache image and queries the backend(s) directly to service client requests.
+
+If the Indexed Attributes or Sorted Indexes properties are changed, or if support for full text search is enabled, the persistent cache must be re-indexed. 
+
+**Disable Inter-cluster Replication**
+If the persistent cache is involved in inter-cluster replication, temporarily disable the replication prior to rebuilding the index.1.
+1. From the Control Panel > Setup > Directory Namespace > Directory Namespace, select the cached root naming context.
+2. Click the **CACHE** tab.
+3. Click `...` inline with the cached branch and choose EDIT.
+4. In the *Manage Properties* section, expand **REPLICATION**
+5. Uncheck *Inter Cluster Replication* and click **SAVE**.
+
+![Inter Cluster Replication](Media/inter-cluster-replication-cache.jpg)
+
+**Rebuild Index**
 
 1. From the Control Panel > Setup > Directory Namespace > Namespace Design, select the root naming context that contains the cached branch.
 2. Select the **CACHE** tab.
@@ -287,6 +302,14 @@ To backup a persistent cache:
 4. In the Manage Properties section, click **Rebuild Index**.
 
 ![Rebuild Index](Media/rebuild-index-cache.jpg)
+
+**Enable Inter Cluster Replication**
+
+1. From the Control Panel > Setup > Directory Namespace > Directory Namespace, select the cached root naming context.
+2. Click the **CACHE** tab.
+3. Click `...` inline with the cached branch and choose EDIT.
+4. In the *Manage Properties* section, expand **REPLICATION**
+5. Check *Inter Cluster Replication* to enable it and click **SAVE**.
 
 ### Export
 
