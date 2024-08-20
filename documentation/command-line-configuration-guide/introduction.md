@@ -7,9 +7,7 @@ description: REST API Configuration Guide
 
 RadiantOne offers a REST-based API that can be used for issuing configuration commands. Each chapter explains the different commands along with their syntax.
 
-## How this Manual is Organized
-
-This guide is broken down into the following chapters:
+This content is broken down into the following chapters:
 
 [Introduction](introduction.md)
 <br>This chapter offers a quick introduction to this guide in addition to how the manual is organized and how to contact Radiant Logic technical support.
@@ -112,28 +110,3 @@ Ex: Basic cn=directory manager:password
 ```
 The username:password value can be passed base64 encoded.
 Ex: Basic Y249ZGlyZWN0b3J5IG1hbmFnZXI6cGFzc3dvcmQ=
-
-## Expert Mode
-
-Some settings in the Control Panel are accessible only in Expert Mode. To switch to Expert Mode, click the Logged in as, (username) drop-down menu and select Expert Mode.
-
-![expert mode](Media/expert-mode.jpg)
-
->[!note]
->The Main Control Panel saves the last mode (Expert or Standard) it was in when you log out and returns to this mode automatically when you log back in. The mode is saved on a per-role basis.
-
-
-## Technical Support
-
-Before contacting Customer Support, please make sure you have the following information:
-
-- Version of RadiantOne.
-- Type of computer you are using including operating system.
-- The license number for your software.
-- A description of your problem including error numbers if appropriate.
-
-Technical support can be reached using any of the following options:
-
-- E-mail: support@radiantlogic.com
-- Website: https://support.radiantlogic.com
-- Toll-Free Phone: 1-877-727-6442
