@@ -358,6 +358,27 @@ If the persistent cache is involved in inter-cluster replication, temporarily di
 4. In the *Manage Properties* section, expand **REPLICATION**
 5. Check *Inter Cluster Replication* to enable it and click **SAVE**.
 
+### Re-synchronizing Persistent Cache
+
+No matter the method used to maintain the persistent cache image (periodic refresh or real-time refresh), there may be times where you need to re-sync the persistent cache image with the image from the backend(s) and don’t need (or can’t do) a full re-initialization.
+
+An LDAP query leveraging a special syntax for the base DN can be issued to force a re-sync of a persistent cache. The cached base DN should be prefixed with action=deltarefreshpcache.
+
+This indicates that a new image should be created based on the current state of the backend(s) and that this image should be compared to the current cache to determine differences. Cached entries that have changed are updated accordingly.
+
+With this approach, there is no down time of the persistent cache branch like there would be if you re-initialized the entire cache image. In addition, if you have replicas of your persistent cache deployed in other sites/data centers, they do not need to be re-initialized either. The changes applicable to the forced re-sync are applied to replicas through inter-cluster replication.
+
+From an LDAP client, connect to RadiantOne as any member of the cn=directory administrators group (cn=directory manager) and issue a search with a base DN of: action=deltarefreshpcache,`<root_naming_context_of_persistent_cache>`
+
+Below is an example using the ldapsearch command line client for a persistent cache located at o=cache.
+
+```
+ldapsearch -h vdsserver -p2389 -D"cn=directory manager" -b "action=deltarefreshpcache,o=cache" (objectclass=*)
+```
+
+This search triggers a re-sync of the persistent cache image based on the current image of
+entries from the backends. Only entries that have changed are updated in the persistent cache.
+
 ## Managing Cache Properties
 
 1. From the Control Panel > Setup > Directory Namespace > Namespace Design, select the root naming context that contains the cached branch.
