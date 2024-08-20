@@ -280,12 +280,14 @@ To backup a persistent cache:
 ![Delete Cache](Media/delete-cache.jpg)
 
 ### Rebuild Index
+
 Re-indexing a persistent cache is an operation that should not be needed frequently. Re-indexation is a time-consuming process and should only be done while the service is offline during a scheduled maintenance window. The store is inaccessible, and no other operations can be performed during the re-indexation. During the re-indexing, the persistent cache image is unable to service client requests. Therefore, RadiantOne bypasses the cache image and queries the backend(s) directly to service client requests.
 
-If the Indexed Attributes or Sorted Indexes properties are changed, or if support for full text search is enabled, the persistent cache must be re-indexed. 
+If the Indexed Attributes or Sorted Indexes properties are changed, or if support for full text search is enabled, the persistent cache must be re-indexed. Disable inter-cluster replication prior to reindexing.
 
 **Disable Inter-cluster Replication**
-If the persistent cache is involved in inter-cluster replication, temporarily disable the replication prior to rebuilding the index.1.
+
+If the persistent cache is involved in inter-cluster replication, temporarily disable the replication prior to rebuilding the index.
 1. From the Control Panel > Setup > Directory Namespace > Directory Namespace, select the cached root naming context.
 2. Click the **CACHE** tab.
 3. Click `...` inline with the cached branch and choose EDIT.
@@ -298,7 +300,7 @@ If the persistent cache is involved in inter-cluster replication, temporarily di
 
 1. From the Control Panel > Setup > Directory Namespace > Namespace Design, select the root naming context that contains the cached branch.
 2. Select the **CACHE** tab.
-3. Click ... inline with the cache node and choose Edit.
+3. Click `...` inline with the cache node and choose Edit.
 4. In the Manage Properties section, click **Rebuild Index**.
 
 ![Rebuild Index](Media/rebuild-index-cache.jpg)
@@ -315,10 +317,46 @@ If the persistent cache is involved in inter-cluster replication, temporarily di
 
 1. From the Control Panel > Setup > Directory Namespace > Namespace Design, select the root naming context that contains the cached branch.
 2. Select the **CACHE** tab.
-3. Click ... inline with the cache node and choose Edit.
+3. Click `...` inline with the cache node and choose Edit.
 4. In the Manage Properties section, click **Export**.
 
 ![Export Cache](Media/export-cache.jpg)
+
+### Reinitialize Cache
+
+Persistent cache should be re-initialized during off-peak hours, or during scheduled downtime, since it is a CPU-intensive process and during the initialization, queries are delegated to the backend data sources which might not be able to handle the load.
+
+Re-initialization occurs in two steps. Step one is to generate an LDIF file by querying the view(s) of the backend(s). Step two is to import the LDIF file. During the first step, RadiantOne bypasses the cache image and queries the backend(s) directly to service client requests. During the second step (the import), the store is unavailable and unable to service client requests. The import is typically fast (a few seconds) and client queries are briefly queued during this time.
+
+Disable inter-cluster replication prior to reinitializing.
+
+**Disable Inter-cluster Replication**
+
+If the persistent cache is involved in inter-cluster replication, temporarily disable the replication prior to reinitializing the cache.
+1. From the Control Panel > Setup > Directory Namespace > Directory Namespace, select the cached root naming context.
+2. Click the **CACHE** tab.
+3. Click `...` inline with the cached branch and choose EDIT.
+4. In the *Manage Properties* section, expand **REPLICATION**
+5. Uncheck *Inter Cluster Replication* and click **SAVE**.
+
+![Inter Cluster Replication](Media/inter-cluster-replication-cache.jpg)
+
+**Reinitialize the Cache**
+
+1. From the Control Panel > Setup > Directory Namespace > Namespace Design, select the root naming context that contains the cached branch.
+2. Select the **CACHE** tab.
+3. Click `...` inline with the cache node and choose Edit.
+4. In the INITIALIZE/RE-INITIALIZE section, click the *RE-INITIALIZE* link. Choose to create a new LDIF file, or use existing and click **DONE**.
+
+![INITIALIZE/RE-INITIALIZE](Media/reinit-cache.jpg)    ![INITIALIZE/RE-INITIALIZE](Media/reinit-cache2.jpg)
+
+**Enable Inter Cluster Replication**
+
+1. From the Control Panel > Setup > Directory Namespace > Directory Namespace, select the cached root naming context.
+2. Click the **CACHE** tab.
+3. Click `...` inline with the cached branch and choose EDIT.
+4. In the *Manage Properties* section, expand **REPLICATION**
+5. Check *Inter Cluster Replication* to enable it and click **SAVE**.
 
 ## Managing Cache Properties
 
