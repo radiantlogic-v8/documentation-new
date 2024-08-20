@@ -277,7 +277,7 @@ This section describes each control or feature and how to enable it if needed.
  
 Figure 2: Supported Controls Section
 
-#### Paged Results Control
+### Paged Results Control
 
 The Paged Results Control allows an LDAP client to retrieve the results of a query in chunks (to control the rate at which search results are returned from the RadiantOne service). This feature can be useful when the client has limited resources and may not be able to process the entire result set from a given LDAP query. The client should specify the page size (number of entries per chunk) during the initial query. For more details on this control, please refer to the LDAP RFC 2696. This control can be enabled/disabled from the Main Control Panel > Settings Tab > Server Front End section > Supported Controls sub-section. Check the Enable paged results box and click Save. Restart the RadiantOne service. If you have a cluster deployed, restart the service on all nodes.
 
@@ -287,7 +287,6 @@ Below is an example of an LDAP client issuing a query to RadiantOne using paging
 
 ![Client Accessing RadiantOne using Paging](Media/Image3.40.jpg)
  
-Figure 3: Client Accessing RadiantOne using Paging
 
 In the vds_server_access.log you should see multiple search requests returning a maximum number of entries specified in the page size from the client (a minimum log level of ACCESS must be set for RadiantOne server log). In the screen shot above, a total of 5,040 entries were returned to the client. The vds_server_access.log can be viewed and downloaded from the Server Control Panel > Log Viewer.
 
@@ -317,7 +316,7 @@ Sample vds_server_access.log content:
 
 2006-09-27 09:21:53,562 INFO <== conn=9 op=40 SearchResult {resultCode=0, matchedDN=null, errorMessage=null} LDAPControl {1.2.840.113556.1.4.319 true} **### nEntries=40 ###**
 
-#### VLV and Server Side Sort Controls
+### VLV and Server Side Sort Controls
 
 The Virtual List Views (VLV) control works in conjunction with the Server Side Sort Control, and allows a client to request that the RadiantOne service only return a subset of a large sorted dataset. By default, RadiantOne does not order its results because doing so is often a waste of the server's time since there may not be a need for ordering. However, when the VLV control is enabled, it works in conjunction with a server-side sort control. This ensures that the subset of values returned to the client are in order and the consecutive subsets follow that order continuously so there are no overlapping entries.
 
@@ -325,7 +324,7 @@ By using the VLV control, the client can retrieve results more quickly and is no
 
 This control can be enabled/disabled from the Main Control Panel > Settings Tab > Server Front End section > Supported Controls sub-section. Check the Enable VLV/Sort option and click Save. Restart the RadiantOne service. If you have a cluster deployed, restart the service on all nodes.
 
-#### Configure a Sorted Attributes List
+**Configure a Sorted Attributes List**
 
 A sorted attributes list is required at the level of the RadiantOne Universal Directory store or Persistent Cache configuration for the service to enforce the VLV/sort control on the branch. 
 
@@ -347,9 +346,8 @@ The flowchart shown below depicts the behavior of RadiantOne for applying the VL
 
 ![Behavior for Supporting VLV Control](Media/Image3.41.jpg)
  
-Figure 4: Flowchart Depicting Behavior for Supporting VLV Control
 
-#### Persistent Search Control
+### Persistent Search Control
 
 Using the Persistent Search Control is one of the recommended approaches for other processes to detect changes that have happened to RadiantOne entries. The [changelog](09-logs#changelog) is the other method that can be used.
 
@@ -360,7 +358,7 @@ If you enable the persistent search control, an LDAP client can receive notifica
 >[!note] 
 >The changelog number associated with the changed entries (logged into cn=changelog) is also returned in the persistent search response.
 
-#### Proxied Authorization Control
+### Proxied Authorization Control
 
 This control can be enabled/disabled from the Main Control Panel > Settings Tab > Server Front End section > Supported Controls sub-section. Check the Enable Proxy Authorization box and click Save. Restart the RadiantOne service. If you have a cluster deployed, restart the service on all nodes.
 
@@ -369,7 +367,7 @@ Authorization for RadiantOne data is checked based on the user who authenticated
 >[!warning] 
 >To allow the RadiantOne super user (e.g. cn=directory manager) to impersonate other users, you must enable the “[Allow Directory Manager to Impersonate Other Users](06-security#allow-directory-manager-to-impersonate-other-users)” option. In this special scenario, access controls defining the “proxy” permission is not required. However, the Proxy Authorization Control must be enabled.
 
-#### Subtree Delete Control
+### Subtree Delete Control
 
 By default, only leaf nodes (nodes without child entries) can be deleted. If you need to delete an entire subtree, you must pass the subtree delete control (1.2.840.113556.1.4.805) in the request.
 
@@ -391,7 +389,6 @@ By default, only the RadiantOne super user (e.g. cn=directory manager) is allowe
 
 ![Manually editing the ACI](Media/Image3.42.jpg)
 
-Figure 5: Manually editing the ACI
 
 >[!note] 
 >To allow anyone to perform a subtree delete request, use a value of “ldap:///anyone” for the userdn as shown in the example below.
@@ -416,13 +413,15 @@ Delete request passing the subtree delete control:
 `2017-10-03 10:40:40,584 INFO SessionHandler:1115 - --> conn[SSL/TLS]=1886 op=17 MsgID=17 DeleteRequest {entry=ou=test,o=companydirectory} LDAPControl {1.2.840.113556.1.4.805 true} LDAPControl {2.16.840.1.113730.3.4.2 false}`
 <br>`2017-10-03 10:40:40,654 INFO SessionHandler:3152 - <== conn[SSL/TLS]=1886 op=17 MsgID=17 DeleteResponse {resultCode=0, matchedDN=null, errorMessage=null} ### etime=70 ###`
 
-#### Password Policy Control 
+### Password Policy Control 
 
-The Password Policy Control is enabled by default and allows a client to request information about the current password policy information for a user entry. Specify the Password Policy Control in the LDAP request in the following ways:
+The Password Policy Control is enabled by default and allows a client to request information about the current password policy information for a user entry in all password policy enforcement related LDAP operations, specifically BIND, ADD, and MODIFY.  
 
--	With the OID. Use the --control or -J option with the Password Policy Control OID: 1.3.6.1.4.1.42.2.27.8.5.1 with no value.
+Specify the Password Policy Control in the LDAP request in the following ways:
 
--	Use the --usePasswordPolicyControl option. This option is used for bind requests. An example request and response is shown below.
+-	With the OID. Use the `--control` or `-J` option with the Password Policy Control OID: 1.3.6.1.4.1.42.2.27.8.5.1 with no value.
+
+-	Use the `--usePasswordPolicyControl` option. This option is used for bind requests. An example request and response is shown below.
 
 ```
 PS C:\Users\test> ldapsearch -h localhost -p 2389 -D "uid=Aaron_Medler,ou=Accounting,o=companydirectory" -w password -b o=companydirectory 
@@ -437,7 +436,7 @@ PS C:\Users\test> ldapsearch -h localhost -p 2389 -D "uid=Aaron_Medler,ou=Accoun
 # An error occurred while attempting to create a connection pool to communicate with the directory server: LDAPException(resultCode=19 (constraint violation), errorMessage='Reason: 775 - Account locked : The password failure limit has been reached and the account is locked. Please retry later or contact the system administrator to reset the password.', diagnosticMessage='Reason: 775 - Account locked : The password failure limit has been reached and the account is locked. Please retry later or contact the system administrator to reset the password.', responseControls={PasswordPolicyResponseControl(errorType='account locked', isCritical=false)}, ldapSDKVersion=4.0.1, revision='26090')
 ```
 
-#### Modify Increment Extension Feature
+### Modify Increment Extension Feature
 
 RadiantOne supports the modify-increment extension feature as outlined in RFC 4525 by default. This is advertised in the rootDSE in the supportedFeature attribute with a value of 1.3.6.1.1.14.
 
@@ -457,7 +456,7 @@ increment: uidNumber
 uidNumber: 1
 ```
 
-#### All Operational Attributes Extension Feature
+### All Operational Attributes Extension Feature
 
 RadiantOne supports the All Operational Attributes extension feature as outlined in [RFC 3673](https://www.rfc-editor.org/rfc/rfc3673) by default. This is advertised in the rootDSE to support searching for all operational attributes. 
 
@@ -466,21 +465,19 @@ Using the + character in your comma-separated list of return attributes, this ex
 >[!note] 
 >Search results may not include all requested attributes if precluded by access controls.
 
-#### Absolute True and False Filters
+### Absolute True and False Filters
 
 This extension is intended to allow a more direct mapping between DAP and LDAP as needed to implement DAP-to-LDAP gateways. Clients can verify the support of this feature by accessing the RadiantOne RootDSE and verifying OID 1.3.6.1.4.1.4203.1.5.3 is advertised.
 
 This extension allows clients to use “and” and “or” filters with zero filter elements. An “and” filter consisting of an empty set of filters evaluates to true. This filter is represented by the string “(&)”. An “or” filter consisting of an empty set of filters evaluates to false. This filter is represented by the string “(|)”.
 
-#### Authorization Identity Control
+### Authorization Identity Control
 
 Authorization Identity Control is a mechanism that allows a client to retrieve the authorization identity established in a bind operation. This is useful when certificates-based authentication is used. Also, some SASL authentication mechanisms may not involve explicitly providing a DN, or may result in an authorization identity which is different from the authentication identity provided by the client.
 
 The Authorization Identity Control (--reportAuthzID) may be submitted in a bind request only. The authorization identity request control has an object identifier of "2.16.840.1.113730.3.4.16" and does not have a value. RadiantOne advertises support for the Authorization Identity Control in the rootDSE. A client that requests the rootDSE sees this value returned as a supported control.
 
 ![Authorization Identity Control](Media/Image3.43.jpg)
-
-Image 6: Authorization Identity Control
 
 >[!warning] 
 >The Authorization Identity Control is allowed for use in conjunction with LDAP bind operations only and therefore cannot be used after the client has authenticated. To obtain the authorization identity at any time after the bind has completed, use the “[Who Am I](settings-tab#who-am-i-extended-operation)” extended operation.
@@ -502,14 +499,13 @@ The bind response from RadiantOne contains the identity assumed by the client. I
 
 BindResponse {resultCode=0, matchedDN=null, errorMessage=null} AuthorizationIdentityResponseControl {2.16.840.1.113730.3.4.15 false authzID=dn:uid=Aaron_Medler,ou=Accounting,o=companydirectory} ### etime=3 ###
 
-#### Who Am I Extended Operation
+### Who Am I Extended Operation
 
 The "Who am I?" extended operation, as outlined in [RFC 4532](https://www.rfc-editor.org/rfc/rfc4532), provides a mechanism for a client to request the authorization identity associated with the bound connection. Using this extended operation obtains the authorization identity associated with the user or application entity after the bind has established integrity and data confidentiality protections. This approach provides greater flexibility than the [Authorization Identity Control](03-front-end-settings#authorization-identity-control) because it can be requested at any time, not just during a bind operation. In addition, this extended operation can be augmented with a Proxied Authorization Control to determine the authorization identity that the server associated with the identity asserted in the [Proxied Authorization Control](03-front-end-settings#proxied-authorization-control).
 RadiantOne advertises support for the “Who Am I” extended operation in the rootDSE. A client that requests the rootDSE sees the 1.3.6.1.4.1.4203.1.11.3 OID value returned as a supported control.
 
 ![Who Am I extended request support](Media/Image3.44.jpg)
 
-Figure 7: Who Am I extended request support
 
 In the following example, a whoami extended request is performed.
 
@@ -527,7 +523,7 @@ Below is an example of a RadiantOne response to a “Who Am I” extended operat
 2018-05-25 08:20:45,246 INFO SessionHandler:3498 - <== conn=477 op=2 MsgID=2 ExtendedResponse {resultCode=0, matchedDN=null, errorMessage=null, OID='1.3.6.1.4.1.4203.1.11.3', value='dn:uid=Aaron_Medler,ou=Accounting,o=companydirectory'} ### etime=0 ###
 ```
 
-#### Dynamic Entries Extension
+### Dynamic Entries Extension
 
 The RadiantOne Universal Directory supports temporary entries using the dynamicObject auxiliary object class as specified in [RFC 2589](https://www.rfc-editor.org/rfc/rfc2589). These entries are associated with a time to live attribute and once expired, the entry is automatically removed from the directory. For details on this extension, see the RadiantOne Namespace Configuration Guide.
 
