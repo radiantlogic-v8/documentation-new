@@ -250,11 +250,13 @@ Delete request passing the subtree delete control:
 
 **Password Policy Control**
 
-The Password Policy Control is enabled by default and allows a client to request information about the current password policy information for a user entry. Specify the Password Policy Control in the LDAP request in the following ways:
+The Password Policy Control is enabled by default and allows a client to request information about the current password policy information for a user entry in all password policy enforcement related LDAP operations, specifically BIND, ADD, and MODIFY. 
 
--	With the OID. Use the --control or -J option with the Password Policy Control OID: 1.3.6.1.4.1.42.2.27.8.5.1 with no value.
+Specify the Password Policy Control in the LDAP request in the following ways:
 
--	Use the --usePasswordPolicyControl option. This option is used for bind requests. An example request and response is shown below.
+-	With the OID. Use the `--control` or `-J` option with the Password Policy Control OID: 1.3.6.1.4.1.42.2.27.8.5.1 with no value.
+
+-	Use the `--usePasswordPolicyControl` option. This option is used for bind requests. An example request and response is shown below.
 
 `PS C:\Users\test> ldapsearch -h localhost -p 2389 -D "uid=Aaron_Medler,ou=Accounting,o=companydirectory" -w password -b o=companydirectory-s sub --usePasswordPolicyControl "(uid=Aaron)"`
 <br> `# Bind Result:`
