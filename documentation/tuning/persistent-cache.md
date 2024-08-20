@@ -219,7 +219,7 @@ When initializing persistent cache, two settings you should take into considerat
 >[!warning] 
 >If you are using real-time refresh, make sure the cache refresh components are stopped before re-initializing or re-indexing a persistent cache.
 
-### Using Paging
+### Using Paging for Cache Initialization
 
 Depending on the complexity of the identity view, building the persistent cache image can take some time. Since the internal connections used by RadiantOne to build the persistent cache image are subject to the Idle Connection Timeout server setting, the cache initialization process might fail due to the connection being automatically closed by the server. To avoid cache initialization problems, it is recommended to use paging for internal connections. The Paged Results Control is enabled by default.
 
@@ -233,7 +233,7 @@ To use paging:
 
 ![Enabling Paged Results Control](Media/internal-paged-results.jpg)
 
-### Supporting Zipped and Encrypted LDIF Files
+### Supporting Zipped and Encrypted LDIF Files During Cache Initialization
 
 If you are initializing persistent cache using an existing LDIFZ file, the security key used in RadiantOne (for attribute encryption) where the file was exported must be the same security key value used on the RadiantOne server that you are trying to import the file into.
 
@@ -244,6 +244,17 @@ To use this option, you must have an LDIFZ encryption key configured. The securi
 Once the security key has been defined, check the option to "Use .ldifz" (zipped and secure format).
 
 ![Use LDIFZ](Media/use-ldifz.jpg)
+
+### Backing up (Exporting) Persistent Cache
+
+To backup a persistent cache:
+1. Go to the Control Panel > Setup > Directory Namespace > Namespace Design.
+2. Select the cached root naming context and click the *Cache* tab.
+3. Click `...` inline with the cached branch and choose EDIT.
+4. Click Export.
+5. Enter a file name, check the *Export for Replication* option to include the uuid as part of the entry and click **Download File** to save a copy to your desired backup location.
+
+![Export Persistent Cache](Media/export-pcache.jpg)
 
 ### Enable/Disable Cache
 
