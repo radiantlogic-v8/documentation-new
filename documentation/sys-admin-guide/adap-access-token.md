@@ -14,7 +14,6 @@ This section describes using the Postman REST client to obtain an access token.
 
 ![Type drop-down menu](Media/typemenu.jpg)
 
-Figure 21: The Type drop-down menu
  
 1. In the Configure New Token section, enter the Client ID and client secret.
 
@@ -26,13 +25,11 @@ Figure 21: The Type drop-down menu
 
 ![Configuring an access token in Postman](Media/configuringtoken.jpg)
 
-Figure 22: Configuring an access token in Postman
 
 1. Click Get New Access Token. The new access token's details are displayed. 
 
 ![token details](Media/tokendetails.jpg)
 
-Figure 23: The Token Details section in Postman
  
 1. Copy this token and decode it for the values needed by the FID server. You can do this at https://jwt.io/.
 
@@ -66,7 +63,6 @@ To add an external token validator:
 
 ![The New ADAP External Token Validator Page](Media/externaltokenvalidatorpage.jpg)
 
-Figure 24: The New ADAP External Token Validator Page
 
 1. Name the external token validator.
 
@@ -81,11 +77,10 @@ Figure 24: The New ADAP External Token Validator Page
 1. Use the Expected Audience from your OIDC client to populate the Expected Audience field. 
 
 1. Other values can be obtained from the decoded access token. See the [Getting An Access Token](#getting-an-access-token) section for more information.  
-
 ![Configuring an ADAP External Token Validator](Media/configuringtokenvalidator.jpg)
 
-Figure 25: Configuring an ADAP External Token Validator
-
+1. (Optional) Enter a value for the *JSON Web Token Validation Clock Offset*. This is used during the validation of JWTs to account for slight differences in time between the issuer of the token and the recipient. This clock offset is measured in seconds and provides a buffer that can help prevent issues related to time discrepancies, especially around the token's iat (issued at), nbf (not before), and exp (expiration) claims.
+ 
 1. Click Edit next to Claims to FID User Mapping. The OIDC to FID User Mappings page displays.
 
 1. Click Add. 
@@ -94,7 +89,6 @@ Figure 25: Configuring an ADAP External Token Validator
 
 ![Editing OIDC to FID User Mapping](Media/editingmapping.jpg)
 
-Figure 26: Editing OIDC to FID User Mapping
 
 1. Click OK. Click OK again to close the OIDC to FID User Mappings window.
 
