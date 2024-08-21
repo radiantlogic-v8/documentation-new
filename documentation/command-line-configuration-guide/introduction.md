@@ -5,12 +5,9 @@ description: REST API Configuration Guide
 
 ## Introduction
 
-RadiantOne offers a REST-based API that can be used for issuing configuration commands. Each chapter explains the different commands along with their syntax.
+RadiantOne offers a REST-based API that can be used for issuing configuration commands. Each topic explains the different commands along with their syntax.
 
-This content is broken down into the following chapters:
-
-[Introduction](introduction.md)
-<br>This chapter offers a quick introduction to this guide in addition to how the manual is organized and how to contact Radiant Logic technical support.
+This content is broken down into the following topics:
 
 [Global Configuration Commands](global-configuration-commands.md)
 <br>This chapter explains how to display and set RadiantOne global configuration property values.
