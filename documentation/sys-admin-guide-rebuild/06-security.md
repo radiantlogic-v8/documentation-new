@@ -27,8 +27,6 @@ Clients that send an authentication request to RadiantOne using Kerberos (GSS-SP
 
 ![SSL Settings](Media/Image3.81.jpg)
 
-Figure 1: SSL Settings
-
 ## SSL Settings
 
 SSL settings are applicable to clients connecting to the RadiantOne service LDAPS endpoint and involve indicating how <!--mutual authentication should be handled, client certificate DN mapping (for enforcing authorization), -->managing the certificates in the default Java truststore (cacerts), which cipher suites are supported by RadiantOne, and certificate revocation. These subjects are described in this section.
@@ -50,9 +48,7 @@ For normal SSL communications, where the only requirement is that the client tru
 
 The diagram below shows how certificates and the SSL protocol are used together for authentication.
 
-![An image showing ](Media/Image3.82.jpg)
-
-Figure 2: Mutual Authentication
+![Mutual Authentication](Media/Image3.82.jpg)
 
 There are three options for mutual authentication and this can be set from the Main Control Panel > Settings Tab > Security section > SSL > Mutual Auth. Client Certificate drop-down menu: Required, Requested and None (default value). If mutual authentication is required, choose the Required option. If this option is selected, it forces a mutual authentication. If the client fails to provide a valid certificate which can be trusted by RadiantOne, authentication fails, and the TCP/IP connection is dropped.
 
@@ -147,16 +143,12 @@ For example, {alt:0}^(.+)@my.gov$ defined as the Certificate DN captures "james.
 
 ![Example SSL Certificate](Media/Image3.83.jpg)
  
-Figure 2: Example SSL Certificate
-
 If all mapping rules fail to locate a user, anonymous access is granted (if anonymous access is allowed to RadiantOne).
 
 >[!note] 
 >As an alternative to anonymous access, it is generally recommended that you create a final mapping that results in associating the authenticated user with a default user that has minimum access rights. An example is shown below where the last mapping rule matches to a user identified in RadiantOne as “uid=default,ou=globalusers,cn=config”.
 
 ![Example Default Mapping Rule](Media/Image3.84.jpg)
-
-Figure 3: Example Default Mapping Rule
 
 **Processing Multiple Mapping Rules**
 
@@ -193,8 +185,6 @@ For RadiantOne to connect via SSL to an underlying data source, or accept client
 To manage the client certificates contained in the default Java trust store, click **Manage** next to the Client Certificates property.
 
 ![Managing Client Certificates in the Default Java Truststore](Media/Image3.85.jpg)
-
-Figure 4: Managing Client Certificates in the Default Java Truststore
 
 **Viewing Client Certificates**
 
@@ -281,7 +271,7 @@ To enable SSL logging:
 >This section is accessible only in [Expert Mode](01-introduction#expert-mode).
 
 **Simple LDAP Bind**
-<br>For accounts stored in Universal Directory (HDAP) stores, the following table lists the potential LDAP response codes returned during bind operations.
+<br>For accounts stored in RadiantOne Directory (HDAP) stores, the following table lists the potential LDAP response codes returned during bind operations.
 
 Condition | Bind Response Error Code and Message
 -|-
@@ -295,13 +285,13 @@ Valid User Name with no password. Bind might succeed; it depends on the “Bind 
 User Name and Password are Corrrect. Account is locked due to inactivity. Bind is unsuccessful.	| Error Code 50, Reason 775 – Account Locked. This account has been locked due to inactivity. Please contact the system administrator to reset the password.
 No User Name with no password. Bind is successful. | Error code 0. User is authenticated as Anonymous. <br>Even if “Bind Requires Password” is enabled, error code 0 is returned. User is authenticated as Anonymous.
 
-## RadiantOne Universal Directory Attribute Encryption
+## RadiantOne Directory Attribute Encryption
 
-Attribute encryption prevents data from being readable while stored in a RadiantOne Universal Directory store, any temporary replication stores/attributes (cn=changelog, cn=replicationjournal, cn=localjournal), backup files, and exported LDIF files (must use the LDIFZ file extension). Attribute values are encrypted before they are stored in the Universal Directory store, and decrypted before being returned to the client, as long as the client is authorized to read the attribute (based on ACLs defined in RadiantOne), is connected to RadiantOne via SSL, and is not a member of the special group (e.g. [cn=ClearAttributesOnly,cn=globalgroups,cn=config)](#clear-attributes-only-group).
+Attribute encryption prevents data from being readable while stored in a RadiantOne Directory store, any temporary replication stores/attributes (cn=changelog, cn=replicationjournal, cn=localjournal), backup files, and exported LDIF files (must use the LDIFZ file extension). Attribute values are encrypted before they are stored in the RadiantOne Directory store, and decrypted before being returned to the client, as long as the client is authorized to read the attribute (based on ACLs defined in RadiantOne), is connected to RadiantOne via SSL, and is not a member of the special group (e.g. [cn=ClearAttributesOnly,cn=globalgroups,cn=config)](#clear-attributes-only-group).
 
 There are two items to configure. One is the criteria for the key generation used to encrypt/decrypt the attributes. Two is the list of attributes you want to encrypt.
 
-## Key Generation
+### Key Generation
 
 To define the criteria used to generate an encryption key:
 
@@ -311,10 +301,8 @@ To define the criteria used to generate an encryption key:
 
 3.	Select the desired cipher from the drop-down list or select [AWSKMS](#using-amazon-web-services-aws-with-a-customer-master-key-cmk) if you want to use your own Customer Master Key (CMK) in Amazon Web Services (AWS) Key Management Service (KMS) and have configured the necessary settings in ZooKeeper. 
 
-![An image showing ](Media/Image3.116.jpg)
+![Select Cipher](Media/Image3.116.jpg)
  
-Figure 2: Attribute Encryption Key
-
 4.	If you selected a cipher suite in the previous step, enter a security key. This value is used to auto-generate an encryption key. If you plan on deploying multiple clusters that will participate in inter cluster replication for encrypted attributes, take note of the value you enter here as you must use it when configuring the security key in the other clusters.
 
 An encryption key is auto-generated based on the cipher and security key value provided. This key is used across nodes in a cluster to encrypt/decrypt the attributes configured for encryption. If inter-cluster replication is deployed, all clusters must be configured with the same cipher and security key.
@@ -361,29 +349,29 @@ Instead of using the default key generation, you have the option to use a custom
 
 No attributes are encrypted by default. To configure a list of attributes to encrypt:
 
-1.	Navigate to the RadiantOne Universal Directory (HDAP) store (or configured persistent cache branch) on the Main Control Panel > Directory Namespace tab. 
+1.	Navigate to the RadiantOne Directory (HDAP) store (or configured persistent cache branch) on the Main Control Panel > Directory Namespace tab. 
 
 2.	Enter a comma-separated list of attribute names in the Encrypted Attributes property. 
 3.	Click **Save**.
-4.	Click **Re-build Index** (if your configuration is a Universal Directory Store) or **Initialize** to reinitialize the cache (if your configuration is a Persistent Cache).
+4.	Click **Re-build Index** (if your configuration is a RadiantOne Directory Store) or **Initialize** to reinitialize the cache (if your configuration is a Persistent Cache).
 
-Attributes listed in the Encrypted Attributes property are added to the Non-indexed attribute list by default. This means these attributes are not searchable by default. Indexing encrypted attributes is generally not advised as the index itself is less secure than the attribute stored in Universal Directory/persistent cache. However, if you must be able to search on the encrypted attribute value, it must be indexed. Only “exact match/equality” index is supported for encrypted attributes. To make an encrypted attribute searchable, remove the attribute from the list of nonindexed attributes and then click **Re-build Index** or **Initialize** (to reinitialize) if the branch is a persistent cache.
+Attributes listed in the Encrypted Attributes property are added to the Non-indexed attribute list by default. This means these attributes are not searchable by default. Indexing encrypted attributes is generally not advised as the index itself is less secure than the attribute stored in RadiantOne Directory/persistent cache. However, if you must be able to search on the encrypted attribute value, it must be indexed. Only “exact match/equality” index is supported for encrypted attributes. To make an encrypted attribute searchable, remove the attribute from the list of nonindexed attributes and then click **Re-build Index** or **Initialize** (to reinitialize) if the branch is a persistent cache.
 
 ### Accessing Encrypted Attributes
 
-Attribute values are encrypted before they are stored in Universal Directory/persistent cache, and decrypted before being returned to the client, as long as the client is authorized to read the attribute (based on ACLs defined in RadiantOne), is connected to RadiantOne via SSL, and not a member of the [special group](#clear-attributes-only-group) containing members not allowed to get these attributes (e.g. cn=ClearAttributesOnly,cn=globalgroups,cn=config). 
+Attribute values are encrypted before they are stored in the RadiantOne Directory/persistent cache, and decrypted before being returned to the client, as long as the client is authorized to read the attribute (based on ACLs defined in RadiantOne), is connected to RadiantOne via SSL, and not a member of the [special group](#clear-attributes-only-group) containing members not allowed to get these attributes (e.g. cn=ClearAttributesOnly,cn=globalgroups,cn=config). 
  
-### Using Main Control Panel
+## Using Main Control Panel to Access Encrypted Attributes
 
-When viewing Universal Directory/persistent cache entries or exporting them to an LDIF file from the Main Control Panel > Directory Browser tab, make sure you are connected via SSL, otherwise the attributes are returned/exported as encrypted.
+When viewing RadiantOne Directory/persistent cache entries or exporting them to an LDIF file from the Main Control Panel > Directory Browser tab, make sure you are connected via SSL, otherwise the attributes are returned/exported as encrypted.
 
 Operations performed on the Directory Browser tab are based on an SSL connection to RadiantOne, and the attributes defined as encrypted are returned decrypted as long as the user you’ve connected to the Main Control Panel with is authorized to read those attributes and this user is not a member of the Clear Attributes Only Group (which by default is the [ClearAttributesOnly group](#clear-attributes-only-group) located at,ou=globalgroups,cn=config).
 
-#### Querying Changelog
+## Querying Changelog Entries that Contain Encrypted Attributes
 
 When entries containing encrypted attributes are updated and logged into the RadiantOne changelog (e.g. cn=changelog), a client that is connected to RadiantOne via SSL, and is NOT a member of the special [Clear Attributes Only Group](#clear-attributes-only-group) (which by default is the ClearAttributesOnly group located at,ou=globalgroups,cn=config) can see encrypted attributes in clear text. If the client is connected to RadiantOne via SSL and is a member of the special [Clear Attributes Only Group](#clear-attributes-only-group), the value in the “changes” attribute is returned encrypted.
 
-#### Clear Attributes Only Group
+### Clear Attributes Only Group
 
 To apply a deny-by-exception policy to encrypted attributes, you can add users to the ClearAttributesOnly group. Members of this group cannot get encrypted attributes in clear, even if ACLs dictate they can read the encrypted attribute(s) and they are connecting to RadiantOne via SSL.
 
@@ -409,17 +397,17 @@ To add a user to the Clear Attributes Only group:
 >[!note] 
 >To change the default group, on the Main Control Panel, go to the Zookeeper tab (requires [Expert Mode](01-introduction#expert-mode)). Expand radiantone > `<version>` > `<clustername>` > config and select vds_server.conf. Modify the value for "encryptedAttributeBlacklistGroupDn" to the full DN that points to the group entry to which the exclusion behavior should apply.
 
-### Updating Encrypted Attributes
+## Updating Encrypted Attributes
 
-To update encrypted attributes, the client must connect to RadiantOne via SSL and be authorized (via ACLs) to read and update the attribute and not be in the special [Clear Attributes Only Group](#clear-attributes-only-group). When editing entries from the Main Control Panel > Directory Browser tab > selected Universal Directory store, the attributes defined as encrypted are shown in clear as long as the user you’ve connected to the Main Control Panel is authorized to read those attributes and is not a member of the blacklisted group. In this case, the connected user can also update the encrypted attribute if permissions allow for it.
+To update encrypted attributes, the client must connect to RadiantOne via SSL and be authorized (via ACLs) to read and update the attribute and not be in the special [Clear Attributes Only Group](#clear-attributes-only-group). When editing entries from the Main Control Panel > Directory Browser tab > selected RadiantOne Directory store, the attributes defined as encrypted are shown in clear as long as the user you’ve connected to the Main Control Panel is authorized to read those attributes and is not a member of the blacklisted group. In this case, the connected user can also update the encrypted attribute if permissions allow for it.
 
-### Changing an Encryption Key
+## Changing an Encryption Key
 
 If you need to change the encryption security key, follow the steps below.
 
 1.	Go to Main Control Panel > Directory Namespace tab.
 
-2.	Select the naming context representing the Universal Directory (HDAP) store.
+2.	Select the naming context representing the RadiantOne Directory (HDAP) store.
 
 3.	On the right, remove all values from the encrypted attributes list.
 
@@ -435,11 +423,11 @@ If you need to change the encryption security key, follow the steps below.
 
 9.	Go to Main Control Panel > Directory Namespace tab.
 
-10.	Select the naming context representing the Universal Directory (HDAP) store.
+10.	Select the naming context representing the RadiantOne Directory (HDAP) store.
 
 11.	On the right, add required attributes to the encrypted attributes list.
 
-12.	Click **Sav**e.
+12.	Click **Save**.
 
 13.	Click **Re-build Index**.
 
@@ -459,7 +447,7 @@ To define the criteria used to generate an encryption key:
 
 3.	Select the desired cipher from the drop-down list or select [AWSKMS](#using-amazon-web-services-aws-with-a-customer-master-key-cmk) if you want to use your own Customer Master Key (CMK) in Amazon Web Services (AWS) Key Management Service (KMS) and have configured the necessary settings in ZooKeeper. If unlimited Java security libraries are enabled, there are more available ciphers in this drop-down list.
 
-4.	If you selected a cipher suite in the previous step, enter a security key. This value is used to auto-generate an encryption key. If you plan on deploying multiple clusters that will participate in inter cluster replication and you are going to initialize Universal Directory (HDAP) stores from an exported LDIFZ file, take note of the value you enter here as you must use it when configuring the LDIFZ cipher and security key in the other clusters.
+4.	If you selected a cipher suite in the previous step, enter a security key. This value is used to auto-generate an encryption key. If you plan on deploying multiple clusters that will participate in inter cluster replication and you are going to initialize RadiantOne Directory (HDAP) stores from an exported LDIFZ file, take note of the value you enter here as you must use it when configuring the LDIFZ cipher and security key in the other clusters.
 
 ### Changing an Encryption Key
 
@@ -749,19 +737,14 @@ To create this example, from the Main Control Panel > Settings Tab > Security se
 
 ![Setting Access Controls](Media/Image6.1.jpg)
 
-Figure 12: Setting Access Controls
-
 ### Scope
 
-The scope of an access control rule can be entry level (base), one level or subtree level. Entry level pertains to the single entry specified in the Target DN. One level pertains to the entry specified in the Target DN and all child branches one level below it. Subtree level pertains to the entry specified in the Target DN as well as all child branches below this point.
+The scope of an access control rule can be entry level (base), one level or subtree level. Entry level pertains to the single entry specified in the Target DN. One level pertains to the entry specified in the Target DN and all child branches one level below it. Subtree level pertains to the entry specified in the Target DN as well as all child branches below this point. Examples of entry level and subtree level access controls are shown below.
 
 ![Example of Entry Level Access Control](Media/Image6.2.jpg)
  
-Figure 13: Example of Entry Level Access Control
-
 ![Example of Sub Tree Level Access Control](Media/Image6.3.jpg)
  
-Figure 14: Example of Sub Tree Level Access Control
 
 ### Target Attributes
 
@@ -769,15 +752,11 @@ The rule can indicate “equal to” (=) or “not equal to” (!=). Select the 
 
 ![Target Attributes Operator](Media/Image6.4.jpg)
 
-Figure 15: Target Attributes Operator
-
 The access rule can apply to “all” attributes or choose the “custom” option and click **Select** to narrow the list.
 
 By default, the root ACI prevents only the target attribute aci from being returned. This default ACI is shown below.
 
 ![Manual Edit of ACI](Media/Image6.5.jpg)
-
-Figure 16: Manual Edit of ACI
 
 To improve security, if you want to also prevent userpassword from being returned, you can do so as shown in the following example ACI. 
 
@@ -827,7 +806,6 @@ If no access permissions have been defined, the default behavior is to grant rea
 
 ![Default Global ACI Setting](Media/Image6.6.jpg)
  
-Figure 17: Default Global ACI Setting
 
 #### Type
 
@@ -835,8 +813,6 @@ You can explicitly allow or deny access permissions by selecting the applicable 
 
 ![Permission Type](Media/Image6.7.jpg)
  
-Figure 18: Permission Type
-
 #### Operations
 
 The specific operations a user can perform on directory data are defined below. You can allow or deny all operations, or you can assign one or more of the following:
@@ -890,7 +866,7 @@ The proxy option indicates whether the subject can access the target with the ri
 A subject is whom the access control rule applies to. The subject types that can be associated with access control rules are described below:
 
 >[!warning] 
->It is recommended to define access controls on subjects that are located in a RadiantOne Universal Directory (HDAP) store or persistent cache. This prevents possible performance or network issues involved with RadiantOne connecting to a backend directory in order to enforce authorization. If your ACI’s require subjects that are located in backend directories, make sure that the backend is configured for high availability and that the [RadiantOne data source](02-concepts#data-source) is configured with the failover servers appropriately.
+>It is recommended to define access controls on subjects that are located in a RadiantOne Directory (HDAP) store or persistent cache. This prevents possible performance or network issues involved with RadiantOne connecting to a backend directory in order to enforce authorization. If your ACI’s require subjects that are located in backend directories, make sure that the backend is configured for high availability and that the [RadiantOne data source](02-concepts#data-source) is configured with the failover servers appropriately.
 
 -	Users – applicable to any specific user(s).
 -	Groups – applicable to a group of users. If the group is a nested group in HDAP, enable Main Control Panel > Settings > Security > Access Control > [Enable Nested Groups](06-security#enable-nested-groups) and configure [Linked Attribute](05-creating-virtual-views#linked-attributes) settings from Main Control Panel > Settings > Interception > Special Attributes Handling.
@@ -1038,12 +1014,10 @@ To export a certificate:
 
 # Password Policies
 
-When using a RadiantOne Universal Directory store or persistent cache (with password policy enforcement enabled), you can establish password policies for managing things such as password length, quality, reset frequency, lockout…etc. Password policies are only enforced for RadiantOne Universal Directory stores and persistent caches (that contain the user passwords and have enabled the enforcement of password policies) not any other kind of backend configuration (proxies, databases…etc.).
+When using a RadiantOne Directory store or persistent cache (with password policy enforcement enabled), you can establish password policies for managing things such as password length, quality, reset frequency, lockout…etc. Password policies are only enforced for RadiantOne Directory stores and persistent caches (that contain the user passwords and have enabled the enforcement of password policies) not any other kind of backend configuration (proxies, databases…etc.).
 
 ![Password Policies](Media/Image3.102.jpg)
  
-Figure 19: Password Policies
-
 ## Privileged Password Policy Group
 
 To allow users to bypass password policies, you can add them to the PrivilegedPasswordPolicyGroup group. This group can be useful, for example, if you want a helpdesk user to reset a user’s password. The password policies are not checked, so this user can set a password that does not meet the password content criteria, could be in history, etc.
@@ -1068,43 +1042,37 @@ From the Main Control Panel > Settings Tab > Security section > Password Policie
 
 ### Password Policy Scope
 
-There is a default password policy that is enforced at a global level for all RadiantOne Universal Directory stores and persistent cache (if password policy enforcement is enabled), no matter where a user account is located. You can override the default policy with a custom one that is applicable only to a certain subset of the user population (determined by group they are a member of, or the location of the entry in the virtual namespace).
+There is a default password policy that is enforced at a global level for all RadiantOne Directory stores and persistent cache (if password policy enforcement is enabled), no matter where a user account is located. You can override the default policy with a custom one that is applicable only to a certain subset of the user population (determined by group they are a member of, or the location of the entry in the virtual namespace).
 
 >[!note]
 >If a given user entry is affected by both a global and local policy, the local policy takes precedence. For more details, see [Password Policy Precedence](#password-policy-precedence). To enable password policy enforcement for a persistent cache branch, check the Enable Password Policy Enforcement option on the cache settings. For more details on persistent cache, see the [RadiantOne Deployment and Tuning Guide](/deployment-and-tuning-guide/00-preface).
 
-#### Default Password Policy
+### Default Password Policy
 
 In the ‘Choose a Password Policy’ drop-down menu, the default password policy is named Default Policy. Choose this option to edit the components of the global default policy.
 
 ![Password Policy Scope](Media/Image3.103.jpg)
  
-Figure 20: Password Policy Scope
-
-#### Custom Password Policy
+### Custom Password Policy
 
 To create a custom password policy, next to the ‘Choose a Password Policy’ drop-down, click **New**. Enter a policy name applicable to the intended usage and click **OK**.
 
-The ‘Subject’ of the custom policy can be either Sub-tree or Group and is based on a specific base DN. Click **CHOOSE** to select a base DN. If the subject is set to sub-tree, this means that all user entries below the chosen base DN (which must be a RadiantOne Universal Directory store or persistent cache) are affected by the custom policy. If the subject is set to group, this means that all users that are a member of the group specified in the base DN are affected by the custom policy. The group DN can represent a static group (unique members listed in the group entry) or a dynamic group (associated with the groupOfURLs object class and contains a memberURL attribute dictating the members). RadiantOne evaluates dynamic membership automatically to enforce password policies. If a user is affected by a policy defined for sub-tree and for group, the one associated with the group takes precedence.
+The ‘Subject’ of the custom policy can be either Sub-tree or Group and is based on a specific base DN. Click **CHOOSE** to select a base DN. If the subject is set to sub-tree, this means that all user entries below the chosen base DN (which must be a RadiantOne Directory store or persistent cache) are affected by the custom policy. If the subject is set to group, this means that all users that are a member of the group specified in the base DN are affected by the custom policy. The group DN can represent a static group (unique members listed in the group entry) or a dynamic group (associated with the groupOfURLs object class and contains a memberURL attribute dictating the members). RadiantOne evaluates dynamic membership automatically to enforce password policies. If a user is affected by a policy defined for sub-tree and for group, the one associated with the group takes precedence.
 
 >[!note] Custom policy properties override those defined in the default policy. The only exception is the password content properties where you can choose to enable the enforcement of the custom policy, or choose to use the default policy. Keep in mind that a value of 0 (zero) in a custom policy for password content means an unlimited amount is allowed. It does not mean that it is undefined.
 
-An example of a custom password policy is shown below. It is applicable to all users who are located in a RadiantOne Universal Directory store and are a member of the Special Users group identified in the DIT as cn=special users,ou=globalgroups,cn=config.
+An example of a custom password policy is shown below. It is applicable to all users who are located in a RadiantOne Directory store and are a member of the Special Users group identified in the DIT as cn=special users,ou=globalgroups,cn=config.
 
 >[!note] If you define multiple custom password policies associated with groups (as the Subject), they should not have the same precedence if they share members. If a user is affected by multiple group-based policies, the one with the highest precedence (lowest numeric value in the precedence setting) is enforced.
 
 ![Example Custom Password Policy Applicable to a Group](Media/Image3.104.jpg)
  
-Figure 21: Example Custom Password Policy Applicable to a Group
-
-An example of a custom password policy applicable to all users below a specific container is shown below. This custom policy is enforced for all users in a RadiantOne Universal Directory store located below o=local.
+An example of a custom password policy applicable to all users below a specific container is shown below. This custom policy is enforced for all users in a RadiantOne Directory store located below o=local.
 
 >[!note] Precedence level is not configurable for policies defined on a sub tree. Multiple password policies configured with sub tree subject, should not be configured for the same location. If multiple policies impact the same branch, the policy defined at the lowest point is enforced.
 
-![An image showing ](Media/Image3.105.jpg)
+![Example Custom Password Policy Applicable to a Sub Tree](Media/Image3.105.jpg)
  
-Figure 50: Example Custom Password Policy Applicable to a Sub Tree
-
 ### Password Policy Precedence
 
 If the user entry has a [pwdPolicySubentry](#pwdpolicysubentry) attribute that contains a DN pointing to a password policy located below cn=Password Policy,cn=config in RadiantOne, this policy takes precedence and is enforced for the user. If the user entry doesn’t have a pwdPolicySubentry attribute, or if the value points to a non-existent policy below cn=Password Policy,cn=config, then RadiantOne evaluates other configured password policies that affect the user.
@@ -1141,8 +1109,6 @@ The default delegated administrator roles and users associated with the RadiantO
 
 ![Password Changes Options](Media/Image3.106.jpg)
  
-Figure 22: Password Changes Options
-
 ### User must change password after reset
 
 This value is stored in the pwdMustChange attribute of the cn=Password Policy entry and has a value of True or False. If True, the user must change their passwords when they first bind to the directory after their password has been reset. The bind error message returned from RadiantOne is “You must change your password before submitting any other requests”.
@@ -1180,7 +1146,6 @@ This value is stored in the pwdInHistory attribute of the cn=Password Policy ent
 
 ![Password Expiration Options](Media/Image3.107.jpg)
  
-Figure 23: Password Expiration Options
  
 ### Password never expires
 
@@ -1239,7 +1204,6 @@ Each of these properties is described below.
  
 ![Password Content and Account Lockout Options](Media/Image3.108.jpg)
 
-Figure 24: Password Content and Account Lockout Options
 
 ### Enabled
 
@@ -1283,9 +1247,9 @@ For the accountname value, the sAMAccountname attribute is checked first. If sAM
 
 ### Password Encryption
 
-The passwords that are stored in a RadiantOne Universal Directory store may be hashed using any of the following methods: Clear, CRYPT, MD5, PBKDF2AD, Salted SHA-1, Salted SHA-256, Salted SHA-384, Salted SHA-512, and SHA-1. The least secure methods of CRYPT, MD5, and SHA-1 have been hidden as options from the Main Control Panel.
+The passwords that are stored in a RadiantOne Directory store may be hashed using any of the following methods: Clear, CRYPT, MD5, PBKDF2AD, Salted SHA-1, Salted SHA-256, Salted SHA-384, Salted SHA-512, and SHA-1. The least secure methods of CRYPT, MD5, and SHA-1 have been hidden as options from the Main Control Panel.
 
->[!warning] PBKDF2AD is the required password encryption expected in Azure AD. Therefore, if your HDAP store (or persistent cache) will be synchronized to Azure AD, and passwords are a part of the synchronization, use the PBKDF2AD encryption option to store passwords in the RadiantOne Universal Directory.
+>[!warning] PBKDF2AD is the required password encryption expected in Azure AD. Therefore, if your HDAP store (or persistent cache) will be synchronized to Azure AD, and passwords are a part of the synchronization, use the PBKDF2AD encryption option to store passwords in the RadiantOne Directory.
 
 ### Automatic Update to Stronger Password Hash
 
@@ -1410,7 +1374,6 @@ A multi-valued Generalized Time attribute containing the times of previous conse
 
 ![Number of Login Failures](Media/Image3.109.jpg)
 
-Figure 25: Number of Login Failures
  
 If the last login was successful, this attribute is not present.
 
@@ -1461,13 +1424,11 @@ The following parameters are configured from the Main Control Panel > Settings T
 
 ![An image showing ](Media/Image3.117.jpg)
 
-Figure 26: Global Limits Section
- 
 ### Maximum Connections
 
 The maximum number of client connections the server can accept concurrently (connecting at the exact same time).
 
-#### Manually Closing a Client Connection
+**Manually Closing a Client Connection**
 
 A connection can be manually closed by issuing an LDAP search to RadiantOne with the connection ID. The connection ID can be viewed from the Server Control Panel > Usage & Activity tab > Connections & Operations. 
 
@@ -1493,7 +1454,7 @@ The time (in seconds) during which a search operation is expected to finish. If 
 The look through limit is the maximum number of entries you want the server to check in response to a search request. You should use this value to limit the number of entries the server will look through to find an entry. This limits the processing and time spent by the server to respond to potentially bogus search requests (for example, if a client sends a search filter based on an attribute that is not indexed). By default, this is set to 0, which means that there is no limit set for the number of entries that the server will look through.
 
 >[!warning] 
->This property is not used by RadiantOne Universal Directory (HDAP) stores.
+>This property is not used by RadiantOne Directory (HDAP) stores.
 
 ### Idle Timeout
 
@@ -1625,15 +1586,13 @@ If you enable Bind Requires SSL or StartTLS, to avoid problems when using the Ma
 
 ![Internal Connection Settings](Media/Image3.111.jpg)
  
-Figure 28: Internal Connection Settings
-
 ### Bind Requires Password
 
 If a user binds to RadiantOne and does not provide a password, the default behavior is to treat it like an anonymous user. This may introduce security problems for the client application, or in certain cases where machines like printers may bind against RadiantOne, that do not verify that the client actually provided a password. If the Bind Requires Password setting is enabled, and no password is specified in the bind request, RadiantOne tries to bind the specified user and return an invalid credential error to the client. If Bind Requires Password is not enabled, and a bind request comes in with a valid user DN and no password, it is considered an anonymous bind. Bind requires Password is enabled by default. 
 
 ### Enable Nested Groups
 
-If you have groups stored in a RadiantOne Universal Directory store and want to support groups as members, check the Enable Nested Groups option.
+If you have groups stored in a RadiantOne Directory store and want to support groups as members, check the Enable Nested Groups option.
 
 >[!note] If [Linked Attributes](05-creating-virtual-views#linked-attributes) are not set, the member and the nested group must reside within the same naming context. 
 
@@ -1642,10 +1601,10 @@ If you have groups stored in a RadiantOne Universal Directory store and want to 
 
 ### LDAP_MATCHING_RULE_IN_CHAIN
 
-RadiantOne supports the LDAP_MATCHING_RULE_IN_CHAIN operator and allows clients to issue search filters using the 1.2.840.113556.1.4.1941 matching rule OID. This provides a method to look up the ancestry of an object and can be used in a search filter to retrieve all groups a user is a member of even when that group is nested (and is a member of another group). If the base DN in the RadiantOne namespace is associated with a proxy view, the search filter containing the matching rule OID is passed to the backend which must process the LDAP_MATCHING_RULE_IN_CHAIN. If the base DN in the RadiantOne namespace is associated with a persistent cache or a Universal Directory store, RadiantOne processes the matching rule locally.
+RadiantOne supports the LDAP_MATCHING_RULE_IN_CHAIN operator and allows clients to issue search filters using the 1.2.840.113556.1.4.1941 matching rule OID. This provides a method to look up the ancestry of an object and can be used in a search filter to retrieve all groups a user is a member of even when that group is nested (and is a member of another group). If the base DN in the RadiantOne namespace is associated with a proxy view, the search filter containing the matching rule OID is passed to the backend which must process the LDAP_MATCHING_RULE_IN_CHAIN. If the base DN in the RadiantOne namespace is associated with a persistent cache or a Directory store, RadiantOne processes the matching rule locally.
 
 >[!warning] 
->If you are using the Linked Attributes calculation in RadiantOne and the users and groups are local, in a persistent cache or Universal Directory store, you must enable the Optimize Linked Attribute setting to support filters requesting isMemberOf/memberOf. This ensures good performance. For details on this setting, see the Namespace Configuration Guide (applicable to RadiantOne Universal Directory stores) or the Deployment and Tuning Guide (applicable to persistent cache).
+>If you are using the Linked Attributes calculation in RadiantOne and the users and groups are local, in a persistent cache or RadiantOne Directory store, you must enable the Optimize Linked Attribute setting to support filters requesting isMemberOf/memberOf. This ensures good performance. For details on this setting, see the Namespace Configuration Guide (applicable to RadiantOne Directory stores) or the Deployment and Tuning Guide (applicable to persistent cache).
 
 ![An image showing ](Media/Image3.112.jpg)
 
@@ -1653,14 +1612,10 @@ As a simple example, assume there is a group named All Users and that this group
 
 ![Example Group](Media/Image3.113.jpg)
  
-Figure 29: Example Group
-
 The screen below shows the Sales group containing the All Users group as a member.
 
 ![Example Nested Group](Media/Image3.114.jpg)
  
-Figure 30: Example Nested Group
-
 A client can issue a search leveraging the matching rule OID to retrieve all groups Adan_Funston is a member of with the following search filter.
 
 (uniqueMember:1.2.840.113556.1.4.1941:=uid=Adan_Funston,ou=Accounting,o=companydirectory)
@@ -1669,8 +1624,6 @@ A search request to RadiantOne with the above filter would return Sales and All 
 
 ![Search Filter using Matching Rule OID](Media/Image3.115.jpg)
  
-Figure 31: Search Filter using Matching Rule OID
-
 >[!warning] 
 >Queries requesting an intersecting set of multiple memberships like in the following filter are not supported.**
 
