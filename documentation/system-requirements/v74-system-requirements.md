@@ -78,11 +78,11 @@ If running in a cluster, you must make sure DNS resolution for the cluster nodes
 
 The following is a list of all ports which could be used by RadiantOne (could vary based on configuration during install and product usage) and as such should be opened to avoid any potential testing/deployment issues:
 
-Standard LDAP: 2389 and 636 (SSL)
+Standard LDAP: 2389 and 636 (SSL), for Active Directory Global Catalog: 3268 and 3269 (SSL)
 
 RadiantOne Main Control Panel HTTP Ports: 7070 and 7171 (SSL)
 
-RadiantOne FID Admin HTTP Service: 9100 and 9101 (SSL)
+RadiantOne Admin HTTP Service: 9100 and 9101 (SSL)
 
 Zookeeper (configuration management): 2181 (client port), 2182 (JMX), 2888 (ensemble port), 3888 (leader election port)
 
