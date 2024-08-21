@@ -160,7 +160,8 @@ A rich set of HTTP-based API's have been developed on top of LDAP, to provide br
 
 <section>
   
-  > COMING SOON!
+  > [REST API for Configuration](command-line-configuration-guide/introduction/)
+  > RadiantOne offers a REST-based API that can be used for issuing configuration commands. 
   
 </section>
 
