@@ -16,3 +16,4 @@ description: Learn basic tuning aspects for Identity Data Management
 - [Persistent Cache Capture Connectors](#)
   - [Connector Types](cache-capture-connectors.md)
   - [Connector Properties](cache-connector-properties.md)
+- [Synchronization Capture Connectors](../configuration/synchronization/connector-properties/)
