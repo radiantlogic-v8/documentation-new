@@ -681,15 +681,15 @@ The following settings must be managed from the RadiantOne Classic Control Panel
 -	Password Policies​: Classic Control Panel > Settings > Security > Password Policies <br> See [Password Policies](/documentation/configuration/security/password-policies) for details. 
 -	SCIM config (frontend): ​Classic Control Panel > Settings > Server Front End  > SCIM <br> See [SCIM](../web-services-api-guide/scim) for details. 
 -	REST config (frontend)​: Classic Control Panel > Settings > Server Front End > Other Protocols <br> See [REST](../web-services-api-guide/rest) for details. 
--	External Token Validators​: Classic Control Panel > Settings > Security > External Token Validators
+-	External Token Validators​: Classic Control Panel > Settings > Security > External Token Validators <br> See [External Token Validators](../configuration/security/external-token-validators) for details.
 -	Limits​: Classic Control Panel > Settings > Limits <br> See [Limits](../tuning/tuning-limits) for details. 
--	Attribute Handling​: Classic Control Panel > Settings > Server Front End > Attributes Handling
--	Duplicates Handling​: Classic Control Panel > Settings > Server Front End > Duplicates Handling
+-	Attribute Handling​: Classic Control Panel > Settings > Server Front End > Attributes Handling <br> See [General Attribute Handling](../tuning/attribute-handling/#attributes-handling) for details.
+-	Duplicates Handling​: Classic Control Panel > Settings > Server Front End > Duplicates Handling See [Duplicates Handling](../tuning/attribute-handling/#duplicate-entry-handling) for details.
 -	Changelog Settings​: Classic Control Panel > Settings > Logs > Changelog 
 -	Log Settings​: Classic Control Panel > Settings > Logs > Log Settings <br> See [Log Settings](../troubleshooting/troubleshooting) for details. 
--	Control Panel customizations (lock, color theme, session timeout, max users, banner, custom message on login screen)​: ​Classic Control Panel > Settings > Server Front End > Administration
--	PCache Refresh Monitoring: Classic Control Panel > PCache Monitoring tab
--	Intercluster Replication Monitoring: Classic Control Panel > Replication Monitoring tab
--	File Manager: Classic Control Panel > Settings > Configuration > File Manager <br> See [File Manager](#file-manager) for details
+-	Control Panel customizations (lock, color theme, session timeout, max users, banner, custom message on login screen)​: ​Classic Control Panel > Settings > Server Front End > Administration <br> See [Customizing the Classic Control Panel](#customizing-the-classic-control-panel) for details.
+-	PCache Refresh Monitoring: Classic Control Panel > PCache Monitoring tab <br> See [Persistent Cache Refresh Monitoring](../monitoring-and-alerts/monitoring-and-alerts/#persistent-cache-refresh-pcache-monitoring-tab) for details.
+-	Intercluster Replication Monitoring: Classic Control Panel > Replication Monitoring tab <br> See [Replication Monitoring](../monitoring-and-alerts/monitoring-and-alerts/#replication-monitoring-tab) for details.
+-	File Manager: Classic Control Panel > Settings > Configuration > File Manager <br> See [File Manager](#file-manager) for details.
 -	Identity Data Analysis Wizard: Classic Control Panel > Wizards > Identity Data Analysis. See [Identity Data Analysis](../configuration/identity-views/identity-data-analysis) for details.
 -	Global Identity Builder: Classic Control Panel > Wizards > Global Identity Builder. See [Global Identity Builder](../configuration/global-identity-builder/introduction) for details.
