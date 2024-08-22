@@ -100,8 +100,20 @@ Harness your identity data with intelligent integration to drive better business
   > Learn how to optimize identity views including how to configure and manage persistent cache. 
   
   > [Directory Stores](tuning/directory-stores)  
-  > Learn about tuning properties for RadiantOne directory stores. 
-     
+  > Learn about tuning properties for RadiantOne directory stores.
+
+  > [Log Settings](tuning/log-settings)  
+  > Learn about tuning log settings.
+
+  > [General Attribute Handling](tuning/attribute-handling)  
+  > Learn about properties related to attribute handling.
+
+  > [Peristent Cache Capture Connectors](tuning/cache-connector-properties/)  
+  > Learn about tuning properties for real-time persistent cache refresh connectors.
+
+  > [Synchronization Capture Connectors](configuration/synchronization/connector-properties/)  
+  > Learn about tuning properties for synchronization capture connectors.
+
 </section>
 
 ## Monitoring and Alerts
