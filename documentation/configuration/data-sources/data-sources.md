@@ -17,7 +17,7 @@ Data sources are managed from Control Panel > Setup > Data Catalog > Data Source
 ### Creating Data Sources
 To create a data source:
 1.  Navigate to Control Panel > Setup > Data Catalog > Data Sources.
-1.  Click ![An image showing](../Media/newsource.jpg).
+1.  Click ![An image showing](Media/newsource.jpg).
 1.  Select a template associated with the identity data source type from the list. Use the Search field to quickly find a template name, or click on LDAP, DATABASE or OTHER tabs to narrow down the template choices by type. JDBC-accessible source templaes are located on the DATABASE tab. LDAP-accessible data source templates are located on the LDAP tab. Custom data source templates are located on the OTHER tab.
 1.  Enter the basic details about the identity data source.
 
@@ -110,25 +110,25 @@ To update a data source, navigate to Control Panel > Setup > Data Catalog > Data
 ### Deleting Data Sources
 To delete a data source, navigate to Control Panel > Setup > Data Catalog > Data Sources. Select the configured data source in the list, click the inline trash can icon and click **DELETE** to confirm. Otherwise, click **KEEP DATA SOURCE** to not delete.
 
-![An image showing deleting data source](../Media/delete-data-source.jpg)
+![An image showing deleting data source](Media/delete-data-source.jpg)
 
 ### Cloning Data Sources
 Cloning a data source allows you to make a copy of the connection information and provide a new name for the data source. To clone a data source, navigate to Control Panel > Setup > Data Catalog > Data Sources. Select the configured data source in the list and click the clone icon.
 
-![Cloning a data source](../Media/clone-data-source.jpg)
+![Cloning a data source](Media/clone-data-source.jpg)
 
 Enter a data source name and click the checkmark inline with the cloned data source to save it. Click **X* to delete the clone instead of saving it.
 
-![Confirm a cloned data source name](../Media/confirm-clone.jpg)
+![Confirm a cloned data source name](Media/confirm-clone.jpg)
 
 ### Importing Data Sources
 If you have existing data sources defined (exported from another RadiantOne configuration) and you would like to import those, navigate to the Control Panel > Setup > Data Catalog > Data Sources, click **...** and choose Import. 
 
-![An image showing import data sources screen](../Media/import-export-menu.jpg)
+![An image showing import data sources screen](Media/import-export-menu.jpg)
 
 Either browse to the file containing the data source definitions that you have exported from another RadiantOne server or drag-and-drop the file into the window and click **CLOSE** after the import.
 
-![An image showing import data sources screen](../Media/import-data-source.jpg)
+![An image showing import data sources screen](Media/import-data-source.jpg)
 
 >[!note] 
 >To override existing data sources containing the same names as ones from the import file, toggle the **OVERRIDE DUPLICATE DATA SOURCES** option on. 
@@ -136,11 +136,11 @@ Either browse to the file containing the data source definitions that you have e
 ### Exporting Data Sources
 To export data sources, navigate to the Control Panel > Setup > Data Catalog > Data Sources, click **...** and choose Export.
 
-![Export Data Sources Option](../Media/export-data-source.jpg)
+![Export Data Sources Option](Media/export-data-source.jpg)
 
 Select the data sources to include in the export and click **EXPORT**
 
-![Exporting Data Sources](../Media/selected-data-sources.jpg)
+![Exporting Data Sources](Media/selected-data-sources.jpg)
 
 Your internet browser settings determine the download location. The download file is named fid-datasources-export.json.
 
