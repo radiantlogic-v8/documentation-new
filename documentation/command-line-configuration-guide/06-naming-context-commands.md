@@ -5,11 +5,11 @@ description: Command Line Configuration Guide
 
 # Naming Context Commands
 
-This chapter describes how to create persistent caches, naming contexts, proxy naming contexts, and backup images of RadiantOne Universal Directory (HDAP) stores. It also describes how to delete naming contexts and their caches. These commands can be set using <RLI_HOME>/bin/vdsconfig.
+This chapter describes how to create persistent caches, naming contexts, proxy naming contexts, and backup images of RadiantOne Directory (HDAP) stores. It also describes how to delete naming contexts and their caches. These commands can be set using <RLI_HOME>/bin/vdsconfig.
 
-## Proxy Views and Universal Directory (HDAP) Stores
+## Proxy Views and RadiantOne Directory (HDAP) Stores
 
-Proxy naming contexts and Universal Directory stores can be created and managed from the Main Control Panel, Directory Namespace tab.
+Proxy naming contexts and RadiantOne Directory stores can be created and managed from the Main Control Panel, Directory Namespace tab.
 
 ![New naming context](Media/Image6.1.jpg)
 
@@ -78,7 +78,7 @@ In the following example, a request is made to create an LDAP proxy view (mounte
 
 ### create-hdapstore
 
-This command creates a new RadiantOne Universal Directory (HDAP) store naming context.
+This command creates a new RadiantOne Directory (HDAP) store naming context.
 
 Usage:
 <br>`create-hdapstore -namingcontext <namingcontext> [-inactive] [-indexattr <indexattr>] [-instance <instance>] [-normalizenames] [-rootnc <rootnc>] [-schemacheck] [-sortedindexattr <sortedindexattr>]`
@@ -104,7 +104,7 @@ Usage:
 <br>true for root naming context, false to indicate a sub-level naming context.
 
 `- schemacheck`
-<br>Enables schema checking on the RadiantOne Universal Directory (HDAP) store (disabled by
+<br>Enables schema checking on the RadiantOne Directory (HDAP) store (disabled by
 default).
 
 `- sortedindexattr (sortedindexattr)`
@@ -112,7 +112,7 @@ default).
 
 **REST (ADAP) Example**
 
-In the following example, a request is made to create a Universal Directory store mounted at o=hdap in the RadiantOne namespace.
+In the following example, a request is made to create a RadiantOne Directory store mounted at o=hdap in the namespace.
 
 `https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=create-hdapstore&namingcontext=o=hdap`
 
@@ -160,7 +160,7 @@ This command deletes a naming context.
 
 **REST (ADAP) Example**
 
-In the following example, a request is made to delete a Universal Directory store that is mounted at o=hdap in the RadiantOne namespace.
+In the following example, a request is made to delete a RadiantOne Directory store that is mounted at o=hdap in the namespace.
 
 `https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=delete-context&namingcontext=o=hdap`
 
@@ -221,9 +221,9 @@ In the following example, a request is made to delete a persistent cache on o= c
 
 `https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=delete-cache&namingcontext=o=companyprofiles`
 
-## Backup and Restore RadiantOne Universal Directory Stores
+## Backup and Restore RadiantOne Directory Stores
 
-Universal Directory (HDAP) stores can be backed up and restored from the Main Control Panel,Directory Namespace Tab, selected Universal Directory store.
+RadiantOne Directory (HDAP) stores can be backed up and restored from the Main Control Panel,Directory Namespace Tab, selected RadiantOne Directory store.
 
 ![An image showing ](Media/Image6.5.jpg)
 
@@ -231,7 +231,7 @@ The <RLI_HOME>/bin/vdsconfig utility can be used instead of the UI mentioned abo
 
 ### backup-hdapstore
 
-This command creates a backup image of a RadiantOne Universal Directory store. This command can also be used on persistent cache stores. In multi-node clusters, this command must be executed on the RadiantOne leader node. For information on determining the RadiantOne leader, refer to the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction).
+This command creates a backup image of a RadiantOne Directory store. This command can also be used on persistent cache stores. In multi-node clusters, this command must be executed on the RadiantOne leader node. For information on determining the RadiantOne leader, refer to the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction).
 
 **Usage:**
 <br>`backup-hdapstore -namingcontext <namingcontext> [-backupzip <backupzip>] [-instance <instance>] [-nocopy]`
@@ -250,19 +250,19 @@ A compressed backup file is created in the location, in a folder named after the
 <br> The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
 
 `- nocopy`
-<br>Indicates that the backup should not be archived (only the most recent backup image is kept). This means that a history of all backups is not maintained, and you won’t be able to restore a RadiantOne Universal Directory store from a previous, point in time. You will only be able to restore from the most recent backup. If -nocopy is not specified, a history of images is stored during every backup in the location dictated by the -backupdir argument.
+<br>Indicates that the backup should not be archived (only the most recent backup image is kept). This means that a history of all backups is not maintained, and you won’t be able to restore a RadiantOne Directory store from a previous, point in time. You will only be able to restore from the most recent backup. If -nocopy is not specified, a history of images is stored during every backup in the location dictated by the -backupdir argument.
 
 **REST (ADAP) Example**
 
-In the following example, a request is made to create a backup of a RadiantOne Universal Directory store located at o=hdap in the RadiantOne namespace.
+In the following example, a request is made to create a backup of a RadiantOne Directory store located at o=hdap in the namespace.
 
 `https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=backup-hdapstore&namingcontext=o=hdap&backupzip=c:/tmp/backup.zip`
 
 ### restore-hdapstore
 
-This command restores a RadiantOne Universal Directory store back to the state of a given backup image. In multi-node clusters, this command must be executed on the RadiantOne leader node. For information on determining the RadiantOne leader, refer to the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction). To restore from the most recent backup image do not pass a backupid in the command. To restore from a specific point in time, pass the applicable backupid in the command. Use the -list argument to obtain a list of possible backup ids for the given naming context.
+This command restores a RadiantOne Directory store back to the state of a given backup image. In multi-node clusters, this command must be executed on the RadiantOne leader node. For information on determining the RadiantOne leader, refer to the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction). To restore from the most recent backup image do not pass a backupid in the command. To restore from a specific point in time, pass the applicable backupid in the command. Use the -list argument to obtain a list of possible backup ids for the given naming context.
 
-The restore is performed using the compressed file located in the folder indicated in the - backupdir or -backupid argument. The compressed file is automatically decrypted using the RadiantOne server certificate keystore password. The server where you are restoring the RadiantOne Universal Directory store must have the same server certificate keystore password than the server where you created the backup from.
+The restore is performed using the compressed file located in the folder indicated in the - backupdir or -backupid argument. The compressed file is automatically decrypted using the RadiantOne server certificate keystore password. The server where you are restoring the RadiantOne Directory store must have the same server certificate keystore password than the server where you created the backup from.
 
 **Usage:**
 <br>`restore-hdapstore -namingcontext <namingcontext> [-backupzip <backupzip>] [-backupid <backupid>] [-instance <instance>] [-list]`
@@ -286,7 +286,7 @@ The restore is performed using the compressed file located in the folder indicat
 
 **REST (ADAP) Example**
 
-In the following example, a request is made to restore a RadiantOne Universal Directory store from a backup in the tmp directory.
+In the following example, a request is made to restore a RadiantOne Directory store from a backup in the tmp directory.
 
 `https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=restore-hdapstore&namingcontext=o=hdap&backupzip=C:\tmp\backup.zip\o_hdap-backup\ 2018 - 10 - 17_16- 42 - 49.zip`
 
@@ -340,7 +340,7 @@ For typical LDAP migration use cases where you are migrating from a legacy LDAP 
 
 2. (Optional) If inter-cluster replication is used, suspend it in all clusters by setting “replicationInSuspendMode” : true, in ZooKeeper at `/radiantone/<zk_version>/<clustername>/config/namings/<replicatednamingcontext>`. Remember to do this for all clusters involved in inter-cluster replication.
 
-3. After the persistent cache has been converted to a RadiantOne Directory store using the `convert-pcache-to-hdap` command (run on one node in all clusters), [rebuild the index](task-launch-commands#rebuilding-indexes-for-radiantone-universal-directory-stores) to remove any persistent cache operational attributes. 
+3. After the persistent cache has been converted to a RadiantOne Directory store using the `convert-pcache-to-hdap` command (run on one node in all clusters), [rebuild the index](task-launch-commands#rebuilding-indexes-for-radiantone-directory-stores) to remove any persistent cache operational attributes. 
 
 4. (Optional) If inter-cluster replication is used, enable it by setting “replicationInSuspendMode” : false, in ZooKeeper at `/radiantone/<zk_version>/<clustername>/config/namings/<replicatednamingcontext>` in all RadiantOne clusters involved in inter-cluster replication.
 
