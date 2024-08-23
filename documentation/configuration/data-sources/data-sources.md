@@ -151,7 +151,7 @@ Only database templates that are associated with JDBC drivers installed with Rad
 
 Templates can be managed from Control Panel > Setup > Data Catalog > Template Management.
 
-![Template Management](../Media/template-mgmt.jpg)
+![Template Management](Media/template-mgmt.jpg)
 
 
 ### Creating Templates
@@ -160,7 +160,7 @@ Templates for JDBC-accessible databases and other data sources that can be queri
 
 Click the **+CREATE TEMPLATE** drop-down and select either *Database Source Type* (for JDBC-accessible data sources), or *Custom Source Type* (for web service API-accessible services).
 
-![Create New Template](../Media/create-template.jpg)
+![Create New Template](Media/create-template.jpg)
 
 **Database Source Types**
 
@@ -171,7 +171,7 @@ Click the **+CREATE TEMPLATE** drop-down and select either *Database Source Type
 5. Select a unique icon to display on the card associated with the template.
 6. Click **ADD**. A new card is available for defining "Database" type of data sources.
 
-![Database Data Type](../Media/db-type.jpg)
+![Database Data Type](Media/db-type.jpg)
 
 
 **Custom Source Types**
@@ -186,14 +186,14 @@ Click the **+CREATE TEMPLATE** drop-down and select either *Database Source Type
 8. In each section created in the previous step, click *+* to add properties. Create as many properties as needed.
 9. Click **ADD**. A new card is available for defining "Other" (type) of data sources.
 
-![Custom Data Type](../Media/other-type.jpg)
+![Custom Data Type](Media/other-type.jpg)
 
 ### Updating Templates
 All user-defined templates can be updated from Control Panel > Setup > Data Catalog > Template Management. Default templates associated with JDBC-accessible types of data sources can also be updated from here to update jdbc drivers. 
 
 Select the template and use the drawer that appears on the right to update properties. Click **SAVE**.
 
-![Updating Templates](../Media/update-template.jpg)
+![Updating Templates](Media/update-template.jpg)
 
 ### Deleting Templates
 
@@ -201,7 +201,7 @@ Only user-defined templates can be deleted.
 
 Templates can be deleted from Control Panel > Setup > Data Catalog > Template Management. Select the user-defined template and click **Delete**. Click **DELETE** to confirm.
 
-![Deleting Templates](../Media/delete-template.jpg)
+![Deleting Templates](Media/delete-template.jpg)
 
 ### Exporting Templates
 
@@ -209,13 +209,13 @@ Only user-defined templates can be exported.
 
 Templates can be exported from Control Panel > Setup > Data Catalog > Template Management. Select the user-defined template and click **EXPORT TEMPLATE**. The template is exported and automatically downloaded based on your web browser settings.
 
-![Exporting Templates](../Media/export-template.jpg)
+![Exporting Templates](Media/export-template.jpg)
 
 ### Importing Templates
 
 Templates that have been exported from a RadiantOne v8.1.X deployment can be imported into other RadiantOne v8.1.X deployments. Templates can be imported from Control Panel > Setup > Data Catalog > Template Management. Click **IMPORT TEMPLATE**. Either drag-and-drop the template file into the window or click *Choose a File* to upload. The templates included in the file are shown. Select which templates to import and click **IMPORT**. Imported templates can be used to create data sources from Control Panel > Setup > Data Catalog > Data Sources.
 
-![Importing Templates](../Media/import-template.jpg)
+![Importing Templates](Media/import-template.jpg)
 
 ## Managing Schemas
 Each data source can be associated with one or more schema files. The first schema file extracted for a data source is considered the default one. For LDAP data sources, the default schema is automatically extracted when the data source is defined. For JDBC-accessible and SCIMv2 accessible data sources, you must manually extract the schema so you can selectively choose the objects that are required for creating identity views. For custom data sources, you must manually create the schema in RadiantOne.
