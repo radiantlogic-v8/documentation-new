@@ -5,7 +5,7 @@ description: Command Line Configuration Guide
 
 # Task Launch Commands
 
-This chapter describes how to launch tasks to initialize a cache, initialize a RadiantOne Universal Directory (HDAP) store from LDIF file, import an LDIF file, export data from an LDAP data source to LDIF file, and rebuild an index for a Universal Directory store or persistent cache.
+This chapter describes how to launch tasks to initialize a cache, initialize a RadiantOne Directory (HDAP) store from LDIF file, import an LDIF file, export data from an LDAP data source to LDIF file, and rebuild an index for a RadiantOne Directory store or persistent cache.
 
 ## Initializing Persistent Cache
 
@@ -90,15 +90,15 @@ In the following example, a request is made to import an LDIF file into o=employ
 
 `https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=import-ldif&ldif=C:\radiantone\vds\vds_server\ldif\export\employees.ldif&basedn=o=employees2&datasourcename=vds&interactive&override`
 
-## Exporting Persistent Cache or RadiantOne Universal Directory (HDAP) Stores
+## Exporting Persistent Cache or RadiantOne Directory (HDAP) Stores
 
-Persistent Cache and Universal Directory (HDAP) stores can be exported from the Main Control Panel > Directory Namespace tab > selected branch (persistent cache or universal directory store).
+Persistent Cache and RadiantOne Directory (HDAP) stores can be exported from the Main Control Panel > Directory Namespace tab > selected branch (persistent cache or RadiantOne directory store).
 
 The following command can be used instead of the Main Control Panel.
 
 ### export-ldif
 
-This command launches a task to export data from a LDAP data source backend, Universal Directory store, or virtual tree to an LDIF file.
+This command launches a task to export data from a LDAP data source backend, RadiantOne Directory store, or virtual tree to an LDIF file.
 
 **Usage:**
 <br>`export-ldif -basedn <basedn> -ldif <ldif or ldifz file> -scope <scope> [-csv] [-datasourcename <datasourcename>] [-filter <filter>] [-instance <instance>] [-interactive]
@@ -137,7 +137,7 @@ This command launches a task to export data from a LDAP data source backend, Uni
 <br>The optional remapped base DN that each entry will have in the LDIF file.
 
 `- replication`
-<br>If this is specified, the UUID attributes are included in the exported LDIF file. If you want to use the exported LDIF file to initialize a RadiantOne Universal Directory store (a replica), then you should pass -replication in the export-ldif command.
+<br>If this is specified, the UUID attributes are included in the exported LDIF file. If you want to use the exported LDIF file to initialize a RadiantOne Directory store (a replica), then you should pass -replication in the export-ldif command.
 
 `- returnattributes <returnattributes>`
 <br>Optional list of comma-separated attributes to return from the search and include in the exported LDIF file. If nothing is specified, all attributes are requested.
@@ -150,17 +150,17 @@ In the following example, a request is made to export a backend to an LDIF file.
 
 `https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=export-ldif&basedn=o=companyprofiles&scope=sub&ldif=C:\radiantone\vds\vds_server\companyprofiles.ldif&interactive`
 
-## Initializing RadiantOne Universal Directory (HDAP) Stores
+## Initializing RadiantOne Directory (HDAP) Stores
 
-RadiantOne Universal Directory (HDAP) stores can be initialized and exported from the Main Control Panel > Directory Namespace tab > selected naming context.
+RadiantOne Directory (HDAP) stores can be initialized and exported from the Main Control Panel > Directory Namespace tab > selected naming context.
 
-![initializing radiantone universal directory stores](Media/Image9.2.jpg)
+![initializing radiantone directory stores](Media/Image9.2.jpg)
 
 The following command can be used with the <RLI_HOME>/bin/vdsconfig utility instead of the UI mentioned above.
 
 ### init-hdap-store
 
-This command launches a task to initialize a RadiantOne Universal Directory (HDAP) store from an LDIF file. In multi-node clusters, this command must be executed on the RadiantOne leader node. For information on determining the RadiantOne leader, refer to the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction).
+This command launches a task to initialize a RadiantOne Directory (HDAP) store from an LDIF file. In multi-node clusters, this command must be executed on the RadiantOne leader node. For information on determining the RadiantOne leader, refer to the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction).
 
 **Usage:**
 <br>`init-hdap-store -ldif <ldif> -namingcontext <namingcontext>[-instance <instance>] [-interactive]`
@@ -181,21 +181,21 @@ This command launches a task to initialize a RadiantOne Universal Directory (HDA
 
 **REST (ADAP) Example**
 
-In the following example, a request is made to initialize a RadiantOne Universal Directory store from an LDIF file.
+In the following example, a request is made to initialize a RadiantOne Directory store from an LDIF file.
 
 `https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=init-hdap-store&ldif=c:/radiantone/vds/vds_server/ldif/export/companydirectory.ldif&namingcontext=o=companydirectory&interactive`
 
-## Rebuilding Indexes for RadiantOne Universal Directory Stores
+## Rebuilding Indexes for RadiantOne Directory Stores
 
-RadiantOne Universal Directory stores can be re-indexed from the Main Control Panel > Directory Namespace tab > selected naming context.
+RadiantOne Directory stores can be re-indexed from the Main Control Panel > Directory Namespace tab > selected naming context.
 
-![Rebuilding Indexes for RadiantOne Universal Directory Stores](Media/Image9.3.jpg)
+![Rebuilding Indexes for RadiantOne Directory Stores](Media/Image9.3.jpg)
 
 The following command can be used instead of the UI mentioned above.
 
 ### rebuild-index
 
-This command launches a task to rebuild an index for a RadiantOne Universal Directory store. In multi-node clusters, this command must be executed on the RadiantOne leader node. For information on determining the RadiantOne leader, refer to the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction).
+This command launches a task to rebuild an index for a RadiantOne Directory store. In multi-node clusters, this command must be executed on the RadiantOne leader node. For information on determining the RadiantOne leader, refer to the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction).
 
 **Usage:**
 <br>`rebuild-index -namingcontext <namingcontext>[-instance <instance>] [-interactive]`
@@ -213,7 +213,7 @@ This command launches a task to rebuild an index for a RadiantOne Universal Dire
 
 **REST (ADAP) Example**
 
-In the following example, a request is made to rebuild the indexes for a RadiantOne Universal Directory store.
+In the following example, a request is made to rebuild the indexes for a RadiantOne Directory store.
 
 `https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=rebuild-index&namingcontext=o=companydirectory&interactive`
 
