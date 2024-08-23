@@ -330,15 +330,19 @@ C:\radiantone\vds\bin>vdsconfig.bat backup-hdapstore -namingcontext o=companydir
 <br> `9 [ConnectionStateManager-0] WARN com.rli.zookeeper.ZooManager - ZooManager connection state changed: CONNECTED`
 <br> `The naming context has been successfully restored from its backup.`
 
-## Converting Persistent Cache to a RadiantOne Universal Directory store
+## Converting Persistent Cache to a RadiantOne Directory store
 
-For typical LDAP migration use cases where you are migrating from a legacy LDAP directory to the RadiantOne Universal Directory, you can have a persistent cache that is kept in sync with the backend LDAP directory with persistent cache refresh. Once you are ready to decommission the backend LDAP, you can convert the persistent cache into a RadiantOne Universal Directory store. The command to convert a persistent cache into a RadiantOne Universal Directory store is described in this section.
+For typical LDAP migration use cases where you are migrating from a legacy LDAP directory to the RadiantOne Directory, you can have a persistent cache that is kept in sync with the backend LDAP directory with persistent cache refresh. Once you are ready to decommission the backend LDAP, you can convert the persistent cache into a RadiantOne Directory store. The command to convert a persistent cache into a RadiantOne Directory store is described in this section.
 
 #### convert-pcache-to-hdap
 
-Before converting a persistent cache to a RadiantOne Universal Directory store, the persistent cache refresh should be stopped. You can set the refresh method to “none” on the Main Control Panel > Directory Namespace > Cache > `<cached branch>` > Refresh Settings tab. Also, suspend inter-cluster replication if it is used by setting “replicationInSuspendMode” : true, in ZooKeeper at `/radiantone/<zk_version>/<clustername>/config/namings/<namingcontext_being_replicated>`
+1. Before converting a persistent cache to a RadiantOne Directory store, the persistent cache refresh should be stopped. You can set the refresh method to “none” on the Main Control Panel > Directory Namespace > Cache > `<cached branch>` > Refresh Settings tab. 
 
-After the persistent cache has been converted to a RadiantOne Universal Directory store, [rebuild the index](task-launch-commands#rebuilding-indexes-for-radiantone-universal-directory-stores) to remove any persistent cache operational attributes. If inter-cluster replication is used, enable it by setting “replicationInSuspendMode” : false, in ZooKeeper at /radiantone/<zk_version>/<clustername>/config/namings/<namingcontext_being_replicated>
+2. (Optional) If inter-cluster replication is used, suspend it in all clusters by setting “replicationInSuspendMode” : true, in ZooKeeper at `/radiantone/<zk_version>/<clustername>/config/namings/<replicatednamingcontext>`. Remember to do this for all clusters involved in inter-cluster replication.
+
+3. After the persistent cache has been converted to a RadiantOne Directory store using the `convert-pcache-to-hdap` command (run on one node in all clusters), [rebuild the index](task-launch-commands#rebuilding-indexes-for-radiantone-universal-directory-stores) to remove any persistent cache operational attributes. 
+
+4. (Optional) If inter-cluster replication is used, enable it by setting “replicationInSuspendMode” : false, in ZooKeeper at `/radiantone/<zk_version>/<clustername>/config/namings/<replicatednamingcontext>` in all RadiantOne clusters involved in inter-cluster replication.
 
 **Usage:**
 <br>`convert-pcache-to-hdap -namingcontext <namingcontext> [-instance <instance>]`
