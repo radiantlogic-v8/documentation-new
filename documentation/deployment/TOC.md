@@ -4,7 +4,7 @@ description: Learn about basic production architectures, migrating configuration
 ---
 
 - [Production Architectures](deployment-topics)
-- [Migrating to Production](./#migrating-configuration)
+- [Migrating to Production](./deployment-topics#migrating-configuration)
 - [Hardening the Service Against Security Threats](hardening)
-- [Managing Services](./#managing-the-state-of-the-radiantone-service)
+- [Managing Services](./deployment-topics#managing-the-state-of-the-radiantone-service)
 
