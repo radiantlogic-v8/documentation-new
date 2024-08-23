@@ -147,24 +147,75 @@ Your internet browser settings determine the download location. The download fil
 ## Managing Templates
 Each identity data source is associated with a template. The template indicates all properties required to connect to the data source. RadiantOne includes some default templates and new templates can be created for JDBC-accessible databases and other data sources than can be queried through a web services API.
 
+Only database templates that are associated with JDBC drivers installed with RadiantOne are shown by default. These drivers are included to help save configuration time, but are not owned, licensed or managed by Radiant Logic. If newer versions of the drivers are available from the database vendors, customers must update and replace the drivers used in RadiantOne. Some JDBC drivers, like IBM DB2 (UDB) require additional license files (e.g. db2jcc_license_cisuz.jar) to be included as well. Downloading and associating any updated drivers or additional license files with RadiantOne templates is the responsibility of the customer. 
+
 Templates can be managed from Control Panel > Setup > Data Catalog > Template Management.
 
 ![Template Management](../Media/template-mgmt.jpg)
 
 
 ### Creating Templates
-### Updating Templates
-All user-defined templates can be updated from Control Panel > Setup > Data Catalog > Template Management. Default templates associated with JDBC-accessible types of data sources can also be updated from here (e.g. to update jdbc drivers).
 
-Select the template and use drawer that appears on the right to update properties. Click **SAVE**.
+Templates for JDBC-accessible databases and other data sources that can be queried through a web services API are managed from Control Panel > Setup > Data Catalog > Template Management.
+
+Click the **+CREATE TEMPLATE** drop-down and select either *Database Source Type* (for JDBC-accessible data sources), or *Custom Source Type* (for web service API-accessible services).
+
+![Create New Template](../Media/create-template.jpg)
+
+**Database Source Types**
+
+1. Choose the option to either *Upload New* or *Select Existing* driver file. Use the *Select Existing* option only if the driver library already exists on the RadiantOne node. For *Upload New*, either drag-and-drop the library into the window or click the link to choose a file.
+2. Enter a unique template name. This name is displayed on the card that can be selecting during data source creation.
+3. Enter or select the driver class name associated with the library. This is typically auto-populated from the driver file that was selected in step 1.
+4. Enter the driver URL pattern indicating the values required by the driver to establish a connection to the database. This is helpful for the administrator that is using the template to create the data source.
+5. Select a unique icon to display on the card associated with the template.
+6. Click **ADD**. A new card is available for defining "Database" type of data sources.
+
+![Database Data Type](../Media/db-type.jpg)
+
+
+**Custom Source Types**
+
+1. Choose the option to either *Upload New* or *Select Existing* plugin file. Use the *Select Existing* option only if the plugin file already exists on the RadiantOne node. For *Upload New*, either drag-and-drop the plugin fie into the window or click the link to choose a file.
+2. Enter a unique template name. This name is displayed on the card that can be selecting during data source creation.
+3. Enter a plugin name associated with the file that was selected in step 1.
+4. Select or enter the class name associated with the plugin file.
+5. Select a unique icon to display on the card associated with the template.
+6. Click **NEXT**.
+7. Use **+SECTION** to create categories for properties required to be passed when establishing connections to the custom API. Create as many sections as needed.
+8. In each section created in the previous step, click *+* to add properties. Create as many properties as needed.
+9. Click **ADD**. A new card is available for defining "Other" (type) of data sources.
+
+![Custom Data Type](../Media/other-type.jpg)
+
+### Updating Templates
+All user-defined templates can be updated from Control Panel > Setup > Data Catalog > Template Management. Default templates associated with JDBC-accessible types of data sources can also be updated from here to update jdbc drivers. 
+
+Select the template and use the drawer that appears on the right to update properties. Click **SAVE**.
 
 ![Updating Templates](../Media/update-template.jpg)
 
 ### Deleting Templates
 
+Only user-defined templates can be deleted.
+
+Templates can be deleted from Control Panel > Setup > Data Catalog > Template Management. Select the user-defined template and click **Delete**. Click **DELETE** to confirm.
+
+![Deleting Templates](../Media/delete-template.jpg)
+
 ### Exporting Templates
 
+Only user-defined templates can be exported.
+
+Templates can be exported from Control Panel > Setup > Data Catalog > Template Management. Select the user-defined template and click **EXPORT TEMPLATE**. The template is exported and automatically downloaded based on your web browser settings.
+
+![Exporting Templates](../Media/export-template.jpg)
+
 ### Importing Templates
+
+Templates that have been exported from a RadiantOne v8.1.X deployment can be imported into other RadiantOne v8.1.X deployments. Templates can be imported from Control Panel > Setup > Data Catalog > Template Management. Click **IMPORT TEMPLATE**. Either drag-and-drop the template file into the window or click *Choose a File* to upload. The templates included in the file are shown. Select which templates to import and click **IMPORT**. Imported templates can be used to create data sources from Control Panel > Setup > Data Catalog > Data Sources.
+
+![Importing Templates](../Media/import-template.jpg)
 
 ## Managing Schemas
 Each data source can be associated with one or more schema files. The first schema file extracted for a data source is considered the default one. For LDAP data sources, the default schema is automatically extracted when the data source is defined. For JDBC-accessible and SCIMv2 accessible data sources, you must manually extract the schema so you can selectively choose the objects that are required for creating identity views. For custom data sources, you must manually create the schema in RadiantOne.
