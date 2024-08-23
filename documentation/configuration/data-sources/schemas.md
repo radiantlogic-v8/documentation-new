@@ -25,7 +25,7 @@ In a directory, there is a notion of a “unique identifier” which is an attri
 
 The yellow key next to the name in the attributes list denotes it as the primary key for the object (see screen shot below). If no primary key is defined, you can use the right-click menu to edit/define one. For more information see [Declaring Primary Keys](#declaring-primary-keys). 
  
-![An image showing ](../Media/ldap-pk.jpg)
+![An image showing ](Media/ldap-pk.jpg)
 
 ### Display Name 
 
@@ -37,11 +37,11 @@ Derived views result from queries to a base object. These views are built by pro
 
 For example, let’s say your database includes a table that lists Customers and related attributes, including Country. You can create a list of all countries in which you have customers. Derived views allow you to create a view that lists all applicable countries. Derived views contain summary data. For example, in the Customers.Countries derived view shown below all occurrences of one country are combined into one record. 
 
-![An image showing ](../Media/Image3.2.jpg)
+![An image showing ](Media/Image3.2.jpg)
 
 You can create derived views by using the right-click menu on the object that contains the attribute you want to create a derived view from. 
 
-![An image showing ](../Media/derived-view-option.jpg)
+![An image showing ](Media/derived-view-option.jpg)
 
 For more information on derived views, see [Creating Derived Views](#creating-derived-views). 
 
@@ -58,11 +58,11 @@ A recursive relationship is an object related to itself. For example, an employe
 ## Extracting Schemas
 Each identity data source must have at least one schema file associated with it. For LDAP data sources, a schema is extracted when the data source is defined. For all other data sources, the schema must be extracted. If you select a data source that does not have any schemas, a notice appears and prompts the user to extract the schema.
 
-![An image showing No Schemas Found Message ](../Media/no-schema.jpg)
+![An image showing No Schemas Found Message ](Media/no-schema.jpg)
 
 Schemas can also be extracted using the **...** > Extract New Schema option.
 
-![An image showing No Schemas Found Message ](../Media/extract-new-schema.jpg)
+![An image showing No Schemas Found Message ](Media/extract-new-schema.jpg)
 
 ### LDAP-Accessible Backend 
 
@@ -71,7 +71,7 @@ Examples of LDAP-accessible backends are Sun Java Directory, Microsoft Active Di
 1. In the Control Panel > Setup > Data Catalog > Data Sources > Selected Data Source > SCHEMA Tab, click **...** > Extract New Schema.
 
 1.	Enter a schema file name (do not use hyphens) and click **OK**.
-	 ![An image showing ](../Media/extract-new-schema.png)
+	 ![An image showing ](Media/extract-new-schema.png)
 
 
 1. You can view/modify this schema by selecting it from the drop-down list. Any changes made (such as attribute name remapping), do not affect the underlying schema. 
@@ -90,13 +90,13 @@ To merge object classes together:
 
 4.	Click **OK**. 
 
-![An image showing ](../Media/define-merged-object.jpg)
+![An image showing ](Media/define-merged-object.jpg)
 
 A new object is created below the Views branch and contains all attributes from both object classes. An identity view can be created from this merged object and the entries can contain attributes from either of the object classes. 
 
 >[!warning] The direction in which you merge the objects is significant because the ‘base’ object (the structured object class) is used in the filter for the query that is sent to the backend directory. Note that the attributes defined for this merged object come from both the structured objectclass inetorgperson (uid, cn, displayName) and the auxiliary objectclass, RLIUser (rliuserattribute2, rliuserattribute3).
 
-![An image showing ](../Media/example-merged-object.jpg)
+![An image showing ](Media/example-merged-object.jpg)
 
 ### JDBC-Accessible Database Backend 
 
@@ -114,7 +114,7 @@ The database data source must be created before completing the schema extraction
 1.	Limit the types of objects to be returned by selecting tables, views, system tables, or synonyms. If you would like all types of objects returned, then select all options. If you only want a subset of the selected objects returned, then you can enter a pattern for the Table Pattern parameter using the “%” for a wildcard character. For example, if you want to return only tables that start with “N”, then for the Table Pattern you can enter N%.
 
 1.	Click **NEXT** to proceed and select the desired Tables and Views from the list.
-	![An image showing ](../Media/Image3.11.jpg)
+	![An image showing ](Media/Image3.11.jpg)
 
 1.	Click **EXTRACT**. This creates the schema file and adds it into the drop-down list next to *Schema Name*.
 
@@ -186,12 +186,12 @@ To declare and modify the primary keys:
 
 1.	 Right-click on the desired object and choose **Edit Primary Key(s)**.
    
-	 ![An image showing ](../Media/edit-primary-key.jpg)
+	 ![An image showing ](Media/edit-primary-key.jpg)
 
 1.	 Choose the column(s) from the Attributes List that you want to use as the primary key and click the right arrow button. 
 
 1. 	To remove the column(s) from the key(s) list, choose the column(s) and click the left arrow button.
-   ![An image showing ](../Media/set-primary-keys.jpg)
+   ![An image showing ](Media/set-primary-keys.jpg)
  
 1. 	Click **OK** when finished. The key(s) you selected are now declared as the primary key. 
 
