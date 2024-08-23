@@ -81,6 +81,9 @@ Harness your identity data with intelligent integration to drive better business
   > [Architectures](deployment/deployment-topics)  
   > Learn about basic production architectures.
   
+  > [Hardening](deployment/deployment-topics/hardening)  
+  > Learn about options for hardening the RadiantOne service from security threats. 
+  
   > [Migrating to Production](deployment/deployment-topics/migrating-configuration)  
   > Learn how to migrate configuration from a testing environment to production. 
   
