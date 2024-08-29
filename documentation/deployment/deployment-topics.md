@@ -122,6 +122,8 @@ To enable inter-cluster replication for a directory store:
 
 ## Migrating Configuration
 
+To migrate configuration from a lower environment to production, export the configuration from the lower environment and import this configuration when creating the production environment. When deployed as SaaS, you can export the configuration by taking a [Backup](/../../eoc/latest/environments/backup-and-restore/create-backup) in the lower environment and [using this backup image](/../../eoc/latest/environments/environment-overview/create-environments) when you create the production environment. Import the backup using the custom configuration option in Advanced Setup.
+
 ## Managing the State of the RadiantOne Service
 
 When deployed as SaaS, you can manage the state of the RadiantOne service from the [Environment Operations Center](/../../eoc/latest/environment-details/environment-overview). Select the environment and use the options shown when clicking on ![Power Options](Media/power-icon.jpg) to start/stop/restart the service.
