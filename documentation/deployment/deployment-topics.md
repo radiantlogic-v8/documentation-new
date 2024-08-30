@@ -17,12 +17,12 @@ A basic architecture for a production deployment of the RadiantOne platform cons
 
 ![Basic Production Architecture ](Media/Image7.1.jpg)
  
-Once the primary and DR environments are created, configure RadiantOne in the primary environment. Then, use the migration tool to export the configuration and import it into the DR environment. Finally, configure inter-cluster replication for all RadiantOne Directory stores that need to be kept in sync across both environments.
+Once the primary and DR environments are created, configure RadiantOne in the primary environment. Then, use the migration tool to export the configuration and import it into the DR environment. For SaaS deployments, you can export the configuration from the primary environment by taking a [Backup](/../../eoc/latest/environments/backup-and-restore/create-backup) and [using this backup image](/../../eoc/latest/environments/environment-overview/create-environments) when you create the DR environment. Import the backup using the custom configuration option in Advanced Setup when creating the DR environment. Finally, configure inter-cluster replication for all RadiantOne Directory stores that need to be kept in sync across both environments.
 
 >[!note]
 >Configuration changes are not automatically synchronized across cluster. These must be manually migrated. 
 
-If the data sources integrated in the RadiantOne platform are accessible in the cloud, no extra components are needed. If the data sources are deployed on-premises or inside a different network than the SaaS service, use a Secure Data Connector. These options are depicted in the diagram below. See the Secure Data Connector Deployment Guide for details.
+If the data sources integrated in the RadiantOne platform are accessible in the cloud, no extra components are needed. If the data sources are deployed on-premises or inside a different network than the SaaS service, you can use a Secure Data Connector. These options are depicted in the diagram below. See the Secure Data Connector Deployment Guide for details.
 
 >[!note]
 >Site-to-Site VPN or VPC Peering can be alternatives to using the Secure Data Connector. Speak with your Radiant Logic Solution Consultant about these options.
