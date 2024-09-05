@@ -10,6 +10,8 @@ RadiantOne also offers a configuration API that can be called programmatically w
 ## Accessing the Control Panels
 The Control Panels utilize a web server that is installed with RadiantOne. The endpoint to access the Control Panel is defined when you create an environment in the Environment Operations Center. For details on creating environments and locating the Control Panel endpoint, see [Create Environments](/../../eoc/latest/environments/environment-overview/create-environments).
 
+>[!note] The web browsers supported for using Control Panel are: Microsoft Edge Version 127.0.2651.98 (+), Google Chrome Version 128.0.6613.120 (+). 
+
 ![The Control Panel Login Page](Media/login-page.jpg)
 
 
