@@ -28,11 +28,11 @@ Access Control sub-section.
 
 By default, all users have read access to all naming contexts in RadiantOne for search,
 compare, and read operations. This includes read access to the RadiantOne directory RootDSE
-(accessible by requested an empty base DN).
+(accessible by requested an empty base DN), cn=changelog (where changes to entries managed by RadiantOne are stored, external applications may use this to detect these change events) and cn=config (where some internal configuration and default users/groups are stored). Update all default access control to meet the needs of the client applications. 
 
-This default access control can be removed from the Main Control Panel ->
-Settings Tab > Security section > Access Control. Click root on the right and select the
-configured access control described as “grant read access to anyone”. Then click **Delete**.
+Default access controls can be managed from the Main Control Panel >
+Settings Tab > Security section > Access Control. Click root in the tree displayed and select the
+configured access control described as “grant read access to anyone” on the right. Then click **Delete** to remove the default read access.  To manage access controls at specific naming contexts, select the naming context in the tree and all configured access controls are displayed and can managed on the right.
 
 If you choose not to delete the grant access to anyone control, it is recommended for security reasons that you ensure that userpassword is not returned. You can do so as shown in the following example ACI. 
 
