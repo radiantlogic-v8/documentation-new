@@ -722,6 +722,8 @@ A server certificate used by RadiantOne uniquely identifies it to clients for es
 
 >[!warning]
 >Every time you change the RadiantOne server certificate, you must export the public key and import this public key into the [Client Certificate Truststore](06-security#client-certificate-trust-store) (unless the CA that signed the server certificate is already trusted). Also, the RadiantOne server certificate is shared by the Jetty server to support HTTPS access to the Control Panel(s). If you prefer HTTPS access to the Main Control Panel to use a different certificate, you must [manually update the settings for Jetty](#updating-certificate-settings-for-jetty-https-access-to-the-main-control-panel).
+>The RadiantOne server certificate is also used by the SAML Attribute Service. However, when you update the server certificate from the Server Control Panel, the SAML Attribute Service configuration is not automatically updated in the following configuration files:
+>`<RLI_HOME>/config/saml/client.properties`,`<RLI_HOME>/config/saml/query.properties`,`<RLI_HOME>/config/saml/serverEncryption.properties`, and `<RLI_HOME>/config/saml/server/AttributeService.properties`. If you are using the SAML Attribute Service, update these files manually with the new keystore and password. If you are not using the SAML Attribute Service, you do not need to update these files. Note that if these files are not manually updated, error messages related to these files are shown in the vds_server.log files and can be ignored.
 
 ### Replacing the Default Self-Signed Certificate
 
