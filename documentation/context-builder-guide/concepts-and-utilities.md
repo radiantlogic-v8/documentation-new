@@ -370,8 +370,9 @@ Please see the diagram below for more details on the join behavior.
  
 ##### Join Behavior Diagram 
 
-![joins](Media/Image2.12a.jpg)
- 
+![joins](Media/Image2.12A.jpg)
+
+ 
 Disabling Joins 
 
 For testing and/or debugging purposes, you can disable joins. To disable a configured join, uncheck the Active checkbox next to the desired join directly from the Object tab. Save the virtual view. 
