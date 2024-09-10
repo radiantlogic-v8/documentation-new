@@ -17,6 +17,8 @@ These release notes contain the following sections:
 
 [Known Issues](#known-issues)
 
+[Deprecated Features](#deprecated-features)
+
 [How to Report Problems and Provide Feedback](#how-to-report-problems-and-provide-feedback)
 
 ## New Features
@@ -54,6 +56,16 @@ These release notes contain the following sections:
 For known issues reported after the release, please see the Radiant Logic Knowledge Base: 
 
 https://support.radiantlogic.com/hc/en-us/categories/4412501931540-Known-Issues
+
+## Deprecated Features
+
+As of v8.1.0 the following features have been deprecated:
+
+- Role mapped access
+- Directory tree wizard
+- Groups Builder wizard
+- Groups Migraiton wizard 
+
 
 ## How to Report Problems and Provide Feedback
 
