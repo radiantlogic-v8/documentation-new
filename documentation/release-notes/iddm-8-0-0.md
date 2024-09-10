@@ -15,6 +15,8 @@ These release notes contain the following sections:
 
 [Known Issues](#known-issues)
 
+[Deprecated Features](#deprecated-features)
+
 [How to Report Problems and Provide Feedback](#how-to-report-problems-and-provide-feedback)
 
 ## Improvements
@@ -57,9 +59,10 @@ For known issues reported after the release, please see the Radiant Logic Knowle
 
 https://support.radiantlogic.com/hc/en-us/categories/4412501931540-Known-Issues
 
-## Deprecated Items
+## Deprecated Features
 
 Starting in RadiantOne v8.0, the following features have been deprecated:
+
 - SAML Attribute Service: Querying RadiantOne as a SAML attribute service.
 - Virtual Relational Service (VRS): Querying RadiantOne via SQL using the VRS JDBC driver.
 - Accessing RadiantOne as a Kerberized service.
