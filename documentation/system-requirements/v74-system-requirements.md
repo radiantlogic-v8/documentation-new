@@ -122,7 +122,7 @@ RadiantOne supports the following container platforms:
 
 Cluster nodes must be deployed on hardware that is configured for optimal redundancy and highly reliable connectivity between the cluster nodes/machines.
 
--    Processor: Intel Pentium or AMD Opteron. Minimum dual core.
+-    Processor: Intel Pentium or AMD Opteron. Minimum 4 cores.
 -    Processor Speed: 2GHZ or higher
 -    Network Bandwidth: Minimum 1Gbps, low latency
 -    Memory: 16 GB minimum. For most production deployments, more than 16 GB of memory is required. For more details on sizing, see the [RadiantOne Hardware Sizing Guide](/hardware-sizing-guide/01-introduction).
