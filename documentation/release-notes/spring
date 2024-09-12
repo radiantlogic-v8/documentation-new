@@ -85,7 +85,7 @@ For specific hardware requirements of each, please see: [https://developer.radia
 -	[VSTS46410]: Upgraded Opensaml to 2.6.6  to remediate potential vulnerabilities.  
 -	[VSTS46537]: Upgraded postgresql jar to remediate potential vulnerabilities. 
 -	[VSTS46538]: Upgraded commons-compress library to remediate potential vulnerabilities. 
--	[VSTS46637]: Upgraded the spring core version to 5.7.12 to address CVE-2024-22257 and CVE-2024-22259. 
+-	[VSTS46637]: Upgraded the spring core version to 5.3.34 and spring security version to 5.7.12 to address CVE-2024-22257 and CVE-2024-22259. 
 -	[VSTS46638]: Upgraded bouncy castle jars to address CVE-2024-30172 and CVE-2024-30171. 
 
 ## Bug Fixes
