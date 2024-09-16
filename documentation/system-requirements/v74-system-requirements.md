@@ -11,13 +11,13 @@ For detailed memory requirements for specific configurations, please see the [Ra
 
 ### LDAP Directory Servers	
 
-- Microsoft Active Directory 2008, 2012, 2016, 2019, 2022
+- Microsoft Active Directory 2008 or higher
 - Active Directory Lightweight Directory Service (AD-LDS)
 - Active Directory Application Mode (ADAM)
 - SunONE Directory Server 4.X – 7.X
 - Sun Java System Directory v6.X
-- IBM Directory Server v5(+)
-- Novell eDirectory v8(+)
+- IBM Directory Server v5 or higher
+- Novell eDirectory v8 or higher
 - IBM Domino (formerly Lotus Domino)
 - Oracle Internet Directory v9 & v10, Oracle   Directory Server Enterprise Edition (ODSEE)
 - CA Directory r12.X
@@ -26,8 +26,8 @@ For detailed memory requirements for specific configurations, please see the [Ra
 ### Database Servers	
 
 - Oracle 8i, 9i, 10g, 11g, 12c
-- Microsoft SQL Server v2008, v2012, v2016, v2017, v2019
-- IBM DB2 (UDB) v7(+)
+- Microsoft SQL Server v2008 or higher
+- IBM DB2 (UDB) v7 or higher
 - Sybase v12 and 12.5
 - MongoDB
 - Snowflake
@@ -46,8 +46,8 @@ The only JDBC drivers installed with RadiantOne are: JDBC-ODBC Bridge from Sun, 
 ### Applications/Other**
 
 - SAP
-- Siebel v7.5+
-- Oracle Financials v12+
+- Siebel v7.5 or higher
+- Oracle Financials v12 or higher 
 - Salesforce
 - Google Apps/Directory
 - SharePoint 2010, 2013, 2016 (on-premises)
