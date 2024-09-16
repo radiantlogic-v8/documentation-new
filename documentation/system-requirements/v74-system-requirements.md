@@ -26,7 +26,7 @@ For detailed memory requirements for specific configurations, please see the [Ra
 ### Database Servers	
 
 - Oracle 8i, 9i, 10g, 11g, 12c
-- Microsoft SQL Server v2008, v2012, v2016, v2017
+- Microsoft SQL Server v2008, v2012, v2016, v2017, v2019
 - IBM DB2 (UDB) v7(+)
 - Sybase v12 and 12.5
 - MongoDB
