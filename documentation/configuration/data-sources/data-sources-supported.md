@@ -9,13 +9,13 @@ This document describes the supported backend data sources supported by RadiantO
 
 ### LDAP Directory Servers	
 
-- Microsoft Active Directory 2008, 2012, 2016, 2019, 2022
+- Microsoft Active Directory 2008 or higher
 - Active Directory Lightweight Directory Service (AD-LDS)
 - Active Directory Application Mode (ADAM)
 - SunONE Directory Server 4.X – 7.X
 - Sun Java System Directory v6.X
-- IBM Directory Server v5(+)
-- Novell eDirectory v8(+)
+- IBM Directory Server v5 or higher
+- Novell eDirectory v8 or higher
 - IBM Domino (formerly Lotus Domino)
 - Oracle Internet Directory v9 & v10, Oracle   Directory Server Enterprise Edition (ODSEE)
 - CA Directory r12.X
@@ -24,8 +24,8 @@ This document describes the supported backend data sources supported by RadiantO
 ### Database Servers	
 
 - Oracle 8i, 9i, 10g, 11g, 12c
-- Microsoft SQL Server v2008, v2012, v2016, v2017, v2019
-- IBM DB2 (UDB) v7(+)
+- Microsoft SQL Server v2008 or higher
+- IBM DB2 (UDB) v7 or higher
 - Sybase v12 and 12.5
 - MongoDB
 - Snowflake
