@@ -215,7 +215,7 @@ Header Name | Authorization
 Header Value | `Token <token value>`
 Example Header Value | Token 2001b1c0a20d41f99a207b7750cad87c 
 
-Token lifetime (timeout) is configurable from Main Control Panel > 
+Token lifetime (timeout) is configurable from Main Control Panel > Settings > Front End Settings > Other Protocols, REST/ADAP section on the right.
 
 ### OpenID Connect Token Authentication
 
@@ -241,7 +241,6 @@ This section describes using the Postman REST client to obtain an access token.
 
 ![Type drop-down menu](Media/typemenu.jpg)
 
-Figure 3: The Type drop-down menu
  
 2. In the Configure New Token section, enter the Client ID and client secret.
 
@@ -253,14 +252,10 @@ Figure 3: The Type drop-down menu
 
 ![Configuring an access token in Postman](Media/configuringtoken.jpg)
 
-Figure 4: Configuring an access token in Postman
-
 4. Click Get New Access Token. The new access token's details are displayed. 
 
 ![token details](Media/tokendetails.jpg)
 
-Figure 5: The Token Details section in Postman
- 
 5. Copy this token and decode it for the values needed for configuring a mapping between the token contents and a unique identity in the RadiantOne namespace. You can do this at https://jwt.io/. 
 
 ### RadiantOne Configuration
@@ -287,7 +282,7 @@ To add an external token validator:
 1.  In the Main Control Panel, navigate to Settings > Security > External Token Validators. 
 1.  Click **Add**. The New ADAP External Token Validator page displays.
 ![The New ADAP External Token Validator Page](Media/externaltokenvalidatorpage.jpg)
-Figure 6: The New ADAP External Token Validator Page
+
 1.  Name the external token validator.
 1.  Toggle the Enable switch to On. 
 1.  Select an OIDC provider from the drop-down menu (if applicable, to assist with populating the Discovery URL syntax). Otherwise, skip this step and enter your own Discovery URL. 
@@ -304,13 +299,9 @@ Profile	| name, family_name, given_name, middle_name, nickname, preferred_userna
 Phone	| phone_number, phone_number_verified
 Openid	| sub, auth_time, acr
 
-  Table 4: Standard Claims per Scope
 
 1.  Other values can be obtained from the decoded access token. See the [Getting An Access Token](#getting-an-access-token) section for more information.  
-
 ![Configuring an ADAP External Token Validator](Media/configuringtokenvalidator.jpg)
-
-Figure 7: Configuring an ADAP External Token Validator
 
 1.  Click Edit next to Claims to FID User Mapping. The OIDC to FID User Mappings page displays.
 1.  Click Add. Use either a Simple DN Expression or a Search Expression to map a uniquely identifying attribute to a corresponding claim value in the token (refer to the [Getting An Access Token](#getting-an-access-token) section for more information). In the following image, a Search Expression is used to map the attribute **mail** to the claim value **email**.
@@ -344,8 +335,6 @@ Example URL	| http://localhost:8089/adap/o=companydirectory
 If successful, the operation displays results similar to the following. 
 
 ![Successful REST Operation using OpenID Connect Token](Media/Image5.16.jpg)
- 
-Figure 13: Successful REST Operation using OpenID Connect Token
 
 
 ## Search Example
