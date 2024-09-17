@@ -35,9 +35,11 @@ This section describes how to perform the following functions:
 
 ## Accessing the RadiantOne RESTFul Web Service
 
-You can access the RadiantOne RESTFul Web Service using the following URL syntax: 
+You can access the RadiantOne RESTFul Web Service using the REST endpoint displayed in: Environment Operations Center > Environments > `<Environment Name>` > Identity Data Management application > Application Endpoints 
 
-`http://<RadiantOneService>:8089/adap/<baseDN>`
+`https://rlqa-usw2-testn.dev01.radiantlogic.io/adap/<baseDN>`
+
+See [API Specs](https://developer.radiantlogic.com/adap/) for complete details.
 
 ## REST Response Status Codes
 
