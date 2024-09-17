@@ -40,6 +40,8 @@ You can access the RadiantOne RESTFul Web Service using the following URL syntax
 
 `http://<RadiantOneService>:8089/adap/<baseDN>`
 
+See [API Specs](https://developer.radiantlogic.com/adap/) for complete details.
+
 ### REST Response Status Codes
 
 When a REST client performs an operation, it displays one or more codes in its Response section. One of these codes is an HTTP status. (In the Response section of the REST client, look for the numeric value that follows ). The following table describes these HTTP status codes.
