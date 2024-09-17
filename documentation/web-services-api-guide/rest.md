@@ -64,8 +64,6 @@ To set the maximum threads value:
 
   ![An image showing ](Media/Image5.1.jpg)
 
-  Figure 1: Max Thread/requests for REST Clients
-
 3.	Click the Save button in the upper right corner. 
 
 4.	Restart the RadiantOne service. If deployed in a cluster, restart it on all nodes.
@@ -74,9 +72,7 @@ To set the maximum threads value:
 
 Authorization is enforced by the RadiantOne service based on the user who authenticated. The authorization ID (DN) is linked to the authenticated ID (DN) for the same connection. If the Proxy Authorization Control is enabled, the client can switch the user ID for authorization purposes, without having to re-authenticate with a new connection. To use proxy authorization in the REST/ADAP request, define a header named Proxy which contains the value of the user ID (DN) for which authorization should be enforced. An example is shown below where requests are performed on behalf of the user identified by: uid=Adalberto_Flecha,ou=Accounting,o=companydirectory
 
-![An image showing ](Media/Image5.2.jpg)
-
-Figure 2: Proxy Header for Proxy Authorization
+![Proxy Header for Proxy Authorization](Media/Image5.2.jpg)
 
 Ensure the proxy authorization control is enabled for the RadantOne service and access controls have been defined to indicate who is allowed to impersonate who. For more information on enabling the proxy authorization control and defining access controls, please see the RadiantOne **System** Administration Guide.
 
@@ -98,9 +94,7 @@ Y249ZGlyZWN0b3J5IG1hbmFnZXI6c2VjcmV0c2VjcmV0
 Resulting in a header of: 
 <br> `<header key="authorization" value="Basic Y249ZGlyZWN0b3J5IG1hbmFnZXI6c2VjcmV0c2VjcmV0"/>`
 
-![An image showing ](Media/Image5.3.jpg)
-
-Figure 3: Header used for Basic Authentication
+![Header used for Basic Authentication](Media/Image5.3.jpg)
 
 In this section, a simple bind to the RadiantOne REST service is shown in the table below. 
 
@@ -112,19 +106,13 @@ Header Name	| Authorization
 Header Value	| Basic `<base64 value (dn:password)>`
 Example Header Value	| Basic Y249ZGlyZWN0b3J5IG1hbmFnZXI6c2VjcmV0c2VjcmV0
 
-Table 1: A Simple Bind to the RadiantOne REST Service
-
 An authentication attempt with the above parameters results in the message {“httpStatus”:200}.  This means the credentials check was successful.
 
-![An image showing ](Media/Image5.4.jpg)
+![Connection Successful](Media/Image5.4.jpg)
  
-Figure 4: Connection Successful
-
 An unsuccessful authentication attempt may result in the status ”401: Unauthorized”.
 
-![An image showing ](Media/Image5.5.jpg)
- 
-Figure 5: Connection Failed
+![Connection Failed](Media/Image5.5.jpg)
 
 Unless otherwise stated, this document assumes the use of password authentication. 
 
@@ -140,9 +128,7 @@ To enable the Always Authenticate option:
 
 2.	In the REST/ADAP section (requires [Expert Mode](01-overview#expert-mode)), check the ‘Always Authenticate’ checkbox.
 
-  ![An image showing ](Media/Image5.6.jpg)
-
-  Figure 6: Enabling the Always Authenticate Option
+  ![Enabling the Always Authenticate Option](Media/Image5.6.jpg)
 
 3.	Click Save. 
 
@@ -155,9 +141,7 @@ The RadiantOne REST (ADAP) interface supports OpenID Connect token-based authent
  
 A high-level diagram of the different components is shown below. Postman is used as a simple client to illustrate the flow.
 
-![An image showing ](Media/openid-connect-token-authentication.jpg)
-
-Figure 9: OpenID Connect Token Authentication
+![OpenID Connect Token Authentication](Media/openid-connect-token-authentication.jpg)
 
 External token validators allow applications to use an access token to call an API on behalf of itself. The API then responds with the requested data. This section assumes that your OIDC provider is already set up and that you know your client ID and secret to test getting a token.
 
@@ -173,8 +157,6 @@ This section describes using the Postman REST client to obtain an access token.
 
 ![Type drop-down menu](Media/typemenu.jpg)
 
-Figure 3: The Type drop-down menu
- 
 2. In the Configure New Token section, enter the Client ID and client secret.
 
     >[!note] These values were created during the OIDC provider configuration process. 
@@ -184,8 +166,6 @@ Figure 3: The Type drop-down menu
     >[!note] This value can be found using the using the metadata URL from the Authorization Server. 
 
 ![Configuring an access token in Postman](Media/configuringtoken.jpg)
-
-Figure 4: Configuring an access token in Postman
 
 4. Click Get New Access Token. The new access token's details are displayed. 
 
@@ -217,7 +197,7 @@ To add an external token validator:
 1.  In the Main Control Panel, navigate to Settings > Security > External Token Validators. 
 1.  Click **Add**. The New ADAP External Token Validator page displays.
 ![The New ADAP External Token Validator Page](Media/externaltokenvalidatorpage.jpg)
-Figure 6: The New ADAP External Token Validator Page
+
 1.  Name the external token validator.
 1.  Toggle the Enable switch to On. 
 1.  Select an OIDC provider from the drop-down menu (if applicable, to assist with populating the Discovery URL syntax). Otherwise, skip this step and enter your own Discovery URL. 
