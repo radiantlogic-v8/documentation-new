@@ -256,14 +256,10 @@ The RadiantOne Main Control Panel also supports OpenID Connect (OIDC) token-base
 
 ![Login with Open ID Connect](Media/Image3.22.jpg)
 
-Figure 12: Login with Open ID Connect
-
 The administrator must click the Login with OpenID Connect option to login with an OpenID Connect token.
 The high-level flow is shown below.
 
 ![An image showing ](Media/Image3.23.jpg)
-
-Figure 13: OIDC Authorization Code Flow
 
 Detailed steps:
 
@@ -296,16 +292,7 @@ To enable support for OIDC authentication:
 
 4.	Select an OIDC Provider from the drop-down list. If you are using your own provider, select the Custom option.
 
-5.	Click Discover. The Authorization Endpoint URL and Token Endpoint URL should auto-populate. If you configure a custom provider, you can enter the needed Authorization Endpoint URL and Token Endpoint URL. In OpenID Connect the authorization endpoint handles authentication and authorization of a user. In the OpenID Connect Authorization Code Flow, the token endpoint is used by a client to obtain an ID token, access token, and refresh token. To use the embedded OIDC server in RadiantOne, the following URLs can be used (enter your FID server name accordingly):
-<br>metadata endpoint (discovery URL): 
-<br>https://<RadiantOneServer>:7171/openid/.well-known/openid-configuration
-<br>user endpoint:
-<br>https://<RadiantOneServer>:7171/openid/userinfo
-<br>token endpoint:
-<br>https://<RadiantOneServer>:7171/openid/token
-<br>authorization endpoint:
-<br>https://<RadiantOneServer>:7171/openid/authorize
-
+5.	Click Discover. The Authorization Endpoint URL and Token Endpoint URL should auto-populate. If you configure a custom provider, you can enter the needed Authorization Endpoint URL and Token Endpoint URL. In OpenID Connect the authorization endpoint handles authentication and authorization of a user. In the OpenID Connect Authorization Code Flow, the token endpoint is used by a client to obtain an ID token, access token, and refresh token. 
 6.	Enter the Client ID associated with the Control Panel application configured in the OIDC provider.
 
 7.	Enter the Client Secret associated with the Control Panel configured in the OIDC provider.
@@ -328,13 +315,9 @@ In the Simple DN Expression example shown below, the RadiantOne user is identifi
 
 ![DN Expression Builder](Media/Image3.24.jpg)
 
-Figure 14: DN Expression Builder
-
 In the Search Expression example shown below, the values of the family_name, given_name, and email claims from the token are used to condition a sub-tree search in RadiantOne, starting at the dc=mydomain naming context to locate the identity.
 
 ![Search Expression Builder](Media/Image3.25.jpg)
-
-Figure 15: Search Expression Builder
 
 To disable support for OIDC authentication:
 
