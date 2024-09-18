@@ -35,9 +35,11 @@ This section describes how to perform the following functions:
 
 ## Accessing the RadiantOne RESTFul Web Service
 
-You can access the RadiantOne RESTFul Web Service using the following URL syntax: 
+You can access the RadiantOne RESTFul Web Service using the REST endpoint displayed in: Environment Operations Center > Environments > `<Environment Name>` > Identity Data Management application > Application Endpoints 
 
-`http://<RadiantOneService>:8089/adap/<baseDN>`
+`https://rlqa-usw2-testn.dev01.radiantlogic.io/adap/<baseDN>`
+
+See [API Specs](https://developer.radiantlogic.com/adap/) for complete details.
 
 ## REST Response Status Codes
 
@@ -60,21 +62,17 @@ To set the maximum threads value:
 
 2.	On the right side, under the REST/ADAP header, enter a value in the Max Thread field. 
 
-  ![An image showing ](Media/Image5.1.jpg)
-
-  Figure 1: Max Thread/requests for REST Clients
+  ![Max Thread/requests for REST Clients](Media/Image5.1.jpg)
 
 3.	Click the Save button in the upper right corner. 
 
-4.	Restart the RadiantOne service. If deployed in a cluster, restart it on all nodes.
+4.	Restart the RadiantOne service. 
 
 ## Proxy Authorization
 
 Authorization is enforced by the RadiantOne service based on the user who authenticated. The authorization ID (DN) is linked to the authenticated ID (DN) for the same connection. If the Proxy Authorization Control is enabled, the client can switch the user ID for authorization purposes, without having to re-authenticate with a new connection. To use proxy authorization in the REST/ADAP request, define a header named Proxy which contains the value of the user ID (DN) for which authorization should be enforced. An example is shown below where requests are performed on behalf of the user identified by: uid=Adalberto_Flecha,ou=Accounting,o=companydirectory
 
-![An image showing ](./Media/Image5.2.jpg)
-
-Figure 2: Proxy Header for Proxy Authorization
+![Proxy Header for Proxy Authorization](./Media/Image5.2.jpg)
 
 Ensure the proxy authorization control is enabled for the RadantOne service and access controls have been defined to indicate who is allowed to impersonate who. For more information on enabling the proxy authorization control and defining access controls, please see the RadiantOne **System** Administration Guide.
 
@@ -96,34 +94,26 @@ Y249ZGlyZWN0b3J5IG1hbmFnZXI6c2VjcmV0c2VjcmV0
 Resulting in a header of: 
 <br> `<header key="authorization" value="Basic Y249ZGlyZWN0b3J5IG1hbmFnZXI6c2VjcmV0c2VjcmV0"/>`
 
-![An image showing ](./Media/Image5.3.jpg)
-
-Figure 3: Header used for Basic Authentication
+![Header used for Basic Authentication](./Media/Image5.3.jpg)
 
 In this section, a simple bind to the RadiantOne REST service is shown in the table below. 
 
 Field	| Value
 -|-
-URL Syntax	| `http://<RadiantOneServer>:8089/adap?bind=simpleBind`
+URL Syntax	| `https://<REST_ENDPOINT>/adap?bind=simpleBind`
 Method	| Get
 Header Name	| Authorization
 Header Value	| Basic `<base64 value (dn:password)>`
 Example Header Value	| Basic Y249ZGlyZWN0b3J5IG1hbmFnZXI6c2VjcmV0c2VjcmV0
 
-Table 1: A Simple Bind to the RadiantOne REST Service
-
 An authentication attempt with the above parameters results in the message {“httpStatus”:200}.  This means the credentials check was successful.
 
-![An image showing ](./Media/Image5.4.jpg)
+![Connection Successful](./Media/Image5.4.jpg)
  
-Figure 4: Connection Successful
-
 An unsuccessful authentication attempt may result in the status ”401: Unauthorized”.
 
-![An image showing ](./Media/Image5.5.jpg)
+![Connection Failed](./Media/Image5.5.jpg)
  
-Figure 5: Connection Failed
-
 Unless otherwise stated, this document assumes the use of password authentication. 
 
 ## Always Authenticate - Avoid Connection Pooling
@@ -138,51 +128,11 @@ To enable the Always Authenticate option:
 
 2.	In the REST/ADAP section (requires [Expert Mode](01-overview#expert-mode)), check the ‘Always Authenticate’ checkbox.
 
-  ![An image showing ](./Media/Image5.6.jpg)
-
-  Figure 6: Enabling the Always Authenticate Option
+  ![Enabling the Always Authenticate Option](./Media/Image5.6.jpg)
 
 3.	Click Save. 
 
-4.	Restart the RadiantOne service. If deployed in a cluster, restart the service on all nodes.
-
-<!--
-
-## Mutual Authentication – Certificate-based Authentication
-
-For normal SSL communications, where the only requirement is that the client trusts the server, no additional configuration is necessary (as long as both entities trust each other). For mutual authentication, where there is a reciprocal trust relationship between the client and the server, the client must generate a certificate containing his identity and private key in his keystore. The client must also make a version of the certificate containing his identity and public key, which RadiantOne must store in its truststore. In turn, the client needs to trust the server; this is accomplished by importing the server's CA certificate into the client truststore.
-
->[!note] 
->Certificate-based authentication (mutual authentication) requires the use of SSL (HTTPS) for the communication between the client and RadiantOne REST/ADAP service.
-
-![An image showing ](./Media/Image5.7.jpg)
-
-Figure 7: Mutual Authentication
-
-The RadiantOne ADAP service receives the client connection request (via HTTPS) and optionally verifies that the certificate is valid and hasn’t been revoked (If CRL checking is enabled). If the certificate is valid, ADAP evaluates the configured client certificate to DN mapping rules to get the target DN (the user identified in the RadiantOne namespace). Then, ADAP connects to the RadiantOne LDAP service via LDAPS and uses the Proxy Authorization Control to request access on behalf of the user identified by the client certificate to DN mapping rule. All subsequent requests from the ADAP client are sent to the RadiantOne LDAP service on behalf of this user and it is this account that authorization is enforced for.
-
-To configure support for mutual authentication to ADAP, follow the steps below.
-
-1.	Log into the Classic Control Panel as a member of the Directory Administrators group.
-
-2.	Go to the Settings tab > Server Front End > Supported Controls and verify Enable Proxy Authorization is checked. If not, enable it and click Save.
-
-3.	If you had to enable the Proxy Authorization control, restart the RadiantOne service (on all nodes if you are deployed in a cluster).
-
-4.	Go to the Settings tab > Security > Access Control.
-5.	Verify Allow Directory Manager to impersonate other users is checked. If not, enable it and click Save.
-
-6.	Go to the Settings tab > Security > Client Certificate Truststore and verify the client public key certificate has been added to the truststore. You should only need to do this if the client certificate has not been signed by a known/trusted certificate authority. For details on the Client Certificate Trust Store, see the RadiantOne System Administration Guide.
-
-7.	Go to the Settings tab > Security > SSL section and verify the Certificate Revocation List checking you want to use (if any) has been enabled/configured. For details on the CRL options available, see the RadiantOne System Administration Guide.
-
-8.	In the SSL section, select the desired type of Mutual Authentication you want to support. If mutual authentication is required, choose the Required option. If this option is selected, it forces a mutual authentication. If the client fails to provide a valid certificate which can be trusted by RadiantOne ADAP, authentication fails, and the TCP/IP connection is dropped. If mutual authentication is not required, but you would like the ADAP service to request a certificate from the client, choose the Requested option. In this scenario, if the client provides a valid certificate, a mutual authentication connection is established. If the certificate presented is invalid, the authentication fails. If no certificate is presented, the connection continues, but is not mutual authentication.
-
-9.	In the SSL section, click the Change button next to Client Certificate DN Mapping. This is the mapping between the client certificate subject/SAN and the target/mapped DN in the RadiantOne namespace. Authorization is enforced by the RadiantOne service based on the target/mapped DN that is the result of your mapping rules. For details on how to define client certificate DN mapping, see the RadiantOne System Administration Guide.
-
-10.	Click Save and restart the RadiantOne service. If RadiantOne is deployed in a cluster, restart the service on all nodes.
-
--->
+4.	Restart the RadiantOne service.
 
 ## OpenID Connect Token Authentication
 
@@ -190,9 +140,7 @@ The RadiantOne REST (ADAP) interface supports OpenID Connect token-based authent
  
 A high-level diagram of the different components is shown below. Postman is used as a simple client to illustrate the flow.
 
-![An image showing ](./Media/openid-connect-token-authentication.jpg)
-
-Figure 9: OpenID Connect Token Authentication
+![OpenID Connect Token Authentication](./Media/openid-connect-token-authentication.jpg)
 
 External token validators allow applications to use an access token to call an API on behalf of itself. The API then responds with the requested data. This section assumes that your OIDC provider is already set up and that you know your client ID and secret to test getting a token.
 
@@ -208,8 +156,6 @@ This section describes using the Postman REST client to obtain an access token.
 
 ![Type drop-down menu](./Media/typemenu.jpg)
 
-Figure 3: The Type drop-down menu
- 
 2. In the Configure New Token section, enter the Client ID and client secret.
 
     >[!note] These values were created during the OIDC provider configuration process. 
@@ -220,14 +166,10 @@ Figure 3: The Type drop-down menu
 
 ![Configuring an access token in Postman](./Media/configuringtoken.jpg)
 
-Figure 4: Configuring an access token in Postman
-
 4. Click Get New Access Token. The new access token's details are displayed. 
 
 ![token details](./Media/tokendetails.jpg)
 
-Figure 5: The Token Details section in Postman
- 
 5. Copy this token and decode it for the values needed for configuring a mapping between the token contents and a unique identity in the RadiantOne namespace. You can do this at https://jwt.io/. 
 
 ### RadiantOne Configuration
@@ -254,8 +196,6 @@ To add an external token validator:
 
 ![The New ADAP External Token Validator Page](Media/externaltokenvalidatorpage.jpg)
 
-Figure 6: The New ADAP External Token Validator Page
-
 1.  Name the external token validator.
 1.  Toggle the Enable switch to On. 
 1.  Select an OIDC provider from the drop-down menu (if applicable, to assist with populating the Discovery URL syntax). Otherwise, skip this step and enter your own Discovery URL. 
@@ -272,13 +212,8 @@ Profile	| name, family_name, given_name, middle_name, nickname, preferred_userna
 Phone	| phone_number, phone_number_verified
 Openid	| sub, auth_time, acr
 
-  Table 4: Standard Claims per Scope
-
 1.  Other values can be obtained from the decoded access token. See the [Getting An Access Token](#getting-an-access-token) section for more information.  
-
 ![Configuring an ADAP External Token Validator](Media/configuringtokenvalidator.jpg)
-
-Figure 7: Configuring an ADAP External Token Validator
 
 1.  Click Edit next to Claims to FID User Mapping. The OIDC to FID User Mappings page displays.
 1.  Click Add. Use either a Simple DN Expression or a Search Expression to map a uniquely identifying attribute to a corresponding claim value in the token (refer to the [Getting An Access Token](#getting-an-access-token) section for more information). In the following image, a Search Expression is used to map the attribute **mail** to the claim value **email**.
@@ -300,46 +235,20 @@ In this example, Postman is the REST client that will issue calls to ADAP. Obtai
 
 ![Requesting a new access token](Media/requestnewaccesstoken.jpg)
 
-Figure 10: Requesting a new access token
-
 1. Send the bearer token to the REST (ADAP) endpoint. In this example, a basic search is performed. 
 
 Field	| Value
 -|-
-URL Syntax	| `http://<RadiantOneServer>:8089/adap/<baseDN>`
+URL Syntax	| `https://<REST_ENDPOINT>/<baseDN>`
 Method	| Get
 Header Name	| Authorization
 Header Value	| Bearer `<token>`
-Example URL	| http://localhost:8089/adap/o=companydirectory
+Example URL	| https://rlqa-usw2-testn.dev01.radiantlogic.io/adap/o=companydirectory
 
 If successful, the operation displays results similar to the following. 
 
 ![Successful REST Operation using OpenID Connect Token](Media/Image5.16.jpg)
  
-Figure 13: Successful REST Operation using OpenID Connect Token
-
-**Token Lifetime**
-
-By default the token lifetime is set to 10 hours. To configure the token timeout:
-
-1.	Go to the Classic Control Panel > Settings tab > Server Front End > Other Protocols section.
-
-2.	In the REST/ADAP section (requires [Expert Mode](overview#expert-mode)), edit the value in the Token Timeout field.
-
-3.	Click Save.
-
-4.	Restart the RadiantOne service. If deployed in a cluster, restart the service on all nodes.
-
-  ![Editing the Token Timeout value](Media/Image5.17.jpg)
- 
-  Figure 14: Editing the Token Timeout value
-
-When an expired or unrecognized token is used, the Response section displays the message “Authentication failed: Unknown token”.
-
-![Error Related to Unrecognized or Expired Token](Media/Image5.18.jpg)
- 
-Figure 15: Error Related to Unrecognized or Expired Token
-
 ## REST Query Examples
 
 The examples below describe how to issue REST queries for search, insert, update, and delete operations.
@@ -350,17 +259,13 @@ In this section, a search is performed using the REST client parameters and valu
 
 Field	| Value
 -|-
-URL Syntax	| `http://localhost:8089/adap/<baseDN>`
-Example URL	 | http://localhost:8089/adap/o=companydirectory
+URL Syntax	| `https://<REST_ENDPOINT>/adap/<baseDN>`
+Example URL	 | https://rlqa-usw2-testn.dev01.radiantlogic.io/adap/o=companydirectory
 Method	| Get
 Header Name	| Authorization
 Header Value	| Basic `<userDN>:<password>`
 
-Table 6: Search Operation
-
 ![Search Operation](Media/Image5.19.jpg)
-
-Figure 16: Search Operation
 
 >[!note] Depending on the parameters you define for the search, the loading time for your search results may be significantly longer than the loading times of other operations. A search’s initial loading time may be reduced by performing a paged search. See the PageSize section.
 
@@ -368,8 +273,6 @@ Figure 16: Search Operation
 
 ![Example Search Results](Media/Image5.20.jpg)
  
-Figure 17: Example Search Results
-
 ### Optional Search Parameters
 
 You can use the following search parameters: filter, attributes, scope, startIndex, count, sizelimit, paging, context, context filter, return mode, special character encoding, and derefAliases. The & sign is the parameter delimiter in the URL. These options are described in this section.
@@ -384,31 +287,25 @@ The filter option allows you to search for entries with a specific attribute val
 
 Field	| Value
 -|-
-URL Syntax	| `http://localhost:8089/adap/<baseDN>?<search param>&<search param>`
-Example URL	| http://localhost:8089/adap/o=companydirectory?filter=employeeType=Manager
+URL Syntax	| `https://<REST_ENDPOINT>/adap/<baseDN>?<search param>&<search param>`
+Example URL	| https://rlqa-usw2-testn.dev01.radiantlogic.io/adap/o=companydirectory?filter=employeeType=Manager
 Method	| Get
 Header Name	| Authorization
 Header Value	| Basic `<userDN>:<password>`
-
-Table 7: Search Operation with Filter Attributes
 
 An example is shown below.
 
 ![Search Results with Filter Attributes](Media/Image5.21.jpg)
  
-Figure 18: Search Results with Filter Attributes
-
 By default, all attributes associated with the matching entries are returned. The attributes option allows you to indicate which attributes you want returned in the search result. Separate attribute names with a comma in the URL.  The value defined for this option is translated into requested attributes in the LDAP query issued to the RadiantOne service. The example shown below expects the objectclass and cn attributes returned for each entry.
 
 Field	| Value
 -|-
-URL Syntax	| `http://localhost:8089/adap/<baseDN>?<search param>&<search param>`
-Example URL	| http://localhost:8089/adap/o=companydirectory?attributes=objectclass,cn
+URL Syntax	| `https://<REST_ENDPOINT>/adap/<baseDN>?<search param>&<search param>`
+Example URL	| https://rlqa-usw2-testn.dev01.radiantlogic.io/adap/o=companydirectory?attributes=objectclass,cn
 Method	| Get
 Header Name	| Authorization
 Header Value	| Basic `<userDN>:<password>`
-
-Table 8: Search Operation Returning ObjectClass and CN
 
 **Scope**
 
@@ -422,13 +319,11 @@ This option defines how many levels beneath the base DN to search for entries. T
 
 Field | Value
 -|-
-URL Syntax	| `http://localhost:8089/adap/<baseDN>?<search param>&<search param>`
-Example URL	| http://localhost:8089/adap/o=companydirectory?scope=sub 
+URL Syntax	| `https://<REST_ENDPOINT>/adap/<baseDN>?<search param>&<search param>`
+Example URL	| https://rlqa-usw2-testn.dev01.radiantlogic.io/adap/o=companydirectory?scope=sub 
 Method	| Get
 Header Name	| Authorization
 Header Value	| Basic `<userDN>:<password>`
-
-Table 9: Search Operation with Scope Parameter
 
 **StartIndex (Paging Results)**
 
@@ -437,13 +332,11 @@ This option defines the number used for the paged search, and indicates the firs
 
 Field	| Value
 -|-
-URL Syntax	| `http://localhost:8089/adap/<baseDN>?<search param>&<search param>`
-Example URL	| http://localhost:8089/adap/o=companydirectory?startIndex=101&count=2
+URL Syntax	| `https://<REST_ENDPOINT>/adap/<baseDN>?<search param>&<search param>`
+Example URL	| https://rlqa-usw2-testn.dev01.radiantlogic.io/adap/o=companydirectory?startIndex=101&count=2
 Method	| Get
 Header Name	| Authorization
 Header Value	| Basic `<userDN>:<password>`
-
-Table 10: Search Operation using StartIndex Parameter
 
 **Count**
 
@@ -453,20 +346,16 @@ For example, to return the attribute “cn” for entries number 101 and 102 loc
 
 Field	| Value
 -|-
-URL Syntax	| `http://localhost:8089/adap/<baseDN>?<searchparam>&<searchparam>`
-Example URL	| http://localhost:8089/adap/o=companydirectory?attributes=cn&startIndex=101&count=2 
+URL Syntax	| `https://<REST_ENDPOINT>/adap/<baseDN>?<searchparam>&<searchparam>`
+Example URL	| https://rlqa-usw2-testn.dev01.radiantlogic.io/adap/o=companydirectory?attributes=cn&startIndex=101&count=2 
 Method	| Get
 Header Name	| Authorization
 Header Value	| Basic `<userDN>:<password>`
-
-Table 11: Search Operation using Count Parameter
 
 An example is shown below. 
 
 ![Search Results with Count](Media/Image5.22.jpg)
  
-Figure 19: Search Results with Count
-
 The ‘totalResults’ field displays one of the following values. The following table explains each of these values.
 
 ‘totalResults’ Value	| Description
@@ -476,8 +365,6 @@ The ‘totalResults’ field displays one of the following values. The following
 -3	| The last page of search results has been reached.  
 Any other value	| The total number of entries that were matched. This value is displayed only if the parameter SizeLimit is set to 0. 
 
-Table 12: Total Results Descriptions
-
 The “count” value represents the number of results actually returned in the response and was set when “count=2” was added to the URL in the example above. Otherwise, the count value would have been equal to the total number of entries returned without the use of paging. 
 
 **SizeLimit**
@@ -486,7 +373,7 @@ SizeLimit indicates the maximum number of entries to request from the RadiantOne
 
 In the example used for the “count” parameter described previously, the query to return the attribute “cn” for entries number 101 and 102 located under o=companydirectory is: 
 
-`http://localhost:8080/webservices/o=companydirectory?attributes=cn&startIndex=101&count=2 `
+`http://rlqa-usw2-testn.dev01.radiantlogic.io/adap/o=companydirectory?attributes=cn&startIndex=101&count=2 `
 
 However, even if the REST interface only returns entries 101 and 102, it requests all entries from the RadiantOne LDAP service. Then, post filtering is performed using the values for the “startIndex” and “count” parameters. 
 
@@ -494,13 +381,11 @@ A more efficient way to get entries 101 and 102 is by using SizeLimit. SizeLimit
 
 Field	| Value
 -|-
-URL Syntax	| `http://localhost:8089/adap/<baseDN>?<searchparam>&<searchparam>`
-Example URL	| http://localhost:8089/adap/o=companydirectory?attributes=cn&sizeLimit=102&startIndex=101&count=2
+URL Syntax	| `https://<REST_ENDPOINT>/adap/<baseDN>?<searchparam>&<searchparam>`
+Example URL	| http://rlqa-usw2-testn.dev01.radiantlogic.io/adap/o=companydirectory?attributes=cn&sizeLimit=102&startIndex=101&count=2
 Method	| Get
 Header Name	| Authorization
 Header Value	| Basic `<userDN>:<password>`
-
-Table 13: Search Operation using SizeLimit Parameter
 
 **Paging**
 
@@ -512,13 +397,10 @@ For REST access, the paging functionality leverages a session cookie which is li
 
 ![Enabling Paged Results](Media/Image5.23.jpg)
  
-Figure 20: Enabling Paged Results
-
 >[!note] In multi-node clusters, an HTTP Status 302 is issued on a node that receives a paging request but did not generate the cookie related to paged results. This node redirects the request to the node that generated the cookie. No action is required. The cookie timeout can be configured in RadiantOne. To configure this timeout, go to the Classic Control Panel > Settings > Server Front End > Other Protocols (requires [Expert Mode](overview#expert-mode)). Expand the REST/ADAP section. Enter a value in the Cookie Timeout field in seconds (the default is 60). Click Save.
 
 ![Configuring Cookie Timeout](Media/Image5.24.jpg)
  
-Figure 21: Configuring Cookie Timeout
 
 If you try to use the PageSize option without paging enabled in RadiantOne, the REST interface ignores paging and performs a non-paged search against RadiantOne with SizeLimit equal to the PageSize parameter.
 
@@ -526,20 +408,16 @@ A search displaying, for example, five results per page is started using the par
 
 Field	| Value
 -|-
-URL	| `http://localhost:8089/adap/<baseDN>?<searchparam>&<searchparam>`
+URL	| `https://<REST_ENDPOINT>/adap/<baseDN>?<searchparam>&<searchparam>`
 Method	| Get
 Header Name	| Authorization
 Header Value	| Basic `<userDN>:<password>`
-Example URL	| http://localhost:8089/adap/o=companydirectory?pageSize=5
-
-Table 14: Search Operation using PageSize Parameter
+Example URL	| https://rlqa-usw2-testn.dev01.radiantlogic.io/adap/o=companydirectory?pageSize=5
 
 >[!note] If the PageSize option is used, ‘startIndex’, ‘count’ and ‘sizeLimit’ options will be ignored.
 
-![An image showing ](Media/Image5.25.jpg)
+![Example Paged Search Results](Media/Image5.25.jpg)
  
-Figure 22: Example Paged Search Results
-
 >[!note] Record the value in the ‘cookie’ field. This value defines a search parameter that will be used to display the next page of search results. If the value in the ‘cookie’ field is “null”, the last page of search results has been reached; there are no more pages to retrieve. 
 
 The totalResults’ field displays one of three values. The following table explains each of these values.
@@ -550,31 +428,25 @@ The totalResults’ field displays one of three values. The following table expl
 -2	| Paged search results were successfully retrieved.
 -3	| The search was terminated prior to reaching the end of the search results. This result is displayed only in sessions that use cookies.
 
-Table 15: TotalResults Values
-
 The next page of search results is displayed using the parameters shown in the table below. In this example, the value for the second search parameter, cookie, is derived from the value in the cookie field in the search results displayed above.
 
 Field	| Value
 -|-
-URL	| `http://localhost:8089/adap/<baseDN>?<searchparam>&<searchparam>`
+URL	| `https://<REST_ENDPOINT>/adap/<baseDN>?<searchparam>&<searchparam>`
 Method	| Get
 Header Name	| Authorization
 Header Value	| Basic `<userDN>:<password>`
-Example URL	| http://localhost:8089/adap/o=companydirectory?pageSize=5&cookie= localhost=NTEyNDIzODcw
-
-Table 16: Search Operation using Cookie Parameter
+Example URL	| https://rlqa-usw2-testn.dev01.radiantlogic.io/adap/o=companydirectory?pageSize=5&cookie= localhost=NTEyNDIzODcw
 
 A paged search stops automatically after five minutes of inactivity, or it can be stopped manually using the parameters shown in the table below.
 
 Field	| Value
 -|-
-URL	| `http://localhost:8089/adap/<baseDN>?<searchparam>&<searchparam>`
+URL	| `https://<REST_ENDPOINT>/adap/<baseDN>?<searchparam>&<searchparam>`
 Method	| Get
 Header Name	| Authorization
 Header Value	| Basic `<userDN>:<password>`
-Example URL	| http://localhost:8089/adap/o=companydirectory?pageSize=0&cookie= localhost=NTEyNDIzODcw
-
-Table 17: Manually Stopping a paged search
+Example URL	| https://rlqa-usw2-testn.dev01.radiantlogic.io/adap/o=companydirectory?pageSize=0&cookie= localhost=NTEyNDIzODcw
 
 **Context**
 
@@ -582,17 +454,13 @@ The context option allows you to display a hierarchical view of an entry’s anc
 
 Field	| Value
 -|-
-URL Syntax	| `http://localhost: 8089/adap/<baseDN>?<search param>?context=true`
-Example URL	| http://localhost:8089/adap/uid=Aaron_Medler,ou=Accounting,o=companydirectory?context=true
+URL Syntax	| `https://<REST_ENDPOINT>/adap/<baseDN>?<search param>?context=true`
+Example URL	| https://rlqa-usw2-testn.dev01.radiantlogic.io/adap/uid=Aaron_Medler,ou=Accounting,o=companydirectory?context=true
 Method	| Get
 Header Name	| Authorization
 Header Value	| Basic `<userDN>:<password>`
 
-Table 18: Example Response for Context Search
-
 ![Performing a Context Search](Media/Image5.26.jpg)
-
-Figure 23: Performing a Context Search
 
 In the figure above, starting at the bottom, the bottom box contains the uid that matches the search criteria defined in the URL. The next box up contains the parent entry that uid=Aaron Medler belongs to, ou=Accounting. The top box contains the top entry, o=companydirectory. 
 
@@ -606,18 +474,14 @@ The context filter option allows you to pass a filtered search to the REST inter
 
 Field	| Value
 -|-
-URL Syntax	| `http://localhost: 8089/adap/<search param>?contextFilter=/` (or) //`<search param>`
-Example URL	| http://localhost:8089/adap/o=companydirectory?contextFilter=/ou=A*/uid=Aug*&attributes=objectclass
+URL Syntax	| `https://<REST_ENDPOINT>/adap/<search param>?contextFilter=/` (or) //`<search param>`
+Example URL	| http://rlqa-usw2-testn.dev01.radiantlogic.io/adap/o=companydirectory?contextFilter=/ou=A*/uid=Aug*&attributes=objectclass
 Method	| Get
 Header Name	| Authorization
 Header Value	| Basic `<userDN>:<password>`
 
-Table 19: Search Operation using Context Filter
-
 ![Example Search Result Leveraging Context Filter](Media/Image5.27.jpg)
  
-Figure 24: Example Search Result Leveraging Context Filter
-
 **Return Mode**
 
 This options controls how the JSON response is formatted when ADAP returns a search response. The options include the following. 
@@ -630,13 +494,11 @@ This options controls how the JSON response is formatted when ADAP returns a sea
 
 Field	| Value
 -|-
-URL Syntax	| `http://localhost: 8089/adap/<baseDN>?returnMode=array&<searchparam>` 
-Example URL	| http://localhost:8089/adap/o=companydirectory?returnMode=array
+URL Syntax	| `https://<REST_ENDPOINT>/adap/<baseDN>?returnMode=array&<searchparam>` 
+Example URL	| https://rlqa-usw2-testn.dev01.radiantlogic.io/adap/o=companydirectory?returnMode=array
 Method	| Get
 Header Name	| Authorization
 Header Value	| Basic `<userDN>:<password>`
-
-Table 20: Return Mode
 
 **Special Character Encoding**
 
@@ -650,15 +512,13 @@ Space	| %20
 |	| %7C
 =	| %3D
 
-Table 21: Special Character Encoding
-
 An example LDAP filter of:
 (|(cn=Lisa Grady)(sAMAccountName=Lisa Grady)(uid=Lisa Grady)) 
 <br> Would need converted to: <br> (%7C(cn%3DLisa%20Grady)(sAMAccountName%3DLisa%20Grady)(uid%3DLisa%20Grady))
 
 **Dereferencing Alias Entries**
 
-RadiantOne Universal Directory stores supports alias entries as defined in RFC 22521. Alias entries point to/reference another entry in the directory. The attribute containing the location of the target entry (DN) is aliasedObjectName and the object class associated with these entries is alias. When a client requests an alias entry, they can indicate if they want the alias dereferenced or not. The indicators are outlined in the table below.
+RadiantOne Directory stores supports alias entries as defined in RFC 22521. Alias entries point to/reference another entry in the directory. The attribute containing the location of the target entry (DN) is aliasedObjectName and the object class associated with these entries is alias. When a client requests an alias entry, they can indicate if they want the alias dereferenced or not. The indicators are outlined in the table below.
 
 >[!warning] 
 >Dereferencing alias entries is only supported on base-level searches. One-level and subtree searches are not supported at this time.
@@ -670,44 +530,35 @@ derefAliases=1 <br> (equivalent to using -a search in an ldapsearch command)	| D
 derefAliases=2	<br> (equivalent to using -a find in an ldapsearch command)	| Dereferences the base object in a search, but does not dereference alias entries that are under the base.
 derefAliases=3 <br> (equivalent to using -a always in an ldapsearch command)	| Dereferences aliases both in searching and in locating the base object of the search.
 
-Table 22: Dereferencing Alias Entries
-
 The default behavior of the REST/ADAP service is to never dereference aliases. If the REST client wants an alias entry dereferenced, they must pass the search parameter derefaliases as described below.
 
 Field	| Value
 -|-
-URL	| `http://localhost:8089/adap/<baseDN>?<searchparam>&<searchparam>`
+URL	| `https://<REST_ENDPOINT>/adap/<baseDN>?<searchparam>&<searchparam>`
 Method	| Get
 Header Name	| Authorization
 Header Value	| Basic `<userDN>:<password>`
-Example URL	| http://localhost:8089/adap/ou=Headquarters,o=companydirectory?derefAliases=3
-
-Table 23: Passing the derefealiases parameter
+Example URL	| https://rlqa-usw2-testn.dev01.radiantlogic.io/adap/ou=Headquarters,o=companydirectory?derefAliases=3
 
 When a client requests derefAliases=3, RadiantOne automatically dereferences the alias entry and returns the entry it points to. In this example, the search dereferences “ou=Headquarters,o=companydirectory”, which is an alias entry, and returns “ou=Information Technology,o=companydirectory” as shown below.
 
 ![Example Result Dereferencing Aliases](Media/Image5.28.jpg)
  
-Figure 25: Example Result Dereferencing Aliases
-
 **Display LDAP server’s root naming contexts**
 
 To display a list of the LDAP server’s root naming contexts, pass rootdse as part of the URL.
 
 Field	| Value
 -|-
-URL Syntax	| http://localhost:8089/adap/rootdse 
+URL Syntax	| `https://<REST_ENDPOINT>/adap/rootdse` 
 Method	| Get
 Header Name	| Authorization
 Header Value	| Basic `<userDN>:<password>`
-
-Table 24: Displaying LDAP Server's Root Naming Contexts
 
 An example of the list displayed by this command is shown below.
 
 ![Example Search Returning Root Naming Contexts](Media/Image5.29.jpg)
  
-Figure 26: Example Search Returning Root Naming Contexts
 
 ### Add
 
@@ -719,7 +570,7 @@ In this section, a new entry is added to RadiantOne using the parameters shown i
 <td> Value
 <tr>
 <td>URL	
-<td> http://localhost:8089/adap
+<td> `https://<REST_ENDPOINT>/adap`
 <tr>
 <td>Method	
 <td>Post
@@ -743,11 +594,8 @@ In this section, a new entry is added to RadiantOne using the parameters shown i
 }
 </table>
 
-Table 25: Add Operation
-
 ![Add Request Example](Media/Image5.30.jpg)
   
-Figure 27: Add Request Example
 
 If successful, the Response section displays the message “{"httpStatus":200}”. 
 
@@ -755,7 +603,6 @@ If unsuccessful, the Response section displays the message “{"httpStatus":400}
 
 ![Add Failure Response Example](Media/Image5.31.jpg)
  
-Figure 28: Add Failure Response Example
 
 ### Replace (PUT)
 
@@ -765,18 +612,14 @@ In this section, an existing entry is replaced using the parameters shown in the
 
 Field	| Value
 -|-
-URL Syntax | `http://localhost:8089/adap/<baseDN>`
-Example URL	| http://localhost:8089/adap/uid=alice,cn=config
+URL Syntax | `https://<REST_ENDPOINT>/adap/<baseDN>`
+Example URL	| https://rlqa-usw2-testn.dev01.radiantlogic.io/adap/uid=alice,cn=config
 Method	| Put
 Header Name	| Authorization
 Header Value	| Basic `<userDN>:<password>`
 Example Request Body	| { "params" : { <br>"attributes" : {"objectClass" : [ "top",  <br>"person", <br>"organizationalPerson", <br>"inetOrgPerson" ], <br>"cn" : "Alice Wonderland2", <br>"sn" : "Wonderland2", <br>"uid" : "alice" } } <br>}
 
-Table 26: Replacing an Entry
-
 ![Example PUT Request](Media/Image5.32.jpg)
-
-Figure 29: Example PUT Request
 
 If successful, the Response section displays the message “{"httpStatus":200}”. 
 
@@ -786,18 +629,15 @@ In the first example, an attribute is added to a user entry identified as “uid
 
 Field	| Value
 -|-
-URL Syntax	| `http://localhost:8089/adap/<baseDN>`
-Example URL	| http://localhost:8089/adap/uid=alice,cn=config
+URL Syntax	| `https://<REST_ENDPOINT>/adap/<baseDN>`
+Example URL	| https://rlqa-usw2-testn.dev01.radiantlogic.io/adap/uid=alice,cn=config
 Method	| Patch
 Header Name	| Authorization
 Header Value	| Basic `<userDN>:<password>`
 Example Request Body	| { "params" : { <br>"mods" : [ { "attribute" : "telephoneNumber", <br>"type" : "ADD",<br>"values" : [ "+1 354 2344 5433" ] }, <br>{ "attribute" : "mobile", <br>"type" : "REPLACE", <br>"values" : [ "+1 123 4544 1290" ] } ] } <br>}
 
-Table 27: Adding and Replacing Attributes
-
 ![Example PATCH Request](Media/Image5.33.jpg)
  
-Figure 30: Example PATCH Request
 
 If successful, the Response section displays the message “{"httpStatus":200}”. 
 
@@ -811,10 +651,10 @@ In this example an attribute (e.g. email) containing a specified value (e.g. ali
 <td>Value
 <tr>
 <td>URL Syntax	
-<td>http://localhost:8089/adap/`< baseDN>`
+<td>`http://<REST_ENDPOINT>/adap/<baseDN>`
 <tr>
 <td>Example URL	
-<td>http://localhost:8089/adap/uid=alice,cn=config
+<td>https://rlqa-usw2-testn.dev01.radiantlogic.io/adap/uid=alice,cn=config
 <tr>
 <td>Method	
 <td>Patch
@@ -839,8 +679,6 @@ In this example an attribute (e.g. email) containing a specified value (e.g. ali
 }
 </table>
 
-Table 28: REST Operation to Delete an Attribute Value
-
 If successful, the Response section displays the message “{"httpStatus":200}”.
 
 ### Modify (PATCH) Delete Attribute
@@ -853,10 +691,10 @@ In this example, an attribute is deleted, regardless of its attribute values, us
 <td> Value
 <tr>
 <td>URL Syntax	
-<td> http://localhost:8089/adap/<baseDN>
+<td> `https://<REST_ENDPOINT>/adap/<baseDN>`
 <tr>
 <td>Example URL	
-<td> http://localhost:8089/adap/uid=alice,cn=config
+<td> https://rlqa-usw2-testn.dev01.radiantlogic.io/adap/uid=alice,cn=config
 <tr>
 <td>Method	
 <td> Patch
@@ -881,8 +719,6 @@ In this example, an attribute is deleted, regardless of its attribute values, us
 }
 </table>
 
-Table 29: REST Operation to Delete an Attribute
-
 If successful, the Response section displays the message “{"httpStatus":200}”.
 
 ### Modify (PATCH) Add Group Member
@@ -895,10 +731,10 @@ In this example, a group entry identified as “cn=operator,ou=globalgroups,cn=c
 <td>Value
 <tr>
 <td>URL Syntax	
-<td>http://localhost:8089/adap/< baseDN>
+<td>`https://<REST_ENDPOINT>/adap/<baseDN>`
 <tr>
 <td>Example URL	
-<td>http://localhost:8089/adap/cn=operator,ou=globalgroups,cn=config
+<td>https://rlqa-usw2-testn.dev01.radiantlogic.io/adap/cn=operator,ou=globalgroups,cn=config
 <tr>
 <td>Method	
 <td>Patch
@@ -926,12 +762,8 @@ In this example, a group entry identified as “cn=operator,ou=globalgroups,cn=c
 
 </table> 
 
-Table 30: REST Operation to add group members
-
 ![Example PATCH Request – Add Group Members](Media/Image5.34.jpg)
  
-Figure 31: Example PATCH Request – Add Group Members
-
 If successful, the Response section displays the message “{"httpStatus":200}”.
 
 ### Modify (PATCH) Replace Group Members
@@ -944,10 +776,10 @@ In this example, a group entry’s members are replaced by a new member.
 <td>Value
 <tr>
 <td>URL Syntax	
-<td>http://localhost:8089/adap/< baseDN>
+<td>`http://<REST_ENDPOINT>/adap/<baseDN>`
 <tr>
 <td>Example URL	
-<td>http://localhost:8089/adap/cn=operator,ou=globalgroups,cn=config
+<td>https://rlqa-usw2-testn.dev01.radiantlogic.io/adap/cn=operator,ou=globalgroups,cn=config
 <tr>
 <td>Method	
 <td>Patch
@@ -974,12 +806,8 @@ In this example, a group entry’s members are replaced by a new member.
 }
 </table>
 
-Table 31: REST operation to replace group members
-
 ![Example PATCH Request – Replace Group Members](Media/Image5.35.jpg)
  
-Figure 32: Example PATCH Request – Replace Group Members
-
 If successful, the Response section displays the message “{"httpStatus":200}”.
 
 ### Modify (PATCH) Modify RDN
@@ -988,18 +816,14 @@ This section explains how to modify the RDN of an entry using the parameters sho
 
 Field	| Value
 -|-
-URL Syntax	| http://localhost:8089/adap
+URL Syntax	| `https://<REST_ENDPOINT>/adap`
 Method	| Patch
 Header Name	| Authorization
 Header Value	| Basic `<userDN>:<password>`
 Example Request Body	| {"params" : { "DN" : " uid=alice,cn=config ", <br>"newRDN" : " uid=lewis "} <br>}
 
-Table 32: REST Operation to modify an entry's RDN
-
 ![An image showing ](Media/Image5.36.jpg)
  
-Figure 33: Example PATCH – Modify RDN
-
 If successful, the Response section displays the message “{"httpStatus":200}”. 
 
 ### Modify (PATCH) Move Entry
@@ -1008,18 +832,16 @@ This section explains how to move the entry "uid=Adalberto_Flecha,ou=Accounting,
 
 Field	| Value
 -|-
-URL Syntax	| http://localhost:8089/adap
+URL Syntax	| `https://<REST_ENDPOINT>/adap`
 Method	| Patch
 Header Name	| Authorization
 Header Value	| Basic `<userDN>:<password>`
 Example Request Body	| {"params" : { "DN" : <br>uid=Adalberto_Flecha,ou=Accounting,o=companydirectory", <br>"newRDN" : "uid=Adalberto_Flecha",<br>"newSuperiorDN" : "ou=Administration,o=companydirectory"} 
 }
 
-Table 33: REST Operation to move an entry
 
 ![Example PATCH – Move Entry ](Media/Image5.37.jpg)
  
-Figure 34: Example PATCH – Move Entry
 
 If successful, the Response section displays the message “{"httpStatus":200}”. 
 
@@ -1029,44 +851,35 @@ This section explains how to delete an entry in RadiantOne using the parameters 
 
 Field	| Value
 -|-
-URL Syntax	| `http://localhost:8089/adap/<baseDN>`
-Example URL	| http://localhost:8089/adap/uid=alice,cn=config
+URL Syntax	| `https://<REST_ENDPOINT>/adap/<baseDN>`
+Example URL	| https://rlqa-usw2-testn.dev01.radiantlogic.io/adap/uid=alice,cn=config
 Method	| Delete
 Header Name	| Authorization
 Header Value	| Basic `<userDN>:<password>`
 
-Table 34: REST Operation to delete an entry
 
 ![Example DELETE Request](Media/Image5.38.jpg)
  
-Figure 35: Example DELETE Request
-
 If successful, the Response section displays the message “{"httpStatus":200}”. 
 
 ### Deleting a Node and Its Sub-Nodes
 
 This section explains how to delete a node and its sub-nodes. When attempting to perform a standard deletion on a node that contains sub-nodes, the operation fails because of those sub-nodes. The Response section displays the message “Entry not deleted”. 
 
-![An image showing ](Media/Image5.39.jpg)
-
- Figure 36: Failure to Delete Entry Containing Sub-nodes
+![Failure to Delete Entry Containing Sub-nodes](Media/Image5.39.jpg)
 
 To delete a node that contains sub-nodes, perform a deletion using the parameters shown in the table below. “baseDN” is the DN of the targeted entry.
 
 Field	| Value
 -|-
-URL Syntax	| `http://localhost:8089/adap/<baseDN>?deletetree=true`
-Example URL	| http://localhost:8089/adap/uid=alice,cn=config?deletetree=true
+URL Syntax	| `https://<REST_ENDPOINT>/adap/<baseDN>?deletetree=true`
+Example URL	| https://rlqa-usw2-testn.dev01.radiantlogic.io/adap/uid=alice,cn=config?deletetree=true
 Method	| Delete
 Header Name	| Authorization
 Header Value	| Basic `<userDN>:<password>`
 
-Table 35: REST Operation to Delete a Node Containing Sub-nodes
-
-![An image showing ](Media/Image5.40.jpg)
+![Deleting a Node Containing Sub-nodes](Media/Image5.40.jpg)
  
-Figure 37: Deleting a Node Containing Sub-nodes
-
 >[!note] The “deletetree=true” parameter does not delete root naming contexts.
 
 ### Performing Bulk Operations
@@ -1093,7 +906,7 @@ A bulk operation contains unique fields in its syntax. The “method” field in
 <td>Value
 <tr>
 <td>URL Syntax	
-<td>http://localhost:8089/adap/bulk
+<td>`http://<REST_ENDPOINT>/adap/bulk`
 <tr>
 <td>Method	
 <td>Post
@@ -1165,12 +978,8 @@ A bulk operation contains unique fields in its syntax. The “method” field in
 
 </table>
 
-Table 36: REST Operation to Perform Bulk Operation
-
-![An image showing ](Media/Image5.41.jpg)
+![Sample Response from Bulk Operations](Media/Image5.41.jpg)
  
-Figure 38: Sample Response from Bulk Operations
-
 In the image above, starting at the top, in the top box, the addition of a new entry to the directory is confirmed. In the second box, the replacement of an existing directory entry is confirmed. In the third box, the modification of an entry’s attribute is confirmed. In the fourth box, the deletion of an entry is confirmed.
 
 ### Delete Nodes and Their Sub-Nodes
@@ -1182,7 +991,7 @@ This section explains how to delete nodes and their sub-nodes. When attempting t
 <td>Field	Value
 <tr>
 <td>URL Syntax
-<td>http://localhost:8089/adap/bulk
+<td>`http://<REST_ENDPOINT>/adap/bulk`
 <tr>
 <td>Method	
 <td>Post
@@ -1215,12 +1024,8 @@ This section explains how to delete nodes and their sub-nodes. When attempting t
 }
 </table>
 
-Table 37: REST Bulk Operation to Delete Nodes and Their Sub-nodes
-
 ![Sample Response from Bulk Deletion of Nodes and thier sub-nodes](Media/bulk-delete-nodes.jpg)
  
-Figure 39: Sample Response from Bulk Deletion of Nodes and Their Sub-Nodes
-
 In the image above, starting at the top, in the top box, the deletion of this node is confirmed. In the second box, this node was not deleted because deletetree it had a value of false in the body of the request. In the third box, the deletion of this node is confirmed.
 
 >[!note] The “deletetree=true” parameter does not delete root naming contexts.
@@ -1249,38 +1054,30 @@ The complex attribute search allows you to indicate which attributes you want re
 
 Field	| Value
 -|-
-URL Syntax	| `http://localhost:8089/adap/<baseDN>?<search param>&<search param>.*`
-Example URL	| http://localhost:8089/adap/cn=config?attributes=address.*
+URL Syntax	| `https://<REST_ENDPOINT>/adap/<baseDN>?<search param>&<search param>.*`
+Example URL	| https://rlqa-usw2-testn.dev01.radiantlogic.io/adap/cn=config?attributes=address.*
 Method	| Get
 Header Name	| Authorization
 Header Value	| Basic `<userDN>:<password>`
 
-Table 37: REST Operation Searching for Complex Attributes
-
 An example complex attribute search result is shown in the image below.
  
-![An image showing ](Media/Image5.42.jpg)
-
-Figure 40: Example Complex Attribute Search Results
+![Example Complex Attribute Search Results](Media/Image5.42.jpg)
 
 When using a complex attribute in a filter, you can search for entries with a specific sub-attribute value. The value defined for this option is translated into an LDAP filter when the query is issued to RadiantOne. In the following example, a search is performed for records with the value NY for the “state” sub-attribute within cn=config.
 
 Field	| Value
 -|-
-URL Syntax	| `http://localhost:8089/adap/<baseDN>?<search param>&<search param>`
-Example URL	| http://localhost:8089/adap/cn=config?filter=(address.state=NY)
+URL Syntax	| `https://<REST_ENDPOINT>/adap/<baseDN>?<search param>&<search param>`
+Example URL	| https://rlqa-usw2-testn.dev01.radiantlogic.io/adap/cn=config?filter=(address.state=NY)
 Method	| Get
 Header Name	| Authorization
 Header Value	| Basic `<userDN>:<password>`
 
-Table 39: Complex Attribute Search Using a Filter
-
 An example complex attribute search result is shown in the image below.
 
-![An image showing ](Media/Image5.43.jpg)
+![Complex Attribute Search Result with Specified Sub-attributes](Media/Image5.43.jpg)
  
-Figure 41: Complex Attribute Search Result with Specified Sub-attributes
-
 ### Add an Entry with Complex Attributes
 
 In this section, an entry with complex attributes is added using the parameters shown in the table below. The value in the Example Request Body field contains the information for the entry to be added. The “phone” attribute contains the sub-attributes “type” and “value”, and the “address” attribute contains the sub-attributes “state”, “country”, and “streetNumber”.
@@ -1292,7 +1089,7 @@ In this section, an entry with complex attributes is added using the parameters 
 <td>Value
 <tr>
 <td>URL	
-<td>http://localhost:8089/adap
+<td>`http://<REST_ENDPOINT>/adap`
 <tr>
 <td>Method	
 <td>Post
@@ -1337,11 +1134,8 @@ In this section, an entry with complex attributes is added using the parameters 
 }
 </table>
 
-Table 40: Adding an entry with complex attributes
-
-![An image showing ](Media/Image5.44.jpg)
+![Adding an entry with complex attributes](Media/Image5.44.jpg)
  
-Figure 42: Adding an entry with complex attributes
 
 ### Add Complex Attributes to an Existing Entry
 
@@ -1354,10 +1148,10 @@ In this section, complex attributes are added to an existing user entry using th
 <td>Value
 <tr>
 <td>URL Syntax	
-<td>`http://localhost:8089/adap/<userDN you want to add attributes to>,<baseDN>`
+<td>`https://<REST_ENDPOINT>/adap/<userDN you want to add attributes to>,<baseDN>`
 <tr>
 <td>Example URL	
-<td>http://localhost:8089/adap/uid=alice,cn=config
+<td>https://rlqa-usw2-testn.dev01.radiantlogic.io/adap/uid=alice,cn=config
 <tr>
 <td>Method	
 <td>Patch
@@ -1391,8 +1185,6 @@ In this section, complex attributes are added to an existing user entry using th
 }
 </table>
 
-Table 41: Adding Complex Attributes to an Existing Entry
-
 If you attempt to add an attribute that has an already existing, identical value, the REST client displays LDAP code 20 (the provided attribute contains a value that would result in duplicate value in the entry). If this happens, the entire request is ignored by the REST client. 
 
 ### Replace an Entry’s Complex Attributes
@@ -1404,10 +1196,10 @@ In this section, new attributes are added to an existing user entry using the pa
 <td>Field	Value
 <tr>
 <td>URL Syntax	
-<td>`http://localhost:8089/adap/<userDN you want to add attributes to>,<baseDN>`
+<td>`https://<REST_ENDPOINT>/adap/<userDN you want to add attributes to>,<baseDN>`
 <tr>
 <td>Example URL	
-<td>http://localhost:8089/adap/uid=alice,cn=config
+<td>https://rlqa-usw2-testn.dev01.radiantlogic.io/adap/uid=alice,cn=config
 <tr>
 <td>Method	
 <td>Patch
@@ -1442,7 +1234,6 @@ In this section, new attributes are added to an existing user entry using the pa
 }
 </table>
 
-Table 42: Replacing an Entry’s Complex Attributes
 
 ### Delete an Entry’s Complex Attributes
 
@@ -1453,10 +1244,10 @@ In this section, sub-attributes are deleted from an existing entry using the par
 <td>Field	Value
 <tr>
 <td>URL Syntax	
-<td>`http://localhost:8089/adap/<userDN you want to delete attributes from>,<baseDN>`
+<td>`https://<REST_ENDPOINT>/adap/<userDN you want to delete attributes from>,<baseDN>`
 <tr>
 <td>Example URL	
-<td>http://localhost:8089/adap/uid=alice,cn=config
+<td>https://rlqa-usw2-testn.dev01.radiantlogic.io/adap/uid=alice,cn=config
 <tr>
 <td>Method	Patch
 <tr>
@@ -1485,8 +1276,6 @@ In this section, sub-attributes are deleted from an existing entry using the par
 }
 </table>
 
-Table 43: Deleting an Entry’s Complex Attributes
-
 In the following example, all values for the attribute “address” are deleted using the parameters in the table below. The value in the Example Request Body field contains the information for the sub-attributes to be deleted from the entry.
 
 <table>
@@ -1494,10 +1283,10 @@ In the following example, all values for the attribute “address” are deleted
 <td>Field	Value
 <tr>
 <td>URL Syntax	
-<td>`http://localhost:8089/adap/<userDN you want to delete attributes from>,<baseDN>`
+<td>`https://<REST_ENDPOINT>/adap/<userDN you want to delete attributes from>,<baseDN>`
 <tr>
 <td>Example URL	
-<td>http://localhost:8089/adap/uid=alice,cn=config
+<td>https://rlqa-usw2-testn.dev01.radiantlogic.io/adap/uid=alice,cn=config
 <tr>
 <td>Method	
 <td>Patch
@@ -1524,8 +1313,6 @@ In the following example, all values for the attribute “address” are deleted
 }
 </table>
 
-Table 44: Deleting Sub-attributes
-
 ### Modify Multiple Complex Attributes in an Operation
 
 In this section, the sub-attributes “streetNumber” and “country” are added to an existing user entry and sub-attributes “type”, “value”, and “brand” are replaced using the parameters shown in the table below. The value in the Example Request Body field contains the information for the attributes to be modified in the entry. 
@@ -1535,10 +1322,10 @@ In this section, the sub-attributes “streetNumber” and “country” are add
 <td>Field	Value
 <tr>
 <td>URL Syntax	
-<td>`http://localhost:8089/adap/<userDN you want to modify>,<baseDN>`
+<td>`https://<REST_ENDPOINT>/adap/<userDN you want to modify>,<baseDN>`
 <tr>
 <td>Example URL	
-<td>http://localhost:8089/adap/uid=alice,cn=config
+<td>https://rlqa-usw2-testn.dev01.radiantlogic.io/adap/uid=alice,cn=config
 <tr>
 <td>Method	
 <td>Patch
@@ -1583,4 +1370,3 @@ In this section, the sub-attributes “streetNumber” and “country” are add
 }
 </table>
 
-Table 45: Modifying Multiple Complex Attributes in an Operation
