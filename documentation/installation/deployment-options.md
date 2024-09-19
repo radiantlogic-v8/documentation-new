@@ -42,5 +42,5 @@ For SaaS deployments, RadiantOne Identity Data Management is installed by creati
 
 ## Self-managed
 
-For self-managed deployments, have your Kuberenetes cluster configured and then deploy RadiantOne Identity Data Management using Helm. Helm charts will be available in July 2024.
+For self-managed deployments, have your Kuberenetes cluster configured and then deploy RadiantOne Identity Data Management using Helm. Helm charts will be available in September 2024.
 
