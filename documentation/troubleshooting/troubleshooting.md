@@ -611,8 +611,6 @@ For details on creating a new data connector, see the [add a data connector](/..
 
 The following control panel error may indicate that the secure data connector client has stopped running: "Connection failed: An error has occurred, please contact your administrator".
 
-![image description](Media/test-connection-err.png)
-
 If you receive the above connection failure error, return to the secure data connector client and verify that it is running.
 
 **Test Connection Failure on Docker Client**
