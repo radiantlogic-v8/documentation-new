@@ -770,7 +770,7 @@ To enable SQL access:
 
 ### Web Services (HTTP) Port
 
-The HTTP interface is enabled by default. These are the ports the RadiantOne service accepts web service requests (SCIM and REST) on. For details on accessing the RadiantOne Web Services, see: https://developer.radiantlogic.com/idm/v8.0/ **DEVELOPER** tab.
+The HTTP interface is enabled by default. These are the ports the RadiantOne service accepts web service requests (SCIM and REST) on. For details on accessing the RadiantOne Web Services, see: [SCIM](web-services-api-guide/04-scim) and [REST](web-services-api-guide/05-rest)
 
 If you would only like to support encrypted traffic over HTTPS, just set the standard HTTP port to a value of 0.
 
@@ -782,7 +782,7 @@ Restart the RadiantOne service if changes are made to these settings. If Radiant
 
 SCIM settings are configured in the Server Front End > SCIM section. 
 
-For details on accessing RadiantOne via SCIM and REST, please see: [SCIM](https://developer.radiantlogic.com/idm/v8.0/web-services-api-guide/scim/) and [REST](https://developer.radiantlogic.com/idm/v8.0/web-services-api-guide/rest/)
+For details on accessing RadiantOne via SCIM and REST, please see: [SCIM](web-services-api-guide/04-scim) and [REST](web-services-api-guide/05-rest)
 
 ### REST/ADAP
 
