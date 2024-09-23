@@ -31,7 +31,7 @@ Harness your identity data with intelligent integration to drive better business
   > Learn about the configuration commands that are supported with the RadiantOne REST API.
 
   > [Release Notes](release-notes/iddm-8-0-0)  
-  > Learn about improvements and bug fixes for RadiantOne Identity Data Management and Environment Operations Center.
+  > Learn about improvements and bug fixes for RadiantOne Identity Data Management.
 
   > [Data Sources Supported](data-sources/data-sources-supported)  
   > Learn about identity data source backends supported in RadiantOne Identity Data Management.
