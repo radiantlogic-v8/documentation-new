@@ -743,13 +743,13 @@ In addition to supporting LDAP operations, RadiantOne can also be accessed via S
 
 ### Web Services (HTTP) Port
 
-The HTTPS interface is enabled by default. The RadiantOne service accepts web service requests on this endpoint. For details on accessing the RadiantOne Web Services, please see: [SCIM](../web-services-api-guide/04-scim) and [REST](../web-services-api-guide/05-rest)
+The HTTPS interface is enabled by default. The RadiantOne service accepts web service requests on this endpoint. For details on accessing the RadiantOne Web Services, please see: [SCIM](../web-services-api-guide/scim) and [REST](../web-services-api-guide/rest)
 
 **SCIM, REST (ADAP)**
 
 SCIM settings are configured in the Server Front End > SCIM section. 
 
-For details on configuring and accessing RadiantOne via SCIM and REST, please see: [SCIM](../web-services-api-guide/04-scim) and [REST](../web-services-api-guide/05-rest)
+For details on configuring and accessing RadiantOne via SCIM and REST, please see: [SCIM](../web-services-api-guide/scim) and [REST](../web-services-api-guide/rest)
 
 ### REST/ADAP
 
