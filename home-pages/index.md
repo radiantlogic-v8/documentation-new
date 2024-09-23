@@ -21,10 +21,10 @@ Harness your identity data with intelligent integration to drive better business
   > [Introduction](environment-operations-center-guide/overview)  
   > Radiant Logic’s fully managed, RadiantOne SaaS offering is built to deploy quickly and streamline configuration, maintenance, and upgrades.
   
-  > [Environment Operations Center](environment-operations-center-guide/environments/environment-overview/environments)  
+  > [Environment Operations Center](/../../eoc/latest/environments/environment-overview/create-environments)  
   > Learn how to use the Environment Operations Center as a centralized control plane to manage all RadiantOne environments.
 
-  > [Secure Data Connectors](environment-operations-center-guide/secure-data-connectors/data-connectors-overview)  
+  > [Secure Data Connectors](/../../eoc/latest/secure-data-connector/configure-sdc)  
   > Learn how to install, configure and use Secure Data Connectors as a secure way for cloud environments to selectively access on-premise identity data sources.
 
   > [REST API Configuration](command-line-configuration-guide/introduction)  
