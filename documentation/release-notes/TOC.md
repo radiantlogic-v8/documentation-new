@@ -1,6 +1,6 @@
 ---
 title: RadiantOne Release Notes
-description: RadiantOne Identity Data Management v8.0 and Environment Operations Center v1.0 Release Notes
+description: RadiantOne Identity Data Management v8.0 Release Notes
 ---
 
 - [RadiantOne Identity Data Management](#)
