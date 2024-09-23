@@ -21,7 +21,7 @@ Harness your identity data with intelligent integration to drive better business
   > [Introduction](/../eoc/latest/environments/environment-overview/create-environments)  
   > Radiant Logic’s fully managed, RadiantOne SaaS offering is built to deploy quickly and streamline configuration, maintenance, and upgrades.
   
-  > [Environment Operations Center](/../eoc/latest/environments/environment-overview/create-environments)  
+  > [Environment Operations Center](/../eoc/latest/environments/environment-overview/create-environments#creating-environments)  
   > Learn how to use the Environment Operations Center as a centralized control plane to manage all RadiantOne environments.
 
   > [Secure Data Connectors](/../eoc/latest/secure-data-connector/configure-sdc)  
