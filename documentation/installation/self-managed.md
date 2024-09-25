@@ -125,7 +125,45 @@ Self-managed Identity Data Management can be deployed on any Certified Kubernete
      INSTALL_SAMPLES: true
      FID_REVISION_UPDATE: true
      FID_SERVER_JOPTS: '-Xms2g -Xmx8g'
+   metrics:
+     enabled: true
+     image: radiantone/fid-exporter
+     imageTag: latest
+     securityContext:
+       runAsUser: 0
+     annotations: {}
+     pushMode: true
+     pushGateway: http://prometheus-pushgateway:9091
+     pushMetricCron: "* * * * *"
+     fluentd:
+       enabled: true
+       logs:
+         vds_server:
+           enabled: true
+         vds_server_access:
+           enabled: true
+         vds_events:
+           enabled: true
+         periodiccache:
+           enabled: true
+         web:
+           enabled: true
+         web_access:
+           enabled: true
+         sync_engine:
+           enabled: true
+         alerts:
+           enabled: true
+         adap_access:
+           enabled: true
+         admin_rest_api_access:
+           enabled: true
+       aggregators:
+         - type: "elasticsearch"
+           host: "elasticsearch-master"
+           port: "9200"
    ```
+   
 
    **Definitions of the properties:**
    - `replicaCount`: Specifies the number of RadiantOne nodes that will be deployed. Set the value to a minimum of 2 in production environments for high availability.
@@ -140,6 +178,7 @@ Self-managed Identity Data Management can be deployed on any Certified Kubernete
    - `imageCredentials.enabled`: Indicates if credentials for pulling images from a private registry are enabled.
    - `dependencies.zookeeper.enabled`: Specifies if Zookeeper should be deployed as a dependency. Always set to `true`.
    - `zookeeper.persistence.enabled`: Indicates if data persistence is enabled for Zookeeper.
+   -  `metrics`: Indicates monitoring data for various RadiantOne components. Refer to the Enable [metrics and logging](/metrics-and-logging) guide to learn more. 
 
 5. **Create a namespace for your cluster and apply the credentials to that namespace.**
    ```bash
