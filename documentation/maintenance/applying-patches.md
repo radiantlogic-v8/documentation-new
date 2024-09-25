@@ -1,6 +1,6 @@
 ---
 title: Applying Patches
-description: Learn how to apply patches to an environment to update the version of RadiantOne Identity Data Management. Learn how to manage a Secure Data Connector client, including updating, troubleshooting, and reviewing client logs.
+description: Learn how to apply patches to an environment to update the version of RadiantOne Identity Data Management. 
 ---
 
 ## Overview
@@ -33,17 +33,44 @@ Sheduled backups can be enabled and configured by clicking the cog icon next to:
 1. Select the version to update to from the drop-down list and click **UPDATE**. This version must be greater than the version currently installed.
 1. Click **UPDATE** again to confirm. This is a rolling update of all RadiantOne Identity Data Management nodes which can take around 10 minutes to finish. 
 
-### Release Notes
+## Updating RadiantOne Identity Data Management - Self-managed Deployments
+
+The following steps describe how to update RadiantOne Identity Data Management v8.1.0 to a new patch release (e.g. v8.1.X).
+
+### Preparing for the Patch
+
+Prior to updating RadiantOne Identity Data Management to a new patch release, ensure you have a recent environment backup.
+To export the configuration as a backup, execute the following command in the pod and copy that file locally.
+
+`kubectl exec -it -n iddm-lab fid-0 -- /opt/radiantone/migrate.sh export myexport.zip`
+
+If the export runs successfully, the file will be created at /opt/radiantone/vds/work/myexport.zip
+
+Copy the file locally by executing the following command in the pod:
+
+`kubectl cp -n iddm-lab fid-0:/opt/radiantone/vds/work/myexport.zip ./myexport.zip`
+
+
+### Applying the Patch
+
+Update your values.yaml file with the image tag for the v8.1 patch release (e.g. v8.1.2)
+
+```
+image:
+  tag: "8.1.2"
+```
+
+## Release Notes
 
 For the list of improvements and bug fixes related to the release, see: [Release Notes](../maintenance/release-notes/release-notes)
 
-### Known Issues 
+## Known Issues 
 
 For known issues reported after the release, please see the Radiant Logic Knowledge Base: 
 
 https://support.radiantlogic.com/hc/en-us/categories/4412501931540-Known-Issues  
 
-### How to Report Problems and Provide Feedback 
+## How to Report Problems and Provide Feedback 
 
 Feedback and problems can be reported from the Support Center/Knowledge Base accessible from: https://support.radiantlogic.com  
 
