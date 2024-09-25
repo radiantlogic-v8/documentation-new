@@ -294,4 +294,3 @@ Ensure you have an appropriate TLS certificate for your custom domain. If you ar
 
 * [ALB for Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html)
 * [Ingress in AKS](https://learn.microsoft.com/en-us/azure/aks/concepts-network-ingress)
-```
