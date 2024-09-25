@@ -11,6 +11,8 @@ Learn how to manage a Secure Data Connector client, including updating, troubles
 
 ## Updating RadiantOne Identity Data Management - SaaS Deployments
 
+The following steps describe how to update RadiantOne Identity Data Management v8.1 to a new patch release (e.g. v8.1.X) for SaaS deployments.
+
 ### Preparing for the Patch
 
 Prior to updating RadiantOne Identity Data Management, ensure you have a recent environment backup.
@@ -35,7 +37,7 @@ Sheduled backups can be enabled and configured by clicking the cog icon next to:
 
 ## Updating RadiantOne Identity Data Management - Self-managed Deployments
 
-The following steps describe how to update RadiantOne Identity Data Management v8.1.0 to a new patch release (e.g. v8.1.X).
+The following steps describe how to update RadiantOne Identity Data Management v8.1 to a new patch release (e.g. v8.1.X) for self-managed deployments.
 
 ### Preparing for the Patch
 
@@ -53,12 +55,16 @@ Copy the file locally by executing the following command in the pod:
 
 ### Applying the Patch
 
-Update your values.yaml file with the image tag for the v8.1 patch release (e.g. v8.1.2)
+Update your values.yaml file with the image tag for the v8.1 patch release (e.g. v8.1.1)
 
 ```
 image:
-  tag: "8.1.2"
+  tag: "8.1.1"
 ```
+
+Run the following helm command to apply the patch:
+
+`helm upgrade --install --namespace=iddm-lab fid oci://ghcr.io/radiantlogic-devops/helm-v8/fid -f values.yaml --debug
 
 ## Release Notes
 
