@@ -237,8 +237,8 @@ If needed, access the classic control panel via [https://localhost:8443/classic]
 
 You can access the API service at [https://localhost:8443/api](https://localhost:8443/api).
 
-```markdown
-## Accessing LDAP/ADAP Service
+
+### Accessing LDAP/ADAP Service
 
 To access the LDAP/ADAP service, run the following command to port-forward (open another terminal):
 
