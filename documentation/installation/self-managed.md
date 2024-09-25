@@ -178,7 +178,7 @@ Self-managed Identity Data Management can be deployed on any Certified Kubernete
    - `imageCredentials.enabled`: Indicates if credentials for pulling images from a private registry are enabled.
    - `dependencies.zookeeper.enabled`: Specifies if Zookeeper should be deployed as a dependency. Always set to `true`.
    - `zookeeper.persistence.enabled`: Indicates if data persistence is enabled for Zookeeper.
-   -  `metrics`: Indicates monitoring data for various RadiantOne components. Refer to the Enable [metrics and logging](/metrics-and-logging) guide to learn more. 
+   -  `metrics`: Indicates monitoring data for various RadiantOne components. Refer to the Enable [metrics and logging](https://developer.radiantlogic.com/idm/v8.1/installation/metrics-and-logging/) guide to learn more. 
 
 5. **Create a namespace for your cluster and apply the credentials to that namespace.**
    ```bash
