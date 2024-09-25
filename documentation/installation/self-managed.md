@@ -11,13 +11,13 @@ Self-managed Identity Data Management can be deployed on any Certified Kubernete
 
 ## Prerequisites
 
-- Install [Kubernetes cluster](https://kubernetes.io/docs/setup/) of version 1.27 or higher.
+- Install [Kubernetes cluster](https://kubernetes.io/docs/setup/) of version 1.27 or higher. Refer to the [Sizing a Kubernetes cluster](https://developer.radiantlogic.com/idm/v7.4/getting_started/kubernetes/#sizing-a-kubernetes-cluster) document for additional details.
 - Install [Helm](https://helm.sh/docs/intro/install/) version 3.0 or higher.
 - Install [`kubectl`](https://kubernetes.io/docs/reference/kubectl/) version 1.27 or higher and configure it to access your Kubernetes cluster.
 - An Identity Data Management license key, which will be provided to you during onboarding.
 - Container Registry Access and image pull credentials, which will be provided to you during onboarding.
 - Ensure that you have necessary storage provisioners and storage classes configured for the Kubernetes cluster. Some examples of supported storage classes are `gp2`, [Azure disk](https://learn.microsoft.com/en-us/azure/aks/concepts-storage#persistent-volumes), etc.
-- Estimate sufficient resources (CPU, memory, storage) for the deployment. Refer to the [Sizing a K ubernetes cluster](https://developer.radiantlogic.com/idm/v7.4/getting_started/kubernetes/#sizing-a-kubernetes-cluster) for additional details. Your Radiant Logic solutions engineer may guide you with this depending on your use case. 
+- Estimate sufficient resources (CPU, memory, storage) for the deployment. Your Radiant Logic solutions engineer may guide you with this depending on your use case. 
 
 ## Steps for Deployment
 
