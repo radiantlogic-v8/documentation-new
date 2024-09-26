@@ -77,7 +77,7 @@ Self-managed Identity Data Management can be deployed on any Certified Kubernete
    - `zookeeper.persistence.enabled`: Indicates if data persistence is enabled for Zookeeper.
    
 
-Note that there are additional fields such as `metrics` that you can use to enable [metrics and logging](https://developer.radiantlogic.com/idm/v8.1/installation/metrics-and-logging/). 
+Note that there are additional fields such as `metrics` that you can use to enable [metrics and logging](./metrics-and-logging/). 
 
 5. **Create a namespace for your cluster and apply the credentials to that namespace.**
    ```bash
