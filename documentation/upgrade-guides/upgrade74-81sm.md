@@ -149,14 +149,12 @@ C:\r1\migration\radiantone-migration-tool-2.1.10\migrate.bat export C:/tmp/expor
 
 ## Steps to Perform in your Kubernetes Cluster
 
-Follow the steps outlined in: [Self-managed Deployments](../v8.1/documentation/installation/self-managed) using the RadiantOne Identity Data Management image v8.0.3:
+Follow the steps outlined in: [Self-managed Deployments](/../../installation/self-managed) using the RadiantOne Identity Data Management image v8.0.3 and importing the configuration that was exported from v7.4 by updating the sections outlines below in your values.yaml file:
 
 ```
 image:
   tag: "8.0.3"
 ```
-
-and importing the configuration that was exported from v7.4:
 
 ```
 fid:
