@@ -11,7 +11,7 @@ RadiantOne uses the log4J v2 API for logging. Although a variety of log files ar
 
 Logs can be viewed from Server Control Panel and Environment Operations Center for SaaS deployments.
 
->[!warn] - Only SaaS deployments have access to Environment Operations Center. Self-managed deployments of RadiantOne do not. For self-managed deployments, you can access the logs on the pod at `/opt/radiantone/vds/vds_server/logs/`.
+>[!warn] - Only SaaS deployments have access to Environment Operations Center. Self-managed deployments of RadiantOne do not. For self-managed deployments, you can access the logs on the pod at `/opt/radiantone/vds/vds_server/logs/` or if you have configured an aggregator (e.g. Splunk), you can use this for viewing the logs. For details, see: [Custom Log Aggregators](../installation/metrics-and-logging)
 
 ### Control Panel
 
