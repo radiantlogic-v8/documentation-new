@@ -50,7 +50,7 @@ Self-managed Identity Data Management can be deployed on any Certified Kubernete
    persistence:
      enabled: true
      storageClass: "gp3" #Set the appropriate value for this based on your cloud provider.
-     size: 30Gi
+     size: 10Gi #Set the appropriate value for this based on your requirements.
      annotations: {}
    zookeeper:
      persistence:
