@@ -22,16 +22,19 @@ Self-managed Identity Data Management can be deployed on any Certified Kubernete
 ## Steps for Deployment
 
 
-1.  Create a file named `values.yaml` and open it in a text editor or IDE. Add `imagePullSecrets` field as shown below to the file to specify the secret credential that was provided to you by Radiant Logic.
-     ```yaml
-     imagePullSecrets:
-       - name: regcred
-     ```
+1.  **Configure credentials**
+
+     Create a file named `values.yaml` and open it in a text editor or IDE. Add `imagePullSecrets` field as shown below to the file to specify the secret credential that was provided to you by Radiant Logic.
+          ```yaml
+          imagePullSecrets:
+            - name: regcred
+          ```
+     &nbsp;
 
 
 2. **Update Helm configurations based on your requirements**
 
-   In your `values.yaml`, ensure that you have the following properties at minimum. Note that the values of the properties such as `storageClass`, `resources`, etc., will differ depending on your use case, cloud provider, and storage requirements. Work with your Radiant Logic Solution Engineer to customize your Helm configuration.
+     In your `values.yaml`, ensure that you have the following properties at minimum. Note that the values of the properties such as `storageClass`, `resources`, etc., will differ depending on your use case, cloud provider, and storage requirements. Work with your Radiant Logic Solution Engineer to customize your Helm configuration.
 
    **Example `values.yaml` file:**
    ```yaml
@@ -64,7 +67,7 @@ Self-managed Identity Data Management can be deployed on any Certified Kubernete
    
 
    **Definitions of the properties:**
-   - `replicaCount`: Specifies the number of RadiantOne nodes that will be deployed. Set the value to a minimum of 2 in production environments for high availability.
+   - `replicaCount`: Specifies the number of RadiantOne nodes that will be deployed. Set the value to a minimum of 2 in production           environments for high availability.
    - `image.repository`: Specifies the Docker repository for the Identity Data Management image. Set to `radiantone/fid`.
    - `image.tag`: Specifies the version of the Identity Data Management image to install or upgrade to.
    - `fid.rootUser`: Denotes the root user for RadiantOne. Set to `cn=Directory Manager`.
@@ -77,30 +80,35 @@ Self-managed Identity Data Management can be deployed on any Certified Kubernete
    - `zookeeper.persistence.enabled`: Indicates if data persistence is enabled for Zookeeper.
    
 
-Note that there are additional fields such as `metrics` that you can use to enable [metrics and logging](./metrics-and-logging/). 
+   Note that there are additional fields such as `metrics` that you can use to enable [metrics and logging](./metrics-and-logging/). 
+   &nbsp;
 
-5. **Create a namespace for your cluster and apply the credentials to that namespace.**
+3. **Create a namespace for your cluster and apply the credentials to that namespace.**
+
    ```bash
    kubectl create namespace self-managed
    kubectl apply -n self-managed -f regcred.yaml
    ```
+ 
 
-6. **Dry run your deployment**
+4. **Dry run your deployment**
+
    ```bash
    helm -n self-managed upgrade --install fid oci://ghcr.io/radiantlogic-devops/helm-v8/fid --version 1.1.0 --values values.yaml --set env.INSTALL_SAMPLES=true --debug --dry-run
    ```
 
    This command will process your YAML config files without deploying anything. If everything looks good, re-run the command without the `--dry-run` parameter. Setting `INSTALL_SAMPLES=true` is optional for testing purposes and not recommended for production deployment.
 
-7. **Deploy self-managed Identity Data Management**
 
-Ensure that you provide the appropriate path for your values.yaml file before running this command:
+5. **Deploy self-managed Identity Data Management**
+
+   Ensure that you provide the appropriate path for your values.yaml file before running this command:
 
    ```bash
    helm -n self-managed upgrade --install fid oci://ghcr.io/radiantlogic-devops/helm-v8/fid --version 1.1.0 --values values.yaml --debug
    ```
 
-8. **Verify deployment**
+6. **Verify deployment**
 
    ```bash
    kubectl get pod -n self-managed
