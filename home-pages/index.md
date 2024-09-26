@@ -141,7 +141,7 @@ Harness your identity data with intelligent integration to drive better business
   > [Managing Log Levels](troubleshooting/troubleshooting#managing-log-levels)  
   > Learn how to manage log levels.
   
-  > [Understanding Logs](troubleshooting/troubleshooting#understanding-logs)   
+  > [Viewing Logs](troubleshooting/troubleshooting#viewing-logs)   
   > Understanding log contents to assist with troubleshooting. 
   
 </section>
