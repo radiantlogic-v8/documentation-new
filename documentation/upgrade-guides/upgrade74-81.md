@@ -209,7 +209,7 @@ In the Control Panel > Setup > Data Catalog > Data Sources, select the replicati
 
   ![Replication Journal Data Source](Media/replication-journal-datasource.jpg)
 
-Notice in the screenshot above, the syntax references the local node (internal name) as the replicationjournal. For other environments/clusters to reference this cluster as the replicationjournal, they should use the LDAPS endpoint (which you can view in Environment Operations Center > Environment Name > Overview. 
+Notice in the screenshot above, the syntax references the local node (internal name) as the replicationjournal. For other environments/clusters to reference this cluster as the replicationjournal, they should use the LDAPS endpoint (which you can view in Environment Operations Center > Environment Name > Overview). 
 
 ![LDAPS Endpoint](Media/ldaps-endpoint.jpg)
 
