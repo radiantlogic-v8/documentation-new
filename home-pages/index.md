@@ -150,7 +150,7 @@ Harness your identity data with intelligent integration to drive better business
 
 <section>
    
-  > [Creating Reports](/../../eoc/latest/reporting/report-types)  
+  > [Creating Reports](/../../eoc/latest/reporting/reporting-overview/)  
   > Learn about basic reporting capabilities in RadiantOne Identity Data Management.
   
 </section>
