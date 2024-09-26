@@ -44,7 +44,7 @@ The following steps describe how to update RadiantOne Identity Data Management v
 Prior to updating RadiantOne Identity Data Management to a new patch release, ensure you have a recent environment backup.
 To export the configuration as a backup, execute the following command in the pod and copy that file locally.
 
-`kubectl exec -it -n iddm-lab fid-0 -- /opt/radiantone/migrate.sh export myexport.zip`
+`kubectl exec -it -n <namespace> fid-0 -- /opt/radiantone/migrate.sh export myexport.zip`
 
 If the export runs successfully, the file will be created at /opt/radiantone/vds/work/myexport.zip
 
@@ -64,7 +64,7 @@ image:
 
 Run the following helm command to apply the patch:
 
-`helm upgrade --install --namespace=iddm-lab fid oci://ghcr.io/radiantlogic-devops/helm-v8/fid -f values.yaml --debug
+`helm upgrade --install -n <namespace> fid oci://ghcr.io/radiantlogic-devops/helm-v8/fid -f values.yaml --wait`
 
 ## Release Notes
 
