@@ -569,7 +569,7 @@ By default, 10 files are kept in the archive. Change this value in the How Many 
 
 ## Secure Data Connector
 
->[!warn] - Only SaaS deployments have access to Secure Data Connectors. Self-managed deployments of RadiantOne do not.
+>[!warn] Only SaaS deployments have access to Secure Data Connectors. Self-managed deployments of RadiantOne do not.
 
 The following sections outline where to locate the data connector client logs on a Windows, Linux, or Docker system.
 
