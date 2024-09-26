@@ -238,3 +238,39 @@ The steps listed here are meant to help you identify and troubleshoot issues rel
      ```bash
      kubectl config get-contexts
      ```
+
+## Uninstalling  Identity Data Management 
+
+To uninstall the Identity Data Management deployment from your namespace, run the following command:
+
+```bash
+helm uninstall --namespace=<namespace> fid
+```
+
+#### Verify uninstallation
+
+To confirm that the deployment has been successfully removed, execute:
+
+```bash
+kubectl get all -n <namespace>
+```
+
+You should not see any Identity Data Management related pods. If everything looks good, proceed to the next step.
+
+#### Delete namespace
+
+To delete the namespace you created, run:
+
+```bash
+kubectl delete namespace <namespace>
+```
+
+#### Verify namespace deletion
+
+To check if the namespace has been deleted, execute:
+
+```bash
+kubectl get namespace
+```
+
+You should see that the previously deleted namespace is not listed.
