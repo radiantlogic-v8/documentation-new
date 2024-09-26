@@ -138,9 +138,8 @@ An example of exporting configuration on Linux where RadiantOne is installed in 
 
 1. Run <RLI_HOME>\bin\runZooKeeper.bat (.sh) to start ZooKeeper. 
 
-1. From a command prompt navigate to the location where you unzipped the migration utility v2.1.X.  
-
->[!warn] If performing the export on Windows, run the command line as Administrator (right-click on the .exe and choose Run as Administrator option).  
+1. From a command prompt navigate to the location where you unzipped the migration utility v2.1.X.
+ >[!warn] If performing the export on Windows, run the command line as Administrator (right-click on the .exe and choose Run as Administrator option).  
 
 1. Run the following command (modifying the version of the migration tool and the location of the export file to match your needs).<br>
 C:\r1\migration\radiantone-migration-tool-2.1.10\migrate.bat export C:/tmp/export.zip 
@@ -149,7 +148,7 @@ C:\r1\migration\radiantone-migration-tool-2.1.10\migrate.bat export C:/tmp/expor
 
 ## Steps to Perform in your Kubernetes Cluster
 
-Follow the steps outlined in: [Self-managed Deployments](/../../installation/self-managed) using the RadiantOne Identity Data Management image v8.0.3 and importing the configuration that was exported from v7.4 by updating the sections outlines below in your values.yaml file:
+Follow the steps outlined in: [Self-managed Deployments](/../v8.1/installation/self-managed) using the RadiantOne Identity Data Management image v8.0.3 and importing the configuration that was exported from v7.4 by updating the sections outlines below in your values.yaml file:
 
 ```
 image:
@@ -175,9 +174,7 @@ image:
 
 ### Control Panel Endpoint
 
-To access the Control Panel: https://developer.radiantlogic.com/idm/v8.1/installation/self-managed/#accessing-the-control-panel
-
-Connect to this endpoint and login as the directory manager with the password you defined in the values.yaml.
+Access the [Control Panel](/../v8.1/installation/self-managed#accessing-the-control-panel) and login as the directory manager with the password you defined in the values.yaml.
 
 
 ### Validate Data Sources
