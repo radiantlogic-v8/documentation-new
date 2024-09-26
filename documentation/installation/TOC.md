@@ -5,7 +5,7 @@ description: Installing RadiantOne Identity Data Platform
 
 - [Deployment Options](#)
   - [Overview](deployment-options.md)
-  - [SaaS](/../../eoc/latest/getting-started/overview/)
+  - [SaaS](/../../../eoc/latest/getting-started/overview/)
   - [Self-managed](self-managed.md)
   
 
