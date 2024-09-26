@@ -40,7 +40,7 @@ radiantone_<version>_full_windows_64.zip.sha512 file. From the Windows command l
 navigate to the folder that contains the installer file and run the following commmand (the
 example shown uses RadiantOne v7.4.2):
 
-`certutil -hashfile radiantone_7.4.2_full_windows_64.zip SHA`
+`certutil -hashfile radiantone_7.4.2_full_windows_64.zip SHA512`
 
 The result of the command displays the SHA512 hash for the installer file. Open the corresponding `radiantone_<version>_full_windows_64.zip.sha512` in a text editor. The value in the radiantone_<version>_full_windows_64.zip.sha512 file should match the output of the certutil command. This helps ensure the installation file is not corrupt.
 
