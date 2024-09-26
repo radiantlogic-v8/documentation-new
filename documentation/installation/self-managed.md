@@ -164,7 +164,7 @@ To access the LDAP/ADAP service, run the following command to port-forward (open
 > **Note:** Ensure that ports 2389, 2636, 8089, and 8090 are not already in use on your local machine.
 
 ```bash
-kubectl port-forward svc/fid-app -n iddm-lab 2389 2636 8089 8090
+kubectl port-forward svc/fid-app -n self-managed 2389 2636 8089 8090
 ```
 
 - Access the LDAP service at: `ldap://localhost:2389` from your LDAP browser.
@@ -177,7 +177,7 @@ kubectl port-forward svc/fid-app -n iddm-lab 2389 2636 8089 8090
 To update any resources or settings, change the values in `values.yaml` and run the following command:
 
 ```bash
-helm upgrade --install --namespace=iddm-lab fid oci://ghcr.io/radiantlogic-devops/h
+helm upgrade --install --namespace=self-managed fid oci://ghcr.io/radiantlogic-devops/h
 ```
 
 ## Troubleshooting your Kubernetes environment
