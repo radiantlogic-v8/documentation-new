@@ -44,3 +44,6 @@ For SaaS deployments, RadiantOne Identity Data Management is installed by creati
 
 For self-managed deployments, have your Kuberenetes cluster configured and then deploy RadiantOne Identity Data Management using Helm. For details see: [Self-managed Deployments](/self-managed.md)
 
+## Upgrades
+
+If you are looking to upgrade to v8.1 SaaS or Self-managed, see: [Upgrades](./upgrades.md) for options.
