@@ -170,7 +170,7 @@ Once RadiantOne Identity Data Management image v8.0.3 is installed successfully 
 image:
   tag: "8.1.1"
 ```
-Execute the following command on the pod:
+Run the following helm command to update to v8.1.1:
 
 `helm upgrade --install -n <namespace> fid oci://ghcr.io/radiantlogic-devops/helm-v8/fid -f values.yaml --wait`
 
