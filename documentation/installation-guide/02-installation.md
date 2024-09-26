@@ -9,7 +9,7 @@ Apache ZooKeeper is a centralized service for maintaining configuration informat
 
 For details on installing RadiantOne in a Dev/QA environment, where ZooKeeper is installed and configured on the RadiantOne node, follow the steps outlined in this installation guide.
 
-For details on installing RadiantOne in a production environment, start with the steps in the [RadiantOne External Zookeeper Installation Guide](/external-zookeeper-install-guide/01-introduction) to setup the external ZooKeeper ensemble. Then, refer to the steps in this guide to install RadiantOne.
+For details on installing RadiantOne in a production environment, start with the steps in the [RadiantOne External Zookeeper Installation Guide](/zk-introduction.md) to setup the external ZooKeeper ensemble. Then, refer to the steps in this guide to install RadiantOne.
 
 ## Installer Files
 
