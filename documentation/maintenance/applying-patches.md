@@ -5,9 +5,8 @@ description: Learn how to apply patches to an environment to update the version 
 
 ## Overview
 
-Learn how to apply patches to an environment to update the version of RadiantOne Identity Data Management. 
+Learn how to apply patches to an environment to update the version of RadiantOne Identity Data Management. The steps vary depending on how you have deployed the application. There is a section about applying patches for [SaaS Deployments](#updating-radiantone-identity-data-management---saas-deployments) and one for [Self-managed Deployments](#updating-radiantone-identity-data-management---self-managed-deployments).
 
-Learn how to manage a Secure Data Connector client, including updating, troubleshooting, and reviewing client logs.
 
 ## Updating RadiantOne Identity Data Management - SaaS Deployments
 
