@@ -174,6 +174,8 @@ Run the following helm command to update to v8.1.1:
 
 `helm upgrade --install -n <namespace> fid oci://ghcr.io/radiantlogic-devops/helm-v8/fid -f values.yaml --wait`
 
+## Steps to Perform in your RadiantOne Identity Data Management Application
+
 ### Control Panel Endpoint
 
 Access the [Control Panel](/../v8.1/installation/self-managed#accessing-the-control-panel) and login as the directory manager with the password you defined in the values.yaml.
