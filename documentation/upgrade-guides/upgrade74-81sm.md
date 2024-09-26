@@ -198,22 +198,20 @@ To edit Global Identity Builder projects in SaaS, from the Control Panel switch 
 
 ### Re-enable Inter-cluster Replication 
 
-Once all of your clusters have been moved to SaaS (create a different environment in Environment Operations Center for each), re-enable inter-cluster replication for all needed RadiantOne Directory (HDAP) stores and persistent caches. Verify the replicationjournal LDAP data source indicates the correct cluster (that plays the role of the replication journal). 
+Once all of your clusters have been moved to self-managed environments, re-enable inter-cluster replication for all needed RadiantOne Directory (HDAP) stores and persistent caches. Verify the replicationjournal LDAP data source indicates the correct cluster (that plays the role of the replication journal). 
 
 In the Control Panel > Setup > Data Catalog > Data Sources, select the replicationjournal data source. View the DETAILS section for this data source and ensure it points to the correct environment endpoint. 
 
   ![Replication Journal Data Source](Media/replication-journal-datasource.jpg)
 
-Notice in the screenshot above, the syntax references the local node (internal name) as the replicationjournal. For other environments/clusters to reference this cluster as the replicationjournal, they should use the LDAPS endpoint (which you can view in Environment Operations Center > Environment Name > Overview. 
-
-![LDAPS Endpoint](Media/ldaps-endpoint.jpg)
+Notice in the screenshot above, the syntax references the local node (internal name) as the replicationjournal. For other environments/clusters to reference this cluster as the replicationjournal, they should use the LDAPS endpoint configured in your ingress.
 
 
 ### Configure Delegated Administrators 
 
 There are new Control Panel entitlements in v8.1. There are two aspects to take into consideration:  
 
-To continue to use the delegated admin roles applicable to the Classic (old) Control Panel in the new Control Panel, update them to assign permissions for the new Control Panel. Log into the Control Panel as the Directory Manager (configured when you create the environment in EOC) and go to ADMIN > Roles and Permissions. Select a role from the list and enable the needed permissions. 
+To continue to use the delegated admin roles applicable to the Classic (old) Control Panel in the new Control Panel, update them to assign permissions for the new Control Panel. Log into the Control Panel as the Directory Manager (credentials configured in your values.yaml file) and go to ADMIN > Roles and Permissions. Select a role from the list and enable the needed permissions. 
 
 ![roles and permissions](Media/roles-and-permissions.jpg)
 
