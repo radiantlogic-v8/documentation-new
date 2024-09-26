@@ -50,19 +50,26 @@ Self-managed Identity Data Management can be deployed on any Certified Kubernete
    persistence:
      enabled: true
      storageClass: "gp3" #Set the appropriate value for this based on your cloud provider.
-     size: 10Gi #Set the appropriate value for this based on your requirements.
+     size: 10Gi # Set the appropriate value for this based on your requirements. Ensure that you monitor usage over time 
+                # and change the value accordingly when necessary.
      annotations: {}
    zookeeper:
      persistence:
        enabled: true
        storageClass: "gp3" #Set the appropriate value for this based on your cloud provider.
-   resources: # Set appropriate values for these fields based on your requirements.
+   resources: 
+     # Set appropriate values for these fields based on your requirements. Ensure that you monitor usage over time 
+     # and change the value accordingly when necessary.
+     # Note that these values should be less than the sizing defined for your worker nodes. 
      limits:
        cpu: 2
        memory: 4Gi
      requests:
        cpu: 2
        memory: 4Gi
+   env:
+     INSTALL_SAMPLES: false
+     FID_SERVER_JOPTS: '-Xms2g -Xmx4g' #To avoid memory swapping, -Xmx should never exceed the memory size defined in resources.
    ```
    
 
@@ -78,6 +85,7 @@ Self-managed Identity Data Management can be deployed on any Certified Kubernete
    - `persistence.size`: Specifies the size of the persistent volume for Identity Data Management.
    - `dependencies.zookeeper.enabled`: Specifies if Zookeeper should be deployed as a dependency. Always set to `true`.
    - `zookeeper.persistence.enabled`: Indicates if data persistence is enabled for Zookeeper.
+   - `resources`: Indicates the compute resources allocated to the Identity Data Management FID containers. FID is deployed as a StatefulSet, which has implications for resource management. Changing resources requires careful planning as it affects all pods. Monitor your usage and change the values if needed over time. 
    
 
    Note that there are additional fields such as `metrics` that you can use to enable [metrics and logging](./metrics-and-logging/). 
@@ -174,14 +182,14 @@ helm upgrade --install --namespace=iddm-lab fid oci://ghcr.io/radiantlogic-devop
 
 ## Troubleshooting your Kubernetes environment
 
-These steps listed here are meant to help you identify and troubleshoot issues related to pod deployments in your Kubernetes environment.
+The steps listed here are meant to help you identify and troubleshoot issues related to pod deployments in your Kubernetes environment.
 
 1. **Check events for deployment issues**
    - This command lists events in the specified namespace, helping to identify any issues related to pod deployment.
-   
-    ```bash
+     
+     ```bash
      kubectl get events -n <namespace>
-     ```
+      ```
    
 
 3. **Describe a specific pod**
@@ -230,4 +238,3 @@ These steps listed here are meant to help you identify and troubleshoot issues r
      ```bash
      kubectl config get-contexts
      ```
-
