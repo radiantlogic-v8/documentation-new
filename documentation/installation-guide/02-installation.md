@@ -35,6 +35,8 @@ RadiantOne can be installed using a web-based installation as described in this 
 
 ### Launching the Installer on Windows
 
+The following browsers are supported for installing: Microsoft Edge Version 127.0.2651.98 (+), Google Chrome Version 128.0.6613.120 (+)
+
 To verify the checksum for the downloaded installer file, download the
 radiantone_<version>_full_windows_64.zip.sha512 file. From the Windows command line,
 navigate to the folder that contains the installer file and run the following commmand (the
