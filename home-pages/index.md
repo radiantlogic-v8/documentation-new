@@ -47,6 +47,9 @@ Harness your identity data with intelligent integration to drive better business
   
   > [Self-managed Deployment](installation/self-managed/)
   > Learn how to deploy Identity Data Management using Helm charts in your own Kubernetes cluster.
+ 
+  > [Upgrades](installation/upgrades/)
+  > Learn about supported upgrade paths.
       
 </section>
 
