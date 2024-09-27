@@ -30,26 +30,7 @@ A high-level architecture is shown below.
 
 ### Reset connector cursor – detect new changes only
 
-Capture connectors use a cursor to maintain information about the last processed change. This allows the connectors to capture only changes that have happened since the last time they processed changes. When the capture connectors start, they automatically attempt to capture all changes that have happened since the last time they checked. If the synchronization process has been stopped for an extended period, you might not want them to capture all missed changes. In this case, you can reset the cursor for the connector. You can reset the cursor from the Classic Control Panel > Synhronization tab, or manually define the cursor value.
-
-**Synhronization tab**
-
-On the Classic Control Panel > Synchronization tab, choose the topology on the left. Select **Configure** next to the pipeline on the right. Choose the **Capture** component and select **Reset Cursor** shown below the properties. An example is shown below.
-
-![The Reset Cursor option in the Global Sync tab of the Main Control Panel](Media/reset-cursor.png)
-
-**Manually update connector cursor**
-
-Each connector stores a cursor to maintain information about the last processed change. In some cases, you may need to edit the cursor value to force the connector to pick up some missed changes (during a disaster recovery scenario where you will start synchronization in another data center), or skip some changes in cases like where [non-sequential change IDs](#force-sequential-counters) were detected. Connector configuration is stored in a RadiantOne Directory store mounted at the `cn=registry` naming context.
-
->[!note]
->Editing the cursor is supported for connectors that store a number or timestamp value. The AD DirSync and Hybrid connectors use a cookie for a cursor value that you would not know how to set.
-
-1. Stop the capture connector by suspending the pipeline. You can do this from the Main Control Panel > Global Sync tab, or using the vdsconfig command line utility, `change-pipeline-state` command.
-1. Connect to RadiantOne with an administrator that has permissions to modify entries in `cn=registry` and browse to the configuration for your capture connector: `cn=cursor,{PIPELINE_ID},cn=registry`
-1. Edit the cursor attribute and enter the value to indicate the point from which the connector should capture changes from. An example for a database changelog connector is shown below.
-    ![Example of Database Changelog Connector Cursor Settings](Media/image3.png)
-2. Resume the pipeline which redeploys/starts the connector. You can do this from the Main Control Panel > Global Sync tab.
+Capture connectors use a cursor to maintain information about the last processed changes. This allows the connectors to capture only changes that have happened since the last time they checked for changes. When the real-time persistent cache refresh connectors start, they automatically attempt to capture all changes that have happened since the last time they checked. If the real-time persistent cache refresh process has been stopped for an extended period of time, you might not want them to attempt to capture all changes since the last time they checked. In this case, you can reset the cursor for the connector. From the Classic Control Panel > PCache Monitoring tab, select the real-time refresh topology and the topology displays. Click the icon representing the capture connector and the Runtime details are displayed on the right. Click **Reset Cursor** to clear the cursor value and trigger the connector to behave as if it is the first time connecting to the source to collect changes.
 
 ### Message size
 
