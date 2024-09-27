@@ -39,7 +39,7 @@ You can access the RadiantOne RESTFul Web Service using the REST endpoint displa
 
 `https://rlqa-usw2-testn.dev01.radiantlogic.io/adap/<baseDN>`
 
-See [API Specs](https://developer.radiantlogic.com/adap/) for complete details.
+See [API Specs](/../../../adap/) for complete details.
 
 ## REST Response Status Codes
 
