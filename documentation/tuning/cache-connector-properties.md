@@ -349,7 +349,7 @@ There are three types of Active Directory connectors: USNChanged, DirSync and Hy
 
 The decision tree below can help guide you on the Active Directory connector type to use.
 
-![A decision tree that can guide you on the Active Directory connector type to use](Media/image13.png)
+![A decision tree that can guide you on the Active Directory connector type to use](Media/Image2.17.jpg)
 
 **Active Directory USNChanged connector**
 
