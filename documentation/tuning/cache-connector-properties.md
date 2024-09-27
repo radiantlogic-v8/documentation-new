@@ -197,6 +197,9 @@ The timestamp connector has been validated against Oracle, SQL Server, MySQL, an
 - For SQL Server: `SMALLDATETIME`, `DATETIME`, and `DATETIME2`
 - For Salesforce (using RadiantOne Salesforce JDBC driver): `LastModifiedDate`
 - For MySQL or MariaDB: `DATETIME` is preferable, but `TIMESTAMP` can also be used. `DATETIME`, `DATETIME(3)`, or `DATETIME(6)` can be used. `DATETIME(7)` is not supported.
+- For Snowflake: `TIMESTAMPNTZ`
+- For Apache Derby: `TIMESTAMP`
+- For PostGres: `TIMESTAMP`, timestamp without time zone (equivalent to timestamp), or `TIMESTAMPTZ`, timestamp with time zone (equivalent to timestamptz)
 
 ### Configuration
 
