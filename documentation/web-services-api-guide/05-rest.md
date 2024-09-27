@@ -40,7 +40,7 @@ You can access the RadiantOne RESTFul Web Service using the following URL syntax
 
 `http://<RadiantOneService>:8089/adap/<baseDN>`
 
-See [API Specs](https://developer.radiantlogic.com/adap/) for complete details.
+See [API Specs](/adap/) for complete details.
 
 ### REST Response Status Codes
 
