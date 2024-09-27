@@ -46,11 +46,15 @@ The `RLI_CON` user (configurable) is the default owner of the log table. This sp
 
 ### Configuration
 
-To detect changes using Changelog (triggers), set the connector type in the pipeline configuration by choosing the **Capture** component. In the Core Properties section, select DB Changelog from the drop-down list.
+To detect changes using Changelog (triggers) see: [Configure capture connector types](cache-capture-connectors#database-connectors).
 
-![The drop-down list for Connector Type with DB Changelog selected, in the Core Properties section of Configure Pipeline](Media/image16.png)
+After the DB Changelog connector type has been selected and configured, you can configure the properties in the Edit Connector screen. An example is shown below.
 
-After the DB Changelog connector type has been selected and configured, you can configure the properties in the Core Properties, Advanced Properties, and [Event Content](configure-connector-types-and-properties.md#event-contents) sections at the bottom. For properties common to all connectors, see [Configure capture connector types and properties](configure-connector-types-and-properties.md#common-properties-for-all-connectors).
+![Edit Connector Settings](Media/edit-connector-prop.jpg)
+
+To go back to edit connector properties after the initial configuration, in the **CONFIGURE** section of the cache, click the pencil icon inline with the connector.
+
+![Connector Properties](Media/manage-properties.jpg)
 
 ### Log Table User
 
@@ -113,11 +117,15 @@ The counter connector supports database integer data types; more specifically, t
 
 ### Configuration
 
-To detect changes using the Database Counter connector, set the connector type in the pipeline configuration by choosing the **Capture** component. In the Core Properties section, select **DB Counter** from the drop-down list.
+To detect changes using Database Counter see: [Configure capture connector types](cache-capture-connectors#database-connectors).
 
-![The drop-down list for Connector Type with **DB Counter** selected, in the Core Properties section of Configure Pipeline](Media/image20.png)
+After the DB Counter connector type has been selected and configured, you can configure the properties in the Edit Connector screen. An example is shown below.
 
-After the Database Counter connector type has been selected and configured, configure the properties in the Core Properties, Advanced Properties, and [Event Content](configure-connector-types-and-properties.md#event-contents) sections at the bottom. For properties common to all connectors, see [Configure capture connector types and properties](configure-connector-types-and-properties.md#common-properties-for-all-connectors).
+![Edit Connector Settings](Media/edit-connector-prop-counter.jpg)
+
+To go back to edit connector properties after the initial configuration, in the **CONFIGURE** section of the cache, click the pencil icon inline with the connector.
+
+![Connector Properties](Media/manage-properties-counter.jpg)
 
 ### Change Type Column
 
@@ -162,7 +170,7 @@ If the connector should ignore non-sequential change IDs, and process all change
 
 ## Database Timestamp  
 
-For Oracle, SQL Server, MySQL, MariaDB, and Salesforce backends (using the RadiantOne JDBC driver), a timestamp-based change detection mechanism is available. To leverage this mechanism, your database table must have a column that contains a timestamp/date value associated with updates. For Salesforce, this column is `LastModifiedDate`. The column used in the timestamp connector must be indexed for performance.
+For Oracle, SQL Server, MySQL, MariaDB, PostGres, Apache Derby, Snowflake and Salesforce backends (using the RadiantOne JDBC driver), a timestamp-based change detection mechanism is available. To leverage this mechanism, your database table must have a column that contains a timestamp/date value associated with updates. For Salesforce, this column is `LastModifiedDate`. The column used in the timestamp connector must be indexed for performance.
 
 >[!warning]
 >This connector type does not detect delete operations. If you have a need to detect and propagate delete operations from the database, you should choose a different connector type. However, for Salesforce backends, delete operations can be detected because a delete operation is detected when the `isActive` attribute is set to `false`.
@@ -184,13 +192,17 @@ The timestamp connector has been validated against Oracle, SQL Server, MySQL, an
 
 ### Configuration
 
-This connector type can be used for detecting changes in Oracle, SQL Server, MySQL, and MariaDB in addition to Salesforce (when the RadiantOne JDBC driver for Salesforce is used).
+This connector type can be used for detecting changes in Oracle, SQL Server, MySQL, Apache Derby, PostGres, Snowflake, MariaDB and Salesforce (when the RadiantOne JDBC driver for Salesforce is used).
 
-To detect changes using a timestamp, set the connector type in the pipeline configuration by choosing the **Capture** component. In the Core Properties section, select DB Timestamp from the drop-down list.
+To detect changes using Database Timestamp see: [Configure capture connector types](cache-capture-connectors#database-connectors).
 
-![The drop-down list for Connector Type with **DB Timestamp** selected, in the Core Properties section of Configure Pipeline](Media/image18.png)
+After the DB Timestamp connector type has been selected and configured, you can configure the properties in the Edit Connector screen. An example is shown below.
 
-After the DB Timestamp connector type has been selected, configure the properties in the Core Properties, Advanced Properties, and [Event Contents](configure-connector-types-and-properties.md#event-contents) sections. For properties common to all connectors, see [Configure capture connector types and properties](configure-connector-types-and-properties.md#common-properties-for-all-connectors).
+![Edit Connector Settings](Media/edit-connector-prop-timestamp.jpg)
+
+To go back to edit connector properties after the initial configuration, in the **CONFIGURE** section of the cache, click the pencil icon inline with the connector.
+
+![Connector Properties](Media/manage-properties-timestamp.jpg)
 
 ### Timestamp Column
 
@@ -201,7 +213,7 @@ In the Core Properties section, set the Timestamp Column. The value of this prop
 
 If an invalid column name is configured, the connector stops.
 
-![The Timestamp Column property value in the Core Properties section, which has been set as `CHANGETIME`](Media/image19.png)
+![The Timestamp Column property value in the Core Properties section, which has been set as `CHANGETIME`](Media/timestamp-column.jpg)
 
 ### Processing Delay
 
@@ -242,9 +254,6 @@ This property accepts a value of`true` or `false` and dictates how the connector
 
 If the connector should ignore non-sequential change IDs, and process all changes immediately, set the property to `false`.
 
-To learn more about connectors, please read the document that describes properties specific to the [Database Counter connector](database-counter-connector.md).
-
-
 ## LDAP Connectors
 There are two types of LDAP connectors: Changelog and Persistent Search. These connector types are described in this document.
 
@@ -264,9 +273,9 @@ Any LDAP directory that offers a persistent search mechanism can use the Persist
 
 ### Configuration
 
-Set the connector type in the pipeline configuration by choosing the **Capture** component. In the Core Properties section, select the connector type from the drop-down list.
+Set the connector type in the **CONFIGURE** section of the persistent cache refresh. Select the connector type from the drop-down list.
 
-![The drop-down list for Connector Type with **LDAP** selected, in the Core Properties section of Configure Pipeline](Media/image8.png)
+![The drop-down list for Connector Type with **LDAP** selected](Media/ldap-connector-type.jpg)
 
 After selecting the Connector Type, configure the connector properties. For properties common to all connectors, see [Configure capture connector types and properties](configure-connector-types-and-properties.md#common-properties-for-all-connectors). The general properties for LDAP connectors are configured in the Core Properties section. Properties related to filtering of events are configured in the Event Filtering section. Properties related to the contents of the messages published by the connector are configured in the [Event Content](configure-connector-types-and-properties.md#event-contents) section. All other properties are configured in the Advanced Properties section. [Polling interval](configure-connector-types-and-properties.md#polling-interval)is not required for the LDAP Persistent Search connector. For properties that determine how the connector filters events that are not needed, configure the LDAP Filter, Included Branches and Excluded Branches in the Event Filtering section. These properties are described below.
 
@@ -287,9 +296,9 @@ If the captured change type is not delete (e.g. insert, update, move, etc.), and
 
 ### Excluded Branches
 
-To further condition the entries that are published, you can indicate one or more branches to exclude. In the Excluded Branches property, enter one or more suffixes associated with entries that should not be published by the connector. Select **Enter** after each suffix. An example is shown below.
+To further condition the entries that are published, you can indicate one or more branches to exclude. In the Excluded Branches property, use **+ADD** and enter (or browse to) one or more suffixes associated with entries that should not be published by the connector. Click the ![checkmark](Media/checkmark.jpg) after each suffix. An example is shown below.
 
-![Two suffixes entered in the Excluded Branches property](Media/image9.png)
+![Two suffixes entered in the Excluded Branches property](Media/excluded-branches.png)
 
 If the changed entry DN contains a suffix that matches the excluded branches value, or is a change in the exact entry that is listed (e.g. `ou=dept1,ou=com`), this entry is not published by the connector. Otherwise, the entry is published. This can avoid publishing unwanted information.
 
@@ -302,15 +311,13 @@ If a change is made to this property while the connector is running, the new val
 
 To further condition the entries that are published, you can indicate one or more branches to include. In the Included Branches property, enter one or more suffixes associated with entries that should be published by the connector. Select **Enter** after each suffix. An example is shown below.
 
-![Two suffixes entered in the Included Branches property](Media/image10.png)
+![Two suffixes entered in the Included Branches property](Media/included-branches.jpg)
 
 If the changed entry DN contains a suffix that matches the included branches value, or is a change in the exact entry that is listed (e.g. `ou=dept1,ou=com`), this entry is published by the connector. Otherwise, the entry is not published. This can avoid publishing unwanted
 information.
 
 >[!note]
 >If both included and excluded branches are used, an entry must satisfy the conditions defined in both settings to be included in the message. The included branches condition(s) is checked first.
->If you set this value using the vdsconfig command line utility on Windows, separate the branches with a comma. E.g. `C:\radiantone\vds\bin>vdsconfig.bat set-connector-property -connectorname o_sead_pcache_proxy__dc_seradiant_dc_dom__seradiantad -propertyid includedBranches`
->`-propertyvalue "[\"cn=users,dc=seradiant,dc=dom\",\"cn=domaingroups,dc=seradiant,dc=dom\"]"`
 
 If a change is made to this property while the connector is running, the new value is taken into account once the connector re-initializes which happens automatically every 20 seconds.
 
@@ -326,7 +333,7 @@ To disable attempts to reconnect to the primary server, set this value to `zero`
 
 Changes made to this property's value while the connector is running are immediately taken into account. When the connector starts or restarts and the property value is `1` or higher, the connector attempts to switch to the primary server immediately.
 
-![The **Switch to Primary Server (in polling intervals)** property with a value set to `0`](Media/image11.png)
+![The **Switch to Primary Server (in polling intervals)** property with a value set to `0`](Media/switch-to-primary.jpg)
 
 ### Failover Algorithm
 
