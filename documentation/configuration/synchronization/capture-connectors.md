@@ -132,7 +132,7 @@ If schema and/or table name contain mixed-case characters, they must be quoted. 
 
 ## Database Timestamp Connector
 
-The following steps assume your backend database table has a primary key defined and contains a timestamp column. The timestamp column name is required for configuring the connector. The timestamp column database types supported are described in the [Database connectors](#database-connectors) section.
+The following steps assume your backend database table has a primary key defined and contains a timestamp column. The timestamp column name is required for configuring the connector. The timestamp column database types supported are described in the [Database connectors](#database-jdbc-accessible) section.
 
 >[!warning]
 >This connector type does not detect delete operations. If you have a need to detect delete operations from the database, you should choose a different connector type.
