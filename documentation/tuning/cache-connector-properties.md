@@ -356,10 +356,10 @@ The decision tree below can help guide you on the Active Directory connector typ
 Active Directory keeps track of changes that happen to entries in the directory (by incrementing the `uSNChanged` attribute for the entry). Based on a polling interval configured, the connector connects with the user and password configured in the connection string/data source and checks the list of changes stored by Active Directory. The connector internally maintains the last processed change number (`uSNChanged` value) and this allows for the recovery of all changes that occur even if the connector is down (deliberately or due to failure).
 
 >[!note]
->This is the connector type that must be used if the backend is an Active Directory Global Catalog. The Active Directory DirSync connector should not be used because it is unable to detect events in sub-domains.**
->Also, If you are pointing the Active Directory connector to the Global Catalog, when a deleted entry is detected, the connector receives only the DN of the deleted entry in the context of the `CN=Deleted Objects` container (e.g. `CN=u1\0ADEL:2ca20e8c-1748-4e7d-9044-45e64ab8105b,CN=Deleted Objects,DC=t1,DC=f6,DC=rli`). Transformation logic needs to address how to find the corresponding entry in the target(s) to remove or update them accordingly.**
+>This is the connector type that must be used if the backend is an Active Directory Global Catalog. The Active Directory DirSync connector should not be used because it is unable to detect events in sub-domains.
+>Also, if you are pointing the Active Directory connector to the Global Catalog, when a deleted entry is detected, the connector receives only the DN of the deleted entry in the context of the `CN=Deleted Objects` container (e.g. `CN=u1\0ADEL:2ca20e8c-1748-4e7d-9044-45e64ab8105b,CN=Deleted Objects,DC=t1,DC=f6,DC=rli`). 
 
-If the sequence of events is critical, use the [DirSync connector](#active-directory-dirsync-connector) because it processes events in the order in which they occur instead of prioritizing and processing inserts and updates before deletes.
+If the sequence of events is critical, use the DirSync connector because it processes events in the order in which they occur instead of prioritizing and processing inserts and updates before deletes.
 
 >[!warning]
 >To detect delete events, the service account used by RadiantOne to connect to the backend Active Directory (configured in the connection string of the RadiantOne data source) must have permissions to search the tombstone objects. More specifically, the LIST CONTENTS and READ PROPERTY permissions to the` CN=Deleted Objects` branch are required. Generally, a member of the Administrators group is sufficient. However, some Active Directory servers may require a member of the Domain Admins group. Check with your Active Directory permissions to determine the appropriate credentials required.
@@ -369,10 +369,10 @@ If the sequence of events is critical, use the [DirSync connector](#active-direc
 The Active Directory DirSync capture connector retrieves changes that occur to entries in a directory by passing a cookie that identifies the directory state at the time of the previous DirSync search. The first time the DirSync capture connector is started, it stores a cookie in a cursor file. At the next polling interval, the connector performs a DirSync search to detect changes by sending the current cookie. These changes include only the objects and attributes that have changed since the previous state identified by the current cookie. Because it retrieves only changed objects and attributes, the Active Directory DirSync capture connector avoids propagating irrelevant attributes, reducing message size and potentially reducing network congestion. After retrieving changes, a new cookie is obtained, and the cursor file is updated.
 
 >[!warning]
-> Do not use this connector type if your backend is an Active Directory Global Catalog because it is unable to detect events in sub-domains. Use the [Active Directory (USNChanged)](overview.md#manually-update-connector-cursor) connector instead.
+> Do not use this connector type if your backend is an Active Directory Global Catalog because it is unable to detect events in sub-domains. Use the Active Directory USNChanged connector instead.
 >To detect delete events, the service account used by RadiantOne to connect to the backend Active Directory (configured in the connection string of the RadiantOne data source) must have permissions to search the tombstone objects. Generally, a member of the Administrators group is sufficient. However, some Active Directory servers may require a member of the Domain Admins group. Check with your Active Directory permissions to determine the appropriate credentials required.
 
-The DirSync capture connector is recommended for environments where the sequence of events is critical. The DirSync capture connector processes events in the order in which they occur, unlike the [Active Directory USNChanged connector](overview.md#manually-update-connector-cursor) which prioritizes inserts and updates before deletes.
+The DirSync capture connector is recommended for environments where the sequence of events is critical. The DirSync capture connector processes events in the order in which they occur, unlike the Active Directory USNChanged connector which prioritizes inserts and updates before deletes.
 
 To use the DirSync control, the Bind DN connecting to the directory must have the DS-Replication-Get-Changes extended right, which can be enabled with the **Replicating Directory Changes** permission, on the root of the partition being monitored. By default, this right is assigned to the Administrator and LocalSystem accounts on domain controllers.
 
@@ -458,7 +458,7 @@ If a change is made to this property while the connector is running, the new val
 
 ### Included Branches
 
-This is used for event filtering. To further condition the entries that are published, you can indicate one or more branches to include. In the Included Branches property, enter one or more suffixes associated with entries that should be published by the connector. Select **Enter** after each suffix. An example is shown below.
+This is used for event filtering. To further condition the entries that are published, you can indicate one or more branches to include. In the Included Branches property, use **+ADD** to enter one (or browse to) or more suffixes associated with entries that should be published by the connector. Click ![Checkmark](Media/checkmark.jpg) after each suffix. An example is shown below.
 
 ![Two suffixes entered in the Included Branches property](Media/image10.png)
 
@@ -469,16 +469,3 @@ If the changed entry DN contains a suffix that matches the included branches val
 
 If a change is made to this property while the connector is running, the new value is taken into account once the connector re-initializes which happens automatically every 20 seconds.
 
-### Determine Move Operations
-
-By default, the connector handles changes associated with LDAP modify DN and RDN operations, which change the distinguished name (DN)/relative distinguished name (RDN) of an entry, as an update operation. In the case of modify DN/RDN operations, Active Directory does not provide information about the old DN of the entry making it impossible for the connector to propagate a delete operation for the old DN/entry.
-
-If you require DN/RDN changes to be processed by the connector as a `modDN/modRDN` operation (so the target data source(s) get the change as a `modDN/modRDN`), set the Determine Move Operations property to: `true`
-
->[!warning]
->The connector must be restarted for this property to take effect.
-
-When the Determine Move Operations property is enabled, the connector maintains a cache mapping the objectGUID to DN for each Active Directory entry. This allows the connector to detect and propagate the event as a `modDN/modRDN` (move) operation. All entries from Active Directory must be read the first time when the connector starts/restarts to populate the cache. This increases the amount of time it takes for the connector to start and be able to capture changes.
-
->[!warning]
->When defining the data source for the backend Active Directory, check the Paged Results Control option to ensure that all entries can be retrieved from the backend. This is required for the connector to get all entries in the cache to map objectGUID to DN and support `modDN/modRDN` operations.
