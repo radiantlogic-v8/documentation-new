@@ -9,6 +9,6 @@ RadiantOne v7.4.10 deployments can be upgraded to either v8.1 SaaS or Self-manag
 
 Starting Version	| v8.1 Option 
 -|-
-v7.4.10  	| [v8.1 SaaS](../../../v7.4/upgrade-guides/upgrade74-81)
-v7.4.10  	| [v8.1 Self-managed](../../../v7.4/upgrade-guides/upgrade74-81sm)
+v7.4.10  	| [v8.1 SaaS](/../../../v7.4/upgrade-guides/upgrade74-81)
+v7.4.10  	| [v8.1 Self-managed](/../../../v7.4/upgrade-guides/upgrade74-81sm)
 
