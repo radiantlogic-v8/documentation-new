@@ -469,3 +469,51 @@ If the changed entry DN contains a suffix that matches the included branches val
 
 If a change is made to this property while the connector is running, the new value is taken into account once the connector re-initializes which happens automatically every 20 seconds.
 
+## Common Connector Properties
+
+The following properties are common to all connector types unless otherwise noted.
+
+### Polling Interval
+
+This property indicates the amount of time (in milliseconds) the connector should wait before querying the source to check for changes.
+This property is applicable to all connectors except HDAP triggers. The default value is 10,000 ms (10 seconds).
+
+### Size Limit
+
+This property indicates the number of entries the connector collects from the source in a single request. However, even if the connector picks up multiple entries, they are processed and published to the queue one at a time.
+This property is applicable to all connectors except HDAP triggers. The default value is 1000.
+
+### Log Level
+
+Log Level – OFF: Used to turn logging off.
+Log level – FATAL: Severe errors that cause premature termination.
+Log level – ERROR: Other runtime errors or unexpected conditions.
+Log level – WARN: Use of deprecated APIs, poor use of API.
+Log level – INFO: Interesting runtime events.
+Log level – DEBUG: Detailed information on the flow through the system.
+Log level – TRACE: Most detailed information.
+Log location:
+<RLI_HOME>\logs\sync_agent<naming_context><data_source>\connector.log
+This property is applicable to all connectors except HDAP triggers. The default value is INFO.
+
+### Max Retries On Error
+
+If the connector is unable to connect to the source to pick up changes for any reason other than a connection error, it tries to reconnect. Maximum Retries on Error is the total number of times the connector tries reconnecting. The frequency of the reconnect attempt is based on the Retry Interval on Error property. After all attempts have been tried, the connector failover logic is triggered. If there are no backends available to connect to, the agent automatically redeploys the connector until a connection to the backend can be made.
+This property is applicable to all connectors except HDAP triggers. The default value is 5.
+
+### Retry Interval On Error
+
+Used in conjunction with the Max Retries on Error property. This is the amount of time (in milliseconds) the connector waits before it attempts to pick up changes from the source after an error has occurred.
+This property is applicable to all connectors except HDAP triggers. The default value is 10,000 ms (10 seconds).
+
+### Max Retries on Connection Error
+
+For Database Connectors - If the connector is unable to connect to the primary backend server, it tries to connect to the failover server. If the connector cannot connect to the primary or failover servers because of a connection error, it tries to connect again later. Maximum Retries on Connection Error is the total number of times the connector tries reconnecting. A failed attempt to connect to both the primary and failover server is considered a single retry. The frequency of the reconnect attempt is based on the Retry Interval on Connection Error property. If there are no backends available to connect to, the agent automatically redeploys the connector until a connection to the backend can be made.
+For Directory Connectors - If the connector is unable to connect to the primary backend server because of a connection error, it tries to connect again later. Maximum Retries on Connection Error is the total number of times the connector tries reconnecting. The frequency of the reconnect attempt is based on the Retry Interval on Connection Error property. After all attempts have been tried, the connector failover logic is triggered. If there are no backends available to connect to, the agent automatically redeploys the connector until a connection to the backend can be made.
+This property is applicable to all connectors except HDAP triggers. The default value is 5.
+
+### Retry Interval on Connection Error
+
+Used in conjunction with the Max Retries on Connection Error property. This is the amount of time (in milliseconds) the connector waits before trying to establish a connection to the source if there was a connection problem during the previous attempt.
+This property is applicable to all connectors except HDAP triggers. The default value is 10,000 ms (10 seconds).
+
