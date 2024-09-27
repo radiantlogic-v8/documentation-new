@@ -197,7 +197,7 @@ A rich set of HTTP-based API's have been developed on top of LDAP, to provide br
   > [SCIM](web-services-api-guide/scim)  
   > The System for Cross-domain Identity Management (SCIM) specification automates user identity management between identity domains. 
   
-  > [REST](/adap)  
+  > [REST](web-services-api-guide/rest)  
   > The REST interface supports all LDAP operations and the ability to navigate the directory tree. Wrapping these operations and the progressive disclosure capabilities that exist in LDAP directories into a REST interface opens it up to the web.
    
 </section>
