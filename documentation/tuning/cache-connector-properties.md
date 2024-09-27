@@ -124,7 +124,7 @@ In the Core Properties section, enter a column name in the Change Type Column pr
 
 In the Core Properties section, enter a column name in the Counter Column property. This value is the database table column name that contains the value that auto-increments when the row changes.
 
-![The Counter Column property](Media/counter-column.png)
+![The Counter Column property](Media/counter-column.jpg)
 
 ### SQL Filter
 
