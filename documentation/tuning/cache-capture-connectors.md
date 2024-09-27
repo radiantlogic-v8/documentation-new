@@ -13,7 +13,7 @@ This section focuses on configuring the connector type. For details on the behav
 For database backends (JDBC-accessible), the connector change detection options are:
 
 - [Changelog](#database-changelog-connector) – This connector type relies on a database table that contains all changes that have occurred on the base tables (that the RadiantOne identity view is built from). This typically involves having triggers on the base tables that write into the log/changelog table. However, an external process may be used instead of triggers. The connector picks up changes from the changelog table. 
-- [Timestamp](#database-timestamp-connector) – This connector type has been validated against Oracle, SQL Server, MySQL, MariaDB, PostgreSQL, and Apache Derby. The database table must have a primary key defined for it and an indexed column that contains a timestamp/date value. This value must be maintained and modified accordingly for each record that is updated. 
+- [Timestamp](#database-timestamp-connector) – This connector type has been validated against Oracle, SQL Server, MySQL, MariaDB, PostgreSQL, Snowflake, and Apache Derby. The database table must have a primary key defined for it and an indexed column that contains a timestamp/date value. This value must be maintained and modified accordingly for each record that is updated. 
     
   For Oracle databases, the timestamp column type must be one of the following: `TIMESTAMP`, `DATE`, `TIMESTAMP WITH TIME ZONE`, `TIMESTAMP WITH LOCAL TIME ZONE1. 
     
@@ -22,6 +22,8 @@ For database backends (JDBC-accessible), the connector change detection options 
   For MYSQL or MariaDB databases, the timestamp column type must be one of the following: `TIMESTAMP`, `DATETIME`  
     
   For PostgreSQL databases, the timestamp column type must be one of the following: `TIMESTAMP`, `timestamp without time zone` (equivalent to timestamp), `TIMESTAMPTZ`, `timestamp with time zone` (equivalent to timestamptz)
+
+  For Snowflake, the timestamp column type must be: TIMESTAMPNTZ
     
   For Derby databases, the timestamp column type must be: `TIMESTAMP`  
     
