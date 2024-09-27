@@ -163,7 +163,7 @@ For Oracle, SQL Server, MySQL, MariaDB, PostGres, Apache Derby, Snowflake and Sa
 
 >[!warning]
 >This connector type does not detect delete operations. If you have a need to detect and propagate delete operations from the database, you should choose a different connector type. However, for Salesforce backends, delete operations can be detected because a delete operation is detected when the `isActive` attribute is set to `false`.
->This connector type does not differentiate between `ADD` and `UPDATE` operations. All events are processed as `UPDATE` operations. You can customize the transformation logic to dictate how the `UPDATE` operations should be handled on the target (e.g. translated into an `INSERT`,etc.).
+>This connector type does not differentiate between `ADD` and `UPDATE` operations. All events are processed as `UPDATE` operations. 
 
 For each database object that is a publisher of changes, a new/changed row in the table must have a timestamp column associated with it.
 
