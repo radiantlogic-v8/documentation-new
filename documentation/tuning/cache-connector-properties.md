@@ -16,13 +16,7 @@ For LDAP directories, there are two connector type options: LDAP (changelog), or
 
 For Active Directory, there are three connector type options: AD USNChanged, AD DirSync, and AD Hybrid. 
 
-Capture connectors are used for synchronization and have three main functions.
-
-1. Query data sources and collect changed entries.
-2. Filter unneeded events.
-3. Publish changed entries with the required information (requested attributes).
-
-Capture connectors publish change messages to queues. A sync engine receives notification when messages are in a queue, applies transformation to the message (based on attribute mappings and or scripting) and sends the transformed message to the destination.
+Capture connectors are used to trigger events for persistent cache refresh and publish change messages to queues. A sync engine receives notification when messages are in a queue, applies transformation to the message (when needed) and sends notification to the RadiantOne service to refresh the needed views/cache dependencies.
 
 A high-level architecture is shown below.
 
