@@ -62,7 +62,7 @@ To configure the database changelog connector for real-time persistent cache ref
 
 1. Define any other needed [Connector Properties](./cache-connector-properties).
 1. Select **SAVE**.
-1. In the connector table, click </> scripts.
+1. In the connector table, click </> to apply the scripts.
   ![SQL Scripts](Media/sql-scripts.jpg)
 
 1. A message is displayed that asks if you want to apply the scripts to configure the log table immediately or not. You can also download the scripts to the local machine.
