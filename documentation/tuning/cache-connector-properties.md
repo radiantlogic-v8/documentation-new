@@ -59,11 +59,16 @@ The name of the database table where changes to database entries are logged. You
 
 ### Apply configuration to database
 
-When you save the connector type configuration, you are prompted to execute the scripts on the database server. An example is shown below.
+After saving the connector type configuration, you must execute the scripts on the database server.
 
-![A prompt to execute DB Changelog configure scripts with **No** and **OK** buttons](Media/image17.png)
+1. In the connector table, click </> to apply the scripts.
+  ![SQL Scripts](Media/sql-scripts.jpg)
 
-If you choose **OK** to execute the DB Changelog scripts, `SELECT`, `INSERT`, `UPDATE`, and `DELETE` access are granted for PUBLIC to the LOG table. Check with your database administrator if you need to restrict access rights on the log table. You can select the **NO** option and the generated script can be reviewed, modified if needed, and run on the database by a DBA. Click the Download button to download the sql scripts.
+1. A message is displayed that asks if you want to apply the scripts to configure the log table immediately or not. You can also download the scripts to the local machine.
+
+ ![Configuration to Apply SQL Script Automatically or Not](Media/sql-script-options.jpg)
+
+If you choose **Apply Now** to execute the DB Changelog scripts, `SELECT`, `INSERT`, `UPDATE`, and `DELETE` access are granted for PUBLIC to the LOG table. Check with your database administrator if you need to restrict access rights on the log table. You can select the **Apply Later** option and click **DOWNLOAD CONFIGURE SQL SCRIPTS** as an alternate option. The downloaded scripts can be reviewed, modified if needed, and run on the database by a DBA. This must be done before starting the connector.
 
 ### SQL Filter
 
