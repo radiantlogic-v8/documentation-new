@@ -58,5 +58,3 @@ The RadiantOne REST API also supports OIDC tokens that can be validated with an 
 
 For details on accessing RadiantOne Identity Data Management's REST interface, see: [REST](../../web-services-api-guide/rest)
 
-## Using an Access Token
-
