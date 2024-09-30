@@ -13,14 +13,14 @@ To deploy Identity Data Management with metrics collection and logging, you will
 
 ### Prerequisites
 
-Radiant Logic supports the following tools for monitoring and analysis. You may choose one or more of these tools depending on your use case:
+If you use any of the following tools in your environment for for monitoring and analysis, ensure that they meet the version requirements listed below: 
 
 - **Prometheus (version 15.13.0)** for metrics collection.
 - **Grafana (version 6.40.0)** for dashboard visualization.
 - **ElasticSearch (version 7.17.3)** for log aggregation.
 - **Kibana (version 7.17.3)** for log analysis.
 
-Using the specified versions is crucial for compatibility with Identity Data Management.
+Note that these tools are not provided by Radiant Logic's Identity Data Management offering and are managed by your organization. 
 
 ### Configure the Following Parameters
 
