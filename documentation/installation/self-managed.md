@@ -11,30 +11,20 @@ Self-managed Identity Data Management can be deployed on any Certified Kubernete
 
 ## Prerequisites
 
-- Install [Kubernetes cluster](https://kubernetes.io/docs/setup/) of version 1.27 or higher. Refer to the [Sizing a Kubernetes cluster](https://developer.radiantlogic.com/idm/v7.4/getting_started/kubernetes/#sizing-a-kubernetes-cluster) document for additional details.
+- [Kubernetes cluster](https://kubernetes.io/docs/setup/) of version 1.27 or higher. Refer to the [Sizing a Kubernetes cluster](https://developer.radiantlogic.com/idm/v7.4/getting_started/kubernetes/#sizing-a-kubernetes-cluster) document for additional details.
 - Install [Helm](https://helm.sh/docs/intro/install/) version 3.0 or higher.
 - Install [`kubectl`](https://kubernetes.io/docs/reference/kubectl/) version 1.27 or higher and configure it to access your Kubernetes cluster.
 - An Identity Data Management license key, which will be provided to you during onboarding.
 - Ensure that you have received Container Registry Access and image pull credentials named **(regred)** from RadiantLogic during onboarding.
-- Ensure that you have necessary storage provisioners and storage classes configured for the Kubernetes cluster. Some examples of supported storage classes are `gp2`, [Azure disk](https://learn.microsoft.com/en-us/azure/aks/concepts-storage#persistent-volumes), etc.
+- Ensure that you have necessary storage provisioners and storage classes configured for the Kubernetes cluster. Some examples of supported storage classes are `gp2`/`gp3`, [Azure disk](https://learn.microsoft.com/en-us/azure/aks/concepts-storage#persistent-volumes), etc.
 - Estimate sufficient resources (CPU, memory, storage) for the deployment. Your Radiant Logic solutions engineer may guide you with this depending on your use case. 
 
 ## Steps for Deployment
 
 
-1.  **Configure credentials**
+1. **Set up values.yaml file for Helm deployment**
 
-     Create a file named `values.yaml` and open it in a text editor or IDE. Add `imagePullSecrets` field as shown below to the file to specify the secret credential that was provided to you by Radiant Logic.
-          ```yaml
-          imagePullSecrets:
-            - name: regcred
-          ```
-     &nbsp;
-
-
-2. **Update Helm configurations based on your requirements**
-
-     In your `values.yaml`, ensure that you have the following properties at minimum. Note that the values of the properties such as `storageClass`, `resources`, etc., will differ depending on your use case, cloud provider, and storage requirements. Work with your Radiant Logic Solution Engineer to customize your Helm configuration.
+    Create a file named `values.yaml`. In your `values.yaml`, ensure that you have the following properties at minimum. Note that the values of the properties such as `storageClass`, `resources`, etc., will differ depending on your use case, cloud provider, and storage requirements. Work with your Radiant Logic Solution Engineer to customize your Helm configuration.
 
    **Example `values.yaml` file:**
    ```yaml
@@ -49,14 +39,16 @@ Self-managed Identity Data Management can be deployed on any Certified Kubernete
      - name: regcred
    persistence:
      enabled: true
-     storageClass: "gp3" #Set the appropriate value for this based on your cloud provider.
-     size: 10Gi # Set the appropriate value for this based on your requirements. Ensure that you monitor usage over time 
-                # and change the value accordingly when necessary.
+     # Set the appropriate value for storageClass based on your cloud provider.
+     storageClass: "gp3"
+     # Set the appropriate value for size based on your requirements.
+     size: 10Gi 
      annotations: {}
    zookeeper:
      persistence:
        enabled: true
-       storageClass: "gp3" #Set the appropriate value for this based on your cloud provider.
+       # Set the appropriate value for this based on your cloud provider.
+       storageClass: "gp3"
    resources: 
      # Set appropriate values for these fields based on your requirements. Ensure that you monitor usage over time 
      # and change the value accordingly when necessary.
@@ -82,7 +74,7 @@ Self-managed Identity Data Management can be deployed on any Certified Kubernete
    - `fid.license`: Set your Identity Data Management license key.
    - `persistence.enabled`: Indicates whether data persistence is enabled. Set to `true` or `false`.
    - `persistence.storageClass`: Defines the storage class for provisioning persistent volumes.
-   - `persistence.size`: Specifies the size of the persistent volume for Identity Data Management.
+   - `persistence.size`: Specifies the size of the persistent volume for Identity Data Management. Ensure that you monitor usage over time and change the value as needed.
    - `dependencies.zookeeper.enabled`: Specifies if Zookeeper should be deployed as a dependency. Always set to `true`.
    - `zookeeper.persistence.enabled`: Indicates if data persistence is enabled for Zookeeper.
    - `resources`: Indicates the compute resources allocated to the Identity Data Management FID containers. FID is deployed as a StatefulSet, which has implications for resource management. Changing resources requires careful planning as it affects all pods. Monitor your usage and change the values if needed over time. 
@@ -91,15 +83,18 @@ Self-managed Identity Data Management can be deployed on any Certified Kubernete
    Note that there are additional fields such as `metrics` that you can use to enable [metrics and logging](./metrics-and-logging/). 
    &nbsp;
 
-3. **Create a namespace for your cluster and apply the credentials to that namespace.**
-
+2. **Create a namespace for your IDDM cluster.**
    ```bash
    kubectl create namespace self-managed
-   kubectl apply -n self-managed -f regcred.yaml
    ```
+
+3. **Deploy the credentials file provided to you in the same namespace**
+     ```bash
+        kubectl apply -n self-managed -f regcred.yaml
+     ```
  
 
-4. **Dry run your deployment**
+4. **Optional - dry run your deployment**
 
    ```bash
    helm -n self-managed upgrade --install fid oci://ghcr.io/radiantlogic-devops/helm-v8/fid --version 1.1.0 --values values.yaml --set env.INSTALL_SAMPLES=true --debug --dry-run
@@ -113,7 +108,7 @@ Self-managed Identity Data Management can be deployed on any Certified Kubernete
    Ensure that you provide the appropriate path for your values.yaml file before running this command:
 
    ```bash
-   helm -n self-managed upgrade --install fid oci://ghcr.io/radiantlogic-devops/helm-v8/fid --version 1.1.0 --values values.yaml --debug
+   helm -n self-managed install fid oci://ghcr.io/radiantlogic-devops/helm-v8/fid --version 1.1.0 --values </path/to/your/values.yaml> --debug
    ```
 
 6. **Verify deployment**
@@ -177,7 +172,7 @@ kubectl port-forward svc/fid-app -n self-managed 2389 2636 8089 8090
 To update any resources or settings, change the values in `values.yaml` and run the following command:
 
 ```bash
-helm upgrade --install --namespace=self-managed fid oci://ghcr.io/radiantlogic-devops/h
+   helm -n self-managed upgrade --install fid oci://ghcr.io/radiantlogic-devops/helm-v8/fid --version 1.1.0 --values </path/to/your/values.yaml> --debug
 ```
 
 ## Troubleshooting your Kubernetes environment
@@ -256,6 +251,13 @@ The steps listed here are meant to help you identify and troubleshoot issues rel
 
      You should see that all Identity Data Management related pods have been removed. If everything looks good, proceed to the next step.
 
+3. **Delete PVCs**
+     - Delete all existing PVCs from your namespace.
+      ```bash
+      kubectl get pvc -n self-managed
+      kubectl delete pvc <pvc-name> -n self-managed
+      ```
+
 3. **Delete the namespace**
    - To delete the namespace you created, run:
      
@@ -270,4 +272,4 @@ The steps listed here are meant to help you identify and troubleshoot issues rel
      kubectl get namespace
      ```
 
-     You should see that the previously deleted namespace is not listed.
+     You should see that the previously deleted namespace is not listed. 
