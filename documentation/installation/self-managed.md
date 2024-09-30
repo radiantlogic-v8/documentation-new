@@ -77,7 +77,7 @@ Self-managed Identity Data Management can be deployed on any Certified Kubernete
    - `persistence.size`: Specifies the size of the persistent volume for Identity Data Management. Ensure that you monitor usage over time and change the value as needed.
    - `dependencies.zookeeper.enabled`: Specifies if Zookeeper should be deployed as a dependency. Always set to `true`.
    - `zookeeper.persistence.enabled`: Indicates if data persistence is enabled for Zookeeper.
-   - `resources`: Indicates the compute resources allocated to the Identity Data Management FID containers. FID is deployed as a StatefulSet, which has implications for resource management. Changing resources requires careful planning as it affects all pods. Monitor your usage and change the values if needed over time. 
+   - `resources`: Indicates the compute resources allocated to the Identity Data Management containers. Identity Data Management is deployed as a StatefulSet, which has implications for resource management. Changing resources requires careful planning as it affects all pods. Monitor your usage and change the values if needed over time. 
    
 
    Note that there are additional fields such as `metrics` that you can use to enable [metrics and logging](./metrics-and-logging/). 
@@ -254,8 +254,8 @@ The steps listed here are meant to help you identify and troubleshoot issues rel
 3. **Delete PVCs**
      - Delete all existing PVCs from your namespace.
       ```bash
-      kubectl get pvc -n self-managed
-      kubectl delete pvc <pvc-name> -n self-managed
+      kubectl get pvc -n <namespace>
+      kubectl delete pvc <pvc-name> -n <namespace>
       ```
 
 3. **Delete the namespace**
