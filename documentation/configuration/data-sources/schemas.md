@@ -437,7 +437,7 @@ To compare schemas:
 1. From the Options menu ("..."), select **Compare Schema**. The Schema Differences Detected window displays. 
 
 1. Expand the Tables, Views, and Relationships nodes. Red highlighted items indicate what is not in the current schema but is in the selected schema. Green highlighted items indicate what is in the current schema and not in the selected schema.
-  ![Comparing Schemas](Media/compare-schema.jpg)
+     ![Comparing Schemas](Media/compare-schema.jpg)
 
 1. Check *Accept Change* next to the items that you want to merge into the selected schema file and click **Merge Selected Differences**.
 
