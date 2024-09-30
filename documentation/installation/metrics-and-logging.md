@@ -34,11 +34,11 @@ Using the specified versions is crucial for compatibility with Identity Data Man
 
   - **imageTag**: This refers to the version tag of the Docker image. Set the latest version of the container as the value of this property.
 
-  - **pushmode**: Set the value as `false` to enable pull mode for the  After the deployment, you will automatically see metrics being pulled in your installed Prometheus instance.
+  - **pushmode**: By default, the value of this field is `false`. This enables pull mode for Prometheus. After the deployment, you will automatically see metrics being pulled in your installed Prometheus instance. If you decide to use pushmode, set the value to "true" and ensure that Prometheus pushGateway is deployed and a URL for the gatway is available. 
 
   - **pushGateway**: You do not need to provide a value for this field unless you have an existing gateway and want to enable “push mode”.
 
-  - **fluentd**: Use this object to enable logs and log aggregator(s) monitoring in Fluentd. To disable monitoring for a specific log file, set the value of `logs.enabled` to `false` for that log. Identity Data Management supports multiple log aggregation platforms, including Elasticsearch, OpenSearch, and Splunk. One or more aggregators can be configured. Use the `configfile` property to specify the location of the configuration file for Fluentd. 
+  - **fluentd**: Use this object to enable logs and log aggregator(s) monitoring in Fluentd. To disable monitoring for a specific log file, set the value of `logs.enabled` to `false` for that log. Identity Data Management supports multiple log aggregation platforms, including Elasticsearch, OpenSearch, and Splunk. One or more aggregators can be configured.
 
  - **securityContext.runAsUser**: This configures the security context for the metrics container. Set the value of this property as 0.
 
@@ -49,7 +49,8 @@ Using the specified versions is crucial for compatibility with Identity Data Man
 - **readinessProbe**: This configures the readiness probe for the metrics container.
 
 - **initialDelaySeconds**: This indicates the number of seconds to wait before performing the first probe.
-timeoutSeconds: This indicates the number of seconds after which the probe times out.
+
+- **timeoutSeconds**: This indicates the number of seconds after which the probe times out.
 
 ### Example Configuration
 
