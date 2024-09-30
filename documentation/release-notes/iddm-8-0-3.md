@@ -24,14 +24,20 @@ These release notes contain the following sections:
 ## Improvements
 
 - [INTERNAL]: Update migrations to support upgrading from v7.4 to v8.0.3 as an interim path to upgrade to v8.1.0.
+- [VMR-850]: Added support for Snowflake for real-time persistent cache refreshes: Timestamp Connector type.
+- [VMR-866]: Added support to manage all LDIF files under `<RLI_HOME>/vds_server/conf` from File Manager. 
 
 ## Security Vulnerability Fixes
 
-None.
+- [VMR-594]: Upgraded commons-codec-1.14.jar to remediate potential vulnerabilities.
+- [VMR-779, 861,862]: Upgraded Spring libraries to 5.3.39 to address CVE-2024-38809 and CVE-2024-38808 and to remediate potential vulnerabilities.
+- [VMR-863]: Upgraded Apache CXF libraries to 3.5.9 to address CVE-2024-32007.
+- [VMR-864]: Upgraded Jackson libraries to 2.17.2 to remediate potential vulnerabilities. 
 
 ## Bug Fixes
 
-None.
+- [VMR-860]: Fixed an issue that caused the Salesforce JDBC driver to be corrupted after patches resulting in problems virtualizing Salesforce data.
+- [VMR-873]: File manager improved to display the error reason in the error popup and to hide action buttons when they are not eligible.
  
 ## Known Issues
 
