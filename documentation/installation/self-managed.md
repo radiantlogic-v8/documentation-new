@@ -83,14 +83,14 @@ Self-managed Identity Data Management can be deployed on any Certified Kubernete
    Note that there are additional fields such as `metrics` that you can use to enable [metrics and logging](./metrics-and-logging/). 
    &nbsp;
 
-2. **Create a namespace for your IDDM cluster.**
+2. **Create a namespace for your IDDM cluster**
    ```bash
    kubectl create namespace self-managed
    ```
 
 3. **Deploy the credentials file provided to you in the same namespace**
-     ```bash
-        kubectl apply -n self-managed -f regcred.yaml
+   ```bash
+   kubectl apply -n self-managed -f regcred.yaml
      ```
  
 
@@ -180,7 +180,7 @@ To update any resources or settings, change the values in `values.yaml` and run 
 The steps listed here are meant to help you identify and troubleshoot issues related to pod deployments in your Kubernetes environment.
 
 1. **Check events for deployment issues**
-   - This command lists events in the specified namespace, helping to identify any issues related to pod deployment.
+   This command lists events in the specified namespace, helping to identify any issues related to pod deployment.
      
      ```bash
      kubectl get events -n <namespace>
@@ -188,47 +188,47 @@ The steps listed here are meant to help you identify and troubleshoot issues rel
    
 
 3. **Describe a specific pod**
-   - This command provides detailed information about the pod, including its status, conditions, and any errors that might be affecting its deployment.
+   This command provides detailed information about the pod, including its status, conditions, and any errors that might be affecting its deployment.
 
      ```bash
      kubectl describe pods/fid-0 -n <namespace>
      ```
 
 4. **Check Zookeeper status**
-   - Check if Zookeeper is running or not by executing:
+   Check if Zookeeper is running or not by executing:
 
      ```bash
      kubectl exec -it zookeeper-0 -n <namespace> -- bash -c "export JAVA_HOME=/opt/radiantone/rli-zookeeper-external/jdk/jre/;/opt/radiantone/rli-zookeeper-external/zookeeper/bin/zkServer.sh status"
      ```
 
 5. **Access Zookeeper or FID container**
-   - Shell into the Zookeeper container. This will open an interactive shell session inside the zookeeper-0 pod, allowing you to execute commands directly within that container:
+   Shell into the Zookeeper container. This will open an interactive shell session inside the zookeeper-0 pod, allowing you to execute commands directly within that container:
 
      ```bash
      kubectl exec -it zookeeper-0 -n <namespace> -- /bin/bash
      ```
-   - Shell into the FID container:
+    Shell into the FID container:
 
      ```bash
      kubectl exec -it fid-0 -n <namespace> -- /bin/bash
      ```
 
 6. **Next, run cluster command**
-   - This command lists the cluster configuration, which can help identify any existing issues. Inside the FID container, run:
+   This command lists the cluster configuration, which can help identify any existing issues. Inside the FID container, run:
      
      ```bash
      kubectl exec -it fid-0 -n <namespace> -- cluster.sh list
      ```
 
 7. **List Java processes**
-   - To see what Java processes are running in the FID container, execute:
+   To see what Java processes are running in the FID container, execute:
      
      ```bash
      kubectl exec -it fid-0 -n <namespace> -- /opt/radiantone/vds/jdk/bin/jps -lv
      ```
 
 8. **Get Kubernetes context**
-   - Ensure you're interacting with the correct cluster by running:
+    Ensure you're interacting with the correct cluster by running:
      
      ```bash
      kubectl config get-contexts
@@ -236,14 +236,14 @@ The steps listed here are meant to help you identify and troubleshoot issues rel
 ## Deleting Identity Data Management
 
 1. **Uninstall the Identity Data Management deployment**
-   - To uninstall the Identity Data Management deployment from your namespace, run:
+    To uninstall the Identity Data Management deployment from your namespace, run:
      
      ```bash
      helm uninstall --namespace=<namespace> fid
      ```
 
 2. **Verify uninstallation**
-   - To confirm that the deployment has been successfully removed, execute:
+    To confirm that the deployment has been successfully removed, execute:
      
      ```bash
      kubectl get all -n <namespace>
@@ -252,21 +252,22 @@ The steps listed here are meant to help you identify and troubleshoot issues rel
      You should see that all Identity Data Management related pods have been removed. If everything looks good, proceed to the next step.
 
 3. **Delete PVCs**
-     - Delete all existing PVCs from your namespace.
+    Delete all existing PVCs from your namespace.
+
       ```bash
       kubectl get pvc -n <namespace>
       kubectl delete pvc <pvc-name> -n <namespace>
       ```
 
 3. **Delete the namespace**
-   - To delete the namespace you created, run:
+    To delete the namespace you created, run:
      
      ```bash
      kubectl delete namespace <namespace>
      ```
 
 4. **Verify namespace deletion**
-   - To check if the namespace has been deleted, execute:
+    To check if the namespace has been deleted, execute:
      
      ```bash
      kubectl get namespace
