@@ -180,6 +180,7 @@ To update any resources or settings, change the values in `values.yaml` and run 
 The steps listed here are meant to help you identify and troubleshoot issues related to pod deployments in your Kubernetes environment.
 
 1. **Check events for deployment issues**
+
    This command lists events in the specified namespace, helping to identify any issues related to pod deployment.
      
      ```bash
@@ -188,6 +189,7 @@ The steps listed here are meant to help you identify and troubleshoot issues rel
    
 
 3. **Describe a specific pod**
+
    This command provides detailed information about the pod, including its status, conditions, and any errors that might be affecting its deployment.
 
      ```bash
@@ -195,6 +197,7 @@ The steps listed here are meant to help you identify and troubleshoot issues rel
      ```
 
 4. **Check Zookeeper status**
+
    Check if Zookeeper is running or not by executing:
 
      ```bash
@@ -202,6 +205,7 @@ The steps listed here are meant to help you identify and troubleshoot issues rel
      ```
 
 5. **Access Zookeeper or FID container**
+
    Shell into the Zookeeper container. This will open an interactive shell session inside the zookeeper-0 pod, allowing you to execute commands directly within that container:
 
      ```bash
@@ -214,6 +218,7 @@ The steps listed here are meant to help you identify and troubleshoot issues rel
      ```
 
 6. **Next, run cluster command**
+
    This command lists the cluster configuration, which can help identify any existing issues. Inside the FID container, run:
      
      ```bash
@@ -221,6 +226,7 @@ The steps listed here are meant to help you identify and troubleshoot issues rel
      ```
 
 7. **List Java processes**
+
    To see what Java processes are running in the FID container, execute:
      
      ```bash
@@ -228,6 +234,7 @@ The steps listed here are meant to help you identify and troubleshoot issues rel
      ```
 
 8. **Get Kubernetes context**
+
     Ensure you're interacting with the correct cluster by running:
      
      ```bash
@@ -236,6 +243,7 @@ The steps listed here are meant to help you identify and troubleshoot issues rel
 ## Deleting Identity Data Management
 
 1. **Uninstall the Identity Data Management deployment**
+
     To uninstall the Identity Data Management deployment from your namespace, run:
      
      ```bash
@@ -243,6 +251,7 @@ The steps listed here are meant to help you identify and troubleshoot issues rel
      ```
 
 2. **Verify uninstallation**
+
     To confirm that the deployment has been successfully removed, execute:
      
      ```bash
@@ -252,6 +261,7 @@ The steps listed here are meant to help you identify and troubleshoot issues rel
      You should see that all Identity Data Management related pods have been removed. If everything looks good, proceed to the next step.
 
 3. **Delete PVCs**
+
     Delete all existing PVCs from your namespace.
 
       ```bash
@@ -260,6 +270,7 @@ The steps listed here are meant to help you identify and troubleshoot issues rel
       ```
 
 3. **Delete the namespace**
+
     To delete the namespace you created, run:
      
      ```bash
@@ -267,6 +278,7 @@ The steps listed here are meant to help you identify and troubleshoot issues rel
      ```
 
 4. **Verify namespace deletion**
+
     To check if the namespace has been deleted, execute:
      
      ```bash
