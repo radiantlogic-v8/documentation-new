@@ -11,48 +11,55 @@ This document shows you how to programmatically forward and process these log fi
 
 To deploy Identity Data Management with metrics collection and logging, you will need to update your existing `values.yaml` file. This file allows you to customize the configuration settings that pertain to your cloud environment.
 
-### Prerequisites
+### Metrics
 
-If you use any of the following tools in your environment for for monitoring and analysis, ensure that they meet the version requirements listed below: 
+If you are an existing Prometheus customer or would like to use Prometheus, ensure that you are using **Prometheus (version 15.13.0 or higher)** for metrics collection. Optionally, you may also use **Grafana (version 6.40.0 or higher)** for dashboard visualization.
 
-- **Prometheus (version 15.13.0)** for metrics collection.
-- **Grafana (version 6.40.0)** for dashboard visualization.
-- **ElasticSearch (version 7.17.3)** for log aggregation.
-- **Kibana (version 7.17.3)** for log analysis.
 
-Note that these tools are not provided by Radiant Logic's Identity Data Management offering and are managed by your organization. 
+### Logging
 
-### Configure the Following Parameters
+If you use any of the following tools in your environment for logging, ensure that they meet the version requirements listed below: 
 
-  - **storageClass**: The `storageClass` parameter is set to `gp3` by default, which is specific to AWS. If you are using a different cloud provider, adjust this parameter according to the available storage classes that meet your performance and pricing needs.
+- **ElasticSearch (version 7.17.3 or higher)** for log aggregation.
+- **Kibana (version 7.17.3 or higher)** for log analysis.
+
+**Note that these tools are not provided by Radiant Logic's Identity Data Management offering and are managed by your organization.**
+
+### Configure the following parameters
 
   - **metrics**: Using this object setting, you can enable metrics to be collected in your Prometheus instance. Set the values as described below for the properties related to this object:
 
-  - **enabled**: Set the value of this property to `true`.
+  - **metrics.enabled**: Set the value of this property to `true`.
 
-  - **image**: This refers to the Docker image used for the metrics exporter. Set the value of this property to "radiantone/fid-exporter".
+  - **metrics.image**: This refers to the Docker image used for the metrics exporter. Set the value of this property to "radiantone/fid-exporter".
 
-  - **imageTag**: This refers to the version tag of the Docker image. Set the latest version of the container as the value of this property.
+  - **metrics.imageTag**: This refers to the version tag of the Docker image. Set the latest version of the container as the value of this property.
 
-  - **pushmode**: By default, the value of this field is `false`. This enables pull mode for Prometheus. After the deployment, you will automatically see metrics being pulled in your installed Prometheus instance. If you decide to use pushmode, set the value to "true" and ensure that Prometheus pushGateway is deployed and a URL for the gatway is available. 
+  - **metrics.securityContext.runAsUser**: This configures the security context for the metrics container. Set the value of this property as 0.
 
-  - **pushGateway**: You do not need to provide a value for this field unless you have an existing gateway and want to enable “push mode”.
+  - **metrics.annotations**: This allows you to add Kubernetes annotations to the metrics pods.
 
-  - **fluentd**: Use this object to enable logs and log aggregator(s) monitoring in Fluentd. To disable monitoring for a specific log file, set the value of `logs.enabled` to `false` for that log. Identity Data Management supports multiple log aggregation platforms, including Elasticsearch, OpenSearch, and Splunk. One or more aggregators can be configured.
+  - **metrics.pushmode**: By default, the value of this field is `false`. This enables pull mode for Prometheus. After the deployment, you will automatically see metrics being pulled in your installed Prometheus instance. If you decide to use pushmode, set the value to "true" and ensure that Prometheus pushGateway is deployed and a URL for the gatway is available. 
 
- - **securityContext.runAsUser**: This configures the security context for the metrics container. Set the value of this property as 0.
+  - **metrics.pushGateway**: You do not need to provide a value for this field unless you have an existing gateway and want to enable “push mode”.
+- **metrics.livenessProbe**: This configures the liveness probe for the metrics container.
 
-- **annotations**: This allows you to add Kubernetes annotations to the metrics pods.
+- **metrics.livenessProbe.initialDelaySeconds**: This indicates the number of seconds to wait before performing the first liveness probe.
 
-- **livenessProbe**: This configures the liveness probe for the metrics container.
+- **metrics.livenessProbe.timeoutSeconds**: This indicates the number of seconds after which the probe times out.
 
-- **readinessProbe**: This configures the readiness probe for the metrics container.
+- **metrics.readinessProbe**: This configures the readiness probe for the metrics container.
 
-- **initialDelaySeconds**: This indicates the number of seconds to wait before performing the first probe.
+- **metrics.readinessProbe.initialDelaySeconds**: This indicates the number of seconds to wait before performing the first liveness probe.
 
-- **timeoutSeconds**: This indicates the number of seconds after which the probe times out.
+- **metrics.readinessProbe.timeoutSeconds**: This indicates the number of seconds after which the probe times out.
 
-### Example Configuration
+- **metrics.fluentd.enabled**: Set the value to `true` to enable log collection in Fluentd. 
+
+- **metrics.fluentd.aggregators**: Identity Data Management supports multiple log aggregation platforms, including Elasticsearch, OpenSearch, and Splunk. You can configure one or more aggregators depending on your usecase. Provide accurate values for `host`, `port`, and authentication details to ensure proper log forwarding.
+
+
+### Example configuration
 
 Here is an example configuration of metrics, logs, and aggregators in the `values.yaml` file:
 
@@ -122,4 +129,4 @@ metrics:
        #   hec_token: "" 
 ```
 
-Provide accurate values for `host`, `port`, and authentication details to ensure proper log forwarding. Adjust the configuration based on your specific requirements and infrastructure setup, and redeploy the chart.
+Adjust the configuration based on your specific requirements and infrastructure setup, and redeploy the chart.
