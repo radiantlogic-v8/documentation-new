@@ -7,7 +7,7 @@ description: Learn how to deploy RadiantOne Identity Data Management in your own
 
 This document provides instructions for deploying RadiantOne Identity Data Management on your Kubernetes cluster using Helm charts. It covers prerequisites, lists the microservices involved, and explains how to access the Identity Data Management control panel on your local machine via port-forwarding.
 
-Self-managed Identity Data Management can be deployed on any Certified Kubernetes cluster (cloud or on-premise). We officially support a variety of providers such as Amazon EKS and Azure AKS. The installation process exclusively utilizes Helm, meaning you will use `helm install` or `helm upgrade` commands.
+Self-managed Identity Data Management can be deployed on supported Kubernetes cluster (cloud or on-premise). Amazon EKS and Azure AKS are currently supported and support for additional Kubernetes vendors like Google and RedHat OpenShift are planned. The installation process exclusively utilizes Helm, meaning you will use `helm install` or `helm upgrade` commands.
 
 ## Prerequisites
 
