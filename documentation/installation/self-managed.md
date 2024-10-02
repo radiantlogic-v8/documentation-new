@@ -12,8 +12,7 @@ Self-managed Identity Data Management can be deployed on supported Kubernetes cl
 The table below shows the mapping between the Identity Data Management application version and the Helm chart version:
 
 | Identity Data Management application version | Helm chart version |
-| -------------------------------------------- | ------------------ |
-| 8.0.0                                                                                    | 1.0.0                                |
+| -------------------------------------------- | ----------                                                                             
 | 8.1.0                                                                                    | 1.1.0                                |
 | 8.1.1                                                                                    | 1.1.1                                |
 
@@ -85,7 +84,6 @@ The table below shows the mapping between the Identity Data Management applicati
 - **persistence.enabled**: Indicates whether data persistence is enabled. Set to **true** or **false**.
 - **persistence.storageClass**: Defines the storage class for provisioning persistent volumes.
 - **persistence.size**: Specifies the size of the persistent volume for Identity Data Management. Ensure that you monitor usage over time and change the value as needed.
-- **zookeeper.enabled**: Specifies if Zookeeper should be deployed as a dependency. Always set to **true**.
 - **zookeeper.persistence.enabled**: Indicates if data persistence is enabled for Zookeeper.
 - **resources**: Indicates the compute resources allocated to the Identity Data Management containers. Identity Data Management is deployed as a StatefulSet, which has implications for resource management. Changing resources requires careful planning as it affects all pods. Monitor your usage and change the values if needed over time.
 
