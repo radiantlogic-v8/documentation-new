@@ -5,7 +5,7 @@ description: Upgrading RadiantOne Identity Data Management
 
 ## Overview
 
-The process from upgrading from RadiantOne Identity Data Management v7.4.10 to v8.1.0 is described below. If you are running a version prior to v7.4.10, you must first update to this version.
+The process from upgrading from RadiantOne Identity Data Management v7.4.10 to v8.1 is described below. If you are running a version prior to v7.4.10, you must first update to this version.
 
 ## Steps to Perform on the v7.4 Environment 
 
@@ -149,7 +149,7 @@ C:\r1\migration\radiantone-migration-tool-2.1.10\migrate.bat export C:/tmp/expor
 
 Log into your Environment Operations Center. The credentials were sent to you during your onboarding process.
 
-Use the Environment Operations Center to create an environment and install RadiantOne Identity Data Management version v8.1.1 and import the configuration that was exported from the v7.4 machine using the CUSTOM CONFIGURATION option by toggling the **Advanced Setup** option on. For assistance see: [Creating Environments](https://developer.radiantlogic.com/eoc/latest/environments/environment-overview/create-environments/#advanced-setup)
+Use the Environment Operations Center to create an environment and install RadiantOne Identity Data Management version v8.1.X (where "X" is the patch number) and import the configuration that was exported from the v7.4 machine using the CUSTOM CONFIGURATION option by toggling the **Advanced Setup** option on. For assistance see: [Creating Environments](https://developer.radiantlogic.com/eoc/latest/environments/environment-overview/create-environments/#advanced-setup)
 
 ![Install IDDM](Media/new-iddm-app3.jpg)
 
