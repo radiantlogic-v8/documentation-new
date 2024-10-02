@@ -163,7 +163,7 @@ You can access the API service at [https://localhost:8443/api](https://localhost
 
 To access the LDAP/ADAP service, run the following command to port-forward (open another terminal):
 
-> **Note:** Ensure that ports 2389, 2636, 8089, and 8090 are not already in use on your local machine.
+> Ensure that ports 2389, 2636, 8089, and 8090 are not already in use on your local machine.
 
 ```bash
 kubectl port-forward svc/fid-app -n self-managed 2389 2636 8089 8090
