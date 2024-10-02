@@ -153,7 +153,7 @@ Use the Environment Operations Center to create an environment and install Radia
 
 ![Install IDDM](Media/new-iddm-app3.jpg)
 
->[!note] Production SaaS environments are created with 2-node RadiantOne clusters. If your RadiantOne cluster requires more nodes, you can manually scale up the application once it is deployed. 
+>[!note] Production SaaS environments are created with 2-node RadiantOne clusters. If your RadiantOne cluster requires more nodes, you can manually scale up the number of nodes once it is deployed. 
 
 
 ### Create Secure Data Connector 
