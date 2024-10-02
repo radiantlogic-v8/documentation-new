@@ -151,7 +151,7 @@ Log into your Environment Operations Center. The credentials were sent to you du
 
 Use the Environment Operations Center to create an environment and install RadiantOne Identity Data Management version v8.1.1 and import the configuration that was exported from the v7.4 machine using the CUSTOM CONFIGURATION option. For assistance see: [Creating Environments](https://developer.radiantlogic.com/eoc/latest/environments/environment-overview/create-environments/#advanced-setup)
 
-![Install IDDM](Media/new-iddm-app2.jpg)
+![Install IDDM](Media/new-iddm-app3.jpg)
 
 >[!note] Production SaaS environments are created with 2-node RadiantOne clusters. If your RadiantOne cluster requires more nodes, you can manually scale up the application once it is deployed. 
 
