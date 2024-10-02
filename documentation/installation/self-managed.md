@@ -9,13 +9,22 @@ This document provides instructions for deploying RadiantOne Identity Data Manag
 
 Self-managed Identity Data Management can be deployed on supported Kubernetes cluster (cloud or on-premise). Amazon EKS and Azure AKS are currently supported and support for additional Kubernetes vendors like Google and RedHat OpenShift are planned. The installation process exclusively utilizes Helm, meaning you will use `helm install` or `helm upgrade` commands.
 
+The table below shows the mapping between the Identity Data Management application version and the Helm chart version:
+
+| Identity Data Management application version | Helm chart version |
+| -------------------------------------------- | ------------------ |
+| 8.0.0                                                                                    | 1.0.0                                |
+| 8.1.0                                                                                    | 1.1.0                                |
+| 8.1.1                                                                                    | 1.1.1                                |
+
+
 ## Prerequisites
 
 - [Kubernetes cluster](https://kubernetes.io/docs/setup/) of version 1.27 or higher. Refer to the [Sizing a Kubernetes cluster](https://developer.radiantlogic.com/idm/v7.4/getting_started/kubernetes/#sizing-a-kubernetes-cluster) document for additional details.
 - Install [Helm](https://helm.sh/docs/intro/install/) version 3.0 or higher.
 - Install [`kubectl`](https://kubernetes.io/docs/reference/kubectl/) version 1.27 or higher and configure it to access your Kubernetes cluster.
 - An Identity Data Management license key, which will be provided to you during onboarding.
-- Ensure that you have received Container Registry Access and image pull credentials named **(regred)** from RadiantLogic during onboarding.
+- Ensure that you have received Container Registry Access and image pull credentials named **(regred.yaml)** from RadiantLogic during onboarding.
 - Ensure that you have necessary storage provisioners and storage classes configured for the Kubernetes cluster. Some examples of supported storage classes are `gp2`/`gp3`, [Azure disk](https://learn.microsoft.com/en-us/azure/aks/concepts-storage#persistent-volumes), etc.
 - Estimate sufficient resources (CPU, memory, storage) for the deployment. Your Radiant Logic solutions engineer may guide you with this depending on your use case. 
 
@@ -65,22 +74,22 @@ Self-managed Identity Data Management can be deployed on supported Kubernetes cl
    ```
    
 
-   **Definitions of the properties:**
-   - `replicaCount`: Specifies the number of RadiantOne nodes that will be deployed. Set the value to a minimum of 2 in production           environments for high availability.
-   - `image.repository`: Specifies the Docker repository for the Identity Data Management image. Set to `radiantone/fid`.
-   - `image.tag`: Specifies the version of the Identity Data Management image to install or upgrade to.
-   - `fid.rootUser`: Denotes the root user for RadiantOne. Set to `cn=Directory Manager`.
-   - `fid.rootPassword`: Denotes the password for the root user. Set to `Welcome1234`.
-   - `fid.license`: Set your Identity Data Management license key.
-   - `persistence.enabled`: Indicates whether data persistence is enabled. Set to `true` or `false`.
-   - `persistence.storageClass`: Defines the storage class for provisioning persistent volumes.
-   - `persistence.size`: Specifies the size of the persistent volume for Identity Data Management. Ensure that you monitor usage over time and change the value as needed.
-   - `dependencies.zookeeper.enabled`: Specifies if Zookeeper should be deployed as a dependency. Always set to `true`.
-   - `zookeeper.persistence.enabled`: Indicates if data persistence is enabled for Zookeeper.
-   - `resources`: Indicates the compute resources allocated to the Identity Data Management containers. Identity Data Management is deployed as a StatefulSet, which has implications for resource management. Changing resources requires careful planning as it affects all pods. Monitor your usage and change the values if needed over time. 
-   
+**Definitions of the properties:**
 
-   Note that there are additional fields such as `metrics` that you can use to enable [metrics and logging](./metrics-and-logging/). 
+- **replicaCount**: Specifies the number of RadiantOne nodes that will be deployed. Set the value to a minimum of **2** in production environments for high availability.
+- **image.repository**: Specifies the Docker repository for the Identity Data Management image. Set to **radiantone/fid**.
+- **image.tag**: Specifies the version of the Identity Data Management image to install or upgrade to.
+- **fid.rootUser**: Denotes the root user for RadiantOne. Set to **cn=Directory Manager**.
+- **fid.rootPassword**: Denotes the password for the root user. Set to **Welcome1234**.
+- **fid.license**: Set your Identity Data Management license key.
+- **persistence.enabled**: Indicates whether data persistence is enabled. Set to **true** or **false**.
+- **persistence.storageClass**: Defines the storage class for provisioning persistent volumes.
+- **persistence.size**: Specifies the size of the persistent volume for Identity Data Management. Ensure that you monitor usage over time and change the value as needed.
+- **zookeeper.enabled**: Specifies if Zookeeper should be deployed as a dependency. Always set to **true**.
+- **zookeeper.persistence.enabled**: Indicates if data persistence is enabled for Zookeeper.
+- **resources**: Indicates the compute resources allocated to the Identity Data Management containers. Identity Data Management is deployed as a StatefulSet, which has implications for resource management. Changing resources requires careful planning as it affects all pods. Monitor your usage and change the values if needed over time.
+
+> Note that there are additional fields such as `metrics` that you can use to enable [metrics and logging](./metrics-and-logging/). 
    &nbsp;
 
 2. **Create a namespace for your IDDM cluster**
