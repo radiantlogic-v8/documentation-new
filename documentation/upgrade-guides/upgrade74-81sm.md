@@ -148,11 +148,11 @@ C:\r1\migration\radiantone-migration-tool-2.1.10\migrate.bat export C:/tmp/expor
 
 ## Steps to Perform in your Kubernetes Cluster
 
-Follow the steps outlined in: [Self-managed Deployments](/../v8.1/installation/self-managed) using the RadiantOne Identity Data Management image v8.0.3 and importing the configuration that was exported from v7.4 by updating the sections outlines below in your values.yaml file:
+Follow the steps outlined in: [Self-managed Deployments](/../v8.1/installation/self-managed) using the RadiantOne Identity Data Management image v8.1.1 and importing the configuration that was exported from v7.4 by updating the sections outlines below in your values.yaml file:
 
 ```
 image:
-  tag: "8.0.3"
+  tag: "8.1.1"
 ```
 
 ```
@@ -160,19 +160,6 @@ fid:
   migration:
     url:<path to migration zip file hosted on your HTTP server accessible from the pod>
 ```
-
-
-### Upgrade Process
-
-Once RadiantOne Identity Data Management image v8.0.3 is installed successfully from the v7.4 configuration, upgrade to v8.1.1 using this image ID in the values.yaml:
-
-```
-image:
-  tag: "8.1.1"
-```
-Run the following helm command to update to v8.1.1:
-
-`helm upgrade --install -n <namespace> fid oci://ghcr.io/radiantlogic-devops/helm-v8/fid -f values.yaml --wait`
 
 ## Steps to Perform in your RadiantOne Identity Data Management Application
 
