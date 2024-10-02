@@ -155,3 +155,22 @@ July 28, 2023
 
 **Bug Fixes**
 -	[VSTS45558]: Fixed an issue with the Name Id Format field in saml2 applications mappings where it would only show 1 value (emailaddress) instead of the list of possible values.
+
+### v3.17.0
+
+October 2, 2024
+
+**Improvements**
+
+-	[VSTS47047]: Improvement to be able to configure CFS without requiring the RadiantOne super user account.
+
+
+**Bug Fixes**
+
+-	[VSTS42991]: Fix for the duplicate entry of servers created during un-install and re-install of CFS applications.
+-	[VSTS46044]: Fix 403 errors seen after too many requests in application admin interface by optimizing the LDAP connections and including pagination to avoid potential timeouts.
+-	[VSTS46525]: Multiple fixes for OIDC to address error response message and better validation.
+-	[VSTS46653]: JWKs alg value (RS256) is fixed to reflect IETF standards.
+-	[VSTS46663]: "denyUrlSequences" configured to handle escape sequences properly with custom error pages. 
+
+
