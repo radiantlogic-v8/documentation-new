@@ -127,16 +127,16 @@ Harness your identity data with intelligent integration to drive better business
 <section>
    
   > [Monitoring in Control Panel](monitoring-and-alerts/monitoring-and-alerts)  
-  > Learn about Monitoring capabilities built into the Control Panel.
+  > Learn about Monitoring capabilities built into the Control Panel. This can be used for both SaaS and Self-managed deployments of RadiantOne Identity Data Management.
   
   > [Monitoring in Environment Operations Center](/../../eoc/latest/monitoring/monitoring-overview) 
-  > Learn about Monitoring capabilities built into the Environment Operations Center. 
+  > Learn about Monitoring capabilities built into the Environment Operations Center. This is only applicable to SaaS deployments of RadiantOne Identity Data Management.
   
   > [Alerts for SaaS Deployments](/../../eoc/latest/admin/integrations/manage-integrations) 
-  > Learn how to configure integrations in SaaS deployments to support alerts triggered by monitored activities.
+  > Learn how to configure integrations in SaaS deployments to support alerts triggered by monitored activities.  This is only applicable to SaaS deployments of RadiantOne Identity Data Management.
 
   > [Alerts configurable from Control Panel](monitoring-and-alerts/alerts)
-  > Learn about default alerts configured in the Control Panel. These alerts can apply for both SaaS and Self-managed deployments. 
+  > Learn about default alerts configured in the Control Panel. These alerts apply for both SaaS and Self-managed deployments. 
      
 </section>
 
