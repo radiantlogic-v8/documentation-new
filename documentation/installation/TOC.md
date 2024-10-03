@@ -7,7 +7,5 @@ description: Installing RadiantOne Identity Data Platform
   - [Overview](deployment-options.md)
   - [SaaS](../../../eoc/latest/getting-started/overview/)
   - [Self-managed](self-managed.md)
-    - [Enable metrics and logging](metrics-and-logging.md)
-
-  
+    -   [Enable metrics and logging](metrics-and-logging.md)
 
