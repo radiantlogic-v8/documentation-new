@@ -66,7 +66,8 @@ Starting in RadiantOne v8.0, the following features have been deprecated:
 - SAML Attribute Service: Querying RadiantOne as a SAML attribute service.
 - Virtual Relational Service (VRS): Querying RadiantOne via SQL using the VRS JDBC driver.
 - Accessing RadiantOne as a Kerberized service.
-- Internal token generator for ADAP (`http://<service>:8089/adap?bind=token`). As an alternative, use an: [External OIDC token validator](../sys-admin-guide-rebuild/06-security#adap-external-token-validators)  
+- Internal token generator for ADAP (`http://<service>:8089/adap?bind=token`). As an alternative, use an: [External OIDC token validator](../sys-admin-guide-rebuild/06-security#adap-external-token-validators)
+- Instance sub-clusters. As an alternative, deploy multiple environments in SaaS to meet the client application requirements.
 
 ## How to Report Problems and Provide Feedback
 
