@@ -229,7 +229,7 @@ The most important log to monitor for ZooKeeper is zookeeper.log. This log file 
 
 ## Alerts
 
-For SaaS deployments, alerts can be managed from the Environment Operations Center.
+For SaaS deployments, alerts can be managed from the Environment Operations Center. For details on configuring notification channel integrations for alerts, see: [Alerts](/../../eoc/latest/admin/integrations/manage-integrations/)
 
-For details on configuring notification channel integrations for alerts, see: [Alerts](/../../eoc/latest/admin/integrations/manage-integrations/)
+There are also default standard alerts that can be managed from the Classic Control Panel > Settings > Monitoring > Standard Alerts. These alerts are also supported for Self-managed deployments. For details see: [Alerts Configured in Classic Control Panel](./alerts.md)
 
