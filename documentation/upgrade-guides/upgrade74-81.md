@@ -149,7 +149,9 @@ C:\r1\migration\radiantone-migration-tool-2.1.10\migrate.bat export C:/tmp/expor
 
 Log into your Environment Operations Center. The credentials were sent to you during your onboarding process.
 
-Use the Environment Operations Center to create an environment and install RadiantOne Identity Data Management version v8.1.X (where "X" is the patch number) and import the configuration that was exported from the v7.4 machine using the CUSTOM CONFIGURATION option by toggling the **Advanced Setup** option on. For assistance see: [Creating Environments](https://developer.radiantlogic.com/eoc/latest/environments/environment-overview/create-environments/#advanced-setup)
+Use the Environment Operations Center to create an environment and install RadiantOne Identity Data Management version v8.1.X (where "X" is the patch number and must be 1 or above) and import the configuration that was exported from the v7.4 machine using the CUSTOM CONFIGURATION option by toggling the **Advanced Setup** option on. For assistance see: [Creating Environments](https://developer.radiantlogic.com/eoc/latest/environments/environment-overview/create-environments/#advanced-setup)
+
+>[!warn] do NOT select RadiantOne Identity Data Management v8.1.0 when creating the environment. Migrations from v7.4 to v8.1.0 are not supported.
 
 ![Install IDDM](Media/new-iddm-app3.jpg)
 
