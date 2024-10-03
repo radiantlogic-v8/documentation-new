@@ -16,6 +16,7 @@ The table below shows the mapping between the Identity Data Management applicati
 | 8.1.0                                                                                    | 1.1.0                                |
 | 8.1.1                                                                                    | 1.1.1                                |
 
+Ensure that you specify your target version when running installation and update commands that are listed in this document.  
 
 ## Prerequisites
 
