@@ -5,7 +5,7 @@ description: Upgrading RadiantOne Identity Data Management to Self-managed
 
 ## Overview
 
-The process from upgrading from RadiantOne Identity Data Management v7.4.10 to a self-managed deployment of v8.1 is described below. If you are running a version prior to v7.4.10, you must first update to this version.
+The process from upgrading from RadiantOne Identity Data Management v7.4.10 to a self-managed deployment of v8.1.1+ is described below. If you are running a version prior to v7.4.10, you must first update to this version.
 
 ## Steps to Perform on the v7.4 Environment 
 
@@ -149,6 +149,8 @@ C:\r1\migration\radiantone-migration-tool-2.1.10\migrate.bat export C:/tmp/expor
 ## Steps to Perform in your Kubernetes Cluster
 
 Follow the steps outlined in: [Self-managed Deployments](/../v8.1/installation/self-managed) using the RadiantOne Identity Data Management image v8.1.x ("x" is the patch version number, in the example below, v8.1.1 is used) and importing the configuration that was exported from v7.4 by updating the sections outlines below in your values.yaml file:
+
+>[!warn] do NOT use RadiantOne Identity Data Management image.tag 8.1.0. Migrations from v7.4 to v8.1.0 are not supported.
 
 ```
 image:
