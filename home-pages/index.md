@@ -132,8 +132,10 @@ Harness your identity data with intelligent integration to drive better business
   > [Monitoring in Environment Operations Center](/../../eoc/latest/monitoring/monitoring-overview) 
   > Learn about Monitoring capabilities built into the Environment Operations Center. 
   
-  > [Alerts](/../../eoc/latest/admin/integrations/manage-integrations) 
-  > Learn how to configure integrations to support alerts triggered by monitored activities. 
+  > [Alerts for SaaS Deployments](/../../eoc/latest/admin/integrations/manage-integrations) 
+  > Learn how to configure integrations in SaaS deployments to support alerts triggered by monitored activities.
+  > [Alerts configurable from Control Panel](monitoring-and-alerts/alerts)
+  > Learn how to configure alerts in the Control Panel. These alerts can apply for both SaaS and Self-managed deployments. 
      
 </section>
 
