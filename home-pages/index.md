@@ -134,8 +134,9 @@ Harness your identity data with intelligent integration to drive better business
   
   > [Alerts for SaaS Deployments](/../../eoc/latest/admin/integrations/manage-integrations) 
   > Learn how to configure integrations in SaaS deployments to support alerts triggered by monitored activities.
+
   > [Alerts configurable from Control Panel](monitoring-and-alerts/alerts)
-  > Learn how to configure alerts in the Control Panel. These alerts can apply for both SaaS and Self-managed deployments. 
+  > Learn about default alerts configured in the Control Panel. These alerts can apply for both SaaS and Self-managed deployments. 
      
 </section>
 
