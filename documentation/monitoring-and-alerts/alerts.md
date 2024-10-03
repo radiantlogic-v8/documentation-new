@@ -11,6 +11,12 @@ Standard alerts cover the recommended minimum monitoring for the RadiantOne comp
 
 For standard alerts, the default alert output is a file, but you can easily add email alerts to the configuration. When these alerts are activated, they are also displayed on the Classic Control Panel’s Dashboard tab.
 
+### File Alert Settings
+
+File output is used for all pre-configured standard alerts. The alerts are logged in a CSV formatted file named alerts.log. This log can be viewed and downloaded from Classic Control Panel > Server Control Panel > Log Viewer.
+
+![Alert Log](Media/alert-log.jpg)
+
 ## RadiantOne Service Memory Usage
 
 A [file alert](#file-alert-settings), when the RadiantOne service’s memory usage reaches 90%, is enabled by default.
