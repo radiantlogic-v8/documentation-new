@@ -15,7 +15,7 @@ For standard alerts, the default alert output is a file, but you can easily add 
 
 File output is used for all pre-configured standard alerts. The alerts are logged in a CSV formatted file named alerts.log. This log can be viewed and downloaded from Classic Control Panel > Server Control Panel > Log Viewer.
 
-![Alert Log](Media/alert-log.jpg)
+![Alert Log](Media/alerts-log.jpg)
 
 ## RadiantOne Service Memory Usage
 
@@ -37,15 +37,15 @@ An alert can be triggered when the availability of a backend data source changes
 
 ## Disk Usage
 
-A file alert, when the disk usage on the RadiantOne machine reaches 90% of max capacity, is enabled by default. These settings can be changed from the Classic Control Panel > Settings tab > Monitoring section > Standard Alerts. To change the disk usage, enter a threshold. Define the interval to check the data usage (default is 120 seconds). The default alert output is File Alert, but if SMTP settings are configured in the Monitoring > Email Alert Settings section you can also use the Email Alert output. Click the Save button when you are finished.
+A [file alert](#file-alert-settings), when the disk usage on the RadiantOne machine reaches 90% of max capacity, is enabled by default. These settings can be changed from the Classic Control Panel > Settings tab > Monitoring section > Standard Alerts. To change the disk usage, enter a threshold. Define the interval to check the data usage (default is 120 seconds). The default alert output is File Alert, but if SMTP settings are configured in the Monitoring > Email Alert Settings section you can also use the Email Alert output. Click the Save button when you are finished.
 
 >[!warning] Closely monitoring disk space usage is extremely critical. If disk space is full, the RadiantOne service shuts down automatically.
 
 ## Disk Latency
 
-A file alert, when the disk latency on the RadiantOne machine reaches 100ms, is enabled by default. These settings can be changed from the Classic Control Panel > Settings tab > Monitoring section > Standard Alerts. To change the disk latency, enter a threshold (in milliseconds). Define the interval to check the disk latency (default is 120 seconds). The default alert output is File Alert, but if SMTP settings are configured in the Monitoring > Email Alert Settings section you can also check the Email Alert output. Click the Save button when you are finished making changes.
+A [file alert](#file-alert-settings), when the disk latency on the RadiantOne machine reaches 100ms, is enabled by default. These settings can be changed from the Classic Control Panel > Settings tab > Monitoring section > Standard Alerts. To change the disk latency, enter a threshold (in milliseconds). Define the interval to check the disk latency (default is 120 seconds). The default alert output is File Alert, but if SMTP settings are configured in the Monitoring > Email Alert Settings section you can also check the Email Alert output. Click the Save button when you are finished making changes.
 
 ## Processing Load on RadiantOne
 
-Alerts based on RadiantOne processing load are pre-configured, but not enabled by default. If you would like to receive an alert when the RadiantOne processing queues reach a certain threshold, from the Classic Control Panel > Settings tab > Monitoring section > Standard Alerts, slide the bars for processing queues and internal queues to the threshold amount. Check the “Enable processing queues alerts” option. Click Save when you are finished.
+A [file alert](#file-alert-settings), when the RadiantOne processing queues and internal queues reach a certain threshold is configured by default. These settings can be changed from the Classic Control Panel > Settings tab > Monitoring section > Standard Alerts. Change the queue percentages and click Save. 
 
