@@ -112,6 +112,8 @@ To delete a data source, navigate to Control Panel > Setup > Data Catalog > Data
 
 ![An image showing deleting data source](Media/delete-data-source.jpg)
 
+>[!warn] When a data source is deleted, all associated schemas (default and added schemas) are also deleted.
+
 ### Cloning Data Sources
 Cloning a data source allows you to make a copy of the connection information and provide a new name for the data source. To clone a data source, navigate to Control Panel > Setup > Data Catalog > Data Sources. Select the configured data source in the list and click the clone icon.
 
