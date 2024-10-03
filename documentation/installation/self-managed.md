@@ -9,7 +9,7 @@ This document provides instructions for deploying RadiantOne Identity Data Manag
 
 Self-managed Identity Data Management can be deployed on supported Kubernetes cluster (cloud or on-premise). Amazon EKS and Azure AKS are currently supported and support for additional Kubernetes vendors like Google and RedHat OpenShift are planned. The installation process exclusively utilizes Helm, meaning you will use `helm install` or `helm upgrade` commands.
 
-The table below shows the mapping between the Identity Data Management application version and the Helm chart version:
+The table below shows the mapping between the Identity Data Management application version and the self-managed Helm chart version:
 
 | Identity Data Management application version | Helm chart version |
 | -------------------------------------------- | ----------                                                                             
@@ -21,7 +21,7 @@ The table below shows the mapping between the Identity Data Management applicati
 
 - [Kubernetes cluster](https://kubernetes.io/docs/setup/) of version 1.27 or higher. Refer to the [Sizing a Kubernetes cluster](https://developer.radiantlogic.com/idm/v7.4/getting_started/kubernetes/#sizing-a-kubernetes-cluster) document for additional details.
 - Install [Helm](https://helm.sh/docs/intro/install/) version 3.0 or higher.
-- Install [`kubectl`](https://kubernetes.io/docs/reference/kubectl/) version 1.27 or higher and configure it to access your Kubernetes cluster.
+- Install [kubectl](https://kubernetes.io/docs/reference/kubectl/) version 1.27 or higher and configure it to access your Kubernetes cluster.
 - An Identity Data Management license key, which will be provided to you during onboarding.
 - Ensure that you have received Container Registry Access and image pull credentials named **(regred.yaml)** from RadiantLogic during onboarding.
 - Ensure that you have necessary storage provisioners and storage classes configured for the Kubernetes cluster. Some examples of supported storage classes are `gp2`/`gp3`, [Azure disk](https://learn.microsoft.com/en-us/azure/aks/concepts-storage#persistent-volumes), etc.
