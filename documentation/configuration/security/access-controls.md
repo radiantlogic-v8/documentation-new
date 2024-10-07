@@ -5,7 +5,13 @@ description: Learn how to configure Access Controls.
 
 ## Overview
 
-When RadiantOne receives a request, it uses the user in the bind operation, and the access control instructions (ACIs) defined in order to allow or deny access to directory information. The server can allow or deny permissions such as read, write, search, or compare. 
+The RadiantOne service can receive secure requests on the LDAPS endpoint. For SaaS deployments, the LDAPS endpoint can be viewed from Environment Operations Center > Manage > Environments > *Environment_Name* > Overview > Application Endpoints.  
+
+![LDAPS Endpoint](Media/ldaps-endpoint.jpg)
+
+For self-managed deployments, the LDAPS endpoint depends on your [Port Forwarding Configuration](../../installation/self-managed).
+
+When RadiantOne receives a request to the LDAP/LDAPS endpoint, it uses the user in the bind operation, and the access control instructions (ACIs) defined in order to allow or deny access to directory information. The server can allow or deny permissions such as read, write, search, or compare. 
 
 >[!warning] 
 >ACI are not enforced for the RadiantOne super user, cn=directory manager.
