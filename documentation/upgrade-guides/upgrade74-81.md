@@ -149,7 +149,7 @@ C:\r1\migration\radiantone-migration-tool-2.1.10\migrate.bat export C:/tmp/expor
 
 Log into your Environment Operations Center. The credentials were sent to you during your onboarding process.
 
-Use the Environment Operations Center to create an environment and install RadiantOne Identity Data Management version v8.1.X (where "X" is the patch number and must be 1 or above) and import the configuration that was exported from the v7.4 machine using the CUSTOM CONFIGURATION option by toggling the **Advanced Setup** option on. For assistance see: [Creating Environments](../../../eoc/environments/environment-overview/create-environments/#advanced-setup)
+Use the Environment Operations Center to create an environment and install RadiantOne Identity Data Management version v8.1.X (where "X" is the patch number and must be 1 or above) and import the configuration that was exported from the v7.4 machine using the CUSTOM CONFIGURATION option by toggling the **Advanced Setup** option on. For assistance see: [Creating Environments](../../../eoc/latest/environments/environment-overview/create-environments/#advanced-setup)
 
 >[!warning] do NOT select RadiantOne Identity Data Management v8.1.0 when creating the environment. Migrations from v7.4 to v8.1.0 are not supported.
 
@@ -162,7 +162,7 @@ Use the Environment Operations Center to create an environment and install Radia
 
 To connect to data sources that are not directly accessible from the SaaS environment, create a Secure Data Connector group and add a data connector in Environment Operations Center.  
 
-Once a secure data connector has been created in Environment Operations Center, the SDC client must be deployed on your local system before you can establish a connection. For assistance see: [Creating Environments](../../../secure-data-connector/configure-sdc-service/)
+Once a secure data connector has been created in Environment Operations Center, the SDC client must be deployed on your local system before you can establish a connection. For assistance see: [Creating Environments](../../../eoc/latest/secure-data-connector/configure-sdc-service/)
  
 
 ### Control Panel Endpoint
