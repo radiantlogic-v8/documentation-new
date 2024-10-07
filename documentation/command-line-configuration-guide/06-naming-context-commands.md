@@ -340,7 +340,7 @@ For typical LDAP migration use cases where you are migrating from a legacy LDAP 
 
 2. (Optional) If inter-cluster replication is used, suspend it in all clusters by setting “replicationInSuspendMode” : true, in ZooKeeper at `/radiantone/<zk_version>/<clustername>/config/namings/<replicatednamingcontext>`. Remember to do this for all clusters involved in inter-cluster replication.
 
-3. After the persistent cache has been converted to a RadiantOne Directory store using the `convert-pcache-to-hdap` command (run on one node in all clusters), [rebuild the index](../namespace-configuration-guide/05-radiantone-universal-directory/#rebuilding-indexes) to remove any persistent cache operational attributes. 
+3. After the persistent cache has been converted to a RadiantOne Directory store using the `convert-pcache-to-hdap` command (run on one node in all clusters), [rebuild the index](./09-task-launch-commands/#rebuild-index) to remove any persistent cache operational attributes. 
 
 4. (Optional) If inter-cluster replication is used, enable it by setting “replicationInSuspendMode” : false, in ZooKeeper at `/radiantone/<zk_version>/<clustername>/config/namings/<replicatednamingcontext>` in all RadiantOne clusters involved in inter-cluster replication.
 
