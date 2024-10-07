@@ -132,7 +132,7 @@ Ensure that you specify your target version when running installation and update
    - directory-browser
    - directory-namespace
    - directory-schema
-   - fid-0
+   - fid-X (Note that the number of deployed fid services is determined by the `replicaCount` property in your values.yaml file. For example, if `replicaCount` is set to 1, you'll see only fid-0. If it's set to 2, you'll see both fid-0 and fid-1, and so on, depending on the value of `replicaCount`.)
    - iddm-proxy
    - iddm-ui
    - settings
