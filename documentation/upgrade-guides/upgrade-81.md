@@ -5,7 +5,7 @@ description: Upgrading RadiantOne Identity Data Management
 
 ## Overview
 
-The process from upgrading from RadiantOne Identity Data Management v8.0.2 SaaS to v8.1.X is described below. If you are running a version prior to v8.0.2, you must first update to this version.
+The process from upgrading from RadiantOne Identity Data Management v8.0.2 SaaS to v8.1.0 is described below. If you are running a version prior to v8.0.2, you must first update to this version. Once you have updated to v8.1.0, you can update from this point to additional v8.1.X patch releases (e.g. v8.1.1)
 
 ## Prerequisites
 
