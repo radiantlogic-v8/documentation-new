@@ -140,7 +140,7 @@ An example of exporting configuration on Linux where RadiantOne is installed in 
 
 1. From a command prompt navigate to the location where you unzipped the migration utility v2.1.X.  
 
->[!warn] If performing the export on Windows, run the command line as Administrator (right-click on the .exe and choose Run as Administrator option).  
+>[!warning] If performing the export on Windows, run the command line as Administrator (right-click on the .exe and choose Run as Administrator option).  
 
 1. Run the following command (modifying the version of the migration tool and the location of the export file to match your needs).<br>
 C:\r1\migration\radiantone-migration-tool-2.1.10\migrate.bat export C:/tmp/export.zip 
@@ -151,7 +151,7 @@ Log into your Environment Operations Center. The credentials were sent to you du
 
 Use the Environment Operations Center to create an environment and install RadiantOne Identity Data Management version v8.1.X (where "X" is the patch number and must be 1 or above) and import the configuration that was exported from the v7.4 machine using the CUSTOM CONFIGURATION option by toggling the **Advanced Setup** option on. For assistance see: [Creating Environments](https://developer.radiantlogic.com/eoc/latest/environments/environment-overview/create-environments/#advanced-setup)
 
->[!warn] do NOT select RadiantOne Identity Data Management v8.1.0 when creating the environment. Migrations from v7.4 to v8.1.0 are not supported.
+>[!warning] do NOT select RadiantOne Identity Data Management v8.1.0 when creating the environment. Migrations from v7.4 to v8.1.0 are not supported.
 
 ![Install IDDM](Media/new-iddm-app3.jpg)
 
