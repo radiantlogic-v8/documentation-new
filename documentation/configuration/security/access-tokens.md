@@ -14,6 +14,11 @@ To delete an access token, click the trashcan icon inline with the token to be r
 
 ![Access Tokens](Media/access-tokens.jpg)
 
+Access tokens can be used to securely query the RadiantOne Service on the REST endpoint. For SaaS deployments, you can view the REST endpoint URL from the Environment Operations Center > Manage > Environments > *Enviroment_Name* > Overview > Application Endpoints.
+
+![Rest Endpoint](Media/rest-endpoint.jpg)
+
+For self-managed deployments, the REST endpoint depends on your [Port Forwarding Configuration](../../installation/self-managed).
 
 ## Configuration API
 To configure an access token for calling the RadiantOne configuration API:
