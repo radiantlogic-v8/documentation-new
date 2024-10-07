@@ -80,7 +80,7 @@ Ensure that you specify your target version when running installation and update
 - **image.repository**: Specifies the Docker repository for the Identity Data Management image. Set to **radiantone/fid**.
 - **image.tag**: Specifies the version of the Identity Data Management image to install or upgrade to.
 - **fid.rootUser**: Denotes the root user for RadiantOne. Set to **cn=Directory Manager**.
-- **fid.rootPassword**: Denotes the password for the root user. Set to **Welcome1234**.
+- **fid.rootPassword**: Denotes the password for the root user. Set to a strong password value that meets your corporate security policy. You can update this password after install if needed.
 - **fid.license**: Set your Identity Data Management license key.
 - **persistence.enabled**: Indicates whether data persistence is enabled. Set to **true** or **false**.
 - **persistence.storageClass**: Defines the storage class for provisioning persistent volumes.
