@@ -142,7 +142,10 @@ Ensure that you specify your target version when running installation and update
    - zookeeper-1
    - zookeeper-2
 
-## Accessing the Control Panel
+
+## Accessing RadiantOne Services 
+
+### Accessing the Control Panel
 
 To access the Identity Data Management control panel, first set up port forwarding for the `iddm-proxy-service` on port 8443:
 ```bash
@@ -151,29 +154,49 @@ kubectl port-forward svc/iddm-proxy-service -n self-managed 8443:443
 
 After setting up port forwarding, you can reach the control panel at [https://localhost:8443/login](https://localhost:8443/login).
 
-### Classic Control Panel
+### Accessing the Classic Control Panel
 
 If needed, access the classic control panel via [https://localhost:8443/classic](https://localhost:8443/classic) after port-forwarding the `iddm-proxy-service`.
 
-### Accessing the API Service
+### Accessing the Configuration API 
 
-You can access the API service at [https://localhost:8443/api](https://localhost:8443/api).
+To access the Configuration API, open a new terminal and run the following command to port-forward:
 
-
-### Accessing LDAP/ADAP Service
-
-To access the LDAP/ADAP service, run the following command to port-forward (open another terminal):
-
-> Ensure that ports 2389, 2636, 8089, and 8090 are not already in use on your local machine.
+> Ensure that port 8443 is not already in use on your local machine.
 
 ```bash
-kubectl port-forward svc/fid-app -n self-managed 2389 2636 8089 8090
+kubectl port-forward svc/fid-app -n self-managed 8443
+```
+
+- Access the Configuration API at [https://localhost:8443/api](https://localhost:8443/api).
+
+### Accessing the Data Management SCIM and REST/ADAP APIs:
+
+To access the Data Management [SCIM API](https://developer.radiantlogic.com/idm/v8.1/web-services-api-guide/scim/) and [REST/ADAP API](https://developer.radiantlogic.com/idm/v8.1/web-services-api-guide/rest/), open a new terminal and run the following command to port-forward:
+
+> Ensure that ports 8089 and 8090 are not already in use on your local machine.
+
+```bash
+kubectl port-forward svc/fid-app -n self-managed 8089 8090
+```
+
+- Access the ADAP Rest API at [https://localhost:8089/adap](https://localhost:8089/adap).
+- Access the ADAPs Rest API at [https://localhost:8090/adap](https://localhost:8090/adap).
+- Access the SCIM API at [https://localhost:8090/scim2](https://localhost:8090/scim2).
+
+
+### Accessing LDAP/LDAPs Service
+
+To access the [LDAP/LDAPs](https://developer.radiantlogic.com/idm/v8.1/configuration/global-settings/client-protocols/#ldap) service, open a new terminal and run the following command to port-forward:
+
+> Ensure that ports 2389 and 2636 are not already in use on your local machine.
+
+```bash
+kubectl port-forward svc/fid-app -n self-managed 2389 2636
 ```
 
 - Access the LDAP service at: `ldap://localhost:2389` from your LDAP browser.
-- Access the ADAP service at: `http://localhost:8089`.
-- Access the LDAPS service at: `ldaps://localhost:2636` from your LDAP browser.
-- Access the ADAP (secure) service at: `https://localhost:8090`.
+- Access the LDAPs service at: `ldaps://localhost:2636` from your LDAP browser.
 
 ## Updating a Deployment
 
