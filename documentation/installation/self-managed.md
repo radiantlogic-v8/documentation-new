@@ -23,7 +23,7 @@ Ensure that you specify your target version when running installation and update
 - [Kubernetes cluster](https://kubernetes.io/docs/setup/) of version 1.27 or higher. Refer to the [Sizing a Kubernetes cluster](https://developer.radiantlogic.com/idm/v7.4/getting_started/kubernetes/#sizing-a-kubernetes-cluster) document for additional details.
 - Install [Helm](https://helm.sh/docs/intro/install/) version 3.0 or higher.
 - Install [kubectl](https://kubernetes.io/docs/reference/kubectl/) version 1.27 or higher and configure it to access your Kubernetes cluster.
-- An Identity Data Management license key, which will be provided to you during onboarding.
+- For new customers, an Identity Data Management license key will be provided to you during onboarding. For existing customers that want to upgrade to v8.1 self-managed, your existing license key should work. If you have issues, create a Radiant Logic Customer Support ticket at https://support.radiantlogic.com/.
 - For new customers, ensure that you have received Container Registry Access and image pull credentials named **(regred.yaml)** from Radiant Logic during onboarding. For existing customers that want to upgrade to v8.1 self-managed, create a Radiant Logic Customer Support ticket at https://support.radiantlogic.com/ to request registry credentials.
 - Ensure that you have necessary storage provisioners and storage classes configured for the Kubernetes cluster. Some examples of supported storage classes are `gp2`/`gp3`, [Azure disk](https://learn.microsoft.com/en-us/azure/aks/concepts-storage#persistent-volumes), etc.
 - Estimate sufficient resources (CPU, memory, storage) for the deployment. Your Radiant Logic solutions engineer may guide you with this depending on your use case. 
