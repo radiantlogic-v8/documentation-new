@@ -139,7 +139,7 @@ An example of exporting configuration on Linux where RadiantOne is installed in 
 1. Run <RLI_HOME>\bin\runZooKeeper.bat (.sh) to start ZooKeeper. 
 
 1. From a command prompt navigate to the location where you unzipped the migration utility v2.1.X.
- >[!warn] If performing the export on Windows, run the command line as Administrator (right-click on the .exe and choose Run as Administrator option).  
+ >[!warning] If performing the export on Windows, run the command line as Administrator (right-click on the .exe and choose Run as Administrator option).  
 
 1. Run the following command (modifying the version of the migration tool and the location of the export file to match your needs).<br>
 C:\r1\migration\radiantone-migration-tool-2.1.10\migrate.bat export C:/tmp/export.zip 
@@ -150,7 +150,7 @@ C:\r1\migration\radiantone-migration-tool-2.1.10\migrate.bat export C:/tmp/expor
 
 Follow the steps outlined in: [Self-managed Deployments](/../v8.1/installation/self-managed) using the RadiantOne Identity Data Management image v8.1.x ("x" is the patch version number, in the example below, v8.1.1 is used) and importing the configuration that was exported from v7.4 by updating the sections outlines below in your values.yaml file:
 
->[!warn] do NOT use RadiantOne Identity Data Management image.tag 8.1.0. Migrations from v7.4 to v8.1.0 are not supported.
+>[!warning] do NOT use RadiantOne Identity Data Management image.tag 8.1.0. Migrations from v7.4 to v8.1.0 are not supported.
 
 ```
 image:
