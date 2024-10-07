@@ -611,7 +611,9 @@ This parameter can be set to the DN of the Administrators group defined in the v
 
 File Manager is only accessible in the Classic Control Panel.
 
-RadiantOne does not allow access to its files via operating system user interfaces. The File Manager option allows you to view, upload, and download files that reside under the RLI_HOME directory. It also allows you to build jar files. To access the File Manager, in the Classic Control Panel, go to Settings > Configuration > File Manager. The default location displayed is RLI_HOME.
+RadiantOne does not allow access to files via operating system user interfaces. The File Manager option allows you to view, upload, and download files that reside under the RLI_HOME directory. It also allows you to build jar files. To access the File Manager, in the Classic Control Panel, go to Settings > Configuration > File Manager. The admin that accesses Classic Control Panel must be assigned to a role that impersonates a role (e.g. Directory Administrators and FileManagerAdmin) that has file-manager-read and/or file-manager-write vdPrivilege to read (file-manager-read) and/or read and manage (file-manager-write) files from File Manager. By default only the Directory Administrators and FileManagerAdmin roles have these privileges in Classic Control Panel. 
+
+The default location displayed in File Manager is RLI_HOME.
 
 >[!note] Files at the RLI_HOME level cannot be modified with File Manager. 
 
@@ -694,6 +696,6 @@ The following settings must be managed from the RadiantOne Classic Control Panel
 -	Control Panel customizations (lock, color theme, session timeout, max users, banner, custom message on login screen)​: ​Classic Control Panel > Settings > Server Front End > Administration <br> See [Customizing the Classic Control Panel](#customizing-the-classic-control-panel) for details.
 -	PCache Refresh Monitoring: Classic Control Panel > PCache Monitoring tab <br> See [Persistent Cache Refresh Monitoring](../monitoring-and-alerts/monitoring-and-alerts/#persistent-cache-refresh-pcache-monitoring-tab) for details.
 -	Intercluster Replication Monitoring: Classic Control Panel > Replication Monitoring tab <br> See [Replication Monitoring](../monitoring-and-alerts/monitoring-and-alerts/#replication-monitoring-tab) for details.
--	File Manager: Classic Control Panel > Settings > Configuration > File Manager <br> See [File Manager](#file-manager) for details.
+-	File Manager: Classic Control Panel > Settings > Configuration > File Manager <br> See [File Manager](#file-manager) for details. The admin that accesses Classic Control Panel must be assigned to a role that impersonates a role (e.g. Directory Administrators and FileManagerAdmin) that has file-manager-read and/or file-manager-write vdPrivilege to read (file-manager-read) and/or read and manage (file-manager-write) files from File Manager. By default only the Directory Administrators and FileManagerAdmin roles have these privileges in Classic Control Panel. 
 -	Identity Data Analysis Wizard: Classic Control Panel > Wizards > Identity Data Analysis. See [Identity Data Analysis](../configuration/identity-views/identity-data-analysis) for details.
 -	Global Identity Builder: Classic Control Panel > Wizards > Global Identity Builder. See [Global Identity Builder](../configuration/global-identity-builder/introduction) for details.
