@@ -113,7 +113,7 @@ To configure persistent cache with real-time refresh:
 7. On the Refresh Settings tab, select the Real-time refresh option. A table appears displaying the connectors related to the data sources that comprise the identity view.
 
 >[!warning] 
->If your virtual view is joined with other virtual views, the secondary views are also cached. 
+>If your virtual view is joined with other virtual views, you are prompted to cache the secondary views as well. Click **CREATE CACHE FOR DEPENDENCIES**.  This only creates the cache definition, you must navigate to this location in the Directory Namespace and **initialize** the cache and **configure the refresh strategy** for the dependent views. 
 
 8. Configure any needed connectors shown in the table. See the section titled [Configuring Source Connectors](./cache-capture-connectors) for steps.
 
@@ -136,6 +136,8 @@ If you’ve initialized the persistent cache before and the LDIF file was create
 
 The view(s) is now in the persistent cache. Queries are handled locally by RadiantOne and are no longer sent to the backend data source(s). Real-time cache refresh has been configured. For information about properties associated with persistent cache, please see [Persistent Cache Properties](#managing-cache-properties).
 
+>[!warning] 
+>If your virtual view is joined with other virtual views, you must navigate to the location of the secondary views in the Directory Namespace and **initialize** the cache(s) and **configure the refresh strategy** for the dependent view(s). 
 
 ## Configuring Persistent Cache with Periodic Refresh
 
