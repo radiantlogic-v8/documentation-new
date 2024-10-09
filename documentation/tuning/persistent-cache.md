@@ -103,15 +103,13 @@ To configure persistent cache with real-time refresh:
 
 1.	On the right side, click the **CACHE** tab.
 1.	Click **+CREATE NEW CACHE**.
-1.	Browse to the branch in the RadiantOne namespace that you would like to store in persistent cache and click **CREATE**.
-   
+1.	Browse to the branch in the RadiantOne namespace that you would like to store in persistent cache and click **CREATE**.   
    >[!warning] 
 >For proxy views of LDAP backends, you must select the root level to start the cache from. Caching only a sub-container of a proxy view is not supported.
 
 1. The configuration process begins. Once it completes, the manage cache refresh configuration displays.
 
-1. On the Refresh Settings tab, select the Real-time refresh option. A table appears displaying the connectors related to the data sources that comprise the identity view.
-   
+1. On the Refresh Settings tab, select the Real-time refresh option. A table appears displaying the connectors related to the data sources that comprise the identity view.   
    >[!warning] 
 >If your virtual view is joined with other virtual views, you are prompted to cache the secondary views as well. Click **CREATE CACHE FOR DEPENDENCIES**.  This only creates the cache definition, you must navigate to this location in the Directory Namespace and **initialize** the cache and **configure the refresh strategy** for the dependent views. Also, when you configure joins on the Object Builder tab using objects from *Secondary Data Source Schemas*, the view is auto-created and mounted under the **cn=staging** root naming context. Go to this naming context and select the **CACHE** tab to manage these secondary data source caches.
 
