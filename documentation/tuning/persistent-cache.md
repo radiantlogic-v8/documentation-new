@@ -127,13 +127,11 @@ If this is the first time you’ve initialized the persistent cache, choose this
 
 If you’ve initialized the persistent cache before and the LDIF file was created successfully from the backend source(s) (and the data from the backend(s) has not changed since the generation of the LDIF file), then you can choose this option to use that existing file. The persisting of the cache occurs in two phases. The first phase generates an LDIF file with the data returned from the queries to the underlying data source(s). The second phase imports the LDIF file into the local RadiantOne Directory store. If there is a failure during the second phase, and you must re-initialize the persistent cache, you have the option to choose the LDIF file (that was already built during the first phase) instead of having to re-generate it (as long as the LDIF file generated successfully). You can click browse and navigate to the LDIF file. 
 
-1. Click **DONE**. The cache initialization process begins. The cache initialization is performed as a task and can be viewed and managed from the Manage > Tasks section. 
+11. Click **DONE**. The cache initialization process begins. The cache initialization is performed as a task and can be viewed and managed from the Manage > Tasks section. 
 
-1. Once the cache is initialized, click **NEXT** where you can manage properties.
+12. Once the cache is initialized, click **NEXT** where you can manage properties. The view(s) is now in the persistent cache. Queries are handled locally by RadiantOne and are no longer sent to the backend data source(s). Real-time cache refresh has been configured. For information about properties associated with persistent cache, please see [Persistent Cache Properties](#managing-cache-properties).
 
-The view(s) is now in the persistent cache. Queries are handled locally by RadiantOne and are no longer sent to the backend data source(s). Real-time cache refresh has been configured. For information about properties associated with persistent cache, please see [Persistent Cache Properties](#managing-cache-properties).
-
-1. (Optional) If your main identity view is joined with other identity views, the cache is auto-configured for these secondary views when you click **CREATE CACHE FOR DEPENDENCIES**. Navigate to the location of the secondary views in the Directory Namespace and **initialize** the cache(s) and **configure the refresh strategy** for the dependent/secondary view(s) from the **CACHE** tab.
+13. (Optional) If your main identity view is joined with other identity views, the cache is auto-configured for these secondary views when you click **CREATE CACHE FOR DEPENDENCIES**. Navigate to the location of the secondary views in the Directory Namespace and **initialize** the cache(s) and **configure the refresh strategy** for the dependent/secondary view(s) from the **CACHE** tab.
 
 >[!warning] When you configure joins on the Object Builder tab using objects from *Secondary Data Source Schemas*, the view is auto-created and mounted under the **cn=staging** root naming context. Go to this naming context and select the **CACHE** tab to manage these secondary data source caches.
 
