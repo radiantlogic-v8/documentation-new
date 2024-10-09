@@ -99,27 +99,27 @@ To configure persistent cache with real-time refresh:
 
 1.	From the Control Panel, go to Setup > Directory Namespace > Namespace Design.
 
-2.	Select the root naming context that contains the identity view that requires cache.
+1.	Select the root naming context that contains the identity view that requires cache.
 
-3.	On the right side, click the **CACHE** tab.
-4.	Click **+CREATE NEW CACHE**.
-5.	Browse to the branch in the RadiantOne namespace that you would like to store in persistent cache and click **CREATE**.
-
->[!warning] 
+1.	On the right side, click the **CACHE** tab.
+1.	Click **+CREATE NEW CACHE**.
+1.	Browse to the branch in the RadiantOne namespace that you would like to store in persistent cache and click **CREATE**.
+   
+   >[!warning] 
 >For proxy views of LDAP backends, you must select the root level to start the cache from. Caching only a sub-container of a proxy view is not supported.
 
-6. The configuration process begins. Once it completes, the manage cache refresh configuration displays.
+1. The configuration process begins. Once it completes, the manage cache refresh configuration displays.
 
-7. On the Refresh Settings tab, select the Real-time refresh option. A table appears displaying the connectors related to the data sources that comprise the identity view.
+1. On the Refresh Settings tab, select the Real-time refresh option. A table appears displaying the connectors related to the data sources that comprise the identity view.
+   
+   >[!warning] 
+>If your virtual view is joined with other virtual views, you are prompted to cache the secondary views as well. Click **CREATE CACHE FOR DEPENDENCIES**.  This only creates the cache definition, you must navigate to this location in the Directory Namespace and **initialize** the cache and **configure the refresh strategy** for the dependent views. Also, when you configure joins on the Object Builder tab using objects from *Secondary Data Source Schemas*, the view is auto-created and mounted under the **cn=staging** root naming context. Go to this naming context and select the **CACHE** tab to manage these secondary data source caches.
 
->[!warning] 
->If your virtual view is joined with other virtual views, you are prompted to cache the secondary views as well. Click **CREATE CACHE FOR DEPENDENCIES**.  This only creates the cache definition, you must navigate to this location in the Directory Namespace and **initialize** the cache and **configure the refresh strategy** for the dependent views. 
+1. Configure any needed connectors shown in the table. See the section titled [Configuring Source Connectors](./cache-capture-connectors) for steps.
 
-8. Configure any needed connectors shown in the table. See the section titled [Configuring Source Connectors](./cache-capture-connectors) for steps.
+1. Click **NEXT**.
 
-9. Click **NEXT**.
-
-10. On the Initialize step, click **INITIALIZE** to initialize the persistent cache.
+1. On the Initialize step, click **INITIALIZE** to initialize the persistent cache.
 
 There are two options for initializing a persistent cache. Each is described below.
 
@@ -130,14 +130,17 @@ If this is the first time you’ve initialized the persistent cache, choose this
 *Using an Existing LDIF*
 
 If you’ve initialized the persistent cache before and the LDIF file was created successfully from the backend source(s) (and the data from the backend(s) has not changed since the generation of the LDIF file), then you can choose this option to use that existing file. The persisting of the cache occurs in two phases. The first phase generates an LDIF file with the data returned from the queries to the underlying data source(s). The second phase imports the LDIF file into the local RadiantOne Directory store. If there is a failure during the second phase, and you must re-initialize the persistent cache, you have the option to choose the LDIF file (that was already built during the first phase) instead of having to re-generate it (as long as the LDIF file generated successfully). You can click browse and navigate to the LDIF file. 
-11. Click **DONE**. The cache initialization process begins. The cache initialization is performed as a task and can be viewed and managed from the Manage > Tasks section. 
 
-12. Once the cache is initialized, click **NEXT** where you can manage properties.
+1. Click **DONE**. The cache initialization process begins. The cache initialization is performed as a task and can be viewed and managed from the Manage > Tasks section. 
+
+1. Once the cache is initialized, click **NEXT** where you can manage properties.
 
 The view(s) is now in the persistent cache. Queries are handled locally by RadiantOne and are no longer sent to the backend data source(s). Real-time cache refresh has been configured. For information about properties associated with persistent cache, please see [Persistent Cache Properties](#managing-cache-properties).
 
+1. (Optional) If your main identity view is joined with other identity views, the cache is auto-configured for these secondary views when you click **CREATE CACHE FOR DEPENDENCIES**. Navigate to the location of the secondary views in the Directory Namespace and **initialize** the cache(s) and **configure the refresh strategy** for the dependent/secondary view(s) from the **CACHE** tab.
+
 >[!warning] 
->If your virtual view is joined with other virtual views, you must navigate to the location of the secondary views in the Directory Namespace and **initialize** the cache(s) and **configure the refresh strategy** for the dependent view(s). 
+>When you configure joins on the Object Builder tab using objects from *Secondary Data Source Schemas*, the view is auto-created and mounted under the **cn=staging** root naming context. Go to this naming context and select the **CACHE** tab to manage these secondary data source caches.
 
 ## Configuring Persistent Cache with Periodic Refresh
 
