@@ -104,7 +104,7 @@ To configure persistent cache with real-time refresh:
 1.	On the right side, click the **CACHE** tab.
 1.	Click **+CREATE NEW CACHE**.
 1.	Browse to the branch in the RadiantOne namespace that you would like to store in persistent cache and click **CREATE**.
-   >[!warning] For proxy views of LDAP backends, you must select the root level to start the cache from. Caching only a sub-container of a proxy view is not supported.
+	   >[!warning] For proxy views of LDAP backends, you must select the root level to start the cache from. Caching only a sub-container of a proxy view is not supported.
 
 1. The configuration process begins. Once it completes, the manage cache refresh configuration displays.
 
