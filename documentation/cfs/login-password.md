@@ -206,39 +206,39 @@ Configure a RadiantOne Trust Connector
 
 Make sure you have installed the RTC in each Active Directory Domains you want to cover for your users. Log into CFS with your Tenant Administrator account and navigate to Authentication | Active Directory.
 
-![](media/rtc-15.png)
+![](media/rtc-config1.png)
 
 If you want to create the RTC manually then click **New Active Directory Connector**. Otherwise, click **Have a metadata file?** on top of the screen. If the CFS machine can contact the RTC machine over https (port 443), you can click **URL**. Use the "Content" option if the RTC machine is not accessible from the CFS machine.
 
-![](media/rtc-16.png)
+![](media/rtc-config2.png)
 
 Open a new web browser and navigate to the RTC `[https://<SERVER_ADDRESS>/rtc/](https://<SERVER_ADDRESS>/rtc/)`.
 
-![](media/rtc-17.png)
+![](media/rtc-config3.png)
 
 If you want to use the "URL option" copy the link `FederationMetadata.xml` and use it in the CFS page. Click the "Import" button.
 
-![](media/rtc-18.png)
+![](media/rtc-config4.png)
 
 If you want to use the "Content option", open the link `FederationMetadata.xml`.
 
-![](media/rtc-19.png)
+![](media/rtc-config5.png)
 
 And copy the source of the page in the CFS page. Click the "Import" button.
 
-![](media/rtc-20.png)
+![](media/rtc-config6.png)
 
 You will get most of the parameters already pre-filled.
 
-![](media/rtc-21.png)
+![](media/rtc-config7.png)
 
 First, in the **Configuration** tab, enter the list of Active Directory domains you want to cover with this RTC. You may also enter a list of CIDR IP Blocks (e.g. 10.0.0.0/24).
 
-![](media/rtc-22.png)
+![](media/rtc-config8.png)
 
 In the **Mappings** tab, make sure the Attribute corresponds to the attribute available in FID. The incoming claim has a value that looks like `DOMAIN\samAccountName` and the default transformation will extract the `samAccountName`.
 
-![](media/rtc-23.png)
+![](media/rtc-config9.png)
 
 Make sure you have enabled the configuration and click "Save".
 
@@ -251,11 +251,11 @@ If you have configured the RTC with a Metadata URL, you can update the parameter
 
 On the Authentication | Active Directory page, select the RTC you want to update with the metadata, click the "Actions" button and select **Update from Metadata**. This action will download the new metadata file and extract the endpoint and certificate.
 
-![](media/rtc-24.png)
+![](media/rtc-config11.png)
 
 Confirm you want to update your RTC.
 
-![](media/rtc-25.png)
+![](media/rtc-config12.png)
 
 Make sure the configuration is correct.
 
@@ -269,11 +269,11 @@ CFS Master has a diagnostic page that allows anyone to make sure the RTC configu
 *   Access the diagnostic page `[https://<CFS_SERVER>/cfs/Diagnostic/<TENANT_ID>/](https://<CFS_SERVER>/cfs/Diagnostic/<TENANT_ID>/)`
 *   The following screen shows a client that has not been associated with an RTC.
 
-![](media/rtc-26.png)
+![](media/rtc-config13.png)
 
 The following screen shows a client that has been associated with an RTC.
 
-![](media/rtc-27.png)
+![](media/rtc-config14.png)
 
 >[!note] If your CFS servers are protected by a proxy, you are probably using the [X-Forwarded-For](https://en.wikipedia.org/wiki/X-Forwarded-For) HTTP header field to provide to the server the real address of the user. CFS is capable of detecting this field to find a matching RTC.
 
