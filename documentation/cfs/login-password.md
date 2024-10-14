@@ -113,17 +113,17 @@ Configuration
 *   Enter the name you want to present to the users.
 *   Every authentication method is associated with a level of assurance. This level can be used to enforce access permissions for applications. To indicate the level of assurance a person is associated with when they log in with a certificate, select the appropriate value from the "Level of Assurance" drop-down list.
 
-![](media/certificate-1.png)
+![](media/certificates-1.png)
 
 ### Steps to Configure CAC Authentication
 
 1.  Verify that the chain of certificates presented by your CAC Card is present in your CFS Master’s Trust store.
     
-    ![](media/certificate-5.png)
+    ![](media/certificates-5.png)
     
     If your certs are managed by PKI/PKE then it should be present, but **please ensure that your Root Certificate and Intermediate Certifcates are present under the Trusted Root Authority and Intermediate Certificate Authority** respectively:
     
-    ![](media/certificate-6.png)
+    ![](media/certificates-6.png)
     
 2.  Verify what your requirements are to extract values from your CAC Public Key. See the mappings section below for the 3 default mappings CFS provides
     
@@ -135,7 +135,7 @@ Configuration
          Value name: ClientAuthTrustMode,
          Value type: REG_DWORD, Value data: 2 (HEX)
     
-    ![].media/certificate-7.png)
+    ![].media/certificates-7.png)
     
 5.  Restart IIS once step 4 is completed
     
@@ -159,29 +159,29 @@ CFS provides 3 default mappings:
 *   [http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn](http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn)
     *   The will extract the extended attribute **UPN** from the certificate.
 
-![](media/certificate-2.png)
+![](media/certificates-2.png)
 
 ### Mappings for Complex Extractions from Certificates
 
 In some instances, you may need to create a mapping that involves special regex to parse out data from certificate attributes. Let's take a look at a certificate as an example:
 
-![](media/certificate-8.png)
+![](media/certificates-8.png)
 
 In this certificate we need to extract the value of `Principal Name = 123456789@mil` but we also want to exclude everything after the `@` symbol. So, the mapping that is going to be used will be:
 
-![](media/certificate-9.png)
+![](media/certificates-9.png)
 
 In the above expression, the section highlighted in yellow indicates which value needs to be extracted from the certificate (in this case, SAN). The section highlighted in green trims the value from the `@` symbol and gives everything after the left. Notice that `%40` was used which refers to `@` symbol in URL format.
 
 Therefore, the complete mapping in CFS will look like this:
 
-![](media/certificate-10.png)
+![](media/certificates-10.png)
 
 Notice that the attribute `description` was used here. You can use any attribute you want as long as it holds the exact same value that you extracted from the certificate.
 
 In this case, the entry present in FID has `description` with the value `12345678`
 
-![](media/certificate-11.png)
+![](media/certificates-11.png)
 
 Passthrough
 -----------
@@ -210,11 +210,11 @@ Make sure you have installed the RTC in each Active Directory Domains you want t
 
 If you want to create the RTC manually then click **New Active Directory Connector**. Otherwise, click **Have a metadata file?** on top of the screen. If the CFS machine can contact the RTC machine over https (port 443), you can click **URL**. Use the "Content" option if the RTC machine is not accessible from the CFS machine.
 
-![](media/rtc-16.png)
+![](media/rtc-6.png)
 
 Open a new web browser and navigate to the RTC `[https://<SERVER_ADDRESS>/rtc/](https://<SERVER_ADDRESS>/rtc/)`.
 
-![](media/rtc-17.png)
+![](media/rtc-7.png)
 
 If you want to use the "URL option" copy the link `FederationMetadata.xml` and use it in the CFS page. Click the "Import" button.
 
