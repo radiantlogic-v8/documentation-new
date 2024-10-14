@@ -165,11 +165,11 @@ CFS provides 3 default mappings:
 
 In some instances, you may need to create a mapping that involves special regex to parse out data from certificate attributes. Let's take a look at a certificate as an example:
 
-![](media/certificates-8.png)
+![](media/certificate-8.png)
 
 In this certificate we need to extract the value of `Principal Name = 123456789@mil` but we also want to exclude everything after the `@` symbol. So, the mapping that is going to be used will be:
 
-![](media/certificates-9.png)
+![](media/certificate-9.png)
 
 In the above expression, the section highlighted in yellow indicates which value needs to be extracted from the certificate (in this case, SAN). The section highlighted in green trims the value from the `@` symbol and gives everything after the left. Notice that `%40` was used which refers to `@` symbol in URL format.
 
