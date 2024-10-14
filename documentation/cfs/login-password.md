@@ -135,7 +135,7 @@ Configuration
          Value name: ClientAuthTrustMode,
          Value type: REG_DWORD, Value data: 2 (HEX)
     
-    ![].media/certificates-7.png)
+    ![]media/certificates-7.png)
     
 5.  Restart IIS once step 4 is completed
     
