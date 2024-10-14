@@ -210,11 +210,11 @@ Make sure you have installed the RTC in each Active Directory Domains you want t
 
 If you want to create the RTC manually then click **New Active Directory Connector**. Otherwise, click **Have a metadata file?** on top of the screen. If the CFS machine can contact the RTC machine over https (port 443), you can click **URL**. Use the "Content" option if the RTC machine is not accessible from the CFS machine.
 
-![](media/rtc-6.png)
+![](media/rtc-16.png)
 
 Open a new web browser and navigate to the RTC `[https://<SERVER_ADDRESS>/rtc/](https://<SERVER_ADDRESS>/rtc/)`.
 
-![](media/rtc-7.png)
+![](media/rtc-17.png)
 
 If you want to use the "URL option" copy the link `FederationMetadata.xml` and use it in the CFS page. Click the "Import" button.
 
