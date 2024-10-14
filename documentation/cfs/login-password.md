@@ -113,17 +113,17 @@ Configuration
 *   Enter the name you want to present to the users.
 *   Every authentication method is associated with a level of assurance. This level can be used to enforce access permissions for applications. To indicate the level of assurance a person is associated with when they log in with a certificate, select the appropriate value from the "Level of Assurance" drop-down list.
 
-![](media/certificates-1.png)
+![](media/certificate-1.png)
 
 ### Steps to Configure CAC Authentication
 
 1.  Verify that the chain of certificates presented by your CAC Card is present in your CFS Master’s Trust store.
     
-    ![](media/certificates-5.png)
+    ![](media/certificate-5.png)
     
     If your certs are managed by PKI/PKE then it should be present, but **please ensure that your Root Certificate and Intermediate Certifcates are present under the Trusted Root Authority and Intermediate Certificate Authority** respectively:
     
-    ![](media/certificates-6.png)
+    ![](media/certificate-6.png)
     
 2.  Verify what your requirements are to extract values from your CAC Public Key. See the mappings section below for the 3 default mappings CFS provides
     
@@ -135,7 +135,7 @@ Configuration
          Value name: ClientAuthTrustMode,
          Value type: REG_DWORD, Value data: 2 (HEX)
     
-    ![](media/certificates-7.png)
+    ![](media/certificate-7.png)
     
 5.  Restart IIS once step 4 is completed
     
@@ -159,7 +159,7 @@ CFS provides 3 default mappings:
 *   [http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn](http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn)
     *   The will extract the extended attribute **UPN** from the certificate.
 
-![](media/certificates-2.png)
+![](media/certificate-2.png)
 
 ### Mappings for Complex Extractions from Certificates
 
@@ -175,13 +175,13 @@ In the above expression, the section highlighted in yellow indicates which value
 
 Therefore, the complete mapping in CFS will look like this:
 
-![](media/certificates-10.png)
+![](media/certificate-10.png)
 
 Notice that the attribute `description` was used here. You can use any attribute you want as long as it holds the exact same value that you extracted from the certificate.
 
 In this case, the entry present in FID has `description` with the value `12345678`
 
-![](media/certificates-11.png)
+![](media/certificate-11.png)
 
 Passthrough
 -----------
