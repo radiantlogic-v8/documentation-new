@@ -77,7 +77,7 @@ Detailed steps:
 
 To enable support for OIDC authentication:
 
-1.	Have your client ID and secret associated with the Control Panel application configured in your OIDC server ready. The Redirect URL configured for the web application should point to the URL associated with the Control Panel. Example: https://cp.federated-identity.com/main/j_spring_openid_security_check
+1.	Have your client ID and secret (optional unless you are using Authorization Code Flow) associated with the Control Panel application configured in your OIDC server ready. The Redirect URL configured for the web application should point to the URL associated with the Control Panel. Example: https://rlqa-svc.dev01.radiantlogic.io/callback
 
 2.	Log into the Control Panel.
 
@@ -89,7 +89,7 @@ To enable support for OIDC authentication:
 
 6.	Enter the Client ID associated with the Control Panel application configured in the OIDC provider.
 
-7.	Enter the Client Secret associated with the Control Panel configured in the OIDC provider.
+7.	(Optional unless using Authorization Code Flow) enter the Client Secret associated with the Control Panel configured in the OIDC provider.
 
 8.	Select the Client Authentication Method corresponding to how the Control Panel client has been configured in the OIDC Server. There are two options available: CLIENT_SECRET_POST and CLIENT_SECRET_BASIC.
 
