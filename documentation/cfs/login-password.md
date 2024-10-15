@@ -271,10 +271,6 @@ CFS Master has a diagnostic page that allows anyone to make sure the RTC configu
 
 ![](media/rtc-config13.png)
 
-The following screen shows a client that has been associated with an RTC.
-
-![](media/rtc-config14.png)
-
 >[!note] If your CFS servers are protected by a proxy, you are probably using the [X-Forwarded-For](https://en.wikipedia.org/wiki/X-Forwarded-For) HTTP header field to provide to the server the real address of the user. CFS is capable of detecting this field to find a matching RTC.
 
 ### Windows Integrated Authentication
