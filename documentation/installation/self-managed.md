@@ -126,21 +126,20 @@ Ensure that you specify your target version when running installation and update
    ```
 
    You should see the following pods listed in the output, confirming that the deployment was successful:
-   - api-gateway
-   - authentication
-   - data-catalog
-   - directory-browser
-   - directory-namespace
-   - directory-schema
-   - fid-X (Note that the number of deployed fid services is determined by the `replicaCount` property in your values.yaml file. For example, if `replicaCount` is set to 1, you'll see only fid-0. If it's set to 2, you'll see both fid-0 and fid-1, and so on, depending on the value of `replicaCount`.)
-   - iddm-proxy
-   - iddm-ui
-   - settings
-   - system-administration
-   - zipkin
-   - zookeeper-0
-   - zookeeper-1
-   - zookeeper-2
+   - **api-gateway**: API Gateway (request routing) for the configuration REST API.
+   - **authentication**: Microservice for the configuration REST API endpoints concerning authentication. It provides REST API authentication functionality such as login, JWT token validation, etc.
+   - **data-catalog**: Microservice for the configuration REST API endpoints concerning data catalog (data sources, data source schema management)
+   - **directory-browser**: Microservice for the configuration REST API endpoints concerning directory browser.
+   - **directory-namespace**: Microservice for the configuration REST API endpoints concerning directory namespace.
+   - **directory-schema**: Microservice for the configuration REST API endpoints concerning directory server schema.
+   - **fid-X**: The core server/engine for Identity Data Management. Note that the number of deployed fid services is determined by the `replicaCount` property         in your values.yaml file. For example, if `replicaCount` is set to 1, you'll see only fid-0. If it's set to 2, you'll see both fid-0 and fid-1, and so on,        depending on the value of `replicaCount`.
+   - **iddm-proxy**: Load balancer and reverse proxy service. 
+   - **iddm-ui**: Front-end for the new v8.1 control panel.
+   - **settings**: Microservice for the configuration REST API endpoints concerning a variety of Identity Data Management server settings (security, ACIs, etc.).
+   - **system-administration**:  Microservice for the configuration REST API endpoints concerning Identity Data Management administration (users, roles,         permissions, etc.).
+   - **zipkin**: Distributed tracing system used for troubleshooting.
+   - **zookeeper-X**:  Distributed configuration service used by Identity Data Management backend. You may see Zookeeper-0, Zookeeper-1, Zookeeper-3 etc.
+
 
 
 ## Accessing RadiantOne Services 
