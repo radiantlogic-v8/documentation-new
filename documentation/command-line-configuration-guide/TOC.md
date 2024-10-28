@@ -25,3 +25,4 @@ description: Command Line Configuration
 - [Real-time Persistent Cache Refresh Commands](20-real-time-persistent-cache-refresh-commands.md)
 - [Synchronization Config Commands](21-global-sync-commands.md)
 - [Converting LDIF Files to CSV](22-converting-ldif-files-to-csv.md)
+- [Decrypting LDIZ Files to LDIF](23-converting-ldifz-files-to-ldif.md)
