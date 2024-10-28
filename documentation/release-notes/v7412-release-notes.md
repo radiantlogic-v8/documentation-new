@@ -32,14 +32,14 @@ These release notes contain the following sections:
 -	[VSTS45783]: Updated the default mgraph custom data source to use v1.0 API instead of beta.
 -	[VSTS45951]: Added move node up and move node down buttons to the View Designer.
 -	[VSTS46232]: Added support for multiple expressions to computed attributes. 
--	[VSTS46233]: 
+-	[VSTS46233]: Improved persistent cache init task logs so that when a persistent cache initialization failure occurs, there is more context about the error in the cache init task log.
 -	[VSTS46373]: Added a warning message that appears when navigating away from the SCIM tab in Control Panel when there are unsaved changes. 
 -	[VSTS46486]: Allow custom time limits to be configurable.
 -	[VSTS46587]: Added a new flag, isFromUpload, to all events in sync pipelines so that rules can be written to perform different operations based on if the pipeline is an upload or not.
 -	[VSTS46680]: Added samAccountName as a required field for objectclass group.
 -	[VSTS46740]: Added support for SHA-3 for password protection when RadiantOne is running in FIPS mode.
 -	[VSTS46744]: Improved memory configuration in windows service install scripts to better match behavior of previous versions. 
--	[VSTS46904]: Improved the Computed Attributes in the Context Builder so that they can now be reordered.
+-	[VSTS46904]: Improved the Computed Attributes configuration in the Context Builder so that they can now be reordered.
 -	[VSTS46926]: Added support for Snowflake as a Database for realtime persistent cache refresh.
 -	[VSTS46929]: Added the ability to decrypt exported LDIFz files using the ldiz-to-ldif command in vdsconfig.
 -	[VSTS46932]: Added FID_SERVER_JOPTS to runVDSServer.sh and CP_SERVER_JOPTS to runWebAppServer.sh
@@ -47,13 +47,15 @@ These release notes contain the following sections:
 -	[VSTS46941]: Improved sensitive information masking in logs.
 -	[VSTS46952]: Improvement to not allow the root account CN=Directory Manager to be deleted. 
 -	[VSTS46957]: Removed DSML/SPML Service from the new naming context popup since these are deprecated.  Removed SPML targets section from Settings -> Server Front End -> Other Protocols.
--	[VSTS46968]:
+-	[VSTS46968]: Fixed a type conversion bug with SCIMPost that could cause boolean values for attributes like primary to throw an exception. Also added a new mode (isDirectValueModeForPatch) to control whether SCIM Patch operations are generated with or without the path parameter. This is necessary to get around a Condeco SCIM limitation.
+-	[VSTS46980]: Added support for "certificateUserIds" in mgraph custom data source during create and update of users.
 -	[VSTS46990]: Added a confirmation dialog popup message when deactivating naming contexts and/or caches to protect against accidently deactivation. 
 -	[VSTS47057]: Added a license expiration message in the Control Panel so admins receive a visual notification.
 -	[VSTS47085]: Added method to ScriptHelper to extract the password hash from the AD domain.
 -	[VSTS47129]: Ensured runVDSServer.sh and runWebAppServer.sh scripts are executable after updating to 7.4.12.
 -	[VSTS47132]: Added support for OpenJDK 8u432.
 -	[VSTS47143]: Removed DES3 cipher option from the list of available ciphers for attribute encryption/LDIFZ attribute encryption keys.
+
 
 ## Supported Platforms
 
@@ -85,14 +87,13 @@ For specific hardware requirements of each, please see: [https://developer.radia
 -	[VSTS46868]: Fixed an issue for the "Export for replication" option in the Directory Browser -> Export LDIF window to take effect.
 -	[VSTS46920]: Fixed an issue that prevented deleting subtrees in external LDAP data sources. Caused by mistakenly sending multiple tree delete controls in the LDAP delete request.  
 -	[VSTS46942]: Fixed an issue where Global Identity Builder stats would timeout while upload was ongoing.
--	[VSTS46956]: 
+-	[VSTS46956]: Fixed an issue that caused exceptions during persistent cache initialization for Okta backends when certain attribute values were null.
 -	[VSTS46965]: Fixed an issue so that after enabling vds_access logs, logging starts immediately without requiring a restart of the RadiantOne service.
 -	[VSTS46967]: Fixed an issue where the connection to failover nodes within a RadiantOne cluster was not functioning in resync-utils.bat tool, which results in inconsistent state when the leadership changes.
 -	[VSTS46975]: Fixed an issue where the password strength rule was not properly saved on the Password Policy page.
 -	[VSTS46977]: Fixed an issue where ADAP token validators JSON Web Token Validation Clock Offset was not getting saved.
 -	[VSTS46979]: Fixed an issue that prevented copying of a sync topology from one environment to another. Vdsconfig resource traverse is now considering parent resources as dependencies (along with child resources).
--	[VSTS46980]: 
--	[VSTS46982]: 
+-	[VSTS46982]: Fixed an issue in update-custom-datasource where the active property wasn't being updated correctly. Updated DataSourceStatusUtility (used by checkdatasources.sh) so that it automatically fails on data sources that are marked as "offline" or disabled.
 -	[VSTS46986]: Fixed an issue where the Password policy CLI and UI were not consistent with each other.
 -	[VSTS46989]: Fixed an issue that was caused by over-optimizing some subject based ACIs evaluation. 
 -	[VSTS46996]: Removed the default public read-access ACIs to cn=config and cn=changelog and also their corresponding legacy ACI structure.
