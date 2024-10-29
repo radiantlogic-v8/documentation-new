@@ -5,12 +5,12 @@ description: Command Line Configuration Guide
 
 # Decrypt LDIFZ Files to LDIF
 
-This chapter describes how to decrypt an LDIFZ file into a LDIF file using the
+This chapter describes how to decrypt an LDIFZ file into an LDIF file using the
 <RLI_HOME>/bin/vdsconfig utility.
 
 ## ldifz-to-ldif
 
-This command decrypts an LDIFZ file into a LDIF file.
+This command decrypts an LDIFZ file into an LDIF file.
  
 
 **Usage**
@@ -30,4 +30,5 @@ This command decrypts an LDIFZ file into a LDIF file.
 
 
 **Example**
-$radiantone/vds/bin/vdsconfig.sh ldifz-to-ldif -pwdfile /home/ec2-user/rootpwd -ldifz /home/ec2-user/radiantone/vds/vds_server/ldif/export/encyrpted.ldifz -ldif /home/ec2-user/radiantone/vds/vds_server/ldif/export/decrypted.ldif
+
+radiantone/vds/bin/vdsconfig.sh ldifz-to-ldif -pwdfile /home/ec2-user/rootpwd -ldifz /home/ec2-user/radiantone/vds/vds_server/ldif/export/encyrpted.ldifz -ldif /home/ec2-user/radiantone/vds/vds_server/ldif/export/decrypted.ldif
