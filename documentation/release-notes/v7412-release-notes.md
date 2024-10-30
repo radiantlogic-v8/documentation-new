@@ -103,7 +103,9 @@ For specific hardware requirements of each, please see: [https://developer.radia
 -	[VSTS47028]: Fixed an issue so that now failure when sending a monitoring alert email is now reported in the monitoring task's scheduler log to help improve troubleshooting.
 -	[VSTS47029]: Fixed an issue where there was no ability to change the access.log.file.archive.scan.folder property from the UI. 
 -	[VSTS47152]:
--	[VSTS47153]:
+-	[VSTS47153]: Fixed an issue that was preventing sync topologies that were migrated between patch versions (e.g., 7.x.y to 7.x.z where y <= x) from starting properly because of missing transformation mappings.
+-	[VSTS47154]:
+-	[VSTS47158]:
 
 ## Known Issues/Important Notes
 
