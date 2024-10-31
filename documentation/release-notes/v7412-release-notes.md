@@ -5,7 +5,7 @@ description: v7.4.12 Release Notes
 
 # RadiantOne v7.4.12 Release Notes
 
-October 31, 2024
+November 1, 2024
 
 These release notes contain important information about improvements and bug fixes for RadiantOne v7.4.
 
