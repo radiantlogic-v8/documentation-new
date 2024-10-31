@@ -23,6 +23,8 @@ C:\MigrationUtility\radiantone-migration-tool-2.1.0 generate-migration-plan C:/t
 
 This command generates migration_plan.json in the location where you executed the script. The .json file contains the naming contexts (this is only the definition of the naming contexts, not the dependencies – orx files, dvx files, data sources), RadiantOne Universal Directory (HDAP) stores (only the actual data, not the naming context), data sources, schema files (.orx), and virtual view files (.dvx) that are possible to import. You can edit the .json file and use the keyword MIGRATE next to the items you want to be included in the import, and the keyword KEEP next to items that you do not want included in the import. Make sure the migration_plan.json is located in the same location as the migrate script, otherwise it is not used and the default import is performed.
 
->[!warning] Use extreme caution when customizing the migration plan. Make sure that you don’t accidently exclude needed .orx files, .dvx files, and/or data sources for naming contexts that you include in the import.
+>[!warning] Use extreme caution when customizing the migration plan. Make sure that you don’t accidently exclude needed .orx files, .dvx files, and/or data sources for naming contexts that you include in the import.  Also, do not include the vdsha or replicationjournal data sources as part of the migration. Use the following to ensure they are not migrated:
+"replicationjournal" : "KEEP"
+"vdsha" : "KEEP"
 
 After customizing the migration plan, run the command to import the configuration.
