@@ -33,4 +33,6 @@ The .json file contains the naming contexts (this is only the definition of the 
       "o_myprofile" : "MIGRATE",
    }
 
->[!warning] Use extreme caution when customizing the migration plan. Make sure that you don’t accidently exclude needed .orx files, .dvx files, and/or data sources for naming contexts that you include in the export.
+>[!warning] Use extreme caution when customizing the migration plan. Make sure that you don’t accidently exclude needed .orx files, .dvx files, and/or data sources for naming contexts that you include in the export. Also, do not include the vdsha or replicationjournal data sources as part of the migration. Use the following to ensure they are not migrated:
+"replicationjournal" : "KEEP"
+"vdsha" : "KEEP"
