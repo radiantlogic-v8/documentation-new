@@ -19,8 +19,6 @@ This guide covers #1 only. For details on using the migration utility for upgrad
 
 The migration tool (migrate.bat/.sh) is provided as a separate download. It is not included with the RadiantOne install. Contact Support (support@radiantlogic.com) for credentials and location of the Migration Utility. Download the latest migration utility from the Radiant Logic support site and unzip it on both the source machine (from where you are exporting) and the target machine (where you plan on importing). The migration tool leverages the RadiantOne configuration location identified in the <RLI_HOME> environment variable to perform the export/import of the configuration. 
 
->[!note] The source and target machines must be running the same operating system. This means, if you export configuration from a Windows machine, you must import this configuration onto a Windows machine. If you export configuration from a Linux machine, you must import this configuration onto a Linux machine.
-
 ## Specifying RLI_HOME
 
 If you do not have an RLI_HOME system environment variable set, you must pass the location where you have RadiantOne installed when you run the Migration Utility.
