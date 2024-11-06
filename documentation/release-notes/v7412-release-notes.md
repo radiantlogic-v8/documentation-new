@@ -102,7 +102,14 @@ For specific hardware requirements of each, please see: [https://developer.radia
 -	[VSTS47016]: Fixed an issue for the Directory Namespace tab label nodes not saving virtual attributes.
 -	[VSTS47028]: Fixed an issue so that now failure when sending a monitoring alert email is now reported in the monitoring task's scheduler log to help improve troubleshooting.
 -	[VSTS47029]: Fixed an issue where there was no ability to change the access.log.file.archive.scan.folder property from the UI. 
--	[VSTS47152]: Fixed an issue with Synchronization transformation scripts hitting a Java limitation of 65k bytes and the code being unable to compile.
+-	[VSTS47152]: Fixed an issue with Synchronization transformation scripts hitting a Java limitation of 65k bytes and the code being unable to compile. After applying the patch, the following file needs to be updated as below, before the RadiantOne services is started on the cluster nodes.
+
+In "$RLI_HOME/config/advanced/features.properties"
+Add:
+globalsync.extract.mappings.enabled=true
+
+Lastly, the transformation script needs to be saved after the RadiantOne service is started for the first time after patching and updating the features.properties file.
+
 -	[VSTS47153]: Fixed an issue that was preventing sync topologies that were migrated between patch versions (e.g., 7.x.y to 7.x.z where y <= x) from starting properly because of missing transformation mappings.
 -	[VSTS47158]: Fixed an issue causing NullPointerException to be reported in web.log when capturing mappings transformations.
 
