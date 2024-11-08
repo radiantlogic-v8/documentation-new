@@ -56,7 +56,7 @@ To enable Start TLS for clients to access RadiantOne:
 
 ### Debug SSL
 
-SSL is enabled by default, but SSL logging is disabled by default. When SSL logging is enabled, SSL events have an entry in vds_server.log. This log file is located in <RLI_HOME>\vds_server\logs. SSL events are logged at INFO level, so log settings for VDS – Server must be at least at INFO level. 
+SSL is enabled by default, but SSL logging is disabled by default. When SSL logging is enabled, SSL events have an entry in vds_server.log. This log file is located in <RLI_HOME>\vds_server\logs. SSL events are logged at INFO level or higher, so log settings for FID – Server must be at least at INFO level. 
 
 >[!note] For more information on log levels, refer to the [RadiantOne Logging and Troubleshooting Guide](/logging-and-troubleshooting-guide/01-overview).
 
@@ -64,15 +64,15 @@ To enable SSL logging:
 
 1. From the Main Control Panel, click Settings > Logs > Log Settings.
 
-2. From the Log Settings to Configure drop-down menu, select VDS – Server. 
+2. From the Log Settings to Configure drop-down menu, select FID – Server. 
 
 3. Verify that the Log Level drop-down menu is set to one of the following: INFO, DEBUG, or TRACE. 
 
 4. If you change the log level, click **Save**. 
 
-5. Click **Security -> SSL**.
+5. Navigate to the Main Control Panel > Settings > Security > SSL.
 
-6. In the SSL section, check the Debug SSL box. 
+6. In the SSL section, check the *Debug SSL* box. 
 
 7. Click **Save**.
 
