@@ -16,7 +16,7 @@ To sync between RadiantOne and Kafka topics, you need to configure the following
 - [Data source](#configuring-the-consumer-data-source)
 - [Schemas](#configuring-the-schema) 
 - [Views](#mounting-the-virtual-view)
-- [Sync topologies](#configuring-global-sync-as-a-kafka-consumer)
+- [Sync topologies](#configuring-synchronization-as-a-kafka-consumer)
 
 ## Configuring the Consumer Data Source
 
@@ -40,7 +40,7 @@ To configure the Consumer data source:
 
     Figure 1: Kafka Consumer Data Source
 
-    >[!note] Additional data source settings are configured in [Configuring synchronization as a Kafka Consumer](#configuring-global-sync-as-a-kafka-consumer). 
+    >[!note] Additional data source settings are configured in [Configuring synchronization as a Kafka Consumer](#configuring-synchronization-as-a-kafka-consumer). 
 
 1. Click Save. 
 
