@@ -17,7 +17,7 @@ To sync between RadiantOne and Kafka topics, you need to configure the following
 - [Data source](#configuring-the-producer-data-source)
 - [Schemas](#configuring-the-producer-schema) 
 - [Views](#mounting-the-virtual-view)
-- [Sync topologies](#configuring-global-sync-as-a-kafka-producer)
+- [Sync topologies](#configuring-synchronization-as-a-kafka-producer)
 
 ## Configuring the Properties File
 
@@ -41,7 +41,7 @@ In this example, PLAIN SASL is used to specify a username and password for authe
 
 Figure 2: Producer.properties text file for a Kafka broker requiring encryption and authentication
 
->[!note] Once you start using your Kafka producer to publish to a Kafka topic in a Global Sync topology, any changes you make to the producer.properties file require that you restart the RadiantOne FID service.
+>[!note] Once you start using your Kafka producer to publish to a Kafka topic in a synchronization topology, any changes you make to the producer.properties file require that you restart the RadiantOne FID service.
 
 ## Configuring the Producer Data Source
 
@@ -155,13 +155,13 @@ In this section, a new naming context representing the outgoing Kafka Producer i
 
 1.	Click OK to acknowledge the alert that your virtual tree has been created. 
 
-If you are configuring Global Sync to act as both a consumer and producer with Kafka, you need a separate mounted view with the appropriate schema.
+If you are configuring Radiant Logic Synchronization to act as both a consumer and producer with Kafka, you need a separate mounted view with the appropriate schema.
 
-## Configuring Global Sync as a Kafka Producer
+## Configuring Synchronization as a Kafka Producer
 
-Global Sync uses the settings you configured for your kafkaproducer data source to call the correct changeConvertor, connect to your Kafka endpoint, and publish to the specified topic.
+Synchronization uses the settings you configured for your kafkaproducer data source to call the correct changeConvertor, connect to your Kafka endpoint, and publish to the specified topic.
 
-1. In the Main Control Panel, navigate to the Global Sync tab.
+1. In the Main Control Panel, navigate to the Synchronization tab.
 
 1.	Click ![new topology](media/new-topology.jpg).
 
