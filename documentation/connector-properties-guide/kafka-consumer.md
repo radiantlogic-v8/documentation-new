@@ -40,7 +40,7 @@ To configure the Consumer data source:
 
     Figure 1: Kafka Consumer Data Source
 
-    >[!note] Additional data source settings are configured in [Configuring Global Sync as a Kafka Consumer](#configuring-global-sync-as-a-kafka-consumer). 
+    >[!note] Additional data source settings are configured in [Configuring synchronization as a Kafka Consumer](#configuring-global-sync-as-a-kafka-consumer). 
 
 1. Click Save. 
 
@@ -94,9 +94,9 @@ In this section, a new naming context representing the incoming Kafka Consumer i
 
 1.	Click OK to acknowledge the alert that your virtual tree has been created. 
 
-If you’re configuring Global Sync to act as both a consumer and producer with Kafka, you need a separate mounted view with the appropriate schema.
+If you’re configuring synchronization to act as both a consumer and producer with Kafka, you need a separate mounted view with the appropriate schema.
 
-## Configuring Global Sync as a Kafka Consumer
+## Configuring Synchronization as a Kafka Consumer
 
 1.	In the Main Control Panel, navigate to the Synchronization tab. 
 
