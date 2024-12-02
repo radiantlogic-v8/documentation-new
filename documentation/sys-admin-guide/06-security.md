@@ -30,7 +30,9 @@ After changing the Supported Cipher Suites in the interface, save your changes a
 
 ### Enabled SSL Protocols
 
-The SSL/TLS protocol options are SSLv2Hello, SSL v3, TLSv1, TLSv1.1 TLSv1.2 and TLS v1.3. Some of the less secure protocols in this list (SSL v3, TLSv1, TLSv1.1) are disabled by default in the <RLI_HOME>/jdk/jre/lib/security/java.security file, noted in the jdk.tls.disabledAlgorithms property.
+The SSL/TLS protocol options are SSL v3, TLSv1, TLSv1.1 TLSv1.2 and TLS v1.3. Some of the less secure protocols in this list (SSL v3, TLSv1, TLSv1.1) are disabled by default in the <RLI_HOME>/jdk/jre/lib/security/java.security file, noted in the jdk.tls.disabledAlgorithms property.
+
+>[!warn] SSLv2Hello isn't supported since all applicable ciphers have been deprecated in OpenJDK v1.8.0_432-b06. 
 
 Out of the available protocols, not in the disabled list, you can limit which ones you want RadiantOne to support. You can limit the protocols from the Main Control Panel > Settings Tab > Security section > SSL sub-section. Click **Change** next to Enabled SSL Protocols. Select the protocols to support and click **OK**. Restart the RadiantOne service on all nodes.
 
