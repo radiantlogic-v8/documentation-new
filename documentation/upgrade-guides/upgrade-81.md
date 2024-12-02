@@ -33,6 +33,10 @@ The new Control Panel endpoint is listed in Environment Operations Center > Envi
 
 Connect to this endpoint and login as the directory manager with the password you defined during the environment creation.
 
+### SSO for Control Panel
+
+If you had an OIDC provider configured in v8.0, you must update the Identity Provider, client configuration once you update to v8.1.x since the callback URL has changed. The callback URL configured in the Identity Provider for the Control Panel client should be in the form of: `https://rlqa-svc.dev01.radiantlogic.io/callback`
+
 ### Configure Delegated Administrators 
 
 There are new Control Panel entitlements in v8.1. There are two aspects to take into consideration:  
