@@ -918,10 +918,11 @@ It is assumed that the SCIMv2 schema has already been extracted. If you need hel
  
 After the virtual view is complete, it can be mounted in the RadiantOne Namespace and configured for persistent cache. Use the Main Control Panel > Directory Namespace tab for this. For details on this process, please see the [RadiantOne Namespace Configuration Guide](/namespace-configuration-guide/01-introduction). For details on configuring a persistent cache, please see the [RadiantOne Deployment and Tuning Guide](/deployment-and-tuning-guide/00-preface). Once a persistent cache is defined, use the Schema Manager to extract the schema (LDAP type of backend now that the virtual view is in persistent cache). Make sure the SCIMv2 objects/attributes are in the RadiantOne schema before using Schema Manager. See the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction) for managing the schema. After the schema is extracted, create a virtual view where you can remap attribute names, configure joins and other customizations.
 
-### Deleting Virtual Views 
+## Deleting Virtual Views 
 
 Virtual view files (.dvx files) should be deleted using the Context Builder > View Designer sub-tab. It is not recommended to manually remove files from the file system. 
-To delete a virtual view:
+
+**To delete a virtual view:**
 
 1.	On the View Designer menu, click ![delete button](Media/ImageDelete.jpg). 
 
