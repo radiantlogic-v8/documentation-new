@@ -76,13 +76,13 @@ The figure shown below displays all tables, views and relationships from the sam
  
 ![An image showing ](Media/Image3.5.jpg)
 
-## The Schema Manager Process 
+**The Schema Manager Process**
 
 The Schema Manager captures the metadata from different data sources, including databases and directories, and stores it in canonical format (XML). Once captured, the metadata can be translated and mapped into object classes and attributes for the RadiantOne namespace. The step of mapping from metadata to RadiantOne object classes and attributes has a default behavior that can be overridden to further refine the mapping process. The Schema Manager also gives you the tools to improve and manage the metadata that has been captured. The process is outlined in the illustration below. 
  
 ![An image showing ](Media/Image3.6.jpg)
 
-### Capturing Metadata Overview
+## Capturing Metadata Overview
 
 The first step in using the Schema Manager is capturing the metadata for each of the sources you want to build virtual views from. The Schema Manager provides a set of wizards that can extract the schema from any JDBC, LDAP or SCIMv2 compliant data source. 
 
