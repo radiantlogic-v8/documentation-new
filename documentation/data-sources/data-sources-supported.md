@@ -29,7 +29,7 @@ This document describes the supported backend data sources supported by RadiantO
 - Sybase v12 and 12.5
 - MongoDB
 - Snowflake
-- Terradata
+- Teradata
 - Any JDBC/ODBC-accessible database
 
 The only JDBC drivers installed with RadiantOne are: JDBC-ODBC Bridge from Sun, Oracle (thin), Oracle oci, Microsoft SQL Server, HSQL, MySQL (supports MariaDB too), IBM DB2, Sybase, and Derby. For all other databases, import your own JDBC driver.
