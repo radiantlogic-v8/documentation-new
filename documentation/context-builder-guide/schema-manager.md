@@ -61,13 +61,11 @@ A recursive relationship is an object related to itself. For example, an employe
 
 ## Using the Schema Manager 
 
-This section describes how to use the Schema Manager to extract schemas and manage metadata from backend sources. 
+The Schema Manager is used to extract schemas and manage metadata from backend sources. 
 
 The toolbar on this tab allows for creating a new schema, opening a schema (orx file), saving a schema file, defining global relationships (relationships between objects from different schemas), and deleting a schema file. 
 
 ![An image showing ](Media/Image3.4.jpg)
-
-### Displaying Objects and Relationships 
 
 When you open a schema (orx) file, the Schema Manager displays the objects in alphabetical order. Objects are tables and views (for databases), or object classes (for LDAP directories). As you select an object, information about that object appears on the right side.
 
