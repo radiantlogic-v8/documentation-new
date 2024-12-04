@@ -625,7 +625,7 @@ If you are not able to remove the UPPER then you should consider using cache at 
 
 ![Base Search Example](Media/Image4.37.jpg)
 
-### Defining the View Structure 
+## Defining the View Structure 
 
 In addition to using the View Designer to manually build virtual views, Context Builder also includes the Hierarchy Builder tool. With Hierarchy Builder, you can take a flat structure (either a flat LDAP tree or a database table) and build a complex hierarchy based on attributes existing in the entries. Hierarchy Builder is described in [Concepts and Utilities](concepts-and-utilities.md). The rest of this section is devoted to using the View Designer to build virtual views from LDAP and database backends. 
 
