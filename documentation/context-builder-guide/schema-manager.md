@@ -9,8 +9,6 @@ The Schema Manager tool is used to extract the metadata from every source that y
 
 A wizard process in Schema Manager helps you connect to your data sources and inventory the different objects, attributes and relationships. After the schema is extracted, you can manage/modify the metadata by setting mappings for object classes and attributes, declaring keys, and even relationships between objects.
 
-This section presents the Schema Manager concepts and procedures.
-
 ## Concepts
 
 ### Primary Key 
