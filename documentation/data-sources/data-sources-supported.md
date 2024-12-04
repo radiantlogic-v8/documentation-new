@@ -50,7 +50,7 @@ The only JDBC drivers installed with RadiantOne are: JDBC-ODBC Bridge from Sun, 
 - SharePoint 2010, 2013, 2016 (on-premises)
 - Workday
 - Concur
-- Any SCIM-accessible Service
+- Any SCIMv2-accessible Service
 - Other
     - 	Web Services
     - 	RACF
