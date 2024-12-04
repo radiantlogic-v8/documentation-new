@@ -3,15 +3,13 @@ title: Context Builder Guide
 description: Context Builder Guide
 ---
 
-# View Designer
+## Overview
 
 The View Designer tab is used to build virtual views from backend sources whose schemas have been extracted on the Schema Manager tab. This modeling tool allows you to design and try out multiple views of data. Views can be designed from backend LDAP directories, databases accessible via JDBC, and any data source accessible through SCIMv2, or a Java API (web service…etc.). Data used to populate the virtual views at runtime is dynamic, meaning that the query is sent to the backend server on-the-fly as data is requested from a client. 
 
 To access the tool, click the View Designer sub-tab in the Main Control Panel > Context Builder tab.
  
  ![View Designer](Media/Image4.1.jpg)
-
-Figure 1: View Designer
 
 The following sections describe how to work with the View Designer tab.
 
@@ -36,13 +34,10 @@ If you want to mount your virtual view below the default o=vds root naming conte
 
 ![Add to Global Catalog](Media/Image4.2.jpg)
 
-Figure 2: Add to Global Catalog
-
 As mentioned, the Global Catalog is a .dvx file also. You can view the contents (the aggregated list of virtual views) of the rootdv.dvx file in the View Designer, however, DO NOT delete it. You can remove .dvx files that have been added to the Global Catalog by selecting the (link) to the specific view and clicking the Delete button on the Properties tab shown on the right. This does not delete the .dvx file itself, but it removes the view from the Global Catalog. To delete a .dvx file completely, please see [Deleting Virtual Views](#deleting-virtual-views).
 
 ![Removing Virtual Views from the Global Catalog](Media/Image4.3.jpg)
 
-Figure 3: Removing Virtual Views from the Global Catalog 
 
 ### Container 
 
@@ -64,13 +59,9 @@ For instance, if you have the following configuration in your view definition, a
 
 ![Example View Without a Label](Media/Image4.4.jpg)
 
-Figure 4: Example View Without a Label
-
 Now, if the model of the tree were changed and a label were introduced (see the new design below), you still get Product Y below Customer X. The key of Customer X is passed through the label to condition products (to only show products purchased by Customer X). 
 
 ![Example View Using a Label to Organize the Tree](Media/Image4.5.jpg)
-
-Figure 5: Example View Using a Label to Organize the Tree 
 
 When you want to categorize a collection of data from objects or resulting from combined objects (through joins), you can use labels to categorize these sub-levels of information. For each label, you are saying that this sub-level of information will reside under this category.
 
@@ -86,13 +77,13 @@ A content node represents an object in a virtual view. When you create a content
 
 For more information, see [Working with Content Objects](#working-with-content-objects). 
 
-### Link 
+### Link Overview
 
 Links are a special kind of node that allows you to point to a specific sub tree defined in an existing virtual view (.dvx file) or a new sub tree that you design on-the-fly based on objects from other schemas. Using this mechanism in conjunction with a label (although a label is not necessary) you can aggregate information from different schemas (simple objects or whole sub trees). Links allow you to transparently navigate from schema to schema in an ad hoc way. 
 
 There are two different types of links: Standard and Merge. Each is described in more details below. 
 
-#### Standard Link 
+### Standard Link 
 
 A standard link offers a simple way to aggregate virtual views. Each view file has a top node named with the following syntax: `dv=<file name>`. When aggregating virtual views using standard links, the “dv” label level remains and becomes part of the naming in the hierarchy. 
 
@@ -100,49 +91,37 @@ Let’s take a look at an example. Assume there are three data sources: a databa
 
 ![Example Data Sources](Media/Image4.6.jpg)
 
-Figure 6: Example Data Sources
-
 Next, a virtual view from each is configured. This is represented by the three views shown below. 
 
 ![Virtual Views from Each Source](Media/Image4.7.jpg)
-
-Figure 7: Virtual Views from Each Source
 
 Finally, standard links are used to aggregate the views. This is represented in the virtual view model shown in the screen shot below. The runtime preview shows what the populated view looks like. Notice that the “dv” level comprises the runtime view. 
 
 ![An image showing ](Media/Image4.8.jpg)
 
-Figure 8: Virtual View Model and Runtime Tree using Standard Links
-
-#### Merge Link 
+### Merge Link 
 
 A merge link offers more flexibility than a standard link because the “dv” label level is suppressed (making the tree simpler for browsing). In addition, with merge links, a link parameter can be configured to condition the subtree based on the parent view. Details on the link parameter can be found below. 
 
-##### Link Parameter 
+**Link Parameter** 
 
 Merge links can have a parameter that conditions the subtree based on an attribute of the parent object. This is optional but offers flexibility by allowing you to build a context-driven virtual view that navigates across multiple data sources.
 
 A link parameter is based on a unique key of the parent entry. The value of this key must match an attribute in the view to be mounted. Two examples are used to describe the benefits of using a merge link with a parameter. One example is based on the attribute in the parent object being single-valued and the other example is based on a multi-valued attribute.
 
-##### Linking on a Single-Valued Attribute
+*Linking on a Single-Valued Attribute*
 
 The following diagram depicts two databases. One database maintains project information while the other database stores employee information including department and location. 
 
 ![Two Sample Databases](Media/Image4.9.jpg)
 
-Figure 9: Two Sample Databases 
-
 Let’s assume the desired virtual hierarchy should represent projects, followed by the department associated with the project, followed by the location of the employee, and finally the employees working on the project. Since the information is maintained in two separate databases, a virtual view can be built from each. This is depicted in the diagram below. One view is built for projects while the other is a view of employees based on departments and location.
 
 ![Two Example Virtual Views](Media/Image4.10.jpg)
 
-Figure 10: Two Example Virtual Views 
-
 A merge link (noted with the blue arrow) is used to aggregate the virtual views. This is depicted in the diagram below. 
 
 ![Example Linking Two Existing Views](Media/Image4.11.jpg)
-
-Figure 11: Example Linking Two Existing Views
 
 In the linked view shown above, the sub-branch (view named EmpByDeptView) can be conditioned by setting a linking attribute. In this example, all projects are associated with a department (there is a one-to-one relationship based on the project ID), so the project ID can be established as the linking attribute. By adding a condition to the link based on the project ID attribute, the subtree shown at runtime is dependent upon the project (the parent node). The link parameter syntax is: 
 <childobject.attribute>=@[<parentobject_attribute>:<datatype>] 
@@ -155,19 +134,15 @@ Without this link condition, all departments would be shown below each project a
 
 ![Example – Using Merge Links with No Parameter](Media/Image4.12.jpg)
  
-Figure 12: Example – Using Merge Links with No Parameter
-
 As the figure above shows, the subtree is not conditioned by the parent object which is why all departments are shown below each project. This does not accurately depict the context needed. The ideal virtual view would show each project and then below each project show the department working on that project followed by location and employees accordingly. 
 
 Since the department object has a relationship with projects (the project ID is available in the department entry), the project ID can be used as the link parameter to condition the subtree. This is shown in the figure below. 
  
 ![Example – Using Merge Links with a Parameter to Condition the Subtree](Media/Image4.13.jpg)
 
-Figure 13: Example – Using Merge Links with a Parameter to Condition the Subtree
-
 Based on the examples shown above, a link parameter is required for the virtual view to represent the proper context of showing projects per department.
 
-##### Linking on a Multi-Valued Attribute
+*Linking on a Multi-Valued Attribute*
 
 In the previous example, the link condition was based on a single-valued attribute in the parent entry. This is the primary use case for a link parameter. However, if the attribute in the parent entry contains multiple values you can use it to configure the link parameter.
 
@@ -178,19 +153,13 @@ The example in this section describes using a multi-valued attribute in the pare
 
 ![Example – Source Entries](Media/Image4.14.jpg)
 
-Figure 14: Example – Source Entries
-
 Let’s assume the desired virtual view should represent identities followed by a list of entitlements associated with the identities. Since the information is maintained in two separate objects, a virtual view can be built from each. This is depicted in the diagram below. One view is built for identities while the other is a view of entitlements. 
 
 ![Two Example Virtual Views](Media/Image4.15.jpg)
 
-Figure 15: Two Example Virtual Views 
-
 A merge link (noted with the blue arrow) is used to aggregate the virtual views. This is depicted in the diagram below. 
 
 ![Example Linking Two Existing Views](Media/Image4.16.jpg)
-
-Figure 16: Example Linking Two Existing Views
 
 In the linked view shown above, the sub-branch (view named EntitlementView) can be conditioned by setting a linking attribute. In this example, all identities are associated with entitlements, so the entitlements attribute in the identity can be established as the linking attribute to the idlink attribute of the entitlement view. By adding a condition to the link based on the entitlements attribute, the subtree shown at runtime is dependent upon the entitlements associated with parent identity. However, since the value of the entitlements attribute in the parent identity is multi-valued, the link condition must be manually altered to include a special syntax. If the link parameter is associated with a child node from an LDAP backend, the syntax to handle a multi-valued parent attribute is: 
 
@@ -214,15 +183,11 @@ An example depicting the model of the virtual view and the runtime view leveragi
 
 ![Example – Using Links with a Parameter to Condition the Subtree](Media/Image4.17.jpg)
 
-Figure 17: Example – Using Links with a Parameter to Condition the Subtree
-
-##### Merge Links without a Link Parameter
+*Merge Links without a Link Parameter*
 
 This section describes a scenario where linking is used to aggregate objects from different schemas where a link parameter is not needed. In this example, three data sources are used. One data source is an LDAP directory storing partner information. One data source is Active Directory storing employee information. The third data source is a database storing customer information. Each data source is depicted below with objects representing their schemas. 
 
 ![Three Example Data Sources](Media/Image4.18.jpg)
-
-Figure 18: Three Example Data Sources
 
 In this example, the desired virtual view is one that aggregates people (employees, partners and customers) into one complete list to be used for authentication. 
 
@@ -230,13 +195,9 @@ First, three virtual views (one from each source) are created. This is depicted 
 
 ![Three Example Virtual Views](Media/Image4.19.jpg)
 
-Figure 19: Three Example Virtual Views
-
 Finally, links are used to aggregate the virtual views into one common hierarchy. The virtual view will consist of employees from Active Directory, partners from an LDAP directory, and customers from a database. Both the virtual view model and the runtime view are depicted below.
 
 ![Example Virtual View using Merge Links with No Parameters](Media/Image4.20.jpg)
-
-Figure 20: Example Virtual View using Merge Links with No Parameters
 
 This example described how links can be used to aggregate a list of people from three different data sources. Since there is no overlap of users in this scenario, using merge links is a simple way to create a union of all user accounts across three different data sources. Since the subtrees linked do not need to be conditioned by a parent attribute, a link parameter was not required to achieve the desired result. 
 
@@ -259,8 +220,6 @@ The toolbar contains the View Designer buttons that can be used in designing the
  
 ![View Designer Toolbar](Media/Image4.21.jpg)
 
-Figure 21: View Designer Toolbar
-
 -	New View Definition ![An image showing ](Media/Imagenewviewdefinition.jpg)
 -	Open DVX File ![An image showing ](Media/Imageopendvx.jpg)
 -	Save ![An image showing ](Media/ImageSave.jpg)
@@ -273,13 +232,11 @@ Figure 21: View Designer Toolbar
 
 As you select a node in the view definition, the Node Properties tab is activated. This tab includes all parameters needed to customize the virtual view. The parameters are spread across 2-4 sub-tabs (depending on the type of node) each of which is described below.
 
-#### RDN Settings Tab
+**RDN Settings Tab**
 
 The RDN Settings tab displays summary information about the node you have selected. If the node type is Content or Container, the RDN Settings tab has the RDN name and value, and type of node. For Container nodes, you also have buttons to add a label, content, container and link.
 
 ![Node Properties Tab for Containers](Media/Image4.22.jpg)
-
-Figure 22: Node Properties Tab for Containers
 
 For details on creating an alias for the primary key, see [Declaring RDN Attribute Name and Value](#declaring-an-rdn-attribute-name-and-value).
 
@@ -289,24 +246,19 @@ If the node type is a link, a Properties tab replaces the RDN Settings tab. On t
 
 ![Properties for a Link Node](Media/Image4.23.jpg)
 
-Figure 23: Properties for a Link Node
 
-#### Advanced Settings Tab
+### Advanced Settings Tab
 
 The Advanced Settings tab is available when you select Content or Container nodes. From this tab you can configure Interception scripts and set optimizations for your virtual view. You can also customize how to handle case-sensitive databases and define SQL filters from here (this is irrelevant if the backend is an LDAP source).
 
 ![Advanced Settings Tab](Media/Image4.24.jpg)
 
-Figure 24: Advanced Settings Tab
-
-#### Attributes Tab
+### Attributes Tab
 
 The Attributes tab is available when you select Content or Container nodes. 
 For Content and Container nodes, the Attributes tab allows you to select and modify (remap) the attributes from the primary source that you want the entries to be comprised of.
 
 ![Attributes Tab](Media/Image4.25.jpg)
-
-Figure 25: Attributes Tab
 
 For procedures on defining output, see [Working with Container Objects](#working-with-container-objects) and [Working with Content Objects](#working-with-content-objects).
 
@@ -314,19 +266,17 @@ For creating filters, see [Adding Filters to Condition Virtual Views](#adding-fi
 
 For combining tables, see [Joins](concepts-and-utilities.md#joins-between-objects-of-the-same-schemasource) (this is only relevant for database backends). 
 
-##### Re-mapping Attribute Names
+**Re-mapping Attribute Names**
 
 By setting a mapping for an attribute name, you are defining the name that appears in the virtual entries for this view. The value shown in the Virtual Name column is the name of the attribute in the virtual entries. If you would like to map an attribute to a different name, click in the Virtual Name column and set the name you would like to use. 
 
 >[!note] If the view you are modifying the attribute mapping for is joined to other virtual views, and the attribute you are changing the mapping for is configured to be returned in the joined view, you must update the external join condition in the joined view to reflect the newly mapped attribute name.
 
-##### Object Tab
+### Object Tab
 
 The Object tab is available when you select Content or Container nodes. Objects may consist of attributes from the primary object, secondary objects (from joins), or ones that are computed. From the Object tab, you can manage all attributes that will comprise the virtual entries, configure computed attributes, configure joins, and establish a bind order.
 
 ![Object Tab](Media/Image4.26.jpg)
-
-Figure 26: Object Tab
 
 ### Runtime Preview tab
 
@@ -334,7 +284,6 @@ The Runtime Preview tab is used for quickly viewing the contents of the virtual 
 
 ![Runtime Preview Tab](Media/Image4.27.jpg)
 
-Figure 27: Runtime Preview Tab
 
 ## The View Designer Process
 
@@ -344,7 +293,7 @@ The View Designer is a modeling tool used to create virtual views. The schemas t
 
 You can create labels below an existing label or container. Labels are used as a way to categorize the virtual view. Unlike containers and contents, labels are not populated from objects in an underlying source. Therefore, you can add any attributes you want to labels.
 
-To create a label:
+**To create a label:**
 
 1.	Select a Label or Container object in the pane on the left.
 
@@ -356,7 +305,7 @@ To create a label:
 
 5.	Click OK.
 
-To modify a label:
+**To modify a label:**
 
 1.	On the Properties tab, you can change RDN name and value.
 
@@ -369,7 +318,7 @@ To modify a label:
 
 Use a Content object when you want to create flat views that do not contain sub-branches.
 
-To create content objects:
+**To create content objects:**
 
 1.	Select a Label or Container node in the view definition. 
 
@@ -383,7 +332,7 @@ This places the new Content object under the selected Label or Container object 
 
 The name of the Content object appears on the Node Properties > RDN Settings tab. 
 
-To modify content objects:
+**To modify content objects:**
 
 1.	In the View Definition, select the Content node and click the Attributes tab. The fields available in the object appear in the column list on the left.
 
@@ -404,14 +353,14 @@ For more information on configuring content objects, please see the following se
 
 Use a Container object when you want to create hierarchical virtual views containing many sub-levels. 
 
-To create container objects:
+**To create container objects:**
 
 1.	Select a Label or Container object in the pane on the left. 
 2.	Click **New Container** in the pane on the right. 
 3.	Expand below the root node and select the desired object that contains the information you want to populate the node from. 
 4.	Click OK. 
 
-To modify container objects: 
+**To modify container objects:** 
 
 1.	In the View Definition, select the container node and click the Attributes tab. The attributes available in the object appear in the Column list on the left. 
 2.	Select the attribute that you want to expose in the virtual entries and use the ![An right arrow](Media/ImageRightArrow.jpg) button to move it over to the column on the right. 
@@ -434,9 +383,7 @@ Labels can be used as a way to organize the tree before you configure a link (al
 
 ![Link Below a Label](Media/Image4.28.jpg)
 
-Figure 4.28: Link Below a Label
-
-To create a link: 
+**To create a link:** 
 
 1.	Have the virtual view you want to add the link to open in the View Designer tab. 
 
@@ -456,7 +403,7 @@ To create a link:
 
 9.	If you have created a Merge Link, a link parameter can be set if required. See the section below for steps on creating a link parameter. 
 
-To create a link parameter: 
+**To create a link parameter:** 
 
 A link parameter can be used to condition the subtree based on the primary key of the parent node. 
 
@@ -478,7 +425,8 @@ At runtime, RadiantOne evaluates the link and builds the appropriate subtree con
 
 You can create or modify an RDN attribute value in the View Designer tab. 
 
-To declare an RDN attribute value: 
+**To declare an RDN attribute value:**
+
 1.	In the View Definition, select the node and then click the Node Properties -> RDN Settings tab. 
 
 2.	The RDN name and value are displayed here. Click the Edit button to select the attribute(s) that should comprise the RDN value. The attribute(s) that you select is combined with the primary key to comprise the RDN value. 
@@ -487,7 +435,6 @@ To declare an RDN attribute value:
 
 ![Configuring RDN Name and Value](Media/Image4.29.jpg)
 
-Figure 29: Configuring RDN Name and Value
 
 ### Adding Filters to Condition Virtual View Content 
 
@@ -495,7 +442,7 @@ Filters allow you to condition the node to only have entries that contain specif
 
 The interface for setting filters differs between LDAP and database backends. Each process is described in more details below. 
 
-To create filters for database backends: 
+**To create filters for database backends:** 
 
 1.	On the View Designer tab, select the Container or Content object and then choose the Advanced Settings tab. 
 
@@ -507,26 +454,20 @@ To create filters for database backends:
 
     ![Filter for SQL-accessible Backend Dialog Box](Media/Image4.30.jpg)
 
-    Figure 30: Filter for SQL-accessible Backend Dialog Box
-
 5.	Enter a value in the blank field if applicable.
 6.	Using the Add Rule and Add Group buttons, repeat steps 2-4 for each attribute you want to use in the filter. 
 
-    For example, in the following illustration, the query is for Service Managers in the United States. The inferred operation for the condition in this example is “AND”. This means that the result displays information where Title = Service Manager AND Country = United States. You can see an example of the Where Clause that is generated below the list of columns by clicking the Preview button.
+For example, in the following illustration, the query is for Service Managers in the United States. The inferred operation for the condition in this example is “AND”. This means that the result displays information where Title = Service Manager AND Country = United States. You can see an example of the Where Clause that is generated below the list of columns by clicking the Preview button.
 
     ![Add Filter Dialog Box](Media/Image4.31.jpg)
-
-    Figure 31: Add Filter Dialog Box
 
 7.	To enter an additional filter, click Add Rule. You can choose to either use an AND or OR condition. The example below uses an OR condition. For example, if “Operations Manager” were entered in the Condition 2 column for the Contact Title attribute, the results would include information where Contact Title = Service Manager OR Contact Title = Operations Manager AND Country = United States Therefore, all service and operation managers in the United States are included in the virtual view at runtime. 
 
     ![Additional Condition for Filter](Media/Image4.32.jpg)
 
-    Figure 32: Additional Condition for Filter
-
 8.	If more customization is required for the filter than is provided by this interface, then you can use the Additional Clause feature to manually create your own. For more information, please see the [Additional Clause](#additional-clause).
 
-To create filters for LDAP backends: 
+**To create filters for LDAP backends:** 
 
 1.	On the View Designer tab, select the Container or Content object and then choose the Advanced Settings tab.
 
@@ -535,8 +476,6 @@ To create filters for LDAP backends:
 3.	Enter a valid LDAP filter in the LDAP Filter parameter. There is a built-in syntax checker to verify the LDAP filter you have entered. For assistance with building your filter you can use the buttons along the right side. For example, if your filter should contain an AND condition, click on the New AND Operator button and then click New Condition. Enter one of the conditions you would like to filter on and click OK. Click on Next Condition button again and enter the next condition. In the screen shot below, the virtual view is conditioned by only returning entries that have l=Novato and postalCode=94947. 
 
     ![Sample LDAP Filter](Media/Image4.33.jpg)
-
-    Figure 33: Sample LDAP Filter
 
 4.	To add an OR operation, click New OR Operator. Then click **New Condition** to indicate what the OR operation should contain. 
 
@@ -550,13 +489,13 @@ To create filters for LDAP backends:
 
 For certain use cases, there are additional parameters that may be enabled to improve processing/performance. They are located on the Node Properties tab > Advanced Settings sub-tab. The optimizations available are dependent upon the type of backend that is accessed. Each is described below. 
 
-#### Virtual Views from Database Backends 
+### Optimizations for Virtual Views from Database Backends 
 
 There are two optimizations available for virtual views from database backends.
 -	Request Attributes Only When Necessary 
 -	Process Joins and Computed Attributes Only When Necessary 
 
-##### Request Attributes Only When Necessary 
+**Request Attributes Only When Necessary**
 
 Requesting certain types of attributes like binary/BLOB, can significantly decrease performance. When this option is enabled, RadiantOne requests attributes from the backend only if they are specifically requested by the client.
 
@@ -564,7 +503,7 @@ Use caution when enabling this parameter if an interception script is defined (w
 
 >[!warning] Do not enable this option if a memory entry cache is going to be enabled for this virtual view (as the whole virtual entry is needed, including the BLOBs).
 
-##### Process Joins and Computed Attributes Only When Necessary 
+**Process Joins and Computed Attributes Only When Necessary** 
 
 The default behavior of RadiantOne is to process associated joins and build computed attributes whenever a virtual object is reached from a query regardless of whether the attributes requested come from a secondary source or computation.
 
@@ -574,13 +513,13 @@ Use caution when enabling this option if you have interception scripts defined o
 
 >[!warning] Do not enable this option if a memory entry cache is going to be enabled for this virtual view (as the whole entry is needed for the cache).
 
-#### Virtual Views from LDAP Backends 
+### Optimizations for Virtual Views from LDAP Backends 
 
 There are two optimizations available for virtual views from LDAP backends.
 -	Process Joins and Computed Attributes Only When Necessary 
 -	Max Requested Attributes 
 
-Process Joins and Computed Attributes Only When Necessary
+**Process Joins and Computed Attributes Only When Necessary**
 
 The default behavior of RadiantOne is to process associated joins and build computed attributes whenever a virtual object is reached from a query regardless of whether the attributes requested come from a secondary source or computation.
 
@@ -590,11 +529,11 @@ Use caution when enabling this option if you have interception scripts defined o
 
 >[!warning] Do not enable this option if a memory entry cache is going to be enabled for this virtual view (as the whole entry is needed for the cache).
 
-#### Max Requested Attributes 
+**Max Requested Attributes** 
 
 If more than 30 attributes are configured to be returned for a container or content node (indicated on the Node Properties > Attributes sub-tab), RadiantOne optimizes the query by requesting `(*)` instead of requesting each attribute explicitly. If your virtual view is required to include operational attributes (computed by the backend server when requested), and you have more than 30 attributes declared in the view definition, the default behavior to translate the query to use `(*)` can cause problems resulting in the operational attributes not being returned from the backend server because they are not explicitly requested. You can adjust the maximum number of attributes to determine the usage of the `(*)` translation in the Max Requested Attributes property. If this property is set to zero, all attributes specified on the Attributes tab are requested. 
 
-#### Setting Advanced Configuration Parameters 
+### Setting Advanced Configuration Parameters 
 
 The View Designer allows for advanced parameters to be set for each virtual view. Customization options include the following: 
 
@@ -608,34 +547,29 @@ The View Designer allows for advanced parameters to be set for each virtual view
 
 -	Advanced parameters are set on the Node Properties > Advanced Settings sub-tab. Click the Change button next to Configuration Parameters. The configuration tabs available differ depending on the type of backend the virtual view is built from. All options are described below.
 
-##### Select Distinct
+**Select Distinct**
 
 Enable the Select Distinct checkbox to return only distinct (different) values from the database object as entries in the virtual view. SELECT DISTINCT finds all unique combinations of row data for the tables in the FROM clause. Using this option forces the database server to sort and apply a unique filtering operation, making it slower for large data sets.
 
-##### Left Outer Join
+**Left Outer Join**
 
 A left outer join is a relational database method of combining tables. The result includes unmatched rows from only the table that is specified before the LEFT OUTER JOIN clause. Enable the Left Outer Join checkbox if your virtual view is combining data from multiple database objects and you want the result to include the unmatched rows from only the primary object.
 
 ![Relational Database Outer Joins](Media/db-outer-joins.jpg)
 
-Figure 34: Relational Database Outer Joins
-
-##### Link Parameters 
+**Link Parameters** 
 
 The Link Parameters Tab is only relevant when the view definition has more than one level because this is the parameter that is used to link the entry to the parent. If there is only one level in the tree, this parameter is irrelevant. If RadiantOne has generated UPPER, you can remove it from here if needed. The UPPER is generated here for case sensitive databases. If your database is not case sensitive, then the UPPER can be removed (along with the corresponding set of parentheses). If your database is case sensitive, then you must make sure that the attribute that is indexed (and is used in the link parameter) uses UPPER case. Otherwise, performance of the virtual view is unpredictable. 
 
 ![Link Parameters Tab](Media/Image4.34.jpg)
  
-Figure 35: Link Parameters Tab
-
-##### Additional Clause 
+**Additional Clause**
 
 The Additional Clause is available for both database and LDAP backends. 
 If your backend is a database, you must be precise and use the proper syntax for your database (RadiantOne sends the filter to the backend database exactly the way you type it in). The additional clause would generally be used to add an ORDER BY to the SQL Query. This could be required for situations where you need the result from the database to be returned in a specific order (indicated by the attribute you want to ORDER BY). RadiantOne can automatically merge backend entries containing the same RDN value, only if the response is in alphabetical/numerical order. Otherwise, it returns the entries in the virtual view in the order in which the backend server returns them, and this could result in duplicate entries with the same RDN returned. Generally, this is only a risk if the RDN you defined in the Schema Manager for the database object is not unique. The attribute to order by doesn’t have to be the RDN attribute. You can order the results by any attribute in the virtual view definition. An example of adding an ORDER BY clause to a virtual view of a database backend is shown in the screen below. This additional clause indicates to return the entries from the backend ordered by the value in the “L” attribute. 
 
 ![Example Order By Additional Clause for Database Backend](Media/Image4.35.jpg)
 
-Figure 36: Example Order By Additional Clause for Database Backend
 
 >[!note] Use the actual database attribute name in the additional clause, not the remapped virtual name.
 
@@ -644,14 +578,14 @@ If your backend is an LDAP server, the value in the additional clause should be 
 >[!warning]
 >When entering an LDAP filter in the Additional Clause, keep in mind the following: 1) If there are some re-mapped attributes in your view, use the non-remapped name in the filter 2) Only attributes from the main (primary/source) object can be filtered (attributes from joined/secondary sources cannot comprise the filter).
 
-##### Stored Procedures
+**Stored Procedures**
 
 Database views can call stored procedures instead of using the default functionality for handling inserts, updates, and deletes.
 
 >[!warning]
 >Once you have declared stored procedures for a database, the standard functionality for inserts, updates, and deletes is no longer used; only the stored procedures are called.
 
-To add a stored procedure:
+**To add a stored procedure:**
 
 1.	Create a container or content node.
 
@@ -675,9 +609,7 @@ To add a stored procedure:
 
 ![Stored Procedures Tab](Media/Image4.36.jpg)
 
-Figure 37: Stored Procedures Tab
-
-##### Base Search Parameter
+**Base Search Parameter**
 
 Another customization is available for database backends. The Base Search parameter is located on the Node Properties > Advanced Settings sub-tab. This parameter allows you to remove UPPER (that is generated by default) for base searches and updates. The UPPER is generated here for case sensitive databases. If your database is not case sensitive, then the UPPER can be removed. If your database is case sensitive, then you must make sure that the attribute that is indexed (and is used in the base parameter) uses the UPPER case. Otherwise, performance of the virtual view (during a base search) is unpredictable.
 
@@ -693,13 +625,11 @@ If you are not able to remove the UPPER then you should consider using cache at 
 
 ![Base Search Example](Media/Image4.37.jpg)
 
-Figure 38: Base Search Example
-
 ### Defining the View Structure 
 
 In addition to using the View Designer to manually build virtual views, Context Builder also includes the Hierarchy Builder tool. With Hierarchy Builder, you can take a flat structure (either a flat LDAP tree or a database table) and build a complex hierarchy based on attributes existing in the entries. Hierarchy Builder is described in [Concepts and Utilities](concepts-and-utilities.md). The rest of this section is devoted to using the View Designer to build virtual views from LDAP and database backends. 
 
-#### Building Virtual Views from LDAP Backends 
+### Building Virtual Views from LDAP Backends 
 
 There are three main types of virtual views you can build from LDAP backends. 
 -	Virtualize the whole directory tree (based on existing relationships). 
@@ -711,21 +641,18 @@ There are three main types of virtual views you can build from LDAP backends.
 
 Each type of virtual view is discussed in more details below. 
  
-##### Flat Virtual Views 
+**Flat Virtual Views**
 
 Flat virtual views are based on an object class in the LDAP Backend. For example, if an existing LDAP directory tree is hierarchical and entries (associated with the inetOrgPerson object class) are spread across many branches, the virtual view can contain the complete list of users consolidated into one flat list. All entries associated with the configured class appear in the virtual view no matter where the entry exists in the actual LDAP backend. For example, the diagram below depicts an existing LDAP tree. User entries are spread across multiple branches.
 
 ![Sample LDAP Hierarchy](Media/Image4.38.jpg)
 
-Figure 39: Sample LDAP Hierarchy
-
 The hierarchy shown above can be flattened in a virtual view based on the object class associated with the users (e.g. inetOrgPerson). The sample flat virtual view structure is shown in the figure below.
 
 ![Sample Flat Virtual View Built from an Existing LDAP Hierarchy](Media/Image4.39.jpg)
 
-Figure 40: Sample Flat Virtual View Built from an Existing LDAP Hierarchy (depicted in the figure above)
-
 To build a flat virtual view based on an LDAP Object class:
+
 1.	On the View Designer tab, click ![An image showing ](Media/Imagenewviewdefinition.jpg) and enter a virtual view name. If a view with the same name already exists, it is overwritten.
 
 2.	Click **Select** to choose the schema file (.orx file) that stores the LDAP directory schema (on the LDAP tab). All .orx files containing directory schemas are stored in the directory of <RLI_HOME>\<instance_name>\lod. 
@@ -734,13 +661,9 @@ To build a flat virtual view based on an LDAP Object class:
 
     ![New Content Option](Media/Image4.40.jpg)
 
-    Figure 41: New Content Option
-
 4.	Select the object class associated with the entries that should populate this node and click OK. 
 
     ![Object Class Associated with Entries that will Populate the Node ](Media/Image4.41.jpg)
-
-    Figure 42: Object Class Associated with Entries that will Populate the Node
 
 5.	On the Node Properties > Attributes sub-tab, define the attributes that should comprise the entries by moving them from the list on the left to the list on the right.
 
@@ -748,13 +671,11 @@ To build a flat virtual view based on an LDAP Object class:
 
 ![Flat Virtual View from Existing LDAP Directory Object class InetOrgPerson ](Media/Image4.42.jpg)
 
-Figure 43: Flat Virtual View from Existing LDAP Directory Object class InetOrgPerson
-
 The Base DN that was entered when the directory schema was extracted is the starting point that the RadiantOne service uses to search for entries and populate the virtual view. Therefore, all entries associated with the chosen object class below the base DN defined in the data source comprise the virtual view. You can change the starting point by modifying the base DN in the data source. 
 
 After the virtual view is complete, it can be mounted in the RadiantOne namespace. Use the Main Control Panel > Directory Namespace tab for this. For details on this process, please see the [RadiantOne Namespace Configuration Guide](/namespace-configuration-guide/01-introduction).
 
-##### Hierarchical Virtual View Based on Attributes of an Object Class 
+**Hierarchical Virtual View Based on Attributes of an Object Class** 
 
 Hierarchical virtual views can be built using the Hierarchy Builder utility and are based on attributes available in an object class. The following four figures provide an example of the process. For specific details on the configuration steps, see [Hierarchy Builder](concepts-and-utilities.md#hierarchy-builder). 
 
@@ -762,19 +683,13 @@ The hierarchy shown below is an example of an LDAP directory tree.
 
 ![Sample Existing LDAP Hierarchy](Media/Image4.44.jpg)
 
-Figure 43: Sample Existing LDAP Hierarchy
-
 The first step in building a virtual view is to extract the schema information using Schema Manager. The schema from the LDAP hierarchy shown in the figure above is shown in the figure below. 
 
 ![LDAP Schema Extracted with Schema Manager ](Media/Image4.44.jpg)
 
-Figure 45: LDAP Schema Extracted with Schema Manager
-
 The next step is to load the schema into Hierarchy Builder and follow the wizard to model your virtual view. On the View Designer tab, click Hierarchy Builder. The figure below depicts this process. 
 
 ![Hierarchy Builder](Media/Image4.45.jpg)
-
-Figure 46: Hierarchy Builder
 
 Finally, the virtual view built in the hierarchy builder can be viewed and modified (if needed) in the View Designer tab.
 
@@ -782,33 +697,25 @@ The figure below shows the Runtime view of the virtual tree created with the hie
 
 ![Example Virtual View Created with Hierarchy Builder](Media/Image4.46.jpg)
 
-Figure 47: Example Virtual View Created with Hierarchy Builder
-
 After the virtual view is complete, it can be mounted in the RadiantOne Namespace. Use the Main Control Panel > Directory Namespace tab. For details on this process, please see the RadiantOne Namespace Configuration Guide. 
 
-##### Returning the Actual DN from LDAP Entries 
+**Returning the Actual DN from LDAP Entries** 
 
 By default, only the virtual (remapped) DN is returned for virtual entries. If you would like the actual DN of the LDAP entry to be returned to clients requesting information from the virtual view, then expose the attribute named “actualdn” in the virtual view. This attribute is automatically added to object class definitions in the schema file. This does NOT affect the underlying schema. 
 
 ![An image showing ](Media/Image4.47.jpg)
 
-Figure 48: Actualdn Attribute
-
 In the View Designer, move the actualdn attribute to the list of attributes to comprise the virtual entries from. This is done on the Attributes tab after creating your container or content node. Below is an example of a content node built from inetOrgPerson and exposing the actualdn attribute. 
 
 ![An image showing ](Media/Image4.48.jpg)
-
-Figure 49: Exposing the Actualdn Attribute
 
 When the virtual entries are returned, the entry contains both the virtual DN (where the entry is located in the RadiantOne namespace), and the actual DN (where the entry is literally located in the underlying directory). The example in the figure below shows Aaron Medler’s virtual DN (the “dn” attribute) and the “actualdn” from the underlying directory. 
 
 ![An image showing ](Media/Image4.49.jpg)
 
-Figure 50: Results Showing Virtual DN and Actual DN
-
 >[!warning] Although the “actualdn” attribute is returned for each entry, it is NOT a searchable attribute.
 
-#### Building Virtual Views from Database Backends 
+### Building Virtual Views from Database Backends 
 
 There are three main types of virtual views you can build from a database schema. They are:
 -	Relationship-driven virtual views based on existing relationships between the database objects.
@@ -817,7 +724,7 @@ There are three main types of virtual views you can build from a database schema
 
 Each type of virtual view is discussed in more details below. 
 
-##### Relationship-Driven Hierarchical Virtual Views 
+**Relationship-Driven Hierarchical Virtual Views** 
 
 Relationship-driven hierarchies use the underlying schema to build the hierarchy. The relationship between the existing objects drives the structure. Relationship-driven hierarchies are composed of Container objects, and optionally, Content objects.
 
@@ -825,15 +732,12 @@ The following diagram illustrates a relationship-driven hierarchy composed of Co
  
 ![Relationship-driven Hierarchy Builder with Container](Media/Image4.50.jpg)
 
-Figure 51: Relationship-driven Hierarchy Builder with Containers
-
 Another example of a relationship-driven hierarchy is one that uses a recursive relationship. In the sample Northwind database, the Employees table has a recursive relationship with itself. Therefore, you could build an organization hierarchy depicting the different levels of management. An example is shown in the figure below. 
 
 If you need help on defining recursive relationships for your database schema, please see the recursive relationships section in [Schema Manager](schema-manager.md). 
 
 ![Recursive Relationship-driven Hierarchy Built with Containers](Media/Image4.51.jpg)
 
-Figure 52: Recursive Relationship-driven Hierarchy Built with Containers
 
 **Steps to Build a Relationship-driven Hierarchy from a Database Schema**
 
@@ -847,8 +751,6 @@ It is assumed that the database schema has already been extracted (and all relat
 
 ![New Container ](Media/Image4.52.jpg)
 
-Figure 53: New Container
-
 4.	Expand below the root node and select the APP.CUSTOMERS object and click OK.
 
 5.	In the view definition, select the Customers container and click New Container on the right. 
@@ -861,31 +763,23 @@ Figure 53: New Container
 
 ![Virtual View Model Based on Database Relationships](Media/Image4.53.jpg)
 
-Figure 54: Virtual View Model Based on Database Relationships
-
 Now that the main structure has been defined, each node in the tree can be refined (optional) by exposing relevant attributes, configuring advanced parameters, search options for case sensitive databases, filters, interception scripts and joins. 
 
 Once configured, the virtual view can be tested from the Runtime Preview tab. Make sure the RadiantOne service (and the Derby database – if building a virtual view from the sample database included with RadiantOne), is running before trying to view the tree. The default runtime virtual view can be seen in the figure below. 
 
 ![Runtime Virtual View Built from Database Relationships](Media/Image4.54.jpg)
 
-Figure 55: Runtime Virtual View Built from Database Relationships
-
 After the virtual view is complete, it can be mounted in the RadiantOne namespace. Use the Main Control Panel > Directory Namespace for this. For details on this process, please see the RadiantOne Namespace Configuration Guide. 
 
-##### Flat Virtual Views 
+**Flat Virtual Views**
 
 Flat virtual views are based on a database table (or a combination of tables if relationships are present). For example, if a virtual view were built from a database table, all records in the table could become an entry in the RadiantOne namespace. Attributes of the virtual entry could come from columns in the database table or any related table (according to the schema definition). The diagram below depicts an example database with three related tables.
 
 ![Sample Database Schema](Media/Image4.55.jpg)
 
-Figure 56: Sample Database Schema
-
 The information available in the related database objects can be used to build the virtual directory entries. The virtual view below depicts an example virtual view based on the database schema/data shown above. 
 
 ![Sample RadiantOne Entries Based on Database Objects ](Media/Image4.56.jpg)
-
-Figure 57: Sample RadiantOne Entries Based on Database Objects
 
 Using the example above, the following steps describe how to build a flat virtual view from a database schema. It is assumed that the database schema has already been extracted, and all needed relationships are defined. If you need assistance extracting a database schema, please see [Schema Manager](schema-manager.md). 
 
@@ -907,23 +801,19 @@ Using the example above, the following steps describe how to build a flat virtua
 
 9.	Click the Add button next to the table drop-down list selecting the Projects table this time. Click OK.
 
-    All joined tables should appear in the drop-down list on the Attributes tab. Attributes from any of the tables can comprise the virtual entry. Select the table in the drop-down list and move the attribute that you want in the virtual entry into the column list on the right (using the ![right arrow ](Media/ImageRightArrow.jpg) button). 
+All joined tables should appear in the drop-down list on the Attributes tab. Attributes from any of the tables can comprise the virtual entry. Select the table in the drop-down list and move the attribute that you want in the virtual entry into the column list on the right (using the ![right arrow ](Media/ImageRightArrow.jpg) button). 
 
     ![database tables for the join ](Media/Image4.57.jpg)
  
-    Figure 58: Database Tables for the Join
-
-    In the screen shot below, the EMPID, FNAME, LNAME, and Phone attribute are mapped from the People table. The ProjectName and ProjectMGR are mapped from the Projects table and the SupplierName is mapped from the Suppliers table. 
+In the screen shot below, the EMPID, FNAME, LNAME, and Phone attribute are mapped from the People table. The ProjectName and ProjectMGR are mapped from the Projects table and the SupplierName is mapped from the Suppliers table. 
 
 10.	Save the virtual view. Below is an example of the Runtime Preview.
 
 ![Runtime Preview Example ](Media/Image4.58.jpg)
 
-Figure 59: Runtime Preview Example
-
 After the virtual view is complete, it can be mounted in the RadiantOne Namespace. Use the Main Control Panel > Directory Namespace tab for this. For details on this process, please see the [RadiantOne Namespace Configuration Guide](/namespace-configuration-guide/01-introduction). 
 
-##### Hierarchical Virtual View Based on Attributes of an Object 
+**Hierarchical Virtual View Based on Attributes of an Object** 
 
 Hierarchical virtual views can be built using the Hierarchy Builder utility and are based on attributes available in an object. The following four figures provide an example of the process. For specific details on the configuration steps, see [Hierarchy Builder](concepts-and-utilities.md#hierarchy-builder). 
 
@@ -931,27 +821,21 @@ The first step is to extract the database schema. If you need help with this pro
 
 ![Sample Database Schema Shown in the Schema Manager ](Media/Image4.59.jpg)
 
-Figure 60: Sample Database Schema Shown in the Schema Manager
-
 The next step is to use the Hierarchy Builder utility and construct a virtual tree based on the database schema. An example hierarchy is shown in the figure below. 
 
 ![Example Virtual View Build with Hierarchy Builder ](Media/Image4.60.jpg)
-
-Figure 61: Example Virtual View Build with Hierarchy Builder
 
 Finally, the virtual view can be tested from the Runtime Preview tab. The RadiantOne service must be running before trying to test the virtual view. The virtual view built in the example described above is shown below. 
 
 ![Runtime Preview of Virtual View Built with Hierarchy Builder ](Media/Image4.61.jpg)
 
-Figure 62: Runtime Preview of Virtual View Built with Hierarchy Builder
-
 After the virtual view is complete, it can be mounted in the RadiantOne namespace. Use the Main Control Panel > Directory Namespace tab for this. For details on this process, please see the [RadiantOne Namespace Configuration Guide](/namespace-configuration-guide/01-introduction). 
 
-##### Handling Searches Against Case-Sensitive Databases 
+**Handling Searches Against Case-Sensitive Databases** 
 
 There are three options available for handling case sensitive databases. These options are related to how RadiantOne generates the query to send to the database. These options are available on the Node Properties > Advanced Settings sub-tab when the relevant container or content node is selected in the view definition.
 
-**As Is**
+*As Is*
 
 If your database is not case sensitive, then you should choose the As Is option. With this option, RadiantOne forwards the search filter to the backend in the exact case it was received in the request from the client. This is the default option.
 
@@ -959,7 +843,7 @@ If your database is case sensitive and you choose this option, the case received
 
 For example, if a database attribute named FIRSTNAME had a value of Nancy, and RadiantOne received a search request with a filter of (firstname=nancy), the entry is not returned. The client must use a filter of (firstname=Nancy) for the entry to be properly returned from the database. 
 
-**Ignore Case**
+*Ignore Case*
 
 If your database is case sensitive and you are not sure how the values are stored (mixed case, all upper, all lower…etc.), then you should choose the Ignore Case option. With this option, RadiantOne generates the SQL query so that both the filter that was received in the client request and the values from the backend are converted into uppercase before the search filter can be validated. For example, if a client sent a request with a filter of (firstname=Nancy), RadiantOne would generate the following where clause based on the filter received in the client request.
 WHERE (UPPER(APP.EMPLOYEES.FIRSTNAME)=UPPER('Nancy')) 
@@ -968,11 +852,11 @@ The case used in the filter from the client is irrelevant and everything will be
 
 This option offers the least performance, so it should only be used when absolutely required. If the database is case sensitive and the values are stored in uppercase, you should use the Translate Values to Uppercase option (see #3 below) as it is more efficient. 
 
-**Translate Values to Uppercase**
+*Translate Values to Uppercase*
 
 If your database is case sensitive and you know the values are stored in uppercase, you should choose the Translate Values to Uppercase option. With this option, RadiantOne translates the search filter value into uppercase before sending it to the backend database. This option is more efficient than the Ignore Case option mentioned above. 
 
-##### Stored Procedures 
+**Stored Procedures** 
 
 Database views can call stored procedures instead of using the default functionality for handling inserts, updates, and deletes.
 
@@ -1003,13 +887,11 @@ To add a stored procedure:
 
 ![Configuration to Call Database Stored Procedures](Media/Image4.62.jpg)
 
-Figure 63: Configuration to Call Database Stored Procedures
-
-###### Logging Stored Procedure Values 
+*Logging Stored Procedure Values* 
 
 To log stored procedure values used at runtime, set the RadiantOne server log level to DEBUG or higher. You can set the log level from Main Control Panel > Settings > Logs > Log Settings. Select VDS – Server from the “Log Settings to Configure” drop-down list. Set the “Log Level” to DEBUG (or TRACE). Stored procedure values used as runtime are logged in <RLI_HOME>/vds_server/logs/vds_server.log. 
 
-#### Building Virtual Views from SCIMv2 Backends
+### Building Virtual Views from SCIMv2 Backends
 
 >[!warning] Do not use attribute mappings, computed attributes, or joins directly on the virtual view from the SCIM backend. Create a basic view with no attribute mappings, computed attributes or joins and then define the view with persistent cache. Initialize the persistent cache and then use Schema Manager and View Designer to point to the cached naming context in the RadiantOne namespace as an [LDAP backend](schema-manager.md#ldap-accessible-backend). Define the attribute mappings, computed attributes and joins on this virtual view.
 
@@ -1034,8 +916,6 @@ It is assumed that the SCIMv2 schema has already been extracted. If you need hel
 
 ![Example Virtual View of a SCIMv2 Backend ](Media/Image4.63.jpg)
  
-Figure 64: Example Virtual View of a SCIMv2 Backend
-
 After the virtual view is complete, it can be mounted in the RadiantOne Namespace and configured for persistent cache. Use the Main Control Panel > Directory Namespace tab for this. For details on this process, please see the [RadiantOne Namespace Configuration Guide](/namespace-configuration-guide/01-introduction). For details on configuring a persistent cache, please see the [RadiantOne Deployment and Tuning Guide](/deployment-and-tuning-guide/00-preface). Once a persistent cache is defined, use the Schema Manager to extract the schema (LDAP type of backend now that the virtual view is in persistent cache). Make sure the SCIMv2 objects/attributes are in the RadiantOne schema before using Schema Manager. See the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction) for managing the schema. After the schema is extracted, create a virtual view where you can remap attribute names, configure joins and other customizations.
 
 ### Deleting Virtual Views 
@@ -1051,4 +931,3 @@ To delete a virtual view:
  
  ![Deleting Virtual View Files](Media/Image4.64.jpg)
 
-Figure 65: Deleting Virtual View Files
