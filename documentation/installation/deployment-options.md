@@ -40,6 +40,11 @@ Radiant Logic technical support can be reached using any of the following option
 ## SaaS
 
 For SaaS deployments, RadiantOne Identity Data Management is installed by creating a new environment in [Environment Operations Center](/../../eoc/latest/environments/environment-overview/create-environments).
+Radiant Logic owns and manages the infrastructure where the Identity Data Management product is deployed. 
+
+**SaaS network diagram:**
+![image description](images/saas-diagram.png)
+
 
 ## Self-managed
 
