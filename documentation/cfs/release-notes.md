@@ -173,4 +173,14 @@ October 2, 2024
 -	[VSTS46653]: JWKs alg value (RS256) is fixed to reflect IETF standards.
 -	[VSTS46663]: "denyUrlSequences" configured to handle escape sequences properly with custom error pages. 
 
+### v3.17.1
+
+December 6, 2024
+
+**Improvements**
+
+-	[VSTS44477]: Improvement to notify non-password users to log in via smart card when they attempt to reset passwords.
+- [VSTS46962]: When 2FA is enabled (via Yubikey or TOTP), users in the ROPC flow can authenticate without 2FA as 2FA is not supported for this flow. For all other authentication flows, users will be required to complete the 2FA process when prompted for credentials to gain access.
+- [VSTS47173]: Added support for multiple audiences/recipients per application in the CFS SAML SSO integration.
+
 
