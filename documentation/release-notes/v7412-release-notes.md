@@ -13,6 +13,8 @@ These release notes contain the following sections:
 
 [Improvements](#improvements)
 
+[Deprecated Features](#deprecated-features)
+
 [Security Vulnerabilities](#security-vulnerabilities)
 
 [Supported Platforms](#supported-platforms)
@@ -56,6 +58,9 @@ These release notes contain the following sections:
 -	[VSTS47132]: Added support for OpenJDK 8u432.
 -	[VSTS47143]: Removed DES3 cipher option from the list of available ciphers for attribute encryption/LDIFZ attribute encryption keys.
 
+
+## Deprecated Features
+- SAML Attribute Service.
 
 ## Supported Platforms
 
