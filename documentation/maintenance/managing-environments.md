@@ -9,7 +9,8 @@ For SaaS deployments, use the Environment Operations Center to restart the Radia
 
 ## Restarting the RadiantOne Service
 
-For SaaS deployments, restarting the RadiantOne Identity Data Management service is performed in the Environment Operations Center. In the EOC navigation pane, select Environments. On the Environments page, select an environment and an application. On the application page, click the Power button. For more details, see: [Starting Environments](/../../eoc/latest/environments/environment-overview/stop-and-start-environment)
+For SaaS deployments, restarting the RadiantOne Identity Data Management service is performed in the Environment Operations Center. In the EOC navigation pane, select Environments. On the Environments page, select an environment and an application. On the application page, click the Power button. For more details, see: [Starting Environments](/../../eoc/latest/environments/applications/stop-and-restart-application.md).
+
 
 ## Deleting Environments
 
