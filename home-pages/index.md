@@ -178,7 +178,7 @@ Harness your identity data with intelligent integration to drive better business
   > [Scaling Nodes](maintenance/scaling-nodes)  
   > Learn how to scale the number of nodes in an environment. 
 
-  > [Restarting Environments](maintenance/managing-environments#restarting-environments)  
+  > [Restarting Applications](maintenancemanaging-environments/#restarting-the-radiantone-service)  
   > Learn how to restart environments. 
      
   > [Deleting Environments](maintenance/managing-environments#deleting-environments)  
