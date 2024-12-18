@@ -13,5 +13,4 @@ To set the number of RadiantOne nodes contained in an environment, in the EOC na
 
 ## Self-Managed Deployment
 
-The number of nodes to scale to is defined in the Helm Chart. Helm charts for self-managed deployments will be available in July 2024.
-
+For self-managed deployments, you can specify the number of nodes to scale during the initial installation or an upgrade by setting the desired value in the [`replicaCount`](../installation/self-managed/#steps-for-deployment)) field of the Helm Chart's values.yaml file. The number of nodes should be determined based on your throughput requirements. Generally, for test deployment, you can set the value as 1 and for production deployments, the value can be 2 or higher. While the recommended maximum for production environment is 5 nodes, you can adjust this value as needed to suit your specific needs. For more information, see [Self-managed Deployment](../installation/self-managed).
