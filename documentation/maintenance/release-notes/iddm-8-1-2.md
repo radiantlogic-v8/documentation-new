@@ -97,7 +97,7 @@ Also, changed the merged backend page to display the Radiantone Namespace DN val
 - Modification of encrypted attributes fails from the Directory Browser.
 - Importing LDIFZ files is not supported yet.
 - [API-2355]: The edit schema functionality has been disabled as there is a known issue where it will not update dependent view files with the new schema name, because we don't have the ability currently to update the view files.
--[API-2403]: LDAP filter assist mode in Namespace Design > `[naming context]` > Advanced Settings > LDAP Filter is disabled due to a bug that currently has no workaround.
+- [API-2403]: LDAP filter assist mode in Namespace Design > `[naming context]` > Advanced Settings > LDAP Filter is disabled due to a bug that currently has no workaround.
 - The Classic Control Panel > Wizards > Identity Data Analysis wizard has been temporarily disabled due to a bug with running analysis that has no workaround.
 
 
