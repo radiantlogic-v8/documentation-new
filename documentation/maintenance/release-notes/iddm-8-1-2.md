@@ -5,7 +5,7 @@ description: RadiantOne Identity Data Management v8.1.2 Release Notes
 
 # RadiantOne Identity Data Management v8.1.2 Release Notes
 
-December 20, 2024
+December 23, 2024
 
 These release notes contain important information about new features and improvements for RadiantOne Identity Data Management v8.1.2.
 
