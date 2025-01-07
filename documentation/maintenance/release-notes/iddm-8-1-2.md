@@ -92,7 +92,7 @@ Also, changed the merged backend page to display the Radiantone Namespace DN val
 - Loading/refreshing on Directory Namespace > Namespace Design > *selected naming context* > Object Builder is sometimes slow and the user is prompted to *SAVE* before exiting the tab even if they have recently saved.
 - Loading/refreshing on Data Catalog > Data Sources > *selected data source* > Schema is sometimes slow.
 - developer.radiantlogic.com site is in the process of having broken links and missing images fixed.
-- Direct upgrades to v8.1.0 from earlier versions of RadiantOne aren't supported. Using a migration (configuration exported) from v7.4.10, 8.0.3, or v8.1.0 can be used to create new v8.1.1 environments.
+- Direct upgrades to v8.1.0 from earlier versions of RadiantOne aren't supported. Using a migration (configuration exported) from v7.4.10, 8.0.3, or v8.1.0 can be used to create new v8.1.1(+) environments.
 - AWSKMS is not supported yet in Security > Attribute Encryption.
 - Modification of encrypted attributes fails from the Directory Browser.
 - Importing LDIFZ files is not supported yet.
