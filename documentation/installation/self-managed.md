@@ -1,6 +1,3 @@
-
-
-
 ---
 title: Self-managed Deployment
 description: Learn how to deploy RadiantOne Identity Data Management in your own Kubernetes cluster using Helm.
