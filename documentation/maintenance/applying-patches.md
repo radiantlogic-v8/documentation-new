@@ -54,11 +54,11 @@ Copy the file locally by executing the following command in the pod:
 
 ### Applying the Patch
 
-Update your values.yaml file with the image tag for the v8.1 patch release (e.g. v8.1.1)
+Update your values.yaml file with the image tag for the v8.1 patch release (e.g. v8.1.2)
 
 ```
 image:
-  tag: "8.1.1"
+  tag: "8.1.2"
 ```
 
 Run the following helm command to apply the patch:
