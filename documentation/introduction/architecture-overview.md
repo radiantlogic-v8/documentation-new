@@ -66,7 +66,7 @@ The RadiantOne platform solves these challenges by leveraging data where it exis
 
 Many enterprises face similar technical complexities that can be solved seamlessly with the RadiantOne platform. It comes equipped with a complete tool set making it easy for administrators to configure and solve many of the most common use cases. RadiantOne was designed to address identity integration challenges that range from mapping disparate systems to a common schema, to streamlining identities in fragmented data silos by consolidating them into one central access point for Identity and Access Management (IAM), Identity Governance and Administration (IGA), and other solutions that require an identity integration platform. A diagram depicting common use cases is shown below.
 
-![RadiantOne Platform and Use Cases](Media/global-arch.jpg)
+![RadiantOne Platform and Use Cases](Media/global-arch.png)
 
 
 
