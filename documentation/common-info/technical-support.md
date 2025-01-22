@@ -16,5 +16,3 @@ Technical support can be reached using any of the following options:
 
 - **Website:** <https://support.radiantlogic.com>
 
-- **Toll-Free Phone:** 1-877-727-6442 
-
