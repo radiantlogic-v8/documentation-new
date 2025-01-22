@@ -320,7 +320,7 @@ Figure 4: Export Store from a Sub-branch on the Directory Browser Tab – Export
 
 ### Number of Supported Clauses in Search Filters
 
-By default, the RadiantOne Universal Directory supports a maximum of 1024 clauses in search filters. To increase the maximum number of clauses supported, edit the maxClausesLimit property setting in /radiantone/v1/cluster/config/vds_server.conf from the Main Control Panel -> ZooKeeper tab (requires [Expert Mode](01-introduction#expert-mode)). The RadiantOne service does not need to be restarted after modifying this value.
+By default, the RadiantOne Universal Directory supports a maximum of 1024 clauses in search filters. To increase the maximum number of clauses supported, edit the maxClausesLimit property setting in /radiantone/`<version>`/`<clusterName>`/config/vds_server.conf from the Main Control Panel -> ZooKeeper tab (requires [Expert Mode](01-introduction#expert-mode)). The RadiantOne service does not need to be restarted after modifying this value.
 
 ### Exporting RadiantOne Universal Directory Stores
 
