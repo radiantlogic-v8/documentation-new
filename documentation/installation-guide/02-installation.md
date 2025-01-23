@@ -18,7 +18,7 @@ The installer files are available on the Radiant Logic support site. Contact sup
 RadiantOne can be installed via a web-based GUI wizard, or through a silent (non-GUI) installer. The installer files are described below in the table below.
 
 >[!warning]
->RadiantOne generates a random master key by default to use for encrypting information in configuration files. If you prefer to use Password-based encryption (PBE) to generate the key, you must use a silent install and indicate vds.security.pbe.enabled=true in the \vds\install\install.properties file before using [Instance Manager](#silent-mode-installs) to install RadiantOne.
+>For versions prior to v7.4.8, RadiantOne generates a random master key by default to use for encrypting information in configuration files. If you prefer to use Password-based encryption (PBE) to generate the key, you must use a silent install and indicate vds.security.pbe.enabled=true in the \vds\install\install.properties file before using [Instance Manager](#silent-mode-installs) to install RadiantOne. Starting in v7.4.8, PBE is used by default during install.
 
 | Installer File | Description
 |------------|------------|
