@@ -141,6 +141,8 @@ For specific hardware requirements of each, please see the RadiantOne System Req
 
 -	RadiantOne-specific environment variables used/set during installation are no longer used. You will not have or need RLI_HOME or RLI_JAVA_HOME.
 
+-	RadiantOne installation options using Azure Marketplace templates and AWS cloud formation templates have been deprecated. 
+
 For known issues reported after the release, please see the Radiant Logic Knowledge Base:
 https://support.radiantlogic.com/hc/en-us/categories/4412501931540-Known-Issues
 
