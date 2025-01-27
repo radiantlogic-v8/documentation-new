@@ -64,7 +64,8 @@ As of v8.1.0 the following features have been deprecated:
 - Role mapped access
 - Directory tree wizard
 - Groups Builder wizard
-- Groups Migraiton wizard 
+- Groups Migration wizard
+- SAML Attribute Service
 
 
 ## How to Report Problems and Provide Feedback
