@@ -74,6 +74,8 @@ For specific hardware requirements of each, please see the RadiantOne System Req
 -	The installation process has changed. There are no longer .exe and .bin installer files. A zip file is provided for Windows, and a tar file for Linux. After the files are extracted to the location where you want RadiantOne to be installed, you can use either a web-based install (use \radiantone\vds\bin\setup.bat/.sh) or install-sample.properties with Instance Manager to install in a silent mode. See the RadiantOne Installation Guide for details.
 
 -	RadiantOne-specific environment variables used/set during installation are no longer used. You will not have or need RLI_HOME or RLI_JAVA_HOME.
+  
+-	RadiantOne installation options using Azure Marketplace templates and AWS cloud formation templates have been deprecated. 
 
 For known issues reported after the release, please see the Radiant Logic Knowledge Base:
 https://support.radiantlogic.com/hc/en-us/categories/4412501931540-Known-Issues
