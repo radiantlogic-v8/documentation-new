@@ -156,12 +156,12 @@ If you received a cluster-based license key, the same key value can be used for 
 
 #### Adding a Core Cluster Node
 
-If you are not using a separate ZooKeeper ensemble, before attempting to add nodes to an existing cluster, please make sure the ZooKeeper process on the first cluster node (installed following the steps in the [Installing a Single Node](#installing-a-single-node) is running).
+If you are not using a separate ZooKeeper ensemble, before attempting to add nodes to an existing cluster, please make sure the ZooKeeper process and the RadiantOne LDAP Service on an existing cluster node (installed following the steps in the [Installing a Single Node](#installing-a-single-node) are running).
 
 >[!warning]
->Do NOT attempt to install multiple new nodes at the same time. Wait until each new node is successfully added and ZooKeeper is running properly on the node (if you are using local ZooKeeper) before installing additional nodes to the cluster.
+>Do NOT attempt to install multiple new nodes at the same time. Wait until each new node is successfully added and ZooKeeper (if you are using local ZooKeeper) and the RadiantOne LDAP service are running properly on the node before installing additional nodes to the cluster.
 
-If you are using a separate ZooKeeper ensemble, before attempting to add RadiantOne nodes to an existing cluster, please make sure that at least two ZooKeepers servers are up and running.
+If you are using a separate ZooKeeper ensemble, before attempting to add RadiantOne nodes to an existing cluster, please make sure that at least two ZooKeepers servers are up and running. Also ensure that the RadiantOne service is running on an existing cluster node.
 
 1. At the “System Check Report” step, verify that the system passed all checks and click Next.
 
