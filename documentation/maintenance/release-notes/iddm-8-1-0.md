@@ -66,6 +66,7 @@ As of v8.1.0 the following features have been deprecated:
 - Groups Builder wizard
 - Groups Migration wizard
 - SAML Attribute Service
+- Log2DB and runAccessLog2DB.bat (replaced by fluentd and ElasticSearch for log aggregation).
 
 
 ## How to Report Problems and Provide Feedback
