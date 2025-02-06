@@ -141,7 +141,7 @@ Several aspects of RadiantOne are configured during installation. The basic inst
 
 9. If you are not going to use the temporary license key, copy your license.lic file into the <RLI_HOME>/vds_server directory before using RadiantOne.
 
-10. Start the Main Control Panel (<RLI_HOME>/bin/openControl.bat/.sh) and then start the RadiantOne service (Main Control Panel ->Dashboard Tab).
+10. Start the Main Control Panel (<RLI_HOME>/bin/openControlPanel.bat/.sh) and then start the RadiantOne service (Main Control Panel ->Dashboard Tab).
 
 ### Adding Nodes
 
@@ -204,7 +204,7 @@ If you are using a separate ZooKeeper ensemble, before attempting to add Radiant
    >All settings (ports, user passwords, etc.) are the same as used for the first node in the cluster, so you will not see this step during the install. The only configuration that varies from the first node in the cluster is the server SSL certificate (for LDAPS communication between clients and the RadiantOne service). A default, self-signed certificate is generated for each node you add to the cluster. Details on replacing the default self-signed certificate can be found in the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction).
 
 
-8. Start the Main Control Panel (<RLI_HOME>/bin/openControl.bat/.sh) and then start the RadiantOne service (Main Control Panel > Dashboard Tab).
+8. Start the Main Control Panel (<RLI_HOME>/bin/openControlPanel.bat/.sh) and then start the RadiantOne service (Main Control Panel > Dashboard Tab).
 
 9. Repeat the steps in this section for each node you want to add in your cluster. Once all nodes are installed and the services on each are running, the Main Control Panel, > Dashboard tab > Overview section displays the cluster details. The following image shows two cluster nodes.
 
