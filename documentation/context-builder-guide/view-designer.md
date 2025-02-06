@@ -779,7 +779,7 @@ Flat virtual views are based on a database table (or a combination of tables if 
 
 The information available in the related database objects can be used to build the virtual directory entries. The virtual view below depicts an example virtual view based on the database schema/data shown above. 
 
-![Sample RadiantOne Entries Based on Database Objects ](Media/Image4.56.jpg)
+![Sample RadiantOne Entries Based on Database Objects](Media/Image4.56.jpg)
 
 Using the example above, the following steps describe how to build a flat virtual view from a database schema. It is assumed that the database schema has already been extracted, and all needed relationships are defined. If you need assistance extracting a database schema, please see [Schema Manager](schema-manager.md). 
 
@@ -803,7 +803,7 @@ Using the example above, the following steps describe how to build a flat virtua
 
 All joined tables should appear in the drop-down list on the Attributes tab. Attributes from any of the tables can comprise the virtual entry. Select the table in the drop-down list and move the attribute that you want in the virtual entry into the column list on the right (using the ![right arrow ](Media/ImageRightArrow.jpg) button). 
 
-    ![database tables for the join ](Media/Image4.57.jpg)
+![database tables for the join](Media/Image4.57.jpg)
  
 In the screen shot below, the EMPID, FNAME, LNAME, and Phone attribute are mapped from the People table. The ProjectName and ProjectMGR are mapped from the Projects table and the SupplierName is mapped from the Suppliers table. 
 
