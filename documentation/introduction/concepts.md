@@ -190,9 +190,9 @@ Group members can be either static (explicit member DN in the group entry) or dy
 
 The differences between static and dynamic groups are depicted in the diagrams below.
 
-![example of static group](Media/Image2.21.jpg)
+![example of static group](Media/StaticGroup.jpg)
 
-![Example of Traditional LDAP Dynamic Groups](Media/Image2.22.jpg)
+![Example of Traditional LDAP Dynamic Groups](Media/DynamicGroup.jpg)
  
 ### Groups Supported by RadiantOne
 
