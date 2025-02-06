@@ -93,6 +93,51 @@ Gets the pipeline information and data metrics for a given pipeline identifier.
 `- pipelineid <pipelineID>`
 <br>[required] The identifier of the pipeline. Run the list-topologies command to locate the pipelines identifiers for each topology.
 
+### Metrics Details
+
+**suspended**
+Has a value of true/false. This indicates if the pipeline is currently active. If the value is "false" it indicates the pipeline is currently active.  A pipeline can be "suspended" which means it is paused/not running, in which case this value would be "true".
+
+**captureMetrics**
+These are the metrics about the "capture" phase of a specific pipeline. This is when events (inserts, updates, deletes, moves)  get captured/detected on the source naming context for the pipeline.
+
+**processorMetrics**
+These are the metrics about the "transform and apply" phase of a pipeline. This is the part of the pipeline where the captured events (from the source naming context) get transformed and then applied to the target naming context.
+
+**deadLetterQueueSize** 
+This parameter represents the current number of items in the dead letter queue for a specific pipeline. If the queue size continues to grow, it may indicate issues with your pipeline configuration or failed event processing. Common causes include errors in transformation logic or an unresponsive target backend. In essence, this value acts as an "error count" or a measure of failed events in the pipeline.
+
+The dead letter queue is a specialized internal queue that stores all events that fail during the "transform and apply" phase. Failures can occur for various reasons, such as incorrect transformation logic, the target system rejecting an operation (e.g., attempting to insert a duplicate entry), or connectivity issues with the backend. By storing these failed events, the dead letter queue enables you to replay them later or use them for auditing and troubleshooting purposes.
+
+>[!note] the dead letter queue can be directly browsed in Control Panel > Directory Browser by doing an advanced search under "cn=dlqueue". The contents of this queue are also displayed in the Control Panel > Synchronization tab for a selected topology and pipeline (section titled: "Failed Messages"). This interface allows you to "replay" events (aka messages), which allows the "transform and apply" to be attempted again for that specific event. 
+
+**dataMetrics** 
+These are internal measurements collected by the processor component which is responsible for "transforming and applying" captured events. These metrics provide low-level insights into the processor's behavior and performance.
+
+**noWaitProcessingCount** 
+This counter is used exclusively for Radiant Logic debugging. It tracks the total number of events awaiting processing and accumulates over the processor’s lifetime.
+
+**inErrorCount** 
+The total number of events that the processor attempted to "transform and apply" but failed, meaning they ended up in an error state.
+
+**recentRatePerSec**
+This metric calculates the rate at which events are "transformed and applied," measured in events per second, based on the most recent processing cycle.
+
+**recentPeakProcessingTime**
+The maximum time (in milliseconds) taken to "transform and apply" any single event during the processor’s execution. This reflects the worst-case processing time among recently handled events.
+
+**syncCount**
+The total number of events that arrived at the processor's execution entry point, just before the "transform and apply" logic is executed.
+
+**batchAVGSize**
+This represents the rolling average batch size of events processed by the processor. Since the processor handles events in batches (ranging from single events to larger groups of N events, depending on incoming event volume), this metric tracks the average batch size over time.
+
+**agentId**
+This is the internal identifier for the Agent process or JVM responsible for capturing events within a specific pipeline. The presence of an agent ID depends on the type of capture connector used. If the capture process does not require a separate agent, the agent ID will be null, indicating that event capture occurs internally within the RadiantOne server JVM. For instance, when the source is an RadiantOne Directory store or a cached naming context, a dedicated agent process is unnecessary, and the agent ID will return null. If you use an Active directory connector (or other types of connectors like LDAP, DB, etc.), you should see an Agent ID.
+
+**processorInError** 
+This boolean value (true/false) indicates the status of the event processor responsible for transforming and applying events. A value of true signifies that the processor is in an error state and is unable to process events due to a critical internal failure. If false, the processor is functioning normally.
+
 ## init-sync-pipeline
 
 Initializes/uploads data into the target store for a given sync pipeline.
