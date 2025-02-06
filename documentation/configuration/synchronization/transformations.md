@@ -395,12 +395,27 @@ To automatically configure rules for insert, update and delete events, select ![
 1. If source events associated with this rule should be manually approved before being synchronized to the target, check to enable *Require Approvals*, click ![Approval Config](./Media/editapprovals.jpg) and [Configure Approvers](#configuring-approvers).
 1. If you have selected the option to manually define the target DN in [Advanced options](../advanced-options.md#target-dn-generation), select the variable that contains the target DN. If you have the target DN generation set to Automatic in Advanced Option, you do not see the Target DN Variable in the Basic Information section.
 1. Select the **Event Type** that should invoke the rule from the **Target Event Type** drop-down list.
+1. Uncheck [Adaptive Mode](#adaptive-mode) if you don't want to use it. 
 1. Select the [CONDITIONS](conditions.md) section to define the conditions.
 1. Select the [ACTIONS](actions.md) section to define the actions.
 1. Select **OK**.
 1. Repeat steps 1-10 to create rules for other source event types.
 1. Select **Save**.
 1. Create another [rule set](overview.md) for every source object class you want to detect changes on.
+
+### Adaptive Mode
+Adaptive mode is enabled for rules by default.
+Adaptive mode attempts to intelligently apply changes to a target by first performing a lookup to see if the entry exists. Based on this, it automatically determines the best way to handle the event: update an existing entry or insert a new entry.
+
+Adaptive mode may change the type of operation performed on multi-valued attribute and how the modification is performed (add, replace or delete values) when the target is an LDAP directory. If you need to control the LDAP operation type for multi-valued attributes in the target, don't use adaptive mode.
+
+>[!warn] If your target view is created from Okta, disable adaptive mode.
+
+Source Event Type | Default Behavior (non-Adaptive Mode) | Adaptive Mode
+-|-|-
+Insert  New Entry | Insert the new entry into the destination without checking to first see if the entry already exists. If the entry already exists, an error is returned and no action is performed on the target. |Lookup to see if the entry exists: if it doesn’t, insert it. If the entry does exist, and the update involves a multi-valued attribute in a target LDAP directory, adaptive mode will determine the operation type to perform (e.g. add value, update value, delete value). If you need control over the operation type, disable Adaptive mode.
+Update Existing Entry | Update the entry into the destination without checking to first see if the entry already exists. If the entry does not exist, an error is returned and no action is performed on the target. | Lookup to see if the entry exists: if it exists, update it. If the update involves a multi-valued attribute in a target LDAP directory, adaptive mode will determine the operation type to perform (e.g. add value, update value, delete value). If you need control over the operation type, disable Adaptive mode.
+Delete Existing Entry | Try to delete the entry in the destination, if it doesn’t exist,  an error is returned and no action is performed on the target. | Perform a lookup to see if the entry exists in the destination. If it exists, delete the entry. If it doesn’t exist, do nothing (don't return an error). 
 
 ### Configuring Approvals
 The Require Approvals option is located on the **BASIC INFORMATION** tab.
