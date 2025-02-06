@@ -35,6 +35,8 @@ Adaptive mode attempts to intelligently apply changes to a target by first perfo
 
 Adaptive mode may change the type of operation performed on multi-valued attribute and how the modification is performed (add, replace or delete values) when the target is an LDAP directory. If you need to control the LDAP operation type for multi-valued attributes in the target, don't use adaptive mode.
 
+>[!warn] If your target view is Okta, disable adaptive mode.
+
 Source Event Type | Default Behavior (non-Adaptive Mode) | Adaptive Mode
 -|-|-
 Insert  New Entry | Insert the new entry into the destination without checking to first see if the entry already exists. If the entry already exists, an error is returned and no action is performed on the target. |Lookup to see if the entry exists: if it doesn’t, insert it. If the entry does exist, and the update involves a multi-valued attribute in a target LDAP directory, adaptive mode will determine the operation type to perform (e.g. add value, update value, delete value). If you need control over the operation type, disable Adaptive mode.
