@@ -188,9 +188,11 @@ Both the application and RadiantOne can play a role in authorization enforcement
 
 Group members can be either static (explicit member DN in the group entry) or dynamic (group members are built based on specific criteria). The benefit of dynamic groups is that they are easier to define and manage because all group members do not need to be manually added/removed one at a time. Only a common filter that encompasses all group members needs to be configured. If a user entry changes (and the change impacts an attribute used in a dynamic group) they are automatically added/removed from groups without requiring a change in the group definition. However, the disadvantage of dynamic groups is that not all LDAP directories support them and even fewer LDAP applications can consume them. This is because the application logic must include the ability to not only request a group but be able to evaluate the memberURL attribute which requires them to issue an additional search to the directory to get the list of members.
 
-The differences between static and dynamic groups are depicted in the diagrams below.
+Examples of static groups are shown below.
 
 ![example of static group](Media/StaticGroup.jpg)
+
+An example of a dynamic group is shown below.
 
 ![Example of Traditional LDAP Dynamic Groups](Media/DynamicGroup.jpg)
  
