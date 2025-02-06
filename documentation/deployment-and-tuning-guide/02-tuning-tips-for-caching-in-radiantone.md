@@ -708,7 +708,7 @@ To configure DB Changelog connector:
 
 5.Enter the log table name using the proper syntax for your database (e.g. <USER>.<TABLE>_LOG). If you used [RadiantOne to generate the SQL scripts](#log-table-name-syntax) for configuring the changelog components in the database, you can view the scripts to see the exact table name. Otherwise, contact your DBA for the log table name.
 
-    >[!warning] Change the value for this property only if you are creating the log table manually and the capture connector does not calculate the log table name correctly. Be sure to use the [correct syntax](#log-table-name-syntax) if you change the value.
+>[!warning] Change the value for this property only if you are creating the log table manually and the capture connector does not calculate the log table name correctly. Be sure to use the [correct syntax](#log-table-name-syntax) if you change the value.
 
 6. Indicate the user name and password for the connector’s dedicated credentials for connecting to the log table. If you do not have the user name and password, contact your DBA for the credentials. An example is shown below.
 
