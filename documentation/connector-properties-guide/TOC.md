@@ -1,6 +1,6 @@
 ---
-title: RadiantOne Connector Properties
-description: RadiantOne Connector Properties
+title: RadiantOne Connector Properties for Sync
+description: RadiantOne Connector Properties for Sync
 ---
 
 # Connector Properties
