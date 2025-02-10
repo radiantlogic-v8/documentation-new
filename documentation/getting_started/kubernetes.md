@@ -4,7 +4,7 @@ description: Kubernetes
 ---
 
 # Kubernetes
-You can use Kubernetes to orchestrate the configuration and deployment of RadiantOne. Radiant Logic provides DevOps images for deployments on cloud platforms such as Amazon Web Services (AWS) using Amazon Elastic Kubernetes Service (EKS) and Microsoft Azure Kubernetes Service (AKS).
+You can use Kubernetes to orchestrate the configuration and deployment of RadiantOne. Radiant Logic provides DevOps images for deployments on cloud platforms such as Amazon Web Services (AWS) using Amazon Elastic Kubernetes Service (EKS) and Microsoft Azure Kubernetes Service (AKS). You can also deploy RadiantOne with Red Hat OpenShift.
 
 ## Prerequisites
 Before deploying RadiantOne, you should already be familiar with Kubernetes Pods, Services and StatefulSets. See the [Kubernetes Documentation](https://kubernetes.io/docs/concepts/) for details. You should also be familiar with Kubernetes kubectl commands. See the [Kubernetes Cheat Sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/) for details.
@@ -369,6 +369,20 @@ fid:
       storageClass: gp3
       size: 10Gi
 ```
+
+If you are using OpenShift, you will need to include the following properties to the values file. 
+
+```
+podSecurityContext:
+  fsGroup: 1016990000
+  runAsUser: 1016990000
+zookeeper:
+  podSecurityContext:
+    fsGroup: 1016990000
+    runAsUser: 1016990000
+```
+  
+>[!note] Note that the values for these properties will vary depending on the security policies that are implemented in your RedHat account. 
 
 
 ### List RadiantOne Releases
