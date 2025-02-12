@@ -399,6 +399,8 @@ Also, when creating a new application, CFS automatically creates a group associa
 
 ![](media/apps-access-rules.png)
 
+There is also an option to [disable users](##disable-application-access) from seeing the "Request Access" feature entirely, providing you with more control over who can request access to your application.
+
 #### Filter
 
 A user can be authorized to access an application based on certain attributes in their profile which are stored in the identity store, come from the pass-through rules in each identity provider or the Circle of Trust rules. This criteria is defined on the Filter tab. Define a filter that dictates which criteria are required for a user to be qualified to access this application. Any user whose profile attributes do not match the indicated criteria is not authorized to access the application. In the example shown below, only users that have an "l" attribute with a value of "novato" and the attribte "Building" (CoT rules) with the value "buildinga" are authorized by CFS to access this application.
@@ -520,6 +522,12 @@ Then, click **Accept** or **Deny**.
 A confirmation email is sent to the user requesting the access to confirm your decision.
 
 >[!note] The SMTP must be configured for CFS to be able to send emails.
+
+### Disable Application Access 
+
+As an admin, you can also disable the access request feature for each specific application or for the entire tenant. To disable access requests for a specific application, navigate to the application's edit page and select the Access Rules tab. Here, you can toggle the "Disable access requests" option. When enabled, users who do not have access to the application will not see the “Request Access” option.
+
+To disable access requests for the entire tenant, navigate to Settings → General Settings and select the Others tab. Here, you can toggle the "Disable User Access Requests" option. When this setting is enabled, users who do not have access to any applications under this tenant will not see the “Request Access” page. This tenant-wide setting takes precedence, meaning even if individual applications have “Disable access requests” unchecked, users will still be unable to request access to any of the tenant applications if the tenant-level setting is enabled.
 
 ## User Settings
 
