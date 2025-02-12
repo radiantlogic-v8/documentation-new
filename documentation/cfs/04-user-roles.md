@@ -252,6 +252,8 @@ On the **Others** tab, a tenant administrator can choose to disable the access t
 
 ![](media/settings-general-4.png)
 
+A tenant administrator can also disable access requests for applications for the entire tenant. To do so, toggle the "Disable User Access Requests" option in the **Others** tab. When this setting is enabled, users who do not have access to any applications under this tenant will not see the “Request Access” option. This tenant-wide setting takes precedence, meaning even if individual applications have “Disable access requests” unchecked, users will still be unable to request access to any of the tenant applications if the tenant-level setting is enabled.
+
 ### Messaging Service
 
 CFS supports [Twilio](https://www.twillio.com) as a messaging service for delivering passcodes to users. If this is enabled, users is able to receive their passcode via text message or phone call. You must have your own Twilio account to configure CFS.
@@ -525,9 +527,9 @@ A confirmation email is sent to the user requesting the access to confirm your d
 
 ### Disable Application Access 
 
-As an admin, you can also disable the access request feature for each specific application or for the entire tenant. To disable access requests for a specific application, navigate to the application's edit page and select the Access Rules tab. Here, you can toggle the "Disable access requests" option. When enabled, users who do not have access to the application will not see the “Request Access” option.
+As the application owner, you can also disable the access request feature for each specific application or for the entire tenant. To disable access requests for a specific application, navigate to the application's edit page and select the Access Rules tab. Here, you can toggle the "Disable access requests" option. When enabled, users who do not have access to the application will not see the “Request Access” option.
 
-To disable access requests for the entire tenant, navigate to Settings → General Settings and select the Others tab. Here, you can toggle the "Disable User Access Requests" option. When this setting is enabled, users who do not have access to any applications under this tenant will not see the “Request Access” page. This tenant-wide setting takes precedence, meaning even if individual applications have “Disable access requests” unchecked, users will still be unable to request access to any of the tenant applications if the tenant-level setting is enabled.
+To disable access requests for the entire tenant, as a tenant administrator, you can navigate to Settings → General Settings and select the Others tab. Here, you can toggle the "Disable User Access Requests" option. When this setting is enabled, users who do not have access to any applications under this tenant will not see the “Request Access” option. This tenant-wide setting takes precedence, meaning even if individual applications have “Disable access requests” unchecked, users will still be unable to request access to any of the tenant applications if the tenant-level setting is enabled.
 
 ## User Settings
 
