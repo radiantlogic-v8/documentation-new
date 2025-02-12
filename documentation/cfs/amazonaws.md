@@ -54,6 +54,8 @@ The **Mappings** tab contains the list of transformation required to generate th
 
 ![](media/amazon-aws-tab-mappings.png)
 
+### Access Rules
+
 The **Access Rules** tab helps define the second layer of security (after LOA) to grant access to this application. By default, the access is limited to only the people in the **Application Group** which is a group created automatically by CFS when the application is created. 
 
 To grant access to this application, you can use one of the following options:
