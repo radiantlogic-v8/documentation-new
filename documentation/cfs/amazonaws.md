@@ -54,13 +54,19 @@ The **Mappings** tab contains the list of transformation required to generate th
 
 ![](media/amazon-aws-tab-mappings.png)
 
-The **Access Rules** tab helps define the second layer of security (after LOA) to grant access to this application. By default, the access is limited to only the people in the **Application Group** which is a group created automatically by CFS when the application is created. To grant access to this application you have 3 possibilities:
+The **Access Rules** tab helps define the second layer of security (after LOA) to grant access to this application. By default, the access is limited to only the people in the **Application Group** which is a group created automatically by CFS when the application is created. 
 
--   **Allow All Users** checking this option grants access to every user of your tenant (as long as the other security layers, LOA, COT... are accepted for the user).
+To grant access to this application you can use one of the following ways:
+
+-   Enabling **Allow All Users** option grants access to every user of your tenant (as long as the other security layers, LOA, COT... are accepted for the user).
 -   Use the **Application Group** to add users allowed to access this application. The users who are granted access to the application after an access request are automatically added to this group.
 -   Add **Additional groups** from the RadiantOne identity store.
 
-![](media/amazon-aws-tab-access-rules.png)
+There is also an option to disable users from seeing the "Request Access" feature entirely, providing you with more control over who can request access to your application.
+
+![](media/apps-access-rules.png)
+
+
 
 ### Filters
 
