@@ -401,7 +401,7 @@ Also, when creating a new application, CFS will automatically create a group ass
 
 ![](media/apps-access-rules.png)
 
-There is also an option to [disable users](##disable-application-access) from seeing the "Request Access" feature entirely, providing you with more control over who can request access to your application.
+There is also an option to [disable users](#disable-application-access) from seeing the "Request Access" feature entirely, providing you with more control over who can request access to your application.
 
 #### Filter
 
