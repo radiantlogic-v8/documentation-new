@@ -183,4 +183,15 @@ December 6, 2024
 - [VSTS46962]: When 2FA is enabled (via Yubikey or TOTP), users in the ROPC flow can authenticate without 2FA as 2FA is not supported for this flow. For all other authentication flows, users will be required to complete the 2FA process when prompted for credentials to gain access.
 - [VSTS47173]: Added support for multiple audiences/recipients per application in the CFS SAML SSO integration.
 
+### v3.17.2
+
+February 13, 2024
+
+**Improvements**
+
+-	[VSTS47204]: Added support for SessionIndex in SAML based applications.
+- [VSTS47205]: Added support for signing the entire SAML message.
+- [VSTS47245]: Added support to disable application access requests at application level or across all applications within a tenant.
+
+
 
