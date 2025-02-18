@@ -50,7 +50,8 @@ These release notes contain the following sections:
 - [API-2067]: Improved the permissions to access the File Manager in the Classic Control Panel. Two new  vdPrivileges: `file-manager-read` and `file-manager-write` have been added. These permissions are assigned by default to the Directory Administrators group and a new group named File Manager Admin. 
 - [API-2071]: Improved the product version date displayed in the Control Panel UI to have a locale-agnostic format. 
 - [API-2093]: Deprecated`ldap.xml`, `database.xml`, and `custom.xml` files.  These configurations are now managed by ZooKeeper. 
-- [API-2129]: Removed the default value configured for IMPERSONATE ROLE in the Classic Control Panel section in Control Panel > Admin > Roles and Permissions to avoid issues. 
+- [API-2129]: Removed the default value configured for IMPERSONATE ROLE in the Classic Control Panel section in Control Panel > Admin > Roles and Permissions to avoid issues.
+- [SMD-12]: Support self-managed deployment of Identity Data Management on Azure AKS and AWS EKS.
 
  
 ## Security Vulnerability Fixes
