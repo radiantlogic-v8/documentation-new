@@ -44,9 +44,8 @@ Added ability to configure Global Sync rules independently for upload & realtime
 - [API-2268]: Updated the Classic control panel to force any new view filenames to lowercase.
 - [API-2285]: Added datasource schemas when exporting datasources using `vdsconfig resource-export`
 - [API-2351]: Added ability to associate LDAP data source failovers with an SDC group.
- 
-
-
+- [SMD-54]: Added self-managed deployment support for Google Cloud.
+- [SMD-55]: Added self-managed deployment support for Redhat OpenShift.
 
  
 ## Security Vulnerability Fixes
