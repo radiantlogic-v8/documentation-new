@@ -619,8 +619,6 @@ A test connection may fail for the localhost hostname for a secure data connecto
 
 To resolve the connection failure, enter the special DNS name `host.docker.internal` in the **Host Name** field. This resolves the internal IP address used by the host, allowing the Docker container running the client to access the host server backend.
 
-![image description] (insert control panel image)
-
 **Inoperative Test Connection**
 
 If the test connection is not working but you are unsure of the error, first review the secure data connector status in Env Ops Center.
