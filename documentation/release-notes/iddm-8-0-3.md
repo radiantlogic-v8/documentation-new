@@ -38,6 +38,7 @@ These release notes contain the following sections:
 
 - [VMR-860]: Fixed an issue that caused the Salesforce JDBC driver to be corrupted after patches resulting in problems virtualizing Salesforce data.
 - [VMR-873]: File manager improved to display the error reason in the error popup and to hide action buttons when they are not eligible.
+- [VMR-881]: Fixed an issue connecting to Google directory backends which was causing java.lang.NoClassDefFoundError messages.
  
 ## Known Issues
 
