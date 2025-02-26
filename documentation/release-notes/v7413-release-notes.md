@@ -77,12 +77,12 @@ For specific hardware requirements of each, please see: [https://developer.radia
 
 ## Security Vulnerabilities
 
--	[VSTS47195]:Upgraded the Spring Framework libraries to 5.3.44 to address CVE-2024-38819 and CVE-2024-38820.	
--	[VSTS47208]:Upgraded the Spring Security version to 5.7.13.to address CVE-2024-38821.
--	[VSTS47234]:Upgraded the Derby libraries to 10.14.3.0 to address CVE-2022-46337.
--	[VSTS47235]:Upgraded the Derbynet dependency to 10.14.3.0 to address CVE-2022-46337.
--	[VSTS47288]:Upgraded Apache Kafka Clients library to 3.9.0 to address CVE-2024-56128.
--	[VSTS47318]:Upgraded Spring Security libs to 5.7.14 to remediate potential vulnerabilities.
+-	[VSTS47195]: Upgraded the Spring Framework libraries to 5.3.44 to address CVE-2024-38819 and CVE-2024-38820.	
+-	[VSTS47208]: Upgraded the Spring Security version to 5.7.13.to address CVE-2024-38821.
+-	[VSTS47234]: Upgraded the Derby libraries to 10.14.3.0 to address CVE-2022-46337.
+-	[VSTS47235]: Upgraded the Derbynet dependency to 10.14.3.0 to address CVE-2022-46337.
+-	[VSTS47288]: Upgraded Apache Kafka Clients library to 3.9.0 to address CVE-2024-56128.
+-	[VSTS47318]: Upgraded Spring Security libs to 5.7.14 to remediate potential vulnerabilities.
 
 
 
