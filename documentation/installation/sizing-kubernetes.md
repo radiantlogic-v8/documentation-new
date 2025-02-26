@@ -1,3 +1,8 @@
+---
+title: Sizing a Kubernetes Cluster
+description: Learn how to size your Kubernetes cluster for RadiantOne deployment.
+---
+
 ## Sizing a Kubernetes Cluster
 
 Sizing a Kubernetes cluster depends on several factors, including:
