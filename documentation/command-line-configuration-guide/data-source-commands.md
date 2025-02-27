@@ -40,7 +40,7 @@ The name of the RadiantOne instance. If not specified, the default instance name
 In the following example, a request is made to display a list of custom, database, and ldap data sources.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=list-datasource&custom&database&ldap
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=list-datasource&custom&database&ldap
 ```
 
 ### get-datasource
@@ -62,7 +62,7 @@ This command displays the connection info for the specified data source.
 <br> In the following example, a request is made to display connection information for a data source named derby-northwind2.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=get-datasource&datasourcename=derby-northwind2
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=get-datasource&datasourcename=derby-northwind2
 ```
 
 ### delete-datasource
@@ -84,7 +84,7 @@ This command deletes the data source.
 <br> In the following example, a request is made to delete a data source named derb-northwind2.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=delete-
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=delete-
 datasource&datasourcename=derby-northwind2
 ```
 
@@ -141,7 +141,7 @@ create-ldap-datasource -datasourcename LDAP2 -autocommit true ....<other props>
 <br>In the following example, a request is made to create a database data source named derby-Northwind2.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=create-db-datasource&datasourcename=derby-Northwind2&dbtype=derby&driverclass=org.apache.derby.jdbc.ClientDriver&jdbcurl=%3bjdbc:derby://localhost:1527/Northwind%3b&password=app&username=app
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=create-db-datasource&datasourcename=derby-Northwind2&dbtype=derby&driverclass=org.apache.derby.jdbc.ClientDriver&jdbcurl=%3bjdbc:derby://localhost:1527/Northwind%3b&password=app&username=app
 ```
 
 ### update-db-datasource
@@ -193,7 +193,7 @@ update-ldap-datasource -datasourcename LDAP2 -autocommit true ....<other props>
 In the following example, a request is made to take the data source derby-Northwind2 offline.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=update-db-datasource&datasourcename=derby-Northwind2&dbtype=derby&driverclass=org.apache.derby.jdbc.ClientDriver&jdbcurl=%3bjdb
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=update-db-datasource&datasourcename=derby-Northwind2&dbtype=derby&driverclass=org.apache.derby.jdbc.ClientDriver&jdbcurl=%3bjdb
 c:derby://localhost:1527/Northwind%3b&password=app&username=app&active=false
 ```
 
@@ -269,7 +269,7 @@ create-ldap-datasource -datasourcename LDAP2 -autocommit true ....<other props>
 In the following example, a request is made to create an LDAP data source called ldap1.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=create-ldap-datasource&datasourcename=ldap1&dirtype=ldap&basedn=dc=radiantlogic&host=localhost
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=create-ldap-datasource&datasourcename=ldap1&dirtype=ldap&basedn=dc=radiantlogic&host=localhost
 &port=2389&binddn=cn=directory manager&password=secret123
 ```
 
@@ -341,7 +341,7 @@ update-ldap-datasource -datasourcename LDAP2 -autocommit true ....<other props>
 In the following example, a request is made to add a failover server to a data source.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=update-ldap-datasource&datasourcename=ldap1&dirtype=ldap&basedn=dc=radiantlogic&host=localhost
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=update-ldap-datasource&datasourcename=ldap1&dirtype=ldap&basedn=dc=radiantlogic&host=localhost
 &port=2389&binddn=cn=directory manager&password=secret123&failover=sun102
 ```
 
@@ -378,7 +378,7 @@ A string containing the different properties to set for your custom data source.
 In the following example, a request is made to create a custom data source named custom1 using a properties file.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=create-custom-datasource&datasourcename=custom1&propfile=c:/custom.properties
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=create-custom-datasource&datasourcename=custom1&propfile=c:/custom.properties
 ```
 
 ### update-custom-datasource
@@ -410,7 +410,7 @@ This command updates the connection information for the specified custom data so
 In the following example, a request is made to change the URL value to 10.11.1.50.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=update-custom-datasource&datasourcename=custom1&propstr=url=10.11.1.50
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=update-custom-datasource&datasourcename=custom1&propstr=url=10.11.1.50
 ```
 
 ## Importing and Exporting Data Sources
@@ -443,7 +443,7 @@ Imports data sources from a given XML file.
 In the following example, a request is made to import data sources using an XML file.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=import-datasource&filepath=c:/export_ad (1).xml
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=import-datasource&filepath=c:/export_ad (1).xml
 ```
 
 ### export-datasource
@@ -478,4 +478,4 @@ name.
 **REST (ADAP) Example**
 In the following example, a request is made to export a data source named ldap1.
 
-`https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=export-datasource&datasources=ldap1&filepath=c:/tmp/export.xml`
+`https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=export-datasource&datasources=ldap1&filepath=c:/tmp/export.xml`
