@@ -20,7 +20,7 @@ This command displays the product information for RadiantOne. This includes Prod
 **REST (ADAP) Example**
 <br> The following example describes how to issue the request through ADAP.
 
-`https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=product-info`
+`https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=product-info`
 
 ## list-properties
 
@@ -37,7 +37,7 @@ This command displays the contents of the RadiantOne configuration.
 **REST (ADAP) Example**
 <br> In the following example, a request is made to display RadiantOne configuration information.
 
-`https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=list-properties`
+`https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=list-properties`
 
 ## get-property
 
@@ -61,7 +61,7 @@ To list supported SSL cipher suites, use the list-cipher-suites command.
 **REST (ADAP) Example**
 In the following example, a request is made to display the RadiantOne service LDAP port number.
 
-`https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=get-property&name=ldapPort`
+`https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=get-property&name=ldapPort`
 
 ## set-property
 
@@ -97,6 +97,6 @@ radiantone/vds/bin/vdsconfig.sh set-property -name virtualStaticGroupDNs -value 
 In the following example, a request is made to modify the LDAP port to 9999.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=set-property&name=ldapPort&value=9999
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=set-property&name=ldapPort&value=9999
 ```
 
