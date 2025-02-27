@@ -44,7 +44,7 @@ The path to the logging configurations can be seen from the Zookeeper tab in the
 In the following example, a request is made to display the value for the maximum size of the access log file.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=get-logging-property&key=access.log.file.maxSize&path=zk:log4j2-vds.json
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=get-logging-property&key=access.log.file.maxSize&path=zk:log4j2-vds.json
 ```
 
 ## set-logging-property
@@ -78,7 +78,7 @@ Panel as described above.
 In the following example, a request is made to set the maximum access log size to 300MB.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=set-logging-property&key=access.log.file.maxSize&path=zk:log4j2-vds.json&value=300MB
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=set-logging-property&key=access.log.file.maxSize&path=zk:log4j2-vds.json&value=300MB
 ```
 
 ## merge-logging-conf
@@ -110,5 +110,5 @@ This command performs a merge of two logging configurations.
 In the following example, a request is made to merge two logging configurations.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=merge-logging-conf&mergepath=file:c:/radiantone/vds/config/logging/mylogger.json&path=zk:log4j2-vds.json
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=merge-logging-conf&mergepath=file:c:/radiantone/vds/config/logging/mylogger.json&path=zk:log4j2-vds.json
 ```
