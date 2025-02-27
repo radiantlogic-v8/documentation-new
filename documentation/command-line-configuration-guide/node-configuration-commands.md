@@ -27,7 +27,7 @@ This command displays the contents of the Cluster Node Configuration.
 <br>In the following example, a request is made to display the contents of the cluster node configuration.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=list-cluster-
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=list-cluster-
 node-properties&guid=67ceb388-8b92- 3148 - 9cb9-752d47e9c350
 ```
 
@@ -51,7 +51,7 @@ The GUID of the node. Defaults to the current node.
 <br>In the following example, a request is made to get the value of the server name property in the cluster node configuration.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=get-cluster-node-property&name=serverName
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=get-cluster-node-property&name=serverName
 ```
 
 ## set-cluster-node-property
@@ -87,5 +87,5 @@ vds_server is used.
 to true.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=set-cluster-node-property&name=forceLeader&value=true
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=set-cluster-node-property&name=forceLeader&value=true
 ```
