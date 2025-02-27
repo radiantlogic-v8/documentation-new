@@ -30,5 +30,5 @@ This command converts an LDIF file into a CSV file.
 In the following example, a request is made to generate a CSV file containing three return attributes.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=ldif-to-csv&csv=c:/radiantone/vds/vds_server/ldif/export/csvfile.csv&ldif=c:/radiantone/vds/vds_server/ldif/export/accounting_companydirectory.ldif&returnattributes=dn,entrydn,homephone
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=ldif-to-csv&csv=c:/radiantone/vds/vds_server/ldif/export/csvfile.csv&ldif=c:/radiantone/vds/vds_server/ldif/export/accounting_companydirectory.ldif&returnattributes=dn,entrydn,homephone
 ```
