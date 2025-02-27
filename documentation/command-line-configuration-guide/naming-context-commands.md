@@ -45,7 +45,7 @@ Command Arguments:
 In the following example, a request is made to create a database proxy called o=DBProxy.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=create-dbproxy&datasourcename=northwind&namingcontext=o=DBProxy&tables=APP.EMPLOYEES,APP.SHIPPERS,APP.SUPPLIERS,APP.CUSTOMERS
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=create-dbproxy&datasourcename=northwind&namingcontext=o=DBProxy&tables=APP.EMPLOYEES,APP.SHIPPERS,APP.SUPPLIERS,APP.CUSTOMERS
 ```
 
 ### create-ldapproxy
@@ -77,7 +77,7 @@ This command creates a new LDAP proxy naming context.
 In the following example, a request is made to create an LDAP proxy view (mounted at o=ldapproxy in the RadiantOne namespace) that points to a data source named corpdirectory with a base DN of o=companydirectory.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=create-ldapproxy&datasourcename=corpdirectory&namingcontext=o=ldapproxy&remotebasedn=o=companydirectory
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=create-ldapproxy&datasourcename=corpdirectory&namingcontext=o=ldapproxy&remotebasedn=o=companydirectory
 ```
 
 ### create-hdapstore
@@ -118,7 +118,7 @@ default).
 In the following example, a request is made to create a Universal Directory store mounted at o=hdap in the RadiantOne namespace.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=create-hdapstore&namingcontext=o=hdap
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=create-hdapstore&namingcontext=o=hdap
 ```
 ### create-vtree
 
@@ -147,7 +147,7 @@ This command creates a new virtual tree naming context.
 In the following example, a request is made to create a virtual tree naming context mounted at o=virtualtree in the RadiantOne namespace using a virtual view file named o_companyprofiles.dvx.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=create-vtree&namingcontext=o=virtualtree&dvxname=o_companyprofiles.dvx
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=create-vtree&namingcontext=o=virtualtree&dvxname=o_companyprofiles.dvx
 ```
 
 ### delete-context
@@ -170,7 +170,7 @@ This command deletes a naming context.
 In the following example, a request is made to delete a Universal Directory store that is mounted at o=hdap in the RadiantOne namespace.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=delete-context&namingcontext=o=hdap
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=delete-context&namingcontext=o=hdap
 ```
 
 ## Persistent Cache
@@ -209,7 +209,7 @@ Command Arguments:
 In the following example, a request is made to create a persistent cache on o=companyprofiles.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=create-pcache&namingcontext=o=companyprofiles&indexattr=cn,employeeNumber,employeeType,givenName,homePhone,l,mail,uid
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=create-pcache&namingcontext=o=companyprofiles&indexattr=cn,employeeNumber,employeeType,givenName,homePhone,l,mail,uid
 ```
 
 ### delete-cache
@@ -232,7 +232,7 @@ This command deletes an existing cache on a naming context.
 In the following example, a request is made to delete a persistent cache on o= companyprofiles.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=delete-
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=delete-
 cache&namingcontext=o=companyprofiles
 ```
 
@@ -272,7 +272,7 @@ A compressed backup file is created in the location, in a folder named after the
 In the following example, a request is made to create a backup of a RadiantOne Universal Directory store located at o=hdap in the RadiantOne namespace.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=backup-hdapstore&namingcontext=o=hdap&backupzip=c:/tmp/backup.zip
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=backup-hdapstore&namingcontext=o=hdap&backupzip=c:/tmp/backup.zip
 ```
 
 ### restore-hdapstore
@@ -306,58 +306,7 @@ The restore is performed using the compressed file located in the folder indicat
 In the following example, a request is made to restore a RadiantOne Universal Directory store from a backup in the tmp directory.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=restore-hdapstore&namingcontext=o=hdap&backupzip=C:\tmp\backup.zip\o_hdap-backup\ 2018 - 10 -
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=restore-hdapstore&namingcontext=o=hdap&backupzip=C:\tmp\backup.zip\o_hdap-backup\ 2018 - 10 -
 17_16- 42 - 49.zip
 ```
 
-#### Examples
-
-C:\radiantone\vds\bin>vdsconfig.bat backup-hdapstore -namingcontext o=companydirectory
-
-```
-Using RLI home : C:\radiantone\vds
-Using Java home : C:\radiantone\vds\jdk\jre
-0 [ConnectionStateManager-0] WARN
-com.rli.zookeeper.ZooManagerConnectionStateListener - Curator connection state change:
-CONNECTED
-10 [ConnectionStateManager-0] WARN
-com.rli.zookeeper.ZooManagerConnectionStateListener - VDS-ZK connection state
-changed: CONNECTED
-10 [ConnectionStateManager-0] WARN com.rli.zookeeper.ZooManager - ZooManager
-connection state changed: CONNECTED
-A backup has been created for naming context 'o=companydirectory'.
-```
-
-C:\radiantone\vds\bin>vdsconfig.bat restore-hdapstore -namingcontext o=companydirectory -list
-
-```
-Using RLI home : C:\radiantone\vds
-Using Java home : C:\radiantone\vds\jdk\jre
-0 [ConnectionStateManager-0] WARN
-com.rli.zookeeper.ZooManagerConnectionStateListener - Curator connection state change:
-CONNECTED
-8 [ConnectionStateManager-0] WARN
-com.rli.zookeeper.ZooManagerConnectionStateListener - VDS-ZK connection state
-changed: CONNECTED
-9 [ConnectionStateManager-0] WARN com.rli.zookeeper.ZooManager - ZooManager
-connection state changed: CONNECTED
-Current backups for 'o=companydirectory':
-Backup Id Date of Backup
--------------------------------------------
-1440023312307 08/19/2015 15:28:32
-1440023472460 08/19/2015 15:31:12
-1440023524906 08/19/2015 15:32:05
-1440088234257 08/20/2015 09:30:34
-```
-C:\radiantone\vds\bin>vdsconfig.bat restore-hdapstore -namingcontext o=companydirectory - backupid 1440023312307
-
-```
-Using RLI home : C:\radiantone\vds
-Using Java home : C:\radiantone\vds\jdk\jre
-0 [ConnectionStateManager-0] WARN
-com.rli.zookeeper.ZooManagerConnectionStateListener - Curator connection state change: CONNECTED
-9 [ConnectionStateManager-0] WARN
-com.rli.zookeeper.ZooManagerConnectionStateListener - VDS-ZK connection state changed: CONNECTED
-9 [ConnectionStateManager-0] WARN com.rli.zookeeper.ZooManager - ZooManager connection state changed: CONNECTED
-The naming context has been successfully restored from its backup.
-```
