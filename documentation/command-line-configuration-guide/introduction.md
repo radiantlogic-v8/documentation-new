@@ -76,7 +76,7 @@ The syntax of the URL is as follows.
 
 `http://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=<commandname>&<param>=<paramvalue>&<param>=<paramvalue>`
 
-You can view the REST endpoint from Environment Operations Center > Environments > [Selected Environment] > Identity Data Management > Application Endpoints.
+You can view the REST endpoint from Environment Operations Center > Environments > [Selected Environment] > Identity Data Management > Application Endpoints. If the REST client requires a port, use 443, the default HTTPS port.
 
 ![REST Endpoint](Media/RESTendpoint.jpg)
 
