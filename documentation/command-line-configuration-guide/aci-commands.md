@@ -59,7 +59,7 @@ This command gets/exports an Access Control Instruction.
 In the following example, a request is made to export the ACI configured for ou=AllProfiles.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=get-aci&dn=ou=allprofiles&aciname=AllProfiles
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=get-aci&dn=ou=allprofiles&aciname=AllProfiles
 ACI&file=c:/radiantone/vds/vds_server/AllProfilesACI
 ```
 
@@ -89,7 +89,7 @@ This command creates/imports an Access Control Instruction.
 In the following example, a request is made to add an ACI to ou=AllProfiles.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=add-aci&dn=ou=allprofiles&file=c:/radiantone/vds/vds_server&value=AllProfilesACI
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=add-aci&dn=ou=allprofiles&file=c:/radiantone/vds/vds_server&value=AllProfilesACI
 ```
 
 ## clear-aci
@@ -112,5 +112,5 @@ This command removes all Access Control Instructions for a given DN.
 In the following example, a request is made to remove ACIs configured for ou=AllProfiles.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=clear-aci&dn=ou=allprofiles
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=clear-aci&dn=ou=allprofiles
 ```
