@@ -86,7 +86,7 @@ In the following example, a request is made to display a
 list of accepted property names.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=list-prop
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=list-prop
 ```
 
 ## list-ctx
@@ -120,7 +120,7 @@ This command displays a list of the current naming contexts and their type.
 In the following example, a request is made to list the root naming contexts of database proxies, RadiantOne Universal Directory stores, LDAP proxies, and virtual trees.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=list-ctx&dbproxy&hdap&ldapproxy&root&virtualtree
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=list-ctx&dbproxy&hdap&ldapproxy&root&virtualtree
 ```
 
 ## get-ctx-prop
@@ -159,7 +159,7 @@ This command prints the current value for a given property on the specified nami
 
 In the following example, a request is made to display the values for the dnAttributes property in an LDAP proxy.
 
-`https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=get-ctx-prop&namingcontext=o=ldapproxy &prop=dnattributes`
+`https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=get-ctx-prop&namingcontext=o=ldapproxy &prop=dnattributes`
 
 #### Getting the Inchangelog Value on a Cache
 
@@ -206,7 +206,7 @@ This command sets the value for a given property on the specified naming context
 
 In the following example, a request is made to enable Proxy Authorization for an LDAP proxy view mounted at o=ldapproxy.
 
-`https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=set-ctx-prop&namingcontext=o=ldapproxy&prop=proxiedauthentication&value=true`
+`https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=set-ctx-prop&namingcontext=o=ldapproxy&prop=proxiedauthentication&value=true`
 
 #### Setting the Inchangelog Property on an LDAP Proxy
 
@@ -310,7 +310,7 @@ get-ctx-interception -namingcontext <namingcontext> [-instance <instance>]
 In the following example, a request is made to retrieve interception script options configured on an LDAP proxy.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=get-ctx-interception&namingcontext=o=ldapproxy
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=get-ctx-interception&namingcontext=o=ldapproxy
 ```
 ## set-ctx-interception
 
@@ -375,7 +375,7 @@ After editing the Java file, the intercept.jar file must be rebuilt and the Radi
 In the following example, a request is made to set interception script options on an LDAP proxy view.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=set-ctx-interception&namingcontext=o=ldapproxy&add=true&delete=false&bind=true&search=true&modify=true&specialops=false
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=set-ctx-interception&namingcontext=o=ldapproxy&add=true&delete=false&bind=true&search=true&modify=true&specialops=false
 ```
 
 ### Interception Values
