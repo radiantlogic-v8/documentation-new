@@ -25,7 +25,7 @@ This command displays all alerts that are configured. An example of the default 
 In the following example, a request is made to display all configured alerts.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=list-alerts
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=list-alerts
 ```
 
 ## new-alert
@@ -76,7 +76,7 @@ indicates it is not active.
 In the following example, a request is made to create a custom alert for when the state of the RadiantOne on a given node changes (e.g. changes from started to stopped).
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=new-alert&d=node-monitor&t=not-equals&g=isVdsRunning:false&i=60&e=true&n="My CustomAlert"&o=FileAlert,EmailAlert&p=nodeId:a9251b17-151c-45ed-a70a-2d3afc614743
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=new-alert&d=node-monitor&t=not-equals&g=isVdsRunning:false&i=60&e=true&n="My CustomAlert"&o=FileAlert,EmailAlert&p=nodeId:a9251b17-151c-45ed-a70a-2d3afc614743
 ```
 
 ## edit-alert
@@ -128,7 +128,7 @@ An example of editing an alert is: vdsconfig.bat edit-alert -x e7dd5763-40eb-4b5
 In the following example, a request is made to edit the message that is sent in a custom alert.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=edit-alert&x=9f53386f-4768-4894-8148-a4426f0ffdb2&g=isVdsRunning:true&m="New custom message"
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=edit-alert&x=9f53386f-4768-4894-8148-a4426f0ffdb2&g=isVdsRunning:true&m="New custom message"
 ```
 
 ## delete-alert
@@ -153,7 +153,7 @@ An example of deleting an alert is: vdsconfig.bat delete-alert -x e7dd5763-40eb-
 In the following example, a request is made to delete an alert.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=delete-alert&x=9f53386f-4768-4894-8148-a4426f0ffdb2
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=delete-alert&x=9f53386f-4768-4894-8148-a4426f0ffdb2
 ```
 
 ## get-email-prop
@@ -173,7 +173,7 @@ This command displays the current properties for email alerts.
 In the following example, a request is made to display the current properties for email alerts.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=get-email-prop
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=get-email-prop
 ```
 
 ## set-email-prop
@@ -196,5 +196,5 @@ The name of the RadiantOne instance. If not specified, the default instance name
 In the following example, a request is made to set properties for email alerts.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=set-email-prop&propfile=C:\radiantone\vds\vds_server\email.properties
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=set-email-prop&propfile=C:\radiantone\vds\vds_server\email.properties
 ```
