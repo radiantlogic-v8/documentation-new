@@ -30,7 +30,7 @@ This command lists all the Access Control Instructions.
 In the following example, a request is made to list all ACIs configured for ou=allprofiles.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=list-acis&dn=ou=allprofiles
+https://`<RadiantOneRESTEndpoint>`/adap/util?action=vdsconfig&commandname=list-acis&dn=ou=allprofiles
 ```
 
 ## get-aci
