@@ -34,7 +34,7 @@ This command publishes/adds objects and attributes from a given ORX file to the 
 In the following example, a request is made to extend the RadiantOne LDAP schema with objects and attributes from a schema file extracted from an LDAP backend.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=add-orx-schema&name=ds_vds__ou_hr_o_examples&ldap
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=add-orx-schema&name=ds_vds__ou_hr_o_examples&ldap
 ```
 
 ## remove-orx-schema
@@ -60,5 +60,5 @@ This command removes objects and attributes defined in a given ORX file from the
 In the following example, a request is made to remove objects and attributes defined in a schema file extracted from an LDAP backend from the RadiantOne LDAP schema.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=remove-orx-schema&name=ds_vds__ou_hr_o_examples&ldap
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=remove-orx-schema&name=ds_vds__ou_hr_o_examples&ldap
 ```
