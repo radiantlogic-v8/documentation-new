@@ -74,7 +74,11 @@ This content is broken down into the following topics:
 
 The syntax of the URL is as follows.
 
-`http://<RadiantOne_REST_Endpoint/adap/util?action=vdsconfig&commandname=<commandname>&<param>=<paramvalue>&<param>=<paramvalue>`
+`http://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=<commandname>&<param>=<paramvalue>&<param>=<paramvalue>`
+
+You can view the REST endpoint from Environment Operations Center > Environments > [Selected Environment] > Identity Data Management > Application Endpoints.
+
+![REST Endpoint](Media/RESTendpoint.jpg)
 
 Results are returned in the response. A successful operation’s response contains an exit code value of 0 and a “systemOut” message. An unsuccessful operation’s response contains an exit code of 1 and a system error message. If a required parameter is missing from the URL, the response returns the following error.
 
