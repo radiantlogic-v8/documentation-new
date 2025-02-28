@@ -27,7 +27,7 @@ No command arguments are required. The command lists all existing orx files for 
 In the following example, a request is made to list all existing .orx files.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=list-orx
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=list-orx
 ```
 
 ## list-dvx
@@ -46,7 +46,7 @@ No command arguments are required. The command lists all existing dvx files for 
 In the following example, a request is made to display a list of all .dvx files.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=list-dvx
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=list-dvx
 ```
 
 ## print-connection
@@ -75,7 +75,7 @@ Prints the connection information (to the command line interface) associated wit
 In the following example, a request is made to display connection information about address book.dvx.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=print-connection&name=address book&dvx
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=print-connection&name=address book&dvx
 ```
 
 ## test-connection
@@ -104,7 +104,7 @@ Tests the connection to the data source associated with a given orx or dvx file.
 In the following example, a request is made to test the connection to the data source associated with dc_db.orx
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=test-connection&name=dc_db&orx
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=test-connection&name=dc_db&orx
 ```
 
 ## set-connection
@@ -139,7 +139,7 @@ DN for.
 In the following example, a request is made to set the name of the data source for mydirectory.dvx to vdsha.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=set-connection&name=mydirectory&dvx=&datasourcename=vdsha
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=set-connection&name=mydirectory&dvx=&datasourcename=vdsha
 ```
 
 ## extract-orx
@@ -179,7 +179,7 @@ This command extracts an LDAP/database schema to a new .orx file.
 In the following example, a request is made to extract an LDAP schema to a new .orx file.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=extract-orx&datasourcename=vdsha&name=neworx&objects=all&type=ldap&overwrite
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=extract-orx&datasourcename=vdsha&name=neworx&objects=all&type=ldap&overwrite
 ```
 
 ## list-orx-object
@@ -215,7 +215,7 @@ This command prints out the list of objects in a schema(.orx) file.
 In the following example, a request is made to print a list of objects in a schema file.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=list-orx-object&name=neworx&type=ldap&objects
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=list-orx-object&name=neworx&type=ldap&objects
 ```
 
 ## get-orx-object-prop
@@ -259,7 +259,7 @@ This command prints out the properties for an object in a schema(.orx) file.
 In the following example, a request is made to print the properties for an object in a schema(.orx) file.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=get-orx-object-prop&name=neworx&object=ldapserver&type=ldap
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=get-orx-object-prop&name=neworx&object=ldapserver&type=ldap
 ```
 ## set-orx-object-prop
 
@@ -302,7 +302,7 @@ This command sets properties for an object in a schema(.orx) file.
 In the following example, a request is made to set properties for an object in a schema file.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=set-orx-object-prop&name=neworx&object=ldapserver&type=ldap&pkey=cn
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=set-orx-object-prop&name=neworx&object=ldapserver&type=ldap&pkey=cn
 ```
 
 ## list-orx-attr
@@ -334,5 +334,5 @@ This command prints out the list of attributes for an object in a schema(.orx) f
 In the following example, a request is made to print a list of attributes for an object in a schema file.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=list-orx-attr&name=neworx&object=ldapserver&type=ldap&properties
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=list-orx-attr&name=neworx&object=ldapserver&type=ldap&properties
 ```
