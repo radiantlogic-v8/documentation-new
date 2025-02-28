@@ -49,7 +49,7 @@ Warning: this command can only be launched once. Once these parameters have been
 In the following example, a request is made to set the encryption cipher and key used for attribute encryption/decryption.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=set-attrenc-key&cipher=AES128&key=secret123
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=set-attrenc-key&cipher=AES128&key=secret123
 ```
 
 ## set-ldifz-key
@@ -75,7 +75,7 @@ set-ldifz-key -cipher <cipher> -key <key> [-instance <instance>]
 In the following example, a request is made to set LDIFZ key generation parameters.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=set-ldifz-key&cipher=aes256&key=secret1234
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=set-ldifz-key&cipher=aes256&key=secret1234
 ```
 
 ## set-secure-ldif-export
@@ -101,7 +101,7 @@ This command, if enabled, forces users to use the LDIFZ format when exporting an
 In the following example, a request is made to enforce the use of the LDIFZ format for exporting LDIF files.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=set-secure-ldif-export&enable=true
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=set-secure-ldif-export&enable=true
 ```
 
 ## test-cert-mapping
@@ -124,7 +124,7 @@ This command tests the subject (or SAN) associated with a given certificate agai
 In the following example, a request is made to test the subject associated with a certificate against existing certificate-to-DN mapping.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=test-cert-mapping&cert=C:\radiantone\vds\certs\domain1.cer
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=test-cert-mapping&cert=C:\radiantone\vds\certs\domain1.cer
 ```
 
 ## set-cloud-certificate
@@ -150,7 +150,7 @@ The client certificate truststore contains security certificates that RadiantOne
 In the following example, a request is made to set a certificate in the RadiantOne client certificate truststore.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=set-cloud-certificate&cert=C:\radiantone\vds\work\certs\certificate.cer&name=cloudcert
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=set-cloud-certificate&cert=C:\radiantone\vds\work\certs\certificate.cer&name=cloudcert
 ```
 
 ## delete-cloud-certificate
@@ -168,12 +168,11 @@ Certificates can be deleted from the RadiantOne client certificate truststore us
 **`- instance <instance>`**
 The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
 
-**REST (ADAP) Example
-**REST (ADAP) Example
+**REST (ADAP) Example**
 
 In the following example, a request is made to delete a certificate from the RadiantOne client certificate truststore.
 
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=delete-cloud-certificate&name=cloudcert
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=delete-cloud-certificate&name=cloudcert
 
 ## fips-mode-enable
 
@@ -193,4 +192,4 @@ This command enables FIPS mode. For details on FIPS mode, see the [RadiantOne FI
 
 In the following example, a request is made to enable FIPS mode.
 
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=fips-mode-enable
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=fips-mode-enable
