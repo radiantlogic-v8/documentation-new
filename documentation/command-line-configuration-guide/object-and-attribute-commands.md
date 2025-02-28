@@ -39,7 +39,7 @@ This command displays the list of attributes associated with an LDAP proxy view,
 In the following example, a request is made to display the attributes associated with an LDAP proxy view.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=list-ldap-attr&namingcontext=o=companyprofiles,o=mergetree&mergedatasource=vdsha&mergeremotedn=o=companyprofiles
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=list-ldap-attr&namingcontext=o=companyprofiles,o=mergetree&mergedatasource=vdsha&mergeremotedn=o=companyprofiles
 ```
 
 ## add-ldap-attr
@@ -83,7 +83,7 @@ This command adds attributes associated with an LDAP proxy view, to be customize
 In the following example, a request is made to add the Phone attribute with a remapped name of “mobile” to the LDAP proxy view mounted at o=mergetree.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=add-ldap-attr&name=phone&namingcontext=o=mergetree&alwaysreq=true&dnremap=false&mappedname=mobile
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=add-ldap-attr&name=phone&namingcontext=o=mergetree&alwaysreq=true&dnremap=false&mappedname=mobile
 ```
 
 ## update-ldap-attr
@@ -128,7 +128,7 @@ This command updates the special properties for a given attribute associated wit
 In the following example, a request is made to update the automatic DN remapping (set it to true) for the manager attribute in the LDAP proxy view mounted at o=mergetree.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=update-ldap-attr&name=manager&namingcontext=o=mergetree&alwaysreq=true&dnremap=true&mappe
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=update-ldap-attr&name=manager&namingcontext=o=mergetree&alwaysreq=true&dnremap=true&mappe
 dname=fidmanager
 ```
 
@@ -156,12 +156,12 @@ This command removes an attribute that has been customized with special properti
 **`- mergeremotedn <mergeremotedn>`**
 <br>The remote base DN for the merge tree backend. Note: specify this option if only you intend to use the command on a merge tree backend. Required when used on merged backends.
 
-REST (ADAP) Example
+**REST (ADAP) Example**
 
 In the following example, a request is made to delete the special handling of the Phone attribute from the LDAP proxy view mounted at o=mergetree.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=delete-ldap-attr&name=phone&namingcontext=o=mergetree
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=delete-ldap-attr&name=phone&namingcontext=o=mergetree
 ```
 ## LDAP Proxy Primary Objects
 
@@ -197,7 +197,7 @@ The remote base DN for the merge tree backend. Note: specify this option if only
 In the following example, a request is made to list the primary objects configured for an LDAP proxy view mounted at o=mergetree.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=list-ldap-primary&namingcontext=o=mergetree
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=list-ldap-primary&namingcontext=o=mergetree
 ```
 
 ### add-ldap-primary
@@ -229,7 +229,7 @@ add-ldap-primary -namingcontext <namingcontext> -primaryobject <primaryobject> [
 In the following example, a request is made to add the inetorgperson primary object to the LDAP proxy view mounted at o=mergtree.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=add-ldap-primary&namingcontext=o=mergetree&primaryobject=inetOrgPerson
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=add-ldap-primary&namingcontext=o=mergetree&primaryobject=inetOrgPerson
 ```
 
 ### delete-ldap-primary
@@ -261,7 +261,7 @@ This command deletes an existing primary object on an LDAP proxy view.
 In the following example, a request is made to delete the inetorgperson primary object from an LDAP proxy view mounted at o=mergetree.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=delete-ldap-primary&namingcontext=o=mergetree&primaryobject=inetOrgPerson
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=delete-ldap-primary&namingcontext=o=mergetree&primaryobject=inetOrgPerson
 ```
 
 ## LDAP Proxy Primary Object Attributes
@@ -305,7 +305,7 @@ This command displays a list of all attributes found for a primary object on an 
 In the following example, a request is made to display a list of all attributes found for a primary object on an LDAP proxy view.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=list-ldap-primary-attr&namingcontext=o=ldapproxy&primaryobject=inetOrgPerson
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=list-ldap-primary-attr&namingcontext=o=ldapproxy&primaryobject=inetOrgPerson
 ```
 
 ### add-ldap-primary-attr
@@ -362,7 +362,7 @@ The computed expression for the attribute. This expression should contain the at
 In the following example, a request is made to add the loginID primary attribute to an LDAP proxy view.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=add-ldap-primary-attr&namingcontext=o=ldapproxy&primaryobject=inetOrgPerson&name=loginID&source=inetorgperson-inetorgperson
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=add-ldap-primary-attr&namingcontext=o=ldapproxy&primaryobject=inetOrgPerson&name=loginID&source=inetorgperson-inetorgperson
 ```
 
 ### update-ldap-primary-attr
@@ -419,7 +419,7 @@ Strings.
 In the following example, a request is made to update the properties of the loginID primary attribute in an LDAP proxy view mounted at o=ldapproxy in the RadiantOne namespace.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=update-ldap-primary-attr&namingcontext=o=ldapproxy&primaryobject=inetOrgPerson&name=loginID&source=inetorgperson-inetorgperson&priority=high&searchable=true&updatable=true
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=update-ldap-primary-attr&namingcontext=o=ldapproxy&primaryobject=inetOrgPerson&name=loginID&source=inetorgperson-inetorgperson&priority=high&searchable=true&updatable=true
 ```
 
 ### delete-ldap-primary-attr
@@ -458,7 +458,7 @@ This command deletes an attribute from a primary object on an LDAP proxy.
 In the following example, a request is made to delete a primary attribute from an LDAP proxy view mounted at o=ldapproxy in the RadiantOne namespace.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=delete-ldap-primary-attr&namingcontext=o=ldapproxy&primaryobject=inetOrgPerson&name=loginID&source=inetorgperson-inetorgperson
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=delete-ldap-primary-attr&namingcontext=o=ldapproxy&primaryobject=inetOrgPerson&name=loginID&source=inetorgperson-inetorgperson
 ```
 
 ## Joins on LDAP Primary Objects
@@ -518,7 +518,7 @@ ldaps://[vds]/OU=Users,dc=ad204?cn:1664,mail:1664,memberOf:1664,userAccountContr
 In the following example, a request is made to display a list of all join IDs found for a primary object (e.g. inetOrgPerson) configured for an LDAP proxy view.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=list-ldap-xjoin&namingcontext=o=ldapproxy&primaryobject=inetOrgPerson
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=list-ldap-xjoin&namingcontext=o=ldapproxy&primaryobject=inetOrgPerson
 ```
 
 ### add-ldap-xjoin
@@ -598,7 +598,7 @@ C:\radiantone\vds\bin\vdsconfig.bat add-ldap-xjoin -joinid "inetOrgPerson-defaul
 In the following example, a request is made to add a new join to a primary object (e.g. inetOrgPerson) on an LDAP proxy view mounted at o=ldapproxy.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=add-ldap-xjoin&namingcontext=o=ldapproxy&primaryobject=inetOrgPerson&active=true&basedn=ou=AllProfiles&datasourcename=vds&joinattr=inetorgperson&joincondition=employeeNumber=
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=add-ldap-xjoin&namingcontext=o=ldapproxy&primaryobject=inetOrgPerson&active=true&basedn=ou=AllProfiles&datasourcename=vds&joinattr=inetorgperson&joincondition=employeeNumber=
 @[uid:varchar])(objectclass=user)&scope=sub&joinid=inetorgperson-user
 ```
 
@@ -664,7 +664,7 @@ This command updates the properties of an existing join associated with a given 
 In the following example, a request is made to update an existing join on an LDAP proxy view.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=update-ldap-xjoin&namingcontext=o=ldapproxy&primaryobject=inetOrgPerson&active=true&basedn=ou=
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=update-ldap-xjoin&namingcontext=o=ldapproxy&primaryobject=inetOrgPerson&active=true&basedn=ou=
 AllProfiles&datasourcename=vds&joincondition=employeeNumber=@[uid:varchar])(objectclass=user)&scope=sub&joinid=inetorgperson-user&returnall&sizelimit=20
 ```
 
@@ -700,7 +700,7 @@ This command deletes an existing join associated with a given primary object on 
 In the following example, a request is made to delete an existing join associated with a primary object (e.g. inetOrgPerson) on an LDAP proxy view mounted at o=ldapproxy in the RadiantOne namespace.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=delete-ldap-xjoin&namingcontext=o=ldapproxy&primaryobject=inetOrgPerson&joinid=inetorgperson-user
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=delete-ldap-xjoin&namingcontext=o=ldapproxy&primaryobject=inetOrgPerson&joinid=inetorgperson-user
 ```
 
 ## Bind Order on LDAP Proxy Views
@@ -743,7 +743,7 @@ This command displays the bind order for authentication on a primary object.
 In the following example, a request is made to display the list of possible sources that can be configured for authentication on an LDAP proxy view.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=get-ldap-primary-bindorder&namingcontext=o=ldapproxy&primaryobject=inetorgperson &list
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=get-ldap-primary-bindorder&namingcontext=o=ldapproxy&primaryobject=inetorgperson &list
 ```
 
 ### set-ldap-primary-bindorder
@@ -778,7 +778,7 @@ Sets the bind order for authentication on a primary object.
 In the following example, a request is made to set the bind order for an LDAP proxy view.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=set-ldap-primary-bindorder&namingcontext=o=ldapproxy&primaryobject=inetOrgPerson&bindorder=inetorgperson-user,MAIN,inetorgperson-employeenumber
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=set-ldap-primary-bindorder&namingcontext=o=ldapproxy&primaryobject=inetOrgPerson&bindorder=inetorgperson-user,MAIN,inetorgperson-employeenumber
 ```
 
 ## LDAP Proxy Merge Tree
@@ -900,7 +900,7 @@ This command displays a list of all attributes found for a content/container nod
 In the following example, a request is made to list the searchable attributes in a content node for a database proxy view.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=list-content-attr&namingcontext=employees,dc=db&columns=searchable
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=list-content-attr&namingcontext=employees,dc=db&columns=searchable
 ```
 
 ### add-content-attr
@@ -948,7 +948,7 @@ The 'updatable' property value for an attribute. Accepted values are: true, fals
 In the following example, a request is made to add an attribute called LOGIN to a content node of a database proxy view.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=add-content-
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=add-content-
 attr&namingcontext=employees,dc=db&name=login&source=main
 ```
 
@@ -996,7 +996,7 @@ This command updates the properties of an existing attribute for a content or co
 In the following example, a request is made to update the properties of the LOGIN attribute of a content node for a database proxy view.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=update-content-attr&namingcontext=employees,dc=db&name=login&source=main&priority=high&searchable=true&mappedname=LOGINID
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=update-content-attr&namingcontext=employees,dc=db&name=login&source=main&priority=high&searchable=true&mappedname=LOGINID
 ```
 
 ### delete-content-attr
@@ -1025,7 +1025,7 @@ Command Arguments:
 In the following example, a request is made to delete the LOGIN attribute from a database proxy view.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=delete-content-attr&namingcontext=employees,dc=db&name=login&source=main
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=delete-content-attr&namingcontext=employees,dc=db&name=login&source=main
 ```
 
 ## Joins on Database Objects
@@ -1073,7 +1073,7 @@ ldaps://[vds]/o=companydirectory?audio:1664,businessCategory:1664,carLicense:166
 In the following example, a request is made to display a list of all joins defined for employees=*,dc=db in a database proxy view.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=list-content-xjoin&namingcontext=employees=*,dc=db&joinid=vdappemployees-inetorgperson
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=list-content-xjoin&namingcontext=employees=*,dc=db&joinid=vdappemployees-inetorgperson
 ```
 
 #### add-content-xjoin
@@ -1132,7 +1132,7 @@ This command adds a new join to a content or container node.
 In the following example, a request is made to add a regular join based on the employeeid attribute.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=add-content-xjoin&joinid=vdappemployees-user&namingcontext=employees=*,dc=db&active=true&basedn=o=companyprofiles&datasourcename=vdsha&joinattr=employeeid&scope=sub
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=add-content-xjoin&joinid=vdappemployees-user&namingcontext=employees=*,dc=db&active=true&basedn=o=companyprofiles&datasourcename=vdsha&joinattr=employeeid&scope=sub
 ```
 
 ### update-content-xjoin
@@ -1190,7 +1190,7 @@ The data source name of a registered LDAP data source that is used for the join.
 In the following example, a request is made to update a join by setting a size limit of the number of entries returned for the secondary object.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=update-content-xjoin&joinid=vdappemployees-
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=update-content-xjoin&joinid=vdappemployees-
 user&namingcontext=employees=*,dc=db&active=true&basedn=o=companyprofiles&datasourcename=vdsha&joinattr=employeeid&scope=sub&sizelimit=20
 ```
 
@@ -1217,7 +1217,7 @@ This command deletes an existing join from a content or container node.
 In the following example, a request is made to delete a join.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=delete-content-xjoin&joinid=vdappemployees-user&namingcontext=employees=*,dc=db
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=delete-content-xjoin&joinid=vdappemployees-user&namingcontext=employees=*,dc=db
 ```
 
 ### Bind Order on Database Proxy Views
@@ -1251,7 +1251,7 @@ This command displays the bind order for authentication on a content/container n
 In the following example, a request is made to list all available sources for configuring bind order.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=get-content-bindorder&namingcontext=employees=*,dc=db&list
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=get-content-bindorder&namingcontext=employees=*,dc=db&list
 ```
 
 ### set-content-bindorder
@@ -1277,6 +1277,6 @@ Sets the bind order for authentication on a content/container node.
 In the following example, a request is made to set the bind order for employees=*,dc=db.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=set-content-bindorder&bindorder=vdappemployees-user,vdappemployees-
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=set-content-bindorder&bindorder=vdappemployees-user,vdappemployees-
 inetorgperson,main&namingcontext=employees=*,dc=db
 ```
