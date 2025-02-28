@@ -35,7 +35,7 @@ This command starts or stops a specified connector in a real-time persistent cac
 In the following example, a request is made to start a real-time persistent cache refresh connector.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=change-connector-state&connectorname=o_derby_pcache_primary__so_o_derby__northwind_app_employees&state=start
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=change-connector-state&connectorname=o_derby_pcache_primary__so_o_derby__northwind_app_employees&state=start
 ```
 
 ## empty-queues
@@ -59,7 +59,7 @@ identifiers for each topology.
 In the following example, a request is made to empty a cache’s queue.
 
 ```
-https://fid:8090/adap/util?action=vdsconfig&commandname=empty-queues&pipelineid=o_db_pcache_primary__so_o_db__northwind_app_employees
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=empty-queues&pipelineid=o_db_pcache_primary__so_o_db__northwind_app_employees
 ```
 
 ## reset-cursor
@@ -79,7 +79,7 @@ This command resets the cursor for a specified persistent cache refresh.
 In the following example, a request is made to reset the cursor of a persistent cache.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=reset-cursor&connectorname=o_derby_pcache_primary__so_o_derby__northwind_app_employees
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=reset-cursor&connectorname=o_derby_pcache_primary__so_o_derby__northwind_app_employees
 ```
 
 ## list-agents
@@ -104,7 +104,7 @@ This command lists the currently running agents, both the ones used for persiste
 In the following example, a request is made to list the agents that are currently running.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=list-agents
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=list-agents
 ```
 
 ## stop-agent
@@ -135,7 +135,7 @@ This command stops an agent specified by name.
 In the following example, a request is made to stop an agent.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=stop-agent&agentname=agent_fid_sd_agent__event_driven_PID_3788
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=stop-agent&agentname=agent_fid_sd_agent__event_driven_PID_3788
 ```
 
 ## stop-all-agents
@@ -160,7 +160,7 @@ This command stops all agents.
 In the following example, a request is made to stop all agents.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=stop-all-agents
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=stop-all-agents
 ```
 
 ## stop-all-local-agents
@@ -184,7 +184,7 @@ This command stops all local agents running on the machine from which the comman
 
 In the following example, a request is made to stop all local agents.
 
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=stop-all-local-agents
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=stop-all-local-agents
 
 ## configure-real-time-pcache-sync-topology
 
@@ -203,7 +203,7 @@ This command configures a persistent cache with a real-time refresh strategy.
 In the following example, a request is made to configure a persistent cache with real-time refresh for a naming context of o=derby.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=configure-real-time-pcache&namingcontextdn=o=derby
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=configure-real-time-pcache&namingcontextdn=o=derby
 ```
 
 ## configure-connector-type
@@ -230,7 +230,7 @@ configure-connector-type [-connectorname <connectorname>]
 In the following example, a request is made to change a connector’s type.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=configure-connector-type&connectorname=o_derby_pcache_primary__so_o_derby__northwind_app_employees&connectortype=db_timestamp
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=configure-connector-type&connectorname=o_derby_pcache_primary__so_o_derby__northwind_app_employees&connectortype=db_timestamp
 ```
 
 ## list-connectors
@@ -250,7 +250,7 @@ This command lists the connector names for a specified real-time cache refresh.
 In the following example, a request is made to list connector names a persistent cache for cn=Accouting,ou=Virtual Groups,ou=AllProfiles.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=list-connectors&namingcontextdn=cn=Accouting,ou=Virtual Groups,ou=AllProfiles
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=list-connectors&namingcontextdn=cn=Accouting,ou=Virtual Groups,ou=AllProfiles
 ```
 
 ## list-connector-properties
@@ -270,7 +270,7 @@ This command lists properties and their values for a connector.
 In the following example, a request is made to list connector configuration properties.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=list-connector-properties&connectorname=o_derby_pcache_primary__so_o_derby__northwind_app_employees
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=list-connector-properties&connectorname=o_derby_pcache_primary__so_o_derby__northwind_app_employees
 ```
 
 ## get-connector-property
@@ -296,7 +296,7 @@ This command gets a property for a connector configuration.
 In the following example, a request is made to display the value for a connector’s Max Retries On Error property.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=get-connector-property&connectorname=o_derby_pcache_primary__so_o_derby__northwind_app_employees&propertyid=maxRetriesOnError
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=get-connector-property&connectorname=o_derby_pcache_primary__so_o_derby__northwind_app_employees&propertyid=maxRetriesOnError
 ```
 
 ## set-connector-property
@@ -332,7 +332,7 @@ This command sets a property for a connector configuration. Run the list-connect
 In the following example, a request is made to set a property for a connector's configuration.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=set-connector-property&connectorname=o_derby_pcache_primary__so_o_derby__northwind_app_employees&propertyid=maxRetriesOnError&propertyvalue=10
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=set-connector-property&connectorname=o_derby_pcache_primary__so_o_derby__northwind_app_employees&propertyid=maxRetriesOnError&propertyvalue=10
 ```
 
 ## file-set-connector-properties
@@ -363,7 +363,7 @@ This command sets multiple connector configuration properties with a text file.
 In the following example, a request is made to set connector configuration properties using a text file named ConnectorConfig.txt.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=file-set-connector-properties&commandname=file-set-connector-properties&connectorname=o_derby_pcache_primary__so_o_derby__northwind_app_employees&propertyfilename=c:/radiantone/ConnectorConfig.txt
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=file-set-connector-properties&commandname=file-set-connector-properties&connectorname=o_derby_pcache_primary__so_o_derby__northwind_app_employees&propertyfilename=c:/radiantone/ConnectorConfig.txt
 ```
 
 ## execute-db-changelog-scripts
@@ -389,7 +389,7 @@ This command executes DB changelog configure or deconfigure scripts for a DB con
 In the following example, a request is made to execute deconfigure logs for a DB connector.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=execute-db-changelog-scripts&namingcontextdn=ou=hr,o=examples&connectorname=ou_hr_o_examples_pcache_primary__so_ou_hr_o_examples__examples_app_hr&deconfigure
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=execute-db-changelog-scripts&namingcontextdn=ou=hr,o=examples&connectorname=ou_hr_o_examples_pcache_primary__so_ou_hr_o_examples__examples_app_hr&deconfigure
 ```
 
 ## fix-cacherefresh
@@ -419,5 +419,5 @@ status value equal to 2 are refreshed.
 In the following example, a request is made to fix a cache refresh.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=fix-cacherefresh&changenumber=1&status=2&verbose
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=fix-cacherefresh&changenumber=1&status=2&verbose
 ```
