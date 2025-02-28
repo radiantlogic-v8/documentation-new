@@ -30,7 +30,7 @@ This command prints the current settings for a given password policy.
 In the following example, a request is made to display the settings for the default password policy.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=print-pwd-policy&name=default
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=print-pwd-policy&name=default
 ```
 
 ## add-pwd-policy
@@ -144,7 +144,7 @@ This command adds a new custom password policy.
 In the following example, a request is made to create a password policy for o=companyprofiles.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=add-pwd-policy&basedn=o=companyprofiles&type=subtree&pwdAllowUserChange=true&pwdMaxAge=5d&pwdExpireWarning=2d12h&pwdMinLength=8&pwdMustChange=true&name=companyprofilesPwdPolicy
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=add-pwd-policy&basedn=o=companyprofiles&type=subtree&pwdAllowUserChange=true&pwdMaxAge=5d&pwdExpireWarning=2d12h&pwdMinLength=8&pwdMustChange=true&name=companyprofilesPwdPolicy
 ```
 
 ## update-pwd-policy
@@ -257,11 +257,11 @@ This command updates an existing password policy.
 **`- type <type>`**
 <br>The type of subject. Accepted values are: group, subtree
 
-**REST (ADAP) Example
+**REST (ADAP) Example**
 In the following example, a request is made to update a password policy for o=companyprofiles.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=update-pwd-policy&basedn=o=companyprofiles&type=subtree&pwdAllowUserChange=true&pwdExpireWarning=5d12h30m&pwdMinLength=9&pwdMustChange=true&name=companyprofilesPwdPolicy&pwdGraceAuthNLimit=3&pwdLockoutDuration=15
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=update-pwd-policy&basedn=o=companyprofiles&type=subtree&pwdAllowUserChange=true&pwdExpireWarning=5d12h30m&pwdMinLength=9&pwdMustChange=true&name=companyprofilesPwdPolicy&pwdGraceAuthNLimit=3&pwdLockoutDuration=15
 ```
 
 ## delete-pwd-policy
@@ -284,5 +284,5 @@ This command removes an existing password policy.
 In the following example, a request is made to delete a password policy named companyprofilesPwdPolicy.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=delete-pwd-policy&name=companyprofilesPwdPolicy
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=delete-pwd-policy&name=companyprofilesPwdPolicy
 ```
