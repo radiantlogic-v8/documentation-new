@@ -50,16 +50,10 @@ Periodic persistent cache refresh can be configured from the Main Control Panel 
 
 ![Cache Refresh](Media/Image19.2.jpg)
 
-You can manually initiate a periodic persistent cache refresh with the following command (substitute your cached naming context for <pcache naming>).
-
-```
-C:\radiantone\vds\bin>vdsconfig.bat search-vds -dn "action=deltarefreshpcache,<pcachenaming>" -filter "(objectclass=*)" -leader
-```
-
 **REST (ADAP) Example**
 
 In the following example, a request is made to search the o=companyprofiles naming context in RadiantOne.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=search-vds&dn=o=companyprofiles&attr=EMPLOYEEID&scope=sub&filter=(employeeType=Intern)&sizelimit=12
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=search-vds&dn=o=companyprofiles&attr=EMPLOYEEID&scope=sub&filter=(employeeType=Intern)&sizelimit=12
 ```
