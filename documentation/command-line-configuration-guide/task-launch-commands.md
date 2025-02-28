@@ -49,7 +49,7 @@ This command launches a task to initialize a persistent cache. In multi-node clu
 In the following example, a request is made to initialize a persistent cache for o=companyprofiles.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=init-pcache&namingcontext=o=companyprofiles&interactive&vpp&nthreads=32
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=init-pcache&namingcontext=o=companyprofiles&interactive&vpp&nthreads=32
 ```
 
 ## Importing LDIF Files
@@ -90,7 +90,7 @@ This command launches a task to import an LDIF file.
 In the following example, a request is made to import an LDIF file into o=employees2.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=import-ldif&ldif=C:\radiantone\vds\vds_server\ldif\export\employees.ldif&basedn=o=employees2&datasourcename=vds&interactive&override
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=import-ldif&ldif=C:\radiantone\vds\vds_server\ldif\export\employees.ldif&basedn=o=employees2&datasourcename=vds&interactive&override
 ```
 
 ## Exporting Persistent Cache or RadiantOne Universal Directory (HDAP) Stores
@@ -149,7 +149,7 @@ is used.
 In the following example, a request is made to export a backend to an LDIF file.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=export-ldif&basedn=o=companyprofiles&scope=sub&ldif=C:\radiantone\vds\vds_server\companyprofiles.ldif&interactive
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=export-ldif&basedn=o=companyprofiles&scope=sub&ldif=C:\radiantone\vds\vds_server\companyprofiles.ldif&interactive
 ```
 
 ## Initializing RadiantOne Universal Directory (HDAP) Stores
@@ -186,7 +186,7 @@ This command launches a task to initialize a RadiantOne Universal Directory (HDA
 In the following example, a request is made to initialize a RadiantOne Universal Directory store from an LDIF file.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=init-hdap-store&ldif=c:/radiantone/vds/vds_server/ldif/export/companydirectory.ldif&namingcontext=o=
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=init-hdap-store&ldif=c:/radiantone/vds/vds_server/ldif/export/companydirectory.ldif&namingcontext=o=
 companydirectory&interactive
 ```
 
@@ -221,7 +221,7 @@ This command launches a task to rebuild an index for a RadiantOne Universal Dire
 In the following example, a request is made to rebuild the indexes for a RadiantOne Universal Directory store.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=rebuild-index&namingcontext=o=companydirectory&interactive
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=rebuild-index&namingcontext=o=companydirectory&interactive
 ```
 Below is an example response from interactive mode:
 
@@ -267,7 +267,7 @@ The name of the RadiantOne instance. If not specified, the default instance name
 
 In the following example, a request is made to schedule a report.
 
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=schedule-report&reportconfigdn=cn=0a91d6de-c124-4c4d-82b5-d10be9a0cc2b,ou=reports,o=project,ou=webapps,ou=globalsettings,cn=config
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=schedule-report&reportconfigdn=cn=0a91d6de-c124-4c4d-82b5-d10be9a0cc2b,ou=reports,o=project,ou=webapps,ou=globalsettings,cn=config
 
 ## Global Profile Upload Management
 
