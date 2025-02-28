@@ -36,7 +36,7 @@ Command Arguments:
 In the following example, a request is made to create a new label named ou=Groups under o=vds.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=new-label&parentdn=o=vds&rdn=ou=Groups
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=new-label&parentdn=o=vds&rdn=ou=Groups
 ```
 
 ## delete-label
@@ -58,7 +58,7 @@ This command deletes an existing label node in a virtual tree hierarchy.
 In the following example, a request is made to delete the label ou=Groups (located under o=vds).
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=delete-
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=delete-
 label&dn=ou=Groups,o=vds
 ```
 
@@ -81,7 +81,7 @@ Command Arguments:
 In the following example, a request is made to display a list of all properties for ou=groups,o=vds.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=list-node-property&dn=ou=Groups,o=vds
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=list-node-property&dn=ou=Groups,o=vds
 ```
 
 ## get-node-property
@@ -148,11 +148,11 @@ Loading module BASICS
 2018 - 04 - 06 15:43:40 INFO c.r.s.s.LDAPServerParameter:2310 - ... MetaTree built
 Class=vdAPPEMPLOYEES
 ```
-REST (ADAP) Example
+**REST (ADAP) Example**
 In the following example, a request is made to display the value for the Name property.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=get-node-property&dn= employees,dv=northwind2,o=vds&prop=Name
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=get-node-property&dn= employees,dv=northwind2,o=vds&prop=Name
 ```
 The response is shown below. The \r\n in the SystemOut represents a carriage return/line feed. The value of the Name property is EMPLOYEES.
 
@@ -231,7 +231,7 @@ K<br>`get-node-interception -dn <dn> [-instance <instance>]`
 In the following example, a request is made to display the values configured for an interception script.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=get-node-interception&dn=CN,dv=address book,o=vds
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=get-node-interception&dn=CN,dv=address book,o=vds
 ```
 ## set-node-interception
 
@@ -283,7 +283,7 @@ means it is not enabled.
 In the following example, a request is made to enable an interception script for search, modify, delete and add operations.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=set-node-interception&dn=CN,dv=address book,o=vds&search=true&bind=false&modify=true&delete=true&add=true
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=set-node-interception&dn=CN,dv=address book,o=vds&search=true&bind=false&modify=true&delete=true&add=true
 ```
 ## set-node-rdn
 
@@ -340,7 +340,7 @@ The RDN attribute name has been modified.
 In the following example, a request is made to set the RDN name of a node under o=examples.
 
 ```
-https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=set-node-rdn&dn=HR=*,ou=hr,o=examples&rdn=NEWHR
+https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=set-node-rdn&dn=HR=*,ou=hr,o=examples&rdn=NEWHR
 ```
 
 #### Modifying an RDN Name and Value
