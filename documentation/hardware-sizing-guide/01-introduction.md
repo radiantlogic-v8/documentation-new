@@ -14,7 +14,7 @@ When deploying a cluster, nodes must be running on hardware that is configured f
 The information in this guide provides a basis for capacity planning that helps ensure that the virtual directory server hardware is adequate for handling peak loads. The following minimum requirements must be met and might be inadequate for a production environment. For best results, install and configure a test system with a subset of entries representing those used in production. You can then use the test system to approximate the behavior of the production server.
 
 
-- CPU Cores - minimum 2 cores.
+- CPU Cores - minimum 2 cores for basic test environments. At least 4 cores for production environments, will vary based on complexity use cases.
 - Machine Memory - minimum 15GB.
 - Disk Throughput - minimum 100MB/sec.
 - Disk Space - minimum 20GB.
