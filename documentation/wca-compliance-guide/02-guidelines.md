@@ -44,7 +44,7 @@ This guideline ensures that content can be presented in different ways without l
 
 Lists of primary navigation links are consistent. Headers, sidebars, and main content are all identified in the source HTML using tags that allow programmatic determination of content. 
 
-The <div id="sidebar" class="sidebar"> tag indicates that the user is navigating within sidebar content. The id="main-content" tag indicates that the user is navigating within the main section of the user interface. The <head> tag indicates that the user is navigating within the page’s header. 
+The id="sidebar" tag indicates that the user is navigating within sidebar content. The id="main-content" tag indicates that the user is navigating within the main section of the user interface. The <head> tag indicates that the user is navigating within the page’s header. 
 
 ## 1.3.2 Meaningful Sequence - Level A
 RadiantOne sequences page content in a meaningful way and uses HTML tags to allow reading sequences to be programmatically determined. Tables use HTML table elements. Lists use HTML UL and LI tags. 
