@@ -1,5 +1,5 @@
 ---
-title: WCA Compliance Guide
+title: Web Content Accessability Compliance Guide
 description: WCA Compliance Guide
 ---
 
@@ -211,7 +211,8 @@ RadiantOne screen navigation and repetitive screen content are accessible by pos
 
 ## 3.2.4 Consistent Identification - Level AA
 
-RadiantOne components that have the same functionality, such as Add, Edit, and Delete buttons, wizard configuration buttons, 
+RadiantOne components that have the same functionality, such as Add, Edit, and Delete buttons, and wizard configuration buttons, are identified consistently.
+
 
 # Guideline 3.3 – Input Assistance
 
