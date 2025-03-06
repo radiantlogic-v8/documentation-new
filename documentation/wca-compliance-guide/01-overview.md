@@ -1,5 +1,5 @@
 ---
-title: WCA Compliance Guide
+title: Web Content Accessability Compliance Guide
 description: WCA Compliance Guide
 ---
 
