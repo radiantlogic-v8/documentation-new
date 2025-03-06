@@ -52,6 +52,7 @@ These release notes contain the following sections:
 - Importing LDIFZ files is not supported yet.
 - Extracting a large schema, occasionally results in timeouts in Data Catalog > Data Sources.
 - Issues exporting RadiantOne Directory stores from Directory Browser.
+- Joining related objects from the same source schema as the primary object isn't working properly in Object Builder.
 
 For known issues reported after the release, please see the Radiant Logic Knowledge Base: 
 
