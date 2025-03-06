@@ -55,7 +55,7 @@ To configure a global join:
 
 Regular joins are configured from the Control Panel > Setup > Directory Namespace > Namespace Design. Select the location where the identity view is mounted below Root Naming Contexts and go to the OBJECT BUILDER tab on the right. The primary source for regular joins is an object in an identity view. If the identity view is created using an LDAP proxy approach, you must select the primary object class on the OBJECT BUILDER tab to start. If the primary object is based on a container or content type of node in the identity view, then the object is already known and will automatically appear on the canvas on the OBJECT BUILDER tab.
 
->[!warn] If the identity view is configured for persistent cache, you can't modify objects on the canvas in Object Builder. Deactivate the cache before making changes. 
+>[!warning] If the identity view is configured for persistent cache, you can't modify objects on the canvas in Object Builder. Deactivate the cache before making changes. 
 
 To configure a regular join:
 
