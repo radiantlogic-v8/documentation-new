@@ -98,6 +98,7 @@ Also, changed the merged backend page to display the Radiantone Namespace DN val
 - [API-2355]: The edit schema functionality has been disabled as there is a known issue where it will not update dependent view files with the new schema name, because we don't have the ability currently to update the view files.
 - [API-2403]: LDAP filter assist mode in Namespace Design > `[naming context]` > Advanced Settings > LDAP Filter is disabled due to a bug that currently has no workaround.
 - [API-2421]: The Classic Control Panel > Wizards > Identity Data Analysis wizard has been temporarily disabled due to a bug with running analysis that has no workaround.
+- Joining related objects from the same source schema as the primary object isn't working properly in Object Builder.
 
 
 For known issues reported after the release, please see the Radiant Logic Knowledge Base: 
