@@ -7,6 +7,8 @@ description: Learn how to configure password policies.
 
 When using a RadiantOne Directory store or persistent cache (with password policy enforcement enabled), you can establish password policies for managing things such as password length, quality, reset frequency, lockout…etc. Password policies are only enforced for RadiantOne Directory stores and persistent caches (that contain the user passwords and have enabled the enforcement of password policies) not any other kind of backend configuration (proxies, databases…etc.).
 
+>[!warning] Password content strength rules are only enforced when the password value that is sent in the modify request is NOT hashed. If the client sends a hashed value for the password in the modify request, RadiantOne cannot reverse the hash to get the actual value to validate it against password content strength rules. If the client passes a hashed password value, the default behavior is to bypass the password policy check and accept the value as is. This functionality allows RadiantOne to support legacy LDAP replacement use cases where existing entries with hashed passwords can be directly imported into a RadiantOne directory.
+
 Password policies are configured from Classic Control Panel > Settings tab > Security > Password Policies. To switch to Classic Control Panel, use the menu options for the logged in user in the upper right.
 
 ![Classic Control Panel](Media/classic-cp.jpg)
@@ -201,6 +203,8 @@ These are known as grace logins. The value of this parameter is stored in the pw
 During the grace login attempts, bind requests are processed. However, the subsequent operation after the bind must be a modifyRequest to change the password. Otherwise, an error message is returned indicating “You must change your password before submitting any other requests”.
 
 ## Password Content
+
+>[!warning] Password content strength rules are only enforced when the password value that is sent in the modify request is NOT hashed. If the client sends a hashed value for the password in the modify request, RadiantOne cannot reverse the hash to get the actual value to validate it against password content strength rules. If the client passes a hashed password value, the default behavior is to bypass the password policy check and accept the value as is. This functionality allows RadiantOne to support legacy LDAP replacement use cases where existing entries with hashed passwords can be directly imported into a RadiantOne directory.
 
 The following are the password content options.
 -	Password minimum length
