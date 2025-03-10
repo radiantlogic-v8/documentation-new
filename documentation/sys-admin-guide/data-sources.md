@@ -55,9 +55,8 @@ The following LDIF formatted file (named ldapmodify_update_datasource_username.l
 <br> `changetype: modify`
 <br> `replace: username`
 <br> `username: CN=Logan Oliver,OU=Users,OU=Europe,DC=na,DC=radiantlogic,DC=com`
-
-<br> replace: password
-<br> password: Radiant1
+<br> `replace: password`
+<br> `password: Radiant1`
 
 The following is the ldapmodify command that is run to update the username and password in the ad203 data source:
 
