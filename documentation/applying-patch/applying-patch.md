@@ -139,13 +139,14 @@ If you have ZooKeeper deployed in an external ensemble, you must update it separ
 
 1. If you haven’t already done so, make a copy/backup of the existing ZooKeeper home location. 
 
-1. Copy the following folders from the new version (that you unzipped in step 2) to the existing setup:  
-/bin/                      (copy) 
-/setup/                  (remove from target first – remove all jars, then copy) 
-/zookeeper/bin/     (remove from target first, then copy) 
-/zookeeper/docs/  (remove from target first, then copy) 
-/zookeeper/lib/      (remove from target first, then copy) 
-/jdk/                       (remove from target first, then copy) 
+1. Copy the following folders from the new version (that you unzipped in step 2) to the existing setup:
+ * /bin/                   (copy) 
+ * /setup/                 (remove from target first – remove all jars, then copy) 
+ * /zookeeper/bin/         (remove from target first, then copy)
+ * /zookeeper/conf         (copy and replace the files in the target)" 
+ * /zookeeper/docs/        (remove from target first, then copy) 
+ * /zookeeper/lib/         (remove from target first, then copy) 
+ * /jdk/                   (remove from target first, then copy) 
 
 1. Delete the temporary folder that you unzipped the new ZooKeeper version to in step 2. 
 
