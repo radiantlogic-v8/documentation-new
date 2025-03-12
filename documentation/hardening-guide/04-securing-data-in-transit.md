@@ -226,6 +226,10 @@ For database backends, just enter the SSL port in the URL as there is no SSL che
 
 If the server you are connecting to uses a self-signed certificate, or signed by a Certificate Authority not known by RadiantOne, then this certificate must be imported into the client truststore. Import client certificates into the RadiantOne truststore from the Main Control Panel > Settings Tab > Security section > Client Certificate Truststore. RadiantOne dynamically loads client certificates from here meaning certificates can be added at any time without requiring a restart.
 
+For JDBC-accessible database backends, you have the option to use one of the drivers that comes installed with RadiantOne. However, it is recommended that you use the driver that was delivered with the database that you want to connect to. To add a JDBC driver, you must make sure that the driver libraries are added in: <RLI_HOME>/lib/jdbc. Also, some of the drivers provided in the install for convenience don't support SSL/TLS access to the database server. You might need other libraries (additional .jar files) from the vendor to support this. These additional files must also be in:  <RLI_HOME>/lib/jdbc.  Consult your database vendor documentation for details.
+
+>[!warning] Updating a database driver may require more than just replacing the existing driver files in the <RLI_HOME>/lib/jdbc directory if the name or license has changed. You may need additional driver files related to licenses and/or support for SSL/TLS access. Consult your database vendor documentation for details.
+
 For more information on SSL/TLS support, please see the RadiantOne System Administration Guide.
 
 ## Enable FIPS Mode
