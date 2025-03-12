@@ -70,7 +70,7 @@ The init container employs `curl` to download the export file from the specified
 
  The init container and its associated logic will only execute if a migration URL is specified in the `values.yaml` file. 
 
-** Example configuration:**
+**Example configuration:**
 
 ```yaml 
 
@@ -82,7 +82,6 @@ fid:
 
 ``` 
 
- 
 
 ### Limitations and considerations 
 
