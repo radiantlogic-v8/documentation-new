@@ -7,7 +7,7 @@ description: Learn how to create a backup of your self-managed Identity Data Man
 
 This guide provides an overview of the steps required to create backups of your self-managed Identity Data Management deployment. 
  
-To create a backup, follow these steps:
+**To create a backup, follow these steps:**
 
 1. Open your terminal and run the following command: 
  
@@ -28,5 +28,5 @@ Replace <RELEASE_NAME>, <NAMESPACE>, <EXPORT_FILE_NAME>, and <path-	to-your-loca
 
 ## Next steps
 
-Learn how to [restore](to-add) a new installation using your backup. 
+Learn how to [restore](./restore) a new installation using your backup. 
 
