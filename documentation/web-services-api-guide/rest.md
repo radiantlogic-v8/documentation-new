@@ -666,7 +666,7 @@ In this example an attribute (e.g. email) containing a specified value (e.g. ali
 <td>Basic <userDN>:<password>
 <tr>
 <td>Example Request Body	
-<td> <pre>{
+<td> {
     "params": {
         "mods": [
             {
@@ -1350,7 +1350,7 @@ In this section, the sub-attributes “streetNumber” and “country” are add
 <td>Basic `<userDN>:<password>`
 <tr>
 <td>Example Request Body	
-<td> <pre>
+<td> 
 {
     "params": {
         "mods": [
