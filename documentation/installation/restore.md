@@ -8,7 +8,8 @@ description: Learn how to import existing configurations and data from a backup 
 The Identity Data Management Helm chart includes a restore feature that enables users to import existing configurations and data from a backup file to a new installation of the Identity Data Management application.   
 
 This functionality is particularly beneficial for setting up a new Identity Data Management instance with pre-existing configurations or for migrating data from a previous installation to a new installation. 
-Note that you cannot use this feature for upgrades or patches. 
+
+> Note that you cannot use this feature for upgrades or patches. 
 
 Follow the steps outlined below to restore your self-managed Identity Data Management application. 
  
