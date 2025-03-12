@@ -666,7 +666,7 @@ In this example an attribute (e.g. email) containing a specified value (e.g. ali
 <td>Basic <userDN>:<password>
 <tr>
 <td>Example Request Body	
-<td><pre>{
+<td> <pre>{
     "params": {
         "mods": [
             {
@@ -746,7 +746,7 @@ In this example, a group entry identified as “cn=operator,ou=globalgroups,cn=c
 <td>Basic < userDN>:< password>
 <tr>
 <td>Example Request Body
-<td><pre><code>
+<td> <pre>
 {
   "params": {
     "mods": [
@@ -760,8 +760,6 @@ In this example, a group entry identified as “cn=operator,ou=globalgroups,cn=c
     ]
   }
 }
-</code>
-</pre>
 
 </table> 
 
@@ -795,7 +793,7 @@ In this example, a group entry’s members are replaced by a new member.
 <tr>
 <td>Example Request Body	
 <td>
-<pre><code>
+<pre>
 {
   "params": {
     "mods": [
@@ -809,7 +807,6 @@ In this example, a group entry’s members are replaced by a new member.
     ]
   }
 }
-</code>
 </pre>
 </table>
 
@@ -925,7 +922,7 @@ A bulk operation contains unique fields in its syntax. The “method” field in
 <td>Basic < userDN>:< password>
 <tr>
 <td>Example Request Body	
-<td><pre><code>
+<td> <pre>
 {
   "Operations": [
     {
@@ -983,8 +980,6 @@ A bulk operation contains unique fields in its syntax. The “method” field in
     }
   ]
 }
-</code>
-</pre>
 
 </table>
 
@@ -1013,7 +1008,7 @@ This section explains how to delete nodes and their sub-nodes. When attempting t
 <td>Basic <`userDN>:<`password>
 <tr>
 <td>Example Request Body
-<td><pre><code>
+<td> <pre>
  {
     "params": [
         {
@@ -1033,7 +1028,6 @@ This section explains how to delete nodes and their sub-nodes. When attempting t
         }
     ]
 }
-    </code>
   </pre>
 </table>
 
@@ -1179,7 +1173,7 @@ In this section, complex attributes are added to an existing user entry using th
 <td>Basic `<userDN>:<password>`
 <tr>
 <td>Example Request Body	
-<td><pre><code>
+<td> <pre>
 {
     "params": {
         "mods": [
@@ -1200,7 +1194,6 @@ In this section, complex attributes are added to an existing user entry using th
         ]
     }
 }
-</code></pre>
 </table>
 
 If you attempt to add an attribute that has an already existing, identical value, the REST client displays LDAP code 20 (the provided attribute contains a value that would result in duplicate value in the entry). If this happens, the entire request is ignored by the REST client. 
@@ -1229,7 +1222,7 @@ In this section, new attributes are added to an existing user entry using the pa
 <td>Basic `<userDN>:<password>`
 <tr>
 <td>Example Request Body	
-<td><pre><code>
+<td> <pre>
 {
     "params": {
         "mods": [
@@ -1251,8 +1244,6 @@ In this section, new attributes are added to an existing user entry using the pa
         ]
     }
 }
-</code>
-</pre>
 </table>
 
 
@@ -1279,7 +1270,7 @@ In this section, sub-attributes are deleted from an existing entry using the par
 <td>Basic `<userDN>:<password>`
 <tr>
 <td>Example Request Body	
-<td><pre><code>
+<td> <pre>
 {
     "params": {
         "mods": [
@@ -1296,8 +1287,6 @@ In this section, sub-attributes are deleted from an existing entry using the par
         ]
     }
 }
-</code>
-</pre>
 </table>
 
 In the following example, all values for the attribute “address” are deleted using the parameters in the table below. The value in the Example Request Body field contains the information for the sub-attributes to be deleted from the entry.
@@ -1322,7 +1311,7 @@ In the following example, all values for the attribute “address” are deleted
 <td>Basic `<userDN>:<password>`
 <tr>
 <td>Example Request Body	
-<td><pre><code>{
+<td> <pre>{
     "params": {
         "mods": [
             {
@@ -1334,7 +1323,7 @@ In the following example, all values for the attribute “address” are deleted
             }
         ]
     }
-}</code></pre>
+}
 </table>
 
 ### Modify Multiple Complex Attributes in an Operation
@@ -1361,7 +1350,7 @@ In this section, the sub-attributes “streetNumber” and “country” are add
 <td>Basic `<userDN>:<password>`
 <tr>
 <td>Example Request Body	
-<td><pre><code>
+<td> <pre>
 {
     "params": {
         "mods": [
@@ -1393,6 +1382,5 @@ In this section, the sub-attributes “streetNumber” and “country” are add
         ]
     }
 }
-</code></pre>
 </table>
 
