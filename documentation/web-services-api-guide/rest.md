@@ -1334,6 +1334,7 @@ In the following example, all values for the attribute “address” are deleted
 <tr>
 <td>Example Request Body	
 <td>  
+  <code>
   <pre class="language-js">
   {
     "params": {
@@ -1348,6 +1349,8 @@ In the following example, all values for the attribute “address” are deleted
         ]
     }
 }
+  </code>
+  </pre>
 </table>
 
 ### Modify Multiple Complex Attributes in an Operation
@@ -1375,7 +1378,8 @@ In this section, the sub-attributes “streetNumber” and “country” are add
 <tr>
 <td>Example Request Body	
 <td> 
-  <pre class="language-js" style="color:#fff7dd;">
+<code>
+  <pre>
 {
     "params": {
         "mods": [
@@ -1408,5 +1412,6 @@ In this section, the sub-attributes “streetNumber” and “country” are add
     }
 }
   </pre>
+</code>
 </table>
 
