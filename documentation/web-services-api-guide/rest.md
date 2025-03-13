@@ -564,35 +564,53 @@ An example of the list displayed by this command is shown below.
 
 In this section, a new entry is added to RadiantOne using the parameters shown in the table below. The value in the Request Body field contains the information for the entry to be added. 
 
-<table>
-<tr>
-<td>Field	
-<td> Value
-<tr>
-<td>URL	
-<td> `https://<REST_ENDPOINT>/adap`
-<tr>
-<td>Method	
-<td>Post
-<tr>
-<td>Header Name	
-<td> Authorization
-<tr>
-<td>Header Value	
-<td> Basic `<userDN>:<password>`
-<tr>
-<td>Example Request Body	
-<td> <pre>{ "params" : { 
-"dn" : "uid=alice,cn=config", 
-"attributes" : { "objectClass" : [ "top", 
-"person", 
-"organizationalPerson", 
-"inetOrgPerson" ], 
-"cn" : "Alice Wonderland", 
-"sn" : "Wonderland", 
-"uid" : "alice" } } 
+<table border="1">
+  <tr>
+    <th>Field</th>
+    <th>Value</th>
+  </tr>
+  <tr>
+    <td>URL</td>
+    <td><code>https://&lt;REST_ENDPOINT&gt;/adap</code></td>
+  </tr>
+  <tr>
+    <td>Method</td>
+    <td><code>Post</code></td>
+  </tr>
+  <tr>
+    <td>Header Name</td>
+    <td><code>Authorization</code></td>
+  </tr>
+  <tr>
+    <td>Header Value</td>
+    <td><code>Basic &lt;userDN&gt;:&lt;password&gt;</code></td>
+  </tr>
+  <tr>
+    <td>Example Request Body</td>
+    <td>
+      <pre>
+{
+  "params": {
+    "dn": "uid=alice,cn=config",
+    "attributes": {
+      "objectClass": [
+        "top",
+        "person",
+        "organizationalPerson",
+        "inetOrgPerson"
+      ],
+      "cn": "Alice Wonderland",
+      "sn": "Wonderland",
+      "uid": "alice"
+    }
+  }
 }
+      </pre>
+    </td>
+  </tr>
 </table>
+
+This should properly indent the JSON within the table. Let me know if there's anything else you need!
 
 ![Add Request Example](Media/Image5.30.jpg)
   
