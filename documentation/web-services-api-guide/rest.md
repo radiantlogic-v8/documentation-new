@@ -588,23 +588,24 @@ In this section, a new entry is added to RadiantOne using the parameters shown i
   <tr>
     <td>Example Request Body</td>
     <td><br>
-      <pre>
-      {
-        "params": {
-          "dn": "uid=alice,cn=config",
-          "attributes": {
-            "objectClass": [
-              "top",
-              "person",
-              "organizationalPerson",
-              "inetOrgPerson"
-            ],
-            "cn": "Alice Wonderland",
-            "sn": "Wonderland",
-            "uid": "alice"
+      <div style="white-space: pre; font-family: monospace;">
+        {
+          "params": {
+            "dn": "uid=alice,cn=config",
+            "attributes": {
+              "objectClass": [
+                "top",
+                "person",
+                "organizationalPerson",
+                "inetOrgPerson"
+              ],
+              "cn": "Alice Wonderland",
+              "sn": "Wonderland",
+              "uid": "alice"
+            }
           }
         }
-      }</pre>   
+      </div>   
    </td>
   </tr>
 </table>
@@ -722,17 +723,20 @@ In this example, an attribute is deleted, regardless of its attribute values, us
 <td> Basic  < userDN>:< password>
 <tr>
 <td>Example Request Body	
-<td> <pre>{
-    "params": {
-        "mods": [
-            {
-                "attribute": "email",
-                "type": "DELETE",
-                "values": []
-            }
-        ]
-    }
-}
+<td> 
+  <div style="white-space: pre; font-family: monospace;">
+    {
+      "params": {
+          "mods": [
+              {
+                  "attribute": "email",
+                  "type": "DELETE",
+                  "values": []
+              }
+          ]
+      }
+  }
+  </div>
 </table>
 
 If successful, the Response section displays the message “{"httpStatus":200}”.
@@ -762,21 +766,22 @@ In this example, a group entry identified as “cn=operator,ou=globalgroups,cn=c
 <td>Basic < userDN>:< password>
 <tr>
 <td>Example Request Body
-<td> <pre>
-{
-  "params": {
-    "mods": [
-      {
-        "attribute": "uniquemember",
-        "type": "ADD",
-        "values": [
-          "uid=Adalberto_Flecha,ou=Accounting,o=companydirectory"
-        ]
-      }
-    ]
+<td>
+  <div style="white-space: pre; font-family: monospace;">
+  {
+    "params": {
+      "mods": [
+        {
+          "attribute": "uniquemember",
+          "type": "ADD",
+          "values": [
+            "uid=Adalberto_Flecha,ou=Accounting,o=companydirectory"
+          ]
+        }
+      ]
+    }
   }
-}
-
+  </div>
 </table> 
 
 ![Example PATCH Request – Add Group Members](Media/Image5.34.jpg)
@@ -809,21 +814,21 @@ In this example, a group entry’s members are replaced by a new member.
 <tr>
 <td>Example Request Body	
 <td>
-<pre>
-{
-  "params": {
-    "mods": [
-      {
-        "attribute": "uniquemember",
-        "type": "REPLACE",
-        "values": [
-          "uid=Adele_Kucan,ou=Accounting,o=companydirectory"
-        ]
-      }
-    ]
+<div style="white-space: pre; font-family: monospace;">
+  {
+    "params": {
+      "mods": [
+        {
+          "attribute": "uniquemember",
+          "type": "REPLACE",
+          "values": [
+            "uid=Adele_Kucan,ou=Accounting,o=companydirectory"
+          ]
+        }
+      ]
+    }
   }
-}
-</pre>
+</div>
 </table>
 
 ![Example PATCH Request – Replace Group Members](Media/Image5.35.jpg)
@@ -939,65 +944,65 @@ A bulk operation contains unique fields in its syntax. The “method” field in
 <tr>
 <td>Example Request Body	
 <td>
-  <pre class="language-js">
-{
-  "Operations": [
-    {
-      "method": "POST",
-      "dn": "uid=alice,cn=config",
-      "params": {
-        "attributes": {
-          "objectClass": [
-            "top",
-            "person",
-            "organizationalPerson",
-            "inetOrgPerson"
-          ],
-          "cn": "Alice Wonderland",
-          "sn": "Wonderland",
-          "uid": "alice"
-        }
-      }
-    },
-    {
-      "method": "PUT",
-      "dn": "uid=Adalberto_Karoly,ou=Accounting,o=companydirectory",
-      "params": {
-        "attributes": {
-          "objectClass": [
-            "top",
-            "person",
-            "organizationalPerson",
-            "inetOrgPerson"
-          ],
-          "cn": "Alice Wonderland2",
-          "sn": "Wonderland2",
-          "uid": "alice"
-        }
-      }
-    },
-    {
-      "method": "PATCH",
-      "dn": "uid=Aaron_Medler,ou=Accounting,o=companydirectory",
-      "params": {
-        "mods": [
-          {
-            "attribute": "telephoneNumber",
-            "type": "ADD",
-            "values": [
-              "911"
-            ]
+<div style="white-space: pre; font-family: monospace;">
+  {
+    "Operations": [
+      {
+        "method": "POST",
+        "dn": "uid=alice,cn=config",
+        "params": {
+          "attributes": {
+            "objectClass": [
+              "top",
+              "person",
+              "organizationalPerson",
+              "inetOrgPerson"
+            ],
+            "cn": "Alice Wonderland",
+            "sn": "Wonderland",
+            "uid": "alice"
           }
-        ]
+        }
+      },
+      {
+        "method": "PUT",
+        "dn": "uid=Adalberto_Karoly,ou=Accounting,o=companydirectory",
+        "params": {
+          "attributes": {
+            "objectClass": [
+              "top",
+              "person",
+              "organizationalPerson",
+              "inetOrgPerson"
+            ],
+            "cn": "Alice Wonderland2",
+            "sn": "Wonderland2",
+            "uid": "alice"
+          }
+        }
+      },
+      {
+        "method": "PATCH",
+        "dn": "uid=Aaron_Medler,ou=Accounting,o=companydirectory",
+        "params": {
+          "mods": [
+            {
+              "attribute": "telephoneNumber",
+              "type": "ADD",
+              "values": [
+                "911"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "method": "DELETE",
+        "dn": "uid=Adan_Organista,ou=Accounting,o=companydirectory"
       }
-    },
-    {
-      "method": "DELETE",
-      "dn": "uid=Adan_Organista,ou=Accounting,o=companydirectory"
-    }
-  ]
-}
-
+    ]
+  }
+</div>
 </table>
 
 ![Sample Response from Bulk Operations](Media/Image5.41.jpg)
@@ -1026,27 +1031,27 @@ This section explains how to delete nodes and their sub-nodes. When attempting t
 <tr>
 <td>Example Request Body
 <td>
-  <pre class="language-js">
- {
-    "params": [
-        {
-            "method": "DELETE",
-            "dn": "ou=Human Resources,o=companydirectory",
-            "deletetree": true
-        },
-        {
-            "method": "DELETE",
-            "dn": "ou=Information Technology,o=companydirectory",
-            "deletetree": false
-        },
-        {
-            "method": "DELETE",
-            "dn": "ou=Inventory,o=companydirectory",
-            "deletetree": true
-        }
-    ]
-}
-  </pre>
+  <div style="white-space: pre; font-family: monospace;">
+   {
+      "params": [
+          {
+              "method": "DELETE",
+              "dn": "ou=Human Resources,o=companydirectory",
+              "deletetree": true
+          },
+          {
+              "method": "DELETE",
+              "dn": "ou=Information Technology,o=companydirectory",
+              "deletetree": false
+          },
+          {
+              "method": "DELETE",
+              "dn": "ou=Inventory,o=companydirectory",
+              "deletetree": true
+          }
+      ]
+  }
+  </div>
 </table>
 
 ![Sample Response from Bulk Deletion of Nodes and thier sub-nodes](Media/bulk-delete-nodes.jpg)
@@ -1127,7 +1132,7 @@ In this section, an entry with complex attributes is added using the parameters 
 <tr>
 <td>Example Request Body	
 <td>
-<pre class="language-js">
+<div style="white-space: pre; font-family: monospace;">
 {
     "params": {
         "dn": "uid=alice,cn=config",
@@ -1159,8 +1164,7 @@ In this section, an entry with complex attributes is added using the parameters 
         }
     }
 }
-</code>
-</pre>
+</div>
 </table>
 
 ![Adding an entry with complex attributes](Media/Image5.44.jpg)
@@ -1193,27 +1197,28 @@ In this section, complex attributes are added to an existing user entry using th
 <tr>
 <td>Example Request Body	
 <td>
-  <pre class="language-js">
-{
-    "params": {
-        "mods": [
-            {
-                "attribute": "phone",
-                "type": "ADD",
-                "values": [
-                    {
-                        "type": "home",
-                        "value": "456"
-                    },
-                    {
-                        "type": "mobile",
-                        "value": "111"
-                    }
-                ]
-            }
-        ]
-    }
-}
+<div style="white-space: pre; font-family: monospace;">
+  {
+      "params": {
+          "mods": [
+              {
+                  "attribute": "phone",
+                  "type": "ADD",
+                  "values": [
+                      {
+                          "type": "home",
+                          "value": "456"
+                      },
+                      {
+                          "type": "mobile",
+                          "value": "111"
+                      }
+                  ]
+              }
+          ]
+      }
+  }
+</div>
 </table>
 
 If you attempt to add an attribute that has an already existing, identical value, the REST client displays LDAP code 20 (the provided attribute contains a value that would result in duplicate value in the entry). If this happens, the entire request is ignored by the REST client. 
@@ -1243,7 +1248,7 @@ In this section, new attributes are added to an existing user entry using the pa
 <tr>
 <td>Example Request Body	
 <td> 
-   <pre class="language-js">
+<div style="white-space: pre; font-family: monospace;">
 {
     "params": {
         "mods": [
@@ -1265,6 +1270,7 @@ In this section, new attributes are added to an existing user entry using the pa
         ]
     }
 }
+</div>
 </table>
 
 
@@ -1292,23 +1298,24 @@ In this section, sub-attributes are deleted from an existing entry using the par
 <tr>
 <td>Example Request Body	
 <td> 
-  <pre class="language-js">
-{
-    "params": {
-        "mods": [
-            {
-                "attribute": "phone",
-                "type": "DELETE",
-                "values": [
-                    {
-                        "type": "home",
-                        "value": "123"
-                    }
-                ]
-            }
-        ]
-    }
-}
+<div style="white-space: pre; font-family: monospace;">
+  {
+      "params": {
+          "mods": [
+              {
+                  "attribute": "phone",
+                  "type": "DELETE",
+                  "values": [
+                      {
+                          "type": "home",
+                          "value": "123"
+                      }
+                  ]
+              }
+          ]
+      }
+  }
+</div>
 </table>
 
 In the following example, all values for the attribute “address” are deleted using the parameters in the table below. The value in the Example Request Body field contains the information for the sub-attributes to be deleted from the entry.
@@ -1334,23 +1341,21 @@ In the following example, all values for the attribute “address” are deleted
 <tr>
 <td>Example Request Body	
 <td>  
-  <code>
-  <pre class="language-js">
-  {
-    "params": {
-        "mods": [
-            {
-                "attribute": "address",
-                "type": "DELETE",
-                "values": [
-                    {}
-                ]
-            }
-        ]
-    }
-}
-  </code>
-  </pre>
+  <div style="white-space: pre; font-family: monospace;">
+    {
+      "params": {
+          "mods": [
+              {
+                  "attribute": "address",
+                  "type": "DELETE",
+                  "values": [
+                      {}
+                  ]
+              }
+          ]
+      }
+  }
+  </div>
 </table>
 
 ### Modify Multiple Complex Attributes in an Operation
@@ -1378,8 +1383,7 @@ In this section, the sub-attributes “streetNumber” and “country” are add
 <tr>
 <td>Example Request Body	
 <td> 
-<code>
-  <pre>
+<div style="white-space: pre; font-family: monospace;">
 {
     "params": {
         "mods": [
@@ -1411,7 +1415,6 @@ In this section, the sub-attributes “streetNumber” and “country” are add
         ]
     }
 }
-  </pre>
-</code>
+  </div>
 </table>
 
