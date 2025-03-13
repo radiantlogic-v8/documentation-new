@@ -502,46 +502,48 @@ Based on the above configuration, the following is a sample SCIM POST query to c
 <tr>
 <td> Body 
 <td>
-<pre> {
-  "schemas": [
-    "urn:ietf:params:scim:schemas:core:2.0:User"
-  ],
-  "userName": "bjensen@example.com",
-  "name": {
-    "formatted": "Ms. Barbara J Jensen, III",
-    "familyName": "Jensen",
-    "givenName": "Barbara",
-    "middleName": "Jane"
-  },
-  "displayName": "Babs Jensen",
-  "title": "Tour Guide",
-  "userType": "Employee",
-  "preferredLanguage": "en-US",
-  "password": "t1meMa$heen",
-  "emails": [
-    {
-      "value": "bjensen@example.com",
-      "type": "work",
-      "primary": "true"
-    }
-  ],
-  "phoneNumbers": [
-    {
-      "value": "555-555-5555",
-      "type": "work"
-    }
-  ],
-    "addresses": [
-    {
-      "formatted": "100 Universal City Plaza\nHollywood, CA 91608 USA",
-      "streetAddress": "100 Universal City Plaza",
-      "locality": "Hollywood",
-      "region": "CA",
-      "postalCode": "91608",
-      "type": "work"
-    }
-  ]
-  }
+ <div style="white-space: pre; font-family: monospace;">
+  {
+   "schemas": [
+     "urn:ietf:params:scim:schemas:core:2.0:User"
+   ],
+   "userName": "bjensen@example.com",
+   "name": {
+     "formatted": "Ms. Barbara J Jensen, III",
+     "familyName": "Jensen",
+     "givenName": "Barbara",
+     "middleName": "Jane"
+   },
+   "displayName": "Babs Jensen",
+   "title": "Tour Guide",
+   "userType": "Employee",
+   "preferredLanguage": "en-US",
+   "password": "t1meMa$heen",
+   "emails": [
+     {
+       "value": "bjensen@example.com",
+       "type": "work",
+       "primary": "true"
+     }
+   ],
+   "phoneNumbers": [
+     {
+       "value": "555-555-5555",
+       "type": "work"
+     }
+   ],
+     "addresses": [
+     {
+       "formatted": "100 Universal City Plaza\nHollywood, CA 91608 USA",
+       "streetAddress": "100 Universal City Plaza",
+       "locality": "Hollywood",
+       "region": "CA",
+       "postalCode": "91608",
+       "type": "work"
+     }
+   ]
+   }
+ </div>
 </table>
 
 Table 4.8: SCIM Post Query to Create A User
@@ -581,30 +583,32 @@ The following SCIM POST query example describes how to create a user entry that 
 <td> Basic Y249ZGlyZWN0b3J5IG1hbmFnZXI6c2VjcmV0c2VjcmV0
 <tr>
 <td>Body	
-<td><pre>
-{
-    "schemas": [
-        "urn:scim:schemas:core:2.0:User", "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"       
-    ],    
-    "userName": "Acooper",
-    "name": {
-        "familyName": "Cooper",
-        "givenName": "Alice in wonderland",
-        "formatted": "Alice D Cooper"
-    },
-    "emails": [{
-        "value": "acooper@sindersuited.com",
-        "type": "work",
-        "primary": true
-    }],
-    "title": "Song writer",
-    "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User":
-    {
-        "employeeNumber":"9252",
-        "division":"Sales",
-        "department": "Rock'n roll"
-    }
-}
+<td>
+ <div style="white-space: pre; font-family: monospace;">
+ {
+     "schemas": [
+         "urn:scim:schemas:core:2.0:User", "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"       
+     ],    
+     "userName": "Acooper",
+     "name": {
+         "familyName": "Cooper",
+         "givenName": "Alice in wonderland",
+         "formatted": "Alice D Cooper"
+     },
+     "emails": [{
+         "value": "acooper@sindersuited.com",
+         "type": "work",
+         "primary": true
+     }],
+     "title": "Song writer",
+     "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User":
+     {
+         "employeeNumber":"9252",
+         "division":"Sales",
+         "department": "Rock'n roll"
+     }
+ }
+ </div>
 </table>                                                                                       
  
 Table 9: SCIM POST Query to Insert A User with Enterprise Extension Attributes
@@ -659,7 +663,9 @@ Based on the above configuration, the following is a sample SCIM PATCH query to 
 <td>Basic Y249ZGlyZWN0b3J5IG1hbmFnZXI6c2VjcmV0c2VjcmV0
 <tr>
 <td>Body	
-<td> <pre>{
+<td>
+<div style="white-space: pre; font-family: monospace;">
+ {
   "schemas": [
     "urn:ietf:params:scim:api:messages:2.0:PatchOp"
   ],
@@ -675,6 +681,7 @@ Based on the above configuration, the following is a sample SCIM PATCH query to 
     }
   ]
 }
+</div>
 </table>
 
 Table 10: SCIM PATCH Query to Update A User
@@ -716,7 +723,9 @@ The following SCIM PUT query example describes how to update a user entry that c
 <td>Basic Y249ZGlyZWN0b3J5IG1hbmFnZXI6c2VjcmV0c2VjcmV0
 <tr>
 <td>Body
-<td><pre>  {
+<td>
+ <div style="white-space: pre; font-family: monospace;">
+ {
     "schemas": [        "urn:scim:schemas:core:2.0:User","urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"       
     ],    
     "userName": "bjensen@example.com",
@@ -738,6 +747,7 @@ The following SCIM PUT query example describes how to update a user entry that c
         "department": "Hobby"
     }
    }
+ </div>
 </table>
 
 Table 11: SCIM PUT Query to Updated A User with Enterprise Extension Attributes
