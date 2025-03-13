@@ -1189,7 +1189,8 @@ In this section, complex attributes are added to an existing user entry using th
 <td>Basic `<userDN>:<password>`
 <tr>
 <td>Example Request Body	
-<td> <pre>
+<td>
+  <pre style="background: none; border: none; outline: none;">
 {
     "params": {
         "mods": [
@@ -1238,7 +1239,8 @@ In this section, new attributes are added to an existing user entry using the pa
 <td>Basic `<userDN>:<password>`
 <tr>
 <td>Example Request Body	
-<td> <pre>
+<td> 
+   <pre style="background: none; border: none; outline: none;">
 {
     "params": {
         "mods": [
@@ -1286,7 +1288,8 @@ In this section, sub-attributes are deleted from an existing entry using the par
 <td>Basic `<userDN>:<password>`
 <tr>
 <td>Example Request Body	
-<td> <pre>
+<td> 
+  <pre style="background: none; border: none; outline: none;">
 {
     "params": {
         "mods": [
@@ -1327,7 +1330,9 @@ In the following example, all values for the attribute “address” are deleted
 <td>Basic `<userDN>:<password>`
 <tr>
 <td>Example Request Body	
-<td> <pre>{
+<td>  
+  <pre style="background: none; border: none; outline: none;">
+  {
     "params": {
         "mods": [
             {
@@ -1367,6 +1372,7 @@ In this section, the sub-attributes “streetNumber” and “country” are add
 <tr>
 <td>Example Request Body	
 <td> 
+    <pre style="background: none; border: none; outline: none;">
 {
     "params": {
         "mods": [
