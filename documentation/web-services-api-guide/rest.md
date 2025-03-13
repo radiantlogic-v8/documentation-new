@@ -587,30 +587,28 @@ In this section, a new entry is added to RadiantOne using the parameters shown i
   </tr>
   <tr>
     <td>Example Request Body</td>
-    <td>
+    <td><br>
       <pre>
-{
-  "params": {
-    "dn": "uid=alice,cn=config",
-    "attributes": {
-      "objectClass": [
-        "top",
-        "person",
-        "organizationalPerson",
-        "inetOrgPerson"
-      ],
-      "cn": "Alice Wonderland",
-      "sn": "Wonderland",
-      "uid": "alice"
-    }
-  }
-}
-      </pre>
-    </td>
+      {
+        "params": {
+          "dn": "uid=alice,cn=config",
+          "attributes": {
+            "objectClass": [
+              "top",
+              "person",
+              "organizationalPerson",
+              "inetOrgPerson"
+            ],
+            "cn": "Alice Wonderland",
+            "sn": "Wonderland",
+            "uid": "alice"
+          }
+        }
+      }</pre>   
+   </td>
   </tr>
 </table>
 
-This should properly indent the JSON within the table. Let me know if there's anything else you need!
 
 ![Add Request Example](Media/Image5.30.jpg)
   
