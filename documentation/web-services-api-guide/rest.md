@@ -1375,7 +1375,7 @@ In this section, the sub-attributes “streetNumber” and “country” are add
 <tr>
 <td>Example Request Body	
 <td> 
-    <pre class="language-js">
+  <pre class="language-js" style="color:#fff7dd;">
 {
     "params": {
         "mods": [
@@ -1407,5 +1407,6 @@ In this section, the sub-attributes “streetNumber” and “country” are add
         ]
     }
 }
+  </pre>
 </table>
 
