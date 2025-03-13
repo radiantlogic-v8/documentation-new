@@ -938,7 +938,8 @@ A bulk operation contains unique fields in its syntax. The “method” field in
 <td>Basic < userDN>:< password>
 <tr>
 <td>Example Request Body	
-<td> <pre>
+<td>
+  <pre class="language-js">
 {
   "Operations": [
     {
@@ -1024,7 +1025,8 @@ This section explains how to delete nodes and their sub-nodes. When attempting t
 <td>Basic <`userDN>:<`password>
 <tr>
 <td>Example Request Body
-<td> <pre>
+<td>
+  <pre class="language-js">
  {
     "params": [
         {
@@ -1124,7 +1126,8 @@ In this section, an entry with complex attributes is added using the parameters 
 <td>Basic < userDN>:< password>
 <tr>
 <td>Example Request Body	
-<td><pre><code>
+<td>
+<pre class="language-js">
 {
     "params": {
         "dn": "uid=alice,cn=config",
@@ -1190,7 +1193,7 @@ In this section, complex attributes are added to an existing user entry using th
 <tr>
 <td>Example Request Body	
 <td>
-  <pre style="background: none; border: none; outline: none;">
+  <pre class="language-js">
 {
     "params": {
         "mods": [
@@ -1240,7 +1243,7 @@ In this section, new attributes are added to an existing user entry using the pa
 <tr>
 <td>Example Request Body	
 <td> 
-   <pre style="background: none; border: none; outline: none;">
+   <pre class="language-js">
 {
     "params": {
         "mods": [
@@ -1289,7 +1292,7 @@ In this section, sub-attributes are deleted from an existing entry using the par
 <tr>
 <td>Example Request Body	
 <td> 
-  <pre style="background: none; border: none; outline: none;">
+  <pre class="language-js">
 {
     "params": {
         "mods": [
@@ -1331,7 +1334,7 @@ In the following example, all values for the attribute “address” are deleted
 <tr>
 <td>Example Request Body	
 <td>  
-  <pre style="background: none; border: none; outline: none;">
+  <pre class="language-js">
   {
     "params": {
         "mods": [
@@ -1372,7 +1375,7 @@ In this section, the sub-attributes “streetNumber” and “country” are add
 <tr>
 <td>Example Request Body	
 <td> 
-    <pre style="background: none; border: none; outline: none;">
+    <pre class="language-js">
 {
     "params": {
         "mods": [
