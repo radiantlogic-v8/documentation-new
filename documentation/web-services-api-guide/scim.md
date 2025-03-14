@@ -726,8 +726,10 @@ The following SCIM PUT query example describes how to update a user entry that c
 <td>
  <div style="white-space: pre; font-family: monospace;">
  {
-    "schemas": [        "urn:scim:schemas:core:2.0:User","urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"       
-    ],    
+   "schemas": [
+     "urn:scim:schemas:core:2.0:User",
+     "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
+   ]
     "userName": "bjensen@example.com",
     "name": {
         "familyName": "Jones",
