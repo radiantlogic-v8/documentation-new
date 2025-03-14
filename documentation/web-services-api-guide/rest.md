@@ -627,14 +627,50 @@ In this section, an existing entry is replaced using the parameters shown in the
 
 >[!note] “BaseDN” is the DN of the targeted entry.
 
-Field	| Value
--|-
-URL Syntax | `https://<REST_ENDPOINT>/adap/<baseDN>`
-Example URL	| https://rlqa-usw2-testn.dev01.radiantlogic.io/adap/uid=alice,cn=config
-Method	| Put
-Header Name	| Authorization
-Header Value	| Basic `<userDN>:<password>`
-Example Request Body	| { "params" : { <br>"attributes" : {"objectClass" : [ "top",  <br>"person", <br>"organizationalPerson", <br>"inetOrgPerson" ], <br>"cn" : "Alice Wonderland2", <br>"sn" : "Wonderland2", <br>"uid" : "alice" } } <br>}
+<table border="1">
+  <tr>
+    <th>Field</th>
+    <th>Value</th>
+  </tr>
+  <tr>
+    <td>URL Syntax</td>
+    <td><code>https://&lt;REST_ENDPOINT&gt;/adap/&lt;baseDN&gt;</code></td>
+  </tr>
+  <tr>
+    <td>Example URL</td>
+    <td>https://rlqa-usw2-testn.dev01.radiantlogic.io/adap/uid=alice,cn=config</td>
+  </tr>
+  <tr>
+    <td>Method</td>
+    <td>Put</td>
+  </tr>
+  <tr>
+    <td>Header Name</td>
+    <td>Authorization</td>
+  </tr>
+  <tr>
+    <td>Header Value</td>
+    <td>Basic &lt;userDN&gt;:&lt;password&gt;</td>
+  </tr>
+  <tr>
+    <td>Example Request Body</td>
+    <td><br>
+      <div style="white-space: pre; font-family: monospace;">
+        {
+          "params" : {
+            "attributes" : {
+              "objectClass" : [ "top", "person", "organizationalPerson", "inetOrgPerson" ],
+              "cn" : "Alice Wonderland2",
+              "sn" : "Wonderland2",
+              "uid" : "alice"
+            }
+          }
+        }
+      </div>
+    </td>
+  </tr>
+</table>
+
 
 ![Example PUT Request](Media/Image5.32.jpg)
 
@@ -644,14 +680,53 @@ If successful, the Response section displays the message “{"httpStatus":200}�
 
 In the first example, an attribute is added to a user entry identified as “uid=alice,cn=config”, and another is replaced using the parameters shown in the table below.
 
-Field	| Value
--|-
-URL Syntax	| `https://<REST_ENDPOINT>/adap/<baseDN>`
-Example URL	| https://rlqa-usw2-testn.dev01.radiantlogic.io/adap/uid=alice,cn=config
-Method	| Patch
-Header Name	| Authorization
-Header Value	| Basic `<userDN>:<password>`
-Example Request Body	| { "params" : { <br>"mods" : [ { "attribute" : "telephoneNumber", <br>"type" : "ADD",<br>"values" : [ "+1 354 2344 5433" ] }, <br>{ "attribute" : "mobile", <br>"type" : "REPLACE", <br>"values" : [ "+1 123 4544 1290" ] } ] } <br>}
+<table border="1">
+  <tr>
+    <th>Field</th>
+    <th>Value</th>
+  </tr>
+  <tr>
+    <td>URL Syntax</td>
+    <td><code>https://&lt;REST_ENDPOINT&gt;/adap/&lt;baseDN&gt;</code></td>
+  </tr>
+  <tr>
+    <td>Example URL</td>
+    <td>https://rlqa-usw2-testn.dev01.radiantlogic.io/adap/uid=alice,cn=config</td>
+  </tr>
+  <tr>
+    <td>Method</td>
+    <td>Patch</td>
+  </tr>
+  <tr>
+    <td>Header Name</td>
+    <td>Authorization</td>
+  </tr>
+  <tr>
+    <td>Header Value</td>
+    <td>Basic &lt;userDN&gt;:&lt;password&gt;</td>
+  </tr>
+  <tr>
+    <td>Example Request Body</td>
+    <td><br>
+      <div style="white-space: pre; font-family: monospace;">   
+        {
+          "params" : {
+            "mods" : [
+              { "attribute" : "telephoneNumber", 
+                "type" : "ADD", 
+                "values" : [ "+1 354 2344 5433" ] 
+              },
+              { "attribute" : "mobile", 
+                "type" : "REPLACE", 
+                "values" : [ "+1 123 4544 1290" ] 
+              }
+            ]
+          }
+        }
+      </div>
+    </td>
+  </tr>
+</table>
 
 ![Example PATCH Request](Media/Image5.33.jpg)
  
@@ -683,7 +758,9 @@ In this example an attribute (e.g. email) containing a specified value (e.g. ali
 <td>Basic <userDN>:<password>
 <tr>
 <td>Example Request Body	
-<td> {
+<td><br>
+<div style="white-space: pre; font-family: monospace;">   
+  {
     "params": {
         "mods": [
             {
@@ -694,6 +771,7 @@ In this example an attribute (e.g. email) containing a specified value (e.g. ali
         ]
     }
 }
+</div>
 </table>
 
 If successful, the Response section displays the message “{"httpStatus":200}”.
@@ -813,7 +891,7 @@ In this example, a group entry’s members are replaced by a new member.
 <td>Basic < userDN>:< password>
 <tr>
 <td>Example Request Body	
-<td>
+<td><br>
 <div style="white-space: pre; font-family: monospace;">
   {
     "params": {
@@ -839,14 +917,46 @@ If successful, the Response section displays the message “{"httpStatus":200}�
 
 This section explains how to modify the RDN of an entry using the parameters shown in the table below.
 
-Field	| Value
--|-
-URL Syntax	| `https://<REST_ENDPOINT>/adap`
-Method	| Patch
-Header Name	| Authorization
-Header Value	| Basic `<userDN>:<password>`
-Example Request Body	| {"params" : { "DN" : " uid=alice,cn=config ", <br>"newRDN" : " uid=lewis "} <br>}
+Here is the HTML version of the provided content:
 
+<table border="1">
+  <tr>
+    <th>Field</th>
+    <th>Value</th>
+  </tr>
+  <tr>
+    <td>URL Syntax</td>
+    <td><code>https://&lt;REST_ENDPOINT&gt;/adap</code></td>
+  </tr>
+  <tr>
+    <td>Method</td>
+    <td>Patch</td>
+  </tr>
+  <tr>
+    <td>Header Name</td>
+    <td>Authorization</td>
+  </tr>
+  <tr>
+    <td>Header Value</td>
+    <td>Basic &lt;userDN&gt;:&lt;password&gt;</td>
+  </tr>
+  <tr>
+    <td>Example Request Body</td>
+    <td>
+      <br>
+      <div style="white-space: pre; font-family: monospace;">
+      {
+        "params" : { 
+          "DN" : "uid=alice,cn=config", 
+          "newRDN" : "uid=lewis"
+        }
+      }
+      </div>
+    </td>
+  </tr>
+</table>
+
+In this HTML code, the line breaks (`<br>`) inside the request body are removed, as they aren't necessary in JSON formatting. The request body is formatted with proper indentation inside a `<pre>` tag for readability.
 ![An image showing ](Media/Image5.36.jpg)
  
 If successful, the Response section displays the message “{"httpStatus":200}”. 
@@ -855,14 +965,43 @@ If successful, the Response section displays the message “{"httpStatus":200}�
 
 This section explains how to move the entry "uid=Adalberto_Flecha,ou=Accounting,o=companydirectory" to "ou=Administration,o=companydirectory", keeping the same RDN name.
 
-Field	| Value
--|-
-URL Syntax	| `https://<REST_ENDPOINT>/adap`
-Method	| Patch
-Header Name	| Authorization
-Header Value	| Basic `<userDN>:<password>`
-Example Request Body	| {"params" : { "DN" : <br>uid=Adalberto_Flecha,ou=Accounting,o=companydirectory", <br>"newRDN" : "uid=Adalberto_Flecha",<br>"newSuperiorDN" : "ou=Administration,o=companydirectory"} 
-}
+<table border="1">
+  <tr>
+    <th>Field</th>
+    <th>Value</th>
+  </tr>
+  <tr>
+    <td>URL Syntax</td>
+    <td><code>https://&lt;REST_ENDPOINT&gt;/adap</code></td>
+  </tr>
+  <tr>
+    <td>Method</td>
+    <td>Patch</td>
+  </tr>
+  <tr>
+    <td>Header Name</td>
+    <td>Authorization</td>
+  </tr>
+  <tr>
+    <td>Header Value</td>
+    <td>Basic &lt;userDN&gt;:&lt;password&gt;</td>
+  </tr>
+  <tr>
+    <td>Example Request Body</td>
+    <td><br>
+      <div style="white-space: pre; font-family: monospace;">
+        {
+          "params" : { 
+            "DN" : "uid=Adalberto_Flecha,ou=Accounting,o=companydirectory",
+            "newRDN" : "uid=Adalberto_Flecha",
+            "newSuperiorDN" : "ou=Administration,o=companydirectory"
+          }
+        }
+      </div>
+    </td>
+  </tr>
+</table>
+
 
 
 ![Example PATCH – Move Entry ](Media/Image5.37.jpg)
