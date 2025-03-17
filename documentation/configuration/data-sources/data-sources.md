@@ -167,11 +167,14 @@ Click the **+CREATE TEMPLATE** drop-down and select either *Database Source Type
 **Database Source Types**
 
 1. Choose the option to either *Upload New* or *Select Existing* driver file. Use the *Select Existing* option only if the driver library already exists on the RadiantOne node. For *Upload New*, either drag-and-drop the library into the window or click the link to choose a file.
-2. Enter a unique template name. This name is displayed on the card that can be selecting during data source creation.
-3. Enter or select the driver class name associated with the library. This is typically auto-populated from the driver file that was selected in step 1.
-4. Enter the driver URL pattern indicating the values required by the driver to establish a connection to the database. This is helpful for the administrator that is using the template to create the data source.
-5. Select a unique icon to display on the card associated with the template.
-6. Click **ADD**. A new card is available for defining "Database" type of data sources.
+
+   >[!warning] Some databases require other libraries (additional .jar files) from the vendor to support things like licensing and TLS/SSL access. These additional .jar files must be included in the template.  Consult your database vendor documentation for details on which driver files are needed.
+   
+1. Enter a unique template name. This name is displayed on the card that can be selecting during data source creation.
+1. Enter or select the driver class name associated with the library. This is typically auto-populated from the driver file that was selected in step 1.
+1. Enter the driver URL pattern indicating the values required by the driver to establish a connection to the database. This is helpful for the administrator that is using the template to create the data source.
+1. Select a unique icon to display on the card associated with the template.
+1. Click **ADD**. A new card is available for defining "Database" type of data sources.
 
 ![Database Data Type](Media/db-type.jpg)
 
