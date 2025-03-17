@@ -13,7 +13,7 @@ These release notes contain the following sections:
 
 [Supported Platforms](#supported-platforms)
 
-[Critical Bug Fixes](#bug-fixes)
+[Critical Bug Fixes](#critical-bug-fixes)
 
 [Known Issues/Important Notes](#known-issuesimportant-notes)
 
