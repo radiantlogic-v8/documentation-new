@@ -32,7 +32,9 @@ This document describes the supported backend data sources supported by RadiantO
 - Terradata
 - Any JDBC-accessible database
 
-The only JDBC drivers installed with RadiantOne are: JDBC-ODBC Bridge from Sun, Oracle (thin), Oracle oci, Microsoft SQL Server, HSQL, MySQL (supports MariaDB too), IBM DB2, Sybase, and Derby. For all other databases, import your own JDBC driver in Control Panel > Setup > Data Catalog > Template Management.
+The following JDBC drivers are installed with RadiantOne by default for convenience, but may be insufficient for your use cases: Oracle (thin), Oracle oci, Microsoft SQL Server, HSQL, MySQL (supports MariaDB too), IBM DB2, Sybase, and Derby. For all other databases, import your own JDBC driver in Control Panel > Setup > Data Catalog > Template Management.
+
+You have the option to use one of the above drivers, however, it is recommended that you use the driver that was delivered with the database that you want to connect to. Also, some of the drivers provided in the install for convenience don't support SSL/TLS access to the database server. You might need other libraries (additional .jar files) from the vendor to support this. These additional files must also be associated with the database template. Consult your database vendor documentation for driver details.
 
 ### Cloud Directory Services
 
