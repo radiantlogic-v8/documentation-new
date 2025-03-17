@@ -45,7 +45,7 @@ For specific hardware requirements of each, please see: [https://developer.radia
 
 ## Critical Bug Fixes
 
--	[VSTS47392]: Fixed an issue where a client could issue an LDAP search request that enumerates entry DNs without being properly authorized.
+-	[VSTS47392]: Fixed an issue where a client could issue an LDAP search request that enumerates entry DNs without being properly authorized. For details, please see the [Support Knowledge Base](https://support.radiantlogic.com/hc/en-us/articles/35748628235540-Bug-that-allows-LDAP-clients-to-search-and-enumerate-entry-DNs-bypassing-ACLs)
 
 
 ## Known Issues/Important Notes
