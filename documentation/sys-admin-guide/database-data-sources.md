@@ -7,7 +7,7 @@ description: Details about how to configure database data sources.
 
 A database data source represents a connection to a SQL/JDBC-accessible backend.
 
-The following JDBC drivers are installed with RadiantOne: JDBC-ODBC Bridge from Sun, Oracle (thin), Oracle oci, Microsoft SQL Server, HSQL, MariaDB (used for MySQL as well), Sybase, and Derby.
+The following JDBC drivers are installed with RadiantOne for convenience, but may be insufficient for your specific use cases: JDBC-ODBC Bridge from Sun, Oracle (thin), Oracle oci, Microsoft SQL Server, HSQL, MariaDB (used for MySQL as well), Sybase, and Derby.
 
 You have the option to use one of the above drivers, however, it is recommended that you use the driver that was delivered with the database that you want to connect to. To add a JDBC driver, you must make sure that the driver libraries are added in: <RLI_HOME>/lib/jdbc. Also, some of the drivers provided in the install for convenience don't support SSL/TLS access to the database server. You might need other libraries (additional .jar files) from the vendor to support this. These additional files must also be in:  <RLI_HOME>/lib/jdbc.  Consult your database vendor documentation for details.
 
