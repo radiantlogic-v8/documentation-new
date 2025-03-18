@@ -12,7 +12,7 @@ This guide provides an overview of the steps required to create backups of your 
 1. Open your terminal and run the following command: 
  
    ```
-    kubectl exec -<RELEASE_NAME>-0 -n <NAMESPACE> -- bash -c "./migrate.sh export <EXPORT_FILE_NAME> 
+    kubectl exec <RELEASE_NAME>-0 -n <NAMESPACE> -- bash -c "./migrate.sh export <EXPORT_FILE_NAME> 
     ```
 
    This will generate an export file that contains the backup in your pod. 
