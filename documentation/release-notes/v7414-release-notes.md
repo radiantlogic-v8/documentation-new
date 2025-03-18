@@ -13,7 +13,11 @@ These release notes contain the following sections:
 
 [Supported Platforms](#supported-platforms)
 
+[Security Vulnerability Fixes](#security-vulnerability-fixes)
+
 [Critical Bug Fixes](#critical-bug-fixes)
+
+[Bug Fixes](#bug-fixes)
 
 [Known Issues/Important Notes](#known-issuesimportant-notes)
 
@@ -42,10 +46,18 @@ RadiantOne is supported on the following 64-bit platforms:
 
 For specific hardware requirements of each, please see: [https://developer.radiantlogic.com/idm/v7.4/system-requirements/v74-system-requirements/](https://developer.radiantlogic.com/idm/v7.4/system-requirements/v74-system-requirements/)
 
+## Security Vulnerability Fixes
+
+-	[VSTS47427]: Updated ZooKeeper Netty libraries to address CVE-2025-24970.
 
 ## Critical Bug Fixes
 
 -	[VSTS47392]: Fixed an issue where a client could issue an LDAP search request that enumerates entry DNs without being properly authorized. For details, please see the [Support Knowledge Base](https://support.radiantlogic.com/hc/en-us/articles/35748628235540-Bug-that-allows-LDAP-clients-to-search-and-enumerate-entry-DNs-bypassing-ACLs)
+
+## Bug Fixes
+
+-	[VSTS47363]: Fixed an issue where Password Policy Request Control (1.3.6.1.4.1.42.2.27.8.5.1) was rejected when its criticality is set as true in the request.
+
 
 
 ## Known Issues/Important Notes
