@@ -59,6 +59,29 @@ Logs very detailed information about the actions taken by RadiantOne.
 
 This log level is relevant only for the Radiant Logic development team to understand problems and is used for intensive troubleshooting.
  
+### Debug SSL
+
+SSL is enabled by default, but SSL logging is disabled by default. When SSL logging is enabled, SSL events have an entry in vds_server.log. This log file is located in <RLI_HOME>\vds_server\logs. SSL events are logged at INFO level or higher, so log settings for FID – Server must be at least at INFO level. 
+
+To enable SSL logging:
+
+1. From the Main Control Panel, click Settings > Logs > Log Settings.
+
+2. From the Log Settings to Configure drop-down menu, select FID – Server. 
+
+3. Verify that the Log Level drop-down menu is set to one of the following: INFO, DEBUG, or TRACE. 
+
+4. If you change the log level, click **Save**. 
+
+5. Navigate to the Main Control Panel > Settings > Security > SSL.
+
+6. In the SSL section, check the *Debug SSL* box. 
+
+7. Click **Save**.
+
+8. On the Main Control Panel’s Dashboard tab, restart the RadiantOne service. 
+
+
 ### Running System Checks
 
 During the RadiantOne installation, a series of system checks are performed to verify that important system requirements are met. These include number of CPUs, machine memory, disk throughput, disk space, maximum number of file descriptors (applicable to Linux), maximum resident set size (applicable to Linux), maximum amount of virtual memory available to RadiantOne (applicable to Linux), maximum number of memory map areas for processes (applicable to Linux), and swappiness (applicable to Linux).  
