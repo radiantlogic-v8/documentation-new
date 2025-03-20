@@ -385,6 +385,8 @@ If you only want to use a script for transformation, set the value to: script
 
 To use both attribute mappings and a script for transformation, set the value to: all
 
+To use rules-based transformation, set the value to: rules
+
 `- pipelineid <pipelineID>`
 <br>[required] The identifier of the pipeline. Run the list-topologies command to locate the pipelines identifiers for each topology.
 
