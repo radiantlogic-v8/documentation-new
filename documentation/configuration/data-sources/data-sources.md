@@ -225,4 +225,4 @@ Templates that have been exported from a RadiantOne v8.1.X deployment can be imp
 ## Managing Schemas
 Each data source can be associated with one or more schema files. The first schema file extracted for a data source is considered the default one. For LDAP data sources, the default schema is automatically extracted when the data source is defined. For JDBC-accessible and SCIMv2 accessible data sources, you must manually extract the schema so you can selectively choose the objects that are required for creating identity views. For custom data sources, you must manually create the schema in RadiantOne.
 
-For details, see [Managing Schemas](/schemas.md).
+For details, see [Managing Schemas](./schemas.md).
