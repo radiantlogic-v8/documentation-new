@@ -13,7 +13,7 @@ These release notes contain the following sections:
 
 [Improvements](#improvements)
 
-[Security Vulnerabilty Fixes](#security-vulnerability-fixes)
+[Security Vulnerability Fixes](#security-vulnerability-fixes)
 
 [Bug Fixes](#bug-fixes)
 
