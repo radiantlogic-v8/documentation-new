@@ -57,6 +57,8 @@ For specific hardware requirements of each, please see: [https://developer.radia
 ## Bug Fixes
 
 -	[VSTS47363]: Fixed an issue where Password Policy Request Control (1.3.6.1.4.1.42.2.27.8.5.1) was rejected when its criticality is set as true in the request.
+-	[VSTS47495]: Fixed a regression (in v7.4.13 only) which caused some unwanted LDAP controls to be forwarded to LDAP proxy backends on some LDAP search requests.
+-	[VSTS47487]: Fixed a regression where setting the VDS HTTP and HTTPS ports in the settings page was incorrectly setting the control panel HTTP and HTTPS ports.
 
 
 
