@@ -23,16 +23,16 @@ These release notes contain the following sections:
 
 ## Improvements
 
-- [VMR-885]: Added a JSTACK command to the ADAP util endpoint to get the stack trace of the Task Scheduler to support troubleshooting. Example: https://baseUrl/adap/util?action=jstack
+- [API-2738]: Added a JSTACK command to the ADAP util endpoint to get the stack trace of the Task Scheduler to support troubleshooting. Example: https://baseUrl/adap/util?action=jstack
 
 
 ## Critical Bug Fixes
 
-- [VMR-882]: Fixed an issue where a client could issue an LDAP search request that enumerates entry DNs without being properly authorized. For details, please see the [Support Knowledge Base](https://support.radiantlogic.com/hc/en-us/articles/35748628235540-Bug-that-allows-LDAP-clients-to-search-and-enumerate-entry-DNs-bypassing-ACLs)
+- [API-2711]: Fixed an issue where a client could issue an LDAP search request that enumerates entry DNs without being properly authorized. For details, please see the [Support Knowledge Base](https://support.radiantlogic.com/hc/en-us/articles/35748628235540-Bug-that-allows-LDAP-clients-to-search-and-enumerate-entry-DNs-bypassing-ACLs)
  
 ## Bug Fixes
 
-- [VMR-883]: Fixed an issue that can cause the Task Scheduler to be intermittently unresponsive.
+- [API-2734]: Fixed an issue that can cause the Task Scheduler to be intermittently unresponsive.
 
 ## Known Issues
 
