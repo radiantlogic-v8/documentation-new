@@ -15,27 +15,6 @@ Several commands in this chapter contain the argument connectorname. For persist
 
 ![Connector name](Media/Image20.2.jpg)
 
-## change-connector-state
-
-This command starts or stops a specified connector in a real-time persistent cache refresh.
-
-**Usage**
-<br>`change-connector-state [-connectorname <connectorname>] [-state <state>]`
-
-**Command Arguments:**
-
-`- connectorname <connectorname>`
-<br>The name of the real-time persistent cache connector.
-
-`- state <state>`
-<br>Indicates that the connector be started or stopped. Accepted values are “start” and “stop”.
-
-**REST (ADAP) Example**
-
-In the following example, a request is made to start a real-time persistent cache refresh connector.
-
-`https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=change-connector-state&connectorname=o_derby_pcache_primary__so_o_derby__northwind_app_employees&state=start`
-
 ## empty-queues
 
 This command empties the queue of a specified real-time persistent cache refresh, identified by a pipeline ID.
