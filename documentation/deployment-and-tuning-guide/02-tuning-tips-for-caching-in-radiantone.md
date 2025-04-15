@@ -501,7 +501,7 @@ The log containing the refresh actions performed is <RLI_HOME>/vds_server/logs/p
 
 For more details on the search-vds command, see the [Radiantone Command Line Configuration Guide](/command-line-configuration-guide/01-introduction).
 
-### Configuring Persistent Cache with Periodic Refresh
+## Configuring Persistent Cache with Periodic Refresh
 
 Review the section on [periodically refreshing the cache](#periodic-refresh) to ensure the persistent cache is updated to match your needs. If you plan on refreshing the cache image periodically on a defined schedule, this would be the appropriate cache configuration option. This type of caching option leverages the internal RadiantOne Universal Directory storage for the cache image.
 
@@ -584,7 +584,7 @@ To define a granular threshold for add operations, indicate the percentage in th
 
 If both a [validation script](#validation-script-path) and validation threshold are configured, the threshold is checked first. If the threshold does not invalidate the refresh, the validation script is invoked. If neither a threshold nor a script is configured, RadiantOne compares the generated LDIF file to the current cache image and updates the cache based on the differences between the two.
 
-### Configuring Persistent Cache with Real-Time Refresh 
+## Configuring Persistent Cache with Real-Time Refresh 
 
 If you plan on automatically refreshing the persistent cache as changes happen on the backend data sources, this would be the recommended cache configuration option. This type of caching option leverages the RadiantOne Universal Directory storage for the cache image. 
 
@@ -1083,17 +1083,31 @@ Failover Algorithm [1-4] | This option is relevant for the LDAP changelog connec
 
 Capture connectors use a cursor to maintain information about the last processed changes. This allows the connectors to capture only changes that have happened since the last time they checked for changes. When the real-time persistent cache refresh connectors start, they automatically attempt to capture all changes that have happened since the last time they checked. If the real-time persistent cache refresh process has been stopped for an extended period of time, you might not want them to attempt to capture all changes since the last time they checked. In this case, you can reset the cursor for the connector. From the Main Control Panel > PCache Monitoring tab, select the real-time refresh topology and the topology displays. Click the icon representing the capture connector and the Runtime details are displayed on the right. Click **Reset Cursor** to clear the cursor value and trigger the connector to behave as if it is the first time connecting to the source to collect changes.
 
-### Persistent Cache Properties
+## Persistent Cache Properties
 
 Once a persistent cache is configured, properties can be managed from the Main Control Panel > Directory Namespace tab > Cache node. Select the configured persistent cache branch and the properties are available on the right.
 
-**Non-indexed Attributes**
+### Non-indexed Attributes
 
 If the Indexed Attributes list is empty, all attributes are indexed by default (except binary ones). Also, the following “internal” ones won’t be indexed either: "creatorsName", "createTimestamp", "modifiersName", "modifyTimestamp", "cacheCreatorsName", "cacheCreateTimestamp", "cacheModifiersName", "cacheModifyTimestamp", "uuid", "vdsSyncState", "vdsSyncHist", "ds-sync-generation-id", "ds-sync-state", "ds-sync-hist", "vdsSyncCursor", "entryUUID", "userpassword”. Any additional attributes that you do not want indexed should be added to the Non Indexed Attributes list on the Properties tab for the selected persistent cache branch.
 
 If you change the non-indexed attributes, you must re-build the index. You can do this from the Properties tab by clicking **Re-build Index**.
+### Active
 
-**Storage Location**
+Check the Active option if you want to Activate this naming context. Uncheck the Active option to deactivate the cache. If a persistent cache is deactivated, RadiantOne issues queries to the backend(s) when processing client requests.
+
+### Full-text Search
+
+Persistent cache branches can support full text searches. This offers additional flexibility for clients as they can search data in the RadiantOne namespace based on text (character) data. These types of searches are no longer linked to specific attributes as the characters requested could be found in any attribute value. An entry is returned if any attribute in the entry contains the character string(s) requested by the client.
+
+Clients issue full text searches similar to the way they issue LDAP searches. The only difference is the filter contains (fulltext=<value>) where <value> would be the text they are interested in. As an example, if a client was interested in the text John Doe as an exact phrase, the search filter sent to RadiantOne would be (fulltext= “John Doe”) where the phrase is encapsulated in double quotes. If the phrase in the filter is not encapsulated in double quotes it means the client wants any entries that have attribute values that contain the character string John OR Doe. 
+
+The part of the filter that contains the piece related to the full text search can also be combined with other “standard” LDAP operators. As an example, a filter could be something like (&(uid=sjones)(fulltext=”John Doe”)). This would return entries that contain a uid attribute with the value sjones AND any other attribute that contains the exact character string John Doe.
+
+If you want the persistent cache to support full text searches, check the Full-Text Search option and click **Save**. If you add the support for full text searches, click **Re-build Index**.
+
+
+### Storage Location
 
 The default location for persistent cache data files is `<RLI_HOME>\vds_server\data`. To tune the local disk load, you can specify a different location on the file system. To define a storage location, follow the steps below.
 
@@ -1114,7 +1128,7 @@ The default location for persistent cache data files is `<RLI_HOME>\vds_server\d
 
 If RadiantOne is deployed in a cluster, the value of the storage location parameter is also assigned to all other nodes. The drive location indicated in the value must exist on the file system of each node. The nodes cannot leverage a single shared drive.
 
-**Sorted Attributes**
+### Sorted Attributes
 
 This is a comma-separated list of attributes to be used in association with Virtual List Views (VLV) or sort control configured for RadiantOne. These sorted indexes are managed internally in the persistent cache and kept optimized for sorting. They are required if you need to sort the search result or to execute a VLV query on the persistent cache branch.
 
@@ -1122,7 +1136,7 @@ If you need to support VLV, the VLV/Sort control must be enabled in RadiantOne. 
 
 If you change the sorted attributes, you must re-build the index. You can do this from the Properties tab by clicking **Re-build Index**.
 
-**Encrypted Attributes**
+### Encrypted Attributes
 
 Attribute encryption protects sensitive data while it is stored in RadiantOne. You can specify that certain attributes of an entry are stored in an encrypted format. This prevents data from being readable while stored in persistent cache, backup files, and exported LDIF files. Attribute values are encrypted before they are stored in persistent cache, and decrypted before being returned to the client, as long as the client is authorized to read the attribute (based on ACLs defined in RadiantOne), is connected to the RadiantOne service via SSL, and not a member of the special group containing members not allowed to get these attributes (e.g. cn=ClearAttributesOnly,cn=globalgroups,cn=config). For details on this special group, please see the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction).
 
@@ -1131,7 +1145,7 @@ Attribute encryption protects sensitive data while it is stored in RadiantOne. Y
 
 On the Properties Tab for the selected persistent cache, enter a comma-separated list of attributes to store encrypted in the Encrypted Attributes property. Attributes listed in the Encrypted Attributes property are added to the Non-indexed attribute list by default. This means these attributes are not searchable by default. Indexing encrypted attributes is generally not advised as the index itself is less secure than the attribute stored in the persistent cache. However, if you must be able to search on the encrypted attribute value, it must be indexed. Only “exact match/equality” index is supported for encrypted attributes. To make an encrypted attribute searchable, remove the attribute from the list of nonindexed attributes and then click **Re-build Index**.
 
-**Extension Attributes**
+### Extension Attributes
 
 Extension Attributes are new attributes (meaning these attributes don’t exist anywhere yet) that are associated with a cached virtual entry. This is primarily used to accommodate the storage of application-specific attributes that you want to store locally as opposed to the backend(s) you are virtualizing. Extension attributes should be used as an alternative to Extended Joins in scenarios where the virtual view is stored in persistent cache and then needs replicated out to RadiantOne Universal Directory stores in other clusters.
 
@@ -1147,7 +1161,7 @@ Extension Attributes are replicated to other clusters in [deployment scenarios](
 
 When using extension attributes for cached virtual views of LDAP directory backends, you must configure invariant attribute(s). See the following section for more details.
 
-**Invariant Attributes**
+### Invariant Attributes
 
 To guarantee extension attributes are linked to their respective underlying entries and moved properly should modRDN/modDN events occur in the backend source, invariant attribute(s) must be defined. The invariant attribute is the unique identifier in the backend directory. Below are some invariant attributes used in common LDAP directories.
 
@@ -1167,33 +1181,7 @@ For the example shown below, the persistent cached view is from an Active Direct
  
 Figure 2.24: Invariant Attribute for Persistent Cache
 
-### Inter-cluster Replication
-
-This option should be enabled if you want to support replication between this persistent cache branch and a RadiantOne Universal Directory store in a different cluster. 
-
-If inter-cluster replication is enabled, a replication journal is used to store changes that happen on the persistent cache branch. The replication journal is associated with the default LDAP data source defined as replicationjournal and root naming context named cn=replicationjournal. The RadiantOne leader node in the cluster associated with the persistent cache, publishes changes into the replication journal. The RadiantOne leader nodes in all other clusters (that are configured for inter-cluster replication) pick up changes from the replication journal to update their local replica. Persistent caches usually only publish changes into the replication journal (for other RadiantOne Universal Directory replicas in other clusters). There are some cases where persistent cache can accept changes from other clusters. For use cases where this option could be applicable, please see [Authoritative Backends Inaccessible by All Sites](07-deployment-architecture#backends-inaccessible-by-all-sites).
-
->[!warning]
->Changes that haven’t been picked up from the replicationjournal for 3 days are automatically purged.
-
-**Accept Changes from Replicas**
-
-For limited use cases where the only type of modify operations that client applications perform is updates to existing entries (no adds or deletes), the persistent cache can subscribe to these events. If the persistent cache should process attribute updates from RadiantOne Universal Directory replicas in other clusters, enable the Accept Changes from Replicas option and list the acceptable attributes in the Updateable Attributes from Replicas property.
-
->[!warning]
->Persistent Cache stores can only accept modification operations from RadiantOne Universal Directory replicas. Add and delete operations are currently not supported. Therefore, proper ACLs should be configured for the RadiantOne Universal Directory replicas to prevent the addition and deletion of entries. <br> This is an advanced setting, consult with a Radiant Logic Solution Architect to get assistance on the needed architecture and usage.
-
-**Updateable Attributes from Replicas**
-
-A comma-separated list of attribute names that the persistent cache should accept changes for. Only changes made to these attributes are processed by the persistent cache. All other changes published in the replication journal from the RadiantOne Universal Directory replicas are ignored by the persistent cache. If an updateable attribute is associated with an extension attribute in the persistent cache, the attribute update is handled locally. If an updateable attribute is sourced from a backend data source, the update is forwarded to the appropriate backend and the cache image is refreshed after the backend update is successful. If the backend update fails, the current persistent cache image is considered the reference and is published to the replication journal to override the images in the RadiantOne Universal Directory replicas in all other clusters.
-
->[!warning]
->Persistent Cache stores can only accept modification operations from RadiantOne Universal Directory replicas. Add and delete operations are currently not supported. Therefore, proper ACLs should be configured for the RadiantOne Universal Directory replicas to prevent the addition and deletion of entries.
-
->[!warning]
->This is an advanced setting, consult with a Radiant Logic Solution Architect to get assistance on the needed architecture and usage.
-
-**Use Cache for Authentication**
+### Use Cache for Authentication
 
 The default behavior of the RadiantOne service for processing bind requests for users located in a persistent cache branch is to delegate the credentials checking to the authoritative backend source. If the password in the backend is encrypted using one of the algorithms supported by RadiantOne, and the passwords are stored in the cache, you can configure the service to authenticate the user locally against the password in cache instead of delegating the credentials checking to the backend. To enable this behavior, check the Use Cache for Authentication option on the configured cache branch. This option is not applicable in scenarios where the passwords are not stored in the persistent cache. For an example use case where this option could be applicable, please see [Authoritative Backends Inaccessible by All Sites](07-deployment-architecture#backends-inaccessible-by-all-sites).
 
@@ -1219,7 +1207,87 @@ Password update via a Modify Request sent to RadiantOne	| No | The password is u
 Password update via a Modify Request sent to RadiantOne	| Yes | The password update is sent to the backend. If the password update fails in the backend, the password in the persistent cache is not updated. If the password update succeeds in the backend, the password is updated in the persistent cache. 
 Password is updated directly in the backend (outside of RadiantOne) | N/A | Through the persistent cache refresh process, the password is updated in the persistent cache. If the account was locked in the persistent cache due to a password policy enforced at the cache layer, it will be unlocked by the cache refresh process after a successful password update in the backend. Password strength defined in the persistent cache password policy is not enforced since the password change originated from the backend.
 
-### Caching Active Directory Passwords
+### Optimize Linked Attributes
+
+Linked attributes are attributes that allow relationships between objects. A typical example would be isMemberOf/uniqueMember for user/groups objects. A group has members (uniqueMember attribute) which is the forward link relationship. Those members have an isMemberOf attribute which is the back link (to the group entry) relationship. Other examples of linked attributes are:
+
+`manager/directReports`
+<br> `altRecipient/altRecipientBL`
+<br> `dLMemRejectPerms/dLMemRejectPermsBL`
+<br> `dLMemSubmitPerms/dLMemSubmitPermsBL`
+<br> `msExchArchiveDatabaseLink/msExchArchiveDatabaseLinkBL`
+<br> `msExchDelegateListLink/msExchDelegateListBL`
+<br> `publicDelegates/publicDelegatesBL`
+<br> `owner/ownerBL`
+
+The most common back link/forward link relationship is between group and user objects. A list of groups a user is a member of can be calculated automatically by RadiantOne and returned in the membership attribute of the user entry. The most common back link attributes are in the drop-down list. However, you can manually enter any attribute name you want. This is configured on the Main Control Panel, click Settings > Interception > Special Attributes Handling > Linked Attributes setting (on the right).
+
+If the Target Base DN (back link attribute location) and the Source Base DN (forward link attribute location) in the Linked Attributes setting is a persistent cached branch, the computation of the references can be optimized in order to return client requests for the back link attribute at high speed. To enable this optimization, follow the steps below.
+
+>[!warning]
+>If your linked attributes are for users and groups (both branches located in persistent cache), and you enable the Optimize Linked Attributes setting, and must support nested groups, only one user location per persistent cache store is supported. For example, in the Linked Attributes setting, having a Target Base DN location configured for ou=people1,dc=myhdap and ou=people2,dc=myhdap (both in the same dc=myhdap persistent cache store) is not supported. In this case, you should configure a single user location as dc=myhdap as a shared parent for both containers.
+
+It is assumed you have configured and initialized your persistent cache, and configured the Linked Attributes in Special Attributes Handling. If you have not, please do so prior to continuing with the steps below.
+
+![An image showing ](Media/Image2.29.jpg)
+
+Figure 2.29: Back Link Attribute Name in Special Attribute Handling
+
+1. Select the Optimize Linked Attributes option on the Properties tab for the selected persistent cache branch on the Main Control Panel > Directory Namespace tab > Cache section. The defined linked attribute is added to the Extension Attributes List for the persistent cache.
+
+2. Click **Save**. 
+
+3. You can either rebuild the index, or reinitialize the persistent cache. Click **Re-build Index** or **Initialize**. The back link attribute is always returned to clients even when not requested unless Hide Operational Attributes is enabled in RadiantOne (in which case it is only returned when a client explicitly requests it). For details on the Hide Operational Attributes setting, please see the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction). 
+
+>[!warning]
+>If a persistent cache has optimizations associated with it, deactivating it will interfere with queries associated with the linked attributes and they will not return properly. If you no longer need a cache, delete it instead of deactivating it.
+
+### Async Modifications for Attributes
+
+This is an optimization of the peristent cache refresh process.
+
+This is a list of attributes that should be processed asynchronously when modified by clients. The default attributes are *member* and *uniquemember*.
+This default setting means that a modifyRequest containing a list of modifications on the member or uniquemember attributes are processed asynchronously by the persistent cache. The RadiantOne service sends the modifications to the underlying backend but the service does not perform the persistent cache refresh operation during the transaction itself. Instead, the cache refresh is performed as soon as the change is detected in the backend. 
+This setting is enabled when the real-time persistent cache refresh is enabled and there are attributes listed in the Async Modifications for Attributes proeprty. 
+
+### Allow Similar Modification Operations Reduction
+
+This is an optimization of the peristent cache refresh process because it reduces the number of incremental transactions sent to the backend and the persistent cache when modifications are received by clients. This optimization compacts concurrent, incremental, and similar modify requests (described below) into a single transaction which reduces the load and execution time per operation on both the backend and the persistent cache.
+
+-	Concurrent: modifications are processed concurrently through different connections.
+-	Incremental: only ADD or DELETE attribute values in the list of modifications.
+-	Similar: The modifications are done on the same entry and by the same user.
+
+>[!warning]
+>ProxiedAuthorizationControl is not supported, the optimization won't be performed if this control is passed in the request from the client. Inter-cluster replication is not supported, the optimization won't be performed if the persistent cache being modified is part of a replication topology.
+
+## Inter-cluster Replication
+
+This option should be enabled if you want to support replication between this persistent cache branch and a RadiantOne Directory store in a different cluster. 
+
+If inter-cluster replication is enabled, a replication journal is used to store changes that happen on the persistent cache branch. The replication journal is associated with the default LDAP data source defined as replicationjournal and root naming context named cn=replicationjournal. The RadiantOne leader node in the cluster associated with the persistent cache, publishes changes into the replication journal. The RadiantOne leader nodes in all other clusters (that are configured for inter-cluster replication) pick up changes from the replication journal to update their local replica. Persistent caches usually only publish changes into the replication journal (for other RadiantOne Universal Directory replicas in other clusters). There are some cases where persistent cache can accept changes from other clusters. For use cases where this option could be applicable, please see [Authoritative Backends Inaccessible by All Sites](07-deployment-architecture#backends-inaccessible-by-all-sites).
+
+>[!warning]
+>Changes that haven’t been picked up from the replicationjournal for 3 days are automatically purged.
+
+### Accept Changes from Replicas
+
+For limited use cases where the only type of modify operations that client applications perform is updates to existing entries (no adds or deletes), the persistent cache can subscribe to these events. If the persistent cache should process attribute updates from RadiantOne Universal Directory replicas in other clusters, enable the Accept Changes from Replicas option and list the acceptable attributes in the Updateable Attributes from Replicas property.
+
+>[!warning]
+>Persistent Cache stores can only accept modification operations from RadiantOne Universal Directory replicas. Add and delete operations are currently not supported. Therefore, proper ACLs should be configured for the RadiantOne Universal Directory replicas to prevent the addition and deletion of entries. <br> This is an advanced setting, consult with a Radiant Logic Solution Architect to get assistance on the needed architecture and usage.
+
+### Updateable Attributes from Replicas
+
+A comma-separated list of attribute names that the persistent cache should accept changes for. Only changes made to these attributes are processed by the persistent cache. All other changes published in the replication journal from the RadiantOne Universal Directory replicas are ignored by the persistent cache. If an updateable attribute is associated with an extension attribute in the persistent cache, the attribute update is handled locally. If an updateable attribute is sourced from a backend data source, the update is forwarded to the appropriate backend and the cache image is refreshed after the backend update is successful. If the backend update fails, the current persistent cache image is considered the reference and is published to the replication journal to override the images in the RadiantOne Universal Directory replicas in all other clusters.
+
+>[!warning]
+>Persistent Cache stores can only accept modification operations from RadiantOne Universal Directory replicas. Add and delete operations are currently not supported. Therefore, proper ACLs should be configured for the RadiantOne Universal Directory replicas to prevent the addition and deletion of entries.
+
+>[!warning]
+>This is an advanced setting, consult with a Radiant Logic Solution Architect to get assistance on the needed architecture and usage.
+
+## Caching Active Directory Passwords
 
 If your virtual view is from an Active Directory backend, passwords associated with the user entries are not a part of the view by default. When a user associated with this virtual view authenticates to RadiantOne, the credentials checking is delegated to the backend Active Directory. This is the behavior whether the virtual view is configured for persistent cache or not because RadiantOne does not have access to the Active Directory passwords. If you have the virtual view configured for persistent cache and you want RadiantOne to validate the passwords locally as opposed to delegating this to the backend Active Directory, you must cache the passwords from Active Directory. A computed attribute is required to get the hashed password to store in the persistent cache. Once the passwords are cached, you can use the Use Cache for Authentication option.
 
@@ -1309,74 +1377,8 @@ Lastly a persistent cache on the virtual view can be configured and initialized.
 
 Figure 2.28: Using Persistent Cache for Authentication
 
-**Active**
 
-Check the Active option if you want to Activate this naming context. Uncheck the Active option to deactivate the cache. If a persistent cache is deactivated, RadiantOne issues queries to the backend(s) when processing client requests.
-
-**Full-text Search**
-
-Persistent cache branches can support full text searches. This offers additional flexibility for clients as they can search data in the RadiantOne namespace based on text (character) data. These types of searches are no longer linked to specific attributes as the characters requested could be found in any attribute value. An entry is returned if any attribute in the entry contains the character string(s) requested by the client.
-
-Clients issue full text searches similar to the way they issue LDAP searches. The only difference is the filter contains (fulltext=<value>) where <value> would be the text they are interested in. As an example, if a client was interested in the text John Doe as an exact phrase, the search filter sent to RadiantOne would be (fulltext= “John Doe”) where the phrase is encapsulated in double quotes. If the phrase in the filter is not encapsulated in double quotes it means the client wants any entries that have attribute values that contain the character string John OR Doe. 
-
-The part of the filter that contains the piece related to the full text search can also be combined with other “standard” LDAP operators. As an example, a filter could be something like (&(uid=sjones)(fulltext=”John Doe”)). This would return entries that contain a uid attribute with the value sjones AND any other attribute that contains the exact character string John Doe.
-
-If you want the persistent cache to support full text searches, check the Full-Text Search option and click **Save**. If you add the support for full text searches, click **Re-build Index**.
-
-**Optimize Linked Attributes**
-Linked attributes are attributes that allow relationships between objects. A typical example would be isMemberOf/uniqueMember for user/groups objects. A group has members (uniqueMember attribute) which is the forward link relationship. Those members have an isMemberOf attribute which is the back link (to the group entry) relationship. Other examples of linked attributes are:
-
-`manager/directReports`
-<br> `altRecipient/altRecipientBL`
-<br> `dLMemRejectPerms/dLMemRejectPermsBL`
-<br> `dLMemSubmitPerms/dLMemSubmitPermsBL`
-<br> `msExchArchiveDatabaseLink/msExchArchiveDatabaseLinkBL`
-<br> `msExchDelegateListLink/msExchDelegateListBL`
-<br> `publicDelegates/publicDelegatesBL`
-<br> `owner/ownerBL`
-
-The most common back link/forward link relationship is between group and user objects. A list of groups a user is a member of can be calculated automatically by RadiantOne and returned in the membership attribute of the user entry. The most common back link attributes are in the drop-down list. However, you can manually enter any attribute name you want. This is configured on the Main Control Panel, click Settings > Interception > Special Attributes Handling > Linked Attributes setting (on the right).
-
-If the Target Base DN (back link attribute location) and the Source Base DN (forward link attribute location) in the Linked Attributes setting is a persistent cached branch, the computation of the references can be optimized in order to return client requests for the back link attribute at high speed. To enable this optimization, follow the steps below.
-
->[!warning]
->If your linked attributes are for users and groups (both branches located in persistent cache), and you enable the Optimize Linked Attributes setting, and must support nested groups, only one user location per persistent cache store is supported. For example, in the Linked Attributes setting, having a Target Base DN location configured for ou=people1,dc=myhdap and ou=people2,dc=myhdap (both in the same dc=myhdap persistent cache store) is not supported. In this case, you should configure a single user location as dc=myhdap as a shared parent for both containers.
-
-It is assumed you have configured and initialized your persistent cache, and configured the Linked Attributes in Special Attributes Handling. If you have not, please do so prior to continuing with the steps below.
-
-![An image showing ](Media/Image2.29.jpg)
-
-Figure 2.29: Back Link Attribute Name in Special Attribute Handling
-
-1. Select the Optimize Linked Attributes option on the Properties tab for the selected persistent cache branch on the Main Control Panel > Directory Namespace tab > Cache section. The defined linked attribute is added to the Extension Attributes List for the persistent cache.
-
-2. Click **Save**. 
-
-3. You can either rebuild the index, or reinitialize the persistent cache. Click **Re-build Index** or **Initialize**. The back link attribute is always returned to clients even when not requested unless Hide Operational Attributes is enabled in RadiantOne (in which case it is only returned when a client explicitly requests it). For details on the Hide Operational Attributes setting, please see the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction). 
-
->[!warning]
->If a persistent cache has optimizations associated with it, deactivating it will interfere with queries associated with the linked attributes and they will not return properly. If you no longer need a cache, delete it instead of deactivating it.
-
-**Async Modifications for Attributes**
-
-This is an optimization of the peristent cache refresh process.
-
-This is a list of attributes that should be processed asynchronously when modified by clients. The default attributes are *member* and *uniquemember*.
-This default setting means that a modifyRequest containing a list of modifications on the member or uniquemember attributes are processed asynchronously by the persistent cache. The RadiantOne service sends the modifications to the underlying backend but the service does not perform the persistent cache refresh operation during the transaction itself. Instead, the cache refresh is performed as soon as the change is detected in the backend. 
-This setting is enabled when the real-time persistent cache refresh is enabled and there are attributes listed in the Async Modifications for Attributes proeprty. 
-
-**Allow Similar Modification Operations Reduction**
-
-This is an optimization of the peristent cache refresh process because it reduces the number of incremental transactions sent to the backend and the persistent cache when modifications are received by clients. This optimization compacts concurrent, incremental, and similar modify requests (described below) into a single transaction which reduces the load and execution time per operation on both the backend and the persistent cache.
-
--	Concurrent: modifications are processed concurrently through different connections.
--	Incremental: only ADD or DELETE attribute values in the list of modifications.
--	Similar: The modifications are done on the same entry and by the same user.
-
->[!warning]
->ProxiedAuthorizationControl is not supported, the optimization won't be performed if this control is passed in the request from the client. Inter-cluster replication is not supported, the optimization won't be performed if the persistent cache being modified is part of a replication topology.
-
-### Persistent Cache Universally Unique Identifier (UUID)
+## Persistent Cache Universally Unique Identifier (UUID)
 
 The Universally Unique Identifier (UUID) attribute is a reserved, internal attribute that is assigned to each entry and can guarantee uniqueness across space and time.
 
