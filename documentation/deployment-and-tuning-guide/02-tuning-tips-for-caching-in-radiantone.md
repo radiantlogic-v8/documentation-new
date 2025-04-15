@@ -3,13 +3,13 @@ title: Deployment and Tuning Guide
 description: Deployment and Tuning Guide
 ---
 
-# Tuning Tips for Caching in the RadiantOne Federated Identity Service
+## Tuning Tips for Caching in the RadiantOne Federated Identity Service
 
 This chapter provides guidelines on how to effectively use caching for optimal performance. The first part covers the different categories and levels of cache along with a quick review of the different use cases that justify a cache deployment. The second part provides details and describes the advantages and trade-off between “in-memory” and “persistent” cache.  Finally, a description of cache refresh methods is reviewed. This is an essential and often overlooked aspect of cache management.
 
 Persistent caching is only associated with the RadiantOne Federated Identity module and is irrelevant for [RadiantOne Universal Directory](04-tuning-tips-radiantone-universal-directory.md).
 
-## When and why do you need a cache with RadiantOne FID?
+## When and why do you need a cache with RadiantOne?
 
 There are many cases where RadiantOne is leveraged more for its flexibility rather than its pure speed. However, in most critical operations such as identification, authentication, and authorization, it needs to provide guaranteed fast access to information. In fact, in many cases RadiantOne needs to provide read operations that are faster than what can be delivered by the underlying sources. What is meant by “fast”, is a level of performance that is at least 3 to 5 times what can be derived from standard relational databases (RDBMS) – as an example. 
 
@@ -1087,11 +1087,6 @@ Capture connectors use a cursor to maintain information about the last processed
 
 Once a persistent cache is configured, properties can be managed from the Main Control Panel > Directory Namespace tab > Cache node. Select the configured persistent cache branch and the properties are available on the right.
 
-### Non-indexed Attributes
-
-If the Indexed Attributes list is empty, all attributes are indexed by default (except binary ones). Also, the following “internal” ones won’t be indexed either: "creatorsName", "createTimestamp", "modifiersName", "modifyTimestamp", "cacheCreatorsName", "cacheCreateTimestamp", "cacheModifiersName", "cacheModifyTimestamp", "uuid", "vdsSyncState", "vdsSyncHist", "ds-sync-generation-id", "ds-sync-state", "ds-sync-hist", "vdsSyncCursor", "entryUUID", "userpassword”. Any additional attributes that you do not want indexed should be added to the Non Indexed Attributes list on the Properties tab for the selected persistent cache branch.
-
-If you change the non-indexed attributes, you must re-build the index. You can do this from the Properties tab by clicking **Re-build Index**.
 ### Active
 
 Check the Active option if you want to Activate this naming context. Uncheck the Active option to deactivate the cache. If a persistent cache is deactivated, RadiantOne issues queries to the backend(s) when processing client requests.
@@ -1127,6 +1122,12 @@ The default location for persistent cache data files is `<RLI_HOME>\vds_server\d
 >any data in the default location is lost if the storage location is changed. If you have data in the existing location that you want to keep, export it to an LDIF file and after the storage location is changed, import this LDIF file.
 
 If RadiantOne is deployed in a cluster, the value of the storage location parameter is also assigned to all other nodes. The drive location indicated in the value must exist on the file system of each node. The nodes cannot leverage a single shared drive.
+
+### Non-indexed Attributes
+
+If the Indexed Attributes list is empty, all attributes are indexed by default (except binary ones). Also, the following “internal” ones won’t be indexed either: "creatorsName", "createTimestamp", "modifiersName", "modifyTimestamp", "cacheCreatorsName", "cacheCreateTimestamp", "cacheModifiersName", "cacheModifyTimestamp", "uuid", "vdsSyncState", "vdsSyncHist", "ds-sync-generation-id", "ds-sync-state", "ds-sync-hist", "vdsSyncCursor", "entryUUID", "userpassword”. Any additional attributes that you do not want indexed should be added to the Non Indexed Attributes list on the Properties tab for the selected persistent cache branch.
+
+If you change the non-indexed attributes, you must re-build the index. You can do this from the Properties tab by clicking **Re-build Index**.
 
 ### Sorted Attributes
 
