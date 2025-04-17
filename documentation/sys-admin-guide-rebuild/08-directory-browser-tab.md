@@ -225,7 +225,7 @@ To add a value to a multi-valued attribute, select the attribute and choose Modi
 
 To delete a value from a multi-valued attribute, select the attribute and value you want to remove and choose Modify Attribute > Delete Value. Click **Yes** to confirm the deletion.
 
-## Managing User Entries**
+## Managing User Entries
 
 User entries can be managed from the Main Control Panel > Directory Browser tab.
 
