@@ -208,11 +208,11 @@ Dynamic group members are assigned to groups based on rules defined for specific
 
 ## Metadata/Schema Extraction
 
-A main key capability of RadiantOne is metadata/schema extraction. To virtualize each [data source](#data-source) the first step is to discover the metadata/schema. This is essential for understanding how each data source stores identities and the related context about the identities. During the schema extraction process, existing objects, attributes and relationships are discovered. This metadata allows RadiantOne to create a global common model of all objects and is the core/basis for defining virtual views. This entire process is depicted in the diagram below.
+A main key capability of RadiantOne is metadata/schema extraction. To virtualize each [data source](#data-source) the first step is to discover the metadata/schema. This is essential for understanding how each data source stores identities and the related context about the identities. During the schema extraction process, existing objects, attributes and relationships are discovered. This metadata allows RadiantOne to create a global common model of all objects and is the core/basis for defining virtual views. 
+
+The schema extraction process can be launched from the Control Panel > Data Catalog > Data Sources > [Selected Data Source] > SCHEMA tab > **...** > Extract New Schema.
 
 ![Schema Extraction](Media/extract_schema.jpg)
- 
-The schema extraction process can be launched from the Control Panel > Data Catalog > Data Sources > [Selected Data Source] > SCHEMA tab > **...** > Extract New Schema.
 
 ## Delegated Authentication
 
