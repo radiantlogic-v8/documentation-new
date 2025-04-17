@@ -242,7 +242,7 @@ A template for the interception script is provided and can be customized to use 
 
 ### Authentication – Client Issues a User ID Only
 
-If a client application only sends a user ID to RadiantOne, and is not configured to first search for the user and then issue a bind with the full DN, RadiantOne can be configured with User ID to DN Mappings (to first find the DN and then issue the bind to the appropriate backend source). For details on configuring User ID to DN Mappings please see [User to DN Mapping](../configuration/global-settings/client-protocols/#user-to-dn-mapping). The following diagram depicts the process.
+If a client application only sends a user ID to RadiantOne, and is not configured to first search for the user and then issue a bind with the full DN, RadiantOne can be configured with User ID to DN Mappings (to first find the DN and then issue the bind to the appropriate backend source). For details on configuring User ID to DN Mappings please see [User to DN Mapping](../configuration/global-settings/client-protocols/#user-to-dn-mapping).
 
 >[!warning]
 >The Identification and Credentials Checking steps still happen, however, they are both performed by RadiantOne (first find the user, then Bind to check credentials).
