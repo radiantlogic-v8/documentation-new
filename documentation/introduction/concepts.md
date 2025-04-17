@@ -21,7 +21,7 @@ The following are concepts that you should understand in order to configure and 
 
 ## Data Source
 
-A data source in RadiantOne represents the connection to a backend. This could be a source that is LDAP-accessible (LDAP Data Source), JDBC-accessible (Database Data Source), or accessible through an API call (Java, web service or REST using a Custom Data Source). Data sources can be managed from the Main Control Panel > Data Catalog > Data Sources.
+A data source in RadiantOne represents the connection to a backend. This could be a source that is LDAP-accessible (LDAP Data Source), JDBC-accessible (Database Data Source), or accessible through an API call (Java, web service or REST using a Custom Data Source). Data sources can be managed from the Control Panel > Data Catalog > Data Sources.
 
 ![managing data sources](Media/managing-data-sources.png)
  
@@ -37,17 +37,17 @@ LDAP data sources defined for RadiantOne are contained in <RLI_HOME>/vds_server/
 
 ### To Import Data Sources
 
-If you have existing data sources defined ([exported](#to-export-data-sources) from another instance of RadiantOne) and you would like to import those, from the Main Control Panel > Settings Tab > Server Backend section click on the sub-section representing the types of data sources you want to import (LDAP Data Sources, Database Data Sources or Custom Data Sources). On the right side, click **Import**. Browse to the zip file containing the data source definitions that you have exported from another RadiantOne server and click **OK**. 
+If you have existing data sources defined ([exported](#to-export-data-sources) from another instance of RadiantOne) and you would like to import those, from the Control Panel > Data Catalog > Data Sources,  click **...** in the upper-right corner and select **Import**. Select the .json-formatted file containing the data sources you want to import and click **CLOSE**.
 
->[!warning] If a data source in the import file has the same name as an existing data source, the existing data source is overwritten by the one you are importing.
+>[!warning] If the **Overwrite Existing Data Sources and Schemas** option is toggled ON, data sources in the import file that have the same names as an existing data source are overwritten by the ones you are importing. 
 
 ### To Export Data Sources
 
-If you have existing data sources defined in a RadiantOne server and you would like to re-use them for another RadiantOne server, from the Main Control Panel > Data Catalog > Data Sources, click **...** in the upper-right corner and select **Export**). Select the data sources you want to export, indicate a file name and location and click **Export**.
+If you have existing data sources defined in a RadiantOne server and you would like to re-use them for another RadiantOne server, from the Control Panel > Data Catalog > Data Sources, click **...** in the upper-right corner and select **Export**. Select the data sources you want to export, and click **EXPORT**. The file is automatically downloaded to the default location directed by your web browser.
 
 ![exporting data sources](Media/exporting-data-sources.png)
 
-You can then copy the export file to the desired RadiantOne server and use the [Import](#to-import-data-sources) option to import the data sources.
+You can then connect to the desired target RadiantOne server Control Panel and use the [Import](#to-import-data-sources) option to import the data sources.
 
 >[!warning] The following default data sources are included with RadiantOne: vdsha (points to the RadiantOne nodes in the cluster), advworks, derbyorders, derbysales, examples, northwind, log2db, and vdapdb (points to the local Derby database server), and replicationjournal (points to a local RadiantOne Universal Directory store and is used for inter-cluster replication). Therefore, be aware that when you import one of these data sources on the target RadiantOne server, the data sources with the same name are overwritten. For this reason, it is recommended that you do not export these data sources.
 
@@ -145,14 +145,14 @@ Interception scripts are written in Java and used to override the default behavi
 
 Interception scripts can be configured at a [global level](../configuration/global-settings/global-interception) (to apply to all root naming contexts configured for the RadiantOne namespace), or for a specific backend (LDAP, Database, Web Services). For details on how to enable interception scripts for your specific type of backend, please see the [Identity Views Guide](../identity-views/identity-views#interception-scripts). This section describes the tasks that are common for interception scripts no matter where they are enabled.
 
-1.	After the script has been enabled from the Main Control Panel click Save in the upper right corner and apply the changes to the server. 
+1.	Enable the operations to intercept and save. 
 
-2.	Edit the script located in: `<RLI_HOME>/vds_server/custom/src/com/rli/scripts/intercept/<naming_context>`
+2.	Edit the script. For SaaS deployments, you can edit direcly in the Control Panel where you enabled the script from. For self-managed deployments, you can also edit directly from the Control Panel, or you can retrieve the script file directly on the underlying pod and edit your own script editor. The script is located in: `<RLI_HOME>/vds_server/custom/src/com/rli/scripts/intercept/<naming_context>`
 <br>If you are using a global Interception, the script is: <RLI_HOME>/vds_server/custom/src/com/rli/scripts/intercept/globalIntercept.java
 
-3.	Rebuild the intercept.jar file by clicking **Build Interception Jar** or by using ANT: C:\radiantone\vds\vds_server\custom>c:\radiantone\vds\ant\bin\ant.bat buildjars
+3.	Rebuild the intercept.jar file by clicking **BUILD INTERCEPT JAR** on the ADVANCED SETTINGS TAB in the Control Panel.
 
-4.	Restart the RadiantOne service. If RadiantOne is deployed in a cluster, you must restart the service on all nodes. Your script logic should now be invoked for the operations you have enabled.
+4.	Restart the RadiantOne service. For SaaS deployments, this can be done in your environment in the Environment Operations Center. Your script logic should now be invoked for the operations you have enabled.
 
 For samples of interception scripts, please see the Radiant Logic Knowledge Base at: https://support.radiantlogic.com
 
@@ -162,10 +162,8 @@ Only registered customers have access to the Knowledge Base.
 >If errors result from interception scripts, error code 1 is always returned by the script. To override this default behavior, and customize/return error codes based on
 >the script logic, set useInterceptionErrorCodeOnViews to true using the following command:
 >```
->https://radiantoneservice:8090/adap/util?action=vdsconfig&commandname=set-property&name=useInterceptionErrorCodeOnViews&value=true
+>https://<WebServiceEndpoint>/util?action=vdsconfig&commandname=set-property&name=useInterceptionErrorCodeOnViews&value=true
 >```
->For more information, including how to authenticate and issue configuration updates using the REST-based configuration API see:
->[Command Line Configuration](/command-line-configuration-guide/01-introduction).
 
 
 ## Groups
@@ -227,9 +225,9 @@ See the [Groups Builder wizard](05-creating-virtual-views#groups-builder) for de
 
 A main key capability of RadiantOne is metadata/schema extraction. To virtualize each [data source](#data-source) the first step is to discover the metadata/schema. This is essential for understanding how each data source stores identities and the related context about the identities. During the schema extraction process, existing objects, attributes and relationships are discovered. This metadata allows RadiantOne to create a global common model of all objects and is the core/basis for defining virtual views. This entire process is depicted in the diagram below.
 
-![Metadata/Schema Discovery and View Definition Global Process](Media/Image2.25.jpg)
+![Schema Extraction](Media/extract_schema.jpg)
  
-The schema extraction process can be launched from the Main Control Panel > Context Builder tab > Schema Manager sub-tab.
+The schema extraction process can be launched from the Control Panel > Data Catalog > Data Sources > [Selected Data Source] > SCHEMA tab > **...** > Extract New Schema.
 
 ## Delegated Authentication
 
