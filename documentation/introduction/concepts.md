@@ -196,30 +196,15 @@ An example of a dynamic group is shown below.
  
 ### Groups Supported by RadiantOne
 
-RadiantOne can be configured for both static and dynamic LDAP groups (as they are described above). In RadiantOne, static and dynamic LDAP groups are described and configured as user-defined groups. RadiantOne also offers auto-generated groups in which both the group names and members are dynamically created.
+RadiantOne can be configured for both static and dynamic LDAP groups (as they are described above). In RadiantOne, static and dynamic LDAP groups are described and configured as user-defined groups. 
 
-All types of groups can be created with the [Groups Builder wizard](05-creating-virtual-views#groups-builder). This section focuses on the definition of each type.
+A group may be named anything and have members that are either statically (explicitly) defined or dynamically created based on a specific rule (dynamically assigned group members are similar to “standard” LDAP dynamic groups). The diagram below depicts an example of group with dynamic members. In the example, group members are built dynamically based on the department attribute in the user entries. If a user’s department were to change, they would automatically be reflected as a member of the new group. For simplicity, only the member ID is shown in the virtual entry whereas the full user DN is returned (as an LDAP client expects) when these groups are requested.
 
-  **User-Defined Groups**
-<br>Static group names are explicitly listed for the group entry (just as with “standard” LDAP group entries). A user-defined group may be named anything and have members that are either statically defined or dynamically created based on a specific rule (dynamically assigned group members are similar to “standard” LDAP dynamic groups). The diagram below depicts an example of user-defined groups with dynamic members. In the example, group members are built dynamically based on the department attribute in the user entries. If a user’s department were to change, they would automatically be reflected as a member of the new group. For simplicity, only the member ID is shown in the virtual entry whereas the full user DN is returned (as an LDAP client expects) when these groups are requested.
-
-![User-Defined Groups with Dynamic Members](Media/Image2.23.jpg)
+![Groups with Dynamic Members](Media/Image2.23.jpg)
 
 Static group members are specific user DNs explicitly listed as members for the group entry. Static group members can be any user DN in the virtual directory tree which means they can come from any backend source.
 
 Dynamic group members are assigned to groups based on rules defined for specific attributes. The attribute values determine which group the member is associated with. First, determine the starting point in the virtual namespace to locate the possible group members. Then, decide which attribute(s) of these entries should be used to determine which group they belong to. For example, if all user entries that contain a department attribute value of “Sales” or “Sales Associate” should be a member of the Sales group, then the LDAP filter used in the rule would look like: (|(departmentNumber=Sales)(departmentNumber=Sales Associate)). Any valid LDAP filter can be used to create the rule for populating group membership.
-
-**Auto-Generated Groups**
-
-With auto-generated groups, group names are determined based on all possible values of a specified user attribute. The attribute values to determine the group names can be pulled from any virtual entries. First, determine the starting point in the virtual namespace to locate entries that contain the attribute you want to base group names on. Then, decide which attribute of these entries contains the possible group names. For example, if all user entries contained a department attribute, possible group names could be determined by creating a unique list of all possible departments. The list is the basis for creating the group names. If all users were associated with one of five different departments (Marketing, Sales, HR, Support, Engineering), then there would be a total of five auto-generated group names based on these values. The group members are determined dynamically based on the value of their department attribute.
-
->[!warning] The attribute you select to base the auto-generated group names on must be single-valued in the user entries.
-
-The diagram below depicts an example of auto-generated groups with both group names and members generated dynamically. In this example, department names are the basis for determining the group names in RadiantOne. This offers an enormous amount of flexibility. If a new department were to appear in the database, a new group would automatically appear in RadiantOne with this new name. Group members are built dynamically based on the department attribute in their entries. If a user’s department were to change, they would automatically be reflected as a member of the new group in RadiantOne. For simplicity, only the member ID is shown in the virtual entry whereas the full user DN will be returned (as an LDAP client expects).
-
-![Auto-Generated Groups with Dynamic Group Names and Dynamic Members](Media/Image2.24.jpg)
- 
-See the [Groups Builder wizard](05-creating-virtual-views#groups-builder) for details on creating both user-defined and auto-generated groups.
 
 ## Metadata/Schema Extraction
 
