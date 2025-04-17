@@ -68,7 +68,7 @@ For more information, see: [Working with Labels](#working-with-labels)
 
 A Content Object is a node that has no descendants. It is a “leaf” or “terminal” node in the view.
 
-A content node represents an object in an identity view.  When you create a content node, you base it on an object that has been extracted/created from a data source and this information is used to populate the entries at run time. The content automatically inherits the primary key attribute of the underlying objects. You can also expose other attributes that belong to the underlying object in the entries. 
+A content node represents an object in an identity view.  When you create a content node, you base it on an object that has been extracted/created from a data source and this information is used to populate the entries at run time. The content automatically inherits the primary key attribute of the underlying objects. You can also expose other attributes that belong to the underlying object in the entries. When mounting content nodes below container nodes in an identity view, the conent node must be using the same schema as the parent container node.
 
 For more information, see: [Working with Content Objects](#working-with-content-objects) 
 
