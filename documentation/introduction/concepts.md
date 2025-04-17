@@ -198,7 +198,7 @@ An example of a dynamic group is shown below.
 
 RadiantOne can be configured for both static and dynamic LDAP groups (as they are described above). In RadiantOne, static and dynamic LDAP groups are described and configured as user-defined groups. 
 
-A group may be named anything and have members that are either statically (explicitly) defined or dynamically created based on a specific rule (dynamically assigned group members are similar to “standard” LDAP dynamic groups). The diagram below depicts an example of group with dynamic members. In the example, group members are built dynamically based on the department attribute in the user entries. If a user’s department were to change, they would automatically be reflected as a member of the new group. For simplicity, only the member ID is shown in the diagram whereas the full user DN is returned (as an LDAP client expects) when these groups are requested.
+A group may be named anything and have members that are either statically (explicitly) defined or dynamically created based on a specific rule (dynamically assigned group members are similar to “standard” LDAP dynamic groups). The diagram below depicts an example of group with dynamic members. In the example, group members are built dynamically based on the department, title and location attributes in the user entries. If one of these user attributes were to change, they would automatically be reflected as a member of the new group. For simplicity, only the member ID is shown in the diagram whereas the full user DN is returned (as an LDAP client expects) when these groups are requested.
 
 ![Groups with Dynamic Members](Media/dynamic_group_radiantone.jpg)
 
