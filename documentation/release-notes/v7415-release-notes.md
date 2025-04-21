@@ -7,7 +7,7 @@ description: v7.4.15 Release Notes
 
 April 22, 2025
 
-These release notes contain important information about improvements and bug fixes for RadiantOne v7.4.15.
+These release notes contain important information about improvements and bug fixes for RadiantOne v7.4.
 
 These release notes contain the following sections:
 
