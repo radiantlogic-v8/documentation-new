@@ -438,7 +438,7 @@ There are four categories of events that can invoke a persistent cache refresh. 
 
 Each is described below.
 
-**Changes Occurring Through RadiantOne**
+### Changes Occurring Through RadiantOne
 
 If RadiantOne receives an update for an entry that is stored in a persistent cache, the following operations occur:
 
@@ -450,7 +450,7 @@ If RadiantOne receives an update for an entry that is stored in a persistent cac
 
 -	The modified entry is available in the persistent cache.
 
-**Real Time Cache Refresh Based on Changes Occurring Directly on the Backend Source(s)**
+### Real Time Cache Refresh Based on Changes Occurring Directly on the Backend Source(s)
 
 When a change happens in the underlying source, connectors capture the change and send it to update the persistent cache. The connectors are managed by agents built into RadiantOne and changes flow through a message queue for guaranteed message delivery. The real-time refresh process is outlined below. 
 
@@ -462,7 +462,7 @@ Persistent Cache Refresh Agents are started automatically once a persistent cach
 
 This type of refresh is described as “Real-time” in the Main Control Panel > Directory Namespace > Cache settings > Cache Branch > Refresh Settings tab (on the right). This is the recommended approach if a real-time refresh is needed.
 
-**Periodic Refresh**
+### Periodic Refresh
 
 In certain cases, if you know the data in the backends does not change frequently (e.g. once a day), you may not care about refreshing the persistent cache immediately when a change is detected in the underlying data source. In this case, a periodic refresh can be used.
 
@@ -488,7 +488,7 @@ The periodic persistent cache refresh activity is logged into <RLI_HOME>/vds_ser
 
 The rebuild process can be very taxing on your backends, and each time a new image is built you are putting stress on the data sources. This type of cache refresh deployment works well when the data doesn’t change too frequently and the volume of data is relatively small. 
 
-**Manually Trigger a Persistent Cache Refresh**
+### Manually Trigger a Persistent Cache Refresh
 
 You can manually initiate a persistent cache refresh that leverages the same methodology as a periodic refresh with the following command (substitute your cached naming context for `<pcache naming>`).
 
