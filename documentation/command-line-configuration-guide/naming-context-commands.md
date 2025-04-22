@@ -185,7 +185,7 @@ The <RLI_HOME>/bin/vdsconfig utility can be used instead of the UI mentioned abo
 
 #### create-pcache
 
-T chisommand creates a persistent cache for a root naming context in the RadiantOne namespace. In multi-node clusters, this command must be executed on the RadiantOne leader node. For information on determining the RadiantOne leader, refer to the [RadiantOne System Administration Guide](/documentation/sys-admin-guide/01-introduction).
+This command creates a persistent cache for a root naming context in the RadiantOne namespace. In multi-node clusters, this command must be executed on the RadiantOne leader node. For information on determining the RadiantOne leader, refer to the [RadiantOne System Administration Guide](/documentation/sys-admin-guide/01-introduction).
 
 >[!note]
 >Use the [configure-real-time-pcache-sync-topology](real-time-persistent-cache-refresh-commands#configure-real-time-pcache-sync-topology) command to configure a real-time refresh.
