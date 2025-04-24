@@ -23,14 +23,14 @@ Provide this password only to trusted administrators with business need for supe
 ### Limit Usage of Directory Manager Account
 
 Knowledge and usage of the RadiantOne super user (e.g. cn=Directory Manager) credentials should be limited. It is highly recommended to use the delegated administrator accounts to manage RadiantOne configuration instead of the super user account. Add your users to the
-appropriate delegated administrator groups to define the roles they should have for managing the RadiantOne configuration. For details on what activities the delegated administrators can perform, please see the RadiantOne System Admin Guide.
+appropriate delegated administrator groups to define the roles they should have for managing the RadiantOne configuration. For details on what activities the delegated administrators can perform, see: [Default Delegated Admin Roles](../introduction/control-panel-overview/#default-delegated-admin-roles)
 
 For details on updating the RadiantOne super user (e.g. cn=directory manager) credentials, see: [Directory Administrator Settings](../introduction/control-panel-overview/#admin)
 
 
 ### Update Default Delegated Admin Account Passwords
 
-There are eight groups used for delegated administration are Directory Administrator, Namespace Administrator, Operator, Schema Administrator, ACI Administrator, ICS Administrator, ICS Operator, and one role for Read Only access. Default administrative users are included as members of these groups. They are as follows:
+There are eight default groups used for delegated administration are Directory Administrator, Namespace Administrator, Operator, Schema Administrator, ACI Administrator, ICS Administrator, ICS Operator, and one role for Read Only access. Default administrative users are included as members of these groups. They are as follows:
 
 uid=aciadmin,ou=globalusers,cn=config
 Member of the ACI Administrator Group.
@@ -56,7 +56,9 @@ Member of the Schema Administrator Group.
 uid=superadmin,ou=globalusers,cn=config
 Member of the Directory Administrator Group.
 
-You can use these default users for delegated administration of RadiantOne activities, or you can add your own users to the various admin roles as described in the Managing Delegation Administration Roles section in the RadiantOne System Administration Guide. To use the default users, you can log in to the Control Panel with any of the following (depending on the configuration you want to manage). For details on the privileges and associated activities these users can perform, please see the RadiantOne System Administration Guide.
+You can use these default users for delegated administration of RadiantOne activities, or you can add your own users to the various admin roles as described in: [Assigning Users to Roles](../introduction/control-panel-overview/#assigning-users-to-roles) 
+
+To use the default users, you can log in to the Control Panel with any of the following (depending on the configuration you want to manage). For details on the privileges and associated activities these users can perform, please see: [Default Delegated Admin Roles](../introduction/control-panel-overview/#default-delegated-admin-roles)
 
 user: aciadmin
 password: <set to the same password you defined for the super user (cn=directory manager)
@@ -129,19 +131,19 @@ RadiantOne offers advanced password policy settings that can be a combination of
   
 - Account expiration.
 
-For details on password policy properties, see the RadiantOne System Administration Guide.
+For details on password policy properties, see: [Password Policies](../configuration/security/password-policies)
 
 ### Assign Appropriate Personnel to Delegated Administration Roles
 
-There are eight default delegated administration groups/roles available for managing the RadiantOne configuration. Only members of these groups can login to the Main Control Panel.
+There are eight default delegated administration groups/roles available for managing the RadiantOne configuration. Only members of these groups can log into the Control Panel.
 
-The eight groups used for delegated administration are Directory Administrator, Namespace Administrator, Operator, Schema Administrator, ACI Administrator, ICS Administrator, ICS Operator, and one role for Read Only access. To add or remove members, log into the Main Control Panel as the super user and click on the Directory Browser tab. Navigate below ou=globalgroups,cn=config node to locate all of the groups. Select the group you want to manage and click the Manage Group button. From here you can remove users from groups and search for new users (located anywhere in the RadiantOne namespace) to add to groups. For complete configuration steps, see the RadiantOne System Administration Guide.
+The eight default groups used for delegated administration are Directory Administrator, Namespace Administrator, Operator, Schema Administrator, ACI Administrator, ICS Administrator, ICS Operator, and one role for Read Only access. To add or remove members, see: [Assigning Users to Roles](../introduction/control-panel-overview/#assigning-users-to-roles) 
 
 It is recommended that only users required to configure and administer RadiantOne get assigned to these groups.
 
 ### Leverage Corporate Identity Provider and Strong Authentication Practices to Login to the Control Panel
 
-Log into the Control Panel using strong authentication methods like MFA and/or PIV Card/Certificate as an alternative to using username and password. For details on this configuration, please see the RadiantOne System Administration Guide.
+Log into the Control Panel using an OIDC token as an alternative to using username and password. The OIDC token provider can support strong authentication methods. Any method supported by the Identity Provider can be used for authentication. For details on this configuration, please see: [OIDC Token Authentication](../introduction/control-panel-overview/#oidc-token)
 
 
 
@@ -151,43 +153,43 @@ The following topics provide general guidance about how to enforce client access
 
 ### Global Access Limits
 
-Access limits are related to how the server handles activity received from clients. Details about each of the parameters mentioned below can be found in the RadiantOne System Administration Guide. This document is only for pointing out these parameters as key to hardening the RadiantOne service against security risks.
+Access limits are related to how the server handles activity received from clients. Details about each of the parameters mentioned below can be found in [Tuning](../tuning/tuning-limits/). This document is only for pointing out these parameters as key to hardening the RadiantOne service against security risks.
 
 >[!warning] 
->Changing any property mentioned in this section requires a restart of RadiantOne to take effect. If deployed in a cluster, restart on all nodes.
+>Changing any property mentioned in this section requires a restart of RadiantOne to take effect.
 
 **Size Limit**
 
 The maximum number of entries a search operation can return. This allows for limiting the
 number of entries LDAP clients can receive from a query. This parameter is configured from the
-Main Control Panel > Settings Tab > Limits section > Global Limits sub-section.
+Classic Control Panel > Settings Tab > Limits section > Global Limits sub-section.
 
 **Time Limit**
 
 The period during which a search operation is expected to finish. If a search operation does not
 finish within this time parameter, the query is aborted. This parameter can be changed from the
-Main Control Panel > Settings Tab > Limits section > Global Limits sub-section.
+Classic Control Panel > Settings Tab > Limits section > Global Limits sub-section.
 
 **Look Through Limit**
 
-The look through limit is the maximum number of entries you want the server to check in response to a search request. You should use this value to limit the number of entries the server looks through to find an entry. This limits the processing and time spent by the RadiantOne service to respond to potentially bogus search requests (for example, if a client sends a search filter based on an attribute that isn’t indexed). This parameter can be changed from the Main Control Panel > Settings Tab > Limits section > Global Limits sub-section.
+The look through limit is the maximum number of entries you want the server to check in response to a search request. You should use this value to limit the number of entries the server looks through to find an entry. This limits the processing and time spent by the RadiantOne service to respond to potentially bogus search requests (for example, if a client sends a search filter based on an attribute that isn’t indexed). This parameter can be changed from the Classic Control Panel > Settings Tab > Limits section > Global Limits sub-section.
 
 **Idle Connection Timeout**
 
-The length of time to keep a connection open without any activity from the client. This parameter can be changed from the Main Control Panel > Settings Tab > Limits section > Global Limits sub-section.
+The length of time to keep a connection open without any activity from the client. This parameter can be changed from the Classic Control Panel > Settings Tab > Limits section > Global Limits sub-section.
 
 ### Custom Limits
 
-Custom limits are more fine-grained and override any Global Limits that are defined. These are defined on the Main Control Panel > Settings > Limits > Custom Limits.
+Custom limits are more fine-grained and override any Global Limits that are defined. These are defined on the Classic Control Panel > Settings > Limits > Custom Limits.
 
 ### Access Regulation
 
-After a client connects to RadiantOne, the amount of activity they can perform can be limited by configuring access regulation. The activity checking can be performed based on the user that connects to RadiantOne. Access regulation is defined from the Main Control Panel > Settings Tab > Limits section > Per User.
+After a client connects to RadiantOne, the amount of activity they can perform can be limited by configuring access regulation. The activity checking can be performed based on the user that connects to RadiantOne. Access regulation is defined from the Classic Control Panel > Settings Tab > Limits section > Per User.
 
 The “Restrictions Checking Interval” parameter indicate is the time frame in which the activity (max binds and max operations) is monitored. Once the time interval is reached, the counts are reset. For example, if Special Users Group checking is enabled, and the checking interval, max bind operations per checking interval and
 max operations per checking interval are set to 300, 30 and 10 respectively, during a 5 minute (300 secs) period, anyone who is a member of the special users group can bind no more than 30 times to the RadiantOne service and not perform more than 10 operations. This count resets every 5 minutes. If a user attempts to perform more than the allowed number of operations, the RadiantOne service refuses the operation, and the client must wait until the checking interval resets.
 
-For more details on configuring access regulation per user and/or per computer, please see the RadiantOne System Administration Guide.
+For more details on configuring access regulation per user and/or per computer, please see: [Access Regulation](../tuning/tuning-limits/#access-regulation)
 
 ## Recommendations for Securing Data at Rest
 
@@ -244,8 +246,7 @@ access controls across the entire RadiantOne namespace. When you define the actu
 the root level, you can set the Target DN to only the applicable branch in the namespace you
 want to protect.
 
-For details on defining access controls, please see the RadiantOne System Administration
-Guide.
+For details on configuring access controls, see: [Access Controls](../configuration/security/access-controls/)
 
 ### Turn on Bind Requires Password Setting
 
@@ -266,20 +267,20 @@ RadiantOne connects to backends using the credentials defined in the data source
 ### Encrypt Attributes in RadiantOne Directory Stores
 
 Attribute encryption protects sensitive data while it is stored in RadiantOne Directory stores. You can specify that certain attributes of an entry are stored in an encrypted format. This prevents data from being readable while stored in the RadiantOne Directory stores,
-backup files, and exported LDIF files. Attribute values are encrypted before they are stored, and decrypted before being returned to the client, as long as the client is authorized to read the attribute (based on ACLs defined in RadiantOne), is connected to RadiantOne via SSL and not a member of the special group containing members not allowed to get these attributes (e.g. cn=ClearAttributesOnly,cn=globalgroups,cn=config). For details on this special group, please see the RadiantOne System Administration Guide.
+backup files, and exported LDIF files. Attribute values are encrypted before they are stored, and decrypted before being returned to the client, as long as the client is authorized to read the attribute (based on ACLs defined in RadiantOne), is connected to RadiantOne via SSL and not a member of the special group containing members not allowed to get these attributes (e.g. cn=ClearAttributesOnly,cn=globalgroups,cn=config). For details on this special group, please see: [Clear Attributes Only](../configuration/security/attribute-encryption/#clear-attributes-only-group)
 
-You can use your own security key (Customer Master Key) for attribute encryption via AWS KMS. For details on using AWS KMS, see the RadiantOne System Administration Guide.
+You can use your own security key (Customer Master Key) for attribute encryption via AWS KMS. For details, see: [AWS KMS](../configuration/security/attribute-encryption/#using-amazon-web-services-aws-with-a-customer-master-key-cmk)
 
 
-For details on configuring attribute encryption, see the RadiantOne Namespace Configuration Guide.
+For details on configuring attribute encryption, see: [Attribute Encryption](../configuration/security/attribute-encryption/#attribute-encryption-key-generation)
 
 ### Use Zipped and Encrypted LDIF Files
 
-When exporting (or initializing) RadiantOne Directory stores or persistent cache stores, choose to use LDIFZ file types (which are zipped and encrypted) instead of classic LDIF files. LDIFZ files are encrypted using the security key defined in RadiantOne. For details on creating a security key, see the RadiantOne System Administration Guide.
+When exporting (or initializing) RadiantOne Directory stores or persistent cache stores, choose to use LDIFZ file types (which are zipped and encrypted) instead of classic LDIF files. LDIFZ files are encrypted using the security key defined in RadiantOne. For details on creating a security key, see: [Creating a Security Key for LDIFZ](../configuration/security/attribute-encryption/#key-generation)
 
-You can use your own security key (Customer Master Key) for attribute encryption via AWS KMS. For details on using AWS KMS, see the RadiantOne System Administration Guide.
+You can use your own security key (Customer Master Key) for attribute encryption via AWS KMS. For details, see: [AWS KMS](../configuration/security/attribute-encryption/#using-amazon-web-services-aws-with-a-customer-master-key-cmk)
 
-For details on exporting RadiantOne Directory stores using LDIFZ, see the RadiantOne Namespace Configuration Guide. For details on exporting persistent cache stores using LDIFZ, see the RadiantOne Deployment and Tuning Guide.
+For details on exporting RadiantOne Directory stores using LDIFZ, see: [Exporting Directory Stores](../configuration/directory-stores/managing-directory-stores/#exporting-directory-stores). For details on exporting persistent cache stores using LDIFZ, see: [Exporting Persistent Cache](../tuning/persistent-cache/#export)
 
 ### Avoid Displaying Sensitive Attributes in Log Files
 
@@ -294,16 +295,16 @@ to log files: prop.list(System.out)
 
 When entries change, the change log reports the attributes under its "changes" attribute. This may pose a security risk if sensitive attributes have been changed and the change log is searchable by outside applications such as sync connectors. To eliminate this risk, the Excluded Change Log Attributes option allows you to exclude selected attributes from members of the
 “ChangelogAllowedAttributesOnly” group. Though these attributes are logged in the change log,
-they are not returned for these group members when performing a search on the change log. For more information, refer to the RadiantOne System Administration Guide.
+they are not returned for these group members when performing a search on the change log. For more information, see: [Excluded Change Log Attributes](../configuration/directory-stores/managing-directory-stores/#excluded-change-log-attributes)
 
 ### Secure Access to the Global Sync Queues
 
 For Global Sync deployments, the Agent and Sync Engine process read and/or write into the queues using the credentials configured in the RadiantOne data source named: vdsha
-You can view this data source configuration from Main Control Panel > Settings > Server Backend > LDAP Data Sources.
+You can view this data source configuration from Control Panel > Setup > Data Catalog > Data Sources.
 
 For security reasons, the user account (Bind DN) you have configured in the vdsha data source should be the only one allowed to access the cn=queue and cn=dlqueue naming contexts.
 
-Configure access controls for these root naming contexts from Main Control Panel > Settings > Security > Access Control. Access should only be allowed for the account configured in the vdsha data source. For details on configuring access controls, see the RadiantOne System Administration Guide.
+Configure access controls for these root naming contexts from Control Panel > Manage > Security > Access Controls. Access should only be allowed for the account configured in the vdsha data source. For details on configuring access controls, see: [Access Controls](../configuration/security/access-controls/)
 
 ### RadiantOne Directory (HDAP) Stores Attribute Encryption
 
@@ -349,9 +350,7 @@ versions of Java.
 
 If RadiantOne is connecting to backends over a network connection that is considered unsecure, it is recommended that you configure the connection to use SSL/TLS.
 
-If the backend server uses a certificate issued by a trusted Certificate Authority, then all you need to do is enter the SSL port and check the SSL checkbox when you define the data source.
-For database backends, just enter the SSL port in the URL as there is no SSL checkbox.
+If the backend server uses a certificate issued by a trusted Certificate Authority, then all you need to do is enter the SSL port and toggle the SSL option **ON** when you define the data source.
+For database backends, just enter the SSL port in the URL as there is no SSL toggle.
 
-If the server you are connecting to uses a self-signed certificate, or signed by a Certificate Authority not known by RadiantOne, then this certificate must be imported into the client truststore. Import client certificates into the RadiantOne truststore from the Main Control Panel > Settings Tab > Security section > Client Certificate Truststore. RadiantOne dynamically loads client certificates from here meaning certificates can be added at any time without requiring a restart.
-
-For more information on SSL/TLS support, please see the RadiantOne System Administration Guide.
+If the server you are connecting to uses a self-signed certificate, or signed by a Certificate Authority not known by RadiantOne, then this certificate must be imported into the client truststore. Import client certificates into the RadiantOne truststore from the Control Panel > Global Settings > Client Certificates. RadiantOne dynamically loads client certificates from here meaning certificates can be added at any time without requiring a restart.
