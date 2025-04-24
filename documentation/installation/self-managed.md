@@ -201,6 +201,22 @@ kubectl port-forward svc/fid-app -n self-managed 2389 2636
 - Access the LDAP service at: `ldap://localhost:2389` from your LDAP browser.
 - Access the LDAPs service at: `ldaps://localhost:2636` from your LDAP browser.
 
+### Restarting LDAP and REST services
+
+To perform a rolling restart of the LDAP and REST endpoints on all Identity Data Management pods, run this command:
+
+```bash
+kubectl rollout restart statefulset/fid -n self-managed
+```
+
+Note that this will restart all the pods.
+
+
+Optionally, to monitor the progress of the restart, run the following command: 
+```bash
+kubectl rollout status statefulset/fid -n self-managed
+```
+
 ## Updating a Deployment
 
 To update any resources or settings, change the values in `values.yaml` and run the following command:
