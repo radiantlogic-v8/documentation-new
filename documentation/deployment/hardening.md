@@ -212,13 +212,11 @@ You can define access to the following subjects:
 - all users who belong to a specific group
 - all users in the directory
 
-Access controls are set from the Main Control Panel > Settings Tab > Security section > Access Control sub-section.
+Access controls are set from the Control Panel > Manage > Security > Access Control sub-section.
 
 By default, all users have read access to all naming contexts in RadiantOne for search, compare, and read operations. This includes read access to the RadiantOne directory RootDSE (accessible by requested an empty base DN).
 
-This default access control can be removed from the Main Control Panel ->
-Settings Tab > Security section > Access Control. Click root on the right and select the
-configured access control described as “grant read access to anyone”. Then click **Delete**.
+This default access control can be removed from the Control Panel > Manage > Security > Access Control. Select the Root level and click the trash can icon inline with the access control described as “grant read access to anyone” in the table on the right.
 
 If you choose not to delete the grant access to anyone control, it is recommended for security reasons that you ensure that userpassword is not returned. You can do so as shown in the following example ACI. 
 
@@ -229,8 +227,7 @@ If you do not want to return the userPassword attribute for anyone other than se
 (targetattr = "userPassword")(target = "ldap:///")(targetscope = "subtree")(version 3.0;acl "Allow Access to userPassword to self";allow (all) (userdn = "ldap:///self");)
 
 >[!warning] 
->If you delete the default read access, this does not delete read access to the RootDSE for RadiantOne. If you want to remove public access to the RootDSE, check the Enable RootDSE ACI option after you delete the default global read access. This denies access to the RootDSE to everyone except cn=directory manager. You can also add a new ACI that
-dictates RootDSE access. Below is an example of allowing public access to the RootDSE:
+>If you delete the default read access, this does not delete read access to the RootDSE for RadiantOne. If you want to remove public access to the RootDSE, check the Enable RootDSE ACI option (on the GENERAL Tab) after you delete the default global read access. This denies access to the RootDSE to everyone except cn=directory manager. You can also add a new ACI that dictates RootDSE access. Below is an example of allowing public access to the RootDSE:
 
 >[!warning]
 >(target="ldap:///")(targetscope="base")(targetattr="*")(version 3.0; acl
@@ -251,11 +248,11 @@ If the Bind Requires Password setting is enabled, and no password is specified i
 
 If Bind Requires Password is not enabled, and a bind request comes in with a valid user DN and no password, it is considered an anonymous bind.
 
-This setting can be enabled from Main Control Panel > Settings tab > Security section > Access Control. Check the Bind requires a password option.
+This setting can be enabled from Control Panel > Manage > Security > Access Controls. Select the **GENERAL** tab on the right. Toggle the BIND REQUIRES PASSWORD option to **ACTIVE**.
 
 ### Use Multi-Factor Authentication
 
-Configure your corporate OIDC provider from Main Control Panel > Settings > Security > OIDC Provider Configuration. The OIDC provider should be configured to support the desired MFA vendor.
+Configure your corporate OIDC provider from Control Panel > Admin > Control Panel Configuration > OpenID Connect Provider section. The OIDC provider should be configured to support the desired MFA vendor.
 
 ### Use Least Privilege Accounts for Backend Connections
 
@@ -281,7 +278,7 @@ For details on exporting RadiantOne Directory stores using LDIFZ, see: [Exportin
 
 ### Avoid Displaying Sensitive Attributes in Log Files
 
-Configure sensitive attributes in the Main Control Panel > Settings > Server Front End > Attribute Handling -> Attributes Not Displayed in Logs setting. This property allows you to control which attribute values are not printed in clear in the RadiantOne logs. If you do not want certain attribute values printed in clear in the logs, you can indicate them here. Each attribute
+Configure sensitive attributes in the Classic Control Panel > Settings > Server Front End > Attribute Handling > Attributes Not Displayed in Logs setting. This property allows you to control which attribute values are not printed in clear in the RadiantOne logs. If you do not want certain attribute values printed in clear in the logs, you can indicate them here. Each attribute
 name should be separated with a single space. Any attribute indicated here has a value of ***** printed in the logs instead of the value in clear.
 
 >[!warning] 
