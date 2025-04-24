@@ -96,18 +96,15 @@ By default, the password for the delegated admin accounts is set to the same pas
 
 To change the password:
 
-1. Log in to the Main Control Panel as the directory manager and select the Directory Browser tab.
+1. Log into the Control Panel as a member of the Directory Administrator role and go to Manage > Directory Browser.
 2. Navigate below cn=config > ou=globalusers.
-
-3. Select the entry representing the user whose password you want to change. On the right side, select the userPassword attribute.
-4. From the Modify Attribute drop-down menu, select Edit. An editable userpassword field displays above the attribute list.
-5. Change the value here in the userpassword field. Click OK.
+3. Select the entry representing the user whose password you want to change. On the right side, select **...** > Reset Password.
+4. Change the value here and click **SAVE**.
 
 Below is an example of changing the aciadmin user’s password.
 
-![An image showing changing the aciadmin user's password ](Media/Image2.1.jpg)
+![An image showing changing the aciadmin user's password ](Media/reset-password.jpg)
 
-Figure 1.1 : Changing Passwords
 
 ### Configure Strong Password Policies
 
