@@ -25,7 +25,7 @@ Provide this password only to trusted administrators with business need for supe
 Knowledge and usage of the RadiantOne super user (e.g. cn=Directory Manager) credentials should be limited. It is highly recommended to use the delegated administrator accounts to manage RadiantOne configuration instead of the super user account. Add your users to the
 appropriate delegated administrator groups to define the roles they should have for managing the RadiantOne configuration. For details on what activities the delegated administrators can perform, please see the RadiantOne System Admin Guide.
 
-For details on updating the RadiantOne super user (e.g. cn=directory manager) credentials, see the RadiantOne System Administration Guide.
+For details on updating the RadiantOne super user (e.g. cn=directory manager) credentials, see: [Directory Administrator Settings](../introduction/control-panel-overview/#admin)
 
 
 ### Update Default Delegated Admin Account Passwords
