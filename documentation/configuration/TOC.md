@@ -12,7 +12,6 @@ description: Configuring RadiantOne Identity Data Management
   - [Directory Namespace](#)
     - [Introduction](identity-views/intro-view-design.md)
     - [Joins](identity-views/joins.md)
-    - [General Identity View Design](identity-views/intro-view-design.md)
     - [Creating LDAP Proxy Views](identity-views/ldap-proxy-views.md)
     - [Creating Model-driven Views](model-driven-views.md)
     - [Special Attributes Handling](identity-views/special-attributes.md)
