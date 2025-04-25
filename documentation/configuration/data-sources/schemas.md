@@ -102,7 +102,7 @@ A new object is created below the Views branch and contains all attributes from 
 
 Examples of JDBC-accessible backends are Microsoft SQL Server, Oracle, DB2, and Sybase. 
 
-The database data source must be created before completing the schema extraction steps below. See [Data Sources](./data-sources.md) for details about creating data sources.
+The database data source must be created before completing the schema extraction steps below. See [Data Sources](../data-sources/data-sources) for details about creating data sources.
 
 1.	In the Control Panel > Setup > Data Catalog > Data Sources > Selected Data Source > SCHEMA Tab, click **...** > Extract New Schema.
 
@@ -122,7 +122,7 @@ You can view/modify this schema by selecting it from the drop-down list. Any cha
 
 ### SCIMv2 Backends
 
-The SCIMv2 data source must be created before completing the schema extraction steps below. See [Data Sources](./data-sources.md) for details about creating data sources.
+The SCIMv2 data source must be created before completing the schema extraction steps below. See [Data Sources](../data-sources/data-sources) for details about creating data sources.
 
 1.	In the Control Panel > Setup > Data Catalog > Data Sources > Selected Data Source > SCHEMA Tab, click **...** > Extract New Schema.
 
@@ -135,7 +135,7 @@ The SCIMv2 data source must be created before completing the schema extraction s
 
 ### Custom Backends
 
-The custom data source must be created before completing the steps below. See [Data Sources](./data-sources.md) for details about creating data sources. The schemas associated with custom sources cannot be extracted. You must manually define the objects and attributes matching the custom data source API after providing a schema name. Every object (e.g. user) that stores identity data must be defined.
+The custom data source must be created before completing the steps below. See [Data Sources](../data-sources/data-sources) for details about creating data sources. The schemas associated with custom sources cannot be extracted. You must manually define the objects and attributes matching the custom data source API after providing a schema name. Every object (e.g. user) that stores identity data must be defined.
 
 1.	 In the Control Panel > Setup > Data Catalog > Data Sources > Selected Data Source > SCHEMA Tab, click **...** > Extract New Schema.
 1.	 Enter a schema file name. Click OK.
