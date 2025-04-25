@@ -58,11 +58,11 @@ A recursive relationship is an object related to itself. For example, an employe
 ## Extracting Schemas
 Each identity data source must have at least one schema file associated with it. For LDAP data sources, a schema is extracted when the data source is defined. For all other data sources, the schema must be extracted. If you select a data source that does not have any schemas, a notice appears and prompts the user to extract the schema.
 
-![An image showing No Schemas Found Message ](Media/no-schema.jpg)
+![No Schemas Found Message ](Media/no-schema.jpg)
 
 Schemas can also be extracted using the **...** > Extract New Schema option.
 
-![An image showing No Schemas Found Message ](Media/extract-new-schema.jpg)
+![Extract New Schema](Media/extract-new-schema.jpg)
 
 ### LDAP-Accessible Backend 
 
@@ -71,7 +71,7 @@ Examples of LDAP-accessible backends are Sun Java Directory, Microsoft Active Di
 1. In the Control Panel > Setup > Data Catalog > Data Sources > Selected Data Source > SCHEMA Tab, click **...** > Extract New Schema.
 
 1.	Enter a schema file name (do not use hyphens) and click **OK**.
-	 ![An image showing ](Media/extract-new-schema.png)
+	 ![Extract New Schema](Media/extract-new-schema.jpg)
 
 
 1. You can view/modify this schema by selecting it from the drop-down list. Any changes made (such as attribute name remapping), do not affect the underlying schema. 
@@ -102,7 +102,7 @@ A new object is created below the Views branch and contains all attributes from 
 
 Examples of JDBC-accessible backends are Microsoft SQL Server, Oracle, DB2, and Sybase. 
 
-The database data source must be created before completing the schema extraction steps below. See [Data Sources](../configuration/data-sources/data-sources) for details about creating data sources.
+The database data source must be created before completing the schema extraction steps below. See [Data Sources](./data-sources.md) for details about creating data sources.
 
 1.	In the Control Panel > Setup > Data Catalog > Data Sources > Selected Data Source > SCHEMA Tab, click **...** > Extract New Schema.
 
@@ -122,7 +122,7 @@ You can view/modify this schema by selecting it from the drop-down list. Any cha
 
 ### SCIMv2 Backends
 
-The SCIMv2 data source must be created before completing the schema extraction steps below. See [Data Sources](../configuration/data-sources/data-sources) for details about creating data sources.
+The SCIMv2 data source must be created before completing the schema extraction steps below. See [Data Sources](./data-sources.md) for details about creating data sources.
 
 1.	In the Control Panel > Setup > Data Catalog > Data Sources > Selected Data Source > SCHEMA Tab, click **...** > Extract New Schema.
 
@@ -135,7 +135,7 @@ The SCIMv2 data source must be created before completing the schema extraction s
 
 ### Custom Backends
 
-The custom data source must be created before completing the steps below. See [Data Sources](../configuration/data-sources/data-sources) for details about creating data sources. The schemas associated with custom sources cannot be extracted. You must manually define the objects and attributes matching the custom data source API after providing a schema name. Every object (e.g. user) that stores identity data must be defined.
+The custom data source must be created before completing the steps below. See [Data Sources](./data-sources.md) for details about creating data sources. The schemas associated with custom sources cannot be extracted. You must manually define the objects and attributes matching the custom data source API after providing a schema name. Every object (e.g. user) that stores identity data must be defined.
 
 1.	 In the Control Panel > Setup > Data Catalog > Data Sources > Selected Data Source > SCHEMA Tab, click **...** > Extract New Schema.
 1.	 Enter a schema file name. Click OK.
