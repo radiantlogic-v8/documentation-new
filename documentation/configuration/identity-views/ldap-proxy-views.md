@@ -630,7 +630,7 @@ Define a computed attribute named userPassword with the value based on the getAD
 
 >[!note] If your LDAP proxy view is using a Merged Tree configuration to merge another Active Directory view into the primary proxy view, you must have the userPassword computed attribute configured in both the primary proxy view and the merged view for passwords to be retrieved properly from both Active Directory backends.
 
-Lastly a [persistent cache](../tuning/persistent-cache/) can be configured and initialized for the identity view. Afterwards, check the option to Use Cache for Authentication. When this option is enabled, RadiantOne validates the credentials against the local cache as opposed to delegating the credentials checking to the backend Active Directory. 
+Lastly a [persistent cache](../../tuning/persistent-cache/) can be configured and initialized for the identity view. Afterwards, check the option to Use Cache for Authentication. When this option is enabled, RadiantOne validates the credentials against the local cache as opposed to delegating the credentials checking to the backend Active Directory. 
 
 ## LDAP Proxy View Special Attributes
 
