@@ -66,7 +66,7 @@ Schemas can also be extracted using the **...** > Extract New Schema option.
 
 ### LDAP-Accessible Backend 
 
-Examples of LDAP-accessible backends are Sun Java Directory, Microsoft Active Directory, IBM Tivoli Directory, eDirectory, Red Hat Directory, and OpenLDAP. The LDAP data source must be created before completing the schema extraction steps below. See [Data Sources](./data-sources.md) for details about creating data sources.
+Examples of LDAP-accessible backends are Sun Java Directory, Microsoft Active Directory, IBM Tivoli Directory, eDirectory, Red Hat Directory, and OpenLDAP. The LDAP data source must be created before completing the schema extraction steps below. See [Data Sources](../data-sources/data-sources) for details about creating data sources.
 
 1. In the Control Panel > Setup > Data Catalog > Data Sources > Selected Data Source > SCHEMA Tab, click **...** > Extract New Schema.
 
@@ -191,7 +191,7 @@ To declare and modify the primary keys:
 1.	 Choose the column(s) from the Attributes List that you want to use as the primary key and click the right arrow button. 
 
 1. 	To remove the column(s) from the key(s) list, choose the column(s) and click the left arrow button.
-   ![An image showing ](Media/set-primary-keys.jpg)
+    ![An image showing ](Media/set-primary-keys.jpg)
  
 1. 	Click **OK** when finished. The key(s) you selected are now declared as the primary key. 
 
