@@ -540,7 +540,7 @@ To mark an attribute as hidden:
 5.	If you already see the attribute you want to mark as hidden in the list, click the ![Pencil](Media/pencil.jpg) inline with the attribute. Check the *hidden* checkbox and click **SAVE**.
 6.	Click **SAVE** in the bottom right to save the page.
 
->[!warning] this is NOT the approach you should take to prevent certain attributes from being returned to the client. Preventing attributes from being returned should be accomplished with ACL’s.
+>[!warning] This is NOT the approach you should take to prevent certain attributes from being returned to the client. Preventing attributes from being returned should be accomplished with ACL’s.
 
 **ActualDN**
 
@@ -571,11 +571,11 @@ For identity views from an Active Directory backend, passwords associated with t
 
 To cache user passwords, the virtual view of Active Directory needs a computed attribute named userPassword that is based on the function named getADPassword(). RadiantOne considers this computed attribute as the user’s password and the value of the computed attribute contains the user’s Active Directory password (encrypted as PBKDF2AD).  
 
->[!warning] - If you plan on using the persistent cache as a source image for synchronizing entries to a target Active Directory and you want to synchronize passwords, you must use the function named getADPasswordMD4() instead of getADPassword(). This is to ensure the password format can be handled properly by the target Active Directory.  
+>[!warning] If you plan on using the persistent cache as a source image for synchronizing entries to a target Active Directory and you want to synchronize passwords, you must use the function named getADPasswordMD4() instead of getADPassword(). This is to ensure the password format can be handled properly by the target Active Directory.  
 
 To validate credentials, RadiantOne compares the value of the user’s cached userPassword attribute to the value that comes in the bind request. If it matches, the authentication is successful. If it doesn’t match, the authentication is unsuccessful. If the local authentication is unsuccessful, and you have the Delegate on Failure option checked, RadiantOne delegates the credentials checking to the backend Active Directory. The backend Active Directory is responsible in determining if the authentication is successful. 
 
->[!note] – The ability to get and cache passwords is supported for Active Directory 2008 R2(+) backends. Also, the RadiantOne Secure Data Connector client must be deployed on a Windows OS. All Windows updates should be applied to both the machine hosting the Secure Data Connector and the backend Active Directory machine. The credentials configured in the Active Directory data source for RadiantOne must have the following permissions.
+>[!note] The ability to get and cache passwords is supported for Active Directory 2008 R2(+) backends. Also, the RadiantOne Secure Data Connector client must be deployed on a Windows OS. All Windows updates should be applied to both the machine hosting the Secure Data Connector and the backend Active Directory machine. The credentials configured in the Active Directory data source for RadiantOne must have the following permissions.
 ><br>Domain Level: Read, Replicating Directory Changes, Replicating Directory Changes All, Replicating Directory Changes in Filtered Set.
 ><br>Ou Level: Read all properties. 
 
@@ -628,7 +628,7 @@ Define a computed attribute named userPassword with the value based on the getAD
 1. Click **SAVE**. 
 
 
->[!note] – If your LDAP proxy view is using a Merged Tree configuration to merge another Active Directory view into the primary proxy view, you must have the userPassword computed attribute configured in both the primary proxy view and the merged view for passwords to be retrieved properly from both Active Directory backends.
+>[!note] If your LDAP proxy view is using a Merged Tree configuration to merge another Active Directory view into the primary proxy view, you must have the userPassword computed attribute configured in both the primary proxy view and the merged view for passwords to be retrieved properly from both Active Directory backends.
 
 Lastly a [persistent cache](#ldap-proxy-view-persistent-cache) can be configured and initialized for the identity view. Afterwards, check the option to Use Cache for Authentication. When this option is enabled, RadiantOne validates the credentials against the local cache as opposed to delegating the credentials checking to the backend Active Directory. 
 
