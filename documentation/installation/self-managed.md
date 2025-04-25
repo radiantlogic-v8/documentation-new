@@ -209,8 +209,7 @@ To perform a rolling restart of the LDAP and REST endpoints on all Identity Data
 kubectl rollout restart statefulset/fid -n self-managed
 ```
 
-Note that this will restart all the pods.
-
+Note that this will restart all `fid-<x>` pods, beginning with the pod that has the highest number. For example, in a 3-node cluster (fid-0, fid-1, fid-2), the restart order will be: fid-2 first, followed by fid-1, and finally fid-0. 
 
 Optionally, to monitor the progress of the restart, run the following command: 
 ```bash
