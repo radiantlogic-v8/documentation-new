@@ -239,7 +239,7 @@ Identity views based on recursive relationships are built with container and opt
 Identity views that are comprised of objects and attributes from multiple heterogeneous data sources are built using links and/or joins. Whenever a virtual view needs to contain information from more than one data source, the design options are:
 
 - Extend the entries from the primary source with attributes from other sources that the same users exist in. This is accomplished using [joins](joins.md).
-- Condition the identity view hierarchy based on a relationship (common key) between objects across data sources that already have an identity view created for them. This is accomplished using: [links](model-driven-views.md).
+- Condition the identity view hierarchy based on a relationship (common key) between objects across data sources that already have an identity view created for them. This is accomplished using: [links](model-driven-views#links).
 
 ### Joins
 
