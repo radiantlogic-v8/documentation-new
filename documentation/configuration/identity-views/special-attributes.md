@@ -29,7 +29,7 @@ Unnest Groups	| - | - | X
 
 ### Linked Attributes
 
-The Linked Attributes setting is only compatible with entries located in identity views from LDAP backends, [RadiantOne Directory stores](../directory-stores/special-attributes-handling) or persistent cached identity views.
+The Linked Attributes setting is only compatible with entries located in identity views from LDAP backends, [RadiantOne Directory stores](../directory-stores/special-attributes-handling) or [persistent cached identity views](../../tuning/persistent-cache).
 
 Linked attributes are attributes that allow relationships between objects. A typical example would be isMemberOf/uniqueMember for user/groups objects. A group has members (uniqueMember attribute) which is the forward link relationship. Those members have an isMemberOf attribute which is the back link (to the group entry) relationship. Other examples of linked attributes are:
 
@@ -147,7 +147,7 @@ To enable support for dynamic groups, follow the steps below.
 1.	Click **+DYNAMIC GROUP**.
 
 1.	Click ![folder icon](Media/folder-icon.jpg) and browse to the exact group entry that you like RadiantOne to automatically evaluate members for and click **SELECT**. To configure this logic for multiple groups located in the same container, just enter an LDAP URL that encompasses all groups instead of browsing to the exact group entry. E.g. ldap:///cn=config??sub?(objectClass=groupOfURLs) could be used to indicate all dynamic groups located below cn=config. If you are not knowledgeable about LDAP URL syntax, just browse to the container/parent node where all dynamic groups are located and the LDAP URL is automatically calculated for you.
-1.	Click **ADD**. Below is an example of a dynamic group indicating a memberURL of: ldap:///o=companydirectory?1.1?base?(l=San Mateo) and how this would be configured respectively.
+1.	Click **ADD**. Below is an example of a dynamic group indicating a memberURL of: ldap:///o=companydirectory?1.1?sub?(l=San Mateo) and how this would be configured respectively.
 	![Dynamic Group Example](Media/dynamic-group-ex.jpg)<br>
 	![Dynamic Group Config Example](Media/dynamic-group-config-ex.jpg)
  
