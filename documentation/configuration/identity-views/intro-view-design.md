@@ -109,7 +109,7 @@ Dynamic group members are assigned to groups based on rules defined for specific
 
 **Attributes-Based Authorization**
 
-The term dynamic join means that the RadiantOne service performs the aggregation of attributes from common identities on-the-fly as applications request a particular entry. Each time an application requests a user entry, the RadiantOne service performs the join. This ensures that the most up-to-date information is retrieved in real-time from the authoritative source. If this real-time join does not meet your performance requirements, then a persistent cache may be used. More details on caching can be found in: [Tuning](../tuning/persistent-cache)
+The term dynamic join means that the RadiantOne service performs the aggregation of attributes from common identities on-the-fly as applications request a particular entry. Each time an application requests a user entry, the RadiantOne service performs the join. This ensures that the most up-to-date information is retrieved in real-time from the authoritative source. If this real-time join does not meet your performance requirements, then a persistent cache may be used. More details on caching can be found in: [Tuning](../../tuning/persistent-cache)
 
 Below is a high-level diagram depicting a join across three data sources for a common user.
 
