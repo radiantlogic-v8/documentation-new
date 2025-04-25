@@ -13,7 +13,7 @@ description: Configuring RadiantOne Identity Data Management
     - [Introduction](identity-views/intro-view-design.md)
     - [Joins](identity-views/joins.md)
     - [Creating LDAP Proxy Views](identity-views/ldap-proxy-views.md)
-    - [Creating Model-driven Views](model-driven-views.md)
+    - [Creating Model-driven Views](identity-views/model-driven-views.md)
     - [Special Attributes Handling](identity-views/special-attributes.md)
     - [Interception Scripts](identity-views/view-interception.md)
 - [Global Identity Builder](#)
