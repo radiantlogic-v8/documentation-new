@@ -16,8 +16,7 @@ If you have deployed an external ZooKeeper ensemble, make a backup copy of the e
 
 ## Retrieving the Update Files 
 
-To access the update files for version 7.4 and earlier, log in to your [Radiant Logic Support Portal](https://files.radiantlogic.com/receive/?packageCode=IX0qTSRyilShjhpxusLWpUDzzb4rduq2tO9F81NhEt4#keycode=Niad1bODfyRmdW8PlGO-5In0mdRKsa0u6551qXXI1rA) account. If you do not yet have access to the portal, email support@radiantlogic.com.
-
+To access the update files for version 7.4 and earlier, log in [here](https://files.radiantlogic.com/receive/?packageCode=IX0qTSRyilShjhpxusLWpUDzzb4rduq2tO9F81NhEt4#keycode=Niad1bODfyRmdW8PlGO-5In0mdRKsa0u6551qXXI1rA) using the email address associated with your Radiant Logic Support Portal account. If you do not yet have access, email support@radiantlogic.com.
 
 After you login, navigate to: `/update_installers/7.4/<version_to_update_to>`. Copy the applicable file to all of your RadiantOne nodes. 
 
