@@ -16,10 +16,10 @@ If you have deployed an external ZooKeeper ensemble, make a backup copy of the e
 
 ## Retrieving the Update Files 
 
-Navigate here to create an account: https://radiantlogicinc246.sharefile.com/i/i1bc2de34c6e42bba  
-If you already have an account, go here to login: https://radiantlogicinc246.sharefile.com/login
+To access the update files for version 7.4 and earlier, log in to your [Radiant Logic Support Portal](https://files.radiantlogic.com/receive/?packageCode=IX0qTSRyilShjhpxusLWpUDzzb4rduq2tO9F81NhEt4#keycode=Niad1bODfyRmdW8PlGO-5In0mdRKsa0u6551qXXI1rA) account. If you do not yet have access to the portal, email support@radiantlogic.com.
 
-After you create an account, log in and navigate to: `/update_installers/7.4/<version_to_update_to>`. Copy the applicable file to all of your RadiantOne nodes. 
+
+After you login, navigate to: `/update_installers/7.4/<version_to_update_to>`. Copy the applicable file to all of your RadiantOne nodes. 
 
 Linux:<br>
 `radiantone_<version>_update_linux_64.tar.gz `
@@ -32,7 +32,7 @@ Windows:<br>
 
 ## Preparing for the Update 
 
-Best practice is to have a blue-green deployment, where you have an extra set of machines to install and test the patch, make sure it is running the same RadiantOne version as the active environment. Then, migrate over the current configuration from the active environment (using v2.1.X of the Migration Utility, where "X" matches the patch release version you are applying. For example, if you are applying patch v7.4.12, use the Migration Utility v2.1.12. You can download the migration utility from the same Sharefile site where you retrieved the update files in `/MigrationUtility/Migration Utility v2.1`). Finally, run the update in the test environment using the procedure below. After all tests pass, switch your load balancer to direct traffic to the updated environment. 
+Best practice is to have a blue-green deployment, where you have an extra set of machines to install and test the patch, make sure it is running the same RadiantOne version as the active environment. Then, migrate over the current configuration from the active environment (using v2.1.X of the Migration Utility, where "X" matches the patch release version you are applying. For example, if you are applying patch v7.4.12, use the Migration Utility v2.1.12. You can download the migration utility from the same support portal site where you retrieved the update files in `/MigrationUtility/Migration Utility v2.1`). Finally, run the update in the test environment using the procedure below. After all tests pass, switch your load balancer to direct traffic to the updated environment. 
 
 If you do not have a blue-green test environment, you can perform an in-place update, meaning you are applying the patch on your existing active machines as opposed to having a new, clean environment. 
 
@@ -160,7 +160,7 @@ If you have ZooKeeper deployed in an external ensemble, you must update it separ
 
 The files to detect password changes in Active Directory were updated in v7.4.11. These files need to be manually updated in your RadiantOne install if you are running a version prior to v7.4.11 (base install before patching).
 
-Download the files from the same Sharefile site where you retrieved the updater files from this location: `/Tools/AD_Pwd_Filter/Patch_Files_v7411+` and update your `<RLI_HOME>/bin/ad_pwd` folder with them (remove or overwrite these files with the ones from Sharefile).
+Download the files from the same support portal site where you retrieved the updater files from this location: `/Tools/AD_Pwd_Filter/Patch_Files_v7411+` and update your `<RLI_HOME>/bin/ad_pwd` folder with them (remove or overwrite these files with the ones from the support portal).
 
 Install the .NET framework v4.8 and [VC++ distributable v14.38+](https://aka.ms/vs/17/release/vc_redist.x64.exe) on the RadiantOne machine.
 

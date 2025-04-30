@@ -116,11 +116,10 @@ To back up ACLs:
 
 Download the migration utility v2.1.X from the Radiant Logic support site and unzip it on the source v7.4 machine (the node from where you are exporting).  
 
-Create an account here: https://radiantlogicinc246.sharefile.com/i/i1bc2de34c6e42bba 
+The migration utility is available [here](https://files.radiantlogic.com/receive/?packageCode=IX0qTSRyilShjhpxusLWpUDzzb4rduq2tO9F81NhEt4#keycode=Niad1bODfyRmdW8PlGO-5In0mdRKsa0u6551qXXI1rA). 
+Login using the email address associated with your Radiant Logic Support Portal account. If you do not yet have access to the portal, email support@radiantlogic.com.
 
-If you already have a Sharefile account, you can login here: https://radiantlogicinc246.sharefile.com/ 
-
-Once logged in, navigate to: Customer Downloads/MigrationUtility/Migration Utility v2.1 
+Once logged in, navigate to Customer Downloads/MigrationUtility/Migration Utility v2.1. 
 
 Download the migration utility version that matches the last digit of your patch release number. For example, if you are running v7.4.10, use migration utility version: radiantone-migration-tool-2.1.10.zip. 
 
