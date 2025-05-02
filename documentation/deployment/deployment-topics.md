@@ -33,10 +33,6 @@ If the data sources integrated in the RadiantOne platform are accessible in the 
 
 ![Secure Data Connector](Media/Image7.26.jpg)
 
-### Migrating ACIs 
-
-If you need to migrate only ACIs between two environments without transferring the entire configuration, you can do so using the Control Panel. For details, read [Importing ACIs in Bulk](./aci-migration.md). 
-
 ### Inter-cluster Replication for RadiantOne Directory Stores
 
 After RadiantOne is configured in each environment, configure inter-cluster replication for all applicable directory stores.
@@ -130,6 +126,10 @@ To enable inter-cluster replication for a directory store:
 ## Migrating Configuration
 
 To migrate configuration from a lower environment to production, export the configuration from the lower environment and import this configuration when creating the production environment. When deployed as SaaS, you can export the configuration by taking a [Backup](/../../eoc/latest/environments/backup-and-restore/create-backup) in the lower environment and [using this backup image](/../../eoc/latest/environments/environment-overview/create-environments) when you create the production environment. Import the backup using the custom configuration option in Advanced Setup.
+
+### Migrating ACIs 
+
+If you need to migrate only ACIs between two environments without transferring the entire configuration, you can do so using the Control Panel. For details, read [Importing ACIs in Bulk](./migrating-acis.md). 
 
 ## Managing the State of the RadiantOne Service
 
