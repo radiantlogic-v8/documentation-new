@@ -45,12 +45,12 @@ This guide explains how to export and import ACIs in bulk between two Identity D
 3. In the **Import LDIF** dialog:
       i. Select the **Upload File** option.  
       ii. Browse to the exported LDIF file.  
-      iii. Choose one of the following:  
-           - **Add or override entries** (to update all ACIs), or  
-           - **Add entries** (to only add new ACIs)
+      iii. Choose one of the following:
+            a. **Add or override entries** (to update all ACIs), or  
+            b. **Add entries** (to only add new ACIs)
 
 
     ![Import LDIF Options Screenshot](./Media/importLDIF.png) 
 
-4. Click **IMPORT** to import the file. A task will run and show a confirmation once completed.
-5. Refresh the DIT to view the updated ACI entries.
+5. Click **IMPORT** to import the file. A task will run and show a confirmation once completed.
+6. Refresh the DIT to view the updated ACI entries.
