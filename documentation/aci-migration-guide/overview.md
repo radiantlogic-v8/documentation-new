@@ -5,26 +5,27 @@ description: ACI Migration Guide
 
 # Overview
 
-Part of the process to migrate from a legacy LDAP directory into RadiantOne Universal
-Directory involves access controls. This document describes migrating OpenDJ, SunOne/Oracle
-ODSEE, IBM Tivoli Directory, and RadiantOne v6 ACI into ACI compatible with RadiantOne v7.
-ACI in OpenDJ, SunOne/Oracle ODSEE and RadiantOne v6 formats are migrated using the
-migration tool, aciUtils.bat (.sh on Unix systems). IBM Tivoli Directory ACIs are migrated using the migration tool ibmAciMigration.bat (.sh on Unix systems). Both tools are located at
+Part of the process of migrating from a legacy LDAP directory to the RadiantOne Universal Directory involves handling access controls. This document describes how to migrate ACIs from OpenDJ, SunOne/Oracle ODSEE, IBM Tivoli Directory, and RadiantOne v6 into a format compatible with RadiantOne v7. ACIs from OpenDJ, SunOne/Oracle ODSEE, and RadiantOne v6 are migrated using the `aciUtils.bat` tool (`aciUtils.sh` on Unix systems).
+
+IBM Tivoli Directory ACIs are migrated using the migration tool ibmAciMigration.bat (.sh on Unix systems). Both tools are located at
 <RLI_HOME>\bin\advanced.
 
-## How the Manual is Organized
+Additionally, this document also covers guidance on how to migrate ACIs from one RadiantOne v7.4 environment to another RadiantOne v7.4 environment. 
 
-[Overview](01-overview.md)
+## How This Manual Is Organized
 
-This chapter provides a general review of the ACI migration process and describes credential requirements related to the process.
+- [Overview](01-overview.md)  
+  Provides a general summary of the ACI migration process and the required credentials.
 
-[OpenDJ, SunOne/Oracle ODSEE and RadiantOne v6 ACI Migration](opendj-sunone-migration.md)
+- [OpenDJ, SunOne/Oracle ODSEE, and RadiantOne v6 ACI Migration](opendj-sunone-migration.md)  
+  Explains how to use `aciUtils.bat` (`.sh` on Unix) to migrate ACIs from OpenDJ, SunOne/ODSEE, and RadiantOne v6 to RadiantOne v7.
 
-This chapter describes how to migrate OpenDJ, SunOne/Oracle ODSEE and RadiantOne vACI to RadiantOne v7 using the aciUtils.bat (.sh on Unix systems) tool.
+- [IBM Tivoli Directory ACI Migration](ibm-tivoli-directory-aci-migration.md)  
+  Describes how to use `ibmAciMigration.bat` (`.sh` on Unix) to migrate ACIs from IBM Tivoli Directory.
 
-[IBM Tivoli Directory ACI Migration](ibm-tivoli-directory-aci-migration.md)
+- [Migrating ACIs Between Two RadiantOne v7.4 Environments](migrating-acis.md)  
+  Provides steps for migrating ACIs between RadiantOne v7.4 environments using the Control Panel.
 
-This chapter describes how to migrate IBM Tivoli Directory ACI to RadiantOne v7 using the ibmAciMgration.bat (.sh on Unix systems) tool.
 
 ### Require a User ID and Password to Execute Commands
 
