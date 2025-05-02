@@ -24,7 +24,7 @@ This guide provides an overview of the steps required to create backups of your 
     kubectl cp <NAMESPACE>/<RELEASE_NAME>-0:/opt/radiantone/vds/work/<EXPORT_FILE_NAME> /<path-to-your-local-folder>/<EXPORT_FILE_NAME> 
     ```
 
-   Replace <RELEASE_NAME>, <NAMESPACE>, <EXPORT_FILE_NAME>, and <path-	to-your-local-folder> with appropriate values. 
+   Replace `<RELEASE_NAME>`, `<NAMESPACE>`, `<EXPORT_FILE_NAME>`, and `<path-to-your-local-folder>` with appropriate values. 
 
 ## Next steps
 
