@@ -1,3 +1,8 @@
+---
+title: Migrate Access Control Instructions (ACIs) in Bulk
+description: Learn how to migrate ACIs from one environment to another.
+---
+
 # Migrate Access Control Instructions (ACIs) in Bulk
 
 This guide explains how to export and import ACIs in bulk between two Identity Data Management environments.
