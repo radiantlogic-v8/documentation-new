@@ -1,4 +1,4 @@
-# Import Access Control Instructions (ACIs) in Bulk (v8.1)
+# Migrate Access Control Instructions (ACIs) in Bulk
 
 This guide explains how to export and import ACIs in bulk between two Identity Data Management environments.
 
@@ -14,7 +14,7 @@ This guide explains how to export and import ACIs in bulk between two Identity D
 
 3. Click the **Import/Export LDIF** arrows (above the Namespace tree).
 
-    ![Export LDIF Screenshot](./Media/importexportbutton)
+    ![Export LDIF Screenshot](./Media/importexportbutton.png)
 
 4. In the **Export LDIF** dialog:
 
@@ -25,7 +25,7 @@ This guide explains how to export and import ACIs in bulk between two Identity D
     v. Leave **Export for replication** unchecked.  
     vi. Choose the **Local (Download)** option for **Export Location**.
 
-    ![Export LDIF Options Screenshot](./Media/exportLDIF) 
+    ![Export LDIF Options Screenshot](./Media/exportLDIF.png) 
 
 5. Click **EXPORT** to export the LDIF file. A task will run and display the file.
 
@@ -45,7 +45,7 @@ This guide explains how to export and import ACIs in bulk between two Identity D
            - **Add entries** (to only add new ACIs)
 
 
-    ![Import LDIF Options Screenshot]() 
+    ![Import LDIF Options Screenshot](./Media/importLDIF.png) 
 
 4. Click **IMPORT** to import the file. A task will run and show a confirmation once completed.
 5. Refresh the DIT to view the updated ACI entries.
