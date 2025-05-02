@@ -43,7 +43,7 @@ Ensure that you specify your target version when running installation and update
    ```yaml
    replicaCount: 1 # Use 1 for testing, use 2 or more for production if needed. 
    image:
-     tag: 8.1.2
+     tag: 8.1.3
    fid:
      license: >-
        YourLicense
