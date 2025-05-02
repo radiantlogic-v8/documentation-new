@@ -119,7 +119,7 @@ Harness your identity data with intelligent integration to drive better business
   > Learn how to monitor the directory, configure alerts for concerning activities, and access the default reports (Access, Audit and Group Audit).
  
   > [ACI Migration](aci-migration-guide/overview)  
-  > Learn how to migrate ACIs from legacy LDAP directories like OpenDJ, Novell eDirectory, IBM Tivoli Directory and SunOne (Oracle ODSEE) to the RadiantOne Directory.
+  > Learn how to migrate ACIs between two v7 environments as well as from legacy LDAP directories (e.g., OpenDJ, Novell eDirectory, IBM Tivoli Directory, SunOne/Oracle ODSEE) to the RadiantOne Directory.
   
 </section>
 
