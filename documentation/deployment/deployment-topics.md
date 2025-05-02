@@ -5,7 +5,7 @@ description: Learn about basic production architectures, migrating configuration
 
 ## Overview
 
-Deployment options will be discussed with your Radiant Logic Account Representative and a Solution Consultant.  This chapter provides high-level details about the most common deployment architecture.
+This document provides a high-level overview of the most common deployment architectures. Your Radiant Logic Account Representative and Solution Consultant will work with you to determine the best deployment option for your specific needs.
 
 For details on creating environments and installing RadiantOne, see the [Environment Operations Center](/../../eoc/latest/environments/environment-overview/environments/).
 
@@ -13,11 +13,15 @@ For details on integrating with on-premise data sources through a Secure Data Co
 
 ## Basic Production Architecture
 
-A basic architecture for a production deployment of the RadiantOne platform consists of two or more environments. One primary cluster/environment and one for disaster recovery (which could be a client-consuming cluster as well, and not just reserved for DR).
+A typical architecture for a production deployment of the RadiantOne platform consists of two or more environments: one primary cluster/environment and one for disaster recovery (which may also be used by clients if you prefer to and not be solely dedicated to disaster recovery).
 
 ![Basic Production Architecture ](Media/Image7.1.jpg)
  
-Once the primary and DR environments are created, configure RadiantOne in the primary environment. Then, use the migration tool to export the configuration and import it into the DR environment. For SaaS deployments, you can export the configuration from the primary environment by taking a [Backup](/../../eoc/latest/environments/backup-and-restore/create-backup) and [using this backup image](/../../eoc/latest/environments/environment-overview/create-environments) when you create the DR environment. Import the backup using the custom configuration option in Advanced Setup when creating the DR environment. Finally, configure inter-cluster replication for all RadiantOne Directory stores that need to be kept in sync across both environments.
+Once the primary and disaster recovery environments are created, configure RadiantOne in the primary environment. Then, use the migration tool to export the configuration and import it into the disaster recovery environment. 
+
+For SaaS deployments, you can export the configuration from the primary environment by taking a [Backup](/../../eoc/latest/environments/backup-and-restore/create-backup) and [using this backup image](/../../eoc/latest/environments/environment-overview/create-environments) when you create the DR environment. Import the backup using the custom configuration option in Advanced Setup when creating the Disaster recovery environment. Finally, configure inter-cluster replication for all RadiantOne Directory stores that need to be kept in sync across both environments.
+
+For Self-managed deployments, refer to the [creating backups](../../installation/creating-backups/) and [restore](../../installation/restore/) guides. 
 
 >[!note]
 >Configuration changes are not automatically synchronized across cluster. These must be manually migrated. 
@@ -29,6 +33,9 @@ If the data sources integrated in the RadiantOne platform are accessible in the 
 
 ![Secure Data Connector](Media/Image7.26.jpg)
 
+### Migrating ACIs 
+
+If you need to migrate only ACIs between two environments without transferring the entire configuration, you can do so using the Control Panel. For details, read [Importing ACIs in Bulk](./aci-migration.md). 
 
 ### Inter-cluster Replication for RadiantOne Directory Stores
 
