@@ -90,7 +90,7 @@ Harness your identity data with intelligent integration to drive better business
   > [Migrating to Production](deployment/deployment-topics/#migrating-configuration)  
   > Learn how to migrate configuration from a testing environment to production.
 
-  > [Migrating ACIs](deployment/deployment/migrating-acis/)  
+  > [Migrating ACIs](deployment/migrating-acis)  
   > Learn how to migrate ACIs from one environment to another. 
   
   > [Managing Services](deployment/deployment-topics/#managing-the-state-of-the-radiantone-service)  
