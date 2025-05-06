@@ -5,7 +5,7 @@ description: Learn about basic production architectures, migrating configuration
 
 - [Production Architectures](deployment-topics)
 - [Migrating to Production](./deployment-topics#migrating-configuration)
-- [Migrating Access Control Instructions](./deployment/migrating-acis)
+- [Migrating Access Control Instructions](migrating-acis)
 - [Hardening the Service Against Security Threats](hardening)
 - [Managing Services](./deployment-topics#managing-the-state-of-the-radiantone-service)
 
