@@ -24,7 +24,11 @@ This guide provides an overview of the steps required to create backups of your 
     kubectl cp <NAMESPACE>/<RELEASE_NAME>-0:/opt/radiantone/vds/work/<EXPORT_FILE_NAME> /<path-to-your-local-folder>/<EXPORT_FILE_NAME> 
     ```
 
-   Replace `<RELEASE_NAME>`, `<NAMESPACE>`, `<EXPORT_FILE_NAME>`, and `<path-to-your-local-folder>` with appropriate values. 
+   Replace `<RELEASE_NAME>`, `<NAMESPACE>`, `<EXPORT_FILE_NAME>`, and `<path-to-your-local-folder>` with appropriate values:
+  
+    * `<RELEASE_NAME>`: The release name of your Helm deployment.
+    * `<NAMESPACE>`: The Kubernetes namespace where the application is deployed.
+    * `<EXPORT_FILE_NAME>`: The desired filename for the backup export (e.g., backup-20241217.zip).
 
 ## Next steps
 
