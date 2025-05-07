@@ -75,6 +75,7 @@ Ensure that you specify your target version when running installation and update
    env:
      INSTALL_SAMPLES: false
      FID_SERVER_JOPTS: '-Xms2g -Xmx4g' #To avoid memory swapping, -Xmx should never exceed the memory size defined in resources.
+
    ```
    
 
@@ -90,10 +91,14 @@ Ensure that you specify your target version when running installation and update
 - **persistence.storageClass**: Defines the storage class for provisioning persistent volumes.
 - **persistence.size**: Specifies the size of the persistent volume for Identity Data Management. Ensure that you monitor usage over time and change the value as needed.
 - **zookeeper.persistence.enabled**: Indicates if data persistence is enabled for Zookeeper.
-- **resources**: Indicates the compute resources allocated to the Identity Data Management containers. Identity Data Management is deployed as a StatefulSet, which has implications for resource management. Changing resources requires careful planning as it affects all pods. Monitor your usage and change the values if needed over time.
+- **resources**: Indicates the compute resources allocated to the Identity Data Management containers. Identity Data Management is deployed as a StatefulSet, which has implications for resource management. Changing resources requires careful planning as it affects all pods. Monitor your usage and change the values if needed over time. 
 
-> Note that there are additional fields such as `metrics` that you can use to enable [metrics and logging](./metrics-and-logging/). 
-   &nbsp;
+**Optional properties:** 
+
+- **metrics**: Optional property. Use this to enable [metrics and logging](./metrics-and-logging/).
+- **migration.url**: Optional property. Use this field only during the initial deployment of self-managed Identity Data Management to restore the configuration from a backup file of an existing deployment. Refer to the [Restore using a backup](./restore) guide to learn more.
+
+
 
 2. **Create a namespace for your IDDM cluster**
    ```bash
@@ -109,7 +114,7 @@ Ensure that you specify your target version when running installation and update
 4. **Optional - dry run your deployment**
 
    ```bash
-   helm -n self-managed upgrade --install fid oci://registry-1.docker.io/radiantone/iddm-helm:1.1.3 --version 1.1.3 --values </path/to/your/values.yaml> --set env.INSTALL_SAMPLES=true --debug --dry-run
+   helm -n self-managed upgrade --install fid oci://registry-1.docker.io/radiantone/iddm-helm --version 1.1.3 --values </path/to/your/values.yaml> --set env.INSTALL_SAMPLES=true --debug --dry-run
    ```
 
    This command will process your YAML config files without deploying anything. If everything looks good, re-run the command without the `--dry-run` parameter. Setting `INSTALL_SAMPLES=true` is optional for testing purposes and not recommended for production deployment.
@@ -120,7 +125,7 @@ Ensure that you specify your target version when running installation and update
    Ensure that you provide the appropriate path for your values.yaml file before running this command:
 
    ```bash
-   helm -n self-managed install --install fid oci://registry-1.docker.io/radiantone/iddm-helm:1.1.3 --version 1.1.3 --values </path/to/your/values.yaml> --debug
+   helm -n self-managed install --install fid oci://registry-1.docker.io/radiantone/iddm-helm --version 1.1.3 --values </path/to/your/values.yaml> --debug
    ```
 
 6. **Verify deployment**
@@ -221,7 +226,7 @@ kubectl rollout status statefulset/fid -n self-managed
 To update any resources or settings, change the values in `values.yaml` and run the following command:
 
 ```bash
-   helm -n self-managed upgrade --install fid oci://registry-1.docker.io/radiantone/iddm-helm:1.1.3 --values </path/to/your/values.yaml> --debug
+   helm -n self-managed upgrade --install fid oci://registry-1.docker.io/radiantone/iddm-helm --version 1.1.3 --values </path/to/your/values.yaml> --debug
 ```
 
 ## Troubleshooting your Kubernetes environment
