@@ -15,6 +15,7 @@ After an identity data source is defined, a schema can be extracted. A schema re
 Data sources are managed from Control Panel > Setup > Data Catalog > Data Sources.
 
 ### Creating Data Sources
+
 To create a data source:
 1.  Navigate to Control Panel > Setup > Data Catalog > Data Sources.
 1.  Click ![An image showing](Media/newsource.jpg).
@@ -30,8 +31,33 @@ To create a data source:
    Status | Toggled to either OFFLINE (indicates the identity source is not available and should not be accessed by the RadiantOne service) or ACTIVE (indicates the identity source is available and can be accessed by the RadiantOne service).
 
 1.  Enter the Connection details. These properties vary depending on the type of identity source.
+1.  Configure applicable properties in the Advanced section (only applicable for LDAP data sources).
 
-**For LDAP Data Sources:**
+PROPERTY	| DESCRIPTION
+-|-
+Disable Referral Chasing	| By default, RadiantOne does not attempt to chase referrals that have been configured in the underlying LDAP server. If you want RadiantOne to chase referrals when searching the underlying LDAP server, then you should uncheck the Disable Referral Chasing option. Chasing referrals can affect the overall performance of the RadiantOne service because if the referral server is unresponsive, RadiantOne could take a long time to respond to the client. For example, in the case of querying an underlying Active Directory (with a base DN starting at the root of Active Directory) you may get entries like the following returned: <Br>*ldaps://ForestDnsZones.na.radiantlogic.com:636* <br> *ldaps://DomainDnsZones.na.radiantlogic.com:636* <Br>If RadiantOne attempts to “chase” these referrals, there can be extreme degradation in response times. Therefore, it is recommended that you disable referral chasing if you need to connect to Active Directory starting at the root of the Active Directory tree, or connect to any other directory where you don’t care about following referrals.
+Paged Results Control	| If you enable the paged results option, and indicate a page size, RadiantOne (as a client to other LDAP servers) will request the result of a query in chunks (to control the rate at which search results are returned). This option can be useful when RadiantOne (as a client to other LDAP servers) has limited resources and may not be able to process the entire result set from a given LDAP query, or if it is connecting to the backend LDAP server over a low-bandwidth connection. The backend LDAP directory must support the Paged Results Control.
+Verify SSL Certificate Hostname	| This setting is only applicable if SSL is used to connect to the backend. If enabled, RadiantOne validates the CN/SAN of the certificate and only establishes a connection to the backend if the hostname matches. This setting is not enabled by default meaning that RadiantOne doesn’t validate the hostname to the CN/SAN of the certificate for SSL connections. RadiantOne does not perform a reverse lookup when the Host Name for the backend is defined as an IP address instead of a fully qualified server name.
+
+1.  Configure Failover servers. For database backends, select the configured database data source that contains the failover server connection details. For LDAP backends, click **NEW** and enter the host, port and SSL option to connect to the failover server. For LDAP backends, you can configure as many LDAP failover servers as needed.
+
+   For LDAP backends, RadiantOne attempts to connect to failover servers only if there is an error in connection to the primary server (it attempts to connect twice) or if the SSL certificate for the backend server is expired.
+
+   >[!note] If your data source is Active Directory and you are using Host Discovery in your data source settings, there is no need to define failover server. RadiantOne automatically leverages the first five LDAP servers listed in the SRV record as primary/failover servers. 
+
+1.  Click **TEST CONNECTION**.
+
+   >[!note] Not all custom data sources support test connection, meaning this may return a connection error even if all   properties have been configured successfully.
+
+1.  Click **CREATE**. The new data source appears in the list of configured sources and is briefly noted with a *new* tag next to it.
+   
+
+
+## Data Source Properties
+
+### LDAP Data Sources and Active Directory
+
+The following properties apply to LDAP data sources.
 
 PROPERTY	| DESCRIPTION
 -|-
@@ -73,7 +99,9 @@ Example 3 - This example tries to get an SSL connection to the LDAP server (on p
 
 `host: [domain:na.radiantlogic.com] port: 636`
 
-**For Database Data Sources:**
+### Database Data Sources
+
+The following properties apply to LDAP data sources.
 
 PROPERTY	| DESCRIPTION
 -|-
@@ -82,29 +110,12 @@ Driver URL	| Enter the URL to connect to the Database server.
 User 	| Service account name that the RadiantOne service should use to connect to the backend.
 Password	| Credentials associated with the account indicated in the User property.
 
-**For Custom Data Sources:**
-The property names can vary and are dictated by the template.
+### Custom Data Sources
 
-1.  Configure applicable properties in the Advanced section (only applicable for LDAP data sources).
+For custom data sources, the properies supported are defined in the template.
 
-PROPERTY	| DESCRIPTION
--|-
-Disable Referral Chasing	| By default, RadiantOne does not attempt to chase referrals that have been configured in the underlying LDAP server. If you want RadiantOne to chase referrals when searching the underlying LDAP server, then you should uncheck the Disable Referral Chasing option. Chasing referrals can affect the overall performance of the RadiantOne service because if the referral server is unresponsive, RadiantOne could take a long time to respond to the client. For example, in the case of querying an underlying Active Directory (with a base DN starting at the root of Active Directory) you may get entries like the following returned: <Br>*ldaps://ForestDnsZones.na.radiantlogic.com:636* <br> *ldaps://DomainDnsZones.na.radiantlogic.com:636* <Br>If RadiantOne attempts to “chase” these referrals, there can be extreme degradation in response times. Therefore, it is recommended that you disable referral chasing if you need to connect to Active Directory starting at the root of the Active Directory tree, or connect to any other directory where you don’t care about following referrals.
-Paged Results Control	| If you enable the paged results option, and indicate a page size, RadiantOne (as a client to other LDAP servers) will request the result of a query in chunks (to control the rate at which search results are returned). This option can be useful when RadiantOne (as a client to other LDAP servers) has limited resources and may not be able to process the entire result set from a given LDAP query, or if it is connecting to the backend LDAP server over a low-bandwidth connection. The backend LDAP directory must support the Paged Results Control.
-Verify SSL Certificate Hostname	| This setting is only applicable if SSL is used to connect to the backend. If enabled, RadiantOne validates the CN/SAN of the certificate and only establishes a connection to the backend if the hostname matches. This setting is not enabled by default meaning that RadiantOne doesn’t validate the hostname to the CN/SAN of the certificate for SSL connections. RadiantOne does not perform a reverse lookup when the Host Name for the backend is defined as an IP address instead of a fully qualified server name.
 
-1.  Configure Failover servers. For database backends, select the configured database data source that contains the failover server connection details. For LDAP backends, click **NEW** and enter the host, port and SSL option to connect to the failover server. For LDAP backends, you can configure as many LDAP failover servers as needed.
 
-   For LDAP backends, RadiantOne attempts to connect to failover servers only if there is an error in connection to the primary server (it attempts to connect twice) or if the SSL certificate for the backend server is expired.
-
-   >[!note] If your data source is Active Directory and you are using Host Discovery in your data source settings, there is no need to define failover server. RadiantOne automatically leverages the first five LDAP servers listed in the SRV record as primary/failover servers. 
-
-1.  Click **TEST CONNECTION**.
-
-   >[!note] Not all custom data sources support test connection, meaning this may return a connection error even if all   properties have been configured successfully.
-
-1.  Click **CREATE**. The new data source appears in the list of configured sources and is briefly noted with a *new* tag next to it.
-   
 ### Updating Data Sources
 To update a data source, navigate to Control Panel > Setup > Data Catalog > Data Sources. Click the data source name in the list of configured sources. The connection properties displays. Update the properties and click **SAVE**.
 
