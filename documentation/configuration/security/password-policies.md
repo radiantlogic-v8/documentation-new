@@ -317,9 +317,9 @@ To enable this feature:
 
 2.	Locate the Password Content section and check the option to Enable Dictionary Check. This value is stored in the pwdEnableDictionary attribute of the cn=Password Policy entry and has a value of True or False.
 
-3.	Click **Browse** to navigate to the dictionary file. The value for the location of the dictionary file is stored in the pwdDictionaryFile attribute of the cn=Password Policy entry.
+3.	Click **Browse** to navigate to the dictionary file (see the following Note).  The value for the location of the dictionary file is stored in the pwdDictionaryFile attribute of the cn=Password Policy entry.
 
-    >[!note] The dictionary file must be a text-formatted file containing one dictionary word per line.
+    >[!note] The dictionary file must be a text-formatted file containing one dictionary word per line. You can upload your dictionary file using Classic Control Panel > Settings Tab > Configuration > File Manager. Then, in step 3 above, navigate to the location where you saved the dictionary file.
 
 4.	Click **Save**.
 
