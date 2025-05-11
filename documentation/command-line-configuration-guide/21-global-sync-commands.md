@@ -206,7 +206,7 @@ This command is used to resume or suspend the synchronization process associated
 Every synchronization pipeline has its own queues below the cn=queue and cn=dlqueue naming contexts identified by the pipelineID. Messages are added into the queues by the capture connectors and retrieved from the queues by the sync engine. The sync engine can place failed messages back in the queues to replay later. This command empties the queues for a specific pipeline.
 
 **Usage**
-<br>`empty-queues -pipelineid <pipelineid> [-mode <mode>]`
+<br>`empty-queues -pipelineid <pipelineid> [-mode <mode>] [-timeout <timeout>]`
 
 **Command Arguments:**
 
@@ -215,6 +215,9 @@ Every synchronization pipeline has its own queues below the cn=queue and cn=dlqu
 
 `- mode <mode>`
 <br>This property indicates which queue to empty. Accepted values are: QUEUE_ONLY, DEAD_LETTER_QUEUE, or ALL. If mode is not passed in the command, ALL is the default, and both the main queue and dead letters queues are emptied. If you only want to empty the main queue, enter a value of QUEUE_ONLY for the mode. If you only want to empty the dead letter queue, enter a value of DEAD-LETTER_QUEUE for the mode.
+
+`- timeout <timeout>`
+<br>This optional property specifies the amount of time in minutes that must elapse before the operation times out. Accepted values are: 1-30. The default timeout is 30 seconds. Invalid timeout values are ignored.
 
 ## reset-cursor
 
