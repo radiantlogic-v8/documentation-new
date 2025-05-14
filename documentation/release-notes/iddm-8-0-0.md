@@ -68,6 +68,10 @@ Starting in RadiantOne v8.0, the following features have been deprecated:
 - Accessing RadiantOne as a Kerberized service.
 - Internal token generator for ADAP (`http://<service>:8089/adap?bind=token`). As an alternative, use an: [External OIDC token validator](../sys-admin-guide-rebuild/06-security#adap-external-token-validators)
 - Instance sub-clusters. As an alternative, deploy multiple environments in SaaS to meet the client application requirements.
+- Directory Tree Wizard.
+- Groups Migration Wizard.
+- Groups Builder Wizard.
+- Merge Tree Wizard.
 
 ## How to Report Problems and Provide Feedback
 
