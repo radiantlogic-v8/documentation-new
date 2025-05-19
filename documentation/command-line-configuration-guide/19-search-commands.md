@@ -58,4 +58,4 @@ You can manually initiate a periodic persistent cache refresh with the following
 
 In the following example, a request is made to refresh the cache on the o=companyprofiles naming context in RadiantOne.
 
-`https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=search-vds&dn=action=deltarefreshpcache,o=companyprofiles&attr=EMPLOYEEID&scope=sub&filter=(employeeType=Intern)&sizelimit=12`
+`https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=search-vds&dn=action=deltarefreshpcache,o=companyprofiles&scope=sub&filter=(objectclass=*)`
