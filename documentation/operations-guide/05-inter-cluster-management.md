@@ -23,15 +23,27 @@ The commands used for traversing, exporting and importing configuration are desc
 
 It is recommended that configuration migration is performed during non-peak/off hours.
 
-1. On a node in the primary cluster, use the resource-export command to export the resource and its dependencies. This exports the resource along with its dependencies into the file indicated in the command. Indicate the location of the export file in the -path command argument to be: <RLI_HOME>/vds_server/conf
+1. On a node in the primary cluster, use the resource-export command to export the resource and its dependencies. This exports the resource along with its dependencies into the file indicated in the command. **You MUST indicate the location of the export file in the -path command argument to be**: 
+/opt/radiantone/vds/vds_server/conf/
 
-2. Upload the export file to the target RadiantOne server using Control Panel > Settings > Configuration > File Manager.
-3. Run the resource-import command with the -apply flag to import the configuration changes on the target. 
+An example command is shown below which exports the o=companydirectory naming context.
+
+```GET https://<RadiantOneServiceRESTEndpoint>/adap/util?action=vdsconfig&commandname=resource-export&name=o=companydirectory&path=/opt/radiantone/vds/vds_server/conf/sync```
+
+2. In the primary RadiantOne cluster, open Control Panel and navigate to Settings > Configuration > File Manager.
+3. In File Manager, navigate to vds_server/conf/sync and download the .zip file containing the exported configuration.
+4. In File Manager, delete the .zip file from the vds_server/conf/sync (to clean up unused files from this location as it is primarily used for attribute mapping in synchronization).
+5. In the target RadiantOne cluster, open Control Panel and navigate to Settings > Configuration > File Manager.
+6. In File Manager, navigate to vds_server/conf/sync and upload the export file.
+7. Run the resource-import command with the -apply flag to import the configuration changes on the target. **Be sure to indicate the location of the file in the -path command argument to be**: 
+/opt/radiantone/vds/vds_server/conf/sync/export/.zip (use the file name that you downloaded during the export).
+8. In File Manager, delete the .zip file from the vds_server/conf/sync (to clean up unused files from this location as it is primarily used for attribute mapping in synchronization).
+
 
 >[!warning]
 >The vds, vdsha, and replicationjournal data sources (resources) should generally always be skipped at import time (e.g. -skip vds). The skipping of a resource only skips the stated resource, not its dependencies. If you are using the - skip argument, you must skip the resource using the actual ID (as it displays in the resource-traverse results) and not the exact root naming context. 
 
-4. Perform any manual migration tasks applicable to your environment. Please see the Items Requiring Manual Migration section below for more details.
+9. Perform any manual migration tasks applicable to your environment. Please see the Items Requiring Manual Migration section below for more details.
 
 >[!note] If you are migrating a sync topology, save the transformation and restart RadiantOne on the target machine. 
 
