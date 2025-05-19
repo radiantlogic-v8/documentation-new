@@ -159,7 +159,7 @@ If you have ZooKeeper deployed in an external ensemble, you must update it separ
 
 The files to detect password changes in Active Directory were updated in v7.4.11. These files need to be manually updated in your RadiantOne install if you are running a version prior to v7.4.11 (base install before patching).
 
-Download the files from the same support portal site where you retrieved the updater files from this location: `/Tools/AD_Pwd_Filter/Patch_Files_v7411+` and update your `<RLI_HOME>/bin/ad_pwd` folder with them (remove or overwrite these files with the ones from the support portal).
+Download the files from the same support portal site where you retrieved the updater files from this location: `/Tools/AD_Pwd_Hash/Patch_Files_v7411+` and update your `<RLI_HOME>/bin/ad_pwd` folder with them (remove or overwrite these files with the ones from the support portal).
 
 Install the .NET framework v4.8 and [VC++ distributable v14.38+](https://aka.ms/vs/17/release/vc_redist.x64.exe) on the RadiantOne machine.
 
