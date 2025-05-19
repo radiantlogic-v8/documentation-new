@@ -356,3 +356,19 @@ This command attempts to refresh the cache on entries where errors occurred duri
 In the following example, a request is made to fix a cache refresh.
 
 `https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=fix-cacherefresh&changenumber=1&status=2&verbose`
+
+## change-pipeline-state
+
+This command is used to resume or suspend (stop) and the capture process associated with a given persistent cache refresh process.
+
+**Usage**
+<br>`change-pipeline-state -pipelineid <pipelineID> -state `<state>
+
+**Command Arguments:**
+
+`- pipelineid <pipelineID>`
+<br>[required] The identifier of the pipeline. Run the list-topologies command to locate the pipelines identifiers for each topology.
+
+`- state <state>`
+<br>[required] The state for the pipeline. Use a value of “resume” to start the real-time persistent cache refresh process. Use a value of “suspend” to stop the real-time persistent cache refresh process.
+
