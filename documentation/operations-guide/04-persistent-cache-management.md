@@ -98,10 +98,10 @@ Below is an example using the ldapsearch command line client for a persistent ca
 ldapsearch -h vdsserver -p2389 -D"cn=directory manager" -b "action=deltarefreshpcache,o=cache" (objectclass=*)
 ```
 
-You can also use the RadiantOne command line utility (vdsconfig) to issue the search. Below is an example. For more information on the command line utility, see the RadiantOne Command Line Configuration Guide.
+You can also issue the search through the ADAP interface. Below is an example. For more information on the search command, see: [ADAP Seach Command](../command-line-configuration-guide/search-commands)
 
 ```
-C:\radiantone\vds\bin>vdsconfig.bat search-vds -dn "action=deltarefreshpcache,`<pcache naming>`" -filter "(objectclass=*)" -leader
+GET https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=search-vds&dn=action=deltarefreshpcache,o=derby&scope=sub&filter=(objectclass=*)&leader
 ```
 
 This search triggers a re-sync of the persistent cache image based on the current image of
