@@ -45,7 +45,8 @@ An example command is shown below which exports the o=companydirectory naming co
 
 9. Perform any manual migration tasks applicable to your environment. Please see the Items Requiring Manual Migration section below for more details.
 
->[!note] If you are migrating a sync topology, save the transformation and restart RadiantOne on the target machine. 
+>[!note]
+>If you are migrating a sync topology, save the transformation and restart RadiantOne on the target machine. 
 
 ### Items Requiring Manual Migration
 
