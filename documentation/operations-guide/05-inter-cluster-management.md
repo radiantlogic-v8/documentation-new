@@ -24,7 +24,7 @@ The commands used for traversing, exporting and importing configuration are desc
 It is recommended that configuration migration is performed during non-peak/off hours.
 
 1. On a node in the primary cluster, use the resource-export command to export the resource and its dependencies. This exports the resource along with its dependencies into the file indicated in the command. **You MUST indicate the location of the export file in the -path command argument to be**: 
-/opt/radiantone/vds/vds_server/conf/
+/opt/radiantone/vds/vds_server/conf/sync
 
 An example command is shown below which exports the o=companydirectory naming context.
 
