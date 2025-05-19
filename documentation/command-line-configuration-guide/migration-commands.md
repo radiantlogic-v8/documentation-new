@@ -53,7 +53,7 @@ This command exports the resource and its dependencies.
 <br>The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
 
 **`- path <path>`**
-<br>The file or folder to export to.
+<br>The file or folder to export to. **You MUST indicate the location of the export file in the -path command argument to be**: /opt/radiantone/vds/vds_server/conf/sync
 
 **`- skip <name>`**
 <br>The name of the resource to skip and exclude from the export.
@@ -63,9 +63,12 @@ This command exports the resource and its dependencies.
 
 **REST (ADAP) Example**
 
-In the following example, a request is made to export the resource so_hr_o_examples.dvx and its dependencies.
+An example command is shown below which exports the o=companydirectory naming context.
 
-`https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=resource-export&name=so_hr_o_examples.dvx&path=C:\radiantone\vds\vds_server`
+```GET https://<RadiantOneServiceRESTEndpoint>/adap/util?action=vdsconfig&commandname=resource-export&name=o=companydirectory&path=/opt/radiantone/vds/vds_server/conf/sync```
+
+>[!warn]
+>You must use Control Panel > Settings > File Manager to navigate to the vds_server/conf/sync location to download the export.zip file. This file needs uploaded on the target RadiantOne server. Use the File Manager on the target RadiantOne server to upload in: vds_server/conf/sync before running the resource-import command. After you have migrated the configuration, delete the .zip files on the source and target RadiantOne servers since this is simply a temporary location for this migration.
 
 ### resource-import
 
@@ -79,7 +82,7 @@ This command imports the resource and its dependencies.
 **Command Arguments:**
 
 **`- path <path>`**
-<br>[required] The file or folder to import from.
+<br>[required] The file or folder to import from. **You MUST indicate the location of the export file in the -path command argument to be**: /opt/radiantone/vds/vds_server/conf/sync/export.zip (use the file name you downloaded from the primary RadiantOne server)
 
 **`- apply`**
 <br>Flag required to apply the import. If this isn’t passed, a summary of all resources to be added and overwritten in the target is displayed.
@@ -111,4 +114,7 @@ Example: all:^test.* --> skips all resources starting with the name test.
 
 In the following example, a request is made to import the resource so_hr_o_examples.dvx and its dependencies.
 
-`https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=resource-import&path=c:/radiantone/vds/vds_server/contextcatalog_dvx.zip&apply=&skipregex=ds:^derby.*`
+An example command is shown below which imports the o=companydirectory naming context config from a file named export.zip.
+
+```GET https://<RadiantOneServiceRESTEndpoint>/adap/util?action=vdsconfig&commandname=resource-import&path=/opt/radiantone/vds/vds_server/conf/sync/export.zip&apply&skipregex=ds:^derby.*```
+
