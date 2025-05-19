@@ -52,8 +52,6 @@ Periodic persistent cache refresh can be configured from the Main Control Panel 
 
 **REST (ADAP) Example**
 
-In the following example, a request is made to search the o=companyprofiles naming context in RadiantOne.
+You can manually initiate a periodic persistent cache refresh with the following command. In this example a request is made to refresh the cache on the o=companyprofiles naming context in RadiantOne.
 
-```
-https://<RadiantOneRESTEndpoint>/adap/util?action=vdsconfig&commandname=search-vds&dn=o=companyprofiles&attr=EMPLOYEEID&scope=sub&filter=(employeeType=Intern)&sizelimit=12
-```
+`https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=search-vds&dn=action=deltarefreshpcache,o=companyprofiles&attr=EMPLOYEEID&scope=sub&filter=(objectclass=*)`
