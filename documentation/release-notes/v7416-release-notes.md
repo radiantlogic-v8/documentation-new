@@ -76,6 +76,7 @@ For specific hardware requirements of each, please see: [https://developer.radia
 - [IV4-57]: Fixed an issue that was preventing access to the certificateUserIds attribute of users in Entra ID.
 - [IV4-91]: Fixed an issue where the "Reset failure count after X minutes" and "Lockout duration" values did not save and/or load properly on the Password Policy UI and in the CLI tool.
 - [IV4-96]: Fixed an issue where the customer's ACIs on cn=config or cn=changelog could be removed after a restart of the RadiantOne service if those ACIs were imported from old LDIF file.
+- [IV4-112]: Fix to ensure the SCIM API to the RadiantOne service properly closes the LDAP connection when an exception occurs.
 
 
 
