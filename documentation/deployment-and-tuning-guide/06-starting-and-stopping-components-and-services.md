@@ -52,15 +52,15 @@ To resolve this, you must manually update the asAService property in ZooKeeper. 
 
 - Use the vdsconfig utility to update the asAService property to false. Below is an example. After running the command, restart the Control Panel. 
 
-`C:\radiantone\vds\bin>vdsconfig.bat set-property -name asAService -value false`
-<br> Using RLI home : C:\radiantone\vds
-<br> Using Java home : C:\radiantone\vds\jdk\jre
-<br> 0 [ConnectionStateManager-0] WARN com.rli.zookeeper.ZooManagerConnectionStateListener - Curator connection state change: CONNECTED
-<br> 9 [ConnectionStateManager-0] WARN com.rli.zookeeper.ZooManagerConnectionStateListener - VDS-ZK connection state changed: CONNECTED
-<br> 9 [ConnectionStateManager-0] WARN com.rli.zookeeper.ZooManager - ZooManager connection state changed: CONNECTED
-<br> Previous value: true
-<br> New value: false
-<br> Configuration has been updated successfully.
+    `C:\radiantone\vds\bin>vdsconfig.bat set-property -name asAService -value false`
+    <br> Using RLI home : C:\radiantone\vds
+    <br> Using Java home : C:\radiantone\vds\jdk\jre
+    <br> 0 [ConnectionStateManager-0] WARN com.rli.zookeeper.ZooManagerConnectionStateListener - Curator connection state change: CONNECTED
+    <br> 9 [ConnectionStateManager-0] WARN com.rli.zookeeper.ZooManagerConnectionStateListener - VDS-ZK connection state changed: CONNECTED
+    <br> 9 [ConnectionStateManager-0] WARN com.rli.zookeeper.ZooManager - ZooManager connection state changed: CONNECTED
+    <br> Previous value: true
+    <br> New value: false
+    <br> Configuration has been updated successfully.
 
 ### As a LINUX Daemon
 
