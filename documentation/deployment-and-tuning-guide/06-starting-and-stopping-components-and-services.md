@@ -155,7 +155,7 @@ The web server that hosts the control panels can be installed as a Windows servi
 
 ### As a LINUX Daemon
 
-On UNIX platforms, you can start the Main Control Panel with $RLI_HOME/bin/openControlPanel.sh.
+On UNIX platforms, you can start the Main Control Panel by running: $RLI_HOME/bin/openControlPanel.sh.
 
 The Jetty server that hosts the Control Panels can also be configured as a Linux daemon. Documents to assist with this are located at $RLI_HOME/bin/rc.d/readme.txt (for init.d scripts) and $RLI_HOME/bin/system.d/readme.txt (for system.d scripts).
 
