@@ -209,3 +209,4 @@ To check the status of each component, go to the Main Control Panel > Dashboard 
 
 >[!warning]
 >Zookeeper must be running on at least half of the cluster nodes to maintain the integrity of the cluster. Zookeeper starts automatically with the RadiantOne service and/or the Management Console (Jetty web server that hosts the Control Panels).
+
