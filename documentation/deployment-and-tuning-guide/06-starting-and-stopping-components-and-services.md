@@ -5,14 +5,12 @@ description: Deployment and Tuning Guide
 
 # Starting and Stopping Components and Services
 
-This chapter describes how to start and stop the RadiantOne service and the web server hosting the Control Panels.
+This document describes how to start and stop the RadiantOne service and the web server that hosts the Control Panels. 
 
 ## RadiantOne Service
 
-The various ways the RadiantOne service can be started are described below. It is recommended that it runs as a service in production environments.
+The various ways the RadiantOne service can be started are described below. It is recommended that you run it as a service in production environments. 
 
->[!warning]
->When deploying in a cluster, the first node in the cluster is the leader node. No matter how you choose to start the process, the one on the leader node should be started first.
 
 ### From Main Control Panel
 
@@ -21,11 +19,11 @@ After starting the Control Panel, login with the super user (e.g. default cn=dir
 You can start the RadiantOne service from the Dashboard tab if it is not configured as a service. If it is, you must start/stop the service directly from the OS services window.
 
 >[!warning]
->If the RadiantOne service is started from the Dashboard tab, the process is killed when the user logs off the machine. Start RadiantOne as a Windows service to avoid this problem.
+>If you start the RadiantOne service from the Dashboard tab, the process will terminate when you log off the machine. To prevent this, start RadiantOne as a Windows service.
 
 ### As a Windows Service
 
-Once you have tested your virtual views and are ready to deploy your architecture, the RadiantOne service can be configured to start as a Windows service. Configure it as a Windows service with the following steps. Perform these steps on the RadiantOne leader node first (if you are running in a cluster). If you are not running in a cluster, perform these steps on any server in your classic architecture.
+Once you have tested your virtual views and are ready to deploy your architecture, the RadiantOne service can be configured to start as a Windows service. If you're running in a cluster, configure it as a Windows service on each RadiantOne node using the following steps. If you are not running in a cluster, perform these steps on any server in your classic architecture.
 
 1.	Make sure that the RadiantOne service is stopped if it is currently running.
 
@@ -44,13 +42,17 @@ Once you have tested your virtual views and are ready to deploy your architectur
 
 #### Uninstalling the Windows Service
 
-To uninstall the Windows service, stop the service and execute <RLI_HOME>\ \bin\windows.service\fid-server-service-uninstall.bat. The process of uninstalling RadiantOne as a Windows service does not update the setting in ZooKeeper. Therefore, the Dashboard tab in the Main Control Panel does not properly display the stop/start options for the RadiantOne service since it assumes it is still configured to run as a service. To address this, manually update the asAService property in ZooKeeper. There are two methods you can choose from.
+To uninstall the Windows service, first stop the service, then run \\bin\\windows.service\\fid-server-service-uninstall.bat.  
+ 
+Note that uninstalling RadiantOne as a Windows service does not update the corresponding setting in ZooKeeper. As a result, the Dashboard tab in the Main Control Panel may continue to display the start/stop options, incorrectly assuming the service is still configured to run as a Windows service.  
+ 
+To resolve this, you must manually update the asAService property in ZooKeeper. There are two methods available to do this. 
 
--	From the Main Control Panel, switch to [Expert Mode](00-preface#expert-mode). Go to the Settings tab and navigate to Server Front End -> Advanced. Uncheck the Run as a Window Service option and save the configuration. Restart the Control Panel.
+- From the Main Control Panel, switch to Expert Mode. Go to the Settings tab and navigate to Server Front End -> Advanced. Uncheck the Run as a Window Service option and save the configuration. Restart the Control Panel. 
 
--	Use the vdsconfig utility to update the asAService property to false. Below is an example. After running the command, restart the Control Panel.
+- Use the vdsconfig utility to update the asAService property to false. Below is an example. After running the command, restart the Control Panel. 
 
-C:\radiantone\vds\bin>vdsconfig.bat set-property -name asAService -value false
+`C:\radiantone\vds\bin>vdsconfig.bat set-property -name asAService -value false`
 <br> Using RLI home : C:\radiantone\vds
 <br> Using Java home : C:\radiantone\vds\jdk\jre
 <br> 0 [ConnectionStateManager-0] WARN com.rli.zookeeper.ZooManagerConnectionStateListener - Curator connection state change: CONNECTED
@@ -66,7 +68,7 @@ On UNIX platforms, the RadiantOne service can be started with $RLI_HOME/bin/runV
 
 Once you have tested your configuration and are ready to deploy your architecture, the RadiantOne service can be configured to start as a Linux Daemon. The startup script is located in $RLI_HOME/bin/rc.d (for init.d scripts) and $RLI_HOME/bin/system.d (for system.d scripts). Documents to assist with the configuration of the service are located at $RLI_HOME/bin/rc.d/readme.txt (for init.d scripts) and $RLI_HOME/bin/system.d/readme.txt (for system.d scripts).
 
-Assuming you are logged into your LINUX machine, use the following commands on the leader node first if you are running in a cluster. Once the daemon is running on the leader node, run the following commands on the follower/follower-only nodes:
+Assuming you are logged into your LINUX machine, run the following commands on your RadiantOne nodes if you are running in a cluster. 
 
 For init.d scripts:
 
@@ -80,8 +82,6 @@ For system.d scripts:
 
 sudo cp $RLI_HOME/bin/system.d/vds.service /etc/systemd/system/ <BR>sudo systemctl enable vds.service <BR>sudo systemctl start vds.service
 
->[!warning]
->If you are deploying RadiantOne in a cluster, be sure to start the RadiantOne service on the leader node first before you start it on any follower/follower-only nodes.
 
 ### How to Stop the RadiantOne Service
 
@@ -101,7 +101,7 @@ Options for stopping the RadiantOne service:
 
 ## Global Synchronization
 
-There are two approaches to starting Global Synchronization, the Main Control Panel and from command line. Each is described below.
+There are two ways to start Global Synchronization: through the Main Control Panel or via the command line. Each approach is described below. 
 
 ### From Main Control Panel
 
@@ -195,7 +195,7 @@ To check the status of each component, go to the Main Control Panel > Dashboard 
 
 1.	(Optional) Suspend [Global Synchronization](#global-synchronization) if used. 
 
-2.	Stop the [RadiantOne service](#how-to-stop-the-radiantone-service). All follower nodes first and then the leader node last. Verify the leader/follower status of each node from the Main Control Panel > Dashboard tab.
+2.	Stop the [RadiantOne service](#how-to-stop-the-radiantone-service). 
 
 3.	Stop [Management Console](#how-to-stop-control-panel) (Jetty web server that hosts the Control Panels).
 
@@ -203,7 +203,7 @@ To check the status of each component, go to the Main Control Panel > Dashboard 
 
 5.	Start [Management Console](#control-panels) (Jetty web server that hosts the Control Panels) on all nodes in the cluster.
 
-6.	Start the [RadiantOne service](#radiantone-service) first on the previous leader node, wait until it has fully started and then start it on the follower nodes. To find the previous leader node, log in to the Main Control Panel (expert mode) > ZooKeeper tab and navigate to `/radiantone/<version>/<cluster_name>`. The previous leader is noted in the lastLeaderID property. You can identify the server corresponding to this cloud ID from the Dashboard tab. 
+6.	Start the [RadiantOne service](#radiantone-service). 
 
 7.	(Optional) Start/resume [Global Synchronization](#global-synchronization) if used.
 
