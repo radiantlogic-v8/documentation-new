@@ -34,11 +34,9 @@ Once you have tested your virtual views and are ready to deploy your architectur
 
 3.	Execute the fid-server-service-install.bat file. A command window opens briefly and then closes. Check your services window (refresh if it was already open) and you should see a new service for the RadiantOne Server.
 
-4.	Start the RadiantOne service (be sure to start the leader node first if you are deploying a cluster).
+4.	Start the RadiantOne service.
 
-5.	(Optional) If a local ZooKeeper is deployed (instead of an external ZooKeeper ensemble), reboot the machine to ensure ZooKeeper also starts as a service along with the RadiantOne service.
-
-6.	Repeat steps 1-5 on all nodes (if deploying in a cluster) or on all other servers if deployed in a classic architecture.
+5.	Repeat steps 1-4 on all nodes (if deploying in a cluster) or on all other servers if deployed in a classic architecture.
 
 #### Uninstalling the Windows Service
 
