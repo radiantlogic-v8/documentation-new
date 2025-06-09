@@ -201,6 +201,12 @@ If there is the need to base authorization on a different user than the one who 
 
 The proxy option indicates whether the subject can access the target with the rights of another entry. You can grant proxy access using the DN of any user in the directory except the special cn=directory manager user. In addition, you cannot grant proxy rights to the cn=directory manager user. If the branch you are protecting with access controls is a local LDAP/HDAP store, then this requires the [Proxy Authorization control](03-front-end-settings#proxied-authorization-control) enabled for RadiantOne.
 
+**Move (current DN)**
+To support moving an entry from one parent to another, define the access control instruction (ACI) rights on the parent entries. On the current parent entry of the entry to be moved, ensure that the ACI allows the Move (current DN) permission.
+
+**Move (future DN)**
+To support moving an entry from one parent to another, define the access control instruction (ACI) rights on the parent entries. On the future parent entry of the entry to be moved, ensure that the ACI allows the import operations by using the Move (future DN) permission.
+
 ### Subjects
 
 A subject is whom the access control rule applies to. The subject types that can be associated with access control rules are described below:
