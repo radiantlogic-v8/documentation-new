@@ -74,7 +74,7 @@ If you want to require certificate-based authentication:
 
 2. The RadiantOne service must trust the client (import the client’s public key certificate into the [RadiantOne client truststore](#client-certificate-truststore), unless the client certificate is signed by a known/trusted certificate authority).
 
-3. From the Classic Control Panel > Settings Tab > Security section > SSL, make sure either SSL is enabled.
+3. From the Classic Control Panel > Settings Tab > Security section > SSL, make sure SSL is enabled.
 
 4. From the Classic Control Panel > Settings Tab > Security section > SSL > Mutual Auth. Client Certificate drop-down menu, select Required.
 
