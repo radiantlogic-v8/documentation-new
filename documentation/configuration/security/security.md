@@ -64,7 +64,7 @@ If mutual authentication is not required, but you would like RadiantOne to reque
 
 If you do not want RadiantOne to request a client certificate at all, check the None option.
 
-If the client certificate is not signed by a known certificate authority, it must be added in the [RadiantOne client truststore](#client-certificate-trust-store).
+If the client certificate is not signed by a known certificate authority, it must be added in the [RadiantOne client truststore](#client-certificate-truststore).
 
 **Requiring Certificate-based Authentication**
 
@@ -72,17 +72,17 @@ If you want to require certificate-based authentication:
 
 1. The client must trust the RadiantOne server certificate (import the RadiantOne public key certificate into the client truststore, unless the server certificate has been signed by a certificate authority known/trusted by the client).
 
-2. The RadiantOne service must trust the client (import the client’s public key certificate into the [RadiantOne client truststore](#client-certificate-trust-store-cluster-level-trust-store), unless the client certificate is signed by a known/trusted certificate authority).
+2. The RadiantOne service must trust the client (import the client’s public key certificate into the [RadiantOne client truststore](#client-certificate-truststore), unless the client certificate is signed by a known/trusted certificate authority).
 
-3. From the Main Control Panel > Settings Tab > Security section > SSL, make sure either SSL and/or StartTLS is enabled.
+3. From the Classic Control Panel > Settings Tab > Security section > SSL, make sure either SSL is enabled.
 
-4. From the Main Control Panel > Settings Tab > Security section > SSL > Mutual Auth. Client Certificate drop-down menu, select Required.
+4. From the Classic Control Panel > Settings Tab > Security section > SSL > Mutual Auth. Client Certificate drop-down menu, select Required.
 
-5. From the Main Control Panel > Settings Tab > Security section > SSL, click **Change** next to [Client Certificate DN Mapping](#client-certificate-dn-mapping) and define your mappings.
+5. From the Classic Control Panel > Settings Tab > Security section > SSL, click **Change** next to Client Certificate DN Mapping and define your mappings.
 
->[!warning] The Client Certificate DN Mapping is only accessible by a member of the [Directory Administrator role/group](01-introduction#delegated-administration-of-radiantone).
+>[!warn] The Client Certificate DN Mapping is only accessible by a member of the Directory Administrator role/group.
 
-6. Click **Save** and restart the RadiantOne service. If RadiantOne is deployed in a cluster, restart RadiantOne on all nodes.
+6. Click **Save** and restart the RadiantOne service. 
 
 **Client Certificate DN Mapping**
 
@@ -92,15 +92,15 @@ To authorize a user who authenticates using a certificate (e.g. SASL External) y
 
 To set the client certificate DN mapping:
 
-1. Go to the Main Control Panel > Settings Tab > Security Section > SSL sub-section.
+1. Go to the Classic Control Panel > Settings Tab > Security Section > SSL sub-section.
 
 2. Click **Change** next to the Client Certificate DN Mapping property.
 
->[!warning] The Client Certificate DN Mapping is only accessible by a member of the [Directory Administrator role/group](01-introduction#delegated-administration-of-radiantone).
+>[!warn] The Client Certificate DN Mapping is only accessible by a member of the Directory Administrator role/group.
 
 There are different ways to determine the DN from the subject or subject alternative name in the certificate (using regular expression syntax).
 
-Setting a specific subject or subject alternative name to DN in the virtual namespace:
+Setting a specific subject or subject alternative name to DN in the RadiantOne namespace:
 
 `cn=lcallahan,dc=rli,dc=com (the user DN in the certificate) -> (maps to) cn= laura Callahan,cn=users,dc=mycompany,dc=com`
 
@@ -148,7 +148,7 @@ If all mapping rules fail to locate a user, anonymous access is granted (if anon
 
 ## Client Certificate Truststore
 
-RadiantOne supports SSL/TLS to ensure secure connections are made to identity data sources (backends). The certificates in the Client Certificate Trust Store are used by RadiantOne to establish these secure connections. Therefore, the appropriate client (public key) certificate (associated with the server certificate of the backend) needs imported into the Client Certificate Trust Store (unless they are signed by a trusted/known Certificate Authority).
+RadiantOne supports SSL/TLS to ensure secure connections are made to identity data sources (backends) and support mutual authentication from clients (frontend). The certificates in the Client Certificate Trust Store are used by RadiantOne to establish these secure connections. Therefore, the appropriate client (public key) certificate (associated with the server certificate of the backend) needs imported into the Client Certificate Trust Store (unless they are signed by a trusted/known Certificate Authority).
 
 See [Managing Client Certificates](./client-cert-truststore) for details.
 
