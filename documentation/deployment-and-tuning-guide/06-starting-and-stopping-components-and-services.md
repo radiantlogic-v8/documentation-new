@@ -5,206 +5,100 @@ description: Deployment and Tuning Guide
 
 # Starting and Stopping Components and Services
 
-This document describes how to start and stop the RadiantOne service and the web server that hosts the Control Panels. 
+This document covers how to start, stop, restart, and uninstall RadiantOne Identity Data Management and the Jetty web server hosting the Control Panels. It includes details for both Windows and Linux platforms.  
 
-## RadiantOne Service
+## Starting RadiantOne 
 
-The various ways the RadiantOne service can be started are described below. It is recommended that you run it as a service in production environments. 
-
-
-### From Main Control Panel
-
-After starting the Control Panel, login with the super user (e.g. default cn=directory manager) along with the password you selected during the install of RadiantOne.
-
-You can start the RadiantOne service from the Dashboard tab if it is not configured as a service. If it is, you must start/stop the service directly from the OS services window.
-
->[!warning]
->If you start the RadiantOne service from the Dashboard tab, the process will terminate when you log off the machine. To prevent this, start RadiantOne as a Windows service.
-
-### As a Windows Service
-
-Once you have tested your virtual views and are ready to deploy your architecture, the RadiantOne service can be configured to start as a Windows service. If you're running in a cluster, configure it as a Windows service on each RadiantOne node using the following steps. If you are not running in a cluster, perform these steps on any server in your classic architecture.
-
-1.	Make sure that the RadiantOne service is stopped if it is currently running.
-
-2.	Navigate to the <RLI_HOME>\bin\windows.service directory. You will find fid-server-service-install.bat and fid-server-service-uninstall.bat. These files install RadiantOne as a service and uninstall the service respectively.
-
-    >[!warning]
-    >If you are running RadiantOne on Windows 7, 2008, 2012, or 2016 you should execute fid-server-service-install or fid-server-service-uninstall as an administrator. To do so, right-click on the file and choose Run as administrator.
-
-3.	Execute the fid-server-service-install.bat file. A command window opens briefly and then closes. Check your services window (refresh if it was already open) and you should see a new service for the RadiantOne Server.
-
-4.	Start the RadiantOne service.
-
-5.	Repeat steps 1-4 on all nodes (if deploying in a cluster) or on all other servers if deployed in a classic architecture.
-
-#### Uninstalling the Windows Service
-
-To uninstall the Windows service, first stop the service, then run \\bin\\windows.service\\fid-server-service-uninstall.bat.  
+You can start RadiantOne Identity Data Management manually using the Control Panel web application or the included shell scripts. Alternatively, you can configure RadiantOne to run as an operating system service or daemon (Windows/Linux) by following the steps outlined in this document.  
  
-Note that uninstalling RadiantOne as a Windows service does not update the corresponding setting in ZooKeeper. As a result, the Dashboard tab in the Main Control Panel may continue to display the start/stop options, incorrectly assuming the service is still configured to run as a Windows service.  
- 
-To resolve this, you must manually update the asAService property in ZooKeeper. There are two methods available to do this. 
+We recommend setting up RadiantOne Identity Data Management as an operating system service (Windows service or Linux daemon/service) in production environments to automate its lifecycle (stopping, starting, etc.). 
 
-- From the Main Control Panel, switch to Expert Mode. Go to the Settings tab and navigate to Server Front End -> Advanced. Uncheck the Run as a Window Service option and save the configuration. Restart the Control Panel. 
+### Starting via Control Panel
 
-- Use the vdsconfig utility to update the asAService property to false. Below is an example. After running the command, restart the Control Panel. 
+Launch the Control Panel web application and log in with the super user account (default: cn=directory manager or  cn=directory administrators) using the password set during installation. 
 
-    `C:\radiantone\vds\bin>vdsconfig.bat set-property -name asAService -value false`
-    <br> Using RLI home : C:\radiantone\vds
-    <br> Using Java home : C:\radiantone\vds\jdk\jre
-    <br> 0 [ConnectionStateManager-0] WARN com.rli.zookeeper.ZooManagerConnectionStateListener - Curator connection state change: CONNECTED
-    <br> 9 [ConnectionStateManager-0] WARN com.rli.zookeeper.ZooManagerConnectionStateListener - VDS-ZK connection state changed: CONNECTED
-    <br> 9 [ConnectionStateManager-0] WARN com.rli.zookeeper.ZooManager - ZooManager connection state changed: CONNECTED
-    <br> Previous value: true
-    <br> New value: false
-    <br> Configuration has been updated successfully.
-
-### As a LINUX Daemon
-
-On UNIX platforms, the RadiantOne service can be started with $RLI_HOME/bin/runVDSServer.sh.
-
-Once you have tested your configuration and are ready to deploy your architecture, the RadiantOne service can be configured to start as a Linux Daemon. The startup script is located in $RLI_HOME/bin/rc.d (for init.d scripts) and $RLI_HOME/bin/system.d (for system.d scripts). Documents to assist with the configuration of the service are located at $RLI_HOME/bin/rc.d/readme.txt (for init.d scripts) and $RLI_HOME/bin/system.d/readme.txt (for system.d scripts).
-
-Assuming you are logged into your LINUX machine, run the following commands on your RadiantOne nodes if you are running in a cluster. 
-
-For init.d scripts:
-
-sudo cp $RLI_HOME/bin/rc.d/vds /etc/init.d/
-<br> sudo chmod +x /etc/init.d/vds
-<br> sudo chkconfig --add vds   #To automatically configure the vds init script for the configured runlevels (3 and 5, these are defined in the vds script). If you want to uninstall the script, use: chkconfig --del vds 
-<br> sudo service vds start
-<br> ps -ef | grep vds   #To verify that RadiantOne FID is not running as root, but as the user that owns the RadiantOne install location.
-
-For system.d scripts:
-
-sudo cp $RLI_HOME/bin/system.d/vds.service /etc/systemd/system/ <BR>sudo systemctl enable vds.service <BR>sudo systemctl start vds.service
-
-
-### How to Stop the RadiantOne Service
-
-Options for stopping the RadiantOne service:
-
--	On Windows and UNIX platforms, the RadiantOne service can be stopped from the Dashboard tab in the Main Control Panel.
-
--	If it is installed as a Windows service, it can be stopped from the Windows services menu.
-
--	To stop it on Linux platforms, execute: $RLI_HOME/bin/stopVDSServer.sh
-
--	To stop the RadiantOne Daemon Process:
-
--	For init.d use /etc/init.d/vds stop
-
--	For system.d use systemctl stop vds.service
-
-## Global Synchronization
-
-There are two ways to start Global Synchronization: through the Main Control Panel or via the command line. Each approach is described below. 
-
-### From Main Control Panel
-
-Global Synchronization pipelines can be started from the Main Control Panel > Global Syn tab. Select the topology from the list on the left. Click **RESUME** to start synchronization for all pipelines. 
-
-![An image showing ](Media/Image6.1.jpg)
-
-Figure 6.1: Starting Global Sync for All Pipelines in a Topology
-
-If a topology has more than one pipeline, you can start synchronization for each independently. To resume a single pipeline, click CONFIGURE and select the APPLY component. Click RESUME.
-
-![An image showing ](Media/Image6.2.jpg)
- 
-Figure 6.2: Starting Global Sync for a Specific Pipeline in a Topology
-
-### From Command Line
-
-The change-pipeline-state command in the vdsconfig utility, can be used to start/resume and stop/suspend a pipeline. The syntax of the command is as follows:
-
-change-pipeline-state -pipelineid <pipelineID> -state <state>
-
-Run the list-topologies command to locate the pipelines identifiers for each topology. This is the value to pass in the -pipelineid. For the -state property, use a value of “resume” to start the synchronization process. Use a value of “suspend” to stop the synchronization process.
-
-For more details on the vdsconfig utility, see the [Radiantone Command Line Configuration Guide](/command-line-configuration-guide/01-introduction).
-
-## Control Panels
-
-The Main Control Panel and Server Control Panel applications are hosted in a Jetty Web Server. The Server Control Panel can be accessed from the Dashboard tab in the Main Control Panel. The various ways the Jetty web server can be started are described below. It is recommended that it runs as a service in production environments.
-### Windows Start Menu
-
-After installing RadiantOne, execute <RLI_HOME>\bin\openControlPanel.bat (this starts the web server if it is not running in addition to opening the Main Control Panel in your default Internet browser).
+From the Dashboard tab, start RadiantOne Identity Data Management by clicking the power button icon, and selecting the “Start” action from the context menu. 
 
 >[!warning]
->If the Jetty web server hosting the Control Panel is started from the Windows Start Menu or using openControlpanel.bat, the process is killed when the user logs off the machine. Start Jetty as a Windows service to avoid this problem.
+> Starting RadiantOne from the Dashboard tab will cause it to stop when you log off your device. To keep it running, start RadiantOne as a OS-managed service instead. When it is set up that way, it cannot be started or stopped via the Control Panel. This prevents manual intervention and ensures the service manager alone controls its startup and shutdown. 
 
-### As a Windows Service
+### Starting via Shell scripts 
 
-The web server that hosts the control panels can be installed as a Windows service and can be set to start automatically. You can configure it as a Windows service with the following steps:
+To start RadiantOne Identity Data Management manually, navigate to the bin folder in your RLI_HOME directory and execute the following script:
 
-1.	Navigate to the %RLI_HOME%\bin\windows.service directory. Control-panel-service-install and control-panel-service-uninstall are located here. You can use these to install the web server as a service and uninstall the web server as a service respectively.
+* `startVDSServer.bat` (on Windows) or `runVDSServer.sh` (on Linux). 
 
-    >[!warning]
-    >If you are running the web server that hosts the control panel on Windows 7, 2008, 2012, or 2016, you should execute control-panel-service-install or control-panel-service-uninstall as an administrator. To do so, right-click on the file and choose Run as administrator.
+### Starting as a Windows Service 
 
-2.	Verify that the web server is stopped. For example, try going to: http://localhost:7070 (this is using the default port, if you set a different port during the RadiantOne install, you should use it here). If this page doesn’t return anything, the web server probably isn’t running. If it is running you can stop it with: <RLI_HOME>/bin/stopWebAppserver.bat. 
-3.	Execute the control-panel-service-install file. A command window opens briefly and then exits. Check your services window (refresh if it was already open) and you should see a new service for the RadiantOne FID Management Console. 
-4.	Verify the server started by opening a web browser and navigating to: http://localhost:7070 (this is using the default port, if you set a different port during the RadiantOne install, you should use it here). If the web server starts successfully, you can close the browser window and stop the server with <RLI_HOME>/bin/stopWebAppserver.bat. 
- 	
->[!warning]
->If a cluster, execute the steps described in this section on each cluster node.
+To start **RadiantOne Identity Data Management** as a Windows service, follow the steps outlined below. For clustered environments, perform these steps on **each node**.
 
-### As a LINUX Daemon
+1. Navigate to the `\bin\windows.service` directory. You will find two batch files:
+   - `fid-server-service-install.bat`: Installs RadiantOne Identity Data Management as a Windows service.
+   - `fid-server-service-uninstall.bat`: Uninstalls the RadiantOne Identity Data Management Windows service.
 
-On UNIX platforms, you can start the Main Control Panel by running: $RLI_HOME/bin/openControlPanel.sh.
+2. Execute `fid-server-service-install.bat`.  
+   To do this, **right-click the file** and select **Run as administrator**.
 
-The Jetty server that hosts the Control Panels can also be configured as a Linux daemon. Documents to assist with this are located at $RLI_HOME/bin/rc.d/readme.txt (for init.d scripts) and $RLI_HOME/bin/system.d/readme.txt (for system.d scripts).
+3. A command window will appear briefly and then close automatically.
 
-For init.d scripts:
+4. Open or refresh the **Services** window.  
+   You should now see a new service listed for **RadiantOne Identity Data Management**.
 
-sudo cp $RLI_HOME/bin/rc.d/control_panel /etc/init.d/
-<br> sudo chmod +x /etc/init.d/control_panel
-<br> sudo chkconfig -add control_panel  #To automatically configure the script for the configured runlevels (3 and 5, these are defined in the control_panel script). If you want to uninstall the script, use: chkconfig --del control_panel
-<br> sudo service control_panel start
+5. Start RadiantOne Identity Data Management using the newly created service.
 
-For system.d scripts:
+> **Note:** Repeat steps 1–5 on all nodes if deployed in a **cluster**, or on all applicable servers in a **classic deployment**.
 
-sudo cp $RLI_HOME/bin/system.d/control_panel.service /etc/systemd/system/ <BR>sudo systemctl enable control_panel.service <BR> sudo systemctl start control_panel.service
+### Starting as a Linux Daemon 
+  
 
->[!warning]
->If a cluster is deployed, execute the steps described in this section on each cluster node.
+To configure and start RadiantOne Identity Data Management as a Linux service, use either init.d or systemd scripts provided with the installed product. 
 
-### How to Stop Control Panel
+* For init.d scripts: 
 
-Options for stopping the Jetty web server that hosts the control panels:
+    ```
+    sudo cp $RLI_HOME/bin/rc.d/vds /etc/init.d/ 
+    sudo chmod +x /etc/init.d/vds 
+    sudo chkconfig --add vds 
+    sudo service vds start 
+    ps -ef | grep vds  # Confirm RadiantOne runs under the correct user
+    ```
+      
 
--	To stop the Jetty web server, first close the Internet browser where the control panel is running. Then, on Windows platforms, execute <RLI_HOME>\bin\stopWebAppServer.bat. 
+* For systemd scripts: 
 
--	If the web server is running as a Windows service, stop it (RadiantOne FID Management Console) from the services window. 
+    ```
+    sudo cp $RLI_HOME/bin/system.d/vds.service /etc/systemd/system/ 
+    sudo systemctl enable vds.service 
+    sudo systemctl start vds.service
+    ```
 
--	As a Linux daemon process you can use: 
+## Stopping RadiantOne
 
--	For init.d script use: service control_panel stop
+### Stopping via Control Panel
 
--	For system.d use systemctl stop control_panel.service
+Launch the **Control Panel** web application and log in with the super user account  
+(default: `cn=directory manager` or `cn=directory administrators`) using the password set during installation.
 
--	On Linux platforms, execute $RLI_HOME\bin\stopWebAppServer.sh.
+From the **Dashboard** tab, stop RadiantOne Identity Data Management by clicking the **power button icon**, and selecting the **“Stop”** action from the context menu.
 
-## Order to Restart Components when Deployed in a Cluster
+> **Note:** When RadiantOne Identity Data Management is set up as an **OS-managed service**, it cannot be started or stopped via the Control Panel.  
+> This prevents manual intervention and ensures the service manager alone controls its startup and shutdown.
 
-To check the status of each component, go to the Main Control Panel > Dashboard tab > Overview section. For cluster deployments, the following is the recommended order to restart the components.
 
-1.	(Optional) Suspend [Global Synchronization](#global-synchronization) if used. 
+### Stopping the Windows Service
 
-2.	Stop the [RadiantOne service](#how-to-stop-the-radiantone-service). 
+If RadiantOne Identity Data Management is installed as a **Windows service**:
 
-3.	Stop [Management Console](#how-to-stop-control-panel) (Jetty web server that hosts the Control Panels).
+1. Open the **Services** console.
+2. Locate the **RadiantOne Identity Data Management** service.
+3. Right-click and select **Stop** to stop the service.
 
-4.	Make sure all java processes related to RadiantOne components are stopped, if any of the process is still running, please kill from the task manager or command line.
+### Stopping the Linux Daemon
 
-5.	Start [Management Console](#control-panels) (Jetty web server that hosts the Control Panels) on all nodes in the cluster.
+Use the appropriate command based on your Linux system’s service manager:
 
-6.	Start the [RadiantOne service](#radiantone-service). 
+* For init.d: `/etc/init.d/vds stop`
 
-7.	(Optional) Start/resume [Global Synchronization](#global-synchronization) if used.
-
->[!warning]
->Zookeeper must be running on at least half of the cluster nodes to maintain the integrity of the cluster. Zookeeper starts automatically with the RadiantOne service and/or the Management Console (Jetty web server that hosts the Control Panels).
+* For systemd: `systemctl stop vds.service`
+  
 
