@@ -71,9 +71,9 @@ Three default groups are designed to be used with the Global Identity Viewer. Th
 
 | vdPrivilege Name | View entries & attributes | Perform searches | Edit, delete templates | Create, edit, delete queries | Export results | Modify attr values | configure/ schedule reports | Default groups/ roles that have this privilege
 |------|------|------|------|------|-----|-----|-----|-----| 
-globalidviewer-read | ✓ | ✓ |  |  |  |  |  | Read Only <br> cn=readonly,ou=globalgroups,cn=config
+globalidviewer-read | ✓ | ✓ | X | X | X | X | X | Read Only <br> cn=readonly,ou=globalgroups,cn=config
 globalidviewer-designer | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | Global ID Viewer Design <br> cn=Global ID Viewer Design,ou=globalgroups,cn=config
-globalidviewer-write | ✓ | ✓ |  |  | ✓ | ✓ |  | Global ID Viewer Write <br> cn=Global ID Viewer Write,ou=globalgroups,cn=config
+globalidviewer-write | ✓ | ✓ | X | X | X | ✓ | X | Global ID Viewer Write <br> cn=Global ID Viewer Write,ou=globalgroups,cn=config
 
 To add your user to a RadiantOne group:
 
