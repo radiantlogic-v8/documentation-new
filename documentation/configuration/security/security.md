@@ -38,15 +38,17 @@ See [Managing Attribute Encryption](./attribute-encryption) for details.
 
 ## SSL/TLS Communication to the RadiantOne Service
 
-You can enable the LDAPS endpoint in the Environment Operations Center.
+For SaaS deployments, you can enable the LDAPS endpoint in the Environment Operations Center.
 Expand your environment and click on the Identity Data Management application.
 In the Application Endpoints section, toggle on the LDAPS endpoint. This takes about 10 minutes to activate.
 
 ![LDAPS Endpoint](Media/enable-ldaps-endpoint.jpg)
 
+For self-managed deployments, you need to map the interal LDAPS service port for external traffic using your ingress configuration.
+
 ### Mutual Authentication: Certificate-based Authentication
 
->[!warn] Mutual authentication (mTLS) is currently supported in self-managed deployments of Identity Data Management only. It is not supported in SaaS deployments.
+>[!warn] Mutual authentication (mTLS) is currently supported in self-managed deployments of Identity Data Management only. You must configure your ingress/load balancer to pass through the TLS certificate from the client. Mutual authentication is not currently supported in SaaS deployments.
 
 A certificate is an electronic document that identifies an entity which can be an individual, a server, a company, or some other entity. The certificate also associates the entity with a public key.
 
