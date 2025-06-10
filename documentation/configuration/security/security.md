@@ -44,6 +44,105 @@ In the Application Endpoints section, toggle on the LDAPS endpoint. This takes a
 
 ![LDAPS Endpoint](Media/enable-ldaps-endpoint.jpg)
 
+### Mutual Authentication: Certificate-based Authentication
+
+A certificate is an electronic document that identifies an entity which can be an individual, a server, a company, or some other entity. The certificate also associates the entity with a public key.
+
+For normal SSL communications, where the only requirement is that the client trusts the server, no additional configuration is necessary (if both entities trust each other). For mutual authentication, where there is a reciprocal trust relationship between the client and the server, the client must generate a certificate containing his identity and private key in his keystore. The client must also make a version of the certificate containing his identity and public key, which RadiantOne must store in its truststore. In turn, the client needs to trust the server; this is accomplished by importing the server's CA certificate into the client truststore.
+
+>[!note] Certificate-based authentication (mutual authentication) requires the use of SSL or StartTLS for the communication between the client and RadiantOne.
+
+The diagram below shows how certificates and the SSL protocol are used together for authentication.
+
+![An image showing ](Media/Image3.82.jpg)
+
+There are three options for mutual authentication and this can be set from the Main Control Panel > Settings Tab > Security section > SSL > Mutual Auth. Client Certificate drop-down menu: Required, Requested and None (default value). If mutual authentication is required, choose the Required option. If this option is selected, it forces a mutual authentication. If the client fails to provide a valid certificate which can be trusted by RadiantOne, authentication fails, and the TCP/IP connection is dropped.
+
+If mutual authentication is not required, but you would like RadiantOne to request a certificate from the client, choose the Requested option. In this scenario, if the client provides a valid/trusted certificate, a mutual authentication connection is established. If the certificate presented is invalid, the authentication fails. If no certificate is presented, the connection continues (using a simple LDAP bind) but is not mutual authentication.
+
+If you do not want RadiantOne to request a client certificate at all, check the None option.
+
+If the client certificate is not signed by a known certificate authority, it must be added in the [RadiantOne client truststore](#client-certificate-trust-store-cluster-level-trust-store).
+
+**Requiring Certificate-based Authentication**
+
+If you want to require certificate-based authentication:
+
+1. The client must trust the RadiantOne server certificate (import the RadiantOne public key certificate into the client truststore, unless the server certificate has been signed by a certificate authority known/trusted by the client).
+
+2. The RadiantOne service must trust the client (import the client’s public key certificate into the [RadiantOne client truststore](#client-certificate-trust-store-cluster-level-trust-store), unless the client certificate is signed by a known/trusted certificate authority).
+
+3. From the Main Control Panel > Settings Tab > Security section > SSL, make sure either SSL and/or StartTLS is enabled.
+
+4. From the Main Control Panel > Settings Tab > Security section > SSL > Mutual Auth. Client Certificate drop-down menu, select Required.
+
+5. From the Main Control Panel > Settings Tab > Security section > SSL, click **Change** next to [Client Certificate DN Mapping](#client-certificate-dn-mapping) and define your mappings.
+
+>[!warning] The Client Certificate DN Mapping is only accessible by a member of the [Directory Administrator role/group](01-introduction#delegated-administration-of-radiantone).
+
+6. Click **Save** and restart the RadiantOne service. If RadiantOne is deployed in a cluster, restart RadiantOne on all nodes.
+
+**Client Certificate DN Mapping**
+
+To authorize a user who authenticates using a certificate (e.g. SASL External) you must set a client certificate DN mapping. This maps the user DN (Subject or Subject Alternate Name from the certificate) to a specific DN in the RadiantOne namespace. After, the DN in the RadiantOne namespace determines authorization (access controls). 
+
+>[!note] To avoid problems with special characters, RadiantOne normalizes the certificate subject prior to applying the certificate DN mapping.
+
+To set the client certificate DN mapping:
+
+1. Go to the Main Control Panel > Settings Tab > Security Section > SSL sub-section.
+
+2. Click **Change** next to the Client Certificate DN Mapping property.
+
+>[!warning] The Client Certificate DN Mapping is only accessible by a member of the [Directory Administrator role/group](01-introduction#delegated-administration-of-radiantone).
+
+There are different ways to determine the DN from the subject or subject alternative name in the certificate (using regular expression syntax).
+
+Setting a specific subject or subject alternative name to DN in the virtual namespace:
+
+`cn=lcallahan,dc=rli,dc=com (the user DN in the certificate) -> (maps to) cn= laura Callahan,cn=users,dc=mycompany,dc=com`
+
+Specify a Base DN, scope of the search, and a search filter to search for the user based on the subject or subject alternative name received in the certificate:
+
+`uid=(.+),dc=rli,dc=com -> dc=domain1,dc=com??sub?(sAMAccountName=$1)`
+
+If RadiantOne received a certificate subject of uid=lcallahan,dc=rli,dc=com then it would look for the virtual entry based on:
+
+`dc=domain1,dc=com??sub?(sAMAccountName=lcallahan)`
+
+Then, authorization would be based on the user DN that is returned.
+
+As another option, multiple variables can be used (not just 1 as described in the previous example). Let’s take a look at an example mapping that uses multiple variables:
+
+`cn=(.+),dc=(.+),dc=(.+),dc=com -> (maps to) ou=$2,dc=$3,dc=com??sub?(&(uid=$1)(dc=$3))`
+
+If RadiantOne received a subject from the certificate that looked like: cn=laura_callahan,dc=ny,dc=radiant,dc=com, the search that would be issued would look like:
+
+`ou=ny,dc=radiant,dc=com??sub?(&(uid=laura_callahan)(dc=radiant))`
+
+RadiantOne uses the DN returned in the search result to base authorization on. 
+
+If the subject in the SSL certificate is blank, you can specify that a Subject Alternative Name (SAN) should be used. You can use an alternative name in the mapping by specifying {alt} before the regular expression. For example: {alt}^(.+)$ uses the first alternative name found. You can be more specific and specify which alternative name in the certificate that you want to match by specifying the type [0-8]. For example: {alt:0}^(.+)$ uses the otherName alternative name. The type number associated with each is shown below.
+
+otherName                         [0]
+<br>rfc822Name                       [1]
+<br> dNSName                          [2]
+<br> x400Address                      [3]
+<br> directoryName                   [4]
+<br> ediPartyName                    [5]
+<br> uniformResourceIdentifier  [6]
+<br> iPAddress                           [7]
+<br> registeredID                        [8]
+
+For example, {alt:0}^(.+)@my.gov$ defined as the Certificate DN captures "james.newt" for the certificate shown below.
+
+![Example SSL Certificate](Media/Image3.83.jpg)
+ 
+If all mapping rules fail to locate a user, anonymous access is granted (if anonymous access is allowed to RadiantOne).
+
+>[!note] As an alternative to anonymous access, it is generally recommended that you create a final mapping that results in associating the authenticated user with a default user that has minimum access rights. An example is shown below where the last mapping rule matches to a user identified in RadiantOne as “uid=default,ou=globalusers,cn=config”.
+
+![Example Default Mapping Rule](Media/Image3.84.jpg)
 
 ## Client Certificate Truststore
 
