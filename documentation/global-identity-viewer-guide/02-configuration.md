@@ -39,9 +39,9 @@ To enable full-text search capabilities against the global profile reference lis
 7. You can either select the running task and click View Log to track the progress, or you can click OK to close the Tasks Monitor window.
 8. To enable full-text search capabilities against the virtual views that were auto-generated for each of the underlying sources, go to the Main Control Panel > Directory Namespace tab and click **Cache**.
 9. Click Browse.
-10. All underlying identity views are located below     dv=sourcecatalog,ou=directoryaggregation,dv=globalprofiles. An example with four identity sources is shown below.
+10. All underlying identity views are located below dv=sourcecatalog,ou=directoryaggregation,dv=globalprofiles. An example with four identity sources is shown below.
 
-    ![An image showing ](Media/note1.jpg)
+    ![An Example Showing Four Identity Sources](Media/ex4sources.jpg)
 
     Select one of the virtual views representing an identity source (e.g. based on the samples shown above is dv=ids_adpartnerdomain_directoryaggregation).
 
@@ -63,7 +63,7 @@ To enable full-text search capabilities against the global profile reference lis
 23. Repeat steps 8-21 to cache virtual views for all identity sources.
 
 >[!warning]
->If you make any changes to the identity sources (e.g. mappings, correlation rules...etc.) in the Glo bal Identity Builder project the identity source views are recreated. Therefore, you must delete and reconfigure the persistent cache on these views.
+>If you make any changes to the identity sources (e.g. mappings, correlation rules...etc.) in the Global Identity Builder project the identity source views are recreated. Therefore, you must delete and reconfigure the persistent cache on these views.
 
 ## Define Access Permissions
 
