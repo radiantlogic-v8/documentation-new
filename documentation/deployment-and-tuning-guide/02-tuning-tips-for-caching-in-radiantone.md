@@ -1182,6 +1182,17 @@ For the example shown below, the persistent cached view is from an Active Direct
  
 Figure 2.24: Invariant Attribute for Persistent Cache
 
+### Case Sensitive Attributes
+
+Case sensitive attributes allow you to specify which attributes should be treated as case-sensitive during the cache validation process.
+
+When enabled, the cache differentiates between letter cases (e.g., "UserID" vs. "userid") for the selected attributes, ensuring more accurate matching and validation.
+
+![An image showing the case sensitive attribute](Media/case-sensitive.png)
+
+You can enter one or more comma-separated attribute names in the "Case-Sensitive Attributes" field, or leave the field empty and select the "ALL" checkbox to treat all attributes as case-sensitive. 
+
+
 ### Use Cache for Authentication
 
 The default behavior of the RadiantOne service for processing bind requests for users located in a persistent cache branch is to delegate the credentials checking to the authoritative backend source. If the password in the backend is encrypted using one of the algorithms supported by RadiantOne, and the passwords are stored in the cache, you can configure the service to authenticate the user locally against the password in cache instead of delegating the credentials checking to the backend. To enable this behavior, check the Use Cache for Authentication option on the configured cache branch. This option is not applicable in scenarios where the passwords are not stored in the persistent cache. For an example use case where this option could be applicable, please see [Authoritative Backends Inaccessible by All Sites](07-deployment-architecture#backends-inaccessible-by-all-sites).
