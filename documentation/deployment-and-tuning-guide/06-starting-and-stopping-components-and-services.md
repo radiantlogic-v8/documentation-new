@@ -333,7 +333,7 @@ Restart nodes **sequentially** to maintain cluster availability.
 4. Verify all components are running:
 
    ```
-   ./monitoring.sh -d node-status
+   monitoring.sh -d node-status
    ```
 
 > If successful, the **Dashboard > Overview** section will reflect the updated status.
@@ -349,12 +349,14 @@ You can identify the leader node by running the following script:
 
 **On Windows:**
 
-  ```
-  monitoring.bat -d node-monitor | FINDSTR isVdsLeader
-  ```
+   ```
+   monitoring.bat -d node-monitor | FINDSTR isVdsLeader
+   ```
+  
 
 **On Linux:**
 
    ```
    monitoring.sh -d node-monitor | grep isVdsLeader
    ```
+
