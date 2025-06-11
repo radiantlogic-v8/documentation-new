@@ -15,7 +15,7 @@ We recommend setting up RadiantOne Identity Data Management as an operating syst
 
 ### Starting via Control Panel
 
-Launch the Control Panel web application and log in with the super user account (default: cn=directory manager or  cn=directory administrators) using the password set during installation. 
+Launch the Control Panel web application and log in with the super user or admin account (default: cn=directory manager or  cn=directory administrators) using the password set during installation. 
 
 From the Dashboard tab, start RadiantOne Identity Data Management by clicking the power button icon, and selecting the “Start” action from the context menu. 
 
@@ -30,7 +30,7 @@ To start RadiantOne Identity Data Management manually, navigate to the bin folde
 
 ### Starting as a Windows Service 
 
-To start **RadiantOne Identity Data Management** as a Windows service, follow the steps outlined below. For clustered environments, perform these steps on **each node**.
+To start RadiantOne Identity Data Management as a Windows service, follow the steps outlined below. For clustered environments, perform these steps on **each node**.
 
 1. Navigate to the `\bin\windows.service` directory. You will find two batch files:
    - `fid-server-service-install.bat`: Installs RadiantOne Identity Data Management as a Windows service.
@@ -75,7 +75,7 @@ To configure and start RadiantOne Identity Data Management as a Linux service, u
 
 ### Stopping via Control Panel
 
-Launch the **Control Panel** web application and log in with the super user account  
+Launch the **Control Panel** web application and log in with the super user or admin account  
 (default: `cn=directory manager` or `cn=directory administrators`) using the password set during installation.
 
 From the **Dashboard** tab, stop RadiantOne Identity Data Management by clicking the **power button icon**, and selecting the **“Stop”** action from the context menu.
