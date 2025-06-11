@@ -107,11 +107,9 @@ Use the appropriate command based on your Linux system’s service manager:
 
 1. [Stop](#stopping-the-windows-service) the RadiantOne Identity Data Management service. 
 
-2. Run the Uninstall script: %RLI_HOME%\bin\windows.service\fid-server-service-uninstall.bat 
+2. Run the Uninstall script: `%RLI_HOME%\bin\windows.service\fid-server-service-uninstall.bat` 
 
-3. Update ZooKeeper’s asAService Property: 
- 
-Uninstalling the service doesn’t update ZooKeeper, which may cause the Control Panel to incorrectly show service options. To resolve this, select the appropriate option and follow the related steps: 
+3. Update ZooKeeper’s asAService Property. Uninstalling the service doesn’t update ZooKeeper, which may cause the Control Panel to incorrectly show service options. To resolve this, select the appropriate option and follow the related steps: 
 
 **Option A: Using the Control Panel** 
 
@@ -135,7 +133,7 @@ Uninstalling the service doesn’t update ZooKeeper, which may cause the Control
 
 2. Run one of the following scripts (init.d or system.d) depending on your requirements. 
 
-For init.d: 
+* For init.d: 
 
    ```
    chkconfig --del vds 
@@ -144,7 +142,7 @@ For init.d:
    rm /etc/init.d/control_panel 
    ```
 
-For systemd: 
+* For systemd: 
 
    ```
    systemctl disable vds.service 
