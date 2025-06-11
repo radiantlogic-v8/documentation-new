@@ -46,7 +46,7 @@ To start **RadiantOne Identity Data Management** as a Windows service, follow th
 
 5. Start RadiantOne Identity Data Management using the newly created service.
 
-> **Note:** Repeat steps 1–5 on all nodes if deployed in a **cluster**, or on all applicable servers in a **classic deployment**.
+> Repeat steps 1–5 on all nodes if deployed in a **cluster**, or on all applicable servers in a **classic deployment**.
 
 ### Starting as a Linux Daemon 
   
@@ -81,7 +81,7 @@ Launch the **Control Panel** web application and log in with the super user acco
 
 From the **Dashboard** tab, stop RadiantOne Identity Data Management by clicking the **power button icon**, and selecting the **“Stop”** action from the context menu.
 
-> **Note:** When RadiantOne Identity Data Management is set up as an **OS-managed service**, it cannot be started or stopped via the Control Panel.  
+> When RadiantOne Identity Data Management is set up as an **OS-managed service**, it cannot be started or stopped via the Control Panel.  
 > This prevents manual intervention and ensures the service manager alone controls its startup and shutdown.
 
 
@@ -132,7 +132,7 @@ Uninstalling the service doesn’t update ZooKeeper, which may cause the Control
 	 
 ### Uninstalling Linux Service  
 
-1. Stop](#stopping-the-linux-daemon) the RadiantOne Identity Data Management service.  
+1. [Stop](#stopping-the-linux-daemon) the RadiantOne Identity Data Management service.  
 
 2. Run one of the following scripts (init.d or system.d) depending on your requirements. 
 
@@ -191,7 +191,7 @@ change-pipeline-state -pipelineid <ID> -state <resume|suspend>
 
 RadiantOne’s Main Control Panel and Server Control Panel are hosted in a **Jetty web server**. The Server Control Panel is accessible from the **Dashboard** tab in the Main Control Panel.
 
-> **Note:** In production environments, run Control Panel as a service for reliability and persistence across sessions.
+> In production environments, run Control Panel as a service for reliability and persistence across sessions.
 
 ### Starting the Control Panel
 
@@ -311,7 +311,7 @@ Restart nodes **sequentially** to maintain cluster availability.
 3. [Start](#starting-radiantone) RadiantOne.
 4. Wait for the node to rejoin the cluster before proceeding to the next node.
 
-> **Important:** If using local Zookeeper, it must be running on at least half the nodes.
+> If you are using local Zookeeper (Zookeeper included in RadiantOne), it must be running on at least half the nodes.
 
 ### Cluster-wide Restart
 
