@@ -555,7 +555,7 @@ For the example shown below, the persistent cached view is from an Active Direct
 
 ![Invariant Attribute](Media/invariant-attribute.jpg)
 
-### Case Sensitive Attributes
+**Case Sensitive Attributes**
 
 Case sensitive attributes allow you to specify which attributes should be treated as case-sensitive during the cache validation process.
 When enabled, the cache differentiates between letter cases (e.g., "UserID" vs. "userid") for the selected attributes, ensuring more accurate matching and validation.
