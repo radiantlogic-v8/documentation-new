@@ -154,11 +154,12 @@ For systemd:
    rm /etc/systemd/system/control_panel.service 
    ```
 
-# Global Synchronization
+
+## Global Synchronization
 
 Global Synchronization can be started in one of two ways: via the **Main Control Panel** or from the **command line**. Both methods are outlined below.
 
-## Starting via Main Control Panel
+### Starting via Main Control Panel
 
 1. Navigate to **Main Control Panel > Global Sync** tab.
 2. Select the desired topology from the left panel.
@@ -174,7 +175,7 @@ Global Synchronization can be started in one of two ways: via the **Main Control
    ![An image showing Global sync resume option](Media/Image6.2.jpg)
 
 
-## Starting via Shell scripts 
+### Starting via Shell scripts 
 
 Use the `change-pipeline-state` command in the `vdsconfig` utility to start (resume) or stop (suspend) a pipeline:
 
@@ -186,15 +187,15 @@ change-pipeline-state -pipelineid <ID> -state <resume|suspend>
 - Set `-state` to `resume` to start synchronization or `suspend` to stop it.
 
 
-# Control Panel (Jetty Web Server)
+## Control Panel (Jetty Web Server)
 
 RadiantOne’s Main Control Panel and Server Control Panel are hosted in a **Jetty web server**. The Server Control Panel is accessible from the **Dashboard** tab in the Main Control Panel.
 
 > **Note:** In production environments, run Control Panel as a service for reliability and persistence across sessions.
 
-## Starting the Control Panel
+### Starting the Control Panel
 
-### Starting via Shell scripts
+#### Starting via Shell scripts
 
 - **Windows:**
 
@@ -210,7 +211,7 @@ RadiantOne’s Main Control Panel and Server Control Panel are hosted in a **Jet
 
 > If started manually, Jetty will stop when the user logs off. Use the service approach in production.
 
-### Starting as a Windows Service
+#### Starting as a Windows Service
 
 1. Ensure Jetty is not already running:
    - Visit: `http://localhost:7070`
@@ -227,9 +228,9 @@ RadiantOne’s Main Control Panel and Server Control Panel are hosted in a **Jet
 
 > If using a different port, use that instead. Repeat these steps on each node in a cluster.
 
-### Starting as a Linux Daemon
+#### Starting as a Linux Daemon
 
-#### Using `init.d`:
+**Using `init.d`:**
 
 ```
 sudo cp $RLI_HOME/bin/rc.d/control_panel /etc/init.d/
@@ -238,7 +239,7 @@ sudo chkconfig --add control_panel
 sudo service control_panel start
 ```
 
-#### Using `systemd`:
+**Using `systemd`:**
 
 ```
 sudo cp $RLI_HOME/bin/system.d/control_panel.service /etc/systemd/system/
@@ -249,9 +250,9 @@ sudo systemctl start control_panel.service
 > Repeat on each node if using a cluster.
 
 
-## Stopping the Control Panel
+### Stopping the Control Panel
 
-### On Windows
+#### On Windows
 
 - To stop manually via shell script, run:
 
@@ -261,7 +262,7 @@ sudo systemctl start control_panel.service
 
 - If running as a service, stop **RadiantOne FID Management Console** from the Services window.
 
-### On Linux
+#### On Linux
 
 - To stop manually via shell script, run:
 
