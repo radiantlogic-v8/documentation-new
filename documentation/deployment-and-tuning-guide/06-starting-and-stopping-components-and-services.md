@@ -195,13 +195,13 @@ RadiantOne’s Main Control Panel and Server Control Panel are hosted in a **Jet
 
 #### Starting via Shell scripts
 
-##### On Windows
+**On Windows**
 
   ```
   <RLI_HOME>\bin\openControlPanel.bat
   ```
 
-##### On Linux
+**On Linux**
 
   ```
   $RLI_HOME/bin/openControlPanel.sh
@@ -250,7 +250,7 @@ sudo systemctl start control_panel.service
 
 ### Stopping the Control Panel
 
-#### On Windows
+**On Windows**
 
 - To stop manually via shell script, run:
 
@@ -260,7 +260,7 @@ sudo systemctl start control_panel.service
 
 - If running as a service, stop **RadiantOne FID Management Console** from the Services window.
 
-#### On Linux
+**On Linux**
 
 - To stop manually via shell script, run:
 
@@ -346,13 +346,13 @@ While not mandatory, it is recommended when possible to stop the follower nodes 
 
 You can identify the leader node by running the following script:
 
-#### On Windows
+**On Windows**
 
    ```
    monitoring.bat -d node-monitor | FINDSTR isVdsLeader
    ```
 
-#### On Linux
+**On Linux** 
 
    ```
    monitoring.sh -d node-monitor | grep isVdsLeader
