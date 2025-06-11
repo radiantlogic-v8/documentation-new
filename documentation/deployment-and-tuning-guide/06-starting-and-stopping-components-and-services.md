@@ -102,3 +102,259 @@ Use the appropriate command based on your Linux system’s service manager:
 * For systemd: `systemctl stop vds.service`
   
 
+## Uninstalling RadiantOne Service 
+
+### Uninstalling Windows Service  
+
+1. Stop the RadiantOne Identity Data Management service. 
+
+2. Run the Uninstall script: %RLI_HOME%\bin\windows.service\fid-server-service-uninstall.bat 
+
+3. Update ZooKeeper’s asAService Property: 
+ 
+Uninstalling the service doesn’t update ZooKeeper, which may cause the Control Panel to incorrectly show service options. To resolve this, select the appropriate option and follow the related steps: 
+
+**Option A: Using the Control Panel** 
+
+1. Switch to Expert Mode. Go to Settings → Server Front End → Advanced. 
+
+2. Uncheck Run as a Windows Service and save. 
+
+3. Restart the Control Panel. 
+
+**Option B: Using Command Line** 
+
+1. Run: %RLI_HOME%\vds\bin\vdsconfig.bat set-property -name asAService -value false 
+ 
+
+2. Next, restart the Control Panel. 
+ 
+	 
+### Uninstalling Linux Service  
+
+1. Stop the RadiantOne Identity Data Management service.  
+
+2. Run one of the following scripts (init.d or system.d) depending on your requirements. 
+
+For init.d: 
+
+   ```
+   chkconfig --del vds 
+   chkconfig --del control_panel 
+   rm /etc/init.d/vds 
+   rm /etc/init.d/control_panel 
+   ```
+
+For systemd: 
+
+   ```
+   systemctl disable vds.service 
+   systemctl disable control_panel.service 
+   rm /etc/systemd/system/vds.service 
+   rm /etc/systemd/system/control_panel.service 
+   ```
+
+# Global Synchronization
+
+Global Synchronization can be started in one of two ways: via the **Main Control Panel** or from the **command line**. Both methods are outlined below.
+
+## Starting via Main Control Panel
+
+1. Navigate to **Main Control Panel > Global Sync** tab.
+2. Select the desired topology from the left panel.
+3. Click **RESUME** to start synchronization for all pipelines.
+
+   ![An image showing ](Media/Image6.1.jpg)
+
+4. To start synchronization for an individual pipeline:
+   - Click **CONFIGURE**
+   - Select the **APPLY** component
+   - Click **RESUME**
+
+   ![An image showing Global sync resume option](Media/Image6.2.jpg)
+
+
+## Starting via Command Line
+
+Use the `change-pipeline-state` command in the `vdsconfig` utility to start (resume) or stop (suspend) a pipeline:
+
+```
+change-pipeline-state -pipelineid <ID> -state <resume|suspend>
+```
+
+- Use the `list-topologies` command to find the pipeline ID.
+- Set `-state` to `resume` to start synchronization or `suspend` to stop it.
+
+
+# Control Panel (Jetty Web Server)
+
+RadiantOne’s Main Control Panel and Server Control Panel are hosted in a **Jetty web server**. The Server Control Panel is accessible from the **Dashboard** tab in the Main Control Panel.
+
+> **Note:** In production environments, run Control Panel as a service for reliability and persistence across sessions.
+
+## Starting the Control Panel
+
+### Starting via Command Line
+
+- **Windows:**
+
+  ```
+  <RLI_HOME>\bin\openControlPanel.bat
+  ```
+
+- **Linux:**
+
+  ```
+  $RLI_HOME/bin/openControlPanel.sh
+  ```
+
+> ⚠️ If started manually, Jetty will stop when the user logs off. Use the service approach in production.
+
+### Starting as a Windows Service
+
+1. Ensure Jetty is not already running:
+   - Visit: `http://localhost:7070`
+   - If running, stop it:
+
+     ```
+     <RLI_HOME>\bin\stopWebAppServer.bat
+     ```
+
+2. Go to: `%RLI_HOME%\bin\windows.service`
+3. Run `control-panel-service-install.bat` (as Administrator).
+4. Verify **RadiantOne FID Management Console** appears in the Services window.
+5. Confirm Jetty is running at `http://localhost:7070`.
+
+> If using a different port, use that instead. Repeat these steps on each node in a cluster.
+
+### Starting as a Linux Daemon
+
+#### Using `init.d`:
+
+```
+sudo cp $RLI_HOME/bin/rc.d/control_panel /etc/init.d/
+sudo chmod +x /etc/init.d/control_panel
+sudo chkconfig --add control_panel
+sudo service control_panel start
+```
+
+#### Using `systemd`:
+
+```
+sudo cp $RLI_HOME/bin/system.d/control_panel.service /etc/systemd/system/
+sudo systemctl enable control_panel.service
+sudo systemctl start control_panel.service
+```
+
+> Repeat on each node if using a cluster.
+
+
+## Stopping the Control Panel
+
+### On Windows
+
+- To stop manually via shell script, run:
+
+  ```
+  <RLI_HOME>\bin\stopWebAppServer.bat
+  ```
+
+- If running as a service, stop **RadiantOne FID Management Console** from the Services window.
+
+### On Linux
+
+- To stop manually via shell script, run:
+
+  ```
+  $RLI_HOME/bin/stopWebAppServer.sh
+  ```
+
+- If running as a daemon:
+
+  - `init.d`:
+
+    ```
+    sudo service control_panel stop
+    ```
+
+  - `systemd`:
+
+    ```
+    sudo systemctl stop control_panel.service
+    ```
+
+
+## Restarting RadiantOne Components
+
+Restarts are typically required for maintenance, upgrades, or configuration changes.
+
+### Rolling Restart (Recommended)
+
+Restart nodes **sequentially** to maintain cluster availability.
+
+1. Stop RadiantOne and all components:
+
+   - **Linux:**
+
+     ```
+     $RLI_HOME/vds/bin/advanced/stop_servers.sh
+     ```
+
+   - **Windows:**
+
+     ```
+     %RLI_HOME%\vds\bin\advanced\stop_servers.bat
+     ```
+
+2. Start the Control Panel web server.
+3. Start RadiantOne.
+4. Wait for the node to rejoin the cluster before proceeding to the next node.
+
+> **Important:** If using local Zookeeper, it must be running on at least half the nodes.
+
+### Cluster-wide Restart
+
+1. Stop all RadiantOne components on each node:
+
+   - **Linux:**
+
+     ```
+     $RLI_HOME/vds/bin/advanced/stop_servers.sh
+     ```
+
+   - **Windows:**
+
+     ```
+     %RLI_HOME%\vds\bin\advanced\stop_servers.bat
+     ```
+
+2. Start the Control Panel web server on all nodes.
+3. Start RadiantOne on all nodes.
+4. Verify all components are running:
+
+   ```
+   ./monitoring.sh -d node-status
+   ```
+
+> If successful, the **Dashboard > Overview** section will reflect the updated status.
+
+![An image showing RadiantOne components](Media/radiantonecomponents.jpg)
+
+
+### Best Practices for Stopping Nodes
+
+While not mandatory, it is recommended—when possible—to stop the **follower nodes first** and the **leader node last**. This approach helps minimize stress on the cluster.
+
+You can identify the leader node by running the following script:
+
+**On Windows:**
+
+  ```
+  monitoring.bat -d node-monitor | FINDSTR isVdsLeader
+  ```
+
+**On Linux:**
+
+   ```
+   monitoring.sh -d node-monitor | grep isVdsLeader
+   ```
