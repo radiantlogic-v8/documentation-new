@@ -349,10 +349,9 @@ You can identify the leader node by running the following script:
 
 **On Windows:**
 
-   ```
-   monitoring.bat -d node-monitor | FINDSTR isVdsLeader
-   ```
-  
+   ```
+   monitoring.bat -d node-monitor | FINDSTR isVdsLeader
+   ```
 
 **On Linux:**
 
