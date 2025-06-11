@@ -175,7 +175,7 @@ Global Synchronization can be started in one of two ways: via the **Main Control
 
 ### Starting via Shell scripts 
 
-Use the `change-pipeline-state` command in the `vdsconfig` utility to start (resume) or stop (suspend) a pipeline:
+Use the `change-pipeline-state` [command](../../command-line-configuration-guide/21-global-sync-commands/#change-pipeline-state) in the `vdsconfig` utility to start (resume) or stop (suspend) a pipeline:
 
 ```
 change-pipeline-state -pipelineid <ID> -state <resume|suspend>
@@ -342,7 +342,7 @@ Restart nodes **sequentially** to maintain cluster availability.
 
 ### Best Practices for Stopping Nodes
 
-While not mandatory, it is recommended—when possible—to stop the **follower nodes first** and the **leader node last**. This approach helps minimize stress on the cluster.
+While not mandatory, it is recommended when possible to stop the follower nodes first and the leader node last. This approach helps minimize stress on the cluster.
 
 You can identify the leader node by running the following script:
 
