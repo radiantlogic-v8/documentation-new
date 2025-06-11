@@ -106,7 +106,7 @@ Use the appropriate command based on your Linux system’s service manager:
 
 ### Uninstalling Windows Service  
 
-1. Stop the RadiantOne Identity Data Management service. 
+1. [Stop](#stopping-the-windows-service) the RadiantOne Identity Data Management service. 
 
 2. Run the Uninstall script: %RLI_HOME%\bin\windows.service\fid-server-service-uninstall.bat 
 
@@ -124,7 +124,7 @@ Uninstalling the service doesn’t update ZooKeeper, which may cause the Control
 
 **Option B: Using Command Line** 
 
-1. Run: %RLI_HOME%\vds\bin\vdsconfig.bat set-property -name asAService -value false 
+1. Run: `%RLI_HOME%\vds\bin\vdsconfig.bat set-property -name asAService -value false`
  
 
 2. Next, restart the Control Panel. 
@@ -132,7 +132,7 @@ Uninstalling the service doesn’t update ZooKeeper, which may cause the Control
 	 
 ### Uninstalling Linux Service  
 
-1. Stop the RadiantOne Identity Data Management service.  
+1. Stop](#stopping-the-linux-daemon) the RadiantOne Identity Data Management service.  
 
 2. Run one of the following scripts (init.d or system.d) depending on your requirements. 
 
@@ -174,7 +174,7 @@ Global Synchronization can be started in one of two ways: via the **Main Control
    ![An image showing Global sync resume option](Media/Image6.2.jpg)
 
 
-## Starting via Command Line
+## Starting via Shell scripts 
 
 Use the `change-pipeline-state` command in the `vdsconfig` utility to start (resume) or stop (suspend) a pipeline:
 
@@ -194,7 +194,7 @@ RadiantOne’s Main Control Panel and Server Control Panel are hosted in a **Jet
 
 ## Starting the Control Panel
 
-### Starting via Command Line
+### Starting via Shell scripts
 
 - **Windows:**
 
@@ -208,7 +208,7 @@ RadiantOne’s Main Control Panel and Server Control Panel are hosted in a **Jet
   $RLI_HOME/bin/openControlPanel.sh
   ```
 
-> ⚠️ If started manually, Jetty will stop when the user logs off. Use the service approach in production.
+> If started manually, Jetty will stop when the user logs off. Use the service approach in production.
 
 ### Starting as a Windows Service
 
@@ -306,8 +306,8 @@ Restart nodes **sequentially** to maintain cluster availability.
      %RLI_HOME%\vds\bin\advanced\stop_servers.bat
      ```
 
-2. Start the Control Panel web server.
-3. Start RadiantOne.
+2. [Start](#starting-the-control-panel) the Control Panel web server.
+3. [Start](#starting-radiantone) RadiantOne.
 4. Wait for the node to rejoin the cluster before proceeding to the next node.
 
 > **Important:** If using local Zookeeper, it must be running on at least half the nodes.
@@ -328,8 +328,8 @@ Restart nodes **sequentially** to maintain cluster availability.
      %RLI_HOME%\vds\bin\advanced\stop_servers.bat
      ```
 
-2. Start the Control Panel web server on all nodes.
-3. Start RadiantOne on all nodes.
+2. [Start](#starting-the-control-panel) web server on all nodes.
+3. [Start](#starting-radiantone) RadiantOne on all nodes.
 4. Verify all components are running:
 
    ```
