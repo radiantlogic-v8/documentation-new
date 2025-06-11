@@ -50,7 +50,6 @@ To start **RadiantOne Identity Data Management** as a Windows service, follow th
 
 ### Starting as a Linux Daemon 
   
-
 To configure and start RadiantOne Identity Data Management as a Linux service, use either init.d or systemd scripts provided with the installed product. 
 
 * For init.d scripts: 
@@ -155,6 +154,7 @@ For systemd:
    ```
 
 
+
 ## Global Synchronization
 
 Global Synchronization can be started in one of two ways: via the **Main Control Panel** or from the **command line**. Both methods are outlined below.
@@ -187,7 +187,7 @@ change-pipeline-state -pipelineid <ID> -state <resume|suspend>
 - Set `-state` to `resume` to start synchronization or `suspend` to stop it.
 
 
-## Control Panel (Jetty Web Server)
+## Control Panel
 
 RadiantOne’s Main Control Panel and Server Control Panel are hosted in a **Jetty web server**. The Server Control Panel is accessible from the **Dashboard** tab in the Main Control Panel.
 
@@ -197,13 +197,13 @@ RadiantOne’s Main Control Panel and Server Control Panel are hosted in a **Jet
 
 #### Starting via Shell scripts
 
-- **Windows:**
+##### On Windows
 
   ```
   <RLI_HOME>\bin\openControlPanel.bat
   ```
 
-- **Linux:**
+##### On Linux
 
   ```
   $RLI_HOME/bin/openControlPanel.sh
@@ -317,13 +317,13 @@ Restart nodes **sequentially** to maintain cluster availability.
 
 1. Stop all RadiantOne components on each node:
 
-   - **Linux:**
+   - **On Linux:**
 
      ```
      $RLI_HOME/vds/bin/advanced/stop_servers.sh
      ```
 
-   - **Windows:**
+   - **On Windows:**
 
      ```
      %RLI_HOME%\vds\bin\advanced\stop_servers.bat
@@ -348,13 +348,13 @@ While not mandatory, it is recommended—when possible—to stop the **follower 
 
 You can identify the leader node by running the following script:
 
-**On Windows:**
+#### On Windows
 
    ```
    monitoring.bat -d node-monitor | FINDSTR isVdsLeader
    ```
 
-**On Linux:**
+#### On Linux
 
    ```
    monitoring.sh -d node-monitor | grep isVdsLeader
