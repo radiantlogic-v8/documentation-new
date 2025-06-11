@@ -293,13 +293,13 @@ Restart nodes **sequentially** to maintain cluster availability.
 
 1. Stop RadiantOne and all components:
 
-   - **Linux:**
+   - **On Linux:**
 
      ```
      $RLI_HOME/vds/bin/advanced/stop_servers.sh
      ```
 
-   - **Windows:**
+   - **On Windows:**
 
      ```
      %RLI_HOME%\vds\bin\advanced\stop_servers.bat
