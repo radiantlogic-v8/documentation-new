@@ -338,7 +338,7 @@ Restart nodes **sequentially** to maintain cluster availability.
 
 > If successful, the **Dashboard > Overview** section will reflect the updated status.
 
-![An image showing RadiantOne components](Media/radiantonecomponents.jpg)
+![An image showing RadiantOne components](Media/radiantonecomponents.png)
 
 
 ### Best Practices for Stopping Nodes
