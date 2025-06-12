@@ -330,33 +330,6 @@ In the following example, a request is made to execute deconfigure logs for a DB
 
 `https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=execute-db-changelog-scripts&namingcontextdn=ou=hr,o=examples&connectorname=ou_hr_o_examples_pcache_primary__so_ou_hr_o_examples__examples_app_hr&deconfigure`
 
-## fix-cacherefresh
-
-This command attempts to refresh the cache on entries where errors occurred during the cache refresh process. The command searches the cn=cacherefreshlog with a filter of (&(changenumber>=0)(status=2)). The changenumber and status can be defined in the command arguments. The command invokes an “action=synchronizecache” operation for each entry returned from the search, which attempts to update them in the persistent cache.
-
-**Usage:**
-<br>`fix-cacherefresh [-changenumber <changenumber>] [-instance <instance>] [-status <status>] [-verbose]`
-
-**Command Arguments:**
-
-`- changenumber <changenumber>`
-<br>The changenumber used to search the 'cn=cachefreshlog'. Only entries equal or greater to the given changenumber will be processed. The default value is 0.
-
-`- instance <instance>`
-<br>The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
-
-`- status <status>`
-<br>The value of the 'status' attribute for the entries to be refreshed. By default, all entries with a status value equal to 2 are refreshed.
-
-`- verbose`
-<br>Indicates if the command should log details of its progress.
-
-**REST (ADAP) Example**
-
-In the following example, a request is made to fix a cache refresh.
-
-`https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=fix-cacherefresh&changenumber=1&status=2&verbose`
-
 ## change-pipeline-state
 
 This command is used to resume or suspend (stop) and the capture process associated with a given persistent cache refresh process.
