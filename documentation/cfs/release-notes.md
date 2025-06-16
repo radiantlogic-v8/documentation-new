@@ -185,13 +185,32 @@ December 6, 2024
 
 ### v3.17.2
 
-February 13, 2024
+February 13, 2025
 
 **Improvements**
 
 -	[VSTS47204]: Added support for SessionIndex in SAML based applications.
 - [VSTS47205]: Added support for signing the entire SAML message.
 - [VSTS47245]: Added support to disable application access requests at application level or across all applications within a tenant.
+
+### v3.17.3
+
+June 16, 2025
+
+**Improvements**
+
+- [VSTS 47426] Added support for Single Logout (SLO) in WS-Federation authentication.
+- [VSTS 47470, 47479, 47501, 47502] Added pagination to improve performance across various pages:
+  * Gallery page located under CFS Master > Administration > Application > Gallery  
+  * Dashboard page located under CFS Master > Administration > Dashboard 
+  * Applications page located under CFS System > Applications 
+  * Dashboard page located under CFS System > Dashboard 
+
+**Bug fixes** 
+
+* [VSTS 47553] Fixed an issue with RSA failover handling and included masked OTP values in logs to enhance security.
+
+
 
 
 
