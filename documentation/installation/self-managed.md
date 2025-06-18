@@ -162,6 +162,8 @@ kubectl port-forward svc/iddm-proxy-service -n self-managed 8443:443
 
 After setting up port forwarding, you can reach the control panel at [https://localhost:8443/login](https://localhost:8443/login).
 
+In a production environment, you may want to expose the iddm-proxy-service securely using a method appropriate for your infrastructure, such as an ingress controller or a Kubernetes LoadBalancer service (e.g., on AWS, GCP, or other cloud platforms).
+
 ### Accessing the Classic Control Panel
 
 If needed, access the classic control panel via [https://localhost:8443/classic](https://localhost:8443/classic) after port-forwarding the `iddm-proxy-service`.
