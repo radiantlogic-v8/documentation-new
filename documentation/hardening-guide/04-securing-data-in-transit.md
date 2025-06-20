@@ -236,11 +236,12 @@ For more information on SSL/TLS support, please see the RadiantOne System Admini
 
 Federal Information Processing Standards (FIPS) are issued by the National Institute of Standards and Technology (NIST) after approval by the Secretary of Commerce pursuant to Section 5131 of the Information Technology Management Reform Act of 1996 (Public Law 104-106) and the Computer Security Act of 1987 (Public Law 100-235). 
 
-FIPS 140-2 lists the security requirements for cryptographic operations, and the purpose is to establish a baseline standard of how well the confidentiality and integrity of the information protected is. Data encrypted to the standards within FIPS 140-2 is considered to be protected against attacks. Many federal government agencies require that any Personally Identifiable Information (PII) that is classified as sensitive be secured by FIPS 140-2 certified algorithms. The Cryptographic Module Validation Program (CMVP) validates cryptographic modules to FIPS 140-2 and other cryptography based standards. 
+FIPS 140-3 lists the security requirements for cryptographic operations, and the purpose is to establish a baseline standard of how well the confidentiality and integrity of the information protected is. Data encrypted to the standards within FIPS 140-3 is considered to be protected against attacks. Many federal government agencies require that any Personally Identifiable Information (PII) that is classified as sensitive be secured by FIPS 140-3 certified algorithms. The Cryptographic Module Validation Program (CMVP) validates cryptographic modules to FIPS 140-3 and other cryptography based standards. 
 
-RadiantOne includes a FIPS-certified cryptographic module. The certification can be referenced here: https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/4375
+RadiantOne includes a FIPS-certified cryptographic module. The certification can be referenced here: 
+https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/4912
 
-Securing data-in-transit addresses communication between clients and the RadiantOne service as depicted in the diagram below and is addressed by SSL/TLS. Securing data-at-rest addresses how attributes (e.g. user passwords and other sensitive attributes) are encrypted when stored in the RadiantOne Universal Directory (HDAP) storage. These two layers are highlighted in the diagram below and both leverage the FIPS-certified Radiant Logic Cryptographic Module for Java.
+Securing data-in-transit addresses communication between clients and the RadiantOne service as depicted in the diagram below and is addressed by SSL/TLS. Securing data-at-rest addresses how attributes (e.g. user passwords and other sensitive attributes) are encrypted when stored in the RadiantOne Directory stores. These two layers are highlighted in the diagram below and both leverage the FIPS-certified Radiant Logic Cryptographic Module for Java.
 
 ![An image showing ](Media/FIPSImage1.1.jpg)
  
@@ -359,9 +360,9 @@ Password policies can be seen from the Main Control Panel > Settings tab > Secur
 
 ![An image showing ](Media/FIPSImage2.5.jpg)
  
-If existing entries contain passwords that use a non-compliant FIPS hash, or if user entries are imported entries into a RadiantOne Universal Directory (HDAP) store via an LDIF file and contain hashed passwords using a non-compliant FIPS hash, these passwords remain stored with the existing hash until they are updated. Once FIPS mode is enabled, updated passwords are stored in the selected FIPS-compliant hash. Authentication of users is not impacted. 
+If existing entries contain passwords that use a non-compliant FIPS hash, or if user entries are imported entries into a RadiantOne Directory store via an LDIF file and contain hashed passwords using a non-compliant FIPS hash, these passwords remain stored with the existing hash until they are updated. Once FIPS mode is enabled, updated passwords are stored in the selected FIPS-compliant hash. Authentication of users is not impacted. 
 
-### Allowed Universal Directory (HDAP) Attribute Encryption and LDIF File Encryption Ciphers
+### Allowed RadiantOne Directory Attribute Encryption and LDIF File Encryption Ciphers
 
 When RadiantOne is in FIPS mode, the cipher available for attribute encryption and/or LDIF file encryption is limited to AES256. The supported ciphers can be seen from Main Control Panel -> Settings tab -> Security -> Attribute Encryption.
  
@@ -369,9 +370,9 @@ When RadiantOne is in FIPS mode, the cipher available for attribute encryption a
 
 You must define an attribute encryption key and LDIFZ encryption key to properly secure data-at-rest.
 
-#### RadiantOne Universal Directory (HDAP) Attribute Encryption
+#### RadiantOne Directory Attribute Encryption
 
-Attribute encryption protects sensitive data while it is stored in RadiantOne. Attribute encryption allows you to specify that certain attributes of an entry are stored in an encrypted format. This prevents data from being readable while stored in Universal Directory (HDAP) stores, persistent cache, backup files, and exported LDIF files.
+Attribute encryption protects sensitive data while it is stored in RadiantOne. Attribute encryption allows you to specify that certain attributes of an entry are stored in an encrypted format. This prevents data from being readable while stored in RadiantOne Directory stores, persistent cache, backup files, and exported LDIF files.
 
 There are two items to configure. One is the criteria for the key generation used to encrypt/decrypt the attributes. Two is the list of attributes you want to encrypt.
 
@@ -393,7 +394,7 @@ An encryption key is auto-generated based on the cipher and security key value p
 
 No attributes are encrypted by default. To configure a list of attributes to encrypt:
 
-1.	Navigate to the RadiantOne Universal Directory (HDAP) store (or configured persistent cache branch) on the Main Control Panel > Directory Namespace tab.
+1.	Navigate to the RadiantOne Directory store (or configured persistent cache branch) on the Main Control Panel > Directory Namespace tab.
 
 2.	Enter a comma-separated list of attribute names in the Encrypted Attributes property.
 
@@ -407,7 +408,7 @@ For more information about accessing encrypted attributes and changing the encry
 
 #### LDIF File Encryption
 
-Use the LDIFZ format when exporting RadiantOne Universal Directory stores (HDAP) stores to produce a zipped and encrypted LDIF file. This prevents data from being readable while stored in exported LDIF files.
+Use the LDIFZ format when exporting RadiantOne Directory stores to produce a zipped and encrypted LDIF file. This prevents data from being readable while stored in exported LDIF files.
 
 **Key Generation**
 
@@ -419,7 +420,7 @@ To define the criteria used to generate an encryption key:
 
 3.	Select the desired cipher from the drop-down list. 
 
-4.	Enter a security key. This value is used to auto-generate an encryption key. If you plan on deploying multiple clusters that will participate in inter cluster replication and you are going to initialize RadiantOne Universal Directory (HDAP) stores from an exported LDIFZ file, take note of the value you enter here as you must use it when configuring the LDIFZ cipher and security key in the other clusters.
+4.	Enter a security key. This value is used to auto-generate an encryption key. If you plan on deploying multiple clusters that will participate in inter cluster replication and you are going to initialize RadiantOne Directory stores from an exported LDIFZ file, take note of the value you enter here as you must use it when configuring the LDIFZ cipher and security key in the other clusters.
 
 **Using LDIFZ**
 
@@ -427,7 +428,7 @@ In FIPS-mode, LDIFZ files should be used for persistent cache initialization (fo
 
 ![An image showing ](Media/FIPSImage2.7.jpg)
  
-In FIPS-mode, LDIFZ files should be used when exporting RadiantOne Universal Directory (HDAP) or persistent cache. Select .ldifz from the drop-down list next to the Export File Name property.
+In FIPS-mode, LDIFZ files should be used when exporting RadiantOne Directory or persistent cache. Select .ldifz from the drop-down list next to the Export File Name property.
  
 ![An image showing ](Media/FIPSImage2.8.jpg)
 ![An image showing ](Media/FIPSImage2.9.jpg)
