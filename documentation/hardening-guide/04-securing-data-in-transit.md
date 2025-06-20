@@ -252,7 +252,7 @@ This section describes how to enable FIPS mode for RadiantOne. For details about
 
 In FIPS mode, RadiantOne performs all cryptographic operations using the Radiant Logic Cryptographic Module for Java. This includes key generation and key derivation, message digests and message authentication codes, random number generation, symmetric and asymmetric encryption, signature generation and verification, etc. RadiantOne supports FIPS mode on Windows Server 2016, RHEL, and CentOS.
 
-After installing RadiantOne, it is recommended that you harden the server for security threats. See the [RadiantOne Hardening Guide](../hardening-guide/00-preface) for advice. After the server is hardened, you can enable FIPS mode.
+After installing RadiantOne, it is recommended that you harden the server for security threats. After the server is hardened, you can enable FIPS mode.
 
 During the RadiantOne installation, a self-signed server certificate of type JKS is installed in <RLI_HOME>/vds_server/conf/rli.keystore. When you enable FIPS mode, the keystore containing the self-signed certificate is converted to type BCFKS and a new keystore is created. Therefore, when you (later) replace the default self-signed certificate, ensure it is updated properly in the corresponding FIPS certificate keystore.
 
