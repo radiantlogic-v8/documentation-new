@@ -106,7 +106,7 @@ For details on configuring attribute encryption, see the RadiantOne Namespace Co
 Guide.
 
 For details on deploying RadiantOne in FIPS-mode, to ensure all cryptographic operations are
-performed using a FIPS 140-2 certified module, see the RadiantOneFIPS_Mode Guide.
+performed using a FIPS 140-3 certified module, see: [FIPS-Mode](./04-securing-data-in-transit#enable-fips-mode)
 
 ## Use Zipped and Encrypted LDIF Files
 
@@ -150,9 +150,9 @@ Administration Guide.
 ## Enable FIPS Mode
 
 For details on deploying RadiantOne in FIPS-mode, to ensure all cryptographic operations are
-performed using a FIPS 140-2 certified module, see the RadiantOneFIPS_Mode Guide.
+performed using a FIPS 140-3 certified module, see: [FIPS-Mode](./04-securing-data-in-transit#enable-fips-mode)
 
-Once FIPS-mode is enabled, go to the Main Control Panel -> Settings tab -> Security ->
+Once FIPS-mode is enabled, go to the Main Control Panel > Settings tab > Security >
 Attribute Encryption and define the security keys for attribute encryption and LDIFZ attribute
 encryption.
 
@@ -160,7 +160,7 @@ encryption.
 
 ![An image showing the ](Media/Image3.2.jpg)
 
-### RadiantOne Universal Directory (HDAP) Stores Attribute Encryption
+### RadiantOne Directory Stores Attribute Encryption
 
 Attribute encryption protects sensitive data while it is stored in RadiantOne. Attribute encryption allows you to specify that certain attributes of an entry are stored in an encrypted format. This prevents data from being readable while stored in RadiantOne Universal Directory stores, persistent cache, backup files, and exported LDIF files.
 
@@ -184,7 +184,7 @@ If inter-cluster replication is deployed, all clusters must be configured with t
 
 No attributes are encrypted by default. To configure a list of attributes to encrypt:
 
-1. Navigate to the RadiantOne Universal Directory (HDAP) store (or configured persistent  cache branch) on the Main Control Panel > Directory Namespace tab.
+1. Navigate to the RadiantOne Directory store (or configured persistent cache branch) on the Main Control Panel > Directory Namespace tab.
 2. Enter a comma-separated list of attribute names in the Encrypted Attributes property.
 3. Click Save.
 4. Click the Re-build Index button (if your configuration is an RadiantOne Universal Directory Store) or the Initialize button to reinitialize the cache (if your configuration is a Persistent Cache).
@@ -203,9 +203,7 @@ see the RadiantOne System Administration Guide.
 
 ### LDIF File Encryption
 
-Using the LDIFZ format when exporting RadiantOne Universal Directory (HDAP) stores
-produces a zipped and encrypted LDIF file. This prevents data from being readable while stored
-in exported LDIF files.
+Using the LDIFZ format when exporting RadiantOne Directory stores produces a zipped and encrypted LDIF file. This prevents data from being readable while stored in exported LDIF files.
 
 #### Key Generation
 
@@ -222,8 +220,7 @@ In FIPS-mode, LDIFZ files should be used for persistent cache initialization (fo
 
 ![An image showing the ](Media/Image3.3.jpg)
 
-In FIPS-mode, LDIFZ files should be used when exporting RadiantOne Universal Directory
-(HDAP) or persistent cache. Select .ldifz from the drop-down list next to the Export File Name property.
+In FIPS-mode, LDIFZ files should be used when exporting RadiantOne Directory stores or persistent cache. Select .ldifz from the drop-down list next to the Export File Name property.
 
 ![An image showing the ](Media/Image3.4.jpg)
 
