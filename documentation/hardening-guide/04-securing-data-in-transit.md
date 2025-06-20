@@ -9,7 +9,7 @@ RadiantOne supports SSL/TLS and StartTLS to encrypt communication with clients a
 
 ## Configure SSL/TLS for Accessing RadiantOne
 
-During the RadiantOne installation, a self-signed certificate is generated for SSL/TLS access to RadiantOne. This certificate is also used for HTTPS access to the Control Panels. It is recommended to replace the default self-signed certificate with a CA-signed certificate that complies with your corporate security policy. Please see the RadiantOne System Administration Guide for more information.
+During the RadiantOne installation, a self-signed certificate is generated for SSL/TLS access to RadiantOne. This certificate is also used for HTTPS access to the Control Panels. It is recommended to replace the default self-signed certificate with a CA-signed certificate that complies with your corporate security policy. Please see the [RadiantOne System Administration Guide](../sys-admin-guide/01-introduction) for more information.
 
 Below is a high-level architecture diagram depicting the communication between the different layers (clients to RadiantOne and RadiantOne to backend data sources). This provides a glimpse of the different certificates, keystores and truststores involved. All components at the RadiantOne layer are installed on the same server.
 
@@ -247,12 +247,12 @@ Securing data-in-transit addresses communication between clients and the Radiant
  
 Figure 1: Data in Transit and Data at Rest
 
-This guide describes how to enable FIPS mode for RadiantOne. For details about the Radiant Logic Cryptographic Module for Java, please see the published security policy at the NIST URL referenced above.
+This section describes how to enable FIPS mode for RadiantOne. For details about the Radiant Logic Cryptographic Module for Java, please see the published security policy at the NIST URL referenced above.
 
 
 In FIPS mode, RadiantOne performs all cryptographic operations using the Radiant Logic Cryptographic Module for Java. This includes key generation and key derivation, message digests and message authentication codes, random number generation, symmetric and asymmetric encryption, signature generation and verification, etc. RadiantOne supports FIPS mode on Windows Server 2016, RHEL, and CentOS.
 
-After installing RadiantOne, it is recommended that you harden the server for security threats. See the RadiantOne Hardening Guide for advice. After the server is hardened, you can enable FIPS mode.
+After installing RadiantOne, it is recommended that you harden the server for security threats. See the [RadiantOne Hardening Guide](../hardening-guide/00-preface) for advice. After the server is hardened, you can enable FIPS mode.
 
 During the RadiantOne installation, a self-signed server certificate of type JKS is installed in <RLI_HOME>/vds_server/conf/rli.keystore. When you enable FIPS mode, the keystore containing the self-signed certificate is converted to type BCFKS and a new keystore is created. Therefore, when you (later) replace the default self-signed certificate, ensure it is updated properly in the corresponding FIPS certificate keystore.
 
