@@ -160,14 +160,14 @@ encryption.
 
 ![An image showing the ](Media/Image3.2.jpg)
 
-### RadiantOne Directory Stores Attribute Encryption
+## RadiantOne Directory Stores Attribute Encryption
 
 Attribute encryption protects sensitive data while it is stored in RadiantOne. Attribute encryption allows you to specify that certain attributes of an entry are stored in an encrypted format. This prevents data from being readable while stored in RadiantOne Universal Directory stores, persistent cache, backup files, and exported LDIF files.
 
 There are two items to configure. One is the criteria for the key generation used to
 encrypt/decrypt the attributes. Two is the list of attributes you want to encrypt.
 
-#### Key Generation
+### Key Generation
 
 To define the criteria used to generate an encryption key:
 
@@ -180,7 +180,7 @@ An encryption key is auto-generated based on the cipher and security key value p
 key is used across nodes in a cluster to encrypt/decrypt the attributes configured for encryption.
 If inter-cluster replication is deployed, all clusters must be configured with the same cipher and security key.
 
-#### Attributes to Encrypt
+### Attributes to Encrypt
 
 No attributes are encrypted by default. To configure a list of attributes to encrypt:
 
@@ -201,11 +201,11 @@ reinitialize) if the branch is a persistent cache.
 For more information about accessing encrypted attributes and changing the encryption key,
 see the RadiantOne System Administration Guide.
 
-### LDIF File Encryption
+## LDIF File Encryption
 
 Using the LDIFZ format when exporting RadiantOne Directory stores produces a zipped and encrypted LDIF file. This prevents data from being readable while stored in exported LDIF files.
 
-#### Key Generation
+### Key Generation
 
 To define the criteria used to generate an encryption key:
 
@@ -214,7 +214,7 @@ To define the criteria used to generate an encryption key:
 3. Select the desired cipher from the drop-down list.
 4. Enter a security key. This value is used to auto-generate an encryption key. If you plan on deploying multiple clusters that will participate in inter-cluster replication and you are    going to initialize stores from an exported LDIFZ file, take note of the value you enter here as you must use it when configuring the LDIFZ cipher and security key in the other clusters.
 
-#### Using LDIFZ
+### Using LDIFZ
 
 In FIPS-mode, LDIFZ files should be used for persistent cache initialization (for the file that gets generated as the first step of the initialization process). Make sure the option to “Use .ldifz...” is selected during the initialization process.
 
