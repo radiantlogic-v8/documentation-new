@@ -9,19 +9,23 @@ This document describes the supported backend data sources supported by RadiantO
 
 ### LDAP Directory Servers	
 
-- Microsoft Active Directory 2008 or higher
-- Active Directory Lightweight Directory Service (AD-LDS)
-- Active Directory Application Mode (ADAM)
-- SunONE Directory Server 4.X – 7.X
-- Sun Java System Directory v6.X
-- IBM Directory Server v5 or higher
-- Novell eDirectory v8 or higher
-- IBM Domino (formerly Lotus Domino)
-- Oracle Internet Directory v9 & v10, Oracle   Directory Server Enterprise Edition (ODSEE)
-- CA Directory r12.X
-- Any LDAP v3 Service
+To connect to the following directory services, following the steps to: [Create Data Sources](./data-sources#ldap-data-sources-and-active-directory)
+
+- Microsoft Active Directory 2008 or higher. Use the Active Directory template.
+- Active Directory Lightweight Directory Service (AD-LDS). Use the Generic LDAP template.
+- Active Directory Application Mode (ADAM). Use the Generic LDAP template.
+- SunONE Directory Server 4.X – 7.X. Use the Generic LDAP template.
+- Sun Java System Directory v6.X. Use the Generic LDAP template.
+- IBM Directory Server v5 or higher. Use the Generic LDAP template.
+- Novell eDirectory v8 or higher. Use the Generic LDAP template.
+- IBM Domino (formerly Lotus Domino). Use the Generic LDAP template.
+- Oracle Internet Directory v9 & v10, Oracle Directory Server Enterprise Edition (ODSEE). Use the Generic LDAP template.
+- CA Directory r12.X. Use the Generic LDAP template.
+- Any LDAP v3 Service. Use the Generic LDAP template.
 
 ### Database Servers	
+
+To connect to the following databases, following the steps to: [Create Data Sources](./data-sources#database-data-sources)
 
 - Oracle 8i, 9i, 10g, 11g, 12c
 - Microsoft SQL Server v2008 or higher
@@ -30,7 +34,7 @@ This document describes the supported backend data sources supported by RadiantO
 - MongoDB
 - Snowflake
 - Terradata
-- Any JDBC-accessible database
+- Any JDBC-accessible database. If you don't find an out-of-the-box template for your database vendor, define a new database data source template and upload your JDBC driver.
 
 The following JDBC drivers are installed with RadiantOne by default for convenience, but may be insufficient for your use cases: Oracle (thin), Oracle oci, Microsoft SQL Server, HSQL, MySQL (supports MariaDB too), IBM DB2, Sybase, and Derby. For all other databases, import your own JDBC driver in Control Panel > Setup > Data Catalog > Template Management.
 
@@ -38,9 +42,12 @@ You have the option to use one of the above drivers, however, it is recommended 
 
 ### Cloud Directory Services
 
-- Entra ID (formerly Azure AD)
-- PingOne
-- Okta Universal Directory
+To connect to the following cloud directory services, following the steps to: [Create Data Sources](./data-sources#managing-data-sources)
+Templates for cloud directory services are located on the OTHER tab.
+
+- Entra ID (formerly Azure AD). Use the template named mgraph or Entra ID.
+- PingOne. Use the template named SCIMv2.
+- Okta Universal Directory. Use the template named Okta.
 
 ### Applications/Other**
 
@@ -61,4 +68,4 @@ You have the option to use one of the above drivers, however, it is recommended 
     -	Java API
     -  	Microsoft NT Domain
 
->[!warn] ** All of these require customization. Consult your Radiant Logic Account Representative for details.
+>[!note] ** All of these require custom templates. Consult your Radiant Logic Account Representative for details.
