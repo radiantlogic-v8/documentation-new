@@ -29,7 +29,7 @@ Templates for directory services are located on the LDAP tab.
 
 To connect to the following databases, follow the steps to: [Create Data Sources](./data-sources#database-data-sources)
 
-Templates for databases are located on the Database tab.
+Templates for databases are located on the DATABASE tab.
 
 - Oracle 8i, 9i, 10g, 11g, 12c
 - Microsoft SQL Server v2008 or higher
