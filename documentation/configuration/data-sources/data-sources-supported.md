@@ -9,7 +9,7 @@ This document describes the supported backend data sources supported by RadiantO
 
 ### LDAP Directory Servers	
 
-To connect to the following directory services, following the steps to: [Create Data Sources](./data-sources#ldap-data-sources-and-active-directory)
+To connect to the following directory services, follow the steps to: [Create Data Sources](./data-sources#ldap-data-sources-and-active-directory)
 
 Templates for directory services are located on the LDAP tab.
 
@@ -27,7 +27,7 @@ Templates for directory services are located on the LDAP tab.
 
 ### Database Servers	
 
-To connect to the following databases, following the steps to: [Create Data Sources](./data-sources#database-data-sources)
+To connect to the following databases, follow the steps to: [Create Data Sources](./data-sources#database-data-sources)
 
 Templates for databases are located on the Database tab.
 
@@ -46,7 +46,7 @@ You have the option to use one of the above drivers, however, it is recommended 
 
 ### Cloud Directory Services
 
-To connect to the following cloud directory services, following the steps to: [Create Data Sources](./data-sources#managing-data-sources)
+To connect to the following cloud directory services, follow the steps to: [Create Data Sources](./data-sources#managing-data-sources)
 
 Templates for cloud directory services are located on the OTHER tab.
 
