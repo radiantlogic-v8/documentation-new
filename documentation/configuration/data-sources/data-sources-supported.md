@@ -11,6 +11,8 @@ This document describes the supported backend data sources supported by RadiantO
 
 To connect to the following directory services, following the steps to: [Create Data Sources](./data-sources#ldap-data-sources-and-active-directory)
 
+Templates for directory services are located on the LDAP tab.
+
 - Microsoft Active Directory 2008 or higher. Use the Active Directory template.
 - Active Directory Lightweight Directory Service (AD-LDS). Use the Generic LDAP template.
 - Active Directory Application Mode (ADAM). Use the Generic LDAP template.
@@ -26,6 +28,8 @@ To connect to the following directory services, following the steps to: [Create 
 ### Database Servers	
 
 To connect to the following databases, following the steps to: [Create Data Sources](./data-sources#database-data-sources)
+
+Templates for databases are located on the Database tab.
 
 - Oracle 8i, 9i, 10g, 11g, 12c
 - Microsoft SQL Server v2008 or higher
@@ -43,6 +47,7 @@ You have the option to use one of the above drivers, however, it is recommended 
 ### Cloud Directory Services
 
 To connect to the following cloud directory services, following the steps to: [Create Data Sources](./data-sources#managing-data-sources)
+
 Templates for cloud directory services are located on the OTHER tab.
 
 - Entra ID (formerly Azure AD). Use the template named mgraph or Entra ID.
