@@ -68,4 +68,5 @@ ldapmodify -h localhost -p 2389 -D "cn=directory manager" -w password -f '
 To verify the username and password update, go to the Main Control Panel > Settings tab > Server Backend > LDAP Data Sources and edit the data source (e.g. ad203). Click **Test Connection** to confirm it succeeds. Also validate that virtual views associated with this data source still work fine. This can be checked from the Directory Browser tab in the Main Control Panel.
 
 
->[!note] When a data source is set as Offline, RadiantOne does not try to access the primary backend nor any failover servers configured in the data source.
+>[!note]
+> When a data source is set as Offline, RadiantOne does not try to access the primary backend nor any failover servers configured in the data source.
