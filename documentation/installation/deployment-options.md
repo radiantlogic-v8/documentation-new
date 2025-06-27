@@ -48,7 +48,7 @@ Radiant Logic owns and manages the infrastructure where the Identity Data Manage
 
 ## Self-managed
 
-For self-managed deployments, configure your Kubernetes cluster and then deploy RadiantOne Identity Data Management using Helm. For details, see [Self-managed Deployments](./self-managed.md)
+For self-managed deployments, configure your Kubernetes cluster and then deploy RadiantOne Identity Data Management using Helm. For details, see [Self-managed Deployment](./self-managed.md).
 
 ## Upgrades
 
