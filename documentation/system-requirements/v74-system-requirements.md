@@ -38,10 +38,10 @@ The only JDBC drivers installed with RadiantOne are: JDBC-ODBC Bridge from Sun, 
 
 ### Cloud Directory Services
 
-- Entra ID (formerly Azure AD)
-- PingOne
-- Okta Universal Directory
-- Any SCIMv2 accessible service (e.g. SailPoint, ServiceNow...etc.)
+- Entra ID (formerly Azure AD) - use the mgraph custom data source.
+- PingOne - use the scimclient2 custom data source.
+- Okta Universal Directory - use the oktaclient custom data source. 
+- Any SCIMv2 accessible service (e.g. SailPoint, ServiceNow...etc.) - use the scimclient2 custom data source.
 
 ### Applications/Other**
 
@@ -68,7 +68,7 @@ The only JDBC drivers installed with RadiantOne are: JDBC-ODBC Bridge from Sun, 
 
 ### Supported Client Access Protocols
 
-- LDAP
+- LDAPv3
 - Web Services (SCIMv2, REST)
 
 ### DNS Settings
