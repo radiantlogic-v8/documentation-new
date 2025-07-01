@@ -372,7 +372,7 @@ An example of a custom message using the "Popup" on the login page is shown belo
 
 
 ### Banner 
-A custom message can be added to the banner of RadiantOne User Interface pages. This includes the Classic Control Panel, the Server Control Panel, the login page, and the logout landing page.
+A custom message can be added to the banner of the RadiantOne Control Panel pages. This also includes the login and the logout landing pages.
 
 To add a custom message:
 
