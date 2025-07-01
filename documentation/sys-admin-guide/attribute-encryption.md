@@ -74,7 +74,9 @@ No attributes are encrypted by default. To configure a list of attributes to enc
 3.	Click **Save**.
 4.	Click **Re-build Index** (if your configuration is a Universal Directory Store) or **Initialize** to reinitialize the cache (if your configuration is a Persistent Cache).
 
-Attributes listed in the Encrypted Attributes property are added to the Non-indexed attribute list by default. This means these attributes are not searchable by default. Indexing encrypted attributes is generally not advised as the index itself is less secure than the attribute stored in Universal Directory/persistent cache. However, if you must be able to search on the encrypted attribute value, it must be indexed. Only “exact match/equality” index is supported for encrypted attributes. To make an encrypted attribute searchable, remove the attribute from the list of nonindexed attributes and then click **Re-build Index** or **Initialize** (to reinitialize) if the branch is a persistent cache.
+Attributes listed under Encrypted Attributes are automatically added to the Non-indexed Attributes list, making them non-searchable by default. This is intentional, as indexing encrypted data is generally discouraged because indexes lack salting, which weakens security compared to the encyrypted data. Salting is used to strengthen security, but this technique is incompatible with index structures, which depend on consistent values to enable reliable lookups.
+
+However, if searching encrypted attribute values is necessary, the attribute must be indexed. Only exact match (equality) indexing is supported for encrypted fields. To make an encrypted attribute searchable, remove it from the Non-indexed Attributes list, then click Re-build Index or Initialize (for persistent caches) to apply the changes.
 
 ### Accessing Encrypted Attributes
 
