@@ -47,8 +47,8 @@ For specific hardware requirements of each, please see: [https://developer.radia
 
 ## Improvements
 
-- [IV4-95]: An improvement for RadiantOne to allow anonymous binds on the non-secure port while maintaining protection on the secure port.
-
+-[IV4-34]: Refactored the "mgraph" data source and custom object to support synchronization between on-premise AD users and Entra ID users, including password hash synchronization.      This includes an update to the "ad_pwd" utility that is deployed with IDDM on Windows OS.
+- [IV4-95]: Introduced a new option that allows anonymous binds over the non-SSL LDAP port, while continuing to enforce secure (SSL-only) connections for all authenticated binds.
 
 ## Bug Fixes
 
@@ -59,7 +59,7 @@ For specific hardware requirements of each, please see: [https://developer.radia
 
 ## Known Issues/Important Notes
 
--If the environment variable RLI_CLI_VERBOSE is set to false, it must be temporarily set to true during product installation or update. Failure to do so may result in an incomplete or failed installation.
+- If the environment variable RLI_CLI_VERBOSE is set to false, it must be temporarily set to true during product installation or update. Failure to do so may result in an incomplete or failed installation.
 After the installation or update completes successfully, the variable may be reverted to false if desired.
 If RLI_CLI_VERBOSE is not defined, or is already set to true, no action is required.
 
