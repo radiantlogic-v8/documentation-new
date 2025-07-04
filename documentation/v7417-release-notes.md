@@ -47,7 +47,7 @@ For specific hardware requirements of each, please see: [https://developer.radia
 
 ## Improvements
 
--[IV4-34]: Refactored the "mgraph" data source and custom object to support synchronization between on-premise AD users and Entra ID users, including password hash synchronization.      This includes an update to the "ad_pwd" utility that is deployed with IDDM on Windows OS.
+- [IV4-34]: Refactored the "mgraph" data source and custom object to support synchronization between on-premise AD users and Entra ID users, including password hash synchronization.      This includes an update to the "ad_pwd" utility that is deployed with IDDM on Windows OS.
 - [IV4-95]: Introduced a new option that allows anonymous binds over the non-SSL LDAP port, while continuing to enforce secure (SSL-only) connections for all authenticated binds.
 
 ## Bug Fixes
