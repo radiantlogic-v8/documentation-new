@@ -20,3 +20,4 @@ description: v7.4 Release Notes
 - [v7.4.14 Release Notes](v7414-release-notes.md)
 - [v7.4.15 Release Notes](v7415-release-notes.md)
 - [v7.4.16 Release Notes](v7416-release-notes.md)
+- [v7.4.17 Release Notes](v7417-release-notes.md)
