@@ -115,7 +115,7 @@ The password for the user specified in the Bind DN parameter.
 
 Pass thru authorization is for determining which account RadiantOne uses to connect to a backend directory and ultimately how access rights (authorization) is enforced. A high-level diagram detailing the behavior is shown below.
 
-![An image showing ](Media/Image3.3.jpg)
+![An image showing ](Media/proxy-flow.png)
 
 Figure 3: Pass Thru Authorization
  
