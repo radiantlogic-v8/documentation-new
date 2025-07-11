@@ -53,6 +53,7 @@ For specific hardware requirements of each, please see: [https://developer.radia
 
 - [IV4-137]: Fixed an issue where mappings-based transformations would not delete target attributes when a one to one attribute mapping was defined and the source attribute was deleted.
 - [IV4-140]: Fixed an issue where some cluster commands were incorrectly parsing command line arguments that started with a forward slash character. This caused commands like "zk-export" and others to fail.
+- [IV4-157]: Fixed an issue that allowed password data to be logged in plain text when creating users in Entra ID.
 
 
 
