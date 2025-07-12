@@ -199,6 +199,12 @@ Authorization for RadiantOne data is checked based on the user who authenticated
 
 If there is the need to base authorization on a different user than the one who authenticated, you can use the proxy authorization control. This is primarily useful in environments where an application must authenticate many users and doesn’t want to maintain an open connection to RadiantOne for each of them. With this approach, the application can authenticate the user, and after, impersonate that user for authorization purposes. The application can use its own service account when connecting to RadiantOne and pass the needed control along with the user DN of the person they want to represent for authorization in their requests. RadiantOne then checks the proxy authorization rules that have been configured in access controls to make sure the service account is allowed to represent the person passed in their request. If so, the service account is allowed to perform any operations the person they are impersonating would be allowed to do.
 
+As an example, assume the following user, “cn=MyUser,ou=west,ou=users,o=example“ is granted the necessary rights to access a RadiantOne Directory store mounted at: “o=example“. The following ACI is used:
+```aci: (target="ldap:///o=example)(targetattr="*") (version 3.0; acl "allow All for MyUser"; allow (all) userdn="ldap:///cn=MyUser,ou=west,ou=users,o=example";)```
+
+Assume the following service account, “cn=SvcAccount,ou=svc,ou=users,o=example“ has permission to impersonate users such as cn=MyUser. The following ACI is used to grant proxy acccess:
+```aci: (target="ldap:///o=example")(targetattr="*") (version 3.0; acl "allow PROXY for SvcAccount"; allow (proxy) userdn="ldap:///cn=SvcAccount,ou=svc,ou=users,o=example";)```
+
 The proxy option indicates whether the subject can access the target with the rights of another entry. You can grant proxy access using the DN of any user in the directory except the special cn=directory manager user. In addition, you cannot grant proxy rights to the cn=directory manager user. If the branch you are protecting with access controls is a local LDAP/HDAP store, then this requires the [Proxy Authorization control](03-front-end-settings#proxied-authorization-control) enabled for RadiantOne.
 
 **Move (current DN)**
