@@ -369,7 +369,7 @@ This control can be enabled/disabled from the Main Control Panel > Settings Tab 
 
 Authorization for RadiantOne data is checked based on the user who authenticated. The authorization ID (DN) is linked to the authenticated ID (DN) for the same connection. With the proxy authorization control enabled, the client can switch the user ID (for authorization purposes) without having to re-authenticate with a new connection. After the Proxy Authorization control is enabled from here, the configuration (who is allowed to impersonate whom) is defined as access controls using the *proxy* operation from the Settings tab > Security section > Access Control sub-section. For more details on the configuration, please see [Operations](./access-controls/#operations).
 
->[!warning] To allow the RadiantOne super user (e.g. cn=directory manager) to impersonate other users, you must enable the “[Allow Directory Manager to Impersonate Other Users](06-security#allow-directory-manager-to-impersonate-other-users)” option. In this special scenario, access controls defining the “proxy” permission is not required. However, the Proxy Authorization Control must be enabled.
+>[!warning] To allow the RadiantOne super user (e.g. cn=directory manager) to impersonate other users, you must enable the “[Allow Directory Manager to Impersonate Other Users](06-security#allow-directory-manager-to-impersonate-other-users)” option. In this special scenario, access controls defining the “proxy” permission is not required. However, the Proxied Authorization Control must be enabled.
 
 ### Subtree Delete Control
 
