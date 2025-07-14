@@ -208,7 +208,7 @@ If you enable the persistent search control, an LDAP client can receive notifica
 
 This control is enabled by default.
 
-Authorization for RadiantOne data is checked based on the user who authenticated. The authorization ID (DN) is linked to the authenticated ID (DN) for the same connection. With the proxy authorization control enabled, the client can switch the user ID (for authorization purposes) without having to re-authenticate with a new connection. After the Proxy Authorization control is enabled from here, the configuration (who is allowed to impersonate whom) is defined as access controls from the Control Panel > MANAGE > Security > Access Control (create an ACI with the *Proxy* permission). 
+Authorization for RadiantOne data is checked based on the user who authenticated. The authorization ID (DN) is linked to the authenticated ID (DN) for the same connection. With the proxy authorization control enabled, the client can switch the user ID (for authorization purposes) without having to re-authenticate with a new connection. After the Proxy Authorization control is enabled from here, the configuration (who is allowed to impersonate whom) is defined as access controls from the Control Panel > MANAGE > Security > Access Control (create an ACI with the *Proxy* operation permission). 
 
 >[!warning] To allow the RadiantOne super user (e.g. cn=directory manager) to impersonate other users, you must enable the *Allow Directory Manager to Impersonate Other Users* setting in Control Panel > MANAGE > Security > Access Control > GENERAL tab. In this special scenario, access controls defining the “proxy” permission is not required. However, the Proxy Authorization Control must be enabled.
 
