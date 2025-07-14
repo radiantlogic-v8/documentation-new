@@ -18,7 +18,7 @@ Description	| SaaS | Self-managed
 -|-|-
 Securely connect to on-prem identity data silos w/o direct network connectivity (Secure Data Connectors)  	| X | - 
 Access to AIDA – the Artificial Intelligent Data Assistant​.	| X | -
-Environment Operations Center - Built-in dashboards for mnitoring and reporting​.	| X | -
+Environment Operations Center - Built-in dashboards for monitoring and reporting​.	| X | -
 Environment Operations Center - Built-in interface for querying and visualizing logs 	| X | -
 Environment Operations Center – Control Plane for quickly and easily deploying RadiantOne Identity Data Management.  	| X | -
 Environment Operations Center – easily  upgrade your RadiantOne Identity Data Management versions with a click of a button.  	| X | -
