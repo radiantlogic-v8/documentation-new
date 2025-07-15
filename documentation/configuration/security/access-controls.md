@@ -191,9 +191,11 @@ In addition, you cannot grant proxy rights for the cn=directory manager super us
 ![Proxy Authorization Control](Media/proxy-auth-control.jpg)
 
 *Move (current DN)*
+
 To support moving an entry from one parent to another, define the access control instruction (ACI) rights on the parent entries. On the current parent entry of the entry to be moved, ensure that the ACI allows the Move (current DN) permission.
 
 *Move (future DN)*
+
 To support moving an entry from one parent to another, define the access control instruction (ACI) rights on the parent entries. On the future parent entry of the entry to be moved, ensure that the ACI allows the import operations by using the Move (future DN) permission.
 
 ### Subjects
