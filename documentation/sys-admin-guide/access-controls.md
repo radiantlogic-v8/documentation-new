@@ -9,7 +9,6 @@ The settings found in the Main Control Panel > Settings Tab > Security section >
 
 ![Access Controls](Media/access-controls.png)
  
-Figure 37: Access Controls
 
 When RadiantOne receives a request, it uses the user in the bind operation, and the access control instructions (ACIs) defined in order to allow or deny access to directory information. The server can allow or deny permissions such as read, write, search, or compare. 
 
@@ -68,19 +67,18 @@ To create this example, from the Main Control Panel > Settings Tab > Security se
 
 ![Setting Access Controls](Media/Image6.1.jpg)
 
-Figure 30: Setting Access Controls
-
 ### Scope
 
 The scope of an access control rule can be entry level (base), one level or subtree level. Entry level pertains to the single entry specified in the Target DN. One level pertains to the entry specified in the Target DN and all child branches one level below it. Subtree level pertains to the entry specified in the Target DN as well as all child branches below this point.
 
+An example of entry level access control can be seen below.
+
 ![Example of Entry Level Access Control](Media/Image6.2.jpg)
  
-Figure 31: Example of Entry Level Access Control
+An example of sub tree level access control can be seen below.
 
 ![Example of Sub Tree Level Access Control](Media/Image6.3.jpg)
  
-Figure 32: Example of Sub Tree Level Access Control
 
 ### Target Attributes
 
@@ -88,15 +86,11 @@ The rule can indicate “equal to” (=) or “not equal to” (!=). Select the 
 
 ![Target Attributes Operator](Media/Image6.4.jpg)
 
-Figure 33: Target Attributes Operator
-
 The access rule can apply to “all” attributes or choose the “custom” option and click **Select** to narrow the list.
 
 By default, the root ACI prevents only the target attribute aci from being returned. This default ACI is shown below.
 
 ![Manual Edit of ACI](Media/Image6.5.jpg)
-
-Figure 34: Manual Edit of ACI
 
 To improve security, if you want to also prevent userpassword from being returned, you can do so as shown in the following example ACI. 
 
@@ -143,15 +137,12 @@ If no access permissions have been defined, the default behavior is to grant rea
 
 ![Default Global ACI Setting](Media/Image6.6.jpg)
  
-Figure 35: Default Global ACI Setting
-
 ### Type
 
 You can explicitly allow or deny access permissions by selecting the applicable option from the drop-down.
 
 ![Permission Type](Media/Image6.7.jpg)
  
-Figure 36: Permission Type
 
 ### Operations
 
@@ -348,8 +339,6 @@ If you enable Bind Requires SSL or StartTLS, to avoid problems when using the Ma
 
 ![Internal Connection Settings](Media/Image3.111.jpg)
  
-Figure 38: Internal Connection Settings
-
 ### Bind Requires Password
 
 If a user binds to RadiantOne and does not provide a password, the default behavior is to treat it like an anonymous user. This may introduce security problems for the client application, or in certain cases where machines like printers may bind against RadiantOne, that do not verify that the client actually provided a password. If the Bind Requires Password setting is enabled, and no password is specified in the bind request, RadiantOne tries to bind the specified user and return an invalid credential error to the client. If Bind Requires Password is not enabled, and a bind request comes in with a valid user DN and no password, it is considered an anonymous bind.
@@ -366,7 +355,7 @@ If you have groups stored in a RadiantOne Universal Directory store and want to 
 
 RadiantOne supports the LDAP_MATCHING_RULE_IN_CHAIN operator and allows clients to issue search filters using the 1.2.840.113556.1.4.1941 matching rule OID. This provides a method to look up the ancestry of an object and can be used in a search filter to retrieve all groups a user is a member of even when that group is nested (and is a member of another group). If the base DN in the RadiantOne namespace is associated with a proxy view, the search filter containing the matching rule OID is passed to the backend which must process the LDAP_MATCHING_RULE_IN_CHAIN. If the base DN in the RadiantOne namespace is associated with a persistent cache or a Universal Directory store, RadiantOne processes the matching rule locally.
 
->[!warning] If you are using the Linked Attributes calculation in RadiantOne and the users and groups are local, in a persistent cache or Universal Directory store, you must enable the Optimize Linked Attribute setting to support filters requesting isMemberOf/memberOf. This ensures good performance. For details on this setting, see the Namespace Configuration Guide (applicable to RadiantOne Universal Directory stores) or the [RadiantOne Deployment and Tuning Guide](/deployment-and-tuning-guide/00-preface) (applicable to persistent cache).
+>[!warning] If you are using the Linked Attributes calculation in RadiantOne and the users and groups are local, in a persistent cache or Universal Directory store, you must enable the Optimize Linked Attribute setting to support filters requesting isMemberOf/memberOf. This ensures good performance. For details on this setting, see the Namespace Configuration Guide (applicable to RadiantOne Directory stores) or the [RadiantOne Deployment and Tuning Guide](/deployment-and-tuning-guide/00-preface) (applicable to persistent cache).
 
 ![An image showing ](Media/Image3.112.jpg)
 
@@ -374,13 +363,10 @@ As a simple example, assume there is a group named All Users and that this group
 
 ![Example Group](Media/Image3.113.jpg)
  
-Figure 39: Example Group
-
 The screen below shows the Sales group containing the All Users group as a member.
 
 ![Example Nested Group](Media/ImageNestedGroup.jpg)
  
-Figure 40: Example Nested Group
 
 A client can issue a search leveraging the matching rule OID to retrieve all groups Adan_Funston is a member of with the following search filter.
 ```
@@ -390,7 +376,5 @@ A search request to RadiantOne with the above filter would return Sales and All 
 
 ![Search Filter using Matching Rule OID](Media/Image3.115.jpg)
  
-Figure 41: Search Filter using Matching Rule OID
-
 >[!warning]
 >Queries requesting an intersecting set of multiple memberships like in the following filter are not supported. <BR>(&(ismemberof:1.2.840.113556.1.4.1941:=cn=max,ou=groups,dc=data)(ismemberof:1.2.840.113556.1.4.1941:=cn=othergroup,ou=groups,dc=data))
