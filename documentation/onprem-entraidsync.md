@@ -1,6 +1,6 @@
 ---
-title: Upgrade Guide
-description: Upgrading RadiantOne Identity Data Management
+title: Synchronizing On-Prem AD Users to Entra ID
+description: Synchronizing On-Prem AD Users to Entra ID
 ---
 
 ## Synchronizing On-Prem AD Users to Entra ID
@@ -380,8 +380,6 @@ During **Insert events**, define attribute mappings to populate Entra ID fields 
 > - `accountEnabled` and `onPremisesSyncEnabled` **must** be set explicitly.  
 > - `passwordProfile-password` must map to the **computed attribute `userPassword`** from earlier steps.
 
----
-
 #### Additional Attribute Suggestions
 
 - `displayName`
@@ -399,7 +397,6 @@ After mapping:
 
 Repeat a similar approach for **Update** and **Delete** rules.
 
----
 
 ### d. Test Transformation
 
