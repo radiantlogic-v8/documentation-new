@@ -3,17 +3,16 @@ title: Synchronizing On-Prem AD Users to Entra ID
 description: Synchronizing On-Prem AD Users to Entra ID
 ---
 
-## Synchronizing On-Prem AD Users to Entra ID
+## Overview
 
-This document provides the steps to synchronize on-premises Active Directory (AD) users to **Entra ID** (formerly Azure Active Directory) using **Identity Data Management**.
+This document provides the steps to synchronize on-premises Active Directory (AD) users to Entra ID (formerly Azure Active Directory) using Identity Data Management.  
+ 
+This synchronization includes common user attributes such as names, email addresses, group memberships as well as users’ password hash, allowing synchronized users to sign in to Entra ID with their on-prem credentials. 
 
-This synchronization includes common user attributes such as names, email addresses, group memberships, as well as users’ password hash — allowing synchronized users to sign in to Entra ID with their on-prem credentials.
-
-This guide focuses on users whose identities are initially created in the on-premises Active Directory and then synchronized to Entra ID using **Identity Data Management**.
+This guide focuses on users whose identities are initially created in the on-premises Active Directory and then synchronized to Entra ID using Identity Data Management. 
 
 
-
-### Prerequisites
+## Prerequisites
 
 ### Identity Data Management Requirements
 
@@ -46,28 +45,27 @@ Manually create an application in the Entra ID portal before using the `AzureADI
    - `AppRoleAssignment.ReadWrite.All`
    - `Organization.ReadWrite.All`
    - `OnPremDirectorySynchronization.ReadWrite.All`
-<Insert Picture>   # Setting Up Synchronization Between On-Prem AD and Entra ID
 
-In a later step, you will use the application details from your registered Entra ID application to create a second application using `AzureADInitialization.exe` provided by **Identity Data Management**.
+![Image of entraID application details](Media/img-1.png)
+ 
+
+In a later step, you will use the application details from your registered Entra ID application to create a second application using `AzureADInitialization.exe` provided by RadiantOne Identity Data Management.
 
 
 ### Setting Up the Sync
 
-#### 1. Configure On-Premises AD as a Data Source
+#### 1. Configure On-Prem AD as a Data Source
 
-##### a. Create an AD Data Source
+##### a. Create an Active Directory Data Source
 
-1. Open the **Control Panel** in Identity Data Management.
-2. Navigate to:  
-   `Settings > LDAP Data Sources`
-3. Click the **Add** button to add a new LDAP data source pointing to your **Active Directory** domain controller.  
-   _Example:_  
-   _[Insert Picture]_
+1. Open the **Control Panel** in Identity Data Management and navigate to `Settings > LDAP Data Sources`. 
+2. Click the **Add** button to add a new LDAP data source that points to your **Active Directory** domain controller. An example is shown below:
 
-4. Provide all required details, test the connection, and save your changes.  
-   - Use secure bind credentials with **read access** to targeted user objects.  
-   _Example interface:_  
-   _[Insert Picture]_
+   ![Image of LDAP data source](Media/img-2.png)
+
+3. Provide all the details that are required, test the connection, and save your changes. Use secure bind credentials with read access to the targeted user objects. The image below shows an example for reference:
+
+   ![Image of LDAP data source details](Media/img-3.png)
 
 
 ##### b. Configure LDAP Proxy Naming Context for Your AD
@@ -314,9 +312,6 @@ To ensure proper synchronization, you must configure **identity linkage** betwee
 If the DN in the target (Entra ID) looks like:
 user=abc@identityforless.onmicrosoft.com
 
-markdown
-Copy
-Edit
 You need to configure Global Sync rules to generate this format from source values.
 
 
