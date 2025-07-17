@@ -58,48 +58,46 @@ In a later step, you will use the application details from your registered Entra
 
 ##### a. Create an Active Directory Data Source
 
-1. Open the **Control Panel** in Identity Data Management and navigate to `Settings > LDAP Data Sources`. 
-2. Click the **Add** button to add a new LDAP data source that points to your **Active Directory** domain controller. An example is shown below:
+* Open the **Control Panel** in Identity Data Management and navigate to `Settings > LDAP Data Sources`.
+* Click the **Add** button to add a new LDAP data source that points to your **Active Directory** domain controller. An example is shown below:
 
    ![Image of LDAP data source](Media/img-2.png)
-
-3. Provide all the details that are required, test the connection, and save your changes. Use secure bind credentials with read access to the targeted user objects. The image below shows an example for reference:
+* Provide all the details that are required, test the connection, and save your changes. Use secure bind credentials with read access to the targeted user objects. The image below shows an example for reference:
 
    ![Image of LDAP data source details](Media/img-3.png)
 
 
 ##### b. Configure LDAP Proxy Naming Context for Your AD
 
-1. Under **Directory Namespace**, create a new **LDAP proxy naming context** using the AD data source.  
-   - _Example: Proxy name `adproxy` using data source `ad35`_  
-   - Names can be customized.  
-   _[Insert Picture]_
+* Under Directory Namespace, create a new LDAP proxy naming context using the AD data source. For example, the image below shows a proxy      name “adproxy” that points to a sample AD data source named “ad35” that was created in step a. Names can be customized.  
 
-2. In the **Remote Base DN**, click **Browse**, specify the scope, and click **OK**.  
-   _[Insert Picture]_
+    ![Image of LDAP proxy naming context](Media/img-4.png)
 
-3. Go to the **Objects** tab:
-   - Ensure the object class associated with your user accounts (e.g., `user`) is added under **Primary Objects**.
-   - If not present, click **Add** to include it.  
-   _[Insert Picture]_
+* In the **Remote Base DN**, click **Browse**, specify the scope, and click **OK**.  
 
-4. At the bottom of the **Objects** tab:
-   - Click **Edit** next to **Define Computed Attributes**
+    ![Image of Base DN selection for proxy view](Media/img-5.png)
+
+* In the Objects tab, ensure the object class associated with your user accounts in Active Directory (e.g., user) is added to the Primary Objects section. If not present, click the Add button to include it.  
+
+    ![Image of Primary object addition](Media/img-6.png)
+
+   
+
+* At the bottom of the **Objects** tab, click **Edit** next to **Define Computed Attributes**.
    - Click **Add** and enter the following:
-
      - **Name**: `userPassword`  
      - **Function**: Click **Function**, select `getADPassword()`, click **OK**  
      - Validate the expression and click **OK**
 
-   _[Insert Picture]_
+    ![Image that shows how to define a Computed Attribute](Media/img-7.png)
 
-5. **Save** your changes.  
+* **Save** your changes.  
    - This attribute will now hold the **password hash** for each synced on-prem AD user.
 
 
 ##### c. Configure Persistent Cache
 
-- Create and initialize a **persistent cache** on the LDAP Proxy Naming Context with real-time refresh using **DirSync** or **USN Active Directory connector**.
+* Create and initialize a **persistent cache** on the LDAP Proxy Naming Context with real-time refresh using **DirSync** or **USN Active Directory connector**.
 
 
 #### 2. Configure Entra ID as a Data Source
