@@ -202,86 +202,63 @@ After completing the configuration, click **OK** and then, click **Save**.
 
 1. In **Directory Namespace**, create a new **virtual tree naming context** that references the `.dvx` view file created in step **b**.
 
-   _[Insert Picture]_
+   ![Image of virtual tree naming context](Media/img-18.png)
 
-2. When prompted:
-   - Name the naming context
-   - Click **Next** to populate additional details
+2. Name the naming context and click **Next** to populate additional details:
    - Choose **Use an existing view**
    - Select the view file from step b
    - Click **OK**
 
-3. In **Directory Browser**:
-   - Expand the naming context
-   - You should now see **Entra ID user entries** and their mapped attribute data
+3. In **Directory Browser**, expand the naming context. You should see **Entra ID user entries** and their mapped attribute data.
 
 
 ### 3. Configure Global Sync
 
 #### a. Create a New Topology
 
-1. Open **Global Sync** by clicking **Synchronization**
+1. Click the **Synchronization** menu item to open Global sync. 
 
-   _[Insert Picture]_
+   ![Image of global sync menu item](Media/img-19.png)
+
 
 2. Click **New Topology** to create a new synchronization topology:
+   * Set the **Source Naming Context** to the AD naming context created in **step 1**.
+   * Set the **Target Naming Context** to the Entra ID naming context from **step 2**.
 
-   - Set the **Source Naming Context** to the AD context created in **step 1**
-   - Set the **Target Naming Context** to the Entra ID context from **step 2**
+   ![Image of new topology](Media/img-20.png)
 
-   _[Insert Picture]_
 
-3. Click **OK**
+4. Click **OK**
 
 
 ### b. Set Transformation Type
 
-1. Click **Configure** to define synchronization pipelines between:
+1. Click **Configure** to define synchronization pipelines between On-prem AD view (source) and Entra ID view (target). Set **Transformation Type** to `Rules-based`.
 
-   - **Source**: On-prem AD view
-   - **Target**: Entra ID view
+  ![Image of transformation configuration](Media/img-21.png)
 
-2. Set **Transformation Type** to `Rules-based`
-
-   _[Insert Picture]_
-
-3. Define a new rules definition mapping:
-
+2. In the next step, you will need to set up new rules definition mapping between:
    - **Source Object Class**: `user`
    - **Target Object Class**: `azureaduser`
 
 
 ### c. Define Rules: Insert, Update, Delete
 
-In this step, you will create **rule sets** that define how data is transformed between source and target. This includes handling:
+In this step, you will create **rule sets** that define how data is transformed between source and target during **Insert**, **Update**, and **Delete** events. For example, when a new user is created in **on-prem AD** (insert event), you will need to define a rule that automatically maps and syncs the user to **Entra ID**.
 
-- **Insert**
-- **Update**
-- **Delete**
+1. To create a new rule, Click the **“+”** button and provide **basic information**  
 
-For example:
+     ![Image of new rule creation](Media/img-22.png)
 
-- When a new user is created in **on-prem AD**, define a rule that automatically maps and syncs the user to **Entra ID**.
+2. Go to the **Rules** tab and click the **Template** button to auto-generate Insert, Update, and Delete rule templates
+  
+   ![Image of new rule template](Media/img-23.png)
 
-To create a new rule:
 
-- Click the **“+”** button
+4. Next, edit each template manually as needed. To edit a template, select the checkbox next to it and click the Edit button.
 
-### c. Define Rules: Insert, Update, Delete (continued)
+   ![Image showing how to edit a template](Media/img-24.png)
 
-To create a new rule:
-
-1. Click the **“+”** button
-2. Provide **basic information**  
-   _[Insert Picture]_
-
-3. Go to the **Rules** tab and click the **Template** button to auto-generate Insert, Update, and Delete rule templates  
-   _[Insert Picture]_
-
-4. To edit any rule:
-   - Select the checkbox next to the rule
-   - Click the **Edit** button  
-   _[Insert Picture]_
 
 
 ### Identity Linkage / RDN Configuration
