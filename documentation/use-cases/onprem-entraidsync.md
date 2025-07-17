@@ -108,111 +108,94 @@ In a later step, you will use the application details from your registered Entra
 
    ```shell
    C:\radiantone\vds\bin\ad_pwd>AzureADInitialization.exe
-[Insert Picture]
+   ```
+
+   ![Image showing where the script is located](Media/img-8.png)
+
 
 This launches a service account registration process on Entra ID used by RadiantOne.
 
-When prompted, provide:
+When prompted, provide the following details associated with previously registered Entra ID application: 
 
-Tenant ID (Entra ID admin account)
+* Tenant ID (Entra ID admin account)
+* Email address (Entra ID admin)
+* Client ID of the previously registered Entra ID app
+* Client Secret of the previously registered app
+* A unique data source name for the Entra ID data source
+* Yes/No responses to any additional prompts
 
-Email address (Entra ID admin)
+   ![Image of the CLI](Media/img-9.png)
 
-Client ID of the previously registered Entra ID app
 
-Client Secret of the previously registered app
+* When prompted to create a new application for sync, type Y and press Enter.
+* When asked for the vdsconfig file location, press Enter to accept the default location.
+* A name for the Entra ID data source and press Enter. Note the name used.
 
-A unique data source name for the Entra ID data source
+  ![Image of the CLI](Media/img-10.png)
 
-Yes/No responses to any additional prompts
-[Insert Picture]
-
-When prompted to create a new application for sync, type:
-Y
-and press Enter.
-
-When asked for the vdsconfig file location, press Enter to accept the default.
-
-Provide a name for the Entra ID data source and press Enter.
-
-Note the name used.
-[Insert Picture]
 
 After completing the steps, a pre-configured data source is created in your Identity Data Management instance.
+To view it, navigate to Main Control Panel > Settings tab > Server Backend > Custom Data Sources section. An example is shown below:
 
-To view it, navigate to:
-
-Main Control Panel > Settings tab > Server Backend > Custom Data Sources section
-[Insert Picture]
+  ![Image of the Custom Data sources UI](Media/img-11.png)
 
 
-#### Optional: Configure Web Proxy (If Required)
+##### Configure Web Proxy (Optional)
 
 If your company requires API calls to be made through a **Web Proxy Server**:
 
 - Add a property named `proxy` with a value that points to the proxy server and port.  
-  _Example_:  
-  `rli.vip.proxy.com:9090`
+  Example: `rli.vip.proxy.com:9090`
 
-- If SSL is required, add a property named `proxyssl` and set the value to `true`.
-
-If SSL is used:
-
-- Ensure **RadiantOne trusts the proxy server’s public certificate**.
-- Manually import the certificate into the RadiantOne **Client Certificate Truststore** via:  
-  `Main Control Panel > Settings > Security > Client Certificate Truststore`
-
-After completing the configuration:
-
-- Click **OK**
-- Then click **Save**
-
+- If SSL is required, add a property named `proxyssl` and set the value to `true`. If SSL is used, ensure **RadiantOne trusts the proxy server’s public certificate**. Manually import the certificate into the RadiantOne **Client Certificate Truststore** via: `Main Control Panel > Settings > Security > Client Certificate Truststore`
+After completing the configuration, click **OK** and then, click **Save**. 
 
 #### b. Create View of Entra ID Users in Context Builder
 
-1. Navigate to:  
-   `Context Builder > View Designer`
+1. Navigate to `Context Builder > View Designer`
 
-2. Click the **“+”** button to create a new view:
+2. Click the **“+”** button to create a new View:
    - Enter a **name** for the view.
    - Click **Select** next to **Schema**.
    - Under the **Custom** tab, choose the **mgraph schema** (template schema for Entra ID).
    - Click **OK**.  
-   _[Insert Picture]_
+
+  ![Image of a new view](Media/img-12.png)
 
 3. This creates an **empty view**.
 
 4. To connect this view to the previously generated **Entra ID data source** (via `AzureADInitialization.exe`):
 
-   - Click on the generated view (e.g., `entraIDForTest`)
-   - Click **Edit connection string**
+   - Click on the generated view (e.g., `entraIDForTest` as shown in the image below).
+   - Click **Edit connection string**.
 
-   _[Insert Picture]_
+  ![Image of editing connection string](Media/img-13.png)
 
 5. Click **Edit** next to **Data Source**:
    - Select the data source name generated earlier in step 2a
-   - Click **OK** twice to confirm  
-   _[Insert Picture]_
+   - Click **OK** twice to confirm the data source selection.
+
+  ![Image of data source selection](Media/img-14.png)
 
 6. Create a new level for users:
    - Click **New Label**
    - Set the **ou** value to `Users`
    - Click **OK**  
-   _[Insert Picture]_
+  
+  ![Image of new level](Media/img-15.png)
 
-7. Select the `ou=Users` directory and click **New Content**
 
-   _[Insert Picture]_
+7. Select the `ou=Users` directory and click **New Content**.  
 
-8. Select `user` and click **OK**
+   ![Image of new content](Media/img-16.png)
 
-9. On the `user` content node:
-   - Go to the **Attributes** tab
-   - Publish all attributes as **mapped attributes**  
-     (click the button that publishes all)  
-   _[Insert Picture]_
 
-10. Click **Save** to store the view.
+8. Select `user` and click OK. On the “user” content node, navigate to the Attributes tab and publish all attributes as mapped attributes by clicking on the publish all button as shown below: 
+  
+   ![Image of attributes mapping](Media/img-17.png)
+
+
+10. Click **Save** to save the view.
 
 
 #### c. Create Naming Context in Directory Namespace
