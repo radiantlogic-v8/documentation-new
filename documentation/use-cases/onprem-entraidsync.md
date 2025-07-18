@@ -311,7 +311,9 @@ Follow a similar approach for **Update** and **Delete** rules based on your requ
 
 ### Attribute Mappings from On-Prem AD to Entra ID
 
-During **Insert events**, define attribute mappings to populate Entra ID fields from on-prem AD:
+ Identify which attributes in Entra ID should be populated from your on-prem Active Directory during Insert events.  
+
+ * Create necessary mappings under the Actions tab. Some attributes map directly (e.g., UserPrincipalName maps 1:1). Some attributes have different names in source versus target (e.g, passwordProfile-password maps with userPassword). 
 
 #### Examples:
 
@@ -319,32 +321,27 @@ During **Insert events**, define attribute mappings to populate Entra ID fields 
 |-----------------------------|---------------------------|
 | `userPrincipalName`         | `userPrincipalName`       |
 | `passwordProfile-password`  | `userPassword`            |
-| `accountEnabled`            | Must be set to `true`     |
-| `onPremisesSyncEnabled`     | Must be set to `true`     |
 
-- Click the **“+”** icon next to the attribute
-- Select the correct mapping
-- Click **OK**  
-  _[Insert Picture]_
 
-> **Note:**  
-> - `accountEnabled` and `onPremisesSyncEnabled` **must** be set explicitly.  
-> - `passwordProfile-password` must map to the **computed attribute `userPassword`** from earlier steps.
+- Click the **“+”** icon next to the attribute. Select the correct mapping and click **OK**. 
 
-#### Additional Attribute Suggestions
+  ![Image showing attribute mapping](Media/img-30.png)
 
-- `displayName`
-- `mail`
-- `jobTitle`
-- `department`
-- `givenName`
-- `surname`
 
-After mapping:
+Some attributes require special handling: 
+  - You must provide a boolean value for `accountEnabled` (true or false).
+  - `onPremisesSyncEnabled` **must** be set to true to enable password synchronization. This is a required attribute. Synchronization will fail if this is not provided. 
+  ![Image showing attribute mapping](Media/img-32.png)
+  
+  - `passwordProfile-password` must map to the **computed attribute `userPassword`** from earlier steps.
+  
+    ![Image showing attribute mapping](Media/img-31.png)
 
-- Enable **Apply Target Attribute Mappings**
-- Click **OK**  
-  _[Insert Picture]_
+- Map all other necessary user attributes such as name, email, job title, department, etc. as needed. Enable the Apply target attribute mappings checkbox and click OK to save the mappings.  
+
+- After mapping, enable **Apply Target Attribute Mappings** and click **OK**. You should see all your saved mappings in the screen. 
+  
+  ![Image showing complete attribute mappings](Media/img-33.png)
 
 Repeat a similar approach for **Update** and **Delete** rules.
 
