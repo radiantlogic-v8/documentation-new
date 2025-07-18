@@ -348,44 +348,36 @@ Repeat a similar approach for **Update** and **Delete** rules.
 
 ### d. Test Transformation
 
-After configuring rules:
+After setting your transformation rules for all events, you can test if the transformation rules execute as expected or not by following these steps:  
 
-1. Navigate to:  
-   `Synchronization > Transformation > Rules-Based Transformation`
+1. Navigate to `Synchronization > Transformation > Rules-Based Transformation` and click the **“<>”** icon next to the rule. 
 
-2. Click the **“<>”** icon next to the rule  
-   _[Insert Picture]_
+  ![Image showing the edit transformation button](Media/img-34.png)
 
-3. Click the **Test** button (top-right corner)
 
-4. In the test interface:
-   - Edit any test attribute values
-   - Click **Test** again
+3. Click the **Test** button (top-right corner). An interface containing your current test mappings gets displayed. In this interface, edit any test attribute values. Click **Test** again. If the test succeeds, you’ll see the **transformed output** in the Output section.
 
-#### Things to Verify:
+At a minimum, verify the following: 
 
 - User objects are correctly matched
 - Attribute mappings are correct
 - Password hash (`userPassword`) is populated properly
 
-_Example: Insert Test Mapping_  
-_Example: Update Test Mapping_  
-_[Insert Pictures]_
+Examples of insert and update events mappings are shown below for reference.
 
-If the test succeeds, you’ll see the **transformed output** in the Output section.
+
+![Image showing the edit transformation button](Media/img-35.png)
+
+![Image showing the edit transformation button](Media/img-36.png)
 
 
 ### e. Start Connectors
 
-Once you're ready to execute synchronization:
+* Once you're ready to start synchronization, navigate to `Synchronization > Global Sync > Apply`.
+  
+![Image showing the edit transformation button](Media/img-37.png)
 
-1. Navigate to:  
-   `Synchronization > Global Sync > Apply`
-
-2. Click the **Start** button to launch the sync pipeline  
-   _[Insert Picture]_
-
-> Ensure the **capture connector type** is set to:
-> **HDAP triggers** — this enables real-time synchronization
+* Click the **Start** button to launch the sync pipeline.
+* Ensure the **capture connector type** is set to **HDAP triggers**. This enables real-time synchronization
 
 
