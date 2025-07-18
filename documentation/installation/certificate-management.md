@@ -1,4 +1,7 @@
-# Certificate Management Guide
+---
+title: Certificate Management
+description: Learn how to manage certificates of your self-managed Identity Data Management.
+---
 
 ## Overview
 
@@ -8,8 +11,7 @@ Certificates are used to encrypt this communication and to authenticate each par
 
 This guide covers the following topics:
 
-- Components in a deployment that require certificates
-- Certificate types
+- Components in a deployment that require certificates and certificate types
 - Interaction between pod-level certificates and ingress TLS termination
 - Correct SAN configuration to support pod scaling (up to 5+ replicas)
 - Dual certificate verification at both ingress and pod levels
@@ -23,9 +25,9 @@ This guide covers the following topics:
 | Component                     | Certificate Type | Ports Used   | SANs Requirement                      |
 |------------------------------|------------------|--------------|---------------------------------------|
 | Ingress Controller           | External TLS     | 443, 636     | Public domain names                   |
-| Identity Data Management FID Pods | Internal TLS     | 2636, 8090   | Pod FQDNs, headless service           |
-| Control Panel UI             | HTTPS            | 7070, 7171   | Internal service names                |
-| REST APIs                    | HTTPS            | 8089, 8090   | Internal service names                |
+| Identity Data Management Pods (fid pods) | Internal TLS     | 2636, 8090   | Pod FQDNs, headless service           |
+| Identity Data Management Control Panel UI             | HTTPS            | 7070, 7171   | Internal service names                |
+|  APIs                | HTTPS            | 8089, 8090   | Internal service names                |
 
 
 
@@ -33,15 +35,14 @@ This guide covers the following topics:
 
 ### Ingress Certificate
 
-- Used to secure external traffic entering the cluster (e.g., from web browsers or external LDAP clients).
-- Associated with public-facing hostnames (e.g., `your.identitydatamangementurl.com`).
-- Installed as a Kubernetes TLS secret.
+This certificate is used to secure external traffic entering the cluster (e.g., from web browsers or external LDAP clients). It is associated with public-facing hostnames (e.g., `your.identitydatamangementurl.com`).
+Ingress certificates need to be installed as a Kubernetes TLS secret.
 
-**Ingress-Level TLS Termination Notes:**
+**Considerations for Ingress-Level TLS Termination:**
 
 - Incoming external traffic is decrypted at the ingress controller.
 - Traffic from the ingress to FID pods is unencrypted (unless TLS passthrough is enabled).
-- FID certificates are still required for LDAPS (port 2636) and internal HTTPS services.
+- Identity Data Management FID certificates are still required for LDAPS (port 2636) and internal HTTPS services.
 - Accessing the Control Panel may require valid certificates at both the ingress and pod levels.
 
 
@@ -91,9 +92,7 @@ ingress:
 
 ## Pod-Level Certificates
 
-* Each pod (e.g., `fid-0`) requires its own certificate for internal traffic and LDAPS.
-* Certificates must include Subject Alternative Names (SANs) for each pod's DNS name.
-* Stored in **PKCS12 format** (`rli.keystore`) with password `radiantlogic`.
+Each pod (e.g., `fid-0`) requires its own certificate for internal traffic and LDAPS. Certificates must include Subject Alternative Names (SANs) for each pod's DNS name. This type of certificate is stored in **PKCS12 format** (`rli.keystore`) with password `radiantlogic`.
 
 ## Pod-Level Certificate Setup
 
