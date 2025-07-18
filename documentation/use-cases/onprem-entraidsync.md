@@ -259,56 +259,54 @@ In this step, you will create **rule sets** that define how data is transformed 
 
    ![Image showing how to edit a template](Media/img-24.png)
 
+Key mappings and examples related to these rules are noted below.  
 
 
-### Identity Linkage / RDN Configuration
+### Identity Linkage
 
-To ensure proper synchronization, you must configure **identity linkage** between the source and target systems by aligning their **RDN (Relative Distinguished Name)** formats.
+To ensure effective identity linkage, it's essential that the source and target systems use matching identifiers. Set the RDN name to align with the RDN of your EntraID user content node (“user”). 
 
 #### Example: Matching Entra ID DN Format
 
-If the DN in the target (Entra ID) looks like:
-user=abc@identityforless.onmicrosoft.com
-
-You need to configure Global Sync rules to generate this format from source values.
+If the DN in the target (Entra ID) looks like "user=abc@identityforless.onmicrosoft.com", you need to configure Global Sync rules to generate this format from source (on-prem AD) values.
 
 
 #### Steps to Configure Identity Linkage (Insert Event)
 
-1. Set the **RDN Name** to match the Entra ID user content node RDN — typically `user`.
-   - Navigate to the Global Sync rule
-   - Click **Advanced Options**
-   - Under **Target Object RDN**, select `user`  
-   _[Insert Picture]_
+1. Set the **RDN Name** to match the Entra ID user content node RDN — typically `user`. To do this, navigate to the Global Sync rule and click **Advanced Options**. Under **Target Object RDN**, select `user`.
 
-2. **Determine Source Attribute**  
-   - Review your on-prem AD source data
-   - Choose a unique attribute such as `sAMAccountName`, `userPrincipalName`, or a custom attribute
+![Image showing how to edit a template](Media/img-25.png)
 
-> Example:  
-> If `sAMAccountName = JaneDoeU5`, we can format the Entra ID DN as `user=JaneDoeU5@identityforless.onmicrosoft.com`
+
+2. Determine a unique source attribute by analyzing your source data (e.g., from your on-premises Active Directory). You will often find that the source user identifiers do not match the UPN format used in Entra ID. To bridge this difference, you must select a source attribute that can be transformed into the target format and is guaranteed to be unique. Commonly used unique attributes include userPrincipalName, sAMAccountName or other unique identifiers available in your directory.  
+
+Example: If we take `sAMAccountName = JaneDoeU5`, we can format the Entra ID DN as `user=JaneDoeU5@identityforless.onmicrosoft.com` by appending the domain suffix (@identityforless.onmicrosoft.com) using a dynamic expression. 
 
 
 #### Build Dynamic Expression
 
-1. In the **Insert Rule**, click the **Edit** icon next to **Identity Linkage**
-   - You should see `user` as the target RDN  
-   _[Insert Picture]_
+1. Return to the Insert Rule and click the edit icon next to Identity Linkage. After clicking edit, you should see `user` as the target attribute.   
 
-2. Set the **Type** to `function`
+ ![Image showing how to edit identity linkage](Media/img-26.png)
 
-3. Click **Edit** next to the function field to open **Function Mapping Interface**
 
-4. Navigate to **Build Expression** in the left panel
-   - Click **Insert Attribute**
-   - Choose the source attribute (`sAMAccountName`)
-   - Append the Entra domain suffix  
-   _[Insert Picture]_
+2. In the Identity Linkage UI, set the **Type** to `function`. Click **Edit** next to the function field to open **Function Mapping Interface**.
 
-5. Click **OK**  
-   - This ensures identity consistency between the source (on-prem) and target (Entra ID)
+ ![Image showing how to edit function](Media/img-27.png)
 
-6. Repeat this method for **Update** and **Delete** rules if needed.
+
+4. Click **Build Expression** in the left menu and click **Insert Attribute**. Click Next. Now, you can insert the attribute that you selected and define the expression.
+   
+ ![Image showing how to insert an attribute](Media/img-28.png)
+
+
+5. In the example below, we are inserting the sAMAccountName attribute and appending it with @identityforless.onmicrosoft.com.   
+
+  ![Image showing an example function](Media/img-29.png)
+
+Click OK. The synchronization engine will then use this expression whenever it needs to insert a user into the target system, helping maintain identity consistency between the source (on-prem) and target (Entra ID) systems.
+
+Follow a similar approach for **Update** and **Delete** rules based on your requirements.
 
 
 ### Attribute Mappings from On-Prem AD to Entra ID
