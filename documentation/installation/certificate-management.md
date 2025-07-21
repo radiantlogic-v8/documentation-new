@@ -9,18 +9,10 @@ Several components of an Identity Data Management deployment need to communicate
 
 Certificates are used to encrypt this communication and to authenticate each party involved. This guide explains how to securely configure and manage certificates for self-managed Identity Data Management deployments in a Kubernetes environment.
 
-This guide covers the following topics:
-
-- Components in a deployment that require certificates and certificate types
-- Interaction between pod-level certificates and ingress TLS termination
-- Correct SAN configuration to support pod scaling (up to 5+ replicas)
-- Dual certificate verification at both ingress and pod levels
-- TLS passthrough for maintaining end-to-end encryption
-- Migrating from JKS to PKCS12 format due to JKS deprecation
+This guide provides details on how to secure, scale, and automate TLS certificate management for self-managed Identity Data Management deployments, including ingress termination, pod-level encryption, keystore modernization, and lifecycle automation.
 
 
-
-## Components That Require Certificates
+## Components and certificates matrix
 
 | Component                     | Certificate Type | Ports Used   | SANs Requirement                      |
 |------------------------------|------------------|--------------|---------------------------------------|
@@ -31,14 +23,14 @@ This guide covers the following topics:
 
 
 
-## Certificate Types and Setup 
+## Certificate types 
 
 ### Ingress Certificate
 
 This certificate is used to secure external traffic entering the cluster (e.g., from web browsers or external LDAP clients). It is associated with public-facing hostnames (e.g., `your.identitydatamangementurl.com`).
 Ingress certificates need to be installed as a Kubernetes TLS secret.
 
-**Considerations for Ingress-Level TLS Termination:**
+**Ingress-Level TLS Termination Behavior:**
 
 - Incoming external traffic is decrypted at the ingress controller.
 - Traffic from the ingress to FID pods is unencrypted (unless TLS passthrough is enabled).
@@ -46,9 +38,9 @@ Ingress certificates need to be installed as a Kubernetes TLS secret.
 - Accessing the Control Panel may require valid certificates at both the ingress and pod levels.
 
 
-## Ingress Certificate Setup
+## Steps to set up an ingress certificate
 
-**Create certificate with public DNS names:**
+**1. Create certificate with public DNS names:**
 
 ```
 DNS.1 = iddm.example.com  
@@ -56,7 +48,7 @@ DNS.2 = *.iddm.example.com
 DNS.3 = api.iddm.example.com
 ````
 
-**Generate TLS certificate:**
+**2. Generate TLS certificate:**
 
 ```bash
 openssl req -new -x509 -days 365 \
@@ -72,7 +64,7 @@ EOF
 )
 ```
 
-**Create Kubernetes TLS secret:**
+**3. Create Kubernetes TLS secret:**
 
 ```bash
 kubectl create secret tls iddm-ingress-tls \
@@ -80,7 +72,7 @@ kubectl create secret tls iddm-ingress-tls \
   -n iddm-namespace
 ```
 
-**Configure Helm deployment:**
+**4. Configure Helm deployment:**
 
 ```yaml
 ingress:
@@ -94,20 +86,20 @@ ingress:
 
 Each pod (e.g., `fid-0`) requires its own certificate for internal traffic and LDAPS. Certificates must include Subject Alternative Names (SANs) for each pod's DNS name. This type of certificate is stored in **PKCS12 format** (`rli.keystore`) with password `radiantlogic`.
 
-## Pod-Level Certificate Setup
+## Steps to set up pod level ceritificate
 
 Even with Ingress TLS in place, services like LDAPS and internal APIs require certificates at the pod level for direct communication and mutual TLS (mTLS) if enabled.
 
-**Define SANs for each replica:**
+**1. Define SANs for each replica:**
 
-```text
+```
 DNS.1 = fid-0.fid-headless.namespace.svc.cluster.local  
 DNS.2 = fid-1.fid-headless.namespace.svc.cluster.local  
 ...  
 DNS.n = localhost
 ```
 
-**Generate the certificate and PKCS12 keystore:**
+**2. Generate the certificate and PKCS12 keystore:**
 
 ```bash
 openssl genrsa -out fid-key.pem 4096
@@ -124,24 +116,24 @@ openssl pkcs12 -export \
   -password pass:radiantlogic
 ```
 
-**Deploy the keystore to pods:**
+**3. Deploy the keystore to pods:**
 
 ```bash
 kubectl cp rli.keystore <namespace>/<fid-pod>:/opt/radiantone/vds/vds_server/conf/rlinew.keystore
 ```
 
-**Inside the pod, rename the file:**
+**4. Inside the pod, rename the file:**
 
 ```bash
 mv rlinew.keystore rli.keystore
 ```
 
-**Restart the pod or service to apply the changes.**
+**5. Restart the pod or service to apply the changes.**
 
 
 ## Replacing Pod Certificates
 
-To update certificates without breaking service:
+To update certificates without breaking service, follow these steps:
 
 1. Backup the existing keystore from the pod.
 2. Upload the new certificate to the Control Panel trust store.
@@ -181,7 +173,7 @@ done
 
 ## Automating Certificate Rotation (Optional)
 
-**If using cert-manager:**
+**If using cert-manager, you can automate certificate rotation by adding these to the values. yaml file:**
 
 ```yaml
 certificates:
