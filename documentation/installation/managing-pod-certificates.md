@@ -60,6 +60,8 @@ IP.1 = 127.0.0.1
 EOF
 ```
 
+> Self-signed certificates must be properly formed and must include all relevant hostnames via the Subject Alternative Name (SAN) extension. This is essential for compatibility with modern TLS clients and to prevent runtime errors caused by hostname mismatches during certificate validation.
+
 2. Generate key, certificate and PKCS12 keystore for Identity Data Management:
 
 ```bash
