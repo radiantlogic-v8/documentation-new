@@ -148,7 +148,7 @@ To update certificates without breaking service, follow these steps:
 
 ## Updating server certificate across multiple pods
 
-For multiple pods (e.g., with fid-0, fid-1, fid-N), you can perform a StatefulSet certificate update by following these steps:
+If you have multiple RadiantOne pods (e.g., with fid-0, fid-1, fid-N), you can perform a StatefulSet certificate update by following these steps:
 
 * Copy the certificates to all pods.
 
