@@ -119,20 +119,26 @@ To update certificates without breaking service, follow these steps:
    
    Verify that the backup has been created by navigating to your backup folder. 
    
+  
    ![image of the backup folder](images/image1.png)
 
 
-2. Upload the new certificate to the Control Panel trust store. 
+
+3. Upload the new certificate to the Control Panel trust store. 
 
    Add the new certificate to the trust store by accessing your control panel URL. In Control Panel, navigate to Client Certificates
    and click IMPORT. Give it an alias name and browse your certificate file. After selecting the file, click OK. 
    
-   ![image of the cert in Control panel](images/image2.png)
+    ![image of the cert in Control panel](images/image2.png)
 
-3. Once you have replaced the certificate, click on the certificate alias and navigate to the certificate properties tab. 
+   
+
+5. Once you have replaced the certificate, click on the certificate alias and navigate to the certificate properties tab. 
    Ensure that your certificate has a SAN property assigned to it.  
 
-  ![image of the cert in Control panel](images/image3.png)
+   ![image of the cert in Control panel](images/image3.png)
+
+   
 
 
 4. Replace the pod's `rli.keystore` file.
@@ -170,6 +176,7 @@ To update certificates without breaking service, follow these steps:
    If you're using a .p12 certificate, change the certificate key type to PKCS12; otherwise, leave it as is(set to the default JKS format).
 
    ![image of the cert in Control panel](images/image4.png)
+
 
 
 6. Restart the pod by following these steps (or delete pod for rolling restart):
