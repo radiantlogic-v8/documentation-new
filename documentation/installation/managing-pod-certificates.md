@@ -28,7 +28,7 @@ ST = State
 L = City
 O = Organization
 OU = IDDM
-CN = fid-0.fid-headless.iddm-gnanirahul.svc.cluster.local
+CN = fid-0.fid-headless.iddm-abc.svc.cluster.local
 
 [v3_req]
 keyUsage = critical, digitalSignature, keyEncipherment
@@ -38,16 +38,16 @@ subjectAltName = @alt_names
 
 [alt_names]
 # Support for StatefulSet scaling (0-4 = 5 replicas)
-DNS.1 = fid-0.fid-headless.iddm-gnanirahul.svc.cluster.local
-DNS.2 = fid-1.fid-headless.iddm-gnanirahul.svc.cluster.local
-DNS.3 = fid-2.fid-headless.iddm-gnanirahul.svc.cluster.local
-DNS.4 = fid-3.fid-headless.iddm-gnanirahul.svc.cluster.local
-DNS.5 = fid-4.fid-headless.iddm-gnanirahul.svc.cluster.local
+DNS.1 = fid-0.fid-headless.iddm-abc.svc.cluster.local
+DNS.2 = fid-1.fid-headless.iddm-abc.svc.cluster.local
+DNS.3 = fid-2.fid-headless.iddm-abc.svc.cluster.local
+DNS.4 = fid-3.fid-headless.iddm-abc.svc.cluster.local
+DNS.5 = fid-4.fid-headless.iddm-abc.svc.cluster.local
 # Headless service
-DNS.6 = fid-headless.iddm-gnanirahul.svc.cluster.local
-DNS.7 = *.fid-headless.iddm-gnanirahul.svc.cluster.local
+DNS.6 = fid-headless.iddm-abc.svc.cluster.local
+DNS.7 = *.fid-headless.iddm-abc.svc.cluster.local
 # Regular service
-DNS.8 = fid.iddm-gnanirahul.svc.cluster.local
+DNS.8 = fid.iddm-abc.svc.cluster.local
 # Short names for internal access
 DNS.9 = fid-0
 DNS.10 = fid-1
@@ -102,7 +102,7 @@ Example script for multiple pods:
 
 ```
 # Set variables
-NAMESPACE="iddm-gnanirahul"
+NAMESPACE="iddm-abc"
 RELEASE_NAME="my-iddm"
 
 # Create backup directory
@@ -215,7 +215,7 @@ Here is an example script for reference:
 
 ```bash
 #!/bin/bash
-NAMESPACE="iddm-gnanirahul"
+NAMESPACE="iddm-abc"
 RELEASE_NAME="my-iddm"
 REPLICAS=3
 
