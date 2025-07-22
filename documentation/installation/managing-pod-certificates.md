@@ -12,7 +12,7 @@ accessing Identity Data Management via the Control Panel UI, and for accessing t
 
 ### Creating Pod certificates
 
-**1. Create certificate configuration**
+1. Create certificate configuration:
 
 ```bash
 # Create pod certificate configuration with StatefulSet scaling support
@@ -60,7 +60,7 @@ IP.1 = 127.0.0.1
 EOF
 ```
 
-**2. Generate key, certificate and PKCS12 keystore for Identity Data Management:**
+2. Generate key, certificate and PKCS12 keystore for Identity Data Management:
 
 ```bash
 # Generate private key and certificate
@@ -167,7 +167,7 @@ Navigate to pod's /vds/vds_server/conf and rename the old rli.keystore to rliold
    ![image of the cert in Control panel](images/image4.png)
 
 
-5. Restart the pod by following these steps (or delete pod for rolling restart):
+6. Restart the pod by following these steps (or delete pod for rolling restart):
    
 * Access the pod:
   `kubectl exec -it -n ${NAMESPACE} ${RELEASE_NAME}-iddm-fid-0 -- bash`
@@ -187,13 +187,13 @@ Navigate to pod's /vds/vds_server/conf and rename the old rli.keystore to rliold
 
 ### Verify Certificate Installation and Connectivity 
 
-#### Test SSL connection 
+1. Test SSL connection 
 ```bash
 kubectl port-forward -n ${NAMESPACE} ${RELEASE_NAME}-iddm-fid-0 2636:2636 &
 openssl s_client -connect localhost:2636 -showcerts | grep -A20 "Certificate chain"
 ```
 
-#### Check SANs
+2. Check SANs
 ```bash
 openssl s_client -connect localhost:2636 2>/dev/null | openssl x509 -noout -text | grep -A1 "Subject Alternative Name"
 ```
