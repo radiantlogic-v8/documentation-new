@@ -1,5 +1,5 @@
 ---
-title: Managing pod level ceritificates
+title: Updating pod level ceritificates
 description: Learn how to create and manage pod level certificates.
 ---
 
@@ -8,81 +8,13 @@ description: Learn how to create and manage pod level certificates.
 Pod certificates are required for LDAPS (LDAP over TLS), internal HTTPS (pod-to-pod communication), 
 accessing Identity Data Management via the Control Panel UI, and for accessing the Classic Control Panel.
 
- This document provides steps on how to create and manage pod level certificates for self-managed Identity Data Management. 
+This document provides steps on how to update pod level certificates for self-managed Identity Data Management. 
 
-### Creating Pod certificates
+**Prerequisites**
 
-1. Create certificate configuration:
+* You must have access to your deployed self-managed Identity Data Management.
+* When you create your self-signed certificates, it must be properly formed and include all relevant hostnames using the Subject Alternative Name (SAN) extension. This is critical for compatibility with modern TLS clients and to avoid runtime errors due to hostname mismatches during certificate validation. For replica sets, the SAN should include at least five pod FQDNs to use a single certificate across all pods.
 
- ```bash
- # Create pod certificate configuration with StatefulSet scaling support
- cat > fid-pod-cert.conf <<EOF
- [req]
- distinguished_name = req_distinguished_name
- req_extensions = v3_req
- prompt = no
- 
- [req_distinguished_name]
- C = US
- ST = State
- L = City
- O = Organization
- OU = IDDM
- CN = fid-0.fid-headless.iddm-abc.svc.cluster.local
- 
- [v3_req]
- keyUsage = critical, digitalSignature, keyEncipherment
- extendedKeyUsage = serverAuth, clientAuth
- basicConstraints = CA:FALSE
- subjectAltName = @alt_names
- 
- [alt_names]
- # Support for StatefulSet scaling (0-4 = 5 replicas)
- DNS.1 = fid-0.fid-headless.iddm-abc.svc.cluster.local
- DNS.2 = fid-1.fid-headless.iddm-abc.svc.cluster.local
- DNS.3 = fid-2.fid-headless.iddm-abc.svc.cluster.local
- DNS.4 = fid-3.fid-headless.iddm-abc.svc.cluster.local
- DNS.5 = fid-4.fid-headless.iddm-abc.svc.cluster.local
- # Headless service
- DNS.6 = fid-headless.iddm-abc.svc.cluster.local
- DNS.7 = *.fid-headless.iddm-abc.svc.cluster.local
- # Regular service
- DNS.8 = fid.iddm-abc.svc.cluster.local
- # Short names for internal access
- DNS.9 = fid-0
- DNS.10 = fid-1
- DNS.11 = fid-2
- DNS.12 = fid-3
- DNS.13 = fid-4
- # Localhost for testing
- DNS.14 = localhost
- IP.1 = 127.0.0.1
- EOF
- ```
-
-> Self-signed certificates must be properly formed and must include all relevant hostnames via the Subject Alternative Name (SAN) extension. This is essential for compatibility with modern TLS clients and to prevent runtime errors caused by hostname mismatches during certificate validation.
-
-2. Generate key, certificate and PKCS12 keystore for Identity Data Management:
-
- ```bash
- # Generate private key and certificate
- openssl genrsa -out fid-key.pem 4096
- openssl req -new -key fid-key.pem -out fid.csr -config fid-pod-cert.conf
- openssl x509 -req -in fid.csr -signkey fid-key.pem -out fid-cert.pem -days 365 -extensions v3_req -extfile fid-pod-cert.conf
- 
- # Create PKCS12 keystore (recommended over JKS)
- openssl pkcs12 -export -out rli.keystore \
-   -inkey fid-key.pem \
-   -in fid-cert.pem \
-   -name rli \
-   -password pass:radiantlogic
- 
- # Verify the keystore
- keytool -list -v -keystore rli.keystore -storepass radiantlogic -storetype PKCS12 | grep -A1 "Subject Alternative Name"
- ```
-
-
-### Replacing Pod Certificates
 
 To update certificates without breaking service, follow these steps:
 
