@@ -43,7 +43,7 @@ Ingress certificates need to be installed as a Kubernetes TLS secret.
 - Accessing the Control Panel may require valid certificates at both the ingress and pod levels.
 
 
-### Steps to set up an ingress certificate
+#### Steps to set up an ingress certificate
 
 **1. Create certificate with public DNS names:**
 
@@ -87,7 +87,7 @@ ingress:
     secretName: iddm-ingress-tls
 ```
 
-## Pod-Level Certificates
+### Pod-Level Certificates
 
 Each pod (e.g., `fid-0`) requires its own certificate for internal traffic and LDAPS. Certificates must include Subject Alternative Names (SANs) for each pod's DNS name. This type of certificate is stored in **PKCS12 format** (`rli.keystore`) with password `radiantlogic`.
 
@@ -98,7 +98,7 @@ Pods certificates are required by the following components:
 * Control Panel UI requires valid pod certificates while accessing Identity Data Management interfaces.
 * Classic Control Panel requires valid pod certificates, even when TLS is terminated at the ingress.
 
-### How Ingress TLS Affects Pod Certificates
+#### How Ingress TLS Affects Pod Certificates
 
 Ingress TLS impacts which certificates are used based on the type of traffic:
 
@@ -108,7 +108,7 @@ Ingress TLS impacts which certificates are used based on the type of traffic:
 
 * When accessing the Control Panel, the certificate used depends on the access path: if accessed through ingress, the ingress certificate is used; if accessed directly at the pod level, the FID pod certificate is used. The Classic Control Panel may require validation of both ingress and pod certificates, depending on the configuration.
 
-### Steps to set up and manage pod level ceritificate
+#### Steps to set up and manage pod level ceritificate
 
 Even with Ingress TLS in place, services like LDAPS and internal APIs require certificates at the pod level for direct communication and mutual TLS (mTLS) if enabled.
 
@@ -180,7 +180,7 @@ keytool -list -v -keystore rli.keystore -storepass radiantlogic -storetype PKCS1
 ```
 
 
-## Replacing Pod Certificates
+### Replacing Pod Certificates
 
 To update certificates without breaking service, follow these steps:
 
@@ -272,20 +272,20 @@ Navigate to pod's /vds/vds_server/conf and rename the old rli.keystore to rliold
  `kubectl get pod ${RELEASE_NAME}-iddm-fid-0 -n ${NAMESPACE} -w`
 
 
-## Verify Certificate Installation and Connectivity 
+### Verify Certificate Installation and Connectivity 
 
-### LDAPS Test
+#### LDAPS Test
 ```bash
 kubectl port-forward -n ${NAMESPACE} ${RELEASE_NAME}-iddm-fid-0 2636:2636 &
 openssl s_client -connect localhost:2636 -showcerts | grep -A20 "Certificate chain"
 ```
 
-### Check SANs
+#### Check SANs
 ```bash
 openssl s_client -connect localhost:2636 2>/dev/null | openssl x509 -noout -text | grep -A1 "Subject Alternative Name"
 ```
 
-### Control Panel HTTPS Test
+#### Control Panel HTTPS Test
 ```bash
 kubectl port-forward -n ${NAMESPACE} ${RELEASE_NAME}-iddm-fid-0 7171:7171 &
 curl -k https://localhost:7171 -v 2>&1 | grep "subject:"
@@ -382,14 +382,81 @@ certificates:
 * Create a **CronJob** to monitor certificate expiration and reload pods when rotation occurs.
 
 
+### TLS Passthrough Configuration
+
+Use TLS passthrough in the following scenarios:
+
+* You require end-to-end encryption to meet compliance or regulatory requirements.
+
+* Your LDAP clients authenticate using client certificates, which must reach the backend server unaltered.
+
+* You run legacy applications that expect specific certificate chains and don’t tolerate TLS termination at the ingress.
+
+* You need direct LDAPS access to bypass ingress TLS termination and preserve the original TLS handshake.
+
+#### Configuring TLS Passthrough in Traefik
+
+This section provides details on how to configure TLS Passthrough in Traefik. If you are using any other service, you will need to adjust accordingly. To enable TLS passthrough with Traefik, create an IngressRouteTCP resource that bypasses TLS termination at the ingress layer:
+
+```
+# templates/ldaps-passthrough.yaml
+apiVersion: traefik.io/v1alpha1
+kind: IngressRouteTCP
+metadata:
+  name: {{ .Release.Name }}-ldaps-passthrough
+spec:
+  entryPoints:
+    - ldaps  # Port 636
+  routes:
+    - match: HostSNI(`ldap.iddm.example.com`)
+      services:
+        - name: {{ .Release.Name }}-iddm-fid
+          port: 2636
+  tls:
+    passthrough: true  # Pass TLS through to backend
+This configuration ensures Traefik forwards encrypted traffic directly to the pod without terminating TLS.
+
+Configuring TLS Passthrough in NGINX
+To configure TLS passthrough with NGINX:
+
+Define a ConfigMap that maps the LDAPS port to the backend service:
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-tcp-services
+data:
+  636: "iddm-gnanirahul/fid:2636"
+Enable SSL passthrough and proxy protocol in the NGINX controller configuration:
+
+
+nginx:
+  controller:
+    config:
+      ssl-passthrough: "true"
+      ssl-passthrough-proxy-protocol: "true"
+```
+This setup allows encrypted traffic to reach the Identity Data Management service unmodified.
+
+#### Verifying TLS Passthrough
+
+Use the following commands to confirm the passthrough setup works as expected:
+``
+# Should return the FID pod's certificate—not the ingress certificate
+openssl s_client -connect ldap.iddm.example.com:636 -servername fid-0.fid-headless.iddm-gnanirahul.svc.cluster.local
+
+# Check the certificate subject for validation
+echo | openssl s_client -connect ldap.iddm.example.com:636 2>/dev/null | openssl x509 -noout -subject
+If TLS passthrough is working correctly, the output should show the backend pod's certificate, confirming end-to-end encryption.
+
 ## Troubleshooting
 
-| Symptom                               | Cause                                  | Resolution                                    |
+| Symptom                               | Potential cause                                  | Resolution                                    |
 | ------------------------------------- | -------------------------------------- | --------------------------------------------- |
-| Classic UI fails to load              | Certificate missing SANs               | Regenerate certificate with correct SANs      |
-| LDAPS fails                           | No pod certificate or incorrect CN     | Use proper pod-level cert with SANs           |
-| Internal HTTPS works only via Ingress | Mismatch between Ingress and pod certs | Ensure both certs are trusted or from same CA |
-| Certificate chain validation fails    | Missing intermediate or root CA        | Add full cert chain to the keystore           |
+| Classic UI fails to load              | Certificate may be missing SANs               | Regenerate certificate with correct SANs      |
+| LDAPS fails                           | No pod certificate or incorrect CN     | Use proper pod-level certificate with SANs           |
+| Internal HTTPS works only via Ingress | Mismatch between Ingress and pod certificates | Ensure both certificates are trusted or from same CA |
+| Certificate chain validation fails    | Missing intermediate or root CA        | Add full certificate chain to the keystore           |
 
 
 ## Best Practices
