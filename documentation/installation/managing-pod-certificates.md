@@ -88,82 +88,83 @@ To update certificates without breaking service, follow these steps:
 
 1. Create a local backup for the existing cert and keystore and copy the keystore.
 
- **Example commands for one pod:**
- 
- ```
- C:\Users\abcuser>kubectl.exe cp ${NAMESPACE}/${RELEASE_NAME}-iddm-fid/fid-0:/opt/radiantone/vds/vds_server/conf/rli.keystore ./backup/rli.keystore.backup
- C:\Users\abcuser>kubectl.exe cp ${NAMESPACE}/${RELEASE_NAME}-iddm-fid/fid-0:/opt/radiantone/vds/vds_server/conf/rli.cer ./backup/rli.cer.backup
- 
- ```
- 
- `kubectl cp ./rli.keystore duploservices-qa2/fid-0:/opt/radiantone/vds/vds_server/conf/rlicopy.keystore ` 
- 
- **Example script for multiple pods:**
- 
- ```
- # Set variables
- NAMESPACE="iddm-abc"
- RELEASE_NAME="my-iddm"
- 
- # Create backup directory
- mkdir -p ./backup/$(date +%Y%m%d)
- 
- # Backup from all pods if StatefulSet
- for i in 0 1 2; do
-   if kubectl get pod ${RELEASE_NAME}-iddm-fid-$i -n ${NAMESPACE} &>/dev/null; then
-     kubectl cp ${NAMESPACE}/${RELEASE_NAME}-iddm-fid-$i:/opt/radiantone/vds/vds_server/conf/rli.keystore \
-       ./backup/$(date +%Y%m%d)/rli.keystore.pod$i.backup
-   fi
- done
- ```
- 
- Verify that the backup has been created by navigating to your backup folder. 
- 
- ![image of the backup folder](images/image1.png)
+   **Example commands for one pod:**
+   
+   ```
+   C:\Users\abcuser>kubectl.exe cp ${NAMESPACE}/${RELEASE_NAME}-iddm-fid/fid-0:/opt/radiantone/vds/vds_server/conf/rli.keystore ./backup/rli.keystore.backup
+   C:\Users\abcuser>kubectl.exe cp ${NAMESPACE}/${RELEASE_NAME}-iddm-fid/fid-0:/opt/radiantone/vds/vds_server/conf/rli.cer ./backup/rli.cer.backup
+   
+   ```
+   
+   `kubectl cp ./rli.keystore duploservices-qa2/fid-0:/opt/radiantone/vds/vds_server/conf/rlicopy.keystore ` 
+   
+   **Example script for multiple pods:**
+   
+   ```
+   # Set variables
+   NAMESPACE="iddm-abc"
+   RELEASE_NAME="my-iddm"
+   
+   # Create backup directory
+   mkdir -p ./backup/$(date +%Y%m%d)
+   
+   # Backup from all pods if StatefulSet
+   for i in 0 1 2; do
+     if kubectl get pod ${RELEASE_NAME}-iddm-fid-$i -n ${NAMESPACE} &>/dev/null; then
+       kubectl cp ${NAMESPACE}/${RELEASE_NAME}-iddm-fid-$i:/opt/radiantone/vds/vds_server/conf/rli.keystore \
+         ./backup/$(date +%Y%m%d)/rli.keystore.pod$i.backup
+     fi
+   done
+   ```
+   
+   Verify that the backup has been created by navigating to your backup folder. 
+   
+   ![image of the backup folder](images/image1.png)
 
 
 2. Upload the new certificate to the Control Panel trust store. 
 
- Add the new certificate to the trust store by accessing your control panel URL. In Control Panel, navigate to Client Certificates
- and click IMPORT. Give it an alias name and browse your certificate file. After selecting the file, click OK. 
- 
- ![image of the cert in Control panel](images/image2.png)
+   Add the new certificate to the trust store by accessing your control panel URL. In Control Panel, navigate to Client Certificates
+   and click IMPORT. Give it an alias name and browse your certificate file. After selecting the file, click OK. 
+   
+   ![image of the cert in Control panel](images/image2.png)
 
-3. Once you have replaced the certificate, click on the certificate alias and navigate to the certificate properties tab. Ensure that your certificate has a SAN property assigned to it.  
+3. Once you have replaced the certificate, click on the certificate alias and navigate to the certificate properties tab. 
+   Ensure that your certificate has a SAN property assigned to it.  
 
-![image of the cert in Control panel](images/image3.png)
+  ![image of the cert in Control panel](images/image3.png)
 
 
 4. Replace the pod's `rli.keystore` file.
 
- Navigate to pod's /vds/vds_server/conf and rename the old rli.keystore to rliold.keystore. Then, rename the new rlinew.keystorefile
- to rli.keystore by following these steps: 
- 
- * Copy new keystore to first pod:
-    ```bash
-    kubectl cp ./rli.keystore ${NAMESPACE}/${RELEASE_NAME}-iddm-fid-0:/opt/radiantone/vds/vds_server/conf/rlinew.keystore
-    ```
- 
- * Access the pod:
-   `kubectl exec -it -n ${NAMESPACE} ${RELEASE_NAME}-iddm-fid-0 -- bash`
- 
- * Replace the keystore and fix permissions:
- 
-   `cd /opt/radiantone/vds/vds_server/conf`
-   `mv rli.keystore rliold.keystore.$(date +%Y%m%d)`
-   `mv rlinew.keystore rli.keystore`
-   `chown 1000:1000 rli.keystore`
-   `chmod 660 rli.keystore`
- 
- * Update keystore type to PKCS12 if needed:
- 
-   ```
-   cd /opt/radiantone/vds/vds_server/conf/jetty
-   cat config.properties  # Check current type
-   # If changing from JKS to PKCS12, update:
-   sed -i 's/jetty.ssl.keystore.type=JKS/jetty.ssl.keystore.type=PKCS12/' config.properties
-   ```
-   Then, exit bash by running the `exit` command.
+   Navigate to pod's /vds/vds_server/conf and rename the old rli.keystore to rliold.keystore. Then, rename the new rlinew.keystorefile
+   to rli.keystore by following these steps: 
+   
+   * Copy new keystore to first pod:
+      ```bash
+      kubectl cp ./rli.keystore ${NAMESPACE}/${RELEASE_NAME}-iddm-fid-0:/opt/radiantone/vds/vds_server/conf/rlinew.keystore
+      ```
+   
+   * Access the pod:
+     `kubectl exec -it -n ${NAMESPACE} ${RELEASE_NAME}-iddm-fid-0 -- bash`
+   
+   * Replace the keystore and fix permissions:
+   
+     `cd /opt/radiantone/vds/vds_server/conf`
+     `mv rli.keystore rliold.keystore.$(date +%Y%m%d)`
+     `mv rlinew.keystore rli.keystore`
+     `chown 1000:1000 rli.keystore`
+     `chmod 660 rli.keystore`
+   
+   * Update keystore type to PKCS12 if needed:
+   
+     ```
+     cd /opt/radiantone/vds/vds_server/conf/jetty
+     cat config.properties  # Check current type
+     # If changing from JKS to PKCS12, update:
+     sed -i 's/jetty.ssl.keystore.type=JKS/jetty.ssl.keystore.type=PKCS12/' config.properties
+     ```
+     Then, exit bash by running the `exit` command.
 
 5. In the Control Panel, verify that the key store is pointing to your new rli.keystore. 
    If you're using a .p12 certificate, change the certificate key type to PKCS12; otherwise, leave it as is(set to the default JKS format).
@@ -173,20 +174,20 @@ To update certificates without breaking service, follow these steps:
 
 6. Restart the pod by following these steps (or delete pod for rolling restart):
    
- * Access the pod:
-   `kubectl exec -it -n ${NAMESPACE} ${RELEASE_NAME}-iddm-fid-0 -- bash`
- 
- * After accessing it, stop the server and relaunch control panel:
- 
- ```
-   cd /opt/radiantone/vds/bin
-   ./stopWebAppServer.sh
-   sleep 5
-   ./launchControlPanel.sh
- ```
- 
- * Wait for services to come back up: 
-  `kubectl get pod ${RELEASE_NAME}-iddm-fid-0 -n ${NAMESPACE} -w`
+  * Access the pod:
+    `kubectl exec -it -n ${NAMESPACE} ${RELEASE_NAME}-iddm-fid-0 -- bash`
+  
+  * After accessing it, stop the server and relaunch control panel:
+  
+  ```
+    cd /opt/radiantone/vds/bin
+    ./stopWebAppServer.sh
+    sleep 5
+    ./launchControlPanel.sh
+  ```
+  
+  * Wait for services to come back up: 
+   `kubectl get pod ${RELEASE_NAME}-iddm-fid-0 -n ${NAMESPACE} -w`
 
 
 ### Verify Certificate Installation and Connectivity 
