@@ -1,14 +1,14 @@
 ---
-title: Updating pod level ceritificates
-description: Learn how to create and manage pod level certificates.
+title: Updating self-signed server ceritificates
+description: Learn how to create and manage self-signed server certificates.
 ---
 
 ## Overview
 
-Pod certificates are required for LDAPS (LDAP over TLS), internal HTTPS (pod-to-pod communication), 
+Self-signed server certificates are used for LDAPS (LDAP over TLS), internal HTTPS (pod-to-pod communication), 
 accessing Identity Data Management via the Control Panel UI, and for accessing the Classic Control Panel.
 
-This document provides steps on how to update pod level certificates for self-managed Identity Data Management. 
+This document provides steps on how to update self-signed certificates in self-managed Identity Data Management. 
 
 **Prerequisites**
 
@@ -112,7 +112,7 @@ To update certificates without breaking service, follow these steps:
 
 
 
-6. Restart the pod by following these steps (or delete pod for rolling restart):
+6. Restart the pod by following these steps:
    
   * Access the pod:
     `kubectl exec -it -n ${NAMESPACE} ${RELEASE_NAME}-iddm-fid-0 -- bash`
@@ -146,9 +146,9 @@ To update certificates without breaking service, follow these steps:
  ```
 
 
-## StatefulSet Certificate Update (All Pods)
+## Updating server certificate across multiple pods
 
-If you have multiple FID pods (e.g., fid-0, fid-1), you must:
+If you have a multi-node cluster (e.g., with fid-0, fid-1, fid-N pods), you can perform a StatefulSet certificate update by following these steps:
 
 * Copy the certificates to all pods.
 
