@@ -148,7 +148,7 @@ To update certificates without breaking service, follow these steps:
 
 ## Updating the server certificate on all pods
 
-If you have multiple pods (e.g., with fid-0, fid-1, fid-N), you must update the server certificate on each pod. To do so, you can perform a StatefulSet certificate update by following these steps:
+If you have multiple pods (e.g., with fid-0, fid-1, fid-N), you must update the server certificate on each pod. To do so, follow these steps:
 
 * Copy the certificates to all pods.
 
