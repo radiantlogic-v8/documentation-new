@@ -13,12 +13,13 @@ This document provides steps on how to update pod level certificates for self-ma
 **Prerequisites**
 
 * You must have access to your deployed self-managed Identity Data Management.
-* When you create your self-signed certificates, it must be properly formed and include all relevant hostnames using the Subject Alternative Name (SAN) extension. This is critical for compatibility with modern TLS clients and to avoid runtime errors due to hostname mismatches during certificate validation. For replica sets, the SAN should include at least five pod FQDNs to use a single certificate across all pods.
+* You must have generated your new self-signed certificate. 
+* When you create your self-signed certificate, it must be properly formed and include all relevant hostnames using the Subject Alternative Name (SAN) extension. This is critical for compatibility with modern TLS clients and to avoid runtime errors due to hostname mismatches during certificate validation. For replica sets, it is recommended to include at least five pod FQDNs in your SAN. This approach supports better scalability.
 
 
 To update certificates without breaking service, follow these steps:
 
-1. Create a local backup for the existing cert and keystore and copy the keystore.
+1. Create a local backup for the existing certificate and keystore and copy the keystore.
 
    **Example commands for one pod:**
    
@@ -61,14 +62,14 @@ To update certificates without breaking service, follow these steps:
    Add the new certificate to the trust store by accessing your control panel URL. In Control Panel, navigate to Client Certificates
    and click IMPORT. Give it an alias name and browse your certificate file. After selecting the file, click OK. 
    
-    ![image of the cert in Control panel](images/image2.png)
+    ![image of the certificatein Control panel](images/image2.png)
 
    
 
 5. Once you have replaced the certificate, click on the certificate alias and navigate to the certificate properties tab. 
    Ensure that your certificate has a SAN property assigned to it.  
 
-   ![image of the cert in Control panel](images/image3.png)
+   ![image of the certificate in Control panel](images/image3.png)
 
    
 
@@ -107,7 +108,7 @@ To update certificates without breaking service, follow these steps:
 5. In the Control Panel, verify that the key store is pointing to your new rli.keystore. 
    If you're using a .p12 certificate, change the certificate key type to PKCS12; otherwise, leave it as is(set to the default JKS format).
 
-   ![image of the cert in Control panel](images/image4.png)
+   ![image of the certificate in Control panel](images/image4.png)
 
 
 
