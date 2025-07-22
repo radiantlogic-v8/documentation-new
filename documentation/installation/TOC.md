@@ -10,4 +10,4 @@ description: Installing RadiantOne Identity Data Platform
     - [Enable metrics and logging](metrics-and-logging.md)
     - [Create backups](creating-backups.md)
     - [Restore using a backup](restore.md)
-    - [Managing pod certificates](managing-pod-certificates.md)
+    - [Updating pod certificates](managing-pod-certificates.md)
