@@ -10,6 +10,8 @@ accessing Identity Data Management via the Control Panel UI, and for accessing t
 
  This document provides steps on how to create and manage pod level certificates for self-managed Identity Data Management. 
 
+### Creating Pod certificates
+
 **1. Create certificate configuration**
 
 ```bash
