@@ -52,38 +52,37 @@ Manually create an application in the Entra ID portal before using the `AzureADI
 In a later step, you will use the application details from your registered Entra ID application to create a second application using `AzureADInitialization.exe` provided by RadiantOne Identity Data Management.
 
 
-### Setting Up the Sync
+## Steps to set up the synchronization 
 
-#### 1. Configure On-Prem AD as a Data Source
+### 1. Configure On-Prem AD as a Data Source
 
-##### a. Create an Active Directory Data Source
+#### a. Create an Active Directory Data Source
 
-* Open the **Control Panel** in Identity Data Management and navigate to `Settings > LDAP Data Sources`.
-* Click the **Add** button to add a new LDAP data source that points to your **Active Directory** domain controller. An example is shown below:
+1. Open the **Control Panel** in Identity Data Management and navigate to `Settings > LDAP Data Sources`.
+2. Click the **Add** button to add a new LDAP data source that points to your **Active Directory** domain controller. An example is shown below:
 
    ![Image of LDAP data source](Media/img-2.png)
-* Provide all the details that are required, test the connection, and save your changes. Use secure bind credentials with read access to the targeted user objects. The image below shows an example for reference:
+
+3. Provide all the details that are required, test the connection, and save your changes. Use secure bind credentials with read access to the targeted user objects. The image below shows an example for reference:
 
    ![Image of LDAP data source details](Media/img-3.png)
 
 
-##### b. Configure LDAP Proxy Naming Context for Your AD
+#### b. Configure LDAP Proxy Naming Context for Your AD
 
-* Under Directory Namespace, create a new LDAP proxy naming context using the AD data source. For example, the image below shows a proxy      name “adproxy” that points to a sample AD data source named “ad35” that was created in step a. Names can be customized.  
+1. Under Directory Namespace, create a new LDAP proxy naming context using the AD data source. For example, the image below shows a proxy      name “adproxy” that points to a sample AD data source named “ad35” that was created in step a. Names can be customized.  
 
     ![Image of LDAP proxy naming context](Media/img-4.png)
 
-* In the **Remote Base DN**, click **Browse**, specify the scope, and click **OK**.  
+2. In the **Remote Base DN**, click **Browse**, specify the scope, and click **OK**.  
 
     ![Image of Base DN selection for proxy view](Media/img-5.png)
 
-* In the Objects tab, ensure the object class associated with your user accounts in Active Directory (e.g., user) is added to the Primary Objects section. If not present, click the Add button to include it.  
+3. In the Objects tab, ensure the object class associated with your user accounts in Active Directory (e.g., user) is added to the Primary Objects section. If not present, click the Add button to include it.  
 
     ![Image of Primary object addition](Media/img-6.png)
 
-   
-
-* At the bottom of the **Objects** tab, click **Edit** next to **Define Computed Attributes**.
+4. At the bottom of the **Objects** tab, click **Edit** next to **Define Computed Attributes**.
    - Click **Add** and enter the following:
      - **Name**: `userPassword`  
      - **Function**: Click **Function**, select `getADPassword()`, click **OK**  
@@ -91,18 +90,18 @@ In a later step, you will use the application details from your registered Entra
 
     ![Image that shows how to define a Computed Attribute](Media/img-7.png)
 
-* **Save** your changes.  
+5. **Save** your changes.  
    - This attribute will now hold the **password hash** for each synced on-prem AD user.
 
 
-##### c. Configure Persistent Cache
+#### c. Configure Persistent Cache
 
 * Create and initialize a **persistent cache** on the LDAP Proxy Naming Context with real-time refresh using **DirSync** or **USN Active Directory connector**.
 
 
-#### 2. Configure Entra ID as a Data Source
+### 2. Configure Entra ID as a Data Source
 
-##### a. Run AzureADInitialization.exe
+#### a. Run AzureADInitialization.exe
 
 1. Open CLI and run the AzureADInitialization script:
 
@@ -113,26 +112,25 @@ In a later step, you will use the application details from your registered Entra
    ![Image showing where the script is located](Media/img-8.png)
 
 
-This launches a service account registration process on Entra ID used by RadiantOne.
+ This launches a service account registration process on Entra ID used by RadiantOne.
 
-When prompted, provide the following details associated with previously registered Entra ID application: 
+2. When prompted, provide the following details associated with previously registered Entra ID application: 
 
-* Tenant ID (Entra ID admin account)
-* Email address (Entra ID admin)
-* Client ID of the previously registered Entra ID app
-* Client Secret of the previously registered app
-* A unique data source name for the Entra ID data source
-* Yes/No responses to any additional prompts
-
-   ![Image of the CLI](Media/img-9.png)
-
-
-* When prompted to create a new application for sync, type Y and press Enter.
-* When asked for the vdsconfig file location, press Enter to accept the default location.
-* A name for the Entra ID data source and press Enter. Note the name used.
-
-  ![Image of the CLI](Media/img-10.png)
-
+ * Tenant ID (Entra ID admin account)
+ * Email address (Entra ID admin)
+ * Client ID of the previously registered Entra ID app
+ * Client Secret of the previously registered app
+ * A unique data source name for the Entra ID data source
+ * Yes/No responses to any additional prompts
+ 
+    ![Image of the CLI](Media/img-9.png)
+ 
+ 
+ * When prompted to create a new application for sync, type Y and press Enter.
+ * When asked for the vdsconfig file location, press Enter to accept the default location.
+ * A name for the Entra ID data source and press Enter. Note the name used.
+ 
+   ![Image of the CLI](Media/img-10.png)
 
 After completing the steps, a pre-configured data source is created in your Identity Data Management instance.
 To view it, navigate to Main Control Panel > Settings tab > Server Backend > Custom Data Sources section. An example is shown below:
@@ -140,17 +138,17 @@ To view it, navigate to Main Control Panel > Settings tab > Server Backend > Cus
   ![Image of the Custom Data sources UI](Media/img-11.png)
 
 
-##### Configure Web Proxy (Optional)
+#### b. Configure Web Proxy (Optional)
 
-If your company requires API calls to be made through a **Web Proxy Server**:
+* If your company requires API calls to be made through a **Web Proxy Server**:
 
-- Add a property named `proxy` with a value that points to the proxy server and port.  
-  Example: `rli.vip.proxy.com:9090`
+ - Add a property named `proxy` with a value that points to the proxy server and port.  
+   Example: `rli.vip.proxy.com:9090`
+ 
+ - If SSL is required, add a property named `proxyssl` and set the value to `true`. If SSL is used, ensure **RadiantOne trusts the proxy server’s public certificate**. Manually import the certificate into the RadiantOne **Client Certificate Truststore** via: `Main Control Panel > Settings > Security > Client Certificate Truststore`
+ After completing the configuration, click **OK** and then, click **Save**. 
 
-- If SSL is required, add a property named `proxyssl` and set the value to `true`. If SSL is used, ensure **RadiantOne trusts the proxy server’s public certificate**. Manually import the certificate into the RadiantOne **Client Certificate Truststore** via: `Main Control Panel > Settings > Security > Client Certificate Truststore`
-After completing the configuration, click **OK** and then, click **Save**. 
-
-#### b. Create View of Entra ID Users in Context Builder
+#### c. Create View of Entra ID Users in Context Builder
 
 1. Navigate to `Context Builder > View Designer`
 
@@ -189,16 +187,14 @@ After completing the configuration, click **OK** and then, click **Save**.
 
    ![Image of new content](Media/img-16.png)
 
-
 8. Select `user` and click OK. On the “user” content node, navigate to the Attributes tab and publish all attributes as mapped attributes by clicking on the publish all button as shown below: 
   
    ![Image of attributes mapping](Media/img-17.png)
 
+9. Click **Save** to save the view.
 
-10. Click **Save** to save the view.
 
-
-#### c. Create Naming Context in Directory Namespace
+#### d. Create Naming Context in Directory Namespace
 
 1. In **Directory Namespace**, create a new **virtual tree naming context** that references the `.dvx` view file created in step **b**.
 
@@ -220,18 +216,16 @@ After completing the configuration, click **OK** and then, click **Save**.
 
    ![Image of global sync menu item](Media/img-19.png)
 
-
 2. Click **New Topology** to create a new synchronization topology:
    * Set the **Source Naming Context** to the AD naming context created in **step 1**.
    * Set the **Target Naming Context** to the Entra ID naming context from **step 2**.
 
    ![Image of new topology](Media/img-20.png)
 
-
 4. Click **OK**
 
 
-### b. Set Transformation Type
+#### b. Set Transformation Type
 
 1. Click **Configure** to define synchronization pipelines between On-prem AD view (source) and Entra ID view (target). Set **Transformation Type** to `Rules-based`.
 
@@ -242,7 +236,7 @@ After completing the configuration, click **OK** and then, click **Save**.
    - **Target Object Class**: `azureaduser`
 
 
-### c. Define Rules: Insert, Update, Delete
+#### c. Define Rules: Insert, Update, Delete
 
 In this step, you will create **rule sets** that define how data is transformed between source and target during **Insert**, **Update**, and **Delete** events. For example, when a new user is created in **on-prem AD** (insert event), you will need to define a rule that automatically maps and syncs the user to **Entra ID**.
 
@@ -262,16 +256,16 @@ In this step, you will create **rule sets** that define how data is transformed 
 Key mappings and examples related to these rules are noted below.  
 
 
-### Identity Linkage
+#### d. Establish Identity Linkage
 
 To ensure effective identity linkage, it's essential that the source and target systems use matching identifiers. Set the RDN name to align with the RDN of your EntraID user content node (“user”). 
 
-#### Example: Matching Entra ID DN Format
+**Example: Matching Entra ID DN Format**
 
-If the DN in the target (Entra ID) looks like "user=abc@identityforless.onmicrosoft.com", you need to configure Global Sync rules to generate this format from source (on-prem AD) values.
+If the DN in the target (Entra ID) looks like "user=abc@identityforless.onmicrosoft.com", you need to configure Global Sync rules to generate this format from source (on-prem AD) values. 
 
 
-#### Steps to Configure Identity Linkage (Insert Event)
+**Steps to Configure Identity Linkage (Insert Event)**
 
 1. Set the **RDN Name** to match the Entra ID user content node RDN — typically `user`. To do this, navigate to the Global Sync rule and click **Advanced Options**. Under **Target Object RDN**, select `user`.
 
@@ -283,7 +277,7 @@ If the DN in the target (Entra ID) looks like "user=abc@identityforless.onmicros
 Example: If we take `sAMAccountName = JaneDoeU5`, we can format the Entra ID DN as `user=JaneDoeU5@identityforless.onmicrosoft.com` by appending the domain suffix (@identityforless.onmicrosoft.com) using a dynamic expression. 
 
 
-#### Build Dynamic Expression
+#### e. Build Dynamic Expression
 
 1. Return to the Insert Rule and click the edit icon next to Identity Linkage. After clicking edit, you should see `user` as the target attribute.   
 
@@ -295,21 +289,21 @@ Example: If we take `sAMAccountName = JaneDoeU5`, we can format the Entra ID DN 
  ![Image showing how to edit function](Media/img-27.png)
 
 
-4. Click **Build Expression** in the left menu and click **Insert Attribute**. Click Next. Now, you can insert the attribute that you selected and define the expression.
+3. Click **Build Expression** in the left menu and click **Insert Attribute**. Click Next. Now, you can insert the attribute that you selected and define the expression.
    
  ![Image showing how to insert an attribute](Media/img-28.png)
 
 
-5. In the example below, we are inserting the sAMAccountName attribute and appending it with @identityforless.onmicrosoft.com.   
+4. In the example below, we are inserting the sAMAccountName attribute and appending it with @identityforless.onmicrosoft.com.   
 
   ![Image showing an example function](Media/img-29.png)
 
-Click OK. The synchronization engine will then use this expression whenever it needs to insert a user into the target system, helping maintain identity consistency between the source (on-prem) and target (Entra ID) systems.
+5. Click OK. The synchronization engine will then use this expression whenever it needs to insert a user into the target system, helping maintain identity consistency between the source (on-prem) and target (Entra ID) systems.
 
 Follow a similar approach for **Update** and **Delete** rules based on your requirements.
 
 
-### Attribute Mappings from On-Prem AD to Entra ID
+#### f. Attribute Mappings from On-Prem AD to Entra ID
 
  Identify which attributes in Entra ID should be populated from your on-prem Active Directory during Insert events.  
 
@@ -323,7 +317,7 @@ Follow a similar approach for **Update** and **Delete** rules based on your requ
 | `passwordProfile-password`  | `userPassword`            |
 
 
-- Click the **“+”** icon next to the attribute. Select the correct mapping and click **OK**. 
+1. Click the **“+”** icon next to the attribute. Select the correct mapping and click **OK**. 
 
   ![Image showing attribute mapping](Media/img-30.png)
 
@@ -337,16 +331,16 @@ Some attributes require special handling:
   
     ![Image showing attribute mapping](Media/img-31.png)
 
-- Map all other necessary user attributes such as name, email, job title, department, etc. as needed. Enable the Apply target attribute mappings checkbox and click OK to save the mappings.  
+2. Map all other necessary user attributes such as name, email, job title, department, etc. as needed. Enable the Apply target attribute mappings checkbox and click OK to save the mappings.  
 
-- After mapping, enable **Apply Target Attribute Mappings** and click **OK**. You should see all your saved mappings in the screen. 
+3. After mapping, enable **Apply Target Attribute Mappings** and click **OK**. You should see all your saved mappings in the screen. 
   
   ![Image showing complete attribute mappings](Media/img-33.png)
 
 Repeat a similar approach for **Update** and **Delete** rules.
 
 
-### d. Test Transformation
+### g. Test Transformation
 
 After setting your transformation rules for all events, you can test if the transformation rules execute as expected or not by following these steps:  
 
@@ -371,11 +365,11 @@ Examples of insert and update events mappings are shown below for reference.
 ![Image showing the edit transformation button](Media/img-36.png)
 
 
-### e. Start Connectors
+### h. Start Connectors
 
 * Once you're ready to start synchronization, navigate to `Synchronization > Global Sync > Apply`.
   
-![Image showing the edit transformation button](Media/img-37.png)
+ ![Image showing the edit transformation button](Media/img-37.png)
 
 * Click the **Start** button to launch the sync pipeline.
 * Ensure the **capture connector type** is set to **HDAP triggers**. This enables real-time synchronization
