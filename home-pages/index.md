@@ -60,6 +60,9 @@ Harness your identity data with intelligent integration to drive better business
   > [Upgrades](upgrade-guides/upgrade74-81)
   > Learn how to upgrade your RadiantOne v7.4 service to RadiantOne SaaS. This covers upgrading to a new major version.
 
+  > [Use cases](use-cases/usecase-guides)
+  > Learn how RadiantOne can be used to synchronize on-premises Active Directory (AD) user details with Entra ID.
+
 </section>
 
 ## RadiantOne Integration
