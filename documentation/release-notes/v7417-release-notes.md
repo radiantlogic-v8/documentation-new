@@ -41,7 +41,7 @@ RadiantOne is supported on the following 64-bit platforms:
 
 -	Oracle Enterprise Linux 7/8/9
 
-For specific hardware requirements of each, read the [system requirements](../../system-requirements/v74-system-requirements/) guide. 
+For specific hardware requirements of each, read the [system requirements](../system-requirements/v74-system-requirements/) guide. 
 
 ## Improvements
 
