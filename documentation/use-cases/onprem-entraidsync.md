@@ -319,13 +319,14 @@ Follow a similar approach for **Update** and **Delete** rules based on your requ
 
 1. Click the **“+”** icon next to the attribute. Select the correct mapping and click **OK**. 
 
-  ![Image showing attribute mapping](Media/img-30.png)
+   ![Image showing attribute mapping](Media/img-30.png)
 
 
 Some attributes require special handling: 
   - You must provide a boolean value for `accountEnabled` (true or false).
   - `onPremisesSyncEnabled` **must** be set to true to enable password synchronization. This is a required attribute. Synchronization will fail if this is not provided. 
-  ![Image showing attribute mapping](Media/img-32.png)
+  
+    ![Image showing attribute mapping](Media/img-32.png)
   
   - `passwordProfile-password` must map to the **computed attribute `userPassword`** from earlier steps.
   
@@ -335,7 +336,7 @@ Some attributes require special handling:
 
 3. After mapping, enable **Apply Target Attribute Mappings** and click **OK**. You should see all your saved mappings in the screen. 
   
-  ![Image showing complete attribute mappings](Media/img-33.png)
+   ![Image showing complete attribute mappings](Media/img-33.png)
 
 Repeat a similar approach for **Update** and **Delete** rules.
 
@@ -360,16 +361,16 @@ At a minimum, verify the following:
 Examples of insert and update events mappings are shown below for reference.
 
 
-![Image showing the edit transformation button](Media/img-35.png)
-
-![Image showing the edit transformation button](Media/img-36.png)
+  ![Image showing the edit transformation button](Media/img-35.png)
+  
+  ![Image showing the edit transformation button](Media/img-36.png)
 
 
 ### h. Start Connectors
 
 * Once you're ready to start synchronization, navigate to `Synchronization > Global Sync > Apply`.
   
- ![Image showing the edit transformation button](Media/img-37.png)
+  ![Image showing the edit transformation button](Media/img-37.png)
 
 * Click the **Start** button to launch the sync pipeline.
 * Ensure the **capture connector type** is set to **HDAP triggers**. This enables real-time synchronization
