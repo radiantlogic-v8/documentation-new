@@ -352,13 +352,13 @@ After setting your transformation rules for all events, you can test if the tran
 
 3. Click the **Test** button (top-right corner). An interface containing your current test mappings gets displayed. In this interface, edit any test attribute values. Click **Test** again. If the test succeeds, you’ll see the **transformed output** in the Output section.
 
-At a minimum, verify the following: 
-
-- User objects are correctly matched
-- Attribute mappings are correct
-- Password hash (`userPassword`) is populated properly
-
-Examples of insert and update events mappings are shown below for reference.
+  At a minimum, verify the following: 
+  
+  - User objects are correctly matched
+  - Attribute mappings are correct
+  - Password hash (`userPassword`) is populated properly
+  
+  Examples of insert and update events mappings are shown below for reference.
 
 
   ![Image showing the edit transformation button](Media/img-35.png)
