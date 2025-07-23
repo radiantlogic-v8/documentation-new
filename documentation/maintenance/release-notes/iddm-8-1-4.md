@@ -24,37 +24,39 @@ These release notes contain the following sections:
 ## Improvements
 
 - [API-326]: Added support for importing data sources that have been exported in v7.4.
-- [API-2124]: Improvement for mgraph custom data source to now fetch user MFA status details if present in the view of Entra ID.  These attributes have been added to the mgraph default schema (.orx file).
-- [API-2269]: Added cn=queue to Classic Control Panel > Settings tab > Logs > Access Logs > Advanced to allow for ignoring logging related to queries for certain naming contexts.
-- [API-2279]: Added support for config promotion pipelines which allows for an automated way to promote configuration changes across environments as an alternative to manually using resource-export/resource-import commands. E.g. migrate configuration from a QA to Production environment. For self-managed deployments, this is configured from Control Panel > Global Settings > Configuration Promotion, after the Git repo is manually configured. For SaaS deployments, the Environment Operations Center can be used to configure the source and target environments associated with a configuration migration and the Git repo is automatically configured. For the source environment, the configuration to be migrated is configured from the Control Panel > Global Settings > Configuration Promotion.
-- [API-2288,SQ-197]: Added the date and time to the archived access log file names to make it easier to identify access logs for specific dates.
-- [API-2535]: Added support for Content-Type=application/scim+json headers to our frontend SCIM API.
+- [API-2124]: Enhanced mgraph custom data sources to fetch user MFA status details from Entra ID view. These attributes have been added to the mgraph default schema (.orx file).
+- [API-2269]: Added cn=queue to Classic Control Panel > Settings > Logs > Access Logs > Advanced to allow exclusion of logging related to queries for certain naming contexts.
+- [API-2279]: Added support for configuration promotion pipelines for automating configuration migration across environments. This serves as an alternative to manual resource-export/resource-import. For self-managed deployments, configure via Control Panel > Global Settings > Configuration Promotion (after manual Git setup). SaaS users can configure source/target environments and the pipeline via the Environment Operations Center.
+- [API-2288,SQ-197]: Added date and time to archived access log file names to make it easier to identify access logs for specific dates.
+- [API-2535]: Added support for Content-Type=application/scim+json headers to Radiant Logic's frontend SCIM API.
 - [API-2784, SQ-342]: Added a "Successfully logged out" message upon logout from the Control Panel.
-- [API-2785, SQ-341]: Added support for a configurable â€œmessage of the dayâ€ display for the new control panel.
-- [API-2845, SQ-343]: Added support for an internal banner configuration in the new control panel. The settings to control this behavior are in the classic control panel. The banner text will appear in the navbar at the top of the page when logged in. If no colors are set, it will seamlessly work with the existing theme. If colors are set, then a colored section will appear in the navbar. The banner text also appears at the very top of the right-hand section of the login page.
-- [API-2846, SQ-349]: Added the cluster name to be included in the subject and body of the email that is sent when testing email alerts.
-- [API-2868]: Enabled the Mutual authentications settings to be visible and configurable in the classic control panel for self-managed deployments.
-- [API-2888]: Improvement of UI error messages in the Control Panel > Directory Browser to provide more details on why an LDAP operation is being rejected.
-- [API-2890]: Added support for creating Kafka data sources (to use for synchronization) in the control panel.
-- [API-2932]: Added support for displaying custom data source properties to the Control Panel so they can be editable for these data sources.
-- [API-3001]: Improvement to check that data source names can only include alphanumeric characters and the following special characters: ., $, and _
-- [API-3103]: Improvement made to the Control Panel > Directory Browser for adding entries and editing attribute values.
-- [API-3180]: Added a warning popup when value of member attributes is changed in dynamic groups.
+- [API-2785, SQ-341]: Added support for a configurable "message of the day" display in the new control panel.
+- [API-2845, SQ-343]: Added support for an internal banner configuration in the new control panel. The settings to control this behavior are in the classic control panel. The banner text will appear in the navbar at the top of the page when logged in. If no colors are set, it will seamlessly work with the existing theme. If colors are set, then a colored section will appear in the navbar. The banner text is also displayed at the top of the right-hand section on the login page.
+- [API-2846, SQ-349]: Added cluster name in the subject and body of test email alerts.
+- [API-2868]: Made Mutual Authentication settings visible and configurable in the classic control panel for self-managed deployments.
+- [API-2888]: Improved UI error messages in Control Panel > Directory Browser to clarify why an LDAP operation is being rejected.
+- [API-2890]: Added support for creating Kafka data sources (for synchronization) via the control panel.
+- [API-2932]: Added all supported custom data source properties to the Data sources UI.  
+- [API-3001]: Added validation for data source names to allow only alphanumeric characters and ., $, and _.
+- [API-3103]: Made improvement to Control Panel > Directory Browser for adding entries and editing attribute values.
+- [API-3180]: Added a warning popup when modifying member attributes values in dynamic groups.
+- [API-3175]: Improved error messages that are displayed when using the "Test Connection" feature on MySQL datasources after upgrading from v8.0.4 to v8.1.4. The enhanced logging now provides clearer detail related to missing or invalid meta types error. 
 
 
 ## Security Vulnerability Fixes
 
 - [API-2541]: Updated SSO endpoint to resolve potential CSRF vulnerability.
 - [API-2748]: Upgraded the Spring libraries to address CVE-2025-22228.
-- [API-2831,2935]: Upgraded Apache tomcat to version 10.1.40 to address CVE-2025-24813.
+- [API-2831,2935]: Upgraded Apache Tomcat to version 10.1.40 to address CVE-2025-24813.
 - [API-2938]: Upgraded to Axios 1.9.0 to address CVE-2025-27152.
 - [API-2939, 3154]: Upgraded babel/runtime to 7.27.6 to address CVE-2025-27789.
-- [API-3004,3054 and 3155]: Upgraded to Spring Boot 3.5.3 to address CVE-2025-46701
+- [API-3004,3054 and 3155]: Upgraded to Spring Boot 3.5.3 to address CVE-2025-46701.
 - [API-3155]: Upgraded the Jetty version from 9.4.56.v20240826 to 9.4.57.v20241219 to address CVE-2024-13009.
 
 ## Bug Fixes
 
-- [API-1936]: Fixed an issue where the data source page save fails because it did not send the correct payload for SDC Group on Save/Test connection.
+- [API-1392]: Fixed an issue where the 'Settings > Other Protocols' page in the classic control panel was not saving changes.
+- [API-1936]: Fixed an issue where the data source page save failed because it did not send the correct payload for SDC Group on Save/Test connection.
 - [API-2429]: Fixed an issue with the suffix branch exclusion/inclusion lookup modal, so that when selecting the Suffix Branch Exclusion/Inclusion> Advanced Settings> Select Base DN, the list of branches is now displayed. 
 - [API-2456]: Fixed an issue that caused attribute deletions in Okta data sources to fail.
 - [API-2468, SQ-284]: Fixed various Control Panel defects with the naming context stored procedure wizard.
