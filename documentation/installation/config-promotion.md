@@ -109,5 +109,5 @@ helm -n self-managed upgrade --install fid oci://ghcr.io/radiantlogic-devops/hel
 
 ## Next Steps
 
-Login to your self-managed Identity Data Management environment(s) and implement configuration changes by following the steps outlined in this document.
+Login to your self-managed Identity Data Management environment(s) and implement configuration changes by following the steps outlined in [this](to-do) document.
 
