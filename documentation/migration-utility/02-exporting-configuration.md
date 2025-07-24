@@ -7,7 +7,7 @@ If a migration plan has been generated, the export command uses it to determine 
 
 The following export example assumes the migration utility has been unzipped at C:\MigrationUtility\radiantone-migration-tool-2.1.0 on the Windows machine containing the RadiantOne configuration to be exported, and the file containing the export is C:/tmp/export.zip.
 
-C:\MigrationUtility\radiantone-migration-tool-2.1.0\migrate.bat export C:/tmp/export.zip
+C:\MigrationUtility\radiantone-migration-tool-2.1.0\migrate.bat C:\radiantone\vds export C:\tmp\export.zip
 
 >[!warning] If you do not have an RLI_HOME environment variable defined, you must pass the location where RadiantOne is installed in the command.
 
@@ -15,7 +15,7 @@ C:\MigrationUtility\radiantone-migration-tool-2.1.0\migrate.bat export C:/tmp/ex
 
 To have more control over what gets migrated, you can generate a migration plan which can be customized before doing the export. The example below creates a migration plan.
 
-C:\MigrationUtility\radiantone-migration-tool-2.1.0\migrate.bat generate-migration-plan
+C:\MigrationUtility\radiantone-migration-tool-2.1.0\migrate.bat C:\radiantone\vds generate-migration-plan
 
 >[!warning] If you do not have an RLI_HOME environment variable defined, you must pass the location where RadiantOne is installed in the command.
 
