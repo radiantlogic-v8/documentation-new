@@ -1,3 +1,8 @@
+---
+title: Congiguration Promotion
+description: Learn how to use promote configuration changes in self-managed Identity Data Management environments.
+---
+
 
 # Configuration Promotion
 
@@ -54,3 +59,55 @@ autoConfigPromotion:
       branch: ""  # Source branch to import configuration changes from (empty for DEV as we are not exporting anything to DEV branch.) 
     credentials: 
       secretName: “” # Name of the Kubernetes Secret containing GIT_PRIVATE_KEY
+```
+
+### Example Configuration in QA Environment
+
+```yaml
+autoConfigPromotion: 
+  enabled: true 
+  persistence: 
+    storageClass: standard 
+  git: 
+    repository: git@github.com:example-org/config-repo.git 
+    exportTo: 
+      branch: "prod"  # Target branch to export changes to 
+    importFrom: 
+      branch: "qa"  # Source branch to import configuration changes from 
+    credentials: 
+      secretName: “” # Name of the Kubernetes Secret containing GIT_PRIVATE_KEY
+```
+### Example Configuration in PROD Environment
+
+```yaml
+autoConfigPromotion: 
+  enabled: true 
+  persistence: 
+    storageClass: standard 
+  git: 
+    repository: git@github.com:example-org/config-repo.git 
+    exportTo: 
+      branch: ""  # Target branch to export changes to (empty for PROD) 
+    importFrom: 
+      branch: "prod"  # Source branch to import configuration changes from 
+    credentials: 
+      secretName: “” # Kubernetes secret name containing Git credentials.
+```
+
+> The storage class must provide a volume that supports full filesystem operations, including symlinks. Pseudo-filesystems such as object stores (e.g., S3) are not compatible. In multi-node, multi-zone environments, ensure the volume is accessible from all nodes across all zones.
+
+This setup assumes that you are promoting configurations from DEV to QA to PROD. Your setup may look different depending on the number of environments.
+
+### Applying Configuration Changes
+
+After modifying the `values.yaml` file, apply the changes by updating the deployment separately for each environment using the following Helm command:
+
+```bash
+helm -n self-managed upgrade --install fid oci://ghcr.io/radiantlogic-devops/helm-v8/fid \
+  --version 1.1.4 --values </path/to/your/values.yaml> --debug
+```
+
+## Next Steps
+
+Login to your self-managed Identity Data Management environment(s) and implement configuration changes by following the steps outlined in this document.
+
