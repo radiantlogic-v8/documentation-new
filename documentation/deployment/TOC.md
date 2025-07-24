@@ -8,4 +8,5 @@ description: Learn about basic production architectures, migrating configuration
 - [Migrating Access Control Instructions](migrating-acis)
 - [Hardening the Service Against Security Threats](hardening)
 - [Managing Services](./deployment-topics#managing-the-state-of-the-radiantone-service)
+- [Promoting Configuration Changes](configuration-promotion)
 
