@@ -11,4 +11,4 @@ description: Installing RadiantOne Identity Data Platform
     - [Create backups](creating-backups.md)
     - [Restore using a backup](restore.md)
     - [Updating certificates](updating-self-signed-certificates.md)
-    - [Configuration promotion](configuration-promotion.md)
+    - [Configuration promotion](config-promotion.md)
