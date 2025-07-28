@@ -1,20 +1,20 @@
 ---
-title: Updating self-signed server ceritificates
+title: Updating ceritificates
 description: Learn how to create and manage self-signed server certificates.
 ---
 
 ## Overview
 
-Self-signed server certificates are used for LDAPS (LDAP over TLS), internal HTTPS (pod-to-pod communication), 
+Certificates are used for LDAPS (LDAP over TLS), internal HTTPS (pod-to-pod communication), 
 accessing Identity Data Management via the Control Panel UI, and for accessing the Classic Control Panel.
 
-This document provides steps on how to update self-signed certificates in self-managed Identity Data Management. 
+This document provides steps on how to update your certificates in self-managed Identity Data Management. 
 
 **Prerequisites**
 
 * You must have access to your deployed self-managed Identity Data Management.
-* You must have generated your new self-signed certificate. 
-* When you create your self-signed certificate, it must be properly formed and include all relevant hostnames using the Subject Alternative Name (SAN) extension. This is critical for compatibility with modern TLS clients and to avoid runtime errors due to hostname mismatches during certificate validation. For replica sets, it is recommended to include at least five pod FQDNs in your SAN. This approach supports better scalability.
+* You must have generated your certificate. 
+* When you create your certificate, it must be properly formed and include all relevant hostnames using the Subject Alternative Name (SAN) extension. This is critical for compatibility with modern TLS clients and to avoid runtime errors due to hostname mismatches during certificate validation. For replica sets, it is recommended to include at least five pod FQDNs in your SAN. This approach supports better scalability.
 
 
 To update certificates without breaking service, follow these steps:
@@ -24,8 +24,8 @@ To update certificates without breaking service, follow these steps:
    **Example commands for one pod:**
    
    ```
-   C:\Users\abcuser>kubectl.exe cp ${NAMESPACE}/${RELEASE_NAME}-iddm-fid/fid-0:/opt/radiantone/vds/vds_server/conf/rli.keystore ./backup/rli.keystore.backup
-   C:\Users\abcuser>kubectl.exe cp ${NAMESPACE}/${RELEASE_NAME}-iddm-fid/fid-0:/opt/radiantone/vds/vds_server/conf/rli.cer ./backup/rli.cer.backup
+   kubectl cp ${NAMESPACE}/${RELEASE_NAME}-iddm-fid/fid-0:/opt/radiantone/vds/vds_server/conf/rli.keystore ./backup/rli.keystore.backup
+   kubectl cp ${NAMESPACE}/${RELEASE_NAME}-iddm-fid/fid-0:/opt/radiantone/vds/vds_server/conf/rli.cer ./backup/rli.cer.backup
    
    ```
    
