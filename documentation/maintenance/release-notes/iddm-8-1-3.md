@@ -23,6 +23,8 @@ These release notes contain the following sections:
 
 ## Improvements
 
+- [API-2218] Added support for multiple SSO providers for logging into Identity Data Management. 
+
 - [API-2738]: Added a JSTACK command to the ADAP util endpoint to get the stack trace of the Task Scheduler to support troubleshooting. Example: https://baseUrl/adap/util?action=jstack
 
 
