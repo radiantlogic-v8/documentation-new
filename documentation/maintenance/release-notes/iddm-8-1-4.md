@@ -24,6 +24,7 @@ These release notes contain the following sections:
 ## Improvements
 
 - [API-326]: Added support for importing data sources that have been exported in v7.4.
+- [API-2218] Added support for multiple SSO providers for logging into Identity Data Management. 
 - [API-2124]: Enhanced mgraph custom data sources to fetch user MFA status details from Entra ID view. These attributes have been added to the mgraph default schema (.orx file).
 - [API-2269]: Added cn=queue to Classic Control Panel > Settings > Logs > Access Logs > Advanced to allow exclusion of logging related to queries for certain naming contexts.
 - [API-2279]: Added support for configuration promotion pipelines for automating configuration migration across environments. This serves as an alternative to manual resource-export/resource-import. For self-managed deployments, configure via Control Panel > Global Settings > Configuration Promotion (after manual Git setup). SaaS users can configure source/target environments and the pipeline via the Environment Operations Center.
