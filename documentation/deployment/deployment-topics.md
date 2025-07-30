@@ -61,15 +61,23 @@ cn=Directory Replicators,ou=globalgroups,cn=config
 In SaaS or self-managed deployments, if you are accessing the Identity Data Management cluster through a **Load Balancer**, you must define the following two data sources on **each cluster** participating in inter-cluster replication:
 
 - **`VDSLB`** : Required for inter-cluster replication to function.
-- **`ADAPLB`** : Required to monitor replication progress and handle topology updates.
+- **`ADAPLB`** : Required to monitor progress of the replication task.
   
 On each cluster, **configure the `VDSLB` data source** to point to that cluster’s **own LDAP/LDAPS Load Balancer endpoint**.
+
+Example configuration:
 
   ![Image of VDSLB data source configuration](Media/vdslb.jpg)
 
 Configure the `ADAPLB` data source on each cluster to point to the **Primary Cluster's REST Load Balancer endpoint**. This is the cluster which hosts the **central replication journal** and manages all **topology changes**.
 
-  ![Image of ADAPLB data source configuration](Media/adaplb.jpg)
+To configure this data source on Identity Data Management 8.1.4 and higher, select Other > Load balancer ADAP as the data source. 
+
+Example configuration:
+
+![Image of ADAPLB data source configuration](Media/adaplb.jpg)
+
+Ensure that you add the suffix `/adap` to the URL property of the data source.
 
 
 To configure multi-master replication for RadiantOne Directory stores, follow the steps below.
