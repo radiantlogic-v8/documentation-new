@@ -56,6 +56,24 @@ The default *replicationjournal* LDAP data source (and cn=replicationjournal nam
 The group entry is located in the RadiantOne namespace at:
 cn=Directory Replicators,ou=globalgroups,cn=config
 
+#### Additional configuration steps for Load Balancer
+
+In SaaS or self-managed deployments, if you are accessing the Identity Data Management cluster through a **Load Balancer**, you must define the following two data sources on **each cluster** participating in inter-cluster replication:
+
+- **`VDSLB`** : Required for inter-cluster replication to function.
+- **`ADAPLB`** : Required to monitor replication progress and handle topology updates.
+  
+On each cluster, **configure the `VDSLB` data source** to point to that cluster’s **own LDAP/LDAPS Load Balancer endpoint**.
+
+  ![Image of VDSLB data source configuration](Media/vdslb.jpg)
+
+- **Configure the `ADAPLB` data source** on each cluster to point to the **REST Load Balancer endpoint of the Primary Cluster**, where:
+  - The **central replication journal** is hosted.
+  - The system manages and registers all **topology changes**.
+
+  ![Image of ADAPLB data source configuration](Media/adaplb.jpg)
+
+
 To configure multi-master replication for RadiantOne Directory stores, follow the steps below.
 
 **Modify the replicationjournal Data Source**
