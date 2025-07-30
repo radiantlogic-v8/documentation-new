@@ -67,9 +67,7 @@ On each cluster, **configure the `VDSLB` data source** to point to that clusterâ
 
   ![Image of VDSLB data source configuration](Media/vdslb.jpg)
 
-- **Configure the `ADAPLB` data source** on each cluster to point to the **REST Load Balancer endpoint of the Primary Cluster**, where:
-  - The **central replication journal** is hosted.
-  - The system manages and registers all **topology changes**.
+Configure the `ADAPLB` data source on each cluster to point to the **Primary Cluster's REST Load Balancer endpoint**. This is the cluster which hosts the **central replication journal** and manages all **topology changes**.
 
   ![Image of ADAPLB data source configuration](Media/adaplb.jpg)
 
