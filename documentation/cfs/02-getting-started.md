@@ -201,6 +201,8 @@ The RadiantOne CFS and Radiant Trust Connector (RTC) install files are available
 
 >[!note] Contact support@radiantlogic.com for access information.
 
+Once you get access to the site, you will find a folder name "installers" that contains all the executable and their relative msi files. Ensure you run the .exe files directly from this folder, as each executable has dependencies on its corresponding .msi file and on ExeRunner.exe. Running them from another location may break these dependencies and result in installation failures. 
+
 ## FID LDAPs Certificate
 
 Installing the FID Certificate on the CFS Server allows CFS to communicate with the FID over an SSL connection. CFS requires an SSL connection.
