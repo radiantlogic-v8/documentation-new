@@ -67,7 +67,7 @@ On each cluster, **configure the `VDSLB` data source** to point to that clusterâ
 
 Example configuration:
 
-  ![Image of VDSLB data source configuration](Media/vdslb.jpg)
+  ![Image of VDSLB data source configuration](Media/vdslb.png)
 
 Configure the `ADAPLB` data source on each cluster to point to the **Primary Cluster's REST Load Balancer endpoint**. This is the cluster which hosts the **central replication journal** and manages all **topology changes**.
 
@@ -75,7 +75,7 @@ To configure this data source on Identity Data Management 8.1.4 and higher, sele
 
 Example configuration:
 
-![Image of ADAPLB data source configuration](Media/adaplb.jpg)
+![Image of ADAPLB data source configuration](Media/adaplb.png)
 
 Ensure that you add the suffix `/adap` to the URL property of the data source.
 
