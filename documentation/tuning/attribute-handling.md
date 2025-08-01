@@ -23,7 +23,7 @@ Uncheck the Hide Operational Attributes option if LDAP clients are allowed to vi
 ### Operational Attributes Excluded from Being Hidden
 If checked, the Hide Operational Attributes option hides all operational attributes from non-root users and users that are not a member of the cn=Directory Administrators group. To accommodate third-party integrations that rely on certain operational attributes, without requiring the service account to have Directory Administrator privileges, you can indicate a list of operational attributes that should not be hidden. Indicate them in the Exclude Operational Attributes From Being Hidden field. Separate attribute names with a single space. 
 
-<ins>Attributes Not Displayed in Logs</ins>
+### Attributes Not Displayed in Logs
 
 This property allows you to control which attribute values are not printed in clear in the RadiantOne logs. If you do not want certain attribute values printed in clear in the logs, you can indicate them here. Each attribute name should be separated with a single space. Any attribute indicated here has a value of ***** printed in the logs instead of the value in clear.
 
