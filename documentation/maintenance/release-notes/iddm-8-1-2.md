@@ -99,6 +99,7 @@ Also, changed the merged backend page to display the Radiantone Namespace DN val
 - [API-2403]: LDAP filter assist mode in Namespace Design > `[naming context]` > Advanced Settings > LDAP Filter is disabled due to a bug that currently has no workaround.
 - [API-2421]: The Classic Control Panel > Wizards > Identity Data Analysis wizard has been temporarily disabled due to a bug with running analysis that has no workaround.
 - Joining related objects from the same source schema as the primary object isn't working properly in Object Builder.
+- FIPS-compliance mode isn't supported. It is planned for Q1 2026.
 
 
 For known issues reported after the release, please see the Radiant Logic Knowledge Base: 
