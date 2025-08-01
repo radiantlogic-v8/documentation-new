@@ -116,6 +116,7 @@ These release notes contain the following sections:
 - Importing LDIFZ files is not supported yet.
 - When upgrading to v8.1.1, be aware that SSO into Control Panel using OIDC behavior has changed. The OIDC Provider client config for the Control Panel must reference the new URL format: https://rlqa-svc.dev01.radiantlogic.io/callback (update rlqa.svc.dev01 with the name of your RadiantOne tenant) and the new Control Panel uses `Authorization Code Flow with PKCE` (instead of Authorization Code Flow used by previous versions of the Control Panel). This means you no longer need a client secret. Make sure you update the configurations in both the OIDC Provider and the new Control Panel Configuration (in ADMIN > Control Panel Configuration). For configuration steps, see: [SSO into Control Panel](../../introduction/control-panel-overview.md#oidc-token)
 - Joining related objects from the same source schema as the primary object isn't working properly in Object Builder.
+- FIPS-compliance mode isn't supported. It is planned for Q1 2026.
 
 
 For known issues reported after the release, please see the Radiant Logic Knowledge Base: 
