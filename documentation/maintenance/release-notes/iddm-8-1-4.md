@@ -100,6 +100,8 @@ These release notes contain the following sections:
 
 ## Known Issues
 
+- FIPS-compliance mode isn't supported. It is planned for Q1 2026.
+
 For known issues reported after the release, please see the Radiant Logic Knowledge Base: 
 
 https://support.radiantlogic.com/hc/en-us/categories/4412501931540-Known-Issues
