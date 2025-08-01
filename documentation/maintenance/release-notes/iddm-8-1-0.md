@@ -53,6 +53,7 @@ These release notes contain the following sections:
 - Extracting a large schema, occasionally results in timeouts in Data Catalog > Data Sources.
 - Issues exporting RadiantOne Directory stores from Directory Browser.
 - Joining related objects from the same source schema as the primary object isn't working properly in Object Builder.
+- FIPS-compliance mode isn't supported. It is planned for Q1 2026.
 
 For known issues reported after the release, please see the Radiant Logic Knowledge Base: 
 
