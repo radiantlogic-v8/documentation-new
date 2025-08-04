@@ -5,7 +5,7 @@ description: RadiantOne IDDM v8.0.3 Release Notes
 
 # RadiantOne Identity Data Management v8.0.3 Release Notes
 
-July 15, 2024
+Sept 30, 2024
 
 This patch release is only needed to provide support for updating from v7.4 to v8.1.0. It contains no features or bug fixes otherwise.
 
@@ -53,3 +53,4 @@ https://support.radiantlogic.com/hc/en-us/categories/4412501931540-Known-Issues
 Feedback and problems can be reported from the Support Center/Knowledge Base accessible from: https://support.radiantlogic.com
 
 If you do not have a user ID and password to access the site, please contact: support@radiantlogic.com
+
