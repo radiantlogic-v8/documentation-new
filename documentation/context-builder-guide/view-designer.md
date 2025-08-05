@@ -459,7 +459,7 @@ The interface for setting filters differs between LDAP and database backends. Ea
 
 For example, in the following illustration, the query is for Service Managers in the United States. The inferred operation for the condition in this example is “AND”. This means that the result displays information where Title = Service Manager AND Country = United States. You can see an example of the Where Clause that is generated below the list of columns by clicking the Preview button.
 
-    ![Add Filter Dialog Box](Media/Image4.31.jpg)
+   ![Add Filter Dialog Box](Media/Image4.31.jpg)
 
 7.	To enter an additional filter, click Add Rule. You can choose to either use an AND or OR condition. The example below uses an OR condition. For example, if “Operations Manager” were entered in the Condition 2 column for the Contact Title attribute, the results would include information where Contact Title = Service Manager OR Contact Title = Operations Manager AND Country = United States Therefore, all service and operation managers in the United States are included in the virtual view at runtime. 
 
@@ -931,4 +931,5 @@ Virtual view files (.dvx files) should be deleted using the Context Builder > Vi
 3.	Click Yes to confirm the deletion.
  
  ![Deleting Virtual View Files](Media/Image4.64.jpg)
+
 
