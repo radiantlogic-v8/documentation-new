@@ -513,8 +513,9 @@ To reset a user’s password:
 
 To move a user entry from one container to another within the same root naming context representing the same backend data source:
 1. Select the user entry in the diretory tree.
-2. Click the Move Entry (![Move Entry](Media/move-entry.jpg)) option.
-3. Either enter the DN or browse to the location where you want the entry moved to and click **SAVE**.
+1. Click the Move option.
+   ![Move Entry](Media/move-entry.jpg) 
+1. Either enter the DN or browse to the location where you want the entry moved to and click **SAVE**.
 
 >[!warning] 
 >Entries can only be moved to/from containers below the same naming context representing the same backend data source. In the example shown below, the entry is moved from ou=Management to the ou=Inventory container.
@@ -842,4 +843,5 @@ If you enable the persistent search control, an LDAP client can receive notifica
 
 >[!note] 
 >The changelog number associated with the changed entries (logged into cn=changelog) is also returned in the persistent search response.
+
 
