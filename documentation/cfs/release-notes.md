@@ -212,5 +212,14 @@ June 16, 2025
 
 
 
+### v3.17.4
+
+August 05, 2025
+
+**Bug fixes** 
+
+- [VSTS 47556] Fixed a bug that caused failures when custom claims were used in OIDC and required dependency libraries were missing.
+- [VSTS 47557] Fixed a bug that caused log failures when advanced attributes values were null.
+- [VSTS 47559] Fixed a regression bug related to failover when encountering an invalid RSA endpoint, and masked logs that previously exposed OTP values.
 
 
