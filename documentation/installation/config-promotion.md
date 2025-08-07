@@ -14,24 +14,30 @@ Radiant Logic's configuration promotion feature enables seamless transfer of con
 
 ### Supported Configurations:
 
+## Supported configurations
+
+This feature promotes all supported changes to resource configurations (creations, updates or deletions). Selective promotion of configurations is currently not supported. Below is the list of supported configurations:
+
 - Data Sources  
 - Database Templates  
 - Custom Templates  
 - Schemas  
 - Naming Contexts  
 - Caches  
-- Global Sync Pipelines  
-- Interception scripts  
+- Synchronization Pipelines 
+- Interception scripts
 
-### Unsupported Configurations:
+## Unsupported configurations
 
-- HDAP replication  
+Promotion of the following configuration changes is not supported:
+
+- Inter-cluster Replication
 - Special attributes  
 - ACIs  
 - Client certificates  
 - Password policies  
-- FID server schema  
-- Datasource connection or credential information  
+- RadiantOne LDAP schema  
+- Data source connection settings (including credentials)
 
 **This feature is only supported in:**  
 - Helm chart version 1.1.4 and higher.  
