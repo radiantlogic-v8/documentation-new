@@ -99,6 +99,8 @@ After providing the missing values, the import will be automatically successful.
 
 ## Things to consider
 
+- Source and target environments must be running the same version of the Identity Data Management software. Before exporting or importing configurations, ensure all environments are patched to the same version. 
+
 - Any caches impacted by import will be automatically disabled. In such cases, after an import, you will see a warning notice that asks you to reinitialize the cache.
 
   As you may have to reinitialize and reconfigure persistent cache, we recommend that you only perform configuration promotions during maintenance windows.
@@ -111,7 +113,7 @@ After providing the missing values, the import will be automatically successful.
 
 - The state of the source environment is mirrored on the target. If the source environment contains broken or non-functional configurations, these will be transferred to the target in the same degraded state.
 
-- Global Sync pipelines will be promoted based on their current state on the source system. This means that if the pipeline is running on the source, it will continue running on the target immediately after import; if it's stopped on the source, it will also be stopped on the target post-import.
+- Synchronization pipelines will be promoted based on their current state on the source system. This means that if the pipeline is running on the source, it will continue running on the target immediately after import; if it's stopped on the source, it will also be stopped on the target post-import.
 
 - For the initial deployment of a production environment, we recommend using a backup from your dev/QA. You can then use this exported backup file during the installation of the production environment.
 
