@@ -19,20 +19,20 @@ This feature promotes all supported changes to resource configurations (creation
 - Schemas  
 - Naming Contexts  
 - Caches  
-- Global Sync Pipelines  
+- Synchronization Pipelines 
 - Interception scripts
 
 ## Unsupported configurations
 
 Promotion of the following configuration changes is not supported:
 
-- HDAP replication  
+- Inter-cluster Replication
 - Special attributes  
 - ACIs  
 - Client certificates  
 - Password policies  
-- FID server schema  
-- Datasource connection or credential information
+- RadiantOne LDAP schema  
+- Data source connection settings (including credentials)
 
 
 ## Prerequisites
