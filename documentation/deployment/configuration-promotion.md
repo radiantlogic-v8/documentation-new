@@ -52,7 +52,7 @@ Before you begin the migration process, ensure the following:
 
 To initiate the migration process, implement the desired configuration changes and export these configurations from the source environment by following these instructions:
 
-#### 1. Login to the source Identity Data Management instance
+#### Login to the source Identity Data Management instance
 
 a. Access the Identity Data Management source environment from which you want to export configuration changes.
 
@@ -64,7 +64,7 @@ i. Create a new data source or modify an existing data source in your source Ide
 
 ii. If you modified a schema, mount your backend and extract the new schema. Save and review these changes before proceeding with the export.
 
-#### 2. Export configurations
+#### Export configurations
 
 a. In your source Identity Data Management environment, click on the Configuration Promotion icon in the left navigation bar.
 
@@ -78,17 +78,17 @@ c. Once the export is successful, a summary will appear, and you can also downlo
 
 Next, follow the steps listed below to import the exported configurations into the destination Identity Data Management instance.
 
-#### 1. Login to the target Identity Data Management
+#### Login to the target Identity Data Management
 
 a. Access the Identity Data Management environment where you want to import the configurations.
 
-#### 2. Initiate import
+#### Initiate import
 
 a. Click on the Configuration Promotion icon in the left navigation bar.
 
 b. From the Import Configurations tab, click on the Import Configurations button and confirm that you would like to proceed.
 
-#### 3. Manage any warnings that may appear
+#### Manage any warnings that may appear
 
 a. For specific resources, like connection strings, the import process might require additional information. In such cases, a warning will be displayed, outlining the necessary steps to proceed. Follow the provided instructions to resolve these warnings.
 
