@@ -9,7 +9,7 @@ This document provides a high-level overview of the most common deployment archi
 
 For details on creating environments and installing RadiantOne, see the [Environment Operations Center](/../../eoc/latest/environments/environment-overview/environments/).
 
-For details on integrating with on-premise data sources through a Secure Data Connector, see the [Secure Data Connector Deployment Guide](../../eoc/latest/secure-data-connector/configure-sdc-service/).
+For details on integrating with on-premise data sources through a Secure Data Connector, see the [Secure Data Connector Deployment Guide](/../../eoc/latest/secure-data-connector/configure-sdc-service/).
 
 ## Basic Production Architecture
 
@@ -172,6 +172,7 @@ If a topology has more than one pipeline, you can start synchronization for each
 
 ![Starting Pipelines in Configuration Screen](Media/start-from-apply.jpg)
  
+
 
 
 
