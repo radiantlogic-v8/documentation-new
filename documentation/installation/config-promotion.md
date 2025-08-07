@@ -1,5 +1,5 @@
 ---
-title: Congiguration Promotion
+title: Configuration Promotion
 description: Learn how to use promote configuration changes in self-managed Identity Data Management environments.
 ---
 
