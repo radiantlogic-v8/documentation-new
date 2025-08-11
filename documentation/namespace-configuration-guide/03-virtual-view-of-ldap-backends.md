@@ -579,11 +579,11 @@ On the other hand, exclusion filters allow you to specify which queries to not s
 
 Subtree queries that contain a filter of department=marketing are not sent to LDAP backend 2.
 
-![An image showing ](Media/Image3.28.jpg)
+![An image showing ](Media/Image3.28.png)
  
 Figure 28: Sample Exclusion Filter set for LDAP Backend 1
 
-![An image showing ](Media/Image3.29.jpg)
+![An image showing ](Media/Image3.29.png)
  
 Figure 29: Sample Exclusion Filter Set for LDAP Backend 2
 
