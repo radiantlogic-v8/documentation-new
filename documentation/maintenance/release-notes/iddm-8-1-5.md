@@ -19,6 +19,7 @@ These release notes contain the following sections:
 - [API-3239]: Fixed an issue where the content node primary key was not properly computed.
 - [API-3241]: Fixed an issue on rebuild index for caches on child nodes.
 - [API-3257]: Fixed an issue where an unnecessary warning would appear in the new entry screen.
+- [API-3270]: Fixed an issue where the cache initialization status check failed for inactive caches.
 
 ## Known Issues
 For known issues reported after the release, please see the Radiant Logic Knowledge Base: 
