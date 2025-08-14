@@ -78,7 +78,7 @@ Follow these steps if you would like to use the existing password with the updat
   
   ii. Navigate to **Settings → Security → SSL**.
   
-     ![Server Control Panel Settings](./images/cert.png)
+  ![Server Control Panel Settings](./images/cert.png)
   
   iii. Enter the current password (default is `radiantlogic`) in **Server Certificate Password**.
   
