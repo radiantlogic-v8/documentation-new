@@ -197,20 +197,20 @@ Follow these steps if you would like to use the password with the updated certif
 
 ### Step 3 - Verify the certificate update
 
-  ### i. Check rollout status
+  #### i. Check rollout status
   
   ```
   kubectl rollout status statefulset/fid -n <namespace>
   ```
   
-  ### ii. Test SSL connection
+  #### ii. Test SSL connection
   
   ```
   kubectl port-forward -n <namespace> fid-0 2636:2636 &
   openssl s_client -connect localhost:2636 -showcerts | grep -A20 "Certificate chain"
   ```
   
-  ### iii. Check SAN entries
+  #### iii. Check SAN entries
   
   ```
   openssl s_client -connect localhost:2636 2>/dev/null | \
