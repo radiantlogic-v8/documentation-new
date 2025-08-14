@@ -41,7 +41,7 @@ kubectl create secret generic fid-keystore-secret \
 ```
 
 
-### 1.2 Update `values.yaml` to mount the secret into the pods
+### 1.2 Update values.yaml to mount the secret into the pods
 
 ```
 extraVolumes:
