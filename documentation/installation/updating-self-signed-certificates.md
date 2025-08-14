@@ -11,7 +11,7 @@ accessing Identity Data Management via the Control Panel UI, and for accessing t
 This document provides steps on how to update your certificates in self-managed Identity Data Management. For each keystore type, steps are provided for two scenarios:
 
 - **Unchanged password** – You use the same password as the old one (default value is `radiantlogic`) in the new keystore. This avoids modifying the `config.properties` password entry, so only the keystore file needs to be replaced.  
-- **Changed password** – You use a different password for the new keystore. This requires updating `config.properties` (manually via CLI or automatically through the Control Panel) so FID can read the keystore at startup.
+- **Changed password** – You use a different password for the new keystore. This requires updating `config.properties` (manually via CLI or automatically through the Control Panel) so that Identity Data Management can read the keystore at startup.
 
 **Prerequisites**
 
@@ -76,10 +76,9 @@ The activation process depends on certificate type (JKS or PKCS12), password sce
 
 1. Access your Control Panel, switch to Classic control panel and open the Server Control Panel UI.
 2. Navigate to **Settings → Security → SSL**.
-
    ![Server Control Panel Settings](./images/cert.png)
 
-3. Enter the current password (default is `radiantlogic`) in **Keystore Password**.
+3. Enter the current password (default is `radiantlogic`) in **Server Certificate Password**.
 4. Click **Save**. This updates `config.properties` automatically.
 5. Restart pods:
 
@@ -105,7 +104,7 @@ kubectl rollout restart statefulset/fid -n <namespace>
 
 1. Access your Control Panel, switch to classic control panel and open the Server Control Panel UI.
 2. Go to **Settings → Security → SSL**. 
-4. Set **Keystore Password** to the new value.  
+4. Set **Server Certificate Password** to the new value.  
 5. Click **Save** and restart by executing this command:
 
 ```
@@ -132,10 +131,10 @@ kubectl rollout restart statefulset/fid -n <namespace>
 1. Access your Control Panel, switch to classic control panel and open the Server Control Panel UI.
 2. Go to **Settings → Security → SSL**.
 3. Set the following values:
-   - **Keystore type:** PKCS12  
-   - **Keystore location:** `$RLI_HOME/vds_server/conf/custom.p12`  
-   - **Keystore password:** current value  
-4. Save and restart:
+   - **Server Certificate keystore:** `$RLI_HOME/vds_server/conf/custom.p12`  
+   - **Server Certificate type:** PKCS12  
+   - **Server Certificate password:** current value  
+5. Save and restart:
 ```bash
 kubectl rollout restart statefulset/fid -n <namespace>
 ```
@@ -158,9 +157,9 @@ kubectl rollout restart statefulset/fid -n <namespace>
 1. Access your Control Panel, switch to classic control panel and open the Server Control Panel UI.
 2. Go to **Settings → Security → SSL**.
 3. Set the following values:
-   - **Keystore type:** PKCS12  
-   - **Keystore location:** `$RLI_HOME/vds_server/conf/custom.p12`  
-   - **Keystore password:** Enter a new password of your choice. 
+   - **Server Certificate keystore:** `$RLI_HOME/vds_server/conf/custom.p12`  
+   - **Server Certificate type:** PKCS12  
+   - **Server Certificate password:** Enter a new password of your choice. 
 3. Save and restart the pods:
 ```bash
 kubectl rollout restart statefulset/fid -n <namespace>
