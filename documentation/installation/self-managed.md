@@ -127,7 +127,7 @@ Ensure that you specify your target version when running installation and update
    Ensure that you provide the appropriate path for your values.yaml file before running this command:
 
    ```bash
-   helm -n self-managed install --install fid oci://registry-1.docker.io/radiantone/iddm-helm --version 1.1.4 --values </path/to/your/values.yaml> --debug
+   helm -n self-managed install fid oci://registry-1.docker.io/radiantone/iddm-helm --version 1.1.4 --values </path/to/your/values.yaml> --debug
    ```
 
 6. **Verify deployment**
@@ -346,3 +346,4 @@ The steps listed here are meant to help you identify and troubleshoot issues rel
      ```
 
      You should see that the previously deleted namespace is not listed. 
+
