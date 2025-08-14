@@ -16,26 +16,26 @@ This document provides steps on how to update your certificates in self-managed 
 **Prerequisites**
 
 * You must have access to your deployed self-managed Identity Data Management.
-* You must have generated your certificate. 
+* You must have generated your certificate (JKS or PCKS12 format). 
 * When you create your certificate, it must be properly formed and include all relevant hostnames using the Subject Alternative Name (SAN) extension. This is critical for compatibility with modern TLS clients and to avoid runtime errors due to hostname mismatches during certificate validation. For replica sets, it is recommended to include at least five pod FQDNs in your SAN. This approach supports better scalability.
 
 
-To update certificates without breaking service, follow these steps:
+To update your certificate, follow these steps:
 
-## Step 1 – Mount the new keystore into the pods
+## Step 1 – Mount the new certificate keystore into the pods
 
 Before making any changes, mount your new keystore into each Identity Data Management pod:
 
 ### 1.1 Create a Kubernetes secret (either JKS or PKCS#12) 
 
-**JKS keystore**
-```bash
+**JKS**
+```
 kubectl create secret generic fid-keystore-secret \
   --from-file=rli.keystore -n <namespace>
 ```
 
-**PKCS#12 keystore**
-```bash
+**PKCS#12**
+```
 kubectl create secret generic fid-keystore-secret \
   --from-file=my-cert.p12 -n <namespace>
 ```
@@ -43,7 +43,7 @@ kubectl create secret generic fid-keystore-secret \
 
 ### 1.2 Update `values.yaml` to mount the secret into the pods
 
-```yaml
+```
 extraVolumes:
   - name: fid-keystore
     secret:
@@ -58,33 +58,38 @@ extraVolumeMounts:
 
 ### 1.3 Update the helm deployment 
 
-```bash
+```
 helm upgrade <release-name> oci://... -n <namespace> --values values.yaml
 ```
 
-After this step, the keystore is available at `/etc/rli/certs/<filename>`.
+After this step, the certificate is available at `/etc/rli/certs/<filename>`.
 
+## Step 2 – Activate the new certificate
 
+The activation process depends on certificate type (JKS or PKCS12), password scenario (unchanged or changed), and update method (Control Panel or CLI). Follow the steps below that match your specific scenario.
 
-## Step 2 – Activate the New Keystore
-
-The activation process depends on keystore type (JKS or PKCS#12), password scenario (unchanged or changed), and update method (Control Panel or CLI). Follow the steps appropirate for your use case. 
-
-### 2.1 JKS Keystore
+### 2.1 JKS activation
 
 #### Activate without changing the password
 
-**Using Control Panel UI**
-1. Log in to **Control Panel** → **Settings → Security → SSL**  
-2. Enter the current password (`radiantlogic`) in **Keystore Password**  
-3. Click **Save** (updates `config.properties` automatically)  
-4. Restart pods:
-```bash
+**Using Server Control Panel UI**
+
+1. Access your Control Panel, switch to Classic control panel and open the Server Control Panel UI.
+2. Navigate to **Settings → Security → SSL**.
+
+   ![Server Control Panel Settings](./images/cert.png)
+
+3. Enter the current password (default is `radiantlogic`) in **Keystore Password**.
+4. Click **Save**. This updates `config.properties` automatically.
+5. Restart pods:
+
+```
 kubectl rollout restart statefulset/fid -n <namespace>
 ```
 
 **Using CLI**
-```bash
+
+```
 POD=$(kubectl get pod -n <namespace> -l "app.kubernetes.io/name=fid" -o jsonpath="{.items[0].metadata.name}")
 kubectl exec -it $POD -n <namespace> -- bash
 cd /opt/radiantone/vds/vds_server/conf/
@@ -96,17 +101,20 @@ kubectl rollout restart statefulset/fid -n <namespace>
 
 #### Activate with a new password 
 
-**Using Control Panel UI**
-1. Go to **Settings → Security → SSL**  
-2. Upload the new keystore if needed  
-3. Set **Keystore Password** to the new value  
-4. Click **Save** and restart:
-```bash
+**Using Server Control Panel UI**
+
+1. Access your Control Panel, switch to classic control panel and open the Server Control Panel UI.
+2. Go to **Settings → Security → SSL**. 
+4. Set **Keystore Password** to the new value.  
+5. Click **Save** and restart by executing this command:
+
+```
 kubectl rollout restart statefulset/fid -n <namespace>
 ```
 
 **Using CLI**
-```bash
+
+```
 # Replace keystore as above
 kubectl exec -it $POD -n <namespace> -- bash
 ENCRYPTED=$(/opt/radiantone/vds/bin/vdsconfig.sh encrypt-value -value 'NewPassword')
@@ -116,16 +124,18 @@ exit
 kubectl rollout restart statefulset/fid -n <namespace>
 ```
 
-### 2.2 PKCS#12 Keystore
+### 2.2 PKCS12 activation
 
 #### Activate without changing the password
 
-**Using Control Panel UI**
-1. Set:
+**Using Server Control Panel UI**
+1. Access your Control Panel, switch to classic control panel and open the Server Control Panel UI.
+2. Go to **Settings → Security → SSL**.
+3. Set the following values:
    - **Keystore type:** PKCS12  
    - **Keystore location:** `$RLI_HOME/vds_server/conf/custom.p12`  
    - **Keystore password:** current value  
-2. Save and restart:
+4. Save and restart:
 ```bash
 kubectl rollout restart statefulset/fid -n <namespace>
 ```
@@ -144,10 +154,14 @@ kubectl rollout restart statefulset/fid -n <namespace>
 
 #### Activate with a new password 
 
-**Using Control Panel UI**
-1. Configure `.p12` as in Scenario A  
-2. Enter new password and save  
-3. Restart:
+**Using the server Control Panel UI**
+1. Access your Control Panel, switch to classic control panel and open the Server Control Panel UI.
+2. Go to **Settings → Security → SSL**.
+3. Set the following values:
+   - **Keystore type:** PKCS12  
+   - **Keystore location:** `$RLI_HOME/vds_server/conf/custom.p12`  
+   - **Keystore password:** Enter a new password of your choice. 
+3. Save and restart the pods:
 ```bash
 kubectl rollout restart statefulset/fid -n <namespace>
 ```
