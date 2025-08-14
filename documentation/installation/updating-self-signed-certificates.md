@@ -29,12 +29,14 @@ Before making any changes, mount your new keystore into each Identity Data Manag
   #### i. Create a Kubernetes secret (either JKS or PKCS#12) 
   
   **JKS**
+
   ```
   kubectl create secret generic fid-keystore-secret \
     --from-file=rli.keystore -n <namespace>
   ```
   
-  **PKCS12**
+  **PKCS12 (.p12 or .pfx format)**
+
   ```
   kubectl create secret generic fid-keystore-secret \
     --from-file=my-cert.p12 -n <namespace>
@@ -59,10 +61,10 @@ Before making any changes, mount your new keystore into each Identity Data Manag
   #### iii. Update the helm deployment 
   
   ```
-  helm upgrade <release-name> oci://... -n <namespace> --values values.yaml
+     helm -n self-managed upgrade --install fid oci://registry-1.docker.io/radiantone/iddm-helm --version 1.1.4 --values </path/to/your/values.yaml> --debug
   ```
   
-  After this step, the certificate is available at `/etc/rli/certs/<filename>`.
+  After this step, the certificate will be available at `/etc/rli/certs/<filename>`. To activate this certificate in Identity Data Management, follow the steps outlined below. 
 
 ### Step 2 – Activate the new certificate
 
@@ -93,14 +95,15 @@ Follow these steps if you would like to use the existing password with the updat
 **b. Using CLI**
 
   ```
-  POD=$(kubectl get pod -n <namespace> -l "app.kubernetes.io/name=fid" -o jsonpath="{.items[0].metadata.name}")
-  kubectl exec -it $POD -n <namespace> -- bash
-  cd /opt/radiantone/vds/vds_server/conf/
+  POD=$(kubectl get pod -n <namespace> -l "app.kubernetes.io/name=fid" -o jsonpath="{.items[0].metadata.name}") 
+  kubectl exec -it $POD -n <namespace> -- bash  
+  # inside the pod 
+  cd /opt/radiantone/vds/vds_server/conf/ 
   cp rli.keystore rli.keystore.bak
-  cp /etc/rli/certs/rli.keystore .
+  cp /etc/rli/certs/rli.keystore . 
   exit
-  kubectl rollout restart statefulset/fid -n <namespace>
   ```
+  Next, restart the pods: `kubectl rollout restart statefulset/fid -n <namespace>`
 
 #### Option 2: Activate JKS certificate with a new password 
 
@@ -154,16 +157,28 @@ Follow these steps if you would like to use the password with the updated certif
 
 **b. Using CLI**
 
+  i. Copy your .p12 file into the configuration directory:
+  
   ```
-  # inside the pod
-  cd /opt/radiantone/vds/vds_server/conf/
-  cp /etc/rli/certs/my-cert.p12 ./custom.p12
-  cd /opt/radiantone/vds/vds_server/conf/jetty/
-  sed -i 's|jetty.ssl.keystore.location=.*|jetty.ssl.keystore.location=$RLI_HOME/vds_server/conf/custom.p12|' config.properties
-  sed -i 's|jetty.ssl.keystore.type=.*|jetty.ssl.keystore.type=PKCS12|' config.properties
-  exit
+  # inside the pod 
+  cd /opt/radiantone/vds/vds_server/conf/ 
+  cp /etc/rli/certs/my-cert.p12 ./custom.p12 
+  ```
+  
+  ii. Update config.properties to point to the new keystore and type:
+  
+  ```
+  cd /opt/radiantone/vds/vds_server/conf/jetty/ 
+  sed -i 's|jetty.ssl.keystore.location=.*|jetty.ssl.keystore.location=$RLI_HOME/vds_server/conf/custom.p12|' config.properties 
+  sed -i 's|jetty.ssl.keystore.type=.*|jetty.ssl.keystore.type=PKCS12|' config.properties # password line remains unchanged 
+  ```
+  
+  iii. Restart the StatefulSet:
+  
+  ```
   kubectl rollout restart statefulset/fid -n <namespace>
   ```
+
 
 #### Option 2: Activate PKCS12 certificate with a new password 
 
@@ -187,34 +202,31 @@ Follow these steps if you would like to use the password with the updated certif
 
 **Using CLI**
 
+  i. Copy your .p12 file into the configuration directory:
+  
+  ```
+  # inside the pod
+  cd /opt/radiantone/vds/vds_server/conf/
+  cp /etc/rli/certs/my-cert.p12 ./custom.p12
+  ```
+  
+  ii. Generate the encrypted password:
+  
   ```
   ENCRYPTED=$(/opt/radiantone/vds/bin/vdsconfig.sh encrypt-value -value 'NewPassword')
+  ```
+  
+  iii. Update config.properties to point to the new keystore, type, and password:
+  
+  ```
+  cd /opt/radiantone/vds/vds_server/conf/jetty/
   sed -i 's|jetty.ssl.keystore.location=.*|jetty.ssl.keystore.location=$RLI_HOME/vds_server/conf/custom.p12|' config.properties
   sed -i 's|jetty.ssl.keystore.type=.*|jetty.ssl.keystore.type=PKCS12|' config.properties
   sed -i "s|^jetty.ssl.keystore.password=.*|jetty.ssl.keystore.password=$ENCRYPTED|" config.properties
-  exit
+  ```
+  
+  iv. Restart the StatefulSet:
+  
+  ```
   kubectl rollout restart statefulset/fid -n <namespace>
-  ```
-
-
-### Step 3 - Verify the certificate update
-
-  #### i. Check rollout status
-  
-  ```
-  kubectl rollout status statefulset/fid -n <namespace>
-  ```
-  
-  #### ii. Test SSL connection
-  
-  ```
-  kubectl port-forward -n <namespace> fid-0 2636:2636 &
-  openssl s_client -connect localhost:2636 -showcerts | grep -A20 "Certificate chain"
-  ```
-  
-  #### iii. Check SAN entries
-  
-  ```
-  openssl s_client -connect localhost:2636 2>/dev/null | \
-  openssl x509 -noout -text | grep -A1 "Subject Alternative Name"
   ```
