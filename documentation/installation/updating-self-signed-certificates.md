@@ -141,9 +141,10 @@ Follow these steps if you would like to use the password with the updated certif
   ii. Go to **Settings → Security → SSL**.
   
   iii. Set the following values:
-     - **Server Certificate keystore:** `$RLI_HOME/vds_server/conf/custom.p12`  
-     - **Server Certificate type:** PKCS12  
-     - **Server Certificate password:** Keep the existing value for this field.  
+  
+   * **Server Certificate keystore:** `$RLI_HOME/vds_server/conf/custom.p12`  
+   * **Server Certificate type:** PKCS12  
+   * **Server Certificate password:** Keep the existing value for this field.  
   
   iv. Save and restart:
   
@@ -173,9 +174,10 @@ Follow these steps if you would like to use the password with the updated certif
   ii. Go to **Settings → Security → SSL**.
   
   iii. Set the following values:
-     - **Server Certificate keystore:** `$RLI_HOME/vds_server/conf/custom.p12`  
-     - **Server Certificate type:** PKCS12  
-     - **Server Certificate password:** Enter a new password of your choice. 
+  
+   * **Server Certificate keystore:** `$RLI_HOME/vds_server/conf/custom.p12`
+   * **Server Certificate type:** PKCS12
+   * **Server Certificate password:** Enter a new password of your choice. 
   
   iv. Save and restart the pods:
   
