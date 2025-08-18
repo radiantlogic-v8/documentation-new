@@ -5,7 +5,7 @@ description: RadiantOne IDDM v8.1.5 Release Notes
 
 # RadiantOne Identity Data Management v8.1.5 Release Notes
 
-August 8, 2025
+August 18, 2025
 
 These release notes contain important information about improvements and bug fixes for RadiantOne Identity Data Management v8.1.4
 These release notes contain the following sections:
@@ -17,7 +17,7 @@ These release notes contain the following sections:
 ## Bug Fixes
 - [API-3234]: Fixed an issue that blocked users from deleting content, container, or link nodes.
 - [API-3239]: Fixed an issue where the content node primary key was not properly computed.
-- [API-3241]: Fixed an issue on rebuild index for caches on child nodes.
+- [API-3241]: Fixed an issue related to rebuild index for caches on child nodes.
 - [API-3257]: Fixed an issue where an unnecessary warning would appear in the new entry screen.
 - [API-3270]: Fixed an issue where the cache initialization status check failed for inactive caches.
 - [IV4-222]:  Fixed an issue that caused the migration tool to crash when alert names were too long.
