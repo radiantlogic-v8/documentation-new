@@ -10,9 +10,9 @@ August 18, 2025
 These release notes contain important information about improvements and bug fixes for RadiantOne Identity Data Management v8.1.4
 These release notes contain the following sections:
 
-[Bug Fixes](#bug-fixes)
-[Known Issues](#known-issues)
-[How to Report Problems and Provide Feedback](#how-to-report-problems-and-provide-feedback)
+- [Bug Fixes](#bug-fixes)
+- [Known Issues](#known-issues)
+- [How to Report Problems and Provide Feedback](#how-to-report-problems-and-provide-feedback)
  
 ## Bug Fixes
 - [API-3234]: Fixed an issue that blocked users from deleting content, container, or link nodes.
