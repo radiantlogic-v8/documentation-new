@@ -99,6 +99,21 @@ Example 3 - This example tries to get an SSL connection to the LDAP server (on p
 
 `host: [domain:na.radiantlogic.com] port: 636`
 
+### Kafka Data Sources
+
+The following producer properties apply to Kafka data sources. 
+
+
+| PROPERTY                | DESCRIPTION                                                                                                                                                                          |
+|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------                                                                                 |
+| Bootstrap Servers       | Required. Comma-separated list of Kafka broker addresses (host:port) to connect to the cluster.                                                                                 |
+| Is Anonymous Access     | Checkbox that allows you to enable or disable anonymous producer access.                                                                                                                                    |
+| Security Protocol       |  Type of security protocol to be used (e.g., PLAINTEXT, SASL_PLAINTEXT, SSL).                                                                                                          |
+| SASL Mechanism          | Authentication mechanism for SASL (e.g., PLAIN).                                                                                                         |
+| SSL Truststore File     | Upload/select the truststore file (.jks or .p12 format) for TLS/SSL connections.                                                                                                 |
+| SSL Truststore Password | Password to access the SSL truststore file.                                                                                                                                     |
+| SASL JAAS Config        | SASL JAAS configuration string. Kafka uses the Java Authentication and Authorization Service (JAAS) for SASL configuration. You must provide JAAS configuration for all SASL authentication mechanisms. |
+
 ### Database Data Sources
 
 The following properties apply to LDAP data sources.
@@ -238,3 +253,4 @@ Templates that have been exported from a RadiantOne v8.1.X deployment can be imp
 Each data source can be associated with one or more schema files. The first schema file extracted for a data source is considered the default one. For LDAP data sources, the default schema is automatically extracted when the data source is defined. For JDBC-accessible and SCIMv2 accessible data sources, you must manually extract the schema so you can selectively choose the objects that are required for creating identity views. For custom data sources, you must manually create the schema in RadiantOne.
 
 For details, see [Managing Schemas](./schemas.md).
+
