@@ -92,7 +92,14 @@ When done with the configuration and test, click ‘CREATE’.
 
 After the Data Source has been created, you will be taken back to the main Data Source page and should see the newly created Data Source, showing ‘ACTIVE’. 
 
-![image showing data source creation](images/dscreate.png)
+![image showing data source creation](images/dscreated.png)
+
+### 2. Extract Schema for Data Source 
+
+The schema for the ServiceNow Data Source needs to be extracted from ServiceNow to be used in RadiantOne. The schema consists of various tables and attributes that represent the Identity objects in ServiceNow, such as accounts and users. 
+
+ 
+
 
 
 
