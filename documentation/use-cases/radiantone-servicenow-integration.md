@@ -70,13 +70,36 @@ The following sections with images illustrate how to create a data source in Ide
 
 a. After logging into Identity Data Management Control Panel, select ‘Data Catalog’ > ‘Data Sources’ from the navigation pane on the left hand side and click ‘NEW SOURCE’.
 
-![image of service now roles UI](images/new-ds.png)
+![image showing data source selection](images/new-ds.png)
 
 b. Click the ’SCIM v2’ tile from the list of displayed data sources and click the 'Select' button. 
 
-![image of service now roles UI](images/scim.png)
+![image showing SCIMv2 data source](images/scim.png)
 
-c. 
+c. Enter a unique name for the Data Source, along with a description if desired. The description field is optional.  The ‘ACTIVE’ toggle should be selected by default, if not, enable it. The ‘SECURE DATA CONNECTOR’ field is not part of this set up, so leave that set to ‘None’.
+Note that certain characters are not allowed in the Data Source Name, including dashes (-).  The system will provide an error message should there be any issue with the name provided.  
+
+![image showing basic fields for data source](images/new-dsfields.png)
+
+d. Scroll down to the ‘Connection Info’ section. Enter the required information as shown for the target IdentityIQ environment. The values shown in the screenshot are for the test environment used for building this configuration guide.  The values you enter will be specific to your ServiceNow environment. 
+
+![image showing connection fields for data source](images/connectioninfo.png)
+
+e. Click the ‘TEST CONNECTION’ button to validate the credentials and connectivity.  A pop up notification will be displayed with the results of the test.  If the test is not successful additional information will be displayed to assist with troubleshooting.   
+When done with the configuration and test, click ‘CREATE’. 
+
+![image showing data source creation](images/dscreate.png)
+
+After the Data Source has been created, you will be taken back to the main Data Source page and should see the newly created Data Source, showing ‘ACTIVE’. 
+
+![image showing data source creation](images/dscreate.png)
+
+
+
+
+
+
+
 
 
 
