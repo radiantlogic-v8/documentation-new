@@ -52,6 +52,32 @@ Create an account in ServiceNow to be used by the RadiantOne SCIM connector.
 In the example included in this configuration guide, we assigned the ‘Admin’ role to the service account to be used by RadiantOne SCIM connector to ServiceNow. 
 
 * The ‘Admin’ role provides the necessary level of access to connect to associated SCIM and Web Services endpoints and ingest the ServiceNow data into a defined RadiantOne Namespace.
-* The ‘Admin’ role grants full CRUD(Create, Read, Update, Delete) access to objects via the SCIM API and Web Services for the respective Endpoints
+* The ‘Admin’ role grants full CRUD(Create, Read, Update, Delete) access to objects via the SCIM API and Web Services for the respective Endpoints.
     
-> Note that additional scoping and rights management within ServiceNow to provide more granular control in ServiceNow is beyond the scope of this document. Read the [linked document](https://www.servicenow.com/docs/search?q=roles) for further assistance with understanding the administrative model used in ServiceNow documentation
+> Note that additional scoping and rights management within ServiceNow to provide more granular control in ServiceNow is beyond the scope of this document. Read the [linked document](https://www.servicenow.com/docs/search?q=roles) for further assistance with understanding the administrative model used in ServiceNow documentation on roles. 
+
+![image of service now roles UI](images/servicenow-roles.png)
+
+The ‘rl_admin’ user is created with the ‘admin’ role assigned.  Other roles are inherited with the ‘admin’ role.  If needed, more granular permissions can be established but that is beyond the scope of this document. 
+
+## RadiantOne configuration steps
+
+### 1. Create a Data Source
+
+Log in to the Identity Data Management Control Panel UI using an account with sufficient privileges to manage Data Sources, Namespaces, and Schema configuration. All setup is performed through point-and-click operations in the UI.
+
+The following sections with images illustrate how to create a data source in Identity Data Management and also highlight any additional considerations or caveats you may need to be aware of. 
+
+a. After logging into Identity Data Management Control Panel, select ‘Data Catalog’ > ‘Data Sources’ from the navigation pane on the left hand side and click ‘NEW SOURCE’.
+
+![image of service now roles UI](images/new-ds.png)
+
+b. Click the ’SCIM v2’ tile from the list of displayed data sources and click the 'Select' button. 
+
+![image of service now roles UI](images/scim.png)
+
+c. 
+
+
+
+
