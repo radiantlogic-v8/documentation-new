@@ -10,9 +10,7 @@ Radiant Logic's configuration promotion feature enables seamless transfer of con
 
 ## Things to know
 
-**Both source and destination environments must have identical versions of Identity Data Management.**
-
-### Supported Configurations:
+Both source and destination environments must have identical versions of Identity Data Management.
 
 ## Supported configurations
 
