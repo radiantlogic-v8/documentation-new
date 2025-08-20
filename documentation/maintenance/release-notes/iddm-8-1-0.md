@@ -9,6 +9,20 @@ July 1, 2024
 
 These release notes contain important information about new features and improvements for RadiantOne Identity Data Management v8.1.0.
 
+## Notice on Versioning Scheme
+
+Beginning with the v8 release, the software now follows Semantic Versioning. Version numbers will use the format MAJOR.MINOR.PATCH:
+
+MAJOR – incompatible API or behavior changes
+MINOR – backward-compatible feature additions
+PATCH – backward-compatible bug fixes
+
+This change makes it easier to understand the type of changes included in each release and to plan upgrades with greater confidence.
+
+**Important Note** - This has changed from prior RadiantOne releases (e.g. v7.2, v7.3, v7.4) in which the first 2 digits signified the "major" version.
+
+## Overview
+
 These release notes contain the following sections:
 
 [New Features](#new-features)
@@ -76,3 +90,4 @@ As of v8.1.0 the following features have been deprecated:
 Feedback and problems can be reported from the Support Center/Knowledge Base accessible from: https://support.radiantlogic.com
 
 If you do not have a user ID and password to access the site, please contact: support@radiantlogic.com
+
