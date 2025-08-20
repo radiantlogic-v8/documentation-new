@@ -79,7 +79,7 @@ b. Click the ’SCIM v2’ tile from the list of displayed data sources and clic
 c. Enter a unique name for the Data Source, along with a description if desired. The description field is optional.  The ‘ACTIVE’ toggle should be selected by default, if not, enable it. The ‘SECURE DATA CONNECTOR’ field is not part of this set up, so leave that set to ‘None’.
 Note that certain characters are not allowed in the Data Source Name, including dashes (-).  The system will provide an error message should there be any issue with the name provided.  
 
-![image showing basic fields for data source](Media/new-dsfields.png)
+![image showing basic fields for data source](Media/new_dsfields.png)
 
 d. Scroll down to the ‘Connection Info’ section. Enter the required information as shown for the target IdentityIQ environment. The values shown in the screenshot are for the test environment used for building this configuration guide.  The values you enter will be specific to your ServiceNow environment. 
 
