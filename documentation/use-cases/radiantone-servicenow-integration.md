@@ -284,6 +284,28 @@ After successful creation, the status of the cache shows "Active".
 
 ![image showing cache creation - step 7](images/cache9.png) 
 
+### 5. Review and Validate the Data 
+
+There are various ways to view and manage the synchronized data from ServiceNow, including the RadiantOne Directory browser which is accessible in the Identity Data Management Control Panel. You can also refer to following examples of 3rd party tools to access the data over standard protocols (LDAP, Web Services/REST) supported by RadiantOne.  These examples are provided as a point of reference to assist in determing the method(s) that best serve your organizational needs. 
+
+#### RadiantOne Directory Browser 
+
+The ‘Directory Browser’ in the RadiantOne Control Panel is similar to other LDAP browsers and administrative tools you may be familiar with. It is a convenient way to view and manage data synchronized to RadiantOne.  Other LDAP clients may also be used based on your preference and needs.   
+
+a. Expand the Navigation Pane on the left-hand side of the RadiantOne control panel by hovering over the icons. To view the ServiceNow data that has been synchronized the RadiantOne created Namespace, click on the ‘Directory Browser’ tab in the navigation pane. 
+
+![image showing directory browser - step 1](images/review-1.png) 
+
+b. Click on the arrow next to the Namespace that was previously created.
+
+![image showing directory browser - step 1](images/review-2.png) 
+
+The objects are accessible through this UI. You can select and view the attributes that were mapped for the relevant object. In this case, we'll click on the 'user' object to review its attributes that were mapped into the Namespace. 
+
+![image showing directory browser - step 1](images/review-3.png) 
+
+
+
 
 
 
