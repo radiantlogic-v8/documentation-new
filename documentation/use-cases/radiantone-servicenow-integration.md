@@ -238,6 +238,16 @@ t. The attributes selected will show in the table on the right pane on the scree
 u. A pop-up notification will show with the status of the operation. If there are any issues, additional information will be provided to assist with troubleshooting. 
 
 
+### 4. Create a Cache for Namespace 
+
+Namespace caching is a way to detect and optimize access and changes to the target system. ServiceNow data can be accessed without a cache being created, which is referred to as a “Proxy” connection.  This just means all queries and operations are run against ServiceNow directly when initiated.  Depending on your organizational needs, this may be sufficient. However, implementing a cache improves performance by optimizing data access and staying synchronized with changes detected in the source (ServiceNow). Cache can be configured to update through either a 'Periodic Refresh' or in 'Real-Time.' Cached data is stored in the RadiantOne Universal Directory, known as the HDAP store. 
+
+a. 
+
+
+
+
+
 
 
 
