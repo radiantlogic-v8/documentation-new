@@ -242,7 +242,50 @@ u. A pop-up notification will show with the status of the operation. If there ar
 
 Namespace caching is a way to detect and optimize access and changes to the target system. ServiceNow data can be accessed without a cache being created, which is referred to as a “Proxy” connection.  This just means all queries and operations are run against ServiceNow directly when initiated.  Depending on your organizational needs, this may be sufficient. However, implementing a cache improves performance by optimizing data access and staying synchronized with changes detected in the source (ServiceNow). Cache can be configured to update through either a 'Periodic Refresh' or in 'Real-Time.' Cached data is stored in the RadiantOne Universal Directory, known as the HDAP store. 
 
-a. 
+a. Cache is created through the Namespace configuration flow. To cerate it, select the Namespace at the root level, then click on ‘CACHE’. 
+
+![image showing cache creation - step 1](images/cache1.png) 
+
+Next, click the "Create new cache" button. 
+
+![image showing cache creation - step 2](images/cache2.png) 
+
+
+b. Cache can be implemented at various levels. For our example, we are creating it at the top level. Once you select the level, click ‘CREATE’. 
+
+![image showing cache creation - step 3](images/cache3.png) 
+
+c. Periodic Refresh is a mechanism through which RadiantOne will check for changes on a scheduled basis and update the Namespace data as needed.  The ‘Real-Time’ change detection is available based on the capabilities of the target system. The RadiantOne SCIM connector with ServiceNow supports ‘Real-Time’ change detection by default and that is the method we will be using. 
+
+Select ‘Real-time’ and click ‘NEXT’. 
+
+![image showing cache creation - step 4](images/cache4.png) 
+
+d. Click ‘INITIALIZE’. 
+
+![image showing cache creation - step 5](images/cache5.png) 
+
+Depending on the amount of data to synchronize, this initial operation could take a few minutes to a few hours.  Behind the scene, an LDIF (LDAP Data Interchange File) is being created on the RadiantOne server.  This will then be automatically uploaded in the RadiantOne HDAP for high speed access and availability. 
+
+Next, select the "Create a new LDIF.." option to create a new LDIF and click "DONE". 
+
+![image showing cache creation - step 6](images/cache6.png) 
+
+e. Once the cache is initialized, you will see the task status on the screen. A notification pop-up will be presented with the status of the operation.  
+If there are any issues, additional information will be provided. That information and the information provided in the operation log can be used to assist with troubleshooting. Once the task status indicates "FINISHED", click "NEXT". 
+
+![image showing cache creation - step 7](images/cache7.png) 
+
+f. Click ‘SAVE’ to finalize the operation after the Cache has been successfully created. 
+
+![image showing cache creation - step 7](images/cache8.png) 
+
+After successful creation, the status of the cache shows "Active".
+
+![image showing cache creation - step 7](images/cache9.png) 
+
+
+
 
 
 
