@@ -151,7 +151,7 @@ Harness your identity data with intelligent integration to drive better business
  > Learn how to implement an integration that allows you to synchronize data between ServiceNow and RadiantOne Identity Data Management.
   
  > [RadiantOne SailPoint Integration](use-cases/radiantone-sailpoint-integration) 
- >  Learn how to implement an integration that allows you to synchronize data between SailPoint and RadiantOne Identity Data Management.
+ > Learn how to implement an integration that allows you to synchronize data between SailPoint and RadiantOne Identity Data Management.
      
 </section> 
 
