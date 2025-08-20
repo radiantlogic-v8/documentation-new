@@ -5,7 +5,7 @@ description: Upgrading RadiantOne Identity Data Management to Self-managed
 
 ## Overview
 
-The process from upgrading from RadiantOne Identity Data Management v7.4.10 to a self-managed deployment of v8.1.1+ is described below. If you are running a version prior to v7.4.10, you must first update to this version.
+The process from upgrading from RadiantOne Identity Data Management v7.4.10 to a self-managed deployment of v8.1+ is described below. If you are running a version prior to v7.4.10, you must first update to this version.
 
 ### Notice on Versioning Scheme
 
@@ -303,4 +303,5 @@ This performs a rolling restart of all RadiantOne cluster nodes for the new scri
 Feedback and problems can be reported from the Support Center/Knowledge Base accessible from: https://support.radiantlogic.com 
 
 If you do not have a user ID and password to access the site, please contact support@radiantlogic.com. 
+
 
