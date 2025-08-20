@@ -304,6 +304,24 @@ The objects are accessible through this UI. You can select and view the attribut
 
 ![image showing directory browser - step 1](images/review-3.png) 
 
+#### External Connection to RadiantOne via LDAP 
+
+Here's an example of connecting to and viewing ServiceNow data in the RadiantOne Namespace using a third-party tool named Apache Directory Studio LDAP browser.
+
+![image showing Apache example](images/example-1.png) 
+
+### External connection to RadiantOne via REST API 
+
+Access to RadiantOne Namespaces via the REST API is enabled by default, with support for all LDAP operations over REST. The example below is shown using Postman as the external client, issuing the API query.   
+
+![image showing Postman example](images/example-2.png) 
+
+Similar to the LDAP configuration, these settings as well as granular access controls can be adjusted to meet the organization’s requirements. The REST Endpoint URL is `https://hostname:8090/adap/namespace_baseDN`. 
+
+
+ 
+
+
 
 
 
