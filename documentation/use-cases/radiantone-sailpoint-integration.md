@@ -315,7 +315,7 @@ Here's an example of connecting to and viewing IdentityIQ data in the RadiantOne
 
 The external LDAP connection is configurable through the Identity Data Management control panel.  The example shown above has port 2636 enabled over SSL. The ports to be used are configurable.  Access to the data synchronized to the Namespace can be configured with Identity Data Management access controls down to the granular, attribute level. 
 
-### External connection to RadiantOne via REST API 
+#### External connection to RadiantOne via REST API 
 
 Access to RadiantOne Namespaces via the REST API is enabled by default, with support for all LDAP operations over REST. The default ports for the REST API calls are 8089 (non-SSL) and 8090 (SSL).  
 
