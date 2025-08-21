@@ -8,8 +8,7 @@ description: This document provides implementation details for RadiantOne SCIM I
 The RadiantOne Identity Data Management service acts as a virtual hub, capable of ingesting and synchronizing data from all your identity applications for administration, management, and 
 provisioning to other applications in the required format. Building the hub requires a set of sophisticated features that can be difficult to manage without a guided process. 
 
-RadiantOne offers a set of tools that guide users through implementing best practices for these advanced features. The purpose of this guide is to provide the necessary steps to implement the RadiantOne 
-SCIM connector for synchronizing and managing identity data from the ServiceNow ITSM platform. 
+RadiantOne offers a set of tools that guide users through implementing best practices for these advanced features. The purpose of this guide is to provide the necessary steps to implement the RadiantOne SCIM connector for synchronizing and managing identity data from the ServiceNow ITSM platform. 
 
 The target audience includes administrators, engineers, contractors, consultants, and managers responsible for an organization’s identity management infrastructure and applications.
 
@@ -176,13 +175,13 @@ h. Click 'Mount'. Mounting this view establishes a virtual directory tree for th
 
 ![image showing namespace creation - step 8](Media/namespacecreation-8.png) 
 
-i. At this point, the schema that has been extracted and the associated data can be made accessible through RadiantOne.  This is done through additional Namespace configuration.   
+At this point, the schema that has been extracted and the associated data can be made accessible through RadiantOne.  This is done through additional Namespace configuration.   
 
 For this example, we will create another level in the Namespace, which is done by clicking on the ’NEW LEVEL’ button.
 
 ![image showing namespace creation - step 9](Media/namespacecreation-9.png) 
 
-j. Next, select "Label" to create a location in the Namespace to import the ServiceNow users. The structure can be fully customized to fit your organization's requirements.
+i. Next, select "Label" to create a location in the Namespace to import the ServiceNow users. The structure can be fully customized to fit your organization's requirements.
 
 ![image showing namespace creation - step 9](Media/namespacecreation-10.png) 
 
@@ -192,50 +191,50 @@ We are adding an “ou” label with the value “users”.  As noted previously
 
 Once you enter your label information, click "CONFIRM". 
 
-k.  Click the ‘NEW LEVEL’ button to create a level that makes the ServiceNow data accessible through the Namespace view.
+j.  Click the ‘NEW LEVEL’ button to create a level that makes the ServiceNow data accessible through the Namespace view.
 
 ![image showing namespace creation - step 9](Media/namespacecreation-12.png) 
 
-l. For this level, we will select ‘Content’ type by clicking "CONTENT".  The ‘Content’ type selected for the this level is the method to contain the ServiceNow identity data we will select to be synchronized with RadiantOne. 
+For this level, we will select ‘Content’ type by clicking "CONTENT".  The ‘Content’ type selected for the this level is the method to contain the ServiceNow identity data we will select to be synchronized with RadiantOne. 
 
 ![image showing namespace creation - step 13](Media/namespacecreation-13.png) 
 
-m. Click on the drop-down and select the ServiceNow Data Source. 
+k. Click on the drop-down and select the ServiceNow Data Source. 
 
 ![image showing namespace creation - step 13](Media/namespacecreation-14.png) 
 
-n. Click on the next drop-down to select the ServiceNow Schema that was extracted previously for the Data Source. Then, click "Next". 
+l. Click on the next drop-down to select the ServiceNow Schema that was extracted previously for the Data Source. Then, click "Next". 
 
 ![image showing namespace creation - step 15](Media/namespacecreation-15.png) 
 
-o. You can see ServiceNow Schema objects/tables we extracted, which included all the available objects.  For this example, we are going to select the ServiceNow ‘users’ Schema object.   
-   Select ‘users’ and then click ‘SELECT’. 
+You can see ServiceNow Schema objects/tables we extracted, which included all the available objects.  For this example, we are going to select the ServiceNow ‘users’ Schema object.   
+Select ‘users’ and then click ‘SELECT’. 
    
 ![image showing namespace creation - step 16](Media/namespacecreation-17.png) 
 
-p. A notification pop-up will display the status of the operation. If any issues occur, additional details will be provided to help with troubleshooting. A green status indicates success.
+m. A notification pop-up will display the status of the operation. If any issues occur, additional details will be provided to help with troubleshooting. A green status indicates success.
 
 ![image showing namespace creation - step 17](Media/namespacecreation-18.png) 
 
-q. Click ou=users and click "users". Next, click on the ‘OBJECT BUILDER’ tab.
+n. Click ou=users and click "users". Next, click on the ‘OBJECT BUILDER’ tab.
 The content in this example is the ServiceNow ‘users’ object extracted from ServiceNow. Additional content can be pulled in, either within this same Namespace or other Namespaces.  As with most of the configuration and management of data in RadiantOne, there is flexibility in how to consume and manage the data subject to your design goals. 
 
 ![image showing namespace creation - step 18](Media/namespacecreation-19.png) 
 
-r. The Object Builder allows you to choose which attributes to display from the RadiantOne Namespace you created. The left panel shows the available attributes. Click the icon shown in the image to enable attribute selection.
+o. The Object Builder allows you to choose which attributes to display from the RadiantOne Namespace you created. The left panel shows the available attributes. Click the icon shown in the image to enable attribute selection.
 
 ![image showing namespace creation - step 19](Media/namespacecreation-20.png) 
 
-s. Select desired attributes. In this example, we are selecting all available attributes but this is not required and can be adjusted to the needs of your organization. 
+Select desired attributes. In this example, we are selecting all available attributes but this is not required and can be adjusted to the needs of your organization. 
 After selecting the attributes, click ‘DONE’. 
 
 ![image showing namespace creation - step 20](Media/namespacecreation-21.png) 
 
-t. The attributes selected will show in the table on the right pane on the screen.  If there are attributes that you want to remove, click on the attribute icon shown previously and unselect any attribute you want to remove. After reviewing your selection, click ‘SAVE’. 
+p. The attributes selected will show in the table on the right pane on the screen.  If there are attributes that you want to remove, click on the attribute icon shown previously and unselect any attribute you want to remove. After reviewing your selection, click ‘SAVE’. 
 
 ![image showing namespace creation - step 21](Media/namespacecreation-22.png) 
 
-u. A pop-up notification will show with the status of the operation. If there are any issues, additional information will be provided to assist with troubleshooting. 
+A pop-up notification will show with the status of the operation. If there are any issues, additional information will be provided to assist with troubleshooting. 
 
 
 ### 4. Create a Cache for Namespace 
