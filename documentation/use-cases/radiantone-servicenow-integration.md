@@ -309,7 +309,7 @@ Here's an example of connecting to and viewing ServiceNow data in the RadiantOne
 
 ![image showing Apache example](Media/example-1.png) 
 
-### External connection to RadiantOne via REST API 
+#### External connection to RadiantOne via REST API 
 
 Access to RadiantOne Namespaces via the REST API is enabled by default, with support for all LDAP operations over REST. The example below is shown using Postman as the external client, issuing the API query.   
 
