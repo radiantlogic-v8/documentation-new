@@ -6,7 +6,7 @@ description: Compare features and plan upgrades accordingly
 
 ## Upgrade Checklist: Upgrading from 7.4 to 8.1
 
-| **Item / Feature** | **Where to find this feature in 7.4** | **Action to Take** | **Availability in 8.1 (SaaS / Self-managed Identity Data Management)** |
+| **Item / Feature** | **Where to find this feature in 7.4** | **Action to take** | **Availability in 8.1 (SaaS / Self-managed Identity Data Management)** |
 |---------------------|--------------------------|--------------------|---------------------------------------|
 | **Server Front-End – Other Protocols (VRS)** | Check configuration for VRS protocol usage. <br>![config example](Media/img-1.png)   | Contact Support for alternatives. | Deprecated in both SaaS and Self-managed Identity Data Management |
 | **Administration – Allowed IPs** | Review load balancer/firewall IP restriction settings. <br>![config example](Media/img-2.png) | It can be configured by Radiant Logic SaaS team upon request; Self-managed Identity Data Management customers can configure it via their load balancer. | SaaS: Supported with customization; Self-managed: Supported |
