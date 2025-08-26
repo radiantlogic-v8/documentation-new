@@ -1,10 +1,12 @@
 ---
-title: Feature Comparison Guide 
+title: Feature comparison guide 
 description: Compare features and plan upgrades accordingly
 ---
 
 
-## Upgrade Checklist: Upgrading from 7.4 to 8.1
+## Feature comparison guide
+
+Use the table below to see which features will change or be discontinued when moving from v7.4 to v8.1.
 
 | **Item / Feature** | **Where to find this feature in 7.4** | **Action to take** | **Availability in 8.1 (SaaS / Self-managed Identity Data Management)** |
 |---------------------|--------------------------|--------------------|---------------------------------------|
