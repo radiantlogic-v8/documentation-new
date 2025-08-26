@@ -20,7 +20,7 @@ These release notes contain the following sections:
 - [API-3241]: Fixed an issue related to rebuild index for caches on child nodes.
 - [API-3257]: Fixed an issue where an unnecessary warning would appear in the new entry screen.
 - [API-3270]: Fixed an issue where the cache initialization status check failed for inactive caches.
-- [IV4-222]:  Fixed an issue that caused the migration tool to crash when alert names were too long.
+- [IV4-222, SQ-621]: Fixed an issue that caused the migration tool to crash when alert names were too long.
 
 
 ## Known Issues
