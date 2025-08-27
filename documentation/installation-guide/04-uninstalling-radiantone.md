@@ -15,7 +15,9 @@ restarting, you can manually remove any remaining folders in <RLI_HOME> (e.g. c:
 
 ## Cluster Architectures
 
-For cluster architectures, unregister the node from the cluster prior to running the uninstaller. Steps to unregister nodes are shown below.
+### Cluster Architectures with Internal Zookeeper 
+
+For cluster architectures running internal zookeeper, you'll need to unregister the node from the cluster prior to running the uninstaller. Steps to unregister nodes are shown below.
 
 1. On the node that is to be uninstalled, stop all RadiantOne Services (except for ZooKeeper) and any running tools and execute the following command (using cluster.bat on Windows, cluster.sh on Linux):
 
@@ -46,4 +48,10 @@ For cluster architectures, unregister the node from the cluster prior to running
 
     `<RLI_HOME>/bin/advanced/cluster.bat reset-cluster-datasource vds_server vdsha`
 
+
 From the Main Control Panel > Settings > Server Backend > LDAP Data Sources, you can verify that both vdsha and replicationjournal data sources have a host name referencing an accessible cluster node and the Failover LDAP Servers reference nodes accessible in the cluster.
+
+###### Cluster Architectures with External Zookeeper
+
+For cluster architectures that use an external zookeeper, you'll need to follow these steps to unregister the node from the cluster prior to running the uninstaller: 
+
