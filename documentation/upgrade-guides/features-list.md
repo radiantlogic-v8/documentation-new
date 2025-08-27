@@ -16,10 +16,10 @@ This document provides details on deprecated features and features that may requ
 | Server Front-End – Other Protocols (VRS)                      | Check configuration for VRS protocol usage. <br>![config example](Media/img-1.png)          | 
 | ACI Settings – Level of Assurance                             | Check Access Control rules for “Level of Assurance.” <br>![config example](Media/img-6.png) | 
 | Security Settings – Role Mapped Access in Proxy Views of LDAP | Review proxy view settings for role mapping.                                                |
-| Wizard – Directory Tree Wizard                                | Check if used in workflows. <br>![config example](Media/img-12.png)                         |
-| Wizard – Groups Builder Wizard                                | Check if used in workflows. <br>![config example](Media/img-13.png)                         | 
-| Wizard – Groups Migration Wizard                              | Check if used in workflows. <br>![config example](Media/img-15.png)                         |
-| Wizard – Merge Tree Wizard                                    | Check if used in workflows. <br>![config example](Media/img-14.png)                         |
+| Wizard – Directory Tree Wizard                                | Check if it is used in workflows. <br>![config example](Media/img-12.png)                         |
+| Wizard – Groups Builder Wizard                                | Check if it is used in workflows. <br>![config example](Media/img-13.png)                         | 
+| Wizard – Groups Migration Wizard                              | Check if it is used in workflows. <br>![config example](Media/img-15.png)                         |
+| Wizard – Merge Tree Wizard                                    | Check if it is used in workflows. <br>![config example](Media/img-14.png)                         |
 
 > [!warn] Important Note - if you are using any of the following settings, and are moving to SaaS, let the Radiant Logic customer onboarding team know, so your tenant can be customized to support IP address-related and/or client certificates checking.
 
