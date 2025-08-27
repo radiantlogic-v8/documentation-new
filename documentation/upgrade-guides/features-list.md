@@ -23,7 +23,7 @@ This document provides details on deprecated features and features that may requ
 
 > [!warn]> Important Note - if you are using any of the following settings, and are moving to SaaS, ensure you let the customer onboarding team know, so your tenant can be customized to support IP address-related and/or client certificates checking.
 
-**1. IP Access Controls**
+**IP Access Controls**
 
 Following IP-based settings can be configured by Radiant Logic on a case-by-case basis. Contact support for assistance.
 
@@ -43,21 +43,26 @@ Following IP-based settings can be configured by Radiant Logic on a case-by-case
 
 If you use any of the following features in v7.4, work with Radiant Logic Customer Support team to understand your options when upgrading:
 
-**Log2DB** is discontinued in 8.1. However, logging feature is still available in 8.1. Self-managed deployments must set up **[their own logging](../../v8.1/installation/metrics-and-logging/)**.
+### Log2DB
 
-**Reporting** is included in Environment Operations Center for SaaS deployments. Self-managed deployments should use **Prometheus (15.13.0+)** and optionally **Grafana (6.40.0+)** to generate reports from **[metrics](../../v8.1/installation/metrics-and-logging/)**.
+The Log2DB utility is discontinued in 8.1. However, logging feature is still available in 8.1. Self-managed deployments must set up **[their own logging](../../v8.1/installation/metrics-and-logging/)**.
 
-**Caching Existing Active Directory Passwords** For SaaS deployments, this requires a Secure Data Connector to be deployed in the Active Directory network. This capability will be offered for self-managed deployments soon.
+### Reporting
+Reporting is included in Environment Operations Center for SaaS deployments. Self-managed deployments should use **Prometheus (15.13.0+)** and optionally **Grafana (6.40.0+)** to generate reports from **[metrics](../../v8.1/installation/metrics-and-logging/)**.
 
-**NTLM Authentication** 
+### Caching Existing Active Directory Passwords
 
-**Kerberos Authentication**
+Caching Existing Active Directory Passwords - For SaaS deployments, this requires a Secure Data Connector to be deployed in the Active Directory network. This capability will be offered for self-managed deployments soon.
 
-**Kerberos to Backend AD (Data Source)** 
+### NTLM Authentication 
 
-**Synchronizing Passwords to Entra ID** 
+### Kerberos Authentication
 
-**Using the Active Directory Password Filter**
+### Kerberos to Backend Active Directory Data Sources
+
+### Synchronizing Passwords to Entra ID 
+
+### Using the Active Directory Password Filter
 
 
 
