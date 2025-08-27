@@ -37,6 +37,8 @@ This document provides details on deprecated features and features that may requ
 
 - **Mutual Authentication (Security Settings)** 
 
+  ![config example](Media/mutual-auth.png)  
+
 
 ## Feature Usage Requiring Further Discussion 
 
