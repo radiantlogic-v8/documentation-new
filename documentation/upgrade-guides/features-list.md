@@ -21,47 +21,43 @@ This document provides details on deprecated features and features that may requ
 | Wizard – Groups Migration Wizard                              | Check if used in workflows. <br>![config example](Media/img-15.png)                         | Deprecated|
 | Wizard – Merge Tree Wizard                                    | Check if used in workflows. <br>![config example](Media/img-14.png)                         | Deprecated|
 
-## Features that may need additional considerations 
+> [!warn]> Important Note - if you are using any of the following settings, and are moving to SaaS, ensure you let the customer onboarding team know, so your tenant can be customized to support IP address-related and/or client certificates checking.
 
-Some features that were available in v7.4 are not readily available in the v8.1 UI and require additional customization on a case by case basis. If you rely on any of these, you may need to work with Radiant Logic Customer Support team to configure them:  
-
-### 1. IP Access Controls
+**1. IP Access Controls**
 
 Following IP-based settings can be configured by Radiant Logic on a case-by-case basis. Contact support for assistance.
 
-- **Allowed IPs (Administration)**  
+**Allowed IPs (Administration)**  
   ![config example](Media/img-2.png)  
 
-- **Per Computer/IP Limits & Special IP Checks (Limits)**  
+**Per Computer/IP Limits & Special IP Checks (Limits)**  
   ![config example](Media/img-5.png)  
 
-- **IP Restrictions (ACI Settings)**  
+**IP Restrictions (ACI Settings)**  
   ![config example](Media/img-7.png)  
 
-
-### 2. Logging and Reporting
-
-- **Log2DB** is discontinued in 8.1. However, logging feature is still available in 8.1. Self-managed deployments must set up **[their own logging](../../v8.1/installation/metrics-and-logging/)**.
-- **Reporting** feature is supported in SaaS with updated infrastructure. Self-managed deployments should use **Prometheus (15.13.0+)** and optionally **Grafana (6.40.0+)** to generate reports from **[metrics](../../v8.1/installation/metrics-and-logging/)**.
-
-### 3. Authentication and AD Password Management
-
-These features can be used with subject to the considerations described below:
-- **AD Password – Caching** is supported in SaaS only via Secure Data Connector.
-- **Mutual Authentication (Security Settings)** is supported in 8.1 but requires additional customization in SaaS. Reach out to Radiant Logic Customer Support team for assistance related to this feature. 
-
-Theese features are currently not supported in 8.1. Contact Radiant Logic support team to discuss your use cases/ alternatives. 
-
-- **NTLM Authentication** 
-- **Kerberos Authentication**
-- **Kerberos to Backend AD (Data Source)** 
-- **AD Password – Sync to Entra ID** 
-- **AD Password – Password Filter**
+**Mutual Authentication (Security Settings)** 
 
 
+## Feature Usage Requiring Further Discussion 
 
+If you use any of the following features in v7.4, work with Radiant Logic Customer Support team to understand your options when upgrading:
 
+**Log2DB** is discontinued in 8.1. However, logging feature is still available in 8.1. Self-managed deployments must set up **[their own logging](../../v8.1/installation/metrics-and-logging/)**.
 
+**Reporting** is included in Environment Operations Center for SaaS deployments. Self-managed deployments should use **Prometheus (15.13.0+)** and optionally **Grafana (6.40.0+)** to generate reports from **[metrics](../../v8.1/installation/metrics-and-logging/)**.
+
+**Caching Existing Active Directory Passwords** For SaaS deployments, this requires a Secure Data Connector to be deployed in the Active Directory network. This capability will be offered for self-managed deployments soon.
+
+**NTLM Authentication** 
+
+**Kerberos Authentication**
+
+**Kerberos to Backend AD (Data Source)** 
+
+**Synchronizing Passwords to Entra ID** 
+
+**Using the Active Directory Password Filter**
 
 
 
