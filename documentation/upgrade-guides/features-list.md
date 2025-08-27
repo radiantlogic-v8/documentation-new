@@ -42,7 +42,7 @@ Following IP-based settings can be configured by Radiant Logic on a case-by-case
 ### 2. Logging and Reporting
 
 - **Log2DB** is discontinued in 8.1. However, logging feature is still available in 8.1. Self-managed deployments must set up **[their own logging](../../v8.1/installation/metrics-and-logging/)**.
-- Reporting feature is supported in SaaS with updated infrastructure. Self-managed deployments should use **Prometheus (15.13.0+)** and optionally **Grafana (6.40.0+)** to generate reports from **[metrics](../../v8.1/installation/metrics-and-logging/)**.
+- **Reporting** feature is supported in SaaS with updated infrastructure. Self-managed deployments should use **Prometheus (15.13.0+)** and optionally **Grafana (6.40.0+)** to generate reports from **[metrics](../../v8.1/installation/metrics-and-logging/)**.
 
 ### 3. Authentication and AD Password Management
 
