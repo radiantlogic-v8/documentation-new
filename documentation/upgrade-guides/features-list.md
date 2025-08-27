@@ -48,10 +48,6 @@ If you use any of the following features in v7.4, work with Radiant Logic Custom
 
 - **Using the Active Directory Password Filter**
 
-- **NTLM Authentication**
-
-  ![config example](Media/img-10.png)
-
 - **Kerberos Authentication**
 
   ![config example](Media/img-11.png)
