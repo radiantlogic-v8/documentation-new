@@ -21,7 +21,7 @@ This document provides details on deprecated features and features that may requ
 | Wizard – Groups Migration Wizard                              | Check if it is used to create virtual identity views. <br>![config example](Media/img-15.png)                         |
 | Wizard – Merge Tree Wizard                                    | Check if it is used to create virtual identity views. <br>![config example](Media/img-14.png)                         |
 
-> [!warn] Important Note - if you are using any of the following settings, and are moving to SaaS, let the Radiant Logic customer onboarding team know, so your tenant can be customized to support IP address-related and/or client certificates checking.
+> [!warn] Important Note - if you are using any of the following settings, and are moving to SaaS, let the Radiant Logic customer onboarding team know, so your tenant can be customized to support client IP address-related checking and/or client certificates checking.
 
 - **Allowed IPs (Administration)** 
  
