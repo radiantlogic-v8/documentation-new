@@ -23,10 +23,6 @@ This document provides details on deprecated features and features that may requ
 
 > [!warn] Important Note - if you are using any of the following settings, and are moving to SaaS, let the Radiant Logic customer onboarding team know, so your tenant can be customized to support IP address-related and/or client certificates checking.
 
-### **IP Access Controls**
-
-Following IP-based settings can be configured by Radiant Logic on a case-by-case basis. Contact support for assistance.
-
 - **Allowed IPs (Administration)** 
  
    ![config example](Media/img-2.png)  
