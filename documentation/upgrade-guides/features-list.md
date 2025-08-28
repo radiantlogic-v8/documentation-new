@@ -24,7 +24,7 @@ This document provides details on deprecated features and features that may requ
 
 ## Features Available Upon Request
 
->[!warning] Important Note - if you are using any of the following settings, and are moving to SaaS, let the Radiant Logic customer onboarding team know, so your tenant can be customized to support client IP address-related checking and/or client certificates checking.
+If you are using any of the following settings, and are moving to SaaS, let the Radiant Logic customer onboarding team know, so your tenant can be customized to support client IP address-related checking and/or client certificates checking.
 
 - **Allowed IPs (Administration)** 
  
