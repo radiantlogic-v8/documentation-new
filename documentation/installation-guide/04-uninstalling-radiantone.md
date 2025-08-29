@@ -143,7 +143,7 @@ For cluster architectures using **internal Zookeeper** (i.e., Zookeeper included
 
 
 
-### Clusters with external Zookeeper
+### Clusters with External Zookeeper
 
 For cluster architectures using external Zookeeper (i.e., your self-managed Zookeeper), unregister the node from the cluster prior to running the uninstaller by following the steps below:
 
@@ -262,5 +262,6 @@ Confirm there are **no Java processes** by using the following:
     ```
     /radiantone/v2/<clustername>/nodes/registry
     ```
+
 
 
