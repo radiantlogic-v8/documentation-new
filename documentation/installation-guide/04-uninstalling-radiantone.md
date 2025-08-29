@@ -18,13 +18,14 @@ restarting, you can manually remove any remaining folders in <RLI_HOME> (e.g. c:
 
 ### Clusters with Internal Zookeeper
 
-For cluster architectures using **internal Zookeeper** (i.e., Zookeeper included with the product), you must **unregister the node from the cluster before running the uninstaller**. Follow the steps below:
+For cluster architectures using **internal Zookeeper** (i.e., Zookeeper included with the product), unregister the node from the cluster before running the uninstaller by following the steps below:
 
  1. Detach the node to be uninstalled
 
     On the **node to be uninstalled**, stop all **RadiantOne services** (except for Zookeeper) and any running tools, then run:
     
     **Windows**
+
     ```bat
     <RLI_HOME>\bin\advanced\cluster.bat detach
     ````
@@ -261,4 +262,5 @@ Confirm there are **no Java processes** by using the following:
     ```
     /radiantone/v2/<clustername>/nodes/registry
     ```
+
 
