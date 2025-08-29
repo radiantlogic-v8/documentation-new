@@ -164,7 +164,7 @@ For cluster architectures using external Zookeeper (i.e., your self-managed Zook
     <RLI_HOME>/bin/advanced/stop_servers.sh
     ```
     
-    > **Note:** Ensure there are **no Java processes** running by using the following:
+    > Ensure there are **no Java processes** running by using the following:
     >
     > * **Windows:** Check **Task Manager**
     > * **Linux:** `ps -ef | grep java`
@@ -203,10 +203,10 @@ For cluster architectures using external Zookeeper (i.e., your self-managed Zook
     <RLI_HOME>/bin/advanced\stop_servers.sh
     ```
 
-Confirm there are **no Java processes** by using the following:
-
-* **Windows:** Task Manager
-* **Linux:** `ps -ef | grep java`
+  > Ensure there are **no Java processes** running by using the following:
+    >
+    > * **Windows:** Check **Task Manager**
+    > * **Linux:** `ps -ef | grep java`
 
 4. Clean up the node
 
@@ -262,6 +262,7 @@ Confirm there are **no Java processes** by using the following:
     ```
     /radiantone/v2/<clustername>/nodes/registry
     ```
+
 
 
 
