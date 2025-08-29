@@ -20,6 +20,7 @@ restarting, you can manually remove any remaining folders in <RLI_HOME> (e.g. c:
 
 For cluster architectures using **internal Zookeeper** (i.e., Zookeeper included with the product), unregister the node from the cluster before running the uninstaller by following the steps below:
 
+
  1. Detach the node to be uninstalled
 
     On the **node to be uninstalled**, stop all **RadiantOne services** (except for Zookeeper) and any running tools, then run:
@@ -36,6 +37,7 @@ For cluster architectures using **internal Zookeeper** (i.e., Zookeeper included
     <RLI_HOME>/bin/advanced/cluster.sh detach
     ```
 
+
  2. Uninstall the node
 
     Navigate to the following directory:
@@ -51,6 +53,7 @@ For cluster architectures using **internal Zookeeper** (i.e., Zookeeper included
     ```
 
     After uninstalling and restarting, manually remove any remaining folders in `<RLI_HOME>` (e.g., `C:/radiantone`).
+
 
 
  3. Verify Zookeeper client configuration
@@ -77,6 +80,7 @@ For cluster architectures using **internal Zookeeper** (i.e., Zookeeper included
     <RLI_HOME>/bin/advanced/cluster.sh update-zk-client-conf
     ```
 
+
  5. Verify ZooKeeper dynamic configuration
 
     On **each remaining cluster node**, run:
@@ -91,6 +95,7 @@ For cluster architectures using **internal Zookeeper** (i.e., Zookeeper included
     dynamicConfigFile=C:/radiantone/vds/apps/zookeeper/conf/zoo.cfg.dynamic.3000013b8
     ```
 
+
  6. Update the dynamic configuration file
 
     Edit the **dynamicConfigFile** noted above to ensure that all remaining ZooKeeper nodes are listed.
@@ -100,6 +105,7 @@ For cluster architectures using **internal Zookeeper** (i.e., Zookeeper included
     server.2=DOC-E1WIN2:2888:3888:participant;0.0.0.0:2181
     server.3=DOC-E1WIN3:2888:3888:participant;0.0.0.0:2181
     ```
+
 
  7. Reset cluster data sources
 
@@ -118,6 +124,7 @@ For cluster architectures using **internal Zookeeper** (i.e., Zookeeper included
     ```
 
 
+
  8. Reset a specific data source (optional)
 
     To update a specific data source (e.g., `vdsha`), run:
@@ -127,6 +134,7 @@ For cluster architectures using **internal Zookeeper** (i.e., Zookeeper included
     ```
     
     Here, `vds_server` refers to the instance name and `vdsha` is the data source name. 
+
 
 
 
@@ -170,6 +178,7 @@ For cluster architectures using external Zookeeper (i.e., your self-managed Zook
     > * **Linux:** `ps -ef | grep java`
 
 
+
  2. Detach the node to be removed
 
     Run on the **node to be removed**:
@@ -208,9 +217,12 @@ For cluster architectures using external Zookeeper (i.e., your self-managed Zook
     > * **Windows:** Check **Task Manager**
     > * **Linux:** `ps -ef | grep java`
 
+
+
 4. Clean up the node
 
    Delete or rename the `<RLI_HOME>` folder on the node that was removed.
+
 
 
  5. Reset cluster data sources on remaining nodes
@@ -229,9 +241,11 @@ For cluster architectures using external Zookeeper (i.e., your self-managed Zook
     <RLI_HOME>/bin/advanced/cluster.sh reset-cluster-datasource
     ```
 
+
  6. Restart services on remaining nodes
 
     Start the **Radiant One** service and **Control Panel (Jetty)** on all remaining cluster nodes.
+
 
 
  7. Remove certificates from the Leader node
@@ -239,6 +253,7 @@ For cluster architectures using external Zookeeper (i.e., your self-managed Zook
     In the **Control Panel** on the **Leader node**, remove any self-signed certificates associated with the removed node:
     
     **Control Panel → Settings → Security → Client Certificate Truststore**
+
 
 
  8. Validate the node was removed
@@ -262,6 +277,7 @@ For cluster architectures using external Zookeeper (i.e., your self-managed Zook
     ```
     /radiantone/v2/<clustername>/nodes/registry
     ```
+
 
 
 
