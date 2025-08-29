@@ -213,10 +213,11 @@ For cluster architectures using external Zookeeper (i.e., your self-managed Zook
     <RLI_HOME>/bin/advanced\stop_servers.sh
     ```
 
-  > Ensure there are **no Java processes** running by using the following:
+    > Ensure there are **no Java processes** running by using the following:
     >
     > * **Windows:** Check **Task Manager**
     > * **Linux:** `ps -ef | grep java`
+
 
 <br>
 
@@ -277,6 +278,7 @@ For cluster architectures using external Zookeeper (i.e., your self-managed Zook
     ```
     /radiantone/v2/<clustername>/nodes/registry
     ```
+
 
 
 
