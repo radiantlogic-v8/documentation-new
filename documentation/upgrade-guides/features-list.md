@@ -67,7 +67,7 @@ If you use any of the following features in v7.4, work with Radiant Logic Custom
 
 - **CPLDS**: RadiantOne v7.4 includes a Capture Process for Large numbers of distributed Directory Stores (CPLDS). This feature leverages components known as Workers to detect changes in source LDAP directories, Active Directories, or LDIF files and refreshes a RadiantOne Directory (HDAP) replica.
   
-  ![config example](Media/cplds.png)
+  ![config example](Media/cplds.jpg)
 
 
 
