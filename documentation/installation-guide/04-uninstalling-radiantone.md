@@ -273,11 +273,13 @@ For cluster architectures using external Zookeeper (i.e., your self-managed Zook
     <RLI_HOME>/bin/advanced/cluster.sh list
     ```
     <br>
-    In the **Control Panel → Zookeeper** tab, you should see **only** the working nodes under:
+
+    In the **Control Panel > Zookeeper** tab**, you should see only the working nodes under:
     
     ```
     /radiantone/v2/<clustername>/nodes/registry
     ```
+
 
 
 
