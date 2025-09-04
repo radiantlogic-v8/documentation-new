@@ -16,6 +16,8 @@ description: knowledge
 
 Harness your identity data with intelligent integration to drive better business outcomes, improve security and compliance posture, increase speed-to-market, and more. Browse below to learn more about the capabilities and components that comprise Identity Data Management and link to the user guides to help get you started.
 
+## RadiantOne Overview
+
 <section>
   
   > [Introduction](architect-guide/preface)  
@@ -36,29 +38,14 @@ Harness your identity data with intelligent integration to drive better business
   > [LDAP Browser](ldap-browser/01-overview)  
   > Learn how to use the general purpose LDAP Browser tool to manage entries in an LDAP directory.
   
-  > [Hardening](hardening-guide/00-preface)  
-  > Learn the best practices approaches for hardening against security threats.
-  
-  > [Operations](operations-guide/01-overview)  
-  > Learn how to maintain the product once it is deployed. Topics include the management of clusters, persistent cache, and Directory stores.
-
   > [Command Line Configuration](command-line-configuration-guide/01-introduction)
   > Learn how to configure RadiantOne from a command line interface. 
-
-  > [Release Notes](release-notes/v740-release-notes)
-  > Review the release notes to learn more about what fixes and improvements have been made for each patch release.
 
   > [Data Sources Supported & System Requirements](system-requirements/v74-system-requirements)
   > Review the supported backend data sources and the recommended minimum system requirements for installing RadiantOne. 
 
   > [Migration Utility](migration-utility/01-introduction)
   > Learn how to migrate your existing RadiantOne configuration from a development/QA environment to a production environment.
-
-  > [Applying Patches](applying-patch/applying-patch)
-  > Learn how to patch your RadiantOne v7.4 service. This covers applying patches, not upgrading to a new major version.
-
-  > [Upgrades](upgrade-guides/upgrade74-81)
-  > Learn how to upgrade your RadiantOne v7.4 service to RadiantOne SaaS. This covers upgrading to a new major version.
 
   > [Use cases](use-cases/onprem-entraidsync)
   > Learn how RadiantOne can be used to synchronize on-premises Active Directory (AD) user details with Entra ID.
@@ -177,6 +164,28 @@ Harness your identity data with intelligent integration to drive better business
   > Review the release notes to learn more about what fixes and improvements have been made for each patch release.
 
 </section>
+
+## RadiantOne Maintenance
+
+<section>
+
+  > [Release Notes](release-notes/v740-release-notes)
+  > Review the release notes to learn more about what fixes and improvements have been made for each patch release.
+
+  > [Hardening](hardening-guide/00-preface)  
+  > Learn the best practices approaches for hardening against security threats.
+  
+  > [Operations](operations-guide/01-overview)  
+  > Learn how to maintain the product once it is deployed. Topics include the management of clusters, persistent cache, and Directory stores.
+
+  > [Applying Patches](applying-patch/applying-patch)
+  > Learn how to patch your RadiantOne v7.4 service. This covers applying patches, not upgrading to a new major version.
+
+  > [Upgrades](upgrade-guides/upgrade74-81)
+  > Learn how to upgrade your RadiantOne v7.4 service to RadiantOne SaaS. This covers upgrading to a new major version.
+
+</section>
+
 
 </tabpanel>
 
