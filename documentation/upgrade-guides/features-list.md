@@ -20,7 +20,7 @@ The following features have been deprecated and are no longer available in v8.1 
 | Security Settings – Role Mapped Access in Proxy Views of LDAP | Review proxy view settings for role mapping.                                                  | 
 | Wizard – Directory Tree Wizard                                | Check if it is used to create virtual identity views. In v8, you can use Directory Namespace to create your tree. <br>![config example](Media/img-12.png) |
 | Wizard – Groups Builder Wizard                                | Check if it is used to create virtual identity views. In v8, you can use Directory Browser to create dynamic groups. <br>![config example](Media/img-13.png) | 
-| Wizard – Groups Migration Wizard                              | Check if it is used to create virtual identity views. <br>![config example](Media/img-15.png) |
+| Wizard – Groups Migration Wizard                              | Check if it is used to create virtual identity views.  In v8, you can use Directory Namespace to create views of existing groups and either DN remapping or a computed attribute to remap group members. <br>![config example](Media/img-15.png) |
 | Wizard – Merge Tree Wizard                                    | Check if it is used to create virtual identity views. In v8, you can use Directory Namespace to create your merged tree. <br>![config example](Media/img-14.png) | 
 
 
