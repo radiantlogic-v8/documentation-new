@@ -14,6 +14,7 @@ This document provides details on deprecated features and features that may requ
 The following features have been deprecated and are no longer available in v8.1 of Identity Data Management. If you have any questions about these features, reach out to the Radiant Logic Customer Support team.
 
 <div style="background:white !important;">
+
 | Feature                                                       | Where to find this feature in 7.4                                                             |  
 | ------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | 
 | Server Front-End – Other Protocols (VRS)                      | Check configuration for VRS protocol usage. <br> <br> ![config example](Media/img-1.png)            | 
@@ -23,6 +24,7 @@ The following features have been deprecated and are no longer available in v8.1 
 | Wizard – Groups Builder Wizard                                | Check if it is used to create virtual identity views. In v8, you can use Directory Browser to create dynamic groups. <br> <br> ![config example](Media/img-13.png) | 
 | Wizard – Groups Migration Wizard                              | Check if it is used to create virtual identity views.  In v8, you can use Directory Namespace to create views of existing groups and either DN remapping or a computed attribute to remap group members. <br> <br> ![config example](Media/img-15.png) |
 | Wizard – Merge Tree Wizard                                    | Check if it is used to create virtual identity views. In v8, you can use Directory Namespace to create your merged tree. <br> <br> ![config example](Media/img-14.png) | 
+
 </div>
 
 ## Features Available Upon Request
