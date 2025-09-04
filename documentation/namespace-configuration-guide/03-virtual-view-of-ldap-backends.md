@@ -43,7 +43,7 @@ If you configure the LDAP backend directly at the Root Naming Context, it is the
 
 8.	Click **OK** when finished and a new naming context matching the mapped base DN parameter is created for RadiantOne. When LDAP clients access this naming context, the contents from the remote base DN branch will be returned.
 
->[!note] For every virtual view of an LDAP backend you create, a file containing the schema definition is created. The schema file is stored on the file system at <RLI_HOME>\vds_server\lod\<normalized root naming context where the view is mounted>.orx. An LDIF formatted file containing the schema is also saved in the lod folder (with the same name as the .orx file) and is used to retrieve object class and attribute definitions if the metadata is used to extend the RadiantOne LDAP schema. For details on extending the RadiantOne LDAP schema, see the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction)
+>[!note] For every virtual view of an LDAP backend you create, a file containing the schema definition is created. The schema file is stored on the file system at <RLI_HOME>\vds_server\lod\<normalized root naming context where the view is mounted>.orx. An LDIF formatted file containing the schema is also saved in the lod folder (with the same name as the .orx file) and is used to retrieve object class and attribute definitions if the metadata is used to extend the RadiantOne LDAP schema. For details on extending the RadiantOne LDAP schema, see the [RadiantOne System Administration Guide](/sys-admin-guide/07-directory-schema)
 .
 
 9.	If you need to modify the LDAP backend configuration, select the appropriate node below Root Naming Contexts and modify the settings on the right side. Click **Save** when finished.
@@ -228,7 +228,7 @@ If user “cn=joe,dc=partners,dc=airius,dc=com,dc=server2,ou=global,o=vds” suc
 
 ### LDAP Controls
 
-A control is additional information that can be included in an LDAP request or response. RadiantOne can play the role of both an LDAP server and an LDAP client to other backend directories. To understand controls supported by RadiantOne as an LDAP server, see the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction)
+A control is additional information that can be included in an LDAP request or response. RadiantOne can play the role of both an LDAP server and an LDAP client to other backend directories. To understand controls supported by RadiantOne as an LDAP server, see the [RadiantOne System Administration Guide](/sys-admin-guide/03-front-end-settings)
 . RadiantOne’s handling of LDAP controls as a client to a backend directory is described in this section.
 
 #### VLV/Sort
@@ -537,7 +537,7 @@ The default size limit is set to 100 meaning only 100 containers below the Remot
 
 ### Interception Scripts
 
-For specific details, please see Interception Scripts in the Concepts section of the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction)
+For specific details, please see Interception Scripts in the Concepts section of the [RadiantOne System Administration Guide](/sys-admin-guide/02-concepts)
 . This section describes how to enable interception scripts for an LDAP backend.
 
 1.	From the Main Control Panel > Directory Namespace Tab, select the LDAP backend node below Root Naming Contexts. 
@@ -548,7 +548,7 @@ For specific details, please see Interception Scripts in the Concepts section of
 
 4.	Click **Save** in the upper right corner and then **Yes** to apply the changes to the server.
 
-5.	Lastly, follow the steps defined in the Interception Scripts section of Concepts of the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction)
+5.	Lastly, follow the steps defined in the Interception Scripts section of Concepts of the [RadiantOne System Administration Guide](/sys-admin-guide/02-concepts)
 .
 
 ### Include and Exclude Search Filters
@@ -591,7 +591,7 @@ The use of inclusion and exclusion filters can improve performance and efficienc
 
 ### Computed Attributes
 
-For specific details, please see Computed Attributes in the Concepts section of the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction)
+For specific details, please see Computed Attributes in the Concepts section of the [RadiantOne System Administration Guide](/sys-admin-guide/02-concepts)
 . This section describes how to configure computed attributes for an LDAP backend.
 
 To create computed attributes:
@@ -626,7 +626,7 @@ The computed attribute should appear in the list of attributes for the virtual o
 
 If you would like to see a list of only computed attributes for the virtual object, select the “Computed” option in the Display drop-down list. 
 
-For more details, please see Computed Attributes in the Concepts section of the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction)
+For more details, please see Computed Attributes in the Concepts section of the [RadiantOne System Administration Guide](/sys-admin-guide/02-concepts)
 .
 
 #### Deactivate Computed Attributes
@@ -669,7 +669,7 @@ To configure the bind order:
 
 5.	Use the up and down arrow to determine the order RadiantOne should attempt the credential checking. RadiantOne attempts to verify the credentials against the first enabled source in the list. If it fails, then the next is tried and so forth. If all enabled sources have been tried without success, RadiantOne returns a bind failed error to the client.
 
-For more information on bind order and joining, please see the sections titled Bind Order and Joins in the Concepts section of the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction).
+For more information on bind order and joining, please see the sections titled Bind Order and Joins in the Concepts section of the [RadiantOne System Administration Guide](/sys-admin-guide/02-concepts).
 
 ### Joins
 
@@ -677,7 +677,7 @@ Objects from any sources in the RadiantOne namespace can be joined. With joins, 
 
 Joins are configured by first selecting the virtual view built from the primary source below Root Naming Contexts in the Main Control Panel > Directory Namespace Tab. On the right side, select the Objects tab, choose the primary object class (add it if it isn’t listed), and click **New** in the Join Profiles section. To deactivate a join, uncheck the join’s Active box in the Join Profiles section on the Objects tab and click **Save**. To reactivate the join, check the join’s Active box and click **Save**.
 
-For complete details, please see Joins in the Concepts section of the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction).
+For complete details, please see Joins in the Concepts section of the [RadiantOne System Administration Guide](/sys-admin-guide/02-concepts).
 
 ### Optimizations
 
@@ -701,7 +701,7 @@ Whenever RadiantOne queries a backend LDAP, the default behavior is to ask for a
 
 The default behavior of RadiantOne is to process associated joins and build computed attributes whenever a virtual object is reached from a query regardless of whether the attributes requested come from a secondary source or computation. 
 
-If you enable this option, RadiantOne does not perform joins or computations if a client requests or searches for attributes from a primary object only. If a client requests or searches for attributes from secondary objects or computed attributes, then RadiantOne processes the join(s) and computations accordingly. For more details on this behavior, please see the Join Behavior Diagram in the [RadiantOne System Administration Guide](/sys-admin-guide/01-introduction).
+If you enable this option, RadiantOne does not perform joins or computations if a client requests or searches for attributes from a primary object only. If a client requests or searches for attributes from secondary objects or computed attributes, then RadiantOne processes the join(s) and computations accordingly. For more details on this behavior, please see the Join Behavior Diagram in the [RadiantOne System Administration Guide](/sys-admin-guide/02-concepts).
 
 Use caution when enabling this option if you have interception scripts defined on these objects, or access controls based on filters are being used (both of which may require other attributes returned from secondary sources or computations regardless of whether the client requested or searched for them).
 
@@ -731,3 +731,4 @@ This attribute can be used in computed attributes by using the getactualDN() fun
 ![An image showing ](Media/Image3.32.jpg)
 
 Figure 32: Using ActualDN in a Computed Attribute
+
