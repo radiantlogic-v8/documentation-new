@@ -435,3 +435,28 @@ To modify your custom script to output these alert descriptions:
 
 Figure 19: Example Alert Descriptions
 
+## Disable Alerts with Maintenance Mode
+
+When performing scheduled maintenance or patches, temporary service interruptions may occur, often triggering a large number of alerts. You can temporarily disable all alerts during scheduled maintenance by using maintenance mode. 
+
+>[!warning] Maintenance Mode cannot be configured while ZK is in READ-ONLY state.
+
+
+To enable maintenance mode, follow these steps:
+
+1. Go to Settings > Monitoring > Maintenance Mode. Provide a duration in minutes (default is 30) or select a preset option in the interface. 
+
+![An image showing how to use maintenance mode ](Media/enable-maintenancemode.png)
+
+2. Optionally, add a Comment to describe the maintenance activity.
+3. Click the Enable Maintenance Mode button. The status will change to ACTIVE, confirming that alerts are suspended for the duration that was defined in step 1. 
+
+If you would like to disable maintenance mode prior to the scheduled time, follow these steps:
+
+1. Navigate back to Settings > Monitoring > Maintenance Mode.
+
+![An image showing how to use maintenance mode ](Media/disable-maintenancemode.png)
+
+2. Click the Disable Maintenance Mode button to re-enable alerts.
+
+
