@@ -15,64 +15,74 @@ The following features have been deprecated and are no longer available in v8.1 
 
 | Feature                                                       | Where to find this feature in 7.4                                                             |  
 | ------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | 
-| Server Front-End – Other Protocols (VRS)                      | Check configuration for VRS protocol usage. <br>![config example](Media/img-1.png)            | 
-| ACI Settings – Level of Assurance                             | Check Access Control rules for “Level of Assurance.” <br>![config example](Media/img-6.png)   | 
-| Security Settings – Role Mapped Access in Proxy Views of LDAP | Review proxy view settings for role mapping.                                                  | 
-| Wizard – Directory Tree Wizard                                | Check if it is used to create virtual identity views. In v8, you can use Directory Namespace to create your tree. <br>![config example](Media/img-12.png) |
-| Wizard – Groups Builder Wizard                                | Check if it is used to create virtual identity views. In v8, you can use Directory Browser to create dynamic groups. <br>![config example](Media/img-13.png) | 
-| Wizard – Groups Migration Wizard                              | Check if it is used to create virtual identity views.  In v8, you can use Directory Namespace to create views of existing groups and either DN remapping or a computed attribute to remap group members. <br>![config example](Media/img-15.png) |
-| Wizard – Merge Tree Wizard                                    | Check if it is used to create virtual identity views. In v8, you can use Directory Namespace to create your merged tree. <br>![config example](Media/img-14.png) | 
+| Server Front-End – Other Protocols (VRS)                      | Check configuration for VRS protocol usage. <br> ![config example](Media/img-1.png)            | 
+| ACI Settings – Level of Assurance                             | Check Access Control rules for 'Level of Assurance.' A value other than 0 indicates that this feature is being used. <br> ![config example](Media/img-6.png)   | 
+| Security Settings – Role Mapped Access in Proxy Views of LDAP | Review proxy view settings for role mapping. <br> ![config example](Media/img-role.png)                                                  | 
+| Wizard – Directory Tree Wizard                                | Check if it is used to create virtual identity views. In v8, you can use Directory Namespace to create your tree. <br> ![config example](Media/img-12.png) |
+| Wizard – Groups Builder Wizard                                | Check if it is used to create virtual identity views. In v8, you can use Directory Browser to create dynamic groups. <br> ![config example](Media/img-13.png) | 
+| Wizard – Groups Migration Wizard                              | Check if it is used to create virtual identity views.  In v8, you can use Directory Namespace to create views of existing groups and either DN remapping or a computed attribute to remap group members. <br> ![config example](Media/img-15.png) |
+| Wizard – Merge Tree Wizard                                    | Check if it is used to create virtual identity views. In v8, you can use Directory Namespace to create your merged tree. <br> ![config example](Media/img-14.png) | 
 
 
 ## Features Available Upon Request
 
-If you are using any of the following settings, and are moving to SaaS, let the Radiant Logic customer onboarding team know, so your tenant can be customized to support client IP address-related checking and/or client certificates checking.
+If you are using any of the following settings, and are moving to SaaS, let the Radiant Logic Support team know, so your tenant can be customized to support client IP address-related checking and/or client certificates checking. In self-managed deployments, customers are responsible for configuring their own load balancer with the required passthrough logic so that client IP addresses can be captured and used for IP-based access controls.
 
-- **Allowed IPs (Administration)** 
+1. **Allowed IPs (Administration)** 
   
-  ![config example](Media/img-2.png)  
-
-
-- **Per Computer/IP Limits & Special IP Checks (Limits)**  
-
-  Review if you have enabled any of the highlighted options in the image below.
-
-  ![config example](Media/img-5.png)  
+    ![config example](Media/img-2.png)  
    
+    If the value is set to one or more IP addresses, it means that you are using this feature. A value of "0" means this feature is inactive.
 
-- **IP Restrictions (ACI Settings)** 
+
+2. **Per Computer/IP Limits & Special IP Checks (Limits)**  
+
+    ![config example](Media/img-5.png)  
+
+    Review if you have enabled any of the highlighted options in the image.
+  
+
+3. **IP Restrictions (ACI Settings)** 
  
-  ![config example](Media/img-7.png)  
+    ![config example](Media/img-7.png)  
+   
+    Review if you have applied ACI settings to any IP addresses.
 
-- **Mutual Authentication (Security Settings)** 
+4. **Mutual Authentication (Security Settings)** 
 
-  ![config example](Media/mutual-auth.png)  
+    ![config example](Media/mutual-auth.png)  
+   
+    If the value is set to anything other than NONE, it means you are using this feature. 
 
 
 ## Feature Usage Requiring Further Discussion 
 
 If you have enabled any of the following features in v7.4, work with Radiant Logic Customer Support team to understand your options when upgrading:
 
-- **Synchronizing Passwords to Entra ID**
+1. **Synchronizing Passwords to Entra ID**
 
-- **Using the Active Directory Password Filter**
+2. **Using the Active Directory Password Filter**
 
-- **Kerberos Authentication** 
+3. **Kerberos Authentication** 
 
-  ![config example](Media/img-11.png)
- 
+    ![config example](Media/img-11.png)
+    
+    Review if this authentication is enabled or not. 
+   
 
-- **Kerberos to Backend Active Directory Data Sources**
+4. **Kerberos to Backend Active Directory Data Sources**
 
-  ![config example](Media/img-3.png)
+    ![config example](Media/img-3.png)
+    
+    Review if you have configured a Kerberos profile in your LDAP data source. 
 
-- **Log2DB**: The Log2DB utility is discontinued in v8.1. However, pushing log files to a log aggregator like Splunk is available in Identity Data Management (SaaS & Self-managed). Self-managed deployments must set up **[their own log aggregator](../../v8.1/installation/metrics-and-logging/)**.
+5. **Log2DB**: The Log2DB utility is discontinued in v8.1. However, pushing log files to a log aggregator like Splunk is available in Identity Data Management (SaaS & Self-managed). Self-managed deployments must set up **[their own log aggregator](../../v8.1/installation/metrics-and-logging/)**.
 
-- **Reporting**: Reporting is included in Environment Operations Center for SaaS deployments. Self-managed deployments should use **Prometheus (15.13.0+)** and optionally **Grafana (6.40.0+)** to generate reports from **[metrics](../../v8.1/installation/metrics-and-logging/)**.
+6. **Reporting**: Reporting is included in Environment Operations Center for SaaS deployments. Self-managed deployments should use **Prometheus (15.13.0+)** and optionally **Grafana (6.40.0+)** to generate reports from **[metrics](../../v8.1/installation/metrics-and-logging/)**.
 
-- **Retrieving Existing Active Directory Passwords**: For SaaS deployments, this requires a Secure Data Connector to be deployed in the Active Directory network. This feature will be supported in self-managed deployments soon.
+7. **Retrieving Existing Active Directory Passwords**: For SaaS deployments, this requires a Secure Data Connector to be deployed in the Active Directory network. This feature will be supported in self-managed deployments soon.
 
-- **CPLDS**: RadiantOne v7.4 includes a Capture Process for Large numbers of distributed Directory Stores (CPLDS). This feature leverages components known as Workers to detect changes in source LDAP directories, Active Directories, or LDIF files and refreshes a RadiantOne Directory (HDAP) replica.
+8. **CPLDS**: RadiantOne v7.4 includes a Capture Process for Large numbers of distributed Directory Stores (CPLDS). This feature leverages components known as Workers to detect changes in source LDAP directories, Active Directories, or LDIF files and refreshes a RadiantOne Directory (HDAP) replica. To find out if you are using this feature, navigate to your directory namespace and check if the process is enabled. 
   
   ![config example](Media/cplds.jpg)
 
