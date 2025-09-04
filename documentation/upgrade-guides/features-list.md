@@ -15,13 +15,13 @@ The following features have been deprecated and are no longer available in v8.1 
 
 | Feature                                                       | Where to find this feature in 7.4                                                             |  
 | ------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | 
-| Server Front-End – Other Protocols (VRS)                      | Check configuration for VRS protocol usage. <br> ![config example](Media/img-1.png)            | 
+| Server Front-End – Other Protocols (VRS)                      | Check configuration for VRS protocol usage. <br> <br> ![config example](Media/img-1.png)            | 
 | ACI Settings – Level of Assurance                             | Check Access Control rules for 'Level of Assurance.' A value other than 0 indicates that this feature is being used. <br> ![config example](Media/img-6.png)   | 
-| Security Settings – Role Mapped Access in Proxy Views of LDAP | Review proxy view settings for role mapping. <br> ![config example](Media/img-role.png)                                                  | 
-| Wizard – Directory Tree Wizard                                | Check if it is used to create virtual identity views. In v8, you can use Directory Namespace to create your tree. <br> ![config example](Media/img-12.png) |
-| Wizard – Groups Builder Wizard                                | Check if it is used to create virtual identity views. In v8, you can use Directory Browser to create dynamic groups. <br> ![config example](Media/img-13.png) | 
-| Wizard – Groups Migration Wizard                              | Check if it is used to create virtual identity views.  In v8, you can use Directory Namespace to create views of existing groups and either DN remapping or a computed attribute to remap group members. <br> ![config example](Media/img-15.png) |
-| Wizard – Merge Tree Wizard                                    | Check if it is used to create virtual identity views. In v8, you can use Directory Namespace to create your merged tree. <br> ![config example](Media/img-14.png) | 
+| Security Settings – Role Mapped Access in Proxy Views of LDAP | Review proxy view settings for role mapping. <br> <br> ![config example](Media/img-role.png)                                                  | 
+| Wizard – Directory Tree Wizard                                | Check if it is used to create virtual identity views. In v8, you can use Directory Namespace to create your tree. <br> <br> ![config example](Media/img-12.png) |
+| Wizard – Groups Builder Wizard                                | Check if it is used to create virtual identity views. In v8, you can use Directory Browser to create dynamic groups. <br> <br> ![config example](Media/img-13.png) | 
+| Wizard – Groups Migration Wizard                              | Check if it is used to create virtual identity views.  In v8, you can use Directory Namespace to create views of existing groups and either DN remapping or a computed attribute to remap group members. <br> <br> ![config example](Media/img-15.png) |
+| Wizard – Merge Tree Wizard                                    | Check if it is used to create virtual identity views. In v8, you can use Directory Namespace to create your merged tree. <br> <br> ![config example](Media/img-14.png) | 
 
 
 ## Features Available Upon Request
@@ -46,7 +46,7 @@ If you are using any of the following settings, and are moving to SaaS, let the 
  
     ![config example](Media/img-7.png)  
    
-    Review if you have applied ACI settings to any IP addresses.
+    Review if you have enabled Allow IP option for any IP addresses.
 
 4. **Mutual Authentication (Security Settings)** 
 
@@ -69,7 +69,6 @@ If you have enabled any of the following features in v7.4, work with Radiant Log
     
     Review if this authentication is enabled or not. 
    
-
 4. **Kerberos to Backend Active Directory Data Sources**
 
     ![config example](Media/img-3.png)
@@ -82,8 +81,8 @@ If you have enabled any of the following features in v7.4, work with Radiant Log
 
 7. **Retrieving Existing Active Directory Passwords**: For SaaS deployments, this requires a Secure Data Connector to be deployed in the Active Directory network. This feature will be supported in self-managed deployments soon.
 
-8. **CPLDS**: RadiantOne v7.4 includes a Capture Process for Large numbers of distributed Directory Stores (CPLDS). This feature leverages components known as Workers to detect changes in source LDAP directories, Active Directories, or LDIF files and refreshes a RadiantOne Directory (HDAP) replica. To find out if you are using this feature, navigate to your directory namespace and check if the process is enabled. 
-  
+8. **CPLDS**: RadiantOne v7.4 includes a Capture Process for Large numbers of distributed Directory Stores (CPLDS). This feature leverages components known as Workers to detect changes in source LDAP directories, Active Directories, or LDIF files and refreshes a RadiantOne Directory (HDAP) replica. To find out if you are using this feature, navigate to your directory namespace and check if the process is enabled.
+   
   ![config example](Media/cplds.jpg)
 
 
