@@ -439,7 +439,7 @@ Figure 19: Example Alert Descriptions
 
 When performing scheduled maintenance or patches, temporary service interruptions may occur, often triggering a large number of alerts. You can temporarily disable all alerts during scheduled maintenance by using maintenance mode. 
 
->[!warning] Maintenance Mode cannot be configured while ZK is in READ-ONLY state.
+>[!warning] Maintenance Mode cannot be configured while ZooKeeper is in READ-ONLY state.
 
 
 To enable maintenance mode, follow these steps:
@@ -458,5 +458,6 @@ If you would like to disable maintenance mode prior to the scheduled time, follo
 ![An image showing how to use maintenance mode ](Media/disable-maintenancemode.png)
 
 2. Click the Disable Maintenance Mode button to re-enable alerts.
+
 
 
