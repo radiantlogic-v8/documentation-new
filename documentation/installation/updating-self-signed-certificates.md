@@ -1,5 +1,5 @@
 ---
-title: Updating ceritificates
+title: Updating certificates
 description: Learn how to create and manage self-signed server certificates.
 ---
 
