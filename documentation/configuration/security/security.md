@@ -48,7 +48,7 @@ For self-managed deployments, you need to map the interal LDAPS service port for
 
 ### Mutual Authentication: Certificate-based Authentication
 
->[!warn] Mutual authentication (mTLS) is currently supported in self-managed deployments of Identity Data Management only. You must configure your ingress/load balancer to pass through the TLS certificate from the client. Mutual authentication is not currently supported in SaaS deployments.
+>[!warn] To enable mutual authentication (mTLS) in self-managed deployments of Identity Data Management, you must configure your ingress/load balancer to pass through the TLS certificate from the client. Mutual authentication can be enabled upon request in SaaS deployments. Contact the Radiant Logic support team if you would like to request enabling this feature in your SaaS tenant. 
 
 A certificate is an electronic document that identifies an entity which can be an individual, a server, a company, or some other entity. The certificate also associates the entity with a public key.
 
@@ -167,3 +167,4 @@ Password policies include a set of rules that control how passwords are used and
 RadiantOne offers a default password policy that controls all RadiantOne Directory stores and persistent cached identity views. However, custom password policies can be defined for fine-grained control.
 
 See [Managing Password Policies](./password-policies) for details.
+
