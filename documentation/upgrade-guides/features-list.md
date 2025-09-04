@@ -11,15 +11,17 @@ This document provides details on deprecated features and features that may requ
 
 ## Features Deprecated in 8.1
 
-| Feature                                                       | Where to find this feature in 7.4                                                           |  
-| ------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | 
-| Server Front-End – Other Protocols (VRS)                      | Check configuration for VRS protocol usage. <br>![config example](Media/img-1.png)          | 
-| ACI Settings – Level of Assurance                             | Check Access Control rules for “Level of Assurance.” <br>![config example](Media/img-6.png) | 
-| Security Settings – Role Mapped Access in Proxy Views of LDAP | Review proxy view settings for role mapping.                                                |
-| Wizard – Directory Tree Wizard                                | Check if it is used to create virtual identity views. <br>![config example](Media/img-12.png)                         |
-| Wizard – Groups Builder Wizard                                | Check if it is used to create virtual identity views. <br>![config example](Media/img-13.png)                         | 
-| Wizard – Groups Migration Wizard                              | Check if it is used to create virtual identity views. <br>![config example](Media/img-15.png)                         |
-| Wizard – Merge Tree Wizard                                    | Check if it is used to create virtual identity views. <br>![config example](Media/img-14.png)                         |
+The following features have been deprecated and are no longer available in v8.1 of Identity Data Management. If you have any questions about these features, reach out to the Radiant Logic Customer Support team.
+
+| Feature                                                       | Where to find this feature in 7.4                                                             |  
+| ------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | 
+| Server Front-End – Other Protocols (VRS)                      | Check configuration for VRS protocol usage. <br>![config example](Media/img-1.png)            | 
+| ACI Settings – Level of Assurance                             | Check Access Control rules for “Level of Assurance.” <br>![config example](Media/img-6.png)   | 
+| Security Settings – Role Mapped Access in Proxy Views of LDAP | Review proxy view settings for role mapping.                                                  | 
+| Wizard – Directory Tree Wizard                                | Check if it is used to create virtual identity views. <br>![config example](Media/img-12.png) |
+| Wizard – Groups Builder Wizard                                | Check if it is used to create virtual identity views. <br>![config example](Media/img-13.png) | 
+| Wizard – Groups Migration Wizard                              | Check if it is used to create virtual identity views. <br>![config example](Media/img-15.png) |
+| Wizard – Merge Tree Wizard                                    | Check if it is used to create virtual identity views. <br>![config example](Media/img-14.png) | 
 
 
 ## Features Available Upon Request
@@ -27,12 +29,16 @@ This document provides details on deprecated features and features that may requ
 If you are using any of the following settings, and are moving to SaaS, let the Radiant Logic customer onboarding team know, so your tenant can be customized to support client IP address-related checking and/or client certificates checking.
 
 - **Allowed IPs (Administration)** 
- 
-   ![config example](Media/img-2.png)  
+  
+  ![config example](Media/img-2.png)  
+
 
 - **Per Computer/IP Limits & Special IP Checks (Limits)**  
 
-   ![config example](Media/img-5.png)  
+  Review if you have enabled any of the highlighted options in the image below.
+
+  ![config example](Media/img-5.png)  
+   
 
 - **IP Restrictions (ACI Settings)** 
  
@@ -45,15 +51,16 @@ If you are using any of the following settings, and are moving to SaaS, let the 
 
 ## Feature Usage Requiring Further Discussion 
 
-If you use any of the following features in v7.4, work with Radiant Logic Customer Support team to understand your options when upgrading:
+If you have enabled any of the following features in v7.4, work with Radiant Logic Customer Support team to understand your options when upgrading:
 
 - **Synchronizing Passwords to Entra ID**
 
 - **Using the Active Directory Password Filter**
 
-- **Kerberos Authentication**
+- **Kerberos Authentication** 
 
   ![config example](Media/img-11.png)
+ 
 
 - **Kerberos to Backend Active Directory Data Sources**
 
