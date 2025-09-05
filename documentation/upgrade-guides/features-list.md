@@ -15,17 +15,67 @@ The following features have been deprecated and are no longer available in v8.1 
 
 <div style="background-color:transparent !important;">
 
-  | Feature                                                       | Where to find this feature in 7.4                                                             |  
-  | ------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | 
-  | Server Front-End – Other Protocols (VRS)                      | Check configuration for VRS protocol usage. <br> <br> ![config example](Media/img-1.png)            | 
-  | ACI Settings – Level of Assurance                             | Check Access Control rules for 'Level of Assurance.' A value other than 0 indicates that this feature is being used. <br> ![config example](Media/img-6.png)   | 
-  | Security Settings – Role Mapped Access in Proxy Views of LDAP | Review proxy view settings for role mapping. <br> <br> ![config example](Media/img-role.png)                                                  | 
-  | Wizard – Directory Tree Wizard                                | Check if it is used to create virtual identity views. In v8, you can use Directory Namespace to create your tree. <br> <br> ![config example](Media/img-12.png) |
-  | Wizard – Groups Builder Wizard                                | Check if it is used to create virtual identity views. In v8, you can use Directory Browser to create dynamic groups. <br> <br> ![config example](Media/img-13.png) | 
-  | Wizard – Groups Migration Wizard                              | Check if it is used to create virtual identity views.  In v8, you can use Directory Namespace to create views of existing groups and either DN remapping or a computed attribute to remap group members. <br> <br> ![config example](Media/img-15.png) |
-  | Wizard – Merge Tree Wizard                                    | Check if it is used to create virtual identity views. In v8, you can use Directory Namespace to create your merged tree. <br> <br> ![config example](Media/img-14.png) | 
-
+  <table style="border-collapse:collapse; width:100%;">
+    <thead>
+      <tr style="background-color:transparent !important;">
+        <th style="border:1px solid #000; padding:8px; text-align:left;">Feature</th>
+        <th style="border:1px solid #000; padding:8px; text-align:left;">Where to find this feature in 7.4</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="background-color:transparent !important;">
+        <td style="border:1px solid #000; padding:8px;">Server Front-End – Other Protocols (VRS)</td>
+        <td style="border:1px solid #000; padding:8px;">
+          Check configuration for VRS protocol usage. <br><br>
+          <img src="Media/img-1.png" alt="config example">
+        </td>
+      </tr>
+      <tr style="background-color:transparent !important;">
+        <td style="border:1px solid #000; padding:8px;">ACI Settings – Level of Assurance</td>
+        <td style="border:1px solid #000; padding:8px;">
+          Check Access Control rules for 'Level of Assurance.' A value other than 0 indicates that this feature is being used. <br>
+          <img src="Media/img-6.png" alt="config example">
+        </td>
+      </tr>
+      <tr style="background-color:transparent !important;">
+        <td style="border:1px solid #000; padding:8px;">Security Settings – Role Mapped Access in Proxy Views of LDAP</td>
+        <td style="border:1px solid #000; padding:8px;">
+          Review proxy view settings for role mapping. <br><br>
+          <img src="Media/img-role.png" alt="config example">
+        </td>
+      </tr>
+      <tr style="background-color:transparent !important;">
+        <td style="border:1px solid #000; padding:8px;">Wizard – Directory Tree Wizard</td>
+        <td style="border:1px solid #000; padding:8px;">
+          Check if it is used to create virtual identity views. In v8, you can use Directory Namespace to create your tree. <br><br>
+          <img src="Media/img-12.png" alt="config example">
+        </td>
+      </tr>
+      <tr style="background-color:transparent !important;">
+        <td style="border:1px solid #000; padding:8px;">Wizard – Groups Builder Wizard</td>
+        <td style="border:1px solid #000; padding:8px;">
+          Check if it is used to create virtual identity views. In v8, you can use Directory Browser to create dynamic groups. <br><br>
+          <img src="Media/img-13.png" alt="config example">
+        </td>
+      </tr>
+      <tr style="background-color:transparent !important;">
+        <td style="border:1px solid #000; padding:8px;">Wizard – Groups Migration Wizard</td>
+        <td style="border:1px solid #000; padding:8px;">
+          Check if it is used to create virtual identity views. In v8, you can use Directory Namespace to create views of existing groups and either DN remapping or a computed attribute to remap group members. <br><br>
+          <img src="Media/img-15.png" alt="config example">
+        </td>
+      </tr>
+      <tr style="background-color:transparent !important;">
+        <td style="border:1px solid #000; padding:8px;">Wizard – Merge Tree Wizard</td>
+        <td style="border:1px solid #000; padding:8px;">
+          Check if it is used to create virtual identity views. In v8, you can use Directory Namespace to create your merged tree. <br><br>
+          <img src="Media/img-14.png" alt="config example">
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
+
 
 
 ## Features Available Upon Request
