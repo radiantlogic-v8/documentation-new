@@ -16,6 +16,8 @@ description: Knowledge homepage
 
 Harness your identity data with intelligent integration to drive better business outcomes, improve security and compliance posture, increase speed-to-market, and more. Browse below to learn more about the capabilities and components that comprise Identity Data Management and link to the user guides to help get you started.
 
+## Overview
+
 <section>
   
   > [Introduction](/../eoc/latest/environments/environment-overview/create-environments)  
@@ -29,20 +31,11 @@ Harness your identity data with intelligent integration to drive better business
 
   > [REST API Configuration](command-line-configuration-guide/introduction)  
   > Learn about the configuration commands that are supported with the RadiantOne REST API.
-
-  > [Release Notes](release-notes/iddm-8-0-0)  
-  > Learn about improvements and bug fixes for RadiantOne Identity Data Management.
-
+ 
   > [Data Sources Supported](data-sources/data-sources-supported)  
   > Learn about identity data source backends supported in RadiantOne Identity Data Management.
 
-  > [Applying Patches](applying-patch/applying-patch)  
-  > Learn about how to patch RadiantOne Identity Data Management (e.g. v8.0.1 to v8.0.2).
-
-  > [Upgrades](upgrade-guides/upgrade-81)  
-  > Learn about how to upgrade RadiantOne Identity Data Management (e.g. 8.0.2 to v8.1.0).
-
-</section>
+ </section>
 
 ## RadiantOne Integration
 
@@ -137,7 +130,22 @@ Harness your identity data with intelligent integration to drive better business
   > Learn how to monitor RadiantOne Synchronization and configure alerts for concerning activities.
   
 </section>
+
+## Maintenance
+
+<section>
+   
+  > [Release Notes](release-notes/iddm-8-0-0)  
+  > Learn about improvements and bug fixes for RadiantOne Identity Data Management.
+  
+   > [Applying Patches](applying-patch/applying-patch)  
+  > Learn about how to patch RadiantOne Identity Data Management (e.g. v8.0.1 to v8.0.2).
+
+  > [Upgrades](upgrade-guides/upgrade-81)  
+  > Learn about how to upgrade RadiantOne Identity Data Management (e.g. 8.0.2 to v8.1.0). 
+  
 </section>
+
 </tabpanel>
 
 <tabpanel>
