@@ -53,7 +53,7 @@ If you are using any of the following settings, and are moving to SaaS, let the 
 
     ![config example](Media/mutual-auth.png)  
    
-    If the value is set to anything other than NONE, it means you are using this feature. <br> <br>
+    If the value is set to NONE, the feature is inactive. If it is set to any other option, it means that you are currently using this feature. <br> <br>
 
 
 ## Feature Usage Requiring Further Discussion 
