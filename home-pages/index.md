@@ -165,7 +165,7 @@ Harness your identity data with intelligent integration to drive better business
 
 </section>
 
-## RadiantOne Maintenance
+## Maintenance
 
 <section>
 
