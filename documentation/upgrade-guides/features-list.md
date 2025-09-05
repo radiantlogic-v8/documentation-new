@@ -33,7 +33,7 @@ If you are using any of the following settings, and are moving to SaaS, let the 
   
     ![config example](Media/img-2.png)  
    
-    If the value is set to one or more IP addresses, it means that you are using this feature. A value of "0" means this feature is inactive. <br> <br>
+    Review if you have enabled this feature. A value of "0" means this feature is inactive. If the value is set to one or more IP addresses, it means that you are using this feature. <br> <br>
 
 
 2. **Per Computer/IP Limits & Special IP Checks (Limits)**  
@@ -53,7 +53,7 @@ If you are using any of the following settings, and are moving to SaaS, let the 
 
     ![config example](Media/mutual-auth.png)  
    
-    If the value is set to NONE, the feature is inactive. If it is set to any other option, it means that you are currently using this feature. <br> <br>
+    Review if you have enabled this feature. If the value is set to NONE, the feature is inactive. If it is set to any other option, it means that you are currently using this feature. <br> <br>
 
 
 ## Feature Usage Requiring Further Discussion 
@@ -68,7 +68,7 @@ If you have enabled any of the following features in v7.4, work with Radiant Log
 
     ![config example](Media/img-11.png)
     
-    Review if this authentication is enabled or not. <br> <br>
+    Review if this authentication is enabled. <br> <br>
    
 4. **Kerberos to Backend Active Directory Data Sources**
 
