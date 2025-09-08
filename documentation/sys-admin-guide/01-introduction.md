@@ -56,8 +56,6 @@ The Main Control Panel displays the name of the RadiantOne cluster.
 
 ![An image showing ](Media/Image3.10.jpg)
 
-Figure 1: Main Control Panel Login Page
-
 The background color of the login screen can be customized after you log into the Main Control Panel. Click ![gear icon](Media/gear-icon.jpg) and enter a value for the Color Theme.
 
 ### Logging in with Username and Password
@@ -124,8 +122,7 @@ registeredID | [8]
 
     ![Client Certificate DN Mapping](Media/Image3.11.jpg)
  
-    Figure 2: Client Certificate DN Mapping
-
+   
 9.	Click **OK** to exit the Client Principal Mapping window.
 
 10.	Click **Save**.
@@ -137,14 +134,12 @@ registeredID | [8]
 
     ![Security Message in Browser Due to Untrusted Certificate of the Control Panel](Media/Image3.12.jpg)
 
-    Figure 3: Security Message in Browser Due to Untrusted Certificate of the Control Panel
-
+    
 13.	The Control Panel will request a certificate from the browser, so the browser will prompt the user with a list of loaded/trusted certificates. The user selects/confirms their certificate. An example is shown below.
 
     ![An image showing ](Media/Image3.13.jpg)
 
-    Figure 4: User Selects Certificate Associated with PIV Card
-
+ 
 14.	[CRL checking](06-security#certificate-revocation-list) (if enabled) is applied and if the certificate is valid and trusted, the user is logged into the Control Panel and has the permissions associated with the user defined in the Client Certificate DN Mapping configured in steps 7&8 above.
 
 15.	Once logged into the Main Control Panel, the user is prompted to select the certificate again. This second prompt is to indicate the credentials to be used for the Directory Browser tab (as a REST client to the RadiantOne service). 
@@ -163,13 +158,11 @@ The Control Panel, as a client to the RadiantOne service, supports two-factor au
 
     ![Custom Authentication Provider Example](Media/Image3.14.jpg)
  
-    Figure 5: Custom Authentication Provider Example
-
+ 
 3.	Ensure the delegated administrator accounts have an attribute that contains their unique ID in the custom authentication service. In the example shown above, the token ID is set in the carLicense attribute.
 
     ![Token ID Defined for an Administrator Example](Media/Image3.15.jpg)
 
-    Figure 6: Token ID Defined for an Administrator Example
 
 4.	Restart the RadiantOne service and Jetty (hosting the control panel). If a cluster is deployed, restart them on all nodes.
 
@@ -177,8 +170,6 @@ The Control Panel, as a client to the RadiantOne service, supports two-factor au
 
 ![Control Panel Login when a Custom Authentication Provider is Configured](Media/Image3.16.jpg)
  
-Figure 7: Control Panel Login when a Custom Authentication Provider is Configured
-
 ### Accessing the Control Panel over SSL
 
 If you are using a self-signed server certificate (or any certificate not signed by a trusted/known Certificate Authority), you must install/trust the RadiantOne server certificate into your Internet browser. This can be done with the steps below.
@@ -191,13 +182,9 @@ If you are using a self-signed server certificate (or any certificate not signed
 
     ![Certificate Information](Media/Image3.17.jpg)
 
-    Figure 8: Certificate Information
-
 4.	Select the option to install the certificate, in Trusted Root Certificates.
 
     ![Installing the Certificate](Media/Image3.18.jpg)
-
-    Figure 9: Installing the Certificate
 
 5.	Restart your browser after installing the certificate.
 
@@ -206,8 +193,6 @@ If you are using a self-signed server certificate (or any certificate not signed
 7.	Click the Certificate Information link.
 
     ![Importing the Certificate](Media/Image3.19.jpg)
-
-    Figure 10: Importing the Certificate
 
 8.	On the Details tab, click **Copy to File**. 
 
@@ -221,15 +206,12 @@ If you are using a self-signed server certificate (or any certificate not signed
 
     ![Browser Settings in Google Chrome](Media/Image3.20.jpg)
 
-    Figure 11: Browser Settings in Google Chrome
-
 13.	Under settings, click **Show Advanced Settings**.
 
 14.	Click **Manage Certificates** in the HTTPS/SSL section. 
 
     ![“Manage certificates” option in Google Chrome](Media/Image3.21.jpg)
 
-    Figure 11: “Manage certificates” option in Google Chrome
 
 15.	On the Trusted Root Certification Authorities tab, click Import. 
 
@@ -357,15 +339,11 @@ Once a new subcluster is defined, you can click on the Open link to launch the C
 
 ![The Clusters Tab](Media/Image3.29.jpg)
  
-Figure 19: The Clusters Tab
-
 # Global Sync Tab
 
 The Global Sync tab is used to configure and managing synchronization topologies. For details on configuring synchronization, see the [RadiantOne Global Sync Guide](/global-sync-guide/introduction).
 
 ![Global Sync Tab](Media/Image3.166.jpg)
- 
-Figure 20: Global Sync Tab
  
 # Zookeeper Tab
 The Zookeeper tab is used for browsing and editing ZooKeeper contents. The configurations that are managed for all cluster nodes can be viewed from here. RadiantOne specific configuration is shown when expanding the RadiantOne node. ZooKeeper specific configuration is shown when expanding the zookeeper node.
@@ -377,15 +355,12 @@ One of the key configuration nodes is vds_server.conf located at /radiantone/<ve
 
 ![zookeeper tab](Media/Image3.161.jpg)
  
-Figure 21: ZooKeeper Tab
-
 Certain nodes contain editable information. To modify settings for a specific node, click **EDIT MODE**. You can also import ZooKeeper configuration while in the EDIT MODE. This allows you to rollback to a previously saved ZooKeeper configuration or import configuration from another ZooKeeper (from another cluster for example). Click **SAVE** when you are finished.
 
 You can also export the ZooKeeper configuration (to make backup copies) by clicking **EXPORT**. Indicate the parent node in ZooKeeper from where you want to start exporting from. The default is the root (entire config). Indicate the directory to export the file to and the file name. This export can be used to save a backup of the ZooKeeper configuration.
 
 ![Exporting ZooKeeper Configuration](Media/Image3.162.jpg)
  
-Figure 22: Exporting ZooKeeper Configuration
 
 ## Dashboard Tab
 
@@ -397,8 +372,6 @@ The Dashboard Settings options (![An image showing ](Media/gear-icon.jpg)) locat
 
 ![Dashboard Settings](Media/Image3.30.jpg)
  
-Figure 23: Dashboard Settings
-
 ### Color Theme
 
 This option allows you to configure the background color of the top bar in the Main Control Panel and Server Control Panel. The background color is also used for the Main Control Panel login screen which can be useful, for example, if you want to differentiate between many clusters. Either enter the hexadecimal color code or select from the color chart that appears when you click in the Color Theme property. Changes made with this option affect the Main Control Panel and Server Control Panel for all nodes of the same cluster. 
@@ -447,8 +420,6 @@ You can start, stop and restart the RadiantOne service here by selecting an opti
 
 ![Message When Control Panel Associated with a Node is Not Running](Media/Image3.31.jpg)
  
-Figure 24: Message When Control Panel Associated with a Node is Not Running
-
 For each node, the Overview section displays the status of:
 
 -	Current CPU usage
@@ -471,8 +442,6 @@ For each node, the Overview section displays the status of:
 
 ![Overview Section of the Main Dashboard Tab](Media/Image3.32.jpg)
 
-Figure 25: Overview Section of the Main Dashboard Tab – Example of Cluster Containing 2 FID Nodes
-
 A green dot next to the line item indicates the service/port is running. 
 
 A gray dot means the service is not running.
@@ -485,11 +454,9 @@ If RadiantOne is deployed in a classic active/active or active/passive architect
 
 ## Server Event Log
 
-The Server Events log aggregates major events on server nodes such as startup information, leader switches, and RadiantOne Universal Directory (HDAP) store states. This log provides a quick diagnostic of the cluster status and feedback on the server initialization phases. The last status from the log is shown in the Main Control Panel’s Overview section, in the Server Event Log section for each node.
+The Server Events log aggregates major events on server nodes such as startup information, leader switches, and RadiantOne Directory (HDAP) store states. This log provides a quick diagnostic of the cluster status and feedback on the server initialization phases. The last status from the log is shown in the Main Control Panel’s Overview section, in the Server Event Log section for each node.
 
 ![Accessing the Server Event Log](Media/Image3.33.jpg)
-
-Figure 26: Accessing the Server Event Log from the Main Control Panel’s Dashboard Tab
 
 Click the status information to view the end of the Events Log. To view the entire log, open the log file directly from a text viewer like Notepad++. This log is located at <RLI_HOME>\<instance_name>\logs\vds_events.log. 
 
@@ -499,8 +466,6 @@ The Active Alerts section displays alert information about memory, connections, 
 
 ![AThe Active Alerts Section](Media/Image3.34.jpg)
  
-Figure 27: The Active Alerts Section on the Main Dashboard Tab
-
 For more information on configuring standard and custom alerts, refer to the [RadiantOne Monitoring and Reporting Guide](/monitoring-and-reporting-guide/01-monitoring).
 
 ## Internode Health Section
@@ -509,14 +474,10 @@ The Internode Health section displays a topology of all nodes in the cluster and
 
 ![Internode Health Diagram](Media/Image3.35.jpg)
  
-Figure 28: Internode Health Diagram
-
 If you hover the mouse pointer over a node, more details are shown. By default, this includes the availability of the LDAP and LDAPS ports for the RadiantOne service, and the ability to read and write to ZooKeeper on the target node. To toggle information about ZooKeeper or LDAP connectivity, check/uncheck the corresponding box in the upper-left corner of the Internode Health section.
 
 ![Health Details](Media/Image3.36.jpg)
  
-Figure 29: Health Details
-
 A green checkmark means connectivity on the RadiantOne LDAP and/or LDAPS ports is fine and ZooKeeper can be read from and written to.
 
 A red X means there is no connectivity on the LDAP and/or LDAPS ports for RadiantOne and/or ZooKeeper cannot be read from or written to. 
@@ -546,20 +507,16 @@ A series of graphs are displayed on the Dashboard tab and allow for monitoring a
 
 ![Graphs Related to a Specific RadiantOne Node](Media/Image3.167.jpg)
 
-Figure 30: Graphs Related to a Specific RadiantOne Node
-
 In the upper right, you can indicate the time range the graphs should display. To indicate a time period of longer than 12 hours, choose the Custom option.
 
 ![Graph Range](Media/Image3.168.jpg)
  
-Figure 31: Graph Range
-
 >[!warning]
 >It is generally not recommended to expand the graph range beyond a 12-hour period since it causes a large amount of HTTP and LDAP requests to RadiantOne that is proportional in quantity to the length of the time period requested. For example, a 12-hour period generates ~100 requests.
 
 ## Usage & Activity Tab
 
-From the Usage & Activity tab on the Server Control Panel, you can access information about the RadiantOne software version installed on the node, monitor the current connections and operations, view statistics for all Universal Directory (HDAP) stores and view network latency between nodes (only applicable to cluster deployments).
+From the Usage & Activity tab on the Server Control Panel, you can access information about the RadiantOne software version installed on the node, monitor the current connections and operations, view statistics for all RadiantOne Directory (HDAP) stores and view network latency between nodes (only applicable to cluster deployments).
 
 ### Server Information
 
@@ -567,8 +524,6 @@ Specific product details associated with the node are shown in the Server Inform
 
 ![Server Information](Media/Image3.169.jpg)
  
-Figure 32: Server Information
-
 **Server Name** – Indicates the machine name where RadiantOne is installed.
 
 **Resolved IP** – The resolved IP address associated with the host name of the machine.
@@ -609,8 +564,6 @@ From the Connections & Ops section you can view the current usage summary in ter
 
 ![Server Connections and Operations](Media/Image3.170.jpg)
  
-Figure 33: Server Connections and Operations
-
 In the Usage Summary section, you see connection usage since startup and average per minute. You all see operations since startup and average per minute.
 
 In the Current Connections section, there is a summary of operation types per connection (including a total number of operations) and the bind user that established the connection. You will also see the Client IP address associated with the open connections. To export current connection data into a CSV-format report, click **Export to CSV**. The Select CSV File window opens. Specify a file location (within <RLI_HOME>) or keep the default (<RLI_HOME>/vds_server/logs). Specify a file name. Click **OK**. If you specify a location that contains a CSV with the same file name, you are asked if you want to overwrite the existing file.
@@ -619,27 +572,25 @@ The data used to calculate these numbers can be found by querying RadiantOne wit
 
 The Processing Activity Details section, shows how many operations are waiting to be processed, how many operations are currently being executed in addition to the maximum working threads available and peak worker threads used.
 
-### RadiantOne Universal Directory (HDAP) Status
+### RadiantOne Directory (HDAP) Status
 
-Statistics for the stores can be viewed from the Universal Directory Status section. To filter the stores displayed, click on ![gear icon](Media/gear-icon.jpg) and then click Select Filters. Select the stores to display and click OK.
+Statistics for the stores can be viewed from the Directory Status section. To filter the stores displayed, click on ![gear icon](Media/gear-icon.jpg) and then click Select Filters. Select the stores to display and click OK.
 
 ![Tables to Display](Media/Image3.171.jpg)
  
-Figure 34: Tables to Display
+
 
 For each store, you see total number of entries, index size, search operations per second and write operations per second.
 
-![RadiantOne Universal Directory Stores](Media/Image3.172.jpg)
+![RadiantOne Directory Stores](Media/Image3.172.jpg)
  
-Figure 35: RadiantOne Universal Directory Stores
+
 
 ### Data Source Status
 
 In the Data Source Status you can see the status of all data sources defined in RadiantOne. A green dot in the Status column indicates that the data source is configured properly and running. A red dot in the Status column indicates that something is wrong with the data source configuration and RadiantOne cannot currently access it. There is a corresponding error message that states the main problem. If the error is due to incorrect connection information, update the data source on the Main Control Panel > Settings Tab > Server Backend section. Once the error has been corrected click on the refresh icon next to “Data Source Status” and the data source information refreshes to reflect your changes.
 
 ![Data Source Status](Media/Image3.173.jpg)
-
-Figure 36: Data Source Status
 
 The status values are on, off, offline, and unavailable. The following table describes each status. 
 
@@ -659,8 +610,6 @@ The graphs in the Network Latency section display the network latency between no
 
 ![Network Latency Graphs](Media/Image3.174.jpg)
  
-Figure 37: Network Latency Graphs
-
 ## Settings Tab
 
 To change the server name and manage server certificates, go to the Server Control Panel > Settings tab.
@@ -745,8 +694,6 @@ To replace the default installed self-signed certificate with a new JKS certific
 
     ![SSL Server Certificate for RadiantOne](Media/Image3.175.jpg)
 
-    Figure 38: SSL Server Certificate for RadiantOne
-
 6.	Next, you can download the Root Certificate from the Microsoft CA. From a web browser, access the certificate server.
 
     `http://<IP address>/certsrv`
@@ -755,16 +702,12 @@ To replace the default installed self-signed certificate with a new JKS certific
 
     ![Certificates Services Console](Media/Image3.176.jpg)
  
-    Figure 39: Certificates Services Console
-
 8.	Select the certificate from the list and choose the encoding method DER.
 
 9.	Click **Download CA certificate**.
 
     ![Downloading a Root CA Certificate](Media/Image3.177.jpg)
  
-    Figure 40: Downloading a Root CA Certificate
-
 10.	Click **Save** to save the certificate file.
 
 11.	Navigate to <RLI_HOME>/<instance_name>/conf and save the certificate as certca.cer.
@@ -798,14 +741,10 @@ http://<IP address>/certsrv
 
     ![An image showing ](Media/Image3.178.jpg)
 
-    Figure 41: Requesting a Certificate
-
 18.	Choose Submit a certificate request by using a base-64-encoded CMC or PKCS #10 file, or submit a renewal request by using a base-64-encoded PKCS #7 file.
 
     ![Advanced Certificate Request](Media/Image3.179.jpg)
  
-    Figure 42: Advanced Certificate Request
-
 19.	Paste the entire contents from the certificate request file that was generated previously.
 
 20.	From the Certificate Template drop-down list, select Web Server.
@@ -814,16 +753,12 @@ http://<IP address>/certsrv
 
     ![Submitting the Certificate Request](Media/Image3.180.jpg)
 
-    Figure 43: Submitting the Certificate Request
-
 22.	Choose the DER encoded option.
 
 23.	Click **Download Certificate**.
 
     ![Downloading the Certificate](Media/Image3.181.jpg)
  
-    Figure 44: Downloading the Certificate
-
 24.	Click **Save**.
 
 25.	Navigate to <RLI_HOME>/<instance_name>/conf and name the file vds.cer.
@@ -970,11 +905,9 @@ From the Server Control Panel > Tasks tab, you can start and stop the scheduler 
 
 ![Tasks Tab](Media/Image3.182.jpg)
  
-Figure 45: Tasks Tab
-
 The following operations are considered tasks and generate an event in the Task Scheduler when they occur: 
 -	Initializing a persistent cache 
--	Initializing a RadiantOne Universal Directory (HDAP) store 
+-	Initializing a RadiantOne Directory (HDAP) store 
 -	Re-indexing a cache
 -	Exporting entries to an LDIF file
 -	Importing entries from an LDIF file
@@ -987,8 +920,6 @@ Task Scheduler parameters can be modified by clicking **Config** in the Task Sch
 
 ![Task Scheduler Configuration](Media/Image3.183.jpg)
  
-Figure 46: Task Scheduler Configuration
-
 By default, each task executes in its own dedicated JVM. If the option “Dedicated JVM” is not checked in the specific task configuration, then the task executes inside the JVM of the scheduler. Users can customize the default JVM parameters to allow more memory, or change the performance settings. Users can customize the default JVM parameters to allow more memory to the virtual machine, or change the performance settings. However, tuning the JVM of the task scheduler is less important than tuning the dedicated JVM for the individual task. For a full list of possible behavioral and performance options, please see the link below.
 
 http://www.oracle.com/technetwork/java/javase/tech/vmoptions-jsp-140102.html
@@ -1001,8 +932,6 @@ When operations are added as tasks, they appear in the Task List section, with i
 
 ![Sample Task List](Media/Image3.184.jpg)
  
-Figure 47: Sample Task List
-
 To edit an existing task, click the pencil icon. The Task Configuration menu displays all task components. The name and status are shown, but cannot be changed. To make the task non-recurring (the task no longer repeats) uncheck the “Recurrent” box, the task runs one final time and then the status automatically changes to “Finished.” The execution interval (the frequency at which the task is executed) can be modified by changing the hours, minutes, and second boxes.
 
 By default, all tasks run in their own dedicated JVM and the memory allocated for the task automatically expands up to ¼ of the total machine memory. For example, if the machine where RadiantOne is installed has 16 GB of RAM, the task memory expands up to 4 GB to process a task. If you prefer, you can define a max Java heap size in the JVM parameters instead of leveraging this default expansion. Other custom settings can be entered in the JVM Parameters as well. For a full list of possible behavioral and performance options, please see the link below.
@@ -1015,11 +944,9 @@ Users must click “Update Task” before closing out of the task configuration 
 
 ![Task Configuration](Media/tasks-configuration.jpg)
  
-Figure 48: Task Configuration
-
 ### Custom Tasks
 
-Certain operations like initializing a persistent cache or RadiantOne Universal Directory store, re-indexing a persistent cache or RadiantOne Universal Directory store, exporting or importing an LDIF file, and login analysis, are performed as tasks. Custom tasks can also be configured. 
+Certain operations like initializing a persistent cache or RadiantOne Directory store, re-indexing a persistent cache or RadiantOne Directory store, exporting or importing an LDIF file, and login analysis, are performed as tasks. Custom tasks can also be configured. 
 
 1.	Create a task in the com.rli.scripts.tasks package by extending one the abstract tasks in the com.rli.task package (e.g. KillableTask). 
 
@@ -1068,8 +995,6 @@ jvmargs	 | Only applicable if newjvm=true. This property can be used to customiz
 
 ![Task Scheduler and Tasks](Media/Image3.185.jpg)
 
-Figure 49: Task Scheduler and Tasks
-
 >[!note] Logs related to tasks are located in <RLI_HOME>/vds_server/logs/scheduler/task.<task_name>.log
 
 ### Log Viewer Tab
@@ -1082,8 +1007,6 @@ Select the log file from the drop-down list. You can also set a filter to limit 
 
 ![Log Viewer](Media/Image3.186.jpg)
  
-Figure 50: Log Viewer
-
 >[!warning] If you change the log location of RadiantOne server log, the Log Viewer tab on the Server Control Panel cannot be used to view the log contents. A basic text viewer (like Notepad) must be used instead.
 
 For complete details on logs and troubleshooting, please see the [RadiantOne Logging and Troubleshooting Guide](/logging-and-troubleshooting-guide/01-overview).
@@ -1157,7 +1080,7 @@ cn=readonly,ou=globalgroups,cn=config
 -	Create, update, or delete backend mappings
 -	Create, update, and manage persistent cache
 -	Create, update, or delete data sources
--	Create, update, or delete RadiantOne Universal Directory (HDAP) stores
+-	Create, update, or delete RadiantOne Directory (HDAP) stores
 -	Update RadiantOne LDAP schema
 -	Launch tasks
 -	View synchronization topologies and manage synchronization components on the Global Sync Tab
@@ -1183,7 +1106,7 @@ cn=namespaceadmin,ou=globalgroups,cn=config
 **Operator Role** – Members of this group can perform the following operations:
 
 -	Read RadiantOne configuration 
--	Create, update, or delete RadiantOne Universal Directory (HDAP) Stores
+-	Create, update, or delete RadiantOne Directory (HDAP) Stores
 -	Restart the RadiantOne service from the Main Control Panel
 -	Stop the RadiantOne service from the Main Control Panel
 -	Launch tasks
@@ -1283,7 +1206,7 @@ As mentioned above, the groups used for delegated administration are Directory A
 #### Managing Explicit Members
 
 >[!warning]
->It is generally advised to assign only local (in a RadiantOne Universal Directory store) user accounts to delegated admin roles. Although you can assign any user in the RadiantOne namespace to a delegated admin role, use caution with this approach because if the backend isn’t accessible, then the user login to the Control Panel will fail and the user will not be able to administer RadiantOne. Also, performance can be degraded because RadiantOne must delegate the bind (authentication) to the backend instead of processing it locally.
+>It is generally advised to assign only local (in a RadiantOne Directory store) user accounts to delegated admin roles. Although you can assign any user in the RadiantOne namespace to a delegated admin role, use caution with this approach because if the backend isn’t accessible, then the user login to the Control Panel will fail and the user will not be able to administer RadiantOne. Also, performance can be degraded because RadiantOne must delegate the bind (authentication) to the backend instead of processing it locally.
 
 1.	Log into the Main Control Panel as the super user and click on the Directory Browser tab.
 
@@ -1293,12 +1216,11 @@ As mentioned above, the groups used for delegated administration are Directory A
 
 ![manage group members](Media/Image3.1.jpg)
  
-Figure 51: Manage Group Members
 
 #### Managing Dynamic Members
 
 >[!warning]
->It is generally advised to assign only local (in a RadiantOne Universal Directory store) user accounts to delegated admin roles. Although you can assign any user in the RadiantOne namespace to a delegated admin role, use caution with this approach because if the backend isn’t accessible, then the user login to the Control Panel will fail and the user will not be able to administer RadiantOne. Also, performance can be degraded because RadiantOne must delegate the bind (authentication) to the backend instead of processing it locally.
+>It is generally advised to assign only local (in a RadiantOne Directory store) user accounts to delegated admin roles. Although you can assign any user in the RadiantOne namespace to a delegated admin role, use caution with this approach because if the backend isn’t accessible, then the user login to the Control Panel will fail and the user will not be able to administer RadiantOne. Also, performance can be degraded because RadiantOne must delegate the bind (authentication) to the backend instead of processing it locally.
 
 1.	Log into the Main Control Panel as the super user and click on the Directory Browser tab. 
 
@@ -1315,8 +1237,6 @@ Figure 51: Manage Group Members
 7.	Click **Edit Dynamic Members**. From here you can manage the criteria for dynamic members.
 
 ![manage group window](Media/Image3.2.jpg)
-
-Figure 52: Manage Group Window
 
 8.	Click **Add Member(s)**.
 
@@ -1345,8 +1265,6 @@ Figure 52: Manage Group Window
 20.	Click **OK**.
 
 ![Dynamic Group Setting](Media/Image3.3.jpg)
-
-Figure 53: Dynamic Group Setting
 
 21.	Set the member attribute to either member or uniqueMember (to match your membership attribute) and click Save in the upper right.
 
@@ -1411,24 +1329,21 @@ The reason you can login with just the user ID as opposed to the full DN is beca
 
 ![Default User ID to DN Mapping Rule](Media/Image3.4.jpg)
  
-Figure 54: Default User ID to DN Mapping Rule
 
 ### Leveraging Existing Groups for Delegated Administration
 
-As an alternative to using the [default delegated admin groups](01-introduction#delegated-administration-of-radiantone) for enforcing authorization in the Control Panels, you can leverage your existing groups for these roles. Your groups and members must be in either a RadiantOne Universal Directory store, or persistent cache. If you choose to use your own existing groups and users, the [default delegated admin users](01-introduction#delegated-administration-roles) will not be able to log into the Control Panel.
+As an alternative to using the [default delegated admin groups](01-introduction#delegated-administration-of-radiantone) for enforcing authorization in the Control Panels, you can leverage your existing groups for these roles. Your groups and members must be in either a RadiantOne Directory store, or persistent cache. If you choose to use your own existing groups and users, the [default delegated admin users](01-introduction#delegated-administration-roles) will not be able to log into the Control Panel.
 
 >[!warning]
 >If your users and groups are in a persistent cache, the bind (credentials-checking) step during the login to the Control Panel is delegated to the backend directory for validation. If the backend isn’t accessible, then the user login to the Control Panel will fail and the user will not be able to administer RadiantOne. Also, performance can be degraded because RadiantOne must delegate the bind to the backend instead of processing it locally.
 
 To configure groups and users for delegated administration, follow the steps below.
 
-1.	The groups and users that you want to use for delegated administration must all be located under the same root naming context. Either import your groups and users into a RadiantOne Universal Directory store (e.g. import an LDIF file), or create a virtual view of groups and users and configure it as persistent cache. For assistance on creating RadiantOne Universal Directory stores, see the [RadiantOne Namespace Configuration Guide](/namespace-configuration-guide/01-introduction). For assistance on configuring persistent cache, see the [RadiantOne Deployment and Tuning Guide](/deployment-and-tuning-guide/00-preface).
+1.	The groups and users that you want to use for delegated administration must all be located under the same root naming context. Either import your groups and users into a RadiantOne Directory store (e.g. import an LDIF file), or create a virtual view of groups and users and configure it as persistent cache. For assistance on creating RadiantOne Directory stores, see the [RadiantOne Namespace Configuration Guide](/namespace-configuration-guide/01-introduction). For assistance on configuring persistent cache, see the [RadiantOne Deployment and Tuning Guide](/deployment-and-tuning-guide/00-preface).
 
 2.	(Optional) If your groups and users are in persistent cache, go to the Main Control Panel > Directory Namespace > Cache node and select your cache branch. On the Properties tab on the right, enter vdPrivilege in the Extension Attributes list and click Save.
 
 ![Entering vdPrivilege in the Extension Attributes Field](Media/Image3.5.jpg)
-
-Figure 55: Entering vdPrivilege in the Extension Attributes Field
 
 3.	Navigate to the Main Control Panel > Directory Browser tab.
 
@@ -1473,8 +1388,6 @@ Image 56: Adding the vdPrilvilege Attribute
 
 ![An image showing ](Media/Image3.9.jpg)
  
-Figure 58: Example of User Login with Full DN
-
 #### Delegated Administration Roles
 
 The roles and corresponding required permissions are described in the table below. For descriptions of each permission, see [Delegated Administration Permissions](#delegated-administration-permissions).
@@ -1483,8 +1396,8 @@ Role	| Required Permissions (Value of vdPrivilege)
 -|-
 **Directory Administrator** <br> Members of this group can perform all operations (all operations that the other groups defined below can perform) in addition to:<br>Change privileges for the delegated roles<br>Access the Global Sync Tab <br>Update username and password properties for data sources via LDAP modify command | admin-write <br>config-lock <br>config-read <br>config-write <br>logs-read <br>services-restart <br> services-shutdown <br>update-schema <br>instance-read <br>instance-write <br>acl-read <br>acl-write <br>naming-context-read <br>naming-context-write <br>security-write <br>data-source-read <br>data-source-write <br>data-store-read <br>data-store-write <br>ics-admin <br>tasks-admin <br>globalidviewer-read <br>globalidviewer-write
 **Read Only** <br> Members of this group can read the RadiantOne configuration, read settings for any configured instances, read naming context configurations, read configured data sources, and view synchronization topologies on the Global Sync Tab. Members can also log into the RadiantOne Insights, Reports and Administration Console and use the Global Identity Viewer to search for identities and groups. | config-read <br>instance-read <br>naming-context-read <br>data-source-read <br>globalidviewer-read
-**Namespace Administrator** <br> Members of this group can perform the following operations:<br> Read RadiantOne configuration<br> Access Wizards tab in Main Control Panel<br> Restart the RadiantOne service from Main Control Panel<br> Create, update, or delete naming contexts<br> Create, update, or delete backend mappings<br> Create, update, and manage persistent cache <br> Create, update, or delete data sources<br> Create, update, or delete RadiantOne Universal Directory stores<br> Update RadiantOne LDAP schema<br> Launch tasks | config-readconfig-write <br>services-restart<br>update-schema <br>naming-context-read<br>naming-context-write <br>data-source-read <br> data-store-read <br> data-store-write <br> tasks-admin <br> ics-admin
-**Operator** <br> Members of this group can perform the following operations: <br> Read RadiantOne configuration <br> Create, update, or delete RadiantOne Universal Directory (HDAP) Stores <br> Restart the RadiantOne service from the Main Control Panel <br> Stop the RadiantOne service from the Main Control Panel <br> Launch Tasks | config-read <br> config-write <br> services-restart <br> services-shutdown <br> data-store-read <br> data-store-write <br> tasks-admin <br> naming-context-read
+**Namespace Administrator** <br> Members of this group can perform the following operations:<br> Read RadiantOne configuration<br> Access Wizards tab in Main Control Panel<br> Restart the RadiantOne service from Main Control Panel<br> Create, update, or delete naming contexts<br> Create, update, or delete backend mappings<br> Create, update, and manage persistent cache <br> Create, update, or delete data sources<br> Create, update, or delete RadiantOne Directory stores<br> Update RadiantOne LDAP schema<br> Launch tasks | config-readconfig-write <br>services-restart<br>update-schema <br>naming-context-read<br>naming-context-write <br>data-source-read <br> data-store-read <br> data-store-write <br> tasks-admin <br> ics-admin
+**Operator** <br> Members of this group can perform the following operations: <br> Read RadiantOne configuration <br> Create, update, or delete RadiantOne Directory (HDAP) Stores <br> Restart the RadiantOne service from the Main Control Panel <br> Stop the RadiantOne service from the Main Control Panel <br> Launch Tasks | config-read <br> config-write <br> services-restart <br> services-shutdown <br> data-store-read <br> data-store-write <br> tasks-admin <br> naming-context-read
 Schema Administrator <br> Members of this group can perform the following operations: <br> Read RadiantOne configuration <br> Create, update or delete schema objects (objectclasses or attributes <br> Extend RadiantOne LDAP schema with objects and attributes from orx files <br> Create, update or delete data sources | config-read <br> update-schema <br> data-source-read <br> data-source-write 
 **ACI Administrator** <br> Members of this group can perform the following operations: <br> Read RadiantOne configuration <br> Create, update and delete access controls | config-read <br> acl-read <br> acl-write <br> naming-context-read 
 **ICS Administrator** <br> Members of this group can perform the following operations: <br> Read RadiantOne configuration <br> Access Wizards tab in Main Control Panel <br> Perform all operations from the Global Sync Tab <br> Log into the RadiantOne Insights, Reports and Administration console and access all applications	| config-read <br> config-write <br> naming-context-read <br> data-source-read <br> ics-admin <br> ics-workflow-approve <br> tasks-admin <br> globalidviewer-read <br> globalidviewer-write <br> globalidviewer-designer
@@ -1507,10 +1420,10 @@ config-read | Read RadiantOne configuration
 config-write | Write access to RadiantOne configuration
 data-source-read | Read configured data sources
 data-source-write | Create, update, and delete data sources
-data-store-read | View RadiantOne Universal Directory stores
-data-store-write | Create, update, or delete RadiantOne Universal Directory stores
+data-store-read | View RadiantOne Directory stores
+data-store-write | Create, update, or delete RadiantOne Directory stores
 globalidviewer-designer | Edit and delete templates and queries in the Global Identity Viewer
-globalidviewer-read | Log into the RadiantOne Global Identity Viewer
+globalidviewer-read | Log into the RadiantOne Global Identity Viewer. Cannot access the Main Control Panel
 globalidviewer-write | Can modify attribute values in the Global Identity Viewer
 ics-admin | Stop and start pipelines on the Sync Tab
 ics-operator | Access the Synchronization tab and read topologies
@@ -1536,4 +1449,3 @@ When other users log into the Control Panel, there is a message prompting the us
 
 ![Message Displayed for Locked Configuration](Media/Image3.149.jpg)
  
-Figure 59: Message Displayed for Locked Configuration
