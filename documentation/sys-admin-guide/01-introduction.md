@@ -339,9 +339,9 @@ Once a new subcluster is defined, you can click on the Open link to launch the C
 
 ![The Clusters Tab](Media/Image3.29.jpg)
  
-# Global Sync Tab
+# Synchronization Tab
 
-The Global Sync tab is used to configure and managing synchronization topologies. For details on configuring synchronization, see the [RadiantOne Global Sync Guide](/global-sync-guide/introduction).
+The Synchronization tab is used to configure and managing synchronization topologies. For details on configuring synchronization, see the [RadiantOne Synchronization](/global-sync-guide/introduction).
 
 ![Global Sync Tab](Media/Image3.166.jpg)
  
@@ -1449,3 +1449,4 @@ When other users log into the Control Panel, there is a message prompting the us
 
 ![Message Displayed for Locked Configuration](Media/Image3.149.jpg)
  
+
