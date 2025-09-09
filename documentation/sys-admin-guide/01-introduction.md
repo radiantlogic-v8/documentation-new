@@ -30,7 +30,7 @@ Technical support can be reached using any of the following options:
 
 Some settings in the Main Control Panel are accessible only in Expert Mode. To switch to Expert Mode, click the Logged in as, (username) drop-down menu and select Expert Mode. 
 
-![An image showing ](Media/expert-mode.jpg)
+![Main Control Panel Login](Media/expert-mode.jpg "Main Control Panel Login")
 
 >[!note]
 >The Main Control Panel saves the last mode (Expert or Standard) it was in when you log out and returns to this mode automatically when you log back in. The mode is saved on a per-role basis.
@@ -1449,4 +1449,5 @@ When other users log into the Control Panel, there is a message prompting the us
 
 ![Message Displayed for Locked Configuration](Media/Image3.149.jpg)
  
+
 
