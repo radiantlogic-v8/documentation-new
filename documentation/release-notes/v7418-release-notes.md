@@ -2,11 +2,13 @@
 title: v7.4.18 Release Notes
 description: v7.4.18 Release Notes
 ---
+
 # RadiantOne v7.4.18 Release Notes
 
-September 8, 2025
+September 10, 2025
 
 These release notes contain important information about improvements and bug fixes for RadiantOne v7.4.
+
 These release notes contain the following sections:
 
 [Supported Platforms](#supported-platforms)
@@ -23,7 +25,9 @@ These release notes contain the following sections:
 
 [How to Report Problems and Provide Feedback](#how-to-report-problems-and-provide-feedback)
 
+
 ## Improvements
+
 
 - [IV4-88]: Added a maintenance mode screen under the Monitoring section in the Control Panel that allows users to turn on maintenance mode and avoid alerts during this period.
 - [IV4-98,SQ-419]: Improved the privileges for the Global Identity Viewer, so that there are separate capabilities for the 'globalidviewer-write'   
@@ -43,19 +47,30 @@ privilege.
 - [IV4-252,SQ-567]: Made an improvement so that the Instance Manager allows the ZK password to be passed in as an encrypted value in install.properties.
 - [IV4-268,SQ-672]:  Improved attribute masking functionality in InstanceManager logs.
 - [IV4-290, SQ-292]: Improved the adap_access.log to respect attribute masking parameter when vdsconfig is called through ADAP.
-  
+
+
 ## Supported Platforms
 
 RadiantOne is supported on the following 64-bit platforms:
--   Microsoft Windows Server 2008 R2, 2012 R2, 2016, 2019, 2022
--   Windows Servers Core
--   Red Hat Enterprise Linux v5+
--   Fedora v24+
--   CentOS v7+
--   SUSE Linux Enterprise v11+
--   Ubuntu 16+
--   Oracle Enterprise Linux 7/8/9
+
+-	Microsoft Windows Server 2008 R2, 2012 R2, 2016, 2019, 2022
+
+-	Windows Servers Core
+
+-	Red Hat Enterprise Linux v5+
+
+-	Fedora v24+
+
+-	CentOS v7+
+
+-	SUSE Linux Enterprise v11+
+
+-	Ubuntu 16+
+
+-	Oracle Enterprise Linux 7/8/9
+
 For specific hardware requirements of each, please see: [System Requirements](https://developer.radiantlogic.com/idm/v7.4/system-requirements/v74-system-requirements/)
+
 
 ## Security-Vulnerability-Fixes
 
@@ -67,7 +82,8 @@ For specific hardware requirements of each, please see: [System Requirements](ht
 - [IV4-191]: Updated Apache CXF libraries to 3.5.11 to address CVE-2025-48795.
 - [IV4-192]: Updated Apache CXF libraries to version 3.5.11 to address CVE-2025-23184.
 - [IV4-193, IV4-194, IV4-195]: Updated Jetty libraries to version 9.4.57.v20241219 to address CVE-2024-6763,CVE-2024-8184, CVE-2024-13009 and CVE-2024-9823.
-  
+
+
 ## Bug Fixes
 
 - [IV4-66,SQ-395]: Fixed an issue where the underlying backend error message was not propagated to the client when Pass Through Authorization is set on a cached proxy-view.
@@ -95,22 +111,35 @@ For specific hardware requirements of each, please see: [System Requirements](ht
 - [IV4-228]: Fixed an issue causing the context builder popup dialogs to sometimes malfunction.
 - [IV4-253, SQ-453]: Fixed an issue with CRL checking via OCSP when in FIPS-mode. Since the new library is currently being recertified by NIST CMVP for FIPS 140-3, customers can use it at their discretion. ccj-4.0.0-fips.jar is the current, default NIST-certified library for FIPS 140-3 used, and ccj-4.0.1-prevalidation-fips.jar is the newer library that contains the CRL checking via OCSP fix. To use the new ccj-4.0.1-prevalidation-fips.jar library, update the following property in ZooKeeper (at /radiantone/<version>/<clusterName>/config/vds_server.conf) to a value of true and restart all RadiantOne services. 
 usingPrevalidationFipsJar: true 
+
 - [IV4-272]: Fixed an issue in the schema editor UI where the most recent popup was being opened upon saving the schema.
 - [IV4-274, SQ-719]: Fixed an issue by Updating the Salesforce JDBC driver to exit early if not a valid Salesforce JDBC URL to avoid outputting an unrelated log message on test connection failures.
 - [IV4-283]: Fixed an issue where the SCIM page incorrectly triggers unsaved changes confirmation without modifications.
 - [IV4-289]: Fixed permissions issue for schema manager where certain delegated admin roles weren't being authorized properly.
 - [IV4-296]: Fix for the mgraph custom object to use select query when performing one level and subtree searches to ensure all required attribute are retrieved from Entra ID.
-  
+
+
 ## Known Issues/Important Notes
 
 - CRL checking via OCSP when in FIPS-mode does not work and returns this error: javax.net.ssl.SSLHandshakeException: PKIX path validation failed: java.security.cert.CertPathValidatorException  <br> This issue has been fixed in v7.4.18, tracked in release notes item IV4-253. Customers must indicate to use the new library by settings usingPrevalidationFipsJar: true in Zookeeper at /radiantone/<version>/<clusterName>/config/vds_server.conf
+
 -If the environment variable RLI_CLI_VERBOSE is set to false, it must be temporarily set to true during product installation or update. Failure to do so may result in an incomplete or failed installation.
- After the installation or update completes successfully, the variable may be reverted to false if desired.
- If RLI_CLI_VERBOSE is not defined, or is already set to true, no action is required.
+After the installation or update completes successfully, the variable may be reverted to false if desired.
+If RLI_CLI_VERBOSE is not defined, or is already set to true, no action is required.
+
 
 For known issues reported after the release, please see the [Radiant Logic Knowledge Base](https://support.radiantlogic.com/hc/en-us/categories/4412501931540-Known-Issues).  
+
 
 ## Patch Installers
 
 To download the patch, click [here](https://files.radiantlogic.com/receive/?packageCode=IX0qTSRyilShjhpxusLWpUDzzb4rduq2tO9F81NhEt4#keycode=Niad1bODfyRmdW8PlGO-5In0mdRKsa0u6551qXXI1rA)
+
 Once logged in, navigate to: Customer Downloads/update_installers/7.4/<PatchVersion>/
+
+## How to Report Problems and Provide Feedback
+
+Feedback and problems can be reported from the Support Center/Knowledge Base accessible from: https://support.radiantlogic.com 
+
+If you do not have a user ID and password to access the site, please contact: support@radiantlogic.com.
+
