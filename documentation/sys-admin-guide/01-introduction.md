@@ -30,7 +30,7 @@ Technical support can be reached using any of the following options:
 
 Some settings in the Main Control Panel are accessible only in Expert Mode. To switch to Expert Mode, click the Logged in as, (username) drop-down menu and select Expert Mode. 
 
-![Main Control Panel Login](Media/expert-mode.jpg "Main Control Panel Login")
+![Main Control Panel Expert Mode](Media/expert-mode.jpg "Main Control Panel Expert Mode")
 
 >[!note]
 >The Main Control Panel saves the last mode (Expert or Standard) it was in when you log out and returns to this mode automatically when you log back in. The mode is saved on a per-role basis.
@@ -54,7 +54,7 @@ If the Web Server is already started, you can also access the control panel by o
 
 The Main Control Panel displays the name of the RadiantOne cluster. 
 
-![An image showing ](Media/Image3.10.jpg)
+![RadiantOne Cluster Name](Media/Image3.10.jpg)
 
 The background color of the login screen can be customized after you log into the Main Control Panel. Click ![gear icon](Media/gear-icon.jpg) and enter a value for the Color Theme.
 
@@ -132,17 +132,16 @@ registeredID | [8]
 12.	Access the Control Panel on the HTTPS port. E.g. https://w-rli10-lisapc:7171/main/login
 <br>By default, the Control Panel leverages the same SSL server certificate as the RadiantOne service. Make sure this certificate is trusted by your computer/browser, otherwise the browser displays security warnings when you access the Control Panel over HTTPS. An example is shown below.
 
-    ![Security Message in Browser Due to Untrusted Certificate of the Control Panel](Media/Image3.12.jpg)
+![Security Message in Browser Due to Untrusted Certificate of the Control Panel](Media/Image3.12.jpg) 
 
-    
 13.	The Control Panel will request a certificate from the browser, so the browser will prompt the user with a list of loaded/trusted certificates. The user selects/confirms their certificate. An example is shown below.
 
-    ![An image showing ](Media/Image3.13.jpg)
+    ![Selecting a Certificate from Browser](Media/Image3.13.jpg)
 
  
-14.	[CRL checking](06-security#certificate-revocation-list) (if enabled) is applied and if the certificate is valid and trusted, the user is logged into the Control Panel and has the permissions associated with the user defined in the Client Certificate DN Mapping configured in steps 7&8 above.
+15.	[CRL checking](06-security#certificate-revocation-list) (if enabled) is applied and if the certificate is valid and trusted, the user is logged into the Control Panel and has the permissions associated with the user defined in the Client Certificate DN Mapping configured in steps 7&8 above.
 
-15.	Once logged into the Main Control Panel, the user is prompted to select the certificate again. This second prompt is to indicate the credentials to be used for the Directory Browser tab (as a REST client to the RadiantOne service). 
+16.	Once logged into the Main Control Panel, the user is prompted to select the certificate again. This second prompt is to indicate the credentials to be used for the Directory Browser tab (as a REST client to the RadiantOne service). 
 
 >[!warning] If you log out of the Control Panel, you are redirected to the main login form. If you want to be prompted to select your certificate again, you must close and re-open your web browser.
 
@@ -241,7 +240,7 @@ The RadiantOne Main Control Panel also supports OpenID Connect (OIDC) token-base
 The administrator must click the Login with OpenID Connect option to login with an OpenID Connect token.
 The high-level flow is shown below.
 
-![An image showing ](Media/Image3.23.jpg)
+![OIDC Login Flow](Media/Image3.23.jpg)
 
 Detailed steps:
 
@@ -1449,5 +1448,6 @@ When other users log into the Control Panel, there is a message prompting the us
 
 ![Message Displayed for Locked Configuration](Media/Image3.149.jpg)
  
+
 
 
