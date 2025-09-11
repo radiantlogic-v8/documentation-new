@@ -35,10 +35,12 @@ This command exports the resource and its dependencies.
 
 >[!warning] This command does not export wizard artifacts (such as the XML files), except for  Global Identity Builder project artifacts. This command also does not export persistent cache configurations on naming contexts - it only exports the underlying non-cached configuration and you must reconfigure persistent cache again after importing into the target environment.
 
-**Usage:**
+**General Usage:**
 <br>`resource-export -name <name> [-instance <instance>] [-path <path>] [-skip <name>]`
 
+**Use the following command if you are exporting a single topology:** 
 
+<br>`resource-export -name <source_context->target_context> --cross-environment`
 
 **Command Arguments:**
 
@@ -54,8 +56,13 @@ This command exports the resource and its dependencies.
 `- skip <name>`
 <br>The name of the resource to skip and exclude from the export.
 
+`-name <source_context->target_context>`
+<br> The name of the topology. It should be formatted as "o=sourceviewname->o=destinationviewname". 
+
 `-- cross environment`
 <br>Indicates that resources will be exported in cross-environment mode.
+
+
 
 
 ### resource-import
@@ -64,8 +71,12 @@ This command imports the resource and its dependencies.
 
 >[!warning] This command does not import wizard artifacts (such as the XML files), except for  Global Identity Builder project artifacts. This command also does not import persistent cache configurations on naming contexts - it only imports the underlying non-cached configuration and you must reconfigure persistent cache again after importing into the target environment.
 
-**Usage:**
+**General Usage:**
 <br>`resource-import -path <path> [-apply] [-instance <instance>][-interactive] [-overwrite] [-skip <name>] [-skipregex <skipregex>]`
+
+**Use the following command if you are importing a single topology:** 
+
+<br>`resource-export -name <source_context->target_context> --cross-environment`
 
 **Command Arguments:**
 
@@ -99,23 +110,47 @@ Example: all:^test.* --> skips all resources starting with the name test.
 
 ## Examples 
 
-### Resource Traverse - REST (ADAP) Example
+### Traversing a Resource - REST (ADAP) Example
 
 In the following example, a request is made to display the resource dependency tree for a virtual view named contextcatalog.dvx.
 
 `https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=resource-traverse&name=contextcatalog.dvx`
 
-### Resource Export - REST (ADAP) Example
+### Exporting a Resource - REST (ADAP) Example
 
 In the following example, a request is made to export the resource so_hr_o_examples.dvx and its dependencies.
 
 `https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=resource-export&name=so_hr_o_examples.dvx&path=C:\radiantone\vds\vds_server` 
 
-### Resource Import - REST (ADAP) Example
+
+### Importing a Resource - REST (ADAP) Example
 
 In the following example, a request is made to import the resource so_hr_o_examples.dvx and its dependencies.
 
 `https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=resource-import&path=c:/radiantone/vds/vds_server/contextcatalog_dvx.zip&apply=&skipregex=ds:^derby.*`
+
+### Exporting and Importing a Single Topology Resource – Command Line Example
+
+In this example, we'll assume that we have defined multiple synchronization topologies("o=src1view -> o=destview" & "o=src2view -> o=dstview"). However, we only want to export a single topology ("o=src1view->o=dstview"). 
+
+  ![Image showing multiple topologies](Media/multi-sync.png)
+
+
+To do so, run the following command in the source cluster. 
+
+`vdsconfig.bat resource-export -name "o=srcview->o=dstview" --cross-environment`
+
+* o=srcview refers to the topology of the source data view.
+* o=dstview refers to the topology of the destination view.
+
+This command will generate and export a zip file to "C:\radiantone\vds\work\o_src1view_sync_o_dstview". 
+
+Next, to import the exported data, run the following command in the destination cluster: 
+
+`vdsconfig.bat resource-import -path "C:\tmp\o_src1view_sync_o_dstview.zip" -apply`. 
+
+
+
 
 
 
