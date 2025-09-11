@@ -143,9 +143,10 @@ To do so, run the following command in the source cluster.
 
 This command will generate and export a zip file to "C:\radiantone\vds\work\o_src1view_sync_o_dstview". Copy the generated file path. 
 
-Then, to import the exported data, execute the following command on the destination cluster, specifying the copied file path as the value for path: 
+Then, to import the exported data, execute the following command on the destination cluster, specifying the copied file path as the value of the `path` parameter: 
 
 `vdsconfig.bat resource-import -path "C:\tmp\o_src1view_sync_o_dstview.zip" -apply`. 
+
 
 
 
