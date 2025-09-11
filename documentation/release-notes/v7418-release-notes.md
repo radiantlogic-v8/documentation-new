@@ -30,8 +30,7 @@ These release notes contain the following sections:
 
 
 - [IV4-88]: Added a maintenance mode screen under the Monitoring section in the Control Panel that allows users to turn on maintenance mode and avoid alerts during this period.
-- [IV4-98,SQ-419]: Improved the privileges for the Global Identity Viewer, so that there are separate capabilities for the 'globalidviewer-write'   
-privilege.
+- [IV4-98,SQ-419]: Improved the privileges for the Global Identity Viewer, so that there are separate capabilities for the 'globalidviewer-write' privilege.
 - [IV4-104]: Variety of improvements to the computed attributes dialog window related to reordering, activating and validating. 
 - [IV4-111, SQ-420]: Added the onPremisesSyncEnabled attribute to the default schema for backends defined using the mgraph custom data source.
 - [IV4-126,SQ-469]: Added a feature to `vdsconfig` command that allows to export a single topology (with related contexts). Topology name should be specified in the format "source_context->target_context". Example command: `./vdsconfig.sh resource-export -name "ou=some,o=context->o=another_context."
