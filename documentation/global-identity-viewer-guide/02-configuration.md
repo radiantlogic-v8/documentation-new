@@ -73,7 +73,7 @@ Three default groups are designed to be used with the Global Identity Viewer. Th
 |------|------|------|------|------|-----|-----|-----|-----| 
 globalidviewer-read | ✓ | ✓ | X | X | X | X | X | Read Only <br> cn=readonly,ou=globalgroups,cn=config
 globalidviewer-designer | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | Global ID Viewer Design <br> cn=Global ID Viewer Design,ou=globalgroups,cn=config
-globalidviewer-write | ✓ | ✓ | X | X | X | ✓ | X | Global ID Viewer Write <br> cn=Global ID Viewer Write,ou=globalgroups,cn=config
+globalidviewer-write | ✓ | ✓ | X | X | ✓ | ✓ | X | Global ID Viewer Write <br> cn=Global ID Viewer Write,ou=globalgroups,cn=config
 
 To add your user to a RadiantOne group:
 
@@ -152,3 +152,4 @@ To add your user to a RadiantOne group:
 28. Select the group (e.g. Global ID Viewer Design or Global ID Viewer Write) that [contains the user(s)](#define-access-permissions) and click Allow Selected.
 29. Select the default “anyone” and click **Delete**.
 30. Click Save.
+
