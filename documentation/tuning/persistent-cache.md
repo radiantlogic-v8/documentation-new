@@ -377,6 +377,27 @@ ldapsearch -h vdsserver -p2389 -D"cn=directory manager" -b "action=deltarefreshp
 This search triggers a re-sync of the persistent cache image based on the current image of
 entries from the backends. Only entries that have changed are updated in the persistent cache.
 
+### Converting a Persistent Cache to a RadiantOne Directory Store
+
+For typical LDAP migration use cases where you are migrating from a legacy LDAP directory to the RadiantOne Directory, you can have a persistent cache that is kept in sync with the backend LDAP directory with persistent cache refresh. Once you are ready to decommission the backend LDAP, you can convert the persistent cache into a RadiantOne Directory store. 
+
+Before converting a persistent cache to a RadiantOne Directory store:
+
+1. The persistent cache refresh should be stopped. You can set the refresh method to “none”.
+
+2. (Optional) If inter-cluster replication is used, suspend it in all clusters. You can do this from Control Panel > Setup > Directory Namespace > Namespace Design. Select the RadiantOne Directory store and on the PROPERTIES tab, set the Replication Status toggle to INACTIVE.
+
+Converting a persistent cache to a RadiantOne Directory store:
+
+Ensure persistent cache refresh is stopped and inter-cluster replication is suspended. Then, from the Control Panel > Setup > Directory Namespace > Namespace Design, select the naming context where the persistent cache is configured.  On the CACHE tab, click ... > Edit next to the persistent cache you want to convert. In the MANAGE PROPERTIES section, under the ACTION section, click EXECUTE next to "Convert to RadiantOne Directory".
+
+![Convert Cache to Store](Media/convert-pcache.jpg)
+
+After the persistent cache has been converted to a RadiantOne Directory store:
+
+1. Rebuild the index to remove any persistent cache operational attributes.
+2. (Optional) If inter-cluster replication is used, enable it on all clusters. You can do this from Control Panel > Setup > Directory Namespace > Namespace Design. Select the RadiantOne Directory store and on the PROPERTIES tab, set the Replication Status toggle to ACTIVE.
+
 ## Managing Cache Properties
 
 1. From the Control Panel > Setup > Directory Namespace > Namespace Design, select the root naming context that contains the cached branch.
@@ -607,4 +628,5 @@ For limited use cases where the only type of modify operations that client appli
 
 >[!warning] 
 >This is an advanced setting, consult with a Radiant Logic Solution Architect to get assistance on the needed architecture and usage.
+
 
