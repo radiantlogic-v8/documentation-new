@@ -71,7 +71,7 @@ Example configuration:
 
 Configure the `ADAPLB` data source on each cluster to point to the **Primary Cluster's REST Load Balancer endpoint**. This is the cluster which hosts the **central replication journal** and manages all **topology changes**.
 
-To configure this data source on Identity Data Management 8.1.4 and higher, select Other > Load balancer ADAP as the data source. 
+To configure this data source on Identity Data Management 8.1.4 and higher, select Other > Load balanced ADAP as the Data Source type. 
 
 Example configuration:
 
@@ -172,6 +172,7 @@ If a topology has more than one pipeline, you can start synchronization for each
 
 ![Starting Pipelines in Configuration Screen](Media/start-from-apply.jpg)
  
+
 
 
 
