@@ -109,7 +109,7 @@ For specific hardware requirements of each, please see: [System Requirements](ht
 - [IV4-222,SQ-621]: Fixed an issue that caused the migration tool to crash when alert names were too long.
 - [IV4-223]: Fixed an issue where clicking on the "Help" opens the Main Control Panel. The admin portal help link has been updated to point to developer.radiantlogic.com where documentation is located.
 - [IV4-228]: Fixed an issue causing the context builder popup dialogs to sometimes malfunction.
-- [IV4-253, SQ-453]: Fixed an issue with CRL checking via OCSP when in FIPS-mode. Since the new library is currently being recertified by NIST CMVP for FIPS 140-3, customers can use it at their discretion. ccj-4.0.0-fips.jar is the current, default NIST-certified library for FIPS 140-3 used, and ccj-4.0.1-prevalidation-fips.jar is the newer library that contains the CRL checking via OCSP fix. To use the new ccj-4.0.1-prevalidation-fips.jar library, update the following property in ZooKeeper (at /radiantone/<version>/<clusterName>/config/vds_server.conf) to a value of true and restart all RadiantOne services. 
+- [IV4-253, SQ-453]: Fixed an issue with CRL checking via OCSP when in FIPS-mode. Since the new library is currently being recertified by NIST CMVP for FIPS 140-3, customers can use it at their discretion. ccj-4.0.0-fips.jar is the current, default NIST-certified library for FIPS 140-3 used, and ccj-4.0.1-prevalidation-fips.jar is the newer library that contains the CRL checking via OCSP fix. To use the new ccj-4.0.1-prevalidation-fips.jar library, update the following property in ZooKeeper (at `/radiantone/<version>/<clusterName>/config/vds_server.conf`) to a value of true and restart all RadiantOne services. 
 usingPrevalidationFipsJar: true 
 
 - [IV4-272]: Fixed an issue in the schema editor UI where the most recent popup was being opened upon saving the schema.
@@ -121,7 +121,7 @@ usingPrevalidationFipsJar: true
 
 ## Known Issues/Important Notes
 
-- CRL checking via OCSP when in FIPS-mode does not work and returns this error: javax.net.ssl.SSLHandshakeException: PKIX path validation failed: java.security.cert.CertPathValidatorException  <br> This issue has been fixed in v7.4.18, tracked in release notes item IV4-253. Customers must indicate to use the new library by settings usingPrevalidationFipsJar: true in Zookeeper at /radiantone/<version>/<clusterName>/config/vds_server.conf
+- CRL checking via OCSP when in FIPS-mode does not work and returns this error: javax.net.ssl.SSLHandshakeException: PKIX path validation failed: java.security.cert.CertPathValidatorException  <br> This issue has been fixed in v7.4.18, tracked in release notes item IV4-253. Customers must indicate to use the new library by settings usingPrevalidationFipsJar: true in Zookeeper at `/radiantone/<version>/<clusterName>/config/vds_server.conf`
 
 -If the environment variable RLI_CLI_VERBOSE is set to false, it must be temporarily set to true during product installation or update. Failure to do so may result in an incomplete or failed installation.
 After the installation or update completes successfully, the variable may be reverted to false if desired.
