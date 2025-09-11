@@ -166,7 +166,7 @@ Harness your identity data with intelligent integration to drive better business
   > Understanding log contents to assist with troubleshooting.
  
   > [Managing Failed Synchronization Messages](troubleshooting/failedmessages)   
-  > Guide administrators on how to track, review, and manually intervene in failed message scenarios. 
+  > Learn how to track, review, and manually intervene in failed message scenarios. 
   
 </section>
 
