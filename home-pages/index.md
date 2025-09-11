@@ -163,7 +163,10 @@ Harness your identity data with intelligent integration to drive better business
   > Learn how to manage log levels.
   
   > [Viewing Logs](troubleshooting/troubleshooting#viewing-logs)   
-  > Understanding log contents to assist with troubleshooting. 
+  > Understanding log contents to assist with troubleshooting.
+ 
+  > [Managing Failed Synchronization Messages](troubleshooting/failedmessages)   
+  > Guide administrators on how to track, review, and manually intervene in failed message scenarios. 
   
 </section>
 
