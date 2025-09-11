@@ -105,17 +105,18 @@ In the following example, a request is made to display the resource dependency t
 
 `https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=resource-traverse&name=contextcatalog.dvx`
 
-### Resource Export - REST (ADAP) Example**
+### Resource Export - REST (ADAP) Example
 
 In the following example, a request is made to export the resource so_hr_o_examples.dvx and its dependencies.
 
 `https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=resource-export&name=so_hr_o_examples.dvx&path=C:\radiantone\vds\vds_server` 
 
-### Resource Import - REST (ADAP) Example**
+### Resource Import - REST (ADAP) Example
 
 In the following example, a request is made to import the resource so_hr_o_examples.dvx and its dependencies.
 
 `https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=resource-import&path=c:/radiantone/vds/vds_server/contextcatalog_dvx.zip&apply=&skipregex=ds:^derby.*`
+
 
 
 
