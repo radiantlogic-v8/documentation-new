@@ -1,32 +1,32 @@
 ---
-title: Configure capture connector types and properties
-description: Configure capture connector types and properties
+title: Common Properties
+description: Configure common properties for all Event Listener types.
 ---
 
-# Configure capture connector types and properties
+# Configure Change Event Detection Types and Properties
 
-The process of configuring connector properties and the property definitions described throughout the rest of this section are applicable to all connector types.
+The process of configuring change event detection types and the property definitions described throughout the rest of this section are applicable to all event listener.
 
-Connector types and properties are configured from the Main Control Panel > Global Sync tab. Choose the topology on the left and then select **Configure** next to the pipeline. In the pipeline configuration, choose the **capture** component.
+Capture Change Event Types and Properties are configured from the Main Control Panel > Synchronization tab. Choose the topology on the left and then select **Configure** next to the pipeline. In the pipeline configuration, choose the **capture** component.
 
-The capture connector type is configured in the Core Properties section at the bottom.
+The capture change event detection type is configured in the Core Properties section at the bottom.
 
 ![An example of how to configure the capture connector type in the Core Properties section in the Global Sync tab of the Main Control Panel](media/image4.png)
 
-Connector Properties are configured in the Core Properties, Advanced Properties, Event Filtering, and Event Contents sections. Not all connector types have all sections.
+Properties are configured in the Core Properties, Advanced Properties, Event Filtering, and Event Contents sections. Not all change detection mechanisms have all sections.
 
 ![The Connector Properties, including Core Properties, Advanced Properties, and Event Filtering](media/image5.png)
 
-## Common properties for all connectors
+## Common properties for all Event Listeners
 
-The following properties are supported for all connectors (unless otherwise specified). Although common, these properties are not shared. You must configure these properties for each connector.
+The following properties are supported for all change detection mechanisms (unless otherwise specified). Although common, these properties are not shared. You must configure these properties for each change event detection type.
 
 >[!note]
 >Boolean properties values are not case-sensitive.
 
 ### Log level
 
-Each connector produces log files as events occur in the pipeline. The following is a list of supported log levels for connectors:
+Each event listener produces log files as events occur in the pipeline. The following is a list of supported log levels:
 
 - Log level 0: `OFF`  
 - Log level 1: `ERROR`  
@@ -35,7 +35,7 @@ Each connector produces log files as events occur in the pipeline. The following
 - Log level 4: `DEBUG`  
 - Log level 5: `TRACE`
 
-Connector log files are located at: `{RLI_HOME}\logs\sync_agents\{PIPELINE_NAME}\connector.log` on the RadiantOne node where the sync agent is running. Run `{RLI_HOME}/bin/monitoring.bat (.sh on Linux) -d pipeline` to locate your sync process and the value of the `captureHostname` propertyId value indicates the machine where the connector.log is located.
+Event listner log files are located at: `{RLI_HOME}\logs\sync_agents\{PIPELINE_NAME}\connector.log` on the RadiantOne node where the sync agent is running. Run `{RLI_HOME}/bin/monitoring.bat (.sh on Linux) -d pipeline` to locate your sync process and the value of the `captureHostname` propertyId value indicates the machine where the connector.log is located.
 
 ![The location of the sync process](media/image6.png)
 
@@ -43,40 +43,40 @@ These logs are helpful in determining if changes are being captured and if there
 
 ### Polling interval
 
-The only capture type that does not use the polling interval property is the LDAP Persistent Search connector.
+The only capture type that does not use the polling interval property is the LDAP Persistent Search.
 
-This property indicates the amount of time (in milliseconds) the connector should wait before querying the source to check for changes.
+This property indicates the amount of time (in milliseconds) the event listner should wait before querying the source to check for changes.
 
 >[!note]
->This property can be updated while the connector is running and will take effect without restarting the connector.
+>This property can be updated while the event listener is running and will take effect without restarting the event listener.
 
 ### Size limit
 
-This property indicates the number of entries the connector collects from the source in a single request (poll). Even if the connector picks up multiple entries, they are processed and published to the queue one at a time.
+This property indicates the number of entries the event listener collects from the source in a single request (poll). Even if the event listener picks up multiple entries, they are processed and published to the queue one at a time.
 
 ### Max retries on connection error
 
-For Database Connectors, if the connector is unable to connect to the primary backend server, it tries to connect to the failover server. If the connector cannot connect to the primary or failover servers because of a connection error, it tries to connect again later. Maximum Retries on Connection Error is the total number of times the connector tries reconnecting. A failed attempt to connect to both the primary and failover server is considered a single retry. The frequency of the reconnect attempt is based on the Retry Interval on Connection Error property. If there are no backends available to connect to, the agent automatically redeploys the connector until a connection to the backend can be made.
+For Database Connectors, if the event listener is unable to connect to the primary backend server, it tries to connect to the failover server. If the event listener cannot connect to the primary or failover servers because of a connection error, it tries to connect again later. Maximum Retries on Connection Error is the total number of times the event listener tries reconnecting. A failed attempt to connect to both the primary and failover server is considered a single retry. The frequency of the reconnect attempt is based on the Retry Interval on Connection Error property. If there are no backends available to connect to, the agent automatically redeploys the event listener until a connection to the backend can be made.
 
-For Directory Connectors, if the connector is unable to connect to the primary backend server because of a connection error, it tries to connect again later. Maximum Retries on Connection Error is the total number of times the connector tries reconnecting. The frequency of the reconnect attempt is based on the Retry Interval on Connection Error property. After all attempts have been tried, the connector failover logic is triggered. If there are no backends available to connect to, the agent automatically redeploys the connector until a connection to the backend can be made.
+For Directories, if the event listener is unable to connect to the primary backend server because of a connection error, it tries to connect again later. Maximum Retries on Connection Error is the total number of times the event listener tries reconnecting. The frequency of the reconnect attempt is based on the Retry Interval on Connection Error property. After all attempts have been tried, the failover logic is triggered. If there are no backends available to connect to, the agent automatically redeploys the event listener until a connection to the backend can be made.
 
 The default value is `5`.
 
 ### Retry interval on connection error
 
-Used in conjunction with the Max Retries on Connection Error property. This is the amount of time (in milliseconds) the connector waits before trying to establish a connection to the source if there was a connection problem during the previous attempt.
+Used in conjunction with the Max Retries on Connection Error property. This is the amount of time (in milliseconds) the event listener waits before trying to establish a connection to the source if there was a connection problem during the previous attempt.
 
 The default value is `10,000 ms` (10 seconds).
 
 ### Max retries on error
 
-If the connector is unable to connect to the source to pick up changes for any reason other than a connection error, it tries to reconnect. Maximum Retries on Error is the total number of times the connector tries reconnecting. The frequency of the reconnect attempt is based on the Retry Interval on Error property. After all attempts have been tried, the connector failover logic is triggered. If there are no backends available to connect to, the agent automatically redeploys the connector until a connection to the backend can be made.
+If the event listener is unable to connect to the source to pick up changes for any reason other than a connection error, it tries to reconnect. Maximum Retries on Error is the total number of times the event listener tries reconnecting. The frequency of the reconnect attempt is based on the Retry Interval on Error property. After all attempts have been tried, the failover logic is triggered. If there are no backends available to connect to, the agent automatically redeploys the event listener until a connection to the backend can be made.
 
 The default value is `5`.
 
 ### Retry interval on error
 
-Used in conjunction with the Max Retries on Error property. This is the amount of time (in milliseconds) the connector waits before it attempts to pick up changes from the source after an error has occurred.
+Used in conjunction with the Max Retries on Error property. This is the amount of time (in milliseconds) the event listener waits before it attempts to pick up changes from the source after an error has occurred.
 
 The default value is `10,000 ms` (10 seconds).
 
