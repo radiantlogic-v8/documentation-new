@@ -389,7 +389,11 @@ Before converting a persistent cache to a RadiantOne Directory store:
 
 Converting a persistent cache to a RadiantOne Directory store:
 
-Ensure persistent cache refresh is stopped and inter-cluster replication is suspended. Then, from the Control Panel > Setup > Directory Namespace > Namespace Design, select the naming context where the persistent cache is configured.  On the CACHE tab, click ... > Edit next to the persistent cache you want to convert. In the MANAGE PROPERTIES section, under the ACTION section, click EXECUTE next to "Convert to RadiantOne Directory".
+Ensure persistent cache refresh is stopped and inter-cluster replication is suspended. 
+
+1. From the Control Panel > Setup > Directory Namespace > Namespace Design, select the naming context where the persistent cache is configured.
+2. On the CACHE tab, click ... > Edit next to the persistent cache you want to convert.
+3. In the MANAGE PROPERTIES section, under the ACTION section, click EXECUTE next to "Convert to RadiantOne Directory".
 
 ![Convert Cache to Store](Media/convert-pcache.jpg)
 
@@ -628,5 +632,6 @@ For limited use cases where the only type of modify operations that client appli
 
 >[!warning] 
 >This is an advanced setting, consult with a Radiant Logic Solution Architect to get assistance on the needed architecture and usage.
+
 
 
