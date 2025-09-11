@@ -35,11 +35,6 @@ Each event listener produces log files as events occur in the pipeline. The foll
 - Log level 4: `DEBUG`  
 - Log level 5: `TRACE`
 
-Event listner log files are located at: `{RLI_HOME}\logs\sync_agents\{PIPELINE_NAME}\connector.log` on the RadiantOne node where the sync agent is running. Run `{RLI_HOME}/bin/monitoring.bat (.sh on Linux) -d pipeline` to locate your sync process and the value of the `captureHostname` propertyId value indicates the machine where the connector.log is located.
-
-![The location of the sync process](media/image6.png)
-
-These logs are helpful in determining if changes are being captured and if there were any errors.
 
 ### Polling interval
 
