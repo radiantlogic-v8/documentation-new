@@ -7,7 +7,7 @@ description: Command Line Configuration Guide
 
 Migrating resources (e.g. root naming contexts, data sources, Global Identity Builder projects, virtual views, or schema files) from an existing development/QA environment to an existing production environment can be difficult because many resources are dependent upon other resources (virtual views are dependent upon data sources, schema files and often times even other virtual views). These resources usually need to be migrated together to ensure everything works properly in the target environment. This makes the migration process error prone.
 
-This chapter explains how to traverse, export, and import resources and their dependencies using commands.
+This document explains how to traverse, export, and import resources and their dependencies using commands. For more information, see the [RadiantOne Operations Guide](/operations-guide/01-overview).
 
 >[!note] The commands in this chapter do not support output format configuration. Refer to [Configuring Command Output Format](./01-introduction/#configuring-command-output-format) for more information.
 
@@ -146,6 +146,7 @@ This command will generate and export a zip file to "C:\radiantone\vds\work\o_sr
 Next, to import the exported data, run the following command in the destination cluster: 
 
 `vdsconfig.bat resource-import -path "C:\tmp\o_src1view_sync_o_dstview.zip" -apply`. 
+
 
 
 
