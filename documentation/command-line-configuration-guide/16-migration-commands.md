@@ -28,11 +28,6 @@ This command displays the resource dependency tree. The results include any data
 `- instance <instance>`
 <br>The name of the RadiantOne instance. If not specified, the default instance named vds_server is used.
 
-**REST (ADAP) Example**
-
-In the following example, a request is made to display the resource dependency tree for a virtual view named contextcatalog.dvx.
-
-`https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=resource-traverse&name=contextcatalog.dvx`
 
 ### resource-export
 
@@ -42,6 +37,8 @@ This command exports the resource and its dependencies.
 
 **Usage:**
 <br>`resource-export -name <name> [-instance <instance>] [-path <path>] [-skip <name>]`
+
+
 
 **Command Arguments:**
 
@@ -60,11 +57,6 @@ This command exports the resource and its dependencies.
 `-- cross environment`
 <br>Indicates that resources will be exported in cross-environment mode.
 
-**REST (ADAP) Example**
-
-In the following example, a request is made to export the resource so_hr_o_examples.dvx and its dependencies.
-
-`https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=resource-export&name=so_hr_o_examples.dvx&path=C:\radiantone\vds\vds_server`
 
 ### resource-import
 
@@ -105,8 +97,28 @@ Example: all:^test.* --> skips all resources starting with the name test.
 `-- cross environment`
 <br>Indicates that resources will be imported in cross-environment mode.
 
-**REST (ADAP) Example**
+## Examples 
+
+### Resource Traverse - REST (ADAP) Example
+
+In the following example, a request is made to display the resource dependency tree for a virtual view named contextcatalog.dvx.
+
+`https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=resource-traverse&name=contextcatalog.dvx`
+
+### Resource Export - REST (ADAP) Example**
+
+In the following example, a request is made to export the resource so_hr_o_examples.dvx and its dependencies.
+
+`https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=resource-export&name=so_hr_o_examples.dvx&path=C:\radiantone\vds\vds_server` 
+
+### Resource Import - REST (ADAP) Example**
 
 In the following example, a request is made to import the resource so_hr_o_examples.dvx and its dependencies.
 
 `https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=resource-import&path=c:/radiantone/vds/vds_server/contextcatalog_dvx.zip&apply=&skipregex=ds:^derby.*`
+
+
+
+
+
+
