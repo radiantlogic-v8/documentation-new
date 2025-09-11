@@ -5,7 +5,7 @@ description: v7.4.18 Release Notes
 
 # RadiantOne v7.4.18 Release Notes
 
-September 10, 2025
+September 11, 2025
 
 These release notes contain important information about improvements and bug fixes for RadiantOne v7.4.
 
