@@ -136,9 +136,9 @@ In this example, we'll assume that we have defined multiple synchronization topo
 
 To do so, run the following command in the source cluster. 
 
-`vdsconfig.bat resource-export -name "o=srcview->o=dstview" --cross-environment`
+`vdsconfig.bat resource-export -name "o=src1view->o=dstview" --cross-environment`
 
-* o=srcview refers to the topology of the source data view.
+* o=src1view refers to the topology of the source data view.
 * o=dstview refers to the topology of the destination view.
 
 This command will generate and export a zip file to "C:\radiantone\vds\work\o_src1view_sync_o_dstview". 
@@ -146,6 +146,7 @@ This command will generate and export a zip file to "C:\radiantone\vds\work\o_sr
 Next, to import the exported data, run the following command in the destination cluster: 
 
 `vdsconfig.bat resource-import -path "C:\tmp\o_src1view_sync_o_dstview.zip" -apply`. 
+
 
 
 
