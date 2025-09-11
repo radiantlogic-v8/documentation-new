@@ -194,7 +194,7 @@ If you require the group members to be cached as static group entries, check the
 
 ### Unnest Groups
 
-Some directory vendors, like Microsoft Active Directory, support nested groups where groups can be members of other groups. For clients that are unable to process nested groups, RadiantOne can flatten them and return all members in a single response. The unnest groups setting is applicable to identity views that have been configured for persistent cache. Flattening nested groups adds processing overhead to RadiantOne, so persistent cache is required for optimal performance, and you must configure the unnest groups setting before initializing the persistent cache. The unnest group setting is not applicable to RadiantOne Directory stores.
+Some directory vendors, like Microsoft Active Directory, support nested groups where groups can be members of other groups. For clients that are unable to process nested groups, RadiantOne can flatten them and return all members in a single response. The unnest groups setting is applicable to identity views that have been configured for persistent cache. Flattening nested groups adds processing overhead to RadiantOne, so persistent cache is required for optimal performance.  After the persistent cache is configured you can configure the unnest groups setting and then reinitialize the cache. The unnest group setting is not applicable to RadiantOne Directory stores.
 
 >[!note] 
 >Using a computed attribute in the virtual view to unnest groups is an alternative to using the unnest groups setting. However, the computed attribute approach does not support circular groups (GroupA is a member of GroupB and Group B is a member of GroupA) whereas the unnest groups setting does.
@@ -202,12 +202,13 @@ Some directory vendors, like Microsoft Active Directory, support nested groups w
 The unnest groups setting is not enabled by default. To define a naming context that contains nested groups that RadiantOne should automatically flatten for client queries, follow the steps below.
 
 1.	From the Control Panel > Setup > Directory Namespace > Namespace Design, select the root naming context that contains the nested group.
-2.	On the Special Attributes tab, locate the Unnest Groups section.
+2.	On the Special Attributes tab, locate the Unnest Groups section.  This option is only available if there is a persistent cache defined.
 
 3.	Click **+ NESTED GROUPS**.
 
 4.	Expand the view definition and select the nested group.
 5.	Click **ADD**.
 6.	Click **SAVE**.
-7.	Configure the [persistent cache](../../tuning/persistent-cache) for the identity view containing the nested groups from the Cache tab. 
+7.	Reinitialize the [persistent cache](../../tuning/persistent-cache) for the identity view containing the nested groups from the Cache tab. 
+
 
