@@ -69,7 +69,7 @@ To detect changes using Changelog (triggers), set the connector type in the pipe
 
 ![The drop-down list for Connector Type with DB Changelog selected, in the Core Properties section of Configure Pipeline](Media/image16.png)
 
-After the DB Changelog connector type has been selected and configured, you can configure the properties in the Core Properties, Advanced Properties, and [Event Content](./common-properties) sections at the bottom. For properties common to all event listner types, see [Configure Common Properties](./common-properties).
+After the DB Changelog connector type has been selected and configured, you can configure the properties in the Core Properties, Advanced Properties, and [Event Content](./common-properties#conditioning-event-contents) sections at the bottom. For properties common to all event listner types, see [Configure Common Properties](./common-properties).
 
 ### Log Table User
 
@@ -502,4 +502,5 @@ When the Determine Move Operations property is enabled, the connector maintains 
 
 >[!warning]
 >When defining the data source for the backend Active Directory, check the Paged Results Control option to ensure that all entries can be retrieved from the backend. This is required for the connector to get all entries in the cache to map objectGUID to DN and support `modDN/modRDN` operations.
+
 
