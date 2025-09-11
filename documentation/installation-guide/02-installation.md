@@ -254,7 +254,7 @@ To install the first node:
     - Set cluster.firstnode to true
     - Set node.follower.only to false
     - Node.use.local.zk should be set to false if you are installing a new cluster that will re-use an existing ZooKeeper either on the same machine, or an external one.
-    - Update your Zookeeper password with an encoded value. To generate it, run `<RLI_HOME>/bin/VDSUtility.exe` on Windows or `RLI_HOME/bin/advanced/runVDSUtility.sh` on Linux. Select option 9 and follow the prompts. Copy the resulting encoded value and replace the value of zk.password in the install-sample.properties file with it.
+    - Update your Zookeeper password with an encoded value. To generate it, run `<RLI_HOME>\bin\VDSUtility.exe` on Windows or `<RLI_HOME>/vds_server/bin/advanced/runVDSUtility.sh` on Linux. Select option 9 and follow the prompts. Copy the resulting encoded value and replace the value of zk.password in the install-sample.properties file with it.
 
       >[!warning]
       >If you are using an external ZooKeeper ensemble, also enter the comma-separated list of nodes in the zk.connstring property. E.g. zk1:2181,zk2:2181,zk3:2181
@@ -368,5 +368,6 @@ When installation is complete, the command prompt displays the message “Instal
 
 >[!warning]
 >values in the properties file, including passwords, are stored in clear. After installation, install-sample.properties should be deleted.
+
 
 
