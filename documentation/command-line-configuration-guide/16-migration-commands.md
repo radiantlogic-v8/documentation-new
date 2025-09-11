@@ -133,7 +133,7 @@ In the following example, a request is made to import the resource so_hr_o_examp
 
 In this example, we'll assume that we have defined multiple synchronization topologies("o=src1view -> o=destview" & "o=src2view -> o=dstview"). However, we only want to export a single topology ("o=src1view->o=dstview"). 
 
-  ![Image showing multiple topologies](Media/multi-sync.png)
+  ![Image showing multiple synchronization topologies](Media/multi-sync.png "Image showing multiple synchronization topologies")
 
 
 To do so, run the following command in the source cluster. 
@@ -148,6 +148,7 @@ This command will generate and export a zip file to "C:\radiantone\vds\work\o_sr
 Next, to import the exported data, run the following command in the destination cluster: 
 
 `vdsconfig.bat resource-import -path "C:\tmp\o_src1view_sync_o_dstview.zip" -apply`. 
+
 
 
 
