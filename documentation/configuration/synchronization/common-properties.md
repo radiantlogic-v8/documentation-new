@@ -11,11 +11,11 @@ Capture Change Event Types and Properties are configured from the Main Control P
 
 The capture change event detection type is configured in the Core Properties section at the bottom.
 
-![An example of how to configure the capture connector type in the Core Properties section in the Global Sync tab of the Main Control Panel](media/image4.png)
+![An example of how to configure the capture connector type in the Core Properties section in the Global Sync tab of the Main Control Panel](Media/image4.png)
 
 Properties are configured in the Core Properties, Advanced Properties, Event Filtering, and Event Contents sections. Not all change detection mechanisms have all sections.
 
-![The Connector Properties, including Core Properties, Advanced Properties, and Event Filtering](media/image5.png)
+![The Connector Properties, including Core Properties, Advanced Properties, and Event Filtering](Media/image5.png)
 
 ## Common properties for all Event Listeners
 
