@@ -243,8 +243,16 @@ To configure inter-cluster replication, follow the steps below.
 1.	On the Properties tab on the right, check the box for Inter-cluster Replication as shown in the screen below.
 1.	Click **SAVE**.
  
-![Inter-cluster Replication](Media/intercluster-replication.jpg)
+![Inter-cluster Replication](Media/intercluster-replication.jpg "Inter-cluster Replication")
 
+### Suspending Inter-cluster Replication
+
+To pause inter-cluster replication:
+
+1. Go to Control Panel > Setup > Directory Namespace > Namespace Design for one of the clusters/environments. Select the naming context representing the RadiantOne Directory store.
+2. On the PROPERTIES tab, in the Replication section, toggle the Replication Status off. This sets it to a state of "PAUSED". Remember to pause inter-cluster replication in all other clusters/environments.  To unpause, toggle this option back to ACTIVE. Do this in all cluster/environments that are involved in the inter-cluster replication for this directory.
+
+![Pause Inter-cluster Replication](Media/replication-status.jpg "Replication Status")
 
 ### Fractional Replication
 
@@ -308,3 +316,4 @@ To enable push mode:
 5.	(Optional) enable the Ensure Push Mode option if you to wait for acknowledgement of replication events before sending the response back to the client.
 6.	Click **OK**.
 7.	Click **SAVE**.
+
