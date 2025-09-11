@@ -99,4 +99,4 @@ This property is available when Request all Attributes is enabled. To further co
 
 If the Request all Attributes property is disabled, you must list the attributes that the connector should request and publish for the changed entries in the Requested Attributes property.
 
-To learn more about connectors, please read the document that describes [the change detection mechanisms available for LDAP directories](ldap-connectors.md).
+To learn more about change event detection mechanisms for directories, see: [LDAP and Active Directory](capture-connectors.md).
