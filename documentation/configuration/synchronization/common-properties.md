@@ -3,7 +3,7 @@ title: Common Properties
 description: Configure common properties for all Event Listener types.
 ---
 
-## Overview Configure Change Event Detection Types and Properties
+## Overview
 
 The process of configuring change event detection types and the property definitions described throughout the rest of this section are applicable to all event listener.
 
