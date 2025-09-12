@@ -34,5 +34,6 @@ To load the Classic Control Panel, click the logged in account profile in the up
 1. Select **Browse for the Destination Naming Context** and select the location in the RadiantOne namespace that contains the destination objects that you want to synchronize change events to. In the example shown below, the source objects are located in `o=companydirectory` (representing an LDAP directory backend) and the target is `object=EMPLOYEES,o=hrdatabase` (representing a table named `EMPLOYEES` in an HR database).
  ![Example Topology Definition](Media/image22.png)
 
+
 1. Select **OK**. The topology is added to the list on the left and the pipelines associated with the selected topology are shown on the right where the components can be configured. 
-1. Select **CONFIGURE** next to the pipeline. There are two components that need configured per pipeline: [Capture Connector](./connector-properties.md) and [Transformation](./transformations.md). Apply Connectors do not require configuration.
+1. Select **CONFIGURE** next to the pipeline. There are two components that need configured per pipeline: [Event Listener](./connector-properties.md) and [Transformation](./transformations.md). 
