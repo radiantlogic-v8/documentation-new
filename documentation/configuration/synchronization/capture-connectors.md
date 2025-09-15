@@ -1,26 +1,26 @@
 ---
-title: Configure Capture Connectors
-description: Learn how to configure capture connectors for detecting events in identity sources.
+title: Configure Event Listeners
+description: Learn how to configure event listeners for detecting events in identity sources.
 ---
 
-## Capture Connectors Overview
+## Event Listeners Overview
 
-The capture connector configuration dictates the process for detecting changes on the source objects. The type of data source determines which capture methods are available.
+The event listener configuration dictates the process for detecting changes on the source objects. The type of data source determines which change detection mechanisms are available.
 
-This section focuses on configuring the connector type. For details on the behavior of and properties for database connectors (Timestamp, Counter, Changelog), LDAP connectors (changelog or persistent search), and Active Directory connectors (usnChanged or DirSync), please see the [Connector Properties](./connector-properties).
+This section focuses on configuring the change detection type. For details on the behavior of and properties for database event listeners (Timestamp, Counter, Changelog), LDAP event listeners (changelog or persistent search), and Active Directory event listeners (usnChanged or DirSync), please see the [Event Listener Properties](./connector-properties).
 
-Once you have determined the connector type you want to use, select the Capture section in the pipeline to display the configuration options.
+Once you have determined the change detection type you want to use, select the Capture section in the pipeline to display the configuration options.
 
 >[!note]
->Connectors associated with RadiantOne Directory stores or persistent caches are automatically configured when the stores are used as sources in a pipeline.
+>Event listeners associated with RadiantOne Directory stores or persistent caches are automatically configured when the stores are used as sources in a pipeline.
 
-![Unconfigured Capture Connector](Media/image23.png)
+![Unconfigured Capture Type](Media/image23.png)
 
 ### Database (JDBC-accessible) 
-For database backends (JDBC-accessible), the connector change detection options are:
+For database backends (JDBC-accessible), the change detection options are:
 
-- [Changelog](#db-changelog) – This connector type relies on a database table that contains all changes that have occurred on the base tables (that the RadiantOne virtual view is built from). This typically involves having triggers on the base tables that write into the log/changelog table. However, an external process may be used instead of triggers. The connector picks up changes from the changelog table. If you need assistance with configuring triggers on the base tables and defining the changelog table, see [Create scripts to generate triggers and changelog table](#create-scripts-to-generate-triggers-and-changelog-table).
-- [Timestamp](#db-timestamp) – This connector type has been validated against Oracle, SQL Server, MySQL, MariaDB, PostgreSQL, Snowflake, and Apache Derby. The database table must have a primary key defined for it and an indexed column that contains a timestamp/date value. This value must be maintained and modified accordingly for each record that is updated. 
+- [Changelog](#db-changelog) – This type relies on a database table that contains all changes that have occurred on the base tables (that the RadiantOne virtual view is built from). This typically involves having triggers on the base tables that write into the log/changelog table. However, an external process may be used instead of triggers. The connector picks up changes from the changelog table. If you need assistance with configuring triggers on the base tables and defining the changelog table, see [Create scripts to generate triggers and changelog table](#create-scripts-to-generate-triggers-and-changelog-table).
+- [Timestamp](#db-timestamp) – This type has been validated against Oracle, SQL Server, MySQL, MariaDB, PostgreSQL, Snowflake, and Apache Derby. The database table must have a primary key defined for it and an indexed column that contains a timestamp/date value. This value must be maintained and modified accordingly for each record that is updated. 
     
   For Oracle databases, the timestamp column type must be one of the following: `TIMESTAMP`, `DATE`, `TIMESTAMP WITH TIME ZONE`, `TIMESTAMP WITH LOCAL TIME ZONE1. 
     
@@ -35,10 +35,10 @@ For database backends (JDBC-accessible), the connector change detection options 
   For Derby databases, the timestamp column type must be: `TIMESTAMP`  
     
   The DB Timestamp connector leverages the timestamp column to determine which records have changed since the last polling interval. This connector type does not detect delete operations. If you have a need to detect and propagate delete operations from the database, you should choose a different connector type like DB Changelog or DB Counter.
-- [Counter](#db-counter) - This connector type is supported for any database table that has an indexed column that contains a sequence-based value that is automatically maintained and modified for each record that is added/updated. This column must be one of the following types: `BIGINT`, `DECIMAL`, `INTEGER`, or `NUMERIC`. If `DECIMAL` or `NUMERIC` are used, they should be declared without numbers after dot: `DECIMAL(6,0)` not as `DECIMAL(6,2)`. The DB Counter connector leverages this column to determine which records have changed since the last polling interval. This connector type can detect delete operations as long as the table has a dedicated "Change Type" column that indicates one of the following values: insert, update, delete. If the value is empty or something other than insert, update, or delete, an update operation is assumed.
+- [Counter](#db-counter) - This type is supported for any database table that has an indexed column that contains a sequence-based value that is automatically maintained and modified for each record that is added/updated. This column must be one of the following types: `BIGINT`, `DECIMAL`, `INTEGER`, or `NUMERIC`. If `DECIMAL` or `NUMERIC` are used, they should be declared without numbers after dot: `DECIMAL(6,0)` not as `DECIMAL(6,2)`. The DB Counter connector leverages this column to determine which records have changed since the last polling interval. This connector type can detect delete operations as long as the table has a dedicated "Change Type" column that indicates one of the following values: insert, update, delete. If the value is empty or something other than insert, update, or delete, an update operation is assumed.
 
 ### Directory (LDAP-accessible) 
-For directory backends (LDAP-accessible), the connector change detecion options are:
+For directory backends (LDAP-accessible), the change detecion options are:
 - [Changelog](#LDAP-Directory-Connectors) - leverages the cn=changelog naming context in the LDAP directory to detect changes.
 - [Persistent Search](#LDAP-Directory-Connectors) - leverages the LDAP persistent search control to detect changes.
 - [DirSync](#Active-Directory-Connectors) - leverages Active Directory DirSync to detect changes.
@@ -49,9 +49,9 @@ For directory backends (LDAP-accessible), the connector change detecion options 
 
 A custom data source is one that is not queried via LDAP or JDBC. Examples include Entra ID (formerly Azure AD), Okta Universal Directory and any SCIM-accessible source. Virtual views of these data sources should be configured with persistent cache in RadiantOne prior to using as a source for synchronization. Once cached, the source/capture connector for synchronization is based on Triggers and is automatically configured in pipelines.
 
-## Database Changelog Connector
+## Database Changelog
 
-RadiantOne can generate the SQL scripts which create the configuration needed to support the DB Changelog Connector. The scripts can be generated in the Main Control Panel. The following scripts are generated and can be download from Main Control Panel > Settings > Configuration > File Manager.  The are located in the /work/sql folder.
+RadiantOne can generate the SQL scripts which create the configuration needed to support the DB Changelog change detection mechanism. The scripts can be generated in the Classic Control Panel > Synchronization tab. The following scripts are generated and can be download from Classic Control Panel.
 
 - create_user.sql - Creates the log table user and the log table schema.
 - create_capture.sql - Creates the log table and the triggers on the base table.
@@ -64,7 +64,7 @@ This section describes generating and executing the scripts in the Classic Contr
 
 If you need assistance with configuring triggers on the base tables and defining the changelog table, see [Create scripts to generate triggers and changelog table](#create-scripts-to-generate-triggers-and-changelog-table).
 
-To configure DB Changelog connector:
+To configure DB Changelog change detection mechanism:
 
 >[!note]
 >These instructions assume you want to apply the SQL scripts immediately.
@@ -79,17 +79,17 @@ To configure DB Changelog connector:
 >[!warning]
 >Change the value for this property only if you are creating the log table manually and the capture connector does not calculate the log table name correctly. Be sure to use the [correct syntax](#log-table-name-syntax) if you change the value.
 
-![DB Changelog Connector Configuration](Media/image24.png)
+![DB Changelog Configuration](Media/db-changelog.jpg)
 
 7. Select **Save**.
 8. A message is displayed that asks if you want to apply the scripts to configure the log table immediately or not. You can also download the scripts to the local machine. 
-    ![Configuration to Apply SQL Script Automatically or Not](Media/image26.png)
-9. To apply now, select **OK**. Otherwise, select **NO**.
+    ![Configuration to Apply SQL Script Automatically or Not](Media/run-scripts.png)
+9. To apply now, select **OK**. Otherwise, select **Download**.
 
 >[!note]
->Selecting **OK** creates and executes the SQL scripts on the database server. If you choose to apply later, the scripts are created but not executed. They must be run on the database manually. You can download the sql scripts from here or from Main Control Panel > Settings > Configuration > File Manager. Any DBA can configure the connector by selecting the **NO** option and running the scripts manually on the database server. For most databases, this is also sufficient to apply the configuration directly selecting the **OK** option. However, for Oracle databases, you must connect as either the SYS user or a non SYS user that has the SYSDBA role assigned to them. If you choose to use a non SYS user, you must use the syntax userid as sysdba for the user name in the connection. An example would be scott as sysdba.
+>Selecting **OK** creates and executes the SQL scripts on the database server. If you choose to **Download**, the scripts are created but not executed. They must be run on the database manually. Any DBA can configure the event listener by running the scripts manually on the database server. For most databases, this is also sufficient to apply the configuration directly selecting the **OK** option. However, for Oracle databases, you must connect as either the SYS user or a non SYS user that has the SYSDBA role assigned to them. If you choose to use a non SYS user, you must use the syntax userid as sysdba for the user name in the connection. An example would be `scott as sysdba`.
 
-10. After the capture connector is configured, configure the transformation in the pipeline.
+10. After the change detection mechanism is configured, configure the transformation in the pipeline.
 
 **Log table name syntax**
 
@@ -130,7 +130,7 @@ If schema and/or table name contain mixed-case characters, they must be quoted. 
 
 `"Rli_con"."Test_log"`
 
-## Database Timestamp Connector
+## Database Timestamp
 
 The following steps assume your backend database table has a primary key defined and contains a timestamp column. The timestamp column name is required for configuring the connector. The timestamp column database types supported are described in the [Database connectors](#database-jdbc-accessible) section.
 
@@ -142,7 +142,7 @@ The following steps assume your backend database table has a primary key defined
 1. Select a Capture component and the configuration displays.
 1. Select **DB Timestamp** from the **Connector Type** drop-down list.
 1. Indicate the column name in the database table that contains the timestamp. An example is shown below.
-    ![DB Timestamp Connector Configuration](Media/image27.png)
+    ![DB Timestamp Configuration](Media/db-timestamp.jpg)
 1. Select **Save**.
 1. You can configure connector properties in the Advanced Properties section.
 1. After the capture connector is configured, configure the transformation.
@@ -150,7 +150,7 @@ The following steps assume your backend database table has a primary key defined
 >[!warning]
 >If you need to make changes to the timestamp column name, you must manually restart the connector and reset the cursor. The pipeline can be stopped on the Global Sync tab when the topology is selected on the left. Then select **Configure** next to the pipeline. In the configuration screen, select the Capture section. Change the timestamp column name and select **Save**. In the bottom left of the Capture configuration screen, select **Reset Cursor**. Go back to the Global Sync topologies page and select **Start** to start the pipeline components.
 
-## Database Counter Connector
+## Database Counter
 
 The following steps assume your database backend table contains an indexed column that contains a sequence-based value that is automatically maintained and modified for each record that is added, updated or deleted. The DB Counter connector uses this column to maintain a cursor to keep track of processed changes. The counter column database types supported are described in the [Database connectors](#database-connectors) section.
 
@@ -164,7 +164,7 @@ The following steps assume your database backend table contains an indexed colum
 1. You can configure connector properties in the Advanced Properties section.
 1. After the capture connector is configured, configure the transformation in the pipeline.
 
-![DB Counter Connector Configuration](Media/image32.png)
+![DB Counter Configuration](Media/db-counter.jpg)
 
 >[!warning]
 >If you need to make changes to the Counter Column name, you must manually restart the connector and reset the cursor. The pipeline can be stopped on the Global Sync tab when the topology is selected on the left. Then select **Configure** next to the pipeline. In the configuration screen, select the Capture section. Change the counter column name and select **Save**. In the bottom left of the Capture configuration screen, select **Reset Cursor**. Go back to the Global Sync topologies page and select **Start** to start the pipeline components.
@@ -183,7 +183,7 @@ The database connectors leverage the failover server that has been configured fo
 If a connection cannot be made to the primary server, the connector tries to connect to the failover server configured in the data source. If a connection to both the primary and failover servers fails, the retry count goes up. The connector repeats this process until the value configured in "Max Retries on Connection Error" is reached. There is no automatic failback, meaning once the primary server is back online, the connector does not automatically go back to it.
 
 
-## LDAP Directory Connectors
+## LDAP Directory
 
 For LDAP backends that support both Changelog and Persistent Search, you can configure the connector from the Main Control Panel > Global Sync tab. Select the topology and configure the pipeline. Select the Capture component to modify the connector type and advanced properties.
 
@@ -201,9 +201,11 @@ Any LDAP directory that offers a persistent search mechanism can use the Persist
 
 ## Active Directory Connectors
 
-There are three change detection mechanisms: USNChanged, DirSync and Hybrid. If you are virtualizing and detecting changes from a Global Catalog, then you must use the USNChanged changed connector because the DirSync and Hybrid connectors cannot detect change events on sub-domains.
+There are three change detection mechanisms: USNChanged, DirSync and Hybrid. 
 
-The flowchart below helps to decide which change detection mechanism to use.
+![Active Directory Types](Media/ad-types.jpg)
+
+If you are virtualizing and detecting changes from a Global Catalog, then you must use the USNChanged changed connector because the DirSync and Hybrid connectors cannot detect change events on sub-domains. The flowchart below helps to decide which change detection mechanism to use.
 
 ![Change detection mechanism flowchart](Media/image36.png)
 
