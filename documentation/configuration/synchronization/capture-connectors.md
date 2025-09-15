@@ -137,7 +137,7 @@ The following steps assume your backend database table has a primary key defined
 >[!warning]
 >This connector type does not detect delete operations. If you have a need to detect delete operations from the database, you should choose a different connector type.
 
-1. From the Main Control Panel > Global Sync Tab, select the topology on the left.
+1. From the Classic Control Panel > Synchronization Tab, select the topology on the left.
 1. On the right, select the sync pipeline to configure.
 1. Select a Capture component and the configuration displays.
 1. Select **DB Timestamp** from the **Connector Type** drop-down list.
@@ -154,7 +154,7 @@ The following steps assume your backend database table has a primary key defined
 
 The following steps assume your database backend table contains an indexed column that contains a sequence-based value that is automatically maintained and modified for each record that is added, updated or deleted. The DB Counter connector uses this column to maintain a cursor to keep track of processed changes. The counter column database types supported are described in the [Database connectors](#database-connectors) section.
 
-1. From the Main Control Panel > Global Sync Tab, select the topology on the left.
+1. From the Classic Control Panel > Synchronization Tab, select the topology on the left.
 1. On the right, select the sync pipeline to configure.
 1. Select the Capture component and the configuration displays.
 1. Select **DB Counter** from the **Connector Type** drop-down list.
@@ -176,7 +176,7 @@ This section describes the failover mechanism for the database connectors.
 >[!warning]
 >The backend servers must be configured for multi-master replication. Please check the vendor documentation for assistance with configuring replication for your backends.
 
-The database connectors leverage the failover server that has been configured for the data source. When you configure a data source for your backend database, select a failover database server from the drop-down list. The failover server must be configured as a RadiantOne data source. See the screen shot below for how to indicate a failover server for the Data Sources from the Main Control Panel.
+The database connectors leverage the failover server that has been configured for the data source. When you configure a data source for your backend database, select a failover database server from the drop-down list. The failover server must be configured as a RadiantOne data source. See the screen shot below for how to indicate a failover server for the Data Sources from the Classic Control Panel.
 
  ![Configuring Failover Servers for the Backend Database](Media/image33.png)
 
@@ -185,7 +185,7 @@ If a connection cannot be made to the primary server, the connector tries to con
 
 ## LDAP Directory
 
-For LDAP backends that support both Changelog and Persistent Search, you can configure the connector from the Main Control Panel > Global Sync tab. Select the topology and configure the pipeline. Select the Capture component to modify the connector type and advanced properties.
+For LDAP backends that support both Changelog and Persistent Search, you can configure the connector from the Classic Control Panel > Synchronization tab. Select the topology and configure the pipeline. Select the Capture component to modify the connector type and advanced properties.
 
 Choose either the **LDAP** option (for Changelog) or **Persistent Search** and **Save**.
 
@@ -246,7 +246,7 @@ This section describes the failover mechanism for the LDAP (changelog), Persiste
 >[!warning]
 >The backend servers must be configured for multi-master replication. Please check the vendor documentation for assistance with configuring replication for your backends.
 
-The directory connectors leverage the failover servers that have been configured for the data source. When you configure a data source for your backend directory, you need to indicate the list of failover servers in order of priority. When the connector fails over, it uses the failover servers in the order they are listed. See the screen shot below for how to indicate a failover server for the Data Sources from the Main Control Panel.
+The directory event listeners leverage the failover servers that have been configured for the data source. When you configure a data source for your backend directory, you need to indicate the list of failover servers in order of priority. When the event listener fails over, it uses the failover servers in the order they are listed. See the screen shot below for how to indicate a failover server for the Data Sources from the Classic Control Panel.
 
  ![Configuring Failover Servers for the Backend Directory](Media/image38.png)
 
