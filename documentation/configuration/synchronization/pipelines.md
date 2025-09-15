@@ -3,6 +3,10 @@ title: Create Topologies
 description: Learn how to create topologies
 ---
 
+## Overview
+
+The naming and graphical representation of a set of objects participating in a synchronization pipeline is known as a topology. A topology may consist of one or more pipelines.
+
 ## Prerequisites
 
 There are two prerequisite steps for configuring synchronization topologies: 
