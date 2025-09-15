@@ -24,10 +24,10 @@ On the Classic Control Panel > Synchronization tab, choose the topology on the l
 Each Event Listener stores a cursor to maintain information about the last processed change. In some cases, you may need to edit the cursor value to force the Event Listener to pick up some missed changes (e.g. during a disaster recovery scenario where you will start synchronization in another data center), or skip some changes in cases like where [non-sequential change IDs](#force-sequential-counters) were detected. Configuration is stored in a RadiantOne Directory store mounted at the `cn=registry` naming context.
 
 >[!note]
->Editing the cursor is supported for Event Listeners that store a number or timestamp value. The AD DirSync and Hybrid connectors use a cookie for a cursor value that you would not know how to set.
+>Editing the cursor is supported for Event Listeners that store a number or timestamp value. The AD DirSync and Hybrid change detection mechanisms use a cookie for a cursor value that you would not know how to set.
 
 1. Stop the Event Listener by suspending the pipeline. You can do this from the Classic Control Panel > Synchronization tab.
-1. Connect to RadiantOne with an administrator that has permissions to modify entries in `cn=registry` and browse to the configuration for your capture connector: `cn=cursor,{PIPELINE_ID},cn=registry`
+1. Connect to RadiantOne with an administrator that has permissions to modify entries in `cn=registry` and browse to the configuration for your event listener: `cn=cursor,{PIPELINE_ID},cn=registry`
 1. Edit the cursor attribute and enter the value to indicate the point from which the Event Listneer should capture changes from. An example for a database changelog event detection mechanism is shown below.<br>
     ![Example of Database Changelog Cursor Settings](Media/db-cursor.jpg)
 2. Resume the pipeline which redeploys/starts the Event Listener. You can do this from the Classic Control Panel > Synchronization tab.
@@ -70,7 +70,7 @@ This property indicates the number of entries the event listener collects from t
 
 ### Max retries on connection error
 
-For Database Connectors, if the event listener is unable to connect to the primary backend server, it tries to connect to the failover server. If the event listener cannot connect to the primary or failover servers because of a connection error, it tries to connect again later. Maximum Retries on Connection Error is the total number of times the event listener tries reconnecting. A failed attempt to connect to both the primary and failover server is considered a single retry. The frequency of the reconnect attempt is based on the Retry Interval on Connection Error property. If there are no backends available to connect to, the agent automatically redeploys the event listener until a connection to the backend can be made.
+For Databases, if the event listener is unable to connect to the primary backend server, it tries to connect to the failover server. If the event listener cannot connect to the primary or failover servers because of a connection error, it tries to connect again later. Maximum Retries on Connection Error is the total number of times the event listener tries reconnecting. A failed attempt to connect to both the primary and failover server is considered a single retry. The frequency of the reconnect attempt is based on the Retry Interval on Connection Error property. If there are no backends available to connect to, the agent automatically redeploys the event listener until a connection to the backend can be made.
 
 For Directories, if the event listener is unable to connect to the primary backend server because of a connection error, it tries to connect again later. Maximum Retries on Connection Error is the total number of times the event listener tries reconnecting. The frequency of the reconnect attempt is based on the Retry Interval on Connection Error property. After all attempts have been tried, the failover logic is triggered. If there are no backends available to connect to, the agent automatically redeploys the event listener until a connection to the backend can be made.
 
@@ -96,27 +96,27 @@ The default value is `10,000 ms` (10 seconds).
 
 ## Condition Event Contents
 
-The common properties that determine the attributes that are published in the message can be found in the Event Contents section. Transformation logic (scripting and/or attribute mapping) is based on the attributes published for the entries, so ensure all source attributes you want to use in the transformation are published by the connector.
+The common properties that determine the attributes that are published in the message can be found in the Event Contents section. Transformation logic (scripting and/or attribute mapping) is based on the attributes published for the entries, so ensure all source attributes you want to use in the transformation are published by the event listener.
 
 ### Granular Per Event Type Mode
 
-The contents of the message published by the connector can be configured by the event type (Add, Modify, Delete). If **Granular per Event Type Mode** is enabled, you can configure the attributes the connector should publish in the message depending on the type of event detected. Enabling this mode adds a configuration section for each type: add, modify, delete. If this mode is disabled, the connector publishes the same set of attributes regardless of event type.
+The contents of the message published by the event listener can be configured by the event type (Add, Modify, Delete). If **Granular per Event Type Mode** is enabled, you can configure the attributes the event listener should publish in the message depending on the type of event detected. Enabling this mode adds a configuration section for each type: add, modify, delete. If this mode is disabled, the event listener publishes the same set of attributes regardless of event type.
 
 ### Request all Attributes
 
-The Request all Attributes property is enabled by default. When a connector picks up changed entries, the default behavior is to request and publish all attributes of the entry. For LDAP/Active Directory sources, this does not include operational attributes. If you want operational attributes returned, use the [Operational Attributes](#operational-attributes) property. If you want to exclude a few attributes from the entries the connector publishes, use the [Excluded Attributes](#excluded-attributes) property. If your synchronization use case does not require all attributes of the changed entries, you can disable the **Request all Attributes** and enter the specific attributes of interest in the [Requested Attributes](#requested-attributes) property.
+The Request all Attributes property is enabled by default. When the event listener picks up changed entries, the default behavior is to request and publish all attributes of the entry. For LDAP/Active Directory sources, this does not include operational attributes. If you want operational attributes returned, use the [Operational Attributes](#operational-attributes) property. If you want to exclude a few attributes from the entries the event listener publishes, use the [Excluded Attributes](#excluded-attributes) property. If your synchronization use case does not require all attributes of the changed entries, you can disable the **Request all Attributes** and enter the specific attributes of interest in the [Requested Attributes](#requested-attributes) property.
 
 ### Operational Attributes
 
-This property is available when Request all Attributes is enabled. Enter a comma-separated list of operational attributes that the connector should request (and publish) when it picks up changed entries.
+This property is available when Request all Attributes is enabled. Enter a comma-separated list of operational attributes that the event listener should request (and publish) when it picks up changed entries.
 
 ### Excluded Attributes
 
-This property is available when Request all Attributes is enabled. To further condition the content of the entries that are published, you can indicate to have certain attributes excluded from the message. In the Excluded Attributes property, enter a comma-separated list of attribute names that should not be published in the message by the connector. This can reduce the size of the message that is published and avoid publishing unwanted information.
+This property is available when Request all Attributes is enabled. To further condition the content of the entries that are published, you can indicate to have certain attributes excluded from the message. In the Excluded Attributes property, enter a comma-separated list of attribute names that should not be published in the message by the event listener. This can reduce the size of the message that is published and avoid publishing unwanted information.
 
 ### Requested Attributes
 
-If the Request all Attributes property is disabled, you must list the attributes that the connector should request and publish for the changed entries in the Requested Attributes property.
+If the Request all Attributes property is disabled, you must list the attributes that the event listener should request and publish for the changed entries in the Requested Attributes property.
 
 
 ## Database Changelog 
@@ -155,7 +155,7 @@ If you choose **OK** to execute the DB Changelog scripts, `SELECT`, `INSERT`, `U
 
 ### SQL Filter
 
-SQL Filter is used as part of the request for entries captured by the timestamp connector. Only changes that match the filter are published by the connector.
+SQL Filter is used as part of the request for entries captured by the timestamp change detection mechanism. Only changes that match the filter are published by the event listener.
 
 A SQL filter is either a single expression or several single expressions joined by binary operators and brackets ( ). Possible binary operators are:
 
@@ -172,13 +172,13 @@ Some examples of valid SQL Filters are:
 - `NAME LIKE 'AL%'`
 - `NAME LIKE 'ALLE_'`
 
-If the SQL Filter syntax entered in the property is not correct, an error occurs. The event listener waits for the length of time specified in the [Retry Interval on Error](#Common-properties-for-all-Event-Listeners) and then tries to get the changed entries in the database again. After the maximum number of retries (indicated in the [Max Retries on Error](#Common-properties-for-all-Event-Listeners) property) is exhausted, if the SQL syntax is still invalid, the connector stops. You must either remove or correct the SQL filter before restarting the connector. It is recommended that you set the connector [Log Level](#Common-properties-for-all-Event-Listeners) to `DEBUG` and check the log (connector.log) for the SQL query (**Executing query:**) that is generated to ensure the value entered in the SQL Filter property is translated properly. The log can be viewed from Classic Control Panel > Server Control Panel > Log Viewer. 
+If the SQL Filter syntax entered in the property is not correct, an error occurs. The event listener waits for the length of time specified in the [Retry Interval on Error](#Common-properties-for-all-Event-Listeners) and then tries to get the changed entries in the database again. After the maximum number of retries (indicated in the [Max Retries on Error](#Common-properties-for-all-Event-Listeners) property) is exhausted, if the SQL syntax is still invalid, the event listener stops. You must either remove or correct the SQL filter before restarting the event listener. It is recommended that you set the [Log Level](#Common-properties-for-all-Event-Listeners) to `DEBUG` and check the log (connector.log) for the SQL query (**Executing query:**) that is generated to ensure the value entered in the SQL Filter property is translated properly. The log can be viewed from Classic Control Panel > Server Control Panel > Log Viewer. 
 
 If the event listener should process all changed entries, do not enter a SQL filter.
 
 ### Force Sequential Counters
 
-This property accepts a value of `true` or `false` and dictates how the connector treats entries it picks up from the LOG table that have non-sequential change IDs. The default is `true` meaning that if the connector detects a non-sequential change ID for an entry in the LOG table, it behaves as if there is an error (non-connection error) and the retry logic based on the Max Retries on Error and Retry Interval on Error properties takes effect. Sometimes rows in the log table are not written in the order of the change ID, and if the connector does not wait for the entries to have sequential IDs, some changes could be missed. The connector waits for the length of time specified in the [Retry Interval on Error](#Common-properties-for-all-Event-Listeners) and then tries to get the changed entries in the database again. After the maximum number of retries (indicated in the [Max Retries on Error](#Common-properties-for-all-Event-Listeners) property) is exhausted, if it still detects non-sequential change IDs, the connector stops. You can manually edit the cursor value before restarting the Event Listener to avoid the non-sequential number. Or you can disable the `Force Sequential Counters` property for the event listener.
+This property accepts a value of `true` or `false` and dictates how the event listener treats entries it picks up from the LOG table that have non-sequential change IDs. The default is `true` meaning that if the event listener detects a non-sequential change ID for an entry in the LOG table, it behaves as if there is an error (non-connection error) and the retry logic based on the Max Retries on Error and Retry Interval on Error properties takes effect. Sometimes rows in the log table are not written in the order of the change ID, and if the event listener does not wait for the entries to have sequential IDs, some changes could be missed. The event listener waits for the length of time specified in the [Retry Interval on Error](#Common-properties-for-all-Event-Listeners) and then tries to get the changed entries in the database again. After the maximum number of retries (indicated in the [Max Retries on Error](#Common-properties-for-all-Event-Listeners) property) is exhausted, if it still detects non-sequential change IDs, the event listener stops. You can manually edit the cursor value before restarting the Event Listener to avoid the non-sequential number. Or you can disable the `Force Sequential Counters` property for the event listener.
 
 If the event listener should ignore non-sequential change IDs, and process all changes immediately, set the property to `false`.
 
@@ -208,7 +208,7 @@ In the Core Properties section, enter a column name in the Counter Column proper
 
 ### SQL Filter
 
-SQL filter is used as part of the request for entries captured by the timestamp connector. Only changes that match the filter are published by the connector.
+SQL filter is used as part of the request for entries captured by the counter change detection mechanism. Only changes that match the filter are published by the event listener.
 
 A SQL filter is either a single expression or several single expressions joined by binary operators and brackets ( ). Possible binary operators
 are:
@@ -226,7 +226,7 @@ Some examples of valid SQL Filters are:
 - `NAME LIKE 'AL%'`
 - `NAME LIKE 'ALLE_'`
 
-If the SQL Filter syntax entered into the property is not correct, an error occurs. The connector waits for the length of time specified in the [Retry Interval on Error](#Common-properties-for-all-Event-Listeners) and then tries to get the changed entries in the database again. After the maximum number of retries (indicated in the [Max Retries on Error](#Common-properties-for-all-Event-Listeners) property) is exhausted, if the SQL syntax is still invalid, the event listener stops. You must either remove or correct the SQL filter before restarting the event listener. It is recommended that you set the [Log Level](#Common-properties-for-all-Event-Listeners) to `DEBUG` and check the log (connector.log) for the SQL query (**Executing query:**) that is generated to ensure the value entered in the `SQL Filter` property is translated properly. Go to the Server Control Panel > Log Viewer to download and/or view the log file. 
+If the SQL Filter syntax entered into the property is not correct, an error occurs. The event listener waits for the length of time specified in the [Retry Interval on Error](#Common-properties-for-all-Event-Listeners) and then tries to get the changed entries in the database again. After the maximum number of retries (indicated in the [Max Retries on Error](#Common-properties-for-all-Event-Listeners) property) is exhausted, if the SQL syntax is still invalid, the event listener stops. You must either remove or correct the SQL filter before restarting the event listener. It is recommended that you set the [Log Level](#Common-properties-for-all-Event-Listeners) to `DEBUG` and check the log (connector.log) for the SQL query (**Executing query:**) that is generated to ensure the value entered in the `SQL Filter` property is translated properly. Go to the Server Control Panel > Log Viewer to download and/or view the log file. 
 
 If the event listener should process all changed entries, do not enter a SQL filter.
 
@@ -239,7 +239,7 @@ If the event listener should ignore non-sequential change IDs, and process all c
 
 ## Database Timestamp  
 
-For Oracle, SQL Server, MySQL, MariaDB, and Salesforce backends (using the RadiantOne JDBC driver), a timestamp-based change detection mechanism is available. To leverage this mechanism, your database table must have a column that contains a timestamp/date value associated with updates. For Salesforce, this column is `LastModifiedDate`. The column used in the timestamp connector must be indexed for performance.
+For Oracle, SQL Server, MySQL, MariaDB, and Salesforce backends (using the RadiantOne JDBC driver), a timestamp-based change detection mechanism is available. To leverage this mechanism, your database table must have a column that contains a timestamp/date value associated with updates. For Salesforce, this column is `LastModifiedDate`. The column used in the timestamp change detection mechanism must be indexed for performance.
 
 >[!warning]
 >This event listener type does not detect delete operations. If you have a need to detect and propagate delete operations from the database, you should choose a different change detection mechanism. However, for Salesforce backends, delete operations can be detected because a delete operation is detected when the `isActive` attribute is set to `false`.
@@ -264,7 +264,7 @@ To detect changes using a timestamp, set the change detection type in the pipeli
 
 ![The drop-down list with **DB Timestamp** selected, in the Core Properties section of Configure Pipeline](Media/db-timestamp.jpg)
 
-After the DB Timestamp type has been selected, configure the properties in the Core Properties, Advanced Properties, and Event Contents. For properties common to all connectors, see [Common Properties](#Common-properties-for-all-Event-Listeners).
+After the DB Timestamp type has been selected, configure the properties in the Core Properties, Advanced Properties, and Event Contents. For properties common to all event listeners, see [Common Properties](#Common-properties-for-all-Event-Listeners).
 
 ### Timestamp Column
 
@@ -301,7 +301,7 @@ Some examples of valid SQL Filters are:
 - `NAME LIKE 'AL%'`
 - `NAME LIKE 'ALLE_'`
 
-If the SQL Filter syntax entered into the property is not correct, an error occurs. The event listener waits for the length of time specified in the [Retry Interval on Error](#Common-properties-for-all-Event-Listeners) and then tries to get the changed entries in the database again. After the maximum number of retries (indicated in the [Max Retries on Error](#Common-properties-for-all-Event-Listeners) property) is exhausted, if the SQL syntax is still invalid, the event listener stops. You must either remove or correct the SQL filter before restarting the event listener. It is recommended that you set the event listener [Log Level](configure-connector-types-and-properties.md#log-level) to `DEBUG` and check the log (connector.log) for the SQL query (**Executing query:**) that is generated to ensure the value entered in the SQL Filter property is translated properly. Go to the Server Control Panel > Log Viewer to download and/or view the log file. 
+If the SQL Filter syntax entered into the property is not correct, an error occurs. The event listener waits for the length of time specified in the [Retry Interval on Error](#common-properties-for-all-Event-Listeners) and then tries to get the changed entries in the database again. After the maximum number of retries (indicated in the [Max Retries on Error](#common-properties-for-all-Event-Listeners) property) is exhausted, if the SQL syntax is still invalid, the event listener stops. You must either remove or correct the SQL filter before restarting the event listener. It is recommended that you set the event listener [Log Level](#common-properties-for-all-Event-Listeners) to `DEBUG` and check the log (connector.log) for the SQL query (**Executing query:**) that is generated to ensure the value entered in the SQL Filter property is translated properly. Go to the Server Control Panel > Log Viewer to download and/or view the log file. 
 
 If the event listener should process all changed entries, do not enter a SQL filter.
 
@@ -554,6 +554,7 @@ When the Determine Move Operations property is enabled, the event listener maint
 
 >[!warning]
 >When defining the data source for the backend Active Directory, check the Paged Results Control option to ensure that all entries can be retrieved from the backend. This is required for the event listener to get all entries in the cache to map objectGUID to DN and support `modDN/modRDN` operations.
+
 
 
 
