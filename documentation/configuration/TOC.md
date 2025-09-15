@@ -55,10 +55,10 @@ description: Configuring RadiantOne Identity Data Management
   - [Concepts](synchronization/synchronization-concepts.md)
   - [Configuration](#)
     - [Pipelines](synchronization/pipelines.md)
-    - [Capture Connectors](synchronization/capture-connectors.md)
+    - [Event Listeners](synchronization/capture-connectors.md)
     - [Transformations](synchronization/transformations.md)
     - [Queue Time to Live](synchronization/synchronization-concepts.md#message-time-to-live)
-  - [Connector Properties](synchronization/connector-properties.md)
+    - [Event Listener Properties](synchronization/connector-properties.md)    
   - [Uploads](synchronization/uploads.md)
 - [Global Settings](#)
   - [Global Interception Scripts](global-settings/global-interception.md)
@@ -72,3 +72,4 @@ description: Configuring RadiantOne Identity Data Management
   - [Access Tokens](security/access-tokens.md)
   - [External Token Validators](security/external-token-validators.md)
   - [Client Certificate Truststore](security/client-cert-truststore.md)
+
