@@ -36,7 +36,7 @@ Event Listeners use a cursor to maintain information about the last processed ch
 
 On the Classic Control Panel > Synchronization tab, choose the topology on the left. Select **Configure** next to the pipeline on the right. Choose the **Capture** component and select **Reset Cursor** shown below the properties. An example is shown below.
 
-![The Reset Cursor option in the Classic Control Panel](Media/reset-cursor.png)
+![The Reset Cursor option in the Classic Control Panel](Media/reset-cursor.jpg)
 
 **Manually update cursor**
 
@@ -493,6 +493,7 @@ When the Determine Move Operations property is enabled, the event listener maint
 
 >[!warning]
 >When defining the data source for the backend Active Directory, check the Paged Results Control option to ensure that all entries can be retrieved from the backend. This is required for the event listener to get all entries in the cache to map objectGUID to DN and support `modDN/modRDN` operations.
+
 
 
 
