@@ -39,11 +39,11 @@ For database backends (JDBC-accessible), the change detection options are:
 
 ### Directory (LDAP-accessible) 
 For directory backends (LDAP-accessible), the change detecion options are:
-- [Changelog](#LDAP-Directory-Connectors) - leverages the cn=changelog naming context in the LDAP directory to detect changes.
-- [Persistent Search](#LDAP-Directory-Connectors) - leverages the LDAP persistent search control to detect changes.
-- [DirSync](#Active-Directory-Connectors) - leverages Active Directory DirSync to detect changes.
-- [USNChanged](#Active-Directory-Connectors) - leverages the USNChanged attribute managed by Active Directory to detect changes.
-- [Hybrid](#Active-Directory-Connectors) - leverages capabilities of both Active Directory DirSync and USNChanged values to detect changes.
+- [Changelog](#ldap-directory) - leverages the cn=changelog naming context in the LDAP directory to detect changes.
+- [Persistent Search](#ldap-directory) - leverages the LDAP persistent search control to detect changes.
+- [DirSync](#active-directory) - leverages Active Directory DirSync to detect changes.
+- [USNChanged](#active-directory) - leverages the USNChanged attribute managed by Active Directory to detect changes.
+- [Hybrid](#active-directory) - leverages capabilities of both Active Directory DirSync and USNChanged values to detect changes.
   
 ### Custom data sources
 
@@ -197,7 +197,7 @@ The event listener leverages a changelog that has been enabled on the backend di
 
 Any LDAP directory that supports the persistent search control can use the Persistent Search change detection type. Novell eDirectory is an example of an LDAP source that supports persistent search. Others include Red Hat Directory, IBM TDS, CA Directory and RadiantOne Directory. The connector issues a persistent search and gets notified by the directory server when information changes. If the event listener is shut down (either deliberately or due to failure), the delete operations that occurred in the directory are lost. Once the event listener is back online there is no way to detect the delete operations that occurred while it was down. The only exception to this is for IBM TDS directories. It stores deleted entries and the event listner is able to read them, and based on timestamp, determine if the change occurred while it was offline.
 
-## Active Directory Event Listeners
+## Active Directory
 
 There are three change detection mechanisms available: USNChanged, DirSync and Hybrid. 
 
