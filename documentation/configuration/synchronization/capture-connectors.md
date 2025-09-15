@@ -150,7 +150,7 @@ The following steps assume your backend database table has a primary key defined
 
 ## Database Counter
 
-The following steps assume your database backend table contains an indexed column that contains a sequence-based value that is automatically maintained and modified for each record that is added, updated or deleted. The DB Counter connector uses this column to maintain a cursor to keep track of processed changes. The counter column database types supported are described in the [Database connectors](#database-connectors) section.
+The following steps assume your database backend table contains an indexed column that contains a sequence-based value that is automatically maintained and modified for each record that is added, updated or deleted. The DB Counter connector uses this column to maintain a cursor to keep track of processed changes. The counter column database types supported are described in the [Database connectors](#database-jdbc-accessible) section.
 
 1. From the Classic Control Panel > Synchronization Tab, select the topology on the left.
 1. On the right, select the sync pipeline to configure.
