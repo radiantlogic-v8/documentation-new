@@ -436,7 +436,7 @@ To manage the Approvers group:
 1.	Expand cn=config,ou=globalgroups. 
 1.	Select cn=approvers. 
 1.	Click the **Manage Group** button. The Manage Group window displays. 
-1.	In the "Find" section, click the folder button to browse to the location of the user that you want to approve events. In this example, the location cn=config,ou=globalusers is selected.  
+1.	In the "Find" section, click the folder button to browse to the location of the user that you want to approve events. In this example, the location ou=globalusers,cn=config  is selected.  
 1.	Click the **SEARCH** button.  
 1.	Select the entry you want to approve events and click the "+" button. In this example, uid=icsadmin,ou=globalusers,cn=config is selected. <br>![Find Users](Media/approvers-group.jpg)
 1.	Click the **SAVE** button. The member is displayed in the cn=approvers group.  
