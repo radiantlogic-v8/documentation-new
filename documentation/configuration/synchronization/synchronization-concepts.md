@@ -182,7 +182,7 @@ You can find the pipeline ID from the Classic Control Panel > Synchronization ta
 
 Select the topology and hover over the name property of the pipeline. An example is shown below.
 
-![A pipeline ID triggered by a hover](Media/image8.png)
+![A pipeline ID triggered by a hover](Media/pipeline-id.jpg)
 
 ## Approvals
 
@@ -192,6 +192,7 @@ For synchronization pipelines that use rules-based transformation, you can confi
 
 >[!note] 
 >The approval queue is automatically created as needed.
+
 
 
 
