@@ -75,7 +75,7 @@ Used in conjunction with the Max Retries on Error property. This is the amount o
 
 The default value is `10,000 ms` (10 seconds).
 
-## Conditioning Event Contents
+## Condition Event Contents
 
 The properties that determine the attributes that are published in the message can be found in the Event Contents section. Transformation logic (scripting and/or attribute mapping) is based on the attributes published for the entries, so ensure all source attributes you want to use in the transformation are published by the connector.
 
