@@ -142,8 +142,6 @@ In the Core Properties section, enter a column name in the Change Type Column pr
 
 In the Core Properties section, enter a column name in the Counter Column property. This value is the database table column name that contains the value that auto-increments when the row changes.
 
-![The Counter Column property value in the Core Properties section, which has been set as `CHANGECOUNTER`](Media/image21.png)
-
 ### SQL Filter
 
 SQL filter is used as part of the request for entries captured by the timestamp connector. Only changes that match the filter are published by the connector.
@@ -200,7 +198,7 @@ This change detection mechanism can be used for detecting changes in Oracle, SQL
 
 To detect changes using a timestamp, set the change detection type in the pipeline configuration by choosing the **Capture** component. In the Core Properties section, select DB Timestamp from the drop-down list.
 
-![The drop-down list with **DB Timestamp** selected, in the Core Properties section of Configure Pipeline](Media/image18.png)
+![The drop-down list with **DB Timestamp** selected, in the Core Properties section of Configure Pipeline](Media/db-timestamp.jpg)
 
 After the DB Timestamp type has been selected, configure the properties in the Core Properties, Advanced Properties, and Event Contents. For properties common to all connectors, see [Common Properties](./common-properties).
 
@@ -213,7 +211,6 @@ In the Core Properties section, set the Timestamp Column. The value of this prop
 
 If an invalid column name is configured, the event listener stops.
 
-![The Timestamp Column property value in the Core Properties section, which has been set as `CHANGETIME`](Media/image19.png)
 
 ### Processing Delay
 
@@ -493,6 +490,7 @@ When the Determine Move Operations property is enabled, the event listener maint
 
 >[!warning]
 >When defining the data source for the backend Active Directory, check the Paged Results Control option to ensure that all entries can be retrieved from the backend. This is required for the event listener to get all entries in the cache to map objectGUID to DN and support `modDN/modRDN` operations.
+
 
 
 
