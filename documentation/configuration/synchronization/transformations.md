@@ -450,7 +450,7 @@ To manage the Approvers group:
 **Approver Email Notifications**
 
 To enable email alerts for approvers, SMTP must be configured. 
-1. Navigate to the RadiantOne Main Control Panel > Settings tab > Monitoring > Email Alerts Settings.
+1. Navigate to the Classic Control Panel > Settings tab > Monitoring > Email Alerts Settings.
 2. Enter your SMTP settings (host, port, user, password, from email and to email) in the Email Alerts (SMTP Settings) section.
 3. Click **Save**.
 4. If you would like to test your settings, click **Send Test Email**. 
@@ -633,7 +633,7 @@ If the **Custom Function Action** is chosen, you can create a new function for y
 
 You can test your rules by emulating changes from the source.
 
-1. On the Main Control Panel > Global Sync tab, select the topology on the left.
+1. On the Classic Control Panel > Synchronization tab, select the topology on the left.
 1. Select **Configure** next to the pipeline on the right.
 1. Select the **Transformation** component and choose **Rules-based Transformation** from the **Transformation Type** drop-down list.
 1. Expand the **Rules** section that appears below the **Transformation Type** and select ![Less than and greater than symbols](./Media/image87.png).
