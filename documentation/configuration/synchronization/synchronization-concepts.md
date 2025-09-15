@@ -56,18 +56,16 @@ The following concepts are important to understand for configuring and managing 
 ## Data Source
 A data source represents the connection to a backend which plays the role of either a source or target endpoint for synchronization. Data Sources are configured from the Control Panel > Setup > Data Catalog > Data Sources. 
 
-## Capture Connector 
-Agents manage connectors which includes deploying, stopping/suspending and starting them as needed.
+## Event Listener
+Agents manage event listeners which includes deploying, stopping/suspending and starting them as needed.
 
-A connector is a component that captures changes from data sources. Capture connectors are configured as part of the pipeline configuration process. Capture connectors associated with the RadiantOne Universal Directory (HDAP) stores or persistent caches are automatically configured when the stores are used as a source in a pipeline. Capture connectors for all other data sources require configuration. Capture connectors are configured from the Main Control Panel > Global Sync tab. Select a topology on the left and then select **Configure** next to the pipeline.
+An event listener is a component that captures changes from data sources. The change detection mechansim associated with the event listener is configured as part of the pipeline configuration process. Event Listeners associated with RadiantOne Directory stores or persistent caches are automatically configured when the stores are used as a source in a pipeline. Event listeners for all other data sources require configuration and this can be done from the Classic Control Panel > Synchronization tab. Select a topology on the left and then select **Configure** next to the pipeline.
 
->[!note]
->There are no apply connectors to configure or manage. Changes are propagated through the RadiantOne virtualization layer to the destination.
 
 ## Queue 
-RadiantOne Global Sync relies on queues for guaranteed delivery of messages. Queues are a special kind of store managed in the RadiantOne Universal Directory below the `cn=queue` and `cn=dlqueue` root naming contexts. Every synchronization pipeline has its own queue below the `cn=queue` and `cn=dlqueue` naming contexts identified by the pipelineID. Messages are added into the queues by the capture connectors and retrieved from the queues by the sync engine. Both `cn=queue` and `cn=dlqueue` are hidden root naming contexts, so if you want to view them, you must search for them. The Main Control Panel > Directory Browser tab can be used. An example is shown below.
+Synchronization relies on queues for guaranteed delivery of messages. Queues are a special kind of store managed by the RadiantOne Directory below the `cn=queue` and `cn=dlqueue` root naming contexts. Every synchronization pipeline has its own queue below the `cn=queue` and `cn=dlqueue` naming contexts identified by the pipelineID. Messages are added into the queues by the event listeners and retrieved from the queues by the sync engine. Both `cn=queue` and `cn=dlqueue` are hidden root naming contexts, so if you want to view them, you must search for them. The Control Panel > Manage > Directory Browser can be used. An example is shown below.
 
-![The Directory Browser tab in the Main Control Panel with search results for "(objectclass=*)"](Media/image18.png)
+![The Directory Browser in the Control Panel with search results for "(objectclass=*)"](Media/image18.png)
 
 ### Message time-to-live
 
@@ -75,9 +73,9 @@ Messages remain in the queue until they are either picked up by the sync engine,
 
 ![Message Time-to-live Enforced by the Global Sync Queues](Media/image19.png)
 
-## Apply connector
+## Apply Process
 
-The apply connector applies changes to the destination object(s). Once the transformation component is successfully configured, the Apply connector automatically starts. There is no configuration of the apply connector. The apply process leverages the [virtualization of the target](../introduction.md#architecture) as depicted in [this figure](../introduction.md#global-synchronization-architecture-figure), meaning that all changes are sent to the RadiantOne service, directed to the branch in the namespace where the virtual view of the target has been mounted.
+The apply process applies changes to the destination object(s). Once the transformation component is successfully configured, the Apply process starts automatically. The apply process leverages the [virtualization of the target](../introduction.md#architecture) as depicted in [this figure](../introduction.md#global-synchronization-architecture-figure), meaning that all changes are sent to the RadiantOne service, directed to the branch in the namespace where the virtual view of the target has been mounted.
 
 ## Sync Engine 
 The Sync Engine processes the transformations and sends the changed entries to the destination.
@@ -195,6 +193,7 @@ For synchronization pipelines that use rules-based transformation, you can confi
 
 >[!note] 
 >The approval queue is automatically created as needed.
+
 
 
 
