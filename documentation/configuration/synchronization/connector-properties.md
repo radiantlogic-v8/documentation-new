@@ -28,6 +28,18 @@ A high-level architecture is shown below.
 
 ![A flow chart of high level architecture](Media/sync-arch.jpg)
 
+**Process Overview**
+
+- The line labeled 1a indicates that changes can be detected directly on the backend (with native event listeners). This is used when there is not a persistent cache defined for the source virtual view.
+For 1b, if the source virtual view is configured in persistent cache, changes are detected with the built-in RadiantOne trigger which publishes changes directly to the queue (no event listener needs to be configured).
+
+- In line 2, change events are published as messages into queues. Queues are local RadiantOne Directory stores located below the cn=queue root naming. This is a HIDDEN naming context, so as an admin, or someone accessing the queues for troubleshooting, you must explicitly search for it. There is one queue created PER pipeline (each topology can have one or more pipelines).
+
+- Line 3 represents the sync engine process picking up the change events from the queues.
+- In line 4, the transformation logic is processed and the apply process is invoked.
+- In line 5, the apply message is translated into the needed update operation for the target data source. 
+
+
 ### Reset cursor – detect new changes only
 
 Event Listeners use a cursor to maintain information about the last processed change. This allows them to capture only changes that have happened since the last time they processed changes. When the Event Listeners start, they automatically attempt to capture all changes that have happened since the last time they checked. If the synchronization process has been stopped for an extended period, you might not want them to capture all missed changes. In this case, you can reset the cursor. You can reset the cursor from the Classic Control Panel > Synhronization tab, or manually define the cursor value.
@@ -490,6 +502,7 @@ When the Determine Move Operations property is enabled, the event listener maint
 
 >[!warning]
 >When defining the data source for the backend Active Directory, check the Paged Results Control option to ensure that all entries can be retrieved from the backend. This is required for the event listener to get all entries in the cache to map objectGUID to DN and support `modDN/modRDN` operations.
+
 
 
 
