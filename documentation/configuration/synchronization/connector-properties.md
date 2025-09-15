@@ -85,7 +85,7 @@ The name of the database table where changes to database entries are logged. You
 
 When you save the change event detection type configuration, you are prompted to execute the scripts on the database server. An example is shown below.
 
-![A prompt to execute DB Changelog configure scripts](Media/image17.png)
+![A prompt to execute DB Changelog configure scripts](Media/run-scripts.jpg)
 
 If you choose **OK** to execute the DB Changelog scripts, `SELECT`, `INSERT`, `UPDATE`, and `DELETE` access are granted for PUBLIC to the LOG table. Check with your database administrator if you need to restrict access rights on the log table. You can select the **NO** option and the generated script can be reviewed, modified if needed, and run on the database by a DBA. Click the Download button to download the sql scripts.
 
@@ -493,6 +493,7 @@ When the Determine Move Operations property is enabled, the event listener maint
 
 >[!warning]
 >When defining the data source for the backend Active Directory, check the Paged Results Control option to ensure that all entries can be retrieved from the backend. This is required for the event listener to get all entries in the cache to map objectGUID to DN and support `modDN/modRDN` operations.
+
 
 
 
