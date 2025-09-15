@@ -11,7 +11,7 @@ The transformation configuration contains the logic to translate a change in a s
 
 To configure the transformation:
 
-1. From the Main Control Panel > Global Sync Tab, select the topology on the left.
+1. From the Classic Control Panel > Synchronization Tab, select the topology on the left.
 1. On the right, select **Configure** on the pipeline.
 1. Select the Transformation component and choose the Transformation Type; Mappings, Script, or Script and Mappings. Depending on the type selected, new sections are displayed.
 
@@ -24,18 +24,18 @@ Using a script for transformation allows for complex logic to be applied before 
 >[!note]
 >If you use both script and attribute mappings, the attribute mappings are applied first.
 
-1. On the Main Control Panel > Global Sync tab, select the topology on the left.
+1. On the Classic Control Panel > Synchronization tab, select the topology on the left.
 1. Select **Configure** next to the pipeline on the right.
 1. Select the **Transformation** component and choose either **Script** or **Script and Mappings** from the **Transformation Type** drop-down list.
 1. Expand the **Script** section that appears below the Transformation Type and select **Edit**.
 1. You can edit and test the script in the window provided. Basic validation is checked when using the script window.
-1. After the script compiles successfully, select **Save**. Scripts are saved at: `\vds_server\custom\src\com\rli\scripts\fidsync\{PIPELINE_NAME}` and can be viewed or downloaded from Main Control Panel > Settings > Configuration > File Manager.
+1. After the script compiles successfully, select **Save**. Scripts are saved at: `\vds_server\custom\src\com\rli\scripts\fidsync\{PIPELINE_NAME}` and can be viewed or downloaded from Classic Control Panel > Settings > Configuration > File Manager.
 
 ### Leverage existing Java classes
 
 To leverage existing classes in your transformation scripts, perform the following:
 
-- The jar file must be copied in `/vds_server/custom/lib`. Use Main Control Panel > Settings > Configuration > File Manager for uploading the jar file.
+- The jar file must be copied in `/vds_server/custom/lib`. Use Classic Control Panel > Settings > Configuration > File Manager for uploading the jar file.
 - The class must be imported in the transformation script.
     - Example of importing the class in your transformation script:
     - `import com.rli.connectors.changeevent.ChangeOperation;`
@@ -53,7 +53,7 @@ The add your own log statements into the script, use the following:
 
 When your script has been modified, you can test it by emulating changes from the source.
 
-1. On the Main Control Panel > Global Sync tab, select the topology on the left.
+1. On the Classic Control Panel > Synchronization tab, select the topology on the left.
 1. Select **Configure** next to the pipeline on the right.
 1. Select the Transformation component and choose either **Script** or **Script and Mappings** from the **Transformation Type** drop-down list.
 1. Expand the **Script** section that appears below the **Transformation Type** and select **Edit**.
@@ -280,7 +280,7 @@ Rules offer a default event-based template that allows for configuring condition
 
 ### Creating Rule Sets:
 
-1. On the Main Control Panel > Global Sync tab, select the topology on the left.
+1. On the Classic Control Panel > Synchronization tab, select the topology on the left.
 1. Select **Configure** next to the pipeline on the right.
 1. Select the Transformation component and choose **Rules-based Transformation** from the **Transformation Type** drop-down list.
 1. Select the button to create a new Rule Set.
@@ -432,19 +432,16 @@ The Require Approvals option is located on the **BASIC INFORMATION** tab.
 
 Any user located in the RadiantOne virtual namespace that is a member of the *Approvers* group can be an approver. In the following example, the ICS Admin user is made an approver.  
 To manage the Approvers group: 
-1.	In the Main Control Panel, go to the **Directory Browser** tab.  
+1.	In the Control Panel, in the left navigation menu, go to Manage > Directory Browser.   
 1.	Expand cn=config,ou=globalgroups. 
 1.	Select cn=approvers. 
 1.	Click the **Manage Group** button. The Manage Group window displays. 
-1.	Click the **Add Member(s)** button.  
-1.	Click the **Expand Tree** button. The RadiantOne namespace displays on the right. 
-1.	In the namespace, navigate to the location of the user that you want to approve events. In this example, the location cn=config,ou=globalusers is selected.  
-1.	Click the **Find Now** button.  
-1.	Select the entry you want to approve events and click the **Move selected entry down** button. In this example, uid=icsadmin,ou=globalusers,cn=config is selected. <br>![Find Users](./Media/findusers.jpg)
-1.	Click the **Confirm** button. The member is displayed in the cn=approvers group.  
-1.	Click **Confirm** again to commit the change. 
+1.	In the "Find" section, click the folder button to browse to the location of the user that you want to approve events. In this example, the location cn=config,ou=globalusers is selected.  
+1.	Click the **SEARCH** button.  
+1.	Select the entry you want to approve events and click the "+" button. In this example, uid=icsadmin,ou=globalusers,cn=config is selected. <br>![Find Users](Media/approvers-group.jpg)
+1.	Click the **SAVE** button. The member is displayed in the cn=approvers group.  
 
-![Members of the Approvers Group](./Media/approversgroup.jpg)
+![Members of the Approvers Group](Media/approvers-group-result.jpg)
 
 >[!warning]
 >If you want the approver to receive an email alert when they have pending approvals, the user account must have a valid email address (mail attribute).
