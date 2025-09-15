@@ -5,7 +5,7 @@ description: Learn about Event Listener properties.
 
 ## Overview
 
-Some properties are common to all event listeners and some are specific to the data source and type of detection method used.
+Some properties are [common](#Common-properties-for-all-Event-Listeners) to all event listeners and some are specific to the data source and type of detection method used. Data source types and their specific properties are described after the common ones.
 
 Some other aspects that are common to managing event listeners is viewing and managing cursors, and understanding message size.
 
@@ -554,6 +554,7 @@ When the Determine Move Operations property is enabled, the event listener maint
 
 >[!warning]
 >When defining the data source for the backend Active Directory, check the Paged Results Control option to ensure that all entries can be retrieved from the backend. This is required for the event listener to get all entries in the cache to map objectGUID to DN and support `modDN/modRDN` operations.
+
 
 
 
