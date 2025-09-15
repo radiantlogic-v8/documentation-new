@@ -44,9 +44,9 @@ For 1b, if the source virtual view is configured in persistent cache, changes ar
 
 The following concepts are important to understand for configuring and managing synchronization:
 - [Data Source](#data-source)
-- [Capture Connector](#capture-connector)
+- [Event Listener](#event-listener)
 - [Queue](#queue)
-- [Apply Connector](#apply-connector)
+- [Apply Process](#apply-process)
 - [Sync Engine](#sync-engine)
 - [Transformation](#transformation)
 - [Topology](#topology)
@@ -177,7 +177,7 @@ The pipeline ID is required for a variety of scenarios. A few examples are shown
 |---|---|
 | `https://<rli_server_name>/adap/util?action=vdsconfig&commandname=dl-replay-sync-pipeline&pipelineid=<PIPELINE_ID>` | REST command for replaying messages from a dead letter queue. |
 | `https://<rli_server_name>/adap/util?action=vdsconfig&commandname=init-sync-pipeline&pipelineid=<PIPELINE_ID>` | REST command for running an upload from command line. |
-| `<PIPELINE_ID>/connector.log` | Locating connector logs associated with the pipeline. You can view and download the connector log from the Environment Operations Center. |
+| `<PIPELINE_ID>/connector.log` | Locating event listener logs associated with the pipeline. You can view and download the logs from the Environment Operations Center, or the Server Control Panel > Log Viewer tab. |
 
 You can find the pipeline ID from the Classic Control Panel > Synchronization tab.
 
@@ -193,6 +193,7 @@ For synchronization pipelines that use rules-based transformation, you can confi
 
 >[!note] 
 >The approval queue is automatically created as needed.
+
 
 
 
