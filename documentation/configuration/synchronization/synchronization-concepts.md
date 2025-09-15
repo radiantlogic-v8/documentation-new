@@ -31,8 +31,7 @@ A high-level architecture is shown below.
 
 **Process Overview**
 
-- The line labeled 1a indicates that changes can be detected directly on the backend (with native event listeners). This is used when there is not a persistent cache defined for the source virtual view.
-For 1b, if the source virtual view is configured in persistent cache, changes are detected with the built-in RadiantOne trigger which publishes changes directly to the queue (no event listener needs to be configured).
+- The line labeled 1a indicates that changes can be detected directly on the backend (with native event listeners). This is used when there is not a persistent cache defined for the source virtual view. For 1b, if the source virtual view is configured in persistent cache, changes are detected with the built-in RadiantOne trigger which publishes changes directly to the queue (no event listener needs to be configured).
 
 - In line 2, change events are published as messages into queues. Queues are local RadiantOne Directory stores located below the cn=queue root naming. This is a HIDDEN naming context, so as an admin, or someone accessing the queues for troubleshooting, you must explicitly search for it. There is one queue created PER pipeline (each topology can have one or more pipelines).
 
@@ -78,7 +77,7 @@ Messages remain in the queue until they are either picked up by the sync engine,
 The apply process applies changes to the destination object(s). Once the transformation component is successfully configured, the Apply process starts automatically. The apply process leverages the [virtualization of the target](../introduction.md#architecture) as depicted in [this figure](../introduction.md#global-synchronization-architecture-figure), meaning that all changes are sent to the RadiantOne service, directed to the branch in the namespace where the virtual view of the target has been mounted.
 
 ## Sync Engine 
-The Sync Engine processes the transformations and sends the changed entries to the destination.
+The Sync Engine processes the transformations and invokes the apply process by sending the change events to the RadiantOne service.
 
 ## Transformation 
 A transformation describes how changes on source entries should be translated into entries for a destination. The transformation component can consist of rules, or attribute mappings and/or scripting to accommodate more complex logic. When both attribute mappings and a script are used, the attribute mappings are applied first. When rules are used, the attribute mappings and scripts options are not used. The table below provides some general guidance on choosing which option to use when configuring transformation.
@@ -193,6 +192,7 @@ For synchronization pipelines that use rules-based transformation, you can confi
 
 >[!note] 
 >The approval queue is automatically created as needed.
+
 
 
 
