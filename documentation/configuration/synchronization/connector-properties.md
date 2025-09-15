@@ -170,9 +170,9 @@ If the event listener should process all changed entries, do not enter a SQL fil
 
 ### Force Sequential Counters
 
-This property accepts a value of `true` or `false` and dictates how the event listner treats entries it picks up from the LOG table that have non-sequential change IDs. The default is `true` meaning that if the event listner detects a non-sequential change ID for an entry in the LOG table, it behaves as if there is an error (non-connection error) and the retry logic based on the Max Retries on Error and Retry Interval on Error properties takes effect. Sometimes rows in the log table are not written in the order of the change ID, and if the event listner does not wait for the entries to have sequential IDs, some changes could be missed. The event listner waits for the length of time specified in the [Retry Interval on Error](./common-properties) and then tries to get the changed entries in the database again. After the maximum number of retries (indicated in the [Max Retries on Error](./common-properties) property) is exhausted, if it still detects non-sequential change IDs, the event listner stops. You can manually edit the cursor value before restarting the cevent listner to avoid the non-sequential number. Or you can disable the Force Sequential Counters property for the event listner.
+This property accepts a value of `true` or `false` and dictates how the event listener treats entries it picks up from the LOG table that have non-sequential change IDs. The default is `true` meaning that if the event listener detects a non-sequential change ID for an entry in the LOG table, it behaves as if there is an error (non-connection error) and the retry logic based on the Max Retries on Error and Retry Interval on Error properties takes effect. Sometimes rows in the log table are not written in the order of the change ID, and if the event listener does not wait for the entries to have sequential IDs, some changes could be missed. The event listener waits for the length of time specified in the [Retry Interval on Error](./common-properties) and then tries to get the changed entries in the database again. After the maximum number of retries (indicated in the [Max Retries on Error](./common-properties) property) is exhausted, if it still detects non-sequential change IDs, the event listener stops. You can manually edit the cursor value before restarting the cevent listener to avoid the non-sequential number. Or you can disable the Force Sequential Counters property for the event listener.
 
-If the event listner should ignore non-sequential change IDs, and process all changes immediately, set the property to `false`.
+If the event listener should ignore non-sequential change IDs, and process all changes immediately, set the property to `false`.
 
 
 ## Database Timestamp  
@@ -180,14 +180,14 @@ If the event listner should ignore non-sequential change IDs, and process all ch
 For Oracle, SQL Server, MySQL, MariaDB, and Salesforce backends (using the RadiantOne JDBC driver), a timestamp-based change detection mechanism is available. To leverage this mechanism, your database table must have a column that contains a timestamp/date value associated with updates. For Salesforce, this column is `LastModifiedDate`. The column used in the timestamp connector must be indexed for performance.
 
 >[!warning]
->This event listner type does not detect delete operations. If you have a need to detect and propagate delete operations from the database, you should choose a different change detection mechanism. However, for Salesforce backends, delete operations can be detected because a delete operation is detected when the `isActive` attribute is set to `false`.
+>This event listener type does not detect delete operations. If you have a need to detect and propagate delete operations from the database, you should choose a different change detection mechanism. However, for Salesforce backends, delete operations can be detected because a delete operation is detected when the `isActive` attribute is set to `false`.
 >This change detection mechanism does not differentiate between `ADD` and `UPDATE` operations. All events are processed as `UPDATE` operations. You can customize the transformation logic to dictate how the `UPDATE` operations should be handled on the target (e.g. translated into an `INSERT`,etc.).
 
 For each database object that is a publisher of changes, a new/changed row in the table must have a timestamp column associated with it.
 
 ### Supported database date types
 
-The timestamp event listner has been validated against Oracle, SQL Server, MySQL, and MariaDB databases, and Salesforce only (when accessed using the RadiantOne Salesforce JDBC driver). The timestamp event listner supports the following database date types:
+The timestamp event listener has been validated against Oracle, SQL Server, MySQL, and MariaDB databases, and Salesforce only (when accessed using the RadiantOne Salesforce JDBC driver). The timestamp event listener supports the following database date types:
 
 - For Oracle DB: `TIMESTAMP`, `TIMESTAMP WITH TIME ZONE`, `TIMESTAMP WITH LOCAL TIME ZONE`, and `DATE`.
 - For SQL Server: `SMALLDATETIME`, `DATETIME`, and `DATETIME2`
@@ -493,6 +493,7 @@ When the Determine Move Operations property is enabled, the event listener maint
 
 >[!warning]
 >When defining the data source for the backend Active Directory, check the Paged Results Control option to ensure that all entries can be retrieved from the backend. This is required for the event listener to get all entries in the cache to map objectGUID to DN and support `modDN/modRDN` operations.
+
 
 
 
