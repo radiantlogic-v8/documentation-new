@@ -69,7 +69,7 @@ Synchronization relies on queues for guaranteed delivery of messages. Queues are
 
 ### Message time-to-live
 
-Messages remain in the queue until they are either picked up by the sync engine, or the message time-to-live has been reached (default of 3 days). Message time-to-live is configured in the "Changelog and Replicationjournal Max Age" property from the Main Control Panel > Settings > Logs > Changelog.
+Messages remain in the queue until they are either picked up by the sync engine, or the message time-to-live has been reached (default of 3 days). Message time-to-live is configured in the "Changelog and Replicationjournal Max Age" property from the Classic Control Panel > Settings > Logs > Changelog.
 
 ![Message Time-to-live Enforced by the Global Sync Queues](Media/image19.png)
 
@@ -97,7 +97,7 @@ See [Attribute mappings](../configuration/transformation/attribute-mappings.md) 
 
 ### Script
 
-When attribute mappings are insufficient to achieve your business logic, you can use Java scripting (or [Rules](#rules-based-transformation)). This is helpful when lookups or other complex logic is required and the capabilities of the attribute mappings and rules options are insufficient. The Main Control Panel > Global Sync tab provides an interface for configuring the script (with some support for basic syntax checking). 
+When attribute mappings are insufficient to achieve your business logic, you can use Java scripting (or [Rules](#rules-based-transformation)). This is helpful when lookups or other complex logic is required and the capabilities of the attribute mappings and rules options are insufficient. The Classic Control Panel > Synchronization tab provides an interface for configuring the script (with some support for basic syntax checking). 
 
 See [Script](../configuration/script.md) for configuration steps.
 
@@ -179,7 +179,7 @@ The pipeline ID is required for a variety of scenarios. A few examples are shown
 | `https://<rli_server_name>/adap/util?action=vdsconfig&commandname=init-sync-pipeline&pipelineid=<PIPELINE_ID>` | REST command for running an upload from command line. |
 | `<PIPELINE_ID>/connector.log` | Locating connector logs associated with the pipeline. You can view and download the connector log from the Environment Operations Center. |
 
-You can find the pipeline ID from the Main Control Panel > Global Sync tab.
+You can find the pipeline ID from the Classic Control Panel > Synchronization tab.
 
 Select the topology and hover over the name property of the pipeline. An example is shown below.
 
@@ -193,6 +193,7 @@ For synchronization pipelines that use rules-based transformation, you can confi
 
 >[!note] 
 >The approval queue is automatically created as needed.
+
 
 
 
