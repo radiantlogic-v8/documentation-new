@@ -4,40 +4,6 @@ description: Learn about Event Listener properties.
 ---
 
 ## Overview
-RadiantOne includes Event Listeners for databases and directories. An Event Listener has a change event detection mechanism that can be configured to listen for changes on a source object. Some examples are:
-
-- A SQL Server Event Listener for database/catalog PUBS
-- An Oracle Event Listener for database owner SCOTT
-- An LDAP Event Listener for the inetOrgPerson object class in the schema
-
-For databases, there are three change event detection types: Counter, Changelog (Triggers-based), or Timestamp.
-
-For LDAP directories, there are two change event detection types: LDAP (changelog), or Persistent Search.
-
-For Active Directory, there are three change event detection types: AD USNChanged, AD DirSync, and AD Hybrid. 
-
-Event Listeners are used for synchronization and have three main functions.
-
-1. Query data sources and collect changed entries.
-2. Filter unneeded events.
-3. Publish changed entries with the required information (requested attributes).
-
-Event Listeners publish change messages to queues. A sync engine receives notification when messages are in a queue, applies transformation to the message (based on attribute mappings and or scripting) and sends the transformed message to the apply process.
-
-A high-level architecture is shown below.
-
-![A flow chart of high level architecture](Media/sync-arch.jpg)
-
-**Process Overview**
-
-- The line labeled 1a indicates that changes can be detected directly on the backend (with native event listeners). This is used when there is not a persistent cache defined for the source virtual view.
-For 1b, if the source virtual view is configured in persistent cache, changes are detected with the built-in RadiantOne trigger which publishes changes directly to the queue (no event listener needs to be configured).
-
-- In line 2, change events are published as messages into queues. Queues are local RadiantOne Directory stores located below the cn=queue root naming. This is a HIDDEN naming context, so as an admin, or someone accessing the queues for troubleshooting, you must explicitly search for it. There is one queue created PER pipeline (each topology can have one or more pipelines).
-
-- Line 3 represents the sync engine process picking up the change events from the queues.
-- In line 4, the transformation logic is processed and the apply process is invoked.
-- In line 5, the apply message is translated into the needed update operation for the target data source. 
 
 
 ### Reset cursor – detect new changes only
@@ -502,6 +468,7 @@ When the Determine Move Operations property is enabled, the event listener maint
 
 >[!warning]
 >When defining the data source for the backend Active Directory, check the Paged Results Control option to ensure that all entries can be retrieved from the backend. This is required for the event listener to get all entries in the cache to map objectGUID to DN and support `modDN/modRDN` operations.
+
 
 
 
