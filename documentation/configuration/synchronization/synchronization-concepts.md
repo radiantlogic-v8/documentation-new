@@ -162,11 +162,11 @@ The synchronization flow(s) in a topology are grouped and depicted as pipelines.
 
 An example of a topology with a single auto-generated pipeline is shown below:
 
-![An example of a topology with a single auto-generated pipeline](Media/image5.png)
+![An example of a topology with a single auto-generated pipeline](Media/single-pipeline.jpg)
 
 An example of a topology with multiple auto-generated pipelines is shown below:
 
-![An example of a topology with multiple auto-generated pipelines](Media/image6.png)
+![An example of a topology with multiple auto-generated pipelines](Media/multi-pipelines.jpg)
 
 ### Pipeline ID
 
@@ -192,6 +192,7 @@ For synchronization pipelines that use rules-based transformation, you can confi
 
 >[!note] 
 >The approval queue is automatically created as needed.
+
 
 
 
