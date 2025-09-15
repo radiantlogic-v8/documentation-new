@@ -26,7 +26,7 @@ Event Listeners publish change messages to queues. A sync engine receives notifi
 
 A high-level architecture is shown below.
 
-![A flow chart of high level architecture](Media/architecture.png)
+![A flow chart of high level architecture](Media/sync-arch.jpg)
 
 ### Reset cursor – detect new changes only
 
@@ -490,6 +490,7 @@ When the Determine Move Operations property is enabled, the event listener maint
 
 >[!warning]
 >When defining the data source for the backend Active Directory, check the Paged Results Control option to ensure that all entries can be retrieved from the backend. This is required for the event listener to get all entries in the cache to map objectGUID to DN and support `modDN/modRDN` operations.
+
 
 
 
