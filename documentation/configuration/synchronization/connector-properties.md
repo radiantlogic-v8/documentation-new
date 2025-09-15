@@ -7,6 +7,35 @@ description: Learn about Event Listener properties.
 
 Some properties are common to all event listeners and some are specific to the data source and type of detection method used.
 
+Some other aspects that are common to event listeners is viewing and managing cursors, and 
+
+### Reset cursor – detect new changes only
+
+Event Listeners use a cursor to maintain information about the last processed change. This allows them to capture only changes that have happened since the last time they processed changes. When the Event Listeners start, they automatically attempt to capture all changes that have happened since the last time they checked. If the synchronization process has been stopped for an extended period, you might not want them to capture all missed changes. In this case, you can reset the cursor. You can reset the cursor from the Classic Control Panel > Synhronization tab, or manually define the cursor value.
+
+**Synhronization tab**
+
+On the Classic Control Panel > Synchronization tab, choose the topology on the left. Select **Configure** next to the pipeline on the right. Choose the **Capture** component and select **Reset Cursor** shown below the properties. An example is shown below.
+
+![The Reset Cursor option in the Classic Control Panel](Media/reset-cursor.jpg)
+
+**Manually update cursor**
+
+Each Event Listener stores a cursor to maintain information about the last processed change. In some cases, you may need to edit the cursor value to force the Event Listener to pick up some missed changes (e.g. during a disaster recovery scenario where you will start synchronization in another data center), or skip some changes in cases like where [non-sequential change IDs](#force-sequential-counters) were detected. Configuration is stored in a RadiantOne Directory store mounted at the `cn=registry` naming context.
+
+>[!note]
+>Editing the cursor is supported for Event Listeners that store a number or timestamp value. The AD DirSync and Hybrid connectors use a cookie for a cursor value that you would not know how to set.
+
+1. Stop the Event Listener by suspending the pipeline. You can do this from the Classic Control Panel > Synchronization tab.
+1. Connect to RadiantOne with an administrator that has permissions to modify entries in `cn=registry` and browse to the configuration for your capture connector: `cn=cursor,{PIPELINE_ID},cn=registry`
+1. Edit the cursor attribute and enter the value to indicate the point from which the Event Listneer should capture changes from. An example for a database changelog event detection mechanism is shown below.<br>
+    ![Example of Database Changelog Cursor Settings](Media/db-cursor.jpg)
+2. Resume the pipeline which redeploys/starts the Event Listener. You can do this from the Classic Control Panel > Synchronization tab.
+
+### Message size
+
+Each message published by the Event Listener contains one changed entry. Multiple changed entries are not packaged into a single message. The [requested attributes](#request-all-attributes) configured for the Event Listener dictate the contents of the message and as a result, the message size.
+
 ## Common properties for all Event Listeners
 
 The following properties are supported for all change detection mechanisms (unless otherwise specified). Although common, these properties are not shared. You must configure these properties for each change event detection type.
@@ -89,34 +118,6 @@ This property is available when Request all Attributes is enabled. To further co
 
 If the Request all Attributes property is disabled, you must list the attributes that the connector should request and publish for the changed entries in the Requested Attributes property.
 
-To learn more about change event detection mechanisms for directories, see: [LDAP and Active Directory](capture-connectors.md).
-
-### Reset cursor – detect new changes only
-
-Event Listeners use a cursor to maintain information about the last processed change. This allows them to capture only changes that have happened since the last time they processed changes. When the Event Listeners start, they automatically attempt to capture all changes that have happened since the last time they checked. If the synchronization process has been stopped for an extended period, you might not want them to capture all missed changes. In this case, you can reset the cursor. You can reset the cursor from the Classic Control Panel > Synhronization tab, or manually define the cursor value.
-
-**Synhronization tab**
-
-On the Classic Control Panel > Synchronization tab, choose the topology on the left. Select **Configure** next to the pipeline on the right. Choose the **Capture** component and select **Reset Cursor** shown below the properties. An example is shown below.
-
-![The Reset Cursor option in the Classic Control Panel](Media/reset-cursor.jpg)
-
-**Manually update cursor**
-
-Each Event Listener stores a cursor to maintain information about the last processed change. In some cases, you may need to edit the cursor value to force the Event Listener to pick up some missed changes (e.g. during a disaster recovery scenario where you will start synchronization in another data center), or skip some changes in cases like where [non-sequential change IDs](#force-sequential-counters) were detected. Configuration is stored in a RadiantOne Directory store mounted at the `cn=registry` naming context.
-
->[!note]
->Editing the cursor is supported for Event Listeners that store a number or timestamp value. The AD DirSync and Hybrid connectors use a cookie for a cursor value that you would not know how to set.
-
-1. Stop the Event Listener by suspending the pipeline. You can do this from the Classic Control Panel > Synchronization tab.
-1. Connect to RadiantOne with an administrator that has permissions to modify entries in `cn=registry` and browse to the configuration for your capture connector: `cn=cursor,{PIPELINE_ID},cn=registry`
-1. Edit the cursor attribute and enter the value to indicate the point from which the Event Listneer should capture changes from. An example for a database changelog event detection mechanism is shown below.<br>
-    ![Example of Database Changelog Cursor Settings](Media/db-cursor.jpg)
-2. Resume the pipeline which redeploys/starts the Event Listener. You can do this from the Classic Control Panel > Synchronization tab.
-
-### Message size
-
-Each message published by the Event Listener contains one changed entry. Multiple changed entries are not packaged into a single message. The [requested attributes](./connector-) configured for the Event Listener dictate the contents of the message and as a result, the message size.
 
 ## Database Changelog 
 When a database object is configured as a publisher, triggers are installed on the object and document all changes to a log table. This object name has the syntax `{TABLE_NAME}_LOG`. In the log table, two predefined column names are required: `RLICHANGEID` and `RLICHANGETYPE`. `RLICHANGEID` uniquely identifies one row in the change log table, and `RLICHANGETYPE` identifies the operation (insert, update, delete, abort). The database event listener queries the log table to check for changes based on the polling interval.
@@ -553,6 +554,7 @@ When the Determine Move Operations property is enabled, the event listener maint
 
 >[!warning]
 >When defining the data source for the backend Active Directory, check the Paged Results Control option to ensure that all entries can be retrieved from the backend. This is required for the event listener to get all entries in the cache to map objectGUID to DN and support `modDN/modRDN` operations.
+
 
 
 
