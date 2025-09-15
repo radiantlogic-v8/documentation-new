@@ -36,4 +36,4 @@ To load the Classic Control Panel, click the logged in account profile in the up
 
 
 1. Select **OK**. The topology is added to the list on the left and the pipelines associated with the selected topology are shown on the right where the components can be configured. 
-1. Select **CONFIGURE** next to the pipeline. There are two components that need configured per pipeline: [Event Listener](./connector-properties.md) and [Transformation](./transformations.md). 
+1. Select **CONFIGURE** next to the pipeline. There are two components that need configured per pipeline: [Event Listener](./capture-connectors.md) and [Transformation](./transformations.md). 
