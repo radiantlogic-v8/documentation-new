@@ -69,11 +69,11 @@ To configure DB Changelog change detection mechanism:
 >[!note]
 >These instructions assume you want to apply the SQL scripts immediately.
 
-1. From the Main Control Panel > Global Sync Tab, select the topology.
+1. From the Classic Control Panel > Synchronization Tab, select the topology.
 1. On the right, select the sync pipeline to configure.
 1. Select a Capture component and the configuration displays.
 1. Select **DB Changelog** from the **Connector Type** drop-down list.
-1. Indicate the user name and password for the connector's dedicated credentials for connecting to the log table. If you do not have the user name and password, contact your DBA for the credentials.
+1. Indicate the user name and password for the dedicated credentials to use for connecting to the log table. If you do not have the user name and password, contact your DBA for the credentials.
 1. Enter the log table name using the proper syntax for your database (e.g. `{USER}.{TABLE}_LOG`).
 
 >[!warning]
@@ -83,7 +83,7 @@ To configure DB Changelog change detection mechanism:
 
 7. Select **Save**.
 8. A message is displayed that asks if you want to apply the scripts to configure the log table immediately or not. You can also download the scripts to the local machine. 
-    ![Configuration to Apply SQL Script Automatically or Not](Media/run-scripts.png)
+    ![Configuration to Apply SQL Script Automatically or Not](Media/run-scripts.jpg)
 9. To apply now, select **OK**. Otherwise, select **Download**.
 
 >[!note]
