@@ -19,7 +19,7 @@ Once you have determined the change detection type you want to use, select the C
 ### Database (JDBC-accessible) 
 For database backends (JDBC-accessible), the change detection options are:
 
-- [Changelog](#database-changelog) – This type relies on a database table that contains all changes that have occurred on the base tables (that the RadiantOne virtual view is built from). This typically involves having triggers on the base tables that write into the log/changelog table. However, an external process may be used instead of triggers. The connector picks up changes from the changelog table. 
+- [Changelog](#database-changelog) – This type relies on a database table that contains all changes that have occurred on the base tables (that the RadiantOne virtual view is built from). This typically involves having triggers on the base tables that write into the log/changelog table. However, an external process may be used instead of triggers. The event listener picks up changes from the changelog table. 
 - [Timestamp](#database-timestamp) – This type has been validated against Oracle, SQL Server, MySQL, MariaDB, PostgreSQL, Snowflake, and Apache Derby. The database table must have a primary key defined for it and an indexed column that contains a timestamp/date value. This value must be maintained and modified accordingly for each record that is updated. 
     
   For Oracle databases, the timestamp column type must be one of the following: `TIMESTAMP`, `DATE`, `TIMESTAMP WITH TIME ZONE`, `TIMESTAMP WITH LOCAL TIME ZONE1. 
@@ -34,8 +34,8 @@ For database backends (JDBC-accessible), the change detection options are:
     
   For Derby databases, the timestamp column type must be: `TIMESTAMP`  
     
-  The DB Timestamp connector leverages the timestamp column to determine which records have changed since the last polling interval. This connector type does not detect delete operations. If you have a need to detect and propagate delete operations from the database, you should choose a different connector type like DB Changelog or DB Counter.
-- [Counter](#database-counter) - This type is supported for any database table that has an indexed column that contains a sequence-based value that is automatically maintained and modified for each record that is added/updated. This column must be one of the following types: `BIGINT`, `DECIMAL`, `INTEGER`, or `NUMERIC`. If `DECIMAL` or `NUMERIC` are used, they should be declared without numbers after dot: `DECIMAL(6,0)` not as `DECIMAL(6,2)`. The DB Counter connector leverages this column to determine which records have changed since the last polling interval. This connector type can detect delete operations as long as the table has a dedicated "Change Type" column that indicates one of the following values: insert, update, delete. If the value is empty or something other than insert, update, or delete, an update operation is assumed.
+  The DB Timestamp change detection mechanism leverages the timestamp column to determine which records have changed since the last polling interval. This change detection mechanism does not detect delete operations. If you have a need to detect and propagate delete operations from the database, you should choose a different changed detection type like DB Changelog or DB Counter.
+- [Counter](#database-counter) - This type is supported for any database table that has an indexed column that contains a sequence-based value that is automatically maintained and modified for each record that is added/updated. This column must be one of the following types: `BIGINT`, `DECIMAL`, `INTEGER`, or `NUMERIC`. If `DECIMAL` or `NUMERIC` are used, they should be declared without numbers after dot: `DECIMAL(6,0)` not as `DECIMAL(6,2)`. The DB Counter change detection mechanism leverages this column to determine which records have changed since the last polling interval. This change detection type can detect delete operations as long as the table has a dedicated "Change Type" column that indicates one of the following values: insert, update, delete. If the value is empty or something other than insert, update, or delete, an update operation is assumed.
 
 ### Directory (LDAP-accessible) 
 For directory backends (LDAP-accessible), the change detecion options are:
@@ -47,7 +47,7 @@ For directory backends (LDAP-accessible), the change detecion options are:
   
 ### Custom data sources
 
-A custom data source is one that is not queried via LDAP or JDBC. Examples include Entra ID (formerly Azure AD), Okta Universal Directory and any SCIM-accessible source. Virtual views of these data sources should be configured with persistent cache in RadiantOne prior to using as a source for synchronization. Once cached, the source/capture connector for synchronization is based on Triggers and is automatically configured in pipelines.
+A custom data source is one that is not queried via LDAP or JDBC. Examples include Entra ID (formerly Azure AD), Okta Universal Directory and any SCIM-accessible source. Virtual views of these data sources should be configured with persistent cache in RadiantOne prior to using as a source for synchronization. Once cached, the source/capture event listener for synchronization is based on Triggers and is automatically configured in pipelines.
 
 ## Database Changelog
 
@@ -60,7 +60,7 @@ RadiantOne can generate the SQL scripts which create the configuration needed to
 - drop_user.sql - Drops the log table user and schem1. 
   Note: for some databases the file is empty.
 
-This section describes generating and executing the scripts in the Classic Control Panel > Synchronization tab. The following steps assume the database backend has a changelog table that contains changed records that need to be propagated to destinations. The changelog table must have two key columns named `RLICHANGETYPE` and `RLICHANGEID`. `RLICHANGETYPE` must indicate insert, update or delete, dictating what type of change was made to the record. `RLICHANGEID` must be a sequence-based, auto-incremented `INTEGER` that contains a unique value for each record. The DB Changelog connector uses `RLICHANGEID` to maintain a cursor to keep track of processed changes.
+This section describes generating and executing the scripts in the Classic Control Panel > Synchronization tab. The following steps assume the database backend has a changelog table that contains changed records that need to be propagated to destinations. The changelog table must have two key columns named `RLICHANGETYPE` and `RLICHANGEID`. `RLICHANGETYPE` must indicate insert, update or delete, dictating what type of change was made to the record. `RLICHANGEID` must be a sequence-based, auto-incremented `INTEGER` that contains a unique value for each record. The DB Changelog change detection mechanism uses `RLICHANGEID` to maintain a cursor to keep track of processed changes.
 
 To configure DB Changelog change detection mechanism:
 
@@ -75,7 +75,7 @@ To configure DB Changelog change detection mechanism:
 1. Enter the log table name using the proper syntax for your database (e.g. `{USER}.{TABLE}_LOG`).
 
 >[!warning]
->Change the value for this property only if you are creating the log table manually and the capture connector does not calculate the log table name correctly. Be sure to use the [correct syntax](#log-table-name-syntax) if you change the value.
+>Change the value for this property only if you are creating the log table manually and the configuration does not calculate the log table name correctly. Be sure to use the [correct syntax](#log-table-name-syntax) if you change the value.
 
 ![DB Changelog Configuration](Media/db-changelog.jpg)
 
@@ -130,10 +130,10 @@ If schema and/or table name contain mixed-case characters, they must be quoted. 
 
 ## Database Timestamp
 
-The following steps assume your backend database table has a primary key defined and contains a timestamp column. The timestamp column name is required for configuring the connector. The timestamp column database types supported are described in the [Database connectors](#database-jdbc-accessible) section.
+The following steps assume your backend database table has a primary key defined and contains a timestamp column. The timestamp column name is required in the configuration. The timestamp column database types supported are described in the [Database Event Listeners](#database-jdbc-accessible) section.
 
 >[!warning]
->This connector type does not detect delete operations. If you have a need to detect delete operations from the database, you should choose a different connector type.
+>This change detection type does not detect delete operations. If you have a need to detect delete operations from the database, you should choose a different change detection mechanism.
 
 1. From the Classic Control Panel > Synchronization Tab, select the topology on the left.
 1. On the right, select the sync pipeline to configure.
@@ -142,15 +142,15 @@ The following steps assume your backend database table has a primary key defined
 1. Indicate the column name in the database table that contains the timestamp. An example is shown below.
     ![DB Timestamp Configuration](Media/db-timestamp.jpg)
 1. Select **Save**.
-1. You can configure connector properties in the Advanced Properties section.
-1. After the capture connector is configured, configure the transformation.
+1. You can configure properties in the Advanced Properties section.
+1. After the change detection mechanism is configured, configure the transformation.
 
 >[!warning]
->If you need to make changes to the timestamp column name, you must manually restart the connector and reset the cursor. The pipeline can be stopped on the Classic Control Panel > Synchronization tab when the topology is selected on the left. Then select **Configure** next to the pipeline. In the configuration screen, select the Capture section. Change the timestamp column name and select **Save**. In the bottom left of the Capture configuration screen, select **Reset Cursor**. Go back to the Synchronization topologies page and select **Start** to start the pipeline components.
+>If you need to make changes to the timestamp column name, you must manually restart the event listener and reset the cursor. The pipeline can be stopped on the Classic Control Panel > Synchronization tab when the topology is selected on the left. Then select **Configure** next to the pipeline. In the configuration screen, select the Capture section. Change the timestamp column name and select **Save**. In the bottom left of the Capture configuration screen, select **Reset Cursor**. Go back to the Synchronization topologies page and select **Start** to start the pipeline components.
 
 ## Database Counter
 
-The following steps assume your database backend table contains an indexed column that contains a sequence-based value that is automatically maintained and modified for each record that is added, updated or deleted. The DB Counter connector uses this column to maintain a cursor to keep track of processed changes. The counter column database types supported are described in the [Database connectors](#database-jdbc-accessible) section.
+The following steps assume your database backend table contains an indexed column that contains a sequence-based value that is automatically maintained and modified for each record that is added, updated or deleted. The DB Counter change detection mechanism uses this column to maintain a cursor to keep track of processed changes. The counter column database types supported are described in the [Database Event Listeners](#database-jdbc-accessible) section.
 
 1. From the Classic Control Panel > Synchronization Tab, select the topology on the left.
 1. On the right, select the sync pipeline to configure.
@@ -159,17 +159,17 @@ The following steps assume your database backend table contains an indexed colum
 1. Enter a value in the Change Type Column field. This value should be the database table column that contains the information about the type of change (insert, update or delete). If the column does not have a value, an update operation is assumed.
 1. Enter the column name in the database table that contains the counter. An example is shown below.
 1. Select **Save**
-1. You can configure connector properties in the Advanced Properties section.
-1. After the capture connector is configured, configure the transformation in the pipeline.
+1. You can configure properties in the Advanced Properties section.
+1. After the change detection mechanism is configured, configure the transformation in the pipeline.
 
 ![DB Counter Configuration](Media/db-counter.jpg)
 
 >[!warning]
->If you need to make changes to the Counter Column name, you must manually restart the connector and reset the cursor. The pipeline can be stopped on the Classic Control Panel > Synchronization tab when the topology is selected on the left. Then select **Configure** next to the pipeline. In the configuration screen, select the Capture section. Change the counter column name and select **Save**. In the bottom left of the Capture configuration screen, select **Reset Cursor**. Go back to the Synchronization topologies page and select **Start** to start the pipeline components.
+>If you need to make changes to the Counter Column name, you must manually restart the event listener and reset the cursor. The pipeline can be stopped on the Classic Control Panel > Synchronization tab when the topology is selected on the left. Then select **Configure** next to the pipeline. In the configuration screen, select the Capture section. Change the counter column name and select **Save**. In the bottom left of the Capture configuration screen, select **Reset Cursor**. Go back to the Synchronization topologies page and select **Start** to start the pipeline components.
 
-## Database connector failover
+## Event Listener Failover Behavior for Databases
 
-This section describes the failover mechanism for the database connectors.
+This section describes the failover mechanism for the database event listeners.
 
 >[!warning]
 >The backend servers must be configured for multi-master replication. Please check the vendor documentation for assistance with configuring replication for your backends.
@@ -178,7 +178,7 @@ The database connectors leverage the failover server that has been configured fo
 
  ![Configuring Failover Servers for the Backend Database](Media/image33.png)
 
-If a connection cannot be made to the primary server, the connector tries to connect to the failover server configured in the data source. If a connection to both the primary and failover servers fails, the retry count goes up. The connector repeats this process until the value configured in "Max Retries on Connection Error" is reached. There is no automatic failback, meaning once the primary server is back online, the connector does not automatically go back to it.
+If a connection cannot be made to the primary server, the event listener tries to connect to the failover server configured in the data source. If a connection to both the primary and failover servers fails, the retry count goes up. The event listener repeats this process until the value configured in "Max Retries on Connection Error" is reached. There is no automatic failback, meaning once the primary server is back online, the event listener does not automatically go back to it.
 
 
 ## LDAP Directory
@@ -187,7 +187,7 @@ For LDAP backends that support both Changelog and Persistent Search, you can con
 
 Choose either the **LDAP** option (for Changelog) or **Persistent Search** and **Save**.
 
-![LDAP Directory Connector Types](Media/image35.png)
+![LDAP Directory Types](Media/image35.png)
 
 ### Changelog
 
@@ -195,7 +195,7 @@ The event listener leverages a changelog that has been enabled on the backend di
 
 ### Persistent search
 
-Any LDAP directory that supports the persistent search control can use the Persistent Search change detection type. Novell eDirectory is an example of an LDAP source that supports persistent search. Others include Red Hat Directory, IBM TDS, CA Directory and RadiantOne Directory. The connector issues a persistent search and gets notified by the directory server when information changes. If the event listener is shut down (either deliberately or due to failure), the delete operations that occurred in the directory are lost. Once the event listener is back online there is no way to detect the delete operations that occurred while it was down. The only exception to this is for IBM TDS directories. It stores deleted entries and the event listner is able to read them, and based on timestamp, determine if the change occurred while it was offline.
+Any LDAP directory that supports the persistent search control can use the Persistent Search change detection type. Novell eDirectory is an example of an LDAP source that supports persistent search. Others include Red Hat Directory, IBM TDS, CA Directory and RadiantOne Directory. The event listener issues a persistent search and gets notified by the directory server when information changes. If the event listener is shut down (either deliberately or due to failure), the delete operations that occurred in the directory are lost. Once the event listener is back online there is no way to detect the delete operations that occurred while it was down. The only exception to this is for IBM TDS directories. It stores deleted entries and the event listner is able to read them, and based on timestamp, determine if the change occurred while it was offline.
 
 ## Active Directory
 
@@ -203,7 +203,7 @@ There are three change detection mechanisms available: USNChanged, DirSync and H
 
 ![Active Directory Types](Media/ad-types.jpg)
 
-If you are virtualizing and detecting changes from a Global Catalog, then you must use the USNChanged changed connector because the DirSync and Hybrid connectors cannot detect change events on sub-domains. The flowchart below helps to decide which change detection mechanism to use.
+If you are virtualizing and detecting changes from a Global Catalog, then you must use the USNChanged type because the DirSync and Hybrid types cannot detect change events on sub-domains. The flowchart below helps to decide which change detection mechanism to use.
 
 ![Change detection mechanism flowchart](Media/image36.png)
 
@@ -214,7 +214,7 @@ This change detection type retrieves changes that occur to entries by passing a 
 >[!warning]
 >To detect delete events, the service account used by RadiantOne to connect to the backend Active Directory (configured in the connection string of the RadiantOne data source) must have permissions to search the tombstone objects. Usually, a member of the Administrators group is sufficient. However, some Active Directory servers may require a member of the Domain Admins group. Check with your Active Directory administrator to determine the appropriate credentials required.  
   
-If you are virtualizing and detecting changes from a Global Catalog, then you must use the Active Directory USNChanged change detection mechansim because the DirSync connector cannot detect change events on sub-domains.
+If you are virtualizing and detecting changes from a Global Catalog, then you must use the Active Directory USNChanged change detection mechansim because the DirSync type cannot detect change events on sub-domains.
 
 ### USNChanged
 
@@ -224,10 +224,10 @@ If capturing the sequence of events is critical, use the DirSync change detectio
 
 ### Hybrid
 
-This change detection type uses a combination of the uSNChanged and DirSync change detection mechanisms. The first time the connector starts, it gets a new cookie and the highest uSNchanged number. When the event listener gets a new change (modify or delete), it makes an additional search using the DN of the entry and fetches the entry from AD. The fetched entry contains the `uSNChanged` attribute, so the event listener updates the cursor values for both for the cookie and the last processed uSNchanged number.
+This change detection type uses a combination of the uSNChanged and DirSync change detection mechanisms. The first time the event listener starts, it gets a new cookie and the highest uSNchanged number. When the event listener gets a new change (modify or delete), it makes an additional search using the DN of the entry and fetches the entry from AD. The fetched entry contains the `uSNChanged` attribute, so the event listener updates the cursor values for both for the cookie and the last processed uSNchanged number.
 
 >[!warning]
->If you are virtualizing and detecting changes from a Global Catalog, then you must use the Active Directory USNChanged mechanism because the Hybrid connector cannot detect change events on sub-domains.
+>If you are virtualizing and detecting changes from a Global Catalog, then you must use the Active Directory USNChanged mechanism because the Hybrid type cannot detect change events on sub-domains.
 
 When the event listener restarts, uSNChanged detection catches the entries that have been modified or deleted while it was stopped. The LDAP search uses the last processed uSNChanged number to catch up. After the event listener processes all entries, it requests a new cookie from AD (not from the cursor) and switches to DirSync change detection.
 
@@ -237,7 +237,7 @@ If you are using a RadiantOne Directory store, a persistent cache on a proxy vie
 
 ![HDAP Trigger Type](Media/image37.png)
 
-## Event Listener failover
+## Event Listener failover Behavior for Directories
 
 This section describes the failover mechanism for the LDAP (changelog), Persistent Search and Active Directory event listeners.
 
@@ -253,14 +253,14 @@ If a connection cannot be made to the primary server and the maximum number of r
 This failover mechanism is supported for Active Directory, OpenDJ, Oracle Directory Server Enterprise Edition (Sun Directory v7), Oracle Unified Directory (OUD). In addition, any LDAP directory implementing `cn=changelog` and `replicationCSN` attribute or the persistent search control is also supported.
 
 >[!warning]
->When the Active Directory DirSync connector fails over to another DC replica, the current cursor (cookie) is used. The connector may receive all objects and attributes from the replica instead of just the delta from its last request. Therefore, you may notice the number of entries published by the connector is more than you were expecting. This behavior is dictated by the Active Directory server and is out of the control of the connector. Keep this in mind when you define the Max Retries and Retry Intervals for the connector properties. The smaller the numbers of retries, the higher the chance the connector will fail over and possibly receive all objects and attributes (a full sync) from the domain controller.
+>When the Active Directory DirSync change detection type fails over to another DC replica, the current cursor (cookie) is used. The event listener may receive all objects and attributes from the replica instead of just the delta from its last request. Therefore, you may notice the number of entries published by the event listener is more than you were expecting. This behavior is dictated by the Active Directory server and is out of the control of the connector. Keep this in mind when you define the Max Retries and Retry Intervals properties. The smaller the numbers of retries, the higher the chance the event listener will fail over and possibly receive all objects and attributes (a full sync) from the domain controller.
 
 For the Active Directory USNChanged connector, the failover logic leverages the Active Directory replication vectors `[replUpToDateVector]`, and the failover servers configured at the level of the RadiantOne data source associated with Active Directory, in order to determinate which server(s) the event listener switches to in case of failure. Since the replication vector contains all domains, in addition to some possibly retired domains, the event listener narrows down the list of possible failover candidates to only the ones listed as failover servers in the RadiantOne data source associated with the Active Directory backend. If there are no failover server defined for the data source, all domains in the replication vector are possible candidates for failover.
 
 >[!warning]
 >When defining the RadiantOne data source associated with Active Directory, do not use Host Discovery. You must use the fully qualified machine names for the primary server and failover servers. Do not use IP addresses. Also, it is highly recommended that you list your desired failover servers at the level of the data source. Not only does this make the failover logic more efficient, but it also avoids delays in synchronization.
 
-`[replUpToDateVector]` definition: The non-replicated attribute `replUpToDateVector` is an optional attribute on the naming context root of every naming context replica. If this vector is unavailable, the connector is suspended.
+`[replUpToDateVector]` definition: The non-replicated attribute `replUpToDateVector` is an optional attribute on the naming context root of every naming context replica. If this vector is unavailable, the event listener is suspended.
 
 The `ReplUpToDateVector` type is a tuple with the following fields:
 
