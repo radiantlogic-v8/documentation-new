@@ -65,7 +65,7 @@ The `RLI_CON` user (configurable) is the default owner of the log table. This sp
 
 To detect changes using Changelog (triggers), set the type in the pipeline configuration by choosing the **Capture** component. In the Core Properties section, select DB Changelog from the drop-down list.
 
-![The drop-down list with DB Changelog selected, in the Core Properties section of Configure Pipeline](Media/image16.png)
+![The drop-down list with DB Changelog selected, in the Core Properties section of Configure Pipeline](Media/db-changelog.jpg)
 
 After the DB Changelog type has been selected and configured, you can configure the properties in the Core Properties, Advanced Properties, and Event Content sections at the bottom. For properties common to all event listener types, see [Configure Common Properties](./common-properties).
 
@@ -493,6 +493,7 @@ When the Determine Move Operations property is enabled, the event listener maint
 
 >[!warning]
 >When defining the data source for the backend Active Directory, check the Paged Results Control option to ensure that all entries can be retrieved from the backend. This is required for the event listener to get all entries in the cache to map objectGUID to DN and support `modDN/modRDN` operations.
+
 
 
 
