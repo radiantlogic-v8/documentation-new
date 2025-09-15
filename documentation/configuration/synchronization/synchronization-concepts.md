@@ -5,6 +5,8 @@ description: Learn the concepts related to configuring synchronization.
 
 ## Overview
 
+At a basic level, the primary purpose of RadiantOne Synchronization is synchronizing objects across disparate data sources.  
+
 RadiantOne includes Event Listeners for databases and directories. An Event Listener has a change event detection mechanism that can be configured to listen for changes on a source object. Some examples are:
 
 - A SQL Server Event Listener for database/catalog PUBS
@@ -192,6 +194,7 @@ For synchronization pipelines that use rules-based transformation, you can confi
 
 >[!note] 
 >The approval queue is automatically created as needed.
+
 
 
 
