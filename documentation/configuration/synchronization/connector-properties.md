@@ -5,7 +5,7 @@ description: Learn about Event Listener properties.
 
 ## Overview
 
-Some properties are [common](#Common-properties-for-all-Event-Listeners) to all event listeners and some are specific to the data source and type of detection method used. Data source types and their specific properties are described after the common ones.
+Some properties are [common](#common-properties-for-all-Event-Listeners) to all event listeners and some are specific to the data source and type of detection method used. Data source types and their specific properties are described after the common ones.
 
 Some other aspects that are common to managing event listeners is viewing and managing cursors, and understanding message size.
 
@@ -359,7 +359,7 @@ If the captured change type is not delete (e.g. insert, update, move, etc.), and
 
 To further condition the entries that are published, you can indicate one or more branches to exclude. In the Excluded Branches property, enter one or more suffixes associated with entries that should not be published by the event listener. Select **Enter** after each suffix. An example is shown below.
 
-![Two suffixes entered in the Excluded Branches property](Media/excluded-branches.jpg)
+![Excluded Branches property](Media/ex-branches-sync.jpg)
 
 If the changed entry DN contains a suffix that matches the excluded branches value, or is a change in the exact entry that is listed (e.g. `ou=dept1,ou=com`), this entry is not published. Otherwise, the entry is published. This can avoid publishing unwanted information.
 
@@ -372,7 +372,7 @@ If a change is made to this property while the event listener is running, the ne
 
 To further condition the entries that are published, you can indicate one or more branches to include. In the Included Branches property, enter one or more suffixes associated with entries that should be published by the event listener. Select **Enter** after each suffix. An example is shown below.
 
-![Two suffixes entered in the Included Branches property](Media/included-branches.jpg)
+![Included Branches property](Media/include-branches-sync.jpg)
 
 If the changed entry DN contains a suffix that matches the included branches value, or is a change in the exact entry that is listed (e.g. `ou=dept1,ou=com`), this entry is published by the event listener. Otherwise, the entry is not published. This can avoid publishing unwanted
 information.
@@ -554,6 +554,7 @@ When the Determine Move Operations property is enabled, the event listener maint
 
 >[!warning]
 >When defining the data source for the backend Active Directory, check the Paged Results Control option to ensure that all entries can be retrieved from the backend. This is required for the event listener to get all entries in the cache to map objectGUID to DN and support `modDN/modRDN` operations.
+
 
 
 
