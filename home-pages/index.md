@@ -117,11 +117,11 @@ Harness your identity data with intelligent integration to drive better business
   > [General Attribute Handling](tuning/attribute-handling)  
   > Learn about properties related to attribute handling.
 
-  > [Peristent Cache Capture Connectors](tuning/cache-connector-properties/)  
-  > Learn about tuning properties for real-time persistent cache refresh connectors.
+  > [Peristent Cache Event Listeners](tuning/cache-connector-properties/)  
+  > Learn about tuning properties for event listener that detect changes for real-time persistent cache refresh.
 
-  > [Synchronization Capture Connectors](configuration/synchronization/connector-properties/)  
-  > Learn about tuning properties for synchronization capture connectors.
+  > [Synchronization Event Listeners](configuration/synchronization/connector-properties/)  
+  > Learn about tuning properties for event listeners that detect changes on data sources for synchronization pipelines.
 
 </section>
 
