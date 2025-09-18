@@ -115,7 +115,7 @@ usingPrevalidationFipsJar: true
 - [IV4-274, SQ-719]: Fixed an issue by Updating the Salesforce JDBC driver to exit early if not a valid Salesforce JDBC URL to avoid outputting an unrelated log message on test connection failures.
 - [IV4-283]: Fixed an issue where the SCIM page incorrectly triggers unsaved changes confirmation without modifications.
 - [IV4-289]: Fixed permissions issue for schema manager where certain delegated admin roles weren't being authorized properly.
-- [IV4-296]: Fix for the mgraph custom object to use select query when performing one level and subtree searches to ensure all required attribute are retrieved from Entra ID.
+- [IV4-296, SQ-767]: Fix for the mgraph custom object to use select query when performing one level and subtree searches to ensure all required attribute are retrieved from Entra ID.
 
 
 ## Known Issues/Important Notes
