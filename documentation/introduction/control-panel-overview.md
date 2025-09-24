@@ -46,7 +46,7 @@ The time the user last logged into the Classic Control Panel is displayed above 
 Support for MFA logins, you must integrate with an OIDC provider that offers MFA. The MFA checking is handled by the OIDC provider. See the OIDC token configuraton below.
 
 ### OIDC Token 
-The RadiantOne Control Panel supports SSO with your corporate Identity Provider using OpenID Connect (OIDC) token-based authentication. This option provides the security of sending user login credentials to the authentication server (the Identity Provider), not the application (Control Panel, the Relying Party). OpenID Connect token authentication allows you to send your username and password just once, to the Identity Provider (IDP), have MFA validated (if enabled and supported by the Identity Provider), and then pass the token in the request to the Control Panel. When OIDC is configured in RadiantOne, the Control Panel login screen displays a list of configured OIDC providers for the admin to select from:
+The RadiantOne Control Panel supports SSO with your corporate Identity Provider using OpenID Connect (OIDC) token-based authentication. This option provides the security of sending user login credentials to the authentication server (the Identity Provider), not the application (Control Panel, the Relying Party). OpenID Connect token authentication allows you to send your username and password just once, to the Identity Provider (IDP), have MFA validated (if enabled and supported by the Identity Provider), and then pass the token in the request to the Control Panel. When OIDC is configured in RadiantOne, the Control Panel login screen displays a list of configured OIDC providers for the admin to select from. The example shown below has two defined, one for Okta and one for Google:
 
 ![Login with Open ID Connect](Media/oidc-cp-login.jpg)
 
@@ -699,5 +699,6 @@ The following settings must be managed from the RadiantOne Classic Control Panel
 -	File Manager: Classic Control Panel > Settings > Configuration > File Manager <br> See [File Manager](#file-manager) for details. The admin that accesses Classic Control Panel must be assigned to a role that impersonates a role (e.g. Directory Administrators and FileManagerAdmin) that has file-manager-read and/or file-manager-write vdPrivilege to read (file-manager-read) and/or read and manage (file-manager-write) files from File Manager. By default only the Directory Administrators and FileManagerAdmin roles have these privileges in Classic Control Panel. 
 -	Identity Data Analysis Wizard: Classic Control Panel > Wizards > Identity Data Analysis. See [Identity Data Analysis](../configuration/identity-views/identity-data-analysis) for details.
 -	Global Identity Builder: Classic Control Panel > Wizards > Global Identity Builder. See [Global Identity Builder](../configuration/global-identity-builder/introduction) for details.
+
 
 
