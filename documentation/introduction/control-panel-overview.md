@@ -12,7 +12,7 @@ The Control Panels utilize a web server that is installed with RadiantOne. The e
 
 >[!note] The web browsers supported for using Control Panel are: Microsoft Edge Version 127.0.2651.98 (+), Google Chrome Version 128.0.6613.120 (+). 
 
-![The Control Panel Login Page](Media/login-page.jpg)
+![The Control Panel Login Page](Media/login-cp.jpg)
 
 
 ### Classic Control Panel
@@ -699,4 +699,5 @@ The following settings must be managed from the RadiantOne Classic Control Panel
 -	File Manager: Classic Control Panel > Settings > Configuration > File Manager <br> See [File Manager](#file-manager) for details. The admin that accesses Classic Control Panel must be assigned to a role that impersonates a role (e.g. Directory Administrators and FileManagerAdmin) that has file-manager-read and/or file-manager-write vdPrivilege to read (file-manager-read) and/or read and manage (file-manager-write) files from File Manager. By default only the Directory Administrators and FileManagerAdmin roles have these privileges in Classic Control Panel. 
 -	Identity Data Analysis Wizard: Classic Control Panel > Wizards > Identity Data Analysis. See [Identity Data Analysis](../configuration/identity-views/identity-data-analysis) for details.
 -	Global Identity Builder: Classic Control Panel > Wizards > Global Identity Builder. See [Global Identity Builder](../configuration/global-identity-builder/introduction) for details.
+
 
