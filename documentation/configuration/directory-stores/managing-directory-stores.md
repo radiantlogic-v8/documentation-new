@@ -334,6 +334,7 @@ An example of how to perform a Range Retrieval search in RadiantOne is described
 	![Multi-valued Attribute Expanded](Media/dir-browser-search.jpg)
 1.	Search criteria displays, and the tab is renamed to **SEARCH`<N>`**, where N is a number based on how many search tabs are opened. 
 1.	Either enter the Base DN to indicate where to search from, or click ![Browse](Media/browse.jpg) to browse the RadiantOne namespace to select a location. 
+1.  Enter an LDAP Filter.
 1.	Select a scope from the drop-down list. Searches with a lower limit other than 0 must have a scope of “base”. 
 1.	In the Search button drop-down![Search Button](Media/search-button.jpg), in the Return Attributes field, enter your range in the following syntax: `<member> or <uniquemember>;range=<lowerlimit>-<upperlimit>`
 	>[!note] For more information on lower and upper limits, see the **Range Limits** and **Examples** sections below.
@@ -373,9 +374,7 @@ The Return Attributes value for this example is as follows.
 
 member;range=0-*
 
-![An image showing ](Media/Image5.23.jpg)
-
-Figure 5.23: Full-range Search Example
+![Full Range of Member Values](Media/Image5.23.jpg)
 
 **Mid-range Search**
 
@@ -384,9 +383,7 @@ This search retrieves the second through eleventh values. The following search p
 Scope: Base
 Return attributes: member;range=1-10
 
-![An image showing ](Media/Image5.24.jpg)
-
-Figure 5.24: Mid-range Search Example
+![Range of Member Values 2nd-11th](Media/Image5.24.jpg)
 
 **Large-range Search**
 
@@ -394,9 +391,8 @@ The following search retrieves the first through 5001st values. The Return Attri
 
 member;range=0-5000
 
-![An image showing ](Media/Image5.25.jpg)
+![Large-range Search Example](Media/Image5.25.jpg)
 
-Figure 5.25: Large-range Search Example
 
 ### Nested Groups
 
@@ -648,11 +644,11 @@ To search for the number of subordinates an entry contains, use the numSubordina
 
 Numsubordinates is an operational attribute and is only returned in searches when it is specifically requested. An example search from Control Panel > Manage > Directory Browser is shown below.
 
-![Numsubordinates Search Example](Media/numsubordinates-query.jpg)
+![Numsubordinates Search Example](Media/numsubordinates.jpg)
  
 The numsubordinates attribute is returned when an entry is selected in the search result.
 
-![Numsubordinates Search Result](Media/numsubordinates.jpg)
+![Numsubordinates Search Result](Media/numsubordinates-attribute.jpg)
 
 ## Configuring Replication
 
@@ -843,6 +839,7 @@ If you enable the persistent search control, an LDAP client can receive notifica
 
 >[!note] 
 >The changelog number associated with the changed entries (logged into cn=changelog) is also returned in the persistent search response.
+
 
 
 
