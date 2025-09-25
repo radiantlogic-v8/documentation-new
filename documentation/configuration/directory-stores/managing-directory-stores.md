@@ -644,7 +644,7 @@ To search for the number of subordinates an entry contains, use the numSubordina
 
 Numsubordinates is an operational attribute and is only returned in searches when it is specifically requested. An example search from Control Panel > Manage > Directory Browser is shown below.
 
-![Numsubordinates Search Example](Media/numsubordinates.jpg)
+![Numsubordinates Search Example](Media/numsubordinates-new.jpg)
  
 The numsubordinates attribute is returned when an entry is selected in the search result.
 
@@ -839,6 +839,7 @@ If you enable the persistent search control, an LDAP client can receive notifica
 
 >[!note] 
 >The changelog number associated with the changed entries (logged into cn=changelog) is also returned in the persistent search response.
+
 
 
 
