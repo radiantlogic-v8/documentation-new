@@ -330,15 +330,15 @@ Searching for multi-valued attributes (generally members) in a group may result 
 An example of how to perform a Range Retrieval search in RadiantOne is described below:
 
 1.	Navigate to the Main Control Panel > Manage > Directory Browser. 
-1.	Click the **+SEARCH** button. If you already have other saved searches, the button shows as a **+**.
-	![Multi-valued Attribute Expanded](Media/dirbrowser-search.jpg)
-1.	Enter a Name to represent the (saved) search criteria. 
+1.	Click the **+** button. 
+	![Multi-valued Attribute Expanded](Media/dir-browser-search.jpg)
+1.	Search criteria displays, and the tab is renamed to **SEARCH`<N>`**, where N is a number based on how many search tabs are opened. 
 1.	Either enter the Base DN to indicate where to search from, or click ![Browse](Media/browse.jpg) to browse the RadiantOne namespace to select a location. 
 1.	Select a scope from the drop-down list. Searches with a lower limit other than 0 must have a scope of “base”. 
-1.	In the Return Attributes field, enter your range in the following syntax: `<member> or <uniquemember>;range=<lowerlimit>-<upperlimit>`
+1.	In the Search button drop-down![Search Button](Media/search-button.jpg), in the Return Attributes field, enter your range in the following syntax: `<member> or <uniquemember>;range=<lowerlimit>-<upperlimit>`
 	>[!note] For more information on lower and upper limits, see the **Range Limits** and **Examples** sections below.
 
-1.	Click **SAVE**, this runs the query.
+1.	Click **SEARCH**, this runs the query.
 
 **Range Limits**
 
@@ -843,5 +843,6 @@ If you enable the persistent search control, an LDAP client can receive notifica
 
 >[!note] 
 >The changelog number associated with the changed entries (logged into cn=changelog) is also returned in the persistent search response.
+
 
 
