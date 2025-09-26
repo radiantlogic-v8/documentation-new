@@ -23,7 +23,7 @@ These release notes contain the following sections:
 
 ## Improvements
 
-- [API-2170]: Introduced a new Connector SDK to support integration with data sources that don't include an out-of-the-box template. 
+- [API-2170]: Introduced a new Connector SDK to support integration with data sources that don't include an out-of-the-box template.  For details: [Connector SDK](https://github.com/radiantlogicinc/iddm-connector-sdk-documentation) 
 - [API-3091]: Improvement so Radiant Logic license keys can be updated in self-managed deployments without needing to restart the service.
 - [API-3123]: Updated templates for creating Entra ID data Sources. Old graphapi (deprecated) template was removed and the mgraph template was renamed to Microsoft Entra ID.
 - [API-3153]: Updated the attribute creation validation to compare the new attribute names against existing ones case-insensitively. Example: sn and SN are treated as the same; if SN already exists, creating sn is not allowed.
@@ -84,5 +84,6 @@ Feedback and problems can be reported from the Support Center/Knowledge Base acc
 
 
 If you do not have a user ID and password to access the site, please contact: support@radiantlogic.com
+
 
 
