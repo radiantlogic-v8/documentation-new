@@ -25,7 +25,7 @@ These release notes contain the following sections:
 
 - [API-2170]: Introduced a new Connector SDK to support integration with data sources that don't include an out-of-the-box template. 
 - [API-3091]: Improvement so Radiant Logic license keys can be updated in self-managed deployments without needing to restart the service.
-- [API-3123]: Updated templates for creating Entra ID data Sources. Old graphapi (deprecated) template was removed and mgraph was renamed to Microsoft Entra ID.
+- [API-3123]: Updated templates for creating Entra ID data Sources. Old graphapi (deprecated) template was removed and the mgraph template was renamed to Microsoft Entra ID.
 - [API-3153]: Updated the attribute creation validation to compare the new attribute names against existing ones case-insensitively. Example: sn and SN are treated as the same; if SN already exists, creating sn is not allowed.
 - [API-3174]: Added a loading spinner that displays until the cloning of a data source completes in Data Catalog > Data Sources.
 - [API-3209]: Removed the “stop/start” and “server control panel” buttons on the Classic Control Panel since those are not needed for SaaS and/or self-managed environments.
@@ -79,5 +79,6 @@ https://support.radiantlogic.com/hc/en-us/categories/4412501931540-Known-Issues
 ## How to Report Problems and Provide Feedback
 
 Feedback and problems can be reported from the Support Center/Knowledge Base accessible from: https://support.radiantlogic.com
+
 
 If you do not have a user ID and password to access the site, please contact: support@radiantlogic.com
