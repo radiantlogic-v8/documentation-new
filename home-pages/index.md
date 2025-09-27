@@ -262,7 +262,7 @@ A rich set of HTTP-based API's have been developed on top of LDAP, to provide br
 
 <section>
   
-  > [Connector SDK](https://github.com/radiantlogicinc/iddm-connector-sdk-documentation)
+  > [SDK Documentation](https://github.com/radiantlogicinc/iddm-connector-sdk-documentation)
   > Connector SDK can be used to integrate Identity Data Management with data sources that don't include an out-of-the-box template.
   
 </section>
