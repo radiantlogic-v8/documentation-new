@@ -5,7 +5,7 @@ description: Upgrading RadiantOne Identity Data Management
 
 ## Overview
 
-The process from upgrading from RadiantOne Identity Data Management v7.4.10 to v8.1 is described below. If you are running a version prior to v7.4.10, you must first update to this version.
+The process from upgrading from RadiantOne Identity Data Management v7.4.10 to v8.1+ is described below. If you are running a version prior to v7.4.10, you must first update to this version.
 
 Read the [features comparison guide](./features-list.md) to understand potential feature gaps in the upgraded version and plan your upgrades accordingly.
 
@@ -13,9 +13,7 @@ Read the [features comparison guide](./features-list.md) to understand potential
 
 Beginning with the v8 release, the software now follows Semantic Versioning. Version numbers will use the format MAJOR.MINOR.PATCH:
 
-MAJOR – incompatible API or behavior changes
-MINOR – backward-compatible feature additions
-PATCH – backward-compatible bug fixes
+MAJOR – incompatible API or behavior changes <br> MINOR – backward-compatible feature additions <br> PATCH – backward-compatible bug fixes
 
 This change makes it easier to understand the type of changes included in each release and to plan upgrades with greater confidence.
 
@@ -317,5 +315,6 @@ This performs a rolling restart of all RadiantOne cluster nodes for the new scri
 Feedback and problems can be reported from the Support Center/Knowledge Base accessible from: https://support.radiantlogic.com 
 
 If you do not have a user ID and password to access the site, please contact support@radiantlogic.com. 
+
 
 
