@@ -73,6 +73,7 @@ These release notes contain the following sections:
 ## Known Issues
 
 - After updating to v8.2.0, you may see the following harmless error in the vds_server.log and install logs: `ERROR org.apache.curator.framework.imps.CuratorFrameworkImpl:703 - Background exception was not retry-able or retry gave up java.lang.NullPointerException: null 	at org.apache.curator.framework.imps.EnsembleTracker.configToConnectionString`. <br> You can safely ignore this error message.
+- FIPS-compliance mode isn't supported. It is planned for Q1 2026.
 
 For known issues reported after the release, please see the Radiant Logic Knowledge Base: 
 
@@ -84,6 +85,7 @@ Feedback and problems can be reported from the Support Center/Knowledge Base acc
 
 
 If you do not have a user ID and password to access the site, please contact: support@radiantlogic.com
+
 
 
 
