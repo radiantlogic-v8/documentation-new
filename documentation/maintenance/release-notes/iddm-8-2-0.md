@@ -39,7 +39,6 @@ These release notes contain the following sections:
 - [API-3383,SQ-791]: Added support for "." in naming context names.
 - [API-3411]: Added the client id property to the template for Microsoft Entra ID data sources.
 - [API-3412,SQ-808]: Improvement to allow uploading of certificate files in Classic Control Panel > Settings > Configuration > File Manager.
-- [API-3414,SQ-817]: Multiple Kafka improvements. When a user deletes a truststore file, we now update the respective producer properties with the removal of the ssl truststore file and password. When producing kafka messages, we now create a new KafkaProducerOp with new properties so we always take the latest properties.
 
 
 ## Security Vulnerability Fixes
@@ -64,6 +63,7 @@ These release notes contain the following sections:
 - [API-3345,SQ-716]: Fixed an issue in the text overlay on Scheduler Task Manager > Task List so the Name column text doesn't overlap into adjacent columns.
 - [API-3357,SQ-761]: Fixed an issue where the first search name is deleted when a new search tab is opened in the directory browser. It now sends a request to save tabs when clicking the New Tab button, and allows users to create a new search tab from the root without specifying a DN.
 - [API-3396,SQ-801]: Fixed an issue so that enabling the optimized linked attributes feature on a cache will now automatically add any linked attributes to the list of extension attributes on the UI.
+- [API-3414,SQ-817]: Multiple Kafka fixes and improvements. When a user deletes a truststore file, we now update the respective producer properties with the removal of the ssl truststore file and password. When producing kafka messages, we now create a new KafkaProducerOp with new properties so we always take the latest properties.
 - [API-3415,SQ-813]: Fixed an issue to properly mask values of sensitive properties for data sources.
 - [API-3416]: Fixed an issue with what was defined as required properties for SCIM data sources.
 - [API-3417]: Fixed an issue where the Oauth token property for SCIM data sources was being returned to UI in encrypted format.
@@ -85,6 +85,7 @@ Feedback and problems can be reported from the Support Center/Knowledge Base acc
 
 
 If you do not have a user ID and password to access the site, please contact: support@radiantlogic.com
+
 
 
 
