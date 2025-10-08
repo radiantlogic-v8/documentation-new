@@ -86,7 +86,7 @@ If you have enabled any of the following features in v7.4, work with Radiant Log
 
    ![custom authentication provider config in v7.4](Media/customauthpro.jpg)<br>
 
-   An interception script configured ON BIND can easily be used in the interim.<br>
+   An interception script configured ON BIND can easily be used in v8.1+ during the interim.<br>
 
     ![intereception script v8.1](Media/intscriptbind.jpg)<br>
    
