@@ -82,9 +82,20 @@ If you have enabled any of the following features in v7.4, work with Radiant Log
 
 7. **Retrieving Existing Active Directory Passwords**: For SaaS deployments, this requires a Secure Data Connector to be deployed in the Active Directory network. This feature will be supported in self-managed deployments soon. <br> <br>
 
-8. **CPLDS**: RadiantOne v7.4 includes a Capture Process for Large numbers of distributed Directory Stores (CPLDS). This feature leverages components known as Workers to detect changes in source LDAP directories, Active Directories, or LDIF files and refreshes a RadiantOne Directory (HDAP) replica. To find out if you are using this feature, navigate to your directory namespace and check if the process is enabled under Distributed Directories Aggregation. <br>
+8. **Custom Authentication Providers**: The UI configuration is being refactored. <br>
+
+   ![custom authentication provider config in v7.4](Media/customauthpro.jpg)<br>
+
+   An interception script configured ON BIND can easily be used in the interim.<br>
+
+    ![intereception script v8.1](Media/intscriptbind.jpg)<br>
+   
+
+9. **CPLDS**: RadiantOne v7.4 includes a Capture Process for Large numbers of distributed Directory Stores (CPLDS). This feature leverages components known as Workers to detect changes in source LDAP directories, Active Directories, or LDIF files and refreshes a RadiantOne Directory (HDAP) replica. To find out if you are using this feature, navigate to your directory namespace and check if the process is enabled under Distributed Directories Aggregation. <br>
 
    ![config example](Media/cplds.png) <br> <br>
+
+   
 
 
 
