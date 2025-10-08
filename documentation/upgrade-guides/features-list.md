@@ -82,7 +82,7 @@ If you have enabled any of the following features in v7.4, work with Radiant Log
 
 7. **Retrieving Existing Active Directory Passwords**: For SaaS deployments, this requires a Secure Data Connector to be deployed in the Active Directory network. This feature will be supported in self-managed deployments soon. <br> <br>
 
-8. **Custom Authentication Providers**: The UI configuration is being refactored. <br>
+8. **Custom Authentication Providers**: The UI configuration is being refactored and not available in v8.1+. <br>
 
    ![custom authentication provider config in v7.4](Media/customauthpro.jpg)<br>
 
