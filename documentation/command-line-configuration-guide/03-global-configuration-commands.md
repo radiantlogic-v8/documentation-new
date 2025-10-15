@@ -100,7 +100,7 @@ In the following example, a request is made to modify the LDAP port to 9999.
 
 The SSL settings for RadiantOne can be defined in the Control Panel from the Settings tab, Security section, SSL.
 
-![SSl settings](Media/Image3.2.jpg)
+![SSl settings](Media/Image3.2.png)
 
 This section explains how to display and set these property values using
 <RLI_HOME>/bin/vdsconfig instead of using the UI mentioned above.
@@ -156,9 +156,24 @@ C:\radiantone\vds\bin>vdsconfig.bat get-property -name ciphersList
 
 #### Configure CRL File
 
-`C:\radiantone\vds\bin>vdsconfig.bat get-property -name checkCRLfile`
+The CRL file can be configured on each server node via the Server Control Panel UI. 
 
-`C:\radiantone\vds\bin>vdsconfig.bat set-property -name checkCRLfile -value C:\\path\\to\\file`
+![CRL File Settings Tab](Media/crl-conf.png "CRL File Settings Tab")
+
+Alternatively, you can use the following commands to configure it using the command line: 
+
+**Set the CRL file on each server node:**
+
+For Linux: `$RLI_HOME/bin/vdsconfig.sh set-cluster-node-property -name serverCRLFile -value /path/to/file`
+
+For Windows: `C:\radiantone\vds\bin>vdsconfig.bat set-cluster-node-property -name serverCRLFile -value C:\path\to\file`
+
+**Check/retrieve the current value of the property:**
+
+For Linux: `$RLI_HOME/bin/vdsconfig.sh get-cluster-node-property -name serverCRLFile`
+
+For Windows: `C:\radiantone\vds\bin>vdsconfig.bat get-cluster-node-property -name serverCRLFile`
+
 
 #### Configure Inter Nodes Communication (SSL)
 
@@ -246,3 +261,4 @@ If you want to stop the script from delivering alerts, run the set-property comm
 If you want to generate access logs in CSV format with column headers, run the set-property command as follows:
 
 `vdsconfig set-property -name accessLogCsvAddColNames -value true`
+
