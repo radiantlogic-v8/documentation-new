@@ -156,7 +156,7 @@ C:\radiantone\vds\bin>vdsconfig.bat get-property -name ciphersList
 
 #### Configure CRL File
 
-The CRL file can be configured on each server node via the Server Control Panel UI. 
+The CRL file must be configured on each server node. You can do so via the Server Control Panel UI. 
 
 ![CRL File Settings Tab](Media/crl-conf.png "CRL File Settings Tab")
 
@@ -261,4 +261,5 @@ If you want to stop the script from delivering alerts, run the set-property comm
 If you want to generate access logs in CSV format with column headers, run the set-property command as follows:
 
 `vdsconfig set-property -name accessLogCsvAddColNames -value true`
+
 
