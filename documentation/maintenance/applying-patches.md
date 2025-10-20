@@ -54,16 +54,16 @@ Copy the file locally by executing the following command in the pod:
 
 ### Applying the Patch
 
-Update your values.yaml file with the image tag for the v8.1 patch release (e.g. v8.1.2)
+Update your values.yaml file with the image tag for the v8.1 patch release (e.g. v 8.2.1).
 
 ```
 image:
-  tag: "8.1.2"
+  tag: "8.2.1"
 ```
 
 Run the following helm command to apply the patch:
 
-`helm upgrade --install -n <namespace> fid oci://ghcr.io/radiantlogic-devops/helm-v8/fid -f values.yaml --wait`
+`helm -n self-managed upgrade --install fid oci://registry-1.docker.io/radiantone/iddm-helm --version 1.2.1 --values </path/to/your/values.yaml>`
 
 ## Release Notes
 
@@ -80,4 +80,5 @@ https://support.radiantlogic.com/hc/en-us/categories/4412501931540-Known-Issues
 Feedback and problems can be reported from the Support Center/Knowledge Base accessible from: https://support.radiantlogic.com  
 
 If you do not have a user ID and password to access the site, please contact support@radiantlogic.com. 
+
 
