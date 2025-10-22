@@ -41,7 +41,7 @@ Before you begin the migration process, ensure the following:
 
 ### 1. Configure promotion pipeline
 
-- For SaaS Identity Data Management environments, customers must [configure their promotion pipeline](/../../../eoc/latest/promotion-pipelines/configuration-promotion.md) in the Environment Operations Center (EOC). Note that this feature is supported in EOC version 1.4.0 or higher. 
+- For SaaS Identity Data Management environments, customers must [configure their promotion pipeline](/../../../eoc/latest/promotion-pipelines/configuration-promotion) in the Environment Operations Center (EOC). Note that this feature is supported in EOC version 1.4.0 or higher. 
 
 - For Self-Managed Identity Data Management environments, customers must [set up their Git repository](../installation/config-promotion.md) to configure their pipeline.
 
