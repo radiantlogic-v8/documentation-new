@@ -16,7 +16,7 @@ You only need to follow these steps if your existing license key is about to exp
 - You must have administrative access to the Identity Data Management Control Panel.  
 - Obtain the new license key from Radiant Logic prior to following these steps.  
 
-### Steps to Update Your License
+### Steps to update your license
 
 1. Log in to the **Identity Data Management Control Panel** using your administrative credentials.  
 
