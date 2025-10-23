@@ -8,7 +8,7 @@ description: Learn how to replace an expiring license with a new license in your
 This document provides detailed instructions for updating the license key in a **self-managed Identity Data Management** environment. 
 You only need to follow these steps if your existing license key is about to expire. These steps do not apply to the SaaS version of Identity Data Management.  
 
-> If you are unable to access your Identity Data Management application endpoints due to an invalid license, you will need to update your `values.yaml` file with the new license key and redeploy your application.  
+> If you are unable to access your Identity Data Management application endpoints due to an invalid license, you will need to update your [values.yaml](./self-managed/#steps-for-deployment) file with the new license key and [redeploy your application](./self-managed/#updating-a-deployment).  
 
 
 ### Prerequisites
