@@ -112,7 +112,7 @@ Several aspects of RadiantOne are configured during installation. The basic inst
 
     ![An image showing ](Media/Image2.4.jpg)
 
-5. Next, in the RadiantOne Configuration section of the Node Settings page, enter the RadiantOne cluster name, administrator user, and password. To remove sample data from the installation of RadiantOne, uncheck the Install Samples box.
+5. Next, in the RadiantOne Configuration section of the Node Settings page, enter the RadiantOne cluster name, administrator user, and password. The administrator user set here is the break glass account for the Radiant Logic service and should be used as such. It is not recommended to use this account for general purpose access. Also note that password policies are not enforced for this account. Maintaining a break glass account that cannot be locked out is essential for ensuring uninterrupted emergency access to the RadiantOne service during incidents such as misconfigurations, authentication failures, or security breaches that might otherwise prevent all administrators from regaining control of an environment. <br>To remove sample data from the installation of RadiantOne, uncheck the Install Samples box.
 
     >[!warning]
     >The value of the “Administrator Name” property should** be in the syntax: `cn=<user value>`. <br> Don’t use underscores in the Cluster Name.
@@ -368,6 +368,7 @@ When installation is complete, the command prompt displays the message “Instal
 
 >[!warning]
 >values in the properties file, including passwords, are stored in clear. After installation, install-sample.properties should be deleted.
+
 
 
 
