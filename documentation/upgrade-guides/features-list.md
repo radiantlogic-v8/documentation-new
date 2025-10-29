@@ -15,6 +15,7 @@ The following features have been deprecated and are no longer available in v8.1 
 
 | Feature                                                       | Where to find this feature in 7.4                                                             |  
 | ------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | 
+| Global Identity Viewer | The Global Identity Viewer was accessible using `https://<RadiantOnehost>:7171/portal/login`
 | Server Front-End – Other Protocols (VRS)                      | Check configuration for VRS protocol usage. <br> <br> ![config example](Media/img-1.png) <tr></tr>      | 
 | ACI Settings – Level of Assurance                             | Check Access Control rules for 'Level of Assurance.' A value other than 0 indicates that this feature is being used. <br> <br> ![config example](Media/img-6.png) <tr></tr>   | 
 | Security Settings – Role Mapped Access in Proxy Views of LDAP | Review proxy view settings for role mapping. <br> <br> ![config example](Media/img-role.png) <tr></tr>                                                  | 
