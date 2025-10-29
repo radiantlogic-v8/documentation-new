@@ -72,6 +72,7 @@ Starting in RadiantOne v8.0, the following features have been deprecated:
 - Groups Migration Wizard.
 - Groups Builder Wizard.
 - Merge Tree Wizard.
+- Global Identity Viewer.
 
 ## How to Report Problems and Provide Feedback
 
@@ -80,3 +81,4 @@ Feedback and problems can be reported from the Support Center/Knowledge Base acc
 If you do not have a user ID and password to access the site, please contact: 
 
 support@radiantlogic.com
+
