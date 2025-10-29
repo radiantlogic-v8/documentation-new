@@ -29,5 +29,6 @@ This command generates migration_plan.json in the location where you executed th
 
 After customizing the migration plan, run the command to import the configuration.
 
-> Ensure you verify the values of the data source “replicationjournal” under `Settings > Server Backends > LDAP Data Sources > replicationjournal` to ensure they point to the current environment.
+> Verify the values of the data source “replicationjournal” under **Settings > Server Backends > LDAP Data Sources > replicationjournal** to ensure they point to the current environment.
 After a migration, this value retains the configuration from the old environment and must be manually updated to reflect the correct replicationjournal settings in the new environment.
+
