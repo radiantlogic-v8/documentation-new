@@ -222,4 +222,20 @@ August 05, 2025
 - [VSTS 47557] Fixed a bug that caused log failures when advanced attributes values were null.
 - [VSTS 47559] Fixed a regression bug related to failover when encountering an invalid RSA endpoint, and masked logs that previously exposed OTP values.
 
+### v3.17.5
+
+October 30, 2025
+
+**New Feature**
+
+- [VSTS 47563] Added Certificate Rollover feature enabling zero-downtime certificate updates for SAML 2.0 and WS-Federation SSO applications. This enhancement allows new certificates to be staged and automatically rotated during SSO operations without service interruption.
+
+**Bug fixes** 
+
+- [VSTS 47560] Fixed a regression issue that caused RTC authentication to fail on versions 3.17.3 and above.
+- [VSTS 47561] Fixed an issue preventing RTC and CFS Master from being installed on the same system.
+- [VSTS 47562] Fixed an issue where the Disclaimer field under Login Page Customization in CFS did not save its content.
+ 
+
+
 
