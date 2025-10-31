@@ -634,6 +634,17 @@ Name | Description | Since Version
 **Get-CfsCertificate** | Retrieves an X509Certificate2 used by a tenant. | 3.3.0.0
 **Set-CfsCertificate** | Updates an X509Certificate2 used by a tenant. | 3.3.0.0
 
+### Tenant and Application Certificate Rollovers
+
+Name | Description | Since Version
+-|-|-
+**Add-CfsNextCertificate** | Add the next certificate for tenant or application for [certificate rollover](certificate-rollover.md). Can use existing certificate (`-Certificate`) or generate new (`-Generate`). | 3.17.5
+**Get-CfsCertificateStatus** | Checks the status of tenant or application certificates. | 3.17.5
+**Start-CfsCertificateRotation** | Manually rotates tenant or application certificates. `-Force` parameter exists but is ignored. | 3.17.5
+**Start-CfsCertificateEmergencyMigration** | Emergency migration for expiring certificates. Options for new or existing certificate. `-Force` parameter exists but is ignored. | 3.17.5
+
+
+
 ### Challenge Questions
 
 Name | Description | Since Version
@@ -796,6 +807,7 @@ Name | Description | Since Version
 **Set-WordPress** | Updates the configuration of the Social Network WordPress. | 3.4.0.0
 **Get-Yahoo** | Retrieves the configuration of the Social Network Yahoo. | 3.4.0.0
 **Set-Yahoo** | Updates the configuration of the Social Network Yahoo. | 3.4.0.0
+
 
 
 
