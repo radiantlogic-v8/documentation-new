@@ -27,7 +27,9 @@ For enabling rollover, the recommended approach is using the Admin UI. However, 
    Enable certificate rollover for zero-downtime updates."
 5. Confirm the change.
 
-### Method 2: Bulk Update Using Script (Recommended for Multiple Applications)
+### Method 2: Bulk Update Using Script 
+
+This approach is recommended when you need to update multiple application certificates. 
 
 ```
 
