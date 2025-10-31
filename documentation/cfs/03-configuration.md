@@ -39,6 +39,7 @@ In environments where an existing identity provider is deployed and needs to tru
 
 ![](media/identity-providers-2.png)
 
+
 # Applications
 
 Name | Description | Link
@@ -793,3 +794,4 @@ Name | Description | Since Version
 **Set-WordPress** | Updates the configuration of the Social Network WordPress. | 3.4.0.0
 **Get-Yahoo** | Retrieves the configuration of the Social Network Yahoo. | 3.4.0.0
 **Set-Yahoo** | Updates the configuration of the Social Network Yahoo. | 3.4.0.0
+
