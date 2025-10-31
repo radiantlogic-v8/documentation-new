@@ -27,7 +27,7 @@ Identity Provider is the term used to describe any mechanism or system that hand
     -   [RSA SecurID](trusted-idps#rsa-securid) _(deprecated)_
     -   Other Ws-Federation Identity Providers...
 
-> Note that for applications using certificates, CFS offers [Certificate rollover](certificate-rollover.md) feature which should be used a certificate is nearing expiration or when you want to proactively replace it without causing downtime.
+> Note that for applications using certificates, CFS offers [Certificate rollover](certificate-rollover.md) feature which should be used when a certificate is nearing expiration or when you want to proactively replace it without causing downtime.
 
 Below is a high-level diagram depicting the flow when CFS leverages a Trusted Identity Provider for authentication. In scenarios like this, CFS acts as a relying party to the Trusted Identity Provider. This is known as Inbound Federation. CFS is receiving assertions from a trusted IDP to provide access to identities outside of CFS's security boundary to relying parties that trust CFS as their Identity Provider.
 
@@ -796,5 +796,6 @@ Name | Description | Since Version
 **Set-WordPress** | Updates the configuration of the Social Network WordPress. | 3.4.0.0
 **Get-Yahoo** | Retrieves the configuration of the Social Network Yahoo. | 3.4.0.0
 **Set-Yahoo** | Updates the configuration of the Social Network Yahoo. | 3.4.0.0
+
 
 
