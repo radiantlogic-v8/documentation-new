@@ -23,8 +23,8 @@ For enabling rollover, the recommended approach is using the Admin UI. However, 
 
 1. Navigate to the application in the Admin UI.
 2. Look for the certificate section.
-3. Click "Enable certificate rollover" button. You should see: "Legacy Mode: This application uses a single certificate. Enable certificate rollover
-for zero-downtime updates."
+3. Click "Enable certificate rollover" button. You should see: "Legacy Mode: This application uses a single certificate.
+   Enable certificate rollover for zero-downtime updates."
 5. Confirm the change.
 
 ### Method 2: Bulk Update Using Script (Recommended for Multiple Applications)
