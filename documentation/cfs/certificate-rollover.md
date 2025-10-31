@@ -70,23 +70,25 @@ Follow these steps to set up certificate rollover for a tenant and its applicati
 
 1. Set Tenant Context
 
-  ```
-  # Set the current tenant context
-  Set-CfsCurrentTenant -Name "your-tenant-name"
-  ```
+     ```
+     # Set the current tenant context
+     Set-CfsCurrentTenant -Name "your-tenant-name"
+     ```
+     <br>
   
 2. Check Current Certificate Status
 
-  ```
-  # Check tenant-level certificates
-  Get-CfsCertificateStatus -Main
-  # Check application-level certificates
-  Get-CfsCertificateStatus -Application "your-app-id"
-  ```
+     ```
+     # Check tenant-level certificates
+     Get-CfsCertificateStatus -Main
+     # Check application-level certificates
+     Get-CfsCertificateStatus -Application "your-app-id"
+     ```
+      <br>
   
 3. Add Next Certificate
 
-  You can either use an existing certificate or generate a new one. 
+   You can either use an existing certificate or generate a new one. 
   
   **Option A: Use Existing Certificate**
   
@@ -99,6 +101,8 @@ Follow these steps to set up certificate rollover for a tenant and its applicati
   Add-CfsNextCertificate -Application "your-app-id" -Certificate $yourCertificate -
   ActivationDate (Get-Date).AddDays(7)
   ```
+  <br>
+
 
   **Option B: Generate New Certificate**
   
@@ -109,16 +113,18 @@ Follow these steps to set up certificate rollover for a tenant and its applicati
   Add-CfsNextCertificate -Application "your-app-id" -Generate -ActivationDate (Get-
   Date).AddDays(7)
   ```
+  <br>
 
 4. Verify Implementation
 
-  After adding the certificate, confirm that the certificates are valid.
+   After adding the certificate, confirm that the certificates are valid.
   
-  ```
-  # Check certificate status
-  Get-CfsCertificateStatus -Main
-  Get-CfsCertificateStatus -Application "your-app-id"
-  ```
+     ```
+     # Check certificate status
+     Get-CfsCertificateStatus -Main
+     Get-CfsCertificateStatus -Application "your-app-id"
+     ```
+
 
 ### Emergency Migration for Expiring Certificates
 
@@ -133,6 +139,7 @@ Use the following script for scenarios when your certificates are expiring in le
   Start-CfsCertificateEmergencyMigration -Main -NewCertPath "path\to\your\cert.pfx"
   -Force
   ```
+  <br>
 
 Use the following script for scenarios when your certificates are expiring in 30-90 Days. 
 
@@ -142,6 +149,7 @@ Use the following script for scenarios when your certificates are expiring in 30
   # Urgent migration with staged activation
   Start-CfsCertificateEmergencyMigration -Main -DaysUntilExpiry 60 -GenerateNewCert
   ```
+  <br>
 
 ### Manual Rotation (Optional)
 
@@ -159,6 +167,7 @@ Trigger Certificate Rotation
   # Force rotation (bypass activation date checks)
   Start-CfsCertificateRotation -Main -Force
   ```
+  <br>
 
 ## Common Workflows 
 
@@ -189,6 +198,7 @@ Trigger Certificate Rotation
   Get-CfsCertificateStatus -Main
   Get-CfsCertificateStatus -Application "app-id"
   ```
+  <br>
 
 2. Handling Common Issues
 
@@ -205,6 +215,7 @@ Trigger Certificate Rotation
   Start-CfsCertificateEmergencyMigration -Main -GenerateNewCert -Force
   # The -Force parameter is completely ignored in the implementation
   ```
+  <br>
   
 3. If you get other certificate errors, verify certificate validity and permissions. 
 
