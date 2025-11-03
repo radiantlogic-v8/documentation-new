@@ -19,7 +19,7 @@ This guide provides simple, step-by-step instructions for implementing certifica
 
 For enabling rollover, the recommended approach is using the Admin UI. However, there are alternative approaches. All options are documented below.
 
-### Method 1: Using Admin UI (Recommended)
+### Option 1: Using Admin UI (Recommended)
 
 1. Navigate to the application in the Admin UI.
 2. Look for the certificate section.
@@ -27,46 +27,16 @@ For enabling rollover, the recommended approach is using the Admin UI. However, 
    Enable certificate rollover for zero-downtime updates."
 5. Confirm the change.
 
-### Method 2: Bulk Update Using Script 
+This will enable certificate rollover. 
 
-This approach is recommended when you need to update multiple application certificates. 
-
-```
-
-# Use the UpdateApplication_CertificateRollover.ps1 script for bulk updates
-# This script can update all applications at once to enable certificate rollover
-# Example usage with all required parameters:
-.\UpdateApplication_CertificateRollover.ps1 `
--Server "server_name" -Port 636 `
--TopDN "ou=applications,ou=tenant,ou=tenants,ou=cfs,cn=config" `
--BindUser "cn=directory manager" -Password "YourPassword" `
--AttrName "UsesCertificateRollover" -BoolValue $true
-```
-
-### Method 3: Manual LDAP Update (Advanced)
-
-```
-# Set tenant context
-Set-CfsCurrentTenant -Name "your-tenant-name"
-
-# Get the application
-$app = Get-CfsApplication -Id "your-app-id"
-1 / 6
-CertificateRolloverSteps.md 2025-10-26
-# Enable certificate rollover
-$app.UsesCertificateRollover = $true
-# Note: There is no direct cmdlet to save this change
-# This requires manual LDAP attribute update or UI usage
-```
-
-### Method 4: Automatic Enablement
+### Option 2: Automatic Enablement using Script 
 
 Certificate rollover is automatically enabled when you add certificates using `Add-CfsNextCertificate`. This causes the system to set
 `UsesCertificateRollover = true` internally.
 
 ## Quick Start with Basic Implementation
 
-Follow these steps to set up certificate rollover for a tenant and its applications.
+If you would like to use option 2 (Automatic enablement) to set up certificate rollover for a tenant and its applications, follow the steps listed below:
 
 1. Set Tenant Context
 
