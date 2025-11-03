@@ -10,7 +10,7 @@ This guide provides simple, step-by-step instructions for implementing certifica
 
 ### Prerequisites
 
-* PowerShell access to CFS management tools
+* PowerShell access to CFS management tools for programmatic enablement
 * Tenant and application access permissions
 * Certificate files (PFX format) or ability to generate new certificates
 * Applications must have UsesCertificateRollover enabled (see Application Setup section below)
@@ -29,7 +29,7 @@ For enabling rollover, the recommended approach is using the Admin UI. However, 
 
 This will enable certificate rollover. 
 
-### Option 2: Automatic Enablement using Script 
+### Option 2: Automatic Enablement using Powershell 
 
 Certificate rollover is automatically enabled when you add certificates using `Add-CfsNextCertificate`. This causes the system to set
 `UsesCertificateRollover = true` internally.
