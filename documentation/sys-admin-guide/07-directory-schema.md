@@ -21,7 +21,7 @@ You can extend the schema in three different ways. Each is summarized below and 
 
 ### Extending RadiantOne Schema with Objects and Attributes from an LDIF File
 
-The LDIF file should be properly named, formatted, and saved to the following location on the [RadiantOne leader node](clusters-tab#overview-section):
+The LDIF file should be properly named, formatted, and saved to the following location on the [RadiantOne leader node](./01-introduction/#overview-section):
 
 `<RLI_HOME>/<instance_name>/conf	(default instance_name is vds_server)`
 
