@@ -7,14 +7,14 @@ description: Namespace Configuration
 
 ## Introduction
 
-Cloud services like Salesforce, Google Directory, Azure AD (which stores identities that access services like Office 365), among others can be virtualized in RadiantOne and a default virtual view mounted at o=cloudservices,o=vds can be seen as an example. If you update the default data sources associated with this view, it should return your data. The following list includes the default data sources that you can edit to point to your service. 
+Cloud services like Salesforce, Google Directory, Entra ID (which stores identities that access services like Office 365), among others can be virtualized in RadiantOne and a default virtual view mounted at o=cloudservices,o=vds can be seen as an example. If you update the default data sources associated with this view, it should return your data. The following list includes the default data sources that you can edit to point to your service. 
 
 >[!note] The default data sources mentioned below can be used as samples of virtualizing data sources reachable via an API. To configure new custom data sources, see the RadiantOne Context Builder Guide.
 
 Cloud Directory or Service	| RadiantOne Data Source
 -|-
 Salesforce | There are two methods supported for virtualizing Salesforce: JDBC or SCIM <br> <br> [SCIM](#scim-access): <br>Edit the scimclient Custom Data Source and provide the required SCIM and OAuth properties. <br> <br> [JDBC](#jdbc-access): <br> Edit radiantsalesforce DB Data Source. <br> <br> The sample virtual view is salesforce.dvx and can be viewed in Context Builder, View Designer perspective. <br> <br> The virtual view is mounted at dv=salesforce,o=cloudservices,o=vds for client access.
-Azure AD | Edit graphapi Custom Data Source. <br> <br> The sample virtual view is graphapi.dvx and can be viewed in Context Builder, View Designer perspective. <br> <br> The virtual view is mounted at dv=graphapi,o=cloudservices,o=vds for client access. <br> <br> For Azure Active Directory B2C, you can use the graphapib2c custom data source instead of graphapi. <br> <br> Note – Microsoft plans to deprecate the API used in this sample soon. You can use the mgraph custom data source to virtualize Azure AD as an alternative.
+Entra ID | Edit graphapi Custom Data Source. <br> <br> The sample virtual view is graphapi.dvx and can be viewed in Context Builder, View Designer perspective. <br> <br> The virtual view is mounted at dv=graphapi,o=cloudservices,o=vds for client access. <br> <br> For Azure Active Directory B2C, you can use the graphapib2c custom data source instead of graphapi. <br> <br> Note – Microsoft plans to deprecate the API used in this sample soon. You can use the mgraph custom data source to virtualize Entra ID as an alternative.
 [Google Directory](#google-directory) | Edit googledirectory Custom Data Source.<br> <br> The sample virtual view is googledirectory.dvx and can be viewed in Context Builder, View Designer perspective. <br> <br> The virtual view is not mounted in the virtual namespace by default, but can be by creating a new naming context in the Main Control Panel > Directory Namespace tab.
 Concur	| Edit concur Custom Data Source. Script to call the Concur API located <RLI_HOME>\vds_server\custom\src\com\rli\scripts\customobjects. Updates to the API calls might be necessary.<br> <br> The sample virtual view is concur.dvx and can be viewed in Context Builder, View Designer perspective. <br> <br> The virtual view is mounted at dv=concur,o=cloudservices,o=vds for client access.
 Workday	| Edit workdayhr Custom Data Source. Script to call the Workday API located <RLI_HOME>\vds_server\custom\src\com\rli\scripts\customobjects. Updates to the API calls might be necessary.<br> <br> The sample virtual view is workdayhr.dvx and can be viewed in Context Builder, View Designer perspective. <br> <br> The virtual view is mounted at dv=workdayhr,o=cloudservices,o=vds for client access.
@@ -26,15 +26,15 @@ SharePoint Online in Office 365	| Edit sharepointonline Custom Data Source to vi
 
 To connect to a new cloud service and create a virtual view, see the RadiantOne Context Builder Guide section on Custom Data Sources. 
 
-More details about virtualizing [Salesforce](#salesforce), [Azure AD](#azure-active-directory), [Google Directory](#google-directory), [Okta Universal Directory](#okta-universal-directory), [SailPoint IdentityIQ](#sailpoint-iiq) and [PingOne Directory](#pingone-directory) by leveraging the sample default custom data sources can be found in this chapter.
+More details about virtualizing [Salesforce](#salesforce), [Entra ID](#azure-active-directory), [Google Directory](#google-directory), [Okta Universal Directory](#okta-universal-directory), [SailPoint IdentityIQ](#sailpoint-iiq) and [PingOne Directory](#pingone-directory) by leveraging the sample default custom data sources can be found in this chapter.
 
 ### Operations Supported
 
-The default custom data sources support Read, Update, and Delete (or deactivate) operations but most do not support authentication (support a delegated authentication request from FID). Therefore, virtual views of these sources are primarily used for joining with other virtual views to extend user profiles and/or attributes for enforcing authorization and auditing. For example, you can have a virtual view of an LDAP directory (that would handle authentication requests) that is joined with a virtual view of Salesforce (to retrieve additional profile attributes to augment the user entries from the LDAP directory). The only custom data sources that currently support authentication (RadiantOne translating the BIND request into a credentials checking request) are Okta Universal Directory, PingOne Directory, and Azure AD (when MFA is not enabled). 
+The default custom data sources support Read, Update, and Delete (or deactivate) operations but most do not support authentication (support a delegated authentication request from FID). Therefore, virtual views of these sources are primarily used for joining with other virtual views to extend user profiles and/or attributes for enforcing authorization and auditing. For example, you can have a virtual view of an LDAP directory (that would handle authentication requests) that is joined with a virtual view of Salesforce (to retrieve additional profile attributes to augment the user entries from the LDAP directory). The only custom data sources that currently support authentication (RadiantOne translating the BIND request into a credentials checking request) are Okta Universal Directory, PingOne Directory, and Entra ID (when MFA is not enabled). 
 
 ### Change Detection (Connectors) for Cache Refresh 
 
-If you configure persistent cache for virtual views of cloud directories/services, the change detection mechanisms for cache refresh are limited to Periodic and Custom (only for sources that contain a timestamp attribute for their entries, or Differential Query like Azure AD). The periodic change detection mechanism requires the entire data set to be retrieved at each polling interval and then the connector determines what has changed. The Custom change detection mechanism is a special timestamp-based approach that works with Azure AD (which also leverages Differential Query), Okta, and any SCIM-accessible backend. If the cloud directory/service does not support SCIM (and is something other than Azure AD or Okta), then the periodic option is the only choice for detecting changes for persistent cache refreshes.
+If you configure persistent cache for virtual views of cloud directories/services, the change detection mechanisms for cache refresh are limited to Periodic and Custom (only for sources that contain a timestamp attribute for their entries, or Differential Query like Entra ID). The periodic change detection mechanism requires the entire data set to be retrieved at each polling interval and then the connector determines what has changed. The Custom change detection mechanism is a special timestamp-based approach that works with Entra ID (which also leverages Differential Query), Okta, and any SCIM-accessible backend. If the cloud directory/service does not support SCIM (and is something other than Entra ID or Okta), then the periodic option is the only choice for detecting changes for persistent cache refreshes.
 
 For details on persistent cache refresh connectors, see the [RadiantOne Deployment and Tuning Guide](/deployment-and-tuning-guide/00-preface).
 
@@ -273,13 +273,13 @@ You should consult your Salesforce documentation for steps on how to acquire a s
  
 ## Azure Active Directory
 
-### Create Azure AD Application
+### Create Entra ID Application
 
-If you have not already created an application in Azure AD, you must do so prior to configuring RadiantOne. 
+If you have not already created an application in Entra ID, you must do so prior to configuring RadiantOne. 
 
->**Note - The steps below provide general guidance and may not reflect the latest Microsoft Azure AD interface. For more detailed configuration steps, refer to the Microsoft Azure Active Directory documentation.**
+>**Note - The steps below provide general guidance and may not reflect the latest Microsoft Entra ID interface. For more detailed configuration steps, refer to the Microsoft Azure Active Directory documentation.**
 
-1.	In the Microsoft Azure portal associated with your Azure AD, click on Manage -> App Registrations and then the New Registration button.
+1.	In the Microsoft Azure portal associated with your Entra ID, click on Manage -> App Registrations and then the New Registration button.
 
 2.	Provide a name for the application.
 
@@ -291,7 +291,7 @@ If you have not already created an application in Azure AD, you must do so prior
 
     ![An image showing ](Media/Image8.16.jpg)
 
-    Figure 8.16: Azure AD Application
+    Figure 8.16: Entra ID Application
 
 6.	Click the application to access the specific settings.
 7.	Navigate to Certificates & Secrets.
@@ -318,7 +318,7 @@ If you have not already created an application in Azure AD, you must do so prior
 
     ![An image showing ](Media/Image8.17.jpg)
  
-    Figure 8.17: Azure AD Application Permissions
+    Figure 8.17: Entra ID Application Permissions
 
 15.	Click **Add Permissions**.
 
@@ -340,13 +340,13 @@ If you are going to use the mgraph custom data source (as outlined in the next s
 
 Figure 19: Read and write permissions for the Microsoft Graph API. 
  
-To support delegating authentication requests to Azure AD (RadiantOne getting an LDAP bind request and sending the credentials checking to Azure AD), when using the mgraph custom data source, set “Treat Application as a public client” to Yes in the Authentication configuration for the application.
+To support delegating authentication requests to Entra ID (RadiantOne getting an LDAP bind request and sending the credentials checking to Entra ID), when using the mgraph custom data source, set “Treat Application as a public client” to Yes in the Authentication configuration for the application.
 
 ![An image showing ](Media/Image8.20.jpg)
 
 Figure 20: The "Treat Application as a public client" option
 
-To support deleting user entries in Azure AD, one additional application API permission is required: User.ReadWrite.All. To support deleting groups, you must also have the Group.ReadWrite.all permission.
+To support deleting user entries in Entra ID, one additional application API permission is required: User.ReadWrite.All. To support deleting groups, you must also have the Group.ReadWrite.all permission.
 
 ![An image showing ](Media/Image8.21.jpg)
 
@@ -354,7 +354,7 @@ Figure 21: The User.Read.Write.All permission
  
 ### Configure RadiantOne Custom Data Source
 
-The Azure application APPLICATION ID and SECRET KEY (or Certificate) described in the previous section are required to configure the Azure AD data source in RadiantOne.
+The Azure application APPLICATION ID and SECRET KEY (or Certificate) described in the previous section are required to configure the Entra ID data source in RadiantOne.
 
 RadiantOne supports both the legacy Azure Active Directory Graph API and the Microsoft Graph API. If you use the default graphapi custom data source in RadiantOne, it uses the legacy Azure Active Directory Graph API. If you use the default mgraph custom data source in RadiantOne, it uses the Microsoft Graph API. 
 
@@ -366,15 +366,15 @@ RadiantOne supports both the legacy Azure Active Directory Graph API and the Mic
 
     ![An image showing ](Media/Image8.22.jpg) 
 
-    Figure 8.22: Azure AD Custom Data Source
+    Figure 8.22: Entra ID Custom Data Source
 
 3.	Select the username property and click **Edit**.
 
-4.	Enter the value of the Azure AD Application ID.
+4.	Enter the value of the Entra ID Application ID.
 
-5.	(Optional) If you are connecting to Azure AD with a certificate instead of a client secret, complete steps 5-14. Otherwise, skip to step 15. Click Add and create a property named “clientid”.
+5.	(Optional) If you are connecting to Entra ID with a certificate instead of a client secret, complete steps 5-14. Otherwise, skip to step 15. Click Add and create a property named “clientid”.
 
-6.	Enter the Azure AD Application ID for the clientid property value and click **OK**.
+6.	Enter the Entra ID Application ID for the clientid property value and click **OK**.
 
 7.	Click **Add** and create a property named auth_cert_password.
 
@@ -386,7 +386,7 @@ RadiantOne supports both the legacy Azure Active Directory Graph API and the Mic
 
 11.	Click **Add** and create a property named auth_tenant.
 
-12.	Enter the value of your azure AD tenant for the auth_tenant property and click **OK**.
+12.	Enter the value of your Entra ID tenant for the auth_tenant property and click **OK**.
 
 13.	Click **Add** and create a property named auth_type.
 
@@ -394,15 +394,15 @@ RadiantOne supports both the legacy Azure Active Directory Graph API and the Mic
 
 15.	(Optional) If you are using a client secret instead of a certificate, select the password property and click Edit.
 
-16.	(Optional) If you are using a client secret instead of a certificate, enter the secret key associated with your Azure AD application. 
+16.	(Optional) If you are using a client secret instead of a certificate, enter the secret key associated with your Entra ID application. 
 
-17.	Select the URL property and click Edit. Enter the URL for your Azure AD tenant (if using graphapi, this would look like: `https://graph.windows.net/<your _tenant_name>`. If using mgraph, this would look like: https://graph.microsoft.com/beta).
+17.	Select the URL property and click Edit. Enter the URL for your Entra ID tenant (if using graphapi, this would look like: `https://graph.windows.net/<your _tenant_name>`. If using mgraph, this would look like: https://graph.microsoft.com/beta).
 
 18.	Click **OK**.
 
 19.	Select the oauthURL property and click **Edit**. 
 
-20.	Enter the URL for your Azure AD tenant token endpoint (if using graphapi, this would look like: `https://login.microsoftonline.com/<your _tenant_name>/oauth2/token`. If using mgraph, this would look like: `https://login.microsoftonline.com/<your _tenant_name>/oauth2/v2.0/token`).
+20.	Enter the URL for your Entra ID tenant token endpoint (if using graphapi, this would look like: `https://login.microsoftonline.com/<your _tenant_name>/oauth2/token`. If using mgraph, this would look like: `https://login.microsoftonline.com/<your _tenant_name>/oauth2/v2.0/token`).
 
 21.	Click **OK**.
 
@@ -424,11 +424,11 @@ RadiantOne supports both the legacy Azure Active Directory Graph API and the Mic
 
 29.	Click **OK**.
 
-30.	(If using the mgraph custom data source and Azure AD contains large volumes of users and/or groups; ~50K+ users) add two new properties: **max_retries_on_error** and **retry_interval_on_error**. These properties dictate the behavior of error recovery when initializing persistent cache on the virtual view of the Azure AD backend. Max_retries_on_error defines the number of retries when an error is encountered. This must be a positive, numeric value. After the maximum retries is exhausted, the exception is logged and the persistent cache initialization is stopped. If this property is not present, or contains an invalid value, no retry logic is used. Retry_interval_on_error indicates the amount of time to wait before the next retry. This value is in milliseconds. If this property is not present, or contains an invalid value, a default value of 10000 ms (10 seconds) is used.
+30.	(If using the mgraph custom data source and Entra ID contains large volumes of users and/or groups; ~50K+ users) add two new properties: **max_retries_on_error** and **retry_interval_on_error**. These properties dictate the behavior of error recovery when initializing persistent cache on the virtual view of the Entra ID backend. Max_retries_on_error defines the number of retries when an error is encountered. This must be a positive, numeric value. After the maximum retries is exhausted, the exception is logged and the persistent cache initialization is stopped. If this property is not present, or contains an invalid value, no retry logic is used. Retry_interval_on_error indicates the amount of time to wait before the next retry. This value is in milliseconds. If this property is not present, or contains an invalid value, a default value of 10000 ms (10 seconds) is used.
 
 >[!warning] After you successfully initialize the persistent cache, edit the mgraph custom data source and delete the max_retries_on_error and retry_interval_on_error properties so they don’t interfere with the persistent cache connector refresh logic which enforces similar properties.
 
-31.	If you are going to virtualize Azure AD Groups, see Working with Azure AD Groups and you might need to add more properties to the graphapi data source described in these steps.
+31.	If you are going to virtualize Entra ID Groups, see Working with Entra ID Groups and you might need to add more properties to the graphapi data source described in these steps.
 
 32.	Click **Save**. At this point, if you are using the graphapi custom data source, the default Azure view located at dv=graphapi,o=cloudservices,o=vds should return your data. If you are using the mgraph custom data source, you must create a new Root Naming Context on the Directory Namespace tab and mount the mgraph.dvx (default virtual view) in order to see the data.
 
@@ -436,17 +436,17 @@ RadiantOne supports both the legacy Azure Active Directory Graph API and the Mic
 
 ![An image showing ](Media/Image8.23.jpg)
 
-Figure 23: Azure AD B2C Custom Data Source
+Figure 23: Entra ID B2C Custom Data Source
 
-#### Working with Azure AD Groups
+#### Working with Entra ID Groups
 
-When working with Azure AD groups, the entries can be returned either with or without the members. Both options are described in the following sections.
+When working with Entra ID groups, the entries can be returned either with or without the members. Both options are described in the following sections.
 
 >[!warning] This section is only applicable when using the graphapi custom data source. If you are using the mgraph custom data source, the group members are always returned with their virtual DNs (as long as users are in the same view definition as groups), comprised of either the user’s ID (GUID) or userPrincipalName depending on which attribute is defined as the “primary key” of the “Users” object in the mgraph.orx/mgraph.dvx files. Keep in mind that the member value must match the definition of the user in the view. For example, a group member identified by user=adot@globalrli.onmicrosoft.com,Category=User,dv=mgraph should match a user entry at this location/DN. If the group member is identified by the ID (e.g. users=859bab3d-1a09-4a7c-acc0-b1f2bef16f05,object=users,dv=graphapi,o=cloudservices,o=vds), then the user location/container in the view defintion should be based on the ID of the user as well.
 
 ##### Returning Group Members
 
-If you are virtualizing Azure AD groups using the default graphapi custom data source, the default behavior of RadiantOne is to get the group members returned as DNs comprised of the user's userPrincipalName. This can be very time-consuming due to the extra processing required by RadiantOne to look-up and compute the userPrincipalName for each member. Therefore, this approach is only feasible if you have fewer than 500 relatively small groups (having fewer than a few hundred members).  An example is shown below.
+If you are virtualizing Entra ID groups using the default graphapi custom data source, the default behavior of RadiantOne is to get the group members returned as DNs comprised of the user's userPrincipalName. This can be very time-consuming due to the extra processing required by RadiantOne to look-up and compute the userPrincipalName for each member. Therefore, this approach is only feasible if you have fewer than 500 relatively small groups (having fewer than a few hundred members).  An example is shown below.
 
 ![An image showing ](Media/Image8.24.jpg)
 
@@ -478,7 +478,7 @@ To add the memberoid property:
 
 7.	Click **Save**.
 
-8.	Since the group members are returned with their ObjectID (comprising the DN), you must make sure the corresponding virtual view of Azure AD users is also based on ObjectID. The default graphapi.orx schema and graphapi.dvx virtual view are based on userPrincipalName not ObjectID. To change the default schema, open graphapi.orx in Main Control Panel > Context Builder tab > Schema Manager sub-tab (it is listed on the Custom Schemas tab). 
+8.	Since the group members are returned with their ObjectID (comprising the DN), you must make sure the corresponding virtual view of Entra ID users is also based on ObjectID. The default graphapi.orx schema and graphapi.dvx virtual view are based on userPrincipalName not ObjectID. To change the default schema, open graphapi.orx in Main Control Panel > Context Builder tab > Schema Manager sub-tab (it is listed on the Custom Schemas tab). 
 
 9.	Right-click on the Users object and choose Edit Primary Key. 
 
@@ -516,7 +516,7 @@ Figure 8.28: Users Returned with ObjectID in the DN
 
 ##### Returning Groups without Members for Searches with One Level or Sub Tree Scope
 
-If you only need the basic group information without the members, on queries containing one level or sub tree scope, you can configure ignoremember=true in the graphapi custom data source. This is the most efficient method to get groups from Azure AD since no extra request for members is required. With this property, RadiantOne does not return members in the group entries for queries containing one level or sub tree scope. The members are only returned for group queries using base scope. On base searches, the members are returned with their UserPrincipalName in the DN.
+If you only need the basic group information without the members, on queries containing one level or sub tree scope, you can configure ignoremember=true in the graphapi custom data source. This is the most efficient method to get groups from Entra ID since no extra request for members is required. With this property, RadiantOne does not return members in the group entries for queries containing one level or sub tree scope. The members are only returned for group queries using base scope. On base searches, the members are returned with their UserPrincipalName in the DN.
 
 >[!warning] If you set memberoid=true as described in the previous section, that value overrides the ignoremember=true setting. It is not recommended to use both ignoremember=true and memberoid=true. <br> 
 If you do not want group members returned at all, no matter the search scope, edit the graphapi.dvx file in the Main Control Panel > Context Builder tab > View Designer sub-tab and remove the member attribute on the Attributes tab, for the objectid content node below object=groups.**
@@ -559,9 +559,9 @@ owners: users=b7c684a9-c5c0-4dee-aead-21eae98dd86a,object=users,dv=graphapi,o=cl
 <br>`description: The group has access to Salesforce`
 <br>`mailenabled: false`
 
-#### Working with Multiple Azure AD Tenants
+#### Working with Multiple Entra ID Tenants
 
-To work with multiple Azure AD tenants, you can clone the default graphapi or mgraph custom data source and change the properties to point to the tenant.
+To work with multiple Entra ID tenants, you can clone the default graphapi or mgraph custom data source and change the properties to point to the tenant.
 
 1.	From the Main Control Panel > Settings tab > Server Backend > Custom Data Sources, select graphapi and click **Clone**.
 
@@ -573,7 +573,7 @@ To work with multiple Azure AD tenants, you can clone the default graphapi or mg
 
 5.	Enter the properties needed to connect to the applicable tenant. The properties were described in the [previous section](#configure-radiantone-custom-data-source).
 
-### Azure AD Schema
+### Entra ID Schema
 
 A schema file contains the metadata leveraged by RadiantOne to create virtual views of a data source. The default graphapi custom data source is associated with a schema file named graphapi.orx. The default mgraph custom data source is associated with a schema file named mgraph.orx. These files can be opened and modified in the Schema Manager sub-tab on the Main Control Panel > Context Builder tab. For details on this tool, see the [RadiantOne Context Builder Guide](/context-builder-guide/introduction.md).
 
@@ -585,11 +585,11 @@ Any attributes that you want clients to use in a search filter, or insert/update
 
 Figure 30: Graphapi Schema File
 
->[!note] If you are using Azure AD B2C, use the graphapib2c.orx file instead of the graphapi.orx file.
+>[!note] If you are using Entra ID B2C, use the graphapib2c.orx file instead of the graphapi.orx file.
 
 #### Working with Extension Attributes
 
-To work with extension attributes in Azure objects, add the attribute name to the applicable object in the schema file (graphapi.orx or mgraph.orx based on the Azure AD API you are using). For example, if the extension attribute in Azure AD was: extension_0fe2bf0f259e4b2b8eee56ec9365117c_skypeId add an attribute named “extension_0fe2bf0f259e4b2b8eee56ec9365117c_skypeId” that has a virtual name/alias of “skypeId” to the object. Notice that the extension attribute name is comprised of your application ID. If you don’t know the application ID, you can go to https://graphexplorer.azurewebsites.net. Click the login link at the top-right corner, and sign in using the credentials for an administrator account in your organization’s directory. After you have signed in, click the URL in the resource text box (next to the GET button) and select the URL that ends in applications/ then click GET or click the enter key. Find the desired application entry from the results, and then copy its appId value, such as the following: "appId": "41ebd369-484d-4088-bab5-c9077f9e13a7" 
+To work with extension attributes in Azure objects, add the attribute name to the applicable object in the schema file (graphapi.orx or mgraph.orx based on the Entra ID API you are using). For example, if the extension attribute in Entra ID was: extension_0fe2bf0f259e4b2b8eee56ec9365117c_skypeId add an attribute named “extension_0fe2bf0f259e4b2b8eee56ec9365117c_skypeId” that has a virtual name/alias of “skypeId” to the object. Notice that the extension attribute name is comprised of your application ID. If you don’t know the application ID, you can go to https://graphexplorer.azurewebsites.net. Click the login link at the top-right corner, and sign in using the credentials for an administrator account in your organization’s directory. After you have signed in, click the URL in the resource text box (next to the GET button) and select the URL that ends in applications/ then click GET or click the enter key. Find the desired application entry from the results, and then copy its appId value, such as the following: "appId": "41ebd369-484d-4088-bab5-c9077f9e13a7" 
 
 ![An image showing ](Media/Image8.31.jpg)
 
@@ -609,19 +609,19 @@ Once you have the appId, follow the steps below.
 
 4.	Click **Save**.
 
->[!warning] The case used in Azure AD to create the extension attribute must match the case used when adding the extension attribute to the schema. In the example above, the “I” in skypeId is in uppercase. Therefore, when adding the extension attribute to the graphapi schema, make sure to follow this case-sensitive syntax.
+>[!warning] The case used in Entra ID to create the extension attribute must match the case used when adding the extension attribute to the schema. In the example above, the “I” in skypeId is in uppercase. Therefore, when adding the extension attribute to the graphapi schema, make sure to follow this case-sensitive syntax.
 
-### Azure AD Virtual View
+### Entra ID Virtual View
 
 The default graphapi custom data source is associated with a virtual view file named graphapi.dvx. The default mgraph custom data source is associated with a virtual view file named mgraph.dvx. These files can be opened and modified in the Main Control Panel > Context Builder tab > View Designer sub-tab. 
 
->[!note] If you are using Azure AD B2C, use the graphapib2c.dvx file instead of the graphapi.dvx or mgraph.dvx files.
+>[!note] If you are using Entra ID B2C, use the graphapib2c.dvx file instead of the graphapi.dvx or mgraph.dvx files.
 
 ![An image showing ](Media/Image8.33.jpg)
 
 Figure 8.33: Mgraph Virtual View
 
-If you’ve modified the graphapi.orx or mgraph.orx schema files to support extension attributes or if you want to limit the Azure AD attributes returned in the virtual view, you can modify the graphapi.dvx/mgraph.dvx files accordingly. 
+If you’ve modified the graphapi.orx or mgraph.orx schema files to support extension attributes or if you want to limit the Entra ID attributes returned in the virtual view, you can modify the graphapi.dvx/mgraph.dvx files accordingly. 
 
 1.	On Main Control Panel > Context Builder tab > View Designer sub-tab, choose File > Open > View. 
 
@@ -658,11 +658,11 @@ You can set this option to one of the following values: `all`, `dn`, `displaynam
 
 #### Virtualizing Surname/SN Attribute
 
-The Azure AD schema uses the attribute “surname” to store a user’s last name. The RadiantOne default LDAP schema includes the following attribute type definition for “sn”:
+The Entra ID schema uses the attribute “surname” to store a user’s last name. The RadiantOne default LDAP schema includes the following attribute type definition for “sn”:
 
 `attributeTypes: ( 2.5.4.4 NAME ( 'sn' 'surName' ) DESC 'Standard LDAP attribute type' SUP name SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'RFC 2256' )`
 
-This schema definition can cause problems if clients issue searches or updates for the Azure AD view using a filter of (surname=<last_name>) because RadiantOne automatically translates this into a filter of (sn=<last_name>) when it queries Azure AD. Since the attribute in Azure AD is “surname” and not “sn”, the expected entry is not returned. To avoid this, you can either configure a mapping in the virtual view to map surname to sn, or edit the RadiantOne FID schema and remove the surname mapping from the sn attribute. 
+This schema definition can cause problems if clients issue searches or updates for the Entra ID view using a filter of (surname=<last_name>) because RadiantOne automatically translates this into a filter of (sn=<last_name>) when it queries Entra ID. Since the attribute in Entra ID is “surname” and not “sn”, the expected entry is not returned. To avoid this, you can either configure a mapping in the virtual view to map surname to sn, or edit the RadiantOne FID schema and remove the surname mapping from the sn attribute. 
 
 >[!note] An alias of “streetaddress” is defined for the street attribute, and can run into the same issues. Either remove the alias from the RadiantOne FID schema, or remap properly in the virtual view using the same process outlined for the surname attribute below.
 
@@ -1275,4 +1275,5 @@ To virtualize AWS cognito users and groups:
 ![An image showing ](Media/Image8.62.jpg)
  
 Figure 8.62: Sample Virtual View of AWS Cognito Users and Groups
+
 
