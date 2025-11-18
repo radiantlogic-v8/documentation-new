@@ -326,26 +326,24 @@ Use this command to perform a circular reference check on a DVX file. A DVX file
 **Command Arguments:**
 
 `-a,--output-all <output-all>`  
-<br>Specify whether to include dvx files that have no circular reference in the output (true/false). If a value is not specified or is set to `false`, only dvx files with circular references will be included in the output.
+ Specify whether to include dvx files that have no circular reference in the output (true/false). If a value is not specified or is set to `false`, only dvx files with circular references will be included in the output. <br>
 
 `-f,--dvx-file <dvx-file>`  
-<br>The name of the DVX file (without its extension), located under `${rli_home}/vds_server/vds/vds_server/dvx`, to check for circular reference.
+The name of the DVX file (without its extension), located under `${rli_home}/vds_server/vds/vds_server/dvx`, to check for circular reference.<br>
 
 `-instance <instance>`  
-<br>The name of the VDS instance. If not specified, the default vds instance is used.
+ The name of the VDS instance. If not specified, the default vds instance is used.<br>
 
 `-p,--print-vdx-graph <print-vdx-graph>`  
-<br>Specify whether to output the dvx graph to the console (true/false). If a value is not specified or is set to `false`, the graph will not be printed to the console.
+Specify whether to output the dvx graph to the console (true/false). If a value is not specified or is set to `false`, the graph will not be printed to the console.<br>
 
 **Example**
 
 Check if any of the dvx files under the dvx directory contain a circular reference:
 
-**Windows**
-`vdsconfig.bat check-dvx-circular-reference`
+* **Windows**: `vdsconfig.bat check-dvx-circular-reference`
 
-**Linux**
-`vdsconfig.shcheck-dvx-circular-reference`
+* **Linux**: `vdsconfig.shcheck-dvx-circular-reference`
 
 **Output (when there are no circular refences):** 
 
@@ -378,4 +376,5 @@ In this example, the file bad.dvx contains a circular reference.
 ```
  
  
+
 
