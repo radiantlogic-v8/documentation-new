@@ -641,13 +641,13 @@ To create a new virtual view, load the graphapi.orx or mgraph.orx schema file in
 
 #### Returning MemberOf for Users 
 
-Users have a **memberOf** attribute which is the back link to the group entry to which they are related.  The value of the memberOf attribute is comprised of the Group entry's GUID. The default mgraph.dvx virtual view also returns a *memberOfDisplayName* and *memberofLink** attributes. The **memberofDisplayName** attribute contains the display name attribute of the group entry. Clients can use this value for a more friendly display of the groups the user is associated with.
+Users have a **memberOf** attribute which is the back link to the group entry to which they are related.  The value of the memberOf attribute is comprised of the Group entry's GUID. The default mgraph.dvx virtual view also returns a **memberOfDisplayName** and **memberofLink** attributes. The **memberofDisplayName** attribute contains the display name attribute of the group entry. Clients can use this value for a more friendly display of the groups the user is associated with.
 
 ![memberOfDisplayName](Media/mgraph-linked-attr.jpg)
 
 You can specify which memberOf attributes are returned by configuring the `link.display.memberOf` property in the data source UI.
 
-![image of Data source config UI](Media/mgraph-linked-attrs.jpg "image of data source config UI")
+![image of Data source config UI](Media/mgraph-linked-attrs.png "image of data source config UI")
 
 You can set this option to one of the following values: `all`, `dn`, `displayname`, or `link`.
 
@@ -1275,6 +1275,7 @@ To virtualize AWS cognito users and groups:
 ![An image showing ](Media/Image8.62.jpg)
  
 Figure 8.62: Sample Virtual View of AWS Cognito Users and Groups
+
 
 
 
