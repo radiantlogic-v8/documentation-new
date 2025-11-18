@@ -10,21 +10,11 @@ These release notes contain important information about improvements and bug fix
 These release notes contain the following sections:
 
 * [Supported Platforms](#supported-platforms)
-* [Security Vulnerability Fixes](#security-vulnerability-fixes)
-* [Critical Bug Fixes](#critical-bug-fixes)
+* [Improvements](#improvements)
 * [Bug Fixes](#bug-fixes)
 * [Known Issues/Important Notes](#known-issuesimportant-notes)
 * [Patch Installers](#patch-installers)
 * [How to Report Problems and Provide Feedback](#how-to-report-problems-and-provide-feedback)
-
-## Improvements
-
-- [IV4-40]: Improved logs during cache initialization related to non-existent dvx files.
-- [IV4-293, SQ-763]: Added an improvement to the scimclient2 template to extract the schema from Zoom backends. Add two properties to the scimclient2 custom data source: "notflattencomplexattributes : true" and "useBaseSearchOnList : true"
-- [IV4-316, SQ-739]: Added an option to determine if the "Bind requires password" will allow anonymous bind or not. Customers can choose which behavior to enforce.
-- [IV4-373, SQ-819]: Added a new command to the vdsconfig command line utility to check if a circular reference exists in dvx files.
-- [IV4-374, SQ-901]: Improvements to simplify aspects of license key checking.
-- [IV4-388]: Added support for OpenJDK 8u472.
 
 ## Supported Platforms
 
@@ -40,6 +30,16 @@ RadiantOne is supported on the following 64-bit platforms:
 -   Oracle Enterprise Linux 7/8/9
 
 For specific hardware requirements of each, read the [system requirements](../system-requirements/v74-system-requirements/) guide. 
+
+
+## Improvements
+
+- [IV4-40]: Improved logs during cache initialization related to non-existent dvx files.
+- [IV4-293, SQ-763]: Added an improvement to the scimclient2 template to extract the schema from Zoom backends. Add two properties to the scimclient2 custom data source: "notflattencomplexattributes : true" and "useBaseSearchOnList : true"
+- [IV4-316, SQ-739]: Added an option to determine if the "Bind requires password" will allow anonymous bind or not. Customers can choose which behavior to enforce.
+- [IV4-373, SQ-819]: Added a new command to the vdsconfig command line utility to check if a circular reference exists in dvx files.
+- [IV4-374, SQ-901]: Improvements to simplify aspects of license key checking.
+- [IV4-388]: Added support for OpenJDK 8u472.
 
 ## Bug Fixes
 
