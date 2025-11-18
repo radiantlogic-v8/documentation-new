@@ -337,14 +337,14 @@ Use this command to perform a circular reference check on a DVX file. A DVX file
 `-p,--print-vdx-graph <print-vdx-graph>`  
 <br>Specify whether to output the dvx graph to the console (true/false). If a value is not specified or is set to `false`, the graph will not be printed to the console.
 
-### Example
+**Example**
 
 Check if any of the dvx files under the dvx directory contain a circular reference:
 
-### Windows
+**Windows**
 `vdsconfig.bat check-dvx-circular-reference`
 
-### Linux
+**Linux**
 `vdsconfig.shcheck-dvx-circular-reference`
 
 **Output (when there are no circular refences):** 
@@ -378,3 +378,4 @@ In this example, the file bad.dvx contains a circular reference.
 ```
  
  
+
