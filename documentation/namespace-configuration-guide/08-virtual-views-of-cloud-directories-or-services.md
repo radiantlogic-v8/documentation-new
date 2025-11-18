@@ -26,7 +26,7 @@ SharePoint Online in Office 365	| Edit sharepointonline Custom Data Source to vi
 
 To connect to a new cloud service and create a virtual view, see the RadiantOne Context Builder Guide section on Custom Data Sources. 
 
-More details about virtualizing [Salesforce](#salesforce), [Entra ID](#azure-active-directory), [Google Directory](#google-directory), [Okta Universal Directory](#okta-universal-directory), [SailPoint IdentityIQ](#sailpoint-iiq) and [PingOne Directory](#pingone-directory) by leveraging the sample default custom data sources can be found in this chapter.
+More details about virtualizing [Salesforce](#salesforce), [Entra ID](#entra-id), [Google Directory](#google-directory), [Okta Universal Directory](#okta-universal-directory), [SailPoint IdentityIQ](#sailpoint-iiq) and [PingOne Directory](#pingone-directory) by leveraging the sample default custom data sources can be found in this chapter.
 
 ### Operations Supported
 
@@ -271,7 +271,7 @@ You should consult your Salesforce documentation for steps on how to acquire a s
 
 5.	Select the Reset My Security Token option. Clicking the Reset Security Token button sends an email (to the email address associated with your Salesforce account) containing a new security token. Record this token string as you need to use this as part of the password when configuring the RadiantOne database data source that points to your Salesforce instance.
  
-## Azure Active Directory
+## Entra ID
 
 ### Create Entra ID Application
 
@@ -1275,5 +1275,6 @@ To virtualize AWS cognito users and groups:
 ![An image showing ](Media/Image8.62.jpg)
  
 Figure 8.62: Sample Virtual View of AWS Cognito Users and Groups
+
 
 
