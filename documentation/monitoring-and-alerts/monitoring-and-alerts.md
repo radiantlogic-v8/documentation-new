@@ -21,7 +21,7 @@ Once logged into the Classic Control Panel, click the *Server Control Panel* lin
 
 ## Monitoring in Environment Operations Center
 
->[!warn] - Only SaaS deployments have access to Environment Operations Center. Self-managed deployments of RadiantOne do not.
+>[!note] Only SaaS deployments have access to Environment Operations Center. Self-managed deployments of RadiantOne do not.
 
 In Environment Operations Center, navigate to the Monitoring section and select the environment, application, dashboard, RadiantOne node to monitor and time range.
 
@@ -31,7 +31,6 @@ For more details, see [Monitoring and Reporting](/../../eoc/latest/monitoring/mo
 
 ## Monitoring in Classic Control Panel
 
-The key services to monitor are RadiantOne and ZooKeeper. 
 
 ### Expert Mode
 
@@ -232,4 +231,5 @@ The most important log to monitor for ZooKeeper is zookeeper.log. This log file 
 For SaaS deployments, alerts can be managed from the Environment Operations Center. For details on configuring notification channel integrations for alerts, see: [Alerts](/../../eoc/latest/admin/integrations/manage-integrations/)
 
 There are also default standard alerts that can be managed from the Classic Control Panel > Settings > Monitoring > Standard Alerts. These alerts are also supported for Self-managed deployments. For details see: [Alerts Configured in Classic Control Panel](./alerts.md)
+
 
