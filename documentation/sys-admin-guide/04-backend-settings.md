@@ -499,6 +499,16 @@ To virtualize a SCIM backend:
 
 Custom properties are optional. To add new properties, in the Advanced Edit window, click **Add**. To delete a property, select the property and click Delete. To edit a property, select the property and click **Edit**. Click **Save** after making any changes. 
 
+**Example**: 
+
+For certain data sources(such as Zoom SCIM V2), adding the following custom properties helps ensure the data is interpreted and searchable correctly:
+
+* `notflattencomplexattributes` property with a value of `true`
+This keeps complex SCIM attributes (such as nested objects) in their original structured form instead of flattening them. For instance, Zoom’s SCIM responses include nested data, and keeping that structure prevents data loss and ensures correct attribute mapping.
+
+* `useBaseSearchOnList` property with a value of `true`
+This setting ensures lists (such as phone numbers included in Zoom SCIM data) are processed consistently and returned in search results as expected.
+
 >[!warning] Certain SCIM-accessible backends can require more properties than others. If you are unsure about the properties required for your SCIM service, contact support@radiantlogic.com for guidance.
 
 The Namespace Configuration Guide describes the properties necessary for common SCIM services offered by SailPoint and PingOne Directory. 
@@ -764,3 +774,4 @@ After the first phase, RadiantOne prepares the LDIF file to initialize the cache
 ![An image showing ](Media/Image3.80.jpg)
 
 Figure 20: Persistent Cache Initialization Location
+
