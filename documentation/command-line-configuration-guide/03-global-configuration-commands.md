@@ -282,7 +282,7 @@ View the details and status of the license currently applied to the cluster.
 
 #### Inspect a License File
 
-Shows the details and validity of the license contained in the specified file.
+View the details and validity of the license contained in the specified file.
 
 **Linux/Unix:**
 `./vdsconfig.sh license-inspect -f /path/to/license/file`
@@ -293,13 +293,14 @@ Shows the details and validity of the license contained in the specified file.
 
 #### Update License
 
-Updates the cluster with the license from the specified file. The update fails if the license is invalid.
+Update a cluster node with the license from the specified file. The update fails if the license is invalid.
 
 **Linux/Unix:**
 `./vdsconfig.sh license-update -f /path/to/license/file`
 
 **Windows:**
 `vdsconfig.bat license-update -f C:\path\to\license\file`
+
 
 
 
