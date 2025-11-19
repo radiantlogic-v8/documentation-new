@@ -635,6 +635,7 @@ For limited use cases where the only type of modify operations that client appli
 
 ### Actions
 
-In the actions section, you can [Convert Cache to a RadiantOne Directory](#Converting-a-Persistent-Cache-to-a-RadiantOne-Directory-Store).
+In the actions section, you can [Convert the Cache to a RadiantOne Directory](#Converting-a-Persistent-Cache-to-a-RadiantOne-Directory-Store).
+
 
 
