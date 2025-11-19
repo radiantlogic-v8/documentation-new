@@ -262,5 +262,44 @@ If you want to generate access logs in CSV format with column headers, run the s
 
 `vdsconfig set-property -name accessLogCsvAddColNames -value true`
 
+### License Management
+
+You can manage and review RadiantOne license information using the Control Panel, but the same actions can also be performed through the command-line tools in `<RLI_HOME>/bin/vdsconfig`. The commands below allow you to view the current cluster license, inspect any license file, and update the cluster license.
+
+### License Management
+
+You can manage and review RadiantOne license information using the Control Panel, but the same actions can also be performed through the command-line tools in `<RLI_HOME>/bin/vdsconfig`. The commands below allow you to view the current cluster license, inspect any license file, and update the cluster license on both Linux/Unix and Windows.
+
+#### View Current License Details
+
+View the details and status of the license currently applied to the cluster.
+
+**Linux/Unix:**
+`./vdsconfig.sh license-view`
+
+**Windows:**
+`vdsconfig.bat license-view`
+
+#### Inspect a License File
+
+Shows the details and validity of the license contained in the specified file.
+
+**Linux/Unix:**
+`./vdsconfig.sh license-inspect -f /path/to/license/file`
+
+**Windows:**
+`vdsconfig.bat license-inspect -f C:\path\to\license\file`
+
+
+#### Update License
+
+Updates the cluster with the license from the specified file. The update fails if the license is invalid.
+
+**Linux/Unix:**
+`./vdsconfig.sh license-update -f /path/to/license/file`
+
+**Windows:**
+`vdsconfig.bat license-update -f C:\path\to\license\file`
+
 
 
