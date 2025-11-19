@@ -633,5 +633,8 @@ For limited use cases where the only type of modify operations that client appli
 >[!warning] 
 >This is an advanced setting, consult with a Radiant Logic Solution Architect to get assistance on the needed architecture and usage.
 
+### Actions
+
+In the actions section, you can [Convert Cache to a RadiantOne Directory](#Converting-a-Persistent-Cache-to-a-RadiantOne-Directory-Store).
 
 
