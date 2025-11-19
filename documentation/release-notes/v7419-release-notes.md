@@ -38,7 +38,6 @@ For specific hardware requirements of each, read the [system requirements](../sy
 - [IV4-293, SQ-763]: Added an improvement to the scimclient2 template to extract the schema from Zoom backends. Add two properties to the scimclient2 custom data source: "notflattencomplexattributes : true" and "useBaseSearchOnList : true"
 - [IV4-316, SQ-739]: Added an option to determine if the "Bind requires password" will allow anonymous bind or not. Customers can choose which behavior to enforce.
 - [IV4-373, SQ-819]: Added a new command to the vdsconfig command line utility to check if a circular reference exists in dvx files.
-- [IV4-374, SQ-901]: Improvements to simplify aspects of license key checking.
 - [IV4-388]: Added support for OpenJDK 8u472.
 
 ## Bug Fixes
@@ -55,6 +54,8 @@ For specific hardware requirements of each, read the [system requirements](../sy
 - [IV4-345, SQ-979]: Fixed an issue where members of the Directory Administrators group could not generate a new server LDAP schema.
 - [IV4-346, SQ-819]: Fixed an issue where recursive links in naming contexts would break the control panel and naming context tree.
 - [IV4-351, SQ-882]: Fixed an issue where the ADAP bulk operations endpoint did not always return a proper JSON structure even in the event of an unexpected exception.
+- [IV4-374, SQ-901]: Fixed license validation errors related to the maximum number of nodes and sub-clusters by improving the license key checking logic.
+
 
 ## Known Issues/Important Notes
 
