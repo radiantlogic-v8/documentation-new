@@ -55,11 +55,17 @@ In a cluster, one node is updated at a time while the other node(s) maintain the
 
 1. Follow the steps above to update other production sites/clusters.
 
-## Updating License Keys
+## Updating License Keys 
+
+In version v7.4.18 and prior versions of Identity Data Management, updating a license required manually editing the license.lic file on each node and restarting every node in the cluster. The steps varied depending on whether you used single-node keys or a shared cluster key. 
+
+Starting in v7.4.19, the process is simplified. The sections below describe how to update the license key depending on your Identity Data Management Version. 
+
+###  In Versions Before v7.4.19
 
 To update license keys or replace expired licenses, it is important to understand the type of license keys you currently have deployed and what type of new license keys you received from Radiant Logic. If you received license keys for each node/server, each RadiantOne node in a cluster must have its own unique license key. If you received a license key that is valid for a cluster, each node in a given/same cluster can share the same key value. Check with your Radiant Logic Account Representative if you are unsure what kind of license key you received.
 
-### Replacing Single Node License Keys with New Single Node License Keys
+#### Replacing Single Node License Keys with New Single Node License Keys
 
 This scenario assumes you currently have a RadiantOne cluster deployed, each node in the cluster has its own unique license key, and you want to replace the single node license keys with new single node license keys. The following are the replacement steps whether the license key has expired or not.
 
@@ -68,7 +74,7 @@ This scenario assumes you currently have a RadiantOne cluster deployed, each nod
 2. Restart the RadiantOne service on the node. The new license key value gets registered in ZooKeeper once the service is restarted. Confirm that the RadiantOne service has restarted before continuing to step 3.
 3. Repeat steps 1-2 on each RadiantOne cluster node. Keep in mind that each cluster node should have its own unique key value.
 
-### Replacing Cluster License Keys with New Cluster License Keys
+#### Replacing Cluster License Keys with New Cluster License Keys
 
 This scenario assumes you currently have a RadiantOne cluster deployed with one cluster license for all nodes in the cluster. The following are the replacement steps whether the license key has expired or not.
 
@@ -79,7 +85,7 @@ This scenario assumes you currently have a RadiantOne cluster deployed with one 
 
 1. Repeat steps 1-2 on each RadiantOne cluster node. Use the same cluster license value for all RadiantOne nodes.
 
-### Replacing Single Node License Keys with New Cluster License Key
+#### Replacing Single Node License Keys with New Cluster License Key
 
 This scenario assumes you currently have a RadiantOne cluster deployed, each node in the cluster has its own unique license key, and you want to replace the single node license keys with a cluster license key. The following are the replacement steps whether the license key has expired or not.
 
@@ -89,3 +95,9 @@ This scenario assumes you currently have a RadiantOne cluster deployed, each nod
     >[!warning] If you are running RadiantOne v7.4.8(+), all cluster nodes update their local license file automatically with the updated license file on the first cluster node that is updated (and restarted). Therefore, you can skip step 3 below.
 
 1.  Repeat steps 1-2 on each RadiantOne cluster node. Use the same cluster license value for all RadiantOne nodes.
+
+###  In Versions Starting v7.4.19
+
+Starting Identity Data Management version 7.4.19, you can update the license key by running `vdsconfig.sh license-update {path-to-license-file}` in your cluster. This command updates the license stored in ZooKeeper. After the update is successful, Identity Data Management uses the new license. Unlike in previous versions, you no longer need to update the license file on each node in a cluster.
+
+To verify the details of the current license file, run `vdsconfig.sh license-view`. To view the details of a specific license file,  run `./vdsconfig.sh license-inspect -f /path/to/license/file`.
