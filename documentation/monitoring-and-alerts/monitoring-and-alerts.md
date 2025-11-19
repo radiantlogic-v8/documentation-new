@@ -105,7 +105,7 @@ From the Synchronization tab, you can stop the synchronization flows with **Stop
 
 Click **Configure** next to a pipeline to access the queue monitoring, alert settings, and logs associated with the synchronization. In the Queue section, you can view the number of messages processed, the current queue size, and some processing statistics (rate per sec and peak processing times). You can also manage messages that failed to be applied by either deleting them or manually resending them.
 
-![Queue Monitoring](Media/queue-monitoring.jpg)
+![Queue Monitoring](Media/failedmessages.jpg)
 
 ### Persistent Cache Refresh (PCache Monitoring tab)
 
@@ -231,5 +231,6 @@ The most important log to monitor for ZooKeeper is zookeeper.log. This log file 
 For SaaS deployments, alerts can be managed from the Environment Operations Center. For details on configuring notification channel integrations for alerts, see: [Alerts](/../../eoc/latest/admin/integrations/manage-integrations/)
 
 There are also default standard alerts that can be managed from the Classic Control Panel > Settings > Monitoring > Standard Alerts. These alerts are also supported for Self-managed deployments. For details see: [Alerts Configured in Classic Control Panel](./alerts.md)
+
 
 
