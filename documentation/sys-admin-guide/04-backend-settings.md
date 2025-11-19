@@ -495,7 +495,7 @@ To virtualize a SCIM backend:
 
 >[!note] If you plan on virtualizing a RadiantOne Universal Directory backend, and are going to use the SCIM connector for detecting changes (for sync or persistent cache refreshes), the modifyTimestamp attribute must be removed from the Non-indexed Attributes property, and added to the Indexed Attributes and Sorted Attributes properties for the store. Rebuild the index for the store after modifying these properties. Also, the VLV/Sort control must be enabled on the RadiantOne service. This can be enabled from the Main Control Panel (associated with the RadiantOne backend) > Settings > Server Front End > Supported Controls.
 
-##### Custom Properties
+#### Custom Properties
 
 Custom properties are optional. To add new properties, in the Advanced Edit window, click **Add**. To delete a property, select the property and click Delete. To edit a property, select the property and click **Edit**. Click **Save** after making any changes. 
 
@@ -774,4 +774,5 @@ After the first phase, RadiantOne prepares the LDIF file to initialize the cache
 ![An image showing ](Media/Image3.80.jpg)
 
 Figure 20: Persistent Cache Initialization Location
+
 
