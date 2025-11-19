@@ -141,7 +141,7 @@ messages processed, the current queue size, and some processing statistics (rate
 peak processing times). You can also manage messages that failed to be applied by either
 deleting them or manually resending them.
 
-![An image showing ](Media/Image1.37.jpg)
+![Failed Messages](Media/failed-messages.jpg)
 
 Figure 1. 37 : Queue Monitoring – Resending Failed Messages
 
@@ -1289,3 +1289,4 @@ connection pool.
 
 #ldapsearch -h host -p 2389 -D "cn=directory manager" -w "password" -b
 “action=clearjdbcpool" (objectclass=*)
+
