@@ -18,11 +18,14 @@ These release notes contain the following sections:
 For specific hardware requirements of each, read the [system requirements](../system-requirements/v74-system-requirements/) guide. 
 
 ## Security Vulnerability Fixes
-- [API-3743-3745, SQ-1043]: Addressed the following vulnerabilities: <br> CVE-2020-11979, CVE-2022-41853, CVE-2024-47554, CVE-2025-41248, CVE-2025-41249, CVE-2025-48989, CVE-2025-55163, CVE-2025-55754, CVE-2025-58056, CVE-2025-58057, CVE-2025-58187, CVE-2025-58188, CVE-2025-59250, CVE-2025-61723, and CVE-2025-61725.
+- [API-3743-3745, SQ-1043]: Addressed the following vulnerabilities. <br>
+  - CVE-2020-11979, CVE-2022-41853, CVE-2024-47554, CVE-2025-41248, CVE-2025-41249, CVE-2025-48989
+  - CVE-2025-55163, CVE-2025-55754, CVE-2025-58056, CVE-2025-58057, CVE-2025-58187, CVE-2025-58188
+  - CVE-2025-59250, CVE-2025-61723, and CVE-2025-61725.
 
 ## Known Issues / Important Notes
 
-### Notice for v8.2.2 regarding HSQLDB and Microsoft SQL Server Data Sources
+**Important update regarding HSQLDB and Microsoft SQL Server Data Sources in v8.2.2**
 
 In version **v8.2.1**, two important vulnerabilities were identified in  `hsqldb-1.8.0.10.jar` and `mssql-jdbc-7.2.2.jre8.jar`.
 
