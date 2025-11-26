@@ -18,7 +18,7 @@ These release notes contain the following sections:
 For specific hardware requirements of each, read the [system requirements](../system-requirements/v74-system-requirements/) guide. 
 
 ## Security Vulnerability Fixes
-- [API-3743-3745, SQ-1043]: Addressed the following vulnerabilities. <br>
+- [API-3743-3745, SQ-1043]: Resolved several vulnerabilities found in the open-source dependencies used in Identity Data Management. The higher-severity CVEs are listed below: <br>
   - CVE-2020-11979, CVE-2022-41853, CVE-2024-47554, CVE-2025-41248, CVE-2025-41249, CVE-2025-48989
   - CVE-2025-55163, CVE-2025-55754, CVE-2025-58056, CVE-2025-58057, CVE-2025-58187, CVE-2025-58188
   - CVE-2025-59250, CVE-2025-61723, and CVE-2025-61725.
