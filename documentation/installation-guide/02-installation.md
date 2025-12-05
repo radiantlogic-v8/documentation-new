@@ -13,9 +13,11 @@ For details on installing RadiantOne in a production environment, start with the
 
 ## Installer Files
 
-The installer files are available on the Radiant Logic support site. Contact support@radiantlogic.com for access information.
+RadiantOne can be installed via a web-based GUI wizard, or through a silent (non-GUI) installer. 
 
-RadiantOne can be installed via a web-based GUI wizard, or through a silent (non-GUI) installer. The installer files are described below in the table below.
+To access the installation files for version 7.4 and earlier, log in [here](https://files.radiantlogic.com/receive/?packageCode=IX0qTSRyilShjhpxusLWpUDzzb4rduq2tO9F81NhEt4#keycode=Niad1bODfyRmdW8PlGO-5In0mdRKsa0u6551qXXI1rA) using the email address associated with your Radiant Logic Support Portal account. If you do not yet have access, email support@radiantlogic.com.
+
+The installer files are described below in the table below.
 
 >[!warning]
 >For versions prior to v7.4.8, RadiantOne generates a random master key by default to use for encrypting information in configuration files. If you prefer to use Password-based encryption (PBE) to generate the key, you must use a silent install and indicate vds.security.pbe.enabled=true in the \vds\install\install.properties file before using [Instance Manager](#silent-mode-installs) to install RadiantOne. Starting in v7.4.8, PBE is used by default during install.
@@ -368,6 +370,7 @@ When installation is complete, the command prompt displays the message “Instal
 
 >[!warning]
 >values in the properties file, including passwords, are stored in clear. After installation, install-sample.properties should be deleted.
+
 
 
 
