@@ -56,8 +56,7 @@ The high-level flow is shown below.
 
 ![An image showing ](Media/Image3.23.jpg)
 
-
-Detailed steps:
+Detailed steps: 
 
 1.	The RadiantOne Admin navigates his browser to the RadiantOne Control Panel and clicks “Login with Corporate SSO”.
 
@@ -75,9 +74,17 @@ Detailed steps:
 
 8.	Control Panel uses the information in the token along with the *Claims to User DN Mapping rules* to locate the user in the RadiantOne namespace to enforce permissions based on what delegated admin role the user is a member of – which dictates what the admin is allowed to do within the Control Panel.
 
-To enable support for OIDC authentication:
+#### Redirect URI
 
-1.	Have your client ID and secret (optional unless you are using Authorization Code Flow) associated with the Control Panel application configured in your OIDC server ready. The Redirect URL configured for the web application should point to the URL associated with the Control Panel. Example: https://rlqa-svc.dev01.radiantlogic.io/callback
+To use OIDC authentication, you need a Redirect URI (also called a callback URL). This is where your Identity Provider sends users after they log in. Identity Data Management automatically provides this Redirect URI, and it’s always based on your deployment’s base URL.
+
+**Format**: `<base-url>/callback`
+
+For example, if your Control Panel is at https://rlqa-svc.dev01.radiantlogic.io, your Redirect URI will be https://rlqa-svc.dev01.radiantlogic.io/callback. You must register this Redirect URI in your external Identity Provider (such as Okta, Microsoft Entra ID, Auth0, or Keycloak). If it isn’t registered, OIDC login won’t work.
+
+To enable support for OIDC authentication, follow these steps:
+
+1.	Have your client ID and secret (optional unless you are using Authorization Code Flow) associated with the Control Panel application configured in your OIDC server ready. Ensure that the Redirect URL configured with the external Identity Provider follows the format described in the section above. 
 
 2.	Log into the Control Panel.
 
@@ -699,6 +706,7 @@ The following settings must be managed from the RadiantOne Classic Control Panel
 -	File Manager: Classic Control Panel > Settings > Configuration > File Manager <br> See [File Manager](#file-manager) for details. The admin that accesses Classic Control Panel must be assigned to a role that impersonates a role (e.g. Directory Administrators and FileManagerAdmin) that has file-manager-read and/or file-manager-write vdPrivilege to read (file-manager-read) and/or read and manage (file-manager-write) files from File Manager. By default only the Directory Administrators and FileManagerAdmin roles have these privileges in Classic Control Panel. 
 -	Identity Data Analysis Wizard: Classic Control Panel > Wizards > Identity Data Analysis. See [Identity Data Analysis](../configuration/identity-views/identity-data-analysis) for details.
 -	Global Identity Builder: Classic Control Panel > Wizards > Global Identity Builder. See [Global Identity Builder](../configuration/global-identity-builder/introduction) for details.
+
 
 
 
