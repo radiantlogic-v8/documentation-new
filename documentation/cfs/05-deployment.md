@@ -111,7 +111,7 @@ After applying the configuration, verify the headers are present:
 
 > CFS implements OpenID Connect session management, which requires the /Home/OAuthCheckSession endpoint to be embeddable in iframes by relying parties. Setting X-Frame-Options: DENY globally will break this functionality.
 
-### Recommendations:
+#### Recommendations
 
 * Use X-Frame-Options: SAMEORIGIN if all relying parties are on the same domain.
 * Use Content-Security-Policy: frame-ancestors 'self' https://trusted-rp.com to allow specific trusted origins.
@@ -164,6 +164,7 @@ To upgrade to a newer version of CFS:
 -   [Install the new version of CFS](02-getting-started#installing-cfs-master)
 
 >[!note] If upgrading **to 3.16.0**, be sure .NET Framework 4.8 is [installed](02-getting-started#other-microsoft-requirements) before performing the above steps.
+
 
 
 
