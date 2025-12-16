@@ -48,9 +48,7 @@ First, we have to make sure we have a valid certificate to use in IIS Manager be
 Security scans may report vulnerabilities if certain HTTP security headers are missing from your CFS or RTC server responses. These headers help protect your environment from attacks such as cross-site scripting, clickjacking, and MIME-type sniffing.
 Missing HTTP security headers (such as `X-Content-Type-Options`, `Strict-Transport-Security`, `X-Frame-Options`, and `X-XSS-Protection`) can leave your system vulnerable to a range of attacks. Security best practices and compliance requirements recommend setting these headers.
 
-## Remediation Steps
-
-You can configure the required headers using one of the following methods:
+You can configure required headers using one of the following methods:
 
 ### Option 1: IIS Manager
 
@@ -164,6 +162,7 @@ To upgrade to a newer version of CFS:
 -   [Install the new version of CFS](02-getting-started#installing-cfs-master)
 
 >[!note] If upgrading **to 3.16.0**, be sure .NET Framework 4.8 is [installed](02-getting-started#other-microsoft-requirements) before performing the above steps.
+
 
 
 
