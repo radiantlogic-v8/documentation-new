@@ -43,6 +43,81 @@ First, we have to make sure we have a valid certificate to use in IIS Manager be
 -   Click OK to close the Edit Site Binding box.
 -   Click Close to validate the Site Bindings box.
 
+## Configure HTTP Security Headers
+
+Security scans may report vulnerabilities if certain HTTP security headers are missing from your CFS or RTC server responses. These headers help protect your environment from attacks such as cross-site scripting, clickjacking, and MIME-type sniffing.
+Missing HTTP security headers (such as `X-Content-Type-Options`, `Strict-Transport-Security`, `X-Frame-Options`, and `X-XSS-Protection`) can leave your system vulnerable to a range of attacks. Security best practices and compliance requirements recommend setting these headers.
+
+## Remediation Steps
+
+You can configure the required headers using one of the following methods:
+
+### Option 1: IIS Manager
+
+1. Open **IIS Manager**.
+2. Select your **CFS website** (or the server node to apply globally).
+3. Double-click **HTTP Response Headers**.
+4. In the Actions pane, click **Add...**.
+5. Add each of the following headers:
+
+   | Name                       | Value                                              |
+   |----------------------------|----------------------------------------------------|
+   | X-Content-Type-Options     | nosniff                                            |
+   | Strict-Transport-Security  | max-age=31536000; includeSubDomains                |
+   | X-Frame-Options            | SAMEORIGIN                                         |
+   | X-XSS-Protection           | 1; mode=block                                      |
+
+### Option 2: Web.config 
+
+If your IIS server hosts multiple websites, use this method to avoid impacting other sites.
+
+1. Edit the `web.config` file for your CFS website.
+2. Add the following under the `<system.webServer>` section:
+
+   ```xml
+   <system.webServer>
+     <httpProtocol>
+       <customHeaders>
+         <add name="X-Content-Type-Options" value="nosniff" />
+         <add name="Strict-Transport-Security" value="max-age=31536000; includeSubDomains" />
+         <add name="X-Frame-Options" value="SAMEORIGIN" />
+         <add name="X-XSS-Protection" value="1; mode=block" />
+       </customHeaders>
+     </httpProtocol>
+   </system.webServer>
+   ```
+
+### Option 3: PowerShell Automation for Multiple Servers
+
+Run the following commands as Administrator, replacing `"CFS Web Site"` with your actual site name if different:
+
+```powershell
+$sitePath = "IIS:\Sites\CFS Web Site"
+Add-WebConfigurationProperty -PSPath $sitePath -Filter "system.webServer/httpProtocol/customHeaders" -Name "." -Value @{name="X-Content-Type-Options"; value="nosniff"}
+Add-WebConfigurationProperty -PSPath $sitePath -Filter "system.webServer/httpProtocol/customHeaders" -Name "." -Value @{name="Strict-Transport-Security"; value="max-age=31536000; includeSubDomains"}
+Add-WebConfigurationProperty -PSPath $sitePath -Filter "system.webServer/httpProtocol/customHeaders" -Name "." -Value @{name="X-Frame-Options"; value="SAMEORIGIN"}
+Add-WebConfigurationProperty -PSPath $sitePath -Filter "system.webServer/httpProtocol/customHeaders" -Name "." -Value @{name="X-XSS-Protection"; value="1; mode=block"}
+```
+
+### Verification
+
+After applying the configuration, verify the headers are present:
+
+1. Using curl: `curl -lkL --verbose https://your-cfs-server.com`
+2. Or, in your browser:
+  * Open Developer Tools (F12).
+  * Go to the Network tab.
+  * Select any request and check the Headers section.
+
+> CFS implements OpenID Connect session management, which requires the /Home/OAuthCheckSession endpoint to be embeddable in iframes by relying parties. Setting X-Frame-Options: DENY globally will break this functionality.
+
+### Recommendations:
+
+* Use X-Frame-Options: SAMEORIGIN if all relying parties are on the same domain.
+* Use Content-Security-Policy: frame-ancestors 'self' https://trusted-rp.com to allow specific trusted origins.
+* Omit X-Frame-Options if external OIDC clients need to use session management.
+
+
 ## High Availability
 
 ### General Information
@@ -89,3 +164,6 @@ To upgrade to a newer version of CFS:
 -   [Install the new version of CFS](02-getting-started#installing-cfs-master)
 
 >[!note] If upgrading **to 3.16.0**, be sure .NET Framework 4.8 is [installed](02-getting-started#other-microsoft-requirements) before performing the above steps.
+
+
+
