@@ -469,7 +469,7 @@ The Global Settings section is where client access protocols (LDAP, SCIM, REST) 
 
 [Manage the SCIM interface](../web-services-api-guide/rest) from Classic Control Panel.
 
-[Manage the REST interface](../web-services-api-guide/rest) from Classic Control Panel.
+[Manage the REST interface](../web-services-api-guide/rest) from Control Panel > Global Settings > Client Protocols > REST.
 
 *Client Certificates* - Manage client certificates from the Control Panel > Global Settings > [Client Certificates](/documentation/configuration/global-settings/client-certificates).
 
@@ -693,7 +693,6 @@ The following settings must be managed from the RadiantOne Classic Control Panel
 -	Synchronization: Classic Control Panel > Synchronization tab <br> See [Synchronization](/documentation/configuration/synchronization/synchronization-concepts) for details. 
 -	Password Policies​: Classic Control Panel > Settings > Security > Password Policies <br> See [Password Policies](/documentation/configuration/security/password-policies) for details. 
 -	SCIM config (frontend): ​Classic Control Panel > Settings > Server Front End  > SCIM <br> See [SCIM](../web-services-api-guide/scim) for details. 
--	REST config (frontend)​: Classic Control Panel > Settings > Server Front End > Other Protocols <br> See [REST](../web-services-api-guide/rest) for details. 
 -	External Token Validators​: Classic Control Panel > Settings > Security > External Token Validators <br> See [External Token Validators](../configuration/security/external-token-validators) for details.
 -	Limits​: Classic Control Panel > Settings > Limits <br> See [Limits](../tuning/tuning-limits) for details. 
 -	Attribute Handling​: Classic Control Panel > Settings > Server Front End > Attributes Handling <br> See [General Attribute Handling](../tuning/attribute-handling/#attributes-handling) for details.
@@ -706,6 +705,7 @@ The following settings must be managed from the RadiantOne Classic Control Panel
 -	File Manager: Classic Control Panel > Settings > Configuration > File Manager <br> See [File Manager](#file-manager) for details. The admin that accesses Classic Control Panel must be assigned to a role that impersonates a role (e.g. Directory Administrators and FileManagerAdmin) that has file-manager-read and/or file-manager-write vdPrivilege to read (file-manager-read) and/or read and manage (file-manager-write) files from File Manager. By default only the Directory Administrators and FileManagerAdmin roles have these privileges in Classic Control Panel. 
 -	Identity Data Analysis Wizard: Classic Control Panel > Wizards > Identity Data Analysis. See [Identity Data Analysis](../configuration/identity-views/identity-data-analysis) for details.
 -	Global Identity Builder: Classic Control Panel > Wizards > Global Identity Builder. See [Global Identity Builder](../configuration/global-identity-builder/introduction) for details.
+
 
 
 
