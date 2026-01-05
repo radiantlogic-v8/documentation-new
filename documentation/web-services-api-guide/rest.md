@@ -58,15 +58,15 @@ This is the number of threads the REST/ADAP interface uses for handling client r
 
 To set the maximum threads value:
 
-1.	From the Classic Control Panel, go to the Settings tab > Server Front End section > Other Protocols sub-section. 
+1.	From the Control Panel, go to Global Settings > Client Protocols > REST. 
 
-2.	On the right side, under the REST/ADAP header, enter a value in the Max Thread field. 
+2.	On the right side, enter a value in the Max Thread field. 
 
-  ![Max Thread/requests for REST Clients](Media/Image5.1.jpg)
+  ![Max Thread/requests for REST Clients](Media/adap-max-thread.jpg)
 
-3.	Click the Save button in the upper right corner. 
+3.	Click **SAVE**. 
 
-4.	Restart the RadiantOne service. 
+4.	Restart the RadiantOne service.
 
 ## Proxy Authorization
 
@@ -74,10 +74,10 @@ Authorization is enforced by the RadiantOne service based on the user who authen
 
 ![Proxy Header for Proxy Authorization](./Media/Image5.2.jpg)
 
-Ensure the proxy authorization control is enabled for the RadantOne service and access controls have been defined to indicate who is allowed to impersonate who. For more information on enabling the proxy authorization control and defining access controls, please see the RadiantOne **System** Administration Guide.
+Ensure the [proxy authorization control](../configuration/global-settings/client-protocols/#supported-controls) is enabled for the RadantOne service and [access controls](../configuration/security/access-controls) have been defined to indicate who is allowed to impersonate who. 
 
 >[!warning] 
->To allow the super user (e.g. cn=directory manager) to impersonate other users, you must enable the “Allow Directory Manager to Impersonate Other Users” option. For more information on this setting, please see the RadiantOne System Administration Guide.
+>To allow the super user (e.g. cn=directory manager) to impersonate other users, you must enable the “Allow Directory Manager to Impersonate Other Users” option in Control Panel > Manage > Security > Access Controls > GENERAL. 
 
 ## Basic Password Authentication
 
@@ -124,13 +124,13 @@ When Always Authenticate is not enabled (which is the default), connection pooli
 
 To enable the Always Authenticate option:
 
-1.	Go to the Classic Control Panel > Settings tab > Server Front End > Other Protocols section. 
+1.	Go to the Control Panel > Global Settings > Client Protocols > REST. 
 
-2.	In the REST/ADAP section (requires [Expert Mode](01-overview#expert-mode)), check the ‘Always Authenticate’ checkbox.
+2.	Toggle the ‘Always Authenticate’ option *ON*.
 
-  ![Enabling the Always Authenticate Option](./Media/Image5.6.jpg)
+  ![Enabling the Always Authenticate Option](./Media/adap-always-authenticate.jpg)
 
-3.	Click Save. 
+3.	Click **SAVE**. 
 
 4.	Restart the RadiantOne service.
 
@@ -393,13 +393,13 @@ The PageSize option indicates paging via the Paged Results Control should be pas
 
 For REST access, the paging functionality leverages a session cookie which is linked to the original LDAP connection. Since this requires the same connection/session to work properly, paging through the REST interface does not work against a RadiantOne cluster deployment because subsequent requests could be directed to a RadiantOne node that is not associated with the original session cookie. If paging is required for cluster deployments, it is recommended to use source address affinity persistence in your load balancer.
 
->[!note] To use this option, paged results must be enabled in RadiantOne. To enable paged results, go to the Classic Control Panel > Settings tab > Server Front End > Supported Controls. Check the ‘Enable paged results’ checkbox, and click Save. 
+>[!note] To use this option, paged results must be enabled in RadiantOne. This control should be enabled by default. To verify the paged results setting, go to the Control Panel > Global Settings > Client Protocols > LDAP > Support Controls. Verify that the PAGED RESULTS option is toggled *ON*. 
 
-![Enabling Paged Results](Media/Image5.23.jpg)
+![Enabling Paged Results](Media/ldap-paged-results.jpg)
  
->[!note] In multi-node clusters, an HTTP Status 302 is issued on a node that receives a paging request but did not generate the cookie related to paged results. This node redirects the request to the node that generated the cookie. No action is required. The cookie timeout can be configured in RadiantOne. To configure this timeout, go to the Classic Control Panel > Settings > Server Front End > Other Protocols (requires [Expert Mode](overview#expert-mode)). Expand the REST/ADAP section. Enter a value in the Cookie Timeout field in seconds (the default is 60). Click Save.
+>[!note] In multi-node clusters, an HTTP Status 302 is issued on a node that receives a paging request but did not generate the cookie related to paged results. This node redirects the request to the node that generated the cookie. No action is required. The cookie timeout can be configured in RadiantOne. To configure this timeout, go to the Control Panel > Global Settings > Client Protocols > REST. Enter a value in the Cookie Timeout field in seconds (the default is 60). Click Save.
 
-![Configuring Cookie Timeout](Media/Image5.24.jpg)
+![Configuring Cookie Timeout](Media/adap-cookie-timeout.jpg)
  
 
 If you try to use the PageSize option without paging enabled in RadiantOne, the REST interface ignores paging and performs a non-paged search against RadiantOne with SizeLimit equal to the PageSize parameter.
@@ -1556,4 +1556,5 @@ In this section, the sub-attributes “streetNumber” and “country” are add
 }
   </div>
 </table>
+
 
