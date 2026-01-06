@@ -183,7 +183,7 @@ To add a token validator:
 
 1.  In the Control Panel > Global Settings > Token Validators, click **CREATE TOKEN VALIDATOR**.
 
-![The New Token Validator Page](Media/externaltokenvalidatorpage.jpg)
+![The New Token Validator Page](Media/create-token-validator.jpg)
 
 1. Enter a unique name for your validator. 
 
@@ -1544,6 +1544,7 @@ In this section, the sub-attributes “streetNumber” and “country” are add
 }
   </div>
 </table>
+
 
 
 
