@@ -475,7 +475,7 @@ The Global Settings section is where client access protocols (LDAP, SCIM, REST) 
 
 *Token Validators* - External token validators allow applications to use an access token to call an API on behalf of itself. The API then responds with the requested data. For details on configuring external token validators, see: [External Token Validators](/documentation/configuration/security/external-token-validators).
 
-*Tuning* - Tuning topics include [Limits](/documentation/tuning/tuning-limits), [General Attributes Handline](/documentation/tuning/attribute-handling), [Changelog Settings](/documentation/tuning/log-settings#changelog), and [Log Settings](/documentation/tuning/log-settings).
+*Tuning* - Tuning topics include [Limits](/documentation/tuning/tuning-limits), [General Attributes Handling](/documentation/tuning/attribute-handling), [Changelog Settings](/documentation/tuning/log-settings#changelog), and [Log Settings](/documentation/tuning/log-settings).
 
 *Changelog* - The changelog is one of the recommended approaches for other processes to detect changes that have happened to RadiantOne entries. For details, please see: [Changelog](/documentation/tuning/log-settings#changelog)
 
@@ -695,7 +695,6 @@ The following settings must be managed from the RadiantOne Classic Control Panel
 -	SCIM config (frontend): ​Classic Control Panel > Settings > Server Front End  > SCIM <br> See [SCIM](../web-services-api-guide/scim) for details. 
 -	External Token Validators​: Classic Control Panel > Settings > Security > External Token Validators <br> See [External Token Validators](../configuration/security/external-token-validators) for details.
 -	Limits​: Classic Control Panel > Settings > Limits <br> See [Limits](../tuning/tuning-limits) for details. 
--	Attribute Handling​: Classic Control Panel > Settings > Server Front End > Attributes Handling <br> See [General Attribute Handling](../tuning/attribute-handling/#attributes-handling) for details.
 -	Duplicates Handling​: Classic Control Panel > Settings > Server Front End > Duplicates Handling See [Duplicates Handling](../tuning/attribute-handling/#duplicate-entry-handling) for details.
 -	Changelog Settings​: Classic Control Panel > Settings > Logs > Changelog <br> See [Changelog](../tuning/log-settings/#changelog) for details.
 -	Log Settings​: Classic Control Panel > Settings > Logs > Log Settings <br> See [Log Settings](../tuning/log-settings) for details. 
@@ -705,6 +704,7 @@ The following settings must be managed from the RadiantOne Classic Control Panel
 -	File Manager: Classic Control Panel > Settings > Configuration > File Manager <br> See [File Manager](#file-manager) for details. The admin that accesses Classic Control Panel must be assigned to a role that impersonates a role (e.g. Directory Administrators and FileManagerAdmin) that has file-manager-read and/or file-manager-write vdPrivilege to read (file-manager-read) and/or read and manage (file-manager-write) files from File Manager. By default only the Directory Administrators and FileManagerAdmin roles have these privileges in Classic Control Panel. 
 -	Identity Data Analysis Wizard: Classic Control Panel > Wizards > Identity Data Analysis. See [Identity Data Analysis](../configuration/identity-views/identity-data-analysis) for details.
 -	Global Identity Builder: Classic Control Panel > Wizards > Global Identity Builder. See [Global Identity Builder](../configuration/global-identity-builder/introduction) for details.
+
 
 
 
