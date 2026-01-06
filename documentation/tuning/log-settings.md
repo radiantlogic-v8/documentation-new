@@ -95,7 +95,9 @@ If the source file is authentic, the above command returns “Verified OK”. If
 
 The changelog is one of the recommended approaches for other processes to detect changes that have happened to RadiantOne entries. The [Persistent Search control](/configuration/global-settings/client-protocols#supported-controls) is the other method that can be used.
 
-The Changelog can be enabled from the Classic Control Panel > Settings Tab > Logs section > Changelog sub-section. If enabled, the change log stores all modifications made to any entry in the RadiantOne namespace including entries that are stored in persistent cache. The contents of the change log can be viewed below the cn=changelog suffix in the directory.This suffix is indicated in the RadiantOne rootDSE changelog attribute. The rootDSE also contains the firstchangenumber and lastchangenumber attributes. This information can be used by clients as a cursor to track changes. Access the rootDSE by querying the RadiantOne service with an empty/blank Base DN.
+The Changelog settings can be enabled from the Control Panel > Global Settings > Tuning > CHANGELOG tab. If enabled, the changelog stores all modifications made to any entry in the RadiantOne namespace including entries that are stored in persistent cache. The contents of the changelog can be viewed below the cn=changelog suffix in the directory. This suffix is indicated in the RadiantOne rootDSE changelog attribute. The rootDSE also contains the firstchangenumber and lastchangenumber attributes. This information can be used by clients as a cursor to track changes. Access the rootDSE by querying the RadiantOne service with an empty/blank Base DN.
+
+![Changelog Settings](Media/changelog.jpg)
 
 Each entry in the changelog is comprised of the following attributes:
 
@@ -113,7 +115,7 @@ For more details on these operational attributes, see [Operational Attributes](/
 
 ### Disabling Changelog for Certain Naming Contexts 
 
-Changes to entries in certain naming contexts representing certain RadiantOne Directory stores or persistent cache, are not applicable to logging into change log (e.g. cn=replicationjournal, cn=config…etc.). Other naming contexts that represent backend directories (proxy views to these directories) might not require changelog either. Therefore, these naming contexts can have this function disabled. The list of disabled naming contexts is configured from the Changelog sub-section. Uncheck the Changelog box to disable the naming context.
+Changes to entries in certain naming contexts representing certain RadiantOne Directory stores or persistent cache, are not applicable to logging into change log (e.g. cn=replicationjournal, cn=config…etc.). Other naming contexts that represent backend directories (proxy views to these directories) might not require changelog either. Therefore, these naming contexts can have this function disabled. The list of disabled naming contexts is configured from the table shown at the bottom of the CHANGELOG tab. Uncheck the Changelog box to disable the naming context.
 
 >[!warning] 
 >In most cases, this setting should not be touched. Only naming contexts representing RadiantOne Directory stores, persistent cache, or proxy views are shown in the list. Disabling changelog for certain naming contexts should only be done when advised by Radiant Logic.
@@ -124,7 +126,7 @@ When entries are changed, the change log reports the attributes under its "chang
 
 To exclude attributes in changelog searches:
 
-1.	In the New Control Panel, navigate to Manage > Directory Browser. 
+1.	In the Control Panel, navigate to Manage > Directory Browser. 
 
 2.	Expand cn=config and ou=groups. 
 
@@ -144,21 +146,20 @@ When a member of the group searches the changelog, the specified attributes are 
 
 ### Changelog and Replication Journal Max Age
 
-For the RadiantOne service to maintain efficiency and performance (as well as save disk space), you should set a maximum age for changelog entries. The maximum age parameter specifies the number of days an entry stays in storage for the following event stores.
+For the RadiantOne service to maintain efficiency and performance (as well as save disk space), you should set a maximum age for changelog entries. The "Changelog and Replication Journal Max Age" property can be set in Control Panel > Global Settings > Tuning > CHANGELOG tab and specifies the number of days an entry stays in storage for the following event stores. The default value is 3 days which means records are automatically deleted after 3 days.
+
 -	cn=changelog
 -	cn=cacherefreshlog
 -	cn=replicationjournal
 
   >[!note] 
-  >Maximum age also applies to the vdsSyncHist attribute maintained at the level of entries involved in inter-cluster replication. This attribute is multi-valued and continues to grow until the RadiantOne service scans the values and removes ones that are older than the maximum age. RadiantOne scans the values only when the entry is modified. For entries that aren’t updated often, vdsSyncHist will potentially contain values that are older than the maximum age.**
+  >Maximum age also applies to the vdsSyncHist attribute maintained at the level of entries involved in inter-cluster replication. This attribute is multi-valued and continues to grow until the RadiantOne service scans the values and removes ones that are older than the maximum age. RadiantOne scans the values only when the entry is modified. For entries that aren’t updated often, vdsSyncHist will potentially contain values that are older than the maximum age.
 -	cn=localjournal
 -	cn=tombstone
 -	stores below cn=queue 
 -	stores below cn=dlqueue
 
 Records older than the maximum age are deleted automatically. Old change log numbers (from deleted records) do not get re-used.
-
-This parameter is set in the Classic Control Panel > Settings Tab > Logs section > Changelog sub-section. The default value is 3 days which means records are automatically deleted after 3 days.
 
 ### Replication Journal Read Timeout
 
@@ -180,7 +181,7 @@ The default is 0 (no timeout) meaning that the RadiantOne service waits forever 
 
 ### Persistent Cache Refresh Log Level
 
-Activity performed against a persistent cache is logged below a branch in the RadiantOne namespace named cn=cacherefreshlog. This log is always enabled and the level can be set to all, status, or just errors. The level is set on the Classic Control Panel > Settings Tab > Logs section > Changelog sub-section, Persistent Cache Refresh Log Level parameter.
+Activity performed against a persistent cache is logged below a branch in the RadiantOne namespace named cn=cacherefreshlog. This log is always enabled and the level can be set to all, status, or just errors. The level is set on the Control Panel > Global Settings > Tuning > CHANGELOG tab, "Persistent Cache Refresh Log Level" property.
 
 If *all* log level is selected, the cn=cacherefreshlog branch contains all requests (successful or not) to refresh the persistent cache. This includes information about the exact changes (what information changed). The attribute named ‘changes’ contains the attribute level changes. The format is compatible with the changelog format.
 
