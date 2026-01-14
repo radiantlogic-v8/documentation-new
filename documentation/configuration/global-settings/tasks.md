@@ -60,7 +60,7 @@ To manually start a task, click the *Start Task* button inline with the task.
 
 In addition to the built-in tasks, you can create and configure custom tasks to support specialized operations.
 
-Custom tasks allow you to upload Java classes and create scheduled or ad-hoc task instances that execute custom logic in your Radiant Logic deployment. Task output is typically written to files in the vds_server/custom directory.
+Custom tasks allow you to upload Java classes and create scheduled or ad-hoc task instances that execute custom logic in your Radiant Logic deployment. 
 
 ### Uploading and Running a Custom Task
 
@@ -97,5 +97,6 @@ To upload and run a custom task, follow these steps:
 9. Review the configuration details and click Save.
 
 The task will run according to the schedule you specified.
+
 
 
