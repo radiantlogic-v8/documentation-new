@@ -133,7 +133,7 @@ With Token Validators, administrators can configure and manage trusted external 
   
   4.	Restart the RadiantOne service from the Environment Operations Center. In Environment Operations Center, navigate to Environments > <Environment_Name> > Overview tab and restart the Identity Data Management service from here. This performs a rolling restart and all nodes are restarted.
   
-    ![Editing the Token Timeout value](Media/token-timeout.jpg)
+   ![Editing the Token Timeout value](Media/token-timeout.jpg)
    
   
   When an expired or unrecognized token is used, the Response section displays the message “Authentication failed: Unknown token”.
@@ -141,3 +141,4 @@ With Token Validators, administrators can configure and manage trusted external 
   ![Error Related to Unrecognized or Expired Token](Media/unsuccessful-query.jpg)
    
   
+
