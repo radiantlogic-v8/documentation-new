@@ -55,3 +55,48 @@ Click **SAVE** before closing out of the task configuration screen to save the c
 ### Running Tasks
 
 To manually start a task, click the *Start Task* button inline with the task.
+
+## Custom Tasks
+
+In addition to the built-in tasks, you can create and configure custom tasks to support specialized operations.
+
+Custom tasks allow you to upload Java classes and create scheduled or ad-hoc task instances that execute custom logic in your Radiant Logic deployment. 
+
+### Uploading and Running a Custom Task
+
+To upload and run a custom task, follow these steps:
+
+1. Navigate to the Tasks page and click Upload Custom Java Class.
+
+  ![Upload button](../Media/custom-java.png "Upload button")
+
+2. Select your Java class file and click Upload.  
+   - If you upload a class with the same name as an existing one, the existing class will be replaced.
+
+3. After the upload, you may see a warning indicating that services must be restarted for the new class to take effect.  
+   - Restart your Identity Data Management instance via the Environment Operations Center before proceeding.
+
+     ![EOC restart UI](../Media/custom-java.png "EOC restart UI]")
+
+4. Click Create Task Instance. In the form that appears, complete all required fields.
+
+  ![Create task button](../Media/create-task.png "Create task button")
+
+5. Ensure the Java Class Name matches the name of the class you uploaded.
+
+6. Configure the task schedule to define when and how often the task should run.  
+   - If no schedule is defined, the task runs as a one-time operation.
+
+7. In the Arguments field, provide any parameters expected by the readArguments method in your Java class.
+
+8. Under Advanced Settings, you can enable or disable additional task options as needed:
+   - Run on Error: Runs the task even if it previously failed.
+   - Delete after completion: Deletes the task after it finishes running.
+   - New JVM: Runs the task in a separate JVM. You can specify JVM parameters, such as memory settings (for example, -Xms1024m -Xmx1024m).
+
+9. Review the configuration details and click Save.
+
+The task will run according to the schedule you specified.
+
+
+
