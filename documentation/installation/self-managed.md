@@ -21,9 +21,8 @@ The table below shows the mapping between the Identity Data Management applicati
 | 8.1.5                                                                                    | 1.1.5                                |
 | 8.2.0                                                                                    | 1.2.0                                |
 | 8.2.1                                                                                    | 1.2.1                                |
-
-
-
+| 8.2.2                                                                                    | 1.2.2                                |
+| 8.3.0                                                                                    | 1.3.0                                |
 
 
 
@@ -352,6 +351,7 @@ The steps listed here are meant to help you identify and troubleshoot issues rel
      ```
 
      You should see that the previously deleted namespace is not listed. 
+
 
 
 
