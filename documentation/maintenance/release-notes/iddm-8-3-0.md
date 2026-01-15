@@ -96,11 +96,13 @@ For known issues reported after the release, please see the Radiant Logic Knowle
 
 https://support.radiantlogic.com/hc/en-us/categories/4412501931540-Known-Issues
 
-- The following error is sometimes seen in the vds_server.log after a migration import: ERROR org.apache.curator.framework.imps.CuratorFrameworkImpl:703 - Background exception was not retry-able or retry gave up
-java.lang.NullPointerException: null. This error is harmless and can safely be ignored. 
+- The following error is sometimes seen in the vds_server.log after a migration import: <br>
+  `ERROR org.apache.curator.framework.imps.CuratorFrameworkImpl:703 - Background exception was not retry-able or retry gave up
+   java.lang.NullPointerException: null.` This error is harmless and can safely be ignored. 
 
 ## How to Report Problems and Provide Feedback
 
 Feedback and problems can be reported from the Support Center/Knowledge Base accessible from: https://support.radiantlogic.com
+
 
 If you do not have a user ID and password to access the site, please contact: support@radiantlogic.com
