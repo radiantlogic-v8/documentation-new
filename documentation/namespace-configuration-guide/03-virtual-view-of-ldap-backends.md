@@ -246,7 +246,7 @@ Figure 7: Paged Results Control for an LDAP Backend
 
 For LDAP proxy (type) of views, all LDAP controls that RadiantOne receives from clients during LDAP modify, modifyDN, add, or delete requests are forwarded to the backend LDAP directory. An example would be a client sending a modify request for a user’s password to RadiantOne along with LDAP Control 1.2.840.113556.1.4.2239. RadiantOne would send the password update to the backend directory along with the LDAP control. The backend directory is the enforcement point for the control. RadiantOne responds to the client with all information returned from the backend directory.
 
-[!warn] For virtual views (NOT proxy type), which can be comprised of many different types of backend data sources, LDAP controls are not fowarded to backend servers. The RadiantOne service attempts to process the control directly.
+[!warning] For virtual views (NOT proxy type), which can be comprised of many different types of backend data sources, LDAP controls are not fowarded to backend servers. The RadiantOne service attempts to process the control directly.
 
 #### Pre-Read Attributes
 
@@ -732,5 +732,6 @@ This attribute can be used in computed attributes by using the getactualDN() fun
 ![An image showing ](Media/Image3.32.jpg)
 
 Figure 32: Using ActualDN in a Computed Attribute
+
 
 
