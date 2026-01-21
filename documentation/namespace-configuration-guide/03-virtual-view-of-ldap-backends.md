@@ -228,12 +228,11 @@ If user “cn=joe,dc=partners,dc=airius,dc=com,dc=server2,ou=global,o=vds” suc
 
 ### LDAP Controls
 
-A control is additional information that can be included in an LDAP request or response. RadiantOne can play the role of both an LDAP server and an LDAP client to other backend directories. To understand controls supported by RadiantOne as an LDAP server, see the [RadiantOne System Administration Guide](/sys-admin-guide/03-front-end-settings)
-. RadiantOne’s handling of LDAP controls as a client to a backend directory is described in this section.
+A control is additional information that can be included in an LDAP request or response. RadiantOne can play the role of both an LDAP server and an LDAP client to other backend directories. To understand controls supported by RadiantOne as an LDAP server, see the [RadiantOne System Administration Guide](/sys-admin-guide/03-front-end-settings). RadiantOne’s handling of LDAP controls as a client to a backend directory is described in this section.
 
 #### VLV/Sort
 
-If a client searches and passes the VLV control against a branch that is associated with an LDAP directory backend (not a persistent cache or a Universal Directory store), RadiantOne forwards the search request along with the included control to the backend LDAP server. In this case, it is the responsibility of the backend LDAP server to implement the VLV control. RadiantOne returns any controls received from the LDAP backend to the client.
+If a client searches and passes the VLV control against a branch that is associated with an LDAP directory proxy type of backend (not a persistent cache or a Universal Directory store), RadiantOne forwards the search request along with the included control to the backend LDAP server. In this case, it is the responsibility of the backend LDAP server to implement the VLV control. RadiantOne returns any controls received from the LDAP backend to the client.
 
 #### Paged Results
 
@@ -245,7 +244,9 @@ Figure 7: Paged Results Control for an LDAP Backend
 
 #### Controls Passed from Client Requests
 
-All LDAP controls that RadiantOne receives from clients during LDAP modify, modifyDN, add, or delete requests are forwarded to the backend LDAP directory. An example would be a client sending a modify request for a user’s password to RadiantOne along with LDAP Control 1.2.840.113556.1.4.2239. RadiantOne would send the password update to the backend directory along with the LDAP control. The backend directory is the enforcement point for the control. RadiantOne responds to the client with all information returned from the backend directory.
+For LDAP proxy (type) of views, all LDAP controls that RadiantOne receives from clients during LDAP modify, modifyDN, add, or delete requests are forwarded to the backend LDAP directory. An example would be a client sending a modify request for a user’s password to RadiantOne along with LDAP Control 1.2.840.113556.1.4.2239. RadiantOne would send the password update to the backend directory along with the LDAP control. The backend directory is the enforcement point for the control. RadiantOne responds to the client with all information returned from the backend directory.
+
+[!warn] For virtual views (NOT proxy type), which can be comprised of many different types of backend data sources, LDAP controls are not fowarded to backend servers. The RadiantOne service attempts to process the control directly.
 
 #### Pre-Read Attributes
 
@@ -731,4 +732,5 @@ This attribute can be used in computed attributes by using the getactualDN() fun
 ![An image showing ](Media/Image3.32.jpg)
 
 Figure 32: Using ActualDN in a Computed Attribute
+
 
