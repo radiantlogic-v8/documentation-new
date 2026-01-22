@@ -239,7 +239,7 @@ Federal Information Processing Standards (FIPS) are issued by the National Insti
 FIPS 140-3 lists the security requirements for cryptographic operations, and the purpose is to establish a baseline standard of how well the confidentiality and integrity of the information protected is. Data encrypted to the standards within FIPS 140-3 is considered to be protected against attacks. Many federal government agencies require that any Personally Identifiable Information (PII) that is classified as sensitive be secured by FIPS 140-3 certified algorithms. The Cryptographic Module Validation Program (CMVP) validates cryptographic modules to FIPS 140-3 and other cryptography based standards. 
 
 RadiantOne includes a FIPS-certified cryptographic module. The certification can be referenced here: 
-https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/4912
+[Certificate 5127](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/5127)
 
 Securing data-in-transit addresses communication between clients and the RadiantOne service as depicted in the diagram below and is addressed by SSL/TLS. Securing data-at-rest addresses how attributes (e.g. user passwords and other sensitive attributes) are encrypted when stored in the RadiantOne Directory stores. These two layers are highlighted in the diagram below and both leverage the FIPS-certified Radiant Logic Cryptographic Module for Java.
 
@@ -453,3 +453,4 @@ To disable FIPS mode on each node:
     `C:\radiantone\vds\bin>vdsconfig.bat set-property -name fipsMode -value false `
 
 5.	Restart RadiantOne processes. If deployed in a cluster, restart them on each node.
+
