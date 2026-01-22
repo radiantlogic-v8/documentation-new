@@ -693,17 +693,14 @@ The following settings must be managed from the RadiantOne Classic Control Panel
 -	Synchronization: Classic Control Panel > Synchronization tab <br> See [Synchronization](/documentation/configuration/synchronization/synchronization-concepts) for details. 
 -	Password Policies​: Classic Control Panel > Settings > Security > Password Policies <br> See [Password Policies](/documentation/configuration/security/password-policies) for details. 
 -	SCIM config (frontend): ​Classic Control Panel > Settings > Server Front End  > SCIM <br> See [SCIM](../web-services-api-guide/scim) for details. 
--	External Token Validators​: Classic Control Panel > Settings > Security > External Token Validators <br> See [External Token Validators](../configuration/security/external-token-validators) for details.
--	Limits​: Classic Control Panel > Settings > Limits <br> See [Limits](../tuning/tuning-limits) for details. 
 -	Duplicates Handling​: Classic Control Panel > Settings > Server Front End > Duplicates Handling See [Duplicates Handling](../tuning/attribute-handling/#duplicate-entry-handling) for details.
--	Changelog Settings​: Classic Control Panel > Settings > Logs > Changelog <br> See [Changelog](../tuning/log-settings/#changelog) for details.
--	Log Settings​: Classic Control Panel > Settings > Logs > Log Settings <br> See [Log Settings](../tuning/log-settings) for details. 
 -	Control Panel customizations (lock, color theme, session timeout, max users, banner, custom message on login screen)​: ​Classic Control Panel > Settings > Server Front End > Administration <br> See [Customizing the Classic Control Panel](#customizing-the-classic-control-panel) for details.
 -	PCache Refresh Monitoring: Classic Control Panel > PCache Monitoring tab <br> See [Persistent Cache Refresh Monitoring](../monitoring-and-alerts/monitoring-and-alerts/#persistent-cache-refresh-pcache-monitoring-tab) for details.
 -	Intercluster Replication Monitoring: Classic Control Panel > Replication Monitoring tab <br> See [Replication Monitoring](../monitoring-and-alerts/monitoring-and-alerts/#replication-monitoring-tab) for details.
 -	File Manager: Classic Control Panel > Settings > Configuration > File Manager <br> See [File Manager](#file-manager) for details. The admin that accesses Classic Control Panel must be assigned to a role that impersonates a role (e.g. Directory Administrators and FileManagerAdmin) that has file-manager-read and/or file-manager-write vdPrivilege to read (file-manager-read) and/or read and manage (file-manager-write) files from File Manager. By default only the Directory Administrators and FileManagerAdmin roles have these privileges in Classic Control Panel. 
 -	Identity Data Analysis Wizard: Classic Control Panel > Wizards > Identity Data Analysis. See [Identity Data Analysis](../configuration/identity-views/identity-data-analysis) for details.
 -	Global Identity Builder: Classic Control Panel > Wizards > Global Identity Builder. See [Global Identity Builder](../configuration/global-identity-builder/introduction) for details.
+
 
 
 
