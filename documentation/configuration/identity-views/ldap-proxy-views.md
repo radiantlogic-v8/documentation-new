@@ -270,7 +270,7 @@ If the backend LDAP directory supports the paged results control, RadiantOne can
 
 For LDAP proxy (type) views, all LDAP controls that RadiantOne receives from clients during LDAP modify, modifyDN, add, or delete requests are forwarded to the backend LDAP directory. An example would be a client sending a modify request for a user’s password to RadiantOne along with LDAP Control 1.2.840.113556.1.4.2239. RadiantOne would send the password update to the backend directory along with the LDAP control. The backend directory is the enforcement point for the control. RadiantOne responds to the client with all information returned from the backend directory.
 
-[!warning] For virtual views (NOT proxy type), which can be comprised of many different types of backend data sources, LDAP controls are not fowarded to backend servers. The RadiantOne service attempts to process the control directly.
+>[!warning] For virtual views (NOT proxy type), which can be comprised of many different types of backend data sources, LDAP controls are not fowarded to backend servers. The RadiantOne service attempts to process the control directly.
 
 
 **Pre-Read Attributes**
@@ -855,6 +855,7 @@ To extend the primary object with new attributes that don't exist, choose the Ad
 When you configure joins across multiple objects, you should also consider configuring Bind Order and Attribute Priority for overlapping attributes.
 
 For complete details on configuring joins, bind order and attribute priority, please see: [Joins](joins.md) 
+
 
 
 
