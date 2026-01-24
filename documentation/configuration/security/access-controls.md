@@ -301,7 +301,9 @@ If RadiantOne should allow anonymous access, then toggle the Allow Anonymous Acc
 
 ### Allow Anonymous Access Legacy Behavior
 
-When anonymous access is disabled, the RadiantOne LDAP service rejects simple bind requests that include a non-empty bind DN but no password, returning this error: “Password must be provided: simple bind operations are not allowed to contain a bind DN without a password.”
+When anonymous access is disabled, the RadiantOne LDAP service rejects simple bind requests that include a non-empty bind DN but no password, returning this error: <br>
+“Password must be provided: simple bind operations are not allowed to contain a bind DN without a password.”
+
 This behavior complies with RFC 4513. 
 
 To allow the RadiantOne LDAP service to process these requests as anonymous binds in accordance with RFC 2251 and to treat a bind DN with no password as an anonymous user, enable the ALLOW ANONYMOUS ACCESS LEGACY BEHAVIOR option.
@@ -324,4 +326,5 @@ If you have groups stored in a RadiantOne Directory store and want to support gr
 ## Enable RootDSE ACI
 
 If you want to remove public access to the RootDSE, check the Enable RootDSE ACI option after you delete the default global read access ACI. This denies access to the RootDSE to everyone except the super user (e.g. cn=directory manager). 
+
 
