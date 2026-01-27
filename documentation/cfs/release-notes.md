@@ -235,7 +235,26 @@ October 30, 2025
 - [VSTS 47560] Fixed a regression issue that caused RTC authentication to fail on versions 3.17.3 and above.
 - [VSTS 47561] Fixed an issue preventing RTC and CFS Master from being installed on the same system.
 - [VSTS 47562] Fixed an issue where the Disclaimer field under Login Page Customization in CFS did not save its content.
+
+### v3.17.6
+
+January 26, 2026
+
+**New Feature**
+
+- [VSTS 47563] Added granular signing configuration option for each application.
+
+**Improvements**
+
+- [VSTS 47565] Updated the Global Certificates UI to improve support for certificate rollover, including validation logic and certificate management features.
+- [VSTS 47566] Improved password reset availability after failed login to respect user attributes such as smart card or certificate authentication.
+
+**Bug fixes** 
+
+- [VSTS 47564] Fixed an issue causing a 500 error due to inconsistent scope handling between CFS Master and Proxy.
+- [VSTS 47568] Fixed an issue that prevented OIDC mapping edits in the UI.
  
+
 
 
 
