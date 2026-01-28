@@ -4,21 +4,17 @@ description: Learn about using limits to tune the Identity Data Management servi
 ---
 
 ## Overview
-The settings found in the Classic Control Panel > Settings Tab > Limits section are related to enforcing search size limits and activity quotas. These settings prevent against Denial of Service (DoS) attacks towards RadiantOne. 
 
-To switch to Classic Control Panel, use the menu options for the logged in user in the upper right.
-
-![Classic Control Panel](Media/classic-cp.jpg)
-
+Limit settings control search size limits and activity quotas, helping safeguard RadiantOne against Denial of Service (DoS) attacks. 
 
 >[!warning]
 >Changing any property in the Limits section requires a restart of the RadiantOne service to take effect. You can restart the service in your environment from Environment Operations Center.
 
 ## Global Limits
 
-The following parameters are configured from the Classic Control Panel > Settings Tab > Limits section > Global Limits sub-section.
+The following parameters are configured from the Control Panel > Global Settings> Tuning > Limits section > Global Limits sub-section.
 
-![Global Limits](Media/global-limits-classic-cp.jpg)
+![Global Limits](Media/global-limits-cp.png)
 
  
 ### Maximum Connections
@@ -61,17 +57,16 @@ The length of time (in seconds) to keep a connection open without any activity f
 
 ## Custom Limits
 
-Custom limits are more fine-grained than global limits and can be defined in the Classic Control Panel > Settings > Limits > Custom Limits section. Custom limits can be configured for the pre-defined users: “Anonymous Users”, and “Authenticated Users”. They can also be more granular and associated with users belonging to any group or located below any branch/naming context (subtree) in RadiantOne.
+Custom limits are more fine-grained than global limits and can be defined in the Control Panel > Global Settings> Tuning > Limits section > Custom Limits sub-section. Custom limits can be configured for the pre-defined users: “Anonymous Users”, and “Authenticated Users”. They can also be more granular and associated with users belonging to any group or located below any branch/naming context (subtree) in RadiantOne.
+
+![Custom Limits](Media/custom-limits.png)
+
 
 >[!note] 
 >Multiple custom limits are not allowed for anonymous users and authenticated users.
 
-Custom limits override any Global Limits defined in the Classic Control Panel > Settings tab > Limits section > Global Limits sub-section. The order of precedence (highest to lowest) for global and custom limits containing the same subject is: Group, Sub-tree, Authenticated Users, Anonymous Users, Global. For custom limits defined within the same root naming context, the limit defined for the deepest entry in the tree will take precedence. For example, if a custom size limit of 3 is defined for a subject location of ou=Novato,ou=California,dc=USA and a size limit of 5 is defined for a subject location of ou=California,dc=USA, if a user of uid=Svc1,ou=Novato,ou=California,dc=USA connects to RadiantOne, the custom size limit of 3 will be enforced.
+Custom limits override any Global Limits defined in the Control Panel > Global Settings> Tuning > Limits section > Global Limits. The order of precedence (highest to lowest) for global and custom limits containing the same subject is: Group, Sub-tree, Authenticated Users, Anonymous Users, Global. For custom limits defined within the same root naming context, the limit defined for the deepest entry in the tree will take precedence. For example, if a custom size limit of 3 is defined for a subject location of ou=Novato,ou=California,dc=USA and a size limit of 5 is defined for a subject location of ou=California,dc=USA, if a user of uid=Svc1,ou=Novato,ou=California,dc=USA connects to RadiantOne, the custom size limit of 3 will be enforced.
 
->[!note] 
->This section is accessible only in Expert Mode. Click the "Logged in user" menu and choose Expert Mode.
-
-![Expert Mode](Media/expert-mode.jpg)
 
 
 ### Granular Limits
@@ -244,5 +239,6 @@ To change the Active Directory SRV record limit:
 1. Set the Active Directory SRV Record Limit value. The default value is 5. 
 
 1. Click Save. 
+
 
 
