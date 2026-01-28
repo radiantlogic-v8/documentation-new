@@ -6,7 +6,7 @@ description: Learn about log settings for the Identity Data Management service.
 
 ## Overview
 
-RadiantOne supports logging at different levels for different components. Logs for the different components are configured in the Control Panel > Global Settings > Tuning > Logs section. RadiantOne changelog is configured in the Changelog section. 
+RadiantOne supports logging at different levels for different components. Logs for the different components are configured in the Control Panel > Global Settings > Tuning > Log Settings section. RadiantOne changelog is configured in the Changelog section. 
 
 ![Logs UI](Media/logs-ui.png "Logs UI")
 
