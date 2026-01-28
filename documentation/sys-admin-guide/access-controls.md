@@ -323,6 +323,15 @@ The checking of ACIs by RadiantOne can be enabled or disabled by using the Enabl
 
 If RadiantOne should allow anonymous access, then check the Allow Anonymous Access checkbox. If RadiantOne should not allow anonymous access, make sure this checkbox is not checked. This is the default global access permission for anonymous users and is enforced before subsequent ACI rules. In other words, even if anonymous access were allowed as a general policy, subsequent ACI rules could prevent anonymous users from accessing any data. For details on access controls that can be set, please [Security and Access Controls](#security-and-access-controls).
 
+### Allow Anonymous Access Legacy Behavior
+
+When anonymous access is disabled, the RadiantOne LDAP service rejects simple bind requests that include a non-empty bind DN but no password, returning this error:
+“Password must be provided: simple bind operations are not allowed to contain a bind DN without a password.”
+
+This behavior complies with RFC 4513.
+
+To allow the RadiantOne LDAP service to process these requests as anonymous binds in accordance with RFC 2251 and to treat a bind DN with no password as an anonymous user, enable the ALLOW ANONYMOUS ACCESS LEGACY BEHAVIOR option.
+
 ### Allow Directory Manager to Impersonate Other Users
 
 Proxy authorization allows the user that creates a connection to RadiantOne to impersonate/request access on behalf of another user. This allows authorization to be enforced for a user other than the one that creates the connection/binds to RadiantOne. By default, the RadiantOne super user (e.g. cn=directory manager) is not allowed to impersonate other users. If you want this special user to be able to impersonate other users (to enforce authorization based on other users instead of as the super user), enable the “Allow Directory Manager to Impersonate Other Users” option.  In this special scenario, access controls defining the “proxy” permission is not required. However, verify that the [Proxy Authorization Control](03-front-end-settings#proxied-authorization-control) is enabled for RadiantOne because this is the control that allows clients to request access on behalf of another user.
