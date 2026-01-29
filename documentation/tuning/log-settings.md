@@ -19,7 +19,7 @@ For each log component, you can configure settings for log level as well as choo
 
 ## Log Settings
 
-The Log Settings page provides granular, component-specific control over system logging. The displayed options vary based on the selected log component. 
+The Log Settings page provides granular, component-specific control over system logging. The displayed options vary based on the selected log component. Log levels, rollover size and number of files to keep in archive are configurable for each RadiantOne component. 
 
 The available components include:
 
@@ -45,7 +45,8 @@ The available components include:
 
 - Scheduled Tasks – Per-task logs (task.<taskID>.log) that capture execution details, status, and errors for individual jobs like LDIF import/export, cache initialization, and reindexing.  
 
-- Custom Data Source – Log category for a connectors built using the latest Connector SDK. 
+- Custom Data Source – Log category for a connectors built using the latest Connector SDK.
+
 
 
 ### Log levels
@@ -92,6 +93,30 @@ To enable this feature, follow these steps:
 10. Enter a number of minutes to indicate how long to wait before sending a subsequent alert email, in the Minimum Interval Between Emails.
 11. Click Save.
 
+### Log File Integrity Assurance
+
+The Log file integrity assurance option adds a signature file (.sig) to the contents of the compressed log file when it is archived. This signature can then be verified for authenticity.
+
+To enable log file integrity assurance, follow these steps:
+
+1. Check the Integrity Assurance box.
+
+> This appends the server.log.file.archive value with _sig. This is part of the file definition but does not impact the naming of the zip file itself.
+
+2. Click Save.
+
+3. Restart the RadiantOne Service. For SaaS deployments, this can be done from the Environment Operations Center for the environment where you have deployed RadiantOne Identity Data Management.
+
+#### Verifying the Authenticity of the Signature
+
+With this signature file and a public key, you can use a third-party utility such as openSSL to verify the signature.
+
+To verify the signature, download the server.log.file from the Server Control Panel and run the following command:
+
+```
+openssl dgst -verify <path_to_publickey_file> -keyform PEM -sha512 -signature <path_to_signature_file> -binary <path_to_source_file>
+If the source file is authentic, the above command returns “Verified OK”. If the source file has been tampered with, the above command returns “Verification Failure”.
+```
 
 ## Changelog
 
