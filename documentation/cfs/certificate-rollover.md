@@ -15,6 +15,21 @@ This guide provides simple, step-by-step instructions for implementing certifica
 * Certificate files (PFX format) or ability to generate new certificates
 * Applications must have UsesCertificateRollover enabled (see Application Setup section below)
 
+### Certificate Requirements for Rollover
+
+| Requirement         | Mandatory                  | Notes                           |
+|---------------------|----------------------------|---------------------------------|
+| Private Key         | Yes                     | Must be present and exportable   |
+| RSA Key             | Yes                     | RSA algorithm required           |
+| Key Size            | Recommended: 2048-bit      | System generates 2048-bit keys   |
+| Signature Algorithm | Recommended: SHA256WithRSA | SHA256 preferred over SHA1       |
+| DIGITAL_SIGNATURE   | Yes                     | Essential for signing operations |
+| KEY_CERT_SIGN       | Yes                     | For certificate signing          |
+| CRL_SIGN            | Recommended                | For CRL verification             |
+| KEY_ENCIPHERMENT    | Optional                   | For key encryption scenarios     |
+| NON_REPUDIATION     | Optional                   | For non-repudiation support      |
+
+
 ## Enable Certificate Rollover
 
 For enabling rollover, the recommended approach is using the Admin UI. However, there are alternative approaches. All options are documented below.
