@@ -99,7 +99,7 @@ Click the "Save" button to save your configuration.
 
 ![](media/fba-8.png)
 
-> After a failed login attempt, the availability of the password reset flow depends on the user’s attributes (for example, whether smart card or certificate authentication is enabled).
+> After a failed login attempt, the availability of the password reset flow depends on the user’s attributes (for example, whether smart card or certificate authentication is enabled). Users who are provisioned with certificate authentication will not have access to the password reset option. 
 
 Certificate Authentication
 ==========================
@@ -329,4 +329,5 @@ Look for the settings:
 
 *   For both properties, set the name of your RTC machine.
 *   Close and reopen Firefox.
+
 
