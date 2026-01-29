@@ -7,6 +7,8 @@ description: Namespace Configuration Guide
 
 Virtual views can be configured for LDAP directories and are associated with a specific root naming context. A root naming context is the very top node of a virtual directory tree and RadiantOne can respond to many different root naming contexts. This section describes how to create root naming contexts for LDAP directory backend data sources. 
 
+>[!warning] Query filters based on the memberOf attribute are only supported in LDAP Proxy Views. They are not supported in model-driven virtual views of LDAP backends.
+
 After the virtual view of the LDAP backend has been configured, a series of tabs are available for managing the configuration. To access the tabs, select the node representing the LDAP backend below Root Naming Contexts on the Main Control Panel > Directory Namespace tab.
 
 -	Proxy Backend – Used for managing general information such as, [object class mapping](#object-class-mapping), [branch exclusion](#suffix-branch-exclusion), schema enforcement and [post filtering](#post-processing-exclusion-filter).
@@ -731,6 +733,7 @@ This attribute can be used in computed attributes by using the getactualDN() fun
 ![An image showing ](Media/Image3.32.jpg)
 
 Figure 32: Using ActualDN in a Computed Attribute
+
 
 
 
