@@ -317,7 +317,7 @@ For the new Control Panel, each class of permissions matches a section in the le
 - **SECURITY**: Assign permissions to configure attribute encryption and access controls.
 - **TASKS**: Various actions (e.g. initializing a RadiantOne directory) are launched as tasks. Use this to assign permissions for admins that can manage tasks (e.g. change JVM settings, modify task schedules, delete tasks...etc.).
 - **GLOBAL SETTINGS**: Assign permissions to configuration for LDAP access (supported directory controls and user to DN mapping), and the client certificate truststore (to manage client certificates for SSL/TLS communications.
-- **ADMINISTRATION**: Assign access to user management, roles & permissions, directory manager settings, control panel configuration, access tokens and entry statistics.
+- **ADMINISTRATION**: Assign access to user management, roles & permissions, directory manager settings, control panel configuration, access tokens, audit logging settings and entry statistics.
 - **CLASSIC CONTROL PANEL**: enable or disable access to the Classic Control Panel and indicate what role (identified by group membership) should be enforced in the Classic Control Panel. This is to allow administrators the needed access to both the new and Classic Control Panels.
 
 ### Assigning Users to Roles
@@ -479,11 +479,22 @@ The Global Settings section is where client access protocols (LDAP, SCIM, REST) 
 
 *Changelog* - The changelog is one of the recommended approaches for other processes to detect changes that have happened to RadiantOne entries. For details, please see: [Changelog](/documentation/tuning/log-settings#changelog)
 
-*Log Settings* - RadiantOne supports logging at different levels for different components. Logs for the different components are configured in the Classic Control Panel > Settings > Logs section. For details, please see: [Log Settings](/documentation/tuning/log-settings)
+*Log Settings* - RadiantOne supports logging at different levels for different components. Logs for the different components are configured in the Control Panel > Global Settings > Tuning > Log Settings section. For details, please see: [Log Settings](/documentation/tuning/log-settings)
 
 ### Admin  
 
 The Admin section is used for managing admin users, delegated roles and permissions, directory manager settings, control panel configurations, access tokens and view entry statistics reports.
+
+**Access Tokens** 
+
+[Manage Access Tokens](/documentation/configuration/security/access-tokens) from here.
+
+**Audit Logging** 
+
+This section is used to manage the audit log settings and download audit logs. 
+
+![Audit Log UI](Media/auditlog.png "audit log UI")
+
 
 **User Management**
 
@@ -606,10 +617,6 @@ This parameter can be set to the DN of the Administrators group defined in the v
 
 [Manage the OIDC Provider Configuration to support SSO into Control Panel](#oidc=token) from here.
 
-**Access Tokens** 
-
-[Manage Access Tokens](/documentation/configuration/security/access-tokens) from here.
-
 **Entry Statistics**
 
 [Run Entry Statistics Reports](/documentation/reporting/reporting#entry-statistics-report) from here.
@@ -700,6 +707,7 @@ The following settings must be managed from the RadiantOne Classic Control Panel
 -	File Manager: Classic Control Panel > Settings > Configuration > File Manager <br> See [File Manager](#file-manager) for details. The admin that accesses Classic Control Panel must be assigned to a role that impersonates a role (e.g. Directory Administrators and FileManagerAdmin) that has file-manager-read and/or file-manager-write vdPrivilege to read (file-manager-read) and/or read and manage (file-manager-write) files from File Manager. By default only the Directory Administrators and FileManagerAdmin roles have these privileges in Classic Control Panel. 
 -	Identity Data Analysis Wizard: Classic Control Panel > Wizards > Identity Data Analysis. See [Identity Data Analysis](../configuration/identity-views/identity-data-analysis) for details.
 -	Global Identity Builder: Classic Control Panel > Wizards > Global Identity Builder. See [Global Identity Builder](../configuration/global-identity-builder/introduction) for details.
+
 
 
 
