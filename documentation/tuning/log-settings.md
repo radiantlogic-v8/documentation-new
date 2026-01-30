@@ -6,90 +6,117 @@ description: Learn about log settings for the Identity Data Management service.
 
 ## Overview
 
-RadiantOne supports logging at different levels for different components. Logs for the different components are configured in the Classic Control Panel > Settings > Logs section. RadiantOne access logs are configured in the Access Logs section and RadiantOne changelog is configured in the Changelog section. An introduction to these sections is below. 
+RadiantOne supports logging at different levels for different components. Logs for the different components are configured in the Control Panel > Global Settings > Tuning > Log Settings section. RadiantOne changelog is configured in the Changelog section. 
 
-To switch to Classic Control Panel from the new Control Panel, use the menu options for the logged in user in the upper right.
+![Logs UI](Media/logs-ui.png "Logs UI")
 
-![Classic Control Panel](Media/classic-cp.jpg)
+To download log files, use the Server Control Panel > Log Viewer tab. To access the Server Control Panel, click the link in the upper corner of the Classic Control Panel.
 
-To download log files, use the Server Control Panel > Log Viewer tab.
-To access the Server Control Panel, click the link in the upper corner of the Classic Control Panel.
+![Server Control Panel](Media/server-cp.jpg "Server Control Panel UI")
 
-![Server Control Panel](Media/server-cp.jpg)
+For each log component, you can configure settings for log level as well as choose whether to enable or disable SSL debug and failure notification.
+
 
 ## Log Settings
 
-Log level, rollover size and number of files to keep in archive are configurable for each RadiantOne component. On the Logs > Log Settings section, select the component from the drop-down list. The default log level is INFO. The default rollover size is 100MB and the default number of log files to keep is 10.
+The Log Settings page provides granular, component-specific control over system logging. The displayed options vary based on the selected log component. Log levels, rollover size and number of files to keep in archive are configurable for each RadiantOne component. 
 
-For RadiantOne Directory, the item in the drop-down list is VDS – Server. The default log file name is vds_server.log.
+The available components include:
 
-For the Task Scheduler, the items in the drop-down list are Scheduler – Scheduler server and Scheduler – Scheduler Tasks. The default log file name for the server is server.log. The default log file name for the tasks is `task.<taskID>.log`. 
+- RadiantOne Server Log – Core directory server log capturing LDAP requests and responses, backend commands, and server-side errors for general troubleshooting of the RadiantOne service.  
 
-For the Classic Control Panel, the items in the drop-down list are Control Panel – Server and Control Panel – Access. The default log file name for the server is web.log. The default log file name for the access information is web_access.log.
+- RadiantOne LDAP Access – Access/audit log that records who connects to RadiantOne via LDAP, what operations they perform, and the server’s results, typically in a detailed, reportable format.  
 
-For the Sync Agents used in real-time persistent cache refresh, the item in the drop-down list is Sync Agents – Agents. The default log file name is agent_fid_sd_agent_real_time.log.
+- ADAP Access – REST/ADAP access log that tracks REST calls to RadiantOne (binds, searches, CRUD operations) and related errors for the ADAP web service interface.  
+
+- SCIM – SCIM log that records SCIMv2 API activity, including POST, PUT, PATCH, and DELETE operations and internal processing for SCIM client requests.  
+
+- Persistent Cache – Periodic Refresh – Log for periodic refresh jobs that rebuild or update persistent cache content, showing refresh cycles, comparisons, and counts of added, changed, or removed entries.  
+
+- Sync Agents – Logs for Sync Agents used in real-time persistent cache refresh that show connector/agent activity, such as capturing changes and forwarding them to RadiantOne.  
+
+- Sync Engine – Sync Engine log that traces how change events are processed, transformed, and written to targets for cache refresh and synchronization flows.  
+
+- Control Panel Server – Classic Control Panel server log (web.log) that captures internal web application and server activity for the admin UI.  
+
+- Control Panel Access – Classic Control Panel access log (web_access.log) that records administrator actions such as saves and configuration changes in the UI.  
+
+- Scheduler Server – Task scheduler server log that shows how background tasks are scheduled, started, and managed by the scheduler service.  
+
+- Scheduled Tasks – Per-task logs (task.<taskID>.log) that capture execution details, status, and errors for individual jobs like LDIF import/export, cache initialization, and reindexing.  
+
+- Custom Data Source – Log category for a connectors built using the latest Connector SDK.
+
+
+
+### Log levels
+
+Multiple log levels are available for each component to control the detail level and type of information written to the logs. The available log levels are Off, Fatal, Error, Warn, Info, Debug, and Trace. Keep in mind that not all components include every log level option. Although default options are preselected, you can configure the log levels depending on your needs.
+
+* Off: Disables logging entirely for the server. No log entries are generated.
+
+* Fatal: Logs critical events that prevent the RadiantOne service from functioning correctly or responding to requests. For example, a condition where a single client consumes all available threads, preventing the service from responding to other clients.
+
+* Error: Logs error conditions encountered by RadiantOne, such as database connection failures and other runtime errors.
+
+* Warn: Logs warning conditions that may affect operation but do not stop processing, such as a client disconnecting before a response is sent. Warning logs also include error and fatal messages.
+
+* Info: Logs standard operational activity, including all access to RadiantOne, actions performed by the service, and their results. This level includes warning, error, and fatal messages and is typically used for normal operation.
+
+* Debug: Logs detailed diagnostic information about internal processing and actions taken by RadiantOne. This level is intended for troubleshooting and should be used temporarily.
+
+* Trace: Logs highly granular diagnostic information intended for intensive troubleshooting. This level is primarily used by the Radiant Logic development team and is not recommended for customer use.
+
+
+### Enable Debug SSL
+​
+The RadiantOne Server component provides an Enable Debug SSL option. This option is intended for troubleshooting SSL/TLS-related issues. 
+
+### Log Failure Notification
+
+Using this option, you can configure how Radiant Logic notifies you when Radiant One Server log related failures occur.
+
+![Notif UI](Media/notif-ui.png "Log Failure Notification Interface")
+
+
+To enable this feature, follow these steps:
+
+1. Turn on the Enable Notifications feature.
+2. Enter the SMTP Server URL.
+3. Enter the SMTP port.
+4. Enter the username to connect to the SMTP server.
+5. Enter the password associated with the username entered in step 4. Used to connect to the SMTP server.
+6. Enter the subject of the email message in the Message Subject property.
+7. Enter the body of the email message in the Message Body property.
+8. Enter the email address to send the alert to, in the Message Recipient property.
+9. Enter the email address from which the alert should be sent, in the Message Sender property.
+10. Enter a number of minutes to indicate how long to wait before sending a subsequent alert email, in the Minimum Interval Between Emails.
+11. Click Save.
 
 ### Log File Integrity Assurance
 
-The Log file integrity assurance option adds a signature file (.sig) to the contents of the compressed log file when it is archived. This signature can then be verified for authenticity. 
+The Log file integrity assurance option adds a signature file (.sig) to the contents of the compressed log file when it is archived. This signature can then be verified for authenticity.
 
-**Enabling Log File Integrity Assurance**
+To enable log file integrity assurance, follow these steps:
 
-To enable log file integrity assurance:
+1. Check the Integrity Assurance box.
 
-1. On the Classic Control Panel, navigate to the Settings tab > Logs > Log Settings.
- 
-1. Check the Integrity Assurance box (requires Expert Mode). 
+> This appends the server.log.file.archive value with _sig. This is part of the file definition but does not impact the naming of the zip file itself.
 
-    >[!note] This appends the server.log.file.archive value with **_sig**. This is part of the file definition but does not impact the naming of the zip file itself.
+2. Click Save.
 
-1. Click Save.
+3. Restart the RadiantOne Service. For SaaS deployments, this can be done from the Environment Operations Center for the environment where you have deployed RadiantOne Identity Data Management.
 
-1. Restart the RadiantOne Service. For SaaS deployments, this can be done from the Environment Operations Center for the environment where you have deployed RadiantOne Identity Data Management.
-
-**Verifying the Authenticity of the Signature**
+#### Verifying the Authenticity of the Signature
 
 With this signature file and a public key, you can use a third-party utility such as openSSL to verify the signature.
 
 To verify the signature, download the server.log.file from the Server Control Panel and run the following command:
 
-    openssl dgst -verify <path_to_publickey_file> -keyform PEM -sha512 -signature <path_to_signature_file> -binary <path_to_source_file>
-
-If the source file is authentic, the above command returns “Verified OK”. If the source file has been tampered with, the above command returns “Verification Failure”. 
-
-## Access Logs
-
-The RadiantOne access log contains details about client requests to RadiantOne and the response. This is a structured log file and the contents can be used for auditing RadiantOne activity. The output is a text file named vds_server_access.log and a .csv file named vds_server_access.csv. 
-
-The access log rolls over when it reaches 100MB in size. This size can be set in the Rollover size property. The access logs are kept for 30 days by default and then deleted. This is configurable in the “Rollover: How long to keep the logs” property.
-
-### Log File Integrity Assurance
-
-The Log file integrity assurance option adds a signature file (.sig) to the contents of the compressed log file when it rolls over. This signature can then be verified for authenticity. 
-
-**Enabling Log File Integrity Assurance**
-
-To enable log file integrity assurance:
-
-1. On the Classic Control Panel, navigate to the Settings tab > Logs > Access Logs. 
-1. Check the Integrity Assurance box (requires Expert Mode). 
-
-  >[!note] This appends the Text Rollover Destination value with **_sig**. This is part of the file definition but does not impact the naming of the zip file itself.
-
-1. Click Save.
-
-1. Restart the RadiantOne Service. For SaaS deployments, this can be done from the Environment Operations Center for the environment where you have deployed RadiantOne Identity Data Management. 
-
-**Verifying the Authenticity of the Signature**
-
-With this signature file and a public key, you can use a third-party utility such as openSSL to verify the signature.
-
-To verify the signature, download the server.log.file from the Server Control Panel and run the following command:
-
-  openssl dgst -verify <path_to_publickey_file> -keyform PEM -sha512 -signature <path_to_signature_file> -binary <path_to_source_file>
-
-If the source file is authentic, the above command returns “Verified OK”. If the source file has been tampered with, the above command returns “Verification Failure”. 
-
+```
+openssl dgst -verify <path_to_publickey_file> -keyform PEM -sha512 -signature <path_to_signature_file> -binary <path_to_source_file>
+If the source file is authentic, the above command returns “Verified OK”. If the source file has been tampered with, the above command returns “Verification Failure”.
+```
 
 ## Changelog
 
@@ -193,7 +220,7 @@ The ‘changes’ attribute is actually an LDIF representation of the change as 
 
 http://ietfreport.isoc.org/rfc/rfc2849.txt
 
-The difference between *status* level and *all* level is that all only logs entries that have **actually** changed whereas status level logs all changes coming into the persistent cache whether the actual entry has changed or not. To provide an example, say you have cached data from a materialized view in a database and are using triggers to detect changes on the database. A materialized view may be rebuilt daily, triggering many “changes” detected by the RadiantOne change capture connector. On a more simplistic level, updating an entry with the exact same value results in the connector picking up an update change. Therefore, the persistent cache connector sends a cache refresh to RadiantOne for the entry that was updated. If the cache refresh log level is set to *status*, this update is logged in the cn=cacherefreshlog. If the cache refresh log level is *all*, the existing entry in persistent cache is compared with the entry received in the message from the connector, if the entry really has changed, it is stored in the cache refresh log. If the entry did not change, then the “change” is not documented in the cacherefresh log. Because of this, the *all* log level generates LESS entries in the cn=cacherefreshlog, and documents which attribute actually changed, but is more time consuming because of the comparison required. 
+The difference between *status* level and *all* level is that all only logs entries that have actually changed whereas status level logs all changes coming into the persistent cache whether the actual entry has changed or not. To provide an example, say you have cached data from a materialized view in a database and are using triggers to detect changes on the database. A materialized view may be rebuilt daily, triggering many “changes” detected by the RadiantOne change capture connector. On a more simplistic level, updating an entry with the exact same value results in the connector picking up an update change. Therefore, the persistent cache connector sends a cache refresh to RadiantOne for the entry that was updated. If the cache refresh log level is set to *status*, this update is logged in the cn=cacherefreshlog. If the cache refresh log level is *all*, the existing entry in persistent cache is compared with the entry received in the message from the connector, if the entry really has changed, it is stored in the cache refresh log. If the entry did not change, then the “change” is not documented in the cacherefresh log. Because of this, the *all* log level generates LESS entries in the cn=cacherefreshlog, and documents which attribute actually changed, but is more time consuming because of the comparison required. 
 
 On the new Control Panel > Manage > Directory Browser, navigate to the cn=cacherefreshlog branch to view the persistent cache activity.
 
