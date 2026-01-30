@@ -30,19 +30,42 @@ This guide provides simple, step-by-step instructions for implementing certifica
 | NON_REPUDIATION     | Optional                   | For non-repudiation support      |
 
 
-## Enable Certificate Rollover
+## Certificate Rollover Management
 
 For enabling rollover, the recommended approach is using the Admin UI. However, there are alternative approaches. All options are documented below.
 
 ### Option 1: Using Admin UI (Recommended)
 
+#### Enable Certificate rollover
+
 1. Navigate to the application in the Admin UI.
 2. Look for the certificate section.
-3. Click "Enable certificate rollover" button. You should see: "Legacy Mode: This application uses a single certificate.
-   Enable certificate rollover for zero-downtime updates."
+3. Click "Enable certificate rollover" button. 
 5. Confirm the change.
 
-This will enable certificate rollover. 
+This will enable certificate rollover. Certificates are managed in the following order:
+
+- **Current** – Actively used certificate.
+- **Next** – Staged for future use.
+- **Previous** – Recently retired and temporarily retained to ensure validation continuity.
+
+#### Perform a rollover
+
+1. Upload a new certificate by clicking the "Add button" in the Certificate page. The certificate is added as **Next**.
+
+   ![](media/perform-rollover.png "certificate rollover UI")
+
+2. Ensure all service providers trust the **Next** certificate.
+3. Click **Start Rollover**.
+
+During rollover:
+- **Next** is promoted to **Current** so that the latest valid certificate is used. 
+- The former **Current** is moved to **Previous**. 
+
+After rollover is complete and you confirm that no service relies on the retired certificate, you can remove it by:
+1. Selecting the certificate under **Previous**.
+2. Clicking **Delete** to remove it.
+
 
 ### Option 2: Automatic Enablement using Powershell 
 
