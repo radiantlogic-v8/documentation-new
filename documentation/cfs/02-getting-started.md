@@ -522,7 +522,7 @@ Now you have installed and configure RadiantOne RTC, you can follow the guide.
 
 -   Configure the different [Certificates](02-gettingstarted#certificates).
 
-# Certificates
+## Certificates
 
 There are five areas where certificates are involved in the CFS architecture to handle SSL/TLS server security, token signing and verification of SSO. These areas are described below.
 
@@ -536,6 +536,14 @@ Best practices for certificates suggest that you should use a certificate for on
 -   If you are deploying CFS Proxy, the IIS server (where the CFS proxy is installed) has an SSL certificate. Also, the CFS proxy machine must trust the SSL certificates used by all the CFS sites that it is sitting in front of.
 
 >[!note] If you need to load balance multiple CFS servers, you need to have the SSL certificate on every machine plus all the certificates used by CFS must be available and trusted on every machine.
+
+Once you have configured your certificates, you can view them by navigating to **Administration > Dashboard > Certificates** page. The certificates are grouped by:
+
+- Tenant
+- Application
+- Identity Provider
+
+You can also [enable and manage certificate rollovers](./certificate-rollover.md) using the UI or command line. 
 
 ## Applications / Relying Parties
 
@@ -612,4 +620,5 @@ The RTC also needs a certificate to communicate with CFS (via a re-direct throug
     ![](media/getting-started-certificates-14.png)
 
 8. This file must be copied over to the CFS machine (you need to access it when configuring the RTC in the CFS tenant dashboard). When you configure a RTC (Active Directory option) as an Authentication System in the Tenant Administration Dashboard, you’ll need to provide a certificate for this RTC (the one you saved from the RTC metadata file). This certificate (public key) is stored in FID.
+
 
