@@ -32,7 +32,7 @@ To download logs, follow these steps:
 
 3. Select a log (for example, vds_server.log). You’ll see a Download button with a dropdown arrow with multiple download methods.
 
-	![Download logs](Media/dowloadlogs.png)
+	![Download logs](Media/downloadlogs.png)
 
 	Select any of these that apply to your usecase:
 	
@@ -647,5 +647,6 @@ If the test connection is not working but you are unsure of the error, first rev
 First, save the backend data source, then log in to Env Ops Center and navigate to details section of one of the *Secure Data Connectors* belonging to the group used for connection. If the Data source status is "Disconnected", the connection has not been correctly setup. Review the associated server name/IP and Server Port of this data source to make sure the data connector can connect to this server.
 
 If the data source connector status is "Connected", then the inlets tunnel is working and data connector is able to connect to this data source.
+
 
 
