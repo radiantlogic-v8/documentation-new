@@ -145,19 +145,19 @@ Harness your identity data with intelligent integration to drive better business
 
 <section>
 
-  > [Introduction](cfs/01-getting-started)
+  > [Introduction](cfs/01-overview)
   > Learn about key concepts and system requirements for CFS. 
 
-  > [Installation](cfs/01-getting-started)
+  > [Installation](cfs/02-getting-started)
   > Learn how to install CFS Master and create your first CFS tenant.
 
   > [Configuration](cfs/03-configuration)
   >Learn how to configure identity providers, applications, and smart links. 
 
-  > [Deployment](cfs/04-deployment)
+  > [Deployment](cfs/05-deployment)
   > Learn the best practices approaches for deploying CFS.
 
-  > [Troubleshooting](cfs/05-troubleshooting)
+  > [Troubleshooting](cfs/06-troubleshooting)
   > Learn how to use the CFS Log Analyzer.
 
   > [Release Notes](cfs/release-notes)
