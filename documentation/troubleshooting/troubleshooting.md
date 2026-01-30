@@ -22,9 +22,29 @@ To switch to Classic Control Panel, use the menu options for the logged in user 
 
 ![Classic Control Panel](Media/classic-cp.jpg)
 
-Once logged into the Classic Control Panel, click ![Server Control Panel](Media/server-cp.jpg) in the upper right.
+Once logged into the Classic Control Panel, click ![Server Control Panel](Media/server-cp.jpg) in the upper right. Go to the Log Viewer tab and select the log file from the drop-down list.
 
-Go to the Log Viewer tab and select the log file from the drop-down list.
+To download logs, follow these steps:
+
+1. Switch to classic control panel.
+
+2. Go to Server Control Panel > Log Viewer.
+
+3. Select a log (for example, vds_server.log). You’ll see a Download button with a dropdown arrow with multiple download methods.
+
+	![Download logs](Media/dowloadlogs.png)
+
+	Select any of these that apply to your usecase:
+	
+	a. To download current log file, click the Download button without opening the dropdown.  This downloads the current log file from the active node only.
+	
+	b. To download log files for the selected log from all nodes (without rollovers), click the dropdown arrow next to Download and then click the Download from All button.
+	
+	c. To download log files from all nodes with rollovers, click the Download dropdown and choose Download from All with Rollovers.  A .zip (e.g., vds_serverlog.zip) with the current log and all rollover files from every node is downloaded.
+		
+	d. To select specific log files from any server/node, click the dropdown arrow next to Download. Select the Open Download Browser. You can pick specific files and download only what you need.
+
+
 
 ### Environment Operations Center
 
@@ -627,4 +647,5 @@ If the test connection is not working but you are unsure of the error, first rev
 First, save the backend data source, then log in to Env Ops Center and navigate to details section of one of the *Secure Data Connectors* belonging to the group used for connection. If the Data source status is "Disconnected", the connection has not been correctly setup. Review the associated server name/IP and Server Port of this data source to make sure the data connector can connect to this server.
 
 If the data source connector status is "Connected", then the inlets tunnel is working and data connector is able to connect to this data source.
+
 
