@@ -23,49 +23,48 @@ The Log Settings page provides granular, component-specific control over system 
 
 The available components include:
 
-- RadiantOne Server Log – Core directory server log capturing LDAP requests and responses, backend commands, and server-side errors for general troubleshooting of the RadiantOne service.  
+- **RadiantOne Server Log**: Core directory server log capturing LDAP requests and responses, backend commands, and server-side errors for general troubleshooting of the RadiantOne service.  
 
-- RadiantOne LDAP Access – Access/audit log that records who connects to RadiantOne via LDAP, what operations they perform, and the server’s results, typically in a detailed, reportable format.  
+- **RadiantOne LDAP Access**: Access/audit log that records who connects to RadiantOne via LDAP, what operations they perform, and the server’s results, typically in a detailed, reportable format.  
 
-- ADAP Access – REST/ADAP access log that tracks REST calls to RadiantOne (binds, searches, CRUD operations) and related errors for the ADAP web service interface.  
+- **ADAP Access**: REST/ADAP access log that tracks REST calls to RadiantOne (binds, searches, CRUD operations) and related errors for the ADAP web service interface.  
 
-- SCIM – SCIM log that records SCIMv2 API activity, including POST, PUT, PATCH, and DELETE operations and internal processing for SCIM client requests.  
+- **SCIM**: SCIM log that records SCIMv2 API activity, including POST, PUT, PATCH, and DELETE operations and internal processing for SCIM client requests.  
 
-- Persistent Cache – Periodic Refresh – Log for periodic refresh jobs that rebuild or update persistent cache content, showing refresh cycles, comparisons, and counts of added, changed, or removed entries.  
+- **Persistent Cache**: Periodic Refresh – Log for periodic refresh jobs that rebuild or update persistent cache content, showing refresh cycles, comparisons, and counts of added, changed, or removed entries.  
 
-- Sync Agents – Logs for Sync Agents used in real-time persistent cache refresh that show connector/agent activity, such as capturing changes and forwarding them to RadiantOne.  
+- **Sync Agents**: Logs for Sync Agents used in real-time persistent cache refresh that show connector/agent activity, such as capturing changes and forwarding them to RadiantOne.  
 
-- Sync Engine – Sync Engine log that traces how change events are processed, transformed, and written to targets for cache refresh and synchronization flows.  
+- **Sync Engine**: Sync Engine log that traces how change events are processed, transformed, and written to targets for cache refresh and synchronization flows.  
 
-- Control Panel Server – Classic Control Panel server log (web.log) that captures internal web application and server activity for the admin UI.  
+- **Control Panel Server**: Classic Control Panel server log (web.log) that captures internal web application and server activity for the admin UI.  
 
-- Control Panel Access – Classic Control Panel access log (web_access.log) that records administrator actions such as saves and configuration changes in the UI.  
+- **Control Panel Access**: Control Panel access log (web_access.log) that records administrator actions such as saves and configuration changes in the UI.  
 
-- Scheduler Server – Task scheduler server log that shows how background tasks are scheduled, started, and managed by the scheduler service.  
+- **Scheduler Server**: Task scheduler server log that shows how background tasks are scheduled, started, and managed by the scheduler service.  
 
-- Scheduled Tasks – Per-task logs (task.<taskID>.log) that capture execution details, status, and errors for individual jobs like LDIF import/export, cache initialization, and reindexing.  
+- **Scheduled Tasks**: Per-task logs (task.taskID.log) that capture execution details, status, and errors for individual jobs like LDIF import/export, cache initialization, and reindexing.  
 
-- Custom Data Source – Log category for a connectors built using the latest Connector SDK.
-
+- **Custom Data Source**:  Log category for connectors built using the latest Connector SDK.
 
 
 ### Log levels
 
 Multiple log levels are available for each component to control the detail level and type of information written to the logs. The available log levels are Off, Fatal, Error, Warn, Info, Debug, and Trace. Keep in mind that not all components include every log level option. Although default options are preselected, you can configure the log levels depending on your needs.
 
-* Off: Disables logging entirely for the server. No log entries are generated.
+* **Off**: Disables logging entirely for the server. No log entries are generated.
 
-* Fatal: Logs critical events that prevent the RadiantOne service from functioning correctly or responding to requests. For example, a condition where a single client consumes all available threads, preventing the service from responding to other clients.
+* **Fatal**: Logs critical events that prevent the RadiantOne service from functioning correctly or responding to requests. For example, a condition where a single client consumes all available threads, preventing the service from responding to other clients.
 
-* Error: Logs error conditions encountered by RadiantOne, such as database connection failures and other runtime errors.
+* **Error**: Logs error conditions encountered by RadiantOne, such as database connection failures and other runtime errors.
 
-* Warn: Logs warning conditions that may affect operation but do not stop processing, such as a client disconnecting before a response is sent. Warning logs also include error and fatal messages.
+* **Warn**: Logs warning conditions that may affect operation but do not stop processing, such as a client disconnecting before a response is sent. Warning logs also include error and fatal messages.
 
-* Info: Logs standard operational activity, including all access to RadiantOne, actions performed by the service, and their results. This level includes warning, error, and fatal messages and is typically used for normal operation.
+* **Info**: Logs standard operational activity, including all access to RadiantOne, actions performed by the service, and their results. This level includes warning, error, and fatal messages and is typically used for normal operation.
 
-* Debug: Logs detailed diagnostic information about internal processing and actions taken by RadiantOne. This level is intended for troubleshooting and should be used temporarily.
+* **Debug**: Logs detailed diagnostic information about internal processing and actions taken by RadiantOne. This level is intended for troubleshooting and should be used temporarily.
 
-* Trace: Logs highly granular diagnostic information intended for intensive troubleshooting. This level is primarily used by the Radiant Logic development team and is not recommended for customer use.
+* **Trace**: Logs highly granular diagnostic information intended for intensive troubleshooting. This level is primarily used by the Radiant Logic development team and is not recommended for customer use.
 
 
 ### Enable Debug SSL
