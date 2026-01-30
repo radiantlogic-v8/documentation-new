@@ -55,8 +55,8 @@ This will enable certificate rollover. Certificates are managed in the following
 
    ![](media/perform-rollover.png "certificate rollover UI")
 
-2. Ensure all service providers trust the **Next** certificate.
-3. Click **Start Rollover**.
+2. Ensure that the **Next** certificate is valid.
+3. Click **Rotate Now**.
 
 During rollover:
 - **Next** is promoted to **Current** so that the latest valid certificate is used. 
