@@ -79,6 +79,20 @@ Name | Description | Link
 ![](media/workplacebyfacebook.png) <br> [Workplace by Facebook](workplacebyfacebook) | Workplace by Facebook allows you to communicate and collaborate quickly, easily and effectively with your entire organization using tools your colleagues are already familiar with. | [Facebook](https://workplace.fb.com/)
 ![](media/wsfederationgeneric.png) <br>[WsFederation Generic](wsfed-generic) | WsFederation Generic application. | [Radiant Logic](https://www.radiantlogic.com)
 
+## Configuring SAML Signing Settings
+
+Applications that use SAML2 let you control how responses and assertions are signed. You can configure these options directly from the application settings:
+
+1. Open the SAML2 application configuration page.
+2. Go to the Parameters tab where the signing options are displayed and fill out all the required fields.
+
+![](media/saml2signing.png "SAML application parameters")
+
+3. Use the Sign Response toggle to sign the entire SAML response when required.
+4. Use the Sign Assertion toggle to sign only the assertion when required.
+5. Review the chosen options and click Save to save the configuration. 
+
+
 # Smart links
 
 ## Overview
@@ -807,6 +821,7 @@ Name | Description | Since Version
 **Set-WordPress** | Updates the configuration of the Social Network WordPress. | 3.4.0.0
 **Get-Yahoo** | Retrieves the configuration of the Social Network Yahoo. | 3.4.0.0
 **Set-Yahoo** | Updates the configuration of the Social Network Yahoo. | 3.4.0.0
+
 
 
 
