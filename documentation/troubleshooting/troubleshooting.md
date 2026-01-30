@@ -18,13 +18,15 @@ Logs can be viewed from Server Control Panel and Environment Operations Center f
 
 Logs can be viewed and downloaded from Classic Control Panel > Server Control Panel > Log Viewer tab.
 
-To switch to Classic Control Panel, use the menu options for the logged in user in the upper right.
+To switch to Classic Control Panel, use the menu options for the logged in user in the upper right corner of the page.
 
 ![Classic Control Panel](Media/classic-cp.jpg)
 
-Once logged into the Classic Control Panel, click ![Server Control Panel](Media/server-cp.jpg) in the upper right. Go to the Log Viewer tab and select the log file from the drop-down list.
+Once logged into the Classic Control Panel, click the Server Control Panel option in the upper right corner of the page.
 
-To download logs, follow these steps:
+![Server Control Panel](Media/server-cp.jpg)
+
+Go to the Log Viewer tab and select the log file from the drop-down list. To download logs, follow these steps:
 
 1. Switch to classic control panel.
 
@@ -647,6 +649,7 @@ If the test connection is not working but you are unsure of the error, first rev
 First, save the backend data source, then log in to Env Ops Center and navigate to details section of one of the *Secure Data Connectors* belonging to the group used for connection. If the Data source status is "Disconnected", the connection has not been correctly setup. Review the associated server name/IP and Server Port of this data source to make sure the data connector can connect to this server.
 
 If the data source connector status is "Connected", then the inlets tunnel is working and data connector is able to connect to this data source.
+
 
 
 
