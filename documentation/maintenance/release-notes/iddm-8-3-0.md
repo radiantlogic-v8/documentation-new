@@ -98,7 +98,13 @@ https://support.radiantlogic.com/hc/en-us/categories/4412501931540-Known-Issues
 
 - The following error is sometimes seen in the vds_server.log after a migration import: <br>
   `ERROR org.apache.curator.framework.imps.CuratorFrameworkImpl:703 - Background exception was not retry-able or retry gave up
-   java.lang.NullPointerException: null.` This error is harmless and can safely be ignored. 
+   java.lang.NullPointerException: null.` This error is harmless and can safely be ignored.
+
+- An issue is seen when logging into the Control Panel with an admin associated with the Directory Administrators group due to large header size related to the sheer size of the JWT tokens. This issue is fixed in v8.3.1.
+  
+- An issue is seen with Global Setting permissions in which when upgrading from v8.2.2 to v8.3.0, when logged in as: uid=superadmin, ou=globalusers, cn=config the token validators were no longer visible in the UI and returned a "data fetching failed" error. This issue is fixed in v8.3.1.
+  
+- An issue is seen when upgrading from v8.2.2 to v8.3.0 would cause the Global Settings in the Control Panel to be lost and would throw errors on Tasks menu item. This issue is fixed in v8.3.1.
 
 ## How to Report Problems and Provide Feedback
 
@@ -106,4 +112,5 @@ Feedback and problems can be reported from the Support Center/Knowledge Base acc
 
 
 If you do not have a user ID and password to access the site, please contact: support@radiantlogic.com
+
 
