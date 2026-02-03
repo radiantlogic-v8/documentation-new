@@ -22,8 +22,8 @@ These release notes contain the following sections:
 
 ## Security Vulnerability Fixes
 
-- [API-4031]: Updated the Race Condition to node 24 to address CVE-2025-55131.
-- [API-4033]: Updated the React router to 6.30.3 to address CVE-2025-68470, CVE-2026-22029 and CVE-2025-68470.
+- [API-4031]: Fix to address CVE-2025-55131.
+- [API-4033]: Fix to address CVE-2025-68470, CVE-2026-22029 and CVE-2025-68470.
 
 ## Bug Fixes
 
@@ -46,3 +46,4 @@ Feedback and problems can be reported from the Support Center/Knowledge Base acc
 
 
 If you do not have a user ID and password to access the site, please contact: support@radiantlogic.com
+
