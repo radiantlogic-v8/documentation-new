@@ -27,7 +27,6 @@ These release notes contain the following sections:
 
 ## Bug Fixes
 
-- [API-3929]: Fixed an issue with custom data source plugin files not properly being taken into account on follower cluster nodes which was causing requests hitting follower nodes to fail with a “meta not found” error.
 - [API-3994]: Fixed an issue where log errors occurred when loading the custom connector built using the IDDM Connector SDK when it included Java 9+ annotations.
 - [API-4006]: Fixed issue with Object Builder computed attributes modal not populating the attributes list.
 - [API-4011, SQ-1180]: Fixed an issue in which when upgrading from v8.2.2 to v8.3.0 would cause the Global Settings in the Control Panel to be lost and would throw errors on Tasks menu item.
@@ -44,5 +43,6 @@ https://support.radiantlogic.com/hc/en-us/categories/4412501931540-Known-Issues
 ## How to Report Problems and Provide Feedback
 
 Feedback and problems can be reported from the Support Center/Knowledge Base accessible from: https://support.radiantlogic.com
+
 
 If you do not have a user ID and password to access the site, please contact: support@radiantlogic.com
