@@ -66,8 +66,6 @@ sufficient resources.
 
 High availability is difficult to achieve with a minimal set of nodes. If your application has 50 pods across two nodes (25 pods per node) and a node goes down, you lose 50% of your service.
 
-Scaling: When autoscaling the cluster, the increment size becomes larger which could result in provisioning more hardware than needed.
-
 **Option 2: more, smaller nodes**
 
 *Pros*
@@ -97,7 +95,7 @@ Add 10% for system overhead
 
 For these requirements in Amazon Web Services (AWS), a c5.2xlarge type (8 CPU / 16 GB RAM) might be the instance type selected.
 
-To determine the base number of nodes required, divide the number of pods by 3 to determine your minimum cluster size. Further, you must ensure that you add definitions for cluster horizontal auto-scaling so the cluster scales in or out as needed.
+To determine the base number of nodes required, divide the number of pods by 3 to determine your minimum cluster size. 
 
 **Sizing For RadiantOne**
 
