@@ -57,48 +57,12 @@ Select the environment where RadiantOne Identity Data Management is deployed and
 
 >[!warn] - Only SaaS deployments have access to Environment Operations Center. Self-managed deployments of RadiantOne do not.
 
-## Managing Log Levels
+## Managing Log Levels and Log Settings
 
-There are different levels of logging available for the components. The options are: Off, Fatal, Error, Warn, Info, Debug, and Trace.
-Log levels are configured from Classic Control Panel > Settings > Logs > Log Settings. To ensure optimal performance, the logging for RadiantOne should be reduced to the minimum level that meets your auditing needs for production environments.
-
-The RadiantOne service must be restarted if you set a log level to *OFF*.
-
-**Off**
-
-Logging is turned off completely for the server.
-
-**Fatal**
-
-Logs events that may cause the RadiantOne service to not be able to respond.  An example would be if a single client was using all threads and the RadiantOne service could not respond to anyone else but this client.
-
-**Error**
-
-Logs any error message encountered by RadiantOne (database connection problems, fatal errors…etc.).
-
-**Warn**
-
-Logs any warning messages encountered by RadiantOne (client disconnected before response could be sent, and errors, fatal messages…etc.).
-
-**Info**
-
-Logs all access to RadiantOne.  All actions taken by RadiantOne and the results (including warnings, errors, and fatal messages).
-
-**Debug**
-
-Logs very detailed information about the actions taken by RadiantOne.
-
-**Trace**
-
-This log level is relevant only for the Radiant Logic development team to understand problems and is used for intensive troubleshooting.
-
-## RadiantOne Directory and Integration Logs
-
-The main log file for troubleshooting the RadiantOne service is vds_server.log.
+There are different log settings and log levels for each log components. Refer to the [log settings](../tuning/log-settings/) guide to learn how to manage these settings. 
 
 ### RadiantOne Server Log
 
-Server logging is configured from the Classic Control Panel > Settings tab > Logs > Logs Settings section. Select the VDS – Server option from the Log Settings to Configure drop-down menu.
 
 **Log Contents:**
 -	Host name of the local RadiantOne server. This is only reported when the service starts. An example is:
@@ -137,35 +101,11 @@ Server logging is configured from the Classic Control Panel > Settings tab > Log
 <br>
 `2021-05-07T15:40:44,921 DEBUG com.rli.slapd.server.nio.SessionHandler:2354 - [conn=50 op=2]  Entry discared by ACI`
 
-**Log Level**
 
-Select the level from the Log Level drop-down list.
-
-**Rollover Size**
-
-By default, the vds_server.log file rolls over once it reaches 100MB in size. Change this value if needed.
-
-**Log Archiving**
-
-By default, 20 log files are kept (oldest ones are deleted to maintain a maximum of 20). You can change this value in the How Many Files to Keep in Archive setting. The archived files are named vds_server-<yyyy-MM-dd_HH-mm-ss>.log.zip and can be downloaded from Server Control Panel > Log Viewer. 
-
-**Log Failure Notification**
-The RadiantOne service can send an alert email if logging fails for the vds_server.log. Enable the notification process from Classic Control Panel > Settings > Log > Log Settings > Log Failure Notification section.
-1. Check to **Enable Notifications**.
-2. Enter the **SMTP Server URL**.
-3. Enter the **SMTP port**.
-4. **Username** to connect to the SMTP server.
-5. **Password** associated with the username entered in step 4. Used to connect to the SMTP server.
-6. Enter the subject of the email message in the **Message Subject** property.
-7. Enter the body of the email message in the **Message Body** property.
-8. Enter the email address to send the alert to, in the **Message Recipient** property.
-9. Enter the email address from which the alert should be sent, in the **Message Sender** property.
-10. Enter a number of minutes to indicate how long to wait before sending a subsequent alert email, in the **Minimum Interval Between Emails**.
-11. Click **Save**.
 
 ### RadiantOne LDAP Access Log 
 
-The vds_server_access.log contains less information than vds_server.log and is used more for auditing. Access logging is configured from the Classic Control Panel > Settings tab > Logs > Access Logs section.
+The vds_server_access.log contains less information than vds_server.log and is used more for auditing. 
 
 **Log Output Format**
 
@@ -296,11 +236,7 @@ Queries to certain internal naming contexts can happen frequently resulting in a
 
 ### RadiantOne ADAP Access Log
 
-ADAP is the RESTFul Web Service included in RadiantOne. It allows REST-access to data managed in RadiantOne. ADAP access logging is configured from the Classic Control Panel > Settings tab > Logs > Log Settings section. Select the VDS – ADAP Access option from the Log Settings to Configure drop-down menu. 
-
-**Log Level** 
-
-Select a log level from the drop-down list in the Log Settings section.
+ADAP is the RESTFul Web Service included in RadiantOne. It allows REST-access to data managed in RadiantOne.
 
 **Log Contents**
  
@@ -319,21 +255,10 @@ The ADAP access log records the following.
 
 The adap_access.log file can be viewed and downloaded from Server Control Panel > Log Viewer tab.
 
-**Rollover Size**
-
-By default, the adap_access.log file rolls over once it reaches 100MB in size. Change this value if needed.
-
-**Log Archiving**
-
-By default, 10 files are kept in the archive. Change this value in the How Many Files to Keep in Archive setting. The archived files are named `adap_access-<N>.log` and can be viewed and downloaded from Server Control Panel > Log Viewer. 
 
 ### RadiantOne SCIM Access Log
 
-The RadiantOne service supports SCIMv2. SCIM logging is configured from the Classic Control Panel > Settings tab > Logs > Logs Settings section. Select the VDS – SCIM option from the Log Settings to Configure drop-down menu. 
-
-**Log Level**
-
-Select a log level from the drop-down list in the Log Settings section. The default log level for this log is INFO. 
+The RadiantOne service supports SCIMv2.
 
 **Log Contents**
 
@@ -346,14 +271,6 @@ The SCIM log records the following.
 **Log Location**
 
 The SCIM log file is scim.log. It can be viewed and downloaded from the Server Control Panel > Log Viewer. 
-
-**Rollover Size**
-
-By default, the scim.log file rolls over once it reaches 100MB in size. Change this value if needed. 
-
-**Log Archiving**
-
-By default, 20 files are kept in the archive. Change this value in the How Many Files to Keep in Archive setting. The archived files are named `scim-<yyyy-MM-dd_HH-mm-ss>.log.zip` and and can be downloaded from Server Control Panel > Log Viewer. 
 
 ## RadiantOne Persistent Cache with Real-time Refresh
 
@@ -369,13 +286,9 @@ The logs associated with persistent cache with real-time refresh are described i
 
 4.	The Sync Engine queries the backend(s) and updates the persistent cache view(s) accordingly.
 
-### Agent Log
+### Sync Agents Log
 
-The agent logs to agent_fid_sd_agent_real_time.log. This log can be viewed and downloaded from Server Control Panel > Log Viewer.
-
-The agent log level is controlled by the setting in Classic Control Panel -> Settings tab -> Logs -> Log Settings. Select the Sync Agents – Agents option.
-
-![Sync Agent Log Settings](Media/Image3.4.jpg)
+The sync agents logs to agent_fid_sd_agent_real_time.log. This log can be viewed and downloaded from Server Control Panel > Log Viewer.
 
 
 ### Connector Logs
@@ -395,9 +308,6 @@ The sync engine log sync_engine.log on the RadiantOne node where the sync engine
 
 When identity views are created on RadiantOne Directory stores or persistent cache, and those views are configured for persistent cache, the change capture connector type defaults to HDAP Trigger. This is an internal mechanism that automatically refreshes persistent caches that are built on top of other persistent caches or RadiantOne Directory (HDAP) stores. When the RadiantOne Sync Engine is configured for DEBUG log level, the HDAP trigger activity is logged into the sync_engine.log
 
-You can set the log level from Classic Control Panel > Settings > Logs > Log Settings as shown below.
-
-![Sync Engine Log Level](Media/Image3.6.jpg)
 
 ## RadiantOne Persistent Cache with Periodic Refresh
 
@@ -406,8 +316,6 @@ You can set the log level from Classic Control Panel > Settings > Logs > Log Set
 Periodic persistent cache refresh leverages a snapshot mechanism to detect changes in the backend data source(s). The “snapshot” is an LDIF formatted file that contains the entries from the backend. During a refresh cycle, a new LDIF file is generated from the backend and compared to the last snapshot to detect changes. 
 
 ### Periodic Refresh Log
-
-The log associated with persistent cache with periodic refresh is configured from the Classic Control Panel > Settings tab > Logs > Logs Settings section. Select the VDS – Persistent Cache Periodic Refresh option from the Log Settings to Configure drop-down menu.
 
 **Log Contents**
 
@@ -426,18 +334,6 @@ The periodiccache.log records persistent cache, periodic refresh activity. Below
 
 Periodiccache.log can be viewed and downloaded from Server Control Panel > Log Viewer.
 
-**Log Level**
-
-Only log level INFO is applicable. Therefore, this cannot be changed.
-
-**Rollover Size**
-
-By default, the periodiccache.log file rolls over once it reaches 10MB in size. Change this value if needed.
-
-**Log Archiving**
-
-By default, 10 files are kept in the archive. Change this value in the How Many Files to Keep in Archive setting. The archived files are named `periodiccache-<N>.log` and can be viewed and downloaded form Server Control Panel > Log Viewer.
-
 ## Classic Control Panel
 
 A Jetty web server hosts the Classic and Server Control Panels. There are two log files applicable to this component. The Server Log contains internal server activities and is generated the first time each day that Jetty is started. The Access Log contains the save operations performed by administrators.
@@ -445,19 +341,11 @@ A Jetty web server hosts the Classic and Server Control Panels. There are two lo
 ### Server Log
 
 The log file is web.log. 
-
-This file rolls over when it reaches 100M in size and 5 files are archived. These settings are configured from the Classic Control Panel > Settings tab > Logs > Log Settings section. Select Control Panel – Server from the Log Settings to Configure drop-down list. Define the log level, rollover size and number of files to keep archived.
-
-![Server Log Level](Media/Image2.1.jpg)
-
 Web.log can be viewed and downloaded from Server Control Panel > Log Viewer. 
 
 ### Access Log
 
-The Control Panel access log file contains the save operations performed by administrators. When any user that is a member of the delegated administration groups saves changes in the Classic or Server Control Panels, this activity is logged into the web_access log. This is a CSV formatted log file with the delimiter being <TAB>. These settings are configured from the Classic Control Panel > Settings tab > Logs > Log Settings section. Select Control Panel – Access from the Log Settings to Configure drop-down list. Define the log level, rollover size and number of files to keep archived.
-
-![Access Log Level](Media/Image2.2.jpg)
- 
+The Control Panel access log file contains the save operations performed by administrators. When any user that is a member of the delegated administration groups saves changes in the Classic or Server Control Panels, this activity is logged into the web_access log. This is a CSV formatted log file with the delimiter being <TAB>.  
 
 Web_access.log file can be viewed and downloaded from Server Control Panel > Log Viewer.
 
@@ -477,29 +365,12 @@ This log file provides details about the state of capture connectors (e.g. start
 
 `2021-12-14T08:26:22,853 INFO  com.rli.cragents.orchestrator.client.e:80 - [SyncWorker-agent_W-RLI21-LGRADY_fid_sd_agent__real_time_PID_2472] Connector started for o_activedirectory_sync_ou_testing_o_companydirectory_pipeline_o_activedirectory.`
 
-The log level is controlled by the setting in Classic Control Panel -> Settings tab -> Logs -> Log Settings. Select the Sync Agents – Agents option.
-
-![Agent Log Level](Media/Image5.3.jpg)
 
 
 ### Connector Logs
 
 Capture connectors log activity to <piplelineId>\connector.log on the RadiantOne node where the sync agent is running. You can view and download this log file from the Server Control Panel > Log Viewer.
  
-1.	The log level is defined per connector with the setting in Classic Control Panel > Synchronization tab. 
-
-1.	Select the topology and click Configure next to the relevant pipeline. 
-
-1.	Click the Capture component and expand the Advanced Properties section.
-	![An image showing ](Media/Image5.5.jpg)
-
-
-1.	Locate the Log Level property and select the level from the drop-down list.
-	![An image showing ](Media/Image5.6.jpg)
- 
-
-1.	Click **Save**.
-
 ### Sync Engine Logs (Transformation and Apply)
 
 The Sync Engine processes the transformations and sends the changes to the destination. These activities are logged in sync_engine.log on the RadiantOne node where the sync engine processor that is assigned for the pipeline is running. You can view and download sync_engine.log from the Server Control Panel > Log Viewer.  You can also use the Classic Control Panel > Synchronization tab by selecting the topology and clicking Configure next to the pipeline. Select the Apply component and in the Log Viewer section, click Download.
@@ -547,48 +418,11 @@ There are two aspects of logging described in this section:
 
 ### Scheduler Server
 
-The task scheduler logging is configured from the Classic Control Panel > Settings tab > Logs > Logs Settings section. Select the Scheduler – Scheduler Server option from the Log Settings to Configure drop-down menu.
-
-![Scheduler Log Level](Media/Image6.1.jpg)
-
-
-**Log Level**
-
-Select a log level from the drop-down list in the Log Settings section. 
-
-**Rollover Size**
-
-By default, the task scheduler log file rolls over once it reaches 100MB in size. Change this value if needed.
-
-**Log Location**
-
 The task scheduler log file is server.log and can be viewed and downloaded from Server Control Panel > Log Viewer. 
-
-**Log Archiving**
-
-By default, 10 files are kept in the archive. Change this value in the How Many Files to Keep in Archive setting. The archived files are named `server-<number>.log` and can be viewed and downloaded from the Server Control Panel > Log Viewer.
 
 ### Scheduled Tasks
 
-Logging for scheduled tasks is configured from the Classic Control Panel > Settings tab > Logs > Logs Settings section. Select the Scheduler – Scheduler Tasks option from the Log Settings to Configure drop-down menu.
-
-![Scheduled Tasks Log Level](Media/Image6.2.jpg)
-
-**Log Level**
-
-Select a log level from the drop-down list in the Log Settings section. 
-
-**Rollover Size**
-
-By default, the task log file rolls over once it reaches 100MB in size. Change this value if needed.
-
-**Log Location**
-
 The task log file is `task.<taskID>.log` and can be viewed and downloaded from the Server Control Panel > Log Viewer.
-
-**Log Archiving**
-
-By default, 10 files are kept in the archive. Change this value in the How Many Files to Keep in Archive setting. The archived files are named `task.<taskID-<number>>.log` and can be viewed and downloaded from the Server Control Panel > Log Viewer. 
 
 ## Secure Data Connector
 
@@ -649,6 +483,7 @@ If the test connection is not working but you are unsure of the error, first rev
 First, save the backend data source, then log in to Env Ops Center and navigate to details section of one of the *Secure Data Connectors* belonging to the group used for connection. If the Data source status is "Disconnected", the connection has not been correctly setup. Review the associated server name/IP and Server Port of this data source to make sure the data connector can connect to this server.
 
 If the data source connector status is "Connected", then the inlets tunnel is working and data connector is able to connect to this data source.
+
 
 
 
