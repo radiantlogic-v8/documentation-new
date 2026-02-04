@@ -309,14 +309,18 @@ Role	| Required Permissions (Value of vdPrivilege)
 
 For the new Control Panel, each class of permissions matches a section in the left navigation menu.
 
-![Roles and Permissions](Media/roles-and-perms.jpg)
+![Roles and Permissions](Media/roles-and-perms.png)
 
+
+- **DASHBOARD**: Assign permissions to view or manage the dashboard page so you can control who can access and modify dashboard content.
 - **DATA CATALOG**: Assign permissions to configure and manage data sources with the ability to set specific permission overrides for specific data sources. For example, you can assign a set of users permissions to manage and use a specific set of data sources.  The data sources must be defined prior to assigning permisssions.
 - **DIRECTORY NAMESPACE**: Assign permissions to namespace design (where identity views are created from) and directory schema (where the LDAP directory schema is managed).
 - **DIRECTORY BROWSER**: Assign permissions to the Directory Brower where entries in the RadiantOne namespace can be managed.
 - **SECURITY**: Assign permissions to configure attribute encryption and access controls.
+- **CONFIGURATION PROMOTION**: Assign permissions to export and import configuration so admins can safely promote settings between environments (for example, from staging to production) while controlling who can initiate these operations.
 - **TASKS**: Various actions (e.g. initializing a RadiantOne directory) are launched as tasks. Use this to assign permissions for admins that can manage tasks (e.g. change JVM settings, modify task schedules, delete tasks...etc.).
-- **GLOBAL SETTINGS**: Assign permissions to configuration for LDAP access (supported directory controls and user to DN mapping), and the client certificate truststore (to manage client certificates for SSL/TLS communications.
+- **GLOBAL SETTINGS**: Assign permissions to configuration for LDAP access (supported directory controls and user to DN mapping), and the client certificate truststore (to manage client protocols, client certificates for SSL/TLS communications), tuning defaults, and token validation behavior. 
+- **TUNING**: Assign permissions to configure and manage system tuning settings, including backend limits, access regulation limits, global and custom limits, attribute handling, and log settings, to control how workloads are constrained and monitored across the platform.
 - **ADMINISTRATION**: Assign access to user management, roles & permissions, directory manager settings, control panel configuration, access tokens, audit logging settings and entry statistics.
 - **CLASSIC CONTROL PANEL**: enable or disable access to the Classic Control Panel and indicate what role (identified by group membership) should be enforced in the Classic Control Panel. This is to allow administrators the needed access to both the new and Classic Control Panels.
 
@@ -707,6 +711,7 @@ The following settings must be managed from the RadiantOne Classic Control Panel
 -	File Manager: Classic Control Panel > Settings > Configuration > File Manager <br> See [File Manager](#file-manager) for details. The admin that accesses Classic Control Panel must be assigned to a role that impersonates a role (e.g. Directory Administrators and FileManagerAdmin) that has file-manager-read and/or file-manager-write vdPrivilege to read (file-manager-read) and/or read and manage (file-manager-write) files from File Manager. By default only the Directory Administrators and FileManagerAdmin roles have these privileges in Classic Control Panel. 
 -	Identity Data Analysis Wizard: Classic Control Panel > Wizards > Identity Data Analysis. See [Identity Data Analysis](../configuration/identity-views/identity-data-analysis) for details.
 -	Global Identity Builder: Classic Control Panel > Wizards > Global Identity Builder. See [Global Identity Builder](../configuration/global-identity-builder/introduction) for details.
+
 
 
 
