@@ -135,14 +135,6 @@ The following example entry shows bind DN information for an unsuccessful bind a
 
 The vds_server_access.log and vds_server_access.csv can be viewed and downloaded from Server Control Panel > Log Viewer.
 
-**Rollover Size**
-
-The vds_server_access.log rolls over when it reaches 100MB in size. Change this value if needed.
-
-**Log Archiving**
-
-By default, once the vds_server_access log rolls over, it is kept for 30 days. Change this value in the Rollover: How long to keep the logs property if needed.
-
 **Log Contents**
 
 This log file acts as an audit log (and is used to generate reports from) and records the following information:
@@ -483,6 +475,7 @@ If the test connection is not working but you are unsure of the error, first rev
 First, save the backend data source, then log in to Env Ops Center and navigate to details section of one of the *Secure Data Connectors* belonging to the group used for connection. If the Data source status is "Disconnected", the connection has not been correctly setup. Review the associated server name/IP and Server Port of this data source to make sure the data connector can connect to this server.
 
 If the data source connector status is "Connected", then the inlets tunnel is working and data connector is able to connect to this data source.
+
 
 
 
