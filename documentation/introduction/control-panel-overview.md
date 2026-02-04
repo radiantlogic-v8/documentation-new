@@ -495,7 +495,7 @@ The Admin section is used for managing admin users, delegated roles and permissi
 
 **Audit Logging** 
 
-This section is used to manage the audit log settings and download audit logs. 
+Audit logging tracks and records all changes made to your directory configuration. Enabling this helps maintain a detailed history of modifications for security and compliance purposes. 
 
 ![Audit Log UI](Media/auditlog.png "audit log UI")
 
@@ -711,6 +711,7 @@ The following settings must be managed from the RadiantOne Classic Control Panel
 -	File Manager: Classic Control Panel > Settings > Configuration > File Manager <br> See [File Manager](#file-manager) for details. The admin that accesses Classic Control Panel must be assigned to a role that impersonates a role (e.g. Directory Administrators and FileManagerAdmin) that has file-manager-read and/or file-manager-write vdPrivilege to read (file-manager-read) and/or read and manage (file-manager-write) files from File Manager. By default only the Directory Administrators and FileManagerAdmin roles have these privileges in Classic Control Panel. 
 -	Identity Data Analysis Wizard: Classic Control Panel > Wizards > Identity Data Analysis. See [Identity Data Analysis](../configuration/identity-views/identity-data-analysis) for details.
 -	Global Identity Builder: Classic Control Panel > Wizards > Global Identity Builder. See [Global Identity Builder](../configuration/global-identity-builder/introduction) for details.
+
 
 
 
