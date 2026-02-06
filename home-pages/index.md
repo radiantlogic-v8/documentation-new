@@ -159,7 +159,7 @@ Harness your identity data with intelligent integration to drive better business
 
 <section>
    
-  > [Managing Log Levels](troubleshooting/troubleshooting#managing-log-levels)  
+  > [Managing Log Levels](tuning/log-settings/#log-levels)  
   > Learn how to manage log levels.
   
   > [Viewing Logs](troubleshooting/troubleshooting#viewing-logs)   
