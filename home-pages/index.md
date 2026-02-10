@@ -114,6 +114,9 @@ Harness your identity data with intelligent integration to drive better business
   > [Log Settings](tuning/log-settings)  
   > Learn about tuning log settings.
 
+  > [Managing Log Levels](tuning/log-settings/#log-levels)  
+  > Learn how to manage log levels.
+
   > [General Attribute Handling](tuning/attribute-handling)  
   > Learn about properties related to attribute handling.
 
@@ -158,9 +161,6 @@ Harness your identity data with intelligent integration to drive better business
 ## Troubleshooting
 
 <section>
-   
-  > [Managing Log Levels](tuning/log-settings/#log-levels)  
-  > Learn how to manage log levels.
   
   > [Viewing Logs](troubleshooting/troubleshooting#viewing-logs)   
   > Understanding log contents to assist with troubleshooting.
