@@ -6,7 +6,6 @@ description: Learn basic troubleshooting techniques for RadiantOne Identity Data
 - [Viewing Logs](troubleshooting#viewing-logs)
   - [Control Panel](troubleshooting#control-panel)
   - [Environment Operations Center](troubleshooting#environment-operations-center)
-- [Managing Log Levels](troubleshooting#managing-log-levels)
 - [RadiantOne Directory and Integration Logs](troubleshooting#radiantone-directory-and-integration-logs)
   - [RadiantOne Server Log](troubleshooting#radiantone-server-log)
 - [RadiantOne LDAP Access Log](troubleshooting#radiantone-ldap-access-log)
@@ -29,3 +28,4 @@ description: Learn basic troubleshooting techniques for RadiantOne Identity Data
 - [Sync Engine Logs](troubleshooting#sync-engine-log)
 - [Secure Data Connector Client Logs](troubleshooting#secure-data-connector)
 - [Task Scheduler and Tasks](troubleshooting#task-scheduler-and-tasks)
+
