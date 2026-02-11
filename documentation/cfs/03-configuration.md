@@ -92,6 +92,14 @@ Applications that use SAML2 let you control how responses and assertions are sig
 4. Use the Sign Assertion toggle to sign only the assertion when required.
 5. Review the chosen options and click Save to save the configuration. 
 
+## Configuring Clock Skew Settings 
+
+In SAML, WS-Fed, and OIDC applications, you can configure clock skew to mitigate differences in system time between your application and external services such as an Identity Provider (IdP), Service Provider (SP), or third-party system/API. The clock skew feature introduces a configurable time tolerance when validating time-based security artifacts, including certificates and access tokens.
+
+To configure clock skew, navigate to Applications > Configured > Parameters. Locate the Clock skew (minutes) setting, enter the appropriate value for certificate and/or token expiration validation, and save your changes.
+
+![](media/clock-skew.png "application clock skew")
+
 
 # Smart links
 
@@ -821,6 +829,7 @@ Name | Description | Since Version
 **Set-WordPress** | Updates the configuration of the Social Network WordPress. | 3.4.0.0
 **Get-Yahoo** | Retrieves the configuration of the Social Network Yahoo. | 3.4.0.0
 **Set-Yahoo** | Updates the configuration of the Social Network Yahoo. | 3.4.0.0
+
 
 
 
