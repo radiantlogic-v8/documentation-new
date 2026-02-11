@@ -127,9 +127,7 @@ Password	| Credentials associated with the account indicated in the User propert
 
 ### Custom Data Sources
 
-For custom data sources, the properies supported are defined in the template.
-
-
+If your data source is not supported by Identity Data Management by default, you can select a custom data source type and provide the required information. The properies supported are defined in the [template](#creating-templates).
 
 ### Updating Data Sources
 To update a data source, navigate to Control Panel > Setup > Data Catalog > Data Sources. Click the data source name in the list of configured sources. The connection properties displays. Update the properties and click **SAVE**.
@@ -253,4 +251,5 @@ Templates that have been exported from a RadiantOne v8.1.X deployment can be imp
 Each data source can be associated with one or more schema files. The first schema file extracted for a data source is considered the default one. For LDAP data sources, the default schema is automatically extracted when the data source is defined. For JDBC-accessible and SCIMv2 accessible data sources, you must manually extract the schema so you can selectively choose the objects that are required for creating identity views. For custom data sources, you must manually create the schema in RadiantOne.
 
 For details, see [Managing Schemas](./schemas.md).
+
 
