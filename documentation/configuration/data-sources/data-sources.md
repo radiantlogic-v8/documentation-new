@@ -114,6 +114,52 @@ The following producer properties apply to Kafka data sources.
 | SSL Truststore Password | Password to access the SSL truststore file.                                                                                                                                     |
 | SASL JAAS Config        | SASL JAAS configuration string. Kafka uses the Java Authentication and Authorization Service (JAAS) for SASL configuration. You must provide JAAS configuration for all SASL authentication mechanisms. |
 
+### Microsoft Entra ID Data Source
+
+EntraID users have link-type attributes, such as memberOf, which acts as a backlink to the groups they belong to. The memberOf attribute stores the value based on the group's GUID. By default, the mgraph virtual view also provides memberOfDisplayName and memberOfLink attributes alongside memberOf.
+
+You can control what value is returned by configuring the Graph object link properties on the Entra ID mgraph configuration page.
+
+ ![](Media/graphobject-links.png "Image showing Graph Object Links properties")
+
+
+The following sections describe these settings along with examples.
+
+PROPERTY	| DESCRIPTION
+-|-
+LinkByDN | Returns values as RadiantOne DNs.
+LINKBYDISPLAYNAME | Returns values as group display names.
+LINKBYURL| Returns values as Microsoft Graph URLs. 
+
+> The memberOf attribute on user entries represents a link to the groups the user belongs to, not a direct copy of the group data. To ensure consistency, the values in memberOf must match how groups are referenced in the virtual view. If you want memberOf to point correctly to the groups in the virtual view, use the DN (Distinguished Name) from the Entra ID data source. Each DN in memberOf must correctly reference the corresponding group entry in the virtual view.
+
+**Example**
+
+To return display names for the memberOf attribute, enter "memberOf" in the LINKBYDISPLAYNAME field. 
+
+ ![](Media/linkbydisplayname.png "Image showing LinkByDisplayName property")
+
+
+When performing an LDAP search, the memberOf attributes are returned, showing the group display names simlar to the following example:
+
+```
+dn: user=abcrandom@random.onmicrosoft.com,Category=user,dc=entraidview
+displayName: abc
+givenName: abc100
+mailNickname: abc10000
+objectclass: top
+objectclass: azureaduser
+accountEnabled: true
+memberOf: Test Group
+memberOf: Group from LDIF Import 01
+memberOf: ABC Team
+memberOf: Group from LDIF Import 02
+memberOf: DnsAdmins
+memberOf: All Company
+......
+```
+The example above is a partial snippet for illustration and does not represent a full response.
+
 ### Database Data Sources
 
 The following properties apply to LDAP data sources.
@@ -251,5 +297,6 @@ Templates that have been exported from a RadiantOne v8.1.X deployment can be imp
 Each data source can be associated with one or more schema files. The first schema file extracted for a data source is considered the default one. For LDAP data sources, the default schema is automatically extracted when the data source is defined. For JDBC-accessible and SCIMv2 accessible data sources, you must manually extract the schema so you can selectively choose the objects that are required for creating identity views. For custom data sources, you must manually create the schema in RadiantOne.
 
 For details, see [Managing Schemas](./schemas.md).
+
 
 
