@@ -81,7 +81,7 @@ To further condition the entries that are published, you can indicate a branch t
 
 For the location of the password filter installer, please contact support@radiantlogic.com.
 
-The Password Filter component for 32-bit Windows operating systems can be installed on the following Windows Server versions: 2003, 2008 R2, or 2012 R2 that are running Active Directory. The Password Filter component for 64-bit Windows operating systems can be installed on the following Windows Server versions: 2012 R2, 2016, or 2019.
+The Password Filter component for 32-bit Windows operating systems can be installed on the following Windows Server versions: 2003, 2008 R2, or 2012 R2 that are running Active Directory. The Password Filter component for 64-bit Windows operating systems can be installed on the following Windows Server versions: 2012 R2, 2016, 2019 and later versions.
 
 >[!warning]
 >Microsoft Visual C++ Runtime and .NET Framework v4 must be installed prior to running the password filter installer.
@@ -166,3 +166,4 @@ Method 2: From the Windows Control Panel, go to Programs and Features > Uninstal
 ## Starting the Synchronization Process
 
 The RadiantOne Global Sync pipeline must be running for passwords to be synchronized. Please see the RadiantOne Deployment and Tuning Guide for detailed steps on starting the pipeline.
+
