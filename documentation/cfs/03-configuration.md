@@ -85,12 +85,39 @@ Applications that use SAML2 let you control how responses and assertions are sig
 
 1. Open the SAML2 application configuration page.
 2. Go to the Parameters tab where the signing options are displayed and fill out all the required fields.
+3. Upload your certificates (encryption & signing) using the import button.
 
 ![](media/saml2signing.png "SAML application parameters")
 
-3. Use the Sign Response toggle to sign the entire SAML response when required.
-4. Use the Sign Assertion toggle to sign only the assertion when required.
-5. Review the chosen options and click Save to save the configuration. 
+4. Use the Sign Response toggle to sign the entire SAML response when required.
+5. Use the Sign Assertion toggle to sign only the assertion when required.
+6. Review the chosen options and click Save to save the configuration. 
+
+By default you will be asked to sign at least one of these options (response/assertion) for security purposes. 
+
+If you would like to have the option to skip signing both the response and the assertion, follow these steps:
+
+1. Navigate to Settings > General Settings > Others.
+2. Enable "Allow SAML2 Unsigned Responses" setting and click Save. 
+
+![](media/unsignedsetting.png "unsigned response option")
+
+3. After completing step 2, go to the SAML configuration page and make sure that neither option requires a signature.
+
+
+## Configuring Clock Skew Settings 
+
+In SAML, WS-Fed, and OIDC applications, you can configure clock skew to mitigate differences in system time between your application and external services such as an Identity Provider (IdP), Service Provider (SP), or third-party system/API. The clock skew feature introduces a configurable time tolerance when validating time-based security artifacts, including certificates and access tokens.
+
+To configure clock skew, navigate to Applications > Configured > Parameters. Locate the Clock skew (minutes) setting, enter the appropriate value for certificate and/or token expiration validation, and save your changes.
+
+![](media/clock-skew.png "application clock skew")
+
+By default, the maximum permitted clock skew duration is 10 minutes. To modify this limit, follow these steps:
+1. Log in to the RadiantOne portal and go to the Directory Browser tab.
+2. Navigate from the CFS configuration root (ou=cfs,cn=config) to ou=Parameters,ou={your_tenant},ou=tenants,{configuration_root}, then update the MaxClockSkewMinutes parameter with the desired value.
+
+![](media/clock-skew-param.png "tenant clock skew limit")
 
 
 # Smart links
@@ -821,6 +848,10 @@ Name | Description | Since Version
 **Set-WordPress** | Updates the configuration of the Social Network WordPress. | 3.4.0.0
 **Get-Yahoo** | Retrieves the configuration of the Social Network Yahoo. | 3.4.0.0
 **Set-Yahoo** | Updates the configuration of the Social Network Yahoo. | 3.4.0.0
+
+
+
+
 
 
 
