@@ -85,12 +85,13 @@ Applications that use SAML2 let you control how responses and assertions are sig
 
 1. Open the SAML2 application configuration page.
 2. Go to the Parameters tab where the signing options are displayed and fill out all the required fields.
+3. Upload your certificates (encryption & signing) using the import button.
 
 ![](media/saml2signing.png "SAML application parameters")
 
-3. Use the Sign Response toggle to sign the entire SAML response when required.
-4. Use the Sign Assertion toggle to sign only the assertion when required.
-5. Review the chosen options and click Save to save the configuration. 
+4. Use the Sign Response toggle to sign the entire SAML response when required.
+5. Use the Sign Assertion toggle to sign only the assertion when required.
+6. Review the chosen options and click Save to save the configuration. 
 
 By default you will be asked to sign at least one of these options (response/assertion) for security purposes. 
 
@@ -111,6 +112,12 @@ In SAML, WS-Fed, and OIDC applications, you can configure clock skew to mitigate
 To configure clock skew, navigate to Applications > Configured > Parameters. Locate the Clock skew (minutes) setting, enter the appropriate value for certificate and/or token expiration validation, and save your changes.
 
 ![](media/clock-skew.png "application clock skew")
+
+By default, the maximum permitted clock skew duration is 10 minutes. To modify this limit, follow these steps:
+1. Log in to the RadiantOne portal and go to the Directory Browser tab.
+2. Navigate to cn=cfs > cn=config > ou=Parameters, and update the MaxClockSkewMinutes parameter with the desired value.
+
+![](media/clock-skew-param.png "tenant clock skew limit")
 
 
 # Smart links
@@ -841,6 +848,7 @@ Name | Description | Since Version
 **Set-WordPress** | Updates the configuration of the Social Network WordPress. | 3.4.0.0
 **Get-Yahoo** | Retrieves the configuration of the Social Network Yahoo. | 3.4.0.0
 **Set-Yahoo** | Updates the configuration of the Social Network Yahoo. | 3.4.0.0
+
 
 
 
