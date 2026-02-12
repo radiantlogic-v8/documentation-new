@@ -253,7 +253,20 @@ January 26, 2026
 
 - [VSTS 47564] Fixed an issue causing a 500 error due to inconsistent scope handling between CFS Master and Proxy.
 - [VSTS 47568] Fixed an issue that prevented OIDC mapping edits in the UI.
+
+### v3.17.7
+
+February 12, 2026
+
+**New Feature**
  
+ - [CFS 174] Implemented clock skew handling during token validation to prevent authentication failures caused by minor system time differences.
+ - [CFS 183] Added a setting to allow unsigned responses for SAML2 applications. Additionally, encryption certificates can now be imported per application from the Application Edit page using either the “Import button” or the “Import from Metadata File” option. 
+
+ **Improvements**
+ - [CFS 180] Implemented pagination for applications list in the tenant certificate page. 
+ 
+
 
 
 
