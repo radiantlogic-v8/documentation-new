@@ -175,7 +175,23 @@ memberOf: DnsAdmins
 memberOf: All Company
 ......
 ```
-The example above is a partial snippet for illustration and does not represent a full response.
+
+If you do not enter a value for these fields (LinkByDN, LINKBYDISPLAYNAME, LINKBYURL), RadiantOne will return all three attributes (memberOfDisplayName, memberOfLink, memberOf) by default:
+
+```
+memberOfDisplayName: testgroup4
+memberOfDisplayName: testgroup5
+memberOfLink: /groups/76c1d5c8-13e9-4b98-b71d-591440bbdcdd
+memberOfLink: /groups/a876761e-2a24-439c-bf63-d6d20a26d552
+memberOfLink: /groups/35a758f5-69d4-47ae-9678-f0925bcc11a0
+memberOf: group=ABCd31-7935-4717-bc03-e5dff81cfebe,Category=group,dc=entraid
+ view
+memberOf: group=ABCDcf66c9-e92e-4cf7-aa76-d3ccffb4a00e,Category=group,dc=entraid
+ view
+......
+```
+
+> The examples above show partial snippets for illustration and does not represent full response bodies. 
 
 These fields can also accept multiple attribute names, separated by commas. For example, to return display names for both `member` and `memberOf` attributes, enter `member,memberOf` in the LINKBYDISPLAYNAME field. 
 
@@ -316,6 +332,7 @@ Templates that have been exported from a RadiantOne v8.1.X deployment can be imp
 Each data source can be associated with one or more schema files. The first schema file extracted for a data source is considered the default one. For LDAP data sources, the default schema is automatically extracted when the data source is defined. For JDBC-accessible and SCIMv2 accessible data sources, you must manually extract the schema so you can selectively choose the objects that are required for creating identity views. For custom data sources, you must manually create the schema in RadiantOne.
 
 For details, see [Managing Schemas](./schemas.md).
+
 
 
 
