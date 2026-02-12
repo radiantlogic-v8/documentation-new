@@ -116,11 +116,33 @@ The following producer properties apply to Kafka data sources.
 
 ### Microsoft Entra ID Data Source
 
-You can configure the Graph object link properties on the Entra ID configuration page to control what value is returned for "memberOf" attribute (the Group displayName, the Group DN as represented in the RadiantOne namespace, or the Group URL).
+The following properties apply to Microsoft Entra ID data source. 
+
+| Property | Description |
+|-----------|-------------|
+| URL | Microsoft Graph API URL to be called (e.g., "https://graph.microsoft.com/beta"). |
+| Scope | Microsoft Graph API Scope typically `https://graph.microsoft.com/.default` so it uses the app’s assigned permissions. |
+| OAuth URL | Microsoft Graph API OAuth URL. Example: `https://login.microsoftonline.com/[domain]/oauth2/v2.0/token` where you'll replace `[domain]` with your Entra ID tenant domain. |
+| Auth_Type | Specify the OAuth authentication method; enter `access_token_with_certificate` to use certificate files or leave this field empty for standard flows. |
+| OAuth_Cert_Public_Path | Provide the file path to the public certificate if you authenticate with certificates. |
+| OAuth_Cert_Private_Path | Provide the file path to the private key that pairs with the public certificate for certificate-based client authentication. |
+| ClientId | Application Client ID of the Entra ID app registration RadiantOne should use to obtain tokens. |
+| Username | Username of an account with sufficient permission to manage identity objects through the Microsoft Graph API. |
+| Password | Password of an account with sufficient permission to manage identity objects through the Microsoft Graph API. |
+| JWT_Assertion_Generator_ClassName | Provide the generator class name if you use a custom Java class to generate JWT assertions for authentication. |
+| Max_Retries_On_Error | Maximum number of retries per request. |
+| Timeout | Duration (in milliseconds) to wait for a Microsoft Graph response before considering the request timed out. |
+| ConnectionTimeout | HTTP connection timeout duration (in milliseconds). |
+| Proxy | Provide a value that points to the HTTP proxy server and port if your org requires a HTTP web proxy (e.g, `rli.vip.proxy.com:9090`) |
+| ProxySSL | Set the value to `true` if your org requires a HTTPS web proxy and SSL is used. |
+| MFAEnabled | Enable this if your security policy enforces multifactor authentication on the account and you would like to fetch MFA data. |
+
+
+Configure the Graph object link properties on the Entra ID configuration page to control what value is returned for "memberOf" attribute (the Group displayName, the Group DN as represented in the RadiantOne namespace, or the Group URL).
 
  ![](Media/graphobject-links.png "Image showing Graph Object Links properties")
 
-The following sections describe these settings along with examples.
+The following sections describe these properties along with examples.
 
 PROPERTY	| DESCRIPTION
 -|-
@@ -293,6 +315,7 @@ Templates that have been exported from a RadiantOne v8.1.X deployment can be imp
 Each data source can be associated with one or more schema files. The first schema file extracted for a data source is considered the default one. For LDAP data sources, the default schema is automatically extracted when the data source is defined. For JDBC-accessible and SCIMv2 accessible data sources, you must manually extract the schema so you can selectively choose the objects that are required for creating identity views. For custom data sources, you must manually create the schema in RadiantOne.
 
 For details, see [Managing Schemas](./schemas.md).
+
 
 
 
