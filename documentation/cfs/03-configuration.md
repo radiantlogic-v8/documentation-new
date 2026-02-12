@@ -115,7 +115,7 @@ To configure clock skew, navigate to Applications > Configured > Parameters. Loc
 
 By default, the maximum permitted clock skew duration is 10 minutes. To modify this limit, follow these steps:
 1. Log in to the RadiantOne portal and go to the Directory Browser tab.
-2. Navigate to cn=cfs > cn=config > ou=Parameters, and update the MaxClockSkewMinutes parameter with the desired value.
+2. Navigate from the CFS configuration root (ou=cfs,cn=config) to ou=Parameters,ou={your_tenant},ou=tenants,{configuration_root}, then update the MaxClockSkewMinutes parameter with the desired value.
 
 ![](media/clock-skew-param.png "tenant clock skew limit")
 
@@ -848,6 +848,7 @@ Name | Description | Since Version
 **Set-WordPress** | Updates the configuration of the Social Network WordPress. | 3.4.0.0
 **Get-Yahoo** | Retrieves the configuration of the Social Network Yahoo. | 3.4.0.0
 **Set-Yahoo** | Updates the configuration of the Social Network Yahoo. | 3.4.0.0
+
 
 
 
