@@ -9,7 +9,7 @@ description: Operations Guide
 
 Re-indexing a store is an operation that should not be needed frequently. Re-indexation is a time-consuming process and should only be done while the service is offline during a scheduled maintenance window. The store is inaccessible and no other operations can be performed during the re-indexation.
 
-If the Indexed Attributes or Sorted Indexes properties are changed, or if support for full text search is enabled, click on the Re-build Index button on the Properties Tab for the selected RadiantOne Universal Directory (HDAP) store on the Main Control Panel > Directory Namespace tab.
+If the Indexed Attributes or Sorted Indexes properties are changed, or if support for full text search is enabled, you must rebuild the index. If the directory store is participating in inter-cluster replication, disable the replication, rebuild the index and re-enable the replication. To rebuild the index, click on the Re-build Index button on the Properties Tab for the selected RadiantOne Universal Directory (HDAP) store on the Main Control Panel > Directory Namespace tab.
 
 Re-indexing the store is processed as a task. The task is executed on the leader node of the cluster. The store on the leader node is re-indexed, and then activated again. All follower/follower-only nodes copy the updated index from the leader node.
 
