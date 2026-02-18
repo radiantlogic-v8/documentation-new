@@ -58,7 +58,7 @@ Defined on the Properties Tab for the selected RadiantOne Directory, this is a l
 
 If you need to support VLV, the VLV/Sort control must be enabled in RadiantOne. You can enable this from Control Panel > Global Settings > Client Protocols > LDAP. Toggle the VLV/Sort control on in the Supported Controls section and click **SAVE**.
 
-If you change the sorted attributes, re-build the index. You can do this from the Properties tab by clicking **RE-BUILD INDEX**.
+If you change the sorted attributes, re-build the index. If the directory store is involved in inter-cluster replication, disable the inter cluster replication, rebuid the index and then re-enable the inter-cluster replication. You can rebuild the index from the Properties tab by clicking **RE-BUILD INDEX**.
 
 ## Encrypted Attributes for Data at Rest
 
@@ -316,6 +316,7 @@ To enable push mode:
 5.	(Optional) enable the Ensure Push Mode option if you to wait for acknowledgement of replication events before sending the response back to the client.
 6.	Click **OK**.
 7.	Click **SAVE**.
+
 
 
 
