@@ -344,7 +344,7 @@ The LDIF file is saved to <RLI_HOME>/vds_server/ldif/export, which is the defaul
 
 ### Rebuilding Indexes
 
-If the Indexed Attributes or Sorted Attributes properties are changed, click on the Re-build Index button on the Properties Tab for the selected RadiantOne Directory store. If RadiantOne is deployed in a cluster, the reindexing should be done on the leader node.
+If the Indexed Attributes or Sorted Attributes properties are changed, you must rebuild the index. If the directory store is involved in inter-cluster replication, disable the inter cluster replication, rebuid the index and then re-enable the inter-cluster replication. The Re-build Index button is located on the Properties Tab for the selected RadiantOne Directory store. If RadiantOne is deployed in a cluster, the reindexing should be done on the leader node.
 
 Rebuilding an index should not happen very frequently. It is a time-consuming process, and should be performed during a scheduled maintenance window. During the rebuild of the index, the RadiantOne Directory store is not accessible. When the indexing is complete, the store is active again and the follower/follower-only nodes (if any) get the data from the leader node to update their local copy.
 
@@ -1083,3 +1083,4 @@ Numsubordinates is an operational attribute and is only returned in searches whe
 ## Detecting Changes in RadiantOne Directory
 
 Changes to entries can be detected based on changelog (listening for change on the cn=changelog naming context) or using the Persistent Search Control. For details on these change detection mechanisms, please see the [RadiantOne System Administration Guide](/documentation/sys-admin-guide/01-introduction.md). 
+
