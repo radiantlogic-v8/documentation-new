@@ -47,7 +47,7 @@ This property lists the attributes that should be indexed. Attributes in this li
 
 If the Indexed Attributes list is empty, all attributes (except binary ones and the description attribute) are indexed by default. Also, the following *internal* ones are not indexed either: “pwdLastLogonTime”, "creatorsName", "createTimestamp", "modifiersName", "modifyTimestamp", "cacheCreatorsName", "cacheCreateTimestamp", "cacheModifiersName", "cacheModifyTimestamp", "uuid", "vdsSyncState", "vdsSyncHist", "ds-sync-generation-id", "ds-sync-state", "ds-sync-hist", "vdsSyncCursor", "entryUUID", "userpassword”. Any additional attributes that you do not want indexed should be added to the Non-Indexed Attributes list on the Properties tab for the selected RadiantOne Directory store. Define a list of attributes in this setting by entering the attribute name and pressing the "Enter" key on your keyboard after each. This parameter is an alternative to listing all the attributes you want to index in the Indexed Attributes parameter.
 
-If you change the non indexed attributes, you must re-build the index. You can do this from the Properties tab by clicking **RE-BUILD INDEX**.
+If you change the non indexed attributes, you must re-build the index. If the directory store is involved in inter-cluster replication, disable the inter cluster replication, rebuid the index and then re-enable the inter-cluster replication. You can rebuild the index from the Properties tab by clicking **RE-BUILD INDEX**.
 
 >[!warning] 
 >If possible, add attributes that must be modified frequently to the non-indexed attribute list to improve update performance of the RadiantOne Directory. Attributes that don’t need to be used in searches are good candidates for the non-indexed attribute list. Limit the number of configured non-indexed attributes to further improve update performance.
@@ -316,5 +316,6 @@ To enable push mode:
 5.	(Optional) enable the Ensure Push Mode option if you to wait for acknowledgement of replication events before sending the response back to the client.
 6.	Click **OK**.
 7.	Click **SAVE**.
+
 
 
