@@ -22,7 +22,6 @@ more details in the following sections.
 
 [Enable Inter Cluster Replication](#enable-inter-cluster-replication)
 
-[Disable Inter Cluster Replication](#disable-inter-cluster-replication)
 
 If the persistent cache is involved in-inter cluster replication, temporarily disable the replication prior to rebuilding the index.
 
