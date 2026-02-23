@@ -65,4 +65,17 @@ If enabled, which is the default, the correlation rules are skipped during the f
 
 ### Automatic login attribute analysis
 
-If enabled, which is the default, login attribute analysis (to determine uniqueness across all global profile entries) is performed on every operation against the global profiles. This option can slow upload performance so it can be disabled. When this option is not enabled, login attribute analysis is only performed when manually invoked from the Edit > Login Analysis menu in the project.
+**Automatic Login Attribute Analysis** is an optional feature in the Global Profile Builder that performs a validation check on login attributes whenever an operation modifies the global profile. This analysis ensures that specified login attributes are properly populated and unique. 
+
+When enabled, the system automatically verifies whether each configured login attribute (across all global profile entries) is **unique**, **duplicated**, or **missing**. The result of this analysis is stored in a **status attribute** that is available on all **Global Profile entries**. Its possible values are listed below:
+
+| Status | Description                                                                                        |
+|---------|----------------------------------------------------------------------------------------------------|
+| **-1** | **Not yet processed** — the analysis has not been performed on the selected entry.                 |
+| **0** | **Passed** — all login attributes are valid and unique on the selected entry.                      |
+| **1** | **Missing value** — one or more login attributes have no assigned value on the selected entry.     |
+| **2** | **Duplicate value** — one or more login attributes are not unique and conflict with another entry. |
+
+> Enabling Automatic Login Attribute Analysis may impact performance since the validation runs on every global profile modification. It can be disabled to improve upload times or if evaluating attribute uniqueness is not needed for your use case.
+
+When this option is not enabled, login attribute analysis is only performed when manually invoked from the Edit > Login Analysis menu in the project.
