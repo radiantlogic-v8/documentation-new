@@ -55,7 +55,7 @@ Go to the Log Viewer tab and select the log file from the drop-down list. To dow
 
 Audit logging tracks and records all changes made to your directory configuration. You can download and view audit logs by navigating to Administration > Audit Logging and clicking the Download button.
 
-![Audit Logs](Media/audit-log.png)
+![Audit Logs](Media/audit-logs.png)
 
 
 ### Environment Operations Center
@@ -468,6 +468,7 @@ If the test connection is not working but you are unsure of the error, first rev
 First, save the backend data source, then log in to Env Ops Center and navigate to details section of one of the *Secure Data Connectors* belonging to the group used for connection. If the Data source status is "Disconnected", the connection has not been correctly setup. Review the associated server name/IP and Server Port of this data source to make sure the data connector can connect to this server.
 
 If the data source connector status is "Connected", then the inlets tunnel is working and data connector is able to connect to this data source.
+
 
 
 
