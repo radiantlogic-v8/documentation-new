@@ -4,7 +4,7 @@ description: v7.4.21 Release Notes
 ---
 # RadiantOne v7.4.21 Release Notes
 
-February 23, 2025
+February 23, 2026
 
 These release notes contain important information about improvements and bug fixes for RadiantOne v7.4.
 These release notes contain the following sections:
@@ -83,4 +83,5 @@ Once logged in, navigate to: Customer Downloads/update_installers/7.4/<PatchVers
 ## How to Report Problems and Provide Feedback
 
 Feedback and problems can be reported from the Support Center/Knowledge Base accessible from: https://support.radiantlogic.com 
+
 If you do not have a user ID and password to access the site, please contact: support@radiantlogic.com.
