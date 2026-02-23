@@ -99,6 +99,6 @@ This scenario assumes you currently have a RadiantOne cluster deployed, each nod
 
 ###  In Versions Starting v7.4.19
 
-Starting Identity Data Management version 7.4.19, you can update the license key in a cluster node by running `vdsconfig.sh license-update {path-to-license-file}` in your cluster. This command updates the license stored in ZooKeeper. After the update is successful, Identity Data Management uses the new license. Unlike in previous versions, you no longer need to update the license file on each node in a cluster, it only needs to be applied once on any node.
+Starting Identity Data Management version 7.4.19, you can update the license key in a cluster node by running `vdsconfig.sh license-update -f {path-to-license-file}` in your cluster. This command updates the license stored in ZooKeeper. After the update is successful, Identity Data Management uses the new license. Unlike in previous versions, you no longer need to update the license file on each node in a cluster, it only needs to be applied once on any node.
 
 To verify the details of the current license file, run `vdsconfig.sh license-view`. To view the details of a specific license file,  run `./vdsconfig.sh license-inspect -f /path/to/license/file`.
