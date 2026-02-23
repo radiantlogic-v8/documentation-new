@@ -10,7 +10,9 @@ description: Installing RadiantOne Identity Data Platform
     - [Enable metrics and logging](metrics-and-logging.md)
     - [Create backups](creating-backups.md)
     - [Restore using a backup](restore.md)
+    - [Scaling nodes](scaling-nodes.md)
     - [Updating certificates](updating-self-signed-certificates.md)
     - [Updating license](updating-license.md)
     - [Configuration promotion](config-promotion.md)
+
 
