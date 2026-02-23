@@ -5,28 +5,20 @@ description: Learn how to safely remove a node from you RadiantOne Identity Data
 
 # Scaling Cluster Nodes 
 
-## Overview
-
 This guide describes the procedure for safely scaling down and subsequently scaling up a RadiantOne Identity Data Management cluster deployed in Kubernetes.
 The procedure ensures that the node being removed is cleanly unregistered from cluster metadata, preventing orphaned entries in ZooKeeper.
 
 
-## Before You Begin
+## Prerequisites
 
 - Ensure you have `kubectl` access to the Kubernetes namespace where RadiantOne is deployed.  
 - Verify the current number of replicas for your StatefulSet.
 
+## Steps to remove a node
 
-Follow these four steps to remove a node cleanly:
+Follow these steps to remove a node cleanly:
 
-1. Capture the Cloud ID of the node that you want to remove. 
-2. Scale down the StatefulSet. 
-3. Unregister the removed node. 
-4. Delete the Persistent Volume Claim (PVC). 
-
-These steps are documented below:
-
-## Step 1 — Capture the Cloud ID
+### 1. Capture the Cloud ID
 
 Before scaling down, retrieve the Cloud ID of the node you plan to remove.
 
@@ -40,7 +32,7 @@ kubectl exec -n $NAMESPACE fid-0 -- \
 Locate the entry for the node to be removed (for example, `fid-2`) and note its **Cloud ID (UUID)**.  
 This value is required for the next step.
 
-## Step 2 — Scale Down the StatefulSet
+### 2. Scale Down the StatefulSet
 
 Reduce the number of replicas to remove the target node.
 
@@ -54,7 +46,7 @@ kubectl wait --for=delete pod/fid-2 -n $NAMESPACE --timeout=300s
 Wait until the `fid-2` pod is completely deleted before continuing.
 
 
-## Step 3 — Unregister the Removed Node
+### 3. Unregister the Removed Node
 
 Run the unregister command from one of the remaining nodes (for example, `fid-0`).
 
@@ -78,8 +70,7 @@ This command does the following:
 
 No pod restarts are required.
 
-
-## Step 4 — Delete the PVC
+### 4. Delete the PVC
 
 After the node has been unregistered, remove its persistent volume claim.
 
@@ -89,7 +80,7 @@ kubectl delete pvc r1-pvc-fid-2 -n $NAMESPACE
 
 This deletes the storage associated with the removed pod.
 
-## Verify the Cluster
+### 5. Verify node removal 
 
 Verify the cluster’s current state:
 
@@ -99,7 +90,6 @@ kubectl exec -n $NAMESPACE fid-0 -- \
 ```
 
 You should see that the removed node no longer appears in the list. All remaining nodes must be fully operational and synchronized.
-
 
 ## Scaling the Cluster Back Up
 
