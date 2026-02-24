@@ -1,3 +1,8 @@
+---
+title: Deploying with Istio Service Mesh
+description: Learn how to deploy self-managed Identity Data Management with Istio Service Mesh.
+---
+
 # Deploying with Istio Service Mesh
 
 This guide describes a production-oriented approach to deploying Identity Data Management/IDDM on Kubernetes with Istio as the service mesh. The objective is to establish controlled ingress and egress, enforce service-to-service security, and maintain full compatibility with LDAP/LDAPS traffic and Identity Data Management init container behavior.
@@ -483,13 +488,13 @@ If pod annotations on the Identity Data Management StatefulSet still do not look
 
 ## Verify the deployment
 
-Check that pods are ready and sidecars are injected: 
+1. Check that pods are ready and sidecars are injected: 
 
 ```
 kubectl get pods -n fid-production
 ```
 
-Get the ingress gateway address and test web access: 
+2. Get the ingress gateway address and test web access: 
 
 ```
 export INGRESS_HOST=$(kubectl get svc -n istio-system istio-ingressgateway \
@@ -501,7 +506,7 @@ export INGRESS_HOST=$(kubectl get svc -n istio-system istio-ingressgateway \
 curl -k https://$INGRESS_HOST/classic -H "Host: fid.example.com"
 ```
 
-Test LDAP and LDAPS: 
+3. Test LDAP and LDAPS: 
 
 ```
 ldapsearch -x -H ldap://$INGRESS_HOST:389 \
@@ -517,14 +522,14 @@ ldapsearch -H ldaps://$INGRESS_HOST:636 \
   -b "dc=example,dc=com"
 ```
 
-Test egress from inside a pod: 
+4. Test egress from inside a pod: 
 
 ```
 kubectl exec -n fid-production deployment/api-gateway -c api-gateway -- \
   curl -s https://api.github.com/rate_limit
 ```
 
-## Common issues and quick fixes
+## Troubleshooting common issues
 
 | Symptom                                   | Likely cause                                             | Quick fix                                                                 |
 |-------------------------------------------|----------------------------------------------------------|---------------------------------------------------------------------------|
