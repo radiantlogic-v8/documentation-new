@@ -167,28 +167,6 @@ helm install fid-production oci://registry.radiantlogic.io/radiantone/helm/iddm-
   --values values.yaml
 ```
 
-## Add Additional Annotations for Microservices
-
-The Identity Data Management StatefulSet receives its annotations from values.yaml. However, microservice deployments must be patched separately (this step is optional. Use it only when you need to exclude specific ports as part of network policies):
-
-```
-# Patch all microservices to exclude LDAP and FID REST ports
-for deployment in authentication api-gateway directory-browser \
-                  directory-namespace directory-schema settings \
-                  system-administration data-catalog zipkin \
-                  iddm-ui iddm-proxy; do
-  kubectl patch deployment $deployment -n fid-production --type='json' -p='[
-    {
-      "op": "add",
-      "path": "/spec/template/metadata/annotations",
-      "value": {
-        # "traffic.sidecar.istio.io/excludeOutboundPorts": "2389,2636,8089,8090"
-      }
-    }
-  ]' && echo "Patched: $deployment"
-done
-```
-
 
 ## Configure Istio Configuration 
 
@@ -593,7 +571,7 @@ HTTP routes handle HTTP/HTTPS traffic and can match on URL paths, headers, etc.,
 
 Egress controls how your FID pods connect to external services. Proper configuration ensures security, compliance, reliability, and cost control. 
 
-1. Add the following content to your `egress-gateway.yaml` file:
+1. Add the following content to your `egress-gateway.yaml` file. Here, the Gateway component contains the egress gateway that manages outbound traffic. The selector points to istio-egressgateway pods, and servers specify ports and protocols to handle.
 
 ```
 apiVersion: networking.istio.io/v1beta1
@@ -712,47 +690,145 @@ spec:
       mode: ISTIO_MUTUAL
 ```
 
-### Init Container Compatibility (Critical)
+#### Advanced Egress Features
 
-When Istio sidecar injection is enabled, init containers may fail due to iptables redirection occurring before the proxy is ready.
+You may also include any of these advanced egress features as needed. 
 
-Default failure sequence:
+1. Restricting All External Access
 
-1. `istio-init` configures iptables
-2. FID init containers attempt network connections
-3. Envoy proxy is not yet running
-4. Connection refused
+Using this blocks all traffic except explicitly allowed services:
 
-Recommended solution:
-
-```yaml
-proxy.istio.io/config: |
-  holdApplicationUntilProxyStarts: true
+```
+istioAdvanced:
+  egress:
+    restrictMode: true
 ```
 
-This forces the proxy to start and remain ready before other containers execute.
+Applied via Sidecar:
 
-Alternative approaches:
-
-* Run init containers with UID 1337 to bypass Istio
-* Exclude outbound IP ranges using `traffic.sidecar.istio.io/excludeOutboundIPRanges`
-
-Verify init container status:
-
-```bash
-kubectl get pods -n fid-production -o json | \
-  jq '.items[].status.initContainerStatuses[]? | 
-      {name: .name, ready: .ready, restartCount: .restartCount}'
-
-kubectl logs -n fid-production fid-0 -c fid-init
+```
+apiVersion: networking.istio.io/v1beta1
+kind: Sidecar
+metadata:
+  name: default
+  namespace: fid-production
+spec:
+  egress:
+  - hosts:
+    - "./*"  # All local services
+    {{- range .Values.istioAdvanced.egress.externalServices }}
+    - "{{ .host }}"  # Explicitly allowed external
+    {{- end }}
 ```
 
-If you observe connection refused errors, enable `holdApplicationUntilProxyStarts`.
+2. IP-Based Restrictions
 
+Using this blocks specific IP ranges for external traffic:
 
+```
+apiVersion: networking.istio.io/v1beta1
+kind: ServiceEntry
+metadata:
+  name: block-private-ips
+spec:
+  hosts:
+  - "blocked.internal"
+  addresses:
+  - 10.0.0.0/8
+  - 172.16.0.0/12
+  - 192.168.0.0/16
+  ports:
+  - number: 443
+    name: https
+    protocol: HTTPS
+  location: MESH_EXTERNAL
+  resolution: STATIC
+```
 
+**3. Rate Limiting Egress**
 
-## Verify the deployment
+This limits outbound requests via EnvoyFilter:
+
+```
+apiVersion: networking.istio.io/v1beta1
+kind: EnvoyFilter
+metadata:
+  name: egress-ratelimit
+spec:
+  configPatches:
+  - applyTo: HTTP_FILTER
+    match:
+      context: GATEWAY
+      listener:
+        filterChain:
+          filter:
+            name: "envoy.filters.network.http_connection_manager"
+    patch:
+      operation: INSERT_BEFORE
+      value:
+        name: envoy.filters.http.local_ratelimit
+        typed_config:
+          "@type": type.googleapis.com/udpa.type.v1.TypedStruct
+          type_url: type.googleapis.com/envoy.extensions.filters.http.local_ratelimit.v3.LocalRateLimit
+          value:
+            stat_prefix: http_local_rate_limiter
+            token_bucket:
+              max_tokens: 100
+              tokens_per_fill: 100
+              fill_interval: 60s
+```
+
+4. Egress with Authentication
+
+You can use this for services that require authentication with client certificates:
+
+```
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: external-with-auth
+spec:
+  host: secure-api.example.com
+  trafficPolicy:
+    tls:
+      mode: MUTUAL
+      clientCertificate: /etc/certs/client-cert.pem
+      privateKey: /etc/certs/client-key.pem
+      caCertificates: /etc/certs/ca-cert.pem
+```
+
+### Apply Istio configurations
+
+Once you have finalized all your Istio configurations, apply them by running the following commands:
+
+```
+kubectl apply -f /tmp/fid-ingress-config.yaml
+kubectl apply -f /tmp/fid-egress-config.yaml
+```
+
+## Add Additional Annotations for Microservices
+
+The Identity Data Management StatefulSet receives its annotations from values.yaml. However, microservice deployments must be patched separately (This step is optional. Use it only when you need to exclude specific ports as part of network policies):
+
+```
+# Patch all microservices to exclude LDAP and FID REST ports
+for deployment in authentication api-gateway directory-browser \
+                  directory-namespace directory-schema settings \
+                  system-administration data-catalog zipkin \
+                  iddm-ui iddm-proxy; do
+  kubectl patch deployment $deployment -n fid-production --type='json' -p='[
+    {
+      "op": "add",
+      "path": "/spec/template/metadata/annotations",
+      "value": {
+        # "traffic.sidecar.istio.io/excludeOutboundPorts": "2389,2636,8089,8090"
+      }
+    }
+  ]' && echo "Patched: $deployment"
+done
+```
+
+## Verify and run tests for the deployment
 
 1. Check that pods are ready and sidecars are injected: 
 
@@ -795,13 +871,234 @@ kubectl exec -n fid-production deployment/api-gateway -c api-gateway -- \
   curl -s https://api.github.com/rate_limit
 ```
 
-## Troubleshooting common issues
+## Troubleshooting common issues 
 
-| Issue                                   | Likely cause                                             | Quick fix                                                                 |
-|-------------------------------------------|----------------------------------------------------------|---------------------------------------------------------------------------|
-| Init containers fail with connection errors | Istio sidecar not ready when init containers run        | Add `proxy.istio.io/config: holdApplicationUntilProxyStarts: true` to FID pod annotations.  |
-| 503 responses between services            | STRICT mesh‑wide mTLS or incompatible config            | Use a namespace‑level `PeerAuthentication` with `PERMISSIVE` for `fid-production`.  |
-| FID cannot reach ZooKeeper                | ZooKeeper ports intercepted by Envoy                    | Exclude ports `2181,2888,3888` on FID and/or ZooKeeper pods.       |
-| LDAP/LDAPS traffic fails via Istio        | Wrong `protocol` or missing port exclusions             | Use `TLS` for LDAPS and `TCP` for LDAP; add port exclusions as needed.  |
-| No sidecars in IDDM pods                  | Namespace not labeled for injection or pods not restarted | Ensure `istio-injection=enabled` on namespace and restart the deployments.  |
+### 1. Init Containers Failing (Connection Refused)
+
+Issue: FID init containers fail with "connection refused" to ZooKeeper.
+
+Check:
+
+```bash
+kubectl describe pod fid-0 -n fid-production
+# Look for init container failures
+
+kubectl logs fid-0 -n fid-production -c check-zk
+# Shows: "Connection refused" errors
+```
+
+**Root Cause:** Istio’s iptables redirect all traffic before the proxy is ready. Init containers run after `istio-init` but before `istio-proxy`, so no network connectivity is available during the init phase.
+
+Fix:
+
+```yaml
+# Add to values.yaml at TOP LEVEL (not under fid:)
+podAnnotations:
+  proxy.istio.io/config: |
+    holdApplicationUntilProxyStarts: true
+  traffic.sidecar.istio.io/excludeOutboundPorts: "2181,2888,3888"
+```
+
+If Helm annotations don’t apply:
+
+```bash
+kubectl patch statefulset fid -n fid-production --type='json' -p='[
+  {
+    "op": "add",
+    "path": "/spec/template/metadata/annotations/proxy.istio.io~1config",
+    "value": "holdApplicationUntilProxyStarts: true"
+  }
+]'
+```
+
+
+### 2. Authentication Service Returns 503
+
+Issue: Authentication fails with "503 Service Unavailable" when calling `fid-app`.
+
+Check:
+
+```bash
+kubectl logs deployment/authentication -n fid-production -c authentication
+# Shows: Error connecting to fid-app:2389 or fid-app:8089
+```
+
+**Root Cause:** Istio intercepts LDAP (2389) and FID REST (8089/8090) ports. Envoy proxy cannot parse binary LDAP protocol, resulting in connection failures.
+
+Fix:
+
+```bash
+# Patch all microservices to exclude these ports
+bash /tmp/patch-microservices.sh fid-production
+```
+
+### 3. Directory Manager User Not Found
+
+Issue: Authentication fails with "user not found" despite FID running.
+
+Check:
+
+```bash
+kubectl logs fid-0 -n fid-production -c fid | grep -i "directory manager"
+# Should show: Username: cn=Directory Manager
+```
+
+**Root Cause:** Pods restarted before initialization, often due to ZooKeeper connectivity issues or missing port exclusions.
+
+Fix: Ensure all port exclusions are in place, then delete and recreate FID pods:
+
+```bash
+kubectl delete pod fid-0 -n fid-production
+kubectl wait --for=condition=ready pod fid-0 -n fid-production --timeout=300s
+```
+
+
+### 4. Pods Not Getting Sidecars
+
+Issue: Pods show 1/1 containers instead of 2/2.
+
+Check:
+
+```bash
+kubectl get namespace fid-production -o yaml | grep istio-injection
+```
+
+Fix:
+
+```bash
+kubectl label namespace fid-production istio-injection=enabled
+kubectl rollout restart deployment -n fid-production
+kubectl rollout restart statefulset fid -n fid-production
+```
+
+
+### 5. 503 Service Unavailable – Investigation
+
+Issue: Frequent 503 errors, often from `api-gateway` to backend.
+
+**Investigation Steps:**
+
+Check Envoy configuration:
+
+```bash
+kubectl exec -n fid-ralo deployment/api-gateway -c istio-proxy -- \
+  curl -s localhost:15000/clusters | grep authentication
+```
+
+Test direct connectivity:
+
+```bash
+kubectl exec -n fid-ralo deployment/api-gateway -c api-gateway -- \
+  wget -O- http://authentication-service:80/actuator/health
+```
+
+Check for IP mismatch:
+
+```bash
+kubectl get svc authentication-service -n fid-ralo -o wide
+kubectl get endpoints authentication-service -n fid-ralo
+```
+
+**Root Causes:**
+
+* STRICT mTLS policies
+* Missing service endpoints
+* Protocol mismatch
+
+**Fix Priority:**
+
+1. Check and override STRICT PeerAuthentication → PERMISSIVE
+2. Verify endpoints exist → Fix service selectors
+3. Create ServiceEntry/DestinationRule → Force protocol settings
+4. Exclude ports for binary protocols → Use pod annotations
+
+
+### 6. FID-0 Continuously Restarting
+
+Issue: FID-0 restarts with "Connection reset by peer" to ZooKeeper.
+
+Check:
+
+```bash
+kubectl logs fid-0 -n fid-production -c fid | grep -i zookeeper
+```
+
+**Root Cause:** Outbound ZooKeeper traffic intercepted by Istio; sidecar cannot handle ZooKeeper protocol.
+
+Fix:
+
+```yaml
+podAnnotations:
+  traffic.sidecar.istio.io/excludeInboundPorts: "7070,7171,8089,8090"
+  traffic.sidecar.istio.io/excludeOutboundPorts: "7070,7171,8089,8090,2181,2888,3888"
+```
+
+> Note: Port 2181 must be excluded for FID pods.
+
+
+### 7. LDAP Connection Refused
+
+Issue: LDAP connections fail through Istio.
+
+Check:
+
+```bash
+kubectl get deployment fid -n fid-production -o yaml | grep -A5 excludeInboundPorts
+```
+
+Fix:
+
+```yaml
+podAnnotations:
+  traffic.sidecar.istio.io/excludeInboundPorts: "2389,2636"
+```
+
+
+### 8. External Services Blocked
+
+Issue: Cannot reach external services.
+
+Check:
+
+```bash
+kubectl get serviceentry -n fid-production
+kubectl logs -n istio-system deployment/istio-egressgateway
+```
+
+Fix: Add ServiceEntry for the external service, ensure egress gateway is running, and verify firewall rules.
+
+
+### 9. High Latency
+
+Issue: Requests are slower than expected.
+
+Check:
+
+```bash
+kubectl exec -n fid-production deployment/api-gateway -c istio-proxy -- \
+  curl -s localhost:15000/stats | grep upstream_rq_time
+```
+
+Fix: Reduce circuit breaker sensitivity, increase connection pool size, and consider excluding internal ports from the mesh.
+
+
+### 10. Certificate Issues
+
+Issue: TLS handshake failures.
+
+Check:
+
+```bash
+kubectl get secret fid-tls-cert -n fid-production
+openssl s_client -connect $INGRESS_HOST:443 -servername fid.example.com
+```
+
+Fix:
+
+```bash
+kubectl create secret tls fid-tls-cert \
+  --cert=path/to/cert.pem \
+  --key=path/to/key.pem \
+  -n fid-production
+```
 
