@@ -12,7 +12,7 @@ The document assumes familiarity with Kubernetes, Helm, and enterprise networkin
 
 ## Architecture Overview
 
-Istio introduces a programmable data plane (Envoy sidecars) and a centralized control plane. Within a self-managed Identity Data Management deployment, it becomes the enforcement layer for inbound traffic, east–west service communication, and outbound connectivity to external systems.
+Istio introduces a programmable data plane (Envoy sidecars) and a centralized control plane. Within a self-managed Identity Data Management deployment, it becomes the enforcement layer for inbound traffic, service communication, and outbound connectivity to external systems.
 
 At a high level, the architecture flow looks like this:
 
@@ -22,8 +22,6 @@ This architecture enables consistent policy enforcement, mutual TLS (mTLS), traf
 
 
 ## Prerequisites
-
-Ensure the following before beginning:
 
 * A functioning Kubernetes cluster
 * `kubectl` and `helm` configured with appropriate access
@@ -47,10 +45,10 @@ A production-aligned deployment follows this sequence:
 ## Files you need to prepare
 
 Make sure these files exist and are accessible from your deployment environment. 
-- `values.yaml` – IDDM/FID Helm values with Istio‑specific annotations (namespace‑scoped deployment config). 
-- `fid-ingress-config.yaml` – Istio `Gateway` and `VirtualService` for external ingress (HTTPS, LDAP, LDAPS, HTTP redirect). 
-- `fid-egress-config.yaml` – Istio `Gateway`, `ServiceEntry`, `VirtualService`, and `DestinationRule` for outbound traffic control (for example Docker Hub, GitHub). 
-- `patch-microservices.sh` – Optional shell script to patch IDDM microservice `Deployment` objects with extra Istio annotations (port exclusions, etc.). 
+- `values.yaml` – Identity Data Management Helm values with Istio‑specific annotations. 
+- `fid-ingress-config.yaml` – Ingress Gateway & VirtualService configuration. 
+- `fid-egress-config.yaml` – Egress Gateway & ServiceEntries configuration.
+- `patch-microservices.sh` – Shell script to patch microservice deployments. 
 
 
 ## Install Istio
