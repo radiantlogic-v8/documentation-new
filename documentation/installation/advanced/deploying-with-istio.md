@@ -531,7 +531,7 @@ kubectl exec -n fid-production deployment/api-gateway -c api-gateway -- \
 
 ## Troubleshooting common issues
 
-| Symptom                                   | Likely cause                                             | Quick fix                                                                 |
+| Issue                                   | Likely cause                                             | Quick fix                                                                 |
 |-------------------------------------------|----------------------------------------------------------|---------------------------------------------------------------------------|
 | Init containers fail with connection errors | Istio sidecar not ready when init containers run        | Add `proxy.istio.io/config: holdApplicationUntilProxyStarts: true` to FID pod annotations.  |
 | 503 responses between services            | STRICT mesh‑wide mTLS or incompatible config            | Use a namespace‑level `PeerAuthentication` with `PERMISSIVE` for `fid-production`.  |
