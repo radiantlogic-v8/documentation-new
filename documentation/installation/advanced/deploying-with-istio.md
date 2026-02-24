@@ -9,7 +9,6 @@ This guide shows developers how to deploy a self‑managed Identity Data Managem
 
 The document assumes familiarity with Kubernetes, Helm, and enterprise networking concepts.
 
-
 ## Architecture Overview
 
 Istio introduces a programmable data plane (Envoy sidecars) and a centralized control plane. Within a self-managed Identity Data Management deployment, it becomes the enforcement layer for inbound traffic, service communication, and outbound connectivity to external systems.
@@ -20,32 +19,73 @@ At a high level, the architecture flow looks like this:
 
 This architecture enables consistent policy enforcement, mutual TLS (mTLS), traffic shaping, resilience controls, and deep observability.
 
-
 ## Prerequisites
 
 * A functioning Kubernetes cluster
 * `kubectl` and `helm` configured with appropriate access
 * DNS records and TLS certificates prepared for production hostnames (if using TLS)
-* `holdApplicationUntilProxyStarts` must be enabled for init containers to work
 * Traffic Exclusions: ZooKeeper and internal Identity Data Management fid ports must be excluded from interception
 
-Pod Annotations: Must be applied at the StatefulSet level for FID pods
+## Installation Workflow
 
+The installation workflow consists of the following steps. 
 
-## Deployment Workflow
+```
+# 1. Install Istio
+kubectl create namespace istio-system
+helm repo add istio https://istio-release.storage.googleapis.com/charts
+helm install istio-base istio/base -n istio-system --wait
+helm install istiod istio/istiod -n istio-system --wait
+helm install istio-ingressgateway istio/gateway -n istio-system --wait
 
-## Files you need to prepare
+# 2. Create Identity Data Management namespace with Istio injection
+kubectl create namespace iddm-production
+kubectl label namespace iddm-production istio-injection=enabled
 
-Make sure these files exist and are accessible from your deployment environment. 
+# 3. Create image pull secret
+kubectl create secret docker-registry regcred \
+  --docker-server=docker.io \
+  --docker-username=<username> \
+  --docker-password=<password> \
+  -n iddm-production
+
+# 4. Create a values.yaml file or modify an existing one. 
+
+# 5. Install Identity Data Management with Istio annotations
+helm install iddm-helm radiantone/iddm \
+  --namespace iddm-production \
+  --values /tmp/values.yaml \
+  --wait --timeout 15m
+
+# 6. Create Istio configuration files
+
+# 7. Apply Istio configs
+kubectl apply -f /tmp/fid-ingress-config.yaml
+kubectl apply -f /tmp/fid-egress-config.yaml
+
+# 8. Patch microservices for port exclusions
+bash /tmp/patch-microservices.sh
+
+# 9. Verify installation and run tests
+kubectl get pods -n iddm-production
+
+```
+
+These steps are explained in further details in the subsequent sections of this document. 
+
+## Files needed
+
+Create these files and ensure that they are accessible from your deployment environment. This document provides examples of what to include in these files in the later sections.
+
 - `values.yaml` – Identity Data Management Helm values with Istio‑specific annotations. 
 - `fid-ingress-config.yaml` – Ingress Gateway & VirtualService configuration. 
 - `fid-egress-config.yaml` – Egress Gateway & ServiceEntries configuration.
 - `patch-microservices.sh` – Shell script to patch microservice deployments. 
 
 
-## Install Istio
+### 1. Install Istio
 
-1. Install Istio base components, control plane, ingress gateway, and egress gateway. 
+Install Istio base components, control plane, ingress gateway, and egress gateway. 
 
 ```
 # Add Istio Helm repository
@@ -86,29 +126,27 @@ kubectl get deployments -n istio-system
 kubectl get svc -n istio-system
 ```
 
+### 2. Create a namespace and enable sidecar injection
 
-
-## Create a namespace and enable sidecar injection
-
-1. Create a dedicated namespace for Identity Data Management and turn on automatic sidecar injection. 
+Create a dedicated namespace for Identity Data Management and turn on automatic sidecar injection. 
 
 ```
-kubectl create namespace fid-production
+kubectl create namespace iddm-production
 
-kubectl label namespace fid-production istio-injection=enabled
+kubectl label namespace iddm-production istio-injection=enabled
 ```
 
-2. Create the image pull secret in the same namespace: 
+### 3. Create the image pull secret in the same namespace: 
 
 ```
 kubectl create secret docker-registry regcred \
   --docker-server=docker.io \
   --docker-username=<username> \
   --docker-password=<password> \
-  -n fid-production
+  -n iddm-production
 ```
 
-## Configure Helm values (`values.yaml`)
+### 4. Configure Helm values (`values.yaml`)
 
 The `values.yaml` file defines Identity Data Management configuration and the Istio‑critical annotations. Create a values.yaml file or modify the existing one to include the following:
 
@@ -154,38 +192,35 @@ imagePullSecrets:
   - name: regcred
 ```
 
+### 5. Install self-managed Identity Data Management 
 
-## Deploy self-managed Identity Data Management with Helm
-
-Deploy the self-managed Identity Data Management chart using your `values.yaml` file. 
+Deploy the self-managed Identity Data Management chart with istio annotations using your `values.yaml` file. 
 
 ```
 # Install FID with the prepared values
-helm install fid-production oci://registry.radiantlogic.io/radiantone/helm/iddm-helm \
+helm install iddm-production oci://registry.radiantlogic.io/radiantone/helm/iddm-helm \
   --version 1.1.5 \
-  -n fid-production \
+  -n iddm-production \
   --values values.yaml
 ```
 
 
-## Configure Istio Configuration 
+### 6. Create Istio Configurations
 
-Create a directory structure similar to the following:
+In this step, you will configure Istio ingress and egress files. Create a directory structure similar to the following:
 
 ```
 fid-istio-config/
 ├── templates/
-│   ├── ingress-gateway.yaml
+│   ├── fid-ingress-config.yaml
 │   ├── ingress-virtualservice.yaml
-│   ├── egress-gateway.yaml
-│   ├── egress-serviceentry.yaml
+│   ├── fid-egress-config.yaml
 │   ├── egress-virtualservice.yaml
-│   └── egress-destinationrule.yaml
 └── values.yaml
 ```
 
 
-### Ingress Configuration
+#### 6.1 Ingress Configuration
 
 Istio ingress controls how external traffic reaches your Identity Data Management services. It provides:
 * Single entry point for all traffic
@@ -196,7 +231,7 @@ Istio ingress controls how external traffic reaches your Identity Data Managemen
 
 Istio supports two primary TLS handling strategies (Termination vs. Passthrough). The correct choice depends on certificate ownership, inspection requirements, and authentication needs.
 
-#### TLS Termination at Istio (SIMPLE / MUTUAL)
+##### TLS Termination at Istio (SIMPLE / MUTUAL)
 
 In this model, the Istio Gateway decrypts inbound TLS traffic and forwards HTTP traffic to backend services.
 
@@ -224,11 +259,9 @@ Trade-offs:
 * Identity Data Management does not see the original TLS session
 
 
-#### TLS Passthrough
+##### TLS Passthrough
 
 In passthrough mode, Istio forwards encrypted traffic without decrypting it. Identity Data Management terminates TLS directly.
-
-Traffic flow:
 
 Traffic flow:
 
@@ -259,14 +292,14 @@ Trade-offs:
 
 Create a  `/tmp/fid-ingress-config.yaml` file with the following content:
 
-```yaml
+```
 # Ingress Gateway Configuration with TLS Passthrough
 ---
 apiVersion: networking.istio.io/v1beta1
 kind: Gateway
 metadata:
   name: fid-ingress-gateway
-  namespace: fid-ralo
+  namespace: iddm-production
 spec:
   selector:
     app: istio-ingressgateway
@@ -309,7 +342,7 @@ apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
   name: fid-ingress-routes
-  namespace: fid-ralo
+  namespace: iddm-production
 spec:
   hosts:
   - "*"
@@ -418,7 +451,7 @@ Option C: Mixed Mode (Common in Production)
 
 HTTPS termination with LDAPS passthrough:
 
-```yaml
+```
 istioAdvanced:
   enabled: true
   ingress:
@@ -441,7 +474,7 @@ This approach allows HTTP-layer features for the web UI while preserving certifi
 
 Correct protocol selection in the Gateway is critical. Ensure that you are using the following:
 
-```yaml
+```
 # LDAPS
 - port:
     number: 636
@@ -567,18 +600,18 @@ spec:
 
 HTTP routes handle HTTP/HTTPS traffic and can match on URL paths, headers, etc., while TCP routes handle non-HTTP protocols such as LDAP or databases and match only on the port. LDAP must always be configured under the "tcp:" section, not the "http:" section. Note that route order is important, so more specific routes must appear before more general ones.
 
-### Egress Configuration 
+#### 6.2 Egress Configuration 
 
 Egress controls how your FID pods connect to external services. Proper configuration ensures security, compliance, reliability, and cost control. 
 
-1. Add the following content to your `egress-gateway.yaml` file. Here, the Gateway component contains the egress gateway that manages outbound traffic. The selector points to istio-egressgateway pods, and servers specify ports and protocols to handle.
+1. Add the following content to your `fid-egress-config.yaml` file. Here, the Gateway component contains the egress gateway that manages outbound traffic. The selector points to istio-egressgateway pods, and servers specify ports and protocols to handle.
 
 ```
 apiVersion: networking.istio.io/v1beta1
 kind: Gateway
 metadata:
   name: fid-egress-gateway
-  namespace: fid-ralo
+  namespace: iddm-production
 spec:
   selector:
     app: istio-egressgateway
@@ -606,7 +639,7 @@ apiVersion: networking.istio.io/v1beta1
 kind: ServiceEntry
 metadata:
   name: docker-hub
-  namespace: fid-ralo
+  namespace: iddm-production
 spec:
   hosts:
   - docker.io
@@ -629,7 +662,7 @@ apiVersion: networking.istio.io/v1beta1
 kind: ServiceEntry
 metadata:
   name: github
-  namespace: fid-ralo
+  namespace: iddm-production
 spec:
   hosts:
   - github.com
@@ -648,7 +681,7 @@ apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
   name: docker-hub-routing
-  namespace: fid-ralo
+  namespace: iddm-production
 spec:
   hosts:
   - docker.io
@@ -682,7 +715,7 @@ apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
 metadata:
   name: egressgateway-for-docker
-  namespace: fid-ralo
+  namespace: iddm-production
 spec:
   host: istio-egressgateway.istio-system.svc.cluster.local
   trafficPolicy:
@@ -690,7 +723,7 @@ spec:
       mode: ISTIO_MUTUAL
 ```
 
-#### Advanced Egress Features
+##### Advanced Egress Features
 
 You may also include any of these advanced egress features as needed. 
 
@@ -711,7 +744,7 @@ apiVersion: networking.istio.io/v1beta1
 kind: Sidecar
 metadata:
   name: default
-  namespace: fid-production
+  namespace: iddm-production
 spec:
   egress:
   - hosts:
@@ -797,7 +830,7 @@ spec:
       caCertificates: /etc/certs/ca-cert.pem
 ```
 
-### Apply Istio configurations
+## 7. Apply Istio configurations
 
 Once you have finalized all your Istio configurations, apply them by running the following commands:
 
@@ -806,7 +839,7 @@ kubectl apply -f /tmp/fid-ingress-config.yaml
 kubectl apply -f /tmp/fid-egress-config.yaml
 ```
 
-## Add Additional Annotations for Microservices
+## 8. Add Additional Annotations for Microservices
 
 The Identity Data Management StatefulSet receives its annotations from values.yaml. However, microservice deployments must be patched separately (This step is optional. Use it only when you need to exclude specific ports as part of network policies):
 
@@ -816,7 +849,7 @@ for deployment in authentication api-gateway directory-browser \
                   directory-namespace directory-schema settings \
                   system-administration data-catalog zipkin \
                   iddm-ui iddm-proxy; do
-  kubectl patch deployment $deployment -n fid-production --type='json' -p='[
+  kubectl patch deployment $deployment -n iddm-production --type='json' -p='[
     {
       "op": "add",
       "path": "/spec/template/metadata/annotations",
@@ -828,15 +861,15 @@ for deployment in authentication api-gateway directory-browser \
 done
 ```
 
-## Verify and run tests for the deployment
+### 9. Verify deployment
 
-1. Check that pods are ready and sidecars are injected: 
+i. Check that pods are ready and sidecars are injected: 
 
 ```
-kubectl get pods -n fid-production
+kubectl get pods -n iddm-production
 ```
 
-2. Get the ingress gateway address and test web access: 
+ii. Get the ingress gateway address and test web access: 
 
 ```
 export INGRESS_HOST=$(kubectl get svc -n istio-system istio-ingressgateway \
@@ -848,7 +881,7 @@ export INGRESS_HOST=$(kubectl get svc -n istio-system istio-ingressgateway \
 curl -k https://$INGRESS_HOST/classic -H "Host: fid.example.com"
 ```
 
-3. Test LDAP and LDAPS: 
+iii. Test LDAP and LDAPS: 
 
 ```
 ldapsearch -x -H ldap://$INGRESS_HOST:389 \
@@ -864,26 +897,26 @@ ldapsearch -H ldaps://$INGRESS_HOST:636 \
   -b "dc=example,dc=com"
 ```
 
-4. Test egress from inside a pod: 
+iv. Test egress from inside a pod: 
 
 ```
-kubectl exec -n fid-production deployment/api-gateway -c api-gateway -- \
+kubectl exec -n iddm-production deployment/api-gateway -c api-gateway -- \
   curl -s https://api.github.com/rate_limit
 ```
 
 ## Troubleshooting common issues 
 
-### 1. Init Containers Failing (Connection Refused)
+### Init Containers Failing (Connection Refused)
 
 Issue: FID init containers fail with "connection refused" to ZooKeeper.
 
 Check:
 
-```bash
-kubectl describe pod fid-0 -n fid-production
+```
+kubectl describe pod fid-0 -n iddm-production
 # Look for init container failures
 
-kubectl logs fid-0 -n fid-production -c check-zk
+kubectl logs fid-0 -n iddm-production -c check-zk
 # Shows: "Connection refused" errors
 ```
 
@@ -891,7 +924,7 @@ kubectl logs fid-0 -n fid-production -c check-zk
 
 Fix:
 
-```yaml
+```
 # Add to values.yaml at TOP LEVEL (not under fid:)
 podAnnotations:
   proxy.istio.io/config: |
@@ -901,8 +934,8 @@ podAnnotations:
 
 If Helm annotations don’t apply:
 
-```bash
-kubectl patch statefulset fid -n fid-production --type='json' -p='[
+```
+kubectl patch statefulset fid -n iddm-production --type='json' -p='[
   {
     "op": "add",
     "path": "/spec/template/metadata/annotations/proxy.istio.io~1config",
@@ -912,14 +945,14 @@ kubectl patch statefulset fid -n fid-production --type='json' -p='[
 ```
 
 
-### 2. Authentication Service Returns 503
+### Authentication Service Returns 503
 
 Issue: Authentication fails with "503 Service Unavailable" when calling `fid-app`.
 
 Check:
 
-```bash
-kubectl logs deployment/authentication -n fid-production -c authentication
+```
+kubectl logs deployment/authentication -n iddm-production -c authentication
 # Shows: Error connecting to fid-app:2389 or fid-app:8089
 ```
 
@@ -927,19 +960,19 @@ kubectl logs deployment/authentication -n fid-production -c authentication
 
 Fix:
 
-```bash
+```
 # Patch all microservices to exclude these ports
-bash /tmp/patch-microservices.sh fid-production
+bash /tmp/patch-microservices.sh iddm-production
 ```
 
-### 3. Directory Manager User Not Found
+### Directory Manager User Not Found
 
 Issue: Authentication fails with "user not found" despite FID running.
 
 Check:
 
-```bash
-kubectl logs fid-0 -n fid-production -c fid | grep -i "directory manager"
+```
+kubectl logs fid-0 -n iddm-production -c fid | grep -i "directory manager"
 # Should show: Username: cn=Directory Manager
 ```
 
@@ -947,32 +980,32 @@ kubectl logs fid-0 -n fid-production -c fid | grep -i "directory manager"
 
 Fix: Ensure all port exclusions are in place, then delete and recreate FID pods:
 
-```bash
-kubectl delete pod fid-0 -n fid-production
-kubectl wait --for=condition=ready pod fid-0 -n fid-production --timeout=300s
+```
+kubectl delete pod fid-0 -n iddm-production
+kubectl wait --for=condition=ready pod fid-0 -n iddm-production --timeout=300s
 ```
 
 
-### 4. Pods Not Getting Sidecars
+### Pods Not Getting Sidecars
 
 Issue: Pods show 1/1 containers instead of 2/2.
 
 Check:
 
-```bash
-kubectl get namespace fid-production -o yaml | grep istio-injection
+```
+kubectl get namespace iddm-production -o yaml | grep istio-injection
 ```
 
 Fix:
 
-```bash
-kubectl label namespace fid-production istio-injection=enabled
-kubectl rollout restart deployment -n fid-production
-kubectl rollout restart statefulset fid -n fid-production
+```
+kubectl label namespace iddm-production istio-injection=enabled
+kubectl rollout restart deployment -n iddm-production
+kubectl rollout restart statefulset fid -n iddm-production
 ```
 
 
-### 5. 503 Service Unavailable – Investigation
+### 503 Service Unavailable – Investigation
 
 Issue: Frequent 503 errors, often from `api-gateway` to backend.
 
@@ -980,23 +1013,23 @@ Issue: Frequent 503 errors, often from `api-gateway` to backend.
 
 Check Envoy configuration:
 
-```bash
-kubectl exec -n fid-ralo deployment/api-gateway -c istio-proxy -- \
+```
+kubectl exec -n iddm-production deployment/api-gateway -c istio-proxy -- \
   curl -s localhost:15000/clusters | grep authentication
 ```
 
 Test direct connectivity:
 
-```bash
-kubectl exec -n fid-ralo deployment/api-gateway -c api-gateway -- \
+```
+kubectl exec -n iddm-production deployment/api-gateway -c api-gateway -- \
   wget -O- http://authentication-service:80/actuator/health
 ```
 
 Check for IP mismatch:
 
-```bash
-kubectl get svc authentication-service -n fid-ralo -o wide
-kubectl get endpoints authentication-service -n fid-ralo
+```
+kubectl get svc authentication-service -n iddm-production -o wide
+kubectl get endpoints authentication-service -n iddm-production
 ```
 
 **Root Causes:**
@@ -1013,21 +1046,21 @@ kubectl get endpoints authentication-service -n fid-ralo
 4. Exclude ports for binary protocols → Use pod annotations
 
 
-### 6. FID-0 Continuously Restarting
+### FID-0 Continuously Restarting
 
 Issue: FID-0 restarts with "Connection reset by peer" to ZooKeeper.
 
 Check:
 
-```bash
-kubectl logs fid-0 -n fid-production -c fid | grep -i zookeeper
+```
+kubectl logs fid-0 -n iddm-production -c fid | grep -i zookeeper
 ```
 
 **Root Cause:** Outbound ZooKeeper traffic intercepted by Istio; sidecar cannot handle ZooKeeper protocol.
 
 Fix:
 
-```yaml
+```
 podAnnotations:
   traffic.sidecar.istio.io/excludeInboundPorts: "7070,7171,8089,8090"
   traffic.sidecar.istio.io/excludeOutboundPorts: "7070,7171,8089,8090,2181,2888,3888"
@@ -1036,69 +1069,69 @@ podAnnotations:
 > Note: Port 2181 must be excluded for FID pods.
 
 
-### 7. LDAP Connection Refused
+### LDAP Connection Refused
 
 Issue: LDAP connections fail through Istio.
 
 Check:
 
-```bash
-kubectl get deployment fid -n fid-production -o yaml | grep -A5 excludeInboundPorts
+```
+kubectl get deployment fid -n iddm-production -o yaml | grep -A5 excludeInboundPorts
 ```
 
 Fix:
 
-```yaml
+```
 podAnnotations:
   traffic.sidecar.istio.io/excludeInboundPorts: "2389,2636"
 ```
 
 
-### 8. External Services Blocked
+### External Services Blocked
 
 Issue: Cannot reach external services.
 
 Check:
 
-```bash
-kubectl get serviceentry -n fid-production
+```
+kubectl get serviceentry -n iddm-production
 kubectl logs -n istio-system deployment/istio-egressgateway
 ```
 
 Fix: Add ServiceEntry for the external service, ensure egress gateway is running, and verify firewall rules.
 
 
-### 9. High Latency
+### High Latency
 
 Issue: Requests are slower than expected.
 
 Check:
 
-```bash
-kubectl exec -n fid-production deployment/api-gateway -c istio-proxy -- \
+```
+kubectl exec -n iddm-production deployment/api-gateway -c istio-proxy -- \
   curl -s localhost:15000/stats | grep upstream_rq_time
 ```
 
 Fix: Reduce circuit breaker sensitivity, increase connection pool size, and consider excluding internal ports from the mesh.
 
 
-### 10. Certificate Issues
+### Certificate Issues
 
 Issue: TLS handshake failures.
 
 Check:
 
-```bash
-kubectl get secret fid-tls-cert -n fid-production
+```
+kubectl get secret fid-tls-cert -n iddm-production
 openssl s_client -connect $INGRESS_HOST:443 -servername fid.example.com
 ```
 
 Fix:
 
-```bash
+```
 kubectl create secret tls fid-tls-cert \
   --cert=path/to/cert.pem \
   --key=path/to/key.pem \
-  -n fid-production
+  -n iddm-production
 ```
 
