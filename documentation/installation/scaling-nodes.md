@@ -5,9 +5,7 @@ description: Learn how to safely remove a node from you RadiantOne Identity Data
 
 # Scaling Cluster Nodes 
 
-This guide describes the procedure for safely scaling down and subsequently scaling up a RadiantOne Identity Data Management cluster deployed in Kubernetes.
-The procedure ensures that the node being removed is cleanly unregistered from cluster metadata, preventing orphaned entries in ZooKeeper.
-
+This guide covers steps to safely scale down and subsequently scale up a self-managed RadiantOne Identity Data Management cluster deployed in Kubernetes.
 
 ## Prerequisites
 
