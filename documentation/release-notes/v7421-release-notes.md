@@ -40,9 +40,7 @@ For specific hardware requirements of each, read the [system requirements](../sy
 ## Improvements
 
 - [IV4-372]: Improvement to the SCrypt parameters to strengthen the computational cost based on the latest security evaluation.
-- [IV4-380]: Added a new "Allow Anonymous Access Legacy Behavior" checkbox to the Settings -> Security -> Access Control page. When anonymous access is disabled, the RadiantOne LDAP service rejects simple bind requests that include a non-empty bind DN but no password, returning this error:
-“Password must be provided: simple bind operations are not allowed to contain a bind DN without a password.” This behavior complies with RFC 4513.
-To allow the RadiantOne LDAP service to process these requests as anonymous binds in accordance with RFC 2251 and to treat a bind DN with no password as an anonymous user, enable the ALLOW ANONYMOUS ACCESS LEGACY BEHAVIOR option.
+- [IV4-380]: Added a new "Allow Anonymous Access Legacy Behavior" checkbox to the Settings -> Security -> Access Control page. When anonymous access is disabled, the RadiantOne LDAP service rejects simple bind requests that include a non-empty bind DN but no password, returning this error: “Password must be provided: simple bind operations are not allowed to contain a bind DN without a password.” This behavior complies with RFC 4513. To allow the RadiantOne LDAP service to process these requests as anonymous binds in accordance with RFC 2251 and to treat a bind DN with no password as an anonymous user, enable the ALLOW ANONYMOUS ACCESS LEGACY BEHAVIOR option.
 - [IV4-391, SQ-662]: External token validators feature now supports multiple "Expected scope" values. They can be specified as a comma separated list of scope values in the token validators page.
 - [IV4-393, SQ-650]: Improvement to allow users to change the access log timestamp format to ISO format and allows users to change the timezone for the access log timestamps.
 - [IV4-410,462 SQ-1108]: Added "JDBC Fetch Size" field to database content and container nodes in the directory namespace tab and view designer.
@@ -85,3 +83,4 @@ Once logged in, navigate to: Customer Downloads/update_installers/7.4/<PatchVers
 Feedback and problems can be reported from the Support Center/Knowledge Base accessible from: https://support.radiantlogic.com 
 
 If you do not have a user ID and password to access the site, please contact: support@radiantlogic.com.
+
