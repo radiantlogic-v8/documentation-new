@@ -48,9 +48,10 @@ This guide shows developers how to deploy a self‑managed Identity Data Managem
 ## Files you need to prepare
 
 Make sure these files exist and are accessible from your deployment environment. 
-- `values.yaml` – IDDM/FID Helm values with Istio‑specific annotations (namespace‑scoped deployment config). - `fid-ingress-config.yaml` – Istio `Gateway` and `VirtualService` for external ingress (HTTPS, LDAP, LDAPS, HTTP redirect). - `fid-egress-config.yaml` – Istio `Gateway`, `ServiceEntry`, `VirtualService`, and `DestinationRule` for outbound traffic control (for example Docker Hub, GitHub). - `patch-microservices.sh` – Optional shell script to patch IDDM microservice `Deployment` objects with extra Istio annotations (port exclusions, etc.). 
-You can keep these in a dedicated folder (for example `iddm-istio/`) and check them into source control for reuse. 
-***
+- `values.yaml` – IDDM/FID Helm values with Istio‑specific annotations (namespace‑scoped deployment config). 
+- `fid-ingress-config.yaml` – Istio `Gateway` and `VirtualService` for external ingress (HTTPS, LDAP, LDAPS, HTTP redirect). 
+- `fid-egress-config.yaml` – Istio `Gateway`, `ServiceEntry`, `VirtualService`, and `DestinationRule` for outbound traffic control (for example Docker Hub, GitHub). 
+- `patch-microservices.sh` – Optional shell script to patch IDDM microservice `Deployment` objects with extra Istio annotations (port exclusions, etc.). 
 
 
 ## Install Istio
