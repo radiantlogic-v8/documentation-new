@@ -16,7 +16,7 @@ Istio introduces a programmable data plane (Envoy sidecars) and a centralized co
 
 At a high level, the architecture flow looks like this:
 
-[!Istio IDDM Architecture](images/istio-arch.png)
+![Istio IDDM Architecture](../images/istio-arch.png)
 
 This architecture enables consistent policy enforcement, mutual TLS (mTLS), traffic shaping, resilience controls, and deep observability.
 
