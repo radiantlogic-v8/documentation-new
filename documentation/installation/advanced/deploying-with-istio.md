@@ -25,8 +25,11 @@ This architecture enables consistent policy enforcement, mutual TLS (mTLS), traf
 
 * A functioning Kubernetes cluster
 * `kubectl` and `helm` configured with appropriate access
-* Access to the Identity Data Management/IDDM Helm registry and license
 * DNS records and TLS certificates prepared for production hostnames (if using TLS)
+* `holdApplicationUntilProxyStarts` must be enabled for init containers to work
+* Traffic Exclusions: ZooKeeper and internal Identity Data Management fid ports must be excluded from interception
+
+Pod Annotations: Must be applied at the StatefulSet level for FID pods
 
 
 ## Deployment Workflow
