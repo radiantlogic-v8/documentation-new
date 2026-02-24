@@ -5,7 +5,7 @@ description: Learn how to deploy self-managed Identity Data Management with Isti
 
 # Deploying with Istio Service Mesh
 
-This guide shows developers how to deploy a self‑managed Identity Data Management (FID/IDDM) cluster on Kubernetes with Istio for ingress, egress, and service‑to‑service traffic management. 
+This guide shows developers how to deploy a self‑managed Identity Data Management cluster on Kubernetes with Istio for ingress, egress, and service‑to‑service traffic management. 
 
 The document assumes familiarity with Kubernetes, Helm, and enterprise networking concepts.
 
