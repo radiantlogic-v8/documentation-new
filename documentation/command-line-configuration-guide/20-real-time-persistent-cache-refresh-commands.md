@@ -20,7 +20,7 @@ Several commands in this chapter contain the argument connectorname. For persist
 This command empties the queue of a specified real-time persistent cache refresh, identified by a pipeline ID.
 
 **Usage**
-<br>`empty-queues -pipelineid <pipelineid> [-mode <mode>]`
+<br>`empty-queues -pipelineid <pipelineid> [-timeout <timeout>] [-mode <mode>]`
 
 **Command Arguments:**
 
@@ -29,6 +29,9 @@ This command empties the queue of a specified real-time persistent cache refresh
 
 `- mode <mode>`
 <br>This property indicates which queue to empty. Accepted values are: QUEUE_ONLY, DEAD_LETTER_QUEUE, or ALL. If mode is not passed in the command, ALL is the default. For persistent cache refreshes, mode is typically left empty. For global synchronization queues, you may want to only empty the main queue or the dead letter queue.
+
+`-timeout <timeout>`
+<br>[optional] Specify the maximum duration (in minutes) that vdsconfig will wait for the empty-queues operation to complete before failing with a timeout error. If omitted, the command uses its default timeout, which may be too short for large queues. 
 
 **REST (ADAP) Example**
 
@@ -344,4 +347,5 @@ This command is used to resume or suspend (stop) and the capture process associa
 
 `- state <state>`
 <br>[required] The state for the pipeline. Use a value of “resume” to start the real-time persistent cache refresh process. Use a value of “suspend” to stop the real-time persistent cache refresh process.
+
 
