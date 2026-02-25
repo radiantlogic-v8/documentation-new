@@ -7,3 +7,5 @@ description: Monitoring and Reporting
 - [Alerts](alerts-settings.md)
 - [Data Collectors](data-collectors.md)
 - [Auditing and Reporting](02-auditing-and-reporting.md)
+- [Usage Analytics](03-usage-analytics.md)
+
