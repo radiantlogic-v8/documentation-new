@@ -97,7 +97,6 @@ You may also automate this process by using the following script.
 
 ```
 ## Automation Script 
-```bash
 #!/bin/bash
 # fid-scale-down.sh — Production FID Scale-Down
 # Usage: ./fid-scale-down.sh <namespace> <target-replicas>
