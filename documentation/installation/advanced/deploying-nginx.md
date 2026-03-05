@@ -15,14 +15,14 @@ integration with Identity Data Management’s internal HAProxy proxy, and a prod
 
 ## Prerequisites
 
-### Required Tools
+### Required tools
 
 Before beginning, confirm that the following tools are installed and properly configured:
 
 - **kubectl** version 1.19 or later 
 - **Helm** version 3.0 or higher
 
-```bash
+```
 # Verify installed tools
 kubectl version --client    # Kubernetes CLI (1.19+)
 helm version               # Helm 3.0+
@@ -35,7 +35,7 @@ kubectl auth can-i create configmap --all-namespaces
 
 The `kubectl auth can-i` command verifies that your current credentials have sufficient permissions to create ConfigMaps cluster-wide, required for the TCP services configuration step.
 
-### Required Information
+### Required information
 
 Have the following information ready, as you will be required to provide it in the later steps of the deployment process:
 
@@ -49,7 +49,7 @@ Have the following information ready, as you will be required to provide it in t
 
 ## Understanding the Architecture
 
-### Traffic Flow with NGINX
+### Traffic flow with NGINX
 
 The following diagram shows how external traffic flows through the Ingress NGINX Controller into Identity Data Management. 
 
@@ -74,7 +74,7 @@ Internet/Users
 ```
 
 
-### Key Components
+### Key components
 
 - **Ingress NGINX Controller:** Handles all external traffic.
 - **Identity Data Management Proxy (HAProxy):** Internal reverse proxy for HTTP/HTTPS.
@@ -573,12 +573,12 @@ Create chart name and version as used by the chart label.
 {{- end }}
 ```
 
-#### vii. Configure TCP Services
+#### vii. Configure TCP services
 
 Because NGINX's TCP forwarding is controlled by a ConfigMap rather than the Ingress resource, a post-install job is used to apply the ConfigMap after the controller is running. 
 The job runs after every install or upgrade.
 
-```yaml
+```
 # templates/configure-tcp-job.yaml
 apiVersion: v1
 kind: ServiceAccount
@@ -655,7 +655,7 @@ spec:
               echo "TCP services configured successfully"
 ```
 
-#### viii. Add Health Check Configuration
+#### viii. Add health check configuration
 
 This file exposes the NGINX controller's built-in health endpoint, allowing external monitoring systems and load balancer health checks to verify that the controller is running and ready to accept traffic.
 
@@ -777,22 +777,22 @@ data:
 # External port 389 → FID service port 2389
 ```
 
-### LDAPS Configuration Options
+### LDAPS configuration options
 
-#### Option 1: SSL Passthrough (Recommended)
+#### Option 1: SSL passthrough (Recommended)
 
 In passthrough mode, NGINX forwards the encrypted TCP stream directly to FID without decrypting it. FID handles the TLS handshake end-to-end, which is preferable when certificate management is handled within FID or when end-to-end encryption is required.
 
-```yaml
+```
 # FID handles SSL/TLS
 636: "iddm-prod/my-iddm-fid:2636"
 ```
 
-#### Option 2: SSL Termination
+#### Option 2: SSL termination
 
 In termination mode, NGINX decrypts the LDAPS connection and forwards plain LDAP traffic to FID. This is simpler to configure but means traffic between NGINX and FID is unencrypted inside the cluster.
 
-```yaml
+```
 # NGINX terminates SSL (requires stream snippets)
 636: "iddm-prod/my-iddm-fid:2389"
 
@@ -806,14 +806,14 @@ stream-snippets: |
   }
 ```
 
-## Advanced Configurations
+## Advanced configurations
 
 ### Multiple ingress classes
 
 If you need to route different traffic through different NGINX controllers (for example, separating internal and external traffic), 
 you can deploy multiple controller instances with distinct ingress class names.
 
-```yaml
+```
 # Deploy multiple NGINX controllers
 NGINX:
   controller:
@@ -826,11 +826,11 @@ NGINX-external:
     electionID: NGINX-external-leader
 ```
 
-### Custom Error Pages
+### Custom error pages
 
 Custom error pages improve the user experience by displaying branded, informative messages instead of the default NGINX error responses.
 
-```yaml
+```
 # templates/error-pages.yaml
 apiVersion: v1
 kind: ConfigMap
@@ -858,7 +858,7 @@ data:
     </html>
 ```
 
-### Optional Advanced Features
+### Optional advanced features
 
 #### Rate Limiting 
 
@@ -928,7 +928,7 @@ metadata:
 
 ## Troubleshooting
 
-### Common Issues
+### Common issues
 
 #### 1. TCP services not working
 
@@ -945,7 +945,7 @@ kubectl get configmap -n iddm-prod my-iddm-NGINX-ingress-NGINX-controller-tcp -o
 kubectl logs -n iddm-prod -l app.kubernetes.io/name=ingress-NGINX -f | grep -i tcp
 ```
 
-#### 2. 502 Bad Gateway
+#### 2. 502 Bad gateway
 
 A 502 response means NGINX reached the backend service but received an error or no response. Check that the backend service exists and has healthy endpoints before testing internal connectivity directly.
 
@@ -962,7 +962,7 @@ kubectl run -it --rm debug --image=nicolaka/netshoot -n iddm-prod -- bash
 curl -v http://my-iddm-proxy
 ```
 
-#### 3. Certificate Issues
+#### 3. Certificate issues
 
 Certificate problems typically manifest as browser warnings or TLS handshake failures. Verify the secret exists and that the certificate it contains is valid and covers the correct hostnames.
 
@@ -977,7 +977,7 @@ kubectl describe certificate -n iddm-prod
 kubectl get secret my-iddm-tls -n iddm-prod -o jsonpath='{.data.tls\.crt}' | base64 -d | openssl x509 -text -noout
 ```
 
-#### 4. LDAP Connection Failed
+#### 4. LDAP connection failed
 
 If LDAP connections fail at the client level, first confirm the LoadBalancer address is correct, then test with a basic `ldapsearch` before investigating at the network level with `tcpdump`.
 
@@ -1014,7 +1014,7 @@ kubectl get events -n iddm-prod --sort-by='.lastTimestamp'
 
 ## Verification and testing
 
-**1. Get LoadBalancer Address**
+**1. Get LoadBalancer address**
 
 The LoadBalancer may expose either a hostname (common on AWS) or an IP address (common on GCP/Azure). The command below handles both cases.
 
@@ -1027,7 +1027,7 @@ fi
 echo "NGINX LoadBalancer: $NGINX_LB"
 ```
 
-**2. Test HTTP to HTTPS Redirect**
+**2. Test HTTP to HTTPS redirect**
 
 A `308 Permanent Redirect` response confirms that the SSL redirect annotation is working correctly and all HTTP traffic will be upgraded to HTTPS.
 
@@ -1035,7 +1035,7 @@ A `308 Permanent Redirect` response confirms that the SSL redirect annotation is
 # Should return 308 Permanent Redirect
 curl -I http://$NGINX_LB -H "Host: iddm.example.com"
 ```
-**3. Test Web Services**
+**3. Test web services**
 
 ```
 # Test HTTPS
@@ -1046,7 +1046,7 @@ curl -k https://$NGINX_LB/api/health -H "Host: iddm.example.com"
 curl -k https://$NGINX_LB/classic/ -H "Host: iddm.example.com"
 ```
 
-**4. Test LDAP Services**
+**4. Test LDAP services**
 
 ```
 # Test LDAP
@@ -1059,7 +1059,7 @@ LDAPTLS_REQCERT=never ldapsearch -H ldaps://$NGINX_LB:636 -x -b "" -s base "(obj
 openssl s_client -connect $NGINX_LB:636 -servername ldap.iddm.example.com
 ```
 
-**5. Performance testing**
+**5. Test performance**
 
 These tests validate that the deployment can handle realistic load before going to production. Run them from outside the cluster to test the full network path.
 
@@ -1141,9 +1141,9 @@ NGINX:
           - NET_BIND_SERVICE
 ```
 
-### Backup Strategy
+### Backup strategy
 
-#### Configuration Backup
+#### Configuration backup
 
 Back up Ingress definitions, ConfigMaps, and secrets separately so they can be restored independently if needed.
 
@@ -1158,7 +1158,7 @@ kubectl get configmap -n iddm-prod -o yaml > configmap-backup.yaml
 kubectl get secret -n iddm-prod -o yaml > secret-backup.yaml
 ```
 
-#### Automated Backup
+#### Automated backup
 
 The CronJob below runs nightly at 2am and saves a snapshot of all Ingress-related resources to a mounted backup volume.
 
