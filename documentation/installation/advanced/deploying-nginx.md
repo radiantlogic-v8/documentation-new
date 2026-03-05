@@ -39,12 +39,12 @@ The `kubectl auth can-i` command verifies that your current credentials have suf
 
 Have the following information ready, as you will be required to provide it in the later steps of the deployment process:
 
-- [ ] **Target namespace** (example: `iddm-prod`) — the Kubernetes namespace where all IDDM components will be deployed
-- [ ] **Storage class name** for persistent volumes — required for Identity Data Management's FID core and ZooKeeper data persistence; this is cluster-specific (e.g., `gp3` on AWS, `managed-premium` on Azure)
-- [ ] **IDDM license key** — provided by Radiant Logic; the FID service will not start without it.
-- [ ] **Admin password** — the root password that you want to use for the Identity Data Management directory service.
-- [ ] **Domain name(s) for services** — the public DNS names clients will use to reach the IDDM web interface (e.g., `iddm.example.com`).
-- [ ] **TLS certificates** — either pre-generated certificates from your organization, or use cert-manager as described in the Advanced Configurations section.
+-  **Target namespace** (example: `iddm-prod`) — the Kubernetes namespace where all IDDM components will be deployed
+-  **Storage class name** for persistent volumes — required for Identity Data Management's FID core and ZooKeeper data persistence; this is cluster-specific (e.g., `gp3` on AWS, `managed-premium` on Azure)
+-  **IDDM license key** — provided by Radiant Logic; the FID service will not start without it.
+-  **Admin password** — the root password that you want to use for the Identity Data Management directory service.
+-  **Domain name(s) for services** — the public DNS names clients will use to reach the IDDM web interface (e.g., `iddm.example.com`).
+-  **TLS certificates** — either pre-generated certificates from your organization, or use cert-manager as described in the Advanced Configurations section.
 
 
 ## Understanding the Architecture
