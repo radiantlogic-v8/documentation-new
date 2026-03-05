@@ -16,7 +16,8 @@ description: Installing RadiantOne Identity Data Platform
     - [Configuration promotion](config-promotion.md)
     - [Advanced](#)
       - [Deploying with Istio](advanced/deploying-with-istio.md)
-      - [Deploying NGINX Ingress](advanced/deploying-nginx.md) 
+      - [Deploying NGINX Ingress](advanced/deploying-with-nginx.md) 
+
 
 
 
