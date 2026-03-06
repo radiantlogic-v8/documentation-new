@@ -53,6 +53,7 @@ Templates for cloud directory services are located on the OTHER tab.
 - Entra ID (formerly Azure AD). Use the template named mgraph or Entra ID.
 - PingOne. Use the template named SCIMv2.
 - Okta Universal Directory. Use the template named Okta.
+- Any SCIMv2 service.
 
 ### Applications/Other**
 
@@ -64,7 +65,6 @@ Templates for cloud directory services are located on the OTHER tab.
 - SharePoint 2010, 2013, 2016 (on-premises)
 - Workday
 - Concur
-- Any SCIM-accessible Service
 - Other
     - 	Web Services
     - 	RACF
@@ -74,3 +74,4 @@ Templates for cloud directory services are located on the OTHER tab.
     -  	Microsoft NT Domain
 
 >[!note] ** All of these require custom templates. Consult your Radiant Logic Account Representative for details.
+
