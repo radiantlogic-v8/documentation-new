@@ -3,7 +3,7 @@ title: Data Sources Supported
 description: Data Sources Supported
 ---
 
-This document describes the supported backend data sources supported by RadiantOne.
+This document describes the identity data sources supported by RadiantOne.
 
 ## Supported Identity Data Sources
 
@@ -25,12 +25,13 @@ Templates for directory services are located on the LDAP tab.
 - CA Directory r12.X. Use the Generic LDAP template.
 - Any LDAP v3 Service. Use the Generic LDAP template.
 
-### Database Servers	
+### Database Servers and Flat File Extracts
 
 To connect to the following databases, follow the steps to: [Create Data Sources](./data-sources#database-data-sources)
 
 Templates for databases are located on the DATABASE tab.
 
+- .CSV-formatted flat file
 - Oracle 8i, 9i, 10g, 11g, 12c
 - Microsoft SQL Server v2008 or higher
 - IBM DB2 (UDB) v7 or higher
@@ -50,28 +51,19 @@ To connect to the following cloud directory services, follow the steps to: [Crea
 
 Templates for cloud directory services are located on the OTHER tab.
 
-- Entra ID (formerly Azure AD). Use the template named mgraph or Entra ID.
+- Microsoft Entra ID (formerly Azure AD). Use the template named mgraph or Entra ID.
 - PingOne. Use the template named SCIMv2.
 - Okta Universal Directory. Use the template named Okta.
 - Any SCIMv2 service.
 
-### Applications/Other**
+### Cloud Priveleged Access Management
 
-- SAP
-- Siebel v7.5+
-- Oracle Financials v12+
-- Salesforce
-- Google Apps/Directory
-- SharePoint 2010, 2013, 2016 (on-premises)
-- Workday
-- Concur
-- Other
-    - 	Web Services
-    - 	RACF
-    -	ACF2
-    -	Top Secret
-    -	Java API
-    -  	Microsoft NT Domain
+- CyberArk Privileged Cloud
 
->[!note] ** All of these require custom templates. Consult your Radiant Logic Account Representative for details.
+### Identity Governance and Administration
+- Sailpoint Identity Security Cloud
+- Sailpoint IdentityIQ
+
+>[!note] For any data source that doesn't have an out-of-the-box template, the Radiant Logic Connector SDK can be used. It provides the framework and methodology for configuring a connector. This is our standard process to make sure the connector is tailored to your exact use case: which systems you care about, which users, groups, and attributes...etc. you need, and how often changes should flow. This ensures we can precisely define what data is retrieved and how it behaves in your environment, so you get a connector that fits your exact requirements. Consult your Radiant Logic Account Representative for details.
+
 
