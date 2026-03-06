@@ -58,8 +58,10 @@ Templates for cloud services are located on the OTHER tab.
 - CyberArk Privileged Cloud
 - Sailpoint Identity Security Cloud
 - Sailpoint IdentityIQ
+- Saviynt 
 
 >[!note] For any data source that doesn't have an out-of-the-box template, the Radiant Logic Connector SDK can be used. It provides the framework and methodology for configuring a connector. This is our standard process to make sure the connector is tailored to your exact use case: which systems you care about, which users, groups, and attributes...etc. you need, and how often changes should flow. This ensures we can precisely define what data is retrieved and how it behaves in your environment, so you get a connector that fits your exact requirements. Consult your Radiant Logic Account Representative for details.
+
 
 
 
