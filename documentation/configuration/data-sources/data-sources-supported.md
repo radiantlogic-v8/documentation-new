@@ -47,7 +47,7 @@ You have the option to use one of the above drivers, however, it is recommended 
 
 ### Applications
 
-- Sailpoint IdentityIQ
+- Sailpoint IdentityIQ. Use the template named SCIMv2.
 
 ### Cloud Directories and Services
 
@@ -59,7 +59,9 @@ Templates for cloud services are located on the OTHER tab.
 - PingOne. Use the template named SCIMv2.
 - Okta Universal Directory. Use the template named Okta.
 - Any SCIMv2 service
-- Salesforce 
+- Salesforce. Use the template named SCIMv2.
+- Zscaler. Use the template named SCIMv2.
+- Saviynt. Use the template named SCIMv2.
 
 
 <br>
@@ -70,6 +72,7 @@ Templates for cloud services are located on the OTHER tab.
 - ServiceNow
 
 >[!note] For any data source that doesn't have an out-of-the-box template, the Radiant Logic Connector SDK can be used. It provides the framework and methodology for configuring a connector. This is our standard process to make sure the connector is tailored to your exact use case: which systems you care about, which users, groups, and attributes...etc. you need, and how often changes should flow. This ensures we can precisely define what data is retrieved and how it behaves in your environment, so you get a connector that fits your exact requirements. Consult your Radiant Logic Account Representative for details.
+
 
 
 
