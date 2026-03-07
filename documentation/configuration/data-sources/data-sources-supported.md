@@ -45,6 +45,10 @@ The following JDBC drivers are installed with RadiantOne by default for convenie
 
 You have the option to use one of the above drivers, however, it is recommended that you use the driver that was delivered with the database that you want to connect to. Also, some of the drivers provided in the install for convenience don't support SSL/TLS access to the database server. You might need other libraries (additional .jar files) from the vendor to support this. These additional files must also be associated with the database template. Consult your database vendor documentation for driver details.
 
+### Applications
+
+- Sailpoint IdentityIQ
+
 ### Cloud Directories and Services
 
 To connect to the following cloud services, follow the steps to: [Create Data Sources](./data-sources#managing-data-sources)
@@ -54,17 +58,19 @@ Templates for cloud services are located on the OTHER tab.
 - Microsoft Entra ID (formerly Azure AD). Use the template named mgraph for Entra ID.
 - PingOne. Use the template named SCIMv2.
 - Okta Universal Directory. Use the template named Okta.
-- Any SCIMv2 service.
-- Sailpoint IdentityIQ
+- Any SCIMv2 service
+- Salesforce 
+
 
 <br>
 
   ![coming soon](Media/coming-soon.jpg)
 - CyberArk Privileged Cloud
 - Sailpoint Identity Security Cloud 
-- Saviynt 
+- ServiceNow
 
 >[!note] For any data source that doesn't have an out-of-the-box template, the Radiant Logic Connector SDK can be used. It provides the framework and methodology for configuring a connector. This is our standard process to make sure the connector is tailored to your exact use case: which systems you care about, which users, groups, and attributes...etc. you need, and how often changes should flow. This ensures we can precisely define what data is retrieved and how it behaves in your environment, so you get a connector that fits your exact requirements. Consult your Radiant Logic Account Representative for details.
+
 
 
 
