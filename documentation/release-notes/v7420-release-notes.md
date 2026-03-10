@@ -51,8 +51,8 @@ https://support.radiantlogic.com/hc/en-us/categories/4412501931540-Known-Issues
 
 ## Patch Installers
 
-To download the patch, click [here](https://files.radiantlogic.com/receive/?packageCode=IX0qTSRyilShjhpxusLWpUDzzb4rduq2tO9F81NhEt4#keycode=Niad1bODfyRmdW8PlGO-5In0mdRKsa0u6551qXXI1rA)
-Once logged in, navigate to: Customer Downloads/update_installers/7.4/<PatchVersion>/
+To download the patch, click [here](https://files.radiantlogic.com/receive/?packageCode=IX0qTSRyilShjhpxusLWpUDzzb4rduq2tO9F81NhEt4#keycode=Niad1bODfyRmdW8PlGO-5In0mdRKsa0u6551qXXI1rA).
+Once logged in, navigate to: `Customer Downloads/update_installers/7.4/<PatchVersion>/`
 
 ## How to Report Problems and Provide Feedback
 
