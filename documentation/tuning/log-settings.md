@@ -19,8 +19,7 @@ For each log component, you can configure settings for log level as well as choo
 
 ## Log Settings
 
-The Log Settings page provides granular, component-specific control over system logging. The displayed options vary based on the selected log component. Log levels, rollover size and number of files to keep in archive are configurable for each RadiantOne component. 
-
+The Log Settings page provides granular, component-specific control over system logging. Here are the log components available: 
 The available components include:
 
 - **RadiantOne Server Log**: Core directory server log capturing LDAP requests and responses, backend commands, and server-side errors for general troubleshooting of the RadiantOne service.  
@@ -47,6 +46,30 @@ The available components include:
 
 - **Custom Data Source**:  Log category for connectors built using the latest Connector SDK.
 
+### SaaS vs. Self-Managed Log Settings
+
+The available log configuration options differ depending on whether RadiantOne is deployed as **SaaS** or **Self-Managed**.  
+
+Self-managed deployments include additional **advanced log management settings** such as log file rollover, archive retention, and integrity verification.
+
+The table below shows which settings are available in each component based on the deployment type. 
+
+| Log Component | SaaS Settings | Self-Managed Settings |
+|---|---|---|
+| RadiantOne Server | Log Level, Enable Debug SSL, Log Failure Notification | Log Level, Enable Debug SSL, Log Failure Notification, Rollover Size, Archive Files to Keep, Integrity Assurance |
+| RadiantOne LDAP Access | Ignore Access Logs for Naming Contexts | Ignore Access Logs for Naming Contexts, Rollover Size, Archive Files to Keep, Integrity Assurance |
+| ADAP Access | Log Level | Log Level, Rollover Size, Archive Files to Keep, Integrity Assurance |
+| SCIM | Log Level | Log Level, Rollover Size, Archive Files to Keep, Integrity Assurance |
+| Persistent Cache Periodic Refresh | Log Level | Log Level, Rollover Size, Archive Files to Keep, Integrity Assurance |
+| Sync Agents | Log Level | Log Level, Rollover Size, Archive Files to Keep, Integrity Assurance |
+| Sync Engine | Log Level | Log Level |
+| Control Panel Server | Log Level | Log Level, Rollover Size, Archive Files to Keep, Integrity Assurance |
+| Control Panel Access | Log Level | Log Level, Rollover Size, Archive Files to Keep, Integrity Assurance |
+| Scheduler Server | Log Level | Log Level, Rollover Size, Archive Files to Keep, Integrity Assurance |
+| Scheduled Tasks | Log Level | Log Level, Rollover Size, Archive Files to Keep, Integrity Assurance |
+| Custom Data Source | Data Source, Log Level | Data Source, Log Level, Rollover Size, Archive Files to Keep, Integrity Assurance |
+
+See the sections below to learn more about log settings. 
 
 ### Log levels
 
