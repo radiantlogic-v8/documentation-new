@@ -67,7 +67,7 @@ For specific hardware requirements of each, read the [system requirements](../sy
 
 ## Known Issues/Important Notes
 
-- CRL checking via OCSP when in FIPS-mode does not work and returns this error: javax.net.ssl.SSLHandshakeException: PKIX path validation failed: java.security.cert.CertPathValidatorException  <br> This issue has been fixed in v7.4.18 tracked in release notes item IV4-253. Customers must indicate to use the new library by settings usingPrevalidationFipsJar: true in Zookeeper at /radiantone/<version>/<clusterName>/config/vds_server.conf
+- CRL checking via OCSP when in FIPS-mode does not work and returns this error: javax.net.ssl.SSLHandshakeException: PKIX path validation failed: java.security.cert.CertPathValidatorException  <br> This issue has been fixed in v7.4.18 tracked in release notes item IV4-253. Customers must indicate to use the new library by settings usingPrevalidationFipsJar: true in Zookeeper at `/radiantone/<version>/<clusterName>/config/vds_server.conf`
 - If the environment variable RLI_CLI_VERBOSE is set to false, it must be temporarily set to true during product installation or update. Failure to do so may result in an incomplete or failed installation. After the installation or update completes successfully, the variable may be reverted to false if desired. If RLI_CLI_VERBOSE is not defined, or is already set to true, no action is required.
 
 For known issues reported after the release, please see the Radiant Logic Knowledge Base: 
@@ -83,5 +83,6 @@ Once logged in, navigate to: `Customer Downloads/update_installers/7.4/<PatchVer
 Feedback and problems can be reported from the Support Center/Knowledge Base accessible from: https://support.radiantlogic.com 
 
 If you do not have a user ID and password to access the site, please contact: support@radiantlogic.com.
+
 
 
