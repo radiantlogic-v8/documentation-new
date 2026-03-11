@@ -140,6 +140,27 @@ openssl dgst -verify <path_to_publickey_file> -keyform PEM -sha512 -signature <p
 If the source file is authentic, the above command returns “Verified OK”. If the source file has been tampered with, the above command returns “Verification Failure”.
 ```
 
+### Production Tuning and Log Management Guidelines
+
+Proper log management is essential for maintaining consistent performance and predictable storage usage in production environments. Use the following guidelines to estimate log growth, retention, and storage requirements before deployment.
+
+**Log Configuration Considerations**
+
+<u>Log level</u>: Determine the log level required for production. A minimal log level suitable for auditing is recommended to reduce storage consumption and system overhead.
+
+<u>Log growth rate</u>: Estimate how quickly log files will grow based on expected transaction volume and system activity. Use a QA or staging environment with simulated production load to collect growth metrics and predict log rollover frequency.
+
+<u>Archived file count</u>: Configure the number of rolled-over log files to retain. This setting directly affects how large the log archive can grow. Larger values provide a longer log history for troubleshooting but increase disk space usage.
+
+<u>Log retention period</u>: By default, rolled-over log files are retained indefinitely. Define a retention period that aligns with your organization’s compliance and operational requirements.
+
+<u>Log file formats</u>: If both the text and CSV log formats are enabled, each `vds_server_access` log entry is written twice—once in text format and once in CSV—effectively doubling the number of generated log files. Plan storage and rollover settings accordingly.
+
+**Validation and Sizing**
+Perform all log tuning and sizing tests in a QA environment with load conditions representative of production usage. This ensures that log rotation, retention, and performance characteristics are validated before deployment.
+
+By balancing log level, growth rate, archive count, retention period, and output format, you can achieve efficient and sustainable log management for production operation.
+
 ## Changelog
 
 The changelog is one of the recommended approaches for other processes to detect changes that have happened to RadiantOne entries. The [Persistent Search control](/configuration/global-settings/client-protocols#supported-controls) is the other method that can be used.
