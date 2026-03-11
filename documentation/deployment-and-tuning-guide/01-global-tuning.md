@@ -246,15 +246,16 @@ To enable checking for this category of computer/client, check the Enable Access
 Proper log management is essential for maintaining consistent performance and predictable storage usage in production environments. Use the following guidelines to estimate log growth, retention, and storage requirements before deployment.
 
 **Log Configuration Considerations**
-Log level: Determine the log level required for production. A minimal log level suitable for auditing is recommended to reduce storage consumption and system overhead.
 
-Log growth rate: Estimate how quickly log files will grow based on expected transaction volume and system activity. Use a QA or staging environment with simulated production load to collect growth metrics and predict log rollover frequency.
+<u>Log level</u>: Determine the log level required for production. A minimal log level suitable for auditing is recommended to reduce storage consumption and system overhead.
 
-Archived file count: Configure the number of rolled-over log files to retain. This setting directly affects how large the log archive can grow. Larger values provide a longer log history for troubleshooting but increase disk space usage.
+<u>Log growth rate</u>: Estimate how quickly log files will grow based on expected transaction volume and system activity. Use a QA or staging environment with simulated production load to collect growth metrics and predict log rollover frequency.
 
-Log retention period: By default, rolled-over log files are retained indefinitely. Define a retention period that aligns with your organization’s compliance and operational requirements.
+<u>Archived file count</u>: Configure the number of rolled-over log files to retain. This setting directly affects how large the log archive can grow. Larger values provide a longer log history for troubleshooting but increase disk space usage.
 
-Log file formats: If both the text and CSV log formats are enabled, each vds_server_access log entry is written twice—once in text format and once in CSV—effectively doubling the number of generated log files. Plan storage and rollover settings accordingly.
+<u>Log retention period</u>: By default, rolled-over log files are retained indefinitely. Define a retention period that aligns with your organization’s compliance and operational requirements.
+
+<u>Log file formats</u>: If both the text and CSV log formats are enabled, each `vds_server_access` log entry is written twice—once in text format and once in CSV—effectively doubling the number of generated log files. Plan storage and rollover settings accordingly.
 
 **Validation and Sizing**
 Perform all log tuning and sizing tests in a QA environment with load conditions representative of production usage. This ensures that log rotation, retention, and performance characteristics are validated before deployment.
@@ -286,4 +287,5 @@ For the RadiantOne service to maintain efficiency and performance (as well as sa
 ### Log Archiving
 
 Depending on the log level configured for RadiantOne (the higher the log level, the faster log files grow), you should configure realistic log archiving (to avoid filling up available disk space with too many log files). For more information on log archiving, please see the RadiantOne [RadiantOne Logging and Troubleshooting Guide](/logging-and-troubleshooting-guide/01-overview).
+
 
