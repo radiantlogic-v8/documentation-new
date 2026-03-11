@@ -157,6 +157,7 @@ Proper log management is essential for maintaining consistent performance and pr
 <u>Log file formats</u>: If both the text and CSV log formats are enabled, each `vds_server_access` log entry is written twice—once in text format and once in CSV—effectively doubling the number of generated log files. Plan storage and rollover settings accordingly.
 
 **Validation and Sizing**
+
 Perform all log tuning and sizing tests in a QA environment with load conditions representative of production usage. This ensures that log rotation, retention, and performance characteristics are validated before deployment.
 
 By balancing log level, growth rate, archive count, retention period, and output format, you can achieve efficient and sustainable log management for production operation.
