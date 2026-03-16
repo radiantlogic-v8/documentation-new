@@ -58,7 +58,7 @@ For specific hardware requirements of each, read the [system requirements](../sy
 - [IV4-390, SQ-1005]: Fixed an issue where the persistent search connector did not normalize DNs.
 - [IV4-396, SQ-960]: Fixed an issue so that preprocessing filters can now be added to custom object views.
 - [IV4-406, SQ-1096]: Validate computed attribute can now distinguish between 2 sibling nodes with the same RDN attribute.
-- [IV4-414, SQ-1097]: Fixed an issue where the Global Identity Builder authentication settings were not saved to the view the file automatically.
+- [IV4-414, SQ-1027]: Fixed an issue where the Global Identity Builder authentication settings were not saved to the view the file automatically.
 - [IV4-416, SQ-1113]: Fixed an issue where the replication thread gets stuck due to an invalid operation DN.
 - [IV4-422, SQ-1158]: Fixed an issue where the custom password policy's lockout setting was not functioning properly.
 - [IV4-424, SQ-1131]: Fixed an issue where AD‑to‑HDAP global sync topologies could set an incorrect user account control value in the target HDAP store.
