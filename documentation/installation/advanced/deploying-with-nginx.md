@@ -6,7 +6,7 @@ description: Learn how to deploy self-managed Identity Data Management with Ingr
 
 ## Overview
 
-This guide provides comprehensive instructions for deploying [Ingress NGINX Controller](https://kubernetes.github.io/ingress-NGINX/) to handle all traffic types for Identity Data Management,
+This guide provides comprehensive instructions for deploying [Ingress NGINX Controller](https://kubernetes.io/blog/2025/11/11/ingress-nginx-retirement/#about-ingress-nginx) to handle all traffic types for Identity Data Management,
 including HTTP/HTTPS for web services and TCP for LDAP/LDAPS.
 
 By following this guide, you will configure a single LoadBalancer service capable of handling multiple protocols, including HTTP and HTTPS
