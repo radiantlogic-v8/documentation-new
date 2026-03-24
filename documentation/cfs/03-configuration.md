@@ -675,6 +675,30 @@ Name | Description | Since Version
 **Get-CfsCertificate** | Retrieves an X509Certificate2 used by a tenant. | 3.3.0.0
 **Set-CfsCertificate** | Updates an X509Certificate2 used by a tenant. | 3.3.0.0
 
+### Expiring Certificates
+
+The `Get-CfsExpiringCertificates` commandlet is used to retrieve certificates that are nearing expiration across tenants, applications, and identity providers. 
+
+It supports both scoped (per-tenant) and global queries, along with optional filters for expiration time and error handling.
+
+> By default, the command returns certificates expiring within the next **90 days**, unless a different value is specified using the `-Days` parameter.
+
+| Command | Scope | Description |
+|--------|------|-------------|
+| `Get-CfsExpiringCertificates -Tenant "mytenant"` | Tenant | Retrieves expiring certificates for the specified tenant. |
+| `Get-CfsExpiringCertificates -Tenant "mytenant" -Application "9876-5432-1098"` | Application (single) | Retrieves expiring certificates for a specific application within the tenant. |
+| `Get-CfsExpiringCertificates -Tenant "mytenant" -IdentityProvider "9876-5432-1098"` | Identity Provider (single) | Retrieves expiring certificates for a specific identity provider within the tenant. |
+| `Get-CfsExpiringCertificates -Tenant "mytenant" -AllApplications` | Applications (tenant-wide) | Retrieves expiring certificates for all applications in the specified tenant. |
+| `Get-CfsExpiringCertificates -Tenant "mytenant" -AllIdentityProviders` | Identity Providers (tenant-wide) | Retrieves expiring certificates for all identity providers in the specified tenant. |
+| `Get-CfsExpiringCertificates -Tenant "mytenant" -All` | Full tenant scope | Retrieves all expiring certificates (tenant, applications, and identity providers) within the tenant. |
+| `Get-CfsExpiringCertificates -AllApplications` | Applications (global) | Retrieves expiring certificates for all applications across all tenants. |
+| `Get-CfsExpiringCertificates -AllIdentityProviders` | Identity Providers (global) | Retrieves expiring certificates for all identity providers across all tenants. |
+| `Get-CfsExpiringCertificates -AllTenants` | Tenants (global) | Retrieves expiring certificates for all tenants. |
+| `Get-CfsExpiringCertificates -All` | Full global scope | Retrieves all expiring certificates (tenants, applications, and identity providers) across all tenants. |
+| `Get-CfsExpiringCertificates -All -Days "60"` | Filtered global | Retrieves certificates expiring within the specified number of days (e.g., 60 days). |
+| `Get-CfsExpiringCertificates -All -ContinueOnError` | Resilient global | Retrieves all expiring certificates while skipping any that cause errors. |
+
+
 ### Tenant and Application Certificate Rollovers
 
 Name | Description | Since Version
