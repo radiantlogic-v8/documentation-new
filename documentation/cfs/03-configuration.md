@@ -104,6 +104,35 @@ If you would like to have the option to skip signing both the response and the a
 
 3. After completing step 2, go to the SAML configuration page and make sure that neither option requires a signature.
 
+## Configuring Group Access Using an LDAP Filter
+
+CFS allows administrators to control application access by filtering groups using LDAP with regex-based patterns. This ensures that only users belonging to specific groups can access the application. The steps below guide you through configuring and validating a group filter.
+
+### Configuring the Filter
+
+1. Open the SAML2 application configuration page.
+2. Select the application to configure and click Edit.
+3. Open the Access Rules tab  
+4. Locate the LDAP filter field under the group access (allowed groups) section. 
+5. Enter an LDAP filter that matches the groups you want to allow. 
+
+    **Examples:**
+    - Groups containing `-svn-`  
+      `(cn=*-svn-*)`
+    - Groups starting with `east-`  
+      `(cn=east-*)`
+    - Groups ending with `-developers`  
+      `(cn=*-developers)`
+    
+    Any group whose attributes match the filter will be granted access based on the defined access rules.
+
+6. Click **Validate** next to the filter field.
+
+    **Validation results:**
+    - **Valid filter:** Displays a list of matching groups for review  
+    - **Invalid filter:** Shows an error message; the application cannot be saved until the filter is corrected. Update the filter as     needed and revalidate until it succeeds.
+
+7. Once validation is successful and the results are correct, click **Save**. The filter gets applied immediately. Existing matching groups are granted access and newly created groups that match the filter are automatically included.
 
 ## Configuring Clock Skew Settings 
 
