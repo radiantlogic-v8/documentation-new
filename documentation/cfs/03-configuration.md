@@ -675,9 +675,11 @@ Name | Description | Since Version
 **Move-CfsApplication** | Changes the identifier of an Application. | 3.3.0.0
 **New-CfsApplication** | Creates a new Application. | 3.3.0.0
 **Remove-CfsApplication** | Removes an application. | 3.3.0.0
-**Set-CfsApplication** | Updates the Application. | 3.6.0.0
+**Set-CfsApplication** | Updates application settings such as the application name, the AllowAllUsers attribute, and supports importing complete Service Provider (SP) metadata. Example syntax: `Set-CfsCertificate -Application "<ApplicationId>" -Metadata $metadata` | 3.6.0.0, with updated support for metadata updates starting version 3.17.8.
 **Set-CfsAppParameter** | Updates the Parameter of an Application. | 3.6.0.0
 **Update-CfsApplication** | Updates an Application from a template. | 3.6.0.0
+
+
 
 ### Applications and SmartLinks
 
@@ -702,7 +704,16 @@ Name | Description | Since Version
 Name | Description | Since Version
 -|-|-
 **Get-CfsCertificate** | Retrieves an X509Certificate2 used by a tenant. | 3.3.0.0
-**Set-CfsCertificate** | Updates an X509Certificate2 used by a tenant. | 3.3.0.0
+
+### Tenant and Application Certificates 
+
+The `Set-CfsCertificate` commandlet is used to update signing and encryption certificates for tenants and applications. It accepts certificates of type `X509Certificate2`.
+
+| Command | Scope | Description |
+|--------|------|-------------|
+| `Set-CfsCertificate -Main -Certificate $certificate` | Tenant | Updates the tenant signing certificate. |
+| `Set-CfsCertificate -Application "1234-5678-9012" -Certificate $certificate` | Application (signing) | Updates the signing certificate for a specific application. |
+| `Set-CfsCertificate -Application "1234-5678-9012" -EncryptionCertificate $certificate` | Application (encryption) | Updates the encryption certificate for a specific application. |
 
 ### Expiring Certificates
 
