@@ -371,15 +371,22 @@ In the Tenant Administration Dashboard, navigate to the Applications section and
 
 ### Mappings (Scopes)
 
-OpenID Connect "scopes" can be thought of as predefined sets of claims/assertions. To define the attributes associated with the scopes, from the Tenant Administration Dashboard, navigate to Applications and select OpenID Connect. Click **Mappings**.
+OpenID Connect "scopes" can be thought of as predefined sets of claims/assertions. To define the attributes associated with the scopes, from the Administration Dashboard, navigate to Applications and select OpenID Connect. Click Mappings.
 
->[!note] All OpenID Connect Applications share the same mappings but may request different scopes. For example, some applications my request the profile scope whereas other may only request the email scope.
+A claim/scope mapping is a configuration that determines how user information (claims) is selected, transformed, and named in the tokens issued by an identity provider (IdP) using OpenID Connect (OIDC).
 
-![](media/openidconnect-2.png)
+Different applications often need different subsets of user data. Tailoring claims per application improves:
+
+- Security: Least-privilege data sharing  
+- Performance: Smaller tokens  
+- Compatibility: Meeting app-specific requirements  
+
+
+#### Standard Scopes
 
 #### Profile Scope
 
-The “profile” scope is equivalent to requesting the following claims/assertion:
+The **profile** scope returns a set of standard user profile claims, including:
 
 -   name
 -   family\_name (Last Name)
@@ -395,40 +402,91 @@ The “profile” scope is equivalent to requesting the following claims/asserti
 -   locale
 -   update\_at
 
-You can indicate which attribute from the identity store (FID) should populate each claim.
-
-#### Email Scope
-
-The "email" scope is equivalent to requesting the Email claim/assertion. You can indicate which attribute from the identity store (FID) should populate this claim (e.g. mail). There is an option to indicate that emails are verified in the identity store. Neither CFS nor FID perform any verification of this value. When the identity store (FID) is configured, this attribute can be deemed "verified" by the administrator (when configuring FID, you can indicate which data source is authoritative for this information). If the attribute is considered verified, toggle the switch to green/on next to "The emails are verified in the identity store".
-
-#### Address Scope
-
-The "address" scope is equivalent to requesting the Address claim/assertion. You can indicate which attribute from the identity store (FID) should populate this claim (e.g. postalAddress).
-
-#### Phone Scope
-
-The "phone" scope is equivalent to requesting the Phone Number claim/assertion. You can indicate which attribute from the identity store (FID) should populate this claim (e.g. mobile). There is an option to indicate that telephone numbers are verified in the identity store. Neither CFS nor FID perform any verification of this value. When the identity store (FID) is configured, this attribute can be deemed "verified" by the administrator (when configuring FID, you can indicate which data source is authoritative for this information). If the attribute is considered verified, toggle the switch to green/on next to "The phone numbers are verified in the identity store".
-
-#### Groups Gcope
-
-The "groups" scope is the equivalent to requesting a special groups assertion, which retrieves the groups a user is a part of. The group attribute is determined based on the tenant's group schema as seen below.
+Each claim can be mapped to a corresponding attribute in the identity store (Identity Data Management).
 
 ![](media/openidconnect-4.png)
 
+#### Email Scope
+
+The **email** scope returns the user’s email claim.
+
+- The claim value is mapped to an attribute in Identity Data Management (e.g., `mail`).  
+- Email can be marked as *verified* based on identity store configuration.  
+- Verification is not performed by CFS or Identity Data Management; it is determined by the administrator based on authoritative data sources.
+
+#### Address Scope
+
+The address scope returns the user’s address claim.
+
+- Mapped to a single attribute in Identity Data Management (e.g., `postalAddress`).
+
+#### Phone Scope
+
+The phone scope returns the user’s phone number claim.
+
+- Mapped to an attribute in Identity Data Management (e.g., `mobile`).  
+- Phone numbers can be marked as *verified* based on identity store configuration.  
+- Verification is determined by the administrator (not enforced by CFS or Identity Data Management).
+
+#### Groups Scope
+
+The groups scope returns a `groups` assertion containing the user’s group memberships. Group data is derived from the tenant’s configured group schema.
+
+#### What Changed in CFS 3.17.8
+
+- **Per-application mappings:** Each OIDC application now has its own *Mappings* tab to define its claim rules.  
+- **Tenant-wide mappings removed:**  
+  - OIDC mappings are no longer managed solely at the tenant level.  
+  - If an app doesn’t yet have a custom mapping, the previous tenant-wide mapping is used to populate its initial configuration; once saved, it becomes specific to that app.  
+
+During token and user info requests, the server applies the app’s saved mappings if they exist; otherwise, it falls back to the tenant’s global mappings.
+
+#### Prerequisites
+
+- Confirm that you have admin access to manage OIDC applications in CFS.  
+- Have clarity on the application’s required claims (e.g., which attributes and formats are expected).
+
+#### Steps to Configure Claim Mappings
+
+1. Open the OIDC application
+   - In the CFS admin console, navigate to **OIDC Applications** and click **Edit** on the application you want to configure.
+    
+    ![OIDC connect UI](media/oidc-connect.png)
+
+2. Switch to the Mappings tab
+   - View claim mapping rules for this application. If no custom mapping exists yet, the view is initially populated with your prior global mapping as a starting point.
+
+    ![OIDC mappings UI](media/oidc-mappings.png)
+
+
+3. Adjust claim rules
+   - Add, remove, or modify claim mappings as needed for this application. For example, you might map only a subset of user groups or use a computed attribute instead of sending all groups. Each mapping determines which user attribute is sent as which claim in the OIDC token.
+
+4. Save the configuration
+   - Click Save. Both the application’s attributes and its claim mappings will be saved together.
+
+     ![Image of the Save button](media/save-scopes.png)
+
+
 #### Custom Claims
 
-CFS supports configuring custom claims. These custom claims are returned as part of the **profile** scope. If a custom claim is **disabled**, it is **not** returned in either the `id_token` or from the `/userinfo` endpoint. Custom claims, like all other scopes, can only be managed by tenant administrators. To add a custom claim:
+CFS supports configuring custom claims. These custom claims are returned as part of the **profile** scope.  
 
-1.  From the _Administration_ tab navigate to _Applications > OpenID Connect_
-2.  In the top right, click _\+ Add Custom Profile Scope Claim_
+- If a custom claim is disabled, it is not returned in either the `id_token` or from the `/userinfo` endpoint.  
+- Custom claims, like all other scopes, can only be managed by administrators.
+
+To add a custom claim:
+
+1.  From the _Administration_ tab navigate to _Applications > OpenID Connect_. 
+2.  In the top right, click _\+ Add Custom Profile Scope Claim_.
     
     ![](media/openidconnect-5.png)
     
-3.  In the popup that appears, enter a _Claim name_ and _Claim Value_. The _Claim Name_ is just a user-friendly string to identify the custom claim. The _Claim Value_ is the attribute in FID
+3.  In the popup that appears, enter a _Claim name_ and _Claim Value_. The _Claim Name_ is just a user-friendly string to identify the custom claim. The _Claim Value_ is the attribute in Identity Data Management.
     
     ![](media/openidconnect-6.png)
     
-4.  The mappings page should then display the custom claim with the option to _disable_ or _delete_ it
+4.  The mappings page should then display the custom claim with the option to disable or delete it.
     
     ![](media/openidconnect-7.png)
 
