@@ -112,7 +112,10 @@ CFS allows administrators to control application access by filtering groups usin
 
 1. Open the SAML2 application configuration page.
 2. Select the application to configure and click Edit.
-3. Open the Access Rules tab  
+3. Open the Access Rules tab.
+
+    ![](media/ldap-filter.png "LDAP filter UI")
+
 4. Locate the LDAP filter field under the group access (allowed groups) section. 
 5. Enter an LDAP filter that matches the groups you want to allow. 
 
