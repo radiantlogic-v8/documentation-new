@@ -104,6 +104,19 @@ If you would like to have the option to skip signing both the response and the a
 
 3. After completing step 2, go to the SAML configuration page and make sure that neither option requires a signature.
 
+## Configure Token Validity in SAML Applications
+
+CFS allows administrators to define how long tokens generated for a specific application remain valid. To define the validity period, follow these steps: 
+
+1. Navigate to Applications -> Configured.
+2. Select the SAML application you want to configure and click Edit.
+3. Open the General tab and locate Token validity (minutes) setting.
+    
+    ![General settings UI](media/token-validity.png "General settings UI")
+
+4. Enter the desired token lifetime in minutes according to your security policy.
+5. Click Save to apply the changes.
+
 ## Configuring Group Access Using an LDAP Filter
 
 CFS allows administrators to control application access by filtering groups using LDAP with regex-based patterns. This ensures that only users belonging to specific groups can access the application. The steps below guide you through configuring and validating a group filter.
