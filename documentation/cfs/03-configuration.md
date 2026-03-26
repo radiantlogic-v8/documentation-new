@@ -778,6 +778,7 @@ Name | Description | Since Version
 Name | Description | Since Version
 -|-|-
 **Get-CfsCertificate** | Retrieves an X509Certificate2 used by a tenant. | 3.3.0.0
+**Get-CfsExpiringCertificates**  | Retrieves certificates that are expiring in 30 days in a tenant. | 3.17.8
 
 ### Tenant and Application Certificates 
 
@@ -791,11 +792,11 @@ The `Set-CfsCertificate` commandlet is used to update signing and encryption cer
 
 ### Expiring Certificates
 
-The `Get-CfsExpiringCertificates` commandlet is used to retrieve certificates that are nearing expiration across tenants, applications, and identity providers. 
+The `Get-CfsExpiringCertificates` commandlet is used to retrieve certificates that are nearing expiration across tenants, applications, and identity providers. It is supported in version 3.17.8 and higher. 
 
 It supports both scoped (per-tenant) and global queries, along with optional filters for expiration time and error handling.
 
-> By default, the command returns certificates expiring within the next **90 days**, unless a different value is specified using the `-Days` parameter.
+> By default, the command returns certificates expiring within the next **30 days**, unless a different value is specified using the `-Days` parameter.
 
 | Command | Scope | Description |
 |--------|------|-------------|
