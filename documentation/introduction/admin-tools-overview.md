@@ -28,6 +28,9 @@ The RadiantOne Identity Data Management Control Panel is used by administrators 
 
 The endpoint to reach the Control Panel can be found by navigating to the environment details in the Environment Operations Center.
 
+>[!warning]
+> Enable IP Based Access Control in the Security settings in Environment Operations Center to limit which IP addresses can access these endpoints.
+
 ![App Endpoint in EOC](Media/eoc-newcp-endpoint.jpg)
 
 The Directory Administrator credentials for Control Panel are defined when the environment is created. These credentials must be used to log into the Control Panel for the first time. 
