@@ -148,6 +148,10 @@ Log into the Control Panel using an OIDC token as an alternative to using userna
 
 The following topics provide general guidance about how to enforce client access limits and regulation.
 
+### Define IP Based Access Controls to Access Service Endpoints
+
+Enable IP Based Access Control in the Security settings of Environment Operations Center (for SaaS deployments) to limit which IP addresses can access the endpoints.  
+
 ### Global Access Limits
 
 Access limits are related to how the server handles activity received from clients. Details about each of the parameters mentioned below can be found in [Tuning](../tuning/tuning-limits/). This document is only for pointing out these parameters as key to hardening the RadiantOne service against security risks.
