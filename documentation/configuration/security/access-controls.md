@@ -5,7 +5,9 @@ description: Learn how to configure Access Controls.
 
 ## Overview
 
-The RadiantOne service can receive secure requests on the LDAPS endpoint. For SaaS deployments, the LDAPS endpoint can be viewed from Environment Operations Center > Manage > Environments > *Environment_Name* > Overview > Application Endpoints.  
+The RadiantOne service can receive secure requests on the LDAPS endpoint. For SaaS deployments, the LDAPS endpoint can be viewed from Environment Operations Center > Manage > Environments > *Environment_Name* > Overview > Application Endpoints. 
+
+>[warn] Enable IP Based Access Control in the Security settings to limit which IP addresses can access this LDAPS endpoint.
 
 ![LDAPS Endpoint](Media/ldaps-endpoint.jpg)
 
