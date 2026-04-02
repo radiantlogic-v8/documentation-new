@@ -129,26 +129,30 @@ CFS allows administrators to control application access by filtering groups usin
 
     ![](media/ldap-filter.png "LDAP filter UI")
 
-4. Locate the LDAP filter field under the group access (allowed groups) section. 
-5. Enter an LDAP filter that matches the groups you want to allow. 
+4. Locate the "Allow groups using filter" field under the group access (allowed groups) section. 
+5. Enter an LDAP filter pattern that matches the groups you want to allow. 
 
     **Examples:**
+    - Admins only `admin`
+      `(cn=*admin*)`
     - Groups containing `-svn-`  
       `(cn=*-svn-*)`
     - Groups starting with `east-`  
       `(cn=east-*)`
     - Groups ending with `-developers`  
       `(cn=*-developers)`
-    
+
+     ![](media/ldap-filter-example.png "LDAP filter example")
+
     Any group whose attributes match the filter will be granted access based on the defined access rules.
 
-6. Click **Validate** next to the filter field.
+7. Click **Validate** next to the filter field.
 
     **Validation results:**
     - **Valid filter:** Displays a list of matching groups for review  
     - **Invalid filter:** Shows an error message; the application cannot be saved until the filter is corrected. Update the filter as     needed and revalidate until it succeeds.
 
-7. Once validation is successful and the results are correct, click **Save**. The filter gets applied immediately. Existing matching groups are granted access and newly created groups that match the filter are automatically included.
+8. Once validation is successful and the results are correct, click **Save**. The filter gets applied immediately. Existing matching groups are granted access and newly created groups that match the filter are automatically included.
 
 ## Configuring Clock Skew Settings 
 
