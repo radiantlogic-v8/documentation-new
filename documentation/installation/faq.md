@@ -1,4 +1,9 @@
-## Self-managed Deployment FAQs
+---
+title: Self-managed Deployment FAQs
+description: Frequently asked questions regarding the deployment of self-managed RadiantOne Identity Data Management.
+---
+
+## Self-managed FAQs
 
 This document outlines frequently asked questions regarding platform compatibility and supported environments for **self-managed Identity Data Management Version 8 (v8)** deployments.
 
