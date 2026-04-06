@@ -265,8 +265,25 @@ February 12, 2026
 
  **Improvements**
  - [CFS 180] Implemented pagination for applications list in the tenant certificate page. 
- 
 
+
+### v3.17.7
+
+**New Features**
+
+- [CFS-170] Added support for configuring group access to applications using regex filter-based rules (for example, matching groups like *-svn-*).  
+- [CFS-173] Added application-level configuration for token lifetimes so each SAML application can define its own timeout policy.  
+- [CFS-186] Added a new commandlet to check for expiring certificates used by the application so administrators can identify and address certificate expirations proactively.  
+- [CFS-187] Removed the global OIDC Mappings page and added a per-application Mappings tab for each OIDC app. Existing global mappings are used as defaults when an app has none, and all future changes are saved at the application level.  
+
+**Improvements**
+
+- [CFS-185] Updated the “SetCFsApplication” and “Set-CfsCertificate” commandlets to support importing SP metadata.  
+- [CFS-188] Updated SAML metadata generation for CFS IdP so that elements such as KeyDescriptor, SingleLogoutService, NameIDFormat, and SingleSignOnService are emitted in an order that adheres to the SAML 2.0 metadata schema.  
+
+**Bug fixes**
+
+- [CFS-184] Fixed an issue where re-importing SP metadata after clearing an encryption certificate did not restore the encryption certificate from metadata, even though the certificate could still be added manually.
 
 
 
