@@ -17,8 +17,8 @@ description: Installing RadiantOne Identity Data Platform
     - [Advanced](#)
       - [Deploying with Istio](advanced/deploying-with-istio.md)
       - [Deploying NGINX Ingress](advanced/deploying-with-nginx.md)
-    -[FAQs](#)
-      - [Frequently Asked Questions](faq.md)
+    - [Frequently Asked Questions](faq.md)
+     
 
 
 
