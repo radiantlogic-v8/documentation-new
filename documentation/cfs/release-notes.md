@@ -267,7 +267,7 @@ February 12, 2026
  - [CFS 180] Implemented pagination for applications list in the tenant certificate page. 
 
 
-### v3.17.7
+### v3.17.8
 
 April 06, 2026
 
