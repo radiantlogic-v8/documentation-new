@@ -5,7 +5,7 @@ description: Frequently asked questions regarding the deployment of self-managed
 
 ## Self-managed FAQs
 
-This document outlines frequently asked questions regarding platform compatibility and supported environments for **self-managed** Identity Data Management Version 8 (v8) deployments.
+This document outlines frequently asked questions regarding platform compatibility and supported environments for **self-managed** Identity Data Management Version 8 (v8) deployments. <br> <br>
 
 1. **Does self-managed v8 support both Linux and Windows operating systems?** <br>
      No. Self-managed v8 deployments are supported only on **Linux-based** operating systems.
@@ -23,3 +23,5 @@ This document outlines frequently asked questions regarding platform compatibili
 
 4. **Are both v7 and v8 supported for self-managed deployments**? <br>
      Self-managed deployments are supported only in Version 8 (v8).
+
+   
