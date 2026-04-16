@@ -36,7 +36,8 @@ Ensure that you specify your target version when running installation and update
 - For new customers, an Identity Data Management license key will be provided to you during onboarding. For existing customers that want to upgrade to v8.1 self-managed, your existing license key should work. If you have issues, create a Radiant Logic Customer Support ticket at https://support.radiantlogic.com/.
 - For new customers, ensure that you have received Container Registry Access and image pull credentials named **(regcred.yaml)** from Radiant Logic during onboarding. For existing customers that want to upgrade to v8.1 self-managed, create a Radiant Logic Customer Support ticket at https://support.radiantlogic.com/ to request registry credentials.
 - Ensure that you have necessary storage provisioners and storage classes configured for the Kubernetes cluster. Some examples of supported storage classes are `gp2`/`gp3`, [Azure disk](https://learn.microsoft.com/en-us/azure/aks/concepts-storage#persistent-volumes), etc.
-- Estimate sufficient resources (CPU, memory, storage) for the deployment. <b> The default amount indicated in the helm chart MAY NOT BE SUFFICIENT FOR YOUR USE CASES. <b> Your Radiant Logic solutions engineer can guide you here based on your use cases.
+- Estimate sufficient resources (CPU, memory, storage) for the deployment.
+<b>The default amount indicated in the helm chart MAY NOT BE SUFFICIENT FOR YOUR USE CASES. Your Radiant Logic solutions engineer can guide you here based on your use cases. <b>
 - Enable Nested Virtualization if you are testing self-managed deployments using Docker Desktop. Nested virtualization allows a virtual machine (VM) to act as a host for other VMs, enabling scenarios like running Docker Desktop inside a VM.
 
 ## Steps for Deployment
