@@ -29,7 +29,8 @@ This hotfix updates our container images and third‑party libraries to remediat
 - [API-4348]: Fix to address CVE-2026-4046.
 
 - Updated container base images to include latest OS security patches addressing multiple high and critical severity CVEs.
-- Upgraded third‑party libraries (e.g., Spring, Netty, Tomcat) to versions that fix known vulnerabilities addressing multiple high and critical severity CVEs.
+- Upgraded third‑party libraries (e.g., Spring, Netty, Tomcat) to versions that fix known vulnerabilities addressing multiple high and critical severity CVEs. <br>
+  For more details about OS security patches and third-party library vulnerability fixes, refer to [this](./iddm-self-managed.md) document. 
 
 
 ## Known Issues
