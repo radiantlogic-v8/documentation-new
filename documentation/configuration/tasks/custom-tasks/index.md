@@ -20,10 +20,10 @@ Creating a custom task involves the following steps, each of which is described 
 
 1. Download one of the custom task templates as the starting point for the custom task:
 
-   - **PerNodeCustomTaskTemplate** : For a custom task that should only be executed on the leader node
-   - **PerClusterCustomTaskTemplate** : For a custom task that should be executed on all nodes
+   - **PerNodeCustomTaskTemplate** : For a custom task that should only be executed on the leader node.
+   - **PerClusterCustomTaskTemplate** : For a custom task that should be executed on all nodes.
 
-   For detailed information on the differences between the two templates, view the [*Choosing a Custom Task Template*](https://docs.radiantlogic.com) document.
+   For detailed information on the two templates, view the [Custom Task Templates](custom-tasks-templates.md) document.
 
 2. Fill out the custom task template:
 
