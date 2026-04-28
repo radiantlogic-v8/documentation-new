@@ -16,14 +16,12 @@ Both source and destination environments must have identical versions of Identit
 
 This feature promotes all supported changes to resource configurations (creations, updates or deletions). Selective promotion of configurations is currently not supported. Below is the list of supported configurations:
 
-- Data Sources  
-- Database Templates  
-- Custom Templates  
-- Schemas  
-- Naming Contexts  
-- Caches  
-- Synchronization Pipelines 
-- Interception scripts
+- Naming Contexts
+- Data sources
+- Sync Topologies: synchronization pipelines, including their mapping files and scripts. Each pipeline is promoted in its current state (running or stopped). 
+- Settings (the global settings.json file). 
+- Generated Jars from change-event converters and interception scripts. 
+- Other Jars from custom libraries. 
 
 ## Unsupported configurations
 
@@ -98,7 +96,7 @@ autoConfigPromotion:
       secretName: “” # Kubernetes secret name containing Git credentials.
 ```
 
-> The storage class must provide a volume that supports full filesystem operations, including symlinks. Pseudo-filesystems such as object stores (e.g., S3) are not compatible. In multi-node, multi-zone environments, ensure the volume is accessible from all nodes across all zones.
+> The storage class must provide a volume that supports full filesystem operations, including symlinks. Pseudo-filesystems such as object stores (e.g., S3) are not compatible.
 
 This setup assumes that you are promoting configurations from DEV to QA to PROD. Your setup may look different depending on the number of environments.
 

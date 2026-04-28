@@ -7,24 +7,25 @@ description: Learn how to promote configuration changes in multiple environments
 
 Radiant Logic's configuration promotion feature allows you to seamlessly transfer configuration changes across different Identity Data Management instances. This enables you to synchronize updates from one environment to another, such as promoting changes from a development environment to QA or production environments. This feature is available in Identity Data Management version 8.1.4 and higher.
 
+Starting with Identity Data Management version 8.4.0, you can also select exactly which staged resources to promote and validate dependencies before exporting. 
+
 > This feature is intended solely for promoting configuration changes and requires the target Identity Data Management environment’s version to be the same as the source environment’s version. 
 
 ## Supported configurations
 
-This feature promotes all supported changes to resource configurations (creations, updates or deletions). Selective promotion of configurations is currently not supported. Below is the list of supported configurations:
+This feature promotes all supported changes to resource configurations (creations, updates or deletions). Below is the list of supported configurations:
 
-- Data Sources  
-- Database Templates  
-- Custom Templates  
-- Schemas  
-- Naming Contexts  
-- Caches  
-- Synchronization Pipelines 
-- Interception scripts
+- Naming Contexts
+- Data sources
+- Sync Topologies: synchronization pipelines, including their mapping files and scripts. Each pipeline is promoted in its current state (running or stopped). 
+- Settings (the global settings.json file). 
+- Generated Jars from change-event converters and interception scripts. 
+- Other Jars from custom libraries. 
+
 
 ## Unsupported configurations
 
-Promotion of the following configuration changes is not supported:
+Promotion of the following resource configuration changes is not supported:
 
 - Inter-cluster Replication
 - Special attributes  
@@ -68,10 +69,16 @@ ii. If you modified a schema, mount your backend and extract the new schema. Sav
 
 a. In your source Identity Data Management environment, click on the Configuration Promotion icon in the left navigation bar.
 
-b. Open the Export Configurations tab and click on the Export Configurations button.  
+b. Open the Export Configurations tab and click on the Stage Export button. The "Resources Staged for Export" tree displays all resources changed since the last successful export, organized by category. You can review the list and select which resources to promote by checking individual items or entire categories. Each resource shows its status (ADDED, UPDATED, or DELETED).
+
 ![](Media/export.png)
 
-c. Once the export is successful, a summary will appear, and you can also download the export report.  
+c. Click the VALIDATE SELECTED RESOURCES button. 
+
+> Note: If the resources you selected depend on other staged resources that you did not select, the Validate Resources for Export dialog opens and lists the missing dependencies along with the resources that require them. Exporting without including all changed dependencies risks breaking the target IDDM. Accept the suggested additions and continue. 
+
+e. Click the EXPORT RESOURCES button to complete the export. Once the export is successful, a summary will appear, and you can also download the export report. 
+
 ![](Media/exportreport.png)
 
 ### 2. Import configuration changes
@@ -86,7 +93,7 @@ a. Access the Identity Data Management environment where you want to import the 
 
 a. Click on the Configuration Promotion icon in the left navigation bar.
 
-b. From the Import Configurations tab, click on the Import Configurations button and confirm that you would like to proceed.
+b. From the Import Configurations tab, click on the IMPORT RESOURCES button and confirm that you would like to proceed.
 
 #### Manage any warnings that may appear
 
@@ -101,13 +108,11 @@ After providing the missing values, the import will be automatically successful.
 
 - Source and target environments must be running the same version of the Identity Data Management software. Before exporting or importing configurations, ensure all environments are patched to the same version. 
 
-- Any caches impacted by import will be automatically disabled. In such cases, after an import, you will see a warning notice that asks you to reinitialize the cache.
+- Review the Caches Requiring Attention banner after each import and reinitialize caches as needed. Because you may have to reinitialize and reconfigure persistent caches, we recommend that you only perform configuration promotions during maintenance windows. 
 
-  As you may have to reinitialize and reconfigure persistent cache, we recommend that you only perform configuration promotions during maintenance windows.
+- Any changes in the interception script (global or context related), generated jars, settings.json, or custom libraries may require a restart of your Identity Data Management software. You will see "FID Restart Required" message banner in the UI for such changes. 
 
-- Any changes in the interception script (global or context related) will require a restart of your Identity Data Management software.
-
-- The promotion flows support One-to-One and One-to-Many configurations. Many-to-One promotions are not supported and will result in failures within the target IDDM.
+- The promotion flows support One-to-One and One-to-Many configurations. Many-to-One promotions are not supported and will result in failures within the target Identity Data Management.
 
 - You should avoid manually altering configurations in the target environment that imports configurations from a source environment, as any manual changes will be overwritten during the import process. The only exception to this is configurations that are not supported by this feature.
 
