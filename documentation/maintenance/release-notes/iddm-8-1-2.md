@@ -111,8 +111,7 @@ https://support.radiantlogic.com/hc/en-us/categories/4412501931540-Known-Issues
 
 Feedback and problems can be reported from the Support Center/Knowledge Base accessible from: https://support.radiantlogic.com
 
-If you do not have a user ID and password to access the site, please contact: support@radiantlogic.com
-Collapse
+If you do not have a user ID and password to access the site, please contact: support@radiantlogic.com.
 
 
 
