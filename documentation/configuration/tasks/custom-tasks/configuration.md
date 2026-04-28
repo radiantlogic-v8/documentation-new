@@ -14,7 +14,7 @@ This page provides a summary of the basic and advanced properties used to config
 | ***Java Class Name*** **(required)** | The name of the uploaded Java class that contains the custom task logic. Select from the dropdown list of available classes. |
 | ***Scheduled*** | If enabled, the task will run according to the specified ***Execution Interval***. If disabled, the task runs once immediately after creation. |
 | **Execution Interval** | Specifies how often the task will run. For example, a value of *1h 0m 0s* will run the task once every hour. |
-| <a id="arguments"></a>**Arguments** | A list of key-value pairs containing the name and value of the arguments required by the custom task implementation. The arguments will be processed by the *`readArguments`* method in the custom task Java class. |
+| **Arguments** | A list of key-value pairs containing the name and value of the arguments required by the custom task implementation. The arguments will be processed by the [readArguments](custom-task-java-class.md) method in the custom task Java class. |
 
 An example of the filled out basic properties for a custom task instance:
 

@@ -2,7 +2,8 @@
 title: Writing a Custom Task Java Class
 description: Learn how to write a Custom Task Java Class.
 ---
-## Class-level Requirements:
+
+## Class-level Requirements
 
 **Package:** The class must be in the `com.rli.scripts.tasks` package. Do not change the package declaration.
 
@@ -12,8 +13,7 @@ description: Learn how to write a Custom Task Java Class.
 
 **Main Method:** A main method is required in every custom task class. See the **Main Method** section below for details.
 
-
-## Methods to implement
+## Methods to Implement
 
 Your custom task class must override the following three methods:
 
@@ -23,10 +23,9 @@ This is where your task logic goes. It is called automatically when the task is 
 
 A built-in logger is available for writing messages to the task log. Use `logger.info()`, `logger.warn()`, or `logger.error()` to log information that will be visible in the task **Logs** tab in the UI.
 
-
 ### `readArguments(String[] strings)`
 
-This method receives the arguments that are configured when creating the task instance. Use it to parse and store argument values as instance variables so they can be used in `processTask()`.
+This method receives the [arguments](configuration.md) that are configured when creating the task instance. Use it to parse and store argument values as instance variables so they can be used in `processTask()`.
 
 The `strings` parameter is a flattened array of the key-value pairs defined in the **Arguments** section of the task instance form. For example, if you configured two arguments:
 
@@ -41,12 +40,11 @@ It is good practice to validate that required arguments are present and throw an
 
 If your task does not require any arguments, you can leave this method empty.
 
-
 ### `getId()`
 
 Returns an identifier for the task. This value is used internally to track and manage the task instance. This method should return a unique value for each instance of the task.
 
-### Main method
+### Main Method
 
 Every custom task class must include a main method with the following structure:
 
