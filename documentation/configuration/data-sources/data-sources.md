@@ -322,16 +322,23 @@ Select the template and use the drawer that appears on the right to update prope
 
 #### Managing Dependencies
 
-For existing JDBC templates, you can add, remove, or view registered dependency jars at any time without recreating the template. The template details drawer now exposes a **MANAGE DEPENDENCY** action under the **Driver URL Pattern** field.
+### Updating Templates
 
-![Template details drawer with the MANAGE DEPENDENCY button visible under Driver URL Pattern](images/manage-dependency-drawer.png)
+All user-defined templates can be updated from **Control Panel > Setup > Data Catalog > Template Management**. Default templates associated with JDBC-accessible types of data sources can also be updated from here to update JDBC drivers.
 
-*Figure 3. The template details drawer for an existing database template. The **MANAGE DEPENDENCY** action opens a modal where dependencies can be uploaded, listed, or deleted.*
+Select the template and use the drawer that appears on the right to update properties. Click **SAVE**.
+
+#### Managing Dependencies
+
+For existing JDBC templates, you can add, remove, or view registered dependency jars at any time without recreating the template. 
 
 To manage dependencies on an existing template:
 
-1. Click the template card from the list to open its details drawer on the right.
+1. Click the template card from the list to open its details on the right.
 2. Under **Driver URL Pattern**, click **MANAGE DEPENDENCY**.
+
+   ![Managing Dependency](Media/manage-dependency-option.png)
+
 3. In the modal that opens, upload new dependency jars or click the delete action next to a listed dependency to remove it.
 4. Click **SAVE**.
 5. Re-open the modal at any time to confirm the dependency list matches what was saved.
