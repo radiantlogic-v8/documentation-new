@@ -38,7 +38,7 @@ Creating a custom task involves the following steps, each of which is described 
    - Update the class name and its references in the `main` method. Ensure that the name of the Java file containing the class is the same as the class name.
    - Verify that all required imports are present.
 
-   For examples and additional information, review the [*Writing a Custom Task Java Class*](https://docs.radiantlogic.com) document.
+   For examples and additional information, review the [Writing a Custom Task Java Class](custom-task-java-class.md) document.
 
 ## Upload Custom Task Java Class
 
@@ -46,18 +46,18 @@ After writing the custom task Java class, follow the steps below to upload the J
 
 1. Navigate to the **Tasks** page and click ***Upload Custom Java Class***.
 
-   ![Tasks page with Upload Custom Java Class button highlighted](../global-settings/Media/01-tasks-page-upload-button.jpg)
+   ![Tasks page with Upload Custom Java Class button highlighted](../../global-settings/Media/01-tasks-page-upload-button.jpg)
 
 2. Select your Java class (`.java`) file and click **Upload**.
 
-   ![Upload Custom Task Java Class dialog](../global-settings/Media/02-upload-java-class-dialog.png)
+   ![Upload Custom Task Java Class dialog](../../global-settings/Media/02-upload-java-class-dialog.png)
 
    - To replace an existing custom task Java class, enable the ***Overwrite Existing*** option.
    - Multiple Java classes can be uploaded one after the other.
 
 3. After uploading the Java class(es), restart your Identity Data Management instance via the Environment Operations Center before proceeding. **If Identity Data Management is not restarted, then the custom class will not be available to the task scheduler.**
 
-   ![Environment Operations Center with Restart option highlighted](../global-settings/Media/03-environment-ops-center-restart.jpg)
+   ![Environment Operations Center with Restart option highlighted](../../global-settings/Media/03-environment-ops-center-restart.jpg)
 
 ## Next Steps
 
