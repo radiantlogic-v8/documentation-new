@@ -15,7 +15,7 @@ Ensure that you have the following requirements in place.
 
 - An on-premises Active Directory environment.
 - A Radiant One IDDM v8.4.0 (or later) SaaS instance.
-- Secure Data Connector (SDC) is installed on a Windows machine that can reach your Active Directory.
+- [Secure Data Connector](../../eoc/latest/secure-data-connector/configure-sdc-service/) is installed on a Windows machine that can reach your Active Directory.
 - The Visual C++ Redistributable v143 (Visual C++ Redistributable for Visual Studio 2015–2022) must be installed on the machine where the SDC client is running.
 
 ## Steps for Synchronization
