@@ -28,7 +28,7 @@ Before configuring the Password Filter, an administrator should have the followi
 
 ### Environment requirements
 
-1. [SDC Client](https://docs.radiantlogic.com) v1.2.2 or higher.
+1. [SDC Client](../../eoc/latest/secure-data-connector/configure-sdc-service/) v1.2.2 or higher.
 2. Windows x64
 3. .NET Framework 4.7.2 or higher
 4. Ensure that you have access to the Password Filter Service (MSI package) from RadiantOne.
