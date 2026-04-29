@@ -12,6 +12,7 @@ Each data source is associated with a template that defines how to connect and i
 After an identity data source is defined, a schema can be extracted. A schema represents the metadata for all identity objects contained in the data source. Schemas can be managed in the Data Catalog > Data Sources > Selected data source > SCHEMA tab. This metadata is used to define identity views that are then accessed by clients that query the RadiantOne service. Identity views can be managed from Control Panel > Setup > Directory Namespace > Namespace Design.
 
 ## Managing Data Sources
+
 Data sources are managed from Control Panel > Setup > Data Catalog > Data Sources.
 
 ### Creating Data Sources

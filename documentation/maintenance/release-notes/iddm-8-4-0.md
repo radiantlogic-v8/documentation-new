@@ -5,7 +5,7 @@ description: RadiantOne IDDM v8.4.0 Release Notes
 
 # RadiantOne Identity Data Management v8.4.0 Release Notes
 
-April 28, 2026
+April 29, 2026
 
 These release notes contain important information about improvements and bug fixes for RadiantOne Identity Data Management v8.4.0
 
