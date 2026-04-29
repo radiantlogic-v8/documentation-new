@@ -11,6 +11,8 @@ These release notes contain important information about improvements and bug fix
 
 These release notes contain the following sections:
 
+[New Features](#new-features)
+
 [Improvements](#improvements)
 
 [Security Vulnerability Fixes](#security-vulnerability-fixes)
@@ -20,6 +22,10 @@ These release notes contain the following sections:
 [Known Issues](#known-issues)
 
 [How to Report Problems and Provide Feedback](#how-to-report-problems-and-provide-feedback)
+
+## New Feature
+
+- [API-3313]: Added Custom Tasks feature to allow users to upload custom task Java classes and create new custom task instances based on those Java classes.
 
 ## Improvements
 
