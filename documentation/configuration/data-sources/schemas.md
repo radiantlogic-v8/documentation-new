@@ -104,19 +104,41 @@ Examples of JDBC-accessible backends are Microsoft SQL Server, Oracle, DB2, and 
 
 The database data source must be created before completing the schema extraction steps below. See [Data Sources](../data-sources/data-sources) for details about creating data sources.
 
-1.	In the Control Panel > Setup > Data Catalog > Data Sources > Selected Data Source > SCHEMA Tab, click **...** > Extract New Schema.
+1. In the Control Panel, navigate to **Setup > Data Catalog > Data Sources > [Selected Data Source] > SCHEMA** and click **...** > **Extract New Schema**.
 
-1.	Enter a schema file name and click **OK**.
-    >[!note] DO NOT USE HYPHENS (-) IN FILE NAMES.
- 
-1. The ANSI standard syntax for naming relational database tables is catalog.schema.table. Therefore, if you are authenticating as a user who has access to multiple different schemas, and want to narrow the search, you can enter in the specific schema name in the Database Schema property.
+2. In the **Extract New Schema (1 of 2)** dialog, enter a schema file name.
 
-1.	Limit the types of objects to be returned by selecting tables, views, system tables, or synonyms. If you would like all types of objects returned, then select all options. If you only want a subset of the selected objects returned, then you can enter a pattern for the Table Pattern parameter using the “%” for a wildcard character. For example, if you want to return only tables that start with “N”, then for the Table Pattern you can enter N%.
+   > [!note]
+   > Do not use hyphens (-) in file names.
 
-1.	Click **NEXT** to proceed and select the desired Tables and Views from the list.
-	![An image showing ](Media/Image3.11.jpg)
+3. Under **Database Options**, configure the following fields as needed and click Next:
 
-1.	Click **EXTRACT**. This creates the schema file and adds it into the drop-down list next to *Schema Name*.
+       ![An image showing filter options](Media/extract-schema-1.png)
+
+
+   - **Database Schema**: The ANSI standard naming convention for relational database tables is `catalog.schema.table`. If the authenticated user has access to multiple schemas, enter a schema name to narrow the search.
+
+   - **Table Pattern**: Enter a pattern to filter the returned objects. Use `%` as a wildcard character. For example, to return only tables that start with `N`, enter `N%`.
+
+   - **Catalog Name**: A catalog is defined as a collection of named schemas, and each schema contains database objects like tables, views, indexes, and stored procedures. This creates a three-level naming structure: catalog → schema → object. Enter the name of the database catalog to filter by when extracting a schema. Only tables and views belonging to this catalog will be returned. Leave blank to include all catalogs.
+
+4. Under **Include**, select the object types to return:
+
+   - Tables
+   - Views
+   - System Tables
+   - Synonyms
+
+   ![An image showing object types ](Media/Image3.11.jpg)
+
+   Select all options to return all supported object types.
+
+5. Click **NEXT**.
+
+6. In the **Extract New Schema (2 of 2)** dialog, select the tables and views to include in the schema.
+
+7. Click **EXTRACT**. The schema file is created and added to the drop-down list next to **Schema Name**.
+
 
 You can view/modify this schema by selecting it from the drop-down list. Any changes made (such as declaring primary keys or creating relationships), do not affect the underlying schema. 
 

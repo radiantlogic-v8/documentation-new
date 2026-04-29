@@ -266,15 +266,12 @@ Click the **+ CREATE TEMPLATE** drop-down and select either **Database source ty
 
 #### Database Source Types
 
-Creating a database template now uses a multi-step wizard that walks you through driver upload, optional driver dependencies, and template setup.
-
-![New Database Template wizard with three bubble steps: JDBC Driver, Driver Dependencies, and Setup](images/driver-dependencies-wizard.png)
-
-*Figure 1. The New Database Template wizard now includes three steps: **JDBC Driver**, **Driver Dependencies** (optional), and **Setup**.*
-
 ##### Step 1 — JDBC Driver
 
 1. Choose **Upload New** to add a new driver, or **Select From Existing** to reuse a driver library that already exists on the RadiantOne node. For **Upload New**, either drag-and-drop the library into the window or click **choose a file** to upload it.
+
+![Driver Jar File UI](Media/jdbc-driver.png)
+
 2. Click **NEXT** to advance to the Driver Dependencies step.
 
 > **Warning**
@@ -283,10 +280,6 @@ Creating a database template now uses a multi-step wizard that walks you through
 ##### Step 2 — Driver Dependencies (optional)
 
 This step lets you register one or more dependency `.jar` files alongside the primary JDBC driver. The widget supports **multi-file uploads**, so customers with large dependency sets (50+ jars are supported) can register them all in a single step.
-
-![Driver Dependencies step showing multiple uploaded dependency jars in the list](images/dependencies-list.png)
-
-*Figure 2. Multiple dependency jars uploaded in the Driver Dependencies step. Each row in the list represents one registered dependency.*
 
 To register dependencies:
 
@@ -301,6 +294,9 @@ To register dependencies:
 ##### Step 3 — Setup
 
 1. Enter a unique **Template Name**. This name is displayed on the card that can be selected during data source creation.
+
+   ![Setup UI](Media/setup-jdbc.png)
+
 2. Enter or select the **Driver Class Name** associated with the library. This is typically auto-populated from the driver file selected in Step 1.
 3. Enter the **Driver URL Pattern** indicating the values required by the driver to establish a connection to the database. This is a hint for the administrator that uses the template to create the data source.
 4. Select a unique **Icon** to display on the card associated with the template.
