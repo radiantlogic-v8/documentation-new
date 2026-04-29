@@ -250,58 +250,94 @@ Select the data sources to include in the export and click **EXPORT**
 Your internet browser settings determine the download location. The download file is named fid-datasources-export.json.
 
 ## Managing Templates
-Each identity data source is associated with a template. The template indicates all properties required to connect to the data source. RadiantOne includes some default templates and new templates can be created for JDBC-accessible databases and other data sources than can be queried through a web services API.
 
-Only database templates that are associated with JDBC drivers installed with RadiantOne are shown by default. These drivers are included to help save configuration time, but are not owned, licensed or managed by Radiant Logic. If newer versions of the drivers are available from the database vendors, customers must update and replace the drivers used in RadiantOne. Some JDBC drivers, like IBM DB2 (UDB) require additional license files (e.g. db2jcc_license_cisuz.jar) to be included as well. Downloading and associating any updated drivers or additional license files with RadiantOne templates is the responsibility of the customer. 
+Each identity data source is associated with a template. The template indicates all properties required to connect to the data source. RadiantOne includes some default templates and  you can also create new templates for JDBC-accessible databases and other data sources that can be queried through a web services API.
 
-Templates can be managed from Control Panel > Setup > Data Catalog > Template Management.
+Only database templates that are associated with JDBC drivers installed with RadiantOne are shown by default. These drivers are included to help save configuration time, but are not owned, licensed or managed by Radiant Logic. If newer versions of the drivers are available from the database vendors, customers must update and replace the drivers used in RadiantOne. Some JDBC drivers, like IBM DB2 (UDB), require additional license files (e.g. `db2jcc_license_cisuz.jar`) to be included as well. Downloading and associating any updated drivers or additional license files with RadiantOne templates is the responsibility of the customer.
 
-![Template Management](Media/template-mgmt.jpg)
-
+Templates can be managed from **Control Panel > Setup > Data Catalog > Template Management**.
 
 ### Creating Templates
 
-Templates for JDBC-accessible databases and other data sources that can be queried through a web services API are managed from Control Panel > Setup > Data Catalog > Template Management.
+Templates for JDBC-accessible databases and other data sources that can be queried through a web services API are managed from **Control Panel > Setup > Data Catalog > Template Management**.
 
-Click the **+CREATE TEMPLATE** drop-down and select either *Database Source Type* (for JDBC-accessible data sources), or *Custom Source Type* (for web service API-accessible services).
+Click the **+ CREATE TEMPLATE** drop-down and select either **Database source type** (for JDBC-accessible data sources) or **Custom source type** (for web service API-accessible services).
 
-![Create New Template](Media/create-template.jpg)
+#### Database Source Types
 
-**Database Source Types**
+Creating a database template now uses a multi-step wizard that walks you through driver upload, optional driver dependencies, and template setup.
 
-1. Choose the option to either *Upload New* or *Select Existing* driver file. Use the *Select Existing* option only if the driver library already exists on the RadiantOne node. For *Upload New*, either drag-and-drop the library into the window or click the link to choose a file.
+![New Database Template wizard with three bubble steps: JDBC Driver, Driver Dependencies, and Setup](images/driver-dependencies-wizard.png)
 
-   >[!warning] Some databases require other libraries (additional .jar files) from the vendor to support things like licensing and TLS/SSL access. These additional .jar files must be included in the template.  Consult your database vendor documentation for details on which driver files are needed.
-   
-1. Enter a unique template name. This name is displayed on the card that can be selecting during data source creation.
-1. Enter or select the driver class name associated with the library. This is typically auto-populated from the driver file that was selected in step 1.
-1. Enter the driver URL pattern indicating the values required by the driver to establish a connection to the database. This is helpful for the administrator that is using the template to create the data source.
-1. Select a unique icon to display on the card associated with the template.
-1. Click **ADD**. A new card is available for defining "Database" type of data sources.
+*Figure 1. The New Database Template wizard now includes three steps: **JDBC Driver**, **Driver Dependencies** (optional), and **Setup**.*
 
-![Database Data Type](Media/db-type.jpg)
+##### Step 1 — JDBC Driver
 
+1. Choose **Upload New** to add a new driver, or **Select From Existing** to reuse a driver library that already exists on the RadiantOne node. For **Upload New**, either drag-and-drop the library into the window or click **choose a file** to upload it.
+2. Click **NEXT** to advance to the Driver Dependencies step.
 
-**Custom Source Types**
+> **Warning**
+> Some databases require additional libraries (extra `.jar` files) from the vendor to support features like licensing and TLS/SSL access. These additional `.jar` files must be registered with the template as Driver Dependencies (see Step 2). Consult your database vendor documentation for details on which driver files are needed.
 
-1. Choose the option to either *Upload New* or *Select Existing* plugin file. Use the *Select Existing* option only if the plugin file already exists on the RadiantOne node. For *Upload New*, either drag-and-drop the plugin fie into the window or click the link to choose a file.
-2. Enter a unique template name. This name is displayed on the card that can be selecting during data source creation.
-3. Enter a plugin name associated with the file that was selected in step 1.
+##### Step 2 — Driver Dependencies (optional)
+
+This step lets you register one or more dependency `.jar` files alongside the primary JDBC driver. The widget supports **multi-file uploads**, so customers with large dependency sets (50+ jars are supported) can register them all in a single step.
+
+![Driver Dependencies step showing multiple uploaded dependency jars in the list](images/dependencies-list.png)
+
+*Figure 2. Multiple dependency jars uploaded in the Driver Dependencies step. Each row in the list represents one registered dependency.*
+
+To register dependencies:
+
+1. Drag-and-drop one or more `.jar` files into the upload area, or click **choose a file** to select files.
+2. Each dependency you upload appears in the list. To remove a dependency before continuing, click the **Delete** action next to that row.
+3. Repeat as needed until all required dependencies are registered.
+4. Click **NEXT** to advance to the Setup step.
+
+> **Note**
+> This step is **optional**. If your driver does not require additional libraries, click **NEXT** without uploading anything to skip ahead to Setup. If a dependency `.jar` does not contain extractable metadata, RadiantOne automatically generates a unique identifier for it so the upload workflow does not stall.
+
+##### Step 3 — Setup
+
+1. Enter a unique **Template Name**. This name is displayed on the card that can be selected during data source creation.
+2. Enter or select the **Driver Class Name** associated with the library. This is typically auto-populated from the driver file selected in Step 1.
+3. Enter the **Driver URL Pattern** indicating the values required by the driver to establish a connection to the database. This is a hint for the administrator that uses the template to create the data source.
+4. Select a unique **Icon** to display on the card associated with the template.
+5. Click **ADD**. A new card is available for defining "Database" type data sources.
+
+#### Custom Source Types
+
+1. Choose the option to either **Upload New** or **Select Existing** plugin file. Use the **Select Existing** option only if the plugin file already exists on the RadiantOne node. For **Upload New**, either drag-and-drop the plugin file into the window or click the link to choose a file.
+2. Enter a unique template name. This name is displayed on the card that can be selected during data source creation.
+3. Enter a plugin name associated with the file selected in step 1.
 4. Select or enter the class name associated with the plugin file.
 5. Select a unique icon to display on the card associated with the template.
 6. Click **NEXT**.
-7. Use **+SECTION** to create categories for properties required to be passed when establishing connections to the custom API. Create as many sections as needed.
-8. In each section created in the previous step, click *+* to add properties. Create as many properties as needed.
-9. Click **ADD**. A new card is available for defining "Other" (type) of data sources.
-
-![Custom Data Type](Media/other-type.jpg)
+7. Use **+ SECTION** to create categories for properties required to be passed when establishing connections to the custom API. Create as many sections as needed.
+8. In each section created in the previous step, click **+** to add properties. Create as many properties as needed.
+9. Click **ADD**. A new card is available for defining "Other" (type) data sources.
 
 ### Updating Templates
-All user-defined templates can be updated from Control Panel > Setup > Data Catalog > Template Management. Default templates associated with JDBC-accessible types of data sources can also be updated from here to update jdbc drivers. 
+
+All user-defined templates can be updated from **Control Panel > Setup > Data Catalog > Template Management**. Default templates associated with JDBC-accessible types of data sources can also be updated from here to update JDBC drivers.
 
 Select the template and use the drawer that appears on the right to update properties. Click **SAVE**.
 
-![Updating Templates](Media/update-template.jpg)
+#### Managing Dependencies
+
+For existing JDBC templates, you can add, remove, or view registered dependency jars at any time without recreating the template. The template details drawer now exposes a **MANAGE DEPENDENCY** action under the **Driver URL Pattern** field.
+
+![Template details drawer with the MANAGE DEPENDENCY button visible under Driver URL Pattern](images/manage-dependency-drawer.png)
+
+*Figure 3. The template details drawer for an existing database template. The **MANAGE DEPENDENCY** action opens a modal where dependencies can be uploaded, listed, or deleted.*
+
+To manage dependencies on an existing template:
+
+1. Click the template card from the list to open its details drawer on the right.
+2. Under **Driver URL Pattern**, click **MANAGE DEPENDENCY**.
+3. In the modal that opens, upload new dependency jars or click the delete action next to a listed dependency to remove it.
+4. Click **SAVE**.
+5. Re-open the modal at any time to confirm the dependency list matches what was saved.
 
 ### Deleting Templates
 
