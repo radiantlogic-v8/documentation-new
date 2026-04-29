@@ -101,7 +101,8 @@ Ensure that you specify your target version when running installation and update
 - **persistence.storageClass**: Defines the storage class for provisioning persistent volumes.
 - **persistence.size**: Specifies the size of the persistent volume for Identity Data Management. Ensure that you monitor usage over time and change the value as needed.
 - **zookeeper.persistence.enabled**: Indicates if data persistence is enabled for Zookeeper.
-- **resources**: Indicates the compute resources allocated to the Identity Data Management containers. Identity Data Management is deployed as a StatefulSet, which has implications for resource management. Changing resources requires careful planning as it affects all pods. Monitor your usage and change the values if needed over time. 
+- **resources**: Indicates the compute resources allocated to the Identity Data Management containers. Identity Data Management is deployed as a StatefulSet, which has implications for resource management. The values shown in the example above are for demonstration purposes. Changing resources requires careful planning as it affects all pods. Monitor your usage and change the values as needed over time.
+- **env**: Under `env`, you can define environment variables used to configure Identity Data Management at runtime. The "INSTALL_SAMPLES" property controls whether sample data sets are deployed, allowing you to enable or disable example content as needed. The "FID_SERVER_JOPTS" property specifies JVM heap settings for the Identity Data Management server. The defaults included may be sufficient. However, validate your use cases in a development environment and adjust -Xmx accordingly. To avoid memory swapping and instability, ensure the -Xmx value does not exceed the container memory limit defined in `resource.limits`.
 
 **Optional properties:** 
 
