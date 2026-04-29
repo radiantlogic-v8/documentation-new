@@ -627,70 +627,89 @@ This parameter can be set to the DN of the Administrators group defined in the v
 
 ### File Manager
 
-File Manager is only accessible in the Classic Control Panel.
+File Manager is available in the RadiantOne Control Panel under **Manage > External Files**.
 
-RadiantOne does not allow access to files via operating system user interfaces. The File Manager option allows you to view, upload, and download files that reside under the RLI_HOME directory. It also allows you to build jar files. To access the File Manager, in the Classic Control Panel, go to Settings > Configuration > File Manager. The admin that accesses Classic Control Panel must be assigned to a role that impersonates a role (e.g. Directory Administrators and FileManagerAdmin) that has file-manager-read and/or file-manager-write vdPrivilege to read (file-manager-read) and/or read and manage (file-manager-write) files from File Manager. By default only the Directory Administrators and FileManagerAdmin roles have these privileges in Classic Control Panel. 
+RadiantOne does not expose its files through the operating system's user interface. Instead, File Manager provides a way to view, search, upload, download, and delete files stored under the `RLI_HOME` directory, as well as to build jar files. To open it, click **External Files** in the left navigation under **Manage**.
 
-The default location displayed in File Manager is RLI_HOME.
+The admin who opens File Manager must be assigned to a role that impersonates a role (for example, Directory Administrators or FileManagerAdmin) holding the appropriate vdPrivileges:
 
->[!note] Files at the RLI_HOME level cannot be modified with File Manager. 
+- `file-manager-read` — view files
+- `file-manager-write` — view and manage files
+
+By default, only the **Directory Administrators** and **FileManagerAdmin** roles have these privileges.
+
+When File Manager opens, it displays `RLI_HOME` as the default location. The current path is shown as a breadcrumb above the file list, and the total number of items appears at the bottom of the table.
+
+> [!note]
+> Files at the `RLI_HOME` level cannot be modified through File Manager.
 
 ![File Manager Navigation](Media/file-manager-navigation.png)
 
-To navigate within File Manager, click a folder in the main File Manager pane, or click a link the navigation bar at the top of the File Manager. To go up one folder, click the up-arrow button. 
+To move through File Manager, click a folder in the main pane, or click any segment of the breadcrumb path at the top of the window. To go up one level, click the up-arrow button.
 
-Some files types are hidden from view in File Manager. These file types include the following.
+The file list is presented as a table with the following columns:
 
-- .cer
-- .keystore
-- .truststore
+- **Name** — file or folder name, including extension
+- **Date** — upload date and timestamp
+- **Size** — file size
+
+Click any column header to sort by that column. The sort direction toggles between ascending and descending on each click.
+
+Use the **Search in Current Folder** bar at the top of the window to filter the list by file name.
+
+Some file types are hidden from view by default. To show them, open the **More options (…)** menu and select **Show Hidden Files**. The same menu offers a **Show Folders First** option to group folders above files in the table.
+
+Pagination controls appear at the bottom of the table. Use the **Show … per page** selector and the page navigator to move through large folders.
 
 **Uploading Files**
 
-Uploads can be made anywhere within the <RLI_HOME>, except within <RLI_HOME> itself.
+Files can be uploaded anywhere inside `<RLI_HOME>`, except at the `<RLI_HOME>` root itself. Certificate files (such as `.cer`) are now supported alongside all other file types.
 
-To upload a file, click **Upload Files**. In the File Upload window, navigate to the file to be uploaded, select the file, and click **Open**.
+To upload a file, click **Upload File**. In the File Upload window, navigate to the file you want to upload, select it, and click **Open**. A confirmation toast appears when the upload completes, and an error toast is shown if the upload fails.
 
-**Actions Drop-down Menu**
+**Selecting Files**
 
-The Actions drop-down menu allows perform the following functions. 
-
-- Download files
-- Delete files
-- Open a selection
-- Clear a selection
+Use the checkbox at the start of each row to select one or more files. Select the checkbox in the column header to select every file on the current page. Multi-select supports bulk download and bulk delete.
 
 **Downloading Files**
 
-To download a file in File Manager, navigate in File Manager to the file's location. From the Actions drop-down menu, select Download Files.
+To download files, navigate to the location and select one or more rows. Click the **Download** icon shown next to the selection (or in the row hover state for a single file). The browser downloads each selected file to the location indicated by your browser settings.
 
 **Deleting Files**
 
-The Delete Files option allows you to delete one file at a time. To delete a file in File Manager, navigate to the file's location. From the Actions drop-down menu, selct Delete Files. The file is downloaded to the location indicated by your web browser. 
+To delete files, navigate to the location and select one or more rows. Click the **Delete** icon next to the selection. A confirmation toast appears when the deletion succeeds, and an error toast is shown if any file fails to delete.
 
-**Open Selection**
-
-Some files, such as text, LDIF, XML, and jar files are viewable in File Manager. To view a file in File Manager, navigate to the file's location. From the Actions drop-down menu, select Open Selection. 
-
->[!note] Files such as .class files are not openable in File Manager. 
+> [!note]
+> The **Open Selection** action from the previous (Classic) File Manager has been removed. Files are no longer opened in-app; download a file to view it locally instead.
 
 **Building Jar Files**
 
-The File Manager allows you to build jar files. 
+File Manager can build jar files when you are inside the `custom` folder or any of its subfolders.
+
+![Build Drop-down Menu](Media/file-manager-build.png)
 
 To build jar files:
 
-1. In the Classic Control Panel, click Settings > Configuration > File Manager. 
+1. In the left navigation, click **Manage > External Files**.
 
-1. In File Manager, browse to RLI_HOME/vds_server/custom or any folder within. In the menu bar beneath the navigation bar, the Build drop-down menu displays. 
+1. Browse to `RLI_HOME/vds_server/custom` or any folder within it. The **Build** button appears in the toolbar above the table.
 
-    ![Build Drop-down Menu](Media/file-manager-build.png)
+1. Click **Build** and select an option from the drop-down:
 
-1. From the Build drop-down menu, select an option.
+   - Build All Jars
+   - Build Sync Jars
+   - Build Intercept Jars
+   - Build Custom Jars
+   - Build Change Event Jars
 
-![File Manager Options](Media/build-jar.png)
+   ![File Manager Build Options](Media/build-jar.png)
+
+A **Build Results** panel displays the build output, including compile messages, the jar files produced, and any warnings.
+
+
 
 ### Switch to Classic Control Panel 
+
 Some settings must be managed using the RadiantOne Classic Control Panel.
 To switch to Classic Control Panel, use the menu options for the logged in user in the upper right.
 
@@ -708,7 +727,6 @@ The following settings must be managed from the RadiantOne Classic Control Panel
 -	Control Panel customizations (lock, color theme, session timeout, max users, banner, custom message on login screen)​: ​Classic Control Panel > Settings > Server Front End > Administration <br> See [Customizing the Classic Control Panel](#customizing-the-classic-control-panel) for details.
 -	PCache Refresh Monitoring: Classic Control Panel > PCache Monitoring tab <br> See [Persistent Cache Refresh Monitoring](../monitoring-and-alerts/monitoring-and-alerts/#persistent-cache-refresh-pcache-monitoring-tab) for details.
 -	Intercluster Replication Monitoring: Classic Control Panel > Replication Monitoring tab <br> See [Replication Monitoring](../monitoring-and-alerts/monitoring-and-alerts/#replication-monitoring-tab) for details.
--	File Manager: Classic Control Panel > Settings > Configuration > File Manager <br> See [File Manager](#file-manager) for details. The admin that accesses Classic Control Panel must be assigned to a role that impersonates a role (e.g. Directory Administrators and FileManagerAdmin) that has file-manager-read and/or file-manager-write vdPrivilege to read (file-manager-read) and/or read and manage (file-manager-write) files from File Manager. By default only the Directory Administrators and FileManagerAdmin roles have these privileges in Classic Control Panel. 
 -	Identity Data Analysis Wizard: Classic Control Panel > Wizards > Identity Data Analysis. See [Identity Data Analysis](../configuration/identity-views/identity-data-analysis) for details.
 -	Global Identity Builder: Classic Control Panel > Wizards > Global Identity Builder. See [Global Identity Builder](../configuration/global-identity-builder/introduction) for details.
 
