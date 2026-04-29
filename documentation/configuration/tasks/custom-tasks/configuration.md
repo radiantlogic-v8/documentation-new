@@ -18,7 +18,7 @@ This page provides a summary of the basic and advanced properties used to config
 
 An example of the filled out basic properties for a custom task instance:
 
-![Custom task instance basic properties example](../global-settings/Media/01-task-instance-basic-properties.png)
+![Custom task instance basic properties example](../../global-settings/Media/01-task-instance-basic-properties.png)
 
 In the image above:
 
