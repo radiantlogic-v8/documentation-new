@@ -455,7 +455,7 @@ Entries can be managed from the [Directory Browser](../configuration/directory-s
 
 **Tasks**
 
-[Manage Tasks](/documentation/configuration/global-settings/tasks) from here.
+[Manage Tasks](/documentation/configuration/tasks) from here.
 
 **Security**  
 
