@@ -5,9 +5,13 @@ description: Learn how to create a custom task instance.
 
 ## Create Custom Task Instance
 
-The steps below create a custom task instance that will execute an uploaded Java class.
+**Prerequisites**
 
-1. Navigate to the **Tasks** page and click ***Create Task Instance***.
+* Complete the [steps listed here](../custom-tasks/index.md) before proceeding with the steps outlined in this document. 
+
+The steps below create a custom task instance that will execute an uploaded Java class. 
+
+1. Navigate to the **Tasks** page and click **Create Task Instance**.
 
    ![Task List with Create Task Instance button highlighted](../../global-settings/Media/04-task-list-create-instance-button.jpg)
 
@@ -44,6 +48,6 @@ The steps below create a custom task instance that will execute an uploaded Java
   | `ERROR` | A one-time task resulted in an error. The task will not run again. |
   | `INTERRUPTED` | The task was stopped before it was finished. |
 
-- A task that's in the *FINISHED*, *ERROR*, or *INTERRUPTED* state can be started and deleted:
+- If a task is in *FINISHED*, *ERROR*, or *INTERRUPTED* state, it can be started and deleted as needed:
 
   ![Task List showing a FINISHED task with start and delete actions](../../global-settings/Media/09-task-list-finished-status.png)

@@ -25,7 +25,7 @@ A built-in logger is available for writing messages to the task log. Use `logger
 
 ### `readArguments(String[] strings)`
 
-This method receives the [arguments](configuration.md) that are configured when creating the task instance. Use it to parse and store argument values as instance variables so they can be used in `processTask()`.
+This method receives the [arguments](../custom-tasks/configuration.md) that are configured when creating the task instance. Use it to parse and store argument values as instance variables so they can be used in `processTask()`.
 
 The `strings` parameter is a flattened array of the key-value pairs defined in the **Arguments** section of the task instance form. For example, if you configured two arguments:
 

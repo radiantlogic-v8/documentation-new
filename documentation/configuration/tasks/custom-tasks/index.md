@@ -20,10 +20,10 @@ Creating a custom task involves the following steps, each of which is described 
 
 1. Download one of the custom task templates as the starting point for the custom task:
 
-   - [**PerNodeCustomTaskTemplate**](custom-tasks-templates.md#run-on-all-nodes-pernodecustomtask) : For a custom task that should only be executed on the leader node.
-   - [**PerClusterCustomTaskTemplate**](custom-tasks-templates.md#run-on-one-node-perclustercustomtask) : For a custom task that should be executed on all nodes.
+   - [**PerNodeCustomTaskTemplate**](../custom-tasks/custom-tasks-templates.md#run-on-all-nodes-pernodecustomtask) : For a custom task that should only be executed on the leader node.
+   - [**PerClusterCustomTaskTemplate**](../custom-tasks/custom-tasks-templates.md#run-on-one-node-perclustercustomtask) : For a custom task that should be executed on all nodes.
    
-   For detailed information on the two templates, view the [Custom Task Templates](custom-tasks-templates.md) document.
+   For detailed information on the two templates, view the [Custom Task Templates](../custom-tasks/custom-tasks-templates.md) document.
 
 2. Fill out the custom task template:
 
@@ -38,7 +38,7 @@ Creating a custom task involves the following steps, each of which is described 
    - Update the class name and its references in the `main` method. Ensure that the name of the Java file containing the class is the same as the class name.
    - Verify that all required imports are present.
 
-   For examples and additional information, review the [Writing a Custom Task Java Class](custom-task-java-class.md) document.
+   For examples and additional information, review the [Writing a Custom Task Java Class](../custom-tasks/custom-task-java-class.md) document.
 
 ## Upload Custom Task Java Class
 
@@ -61,4 +61,4 @@ After writing the custom task Java class, follow the steps below to upload the J
 
 ## Next Steps
 
-Once the custom Java class has been implemented and uploaded, you can proceed with [creating the custom task instance](create-a-custom-task.md).
+Once the custom Java class has been implemented and uploaded, you can proceed with [creating the custom task instance](../custom-tasks/create-a-custom-task.md).
