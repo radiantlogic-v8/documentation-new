@@ -464,15 +464,19 @@ This property is applicable to all connectors except HDAP triggers. The default 
 
 ### Log Level
 
-Log Level – OFF: Used to turn logging off.
-Log level – FATAL: Severe errors that cause premature termination.
-Log level – ERROR: Other runtime errors or unexpected conditions.
-Log level – WARN: Use of deprecated APIs, poor use of API.
-Log level – INFO: Interesting runtime events.
-Log level – DEBUG: Detailed information on the flow through the system.
-Log level – TRACE: Most detailed information.
-Log location:
+The log level property controls the detail level and type of information written to the logs. The available log levels are Off, Fatal, Error, Warn, Info, Debug, and Trace. 
+
+* OFF: Used to turn logging off.
+* FATAL: Severe errors that cause premature termination.
+* ERROR: Other runtime errors or unexpected conditions.
+* WARN: Logs warning conditions that may affect operation but do not stop processing such as usage of deprecated APIs.
+* INFO: Logs standard operational activity regarding runtime events.
+* DEBUG: Logs detailed diagnostic information about internal processing and actions performed by the system.
+* TRACE: Logs detailed information intended for intensive troubleshooting.
+
+**Log location:**
 <RLI_HOME>\logs\sync_agent<naming_context><data_source>\connector.log
+
 This property is applicable to all connectors except HDAP triggers. The default value is INFO.
 
 ### Max Retries On Error
