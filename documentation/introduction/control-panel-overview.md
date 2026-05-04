@@ -627,20 +627,19 @@ This parameter can be set to the DN of the Administrators group defined in the v
 
 ### File Manager
 
-File Manager is available in the RadiantOne Control Panel under **Manage > External Files**.
+File Manager is available in the RadiantOne Control Panel under Manage > External Files.
 
-RadiantOne does not expose its files through the operating system's user interface. Instead, File Manager provides a way to view, search, upload, download, and delete files stored under the `RLI_HOME` directory, as well as to build jar files. To open it, click **External Files** in the left navigation under **Manage**.
+RadiantOne does not expose its files through the operating system's user interface. Instead, File Manager provides a way to view, search, upload, download, and delete files stored under the `RLI_HOME` directory; create and rename folders inside the custom project; and build jar files. To open it, click External Files in the left navigation under Manage.
 
 The admin who opens File Manager must be assigned to a role that impersonates a role (for example, Directory Administrators or FileManagerAdmin) holding the appropriate vdPrivileges:
 
 - `file-manager-read` — view files
 - `file-manager-write` — view and manage files
 
-By default, only the **Directory Administrators** and **FileManagerAdmin** roles have these privileges.
+By default, only the Directory Administrators and FileManagerAdmin roles have these privileges.
 
 When File Manager opens, it displays `RLI_HOME` as the default location. The current path is shown as a breadcrumb above the file list, and the total number of items appears at the bottom of the table.
 
-> [!note]
 > Files at the `RLI_HOME` level cannot be modified through File Manager.
 
 ![File Manager Navigation](Media/file-manager-navigation.png)
@@ -649,52 +648,85 @@ To move through File Manager, click a folder in the main pane, or click any segm
 
 The file list is presented as a table with the following columns:
 
-- **Name** — file or folder name, including extension
-- **Date** — upload date and timestamp
-- **Size** — file size
+- Name — file or folder name, including extension
+- Date — upload date and timestamp
+- Size — file size
 
 Click any column header to sort by that column. The sort direction toggles between ascending and descending on each click.
 
-Use the **Search in Current Folder** bar at the top of the window to filter the list by file name.
+Use the Search in Current Folder bar at the top of the window to filter the list by file name.
 
-Some file types are hidden from view by default. To show them, open the **More options (…)** menu and select **Show Hidden Files**. The same menu offers a **Show Folders First** option to group folders above files in the table.
+Some file types are hidden from view by default. To show them, open the More options (…) menu and select Show Hidden Files. The same menu offers a Show Folders First option to group folders above files in the table.
 
-Pagination controls appear at the bottom of the table. Use the **Show … per page** selector and the page navigator to move through large folders.
+![Actions and Display Options Menu](Media/file-manager-actions-menu.png)
+
+Pagination controls appear at the bottom of the table. Use the Show … per page selector and the page navigator to move through large folders.
 
 **Uploading Files**
 
 Files can be uploaded anywhere inside `<RLI_HOME>`, except at the `<RLI_HOME>` root itself. Certificate files (such as `.cer`) are now supported alongside all other file types.
 
-To upload a file, click **Upload File**. In the File Upload window, navigate to the file you want to upload, select it, and click **Open**. A confirmation toast appears when the upload completes, and an error toast is shown if the upload fails.
+To upload a file, click Upload File. In the Upload File dialog, drag and drop the file into the drop zone, or click choose a file to browse. Click Upload to submit. A confirmation toast appears when the upload completes, and an error toast is shown if the upload fails.
+
+![Upload File Dialog](Media/file-manager-upload-file.png)
+
+> [!note]
+> Single-file upload is supported. When multiple files are selected at once, only the last file in the list is processed in the current release.
 
 **Selecting Files**
 
-Use the checkbox at the start of each row to select one or more files. Select the checkbox in the column header to select every file on the current page. Multi-select supports bulk download and bulk delete.
+Use the checkbox at the start of each row to select one or more files. Select the checkbox in the column header to select every file on the current page. Multi-select supports bulk download and bulk delete; an action bar appears at the bottom of the table showing the number of selected items and an Options button.
+
+![Multi-select Action Bar](Media/file-manager-multiselect.png)
 
 **Downloading Files**
 
-To download files, navigate to the location and select one or more rows. Click the **Download** icon shown next to the selection (or in the row hover state for a single file). The browser downloads each selected file to the location indicated by your browser settings.
+To download files, navigate to the location and select one or more rows. Click the Download icon shown next to the selection (or in the row hover state for a single file). The browser downloads each selected file to the location indicated by your browser settings.
 
 **Deleting Files**
 
-To delete files, navigate to the location and select one or more rows. Click the **Delete** icon next to the selection. A confirmation toast appears when the deletion succeeds, and an error toast is shown if any file fails to delete.
+To delete files, navigate to the location and select one or more rows. Click the Delete icon next to the selection. A confirmation toast appears when the deletion succeeds, and an error toast is shown if any file fails to delete.
+
+**Open Selection**
+
+Some file types — such as text, LDIF, XML, and jar files — can be viewed directly in File Manager. To view a file, navigate to its location, select a single row, and choose Open Selection from the row actions.
 
 > [!note]
-> The **Open Selection** action from the previous (Classic) File Manager has been removed. Files are no longer opened in-app; download a file to view it locally instead.
+> Open Selection is available only when a single file is selected. Files such as `.class` files cannot be opened in File Manager.
+
+**Creating and Renaming Folders**
+
+File Manager supports creating and renaming folders under `RLI_HOME/vds_server/custom/src` and any of its subfolders. This is useful when developing custom objects, where new folders correspond to Java packages.
+
+To create a folder:
+
+1. Navigate to `RLI_HOME/vds_server/custom/src` (or any subfolder beneath it).
+
+1. Click the Create New Folder icon in the toolbar.
+
+1. In the Create New Folder dialog, enter a folder name and click CREATE. The new folder appears in the file list immediately.
+
+   ![Create New Folder Dialog](Media/file-manager-create-folder.png)
+
+To rename a folder, navigate to its parent location, hover over the folder row, and click the rename (pencil) icon. Enter the new name and confirm — the updated name is reflected in the UI without requiring a page refresh.
+
+You can nest folders to any depth needed (for example, `custom/src/com/rli/scripts/customobjects`) to mirror your Java package structure.
+
+> Folder creation and renaming are limited to paths under `custom/src`. Deleting folders is currently not supported. 
 
 **Building Jar Files**
 
 File Manager can build jar files when you are inside the `custom` folder or any of its subfolders.
 
-![Build Drop-down Menu](Media/file-manager-build.png)
+![File Manager – Custom Folder with Build Button](Media/file-manager-build.png)
 
 To build jar files:
 
-1. In the left navigation, click **Manage > External Files**.
+1. In the left navigation, click Manage > External Files.
 
-1. Browse to `RLI_HOME/vds_server/custom` or any folder within it. The **Build** button appears in the toolbar above the table.
+1. Browse to `RLI_HOME/vds_server/custom` or any folder within it. The Build button appears in the toolbar above the table.
 
-1. Click **Build** and select an option from the drop-down:
+1. Click Build and select an option from the drop-down:
 
    - Build All Jars
    - Build Sync Jars
@@ -702,11 +734,9 @@ To build jar files:
    - Build Custom Jars
    - Build Change Event Jars
 
-   ![File Manager Build Options](Media/build-jar.png)
+   ![Build Drop-down Options](Media/build-jar.png)
 
-A **Build Results** panel displays the build output, including compile messages, the jar files produced, and any warnings.
-
-
+A Build Results panel displays the build output, including compile messages, the jar files produced, and any warnings.
 
 ### Switch to Classic Control Panel 
 
