@@ -631,7 +631,7 @@ File Manager is available in the RadiantOne Control Panel under Manage > Externa
 
 RadiantOne does not expose its files through the operating system's user interface. Instead, File Manager provides a way to view, search, upload, download, and delete files stored under the `RLI_HOME` directory; create and rename folders inside the custom project; and build jar files. To open it, click External Files in the left navigation under Manage.
 
-The admin who opens File Manager must be assigned to a role that impersonates a role (for example, Directory Administrators or FileManagerAdmin) holding the appropriate vdPrivileges:
+Admin(s) using File Manager must be assigned appropriate role(for example, Directory Administrators or FileManagerAdmin) with the required vdPrivileges:
 
 - `file-manager-read` — view files
 - `file-manager-write` — view and manage files
@@ -656,11 +656,7 @@ Click any column header to sort by that column. The sort direction toggles betwe
 
 Use the Search in Current Folder bar at the top of the window to filter the list by file name.
 
-Some file types are hidden from view by default. To show them, open the More options (…) menu and select Show Hidden Files. The same menu offers a Show Folders First option to group folders above files in the table.
-
-![Actions and Display Options Menu](Media/file-manager-actions-menu.png)
-
-Pagination controls appear at the bottom of the table. Use the Show … per page selector and the page navigator to move through large folders.
+Some file types are hidden from view by default. To show them, open the More options (…) menu and select Show Hidden Files. The same menu offers a Show Folders First option to group folders above files in the table. Pagination controls appear at the bottom of the table. Use the "Show …" per page selector and the page navigator to move through large folders.
 
 **Uploading Files**
 
@@ -668,16 +664,12 @@ Files can be uploaded anywhere inside `<RLI_HOME>`, except at the `<RLI_HOME>` r
 
 To upload a file, click Upload File. In the Upload File dialog, drag and drop the file into the drop zone, or click choose a file to browse. Click Upload to submit. A confirmation toast appears when the upload completes, and an error toast is shown if the upload fails.
 
-![Upload File Dialog](Media/file-manager-upload-file.png)
-
 > [!note]
 > Single-file upload is supported. When multiple files are selected at once, only the last file in the list is processed in the current release.
 
 **Selecting Files**
 
 Use the checkbox at the start of each row to select one or more files. Select the checkbox in the column header to select every file on the current page. Multi-select supports bulk download and bulk delete; an action bar appears at the bottom of the table showing the number of selected items and an Options button.
-
-![Multi-select Action Bar](Media/file-manager-multiselect.png)
 
 **Downloading Files**
 
@@ -705,10 +697,7 @@ To create a folder:
 1. Click the Create New Folder icon in the toolbar.
 
 1. In the Create New Folder dialog, enter a folder name and click CREATE. The new folder appears in the file list immediately.
-
-   ![Create New Folder Dialog](Media/file-manager-create-folder.png)
-
-To rename a folder, navigate to its parent location, hover over the folder row, and click the rename (pencil) icon. Enter the new name and confirm — the updated name is reflected in the UI without requiring a page refresh.
+To rename a folder, navigate to its parent location, hover over the folder row, and click the rename (pencil) icon. Enter the new name and confirm the updated name is reflected in the UI without requiring a page refresh.
 
 You can nest folders to any depth needed (for example, `custom/src/com/rli/scripts/customobjects`) to mirror your Java package structure.
 
