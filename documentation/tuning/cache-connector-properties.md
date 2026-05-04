@@ -284,7 +284,7 @@ If the captured change type is not delete (e.g. insert, update, move, etc.), and
 
 To further condition the entries that are published, you can indicate one or more branches to exclude. In the Excluded Branches property, use **+ADD** and enter (or browse to) one or more suffixes associated with entries that should not be published by the connector. Click the ![checkmark](Media/checkmark.jpg) after each suffix. An example is shown below.
 
-![Two suffixes entered in the Excluded Branches property](Media/excluded-branches.png)
+![Two suffixes entered in the Excluded Branches property](Media/excluded-branches.jpg)
 
 If the changed entry DN contains a suffix that matches the excluded branches value, or is a change in the exact entry that is listed (e.g. `ou=dept1,ou=com`), this entry is not published by the connector. Otherwise, the entry is published. This can avoid publishing unwanted information.
 
