@@ -113,6 +113,24 @@ From the Classic Control Panel > PCache Monitoring tab, you can select a real-ti
 
 ![An image showing ](Media/Image1.38.jpg)
 
+
+#### Modify Events Buffering
+
+By default, the persistent search connector processes each **modify** event individually as it is received. To optimize performance during large bursts of changes, you can enable buffering for modify events.
+
+To enable buffering of **modify events** for a persistent search connector:
+
+![An image showing buffer configuration for modify events](Media/pcache-modify.png)
+
+1. From the PCache Monitoring tab, select the persistent search connector you want to configure.
+2. Set Enable modify events buffering to `true`. 
+3. Set the Modify events buffer size to the maximum number of modify events to collect before the buffer is flushed. When this limit is reached, all buffered events are deduplicated by DN and only one sync event per unique entry is sent to the queue.
+4. Set the Modify events buffer flush TTL (seconds) to the maximum number of seconds to wait before flushing the buffer, even if the buffer size has not been reached. This ensures events are not held indefinitely during periods of low activity.
+5. Save the connector configuration.
+
+Once enabled, the connector batches incoming modify events instead of processing each one individually. When the buffer is flushed (either because the size limit or the TTL is reached), duplicate events targeting the same DN are collapsed into a single sync event. This is especially useful when directory operations generate a large volume of changes to the same entries in a short period, such as adding many members to a group one at a time.
+
+
 ## Monitoring from the Server Control Panel
 
 The items that can be monitored from the Server Control Panel are described in this section.
