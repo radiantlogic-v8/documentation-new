@@ -358,6 +358,9 @@ This means that all inetOrgPerson entries from the underlying source are returne
 
 Proxy identity views from LDAP backends can be conditioned by using a pre-processing filter. A pre-processing filter is any valid LDAP filter that you want to always be sent by RadiantOne when querying the backend LDAP server. The query filter that is sent to the backend is based on the client request that came into RadiantOne in addition to whatever you have set as a pre-processing filter. 
 
+>[!warn]
+>Use caution when configuring preprocessing filter conditions to ensure your filter does not exclude parent nodes, or child entries may lose their context in the directory structure and searches scoped for base level or one level could fail to return the parent entries.
+
 To define a pre-processing filter:
 
 1.	From the Control Panel > Setup > Directory Namespace > Namespace Design, select the desired node representing the LDAP backend below Root Naming Contexts.
