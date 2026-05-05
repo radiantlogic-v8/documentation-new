@@ -5,7 +5,7 @@ description: Learn how to promote configuration changes in multiple environments
 
 ## Overview
 
-Radiant Logic's configuration promotion feature allows you to seamlessly transfer configuration changes across different Identity Data Management instances. This enables you to synchronize updates from one environment to another, such as promoting changes from a development environment to QA or production environments. This feature is available in Identity Data Management version 8.1.4 and higher.
+Radiant Logic's configuration promotion feature allows you to seamlessly transfer configuration changes across different Identity Data Management instances. This enables you to synchronize updates from one environment to another, such as promoting changes from a development environment to QA or production environments. This feature is supported in Identity Data Management version 8.4.0 and higher.
 
 Starting with Identity Data Management version 8.4.0, you can also select exactly which staged resources to promote and validate dependencies before exporting. 
 
