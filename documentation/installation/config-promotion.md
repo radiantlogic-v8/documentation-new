@@ -36,8 +36,8 @@ Promotion of the following configuration changes is not supported:
 - Data source connection settings (including credentials)
 
 **This feature is only supported in:**  
-- Helm chart version 1.1.4 and higher.  
-- Identity Data Management 8.1.4 and higher.
+- Helm chart version 1.4.0 and higher.  
+- Identity Data Management 8.4.0 and higher.
 
 ## Steps to enable Configuration Promotion
 
