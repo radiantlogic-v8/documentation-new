@@ -359,6 +359,24 @@ To use the DirSync control, the Bind DN connecting to the directory must have th
 >[!warning]
 >The DirSync capture connector does NOT capture changes to calculated attributes such as the `memberOf` attribute or moved entries (`modDN` or `modRDN` operations).
 
+When a user object is deleted in Active Directory, it is moved to the CN=Deleted Objects tombstone container. If the deleted user is subsequently restored and then deleted again, the DirSync connector may fail to detect the second deletion and the user object may remain visible in the RadiantOne cache. 
+
+To prevent this from happening, enable the "Enable Root Naming Context-based Deletion Syncing" setting in the AD DirSync connector's advanced settings, and provide the Root Naming Context DN (e.g., DC=example,DC=com).
+
+To configure this setting, follow these steps:
+
+1. In the Classic Control Panel, navigate to the persistent cache connector's advanced settings.
+
+2. Set Enable Root Naming Context-based Deletion Syncing to true.
+
+![root naming context detection setting](Media/rootnamingcontext-detection.png)
+
+3. Provide the root naming context DN (e.g., DC=AD2,DC=COM) in the Root Naming Context field. This should be the domain root DN for the Active Directory partition being monitored.
+
+When this setting is enabled, the connector uses the root naming context instead of the configured base DN when evaluating deletion events, allowing it to properly detect deletions of objects that have been restored and deleted more than once.
+
+rootnamingcontext-detection
+
 **Active Directory Hybrid connector**
 
 The Active Directory hybrid capture connector uses a combination of the uSNChanged and DirSync change detection mechanisms. The first time the connector starts, it gets a new cookie and the highest `uSNchanged` number. When the connector gets a new change (modify or delete), it makes an additional search using the DN of the entry and fetches the entry from AD. The fetched entry contains the `uSNChanged` attribute, so the connector updates the cursor values for both for the cookie and the last processed `uSNchanged` number.
