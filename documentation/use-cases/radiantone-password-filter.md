@@ -248,7 +248,7 @@ Once installed and configured:
 
 Use the following steps to confirm end-to-end behavior after setup is complete.
 
-1. On AD Server 1, choose a test user. Ensure that the user account is activated.
+1. On Active Directory 1, choose a test user. Ensure that the account is activated.
 2. Change the test user's password to a new password in Active Directory 1 (right-click the user → **Reset Password**).
 
    ![Reset Password context menu in Active Directory](Media/13-reset-password-context-menu.jpg)
@@ -259,4 +259,4 @@ Use the following steps to confirm end-to-end behavior after setup is complete.
 
    You should see a message that indicates that the **authentication was successful**.
 
-4. Authenticate the same user in the **destination context** (`o=dst`) using the **same new password**. You should again see **authentication success**. This confirms that the password was synchronized to AD2.
+4. Authenticate the same user in the **destination context** (`o=dst`) using the **same new password**. You should again see **authentication success**. This confirms that the password was synchronized to Active Directory 2.
