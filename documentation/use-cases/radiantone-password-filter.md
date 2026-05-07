@@ -20,7 +20,7 @@ In the scenario covered in this document:
 - RadiantOne updates the user's password in the destination **Active Directory** (AD 2).
 - After successful synchronization, the user can log in to both Active Directory environments using the same new password.
 
-> *Note: While this document focuses on syncing passwords between two Active Directories, you can also use this filter to sync passwords between AD and any other LDAP directory target.*
+> [!note] While this document focuses on syncing passwords between two Active Directories, you can also use this filter to sync passwords between AD and any other LDAP directory target.
 
 ## Prerequisites
 
