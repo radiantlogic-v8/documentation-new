@@ -120,7 +120,7 @@ Harness your identity data with intelligent integration to drive better business
   > [General Attribute Handling](tuning/attribute-handling)  
   > Learn about properties related to attribute handling.
 
-  > [Peristent Cache Event Listeners](tuning/cache-connector-properties/)  
+  > [Persistent Cache Event Listeners](tuning/cache-connector-properties/)  
   > Learn about tuning properties for event listener that detect changes for real-time persistent cache refresh.
 
   > [Synchronization Event Listeners](configuration/synchronization/connector-properties/)  
@@ -205,7 +205,7 @@ Harness your identity data with intelligent integration to drive better business
   > [Scaling Nodes](maintenance/scaling-nodes)  
   > Learn how to scale the number of nodes in an environment. 
 
-  > [Restarting Applications](maintenancemanaging-environments/#restarting-the-radiantone-service)  
+  > [Restarting Applications](maintenance/managing-environments/#restarting-the-radiantone-service)  
   > Learn how to restart environments. 
      
   > [Deleting Environments](maintenance/managing-environments#deleting-environments)  
