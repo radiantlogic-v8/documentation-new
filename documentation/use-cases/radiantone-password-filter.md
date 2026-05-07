@@ -54,9 +54,11 @@ Before configuring the Password Filter, an administrator should have the followi
 
 ### Data Sources
 
-1. Create a data source that points to your source Active Directory in RadiantOne using SSL.
+1. Configure a data source in RadiantOne that connects to your source Active Directory using Secure Data Connector with SSL enabled.
 
    **Example:**
+
+   ![SDC data source](Media/sdc-info.png)
 
    ![Data source connection settings](Media/01-data-source-connection.png)
 
@@ -66,7 +68,7 @@ Before configuring the Password Filter, an administrator should have the followi
    | PORT | 636 |
    | SSL | YES |
 
-2. Create an LDAP proxy to connect to your source Active Directory (for example, `o=src`).
+3. Create an LDAP proxy to connect to your source Active Directory (for example, `o=src`).
 
    **General Settings Example:**
 
@@ -81,7 +83,7 @@ Before configuring the Password Filter, an administrator should have the followi
    | HOST | 35.91.133.128 |
    | PORT | 636 |
 
-3. Repeat steps 1 and 2 for the destination source. Create a data source that connects to your destination Active Directory Server using an SSL connection. Then, create an LDAP proxy pointing to Active Directory Server 2 (for example, **o=dst**).
+4. Repeat steps 1 and 2 for the destination source. Create a data source that connects to your destination Active Directory Server using an SSL connection. Then, create an LDAP proxy pointing to Active Directory Server 2 (for example, **o=dst**).
 
 ## Initial Sync Pipeline Configuration
 
