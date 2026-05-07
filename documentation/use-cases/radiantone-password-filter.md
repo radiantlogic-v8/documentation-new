@@ -50,7 +50,7 @@ Before configuring the Password Filter, an administrator should have the followi
 
 1. **Add your server's SSL certificate** to the Identity Data Management Certificate Truststore. This allows Radiant One Identity Data Management to establish a trusted LDAPS connection to your AD.
 
-> **Note:** If your AD server's SSL certificate is issued by a well-known public Certificate Authority (CA) that is already included in IDDM's default truststore, you can skip this step as the certificate will be trusted automatically. Import is only required for self-signed certificates or certificates issued by a private/internal CA.
+> [!note] If your AD server's SSL certificate is issued by a well-known public Certificate Authority (CA) that is already included in IDDM's default truststore, you can skip this step as the certificate will be trusted automatically. Import is only required for self-signed certificates or certificates issued by a private/internal CA.
 
 ### Data Sources
 
@@ -97,7 +97,7 @@ Before configuring the Password Filter, an administrator should have the followi
 
 4. Enter a name for the filter and click **Register**. A window with additional details about the filter will appear. Copy the values of **ID**, **Token**, and **Target Endpoint** shown in this window as you will need the information for a later step.
 
-   > **Note:** The token is only visible now and will not be accessible once you close this dialog. Please copy and store it securely.
+   > [!note] The token is only visible now and will not be accessible once you close this dialog. Please copy and store it securely.
 
    ![New Password Filter Registration Completed dialog](Media/05-password-filter-registration-completed.png)
 
@@ -183,11 +183,12 @@ These values map to the following keys in the generated `appsettings.json` confi
    | sAMAccountName | Replace value(s) | sAMAccountName |
    | userAccountControl | Replace value(s) | userAccountControl |
 
-   > ***Note: Do not enable Adaptive mode. Leave adaptive mode disabled.***
+   > [!warning]
+   > Do not enable Adaptive mode. Leave adaptive mode disabled.
 
 3. Save the configured insert rule.
 
-4. Next, create an update rule to synchronize password changes. Note that this step is important as it is the rule that enables password synchronization.
+4. Next, create an update rule to synchronize password changes. This step is important as it is the rule that enables password synchronization.
 
    Provide basic details such as the rule name and description, then set "user" as the value for both `sourceobjectclass` and `targetobjectclass`.
 
@@ -225,7 +226,8 @@ These values map to the following keys in the generated `appsettings.json` confi
    |------------------|----------------|--------------|
    | unicodePwd | Replace value(s) | unicodePwd |
 
-   > ***Note: Do not enable Adaptive mode. Keep it disabled.***
+   > [!warning]
+   > Do not enable Adaptive mode. Keep it disabled.
 
 9. Save the configured update rule.
 
