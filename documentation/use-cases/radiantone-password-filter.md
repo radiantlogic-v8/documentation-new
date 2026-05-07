@@ -11,7 +11,7 @@ Identity Data Management then propagates the updated password to other connected
 
 This guide covers configuring the synchronization pipeline (including LDAP proxies, data sources, and rule-based transformations), installing and registering the Password Filter service on an Active Directory domain controller, and validating end-to-end password synchronization.
 
-> **Note:** The Password Filter captures a password only when it is first set or reset for AD users. Existing passwords that have not been changed since the filter was installed are not captured until the next time they are set or reset.
+> [!note] The Password Filter captures a password only when it is first set or reset for AD users. Existing passwords that have not been changed since the filter was installed are not captured until the next time they are set or reset.
 
 In the scenario covered in this document:
 
