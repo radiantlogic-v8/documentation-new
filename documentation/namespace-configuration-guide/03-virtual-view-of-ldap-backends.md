@@ -450,7 +450,7 @@ Figure 19: Pre-Processing Filter Settings
 
 ### Post-processing exclusion filter
 
-Proxy virtual views from LDAP backends can be conditioned by using a Post-processing exclusion filter. After RadiantOne queries the backend and retrieves the results, this filter excludes certain entries from being returned to the client. 
+Proxy virtual views from LDAP backends can be conditioned by using a Post-processing exclusion filter. After RadiantOne queries the backend and retrieves the results, this filter excludes certain entries (that match the filter) from being returned to the client. 
 
 To define a post-processing filter:
 
