@@ -50,7 +50,7 @@ Before configuring the Password Filter, an administrator should have the followi
 
 1. **Add your server's SSL certificate** to the Identity Data Management Certificate Truststore. This allows Radiant One Identity Data Management to establish a trusted LDAPS connection to your AD.
 
-> [!note] If your AD server's SSL certificate is issued by a well-known public Certificate Authority (CA) that is already included in IDDM's default truststore, you can skip this step as the certificate will be trusted automatically. Import is only required for self-signed certificates or certificates issued by a private/internal CA.
+> [!note] If your AD server's SSL certificate is issued by a well-known public Certificate Authority (CA) that is already included in RadiantOne Identity Data Management's default truststore, you can skip this step as the certificate will be trusted automatically. Import is only required for self-signed certificates or certificates issued by a private/internal CA.
 
 ### Data Sources
 
@@ -239,7 +239,7 @@ Once installed and configured:
 
 1. A user on Active Directory 1 changes their password (via Ctrl+Alt+Del, a password reset tool, etc.).
 2. The `ChangePasswordFilter_x64` DLL on the domain controller captures the password change and passes it to the RadiantOne Password Filter Windows service (`RadiantOnePasswordFilter`).
-3. The service forwards the password to RadiantOne IDDM via the configured Target Endpoint, authenticated with the provided Token and ID.
+3. The service forwards the password to RadiantOne Identity Data Management via the configured Target Endpoint, authenticated with the provided Token and ID.
 4. RadiantOne processes the password update through the sync pipeline using the `password_update_rule` rule set (described below).
 5. The pipeline writes the new `unicodePwd` value to Active Directory 2.
 6. The user can now authenticate using the new password against both the source context (`o=src`) and the destination context (`o=dst`).
