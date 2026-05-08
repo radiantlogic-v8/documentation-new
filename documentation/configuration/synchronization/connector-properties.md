@@ -336,7 +336,7 @@ Any LDAP directory that offers a persistent search mechanism can use the Persist
 
 Set the change detection type in the pipeline configuration by choosing the **Capture** component. In the Core Properties section, select the type from the drop-down list.
 
-![The drop-down list with **LDAP** selected, in the Core Properties section of Configure Pipeline](Media/image8.png)
+![The drop-down list with **LDAP** selected, in the Core Properties section of Configure Pipeline](Media/image8.jpg)
 
 After selecting the Type, configure the properties. For properties common to all event listeners, see [Common properties](#Common-properties-for-all-Event-Listeners). The general properties for LDAP event listeners are configured in the Core Properties section. Properties related to filtering of events are configured in the Event Filtering section. Properties related to the contents of the messages published by the event listener are configured in the Event Content section. All other properties are configured in the Advanced Properties section. [Polling interval](#Common-properties-for-all-Event-Listeners)is not required for the LDAP Persistent Search change detection mechanism. For properties that determine how the event listener filters events that are not needed, configure the LDAP Filter, Included Branches and Excluded Branches in the Event Filtering section. These properties are described below.
 
