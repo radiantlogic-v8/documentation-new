@@ -66,9 +66,10 @@ These release notes contain the following sections:
 - [API-3504]: Fixed an issue where Real-time cache refresh diagnostics now properly detects and creates required dependency cache locations when pointing to children nodes of proxy views.
 - [API-3507]: Fixed an issue related to the migration utility during migration imports in case of resource key collisions.
 - [API-3508]: Fixed an issue in the Task Manager where tasks failed when going from scheduled to unscheduled and saving.
+- [API-3517, SQ-660]: Fixed an issue For Entra ID custom object, where all entries, such as members were not always included.
 - [API-3522,  SQ-911]: Fixed an issue where large (25+ MB) schemas could not be fetched.
 - [API-3523]: Fixed the data source SDC mapping process to skip calls to the SDC API for data sources with no SDC group mapping.
-- [API-3524]: Fixed an issue where the memberOf attribute from Entra ID backends was sometimes not returning all groups. Also allow the value of the memberOf attribute to be either a computed DN (matching the location of the groups in the RadiantOne namespace) or the displayname of the groups.
+- [API-3524, SQ-909]: Fixed an issue where the memberOf attribute from Entra ID backends was sometimes not returning all groups. Also allow the value of the memberOf attribute to be either a computed DN (matching the location of the groups in the RadiantOne namespace) or the displayname of the groups.
 - [API-3562, SQ-946]: Fixed an issue where schemas were not linked to the data sources when using the migration utility to import the configuration.
 - [API-3559]: Fixed an issue with missing DB changelog script templates.
 - [API-3588]: Fixed an issue so that the "Manage Drivers" page will no longer show built-in JDBC drivers as those are not editable by the user. It will only show JDBC drivers that have been manually uploaded by end users.
