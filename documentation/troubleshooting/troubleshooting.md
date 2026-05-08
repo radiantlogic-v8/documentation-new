@@ -292,7 +292,9 @@ The log level is defined per connector with the setting in Classic Control Panel
 
 ### Sync Engine Log
 
-The sync engine log sync_engine.log on the RadiantOne node where the sync engine processor that is assigned for the pipeline is running. If RadiantOne is deployed in a cluster, a sync engine processor can be running on one or more nodes and the pipeline processing is distributed across them. The sync_engine.log can be viewed and downloaded from the Server Control Panel > Log Viewer.
+The sync engine log sync_engine.log on the RadiantOne node where the sync engine processor that is assigned for the pipeline is running. If RadiantOne is deployed in a cluster, a sync engine processor can be running on one or more nodes and the pipeline processing is distributed across them. The pipelines are automatically distributed, not the events. If you have three pipelines and have a 3-node RadiantOne cluster, you will have one pipeline handled by each RadiantOne cluster node. All events of one pipeline are handled by the one cluster node it has been assigned to. If you have only one pipeline and have a 3-node RadiantOne cluster, there is no distribution at all.
+
+The sync_engine.log can be viewed and downloaded from the Server Control Panel > Log Viewer.
 
 ### HDAP Trigger Log
 
