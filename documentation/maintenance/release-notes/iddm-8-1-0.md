@@ -82,7 +82,7 @@ As of v8.1.0 the following features have been deprecated:
 - Groups Builder wizard
 - Groups Migration wizard
 - SAML Attribute Service (querying RadiantOne as a SAML attribute service)
-- SPML and DSML access to RadiantOne and proxy views to these services.
+- SPML and DSML access to RadiantOne.
 - Log2DB and runAccessLog2DB.bat (replaced by fluentd and ElasticSearch for log aggregation).
 
 
