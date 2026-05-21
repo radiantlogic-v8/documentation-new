@@ -13,6 +13,7 @@ These release notes contain the following sections:
 
 [Security Vulnerability Fixes](#security-vulnerability-fixes)
 
+
 [Known Issues](#known-issues)
 
 [How to Report Problems and Provide Feedback](#how-to-report-problems-and-provide-feedback)
@@ -29,12 +30,12 @@ This hotfix updates our container images and third‑party libraries to remediat
 - [API-4439]: Fix to address: CVE-2025-66566.
 - [API-4441]: Fix to address: CVE-2025-8671.
 
+## Bug Fixes
 
+- [API-4423]: When creating a proxy using a data source on Identity Data Management v8.4.0 and configuring failover LDAP servers, clicking "Test Connection" reports a connection failure. The proxy itself is functional and browsable in the Directory Browser despite the error.
 ## Known Issues
 
 The following issues have been identified in this release and will be addressed in a future release:
-
-- [API-4423]: When creating a proxy using a data source on Identity Data Management v8.4.0 and configuring failover LDAP servers, clicking "Test Connection" reports a connection failure. The proxy itself is functional and browsable in the Directory Browser despite the error. 
 
 - [API-4419]: Creating a custom password policy can unintentionally overwrite the "Dictionary Matching Mode" setting on the Default Policy. For example, if the Default Policy has "Dictionary Matching Mode" set to "Contains Match," creating a new custom policy without enabling dictionary check resets the Default Policy's mode to "Exact Match."
 
