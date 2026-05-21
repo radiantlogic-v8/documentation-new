@@ -243,7 +243,7 @@ On the **Authentication** tab, you can define the lifespan of the cookie created
 **Level of Assurance Enforcement for Applications (v3.17.9+)** <br>
 Each registered application can be assigned a required LoA: None, Some, High, or VeryHigh (weakest to strongest). CFS evaluates this requirement at sign-in and adjusts the authentication flow accordingly:
 
-* RTC suppression: If a Rapid Transparent Certificate (RTC) rule matches but its assurance is too weak, CFS skips silent Kerberos sign-in and directs the user to authenticate with a stronger method (e.g., smart card/PIV). RTC still works when its level is sufficient.
+* RTC suppression: If a Radiant Trust Connector (RTC) rule matches but its assurance is too weak, CFS skips silent Kerberos sign-in and directs the user to authenticate with a stronger method (e.g., smart card/PIV). RTC still works when its level is sufficient.
 Certificate sign-in emphasis: For High or VeryHigh applications, the login page shows a banner advising strong authentication and highlights a Certificate sign-in button.
 
 * Token issuance check: Before issuing a SAML assertion or OIDC token, CFS confirms the session meets the required LoA. If not, it returns NotSecureEnough and prompts re-authentication. This applies to both SP- and IdP-initiated flows.
