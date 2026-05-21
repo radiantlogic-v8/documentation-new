@@ -54,7 +54,6 @@ The following issues have been identified in this release and will be addressed 
 
 - [API-4421]: After creating an Identity Data Management application using a migration export from v7.4.21, Rule Sets for Rules-Based Transformations are not displayed in the pipeline UI, even though the underlying `.java` code is present. 
 
-- [API-4423]: When creating a proxy using a data source on Identity Data Management v8.4.0 and configuring failover LDAP servers, clicking "Test Connection" reports a connection failure. The proxy itself is functional and browsable in the Directory Browser despite the error. 
 
 For known issues reported after the release, please see the Radiant Logic Knowledge Base:
 
