@@ -240,6 +240,16 @@ On the **Authentication** tab, you can define the lifespan of the cookie created
 
 ![](media/settings-general-1.png)
 
+**Level of Assurance Enforcement for Applications (v3.17.9+)** <br>
+Each registered application can be assigned a required LoA: None, Some, High, or VeryHigh (weakest to strongest). CFS evaluates this requirement at sign-in and adjusts the authentication flow accordingly:
+
+* RTC suppression: If a Rapid Transparent Certificate (RTC) rule matches but its assurance is too weak, CFS skips silent Kerberos sign-in and directs the user to authenticate with a stronger method (e.g., smart card/PIV). RTC still works when its level is sufficient.
+Certificate sign-in emphasis: For High or VeryHigh applications, the login page shows a banner advising strong authentication and highlights a Certificate sign-in button.
+
+* Token issuance check: Before issuing a SAML assertion or OIDC token, CFS confirms the session meets the required LoA. If not, it returns NotSecureEnough and prompts re-authentication. This applies to both SP- and IdP-initiated flows.
+
+* Attempt limit: After 5 failed attempts to meet the required LoA, CFS halts the flow and instructs the user to restart from the originating application. Accounts are not locked.
+
 On the **Self-Registration** tab, you can define the policy for allowing new users to register themselves for portal access. If this behavior is desired, click the "Allow" option until a green checkmark is displayed in the User self-registration section. All self-registered users are stored in the identity store below the indicated "Users Target OU". If a tenant administrator wants to change the location of self-registered users, click **Change Target OU**. Locations defined in the Organization Units section of the dashboard are shown to select from. The location for the self-registered users must be a location below the global "People DN" defined for the tenant in the CFS System Admin Dashboard. This location/target OU in the identity store must allow insertions, otherwise creation of user accounts fails. The attributes required for self registration are defined for the tenant by the system administrator. Refer to the [System Administration Guide](04-user-roles#self-registration) for more information.
 
 ![](media/settings-general-2.png)
@@ -253,6 +263,8 @@ On the **Others** tab, a tenant administrator can choose to disable the access t
 ![](media/settings-general-4.png)
 
 A tenant administrator can also disable access requests for applications for the entire tenant. To do so, toggle the "Disable User Access Requests" option in the **Others** tab. When this setting is enabled, users who do not have access to any applications under this tenant will not see the “Request Access” option. This tenant-wide setting takes precedence, meaning even if individual applications have “Disable access requests” unchecked, users will still be unable to request access to any of the tenant applications if the tenant-level setting is enabled.
+
+
 
 ### Messaging Service
 
