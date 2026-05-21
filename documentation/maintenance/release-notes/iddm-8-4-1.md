@@ -13,6 +13,7 @@ These release notes contain the following sections:
 
 [Security Vulnerability Fixes](#security-vulnerability-fixes)
 
+[Bug Fixes](#bug-fixes)
 
 [Known Issues](#known-issues)
 
@@ -32,7 +33,8 @@ This hotfix updates our container images and third‑party libraries to remediat
 
 ## Bug Fixes
 
-- [API-4423]: When creating a proxy using a data source on Identity Data Management v8.4.0 and configuring failover LDAP servers, clicking "Test Connection" reports a connection failure. The proxy itself is functional and browsable in the Directory Browser despite the error.
+- [API-4423]: Fixed an issue when creating a proxy using a data source on Identity Data Management v8.4.0 and configuring failover LDAP servers, clicking "Test Connection" reports a connection failure. The proxy itself is functional and browsable in the Directory Browser despite the error.
+  
 ## Known Issues
 
 The following issues have been identified in this release and will be addressed in a future release:
