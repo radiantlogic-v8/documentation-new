@@ -83,13 +83,13 @@ Name | Description | Link
 
 CFS supports configuring multiple Assertion Consumer Service (ACS) endpoints (recipients) for a single SAML application. This accommodates service providers (SPs) that define more than one ACS URL in their metadata, as permitted by the SAML 2.0 specification. Previously, each SAML application could only have one recipient.
 
-## Adding Recipients Manually
+### Adding Recipients Manually
 
 1. Open the SAML2 application configuration page.
 2. Go to the Parameters tab where the signing options are displayed and fill out all the required fields.
 3. Open the SAML application configuration in CFS and locate the **Recipients** table.
 
-  ![SAML Recipients Configuration](saml-recipients-config.png)
+  ![SAML Recipients Configuration](media/saml-recipients-config.png "SAML application ACS parameters")
 
 4. Click **Add Recipient** to add each ACS endpoint as a separate entry.
 5. Configure each row:
@@ -99,7 +99,7 @@ CFS supports configuring multiple Assertion Consumer Service (ACS) endpoints (re
    - **Default** — marks the fallback endpoint.
 4. Save the configuration.
 
-## Importing Recipients from SP Metadata
+### Importing Recipients from SP Metadata
 
 1. Obtain the SP metadata XML file (it may contain multiple `<AssertionConsumerService>` elements).
 2. In the application configuration, click **Import from a metadata file**.
