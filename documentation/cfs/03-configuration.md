@@ -79,31 +79,41 @@ Name | Description | Link
 ![](media/workplacebyfacebook.png) <br> [Workplace by Facebook](workplacebyfacebook) | Workplace by Facebook allows you to communicate and collaborate quickly, easily and effectively with your entire organization using tools your colleagues are already familiar with. | [Facebook](https://workplace.fb.com/)
 ![](media/wsfederationgeneric.png) <br>[WsFederation Generic](wsfed-generic) | WsFederation Generic application. | [Radiant Logic](https://www.radiantlogic.com)
 
-
 ## Configuring SAML Signing Settings
 
-Applications that use SAML2 let you control how responses and assertions are signed. You can configure these options directly from the application settings:
+SAML2 applications let you control how responses and assertions are signed, and they support configuring multiple Assertion Consumer Service (ACS) endpoints (recipients) for service providers (SPs) that define more than one ACS URL in their metadata, as permitted by the SAML 2.0 specification.
 
 1. Open the SAML2 application configuration page.
-2. Go to the Parameters tab where the signing options are displayed and fill out all the required fields.
-3. Upload your certificates (encryption & signing) using the import button.
+2. Go to the **Parameters** tab and locate the **Recipients** table.
 
-![](media/saml2signing.png "SAML application parameters")
+   ![SAML Recipients Configuration](media/saml-recipients-config.png "SAML application ACS parameters")
 
-4. Use the Sign Response toggle to sign the entire SAML response when required.
-5. Use the Sign Assertion toggle to sign only the assertion when required.
-6. Review the chosen options and click Save to save the configuration. 
+3. Click **Add Recipient** to add each ACS endpoint as a separate entry, and configure each row:
+   - **Index** — position/order of the endpoint.
+   - **Location** — the ACS endpoint URL.
+   - **Binding** — the SAML binding (HTTP-POST only).
+   - **Default** — marks the fallback endpoint.
+4. Alternatively, click **Import from a metadata file** and upload the SP metadata XML. CFS parses any `<AssertionConsumerService>` elements and auto-populates the recipients table. Only SAML 2.0 HTTP-POST endpoints are supported; non-POST endpoints are ignored.
+5. When an SP sends a SAML authentication request, CFS chooses the response destination as follows:
 
-By default you will be asked to sign at least one of these options (response/assertion) for security purposes. 
+   | SP Request Attribute | CFS Behavior |
+   |---|---|
+   | `AssertionConsumerServiceURL` | Matches the URL against configured recipients and responds to that URL. |
+   | `AssertionConsumerServiceIndex` | Uses the recipient at the matching index. |
+   | *Neither specified* | Falls back to the recipient marked **Default**. |
 
-If you would like to have the option to skip signing both the response and the assertion, follow these steps:
+6. Upload your **encryption** and **signing** certificates using the import button.
 
-1. Navigate to Settings > General Settings > Others.
-2. Enable "Allow SAML2 Unsigned Responses" setting and click Save. 
+   ![SAML signing parameters](media/saml2signing.png "SAML application parameters")
 
-![](media/unsignedsetting.png "unsigned response option")
+7. Use the **Sign Response** toggle to sign the entire SAML response when required.
+8. Use the **Sign Assertion** toggle to sign only the assertion when required.
+9. Review the chosen options and click **Save**.
+10. By default, at least one of these options (response or assertion) must be signed for security purposes. To allow skipping both signatures, navigate to **Settings > General Settings > Others**, enable **Allow SAML2 Unsigned Responses**, and click **Save**.
 
-3. After completing step 2, go to the SAML configuration page and make sure that neither option requires a signature.
+    ![Unsigned response option](media/unsignedsetting.png "unsigned response option")
+
+11. Return to the SAML configuration page and ensure neither option requires a signature.
 
 ## Configure Token Validity in SAML Applications
 
