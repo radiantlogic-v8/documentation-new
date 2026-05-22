@@ -287,7 +287,15 @@ April 06, 2026
 - [CFS-184] Fixed an issue where re-importing SP metadata after clearing an encryption certificate did not restore the encryption certificate from metadata, even though the certificate could still be added manually.
 - [CFS-188] Fixed an issue with SAML metadata generation for CFS IdP so that elements such as KeyDescriptor, SingleLogoutService, NameIDFormat, and SingleSignOnService are emitted in an order that adheres to the SAML 2.0 metadata schema.  
 
+### v3.17.9
 
+May 22, 2026
 
+**Improvements**
 
+- [CFS-189] Improved Radiant Trust Connector (RTC) flexibility across applications by dynamically enforcing required assurance levels from application and SAML/OIDC authentication policies. Enhanced authentication handling with stronger LoA validation, clearer certificate sign-in guidance for high-assurance apps, and support for OIDC reauthentication controls (acr_values, prompt=login, max_age=0).
+- [CFS-190] Added option to have multiple recipients for SAML ACS on the same application. The recipients are shown in a table with their respective index, location, binding and default flag.
 
+**Bug fixes**
+
+- [CFS-191] Fixed an issue where the Radiant Trust Connector (RTC) flow failed when attempting to retrieve the token lifetime.
