@@ -43,7 +43,6 @@ The following issues have been identified in this release and will be addressed 
 
 - [API-4420]: During migration import from v7.4.21 to v8.4.0, an IllegalStateException error "(Expected state [STARTED] was [STOPPED])" is logged in PathChildrenCache. The migration itself completes successfully despite the error.
 
-- [API-4421]: After creating an Identity Data Management application using a migration export from v7.4.21, Rule Sets for Rules-Based Transformations are not displayed in the pipeline UI, even though the underlying `.java` code is present. 
 
 For known issues reported after the release, please see the Radiant Logic Knowledge Base:
 
