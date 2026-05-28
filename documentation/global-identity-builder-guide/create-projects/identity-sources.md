@@ -10,15 +10,22 @@ After you have defined the properties for a Global Identity Builder project, sel
 ![Sample Identity Source](../media/image18.png)
 
 - **Data source**: The data source configured in RadiantOne. This property is required.
+  
 - **Name**: A unique name to identify the data source in the project. Use alphanumeric and underscore characters only. This property is required.
+
 - **Upload Mode**: This option controls how entries are processed when an upload for this identity source is launched. By default, sequential processing is used and guarantees that the correlation algorithm is applied properly. Parallel processing can be used but should only be enabled after ensuring that there is no dependency on the order in which entries are processed. Usually, if you have possible correlation within the same identity source (1 or more entries in the same source might correlate with each other), then you must use sequential processing.
+
+- **Allow Re-correlation**: The “Allow Re-correlation” option lets you control whether existing identity links get re-evaluated during an entry uploads. When you turn it on for an identity source, the system rechecks correlations for entries that are already in the global profile during upload or reprocessing. If key attributes or other correlation-driving data have changed, the existing links can get updated. When the option is turned off (default behavior), existing links are left as they are for better performance and stability. Enabling this setting can be useful when you need to reassess and maintain accurate identity matches.
+
 - **Identity Object**: For LDAP data sources, this is the object class associated with the identities. For RDBMS, this is the database table/view name containing the identities. This property is required.
 
 >[!warning]
 >Custom data sources are supported. However, you must first virtualize the identities in RadiantOne and store them in persistent cache. Then, use the persistent cache as the LDAP identity source for the Global Identity Builder project. The chapter [integrate and configure a Global Identity Builder custom data source](../integrate-configure-data-source.md) provides an example of using a custom data source in a Global Identity Builder project.
 
 - **Additional Object Classes**: For LDAP data sources, this is the additional object class associated with the identities (beyond just the primary object class indicated as the Identity Object). This property is optional. If the identities are not associated with additional object classes, leave this property blank.
+
 - **Base DN**<a name="base-dn"></a>: The location in the data source that contains the identities. This is only applicable to and required for LDAP data sources.
+
 - **Display/Search Attribute**: The attribute listed here conditions the searches performed against the identity source from the browser embedded in the Global Identity Builder application. This property is required.
 
 >[!warning]
@@ -26,8 +33,11 @@ After you have defined the properties for a Global Identity Builder project, sel
 
 - **DN Attributes**: This is a comma-separated list of identity attributes that contain DN values. This is only applicable for LDAP data sources. The values of the attributes listed here are automatically re-mapped in the identity source views so that the DNs match the virtual namespace.  Some examples are `isMemberOf`, `manager`, and `directReports`. This property is used to auto-generate computed attributes in the virtual views from the source. The virtual views are used by the [Global Identity Viewer](../concepts.md#global-identity-viewer) application.
     - The Global Identity Builder does not correlate or link overlapping groups. The group properties described below are only used to automate the configuration of virtual views from the source and are used to facilitate group searches in the [Global Identity Viewer](../concepts.md#global-identity-viewer).
+    
 - **Group Object**: The object class associated with group entries in the source. This is only applicable for LDAP data sources. This property is optional.
+
 - **Base DN**: The location in the data source that contains the groups. This is only applicable for LDAP data sources. This can only be configured for one container. If your groups are located in multiple containers, create a virtual view in RadiantOne that flattens the list of groups and configure the view for persistent cache. Then, use the cache location in RadiantOne as the identity source in the project. Be sure to give this identity source a meaningful name in the Global Identity Builder so you know what the underlying source is instead of using something generic like "RadiantOne." Examples of how to address flattening groups and other group challenges see [address group membership challenges](../address-group-challenges/ldap-dynamic-groups.md). This property is optional.
+
 - **DN Attributes**: This is a comma-separated list of attributes in group entries that contain DN values. This is only applicable for LDAP data sources. The values of the attributes listed here are automatically re-mapped in the identity source views so that the DNs match the virtual namespace.  Some examples are `member`, `uniqueMember` and `managedBy`. This property is used to auto-generate computed attributes in the virtual views from the source. The virtual views are used by the [Global Identity Viewer](../concepts.md#global-identity-viewer) application. This property is optional.
 
 ## Attribute mappings
