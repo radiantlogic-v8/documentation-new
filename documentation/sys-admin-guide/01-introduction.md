@@ -611,7 +611,7 @@ The graphs in the Network Latency section display the network latency between no
  
 ## Settings Tab
 
-To change the server name and manage server certificates, go to the Server Control Panel > Settings tab.
+To change the server name, manage server certificates, and view logs, go to the Server Control Panel > Settings tab.
 
 ### Server Name
 
@@ -897,6 +897,33 @@ Restart Jetty after making changes to the SSL configuration.
 
 >[!warning]
 >The certificate key password is expected to be the same as the keystore password.
+
+### Logs
+
+Use the Server Control Panel to collect logs from all nodes in a RadiantOne cluster into a single zip archive, with optional time filtering.
+
+Ensure that the RadiantOne service and Control Panels are running on all nodes. 
+
+#### Download Cluster Logs
+
+1. Log into the Main Control Panel and navigate to Dashboard.
+2. Launch Server Control Panel by clicking ![server control panel](Media/server-control-panel.jpg) in the Overview section of the Main Control Panel’s Dashboard tab.
+3. Go to the Logs Viewer tab and click **Download Cluster Logs**.
+ 
+   ![Cluster Log Download Jobs table](Media/cluster-log-jobs-table.png)
+
+4. Click **New Job** in the modal.
+5. Optionally set a **Start/End** time range to filter by time range. Leave blank to include all logs and rollovers.
+
+   ![Start New Cluster Log Download Job modal](Media/cluster-log-new-job-modal.png)
+
+6. Choose your download mode:
+   - **Download Immediately** checked — downloads the zip directly to your browser immediately.
+   - **Download Immediately** unchecked — queues a background job. When complete, select it in the jobs table and click **Download**.  Archives are saved to `<RLI_HOME>/work/cluster-logs`.
+
+   ![Completed cluster log zip download](Media/cluster-log-download-complete.png)
+
+7. Click Start to download the logs based on your configuration. 
 
 ## Tasks Tab
 
