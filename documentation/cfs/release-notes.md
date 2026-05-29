@@ -299,3 +299,11 @@ May 22, 2026
 **Bug fixes**
 
 - [CFS-191] Fixed an issue where the Radiant Trust Connector (RTC) flow failed when attempting to retrieve the token lifetime.
+
+### v3.17.10
+
+May 29, 2026
+
+**Improvements**
+
+- [CFS-197] CFS now sends AMR attributes in SAML assertions following MFA or smart card authentication, enabling Salesforce and other service providers to recognize strong authentication and minimize device activation prompts.
