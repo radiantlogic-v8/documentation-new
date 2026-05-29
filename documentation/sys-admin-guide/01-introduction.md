@@ -401,6 +401,16 @@ The Control Panel session timeout indicates how long until the current control p
 
 The Control Panel max concurrent user value indicates how many control panel sessions are allowed concurrently. This field accepts integer values of 0 and higher. The default value is 0, for an unlimited number of sessions. If attempting to connect to the Control Panel while the number of concurrent sessions is reached, the Login page displays the following message: “Authentication Failed. Reason: Maximum sessions exceeded”. 
 
+### Absolute Session Timeout (min)
+
+The absolute session timeout specifies the maximum duration of a Control Panel session, regardless of user activity. Unlike the standard session timeout (which resets on activity), this setting enforces a hard limit — once the specified number of minutes has elapsed since login, the user is automatically logged out and must re-authenticate. The default value is 0 (disabled). When set to a value greater than 0, the absolute timeout is enforced.
+
+### Absolute Timeout Warning (min)
+
+The absolute timeout warning value (in minutes) specifies how long before the absolute session timeout the user should be alerted. When this threshold is reached, a warning banner is displayed in the Control Panel header, notifying the user that their session will expire soon. The default value is 0 (disabled). This setting has no effect if the Absolute Session Timeout is disabled (set to 0).
+
+For example, if the Absolute Session Timeout is set to 120 minutes and the Absolute Timeout Warning is set to 10 minutes, a warning banner appears in the header after 110 minutes of session time, giving the user 10 minutes to save their work before being logged out.
+
 ### Reset Node Status
 
 The Reset button resets the nodes’ status. When an LDAP or ZooKeeper error occurs in the monitoring, it is reflected on the cluster dashboard. Past errors persist in the collectors for 12 hours and appear on the dashboard as a yellow warning icon with a message. The Reset button is to immediately clear the cache of the collectors and those messages so they no longer display on the Dashboard tab.
