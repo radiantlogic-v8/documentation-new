@@ -277,21 +277,5 @@ A rich set of HTTP-based API's have been developed on top of LDAP, to provide br
 </section>
 
 </tabpanel>
-
-<tabpanel>
-
-## Connectors
-
-Discover official and community connectors for the RadiantOne Identity Data Platform.
-
-<section>
-<connector name="SailPoint Identity Security Cloud Connector" eyebrow="Identity" meta="v1.0.0" href="https://github.com/radiantlogicinc/connectors/blob/init/sailpoint-identity-security-cloud/README.md" capabilities="identity,writeback" objects="Accounts,Access Profiles,Identities,Roles,Entitlements,Sources">Virtualizes SailPoint ISC identity and access objects via SailPoint's REST APIs.</connector>
-<connector name="CyberArk Privilege Cloud Connector" eyebrow="Privileged Access" meta="v2.0.0" href="https://github.com/radiantlogicinc/connectors/blob/init/cyberark-privilege-cloud/README.md" capabilities="identity,writeback" objects="Identities,Roles,Safes,Accounts,Directory Services">Integrates with CyberArk Privilege Cloud and Identity Services to retrieve and manage Users, Roles, Safes, Accounts, and Directory Services.</connector>
-<connector name="AWS Identity Center Connector" eyebrow="Cloud Identity" meta="v1.0.0" href="https://github.com/radiantlogicinc/connectors/blob/init/aws-iam-identity-center/README.md" capabilities="identity,readonly" objects="Identities,Groups,Group Memberships,Permission Sets,Accounts">Virtualizes AWS Identity Center users, groups, permission sets, and AWS accounts for compliance and reporting.</connector>
-<connector name="GCP Pub/Sub Connector" eyebrow="Eventing" meta="v1.0.0" href="https://github.com/radiantlogicinc/connectors/blob/init/google-cloud-pubsub/README.md" capabilities="signal,writeback,unstructured" objects="Messages">Bidirectional bridge between Google Cloud Pub/Sub and RadiantOne. Exposes Pub/Sub messages as LDAP entries (read) and publishes LDAP write operations as JSON messages to a Pub/Sub topic.</connector>
-</section>
-
-</tabpanel>
-
 </tabpanels>
 </tabs>
