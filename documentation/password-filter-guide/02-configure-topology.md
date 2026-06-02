@@ -41,6 +41,31 @@ The port that the connector should receive the password change on is configured 
 
 Figure 2: Port Number for the Connector
 
+### Object Name
+
+Object Name identifies the synchronization object which is the DN in the RadiantOne namespace that serves as the parent container for the source Active Directory users. This value is set when you configure the topology and should match the sync object defined in your pipeline (for example, o=adsource).
+
+### Listener Mode
+
+The Listener Mode property controls which cluster nodes listen for password change events on port 8889. The default, SINGLE_LISTENER, runs the listener on the leader node only — if that node goes down, password sync is unavailable. Use PER_NODE_LISTENER to bind port 8889 on every node, eliminating this single point of failure. This is recommended for multi-node deployments.
+
+  ![Listener Mode dropdown showing SINGLE_LISTENER and PER_NODE_LISTENER options](listener-mode.png)
+
+> **Warning:** Do not change the Listener Mode while the pipeline is running. The pipeline must be fully stopped first before you change this setting. 
+
+1. To change the Listener Mode, first stop the Change Password Filter Service on your AD domain controller(s). 
+
+   ![Stop the Change Password Filter Service in Windows](image-stop-service.png)
+
+2. Next, stop the synchronization pipeline in the RadiantOne Control Panel. 
+
+   ![Stop the Pipeline](image-stop-pipeline.png)
+
+3. Select the desired mode from the Listener Mode dropdown in the Capture connector settings and click **Save**. Start the pipeline and wait for the status to transition from `DEPLOYING` to `RUNNING`.
+
+When using `PER_NODE_LISTENER`, configure the AD Password Filter Service on each domain controller to include all cluster node hostnames or IP addresses as failover servers. This ensures that if one node becomes unavailable, the service automatically routes password change events to another node.
+
+
 ### LDAP Filter
 
 To further condition the entries that are published, you can indicate the desired criteria in the LDAP Filter property. This is a post filter, used to qualify which entries are published by the connector. You must enter a valid LDAP filter in the property.
