@@ -110,7 +110,7 @@ This hotfix updates our container images and third‑party libraries to remediat
 - [API-4198, SQ-1313]: Fixed an issue where the LDAP proxy object builder did not correctly display mapped attributes.
 - [API-4214]: Fixed an issue so that all limits now have proper error handling.
 - [API-4276]: Fixed an issue where using directory browser, LDAP operations now sends the correct modification request.
-- [API-4283]: Fixed an issue that caused add value(s) and delete value(s) of members on Entra ID groups to fail when the value(s) were greater than one.
+- [API-4283, SQ-1385]: Fixed an issue that caused add value(s) and delete value(s) of members on Entra ID groups to fail when the value(s) were greater than one.
 - [API-4292]: Fixed an issue where editing an LDAP filter for the first time incorrectly displayed an “Error validating filter” message.
 - [API-4307]: Fixed an issue where requested attribute settings for real‑time cache connectors were being populated incorrectly.
 - [API-4310, SQ-1324]: Fixed an issue where filters beginning with an AND (&) followed by an OR (|) did not work correctly, ensuring these filter combinations now function as expected for both JSON and standard filters.
