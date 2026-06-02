@@ -49,17 +49,17 @@ Object Name identifies the synchronization object which is the DN in the Radiant
 
 The Listener Mode property controls which cluster nodes listen for password change events on port 8889. The default, SINGLE_LISTENER, runs the listener on the leader node only — if that node goes down, password sync is unavailable. Use PER_NODE_LISTENER to bind port 8889 on every node, eliminating this single point of failure. This is recommended for multi-node deployments.
 
-  ![Listener Mode dropdown showing SINGLE_LISTENER and PER_NODE_LISTENER options](listener-mode.png)
+  ![Listener Mode dropdown showing SINGLE_LISTENER and PER_NODE_LISTENER options](Media/listener-mode.png)
 
-> **Warning:** Do not change the Listener Mode while the pipeline is running. The pipeline must be fully stopped first before you change this setting. 
+>[!note] Do not change the Listener Mode while the pipeline is running. The pipeline must be fully stopped first before you change this setting. 
 
 1. To change the Listener Mode, first stop the Change Password Filter Service on your AD domain controller(s). 
 
-   ![Stop the Change Password Filter Service in Windows](image-stop-service.png)
+   ![Stop the Change Password Filter Service in Windows](Media/image-stop-service.png)
 
 2. Next, stop the synchronization pipeline in the RadiantOne Control Panel. 
 
-   ![Stop the Pipeline](image-stop-pipeline.png)
+   ![Stop the Pipeline](Media/image-stop-pipeline.png)
 
 3. Select the desired mode from the Listener Mode dropdown in the Capture connector settings and click **Save**. Start the pipeline and wait for the status to transition from `DEPLOYING` to `RUNNING`.
 
