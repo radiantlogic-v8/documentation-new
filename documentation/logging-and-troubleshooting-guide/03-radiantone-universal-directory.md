@@ -74,6 +74,21 @@ Select a log level from the drop-down list in the Log Settings section. For deta
   [ACI EVAL] Aci evaluation result: --DENY-- 
 2021-05-07T15:40:44,921 DEBUG com.rli.slapd.server.nio.SessionHandler:2354 - [conn=50 op=2]  Entry discared by ACI
 
+#### Temporary Log Level Setting
+
+The Temporary Level setting lets you turn on more detailed logging for a specified time. For example, you can switch from WARN to DEBUG while troubleshooting an issue, then set it to automatically switch back after a set period. This helps you capture the information you need without leaving detailed logging on for longer than needed, which can slow performance and increase log size. You can find this setting in Main Control Panel > Logs > Log Settings.
+
+![Temporary Log Level UI](debug-temp.png)
+
+1. Select the component to configure from the **Log Settings to configure** dropdown (e.g., FID – Server).
+2. Use the Log level dropdown to select the temporary log level (e.g., DEBUG or INFO).
+3. Check the **Temporary Level** checkbox. A date/time picker appears next to the log level.
+4. Set the date on which the log level should revert.
+5. Set the time at which the log level should revert, including hour, minute, and AM/PM.
+6. Click **Save**.
+
+To disable the temporary setting before it expires, uncheck **Temporary Level** and click **Save**. 
+
 ### Rollover Size
 
 By default, the vds_server.log file rolls over once it reaches 100MB in size. Change this value if needed.
