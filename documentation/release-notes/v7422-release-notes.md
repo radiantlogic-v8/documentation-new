@@ -12,7 +12,7 @@ These release notes contain important information about improvements and bug fix
 
 
 
-IMPORTANT NOTICE:
+<b>IMPORTANT NOTICE:</b>
 
 As part of our 2026 roadmap, we are implementing critical Java platform upgrades across the Identity Data Management product line to maintain compliance with supported Java versions and ensure long-term security and performance.
 
