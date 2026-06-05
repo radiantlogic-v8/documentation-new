@@ -5,8 +5,7 @@ description: Command Line Configuration Guide
 
 # Log Settings Commands
 
-Log settings are managed from the Main Control Panel > Settings tab > Logs section > Log Settings, and can also be managed from command line using the <RLI_HOME>/bin/vdsconfig
-utility.
+Log settings are managed from the Main Control Panel > Settings tab > Logs section > Log Settings, and can also be managed from command line using the <RLI_HOME>/bin/vdsconfig utility.
 
 ![Log Settings Commands ](Media/Image14.1.jpg)
 
@@ -14,15 +13,7 @@ Details of the logging property keys and paths to the configuration can be seen 
 
 ![Zookeeper tab ](Media/Image14.2.jpg)
 
-This chapter explains how to display and update log settings using commands instead of the GUI mentioned above.
-
-# Log Settings Commands
-
-Log settings are managed from the Main Control Panel > Settings tab > Logs section > Log Settings, and can also be managed from command line using the <RLI_HOME>/bin/vdsconfig utility.
-
-Details of the logging property keys and paths to the configuration can be seen from the ZooKeeper tab.
-
-This chapter explains how to display and update log settings using commands instead of the GUI mentioned above.
+This document explains how to display and update log settings using a command line interface (CLI) instead of the GUI mentioned above.
 
 ## get-logging-property
 
