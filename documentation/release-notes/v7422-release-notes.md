@@ -1,5 +1,4 @@
-\---
-
+---
 title: v7.4.22 Release Notes
 description: v7.4.22 Release Notes
 ---
