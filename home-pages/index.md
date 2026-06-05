@@ -7,7 +7,6 @@ description: Knowledge homepage
   <tablist>
     <tab>Knowledge</tab>
     <tab>Developer</tab>
-    <tab>Connector Marketplace</tab>
   </tablist>
 
 <tabpanels>
