@@ -100,6 +100,32 @@ Example 3 - This example tries to get an SSL connection to the LDAP server (on p
 
 `host: [domain:na.radiantlogic.com] port: 636`
 
+### SCIM Data Sources
+
+The following properties apply to SCIM v2 data sources. 
+
+| Property | Type | Description |
+|---|---|---|
+| URL | string | Base URL of the target SCIM service endpoint. |
+| Username | string | Username used for HTTP Basic authentication against the SCIM service. |
+| Password | password | Password paired with the username for HTTP Basic authentication. |
+| Timeout | number | Request/read timeout (in milliseconds) applied to SCIM API calls. |
+| ConnectionTimeout | number | Time to wait (in milliseconds) when establishing the underlying HTTP connection before failing. |
+| OAuthURL | string | Token endpoint URL used to obtain an OAuth 2.0 access token using the OAuthClientID and OAuthClientSecret for the SCIM service. |
+| OAuthClientID | string | OAuth 2.0 client ID used for token acquisition. |
+| OAuthClientSecret | password | OAuth 2.0 client secret paired with the client ID. |
+| OAuthToken | password | Pre-issued bearer token; provide this when the connector should skip the token-acquisition flow and use a static token. |
+| LoadSchemaFromFirstEntry | boolean | When enabled, use the first returned SCIM entry to infer the schema instead of reading it from the /Schemas endpoint. Enable this only if the server doesn't expose a reliable /Schemas definition. |
+| IsDirectValueModeForPatch | boolean | When enabled, send PATCH requests with raw attribute values instead of using a SCIM PATCH envelope. Enable this only if the SCIM server expects direct values rather than full PATCH operation objects. |
+| ReplaceOnUpdate | boolean | RadiantOne chooses PATCH or PUT based on the SCIM server's capabilities. If the server supports both, set "replaceonupdate" to true for PUT or false for PATCH. If the server doesn't support PATCH, RadiantOne automatically uses PUT. |
+| TEST_CONNECTION_URL | string | The URL to use for testing the connection instead of the Base URL; useful when the SCIM service exposes a dedicated health endpoint. |
+| ACCEPT_TYPE | string | Optional. RadiantOne automatically sets an appropriate value that works for most SCIM data sources. Enter a value for this property only if you need to override the HTTP Accept header for SCIM requests. |
+| Proxy | string | HTTP proxy address (host:port) used to reach the SCIM service when a proxy is required. |
+| ProxySSL | string | HTTPS proxy address (host:port) used for SSL/TLS traffic to the SCIM service. |
+| PageSize | number | Number of entries requested per page on paginated SCIM list operations (count parameter). |
+
+
+
 ### Kafka Data Sources
 
 The following producer properties apply to Kafka data sources. 
