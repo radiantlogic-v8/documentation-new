@@ -393,6 +393,87 @@ member;range=0-5000
 
 ![Large-range Search Example](Media/Image5.25.jpg)
 
+### Customize a Search
+
+When searching for entries from the **Control Panel** > **Manage** > **Directory Browser**, you can manage entries directly from the search results. This is especially useful when working with large directories where navigating the directory tree to locate a specific entry would be impractical (e.g., millions of entries under a naming context).
+
+#### Searching for Entries
+
+1. Navigate to **Control Panel** > **Manage** > **Directory Browser**.
+2. Click the **+** button to open a new search tab.
+3. Either enter the **Base DN** to indicate where to search from, or click **Browse** to select a location in the RadiantOne namespace.
+4. Enter an LDAP filter to match the entries you are looking for.
+5. Select a scope (**Base**, **One Level**, or **Subtree**) from the drop-down list.
+6. Click **SEARCH** to run the query.
+
+#### Managing Entries from Search Results
+
+After performing a search, select an entry from the search results to view its attributes. The following actions are available directly from the search results view.
+
+##### Add an Attribute
+
+To add a new attribute to an entry from the search results:
+
+1. Select the entry in the search results.
+2. On the right side, click **+ADD ATTRIBUTE**.
+3. Enter an attribute name or select one from the drop-down list.
+4. Enter a value for the attribute and click the checkmark icon to confirm.
+5. Click **CREATE** to add the attribute to the entry.
+
+##### Add Values
+
+To add additional values to a multi-valued attribute:
+
+1. Select the entry in the search results.
+2. Locate the attribute you want to add a value to on the right side.
+3. Click the **+** icon inline with the attribute name.
+4. Enter the new value and click the checkmark icon to confirm.
+
+##### Delete Attribute
+
+To delete an attribute from an entry:
+
+1. Select the entry in the search results.
+2. On the right side, click the delete icon inline with the attribute you want to remove.
+3. Click **DELETE** to confirm the removal.
+
+##### Delete Values
+
+To delete a specific value from a multi-valued attribute:
+
+1. Select the entry in the search results.
+2. On the right side, expand the multi-valued attribute by clicking the **>** icon.
+3. Click the delete icon inline with the specific value you want to remove.
+4. Click **DELETE** to confirm.
+
+##### Edit Values
+
+To edit an existing attribute value:
+
+1. Select the entry in the search results.
+2. On the right side, click the edit (pencil) icon inline with the attribute you want to modify.
+3. Update the value.
+4. Click the checkmark icon to confirm the change.
+
+##### Test Authentication
+
+To test authentication for a user entry found in the search results:
+
+1. Select the user entry in the search results.
+2. Click the **Test Authentication** option.
+3. Enter the password for the user.
+4. The result indicates whether the authentication (bind) was successful or not.
+
+This is useful for verifying that a user's credentials are valid without needing to navigate to the entry in the directory tree.
+
+#### Refresh Entry
+
+To refresh the data displayed for a selected entry:
+
+1. Select the entry in the search results.
+2. Click **REFRESH ENTRY** to reload the entry's attributes with the latest values from the directory.
+
+This ensures you are viewing the most current state of the entry, especially after making modifications.
 
 ### Nested Groups
 
