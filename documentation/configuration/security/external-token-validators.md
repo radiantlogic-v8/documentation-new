@@ -74,10 +74,12 @@ With Token Validators, administrators can configure and manage trusted external 
   
    a. **Name**: A unique name for your validator.  
    b. **OIDC Discovery URL**: The OpenID Connect Discovery endpoint for your authorization server (e.g., Okta).  
-   c. **JSON Web Key Set (JWKS) URL**: The endpoint where the public keys for token validation are published. Use the **Discover** button to auto-populate this field from the OIDC Discovery URL.  
-   d. **Scope Claim Name**: The claim in the JWT that contains the scopes (default: `scope`).  
-   e. **Expected Audience**: The audience value your tokens must contain.  
-   f. **Expected Scope**: The required scope(s) for access.  
+   c. **JSON Web Key Set (JWKS) URL**: The endpoint where the public keys for token validation are published. Use the **Discover** button to auto-populate this field from the OIDC Discovery URL.
+    d. **Scope Claim Name:** The name of the claim in the JWT that contains the scopes. The default value is `scope`. Some OIDC providers use different claim names (e.g., Okta uses `scp` for tokens issued via the client credentials flow). Set this value to match the claim name used by your authorization server.
+   e. **Expected Audience:** The audience value your tokens must contain. If the `aud` claim in the JWT does not match this value, authentication is rejected. Leave this field empty to skip audience validation.
+   f. **Expected Scope:** The required scope(s) for access. You can specify a single scope or multiple scopes.
+      - To specify multiple scopes, separate them with a comma and a space (e.g., `testscp1, testscp2, testscp3`) or with a space only (e.g., `testscp1 testscp2 testscp3`).
+      - All specified scopes must be present in the token for validation to succeed. If any expected scope is not found in the token, authentication is rejected with a `400` error.
    g. **JSON Web Token Validation Clock Offset (seconds)**: Adjusts for clock skew between systems.  
    h. **Claims to User DN Mapping**: This is the expression to map JWT claims to user distinguished names in Identity Data Management.  
    It defines how Identity Data Management converts information in a JWT (such as email or username claims) into the  
@@ -85,8 +87,33 @@ With Token Validators, administrators can configure and manage trusted external 
    the correct user account in Identity Data Management.
 
   
-4. By default, new validators are ENABLED. Leave it as enabled if you are using the validator. You can toggle the status to DISABLED if needed.
-5. Click Save to create the validator.
+5. By default, new validators are ENABLED. Leave it as enabled if you are using the validator. You can toggle the status to DISABLED if needed.
+6. Click Save to create the validator.
+
+#### JSON Array Claims Support
+
+The External Token Validator supports JWT claims whose values are JSON arrays. This is particularly relevant for OIDC providers (such as Okta) that represent scopes or other multi-valued claims as arrays rather than space-delimited strings.
+
+For example, a token issued by Okta using the client credentials flow may contain scopes in the following format:
+
+```json
+{
+  "scp": [
+    "testscp1",
+    "testscp2",
+    "testscp3"
+  ],
+  "aud": "http://example.com:8089/adap",
+  "sub": "0oa100lhmsfPSMDYP698"
+}
+```
+
+When configuring the Token Validator for tokens with JSON array claims:
+
+1. Set the Scope Claim Name to the array claim name used by your provider (e.g., `scp` for Okta).
+2. Specify one or more values in the Expected Scope field. The validator automatically parses the JSON array and checks that all expected values are present.
+3. No additional configuration is needed — the validator detects whether the claim value is a JSON array or a plain string and handles both formats.
+
 
 ## Querying RadiantOne REST API (ADAP)
 
