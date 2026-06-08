@@ -148,97 +148,86 @@ An authenticated user encompasses any client who successfully authenticates no m
 
 Special Users are anyone who successfully binds and is a member of the special user group defined on the Classic Control Panel > Server Front End > Administration section. To enable checking for this category of users, check the Enable Access Checking option in the Special Users Group section in the Per User Category sub-section. Enter a number for the maximum bind operations that users in the Special Users Group are allowed to perform. Also enter a number for the maximum number of operations per checking interval they are allowed to issue. Any parameters that are set to 0 have no limits applied. The restrictions checking interval dictates the number of seconds the server should wait before determining if these thresholds are reached.
 
-## Backends
+### Backends
 
-Tuning settings for backends includes connection pooling. For Active Directory backends there is an additional tuning property to indicate the maximum number of SRV records to use during failover. These topics are discussed in this section.
+This section covers tuning settings for backend connections, including:
 
-### Connection Pooling Overview
+* Connection pooling for LDAP and database backends — controls how RadiantOne manages and reuses connections to underlying sources for improved performance.
+* Active Directory failover — configures how many SRV records RadiantOne uses when failing over between Active Directory domain controllers.
 
-Connection pooling settings are managed in Classic Control Panel. To switch to Classic Control Panel, use the menu options for the logged in user in the upper right.
+All backend tuning settings are configured from the Control Panel > Tuning > Limits > Backends tab.
 
-![Classic Control Panel](Media/classic-cp.jpg)
+#### Connection Pooling
 
-Once logged into Classic Control Panel, click the drop-down menu for the logged in user in the upper right and choose Expert Mode.
-
-Connection pooling for database and LDAP sources is enabled by default. The settings can be modified in the Classic Control Panel > Settings Tab > Server Backend section, Connection Pooling sub-section. 
-
-![Connection Pooling Settings](Media/conn-pooling-classic-cp.jpg)
+Connection pooling settings are configured from **Control Panel** > **Tuning** > **Limits** > **Backends** tab.
 
 Connection pooling improves performance for identity views because a connection to the underlying source does not need to be created every time data needs to be retrieved. When RadiantOne receives a search for information (that is not stored locally, either in cache or a local Directory store), a connection to the underlying system is established. Since opening and closing a connection every time information must be retrieved from an underlying source can be time consuming, RadiantOne can pool the open connections and re-use them (thus saving the overhead involved in having to open/close a connection every time a backend needs to be accessed).
 
-The first time RadiantOne queries an underlying source, a connection is opened. When the operation is done, the open connection remains in the connection pool (for the specified timeout parameter that has been set). The next time RadiantOne receives a query for the same underlying source, an open connection is retrieved from the pool (instead of opening a new connection). If no connections are available in the pool, a new connection is opened. This process continues until the connection-poolsize parameter has been reached (the maximum number of open connections to keep in the pool). Once this happens (the max number of open connections has been reached and they are all in use), the client must wait until one of the used connections is finished before their query can be processed.
+The first time RadiantOne queries an underlying source, a connection is opened. When the operation is done, the open connection remains in the connection pool (for the specified timeout parameter that has been set). The next time RadiantOne receives a query for the same underlying source, an open connection is retrieved from the pool (instead of opening a new connection). If no connections are available in the pool, a new connection is opened. This process continues until the pool size parameter has been reached (the maximum number of open connections to keep in the pool). Once this happens (the max number of open connections has been reached and they are all in use), the client must wait until one of the used connections is finished before their query can be processed.
 
-### Connection Pooling for LDAP Backends
+##### LDAP Settings
 
 Connection pooling for LDAP backends is configured with the following settings:
 
-**Pool size**
-
+**Connection Pool Size**
 This is the maximum number of concurrent connections by RadiantOne to each LDAP source. For example, if you have four LDAP sources and your maximum connections value is set to 200, then you could have up to a total of 800 LDAP connections maintained by RadiantOne.
 
-**Timeout**
-
+**Connection Timeout (Seconds)**
 The default is 7. This is the maximum number of seconds RadiantOne waits while trying to establish a connection to the backend LDAP server. There are two attempts to create a connection (each tries to create a connection for 7 seconds).
 
-**Operation Timeout**
-
+**Operation Timeout (Seconds)**
 The default is 0 (no timeout). This is the maximum number of seconds RadiantOne waits to receive a response from the backend LDAP server. After this time, RadiantOne drops the request and attempts to send the request again. After two failed attempts to get a response back, RadiantOne returns an error to the client.
 
-**Write Operation Timeout**
-
+**Write and Bind Operation Timeout (Seconds)**
 The default is 0 (no timeout). This is the maximum number of seconds RadiantOne waits to receive a response from the backend LDAP server for write operations and bind operations. After this time, RadiantOne drops the request and attempts to send the request again. After two failed attempts to get a response back, RadiantOne returns an error to the client.
 
-**Idle Timeout**
-
+**Connection Idle Timeout (Minutes)**
 The default is 5 minutes. This is the maximum amount of time to keep an idle connection in the pool.
 
-### Connection Pooling for Database Backends
+##### Database Settings
 
 Connection pooling for database backends is configured with the following settings:
 
-**Pool Size**
+**Database Connection Pool Size**
+The default is set to 20, meaning 20 open connections are held in the pool for each JDBC data source. A connection pool is managed per each data source.
 
-The default is set to 20, this means 20 open connections are held in the pool for each JDBC data source. A connection pool is managed per each data source.
+**Database Connection Idle Timeout (Minutes)**
+The default is 15. This is the number of minutes a connection stays in the connection pool once it is idle. Setting this to `0` (zero) results in opened connections staying in the pool forever.
 
-**Idle Timeout**
+**Database Prepared Statement Cache**
+The default is 50. RadiantOne uses parameterized SQL statements and maintains a cache of the most used SQL prepared statements. This improves performance by reducing the number of times the database SQL engine parses and prepares SQL.
 
-The default is 15. This is the number of minutes a connection stays in the connection pool once it is idle. Setting this to “0” (zero) results in opened connections to stay in the pool forever.
+This setting is per database connection. Use caution when changing this default value as not all databases have the same limits on the number of active prepared statements allowed.
 
-**Prepared Statement Cache**
+##### Manually Clearing the Connection Pool
 
-The default is 50. RadiantOne uses parameterized SQL statements and maintains a cache of the most used SQL prepared statements. This improves performance by reducing the number of times the database SQL engine parses and prepares SQL. 
+RadiantOne supports special LDAP commands to reset connections in the pools. If you issue these commands to RadiantOne, all connections currently not being used in the pool are closed.
 
-This setting is per database connection. Use caution when changing this default value as not all databases have the same limits on the number of 'active' prepared statements allowed.
+To reset the connection pools from the command line, use the `ldapsearch` utility.
 
-### Manually Clearing the Connection Pool
-
-RadiantOne supports special LDAP commands to reset connections in the pools. If you issue these commands to RadiantOne, all the connections that are currently not being used in the pool are closed.
-
-To reset the connection pools from the command line, you can use the ldapsearch utility.
-
-The following is an example command that clears the LDAP connection pool (assuming RadiantOne is listening on LDAP port 2389 and the super user password is “password”):
+The following command clears the LDAP connection pool (assuming RadiantOne is listening on LDAP port 2389 and the super user password is `password`):
 
 ```
 ldapsearch -h host -p 2389 -D"cn=directory manager" -w "password" -b "action=clearldappool" (objectclass=*)
 ```
 
-The following is an example command that clears the database connection pool (assuming RadiantOne is listening on LDAP port 2389 and the super user password is “password”):
+The following command clears the database connection pool (assuming RadiantOne is listening on LDAP port 2389 and the super user password is `password`):
 
 ```
 ldapsearch -h host -p 2389 -D"cn=directory manager" -w "password" -b "action=clearjdbcpool" (objectclass=*)
 ```
 
-### Active Directory SRV Record Limit
+#### Active Directory
 
-If there are multiple Active Directory domains available in the SRV record, by default RadiantOne uses five as “main/primary” and “failover” servers. RadiantOne uses these to automatically failover if the primary server is down. The Active Directory SRV Record Limit can be adjusted from the Main Control Panel. 
+##### Max SRV Record Limit
 
-To change the Active Directory SRV record limit:
+If there are multiple Active Directory domains available in the SRV record, by default RadiantOne uses five as "main/primary" and "failover" servers. RadiantOne uses these to automatically failover if the primary server is down.
 
-1. In the Classic Control Panel, navigate to Settings > Server Backend > Connection Pooling > Other. 
+To change the Max SRV Record Limit:
 
-1. Set the Active Directory SRV Record Limit value. The default value is 5. 
-
-1. Click Save. 
+1. In the Control Panel, navigate to Tuning > Limits > Backends tab.
+2. In the Active Directory section, set the Max SRV Record Limit value. The default value is `5`.
+3. Click Save.
 
 
 
