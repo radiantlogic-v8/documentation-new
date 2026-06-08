@@ -64,7 +64,14 @@ To remove the lineage highlighting from the canvas, click the *X*: ![Remove Line
 
 ![Compact View](Media/search-attribute.jpg)
 
-*Primary Object* - The Primary Object option is only shown for objects from LDAP proxy views. Use this menu to select a primary object from the source view and/or managing primary objects (add or remove) on the canvas.
+*Primary Object* - The **Primary Object** option is only shown for objects from LDAP proxy views. Use this menu to select a primary object from the source view and/or manage primary objects (add or remove) on the canvas. To add or remove primary objects, select **Primary Object** > **Manage Primary Objects**. The **Manage Primary Objects** dialog contains the following tables:
+
+![Manage Primary Object](Media/manage-primary-objs.jpg)
+
+
+  * Object Name – Lists all available object classes from the source schema. Click the **+** icon next to an object class to add it as a primary object on the canvas. Use the search filter at the top of the table to narrow the list — as you type, only object classes whose names contain the entered text are displayed.
+  
+  * Add Primary Objects – Lists the object classes currently added as primary objects on the canvas. Click the delete icon next to an object class to remove it, or click Clear All to remove all primary objects. Click Done to apply your changes or Cancel to discard them.
 
 *Add Component* - The Add Component drop-down allows you add objects to the canvas and add joins.
 
