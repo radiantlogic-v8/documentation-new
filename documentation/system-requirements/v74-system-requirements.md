@@ -130,9 +130,9 @@ Cluster nodes must be deployed on hardware that is configured for optimal redund
 
 **Software**
 
-Operating Systems: Windows Server 2012 R2, Windows Server 2016, Windows Server 2019, Windows Server Core, Windows Server 2022, Red Hat Enterprise Linux v5/v6/v7/v8+, Fedora v24+, CentOS v7+, SUSE Linux Enterprise v11+, Ubuntu 16+
-
-Browsers supported for Control Panel: Microsoft Edge Version 127.0.2651.98 (+), Google Chrome Version 128.0.6613.120 (+) 
+- Operating Systems: Windows Server 2012 R2, Windows Server 2016, Windows Server 2019, Windows Server Core, Windows Server 2022, Red Hat Enterprise Linux v5/v6/v7/v8+, Fedora v24+, CentOS v7+, SUSE Linux Enterprise v11+, Ubuntu 16+
+- Browsers supported for Control Panel: Microsoft Edge Version 127.0.2651.98 (+), Google Chrome Version 128.0.6613.120 (+) 
+- Framework: .NET Framework 4.8 or higher is required for the ad_pwd (ADPasswordHash) utility, which supports password hash synchronization between on-premise Active Directory and Entra ID. This requirement applies to Identity Data Management v7.4.17 and higher. 
 
 ### ZooKeeper Nodes
 
