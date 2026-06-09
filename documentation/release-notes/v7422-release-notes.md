@@ -5,7 +5,7 @@ description: v7.4.22 Release Notes
 
 # RadiantOne v7.4.22 Release Notes
 
-June 9, 2026
+June 11, 2026
 
 These release notes contain important information about improvements and bug fixes for RadiantOne v7.4.
 
@@ -60,7 +60,7 @@ For specific hardware requirements of each, read the [system requirements](../sy
 ## Security-Vulnerability-Fixes
 
 * \[IV4-433, SQ-1177]: Fix to address CVE-2025-68161.
-* \[IV4-436, SQ-998]: Fix to address CVE-2025-48913.
+* \[IV4-436, SQ-998, SQ-1175]: Fix to address CVE-2025-48913.
 * \[IV4-587, SQ-1511, SQ-1560 and SQ-1600]: Fix to address CVE-2026-34480 and CVE-2026-34477.
 * \[IV4-659]: Fix to address CVE-2026-35554, CVE-2026-33558, CVE-2025-58057, CVE-2026-42583.
 * \[IV4-660]: Fix to address CVE-2012-0881, CVE-2013-4002, CVE-2020-11979, XRAY-87173.
