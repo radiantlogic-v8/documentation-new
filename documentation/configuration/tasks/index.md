@@ -6,8 +6,6 @@ description: Learn how to manage tasks.
 ## Overview
 
 When you perform various actions in the tools or wizards, a notification appears alerting you that the task has been defined and added to the scheduler. These tasks can be viewed and updated in the Control Panel > Manage > Tasks. You can define a task as re-occurring (scheduled) in addition to setting the execution interval. You can also configure the JVM parameters for tasks that run inside their own dedicated JVM.
-
-![Managing Tasks](../global-settings/Media/tasks.jpg)
  
 The following operations are considered tasks and generate an event in the Task Scheduler when they occur: 
 -	Initializing a persistent cache 
@@ -23,16 +21,12 @@ Task Scheduler parameters can be modified in the *Configuration Settings* in the
 
 By default, each task executes in its own dedicated JVM. If the option “Dedicated JVM” is not toggled on in the specific task configuration, then the task executes inside the JVM of the scheduler. Users can customize the default JVM parameters to allow more memory, or change the performance settings. However, tuning the JVM of the task scheduler is less important than tuning the dedicated JVM for the individual task. For a full list of possible behavioral and performance options, please see the link below.
 
-http://www.oracle.com/technetwork/java/javase/tech/vmoptions-jsp-140102.html
-
 You can specify the number of days that completed tasks are kept on the task list for users to see. For example, if you set the parameter to “10 days” then after 10 days all of the tasks with a status of “Finished” are deleted from the system. 
 
 ## Managing Tasks 
 
 When actions are processed as tasks, they appear in the Task List section, with information about the task displayed. The task list can be filtered by: All, Scheduled, Not Scheduled, or Terminated using the *Filter By* drop-down list. 
 Tasks can be managed with the inline buttons for: *Task Details*, *Edit Task*, and *Start Task*. 
-
-![Sample Task List](../global-settings/Media/task-list.jpg)
  
 ### Task Details
 
@@ -50,7 +44,7 @@ If “Dedicated JVM” is toggled off, the task runs inside the JVM of the Task 
 
 Click **SAVE** before closing out of the task configuration screen to save the changes.
 
-![Task Configuration](Media/task-config.jpg)
+![Task Configuration](../global-settings/Media/task-config.jpg)
 
 ### Running Tasks
 
