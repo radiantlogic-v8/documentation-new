@@ -234,6 +234,16 @@ Password	| Credentials associated with the account indicated in the User propert
 
 If your data source is not supported by Identity Data Management by default, you can select a custom data source type and provide the required information. The properies supported are defined in the [template](#creating-templates).
 
+**Operations Supported**
+
+The default custom data sources support Read, Update, and Delete (or deactivate) operations but most do not support authentication (support a delegated authentication request from RadiantOne). Therefore, virtual views of these sources are primarily used for joining with other virtual views to extend user profiles and/or attributes for enforcing authorization and auditing. For example, you can have a virtual view of an LDAP directory (that would handle authentication requests) that is joined with a virtual view of Salesforce (to retrieve additional profile attributes to augment the user entries from the LDAP directory). The only custom data sources that currently support authentication (RadiantOne translating the BIND request into a credentials checking request) are Okta Universal Directory, PingOne Directory, and Entra ID (when MFA is not enabled). 
+
+The default custom data sources also don't support standard LDAP filters. If you need to apply LDAP filters on your views from custom backends, you should configure a persistent cache for your virtual view with a periodic refresh (or real-time if the backend and connector supports it), and then create a virtual view on top of the persistent cache to apply configuration filters (like pre-processing and post-processing), or to support LDAP filters from client requests.
+
+**Change Detection (Connectors) for Cache Refresh**
+
+If you configure persistent cache for virtual views of cloud directories/services, the change detection mechanisms for cache refresh are limited to Periodic and Custom (only for sources that contain a timestamp attribute for their entries, or Differential Query like Entra ID). The periodic change detection mechanism requires the entire data set to be retrieved at each polling interval and then the connector determines what has changed. The Custom change detection mechanism is a special timestamp-based approach that works with Entra ID (which also leverages Differential Query), Okta, and any SCIM-accessible backend. If the cloud directory/service does not support SCIM (and is something other than Entra ID or Okta), then the periodic option is the only choice for detecting changes for persistent cache refreshes.
+
 ### Updating Data Sources
 To update a data source, navigate to Control Panel > Setup > Data Catalog > Data Sources. Click the data source name in the list of configured sources. The connection properties displays. Update the properties and click **SAVE**.
 
