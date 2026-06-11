@@ -3,10 +3,9 @@ title: CFS
 description: CFS
 ---
 
-# Identity Providers
+## Identity Providers
 
 Identity Provider is the term used to describe any mechanism or system that handles authentication of users, and provides claims about those users to CFS. There are five types of identity providers / authentication systems supported in CFS:
-
 -   [Login / Password Authentication](social-networks.md) (Forms Based Authentication)
 -   [Certificate/PIV card Authentication](login-password#certificate-authentication)
 -   Social Networks
@@ -26,23 +25,15 @@ Identity Provider is the term used to describe any mechanism or system that hand
     -   [OpenAM](trusted-idps#openam)
     -   [RSA SecurID](trusted-idps#rsa-securid) _(deprecated)_
     -   Other Ws-Federation Identity Providers...
-
 > Note that for applications using certificates, CFS offers [Certificate rollover](certificate-rollover.md) feature which should be used when a certificate is nearing expiration or when you want to proactively replace it without causing downtime.
-
 Below is a high-level diagram depicting the flow when CFS leverages a Trusted Identity Provider for authentication. In scenarios like this, CFS acts as a relying party to the Trusted Identity Provider. This is known as Inbound Federation. CFS is receiving assertions from a trusted IDP to provide access to identities outside of CFS's security boundary to relying parties that trust CFS as their Identity Provider.
-
 >[!warning] Only the WS-Federation standard is supported between CFS and external trusted identity providers.
-
 ![](media/identity-providers-1.png)
-
 In environments where an existing identity provider is deployed and needs to trust CFS as an identity/claims provider, the existing identity provider is then considered a relying party for CFS. This is known as Outbound Federation. CFS produces the assertions to be consumed by a trusted IDP. This allows identities managed by CFS to access applications outside of its security boundary. This is depicted in the diagram below.
-
 >[!warning] WS-Federation, SAML, and OAuth/OIDC are supported between CFS and external trusted identity providers **as long as the external identity provider supports it**.
-
 ![](media/identity-providers-2.png)
 
-
-# Applications
+## Applications
 
 Name | Description | Link
 -|-|-
@@ -56,7 +47,7 @@ Name | Description | Link
 ![](media/docusign.png) [DocuSign - QA](docusign-qa) | DocuSign helps your world work better with the easiest, fastest, most secure way to send, sign, track and store documents in the cloud. | [DocuSign](https://www.docusign.com)
 ![](media/dropbox.png) <br> [Dropbox for Business](dropbox) | Dropbox is a home for all your photos, docs, videos, and files. Anything you add to Dropbox will automatically show up on all your computers, phones and even the Dropbox website - so you can access your stuff from anywhere. | [Dropbox](https://www.dropbox.com)
 ![](media/gitlab.png) [GitLab](gitlab) | Code, test, and deploy together with GitLab open source git repo management software. | [GitLab](https://www.gitlab.com)
-![](media/googleapps.png) <br>[Google Apps](googleapps) | Google Apps is a suite of Google applications that brings together essential services to help your business. This is a hosted service that lets businesses, schools, and institutions use a variety of Google products -- including Email, Google Docs, Google Calendar, and Google Talk -- on a unique domain (e.g., www.yourcompany.com). | [Google](https://www.google.com/enterprise/apps/business)
+![](media/googleapps.png) <br>[Google Apps](googleapps) | Google Apps is a suite of Google applications that brings together essential services to help your business. This is a hosted service that lets businesses, schools, and institutions use a variety of Google products -- including Email, Google Docs, Google Calendar, and Google Talk -- on a unique domain (e.g., [www.yourcompany.com](https://www.yourcompany.com)). | [Google](https://www.google.com/enterprise/apps/business)
 ![](media/gotomeeting.png) <br>  [Citrix GoToMeeting](gotomeeting) | Citrix GoToMeeting HD video conferencing software makes it simple and cost-effective to hold online meetings with colleagues and customers. | [Citrix](https://www.gotomeeting.com)
 ![](media/gototraining.png) <br>[Citrix GoToTraining](gototraining) | Citrix GoToTraining online training software enables individuals and enterprises to provide interactive training sessions to customers and employees in any location. | [Citrix](https://www.gototraining.com)
 ![](media/gotowebinar.png) <br>[Citrix GoToWebinar](gotowebinar) | Citrix GoToWebinar is the online conference software that makes it possible for anyone to host a professional webinar from the comfort of their own office. | [Citrix](https://www.gotowebinar.com)
@@ -79,15 +70,12 @@ Name | Description | Link
 ![](media/workplacebyfacebook.png) <br> [Workplace by Facebook](workplacebyfacebook) | Workplace by Facebook allows you to communicate and collaborate quickly, easily and effectively with your entire organization using tools your colleagues are already familiar with. | [Facebook](https://workplace.fb.com/)
 ![](media/wsfederationgeneric.png) <br>[WsFederation Generic](wsfed-generic) | WsFederation Generic application. | [Radiant Logic](https://www.radiantlogic.com)
 
-## Configuring SAML Signing Settings
+### Configuring SAML Signing Settings
 
 SAML2 applications let you control how responses and assertions are signed, and they support configuring multiple Assertion Consumer Service (ACS) endpoints (recipients) for service providers (SPs) that define more than one ACS URL in their metadata, as permitted by the SAML 2.0 specification.
-
 1. Open the SAML2 application configuration page.
 2. Go to the **Parameters** tab and locate the **Recipients** table.
-
    ![SAML Recipients Configuration](media/saml-recipients-config.png "SAML application ACS parameters")
-
 3. Click **Add Recipient** to add each ACS endpoint as a separate entry, and configure each row:
    - **Index** — position/order of the endpoint.
    - **Location** — the ACS endpoint URL.
@@ -95,54 +83,43 @@ SAML2 applications let you control how responses and assertions are signed, and 
    - **Default** — marks the fallback endpoint.
 4. Alternatively, click **Import from a metadata file** and upload the SP metadata XML. CFS parses any `<AssertionConsumerService>` elements and auto-populates the recipients table. Only SAML 2.0 HTTP-POST endpoints are supported; non-POST endpoints are ignored.
 5. When an SP sends a SAML authentication request, CFS chooses the response destination as follows:
-
    | SP Request Attribute | CFS Behavior |
    |---|---|
    | `AssertionConsumerServiceURL` | Matches the URL against configured recipients and responds to that URL. |
    | `AssertionConsumerServiceIndex` | Uses the recipient at the matching index. |
    | *Neither specified* | Falls back to the recipient marked **Default**. |
-
 6. Upload your **encryption** and **signing** certificates using the import button.
-
    ![SAML signing parameters](media/saml2signing.png "SAML application parameters")
-
 7. Use the **Sign Response** toggle to sign the entire SAML response when required.
 8. Use the **Sign Assertion** toggle to sign only the assertion when required.
 9. Review the chosen options and click **Save**.
 10. By default, at least one of these options (response or assertion) must be signed for security purposes. To allow skipping both signatures, navigate to **Settings > General Settings > Others**, enable **Allow SAML2 Unsigned Responses**, and click **Save**.
-
     ![Unsigned response option](media/unsignedsetting.png "unsigned response option")
-
 11. Return to the SAML configuration page and ensure neither option requires a signature.
 
-## Configure Token Validity in SAML Applications
+### Configure Token Validity in SAML Applications
 
 CFS allows administrators to define how long tokens generated for a specific application remain valid. To define the validity period, follow these steps: 
-
 1. Navigate to Applications -> Configured.
 2. Select the SAML application you want to configure and click Edit.
 3. Open the General tab and locate Token validity (minutes) setting.
     
     ![General settings UI](media/token-validity.png "General settings UI")
-
 4. Enter the desired token lifetime in minutes according to your security policy.
 5. Click Save to apply the changes.
 
-## Configuring Group Access Using an LDAP Filter
+### Configuring Group Access Using an LDAP Filter
 
 CFS allows administrators to control application access by filtering groups using LDAP with regex-based patterns. This ensures that only users belonging to specific groups can access the application. The steps below guide you through configuring and validating a group filter.
 
-### Configuring the Filter
+#### Configuring the Filter
 
 1. Open the SAML2 application configuration page.
 2. Select the application to configure and click Edit.
 3. Open the Access Rules tab.
-
     ![](media/ldap-filter.png "LDAP filter UI")
-
 4. Locate the "Allow groups using filter" field under the group access (allowed groups) section. 
 5. Enter an LDAP filter pattern that matches the groups you want to allow. 
-
     **Examples:**
     - Admins only `admin`
       `(cn=*admin*)`
@@ -152,85 +129,60 @@ CFS allows administrators to control application access by filtering groups usin
       `(cn=east-*)`
     - Groups ending with `-developers`  
       `(cn=*-developers)`
-
      ![](media/ldap-filter-example.png "LDAP filter example")
-
     Any group whose attributes match the filter will be granted access based on the defined access rules.
-
 7. Click **Validate** next to the filter field.
-
     **Validation results:**
     - **Valid filter:** Displays a list of matching groups for review  
     - **Invalid filter:** Shows an error message; the application cannot be saved until the filter is corrected. Update the filter as     needed and revalidate until it succeeds.
-
 8. Once validation is successful and the results are correct, click **Save**. The filter gets applied immediately. Existing matching groups are granted access and newly created groups that match the filter are automatically included.
 
-## Configuring Clock Skew Settings 
+### Configuring Clock Skew Settings 
 
 In SAML, WS-Fed, and OIDC applications, you can configure clock skew to mitigate differences in system time between your application and external services such as an Identity Provider (IdP), Service Provider (SP), or third-party system/API. The clock skew feature introduces a configurable time tolerance when validating time-based security artifacts, including certificates and access tokens.
-
 To configure clock skew, navigate to Applications > Configured > Parameters. Locate the Clock skew (minutes) setting, enter the appropriate value for certificate and/or token expiration validation, and save your changes.
-
 ![](media/clock-skew.png "application clock skew")
-
 By default, the maximum permitted clock skew duration is 10 minutes. To modify this limit, follow these steps:
 1. Log in to the RadiantOne portal and go to the Directory Browser tab.
 2. Navigate from the CFS configuration root (ou=cfs,cn=config) to ou=Parameters,ou={your_tenant},ou=tenants,{configuration_root}, then update the MaxClockSkewMinutes parameter with the desired value.
-
 ![](media/clock-skew-param.png "tenant clock skew limit")
 
+## Smart links
 
-# Smart links
-
-## Overview
+### Overview
 
 For RP-initiated SSO (when a user navigates directly to a site/application) the Identity Provider (IDP) knows exactly where to redirect the user back to after they authenticate. However, for IDP-initiated SSO (when the user navigates directly to the IDP to log in first), the exact desired application/sub-service may not be known so CFS would redirect the user back to a general/main page of the service instead of directly to the sub-service.
-
 Smart Links provide users with an improved login experience when accessing any browser based site that offers many services/sub-sites. An example is Office 365 which offers many services, including SharePoint Online. Even SharePoint 2010 (on-premise) offers many different sites/web applications. Another example is Google Apps which offers many services like email, calendar...etc.
-
 Smart Links offer an improved IDP-initiated user experience because once logged in, with just a single click, the user is automatically redirected to the specific service without any additional clicks required.
-
 On the CFS configuration side, only 1 application is required to be configured. Then each sub-service is configured for this application as a smart link.
-
 This page explains the Smart Link generation and deployment process in detail and is based on a use case of Office 365 (SharePoint Online) deployed trusting ADFS as the Identity Provider and extending access to users in CFS (ADFS configured with a claims provider trust for CFS).
 
-## Generating Smart Links
+### Generating Smart Links
 
 -   Install Fiddler.
 -   Open Fiddler and enable HTTPS decryption.
 -   Open Internet Explorer, clear the cookies and restart the browser.
 -   Using Internet Explorer, navigate to an Office 365 SharePoint site.
--   At the Office 365 Login Prompt, enter your username, check the boxes ‘Remember me’ and Keep me signed in’ and then click "Sign in at <yourdomain>".
+-   At the Office 365 Login Prompt, enter your username, check the boxes 'Remember me' and Keep me signed in' and then click "Sign in at <yourdomain>".
 -   Return to Fiddler and locate the 302 redirection session. Right-click the 302 session, click "Copy and click "Just Url".
 -   Open Notepad and paste the string copied in step 6. It should look something like:
-
 `[https://federation.domain.com/adfs/ls/?cbcxt=mai&vv=&username=david.ross%40domain.com.au&mkt=&lc=3081&wa=wsignin1.0&amp](https://federation.domain.com/adfs/ls/?cbcxt=mai&vv=&username=david.ross%40domain.com.au&mkt=&lc=3081&wa=wsignin1.0&amp); wtrealm=urn:federation:MicrosoftOnline&wctx=MEST%3D0%26LoginOptions%3D1%26wa%3D wsignin1%252E0%26rpsnv%3D2%26ct%3D1348618157%26rver%3D6%252E1%252E6206%252 E0%26wp%3DMBI%26wreply%3Dhttps%253A%252F%252Fdomain%252Esharepoint%252Ecom %252F%255Fforms%252Fdefault%252Easpx%26lc%3D3081%26id%3D500046%26cbcxt%3Dmai %26wlidp%3D1%26guest%3D1%26bk%3D1348618158`
-
 -   Remove everything between ".../adfs/ls/?" and "wa=wsignin...", and everything after "...wreply%3D". The string now looks like:
-
 `[https://federation.domain.com/adfs/ls/?wa=wsignin1.0&wtrealm=urn:federation:Microsoft](https://federation.domain.com/adfs/ls/?wa=wsignin1.0&wtrealm=urn:federation:Microsoft) Online&wctx=MEST%3D0%26LoginOptions%3D1%26wa%3Dwsignin1%252E0%26rpsnv%3D2 %26ct%3D1348618157%26rver%3D6%252E1%252E6206%252E0%26wp%3DMBI%26wreply%3D`
-
 This is the base URL that is used to create the Smart Links.
-
 Next, convert the SharePoint site URLs to double encoded URLs. We need to do this for all SharePoint sites that you would like to create Smart Links for. Use the following table as a reference:
-
 ASCII Character Double-Encoded Value  
 : %253A  
 . %252E  
 / %252F
-
 The following are some examples of URLs and their double-encoded URL equivalent:
-
 URL -- > Double-Encoded URL [https://company.sharepoint.com](https://company.sharepoint.com) -- > https%253A%252F%252Fcompany%252Esharepoint%252Ecom [https://company.sharepoint.com/search](https://company.sharepoint.com/search) -- > https%253A%252F%252Fcompany%252Esharepoint%252Ecom%252Fsearch [https://company-10.sharepoint.com/sites/finance](https://company-10.sharepoint.com/sites/finance) -- > https%253A%252F%252Fcompany-10%252Esharepoint%252Ecom%252Fsites%252Ffinance
-
 -   To complete the Smart Link, append the double encoded string to the base URL that was previously created. The end result is a Smart Link that looks something like:
-
 `[https://federation.domain.com/adfs/ls/?wa=wsignin1.0&wtrealm=urn:federation:Microsoft](https://federation.domain.com/adfs/ls/?wa=wsignin1.0&wtrealm=urn:federation:Microsoft) Online&wctx=MEST%3D0%26LoginOptions%3D1%26wa%3Dwsignin1%252E0%26rpsnv%3D2% 26ct%3D1348618157%26rver%3D6%252E1%252E6206%252E0%26wp%3DMBI%26wreply%3D https%253A%252F%252Fcompany%252Esharepoint%252Ecom`
 
-## Deploying Smart Links
+### Deploying Smart Links
 
 The URL generated in the previous section is used during the CFS configuration described below.
-
 -   From the Tenant Administration Dashboard, navigate to the Applications sections.
 -   Click Gallery and click Configure next to the application you want to configure with Smart Links. (This example uses ADFS as WS-Federation).
 -   Enter the needed parameters (if you need assistance, see [Applications](#applications) ).
@@ -239,28 +191,19 @@ The URL generated in the previous section is used during the CFS configuration d
 -   Paste in the final smart link result calculated in the previous section. E.g. `[https://federation.domain.com/adfs/ls/?wa=wsignin1.0&wtrealm=urn:federation:Microsoft](https://federation.domain.com/adfs/ls/?wa=wsignin1.0&wtrealm=urn:federation:Microsoft) Online&wctx=MEST%3D0%26LoginOptions%3D1%26wa%3Dwsignin1%252E0%26rpsnv%3D2% 26ct%3D1348618157%26rver%3D6%252E1%252E6206%252E0%26wp%3DMBI%26wreply%3D https%253A%252F%252Fcompany%252Esharepoint%252Ecom`
 -   Toggle the "Is Enabled" option so that is shows a green check mark.
 -   Enter any other desired parameters on the General, Access Rules and Filter tabs and then click Save. For details on parameters available on these tabs, please see the [Applications Configuration guide](04-user-roles#applications).
-
 ![](media/smartlinks.png)
 
-# OpenID Connect
+## OpenID Connect
 
-## Overview
---------
+### Overview
 
 CFS supports OAuth 2.0 and is an OpenID Connect provider. It supports the role of "Authorization Server" (to authenticate users) and "Resource Server" (to deliver user attributes requested by the application).
-
 When a user accesses the OpenID Connect application (relying party), they are redirected to the "authorization endpoint" of CFS to authenticate (step 2 in the diagram below). If the user has an active session with the CFS, authentication may be skipped.
-
 After the user authenticates to CFS, they are prompted to authorize the application to access certain profile information (unless they've already given permission to the application previously, in which case they are not prompted). This is shown in step 3 in the diagram below.
-
 The user browser is sent back to the client application (indicated by the Callback URL in the configuration) with the authentication/authorization result (shown in step 4 in the diagram below). The application can contact CFS (DIRECTLY) at the UserInfo endpoint (shown in step 5 in the diagram below). The application has a maximum of 2 minutes to contact CFS for the user's information. After 2 minutes, the access token is no longer valid and steps 2-4 shown in the diagram must be done again. Note here that even if steps 2-4 is executed again, the user does not see any of this because they have already been authenticated by CFS (and not prompted again) and already authorized the application to access their information (so they won't have to consent again - as long as they have not manually [revoked access](#revoking-access-to-an-application) to this application in the meantime). The UserInfo endpoint (CFS) returns consented profile information to the client application (shown in step 6 in the diagram below). This can contain ONLY attributes indicated in the "scope" (indicated in the Mappings).
-
 A tenant's OIDC discovery document is located at:
-
     https://cfs-server.domain.com/cfs/oauth/[tenant-identifier]/.well-known/openid-configuration
-
 This discovery document provides general information about the OpenID connect configuration such as:
-
 -   The OAuth issuer (CFS tenant)
 -   Authorization endpoint
 -   Token endpoint
@@ -270,19 +213,15 @@ This discovery document provides general information about the OpenID connect co
 -   The JSON Web Keys URI
 -   Supported scopes
 -   End session endpoint and check session iframe
-
 ![](media/openidconnect-1.png)
-
 A few things to keep in mind for OpenID Connect Applications are:
-
 -   There are no certificates required.
 -   The application can communicate directly to CFS to get information about a user (not just indirectly through the client browser with redirects).
 -   Only RP-initiated SSO is supported (no IDP-initiated, which means OpenID Connect applications does not appear in the CFS portal).
 
-### Supported Flows in CFS
+#### Supported Flows in CFS
 
 The following OIDC flows are supported:
-
 -   Authorization Code
 -   Authorization Code (with PKCE)
 -   Hybrid
@@ -293,17 +232,15 @@ The following OIDC flows are supported:
     -   id\_token token
     -   token
     -   id\_token
-
 >[!warning] The implicit flow is less secure since access token and/or ID tokens are returned directly from CFS to the browser. As a result, the code flow is encouraged and the most secure.
 
-## Tokens
+### Tokens
 
 Tokens in CFS are returned in the form of [Json Web Tokens (JWTs)](https://jwt.io/introduction).
 
-### Access Tokens
+#### Access Tokens
 
 An access token body returned from CFS looks similar to:
-
     {
         "name": "Jane Doe",
         "sub": "Jane Doe",
@@ -316,19 +253,15 @@ An access token body returned from CFS looks similar to:
         "iss": "https://cfs.server/cfs/oauth/[tenantIdentifier]",
         "aud": "https://cfs.server/cfs/oauth/[tenantIdentifier]"
     }
-
 These access tokens have a **two minute expiration time**, unless changed in the tenant admin console.
-
 Important things to note:
-
 -   The "aud" (Audience) claim is the resource the access token is intended for. In this case, it's CFS which, as mentioned above, is also the resource server.
 -   The "iss" (Issuer) claim is who issued the access token (the authorization server), which is also CFS.
 -   The "scope" claim are those user claims that the OIDC client is requesting from the backend datastore (FID).
 
-### ID Tokens
+#### ID Tokens
 
 An ID token body returned from CFS looks similar to:
-
     {
         "name": "Jane Doe",
         "sub": "Jane Doe",
@@ -350,11 +283,8 @@ An ID token body returned from CFS looks similar to:
         "iss": "https://cfs.server/cfs/oauth/[tenantIdentifier]",
         "aud": "h5Ik8ep4nFMu433hUI55g"
     }
-
 These ID tokens have a **twenty minute expiration time**, unless changed in the tenant admin console..
-
 Important things to note:
-
 -   The "aud" (Audience) claim is the OIDC client the token is intented
 -   The "iss" (Issuer) claim is the authorization server that issued the ID token, which is CFS.
 -   The ["c\_hash"](https://openid.net/specs/openid-connect-core-1_0.html#HybridIDToken) (Code Hash) value is included in the ID token if the `response_type` includes a code (i.e `code`, `code id_token`, `code token id_token`).
@@ -365,32 +295,26 @@ Important things to note:
     -   `token id_token`
     -   `code id_token token`
 
-## JSON Web Keys
+### JSON Web Keys
 
 These tokens are signed using [JSON Web Keys (JWKs)](https://tools.ietf.org/html/rfc7517). The key ID (kid) used to sign the token can be found in the JSON Web Token's header
-
     {
         "alg": "RS256",
         "kid": "9ac7441d-1c47-49ad-9bb9-740d0f6a1702",
         "typ": "JWT"
     }
-
 The JWKs can be accessed from `https://cfs-server.domain.com/cfs/oauth/[tenant-identifier]/.well-known/keys`. This endpoint can be discovered from tenant's OIDC discovery document.
-
 Keys are automatically rotated every 180 days.
-
 >[!warning] If there are existing OIDC applications in your tenant prior to CFS 3.15.0 you have to reconfigure them, as the JWKs won't be created if there are existing OIDC applications in the tenant.
 
-## Configuration
+### Configuration
 
 There are two parts to the configuration in CFS. One is the configuration of the application. The other is configuring which identity store attributes are associated with the scopes (mappings). These configurations are described below.
-
 >[!warning] The configuration of the actual OpenID Connect application is not covered in this guide. However, take note of the Key and Secret set when you configure the application in CFS as these values are needed when you configure your actual application.
 
-### Application
+#### Application
 
 In the Tenant Administration Dashboard, navigate to the Applications section and select OpenID Connect. Click **New OpenID Connect Application**.
-
 1.  Enter a unique name for the OpenID Connect application.
 2.  Enter a description.
 3.  Enter a website associated with the application.
@@ -400,25 +324,20 @@ In the Tenant Administration Dashboard, navigate to the Applications section and
 7.  Check "Is Enabled" until it shows green.
 8.  Take note of the Application Key and Secret as this information is used in the configuration of the application (when you set it up to be able to connect to CFS).
 
-### Mappings (Scopes)
+#### Mappings (Scopes)
 
 OpenID Connect "scopes" can be thought of as predefined sets of claims/assertions. To define the attributes associated with the scopes, from the Administration Dashboard, navigate to Applications and select OpenID Connect. Click Mappings.
-
 A claim/scope mapping is a configuration that determines how user information (claims) is selected, transformed, and named in the tokens issued by an identity provider (IdP) using OpenID Connect (OIDC).
-
 Different applications often need different subsets of user data. Tailoring claims per application improves:
-
 - Security: Least-privilege data sharing  
 - Performance: Smaller tokens  
 - Compatibility: Meeting app-specific requirements  
 
+##### <strong>Standard Scopes</strong>
 
-#### Standard Scopes
-
-#### Profile Scope
+##### <strong>Profile Scope</strong>
 
 The **profile** scope returns a set of standard user profile claims, including:
-
 -   name
 -   family\_name (Last Name)
 -   given\_name (First Name)
@@ -432,82 +351,66 @@ The **profile** scope returns a set of standard user profile claims, including:
 -   zoneinfo
 -   locale
 -   update\_at
-
 Each claim can be mapped to a corresponding attribute in the identity store (Identity Data Management).
-
 ![](media/openidconnect-4.png)
 
-#### Email Scope
+##### <strong>Email Scope</strong>
 
-The **email** scope returns the user’s email claim.
-
+The **email** scope returns the user's email claim.
 - The claim value is mapped to an attribute in Identity Data Management (e.g., `mail`).  
 - Email can be marked as *verified* based on identity store configuration.  
 - Verification is not performed by CFS or Identity Data Management; it is determined by the administrator based on authoritative data sources.
 
-#### Address Scope
+##### <strong>Address Scope</strong>
 
-The address scope returns the user’s address claim.
-
+The address scope returns the user's address claim.
 - Mapped to a single attribute in Identity Data Management (e.g., `postalAddress`).
 
-#### Phone Scope
+##### <strong>Phone Scope</strong>
 
-The phone scope returns the user’s phone number claim.
-
+The phone scope returns the user's phone number claim.
 - Mapped to an attribute in Identity Data Management (e.g., `mobile`).  
 - Phone numbers can be marked as *verified* based on identity store configuration.  
 - Verification is determined by the administrator (not enforced by CFS or Identity Data Management).
 
-#### Groups Scope
+##### <strong>Groups Scope</strong>
 
-The groups scope returns a `groups` assertion containing the user’s group memberships. Group data is derived from the tenant’s configured group schema.
+The groups scope returns a `groups` assertion containing the user's group memberships. Group data is derived from the tenant's configured group schema.
 
-#### What Changed in CFS 3.17.8
+##### <strong>What Changed in CFS 3.17.8</strong>
 
 - **Per-application mappings:** Each OIDC application now has its own *Mappings* tab to define its claim rules.  
 - **Tenant-wide mappings removed:**  
   - OIDC mappings are no longer managed solely at the tenant level.  
-  - If an app doesn’t yet have a custom mapping, the previous tenant-wide mapping is used to populate its initial configuration; once saved, it becomes specific to that app.  
+  - If an app doesn't yet have a custom mapping, the previous tenant-wide mapping is used to populate its initial configuration; once saved, it becomes specific to that app.  
+During token and user info requests, the server applies the app's saved mappings if they exist; otherwise, it falls back to the tenant's global mappings.
 
-During token and user info requests, the server applies the app’s saved mappings if they exist; otherwise, it falls back to the tenant’s global mappings.
-
-#### Prerequisites
+##### <strong>Prerequisites</strong>
 
 - Confirm that you have admin access to manage OIDC applications in CFS.  
-- Have clarity on the application’s required claims (e.g., which attributes and formats are expected).
+- Have clarity on the application's required claims (e.g., which attributes and formats are expected).
 
-#### Steps to Configure Claim Mappings
+##### <strong>Steps to Configure Claim Mappings</strong>
 
 1. Open the OIDC application
    - In the CFS admin console, navigate to **OIDC Applications** and click **Edit** on the application you want to configure.
     
     ![OIDC connect UI](media/oidc-connect.png)
-
 2. Switch to the Mappings tab
    - View claim mapping rules for this application. If no custom mapping exists yet, the view is initially populated with your prior global mapping as a starting point.
-
     ![OIDC mappings UI](media/oidc-mappings.png)
-
-
 3. Adjust claim rules
    - Add, remove, or modify claim mappings as needed for this application. For example, you might map only a subset of user groups or use a computed attribute instead of sending all groups. Each mapping determines which user attribute is sent as which claim in the OIDC token.
-
 4. Save the configuration
-   - Click Save. Both the application’s attributes and its claim mappings will be saved together.
-
+   - Click Save. Both the application's attributes and its claim mappings will be saved together.
      ![Image of the Save button](media/save-scopes.png)
 
-
-#### Custom Claims
+##### <strong>Custom Claims</strong>
 
 CFS supports configuring custom claims. These custom claims are returned as part of the **profile** scope.  
-
 - If a custom claim is disabled, it is not returned in either the `id_token` or from the `/userinfo` endpoint.  
 - Custom claims, like all other scopes, can only be managed by administrators.
-
 To add a custom claim:
-
 1.  From the _Administration_ tab navigate to _Applications > OpenID Connect_. 
 2.  In the top right, click _\+ Add Custom Profile Scope Claim_.
     
@@ -521,10 +424,9 @@ To add a custom claim:
     
     ![](media/openidconnect-7.png)
 
-### Change Token Expiration Time
+#### Change Token Expiration Time
 
 Certain situations may require that an OIDC application's token expiration be changed. To do so:
-
 1.  Log in as a tenant administrator.
 2.  Navigate to Administration > Applications > OpenID Connect.
 3.  Choose _Edit_ next to the application in which the token expiration should be changed.
@@ -532,12 +434,10 @@ Certain situations may require that an OIDC application's token expiration be ch
 5.  Modify the values accordingly.
 6.  Click Save.
 
-## PKCE Flow
+### PKCE Flow
 
 CFS supports the PKCE flow, a **secure** alternative to the implicit flow. PKCE is used mainly for Single-Page Applications (SPAs) in which the client secret cannot be securely stored. These SPAs tend to store information in the browser, and therefore it is recommended to use this flow since it's more secure than the implicit flow.
-
 Since this flow builds off the **standard authorization code** flow, the steps are very simliar:
-
 1.  The user clicks on **Login** from the OIDC client application
 2.  The OIDC client application creates a `code_verifier`
 3.  The OIDC client application also creates a `code_challenge` and a `code_challenge_method` which is either `plain` or `S256`
@@ -550,11 +450,8 @@ Since this flow builds off the **standard authorization code** flow, the steps a
     -   If the validation is successful, CFS responds with an `access token`, `id_token`, and `refresh_token`
 8.  The OIDC client the requests, user data to the `/userinfo` endpoint with the `access token` issued from step 7
 9.  CFS verifies the `access token, and if correct, responds with the user's information based on the`scopes`requested from the`access token\`
-
 When using the PKCE flow, the `client_secret` is **not** needed. The `code_challenge` essentially replaces the `client_secret`.
-
 A sample authorization request using the PKCE flow is as follows (line breaks included for readability):
-
     GET https://[cfs-server]/cfs/oauth/[tenant-identifier]/authorize?  
     client_id=g1hokpYGybxFMw98Hm2GEx  
     &redirect_uri=https%3A%2F%2Fwin-cit95mqedh1.luckylemurs.com%2Fsignin-oidc  
@@ -565,73 +462,55 @@ A sample authorization request using the PKCE flow is as follows (line breaks in
     &response_mode=form_post  
     &nonce=63762669242...jODg3  
     &state=CfDJ...7kV1SZQ8Oj_
-
 >[!note] If, for some reason, a `client_secret` is passed in the _authorization_ request when using the PKCE flow, CFS also verifies it in addition to verifying the `code` and `code_verifier`.
 
-## Session Management
+### Session Management
 
 Session management in OIDC allows for clients to monitor users' session state in CFS, and act accordingly. It also enables clients to allow users to logout of CFS. OIDC session management can be used to:
-
 -   Log users out of all applications they're signed into from an IdP (single-logout)
 -   End a user's current CFS session (simple logout)
-
 >[!note] As of CFS version **3.15.1**, only **simple logout** is supported.
 
-### Check Session Management
+#### Check Session Management
 
 Clients (Relying Parties (RPs)) can check for users' session status by using CFS' (OpenID Connect Provider's (OP)) `/checksession` endpoint, which can be found from the OIDC discovery endpoint for the tenant. In order for clients to correctly use the `/checksession` endpoint, two `iframes` must be loaded into the client:
-
 -   An OP iframe -- an iframe loaded into the RP pointing to the OP's `checksession` endpoint found in the OIDC discovery document.
     -   The RP _must_ assign an `id` attribute to the iframe so that it can identify it in the OP iframe
     -   The RP's postMessage from the iframe sends the following string concatenation as data: `client_id` + " " + `session_state`.
 -   An RP iframe -- an iframe loaded into the RP used to handle the response from the OP's `checksession` endpoint.
     -   This iframe must know the `id` of the OP iframe and the origin URL of the OP iframe (i.e. `https://cfs-server.domain.com`) to ensure that requests are sent to and received _only_ from the originating OP (i.e. CFS).
-
 A response from the OP's `checksession` endpoint is either `changed`, `unchanged`, or `error`.
-
 -   If the response is `changed`, the RP must send a request to the OPs' `authorize` endpoint with `prompt=none` with the RP iframe to request a new ID token, sending the old ID token as the `id_token_hint`.
 -   If the response is `unchanged`, the RP need not do anything, as the user's session has not changed.
 -   If the response is `error`, the RP must **not** perform re-authentication to the `authorize` endpoint.
 
-### End Session Mangement
+#### End Session Mangement
 
 If an OIDC client chooses to allow users to logout of CFS (i.e. _simple_ logout), it can do so from the tenant's `endsession` endpoint found in the OIDC discovey document. The client must know the ID token for the user, and must pass it in the `id_token_hint` parameter.
-
 If the ID token is valid, CFS logs the user out and the following page is displayed.
-
 ![](media/openidconnect-8.png)
-
 If the ID token is invalid, CFS displays the following page.
-
 ![](media/openidconnect-9.png)
-
 If the `id_token_hint` parameter is not passed, CFS displays the following page.
-
 ![](media/openidconnect-9.png)
-
 An example end session request is as follows.
-
     https://cfs-server.domain.com/cfs/oauth/[tenant-identifier]/endsession?id_token_hint=ey8Ujmnr43dC...PZ
 
-### Revoking Access to an Application
+#### Revoking Access to an Application
 
 Once a user authenticates to an OpenID application and gives consent for the application to access their profile attributes, they can log in to the CFS portal and "revoke access" to these applications meaning that the application is no longer allowed to get the user's attributes without consent.
-
 1.  Log into the CFS Portal and click Security.
 2.  Click Edit next to Applications. You will see a list of applications and the scope they are currently using.
 3.  Click the Revoke button next to the applications you no longer want to be able to access your profile.
-
 ![](media/openidconnect-3.png)
 
-# PowerShell Commandlets
+## PowerShell Commandlets
 
 The Microsoft PowerShell commandlets are available starting CFS version 3.3. 145 of them are available in CFS 3.16.2.
-
 Run the PowerShell prompt and use the following command in order to connect to FID: `Connect-CfsService -Address <FID ADDRESS> -Port <SSL PORT> -Root "cn=cfs,cn=config"`. You are prompted for your FID credentials. After the authentication is successful, you can manage your CFS using the following cmdlets.
-
 If the CFS PowerShell cmdlets are not available after installing CFS, enter the command `Import-Module RLI.CFS.Management` in order to import the CFS commandlets. Also, make sure you have PowerShell 4.0 (or later) installed.
 
-## General
+### General
 
 ### Schema
 
@@ -745,7 +624,6 @@ Name | Description | Since Version
 ### Tenant
 
 Use command `Set-CfsCurrentTenant` (Available since CFS 3.4) in order to set the Tenant to use for the current session.
-
 Name | Description | Since Version
 -|-|-
 **Get-CfsCurrentTenant** | Get the Tenant used for the current PowerShell session. | 3.6.0.0
@@ -767,8 +645,6 @@ Name | Description | Since Version
 **Set-CfsApplication** | Updates application settings such as the application name, the AllowAllUsers attribute, and supports importing complete Service Provider (SP) metadata. Example syntax: `Set-CfsCertificate -Application "<ApplicationId>" -Metadata $metadata` | 3.6.0.0, with updated support for metadata updates starting version 3.17.8.
 **Set-CfsAppParameter** | Updates the Parameter of an Application. | 3.6.0.0
 **Update-CfsApplication** | Updates an Application from a template. | 3.6.0.0
-
-
 
 ### Applications and SmartLinks
 
@@ -798,7 +674,6 @@ Name | Description | Since Version
 ### Tenant and Application Certificates 
 
 The `Set-CfsCertificate` commandlet is used to update signing and encryption certificates for tenants and applications. It accepts certificates of type `X509Certificate2`.
-
 | Command | Scope | Description |
 |--------|------|-------------|
 | `Set-CfsCertificate -Main -Certificate $certificate` | Tenant | Updates the tenant signing certificate. |
@@ -808,11 +683,8 @@ The `Set-CfsCertificate` commandlet is used to update signing and encryption cer
 ### Expiring Certificates
 
 The `Get-CfsExpiringCertificates` commandlet is used to retrieve certificates that are nearing expiration across tenants, applications, and identity providers. It is supported in version 3.17.8 and higher. 
-
 It supports both scoped (per-tenant) and global queries, along with optional filters for expiration time and error handling.
-
 > By default, the command returns certificates expiring within the next **30 days**, unless a different value is specified using the `-Days` parameter.
-
 | Command | Scope | Description |
 |--------|------|-------------|
 | `Get-CfsExpiringCertificates -Tenant "mytenant"` | Tenant | Retrieves expiring certificates for the specified tenant. |
@@ -828,7 +700,6 @@ It supports both scoped (per-tenant) and global queries, along with optional fil
 | `Get-CfsExpiringCertificates -All -Days "60"` | Filtered global | Retrieves certificates expiring within the specified number of days (e.g., 60 days). |
 | `Get-CfsExpiringCertificates -All -ContinueOnError` | Resilient global | Retrieves all expiring certificates while skipping any that cause errors. |
 
-
 ### Tenant and Application Certificate Rollovers
 
 Name | Description | Since Version
@@ -837,8 +708,6 @@ Name | Description | Since Version
 **Get-CfsCertificateStatus** | Checks the status of tenant or application certificates. | 3.17.5
 **Start-CfsCertificateRotation** | Manually rotates tenant or application certificates. `-Force` parameter exists but is ignored. | 3.17.5
 **Start-CfsCertificateEmergencyMigration** | Emergency migration for expiring certificates. Options for new or existing certificate. `-Force` parameter exists but is ignored. | 3.17.5
-
-
 
 ### Challenge Questions
 
