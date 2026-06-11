@@ -430,7 +430,7 @@ When searching for entries from the **Control Panel** > **Manage** > **Directory
 
 After performing a search, select an entry from the search results to view its attributes. The following actions are available directly from the search results view.
 
-##### Add an Attribute
+**Add an Attribute**
 
 To add a new attribute to an entry from the search results:
 
@@ -440,7 +440,7 @@ To add a new attribute to an entry from the search results:
 4. Enter a value for the attribute and click the checkmark icon to confirm.
 5. Click **CREATE** to add the attribute to the entry.
 
-##### Add Values
+**Add Values**
 
 To add additional values to a multi-valued attribute:
 
@@ -449,7 +449,7 @@ To add additional values to a multi-valued attribute:
 3. Click the **+** icon inline with the attribute name.
 4. Enter the new value and click the checkmark icon to confirm.
 
-##### Delete Attribute
+**Delete Attribute**
 
 To delete an attribute from an entry:
 
@@ -457,7 +457,7 @@ To delete an attribute from an entry:
 2. On the right side, click the delete icon inline with the attribute you want to remove.
 3. Click **DELETE** to confirm the removal.
 
-##### Delete Values
+**Delete Values**
 
 To delete a specific value from a multi-valued attribute:
 
@@ -466,7 +466,7 @@ To delete a specific value from a multi-valued attribute:
 3. Click the delete icon inline with the specific value you want to remove.
 4. Click **DELETE** to confirm.
 
-##### Edit Values
+**Edit Values**
 
 To edit an existing attribute value:
 
@@ -475,7 +475,7 @@ To edit an existing attribute value:
 3. Update the value.
 4. Click the checkmark icon to confirm the change.
 
-##### Test Authentication
+**Test Authentication**
 
 To test authentication for a user entry found in the search results:
 
