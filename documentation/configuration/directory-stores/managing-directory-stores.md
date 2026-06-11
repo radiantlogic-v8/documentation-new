@@ -121,6 +121,26 @@ To delete a RadiantOne directory store, first de-activate it (uncheck the Active
 
 On the Control Panel > Manage > Directory Browser you can see the entire directory structure instantiated with the directory entries. There could be nodes for RadiantOne Directory stores, LDAP Proxy views, and any other Root Naming Contexts that have been configured in the Control Panel > Setup > Directory Namespace > Namespace Design. If you do not see your new naming context after navigating to the Directory Browser, click ![Reconnect Button](Media/reconnect-button.jpg).
 
+The Directory Browser includes two configurable settings that control how data is retrieved and displayed. You can access these by clicking the settings icon in the Directory Browser.
+
+![Directory Browser Settings](Media/dir-browser-settings.png)
+
+**Timeout**
+
+The Timeout setting controls how long the Directory Browser will wait for results from the server before cancelling the request.
+
+When you browse a directory, the browser sends a request to the server to fetch entries. If the server takes longer than the configured timeout to respond, the request is cancelled and a timeout error is displayed instead of the results.
+
+The value is set in milliseconds (e.g., if you set the value as 10000, the timeout will happen after 10 seconds). If you're seeing timeout errors when browsing large directories, try increasing this value.
+
+**Size Limit**
+
+The Size Limit setting controls the maximum number of entries the Directory Browser will return in a single request.
+
+When browsing a directory that contains many entries, the size limit caps how many are loaded at once. If a directory contains more entries than the configured limit, only that number of entries will be displayed.
+
+A lower size limit means faster load times but you may not see all entries. A higher size limit shows more entries but may take longer to load.
+
 ### Creating New Entries
 
 >[!warning] 
