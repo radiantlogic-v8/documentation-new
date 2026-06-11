@@ -7,12 +7,16 @@ description: RadiantOne IDDM v8.4.3 Release Notes
 
 June 11, 2026
 
-These release notes contain important information about improvements and bug fixes for RadiantOne Identity Data Management v8.4.3
+These release notes contain important information about vulnerability fixes and bug fixes for RadiantOne Identity Data Management v8.4.3.
+
 These release notes contain the following sections:
 
 [Security Vulnerability Fixes](#security-vulnerability-fixes)
+
 [Bug Fixes](#bug-fixes)
+
 [Known Issues](#known-issues)
+
 [How to Report Problems and Provide Feedback](#how-to-report-problems-and-provide-feedback)
 
 ## Security Vulnerability Fixes
@@ -35,7 +39,9 @@ These release notes contain the following sections:
 ## Known Issues
 
 The following issues have been identified in this release and will be addressed in a future release:
+
 - [API-4420]: During migration import from v7.4.21 to v8.4.0, an IllegalStateException error "(Expected state [STARTED] was [STOPPED])" is logged in PathChildrenCache. The migration itself completes successfully despite the error.
+
 For known issues reported after the release, please see the Radiant Logic Knowledge Base:
 https://support.radiantlogic.com/hc/en-us/categories/4412501931540-Known-Issues
 
