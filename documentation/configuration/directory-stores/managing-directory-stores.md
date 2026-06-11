@@ -125,14 +125,6 @@ The Directory Browser includes two configurable settings that control how data i
 
 ![Directory Browser Settings](Media/dir-browser-settings.png)
 
-**Timeout**
-
-The Timeout setting controls how long the Directory Browser will wait for results from the server before cancelling the request.
-
-When you browse a directory, the browser sends a request to the server to fetch entries. If the server takes longer than the configured timeout to respond, the request is cancelled and a timeout error is displayed instead of the results.
-
-The value is set in milliseconds (e.g., if you set the value as 10000, the timeout will happen after 10 seconds). If you're seeing timeout errors when browsing large directories, try increasing this value.
-
 **Size Limit**
 
 The Size Limit setting controls the maximum number of entries the Directory Browser will return in a single request.
@@ -140,6 +132,14 @@ The Size Limit setting controls the maximum number of entries the Directory Brow
 When browsing a directory that contains many entries, the size limit caps how many are loaded at once. If a directory contains more entries than the configured limit, only that number of entries will be displayed.
 
 A lower size limit means faster load times but you may not see all entries. A higher size limit shows more entries but may take longer to load.
+
+**Timeout**
+
+The Timeout setting controls how long the Directory Browser will wait for results from the server before cancelling the request.
+
+When you browse a directory, the browser sends a request to the server to fetch entries. If the server takes longer than the configured timeout to respond, the request is cancelled and a timeout error is displayed instead of the results.
+
+The value is set in milliseconds (e.g., if you set the value as 10000, the timeout will happen after 10 seconds). If you're seeing timeout errors when browsing large directories, try increasing this value.
 
 ### Creating New Entries
 
