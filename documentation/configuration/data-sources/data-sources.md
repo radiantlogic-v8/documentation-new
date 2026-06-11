@@ -234,6 +234,8 @@ Password	| Credentials associated with the account indicated in the User propert
 
 If your data source is not supported by Identity Data Management by default, you can select a custom data source type and provide the required information. The properies supported are defined in the [template](#creating-templates).
 
+For default custom data sources, see: [Data Sources Supported](./data-sources-supported)
+
 **Operations Supported**
 
 The default custom data sources support Read, Update, and Delete (or deactivate) operations but most do not support authentication (support a delegated authentication request from RadiantOne). Therefore, virtual views of these sources are primarily used for joining with other virtual views to extend user profiles and/or attributes for enforcing authorization and auditing. For example, you can have a virtual view of an LDAP directory (that would handle authentication requests) that is joined with a virtual view of Salesforce (to retrieve additional profile attributes to augment the user entries from the LDAP directory). The only custom data sources that currently support authentication (RadiantOne translating the BIND request into a credentials checking request) are Okta Universal Directory, PingOne Directory, and Entra ID (when MFA is not enabled). 
