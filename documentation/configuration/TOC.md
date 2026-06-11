@@ -65,7 +65,7 @@ description: Configuring RadiantOne Identity Data Management
   - [Client Protocols](global-settings/client-protocols.md)
   - [Client Certificates](../configuration/security/client-cert-truststore.md)
 - [Tasks](#)
-  - [Tasks](tasks/tasks.md)
+  - [Tasks](tasks/index.md)
   - [Custom Tasks](tasks/custom-tasks/index.md)
     - [Create a Custom Task](tasks/custom-tasks/create-a-custom-task.md)
     - [Writing a Custom Task Java Class](tasks/custom-tasks/custom-task-java-class.md)
