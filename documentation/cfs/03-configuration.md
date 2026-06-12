@@ -333,9 +333,9 @@ Different applications often need different subsets of user data. Tailoring clai
 - Performance: Smaller tokens  
 - Compatibility: Meeting app-specific requirements  
 
-##### <strong>Standard Scopes</strong>
+##### Standard Scopes
 
-##### <strong>Profile Scope</strong>
+**Profile Scope**
 
 The **profile** scope returns a set of standard user profile claims, including:
 -   name
@@ -354,30 +354,29 @@ The **profile** scope returns a set of standard user profile claims, including:
 Each claim can be mapped to a corresponding attribute in the identity store (Identity Data Management).
 ![](media/openidconnect-4.png)
 
-##### <strong>Email Scope</strong>
+**Email Scope**
 
 The **email** scope returns the user's email claim.
 - The claim value is mapped to an attribute in Identity Data Management (e.g., `mail`).  
 - Email can be marked as *verified* based on identity store configuration.  
 - Verification is not performed by CFS or Identity Data Management; it is determined by the administrator based on authoritative data sources.
 
-##### <strong>Address Scope</strong>
+**Address Scope**
 
 The address scope returns the user's address claim.
 - Mapped to a single attribute in Identity Data Management (e.g., `postalAddress`).
 
-##### <strong>Phone Scope</strong>
+**Phone Scope**
 
 The phone scope returns the user's phone number claim.
 - Mapped to an attribute in Identity Data Management (e.g., `mobile`).  
 - Phone numbers can be marked as *verified* based on identity store configuration.  
 - Verification is determined by the administrator (not enforced by CFS or Identity Data Management).
 
-##### <strong>Groups Scope</strong>
-
+**Groups Scope**
 The groups scope returns a `groups` assertion containing the user's group memberships. Group data is derived from the tenant's configured group schema.
 
-##### <strong>What Changed in CFS 3.17.8</strong>
+##### What Changed in CFS 3.17.8
 
 - **Per-application mappings:** Each OIDC application now has its own *Mappings* tab to define its claim rules.  
 - **Tenant-wide mappings removed:**  
@@ -385,12 +384,11 @@ The groups scope returns a `groups` assertion containing the user's group member
   - If an app doesn't yet have a custom mapping, the previous tenant-wide mapping is used to populate its initial configuration; once saved, it becomes specific to that app.  
 During token and user info requests, the server applies the app's saved mappings if they exist; otherwise, it falls back to the tenant's global mappings.
 
-##### <strong>Prerequisites</strong>
-
+##### Prerequisites
 - Confirm that you have admin access to manage OIDC applications in CFS.  
 - Have clarity on the application's required claims (e.g., which attributes and formats are expected).
 
-##### <strong>Steps to Configure Claim Mappings</strong>
+##### Steps to Configure Claim Mappings
 
 1. Open the OIDC application
    - In the CFS admin console, navigate to **OIDC Applications** and click **Edit** on the application you want to configure.
@@ -405,7 +403,7 @@ During token and user info requests, the server applies the app's saved mappings
    - Click Save. Both the application's attributes and its claim mappings will be saved together.
      ![Image of the Save button](media/save-scopes.png)
 
-##### <strong>Custom Claims</strong>
+##### Custom Claims
 
 CFS supports configuring custom claims. These custom claims are returned as part of the **profile** scope.  
 - If a custom claim is disabled, it is not returned in either the `id_token` or from the `/userinfo` endpoint.  
@@ -512,14 +510,14 @@ If the CFS PowerShell cmdlets are not available after installing CFS, enter the 
 
 ### General
 
-### Schema
+#### Schema
 
 Name | Description  | Since Version
 -|-|-
 **Get-CfsSchema** | Retrieves the version of the CFS configuration schema in FID. | 3.3.0.0
 **Update-CfsSchema** | Updates the CFS configuration schema in FID. | 3.3.0.0
 
-### Service
+#### Service
 
 Name | Description | Since Version
 -|-|-
@@ -527,23 +525,23 @@ Name | Description | Since Version
 **Get-CfsService** | Retrieves the connection object. | 3.3.0.0
 **Install-CfsService** | Initializes the CFS configuration in FID. | 3.3.0.0
 
-### Tools
+#### Tools
 
 Name | Description | Since Version
 -|-|-
 **Get-CfsVersion** | Retrieves the version of the CFS PowerShell Commandlets. | 3.3.0.0
 **New-Certificate** | Generates a new X509Certificate2. | 3.3.0.0
 
-## System
+### System
 
-### Global Login Page
+#### Global Login Page
 
 Name | Description | Since Version
 -|-|-
 **Get-CfsGlobalLoginPage** | Retrieves the Global Login Page parameters. | 3.6.0.0
 **Set-CfsGlobalLoginPage** | Updates the Global Login Page parameters. | 3.6.0.0
 
-### Bypass Redirection
+#### Bypass Redirection
 
 Name | Description | Since Version
 -|-|-
@@ -552,7 +550,7 @@ Name | Description | Since Version
 **Enable-CfsBypassRedirection** | Enables the bypass redirection. | 3.9.0.0
 **Disable-CfsBypassRedirection** | Disables the bypass redirection. | 3.9.0.0
 
-### Packages
+#### Packages
 
 Name | Description | Since Version
 -|-|-
@@ -565,7 +563,7 @@ Name | Description | Since Version
 **Remove-CfsPackage** | Removes a Package. | 3.7.0.0
 **Update-CfsPackages** | Updates the package from the Web Gallery. | 3.7.0.0
 
-### Servers
+#### Servers
 
 Name | Description  | Since Version
 -|-|-
@@ -574,7 +572,7 @@ Name | Description  | Since Version
 **New-CfsServer** | Creates a new Proxy Server. | 3.3.0.0
 **Remove-CfsServer** | Removes a server from the system. | 3.3.0.0
 
-### SMTP
+#### SMTP
 
 Name | Description | Since Version
 -|-|-
@@ -584,7 +582,7 @@ Name | Description | Since Version
 **Send-TestEmail** | Sends a Test Email. | 3.3.0.0
 **Set-CfsSmtp** | Updates the SMTP parameters. | 3.3.0.0
 
-### Tenants
+#### Tenants
 
 Name | Description | Since Version
 -|-|-
@@ -595,7 +593,7 @@ Name | Description | Since Version
 **Remove-CfsTenant** | Removes a Tenant. | 3.3.0.0
 **Set-CfsTenant** | Updates a Tenant. | 3.3.0.0
 
-### Themes
+#### Themes
 
 Name | Description | Since Version
 -|-|-
@@ -603,7 +601,7 @@ Name | Description | Since Version
 **Remove-CfsTheme** | Removes a Theme. | 3.3.0.0
 **Update-CfsTheme** | Updates the Themes from the Web Gallery. | 3.3.0.0
 
-### Web Gallery
+#### Web Gallery
 
 Name | Description | Since Version
 -|-|-
@@ -612,7 +610,7 @@ Name | Description | Since Version
 **Get-CfsWebGalleryAddress** | Retrieves the Web Gallery URL. | 3.3.0.0
 **Set-CfsWebGalleryAddress** | Updates the Web Gallery URL. | 3.3.0.0
 
-### Web Proxy
+#### Web Proxy
 
 Name | Description | Since Version
 -|-|-
@@ -621,7 +619,7 @@ Name | Description | Since Version
 **Get-CfsWebProxy** | Retrieves the Web Proxy parameters. | 3.3.0.0
 **Set-CfsWebProxy** | Updates the Web Proxy parameters. | 3.3.0.0
 
-### Tenant
+#### Tenant
 
 Use command `Set-CfsCurrentTenant` (Available since CFS 3.4) in order to set the Tenant to use for the current session.
 Name | Description | Since Version
@@ -629,7 +627,7 @@ Name | Description | Since Version
 **Get-CfsCurrentTenant** | Get the Tenant used for the current PowerShell session. | 3.6.0.0
 **Set-CfsCurrentTenant** | Set the Tenant to use for the current PowerShell session. | 3.4.0.0
 
-### Application
+#### Application
 
 Name | Description | Since Version
 -|-|-
@@ -646,7 +644,7 @@ Name | Description | Since Version
 **Set-CfsAppParameter** | Updates the Parameter of an Application. | 3.6.0.0
 **Update-CfsApplication** | Updates an Application from a template. | 3.6.0.0
 
-### Applications and SmartLinks
+#### Applications and SmartLinks
 
 Name | Description | Since Version
 -|-|-
@@ -664,14 +662,14 @@ Name | Description | Since Version
 **Set-CfsLdapFilter** | Updates the LDAP Filter of an Application or SmartLink. | 3.6.0.0
 **Set-CfsLevelOfAssurance** | Updates the Level Of Assurance of an Application or SmartLink. | 3.6.0.0
 
-### Tenant Certificate
+#### Tenant Certificate
 
 Name | Description | Since Version
 -|-|-
 **Get-CfsCertificate** | Retrieves an X509Certificate2 used by a tenant. | 3.3.0.0
 **Get-CfsExpiringCertificates**  | Retrieves certificates that are expiring in 30 days in a tenant. | 3.17.8
 
-### Tenant and Application Certificates 
+#### Tenant and Application Certificates
 
 The `Set-CfsCertificate` commandlet is used to update signing and encryption certificates for tenants and applications. It accepts certificates of type `X509Certificate2`.
 | Command | Scope | Description |
@@ -680,7 +678,7 @@ The `Set-CfsCertificate` commandlet is used to update signing and encryption cer
 | `Set-CfsCertificate -Application "1234-5678-9012" -Certificate $certificate` | Application (signing) | Updates the signing certificate for a specific application. |
 | `Set-CfsCertificate -Application "1234-5678-9012" -EncryptionCertificate $certificate` | Application (encryption) | Updates the encryption certificate for a specific application. |
 
-### Expiring Certificates
+#### Expiring Certificates
 
 The `Get-CfsExpiringCertificates` commandlet is used to retrieve certificates that are nearing expiration across tenants, applications, and identity providers. It is supported in version 3.17.8 and higher. 
 It supports both scoped (per-tenant) and global queries, along with optional filters for expiration time and error handling.
@@ -700,7 +698,7 @@ It supports both scoped (per-tenant) and global queries, along with optional fil
 | `Get-CfsExpiringCertificates -All -Days "60"` | Filtered global | Retrieves certificates expiring within the specified number of days (e.g., 60 days). |
 | `Get-CfsExpiringCertificates -All -ContinueOnError` | Resilient global | Retrieves all expiring certificates while skipping any that cause errors. |
 
-### Tenant and Application Certificate Rollovers
+#### Tenant and Application Certificate Rollovers
 
 Name | Description | Since Version
 -|-|-
@@ -709,7 +707,7 @@ Name | Description | Since Version
 **Start-CfsCertificateRotation** | Manually rotates tenant or application certificates. `-Force` parameter exists but is ignored. | 3.17.5
 **Start-CfsCertificateEmergencyMigration** | Emergency migration for expiring certificates. Options for new or existing certificate. `-Force` parameter exists but is ignored. | 3.17.5
 
-### Challenge Questions
+#### Challenge Questions
 
 Name | Description | Since Version
 -|-|-
@@ -717,7 +715,7 @@ Name | Description | Since Version
 **Get-CfsChallengeQuestion** | Retrieves the Challenge Questions for the tenant. | 3.3.0.0
 **Remove-CfsChallengeQuestion** | Removes a Challenge Question for the tenant. | 3.3.0.0
 
-### Emails
+#### Emails
 
 Name | Description | Since Version
 -|-|-
@@ -726,9 +724,9 @@ Name | Description | Since Version
 **Set-CfsEmail** | Updates an Email configuration. | 3.3.0.0
 **Set-CfsEmailTemplateBase** | Updates the Email Template Base for the tenant. | 3.3.0.0
 
-### Identity Providers
+#### Identity Providers
 
-#### Certificate
+##### Certificate
 
 Name | Description | Since Version
 -|-|-
@@ -736,7 +734,7 @@ Name | Description | Since Version
 **Enable-IdpCertificate** | Enables Certificate Authentication for the tenant. | 3.6.0.0
 **Get-IdpCertificate** | Retrieves the Certificate Authentication configuration for the tenant. | 3.6.0.0 | **Set-IdpCertificate** | Updates the Certificate Authentication configuration for the tenant. | 3.6.0.0
 
-#### Form-Based
+##### Form-Based
 
 Name | Description | Since Version
 -|-|-
@@ -745,7 +743,7 @@ Name | Description | Since Version
 **Get-IdpFba** | Retrieves the Login / Password Authentication configuration for the tenant. | 3.6.0.0
 **Set-IdpFba** | Updates the Login / Password Authentication configuration for the tenant. | 3.6.0.0
 
-#### RSA SecurID
+##### RSA SecurID
 
 Name | Description | Since Version
 -|-|-
@@ -754,7 +752,7 @@ Name | Description | Since Version
 **Get-IdpRsa** | Retrieves the RSA SecurID Authentication configuration for the tenant. | 3.6.0.0
 **Set-IdpRsa** | Updates the RSA SecurID Authentication configuration for the tenant. | 3.6.0.0
 
-#### Yubico
+##### Yubico
 
 Name | Description | Since Version
 -|-|-
@@ -763,7 +761,7 @@ Name | Description | Since Version
 **Get-IdpYubico** | Retrieves the Yubico Authentication configuration for the tenant. | 3.8.0.0
 **Set-IdpYubico** | Updates the Yubico Authentication configuration for the tenant. | 3.8.0.0
 
-#### RTC
+##### RTC
 
 Name | Description | Since Version
 -|-|-
@@ -773,7 +771,7 @@ Name | Description | Since Version
 **New-IdpRtc** | Create a new RTC. | 3.6.0.0
 **Remove-IdpRtc** | Removes a RTC. | 3.6.0.0
 
-#### Trusted
+##### Trusted
 
 Name | Description | Since Version
 -|-|-
@@ -783,21 +781,21 @@ Name | Description | Since Version
 **New-IdpTrusted** | Create a new Trusted Identity Provider. | 3.6.0.0
 **Remove-IdpTrusted** | Removes a Trusted Identity Provider. | 3.6.0.0
 
-#### Two-Step
+##### Two-Step
 
 Name | Description | Since Version
 -|-|-
 **Get-IdpTwoStep** | Retrieves the Two-Step Verification configuration for the tenant. | 3.6.0.0
 **Set-IdpTwoStep** | Updates the Two-Step Verification configuration for the tenant. | 3.6.0.0
 
-### Identity Store
+#### Identity Store
 
 Name | Description | Since Version
 -|-|-
 **Get-CfsIdentityStore** | Retrieves the ObjectClass and Attribute configuration for the tenant. | 3.3.0.0
 **Set-CfsIdentityStore** | Updates the ObjectClass and Attribute configuration for the tenant. | 3.3.0.0
 
-### Mappings
+#### Mappings
 
 Name | Description | Since Version
 -|-|-
@@ -808,7 +806,7 @@ Name | Description | Since Version
 **Set-CfsMapping** | Updates an application Mapping. | 3.6.0.0
 **Set-CfsNameIdentifier** | Updates an application Naming Identifier definition. | 3.6.0.0
 
-### Messaging Service
+#### Messaging Service
 
 Name | Description | Since Version
 -|-|-
@@ -817,7 +815,7 @@ Name | Description | Since Version
 **Get-CfsMessagingService** | Retrieves the Messaging Service configuration. | 3.3.0.0
 **Set-CfsMessagingService** | Updates the Messaging Service configuration. | 3.3.0.0
 
-### OpenID Connect
+#### OpenID Connect
 
 Name | Description | Since Version
 -|-|-
@@ -828,14 +826,14 @@ Name | Description | Since Version
 **Redo-CfsOpenIDConnect** | Generates new keys for the OpenID Connect Application. | 3.3.0.0
 **Set-CfsOpenIDConnect** | Updates the OpenID Connect Application. | 3.3.0.0
 
-### Settings
+#### Settings
 
 Name | Description | Since Version
 -|-|-
 **Get-CfsSettings** | Retrieves the tenant settings. | 3.3.0.0
 **Set-CfsSettings** | Updates the tenant settings. | 3.3.0.0
 
-### Smart Links
+#### Smart Links
 
 Name | Description | Since Version
 -|-|-
@@ -846,7 +844,7 @@ Name | Description | Since Version
 **Remove-CfsSmartLink** | Removes a Smart Link. | 3.3.0.0
 **Set-CfsSmartLink** | pdates a Smart Link | 3.3.0.0
 
-### Social Networks
+#### Social Networks
 
 Name | Description | Since Version
 -|-|-
