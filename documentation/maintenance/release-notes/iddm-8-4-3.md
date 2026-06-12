@@ -5,7 +5,7 @@ description: RadiantOne IDDM v8.4.3 Release Notes
 
 # RadiantOne Identity Data Management v8.4.3 Release Notes
 
-June 11, 2026
+June 12, 2026
 
 These release notes contain important information about vulnerability fixes and bug fixes for RadiantOne Identity Data Management v8.4.3.
 
@@ -35,6 +35,7 @@ These release notes contain the following sections:
 ## Bug Fixes
 
 - [API-4542, SQ-1586]: Fixed an issue where the FileManager upload modal did not support uploading .jar files.
+- [API-4620]: Fixed an issue where DEBUG log entries from legacy custom data sources were being written to vds_server.log by disabling per-data-source logging for legacy plugins.
 
 ## Known Issues
 
