@@ -259,7 +259,6 @@ This command sets a property for a connector configuration. Run the list-connect
 
 **Usage**
 <br>`set-connector-property -connectorname <connectorname> -propertyid <propertyid>`
-
 `- propertyvalue <propertyvalue>`
 
 **Command Arguments:**
@@ -275,13 +274,19 @@ This command sets a property for a connector configuration. Run the list-connect
 `- propertyvalue <propertyvalue>`
 <br>[required] The connector property value.
 
->[!note] For Windows command line, some property values require double quotes surrounding them. In this case, you can use the \ to protect the “. E.g. C:\radiantone\vds\bin>vdsconfig.bat set-connector-property -connectorname o_sead_pcache_proxy__dc_seradiant_dc_dom__seradiantad -propertyid "excludedAttributes" -propertyvalue [\"member\",\"memberOf\",\"whenCreated\"]. <br> If the property value contains a `<space>`, protect the entire value with double quotes. E.g. C:\radiantone\vds\bin>vdsconfig.bat set-connector-property -connectorname o_sead_pcache_proxy__dc_seradiant_dc_dom__seradiantad -propertyid includedBranches -propertyvalue “[ \"cn=users,dc=seradiant,dc=dom\",\"cn=domain groups,dc=seradiant,dc=dom\ "]”
+>[!note] For Windows command line, some property values require double quotes surrounding them. In this case, use `\"` to escape inner quotes. When setting multi-valued properties such as `addEventExcludedAttributes`, `modifyEventExcludedAttributes`, or `deleteEventExcludedAttributes` (available for real-time persistent cache using an LDAP connector), wrap the entire list in double quotes and escape each attribute name's quotes with `\"`. The correct format for `-propertyvalue` is `"[\"member\",\"memberof\",\"whenCreated\"]"` — **not** `["member","memberOf","whenCreated"]`.
+<br><br>**Windows example:**
+<br>`vdsconfig.bat set-connector-property -pipelineid "connector_name" -propertyid "addEventExcludedAttributes" -propertyvalue "[\"member\",\"memberof\",\"whenCreated\"]"`
+<br><br>**Linux example:**
+<br>`./vdsconfig.sh set-connector-property -pipelineid "connector_name" -propertyid "addEventExcludedAttributes" -propertyvalue "[\"member\",\"memberof\",\"whenCreated\"]"`
+<br><br>If the property value contains a `<space>`, protect the entire value with double quotes. E.g. `C:\radiantone\vds\bin>vdsconfig.bat set-connector-property -connectorname o_sead_pcache_proxy__dc_seradiant_dc_dom__seradiantad -propertyid includedBranches -propertyvalue "[ \"cn=users,dc=seradiant,dc=dom\",\"cn=domain groups,dc=seradiant,dc=dom\" ]"`
 
 **REST (ADAP) Example**
 
 In the following example, a request is made to set a property for a connector's configuration.
 
 `https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=set-connector-property&connectorname=o_derby_pcache_primary__so_o_derby__northwind_app_employees&propertyid=maxRetriesOnError&propertyvalue=10`
+
 
 ## file-set-connector-properties
 
