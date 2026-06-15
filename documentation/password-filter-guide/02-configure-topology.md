@@ -47,7 +47,7 @@ Object Name identifies the synchronization object which is the DN in the Radiant
 
 ### Listener Mode
 
-The Listener Mode property controls which cluster nodes listen for password change events on port 8889. The default, SINGLE_LISTENER, runs the listener on the leader node only — if that node goes down, password sync is unavailable. Use PER_NODE_LISTENER to bind port 8889 on every node, eliminating this single point of failure. This is recommended for multi-node deployments.
+The Listener Mode property controls which cluster nodes listen for password change events on port 8889. By default, SINGLE_LISTENER, runs the listener on the leader node only. If that node goes down, password sync is unavailable. Use PER_NODE_LISTENER to bind port 8889 on every node, eliminating this single point of failure. This is recommended for multi-node deployments.
 
   ![Listener Mode dropdown showing SINGLE_LISTENER and PER_NODE_LISTENER options](Media/listener-mode.png)
 
