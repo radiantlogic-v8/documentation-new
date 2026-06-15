@@ -38,7 +38,7 @@ These release notes contain the following sections:
 - [IV4-131,SQ-496]: Made an improvement so that attributes in the sync pipeline logs are now masked based on the Attribute Handlings setting in Control Panel > Settings > Server Frontend. 
 - [IV4-136,SQ-492]: Added support for application/json content type for all SCIM endpoints.
 - [IV4-151,SQ-540]: Made an improvement so the title rows in the Main Control Panel are visible all of the time.
-- [IV4-162]: Added support to show the bind context for all LDAP operation requests and responses in the vds_server_access.log when enableAccessLoggingWithWhoDidThat is set to true in ZooKeeper (at /radiantone/<version>/<clusterName>/config/vds_server.conf) 
+- [IV4-162]: Added support to show the bind context for all LDAP operation requests and responses in the vds_server_access.log when enableAccessLoggingWithWhoDidThat is set to true in ZooKeeper (at `/radiantone/<version>/<clusterName>/config/vds_server.conf`) 
 - [IV4-178]: Added support for OpenJDK 8u462.
 - [IV4-200]: Improved attribute masking functionality in the vds_server logs for queries on the cn=queue naming context.
 - [IV4-221, SQ-621]: Made an improvement so that the pipeline default alerts are now generated with a UUID alert ID to prevent alert IDs with too many characters.
@@ -115,6 +115,7 @@ usingPrevalidationFipsJar: true
 - [IV4-283]: Fixed an issue where the SCIM page incorrectly triggers unsaved changes confirmation without modifications.
 - [IV4-289]: Fixed permissions issue for schema manager where certain delegated admin roles weren't being authorized properly.
 - [IV4-296, SQ-767]: Fix for the mgraph custom object to use select query when performing one level and subtree searches to ensure all required attribute are retrieved from Entra ID.
+- [IV4-304, SQ-837]: Fixed an issue where after patching, the SSL Protocol List is incorrectly updated to TLSv1.3 Enabled and TLSv1.2 is Disabled.
 
 
 ## Known Issues/Important Notes
