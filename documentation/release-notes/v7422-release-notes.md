@@ -116,9 +116,9 @@ For specific hardware requirements of each, read the [system requirements](../sy
 * \[IV4-541, SQ-1355]: Fixed an issue where group membership synchronization for large AD groups (over 1,500 members) became inconsistent when the DirSync connector was pinned to a failover domain controller, causing mixed membership lists and login failures. The solution enforces sticky server affinity so the initial and all subsequent range-based member pages are retrieved from the same DC, eliminating mixed-DC snapshots while maintaining existing failover behavior.
 * \[IV4-551, SQ-1385]: Fixed an issue that caused add value(s) and delete value(s) of members on Entra ID groups to fail when the value(s) were greater than one.
 * \[IV4-552, SQ-1381]: Fixed an issue so that log failure notification is now attempted via implicit TLS, then STARTTLS, then plain SMTP, regardless of the port number that is configured (i.e. whether to use implicit TLS vs STARTTLS vs plain SMTP will not be deduced from the port number). Global timeouts are now configured for all SMTP/SMTPS connections to prevent hangs during protocol mismatch or network stalls.
-Timeout for creating SMTP/SMTPS socket connections = 5 seconds
-Timeout for reading SMTP/SMTPS responses = 10 seconds
-Timeout for writing SMTP/SMTPS payload bytes = 5 seconds
+  * Timeout for creating SMTP/SMTPS socket connections = 5 seconds
+  * Timeout for reading SMTP/SMTPS responses = 10 seconds
+  * Timeout for writing SMTP/SMTPS payload bytes = 5 seconds
 * \[IV4-555]: Fixed an issue where LDAP filters combining child attributes from different namespaces (e.g. (\&(data--color=yellow)(l--city=Novato))) silently returned zero results. Each namespace is now joined independently, and AND/OR groups that mix namespaces, nest, or use NOT on sub-document attributes now return the correct matches.
 * \[IV4-558, SQ-1444]: Fixed an issue so that password/secret values are now masked in the web\_access.log for the password reset, OIDC provider, and keystore password requests.
 * \[IV4-566, SQ-1458]: Fixed an issue where the JSON attribute values were incorrectly formatted for paged searches.
