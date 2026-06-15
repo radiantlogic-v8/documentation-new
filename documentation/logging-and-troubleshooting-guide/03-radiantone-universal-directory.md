@@ -78,7 +78,7 @@ Select a log level from the drop-down list in the Log Settings section. For deta
 
 The Temporary Level setting lets you turn on more detailed logging for a specified time. For example, you can switch from WARN to DEBUG while troubleshooting an issue, then set it to automatically switch back after a set period. This helps you capture the information you need without leaving detailed logging on for longer than needed, which can slow performance and increase log size. You can find this setting in Main Control Panel > Logs > Log Settings.
 
-![Temporary Log Level UI](debug-temp.png)
+![Temporary Log Level UI](Media/debug-temp.png)
 
 1. Select the component to configure from the **Log Settings to configure** dropdown (e.g., FID – Server).
 2. Use the Log level dropdown to select the temporary log level (e.g., DEBUG or INFO).
