@@ -401,6 +401,16 @@ The Control Panel session timeout indicates how long until the current control p
 
 The Control Panel max concurrent user value indicates how many control panel sessions are allowed concurrently. This field accepts integer values of 0 and higher. The default value is 0, for an unlimited number of sessions. If attempting to connect to the Control Panel while the number of concurrent sessions is reached, the Login page displays the following message: “Authentication Failed. Reason: Maximum sessions exceeded”. 
 
+### Absolute Session Timeout (min)
+
+The absolute session timeout specifies the maximum duration of a Control Panel session, regardless of user activity. Unlike the standard session timeout (which resets on activity), this setting enforces a hard limit — once the specified number of minutes has elapsed since login, the user is automatically logged out and must re-authenticate. The default value is 0 (disabled). When set to a value greater than 0, the absolute timeout is enforced.
+
+### Absolute Timeout Warning (min)
+
+The absolute timeout warning value (in minutes) specifies how long before the absolute session timeout the user should be alerted. When this threshold is reached, a warning banner is displayed in the Control Panel header, notifying the user that their session will expire soon. The default value is 0 (disabled). This setting has no effect if the Absolute Session Timeout is disabled (set to 0).
+
+For example, if the Absolute Session Timeout is set to 120 minutes and the Absolute Timeout Warning is set to 10 minutes, a warning banner appears in the header after 110 minutes of session time, giving the user 10 minutes to save their work before being logged out.
+
 ### Reset Node Status
 
 The Reset button resets the nodes’ status. When an LDAP or ZooKeeper error occurs in the monitoring, it is reflected on the cluster dashboard. Past errors persist in the collectors for 12 hours and appear on the dashboard as a yellow warning icon with a message. The Reset button is to immediately clear the cache of the collectors and those messages so they no longer display on the Dashboard tab.
@@ -611,7 +621,7 @@ The graphs in the Network Latency section display the network latency between no
  
 ## Settings Tab
 
-To change the server name and manage server certificates, go to the Server Control Panel > Settings tab.
+To change the server name, manage server certificates, and view logs, go to the Server Control Panel > Settings tab.
 
 ### Server Name
 
@@ -897,6 +907,33 @@ Restart Jetty after making changes to the SSL configuration.
 
 >[!warning]
 >The certificate key password is expected to be the same as the keystore password.
+
+### Logs
+
+Use the Server Control Panel to collect logs from all nodes in a RadiantOne cluster into a single zip archive, with optional time filtering.
+
+Ensure that the RadiantOne service and Control Panels are running on all nodes. 
+
+#### Download Cluster Logs
+
+1. Log into the Main Control Panel and navigate to Dashboard.
+2. Launch Server Control Panel by clicking ![server control panel](Media/server-control-panel.jpg) in the Overview section of the Main Control Panel’s Dashboard tab.
+3. Go to the Logs Viewer tab and click **Download Cluster Logs**.
+ 
+   ![Cluster Log Download Jobs table](Media/cluster-log-jobs-table.png)
+
+4. Click **New Job** in the modal.
+5. Optionally set a **Start/End** time range to filter by time range. Leave blank to include all logs and rollovers.
+
+   ![Start New Cluster Log Download Job modal](Media/cluster-log-new-job-modal.png)
+
+6. Choose your download mode:
+   - **Download Immediately** checked — downloads the zip directly to your browser immediately.
+   - **Download Immediately** unchecked — queues a background job. When complete, select it in the jobs table and click **Download**.  Archives are saved to `<RLI_HOME>/work/cluster-logs`.
+
+   ![Completed cluster log zip download](Media/cluster-log-download-complete.png)
+
+7. Click Start to download the logs based on your configuration. 
 
 ## Tasks Tab
 
