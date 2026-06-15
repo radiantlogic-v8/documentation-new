@@ -286,7 +286,8 @@ This command sets a property for a connector configuration. Run the list-connect
 `- propertyvalue <propertyvalue>`
 <br>[required] The connector property value.
 
->[!note] For Windows command line, some property values require double quotes surrounding them. In this case, use `\"` to escape inner quotes. When setting multi-valued properties such as `addEventExcludedAttributes`, `modifyEventExcludedAttributes`, or `deleteEventExcludedAttributes` (available for real-time persistent cache using an LDAP connector), wrap the entire list in double quotes and escape each attribute name's quotes with `\"`. The correct format for `-propertyvalue` is `"[\"member\",\"memberof\",\"whenCreated\"]"` — **not** `["member","memberOf","whenCreated"]`.
+For Windows command line, some property values require double quotes surrounding them. In this case, use `\"` to escape inner quotes. When setting multi-valued properties such as `addEventExcludedAttributes`, `modifyEventExcludedAttributes`, or `deleteEventExcludedAttributes` (available for real-time persistent cache using an LDAP connector), wrap the entire list in double quotes and escape each attribute name's quotes with `\"`. The correct format for `-propertyvalue` is `"[\"member\",\"memberof\",\"whenCreated\"]"`.
+
 <br><br>**Windows example:**
 <br>`vdsconfig.bat set-connector-property -pipelineid "connector_name" -propertyid "addEventExcludedAttributes" -propertyvalue "[\"member\",\"memberof\",\"whenCreated\"]"`
 <br><br>**Linux example:**
