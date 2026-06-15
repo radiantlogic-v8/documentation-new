@@ -37,7 +37,9 @@ This command empties the queue of a specified real-time persistent cache refresh
 
 In the following example, a request is made to empty a cache’s queue.
 
-`https://fid:8090/adap/util?action=vdsconfig&commandname=empty-queues&pipelineid=o_db_pcache_primary__so_o_db__northwind_app_employees`
+```
+https://<rli_server_name>::8090/adap/util?action=vdsconfig&commandname=empty-queues&pipelineid=o_db_pcache_primary__so_o_db__northwind_app_employees
+```
 
 ## reset-cursor
 
@@ -55,7 +57,9 @@ This command resets the cursor for a specified persistent cache refresh.
 
 In the following example, a request is made to reset the cursor of a persistent cache.
 
-`https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=reset-cursor&connectorname=o_derby_pcache_primary__so_o_derby__northwind_app_employees`
+```
+https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=reset-cursor&connectorname=o_derby_pcache_primary__so_o_derby__northwind_app_employees
+```
 
 ## list-agents
 
@@ -192,7 +196,9 @@ configure-connector-type [-connectorname <connectorname>]
 
 In the following example, a request is made to change a connector’s type.
 
-`https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=configure-connector-type&connectorname=o_derby_pcache_primary__so_o_derby__northwind_app_employees&connectortype=db_timestamp`
+```
+https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=configure-connector-type&connectorname=o_derby_pcache_primary__so_o_derby__northwind_app_employees&connectortype=db_timestamp
+```
 
 ## list-connectors
 
@@ -210,7 +216,9 @@ This command lists the connector names for a specified real-time cache refresh.
 
 In the following example, a request is made to list connector names a persistent cache for cn=Accouting,ou=Virtual Groups,ou=AllProfiles.
 
-`https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=list-connectors&namingcontextdn=cn=Accouting,ou=Virtual Groups,ou=AllProfiles`
+```
+https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=list-connectors&namingcontextdn=cn=Accouting,ou=Virtual Groups,ou=AllProfiles
+```
 
 ## list-connector-properties
 
@@ -228,7 +236,9 @@ This command lists properties and their values for a connector.
 
 In the following example, a request is made to list connector configuration properties.
 
-`https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=list-connector-properties&connectorname=o_derby_pcache_primary__so_o_derby__northwind_app_employees`
+```
+https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=list-connector-properties&connectorname=o_derby_pcache_primary__so_o_derby__northwind_app_employees
+```
 
 ## get-connector-property
 
@@ -251,7 +261,9 @@ This command gets a property for a connector configuration.
 
 In the following example, a request is made to display the value for a connector’s Max Retries On Error property.
 
-`https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=get-connector-property&connectorname=o_derby_pcache_primary__so_o_derby__northwind_app_employees&propertyid=maxRetriesOnError`
+```
+https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=get-connector-property&connectorname=o_derby_pcache_primary__so_o_derby__northwind_app_employees&propertyid=maxRetriesOnError
+```
 
 ## set-connector-property
 
@@ -284,8 +296,9 @@ This command sets a property for a connector configuration. Run the list-connect
 **REST (ADAP) Example**
 
 In the following example, a request is made to set a property for a connector's configuration.
-
-`https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=set-connector-property&connectorname=o_derby_pcache_primary__so_o_derby__northwind_app_employees&propertyid=maxRetriesOnError&propertyvalue=10`
+```
+https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=set-connector-property&connectorname=o_derby_pcache_primary__so_o_derby__northwind_app_employees&propertyid=maxRetriesOnError&propertyvalue=10
+```
 
 
 ## file-set-connector-properties
@@ -312,7 +325,9 @@ This command sets multiple connector configuration properties with a text file.
 
 In the following example, a request is made to set connector configuration properties using a text file named ConnectorConfig.txt.
 
-`https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=file-set-connector-properties&commandname=file-set-connector-properties&connectorname=o_derby_pcache_primary__so_o_derby__northwind_app_employees&propertyfilename=c:/radiantone/ConnectorConfig.txt`
+```
+https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=file-set-connector-properties&commandname=file-set-connector-properties&connectorname=o_derby_pcache_primary__so_o_derby__northwind_app_employees&propertyfilename=c:/radiantone/ConnectorConfig.txt
+```
 
 ## execute-db-changelog-scripts
 
@@ -336,7 +351,9 @@ This command executes DB changelog configure or deconfigure scripts for a DB con
 
 In the following example, a request is made to execute deconfigure logs for a DB connector.
 
-`https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=execute-db-changelog-scripts&namingcontextdn=ou=hr,o=examples&connectorname=ou_hr_o_examples_pcache_primary__so_ou_hr_o_examples__examples_app_hr&deconfigure`
+```
+https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=execute-db-changelog-scripts&namingcontextdn=ou=hr,o=examples&connectorname=ou_hr_o_examples_pcache_primary__so_ou_hr_o_examples__examples_app_hr&deconfigure
+```
 
 ## change-pipeline-state
 
