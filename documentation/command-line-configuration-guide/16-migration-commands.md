@@ -135,7 +135,9 @@ In the following example, a request is made to export the resource so_hr_o_examp
 
 In the following example, a request is made to import the resource so_hr_o_examples.dvx and its dependencies.
 
-`https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=resource-import&path=c:/radiantone/vds/vds_server/contextcatalog_dvx.zip&apply=&skipregex=ds:^derby.*`
+```
+https://<rli_server_name>:8090/adap/util?action=vdsconfig&commandname=resource-import&path=c:/radiantone/vds/vds_server/contextcatalog_dvx.zip&apply=&skipregex=ds:^derby.*
+```
 
 ### Exporting and Importing a Single Topology Resource – Command Line Example
 
