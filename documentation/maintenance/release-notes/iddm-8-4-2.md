@@ -45,6 +45,7 @@ These release notes contain the following sections:
 - [API-4419]: Fixed an issue in Password Policies where “Dictionary Matching Mode” was overwritten when creating a new policy. The new policy form is now populated with the correct “Dictionary Matching Mode” value during creation.
 - [API-4476]: Fixed an issue that caused interception scripts to fail to load.
 - [API-4523]: Fixed an issue where saving active director connector properties was throwing an error.
+- [API-4525]: Fixed an error that occurred when saving global intercept settings with special operations enabled.
 
 ## Known Issues
 
