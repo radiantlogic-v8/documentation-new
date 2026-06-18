@@ -307,3 +307,15 @@ May 29, 2026
 **Improvements**
 
 - [CFS-197] CFS now sends AMR attributes in SAML assertions following MFA or smart card authentication, enabling Salesforce and other service providers to recognize strong authentication and minimize device activation prompts.
+
+### v3.17.11
+
+June 18, 2026 
+
+**Improvements**
+
+- [CFS-203] Added a configurable LOA (level of assurance) Highlight setting at the tenant and application level. When enabled (default), an informational banner appears on the login page for the users when a federated application (SAML 2 or WS-Federation) requires a higher level of assurance than the current session. This setting can be managed via the UI or the new Get-CfsLoaHighlight / Set-CfsLoaHighlight PowerShell commandlets. Disabling the setting hides the banner only and leaves the level of assurance unaffected.
+
+**Bug Fixes**
+
+- [CFS-201] Fixed an issue where the Add-CfsMapping commandlet did not accept transformation values by adding a new assembly that was previously missing. 
