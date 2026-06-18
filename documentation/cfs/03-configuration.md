@@ -695,12 +695,15 @@ Name | Description | Since Version
 **Get-CfsGroupSet** | Retrieves the GroupSet of an Application or SmartLink. | 3.6.0.0
 **Get-CfsLdapFilter** | Retrieves the LDAP Filter of an Application or SmartLink. | 3.6.0.0
 **Get-CfsLevelOfAssurance** | Retrieves the Level Of Assurance of an Application or SmartLink. | 3.6.0.0
+**Set-CfsLevelOfAssurance** | Updates the Level Of Assurance of an Application or SmartLink. | 3.6.0.0
+**Get-CfsLoaHighlight** | Retrieves whether the Level Of Assurance (LOA) Highlight setting is enabled for a federated Application (SAML2 or WS-Federation). Example: `Get-CfsLoaHighlight -Application "<ApplicationId>"` | 3.17.11
+**Set-CfsLoaHighlight** | Enables or disables the Level Of Assurance (LOA) Highlight setting for a federated Application (SAML2 or WS-Federation). Example: `Set-CfsLoaHighlight -Application "<ApplicationId>" -LoaHighlight $true` | 3.17.11
 **Remove-CfsAppGroups** | Removes a group from an Application or SmartLink. | 3.6.0.0
 **Set-CfsAppGroup** | Updates the principal Group of an Application or SmartLink. | 3.6.0.0
 **Set-CfsGroupOwner** | Updates the Group Owner of an Application or SmartLink. | 3.6.0.0
 **Set-CfsGroupSet** | Updates the GroupSet of an Application or SmartLink. | 3.6.0.0
 **Set-CfsLdapFilter** | Updates the LDAP Filter of an Application or SmartLink. | 3.6.0.0
-**Set-CfsLevelOfAssurance** | Updates the Level Of Assurance of an Application or SmartLink. | 3.6.0.0
+
 
 #### Tenant Certificate
 
@@ -866,12 +869,32 @@ Name | Description | Since Version
 **Redo-CfsOpenIDConnect** | Generates new keys for the OpenID Connect Application. | 3.3.0.0
 **Set-CfsOpenIDConnect** | Updates the OpenID Connect Application. | 3.3.0.0
 
+
 #### Settings
 
 Name | Description | Since Version
 -|-|-
-**Get-CfsSettings** | Retrieves the tenant settings. | 3.3.0.0
-**Set-CfsSettings** | Updates the tenant settings. | 3.3.0.0
+**Get-CfsSettings** | Retrieves the settings object (`TenantSettingsPSModel`) for the current tenant. Example: `Get-CfsSettings` | 3.3.0.0
+**Set-CfsSettings** | Updates the settings for the current tenant. Example: `Set-CfsSettings -Settings $settings` | 3.3.0.0
+
+As of CFS 3.17.11, the `TenantSettingsPSModel` object returned by `Get-CfsSettings` (and accepted by `Set-CfsSettings`) includes the following new property:
+
+Property | Type | Description | Default
+-|-|-|-
+`LoaHighlight` | Boolean | When `$true`, enables the LOA (Level of Assurance) Highlight feature for federated sign-in flows at the tenant level. | `$true`
+
+**Example: disable LOA Highlight for the tenant**
+
+```powershell
+$settings = Get-CfsSettings
+$settings.LoaHighlight = $false
+Set-CfsSettings -Settings $settings
+
+# Verify
+(Get-CfsSettings).LoaHighlight
+# Expected: False
+```
+
 
 #### Smart Links
 
