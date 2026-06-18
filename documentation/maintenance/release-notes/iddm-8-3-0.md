@@ -51,6 +51,7 @@ These release notes contain the following sections:
 
 ## Security Vulnerability Fixes
 
+- [API-3266]: Upgraded commons-lang3 3.18 to address CVE-2025-48924.
 - [API-3579]: Upgraded the spring boot version from 3.5.5 to 3.5.6 to address CVE-2025-41249 and CVE-2025-41248.
 - [API-3931]: Upgraded to qs@6.14.1 to address CVE-2025-15284.
 
