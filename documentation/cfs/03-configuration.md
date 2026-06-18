@@ -97,16 +97,56 @@ SAML2 applications let you control how responses and assertions are signed, and 
     ![Unsigned response option](media/unsignedsetting.png "unsigned response option")
 11. Return to the SAML configuration page and ensure neither option requires a signature.
 
-### Configure Token Validity in SAML Applications
+### Configure Token Validity and LOA in SAML Applications
 
-CFS allows administrators to define how long tokens generated for a specific application remain valid. To define the validity period, follow these steps: 
-1. Navigate to Applications -> Configured.
-2. Select the SAML application you want to configure and click Edit.
-3. Open the General tab and locate Token validity (minutes) setting.
-    
-    ![General settings UI](media/token-validity.png "General settings UI")
-4. Enter the desired token lifetime in minutes according to your security policy.
-5. Click Save to apply the changes.
+The **General** tab of a SAML2 application includes settings that control token lifetime, authentication strength requirements, and the display of Level of Assurance banner. CFS administrators can configure these by following the steps below:
+
+1. Navigate to **Applications → Configured**.
+2. Select the SAML application you want to configure and click **Edit**.
+3. Open the **General** tab.
+
+   ![General settings UI](media/token-validity.png "General settings UI")
+
+* **Token validity (minutes)** defines how long tokens generated for this application remain valid. Set this value according to your security policy.
+
+* **Level of Assurance** sets the minimum authentication strength required to access the application. When a user's current session does not meet this level, CFS enforces a step-up — prompting the user to re-authenticate at the required strength before access is granted. This value is passed as part of the identity token to the service provider.
+
+* **LOA Highlight** (introduced in CFS 3.17.11) - when enabled (default), displays an informational banner on the login page for users when the application's assurance requirement exceeds their current session level, prompting them to use a stronger method such as a smart card or certificate. Disabling LOA Highlight setting hides the informational banner only. CFS continues to enforce all level-of-assurance requirements, including step-up authentication, logout, RTC filtering, and related logging.
+
+The banner users see when LOA Highlight is active:
+
+![LOA Highlight login banner](loa-highlight-login-banner-wide.png)
+
+4. Enter the desired value in **Token validity (minutes)**.
+5. Set **Level of Assurance (LOA)** to the desired authentication strength for this application.
+6. Set **LOA Highlight** to **Enabled** (default) to show the banner when the LOA requirement is not met, or **Disabled** to suppress it.
+7. Click **Save** to apply the changes.
+   
+   **LOA Highlight enabled:**
+
+    ![Application-level LOA Highlight toggle enabled](loa-highlight-app-enabled.png)
+
+    **LOA Highlight disabled:**
+
+    ![Application-level LOA Highlight toggle disabled](loa-highlight-app-disabled.png)
+
+The LOA banner appears only when **both** the application-level and tenant-level LOA Highlight toggles are enabled. To configure the tenant-level toggle, navigate to **Settings > General Settings > Others**, locate the **LOA Highlight** toggle, and set it to **Enabled** or **Disabled**.
+
+**LOA Highlight enabled (tenant level):**
+
+![Tenant-level LOA Highlight toggle enabled](loa-highlight-tenant-enabled.png)
+
+**LOA Highlight disabled (tenant level):**
+
+![Tenant-level LOA Highlight toggle disabled](loa-highlight-tenant-disabled.png)
+
+The table below describes the scope of the LOA highlight setting. 
+
+| Scope | Default | Applies to |
+|---|---|---|
+| Tenant | Enabled | All federated sign-in flows for the tenant |
+| Application | Enabled | SAML 2 and WS-Federation applications only |
+
 
 ### Configuring Group Access Using an LDAP Filter
 
