@@ -126,10 +126,6 @@ Example banner users see when LOA Highlight is active:
 
     ![Application-level LOA Highlight toggle enabled](media/loa-highlight-app-enabled.png)
 
-    **LOA Highlight disabled:**
-
-    ![Application-level LOA Highlight toggle disabled](media/loa-highlight-app-disabled.png)
-
     The LOA banner appears only when **both** the application-level and tenant-level LOA Highlight toggles are enabled. To configure the tenant-level toggle, navigate to **Settings > General Settings > Others**, locate the **LOA Highlight** toggle, and set it to **Enabled** or **Disabled**.
     
     **LOA Highlight enabled (tenant level):**
