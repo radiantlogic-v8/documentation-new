@@ -120,28 +120,22 @@ Example banner users see when LOA Highlight is active:
 4. Enter the desired value in **Token validity (minutes)**.
 5. Set **Level of Assurance (LOA)** to the desired authentication strength for this application.
 6. Set **LOA Highlight** to **Enabled** (default) to show the banner when the LOA requirement is not met, or **Disabled** to suppress it.
+
+      ![Application-level LOA Highlight toggle enabled](media/loa-highlight-app-enabled.png)
+
 7. Click **Save** to apply the changes.
-   
-   **LOA Highlight enabled:**
 
-    ![Application-level LOA Highlight toggle enabled](media/loa-highlight-app-enabled.png)
+The LOA banner appears only when **both** the application-level and tenant-level LOA Highlight toggles are enabled. To configure the tenant-level setting, navigate to **Settings > General Settings > Others**, locate the **LOA Highlight** toggle, and set it to **Enabled** or **Disabled**.
 
-    The LOA banner appears only when **both** the application-level and tenant-level LOA Highlight toggles are enabled. To configure the tenant-level toggle, navigate to **Settings > General Settings > Others**, locate the **LOA Highlight** toggle, and set it to **Enabled** or **Disabled**.
+![Tenant-level LOA Highlight toggle enabled](media/loa-highlight-tenant-enabled.png)
     
-    **LOA Highlight enabled (tenant level):**
-    
-    ![Tenant-level LOA Highlight toggle enabled](media/loa-highlight-tenant-enabled.png)
-    
-    **LOA Highlight disabled (tenant level):**
-    
-    ![Tenant-level LOA Highlight toggle disabled](media/loa-highlight-tenant-disabled.png)
-    
-    The table below describes the scope of the LOA highlight setting. 
-    
-    | Scope | Default | Applies to |
-    |---|---|---|
-    | Tenant | Enabled | All federated sign-in flows for the tenant |
-    | Application | Enabled | SAML 2 and WS-Federation applications only |
+
+The table below describes the scope of the LOA highlight setting. 
+
+| Scope | Default | Applies to |
+|---|---|---|
+| Tenant | Enabled | All federated sign-in flows for the tenant |
+| Application | Enabled | SAML 2 and WS-Federation applications only |
 
 
 ### Configuring Group Access Using an LDAP Filter
