@@ -105,7 +105,7 @@ The **General** tab of a SAML2 application includes settings that control token 
 2. Select the SAML application you want to configure and click **Edit**.
 3. Open the **General** tab.
 
-   ![General settings UI](media/token-validity.png "General settings UI")
+ ![Application-level general settings](media/loa-highlight-app-enabled.png)
 
 * **Token validity (minutes)** defines how long tokens generated for this application remain valid. Set this value according to your security policy.
 
@@ -120,9 +120,6 @@ Example banner users see when LOA Highlight is active:
 4. Enter the desired value in **Token validity (minutes)**.
 5. Set **Level of Assurance (LOA)** to the desired authentication strength for this application.
 6. Set **LOA Highlight** to **Enabled** (default) to show the banner when the LOA requirement is not met, or **Disabled** to suppress it.
-
-      ![Application-level LOA Highlight toggle enabled](media/loa-highlight-app-enabled.png)
-
 7. Click **Save** to apply the changes.
 
 The LOA banner appears only when **both** the application-level and tenant-level LOA Highlight toggles are enabled. To configure the tenant-level setting, navigate to **Settings > General Settings > Others**, locate the **LOA Highlight** toggle, and set it to **Enabled** or **Disabled**.
@@ -686,8 +683,8 @@ Name | Description | Since Version
 **Get-CfsLdapFilter** | Retrieves the LDAP Filter of an Application or SmartLink. | 3.6.0.0
 **Get-CfsLevelOfAssurance** | Retrieves the Level Of Assurance of an Application or SmartLink. | 3.6.0.0
 **Set-CfsLevelOfAssurance** | Updates the Level Of Assurance of an Application or SmartLink. | 3.6.0.0
-**Get-CfsLoaHighlight** | Retrieves whether the Level Of Assurance (LOA) Highlight setting is enabled for a federated Application (SAML2 or WS-Federation). Example: `Get-CfsLoaHighlight -Application "<ApplicationId>"` | 3.17.11
-**Set-CfsLoaHighlight** | Enables or disables the Level Of Assurance (LOA) Highlight setting for a federated Application (SAML2 or WS-Federation). Example: `Set-CfsLoaHighlight -Application "<ApplicationId>" -LoaHighlight $true` | 3.17.11
+**Get-CfsLoaHighlight** | Retrieves whether the Level Of Assurance (LOA) Highlight setting is enabled for a federated Application (SAML2 or WS-Federation). | 3.17.11
+**Set-CfsLoaHighlight** | Enables or disables the Level Of Assurance (LOA) Highlight setting for a federated Application (SAML2 or WS-Federation). | 3.17.11
 **Remove-CfsAppGroups** | Removes a group from an Application or SmartLink. | 3.6.0.0
 **Set-CfsAppGroup** | Updates the principal Group of an Application or SmartLink. | 3.6.0.0
 **Set-CfsGroupOwner** | Updates the Group Owner of an Application or SmartLink. | 3.6.0.0
