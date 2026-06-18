@@ -101,7 +101,7 @@ SAML2 applications let you control how responses and assertions are signed, and 
 
 The **General** tab of a SAML2 application includes settings that control token lifetime, authentication strength requirements, and the display of Level of Assurance banner. CFS administrators can configure these by following the steps below:
 
-1. Navigate to **Applications → Configured**.
+1. Navigate to **Applications > Configured**.
 2. Select the SAML application you want to configure and click **Edit**.
 3. Open the **General** tab.
 
@@ -113,9 +113,9 @@ The **General** tab of a SAML2 application includes settings that control token 
 
 * **LOA Highlight** (introduced in CFS 3.17.11) - when enabled (default), displays an informational banner on the login page for users when the application's assurance requirement exceeds their current session level, prompting them to use a stronger method such as a smart card or certificate. Disabling LOA Highlight setting hides the informational banner only. CFS continues to enforce all level-of-assurance requirements, including step-up authentication, logout, RTC filtering, and related logging.
 
-The banner users see when LOA Highlight is active:
+Example banner users see when LOA Highlight is active:
 
-![LOA Highlight login banner](loa-highlight-login-banner-wide.png)
+![LOA Highlight login banner](media/loa-highlight-login-banner-wide.png)
 
 4. Enter the desired value in **Token validity (minutes)**.
 5. Set **Level of Assurance (LOA)** to the desired authentication strength for this application.
@@ -124,28 +124,28 @@ The banner users see when LOA Highlight is active:
    
    **LOA Highlight enabled:**
 
-    ![Application-level LOA Highlight toggle enabled](loa-highlight-app-enabled.png)
+    ![Application-level LOA Highlight toggle enabled](media/loa-highlight-app-enabled.png)
 
     **LOA Highlight disabled:**
 
-    ![Application-level LOA Highlight toggle disabled](loa-highlight-app-disabled.png)
+    ![Application-level LOA Highlight toggle disabled](media/loa-highlight-app-disabled.png)
 
-The LOA banner appears only when **both** the application-level and tenant-level LOA Highlight toggles are enabled. To configure the tenant-level toggle, navigate to **Settings > General Settings > Others**, locate the **LOA Highlight** toggle, and set it to **Enabled** or **Disabled**.
-
-**LOA Highlight enabled (tenant level):**
-
-![Tenant-level LOA Highlight toggle enabled](loa-highlight-tenant-enabled.png)
-
-**LOA Highlight disabled (tenant level):**
-
-![Tenant-level LOA Highlight toggle disabled](loa-highlight-tenant-disabled.png)
-
-The table below describes the scope of the LOA highlight setting. 
-
-| Scope | Default | Applies to |
-|---|---|---|
-| Tenant | Enabled | All federated sign-in flows for the tenant |
-| Application | Enabled | SAML 2 and WS-Federation applications only |
+    The LOA banner appears only when **both** the application-level and tenant-level LOA Highlight toggles are enabled. To configure the tenant-level toggle, navigate to **Settings > General Settings > Others**, locate the **LOA Highlight** toggle, and set it to **Enabled** or **Disabled**.
+    
+    **LOA Highlight enabled (tenant level):**
+    
+    ![Tenant-level LOA Highlight toggle enabled](media/loa-highlight-tenant-enabled.png)
+    
+    **LOA Highlight disabled (tenant level):**
+    
+    ![Tenant-level LOA Highlight toggle disabled](media/loa-highlight-tenant-disabled.png)
+    
+    The table below describes the scope of the LOA highlight setting. 
+    
+    | Scope | Default | Applies to |
+    |---|---|---|
+    | Tenant | Enabled | All federated sign-in flows for the tenant |
+    | Application | Enabled | SAML 2 and WS-Federation applications only |
 
 
 ### Configuring Group Access Using an LDAP Filter
