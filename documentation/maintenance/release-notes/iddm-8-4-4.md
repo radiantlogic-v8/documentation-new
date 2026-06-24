@@ -26,6 +26,7 @@ These release notes contain the following sections:
 - [API-4632]: Fix to address: CVE-2026-47825, CVE-2026-47838, CVE-2026-41008, CVE-2026-41706, CVE-2026-41001, CVE-2026-40992, CVE-2026-41715, CVE-2026-49356, CVE-2026-12143, CVE-2026-53550, CVE-2026-47825.
 
 
+
 ## Bug Fixes
 
 - [API-4624, SQ-1637]: Fixed the issue with the incorrect filter behavior when the attribute value contains special symbols.
