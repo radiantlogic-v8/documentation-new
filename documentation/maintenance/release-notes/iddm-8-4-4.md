@@ -30,7 +30,7 @@ These release notes contain the following sections:
 ## Bug Fixes
 
 - [API-4624, SQ-1637]: Fixed the issue with the incorrect filter behavior when the attribute value contains special symbols.
-- [API-4654, SQ-1652]: Fixed a bug where a virtual tree naming context could sometimes display an incorrect data source name if the view/dvx's data source had been directly modified in Context Builder.
+- [API-4654, SQ-1652]: Fixed an issue where a virtual tree naming context could sometimes display an incorrect data source name if the view/dvx's data source had been directly modified in Context Builder.
 
 ## Known Issues
 
