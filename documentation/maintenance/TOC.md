@@ -4,7 +4,7 @@ description: Learn how to apply patches, scales nodes (in/out), and manage envir
 ---
 
 - [Release Notes](release-notes/release-notes.md)
-- [Security Vulnerability Report](release-notes/vulnerability-report.md)
+- [Security Vulnerability Report](vulnerability-report.md)
 - [Applying Patches](applying-patches.md)
 - [Scaling Nodes](scaling-nodes.md)
 - [Restarting Environments](managing-environments.md#restarting-environments)
