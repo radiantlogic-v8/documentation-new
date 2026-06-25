@@ -22,6 +22,23 @@ In the scenario covered in this document:
 
 > [!note] While this document focuses on syncing passwords between two Active Directories, you can also use this filter to sync passwords between AD and any other LDAP directory target.
 
+## Deployment Architecture
+
+The Password Filter deployment consists of **two runtime components** installation:
+
+**1. Domain Controller (DC) relay component** installed on each source AD domain controller. This component includes the following services:
+
+- `ChangePasswordFilter_x64.dll` is loaded by LSASS. This intercepts password changes and writes them to a local queue under `%SystemRoot%\System32\RadiantOne_PWDCHANGES`.
+- `RadiantOnePasswordFilterDcRelay` Windows service reads queued password-change files and forwards them over HTTPS to the Identity Data Management forwarder.
+
+**2. Identity Data Management (IDDM) forwarder component** installed on a separate host reachable from all DC relays:
+
+- `RadiantOnePasswordFilterIddmForwarder` Windows service (or Linux package) receives relay requests, validates inbound API headers, and forwards the password change to Identity Data Management.
+
+![Deployment architecture diagram](Media/deployment-architecture.png)
+
+You will need to install the **Identity Data Management forwarder** first on its host, then install the **DC relay** on each source domain controller. The DC relay installer requires the forwarder's URL, so the forwarder must be running and reachable before the relay is configured. Details about installation are covered in a later section in this document.
+
 ## Prerequisites
 
 Before configuring the Password Filter, an administrator should have the following data sources already in place in RadiantOne:
@@ -29,46 +46,59 @@ Before configuring the Password Filter, an administrator should have the followi
 ### Environment requirements
 
 1. [SDC Client](../../eoc/latest/secure-data-connector/configure-sdc-service/) v1.2.2 or higher.
-2. Windows x64
-3. .NET Framework 4.7.2 or higher
-4. Ensure that you have access to the Password Filter Service (MSI package) from RadiantOne.
-5. There is no option in the MSI installer's UI to configure an HTTP(S) proxy for Identity Data Management. If you need Identity Data Management's outbound requests to go through a proxy server, you must set it up manually after the installation is complete. To do so, edit the `appsettings.json` configuration file under installed location of Password Filter Service and add or modify the `Iddm:Proxy` section as shown below:
+2. Windows x64 (for each AD domain controller running the DC relay)
+3. .NET Framework 4.7.2 or higher (on the domain controller and forwarder host)
+4. Two MSI packages from RadiantOne:
+   - `RadiantOnePasswordFilterIddmForwarder-<version>.msi` — for the forwarder host
+   - `RadiantOnePasswordFilterDcRelay-<version>.msi` — for each source domain controller
+5. A dedicated host (Windows or Linux) reachable from all source domain controllers over HTTPS, for the Identity Data Management forwarder
+6. A TLS server certificate (PFX) for the Identity Data Management forwarder's HTTPS listener
+7. (Optional) Add or modify proxy settings if your environment requires a proxy. Proxy settings apply to the Identity Data Management forwarder host. Edit `appsettings.json` on the forwarder host after installation and add or modify the `Iddm:Proxy` section:
 
 ```json
 {
   "Iddm": {
     "Proxy": {
-      "Address": "http://proxy.example.com:8080",
-      "Username": "...",
-      "Password": "..."
+      "Url": "http://proxy.example.com:8080",
+      "UserName": "...",
+      "Password": "...",
+      "UseDefaultCredentials": false,
+      "BypassOnLocal": false
     }
   }
 }
 ```
 
-### SSL Certificate
+If `Url` is empty or omitted, no explicit proxy is configured.
 
-1. **Add your server's SSL certificate** to the Identity Data Management Certificate Truststore. This allows Radiant One Identity Data Management to establish a trusted LDAPS connection to your AD.
+### Network and permission requirements
 
-> [!note] If your AD server's SSL certificate is issued by a well-known public Certificate Authority (CA) that is already included in RadiantOne Identity Data Management's default truststore, you can skip this step as the certificate will be trusted automatically. Import is only required for self-signed certificates or certificates issued by a private/internal CA.
+Each component has distinct network and file system requirements. The table below summarizes what needs to be in place on each host for the Password Filter to work.
 
-### Data Sources
+| Component | Network | File System |
+|-----------|---------|-------------|
+| **DC relay** *(runs on each source domain controller)* | Outbound HTTPS to the IDDM forwarder base URL on the port configured in `Inbound:Https:Url` (e.g. 8443). No inbound connections required. Domain controllers do **not** need direct access to RadiantOne IDDM — the forwarder handles that leg. | **Read/Write/Delete** access on "%SystemRoot%\System32\RadiantOne_PWDCHANGES". This is the queue folder where `ChangePasswordFilter_x64.dll` writes password-change files and the relay service reads and removes them after a successful forward. **Read** access on `<install folder>\appsettings.json` (the relay's runtime configuration including forwarder URL, API key, ID, log settings). **Write** access on the log file (default: `C:\Program Files\Radiant Logic\RadiantOne Password Filter\RLI_passwordfilter_service.log`). |
+| **Identity Data Management forwarder** *(runs on a separate host reachable from all DCs)* | Inbound HTTPS from DC relays on the configured listen port (e.g. 8443) — ensure firewall rules allow each domain controller to reach this host on that port. Outbound HTTPS to RadiantOne IDDM on port 443. | **Read** on `<install folder>\appsettings.json` — the forwarder's runtime configuration (IDDM endpoint, JWT token, inbound API key, TLS settings). **Read** access on the TLS server certificate PFX presented to DC relays on every inbound connection. **Read** on the JWT token file and client CA PEM file, if you store the token as a file (`Iddm:TokenPath`) or enable mTLS (`Inbound:ClientCertificateTrustPemPath`). **Write** on the log file (default: `C:\Program Files\Radiant Logic\RadiantOne Password Filter Iddm Forwarder\RLI_passwordfilter_service.log`). |
 
-1. Configure a data source in RadiantOne that connects to your source Active Directory using Secure Data Connector with SSL enabled.
+Allow outbound HTTPS from each domain controller to the IDDM forwarder host through firewalls and load balancers.
+
+The default service account for both Windows MSIs is Local System. If using a dedicated service account, grant **Log on as a service** and NTFS rights on the paths listed above.
+
+### SSL Certificate requirements
+
+1. **Add your server's SSL certificate** to the Identity Data Management Certificate Truststore. This allows RadiantOne Identity Data Management to establish a trusted LDAPS connection to your AD.
+
+> [!note] If your AD server's SSL certificate is issued by a well-known public Certificate Authority (CA) that is already included in IDDM's default truststore, you can skip this step as the certificate will be trusted automatically. Import is only required for self-signed certificates or certificates issued by a private/internal CA.
+
+### Data Source requirements
+
+1. Create a [data source](https://docs.radiantlogic.com) that points to your source Active Directory in RadiantOne using SSL.
 
    **Example:**
 
-   ![SDC data source](Media/sdc-info.png)
-
    ![Data source connection settings](Media/01-data-source-connection.png)
 
-   | Field | Value |
-   |-------|-------|
-   | HOST | ec2-54-201-18-118.us-west-2.compute.amazonaws.com |
-   | PORT | 636 |
-   | SSL | YES |
-
-3. Create an LDAP proxy to connect to your source Active Directory (for example, `o=src`).
+2. Create an LDAP proxy to connect to your source Active Directory (for example, `o=src`).
 
    **General Settings Example:**
 
@@ -83,7 +113,7 @@ Before configuring the Password Filter, an administrator should have the followi
    | HOST | 35.91.133.128 |
    | PORT | 636 |
 
-4. Repeat steps 1 and 2 for the destination source. Create a data source that connects to your destination Active Directory Server using an SSL connection. Then, create an LDAP proxy pointing to Active Directory Server 2 (for example, **o=dst**).
+3. Repeat steps 1 and 2 for the destination source. Create a data source that connects to your destination Active Directory Server using an SSL connection. Then, create an LDAP proxy pointing to Active Directory Server 2 (for example, **o=dst**).
 
 ## Initial Sync Pipeline Configuration
 
@@ -110,35 +140,73 @@ Before configuring the Password Filter, an administrator should have the followi
    - **Token** (with COPY button)
    - **Target Endpoint** (with COPY button)
 
-## Install the Password Filter Service on Active Directory
+5. Close the tab. Under **Password Filter Configuration > Name**, select the password filter that you just created and click **Save**.
 
-Perform these steps on your AD server 1:
+   ![Password Filter Configuration save screen](Media/password-filter-save.png)
 
-1. Launch the installer by running the MSI package.
-2. On the Welcome screen, click **Next** to proceed.
-3. Choose the install folder (or confirm the default) and click **Next**.
-4. On the Service configuration screen, fill in the settings the service will use at runtime:
-5. **Target Endpoint**: the RadiantOne endpoint URL the filter will send events to (written as `Iddm:TargetEndpoint` in `appsettings.json`).
-6. **Token**: the authentication token used to authorize requests.
-7. **ID**: the instance or client identifier that tags requests from this machine (`Iddm:Id`).
-8. **Log Level**: the verbosity of the Serilog output, e.g. Information, Debug, or Error (`Serilog:MinimumLevel`).
-9. **Log file path**: the full path to the rolling log file written by the Serilog file sink (`path`).
-10. Review the summary, click **Install**, then **Finish** when the copy completes. If prompted, reboot the machine so LSASS can load the newly installed password filter DLL.
+## Install the Password Filter Components
 
-These values map to the following keys in the generated `appsettings.json` configuration file:
+### Install the Identity Data Management Forwarder
 
-| Dialog Field | appsettings.json Key |
-|--------------|----------------------|
-| Target Endpoint | Iddm:TargetEndpoint |
-| Token | Iddm:Token |
-| ID | Iddm:Id |
-| Log Level | Serilog:MinimumLevel |
-| Log file path | Serilog file sink path |
+Install the forwarder **first**, before installing the DC relay on domain controllers. To start the installation, run `RadiantOnePasswordFilterIddmForwarder-<version>.msi` on the forwarder host and proceed through the installer:
 
-1. Return to the RadiantOne admin console.
-2. Close the **New Password Filter Registration Completed** dialog if open.
-3. In the Password Filter list, select the newly registered filter.
-4. Click **Save** to persist the changes.
+1. On the Welcome screen, click **Next**.
+2. Choose or confirm the install directory, then click **Next**.
+3. On the **Identity Data Management forwarder configuration** screen, fill in the following fields:
+
+   ![IDDM forwarder configuration screen](Media/iddm-forwarder-installer.png)
+
+   | Field | Value |
+   |-------|-------|
+   | Identity Data Management Target Endpoint | The Target Endpoint that you previously copied from RadiantOne registration. |
+   | Identity Data Management Token | JWT Token that you previously copied from RadiantOne registration. |
+   | Inbound API key (X-Api-Key) | Inbound API key defined by you or your admin. This must match every DC relay. |
+   | Allowed API version (major) | Major API version relays send (default: 1). |
+   | Require client cert mTLS (1=yes, 0=no) | Enter 1 to enable mTLS for DC relay clients (optional). |
+   | Client CA PEM path (optional) | Path to client CA PEM file when mTLS is enabled. |
+   | HTTPS listen URL | URL this forwarder listens on (e.g. `https://host.domain.com:8443`). |
+   | TLS certificate PFX path | Path to the TLS server certificate PFX file. |
+   | PFX password | Password for the PFX file. |
+
+4. Click **Next**. On the **Logging** screen, set the following values:
+
+   | Field | Value |
+   |-------|-------|
+   | Log Level | Information for normal use; Debug for troubleshooting |
+   | Log file path | Default: `C:\Program Files\Radiant Logic\RadiantOne Password Filter Iddm Forwarder\RLI_passwordfilter_service.log` |
+
+5. Click **Next**, then **Install**, then **Finish**.
+
+   **Verify that you see the following:**
+   - Under Windows service: `RadiantOne Password Filter (Iddm forwarder)`
+   - Under Program or Apps & Features: `RadiantOne Password Filter (IDDM forwarder)`
+
+### Install the DC Relay on Each Domain Controller
+
+After the Identity Data Management forwarder is running and reachable, install `RadiantOnePasswordFilterDcRelay-<version>.msi` on each source AD domain controller:
+
+1. On the Welcome screen, click **Next**.
+2. Choose or confirm the install directory, then click **Next**.
+3. On the **Relay and Logging Configuration** screen, fill in the following fields:
+
+   ![DC relay configuration screen](Media/dc-relay-installer.png)
+
+   | Field | Value |
+   |-------|-------|
+   | Identity Data Management forwarder base URL | The forwarder's HTTPS listen URL (e.g. `https://host.domain.com:8443`) |
+   | API key (X-Api-Key) | Same shared secret set as Inbound API key on the Identity Data Management forwarder |
+   | ID | ID copied previously from RadiantOne registration. |
+   | mTLS enabled (1=yes, 0=no) | Enter 1 to use a client certificate for mutual TLS to the forwarder (optional) |
+   | Client cert thumbprint (optional) | Windows certificate store thumbprint of the client certificate when mTLS is enabled |
+   | Log Level | Set "Information" for normal use or "Debug" for troubleshooting. |
+   | Log file path | Default: `C:\Program Files\Radiant Logic\RadiantOne Password Filter\RLI_passwordfilter_service.log` |
+
+4. Click **Next**, then **Install**, then **Finish**.
+5. **Restart the domain controller** if prompted so that LSASS can load `ChangePasswordFilter_x64.dll`.
+
+   **Verify that you see the following:**
+   - Under Windows service: `RadiantOne Password Filter (Dc relay)`
+   - Under Program or Apps & Features: `RadiantOne Password Filter (DC relay)`
 
 ## Pipeline Transformation Configuration
 
@@ -239,18 +307,28 @@ These values map to the following keys in the generated `appsettings.json` confi
 
 Once installed and configured:
 
-1. A user on Active Directory 1 changes their password (via Ctrl+Alt+Del, a password reset tool, etc.).
-2. The `ChangePasswordFilter_x64` DLL on the domain controller captures the password change and passes it to the RadiantOne Password Filter Windows service (`RadiantOnePasswordFilter`).
-3. The service forwards the password to RadiantOne Identity Data Management via the configured Target Endpoint, authenticated with the provided Token and ID.
-4. RadiantOne processes the password update through the sync pipeline using the `update_rule` rule set (described above).
-5. The pipeline writes the new `unicodePwd` value to Active Directory 2.
-6. The user can now authenticate using the new password against both the source context (`o=src`) and the destination context (`o=dst`).
+1. A user on the source Active Directory changes their password.
+2. `ChangePasswordFilter_x64.dll` (loaded by LSASS on the domain controller) writes a password-change entry to a queue file under `%SystemRoot%\System32\RadiantOne_PWDCHANGES`.
+3. `RadiantOnePasswordFilterDcRelay` reads the queue file and sends an HTTPS `POST /api/password-changes` request to the Identity Data Management forwarder, including the `X-Api-Key` header, `X-RadiantOne-Api-Version`, and the registration identifier (ID) in the request body.
+4. `RadiantOnePasswordFilterIddmForwarder` validates the `X-Api-Key` and forwards the password change to RadiantOne Identity Data Management using the JWT Token and Target Endpoint.
+5. RadiantOne processes the password update through the sync pipeline using the `password_update_rule` rule set.
+6. The pipeline writes the new password to the destination directory (AD 2).
+7. The user can authenticate with the new password against both the source context (`o=src`) and the destination context (`o=dst`).
+
+### Retry and error behavior
+
+- Queue files are deleted from the DC **only after** the Identity Data Management forwarder returns a 2xx response.
+- The forwarder returns 2xx only when Identity Data Management returns 2xx.
+- If the forwarder returns non-2xx, the DC relay **keeps** the queue file and retries on the next cycle.
+- `401` — missing or invalid `X-Api-Key`; verify that the API key on the DC relay and the Inbound API key on the forwarder match.
+- `502` — Identity Data Management or upstream failure; check forwarder logs and verify the Token, Target Endpoint, and identifier (ID) values.
 
 ## Validating That Password Sync Works
 
 Use the following steps to confirm end-to-end behavior after setup is complete.
 
-1. On Active Directory 1, choose a test user. Ensure that the account is activated.
+1. On AD Server 1, choose a test user. Ensure that the user account is activated.
+
 2. Change the test user's password to a new password in Active Directory 1 (right-click the user → **Reset Password**).
 
    ![Reset Password context menu in Active Directory](Media/13-reset-password-context-menu.jpg)
@@ -261,4 +339,4 @@ Use the following steps to confirm end-to-end behavior after setup is complete.
 
    You should see a message that indicates that the **authentication was successful**.
 
-4. Authenticate the same user in the **destination context** (`o=dst`) using the **same new password**. You should again see **authentication success**. This confirms that the password was synchronized to Active Directory 2.
+4. Authenticate the same user in the **destination context** (`o=dst`) using the **same new password**. You should again see **authentication success**. This confirms that the password was synchronized to AD 2.
