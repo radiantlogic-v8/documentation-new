@@ -48,9 +48,11 @@ Before configuring the Password Filter, an administrator should have the followi
 1. [SDC Client](../../eoc/latest/secure-data-connector/configure-sdc-service/) v1.2.2 or higher.
 2. Windows x64 (for each AD domain controller running the DC relay)
 3. .NET Framework 4.7.2 or higher (on the domain controller and forwarder host)
-4. Two MSI packages from RadiantOne:
+4. Two downloadable MSI packages from RadiantOne: 
    - `RadiantOnePasswordFilterIddmForwarder-<version>.msi` — for the forwarder host
    - `RadiantOnePasswordFilterDcRelay-<version>.msi` — for each source domain controller
+   You can download these packages from [here](https://files.radiantlogic.com/receive/?packageCode=IX0qTSRyilShjhpxusLWpUDzzb4rduq2tO9F81NhEt4#keycode=Niad1bODfyRmdW8PlGO-5In0mdRKsa0u6551qXXI1rA). 
+   Login using the email address associated with your Radiant Logic Support Portal account and navigate to Tools > AD_PWD_FILTER > RadiantOne Identity Data Management v8.1+ folder to locate these packages. If you do not yet have access, email support@radiantlogic.com.
 5. A dedicated host (Windows or Linux) reachable from all source domain controllers over HTTPS, for the Identity Data Management forwarder
 6. A TLS server certificate (PFX) for the Identity Data Management forwarder's HTTPS listener
 7. (Optional) Add or modify proxy settings if your environment requires a proxy. Proxy settings apply to the Identity Data Management forwarder host. Edit `appsettings.json` on the forwarder host after installation and add or modify the `Iddm:Proxy` section:
