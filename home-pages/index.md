@@ -196,6 +196,9 @@ Harness your identity data with intelligent integration to drive better business
   > [Release Notes](maintenance/release-notes/release-notes)  
   > Release notes contain important information about new features, improvements and bug fixes for RadiantOne Identity Data Management.
 
+ > [Security Vulnerability Report](maintenance/vulnerability-report)  
+  > Learn about security vulnerabilities that have been addressed in each patch release.
+  
   > [Applying Patches](maintenance/applying-patches)  
   > Learn how to apply patches to an environment to update the version of RadiantOne Identity Data Management and Secure Data Connectors.
   
