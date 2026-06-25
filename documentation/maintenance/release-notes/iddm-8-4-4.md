@@ -25,7 +25,7 @@ These release notes contain the following sections:
 
 - [API-4632]: Fix to address: CVE-2026-47825, CVE-2026-47838, CVE-2026-41008, CVE-2026-41706, CVE-2026-41001, CVE-2026-40992, CVE-2026-41715, CVE-2026-49356, CVE-2026-12143, CVE-2026-53550, CVE-2026-47825.
 
->[!note] Full vulnerability report details located here: [Security Vulnerability Repot](../vulnerability-report)
+>[!note] Full vulnerability report details located here: [Security Vulnerability Report](../vulnerability-report)
 
 ## Bug Fixes
 
