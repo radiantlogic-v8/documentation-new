@@ -1,6 +1,6 @@
 ---
 title: CFS
-description: CFS
+description: Configuring Microsoft AD FS as a WS-Federation identity provider in CFS
 ---
 
 Microsoft AD FS as WS-Federation

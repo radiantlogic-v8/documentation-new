@@ -1,6 +1,6 @@
 ---
 title: CFS
-description: CFS
+description: Configuring a generic SAML 2 service provider in CFS
 ---
 
 SAML2 Generic

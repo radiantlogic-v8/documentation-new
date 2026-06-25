@@ -1,6 +1,6 @@
 ---
 title: CFS
-description: CFS
+description: Configuring SSO for the DocuSign Production environment with CFS
 ---
 
 DocuSign - Production

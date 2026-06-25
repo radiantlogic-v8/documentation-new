@@ -1,6 +1,6 @@
 ---
 title: CFS
-description: CFS
+description: Configuring username and password authentication in CFS
 ---
 
 Login / Password

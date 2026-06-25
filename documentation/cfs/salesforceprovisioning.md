@@ -1,6 +1,6 @@
 ---
 title: CFS
-description: CFS
+description: Configuring user provisioning for Salesforce with CFS
 ---
 
 Salesforce with Provisioning

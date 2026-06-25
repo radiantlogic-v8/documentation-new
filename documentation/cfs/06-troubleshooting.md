@@ -1,6 +1,6 @@
 ---
 title: CFS
-description: CFS
+description: Using the CFS Log Analyzer to monitor, audit, and troubleshoot CFS
 ---
 
 # CFS Log Analyzer

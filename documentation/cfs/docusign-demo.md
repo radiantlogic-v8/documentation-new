@@ -1,6 +1,6 @@
 ---
 title: CFS
-description: CFS
+description: Configuring SSO for the DocuSign Demo environment with CFS
 ---
 
 DocuSign - Demo

@@ -1,6 +1,6 @@
 ---
 title: CFS
-description: CFS
+description: System administrator and tenant administrator roles and responsibilities in CFS
 ---
 
 # System Administrator

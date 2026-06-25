@@ -1,6 +1,6 @@
 ---
 title: CFS
-description: CFS
+description: Configuring SSO for Microsoft SharePoint 2010 with CFS
 ---
 
 Microsoft SharePoint 2010

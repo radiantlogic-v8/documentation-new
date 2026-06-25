@@ -1,6 +1,6 @@
 ---
 title: CFS
-description: CFS
+description: Configuring SSO for Amazon AWS with CFS
 ---
 
 # Amazon AWS

@@ -1,6 +1,6 @@
 ---
 title: CFS Release Notes
-description: CFS Release Notes
+description: Release history and changelog for RadiantOne Cloud Federation Service
 ---
 
 ## CFS Release Notes

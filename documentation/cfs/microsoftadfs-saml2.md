@@ -1,6 +1,6 @@
 ---
 title: CFS
-description: CFS
+description: Configuring Microsoft AD FS as a SAML 2 identity provider in CFS
 ---
 
 Microsoft AD FS as SAML 2

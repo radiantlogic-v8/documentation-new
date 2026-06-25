@@ -1,6 +1,6 @@
 ---
 title: CFS
-description: CFS
+description: Configuring trusted identity providers such as Microsoft AD FS in CFS
 ---
 
 Microsoft AD FS

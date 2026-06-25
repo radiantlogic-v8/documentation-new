@@ -1,6 +1,6 @@
 ---
 title: CFS
-description: CFS
+description: Home page and introduction to RadiantOne Cloud Federation Service
 ---
 
 Home

@@ -1,6 +1,6 @@
 ---
 title: CFS
-description: CFS
+description: Configuring SSO for Google Apps with CFS
 ---
 
 Google Apps

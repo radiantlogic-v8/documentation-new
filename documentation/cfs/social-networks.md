@@ -1,6 +1,6 @@
 ---
 title: CFS
-description: CFS
+description: Configuring social network authentication providers (Facebook, Google, GitHub, and others) in CFS
 ---
 
 Facebook

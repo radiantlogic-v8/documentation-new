@@ -1,6 +1,6 @@
 ---
 title: CFS
-description: CFS
+description: Step-by-step guide to installing and configuring CFS
 ---
 
 # Getting Started

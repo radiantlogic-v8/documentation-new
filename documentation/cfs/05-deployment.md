@@ -1,6 +1,6 @@
 ---
 title: CFS
-description: CFS
+description: Deploying CFS on Microsoft IIS, including SSL certificate configuration
 ---
 
 # Microsoft IIS

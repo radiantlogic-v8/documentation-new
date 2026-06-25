@@ -1,6 +1,6 @@
 ---
 title: CFS
-description: CFS
+description: Configuring SSO for Microsoft SharePoint 2013 with CFS
 ---
 
 Microsoft SharePoint 2013

@@ -1,6 +1,6 @@
 ---
 title: CFS
-description: CFS
+description: Configuring SSO for Dropbox for Business with CFS
 ---
 
 Dropbox for Business

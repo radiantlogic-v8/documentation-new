@@ -1,6 +1,6 @@
 ---
 title: CFS
-description: CFS
+description: Configuring SSO for Cisco WebEx with CFS
 ---
 
 Cisco WebEx

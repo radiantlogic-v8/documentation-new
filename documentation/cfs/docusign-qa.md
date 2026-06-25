@@ -1,6 +1,6 @@
 ---
 title: CFS
-description: CFS
+description: Configuring SSO for the DocuSign QA environment with CFS
 ---
 
 DocuSign - QA

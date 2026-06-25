@@ -1,6 +1,6 @@
 ---
 title: CFS
-description: CFS
+description: Configuring SSO for Workplace by Facebook with CFS
 ---
 
 Workplace by Facebook

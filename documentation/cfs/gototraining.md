@@ -1,6 +1,6 @@
 ---
 title: CFS
-description: CFS
+description: Configuring SSO for Citrix GoToTraining with CFS
 ---
 
 Citrix GoToTraining

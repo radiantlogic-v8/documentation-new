@@ -1,6 +1,6 @@
 ---
 title: CFS
-description: CFS
+description: Configuring a generic WS-Federation service provider in CFS
 ---
 
 WS-Federation Generic

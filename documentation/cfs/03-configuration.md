@@ -1,6 +1,6 @@
 ---
 title: CFS
-description: CFS
+description: Configuring identity providers and authentication systems in CFS
 ---
 
 ## Identity Providers

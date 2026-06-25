@@ -1,6 +1,6 @@
 ---
 title: CFS
-description: CFS
+description: Table of contents for the RadiantOne Cloud Federation Service documentation
 ---
 
 - [Overview](01-overview.md)

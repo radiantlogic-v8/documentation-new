@@ -1,6 +1,6 @@
 ---
 title: CFS
-description: CFS
+description: Configuring SSO for Microsoft Azure AD with CFS
 ---
 
 Microsoft Azure AD
