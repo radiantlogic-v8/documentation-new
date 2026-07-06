@@ -279,23 +279,22 @@ You should consult your Salesforce documentation for steps on how to acquire a s
 
 If you have not already created an application in Entra ID, you must do so prior to configuring RadiantOne. 
 
->**Note - The steps below provide general guidance and may not reflect the latest Microsoft Entra ID interface. For more detailed configuration steps, refer to the Microsoft Azure Active Directory documentation.**
+>**Note - The steps below provide general guidance and may not reflect the latest Microsoft Entra ID interface. For more detailed configuration steps, refer to the [Entra ID documentation](https://learn.microsoft.com/en-us/entra/identity-platform/quickstart-register-app).**
 
-1.	In the Microsoft Azure portal associated with your Entra ID, click on Manage -> App Registrations and then the New Registration button.
+1.	Sign in to the Microsoft Entra admin center as at least a Cloud Application Administrator.
 
-2.	Provide a name for the application.
+2. Browse to Entra ID > App registrations then select New registration.
 
-3.	Select the option for “Accounts in this organizational directory only” for the Supported Account Types.
+3.	Provide a name for the application.
+
+3.	Under Supported account types, select Accounts in this organizational directory only.
 
 4.	You do not need to provide a Redirect URI.
 
-5.	Click **Register**. The registered app is displayed. Take note of the Application ID.
-
-    ![An image showing ](Media/Image8.16.jpg)
-
-    Figure 8.16: Entra ID Application
+5.	Click **Register**. The registered app is displayed. Take note of the Application ID
 
 6.	Click the application to access the specific settings.
+
 7.	Navigate to Certificates & Secrets.
 
 8.	In the Client Secret Section, click **New Client Secret**.
