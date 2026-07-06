@@ -342,7 +342,7 @@ Once a new subcluster is defined, you can click on the Open link to launch the C
 
 The Synchronization tab is used to configure and managing synchronization topologies. For details on configuring synchronization, see the [RadiantOne Synchronization](/global-sync-guide/introduction).
 
-![Global Sync Tab](Media/Image3.166.jpg)
+![Synchronization Tab](Media/Image3.166.jpg)
  
 # Zookeeper Tab
 The Zookeeper tab is used for browsing and editing ZooKeeper contents. The configurations that are managed for all cluster nodes can be viewed from here. RadiantOne specific configuration is shown when expanding the RadiantOne node. ZooKeeper specific configuration is shown when expanding the zookeeper node.
@@ -1094,7 +1094,7 @@ cn=directory administrators,ou=globalgroups,cn=config
 -	Read RadiantOne configuration 
 -	Read settings for any configured instances
 -	Read naming context configurations
--	Read configured data sources and view synchronization topologies on the Global Sync Tab
+-	Read configured data sources and view synchronization topologies on the Synchronization Tab
 -	Log into the RadiantOne Insights, Reports and Administration console and access the Global Identity Viewer application
 
 These functions are dictated by the following values of the vdPrivilege attribute in the group entry: 
@@ -1119,7 +1119,7 @@ cn=readonly,ou=globalgroups,cn=config
 -	Create, update, or delete RadiantOne Directory (HDAP) stores
 -	Update RadiantOne LDAP schema
 -	Launch tasks
--	View synchronization topologies and manage synchronization components on the Global Sync Tab
+-	View synchronization topologies and manage synchronization components on the Synchronization Tab
 
 These functions are dictated by the following values of the vdPrivilege attribute in the group entry:
 
@@ -1146,7 +1146,7 @@ cn=namespaceadmin,ou=globalgroups,cn=config
 -	Restart the RadiantOne service from the Main Control Panel
 -	Stop the RadiantOne service from the Main Control Panel
 -	Launch tasks
--	View synchronization topologies and manage synchronization components on the Global Sync Tab
+-	View synchronization topologies and manage synchronization components on the Synchronization Tab
 
 These functions are dictated by the following values of the vdPrivilege attribute in the group entry:
 
@@ -1168,7 +1168,7 @@ cn=operator,ou=globalgroups,cn=config
 -	Create, update or delete schema objects (objectclasses or attributes)
 -	Extend RadiantOne LDAP schema with objects and attributes from orx files
 -	Create, update or delete data sources
--	View synchronization topologies and manage synchronization components on the Global Sync Tab
+-	View synchronization topologies and manage synchronization components on the Synchronization Tab
 
 These functions are dictated by the following values of the vdPrivilege attribute in the group entry:
 
@@ -1184,7 +1184,7 @@ cn=schemaadmin,ou=globalgroups,cn=config
 
 -	Read RadiantOne configuration 
 -	Create, update and delete access controls
--	View synchronization topologies and manage synchronization components on the Global Sync Tab
+-	View synchronization topologies and manage synchronization components on the Synchronization Tab
 
 These functions are dictated by the following values of the vdPrivilege attribute in the group entry: 
 
@@ -1199,7 +1199,7 @@ cn=aciadmin,ou=globalgroups,cn=config
 **ICS Administrator Role** – Members of this group can perform the following operations:
 
 -	Read RadiantOne configuration 
--	Stop and start pipelines on the Global Sync Tab
+-	Stop and start pipelines on the Synchronization Tab
 -	Log into the RadiantOne Insights, Reports and Administration Console and access all applications
 
 These functions are dictated by the following values of the vdPrivilege attribute in the group entry:
@@ -1218,7 +1218,7 @@ These functions are dictated by the following values of the vdPrivilege attribut
 The group entry is located in the RadiantOne namespace at:
 cn=icsadmin,ou=globalgroups,cn=config
 
-**ICS Operator Role** – This role varies from the ICS Admin role in that this role cannot perform uploads from the Global Sync tab, nor can it modify connector properties. Members of this group can perform the following operations:
+**ICS Operator Role** – This role varies from the ICS Admin role in that this role cannot perform uploads from the Synchronization tab, nor can it modify connector properties. Members of this group can perform the following operations:
 
 -	Read RadiantOne configuration 
 -	Log into the RadiantOne Insights, Reports and Administration Console and access all applications
@@ -1430,15 +1430,15 @@ The roles and corresponding required permissions are described in the table belo
 
 Role	| Required Permissions (Value of vdPrivilege)
 -|-
-**Directory Administrator** <br> Members of this group can perform all operations (all operations that the other groups defined below can perform) in addition to:<br>Change privileges for the delegated roles<br>Access the Global Sync Tab <br>Update username and password properties for data sources via LDAP modify command | admin-write <br>config-lock <br>config-read <br>config-write <br>logs-read <br>services-restart <br> services-shutdown <br>update-schema <br>instance-read <br>instance-write <br>acl-read <br>acl-write <br>naming-context-read <br>naming-context-write <br>security-write <br>data-source-read <br>data-source-write <br>data-store-read <br>data-store-write <br>ics-admin <br>tasks-admin <br>globalidviewer-read <br>globalidviewer-write
-**Read Only** <br> Members of this group can read the RadiantOne configuration, read settings for any configured instances, read naming context configurations, read configured data sources, and view synchronization topologies on the Global Sync Tab. Members can also log into the RadiantOne Insights, Reports and Administration Console and use the Global Identity Viewer to search for identities and groups. | config-read <br>instance-read <br>naming-context-read <br>data-source-read <br>globalidviewer-read
+**Directory Administrator** <br> Members of this group can perform all operations (all operations that the other groups defined below can perform) in addition to:<br>Change privileges for the delegated roles<br>Access the Synchronization Tab <br>Update username and password properties for data sources via LDAP modify command | admin-write <br>config-lock <br>config-read <br>config-write <br>logs-read <br>services-restart <br> services-shutdown <br>update-schema <br>instance-read <br>instance-write <br>acl-read <br>acl-write <br>naming-context-read <br>naming-context-write <br>security-write <br>data-source-read <br>data-source-write <br>data-store-read <br>data-store-write <br>ics-admin <br>tasks-admin <br>globalidviewer-read <br>globalidviewer-write
+**Read Only** <br> Members of this group can read the RadiantOne configuration, read settings for any configured instances, read naming context configurations, read configured data sources, and view synchronization topologies on the Synchronization Tab. Members can also log into the RadiantOne Insights, Reports and Administration Console and use the Global Identity Viewer to search for identities and groups. | config-read <br>instance-read <br>naming-context-read <br>data-source-read <br>globalidviewer-read
 **Namespace Administrator** <br> Members of this group can perform the following operations:<br> Read RadiantOne configuration<br> Access Wizards tab in Main Control Panel<br> Restart the RadiantOne service from Main Control Panel<br> Create, update, or delete naming contexts<br> Create, update, or delete backend mappings<br> Create, update, and manage persistent cache <br> Create, update, or delete data sources<br> Create, update, or delete RadiantOne Directory stores<br> Update RadiantOne LDAP schema<br> Launch tasks | config-readconfig-write <br>services-restart<br>update-schema <br>naming-context-read<br>naming-context-write <br>data-source-read <br> data-store-read <br> data-store-write <br> tasks-admin <br> ics-admin
 **Operator** <br> Members of this group can perform the following operations: <br> Read RadiantOne configuration <br> Create, update, or delete RadiantOne Directory (HDAP) Stores <br> Restart the RadiantOne service from the Main Control Panel <br> Stop the RadiantOne service from the Main Control Panel <br> Launch Tasks | config-read <br> config-write <br> services-restart <br> services-shutdown <br> data-store-read <br> data-store-write <br> tasks-admin <br> naming-context-read
 Schema Administrator <br> Members of this group can perform the following operations: <br> Read RadiantOne configuration <br> Create, update or delete schema objects (objectclasses or attributes <br> Extend RadiantOne LDAP schema with objects and attributes from orx files <br> Create, update or delete data sources | config-read <br> update-schema <br> data-source-read <br> data-source-write 
 **ACI Administrator** <br> Members of this group can perform the following operations: <br> Read RadiantOne configuration <br> Create, update and delete access controls | config-read <br> acl-read <br> acl-write <br> naming-context-read 
-**ICS Administrator** <br> Members of this group can perform the following operations: <br> Read RadiantOne configuration <br> Access Wizards tab in Main Control Panel <br> Perform all operations from the Global Sync Tab <br> Log into the RadiantOne Insights, Reports and Administration console and access all applications	| config-read <br> config-write <br> naming-context-read <br> data-source-read <br> ics-admin <br> ics-workflow-approve <br> tasks-admin <br> globalidviewer-read <br> globalidviewer-write <br> globalidviewer-designer
+**ICS Administrator** <br> Members of this group can perform the following operations: <br> Read RadiantOne configuration <br> Access Wizards tab in Main Control Panel <br> Perform all operations from the Synchronization Tab <br> Log into the RadiantOne Insights, Reports and Administration console and access all applications	| config-read <br> config-write <br> naming-context-read <br> data-source-read <br> ics-admin <br> ics-workflow-approve <br> tasks-admin <br> globalidviewer-read <br> globalidviewer-write <br> globalidviewer-designer
 **Approvers** <br> Members of this group can perform the following operations: <br> Read RadiantOne configuration <br> Access the Approvals Application in the RadiantOne Insights, Reports and Administration Console | config-read <br> ics-workflow-approve 
-**ICS Operator** <br> Members of this group can perform the following operations: <br> Read RadiantOne configuration <br> Access the Global Sync tab and read topologies <br> Log into the RadiantOne Insights, Reports, and Administration console and access all applications | config-read <br> ics-operator
+**ICS Operator** <br> Members of this group can perform the following operations: <br> Read RadiantOne configuration <br> Access the Synchronization tab and read topologies <br> Log into the RadiantOne Insights, Reports, and Administration console and access all applications | config-read <br> ics-operator
 **Global ID Viewer Design** <br> Members of this group can log into the Global Identity Viewer and perform the following operations: <br> View entries & attributes <br> Perform searches <br> Edit & delete templates <br> Create, edit and delete queries <br> Export search results <br> Modify attribute values <br> Configure and schedule reports <br> For details on the Global Identity Viewer, see the [RadiantOne Global Identity Viewer Guide](/global-identity-viewer-guide/01-introduction) | config-read <br> config-write <br> globalidviewer-designer <br> tasks-admin
 **Global ID Viewer Write** <br> Members of this group can log into the Global Identity Viewer and perform the following operations: <br> View entries & attributes <br> Perform searches <br> Export search results <br> Modify attribute values <br> For details on the Global Identity Viewer, see the [RadiantOne Global Identity Viewer Guide](/global-identity-viewer-guide/01-introduction) | config-read <br> globalidviewer-write
 
