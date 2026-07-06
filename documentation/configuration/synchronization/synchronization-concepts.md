@@ -5,7 +5,14 @@ description: Learn the concepts related to configuring synchronization.
 
 ## Overview
 
-At a basic level, the primary purpose of RadiantOne Synchronization is synchronizing objects across disparate data sources.  
+At a basic level, the primary purpose of RadiantOne's synchronization enging is synchronizing objects across disparate data sources. It is a general-purpose synchronization tool that is designed for broad data integration use cases—it excels at reliably moving and reconciling data across systems. However, it is not built with the specialized workflow, advanced approval, and policy enforcement features required for end-to-end employee lifecycle management. Those capabilities are fundamental to identity governance platforms, which inherently handle complex role assignments, provisioning workflows, and audit requirements.
+
+While it is technically possible to mimic aspects of that behavior by embedding business logic through custom Java scripting in the RadiantOne Synchronization tool, doing so introduces significant complexity. Each customization would require precise scripting, version control, and ongoing maintenance. This type of configuration becomes difficult to sustain over time and limits how effectively the Radiant Logic Support team can handle future troubleshooting or enhancement efforts.
+
+For these reasons, it is more practical to leverage our synchronization tool for its intended purpose—data movement and attribute alignment—while relying on a dedicated IAM or workflow-based platform to manage the broader lifecycle orchestration. This approach ensures maintainability, audit readiness, and alignment with enterprise governance expectations.
+
+
+**Process Overview**
 
 RadiantOne includes Event Listeners for databases and directories. An Event Listener has a change event detection mechanism that can be configured to listen for changes on a source object. Some examples are:
 
@@ -30,8 +37,6 @@ Event Listeners publish change messages to queues. A sync engine receives notifi
 A high-level architecture is shown below.
 
 ![A flow chart of high level architecture](Media/sync-arch.jpg)
-
-**Process Overview**
 
 - The line labeled 1a indicates that changes can be detected directly on the backend (with native event listeners). This is used when there is not a persistent cache defined for the source virtual view. For 1b, if the source virtual view is configured in persistent cache, changes are detected with the built-in RadiantOne trigger which publishes changes directly to the queue (no event listener needs to be configured).
 
