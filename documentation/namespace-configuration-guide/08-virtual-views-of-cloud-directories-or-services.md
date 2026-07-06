@@ -450,13 +450,13 @@ When working with Entra ID groups, the entries can be returned either with or wi
 
 If you are virtualizing Entra ID groups using the default graphapi custom data source, the default behavior of RadiantOne is to get the group members returned as DNs comprised of the user's userPrincipalName. This can be very time-consuming due to the extra processing required by RadiantOne to look-up and compute the userPrincipalName for each member. Therefore, this approach is only feasible if you have fewer than 500 relatively small groups (having fewer than a few hundred members).  An example is shown below.
 
-![An image showing ](Media/Image8.24.jpg)
+![An image showing ](Media/Image8.24.png)
 
 Figure 8.24: Group Members Returned with UserPrincipalName in the DN
 
 If you have more than 500 groups and/or large groups (many members) you can optimize the return of members by adding memberoid=true in the graphapi custom data source. With the addition of this setting, the group members are returned as DNs comprised of the user's ObjectID instead of the userPrincipalName. This approach is more efficient since there is no extra translation of the member DNs. An example is shown below.
 
-![An image showing ](Media/Image8.25.jpg)
+![An image showing ](Media/Image8.25.png)
 
 Figure 25: Group Members Returned with ObjectID in the DN
 
@@ -603,7 +603,7 @@ Once you have the appId, follow the steps below.
 
 2.	Enter the extension attribute full name using the appId value with the hyphens removed (e.g. extension_41ebd369484d4088bab5c9077f9e13a7_skypeId) with an alias for the friendly attribute name (e.g. skypeId).
 
-    ![An image showing ](Media/Image8.32.jpg)
+    ![An image showing ](Media/Image8.32.png)
 
     Figure 8.32: Example Extension Attribute
 
@@ -619,7 +619,7 @@ The default graphapi custom data source is associated with a virtual view file n
 
 >[!note] If you are using Entra ID B2C, use the graphapib2c.dvx file instead of the graphapi.dvx or mgraph.dvx files.
 
-![An image showing ](Media/Image8.33.jpg)
+![An image showing ](Media/Image8.33.png)
 
 Figure 8.33: Mgraph Virtual View
 
@@ -682,7 +682,7 @@ To configure a mapping for the surname attribute:
 
 6.	Save the virtual view.
  
-![An image showing ](Media/Image8.34.jpg) 
+![An image showing ](Media/Image8.34.png) 
 
 Figure 8.34: Mgraph Virtual View with Mapping for Surname Attribute
 
@@ -850,7 +850,7 @@ The virtual view can be aggregated and/or joined with virtual views from other i
  
 1.	From the Main Control Panel -> Directory Browser tab, navigate to the location where you’ve [mounted your virtual view](#optional-modify-the-virtual-view) (okta2.dvx). 
 
-![An image showing ](Media/Image8.43.jpg)
+![An image showing ](Media/Image8.43.png)
 
 Figure 43: Sample Run Time Virtual View from Okta Universal Directory
 
