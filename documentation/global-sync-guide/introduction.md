@@ -5,7 +5,12 @@ description: Synchronization introduction
 
 # Synchronization Introduction
 
-RadiantOne Synchronization is an advanced set of tools for synchronization and identity management. This feature allows you to synchronize objects distributed across disparate data sources (directories, databases or applications): a change in an object in one source, at the attribute level, or for the whole object can be reflected into many other connected objects. Using a publisher/subscriber approach, any object can publish events (creation, deletion or modification for the whole object, or any attributes of this object) and propagate them to subscriber objects. User-defined attribute mappings and transformations can be applied during synchronization.
+At a basic level, the primary purpose of RadiantOne's synchronization engine is synchronizing objects across disparate data sources. It is a general-purpose synchronization tool that is designed for broad data integration use cases—it excels at reliably moving and reconciling data across systems. However, it is not built with the specialized workflow, advanced approval, and policy enforcement features required for end-to-end employee lifecycle management. Those capabilities are fundamental to identity governance platforms, which inherently handle complex role assignments, provisioning workflows, and audit requirements.
+
+While it is technically possible to mimic aspects of that behavior by embedding business logic through custom Java scripting in the RadiantOne Synchronization tool, doing so introduces significant complexity. Each customization would require precise scripting, version control, and ongoing maintenance. This type of configuration becomes difficult to sustain over time and limits how effectively the Radiant Logic Support team can handle future troubleshooting or enhancement efforts.
+
+For these reasons, it is more practical to leverage our synchronization tool for its intended purpose—data movement and attribute alignment—while relying on a dedicated IAM or workflow-based platform to manage the broader lifecycle orchestration. This approach ensures maintainability, audit readiness, and alignment with enterprise governance expectations.
+
 
 >[!note] 
 >If you have a RadiantOne license that entitles you to use synchronization, you will see a Synchronization tab in the Main Control Panel. Otherwise the tab doesn't show. 
