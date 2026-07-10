@@ -25,7 +25,7 @@ These release notes contain the following sections:
 
 - [API-4674]: Fix to address: CVE-2026-54512, CVE-2026-54513, CVE-2026-54514, CVE-2026-54516, CVE-2026-54517, CVE-2026-54518, CVE-2026-13006, CVE-2026-9828, CVE-2026-55955, CVE-2026-53434, CVE-2026-53404, CVE-2026-55276, CVE-2026-55956.
 
->[!note] Full vulnerability report details located here: [Security Vulnerability Report](../vulnerability-report)
+>[!note] Detailed vulnerability reports for the vulnerabilities addressed in this release are available here: [Security Vulnerability Report](../vulnerability-report)
 
 ## Bug Fixes
 
