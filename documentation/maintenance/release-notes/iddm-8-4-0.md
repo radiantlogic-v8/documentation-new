@@ -115,7 +115,7 @@ This hotfix updates our container images and third‑party libraries to remediat
 - [API-4307]: Fixed an issue where requested attribute settings for real‑time cache connectors were being populated incorrectly.
 - [API-4310, SQ-1324]: Fixed an issue where filters beginning with an AND (&) followed by an OR (|) did not work correctly, ensuring these filter combinations now function as expected for both JSON and standard filters.
 - [API-4311]: Fixed an issue that prevented creating an organizationalUnit entry in an OpenDJ backend via the directory browser when using a proxy, due to an incorrect name attribute being passed.
-- [API-4341]: Fixed an issue in Global Sync where change detection for Entra group topologies only exposed a generic memberdelta attribute, without indicating which members were added versus removed.
+- [API-4341, SQ-1688]: Fixed an issue in Global Sync where change detection for Entra group topologies only exposed a generic memberdelta attribute, without indicating which members were added versus removed.
 - [API-4344]: Fixed an issue where editing existing ACIs did not allow users to save their changes.
 - [API-4421]: Fixed an issue where after creating an Identity Data Management application using a migration export from v7.4.21, Rule Sets for Rules-Based Transformations are not displayed in the pipeline UI, even though the underlying `.java` code is present. 
 
