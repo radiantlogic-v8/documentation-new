@@ -49,10 +49,10 @@ For specific hardware requirements of each, read the [system requirements](../sy
 
 ## Bug Fixes
 
-- [IV4-676, SQ-1637]: Fixed the issue with the incorrect filter behavior when the attribute value contains special symbols.
+- [IV4-676, SQ-1637]: Fixed an issue with the incorrect filter behavior when the attribute value contains special symbols.
 - [IV4-686, SQ-1684]: Fixed an issue where the hierarchy builder was causing it to throw a NullPointerException.
 - [IV4-687, SQ-1688]: Fixed an issue in Global Sync where change detection for Entra group topologies only exposed a generic memberdelta attribute, without indicating which members were added versus removed.
-- [IV4-711, SQ-1705]: Fixed a memory leak affecting real-time caches of the Global Identity (global profile) that are refreshed from a single directory store exposing several object types (one aggregation/join per object class). On busy systems the affected process could grow in memory over time. Memory is now released correctly; no configuration change is required.
+- [IV4-711, SQ-1705]: Fixed a memory leak affecting real-time caches that leverage HDAP triggers, related to changes that are refreshed from a single directory store exposing several object types (one aggregation/join per object class), similar to how Global Identity Builder generates the global profile view. On busy systems the affected process could grow in memory over time. Memory is now released correctly; no configuration change is required.
 - [IV4-715, SQ-1712]: Fixed an issue by adding input validation to the vdsconfig data source commands so that failover inputs are validated.
 - [IV4-721, SQ-1695]: Fixed an issue where inter-cluster replication would throw an NPE.
 - [IV4-722, SQ-1715]: Fixed an issue where the internal IDDM LDAP control (OID 9.9.999.412.1.1.422) was incorrectly forwarded to downstream LDAP proxy backends.
@@ -68,8 +68,8 @@ https://support.radiantlogic.com/hc/en-us/categories/4412501931540-Known-Issues
 
 ## Patch Installers
 
-To download the patch, click [here](https://files.radiantlogic.com/receive/?packageCode=IX0qTSRyilShjhpxusLWpUDzzb4rduq2tO9F81NhEt4#keycode=Niad1bODfyRmdW8PlGO-5In0mdRKsa0u6551qXXI1rA)
-Once logged in, navigate to: Customer Downloads/update_installers/7.4/<PatchVersion>/
+To download the patch, click: [Radiant Logic Downloads](https://files.radiantlogic.com/receive/?packageCode=IX0qTSRyilShjhpxusLWpUDzzb4rduq2tO9F81NhEt4#keycode=Niad1bODfyRmdW8PlGO-5In0mdRKsa0u6551qXXI1rA)
+Once logged in, navigate to: `Customer Downloads/update_installers/7.4/<PatchVersion>/`
 
 ## How to Report Problems and Provide Feedback
 
