@@ -656,13 +656,13 @@ To configure a Graph API Filter, follow these steps:
 5. Enter your Microsoft Graph API `$filter` expression. For example:
    - To return only users in the Engineering department: `department eq 'Engineering'`
    
-      ![Graph API Filter set to "department eq 'Engineering'" on the user content node's Advanced Settings tab](graph-api-filter-user-node-advanced-settings.png)
+      ![Graph API Filter set to "department eq 'Engineering'" on the user content node's Advanced Settings tab](Media/graph-api-filter-user-node-advanced-settings.png)
 
- 6. Some Graph API filter expressions such as those using `not`, `endsWith`, or other operators  are classified by Microsoft as [advanced queries](https://aka.ms/graph-docs/advanced-queries) and require the `ConsistencyLevel: eventual` header and `$count=true` parameter to be sent with the request. To enable advanced queries for a node, check the **Enable Microsoft Graph Advanced Queries** checkbox located directly below the Graph API Filter field. For example:
-
+ 6. Some Graph API filter expressions such as those using `not`, `endsWith`, or other operators  are classified by Microsoft as [advanced queries](https://aka.ms/graph-docs/advanced-queries).
+ To enable advanced queries for a node, check the **Enable Microsoft Graph Advanced Queries** checkbox located directly below the Graph API Filter field. For example:
 	- To return only groups whose display name does not start with "group4": `not(startswith(displayName,'group4'))`
    
-       ![Graph API Filter set to "not(startswith(displayName,'group4'))" on the group content node's Advanced Settings tab](graph-api-filter-group-node-advanced-settings.png)
+       ![Graph API Filter set to "not(startswith(displayName,'group4'))" on the group content node's Advanced Settings tab](Media/graph-api-filter-group-node-advanced-settings.png)
 
 7. Click **Save**.
 
@@ -670,12 +670,11 @@ After saving, you can confirm the filter is applied by browsing the node in the 
 
 The image below shows a user listed under Category=Users. Notice that the department attribute is Engineering, which matches the department eq 'Engineering' filter that was applied in Step 5 above. 
 
-  ![Directory Browser showing a filtered user entry whose department attribute equals Engineering](directory-browser-filtered-user-engineering.png)
+  ![Directory Browser showing a filtered user entry whose department attribute equals Engineering](Media/directory-browser-filtered-user-engineering.png)
 
 Similarly, browsing `Category=Groups` returns only groups that satisfy the `not(startswith(displayName,'group4'))` filter applied in step 6. 
 
-  ![Directory Browser showing a filtered group entry and its attributes under Category=Groups](directory-browser-filtered-group.png)
-
+  ![Directory Browser showing a filtered group entry and its attributes under Category=Groups](Media/directory-browser-filtered-group.png)
 
 #### Returning MemberOf for Users 
 
