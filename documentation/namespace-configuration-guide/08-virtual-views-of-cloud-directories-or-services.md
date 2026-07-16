@@ -662,7 +662,7 @@ To configure a Graph API Filter, follow these steps:
  To enable advanced queries for a node, check the **Enable Microsoft Graph Advanced Queries** checkbox located directly below the Graph API Filter field. For example:
 	- To return only groups whose display name does not start with "group4": `not(startswith(displayName,'group4'))`
    
-       ![Graph API Filter set to "not(startswith(displayName,'group4'))" on the group content node's Advanced Settings tab](Media/graph-api-filter-group-node-advanced-settings.png)
+       ![Graph API Filter set in Advanced Settings tab](Media/graph-api-filter-group-node-advanced-settings.png)
 
 7. Click **Save**.
 
