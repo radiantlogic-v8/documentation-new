@@ -133,6 +133,9 @@ The basis for determining what is out-of-sync is determined in one of two ways:
 
 Both stores must be accessible and defined in the base DN of the LDAP data sources when the command is executed. You need one LDAP data source per cluster. Resync-util.bat (resync-util.sh on Linux) is located at <RLI_HOME>/bin/advanced.
 
+**For modify operations:**
+- The base entry is determined by comparing the `modifyTimestamp` of each entry. The entry with the most recent modifyTimestamp is selected. This is independent of the order of data sources passed in the `-d` property.
+
 ### Usage
 
 `resync-util.bat [-d <datasource1,datasource2>] [-b <base_dn>] [-x <disconnectionTimestamp>] [-i <ignoredAttributes>] [-c <true/false>] [-a <true/false>] [-m <true/false>]`
