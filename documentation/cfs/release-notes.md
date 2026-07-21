@@ -314,8 +314,10 @@ July 21, 2026
 
 **Security Vulnerability Fixes**
 
-[CFS-199]: Fixed a vulnerability by removing dependency on Telerik UI.
-[CFS-202]: Fixed issues related to CWE-918, CWE-79, CWE-23.
-[CFS-204]: Fixed issues related to CWE-79, CWE-601, CWE-209, CWE-113, CWE-502, CWE-20.
-[CFS-205]: Replaced vulnerable and deprecated DotNetZip package with ProDotnetZip.
+* [CFS-199]: Fixed a vulnerability by removing dependency on Telerik UI.
+* [CFS-202]: Fixed issues related to CWE-918, CWE-79, CWE-23.
+* [CFS-204]: Fixed issues related to CWE-79, CWE-601, CWE-209, CWE-113, CWE-502, CWE-20.
+* [CFS-205]: Replaced vulnerable and deprecated DotNetZip package with ProDotnetZip.
+
+>[!note] Detailed vulnerability reports for the vulnerabilities addressed in this release are available here: [Security Vulnerability Report](./vulnerability-report)
 
