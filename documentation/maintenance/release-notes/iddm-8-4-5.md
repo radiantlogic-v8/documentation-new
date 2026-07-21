@@ -23,6 +23,7 @@ These release notes contain the following sections:
 
 ## Security Vulnerability Fixes
 
+- [API-4665]: Fix to address: CVE-2026-45186, CVE-2026-42767,CVE-2026-42769, CVE-2026-34183, ,CVE-2026-34180 , CVE-2026-45447, CVE-2026-7383, CVE-2026-42770, CVE-2026-42764 ,CVE-2026-42768 , CVE-2026-45445 , CVE-2026-34182 , CVE-2026-34181 ,CVE-2026-9076, CVE-2026-45446 ,CVE-2026-42766 and CVE-2026-41080.
 - [API-4674]: Fix to address: CVE-2026-54512, CVE-2026-54513, CVE-2026-54514, CVE-2026-54516, CVE-2026-54517, CVE-2026-54518, CVE-2026-13006, CVE-2026-9828, CVE-2026-55955, CVE-2026-53434, CVE-2026-53404, CVE-2026-55276, CVE-2026-55956.
 
 >[!note] Detailed vulnerability reports for the vulnerabilities addressed in this release are available here: [Security Vulnerability Report](../vulnerability-report)
