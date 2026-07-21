@@ -81,7 +81,7 @@ For specific hardware requirements of each, read the [system requirements](../sy
 * \[IV4-455, SQ-1210]: Added an option to run Global Identity Builder upload with or without forcing correlation \& recomputation for identities that are already linked.
 * \[IV4-504, SQ-1251]: The log level for “adjusted map clock” messages has been lowered to debug.
 * \[IV4-506]: The JDK has been updated to use Amazon Corretto.
-* \[IV4-516, IV4-626]: Remove deprecated TLS/SSL protocols TLSv1.1, TLSv1, SSLv2Hello.
+* \[IV4-516, IV4-626]: Removed deprecated TLS/SSL protocols TLSv1.1, TLSv1, SSLv2Hello.
 * \[IV4-523, SQ-1274]: Updated the access log CSV appender configuration to use a date/time-based naming pattern for archive files and to switch from the minimum to the “no max” file index.
 * \[IV4-536, SQ-1318]: The vdsconfig hdap store backup command now returns a non-zero exit code if any zip/unzip operation fails, and will also fail when the generated zip archive is corrupted.
 * \[IV4-549]: Added temporary log level feature, allowing logs to have their levels changed for a set period of time before reverting back to the previous level.
@@ -92,7 +92,7 @@ For specific hardware requirements of each, read the [system requirements](../sy
 * \[IV4-598]: Improved the change event capture UI in Synchronization to make the AD Password Filter mode look like a combo box.
 * \[IV4-599]: Added a new Global Identity Builder task that allows users to re-upload unresolved entries from any identity source. Added a new checkbox on the UI “Allow Re-correlation" on the identity source configuration page to enable this feature.
 * \[IV4-624]: Improved stability of AD Password Filter in "Per Node" mode.
-* \[IV4-652, SQ-1601]: Add Support for Accept Header override on all SCIM requests.
+* \[IV4-652, SQ-1601]: Added support for Accept Header override on all SCIM requests.
 
 
 
