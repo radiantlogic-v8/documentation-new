@@ -7,6 +7,14 @@ description: v7.4.23 Release Notes
 
 July 16, 2026
 
+> [!WARNING]
+> **Installers for Identity Data Management 7.4.22 and 7.4.23 have been removed.**
+>
+> If you are looking for the features introduced in either of these releases, we strongly recommend upgrading to Identity Data Management **7.4.24** instead.
+>
+> For additional information, including the reason for this change and any required actions, please refer to the [customer advisory document](./customer-advisory-document). 
+
+
 These release notes contain important information about improvements and bug fixes for RadiantOne v7.4.
 These release notes contain the following sections:
 
