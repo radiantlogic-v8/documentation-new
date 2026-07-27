@@ -1,9 +1,7 @@
-
 ---
 title: Customer Advisory Document
 description: Known Issue with Active Directory Cache Initialization and Refresh in Identity Data Management 7.4.22 & 7.4.23
 ---
-
 
 # Customer Advisory: Active Directory Cache Initialization and Refresh Issue Affecting Identity Data Management 7.4.22 & 7.4.23
 
