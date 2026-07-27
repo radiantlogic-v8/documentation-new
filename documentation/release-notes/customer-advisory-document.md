@@ -3,14 +3,15 @@ title: Customer Advisory Document
 description: Known Issue with Active Directory Cache Initialization and Refresh in Identity Data Management 7.4.22 & 7.4.23
 ---
 
-# Customer Advisory: Active Directory Cache Initialization and Refresh Issue Affecting Identity Data Management 7.4.22 & 7.4.23
+## Customer Advisory Document
+_**Active Directory Cache Initialization and Refresh Issue Affecting Identity Data Management 7.4.22 & 7.4.23**_
 
-**Published:** July 27, 2026
-**Severity:** High
-**Affected versions:** RadiantOne Identity Data Management (IDDM) 7.4.22 and 7.4.23
-**Resolved version:** RadiantOne Identity Data Management (IDDM) 7.4.24
+**Published:** July 27, 2026 <br>
+**Severity:** High <br>
+**Affected versions:** RadiantOne Identity Data Management (IDDM) 7.4.22 and 7.4.23 <br>
+**Resolved version:** RadiantOne Identity Data Management (IDDM) 7.4.24 <br>
 
-## Summary
+### Summary
 
 Radiant Logic has identified a regression in RadiantOne Identity Data Management (IDDM) versions 7.4.22 and 7.4.23 that can affect cache initialization and periodic cache refresh operations on cached LDAP proxies connected to Microsoft Active Directory.
 
@@ -19,7 +20,7 @@ Identity Data Management 7.4.24 resolves this issue and is now available through
 
 **We strongly recommend that customers running versions 7.4.22 or 7.4.23 with Active Directory caches as part of their Directory Namespace configuration upgrade to version 7.4.24 as soon as possible.**
 
-## Affected Versions
+### Affected Versions
 
 The following Identity Data Management versions are affected:
 
@@ -28,7 +29,7 @@ The following Identity Data Management versions are affected:
 
 Identity Data Management 7.4.21 and earlier versions are not affected by this regression. Similarly, Identity Data Management v8+ versions are not affected by this regression.
 
-## Affected Configurations
+### Affected Configurations
 
 A deployment is affected when all of the following conditions apply:
 
@@ -49,7 +50,7 @@ For additional information about Active Directory range retrieval, refer to the 
 
 Customers who do not use an Identity Data Management cache on an LDAP proxy connected to Active Directory are not affected. Customers whose Active Directory cache configurations do not require range retrieval are also not affected by this issue.
 
-## Symptoms
+### Symptoms
 
 An affected cache initialization or periodic refresh may exhibit one or more of the following symptoms:
 
@@ -57,7 +58,7 @@ An affected cache initialization or periodic refresh may exhibit one or more of 
 - The cache initialization stops progressing and does not complete. Task logs remain stuck after the message that states "Exporting LDIF..."
 - The cache operation completes successfully, but the cache contains only a subset of the total entries from the source Active Directory dataset.
 
-## Customer Impact
+### Customer Impact
 
 This issue is limited exclusively to the caches on Active Directory LDAP proxies within Identity Data Management.
 
@@ -65,7 +66,7 @@ An existing, already initialized cache (from a version before 7.4.22) is not aff
 
 If the affected cache is used for authentication, authorization, group membership evaluation, or other downstream application behavior, incomplete cache data may result in incorrect or unsuccessful downstream operations.
 
-## Resolution
+### Resolution
 
 This issue is resolved in Identity Data Management 7.4.24.
 
@@ -77,17 +78,17 @@ After upgrading:
 - If periodic cache refresh is already enabled, the next subsequent refresh will bring the cache back into synchronization.
 - As an optional verification step, customers may compare the resulting cache entry count with the expected number of entries in the Active Directory backend.
 
-## Temporary Mitigation
+### Temporary Mitigation
 
 Customers who cannot immediately upgrade to Identity Data Management 7.4.24 may roll back to Identity Data Management 7.4.21 or an earlier supported version.
 
 Customers who remain on Identity Data Management 7.4.22 or 7.4.23 should avoid initializing or using periodic refresh on Active Directory proxy caches until the upgrade or rollback has been completed. If possible, disabling the cache is the most advisable option in this case.
 
-## Root Cause
+### Root Cause
 
 The regression was introduced in Identity Data Management 7.4.22 as part of an improvement to the handling of range-based Active Directory group membership retrieval across domain controllers.
 
-## Recommended Action
+### Recommended Action
 
 Customers should take the following action based on their environment:
 
@@ -96,6 +97,6 @@ Customers should take the following action based on their environment:
 - **Customers not using an Active Directory-backed cache:** No action is required.
 - **Customers whose cache does not require Active Directory range retrieval:** No action is required for this issue. Note: most sizable Active Directory groups with 1500+ members require range retrieval.
 
-## Support
+### Support
 
 Customers who need assistance determining whether their environment is affected, upgrading Identity Data Management, validating their cache, or applying the temporary mitigation should contact Radiant Logic Support through the Customer Support Portal.
