@@ -15,7 +15,7 @@ Beginning with self-managed Identity Data Management version 8.5.0, FIPS initial
 
 FIPS behavior is controlled through a single Helm configuration parameter:
 
-```yaml
+```
 global:
   fipsMode: DISABLED | ENABLED | PREVALIDATED
 ```
@@ -30,7 +30,7 @@ The Helm deployment should also reference the FIPS-compatible chart version.
 
 Example installation:
 
-```bash
+```
 helm -n self-managed install fid \
   oci://registry-1.docker.io/radiantone/iddm-helm \
   --version 1.5.0 \
@@ -43,7 +43,7 @@ helm -n self-managed install fid \
 
 Runs Identity Data Management using the default deployment mode without FIPS.
 
-```yaml
+```
 global:
   fipsMode: DISABLED
 ```
@@ -53,7 +53,7 @@ global:
 
 Loads the validated FIPS cryptographic provider (`ccj-4.0.0-fips.jar`) during application startup.
 
-```yaml
+```
 global:
   fipsMode: ENABLED
 ```
@@ -72,7 +72,7 @@ This message confirms that the validated FIPS provider was successfully loaded.
 
 Loads the prevalidation cryptographic provider (`ccj-4.0.1-prevalidation-fips.jar`) during startup.
 
-```yaml
+```
 global:
   fipsMode: PREVALIDATED
 ```
@@ -101,13 +101,13 @@ A successful FIPS deployment can be confirmed by verifying all of the following:
 
 To inspect that every Identity Data Management container image includes the `-fips` suffix, run the following command:
 
-```bash
+```
 kubectl -n <namespace> describe pod <pod-name>
 ```
 
 or
 
-```bash
+```
 kubectl -n <namespace> get pod <pod-name> -o yaml
 ```
 
