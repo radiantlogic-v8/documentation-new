@@ -87,7 +87,7 @@ These release notes contain the following sections:
 - [API-4682]: Fixed an issue with Entra ID where all calls were being routed to the SDC service.
 - [API-4696, SQ-1705]: Fixed a memory leak affecting real-time caches that leverage HDAP triggers, related to changes that are refreshed from a single directory store exposing several object types (one aggregation/join per object class), similar to how Global Identity Builder generates the global profile view. On busy systems the affected process could grow in memory over time. Memory is now released correctly; no configuration change is required.
 - [API-4714, SQ-1731]: Fixed an issue so that now invalid and expired bearer JWT tokens sent to ADAP now return HTTP 401 errors instead of 400.
-- [API-4739]:  Fixed an issue in the Directory Browser search where the DN was splitting on escaped commas.
+- [API-4739, SQ-1777]:  Fixed an issue in the Directory Browser search where the DN was splitting on escaped commas.
 
 ## Known Issues
 
