@@ -22,7 +22,7 @@ global:
 * **ENABLED** : Loads the validated FIPS provider (`ccj-4.0.0-fips.jar`).
 * **PREVALIDATED** : Loads the prevalidation FIPS provider (`ccj-4.0.1-prevalidation-fips.jar`).
 
-![IDDM 8.5.0 FIPS deployment flow](Media/dep-flow.png)
+![IDDM 8.5.0 FIPS deployment flow](./images/dep-flow.png)
 
 The Helm deployment should also reference the FIPS-compatible chart version.
 
@@ -117,7 +117,7 @@ radiantone/iddm-web:8.5.0-fips
 radiantone/iddm-settings:8.5.0-fips
 ```
 
-![Pod description showing a FIPS-compliant image tag](fips-compliant.png)
+![Pod description showing a FIPS-compliant image tag](./images/fips-compliant.png)
 
 ### Known Limitations
 
