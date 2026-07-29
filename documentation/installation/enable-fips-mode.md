@@ -1,12 +1,14 @@
+---
+title: Enable FIPS Mode
+description: Learn about the deployment options for RadiantOne Identity Data Management.
+---
 
 ## Overview
 
 The Federal Information Processing Standards (FIPS) are a set of security standards published by the National Institute of Standards and Technology (NIST). FIPS 140-3 defines the security requirements for cryptographic modules used to protect sensitive information. Compliance is validated through the Cryptographic Module Validation Program (CMVP), which certifies cryptographic modules against FIPS 140-3 and related standards.
+
 Many government agencies and regulated industries require applications that process sensitive data, including Personally Identifiable Information (PII), to use FIPS 140-3 validated cryptographic modules.
-
-RadiantOne includes a FIPS-validated cryptographic module certified through the NIST CMVP.
-
-**Certification:** https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/5127
+RadiantOne includes a [FIPS-validated cryptographic module](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/5127) certified through the NIST CMVP.
 
 This guide describes the FIPS implementation introduced in Self-Managed Identity Data Management 8.5.0. FIPS mode is currently supported only for Self-Managed deployments.
 Beginning with self-managed Identity Data Management version 8.5.0, FIPS initialization is integrated into the container startup process. By enabling FIPS mode during installation, the appropriate cryptographic module is automatically configured during container initialization.
