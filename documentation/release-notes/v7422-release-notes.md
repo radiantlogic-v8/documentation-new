@@ -83,7 +83,7 @@ For specific hardware requirements of each, read the [system requirements](../sy
 * \[IV4-376, SQ-922]: The Directory Browser now persists the configured maximum attribute rows value, so your preferred setting is retained across sessions.
 * \[IV4-377, SQ-670]: Added a configurable Control Panel session timeout.
 * \[IV4-407, SQ-1095]: The resource-export command now supports a new --direct-chain option for naming-context exports. When enabled, the export bundle contains only the requested naming context (and everything beneath it) plus the minimal parent branch needed, excluding unrelated sibling branches and trimming parent virtual-tree files, which makes it easier to move a single branch between environments without bringing the entire tree.
-* \[IV4-455, SQ-1210]: Added an option to run Global Identity Builder upload with or without forcing correlation \& recomputation for identities that are already linked.
+* \[IV4-455, SQ-1210, SQ-1464]: Added an option to run Global Identity Builder upload with or without forcing correlation \& recomputation for identities that are already linked.
 * \[IV4-504, SQ-1251]: The log level for “adjusted map clock” messages has been lowered to debug.
 * \[IV4-506]: The JDK has been updated to use Amazon Corretto.
 * \[IV4-516, IV4-626]: Removed deprecated TLS/SSL protocols TLSv1.1, TLSv1, SSLv2Hello.
