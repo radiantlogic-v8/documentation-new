@@ -47,13 +47,12 @@ These release notes contain the following sections:
 - [API-4634]: Added new endpoints /api/authentication-service/v2/login and /api/authentication-service/password_reset to be able to handle password reset flows.
 - [API-4655, SQ-1628]: Added two new computed attributes: StringFromSIDValue and StringFromGUIDValue, which provide composable alternatives to StringFromSID and StringFromGUID, enabling their use in combination with other functions.
 
-
 ## Security Vulnerability Fixes
 
 - [API-4574, SQ-998,SQ-1175]: Fix to address CVE-2025-48913. 
-- [API-4705]: Fix to address: CVE-2025-11143, CVE-2026-2332, CVE-2026-6790, CVE-2026-10050, CVE-2026-49875, CVE-2026-50645, CVE-2026-54291, CVE-2026-54399, CVE-2026-54428, CVE-2026-54515, CVE-2026-55153, CVE-2026-55223, CVE-2026-55831, CVE-2026-55833, CVE-2026-56745, CVE-2026-56746, CVE-2026-56819, CVE-2026-59869, CVE-2026-59871, CVE-2026-59873, CVE-2026-59874, CVE-2026-59875, CVE-2026-59889, CVE-2026-59898, CVE-2026-59899, CVE-2026-59900, CVE-2026-59901, CVE-2026-39822 and CVE-2026-59921. 
+- [API-4705]: Fix to address: CVE-2025-11143, CVE-2026-2332, CVE-2026-6790, CVE-2026-10050, CVE-2026-49875, CVE-2026-50645, CVE-2026-54291, CVE-2026-54399, CVE-2026-54428, CVE-2026-54515, CVE-2026-55153, CVE-2026-55223, CVE-2026-55831, CVE-2026-55833, CVE-2026-56745, CVE-2026-56746, CVE-2026-56819, CVE-2026-59869, CVE-2026-59871, CVE-2026-59873, CVE-2026-59874, CVE-2026-59875, CVE-2026-59889, CVE-2026-59898, CVE-2026-59899, CVE-2026-59900, CVE-2026-59901, CVE-2026-39822 and CVE-2026-59921.
 
-
+>[!note] Detailed vulnerability reports for the vulnerabilities addressed in this release are available here: [Security Vulnerability Report](../vulnerability-report)
 
 ## Bug Fixes
 
@@ -97,10 +96,10 @@ The following issues have been identified in this release and will be addressed 
 - [API-4420]: During migration import from v7.4.21 to v8.4.0, an IllegalStateException error "(Expected state [STARTED] was [STOPPED])" is logged in PathChildrenCache. The migration itself completes successfully despite the error.
 -Custom data sources (Entra ID, SCIM2, Okta, Kafka, etc.) continue to log to vds_server.log and do not write to their dedicated per-data source log files. Only custom data sources built with the new Connector SDK write to their dedicated per-data source log file.
 
-
 For known issues reported after the release, please see the Radiant Logic Knowledge Base:
 
 https://support.radiantlogic.com/hc/en-us/categories/4412501931540-Known-Issues
+
 ## How to Report Problems and Provide Feedback
 
 Feedback and problems can be reported from the Support Center/Knowledge Base accessible from: https://support.radiantlogic.com
