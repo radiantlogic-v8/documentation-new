@@ -1,6 +1,6 @@
 ---
 title: Enable FIPS Mode
-description: Learn about the deployment options for RadiantOne Identity Data Management.
+description: Learn about how to enable FIPS mode in your self-managed RadiantOne Identity Data Management.
 ---
 
 ## Overview
