@@ -71,9 +71,9 @@ These release notes contain the following sections:
 - [API-4531]: Fixed an issue in which the save button in the "Manage Group" dialog in Directory Browser would sometimes remain disabled even when changes were made.
 - [API-4540]: Fixed an issue where the Manage Schema link in the Select Object from a Secondary Data Source Schema dialog redirected users to the dashboard instead of the Manage Schema page.
 - [API-4547, SQ-1381]: Fixed an issue so that log failure notification is now attempted via implicit TLS, then STARTTLS, then plain SMTP, regardless of the port number that is configured (i.e. whether to use implicit TLS vs STARTTLS vs plain SMTP will not be deduced from the port number). Global timeouts are now configured for all SMTP/SMTPS connections to prevent hangs during protocol mismatch or network stalls.
-* Timeout for creating SMTP/SMTPS socket connections = 5 seconds
-* Timeout for reading SMTP/SMTPS responses = 10 seconds
-* Timeout for writing SMTP/SMTPS payload bytes = 5 seconds.
+  * Timeout for creating SMTP/SMTPS socket connections = 5 seconds
+  * Timeout for reading SMTP/SMTPS responses = 10 seconds
+  * Timeout for writing SMTP/SMTPS payload bytes = 5 seconds.
 - [API-4549]:Fixed an issue where LDAP filters combining child attributes from different namespaces (e.g. (&(data--color=yellow)(l--city=Novato))) silently returned zero results. Each namespace is now joined independently, and AND/OR groups that mix namespaces, nest, or use NOT on sub-document attributes now return the correct matches.
 - [API-4550]: Fixed an issue so now the UI correctly shows the selected file name and indicates that it “will be uploaded” after selection, instead of incorrectly displaying “Upload Complete!” before the upload actually occurs.
 - [API-4560]: Fixed an issue with the proxy authorization for SCIM 2 protocol.
@@ -94,7 +94,7 @@ These release notes contain the following sections:
 The following issues have been identified in this release and will be addressed in a future release:
 
 - [API-4420]: During migration import from v7.4.21 to v8.4.0, an IllegalStateException error "(Expected state [STARTED] was [STOPPED])" is logged in PathChildrenCache. The migration itself completes successfully despite the error.
--Custom data sources (Entra ID, SCIM2, Okta, Kafka, etc.) continue to log to vds_server.log and do not write to their dedicated per-data source log files. Only custom data sources built with the new Connector SDK write to their dedicated per-data source log file.
+- Custom data sources (Entra ID, SCIM2, Okta, Kafka, etc.) continue to log to vds_server.log and do not write to their dedicated per-data source log files. Only custom data sources built with the new Connector SDK write to their dedicated per-data source log file.
 
 For known issues reported after the release, please see the Radiant Logic Knowledge Base:
 
