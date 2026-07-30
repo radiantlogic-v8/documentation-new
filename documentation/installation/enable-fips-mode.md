@@ -12,7 +12,7 @@ RadiantOne includes a [FIPS-validated cryptographic module](https://csrc.nist.go
 
 This guide describes the FIPS implementation introduced in Self-Managed Identity Data Management 8.5.0. FIPS initialization is integrated into the self-managed Identity Data Management application startup process. By enabling FIPS mode during installation, the appropriate cryptographic module is automatically configured during container initialization.
 
-> [!note] FIPS mode is currently only supported in self-managed deployments. 
+> [!note] FIPS mode is currently only supported in self-managed deployments of Radiant One Identity Data Management. 
 
 FIPS behavior is controlled through a single Helm configuration parameter:
 
