@@ -117,8 +117,7 @@ kubectl -n <namespace> get pod <pod-name> -o yaml
 
 ![Pod description showing a FIPS-compliant image tag](./images/fips-compliant.png)
 
-
-
+Note that the names might look different than what is shown in the image above. However, they will include the `-fips` suffix. 
 
 ### Known Limitations
 
