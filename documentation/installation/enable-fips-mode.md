@@ -115,13 +115,10 @@ kubectl -n <namespace> get pod <pod-name> -o yaml
 
 **Example output:**
 
-```
-radiantone/fid:8.5.0-fips
-radiantone/iddm-web:8.5.0-fips
-radiantone/iddm-settings:8.5.0-fips
-```
-
 ![Pod description showing a FIPS-compliant image tag](./images/fips-compliant.png)
+
+
+
 
 ### Known Limitations
 
