@@ -12,6 +12,8 @@ RadiantOne includes a [FIPS-validated cryptographic module](https://csrc.nist.go
 
 This guide describes the FIPS implementation introduced in Self-Managed Identity Data Management 8.5.0. FIPS initialization is integrated into the self-managed Identity Data Management application startup process. By enabling FIPS mode during installation, the appropriate cryptographic module is automatically configured during container initialization.
 
+> [!note] FIPS mode is currently only supported in self-managed deployments. 
+
 FIPS behavior is controlled through a single Helm configuration parameter:
 
 ```
@@ -25,9 +27,9 @@ global:
 
 ![IDDM 8.5.0 FIPS deployment flow](./images/dep-flow.png)
 
-The Helm deployment should also reference the FIPS-compatible chart version.
+The Helm deployment should also reference the FIPS-compatible helm chart version (1.5.0).
 
-Example installation:
+**Example installation command**:
 
 ```
 helm -n self-managed install fid \
@@ -36,9 +38,10 @@ helm -n self-managed install fid \
   --values </path/to/your/values.yaml> \
   --debug
 ```
+
 ### Deployment Modes
 
-#### DISABLED
+**DISABLED**
 
 Runs Identity Data Management using the default deployment mode without FIPS.
 
@@ -48,7 +51,7 @@ global:
 ```
 
 
-#### ENABLED
+**ENABLED** <br>
 
 Loads the validated FIPS cryptographic provider (`ccj-4.0.0-fips.jar`) during application startup.
 
@@ -57,7 +60,7 @@ global:
   fipsMode: ENABLED
 ```
 
-##### Expected Log
+**Expected Log** <br>
 
 ```
 2026-07-21T14:05:57,330 WARN  com.rli.slapd.server.VDSServer:900 - ### ---
@@ -67,7 +70,7 @@ global:
 
 This message confirms that the validated FIPS provider was successfully loaded.
 
-#### PREVALIDATED
+**PREVALIDATED** <br>
 
 Loads the prevalidation cryptographic provider (`ccj-4.0.1-prevalidation-fips.jar`) during startup.
 
@@ -76,7 +79,7 @@ global:
   fipsMode: PREVALIDATED
 ```
 
-##### Expected Log
+**Expected Log** <br>
 
 ```
 2026-07-16T22:59:18,021 WARN  com.rli.slapd.server.VDSServer:901 - ### Server started! The server is running in FIPS mode with the security module loaded from: /opt/radiantone/vds/lib/fips/ccj-4.0.1-prevalidation-fips.jar
