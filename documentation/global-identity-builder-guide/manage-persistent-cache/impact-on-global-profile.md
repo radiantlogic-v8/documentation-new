@@ -22,6 +22,8 @@ The following table describes the expected outcome for global profile identities
 
 A log is generated for each identity source and updated after uploads or when a source event triggers the real-time persistent cache refresh. Logs are located at: `{RLI_HOME}/vds_server/logs/correlation/{NAME_OF_CORRELATION_PROJECT}/{IDENTITY_SOURCE}.csv`
 
+>[!note] This log file is configured to rollover when it reaches 100MB and archives as <name>.csv.1.zip, .2.zip...etc. Up to 100 files are kept. You can view and download the log from the Server Control Panel > Log Viewer tab.
+
 The `Status` column indicates the action that was performed on each identity. The status values are: `new`, `new(manual)`, `moved`, `correlated`, `correlated(manual)`, `already correlated`, `ignored`, or `error`. Below is a description of each.
 
 | Status | Description |
