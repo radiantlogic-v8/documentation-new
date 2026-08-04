@@ -22,6 +22,8 @@ The following table describes the expected outcome for global profile identities
 
 A log is generated for each identity source and updated after uploads or when a source event triggers the real-time persistent cache refresh. Logs are located at: `{RLI_HOME}/vds_server/logs/correlation/{NAME_OF_CORRELATION_PROJECT}/{IDENTITY_SOURCE}.csv`
 
+>[!note] This log file is configured to rollover when it reaches 100MB and archives as <name>.csv.1.zip, .2.zip...etc. Up to 100 files are kept. You can view and download the log from the Classic Control Panel > Server Control Panel > Log Viewer tab.
+
 The `Status` column indicates the action that was performed on each identity. The status values are: `new`, `new(manual)`, `moved`, `correlated`, `correlated(manual)`, `already correlated`, `ignored`, or `error`. Below is a description of each.
 
 | Status | Description |
@@ -45,6 +47,6 @@ The `ruleNumber` column indicates the correlation rule number that was used to c
 
 The `time` column indicates the exact date/time when the entry was processed.
 
-For details on logs related to the real-time persistent cache refresh components (for example, connectors, sync engine, agent) please see the RadiantOne Logging and Troubleshooting Guide.
+For details on logs related to the real-time persistent cache refresh components (for example, connectors, sync engine, agent) please see: [Logging and Troublshooting](../../troubleshooting/troubleshooting)
 
 To learn more about Global Identity Builder, please read the chapter that describes how to [link existing groups to global profile identities](../link-groups/overview.md).
