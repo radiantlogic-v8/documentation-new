@@ -117,6 +117,8 @@ To enable this feature, follow these steps:
 
 ### Log File Integrity Assurance
 
+Adding a signature to an archived log file is done to prove the log’s integrity and authenticity over time, so you can later demonstrate that the log hasn’t been tampered with and came from the expected source.
+
 The Log file integrity assurance option adds a signature file (.sig) to the contents of the compressed log file when it is archived. This signature can then be verified for authenticity.
 
 To enable log file integrity assurance, follow these steps:
