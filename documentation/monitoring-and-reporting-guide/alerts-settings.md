@@ -177,7 +177,7 @@ The ZooKeeper Write Check alert is enabled by default. This custom alert can be 
 
 This custom alert triggers a [file alert](#file-alert-settings) if clients cannot write to ZooKeeper. If SMTP settings are configured, [email alerts](#email-alert-settings) can be triggered as well by adding EmailAlert to the Alert Output setting (click Save if you modify the alert output).
 
-### Synchronization Capture Connector Stopped
+### Synchronization Capture Connector State
 
 To send an alert in the event of a synchronization capture connector state change (e.g. a connector state changes from RUNNING to STOPPED), configure a custom alert. A custom alert can be automatically configured by using the settings from Main Control Panel > Synchronization tab. Select the desired topology and click Configure. In the left navigation menu, click Alerts.  Toggle on the `Capture State Alert Enabled`.  The alert output is a file.  
 
