@@ -49,3 +49,18 @@ A [file alert](#file-alert-settings), when the disk latency on the RadiantOne ma
 
 A [file alert](#file-alert-settings), when the RadiantOne processing queues and internal queues reach a certain threshold is configured by default. These settings can be changed from the Classic Control Panel > Settings tab > Monitoring section > Standard Alerts. Change the queue percentages and click Save. 
 
+## Synchronization
+
+To enable default alerts for synchronization, go to Classic Control Panel > Synchronization. Select the desired topology and click CONFIGURE. In the left navigation menu, click Alerts.  Alerts enabled from here are automatically configured as Custom Alerts and can also be viewed from Classic Control Panel > Settings > Monitoring > Custom Alerts.
+
+### Pipeline State
+
+To receive alerts when the pipeline changes state (e.g. goes from started to stopped or vice versa), toggle on the `Pipeline State Alert Enabled`.
+
+### Change Event Capture
+
+To receive alerts when the process that captures source events changes state (e.g. goes from started to stopped or vice versa), toggle on the `Capture State Alert Enabled`.
+
+### Message Queue
+
+To receive alerts when the message queue associated with the selected pipeline reaches a maximum amount of messages in the queue, toggle on the `Processor Queue Size Alert Enabled' and set the threshold.
