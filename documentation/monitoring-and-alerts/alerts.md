@@ -51,7 +51,7 @@ A [file alert](#file-alert-settings), when the RadiantOne processing queues and 
 
 ## Synchronization
 
-To enable default alerts for synchronization, go to Classic Control Panel > Synchronization. Select the desired topology and click CONFIGURE. In the left navigation menu, click Alerts.  Alerts enabled from here are automatically configured as Custom Alerts and can also be viewed from Classic Control Panel > Settings > Monitoring > Custom Alerts.
+To enable default alerts for synchronization, go to Classic Control Panel > Synchronization. Select the desired topology and click CONFIGURE. In the left navigation menu, click Alerts.  Alerts enabled from here are automatically configured as Custom Alerts and can also be viewed from Classic Control Panel > Settings > Monitoring > Custom Alerts. The alert output is a file.
 
 ### Pipeline State
 
