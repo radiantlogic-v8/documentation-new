@@ -179,8 +179,9 @@ This custom alert triggers a [file alert](#file-alert-settings) if clients canno
 
 ### Synchronization Capture Connector Stopped
 
-To send an alert in the event of a synchronization capture connector state change (e.g. a connector state changes from RUNNING to STOPPED), configure a custom alert.
+To send an alert in the event of a synchronization capture connector state change (e.g. a connector state changes from RUNNING to STOPPED), configure a custom alert. A custom alert can be automatically configured by using the settings from Main Control Panel > Synchronization tab. Select the desired topology and click Configure. In the left navigation menu, click Alerts.  Toggle on the `Capture State Alert Enabled`.  The alert output is a file.  
 
+The custom alert can also be manually configured using the steps below:
 1. Navigate to the Main Control Panel (of the current leader node if you have a cluster deployment) > Settings tab > Monitoring > Custom Alerts (requires [Expert Mode](#expert-mode)).
 2. Select Custom from the Template drop-down menu.
 3. Select pipeline from the Monitoring Source drop-down menu.
@@ -202,8 +203,9 @@ When triggered, this alert displays on the Main Control Panel's Dashboard tab un
 
 ### Synchronization Queue Size
 
-To send an alert in the event of a synchronization queue growing, configure a custom
-alert.
+To send an alert in the event of a synchronization queue growing, configure a custom alert. A custom alert can be automatically configured by using the settings from Main Control Panel > Synchronization tab. Select the desired topology and click Configure. In the left navigation menu, click Alerts.  Toggle on the `Processor Queue Size Alert Enabled' and set the threshold.  The alert output is a file.  
+
+The custom alert can also be manually configured using the steps below:
 
 1. Navigate to the Main Control Panel (of the current leader node if you have a cluster deployment) > Settings tab > Monitoring > Custom Alerts (requires [Expert Mode](#expert-mode)).
 2. Select Custom from the Template drop-down menu.
@@ -227,6 +229,10 @@ alert.
     Figure 9: Custom Alert for Monitoring Sync Queue Size
 
 12. When triggered, this alert displays on the Main Control Panel's Dashboard tab under Active Alerts as "ALERT: <alert_name>” and triggers a [file alert](#file-alert-settings). If SMTP settings are configured, [email alerts](#email-alert-settings) can be triggered as well by adding EmailAlert to the Alert Output setting (click save if you modify alert output).
+
+### Synchronization Pipeline State
+
+To send an alert in the status of the pipeline changes (e.g. from running to stopped or vice versa), configure a custom alert. A custom alert can be automatically configured by using the settings from Main Control Panel > Synchronization tab. Select the desired topology and click Configure. In the left navigation menu, click Alerts. Toggle on the `Pipeline State Alert Enabled`. The alert output is a file.  
 
 ### Configuration Changes
 
