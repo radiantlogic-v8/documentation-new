@@ -63,4 +63,4 @@ To receive alerts when the process that captures source events changes state (e.
 
 ### Message Queue
 
-To receive alerts when the message queue associated with the selected pipeline reaches a maximum amount of messages in the queue, toggle on the `Processor Queue Size Alert Enabled' and set the threshold.
+To receive alerts when the message queue associated with the selected pipeline reaches a maximum amount of messages in the queue, toggle on the `Processor Queue Size Alert Enabled` and set the threshold.
