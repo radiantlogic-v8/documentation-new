@@ -37,7 +37,6 @@ These release notes contain the following sections:
 - [API-3397, SQ-469]: Added an option to vdsconfig that allows to export a single topology (with related contexts). Topology name should be specified in the format "source_context->target_context". Example command: `./vdsconfig.sh resource-export -name "ou=some,o=context->o=another_context."
 - [API-3418, SQ-626]: Enabled sorting and filtering of custom alerts in Classic Control Panel.
 - [API-3425, SQ-813]: Improved the handling of properties for default custom data sources to hide sensitive values in the Control Panel for some attributes.
-- [API-3452, SQ-412]: Delta queries are now supported for contacts and devices.
 - [API-3561]: Added settings to manage audit logging from Control Panel > Admin section.
 - [API-3450]: Added support for JSON formatting of audit logs and added the ability to log the before and after value for changes.
 - [API-3452, SQ-412]: Added support for real-time persistent cache refreshes of contacts and devices for virtual views from Entra ID.
