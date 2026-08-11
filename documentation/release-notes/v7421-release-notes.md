@@ -39,7 +39,7 @@ For specific hardware requirements of each, read the [system requirements](../sy
 
 ## Improvements
 
-- [IV4-81, SQ-412]: Delta queries are now supported for Entra ID contacts and devices.
+- [IV4-81, SQ-412]: Added support for real-time persistent cache refreshes of contacts and devices for virtual views from Entra ID.
 - [IV4-372]: Improvement to the SCrypt parameters to strengthen the computational cost based on the latest security evaluation.
 - [IV4-380]: Added a new "Allow Anonymous Access Legacy Behavior" checkbox to the Settings -> Security -> Access Control page. When anonymous access is disabled, the RadiantOne LDAP service rejects simple bind requests that include a non-empty bind DN but no password, returning this error: “Password must be provided: simple bind operations are not allowed to contain a bind DN without a password.” This behavior complies with RFC 4513. To allow the RadiantOne LDAP service to process these requests as anonymous binds in accordance with RFC 2251 and to treat a bind DN with no password as an anonymous user, enable the ALLOW ANONYMOUS ACCESS LEGACY BEHAVIOR option.
 - [IV4-391, SQ-662]: External token validators feature now supports multiple "Expected scope" values. They can be specified as a comma separated list of scope values in the token validators page.
