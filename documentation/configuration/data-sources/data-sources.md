@@ -166,7 +166,7 @@ The following properties apply to Microsoft Entra ID data source.
 
 In the Entra ID data source configuration page, you can also configure the [Microsoft Graph](https://learn.microsoft.com/en-us/graph/?view=graph-rest-1.0) object link properties to control what value (the Group DN as represented in the RadiantOne namespace, the Group display name, or the Group URL) is returned for "memberOf" and/or "member" attributes.
 
- ![](Media/graphobject-links.png "Image showing Graph Object Links properties")
+ ![Entra ID Object Link Properties](Media/graphobject-links.png "Image showing Graph Object Links properties")
 
 The following sections describe these properties along with examples.
 
@@ -181,7 +181,7 @@ LINKBYURL| Returns the value of memberOf attribute values as group URLs.
 
 To return display names for the memberOf attribute, enter "memberOf" in the LINKBYDISPLAYNAME field. 
 
- ![](Media/linkbydisplayname.png "Image showing LinkByDisplayName property")
+ ![LinkByDisplayName Property](Media/linkbydisplayname.png "Image showing LinkByDisplayName property")
 
 
 When performing an LDAP search, the memberOf attributes are returned, showing the group display names simlar to the following example:
@@ -221,7 +221,7 @@ These fields can also accept multiple attribute names, separated by commas. For 
 
 ### Database Data Sources
 
-The following properties apply to LDAP data sources.
+The following properties apply to Database data sources.
 
 PROPERTY	| DESCRIPTION
 -|-
@@ -229,6 +229,25 @@ Driver Class Name	| Auto-populated, non-editable. Based on the template.
 Driver URL	| Enter the URL to connect to the Database server.
 User 	| Service account name that the RadiantOne service should use to connect to the backend.
 Password	| Credentials associated with the account indicated in the User property.
+
+### CSV Files
+
+JDBC can be leveraged as an access method for CSV-formatted files. These steps assume you have a process that generates a CSV-formatted file from your data source.  For testing, you can use Control Panel > Manage > File Manager to upload your CSV-formatted file to the following location: `RLI_HOME/vds_server/conf/data_sources/csv
+(it is recommended to use this folder because it is automatically synchronized across RadiantOne cluster nodes and it is the default location when using the out-of-the-box JDBC driver for CSV files).
+
+![File Manager](Media/file-manager.jpg "Image showing File Manager")
+
+ You can use the Control Panel > SETUP > Data Catalog > Data Sources > NEW SOURCE > CSV to define the data source.
+
+![CSV Data Source](Media/csv-option.jpg "Image showing CSV template")
+
+Enter the properties for the CSV data source. Select the "Default CSV Location" if you uploaded the CSV file through File Manager to the recommended location. If the CSV file is in other location, select the "Custom CSV Location" and enter the path after `jdbc:relique:csv` using a ":" to separate the driver from the path.
+
+![CSV Data Source Properties](Media/csv-data-source.jpg "Image showing CSV Data Source Properties")
+
+After creating the data source, extract the schema.
+ 
+
 
 ### Custom Data Sources
 
