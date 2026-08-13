@@ -113,7 +113,7 @@ The database data source must be created before completing the schema extraction
 
 3. Under **Database Options**, configure the following fields as needed and click Next:
 
-       ![An image showing filter options](Media/extract-schema.png)
+      ![An image showing filter options](Media/extract-schema.jpg)
 
 
    - **Database Schema**: The ANSI standard naming convention for relational database tables is `catalog.schema.table`. If the authenticated user has access to multiple schemas, enter a schema name to narrow the search.
