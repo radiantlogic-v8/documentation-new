@@ -232,8 +232,8 @@ Password	| Credentials associated with the account indicated in the User propert
 
 ### CSV Files
 
-JDBC can be leveraged as an access method for CSV-formatted files. These steps assume you have a process that generates a CSV-formatted file from your data source.  For testing, you can use Control Panel > Manage > File Manager to upload your CSV-formatted file to the following location: `RLI_HOME/vds_server/conf/data_sources/csv
-(it is recommended to use this folder because it is automatically synchronized across RadiantOne cluster nodes and it is the default location when using the out-of-the-box JDBC driver for CSV files).
+JDBC can be leveraged as an access method for CSV-formatted files. These steps assume you have a process that generates a CSV-formatted file from your data source.  For testing, you can use Control Panel > Manage > File Manager to upload your CSV-formatted file to the following location: `RLI_HOME/vds_server/conf/data_sources/csv`
+(it is recommended to use this folder because it is automatically synchronized across RadiantOne cluster nodes and it is the default location when using the out-of-the-box JDBC driver for CSV files). For production, you need an external synchronization process to publish new CSV files to the required location. 
 
 ![File Manager](Media/file-manager.jpg "Image showing File Manager")
 
