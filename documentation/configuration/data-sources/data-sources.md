@@ -246,17 +246,17 @@ The default custom data sources also don't support standard LDAP filters. If you
 
 If you configure persistent cache for virtual views of cloud directories/services, the change detection mechanisms for cache refresh are limited to Periodic and Custom (only for sources that contain a timestamp attribute for their entries, or Differential Query like Entra ID). The periodic change detection mechanism requires the entire data set to be retrieved at each polling interval and then the connector determines what has changed. The Custom change detection mechanism is a special timestamp-based approach that works with Entra ID (which also leverages Differential Query), Okta, and any SCIM-accessible backend. If the cloud directory/service does not support SCIM (and is something other than Entra ID or Okta), then the periodic option is the only choice for detecting changes for persistent cache refreshes.
 
-### Updating Data Sources
+## Updating Data Sources
 To update a data source, navigate to Control Panel > Setup > Data Catalog > Data Sources. Click the data source name in the list of configured sources. The connection properties displays. Update the properties and click **SAVE**.
 
-### Deleting Data Sources
+## Deleting Data Sources
 To delete a data source, navigate to Control Panel > Setup > Data Catalog > Data Sources. Select the configured data source in the list, click the inline trash can icon and click **DELETE** to confirm. Otherwise, click **KEEP DATA SOURCE** to not delete.
 
 ![An image showing deleting data source](Media/delete-data-source.jpg)
 
 >[!warn] When a data source is deleted, all associated schemas (default and added schemas) are also deleted.
 
-### Cloning Data Sources
+## Cloning Data Sources
 Cloning a data source allows you to make a copy of the connection information and provide a new name for the data source. To clone a data source, navigate to Control Panel > Setup > Data Catalog > Data Sources. Select the configured data source in the list and click the clone icon.
 
 ![Cloning a data source](Media/clone-data-source.jpg)
@@ -265,7 +265,7 @@ Enter a data source name and click the checkmark inline with the cloned data sou
 
 ![Confirm a cloned data source name](Media/confirm-clone.jpg)
 
-### Importing Data Sources
+## Importing Data Sources
 If you have existing data sources defined (exported from another RadiantOne configuration) and you would like to import those, navigate to the Control Panel > Setup > Data Catalog > Data Sources, click **...** and choose Import. 
 
 ![An image showing import data sources screen](Media/import-export-menu.jpg)
@@ -277,7 +277,7 @@ Either browse to the file containing the data source definitions that you have e
 >[!note] 
 >To override existing data sources containing the same names as ones from the import file, toggle the **OVERRIDE DUPLICATE DATA SOURCES** option on. 
 
-### Exporting Data Sources
+## Exporting Data Sources
 To export data sources, navigate to the Control Panel > Setup > Data Catalog > Data Sources, click **...** and choose Export.
 
 ![Export Data Sources Option](Media/export-data-source.jpg)
