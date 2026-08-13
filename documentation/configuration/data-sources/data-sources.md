@@ -241,7 +241,7 @@ JDBC can be leveraged as an access method for CSV-formatted files. These steps a
 
 ![CSV Data Source](Media/csv-option.jpg "Image showing CSV template")
 
-Enter the properties for the CSV data source. Select the "Default CSV Location" if you uploaded the CSV file through File Manager to the recommended location. If the CSV file is in other location, select the "Custom CSV Location" and enter the path after `jdbc:relique:csv` using a ":" to separate the driver from the path.
+Enter the properties for the CSV data source. Select the **Default CSV Location** if you uploaded the CSV file through File Manager to the recommended location. If the CSV file is in other location, select the "Custom CSV Location" and enter the path after `jdbc:relique:csv` using a **:** to separate the driver from the path.
 
 ![CSV Data Source Properties](Media/csv-data-source.jpg "Image showing CSV Data Source Properties")
 
