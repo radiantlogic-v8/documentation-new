@@ -34,6 +34,7 @@ These release notes contain the following sections:
 
 >[!note] Detailed vulnerability reports for the vulnerabilities addressed in this release are available here: [Security Vulnerability Report](../vulnerability-report)
 
+
 ## Bug Fixes
 
 - [API-3492, SQ-875]: Fixed an issue where password policy wasn't honoring the stronger algorithm upgrade for persistent cached views that were being used for authentication.
