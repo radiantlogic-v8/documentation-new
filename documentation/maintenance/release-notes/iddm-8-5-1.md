@@ -36,11 +36,11 @@ These release notes contain the following sections:
 
 ## Bug Fixes
 
-- [API-3492, SQ-875]: Fixed an issue where password policy wasn't honoring the stronger algorithm upgrade on p-cache.
-- [API-3896, SQ-1113]: Fixed an issue where the replication thread gets stuck due to an invalid operation DN.
+- [API-3492, SQ-875]: Fixed an issue where password policy wasn't honoring the stronger algorithm upgrade for persistent cached views that were being used for authentication.
+- [API-3896, SQ-1113]: Fixed an issue where an inter-cluster replication thread gets stuck due to an invalid operation DN.
 - [API-4412]: Fixed an issue so that remapping attributes used in computed attribute expressions are now properly remapped in the expressions.
 - [API-4741, SQ-1454]: Fixed an issue that could occur if a mixed-case view (DVX file) was uploaded through File Manager.
-- [API-4751, SQ-1781]: Fixed an access-control issue in the search API: read-only users were unable to use search because the required SCOPE_DIRECTORY_BROWSER_VIEW permission was missing. The scope has now been added, enabling read-only users to access search functionality correctly.
+- [API-4751, SQ-1781]: Fixed an access control issue in the search API: read-only users were unable to use search because the required SCOPE_DIRECTORY_BROWSER_VIEW permission was missing. The scope has now been added, enabling read-only users to access search functionality correctly.
 
 
 ## Known Issues
