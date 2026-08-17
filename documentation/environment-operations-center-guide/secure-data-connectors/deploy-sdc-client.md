@@ -23,6 +23,10 @@ System requirements:
 - Minimum disc space (64-bit): 4.5 GB
 - Operation System: Windows Server 2016 Datacenter, Windows Server 2019 Datacenter, Windows Server 2022 Datacenter, AWS Linux 2, Ubuntu 20.04.6 LTS, Red Hat Enterprise Linux 8.8, and Debian GNU/Linux 12.
 
+Network requirements:
+
+- All communications between the SDC and the RadiantOne cloud environments occur over a TLS-only secured WebSocket tunnel using HTTPS (port 443). Ensure that your network and firewall rules allow outbound HTTPS traffic on port 443 from the host where the SDC client is deployed. The data exchanged over this channel is encrypted and protected from unauthorized access. No inbound ports need to be opened on your network.
+
 ## Getting started
 
 Before deploying the secure data connector client, you must retrieve the registration token associated with the data connector in Env Ops Center. For Windows or Linux systems, you must also download the respective binary. 
