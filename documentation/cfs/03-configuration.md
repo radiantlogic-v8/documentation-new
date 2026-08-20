@@ -115,7 +115,7 @@ You can add filtering regex functions to the **Transformation** field in the **A
 
 Two functions are available.
 
-#####  `regexOnly`
+#####  regexOnly
 
 Emits a value only when the entire value matches the given .NET regular expression pattern.
 
@@ -137,7 +137,7 @@ regexOnly(.vds("memberOf").,"AppX-.*")
 regexOnly(.vds("memberOf").,".*[cC]at.*")
 ```
 
-##### `regexNot`
+##### regexNot
 
 Emits a value only when the entire value does **not** match the given .NET regular expression pattern.
 
