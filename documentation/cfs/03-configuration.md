@@ -103,9 +103,6 @@ The **Mappings** tab contains the list of transformation required to generate th
 
 ![](media/saml2-generic-tab-mappings.png)
 
-
-#### Filtering Multi-Valued Attributes
-
 When configuring attribute mappings, you can use regex-based filter functions to control which values from a multi-valued identity store attribute are emitted in SAML assertions. This is particularly useful when users have large group memberships that could result in oversized HTTP responses. 
 
 You can add filtering regex functions to the **Transformation** field in the **Additional mappings** section to limit the assertion to only the groups relevant to the specific application.
@@ -115,7 +112,7 @@ You can add filtering regex functions to the **Transformation** field in the **A
 
 Two functions are available.
 
-#####  regexOnly
+####  regexOnly
 
 Emits a value only when the entire value matches the given .NET regular expression pattern.
 
@@ -137,7 +134,7 @@ regexOnly(.vds("memberOf").,"AppX-.*")
 regexOnly(.vds("memberOf").,".*[cC]at.*")
 ```
 
-##### regexNot
+#### regexNot
 
 Emits a value only when the entire value does **not** match the given .NET regular expression pattern.
 
@@ -153,13 +150,13 @@ regexNot(.vds("attributeName").,"pattern")
 regexNot(.vds("memberOf").,".*(?:service|test|deprecated).*")
 ```
 
-##### Pattern Matching Behavior
+#### Pattern Matching Behavior
 
 - Matching is full-string — the pattern must match the entire attribute value, not just a substring. Use `.*` anchors to match partial strings (e.g., `.*foo.*`).
 - Matching is case-sensitive. To match both `cat` and `Cat`, use a character class like `[cC]at` or the appropriate .NET regex flag syntax.
 - Patterns must conform to .NET regular expression syntax.
 
-##### Configuring via the Admin UI
+#### Configuring via the Admin UI
 
 1. Open the transformation wizard on an attribute or claim mapping.
 2. Select **Regex Only** or **Regex Not** from the operations list.
@@ -175,7 +172,7 @@ At assertion time, each value of the multi-valued source attribute is tested aga
 
 ![Decoded SAML assertion showing only the Groups claim values that match the .*fo.* filter](media/mapping-results.png)
 
-##### Composition with other functions
+#### Composition with other functions
 
 The **Value** argument of `regexOnly` / `regexNot` can itself be a nested transformation. For example, to uppercase values before filtering:
 
@@ -189,7 +186,7 @@ However, `regexOnly` and `regexNot` **cannot** be nested as the inner expression
 upper(.regexOnly(.vds("memberOf").,"App-.*").)
 ```
 
-#####  Restrictions
+####  Restrictions
 
 - `regexOnly` and `regexNot` are not available for SAML Name Identifier mappings.
 - If the filter results in zero matching values:
