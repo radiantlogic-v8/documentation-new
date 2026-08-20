@@ -146,14 +146,11 @@ The completed mapping appears in the **Additional Mappings** list. In the exampl
 
 ![Configured regexOnly mapping on the SAML2 Generic application's Mappings tab, filtering memberOf with the pattern .*fo.* for the Groups claim](media/example-mapping.png)
 
-You can also enter the expression directly in Advanced mode.
-
-
 At assertion time, each value of the multi-valued source attribute is tested against the pattern, and only the matching values are emitted. In the assertion below, the `.*fo.*` filter has reduced a large `memberOf` set to just the group values that contain `fo` (e.g., `fofofo`, `omgfogmo`, `foobar`, `barfoo`):
 
 ![Decoded SAML assertion showing only the Groups claim values that match the .*fo.* filter](media/mapping-results.png)
 
-## Composition with Other Functions
+##### Composition with other functions
 
 The **Value** argument of `regexOnly` / `regexNot` can itself be a nested transformation. For example, to uppercase values before filtering:
 
