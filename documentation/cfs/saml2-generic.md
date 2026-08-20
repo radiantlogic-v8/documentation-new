@@ -76,6 +76,106 @@ The **Mappings** tab contains the list of transformation required to generate th
 
 ![](media/saml2-generic-tab-mappings.png)
 
+
+#### Filtering Multi-Valued Attributes
+
+When configuring attribute mappings, you can use regex-based filter functions to control which values from a multi-valued identity store attribute are emitted in SAML assertions. This is particularly useful when users have large group memberships that could result in oversized HTTP responses. 
+
+You can add filtering regex functions to the **Transformation** field in the **Additional mappings** section to limit the assertion to only the groups relevant to the specific application.
+
+![Example filter](media/regex-filter.png)
+
+
+Two functions are available.
+
+#####  `regexOnly`
+
+Emits a value only when the entire value matches the given .NET regular expression pattern.
+
+**Syntax:**
+
+```
+regexOnly(.vds("attributeName").,"pattern")
+```
+
+**Example:** keep only groups that start with `AppX-`:
+
+```
+regexOnly(.vds("memberOf").,"AppX-.*")
+```
+
+**Example:** keep only groups containing `cat` (case-insensitive):
+
+```
+regexOnly(.vds("memberOf").,".*[cC]at.*")
+```
+
+##### `regexNot`
+
+Emits a value only when the entire value does **not** match the given .NET regular expression pattern.
+
+**Syntax:**
+
+```
+regexNot(.vds("attributeName").,"pattern")
+```
+
+**Example:** exclude groups related to service, test, or deprecated:
+
+```
+regexNot(.vds("memberOf").,".*(?:service|test|deprecated).*")
+```
+
+## Pattern Matching Behavior
+
+- Matching is full-string — the pattern must match the entire attribute value, not just a substring. Use `.*` anchors to match partial strings (e.g., `.*foo.*`).
+- Matching is case-sensitive. To match both `cat` and `Cat`, use a character class like `[cC]at` or the appropriate .NET regex flag syntax.
+- Patterns must conform to .NET regular expression syntax.
+
+## Configuring via the Admin UI
+
+`regexOnly` and `regexNot` are available in the Normal transformation wizard when editing attribute/claim mappings:
+
+1. Open the transformation wizard on an attribute or claim mapping.
+2. Select **Regex Only** or **Regex Not** from the operations list.
+3. Set the **Value** argument (e.g., VDS `memberOf`).
+4. Enter the .NET regex pattern.
+5. Save the mapping.
+
+The completed mapping appears in the **Additional Mappings** list. In the example below, a `regexOnly` filter on `memberOf` with the pattern `.*fo.*` is applied to the **Groups** claim type:
+
+![Configured regexOnly mapping on the SAML2 Generic application's Mappings tab, filtering memberOf with the pattern .*fo.* for the Groups claim](media/example-mapping.png)
+
+You can also enter the expression directly in Advanced mode.
+
+
+At assertion time, each value of the multi-valued source attribute is tested against the pattern, and only the matching values are emitted. In the assertion below, the `.*fo.*` filter has reduced a large `memberOf` set to just the group values that contain `fo` (e.g., `fofofo`, `omgfogmo`, `foobar`, `barfoo`):
+
+![Decoded SAML assertion showing only the Groups claim values that match the .*fo.* filter](media/mapping-results.png)
+
+## Composition with Other Functions
+
+The **Value** argument of `regexOnly` / `regexNot` can itself be a nested transformation. For example, to uppercase values before filtering:
+
+```
+regexOnly(.upper(.vds("memberOf").).,"APP-.*")
+```
+
+However, `regexOnly` and `regexNot` **cannot** be nested as the inner expression of another function. **The following is invalid and will be rejected:**
+
+```
+upper(.regexOnly(.vds("memberOf").,"App-.*").)
+```
+
+#####  Restrictions
+
+- `regexOnly` and `regexNot` are not available for SAML Name Identifier mappings.
+- If the filter results in zero matching values:
+  - A non-mandatory claim is omitted from the assertion (no empty `AttributeValue` is emitted).
+  - A mandatory claim will cause an evaluation error and SSO will fail.
+- If a regex pattern is invalid, the mapping fails  and the unfiltered group list is never emitted.
+
+
 ### Access Rules
 
 The **Access Rules** tab helps define the second layer of security (after LOA) to grant access to this application. By default, the access is limited to only the people in the **Application Group** which is a group created automatically by CFS when the application is created. 
