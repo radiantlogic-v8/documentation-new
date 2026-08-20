@@ -109,7 +109,6 @@ You can add filtering regex functions to the **Transformation** field in the **A
 
 ![Example filter](media/regex-filter.png)
 
-
 Two functions are available.
 
 ####  regexOnly
@@ -122,13 +121,15 @@ Emits a value only when the entire value matches the given .NET regular expressi
 regexOnly(.vds("attributeName").,"pattern")
 ```
 
-**Example:** keep only groups that start with `AppX-`:
+**Examples:** 
+
+To keep only groups whose names start with AppX-:
 
 ```
 regexOnly(.vds("memberOf").,"AppX-.*")
 ```
 
-**Example:** keep only groups containing `cat` (case-insensitive):
+To keep only groups whose names contain cat, regardless of case:
 
 ```
 regexOnly(.vds("memberOf").,".*[cC]at.*")
@@ -144,7 +145,9 @@ Emits a value only when the entire value does **not** match the given .NET regul
 regexNot(.vds("attributeName").,"pattern")
 ```
 
-**Example:** exclude groups related to service, test, or deprecated:
+**Example:** 
+
+To exclude groups related to service, test, or deprecated:
 
 ```
 regexNot(.vds("memberOf").,".*(?:service|test|deprecated).*")
@@ -155,6 +158,20 @@ regexNot(.vds("memberOf").,".*(?:service|test|deprecated).*")
 - Matching is full-string — the pattern must match the entire attribute value, not just a substring. Use `.*` anchors to match partial strings (e.g., `.*foo.*`).
 - Matching is case-sensitive. To match both `cat` and `Cat`, use a character class like `[cC]at` or the appropriate .NET regex flag syntax.
 - Patterns must conform to .NET regular expression syntax.
+
+#### Composition with other functions
+
+The **Value** argument of `regexOnly` / `regexNot` can itself be a nested transformation. For example, to uppercase values before filtering:
+
+```
+regexOnly(.upper(.vds("memberOf").).,"APP-.*")
+```
+
+However, `regexOnly` and `regexNot` **cannot** be nested as the inner expression of another function. **The following is invalid and will be rejected:**
+
+```
+upper(.regexOnly(.vds("memberOf").,"App-.*").)
+```
 
 #### Configuring via the Admin UI
 
@@ -172,19 +189,6 @@ At assertion time, each value of the multi-valued source attribute is tested aga
 
 ![Decoded SAML assertion showing only the Groups claim values that match the .*fo.* filter](media/mapping-results.png)
 
-#### Composition with other functions
-
-The **Value** argument of `regexOnly` / `regexNot` can itself be a nested transformation. For example, to uppercase values before filtering:
-
-```
-regexOnly(.upper(.vds("memberOf").).,"APP-.*")
-```
-
-However, `regexOnly` and `regexNot` **cannot** be nested as the inner expression of another function. **The following is invalid and will be rejected:**
-
-```
-upper(.regexOnly(.vds("memberOf").,"App-.*").)
-```
 
 ####  Restrictions
 
