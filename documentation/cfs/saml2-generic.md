@@ -70,9 +70,9 @@ After the import, it shows:
 
 ![](media/after-metadata-import.png)
 
-### Mappings
+### Configuring Mappings
 
-The **Mappings** tab contains the list of transformation required to generate the output token claims. Since this application supports it, you can send additional claims in your token. Click the "New Mapping" button to add a new mapping.
+The **Mappings** tab contains the list of transformation required to generate the output token claims for all applications. Click the "New Mapping" button to add a new mapping.
 
 ![](media/saml2-generic-tab-mappings.png)
 
@@ -81,7 +81,6 @@ When configuring attribute mappings, you can use regex-based filter functions to
 You can add filtering regex functions to the **Transformation** field in the **Additional mappings** section to limit the assertion to only the groups relevant to the specific application.
 
 ![Example filter](media/regex-filter.png)
-
 
 Two functions are available.
 
@@ -95,13 +94,15 @@ Emits a value only when the entire value matches the given .NET regular expressi
 regexOnly(.vds("attributeName").,"pattern")
 ```
 
-**Example:** keep only groups that start with `AppX-`:
+**Examples:** 
+
+To keep only groups whose names start with AppX-:
 
 ```
 regexOnly(.vds("memberOf").,"AppX-.*")
 ```
 
-**Example:** keep only groups containing `cat` (case-insensitive):
+To keep only groups whose names contain cat, regardless of case:
 
 ```
 regexOnly(.vds("memberOf").,".*[cC]at.*")
@@ -117,7 +118,9 @@ Emits a value only when the entire value does **not** match the given .NET regul
 regexNot(.vds("attributeName").,"pattern")
 ```
 
-**Example:** exclude groups related to service, test, or deprecated:
+**Example:** 
+
+To exclude groups related to service, test, or deprecated:
 
 ```
 regexNot(.vds("memberOf").,".*(?:service|test|deprecated).*")
@@ -128,6 +131,20 @@ regexNot(.vds("memberOf").,".*(?:service|test|deprecated).*")
 - Matching is full-string — the pattern must match the entire attribute value, not just a substring. Use `.*` anchors to match partial strings (e.g., `.*foo.*`).
 - Matching is case-sensitive. To match both `cat` and `Cat`, use a character class like `[cC]at` or the appropriate .NET regex flag syntax.
 - Patterns must conform to .NET regular expression syntax.
+
+#### Composition with other functions
+
+The **Value** argument of `regexOnly` / `regexNot` can itself be a nested transformation. For example, to uppercase values before filtering:
+
+```
+regexOnly(.upper(.vds("memberOf").).,"APP-.*")
+```
+
+However, `regexOnly` and `regexNot` **cannot** be nested as the inner expression of another function. **The following is invalid and will be rejected:**
+
+```
+upper(.regexOnly(.vds("memberOf").,"App-.*").)
+```
 
 #### Configuring via the Admin UI
 
@@ -145,19 +162,6 @@ At assertion time, each value of the multi-valued source attribute is tested aga
 
 ![Decoded SAML assertion showing only the Groups claim values that match the .*fo.* filter](media/mapping-results.png)
 
-#### Composition with other functions
-
-The **Value** argument of `regexOnly` / `regexNot` can itself be a nested transformation. For example, to uppercase values before filtering:
-
-```
-regexOnly(.upper(.vds("memberOf").).,"APP-.*")
-```
-
-However, `regexOnly` and `regexNot` **cannot** be nested as the inner expression of another function. **The following is invalid and will be rejected:**
-
-```
-upper(.regexOnly(.vds("memberOf").,"App-.*").)
-```
 
 ####  Restrictions
 
@@ -166,21 +170,6 @@ upper(.regexOnly(.vds("memberOf").,"App-.*").)
   - A non-mandatory claim is omitted from the assertion (no empty `AttributeValue` is emitted).
   - A mandatory claim will cause an evaluation error and SSO will fail.
 - If a regex pattern is invalid, the mapping fails  and the unfiltered group list is never emitted.
-
-
-### Access Rules
-
-The **Access Rules** tab helps define the second layer of security (after LOA) to grant access to this application. By default, the access is limited to only the people in the **Application Group** which is a group created automatically by CFS when the application is created. 
-
-To grant access to this application, you can use one of the following options:
-
--   Enabling **Allow All Users** option grants access to every user of your tenant (as long as the other security layers, LOA, COT... are accepted for the user).
--   Use the **Application Group** to add users allowed to access this application. The users who are granted access to the application after an access request are automatically added to this group.
--   Add **Additional groups** from the RadiantOne identity store.
-
-There is also an option to disable users from seeing the "Request Access" feature entirely, providing you with more control over who can request access to your application.
-
-![](media/app-access-rules.png)
 
 ### Filters
 
