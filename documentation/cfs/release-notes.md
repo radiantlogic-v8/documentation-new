@@ -333,3 +333,19 @@ July 21, 2026
 
 >[!note] Detailed vulnerability reports for the vulnerabilities addressed in this release are available here: [Security Vulnerability Report](./vulnerability-report)
 
+
+### v3.18.1
+
+August 20, 2026 
+
+**Improvements**
+
+* [CFS-221]: Added regexOnly and regexNot [transformation functions](./03-configuration.md#configuring-mappings) for application attribute/claim mappings, allowing administrators to filter which values from multi-valued identity-store attributes are emitted into SAML and WS-Federation assertions. 
+
+**Security Vulnerability Fixes**
+
+* [CFS-219]: Fixed multiple low-severity security vulnerabilities identified including issues related to CWE-502, CWE-327, CWE-916, and CWE-79. 
+
+>[!note] Detailed vulnerability reports for the vulnerabilities addressed in this release are available here: [Security Vulnerability Report](./vulnerability-report)
+
+
