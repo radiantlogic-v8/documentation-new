@@ -139,7 +139,7 @@ regexNot(.vds("memberOf").,".*(?:service|test|deprecated).*")
 1. Open the transformation wizard on an attribute or claim mapping.
 2. Select **Regex Only** or **Regex Not** from the operations list.
 3. Set the **Value** argument (e.g., VDS `memberOf`).
-4. Enter the .NET regex pattern.
+4. Enter the .NET regex pattern in the **Transformation** field.
 5. Save the mapping.
 
 The completed mapping appears in the **Additional Mappings** list. In the example below, a `regexOnly` filter on `memberOf` with the pattern `.*fo.*` is applied to the **Groups** claim type:
