@@ -126,15 +126,13 @@ regexNot(.vds("attributeName").,"pattern")
 regexNot(.vds("memberOf").,".*(?:service|test|deprecated).*")
 ```
 
-## Pattern Matching Behavior
+##### Pattern Matching Behavior
 
 - Matching is full-string — the pattern must match the entire attribute value, not just a substring. Use `.*` anchors to match partial strings (e.g., `.*foo.*`).
 - Matching is case-sensitive. To match both `cat` and `Cat`, use a character class like `[cC]at` or the appropriate .NET regex flag syntax.
 - Patterns must conform to .NET regular expression syntax.
 
-## Configuring via the Admin UI
-
-`regexOnly` and `regexNot` are available in the Normal transformation wizard when editing attribute/claim mappings:
+##### Configuring via the Admin UI
 
 1. Open the transformation wizard on an attribute or claim mapping.
 2. Select **Regex Only** or **Regex Not** from the operations list.
