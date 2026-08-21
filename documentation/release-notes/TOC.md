@@ -28,6 +28,8 @@ description: v7.4 Release Notes
 - [v7.4.22 Release Notes](v7422-release-notes.md)
 - [v7.4.23 Release Notes](v7423-release-notes.md)
 - [v7.4.24 Release Notes](v7424-release-notes.md)
+- [v7.4.25 Release Notes](v7425-release-notes.md)
+
 
 
 
