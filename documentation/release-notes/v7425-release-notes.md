@@ -5,7 +5,7 @@ description: v7.4.25 Release Notes
 
 # RadiantOne v7.4.25 Release Notes
 
-August 21, 2026
+August 24, 2026
 
 These release notes contain important information about improvements and bug fixes for RadiantOne v7.4.
 These release notes contain the following sections:
@@ -51,6 +51,7 @@ For specific hardware requirements of each, read the [system requirements](../sy
 ## Bug Fixes
 
 - [IV4-760]: Fixed a performance issue in the Microsoft Entra ID (Azure AD) connector where retrieving very large groups could take an excessive amount of time to return — up to several hours for groups with very large membership. Such groups are now processed efficiently and returned in seconds.
+- [IV4-765, SQ-1815]: Fixed an issue where a restarted node during rolling cluster restarts could misdetect missing queued changes, causing recovery delays, change-queue timeouts, and excessive warning logs.
 
 ## Known Issues/Important Notes
 
