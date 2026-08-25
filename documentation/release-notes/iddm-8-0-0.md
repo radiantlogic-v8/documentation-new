@@ -73,6 +73,7 @@ Starting in RadiantOne v8.0, the following features have been deprecated:
 - Groups Builder Wizard.
 - Merge Tree Wizard.
 - Global Identity Viewer.
+- Pull plugin for integrating with CyberArk for managing credentials in data sources. The Push plugin approach is still supported.
 
 ## How to Report Problems and Provide Feedback
 
