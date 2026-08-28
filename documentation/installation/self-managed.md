@@ -33,6 +33,8 @@ The table below shows the mapping between the Identity Data Management applicati
 | 8.4.5                                                                                    | 1.4.5                                |
 | 8.5.0                                                                                    | 1.5.0                                |
 | 8.5.1                                                                                    | 1.5.1                                |
+| 8.5.2                                                                                    | 1.5.2                                |
+
 
 
 Ensure that you specify your target version when running installation and update commands that are listed in this document.  
@@ -59,7 +61,7 @@ Ensure that you specify your target version when running installation and update
    ```yaml
    replicaCount: 1 # Use 1 for testing, use 2 or more for production if needed. 
    image:
-     tag: 8.5.1
+     tag: 8.5.2
    fid:
      license: >-
        YourLicense
@@ -131,7 +133,7 @@ Ensure that you specify your target version when running installation and update
 4. **Optional - dry run your deployment**
 
    ```bash
-   helm -n self-managed upgrade --install fid oci://registry-1.docker.io/radiantone/iddm-helm --version 1.5.1 --values </path/to/your/values.yaml> --set env.INSTALL_SAMPLES=true --debug --dry-run
+   helm -n self-managed upgrade --install fid oci://registry-1.docker.io/radiantone/iddm-helm --version 1.5.2 --values </path/to/your/values.yaml> --set env.INSTALL_SAMPLES=true --debug --dry-run
    ```
 
    This command will process your YAML config files without deploying anything. If everything looks good, re-run the command without the `--dry-run` parameter. Setting `INSTALL_SAMPLES=true` is optional for testing purposes and not recommended for production deployment.
@@ -142,7 +144,7 @@ Ensure that you specify your target version when running installation and update
    Ensure that you provide the appropriate path for your values.yaml file before running this command:
 
    ```bash
-   helm -n self-managed install fid oci://registry-1.docker.io/radiantone/iddm-helm --version 1.5.1 --values </path/to/your/values.yaml> --debug
+   helm -n self-managed install fid oci://registry-1.docker.io/radiantone/iddm-helm --version 1.5.2 --values </path/to/your/values.yaml> --debug
    ```
 
 6. **Verify deployment**
@@ -247,7 +249,7 @@ kubectl rollout status statefulset/fid -n self-managed
 To update any resources or settings, change the values in `values.yaml` and run the following command:
 
 ```bash
-   helm -n self-managed upgrade --install fid oci://registry-1.docker.io/radiantone/iddm-helm --version 1.5.1 --values </path/to/your/values.yaml> --debug
+   helm -n self-managed upgrade --install fid oci://registry-1.docker.io/radiantone/iddm-helm --version 1.5.2 --values </path/to/your/values.yaml> --debug
 ```
 
 ## Troubleshooting your Kubernetes environment
