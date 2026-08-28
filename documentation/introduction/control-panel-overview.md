@@ -84,7 +84,7 @@ For example, if your Control Panel is at https://rlqa-svc.dev01.radiantlogic.io,
 
 ### OIDC Token Configuration
 
-To enable support for OIDC authentication into Control Panel, follow these steps outlined in this section.
+To enable support for OIDC authentication into Control Panel, follow the steps outlined in this section.
 
 You'll need Control Panel administrator access. You should also have — or be able to get from your identity provider's admin console — a **client ID** and **client secret** for an OIDC application registered with that provider. If you haven't registered the Control Panel as an application with your IdP yet, do that first; the steps below tell you exactly what redirect URI to give it.
 
