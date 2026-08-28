@@ -345,7 +345,31 @@ Either search for a user to manage their roles, or click **CREATE USER** to crea
 2. Locate the *Assign Roles* section.
 3. Select a role from the drop-down list and click **+ASSIGN ROLE**. Repeat this step until all roles are selected.
 4. Click **SAVE**
+
+**Assigning Roles to Dynamic Members**
+1. From Control Panel > Manage > Directory Browser, navigate below cn=config and then ou=GlobalGroups.
+2. Below ou=GlobalGroups, select the group corresponding to the delegated admin role that you want to assign dynamic members to.
+3. On the right, click the + icon inline with the objectClass attribute. This is to add a new value.
+4. Enter *groupOfURLs* for the new value. This indicates that the group can have dynamic members.
+
+    ![Objectclass for Dynamic Group](Media/groupofurls.jpg)
+   
+6. Click the checkmark inline with the new value to apply.
+7. With the group entry selected, click **MANAGE GROUP**.
+8. On the **DYNAMIC MEMBERS** tab, select or enter the base DN to start locating possible members.
+9. In the FILTER section, enter the criteria that qualifies group members. This can be any valid LDAP filter.
+10. Click **ADD MEMBERSHIP RULE**.  The example shown below indicates that all users located in the o=companydirectory naming context with location of *San Francisco* that have a title of *Sales Manager* should be a dynamic member.
     
+  ![Membership Rule](Media/dynamic-members-example.jpg)
+    
+12. To have the Radiant Logic service automatically evaluate the dynamic group members and return them explicitly in the membership attribute, go to Control Panel > Setup > Directory Namespace > Namespace Design.
+13. In the Filter drop-down list, select Reserved RadiantOne Directory Stores to display the cn=config store where the groups associated with the default delegated admin roles are stored.
+
+    ![Reserved RadiantOne Directory Stores](Media/reserved-store.jpg)
+    
+14. Select the cn=config entry in the list and click the **SPECIAL ATTRIBUTES** tab on the right.
+15. In the Dynamic Groups section, click **+DYNAMIC GROUP** to choose a dynamic group. You can choose a single dynamic group, or you can choose a container where many dynamic groups are located and the automatic translation of members will be handled for any dynamic group located here.
+16. Click **SAVE** Dynamic members are automatically assigned to the configured groups.
  
 ## Customizing the Classic Control Panel 
 The following settings are currently only applicable to the **Classic Control Panel**.
