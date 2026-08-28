@@ -344,7 +344,7 @@ Either search for a user to manage their roles, or click **CREATE USER** to crea
 1. From Control Panel > Admin > User Management tab, search for a user and click on the username to select it.
 2. Locate the *Assign Roles* section.
 3. Select a role from the drop-down list and click **+ASSIGN ROLE**. Repeat this step until all roles are selected.
-4. Click **SAVE**
+4. Click **SAVE**.
 
 **Assigning Roles to Dynamic Members**
 1. From Control Panel > Manage > Directory Browser, navigate below cn=config and then ou=GlobalGroups.
@@ -369,7 +369,7 @@ Either search for a user to manage their roles, or click **CREATE USER** to crea
     
 15. Select the cn=config entry in the list and click the **SPECIAL ATTRIBUTES** tab on the right.
 16. In the Dynamic Groups section, click **+DYNAMIC GROUP** to choose a dynamic group. You can choose a single dynamic group, or you can choose a container where many dynamic groups are located and the automatic translation of members will be handled for any dynamic group located here.
-17. Click **SAVE** Dynamic members are automatically assigned to the configured groups.
+17. Click **SAVE**. Dynamic members are automatically assigned to the configured groups.
  
 ## Customizing the Classic Control Panel 
 The following settings are currently only applicable to the **Classic Control Panel**.
