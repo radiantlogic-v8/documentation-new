@@ -74,7 +74,7 @@ Detailed steps:
 
 8.	Control Panel uses the information in the token along with the *Claims to User DN Mapping rules* to locate the user in the RadiantOne namespace to enforce permissions based on what delegated admin role the user is a member of – which dictates what the admin is allowed to do within the Control Panel.
 
-#### Redirect URI
+**Redirect URI**
 
 To use OIDC authentication, you need a Redirect URI (also called a callback URL). This is where your Identity Provider sends users after they log in. Identity Data Management automatically provides this Redirect URI, and it’s always based on your deployment’s base URL.
 
