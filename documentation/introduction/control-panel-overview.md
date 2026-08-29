@@ -500,15 +500,21 @@ Either search for a user to manage their roles, or click **CREATE USER** to crea
 16. In the Dynamic Groups section, click **+DYNAMIC GROUP** to choose a dynamic group. You can choose a single dynamic group, or you can choose a container where many dynamic groups are located and the automatic translation of members will be handled for any dynamic group located here.
 17. Click **SAVE**. Dynamic members are automatically assigned to the configured groups.
  
-## Customizing the Classic Control Panel 
-The following settings are currently only applicable to the **Classic Control Panel**.
+## Customizing the Control Panel 
+The following settings can be used to customize the Control Panel.
 
-To switch to Classic Control Panel, use the menu options for the logged in user in the upper right.
+### Dashboard Settings
 
-![Classic Control Panel](Media/classic-cp.jpg)
-
-### Color theme 
+#### Color Theme
 The Classic Control Panel can have a custom color theme.
+
+1.  Log into the Control Panel as a member of the Directory Administrators role. 
+1.	Go to the Control Panel > Admin > Control Panel Configuration.
+1.	In the *Dashboard Settings* section, indicate the color by name or by hex color code.
+
+    >[!note] If you enter a hex color code, include the "#" character here. If the color specified is not recognized, it defaults to gray.
+    
+1.	Click **SAVE**.
 
 ### Message of the Day 
 The Control Panel login page contains a basic username and password text box. To add a custom message on the login page, follow the steps below.
