@@ -511,28 +511,28 @@ To switch to Classic Control Panel, use the menu options for the logged in user 
 The Classic Control Panel can have a custom color theme.
 
 ### Message of the Day 
-The Classic Control Panel login page contains a basic username and password text box. To add a custom message on the login page, follow the steps below.
+The Control Panel login page contains a basic username and password text box. To add a custom message on the login page, follow the steps below.
 
-1.	Switch to the Classic Control Panel as a member of the Directory Administrators role.
-1.	Go to the Settings tab > Server Front End > Administration.
-1.	In the *Message of the Day Configuration*, enter the message contents.
+1.  Log into the Control Panel as a member of the Directory Administrators role. 
+1.	Go to the Control Panel > Admin > Control Panel Configuration.
+1.	In the *Message of the Day Configuration* section, enter the message contents.
 1.	Enter a message title (will display if a popup window is used).
-1.	(Optional) check the box to enable a "Warning" icon if you want the message to be prefixed with a "Warning".
-1.	(Optional) check the box to enable a "Popup" message that displays the message title and contents that the user must explicitly acknowledge and close. 
-1.	Click **Save**.
-1.	Log out of the Classic Control Panel to be returned to the login screen to view the custom message.
+1.	(Optional) toggle on the "Is Warning" option if you want the message to be prefixed with a "Warning".
+1.	(Optional) toggle on the "Is Popup" option to display the message title and contents that the user must explicitly acknowledge and close. 
+1.	Click **SAVE**.
+1.	Log out of the Control Panel to be returned to the login screen to view the custom message.
 
 An example of a custom message on the login page is shown below.
 
-![Custom Message on Login Page](Media/Image3.26.jpg)
+![Custom Message on Login Page](Media/custom-message.jpg)
 
 An example of a custom message using the "Warning" icon on the login page is shown below.
 
-![Custom Message on Login Page with Warning Label and Bold Font](Media/Image3.27.jpg)
+![Custom Message on Login Page with Warning Label and Bold Font](Media/custom-message-warning.jpg)
 
-An example of a custom message using the "Popup" on the login page is shown below.
+An example of a custom message using the "Popup" on the login page is shown below. The user must click **ACCEPT** before being allowed to login.
 
-![Custom Message Popup Window](Media/Image3.28.jpg)
+![Custom Message Popup Window](Media/custom-message-warning-popup.jpg)
 
 
 ### Banner 
@@ -540,9 +540,9 @@ A custom message can be added to the banner of the RadiantOne Control Panel page
 
 To add a custom message:
 
-1. Log into the Classic Control Panel as a member of the Directory Administrators role. 
+1. Log into the Control Panel as a member of the Directory Administrators role. 
 
-2. Navigate to Settings > Administration > Internal Banner Configuration section. 
+2. Navigate to Settings > Admin > Internal Banner Configuration section. 
 
 3. Enter the message to appear in the banner in the Banner Text field. 
 
@@ -554,11 +554,11 @@ To add a custom message:
 
     >[!note] If you enter a hex color code, include the "#" character here. If the color specified is not recognized, it defaults to gray. 
 
-    ![internal banner configuration](Media/internal-banner-config.jpg)
+    ![internal banner configuration](Media/banner-customization.jpg)
 
-6. Click **Save**. The next time the Classic Control Panel is opened (or the browser tab is refreshed), the custom banner message is displayed. 
+6. Click **SAVE**. The next time the Control Panel is opened (or the browser tab is refreshed), the custom banner message is displayed. 
 
-![banner message](Media/banner-message.jpg)
+![banner message](Media/custom-banner-example.jpg)
 
 ## Navigating the Control Panel 
 
