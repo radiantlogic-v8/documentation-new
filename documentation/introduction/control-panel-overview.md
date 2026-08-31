@@ -517,6 +517,24 @@ The Classic Control Panel can have a custom color theme.
     
 1.	Click **SAVE**.
 
+#### Lock Control Panel Configuration
+
+The RadiantOne super user account (e.g. cn=directory manager) and members of the cn=directory administrators group (cn=directory administrators,ou=globalgroups,cn=config) can enable a lock on all configuration changes. This ensures that no changes are being made while the configuration is being backed up and/or migrated. To lock the configuration, navigate to Main Control Panel > Settings > Configuration > Configuration Lock. Toggle the Configuration Changes property to the Locked position. Click **Save**.
+
+When the configuration is locked, no one can make changes to the RadiantOne configuration (either from the UI or command line tools). In the UI, an ![lock button](Media/Image3.148.jpg) icon appears at the top of the Control Panel, configuration options are read-only, and FID can be restarted but not stopped. Command-line operations that display information still function, but operations that modify the configuration do not. Only the RadiantOne super user, or a member of the cn=directory administrators group, can unlock the configuration. When they log into the Control Panel, there is a message along with a button, prompting them to unlock the configuration.
+
+When other users log into the Control Panel, there is a message prompting the user to contact the Directory Manager to unlock the configuration. 
+
+![Message Displayed for Locked Configuration](Media/Image3.149.jpg)
+
+#### Control Panel Timeout
+
+The Control Panel session timeout indicates how long until the current control panel session expires due to inactivity and the user is logged out. The default value is 30 minutes. To avoid reaching the control panel session timeout when both the Main and Server Control Panels are open, maintain activity in either control panel (activity in both control panels is not required).
+
+#### Max Concurrent Users
+
+The Control Panel max concurrent user value indicates how many control panel sessions are allowed concurrently. This field accepts integer values of 0 and higher. The default value is 0, for an unlimited number of sessions. If attempting to connect to the Control Panel while the number of concurrent sessions is reached, the Login page displays the following message: “Authentication Failed. Reason: Maximum sessions exceeded”. 
+
 ### Message of the Day 
 The Control Panel login page contains a basic username and password text box. To add a custom message on the login page, follow the steps below.
 
