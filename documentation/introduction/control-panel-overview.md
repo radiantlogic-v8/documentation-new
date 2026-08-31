@@ -661,7 +661,7 @@ Entries can be managed from the [Directory Browser](../configuration/directory-s
 
 *Attribute Encryption* - [Manage Attribute Encryption](/documentation/configuration/security/attribute-encryption) from here.
 
-*Password Policies* - [Manage Password Policies](/documentation/configuration/security/password-policies) from Classic Control Panel.
+*Password Policies* - [Manage Password Policies](/documentation/configuration/security/password-policies) from here.
 
 *Access Controls* - [Manage Access Controls](/documentation/configuration/security/access-controls) from here.
 
@@ -819,7 +819,7 @@ This parameter can be set to the DN of the Administrators group defined in the v
 
 **Control Panel Configuration**  
 
-[Manage the OIDC Provider Configuration to support SSO into Control Panel](#oidc=token) from here.
+[Manage the OIDC Provider Configuration to support SSO into Control Panel](#oidc=token) and other customizations from here.
 
 **Entry Statistics**
 
@@ -827,7 +827,7 @@ This parameter can be set to the DN of the Administrators group defined in the v
 
 ### File Manager
 
-File Manager is available in the RadiantOne Control Panel under Manage > External Files.
+File Manager is available in the RadiantOne Control Panel under Manage > File Manager.
 
 RadiantOne does not expose its files through the operating system's user interface. Instead, File Manager provides a way to view, search, upload, download, and delete files stored under the `RLI_HOME` directory; create and rename folders inside the custom project; and build jar files. To open it, click External Files in the left navigation under Manage.
 
@@ -942,7 +942,7 @@ The following settings must be managed from the RadiantOne Classic Control Panel
 -	Synchronization: Classic Control Panel > Synchronization tab <br> See [Synchronization](/documentation/configuration/synchronization/synchronization-concepts) for details. 
 -	SCIM config (frontend): ​Classic Control Panel > Settings > Server Front End  > SCIM <br> See [SCIM](../web-services-api-guide/scim) for details. 
 -	Duplicates Handling​: Classic Control Panel > Settings > Server Front End > Duplicates Handling See [Duplicates Handling](../tuning/attribute-handling/#duplicate-entry-handling) for details.
--	Control Panel customizations (lock, color theme, session timeout, max users, banner, custom message on login screen)​: ​Classic Control Panel > Settings > Server Front End > Administration <br> See [Customizing the Classic Control Panel](#customizing-the-classic-control-panel) for details.
+-	Control Panel customizations (lock, color theme, session timeout, max users)​: ​Classic Control Panel > Settings > Server Front End > Administration <br> See [Customizing the Classic Control Panel](#customizing-the-classic-control-panel) for details.
 -	PCache Refresh Monitoring: Classic Control Panel > PCache Monitoring tab <br> See [Persistent Cache Refresh Monitoring](../monitoring-and-alerts/monitoring-and-alerts/#persistent-cache-refresh-pcache-monitoring-tab) for details.
 -	Intercluster Replication Monitoring: Classic Control Panel > Replication Monitoring tab <br> See [Replication Monitoring](../monitoring-and-alerts/monitoring-and-alerts/#replication-monitoring-tab) for details.
 -	Identity Data Analysis Wizard: Classic Control Panel > Wizards > Identity Data Analysis. See [Identity Data Analysis](../configuration/identity-views/identity-data-analysis) for details.
