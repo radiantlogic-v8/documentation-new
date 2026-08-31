@@ -316,7 +316,7 @@ A rich set of HTTP-based API's have been developed on top of LDAP, to provide br
 
 <tabpanel>
   
-## Radiant Logic Connectors
+## Connectors
 
 Discover connectors for the RadiantOne Identity Data Platform.
 
