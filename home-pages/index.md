@@ -7,6 +7,7 @@ description: Knowledge homepage
   <tablist>
     <tab>Knowledge</tab>
     <tab>Developer</tab>
+    <tab>Connectors Marketplace</tab>
   </tablist>
 
 <tabpanels>
@@ -312,5 +313,25 @@ A rich set of HTTP-based API's have been developed on top of LDAP, to provide br
 </section>
 
 </tabpanel>
+
+<tabpanel>
+  
+## Connectors
+
+Discover official and community connectors for the RadiantOne Identity Data Platform.
+
+<section>
+  <connector name="Bedrock Connector" eyebrow="AI Agents" meta="v1.0.0" href="https://github.com/radiantlogicinc/connector-marketplace/tree/main/agentic-aws-bedrock" capabilities="agents,readonly">List AI agents from Amazon Bedrock and Bedrock AgentCore — one region, and one or several AWS accounts in a single crawl.
+  </connector>
+  <connector name="Foundry Connector" eyebrow="AI Agents" meta="v1.0.0" href="https://github.com/radiantlogicinc/connector-marketplace/tree/main/microsoft-azure-ai-foundry" capabilities="agents,readonly">Lists AI agents from Azure AI Foundry in a single Azure subscription (optionally scoped to one resource group / project).
+  </connector>
+  <connector name="GCP Connector" eyebrow="AI Agents" meta="v1.0.0" href="https://github.com/radiantlogicinc/connector-marketplace/tree/main/google-cloud-agents" capabilities="agents,readonly">Lists AI agents (Vertex AI Reasoning Engines, Dialogflow CX/ES, Agent Builder) across GCP projects and locations using a service-account key.
+  </connector>
+  <connector name="Idira Privilege Cloud (formerly CyberArk)" eyebrow="Privileged Access" meta="v2.0.0" href="https://github.com/radiantlogicinc/connector-marketplace/tree/main/cyberark-privilege-cloud" capabilities="identity,readonly">List privileged users and the roles they belong to, with role nesting, from Idira.
+  </connector>
+</section>
+
+</tabpanel>
+  
 </tabpanels>
 </tabs>
