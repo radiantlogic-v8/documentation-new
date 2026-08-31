@@ -116,9 +116,10 @@ This is the callback address your identity provider will redirect back to after 
 2. **OIDC Provider** — choose from the dropdown:
    - **Google**, **Apple**, **Microsoft**, or **Salesforce** — picking one of these automatically fills in the **Discovery URL** with that provider's standard `.well-known/openid-configuration` address.
    - **Custom** (default) — for any other provider (Okta, Auth0, Ping, Azure AD/Entra ID, your own IdP, etc.). Enter that provider's discovery URL yourself, or leave it blank and fill in the authorization and token endpoints manually.
-3. Leave **Enabled** off for now if you want to finish testing before this configuration goes live; toggle it on when you're ready for users to be able to sign in with it.
 
 ![OIDC Provider dropdown open, showing Google, Apple, Microsoft, Salesforce, and Custom](Media/oidc-03-provider-dropdown.jpg)
+
+3. Leave **Enabled** off for now if you want to finish testing before this configuration goes live; toggle it on when you're ready for users to be able to sign in with it.
 
 #### Step 4: Populate the endpoints
 
