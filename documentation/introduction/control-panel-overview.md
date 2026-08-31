@@ -511,7 +511,7 @@ The Classic Control Panel can have a custom color theme.
 
 1.  Log into the Control Panel as a member of the Directory Administrators role. 
 1.	Go to the Control Panel > Admin > Control Panel Configuration.
-1.	In the *Dashboard Settings* section, indicate the color by name or by hex color code.
+1.	In the *Dashboard Settings* section, indicate the Color Theme by hex color code.
 
     >[!note] If you enter a hex color code, include the "#" character here. If the color specified is not recognized, it defaults to gray.
     
@@ -519,21 +519,43 @@ The Classic Control Panel can have a custom color theme.
 
 #### Lock Control Panel Configuration
 
-The RadiantOne super user account (e.g. cn=directory manager) and members of the cn=directory administrators group (cn=directory administrators,ou=globalgroups,cn=config) can enable a lock on all configuration changes. This ensures that no changes are being made while the configuration is being backed up and/or migrated. To lock the configuration, navigate to Main Control Panel > Settings > Configuration > Configuration Lock. Toggle the Configuration Changes property to the Locked position. Click **Save**.
+The RadiantOne super user account (e.g. cn=directory manager) and members of the cn=directory administrators group (cn=directory administrators,ou=globalgroups,cn=config) can enable a lock on all configuration changes. This ensures that no changes are being made while the configuration is being backed up and/or migrated. 
 
-When the configuration is locked, no one can make changes to the RadiantOne configuration (either from the UI or command line tools). In the UI, an ![lock button](Media/Image3.148.jpg) icon appears at the top of the Control Panel, configuration options are read-only, and FID can be restarted but not stopped. Command-line operations that display information still function, but operations that modify the configuration do not. Only the RadiantOne super user, or a member of the cn=directory administrators group, can unlock the configuration. When they log into the Control Panel, there is a message along with a button, prompting them to unlock the configuration.
+To lock the configuration:
+1.  Log into the Control Panel as a member of the Directory Administrators role. 
+1.	Go to the Control Panel > Admin > Control Panel Configuration.
+1.	In the *Dashboard Settings* section, locate the Lock Control Panel Configuration option.
+1.  Toggle the option to enabled.  To unlock the configuration, you toggle this option off.
+1.  Click **SAVE**.
+
+When the configuration is locked, no one can make changes to the RadiantOne configuration. In the UI, an "lock" icon appears at the top of the Control Panel, configuration options are read-only and the RadiantOne service may be stopped or restarted. Only the RadiantOne super user, or a member of the cn=directory administrators group, can unlock the configuration. When they log into the Control Panel, there is a message along with a button, prompting them to unlock the configuration.
 
 When other users log into the Control Panel, there is a message prompting the user to contact the Directory Manager to unlock the configuration. 
 
-![Message Displayed for Locked Configuration](Media/Image3.149.jpg)
-
 #### Control Panel Timeout
 
-The Control Panel session timeout indicates how long until the current control panel session expires due to inactivity and the user is logged out. The default value is 30 minutes. To avoid reaching the control panel session timeout when both the Main and Server Control Panels are open, maintain activity in either control panel (activity in both control panels is not required).
+The Control Panel session timeout indicates how long until the current control panel session expires due to inactivity and the user is logged out. The default value is 30 minutes. To avoid reaching the control panel session timeout, maintain activity in the control panel.
+
+To configure Control Panel Timeout:
+
+1.  Log into the Control Panel as a member of the Directory Administrators role. 
+1.	Go to the Control Panel > Admin > Control Panel Configuration.
+1.	In the *Dashboard Settings* section, locate the Control Panel timeout option.
+1.  Enter the number of minutes.  
+1.  Click **SAVE**.
+
 
 #### Max Concurrent Users
 
 The Control Panel max concurrent user value indicates how many control panel sessions are allowed concurrently. This field accepts integer values of 0 and higher. The default value is 0, for an unlimited number of sessions. If attempting to connect to the Control Panel while the number of concurrent sessions is reached, the Login page displays the following message: “Authentication Failed. Reason: Maximum sessions exceeded”. 
+
+To configure the maximum number of concurrent users:
+
+1.  Log into the Control Panel as a member of the Directory Administrators role. 
+1.	Go to the Control Panel > Admin > Control Panel Configuration.
+1.	In the *Dashboard Settings* section, locate the Max Concurrent Users option.
+1.  Enter the number of maximum concurrent users.  
+1.  Click **SAVE**.
 
 ### Message of the Day 
 The Control Panel login page contains a basic username and password text box. To add a custom message on the login page, follow the steps below.
