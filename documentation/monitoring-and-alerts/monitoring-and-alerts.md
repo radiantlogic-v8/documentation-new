@@ -137,14 +137,6 @@ The items that can be monitored from the Server Control Panel are described in t
 
 Click the "Server Control Panel" link at the top-right of the Classic Control Panel to launch the Server Control Panel.
 
-### CPU, Memory, Disk Space, Disk Latency and Connection Usage
-
-From the Server Control Panel > Dashboard Tab, you can monitor the CPU, disk space and latency on the machine hosting RadiantOne, and the RadiantOne service memory and connections.
-
->[!warning] To use this feature, enable the cluster monitor at Classic Control Panel > Settings > Logs > Clustermonitor.
-
-![An image showing monitoring resources from the server control panel ](Media/Image1.3.jpg)
-
 ### RadiantOne Directory Status
 
 Store status (including number of entries, index size, revision, and search and write operations) can be monitored from the Server Control Panel > Usage & Activity tab > Universal Directory Status section.
