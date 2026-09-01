@@ -220,7 +220,7 @@ Since all data sources store user and password information differently (and use 
 
 After the federated namespace has been built, an application can query RadiantOne and unknowingly be able to search across numerous sources of user information.
 
-![Example of a Federated Namespace](Media/Image2.26.jpg)
+![Example of a Federated Namespace](Media/Image2.26new.jpg)
  
 ### Authentication – Client Issues the Bind DN
 
