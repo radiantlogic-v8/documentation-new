@@ -46,7 +46,7 @@ The time the user last logged into the Classic Control Panel is displayed above 
 Support for MFA logins, you must integrate with an OIDC provider that offers MFA. The MFA checking is handled by the OIDC provider. See the OIDC token configuraton below.
 
 ### OIDC Token Authentication Overview
-The RadiantOne Control Panel supports SSO with your corporate Identity Provider using OpenID Connect (OIDC) token-based authentication. This option provides the security of sending user login credentials to the authentication server (the Identity Provider), not the application (Control Panel, the Relying Party). OpenID Connect token authentication allows you to send your username and password just once, to the Identity Provider (IDP), have MFA validated (if enabled and supported by the Identity Provider), and then pass the token in the request to the Control Panel. When OIDC is configured in RadiantOne, the Control Panel login screen displays a list of configured OIDC providers for the admin to select from. The example shown below has two defined, one for Okta and one for Google:
+The RadiantOne Control Panel supports SSO with your corporate Identity Provider using OpenID Connect (OIDC) token-based authentication leveraging the **Authorization Code Flow with PKCE**. This option provides the security of sending user login credentials to the authentication server (the Identity Provider), not the application (Control Panel, the Relying Party). OpenID Connect token authentication allows you to send your username and password just once, to the Identity Provider (IDP), have MFA validated (if enabled and supported by the Identity Provider), and then pass the token in the request to the Control Panel. When OIDC is configured in RadiantOne, the Control Panel login screen displays a list of configured OIDC providers for the admin to select from. The example shown below has two defined, one for Okta and one for Google:
 
 ![Login with Open ID Connect](Media/oidc-cp-login.jpg)
 
@@ -86,7 +86,7 @@ For example, if your Control Panel is at https://rlqa-svc.dev01.radiantlogic.io,
 
 To enable support for OIDC authentication into Control Panel, follow the steps outlined in this section.
 
-You'll need Control Panel administrator access. You should also have — or be able to get from your identity provider's admin console — a **client ID** and **client secret** for an OIDC application registered with that provider. If you haven't registered the Control Panel as an application with your IdP yet, do that first; the steps below tell you exactly what redirect URI to give it.
+You'll need Control Panel administrator access. You should also have — or be able to get from your identity provider's admin console — a **client ID** for an OIDC application registered with that provider. Since the **Authorization Code Flow with PKCE** is used by the Control Panel, you don't need to have a client secret. If you haven't registered the Control Panel as an application with your IdP yet, do that first; the steps below tell you exactly what redirect URI to give it.
 
 #### Before you start: register the Control Panel as an application with your IdP
 
