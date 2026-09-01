@@ -228,15 +228,15 @@ When a user logs in with a username and password, some applications send a searc
 
 In the example below, the backend source is an LDAP directory that is mounted in the RadiantOne namespace using a proxy configuration. Again, there are two steps in the process: Identification and Credentials Checking. 
  
-![Identification Step](Media/Image2.27.jpg)
+![Identification Step](Media/Image2.27new.jpg)
 
-![Credentials Checking Step](Media/Image2.28.jpg)
+![Credentials Checking Step](Media/Image2.28new.jpg)
  
 If the underlying source does not understand an LDAP bind operation (i.e. a relational database), RadiantOne can be customized to encrypt the password that was passed from the client using the appropriate algorithm and then compare that value with the value stored in the database (the attribute that has been mapped to userPassword) to decide whether the bind succeeds or fails. This encryption is performed via an interception script. As mentioned before, the entire authentication process happens in two steps: Identification and Credentials Checking. They are depicted below.
 
-![Identification Step](Media/Image2.29.jpg)
+![Identification Step](Media/Image2.29new.jpg)
  
-![Credentials Checking](Media/Image2.30.jpg)
+![Credentials Checking](Media/Image2.30new.jpg)
  
 A template for the interception script is provided and can be customized to use the needed encryption algorithm. 
 
