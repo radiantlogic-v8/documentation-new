@@ -23,9 +23,9 @@ The maximum number of client connections the server can accept concurrently (con
 
 **Manually Closing a Client Connection**
 
-A connection can be manually closed by issuing an LDAP search to RadiantOne with the connection ID. The connection ID can be viewed from the Server Control Panel > Usage & Activity tab > Connections & Operations. 
+A connection can be manually closed by issuing an LDAP search to RadiantOne with the connection ID. The connection ID can be viewed from the Control Panel > Analyze > Usage & Activity > Connections & Operations. 
 
-![Connection ID](Media/current-conn.jpg)
+![Connection ID](Media/current-connID.jpg)
 
 With the connection ID, connect to RadiantOne as the super user (e.g. cn=directory manager) and perform a search request with a base DN of, `action=closeconnection,ID=<connectionID>`. An example is shown below using the ldapsearch utility. This example closes the connection associated with ID 148300.
 
