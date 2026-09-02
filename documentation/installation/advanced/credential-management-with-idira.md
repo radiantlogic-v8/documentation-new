@@ -278,7 +278,7 @@ Select-Object Name
 
 ![The RadiantLogic-VDS platform's CPM Plug-in page](images/figure-4-radiantlogic-vds-cpm-plugin.jpg)
 
-*Figure 4. The RadiantLogic-VDS platform's CPM Plug-in page. ExeName is CyberArk.TPC.exe, DllName is empty, XMLFile is No, and ActivationMethod is Basic.*
+*Figure 4. The RadiantLogic platform's CPM Plug-in page. ExeName is CyberArk.TPC.exe, DllName is empty, XMLFile is No, and ActivationMethod is Basic.*
 
 5. Click **Apply → OK**.
 
@@ -344,7 +344,7 @@ For the LDAPS path, the same three identity fields apply — Address, User DN, a
 
 Click **Verify**. If it shows green, this confirms the bind to Identity Data Management through the NLB on the transport you chose.
 
-## Part 6: Wire up the RadiantLogic-VDS usage
+## Part 6: Wire up the RadiantLogic usage
 
 > These steps must be done in the **classic Account View**. The modern Privilege Cloud Accounts View does not expose usages or account linking as there is no way to add the usage or associate the reconcile account from it. On the `svc-iddm` account, click "Additional details & actions in classic interface" to switch. This is expected; the button you need only appears in the classic view.
 
