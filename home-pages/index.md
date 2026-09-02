@@ -318,7 +318,7 @@ A rich set of HTTP-based API's have been developed on top of LDAP, to provide br
   
 ## Connectors
 
-Discover connectors for the RadiantOne Identity Data Platform.
+Discover and download connectors for the RadiantOne Identity Data Platform.
 
 <section>
   <connector name="Bedrock Connector" eyebrow="AI Agents" meta="v1.0.0" href="https://github.com/radiantlogicinc/connector-marketplace/tree/main/agentic-aws-bedrock" capabilities="agents,readonly">List AI agents from Amazon Bedrock and Bedrock AgentCore — one region, and one or several AWS accounts in a single crawl.
