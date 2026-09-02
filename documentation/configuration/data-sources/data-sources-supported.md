@@ -56,7 +56,7 @@ To connect to the following cloud services, follow the steps to: [Create Data So
 
 Templates for cloud services are located on the OTHER tab.
 
-- Microsoft Entra ID (formerly Azure AD). Use the template named mgraph for Entra ID.
+- Microsoft Entra ID (formerly Azure AD). Use the template named Microsoft Entra ID.
 - PingOne. Use the template named SCIMv2.
 - Okta Universal Directory. Use the template named Okta.
 - Any SCIMv2 service. Use the template named SCIMv2.
