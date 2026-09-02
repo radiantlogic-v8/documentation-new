@@ -3,7 +3,7 @@ title: Credential Management with Idira
 description: Learn how to configure Idira - RadiantOne integration for credential rotation and management in your self-managed Identity Data Management
 ---
 
-# Integrating Self-Managed Identity Data Management with Idira 
+# Credential Management with Idira
 
 This guide shows how you can connect **Idira Privilege Cloud (formerly known as CyberArk Privilege Cloud)**, to a self-managed Identity Data Management deployment so that Idira can manage the credential in Identity Data Management data sources. An example data source for Active Directory is used to illustrate the configuration in the steps below.
 
