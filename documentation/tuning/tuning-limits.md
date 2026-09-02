@@ -68,9 +68,6 @@ Custom limits are more fine-grained than global limits and can be defined in the
 Custom limits override any Global Limits defined in the Control Panel > Global Settings> Tuning > Limits section > Global Limits. The order of precedence (highest to lowest) for global and custom limits containing the same subject is: Group, Sub-tree, Authenticated Users, Anonymous Users, Global. For custom limits defined within the same root naming context, the limit defined for the deepest entry in the tree will take precedence. For example, if a custom size limit of 3 is defined for a subject location of ou=Novato,ou=California,dc=USA and a size limit of 5 is defined for a subject location of ou=California,dc=USA, if a user of uid=Svc1,ou=Novato,ou=California,dc=USA connects to RadiantOne, the custom size limit of 3 will be enforced.
 
 
-
-### Granular Limits
-
 To define custom limits:
 1.	Click **ADD** in the Custom Limits section.
 
