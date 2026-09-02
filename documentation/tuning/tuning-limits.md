@@ -123,13 +123,11 @@ The max pending connection property represents a queue of server socket connecti
 
 ## Access Regulation
 
-After a client connects to the RadiantOne service, the amount of activity they perform can be limited by configuring access regulation. The activity checking can be performed based on the user that connects to RadiantOne.
+After a client connects to the RadiantOne service, the amount of activity they perform can be limited by configuring access regulation. The activity checking can be performed based on the user that connects to RadiantOne. This is configured from the Control Panel > Global Settings > Tuning > Limits section > Access Regulation sub-section.
 
-The “Restrictions Checking Interval” parameter indicated in the Per User section is the time frame in which the activity (max binds and max operations) is monitored. Once the time interval is reached, the counts are reset. For example, if Special Users Group checking is enabled, and the checking interval, max bind operations per checking interval and max operations per checking interval are set to 300, 30 and 10 respectively, during a 5 minute (300 secs) period, anyone who is a member of the special users group can bind no more than 30 times to the RadiantOne service and not perform more than 10 operations. This count resets every 5 minutes. If a user attempts to perform more than the allowed number of operations, the RadiantOne service refuses the operation and the client must wait until the checking interval resets.
+The “Restrictions Checking Interval” parameter indicates the time frame in which the activity (max binds and max operations) is monitored. Once the time interval is reached, the counts are reset. For example, if Special Users Group checking is enabled, and the checking interval, max bind operations per checking interval and max operations per checking interval are set to 300, 30 and 10 respectively, during a 5 minute (300 secs) period, anyone who is a member of the special users group can bind no more than 30 times to the RadiantOne service and not perform more than 10 operations. This count resets every 5 minutes. If a user attempts to perform more than the allowed number of operations, the RadiantOne service refuses the operation and the client must wait until the checking interval resets.
 
-### Per User
-
-The following groups of users found on the Classic Control Panel > Settings tab > Limits section > Per User sub-section allow you to configure fine-grained activity control:
+The following groups of users found on the Control Panel > Global Settings > Tuning > Limits section > Access Regulation sub-section allow you to configure fine-grained activity control:
 
 >[!note] 
 >Members of the Administrators group specified on the Control Panel > Admin > Directory Manager Settings tab > Special Group section do not have any access limitations in terms of max connections or max operations per second.
@@ -138,15 +136,15 @@ The following groups of users found on the Classic Control Panel > Settings tab 
 
 ### Anonymous
 
-An anonymous user is a client who connects anonymously (no username or password) to the RadiantOne service. To enable checking for this category of user, check the Enable Access Checking option in the Anonymous section of the Per User Category sub-section. Enter a number for the maximum bind operations that anonymous users are allowed to perform. Also enter a number for the maximum number of operations per checking interval they are allowed to issue. Any parameters that are set to 0 have no limits applied. The restrictions checking interval dictates the number of seconds the server should wait before determining if these thresholds are reached.
+An anonymous user is a client who connects anonymously (no username or password) to the RadiantOne service. To enable checking for this category of user, toggle on the ACCESS CHECKING option in the Anonymous section. Enter a number for the maximum bind operations that anonymous users are allowed to perform. Also enter a number for the maximum number of operations per checking interval they are allowed to issue. Any parameters that are set to 0 have no limits applied. The restrictions checking interval dictates the number of seconds the server should wait before determining if these thresholds are reached.
 
 ### Authenticated Users
 
-An authenticated user encompasses any client who successfully authenticates no matter which group they are a member of. To enable checking for this category of users, check the Enable Access Checking option in the Authenticated Users section of the Per User Category sub-section. Enter a number for the maximum bind operations that authenticated users are allowed to perform. Also enter a number for the maximum number of operations per checking interval they are allowed to issue. Any parameters that are set to 0 have no limits applied. The restrictions checking interval dictates the number of seconds the server should wait before determining if these thresholds are reached.
+An authenticated user encompasses any client who successfully authenticates no matter which group they are a member of. To enable checking for this category of users, toggle on the ACCESS CHECKING option in the Authenticated Users section. Enter a number for the maximum bind operations that authenticated users are allowed to perform. Also enter a number for the maximum number of operations per checking interval they are allowed to issue. Any parameters that are set to 0 have no limits applied. The restrictions checking interval dictates the number of seconds the server should wait before determining if these thresholds are reached.
 
 ### Special Users Group
 
-Special Users are anyone who successfully binds and is a member of the special user group defined on the Classic Control Panel > Server Front End > Administration section. To enable checking for this category of users, check the Enable Access Checking option in the Special Users Group section in the Per User Category sub-section. Enter a number for the maximum bind operations that users in the Special Users Group are allowed to perform. Also enter a number for the maximum number of operations per checking interval they are allowed to issue. Any parameters that are set to 0 have no limits applied. The restrictions checking interval dictates the number of seconds the server should wait before determining if these thresholds are reached.
+Special Users are anyone who successfully binds and is a member of the special user group defined here. To enable checking for this category of users, toggle on the ACCESS CHECKING option in the Special Users Group section. Enter a number for the maximum bind operations that users in the Special Users Group are allowed to perform. Also enter a number for the maximum number of operations per checking interval they are allowed to issue. Any parameters that are set to 0 have no limits applied. The restrictions checking interval dictates the number of seconds the server should wait before determining if these thresholds are reached.
 
 ## Backends
 
