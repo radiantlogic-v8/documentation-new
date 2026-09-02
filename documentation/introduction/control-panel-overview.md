@@ -87,8 +87,7 @@ For example, if your Control Panel is at https://rlqa-svc.dev01.radiantlogic.io,
 If you are familiar with the OIDC configuration in previous RadiantOne versions, note that it has changed.
 
 | RadiantOne version | OIDC flow and secret usage | Callback / redirect URL path | Control Panel menu location |
-| --- | --- | --- | --- |
-
+| - | - | - | - |
 | v8.0 – v8.1.0	| Authorization Code Flow, client secret required | /main/j_spring_openid_security_check | Settings › Security › OIDC Provider Configuration |
 | v8.1.1 and later | Authorization Code Flow with PKCE, no secret | /callback | Admin › Control Panel Configuration (new Control Panel) |
 
