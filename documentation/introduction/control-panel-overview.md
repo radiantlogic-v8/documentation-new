@@ -82,6 +82,16 @@ To use OIDC authentication, you need a Redirect URI (also called a callback URL)
 
 For example, if your Control Panel is at https://rlqa-svc.dev01.radiantlogic.io, your Redirect URI will be https://rlqa-svc.dev01.radiantlogic.io/callback. You must register this Redirect URI in your external Identity Provider (such as Okta, Microsoft Entra ID, Auth0, or Keycloak). If it isn’t registered, OIDC login won’t work.
 
+**Important Note**
+
+If you are familiar with the OIDC configuration in previous RadiantOne versions, note that it has changed.
+
+| RadiantOne version | OIDC flow and secret usage | Callback / redirect URL path | Control Panel menu location |
+| --- | --- | --- | --- |
+
+| v8.0 – v8.1.0	| Authorization Code Flow, client secret required | /main/j_spring_openid_security_check | Settings › Security › OIDC Provider Configuration |
+| v8.1.1 and later | Authorization Code Flow with PKCE, no secret | /callback | Admin › Control Panel Configuration (new Control Panel) |
+
 ### OIDC Token Configuration
 
 To enable support for OIDC authentication into Control Panel, follow the steps outlined in this section.
