@@ -18,6 +18,7 @@ description: Installing RadiantOne Identity Data Platform
     - [Advanced](#)
       - [Deploying with Istio](advanced/deploying-with-istio.md)
       - [Deploying NGINX Ingress](advanced/deploying-with-nginx.md)
+      - [Credential Management with Idira](advanced/idira-credential-management.md)
     - [Frequently Asked Questions](faq.md)
      
 
