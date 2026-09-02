@@ -63,14 +63,23 @@ Templates for cloud services are located on the OTHER tab.
 - Salesforce. Use the template named SCIMv2.
 - Zscaler. Use the template named SCIMv2.
 - Saviynt. Use the template named SCIMv2.
+- CyberArk Privileged Cloud. Create a new template based on the CyberArk connector you can download from the [Connector Marketplace](https://github.com/radiantlogicinc/connector-marketplace/tree/main/cyberark-privilege-cloud)
 
 
 <br>
 
+### NHI and AI Agent Repositories
+
+To connect to the following sources, follow the steps to: [Create Data Sources](https://developer.radiantlogic.com/ido/v2/data-sync/datasource-examples/ai-agent-data-sources/)
+
+- Amazon Bedrock
+- Microsoft Azure Foundry
+- Google Cloud Platform
+
   ![coming soon](Media/coming-soon.jpg)
-- CyberArk Privileged Cloud
 - Sailpoint Identity Security Cloud 
 - ServiceNow
+- Worday
 - Google Pub/Sub Queue
 - AWS Identity and Access Management
 
