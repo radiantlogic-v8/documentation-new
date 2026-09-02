@@ -38,7 +38,7 @@ C:\SunKit>ldapsearch -h ldaps://ldaps-rlqa-usw2-lg123.dev01.radiantlogic.io -p 6
 The maximum number of entries a search operation can return. This allows for limiting the number of entries LDAP clients can receive from a query. By default this value is set to 0 which means there is no restriction on the size. 
 
 >[!warning] 
->This parameter is a global parameter for RadiantOne. If you want more granular, specific size limits set, then you should set them in the Custom Limits sections.
+>This parameter is a global parameter for RadiantOne. If you want more granular, specific size limits set, then you should set them in the Custom section.
 
 ### Time Limit
 
@@ -92,7 +92,7 @@ The max pending connection property represents a queue of server socket connecti
 
 ## Custom Limits
 
-Custom limits are more fine-grained than global limits and can be defined in the Control Panel > Global Settings> Tuning > Limits section > Custom Limits sub-section. Custom limits can be configured for the pre-defined users: “Anonymous Users”, and “Authenticated Users”. They can also be more granular and associated with users belonging to any group or located below any branch/naming context (subtree) in RadiantOne.
+Custom limits are more fine-grained than global limits and can be defined in the Control Panel > Global Settings> Tuning > Limits section > Custom sub-section. Custom limits can be configured for the pre-defined users: “Anonymous Users”, and “Authenticated Users”. They can also be more granular and associated with users belonging to any group or located below any branch/naming context (subtree) in RadiantOne.
 
 ![Custom Limits](Media/custom-limits.png)
 
@@ -104,7 +104,7 @@ Custom limits override any Global Limits defined in the Control Panel > Global S
 
 
 To define custom limits:
-1.	Click **ADD** in the Custom Limits section.
+1.	Click **ADD** in the Custom section.
 
 2.	Select a subject from the drop-down list. The possible subjects are described below.
     - Sub-tree - the location (base DN) in the RadiantOne namespace containing the users that are affected by the custom limits.
@@ -120,9 +120,9 @@ To define custom limits:
 
 6.	Enter a value for idle timeout. This is the length of time (in seconds) to keep a connection open without any activity from the client. By default, this value is set to 0 which means there is no restriction on idle time.
 
-7.	Click **OK**.
+7.	Click **ADD**.
 
-8.	Click **Save**. The RadiantOne service needs to be restarted. You can restart the service in your environment from Environment Operations Center.
+8.	Click **SAVE**. The RadiantOne service needs to be restarted. You can restart the service in your environment from Environment Operations Center.
 
 
 ## Access Regulation
