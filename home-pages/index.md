@@ -329,9 +329,9 @@ Discover and download connectors for the RadiantOne Identity Data Platform.
   </connector>
   <connector name="Idira Privilege Cloud (formerly CyberArk)" eyebrow="Privileged Access" meta="v2.0.0" href="https://github.com/radiantlogicinc/connector-marketplace/tree/main/cyberark-privilege-cloud" capabilities="identity,readonly">List privileged users and the roles they belong to, with role nesting, from Idira.
   </connector>
+<connector name="ServiceNow" eyebrow="Privileged Access" meta="v1.0.0" href="https://github.com/radiantlogicinc/connector-marketplace/tree/main/servicenow" capabilities="identity,limitedwriteback">List users, groups, and roles from ServiceNow.
+</connector>
 </section>
-
 </tabpanel>
-  
 </tabpanels>
 </tabs>
