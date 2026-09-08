@@ -27,6 +27,8 @@ These release notes contain the following sections:
  
 - [API-4813]: Fix to address: CVE-2025-11143, CVE-2026-2332, CVE-2026-6790, CVE-2026-10050, CVE-2026-41707, CVE-2026-47842, CVE-2026-47843, CVE-2026-47845, CVE-2026-47848, CVE-2026-47856, CVE-2026-47857, CVE-2026-47863, CVE-2026-47874, CVE-2026-47879, CVE-2026-47883, CVE-2026-47884, CVE-2026-47885, CVE-2026-47886, CVE-2026-47887, CVE-2026-47888, CVE-2026-47889, CVE-2026-47890, CVE-2026-47891, CVE-2026-47892, CVE-2026-47893, CVE-2026-54399, CVE-2026-54428, CVE-2026-55856, CVE-2026-55857, CVE-2026-55858, CVE-2026-59276, CVE-2026-59281, CVE-2026-59282, CVE-2026-59283, CVE-2026-59284, CVE-2026-59292, CVE-2026-59313, CVE-2026-59314, CVE-2026-59316, CVE-2026-59322, CVE-2026-59324, CVE-2026-64607, CVE-2026-71290, CVE-2026-84304, CVE-2026-84375.
 
+>[!note] Detailed vulnerability reports for the vulnerabilities addressed in this release are available here: [Security Vulnerability Report](../vulnerability-report)
+
 ## Improvements
 
 - [API-4809]: Added missing additional clause tab for configuration parameters modal under Advanced Settings for content nodes in Control Panel > Directory Namespace.
