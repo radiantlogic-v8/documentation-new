@@ -143,7 +143,6 @@ To enable support for dynamic groups, follow the steps below.
 1.	From the Control Panel > Setup > Directory Namespace > Namespace Design, select the root naming context where the identity view and/or RadiantOne Directory is mounted that contains the dynamic group.
 1.	Click the Special Attributes tab and expand the Dynamic Groups section.
 
-1.	Click Select either member or uniquemember from the Member Attribute drop-down list. This will determine the attribute name that will contain the members of the dynamic groups.
 1.	Click **+DYNAMIC GROUP**.
 
 1.	Click ![folder icon](Media/folder-icon.jpg) and browse to the exact group entry that you like RadiantOne to automatically evaluate members for and click **SELECT**. To configure this logic for multiple groups located in the same container, just enter an LDAP URL that encompasses all groups instead of browsing to the exact group entry. E.g. ldap:///cn=config??sub?(objectClass=groupOfURLs) could be used to indicate all dynamic groups located below cn=config. If you are not knowledgeable about LDAP URL syntax, just browse to the container/parent node where all dynamic groups are located and the LDAP URL is automatically calculated for you.
@@ -155,6 +154,9 @@ To enable support for dynamic groups, follow the steps below.
 1.	Repeat these steps to add all dynamic groups. 
 
 1.	Click **SAVE**.
+1.	The member attribute that returns the group members for a dynamic group is globally defined for the RadiantOne service. No matter how many locations you have configured dynamic groups for, they will share the same attribute name for the members. To define which attribute is used, select the *Root Naming Context* node in the Directory Namespace. Select the **SPECIAL ATTRIBUTES** tab. Select either member or uniquemember from the Member Attribute drop-down list. This will determine the attribute name that will contain the members of the dynamic groups.
+
+   ![Dynamic Group Member Attribute](Media/member-attribute.jpg)
 
 If the dynamic group configured above is in a proxy view of an LDAP backend (as opposed to located in a RadiantOne Directory store), you must configure DN Remapping for the memberURL attribute.
 
