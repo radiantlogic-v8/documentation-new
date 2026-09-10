@@ -353,7 +353,7 @@ August 20, 2026
 
 September 10, 2026 
 
-**Bug fix**
+**Bug fixes**
 
 * [CFS-224]: Fixed an issue that caused SAML assertion encryption using RSA-1.5 and AES-128-CBC to be rejected on FIPS-enabled Bottlerocket nodes by introducing the following:
   - Added configurable SAML2 assertion encryption algorithms at the application level. Applications can use the default AES-256-CBC/RSA-1.5 pair or AES-256-GCM/RSA-OAEP; mismatched pairs are rejected. Also added a tenant-wide Enforce FIPS-approved SAML2 Encryption Algorithms setting that forces AES-256-GCM/RSA-OAEP for all encrypted assertions.
