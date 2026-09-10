@@ -91,19 +91,19 @@ SAML2 applications let you control how responses and assertions are signed, whic
 6. Upload your **encryption** and **signing** certificates using the import button.
    ![SAML signing parameters](media/saml2signing.png "SAML application parameters")
 7. If you uploaded an encryption certificate, choose the algorithms CFS uses to encrypt assertions for this application:
-   - **Assertion encryption algorithm** — the content-encryption algorithm. Keep **AES-256-CBC (compatibility)** for SPs that expect the legacy profile, or select **AES-256-GCM (FIPS)** for FIPS-restricted SPs.
-   - **Key transport algorithm** — the session-key transport algorithm. Keep **RSA-1.5 (compatibility)**, or select **RSA-OAEP (FIPS)** for FIPS-restricted SPs.
+   - **Assertion encryption algorithm** — the content-encryption algorithm. Keep the default, **AES-256-CBC (compatibility)**, for SPs that expect the legacy profile, or select **AES-256-GCM (FIPS)** for FIPS-restricted SPs.
+   - **Key transport algorithm** — the session-key transport algorithm. Keep the default, **RSA-1.5 (compatibility)**, or select **RSA-OAEP (FIPS)** for FIPS-restricted SPs.
 
    ![Assertion encryption algorithms](media/saml2-encryption-algorithms.png "assertion encryption and key transport algorithms")
 
-   The two settings must be paired: **AES-256-CBC** with **RSA-1.5**, or **AES-256-GCM** with **RSA-OAEP** (SHA-1 / MGF1-SHA1). Saving a mismatched pair fails with an *Invalid assertion encryption combination* error. XML Encryption 1.1 RSA-OAEP with SHA-256 is not supported yet. Applications without an encryption certificate are unaffected — their assertions are not encrypted.
+   The two settings must be paired: **AES-256-CBC** with **RSA-1.5**, or **AES-256-GCM** with **RSA-OAEP** — the classic XML Encryption OAEP profile (SHA-1 / MGF1-SHA1, `http://www.w3.org/2001/04/xmlenc#rsa-oaep-mgf1p`). Saving a mismatched pair fails with an *Invalid assertion encryption combination* error. XML Encryption 1.1 RSA-OAEP with SHA-256 is not supported yet. Applications without an encryption certificate are unaffected — their assertions are not encrypted.
 8. Use the **Sign Response** toggle to sign the entire SAML response when required.
 9. Use the **Sign Assertion** toggle to sign only the assertion when required.
 10. Review the chosen options and click **Save**.
 11. By default, at least one of these options (response or assertion) must be signed for security purposes. To allow skipping both signatures, navigate to **Settings > General Settings > Others**, enable **Allow SAML2 Unsigned Responses**, and click **Save**.
     ![Unsigned response option](media/unsignedsetting.png "unsigned response option")
 12. Return to the SAML configuration page and ensure neither option requires a signature.
-13. To require FIPS-approved encryption across the whole tenant, navigate to **Settings > General Settings > Others**, enable **Enforce FIPS-approved SAML2 Encryption Algorithms**, and click **Save**. Every encrypted SAML2 assertion in the tenant then uses AES-256-GCM and RSA-OAEP (SHA-1 / MGF1-SHA1, `xmlenc#rsa-oaep-mgf1p`), and the per-application dropdowns described in step 7 are ignored. Leave this setting off in mixed tenants where some SPs still require AES-256-CBC and RSA-1.5, and set the algorithms per application instead.
+13. To require FIPS-approved encryption across the whole tenant, navigate to **Settings > General Settings > Others**, enable **Enforce FIPS-approved SAML2 Encryption Algorithms** (disabled by default), and click **Save**. Every encrypted SAML2 assertion in the tenant then uses AES-256-GCM and RSA-OAEP (SHA-1 / MGF1-SHA1, `xmlenc#rsa-oaep-mgf1p`), and the per-application dropdowns described in step 7 are ignored. Leave this setting off in mixed tenants where some SPs still require AES-256-CBC and RSA-1.5, and set the algorithms per application instead.
 
     ![Enforce FIPS-approved SAML2 encryption algorithms](media/fips-encryption-setting.png "tenant-wide FIPS encryption setting")
 
@@ -781,6 +781,26 @@ Name | Description | Since Version
 **Set-CfsApplication** | Updates application settings such as the application name, the AllowAllUsers attribute, and supports importing complete Service Provider (SP) metadata. Example syntax: `Set-CfsCertificate -Application "<ApplicationId>" -Metadata $metadata` | 3.6.0.0, with updated support for metadata updates starting version 3.17.8.
 **Set-CfsAppParameter** | Updates the Parameter of an Application. | 3.6.0.0
 **Update-CfsApplication** | Updates an Application from a template. | 3.6.0.0
+**Get-CfsAppParameter** (assertionEncryptionAlgorithm) | Retrieves the SAML assertion content encryption algorithm configured for an application. Supported values: `http://www.w3.org/2001/04/xmlenc#aes256-cbc` (default) and `http://www.w3.org/2009/xmlenc11#aes256-gcm` (FIPS-approved). | 3.18.2
+**Set-CfsAppParameter** (assertionEncryptionAlgorithm) | Updates the SAML assertion content encryption algorithm for an application. Must be paired with a compatible `keyTransportAlgorithm`. | 3.18.2
+**Get-CfsAppParameter** (keyTransportAlgorithm) | Retrieves the SAML key transport algorithm configured for an application. Supported values: `http://www.w3.org/2001/04/xmlenc#rsa-1_5` (default) and `http://www.w3.org/2001/04/xmlenc#rsa-oaep-mgf1p` (FIPS-approved). | 3.18.2
+**Set-CfsAppParameter** (keyTransportAlgorithm) | Updates the SAML key transport algorithm for an application. Must be paired with a compatible `assertionEncryptionAlgorithm`. Incompatible pairs are rejected on save. | 3.18.2
+
+**Example: configure FIPS-approved encryption for a SAML2 application**
+
+```powershell
+# Query current values
+Get-CfsAppParameter -Id <app_id> -Name assertionEncryptionAlgorithm
+Get-CfsAppParameter -Id <app_id> -Name keyTransportAlgorithm
+
+# Set the FIPS-approved pair (AES-256-GCM + RSA-OAEP)
+Set-CfsAppParameter -Id $appId -Name assertionEncryptionAlgorithm -Value "http://www.w3.org/2009/xmlenc11#aes256-gcm"
+Set-CfsAppParameter -Id $appId -Name keyTransportAlgorithm -Value "http://www.w3.org/2001/04/xmlenc#rsa-oaep-mgf1p"
+
+# Set the compatibility pair (AES-256-CBC + RSA-1.5)
+Set-CfsAppParameter -Id $appId -Name assertionEncryptionAlgorithm -Value "http://www.w3.org/2001/04/xmlenc#aes256-cbc"
+Set-CfsAppParameter -Id $appId -Name keyTransportAlgorithm -Value "http://www.w3.org/2001/04/xmlenc#rsa-1_5"
+```
 
 #### Applications and SmartLinks
 
@@ -978,11 +998,12 @@ Name | Description | Since Version
 **Get-CfsSettings** | Retrieves the settings object (`TenantSettingsPSModel`) for the current tenant. Example: `Get-CfsSettings` | 3.3.0.0
 **Set-CfsSettings** | Updates the settings for the current tenant. Example: `Set-CfsSettings -Settings $settings` | 3.3.0.0
 
-As of CFS 3.17.11, the `TenantSettingsPSModel` object returned by `Get-CfsSettings` (and accepted by `Set-CfsSettings`) includes the following new property:
+The `TenantSettingsPSModel` object returned by `Get-CfsSettings` (and accepted by `Set-CfsSettings`) includes the following properties:
 
-Property | Type | Description | Default
--|-|-|-
-`LoaHighlight` | Boolean | When `$true`, enables the LOA (Level of Assurance) Highlight feature for federated sign-in flows at the tenant level. | `$true`
+Property | Type | Description | Default | Since Version
+-|-|-|-|-
+`LoaHighlight` | Boolean | When `$true`, enables the LOA (Level of Assurance) Highlight feature for federated sign-in flows at the tenant level. | `$true` | 3.17.11
+`EnforceFipsSamlEncryptionAlgorithms` | Boolean | When `$true`, forces all encrypted SAML2 applications in the tenant to use `AES-256-GCM` + `RSA-OAEP` at token issuance, overriding per-application algorithm settings. | `$false` | 3.18.2
 
 **Example: disable LOA Highlight for the tenant**
 
@@ -994,6 +1015,16 @@ Set-CfsSettings -Settings $settings
 # Verify
 (Get-CfsSettings).LoaHighlight
 # Expected: False
+```
+
+**Example: enable tenant-wide FIPS SAML encryption enforcement**
+
+```powershell
+$settings = Get-CfsSettings
+$settings.EnforceFipsSamlEncryptionAlgorithms # current value
+
+$settings.EnforceFipsSamlEncryptionAlgorithms = $true
+Set-CfsSettings -Settings $settings
 ```
 
 
