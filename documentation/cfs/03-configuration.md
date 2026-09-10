@@ -773,18 +773,14 @@ Name | Description | Since Version
 **Enable-CfsApplication** | Enables an application. | 3.3.0.0
 **Get-CfsApplication** | Retrieves an Application for the tenant. | 3.3.0.0
 **Get-CfsApplicationUpdate** | Retrieves if an Application has a template update available. | 3.6.0.0
-**Get-CfsAppParameter** | Retrieves an application Parameter. | 3.6.0.0
+**Get-CfsAppParameter** | Retrieves an application Parameter. For SAML2 applications this includes the assertion encryption parameters: `assertionEncryptionAlgorithm`, the assertion content encryption algorithm — `http://www.w3.org/2001/04/xmlenc#aes256-cbc` (default) or `http://www.w3.org/2009/xmlenc11#aes256-gcm` (FIPS-approved); and `keyTransportAlgorithm`, the key transport algorithm — `http://www.w3.org/2001/04/xmlenc#rsa-1_5` (default) or `http://www.w3.org/2001/04/xmlenc#rsa-oaep-mgf1p` (FIPS-approved). Examples: `Get-CfsAppParameter -Id <app_id> -Name assertionEncryptionAlgorithm` and `Get-CfsAppParameter -Id <app_id> -Name keyTransportAlgorithm` | 3.6.0.0, with support for the SAML2 encryption algorithm parameters starting version 3.18.2
 **Import-CfsApplication** | Imports an Application package. | 3.6.0.0
 **Move-CfsApplication** | Changes the identifier of an Application. | 3.3.0.0
 **New-CfsApplication** | Creates a new Application. | 3.3.0.0
 **Remove-CfsApplication** | Removes an application. | 3.3.0.0
 **Set-CfsApplication** | Updates application settings such as the application name, the AllowAllUsers attribute, and supports importing complete Service Provider (SP) metadata. Example syntax: `Set-CfsCertificate -Application "<ApplicationId>" -Metadata $metadata` | 3.6.0.0, with updated support for metadata updates starting version 3.17.8.
-**Set-CfsAppParameter** | Updates the Parameter of an Application. | 3.6.0.0
+**Set-CfsAppParameter** | Updates the Parameter of an Application. For SAML2 applications this includes `assertionEncryptionAlgorithm` and `keyTransportAlgorithm`, which must be set as a supported pair — AES-256-CBC with RSA-1.5, or AES-256-GCM with RSA-OAEP. Incompatible pairs are rejected on save. Examples: `Set-CfsAppParameter -Id $appId -Name assertionEncryptionAlgorithm -Value "http://www.w3.org/2009/xmlenc11#aes256-gcm"` and `Set-CfsAppParameter -Id $appId -Name keyTransportAlgorithm -Value "http://www.w3.org/2001/04/xmlenc#rsa-oaep-mgf1p"` | 3.6.0.0, with support for the SAML2 encryption algorithm parameters starting version 3.18.2
 **Update-CfsApplication** | Updates an Application from a template. | 3.6.0.0
-**Get-CfsAppParameter** (assertionEncryptionAlgorithm) | Retrieves the SAML assertion content encryption algorithm configured for an application. Supported values: `http://www.w3.org/2001/04/xmlenc#aes256-cbc` (default) and `http://www.w3.org/2009/xmlenc11#aes256-gcm` (FIPS-approved). | 3.18.2
-**Set-CfsAppParameter** (assertionEncryptionAlgorithm) | Updates the SAML assertion content encryption algorithm for an application. Must be paired with a compatible `keyTransportAlgorithm`. | 3.18.2
-**Get-CfsAppParameter** (keyTransportAlgorithm) | Retrieves the SAML key transport algorithm configured for an application. Supported values: `http://www.w3.org/2001/04/xmlenc#rsa-1_5` (default) and `http://www.w3.org/2001/04/xmlenc#rsa-oaep-mgf1p` (FIPS-approved). | 3.18.2
-**Set-CfsAppParameter** (keyTransportAlgorithm) | Updates the SAML key transport algorithm for an application. Must be paired with a compatible `assertionEncryptionAlgorithm`. Incompatible pairs are rejected on save. | 3.18.2
 
 **Example: configure FIPS-approved encryption for a SAML2 application**
 
