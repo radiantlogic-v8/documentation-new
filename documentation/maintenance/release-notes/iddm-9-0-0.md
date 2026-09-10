@@ -9,10 +9,15 @@ September 10, 2026
 
 These release notes contain important information about improvements and bug fixes for RadiantOne Identity Data Management v9.0
 These release notes contain the following sections:
+
 [Security Vulnerability Fixes](#security-vulnerability-fixes)
+
 [Improvements](#improvements)
+
 [Bug Fixes](#bug-fixes)
+
 [Known Issues](#known-issues)
+
 [How to Report Problems and Provide Feedback](#how-to-report-problems-and-provide-feedback)
 
 ## Security Vulnerability Fixes
@@ -41,23 +46,23 @@ These release notes contain the following sections:
 
 ## Bug Fixes
 
-[V9-135]: Fixed a NullPointerException when the DoS filter configuration is persisted as null.
-[V9-148]: Fixed an issue where Config Promotion did not gracefully recover when settings change.
-[V9-154]: Fixed an issue where granular Config Promotion validation rule enforced sync topology incorrectly.
-[V9-209, SQ-1249]: Fixed an issue where Inter-cluster replication could not be working proper after hot initialization.
-[V9-221]: Fixed an issue that was producing false errors in the persistent cache and RadiantOne Directory (HDAP) initialization logs.
-[V9-294]: Fixed an issue where the computed attribute function descriptions are were not displayed correctly.
-[V9-344, SQ-1715]: Fixed an issue where the internal RadiantOne LDAP control (OID 9.9.999.412.1.1.422) was incorrectly forwarded to downstream LDAP proxy backends.
-[V9-374]: Fix to address invalid persistent cache periodic refresh CRON expressions so they are rejected by the UI and REST API at configuration time instead of silently freezing the cache at runtime.
-[V9-389]: Fix so that certificate rejections on the RadiantOne Service REST/ADAP port are now logged. Previously nothing was written to vds_server.log or adap_access.log.
-[V9-414]: Fixed an issue where AD DirSync connector change events with Fetch Entry enabled could omit or only partially include large multi-valued Active Directory attributes (for example group member values) when AD returned ranged attribute pages such as member;range=0-1499. Fetch Entry now expands those ranged attributes to the full attribute before the event is published, and fails closed by dropping incomplete ranged attributes if expansion cannot complete.
-[V9-418]: Fixed an issue related to Microsoft Entra ID data sources showing OFFLINE in the Control Panel while working correctly in Directory Browser.
-[V9-448, SQ-1570]: Fixed a problem where a directory store could become unusable after an interrupted background copy between cluster nodes. If replication was cut short — for example by a node restart or a network drop — the store could be left with an incomplete index file and would fail to load, reporting an unexpected file read error. Replicated data is now published only once it has been fully and verifiably copied, so an interrupted transfer simply retries and leaves the previous good copy in place.
-[V9-515]: Fixed an issue with the fid-0 pod restarting perpetually after a fresh install of Identity Data Management from a backup.
-[V9-520]: Fixed an issue where encrypted attributes were not working properly from Control Panel > Directory Browser.
-[V9-522]: Fixed an issue with data preview returning 500 for LDAP DNs containing / ; or + on a multi-node cluster.
-[V9-533]: Fixed an issue where the Global Identity Builder reported ERRORS when creating a project.
-[V9-540]: Fixed an issue where Global Identity Builder pages could fail to load on projects with a large number of identities, by calculating the identity and correlation counts in the background instead of on every page refresh.
+- [V9-135]: Fixed a NullPointerException when the DoS filter configuration is persisted as null.
+- [V9-148]: Fixed an issue where Config Promotion did not gracefully recover when settings change.
+- [V9-154]: Fixed an issue where granular Config Promotion validation rule enforced sync topology incorrectly.
+- [V9-209, SQ-1249]: Fixed an issue where Inter-cluster replication could not be working proper after hot initialization.
+- [V9-221]: Fixed an issue that was producing false errors in the persistent cache and RadiantOne Directory (HDAP) initialization logs.
+- [V9-294]: Fixed an issue where the computed attribute function descriptions are were not displayed correctly.
+- [V9-344, SQ-1715]: Fixed an issue where the internal RadiantOne LDAP control (OID 9.9.999.412.1.1.422) was incorrectly forwarded to downstream LDAP proxy backends.
+- [V9-374]: Fix to address invalid persistent cache periodic refresh CRON expressions so they are rejected by the UI and REST API at configuration time instead of silently freezing the cache at runtime.
+- [V9-389]: Fix so that certificate rejections on the RadiantOne Service REST/ADAP port are now logged. Previously nothing was written to vds_server.log or adap_access.log.
+- [V9-414]: Fixed an issue where AD DirSync connector change events with Fetch Entry enabled could omit or only partially include large multi-valued Active Directory attributes (for example group member values) when AD returned ranged attribute pages such as member;range=0-1499. Fetch Entry now expands those ranged attributes to the full attribute before the event is published, and fails closed by dropping incomplete ranged attributes if expansion cannot complete.
+- [V9-418]: Fixed an issue related to Microsoft Entra ID data sources showing OFFLINE in the Control Panel while working correctly in Directory Browser.
+- [V9-448, SQ-1570]: Fixed a problem where a directory store could become unusable after an interrupted background copy between cluster nodes. If replication was cut short — for example by a node restart or a network drop — the store could be left with an incomplete index file and would fail to load, reporting an unexpected file read error. Replicated data is now published only once it has been fully and verifiably copied, so an interrupted transfer simply retries and leaves the previous good copy in place.
+- [V9-515]: Fixed an issue with the fid-0 pod restarting perpetually after a fresh install of Identity Data Management from a backup.
+- [V9-520]: Fixed an issue where encrypted attributes were not working properly from Control Panel > Directory Browser.
+- [V9-522]: Fixed an issue with data preview returning 500 for LDAP DNs containing / ; or + on a multi-node cluster.
+- [V9-533]: Fixed an issue where the Global Identity Builder reported ERRORS when creating a project.
+- [V9-540]: Fixed an issue where Global Identity Builder pages could fail to load on projects with a large number of identities, by calculating the identity and correlation counts in the background instead of on every page refresh.
 
 ## Known Issues
 
