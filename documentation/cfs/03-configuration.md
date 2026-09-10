@@ -72,7 +72,7 @@ Name | Description | Link
 
 ### Configuring SAML Signing Settings
 
-SAML2 applications let you control how responses and assertions are signed, and they support configuring multiple Assertion Consumer Service (ACS) endpoints (recipients) for service providers (SPs) that define more than one ACS URL in their metadata, as permitted by the SAML 2.0 specification.
+SAML2 applications let you control how responses and assertions are signed, which algorithms are used to encrypt assertions, and they support configuring multiple Assertion Consumer Service (ACS) endpoints (recipients) for service providers (SPs) that define more than one ACS URL in their metadata, as permitted by the SAML 2.0 specification.
 1. Open the SAML2 application configuration page.
 2. Go to the **Parameters** tab and locate the **Recipients** table.
    ![SAML Recipients Configuration](media/saml-recipients-config.png "SAML application ACS parameters")
@@ -90,12 +90,22 @@ SAML2 applications let you control how responses and assertions are signed, and 
    | *Neither specified* | Falls back to the recipient marked **Default**. |
 6. Upload your **encryption** and **signing** certificates using the import button.
    ![SAML signing parameters](media/saml2signing.png "SAML application parameters")
-7. Use the **Sign Response** toggle to sign the entire SAML response when required.
-8. Use the **Sign Assertion** toggle to sign only the assertion when required.
-9. Review the chosen options and click **Save**.
-10. By default, at least one of these options (response or assertion) must be signed for security purposes. To allow skipping both signatures, navigate to **Settings > General Settings > Others**, enable **Allow SAML2 Unsigned Responses**, and click **Save**.
+7. If you uploaded an encryption certificate, choose the algorithms CFS uses to encrypt assertions for this application:
+   - **Assertion encryption algorithm** — the content-encryption algorithm. Keep **AES-256-CBC (compatibility)** for SPs that expect the legacy profile, or select **AES-256-GCM (FIPS)** for FIPS-restricted SPs.
+   - **Key transport algorithm** — the session-key transport algorithm. Keep **RSA-1.5 (compatibility)**, or select **RSA-OAEP (FIPS)** for FIPS-restricted SPs.
+
+   ![Assertion encryption algorithms](media/saml2-encryption-algorithms.png "assertion encryption and key transport algorithms")
+
+   The two settings must be paired: **AES-256-CBC** with **RSA-1.5**, or **AES-256-GCM** with **RSA-OAEP** (SHA-1 / MGF1-SHA1). Saving a mismatched pair fails with an *Invalid assertion encryption combination* error. XML Encryption 1.1 RSA-OAEP with SHA-256 is not supported yet. Applications without an encryption certificate are unaffected — their assertions are not encrypted.
+8. Use the **Sign Response** toggle to sign the entire SAML response when required.
+9. Use the **Sign Assertion** toggle to sign only the assertion when required.
+10. Review the chosen options and click **Save**.
+11. By default, at least one of these options (response or assertion) must be signed for security purposes. To allow skipping both signatures, navigate to **Settings > General Settings > Others**, enable **Allow SAML2 Unsigned Responses**, and click **Save**.
     ![Unsigned response option](media/unsignedsetting.png "unsigned response option")
-11. Return to the SAML configuration page and ensure neither option requires a signature.
+12. Return to the SAML configuration page and ensure neither option requires a signature.
+13. To require FIPS-approved encryption across the whole tenant, navigate to **Settings > General Settings > Others**, enable **Enforce FIPS-approved SAML2 Encryption Algorithms**, and click **Save**. Every encrypted SAML2 assertion in the tenant then uses AES-256-GCM and RSA-OAEP (SHA-1 / MGF1-SHA1, `xmlenc#rsa-oaep-mgf1p`), and the per-application dropdowns described in step 7 are ignored. Leave this setting off in mixed tenants where some SPs still require AES-256-CBC and RSA-1.5, and set the algorithms per application instead.
+
+    ![Enforce FIPS-approved SAML2 encryption algorithms](media/fips-encryption-setting.png "tenant-wide FIPS encryption setting")
 
 ### Configuring Mappings
 
