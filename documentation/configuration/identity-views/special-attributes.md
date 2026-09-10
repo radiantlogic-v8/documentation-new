@@ -154,7 +154,7 @@ To enable support for dynamic groups, follow the steps below.
 1.	Repeat these steps to add all dynamic groups. 
 
 1.	Click **SAVE**.
-1.	The member attribute that returns the group members for a dynamic group is globally defined for the RadiantOne service. No matter how many locations you have configured dynamic groups for, they will share the same attribute name for the members. To define which attribute is used, select the *Root Naming Context* node in the Directory Namespace. Select the **SPECIAL ATTRIBUTES** tab. Select either member or uniquemember from the Member Attribute drop-down list. This will determine the attribute name that will contain the members of the dynamic groups.
+1.	The member attribute (member or uniquemember) that returns the group members for a dynamic group is globally defined for the RadiantOne service. No matter how many locations you have configured dynamic groups for, they will share the same attribute name for the members. To define which attribute is used, select the *Root Naming Context* node in the Directory Namespace. Select the **SPECIAL ATTRIBUTES** tab. Select either member or uniquemember from the Member Attribute drop-down list. This will determine the attribute name that will contain the members of the dynamic groups.
 
    ![Dynamic Group Member Attribute](Media/member-attribute.jpg)
 
