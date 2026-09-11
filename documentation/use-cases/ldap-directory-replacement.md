@@ -5,21 +5,21 @@ description: Legacy LDAP Directory Replacement
 
 ## Overview
 
-The purpose of this use case is to provide guidance for migrating from a legacy LDAP directory (OpenDJ, SunOne/ODSEE, IBM Tivoli Directory) into the RadiantOne Directory. This document provides a general overview of the migration process. The steps provided in this handbook are not exhaustive and may vary depending on the use case.
+The purpose of this use case is to provide guidance for migrating from a legacy LDAP directory (OpenDJ, SunOne/ODSEE, IBM Tivoli Directory) into the RadiantOne Directory. This document provides a general overview of the migration process. The steps provided here are not exhaustive and may vary depending on the use case.
 
 Although the RadiantOne Directory supports the standard LDAP v3 RFC and closely mimics the behavior of legacy LDAP directory implementations, slight variations are possible. These variations might impact client applications. The level of impact depends on how tightly-coupled the application is with the LDAP variations implemented by the legacy LDAP directory.  In certain cases, the logic of the application might need to change. In some situations, where clients cannot change, RadiantOne’s various customization techniques (e.g. interception scripts, computed attributes…etc.) can be used to mimic the legacy directory. If you encounter this situation, reach out to support@radiantlogic.com for assistance.
 
-This gets you all of the components needed for your replacement task. Then, the outline below details the general migration strategy. Each item is further detailed in later chapters.
+This gets you all of the components needed for your replacement task. Then, the outline below details the general migration strategy. Each item is further detailed in later sections.
 
-[Chapter 2](02-inventory-existing-directory.md) - Inventory existing directory (schema, hierarchy, password policies…etc.)
+[Inventory Existing Legacy Directory](#inventory-existing-directory) - Inventory existing directory (schema, hierarchy, password policies…etc.)
 
-[Chapter 3](03-import-data-into-radiantone-universal-directory.md) - Import data into RadiantOne Directory
+[Import Data into RadiantOne Directory](#import-data-into-radiantOne-directory) - Import data into RadiantOne Directory. 
 
-[Chapter 4](04-configure-radiantone-server-settings.md) - Configure RadiantOne server settings
+[Configure RadiantOne server settings](#configure-radiantone-server-settings) - Configure RadiantOne server settings
 
-[Chapter 5](05-determine-the-application-usage-and-cutover-strategy.md) - Determine the application usage and cutover strategy
+[Determine the application usage and cutover strategy](#determine-the-application-usage-and-cutover-strategy) - Determine the application usage and cutover strategy
 
-[Chapter 6](06-decommission-legacy-directory.md) - Decommission legacy directory
+[Decommission legacy directory](#decommission-legacy-directory) - Decommission legacy directory
 
 ## Inventory Existing Directory
 
@@ -75,7 +75,7 @@ To get the existing data, create a proxy view of the backend directory and creat
 6. From the Main Control Panel > Settings > Server Backend > LDAP Data Sources section, verify the replicationjournal LDAP data source points to the desired journal.
 7. Temporarily stop the persistent cache refresh (if it is running) and export the persistent cache view into an LDIF file. Copy this file to the Client Consumption layer machine.
 
-## Configure Client Consuming RadiantOne Directory Store
+## Configure RadiantOne Directory Store
 
 1. Configure the target RadiantOne Directory store with the same root naming context as the backend directory (the one expected by client applications).
 2. Initialize the RadiantOne Directory store with the export of the persistent cache image.
