@@ -49,7 +49,7 @@ When aggregating model-driven virtual views (created in Context Builder) from mu
 
 Requests must use an authorization token associated with an account that has the required **Tuning > Attribute Handling** scope.
 
-![The Tuning section of the scope settings, with Attribute Handling set to View & Edit](images/tuning-attribute-handling-scope.png)
+![The Tuning section of the scope settings, with Attribute Handling set to View & Edit](Media/tuning-attribute-handling-scope.png)
 
 | Scope | Permission | Allows you to |
 | --- | --- | --- |
