@@ -21,25 +21,23 @@ This gets you all of the components needed for your replacement task. Then, the 
 
 [Chapter 6](06-decommission-legacy-directory.md) - Decommission legacy directory
 
-## 
-
-# Inventory Existing Directory
+## Inventory Existing Directory
 
 Taking inventory of the existing directory is mostly a manually process. Once you’ve acquired the basic credentials from the directory owner, you can access the directory from any LDAP client. RadiantOne includes the LDAP Browser client that can be used to connect to the directory. From here, you can get a glimpse of the existing hierarchy and export schema and branches to LDIF files. Below is an example of using the RadiantOne LDAP Browser.
 
 !\[An image showing ](Media/Image2.1.jpg)
 
-## Schema
+### Schema
 
 To get the schema information from the LDAP directory, use a base DN of cn=schema in LDAP Browser. Then, export the schema to LDIF from the right-click menu.
 
 !\[An image showing ](Media/Image2.2.jpg)
 
-## LDAP Controls
+### LDAP Controls
 
 Understanding the enabled LDAP controls (e.g. paged results, VLV/sort, persistent search, proxy authorization) is a manual process. Check the legacy directory server settings to determine which controls are enabled.
 
-## Password Policies
+### Password Policies
 
 Understanding the password policies defined in the legacy directory is a manual process. You must work with the directory owner/administrator to understand how password policies are enforced. Some questions to ask might be:
 
@@ -49,7 +47,7 @@ What are the requirements of the policies themselves (e.g. password strength, lo
 
 
 
-# Import Data into RadiantOne Directory
+## Import Data into RadiantOne Directory
 
 The recommended approach is to import the data as is (stick to the original DIT of the backend) to avoid complex re-mappings of group memberships. The import of the data is achieved through a persistent cache initialization of the proxy view. Once the data is in persistent cache, complex reorganizations of the original DIT can be done using virtualization. This includes things like flattening the hierarchy to get a list of users and groups, and merging overlapping users and groups (requiring correlation)…etc. Once you’ve configured the desired virtual view(s) as persistent cache, this image can be replicated to a RadiantOne Directory store. This allows a separation of duties between the persistent cache refresh maintenance/process and the layer consumed by client applications. This also simplifies the cutover process once the backend server is fully decommissioned. The persistent cache refresh layer can be removed or repurposed.
 
@@ -92,11 +90,11 @@ As changes are detected on the backend legacy LDAP, the persistent cache views a
 * For bind operations, the persistent cache must contain the user passwords from the backend directory. The hashed passwords are then replicated to the RadiantOne Directory store. As long as the password hash is compatible with the RadiantOne Directory, users should be able to bind against it. Otherwise, binds need redirected. Consult with a Radiant Logic Architect so they can recommend the appropriate configuration.
 * If client applications perform modifications, additional configuration is required to properly route the changes to the persistent cache/refresh layer. Consult with a Radiant Logic Architect so they can recommend the appropriate configuration.
 
-# Configure RadiantOne Server Settings
+## Configure RadiantOne Server Settings
 
 Configure the appropriate server settings on the Client [Consumption Layer machine](03-import-data-into-radiantone-universal-directory.md):
 
-## LDAP Controls and Extensions
+### LDAP Controls and Extensions
 
 RadiantOne supports the following controls and extensions:
 
@@ -133,19 +131,19 @@ Password expired notification, password expiring notification, and password poli
 
 !\[An image showing ](Media/Image4.2.jpg)
 
-## RootDSE
+### RootDSE
 
 Directory Servers provide information about themselves to clients through the rootDSE. It contains information about the server in the form of attributes, some of which are multi-valued. The rootDSE may contain information about the vendor, the naming contexts the server supports, the LDAP controls the server supports, the supported SASL mechanisms, schema location, and other information. The contents of the rootDSE generally determine the sequence and format of requests clients issue to the server.
 
 The RadiantOne rootDSE is located at <RLI\_HOME>\\vds\_server\\conf\\rootdse.ldif and is the default content returned to clients when they request the rootDSE (an LDAP search request with an empty DN). Some LDAP clients search the rootDSE to determine the naming contexts available in the LDAP directory and leverage this information to determine the baseDN (starting point in the directory) to pass in search requests.
 
-## Plugins
+### Plugins
 
 Some legacy LDAP directories support plug-ins to add specific functionality to the server.
 
 Some of the most commonly used plugins and how to configure them in RadiantOne are described in this section.
 
-### Attribute Uniqueness
+**Attribute Uniqueness**
 
 The Attribute Uniqueness plugin in legacy LDAP directories ensures that the value of a given attribute is unique among all entries of a subtree.
 
@@ -153,13 +151,13 @@ To enable comparable functionality in RadiantOne, from the Main Control Panel, n
 
 !\[An image showing ](Media/Image4.3.jpg)
 
-### Referential Integrity
+**Referential Integrity**
 
 The referential integrity plug-in in legacy LDAP directories performs integrity updates on specified attributes immediately after a delete, rename, or move operation. It ensures that all attributes that reference the deleted, renamed or moved entry are updated accordingly.
 
 To enable comparable functionality in RadiantOne, from Main Control Panel, navigate to the Setting tab -> Interception section (requires Expert Mode) > Special Attributes Handling. Locate the Referential Integrity setting and configure the references here.
 
-### Linked Attributes
+**Linked Attributes**
 
 The isMemberOf plug-in in legacy LDAP directories enables clients to check a user’s group membership by requesting the isMemberOf attribute in the user entries. This can be more efficient than searching in group entries looking for a uniquemember (especially in situations where group entries can be large/have many members).
 
@@ -167,14 +165,14 @@ To enable comparable functionality in RadiantOne, from Main Control Panel, navig
 
 This setting can be used for other back-link/forward-link attributes also (e.g. manager, owner, reportsTo…etc.).
 
-### Strong Password Check
+**Strong Password Check**
 
 The Strong Password Check plug-in enables the Directory Server to verify that a user’s password doesn’t contain unallowed strings from a specified dictionary file. This can be used as a method to enforce strong password policies.
 To enable comparable functionality in RadiantOne, from Main Control Panel, navigate to the Setting tab ->Security -> Password policies.  Locate the Password Content section and check the option to Enable Dictionary Check. Click Browse to navigate to the dictionary file.
 
 The dictionary file must be a text-formatted file containing one dictionary word per line.
 
-## Schema
+**Schema**
 
 The RadiantOne LDAP schema is comprised a series of LDIF files located: <RLI\_HOME>\\vds\_server\\conf\\ldaschema\_XX.ldif. XX being the number indicating the order in which the files are loaded. To extend the schema, the easiest approach is to get the object classes and attributes in LDIF format and then name the file ldapschema\_XX.ldif where XX is the sequence you want the file loaded.
 
@@ -184,7 +182,7 @@ If the LDAP directory stores the schema information in the cn=schema naming cont
 
 !\[An image showing ](Media/Image4.4.jpg)
 
-## ACLs
+**ACLs**
 
 RadiantOne provides migration utilities to assist with translating the existing access controls into RadiantOne format. aciUtils and ibmAciMigration utilities are located in <RLI\_HOME>/bin/advanced.
 
