@@ -59,7 +59,7 @@ The recommended approach is to import the data as is (stick to the original DIT 
 
 To get the existing data, create a proxy view of the backend directory and create a persistent cache as outlined below. The terms Persistent Cache/Refresh Layer and Client Consumption layer are used below to describe the configuration applicable to each.
 
-On the Persistent Cache/Refresh Layer:
+### Persistent Cache/Refresh Layer:
 
 1. Define an LDAP data source for the backend directory on the Main Control Panel > Settings > Server Backend > LDAP Data Sources section.
 2. Create a Root Naming Context from the Main Control Panel > Directory Namespace tab of type “LDAP Backend”. If you need assistance, see the RadiantOne Namespace Configuration Guide.
@@ -75,7 +75,7 @@ On the Persistent Cache/Refresh Layer:
 6. From the Main Control Panel > Settings > Server Backend > LDAP Data Sources section, verify the replicationjournal LDAP data source points to the desired journal.
 7. Temporarily stop the persistent cache refresh (if it is running) and export the persistent cache view into an LDIF file. Copy this file to the Client Consumption layer machine.
 
-On the Client Consumption Layer:
+## Configure Client Consuming RadiantOne Directory Store
 
 1. Configure the target RadiantOne Directory store with the same root naming context as the backend directory (the one expected by client applications).
 2. Initialize the RadiantOne Directory store with the export of the persistent cache image.
@@ -172,7 +172,7 @@ To enable comparable functionality in RadiantOne, from Main Control Panel, navig
 
 The dictionary file must be a text-formatted file containing one dictionary word per line.
 
-**Schema**
+### Schema
 
 The RadiantOne LDAP schema is comprised a series of LDIF files located: <RLI\_HOME>\\vds\_server\\conf\\ldaschema\_XX.ldif. XX being the number indicating the order in which the files are loaded. To extend the schema, the easiest approach is to get the object classes and attributes in LDIF format and then name the file ldapschema\_XX.ldif where XX is the sequence you want the file loaded.
 
@@ -182,7 +182,7 @@ If the LDAP directory stores the schema information in the cn=schema naming cont
 
 !\[An image showing ](Media/Image4.4.jpg)
 
-**ACLs**
+### Access Controls
 
 RadiantOne provides migration utilities to assist with translating the existing access controls into RadiantOne format. aciUtils and ibmAciMigration utilities are located in <RLI\_HOME>/bin/advanced.
 
@@ -192,7 +192,7 @@ Access controls can be viewed and defined manually from the Main Control Panel >
 
 !\[An image showing ](Media/Image4.5.jpg)
 
-## Password Policies
+### Password Policies
 
 To support best practices around auditing and maintenance, RadiantOne only supports password policies assigned to LDAP groups or sub-trees (user’s located in a given container in the FID namespace). Password policies defined at the user level are not supported. If you are replacing an LDAP directory that enforces password policies at the user level (e.g. in the passwordpolicysubentry attribute), when preparing the LDIF from the underlying directory (that you will use to initialize RadiantOne Directory) do not include the passwordPolicySubentry attribute and move to use password policies defined at the group and/or “OU” (subtree) level.
 Details about the RadiantOne password policy implementation are here:
@@ -205,9 +205,9 @@ The screen shot below shows the possible properties for RadiantOne Directory pas
 
 
 
-# Determine the Application Usage and Cutover Strategy
+## Determine the Application Usage and Cutover Strategy
 
-## Determine Cutover Strategy
+### Determine Cutover Strategy
 
 Generally all applications are not switched to use the new directory at the same time. There is a gradual migration of applications to point to the new directory. This allows application teams to migrate and test on their own schedule.
 
@@ -215,7 +215,7 @@ Likewise, the legacy LDAP directory isn’t immediately switched off overnight. 
 
 The persistent cache refresh process is in charge of keeping the LDAP directory in sync with the target RadiantOne Directory store. This configuration is outlined in [Chapter 3](03-import-data-into-radiantone-universal-directory).
 
-## Analyze Client Requests
+### Analyze Client Requests
 
 Once applications are modified to point to the RadiantOne Directory, analyze the <RLI\_HOME>/vds\_server/logs/vds\_server.log to track the sequence of requests in an effort to determine what settings to tweak in RadiantOne.
 
@@ -228,5 +228,26 @@ Items to pay special attention to:
 * Do clients issue modification operations or only read operations? If modifications, which attributes are being modified?
 * How is group membership checked (e.g. searching group entry if user is a member or searching user entry to see if they are a member of a certain group)?
 
+## Decommission Legacy Directory
+
+Once all applications have successfully migrated over to use RadiantOne Universal Directory, the legacy directory can be decommissioned and the persistent cache refresh and inter cluster replication processes can be stopped.
+On the Client Consumption Layer, go to the Main Control Panel > Directory Namespace tab.
+Select the naming context for the RadiantOne Universal Directory (HDAP) store and on the right side, uncheck inter-cluster replication and click Save.
+On the Persistent Cache Refresh Layer, go to the Main Control Panel > PCache Monitoring tab.
+Select the persistent cache refresh topology and once it loads, choose Tools > Stop PCache Refresh.
+![An image showing ](Media/Image6.1.jpg)
+For information on stopping RadiantOne components, see the RadiantOne Deployment and Tuning Guide.
+For simpler scenarios, where a single layer is used (and clients are consuming the persistent cache view directly), the persistent cache can be converted to a RadiantOne Universal Directory store. This is a sensitive operation and must be performed during off-peak hours.
+Before converting a persistent cache to an RadiantOne Universal Directory (HDAP) store, the persistent cache refresh should be stopped. You can set the refresh method to “none” on the Main Control Panel -> Directory Namespace -> Cache > `<cached branch>` > Refresh Settings tab. Also, suspend intercluster replication if it is used by setting “replicationInSuspendMode” : true, in ZooKeeper at /`radiantone/<zk_version>/<clustername>/config/namings/<namingcontext_being_replicated>`
+Convert the persistent cache naming context into a RadiantOne Universal Directory with the following command using the <RLI_HOME>/bin/vdsconfig.bat(.sh) utility:
+`convert-pcache-to-hdap -namingcontext <namingcontext> [-instance <instance>]`
+Command Arguments:
+`-namingcontext <namingcontext>`
+<br>[required] The name of the persistent cache naming context to be converted to a RadiantOne Universal Directory (HDAP) store.
+`-instance <instance>`
+<br>The name of the RadiantOne FID instance. If this is not specified, the default instance named vds_server is used.
+
+>[!note] – before the conversion, you are prompted to confirm the operation.  Enter “y” to confirm, or “n” to discontinue.**
+After the persistent cache has been converted to a RadiantOne Universal Directory store, rebuild the index to remove any persistent cache operational attributes. For details on how to rebuild the index, see the RadiantOne Command Line Configuration Guide. If intercluster replication is used, enable it by setting “replicationInSuspendMode” : false, in ZooKeeper at /`radiantone/<zk_version>/<clustername>/config/namings/<namingcontext_being_replicated>`
 
 
