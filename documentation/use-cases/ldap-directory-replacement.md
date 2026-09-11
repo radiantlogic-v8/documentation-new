@@ -1,10 +1,7 @@
-\---
-
-title: LDAP Replacement Guide
-description: LDAP Replacement Guide
 ---
-
-# RadiantOne LDAP Replacement Guide
+title: Legacy LDAP Directory Replacement
+description: Legacy LDAP Directory Replacement 
+---
 
 ## Overview
 
