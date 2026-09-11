@@ -39,7 +39,7 @@ These release notes contain the following sections:
 - [V9-207]: Suppressed a spurious NullPointerException reported in the update install logs.
 - [v9-232]: Improvement so that RadiantOne Directory (HDAP) write triggers now capture only changes relevant to the consuming pipeline, rather than every store write. Previously, pipelines sharing a store—or limited to a branch or object type—still processed unrelated changes, increasing queue size, memory use, and processing. Out-of-scope changes are now dropped at the source, keeping queues proportional to each pipeline’s actual workload.
 - [V9-282]: Improvements to editing JSON attributes from Control Panel > Directory Browser. The ability to update the record directly from the JSON preview modal has also been introduced.
-- [V9-284]: Added the following configurable properties to Control Panel > Tuning > Attributes handling: Attributes excluded from search results, Multi-valued attributes, and Keyword attributes for context search.
+- [V9-284, SQ-1685]: Added the following configurable properties to Control Panel > Tuning > Attributes handling: Attributes excluded from search results, Multi-valued attributes, and Keyword attributes for context search.
 - [V9-289]: Added batch update support for Entra ID backends for group member and owner write operations. Batch Writes can be enabled on the Entra ID data source and you can configure the batch size as well.
 - [V9-290]: Reduced JWT size growth to prevent large Authorization headers from causing request failures.
 - [V9-327, SQ-1350, SQ-1538]: Improvement so that follower-only nodes don't stop when a new leader node is elected.
