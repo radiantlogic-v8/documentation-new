@@ -5,15 +5,15 @@ description: Legacy LDAP Directory Replacement
 
 ## Overview
 
-The purpose of this handbook is to provide guidance for migrating from a legacy LDAP directory (OpenDJ, SunOne/ODSEE, IBM Tivoli Directory) into the RadiantOne Universal Directory. This document provides a general overview of the migration process. The steps provided in this handbook are not exhaustive and may vary depending on the use case.
+The purpose of this use case is to provide guidance for migrating from a legacy LDAP directory (OpenDJ, SunOne/ODSEE, IBM Tivoli Directory) into the RadiantOne Directory. This document provides a general overview of the migration process. The steps provided in this handbook are not exhaustive and may vary depending on the use case.
 
-Although the RadiantOne Universal Directory supports the standard LDAP v3 RFC and closely mimics the behavior of legacy LDAP directory implementations, slight variations are possible. These variations might impact client applications. The level of impact depends on how tightly-coupled the application is with the LDAP variations implemented by the legacy LDAP directory.  In certain cases, the logic of the application might need to change. In some situations, where clients cannot change, RadiantOne’s various customization techniques (e.g. interception scripts, computed attributes…etc.) can be used to mimic the legacy directory. If you encounter this situation, reach out to support@radiantlogic.com for assistance.
+Although the RadiantOne Directory supports the standard LDAP v3 RFC and closely mimics the behavior of legacy LDAP directory implementations, slight variations are possible. These variations might impact client applications. The level of impact depends on how tightly-coupled the application is with the LDAP variations implemented by the legacy LDAP directory.  In certain cases, the logic of the application might need to change. In some situations, where clients cannot change, RadiantOne’s various customization techniques (e.g. interception scripts, computed attributes…etc.) can be used to mimic the legacy directory. If you encounter this situation, reach out to support@radiantlogic.com for assistance.
 
 This gets you all of the components needed for your replacement task. Then, the outline below details the general migration strategy. Each item is further detailed in later chapters.
 
 [Chapter 2](02-inventory-existing-directory.md) - Inventory existing directory (schema, hierarchy, password policies…etc.)
 
-[Chapter 3](03-import-data-into-radiantone-universal-directory.md) - Import data into RadiantOne Universal Directory
+[Chapter 3](03-import-data-into-radiantone-universal-directory.md) - Import data into RadiantOne Directory
 
 [Chapter 4](04-configure-radiantone-server-settings.md) - Configure RadiantOne server settings
 
@@ -49,9 +49,9 @@ What are the requirements of the policies themselves (e.g. password strength, lo
 
 
 
-# Import Data into RadiantOne Universal Directory
+# Import Data into RadiantOne Directory
 
-The recommended approach is to import the data as is (stick to the original DIT of the backend) to avoid complex re-mappings of group memberships. The import of the data is achieved through a persistent cache initialization of the proxy view. Once the data is in persistent cache, complex reorganizations of the original DIT can be done using virtualization. This includes things like flattening the hierarchy to get a list of users and groups, and merging overlapping users and groups (requiring correlation)…etc. Once you’ve configured the desired virtual view(s) as persistent cache, this image can be replicated to a RadiantOne Universal Directory (HDAP) store. This allows a separation of duties between the persistent cache refresh maintenance/process and the layer consumed by client applications. This also simplifies the cutover process once the backend server is fully decommissioned. The persistent cache refresh layer can be removed or repurposed.
+The recommended approach is to import the data as is (stick to the original DIT of the backend) to avoid complex re-mappings of group memberships. The import of the data is achieved through a persistent cache initialization of the proxy view. Once the data is in persistent cache, complex reorganizations of the original DIT can be done using virtualization. This includes things like flattening the hierarchy to get a list of users and groups, and merging overlapping users and groups (requiring correlation)…etc. Once you’ve configured the desired virtual view(s) as persistent cache, this image can be replicated to a RadiantOne Directory store. This allows a separation of duties between the persistent cache refresh maintenance/process and the layer consumed by client applications. This also simplifies the cutover process once the backend server is fully decommissioned. The persistent cache refresh layer can be removed or repurposed.
 
 >\\\*\\\*Note – The persistent cache refresh (Cluster C) and client consumption layers (Custers A \\\& B) shown below are depicting clusters containing two nodes for each. A Radiant Logic Architect can assess your throughput needs and recommend the best architecture.\\\*\\\*
 
@@ -70,7 +70,7 @@ On the Persistent Cache/Refresh Layer:
 
 3. Configure and initialize a persistent cache for the proxy view in addition to the desired refresh strategy (e.g. periodic or real-time). If you need assistance, see the RadiantOne Deployment and Tuning Guide.
 4. (Optional) If you need to configure more advanced views/hierarchies, you can virtualize the persistent cache as an LDAP directory backend and create the desired view. Then, define a persistent cache for this view.
-5. Enable Inter-cluster replication for the final persistent cache view that contains the image that should be replicated to the Client Consumption Layer RadiantOne Universal Directory (HDAP) store.
+5. Enable Inter-cluster replication for the final persistent cache view that contains the image that should be replicated to the Client Consumption Layer RadiantOne Directory store.
 
 !\[An image showing ](Media/Image3.3.jpg)
 
@@ -79,17 +79,17 @@ On the Persistent Cache/Refresh Layer:
 
 On the Client Consumption Layer:
 
-1. Configure the target RadiantOne Universal Directory (HDAP) store with the same root naming context as the backend directory (the one expected by client applications).
-2. Initialize the RadiantOne Universal Directory (HDAP) store with the export of the persistent cache image.
-3. Enable inter-cluster replication on the RadiantOne Universal Directory (HDAP) store. For assistance with this configuration, see the RadiantOne Namespace Configuration Guide.
+1. Configure the target RadiantOne Directory store with the same root naming context as the backend directory (the one expected by client applications).
+2. Initialize the RadiantOne Directory store with the export of the persistent cache image.
+3. Enable inter-cluster replication on the RadiantOne Directory store. For assistance with this configuration, see the RadiantOne Namespace Configuration Guide.
 
 !\[An image showing ](Media/Image3.4.jpg)
 
 4. From the Main Control Panel > Settings > Server Backend > LDAP Data Sources section, verify the replicationjournal LDAP data source points to the desired journal (and should be the same location referenced in the replicationjournal data source on the Persistent Cache/Refresh Layer – verified in step 6 above in the previous section).
 
-As changes are detected on the backend legacy LDAP, the persistent cache views are refreshed and then replicated to the RadiantOne Universal Directory (HDAP) store that is being consumed by the client applications that have been migrated to the new directory.  A few things to keep in mind:
+As changes are detected on the backend legacy LDAP, the persistent cache views are refreshed and then replicated to the RadiantOne Directory store that is being consumed by the client applications that have been migrated to the new directory.  A few things to keep in mind:
 
-* For bind operations, the persistent cache must contain the user passwords from the backend directory. The hashed passwords are then replicated to the RadiantOne Universal Directory (HDAP) store. As long as the password hash is compatible with the RadiantOne Universal Directory, users should be able to bind against it. Otherwise, binds need redirected. Consult with a Radiant Logic Architect so they can recommend the appropriate configuration.
+* For bind operations, the persistent cache must contain the user passwords from the backend directory. The hashed passwords are then replicated to the RadiantOne Directory store. As long as the password hash is compatible with the RadiantOne Directory, users should be able to bind against it. Otherwise, binds need redirected. Consult with a Radiant Logic Architect so they can recommend the appropriate configuration.
 * If client applications perform modifications, additional configuration is required to properly route the changes to the persistent cache/refresh layer. Consult with a Radiant Logic Architect so they can recommend the appropriate configuration.
 
 # Configure RadiantOne Server Settings
@@ -188,7 +188,7 @@ If the LDAP directory stores the schema information in the cn=schema naming cont
 
 RadiantOne provides migration utilities to assist with translating the existing access controls into RadiantOne format. aciUtils and ibmAciMigration utilities are located in <RLI\_HOME>/bin/advanced.
 
-For details on using these utilities to migrate ACLs from the backend LDAP directory to RadiantOne Universal Directory (HDAP), see the RadiantOne ACI Migration Guide.
+For details on using these utilities to migrate ACLs from the backend LDAP directory to RadiantOne Directory, see the RadiantOne ACI Migration Guide.
 
 Access controls can be viewed and defined manually from the Main Control Panel > Settings tab > Security > Access Controls section.
 
@@ -196,12 +196,12 @@ Access controls can be viewed and defined manually from the Main Control Panel >
 
 ## Password Policies
 
-To support best practices around auditing and maintenance, RadiantOne only supports password policies assigned to LDAP groups or sub-trees (user’s located in a given container in the FID namespace). Password policies defined at the user level are not supported. If you are replacing an LDAP directory that enforces password policies at the user level (e.g. in the passwordpolicysubentry attribute), when preparing the LDIF from the underlying directory (that you will use to initialize RadiantOne Universal Directory) do not include the passwordPolicySubentry attribute and move to use password policies defined at the group and/or “OU” (subtree) level.
+To support best practices around auditing and maintenance, RadiantOne only supports password policies assigned to LDAP groups or sub-trees (user’s located in a given container in the FID namespace). Password policies defined at the user level are not supported. If you are replacing an LDAP directory that enforces password policies at the user level (e.g. in the passwordpolicysubentry attribute), when preparing the LDIF from the underlying directory (that you will use to initialize RadiantOne Directory) do not include the passwordPolicySubentry attribute and move to use password policies defined at the group and/or “OU” (subtree) level.
 Details about the RadiantOne password policy implementation are here:
 
 https://tools.ietf.org/html/draft-behera-ldap-password-policy-10
 
-The screen shot below shows the possible properties for RadiantOne Universal Directory password policies. For details on the properties see the RadiantOne System Administration Guide.
+The screen shot below shows the possible properties for RadiantOne Directory password policies. For details on the properties see the RadiantOne System Administration Guide.
 
 !\[An image showing ](Media/Image4.6.jpg)
 
@@ -213,13 +213,13 @@ The screen shot below shows the possible properties for RadiantOne Universal Dir
 
 Generally all applications are not switched to use the new directory at the same time. There is a gradual migration of applications to point to the new directory. This allows application teams to migrate and test on their own schedule.
 
-Likewise, the legacy LDAP directory isn’t immediately switched off overnight. There is generally a temporary time period where both the legacy LDAP directory and the RadiantOne Universal Directory store must co-exist. This results in a required temporary synchronization process between the two.
+Likewise, the legacy LDAP directory isn’t immediately switched off overnight. There is generally a temporary time period where both the legacy LDAP directory and the RadiantOne Directory store must co-exist. This results in a required temporary synchronization process between the two.
 
-The persistent cache refresh process is in charge of keeping the LDAP directory in sync with the target RadiantOne Universal Directory store. This configuration is outlined in [Chapter 3](03-import-data-into-radiantone-universal-directory).
+The persistent cache refresh process is in charge of keeping the LDAP directory in sync with the target RadiantOne Directory store. This configuration is outlined in [Chapter 3](03-import-data-into-radiantone-universal-directory).
 
 ## Analyze Client Requests
 
-Once applications are modified to point to the RadiantOne Universal Directory, analyze the <RLI\_HOME>/vds\_server/logs/vds\_server.log to track the sequence of requests in an effort to determine what settings to tweak in RadiantOne.
+Once applications are modified to point to the RadiantOne Directory, analyze the <RLI\_HOME>/vds\_server/logs/vds\_server.log to track the sequence of requests in an effort to determine what settings to tweak in RadiantOne.
 
 Items to pay special attention to:
 
