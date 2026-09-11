@@ -37,7 +37,7 @@ Sometimes, LDAP directory schema definitions do not define certain attributes as
 
 ## Duplicate Entry Handling
 
-Manage duplicates handling from Classic Control Panel > Settings > Server Front End > Duplicates Handling.
+Use duplicate handling when aggregated virtual views can return the same identity more than once. Configure duplicate entry handling through the Settings Service REST API. With the deprecation of the Classic Control Panel, this setting is not available in the Control Panel UI. 
 
 ### Duplicate DN Removal
 
