@@ -149,7 +149,7 @@ The RadiantOne directory schema is comprised of a series of LDIF files that can 
 
 >[!warn] If you apply a new `ldapschema_XX.ldif` file and it has a number GREATER than 50 (e.g. `ldapschema_51.ldif`) and this definition includes object classes or attributes that are already defined in the VDS schema (in lower numbered schema files), the existing definitions are overridden with the latest definitions. This only starts AFTER the `ldapschema_50.ldif` file.  Otherwise, the definition in the lower numbered files are not overridden.
 
-[File Manager](Media/file-manager.jpg)
+[File Manager](Media/file-manager-dir-schema.jpg)
 
 ### Access Controls
 
