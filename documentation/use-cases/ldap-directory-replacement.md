@@ -57,11 +57,11 @@ To ingest the existing legacy directory data into RadiantOne, create a proxy vie
    ![Proxy View of Legacy LDAP](Media/proxy-view-legacy.jpg)
 
 7. With the naming context selected, click the CACHE tab.
-8. Click CREATE NEW CACHE and go through the process to define a [persistent cache](../tuning/persistent-cache).
+8. Click **CREATE NEW CACHE** and go through the process to define a [persistent cache with refresh](../tuning/persistent-cache).
 
 (Optional) If you need to configure more advanced views/hierarchies, you can virtualize the persistent cache as an LDAP directory backend and create the desired view. Then, define a persistent cache for this view. Ensure that the final virtual view is mounted at the root naming context that client's expect. Any intermediate views can be mounted using any internal root naming context name you choose.
 
->[!note] to support bind operations, the persistent cache must contain the user passwords from the backend directory. As long as the password hash is compatible with RadiantOne, users should be able to [bind against the cache]. 
+>[!note] to support bind operations, the persistent cache must contain the user passwords from the backend directory. As long as the password hash is compatible with RadiantOne, users should be able to [bind against the cache](../tuning/persistent-cache.md#authentication).
 
 ## Configure RadiantOne Server Settings
 
@@ -96,13 +96,13 @@ The following controls that could be used in Sun Java Directory/ODSEE are *not* 
 * Real attributes only request control - 2.16.840.1.113730.3.4.17
 * Virtual attributes only request control - 2.16.840.1.113730.3.4.19
 
-Paged Results, VLV/Sort, Persistent Search and Proxy Authorization Controls are enabled from the Main Control Panel > Settings tab > Server front end > Supported Controls. For details about each, please see the RadiantOne System Administration Guide.
+Paged Results, VLV/Sort, Persistent Search and Proxy Authorization [Controls](../configuration/global-settings/client-protocols/#supported-controls) are enabled from the Control Panel > Manage > Global Settings > Client Protocols.
 
-!\[An image showing ](Media/Image4.1.jpg)
+![Supported Controls](Media/supported-controls.jpg)
 
-Password expired notification, password expiring notification, and password policy control are configured for password policies. 
+Password expired notification, password expiring notification, and password policy control are configured for [password policies](../configuration/security/password-policies/) from Control Panel > Security > Password Policies. 
 
-!\[An image showing ](Media/Image4.2.jpg)
+![Password Policies](Media/password-policies.jpg)
 
 ### RootDSE
 
