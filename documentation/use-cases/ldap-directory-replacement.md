@@ -108,7 +108,7 @@ Password expired notification, password expiring notification, and password poli
 
 Directory Servers provide information about themselves to clients through the rootDSE. It contains information about the server in the form of attributes, some of which are multi-valued. The rootDSE may contain information about the vendor, the naming contexts the server supports, the LDAP controls the server supports, the supported SASL mechanisms, schema location, and other information. The contents of the rootDSE generally determine the sequence and format of requests clients issue to the server.
 
-The RadiantOne rootDSE is located at <RLI\_HOME>\\vds\_server\\conf\\rootdse.ldif and is the default content returned to clients when they request the rootDSE (an LDAP search request with an empty DN). Some LDAP clients search the rootDSE to determine the naming contexts available in the LDAP directory and leverage this information to determine the baseDN (starting point in the directory) to pass in search requests.
+The RadiantOne rootDSE can be managed from Control Panel > Manage > File Manager. Navigate to vds_server/conf and click rootdse.ldif. This file contains the default content returned to clients when they request the rootDSE (an LDAP search request with an empty DN). Some LDAP clients search the rootDSE to determine the naming contexts available in the LDAP directory and leverage this information to determine the baseDN (starting point in the directory) to pass in search requests.
 
 ### Plugins
 
