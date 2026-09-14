@@ -120,58 +120,50 @@ Some of the most commonly used plugins and how to configure them in RadiantOne a
 
 The Attribute Uniqueness plugin in legacy LDAP directories ensures that the value of a given attribute is unique among all entries of a subtree.
 
-To enable comparable functionality in RadiantOne, from the Main Control Panel, navigate to the Setting tab > Interception section (requires [Expert Mode](01-overview#expert-mode)) > Special Attributes Handling. Locate the Attribute Uniqueness setting and configure the attributes here.
+To enable comparable functionality in RadiantOne, from the Control Panel > Setup > Directory Namespace > Namespace Design, navigate to the root naming context where you want to support this functionality. Then go to the Special Attributes tab. Locate the Attribute Uniqueness setting and configure the attributes here.
 
-!\[An image showing ](Media/Image4.3.jpg)
+![Attribute Uniqueness Setting](Media/attr-uniqueness.jpg)
 
 **Referential Integrity**
 
 The referential integrity plug-in in legacy LDAP directories performs integrity updates on specified attributes immediately after a delete, rename, or move operation. It ensures that all attributes that reference the deleted, renamed or moved entry are updated accordingly.
 
-To enable comparable functionality in RadiantOne, from Main Control Panel, navigate to the Setting tab -> Interception section (requires Expert Mode) > Special Attributes Handling. Locate the Referential Integrity setting and configure the references here.
+To enable comparable functionality in RadiantOne, from the Control Panel > Setup > Directory Namespace > Namespace Design, navigate to the root naming context where you want to support this functionality. Then go to the Special Attributes tab. Locate the Referential Integrity setting and configure the references here.
 
 **Linked Attributes**
 
 The isMemberOf plug-in in legacy LDAP directories enables clients to check a user’s group membership by requesting the isMemberOf attribute in the user entries. This can be more efficient than searching in group entries looking for a uniquemember (especially in situations where group entries can be large/have many members).
 
-To enable comparable functionality in RadiantOne, from Main Control Panel, navigate to the Setting tab > Interception section (requires Expert Mode) > Special Attributes Handling. Locate the Linked Attributes setting and configure the link between the location of users and the location of potential groups they are a member of here. RadiantOne computes isMemberOf only when the attribute is explicitly requested from clients.
+To enable comparable functionality in RadiantOne, from the Control Panel > Setup > Directory Namespace > Namespace Design, navigate to the root naming context where you want to support this functionality. Locate the Linked Attributes setting and configure the link between the location of users and the location of potential groups they are a member of here. RadiantOne computes isMemberOf only when the attribute is explicitly requested from clients.
 
 This setting can be used for other back-link/forward-link attributes also (e.g. manager, owner, reportsTo…etc.).
 
 **Strong Password Check**
 
 The Strong Password Check plug-in enables the Directory Server to verify that a user’s password doesn’t contain unallowed strings from a specified dictionary file. This can be used as a method to enforce strong password policies.
-To enable comparable functionality in RadiantOne, from Main Control Panel, navigate to the Setting tab ->Security -> Password policies.  Locate the Password Content section and check the option to Enable Dictionary Check. Click Browse to navigate to the dictionary file.
-
-The dictionary file must be a text-formatted file containing one dictionary word per line.
+To enable comparable functionality in RadiantOne, from Control Panel > Security > Password Policies, locate the Password Content section and check the option to Enable Dictionary Check. Click **UPDATE DICTIONARY** to manage the contents of the dictionary file. The dictionary file must be a text-formatted file containing one dictionary word per line.
 
 ### Schema
 
-The RadiantOne LDAP schema is comprised a series of LDIF files located: <RLI\_HOME>\\vds\_server\\conf\\ldaschema\_XX.ldif. XX being the number indicating the order in which the files are loaded. To extend the schema, the easiest approach is to get the object classes and attributes in LDIF format and then name the file ldapschema\_XX.ldif where XX is the sequence you want the file loaded.
+The RadiantOne directory schema is comprised of a series of LDIF files that can be managed from Control Panel > Manage > File Manager. Navigate to vds_server > conf and locate the *ldapschema_XX.ldif* files.  XX being the number indicating the order in which the files are loaded. To extend the schema, the easiest approach is to get the object classes and attributes in LDIF format and then name the file ldapschema_XX.ldif where XX is the sequence you want the file loaded. Then, use File Manager to upload the file to the `vds_server/conf`and restart the RadiantOne service.
 
-><span style="color:red">\\\*\\\*IMPORTANT NOTE - If you apply a new ldapschema\\\_XX.ldif file and it has a number GREATER than 50 (e.g. ldapschema\\\_51.ldif) and this definition includes object classes or attributes that are already defined in the VDS schema (in lower numbered schema files), the existing definitions are overridden with the latest definitions. This only starts AFTER the ldapschema\\\_50.ldif file.  Otherwise, the definition in the lower numbered files are not overridden.\\\*\\\*
+>[!warn] If you apply a new `ldapschema_XX.ldif` file and it has a number GREATER than 50 (e.g. `ldapschema_51.ldif`) and this definition includes object classes or attributes that are already defined in the VDS schema (in lower numbered schema files), the existing definitions are overridden with the latest definitions. This only starts AFTER the `ldapschema_50.ldif` file.  Otherwise, the definition in the lower numbered files are not overridden.
 
-If the LDAP directory stores the schema information in the cn=schema naming context, connect to this naming context from the RadiantOne LDAP Browser and you can export the schema to LDIF from there. Name the file ldapschema\_XX.ldif (where XX is the sequence you want the schema loaded in) and save in <RLI\_HOME>/vds\_server/conf.
-
-!\[An image showing ](Media/Image4.4.jpg)
+[File Manager](Media/file-manager.jpg)
 
 ### Access Controls
 
 Access controls can be viewed and defined manually from the Control Panel > Manage > Security > Access Controls.
 
-[Access Controls](Media/Image4.5.jpg)
+[Access Controls](Media/access-controls.jpg)
 
 ### Password Policies
 
 Password Policies can be viewed and defined manually from the Control Panel > Manage > Security > Password Policies.
 
-To support best practices around auditing and maintenance, RadiantOne only supports password policies assigned to LDAP groups or sub-trees (user’s located in a given container in the RadiantOne namespace). Password policies defined at the user level are not supported. If you are replacing an LDAP directory that enforces password policies at the user level (e.g. in the passwordpolicysubentry attribute), when preparing the LDIF from the underlying directory (that you will use to initialize RadiantOne Directory) do not include the passwordPolicySubentry attribute and move to use password policies defined at the group and/or “OU” (subtree) level.
+To support best practices around auditing and maintenance, RadiantOne only supports [password policies](../configuration/security/security/#password-policies) assigned to LDAP groups or sub-trees (user’s located in a given container in the RadiantOne namespace). Password policies defined at the user level are not supported. If you are replacing an LDAP directory that enforces password policies at the user level (e.g. in the passwordpolicysubentry attribute), when preparing the LDIF from the underlying directory (that you will use to initialize RadiantOne Directory) do not include the passwordPolicySubentry attribute and move to use password policies defined at the group and/or “OU” (subtree) level.
+
 For details see here: [RadiantOne password policy implementation](https://tools.ietf.org/html/draft-behera-ldap-password-policy-10):
-
-The screen shot below shows the possible properties for RadiantOne Directory password policies. For details on the properties see the RadiantOne System Administration Guide.
-
-!\[An image showing ](Media/Image4.6.jpg)
-
 
 ## Determine the Application Usage and Cutover Strategy
 
@@ -179,9 +171,8 @@ The screen shot below shows the possible properties for RadiantOne Directory pas
 
 Generally all applications are not switched to use the new directory at the same time. There is a gradual migration of applications to point to the new directory. This allows application teams to migrate and test on their own schedule.
 
-Likewise, the legacy LDAP directory isn’t immediately switched off overnight. There is generally a temporary time period where both the legacy LDAP directory and the RadiantOne Directory store must co-exist. This results in a required temporary synchronization process between the two.
+Likewise, the legacy LDAP directory isn’t immediately switched off overnight. There is generally a temporary time period where both the legacy LDAP directory and the RadiantOne Directory store must co-exist. This results in a required temporary synchronization process, which can be addressed with a persistent cache refresh strategy, as outlined in this use case, or a [synchronization](../configuration/synchronization/synchronization-concepts) strategy.
 
-The persistent cache refresh process keeps the LDAP directory in sync with the target RadiantOne Directory store during this transition periord. This configuration is outlined in [Chapter 3](03-import-data-into-radiantone-universal-directory).
 
 ### Analyze Client Requests
 
@@ -203,11 +194,11 @@ Once all applications have successfully migrated over to use RadiantOne Director
 To stop persistent cache refresh:
 1. Go to the Control Panel > Setup > Directory Namespace > Namespace Design.
 2. Select the root naming context where the persistent cached view is located.
-3. Click the CACHE tab.
+3. Click the **CACHE** tab.
 4. Click the `...` menu inline with the cached view and choose Edit.
 5. In the Configure Refresh Type section, select *None*.
 6. Click Next, and then Next again.
 7. Click **SAVE**.
 8. To convert the persistent cache to a RadiantOne Directory store, on the CACHE tab, click `...` menu inline with the cached view and choose Edit.
-9. In the MANAGE PROPERTIES section, under the ACTION section, click EXECUTE next to "Convert to RadiantOne Directory".
+9. In the **MANAGE PROPERTIES** section, under the ACTION section, click EXECUTE next to "Convert to RadiantOne Directory".
 10. Rebuild the index to remove any persistent cache operational attributes. The REBUILD INDEX button is located in the upper right of the Manage Persistent Cache page.
