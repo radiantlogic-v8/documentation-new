@@ -48,22 +48,20 @@ To ingest the existing legacy directory data into RadiantOne, create a proxy vie
 
 ### Persistent Cache View
 
-1. Define an LDAP data source for the backend directory from the Control Panel > Setup > Data Catalog > Data Sources.
+1. Define an LDAP data source for the backend directory from the Control Panel > Setup > Data Catalog > [Data Sources](../configuration/data-sources/data-sources).
 2. Click New Source and choose Generic LDAP template. Complete the form to configure a connection to the legacy LDAP Directory.
 3. Create a Root Naming Context from the Control Panel > Setup > Directory Namespace > Namespace Design.
 4. Click New Naming Context and enter the name of the Root Naming Context. Typically, this should match the naming used in the legacy LDAP directory.
 5. With the new naming context select in the Namespace Design section, click **MOUNT BACKEND**.
 6. Select the LDAP type and then select the data source created in step 1 of this section.
+   ![Proxy View of Legacy LDAP](Media/proxy-view-legacy.jpg)
 
-[Proxy View of Legacy LDAP](Media/proxy-view-legacy.jpg)
+7. With the naming context selected, click the CACHE tab.
+8. Click CREATE NEW CACHE and go through the process to define a [persistent cache](../tuning/persistent-cache).
 
-3. Configure and initialize a persistent cache for the proxy view in addition to the desired refresh strategy (e.g. periodic or real-time). If you need assistance, see the RadiantOne Deployment and Tuning Guide.
-4. (Optional) If you need to configure more advanced views/hierarchies, you can virtualize the persistent cache as an LDAP directory backend and create the desired view. Then, define a persistent cache for this view. Ensure that the final virtual view is mounted at the root naming context that client's expect. Any intermediate views can be mounted using any internal root naming context name you choose.
+(Optional) If you need to configure more advanced views/hierarchies, you can virtualize the persistent cache as an LDAP directory backend and create the desired view. Then, define a persistent cache for this view. Ensure that the final virtual view is mounted at the root naming context that client's expect. Any intermediate views can be mounted using any internal root naming context name you choose.
 
-[An image showing ](Media/Image3.3.jpg)
-
-* For bind operations, the persistent cache must contain the user passwords from the backend directory. The hashed passwords are then replicated to the RadiantOne Directory store. As long as the password hash is compatible with the RadiantOne Directory, users should be able to bind against it. Otherwise, binds need redirected. Consult with a Radiant Logic Architect so they can recommend the appropriate configuration.
-
+>[!note] to support bind operations, the persistent cache must contain the user passwords from the backend directory. As long as the password hash is compatible with RadiantOne, users should be able to [bind against the cache]. 
 
 ## Configure RadiantOne Server Settings
 
