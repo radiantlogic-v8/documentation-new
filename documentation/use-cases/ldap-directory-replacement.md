@@ -11,19 +11,19 @@ Although the RadiantOne Directory supports the standard LDAP v3 RFC and closely 
 
 This gets you all of the components needed for your replacement task. Then, the outline below details the general migration strategy. Each item is further detailed in later sections.
 
-- [Inventory Existing Legacy Directory](#inventory-existing-legacy-directory) - Inventory existing directory (schema, hierarchy, password policies…etc.)
-- [Import Data into RadiantOne Directory](#import-data-into-radiantOne-directory) - Import data into RadiantOne Directory. 
-- [Configure RadiantOne server settings](#configure-radiantone-server-settings) - Configure RadiantOne server settings
-- [Determine the application usage and cutover strategy](#determine-the-application-usage-and-cutover-strategy) - Determine the application usage and cutover strategy
-- [Decommission legacy directory](#decommission-legacy-directory) - Decommission legacy directory
+- [Inventory Existing Legacy Directory](#inventory-existing-legacy-directory) - Inventory existing directory (schema, hierarchy, types of client requests, password policies…etc.)
+- [Import Data into RadiantOne Directory](#import-data-into-radiantOne-directory) - Import data into RadiantOne Directory. This can be handled with a persistent cache initialization (if a cache with refresh is desired), or an initial upload in the sync pipleline if a synchronization approach from the legacy directory to the RadiantOne directory is used.
+- [Configure RadiantOne server settings](#configure-radiantone-server-settings) - Configure RadiantOne server settings. These settings are access controls, password policies, schema and any customizations needed to address legacy plugin behavior.
+- [Determine the application usage and cutover strategy](#determine-the-application-usage-and-cutover-strategy) - Determine the application usage and cutover strategy. This determines how long the persistent cache refresh and/or synchronization pipeline needs to be running.
+- [Decommission legacy directory](#decommission-legacy-directory) - Decommission legacy directory after all applications have been migrated to use the RadiantOne Directory.
 
 ## Inventory Existing Legacy Directory
 
-Taking inventory of the existing directory is mostly a manually process. Once you’ve acquired the basic credentials from the directory owner, you can access the directory from any LDAP client, like Softerra LDAP Browser. From here, you can get a glimpse of the existing hierarchy and export schema and branches to LDIF files. 
+Taking inventory of the existing directory is mostly a manually process. Once you’ve acquired the basic credentials from the directory owner, you can access the directory from any LDAP client, like Softerra LDAP Browser. From here, you can get a glimpse of the existing root naming context, hierarchical structure, and export schema and branches to LDIF files. 
 
 ### Schema
 
-To get the schema information from the LDAP directory, you can typically use a base DN of cn=schema in LDAP client/Browser. Then, export the schema to an LDIF formatted file.
+To get the schema information from the LDAP directory, you can typically use a base DN of cn=schema in an LDAP client/Browser. Then, export the schema to an LDIF formatted file.
 
 ### LDAP Controls
 
@@ -40,20 +40,20 @@ What are the requirements of the policies themselves (e.g. password strength, lo
 
 ## Import Data into RadiantOne Directory
 
-The recommended approach is to import the data as is (stick to the original DIT of the backend) to avoid complex re-mappings of group memberships. The import of the data is achieved through a persistent cache initialization of the proxy view. Once the data is in persistent cache, complex reorganizations of the original DIT can be done using virtualization. This includes things like flattening the hierarchy to get a list of users and groups, and merging overlapping users and groups (requiring correlation)…etc. Once you’ve configured the desired virtual view(s) as persistent cache, this image can be replicated to a RadiantOne Directory store. This allows a separation of duties between the persistent cache refresh maintenance/process and the layer consumed by client applications. This also simplifies the cutover process once the backend server is fully decommissioned. The persistent cache refresh layer can be removed or repurposed.
+The recommended approach is to import the data as is (stick to the original DIT of the backend) to avoid complex re-mappings of group memberships. The easiest approach to import the data is achieved through a persistent cache initialization of the proxy view. Once the data is in persistent cache, complex reorganizations of the original DIT can be done using virtualization. This includes things like flattening the hierarchy to get a list of users and groups, and merging overlapping users and groups (requiring correlation)…etc. 
 
->\\\*\\\*Note – The persistent cache refresh (Cluster C) and client consumption layers (Custers A \\\& B) shown below are depicting clusters containing two nodes for each. A Radiant Logic Architect can assess your throughput needs and recommend the best architecture.\\\*\\\*
+>[!note] If you would like to discuss a particular use case or alternate approach (e.g. using synchronization instead of a persistent cache), please contact your Radiant Logic Account Representative.
 
-!\[An image showing ](Media/Image3.1.jpg)
-
->\\\*\\\*Note – if you would like to discuss a particular use case or alternate approach, please contact your Radiant Logic Account Representative.\\\*\\\*
-
-To get the existing data, create a proxy view of the backend directory and create a persistent cache as outlined below. The terms Persistent Cache/Refresh Layer and Client Consumption layer are used below to describe the configuration applicable to each.
+To ingest the existing legacy directory data into RadiantOne, create a proxy view of the backend directory and create a persistent cache as outlined below. 
 
 ### Persistent Cache View
 
-1. Define an LDAP data source for the backend directory on the Main Control Panel > Settings > Server Backend > LDAP Data Sources section.
-2. Create a Root Naming Context from the Main Control Panel > Directory Namespace tab of type “LDAP Backend”. Use the same root naming context as the backend directory (the one expected by client applications).
+1. Define an LDAP data source for the backend directory from the Control Panel > Setup > Data Catalog > Data Sources.
+2. Click New Source and choose Generic LDAP template. Complete the form to configure a connection to the legacy LDAP Directory.
+3. Create a Root Naming Context from the Control Panel > Setup > Directory Namespace > Namespace Design.
+4. Click New Naming Context and enter the name of the Root Naming Context. Typically, this should match the naming used in the legacy LDAP directory.
+5. With the new naming context select in the Namespace Design section, click **MOUNT BACKEND**.
+6. Select the LDAP type and then select the data source created in step 1 of this section.
 
 [An image showing ](Media/Image3.2.jpg)
 
