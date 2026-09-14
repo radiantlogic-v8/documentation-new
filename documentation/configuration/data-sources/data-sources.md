@@ -162,7 +162,8 @@ The following properties apply to Microsoft Entra ID data source.
 | ConnectionTimeout | Initial HTTP connection timeout duration (in milliseconds). |
 | Proxy | Provide a value that points to the HTTP proxy server and port if your org requires a HTTP web proxy (e.g, `rli.vip.proxy.com:9090`) |
 | ProxySSL | Set the value to `true` if your org requires a HTTPS web proxy and SSL is used. Set the value to `false` if your org uses HTTP.
-| MFAEnabled | Enable this if your security policy enforces multifactor authentication on the account and you would like to fetch MFA data. |
+| MFAEnabled | Enable this if your security policy enforces multifactor authentication on the account and you would like to fetch MFA data. | ENABLE_BATCH_WRITES | Enables batch write operations through the Microsoft Graph $batch endpoint for group member and group owner modifications (add, remove, and remove-all). When disabled (toggled off), the connector falls back to individual per-item calls.
+| BATCH_SIZE | Sets the maximum number of subrequests included in a single Microsoft Graph $batch call. Valid values are 1–20. If left blank, set to 0, or set to a negative value, the connector uses the default of 20. Values greater than 20 are limited to 20.
 
 In the Entra ID data source configuration page, you can also configure the [Microsoft Graph](https://learn.microsoft.com/en-us/graph/?view=graph-rest-1.0) object link properties to control what value (the Group DN as represented in the RadiantOne namespace, the Group display name, or the Group URL) is returned for "memberOf" and/or "member" attributes.
 
