@@ -145,7 +145,7 @@ To enable comparable functionality in RadiantOne, from Control Panel > Security 
 
 ### Schema
 
-The RadiantOne directory schema is comprised of a series of LDIF files that can be managed from Control Panel > Manage > File Manager. Navigate to vds_server > conf and locate the *ldapschema_XX.ldif* files.  XX being the number indicating the order in which the files are loaded. To extend the schema, the easiest approach is to get the object classes and attributes in LDIF format and then name the file ldapschema_XX.ldif where XX is the sequence you want the file loaded. Then, use File Manager to upload the file to the `vds_server/conf`and restart the RadiantOne service.
+The RadiantOne directory schema is comprised of a series of LDIF files that can be managed from Control Panel > Manage > File Manager. Navigate to vds_server > conf and locate the *ldapschema_XX.ldif* files.  XX being the number indicating the order in which the files are loaded. To extend the schema, the easiest approach is to get the object classes and attributes in LDIF format and then name the file ldapschema_XX.ldif where XX is the sequence you want the file loaded. Then, use File Manager to upload the file to `vds_server/conf`and restart the RadiantOne service.
 
 >[!warn] If you apply a new `ldapschema_XX.ldif` file and it has a number GREATER than 50 (e.g. `ldapschema_51.ldif`) and this definition includes object classes or attributes that are already defined in the VDS schema (in lower numbered schema files), the existing definitions are overridden with the latest definitions. This only starts AFTER the `ldapschema_50.ldif` file.  Otherwise, the definition in the lower numbered files are not overridden.
 
