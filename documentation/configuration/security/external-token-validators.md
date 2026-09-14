@@ -18,7 +18,7 @@ This approach improves security by ensuring that user credentials are never sent
 
 A high-level diagram of the different components for a REST API call is shown below. Postman is used as a simple client to illustrate the flow. A similar approach applies to SCIM APIs as well.
 
-![High-level architecture: Postman authenticates against the OIDC provider, gets a token, passes it in the header to ADAP, which validates the token and issues requests to the RadiantOne Platform](images/01-architecture-overview.jpg)
+![High-level architecture: Postman authenticates against the OIDC provider, gets a token, passes it in the header to ADAP, which validates the token and issues requests to the RadiantOne Platform](Media/01-architecture-overview.jpg)
 
 In this architecture, you need to follow these high-level steps:
 
@@ -38,7 +38,7 @@ Before you begin configuring the token validator, ensure you have the following:
 - Expected audience and required scopes
 - **For SCIM validators:** A SCIM v2 resource type must be configured in RadiantOne Identity Data Management via **Control Panel → Client Protocols → SCIM → Resource Types**.
 
-![SCIM Resource Types page in the Control Panel, used to create a SCIM resource type by defining object and attribute mappings between LDAP and SCIM](images/02-scim-resource-types.png)
+![SCIM Resource Types page in the Control Panel, used to create a SCIM resource type by defining object and attribute mappings between LDAP and SCIM](Media/02-scim-resource-types.png)
 
 ## RadiantOne Configuration
 
@@ -67,7 +67,7 @@ With Token Validators, administrators can configure and manage trusted external 
 2. Click **"Add Token Validator"**. This opens the configuration form.
 3. Fill out all required fields:
 
-![Create Token Validator form showing Name, Status, OIDC Provider, OIDC Discovery URL, JSON Web Key Set (JWKS) URL, Scope Claim Name, Expected Audience, Expected Scope, JSON Web Token Validation Clock Offset, API Service, and Claims to User DN Mapping fields](images/03-create-token-validator.png)
+![Create Token Validator form showing Name, Status, OIDC Provider, OIDC Discovery URL, JSON Web Key Set (JWKS) URL, Scope Claim Name, Expected Audience, Expected Scope, JSON Web Token Validation Clock Offset, API Service, and Claims to User DN Mapping fields](Media/03-create-token-validator.png)
 
 **a. Name** — A unique name for your validator. Must match the pattern `^[a-zA-Z0-9\s_-]+$` and be 100 characters or fewer.
 
@@ -115,8 +115,6 @@ The Token Validators list in the Control Panel displays all validators with the 
 | JSON WEB KEY SET (JWKS) URL | The configured JWKS endpoint |
 | API SERVICE | Either **REST (ADAP)** or **SCIM** |
 | STATUS | Enabled or Disabled |
-
-![Token Validators list in the Control Panel showing validators with their JWKS URLs, API service type, and enabled status](images/04-token-validators-list.png)
 
 ### Switching a Validator Between API Service Types
 
@@ -171,7 +169,7 @@ curl --request POST \
 
 In this example, Postman is used to include the access token in the Authorization header as a bearer token.
 
-![Postman Headers tab showing the Authorization header set to a Bearer token value](images/05-postman-auth-header.jpg)
+![Postman Headers tab showing the Authorization header set to a Bearer token value](Media/05-postman-auth-header.jpg)
 
 ### 3. Make the API request
 
@@ -187,7 +185,7 @@ In this example, a basic search is performed.
 
 If successful, the operation displays a response body similar to the following.
 
-![Postman response body showing a 200 OK JSON result with a resources array containing directory entries and their attributes](images/06-postman-response-body.jpg)
+![Postman response body showing a 200 OK JSON result with a resources array containing directory entries and their attributes](Media/06-postman-response-body.jpg)
 
 ## Querying RadiantOne SCIM v2 API with an External Token *(new in v8.5.0)*
 
