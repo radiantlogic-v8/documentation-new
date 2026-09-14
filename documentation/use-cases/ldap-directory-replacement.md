@@ -55,7 +55,7 @@ To ingest the existing legacy directory data into RadiantOne, create a proxy vie
 5. With the new naming context select in the Namespace Design section, click **MOUNT BACKEND**.
 6. Select the LDAP type and then select the data source created in step 1 of this section.
 
-[An image showing ](Media/Image3.2.jpg)
+[Proxy View of Legacy LDAP](Media/proxy-view-legacy.jpg)
 
 3. Configure and initialize a persistent cache for the proxy view in addition to the desired refresh strategy (e.g. periodic or real-time). If you need assistance, see the RadiantOne Deployment and Tuning Guide.
 4. (Optional) If you need to configure more advanced views/hierarchies, you can virtualize the persistent cache as an LDAP directory backend and create the desired view. Then, define a persistent cache for this view. Ensure that the final virtual view is mounted at the root naming context that client's expect. Any intermediate views can be mounted using any internal root naming context name you choose.
