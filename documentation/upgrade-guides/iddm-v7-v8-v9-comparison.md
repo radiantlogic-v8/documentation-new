@@ -11,6 +11,7 @@ This document summarizes the operational differences between the three supported
 | Area | IDDM v7 | IDDM v8 | IDDM v9 |
 |---|---|---|---|
 | **Java runtime** | Amazon Corretto v8 | OpenJDK v8 | OpenJDK v25 |
+| **Supports TLS 1.3 and modern cipher suites: the KEM API, and the first post-quantum algorithms (ML-KEM/ML-DSA)** | No | No | Yes |
 | **Architecture** | Monolithic, legacy server-based product | Microservices-based | Microservices-based (same stack as v8) |
 | **Underlying platform** | Traditional server install on the host OS or VM | Kubernetes | Kubernetes |
 | **Deployment model** | Self-managed only, installed by the customer in their desired data center | Radiant Logic SaaS or self-managed in the customer data center — Kubernetes-based either way | Radiant Logic SaaS or self-managed in the customer data center — Kubernetes-based either way |
