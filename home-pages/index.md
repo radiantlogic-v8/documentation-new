@@ -164,7 +164,7 @@ Harness your identity data with intelligent integration to drive better business
   > Learn how to use the RadiantOne Password Filter to keep user passwords consistent across multiple Active Directories.
 
   > [Modernize Legacy LDAP Directories](use-cases/ldap-directory-replacement)
-  > Learn how to migrate from legacy LDAP directories to the RadiantOne Directory. Save costs by retiring per-server licenses, and hardware and support contracts for end-of-life directories such as Sun/Oracle DSEE, eDirectory and Domino. Consolidating several directories onto one platform also removes duplicated operations, monitoring and DR footprint.
+  > Learn how to migrate from legacy LDAP directories to the RadiantOne Directory. Save costs by retiring per-server licenses for end-of-life directories.
      
   
 </section> 
