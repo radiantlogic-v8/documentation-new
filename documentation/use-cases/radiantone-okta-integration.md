@@ -66,7 +66,7 @@ After the Data Source has been created, you will be taken back to the main Data 
 
 The default schema for Okta is included with the template and can be seen from the SCHEMA tab with the Okta data source selected. Users, Groups and Apps are the objects supported with the out-of-the-box Okta template.
 
-1. From the main Data Source page, click on the newly created Data Source.
+1. From the Control Panel > Setup > Data Catalog > Data Sources > Data Source page, click on the newly created Data Source.
 2. Click on the ’SCHEMA’ tab at the top of the Data Source page. 
 3. Expand the Tables section to view the objects and each object can be expanded to view the attributes. 
 
@@ -108,7 +108,7 @@ The following steps assume an attribute named MyCustomAttribute has been impleme
 
 ![Okta Custom Attribute](Media/okta-custom-attr.jpg) 
 
-1. From the main Data Source page, click on the Okta Data Source.
+1. From the Control Panel > Setup > Data Catalog > Data Sources > Data Source page, click on the Okta Data Source.
 2. Click on the ’SCHEMA’ tab at the top of the Data Source page. 
 3. Expand the Tables section to view the objects and each object can be expanded to view the attributes. For the object where you want to add additional attributes, right-click on the Attributes level and choose *Add New Attribute*.
 4. A new attribute line is added to the table on the right. The Name of the attribute needs to be prefixed by ‘profile-’. For example, a custom attribute ‘MyCustomAttribute’ in okta, should be entered as: profile-mycustomattribute
