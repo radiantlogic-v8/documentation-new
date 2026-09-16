@@ -49,7 +49,7 @@ PROXYSSL | HTTPS proxy address (host:port) used for SSL/TLS traffic to the Okta 
 
 
 
-1. Click the ‘TEST CONNECTION’ button to validate the credentials and connectivity.  A pop up notification will be displayed with the results of the test.  If the test is not successful additional information will be displayed to assist with troubleshooting.   
+5. Click the **TEST CONNECTION** button to validate the credentials and connectivity.  A pop up notification will be displayed with the results of the test.  If the test is not successful additional information will be displayed to assist with troubleshooting.   
 When done with the configuration and test, click **CREATE**. 
 
 After the Data Source has been created, you will be taken back to the main Data Source page and should see the newly created Data Source, showing ‘ACTIVE’. 
