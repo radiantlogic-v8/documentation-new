@@ -116,7 +116,7 @@ The following steps assume an attribute named MyCustomAttribute has been impleme
     ![Custom Okta Attribute](Media/new-custom.jpg)
 
 5. Click the checkmark button to the far right inline with the new attribute row to save. Repeat this process to add all the required custom attributes.
-6. To extend the RadiantOne Schema with the Okta objects, toggle the option in the upper right on: **INCLUDE IN SERVER SCHEMA**. This ensures that if you want to use your Okta view as a source for synchronization pipelines that your custom attributes are available for mappings.
+6. To extend the [RadiantOne Schema](../configuration/directory-stores/managing-directory-schema) with the Okta objects, toggle the option in the upper right on: **INCLUDE IN SERVER SCHEMA**. This ensures that if you want to use your Okta view as a source for synchronization pipelines that your custom attributes are available for mappings.
 
     ![Include in Schema](Media/include-schema.jpg)
 
