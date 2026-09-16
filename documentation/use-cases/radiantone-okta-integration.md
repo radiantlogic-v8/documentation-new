@@ -117,19 +117,10 @@ The following steps assume an attribute named MyCustomAttribute has been impleme
 
 5. Click the checkmark button to the far right inline with the new attribute row to save. Repeat this process to add all the required custom attributes.
 
-6. Now, the custom attributes should return in the virtual identity view. To test, in Control Panel, go to Manage > Directory Browser and expand the o=okta root naming context. 
+6. Now, the custom attributes should return in the virtual identity view. To test, in Control Panel, go to Manage > Directory Browser and expand the `o=okta` root naming context. 
 7. Expand ou=users and select a user that has the custom attribute populated. The value from Okta should be returned. An example is shown below.
 
     ![Custom Okta Attribute Runtime](Media/runtime-custom.jpg)
-
-
-
-
-
-
-
-
-
 
 
 
