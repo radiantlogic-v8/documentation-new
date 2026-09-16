@@ -190,6 +190,35 @@ Password	| Credentials associated with the account indicated in the User propert
 Failover servers | Select the configured database data source that contains the failover server connection details. 
 
 
+### Okta Universal Directory
+
+To virtualize data from Okta, configure an API token in the Okta Admin Dashboard. The screen below shows the location. Verify the Okta documentation to ensure the correct steps are followed since the Okta interface may have changed.
+
+![Okta Admin Dashboard](Media/okta-token.jpg)
+
+Ensure you copy the token value that is generated in the Okta Admin Dashboard, you will need it when creating the data source in RadiantOne.
+
+![Okta token](Media/token-value.jpg)
+
+You can use the Okta template found on the OTHER tab when creating the data source.
+
+![Okta Data Source](Media/okta-template.jpg)
+
+The following properties apply to Okta.
+
+PROPERTY	| DESCRIPTION
+-|-
+URL	| Must be the tenant's Okta base URL e.g. https://radiantlogic.okta.com/
+APITOKEN	| The API token created in the Okta Admin Dashboard. Shown above.
+MAXRETRIES 	| Maximum request retries if failure.
+TIMEOUT	| Request timeout in number of seconds.
+RATELIMIT | Any positive integer. Indicates the maximum requests per minute that RadiantOne will send (to avoid throttling). 
+PROXY | Provide a value that points to the HTTP proxy address and port if your org requires a HTTP web proxy  
+PROXYSSL | HTTPS proxy address (host:port) used for SSL/TLS traffic to the Okta Service
+
+For assistance on creating virtual identity views from Okta Data Sources: [Model-driven Virtual Views](../identity-views)
+
+
 ### CSV Files
 
 JDBC can be leveraged as an access method for CSV-formatted files. These steps assume you have a process that generates a CSV-formatted file from your data source.  For testing, you can use Control Panel > Manage > File Manager to upload your CSV-formatted file to the following location: `RLI_HOME/vds_server/conf/data_sources/csv`
