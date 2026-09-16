@@ -5,8 +5,7 @@ description: This document provides implementation details for RadiantOne virtua
 
 # Overview 
 
-The RadiantOne Identity Data Management service acts as a virtual hub, capable of ingesting and synchronizing data from all your identity applications for administration, management, and 
-provisioning to other applications in the required format. 
+The RadiantOne Identity Data Management service acts as a virtual hub, capable of virtualizing and synchronizing data from all your identity sources for administration, management, and provisioning to other applications in the required format. 
 
 The purpose of this guide is to provide the necessary steps to implement the RadiantOne Okta connector for creating virtual identity views of data from Okta Universal Directory.
 
@@ -30,17 +29,11 @@ Ensure you copy the token value that is generated in the Okta Admin Dashboard, y
 Log into the Identity Data Management Control Panel UI using an account with sufficient privileges to manage Data Sources, Namespaces, and Schema configuration. All setup is performed through point-and-click operations in the UI.
 
 1. After logging into Identity Data Management Control Panel, select Data Catalog > Data Sources from the navigation pane on the left hand side and click **NEW SOURCE**.
-
-![image showing data source selection](Media/new-ds.png)
-
-1. Click the ’OKTA’ tile from the list of displayed data sources on the OTHER tab and click the 'Select' button. 
-
-![Okta Template](Media/okta-template.jpg)
-
-1. Enter a unique name for the Data Source, along with a description. The description field is optional.  The ‘ACTIVE’ toggle should be selected by default, if not, enable it. The ‘SECURE DATA CONNECTOR’ field is not a part of this set up, so leave that set to ‘None’.
-Note that certain characters are not allowed in the Data Source Name, including dashes (-).  The system will provide an error message should there be any issue with the name provided.  
-
-![image showing basic fields for data source](Media/basic-okta.jpg)
+   ![image showing data source selection](Media/new-ds.png)
+1. Click the ’OKTA’ tile from the list of displayed data sources on the OTHER tab and click the 'Select' button.
+   ![Okta Template](Media/okta-template.jpg)
+1. Enter a unique name for the Data Source, along with a description. The description field is optional.  The ‘ACTIVE’ toggle should be selected by default, if not, enable it. The ‘SECURE DATA CONNECTOR’ field is not a part of this set up, so leave that set to ‘None’. Note that certain characters are not allowed in the Data Source Name, including dashes (-).  The system will provide an error message should there be any issue with the name provided.
+   ![image showing basic fields for data source](Media/basic-okta.jpg)
 
 1. Scroll down to the ‘Connection Info’ section. Enter the required information as shown for the target Okta environment. The following properties apply to Okta.
 
@@ -56,7 +49,7 @@ PROXYSSL | HTTPS proxy address (host:port) used for SSL/TLS traffic to the Okta 
 
 
 
-e. Click the ‘TEST CONNECTION’ button to validate the credentials and connectivity.  A pop up notification will be displayed with the results of the test.  If the test is not successful additional information will be displayed to assist with troubleshooting.   
+1. Click the ‘TEST CONNECTION’ button to validate the credentials and connectivity.  A pop up notification will be displayed with the results of the test.  If the test is not successful additional information will be displayed to assist with troubleshooting.   
 When done with the configuration and test, click **CREATE**. 
 
 After the Data Source has been created, you will be taken back to the main Data Source page and should see the newly created Data Source, showing ‘ACTIVE’. 
