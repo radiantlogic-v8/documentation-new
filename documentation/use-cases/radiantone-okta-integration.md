@@ -64,10 +64,10 @@ After the Data Source has been created, you will be taken back to the main Data 
 
 ### Managing the Schema for the Data Source 
 
-The default schema for Okta is included with the template and can be seen from the SCHEMA tab with the Okta data source selected. Users, Groups and Apps are the objects supported with the out-of-the-box Okta template.
+The default schema for Okta is included with the template and can be seen from the **SCHEMA** tab with the Okta data source selected. Users, Groups and Apps are the objects supported with the out-of-the-box Okta template.
 
 1. From the Control Panel > Setup > Data Catalog > Data Sources > Data Source page, click on the newly created Data Source.
-2. Click on the ’SCHEMA’ tab at the top of the Data Source page. 
+2. Click on the **SCHEMA** tab at the top of the Data Source page. 
 3. Expand the Tables section to view the objects and each object can be expanded to view the attributes. 
 
 ![Okta Default Schema](Media/okta-schema.jpg)
