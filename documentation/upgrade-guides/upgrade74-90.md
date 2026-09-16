@@ -162,18 +162,6 @@ If you had Global Identity Builder projects in v7.4, you must re-upload in the G
 
 To edit Global Identity Builder projects in SaaS, from the Control Panel switch to Classic Control Panel and navigate to the Wizards tab. Launch the Global Identity Builder and re-upload your identities in your project. You need to go throught the cache configuration process mentioned in the previous section after the upload.
 
-### Re-enable Inter-cluster Replication 
-
-Once all of your clusters have been moved to SaaS (create a different environment in Environment Operations Center for each), re-enable inter-cluster replication for all needed RadiantOne Directory (HDAP) stores and persistent caches. Verify the replicationjournal LDAP data source indicates the correct cluster (that plays the role of the replication journal). 
-
-In the Control Panel > Setup > Data Catalog > Data Sources, select the replicationjournal data source. View the DETAILS section for this data source and ensure it points to the correct environment endpoint. 
-
-  ![Replication Journal Data Source](Media/replication-journal-datasource.jpg)
-
-Notice in the screenshot above, the syntax references the local node (internal name) as the replicationjournal. For other environments/clusters to reference this cluster as the replicationjournal, they should use the LDAPS endpoint (which you can view in Environment Operations Center > Environment Name > Overview). 
-
-![LDAPS Endpoint](Media/ldaps-endpoint.jpg)
-
 
 ### Configure Delegated Administrators 
 
