@@ -57,7 +57,7 @@ PROXYSSL | HTTPS proxy address (host:port) used for SSL/TLS traffic to the Okta 
 
 
 e. Click the ‘TEST CONNECTION’ button to validate the credentials and connectivity.  A pop up notification will be displayed with the results of the test.  If the test is not successful additional information will be displayed to assist with troubleshooting.   
-When done with the configuration and test, click ‘CREATE’. 
+When done with the configuration and test, click **CREATE**. 
 
 After the Data Source has been created, you will be taken back to the main Data Source page and should see the newly created Data Source, showing ‘ACTIVE’. 
 
@@ -78,7 +78,7 @@ The default schema for Okta is included with the template and can be seen from t
 2. Click on the ‘NEW NAMING CONTEXT’ button to initiate the process to create the virtual view. 
 3. The drop-down provides additional label options, such as ‘cn’ and ‘dc’.  The selection of the label name is subject to your design and desired representation of the data.  For this example, we are using ‘o’ (organization’) and 'okta' as the value as the root object. 
  
-Once you select a label name and value, click on ‘CONFIRM’. 
+Once you select a label name and value, click on **CONFIRM**. 
 
 ![Create Root Naming](Media/okta-root-naming.jpg) 
 
