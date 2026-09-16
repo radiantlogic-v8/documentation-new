@@ -100,9 +100,9 @@ Once you select a label name and value, click on **CONFIRM**.
 
 ![Runtime View](Media/runtime-view.jpg) 
 
-### (Optional) Extend Virtual View with New Okta Attributes 
+### (Optional) Extend Virtual View with Custom Okta Attributes 
 
-Virtual views are based on a metadata configuration file containing default attributes describing users, groups and applications in the Okta Universal Directory. If you have custom attributes in Okta that you would like to expose in your virtual view, follow the steps in this section to add them. 
+Virtual views are based on a metadata configuration file containing default attributes describing users, groups and applications in the Okta Universal Directory. If you have custom attributes in Okta they will automatically be returned in your virtual view. However, if you would like to use those source attributes in synchronization pipeline mappings follow the steps in this section to add them to the RadiantOne schema. 
 
 The following steps assume an attribute named MyCustomAttribute has been implemented in Okta.
 
@@ -116,9 +116,12 @@ The following steps assume an attribute named MyCustomAttribute has been impleme
     ![Custom Okta Attribute](Media/new-custom.jpg)
 
 5. Click the checkmark button to the far right inline with the new attribute row to save. Repeat this process to add all the required custom attributes.
+6. To extend the RadiantOne Schema with the Okta objects, toggle the option in the upper right on: **INCLUDE IN SERVER SCHEMA**. This ensures that if you want to use your Okta view as a source for synchronization pipelines that your custom attributes are available for mappings.
 
-6. Now, the custom attributes should return in the virtual identity view. To test, in Control Panel, go to Manage > Directory Browser and expand the `o=okta` root naming context. 
-7. Expand ou=users and select a user that has the custom attribute populated. The value from Okta should be returned. An example is shown below.
+    ![Include in Schema](Media/include-schema.jpg)
+
+7. To test that the custom attribue is returned in the virtual identity view, in Control Panel, go to Manage > Directory Browser and expand the `o=okta` root naming context. 
+8. Expand ou=users and select a user that has the custom attribute populated. The value from Okta should be returned. An example is shown below.
 
     ![Custom Okta Attribute Runtime](Media/runtime-custom.jpg)
 
