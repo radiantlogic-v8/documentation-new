@@ -92,7 +92,7 @@ Once you select a label name and value, click on **CONFIRM**.
 
 7. Click NEXT.
 8. Select the User object from the schema and click **SELECT**. 
-9. Repeat steps 4-8 in this section with a label level named `ou=Groups` with a content node based on the group object from the default-okta schema is mounted. The virtual view should look as shown below.
+9. Repeat steps 4-8 in this section with a label level named `ou=Groups` where a content node based on the group object from the default-okta schema is mounted. The virtual view should look as shown below.
 
 ![Final View](Media/okta-view.jpg) 
 
