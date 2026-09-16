@@ -182,15 +182,6 @@ Run the following helm command:
 helm -n self-managed update --install fid oci://registry-1.docker.io/radiantone/iddm-helm --version 9.0.0 --values </path/to/your/values.yaml>
 ```
 
-The chart performs the migration in the following order:
-
-1. Moves cluster leadership to fid-0.
-2. Scales the fid StatefulSet to zero. All nodes stop and the outage begins.
-3. Exports all RadiantOne Directory stores to LDIF using the old image.
-4. Deletes the follower PVCs. Follower data is not migrated in place.
-5. Brings fid-0 up on the v9 image and imports the LDIF, rebuilding each store.
-6. Brings the followers back up, each rebuilding its data from fid-0.
-
 Monitor progress:
 
 ```bash
