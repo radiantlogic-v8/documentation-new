@@ -1,3 +1,8 @@
+---
+title: Updating your v8 application to version 9
+description: Learn how to update your Identity Data Management applications to version 9 from version 8.
+---
+
 ## Overview
 
 Learn how to patch an environment from RadiantOne Identity Data Management v8 to v9 on a SaaS or a self-managed deployment. The steps vary depending on how you have deployed the application. 
