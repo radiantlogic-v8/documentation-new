@@ -27,7 +27,7 @@ Ensure you copy the token value that is generated in the Okta Admin Dashboard, y
 
 ### Create a Data Source
 
-Log in to the Identity Data Management Control Panel UI using an account with sufficient privileges to manage Data Sources, Namespaces, and Schema configuration. All setup is performed through point-and-click operations in the UI.
+Log into the Identity Data Management Control Panel UI using an account with sufficient privileges to manage Data Sources, Namespaces, and Schema configuration. All setup is performed through point-and-click operations in the UI.
 
 1. After logging into Identity Data Management Control Panel, select ‘Data Catalog’ > ‘Data Sources’ from the navigation pane on the left hand side and click ‘NEW SOURCE’.
 
