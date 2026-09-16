@@ -21,9 +21,14 @@ To create a data source:
 1.  Navigate to Control Panel > Setup > Data Catalog > Data Sources.
 1.  Click ![An image showing](Media/newsource.jpg).
 1.  Select a template associated with the identity data source type from the list. Use the Search field to quickly find a template name, or click on LDAP, DATABASE or OTHER tabs to narrow down the template choices by type. JDBC-accessible source templaes are located on the DATABASE tab. LDAP-accessible data source templates are located on the LDAP tab. Custom data source templates are located on the OTHER tab.
-1.  Enter the basic details about the identity data source.
-
-   PROPERTY	| DESCRIPTION
+1.  Enter the [basic details](#basic-data-source-properties) about the identity data source.
+1.  Enter the Connection details and any [applicable properties](#data-source-properties). These properties vary depending on the type of identity source.
+1.  Click **TEST CONNECTION**.
+>[!note] Not all custom data sources support test connection, meaning this may return a connection error even if all   properties have been configured successfully.
+1.  Click **CREATE**. The new data source appears in the list of configured sources and is briefly noted with a *new* tag next to it.
+   
+### Basic Data Source Properties
+PROPERTY	| DESCRIPTION
    -|-
    Data Source Name	| Unique name representing the identity source backend. Do not use spaces, commas, brackets or parenthesis, colons, or the word “domain”.
    Data Source Type	| Auto-populated, non-editable. Based on the template.
@@ -31,15 +36,7 @@ To create a data source:
    Description	| Details about the identity source backend.
    Status | Toggled to either OFFLINE (indicates the identity source is not available and should not be accessed by the RadiantOne service) or ACTIVE (indicates the identity source is available and can be accessed by the RadiantOne service).
 
-1.  Enter the Connection details and any applicable properties. These properties vary depending on the type of identity source.
 
-
-1.  Click **TEST CONNECTION**.
-
-   >[!note] Not all custom data sources support test connection, meaning this may return a connection error even if all   properties have been configured successfully.
-
-1.  Click **CREATE**. The new data source appears in the list of configured sources and is briefly noted with a *new* tag next to it.
-   
 
 
 ## Data Source Properties
