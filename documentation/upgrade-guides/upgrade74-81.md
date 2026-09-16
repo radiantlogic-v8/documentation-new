@@ -5,169 +5,121 @@ description: Upgrading RadiantOne Identity Data Management
 
 ## Overview
 
-The process from upgrading from RadiantOne Identity Data Management v7.4.10 to v8.1+ is described below. If you are running a version prior to v7.4.10, you must first update to this version.
+The process from upgrading from RadiantOne Identity Data Management v7.4.10 to v9.0 is described below. If you are running a version prior to v7.4.10, you must first update to this version.
 
-Read the [features comparison guide](./features-list.md) to understand potential feature gaps in the upgraded version and plan your upgrades accordingly.
+v9 updates the platform from Java 8 to Java 25 and from Lucene 6 to Lucene 10. Lucene provides the underlying index format used by RadiantOne Directory, and Lucene 10 cannot directly read the Lucene 6 indexes used by v7.4. 
 
-### Notice on Versioning Scheme
+As a result, RadiantOne Directory data is not migrated by copying the existing index files. Instead, the directory data is exported from v7.4 and rebuilt in the new v9 deployment as part of the initial installation. This is also why the v7.4 migration export is provided when the new v9 deployment is created rather than restored into an already running v9 deployment. 
 
-Beginning with the v8 release, the software now follows Semantic Versioning. Version numbers will use the format MAJOR.MINOR.PATCH:
+#### Notice on Versioning Scheme
+
+Similar to the v8 release, in v9 release, the software now follows Semantic Versioning. This differs from earlier RadiantOne releases, such as 7.2, 7.3, and 7.4, where the first two digits together represented the major version.
+
+Version numbers will use the format MAJOR.MINOR.PATCH:
 
 MAJOR – incompatible API or behavior changes <br> MINOR – backward-compatible feature additions <br> PATCH – backward-compatible bug fixes
 
-This change makes it easier to understand the type of changes included in each release and to plan upgrades with greater confidence.
+This versioning scheme makes it easier to identify the scope of changes in a release and plan upgrades with greater confidence.
 
-**Important Note** - This has changed from prior RadiantOne releases (e.g. v7.2, v7.3, v7.4) in which the first 2 digits signified the "major" version.
+**Before beginning the migration:** 
+
+* Review the [features list](./features-list.md) and the [comparison matrix guide](./iddm-v7-v8-v9-comparison) section to understand changes that may affect your deployment.
+* Plan a configuration freeze on the v7.4 environment after the migration export is created. Configuration changes made after the export are not automatically carried over to the v9 deployment.
+* Plan a maintenance window for the final cutover, when production clients and traffic are redirected from the existing v7.4 deployment to the new v9 deployment. 
+
+The migration is performed by creating a new v9 deployment alongside the existing v7.4 deployment. The existing v7.4 deployment is not upgraded in place. 
+
+To migrate to v9, you must: 
+
+* First, use the [Migration Utility](to-add) to export the configuration from the existing v7.4 environment.  
+
+* Then, install v9 as a separate deployment using the exported configuration. 
+
 
 ## Steps to Perform on the v7.4 Environment 
 
-The section describes the processes of backing up and exporting your RadiantOne v7.4 configuration and backing up existing stores and ACIs.  
+The section describes the processes of backing up and exporting your RadiantOne v7.4 configuration and backing up existing stores and ACIs. 
 
-### Backup Configuration 
+Complete the following before running the export using the migration utility tool: 
 
-Stop the RadiantOne service (to ensure no files are locked/in use) and from the file system, make a copy of the whole <RLI_HOME> directory and store in a safe place. 
+### Create backups 
 
-### Backup Existing RadiantOne Directory (HDAP) Stores 
+1. Back up the entire <RLI_HOME> directory to a safe location outside <RLI_HOME>. <RLI_HOME> is the file system location of the root installation directory where RadiantOne is installed (e.g., /opt/radiantone/vds on Linux or C:\radiantone\vds on Windows). 
 
-To back up naming contexts defined as RadiantOne Directory (HDAP) stores, perform the following steps for each of your HDAP stores. Note that in v8.1, HDAP stores are referred to as RadiantOne Directory stores. 
+2. Export the RadiantOne Directory (HDAP) stores as LDIF files, with Export for Replication checked. Store all LDIF exports outside <RLI_HOME>.  
 
-1. On the Control Panel, log in as a user associated with the Directory Administrator role.  
+To back up naming contexts defined as RadiantOne Directory (HDAP) stores, perform the following steps for each of your HDAP stores. Note that in v9, HDAP stores are referred to as RadiantOne Directory stores. 
 
-1. On the Directory Namespace tab, select your HDAP store. HDAP stores are identified with a ![HDAP icon](Media/hdap-icon.jpg) icon. 
+  1. On the Control Panel, log in as a user associated with the Directory Administrator role.  
+  
+  i. On the Directory Namespace tab, select your HDAP store. HDAP stores are identified with a ![HDAP icon](Media/hdap-icon.jpg) icon. 
+  
+  ii. In the right pane, in the Properties tab, click Export. The Export box is displayed.  
+  
+  iii. Enter an export file name. 
+  
+  iv. Check the Export for Replication box (to ensure the UUID attribute remains with the entries).  
+  
+  v. Click OK. The Tasks Launched window opens.
+    ![Task Monitor](Media/task-monitor.jpg) 
+  
+  vi. Once the export finishes, click OK to close the Tasks Launched window. You are returned to the store’s Properties tab.  
+  
+  vii. Repeat steps 2-7 for each RadiantOne Directory (HDAP) store. 
+  
+  viii. Copy the LDIF files from <RLI_HOME>/vds_server/ldif/export to a safe place outside of the <RLI_HOME> location. 
 
-1. In the right pane, in the Properties tab, click Export. The Export box is displayed.  
+### Export existing configurations
 
-1. Enter an export file name. 
+Download the migration utility v2.1.X from the [Radiant Logic support site](https://files.radiantlogic.com/receive/?packageCode=IX0qTSRyilShjhpxusLWpUDzzb4rduq2tO9F81NhEt4#keycode=Niad1bODfyRmdW8PlGO-5In0mdRKsa0u6551qXXI1rA) and unzip it on the source v7.4 machine (the node from where you are exporting). Login using the email address associated with your Radiant Logic Support Portal account. If you do not yet have access, email support@radiantlogic.com.
 
-1. Check the Export for Replication box (to ensure the UUID attribute remains with the entries).  
+Once logged in, navigate to Customer Downloads/MigrationUtility/Migration Utility v2.1. Download the Migration Utility version 2.1.x, where x matches the v7.4 patch release number. For example, if you are on v7.4.10, use radiantone-migration-tool-2.1.10.zip. 
 
-1. Click OK. The Tasks Launched window opens.
-  ![Task Monitor](Media/task-monitor.jpg) 
+For a multi-node cluster, run the export from a follower node rather than the leader node. To identify each node’s role, run:
 
-1. Once the export finishes, click OK to close the Tasks Launched window. You are returned to the store’s Properties tab.  
+`<RLI_HOME>/bin/advanced/cluster.sh list`
 
-1. Repeat steps 2-7 for each RadiantOne Directory (HDAP) store. 
+  > Note: <RLI_HOME> is the file system location of the root installation directory where RadiantOne is installed (e.g., /opt/radiantone/vds on Linux or C:\radiantone\vds on Windows).
 
-1. Copy the LDIF files from <RLI_HOME>/vds_server/ldif/export to a safe place outside of the <RLI_HOME> location. 
-
-### Disable Inter-cluster Replication 
-
-Disable inter-cluster replication for RadiantOne Directory (HDAP) and Persistent Cache stores. 
-
-To disable inter-cluster replication: 
-
-1. On the Control Panel > Directory Namespace tab, expand below ![Cache Section](Media/cache-section.jpg). 
-
-1. Select the cached naming context.  
-
-1. On the Properties tab, uncheck the Inter-cluster Replication.<br>
- ![Inter-cluster Replication](Media/inter-cluster-replication.jpg)
-
-1. Click Save. 
-
-1. On the Control Panel > Directory Namespace tab, select the RadiantOne Directory (HDAP) store naming context. 
-
-1. On the Properties tab, uncheck Inter-cluster Replication. 
-
-1. Click Save. 
-
- 
-
-### Backup Persistent Cache Stores 
-
-Persistent caches must be re-initialized manually after migrating to SaaS. Even if you choose to re-initialize the persistent caches from scratch in SaaS, it is always good to have a backup of the cache image from v7.4. 
-
-To back up a persistent cache store:  
-
-The two types of persistent cache are listed below.  
-
-Icon	 | Cache Type
--|-
-![Periodic](Media/periodic-cache.jpg) | Persistent cache with periodic refresh 
-![Realtime Cache](Media/realtime-cache.jpg) | Persistent cache with near real-time automated refresh 
-
-1. On the Control Panel > Directory Namespace tab, expand below ![Cache Section](Media/cache-section.jpg). 
-
-1. Under the Cache node in the left pane, select a cache to back up. 
-
-1. In the right pane, in the Properties tab, click Export. 
-
-1. Enter an export file name. 
-
-1. Check the Export for Replication box (to ensure the UUID attribute remains with the entries).  
-
-1. Click OK. The Tasks Launched window opens.<br>
- ![Task Monitor Log Window](Media/task-complete.jpg)
-
-1. Once the export finishes, click OK to close the Tasks Launched window. You are returned to the cache’s Properties tab.  
-
-1. Repeat steps 2-7 for each persistent cache branch. 
-
-1. Copy the LDIF files from <RLI_HOME>/vds_server/ldif/export to a safe place outside of the <RLI_HOME> location. 
-
-
-### Backup ACLs 
-
-To back up ACLs: 
-
-1. On the Control Panel > Directory Browser tab, right-click on the cn=config node. 
-
-1. Select LDIF -> Export to LDIF.<br>
- ![Export LDIF](Media/export-ldif.jpg)
-
-
-1. Enter a file name for the ldif file (overwrite the default untitled) and click Confirm.<br>
- ![Export File](Media/export-file.jpg)
-
-1. An export task is launched in the background. To view the task, go to the Server Control Panel associated with the RadiantOne node you are exporting from > Tasks tab. Check the “Terminated” option to view all tasks. Confirm the task “Export To LDIF [config] has FINISHED successfully.<br>
- ![Task List](Media/task-list.jpg)
-
-1. Copy the LDIF files from <RLI_HOME>/vds_server/ldif/export to a safe place outside of the <RLI_HOME> location. 
-
-### Export Existing Configuration 
-
-Download the migration utility v2.1.X from the Radiant Logic support site and unzip it on the source v7.4 machine (the node from where you are exporting).  
-
-The migration utility is available [here](https://files.radiantlogic.com/receive/?packageCode=IX0qTSRyilShjhpxusLWpUDzzb4rduq2tO9F81NhEt4#keycode=Niad1bODfyRmdW8PlGO-5In0mdRKsa0u6551qXXI1rA). 
-Login using the email address associated with your Radiant Logic Support Portal account. If you do not yet have access, email support@radiantlogic.com.
-
-Once logged in, navigate to Customer Downloads/MigrationUtility/Migration Utility v2.1. 
-
-Download the migration utility version that matches the last digit of your patch release number. For example, if you are running v7.4.10, use migration utility version: radiantone-migration-tool-2.1.10.zip. 
-
-**Specifying RLI_HOME** 
-
-If you do not have an RLI_HOME system environment variable set on your v7.4 machine, you must pass the location where you have RadiantOne installed when you run the Migration Utility. 
-
-An example of exporting configuration on Linux where RadiantOne is installed in /home/r1user/radiantone/vds, can be seen below. 
-
- ./migrate.sh /home/r1user/radiantone/vds export test2.zip 
+In the command output, a follower node will display `false` in the **ZK leader** column. 
 
 **Generating the Export**
 
-1. On the machine where you are exporting the configuration from, run <RLI_HOME>/bin/advanced/stop_servers.bat (.sh) to stop the RadiantOne services. 
+Modify the file path depending on where your migration utility is located and run one of the following commands based on your operating system:
 
-1. Run <RLI_HOME>\bin\runZooKeeper.bat (.sh) to start ZooKeeper. 
+* In Windows, run the command from an Administrator command prompt: 
 
-1. From a command prompt navigate to the location where you unzipped the migration utility v2.1.X.  
+  `C:\r1\migration\radiantone-migration-tool-2.1.10\migrate.bat export C:/tmp/export.zip `
 
->[!warning] If performing the export on Windows, run the command line as Administrator (right-click on the .exe and choose Run as Administrator option).  
+* In Linux, run the following: 
 
-1. Run the following command (modifying the version of the migration tool and the location of the export file to match your needs).<br>
-C:\r1\migration\radiantone-migration-tool-2.1.10\migrate.bat export C:/tmp/export.zip 
+  `./migrate.sh /home/r1user/radiantone/vds export export.zip `
 
-## Steps to Perform for your SaaS Deployment in Environment Operations Center 
+The final argument specifies the path and filename of the migration export to create. 
 
-Log into your Environment Operations Center. The credentials were sent to you during your onboarding process.
+After the command executes successfully, the Migration Utility creates a `.zip` archive containing the v7.4 configuration and RadiantOne Directory Store data needed to initialize v9. It includes naming contexts, global syncs, data sources, identity views (`.dvx`) and schemas (`.orx`), roles, ACLs, configured stores, and RadiantOne Directory Store data. Directory data is exported without Lucene indexes; during v9 initialization, the data is imported and indexes are rebuilt in the v9 format.
 
-Use the Environment Operations Center to create an environment and install RadiantOne Identity Data Management version v8.1.X (where "X" is the patch number and must be 1 or above) and import the configuration that was exported from the v7.4 machine using the CUSTOM CONFIGURATION option by toggling the **Advanced Setup** option on. For assistance see: [Creating Environments](../../../../eoc/latest/environments/environment-overview/create-environments/#advanced-setup)
+The export does not include persistent cache data, inactive stores, custom JARs or scripts, third-party libraries, TLS certificates, keystores, external trust configuration, or v7.4 changes made after the export. Reinitialize persistent caches after migration, and recreate, restore, or otherwise handle the remaining items as needed in v9. For the complete list, see [Items Not Migrated](../migration-utility/04-items-not-migrated/).
+
+## Steps to Perform in your SaaS Deployment in Environment Operations Center 
+
+If you are migrating to a SaaS environment, refer to the instructions in this section. For self-managed, see [this](to-add) upgrade guide. 
+
+1. Log into your Environment Operations Center. The credentials were sent to you during your onboarding process.
+
+2. Create an environment with RadiantOne Identity Data Management version v9.0.0 and import the configuration (`export.zip`) that was exported from the v7.4 machine using the CUSTOM CONFIGURATION option by toggling the **Advanced Setup** option on. For assistance see: [Creating Environments](../../../../eoc/latest/environments/environment-overview/create-environments/#advanced-setup)
 
 >[!warning] do NOT select RadiantOne Identity Data Management v8.1.0 when creating the environment. Migrations from v7.4 to v8.1.0 are not supported.
 
 ![Install IDDM](Media/new-iddm-app3.jpg)
 
->[!note] Production SaaS environments are created with 2-node RadiantOne clusters. If your RadiantOne cluster requires more nodes, you can manually scale up the number of nodes once it is deployed. 
+>[!note] Production SaaS environments are created with 2-node RadiantOne clusters. If your RadiantOne cluster requires more nodes, you can manually scale up the number of nodes once it is deployed.
 
+Because the directory stores must be rebuilt, provisioning a migrated application can take longer than provisioning a new v9 application without migration data. The time required depends on factors such as the number and size of the directory stores, entry counts, and the indexes that must be rebuilt. 
+
+The existing v7.4 deployment is not affected by this process and can continue serving clients while the new v9 application is provisioned. 
+
+If you run into any issues, contact Radiant Logic Support at support@radiantlogic.com and provide the environment name and the approximate time of the provisioning attempt. 
 
 ### Create Secure Data Connector 
 
@@ -176,7 +128,7 @@ To connect to data sources that are not directly accessible from the SaaS enviro
 Once a secure data connector has been created in Environment Operations Center, the SDC client must be deployed on your local system before you can establish a connection. For assistance see: [Creating Environments](../../../../eoc/latest/secure-data-connector/configure-sdc-service/)
  
 
-### Control Panel Endpoint
+### Access Control Panel
 
 The new Control Panel endpoint is listed in Environment Operations Center > Environments > Environment Name > Overview > Application Endpoints. You can enable the LDAPS and REST endpoints from here as well. 
 
@@ -225,7 +177,7 @@ Notice in the screenshot above, the syntax references the local node (internal n
 
 ### Configure Delegated Administrators 
 
-There are new Control Panel entitlements in v8.1. There are two aspects to take into consideration:  
+There are new Control Panel entitlements in v9. There are two aspects to take into consideration:  
 
 To continue to use the delegated admin roles applicable to the Classic (old) Control Panel in the new Control Panel, update them to assign permissions for the new Control Panel. Log into the Control Panel as the Directory Manager (configured when you create the environment in EOC) and go to ADMIN > Roles and Permissions. Select a role from the list and enable the needed permissions. 
 
@@ -272,20 +224,6 @@ To properly assign new users to delegated admin roles, log into the Control Pane
 ![Assign Roles](Media/assign-roles.jpg)   
 
 >[!note] If the default roles are inadequate, you can create new roles from the ROLES and PERMSSIONS tab. Do this first and then search for/assign the user to the role. Also, if the user should be able to switch to/configure settings in the Classic Control Panel, the new role MUST have the “Classic Control Panel Access” permission enabled, and the group associated with this role for entitlement enforcement for the classic control panel selected. 
-
- 
-
-### Create a Root Naming Context to Manage Unmounted Identity Views 
-
-The new Control Panel does not have Context Builder. Therefore, only identity views that have been mounted somewhere below a root naming context are editable. Any identity views that were not mounted cannot be edited until they are mounted.  Create a new Root Naming Context from Control Panel > Manage > Directory Namespace > Namespace Design and then mount a label below the naming context for each identity view you want to mount. 
-
-Once all labels are created, use the “MOUNT BACKEND” button at each label level and choose the Virtual Tree type, selecting the identity view (.dvx file) to mount: one identity view per label. 
-
-![Staging Naming Context](Media/staging-location.jpg)   
-
-This will allow you to edit the identity view configuration using the PROPERTIES, ADVANCED SETTINGS and OBJECT BUILDER tabs. 
-
-![Edit Mounted Views](Media/edit-mounted-views.jpg)  
 
 ### Migrating Custom Objects and Interception Scripts 
 
