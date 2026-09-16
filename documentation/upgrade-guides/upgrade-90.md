@@ -10,7 +10,7 @@ Updating from v8 to v9 is triggered like a typical patch. However, there are a f
 
 v9 updates the platform from Java 8 to Java 25 and from Lucene 6 to Lucene 10. Lucene is the storage engine behind RadiantOne Directory, and the v10 index format cannot be read by a v6 engine. As a result, the update is not an image swap like typical updates/patches: every RadiantOne Directory store is exported to LDIF on the old version and rebuilt on the new version. This is automatically handled during the patching process but requires all cluster nodes to be stopped at the same time.
 
-## Updating RadiantOne Identity Data Management — SaaS Deployments
+## Updating SaaS Deployments
 
 The following steps describe how to update RadiantOne Identity Data Management v8 to v9.0.0 for SaaS deployments.
 
@@ -96,6 +96,132 @@ Additionally, you might need to perform these steps after the v8 application is 
 2. Reapply configuration changes made after the backup.
 3. Verify data and application access.
 4. Update client endpoints and, if applicable, the OIDC callback URL.
+
+## Updating Self-managed Deployments
+
+The following steps describe how to update an existing self-managed RadiantOne Identity Data Management v8 deployment to v9.0.0.
+
+### Preparing for the Update
+
+#### 1. Confirm the current version is 8.5.0 or newer.
+
+```bash
+helm -n self-managed list
+
+kubectl get statefulset fid -n self-managed -o jsonpath='{.spec.template.spec.containers[*].image}{"\n"}'
+```
+
+Deployments running version 8.1.x through 8.4.x must first update to version 8.5.0 or later within the v8 release line, using the legacy chart mapping (for example `--version 1.4.5` for IDDM 8.4.5). Confirm the deployment is healthy before continuing.
+
+#### 2. Export the configuration as a backup.
+
+Execute the following command in the pod and copy that file locally.
+
+```bash
+kubectl exec -it -n <namespace> fid-0 -- /opt/radiantone/migrate.sh export myexport.zip
+```
+
+If the export runs successfully, the file is created at `/opt/radiantone/vds/work/myexport.zip`.
+
+Copy the file locally:
+
+```bash
+kubectl cp -n <namespace> fid-0:/opt/radiantone/vds/work/myexport.zip ./myexport.zip
+```
+
+#### 3. Snapshot fid-0's PVC.
+
+Rollback from v9 to v8 is not automated. A volume snapshot of fid-0's PVC is the fastest route back, so take one and confirm it is ready before you start.
+
+```bash
+kubectl get pvc -n self-managed
+
+cat <<'EOF' | kubectl apply -n self-managed -f -
+apiVersion: snapshot.storage.k8s.io/v1
+kind: VolumeSnapshot
+metadata:
+  name: fid-0-pre-v9
+spec:
+  volumeSnapshotClassName: csi-snapshot-class
+  source:
+    persistentVolumeClaimName: <fid-0-pvc-name>
+EOF
+
+kubectl get volumesnapshot fid-0-pre-v9 -n self-managed
+```
+
+#### 4. Check free space.
+
+The update writes an LDIF export before rebuilding the stores, so fid-0's volume must hold both the existing store data and the export at the same time.
+
+#### 5. Update values.yaml.
+
+Set the image tag for v9 and confirm the required Java option is present.
+
+```yaml
+image:
+  tag: "9.0.0"
+env:
+  JAVA_TOOL_OPTIONS: "-Djdk.lang.Process.launchMechanism=FORK"
+```
+
+For large stores, also raise the migration timeout so the rollout is not cut short mid-import. The default is 30 minutes.
+
+```yaml
+hdapMigration:
+  rolloutTimeout: 7200   # seconds
+```
+
+Set this before running the update. If the timeout expires while the import is still running, the rollout is marked failed even though data movement may be in progress.
+
+### Applying the Update
+
+Run the following helm command:
+
+```bash
+helm -n self-managed update --install fid oci://registry-1.docker.io/radiantone/iddm-helm --version 9.0.0 --values </path/to/your/values.yaml>
+```
+
+The chart performs the migration in the following order:
+
+1. Moves cluster leadership to fid-0.
+2. Scales the fid StatefulSet to zero. All nodes stop and the outage begins.
+3. Exports all RadiantOne Directory stores to LDIF using the old image.
+4. Deletes the follower PVCs. Follower data is not migrated in place.
+5. Brings fid-0 up on the v9 image and imports the LDIF, rebuilding each store.
+6. Brings the followers back up, each rebuilding its data from fid-0.
+
+Monitor progress:
+
+```bash
+kubectl get pods -n self-managed -w
+
+kubectl logs -f fid-0 -n self-managed
+```
+
+Do not interrupt the update, delete pods, or re-run helm update while the migration is in progress. Expect downtime for the whole window, and note that its duration depends on the size of your stores rather than the number of nodes.
+
+### After the Update
+
+1. Confirm all expected pods are running, including `iddm-sync`.
+
+   ```bash
+   kubectl get pods -n self-managed
+   ```
+
+2. Confirm the running image is 9.0.0.
+
+   ```bash
+   kubectl get statefulset fid -n self-managed -o jsonpath='{.spec.template.spec.containers[*].image}{"\n"}'
+   ```
+
+3. Check cluster membership and that the followers have rejoined.
+
+   ```bash
+   kubectl exec -it fid-0 -n self-managed -- cluster.sh list
+   ```
+
+4. Test LDAP, REST/ADAP, SCIM and control panel access.
 
 ### Release Notes 
 
