@@ -187,6 +187,8 @@ Driver Class Name	| Auto-populated, non-editable. Based on the template.
 Driver URL	| Enter the URL to connect to the Database server.
 User 	| Service account name that the RadiantOne service should use to connect to the backend.
 Password	| Credentials associated with the account indicated in the User property.
+Failover servers | Select the configured database data source that contains the failover server connection details. 
+
 
 ### CSV Files
 
