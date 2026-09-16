@@ -216,7 +216,7 @@ RATELIMIT | Any positive integer. Indicates the maximum requests per minute that
 PROXY | Provide a value that points to the HTTP proxy address and port if your org requires a HTTP web proxy  
 PROXYSSL | HTTPS proxy address (host:port) used for SSL/TLS traffic to the Okta Service
 
-For assistance on creating virtual identity views from Okta Data Sources see: [Model-driven Virtual Views](../identity-views/model-driven-views/#model-driven-identity-views-introduction)
+For assistance on creating virtual identity views from Okta Data Sources see: [Okta Use Case](../../use-cases/radiantone-okta-integration)
 
 
 ### CSV Files
