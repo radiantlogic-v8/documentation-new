@@ -24,7 +24,7 @@ To create a data source:
 1.  Enter the [basic details](#basic-data-source-properties) about the identity data source.
 1.  Enter the Connection details and any [applicable properties](#data-source-properties). These properties vary depending on the type of identity source.
 1.  Click **TEST CONNECTION**.
->[!note] Not all custom data sources support test connection, meaning this may return a connection error even if all   properties have been configured successfully.
+   >[!note] Not all custom data sources support test connection, meaning this may return a connection error even if all   properties have been configured successfully.
 1.  Click **CREATE**. The new data source appears in the list of configured sources and is briefly noted with a *new* tag next to it.
    
 ### Basic Data Source Properties
