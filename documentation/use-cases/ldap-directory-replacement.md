@@ -12,7 +12,7 @@ Although the RadiantOne Directory supports the standard LDAP v3 RFC and closely 
 This gets you all of the components needed for your replacement task. Then, the outline below details the general migration strategy. Each item is further detailed in later sections.
 
 - [Inventory Existing Legacy Directory](#inventory-existing-legacy-directory) - Inventory existing directory (schema, hierarchy, types of client requests, password policies…etc.)
-- [Import Data into RadiantOne Directory](#import-data-into-radiantOne-directory) - Import data into RadiantOne Directory. This can be handled with a persistent cache initialization (if a cache with refresh is desired), or an initial upload in the sync pipleline if a synchronization approach from the legacy directory to the RadiantOne directory is used.
+- [Import Data into RadiantOne Directory](#import-data-into-radiantOne-directory) - Import data into RadiantOne Directory. This can be handled with a persistent cache initialization (if a cache with refresh is desired), or an initial upload in the sync pipleline if a [synchronization](../configuration/synchronization/synchronization-concepts) approach from the legacy directory to the RadiantOne directory is used.
 - [Configure RadiantOne server settings](#configure-radiantone-server-settings) - Configure RadiantOne server settings. These settings are access controls, password policies, schema and any customizations needed to address legacy plugin behavior.
 - [Determine the application usage and cutover strategy](#determine-the-application-usage-and-cutover-strategy) - Determine the application usage and cutover strategy. This determines how long the persistent cache refresh and/or synchronization pipeline needs to be running.
 - [Decommission legacy directory](#decommission-legacy-directory) - Decommission legacy directory after all applications have been migrated to use the RadiantOne Directory.
@@ -163,7 +163,7 @@ Password Policies can be viewed and defined manually from the Control Panel > Ma
 
 To support best practices around auditing and maintenance, RadiantOne only supports [password policies](../configuration/security/security/#password-policies) assigned to LDAP groups or sub-trees (user’s located in a given container in the RadiantOne namespace). Password policies defined at the user level are not supported. If you are replacing an LDAP directory that enforces password policies at the user level (e.g. in the passwordpolicysubentry attribute), when preparing the LDIF from the underlying directory (that you will use to initialize RadiantOne Directory) do not include the passwordPolicySubentry attribute and move to use password policies defined at the group and/or “OU” (subtree) level.
 
-For details see here: [RadiantOne password policy implementation](https://tools.ietf.org/html/draft-behera-ldap-password-policy-10):
+For details see here: [RadiantOne password policy implementation](https://tools.ietf.org/html/draft-behera-ldap-password-policy-10)
 
 ## Determine the Application Usage and Cutover Strategy
 
