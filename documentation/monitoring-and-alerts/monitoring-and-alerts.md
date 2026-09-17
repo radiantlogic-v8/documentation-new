@@ -131,13 +131,13 @@ To enable buffering of **modify events** for a persistent search connector:
 Once enabled, the connector batches incoming modify events instead of processing each one individually. When the buffer is flushed (either because the size limit or the TTL is reached), duplicate events targeting the same DN are collapsed into a single sync event. This is especially useful when directory operations generate a large volume of changes to the same entries in a short period, such as adding many members to a group one at a time.
 
 
-## Monitoring from the Control Panel
+## Monitoring in the Control Panel
 
 Client connections, directory store activity, and the status of backend data sources can be monitored from the Control Panel > Usage & Activity section.
 
 The Connection & Operations and Directory Status sections display statistics for a single cluster node. Select the node from the Node list at the top right of the section. The leader node is identified by LEADER. The Data Source Status section is not node-specific.
 
-![Node list at the top right of the section, with the leader node identified by LEADER](images/node-selection.png)
+![Node list at the top right of the section, with the leader node identified by LEADER](Media/node-selection.png)
 
 Click the refresh icon next to a section heading to update the values displayed.
 
@@ -149,7 +149,7 @@ Usage Summary indicates the number of connections and operations processed since
 
 Click a column heading to sort the list. To save the list to a file, click Export to CSV.
 
-![Connection & Operations section showing Usage Summary and Current Connections](images/connection-and-operations.png)
+![Connection & Operations section showing Usage Summary and Current Connections](Media/connection-and-operations.png)
 
 ### Directory Status
 
@@ -159,7 +159,7 @@ Each value is displayed with the peak reached and a trend graph. Point to a grap
 
 To change the number of stores displayed, use the Show per page list at the bottom of the section.
 
-![Directory Status section listing stores with revision, number of entries, index size, and operation rates](images/directory-status.png)
+![Directory Status section listing stores with revision, number of entries, index size, and operation rates](Media/directory-status.png)
 
 ### Data Source Status
 
@@ -172,7 +172,7 @@ The status of the RadiantOne service (data sources named vds and vdsha) and any 
 | Offline | The data source's active property is set to false. No connection is attempted. |
 | Unavailable | No classname property is defined for the data source. |
 
-![Data Source Status section listing data sources with status, connection URL, and message](images/data-source-status.png)
+![Data Source Status section listing data sources with status, connection URL, and message](Media/data-source-status.png)
 
 
 ## Logs and Error Messages to Monitor
