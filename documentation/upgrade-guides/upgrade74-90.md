@@ -119,6 +119,12 @@ Review each backend data source and its network location to determine whether th
 
 Once a secure data connector has been created in Environment Operations Center, the SDC client must be deployed on your local system, in a network that can reach the data source, before you can establish a connection. Confirm the connector is available once deployed. For assistance see: [Creating Environments](../../../../eoc/latest/secure-data-connector/configure-sdc-service/)
 
+#### Update Data Source Connections to use Secure Data Connector (where applicable)
+
+In Control Panel > Setup > Data Catalog > Data Sources, select your data source. In the Secure Data Connector Group drop-down list, select the secure data connector that should be used to tunnel a secure connection to the data source. Save the data source and run Test Connection.
+
+![Data Source SDC](Media/data-source-sdc.jpg)
+
 #### Validate Data Sources
 
 Check the data sources to make sure they point to the desired servers and failover servers, and that the host, port, SSL setting, bind DN, password, and base DN are correct. You can check your data sources from Control Panel > Setup > Data Catalog > Data Sources. Correct any values and run Test Connection before saving each affected source. Pay particular attention to the following:
@@ -131,11 +137,45 @@ If you were connecting to backend data sources via SSL, make sure your certifica
 
 >[!note] Remove unused certificates only according to your certificate-retention policy.
 
-#### Update Data Source Connections to use Secure Data Connector (where applicable)
+If you had Global Identity Builder projects in v7.4, you must re-upload the identity sources in your SaaS environment. If the Global Identity Builder project has identity sources that are based on persistent cache, make sure these caches are reinitialized in SaaS before re-uploading the global profile.
 
-In Control Panel > Setup > Data Catalog > Data Sources, select your data source. In the Secure Data Connector Group drop-down list, select the secure data connector that should be used to tunnel a secure connection to the data source. Save the data source and run Test Connection.
+To edit Global Identity Builder projects in SaaS, from the Control Panel use the “Logged in...” account menu and choose: Open Classic Control Panel.
 
-![Data Source SDC](Media/data-source-sdc.jpg)
+![Classic CP Link](Media/classic-cp-link.jpg)
+
+Navigate to the Wizards tab, launch the Global Identity Builder, and re-upload your identities in your project.
+
+>[!note] You need to go through the cache configuration process described above again after the upload.
+
+
+#### Migrate Custom Objects and Interception Scripts
+
+To migrate custom objects and/or interception scripts, use the File Manager in the SaaS environment to upload the files from your v7.4 backup location. Go to Control Panel > Manage > File Manager, which opens at the RLI_HOME directory. Use the breadcrumb and folder list to navigate to each target folder below, click UPLOAD FILE, and either drag and drop or browse to the corresponding location from your v7.4 backup, overwriting the target files:
+
+- For custom data sources, upload `<RLI_HOME>\vds_server\custom\src\com\rli\scripts\customobjects\<files>` to vds_server > custom > src > com > rli > scripts > customobjects.
+- For interception scripts, upload `<RLI_HOME>\vds_server\custom\src\com\rli\scripts\intercept\<files>` to the corresponding intercept folder.
+- If custom libraries are used, upload `<RLI_HOME>\vds_server\custom\lib\<files>` to the vds_server > custom > lib folder.
+
+>[!note] Single-file upload is supported. When multiple files are selected at once, only the last file in the list is processed in the current release.
+
+After the files are uploaded, navigate to the custom folder or one of its subfolders and choose BUILD > Build All Jars. You can be more selective and just choose to build the Intercept Jars and Custom Jars instead of all jars. The Build Results panel displays the compilation messages, the jar files produced, and any warnings.
+
+>[!note] If the build fails, you must investigate further to ensure you are only including libraries that are needed. Any extra, unused libraries can cause the build of the jars to fail.
+
+Restart the RadiantOne service using Environment Operations Center. Navigate to Environments > *Environment_Name* > OVERVIEW and use the following menu:
+
+![Restart Menu](Media/restart-menu.jpg)
+
+This performs a rolling restart of all RadiantOne cluster nodes for the new scripts to take effect.
+
+#### Initialize Persistent Cache
+
+Go to Control Panel > Setup > Directory Namespace > Namespace Design, where you should see the naming contexts that were migrated from v7.4. Identify every migrated naming context that has a cache defined; persistent-cache data is not restored by the v7.4 export, so each one must be reinitialized from its backend data source or exported LDIF cache image.
+
+Select the root naming context and click the CACHE tab. Stop all persistent cache refreshes if they are running, then use the ... menu inline with the cached subtree to deactivate the cache. Once the refresh has been stopped and the cache deactivated, use the ... menu inline with the cache and choose Edit to go through the configuration process. In the CONFIGURE section, choose and configure the refresh strategy. Then, in the INITIALIZE section, initialize the cache. Finally, manage the cache properties from the MANAGE PROPERTIES section. The cache becomes active after initialization completes successfully. You must do this for every imported naming context that has a cache defined.
+
+![Cache Init](Media/cache-init.jpg)
+
 
 #### Configure Delegated Administrators
 
@@ -185,45 +225,6 @@ To properly assign new users to delegated admin roles, log into the Control Pane
 
 >[!note] If the default roles are inadequate, you can create new roles from the ROLES and PERMSSIONS tab. Do this first and then search for/assign the user to the role. Also, if the user should be able to switch to/configure settings in the Classic Control Panel, the new role MUST have the “Classic Control Panel Access” permission enabled, and the group associated with this role for entitlement enforcement for the classic control panel selected.
 
-#### Migrate Custom Objects and Interception Scripts
-
-To migrate custom objects and/or interception scripts, use the File Manager in the SaaS environment to upload the files from your v7.4 backup location. Go to Control Panel > Manage > File Manager, which opens at the RLI_HOME directory. Use the breadcrumb and folder list to navigate to each target folder below, click UPLOAD FILE, and either drag and drop or browse to the corresponding location from your v7.4 backup, overwriting the target files:
-
-- For custom data sources, upload `<RLI_HOME>\vds_server\custom\src\com\rli\scripts\customobjects\<files>` to vds_server > custom > src > com > rli > scripts > customobjects.
-- For interception scripts, upload `<RLI_HOME>\vds_server\custom\src\com\rli\scripts\intercept\<files>` to the corresponding intercept folder.
-- If custom libraries are used, upload `<RLI_HOME>\vds_server\custom\lib\<files>` to the vds_server > custom > lib folder.
-
->[!note] Single-file upload is supported. When multiple files are selected at once, only the last file in the list is processed in the current release.
-
-After the files are uploaded, navigate to the custom folder or one of its subfolders and choose BUILD > Build All Jars. You can be more selective and just choose to build the Intercept Jars and Custom Jars instead of all jars. The Build Results panel displays the compilation messages, the jar files produced, and any warnings.
-
->[!note] If the build fails, you must investigate further to ensure you are only including libraries that are needed. Any extra, unused libraries can cause the build of the jars to fail.
-
-Restart the RadiantOne service using Environment Operations Center. Navigate to Environments > *Environment_Name* > OVERVIEW and use the following menu:
-
-![Restart Menu](Media/restart-menu.jpg)
-
-This performs a rolling restart of all RadiantOne cluster nodes for the new scripts to take effect.
-
-#### Initialize Persistent Cache
-
-Go to Control Panel > Setup > Directory Namespace > Namespace Design, where you should see the naming contexts that were migrated from v7.4. Identify every migrated naming context that has a cache defined; persistent-cache data is not restored by the v7.4 export, so each one must be reinitialized from its backend data source or exported LDIF cache image.
-
-Select the root naming context and click the CACHE tab. Stop all persistent cache refreshes if they are running, then use the ... menu inline with the cached subtree to deactivate the cache. Once the refresh has been stopped and the cache deactivated, use the ... menu inline with the cache and choose Edit to go through the configuration process. In the CONFIGURE section, choose and configure the refresh strategy. Then, in the INITIALIZE section, initialize the cache. Finally, manage the cache properties from the MANAGE PROPERTIES section. The cache becomes active after initialization completes successfully. You must do this for every imported naming context that has a cache defined.
-
-![Cache Init](Media/cache-init.jpg)
-
-#### Perform Upload for Global Identity Builder Projects
-
-If you had Global Identity Builder projects in v7.4, you must re-upload the identity sources in your SaaS environment. If the Global Identity Builder project has identity sources that are based on persistent cache, make sure these caches are reinitialized in SaaS before re-uploading the global profile.
-
-To edit Global Identity Builder projects in SaaS, from the Control Panel use the “Logged in...” account menu and choose: Open Classic Control Panel.
-
-![Classic CP Link](Media/classic-cp-link.jpg)
-
-Navigate to the Wizards tab, launch the Global Identity Builder, and re-upload your identities in your project.
-
->[!note] You need to go through the cache configuration process described above again after the upload.
 
 ## How to Report Problems and Provide Feedback
 
