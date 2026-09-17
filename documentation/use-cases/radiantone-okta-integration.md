@@ -118,7 +118,15 @@ The following steps assume an attribute named MyCustomAttribute has been impleme
 
     ![Custom Okta Attribute Runtime](Media/runtime-custom.jpg)
 
+### Configuring a Persistent Cache 
 
+To ensure a guaranteed level of performance for the virtual view built from identity data in Okta, it is advised to configure a persistent cache.
+
+1. From Control Panel > Setup > Directory Namespace > Namespace Design select the root naming context where the virtual view is mounted (e.g. o=okta based on this example use case).
+2. Select the **CACHE** tab.
+3. Click **+CREATE NEW CACHE**.
+4. Select the naming context and click **CREATE**.
+5. You can configure a periodic refresh or a real-time refresh. Follow the steps to the [configure and initialize the cache](../tuning/persistent-cache).
 
 
 
