@@ -50,24 +50,24 @@ Complete the following before running the export using the migration utility too
 
 To back up naming contexts defined as RadiantOne Directory (HDAP) stores, perform the following steps for each of your HDAP stores. Note that in v9, HDAP stores are referred to as RadiantOne Directory stores. 
 
-  1. On the Control Panel, log in as a user associated with the Directory Administrator role.  
+  i. Log into Control Panel as a user associated with the Directory Administrator role.  
   
-  i. On the Directory Namespace tab, select your HDAP store. HDAP stores are identified with a ![HDAP icon](Media/hdap-icon.jpg) icon. 
+  ii. In the Directory Namespace tab, select your HDAP store. HDAP stores are identified with a ![HDAP icon](Media/hdap-icon.jpg) icon. 
   
-  ii. In the right pane, in the Properties tab, click Export. The Export box is displayed.  
+  iii. In the right pane, in the Properties tab, click Export. The Export box is displayed.  
   
-  iii. Enter an export file name. 
+  iv. Enter an export file name. 
   
-  iv. Check the Export for Replication box (to ensure the UUID attribute remains with the entries).  
+  v. Check the Export for Replication box (to ensure the UUID attribute remains with the entries).  
   
-  v. Click OK. The Tasks Launched window opens.
+  vi. Click OK. The Tasks Launched window opens.
     ![Task Monitor](Media/task-monitor.jpg) 
   
-  vi. Once the export finishes, click OK to close the Tasks Launched window. You are returned to the store’s Properties tab.  
+  vii. Once the export finishes, click OK to close the Tasks Launched window. You are returned to the store’s Properties tab.  
   
-  vii. Repeat steps 2-7 for each RadiantOne Directory (HDAP) store. 
+  viii. Repeat steps 2-7 for each RadiantOne Directory (HDAP) store. 
   
-  viii. Copy the LDIF files from <RLI_HOME>/vds_server/ldif/export to a safe place outside of the <RLI_HOME> location. 
+  ix. Copy the LDIF files from <RLI_HOME>/vds_server/ldif/export to a safe place outside of the <RLI_HOME> location. 
 
 ### Export existing configurations
 
@@ -101,146 +101,134 @@ After the command executes successfully, the Migration Utility creates a `.zip` 
 
 The export does not include persistent cache data, inactive stores, custom JARs or scripts, third-party libraries, TLS certificates, keystores, external trust configuration, or v7.4 changes made after the export. Reinitialize persistent caches after migration, and recreate, restore, or otherwise handle the remaining items as needed in v9. For the complete list, see [Items Not Migrated](../migration-utility/04-items-not-migrated/).
 
-## Steps to Perform in your SaaS Deployment in Environment Operations Center 
+### Complete the Configuration in the SaaS Environment
 
-If you are migrating to a SaaS environment, refer to the instructions in this section. For self-managed, see [this](to-add) upgrade guide. 
+After your v7.4 configuration is imported, work through the following in order. Each step assumes the previous one is complete.
 
-1. Log into your Environment Operations Center. The credentials were sent to you during your onboarding process.
+#### Access the Control Panel
 
-2. Create an environment with RadiantOne Identity Data Management version v9.0.0 and import the configuration (`export.zip`) that was exported from the v7.4 machine using the CUSTOM CONFIGURATION option by toggling the **Advanced Setup** option on. For assistance see: [Creating Environments](../../../../eoc/latest/environments/environment-overview/create-environments/#advanced-setup)
+The new Control Panel endpoint is listed in Environment Operations Center > Environments > *Environment_Name* > OVERVIEW > Application Endpoints. You can enable the LDAPS and REST endpoints from here as well if your integrations require them.
 
->[!warning] do NOT select RadiantOne Identity Data Management v8.1.0 when creating the environment. Migrations from v7.4 to v8.1.0 are not supported.
+![Control Panel Endpoint](Media/new-cp-endpoint.jpg)
 
-![Install IDDM](Media/new-iddm-app3.jpg)
+Connect to this endpoint and log in as the Directory Manager with the password you defined during the environment creation.
 
->[!note] Production SaaS environments are created with 2-node RadiantOne clusters. If your RadiantOne cluster requires more nodes, you can manually scale up the number of nodes once it is deployed.
+#### Create Secure Data Connectors
 
-Because the directory stores must be rebuilt, provisioning a migrated application can take longer than provisioning a new v9 application without migration data. The time required depends on factors such as the number and size of the directory stores, entry counts, and the indexes that must be rebuilt. 
+Review each backend data source and its network location to determine whether the SaaS environment can reach it directly. To connect to data sources that are not directly accessible from the SaaS environment, create a Secure Data Connector group and add a data connector in Environment Operations Center, selecting the environment you created for the Identity Data Management application.
 
-The existing v7.4 deployment is not affected by this process and can continue serving clients while the new v9 application is provisioned. 
+Once a secure data connector has been created in Environment Operations Center, the SDC client must be deployed on your local system, in a network that can reach the data source, before you can establish a connection. Confirm the connector is available once deployed. For assistance see: [Creating Environments](../../../../eoc/latest/secure-data-connector/configure-sdc-service/)
 
-If you run into any issues, contact Radiant Logic Support at support@radiantlogic.com and provide the environment name and the approximate time of the provisioning attempt. 
+#### Validate Data Sources
 
-### Create Secure Data Connector 
+Check the data sources to make sure they point to the desired servers and failover servers, and that the host, port, SSL setting, bind DN, password, and base DN are correct. You can check your data sources from Control Panel > Setup > Data Catalog > Data Sources. Correct any values and run Test Connection before saving each affected source. Pay particular attention to the following:
 
-To connect to data sources that are not directly accessible from the SaaS environment, create a Secure Data Connector group and add a data connector in Environment Operations Center.  
+**replicationjournal** — if you were using inter cluster replication, verify that this LDAP data source points to the correct journal, with the correct primary LDAP host, port, SSL setting, and Directory Manager credentials. Then open Advanced > Failover LDAP Servers and confirm each required failover server is present with the correct host, port, SSL setting, and SDC assignment.
 
-Once a secure data connector has been created in Environment Operations Center, the SDC client must be deployed on your local system before you can establish a connection. For assistance see: [Creating Environments](../../../../eoc/latest/secure-data-connector/configure-sdc-service/)
- 
+**vdslb** and **adaplb** — if you were using either in v7.4, verify the load-balanced LDAP endpoint, credentials, and remaining connection values.
 
-### Access Control Panel
+If you were connecting to backend data sources via SSL, make sure your certificates were migrated over successfully and that they are still valid from Control Panel > Global Settings > Client Certificates. Confirm the required client certificates and private keys are present, unexpired, and used by the intended backend data source or service. Import any missing certificates, install the required keystores and external trust configuration, and retest the affected data sources.
 
-The new Control Panel endpoint is listed in Environment Operations Center > Environments > Environment Name > Overview > Application Endpoints. You can enable the LDAPS and REST endpoints from here as well. 
+>[!note] Remove unused certificates only according to your certificate-retention policy.
 
-  ![Control Panel Endpoint](Media/new-cp-endpoint.jpg)
+#### Update Data Source Connections to use Secure Data Connector (where applicable)
 
-Connect to this endpoint and login as the directory manager with the password you defined during the environment creation.
+In Control Panel > Setup > Data Catalog > Data Sources, select your data source. In the Secure Data Connector Group drop-down list, select the secure data connector that should be used to tunnel a secure connection to the data source. Save the data source and run Test Connection.
 
-### Validate Data Sources
+![Data Source SDC](Media/data-source-sdc.jpg)
 
-Check the data sources to make sure they point to the desired servers (and failover servers if applicable). For example, if you are using inter cluster replication, verify that the replicationjournal LDAP data source points to the correct journal. You can check your data sources from the Control Panel > Setup > Data Catalog > Data Sources. If you were connecting to backend data sources via SSL, make sure your certificates were migrated over successfully and that they are still valid from Control Panel > Global Settings > Client Certificates. 
+#### Configure Delegated Administrators
 
-### Update Data Source Connections to use Secure Data Connector (where applicable) 
+There are new Control Panel entitlements in v9. There are two aspects to take into consideration:
 
-In the Control Panel > Setup > Data Catalog > Data Sources, select your data source.  
-
-In the Secure Data Connector Group drop-down list, select the secure data connector that should be used to tunnel a secure connection to the data source. 
-
-  ![Data Source SDC](Media/data-source-sdc.jpg)
-
-### Initialize Persistent Cache 
-
-When you log into the Control Panel > Manage > Directory Namespace > Namespace Design, you should see the naming contexts that were migrated from v7.4. Select the naming context that has a cache defined and go to the CACHE TAB to edit/reinitialize the cache. You must do this for every imported naming context that has a cache defined. 
-
-Stop all persistent cache refreshes (if they are running) and deactivate the cache.  Once the cache refresh has been stopped and the cache deactivated, go through the configuration process.  This can be done from Control Panel > Setup > Directory Namespace > Namespace Design. Select the root naming context and click the CACHE tab. Use the ... menu inline with the cached subtree to deactivate the cache.  Use the ... menu inline with the cache and choose Edit to go through the configuration process. In the CONFIGURE section, choose and configure the refresh strategy. Then, in the INITIALIZE section, initialize the cache. Finally, manage the cache properties from the MANAGE PROPERTIES section. 
-
-  ![Cache Init](Media/cache-init.jpg)
-
-### Perform Upload for Global Identity Builder Projects 
-
-If you had Global Identity Builder projects in v7.4, you must re-upload in the Global Identity Builder project the identity sources in your SaaS environment. If the Global Identity Builder project has identity sources that are based on persistent cache, make sure these caches are reinitialized in SaaS before re-uploading the global profile. 
-
-To edit Global Identity Builder projects in SaaS, from the Control Panel switch to Classic Control Panel and navigate to the Wizards tab. Launch the Global Identity Builder and re-upload your identities in your project. You need to go throught the cache configuration process mentioned in the previous section after the upload.
-
-
-### Configure Delegated Administrators 
-
-There are new Control Panel entitlements in v9. There are two aspects to take into consideration:  
-
-To continue to use the delegated admin roles applicable to the Classic (old) Control Panel in the new Control Panel, update them to assign permissions for the new Control Panel. Log into the Control Panel as the Directory Manager (configured when you create the environment in EOC) and go to ADMIN > Roles and Permissions. Select a role from the list and enable the needed permissions. 
+To continue to use the delegated admin roles applicable to the Classic (old) Control Panel in the new Control Panel, update them to assign permissions for the new Control Panel. Log into the Control Panel as the Directory Manager (configured when you create the environment in EOC) and go to ADMIN > Roles and Permissions. Select a role from the list and enable the needed permissions.
 
 ![roles and permissions](Media/roles-and-permissions.jpg)
 
-The default list of delegated admin roles and the permissions that are equivalent for the new control panel are as follows. Update your default roles with the same permissions shown in the screenshots: 
+The default list of delegated admin roles and the permissions that are equivalent for the new control panel are as follows. Update your default roles with the same permissions shown in the screenshots:
 
- 
-**ACIADMIN** 
- 
- ![aciadmin role](Media/aciadmin-admin-role.jpg)
- 
-**DIRECTORY ADMINISTRATORS** 
+**ACIADMIN**
 
-![directory admin role](Media/directoryadmin-admin-role.jpg) 
+![aciadmin role](Media/aciadmin-admin-role.jpg)
 
- **ICSADMIN** 
+**DIRECTORY ADMINISTRATORS**
+
+![directory admin role](Media/directoryadmin-admin-role.jpg)
+
+**ICSADMIN**
 
 ![icsadmin role](Media/icsadmin-admin-role.jpg)
- 
-**ICSOPERATOR** 
 
-![icsoperator role](Media/icsoperator-admin-role.jpg) 
+**ICSOPERATOR**
 
-**NAMESPACEADMIN** 
+![icsoperator role](Media/icsoperator-admin-role.jpg)
 
-![namespaceadmin role](Media/namespace-admin-role.jpg) 
+**NAMESPACEADMIN**
 
-**OPERATOR** 
+![namespaceadmin role](Media/namespace-admin-role.jpg)
 
-![operator role](Media/operator-admin-role.jpg) 
+**OPERATOR**
 
-**READONLY** 
+![operator role](Media/operator-admin-role.jpg)
 
-![readonly admin role](Media/readonly-admin-role.jpg) 
- 
-**SCHEMAADMIN** 
+**READONLY**
 
-![schemaadmin role](Media/schema-admin-role.jpg) 
- 
+![readonly admin role](Media/readonly-admin-role.jpg)
 
-To properly assign new users to delegated admin roles, log into the Control Panel as the Directory Manager (configured when you create the environment in EOC) and go to ADMIN > USER MANAGEMENT.  Search for the delegated admin user account and assign the user to the new role.  
+**SCHEMAADMIN**
 
-![Assign Roles](Media/assign-roles.jpg)   
+![schemaadmin role](Media/schema-admin-role.jpg)
 
->[!note] If the default roles are inadequate, you can create new roles from the ROLES and PERMSSIONS tab. Do this first and then search for/assign the user to the role. Also, if the user should be able to switch to/configure settings in the Classic Control Panel, the new role MUST have the “Classic Control Panel Access” permission enabled, and the group associated with this role for entitlement enforcement for the classic control panel selected. 
+To properly assign new users to delegated admin roles, log into the Control Panel as the Directory Manager and go to ADMIN > USER MANAGEMENT. Search for the delegated admin user account and assign the user to the new role.
 
-### Migrating Custom Objects and Interception Scripts 
+![Assign Roles](Media/assign-roles.jpg)
 
-To migrate custom objects and/or interception scripts, use the File Manager in the SaaS environment to upload the files from the following folders. 
+>[!note] If the default roles are inadequate, you can create new roles from the ROLES and PERMSSIONS tab. Do this first and then search for/assign the user to the role. Also, if the user should be able to switch to/configure settings in the Classic Control Panel, the new role MUST have the “Classic Control Panel Access” permission enabled, and the group associated with this role for entitlement enforcement for the classic control panel selected.
 
-For custom data sources, from your v7.4 backup location, upload the <RLI_HOME>\vds_server\custom\src\com\rli\scripts\customobjects\<files> to the  <RLI_HOME>\vds_server\custom\src\com\rli\scripts\customobjects folder and overwrite the target files.  From the Control Panel, use the “Logged in...” account menu and choose: Open Classic Control Panel. 
+#### Migrate Custom Objects and Interception Scripts
 
-![Classic CP Link](Media/classic-cp-link.jpg)
- 
+To migrate custom objects and/or interception scripts, use the File Manager in the SaaS environment to upload the files from your v7.4 backup location. Go to Control Panel > Manage > File Manager, which opens at the RLI_HOME directory. Use the breadcrumb and folder list to navigate to each target folder below, click UPLOAD FILE, and either drag and drop or browse to the corresponding location from your v7.4 backup, overwriting the target files:
 
-In the Classic Control Panel, navigate to Settings > Configuration > File Manager. In File Manager, navigate to vds_server > custom > src > com > rli > scripts > customobjects and click Upload Files. Navigate to the corresponding location from your v7.4 backup and upload your files.  
+- For custom data sources, upload `<RLI_HOME>\vds_server\custom\src\com\rli\scripts\customobjects\<files>` to vds_server > custom > src > com > rli > scripts > customobjects.
+- For interception scripts, upload `<RLI_HOME>\vds_server\custom\src\com\rli\scripts\intercept\<files>` to the corresponding intercept folder.
+- If custom libraries are used, upload `<RLI_HOME>\vds_server\custom\lib\<files>` to the vds_server > custom > lib folder.
 
-For interception scripts, from your v7.4 backup location, upload the files from <RLI_HOME>\vds_server\custom\src\com\rli\scripts\intercept\<files> to the  <RLI_HOME>\vds_server\custom\src\com\rli\scripts\intercept folder and overwrite the target files. If custom libraries are used, upload the <RLI_HOME>\vds_server\custom\lib\<files> from your v7.4 backup to the <RLI_HOME>\vds_server\custom\lib folder in File Manager and overwrite the target files. 
+>[!note] Single-file upload is supported. When multiple files are selected at once, only the last file in the list is processed in the current release.
 
-After the files are uploaded, choose Build > Build All Jars in File Manager.  You can be more selective and just choose to build the Intercept Jars and Custom Jars instead of all jars. 
+After the files are uploaded, navigate to the custom folder or one of its subfolders and choose BUILD > Build All Jars. You can be more selective and just choose to build the Intercept Jars and Custom Jars instead of all jars. The Build Results panel displays the compilation messages, the jar files produced, and any warnings.
 
->[!note] If the build fails, you must investigate further to ensure you are only including libraries that are needed. Any extra, unused libraries can cause the build of the jars to fail. 
+>[!note] If the build fails, you must investigate further to ensure you are only including libraries that are needed. Any extra, unused libraries can cause the build of the jars to fail.
 
-Restart the RadiantOne service using Environment Operations Center. Navigate to Environments > *Environment_Name* > OVERVIEW and use the following menu: 
+Restart the RadiantOne service using Environment Operations Center. Navigate to Environments > *Environment_Name* > OVERVIEW and use the following menu:
 
 ![Restart Menu](Media/restart-menu.jpg)
 
-This performs a rolling restart of all RadiantOne cluster nodes for the new scripts to take effect. 
+This performs a rolling restart of all RadiantOne cluster nodes for the new scripts to take effect.
 
-## How to Report Problems and Provide Feedback 
+#### Initialize Persistent Cache
 
-Feedback and problems can be reported from the Support Center/Knowledge Base accessible from: https://support.radiantlogic.com 
+Go to Control Panel > Setup > Directory Namespace > Namespace Design, where you should see the naming contexts that were migrated from v7.4. Identify every migrated naming context that has a cache defined; persistent-cache data is not restored by the v7.4 export, so each one must be reinitialized from its backend data source or exported LDIF cache image.
 
-If you do not have a user ID and password to access the site, please contact support@radiantlogic.com. 
+Select the root naming context and click the CACHE tab. Stop all persistent cache refreshes if they are running, then use the ... menu inline with the cached subtree to deactivate the cache. Once the refresh has been stopped and the cache deactivated, use the ... menu inline with the cache and choose Edit to go through the configuration process. In the CONFIGURE section, choose and configure the refresh strategy. Then, in the INITIALIZE section, initialize the cache. Finally, manage the cache properties from the MANAGE PROPERTIES section. The cache becomes active after initialization completes successfully. You must do this for every imported naming context that has a cache defined.
 
+![Cache Init](Media/cache-init.jpg)
+
+#### Perform Upload for Global Identity Builder Projects
+
+If you had Global Identity Builder projects in v7.4, you must re-upload the identity sources in your SaaS environment. If the Global Identity Builder project has identity sources that are based on persistent cache, make sure these caches are reinitialized in SaaS before re-uploading the global profile.
+
+To edit Global Identity Builder projects in SaaS, from the Control Panel use the “Logged in...” account menu and choose: Open Classic Control Panel.
+
+![Classic CP Link](Media/classic-cp-link.jpg)
+
+Navigate to the Wizards tab, launch the Global Identity Builder, and re-upload your identities in your project.
+
+>[!note] You need to go through the cache configuration process described above again after the upload.
+
+## How to Report Problems and Provide Feedback
+
+Feedback and problems can be reported from the Support Center/Knowledge Base accessible from: https://support.radiantlogic.com
+
+If you do not have a user ID and password to access the site, please contact support@radiantlogic.com.
 
 
