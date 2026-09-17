@@ -5,7 +5,7 @@ description: Introduction to basic monitoring and alert capabilities in RadiantO
 
 ## Overview
 
-Monitoring is one of the most important aspects of maintaining the health of RadiantOne. It is highly recommended that you monitor the RadiantOne service on a regular basis. The RadiantOne service can be monitored from Environment Operations Center (for SaaS deployments only), and the Classic and Server Control Panels (for SaaS and Self-managed deployments), in addition to using third party tools.
+Monitoring is one of the most important aspects of maintaining the health of RadiantOne. It is highly recommended that you monitor the RadiantOne service on a regular basis. The RadiantOne service can be monitored from Environment Operations Center (for SaaS deployments only), and the Classic, Main, and Server Control Panels (for SaaS and Self-managed deployments), in addition to using third party tools.
 
 ### Switching to Classic Control Panel
 
@@ -131,44 +131,48 @@ To enable buffering of **modify events** for a persistent search connector:
 Once enabled, the connector batches incoming modify events instead of processing each one individually. When the buffer is flushed (either because the size limit or the TTL is reached), duplicate events targeting the same DN are collapsed into a single sync event. This is especially useful when directory operations generate a large volume of changes to the same entries in a short period, such as adding many members to a group one at a time.
 
 
-## Monitoring from the Server Control Panel
+## Monitoring in the Control Panel
 
-The items that can be monitored from the Server Control Panel are described in this section.
+Client connections, directory store activity, and the status of backend data sources can be monitored from the Control Panel > Usage & Activity section.
 
-Click the "Server Control Panel" link at the top-right of the Classic Control Panel to launch the Server Control Panel.
+The Connection & Operations and Directory Status sections display statistics for a single cluster node. Select the node from the Node list at the top right of the section. The leader node is identified by LEADER. The Data Source Status section is not node-specific.
 
-### RadiantOne Directory Status
+![Node list at the top right of the section, with the leader node identified by LEADER](Media/node-selection.png)
 
-Store status (including number of entries, index size, revision, and search and write operations) can be monitored from the Server Control Panel > Usage & Activity tab > Universal Directory Status section.
+Click the refresh icon next to a section heading to update the values displayed.
 
-To filter the stores displayed, click on gear icon and then click Select Filters. Select the stores to display and click OK. Click OK to exit the settings.
+### Connection & Operations
 
-![RadiantOne Directory Stores](Media/directory-status.jpg)
+Client connections and operations handled by the RadiantOne service can be monitored from the Control Panel > Usage & Activity > Connection & Operations section.
 
+Usage Summary indicates the number of connections and operations processed since the node started, and the average per minute. Current Connections lists each open connection with its identifier, bind DN, client and server address, and the number of bind, search, add, modify, modify DN, delete, and compare operations performed on it.
+
+Click a column heading to sort the list. To save the list to a file, click Export to CSV.
+
+![Connection & Operations section showing Usage Summary and Current Connections](Media/connection-and-operations.png)
+
+### Directory Status
+
+Store information (including revision, number of entries, index size, and search and write operations) can be monitored from the Control Panel > Usage & Activity > Directory Status section. RadiantOne Directory stores, persistent caches, and internal stores such as cn=changelog and cn=queue are listed.
+
+Each value is displayed with the peak reached and a trend graph. Point to a graph to display the value at a given point in the interval. Write operations are processed by the leader node, so the write rate displayed for other nodes is typically zero.
+
+To change the number of stores displayed, use the Show per page list at the bottom of the section.
+
+![Directory Status section listing stores with revision, number of entries, index size, and operation rates](Media/directory-status.png)
 
 ### Data Source Status
 
-The status of the RadiantOne service (data sources named vds and vdsha) and any backend can be monitored from the Server Control Panel > Usage & Activity Tab > Data Source Status section.
+The status of the RadiantOne service (data sources named vds and vdsha) and any backend can be monitored from the Control Panel > Usage & Activity > Data Source Status section. The name, status, connection URL, and an associated message are displayed for each data source, along with the time at which the statuses were last refreshed. Status can be on, off, offline or unavailable.
 
-![Data Source Status](Media/data-source-status.jpg)
+| Status | Description |
+| --- | --- |
+| On | RadiantOne can connect to the data source. |
+| Off | The connection test to the data source failed. |
+| Offline | The data source's active property is set to false. No connection is attempted. |
+| Unavailable | No classname property is defined for the data source. |
 
-The status values are on, off, offline, and unavailable. The following table describes each status.
-
-
-| Status | Description | 
-|--------|---------------------------|
-| On | RadiantOne can connect to the data source. | 
-| Off | The connection test to the data source failed. | 
-| Offline | The data source’s active property is set to false. | 
-| Unavailable | No classname property is defined for the data source. | 
-
-If a data source has failover servers configured, the URL in the message indicates which server the status applies to.
-
-### Network Latency
-
-The latency between RadiantOne nodes can be monitored from the Server Control Panel -> Usage & Activity tab -> Network Latency section.
-
-![An image showing monitoring network latency](Media/Image1.14.jpg)
+![Data Source Status section listing data sources with status, connection URL, and message](Media/data-source-status.png)
 
 
 ## Logs and Error Messages to Monitor
