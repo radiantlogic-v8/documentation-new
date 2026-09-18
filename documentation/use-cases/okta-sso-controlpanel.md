@@ -35,13 +35,11 @@ Perform the following steps in your Okta tenant. Please refer to the Okta docume
 9. Copy the value for the Client ID. This is used when you configure Okta as the Identity Provider in the Control Panel. 
 
 10. Enable the option *Require PKCE as additional verification*.
+    ![Okta Applications](Media/okta-client-creds.jpg)
 
-11. Click **SAVE**.
+12. Click **SAVE**.
 
-12. You can fill in the rest of the sections on this page applicable to your company's security policies.
-
-![Okta Applications](Media/okta-client-creds.jpg)
-
+13. You can fill in the rest of the sections on this page applicable to your company's security policies.
 
 ## Control Panel Configuration
 
