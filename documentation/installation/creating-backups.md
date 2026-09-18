@@ -29,6 +29,21 @@ This guide provides an overview of the steps required to create backups of your 
     * `<RELEASE_NAME>`: The release name of your Helm deployment.
     * `<NAMESPACE>`: The Kubernetes namespace where the application is deployed.
     * `<EXPORT_FILE_NAME>`: The desired filename for the backup export (e.g., backup-20241217.zip).
+  
+Backups include everything needed to safely restore the application if needed - all configurations and identity data stored locally.
+
+* Public key certificates imported into the RadiantOne Cloud Trust Store
+* Data Sources (connection details to backend identity data sources) and associated schema files.
+* Global Identity Builder projects
+* RadiantOne Directory Schema
+* Monitoring and Alerts configurations
+* Configurations for Root Naming Contexts in the Directory Namespace
+* SCIMv2 frontend configurations
+* Synchronization Pipeline configurations
+* Virtual view files
+* RadiantOne directory stores
+* Custom scripts (e.g. interception scripts, synchronization scripts, custom tasks...etc.)
+* All RadiantOne service configuration properties
 
 ## Next steps
 
