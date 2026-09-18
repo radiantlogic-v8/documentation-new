@@ -216,7 +216,11 @@ Harness your identity data with intelligent integration to drive better business
   > Learn how to restart environments. 
      
   > [Deleting Environments](maintenance/managing-environments#deleting-environments)  
-  > Learn how to delete environments. 
+  > Learn how to delete environments.
+
+  > [Upgrades](upgrade-guides/TOC)
+  > Learn how to upgrade your RadiantOne v8 service to v9. 
+
 
 </section>
 
