@@ -158,7 +158,7 @@ Harness your identity data with intelligent integration to drive better business
   > Learn how to implement an integration that allows you to synchronize data between SailPoint and Identity Data Management.
 
   > [Synchronizing On-Prem Users to Entra ID](use-cases/onprem-entraidsync)
-  > Learn how to synchronize on-prem AD users to Entra ID using RadiantOne.
+  > Learn how to synchronize on-prem AD users to Entra ID.
 
   > [Synchronizing Passwords using RadiantOne Password Filter](use-cases/radiantone-password-filter)
   > Learn how to use the RadiantOne Password Filter to keep user passwords consistent across multiple Active Directories.
