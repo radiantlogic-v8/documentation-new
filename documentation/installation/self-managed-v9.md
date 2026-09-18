@@ -1,3 +1,8 @@
+---
+title: Self-managed Deployment
+description: Learn how to deploy RadiantOne Identity Data Management in your own Kubernetes cluster using Helm.
+---
+
 # Overview
 
 This guide explains how to install RadiantOne Identity Data Management 9.0.0 on a supported Kubernetes cluster.
