@@ -79,7 +79,7 @@ To test SSO:
 
 1. Log out of the RadiantOne Control Panel (account menu in upper-right).
 
-2. Click the **Login with Okta** option on the RadiantOne Control Panel.
+2. Click the **Signin with Okta** option on the RadiantOne Control Panel.
 
    ![Login with Okta](Media/login-page.jpg)
 
