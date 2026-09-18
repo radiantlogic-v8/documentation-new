@@ -1,8 +1,9 @@
 ---
 title: Updating to v9 Self-managed Deployment
 description: Learn how to update an existing v8 self-managed RadiantOne Identity Data Management to v9.0.0.
+---
 
-# Updating RadiantOne Identity Data Management — Self-managed Deployments
+# Overview 
 
 This guide explains how to update an existing self-managed RadiantOne Identity Data Management v8 deployment to v9.0.0. It describes the update process, expected duration, recovery steps for failed updates, and how to return to v8 if necessary.
 
