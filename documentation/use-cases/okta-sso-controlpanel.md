@@ -14,7 +14,7 @@ Perform the following steps in your Okta tenant. Please refer to the Okta docume
 
 1. Login with an administrator account and go to **Administration > Applications and Resources > Applications**.
 
-   ![Okta Applications list](Okta_SSO_ControlPanelv8_images/01-okta-applications.png)
+   ![Okta Application](Media/okta-create-app.jpg)
 
 2. Click **CREATE APP INTEGRATION**.
 
