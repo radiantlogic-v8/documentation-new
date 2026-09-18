@@ -57,11 +57,11 @@ Perform the following steps in your Okta tenant. Please refer to the Okta docume
 
 7. Enter the OIDC discovery URL for the Okta tenant (e.g. `https://<OKTA_DOMAIN>/.well-known/openid-configuration`) and click **Discover Endpoint URLs**. This auto-populates the **Authorization Endpoint URL** and the **Token Endpoint URL** (you can manually enter these if needed).
 
-8. Enter the **Client ID** you saved from the Okta setup into their respective properties.
+8. Enter the **Client ID** you saved from the Okta setup.
 9. This configuration uses the **CLIENT_SECRET_POST** authentication method and **openid** as the scope.
 10. Click **+ADD MAPPING** next to *DN Mapping Expression* in the **CLAIMS TO USER DN MAPPING**. This setting is used to translate the account that authenticates with Okta to a delegated admin user in RadiantOne. This can be a simple mapping (DN substitution using claim values if needed) or a complex mapping with lookups in the RadiantOne namespace to match claim values to profile attributes. In the following example, the `email` claim received from the Okta authentication is used to lookup the identity in the RadiantOne namespace to locate the admin account below the `cn=config` naming context that has this value for the `mail` attribute.
 
-   ![OIDC to FID user mapping](Okta_SSO_ControlPanelv8_images/08-oidc-to-fid-user-mapping.png)
+   ![OIDC to RadiantOne Admin mapping](Media/dn-mapping.jpg)
 
    | Setting | Value |
    | --- | --- |
