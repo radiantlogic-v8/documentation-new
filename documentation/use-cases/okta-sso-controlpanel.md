@@ -30,7 +30,7 @@ Perform the following steps in your Okta tenant. Please refer to the Okta docume
 
 7. Select the applicable authorization and click **SAVE**.
 
-8. On the Client Credential page, click **Edit*.
+8. On the Client Credential page, click *Edit*.
 
 9. Copy the value for the Client ID. This is used when you configure Okta as the Identity Provider in the Control Panel. 
 
