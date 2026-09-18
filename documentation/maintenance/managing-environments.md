@@ -22,6 +22,21 @@ For self-managed deployments, you can delete the deployed Identity Data Managed 
 
 Environment backups are performed in the Environment Operations Center. In the EOC navigation pane, select Environments and choose the environment. Click the BACKUPS tab.
 
+Backups include everything needed to safely restore the application if needed - all configurations and identity data stored locally.
+
+* Public key certificates imported into the RadiantOne Cloud Trust Store
+* Data Sources (connection details to backend identity data sources) and associated schema files.
+* Global Identity Builder projects
+* RadiantOne Directory Schema
+* Monitoring and Alerts configurations
+* Configurations for Root Naming Contexts in the Directory Namespace
+* SCIMv2 frontend configurations
+* Synchronization Pipeline configurations
+* Virtual view files
+* RadiantOne directory stores
+* Custom scripts (e.g. interception scripts, synchronization scripts, custom tasks...etc.)
+* All RadiantOne service configuration properties
+
 For more details, see: [Backups](/../../eoc/latest/environments/backup-and-restore/create-backup)
 
 ### Manual
