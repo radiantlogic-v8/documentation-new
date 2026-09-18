@@ -39,7 +39,7 @@ Prior to updating RadiantOne Identity Data Management, ensure you have a recent 
 3. Enter a backup file name (there is a default auto-prefix) and click **SAVE**. This process takes a few minutes. Ensure the backup file shows in the list of backups before updating.
 4. Download the backup file and save it to your device. You can use this backup to do any of the following if needed:
 
-   i. Installing Identity Data Management v9 in a new environment with existing configurations saved in your backup.
+   i. Installing Identity Data Management v9 in a new environment [with existing configurations saved in your backup](https://developer.radiantlogic.com/eoc/latest/environments/applications/applications-overview/#custom-configuration). 
 
    ii. Rolling back to your older version by installing a new v8 Identity Data Management application that references the backup file in the Advanced Setup, CUSTOM CONFIGURATION.
 
