@@ -218,7 +218,7 @@ Harness your identity data with intelligent integration to drive better business
   > [Deleting Environments](maintenance/managing-environments#deleting-environments)  
   > Learn how to delete environments.
 
-  > [Upgrades](upgrade-guides/iddm-v8-v9-comparison)
+  > [Upgrades](upgrade-guides/iddm-v8-v9-comparison)  
   > Learn how to upgrade your RadiantOne v8 service. 
 
 
