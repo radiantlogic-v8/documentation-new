@@ -79,20 +79,15 @@ To test SSO:
 
 1. Log out of the RadiantOne Control Panel (account menu in upper-right).
 
-2. Click the **Signin with Okta** option on the RadiantOne Control Panel.
+2. Click the **Sign in with Okta** option on the RadiantOne Control Panel.
 
    ![Login with Okta](Media/login-page.jpg)
 
-   This redirects to Okta where the user (not already logged into Okta) is prompted to login:
+   This redirects to Okta where the user (not already logged into Okta) is prompted to login, enter Okta Verify Credentials and Password:
 
-   ![Okta login prompt](Okta_SSO_ControlPanelv8_images/10-okta-login-prompt.png)
+   ![Okta login prompt](Media/okta-login-redirect.jpg)
 
-3. After clicking **"Sign In"** the user should be automatically logged into the RadiantOne Control Panel as the admin account matching the OIDC to FID User Mapping.
+3. After clicking **Verify** the user should be automatically logged into the RadiantOne Control Panel as the admin account matching the OIDC to User Mapping.
 
-   ![Control Panel logged in as the mapped admin](Okta_SSO_ControlPanelv8_images/11-control-panel-logged-in.png)
+   ![Directory Browser showing the admin account mail attribute](Media/matching-mgr.jpg)
 
-   ![Directory Browser showing the admin account mail attribute](Okta_SSO_ControlPanelv8_images/12-directory-browser-admin-mail.png)
-
----
-
-Radiant Logic, Inc. | 818 Fifth Ave | San Rafael, CA 94901 | 877.727.6442 | 415.209.6800 | radiantlogic.com
