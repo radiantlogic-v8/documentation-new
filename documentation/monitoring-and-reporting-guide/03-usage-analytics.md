@@ -16,7 +16,7 @@ Follow these steps to enable the service:
 
 ![Usage Analytics UI](Media/usage-analytics.png)
 
-2. Switch the “Enabled” toggle to ON anc click Save.
+2. Switch the “Enabled” toggle to ON and click Save.
 
 
 ### Downloading Usage Analytics Report
