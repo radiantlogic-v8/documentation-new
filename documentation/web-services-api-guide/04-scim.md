@@ -29,7 +29,7 @@ To configure SCIM access to RadiantOne entries you can use the Quick Start optio
 1.	Enter a unique name in the Name property. This is used as the name for the Resource Type.
 1.	For the Endpoint, enter an endpoint identifier. This comprises the URL a SCIM client uses to access the entries.
 1.	For the Base DN, click Browse and select the root naming context in the RadiantOne namespace where your virtual view is mounted.
-1.	For the Primary Object Class, select the object class associated with the identities in the virtual view from the drop-down list. If you do not see your object class here, extend the RadiantOne schema prior to using this Quick Start. See [Extending the RadiantOne LDAP Schema section](https://developer.radiantlogic.com/idm/v7.4/sys-admin-guide/07-directory-schema/#extending-the-radiantone-ldap-schema) in the RadiantOne System Administration Guide. 
+1.	For the Primary Object Class, select the object class associated with the identities in the virtual view from the drop-down list. If you do not see your object class here, extend the RadiantOne schema prior to using this Quick Start. See [Extending the RadiantOne LDAP Schema section](../sys-admin-guide/07-directory-schema/#extending-the-radiantone-ldap-schema) in the RadiantOne System Administration Guide. 
 1.	Click Save. An example is shown below.
 
   ![SCIM Quick Start](Media/Image4.2.jpg)
