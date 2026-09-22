@@ -5,11 +5,11 @@ description: Learn how to install RadiantOne Identity Data Management 9.0.0 in y
 
 ## Overview
 
-This document provides instructions for installing RadiantOne Identity Data Management 9.0.0 on your Kubernetes cluster using Helm charts. It covers prerequisites, sizing and storage guidance, the deployment steps, and how to access the Identity Data Management control panel on your local machine via port-forwarding.
+This document provides instructions for installing RadiantOne Identity Data Management 9.0.0 on your Kubernetes cluster using Helm charts. It covers prerequisites, sizing and storage guidance, deployment steps, and how to access the Identity Data Management control panel on your local machine through port forwarding.
 
-Self-managed Identity Data Management can be installed on any supported Kubernetes cluster that provides a storage class for ReadWriteOnce block storage. The installation process exclusively utilizes Helm, meaning you will use `helm install` or `helm upgrade` commands.
+You can install self-managed Identity Data Management on any supported Kubernetes cluster that provides a storage class for ReadWriteOnce block storage. The installation process exclusively utilizes Helm. Use `helm install` or `helm upgrade` for all installation and update operations.
 
-To update an existing v8 deployment to v9 instead, refer to [Updating RadiantOne Identity Data Management](../upgrade-guides/updating-to-sm-v9/).
+To update an existing v8 deployment to v9, refer to [Updating RadiantOne Identity Data Management](../upgrade-guides/updating-to-sm-v9/).
 
 ### Chart version
 
@@ -21,13 +21,13 @@ This replaces the v8 mapping, in which an 8.X.Y application version corresponded
 
 ## Prerequisites
 
-- [Kubernetes cluster](https://kubernetes.io/docs/setup/) of version 1.27 or higher. Refer to the [Sizing a Kubernetes cluster](../sizing-kubernetes/) document for additional details.
-- Install [Helm](https://helm.sh/docs/intro/install/) version 3.8 or higher. Version 3.8 is required for OCI registries.
-- Install [kubectl](https://kubernetes.io/docs/reference/kubectl/) version 1.27 or higher and configure it to access your Kubernetes cluster.
-- For new customers, an Identity Data Management license key will be provided to you during onboarding. For existing customers, your existing license key should work with v9. If you have issues, create a Radiant Logic Customer Support ticket at https://support.radiantlogic.com/.
-- For new customers, ensure that you have received Container Registry Access and image pull credentials named **(regcred.yaml)** from Radiant Logic during onboarding. For existing customers, create a Radiant Logic Customer Support ticket at https://support.radiantlogic.com/ to request registry credentials.
-- Ensure that you have a storage class with dynamic provisioning configured for the Kubernetes cluster. Identity Data Management stores the complete installation on a persistent volume, not only its data. Refer to [Storage Classes by Platform](#storage-classes-by-platform).
-- Estimate sufficient resources (CPU, memory, storage) for the deployment. <b> The default amount indicated in the helm chart MAY NOT BE SUFFICIENT FOR YOUR USE CASES. Update them accordingly. </b> Refer to [Sizing the Deployment](#sizing-the-deployment). Your Radiant Logic solutions engineer can guide you here based on your use cases.
+- Use a [Kubernetes cluster](https://kubernetes.io/docs/setup/) running version 1.27 or later. Refer to [Sizing a Kubernetes cluster](../sizing-kubernetes/) for more information.
+- Install [Helm](https://helm.sh/docs/intro/install/) version 3.8 or later. Version 3.8 is required for OCI registries.
+- Install [kubectl](https://kubernetes.io/docs/reference/kubectl/) version 1.27 or later and configure it to access your Kubernetes cluster.
+- New customers receive an Identity Data Management license key during onboarding. Existing licenses should work with v9. If your license does not work, create a Radiant Logic Customer Support ticket at https://support.radiantlogic.com/.
+- Obtain Container Registry Access and the `regcred.yaml` image pull credentials from Radiant Logic during onboarding. Existing customers can request registry credentials by creating a Radiant Logic Customer Support ticket at https://support.radiantlogic.com/.
+- Configure a storage class with dynamic provisioning for the Kubernetes cluster. Identity Data Management stores the complete installation on a persistent volume, not only its data. Refer to [Storage Classes by Platform](#storage-classes-by-platform).
+- Estimate the CPU, memory, and storage resources required for the deployment. <b>The default values in the Helm chart may not be sufficient for your use case. Update them as needed.</b> Refer to [Sizing the Deployment](#sizing-the-deployment). Your Radiant Logic solutions engineer can help you size the deployment for your use case.
 
 ## Sizing the Deployment
 
@@ -81,9 +81,11 @@ kubectl get storageclass <name> \
 
 ## Steps for Deployment
 
-1. **Set up values.yaml file for Helm deployment**
+1. **Set up the `values.yaml` file for Helm deployment**
 
-   Create a file named `values.yaml`. In your `values.yaml`, ensure that you have the following properties at minimum. Note that the values of the properties such as `storageClass`, `resources`, etc., will differ depending on your use case, cloud provider, and storage requirements. Replace the resource, heap, and volume values below with the row you selected in [Sizing the Deployment](#sizing-the-deployment). Work with your Radiant Logic Solution Engineer to customize your Helm configuration.
+   Create a `values.yaml` file. Ensure that it includes at least the following properties. Values such as `storageClass` and `resources` vary by use case, cloud provider, and storage requirements. Work with your Radiant Logic solutions engineer to customize your Helm configuration.
+
+   The example below shows the required structure and placeholder values. It is not a sizing recommendation. Before you deploy, replace `resources`, `FID_SERVER_JOPTS`, and `persistence.size` with the values from the row you select in [Sizing the Deployment](#sizing-the-deployment).
 
    **Example `values.yaml` file:**
 
@@ -123,21 +125,21 @@ kubectl get storageclass <name> \
 
    A complete reference file containing every tunable setting discussed in this document is provided in [Complete values.yaml Reference](#complete-valuesyaml-reference).
 
-   If you are restoring this deployment from a backup of an existing deployment, refer to [Restoring from a Backup](#restoring-from-a-backup) before you continue. That procedure requires two additional properties in `values.yaml`.
+   If you are seeding this deployment from a backup of an existing deployment, refer to [Restoring from a Backup](#restoring-from-a-backup) before you continue. That procedure requires two additional properties in `values.yaml`.
 
    **Definitions of the properties:**
 
-   - **replicaCount**: Specifies the number of RadiantOne nodes that will be deployed. Set the value to a minimum of **2** in production environments for high availability.
+   - **replicaCount**: Specifies the number of RadiantOne nodes to deploy. Set the value to a minimum of **2** in production environments for high availability.
    - **image.tag**: Optional. Leave this unset. The image version comes from `--version`. Set this only if Radiant Logic Support instructs you to use a specific image. A pinned tag is not updated by a later `--version` value and can leave the server on an older version while the other services update.
-   - **fid.rootUser**: Denotes the root user for RadiantOne. Defaults to **cn=Directory Manager**.
-   - **fid.rootPassword**: Denotes the password for the root user. Set to a strong password value that meets your corporate security policy. You can update this password after install if needed.
+   - **fid.rootUser**: Specifies the RadiantOne root user. Defaults to **cn=Directory Manager**.
+   - **fid.rootPassword**: Specifies the password for the root user. Set a strong password that meets your corporate security policy. You can update this password after installation if needed.
    - **fid.license**: Set your Identity Data Management license key.
-   - **persistence.enabled**: Indicates whether data persistence is enabled. Set to **true** or **false**.
+   - **persistence.enabled**: Enables or disables data persistence. Set to **true** or **false**.
    - **persistence.storageClass**: Defines the storage class for provisioning persistent volumes.
-   - **persistence.size**: Specifies the size of the persistent volume. The volume stores the complete installation, not only the data. Ensure that you monitor usage over time and expand the volume before it fills.
-   - **zookeeper.persistence.enabled**: Indicates if data persistence is enabled for Zookeeper.
-   - **resources**: Indicates the compute resources allocated to the Identity Data Management containers. Identity Data Management is deployed as a StatefulSet, which has implications for resource management. Changing resources requires careful planning as it affects all pods. Monitor your usage and change the values as needed over time.
-   - **env**: Under `env`, you can define environment variables used to configure Identity Data Management at runtime. Values that you set are merged with the chart defaults. The "INSTALL_SAMPLES" property controls whether sample data sets are deployed. The "FID_SERVER_JOPTS" property specifies JVM heap settings for the Identity Data Management server. Keep `-Xmx` at no more than about half of `resources.limits.memory`, because the storage engine also uses memory outside the Java heap. A heap equal to the container limit can cause the container to be stopped for exceeding its memory limit.
+   - **persistence.size**: Specifies the size of the persistent volume. The volume stores the complete installation, not only the data. Monitor usage over time and expand the volume before it fills.
+   - **zookeeper.persistence.enabled**: Enables or disables data persistence for ZooKeeper.
+   - **resources**: Specifies the compute resources allocated to the Identity Data Management containers. Identity Data Management runs as a StatefulSet, so resource changes affect all pods. Plan resource changes carefully, monitor usage, and update the values as needed.
+   - **env**: Defines environment variables that configure Identity Data Management at runtime. Values you set are merged with the chart defaults. `INSTALL_SAMPLES` controls whether sample data sets are deployed. `FID_SERVER_JOPTS` specifies JVM heap settings for the Identity Data Management server. Keep `-Xmx` at no more than about half of `resources.limits.memory`, because the storage engine also uses memory outside the Java heap. A heap equal to the container limit can cause the container to be stopped for exceeding its memory limit.
 
    **About JAVA_TOOL_OPTIONS:**
 
@@ -160,7 +162,7 @@ kubectl get storageclass <name> \
    kubectl create namespace self-managed
    ```
 
-3. **Deploy the credentials file provided to you in the same namespace**
+3. **Deploy the credentials file in the same namespace**
 
    ```
    kubectl apply -n self-managed -f regcred.yaml
@@ -176,11 +178,11 @@ kubectl get storageclass <name> \
      --dry-run
    ```
 
-   This command will render your YAML config files without deploying anything, and reports template or value errors. If everything looks good, re-run the command without the `--dry-run` parameter.
+   This command renders your YAML configuration files without deploying anything and reports template or value errors. If everything looks good, rerun the command without the `--dry-run` parameter.
 
 5. **Deploy self-managed Identity Data Management**
 
-   Ensure that you provide the appropriate path for your values.yaml file before running this command:
+   Provide the appropriate path for your `values.yaml` file before you run this command:
 
    ```
    helm -n self-managed install fid \
@@ -194,9 +196,11 @@ kubectl get storageclass <name> \
 
    With `--wait`, Helm returns when the pods report ready. On a cluster that must add nodes first, allow approximately five minutes. Without `--wait`, Helm returns after applying the manifests, while the pods continue starting in the background.
 
-   Helm's `--timeout` value (default `5m0s`) limits how long Helm waits for an individual operation. It does not stop work in the cluster: when it expires, Helm returns an error, but work that has already started continues. A timed-out installation is not a cancelled installation. For automation, use `--wait` together with a `--timeout` value that comfortably exceeds your expected startup time.
+   Helm's `--timeout` value (default `5m0s`) limits how long Helm waits for an individual operation, including any Job it runs as a hook. It does not stop work in the cluster: when it expires, Helm returns an error, but work that has already started continues. A timed-out installation is not a cancelled installation. For automation, use `--wait` together with a `--timeout` value that comfortably exceeds your expected startup time.
 
-   > Do not use `--atomic` when restoring from a backup. If the timeout expires, `--atomic` rolls back the release, which deletes a deployment that is partway through a restore.
+   To also wait for the Jobs in the release to finish before Helm reports success, add `--wait-for-jobs` alongside `--wait`.
+
+   > If you are seeding this deployment from a backup, do not use `--wait` with the default timeout. Refer to [Restoring from a Backup](#restoring-from-a-backup).
 
 6. **Verify deployment**
 
@@ -211,7 +215,7 @@ kubectl get storageclass <name> \
    - **data-catalog**: Microservice for the configuration REST API endpoints concerning the data catalog.
    - **directory-browser**: Microservice for the configuration REST API endpoints concerning the directory browser.
    - **directory-namespace**: Microservice for the configuration REST API endpoints concerning the directory namespace.
-   - **fid-X**: The core server/engine for Identity Data Management. Note that the number of deployed fid services is determined by the `replicaCount` property in your values.yaml file. For example, if `replicaCount` is set to 1, you'll see only fid-0. If it's set to 2, you'll see both fid-0 and fid-1, and so on.
+   - **fid-X**: The core server/engine for Identity Data Management. The number of deployed fid services is determined by the `replicaCount` property in your `values.yaml` file. For example, if `replicaCount` is set to 1, you see only fid-0. If it is set to 2, you see fid-0 and fid-1.
    - **iddm-proxy**: Load balancer and reverse proxy service.
    - **iddm-ui**: Front-end for the control panel.
    - **settings**: Microservice for the configuration REST API endpoints concerning a variety of Identity Data Management server settings (security, ACIs, etc.).
@@ -231,19 +235,19 @@ kubectl get storageclass <name> \
 
 ## Restoring from a Backup
 
-The Identity Data Management Helm chart includes a restore feature that enables you to import existing configurations and data from a backup file into a new installation of the Identity Data Management application.
+The Identity Data Management Helm chart includes a restore feature that imports existing configuration and data from a backup file into a new Identity Data Management deployment.
 
-This functionality is particularly beneficial for setting up a new Identity Data Management instance with pre-existing configurations, or for migrating data from a previous installation to a new installation. A v9 deployment can be seeded from any 8.x backup, and directly from 7.3 or 7.4 backups.
+Use this feature to initialize a new Identity Data Management deployment with existing configuration and data, or to migrate data from a previous installation. A v9 deployment can be seeded from any 8.x backup, and directly from 7.3 or 7.4 backups.
 
-> Note that you cannot use this feature for updates or patches. Refer to [Updating RadiantOne Identity Data Management](../upgrade-guides/updating-to-sm-v9/) instead.
+> You cannot use this feature for updates or patches. It applies only to a new deployment. To change settings on a running deployment, refer to [Updating a Deployment](#updating-a-deployment). To update an existing version 8 deployment to version 9, refer to [Updating RadiantOne Identity Data Management](../upgrade-guides/updating-to-sm-v9/).
 
 To create the backup file that this procedure uses, refer to [Creating backups](../creating-backups/).
 
-Follow the steps outlined below to restore your self-managed Identity Data Management application.
+Complete the following steps to restore your self-managed Identity Data Management deployment.
 
-### 1. Configure your values.yaml file
+### 1. Configure your `values.yaml` file
 
-To configure the restore feature, include the `migration` object in your `values.yaml` file prior to installation of the application, as shown below:
+To configure the restore feature, include the `migration` object in your `values.yaml` file before you install the application, as shown below:
 
 ```
 fid:
@@ -257,7 +261,7 @@ fid:
     failureThreshold: 540
 ```
 
-In the `url` property, enter a URL pointing to the backup export file (export.zip). Ensure the URL directs to an HTTP server accessible from the Kubernetes cluster without requiring authentication.
+In the `url` property, enter a URL pointing to the backup export file (`export.zip`). Ensure that the URL directs to an HTTP server accessible from the Kubernetes cluster without requiring authentication.
 
 In the `startupProbe` property, increase `failureThreshold` so that Kubernetes allows enough time for the backup to load. Refer to step 2 to choose a value.
 
@@ -283,7 +287,7 @@ Ensure that you also size the persistent volume for the restored data, not for t
 
 ### 3. Run the installation command
 
-Once you have made the necessary changes to your `values.yaml` file, run the install command to deploy the chart:
+After updating your `values.yaml` file, run the install command to deploy the chart:
 
 ```
 helm -n self-managed install fid \
@@ -292,13 +296,15 @@ helm -n self-managed install fid \
   --values </path/to/your/values.yaml>
 ```
 
+This command omits `--wait` because a restore normally takes longer than Helm's five-minute default timeout. Either omit `--wait` and monitor the pod yourself, as described in step 4, or pass `--wait` together with a `--timeout` value that exceeds the expected restore time. Use the same estimate you used to size the startup allowance in step 2.
+
 After installation, you can confirm that the migration URL was correctly set by checking the pod's environment variables or init container configuration:
 
 ```
 kubectl describe pod fid-0 -n self-managed
 ```
 
-During the installation of the Identity Data Management application, the Helm chart will use the provided URL to download the migration export file. This file will be used to perform a migration import during the installation process.
+During installation, the Helm chart downloads the migration export file from the specified URL and imports it.
 
 > Do not use `--atomic` when restoring from a backup. If the timeout expires, `--atomic` rolls back the release, which deletes a deployment that is partway through a restore.
 
@@ -324,21 +330,50 @@ kubectl -n self-managed exec fid-0 -c fid -- \
 
 The startup allowance applies to every subsequent pod restart, not only to the restore. For example, if you configure a three-hour allowance for the restore, Kubernetes can wait up to three hours before restarting a pod that is unable to start successfully.
 
-After you verify that the deployment is running correctly, remove the startupProbe override and run the update command. This restores the default five-minute startup allowance.
+After the deployment is running and verified, return `failureThreshold` to its default value in your `values.yaml` file:
+
+```
+fid:
+  startupProbe:
+    periodSeconds: 20
+    failureThreshold: 15             # 15 = 5 minutes
+```
+
+You can also comment out the `migration` section from your `values.yaml` file at this point. It applies only to the initial deployment and has no effect on later upgrades.
+
+Then, run the update command to apply the change:
+
+```
+helm -n self-managed upgrade --install fid \
+  oci://registry-1.docker.io/radiantone/iddm-helm \
+  --version 9.0.0 \
+  --values </path/to/your/values.yaml>
+```
+
+> Always pass your complete values file with `--values`. Do not use `--reuse-values` with this chart.
+
+Confirm that the cluster received the new value:
+
+```
+kubectl -n self-managed get statefulset fid \
+  -o jsonpath='{.spec.template.spec.containers[0].startupProbe.periodSeconds}x{.spec.template.spec.containers[0].startupProbe.failureThreshold}{"\n"}'
+```
+
+The pods restart with the new setting.
 
 ### Implementation details
 
-**Init container:** An init container named `migration` is included in the FID pod when a migration URL is provided. The init container employs curl to download the export file from the specified URL, saving it to `/migrations/export.zip` within the container.
+**Init container:** An init container named `migration` is included in the FID pod when a migration URL is provided. The init container uses curl to download the export file from the specified URL and saves it to `/migrations/export.zip` within the container.
 
-**Volume mounting:** A volume named `migrations` is created and mounted to both the init container and the main FID container. This setup allows the downloaded migration file to be accessible to the Identity Data Management application during startup.
+**Volume mounting:** A volume named `migrations` is created and mounted to both the init container and the main FID container. This setup makes the downloaded migration file available to the Identity Data Management application during startup.
 
-**Conditional execution:** The init container and its associated logic will only execute if a migration URL is specified in the values.yaml file.
+**Conditional execution:** The init container and its associated logic run only if a migration URL is specified in the `values.yaml` file.
 
 ### Limitations and considerations
 
-- This feature is intended solely for new installations of the Identity Data Management application. Using it during an update will not trigger a new migration.
+- This feature is intended solely for new Identity Data Management deployments. Using it during an update does not trigger a new migration.
 - The migration property must be **fid.migration.url**. A value placed at `migration.url` is ignored without an error, and the deployment starts empty.
-- Ensure that the migration URL provided is accessible from the Kubernetes cluster where Identity Data Management is being installed. This should point to an HTTP server that doesn't have any authentication wall.
+- Ensure that the migration URL is accessible from the Kubernetes cluster where Identity Data Management is installed. The URL must point to an HTTP server that does not require authentication.
 - Ensure that your migration file is a valid export file in ZIP format. A failed download is not detected, and the deployment starts empty.
 - Ensure sensitive data in the migration file is adequately secured, and the URL is accessed over a secure connection (HTTPS) when necessary.
 - Persistent caches must be re-initialized after the restore.
@@ -355,7 +390,7 @@ kubectl port-forward svc/iddm-proxy-service -n self-managed 8443:443
 
 After setting up port forwarding, you can reach the control panel at [https://localhost:8443/login](https://localhost:8443/login). Your browser displays a warning for the self-signed certificate. This is expected when you use port-forwarding.
 
-In a production environment, you may want to expose the iddm-proxy-service securely using a method appropriate for your infrastructure, such as an ingress controller or a Kubernetes LoadBalancer service (e.g., on AWS, GCP, or other cloud platforms).
+In a production environment, expose `iddm-proxy-service` securely through a method appropriate for your infrastructure, such as an ingress controller or a Kubernetes LoadBalancer service (for example, on AWS, GCP, or another cloud platform).
 
 > Ensure that all Identity Data Management URLs are accessed using HTTPS rather than HTTP for security purposes.
 
@@ -415,17 +450,47 @@ To perform a rolling restart of the LDAP and REST endpoints on all Identity Data
 kubectl rollout restart statefulset/fid -n self-managed
 ```
 
-Note that this will restart all `fid-<x>` pods, beginning with the pod that has the highest number. For example, in a 3-node cluster (fid-0, fid-1, fid-2), the restart order will be: fid-2 first, followed by fid-1, and finally fid-0.
+This restarts all `fid-<x>` pods, beginning with the pod that has the highest number. For example, in a 3-node cluster (`fid-0`, `fid-1`, `fid-2`), the restart order is `fid-2`, then `fid-1`, and finally `fid-0`.
 
-Optionally, to monitor the progress of the restart, run the following command:
+To monitor the progress of the restart, run the following command:
 
 ```
 kubectl rollout status statefulset/fid -n self-managed
 ```
 
-## Troubleshooting your Installation
+## Updating a Deployment
 
-The steps listed here are meant to help you identify and troubleshoot issues related to pod deployments in your Kubernetes environment.
+To change resources or settings on a running deployment, edit the values in your `values.yaml` file and run the following command with the chart version that is currently deployed:
+
+```
+helm -n self-managed upgrade --install fid \
+  oci://registry-1.docker.io/radiantone/iddm-helm \
+  --version 9.0.0 \
+  --values </path/to/your/values.yaml>
+```
+
+> Always pass your complete values file with `--values`. Do not use `--reuse-values` with this chart. Keys that the chart merges with its own defaults, such as `env`, are not carried forward reliably.
+
+Keep the following in mind when you change a running deployment:
+
+- **Resource changes affect every node.** Identity Data Management runs as a StatefulSet, so a change to `resources` triggers a rolling restart of all `fid-<x>` pods, beginning with the pod that has the highest number.
+- **Keep `-Xmx` at no more than about half of `resources.limits.memory`.** The storage engine uses memory outside the Java heap. A heap sized to the container limit causes the container to be stopped for exceeding its memory limit.
+- **Do not set `image.tag`.** The image version comes from `--version`. A pinned tag is not updated by a later `--version` value and can leave the server on an older version while the other services update.
+- **Keep `-Djdk.lang.Process.launchMechanism=FORK` in `env.JAVA_TOOL_OPTIONS`** if you override that variable. Without it, the server can fail when it starts helper processes.
+- **You cannot reduce `persistence.size`.** Expanding a volume requires a storage class with `allowVolumeExpansion: true`. Refer to [Storage Classes by Platform](#storage-classes-by-platform).
+
+To confirm that the cluster received the values you intended:
+
+```
+kubectl -n self-managed get statefulset fid \
+  -o jsonpath='resources={.spec.template.spec.containers[0].resources}{"\n"}image={.spec.template.spec.containers[0].image}{"\n"}'
+```
+
+> To update an existing version 8 deployment to version 9, do not use this procedure. That update exports and rebuilds every data store, and it is documented in [Updating RadiantOne Identity Data Management](../upgrade-guides/updating-to-sm-v9/).
+
+## Troubleshooting Your Installation
+
+Use these checks to diagnose common pod deployment issues in your Kubernetes environment.
 
 ### fid-0 or zookeeper-N remains Pending
 
@@ -537,8 +602,8 @@ fid:
   # time. Scaling down can take approximately:
   # replicaCount × terminationGracePeriodSeconds.
   #
-  # Set this value to 0 only if you want Kubernetes to use Kubernetes'
-  # default termination grace period of 30 seconds.
+  # Set this value to 0 only if you want Kubernetes to use its default
+  # termination grace period of 30 seconds.
   terminationGracePeriodSeconds: 180
 
   # --- Startup allowance --------------------------------------------------
@@ -618,7 +683,7 @@ hdapMigration:
   # This value must be greater than:
   # replicaCount × terminationGracePeriodSeconds
   #
-  # Nodes stop one at a time, and each node can use its full termination
+  # Nodes stop one at a time, and each node can use its entire termination
   # grace period. For example, with two replicas and a 180-second grace
   # period, this value must be greater than 360 seconds. The default value of
   # 300 seconds is not sufficient for that configuration.
@@ -643,6 +708,11 @@ hdapMigration:
     # Increase these values if the deployment contains very large data stores.
     maxMemory: 16Gi
     maxCpu: 8
+
+  # Optional readiness check that runs after a version 8 update. It is
+  # enabled by default. Set this value to false to skip the check. Refer to
+  # the update guide for details.
+  postUpgradeWait: true
 
   # Maximum time to wait for nodes to restart and become ready after the
   # migration. After the first node starts, each additional node replicates
