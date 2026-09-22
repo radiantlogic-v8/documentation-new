@@ -245,7 +245,7 @@ To create the backup file that this procedure uses, refer to [Creating backups](
 
 Complete the following steps to restore your self-managed Identity Data Management deployment.
 
-### 1. Configure your `values.yaml` file
+### 1. Configure your values.yaml file
 
 To configure the restore feature, include the `migration` object in your `values.yaml` file before you install the application, as shown below:
 
