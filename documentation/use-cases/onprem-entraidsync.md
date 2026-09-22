@@ -117,6 +117,8 @@ These values will be used when registering Entra ID as a data source in Identity
 3. Test the connection test and confirm it passes.
 4. Navigate to **Directory Namespace > Namespace Design** and create a proxy based on the Entra ID data source you just configured.
 
+> **Tip:** To scope the Entra ID proxy view to specific objects (e.g., department eq 'Engineering'), select the Entra ID node in Namespace Design, go to the ADVANCED SETTINGS tab, and enter a Graph API Filter (and optionally check Enable Microsoft Graph Advanced Queries). See Model-Driven Views: Advanced Settings.
+
 ### 6. Create the AD to Entra ID Sync Pipeline
 
 1. Open **Classic Control Panel**, navigate to **Pipelines**.
