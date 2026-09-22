@@ -11,7 +11,6 @@ RadiantOne uses the log4J v2 API for logging. Although a variety of log files ar
 
 There are different log settings and log levels for each log type. Refer to the [log settings](../tuning/log-settings/) guide to learn how to manage these settings. 
 
-
 ## Viewing Logs
 
 Logs can be viewed from Server Control Panel and Environment Operations Center for SaaS deployments.
@@ -150,7 +149,26 @@ The vds_server_access.log contains less information than vds_server.log and is u
 
 **Log Output Format**
 
-The output formats for the access log are text and CSV by default. 
+The output formats for the access log are text and CSV by default.
+
+**Customizing Timestamp Format and Timezone**
+
+In self-managed Identity Data Management, you can format timestamps in ISO format and specify a timezone for vds_server_access.log.
+
+To configure:
+
+1. Navigate to Tuning > Log Settings.
+
+2. Select RadiantOne LDAP Access and expand Advanced.
+
+3. Configure the following:
+   * USE ISO TIMESTAMP FORMAT: Check to enable ISO 8601 formatting (e.g., 2026-02-14T01:55:10.668Z UTC).
+   * TIMESTAMP TIMEZONE: Select your desired timezone (e.g., UTC) from the list.
+
+4. Click Save.
+
+To verify:
+Open Server Control Panel > Log Viewer > vds_server_access.log to confirm new entries display the updated timestamp and timezone.
 
 **Bind DN Information in vds_server_access.log**
 
