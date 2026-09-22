@@ -5,7 +5,7 @@ description: SCIM v2 API to the RadiantOne Service
 
 ## SCIM Overview
 
-The System for Cross-domain Identity Management (SCIM) specification automates user identity management between identity domains. This chapter describes the configuration of the RadiantOne SCIM service. The RadiantOne service supports SCIMv2.
+The System for Cross-domain Identity Management (SCIM) specification automates user identity management between identity domains. This document describes the configuration of the RadiantOne SCIM service. The RadiantOne service supports SCIMv2.
 
 ## Configuration
 
@@ -23,13 +23,13 @@ To configure SCIM access to RadiantOne entries you can use the Quick Start optio
 
 1.	Create a virtual view of your identity sources. There are many methods to create virtual views using RadiantOne. If you need assistance, see the RadiantOne Namespace Configuration Guide, Context Builder Guide, and the Identity Service Wizards Guide. If your identities are in a RadiantOne Universal Directory instead of a virtual view, make sure you know what object class they are associated with.
 1.	If using a virtual view, make sure it is mounted below a Root Naming Context in the RadiantOne namespace. If you need assistance, see the RadiantOne Namespace Configuration Guide.
-1.	If the identities are associated with custom object classes or attributes (not currently defined in the RadiantOne schema), extend the RadiantOne schema with the objects and attributes. If you need assistance, see Chapter 4 in the RadiantOne System Administration Guide. 
+1.	If the identities are associated with custom object classes or attributes (not currently defined in the RadiantOne schema), extend the RadiantOne schema with the objects and attributes. If you need assistance, see the [RadiantOne LDAP schema section](../sys-admin-guide/07-directory-schema/#radiantone-ldap-schema) in the RadiantOne System Administration Guide. 
 1.	Go to the Main Control Panel > Settings Tab > Server Front End > SCIM.
 1.	In the SCIM Configuration, click **Quick Start**.
 1.	Enter a unique name in the Name property. This is used as the name for the Resource Type.
 1.	For the Endpoint, enter an endpoint identifier. This comprises the URL a SCIM client uses to access the entries.
 1.	For the Base DN, click Browse and select the root naming context in the RadiantOne namespace where your virtual view is mounted.
-1.	For the Primary Object Class, select the object class associated with the identities in the virtual view from the drop-down list. If you do not see your object class here, extend the RadiantOne schema prior to using this Quick Start. See Chapter 4 in the RadiantOne System Administration Guide. 
+1.	For the Primary Object Class, select the object class associated with the identities in the virtual view from the drop-down list. If you do not see your object class here, extend the RadiantOne schema prior to using this Quick Start. See [Extending the RadiantOne LDAP Schema section](https://developer.radiantlogic.com/idm/v7.4/sys-admin-guide/07-directory-schema/#extending-the-radiantone-ldap-schema) in the RadiantOne System Administration Guide. 
 1.	Click Save. An example is shown below.
 
   ![SCIM Quick Start](Media/Image4.2.jpg)
