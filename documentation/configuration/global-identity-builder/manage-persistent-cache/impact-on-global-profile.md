@@ -49,4 +49,4 @@ The `time` column indicates the exact date/time when the entry was processed.
 
 For details on logs related to the real-time persistent cache refresh components (for example, connectors, sync engine, agent) please see: [Logging and Troubleshooting](../../../troubleshooting/troubleshooting/#viewing-logs)
 
-To learn more about Global Identity Builder, please read the chapter that describes how to [link existing groups to global profile identities](../link-groups/overview.md).
+To learn more about Global Identity Builder, read [Link existing groups to global profile identities](../link-groups/overview.md).

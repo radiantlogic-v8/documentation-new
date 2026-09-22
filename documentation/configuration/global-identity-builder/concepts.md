@@ -5,7 +5,7 @@ description: Global Identity Builder concepts
 
 # Global Identity Builder concepts
 
-This chapter introduces concepts applicable to the Global Identity Builder.
+This page introduces concepts applicable to the Global Identity Builder.
 
 ## Project
 
@@ -36,7 +36,7 @@ The Identity Source Browser is accessible after an identity source is configured
 The global profile is a general term to define the final view of correlated identity sources. The global profile view is comprised of a unique list (a union) of identities along with attributes sourced from identity sources or computed in the attribute mappings configured in the Global Identity Builder project.
 
 >[!warning]
->The RDN for the global profile entries is a unique identifier that is auto-generated. If you are virtualizing existing groups from backend data sources in FID, you should define a computed attribute for the `member`/`uniquemember` attribute in the groups virtual view that uses the `remapDN` function to lookup in the global profile view to get the list of member DNs. This configuration is described in the chapter [link existing groups to global profile identities](link-groups/overview.md).
+>The RDN for the global profile entries is a unique identifier that is auto-generated. If you are virtualizing existing groups from backend data sources in FID, you should define a computed attribute for the `member`/`uniquemember` attribute in the groups virtual view that uses the `remapDN` function to lookup in the global profile view to get the list of member DNs. This configuration is described in the [link existing groups to global profile identities](link-groups/overview.md) section.
 
 ## Global Profile Browser
 
@@ -54,7 +54,7 @@ Unresolved identities do not automatically appear in the global profile view (un
 
 ## Persistent cache
 
-After uploading identity sources into the global profile, a persistent cache is automatically defined for the view. Persistent cache is a local copy of global profile stored in a RadiantOne HDAP store. Although the Global Identity Builder process automatically defines a persistent cache, a real-time cache refresh mechanism must be manually configured. The persistent cache refresh is the process that keeps the identity sources synchronized to the global profile store. Changes are synchronized one-way, from the identity sources to the global profile. Once the real-time persistent cache refresh process is running, no changes can be made to the project. If changes are needed, you must stop cache refresh. For details on configuring a real-time persistent cache refresh process, see the chapter on [managing real-time persistent cache refresh](manage-persistent-cache/overview.md).
+After uploading identity sources into the global profile, a persistent cache is automatically defined for the view. Persistent cache is a local copy of global profile stored in a RadiantOne HDAP store. Although the Global Identity Builder process automatically defines a persistent cache, a real-time cache refresh mechanism must be manually configured. The persistent cache refresh is the process that keeps the identity sources synchronized to the global profile store. Changes are synchronized one-way, from the identity sources to the global profile. Once the real-time persistent cache refresh process is running, no changes can be made to the project. If changes are needed, you must stop cache refresh. For details on configuring a real-time persistent cache refresh process, see the [managing real-time persistent cache refresh](manage-persistent-cache/overview.md) guide.
 
 >[!warning]
 >Real-time cache refresh is the only option available for the global profile view.

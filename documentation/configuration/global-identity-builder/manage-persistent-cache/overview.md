@@ -7,7 +7,7 @@ description: Manage Global Identity Builder real-time persistent cache refresh
 
 Once a Global Identity Builder project is complete, the global profile is kept up to date with changes that happen in the identity sources using real-time persistent cache refresh.
 
-The definition of **persistent cache** can be found in the chapter [Global Identity Builder concepts](../concepts.md#persistent-cache).
+The definition of **persistent cache** can be found in the [Global Identity Builder concepts](../concepts.md#persistent-cache) document.
 
 To learn how to leverage persistent cache, please read the section on [configuring real-time persistent cache refresh](configuration.md).
 

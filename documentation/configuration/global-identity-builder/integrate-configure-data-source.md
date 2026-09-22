@@ -89,4 +89,4 @@ After configuring a persistent cache, add it as an an identity source. This will
 7. Select **Save Rules**.
 8. [Upload](create-projects/upload.md#single-uploads) Azure AD entries into the global profile.
 
-To learn more about Global Identity Builder, please read the chapter that describes how to [address group membership challenges](address-group-challenges/ldap-dynamic-groups.md).
+To learn more about Global Identity Builder, refer to the [address group membership challenges](address-group-challenges/ldap-dynamic-groups.md) section.

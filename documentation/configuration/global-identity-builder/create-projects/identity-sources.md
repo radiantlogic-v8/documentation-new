@@ -15,7 +15,7 @@ After you have defined the properties for a Global Identity Builder project, sel
 - **Identity Object**: For LDAP data sources, this is the object class associated with the identities. For RDBMS, this is the database table/view name containing the identities. This property is required.
 
 >[!warning]
->Custom data sources are supported. However, you must first virtualize the identities in RadiantOne and store them in persistent cache. Then, use the persistent cache as the LDAP identity source for the Global Identity Builder project. The chapter [integrate and configure a Global Identity Builder custom data source](../integrate-configure-data-source.md) provides an example of using a custom data source in a Global Identity Builder project.
+>Custom data sources are supported. However, you must first virtualize the identities in RadiantOne and store them in persistent cache. Then, use the persistent cache as the LDAP identity source for the Global Identity Builder project. For an example of using a custom data source in a Global Identity Builder project, see [Integrate and configure a Global Identity Builder custom data source](../integrate-configure-data-source.md).
 
 - **Additional Object Classes**: For LDAP data sources, this is the additional object class associated with the identities (beyond just the primary object class indicated as the Identity Object). This property is optional. If the identities are not associated with additional object classes, leave this property blank.
 - **Base DN**<a name="base-dn"></a>: The location in the data source that contains the identities. This is only applicable to and required for LDAP data sources.

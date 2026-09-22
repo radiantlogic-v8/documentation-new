@@ -28,4 +28,4 @@ Once the proxy view is defined, configure a persistent cache.
 8. Add **RadiantOne** as an [identity source](../create-projects/identity-sources.md). Remember to provide a meaningful data source name so you can identify the actual underlying data source. The [Base DN](../create-projects/identity-sources.md#base-dn) should point to the persistent cached view of the actual backend data source. An example is shown below.
     ![Sample Identity Source Pointing to RadiantOne](../../Media/image148.png)
 
-To learn more about Global Identity Builder, please read the chapter that describes how to [extend the global profile view](../global-profile-view.md).
+To learn more about Global Identity Builder, refer to [extend the global profile view](../global-profile-view.md) guide.

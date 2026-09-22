@@ -47,7 +47,7 @@ To switch to Classic Control Panel, use the menu options for the logged in user 
 
 ## Working with Datasets
 
-The first page of the Identity Data Analysis tool offers two options: [Creating a New Dataset](#creating-a-new-dataset) and [Using an Existing Dataset](#using-an-existing-dataset). These options are discussed in this chapter. 
+The first page of the Identity Data Analysis tool offers two options: [Creating a New Dataset](#creating-a-new-dataset) and [Using an Existing Dataset](#using-an-existing-dataset). These options are discussed in this page. 
 
 ![An image showing ](Media/Image2.2.jpg)
  
