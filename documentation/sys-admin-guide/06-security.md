@@ -276,7 +276,10 @@ RadiantOne supports CRL checking and relies on the underlying Java security libr
 
 ### Enable CRL
 
-If clients are connecting to RadiantOne with certificates (establishing mutual authentication) and the client certificate should be validated to ensure it has not been revoked prior to accepting it, the Enable CRL parameter needs checked. From the Main Control Panel go to the Settings tab > Security > SSL. Then, on the right side, check the Enable CRL option.
+If clients connect to RadiantOne by using certificates and their certificates must be checked for revocation before they are accepted, enable certificate revocation list (CRL) checking:
+
+1. In the Main Control Panel, go to Settings > Security > SSL.
+2. Select Enable CRL.
 
 ### CRL Methods
 
