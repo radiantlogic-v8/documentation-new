@@ -20,7 +20,7 @@ Perform the following steps in your Okta tenant. Please refer to the Okta docume
 
 3. Enter **App Integration Name**. 
 
-4. Select **OIDC** for the sign-in method and **Web Application** for the type.
+4. Select **OIDC** for the sign-in method and **Single Page Application** for the type.
 
 5. Select *Authorization Code* for Core Grants.
 
