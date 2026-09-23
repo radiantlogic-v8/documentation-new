@@ -467,7 +467,7 @@ If you want to condition the identity view of your database to only return a set
 
 >[!note] - You must enter a valid SQL filter and use the actual database attribute names (as opposed to using any virtual names you have configured through > mapping). The SQL syntax you use in your filter must be compatible with the database brand/version you are accessing on the backend.
 
-To enter a SQL filter: **STEPS TO BE UPDATED**
+To enter a SQL filter: 
 
 1. Click ![Pencil](Media/pencil-icon.jpg) next to SQL Filter.
 2. From the drop-down list, select the source attribute you want to filter on.
