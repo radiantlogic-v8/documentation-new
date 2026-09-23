@@ -9,7 +9,7 @@ This document explains how to patch an environment from RadiantOne Identity Data
 
 Updating from v8 to v9 is triggered like a typical patch. However, there are a few differences that you should be aware of. Read *Main differences in v9* before you begin and plan a maintenance window.
 
-> **Important Note** – if you have multiple clusters deployed in SaaS, contact Radiant Logic Support with your planned maintenance window so your client traffic can be redirected to your failover cluster while your primary cluster is being updated. Even if you only have a single cluster deployed, it is highly recommended to contact Radiant Logic Support to notify them about your planned maintenance window for updating, so staff can be available to assist with any issues you encounter.
+> If you have multiple clusters deployed in SaaS, contact Radiant Logic Support with your planned maintenance window so your client traffic can be redirected to your failover cluster while your primary cluster is being updated. Even if you only have a single cluster deployed, it is highly recommended to contact Radiant Logic Support to notify them about your planned maintenance window for updating, so staff can be available to assist with any issues you encounter.
 
 ### Main differences in v9
 
@@ -43,7 +43,7 @@ Prior to updating RadiantOne Identity Data Management, ensure you have a recent 
 
    ii. Rolling back to your older version by installing a new v8 Identity Data Management application that references the backup file in the Advanced Setup, CUSTOM CONFIGURATION.
 
-   > **NOTE** - A 9.x backup can't be restored into a 8.x deployment.
+   > A 9.x backup can't be restored into a 8.x deployment.
 
 **3. Confirm the application is active.**
 
@@ -53,7 +53,7 @@ If the status of the application is OFFLINE, the UPDATE option is not displayed.
 
 All nodes stop during the update, so only run the update during a scheduled maintenance window. See *Expected downtime* below.
 
-> **Important Note** – if you have multiple clusters deployed in SaaS, contact Radiant Logic Support with your planned maintenance window so your client traffic can be redirected to your failover cluster while your primary cluster is being updated. Even if you only have a single cluster deployed, it is highly recommended to contact Radiant Logic Support to notify them about your planned maintenance window for updating, so staff can be available to assist with any issues you encounter.
+> If you have multiple clusters deployed in SaaS, contact Radiant Logic Support with your planned maintenance window so your client traffic can be redirected to your failover cluster while your primary cluster is being updated. Even if you only have a single cluster deployed, it is highly recommended to contact Radiant Logic Support to notify them about your planned maintenance window for updating, so staff can be available to assist with any issues you encounter.
 
 ### Applying the Update
 
