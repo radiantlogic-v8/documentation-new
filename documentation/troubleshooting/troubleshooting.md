@@ -71,7 +71,7 @@ Running log collection as a background job aggregates files asynchronously on th
 3. Click **Start**. The job is submitted and appears in the jobs table with its current status (*In Progress*, *Completed*, or *Failed*).
 4. Once the status shows **Completed**, select the job and click **Download** to save the generated `.zip` archive to your local machine.
 
-> **Note:** Background job archives are stored server-side under `RLI_HOME/work/cluster-logs/`. Completed archives can be re-downloaded from the jobs list or accessed directly on the filesystem until cleaned up.
+> Background job archives are stored server-side under `RLI_HOME/work/cluster-logs/`. Completed archives can be re-downloaded from the jobs list or accessed directly on the filesystem until cleaned up.
 
 ##### Method 2: Immediate Download
 
