@@ -514,7 +514,7 @@ To configure calling a stored procedure:
 
 ![note] - Once you have declared stored procedures for a database, the standard functionality for inserts, updates, and deletes is no longer used; only the stored procedures are called.
 
-**Other Settings for LDAP Backends**
+#### Other Settings for LDAP Backends
 
 The following options can be managed from the ADVANCED SETTINGS tab > Other Settings section for model-driven identity views from LDAP backends. 
 
@@ -546,28 +546,38 @@ If you want to map the LDAP objects to a new/different object class:
 The Link Parameters and Base Parameters are irrelevant for container/content nodes created from LDAP backends.
 The Parent DN Settings tab allows you to customize the base DN from where to start searching from. This can be used in cases where each node in the identity view should populate from entries located in different containers in the backend LDAP directory data source, instead of conditioning all nodes by the base DN configured in the LDAP data source.
 
-**Other Settings for Microsoft Entra ID Backends**
 
-The following options can be managed from the ADVANCED SETTINGS tab > Other Settings section for model-driven identity views created from Microsoft Entra ID (mgraph) backends.
+#### Other Settings for Microsoft Entra ID Backends
 
-If you want to condition the identity view of your Microsoft Entra ID data source to only return a specific set of entries that match certain criteria, you can configure a Graph API Filter.
+For model-driven identity views that use a Microsoft Entra ID (`mgraph`) backend, you can configure Microsoft Graph query options in the **ADVANCED SETTINGS** tab > **Other Settings** section.
 
-This filter is passed directly to Microsoft Graph API "list object" queries (such as users or groups) using the $filter query parameter. Bypassing the standard LDAP-to-Graph API conversion layer allows you to use native Graph expressions and avoid feature parity gaps (such as unsupported LDAP NOT filters).
+Use a Graph API Filter to limit the entries returned by an identity view. The filter is sent directly to Microsoft Graph list-object requests, such as requests for users or groups, through the `$filter` query parameter. Because the filter bypasses the standard LDAP-to-Microsoft Graph conversion layer, you can use native Microsoft Graph filter syntax. This also helps address conversion-layer limitations, such as unsupported LDAP `NOT` filters.
 
-* Graph API Filter: Enter a valid Microsoft Graph API $filter expression (for example, department eq 'Engineering').
-* Enable Microsoft Graph Advanced Queries: Select this checkbox if the query uses advanced operators or functions (such as not, endsWith, or expressions requiring ConsistencyLevel: eventual and $count=true headers in the Graph API request). Example filter requiring advanced queries: not(startswith(displayName,'group4'))
+The following settings are available:
 
-To configure a Graph API filter:
-1. Navigate to Control Panel > Setup > Directory Namespace > Namespace Design.
-2. In the namespace tree, select the content or container node created from your Microsoft Entra ID backend schema.
+- Graph API Filter: Enter a valid Microsoft Graph `$filter` expression. For example:
+
+  ```
+  department eq 'Engineering'
+  ```
+
+- Enable Microsoft Graph Advanced Queries: Select this option if the filter uses advanced query operators or functions, such as `not` or `endsWith`. Advanced queries require the `ConsistencyLevel: eventual` and `$count=true` request headers. For example, the following filter requires advanced queries:
+
+  ```
+  not(startswith(displayName,'group4'))
+  ```
+
+To configure a Graph API Filter:
+
+1. Go to Control Panel > Setup > Directory Namespace > Namespace Design.
+2. In the namespace tree, select the content or container node created from the Microsoft Entra ID backend schema.
 3. Select the ADVANCED SETTINGS tab.
 4. In the Other Settings section, enter the filter expression in the Graph API Filter field.
 
    ![Graph API advanced setting](Media/adv-settings.png)
 
-5. Select Enable Microsoft Graph Advanced Queries if your filter requires advanced query capabilities.
+5. If the filter uses advanced query capabilities, select Enable Microsoft Graph Advanced Queries.
 6. Click SAVE.
-
 
 ### Special Attributes
 
