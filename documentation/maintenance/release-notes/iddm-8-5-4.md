@@ -31,7 +31,7 @@ These release notes contain the following sections:
 ## Improvements
 
 - [API-4805]: The Clustermonitor setting and the Server Control Panel Dashboard graphs it feeds are deprecated and hidden from the classic Control Panel with the other retired components, because the store makes the leader poll the administrative port of every node every few seconds; FID logs a deprecation warning at startup while the store is still enabled.
-- [API-4834, SQ-1812]:Entra ID users can now return optional "risky user" attributes and "fido2AuthenticationMethod" attributes. For details see https://learn.microsoft.com/en-us/graph/api/resources/riskyuser?view=graph-rest-1.0 and https://learn.microsoft.com/en-us/graph/api/resources/fido2authenticationmethod?view=graph-rest-1.0
+- [API-4834, SQ-1812]:Entra ID users can now return optional "risky user" attributes and "fido2AuthenticationMethod" attributes. For details, see [riskyUser resource type](https://learn.microsoft.com/en-us/graph/api/resources/riskyuser?view=graph-rest-1.0) and [fido2AuthenticationMethod resource type](https://learn.microsoft.com/en-us/graph/api/resources/fido2authenticationmethod?view=graph-rest-1.0) documents. 
 - [API-4840, SQ-1631]: Entra ID (mgraphclient) data sources now allow a "Graph API Filter" option that can be set on content/container nodes. This allows filtering of users/groups and other objects.
 
 ## Bug Fixes
@@ -46,8 +46,7 @@ These release notes contain the following sections:
 The following issues have been identified in this release and will be addressed in a future release:
 
 - [API-4420]: During migration import from v7.4.21 to v8.4.0, an IllegalStateException error "(Expected state [STARTED] was [STOPPED])" is logged in PathChildrenCache. The migration itself completes successfully despite the error.
--Custom data sources (Entra ID, SCIM2, Okta, Kafka, etc.) continue to log to vds_server.log and do not write to their dedicated per-data source log files. Only custom data sources built with the new Connector SDK write to their dedicated per-data source log file.
-
+- Custom data sources (Entra ID, SCIM2, Okta, Kafka, etc.) continue to log to vds_server.log and do not write to their dedicated per-data source log files. Only custom data sources built with the new Connector SDK write to their dedicated per-data source log file.
 - [V9-517]: Large file uploads greater than 1 GB are inconsistent.
 
 
