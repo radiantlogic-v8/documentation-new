@@ -348,6 +348,7 @@ Discover and download connectors for the RadiantOne Identity Data Platform.
   </connector>
 <connector name="ServiceNow" eyebrow="Workforce Automation" meta="v1.0.0" href="https://github.com/radiantlogicinc/connector-marketplace" capabilities="identity,limitedwriteback">List users, groups, and roles from ServiceNow.
 </connector>
+<connector name="Workday" eyebrow="Workforce Management" meta="v1.0.0" href="https://github.com/radiantlogicinc/connector-marketplace" capabilities="identity,readonly">List workers, jobs, job postings, supervisory organizations, integration system users, security groups, security group memberships, security domains, and business processes from Workday.</connector>
 </section>
 </tabpanel>
 </tabpanels>
