@@ -51,7 +51,7 @@ If the status of the application is OFFLINE, the UPDATE option is not displayed.
 
 **4. Plan a maintenance window.**
 
-All nodes stop during the update, so only run the update during a scheduled maintenance window. See *Expected downtime* below.
+All nodes stop during the update, so only run the update during a scheduled maintenance window. See [Expected downtime](#expected-downtime) section below.
 
 > If you have multiple clusters deployed in SaaS, contact Radiant Logic Support with your planned maintenance window so your client traffic can be redirected to your failover cluster while your primary cluster is being updated. Even if you only have a single cluster deployed, it is highly recommended to contact Radiant Logic Support to notify them about your planned maintenance window for updating, so staff can be available to assist with any issues you encounter.
 
