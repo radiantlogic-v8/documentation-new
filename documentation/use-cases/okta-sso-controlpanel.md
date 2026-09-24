@@ -58,10 +58,9 @@ Perform the following steps in your Okta tenant. Please refer to the Okta docume
 7. Enter the OIDC discovery URL for the Okta tenant (e.g. `https://<OKTA_DOMAIN>/.well-known/openid-configuration`) and click **Discover Endpoint URLs**. This auto-populates the **Authorization Endpoint URL** and the **Token Endpoint URL** (you can manually enter these if needed).
 
 8. Enter the **Client ID** you saved from the Okta setup.
-9. This configuration uses the **CLIENT_SECRET_POST** authentication method and **openid** as the scope.
-10. Select the desired **CLIENT AUTHENTICATION METHOD** (default is CLIENT_SECRET_POST). This value must be one of the *token_endpoint_auth_methods_supported* returned in the Well Known Endpoint details for the Identity Provider.
-11. Select the **REQUESTED SCOPES** (default is *openid*). If you are going to use a scope value in the rule to apply the Claims to User DN Mapping described in the next step, ensure you have explicitly requested it here.
-12. Click **+ADD MAPPING** next to *DN Mapping Expression* in the **CLAIMS TO USER DN MAPPING**. This setting is used to translate the account that authenticates with Okta to a delegated admin user in RadiantOne. This can be a simple mapping (DN substitution using claim values if needed) or a complex mapping with lookups in the RadiantOne namespace to match claim values to profile attributes. In the following example, the `email` claim received from the Okta authentication is used to lookup the identity in the RadiantOne namespace to locate the admin account below the `cn=config` naming context that has this value for the `mail` attribute.
+9. Select the desired **CLIENT AUTHENTICATION METHOD** (default is CLIENT_SECRET_POST). This value must be one of the *token_endpoint_auth_methods_supported* returned in the Well Known Endpoint details for the Identity Provider.
+10. Select the **REQUESTED SCOPES** (default is *openid*). If you are going to use a scope value in the rule to apply the Claims to User DN Mapping described in the next step, ensure you have explicitly requested it here.
+11. Click **+ADD MAPPING** next to *DN Mapping Expression* in the **CLAIMS TO USER DN MAPPING**. This setting is used to translate the account that authenticates with Okta to a delegated admin user in RadiantOne. This can be a simple mapping (DN substitution using claim values if needed) or a complex mapping with lookups in the RadiantOne namespace to match claim values to profile attributes. In the following example, the `email` claim received from the Okta authentication is used to lookup the identity in the RadiantOne namespace to locate the admin account below the `cn=config` naming context that has this value for the `mail` attribute.
 
    ![OIDC to RadiantOne Admin mapping](Media/dn-mapping.jpg)
 
@@ -73,7 +72,7 @@ Perform the following steps in your Okta tenant. Please refer to the Okta docume
    | Claim | `email` |
    | Expression | `cn=config??sub?(mail=${email})` |
 
-9. Click **SAVE**.
+12. Click **SAVE**.
 
 ## Testing SSO
 
