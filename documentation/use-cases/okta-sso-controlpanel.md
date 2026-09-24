@@ -59,7 +59,9 @@ Perform the following steps in your Okta tenant. Please refer to the Okta docume
 
 8. Enter the **Client ID** you saved from the Okta setup.
 9. This configuration uses the **CLIENT_SECRET_POST** authentication method and **openid** as the scope.
-10. Click **+ADD MAPPING** next to *DN Mapping Expression* in the **CLAIMS TO USER DN MAPPING**. This setting is used to translate the account that authenticates with Okta to a delegated admin user in RadiantOne. This can be a simple mapping (DN substitution using claim values if needed) or a complex mapping with lookups in the RadiantOne namespace to match claim values to profile attributes. In the following example, the `email` claim received from the Okta authentication is used to lookup the identity in the RadiantOne namespace to locate the admin account below the `cn=config` naming context that has this value for the `mail` attribute.
+10. Select the desired **CLIENT AUTHENTICATION METHOD** (default is CLIENT_SECRET_POST). This value must be one of the *token_endpoint_auth_methods_supported* returned in the Well Known Endpoint details for the Identity Provider.
+11. Select the **REQUESTED SCOPES** (default is *openid*). If you are going to use a scope value in the rule to apply the Claims to User DN Mapping described in the next step, ensure you have explicitly requested it here.
+12. Click **+ADD MAPPING** next to *DN Mapping Expression* in the **CLAIMS TO USER DN MAPPING**. This setting is used to translate the account that authenticates with Okta to a delegated admin user in RadiantOne. This can be a simple mapping (DN substitution using claim values if needed) or a complex mapping with lookups in the RadiantOne namespace to match claim values to profile attributes. In the following example, the `email` claim received from the Okta authentication is used to lookup the identity in the RadiantOne namespace to locate the admin account below the `cn=config` naming context that has this value for the `mail` attribute.
 
    ![OIDC to RadiantOne Admin mapping](Media/dn-mapping.jpg)
 
