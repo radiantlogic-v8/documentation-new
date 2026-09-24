@@ -6,7 +6,7 @@ This document provides an example of how to configure Okta as the Identity Provi
 
 ## Prerequisites
 
-Ensure you know your Control Panel endpoint. If you have deployed RadiantOne in Environment Operations Center, you can login and navigate to your environment. Select the application in the environment to view the details and look for the Application Endpoints. Copy the Control Panel UI endpoint.  The Callback URL configured in the Okta app will be the value of this endpoint with a suffix of /callback. An example is: https://rlqa-usw2-lgv81.dev01.radiantlogic.io/callback
+Ensure you know your Control Panel endpoint. If you have deployed RadiantOne in Environment Operations Center, you can login and navigate to your environment. Select the application in the environment to view the details and look for the Application Endpoints. Copy the Control Panel UI endpoint.  The Callback URL configured in the Okta app will be the value of this endpoint with a suffix of /callback. An example is: `https://rlqa-usw2-lgv81.dev01.radiantlogic.io/callback`
 
 ## Okta Configuration
 
@@ -88,7 +88,7 @@ To test SSO:
 
    ![Okta login prompt](Media/okta-login-redirect.jpg)
 
-3. After clicking **Verify** the user should be automatically logged into the RadiantOne Control Panel as the admin account matching the OIDC to User Mapping.  In the example shown below, the email *lgrady@radiantlogic.com* is associated with the Super Admin delegated admin account.
+3. After clicking **Verify** the user should be automatically logged into the RadiantOne Control Panel as the admin account matching the OIDC to User Mapping.  In the example shown below, the email `lgrady@radiantlogic.com` is associated with the Super Admin delegated admin account.
 
    ![Directory Browser showing the admin account mail attribute](Media/matching-mgr.jpg)
 
