@@ -88,7 +88,7 @@ To test SSO:
 
    ![Okta login prompt](Media/okta-login-redirect.jpg)
 
-3. After clicking **Verify** the user should be automatically logged into the RadiantOne Control Panel as the admin account matching the OIDC to User Mapping.
+3. After clicking **Verify** the user should be automatically logged into the RadiantOne Control Panel as the admin account matching the OIDC to User Mapping.  In the example shown below, the email *lgrady@radiantlogic.com* is associated with the Super Admin delegated admin account.
 
    ![Directory Browser showing the admin account mail attribute](Media/matching-mgr.jpg)
 
