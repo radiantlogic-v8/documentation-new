@@ -10,3 +10,4 @@ description: Learn about how you can utilize Radiant Logic to synchronize data f
 - [Synchronizing on-prem AD users to Entra ID](onprem-entraidsync.md)
 - [Replacing Legacy LDAP Directories with RadiantOne Directory](ldap-directory-replacement.md)
 - [Integrating Identity Data from Okta Universal Directory](radiantone-okta-integration.md)
+- [Leverage Okta as the Identity Provider for SSO into Control Panel](okta-sso-controlpanel.md)
