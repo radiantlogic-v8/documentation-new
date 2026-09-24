@@ -129,14 +129,11 @@ To define custom limits:
 
 Once a client connects to the RadiantOne service, access regulation lets you limit how much activity that client can perform. Activity checking is applied based on the identity of the connecting user, and is configured from the Control Panel > Global Settings > Tuning > Limits section > Access Regulation sub-section.
 
+![Special Group Section](Media/access-reg.png)
+
 The "Restrictions Checking Interval" parameter sets the time frame, in seconds, during which activity (max binds and max operations) is tracked. When the interval elapses, the counters reset. For example, if checking is enabled for the Special Users Group with a checking interval of 300, a max of 30 bind operations, and a max of 10 operations, then over each 5-minute (300-second) period, a member of that group can bind no more than 30 times to the RadiantOne service and perform no more than 10 operations. These counts reset every 5 minutes. If a user exceeds the allowed number of operations, RadiantOne refuses further requests until the checking interval resets.
 
 > Changes to access regulation settings take effect only after you restart Identity Data Management. Restart the service from the **Environment Operations Center (EOC)**.
-
->[!note] 
->Members of the Administrators group, as specified on the Control Panel > Admin > Directory Manager Settings tab > Special Group section, are not subject to any access limitations on max connections or max operations per second.
-
-![Special Group Section](Media/special-group.jpg)
 
 To configure activity limits for the following user categories, go to Tuning > Limits > Access Regulation, and then update the applicable settings:
 
@@ -152,6 +149,11 @@ An authenticated user is any client that successfully authenticates, regardless 
 
 A Special User is any client that successfully binds and belongs to the special user group defined here. To enable checking for this category, toggle on ACCESS CHECKING in the Special Users Group section, then enter the maximum number of bind operations and the maximum number of operations per checking interval that members of the Special Users Group are permitted. Setting a parameter to 0 removes its limit. In **Special User Group**, enter the group's full distinguished name (DN). For example: `cn=special_users,ou=globalgroups,cn=config`.
 The restrictions checking interval determines how many seconds the server waits before evaluating whether these thresholds have been reached.
+
+>[!note] 
+>Members of the Administrators group, as specified on the Control Panel > Admin > Directory Manager Settings tab > Special Group section, are not subject to any access limitations on max connections or max operations per second.
+
+![Special Group Section](Media/special-group.jpg)
 
 
 ## Backends
