@@ -166,6 +166,9 @@ Harness your identity data with intelligent integration to drive better business
 
   > [Integrate Identity Data from Okta Universal Directory](use-cases/radiantone-okta-integration)
   > Learn how to ingest/virtualize identity data from Okta Universal Directory.
+ 
+  > [Leverage Okta as the Identity Provider for SSO into Control Panel](use-cases/okta-sso-controlpanel)
+  > Learn how to configure Okta as an Identity Provider for Corporate SSO into Control Panel.
   
 </section> 
 
