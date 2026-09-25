@@ -571,13 +571,3 @@ get-hdap-trigger-event-filtering-enabled
 ```
 
 > RadiantOne validates custom LDAP filters before saving them. If a filter is malformed, RadiantOne rejects the command, the invalid filter is not stored, and the active trigger filter is not changed.
-
-### REST API
-
-The same operations are available through the Admin REST API. GET operations are available to read-only administrators; PUT operations require administrator privileges.
-
-| Resource | Supported operations |
-|---|---|
-| `/admin/sync/topologies/hdap-trigger-event-filter` | GET, PUT |
-| `/admin/sync/pipelines/{pipelineId}/hdap-trigger-event-filter` | GET, PUT |
-| `/admin/sync/topologies/hdap-trigger-event-filtering-enabled` | GET, PUT |
