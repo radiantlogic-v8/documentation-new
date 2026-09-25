@@ -450,3 +450,134 @@ Deletes all attribute mappings for a pipeline.
 
 `- pipelineid <pipelineID>`
 <br>[required] The identifier of the pipeline. Run the list-topologies command to locate the pipelines identifiers for each topology.
+
+## HDAP Trigger Event Filtering Commands
+
+HDAP write triggers capture only the changes required by their consuming Global Sync pipelines. Previously, every write to an HDAP store triggered event processing, even when the affected entry was outside the scope of the pipeline. With trigger event filtering enabled, each trigger uses an effective capture filter derived from the source configuration and combined with any custom filter configured on the synchronization topology or a specific pipeline; changes that do not match the filter are discarded at the trigger and never enter the sync queue. This reduces trigger memory usage, queue traffic, and downstream processing — particularly when a pipeline is scoped to a narrow branch or a specific object class. Filtering is enabled by default.
+
+The following commands configure custom HDAP trigger event filters and control whether HDAP trigger event filtering is enabled deployment-wide. These are the same commands documented under [Real-Time Persistent Cache Refresh Commands](./20-real-time-persistent-cache-refresh-commands/); however for synchronization topologies, include the `-targetnamingcontextdn` argument when configuring at the topology level as shown in the references below. 
+
+### set-hdap-trigger-event-filter
+
+Sets or clears a custom LDAP filter for an HDAP source topology or a specific pipeline within the topology.
+
+Changes take effect immediately across the cluster. RadiantOne replaces the filter on the active trigger without requiring a server restart, pipeline reconfiguration, or interruption to event capture.
+
+**Usage**
+
+```
+set-hdap-trigger-event-filter -namingcontextdn <source naming context DN> [-targetnamingcontextdn <target naming context DN>] [-pipelineid <pipeline ID>] [-filter <LDAP filter>]
+```
+
+**Command Arguments:**
+
+- `-namingcontextdn <source naming context DN>`
+  [required] The source HDAP naming context DN (e.g., `o=radiantone`).
+- `-targetnamingcontextdn <target naming context DN>`
+  [required for topology level] The target naming context DN of the sync topology. Omit if specifying `-pipelineid`.
+- `-pipelineid <pipeline ID>`
+  [optional] The unique pipeline identifier. If omitted, the filter applies across the entire topology.
+- `-filter <LDAP filter>`
+  [optional] The custom LDAP filter to apply to trigger event capture. The filter is combined with the source-derived filter; it does not replace it. Pass an empty value (`""`) or omit this argument to clear the custom filter.
+
+**Examples:**
+
+Set a topology-wide trigger filter:
+
+```bash
+vdsconfig.sh set-hdap-trigger-event-filter \
+  -namingcontextdn "o=radiantone" \
+  -targetnamingcontextdn "o=target" \
+  -filter "(&(objectClass=user)(department=Engineering))"
+```
+
+Set a pipeline-level filter:
+
+```bash
+vdsconfig.sh set-hdap-trigger-event-filter \
+  -namingcontextdn "o=radiantone" \
+  -pipelineid "pipe_ad_sync" \
+  -filter "(status=active)"
+```
+
+Clear a topology-wide filter:
+
+```bash
+vdsconfig.sh set-hdap-trigger-event-filter \
+  -namingcontextdn "o=radiantone" \
+  -targetnamingcontextdn "o=target" \
+  -filter ""
+```
+
+### get-hdap-trigger-event-filter
+
+Displays the custom filter configured on a sync topology or a specific pipeline. This does not return the source-derived portion of the effective filter.
+
+**Usage**
+
+```
+get-hdap-trigger-event-filter -namingcontextdn <source naming context DN> [-targetnamingcontextdn <target naming context DN>] [-pipelineid <pipeline ID>]
+```
+
+**Command Arguments:**
+
+- `-namingcontextdn <source naming context DN>`
+  [required] The source HDAP naming context DN.
+- `-targetnamingcontextdn <target naming context DN>`
+  [required for topology level] The target naming context DN of the sync topology. Omit if specifying `-pipelineid`.
+- `-pipelineid <pipeline ID>`
+  [optional] The pipeline identifier whose custom filter to return. If omitted, RadiantOne returns the topology-wide custom filter.
+
+**Example:**
+
+```bash
+vdsconfig.sh get-hdap-trigger-event-filter \
+  -namingcontextdn "o=radiantone" \
+  -targetnamingcontextdn "o=target"
+```
+
+### set-hdap-trigger-event-filtering-enabled
+
+Enables or disables HDAP trigger event filtering deployment-wide.
+
+Filtering is enabled by default. Disabling filtering restores the previous behavior, in which the trigger captures every write to the HDAP store.
+
+**Usage**
+
+```
+set-hdap-trigger-event-filtering-enabled -enabled <true|false>
+```
+
+**Command Arguments:**
+
+- `-enabled <true|false>`
+  [required] Specify `true` to enable trigger filtering; specify `false` to capture all HDAP store writes.
+
+**Example:**
+
+```bash
+vdsconfig.sh set-hdap-trigger-event-filtering-enabled \
+  -enabled false
+```
+
+### get-hdap-trigger-event-filtering-enabled
+
+Returns whether HDAP trigger event filtering is enabled deployment-wide.
+
+**Usage**
+
+```
+get-hdap-trigger-event-filtering-enabled
+```
+
+> RadiantOne validates custom LDAP filters before saving them. If a filter is malformed, RadiantOne rejects the command, the invalid filter is not stored, and the active trigger filter is not changed.
+
+### REST API
+
+The same operations are available through the Admin REST API. GET operations are available to read-only administrators; PUT operations require administrator privileges.
+
+| Resource | Supported operations |
+|---|---|
+| `/admin/sync/topologies/hdap-trigger-event-filter` | GET, PUT |
+| `/admin/sync/pipelines/{pipelineId}/hdap-trigger-event-filter` | GET, PUT |
+| `/admin/sync/topologies/hdap-trigger-event-filtering-enabled` | GET, PUT |
