@@ -5,7 +5,7 @@ description: Command Line Configuration Guide
 
 # Real-time Persistent Cache Refresh Commands
 
-This chapter outlines commands used to configure Real-time Persistent Cache.
+This page outlines commands used to configure Real-time Persistent Cache.
 
 Real-time persistent cache refresh commands can be performed on the Directory Namespace tab and PCache Monitoring tab in the Main Control Panel.
 
@@ -371,6 +371,122 @@ This command is used to resume or suspend (stop) and the capture process associa
 
 `- state <state>`
 <br>[required] The state for the pipeline. Use a value of “resume” to start the real-time persistent cache refresh process. Use a value of “suspend” to stop the real-time persistent cache refresh process.
+
+## HDAP Trigger Event Filtering Commands
+
+HDAP write triggers capture only the changes required by their consuming real-time persistent cache refresh. Previously, every write to an HDAP store triggered event processing, even when the affected entry was outside the scope of the cache. With trigger event filtering enabled, each trigger uses an effective capture filter derived from the source configuration and combined with any custom filter configured on the persistent cache naming context or a specific trigger; changes that do not match the filter are discarded at the trigger and never enter the refresh pipeline. This reduces trigger memory usage, queue traffic, and downstream processing — particularly when a persistent cache is scoped to a narrow branch or a specific object class. Filtering is enabled by default.
+
+The following commands configure custom HDAP trigger event filters and control whether HDAP trigger event filtering is enabled deployment-wide. These are the same commands documented under [Global Sync Commands](../21-global-sync-commands/); for a real-time persistent cache refresh, omit the `-targetnamingcontextdn` argument, since it applies only to synchronization topologies. For full details on how the effective capture filter is derived and how scope transitions are handled, see the *Global Sync Guide*.
+
+### set-hdap-trigger-event-filter
+
+Sets or clears a custom LDAP filter for an HDAP-backed persistent cache naming context or a specific trigger within the cache.
+
+Changes take effect immediately across the cluster. RadiantOne replaces the filter on the active trigger without requiring a server restart, cache reconfiguration, or interruption to event capture.
+
+**Usage**
+
+```
+set-hdap-trigger-event-filter -namingcontextdn <naming context DN> [-pipelineid <trigger ID>] [-filter <LDAP filter>]
+```
+
+**Command Arguments:**
+
+- `-namingcontextdn <naming context DN>`
+  [required] The naming context DN of the persistent cache (e.g., `ou=cached_users,o=radiantone`).
+- `-pipelineid <trigger ID>`
+  [optional] The trigger identifier. If omitted, the filter applies to the entire persistent cache context.
+- `-filter <LDAP filter>`
+  [optional] The custom LDAP filter to apply to trigger event capture. The filter is combined with the source-derived filter; it does not replace it. Pass an empty value (`""`) or omit this argument to clear the custom filter.
+
+**Examples:**
+
+Set a cache-wide trigger filter:
+
+```bash
+vdsconfig.sh set-hdap-trigger-event-filter \
+  -namingcontextdn "ou=cached_users,o=radiantone" \
+  -filter "(&(objectClass=user)(accountStatus=enabled))"
+```
+
+Clear a cache-wide filter:
+
+```bash
+vdsconfig.sh set-hdap-trigger-event-filter \
+  -namingcontextdn "ou=cached_users,o=radiantone" \
+  -filter ""
+```
+
+### get-hdap-trigger-event-filter
+
+Displays the custom filter configured on a cache naming context or a specific trigger. This does not return the source-derived portion of the effective filter.
+
+**Usage**
+
+```
+get-hdap-trigger-event-filter -namingcontextdn <naming context DN> [-pipelineid <trigger ID>]
+```
+
+**Command Arguments:**
+
+- `-namingcontextdn <naming context DN>`
+  [required] The naming context DN of the persistent cache.
+- `-pipelineid <trigger ID>`
+  [optional] The trigger identifier whose custom filter to return. If omitted, RadiantOne returns the cache-wide custom filter.
+
+**Example:**
+
+```bash
+vdsconfig.sh get-hdap-trigger-event-filter \
+  -namingcontextdn "ou=cached_users,o=radiantone"
+```
+
+### set-hdap-trigger-event-filtering-enabled
+
+Enables or disables HDAP trigger event filtering deployment-wide.
+
+Filtering is enabled by default. Disabling filtering restores the previous behavior, in which the trigger captures every write to the HDAP store.
+
+**Usage**
+
+```
+set-hdap-trigger-event-filtering-enabled -enabled <true|false>
+```
+
+**Command Arguments:**
+
+- `-enabled <true|false>`
+  [required] Specify `true` to enable trigger filtering; specify `false` to capture all HDAP store writes.
+
+**Example:**
+
+```bash
+vdsconfig.sh set-hdap-trigger-event-filtering-enabled \
+  -enabled false
+```
+
+### get-hdap-trigger-event-filtering-enabled
+
+Returns whether HDAP trigger event filtering is enabled deployment-wide.
+
+**Usage**
+
+```
+get-hdap-trigger-event-filtering-enabled
+```
+
+> **Note:** RadiantOne validates custom LDAP filters before saving them. If a filter is malformed, RadiantOne rejects the command, the invalid filter is not stored, and the active trigger filter is not changed.
+
+### REST API
+
+The same operations are available through the Admin REST API. GET operations are available to read-only administrators; PUT operations require read and write administrator privileges.
+
+| Resource | Supported operations |
+|---|---|
+| `/admin/sync/topologies/hdap-trigger-event-filter` | GET, PUT |
+| `/admin/sync/pipelines/{pipelineId}/hdap-trigger-event-filter` | GET, PUT |
+| `/admin/sync/topologies/hdap-trigger-event-filtering-enabled` | GET, PUT |
+
 
 
 
