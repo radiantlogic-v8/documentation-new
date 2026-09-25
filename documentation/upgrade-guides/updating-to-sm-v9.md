@@ -204,7 +204,9 @@ During the update, the persistent volume holds:
 - LDIF files extracted from the export
 - Rebuilt v9 stores
 
-The v9 stores are larger than the v8 stores. Plan for free space of at least three times the current size of the data directory. Expand the volume before starting the update if necessary.
+The v9 stores are larger than the v8 stores — roughly twice the size, in measured runs. Plan for free space of at least three and a half times the current size of the data directory, and expand the volume before starting the update if necessary.
+
+For example, in a measured 10-million-entry update, 7.5 GB of v8 stores produced a 4.3 GB export and 14.3 GB of v9 stores, for a peak usage of about 26 GB — roughly three and a half times the original.
 
 ```
 kubectl exec -n self-managed fid-0 -- sh -c \
@@ -236,10 +238,10 @@ The default timeout values are suitable for small and medium stores. For large s
 When to change them:
 
 - **`scaleDownTimeout`** — Pods stop one at a time and each uses its entire `terminationGracePeriodSeconds`. If you increase `fid.terminationGracePeriodSeconds`, set this to at least `replicas × terminationGracePeriodSeconds + 60`.
-- **`exportTimeout`** — Time allowed for export. Increase this value for deployments with more than approximately 20 million entries.
+- **`exportTimeout`** — Time allowed for export, which takes about 2 minutes per million entries. Raise it above roughly 10 million entries.
 - **`import.maxTimeout`** — Maximum time allowed for one import attempt. The chart sizes the actual timeout from the export.
 - **`import.maxAttempts`** — Number of import attempts. Each attempt has more memory than the previous attempt.
-- **`postUpgradeWaitTimeout`** — Time allowed for the readiness gate to wait for Identity Data Management to roll out and open every store.
+- **`postUpgradeWaitTimeout`** — Time allowed for the readiness gate to wait for Identity Data Management to roll out and open every store. Followers re-synchronize within this time too, at about a minute per million entries. Raise it above roughly 10 million entries.
 
 Example timeout configuration:
 
@@ -250,6 +252,8 @@ hdapMigration:
   import:
     maxTimeout: 28800
 ```
+
+> **If you turn off the rebuild worker.** A normal update needs no change to `fid.startupProbe` — the export and rebuild run in separate worker pods that Kubernetes does not health-check, and the server pod starts afterward, on an already-converted volume, within the default five-minute startup allowance. The exception is `hdapMigration.import.enabled: false`, which moves the rebuild inside the server pod on its first boot instead. If you use that setting, also raise `hdapMigration.firstBootImportBudget` (seconds) to about six minutes per million entries plus a margin, and confirm `fid.startupProbe.periodSeconds × failureThreshold` covers it. Remove any override once the update completes, since the same allowance then applies to every later restart of that pod.
 
 ### 6. Protect ZooKeeper from autoscaling
 
@@ -287,6 +291,15 @@ Argo CD does not impose a sync timeout, so synchronization runs as long as the u
 - Hook Jobs remain `OutOfSync` after synchronization. Do not use an Argo CD `Synced` status as the indicator that the update completed.
 - Use the readiness-gate Job and the migration `phase` value to determine whether the update is complete.
 - A pre-upgrade hook runs for every Argo CD sync, including the initial sync.
+
+The application also stays `OutOfSync` after a successful update for a related reason: the 9.0 chart replaces the old `directory-schema` component with `sync`, and Helm removes `directory-schema` as part of the update, but Argo CD only deletes objects that are no longer in the chart when a sync prunes. Until then, the old `directory-schema` pod keeps running its 8.5 image alongside `sync`. Clear it by syncing once more with **Prune** selected, or by deleting the objects directly:
+
+```
+NS=self-managed
+kubectl -n $NS delete deployment/directory-schema service/directory-schema-service --ignore-not-found
+# only if directory-schema ran more than one replica, which adds a disruption budget
+kubectl -n $NS delete pdb/fid-directory-schema-pdb --ignore-not-found
+```
 
 ## Record the current state
 
@@ -327,7 +340,7 @@ helm -n self-managed upgrade --install fid \
   oci://registry-1.docker.io/radiantone/iddm-helm \
   --version 9.0.0 \
   --values </path/to/your/values.yaml> \
-  --timeout 4h
+  --timeout 4h --wait
 ```
 
 ### Always set --timeout
@@ -337,6 +350,22 @@ Helm's default timeout is five minutes, which is much shorter than the export an
 Set `--timeout` to at least the expected duration of the entire update. See [How long the update takes](#how-long-the-update-takes) for guidance.
 
 If Helm times out, it marks the release as failed, but the update Jobs continue running. Do not manually scale the StatefulSet or restart the update. See [If a step fails](#if-a-step-fails).
+
+### How --timeout and --wait work together
+
+Helm always waits for the Jobs it runs as hooks, so the update is governed by `--timeout` whether or not you pass anything else. `--wait` is a separate control that decides what happens *after* the Jobs finish.
+
+| Flag | What it does on an update |
+|---|---|
+| `--timeout` (default `5m0s`) | How long Helm waits for any single operation, including each migration Job. This is the one that matters most: the default is far shorter than the export and rebuild. It limits Helm, not the cluster — when it expires, Helm reports the release failed while the Jobs carry on running. |
+| `--wait` | Decides what Helm waits for once the migration Jobs are done. With it, Helm also waits until the server and every microservice report ready before it reports success. Without it, Helm still waits for the readiness gate (on by default), which holds until every `fid` node is ready and serving its stores — but the other services may still be starting when the command returns. In Helm 4, `--wait` alone means `watcher` (wait for every resource); omitting it means `hookOnly` (the hook-waiting behavior above). In Helm 3 it is a plain on/off flag with the same effect. |
+| `--wait-for-jobs` | Used with `--wait`. The migration Jobs are hooks and are already waited for, so this changes nothing for this chart. |
+
+Pass both `--timeout` (sized from [How long the update takes](#how-long-the-update-takes)) and `--wait` every time. `--timeout` is a limit per step, not for the whole command — each migration Job, and the final wait, gets the full value on its own, so it only needs to outlast the longest step, the rebuild.
+
+With Argo CD, neither flag applies: Argo CD runs the same Jobs as sync hooks and has no sync timeout. See [If you deploy with Argo CD](#8-if-you-deploy-with-argo-cd).
+
+> **Do not use `--atomic` or `--rollback-on-failure`.** These are the same option — Helm 4 renamed `--atomic` to `--rollback-on-failure` and still accepts the old name with a deprecation warning. Either one rolls the release back when the update fails or the timeout expires. On this update that means rolling back while the migration Jobs are still running against the volume. Let the Jobs finish and re-run the same command instead; see [If a step fails](#if-a-step-fails).
 
 ## Monitor progress
 
@@ -387,58 +416,58 @@ Do not delete pods, scale the StatefulSet, or change values while the update is 
 
 ## How long the update takes
 
-Downtime begins when the scale-down Job starts and ends when the readiness gate completes.
+Downtime begins when the scale-down Job starts and ends when the readiness gate completes (or, with the gate turned off, when the first node is serving again).
 
-Duration depends on store size rather than node count. Adding nodes does not make export or rebuild faster.
+Duration depends mainly on the number of entries, not node count — adding nodes does not make export or rebuild faster. It does depend on how many nodes there are to restart: after the rebuild, each node comes back one at a time, and every node after the first replicates the stores from the first node before it reports ready. That step is proportional to the data and runs once per node, so on a deployment with several nodes and large stores it can add substantially to the window. Helm waits for it when the readiness gate is on (the default) or you pass `--wait`; with both off, it happens after Helm has already reported the release updated.
 
-The following durations were measured on nodes with 8 vCPUs and 32 GiB of memory.
+The table below plans for a three-node deployment (`fid-0` plus two followers) at the default `terminationGracePeriodSeconds`:
 
-| Deployment | Scale-down | Export | Rebuild | Gate | Total downtime |
-|---|---:|---:|---:|---:|---:|
-| Configuration only, 13 system stores, less than 1 MB | 1m 49s | 29s | 2m 09s | 12s | ~5 min |
-| 16 small stores, approximately 0.1 GB | 2m 19s | 41s | 2m 22s | 13s | ~6 min |
-| 1 million entries, 0.66 GB, 1 node | 44s | 60s | 3m 02s | 1m 55s | ~7 min |
-| 5 million entries, 3.2 GB, 2 nodes and 1 follower | 2m 45s | 3m 01s | 8m 54s | 26s | ~16 min |
-| 10 million entries in one store, 7.5 GB, 1 node | 44s | 11m 18s | 9m 54s | 1m 50s | ~24 min |
+| Deployment | Scale-down | Export | Rebuild | Gate | Total downtime | Basis |
+|---|---:|---:|---:|---:|---:|---|
+| Configuration only, fresh install, 13 system stores, less than 1 MB | 1m 49s | 29s | 2m 09s | 12s | ≈5 min | measured |
+| 1 million entries | ~3 min | ~3 min | ~8 min | ~3 min | about 17 min | estimated |
+| 5 million entries | ~3 min | ~11 min | ~32 min | ~8 min | about 55 min | estimated |
+| 10 million entries | ~3 min | ~21 min | more than 1 hour | ~13 min | about 1 h 40 min, or more | rebuild measured on a customer data set (ten stores of a million entries each); other steps derived from it |
+| 20 million entries | ~3 min | ~41 min | ~2 hours | ~24 min | about 3 h 10 min | estimated |
+| 50 million entries | ~3 min | ~1 h 40 min | ~5 hours | ~1 hour | about 7 h 45 min | estimated |
 
-How the data grew in these runs:
+Scale-down time does not depend on data size. Pods stop sequentially, and each can use its full `terminationGracePeriodSeconds`, so allow roughly:
 
-- 1 million entries: v9 stores were 1.2 GB. Helm returned after 7m 17s.
-- 5 million entries: the export was a 0.2 GB ZIP archive holding 2.0 GB of LDIF; v9 stores were 6.0 GB.
-- 10 million entries: the export contained 4.3 GB of LDIF; v9 stores were 14.3 GB.
+`{replicas} * {termination grace period}`
 
-The following durations are estimated from the 10-million-entry rates. They were not measured.
+For a single-node deployment, scale-down usually takes under one minute and the gate takes about two minutes. There are no follower nodes to stop or re-synchronize.
 
-| Deployment | Scale-down | Export | Rebuild | Gate | Total downtime |
-|---|---:|---:|---:|---:|---:|
-| 20 million entries | ~1 min | ~23 min | ~20 min | ~2 min | ~45 min |
-| 50 million entries | ~1 min | ~55 min | ~50 min | ~3 min | ~2 hr |
+These estimates are based on a test in which rebuilding 10 million entries across 10 stores took more than one hour. Approximate time per 1 million entries:
 
-Scale-down duration is driven by two factors:
+- Export: 2 minutes
+- Rebuild: 6 minutes
+- Follower re-synchronization: 1 minute
 
-- Pods stop sequentially.
-- Each pod uses its entire `terminationGracePeriodSeconds`.
 
-As a result, estimate scale-down time as **replicas × terminationGracePeriodSeconds**. This estimate does not depend on data size.
-
-Data distribution also affects export and rebuild duration. In measured runs, five stores with one million entries each exported in approximately three minutes and rebuilt in approximately nine minutes. One store with ten million entries took approximately eleven minutes to export and ten minutes to rebuild.
-
-A small number of large stores can take longer to export than many smaller stores containing the same total number of entries because each store is exported as one file. When planning the maintenance window, consider the largest store, not only the total entry count.
-
-As an initial estimate, allow:
-
-- Approximately one minute per million entries for export.
-- Approximately one minute per million entries for rebuild.
-- Additional time for sequential pod termination, readiness gates, and a contingency margin.
-
-Validate timing in a lower environment with representative data before scheduling a production update.
+Choose the row closest to your entry count, rounding up, and set `--timeout` higher than the total estimate. A longer timeout has no cost; a shorter one can report failure while work continues.
+Faster storage, larger nodes, and fewer larger stores can reduce the actual time. All estimates except the configuration-only row are approximate. For more than 10 million entries, test with comparable data in a lower environment before scheduling production. Use the following estimates to plan the update window:
 
 | Entries | Recommended settings | `--timeout` |
 |---|---|---|
-| Up to 5 million | Defaults | 30 min |
-| 5–20 million | Defaults; set `exportTimeout: 3600` above 15 million entries | 2 hr |
-| 20–50 million | Set `exportTimeout: 7200` and `import.maxTimeout: 28800` | 4 hr |
+| Up to 5 million | Defaults | 1 h 30 min |
+| 5–10 million | Defaults | 2 h 30 min |
+| 10–20 million | `exportTimeout: 3600`, `postUpgradeWaitTimeout: 3600` | 4 hr |
+| 20–50 million | `exportTimeout: 10800`, `import.maxTimeout: 28800`, `postUpgradeWaitTimeout: 7200` | 10 hr |
 | More than 50 million | Contact Radiant Logic Support to plan the maintenance window | — |
+
+Validate timing in a lower environment with representative data before scheduling a production update.
+
+> Monitor node restarts after the rebuild. Completing the rebuild does not complete the update. The first node must start and open all rebuilt stores before it can serve traffic. The remaining nodes then start one at a time, replicate and initialize the stores locally, and report readiness only when that work is complete. The update is complete when the final node becomes ready. Monitor progress with:
+
+>
+> ```
+> NS=self-managed
+> # nodes become ready one at a time; the last one to report ready ends the update
+> kubectl get pods -n $NS -l app.kubernetes.io/component=fid -w
+>
+> # what a joining node is doing
+> kubectl logs fid-1 -n $NS -c fid --tail=50 | grep -Ei "replicat|initializ|Opening index|Loaded with"
+> ```
 
 ### Very large individual stores
 
@@ -755,6 +784,8 @@ Update the monitoring check. See preparation step 5.
 
 A pod named `fid-hdap-import-worker` remains in `Completed` state after the update. It is harmless while the deployment is running, and its log can be useful. However, it continues to mount the RadiantOne volume, so delete it before deleting the volume claim.
 
+The rebuild's helper pod is removed as soon as the rebuild succeeds, so nothing is left holding the RadiantOne volume claim by then. Its full log is written to the volume under `/opt/radiantone/vds/work/hdap-migration/` before the pod goes, and the logging sidecar ships it once RadiantOne is back up. If you ever see a pod named `fid-hdap-import-worker` or `fid-hdap-export-worker` still running after an update has finished, that step did not complete — treat it as a failure and read its log rather than deleting it.
+
 Use these sources to troubleshoot the update:
 
 - Job output: `kubectl logs job/<name> -n self-managed`
@@ -774,7 +805,40 @@ Use these sources to troubleshoot the update:
 
   Including `vds_server.log` and `vds_events.log`.
 
-The Jobs and their logs remain available until the next update.
+Migration Jobs and their logs remain available for 24 hours after a Job completes. The retention period is controlled by hdapMigration.job.ttlSecondsAfterFinished, which defaults to 86400 seconds. Kubernetes deletes completed Jobs automatically when the period expires.
+
+Collect logs from failed Jobs before they expire. Set the value to 0 or null to retain Jobs indefinitely. Other values below 300 seconds are not allowed because a Job could be deleted before Helm or Argo CD reads its result.
+
+## Removing update leftovers
+
+Deleting a v9 deployment with helm uninstall or by deleting its Argo CD application can leave update-related objects in the namespace. These objects are Helm or Argo CD hooks, so they are not considered part of the deployment and are not removed automatically:
+
+* Migration RBAC objects: fid-hdap-migration-sa, fid-hdap-migration-role, and fid-hdap-migration-rb. These are also delete-time hooks, so they are recreated when the deployment is deleted.
+
+* Completed migration Jobs: fid-hdap-scale-down, fid-hdap-export, fid-hdap-pvc-cleanup, fid-hdap-import, and fid-hdap-post-upgrade-wait. Kubernetes removes these automatically after 24 hours.
+
+* Generic lifecycle-hook RBAC objects, if hooks.hooks_sa.enabled is enabled: fid-hook-account, fid-manage-pods, and the associated RoleBinding.
+
+The migration state ConfigMap (fid-hdap-migration-state) and any export or import helper pods are deployment resources and are removed with the deployment. However, a migration state ConfigMap created by a chart earlier than 9.0.0 might remain; delete it manually if necessary.
+
+To remove update-related leftovers immediately after deleting the deployment, run:
+
+```
+NS=self-managed
+kubectl -n $NS delete serviceaccount,role,rolebinding \
+  -l app.kubernetes.io/component=hdap-migration,app.kubernetes.io/instance=fid
+kubectl -n $NS delete job --ignore-not-found \
+  fid-hdap-scale-down fid-hdap-export fid-hdap-pvc-cleanup fid-hdap-import fid-hdap-post-upgrade-wait
+kubectl -n $NS delete configmap fid-hdap-migration-state --ignore-not-found
+# only if hooks.hooks_sa.enabled was set
+kubectl -n $NS delete --ignore-not-found serviceaccount/fid-hook-account role/fid-manage-pods rolebinding/fid-manage-pods
+
+# nothing of the release should be listed
+kubectl -n $NS get serviceaccount,role,rolebinding,job,configmap,pod -l app.kubernetes.io/instance=fid
+```
+
+Do not run these while the deployment is still installed: the next update creates the objects again anyway, and deleting a migration Job that is still running stops the update. None of this removes the volume claims; see [Clear the namespace](#clear-the-namespace) to empty the namespace completely.
+
 
 ## Return to v8
 
@@ -808,12 +872,21 @@ NS=self-managed
    helm -n $NS uninstall fid
    ```
 
-2. Remove migration Jobs and completed pods, including workers that mount the volume:
+2. Remove migration Jobs and completed pods, including workers that mount the volume, and the leftover objects described in [Removing update leftovers](#removing-update-leftovers):
+
+   ```
+   kubectl -n $NS delete serviceaccount,role,rolebinding \
+     -l app.kubernetes.io/component=hdap-migration,app.kubernetes.io/instance=fid
+   ```
 
    ```
    kubectl -n $NS delete job \
      -l app.kubernetes.io/component=hdap-migration \
      --ignore-not-found
+   ```
+
+   ```
+   kubectl -n $NS delete configmap fid-hdap-migration-state --ignore-not-found
    ```
 
    ```
@@ -826,7 +899,7 @@ NS=self-managed
    kubectl -n $NS get pods
    ```
 
-   No pods should remain.
+Confirm that no pods remain. Successful updates clean up helper pods automatically. If an update stops before completion, an export or import worker pod might remain running. Look for `fid-hdap-export-worker` or `fid-hdap-import-worker`, and delete any remaining worker pod before you continue.
 
 3. Delete persistent volume claims:
 
