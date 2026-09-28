@@ -152,7 +152,7 @@ kubectl get storageclass <name> \
    **Optional properties:**
 
    - **logging**: Optional property. Use this to enable the log-shipping sidecar and its destinations. Refer to the [Logging](../metrics-and-logging/) guide.
-   - **fid.migration.url**: Optional property. Use this field only during the initial deployment to restore the configuration from a backup file of an existing deployment. Refer to [Restoring from a Backup](#restoring-from-a-backup) to learn more. A v9 deployment can be seeded from any 8.x backup, and directly from 7.3 or 7.4 backups.
+   - **fid.migration.url**: Optional property. Use this field only during the initial deployment to restore the configuration from a backup file of an existing deployment. Refer to [Restoring from a Backup](#restoring-from-a-backup) to learn more. A v9 deployment can be seeded from any 8.x backup, and directly from 7.4 backups.
 
    > The migration property must be **fid.migration.url**. A value placed at `migration.url` is ignored without an error, and the deployment starts empty.
 
