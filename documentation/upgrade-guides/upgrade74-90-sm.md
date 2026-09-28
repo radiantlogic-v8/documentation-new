@@ -1,4 +1,7 @@
-# Migrating from Version 7.4 to Self-Managed Version 9 
+---
+title: Upgrading from v7.4 to self-managed V9 
+description: Upgrading RadiantOne Identity Data Management
+---
 
 ## Overview
 
