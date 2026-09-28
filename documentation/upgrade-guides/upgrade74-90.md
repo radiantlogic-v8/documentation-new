@@ -5,7 +5,7 @@ description: Upgrading RadiantOne Identity Data Management
 
 ## Overview
 
-The process from upgrading from RadiantOne Identity Data Management v7.4.10 to v9.0 is described below. If you are running a version prior to v7.4.10, you must first update to this version.
+The process from upgrading from RadiantOne Identity Data Management v7.4.10 to v9.0 SaaS environment is described below. If you are running a version prior to v7.4.10, you must first update to this version.
 
 v9 updates the platform from Java 8 to Java 25 and from Lucene 6 to Lucene 10. Lucene provides the underlying index format used by RadiantOne Directory, and Lucene 10 cannot directly read the Lucene 6 indexes used by v7.4. 
 
