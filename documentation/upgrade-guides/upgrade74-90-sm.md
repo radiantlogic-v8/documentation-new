@@ -638,21 +638,6 @@ There is no downgrade from v9, and a v9 backup cannot be restored into a v7.4 de
 
 Do not decommission the v7.4 deployment, or delete the export archive, the `<RLI_HOME>` backup or the LDIF exports, until you have fully migrated and reviewed the v9 environment.
 
-## Troubleshooting
-
-| Issue | Cause | Action |
-|---|---|---|
-| The Migration Utility reports a version mismatch | Utility version does not match the v7.4 patch release | Use Migration Utility 2.1.X, where X is your v7.4 patch number |
-| The Migration Utility cannot locate the configuration | RLI_HOME is not set | Set RLI_HOME, or pass the path explicitly as the first argument |
-| The export fails or produces an empty archive | Services still running, or insufficient space at the target path | Stop the services as described in Preparing the v7.4 Deployment, free space, and retry |
-| A new v9 self-managed deployment comes up empty | The value was placed at `migration.url` instead of `fid.migration.url` and was ignored | Correct the property path and reinstall; `fid.migration.url` applies only to the initial deployment |
-| fid-0 cannot download the seed file | `fid.migration.url` is not reachable from the cluster, or a pre-signed URL expired | Test the URL from inside the cluster and reissue it if needed |
-| Errors when the server spawns a child process; the import does not start | `env` overridden without `JAVA_TOOL_OPTIONS` | Restore `JAVA_TOOL_OPTIONS: "-Djdk.lang.Process.launchMechanism=FORK"` in values.yaml |
-| fid-0 comes up on v9 with empty or partial stores | The import did not complete | Check the fid-0 logs and reinstall from the export |
-| fid-0 runs out of disk during the import | `persistence.size` sized from the export archive rather than the rebuilt stores | Raise `persistence.size` and reinstall |
-| Entry counts on v9 are lower than on v7.4 | Persistent cache data, inactive stores and cn=queue are not carried by the export | Re-initialize the persistent caches from your LDIF exports and recreate the remaining stores |
-| Monitoring reports missing pods after cutover | Checks carried over from v7.4 | Rewrite the checks against the v9 pod inventory, including iddm-sync |
-
 ## Known Issues
 
 For known issues reported after the release, please see the Radiant Logic Knowledge Base:
