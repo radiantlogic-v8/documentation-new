@@ -138,8 +138,6 @@ Start from Control Panel > Usage & Activity > DATA SOURCE STATUS, which reports 
 | OFFLINE | The data source's active property is set to false, so no connection is attempted. The MESSAGE column reads Data Source Offline. |
 | UNAVAILABLE | No classname property is defined for the data source. |
 
-![Data Source Status](Media/data-source-status.jpg)
-
 >[!note] You only need to validate the data sources referenced by your naming contexts. Anything with a status of OFFLINE was already disabled in v7.4 and can be left alone; review the sources with a status of ON or OFF. A status of ON only means the backend is reachable. Confirm the source points at the backend you intend to use in v9 — a source carried over from v7.4 may still point at an old backend, or you may want to repoint it as part of this migration.
 
 For every data source you rely on, confirm it points to the desired servers and failover servers, and that the host, port, SSL setting, bind DN, password, and base DN are correct. Open each one from Control Panel > Setup > Data Catalog > Data Sources, correct any values, and run Test Connection before saving.
