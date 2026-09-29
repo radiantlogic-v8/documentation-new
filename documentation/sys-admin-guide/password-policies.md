@@ -3,7 +3,7 @@ title: Password Policies
 description: Details about how to configure password policies.
 ---
 
-## Password policies overview
+## Password Policies Introduction
 
 Password policies let you control password requirements, expiration, resets, password history, and account lockout for RadiantOne Universal Directory stores and persistent caches (p-caches).
 
