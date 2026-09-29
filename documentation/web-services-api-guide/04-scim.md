@@ -429,7 +429,7 @@ Examples of SCIM clients used in this guide are WizTools.org REST Client and Pos
 
 -	Entry deletion uses DELETE with URL containing the DN of the entry to delete. 
 
--	Add the “authorization” header with a value matching your RadiantOne user DN and password for [authentication](#authentication).
+-	Add the “Authorization” header with either your RadiantOne user DN and password (Basic) or an external OIDC access token (Bearer). For details, see [Authentication](#authentication).
 
 -	Add the “Content-Type” header with a value of application/json.
 
@@ -456,6 +456,7 @@ HTTP Status #	| Description	| Next Step
 200	| Search (GET), update (PATCH) or Delete (DELETE) Operation successful.	| For searches, no action necessary. For other operations, refresh the RadiantOne namespace to view the modification. <br> Note - For bind requests where the user’s password is near expiration, the response includes the time (in seconds) until the password expires (secUntilPwdExp value). This is only relevant if the RadiantOne password policy applicable for the user has been configured to support password expiration.
 201	| Entry successfully created (POST). | This code is issued if an entry is successfully created.
 400	| Bad Request (operation unsuccessful). | This can happen if there is a syntax error in the body of a request.
+401	| Unauthorized (authentication failed). | Check the credentials in the Authorization header. For Bearer tokens, confirm the token is valid, not expired, and maps to an existing RadiantOne user.
 404	| Entry not found.	| You get this message when searching for an entry or deleting an entry that doesn’t exist.
 500	| Server error. | Send the exception message along with the <RLI_HOME>/vds_server/logs/vds_server.log to Radiant Logic customer support. 
 
@@ -463,14 +464,104 @@ Table 8: SCIM Response Status Codes
 
 ### Authentication
 
-Authentication can be performed using basic authentication by passing the credentials in a header.
+RadiantOne SCIM v2 services support two authentication methods: Basic Authentication and Bearer Token Authentication (OIDC/JWT).
 
-The header must be named “authorization” and the value is set by concatenating: Basic base64(dn:password). Don’t forget to use a <space> between Basic and the encoded value. Don’t forget to use “:” to separate dn value from password value. You can use any base64 encoder to get this value. An example for cn=directory manager and password of secretsecret would be this: cn=directory manager:secretsecret 
+#### Basic Authentication
 
-The base64 encoded value of this would be: Y249ZGlyZWN0b3J5IG1hbmFnZXI6c2VjcmV0c2VjcmV0
+To use HTTP Basic Authentication, pass the credentials in the `Authorization` header.
 
-Resulting in a header of: 
-`<header key="authorization" value="Basic Y249ZGlyZWN0b3J5IG1hbmFnZXI6c2VjcmV0c2VjcmV0"/>`
+- **Header Name**: `Authorization`
+- **Format**: `Basic <base64(dn:password)>`
+
+Put a space between `Basic` and the encoded value, and use a colon (`:`) to separate the DN from the password. You can use any base64 encoder to get this value.
+
+**Example**
+
+For the user DN `cn=directory manager` with the password `secretsecret`, the base64-encoded string is `Y249ZGlyZWN0b3J5IG1hbmFnZXI6c2VjcmV0c2VjcmV0`.
+
+```http
+Authorization: Basic Y249ZGlyZWN0b3J5IG1hbmFnZXI6c2VjcmV0c2VjcmV0
+```
+
+#### Bearer Token Authentication
+
+RadiantOne SCIM endpoints can authenticate requests with an external OpenID Connect (OIDC) access token (JWT). The token is issued by a third-party identity provider such as Okta, Ping, or Azure AD.
+
+- **Header Name**: `Authorization`
+- **Format**: `Bearer <access_token>`
+
+**Example**
+
+```http
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
+```
+
+**How External Token Validation Works**
+
+1. **Validation**: When a SCIM request includes `Authorization: Bearer <token>`, RadiantOne checks the token against the enabled validators in the **SCIM External Token Validators** list. Disabled validators are skipped. See [Configuring a SCIM External Token Validator](#configuring-a-scim-external-token-validator).
+2. **Claims Mapping**: RadiantOne uses the validator's **Claims to FID User Mapping** to match the token's claims (such as `sub` or `email`) to a user in the RadiantOne namespace. The mapped user must exist; if no user matches, the request is rejected.
+3. **Proxied Authorization**: After the token is validated and mapped, the SCIM operation runs with the identity and access rights of the mapped user through Proxied Authorization. It does not run as `Directory Manager`.
+
+>[!note]
+>If the token is invalid or expired, or can't be mapped to an existing RadiantOne user, the SCIM endpoint returns HTTP `401 Unauthorized`.
+
+#### Configuring a SCIM External Token Validator
+
+This section describes configuring proxy authorization and a SCIM external token validator, including the Claims to FID User Mapping. The steps are similar to configuring an ADAP external token validator; see [RadiantOne Configuration](../sys-admin-guide/adap-access-token/#radiantone-configuration) for more information, including how to get and decode an access token from your OIDC provider.
+
+**Configuring Proxy Authorization**
+
+The RadiantOne SCIM service queries the RadiantOne LDAP service using proxy authorization.
+
+To configure proxy authorization:
+
+1. In the Main Control Panel, navigate to Settings > Server Front End > Supported Controls.
+
+1. Enable Proxy Authorization and click Save.
+
+1. Navigate to Settings > Security > Access Control.
+
+1. Enable the "Allow Directory Manager to impersonate other users" option and click Save.
+
+**Adding a SCIM External Token Validator**
+
+The External Token Validators page contains two sections: **ADAP External Token Validators** and **SCIM External Token Validators**. Validators used for SCIM requests must be added in the SCIM External Token Validators section.
+
+![External Token Validators Page](Media/scim-external-token-validators.png)
+
+Figure 9: External Token Validators Page
+
+To add a SCIM external token validator:
+
+1. In the Main Control Panel, navigate to Settings > Security > External Token Validators.
+1. In the **SCIM External Token Validators** section, click **Add**. The New SCIM External Token Validator page displays.
+
+   ![New SCIM External Token Validator Page](Media/new-scim-external-token-validator.png)
+
+   Figure 10: New SCIM External Token Validator Page
+
+1. Name the external token validator. Names must be unique across both ADAP and SCIM external token validators.
+1. Toggle the Enabled switch to On.
+1. Select an OIDC provider from the drop-down menu (if applicable, to assist with populating the Discovery URL syntax). Otherwise, skip this step and enter your own Discovery URL.
+1. If the Discovery URL is not loaded automatically, paste the Metadata URI from your OIDC authorization server into the Discovery URL field.
+1. Click Discover. The JSON Web Key Set URI auto-populates.
+1. In the Scope Claim Name field, enter the name of the claim in the token that contains the scopes (for example, `scope`, or `scp` for Okta tokens issued with the client credentials flow).
+1. Use the Expected Audience from your OIDC provider configuration to populate the Expected Audience field. If the `aud` claim in the token does not match this value, the request is rejected.
+1. Enter the Expected Scope. To require multiple scopes, separate them with a space or a comma and a space. All expected scopes must be present in the token.
+1. Optionally, set the JSON Web Token Validation Clock Offset (seconds) to allow for clock differences between RadiantOne and the OIDC provider.
+1. Click Edit next to Claims to FID User Mapping. The OIDC to FID User Mappings page displays.
+1. Click Add. Use either a Simple DN Expression or a Search Expression to map a uniquely identifying attribute to a corresponding claim value in the token. For example, a Search Expression can map the attribute **mail** to the claim value **email**.
+1. Click OK.
+1. Click OK again to close the *OIDC to FID User Mappings* window.
+1. Click Save.
+
+**Managing SCIM External Token Validators**
+
+In the **SCIM External Token Validators** section of the External Token Validators page:
+
+- To edit a validator, select it and click **Edit**. Update the settings and click **Save**.
+- To delete a validator, select it and click **Delete**.
+- To disable a validator without deleting it, edit it, toggle the Enabled switch to Off, and click **Save**. Disabled validators are skipped during authentication.
 
 ## Examples
 
@@ -483,11 +574,11 @@ The resource type configuration and attribute mappings used in this example are 
 
 ![An image showing ](Media/Image4.9.jpg)
  
-Figure 9: Resource Type Example
+Figure 11: Resource Type Example
  
 ![An image showing ](Media/Image4.10.jpg)
  
-Figure 10: Sample Attribute Mappings
+Figure 12: Sample Attribute Mappings
 
 Based on the above configuration, the following is a sample SCIM POST query to create a user.
 
@@ -543,17 +634,17 @@ The following body example can be used to insert a user:
   }
 ```
 
-Table 8: SCIM Post Query to Create A User
+Table 9: SCIM Post Query to Create A User
 
 ![An image showing ](Media/Image4.11.jpg)
 
-Figure 11: POST Query to SCIMv2 API of RadiantOne
+Figure 13: POST Query to SCIMv2 API of RadiantOne
 
 Based on the New Entry DN Expression in the Resource Type configuration described above, the entry is created as uid=bjensen@example.com,o=companydirectory. This can be seen in the RadiantOne in the screen shot below.
 
 ![An image showing ](Media/Image4.12.jpg)
  
-Figure 12: Sample Entry Created with a SCIM POST Operation
+Figure 14: Sample Entry Created with a SCIM POST Operation
 
 ### Insert User with Enterprise Extension Attributes
 
@@ -595,17 +686,17 @@ The following body example can be used to insert a user containing enterprise ex
 ```
 
  
-Table 9: SCIM POST Query to Insert A User with Enterprise Extension Attributes
+Table 10: SCIM POST Query to Insert A User with Enterprise Extension Attributes
 
 ![Example POST Query Shown in Postman](Media/Image4.13.jpg)
  
-Figure 13: Example POST Query Shown in Postman
+Figure 15: Example POST Query Shown in Postman
 
 Based on the New Entry DN Expression in the Resource Type configuration described above, the entry is created as uid=Acooper,o=companydirectory. This can be seen in the RadiantOne in the screen shot below.
 
 ![Sample Entry Created with a SCIM POST Operation](Media/Image4.14.jpg)
  
-Figure 14: Sample Entry Created with a SCIM POST Operation
+Figure 16: Sample Entry Created with a SCIM POST Operation
 
 ### Update (PATCH) User
 
@@ -618,11 +709,11 @@ The resource type configuration and attribute mappings used in this example are 
 
 ![Resource Type Configuration Example](Media/Image4.15.jpg)
  
-Figure 15: Resource Type Configuration Example
+Figure 17: Resource Type Configuration Example
 
 ![Sample Attribute Mappings](Media/Image4.16.jpg)
  
-Figure 16: Sample Attribute Mappings
+Figure 18: Sample Attribute Mappings
 
 Based on the above configuration, the following is a sample SCIM PATCH query to update a user.
 
@@ -653,17 +744,17 @@ The following body example can be used to update a user:
   ]
 }
 ```
-Table 10: SCIM PATCH Query to Update A User
+Table 11: SCIM PATCH Query to Update A User
  
 ![PATCH Query to SCIMv2 API of RadiantOne](Media/Image4.17.jpg)
 
-Figure 17: PATCH Query to SCIMv2 API of RadiantOne
+Figure 19: PATCH Query to SCIMv2 API of RadiantOne
 
 Based on the PATCH request described above, the entry uid=bjensen@example.com,o=companydirectory is updated. This can be seen in the RadiantOne in the screen below.
  
 ![Sample Entry Updated with a SCIM PATCH Operation](Media/Image4.18.jpg)
 
-Figure 18: Sample Entry Updated with a SCIM PATCH Operation
+Figure 20: Sample Entry Updated with a SCIM PATCH Operation
 
 ### Update (PUT) User with Enterprise Extension Attributes
 
@@ -706,19 +797,19 @@ The following body example can be used to update a user containing enterprise ex
     }
    }
 ```
-Table 11: SCIM PUT Query to Update A User with Enterprise Extension Attributes
+Table 12: SCIM PUT Query to Update A User with Enterprise Extension Attributes
 
 The PUT request from a Postman client is shown below.
 
 ![Example SCIMv2 PUT Request](Media/Image4.19.jpg)
   
-Figure 19: Example SCIMv2 PUT Request
+Figure 21: Example SCIMv2 PUT Request
 
 Based on the PUT request described above, the entry uid=bjensen@example.com,o=companydirectory is updated. This can be seen in RadiantOne in the screen shot below.
 
 ![Sample Entry Updated with a SCIM PUT Operation](Media/Image4.20.jpg)
  
-Figure 20: Sample Entry Updated with a SCIM PUT Operation
+Figure 22: Sample Entry Updated with a SCIM PUT Operation
  
 ### Get Entry
 
@@ -732,13 +823,13 @@ Method	| Get
 Header Name	| Authorization
 Header Value	| Basic Y249ZGlyZWN0b3J5IG1hbmFnZXI6c2VjcmV0c2VjcmV0
 
-Table 12: SCIM GET Query to Retrieve an Entry
+Table 13: SCIM GET Query to Retrieve an Entry
 
 The GET request from a Postman client is shown below.
 
 ![SCIM GET Query Example](Media/Image4.21.jpg)
  
-Figure 21: SCIM GET Query Example
+Figure 23: SCIM GET Query Example
 
 ### Delete Entry
 
@@ -752,10 +843,20 @@ Method	| Delete
 Header Name	| Authorization
 Header Value	| Basic Y249ZGlyZWN0b3J5IG1hbmFnZXI6c2VjcmV0c2VjcmV0
 
-Table 12: SCIM DELETE Query to Delete an Entry
+Table 14: SCIM DELETE Query to Delete an Entry
 
 The DELETE request from a Postman client is shown below.
 
 ![SCIM DELETE Query Example](Media/Image4.22.jpg)
  
-Figure 22: SCIM DELETE Query Example
+Figure 24: SCIM DELETE Query Example
+
+### Query Users with a Bearer Token
+
+The following example retrieves users with an external OIDC access token instead of Basic credentials. For how RadiantOne validates the token, see [Bearer Token Authentication](#bearer-token-authentication).
+
+```
+curl -X GET "http://<RadiantOneService>:8089/scim2/v2/Users" \
+  -H "Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9..." \
+  -H "Accept: application/scim+json"
+```
