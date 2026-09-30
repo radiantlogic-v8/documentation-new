@@ -47,8 +47,13 @@ The following JDBC drivers are installed with RadiantOne by default for convenie
 
 ### Applications and Distributed Event Streaming Platforms
 
+Templates for applications and event streaming platforms are located on the OTHER tab.
+
 - Sailpoint IdentityIQ. Use the template named SCIMv2.
-- Apache Kafka (Oracle GoldenGate)
+- ServiceNow. Create a new template based on the ServiceNow connector you can download from the [Connector Marketplace](https://github.com/radiantlogicinc/connector-marketplace/tree/main/servicenow)
+- Workday. Create a new template based on the Workday connector you can download from the [Connector Marketplace](https://github.com/radiantlogicinc/connector-marketplace/tree/main/workday)
+- Apache Kafka (Oracle GoldenGate). Use the template named Kafka.
+- Google Pub/Sub Queue. Use the template named GCPPubSubConnector.
 
 ### Cloud Directories and Services
 
@@ -59,6 +64,8 @@ Templates for cloud services are located on the OTHER tab.
 - Microsoft Entra ID (formerly Azure AD). Use the template named Microsoft Entra ID.
 - PingOne. Use the template named SCIMv2.
 - Okta Universal Directory. Use the template named Okta.
+- Google Directory. Use the template named Google Directory.
+- Amazon Cognito. Use the template named awscognito.
 - Any SCIMv2 service. Use the template named SCIMv2.
 - Salesforce. Use the template named SCIMv2.
 - Zscaler. Use the template named SCIMv2.
@@ -77,10 +84,7 @@ To connect to the following sources, follow the steps to: [Create Data Sources](
 <br>
 
   ![coming soon](Media/coming-soon.jpg)
-- Sailpoint Identity Security Cloud 
-- ServiceNow
-- Worday
-- Google Pub/Sub Queue
+- Sailpoint Identity Security Cloud
 - AWS Identity and Access Management
 
 >[!note] For any data source that doesn't have an out-of-the-box template, the Radiant Logic Connector SDK can be used. It provides the framework and methodology for configuring a connector. This is our standard process to make sure the connector is tailored to your exact use case: which systems you care about, which users, groups, and attributes...etc. you need, and how often changes should flow. This ensures we can precisely define what data is retrieved and how it behaves in your environment, so you get a connector that fits your exact requirements. Consult your Radiant Logic Account Representative for details.
