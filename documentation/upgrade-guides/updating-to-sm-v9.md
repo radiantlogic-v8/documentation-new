@@ -16,8 +16,10 @@ This update is not a simple image replacement. Version 9 upgrades the platform f
 Confirm the following:
 
 - **Plan for downtime.** All nodes are stopped and the directory is unavailable for the entire update. Configuration-only deployments take approximately 5 minutes. For directory stores, plan approximately 10 minutes per million entries on a three-node cluster. For example, 10 million entries require approximately 1 hour and 40 minutes. See [Update Duration](#update-duration).
-- **There is no in-place rollback.** After the rebuild begins, the data volume is converted to v9 and cannot be converted back. To return to v8, you must deploy a new v8 instance and restore a pre-upgrade backup. The backup in Step 2 is required. Retain it until you have validated and accepted the v9 deployment.
+- **Back up before you start.** There is no in-place rollback. The backup in Step 2 is required and is the only way to return to v8. Retain it until you have validated and accepted the v9 deployment.
 - **Check the prerequisites.** The source deployment must be Identity Data Management 8.5.0 or later, and the `fid-0` volume must have free space equal to at least 3.5 times the current data store size.
+
+> **Warning:** After the import/rebuild step begins, the `fid-0` volume contains v9 data. Do not scale the `fid` StatefulSet manually or attempt to run a v8 image against this volume. To return to v8, deploy a new v8 instance and restore the pre-upgrade backup.
 
 ## Update Steps
 
@@ -36,13 +38,15 @@ kubectl get statefulset fid -n self-managed \
   -o jsonpath='{.spec.template.spec.containers[*].image}{"\n"}'
 ```
 
+The deployment is eligible for the update if the `fid` image tag is 8.5.0 or later, for example `radiantone/fid:8.5.3`. If the tag is earlier than 8.5.0, do not continue.
+
 > Deployments running versions earlier than 8.5.0 must first update to version 8.5.0 or later within the v8 stream. For example, use chart `--version 1.5.3` for Identity Data Management 8.5.3.
 
-The v9 update does not run from an unsupported source version. Confirm that the cluster is healthy before continuing.
+You cannot update directly to v9 from a version earlier than 8.5.0. Confirm that the cluster is healthy before continuing.
 
 ### 2. Back Up Configuration and Directory Store Data
 
-> Do not skip this step. There is no in-place downgrade from v9. This backup is the only way to return to v8. See [Returning to v8](#returning-to-v8).
+> **Warning:** Do not skip this step. There is no in-place downgrade from v9. This backup is the only way to return to v8. See [Returning to v8](#returning-to-v8).
 
 Run the export script on the `fid-0` pod. Include `rli.migration.hdap.all` to back up directory store data together with the configuration.
 
@@ -61,7 +65,7 @@ kubectl cp -n self-managed \
 unzip -l ./pre-v9-backup.zip | tail -3
 ```
 
-### 3. Check Available Space on the `fid-0` Volume
+### 3. Check Available Space on the fid-0 Volume
 
 During the update, the volume contains the existing v8 stores, export archive, extracted LDIF files, and new v9 stores at the same time.
 
@@ -76,23 +80,23 @@ Ensure that the volume has free space equal to at least 3.5 times the current da
 
 > **Note:** Rebuilt v9 stores are approximately twice the size of v8 stores and remain at that size after the update. Size the volume for ongoing use, not only for the update.
 
-### 4. Update `values.`
+### 4. Update the values file
 
-Make the following changes in your `values.` file:
+Make the following changes in your `values.yaml` file:
 
-- Remove `image.tag`. In v9, the image version is set through `--version`. A v8 `image.tag`, such as `8.5.x`, causes the chart to render the old image and prevents the update from continuing.
+- Remove `image.tag`. In v9, the image version is set through `--version`. If `image.tag` remains set to a v8 image, such as `8.5.x`, Helm deploys the v8 image and the update cannot continue.
 - Rename `directorySchema` to `globalSync`. The component is now named `sync`. Settings under the deprecated `directorySchema` key are silently ignored.
 - Pass values explicitly with `--values <path>`. Do not use `--reuse-values`, because it retains incompatible v8 values.
 - Omit `hdapMigration.rolloutTimeout`. This setting has no effect in v9.
 
-> **Note:** Do not change startup probe settings for a standard update. The rebuild runs in dedicated worker pods that Kubernetes does not health-check, so `fid-0` starts within the default allowance. See [Startup Probe Settings](#startup-probe-settings).
+> **Note:** Do not change startup probe settings for a standard update. The rebuild runs in dedicated worker pods, not in `fid-0`; therefore, it does not consume the `fid-0` startup-probe allowance. See [Startup Probe Settings](#startup-probe-settings).
 
 #### Tune Migration Timeouts for Large Stores
 
-If the dataset exceeds the default limits, adjust the following settings in `values.`.
+If the dataset exceeds the default limits, adjust the following settings in `values.yaml`.
 
 | Setting | Default | When to change it |
-|---|---:|---|
+|---|---|---|
 | `hdapMigration.scaleDownTimeout` | `300 s` | Pods stop sequentially, and each pod uses its full `terminationGracePeriodSeconds`. If you increased that value, set this to at least `(replicas × terminationGracePeriodSeconds) + 60`. |
 | `hdapMigration.exportTimeout` | `1800 s` | Time allowed for export, approximately 2 minutes per million entries. Increase for datasets above 10 million entries. |
 | `hdapMigration.import.maxTimeout` | `14400 s` | Upper limit for one import attempt, approximately 6 minutes per million entries. |
@@ -217,14 +221,14 @@ Run the Helm upgrade command:
 helm -n self-managed upgrade --install fid \
   oci://registry-1.docker.io/radiantone/iddm-helm \
   --version 9.0.0 \
-  --values </path/to/your/values.> \
+  --values </path/to/your/values.yaml> \
   --timeout 4h \
   --wait
 ```
 
-> Always set `--timeout` to a value that covers the full update window. The default timeout of 5 minutes expires during store export and rebuild. Do not use `--atomic` or `--rollback-on-failure` (Helm 4). If Helm times out, these options force a rollback while migration Jobs are converting data, which corrupts the volume.
+> **Warning:** Always set `--timeout` to a value that covers the full update window. The default timeout of 5 minutes expires during store export and rebuild. Do not use `--atomic` or `--rollback-on-failure` (Helm 4). If Helm times out, these options force a rollback while migration Jobs are converting data, which corrupts the volume.
 
-If Helm times out, it reports the release as failed, but the migration Jobs continue running in Kubernetes. Do not manually scale the StatefulSet. Monitor the Jobs until they finish, then rerun the Helm command. See [Helm Timeout and Wait Options](#helm-timeout-and-wait-options).
+If Helm times out, it reports the release as failed, but the migration Jobs continue running in Kubernetes. Do not scale the `fid` StatefulSet manually. Monitor the Jobs until they finish, then rerun the Helm command. See [Helm Timeout and Wait Options](#helm-timeout-and-wait-options).
 
 ### 10. Monitor Update Progress
 
@@ -257,7 +261,7 @@ A healthy update can follow this timeline:
 +437s  helm returns: Release "fid" has been upgraded. STATUS: deployed, REVISION: 2
 ```
 
-After the rebuild, ZooKeeper pods restart sequentially as their container images update, followed by the remaining microservices. Pod turnover for several minutes at this stage is expected.
+During this stage, ZooKeeper and other microservice pods restart as their images update. Pod restarts for several minutes are expected.
 
 > If a step fails, rerun the same Helm command from Step 9. Completed steps are skipped automatically. See [If a Step Fails](#if-a-step-fails).
 
@@ -323,12 +327,12 @@ kubectl get configmap fid-hdap-migration-state -n self-managed \
   -o jsonpath='{range $k,$v := .data}{$k}={$v}{"\n"}{end}'
 ```
 
-## values. reference
+## Values file reference
 
-Use this `values.` template as a starting point. Adjust placeholders and sizing parameters for your environment.
+Use this `values.yaml` template as a starting point. Adjust placeholders and sizing parameters for your environment.
 
 ```
-# Minimal values. covering standard tuning parameters.
+# Minimal values.yaml covering standard tuning parameters.
 # Replace placeholders and adjust resource numbers for your deployment.
 
 replicaCount: 2  # Directory nodes (use 1 for evaluation)
@@ -427,12 +431,12 @@ When you run `helm upgrade`, the chart starts Kubernetes hook Jobs before applyi
 ```
 
 | Step | Job name | Action | Observed behavior |
-|---:|---|---|---|
+|---|---|---|---|
 | 1 | `fid-hdap-scale-down` | Sequentially stops all RadiantOne nodes, including main and follower nodes, and saves replica counts to the migration state ConfigMap. | FID pods terminate sequentially and `fid-0` disappears. |
 | 2 | `fid-hdap-export` | Starts a temporary `fid-hdap-export-worker` pod using the current v8 image and the `fid-0` volume. The worker exports all stores to LDIF in an archive and records store names. | `fid-hdap-export-worker` runs and completes. Job logs are retained. |
 | 3 | `fid-hdap-import` | Starts a temporary `fid-hdap-import-worker` pod using the v9 image and the `fid-0` volume. It runs the product updater, upgrades binaries, rebuilds all store indexes from LDIF, and verifies store integrity. If necessary, it retries with increased memory up to `import.maxAttempts`. | `fid-hdap-import-worker` runs for minutes or hours and then completes. |
 | 4 | `fid-hdap-pvc-cleanup` | Deletes follower PersistentVolumeClaims so that follower nodes synchronize clean v9 stores from `fid-0` when they start. | Follower PVCs are deleted. |
-| — | Helm apply | Helm updates the StatefulSet to the `9.0.0` image. `fid-0` starts with the converted volume, follower pods start and re-synchronize, and supporting services update concurrently. | FID pods restart on v9.0.0. |
+| After 4 | Helm apply | Helm updates the StatefulSet to the `9.0.0` image. `fid-0` starts with the converted volume, follower pods start and re-synchronize, and supporting services update concurrently. | FID pods restart on v9.0.0. |
 | 5 | `fid-hdap-post-upgrade-wait` | Optional readiness gate, enabled by default. Verifies that FID pods are fully rolled out, healthy, and serving every store recorded during export. | Completes after all stores are online and serving. |
 
 The `fid-hdap-migration-state` ConfigMap tracks progress through these phases:
@@ -450,7 +454,7 @@ Downtime depends on total entry count rather than node count.
 #### Estimated Downtime for a Three-Node Cluster
 
 | Dataset size | Scale-down | Export | Rebuild / Import | Gate and replication | Total estimated downtime | Basis |
-|---|---:|---:|---:|---:|---:|---|
+|---|---|---|---|---|---|---|
 | Config only, less than 1 MB | 1m 49s | 29s | 2m 09s | 12s | Approximately 5 min | Measured |
 | 1 million entries | Approximately 3 min | Approximately 3 min | Approximately 8 min | Approximately 3 min | Approximately 17 min | Estimated |
 | 5 million entries | Approximately 3 min | Approximately 11 min | Approximately 32 min | Approximately 8 min | Approximately 55 min | Estimated |
@@ -463,12 +467,12 @@ Downtime depends on total entry count rather than node count.
 #### Recommended Timeout Settings
 
 | Entry count | Recommended settings override | Recommended Helm `--timeout` |
-|---|---|---:|
+|---|---|---|
 | Up to 5 million | Defaults | 1h 30m |
 | 5–10 million | Defaults | 2h 30m |
 | 10–20 million | `exportTimeout: 3600`, `postUpgradeWaitTimeout: 3600` | 4h |
 | 20–50 million | `exportTimeout: 10800`, `import.maxTimeout: 28800`, `postUpgradeWaitTimeout: 7200` | 10h |
-| Above 50 million | Contact Radiant Logic Support to plan the maintenance window | — |
+| Above 50 million | Contact Radiant Logic Support to plan the maintenance window | Not applicable |
 
 ### Large Individual Stores
 
@@ -492,7 +496,7 @@ Helm always waits for hook Jobs. The `--timeout` and `--wait` options control He
 | `--wait` | Instructs Helm to wait until all StatefulSets, Deployments, and microservices report Ready before returning success. | Always use with `--timeout` to confirm full cluster health before Helm returns. |
 | `--wait-for-jobs` | Tells Helm to wait for standard Jobs. | Not required. Migration Jobs are hooks, and Helm waits for them automatically. |
 
-> Do not use `--atomic` or `--rollback-on-failure`. These options can force Helm to roll back after a timeout. Rolling back while migration Jobs are converting data corrupts the volume.
+> **Warning:** Do not use `--atomic` or `--rollback-on-failure`. These options can force Helm to roll back after a timeout. Rolling back while migration Jobs are converting data corrupts the volume.
 
 ## Startup Probe Settings
 
@@ -515,7 +519,7 @@ Rebuilt v9 stores are approximately twice the size of v8 stores and remain at th
 ### Pod Resources
 
 | Deployment profile | CPU | Memory | `FID_SERVER_JOPTS` | Volume size |
-|---|---:|---:|---|---:|
+|---|---|---|---|---|
 | Dev / Evaluation | 2 | 8Gi | `-Xms2g -Xmx4g` | 10Gi |
 | Small production, fewer than 1 million entries | 4 | 16Gi | `-Xms4g -Xmx8g` | 50Gi |
 | Medium production, 1–10 million entries | 8 | 32Gi | `-Xms8g -Xmx16g` | 100Gi |
@@ -547,21 +551,21 @@ NS=self-managed
 
 kubectl get jobs -n $NS
 
-kubectl get configmap fid-hdap-migration-state -n $NS -o 
+kubectl get configmap fid-hdap-migration-state -n $NS -o yaml
 
-kubectl logs job/ -n $NS | tail -40
+kubectl logs job/<job-name> -n $NS | tail -40
 ```
 
 | Failing step | Root cause | Cluster state | Recovery action |
 |---|---|---|---|
 | `fid-hdap-scale-down` | Pods did not terminate within `scaleDownTimeout`, or a pod is stuck on an unreachable node. | RadiantOne automatically scales back up on v8. Volume data is unchanged. | Increase `scaleDownTimeout` and rerun `helm upgrade`. |
 | `fid-hdap-export` | ZooKeeper was unavailable, the worker ran out of memory, or disk capacity is full. | RadiantOne automatically scales back up on v8. Volume data is unchanged. | Resolve the cause, such as restoring ZooKeeper or expanding the PVC, then rerun `helm upgrade`. |
-| `fid-hdap-import` | Rebuild exceeded timeout or memory limits, or store verification failed. | RadiantOne remains stopped intentionally. The volume now contains v9 data, and the chart prevents v8 from running against it. | Do not manually scale the StatefulSet. Increase `import.maxTimeout` or `import.maxMemory`, then rerun `helm upgrade`. The rebuild resumes safely. |
+| `fid-hdap-import` | Rebuild exceeded timeout or memory limits, or store verification failed. | RadiantOne remains stopped intentionally. The volume now contains v9 data, and the chart prevents v8 from running against it. | Do not scale the `fid` StatefulSet manually. Increase `import.maxTimeout` or `import.maxMemory`, then rerun `helm upgrade`. The rebuild resumes safely. |
 | `fid-hdap-pvc-cleanup` | Follower PVC deletion failed. | Rebuild is complete, but follower cleanup is pending. | Rerun `helm upgrade`. |
 | `fid-hdap-post-upgrade-wait` | Nodes required more than `postUpgradeWaitTimeout` to become ready, or a store did not load. | The deployment is updated. | If pods are still initializing, rerun `helm upgrade` so the gate can verify readiness. If stores did not load, inspect logs and contact Support. |
 | Helm timeout expired | Helm `--timeout` expired while migration Jobs were running. | Migration Jobs continue in the background. | Monitor Jobs using `kubectl get jobs -w`. After they complete, rerun `helm upgrade` with a longer `--timeout`. |
 
-> Never manually scale the StatefulSet. After the rebuild begins, the volume contains v9.0.0 data. Running `kubectl scale sts fid --replicas=N` can cause the old v8 image to mount v9 data and corrupt the deployment. Always rerun the Helm upgrade command to resume the update.
+> **Warning:** After the import/rebuild step begins, the `fid-0` volume contains v9 data. Do not scale the `fid` StatefulSet manually (for example, with `kubectl scale sts fid --replicas=N`); doing so can start the v8 image against v9 data and corrupt the deployment. To resume the update, rerun the Helm upgrade command.
 
 ### Common Symptoms
 
@@ -571,7 +575,7 @@ kubectl logs job/ -n $NS | tail -40
 | Export fails with `Cannot reach ZooKeeper` | A cluster autoscaler evicted a ZooKeeper pod. | Confirm ZooKeeper is `3/3` ready, apply the `safe-to-evict=false` annotation, and rerun `helm upgrade`. |
 | Worker pod remains `Pending` | Insufficient node CPU or memory, or the PersistentVolume is in a `Multi-Attach` state. | Run `kubectl describe pod fid-hdap-export-worker`. Stale volume attachments normally clear within several minutes. |
 | Import fails with out-of-memory errors | A store requires more memory than the worker limit. | Increase `hdapMigration.import.maxMemory`, for example to `32Gi`, and increase `hdapMigration.import.maxAttempts`. Then rerun `helm upgrade`. |
-| Rerun fails with `Attempt limit reached` | Previous failed attempts exhausted the ConfigMap attempt counter. | Increase `hdapMigration.import.maxAttempts` in `values.`, then rerun `helm upgrade`. |
+| Rerun fails with `Attempt limit reached` | Previous failed attempts exhausted the ConfigMap attempt counter. | Increase `hdapMigration.import.maxAttempts` in `values.yaml`, then rerun `helm upgrade`. |
 | Gate fails with `fid is at 0 replicas` | Helm was interrupted before applying the v9 StatefulSet manifest. | Rerun `helm upgrade` to apply the updated StatefulSet. |
 | Gate fails with `exported stores were never opened` | The server started but could not load one or more migrated stores. | Collect `kubectl logs fid-0 -c fid` and `kubectl logs job/fid-hdap-post-upgrade-wait`, then contact Radiant Logic Support before serving traffic. |
 | Monitoring reports a missing `directory-schema` component | The component was renamed to `sync` in v9. | Update monitoring configuration to monitor `sync`. |
@@ -579,7 +583,7 @@ kubectl logs job/ -n $NS | tail -40
 ### Log Locations
 
 - **Rebuild worker logs:** Stored on the persistent volume at `/opt/radiantone/vds/work/hdap-migration/`. The logging sidecar streams them after `fid-0` starts.
-- **Job output:** View using `kubectl logs job/ -n self-managed`.
+- **Job output:** View using `kubectl logs job/<job-name> -n self-managed`.
 - **Job retention:** Kubernetes retains migration Jobs and logs for 24 hours through `hdapMigration.job.ttlSecondsAfterFinished: 86400`.
 - **Server runtime logs:** View live logs with `kubectl logs fid-0 -n self-managed -c fid`, or inspect `/opt/radiantone/vds/vds_server/logs/` in the pod.
 
@@ -673,7 +677,7 @@ Host the `pre-v9-backup.zip` file at an HTTP or HTTPS endpoint accessible from t
 
 Ensure the URL does not contain `&` characters. Pre-signed query strings containing `&` break the v8 shell download script.
 
-Configure the v8 `values.` file with the backup URL:
+Configure the v8 `values.yaml` file with the backup URL:
 
 ```
 fid:
@@ -690,7 +694,7 @@ Install the v8 Helm chart that matches the previous v8 version. For example, use
 helm -n self-managed install fid \
   oci://registry-1.docker.io/radiantone/iddm-helm \
   --version 1.5.3 \
-  --values /path/to/v8-values.
+  --values /path/to/v8-values.yaml
 ```
 
 Confirm that `fid-0` downloaded and extracted the archive:
