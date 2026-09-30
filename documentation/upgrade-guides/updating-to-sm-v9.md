@@ -464,17 +464,15 @@ Validate timing in a lower environment with representative data before schedulin
 
 > Monitor node restarts after the rebuild. Completing the rebuild does not complete the update. The first node must start and open all rebuilt stores before it can serve traffic. The remaining nodes then start one at a time, replicate and initialize the stores locally, and report readiness only when that work is complete. The update is complete when the final node becomes ready. Monitor progress with:
 
->
-> ```
-> NS=self-managed
-> # nodes become ready one at a time; the last one to report ready ends the update
-> kubectl get pods -n $NS -l app.kubernetes.io/component=fid -w
->
-> # what a joining node is doing
-> kubectl logs fid-1 -n $NS -c fid --tail=50 | grep -Ei "replicat|initializ|Opening index|Loaded with"
-> ```
+```
+ NS=self-managed
+ # nodes become ready one at a time; the last one to report ready ends the update
+ kubectl get pods -n $NS -l app.kubernetes.io/component=fid -w
+ # what a joining node is doing
+ kubectl logs fid-1 -n $NS -c fid --tail=50 | grep -Ei "replicat|initializ|Opening index|Loaded with"
+```
 
-### Very large individual stores
+### Memory requirements for very large stores
 
 The update sizes rebuild-worker memory from the largest export file. In the export archive, files of 4 GB or larger are recorded with a fixed placeholder value instead of their actual size. As a result, once a store export reaches approximately 4 GB, the rebuild worker receives the same memory allocation whether the export is 4 GB or significantly larger.
 
