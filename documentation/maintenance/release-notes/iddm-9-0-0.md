@@ -46,6 +46,7 @@ These release notes contain the following sections:
 - [V9-290]: Reduced JWT size growth to prevent large Authorization headers from causing request failures.
 - [V9-327, SQ-1350, SQ-1538]: Improvement so that follower-only nodes don't stop when a new leader node is elected.
 - [V9-347, SQ-668]: Added a performance improvement that makes ResyncUtil skip entries that were not modified after cluster disconnection, thus reducing the number of entries to process.
+- [V9-358, SQ-1736]: Account lockout and password-related attributes are now synchronized by CPLDS to the target store, so a locked account and its lockout details are reflected on both sides. Entry creation and modification details (who created or last changed an entry, and when) can now also be included in the synchronization.
 
 ## Bug Fixes
 
