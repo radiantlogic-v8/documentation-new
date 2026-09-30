@@ -36,13 +36,13 @@ kubectl get statefulset fid -n self-managed \
   -o jsonpath='{.spec.template.spec.containers[*].image}{"\n"}'
 ```
 
-> **Important:** Deployments running versions earlier than 8.5.0 must first update to version 8.5.0 or later within the v8 stream. For example, use chart `--version 1.5.3` for Identity Data Management 8.5.3.
+> Deployments running versions earlier than 8.5.0 must first update to version 8.5.0 or later within the v8 stream. For example, use chart `--version 1.5.3` for Identity Data Management 8.5.3.
 
 The v9 update does not run from an unsupported source version. Confirm that the cluster is healthy before continuing.
 
 ### 2. Back Up Configuration and Directory Store Data
 
-> **Warning:** Do not skip this step. There is no in-place downgrade from v9. This backup is the only way to return to v8. See [Returning to v8](#returning-to-v8).
+> Do not skip this step. There is no in-place downgrade from v9. This backup is the only way to return to v8. See [Returning to v8](#returning-to-v8).
 
 Run the export script on the `fid-0` pod. Include `rli.migration.hdap.all` to back up directory store data together with the configuration.
 
@@ -222,9 +222,7 @@ helm -n self-managed upgrade --install fid \
   --wait
 ```
 
-> **Important:** Always set `--timeout` to a value that covers the full update window. The default timeout of 5 minutes expires during store export and rebuild.
-
-> **Warning:** Do not use `--atomic` or `--rollback-on-failure` (Helm 4). If Helm times out, these options force a rollback while migration Jobs are converting data, which corrupts the volume.
+> Always set `--timeout` to a value that covers the full update window. The default timeout of 5 minutes expires during store export and rebuild. Do not use `--atomic` or `--rollback-on-failure` (Helm 4). If Helm times out, these options force a rollback while migration Jobs are converting data, which corrupts the volume.
 
 If Helm times out, it reports the release as failed, but the migration Jobs continue running in Kubernetes. Do not manually scale the StatefulSet. Monitor the Jobs until they finish, then rerun the Helm command. See [Helm Timeout and Wait Options](#helm-timeout-and-wait-options).
 
@@ -261,7 +259,7 @@ A healthy update can follow this timeline:
 
 After the rebuild, ZooKeeper pods restart sequentially as their container images update, followed by the remaining microservices. Pod turnover for several minutes at this stage is expected.
 
-> **Important:** If a step fails, rerun the same Helm command from Step 9. Completed steps are skipped automatically. See [If a Step Fails](#if-a-step-fails).
+> If a step fails, rerun the same Helm command from Step 9. Completed steps are skipped automatically. See [If a Step Fails](#if-a-step-fails).
 
 ### 11. Validate the Updated Deployment
 
@@ -494,7 +492,7 @@ Helm always waits for hook Jobs. The `--timeout` and `--wait` options control He
 | `--wait` | Instructs Helm to wait until all StatefulSets, Deployments, and microservices report Ready before returning success. | Always use with `--timeout` to confirm full cluster health before Helm returns. |
 | `--wait-for-jobs` | Tells Helm to wait for standard Jobs. | Not required. Migration Jobs are hooks, and Helm waits for them automatically. |
 
-> **Warning:** Do not use `--atomic` or `--rollback-on-failure`. These options can force Helm to roll back after a timeout. Rolling back while migration Jobs are converting data corrupts the volume.
+> Do not use `--atomic` or `--rollback-on-failure`. These options can force Helm to roll back after a timeout. Rolling back while migration Jobs are converting data corrupts the volume.
 
 ## Startup Probe Settings
 
@@ -563,7 +561,7 @@ kubectl logs job/ -n $NS | tail -40
 | `fid-hdap-post-upgrade-wait` | Nodes required more than `postUpgradeWaitTimeout` to become ready, or a store did not load. | The deployment is updated. | If pods are still initializing, rerun `helm upgrade` so the gate can verify readiness. If stores did not load, inspect logs and contact Support. |
 | Helm timeout expired | Helm `--timeout` expired while migration Jobs were running. | Migration Jobs continue in the background. | Monitor Jobs using `kubectl get jobs -w`. After they complete, rerun `helm upgrade` with a longer `--timeout`. |
 
-> **Warning:** Never manually scale the StatefulSet. After the rebuild begins, the volume contains v9.0.0 data. Running `kubectl scale sts fid --replicas=N` can cause the old v8 image to mount v9 data and corrupt the deployment. Always rerun the Helm upgrade command to resume the update.
+> Never manually scale the StatefulSet. After the rebuild begins, the volume contains v9.0.0 data. Running `kubectl scale sts fid --replicas=N` can cause the old v8 image to mount v9 data and corrupt the deployment. Always rerun the Helm upgrade command to resume the update.
 
 ### Common Symptoms
 
