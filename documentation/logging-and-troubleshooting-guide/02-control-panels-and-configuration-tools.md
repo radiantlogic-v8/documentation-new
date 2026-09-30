@@ -64,6 +64,29 @@ Other Advanced properties (requires [Expert Mode](01-overview#expert-mode)) that
 
 -	web.access.file.archive.scan.glob -  the regex (glob style) to match to select which files to delete
 
+### Sync engine logs
+
+Starting in **RadiantOne FID v7.4.26**, you can customize the log file destination, archive naming patterns, file rollover thresholds, and archive retention count for the Sync Engine directly from the Control Panel. 
+
+#### Accessing Sync Engine Log Settings
+
+1. Log in to the **RadiantOne Control Panel** as an administrator.
+2. In the top navigation bar, ensure **Expert Mode** is enabled (toggle in the top right).
+3. Navigate to **Settings** > **Logs** > **Log Settings**.
+4. In the **Target Component** dropdown, select **FID - Sync Engine**.
+
+#### Sync Engine Log Parameters
+
+Configure the following fields according to your logging and disk retention requirements:
+
+| Field | Description | Default Value | Example / Recommended |
+| :--- | :--- | :--- | :--- |
+| **Log File Path** | The relative or absolute path and filename for the active Sync Engine log file. | `logs/sync_engine/sync_engine.log` | `logs/sync_engine/sync_engine.log` |
+| **Archive File Pattern** | The destination path and naming pattern for archived log files. Supports date formatting and roll indexes (`%d`, `%i`). | `logs/sync_engine/archive/sync_engine-%d{yyyy-MM-dd}-%i.log.gz` | `logs/sync_engine/archive/sync_engine-%d{yyyy-MM-dd}-%i.log.gz` |
+| **Log Rollover Size** | The maximum file size threshold before the active log file is compressed and rolled over into the archive directory. | `100MB` | `50MB` – `200MB` |
+| **Archive Backup Index** | The maximum number of archived log files to retain before the oldest files are automatically deleted. | `10` | `10` – `30` |
+
+
 ### Custom Settings
 
 More fine-grained configuration log settings related to the Main and Server Control Panels can be managed from the Main Control Panel -> ZooKeeper tab (requires [Expert Mode](01-overview#expert-mode)). Navigate to `radiantone/<version>/<clustername>/config/logging/log4j2-control-panel.json`. Click the Edit Mode button to modify the settings. Generally, these advanced settings should only be changed if advised by Radiant Logic.
