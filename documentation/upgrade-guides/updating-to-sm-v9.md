@@ -844,18 +844,19 @@ kubectl -n $NS get serviceaccount,role,rolebinding,job,configmap,pod -l app.kube
 
 Do not run these while the deployment is still installed: the next update creates the objects again anyway, and deleting a migration Job that is still running stops the update. None of this removes the volume claims; see [Clear the namespace](#clear-the-namespace) to empty the namespace completely.
 
-
 ## Reverting to v8
 
-A v9 deployment cannot be downgraded in place. A 9.x backup cannot be restored into an 8.x deployment.
+**You can skip this section and the sections that follow unless you need to roll back to version 8.** You cannot downgrade a version 9 deployment in place, and you cannot restore a 9.x backup to a version 8.x deployment.
 
-To return to v8, create a new v8 deployment and restore the backup created before the update. Do not delete the backup, or the optional snapshots, until you accept the v9 deployment.
+If for any reason, you would still like to rollback to v8, create a new v8 deployment and restore the backup created before the update. Do not delete the backup, or the optional snapshots, until you accept the v9 deployment.
 
 Confirm what the backup contains before relying on it:
 
 - A backup created without `rli.migration.hdap.all` contains configuration only.
 - Persistent caches must be reinitialized.
 - Configuration and data changes made after the backup are not included.
+
+Next, follow the steps below only if you want to revert to version 8.
 
 ### Clear the namespace
 
