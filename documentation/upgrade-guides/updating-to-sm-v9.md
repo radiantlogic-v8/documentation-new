@@ -282,17 +282,20 @@ If you use follower-only nodes through `fid.followerOnly`, their volumes are del
 
 Include this re-synchronization time in the maintenance window. The update is complete when followers are ready.
 
-### 8. If you deploy with Argo CD
+### 8. Considerations for Argo CD
 
-The update Jobs are Helm hooks. Argo CD runs them as `PreSync` and `PostSync` hooks in the same order.
+_This section applies only to deployments that use Argo CD._
 
-Argo CD does not impose a sync timeout, so synchronization runs as long as the update requires. Note the following behavior:
+The update jobs are implemented as Helm hooks. Argo CD runs them as PreSync and PostSync hooks, preserving their execution order.
+Argo CD does not enforce a synchronization timeout. Synchronization continues for as long as the update requires. Note the following behavior:
 
 - Hook Jobs remain `OutOfSync` after synchronization. Do not use an Argo CD `Synced` status as the indicator that the update completed.
 - Use the readiness-gate Job and the migration `phase` value to determine whether the update is complete.
 - A pre-upgrade hook runs for every Argo CD sync, including the initial sync.
 
-The application also stays `OutOfSync` after a successful update for a related reason: the 9.0 chart replaces the old `directory-schema` component with `sync`, and Helm removes `directory-schema` as part of the update, but Argo CD only deletes objects that are no longer in the chart when a sync prunes. Until then, the old `directory-schema` pod keeps running its 8.5 image alongside `sync`. Clear it by syncing once more with **Prune** selected, or by deleting the objects directly:
+The application can also remain OutOfSync after a successful update because the 9.0 chart replaces the directory-schema component with sync. During the update, Helm removes directory-schema, but Argo CD deletes resources that are no longer defined in the chart only when the synchronization includes pruning. Until you prune, the previous directory-schema pod continues to run its 8.5 image alongside sync.
+
+To remove the obsolete resources, run another synchronization with Prune selected, or delete the objects directly:
 
 ```
 NS=self-managed
@@ -331,7 +334,7 @@ pvcs    : r1-pvc-fid-0=10Gi zk-pvc-zookeeper-0=10Gi zk-pvc-zookeeper-1=10Gi zk-p
 
 ## Applying the update
 
-> **Warning:** After the import job starts, do not manually scale or restart the v8 StatefulSet. The data volume has been converted to v9. If the update fails, correct the issue and rerun the same upgrade command.
+> Do not manually scale or restart the v8 StatefulSet after the import job begins. At that point, the data volume has been converted to v9. If the update fails, resolve the issue and rerun the same upgrade command.
 
 Run the following command:
 
@@ -363,7 +366,7 @@ Helm always waits for the Jobs it runs as hooks, so the update is governed by `-
 
 Pass both `--timeout` (sized from [How long the update takes](#how-long-the-update-takes)) and `--wait` every time. `--timeout` is a limit per step, not for the whole command — each migration Job, and the final wait, gets the full value on its own, so it only needs to outlast the longest step, the rebuild.
 
-With Argo CD, neither flag applies: Argo CD runs the same Jobs as sync hooks and has no sync timeout. See [If you deploy with Argo CD](#8-if-you-deploy-with-argo-cd).
+With Argo CD, neither flag applies: Argo CD runs the same Jobs as sync hooks and has no sync timeout. See [Considerations for Argo CD](#8-considerations-for-argo-cd).
 
 > **Do not use `--atomic` or `--rollback-on-failure`.** These are the same option — Helm 4 renamed `--atomic` to `--rollback-on-failure` and still accepts the old name with a deprecation warning. Either one rolls the release back when the update fails or the timeout expires. On this update that means rolling back while the migration Jobs are still running against the volume. Let the Jobs finish and re-run the same command instead; see [If a step fails](#if-a-step-fails).
 
@@ -398,7 +401,7 @@ kubectl logs -f job/fid-hdap-import -n $NS
 kubectl get pods -n $NS -w
 ```
 
-A healthy update for one node and one million entries can appear as follows:
+A healthy update for one node and one million entries may appear as follows:
 
 ```
 +13s   phase=ready-for-export  fid=1/0   scale-down=Running
@@ -416,11 +419,13 @@ Do not delete pods, scale the StatefulSet, or change values while the update is 
 
 ## How long the update takes
 
-Downtime begins when the scale-down Job starts and ends when the readiness gate completes (or, with the gate turned off, when the first node is serving again).
+Downtime begins when the scale-down job starts and ends when the readiness gate completes. If the gate is disabled, downtime ends when the first node is serving again.
 
-Duration depends mainly on the number of entries, not node count — adding nodes does not make export or rebuild faster. It does depend on how many nodes there are to restart: after the rebuild, each node comes back one at a time, and every node after the first replicates the stores from the first node before it reports ready. That step is proportional to the data and runs once per node, so on a deployment with several nodes and large stores it can add substantially to the window. Helm waits for it when the readiness gate is on (the default) or you pass `--wait`; with both off, it happens after Helm has already reported the release updated.
+Duration depends mainly on the number of entries, not the number of nodes. Adding nodes does not speed up the export or rebuild. However, after the rebuild, nodes restart one at a time. Each node after the first replicates its stores from the first node before becoming ready, which can extend downtime for large, multi-node deployments.
 
-The table below plans for a three-node deployment (`fid-0` plus two followers) at the default `terminationGracePeriodSeconds`:
+With the readiness gate enabled (the default) or `--wait`, Helm waits for all nodes to become ready. If both are disabled, Helm can report the update as complete while additional nodes are still replicating.
+
+The following table estimates timing for a three-node deployment—fid-0 and two follower nodes—using the default `terminationGracePeriodSeconds`:
 
 | Deployment | Scale-down | Export | Rebuild | Gate | Total downtime | Basis |
 |---|---:|---:|---:|---:|---:|---|
@@ -644,7 +649,7 @@ hdapMigration:
 
 Keep the readiness gate enabled for normal updates. It detects a server that starts without serving all data.
 
-### Example successful recovery
+### Example showing successful recovery
 
 The following example shows recovery after a rebuild failure. The first rerun resumed the rebuild. The second rerun completed the remaining steps.
 
