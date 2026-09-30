@@ -78,3 +78,19 @@ An example of transformation and apply activities that you can find in this log 
 2021-12-14T09:38:27,962 INFO  com.rli.cragents.refresh.EventsProcessor:259 - [EventsProcessor-Sync - sync pipeline - o_activedirectory_sync_ou_testing_o_companydirectory_pipeline_o_activedirectory] [SessionId=o_activedirectory_sync_ou_testing_o_companydirectory_pipeline_o_activedirectory1639503507954, SequenceId=11] <span style="color:red">Done processing sync event. </span>
 
 2021-12-14T09:38:27,962 INFO  com.rli.cragents.refresh.EventsProcessor:329 - [EventsProcessor-Sync - sync pipeline - o_activedirectory_sync_ou_testing_o_companydirectory_pipeline_o_activedirectory] <span style="color:red">Done processing batch of 1 events in 8 ms </span>` 
+
+### Viewing Sync Engine Logs
+
+When troubleshooting synchronization pipelines, connector capture events, or persistent cache refreshes, the primary log to inspect is the Sync Engine log.
+
+#### Default Location on Disk
+
+By default, these logs can be found here:
+
+* **Default Path:** `<RLI_HOME>/logs/sync_engine/sync_engine.log`
+* **Archived Logs:** `<RLI_HOME>/logs/sync_engine/archive/sync_engine-<date>-<index>.log.gz`
+
+> For v7.4.26 and later:  
+> The Sync Engine log file location, rollover threshold, and retention policies are configurable in the Control Panel under **Settings** > **Logs** > **Log Settings** (select **FID - Sync Engine** with **Expert Mode** enabled). If your deployment uses custom log paths, inspect the designated location specified in your log settings.
+
+For detailed instructions on modifying Sync Engine rollover thresholds and retention rules, see [FID - Sync Engine](./02-control-panels-and-configuration-tools.md#sync-engine-logs).
