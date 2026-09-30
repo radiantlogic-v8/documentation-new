@@ -73,19 +73,28 @@ Starting in **RadiantOne FID v7.4.26**, you can customize the log file destinati
 1. Log in to the **RadiantOne Control Panel** as an administrator.
 2. In the top navigation bar, ensure **Expert Mode** is enabled (toggle in the top right).
 3. Navigate to **Settings** > **Logs** > **Log Settings**.
-4. In the **Target Component** dropdown, select **FID - Sync Engine**.
+4. In the **Log Settings to configure** dropdown, select **FID - Sync Engine**.
 
-#### Sync Engine Log Parameters
+   ![An image showing the Log Settings page for FID - Sync Engine in the Main Control Panel](Media/sync-engine-log-settings.png)
 
-Configure the following fields according to your logging and disk retention requirements:
+5. Configure the log settings according to your logging and disk retention requirements:
 
-| Field | Description | Default Value | Example / Recommended |
-| :--- | :--- | :--- | :--- |
-| **Log File Path** | The relative or absolute path and filename for the active Sync Engine log file. | `logs/sync_engine/sync_engine.log` | `logs/sync_engine/sync_engine.log` |
-| **Archive File Pattern** | The destination path and naming pattern for archived log files. Supports date formatting and roll indexes (`%d`, `%i`). | `logs/sync_engine/archive/sync_engine-%d{yyyy-MM-dd}-%i.log.gz` | `logs/sync_engine/archive/sync_engine-%d{yyyy-MM-dd}-%i.log.gz` |
-| **Log Rollover Size** | The maximum file size threshold before the active log file is compressed and rolled over into the archive directory. | `100MB` | `50MB` – `200MB` |
-| **Archive Backup Index** | The maximum number of archived log files to retain before the oldest files are automatically deleted. | `10` | `10` – `30` |
+   | Field | Description | Example |
+   | :--- | :--- | :--- |
+   | **Log level** | The level of detail written to the Sync Engine log. Higher levels such as DEBUG and TRACE log more information but increase log size and can affect performance. For details on each level, see [Log Levels](01-overview#log-levels). | `INFO` |
+   | **Temporary Level** | When checked, the selected log level applies only until a date and time you specify, then reverts automatically. Use this to capture detailed logs while troubleshooting without leaving verbose logging on. For details, see [Temporary Log Level Setting](03-radiantone-universal-directory#temporary-log-level-setting). | Checked, with DEBUG set to revert after troubleshooting |
+   | **Integrity Assurance** | When checked, RadiantOne protects the log files against tampering so that any modification to a log file after it is written can be detected. | Checked, for environments with audit or compliance requirements |
+   | **Rollover size** | The maximum size the active log file can reach before it is rolled over into the archive. | `10MB` |
+   | **How Many Files to Keep in Archive?** | The maximum number of archived log files to retain. When this number is exceeded, the oldest archived files are deleted. | `5` |
 
+6. To change the log file locations, expand the **Advanced** section and configure the following settings:
+
+   | Field | Description | Example |
+   | :--- | :--- | :--- |
+   | **cragents.general.log.file** | The path and file name of the active Sync Engine log file. | `${rli:logging.root}/${rli:instance.name}/logs/sync_engine/newqatestlocation/sync_engine.log` |
+   | **cragents.general.log.file.archive** | The path and naming pattern for archived log files. `%i` is replaced with the roll index of each archived file. | `${rli:logging.root}/${rli:instance.name}/logs/sync_engine/newqatestlocation/sync_engine.log.%i` |
+
+7. Click **Save**.
 
 ### Custom Settings
 
