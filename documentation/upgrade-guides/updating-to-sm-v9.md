@@ -845,7 +845,7 @@ kubectl -n $NS get serviceaccount,role,rolebinding,job,configmap,pod -l app.kube
 Do not run these while the deployment is still installed: the next update creates the objects again anyway, and deleting a migration Job that is still running stops the update. None of this removes the volume claims; see [Clear the namespace](#clear-the-namespace) to empty the namespace completely.
 
 
-## Return to v8
+## Reverting to v8
 
 A v9 deployment cannot be downgraded in place. A 9.x backup cannot be restored into an 8.x deployment.
 
