@@ -3,7 +3,8 @@ title: Maintenance
 description: Learn how to apply patches, scales nodes (in/out), and manage environments.
 ---
 
-- [Release Notes](release-notes/release-notes.md)
+- [v8 Release Notes](release-notes/release-notes.md)
+- [v9 Release Notes](v9release-notes/v9release-notes.md)
 - [Security Vulnerability Report](vulnerability-report.md)
 - [Applying Patches](applying-patches.md)
 - [Scaling Nodes](scaling-nodes.md)
