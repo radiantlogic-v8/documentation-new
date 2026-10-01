@@ -54,16 +54,16 @@ Copy the file locally by executing the following command in the pod:
 
 ### Applying the Patch
 
-Update your values.yaml file with the image tag for the v8.1 patch release (e.g. v 8.2.1).
+Update your values.yaml file with any changes you need to make.
+
+Then, run the following helm command to apply the patch:
 
 ```
-image:
-  tag: "8.2.1"
-```
-
-Run the following helm command to apply the patch:
-
-`helm -n self-managed upgrade --install fid oci://registry-1.docker.io/radiantone/iddm-helm --version 1.2.1 --values </path/to/your/values.yaml>`
+helm -n self-managed upgrade --install fid \
+  oci://registry-1.docker.io/radiantone/iddm-helm \
+  --version 9.0.0 \
+  --values </path/to/your/values.yaml>
+  ```
 
 ## Release Notes
 
