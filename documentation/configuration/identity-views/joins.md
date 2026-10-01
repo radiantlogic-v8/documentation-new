@@ -17,39 +17,62 @@ This page describes the following.
 
 ## Configuring a Global Join
 
+Global joins apply server-wide across all views below Root Naming Contexts and are evaluated for all incoming client queries that match the configured primary object criteria.
+
 To configure a global join:
 
-1. Global joins are configured from Classic Control Panel. To switch to Classic Control Panel, use the menu options for the logged in user in the upper right.
+1. From the Control Panel, navigate to **Setup** > **Directory Namespace** > **Namespace Design**.
+2. Under the directory tree on the left, select the **Root Naming Contexts** node.
+3. On the right panel, select the **ADVANCED SETTINGS** tab.
+4. Expand the **Global Joins** section.
+5. Click **Add**. The **Join Wizard** opens.
+6. **Step 1 – Primary Object Settings:**
+   - Select the **Primary Object Class** associated with the entries you want to join.
+   - Select the **Primary Join Attribute** from the drop-down menu (must be an attribute belonging to the selected primary object class).
+   - Click **Next**.
+7. **Step 2 – Secondary Object Settings:**
+   - Select the **Data Source** containing the secondary objects (must be an LDAP-type data source or RadiantOne `vds`).
+   - Enter or click **Browse** to specify the **Base DN** where the secondary entries are located.
+   - Specify the search **Scope** (`base`, `one`, or `sub`).
+   - (Optional) Set the **Size Limit** (defaults to `0` for no limit).
+   - Select the **Secondary Object Class**.
+   - Select the **Secondary Join Attribute**. The generated **Join Condition** displays for review.
+   - Click **Next**.
+8. **Step 3 – Return Attributes:**
+   - Choose **Return all attributes** to return all attributes from the secondary object, or choose to return a specific subset.
+   - If returning a subset, click **Add Attribute** to select or enter the attributes to include.
+   - Click **Next**.
+9. **Step 4 – Join Profile Name:**
+   - Enter a unique **Join Profile Name**.
+   - Click **Finish**.
 
-   ![Classic Control Panel](Media/classic-cp.jpg)
+A confirmation message appears, and the new join profile is added to the **Global Joins** table.
 
-1. From the Classic Control Panel, go to the Settings tab > Interception section > Global External Joins.
+### Editing a Global Join
 
-1. Click **Add**. The Join Wizard opens.
+To modify an existing global join profile:
 
-1. Select Regular and click **Next**.
+1. Navigate to **Setup** > **Directory Namespace** > **Namespace Design** > **Root Naming Contexts** > **ADVANCED SETTINGS** > **Global Joins**.
+2. Select the join profile row from the table and click **Edit**.
+3. Update the primary object settings, secondary object settings, or returned attributes as needed.
+   > On the attributes step, you can click **Edit Manually** to inspect or directly modify the join condition URL string.
+   
+4. Advance to the final step and click **Finish** to save your changes.
 
-1. Select an Object Class associated with the entries from the primary object that you want to join.
+### Reordering Global Joins
 
-1. Select the attribute you want to base the join condition on from the Join Attribute drop-down menu. Click **Next**.
+When multiple global joins are configured, you can define their evaluation priority:
 
-1. Select the data source that represents the location that contains the secondary objects you want to join with. This can be either RadiantOne or another LDAP server that has been defined as a data source. If using RadiantOne as the secondary join source, select vds as the data source. If you want to join to some other LDAP, you must first configure the data source and then it appears in the drop-down list to select during this step.
+1. In the **Global Joins** table, select the join profile you want to reorder.
+2. Click **Move Up** or **Move Down** to change its position in the list. The order is automatically saved and applied.
 
-1. Click Browse to locate the Base DN or enter the location yourself.
+### Deleting a Global Join
 
-1. Specify the scope of search to perform to find the entries to join with. The drop-down options are base, one, or sub.
+To remove a global join:
 
-1. Select the specific object class associated with the secondary entries you want to join with in the Object Class parameter from the drop-down list. For information on schema extension, please see: [Extending RadiantOne LDAP Schema](../directory-stores/managing-directory-schema)
-
-1. Select the attribute from the secondary object that you want to base the join condition on from the Join Attribute drop-down menu. The value of this attribute should match the value of the primary source join attribute that you set in step above. The Join Condition parameter displays the attribute matching criteria for the join.
-
-1. Click **Next**.
-
-1. Decide if you would like all the possible attributes returned from the secondary object or if you would like to list the attributes to return. If you choose to list the attributes, click **Add** and enter the name of the attribute (or select from the drop-down list). You also can provide a virtual/mapped name (this is optional and is the name of the attribute that appears in the virtual entry). Click **OK** and repeat this process for each attribute you would like returned from the secondary object. Click **Next**.
-
-1. Enter a unique name for this join profile and click **Finish**.
-
-1. Click **Save**.
+1. In the **Global Joins** table, select the join profile you want to delete.
+2. Click **Delete**.
+3. In the **Delete Global Join** confirmation dialog, confirm the deletion.
 
 ## Configuring a Regular Join
 
